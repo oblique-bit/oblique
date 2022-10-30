@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnDestroy, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, Output, ViewEncapsulation} from '@angular/core';
 import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup, OptionLabelIconPosition} from '../autocomplete/autocomplete.model';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Observable, Subject, debounceTime} from 'rxjs';
@@ -7,7 +7,9 @@ import {map, startWith, takeUntil} from 'rxjs/operators';
 @Component({
 	selector: 'ob-autocomplete',
 	templateUrl: './autocomplete.component.html',
+	styleUrls: ['./autocomplete.component.scss'],
 	host: {class: 'ob-autocomplete'},
+	encapsulation: ViewEncapsulation.None,
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
