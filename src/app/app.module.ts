@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -14,6 +14,7 @@ import {
 	OB_BANNER,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
 	ObAlertModule,
+	ObAutocompleteModule,
 	ObDocumentMetaModule,
 	ObDocumentMetaService,
 	ObDropdownModule,
@@ -66,6 +67,7 @@ registerLocaleData(localeFR);
 		MatInputModule,
 		MatTooltipModule,
 		ObAlertModule,
+		ObAutocompleteModule,
 		ObDocumentMetaModule,
 		ObDropdownModule,
 		ObErrorMessagesModule,
@@ -81,6 +83,7 @@ registerLocaleData(localeFR);
 		ObSelectableModule,
 		ObSpinnerModule,
 		ObUnsavedChangesModule,
+		ReactiveFormsModule,
 		TranslateModule.forRoot(multiTranslateLoader())
 	],
 	providers: [

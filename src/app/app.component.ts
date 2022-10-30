@@ -1,6 +1,10 @@
-import {Component} from '@angular/core';
-import {ObEIcon, ObINavigationLink, ObISearchWidgetItem, ObISkipLink} from '@oblique/oblique';
-import {Observable} from 'rxjs';
+import {Component, OnDestroy} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {Router} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
+import {ObEIcon, ObIAutocompleteInputOption, ObINavigationLink, ObISkipLink} from '@oblique/oblique';
+import {Observable, Subject} from 'rxjs';
+import {filter, map, startWith, takeUntil} from 'rxjs/operators';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
 import {FONTS, FontService} from './common/font.service';
 
@@ -9,7 +13,8 @@ import {FONTS, FontService} from './common/font.service';
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
+	readonly search = new FormControl();
 	offCanvasOpen = false;
 	font$: Observable<string>;
 	readonly year = new Date().getFullYear();
@@ -125,10 +130,16 @@ export class AppComponent {
 		{url: '../samples', fragment: 'fragment', label: 'Skip to samples with fragment'},
 		{url: '../samples', label: 'Skip to samples without fragment'}
 	];
-	searchItems: ObISearchWidgetItem[] = [];
+	autocompleteItems$: Observable<ObIAutocompleteInputOption[]>;
+	private readonly unsubscribe = new Subject<void>();
 
-	constructor(private readonly font: FontService, nav: DynamicNavigationService) {
-		this.populateSearchItems(this.navigation);
+	constructor(
+		private readonly font: FontService,
+		nav: DynamicNavigationService,
+		private readonly router: Router,
+		private readonly translate: TranslateService
+	) {
+		this.initializeSearch();
 		this.font$ = this.font.font$;
 		nav.setNavigation(this.navigation);
 		nav.navigationLinks$.subscribe(links => {
@@ -136,23 +147,54 @@ export class AppComponent {
 		});
 	}
 
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
+	}
+
 	toggleFont(font: string): void {
 		this.font.setFont(font === FONTS.FRUTIGER ? FONTS.ROBOTO : FONTS.FRUTIGER);
 	}
 
-	populateSearchItems(items: ObINavigationLink[], base = ''): void {
-		items.forEach((item: ObINavigationLink) => {
-			const {url} = item;
-			if (item.children) {
-				this.populateSearchItems(item.children, url);
-			} else {
-				this.searchItems.push({
-					id: base ? `${base}_${url}` : url,
-					label: item.label,
-					routes: [base].concat(url.split('/')),
-					description: base ? `${base} > ${url}` : url
-				});
-			}
-		});
+	private initializeSearch(): void {
+		const searchItems = this.getChildNavigationLinks(this.navigation);
+		this.autocompleteItems$ = this.buildAutocompleteItemsObservable(searchItems);
+		this.search.valueChanges
+			.pipe(
+				takeUntil(this.unsubscribe),
+				map(value => searchItems.find(item => this.translate.instant(item.label) === value)),
+				filter(item => !!item)
+			)
+			.subscribe(item => {
+				this.search.reset('');
+				void this.router.navigate([item.url]);
+			});
+	}
+
+	private getChildNavigationLinks(items: ObINavigationLink[]): ObINavigationLink[] {
+		return items
+			.filter(item => item.children)
+			.filter(item => item.url !== 'icon sample')
+			.reduce<ObINavigationLink[]>(
+				(links, link) => [
+					...links,
+					...link.children.map(child => ({
+						...child,
+						url: `${link.url}/${child.url}`
+					}))
+				],
+				[]
+			);
+	}
+
+	private buildAutocompleteItemsObservable(items: ObINavigationLink[]): Observable<ObIAutocompleteInputOption[]> {
+		const autocompleteItems = items.reduce<ObIAutocompleteInputOption[]>(
+			(options, current) => [...options, {label: current.label, disabled: false}],
+			[]
+		);
+		return this.translate.onLangChange.pipe(
+			startWith(this.translate.currentLang),
+			map(() => autocompleteItems.map(item => ({...item, label: this.translate.instant(item.label)})))
+		);
 	}
 }
