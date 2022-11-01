@@ -10,7 +10,6 @@ module.exports.collectCoverageFrom = [
 	'!**/**.harness.ts',
 	// the following files have no spec files and therefore have a 0 coverage. Tests will be written later
 	'!**/http-api-interceptor.ts',
-	'!**/off-canvas-backdrop.directive.ts',
 	'!**/off-canvas-container.directive.ts',
 	'!**/schema-required.directive.ts',
 	'!**/spinner.component.ts'
