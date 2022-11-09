@@ -39,8 +39,7 @@ import {ObUseObliqueIcons} from '../../icon/icon.model';
 		'./master-layout.component.scss',
 		'./master-layout.component-cover.scss',
 		'./master-layout.component-offcanvas.scss',
-		'./master-layout.component-accessibility.scss',
-		'./master-layout.component.firefox.scss'
+		'./master-layout.component-accessibility.scss'
 	],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout', 'ob-version': appVersion}
