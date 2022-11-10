@@ -5,6 +5,7 @@ import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObIUploadEvent} from '../file-upload.model';
 import {ObDropZoneComponent} from './ob-drop-zone.component';
 import {ObValidationService} from './validation.service';
+import {By} from '@angular/platform-browser';
 
 @Pipe({
 	name: 'obAcceptAll'
@@ -79,6 +80,10 @@ describe('DropZoneComponent', () => {
 			it('should emit an ObIUploadEvent with all files', () => {
 				expect(event.files).toEqual(files);
 			});
+			it('should reset fileinput', () => {
+				const fileInput = fixture.debugElement.query(By.css('input[type=file]'));
+				expect(fileInput.properties.value).toEqual('');
+			});
 		});
 
 		describe('uploadEvent with no valid files', () => {
@@ -102,6 +107,10 @@ describe('DropZoneComponent', () => {
 
 			it('should emit an ObIUploadEvent with all files', () => {
 				expect(event.files).toEqual(files);
+			});
+			it('should reset fileinput', () => {
+				const fileInput = fixture.debugElement.query(By.css('input[type=file]'));
+				expect(fileInput.properties.value).toEqual('');
 			});
 		});
 
@@ -131,6 +140,10 @@ describe('DropZoneComponent', () => {
 				it('should emit an ObIUploadEvent with valid files', () => {
 					expect(event.files).toEqual([files[0]]);
 				});
+				it('should reset fileinput', () => {
+					const fileInput = fixture.debugElement.query(By.css('input[type=file]'));
+					expect(fileInput.properties.value).toEqual('');
+				});
 			});
 
 			describe('errored event', () => {
@@ -153,6 +166,10 @@ describe('DropZoneComponent', () => {
 
 				it('should emit an ObIUploadEvent with valid files', () => {
 					expect(event.files).toEqual([files[1]]);
+				});
+				it('should reset fileinput', () => {
+					const fileInput = fixture.debugElement.query(By.css('input[type=file]'));
+					expect(fileInput.properties.value).toEqual('');
 				});
 			});
 		});
