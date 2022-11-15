@@ -42,10 +42,9 @@ function moveStyles(): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (!tree.exists('src/styles/styles.scss')) {
 			infoMigration(_context, 'Toolchain: Moving style sheets into "styles" directory');
-			const stylesContent = readFile(tree, 'src/styles.scss') || '';
 			const comment =
 				'// this file should contain only imports. Rules should be grouped by features and placed into the corresponding file';
-			addFile(tree, 'src/styles/styles.scss', `${comment}\n${stylesContent}`);
+			addFile(tree, 'src/styles/styles.scss', comment);
 			deleteFile(tree, 'src/styles.scss');
 			const content = readFile(tree, 'angular.json') || '';
 			tree.overwrite('angular.json', content.replace(/"src\/styles\.scss"/g, '"src/styles/styles.scss"'));

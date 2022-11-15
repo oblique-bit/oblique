@@ -25,9 +25,7 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addObliqueAssets(),
 			addFontStyle(options.font || 'none'),
 			addFontFiles(options.font || 'none'),
-			addLocales(options.locales.split(' ')),
-			addScssImport('src/scss/styles.scss'),
-			addScssImport('src/styles.scss')
+			addLocales(options.locales.split(' '))
 		])(tree, _context);
 }
 
@@ -145,20 +143,6 @@ function addFontFiles(font: string): Rule {
 				});
 				return config;
 			});
-		}
-		return tree;
-	});
-}
-
-function addScssImport(stylesPath: string): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		if (tree.exists(stylesPath)) {
-			infoMigration(_context, 'Oblique: Importing variables into main SCSS file');
-			const layoutContent = readFile(tree, stylesPath);
-			const scssImport = `@import '~@oblique/oblique/styles/scss/core/variables';`;
-			if (!layoutContent.includes(scssImport)) {
-				tree.overwrite(stylesPath, scssImport.concat('\n', layoutContent));
-			}
 		}
 		return tree;
 	});
