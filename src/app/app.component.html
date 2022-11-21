@@ -1,4 +1,4 @@
-<ob-master-layout [skipLinks]="skipLinks" [navigation]="navigation" [ngClass]="theme" *ngIf="theme$ | async as theme">
+<ob-master-layout [skipLinks]="skipLinks" [navigation]="navigation" *ngIf="font$ | async as font">
 	<ng-container obHeaderTitle>Oblique</ng-container>
 	<ng-template #obHeaderControl>
 		<ob-search-box [items]="searchItems"></ob-search-box>
@@ -50,21 +50,14 @@
 		</ob-dropdown>
 	</ng-template>
 	<ng-template #obHeaderControl>
-		<div class="wrapper">
-			<button type="button" (click)="toggleTheme()">
-				{{ theme }}
-			</button>
-		</div>
-	</ng-template>
-	<ng-template #obHeaderControl>
-		<button type="button" (click)="toggleFont(font)" *ngIf="font$ | async as font">
+		<button type="button" (click)="toggleFont(font)">
 			{{ font }}
 		</button>
 	</ng-template>
 
 	<ng-template #obHeaderMobileControl>
-		<button type="button" (click)="toggleTheme()">
-			{{ theme }}
+		<button type="button" (click)="toggleFont(font)">
+			{{ font }}
 		</button>
 	</ng-template>
 

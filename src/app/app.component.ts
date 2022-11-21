@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {ObEIcon, ObINavigationLink, ObISearchWidgetItem, ObISkipLink} from '@oblique/oblique';
-import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
-import {FONTS, THEMES, ThemeService} from './common/theme.service';
+import {FONTS, ThemeService} from './common/theme.service';
 
 @Component({
 	selector: 'sc-root',
@@ -12,7 +11,6 @@ import {FONTS, THEMES, ThemeService} from './common/theme.service';
 })
 export class AppComponent {
 	offCanvasOpen = false;
-	theme$: Observable<string>;
 	font$: Observable<string>;
 	readonly year = new Date().getFullYear();
 	navigation: ObINavigationLink[] = [
@@ -131,16 +129,11 @@ export class AppComponent {
 
 	constructor(private readonly theme: ThemeService, nav: DynamicNavigationService) {
 		this.populateSearchItems(this.navigation);
-		this.theme$ = this.theme.theme$.pipe(map(() => (theme.isMaterial() ? 'material' : 'bootstrap')));
 		this.font$ = this.theme.font$;
 		nav.setNavigation(this.navigation);
 		nav.navigationLinks$.subscribe(links => {
 			this.navigation = links;
 		});
-	}
-
-	toggleTheme(): void {
-		this.theme.setTheme(this.theme.isMaterial() ? THEMES.BOOTSTRAP : THEMES.MATERIAL);
 	}
 
 	toggleFont(font: string): void {

@@ -47,7 +47,7 @@ import {registerLocaleData} from '@angular/common';
 
 import localeFR from '@angular/common/locales/fr-CH';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
-import {FONTS, THEMES, ThemeService} from './common/theme.service';
+import {FONTS, ThemeService} from './common/theme.service';
 
 registerLocaleData(localeFR);
 
@@ -107,7 +107,6 @@ export class AppModule {
 		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
 		config.locale.locales = ['en-us', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
-		theme.setTheme(THEMES.MATERIAL);
 		theme.setFont(FONTS.FRUTIGER);
 	}
 }
