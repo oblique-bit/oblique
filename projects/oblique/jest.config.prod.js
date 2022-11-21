@@ -129,12 +129,6 @@ module.exports.coverageThreshold = {
 		functions: 0,
 		lines: 25
 	},
-	'projects/oblique/src/lib/multiselect/*.ts': {
-		statements: 82,
-		branches: 0,
-		functions: 70,
-		lines: 82
-	},
 	'projects/oblique/src/lib/nav-tree/*.ts': {
 		statements: 91,
 		branches: 74,

@@ -87,13 +87,6 @@ export {
 	ObOutlineDirective,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION
 } from './lib/master-layout/master-layout.module';
-export {
-	ObMultiselectComponent,
-	ObMultiselectConfig,
-	ObMultiselectModule,
-	ObMultiselectSearchPipe,
-	ObMultiselectTexts
-} from './lib/multiselect/multiselect.module';
 export {ObNavTreeComponent, ObNavTreeFakeFocusDirective, ObNavTreeModule, ObNavTreeItemModel} from './lib/nav-tree/nav-tree.module';
 export {ObNestedFormModule, ObNestedFormComponent, ObParentFormDirective} from './lib/nested-form/nested-form.module';
 export {

@@ -15,7 +15,6 @@ import {ObMockExternalLinkModule} from './external-link/_mocks/mock-external-lin
 import {ObMockFileUploadModule} from './file-upload/_mocks/mock-file-upload.module';
 import {ObMockIconModule} from './icon/_mocks/mock-icon.module';
 import {ObMockMasterLayoutModule} from './master-layout/_mocks/mock-master-layout.module';
-import {ObMockMultiselectModule} from './multiselect/_mocks/mock-multiselect.module';
 import {ObMockNavTreeModule} from './nav-tree/_mocks/mock-nav-tree.module';
 import {ObMockNestedFormModule} from './nested-form/_mocks/mock-nested-form.module';
 import {ObMockNotificationModule} from './notification/_mocks/mock-notification.module';
@@ -86,13 +85,6 @@ export {
 	ObMockMasterLayoutComponentService,
 	ObMockAriaMenuButtonDirective
 } from './master-layout/_mocks/mock-master-layout.module';
-export {
-	ObMockMultiselectModule,
-	ObMockMultiselectTexts,
-	ObMockMultiselectConfig,
-	ObMockMultiselectComponent,
-	ObMockMultiselectSearchPipe
-} from './multiselect/_mocks/mock-multiselect.module';
 export {ObMockNavTreeModule, ObMockNavTreeComponent, ObMockNavTreeFakeFocusDirective} from './nav-tree/_mocks/mock-nav-tree.module';
 export {ObMockParentFormDirective, ObMockNestedFormModule, ObMockNestedFormComponent} from './nested-form/_mocks/mock-nested-form.module';
 export {
@@ -162,7 +154,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockHttpApiInterceptorModule,
 	ObMockIconModule,
 	ObMockMasterLayoutModule,
-	ObMockMultiselectModule,
 	ObMockNavTreeModule,
 	ObMockNestedFormModule,
 	ObMockNotificationModule,

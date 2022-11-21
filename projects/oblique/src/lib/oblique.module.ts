@@ -7,7 +7,6 @@ import {ObDropdownModule} from './dropdown/dropdown.module';
 import {ObErrorMessagesModule} from './error-messages/error-messages.module';
 import {ObFileUploadModule} from './file-upload/file-upload.module';
 import {ObMasterLayoutModule} from './master-layout/master-layout.module';
-import {ObMultiselectModule} from './multiselect/multiselect.module';
 import {ObNavTreeModule} from './nav-tree/nav-tree.module';
 import {ObNestedFormModule} from './nested-form/nested-form.module';
 import {ObNotificationModule} from './notification/notification.module';
@@ -45,7 +44,6 @@ const OBLIQUE_MODULES = [
 	ObFileUploadModule,
 	ObLanguageModule,
 	ObMasterLayoutModule,
-	ObMultiselectModule,
 	ObNavTreeModule,
 	ObNestedFormModule,
 	ObNotificationModule,
