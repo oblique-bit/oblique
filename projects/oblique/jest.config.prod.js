@@ -16,8 +16,7 @@ module.exports.collectCoverageFrom = [
 	'!**/off-canvas-backdrop.directive.ts',
 	'!**/off-canvas-container.directive.ts',
 	'!**/schema-required.directive.ts',
-	'!**/spinner.component.ts',
-	'!**/unsaved-changes.guard.ts'
+	'!**/spinner.component.ts'
 ];
 module.exports.coverageThreshold = {
 	/*
