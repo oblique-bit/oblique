@@ -199,12 +199,6 @@ module.exports.coverageThreshold = {
 		statements: 96,
 		branches: 77,
 		functions: 83,
-		lines: 96
-	},
-	'projects/oblique/src/lib/unsaved-changes-tabs/*.ts': {
-		statements: 90,
-		branches: 80,
-		functions: 75,
-		lines: 89
+		lines: 95
 	}
 };
