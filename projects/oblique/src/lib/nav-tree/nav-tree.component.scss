@@ -74,12 +74,6 @@
 		.mat-icon {
 			margin-left: -$indent-material + 5px + variables.$ob-spacing-sm;
 		}
-
-		.ob-nav-link.has-child {
-			+ .collapse:not(.show) {
-				display: none;
-			}
-		}
 	}
 
 	.ob-pattern-highlight {

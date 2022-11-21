@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {ObNavTreeComponent} from './nav-tree.component';
@@ -16,7 +15,7 @@ export {ObNavTreeFakeFocusDirective} from './nav-tree-fake-focus.directive';
 export {ObNavTreeItemModel} from './nav-tree-item.model';
 
 @NgModule({
-	imports: [CommonModule, NgbModule, ObIconModule, RouterModule, TranslateModule],
+	imports: [CommonModule, ObIconModule, RouterModule, TranslateModule],
 	declarations: [ObNavTreeComponent, ObNavTreeFakeFocusDirective],
 	providers: obliqueProviders(),
 	exports: [ObNavTreeComponent, ObNavTreeFakeFocusDirective]

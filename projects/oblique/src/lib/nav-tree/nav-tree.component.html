@@ -29,7 +29,7 @@
 				<ob-icon icon="chevron-{{ item.collapsed ? 'right' : 'down' }}" *ngIf="item.items"></ob-icon>
 				<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
 			</a>
-			<div id="#{{ itemKey(item) }}" class="collapse" *ngIf="item.items" [ngbCollapse]="item.collapsed">
+			<div id="#{{ itemKey(item) }}" class="collapse" *ngIf="item.items" [hidden]="!item.collapsed">
 				<ul
 					class="ob-nav-tree"
 					[ngClass]="variant"
