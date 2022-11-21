@@ -85,7 +85,6 @@ The scope is optional and should be the name of the Oblique feature affected:
 - **error-messages**
 - **external-link**
 - **file-upload**
-- **form-control-state**
 - **global-events**
 - **http-interceptor**
 - **input-clear**

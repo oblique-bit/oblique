@@ -81,12 +81,6 @@ module.exports.coverageThreshold = {
 		functions: 100,
 		lines: 100
 	},
-	'projects/oblique/src/lib/form-control-state/*.ts': {
-		statements: 88,
-		branches: 77,
-		functions: 88,
-		lines: 90
-	},
 	'projects/oblique/src/lib/http-api-interceptor/*.ts': {
 		statements: 25,
 		branches: 0,

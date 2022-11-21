@@ -50,7 +50,6 @@ export {
 	ObIUploadEvent,
 	ObIFileDescription
 } from './lib/file-upload/file-upload.module';
-export {ObFormControlStateDirective, ObFormControlStateModule} from './lib/form-control-state/form-control-state.module';
 export {
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,
