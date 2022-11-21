@@ -9,8 +9,6 @@ module.exports.collectCoverageFrom = [
 	'!**/*.module.ts',
 	'!**/**.harness.ts',
 	// the following files have no spec files and therefore have a 0 coverage. Tests will be written later
-	'!**/date-formatter.pipe.ts',
-	'!**/datepicker-i18n.service.ts',
 	'!**/http-api-interceptor.ts',
 	'!**/off-canvas-backdrop.directive.ts',
 	'!**/off-canvas-container.directive.ts',
@@ -52,12 +50,6 @@ module.exports.coverageThreshold = {
 		branches: 47,
 		functions: 27,
 		lines: 58
-	},
-	'projects/oblique/src/lib/datepicker/*.ts': {
-		statements: 73,
-		branches: 27,
-		functions: 80,
-		lines: 71
 	},
 	'projects/oblique/src/lib/document-meta/*.ts': {
 		statements: 60,

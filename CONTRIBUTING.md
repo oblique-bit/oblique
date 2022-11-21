@@ -80,7 +80,6 @@ The scope is optional and should be the name of the Oblique feature affected:
 - **breadcrumb**
 - **collapse**
 - **column-layout**
-- **datepicker**
 - **document-meta**
 - **dropdown**
 - **error-messages**

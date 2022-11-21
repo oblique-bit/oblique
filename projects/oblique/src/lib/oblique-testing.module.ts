@@ -49,14 +49,6 @@ export {ObMockBreadcrumbModule, ObMockBreadcrumbComponent} from './breadcrumb/_m
 export {ObMockButtonModule, ObMockButtonDirective} from './button/_mocks/mock-button.module';
 export {ObMockCollapseModule, ObMockCollapseComponent} from './collapse/_mocks/mock-collapse.module';
 export {ObMockColumnLayoutComponent, ObMockColumnLayoutModule} from './column-layout/_mocks/mock-column-layout.module';
-export {
-	ObMockDateFormatterPipe,
-	ObMockDatepickerComponent,
-	ObMockDatepickerConfigService,
-	ObMockDatepickerI18nService,
-	ObMockDatepickerModule,
-	ObMockDatepickerPlaceholderDirective
-} from './datepicker/_mocks/mock-datepicker.module';
 export {ObMockDocumentMetaModule, ObDocumentMetaService} from './document-meta/_mocks/mock-document-meta.module';
 export {ObMockDropdownModule, ObMockDropdownComponent} from './dropdown/_mocks/mock-dropdown.module';
 export {

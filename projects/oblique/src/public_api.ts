@@ -23,16 +23,6 @@ export {
 	ObColumnToggleDirective,
 	ObColumnPanelDirective
 } from './lib/column-layout/column-layout.module';
-export {
-	ObDateDMYParserFormatter,
-	ObDateFormatterPipe,
-	ObDatepickerComponent,
-	ObDatepickerI18nService,
-	ObDatepickerModule,
-	ObDatepickerPlaceholderDirective,
-	ObDatepickerConfigService,
-	ObIDatepickerOptions
-} from './lib/datepicker/datepicker.module';
 export {ObDocumentMetaService, ObDocumentMetaModule} from './lib/document-meta/document-meta.module';
 export {ObDropdownComponent, ObDropdownModule} from './lib/dropdown/dropdown.module';
 export {
