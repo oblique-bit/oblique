@@ -4,7 +4,6 @@ import {EMPTY} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {ObTelemetryRecord} from './telemetry-record';
 import {ObIPackage, ObITelemetryRecord} from './telemetry.model';
-import {ObThemeService} from '../theme.service';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 
 // @deprecated since version 8.1.0. It will be removed with version 9.0.0 where the telemetry could be disabled by not providing an OB_PROJECT_INFO
@@ -21,7 +20,6 @@ export class ObTelemetryService {
 
 	constructor(
 		private readonly http: HttpClient,
-		theme: ObThemeService,
 		obGlobalEventsService: ObGlobalEventsService,
 		@Optional() @Inject(OB_PROJECT_INFO) projectInfo: ObIPackage
 	) {
@@ -29,7 +27,7 @@ export class ObTelemetryService {
 		if (this.isDisabled) {
 			console.info('Oblique Telemetry is disabled.');
 		} else {
-			this.telemetryRecord = new ObTelemetryRecord(theme.theme, projectInfo);
+			this.telemetryRecord = new ObTelemetryRecord(projectInfo);
 			obGlobalEventsService.beforeUnload$.subscribe(() => this.sendRecord());
 		}
 	}

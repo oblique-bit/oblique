@@ -1,7 +1,0 @@
-@use "../../../core/variables";
-
-@mixin ob-text-control-clear-position($offset) {
-	width: calc(#{variables.$ob-spacing-default} + #{$offset});
-	margin-left: calc(-#{variables.$ob-spacing-default} - #{$offset});
-	padding-right: $offset;
-}

@@ -3,7 +3,7 @@ import {appVersion} from '../version';
 
 describe('TelemetryRecord', () => {
 	describe('with default package values', () => {
-		const record = new ObTelemetryRecord('Material', {});
+		const record = new ObTelemetryRecord({});
 
 		it('should has a record property', () => {
 			expect(record.record).toEqual({
@@ -63,7 +63,7 @@ describe('TelemetryRecord', () => {
 	});
 
 	describe('Width actual package values', () => {
-		const record = new ObTelemetryRecord('Material', {name: 'name', title: 'title', version: 'version'});
+		const record = new ObTelemetryRecord({name: 'name', title: 'title', version: 'version'});
 
 		it('should has a record property', () => {
 			expect(record.record).toEqual({

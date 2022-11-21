@@ -3,7 +3,6 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {HttpClient} from '@angular/common/http';
 import {EMPTY, Subject} from 'rxjs';
 import {OB_PROJECT_INFO, ObTelemetryService} from './telemetry.service';
-import {ObThemeService} from '../theme.service';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {appVersion} from '../version';
 
@@ -76,10 +75,7 @@ describe('ObTelemetryService', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [HttpClientTestingModule],
-				providers: [
-					{provide: ObThemeService, useValue: {theme: 'Material'}},
-					{provide: OB_PROJECT_INFO, useValue: {name: 'test'}}
-				]
+				providers: [{provide: OB_PROJECT_INFO, useValue: {name: 'test'}}]
 			});
 
 			service = TestBed.inject(ObTelemetryService);
@@ -186,56 +182,6 @@ describe('ObTelemetryService', () => {
 				service.sendRecord();
 				// @ts-expect-error
 				expect(service.telemetryRecord.storeRecord).not.toHaveBeenCalled();
-			});
-		});
-	});
-
-	describe('when enabled with Bootstrap theme', () => {
-		beforeEach(() => {
-			TestBed.configureTestingModule({
-				imports: [HttpClientTestingModule],
-				providers: [
-					{provide: ObThemeService, useValue: {theme: 'Bootstrap'}},
-					{provide: OB_PROJECT_INFO, useValue: {name: 'test'}}
-				]
-			});
-
-			service = TestBed.inject(ObTelemetryService);
-		});
-
-		describe('telemetryRecord', () => {
-			it('should be defined', () => {
-				// @ts-expect-error
-				expect(service.telemetryRecord).toBeDefined();
-			});
-			it('should have Material theme', () => {
-				// @ts-expect-error
-				expect(service.telemetryRecord.record.obliqueTheme).toBe('Bootstrap');
-			});
-		});
-	});
-
-	describe('when enabled with Unknown theme', () => {
-		beforeEach(() => {
-			TestBed.configureTestingModule({
-				imports: [HttpClientTestingModule],
-				providers: [
-					{provide: ObThemeService, useValue: {theme: 'Unknown'}},
-					{provide: OB_PROJECT_INFO, useValue: {name: 'test'}}
-				]
-			});
-
-			service = TestBed.inject(ObTelemetryService);
-		});
-
-		describe('telemetryRecord', () => {
-			it('should be defined', () => {
-				// @ts-expect-error
-				expect(service.telemetryRecord).toBeDefined();
-			});
-			it('should have an unknown theme', () => {
-				// @ts-expect-error
-				expect(service.telemetryRecord.record.obliqueTheme).toBe('Unknown');
 			});
 		});
 	});

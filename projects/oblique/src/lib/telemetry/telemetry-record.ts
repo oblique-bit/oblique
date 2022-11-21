@@ -6,12 +6,12 @@ export class ObTelemetryRecord {
 	private static readonly TELEMETRY_TOKEN = 'OBLIQUE_TELEMETRY';
 	private static readonly ONE_DAY = 1000 * 60 * 60 * 24;
 
-	constructor(theme: string, pkg: ObIPackage) {
+	constructor(pkg: ObIPackage) {
 		this.record = {
 			applicationName: pkg.name || 'Unknown project name',
 			applicationTitle: pkg.title,
 			applicationVersion: pkg.version || 'Unknown project version',
-			obliqueTheme: theme,
+			obliqueTheme: 'Material',
 			obliqueVersion: appVersion,
 			obliqueModuleNames: []
 		};

@@ -114,7 +114,6 @@ The scope is optional and should be the name of the Oblique feature affected:
 - **material** (for material design components or styles)
 - **schematics** (for the schematics not directly linked to a feature)
 - **styles** (for the global CSS)
-- **theme** (for the theme service)
 - **toolchain** (for the configuration, build, releases...)
 - **translation** (for the translations not directly linked to a feature)
 - **utilities** (for utilities.ts)
