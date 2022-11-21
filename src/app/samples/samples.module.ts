@@ -28,13 +28,10 @@ import {SamplesRoutingModule} from './samples-routing.module';
 import {CollapseSampleComponent} from './collapse/collapse-sample.component';
 import {ColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {ColumnLayoutFullHeightSampleComponent} from './column-layout-full-height/column-layout-full-height-sample.component';
-import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
 import {ExternalLinkComponent} from './external-link/external-link.component';
-import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {InputClearSampleComponent} from './input-clear/input-clear.component';
 import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
-import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {NavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
 import {NavTreeDetailSampleComponent} from './nav-tree/nav-tree-detail-sample.component';
 import {NestedFormSampleComponent} from './nested-form/nested-form-sample.component';
@@ -58,16 +55,13 @@ import {
 	ObButtonModule,
 	ObCollapseModule,
 	ObColumnLayoutModule,
-	ObDatepickerModule,
 	ObDropdownModule,
 	ObErrorMessagesModule,
 	ObExternalLinkModule,
 	ObFileUploadModule,
-	ObFormControlStateModule,
 	ObInputClearModule,
 	ObLanguageModule,
 	ObLanguageService,
-	ObMultiselectModule,
 	ObNavTreeModule,
 	ObNestedFormModule,
 	ObNotificationModule,
@@ -127,15 +121,12 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		ObButtonModule,
 		ObCollapseModule,
 		ObColumnLayoutModule,
-		ObDatepickerModule,
 		ObDropdownModule,
 		ObErrorMessagesModule,
 		ObExternalLinkModule,
 		ObFileUploadModule,
-		ObFormControlStateModule,
 		ObInputClearModule,
 		ObLanguageModule,
-		ObMultiselectModule,
 		ObNavTreeModule,
 		ObNestedFormModule,
 		ObNotificationModule,
@@ -163,12 +154,10 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		CollapseSampleComponent,
 		ColumnLayoutFullHeightSampleComponent,
 		ColumnLayoutSampleComponent,
-		DatepickerSampleComponent,
 		DropdownSampleComponent,
 		ErrorMessagesSampleComponent,
 		ExternalLinkComponent,
 		FileUploadSampleComponent,
-		FormControlStateSampleComponent,
 		FormSampleComponent,
 		GlobalEventsSampleComponent,
 		HorizontalFormsSampleComponent,
@@ -176,7 +165,6 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		InputClearSampleComponent,
 		LanguageSampleComponent,
 		MasterLayoutSampleComponent,
-		MultiselectSampleComponent,
 		MultiTranslateLoaderSampleComponent,
 		NavTreeDetailSampleComponent,
 		NavTreeSampleComponent,

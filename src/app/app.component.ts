@@ -38,12 +38,10 @@ export class AppComponent {
 				{url: 'collapse', label: 'Collapse'},
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
 				{url: 'column-layout-full-height', label: 'Column layout full height'},
-				{url: 'datepicker', label: 'i18n.routes.samples.datepicker.title'},
 				{url: 'dropdown', label: 'Dropdown'},
 				{url: 'error-messages', label: 'Error messages'},
 				{url: 'external-link', label: 'External-link'},
 				{url: 'file-upload', label: 'File Upload'},
-				{url: 'form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
 				{url: 'global-events', label: 'Global events'},
 				{url: 'horizontal-forms', label: 'Horizontal Forms'},
 				{url: 'http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
@@ -51,7 +49,6 @@ export class AppComponent {
 				{url: 'language', label: 'Language'},
 				{url: 'master-layout', label: 'i18n.routes.samples.master-layout.title'},
 				{url: 'multi-translate-loader', label: 'Multi translate loader'},
-				{url: 'multiselect', label: 'i18n.routes.samples.multiselect.title'},
 				{url: 'nav-tree', label: 'i18n.routes.samples.nav-tree.title'},
 				{url: 'nested-form', label: 'Nested froms'},
 				{url: 'notification', label: 'i18n.routes.samples.notification.title'},
@@ -84,16 +81,6 @@ export class AppComponent {
 				{url: 'alert', label: 'Alert'},
 				{url: 'palette', label: 'Palette'},
 				{url: 'screen-reader-only', label: 'Screen reader only'}
-			]
-		},
-		{
-			url: 'bootstrap',
-			label: 'Bootstrap',
-			children: [
-				{url: 'list-group', label: 'List group'},
-				{url: 'http://www.google.ch', label: 'Google'},
-				{url: 'http://www.google.ch', label: 'Google 2', sameTarget: true},
-				{url: 'tabs', label: 'Tabs', fragment: 'test', queryParams: {param1: 'a', param2: 'b'}}
 			]
 		},
 		{
