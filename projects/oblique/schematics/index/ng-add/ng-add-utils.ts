@@ -22,7 +22,6 @@ const versions: Record<string, string | versionFunc> = {
 	ajv: '^8.0.0',
 	'ajv-formats': '^2.0.0',
 	'@ngx-translate/core': '^14.0.0',
-	'@ng-bootstrap/ng-bootstrap': '^11.0.0',
 	'@angular/cdk': version => `^${version}.0.0`,
 	'@angular/material': version => `^${version}.0.0`,
 	'@angular/core': `^14.0.0`,

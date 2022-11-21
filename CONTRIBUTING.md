@@ -110,7 +110,6 @@ The scope is optional and should be the name of the Oblique feature affected:
 - **translate-params**
 - **unknown-route**
 - **unsaved-changes**
-- **bootstrap** (for bootstrap components or styles)
 - **material** (for material design components or styles)
 - **schematics** (for the schematics not directly linked to a feature)
 - **styles** (for the global CSS)
