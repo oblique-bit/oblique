@@ -17,49 +17,27 @@
 			</p>
 		</ob-collapse>
 		<div column-right-content>
-			<ng-container *ngIf="material | async; else bootstrap">
-				<mat-form-field>
-					<mat-label>animate duration</mat-label>
-					<mat-select [(value)]="duration">
-						<mat-option *ngFor="let variant of durations" [value]="variant">
-							{{ variant.viewValue }}
-						</mat-option>
-					</mat-select>
-				</mat-form-field>
+			<mat-form-field>
+				<mat-label>animate duration</mat-label>
+				<mat-select [(value)]="duration">
+					<mat-option *ngFor="let variant of durations" [value]="variant">
+						{{ variant.viewValue }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
 
-				<mat-form-field>
-					<mat-label>iconPositions</mat-label>
-					<mat-select [(value)]="iconPosition">
-						<mat-option *ngFor="let variant of iconPositions" [value]="variant">
-							{{ variant.viewValue }}
-						</mat-option>
-					</mat-select>
-				</mat-form-field>
+			<mat-form-field>
+				<mat-label>iconPositions</mat-label>
+				<mat-select [(value)]="iconPosition">
+					<mat-option *ngFor="let variant of iconPositions" [value]="variant">
+						{{ variant.viewValue }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
 
-				<div mat-dialog-actions>
-					<button type="button" mat-button (click)="active = !active"><span class="fa fa-compress"></span> collapse</button>
-				</div>
-			</ng-container>
-			<ng-template #bootstrap>
-				<div class="form-group">
-					<label class="form-control-label">Duration</label>
-					<select [formControl]="duration" class="form-control">
-						<option *ngFor="let variant of durations" [ngValue]="variant.value">{{ variant.viewValue }}</option>
-					</select>
-				</div>
-
-				<div class="form-group">
-					<label class="form-control-label">iconPositions</label>
-					<select [formControl]="iconPosition" class="form-control">
-						<option *ngFor="let variant of iconPositions" [ngValue]="variant.value">{{ variant.viewValue }}</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<button type="button" class="btn btn-secondary" role="button" (click)="active = !active">
-						<span class="fa fa-compress"></span> collapse
-					</button>
-				</div>
-			</ng-template>
+			<div mat-dialog-actions>
+				<button type="button" mat-button (click)="active = !active"><span class="fa fa-compress"></span> collapse</button>
+			</div>
 		</div>
 	</ob-column-layout>
 	<sc-api component="collapse"></sc-api>

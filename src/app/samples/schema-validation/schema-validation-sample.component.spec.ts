@@ -2,8 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {ObDatepickerModule, ObMockTranslatePipe, ObMockTranslateService} from '@oblique/oblique';
+import {ObMockTranslatePipe, ObMockTranslateService} from '@oblique/oblique';
 import {SchemaValidationSampleComponent} from './schema-validation-sample.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -15,15 +14,7 @@ describe('ObSchemaValidationSampleComponent', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [
-				FormsModule,
-				ReactiveFormsModule,
-				HttpClientTestingModule,
-				RouterTestingModule,
-				NgbModule,
-				ObDatepickerModule,
-				MatDatepickerModule
-			],
+			imports: [FormsModule, ReactiveFormsModule, HttpClientTestingModule, RouterTestingModule, MatDatepickerModule],
 			declarations: [SchemaValidationSampleComponent, ObMockTranslatePipe],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]

@@ -1,8 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
-import {ThemeService} from '../../common/theme.service';
 
 @Component({
 	selector: 'sc-nested-form-child-td-sample',
@@ -15,9 +12,4 @@ export class NestedFormChildTDSampleComponent {
 	field1 = '';
 	field2 = '';
 	grandchild;
-	material: Observable<boolean>;
-
-	constructor(theme: ThemeService) {
-		this.material = theme.theme$.pipe(map(() => theme.isMaterial()));
-	}
 }

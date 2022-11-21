@@ -42,7 +42,6 @@ import {NumberFormatSampleComponent} from './number-format/number-format-sample.
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
-import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
 import {GlobalEventsSampleComponent} from './global-events/global-events-sample.component';
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
 import {StickySampleComponent} from './sticky/sticky-sample.component';
@@ -73,8 +72,7 @@ import {
 	ObSpinnerModule,
 	ObStickyModule,
 	ObUnknownRouteModule,
-	ObUnsavedChangesModule,
-	ObUnsavedChangesTabsModule
+	ObUnsavedChangesModule
 } from '@oblique/oblique';
 import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
 import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
@@ -139,7 +137,6 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		ObStickyModule,
 		ObUnknownRouteModule,
 		ObUnsavedChangesModule,
-		ObUnsavedChangesTabsModule,
 		ReactiveFormsModule,
 		RouterModule,
 		SamplesRoutingModule,
@@ -183,8 +180,7 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		SpinnerSampleComponent,
 		StickySampleComponent,
 		UnknownRouteSampleComponent,
-		UnsavedChangesSampleComponent,
-		UnsavedChangesSampleModalComponent
+		UnsavedChangesSampleComponent
 	],
 	exports: [RouterModule],
 	providers: [SampleDataResolver]
