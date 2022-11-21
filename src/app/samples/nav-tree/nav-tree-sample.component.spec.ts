@@ -5,7 +5,6 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {of} from 'rxjs';
-import {NgbButtonsModule, NgbCollapseModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {ObliqueTestingModule} from '@oblique/oblique';
 import {NavTreeSampleComponent} from './nav-tree-sample.component';
 
@@ -16,15 +15,7 @@ describe('ObNavTreeSampleComponent', () => {
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
 			declarations: [NavTreeSampleComponent],
-			imports: [
-				CommonModule,
-				FormsModule,
-				RouterTestingModule,
-				NgbCollapseModule,
-				NgbButtonsModule,
-				NgbTooltipModule,
-				ObliqueTestingModule
-			],
+			imports: [CommonModule, FormsModule, RouterTestingModule, ObliqueTestingModule],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	}));

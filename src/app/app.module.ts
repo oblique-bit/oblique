@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -7,7 +8,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
-import {NgbDatepickerConfig, NgbModule, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {
@@ -64,7 +64,7 @@ registerLocaleData(localeFR);
 		MatFormFieldModule,
 		MatIconModule,
 		MatInputModule,
-		NgbModule,
+		MatTooltipModule,
 		ObAlertModule,
 		ObDocumentMetaModule,
 		ObDropdownModule,
@@ -94,8 +94,6 @@ registerLocaleData(localeFR);
 })
 export class AppModule {
 	constructor(
-		private readonly tooltipConfig: NgbTooltipConfig,
-		private readonly datepickerConfig: NgbDatepickerConfig,
 		private readonly documentMetaService: ObDocumentMetaService,
 		interceptorConfig: ObHttpApiInterceptorConfig,
 		config: ObMasterLayoutConfig,
@@ -105,10 +103,6 @@ export class AppModule {
 		// Angular entry component, we use a service to update these element values:
 		documentMetaService.titleSuffix = 'i18n.application.title';
 		documentMetaService.description = 'i18n.application.description';
-
-		// NgBootstrap configuration:
-		tooltipConfig.container = 'body';
-		datepickerConfig.navigation = 'arrows';
 
 		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
 		config.locale.locales = ['en-us', 'fr-CH'];

@@ -19,61 +19,45 @@
 	</ob-nav-tree>
 	<div column-right-content>
 		<h2>Controls</h2>
-		<div class="form-group row">
-			<label class="col-3 col-form-label">Filter</label>
-			<div class="col-9">
-				<input class="form-control" [(ngModel)]="filter.pattern" #obFilterBox />
-			</div>
-		</div>
-		<div class="form-group row">
-			<label class="col-3 col-form-label">Toggle</label>
-			<div class="col-9">
-				<div class="btn-group">
-					<button type="button" class="btn btn-secondary" role="button" (click)="obNavTree.collapseAll()">
-						<span class="fa fa-compress"></span> {{ "i18n.common.collapseAll" | translate }}
-					</button>
-					<button type="button" class="btn btn-secondary" role="button" (click)="obNavTree.expandAll()">
-						<span class="fa fa-expand"></span> {{ "i18n.common.expandAll" | translate }}
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="form-group row">
-			<label class="col-3 col-form-label">Variant</label>
-			<div class="col-9">
-				<div [(ngModel)]="variant" ngbRadioGroup name="variant" class="btn-group-toggle">
-					<!-- TODO: remove `(click)` when https://github.com/ng-bootstrap/ng-bootstrap/issues/1125 -->
-					<label class="btn btn-secondary" ngbTooltip=".ob-nav-bordered.ob-nav-hover" (click)="variant = 'ob-nav-bordered ob-nav-hover'">
-						<input type="radio" value="ob-nav-bordered ob-nav-hover" /> Default
-					</label>
-					<label class="btn btn-secondary" ngbTooltip=".ob-nav-hover" (click)="variant = 'ob-nav-hover'">
-						<input type="radio" value="nav-hover" /> Hover only
-					</label>
-					<label class="btn btn-secondary" ngbTooltip=".ob-nav-bordered" (click)="variant = 'ob-nav-bordered'">
-						<input type="radio" value="ob-nav-bordered" /> Bordered only
-					</label>
-					<label class="btn btn-secondary" (click)="variant = ''"> <input type="radio" value="" /> None </label>
-				</div>
-			</div>
-		</div>
-		<div class="form-group row">
-			<label class="col-3 col-form-label">Route options</label>
-			<div class="col-9">
-				<div class="form-check">
-					<input type="checkbox" id="nav-tree-sample-router-rla-exact" class="form-check-input" [(ngModel)]="activateAncestors" />
-					<label class="form-check-label" for="nav-tree-sample-router-rla-exact">Exact router link for active menu?</label>
-				</div>
-			</div>
-		</div>
-		<div class="form-group row">
-			<label class="col-3 col-form-label">Keyboard Navigation</label>
-			<div class="col-9">
-				<div class="form-check">
-					<input type="checkbox" id="nav-tree-sample-use-fake-focus" class="form-check-input" [(ngModel)]="useFakeFocus" />
-					<label class="form-check-label" for="nav-tree-sample-use-fake-focus">Use Fake Focus?</label>
-				</div>
-			</div>
-		</div>
+		<mat-form-field>
+			<mat-label>Filter</mat-label>
+			<input type="text" matInput [(ngModel)]="filter.pattern" #obFilterBox />
+		</mat-form-field>
+		<button type="button" obButton mat-button (click)="obNavTree.collapseAll()"><span class="fa fa-compress"></span> Collapse All</button>
+		<button type="button" obButton mat-button (click)="obNavTree.expandAll()"><span class="fa fa-expand"></span> Expand All</button>
+		<fieldset>
+			<legend>Variant</legend>
+			<mat-radio-group [(ngModel)]="variant" name="variant">
+				<mat-radio-button
+					(click)="variant = 'ob-nav-bordered ob-nav-hover'"
+					matTooltip=".ob-nav-bordered.ob-nav-hover"
+					[matTooltipPosition]="'above'"
+					value="ob-nav-bordered ob-nav-hover"
+				>
+					Default
+				</mat-radio-button>
+				<mat-radio-button (click)="variant = 'ob-nav-hover'" matTooltip=".ob-nav-hover" [matTooltipPosition]="'above'" value="nav-hover">
+					Hover only
+				</mat-radio-button>
+				<mat-radio-button
+					(click)="variant = 'ob-nav-bordered'"
+					matTooltip=".ob-nav-bordered"
+					[matTooltipPosition]="'above'"
+					value="ob-nav-bordered"
+				>
+					Bordered only
+				</mat-radio-button>
+				<mat-radio-button (click)="variant = ''" value=""> None </mat-radio-button>
+			</mat-radio-group>
+		</fieldset>
+		<fieldset>
+			<legend>Route options</legend>
+			<mat-checkbox [(ngModel)]="activateAncestors">Exact router link for active menu?</mat-checkbox>
+		</fieldset>
+		<fieldset>
+			<legend>Keyboard Navigation</legend>
+			<mat-checkbox [(ngModel)]="useFakeFocus">Use Fake Focus?</mat-checkbox>
+		</fieldset>
 		<router-outlet></router-outlet>
 	</div>
 </ob-column-layout>

@@ -15,7 +15,7 @@ export class PaletteComponent {
 				{name: '$venetian-red', color: ObEColor.ACCENT, contrast: '#ffffff'},
 				{name: '$red', color: '#f7001d', contrast: '#ffffff', details: 'unused'},
 				{name: '$cerulean', color: ObEColor.PRIMARY, contrast: '#ffffff'},
-				{name: '$malibu', color: '#66afe9', contrast: ObEColor.DEFAULT, details: 'bootstrap only'},
+				{name: '$malibu', color: '#66afe9', contrast: ObEColor.DEFAULT, details: 'unused'},
 				{name: '$pattens-blue', color: '#d8e8ef', contrast: ObEColor.DEFAULT, details: 'unused'},
 				{name: '$solitude', color: '#e7edef', contrast: ObEColor.DEFAULT, details: 'unused'},
 				{name: '$clear-day', color: '#f2f7f9', contrast: ObEColor.DEFAULT, details: 'unused'},

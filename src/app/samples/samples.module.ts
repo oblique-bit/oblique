@@ -20,7 +20,6 @@ import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule} from '@ngx-translate/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SamplesRoutingModule} from './samples-routing.module';
@@ -112,7 +111,6 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		MatSlideToggleModule,
 		MatSlideToggleModule,
 		MatTooltipModule,
-		NgbModule,
 		ObAlertModule,
 		ObBreadcrumbModule.forRoot({}),
 		ObAutocompleteModule,

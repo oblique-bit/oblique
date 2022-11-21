@@ -2,124 +2,58 @@
 	{{ "i18n.routes.samples.unsavedChanges.title" | translate }}
 </h2>
 <sc-description component="unsaved-changes"></sc-description>
-<div class="row">
-	<div class="col">
-		<form class="card form-horizontal has-validation" id="templateForm" #standAloneTemplate="ngForm" role="form" obUnsavedChanges>
-			<div class="card-header d-flex justify-content-between">
-				<h3 class="card-title">Preview with standalone template driven form</h3>
-				<span
-					class="fa fa-check text-success"
-					ngbTooltip="Form does not contain unsaved changes"
-					placement="bottom"
-					*ngIf="!standAloneTemplate.form.dirty"
-				></span>
-				<span
-					class="fa fa-exclamation-triangle text-warning"
-					ngbTooltip="Form contains unsaved changes"
-					placement="bottom"
-					*ngIf="standAloneTemplate.form.dirty"
-				></span>
-			</div>
-			<div class="card-body">
-				<div class="form-group row">
-					<label for="standAloneTemplate.text" class="col-sm-4 col-form-label">Text</label>
-					<div class="col-sm-8">
-						<input
-							name="text"
-							type="text"
-							class="form-control"
-							id="standAloneTemplate.text"
-							[(ngModel)]="tabModels.standAloneTemplate.text"
-						/>
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="standAloneTemplate.number" class="col-sm-4 col-form-label">Number</label>
-					<div class="col-sm-8">
-						<input
-							name="number"
-							type="number"
-							class="form-control"
-							id="standAloneTemplate.number"
-							[(ngModel)]="tabModels.standAloneTemplate.number"
-						/>
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="standAloneTemplate.integer" class="col-sm-4 col-form-label">Integer</label>
-					<div class="col-sm-8">
-						<input
-							name="integer"
-							type="number"
-							class="form-control"
-							id="standAloneTemplate.integer"
-							[(ngModel)]="tabModels.standAloneTemplate.integer"
-						/>
-					</div>
-				</div>
-				<div class="row">
-					<label class="col-sm-4 col-form-label">Model data</label>
-					<div class="col-sm-8">
-						<pre>{{ standAloneTemplate.value | json }}</pre>
-					</div>
-				</div>
-			</div>
-			<div class="card-footer">
-				<div class="form-actions">
-					<button type="reset" class="btn btn-secondary">Reset</button>
-				</div>
-			</div>
-		</form>
-	</div>
-	<div class="col">
-		<form class="card form-horizontal has-validation" id="standAloneReactive" role="form" [formGroup]="standAloneReactive" obUnsavedChanges>
-			<div class="card-header d-flex justify-content-between">
-				<h3 class="card-title">Preview with standalone reactive form</h3>
-				<span
-					class="fa fa-check text-success"
-					ngbTooltip="Form does not contain unsaved changes"
-					placement="bottom"
-					*ngIf="!standAloneReactive.dirty"
-				></span>
-				<span
-					class="fa fa-exclamation-triangle text-warning"
-					ngbTooltip="Form contains unsaved changes"
-					placement="bottom"
-					*ngIf="standAloneReactive.dirty"
-				></span>
-			</div>
-			<div class="card-body">
-				<div class="form-group row">
-					<label for="standAloneReactive.text" class="col-sm-4 col-form-label">Text</label>
-					<div class="col-sm-8">
-						<input formControlName="text" type="text" class="form-control" id="standAloneReactive.text" />
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="standAloneReactive.number" class="col-sm-4 col-form-label">Number</label>
-					<div class="col-sm-8">
-						<input formControlName="number" type="number" class="form-control" id="standAloneReactive.number" />
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="standAloneReactive.integer" class="col-sm-4 col-form-label">Integer</label>
-					<div class="col-sm-8">
-						<input formControlName="integer" type="number" class="form-control" id="standAloneReactive.integer" />
-					</div>
-				</div>
-				<div class="row">
-					<label class="col-sm-4 col-form-label">Model data</label>
-					<div class="col-sm-8">
-						<pre>{{ standAloneReactive.value | json }}</pre>
-					</div>
-				</div>
-			</div>
-			<div class="card-footer">
-				<div class="form-actions">
-					<button type="reset" class="btn btn-secondary">Reset</button>
-				</div>
-			</div>
-		</form>
-	</div>
-</div>
+<form #standAloneTemplate="ngForm" role="form" id="templateForm" obUnsavedChanges>
+	<mat-card>
+		<mat-card-header>
+			Preview with template driven form
+			<span class="fa fa-check" matTooltip="Form does not contain unsaved changes" *ngIf="!standAloneTemplate.form.dirty"></span>
+			<span class="fa fa-exclamation-triangle" matTooltip="Form contains unsaved changes" *ngIf="standAloneTemplate.form.dirty"></span>
+		</mat-card-header>
+		<mat-card-content>
+			<mat-form-field>
+				<mat-label>Text</mat-label>
+				<input matInput type="text" name="text" [(ngModel)]="tabModels.standAloneTemplate.text" />
+			</mat-form-field>
+			<mat-form-field>
+				<mat-label>Number</mat-label>
+				<input matInput type="number" name="number" [(ngModel)]="tabModels.standAloneTemplate.number" />
+			</mat-form-field>
+			<mat-form-field>
+				<mat-label>Integer</mat-label>
+				<input matInput type="number" name="integer" [(ngModel)]="tabModels.standAloneTemplate.integer" />
+			</mat-form-field>
+			<pre>{{ tabModels.standAloneTemplate | json }}</pre>
+		</mat-card-content>
+		<mat-card-footer>
+			<button type="reset" obButton="secondary" mat-button>Reset</button>
+		</mat-card-footer>
+	</mat-card>
+</form>
+<form id="standAloneReactive" role="form" [formGroup]="standAloneReactive" obUnsavedChanges>
+	<mat-card>
+		<mat-card-header>
+			Preview with reactive form
+			<span class="fa fa-check" matTooltip="Form does not contain unsaved changes" *ngIf="!standAloneReactive.dirty"></span>
+			<span class="fa fa-exclamation-triangle" matTooltip="Form contains unsaved changes" *ngIf="standAloneReactive.dirty"></span>
+		</mat-card-header>
+		<mat-card-content>
+			<mat-form-field>
+				<mat-label>Integer</mat-label>
+				<input matInput type="text" formControlName="text" />
+			</mat-form-field>
+			<mat-form-field>
+				<mat-label>Integer</mat-label>
+				<input matInput type="number" formControlName="number" />
+			</mat-form-field>
+			<mat-form-field>
+				<mat-label>Integer</mat-label>
+				<input matInput type="number" formControlName="integer" />
+			</mat-form-field>
+			<pre>{{ standAloneReactive.value | json }}</pre>
+		</mat-card-content>
+		<mat-card-footer>
+			<button type="reset" obButton="secondary" mat-button>Reset</button>
+		</mat-card-footer>
+	</mat-card>
+</form>
 <sc-api component="unsaved-changes"></sc-api>
