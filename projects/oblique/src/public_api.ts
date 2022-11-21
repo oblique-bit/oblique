@@ -26,10 +26,8 @@ export {
 export {ObDocumentMetaService, ObDocumentMetaModule} from './lib/document-meta/document-meta.module';
 export {ObDropdownComponent, ObDropdownModule} from './lib/dropdown/dropdown.module';
 export {
-	DISABLE_NGB_ERRORS,
 	ObMatErrorDirective,
 	ObErrorMessagesDirective,
-	ObErrorMessagesComponent,
 	ObErrorMessagesModule,
 	ObErrorMessagesService
 } from './lib/error-messages/error-messages.module';

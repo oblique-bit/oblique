@@ -1,7 +1,4 @@
-<p>
-	This feature offers a nice way to display error messages related to a form element. The <strong>directive</strong> is meant for Material
-	Design while the <strong>component</strong> is meant for Bootstrap.
-</p>
+<p>This feature offers a nice way to display error messages related to a form element.</p>
 <h3>Error messages</h3>
 <p>
 	Oblique provides default error messages for common validation errors that can be overwritten in the project's translation file when
@@ -387,146 +384,12 @@
 		</dd>
 	</dl>
 </details>
-<div class="material-only" style="margin-top: 16px">
-	<p>
-		The <code>ErrorMessages</code> directive should be put on a <code>mat-form-field</code> component and works in conjunction with a
-		<code>mat-error</code> component, both from Angular. The <code>mat-error</code> component has to be present through empty and will be
-		automatically populated with translations of thrown validation errors.
-	</p>
-	<p>
-		Note the <strong>overflow behaviour</strong>: long error messages will be shortened to available space, but will still be wholly
-		displayed when hovered or when the related input has the focus.
-	</p>
-
-	<div class="ob-alert ob-alert-info">
-		<p>
-			Make sure the <code>ErrorMessages</code> <strong>directive</strong> is used, as the <code>ErrorMessages</code>
-			<strong>component</strong> is meant for the Bootstrap theme. Bootstrap theme is deprecated as of version 8.0.0. and will be removed in
-			version 10.0.0.
-		</p>
-	</div>
-</div>
-<div class="bootstrap-only">
-	<h4 style="margin-top: 32px">ng-boostrap datepicker</h4>
-	<details>
-		<summary>ngbDate</summary>
-		<dl class="ob-horizontal">
-			<dt>Key</dt>
-			<dd>i18n.validation.ngbDate</dd>
-			<dt>DE</dt>
-			<dd>Falsches Format, bitte geben sie ein valides Datum im "tt.mm.jjjj" Format ein</dd>
-			<dt>FR</dt>
-			<dd>La date doit être au format "jj.mm.aaaa"</dd>
-			<dt>IT</dt>
-			<dd>Formato della data non valido, "gg.mm.aaaa" è atteso</dd>
-			<dt>EN</dt>
-			<dd>Incorrect date format, "dd.mm.yyyy" is expected</dd>
-		</dl>
-	</details>
-	<details>
-		<summary>maxDate</summary>
-		<dl class="ob-horizontal">
-			<dt>Key</dt>
-			<dd>i18n.validation.ngbDate.maxDate</dd>
-			<dt>DE</dt>
-			<dd>
-				Das Datum überschreitet das max. zulässige Datum &lcub;&lcub;maxDate.day}}.&lcub;&lcub;maxDate.month}}.&lcub;&lcub;maxDate.year}}
-			</dd>
-			<dt>FR</dt>
-			<dd>La date doit être antérieure au &lcub;&lcub;maxDate.day}}.&lcub;&lcub;maxDate.month}}.&lcub;&lcub;maxDate.year}}</dd>
-			<dt>IT</dt>
-			<dd>La data deve essere prima di &lcub;&lcub;maxDate.day}}.&lcub;&lcub;maxDate.month}}.&lcub;&lcub;maxDate.year}}</dd>
-			<dt>EN</dt>
-			<dd>Date needs to be before &lcub;&lcub;maxDate.day}}.&lcub;&lcub;maxDate.month}}.&lcub;&lcub;maxDate.year}}</dd>
-			<dt>Parameters</dt>
-			<dd>
-				<dl class="ob-horizontal">
-					<dt>actual</dt>
-					<dd>The actual date</dd>
-					<dd>
-						<dl class="ob-horizontal">
-							<dt>day</dt>
-							<dd>1 - 31</dd>
-							<dt>month</dt>
-							<dd>1 - 31</dd>
-							<dt>year</dt>
-							<dd>yyyy</dd>
-						</dl>
-					</dd>
-					<dt>maxDate</dt>
-					<dd>The greatest allowed date</dd>
-					<dd>
-						<dl class="ob-horizontal">
-							<dt>day</dt>
-							<dd>1 - 31</dd>
-							<dt>month</dt>
-							<dd>1 - 31</dd>
-							<dt>year</dt>
-							<dd>yyyy</dd>
-						</dl>
-					</dd>
-				</dl>
-			</dd>
-		</dl>
-	</details>
-	<details>
-		<summary>minDate</summary>
-		<dl class="ob-horizontal">
-			<dt>Key</dt>
-			<dd>i18n.validation.ngbDate.minDate</dd>
-			<dt>DE</dt>
-			<dd>
-				Das Datum unterschreitet das min. zulässige Datum &lcub;&lcub;minDate.day}}.&lcub;&lcub;minDate.month}}.&lcub;&lcub;minDate.year}}
-			</dd>
-			<dt>FR</dt>
-			<dd>La date doit être postérieure au &lcub;&lcub;minDate.day}}.&lcub;&lcub;minDate.month}}.&lcub;&lcub;minDate.year}}</dd>
-			<dt>IT</dt>
-			<dd>La data deve essere successiva a &lcub;&lcub;maxDate.day}}.&lcub;&lcub;maxDate.month}}.&lcub;&lcub;maxDate.year}}</dd>
-			<dt>EN</dt>
-			<dd>Date needs to be after &lcub;&lcub;minDate.day}}.&lcub;&lcub;minDate.month}}.&lcub;&lcub;minDate.year}}</dd>
-			<dt>Parameters</dt>
-			<dd>
-				<dl class="ob-horizontal">
-					<dt>actual</dt>
-					<dd>The actual date</dd>
-					<dd>
-						<dl class="ob-horizontal">
-							<dt>day</dt>
-							<dd>1 - 31</dd>
-							<dt>month</dt>
-							<dd>1 - 31</dd>
-							<dt>year</dt>
-							<dd>yyyy</dd>
-						</dl>
-					</dd>
-					<dt>maxDate</dt>
-					<dd>The greatest allowed date</dd>
-					<dd>
-						<dl class="ob-horizontal">
-							<dt>day</dt>
-							<dd>1 - 31</dd>
-							<dt>month</dt>
-							<dd>1 - 31</dd>
-							<dt>year</dt>
-							<dd>yyyy</dd>
-						</dl>
-					</dd>
-				</dl>
-			</dd>
-		</dl>
-	</details>
-	<p>
-		If used within the <code>orFormControlState</code> directive, the component will automatically display the errors of the related
-		control. In that case, the errors will be displayed in red, thanks to the <code>has-error</code> class set by the directive.
-	</p>
-	<p>
-		When used outside of the <code>orFormControlState</code> directive, the component can be placed anywhere on the page but then the source
-		control has to be specified through the <code>control</code> input. In that case, no styling will be applied to the content.
-	</p>
-	<div class="ob-alert ob-alert-info">
-		<p>
-			Make sure the <code>ErrorMessages</code> <strong>component</strong> is used, as the <code>ErrorMessages</code>
-			<strong>directive</strong> is meant for the Material theme.
-		</p>
-	</div>
-</div>
+<p>
+	The <code>ErrorMessages</code> directive should be put on a <code>mat-form-field</code> component and works in conjunction with a
+	<code>mat-error</code> component, both from Angular. The <code>mat-error</code> component has to be present through empty and will be
+	automatically populated with translations of thrown validation errors.
+</p>
+<p>
+	Note the <strong>overflow behaviour</strong>: long error messages will be shortened to available space, but will still be wholly displayed
+	when hovered or when the related input has the focus.
+</p>
