@@ -47,7 +47,7 @@
     "prebuild": "ts-node projects/oblique/scripts/pre-build/run-pre-build-steps.ts",
     "build": "ng build oblique-showcase",
     "schematics": "tsc -p projects/oblique/schematics/tsconfig.schematics.json",
-    "predist": "ng build oblique-styles",
+    "predist": "ts-node projects/oblique/scripts/pre-dist/run-pre-dist-steps.ts && ng build oblique-styles",
     "dist": "ng build oblique && npm run schematics",
     "postdist": "ts-node projects/oblique/scripts/post-dist/run-post-dist-steps.ts",
     "test": "ng test oblique",
