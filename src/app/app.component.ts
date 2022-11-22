@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ObEIcon, ObINavigationLink, ObISearchWidgetItem, ObISkipLink} from '@oblique/oblique';
 import {Observable} from 'rxjs';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
-import {FONTS, ThemeService} from './common/theme.service';
+import {FONTS, FontService} from './common/font.service';
 
 @Component({
 	selector: 'sc-root',
@@ -127,9 +127,9 @@ export class AppComponent {
 	];
 	searchItems: ObISearchWidgetItem[] = [];
 
-	constructor(private readonly theme: ThemeService, nav: DynamicNavigationService) {
+	constructor(private readonly font: FontService, nav: DynamicNavigationService) {
 		this.populateSearchItems(this.navigation);
-		this.font$ = this.theme.font$;
+		this.font$ = this.font.font$;
 		nav.setNavigation(this.navigation);
 		nav.navigationLinks$.subscribe(links => {
 			this.navigation = links;
@@ -137,7 +137,7 @@ export class AppComponent {
 	}
 
 	toggleFont(font: string): void {
-		this.theme.setFont(font === FONTS.FRUTIGER ? FONTS.ROBOTO : FONTS.FRUTIGER);
+		this.font.setFont(font === FONTS.FRUTIGER ? FONTS.ROBOTO : FONTS.FRUTIGER);
 	}
 
 	populateSearchItems(items: ObINavigationLink[], base = ''): void {

@@ -12,7 +12,7 @@ export enum FONTS {
 @Injectable({
 	providedIn: 'root'
 })
-export class ThemeService {
+export class FontService {
 	font$: Observable<FONTS>;
 	private readonly mainFont = new ReplaySubject<FONTS>(1);
 	private readonly renderer: Renderer2;
