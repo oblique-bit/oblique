@@ -3,30 +3,28 @@
   "version": "",
   "peerDependencies": {
     "@angular/animations": "^14.0.0",
+    "@angular/cdk": "^14.0.0",
     "@angular/common": "^14.0.0",
     "@angular/compiler": "^14.0.0",
     "@angular/core": "^14.0.0",
     "@angular/forms": "^14.0.0",
     "@angular/localize": "^14.0.0",
+    "@angular/material": "^14.0.0",
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
     "@ngx-translate/core": "^14.0.0",
     "@popperjs/core": "^2.0.0",
+    "ajv": "^8.0.0",
+    "ajv-formats": "^2.0.0",
+    "angular-oauth2-oidc": "^13.0.0",
+    "jwt-decode": "^3.0.0",
     "rxjs": "^7.0.0"
   },
   "dependencies": {
     "@schematics/angular": "^14.0.0",
     "@angular-eslint/schematics": "^14.0.0",
     "ansi-colors": "^4.0.0"
-  },
-  "optionalDependencies": {
-    "@angular/cdk": "^14.0.0",
-    "@angular/material": "^14.0.0",
-    "ajv": "^8.0.0",
-    "ajv-formats": "^2.0.0",
-    "angular-oauth2-oidc": "^13.0.0",
-    "jwt-decode": "^3.0.0"
   },
   "schematics": "./schematics/collection.json",
   "ng-update": {
