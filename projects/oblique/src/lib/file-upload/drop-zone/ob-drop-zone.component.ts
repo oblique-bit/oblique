@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ObValidationService} from './validation.service';
 import {ObEUploadEventType, ObIUploadEvent} from '../file-upload.model';
 
@@ -16,6 +16,7 @@ export class ObDropZoneComponent {
 	@Input() accept = ['*'];
 	@Input() maxFileSize = 5;
 	@Input() multiple = true;
+	@ViewChild('fileInput') private readonly fileInput: ElementRef<HTMLInputElement>;
 
 	constructor(private readonly validationService: ObValidationService) {}
 
@@ -28,5 +29,6 @@ export class ObDropZoneComponent {
 		if (files.length !== fileArray.length) {
 			this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: fileArray.filter(file => !files.includes(file))});
 		}
+		this.fileInput.nativeElement.value = null;
 	}
 }
