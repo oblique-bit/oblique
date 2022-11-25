@@ -115,7 +115,7 @@
           "options": {
             "configPath": "src/jest.config.js",
             "tsConfig": "src/tsconfig.spec.json",
-            "no-cache": true,
+            "no-cache": ["true"],
             "run-in-band": ["true"]
           }
         }
@@ -184,7 +184,7 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "no-cache": true,
+            "no-cache": ["true"],
             "run-in-band": ["true"]
           },
           "configurations": {

@@ -172,6 +172,7 @@ overrides:
       "@typescript-eslint/no-misused-promises": off # this rule had an error with the update to eslint 8.25.0
       "@typescript-eslint/no-unsafe-call": off
       "@typescript-eslint/naming-convention": off
+      "@typescript-eslint/sort-type-constituents": off
       max-params: off
       no-warning-comments: off
 
@@ -229,3 +230,6 @@ overrides:
       "@angular-eslint/template/click-events-have-key-events": off
       "@angular-eslint/template/cyclomatic-complexity": off
       "@angular-eslint/template/no-call-expression": off
+      "@angular-eslint/template/attributes-order": off
+      "@angular-eslint/template/no-inline-styles": off
+      "@angular-eslint/template/accessibility-interactive-supports-focus": off

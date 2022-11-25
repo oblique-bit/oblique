@@ -2,7 +2,7 @@
 <sc-description component="language"></sc-description>
 <ob-column-layout [left]="false" [right]="true">
 	<div column-main-content>
-		{{ 0 | obDate: format:timezone }}
+		{{ 0 | obDate : format : timezone }}
 		<ng-container *ngIf="material | async">
 			<mat-form-field class="ms-fix">
 				<mat-label>Datepicker</mat-label>
