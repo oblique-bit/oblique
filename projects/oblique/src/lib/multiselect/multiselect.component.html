@@ -11,7 +11,7 @@
 			<span role="list" [class.ob-screen-reader-only]="model.length > dynamicTitleMaxItems" *ngIf="model.length">
 				<span class="list-item" role="listitem" *ngFor="let option of model">{{ formatOptionForTitle(option) }}</span>
 			</span>
-			{{ title | translate: titleTranslateParams }}
+			{{ title | translate : titleTranslateParams }}
 		</span>
 		<span class="ob-toggle" [class.show]="isVisible"></span>
 	</button>

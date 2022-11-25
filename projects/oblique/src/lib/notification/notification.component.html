@@ -13,7 +13,7 @@
 		notification.occurrences
 	}}</span>
 	<div [id]="notification.idPrefix + 'title'" class="ob-notification-title">
-		{{ notification.title | translate: notification.titleParams }}
+		{{ notification.title | translate : notification.titleParams }}
 	</div>
-	<p [id]="notification.idPrefix + 'text'">{{ notification.message | translate: notification.messageParams }}</p>
+	<p [id]="notification.idPrefix + 'text'">{{ notification.message | translate : notification.messageParams }}</p>
 </ob-alert>
