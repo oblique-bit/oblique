@@ -1,3 +1,10 @@
+# [9.3.1](https://github.com/oblique-bit/oblique/compare/9.3.0...9.3.1) (2022-11-25)
+
+## Bug Fixes
+
+- **file-upload:** reset `drop-zone` input after upload ([eb0d260](https://github.com/oblique-bit/oblique/commit/eb0d2609661d11e4d2bad4544c3f2145545ec601))
+- **schematics:** remove contradictory styles content from `ng-add` ([abe2d7b](https://github.com/oblique-bit/oblique/commit/abe2d7b4b05539cb4c6fdb12b868390a4e15b1e9))
+
 # [9.3.0](https://github.com/oblique-bit/oblique/compare/9.2.5...9.3.0) (2022-10-28)
 
 ## Features
