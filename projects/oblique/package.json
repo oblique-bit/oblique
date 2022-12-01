@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@schematics/angular": "^14.0.0",
+    "@angular/cdk": "^14.0.0",
     "@angular-eslint/schematics": "^14.0.0",
     "ansi-colors": "^4.0.0"
   },
