@@ -6,8 +6,18 @@
 	<mat-card>
 		<mat-card-header>
 			Preview with template driven form
-			<span class="fa fa-check" matTooltip="Form does not contain unsaved changes" *ngIf="!standAloneTemplate.form.dirty"></span>
-			<span class="fa fa-exclamation-triangle" matTooltip="Form contains unsaved changes" *ngIf="standAloneTemplate.form.dirty"></span>
+			<mat-icon
+				class="ob-icon-text"
+				svgIcon="checkmark"
+				matTooltip="Form does not contain unsaved changes"
+				*ngIf="!standAloneTemplate.form.dirty"
+			></mat-icon>
+			<mat-icon
+				class="ob-icon-text"
+				svgIcon="warning"
+				matTooltip="Form contains unsaved changes"
+				*ngIf="standAloneTemplate.form.dirty"
+			></mat-icon>
 		</mat-card-header>
 		<mat-card-content>
 			<mat-form-field>
@@ -33,8 +43,8 @@
 	<mat-card>
 		<mat-card-header>
 			Preview with reactive form
-			<span class="fa fa-check" matTooltip="Form does not contain unsaved changes" *ngIf="!standAloneReactive.dirty"></span>
-			<span class="fa fa-exclamation-triangle" matTooltip="Form contains unsaved changes" *ngIf="standAloneReactive.dirty"></span>
+			<mat-icon svgIcon="checkmark" matTooltip="Form does not contain unsaved changes" *ngIf="!standAloneReactive.dirty"></mat-icon>
+			<mat-icon svgIcon="warning" matTooltip="Form contains unsaved changes" *ngIf="standAloneReactive.dirty"></mat-icon>
 		</mat-card-header>
 		<mat-card-content>
 			<mat-form-field>

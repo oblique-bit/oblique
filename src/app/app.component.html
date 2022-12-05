@@ -11,8 +11,9 @@
 			[icon]="'none'"
 			matTooltip="Go to Oblique GIT repository"
 			[matTooltipPosition]="'left'"
+			mat-icon-button
 		>
-			<span class="fab fa-bitbucket"></span>
+			<mat-icon class="ob-control-icon" svgIcon="git-hub"></mat-icon>
 		</a>
 	</ng-template>
 	<ng-template #obHeaderControl>
@@ -23,18 +24,14 @@
 			[matTooltipPosition]="'left'"
 			(click)="offCanvasOpen = !offCanvasOpen"
 			tabindex="0"
+			mat-icon-button
 		>
-			<span class="fa fa-sign-in-alt" [class.fa-rotate-180]="!offCanvasOpen"></span>
-		</button>
-	</ng-template>
-	<ng-template #obHeaderControl>
-		<button type="button" obOffCanvasToggle matTooltip="Toggle Off-Canvas">
-			<mat-icon class="ob-control-icon" svgIcon="logout"></mat-icon>
+			<mat-icon class="ob-control-icon" dropdown-toggle svgIcon="login" [class.rotate180]="!offCanvasOpen"></mat-icon>
 		</button>
 	</ng-template>
 	<ng-template #obHeaderControl>
 		<ob-dropdown position="left">
-			<span dropdown-toggle class="fa fa-cog"></span>
+			<mat-icon class="ob-control-icon" dropdown-toggle svgIcon="cog"></mat-icon>
 			<ng-container dropdown-content>
 				<h4 translate>i18n.rtfas.nav.bar-header.language</h4>
 				<ul role="menu" class="ob-nav-tree" aria-hidden="false">

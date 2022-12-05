@@ -35,7 +35,6 @@ import {
 	ObSelectableModule,
 	ObSpinnerModule,
 	ObUnsavedChangesModule,
-	ObUseObliqueIcons,
 	multiTranslateLoader
 } from '@oblique/oblique';
 // App:
@@ -90,8 +89,7 @@ registerLocaleData(localeFR);
 		{provide: OB_BANNER, useValue: environment.banner},
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
-		{provide: OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, useValue: false},
-		{provide: ObUseObliqueIcons, useValue: true}
+		{provide: OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, useValue: false}
 	],
 	bootstrap: [AppComponent]
 })
