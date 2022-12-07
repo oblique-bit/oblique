@@ -1,6 +1,9 @@
 @use "sass:selector";
 @use "../../core/variables";
 
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
+ */
 .mat-step-header .mat-step-icon {
 	height: 26px;
 	width: 26px;

@@ -1,5 +1,8 @@
 @use "../variables";
 
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11
+ */
 fieldset {
 	min-width: 0;
 	padding: 0;

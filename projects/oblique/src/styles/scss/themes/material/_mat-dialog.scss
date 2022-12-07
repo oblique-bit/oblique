@@ -2,6 +2,9 @@
 @use "../../core/mixins/shadow";
 @use "../../core/mixins/typography";
 
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
+ */
 .mat-dialog-container {
 	box-shadow: none;
 	@include shadow.ob-drop-shadow($color: core-variables.$ob-gray-dark);

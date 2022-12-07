@@ -1,6 +1,9 @@
 @use "../variables";
 @use "../mixins/shadow";
 
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11
+ */
 .ob-popover-content {
 	padding: variables.$ob-spacing-default;
 	max-width: 40%; // empiric value

@@ -2,6 +2,9 @@
 @use "../../core/mixins/typography";
 @use "../../core/mixins/tab-outline";
 
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
+ */
 .mat-card {
 	border: 1px solid variables.$ob-default;
 

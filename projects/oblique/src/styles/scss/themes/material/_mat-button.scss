@@ -2,6 +2,9 @@
 @use "../../core/variables" as core-variables;
 @use "../../core/mixins/tab-outline";
 
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
+ */
 .mat-button-base {
 	&.ob-button {
 		line-height: 34px; // material design height
