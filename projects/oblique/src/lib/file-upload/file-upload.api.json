@@ -197,13 +197,6 @@
       ],
       "methods": [
         {
-          "name": "areAllItemsSelected",
-          "text": "Checks if all items are currently selected",
-          "arguments": [],
-          "returns": "boolean",
-          "since": "7.1.0"
-        },
-        {
           "name": "delete",
           "text": "Sends a DELETE HTTP request to the deleteUrl with the serialized file names appended. If the request is successful, the items are removed from the table.",
           "arguments": ["files: ObIFileDescription[]"],

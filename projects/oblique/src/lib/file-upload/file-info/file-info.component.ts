@@ -59,15 +59,6 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	/**
-	 * @deprecated since version 9.2.1, will be removed with version 10.0.0.
-	 */
-	areAllItemsSelected(): boolean {
-		const numSelected = this.selection.selected.length;
-		const numRows = this.dataSource.data.length;
-		return numSelected === numRows;
-	}
-
 	selectOrUnselectAllItems(): void {
 		if (this.selectionStatus === 'all') {
 			this.selection.clear();

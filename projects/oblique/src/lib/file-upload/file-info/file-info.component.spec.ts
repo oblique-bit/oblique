@@ -212,17 +212,6 @@ describe('ObFileInfoComponent', () => {
 			});
 		});
 
-		describe('areAllItemsSelected', () => {
-			it('should return false if not all items are selected', () => {
-				component.selection.toggle(component.dataSource.data[0]);
-				expect(component.areAllItemsSelected()).toBe(false);
-			});
-			it('should return true if all items are selected', () => {
-				component.dataSource.data.forEach(file => component.selection.select(file));
-				expect(component.areAllItemsSelected()).toBe(true);
-			});
-		});
-
 		describe('selectOrUnselectAllItems', () => {
 			it('should select all if not already', () => {
 				component.selection.deselect(component.dataSource.data[0]);
