@@ -1,4 +1,4 @@
-<label class="ob-control-toggle" for="{{ id }}">
+<label class="ob-control-toggle" for="{{ id }}" [obPopover]="popoverSearch" [closeOnlyOnToggle]="true" placement="bottom-start">
 	<mat-icon svgIcon="search" class="ob-control-icon"></mat-icon>
 	<span class="ob-control-label ob-screen-reader-only">{{ "i18n.oblique.search.title" | translate }}</span>
 </label>
@@ -10,11 +10,9 @@
 	role="searchbox"
 	[(ngModel)]="pattern"
 	(focus)="focus()"
-	(blur)="blur()"
-	(click)="click($event)"
 />
-<ob-dropdown position="right">
-	<ul dropdown-content class="ob-search-results-list ob-nav-tree ob-nav-bordered ob-nav-hover">
+<ng-template #popoverSearch>
+	<ul class="ob-search-results-list ob-nav-tree ob-nav-bordered ob-nav-hover">
 		<li *ngFor="let item of filteredItems">
 			<a [routerLink]="item.routes" [fragment]="item.fragment" class="ob-nav-link" #link (click)="close()">
 				<span [innerHTML]="formatter(item.label | translate, pattern)"></span>
@@ -23,4 +21,4 @@
 		</li>
 		<li class="ob-no-result">{{ "i18n.oblique.search.no-results" | translate }}</li>
 	</ul>
-</ob-dropdown>
+</ng-template>

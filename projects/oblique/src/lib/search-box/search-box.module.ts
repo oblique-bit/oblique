@@ -9,13 +9,13 @@ import {ObNavTreeModule} from '../nav-tree/nav-tree.module';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
-import {ObDropdownModule} from '../dropdown/dropdown.module';
+import {ObPopoverModule} from '../popover/popover.module';
 
 export {ObSearchBoxComponent} from './search-box.component';
 export {ObISearchWidgetItem} from './search-box.model';
 
 @NgModule({
-	imports: [CommonModule, FormsModule, MatIconModule, ObDropdownModule, ObNavTreeModule, RouterModule, TranslateModule],
+	imports: [CommonModule, FormsModule, MatIconModule, ObNavTreeModule, ObPopoverModule, RouterModule, TranslateModule],
 	declarations: [ObSearchBoxComponent],
 	providers: obliqueProviders(),
 	exports: [ObSearchBoxComponent]

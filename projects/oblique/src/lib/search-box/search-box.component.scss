@@ -2,26 +2,6 @@
 @use "sass:selector";
 @use "../../styles/scss/core/variables";
 
-.ob-search-box .ob-dropdown {
-	position: absolute;
-
-	.ob-dropdown-toggle {
-		display: none;
-	}
-
-	.ob-dropdown-content {
-		top: variables.$ob-spacing-default;
-
-		&.right {
-			transform: translateX(-12px); // empiric number
-
-			.ob-control-item & {
-				transform: translateX(-12px); // empiric number
-			}
-		}
-	}
-}
-
 .ob-no-result {
 	padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
 

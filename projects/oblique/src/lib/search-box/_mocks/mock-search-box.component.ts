@@ -25,13 +25,13 @@ export class ObMockSearchBoxComponent {
 
 	exit(): void {}
 
+	blur($event: PointerEvent): void {}
+
 	formatter(label: string, filterPattern?: string): string {
 		return '';
 	}
 
 	focus(): void {}
-
-	blur(): void {}
 
 	click(evt: MouseEvent): void {}
 }
