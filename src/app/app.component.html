@@ -30,23 +30,21 @@
 		</button>
 	</ng-template>
 	<ng-template #obHeaderControl>
-		<ob-dropdown position="left">
-			<mat-icon class="ob-control-icon" dropdown-toggle svgIcon="cog"></mat-icon>
-			<ng-container dropdown-content>
-				<h4 translate>i18n.rtfas.nav.bar-header.language</h4>
-				<ul role="menu" class="ob-nav-tree" aria-hidden="false">
-					<li role="menuitem">
-						<a role="button">FR</a>
-					</li>
-					<li role="menuitem">
-						<a role="button">DE</a>
-					</li>
-					<li role="menuitem">
-						<a role="button">EN</a>
-					</li>
-				</ul>
-			</ng-container>
-		</ob-dropdown>
+		<mat-icon class="ob-control-icon" svgIcon="cog" [obPopover]="languageButton"></mat-icon>
+		<ng-template #languageButton>
+			<h4 translate>i18n.rtfas.nav.bar-header.language</h4>
+			<ul role="menu" class="ob-nav-tree" aria-hidden="false">
+				<li role="menuitem">
+					<a role="button">FR</a>
+				</li>
+				<li role="menuitem">
+					<a role="button">DE</a>
+				</li>
+				<li role="menuitem">
+					<a role="button">EN</a>
+				</li>
+			</ul>
+		</ng-template>
 	</ng-template>
 	<ng-template #obHeaderControl>
 		<button type="button" (click)="toggleFont(font)">

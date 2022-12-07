@@ -33,7 +33,6 @@ import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component'
 import {StickySampleComponent} from './sticky/sticky-sample.component';
 import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
-import {DropdownSampleComponent} from './dropdown/dropdown.component';
 import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
 
 const samplesRoutes: Routes = [
@@ -101,7 +100,6 @@ const samplesRoutes: Routes = [
 	{path: 'collapse', component: CollapseSampleComponent},
 	{path: 'column-layout', component: ColumnLayoutSampleComponent},
 	{path: 'column-layout-full-height', component: ColumnLayoutFullHeightSampleComponent},
-	{path: 'dropdown', component: DropdownSampleComponent},
 	{path: 'error-messages', component: ErrorMessagesSampleComponent},
 	{path: 'external-link', component: ExternalLinkComponent},
 	{path: 'file-upload', component: FileUploadSampleComponent},

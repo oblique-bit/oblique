@@ -41,7 +41,6 @@ export class AppComponent implements OnDestroy {
 				{url: 'collapse', label: 'Collapse'},
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
 				{url: 'column-layout-full-height', label: 'Column layout full height'},
-				{url: 'dropdown', label: 'Dropdown'},
 				{url: 'error-messages', label: 'Error messages'},
 				{url: 'external-link', label: 'External-link'},
 				{url: 'file-upload', label: 'File Upload'},

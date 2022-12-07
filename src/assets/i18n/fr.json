@@ -8,6 +8,7 @@
   "i18n.application.locales.fr": "Français",
   "i18n.application.locales.it": "Italiano",
   "i18n.application.locales.en": "English",
+  "i18n.application.bar-header.language": "Changer de langue",
   "i18n.application.skiplinks.custom": "Sauter au skiplink personnalisé",
   "i18n.application.loading": "Chargement...",
   "i18n.application.footer.legal.label": "Légal",

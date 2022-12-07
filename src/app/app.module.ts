@@ -17,7 +17,6 @@ import {
 	ObAutocompleteModule,
 	ObDocumentMetaModule,
 	ObDocumentMetaService,
-	ObDropdownModule,
 	ObErrorMessagesModule,
 	ObExternalLinkModule,
 	ObHttpApiInterceptor,
@@ -29,6 +28,7 @@ import {
 	ObMasterLayoutModule,
 	ObNotificationModule,
 	ObOffCanvasModule,
+	ObPopoverModule,
 	ObSchemaValidationModule,
 	ObScrollingModule,
 	ObSearchBoxModule,
@@ -48,6 +48,7 @@ import {registerLocaleData} from '@angular/common';
 import localeFR from '@angular/common/locales/fr-CH';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 import {FONTS, FontService} from './common/font.service';
+import {MatButtonModule} from '@angular/material/button';
 
 registerLocaleData(localeFR);
 
@@ -60,6 +61,7 @@ registerLocaleData(localeFR);
 		BrowserModule,
 		FormsModule,
 		HttpClientModule,
+		MatButtonModule,
 		MatCardModule,
 		MatFormFieldModule,
 		MatIconModule,
@@ -68,7 +70,6 @@ registerLocaleData(localeFR);
 		ObAlertModule,
 		ObAutocompleteModule,
 		ObDocumentMetaModule,
-		ObDropdownModule,
 		ObErrorMessagesModule,
 		ObExternalLinkModule,
 		ObHttpApiInterceptorModule,
@@ -76,6 +77,7 @@ registerLocaleData(localeFR);
 		ObMasterLayoutModule,
 		ObNotificationModule,
 		ObOffCanvasModule,
+		ObPopoverModule,
 		ObSchemaValidationModule,
 		ObScrollingModule,
 		ObSearchBoxModule,

@@ -53,7 +53,6 @@ import {
 	ObButtonModule,
 	ObCollapseModule,
 	ObColumnLayoutModule,
-	ObDropdownModule,
 	ObErrorMessagesModule,
 	ObExternalLinkModule,
 	ObFileUploadModule,
@@ -87,7 +86,6 @@ import {HorizontalFormsSampleComponent} from './horizontal-forms/horizontal-form
 import {BreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 import {FileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
 import {SharedModule} from '../common/shared.module';
-import {DropdownSampleComponent} from './dropdown/dropdown.component';
 import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
 
 @NgModule({
@@ -117,7 +115,6 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		ObButtonModule,
 		ObCollapseModule,
 		ObColumnLayoutModule,
-		ObDropdownModule,
 		ObErrorMessagesModule,
 		ObExternalLinkModule,
 		ObFileUploadModule,
@@ -149,7 +146,6 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		CollapseSampleComponent,
 		ColumnLayoutFullHeightSampleComponent,
 		ColumnLayoutSampleComponent,
-		DropdownSampleComponent,
 		ErrorMessagesSampleComponent,
 		ExternalLinkComponent,
 		FileUploadSampleComponent,
