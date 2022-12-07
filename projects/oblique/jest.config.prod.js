@@ -57,12 +57,6 @@ module.exports.coverageThreshold = {
 		functions: 18,
 		lines: 59
 	},
-	'projects/oblique/src/lib/dropdown/*.ts': {
-		statements: 100,
-		branches: 83,
-		functions: 100,
-		lines: 100
-	},
 	'projects/oblique/src/lib/error-messages/*.ts': {
 		statements: 52,
 		branches: 0,

@@ -9,7 +9,6 @@ import {ObMockCollapseModule} from './collapse/_mocks/mock-collapse.module';
 import {ObMockColumnLayoutModule} from './column-layout/_mocks/mock-column-layout.module';
 import {ObMockSearchBoxModule} from './search-box/_mocks/mock-search-box.module';
 import {ObMockDocumentMetaModule} from './document-meta/_mocks/mock-document-meta.module';
-import {ObMockDropdownModule} from './dropdown/_mocks/mock-dropdown.module';
 import {ObMockErrorMessagesModule} from './error-messages/_mocks/mock-error-messages.module';
 import {ObMockExternalLinkModule} from './external-link/_mocks/mock-external-link.module';
 import {ObMockFileUploadModule} from './file-upload/_mocks/mock-file-upload.module';
@@ -48,7 +47,6 @@ export {ObMockButtonModule, ObMockButtonDirective} from './button/_mocks/mock-bu
 export {ObMockCollapseModule, ObMockCollapseComponent} from './collapse/_mocks/mock-collapse.module';
 export {ObMockColumnLayoutComponent, ObMockColumnLayoutModule} from './column-layout/_mocks/mock-column-layout.module';
 export {ObMockDocumentMetaModule, ObDocumentMetaService} from './document-meta/_mocks/mock-document-meta.module';
-export {ObMockDropdownModule, ObMockDropdownComponent} from './dropdown/_mocks/mock-dropdown.module';
 export {
 	ObMockErrorMessagesModule,
 	ObMockErrorMessagesService,
@@ -147,7 +145,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockCollapseModule,
 	ObMockColumnLayoutModule,
 	ObMockDocumentMetaModule,
-	ObMockDropdownModule,
 	ObMockErrorMessagesModule,
 	ObMockExternalLinkModule,
 	ObMockFileUploadModule,

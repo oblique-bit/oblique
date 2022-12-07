@@ -81,7 +81,6 @@ The scope is optional and should be the name of the Oblique feature affected:
 - **collapse**
 - **column-layout**
 - **document-meta**
-- **dropdown**
 - **error-messages**
 - **external-link**
 - **file-upload**

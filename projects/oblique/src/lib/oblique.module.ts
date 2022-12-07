@@ -3,7 +3,6 @@ import {ObButtonModule} from './button/button.module';
 import {ObCollapseModule} from './collapse/collapse.module';
 import {ObColumnLayoutModule} from './column-layout/column-layout.module';
 import {ObDocumentMetaModule} from './document-meta/document-meta.module';
-import {ObDropdownModule} from './dropdown/dropdown.module';
 import {ObErrorMessagesModule} from './error-messages/error-messages.module';
 import {ObFileUploadModule} from './file-upload/file-upload.module';
 import {ObMasterLayoutModule} from './master-layout/master-layout.module';
@@ -39,7 +38,6 @@ const OBLIQUE_MODULES = [
 	ObCollapseModule,
 	ObColumnLayoutModule,
 	ObDocumentMetaModule,
-	ObDropdownModule,
 	ObErrorMessagesModule,
 	ObFileUploadModule,
 	ObLanguageModule,
