@@ -31,11 +31,6 @@
 			margin: 0 variables.$ob-spacing-xs;
 			width: 1em;
 			height: 1em;
-
-			&.fa::before {
-				height: unset;
-				width: unset;
-			}
 		}
 	}
 

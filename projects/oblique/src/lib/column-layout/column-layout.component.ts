@@ -5,7 +5,6 @@ import {
 	HostBinding,
 	Inject,
 	Input,
-	Optional,
 	QueryList,
 	Renderer2,
 	ViewChild,
@@ -18,7 +17,6 @@ import {ObColumnPanelDirective} from './column-panel.directive';
 import {ObScrollingEvents} from '../scrolling/scrolling-events';
 import {WINDOW} from '../utilities';
 import {ObIToggleDirection} from './column-layout.model';
-import {ObUseObliqueIcons} from '../icon/icon.model';
 
 @Component({
 	selector: 'ob-column-layout',
@@ -35,7 +33,6 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 	@Input() @HostBinding('class.ob-no-layout') noLayout = false;
 	toggleLeftIcon$: Observable<ObIToggleDirection>;
 	toggleRightIcon$: Observable<ObIToggleDirection>;
-	@HostBinding('class.ob-font-awesome') useFontAwesomeIcon: boolean;
 	@ViewChild('columnLeft') private readonly columnLeft: ObColumnPanelDirective;
 	@ViewChild('columnRight') private readonly columnRight: ObColumnPanelDirective;
 	@ViewChildren('columnToggle') private readonly toggles: QueryList<ElementRef>;
@@ -46,11 +43,9 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 		private readonly el: ElementRef,
 		private readonly renderer: Renderer2,
 		private readonly scroll: ObScrollingEvents,
-		@Inject(WINDOW) window,
-		@Optional() @Inject(ObUseObliqueIcons) useObliqueIcon
+		@Inject(WINDOW) window
 	) {
 		this.window = window; // because AoT don't accept interfaces as DI
-		this.useFontAwesomeIcon = !(useObliqueIcon ?? true);
 	}
 
 	ngAfterViewInit(): void {

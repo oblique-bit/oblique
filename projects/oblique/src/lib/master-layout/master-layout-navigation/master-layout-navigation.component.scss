@@ -224,16 +224,13 @@
 		gap: variables.$ob-spacing-sm;
 		align-items: center;
 
-		&.ob-external-link {
-			.mat-icon,
-			.fa {
-				margin-left: auto;
-			}
+		&.ob-external-link .mat-icon {
+			margin-left: auto;
 		}
 	}
 
 	.ob-external-link span.mat-icon,
-	.ob-icon-wrapper:not(.ob-font-awesome) {
+	.ob-icon-wrapper {
 		font-size: variables.$ob-font-size-bigger;
 		line-height: 1.1; // empiric value to have an height of 24px.
 	}

@@ -1,27 +1,13 @@
 <nav class="ob-access-keys" role="navigation" aria-label="Access keys">
 	<ul>
 		<li>
-			<a
-				class="ob-accessible"
-				[class.ob-font-awesome]="useFontAwesomeIcons"
-				accesskey="0"
-				[routerLink]="route.path"
-				[queryParams]="route.params"
-				fragment="content"
-			>
+			<a class="ob-accessible" accesskey="0" [routerLink]="route.path" [queryParams]="route.params" fragment="content">
 				<ob-icon icon="universal-access"></ob-icon>
 				{{ "i18n.oblique.master-layout.accesskey.main-content" | translate }}
 			</a>
 		</li>
 		<li *ngIf="!noNavigation && navigation.length">
-			<a
-				class="ob-accessible"
-				[class.ob-font-awesome]="useFontAwesomeIcons"
-				accesskey="1"
-				[routerLink]="route.path"
-				[queryParams]="route.params"
-				fragment="navigation"
-			>
+			<a class="ob-accessible" accesskey="1" [routerLink]="route.path" [queryParams]="route.params" fragment="navigation">
 				<ob-icon icon="universal-access"></ob-icon>
 				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}
 			</a>
@@ -29,7 +15,6 @@
 		<li *ngFor="let skipLink of skipLinks; let i = index">
 			<a
 				class="ob-accessible"
-				[class.ob-font-awesome]="useFontAwesomeIcons"
 				[attr.accesskey]="skipLink.accessKey"
 				[routerLink]="skipLink.url === 'current' ? route.path : skipLink.url"
 				[queryParams]="route.params"

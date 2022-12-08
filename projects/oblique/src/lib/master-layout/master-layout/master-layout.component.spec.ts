@@ -15,7 +15,6 @@ import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
-import {ObUseObliqueIcons} from '../../icon/icon.model';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 import {appVersion} from '../../version';
@@ -48,7 +47,6 @@ describe('ObMasterLayoutComponent', () => {
 				{provide: ObOffCanvasService, useClass: ObMockOffCanvasService},
 				{provide: ObScrollingEvents, useClass: ObMockScrollingEvents},
 				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
-				{provide: ObUseObliqueIcons, useValue: true},
 				{provide: WINDOW, useValue: window}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]

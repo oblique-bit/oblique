@@ -81,26 +81,6 @@
 		border-radius: core-variables.$ob-border-radius-button;
 	}
 
-	&:not(.ob-external-link, .mat-icon-button) .mat-icon {
-		&.fa,
-		&.fas,
-		&.far,
-		&.fal,
-		&.fad,
-		&.fab,
-		&.fa .fa,
-		&.fas .fas,
-		&.far .far,
-		&.fal .fal,
-		&.fad .fad,
-		&.fab .fab {
-			&::before {
-				position: relative;
-				top: 5px; // empiric value
-			}
-		}
-	}
-
 	// the only targets svg icons, i.e. Oblique ones, no default material ones
 	.mat-icon[data-mat-icon-type="svg"] {
 		font-size: core-variables.$ob-font-size-biggest;

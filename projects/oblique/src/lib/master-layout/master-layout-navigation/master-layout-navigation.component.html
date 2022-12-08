@@ -73,13 +73,9 @@
 				>
 					<ob-icon *ngIf="link.icon" [icon]="link.icon"></ob-icon>
 					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
-					<ob-icon icon="chevron-down" class="ob-nav-toggle ob-toggle-collapsed" [class.ob-font-awesome]="useFontAwesomeIcons"></ob-icon>
-					<ob-icon icon="chevron-up" class="ob-nav-toggle ob-toggle-expanded" [class.ob-font-awesome]="useFontAwesomeIcons"></ob-icon>
-					<ob-icon
-						icon="chevron-right"
-						class="ob-nav-toggle ob-toggle-layout-collapsed"
-						[class.ob-font-awesome]="useFontAwesomeIcons"
-					></ob-icon>
+					<ob-icon icon="chevron-down" class="ob-nav-toggle ob-toggle-collapsed"></ob-icon>
+					<ob-icon icon="chevron-up" class="ob-nav-toggle ob-toggle-expanded"></ob-icon>
+					<ob-icon icon="chevron-right" class="ob-nav-toggle ob-toggle-layout-collapsed"></ob-icon>
 				</button>
 				<div class="ob-sub-menu" id="menu-{{ link.id || link.url }}">
 					<ul class="ob-main-nav ob-sub-nav">

@@ -4,7 +4,6 @@ import {By} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {ObUseObliqueIcons} from '../icon/icon.model';
 import {OBLIQUE_HAS_ROLE_ALERT, ObAlertComponent} from './alert.component';
 
 @Component({
@@ -70,10 +69,6 @@ describe('ObAlertComponent', () => {
 
 		it('should have ob-angular class', () => {
 			expect(debugElement.nativeElement.classList.contains('ob-angular')).toBe(true);
-		});
-
-		it('should not have ob-font-awesome class', () => {
-			expect(debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(false);
 		});
 
 		describe('type', () => {
@@ -187,34 +182,6 @@ describe('ObAlertComponent', () => {
 
 		it('should have icon success ', () => {
 			expect(obAlertComponent.icon).toBe('checkmark');
-		});
-	});
-
-	describe('with FontAwesome icons', () => {
-		beforeEach(async () => {
-			await TestBed.configureTestingModule({
-				declarations: [DefaultTestComponent, ObMockTranslatePipe, ObAlertComponent],
-				providers: [
-					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: ObUseObliqueIcons, useValue: false}
-				],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
-			}).compileComponents();
-		});
-
-		beforeEach(() => {
-			fixture = TestBed.createComponent(DefaultTestComponent);
-			testComponent = fixture.componentInstance;
-			fixture.detectChanges();
-			debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
-		});
-
-		it('should create', () => {
-			expect(testComponent).toBeTruthy();
-		});
-
-		it('should have ob-font-awesome class', () => {
-			expect(debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(true);
 		});
 	});
 

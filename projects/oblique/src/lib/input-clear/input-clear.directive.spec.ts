@@ -15,7 +15,6 @@ import {ObInputClearDirective} from './input-clear.directive';
 			<mat-label>Test input</mat-label>
 			<input type="text" matInput formControlName="field1" />
 			<button type="button" role="button" [obInputClear]="testForm.get('field1')">
-				<span class="fa fa-times-circle"></span>
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
@@ -37,7 +36,6 @@ class ReactiveFormTestComponent {
 			<mat-label>Mandatory</mat-label>
 			<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel" #control="ngModel" />
 			<button type="button" role="button" [obInputClear]="control">
-				<span class="fa fa-times-circle"></span>
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
@@ -53,7 +51,6 @@ class TemplateDrivenFormTestComponent {
 			<mat-label>Mandatory</mat-label>
 			<input type="text" matInput placeholder="Mandatory" required #control />
 			<button type="button" role="button" [obInputClear]="control">
-				<span class="fa fa-times-circle"></span>
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
@@ -67,7 +64,6 @@ class HtmlInputTestComponent {}
 			<mat-label>Mandatory</mat-label>
 			<input type="text" matInput placeholder="Mandatory" required />
 			<button type="button" role="button" [obInputClear]="testModel">
-				<span class="fa fa-times-circle"></span>
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>

@@ -86,7 +86,6 @@
     "@angular/platform-browser": "^14.2.12",
     "@angular/platform-browser-dynamic": "^14.2.12",
     "@angular/router": "^14.2.12",
-    "@fortawesome/fontawesome-free": "^5.15.4",
     "@ngx-translate/core": "^14.0.0",
     "@popperjs/core": "^2.11.6",
     "ajv": "^8.11.2",

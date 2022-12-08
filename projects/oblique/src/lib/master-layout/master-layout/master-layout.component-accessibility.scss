@@ -48,10 +48,6 @@
 		color: variables.$ob-white;
 	}
 
-	&.ob-font-awesome .ob-icon-wrapper {
-		padding: 0 variables.$ob-spacing-default;
-	}
-
 	&:active,
 	&:focus {
 		position: static;

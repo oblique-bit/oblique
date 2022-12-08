@@ -1,11 +1,10 @@
-import {Component, HostBinding, Inject, Input, OnDestroy, Optional, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnDestroy, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, RouterLinkActive} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {ObNavTreeItemModel} from './nav-tree-item.model';
 import {Subject} from 'rxjs';
-import {ObUseObliqueIcons} from '../icon/icon.model';
 
 @Component({
 	selector: 'ob-nav-tree',
@@ -32,16 +31,10 @@ export class ObNavTreeComponent implements OnDestroy {
 	@Input() activateAncestors = true;
 	@Input() treeAriaLabelledBy: string;
 	@Input() treeAriaLabel: string;
-	@HostBinding('class.ob-font-awesome') useFontAwesomeIcon: boolean;
 	private readonly unsubscribe = new Subject<void>();
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
-	constructor(
-		private readonly route: ActivatedRoute,
-		private readonly translate: TranslateService,
-		@Optional() @Inject(ObUseObliqueIcons) useObliqueIcon
-	) {
-		this.useFontAwesomeIcon = !(useObliqueIcon ?? true);
+	constructor(private readonly route: ActivatedRoute, private readonly translate: TranslateService) {
 		this.route.fragment.pipe(takeUntil(this.unsubscribe)).subscribe(fragment => {
 			this.activeFragment = fragment;
 		});

@@ -46,10 +46,10 @@ module.exports.coverageThreshold = {
 		lines: 100
 	},
 	'projects/oblique/src/lib/column-layout/*.ts': {
-		statements: 55,
-		branches: 47,
+		statements: 52,
+		branches: 35,
 		functions: 27,
-		lines: 58
+		lines: 56
 	},
 	'projects/oblique/src/lib/document-meta/*.ts': {
 		statements: 60,
@@ -107,7 +107,7 @@ module.exports.coverageThreshold = {
 	},
 	'projects/oblique/src/lib/master-layout/master-layout/*.ts': {
 		statements: 87,
-		branches: 58,
+		branches: 56,
 		functions: 74,
 		lines: 86
 	},
@@ -118,10 +118,10 @@ module.exports.coverageThreshold = {
 		lines: 82
 	},
 	'projects/oblique/src/lib/master-layout/master-layout-navigation/*.ts': {
-		statements: 69,
+		statements: 65,
 		branches: 53,
 		functions: 53,
-		lines: 70
+		lines: 65
 	},
 	'projects/oblique/src/lib/multi-translate-loader/*.ts': {
 		statements: 22,
@@ -167,7 +167,7 @@ module.exports.coverageThreshold = {
 	},
 	'projects/oblique/src/lib/scrolling/*.ts': {
 		statements: 66,
-		branches: 90,
+		branches: 83,
 		functions: 0,
 		lines: 63
 	},

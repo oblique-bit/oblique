@@ -9,7 +9,7 @@ import {ObIconConfig, ObTIconConfig, defaultIconConfig, iconFactory} from './ico
 import {ObIconComponent} from './ob-icon.component';
 
 export {ObIconService} from './icon.service';
-export {ObIconConfig, ObTIconConfig, ObUseObliqueIcons, ObEIcon} from './icon.model';
+export {ObIconConfig, ObTIconConfig, ObEIcon} from './icon.model';
 export {ObIconComponent} from './ob-icon.component';
 
 @NgModule({

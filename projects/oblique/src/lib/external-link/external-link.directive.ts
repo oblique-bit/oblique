@@ -4,7 +4,6 @@ import {TranslateService} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 import {first, takeUntil, tap} from 'rxjs/operators';
 import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
-import {ObUseObliqueIcons} from '../icon/icon.model';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
@@ -21,18 +20,15 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	private iconElement: HTMLSpanElement;
 	private readonly host: HTMLAnchorElement;
 	private hasIcon = false;
-	private readonly useFontAwesomeIcons: boolean;
 	private readonly screenReaderOnlyTextElement: HTMLSpanElement = this.createScreenReaderOnlyTextElement();
 
 	constructor(
 		@Optional() @Inject(EXTERNAL_LINK) private readonly config,
-		@Optional() @Inject(ObUseObliqueIcons) useObliqueIcons: boolean,
 		private readonly renderer: Renderer2,
 		elRef: ElementRef,
 		private readonly translate: TranslateService,
 		private readonly iconRegistry: MatIconRegistry
 	) {
-		this.useFontAwesomeIcons = !(useObliqueIcons ?? true);
 		this.host = elRef.nativeElement;
 		this.icon = this.icon || this.config?.icon || 'left';
 	}
@@ -40,18 +36,13 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	ngOnInit(): void {
 		this.addScreenReaderOnlyTextElement();
 		this.translateScreenReaderOnlyText();
-		if (this.useFontAwesomeIcons) {
-			this.iconElement = this.createIconElement();
-			this.addIcon();
-		} else {
-			this.iconRegistry
-				.getNamedSvgIcon('external')
-				.pipe(
-					first(),
-					tap(svg => (this.iconElement = this.createIconElement(svg)))
-				)
-				.subscribe(() => this.addIcon());
-		}
+		this.iconRegistry
+			.getNamedSvgIcon('external')
+			.pipe(
+				first(),
+				tap(svg => (this.iconElement = this.createIconElement(svg)))
+			)
+			.subscribe(() => this.addIcon());
 	}
 
 	ngOnChanges(): void {
@@ -101,13 +92,8 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 
 	private createIconElement(svg?: SVGElement): HTMLSpanElement {
 		const span = this.renderer.createElement('span');
-		if (this.useFontAwesomeIcons) {
-			this.renderer.addClass(span, 'fa');
-			this.renderer.addClass(span, 'fa-external-link-alt');
-		} else {
-			this.renderer.addClass(span, 'mat-icon');
-			this.renderer.appendChild(span, svg);
-		}
+		this.renderer.addClass(span, 'mat-icon');
+		this.renderer.appendChild(span, svg);
 		return span;
 	}
 

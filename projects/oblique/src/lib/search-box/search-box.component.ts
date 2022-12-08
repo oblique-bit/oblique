@@ -4,9 +4,7 @@ import {
 	ElementRef,
 	HostBinding,
 	HostListener,
-	Inject,
 	Input,
-	Optional,
 	QueryList,
 	ViewChild,
 	ViewChildren,
@@ -15,7 +13,6 @@ import {
 import {TranslateService} from '@ngx-translate/core';
 import {ObDropdownComponent} from '../dropdown/dropdown.component';
 import {ObISearchWidgetItem} from './search-box.model';
-import {ObUseObliqueIcons} from '../icon/icon.model';
 
 let nextId = 0;
 
@@ -40,7 +37,6 @@ export class ObSearchBoxComponent {
 	filteredItems: ObISearchWidgetItem[] = [];
 	isOpened = false;
 	id = `search-input-${nextId++}`;
-	@HostBinding('class.ob-font-awesome') useFontAwesomeIcon: boolean;
 	private active: number;
 	@ViewChildren('link') private readonly links: QueryList<ElementRef>;
 	@ViewChild(ObDropdownComponent) private readonly dropdown: ObDropdownComponent;
@@ -57,9 +53,7 @@ export class ObSearchBoxComponent {
 		this.toggle(this.pattern.length >= this.minPatternLength);
 	}
 
-	constructor(private readonly translate: TranslateService, @Optional() @Inject(ObUseObliqueIcons) useObliqueIcon) {
-		this.useFontAwesomeIcon = !(useObliqueIcon ?? true);
-	}
+	constructor(private readonly translate: TranslateService) {}
 
 	open(): void {
 		this.toggle(true);

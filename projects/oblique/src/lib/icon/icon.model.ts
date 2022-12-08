@@ -6,7 +6,6 @@ export function iconFactory(iconService: ObIconService): () => void {
 }
 
 export const ObTIconConfig = new InjectionToken<ObIconConfig>('Oblique icon configuration');
-export const ObUseObliqueIcons = new InjectionToken<boolean>('Oblique uses its own icons by default');
 
 export interface ObIconConfig {
 	registerObliqueIcons?: boolean;

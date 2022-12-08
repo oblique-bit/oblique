@@ -1,6 +1,5 @@
 import {Attribute, Component, HostBinding, Inject, InjectionToken, Input, OnInit, Optional, ViewEncapsulation} from '@angular/core';
 import {ObIAlertType} from './alert.model';
-import {ObUseObliqueIcons} from '../icon/icon.model';
 
 export const OBLIQUE_HAS_ROLE_ALERT = new InjectionToken<boolean>(
 	'Flag to globally add role="alert" per default on all ob-alert components'
@@ -18,7 +17,6 @@ export class ObAlertComponent implements OnInit {
 	@HostBinding('class.ob-alert-success') success = false;
 	@HostBinding('class.ob-alert-warning') warning = false;
 	@HostBinding('class.ob-alert-error') error = false;
-	@HostBinding('class.ob-font-awesome') useFontAwesomeIcons: boolean;
 	@HostBinding('attr.role') role: string = this.initialRole;
 	icon = 'info';
 
@@ -26,13 +24,10 @@ export class ObAlertComponent implements OnInit {
 	private hasAlertRole?: boolean | undefined;
 
 	constructor(
-		@Optional() @Inject(ObUseObliqueIcons) useObliqueIcons: boolean,
 		@Optional() @Inject(OBLIQUE_HAS_ROLE_ALERT) private readonly hasGlobalAlertRole: boolean,
 		// eslint-disable-next-line @angular-eslint/no-attribute-decorator
 		@Attribute('role') private readonly initialRole: string
-	) {
-		this.useFontAwesomeIcons = !(useObliqueIcons ?? true);
-	}
+	) {}
 
 	get hasRoleAlert(): boolean | undefined {
 		return this.hasAlertRole;

@@ -8,7 +8,6 @@ import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {WINDOW} from '../utilities';
 import {ObColumnLayoutComponent} from './column-layout.component';
-import {ObUseObliqueIcons} from '../icon/icon.model';
 
 @Component({
 	template: ` <ob-column-layout [left]="left" [right]="right" obColumnPanel>
@@ -37,7 +36,6 @@ class TestComponent {
 describe('ColumnLayoutComponent', () => {
 	let fixture: ComponentFixture<TestComponent>;
 	let testComponent: TestComponent;
-	let component: ObColumnLayoutComponent;
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
@@ -51,37 +49,17 @@ describe('ColumnLayoutComponent', () => {
 		}).compileComponents();
 	}));
 
-	describe('Without ObUseObliqueIcons token', () => {
-		beforeEach(waitForAsync(() => {
-			fixture = TestBed.createComponent(TestComponent);
-			testComponent = fixture.componentInstance;
-			component = fixture.debugElement.query(By.css('ob-column-layout')).componentInstance;
-			fixture.detectChanges();
-		}));
+	beforeEach(waitForAsync(() => {
+		fixture = TestBed.createComponent(TestComponent);
+		testComponent = fixture.componentInstance;
+		fixture.detectChanges();
+	}));
 
-		it('should create', () => {
-			expect(testComponent).toBeTruthy();
-		});
-
-		it('should contain columnLayout class', () => {
-			expect(fixture.debugElement.query(By.css('ob-column-layout')).nativeElement.classList).toContain('ob-column-layout');
-		});
-
-		it('should not use FontAwesome', () => {
-			expect(component.useFontAwesomeIcon).toBe(false);
-		});
+	it('should create', () => {
+		expect(testComponent).toBeTruthy();
 	});
 
-	describe.each([true, false])('With ObUseObliqueIcons token set to %s', value => {
-		beforeEach(waitForAsync(() => {
-			TestBed.overrideProvider(ObUseObliqueIcons, {useValue: value});
-			fixture = TestBed.createComponent(TestComponent);
-			component = fixture.debugElement.query(By.css('ob-column-layout')).componentInstance;
-			fixture.detectChanges();
-		}));
-
-		it('should use FontAwesome', () => {
-			expect(component.useFontAwesomeIcon).toBe(!value);
-		});
+	it('should contain columnLayout class', () => {
+		expect(fixture.debugElement.query(By.css('ob-column-layout')).nativeElement.classList).toContain('ob-column-layout');
 	});
 });

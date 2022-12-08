@@ -86,10 +86,6 @@
 			align-items: center;
 			justify-content: center;
 
-			@at-root #{selector.append(".ob-font-awesome", &)} {
-				color: variables.$ob-gray-light;
-			}
-
 			&:hover,
 			&:focus {
 				transform: scale(1.25);
