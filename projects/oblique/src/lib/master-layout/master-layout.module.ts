@@ -1,3 +1,4 @@
+import {MatIconModule} from '@angular/material/icon';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
@@ -50,6 +51,7 @@ export {ObOutlineDirective} from './outline.directive';
 	imports: [
 		CommonModule,
 		MatButtonModule,
+		MatIconModule,
 		MatTooltipModule,
 		ObButtonModule,
 		ObExternalLinkModule,

@@ -20,7 +20,6 @@ import {ObAutocompleteHarness} from './../autocomplete/_harness/autocomplete.har
 import {ObOptionLabelIconModule} from '../autocomplete/option-label-icon/option-label-icon.module';
 import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup} from '../autocomplete/autocomplete.model';
 import {ObAutocompleteComponent} from './autocomplete.component';
-import {ObIconModule} from '../icon/icon.module';
 import {ObInputClearModule} from '../input-clear/input-clear.module';
 import {ObMockTranslateParamsModule} from '../translate-params/_mocks/mock-translate-params.module';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
@@ -59,7 +58,6 @@ describe('AutocompleteComponent', () => {
 				MatFormFieldModule,
 				MatIconModule,
 				MatInputModule,
-				ObIconModule,
 				ObInputClearModule,
 				ReactiveFormsModule,
 				HttpClientTestingModule,

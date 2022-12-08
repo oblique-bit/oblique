@@ -170,12 +170,12 @@ describe('CollapseComponent', () => {
 			it('right', () => {
 				obCollapseComponent.iconPosition = 'right';
 				fixture.detectChanges();
-				expect(debugElement.query(By.css('ob-icon:first-child'))).toBeTruthy();
+				expect(debugElement.query(By.css('mat-icon:first-child'))).toBeTruthy();
 			});
 			it('left', () => {
 				obCollapseComponent.iconPosition = 'left';
 				fixture.detectChanges();
-				expect(debugElement.query(By.css('ob-icon:last-child'))).toBeTruthy();
+				expect(debugElement.query(By.css('mat-icon:last-child'))).toBeTruthy();
 			});
 			it('justified', () => {
 				obCollapseComponent.iconPosition = 'justified';

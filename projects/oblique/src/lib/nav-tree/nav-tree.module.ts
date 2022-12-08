@@ -1,3 +1,4 @@
+import {MatIconModule} from '@angular/material/icon';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
@@ -8,14 +9,13 @@ import {ObNavTreeFakeFocusDirective} from './nav-tree-fake-focus.directive';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
-import {ObIconModule} from '../icon/icon.module';
 
 export {ObNavTreeComponent} from './nav-tree.component';
 export {ObNavTreeFakeFocusDirective} from './nav-tree-fake-focus.directive';
 export {ObNavTreeItemModel} from './nav-tree-item.model';
 
 @NgModule({
-	imports: [CommonModule, ObIconModule, RouterModule, TranslateModule],
+	imports: [CommonModule, MatIconModule, RouterModule, TranslateModule],
 	declarations: [ObNavTreeComponent, ObNavTreeFakeFocusDirective],
 	providers: obliqueProviders(),
 	exports: [ObNavTreeComponent, ObNavTreeFakeFocusDirective]

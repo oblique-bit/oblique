@@ -26,7 +26,9 @@
 				[attr.disabled]="item.disabled === true || null"
 				[attr.aria-expanded]="item.items ? parentExpanded && !item.collapsed : undefined"
 			>
-				<ob-icon icon="chevron-{{ item.collapsed ? 'right' : 'down' }}" *ngIf="item.items"></ob-icon>
+				<span class="ob-icon-wrapper"
+					><mat-icon svgIcon="chevron-{{ item.collapsed ? 'right' : 'down' }}" *ngIf="item.items"></mat-icon
+				></span>
 				<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
 			</a>
 			<div id="#{{ itemKey(item) }}" class="collapse" *ngIf="item.items" [hidden]="!item.collapsed">

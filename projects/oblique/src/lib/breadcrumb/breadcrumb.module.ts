@@ -5,7 +5,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObBreadcrumbComponent} from '../breadcrumb/breadcrumb.component';
-import {ObIconModule} from '../icon/icon.module';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {obliqueProviders} from '../utilities';
@@ -16,7 +15,7 @@ export {ObBreadcrumbComponent} from './breadcrumb.component';
 
 @NgModule({
 	declarations: [ObBreadcrumbComponent],
-	imports: [CommonModule, MatIconModule, MatTooltipModule, ObIconModule, RouterModule, TranslateModule],
+	imports: [CommonModule, MatIconModule, MatTooltipModule, RouterModule, TranslateModule],
 	providers: obliqueProviders(),
 	exports: [ObBreadcrumbComponent]
 })

@@ -13,7 +13,6 @@ import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 import {ObFileUploadComponent} from './file-upload.component';
 import {ObFileInfoComponent} from './file-info/file-info.component';
-import {ObIconModule} from '../icon/icon.module';
 import {ObDragDropDirective} from './drop-zone/drag-and-drop.directive';
 import {ObAlertModule} from '../alert/alert.module';
 import {ObNotificationModule} from '../notification/notification.module';
@@ -40,7 +39,6 @@ export {ObIFileDescription, ObIUploadEvent, ObEUploadEventType} from './file-upl
 		MatTooltipModule,
 		ObAlertModule,
 		ObButtonModule,
-		ObIconModule,
 		ObNotificationModule,
 		TranslateModule
 	],

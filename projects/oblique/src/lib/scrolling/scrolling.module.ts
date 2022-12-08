@@ -1,3 +1,4 @@
+import {MatIconModule} from '@angular/material/icon';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
@@ -6,13 +7,12 @@ import {ObTopControlComponent} from './top-control.component';
 import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
-import {ObIconModule} from '../icon/icon.module';
 
 export {ObTopControlComponent} from './top-control.component';
 export {ObScrollingEvents} from './scrolling-events';
 
 @NgModule({
-	imports: [CommonModule, ObIconModule, TranslateModule],
+	imports: [CommonModule, MatIconModule, TranslateModule],
 	declarations: [ObTopControlComponent],
 	providers: obliqueProviders(),
 	exports: [ObTopControlComponent]

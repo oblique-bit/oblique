@@ -1,3 +1,4 @@
+import {MatIconModule} from '@angular/material/icon';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
@@ -9,13 +10,12 @@ import {ObTelemetryService} from '../telemetry/telemetry.service';
 import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 import {ObDropdownModule} from '../dropdown/dropdown.module';
-import {ObIconModule} from '../icon/icon.module';
 
 export {ObSearchBoxComponent} from './search-box.component';
 export {ObISearchWidgetItem} from './search-box.model';
 
 @NgModule({
-	imports: [CommonModule, FormsModule, ObDropdownModule, ObIconModule, ObNavTreeModule, RouterModule, TranslateModule],
+	imports: [CommonModule, FormsModule, MatIconModule, ObDropdownModule, ObNavTreeModule, RouterModule, TranslateModule],
 	declarations: [ObSearchBoxComponent],
 	providers: obliqueProviders(),
 	exports: [ObSearchBoxComponent]
