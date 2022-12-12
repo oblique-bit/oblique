@@ -235,6 +235,6 @@
 	.ob-external-link span.mat-icon,
 	.ob-icon-wrapper:not(.ob-font-awesome) {
 		font-size: variables.$ob-font-size-bigger;
-		line-height: 1;
+		line-height: 1.1; // empiric value to have an height of 24px.
 	}
 }
