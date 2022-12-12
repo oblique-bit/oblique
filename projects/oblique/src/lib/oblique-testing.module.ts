@@ -172,7 +172,7 @@ const MOCK_OBLIQUE_MODULES = [
 ];
 
 /**
- * @deprecated since version 9.0.0. It will be removed with Oblique 10. Real implementation of Oblique Modules should be used instead.
+ * @deprecated since version 9.0.0. It will be removed with Oblique 11. Real implementation of Oblique Modules should be used instead.
  */
 @NgModule({
 	imports: MOCK_OBLIQUE_MODULES,
