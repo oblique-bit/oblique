@@ -216,7 +216,7 @@ export function removeImport(tree: Tree, fileName: string, name: string, pkg: st
 			new RegExp(`import\\s*{\\s*${name}\\s*}\\s*from\\s*['"]${pkg}['"]`, 'm').test(content)
 				? content.replace(new RegExp(`import\\s*{\\s*${name}\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*`), '')
 				: content
-						.replace(new RegExp(`(import\\s*{\\s*.*)${name}(?:,\\s*)?(.*\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*)`), '$1$2')
+						.replace(new RegExp(`(import\\s*{\\s*.*)${name}(?:,\\s*)?(.*\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*)`, 's'), '$1$2')
 						.replace(/,\s*}/, '}')
 		);
 	}
@@ -300,7 +300,7 @@ function addRelativePath(filePath: string, directory: string): string {
 }
 
 function hasImport(content: string, name: string, pkg: string): boolean {
-	return new RegExp(`import\\s*{\\s*.*${name}.*from\\s*['"]${pkg}['"]`, 'm').test(content);
+	return new RegExp(`import\\s*{\\s*.*${name}.*from\\s*['"]${pkg}['"]`, 'ms').test(content);
 }
 
 function getJsonProperty(json: any, propertyPath: string): string {
