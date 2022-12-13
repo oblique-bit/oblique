@@ -109,7 +109,7 @@ export {
 	ObMockOffCanvasService,
 	ObMockOffCanvasToggleDirective
 } from './off-canvas/_mocks/mock-off-canvas.module';
-export {ObMockSearchBoxComponent, ObMockSearchBoxModule, ObMockSearchBoxDirective} from './search-box/_mocks/mock-search-box.module';
+export {ObMockSearchBoxComponent, ObMockSearchBoxModule} from './search-box/_mocks/mock-search-box.module';
 export {
 	ObMockSchemaValidationModule,
 	ObMockSchemaRequiredDirective,
