@@ -1,5 +1,8 @@
+import {DomSanitizer} from '@angular/platform-browser';
+import {MatIconRegistry} from '@angular/material/icon';
 import {Attribute, Component, HostBinding, Inject, InjectionToken, Input, OnInit, Optional, ViewEncapsulation} from '@angular/core';
 import {ObIAlertType} from './alert.model';
+import {alertIcons} from './alert-icons';
 
 export const OBLIQUE_HAS_ROLE_ALERT = new InjectionToken<boolean>(
 	'Flag to globally add role="alert" per default on all ob-alert components'
@@ -26,7 +29,9 @@ export class ObAlertComponent implements OnInit {
 	constructor(
 		@Optional() @Inject(OBLIQUE_HAS_ROLE_ALERT) private readonly hasGlobalAlertRole: boolean,
 		// eslint-disable-next-line @angular-eslint/no-attribute-decorator
-		@Attribute('role') private readonly initialRole: string
+		@Attribute('role') private readonly initialRole: string,
+		private readonly matIconRegistry: MatIconRegistry,
+		private readonly domSanitizer: DomSanitizer
 	) {}
 
 	get hasRoleAlert(): boolean | undefined {
@@ -49,26 +54,14 @@ export class ObAlertComponent implements OnInit {
 		this.success = type === 'success';
 		this.warning = type === 'warning';
 		this.error = type === 'error';
-		this.icon = ObAlertComponent.getIcon(this.type);
+		this.icon = `alert:${type}`;
 	}
 
 	ngOnInit(): void {
 		this.role = this.getAlertRole();
-	}
-
-	private static getIcon(type: string): string {
-		switch (type) {
-			case 'info':
-				return 'info';
-			case 'success':
-				return 'checkmark';
-			case 'warning':
-				return 'warning';
-			case 'error':
-				return 'cancel';
-			default:
-				return '';
-		}
+		['info', 'success', 'warning', 'error'].forEach(type =>
+			this.matIconRegistry.addSvgIconLiteralInNamespace('alert', type, this.domSanitizer.bypassSecurityTrustHtml(alertIcons[type]))
+		);
 	}
 
 	private getAlertRole(): string {

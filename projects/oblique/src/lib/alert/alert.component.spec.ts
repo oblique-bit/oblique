@@ -89,8 +89,8 @@ describe('ObAlertComponent', () => {
 					obAlertComponent.type = 'info';
 					fixture.detectChanges();
 				});
-				it('should have info icon', () => {
-					expect(obAlertComponent.icon).toBe('info');
+				it('should have "alert:info" icon', () => {
+					expect(obAlertComponent.icon).toBe('alert:info');
 				});
 				it('should have class ob-alert-info', () => {
 					expect(debugElement.nativeElement.classList.contains('ob-alert-info')).toBe(true);
@@ -101,8 +101,8 @@ describe('ObAlertComponent', () => {
 					obAlertComponent.type = 'warning';
 					fixture.detectChanges();
 				});
-				it('should have warning icon', () => {
-					expect(obAlertComponent.icon).toBe('warning');
+				it('should have "alert:warning" icon', () => {
+					expect(obAlertComponent.icon).toBe('alert:warning');
 				});
 				it('should have class ob-alert-warning', () => {
 					expect(debugElement.nativeElement.classList.contains('ob-alert-warning')).toBe(true);
@@ -113,8 +113,8 @@ describe('ObAlertComponent', () => {
 					obAlertComponent.type = 'error';
 					fixture.detectChanges();
 				});
-				it('should have cancel icon', () => {
-					expect(obAlertComponent.icon).toBe('cancel');
+				it('should have "alert:error" icon', () => {
+					expect(obAlertComponent.icon).toBe('alert:error');
 				});
 				it('should have class ob-alert-error', () => {
 					expect(debugElement.nativeElement.classList.contains('ob-alert-error')).toBe(true);
@@ -125,8 +125,8 @@ describe('ObAlertComponent', () => {
 					obAlertComponent.type = 'success';
 					fixture.detectChanges();
 				});
-				it('should have cancel icon', () => {
-					expect(obAlertComponent.icon).toBe('checkmark');
+				it('should have "alert:success" icon', () => {
+					expect(obAlertComponent.icon).toBe('alert:success');
 				});
 				it('should have class ob-alert-success', () => {
 					expect(debugElement.nativeElement.classList.contains('ob-alert-success')).toBe(true);
@@ -137,8 +137,8 @@ describe('ObAlertComponent', () => {
 					obAlertComponent.type = null;
 					fixture.detectChanges();
 				});
-				it('should have no icon', () => {
-					expect(obAlertComponent.icon).toBe('');
+				it('should have "alert:null" as icon', () => {
+					expect(obAlertComponent.icon).toBe('alert:null');
 				});
 				it('should have class ob-alert-success', () => {
 					expect(debugElement.nativeElement.classList['ob-alert-success']).toBeUndefined();
@@ -180,8 +180,8 @@ describe('ObAlertComponent', () => {
 			expect(obAlertComponent.type).toBe('success');
 		});
 
-		it('should have icon success ', () => {
-			expect(obAlertComponent.icon).toBe('checkmark');
+		it('should have icon "alert:success" ', () => {
+			expect(obAlertComponent.icon).toBe('alert:success');
 		});
 	});
 
