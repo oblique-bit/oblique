@@ -15,36 +15,6 @@
 		margin-bottom: core-variables.$ob-spacing-default + core-variables.$ob-spacing-sm;
 	}
 
-	.mat-button.close {
-		position: absolute;
-		right: -0.5em;
-		top: -0.5em;
-		height: 24px;
-		width: 24px;
-		padding: 0;
-		min-width: 0;
-
-		&::before,
-		&::after {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 5px;
-			left: 11px;
-			height: 14px;
-			width: 2px;
-			background-color: core-variables.$ob-black;
-		}
-
-		&::before {
-			transform: rotate(45deg);
-		}
-
-		&::after {
-			transform: rotate(-45deg);
-		}
-	}
-
 	.mat-dialog-content {
 		@include typography.ob-body1();
 	}
