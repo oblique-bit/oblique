@@ -6,8 +6,6 @@ import {TranslateModule} from '@ngx-translate/core';
 import {ObMatErrorDirective} from './mat-error.directive';
 import {ObErrorMessagesDirective} from './error-messages.directive';
 import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
-import {ObTelemetryService} from '../telemetry/telemetry.service';
-import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 
 export {ObErrorMessagesService} from './error-messages.service';
@@ -20,8 +18,4 @@ export {ObErrorMessagesDirective} from './error-messages.directive';
 	providers: obliqueProviders(),
 	exports: [ObErrorMessagesDirective, ObMatErrorDirective]
 })
-export class ObErrorMessagesModule {
-	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObErrorMessagesModule);
-	}
-}
+export class ObErrorMessagesModule {}

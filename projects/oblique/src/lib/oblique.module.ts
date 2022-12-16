@@ -23,8 +23,6 @@ import {ObOffCanvasModule} from './off-canvas/off-canvas.module';
 import {ObSearchBoxModule} from './search-box/search-box.module';
 import {ObStickyModule} from './sticky/sticky.module';
 import {ObUnknownRouteModule} from './unknown-route/unknown-route.module';
-import {ObTelemetryService} from './telemetry/telemetry.service';
-import {requireAndRecordTelemetry} from './telemetry/telemetry-require';
 import {obliqueProviders} from './utilities';
 import {ObLanguageModule} from './language/language.module';
 import {ObExternalLinkModule} from './external-link/external-link.module';
@@ -67,8 +65,4 @@ const OBLIQUE_MODULES = [
 	providers: obliqueProviders(),
 	exports: OBLIQUE_MODULES
 })
-export class ObliqueModule {
-	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObliqueModule);
-	}
-}
+export class ObliqueModule {}

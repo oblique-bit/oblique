@@ -6,8 +6,6 @@ import {FormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObSearchBoxComponent} from './search-box.component';
 import {ObNavTreeModule} from '../nav-tree/nav-tree.module';
-import {ObTelemetryService} from '../telemetry/telemetry.service';
-import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 import {ObPopoverModule} from '../popover/popover.module';
 
@@ -20,8 +18,4 @@ export {ObISearchWidgetItem} from './search-box.model';
 	providers: obliqueProviders(),
 	exports: [ObSearchBoxComponent]
 })
-export class ObSearchBoxModule {
-	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObSearchBoxModule);
-	}
-}
+export class ObSearchBoxModule {}

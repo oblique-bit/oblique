@@ -1,6 +1,4 @@
 import {NgModule} from '@angular/core';
-import {ObTelemetryService} from '../telemetry/telemetry.service';
-import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 
 export {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
@@ -11,8 +9,4 @@ export {ObIHttpApiRequest} from './http-api-interceptor.model';
 @NgModule({
 	providers: obliqueProviders()
 })
-export class ObHttpApiInterceptorModule {
-	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObHttpApiInterceptorModule);
-	}
-}
+export class ObHttpApiInterceptorModule {}

@@ -6,8 +6,6 @@ import {TranslateModule} from '@ngx-translate/core';
 
 import {ObNavTreeComponent} from './nav-tree.component';
 import {ObNavTreeFakeFocusDirective} from './nav-tree-fake-focus.directive';
-import {ObTelemetryService} from '../telemetry/telemetry.service';
-import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 
 export {ObNavTreeComponent} from './nav-tree.component';
@@ -20,8 +18,4 @@ export {ObNavTreeItemModel} from './nav-tree-item.model';
 	providers: obliqueProviders(),
 	exports: [ObNavTreeComponent, ObNavTreeFakeFocusDirective]
 })
-export class ObNavTreeModule {
-	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObNavTreeModule);
-	}
-}
+export class ObNavTreeModule {}

@@ -4,8 +4,6 @@ import {FormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {ObInputClearDirective} from './input-clear.directive';
-import {ObTelemetryService} from '../telemetry/telemetry.service';
-import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 
 export {ObInputClearDirective} from './input-clear.directive';
@@ -16,8 +14,4 @@ export {ObInputClearDirective} from './input-clear.directive';
 	providers: obliqueProviders(),
 	exports: [ObInputClearDirective]
 })
-export class ObInputClearModule {
-	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObInputClearModule);
-	}
-}
+export class ObInputClearModule {}

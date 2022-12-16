@@ -18,8 +18,6 @@ import {
 	UrlHelperService,
 	ValidationHandler
 } from 'angular-oauth2-oidc';
-import {ObTelemetryService} from '../telemetry/telemetry.service';
-import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ObAuthenticationService} from './authentication.service';
 import {ObAuthenticationConfigService} from './authentication-config.service';
@@ -32,9 +30,7 @@ export {ObIResourceAccessRoles} from './authentication.model';
 	imports: [CommonModule, OAuthModule]
 })
 export class ObAuthenticationModule {
-	constructor(telemetry: ObTelemetryService, @Optional() @SkipSelf() parentModule?: ObAuthenticationModule) {
-		requireAndRecordTelemetry(telemetry, ObAuthenticationModule);
-
+	constructor(@Optional() @SkipSelf() parentModule?: ObAuthenticationModule) {
 		if (parentModule) {
 			throw new Error("ObAuthenticationModule is already loaded. Import it in the application's root module only");
 		}
