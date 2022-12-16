@@ -22,7 +22,7 @@ module.exports.coverageThreshold = {
 	 */
 	global: {
 		statements: 100,
-		branches: 90,
+		branches: 100,
 		functions: 100,
 		lines: 100
 	},
@@ -46,10 +46,10 @@ module.exports.coverageThreshold = {
 		lines: 100
 	},
 	'projects/oblique/src/lib/column-layout/*.ts': {
-		statements: 52,
+		statements: 51,
 		branches: 35,
 		functions: 27,
-		lines: 56
+		lines: 54
 	},
 	'projects/oblique/src/lib/document-meta/*.ts': {
 		statements: 60,
@@ -88,7 +88,7 @@ module.exports.coverageThreshold = {
 		lines: 95
 	},
 	'projects/oblique/src/lib/input-clear/*.ts': {
-		statements: 97,
+		statements: 96,
 		branches: 85,
 		functions: 100,
 		lines: 95
