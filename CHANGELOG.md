@@ -1,3 +1,9 @@
+# [9.3.2](https://github.com/oblique-bit/oblique/compare/9.3.1...9.3.2) (2022-12-16)
+
+## Bug Fixes
+
+- **master-layout:** ensure consitant button height in the main navigation ([8aeef53](https://github.com/oblique-bit/oblique/commit/8aeef5319f2047031c46b319b9384c2cd8076c78))
+
 # [9.3.1](https://github.com/oblique-bit/oblique/compare/9.3.0...9.3.1) (2022-11-25)
 
 ## Bug Fixes
