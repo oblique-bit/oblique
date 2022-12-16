@@ -10,7 +10,8 @@ export class UpdateV9toV10 implements ObIMigrations {
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(_options: IUpdateV9Schema): Rule {
-		return (tree: Tree, _context: SchematicContext) => chain([this.renameIcons(), this.removeObUseObliqueIcons()])(tree, _context);
+		return (tree: Tree, _context: SchematicContext) =>
+			chain([this.renameIcons(), this.removeObUseObliqueIcons(), this.removeTelemetryFromMainTs()])(tree, _context);
 	}
 
 	private renameIcons(): Rule {
@@ -34,6 +35,19 @@ export class UpdateV9toV10 implements ObIMigrations {
 				replaceInFile(tree, filePath, /(?:,\s*)?{\s*provide\s*:\s*ObUseObliqueIcons\s*,\s*useValue\s*:\s*(?:true|false)\s*}/, '');
 			};
 			return applyInTree(tree, apply, '*.ts');
+		});
+	}
+
+	private removeTelemetryFromMainTs(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove the OB_PROJECT_INFO injection token');
+			const apply = (filePath: string): void => {
+				removeImport(tree, filePath, 'OB_PROJECT_INFO', '@oblique/oblique');
+				replaceInFile(tree, filePath, /import\s+packageInfo\s+from\s+['"]\.\.\/package\.json['"]\s*;\s?/s, '');
+				replaceInFile(tree, filePath, /(?:,\s*)?{\s*provide\s*:\s*OB_PROJECT_INFO\s*,\s*useValue\s*:\s*{.*}\s*}/s, '');
+				replaceInFile(tree, filePath, /\s*\[\s*]\s*/, '');
+			};
+			return applyInTree(tree, apply, 'main.ts');
 		});
 	}
 }

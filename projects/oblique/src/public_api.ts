@@ -129,7 +129,6 @@ export {
 	ObUnsavedChangesModule,
 	ObUnsavedChangesService
 } from './lib/unsaved-changes/unsaved-changes.module';
-export {ObTelemetryService, OB_PROJECT_INFO} from './lib/telemetry/telemetry.service';
 export {OB_BANNER, OB_MATERIAL_CONFIG, getTranslateLoader, multiTranslateLoader, WINDOW} from './lib/utilities';
 export {ObIBanner, ObIMaterialConfig} from './lib/utilities.model';
 export {ObEColor} from './lib/style/colors.model';

@@ -12,8 +12,6 @@ import {ObInputClearModule} from '../input-clear/input-clear.module';
 import {ObOptionLabelIconModule} from './option-label-icon/option-label-icon.module';
 import {ObHighlightTextModule} from './highlight-text/highlight-text.module';
 import {obliqueProviders} from '../utilities';
-import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
-import {ObTelemetryService} from '../telemetry/telemetry.service';
 
 export {ObAutocompleteComponent} from './autocomplete.component';
 export {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup, OptionLabelIconPosition} from './autocomplete.model';
@@ -36,8 +34,4 @@ export {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup, OptionLabel
 	exports: [ObAutocompleteComponent],
 	providers: obliqueProviders()
 })
-export class ObAutocompleteModule {
-	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObAutocompleteModule);
-	}
-}
+export class ObAutocompleteModule {}

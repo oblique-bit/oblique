@@ -11,8 +11,6 @@ import {ObNotificationModule} from '../notification/notification.module';
 import {ObSpinnerModule} from '../spinner/spinner.module';
 import {ObScrollingModule} from '../scrolling/scrolling.module';
 import {ObOffCanvasModule} from '../off-canvas/off-canvas.module';
-import {ObTelemetryService} from '../telemetry/telemetry.service';
-import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {ObMasterLayoutComponent} from './master-layout/master-layout.component';
 import {ObMasterLayoutHeaderComponent} from './master-layout-header/master-layout-header.component';
 import {ObMasterLayoutHeaderToggleDirective} from './master-layout-header/master-layout-header-toggle.directive';
@@ -84,8 +82,4 @@ export {ObOutlineDirective} from './outline.directive';
 		ObOutlineDirective
 	]
 })
-export class ObMasterLayoutModule {
-	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObMasterLayoutModule);
-	}
-}
+export class ObMasterLayoutModule {}

@@ -5,8 +5,6 @@ import {TranslateModule} from '@ngx-translate/core';
 
 import {obliqueProviders} from '../utilities';
 import {ObAlertComponent} from './alert.component';
-import {ObTelemetryService} from '../telemetry/telemetry.service';
-import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 
 export {ObAlertComponent, OBLIQUE_HAS_ROLE_ALERT} from './alert.component';
 export {ObIAlertType} from './alert.model';
@@ -17,8 +15,4 @@ export {ObIAlertType} from './alert.model';
 	providers: obliqueProviders(),
 	exports: [ObAlertComponent]
 })
-export class ObAlertModule {
-	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObAlertModule);
-	}
-}
+export class ObAlertModule {}

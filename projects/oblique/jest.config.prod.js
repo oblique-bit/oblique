@@ -188,11 +188,5 @@ module.exports.coverageThreshold = {
 		branches: 85,
 		functions: 100,
 		lines: 95
-	},
-	'projects/oblique/src/lib/telemetry/*.ts': {
-		statements: 96,
-		branches: 77,
-		functions: 83,
-		lines: 95
 	}
 };
