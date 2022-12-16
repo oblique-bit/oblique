@@ -2,6 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
+import {ObIAlertType} from '@oblique/oblique';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {OBLIQUE_HAS_ROLE_ALERT, ObAlertComponent} from './alert.component';
@@ -63,12 +64,8 @@ describe('ObAlertComponent', () => {
 			expect(obAlertComponent).toBeTruthy();
 		});
 
-		it('should have ob-alert class', () => {
-			expect(debugElement.nativeElement.classList.contains('ob-alert')).toBe(true);
-		});
-
-		it('should have ob-angular class', () => {
-			expect(debugElement.nativeElement.classList.contains('ob-angular')).toBe(true);
+		it.each(['ob-alert', 'ob-angular'])('should have "%s" class', className => {
+			expect(debugElement.nativeElement.classList.contains(className)).toBe(true);
 		});
 
 		describe('type', () => {
@@ -84,52 +81,16 @@ describe('ObAlertComponent', () => {
 					expect(debugElement.nativeElement.classList.contains('ob-alert-info')).toBe(true);
 				});
 			});
-			describe('with info type', () => {
+			describe.each(['info', 'warning', 'error', 'success'])('with "%s" type', type => {
 				beforeEach(() => {
-					obAlertComponent.type = 'info';
+					obAlertComponent.type = type as ObIAlertType;
 					fixture.detectChanges();
 				});
-				it('should have "alert:info" icon', () => {
-					expect(obAlertComponent.icon).toBe('alert:info');
+				it(`should have "alert:${type}" icon`, () => {
+					expect(obAlertComponent.icon).toBe(`alert:${type}`);
 				});
-				it('should have class ob-alert-info', () => {
-					expect(debugElement.nativeElement.classList.contains('ob-alert-info')).toBe(true);
-				});
-			});
-			describe('with warning type', () => {
-				beforeEach(() => {
-					obAlertComponent.type = 'warning';
-					fixture.detectChanges();
-				});
-				it('should have "alert:warning" icon', () => {
-					expect(obAlertComponent.icon).toBe('alert:warning');
-				});
-				it('should have class ob-alert-warning', () => {
-					expect(debugElement.nativeElement.classList.contains('ob-alert-warning')).toBe(true);
-				});
-			});
-			describe('with error type', () => {
-				beforeEach(() => {
-					obAlertComponent.type = 'error';
-					fixture.detectChanges();
-				});
-				it('should have "alert:error" icon', () => {
-					expect(obAlertComponent.icon).toBe('alert:error');
-				});
-				it('should have class ob-alert-error', () => {
-					expect(debugElement.nativeElement.classList.contains('ob-alert-error')).toBe(true);
-				});
-			});
-			describe('with success type', () => {
-				beforeEach(() => {
-					obAlertComponent.type = 'success';
-					fixture.detectChanges();
-				});
-				it('should have "alert:success" icon', () => {
-					expect(obAlertComponent.icon).toBe('alert:success');
-				});
-				it('should have class ob-alert-success', () => {
-					expect(debugElement.nativeElement.classList.contains('ob-alert-success')).toBe(true);
+				it(`should have class ob-alert-${type}`, () => {
+					expect(debugElement.nativeElement.classList.contains(`ob-alert-${type}`)).toBe(true);
 				});
 			});
 			describe('with illegal type', () => {
@@ -140,7 +101,7 @@ describe('ObAlertComponent', () => {
 				it('should have "alert:null" as icon', () => {
 					expect(obAlertComponent.icon).toBe('alert:null');
 				});
-				it('should have class ob-alert-success', () => {
+				it('should not have class ob-alert-success', () => {
 					expect(debugElement.nativeElement.classList['ob-alert-success']).toBeUndefined();
 				});
 			});
