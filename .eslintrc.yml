@@ -78,6 +78,7 @@ overrides:
       "@typescript-eslint/prefer-enum-initializers": off
       "@typescript-eslint/prefer-readonly-parameter-types": off # forces "readonly" on functions where it is not allowed
       "@typescript-eslint/promise-function-async": off # no compatible with Angular's lazy loading
+      "@typescript-eslint/sort-type-constituents": off
       "@typescript-eslint/sort-type-union-intersection-members": off
       accessor-pairs: off
       capitalized-comments: off
@@ -172,7 +173,7 @@ overrides:
       "@typescript-eslint/no-misused-promises": off # this rule had an error with the update to eslint 8.25.0
       "@typescript-eslint/no-unsafe-call": off
       "@typescript-eslint/naming-convention": off
-      "@typescript-eslint/sort-type-constituents": off
+      "@typescript-eslint/prefer-nullish-coalescing": off
       max-params: off
       no-warning-comments: off
 
