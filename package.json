@@ -67,6 +67,9 @@
     "hook-post-checkout": "ts-node scripts/husky/dependency-update.ts",
     "prepare": "husky install"
   },
+  "engines": {
+    "node": ">=16.10.0"
+  },
   "jestSonar": {
     "reportPath": "./coverage",
     "reportFile": "sqr.xml",
