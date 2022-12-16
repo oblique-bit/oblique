@@ -12,12 +12,10 @@ module.exports.collectCoverageFrom = [
 	'!**/date-formatter.pipe.ts',
 	'!**/datepicker-i18n.service.ts',
 	'!**/http-api-interceptor.ts',
-	'!**/nested-form.component.ts',
 	'!**/off-canvas-backdrop.directive.ts',
 	'!**/off-canvas-container.directive.ts',
 	'!**/schema-required.directive.ts',
-	'!**/spinner.component.ts',
-	'!**/unsaved-changes.guard.ts'
+	'!**/spinner.component.ts'
 ];
 module.exports.coverageThreshold = {
 	/*
@@ -159,7 +157,7 @@ module.exports.coverageThreshold = {
 	},
 	'projects/oblique/src/lib/nested-form/*.ts': {
 		statements: 66,
-		branches: 100,
+		branches: 90,
 		functions: 25,
 		lines: 63
 	},
