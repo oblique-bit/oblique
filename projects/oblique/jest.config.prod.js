@@ -157,7 +157,7 @@ module.exports.coverageThreshold = {
 	},
 	'projects/oblique/src/lib/nested-form/*.ts': {
 		statements: 66,
-		branches: 100,
+		branches: 90,
 		functions: 25,
 		lines: 63
 	},
