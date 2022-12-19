@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
+import {MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
+import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
+import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
 import {MatIconModule} from '@angular/material/icon';
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -48,7 +48,7 @@ import {registerLocaleData} from '@angular/common';
 import localeFR from '@angular/common/locales/fr-CH';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 import {FONTS, FontService} from './common/font.service';
-import {MatButtonModule} from '@angular/material/button';
+import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
 
 registerLocaleData(localeFR);
 
