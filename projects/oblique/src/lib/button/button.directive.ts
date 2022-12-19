@@ -1,5 +1,5 @@
 import {Directive, ElementRef, HostBinding, Input, OnChanges, OnInit, Optional} from '@angular/core';
-import {MatAnchor, MatButton} from '@angular/material/button';
+import {MatLegacyAnchor as MatAnchor, MatLegacyButton as MatButton} from '@angular/material/legacy-button';
 
 @Directive({
 	selector: '[obButton]',

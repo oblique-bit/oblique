@@ -9,13 +9,14 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "target": "es2020",
+    "target": "ES2022",
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2016", "dom"],
     "paths": {
       "@oblique/oblique": ["projects/oblique/src/public_api"],
       "@oblique/*": ["projects/oblique/src/lib/*"]
     },
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "useDefineForClassFields": false
   }
 }

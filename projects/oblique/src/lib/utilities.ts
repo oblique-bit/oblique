@@ -5,10 +5,22 @@ import {ActivatedRoute} from '@angular/router';
 import {TranslateLoader, TranslateModuleConfig} from '@ngx-translate/core';
 import {ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions} from '@angular/material/form-field';
-import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions} from '@angular/material/checkbox';
-import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioDefaultOptions} from '@angular/material/radio';
-import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, MatSlideToggleDefaultOptions} from '@angular/material/slide-toggle';
+import {
+	MAT_LEGACY_FORM_FIELD_DEFAULT_OPTIONS as MAT_FORM_FIELD_DEFAULT_OPTIONS,
+	MatLegacyFormFieldDefaultOptions as MatFormFieldDefaultOptions
+} from '@angular/material/legacy-form-field';
+import {
+	MAT_LEGACY_CHECKBOX_DEFAULT_OPTIONS as MAT_CHECKBOX_DEFAULT_OPTIONS,
+	MatLegacyCheckboxDefaultOptions as MatCheckboxDefaultOptions
+} from '@angular/material/legacy-checkbox';
+import {
+	MAT_LEGACY_RADIO_DEFAULT_OPTIONS as MAT_RADIO_DEFAULT_OPTIONS,
+	MatLegacyRadioDefaultOptions as MatRadioDefaultOptions
+} from '@angular/material/legacy-radio';
+import {
+	MAT_LEGACY_SLIDE_TOGGLE_DEFAULT_OPTIONS as MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS,
+	MatLegacySlideToggleDefaultOptions as MatSlideToggleDefaultOptions
+} from '@angular/material/legacy-slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS, StepperOptions} from '@angular/cdk/stepper';
 import {ObIBanner, ObIMaterialConfig} from './utilities.model';
 
