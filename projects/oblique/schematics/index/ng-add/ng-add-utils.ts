@@ -26,7 +26,6 @@ const versions: Record<string, string | versionFunc> = {
 	'@angular/material': version => `^${version}.0.0`,
 	'@angular/core': `^15.0.0`,
 	'@angular/router': version => `^${version}.0.0`,
-	'@angular/localize': version => `^${version}.0.0`,
 	'@popperjs/core': '^2.0.0',
 
 	jest: '^28.0.0',

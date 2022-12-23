@@ -5,7 +5,6 @@ import {createSafeRule, infoMigration, infoText, installDependencies, isSuccessf
 import {obliqueFeatures} from './rules/obliqueFeatures';
 import {toolchain} from './rules/toolchain';
 import {oblique} from './rules/oblique';
-import {execSync} from 'child_process';
 
 export function addOblique(_options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -22,20 +21,10 @@ function preconditions(): Rule {
 		checkPrecondition(tree, '@angular/core');
 		checkPrecondition(tree, '@angular/router');
 
-		installAngularLocalizeIfMissing(tree, _context);
 		installPopperjsIfMissing(tree, _context);
 
 		return tree;
 	};
-}
-
-function installAngularLocalizeIfMissing(tree: Tree, context: SchematicContext): void {
-	const angularLocalizeVersion = getPreconditionVersion(tree, '@angular/localize');
-
-	if (angularLocalizeVersion) {
-		infoMigration(context, 'Installing missing peer dependency "@angular/localize"');
-		execSync(`ng add @angular/localize@${angularLocalizeVersion} --skip-confirmation`);
-	}
 }
 
 function installPopperjsIfMissing(tree: Tree, context: SchematicContext): void {
