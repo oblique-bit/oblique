@@ -21,7 +21,7 @@ function preconditions(): Rule {
 		checkPrecondition(tree, '@angular/core');
 		checkPrecondition(tree, '@angular/router');
 
-		installMissingDependencies(tree, _context, ['@popperjs/core']);
+		installMissingDependencies(tree, _context, ['@popperjs/core', 'angular-oauth2-oidc', 'jwt-decode']);
 
 		return tree;
 	};
