@@ -18,7 +18,7 @@ import {
 	routingModulePath
 } from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {ObliquePackage, addAngularConfigInList, addFile, createSafeRule, infoMigration, readFile} from '../../utils';
+import {ObliquePackage, addAngularConfigInList, addFile, createSafeRule, infoMigration} from '../../utils';
 
 export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -86,39 +86,18 @@ function addBanner(banner: boolean, environments: string): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (banner && environments) {
 			infoMigration(_context, 'Oblique feature: Adding environment banner');
-			addBannerData(tree);
-			tree = provideBanner(tree);
+			const provider = '{provide: OB_BANNER, useValue: environment.banner}';
+			const sourceFile = createSrcFile(tree, appModulePath);
+			const changes: Change[] = addProviderToModule(sourceFile, appModulePath, provider, ObliquePackage)
+				.concat(insertImport(sourceFile, appModulePath, 'environment', '../environments/environment'))
+				.filter((change: Change) => change instanceof InsertChange)
+				.map((change: InsertChange) => adaptInsertChange(tree, change, provider.replace(/\..*$/, ''), 'OB_BANNER'));
+
+			applyChanges(tree, appModulePath, changes);
 		}
 		return tree;
 	});
 }
-
-function addBannerData(tree: Tree): void {
-	const src = 'src/environments';
-	tree
-		.getDir(src)
-		.subfiles.map(file => `${src}/${file}`)
-		.forEach(file => {
-			const env = /environment\.(?<env>.*)\.ts/.exec(file)?.groups?.env || 'local';
-			const content = readFile(tree, file);
-			const banner = env === 'prod' ? 'undefined' : `{text: '${env}'}`;
-			if (content) {
-				tree.overwrite(file, content.replace('\n};', `,\n  banner: ${banner}\n};`));
-			}
-		});
-}
-
-function provideBanner(tree: Tree): Tree {
-	const provider = '{provide: OB_BANNER, useValue: environment.banner}';
-	const sourceFile = createSrcFile(tree, appModulePath);
-	const changes: Change[] = addProviderToModule(sourceFile, appModulePath, provider, ObliquePackage)
-		.concat(insertImport(sourceFile, appModulePath, 'environment', '../environments/environment'))
-		.filter((change: Change) => change instanceof InsertChange)
-		.map((change: InsertChange) => adaptInsertChange(tree, change, provider.replace(/\..*$/, ''), 'OB_BANNER'));
-
-	return applyChanges(tree, appModulePath, changes);
-}
-
 function addDefaultHomeComponent(prefix: string): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique feature: Adding default home component');

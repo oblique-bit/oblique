@@ -37,7 +37,7 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			addPrettier(options.eslint),
 			overwriteEslintRC(options.eslint, options.prefix),
 			addHusky(options.husky),
-			addEnvironmentFiles(options.environments)
+			addEnvironmentFiles(options.environments, options.banner)
 		])(tree, _context);
 }
 
@@ -210,7 +210,7 @@ function addHusky(husky: boolean): Rule {
 	});
 }
 
-function addEnvironmentFiles(environments: string): Rule {
+function addEnvironmentFiles(environments: string, hasBanner: boolean): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (environments) {
 			infoMigration(_context, 'Toolchain: Adding environment files');
@@ -218,12 +218,16 @@ function addEnvironmentFiles(environments: string): Rule {
 				.split(' ')
 				.map(environment => ({
 					fileName: environment === 'local' ? 'environment.ts' : `environment.${environment}.ts`,
-					content: 'export const environment = {};'
+					content: getEnvironmentFileContent(environment, hasBanner)
 				}))
 				.forEach(environment => addEnvironmentFile(tree, environment.fileName, environment.content));
 		}
 		return tree;
 	});
+}
+
+function getEnvironmentFileContent(environment: string, hasBanner: boolean): string {
+	return `export const environment = ${hasBanner && environment !== 'prod' ? `{banner: {text: '${environment.toUpperCase()}'}}` : '{}'};`;
 }
 
 function addEnvironmentFile(tree: Tree, fileName: string, fileContent: string): void {
