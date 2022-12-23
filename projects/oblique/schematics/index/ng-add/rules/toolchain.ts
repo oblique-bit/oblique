@@ -8,6 +8,7 @@ import {
 	infoMigration,
 	readFile,
 	removeAngularProjectsConfig,
+	replaceInFile,
 	setAngularProjectsConfig,
 	setRootAngularConfig,
 	writeFile
@@ -24,6 +25,7 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			removeI18nFromAngularJson(),
 			removeUnusedScripts(),
 			addPrefix(options.prefix),
+			updateExistingPrefixes(options.prefix),
 			addProxy(options.proxy),
 			addJest(options.jest),
 			addProtractor(options.protractor, options.jest),
@@ -99,8 +101,15 @@ function addPrefix(prefix: string): Rule {
 				prefix
 			}
 		});
-
 		return setAngularProjectsConfig(tree, ['prefix'], prefix);
+	});
+}
+
+function updateExistingPrefixes(prefix: string): Rule {
+	return createSafeRule((tree: Tree) => {
+		replaceInFile(tree, 'src/index.html', /<app-root><\/app-root>/g, `<${prefix}-root></${prefix}-root>`);
+		replaceInFile(tree, 'src/app/app.component.ts', /app-root/g, `${prefix}-root`);
+		return tree;
 	});
 }
 
