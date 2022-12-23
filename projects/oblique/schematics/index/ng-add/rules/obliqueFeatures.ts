@@ -26,7 +26,7 @@ export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 			addAjv(options.ajv),
 			addUnknownRoute(options.unknownRoute),
 			addInterceptors(options.httpInterceptors),
-			addBanner(options.banner),
+			addBanner(options.banner, options.environments),
 			addDefaultHomeComponent(options.prefix),
 			addExternalLink(options.externalLink)
 		])(tree, _context);
@@ -82,9 +82,9 @@ function addInterceptors(httpInterceptors: boolean): Rule {
 	});
 }
 
-function addBanner(banner: boolean): Rule {
+function addBanner(banner: boolean, environments: string): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		if (banner) {
+		if (banner && environments) {
 			infoMigration(_context, 'Oblique feature: Adding environment banner');
 			addBannerData(tree);
 			tree = provideBanner(tree);

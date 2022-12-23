@@ -51,7 +51,7 @@
       "type": "boolean",
       "default": false,
       "description": "Banner to show current environment",
-      "x-prompt": "[7 / 19] Add the ObBanner? It will show the current environment in the header."
+      "x-prompt": "[7 / 19] Add the ObBanner? It will show the current environment in the header.\n           This feature is only available if at least 1 environment will be defined at the next step."
     },
     "environments": {
       "type": "string",
