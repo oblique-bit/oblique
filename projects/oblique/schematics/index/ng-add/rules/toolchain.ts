@@ -5,6 +5,7 @@ import {
 	addFile,
 	createSafeRule,
 	deleteFile,
+	getAngularConfigs,
 	infoMigration,
 	readFile,
 	removeAngularProjectsConfig,
@@ -35,7 +36,8 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			addEslint(options.eslint),
 			addPrettier(options.eslint),
 			overwriteEslintRC(options.eslint, options.prefix),
-			addHusky(options.husky)
+			addHusky(options.husky),
+			addEnvironmentFiles(options.environments)
 		])(tree, _context);
 }
 
@@ -206,4 +208,26 @@ function addHusky(husky: boolean): Rule {
 		}
 		return tree;
 	});
+}
+
+function addEnvironmentFiles(environments: string): Rule {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		if (environments) {
+			infoMigration(_context, 'Toolchain: Adding environment files');
+			environments
+				.split(' ')
+				.map(environment => ({
+					fileName: environment === 'local' ? 'environment.ts' : `environment.${environment}.ts`,
+					content: 'export const environment = {};'
+				}))
+				.forEach(environment => addEnvironmentFile(tree, environment.fileName, environment.content));
+		}
+		return tree;
+	});
+}
+
+function addEnvironmentFile(tree: Tree, fileName: string, fileContent: string): void {
+	getAngularConfigs(tree, ['sourceRoot'])
+		.map(config => config.config as string)
+		.forEach(sourceRoot => writeFile(tree, `${sourceRoot}/environments/${fileName}`, fileContent));
 }

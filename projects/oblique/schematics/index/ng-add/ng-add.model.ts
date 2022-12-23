@@ -1,6 +1,7 @@
 export interface ObIOptionsSchema {
 	ajv: boolean;
 	banner: boolean;
+	environments: string;
 	eslint: boolean;
 	externalLink: boolean;
 	font: string;
