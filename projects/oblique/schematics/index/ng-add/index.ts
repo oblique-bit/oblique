@@ -21,19 +21,19 @@ function preconditions(): Rule {
 		checkPrecondition(tree, '@angular/core');
 		checkPrecondition(tree, '@angular/router');
 
-		installPopperjsIfMissing(tree, _context);
+		installMissingDependencies(tree, _context, ['@popperjs/core']);
 
 		return tree;
 	};
 }
 
-function installPopperjsIfMissing(tree: Tree, context: SchematicContext): void {
-	const popperjsVersion = getPreconditionVersion(tree, '@popperjs/core');
-
-	if (popperjsVersion) {
-		infoMigration(context, 'Installing missing peer dependency "@popperjs/core"');
-		addDependency(tree, '@popperjs/core');
-	}
+function installMissingDependencies(tree: Tree, context: SchematicContext, dependencies: string[]): void {
+	dependencies
+		.filter(dependency => getPreconditionVersion(tree, dependency))
+		.forEach(dependency => {
+			infoMigration(context, `Installing missing peer dependency "${dependency}"`);
+			addDependency(tree, dependency);
+		});
 }
 
 function finalize(options: ObIOptionsSchema): Rule {
