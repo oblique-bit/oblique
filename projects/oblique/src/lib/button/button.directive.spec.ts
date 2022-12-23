@@ -33,6 +33,14 @@ describe('ButtonDirective', () => {
 		}).compileComponents();
 	});
 
+	describe('without button', () => {
+		it('should throw an error', () => {
+			expect(() => new ObButtonDirective(undefined, undefined, undefined)).toThrowError(
+				'Couldn\'t find a reference to "MatButton", make sure that "MatLegacyButtonModule" is imported instead of "MatButtonModule".'
+			);
+		});
+	});
+
 	describe('primary button', () => {
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(ButtonDirectiveTestComponent, {
