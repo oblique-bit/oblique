@@ -42,6 +42,8 @@
 		.mat-form-field-label {
 			margin-top: 1px; // empiric value
 			line-height: 1;
+			overflow-x: clip;
+			overflow-y: visible;
 		}
 
 		.mat-form-field-suffix .mat-datepicker-toggle .mat-button-wrapper {
