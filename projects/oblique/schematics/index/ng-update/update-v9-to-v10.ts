@@ -11,7 +11,10 @@ export class UpdateV9toV10 implements ObIMigrations {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(_options: IUpdateV9Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) =>
-			chain([this.renameIcons(), this.removeObUseObliqueIcons(), this.removeTelemetryFromMainTs()])(tree, _context);
+			chain([this.renameIcons(), this.removeObUseObliqueIcons(), this.removeTelemetryFromMainTs(), this.removeBootstrapCSS()])(
+				tree,
+				_context
+			);
 	}
 
 	private renameIcons(): Rule {
@@ -48,6 +51,21 @@ export class UpdateV9toV10 implements ObIMigrations {
 				replaceInFile(tree, filePath, /\s*\[\s*]\s*/, '');
 			};
 			return applyInTree(tree, apply, 'main.ts');
+		});
+	}
+
+	private removeBootstrapCSS(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove oblique-bootstrap and oblique-utilities from angular.json');
+			const apply = (filePath: string): void => {
+				replaceInFile(
+					tree,
+					filePath,
+					/^\s*"node_modules\/@oblique\/oblique\/styles\/s?css\/oblique-(?:utilities|bootstrap)\.s?css",?\n?/gm,
+					''
+				);
+			};
+			return applyInTree(tree, apply, 'angular.json');
 		});
 	}
 }

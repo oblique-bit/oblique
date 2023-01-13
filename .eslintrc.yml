@@ -211,11 +211,6 @@ overrides:
       max-lines-per-function: off
 
   - files:
-      - polyfills.ts
-    rules:
-      spaced-comment: off
-
-  - files:
       - "*.html"
     extends:
       - plugin:@angular-eslint/template/all

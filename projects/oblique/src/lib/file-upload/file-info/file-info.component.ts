@@ -1,7 +1,7 @@
 import {SelectionModel} from '@angular/cdk/collections';
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, merge} from 'rxjs';
 import {map, takeUntil, tap} from 'rxjs/operators';

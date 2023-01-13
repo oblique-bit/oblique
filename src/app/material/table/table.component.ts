@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
-import {MatPaginator} from '@angular/material/paginator';
+import {MatLegacyPaginator as MatPaginator} from '@angular/material/legacy-paginator';
 import {AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {MatInput} from '@angular/material/input';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyInput as MatInput} from '@angular/material/legacy-input';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {ObPopUpService} from '@oblique/oblique';
 import {Observable, Subject, combineLatest} from 'rxjs';
 import {delay, filter, map, shareReplay, startWith, takeUntil, tap} from 'rxjs/operators';

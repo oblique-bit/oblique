@@ -1,8 +1,8 @@
-import {MatFormFieldDefaultOptions} from '@angular/material/form-field';
-import {MatCheckboxDefaultOptions} from '@angular/material/checkbox';
-import {MatRadioDefaultOptions} from '@angular/material/radio';
+import {MatLegacyFormFieldDefaultOptions as MatFormFieldDefaultOptions} from '@angular/material/legacy-form-field';
+import {MatLegacyCheckboxDefaultOptions as MatCheckboxDefaultOptions} from '@angular/material/legacy-checkbox';
+import {MatLegacyRadioDefaultOptions as MatRadioDefaultOptions} from '@angular/material/legacy-radio';
 import {StepperOptions} from '@angular/cdk/stepper';
-import {MatSlideToggleDefaultOptions} from '@angular/material/slide-toggle';
+import {MatLegacySlideToggleDefaultOptions as MatSlideToggleDefaultOptions} from '@angular/material/legacy-slide-toggle';
 
 export interface ObIBanner {
 	text: string;

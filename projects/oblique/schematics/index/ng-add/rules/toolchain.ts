@@ -5,6 +5,7 @@ import {
 	addFile,
 	createSafeRule,
 	deleteFile,
+	getAngularConfigs,
 	infoMigration,
 	readFile,
 	removeAngularProjectsConfig,
@@ -36,7 +37,7 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			addPrettier(options.eslint),
 			overwriteEslintRC(options.eslint, options.prefix),
 			addHusky(options.husky),
-			addTitle(options.title)
+			addEnvironmentFiles(options.environments, options.banner)
 		])(tree, _context);
 }
 
@@ -209,10 +210,28 @@ function addHusky(husky: boolean): Rule {
 	});
 }
 
-function addTitle(title: string): Rule {
+function addEnvironmentFiles(environments: string, hasBanner: boolean): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, `Toolchain: add title "${title}" in package.json`);
-		addRootProperty(tree, 'title', title);
+		if (environments) {
+			infoMigration(_context, 'Toolchain: Adding environment files');
+			environments
+				.split(' ')
+				.map(environment => ({
+					fileName: environment === 'local' ? 'environment.ts' : `environment.${environment}.ts`,
+					content: getEnvironmentFileContent(environment, hasBanner)
+				}))
+				.forEach(environment => addEnvironmentFile(tree, environment.fileName, environment.content));
+		}
 		return tree;
 	});
+}
+
+function getEnvironmentFileContent(environment: string, hasBanner: boolean): string {
+	return `export const environment = ${hasBanner && environment !== 'prod' ? `{banner: {text: '${environment.toUpperCase()}'}}` : '{}'};`;
+}
+
+function addEnvironmentFile(tree: Tree, fileName: string, fileContent: string): void {
+	getAngularConfigs(tree, ['sourceRoot'])
+		.map(config => config.config as string)
+		.forEach(sourceRoot => writeFile(tree, `${sourceRoot}/environments/${fileName}`, fileContent));
 }

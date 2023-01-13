@@ -24,19 +24,20 @@ const versions: Record<string, string | versionFunc> = {
 	'@ngx-translate/core': '^14.0.0',
 	'@angular/cdk': version => `^${version}.0.0`,
 	'@angular/material': version => `^${version}.0.0`,
-	'@angular/core': `^14.0.0`,
+	'@angular/core': `^15.0.0`,
 	'@angular/router': version => `^${version}.0.0`,
-	'@angular/localize': version => `^${version}.0.0`,
 	'@popperjs/core': '^2.0.0',
 
 	jest: '^28.0.0',
 	'@types/jest': '^28.0.0',
-	'@angular-builders/jest': '^14.0.0',
+	'@angular-builders/jest': version => `^${version}.0.0`,
 	'jest-sonar-reporter': '2.0.0',
 	'eslint-config-prettier': '^8.0.0',
 	'eslint-plugin-prettier': '^4.0.0',
 	prettier: '^2.0.0',
-	husky: '^4.0.0'
+	husky: '^8.0.0',
+	'angular-oauth2-oidc': version => `^${version}.0.0`,
+	'jwt-decode': '^3.0.0'
 };
 
 export function getPreconditionVersion(tree: Tree, pkg: string): string {

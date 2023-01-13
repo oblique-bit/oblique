@@ -19,7 +19,7 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["zone.js"],
             "preserveSymlinks": true,
             "assets": [
               {
@@ -194,6 +194,12 @@
     },
     "@schematics/angular:directive": {
       "prefix": "ob"
+    },
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
     }
   }
 }
