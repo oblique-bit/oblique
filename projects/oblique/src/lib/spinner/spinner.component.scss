@@ -6,13 +6,12 @@
 		border-radius: inherit;
 	}
 
-	.ob-icon-wrapper > * {
-		font-size: 4em;
+	svg {
+		display: block;
+		width: 4em; // empiric number given by the design team
 		animation: ob-spin variables.$ob-duration-default * 2 infinite linear;
-
-		svg {
-			vertical-align: top;
-		}
+		stroke-dashoffset: 55; // empiric number given by the design team
+		stroke-dasharray: 64 150; // empiric number given by the design team
 	}
 }
 
@@ -27,6 +26,11 @@
 @keyframes ob-spin {
 	0% {
 		transform: rotate(0deg);
+	}
+
+	50% {
+		stroke-dashoffset: 10; // empiric number given by the design team
+		stroke-dasharray: 70 90; // empiric number given by the design team
 	}
 
 	100% {
