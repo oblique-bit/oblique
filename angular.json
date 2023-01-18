@@ -41,7 +41,6 @@
             ],
             "styles": [
               "projects/oblique/src/styles/scss/oblique-core.scss",
-              "projects/oblique/src/styles/scss/themes/oblique-material.scss",
               {
                 "input": "projects/oblique/src/styles/css/frutiger.css",
                 "inject": false
