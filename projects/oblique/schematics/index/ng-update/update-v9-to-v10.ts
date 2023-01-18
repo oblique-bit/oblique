@@ -1,5 +1,5 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {applyInTree, createSafeRule, infoMigration, removeImport, replaceInFile} from '../utils';
+import {applyInTree, createSafeRule, infoMigration, removeImport, replaceInFile, setAngularProjectsConfig} from '../utils';
 import {ObIMigrations} from './ng-update.model';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -11,10 +11,13 @@ export class UpdateV9toV10 implements ObIMigrations {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(_options: IUpdateV9Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) =>
-			chain([this.renameIcons(), this.removeObUseObliqueIcons(), this.removeTelemetryFromMainTs(), this.removeBootstrapCSS()])(
-				tree,
-				_context
-			);
+			chain([
+				this.renameIcons(),
+				this.removeObUseObliqueIcons(),
+				this.removeTelemetryFromMainTs(),
+				this.removeBootstrapCSS(),
+				this.removeMaterialCSS()
+			])(tree, _context);
 	}
 
 	private renameIcons(): Rule {
@@ -66,6 +69,15 @@ export class UpdateV9toV10 implements ObIMigrations {
 				);
 			};
 			return applyInTree(tree, apply, 'angular.json');
+		});
+	}
+
+	private removeMaterialCSS(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove oblique-material from angular.json');
+			return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) =>
+				(config || []).filter((style: string) => !/node_modules\/@oblique\/oblique\/styles\/s?css\/oblique-material\.s?css/.test(style))
+			);
 		});
 	}
 }
