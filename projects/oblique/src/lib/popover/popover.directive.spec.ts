@@ -15,7 +15,7 @@ import {ObEToggleType} from './popover.model';
 })
 class TestPopoverComponent {}
 
-describe('Popover', () => {
+describe('ObPopover', () => {
 	let fixture: ComponentFixture<TestPopoverComponent>;
 	let directive: ObPopoverDirective;
 	let popover: HTMLElement;
