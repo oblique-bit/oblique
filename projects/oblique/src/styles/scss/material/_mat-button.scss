@@ -1,6 +1,6 @@
 @use "sass:selector";
-@use "../../core/variables" as core-variables;
-@use "../../core/mixins/tab-outline";
+@use "../core/variables" as core-variables;
+@use "../core/mixins/tab-outline";
 
 /**
  * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.

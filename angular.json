@@ -142,10 +142,6 @@
               {
                 "input": "projects/stylesBuilder/oblique-components.scss",
                 "inject": false
-              },
-              {
-                "input": "projects/oblique/src/styles/scss/themes/oblique-material.scss",
-                "inject": false
               }
             ]
           }
