@@ -12,6 +12,9 @@ import {ObPopoverModule} from '../popover/popover.module';
 export {ObSearchBoxComponent} from './search-box.component';
 export {ObISearchWidgetItem} from './search-box.model';
 
+/**
+ * @deprecated since version 10.0.0. It will be removed with Oblique 11. Autocomplete should be used instead.
+ */
 @NgModule({
 	imports: [CommonModule, FormsModule, MatIconModule, ObNavTreeModule, ObPopoverModule, RouterModule, TranslateModule],
 	declarations: [ObSearchBoxComponent],

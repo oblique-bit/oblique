@@ -19,6 +19,9 @@ let nextId = 0;
 /**
  * TODO this really needs some refactoring, but until Oblique 7, this is the only solution to avoid a breaking change
  */
+/**
+ * @deprecated since version 10.0.0. It will be removed with Oblique 11. Autocomplete should be used instead.
+ */
 @Component({
 	selector: 'ob-search-box',
 	exportAs: 'obSearchBox',
