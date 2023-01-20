@@ -50,6 +50,7 @@
   "i18n.oblique.http.error.status.504.title": "Gateway timeout",
   "i18n.oblique.http.error.status.504": "In order to process your request, the server acted as a gateway or proxy and did not receive a timely response itself.",
   "i18n.oblique.http.error.timeout": "The server is taking too long to respond. Please try again later or contact the support.",
+  "i18n.oblique.master-layout.accesskey.title": "Access keys",
   "i18n.oblique.master-layout.accesskey.main-content": "Skip to main content [0]",
   "i18n.oblique.master-layout.accesskey.navigation": "Skip to navigation [1]",
   "i18n.oblique.header.title": "Header area",
