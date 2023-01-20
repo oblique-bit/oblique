@@ -129,12 +129,12 @@ describe('ObPopover', () => {
 					expect(popover).toBeTruthy();
 				});
 
-				it('should not insert the popover after the toggle', () => {
-					expect(popover.previousSibling).not.toBe(toggle);
+				it('should insert the popover after the toggle', () => {
+					expect(popover.previousSibling).toBe(toggle);
 				});
 
-				it('should append the popover to the body', () => {
-					expect(popover.parentNode).toBe(document.querySelector('body'));
+				it('should not append the popover to the body', () => {
+					expect(popover.parentNode).not.toBe(document.querySelector('body'));
 				});
 
 				it('should have an id', () => {
@@ -413,7 +413,7 @@ describe('ObPopover', () => {
 				TestBed.overrideTemplate(
 					TestPopoverComponent,
 					`
-				<button type="button" [obPopover]="myPopover" [appendToBody]="false">Open Popover</button>
+				<button type="button" [obPopover]="myPopover" [appendToBody]="true">Open Popover</button>
 				<ng-template #myPopover>
 					<p>Hello World</p>
 				</ng-template>
@@ -432,12 +432,12 @@ describe('ObPopover', () => {
 					expect(popover).toBeTruthy();
 				});
 
-				it('should insert the popover after the toggle', () => {
-					expect(popover.previousSibling).toBe(toggle);
+				it('should not insert the popover after the toggle', () => {
+					expect(popover.previousSibling).not.toBe(toggle);
 				});
 
-				it('should not append the popover to the body', () => {
-					expect(popover.parentNode).not.toBe(document.body);
+				it('should append the popover to the body', () => {
+					expect(popover.parentNode).toBe(document.body);
 				});
 			});
 		});

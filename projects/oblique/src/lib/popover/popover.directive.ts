@@ -40,7 +40,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	@Input() id: string;
 	@Input() toggleHandle: ObEToggleType;
 	@Input() closeOnlyOnToggle: boolean;
-	@Input() appendToBody = true;
+	@Input() appendToBody = false;
 	@HostBinding('attr.aria-describedby') idContent: string;
 
 	private static idCount = 0;
