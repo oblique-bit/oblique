@@ -3,7 +3,14 @@
 	actions that are not critical to the application.
 </p>
 <p>
-	The template is rendered at the end of the body to avoid <code>z-index</code> problems and is even removed from the DOM when not active.
-	Its accessibility is ensured through the <code>aria-describedby</code> attribute and the <code>tooltip</code> role. The positioning is
+	The template can be rendered either right after its toggle or at the end of the body. In any case, the template is removed from the DOM
+	when not active. Adding it after the toggle element preserves the tabindex order. Focusable components should receive focus in an order
+	that preserves meaning and usability. See
+	<a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechanisms-focus-order"
+		>WCAG 2.0 Supporting Documents 2.4.3: Focus order</a
+	>. Unfortunately, this can lead to <code>z-index</code> problems that can only be solved by adding it at the end of the body.
+</p>
+<p>
+	Accessibility is ensured through the <code>aria-describedby</code> attribute and the <code>tooltip</code> role. The positioning is
 	achieved with the popper library, for more information see <a href="https://popper.js.org/">popper.js.org</a>.
 </p>
