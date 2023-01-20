@@ -68,6 +68,13 @@
           "default": "undefined",
           "values": ["ObEToggleType.CLICK", "ObEToggleType.HOVER"],
           "since": "8.1.0"
+        },
+        {
+          "name": "OBLIQUE_POPOVER_APPEND_TO_BODY",
+          "text": "The default value for <code>appendToBody</code> property that will be applied to all <code>ObPopoverDirective</code> throughout the application.",
+          "type": "boolean",
+          "default": "false",
+          "since": "10.0.0"
         }
       ]
     }

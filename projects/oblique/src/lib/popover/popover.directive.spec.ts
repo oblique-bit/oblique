@@ -2,7 +2,12 @@ import {Component, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {WINDOW} from '../utilities';
-import {OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE, OBLIQUE_POPOVER_TOGGLE_HANDLE, ObPopoverDirective} from './popover.directive';
+import {
+	OBLIQUE_POPOVER_APPEND_TO_BODY,
+	OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE,
+	OBLIQUE_POPOVER_TOGGLE_HANDLE,
+	ObPopoverDirective
+} from './popover.directive';
 import {ObEToggleType} from './popover.model';
 
 @Component({
@@ -439,6 +444,36 @@ describe('ObPopover', () => {
 				it('should append the popover to the body', () => {
 					expect(popover.parentNode).toBe(document.body);
 				});
+			});
+		});
+	});
+
+	describe('with OBLIQUE_POPOVER_APPEND_TO_BODY set to click', () => {
+		beforeEach(() => {
+			TestBed.overrideProvider(OBLIQUE_POPOVER_APPEND_TO_BODY, {useValue: true});
+
+			globalSetup();
+		});
+
+		describe('open', () => {
+			beforeEach(() => {
+				setupAndOpen();
+			});
+
+			afterEach(() => {
+				jest.useRealTimers();
+			});
+
+			it('should insert the popover', () => {
+				expect(popover).toBeTruthy();
+			});
+
+			it('should not insert the popover after the toggle', () => {
+				expect(popover.previousSibling).not.toBe(toggle);
+			});
+
+			it('should append the popover to the body', () => {
+				expect(popover.parentNode).toBe(document.body);
 			});
 		});
 	});

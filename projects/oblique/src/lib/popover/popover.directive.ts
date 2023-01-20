@@ -27,6 +27,7 @@ export const OBLIQUE_POPOVER_TOGGLE_HANDLE = new InjectionToken<ObEToggleType>('
 export const OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE = new InjectionToken<boolean>(
 	'All Oblique popover are only closed when clicking on the toggle element'
 );
+export const OBLIQUE_POPOVER_APPEND_TO_BODY = new InjectionToken<boolean>('Appends all popover to the body per default');
 
 @Directive({
 	selector: '[obPopover]',
@@ -57,6 +58,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		@Inject(DOCUMENT) document: Document,
 		@Optional() @Inject(OBLIQUE_POPOVER_TOGGLE_HANDLE) private readonly globalToggleHandle: ObEToggleType,
 		@Optional() @Inject(OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE) private readonly globalCloseOnlyOnToggle: boolean,
+		@Optional() @Inject(OBLIQUE_POPOVER_APPEND_TO_BODY) private readonly globalAppendToBody: boolean,
 		private readonly globalEventsService: ObGlobalEventsService,
 		private readonly viewContainerRef: ViewContainerRef
 	) {
@@ -68,6 +70,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		/* eslint-disable logical-assignment-operators */
 		this.id = this.id || `popover-${ObPopoverDirective.idCount++}`;
 		this.idContent = `${this.id}-content`;
+		this.appendToBody = this.globalAppendToBody ?? this.appendToBody;
 		this.updateToggleMethod();
 		this.updateCloseOnlyOnToggle();
 	}
