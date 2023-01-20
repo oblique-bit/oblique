@@ -25,7 +25,8 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addObliqueAssets(),
 			addFontStyle(options.font || 'none'),
 			addFontFiles(options.font || 'none'),
-			addLocales(options.locales.split(' '))
+			addLocales(options.locales.split(' ')),
+			raiseBuildBudget()
 		])(tree, _context);
 }
 
@@ -164,4 +165,26 @@ function addForRootToIconModule(tree: Tree): void {
 function addComment(tree: Tree): void {
 	const appModuleContent = readFile(tree, appModulePath);
 	tree.overwrite(appModulePath, appModuleContent.replace(/ObButtonModule,\n/, 'ObButtonModule, // add other Oblique modules as needed\n'));
+}
+
+function raiseBuildBudget(): Rule {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		infoMigration(_context, 'Raise build budget in angular.json');
+		return setAngularProjectsConfig(
+			tree,
+			['architect', 'build', 'configurations', 'production', 'budgets'],
+			[
+				{
+					type: 'initial',
+					maximumWarning: '1.3mb',
+					maximumError: '1.5mb'
+				},
+				{
+					type: 'anyComponentStyle',
+					maximumWarning: '3kb',
+					maximumError: '4kb'
+				}
+			]
+		);
+	});
 }
