@@ -5,14 +5,15 @@ import {
 	HostBinding,
 	Inject,
 	Input,
+	OnDestroy,
 	QueryList,
 	Renderer2,
 	ViewChild,
 	ViewChildren,
 	ViewEncapsulation
 } from '@angular/core';
-import {delay, map, mergeMap, startWith} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {delay, map, mergeMap, startWith, takeUntil} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
 import {ObScrollingEvents} from '../scrolling/scrolling-events';
 import {WINDOW} from '../utilities';
@@ -26,7 +27,7 @@ import {ObIToggleDirection} from './column-layout.model';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-column-layout'}
 })
-export class ObColumnLayoutComponent implements AfterViewInit {
+export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 	@Input() left = true;
 	@Input() right = true;
 	@Input() @HostBinding('class.ob-wider-columns') wider = false;
@@ -38,6 +39,7 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 	@ViewChildren('columnToggle') private readonly toggles: QueryList<ElementRef>;
 
 	private readonly window: Window;
+	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		private readonly el: ElementRef,
@@ -49,9 +51,19 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 	}
 
 	ngAfterViewInit(): void {
-		this.toggles.changes.pipe(mergeMap(() => this.scroll.scrolled)).subscribe(() => this.center());
+		this.toggles.changes
+			.pipe(
+				mergeMap(() => this.scroll.scrolled),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(() => this.center());
 		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft, 'left', 'right');
 		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight, 'right', 'left');
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	toggleLeft(): void {
