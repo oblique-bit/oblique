@@ -42,7 +42,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
-		private readonly el: ElementRef,
+		private readonly el: ElementRef<HTMLElement>,
 		private readonly renderer: Renderer2,
 		private readonly scroll: ObScrollingEvents,
 		@Inject(WINDOW) window
