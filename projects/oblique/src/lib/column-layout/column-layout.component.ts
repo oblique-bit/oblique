@@ -51,9 +51,11 @@ export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 		this.toggles.changes
 			.pipe(
 				mergeMap(() => this.scroll.scrolled),
+				map(() => this.el.nativeElement.getBoundingClientRect()),
+				map(dimension => ({top: dimension.top, height: dimension.height, windowHeight: this.window.innerHeight})),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(() => this.center());
+			.subscribe(dimension => this.center(dimension));
 		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft, 'left', 'right');
 		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight, 'right', 'left');
 	}
@@ -75,13 +77,13 @@ export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 		}
 	}
 
-	private static visibleHeight(dimension: DOMRect, window: Window): number {
-		if (dimension.top < 0 && dimension.top + dimension.height > window.innerHeight) {
-			return window.innerHeight;
+	private static visibleHeight(dimension: {top: number; height: number; windowHeight: number}): number {
+		if (dimension.top < 0 && dimension.top + dimension.height > dimension.windowHeight) {
+			return dimension.windowHeight;
 		} else if (dimension.top < 0) {
 			return dimension.height - dimension.top;
 		}
-		return window.innerHeight - dimension.top;
+		return dimension.windowHeight - dimension.top;
 	}
 
 	private getToggleDirection(
@@ -96,10 +98,9 @@ export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 		);
 	}
 
-	private center(): void {
-		const dimension: DOMRect = this.el.nativeElement.getBoundingClientRect();
-		const middle = ObColumnLayoutComponent.visibleHeight(dimension, this.window) / 2;
-		const top = this.window.innerHeight > dimension.height ? '50%' : `${middle}px`;
+	private center(dimension: {top: number; height: number; windowHeight: number}): void {
+		const middle = ObColumnLayoutComponent.visibleHeight(dimension) / 2;
+		const top = dimension.windowHeight > dimension.height ? '50%' : `${middle}px`;
 		this.toggles.forEach(toggle => this.renderer.setStyle(toggle.nativeElement, 'top', top));
 	}
 }
