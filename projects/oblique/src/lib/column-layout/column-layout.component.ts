@@ -12,8 +12,8 @@ import {
 	ViewChildren,
 	ViewEncapsulation
 } from '@angular/core';
-import {delay, map, startWith, takeUntil} from 'rxjs/operators';
-import {Observable, Subject} from 'rxjs';
+import {combineLatestWith, delay, map, startWith, takeUntil} from 'rxjs/operators';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
 import {ObScrollingEvents} from '../scrolling/scrolling-events';
 import {WINDOW} from '../utilities';
@@ -39,6 +39,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 	@ViewChildren('columnToggle') private readonly toggles: QueryList<ElementRef>;
 
 	private readonly unsubscribe = new Subject<void>();
+	private observer: ResizeObserver;
 
 	constructor(
 		private readonly el: ElementRef<HTMLElement>,
@@ -51,7 +52,13 @@ export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 		this.scroll.scrolled
 			.pipe(
 				map(() => this.el.nativeElement.getBoundingClientRect()),
-				map(dimension => ({top: dimension.top, height: dimension.height, windowHeight: this.window.innerHeight})),
+				combineLatestWith(this.getHeaderHeightObservable()),
+				map(([dimension, headerHeight]) => ({
+					top: dimension.top,
+					height: dimension.height,
+					windowHeight: this.window.innerHeight,
+					headerHeight
+				})),
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(dimension => this.center(dimension));
@@ -62,6 +69,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+		this.observer.disconnect();
 	}
 
 	toggleLeft(): void {
@@ -76,15 +84,6 @@ export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 		}
 	}
 
-	private static visibleHeight(dimension: {top: number; height: number; windowHeight: number}): number {
-		if (dimension.top < 0 && dimension.top + dimension.height > dimension.windowHeight) {
-			return dimension.windowHeight;
-		} else if (dimension.top < 0) {
-			return dimension.height - dimension.top;
-		}
-		return dimension.windowHeight - dimension.top;
-	}
-
 	private getToggleDirection(
 		column: ObColumnPanelDirective,
 		expandedDirection: ObIToggleDirection,
@@ -97,9 +96,30 @@ export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 		);
 	}
 
-	private center(dimension: {top: number; height: number; windowHeight: number}): void {
-		const middle = ObColumnLayoutComponent.visibleHeight(dimension) / 2;
-		const top = dimension.windowHeight > dimension.height ? '50%' : `${middle}px`;
-		this.toggles.forEach(toggle => this.renderer.setStyle(toggle.nativeElement, 'top', top));
+	// this is hacky, the correct way would be that the master layout exposes an observable with the header height
+	private getHeaderHeightObservable(): Observable<number> {
+		// this ensures a value is emitted even when the master layout isn't there
+		const headerHeight$ = new BehaviorSubject<number>(0);
+		this.observer = new ResizeObserver(entries => headerHeight$.next(entries[0].contentRect.height));
+		this.observer.observe(this.getMasterLayout(this.el.nativeElement.parentElement).querySelector('.ob-master-layout-header'));
+
+		return headerHeight$;
+	}
+
+	private getMasterLayout(element: HTMLElement): HTMLElement {
+		if (element.nodeName !== 'OB-MASTER-LAYOUT' && element.parentElement) {
+			return this.getMasterLayout(element.parentElement);
+		}
+
+		return element;
+	}
+
+	private center(dimension: {top: number; height: number; windowHeight: number; headerHeight: number}): void {
+		// Math.min(Math.max(...)) simply contains the computation between 2 values
+		const top = Math.min(Math.max(0, dimension.headerHeight - dimension.top), dimension.windowHeight - dimension.top);
+		const bottom = Math.min(dimension.windowHeight - dimension.top, dimension.height);
+		if (bottom > top) {
+			this.toggles.forEach(toggle => this.renderer.setStyle(toggle.nativeElement, 'top', `${(bottom + top) / 2}px`));
+		}
 	}
 }
