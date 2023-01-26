@@ -38,17 +38,14 @@ export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 	@ViewChild('columnRight') private readonly columnRight: ObColumnPanelDirective;
 	@ViewChildren('columnToggle') private readonly toggles: QueryList<ElementRef>;
 
-	private readonly window: Window;
 	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
 		private readonly el: ElementRef<HTMLElement>,
 		private readonly renderer: Renderer2,
 		private readonly scroll: ObScrollingEvents,
-		@Inject(WINDOW) window
-	) {
-		this.window = window; // because AoT don't accept interfaces as DI
-	}
+		@Inject(WINDOW) private readonly window: Window
+	) {}
 
 	ngAfterViewInit(): void {
 		this.toggles.changes
