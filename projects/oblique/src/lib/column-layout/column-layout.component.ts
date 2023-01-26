@@ -12,7 +12,7 @@ import {
 	ViewChildren,
 	ViewEncapsulation
 } from '@angular/core';
-import {delay, map, mergeMap, startWith, takeUntil} from 'rxjs/operators';
+import {delay, map, startWith, takeUntil} from 'rxjs/operators';
 import {Observable, Subject} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
 import {ObScrollingEvents} from '../scrolling/scrolling-events';
@@ -48,9 +48,8 @@ export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 	) {}
 
 	ngAfterViewInit(): void {
-		this.toggles.changes
+		this.scroll.scrolled
 			.pipe(
-				mergeMap(() => this.scroll.scrolled),
 				map(() => this.el.nativeElement.getBoundingClientRect()),
 				map(dimension => ({top: dimension.top, height: dimension.height, windowHeight: this.window.innerHeight})),
 				takeUntil(this.unsubscribe)
