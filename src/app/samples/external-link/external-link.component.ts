@@ -14,8 +14,8 @@ export class ExternalLinkComponent {
 	iconPosition = 'left';
 
 	iconPositions: IconPosition[] = [
-		{value: 'right', viewValue: 'Right'},
 		{value: 'left', viewValue: 'Left'},
+		{value: 'right', viewValue: 'Right'},
 		{value: 'none', viewValue: 'None'}
 	];
 }
