@@ -12,10 +12,13 @@
 		</p>
 	</ng-container>
 
-	<div column-right-content>
-		<mat-radio-group [(ngModel)]="iconPosition">
-			<mat-radio-button *ngFor="let variant of iconPositions" [value]="variant.value">{{ variant.viewValue }}</mat-radio-button>
-		</mat-radio-group>
-	</div>
+	<ng-container column-right-content>
+		<fieldset>
+			<legend>Icon position</legend>
+			<mat-radio-group [(ngModel)]="iconPosition">
+				<mat-radio-button *ngFor="let variant of iconPositions" [value]="variant.value">{{ variant.viewValue }}</mat-radio-button>
+			</mat-radio-group>
+		</fieldset>
+	</ng-container>
 </ob-column-layout>
 <sc-api component="external-link"></sc-api>

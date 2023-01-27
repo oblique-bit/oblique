@@ -7,7 +7,8 @@ interface IconPosition {
 
 @Component({
 	selector: 'sc-external-link',
-	templateUrl: './external-link.component.html'
+	templateUrl: './external-link.component.html',
+	styleUrls: ['./external-link.component.scss']
 })
 export class ExternalLinkComponent {
 	iconPosition = 'left';
