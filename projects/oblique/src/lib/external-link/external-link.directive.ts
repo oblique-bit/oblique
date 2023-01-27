@@ -34,6 +34,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	) {
 		this.host = elRef.nativeElement;
 		this.icon = this.icon || this.config?.icon || 'left';
+		this.isExternalLink = this.config?.isExternalLink || 'auto';
 	}
 
 	ngOnInit(): void {

@@ -259,7 +259,8 @@ describe('ObExternalLink', () => {
 
 	describe('With custom configuration', () => {
 		beforeEach(() => {
-			TestBed.overrideProvider(EXTERNAL_LINK, {useValue: {rel: 'custom rel', target: 'custom target', icon: 'left'}});
+			TestBed.overrideTemplate(TestComponent, '<a>Link</a>');
+			TestBed.overrideProvider(EXTERNAL_LINK, {useValue: {rel: 'custom rel', target: 'custom target', icon: 'left', isExternalLink: true}});
 			globalSetup();
 		});
 
@@ -273,6 +274,10 @@ describe('ObExternalLink', () => {
 
 		it('should have the icon on the left', () => {
 			expect(element.firstChild instanceof HTMLSpanElement).toBe(true);
+		});
+
+		it('should have the "ob-external-link" class', () => {
+			expect(element.classList).toContain('ob-external-link');
 		});
 	});
 
