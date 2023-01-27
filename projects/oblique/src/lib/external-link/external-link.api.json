@@ -44,7 +44,7 @@
           "name": "EXTERNAL_LINK",
           "text": "The default external links configuration",
           "type": "ObIExternalLink",
-          "default": "{rel: 'noopener noreferrer', target: '_blank', icon: 'right', isExternalLink: 'auto'}]",
+          "default": "{rel: 'noopener noreferrer', target: '_blank', icon: 'left', isExternalLink: 'auto'}]",
           "since": "6.1.0",
           "updated": "10.0.0"
         }
