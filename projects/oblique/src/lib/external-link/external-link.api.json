@@ -4,9 +4,10 @@
     {
       "name": "ObExternalLinkDirective",
       "usage": "This directive is transparent and automatically enhance external links. It is applied by importing the <code>ObExternalLinkModule</code>.",
-      "selector": "a[href]",
+      "selector": "a",
       "type": "directive",
       "since": "6.1.0",
+      "updated": "10.0.0",
       "inputs": [
         {
           "name": "rel",

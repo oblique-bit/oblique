@@ -286,12 +286,12 @@ describe('ObExternalLink', () => {
 			expect(element.classList.contains('ob-external-link')).toBe(false);
 		});
 
-		it('should create an instance', () => {
+		it('should create a component instance', () => {
 			expect(fixture.componentInstance).toBeTruthy();
 		});
 
 		it('should create an instance', () => {
-			expect(directive).toBe(null);
+			expect(directive).toBeTruthy();
 		});
 
 		it('should not translate', () => {

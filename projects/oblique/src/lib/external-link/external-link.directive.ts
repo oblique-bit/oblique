@@ -1,19 +1,18 @@
 import {Directive, ElementRef, HostBinding, Inject, Input, OnChanges, OnDestroy, OnInit, Optional, Renderer2} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {TranslateService} from '@ngx-translate/core';
-import {Subject} from 'rxjs';
-import {first, takeUntil, tap} from 'rxjs/operators';
+import {Subject, switchMap} from 'rxjs';
+import {first, startWith, takeUntil, tap} from 'rxjs/operators';
 import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
-	selector: 'a[href]',
-	host: {class: 'ob-external-link'}
+	selector: 'a'
 })
 export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	@Input() @HostBinding('attr.rel') rel: string;
 	@Input() @HostBinding('attr.target') target: string;
-	@Input() @HostBinding('attr.href') href: string;
+	@HostBinding('class.ob-external-link') isLinkExternal = false;
 	@Input() icon: ObEExternalLinkIcon;
 
 	private readonly unsubscribe = new Subject<void>();
@@ -21,6 +20,9 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	private readonly host: HTMLAnchorElement;
 	private hasIcon = false;
 	private readonly screenReaderOnlyTextElement: HTMLSpanElement = this.createScreenReaderOnlyTextElement();
+	private readonly isLinkExternal$ = new Subject<boolean>();
+	private defaultRel: string;
+	private defaultTarget: string;
 
 	constructor(
 		@Optional() @Inject(EXTERNAL_LINK) private readonly config,
@@ -34,27 +36,45 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	ngOnInit(): void {
-		this.addScreenReaderOnlyTextElement();
+		this.defaultRel = this.rel;
+		this.defaultTarget = this.target;
 		this.translateScreenReaderOnlyText();
 		this.iconRegistry
 			.getNamedSvgIcon('external')
 			.pipe(
 				first(),
-				tap(svg => (this.iconElement = this.createIconElement(svg)))
+				tap(svg => (this.iconElement = this.createIconElement(svg))),
+				switchMap(() => this.isLinkExternal$.pipe(startWith(this.isUrlExternal(this.host.href)))),
+				tap(isLinkExternal => (this.isLinkExternal = isLinkExternal))
 			)
-			.subscribe(() => this.addIcon());
+			.subscribe(isLinkExternal => this.manageLink(isLinkExternal));
 	}
 
 	ngOnChanges(): void {
-		this.removeIcon();
-		this.rel = ObExternalLinkDirective.initializeAttribute(this.rel, this.config?.rel || 'noopener noreferrer');
-		this.target = ObExternalLinkDirective.initializeAttribute(this.target, this.config?.target || '_blank');
-		this.addIcon();
+		this.isLinkExternal$.next(this.isUrlExternal(this.host.href));
 	}
 
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+	}
+
+	private isUrlExternal(url: string | undefined): boolean {
+		return url ? !url.includes(window.location.host) : false;
+	}
+
+	private manageLink(isLinkExternal: boolean): void {
+		this.removeIcon();
+		if (isLinkExternal) {
+			this.rel = ObExternalLinkDirective.initializeAttribute(this.rel, this.config?.rel || 'noopener noreferrer');
+			this.target = ObExternalLinkDirective.initializeAttribute(this.target, this.config?.target || '_blank');
+			this.addScreenReaderOnlyTextElement();
+			this.addIcon();
+		} else {
+			this.rel = this.defaultRel;
+			this.target = this.defaultTarget;
+			this.removeScreenReaderOnlyTextElement();
+		}
 	}
 
 	private static initializeAttribute(currentValue: string, defaultValue: string): string {
@@ -63,6 +83,9 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 
 	private addScreenReaderOnlyTextElement(): void {
 		this.renderer.appendChild(this.host, this.screenReaderOnlyTextElement);
+	}
+	private removeScreenReaderOnlyTextElement(): void {
+		this.renderer.removeChild(this.host, this.screenReaderOnlyTextElement);
 	}
 
 	private translateScreenReaderOnlyText(): void {
