@@ -6,6 +6,11 @@ interface IconPosition {
 	viewValue: string;
 }
 
+interface IsLinkExternalState {
+	value: boolean | 'auto';
+	viewValue: string;
+}
+
 @Component({
 	selector: 'sc-external-link',
 	templateUrl: './external-link.component.html',
@@ -13,10 +18,17 @@ interface IconPosition {
 })
 export class ExternalLinkComponent {
 	iconPosition: ObEExternalLinkIcon = 'left';
+	isExternal: boolean | 'auto' = 'auto';
 
 	iconPositions: IconPosition[] = [
 		{value: 'left', viewValue: 'Left'},
 		{value: 'right', viewValue: 'Right'},
 		{value: 'none', viewValue: 'None'}
+	];
+
+	isLinkExternal: IsLinkExternalState[] = [
+		{value: 'auto', viewValue: 'Auto'},
+		{value: true, viewValue: 'True'},
+		{value: false, viewValue: 'False'}
 	];
 }
