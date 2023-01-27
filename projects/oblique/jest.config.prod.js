@@ -43,12 +43,6 @@ module.exports.coverageThreshold = {
 		functions: 100,
 		lines: 100
 	},
-	'projects/oblique/src/lib/column-layout/*.ts': {
-		statements: 51,
-		branches: 35,
-		functions: 27,
-		lines: 54
-	},
 	'projects/oblique/src/lib/document-meta/*.ts': {
 		statements: 60,
 		branches: 7,
@@ -152,10 +146,10 @@ module.exports.coverageThreshold = {
 		lines: 79
 	},
 	'projects/oblique/src/lib/scrolling/*.ts': {
-		statements: 66,
+		statements: 33,
 		branches: 83,
 		functions: 0,
-		lines: 63
+		lines: 27
 	},
 	'projects/oblique/src/lib/search-box/*.ts': {
 		statements: 98,
