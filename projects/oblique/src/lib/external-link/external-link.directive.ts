@@ -33,7 +33,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 		private readonly iconRegistry: MatIconRegistry
 	) {
 		this.host = elRef.nativeElement;
-		this.icon = this.icon || this.config?.icon || 'left';
+		this.icon = this.config?.icon || 'left';
 		this.isExternalLink = this.config?.isExternalLink || 'auto';
 	}
 
