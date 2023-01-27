@@ -12,6 +12,7 @@ import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	@Input() @HostBinding('attr.rel') rel: string;
 	@Input() @HostBinding('attr.target') target: string;
+	@Input() isExternalLink: boolean | 'auto' = 'auto';
 	@HostBinding('class.ob-external-link') isLinkExternal = false;
 	@Input() icon: ObEExternalLinkIcon;
 
@@ -60,7 +61,10 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	private isUrlExternal(url: string | undefined): boolean {
-		return url ? !url.includes(window.location.host) : false;
+		if (this.isExternalLink === 'auto') {
+			return url ? !url.includes(window.location.host) : false;
+		}
+		return this.isExternalLink;
 	}
 
 	private manageLink(isLinkExternal: boolean): void {
