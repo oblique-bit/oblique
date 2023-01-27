@@ -95,7 +95,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 		expandedDirection: ObIToggleDirection,
 		collapsedDirection: ObIToggleDirection
 	): Observable<ObIToggleDirection> {
-		return column?.toggled?.pipe(
+		return column?.toggled.pipe(
 			startWith(false),
 			delay(0),
 			map(collapsed => (collapsed ? collapsedDirection : expandedDirection))
