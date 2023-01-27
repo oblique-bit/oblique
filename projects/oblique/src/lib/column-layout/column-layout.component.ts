@@ -1,6 +1,7 @@
 import {
 	AfterViewInit,
 	Component,
+	DoCheck,
 	ElementRef,
 	HostBinding,
 	Inject,
@@ -12,10 +13,9 @@ import {
 	ViewChildren,
 	ViewEncapsulation
 } from '@angular/core';
-import {combineLatestWith, delay, map, startWith, takeUntil} from 'rxjs/operators';
+import {combineLatestWith, delay, distinctUntilChanged, map, startWith, takeUntil} from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
-import {ObScrollingEvents} from '../scrolling/scrolling-events';
 import {WINDOW} from '../utilities';
 import {ObIToggleDirection} from './column-layout.model';
 
@@ -27,7 +27,7 @@ import {ObIToggleDirection} from './column-layout.model';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-column-layout'}
 })
-export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
+export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestroy {
 	@Input() left = true;
 	@Input() right = true;
 	@Input() @HostBinding('class.ob-wider-columns') wider = false;
@@ -39,24 +39,29 @@ export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 	@ViewChildren('columnToggle') private readonly toggles: QueryList<ElementRef>;
 
 	private readonly unsubscribe = new Subject<void>();
+	private readonly dimensionChange = new Subject<{top: number; height: number; windowHeight: number}>();
 	private observer: ResizeObserver;
 
 	constructor(
 		private readonly el: ElementRef<HTMLElement>,
 		private readonly renderer: Renderer2,
-		private readonly scroll: ObScrollingEvents,
 		@Inject(WINDOW) private readonly window: Window
 	) {}
 
+	ngDoCheck(): void {
+		const {top, height} = this.el.nativeElement.getBoundingClientRect();
+		this.dimensionChange.next({top, height, windowHeight: this.window.innerHeight});
+	}
+
 	ngAfterViewInit(): void {
-		this.scroll.scrolled
+		this.dimensionChange
 			.pipe(
-				map(() => this.el.nativeElement.getBoundingClientRect()),
+				distinctUntilChanged((previous, current) =>
+					Object.keys(previous).reduce((hasNotChanged, key) => hasNotChanged && previous[key] === current[key], true)
+				),
 				combineLatestWith(this.getHeaderHeightObservable()),
 				map(([dimension, headerHeight]) => ({
-					top: dimension.top,
-					height: dimension.height,
-					windowHeight: this.window.innerHeight,
+					...dimension,
 					headerHeight
 				})),
 				takeUntil(this.unsubscribe)
@@ -69,6 +74,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, OnDestroy {
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+		this.dimensionChange.complete();
 		this.observer.disconnect();
 	}
 
