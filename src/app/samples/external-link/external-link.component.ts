@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {ObEExternalLinkIcon} from '@oblique/oblique';
 
 interface IconPosition {
 	value: string;
@@ -11,7 +12,7 @@ interface IconPosition {
 	styleUrls: ['./external-link.component.scss']
 })
 export class ExternalLinkComponent {
-	iconPosition = 'left';
+	iconPosition: ObEExternalLinkIcon = 'left';
 
 	iconPositions: IconPosition[] = [
 		{value: 'left', viewValue: 'Left'},
