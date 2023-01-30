@@ -4,9 +4,10 @@
     {
       "name": "ObExternalLinkDirective",
       "usage": "This directive is transparent and automatically enhance external links. It is applied by importing the <code>ObExternalLinkModule</code>.",
-      "selector": "a[href]",
+      "selector": "a",
       "type": "directive",
       "since": "6.1.0",
+      "updated": "10.0.0",
       "inputs": [
         {
           "name": "rel",
@@ -29,6 +30,13 @@
           "since": "6.1.0",
           "default": "left",
           "values": ["none", "left", "right"]
+        },
+        {
+          "name": "isExternalLink",
+          "text": "Defines how the link is treated per default. External links do receive the <code>ob-external-link</code> class as well as an icon.<br/>With <code>true</code>, the link will always be treated as an external one, regardless of its <code>href</code> attribute.<br/>With <code>false</code> the link will always be treated as an internal one, regardless of its <code>href</code> attribute.<br/> With <code>auto</code> the link will be treated as internal if its <code>href</code> attribute matches the current url.",
+          "type": "boolean | 'auto'",
+          "since": "10.0.0",
+          "default": "'auto'"
         }
       ],
       "tokens": [
@@ -36,8 +44,9 @@
           "name": "EXTERNAL_LINK",
           "text": "The default external links configuration",
           "type": "ObIExternalLink",
-          "default": "{rel: 'noopener noreferrer', target: '_blank', icon: 'right'}]",
-          "since": "6.1.0"
+          "default": "{rel: 'noopener noreferrer', target: '_blank', icon: 'left', isExternalLink: 'auto'}]",
+          "since": "6.1.0",
+          "updated": "10.0.0"
         }
       ]
     }

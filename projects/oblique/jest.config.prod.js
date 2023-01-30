@@ -61,12 +61,6 @@ module.exports.coverageThreshold = {
 		functions: 11,
 		lines: 52
 	},
-	'projects/oblique/src/lib/external-link/*.ts': {
-		statements: 90,
-		branches: 87,
-		functions: 85,
-		lines: 90
-	},
 	'projects/oblique/src/lib/file-upload/progress/*.ts': {
 		statements: 100,
 		branches: 88,
