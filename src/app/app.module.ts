@@ -52,6 +52,7 @@ import localeFR from '@angular/common/locales/fr-CH';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 import {FONTS, FontService} from './common/font.service';
 import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
+import {infoContact, infoLinks, profileLinks} from './service-navigation.config';
 
 registerLocaleData(localeFR);
 
@@ -117,5 +118,17 @@ export class AppModule {
 		config.locale.locales = ['en-us', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
 		font.setFont(FONTS.FRUTIGER);
+		this.configureServiceSNavigation(config);
+	}
+
+	private configureServiceSNavigation(config: ObMasterLayoutConfig): void {
+		config.header.serviceNavigation.profileLinks = profileLinks;
+		config.header.serviceNavigation.infoLinks = infoLinks;
+		config.header.serviceNavigation.infoContact = infoContact;
+		config.header.serviceNavigation.displayApplications = true;
+		config.header.serviceNavigation.displayAuthentication = true;
+		config.header.serviceNavigation.displayInfo = true;
+		config.header.serviceNavigation.displayMessage = true;
+		config.header.serviceNavigation.displayProfile = true;
 	}
 }
