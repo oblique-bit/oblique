@@ -68,7 +68,22 @@
 		</div>
 		<ng-container *ngIf="useServiceNavigation">
 			<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.service-navigation.title" | translate }}</h2>
-			<ob-service-navigation [environment]="pamsConfiguration?.environment" [rootUrl]="pamsConfiguration?.rootUrl">
+			<ob-service-navigation
+				[infoContact]="serviceNavigationConfig?.infoContact"
+				[infoLinks]="serviceNavigationConfig?.infoLinks"
+				[maxFavoriteApplications]="serviceNavigationConfig?.maxFavoriteApplications"
+				[maxLastUsedApplications]="serviceNavigationConfig?.maxLastUsedApplications"
+				[profileLinks]="serviceNavigationConfig?.profileLinks"
+				[returnUrl]="serviceNavigationConfig?.returnUrl"
+				[displayApplications]="serviceNavigationConfig?.displayApplications"
+				[displayAuthentication]="serviceNavigationConfig?.displayAuthentication"
+				[displayInfo]="serviceNavigationConfig?.displayInfo"
+				[displayLanguages]="serviceNavigationConfig?.displayLanguages"
+				[displayMessage]="serviceNavigationConfig?.displayMessage"
+				[displayProfile]="serviceNavigationConfig?.displayProfile"
+				[environment]="pamsConfiguration?.environment"
+				[rootUrl]="pamsConfiguration?.rootUrl"
+			>
 				<ng-template #customWidgetTemplate *ngFor="let template of templates">
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</ng-template>

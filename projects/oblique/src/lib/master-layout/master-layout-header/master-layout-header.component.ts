@@ -30,7 +30,8 @@ import {
 	ObILanguage,
 	ObILocaleObject,
 	ObIMasterLayoutEvent,
-	ObINavigationLink
+	ObINavigationLink,
+	ObIServiceNavigationConfig
 } from '../master-layout.model';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
@@ -49,6 +50,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
 	useServiceNavigation = false;
+	serviceNavigationConfig: ObIServiceNavigationConfig;
 	@Input() navigation: ObINavigationLink[];
 	@HostBinding('class.ob-master-layout-header-small') isSmall = this.masterLayout.header.isSmall;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
@@ -78,6 +80,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.banner = this.initializeBanner(bannerToken);
 		this.home$ = this.masterLayout.homePageRouteChange$;
 		this.useServiceNavigation = useServiceNavigation ?? false;
+		this.serviceNavigationConfig = this.config.header.serviceNavigation;
 	}
 
 	ngAfterViewInit(): void {

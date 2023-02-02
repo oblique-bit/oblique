@@ -129,7 +129,7 @@
       "type": "injectable(config)",
       "usage": "This is the default configuration of the master layout. Values can be tweaked by injecting this service into <code>app.module.ts</code> to customize the global structure of the application.",
       "since": "2.0.0",
-      "updated": "8.0.0",
+      "updated": "10.1.0",
       "variables": [
         {
           "name": "homePageRoute",
@@ -242,6 +242,20 @@
           "type": "boolean",
           "default": true,
           "since": "8.0.0"
+        },
+        {
+          "name": "header.serviceNavigation",
+          "text": "The default configuration for the service navigation. This property is <code>readonly</code> to ensure no option is set to <code>undefined</code>.",
+          "type": "ObIServiceNavigationConfig",
+          "default": {
+            "profileLinks": [],
+            "infoLinks": [],
+            "infoContact": {},
+            "maxLastUsedApplications": 3,
+            "maxFavoriteApplications": 3,
+            "displayLanguages": true
+          },
+          "since": "10.1.0"
         },
         {
           "name": "navigation.isFullWidth",
@@ -680,6 +694,106 @@
           "type": "string",
           "isOptional": true,
           "default": null,
+          "since": "10.1.0"
+        }
+      ]
+    },
+    {
+      "name": "ObIServiceNavigationConfig",
+      "type": "interface",
+      "usage": "The structure of the service navigation configuration",
+      "since": "10.1.0",
+      "variables": [
+        {
+          "name": "profileLinks",
+          "text": "A list of links to be displayed in the profile widget. Each link label and url are localized.",
+          "type": "ObIServiceNavigationLink[]",
+          "isOptional": true,
+          "since": "10.1.0"
+        },
+        {
+          "name": "infoLinks",
+          "text": "A list of links to be displayed in the info widget. Each link label and url are localized.",
+          "type": "ObIServiceNavigationLink[]",
+          "isOptional": true,
+          "since": "10.1.0"
+        },
+        {
+          "name": "infoContact",
+          "text": "An object with a contact phone and email.",
+          "type": "ObIServiceNavigationContact",
+          "isOptional": true,
+          "since": "10.1.0"
+        },
+        {
+          "name": "maxLastUsedApplications",
+          "text": "The maximum number of listed last used applications in the applications widget.",
+          "type": "number",
+          "isOptional": true,
+          "default": 3,
+          "since": "10.1.0"
+        },
+        {
+          "name": "maxFavoriteApplications",
+          "text": "The maximum number of listed favorite applications in the applications widget.",
+          "type": "number",
+          "isOptional": true,
+          "default": 3,
+          "since": "10.1.0"
+        },
+        {
+          "name": "returnUrl",
+          "text": "The url that will be called once the login process is complete.",
+          "type": "string",
+          "isOptional": true,
+          "since": "10.1.0"
+        },
+        {
+          "name": "displayApplications",
+          "text": "Indicates if the applications widget should be displayed.",
+          "type": "boolean",
+          "isOptional": true,
+          "default": false,
+          "since": "10.1.0"
+        },
+        {
+          "name": "displayAuthentication",
+          "text": "Indicates if the authentication widget should be displayed.",
+          "type": "boolean",
+          "isOptional": true,
+          "default": false,
+          "since": "10.1.0"
+        },
+        {
+          "name": "displayInfo",
+          "text": "Indicates if the info widget should be displayed.",
+          "type": "boolean",
+          "isOptional": true,
+          "default": false,
+          "since": "10.1.0"
+        },
+        {
+          "name": "displayLanguages",
+          "text": "Indicates if the language selection widget should be displayed.",
+          "type": "boolean",
+          "isOptional": true,
+          "default": true,
+          "since": "10.1.0"
+        },
+        {
+          "name": "displayMessage",
+          "text": "Indicates if the message widget should be displayed.",
+          "type": "boolean",
+          "isOptional": true,
+          "default": false,
+          "since": "10.1.0"
+        },
+        {
+          "name": "displayProfile",
+          "text": "Indicates if the profile widget should be displayed.",
+          "type": "boolean",
+          "isOptional": true,
+          "default": false,
           "since": "10.1.0"
         }
       ]

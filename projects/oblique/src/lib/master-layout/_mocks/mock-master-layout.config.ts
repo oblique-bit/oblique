@@ -29,7 +29,8 @@ export class ObMockMasterLayoutConfig {
 		isSticky: true,
 		isSmall: false,
 		isCustom: false,
-		reduceOnScroll: true
+		reduceOnScroll: true,
+		serviceNavigation: {}
 	};
 	navigation: ObIMasterLayoutNavigation = {
 		isFullWidth: false,
