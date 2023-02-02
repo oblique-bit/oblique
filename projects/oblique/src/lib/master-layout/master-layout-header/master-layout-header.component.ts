@@ -76,6 +76,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.languages = this.formatLanguages(this.config.locale.languages);
 		this.customChange();
 		this.smallChange();
+		this.serviceNavigationConfiguration();
 		this.reduceOnScroll();
 		this.banner = this.initializeBanner(bannerToken);
 		this.home$ = this.masterLayout.homePageRouteChange$;
@@ -146,6 +147,15 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(event => (this.isSmall = event.value));
+	}
+
+	private serviceNavigationConfiguration(): void {
+		this.masterLayout.header.configEvents$
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(event => (this.serviceNavigationConfig = event.config));
 	}
 
 	private formatLanguages(languages: Record<string, string>): ObILanguage[] {

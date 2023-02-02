@@ -8,6 +8,7 @@ export class ObMockMasterLayoutHeaderService {
 	isMedium = true;
 	isSticky = true;
 	reduceOnScroll = true;
+	serviceNavigationConfiguration = {};
 
 	get configEvents$(): Observable<ObIMasterLayoutEvent> {
 		return of({} as ObIMasterLayoutEvent);

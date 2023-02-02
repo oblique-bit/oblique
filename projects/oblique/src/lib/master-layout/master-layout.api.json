@@ -462,6 +462,20 @@
           "type": "boolean",
           "default": true,
           "since": "8.0.0"
+        },
+        {
+          "name": "serviceNavigationConfiguration",
+          "text": "Controls <code>ObMasterLayoutConfig.header.serviceNavigation</code> property.",
+          "type": "ObIServiceNavigationConfig",
+          "default": {
+            "profileLinks": [],
+            "infoLinks": [],
+            "infoContact": {},
+            "maxLastUsedApplications": 3,
+            "maxFavoriteApplications": 3,
+            "displayLanguages": true
+          },
+          "since": "10.1.0"
         }
       ]
     },
@@ -824,7 +838,8 @@
             "ObEMasterLayoutEventValues.LAYOUT_HAS_MAX_WIDTH",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS",
             "ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH",
-            "ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE"
+            "ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE",
+            "ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION"
           ],
           "since": "4.0.0",
           "updated": "8.0.0"
@@ -847,6 +862,13 @@
           ],
           "isOptional": true,
           "since": "4.0.0"
+        },
+        {
+          "name": "config",
+          "text": "Service navigation configuration of the event",
+          "type": "ObIServiceNavigationConfig",
+          "isOptional": true,
+          "since": "10.1.0"
         }
       ]
     }

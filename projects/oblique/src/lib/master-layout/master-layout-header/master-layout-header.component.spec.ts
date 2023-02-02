@@ -25,7 +25,8 @@ describe('ObMasterLayoutHeaderComponent', () => {
 		header: {
 			configEvents$: new Subject<ObIMasterLayoutEvent>(),
 			isCustom: false,
-			isSmall: false
+			isSmall: false,
+			serviceNavigation: {}
 		},
 		layout: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isMenuOpened: false}
 	};
@@ -98,6 +99,20 @@ describe('ObMasterLayoutHeaderComponent', () => {
 				it('should be updated with the service', () => {
 					mockMasterLayoutService.header.configEvents$.next({name: ObEMasterLayoutEventValues.HEADER_IS_SMALL, value: true});
 					expect(component.isSmall).toBe(true);
+				});
+			});
+
+			describe('serviceNavigationConfig', () => {
+				it('should be defined', () => {
+					expect(component.serviceNavigationConfig).toEqual({});
+				});
+
+				it('should be set to the value emitted by the ObMasterLayoutService', () => {
+					mockMasterLayoutService.header.configEvents$.next({
+						name: ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION,
+						config: {displayApplications: true}
+					});
+					expect(component.serviceNavigationConfig).toEqual({displayApplications: true});
 				});
 			});
 		});

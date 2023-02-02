@@ -94,6 +94,7 @@ export interface ObIMasterLayoutEvent {
 	name: ObEMasterLayoutEventValues;
 	value?: boolean;
 	mode?: ObEScrollMode;
+	config?: ObIServiceNavigationConfig;
 }
 
 export enum ObEMasterLayoutEventValues {
@@ -111,7 +112,8 @@ export enum ObEMasterLayoutEventValues {
 	LAYOUT_HAS_MAX_WIDTH,
 	LAYOUT_HAS_OFF_CANVAS,
 	NAVIGATION_IS_FULL_WIDTH,
-	NAVIGATION_SCROLL_MODE
+	NAVIGATION_SCROLL_MODE,
+	SERVICE_NAVIGATION_CONFIGURATION
 }
 
 export enum ObEEnvironment {
