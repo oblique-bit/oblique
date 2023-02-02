@@ -1,0 +1,177 @@
+@use "variables" as material-variables;
+@use "mixins/mat-form-field";
+@use "../core/variables" as core-variables;
+
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
+ */
+.mat-form-field {
+	width: 100%;
+
+	&.mat-form-field-type-mat-select.mat-form-field-disabled .mat-select-trigger {
+		cursor: not-allowed;
+	}
+
+	.mat-form-field-outline {
+		background-color: core-variables.$ob-white;
+		border-radius: core-variables.$ob-border-radius-base;
+
+		.mat-form-field-outline-start {
+			border-radius: core-variables.$ob-border-radius-base 0 0 core-variables.$ob-border-radius-base;
+		}
+
+		.mat-form-field-outline-end {
+			border-radius: 0 core-variables.$ob-border-radius-base core-variables.$ob-border-radius-base 0;
+		}
+	}
+
+	&.mat-form-field-appearance-outline {
+		.mat-form-field-wrapper {
+			margin: material-variables.$ob-form-field-margin 0;
+			padding-bottom: 1.2em;
+		}
+
+		.mat-form-field-flex {
+			margin-top: -(material-variables.$ob-form-field-margin);
+		}
+
+		.mat-form-field-outline {
+			top: material-variables.$ob-form-field-margin;
+		}
+
+		.mat-form-field-label {
+			margin-top: 1px; // empiric value
+			line-height: 1;
+			overflow-x: clip;
+			overflow-y: visible;
+		}
+
+		.mat-form-field-suffix .mat-datepicker-toggle .mat-button-wrapper {
+			margin-top: 2px;
+		}
+
+		.mat-form-field-prefix,
+		.mat-form-field-suffix {
+			top: 0;
+
+			> .mat-datepicker-toggle {
+				position: relative;
+				top: 0.33em;
+			}
+
+			.mat-icon {
+				position: relative;
+				top: 0.15em;
+			}
+		}
+
+		.mat-form-field-subscript-wrapper {
+			margin-top: material-variables.$ob-form-field-margin;
+		}
+
+		@include mat-form-field.ob-form-field-size(
+			material-variables.$ob-form-field-padding-top,
+			0.5em,
+			2em
+		);
+
+		.ob-form-sm & {
+			@include mat-form-field.ob-form-field-size(
+				material-variables.$ob-form-field-padding-top-sm,
+				0.25em,
+				1.8em
+			);
+		}
+
+		.ob-form-lg & {
+			@include mat-form-field.ob-form-field-size(
+				material-variables.$ob-form-field-padding-top-lg,
+				1em,
+				2.5em
+			);
+		}
+
+		.ob-outline &.mat-focused {
+			.mat-form-field-outline {
+				box-shadow: 0 0 core-variables.$ob-spacing-xs 0 core-variables.$ob-default;
+				outline: 1px solid core-variables.$ob-primary;
+				outline-offset: -3px;
+				background-color: core-variables.$ob-light;
+
+				&.mat-form-field-outline-thick {
+					.mat-form-field-outline-start,
+					.mat-form-field-outline-end {
+						border-width: 1px;
+						border-color: core-variables.$ob-default;
+					}
+
+					.mat-form-field-outline-gap {
+						border-width: 1px;
+						border-bottom-color: core-variables.$ob-default;
+					}
+				}
+			}
+
+			.mat-form-field-label {
+				color: core-variables.$ob-default;
+
+				mat-label {
+					background-color: core-variables.$ob-white;
+				}
+			}
+		}
+	}
+
+	&.mat-form-field-invalid .mat-form-field-label-wrapper::after {
+		content: "!";
+		position: absolute;
+		right: 0;
+		padding: 0 0.4em;
+		border-radius: 50%;
+		background-color: core-variables.$ob-error;
+		color: core-variables.$ob-white;
+		z-index: core-variables.$ob-z-index-controls;
+	}
+
+	.mat-error,
+	.mat-hint {
+		line-height: 1.6; // 1.2em * 1.3333, i.e. the size of the padding-bottom with canceled 75% font-size
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&:hover,
+	&:focus-within {
+		z-index: 1; // so that multilines hints & errors are above next elements
+
+		.mat-form-field-subscript-wrapper {
+			overflow: visible;
+		}
+
+		.mat-error,
+		.mat-hint {
+			height: auto;
+			white-space: normal;
+			position: relative;
+			overflow: visible;
+
+			&::before {
+				content: "";
+				position: absolute;
+				display: block;
+				right: -12px;
+				left: -12px;
+				top: 0;
+				bottom: -1 * core-variables.$ob-spacing-xs;
+				background-color: core-variables.$ob-white;
+				opacity: 0.75;
+				z-index: -1;
+
+				.ob-table:not(.ob-table-plain) tbody tr:nth-child(odd) & {
+					background-color: core-variables.$ob-gray-extra-light;
+				}
+			}
+		}
+	}
+}

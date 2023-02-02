@@ -10,10 +10,7 @@ export function addJest(jest: boolean): Rule {
 		}
 
 		infoMigration(_context, 'Toolchain: Replacing karma/jasmine with jest');
-		return chain([removeJasmine(), addJestDependencies(), createJestConfigFiles(), referToJest(), adaptTsConfig(), adaptTsConfigSpec()])(
-			tree,
-			_context
-		);
+		return chain([removeJasmine(), addJestDependencies(), createJestConfigFiles(), referToJest(), adaptTsConfigSpec()])(tree, _context);
 	};
 }
 
@@ -106,23 +103,6 @@ function removeE2eFromPackage(jest: boolean) {
 		}
 
 		return removeScript(tree, 'e2e');
-	};
-}
-
-function adaptTsConfig() {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => {
-		const tsConfigName = tree.exists('tsconfig.base.json') ? 'tsconfig.base.json' : 'tsconfig.json';
-		let tsConfig = readFile(tree, tsConfigName);
-		if (tsConfig.includes('emitDecoratorMetadata')) {
-			tsConfig = tsConfig.replace(/"emitDecoratorMetadata"\s*:\s*false/, '"emitDecoratorMetadata": true');
-		} else {
-			tsConfig = tsConfig.replace(
-				/"experimentalDecorators"\s*:\s*true,/,
-				'"experimentalDecorators": true,\n    "emitDecoratorMetadata": true,'
-			);
-		}
-		tree.overwrite(tsConfigName, tsConfig);
 	};
 }
 

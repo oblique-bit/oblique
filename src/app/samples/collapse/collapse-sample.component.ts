@@ -1,9 +1,6 @@
 import {Component} from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 import {Duration, IconPosition} from './collapse-sample.model';
-import {ThemeService} from '../../common/theme.service';
 
 @Component({
 	selector: 'sc-collapse-sample',
@@ -11,7 +8,6 @@ import {ThemeService} from '../../common/theme.service';
 })
 export class CollapseSampleComponent {
 	collapseTitle = 'Collapse title here ';
-	material: Observable<boolean>;
 	duration = new UntypedFormControl('fast');
 	iconPosition = new UntypedFormControl('left');
 	active = false;
@@ -32,8 +28,4 @@ export class CollapseSampleComponent {
 		{value: 'justified', viewValue: 'Justify the icon to the right'},
 		{value: 'none', viewValue: 'Do not show the icon'}
 	];
-
-	constructor(theme: ThemeService) {
-		this.material = theme.theme$.pipe(map(() => theme.isMaterial()));
-	}
 }

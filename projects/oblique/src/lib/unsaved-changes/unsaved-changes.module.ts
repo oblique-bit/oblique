@@ -2,8 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {ObUnsavedChangesDirective} from './unsaved-changes.directive';
-import {ObTelemetryService} from '../telemetry/telemetry.service';
-import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 
 export {ObUnsavedChangesDirective} from './unsaved-changes.directive';
@@ -16,8 +14,4 @@ export {ObUnsavedChangesGuard} from './unsaved-changes.guard';
 	providers: obliqueProviders(),
 	exports: [ObUnsavedChangesDirective]
 })
-export class ObUnsavedChangesModule {
-	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObUnsavedChangesModule);
-	}
-}
+export class ObUnsavedChangesModule {}

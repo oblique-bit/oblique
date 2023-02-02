@@ -2,26 +2,6 @@
 @use "sass:selector";
 @use "../../styles/scss/core/variables";
 
-.ob-search-box .ob-dropdown {
-	position: absolute;
-
-	.ob-dropdown-toggle {
-		display: none;
-	}
-
-	.ob-dropdown-content {
-		top: variables.$ob-spacing-default;
-
-		&.right {
-			transform: translateX(-12px); // empiric number
-
-			.ob-control-item & {
-				transform: translateX(-12px); // empiric number
-			}
-		}
-	}
-}
-
 .ob-no-result {
 	padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
 
@@ -79,10 +59,6 @@
 
 	&:not(.ob-slide-control) .ob-search-box-input {
 		padding: 0 variables.$ob-spacing-sm;
-
-		@at-root #{selector.append(".ob-font-awesome", &)} {
-			padding-left: variables.$ob-spacing-sm + variables.$ob-spacing-xs; // actual padding + icon margin
-		}
 	}
 
 	&::before {
@@ -99,19 +75,11 @@
 		transition: border-color variables.$ob-duration-default;
 	}
 
-	&.ob-font-awesome::before {
-		left: calc(1.65em + #{variables.$ob-spacing-xs}); // font-size + spacing
-	}
-
 	&.ob-slide-control {
 		.ob-search-box-input {
 			max-width: 0;
 			transition: max-width variables.$ob-duration-default,
 				padding-left math.div(variables.$ob-duration-default, 3) * 2;
-
-			@at-root #{selector.append(".ob-font-awesome", &)} {
-				width: calc(100% - 1.65em); // - font-size (icon size is 1em)
-			}
 
 			&:focus,
 			&:active {
@@ -132,11 +100,6 @@
 			.ob-search-box-input {
 				max-width: 100%;
 				padding: 0 variables.$ob-spacing-sm;
-
-				@at-root #{selector.append(".ob-font-awesome", &)} {
-					width: calc(100% - 1.65em); // - font-size (icon size is 1em)
-					padding-left: variables.$ob-spacing-sm + variables.$ob-spacing-xs; // actual padding + icon margin
-				}
 			}
 
 			.ob-search-dropdown {

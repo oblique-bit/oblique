@@ -4,6 +4,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {NO_ERRORS_SCHEMA, QueryList} from '@angular/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
+import {ObGlobalEventsService} from '../global-events/global-events.service';
+import {ObPopoverDirective} from '../popover/popover.directive';
 import {ObSearchBoxComponent} from './search-box.component';
 
 describe('SearchBoxComponent', () => {
@@ -12,19 +14,19 @@ describe('SearchBoxComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			declarations: [ObSearchBoxComponent, ObMockTranslatePipe],
+			declarations: [ObSearchBoxComponent, ObMockTranslatePipe, ObPopoverDirective],
 			imports: [RouterTestingModule],
 			schemas: [NO_ERRORS_SCHEMA],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: ObGlobalEventsService, useValue: {}}
+			]
 		}).compileComponents();
 	}));
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObSearchBoxComponent);
 		component = fixture.componentInstance;
-		fixture.detectChanges();
-		// @ts-expect-error
-		component.dropdown = {};
 		component.items = [
 			{id: 'a', label: 'a', routes: []},
 			{id: 'b', label: 'b', routes: []},
@@ -33,6 +35,15 @@ describe('SearchBoxComponent', () => {
 			{id: 't2', label: 't2', routes: []},
 			{id: 't3', label: 't3', routes: []}
 		];
+		fixture.detectChanges();
+	});
+
+	beforeEach(() => {
+		jest.useFakeTimers();
+	});
+
+	afterEach(() => {
+		jest.useRealTimers();
 	});
 
 	it('should create', () => {
@@ -40,13 +51,11 @@ describe('SearchBoxComponent', () => {
 	});
 
 	describe('open', () => {
-		it('should set the isOpened property to true', () => {
+		it('should have the isOpened property to true', () => {
 			component.open();
 			expect(component.isOpened).toBe(true);
 		});
-	});
 
-	describe('open', () => {
 		it('should set the isOpened property to true', () => {
 			component.isOpened = false;
 			component.open();
@@ -97,6 +106,8 @@ describe('SearchBoxComponent', () => {
 				{nativeElement: {focus: jest.fn()}}
 			]);
 			component.pattern = 't';
+			// @ts-expect-error
+			jest.spyOn(component, 'filterOutUnboundedElements').mockReturnValue(true);
 		});
 
 		it('should prevent default event action', () => {
@@ -138,6 +149,8 @@ describe('SearchBoxComponent', () => {
 				{nativeElement: {focus: jest.fn()}}
 			]);
 			component.pattern = 't';
+			// @ts-expect-error
+			jest.spyOn(component, 'filterOutUnboundedElements').mockReturnValue(true);
 		});
 
 		it('should prevent default event action', () => {
@@ -170,14 +183,17 @@ describe('SearchBoxComponent', () => {
 
 	describe('exit', () => {
 		it('should empty the pattern', () => {
+			component.isOpened = true;
 			component.exit();
 			expect(component.pattern).toBe('');
 		});
 		it('should empty the filtered items', () => {
+			component.isOpened = true;
 			component.exit();
 			expect(component.filteredItems.length).toBe(0);
 		});
 		it('should reset active property', () => {
+			component.isOpened = true;
 			component.exit();
 			// @ts-expect-error
 			expect(component.active).toBeUndefined();
@@ -226,16 +242,8 @@ describe('SearchBoxComponent', () => {
 		});
 
 		it('should close the dropdown when blur is called', () => {
-			component.blur();
+			component.blur({target: undefined} as PointerEvent);
 			expect(component.isOpened).toBe(false);
-		});
-	});
-
-	describe('click', () => {
-		it('should call stopPropagation', () => {
-			const mock = {stopPropagation: jest.fn()} as unknown as MouseEvent;
-			component.click(mock);
-			expect(mock.stopPropagation).toHaveBeenCalled();
 		});
 	});
 });

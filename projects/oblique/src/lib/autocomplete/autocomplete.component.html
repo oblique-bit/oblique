@@ -3,8 +3,8 @@
 	<input (blur)="onModelTouched()" [formControl]="autocompleteInputControl" [matAutocomplete]="autocomplete" matInput type="text" />
 	<ng-content select="[matPrefix]"></ng-content>
 	<button [obInputClear]="autocompleteInputControl" type="button">
-		<mat-icon class="ob-icon" svgIcon="cancel-circle"></mat-icon>
-		<span class="sr-only">{{ "i18n.common.clear" | translate }}</span>
+		<mat-icon svgIcon="cancel-circle"></mat-icon>
+		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 	</button>
 	<ng-content select="[matSuffix]"></ng-content>
 </mat-form-field>

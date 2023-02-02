@@ -13,6 +13,7 @@ export class PopoverComponent {
 	openPopoverPosition = 'center';
 	toggleHandle: ObEToggleType;
 	closeOnlyOnToggle: boolean;
+	appendToBody = false;
 
 	toggleTypeClick = ObEToggleType.CLICK;
 	toggleTypeHover = ObEToggleType.HOVER;

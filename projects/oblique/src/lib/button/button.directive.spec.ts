@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {MatButtonModule} from '@angular/material/button';
+import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
 import {ObButtonDirective} from './button.directive';
 
 @Component({
@@ -31,6 +31,14 @@ describe('ButtonDirective', () => {
 			declarations: [ButtonDirectiveTestComponent, ObButtonDirective],
 			imports: [MatButtonModule]
 		}).compileComponents();
+	});
+
+	describe('without button', () => {
+		it('should throw an error', () => {
+			expect(() => new ObButtonDirective(undefined, undefined, undefined)).toThrowError(
+				'Couldn\'t find a reference to "MatButton", make sure that "MatLegacyButtonModule" is imported instead of "MatButtonModule".'
+			);
+		});
 	});
 
 	describe('primary button', () => {

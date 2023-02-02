@@ -1,10 +1,9 @@
 <p>
-	Starting from version 9 Oblique is displayed with its own icons that have been introduced with version 6.1. The fallback mode on
-	FontAwesome is still possible by providing the <code>ObUseObliqueIcons</code> injection token with <code>false</code>. Oblique icons are
-	meant to be used with Angular Material's <code>mat-icon</code> component, meaning that Bootstrap's users need to stick to FontAwesome's
-	icons. As registering custom icons for the <code>mat-icon</code> component is not really straightforward, Oblique provides the
-	<code>ObIconService</code> to greatly simplify this process. Of course, Angular's <code>MatIconRegistry</code> can still be used directly,
-	see <a href="https://material.angular.io/components/icon/api">MatIconModule</a> for more information.
+	Starting from version 9 Oblique is displayed with its own icons that have been introduced with version 6.1. Oblique icons are meant to be
+	used with Angular Material's <code>mat-icon</code> component. As registering custom icons for the <code>mat-icon</code> component is not
+	really straightforward, Oblique provides the <code>ObIconService</code> to greatly simplify this process. Of course, Angular's
+	<code>MatIconRegistry</code> can still be used directly, see
+	<a href="https://material.angular.io/components/icon/api">MatIconModule</a> for more information.
 </p>
 <p>
 	For performance reasons, Oblique packs all icons in a single file called an icon set. It then extracts the SVGs and inlines them directly
@@ -15,7 +14,7 @@
 	properly handle the icon's vertical alignment with text, the <code>mat-icon</code> component needs the <code>ob-icon-text</code> class.
 	The <code>forRoot</code> method is mandatory, as it will take care of the icons registration. It accepts an optional configuration that
 	allows the registration of additional icon sets as well as the default class to be applied to font icons. Per default, the Oblique's icon
-	set is loaded and FontAwesome is defined as the default font library.
+	set is loaded.
 </p>
 
 <details>
@@ -32,10 +31,9 @@
 }
 </pre
 	>
-	<p>Then the <code>mat-icon</code> component can be used with either the <code>svgIcon</code> or the <code>fontIcon</code> input.</p>
+	<p>Then the <code>mat-icon</code> component can be used with the <code>svgIcon</code> input.</p>
 	<pre>
-&lt;mat-icon svgIcon="calendar">&lt;/mat-icon>      // Oblique icon
-&lt;mat-icon fontIcon="fa-calendar">&lt;/mat-icon>  // FA icon
+&lt;mat-icon svgIcon="calendar">&lt;/mat-icon>
 </pre
 	>
 </details>
@@ -176,8 +174,4 @@ fs.appendFileSync(iconSetPath, '\t&lt;/defs>\n&lt;/svg>');
 		easiest way is to simply add
 		<code>&lt;span class="ob-screen-reader-only">Some meaningful label&lt;/span></code> as an adjacent sibling to the icon.
 	</p>
-</div>
-
-<div class="ob-alert ob-alert-warning">
-	<strong>Oblique's icons are NOT compatible with the bootstrap theme.</strong>
 </div>

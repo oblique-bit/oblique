@@ -42,16 +42,6 @@
           "returns": "void",
           "since": "6.1.0"
         }
-      ],
-      "tokens": [
-        {
-          "name": "ObUseObliqueIcons",
-          "text": "Indicates if Oblique should be rendered with its own icons or with FontAwesome ones.",
-          "type": "boolean",
-          "default": "true",
-          "since": "7.0.0",
-          "updated": "9.0.0"
-        }
       ]
     },
     {

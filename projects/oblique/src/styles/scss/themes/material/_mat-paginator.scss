@@ -1,8 +1,0 @@
-@use "../../core/variables";
-
-.mat-paginator {
-	&,
-	& .mat-button-wrapper {
-		color: variables.$ob-default;
-	}
-}

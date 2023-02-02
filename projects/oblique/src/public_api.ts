@@ -23,23 +23,10 @@ export {
 	ObColumnToggleDirective,
 	ObColumnPanelDirective
 } from './lib/column-layout/column-layout.module';
-export {
-	ObDateDMYParserFormatter,
-	ObDateFormatterPipe,
-	ObDatepickerComponent,
-	ObDatepickerI18nService,
-	ObDatepickerModule,
-	ObDatepickerPlaceholderDirective,
-	ObDatepickerConfigService,
-	ObIDatepickerOptions
-} from './lib/datepicker/datepicker.module';
 export {ObDocumentMetaService, ObDocumentMetaModule} from './lib/document-meta/document-meta.module';
-export {ObDropdownComponent, ObDropdownModule} from './lib/dropdown/dropdown.module';
 export {
-	DISABLE_NGB_ERRORS,
 	ObMatErrorDirective,
 	ObErrorMessagesDirective,
-	ObErrorMessagesComponent,
 	ObErrorMessagesModule,
 	ObErrorMessagesService
 } from './lib/error-messages/error-messages.module';
@@ -60,7 +47,6 @@ export {
 	ObIUploadEvent,
 	ObIFileDescription
 } from './lib/file-upload/file-upload.module';
-export {ObFormControlStateDirective, ObFormControlStateModule} from './lib/form-control-state/form-control-state.module';
 export {
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,
@@ -68,15 +54,7 @@ export {
 	ObHttpApiInterceptorModule,
 	ObIHttpApiRequest
 } from './lib/http-api-interceptor/http-api-interceptor.module';
-export {
-	ObTIconConfig,
-	ObIconModule,
-	ObIconService,
-	ObIconConfig,
-	ObUseObliqueIcons,
-	ObEIcon,
-	ObIconComponent
-} from './lib/icon/icon.module';
+export {ObTIconConfig, ObIconModule, ObIconService, ObIconConfig, ObEIcon} from './lib/icon/icon.module';
 export {ObLanguageModule, ObLanguageService, ObDatePipe} from './lib/language/language.module';
 export {
 	ObMasterLayoutComponent,
@@ -98,13 +76,6 @@ export {
 	ObOutlineDirective,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION
 } from './lib/master-layout/master-layout.module';
-export {
-	ObMultiselectComponent,
-	ObMultiselectConfig,
-	ObMultiselectModule,
-	ObMultiselectSearchPipe,
-	ObMultiselectTexts
-} from './lib/multiselect/multiselect.module';
 export {ObNavTreeComponent, ObNavTreeFakeFocusDirective, ObNavTreeModule, ObNavTreeItemModel} from './lib/nav-tree/nav-tree.module';
 export {ObNestedFormModule, ObNestedFormComponent, ObParentFormDirective} from './lib/nested-form/nested-form.module';
 export {
@@ -158,12 +129,6 @@ export {
 	ObUnsavedChangesModule,
 	ObUnsavedChangesService
 } from './lib/unsaved-changes/unsaved-changes.module';
-export {
-	ObUnsavedChangesTabsDirective,
-	ObUnsavedChangesTabsModule,
-	ObUnsavedChangesTabsService
-} from './lib/unsaved-changes-tabs/unsaved-changes-tabs.module';
-export {ObTelemetryService, OB_PROJECT_INFO} from './lib/telemetry/telemetry.service';
 export {OB_BANNER, OB_MATERIAL_CONFIG, getTranslateLoader, multiTranslateLoader, WINDOW} from './lib/utilities';
 export {ObIBanner, ObIMaterialConfig} from './lib/utilities.model';
 export {ObEColor} from './lib/style/colors.model';

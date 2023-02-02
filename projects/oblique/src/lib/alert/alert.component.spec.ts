@@ -2,9 +2,9 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
+import {ObIAlertType} from '@oblique/oblique';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {ObUseObliqueIcons} from '../icon/icon.model';
 import {OBLIQUE_HAS_ROLE_ALERT, ObAlertComponent} from './alert.component';
 
 @Component({
@@ -64,16 +64,8 @@ describe('ObAlertComponent', () => {
 			expect(obAlertComponent).toBeTruthy();
 		});
 
-		it('should have ob-alert class', () => {
-			expect(debugElement.nativeElement.classList.contains('ob-alert')).toBe(true);
-		});
-
-		it('should have ob-angular class', () => {
-			expect(debugElement.nativeElement.classList.contains('ob-angular')).toBe(true);
-		});
-
-		it('should not have ob-font-awesome class', () => {
-			expect(debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(false);
+		it.each(['ob-alert', 'ob-angular'])('should have "%s" class', className => {
+			expect(debugElement.nativeElement.classList.contains(className)).toBe(true);
 		});
 
 		describe('type', () => {
@@ -89,52 +81,16 @@ describe('ObAlertComponent', () => {
 					expect(debugElement.nativeElement.classList.contains('ob-alert-info')).toBe(true);
 				});
 			});
-			describe('with info type', () => {
+			describe.each(['info', 'warning', 'error', 'success'])('with "%s" type', type => {
 				beforeEach(() => {
-					obAlertComponent.type = 'info';
+					obAlertComponent.type = type as ObIAlertType;
 					fixture.detectChanges();
 				});
-				it('should have info icon', () => {
-					expect(obAlertComponent.icon).toBe('info');
+				it(`should have "alert:${type}" icon`, () => {
+					expect(obAlertComponent.icon).toBe(`alert:${type}`);
 				});
-				it('should have class ob-alert-info', () => {
-					expect(debugElement.nativeElement.classList.contains('ob-alert-info')).toBe(true);
-				});
-			});
-			describe('with warning type', () => {
-				beforeEach(() => {
-					obAlertComponent.type = 'warning';
-					fixture.detectChanges();
-				});
-				it('should have warning icon', () => {
-					expect(obAlertComponent.icon).toBe('warning');
-				});
-				it('should have class ob-alert-warning', () => {
-					expect(debugElement.nativeElement.classList.contains('ob-alert-warning')).toBe(true);
-				});
-			});
-			describe('with error type', () => {
-				beforeEach(() => {
-					obAlertComponent.type = 'error';
-					fixture.detectChanges();
-				});
-				it('should have cancel icon', () => {
-					expect(obAlertComponent.icon).toBe('cancel');
-				});
-				it('should have class ob-alert-error', () => {
-					expect(debugElement.nativeElement.classList.contains('ob-alert-error')).toBe(true);
-				});
-			});
-			describe('with success type', () => {
-				beforeEach(() => {
-					obAlertComponent.type = 'success';
-					fixture.detectChanges();
-				});
-				it('should have cancel icon', () => {
-					expect(obAlertComponent.icon).toBe('checkmark');
-				});
-				it('should have class ob-alert-success', () => {
-					expect(debugElement.nativeElement.classList.contains('ob-alert-success')).toBe(true);
+				it(`should have class ob-alert-${type}`, () => {
+					expect(debugElement.nativeElement.classList.contains(`ob-alert-${type}`)).toBe(true);
 				});
 			});
 			describe('with illegal type', () => {
@@ -142,10 +98,10 @@ describe('ObAlertComponent', () => {
 					obAlertComponent.type = null;
 					fixture.detectChanges();
 				});
-				it('should have no icon', () => {
-					expect(obAlertComponent.icon).toBe('');
+				it('should have "alert:null" as icon', () => {
+					expect(obAlertComponent.icon).toBe('alert:null');
 				});
-				it('should have class ob-alert-success', () => {
+				it('should not have class ob-alert-success', () => {
 					expect(debugElement.nativeElement.classList['ob-alert-success']).toBeUndefined();
 				});
 			});
@@ -185,36 +141,8 @@ describe('ObAlertComponent', () => {
 			expect(obAlertComponent.type).toBe('success');
 		});
 
-		it('should have icon success ', () => {
-			expect(obAlertComponent.icon).toBe('checkmark');
-		});
-	});
-
-	describe('with FontAwesome icons', () => {
-		beforeEach(async () => {
-			await TestBed.configureTestingModule({
-				declarations: [DefaultTestComponent, ObMockTranslatePipe, ObAlertComponent],
-				providers: [
-					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: ObUseObliqueIcons, useValue: false}
-				],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
-			}).compileComponents();
-		});
-
-		beforeEach(() => {
-			fixture = TestBed.createComponent(DefaultTestComponent);
-			testComponent = fixture.componentInstance;
-			fixture.detectChanges();
-			debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
-		});
-
-		it('should create', () => {
-			expect(testComponent).toBeTruthy();
-		});
-
-		it('should have ob-font-awesome class', () => {
-			expect(debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(true);
+		it('should have icon "alert:success" ', () => {
+			expect(obAlertComponent.icon).toBe('alert:success');
 		});
 	});
 

@@ -5,30 +5,15 @@
 	<ob-nested-form formControlName="child" [nestedForm]="child.nestedForm">
 		<sc-nested-form-child-sample #child></sc-nested-form-child-sample>
 	</ob-nested-form>
-	<ng-container *ngIf="material | async; else bootstrap">
-		<mat-form-field obErrorMessages>
-			<mat-label>Reactive Material Parent</mat-label>
-			<input matInput formControlName="parent" />
-			<mat-error></mat-error>
-		</mat-form-field>
-		<div class="form-actions">
-			<button mat-flat-button type="reset">{{ "i18n.common.reset" | translate }}</button>
-			<button mat-flat-button type="submit" color="primary">{{ "i18n.common.save" | translate }}</button>
-		</div>
-	</ng-container>
-	<ng-template #bootstrap>
-		<div class="form-group" obFormControlState>
-			<label class="control-label">Reactive Bootstrap Parent</label>
-			<input class="form-control" type="text" formControlName="parent" />
-			<ob-error-messages></ob-error-messages>
-		</div>
-		<div class="form-actions">
-			<div class="btn-group">
-				<button type="reset" class="btn">{{ "i18n.common.reset" | translate }}</button>
-				<button type="submit" class="btn btn-primary">{{ "i18n.common.save" | translate }}</button>
-			</div>
-		</div>
-	</ng-template>
+	<mat-form-field obErrorMessages>
+		<mat-label>Reactive Material Parent</mat-label>
+		<input matInput formControlName="parent" />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<div class="form-actions">
+		<button mat-flat-button type="reset">{{ "i18n.common.reset" | translate }}</button>
+		<button mat-flat-button type="submit" color="primary">{{ "i18n.common.save" | translate }}</button>
+	</div>
 </form>
 <h4>Form value</h4>
 <pre>{{ parentForm.value | json }}</pre>
@@ -38,30 +23,15 @@
 	<ob-nested-form [(ngModel)]="model.child" name="child" [nestedForm]="childTD.ngForm.control">
 		<sc-nested-form-child-td-sample #childTD></sc-nested-form-child-td-sample>
 	</ob-nested-form>
-	<ng-container *ngIf="material | async; else bootstrapTD">
-		<mat-form-field obErrorMessages>
-			<mat-label>Template Material Parent</mat-label>
-			<input matInput name="parent" [(ngModel)]="model.parent" required />
-			<mat-error></mat-error>
-		</mat-form-field>
-		<div class="form-actions">
-			<button mat-flat-button type="reset">{{ "i18n.common.reset" | translate }}</button>
-			<button mat-flat-button type="submit" color="primary">{{ "i18n.common.save" | translate }}</button>
-		</div>
-	</ng-container>
-	<ng-template #bootstrapTD>
-		<div class="form-group" obFormControlState>
-			<label class="control-label">Template Bootstrap Parent</label>
-			<input class="form-control" name="parent" [(ngModel)]="model.parent" required />
-			<ob-error-messages></ob-error-messages>
-		</div>
-		<div class="form-actions">
-			<div class="btn-group">
-				<button type="reset" class="btn">{{ "i18n.common.reset" | translate }}</button>
-				<button type="submit" class="btn btn-primary">{{ "i18n.common.save" | translate }}</button>
-			</div>
-		</div>
-	</ng-template>
+	<mat-form-field obErrorMessages>
+		<mat-label>Template Material Parent</mat-label>
+		<input matInput name="parent" [(ngModel)]="model.parent" required />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<div class="form-actions">
+		<button mat-flat-button type="reset">{{ "i18n.common.reset" | translate }}</button>
+		<button mat-flat-button type="submit" color="primary">{{ "i18n.common.save" | translate }}</button>
+	</div>
 </form>
 <h4>Form value</h4>
 <pre>{{ model | json }}</pre>

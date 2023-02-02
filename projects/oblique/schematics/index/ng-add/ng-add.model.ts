@@ -1,6 +1,7 @@
 export interface ObIOptionsSchema {
 	ajv: boolean;
 	banner: boolean;
+	environments: string;
 	eslint: boolean;
 	externalLink: boolean;
 	font: string;
@@ -16,7 +17,6 @@ export interface ObIOptionsSchema {
 	proxy: string;
 	sonar: boolean;
 	static: boolean;
-	telemetry: boolean;
 	title: string;
 	unknownRoute: boolean;
 }

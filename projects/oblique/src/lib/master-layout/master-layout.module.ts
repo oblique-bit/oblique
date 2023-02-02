@@ -1,8 +1,9 @@
+import {MatIconModule} from '@angular/material/icon';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {MatButtonModule} from '@angular/material/button';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
+import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
 
 import {TranslateModule} from '@ngx-translate/core';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
@@ -10,8 +11,6 @@ import {ObNotificationModule} from '../notification/notification.module';
 import {ObSpinnerModule} from '../spinner/spinner.module';
 import {ObScrollingModule} from '../scrolling/scrolling.module';
 import {ObOffCanvasModule} from '../off-canvas/off-canvas.module';
-import {ObTelemetryService} from '../telemetry/telemetry.service';
-import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {ObMasterLayoutComponent} from './master-layout/master-layout.component';
 import {ObMasterLayoutHeaderComponent} from './master-layout-header/master-layout-header.component';
 import {ObMasterLayoutHeaderToggleDirective} from './master-layout-header/master-layout-header-toggle.directive';
@@ -50,6 +49,7 @@ export {ObOutlineDirective} from './outline.directive';
 	imports: [
 		CommonModule,
 		MatButtonModule,
+		MatIconModule,
 		MatTooltipModule,
 		ObButtonModule,
 		ObExternalLinkModule,
@@ -82,8 +82,4 @@ export {ObOutlineDirective} from './outline.directive';
 		ObOutlineDirective
 	]
 })
-export class ObMasterLayoutModule {
-	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObMasterLayoutModule);
-	}
-}
+export class ObMasterLayoutModule {}

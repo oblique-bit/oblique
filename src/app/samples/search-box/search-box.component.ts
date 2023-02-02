@@ -16,7 +16,6 @@ export class SearchBoxSampleComponent {
 			label: 'i18n.routes.samples.title',
 			children: [
 				{url: '/column-layout', label: 'i18n.routes.samples.column-layout.title'},
-				{url: '/datepicker', label: 'i18n.routes.samples.datepicker.title'},
 				{url: '/http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
 				{url: '/master-layout', label: 'i18n.routes.samples.master-layout.title'},
 				{url: '/multiselect', label: 'i18n.routes.samples.multiselect.title'},

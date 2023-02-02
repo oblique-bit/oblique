@@ -4,8 +4,6 @@ import {CommonModule} from '@angular/common';
 import {ObOffCanvasToggleDirective} from './off-canvas-toggle.directive';
 import {ObOffCanvasContainerDirective} from './off-canvas-container.directive';
 import {ObOffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
-import {ObTelemetryService} from '../telemetry/telemetry.service';
-import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 
 export {ObOffCanvasToggleDirective} from './off-canvas-toggle.directive';
@@ -19,8 +17,4 @@ export {ObOffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
 	providers: obliqueProviders(),
 	exports: [ObOffCanvasBackdropDirective, ObOffCanvasContainerDirective, ObOffCanvasToggleDirective]
 })
-export class ObOffCanvasModule {
-	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObOffCanvasModule);
-	}
-}
+export class ObOffCanvasModule {}

@@ -8,11 +8,9 @@ import {ButtonSampleComponent} from './button/button.component';
 import {CollapseSampleComponent} from './collapse/collapse-sample.component';
 import {ColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {ColumnLayoutFullHeightSampleComponent} from './column-layout-full-height/column-layout-full-height-sample.component';
-import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
 import {ExternalLinkComponent} from './external-link/external-link.component';
 import {FileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
-import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {FormSampleComponent} from './form/form.component';
 import {GlobalEventsSampleComponent} from './global-events/global-events-sample.component';
 import {HorizontalFormsSampleComponent} from './horizontal-forms/horizontal-forms.component';
@@ -21,7 +19,6 @@ import {InputClearSampleComponent} from './input-clear/input-clear.component';
 import {LanguageSampleComponent} from './language/language-sample.component';
 import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
 import {MultiTranslateLoaderSampleComponent} from './multi-translate-loader/multi-translate-loader-sample.component';
-import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {NavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
 import {NavTreeDetailSampleComponent} from './nav-tree/nav-tree-detail-sample.component';
 import {NestedFormSampleComponent} from './nested-form/nested-form-sample.component';
@@ -36,7 +33,6 @@ import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component'
 import {StickySampleComponent} from './sticky/sticky-sample.component';
 import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
-import {DropdownSampleComponent} from './dropdown/dropdown.component';
 import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
 
 const samplesRoutes: Routes = [
@@ -104,12 +100,9 @@ const samplesRoutes: Routes = [
 	{path: 'collapse', component: CollapseSampleComponent},
 	{path: 'column-layout', component: ColumnLayoutSampleComponent},
 	{path: 'column-layout-full-height', component: ColumnLayoutFullHeightSampleComponent},
-	{path: 'datepicker', component: DatepickerSampleComponent},
-	{path: 'dropdown', component: DropdownSampleComponent},
 	{path: 'error-messages', component: ErrorMessagesSampleComponent},
 	{path: 'external-link', component: ExternalLinkComponent},
 	{path: 'file-upload', component: FileUploadSampleComponent},
-	{path: 'form-control-state', component: FormControlStateSampleComponent},
 	{path: 'global-events', component: GlobalEventsSampleComponent},
 	{path: 'horizontal-forms', component: HorizontalFormsSampleComponent},
 	{path: 'http-interceptor', component: HttpInterceptorSampleComponent},
@@ -117,7 +110,6 @@ const samplesRoutes: Routes = [
 	{path: 'language', component: LanguageSampleComponent},
 	{path: 'master-layout', component: MasterLayoutSampleComponent},
 	{path: 'multi-translate-loader', component: MultiTranslateLoaderSampleComponent},
-	{path: 'multiselect', component: MultiselectSampleComponent},
 	{
 		path: 'nav-tree',
 		component: NavTreeSampleComponent,

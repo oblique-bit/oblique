@@ -6,7 +6,6 @@ export function iconFactory(iconService: ObIconService): () => void {
 }
 
 export const ObTIconConfig = new InjectionToken<ObIconConfig>('Oblique icon configuration');
-export const ObUseObliqueIcons = new InjectionToken<boolean>('Oblique uses its own icons by default');
 
 export interface ObIconConfig {
 	registerObliqueIcons?: boolean;
@@ -29,7 +28,7 @@ export enum ObEIcon {
 	ARROW_RIGHT = 'arrow-right',
 	ARROW_UP = 'arrow-up',
 	ART = 'art',
-	ATTACHEMENT = 'attachement',
+	ATTACHMENT = 'attachment',
 	AUDIO = 'audio',
 	AUDIO_DESCRIPTION = 'audio-description',
 	AUDIO_LOW = 'audio-low',
@@ -181,7 +180,7 @@ export enum ObEIcon {
 	LOGOUT = 'logout',
 	LOW_VISION = 'low-vision',
 	MAGNET = 'magnet',
-	MAIL_ATTACHEMENT = 'mail-attachement',
+	MAIL_ATTACHMENT = 'mail-attachment',
 	MAP = 'map',
 	MAP_MARKER = 'map-marker',
 	MENU = 'menu',

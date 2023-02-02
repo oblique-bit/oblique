@@ -2,16 +2,6 @@
 	text-align: center;
 }
 
-.ob-master-layout {
-	&.material .bootstrap-only {
-		display: none;
-	}
-
-	&.bootstrap .material-only {
-		display: none;
-	}
-}
-
 .main-div {
 	display: flex;
 	justify-content: center;

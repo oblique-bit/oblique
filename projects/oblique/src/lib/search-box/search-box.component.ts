@@ -4,23 +4,23 @@ import {
 	ElementRef,
 	HostBinding,
 	HostListener,
-	Inject,
 	Input,
-	Optional,
 	QueryList,
 	ViewChild,
 	ViewChildren,
 	ViewEncapsulation
 } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {ObDropdownComponent} from '../dropdown/dropdown.component';
+import {ObPopoverDirective} from '../popover/popover.directive';
 import {ObISearchWidgetItem} from './search-box.model';
-import {ObUseObliqueIcons} from '../icon/icon.model';
 
 let nextId = 0;
 
 /**
  * TODO this really needs some refactoring, but until Oblique 7, this is the only solution to avoid a breaking change
+ */
+/**
+ * @deprecated since version 10.0.0. It will be removed with Oblique 11. Autocomplete should be used instead.
  */
 @Component({
 	selector: 'ob-search-box',
@@ -40,10 +40,9 @@ export class ObSearchBoxComponent {
 	filteredItems: ObISearchWidgetItem[] = [];
 	isOpened = false;
 	id = `search-input-${nextId++}`;
-	@HostBinding('class.ob-font-awesome') useFontAwesomeIcon: boolean;
 	private active: number;
 	@ViewChildren('link') private readonly links: QueryList<ElementRef>;
-	@ViewChild(ObDropdownComponent) private readonly dropdown: ObDropdownComponent;
+	@ViewChild(ObPopoverDirective) private readonly popover: ObPopoverDirective;
 
 	private patternInternal: string;
 
@@ -57,9 +56,7 @@ export class ObSearchBoxComponent {
 		this.toggle(this.pattern.length >= this.minPatternLength);
 	}
 
-	constructor(private readonly translate: TranslateService, @Optional() @Inject(ObUseObliqueIcons) useObliqueIcon) {
-		this.useFontAwesomeIcon = !(useObliqueIcon ?? true);
-	}
+	constructor(private readonly translate: TranslateService, private readonly el: ElementRef) {}
 
 	open(): void {
 		this.toggle(true);
@@ -69,26 +66,40 @@ export class ObSearchBoxComponent {
 		this.toggle(false);
 	}
 
-	@HostListener('keydown.arrowdown', ['$event']) navigateDown($event: KeyboardEvent): void {
-		this.focusLink(this.active === undefined ? 0 : (this.active + 1) % this.filteredItems.length);
-		if ($event) {
-			$event.preventDefault();
+	@HostListener('window:keydown.arrowdown', ['$event']) navigateDown($event: KeyboardEvent): void {
+		if (this.isOpened) {
+			this.focusLink(this.active === undefined ? 0 : (this.active + 1) % this.filteredItems.length);
+			if ($event) {
+				$event.preventDefault();
+			}
 		}
 	}
 
-	@HostListener('keydown.arrowup', ['$event']) navigateUp($event: KeyboardEvent): void {
-		this.focusLink(
-			this.active === undefined ? this.filteredItems.length - 1 : (this.active - 1 + this.filteredItems.length) % this.filteredItems.length
-		);
-		if ($event) {
-			$event.preventDefault();
+	@HostListener('window:keydown.arrowup', ['$event']) navigateUp($event: KeyboardEvent): void {
+		if (this.isOpened) {
+			this.focusLink(
+				this.active === undefined
+					? this.filteredItems.length - 1
+					: (this.active - 1 + this.filteredItems.length) % this.filteredItems.length
+			);
+			if ($event) {
+				$event.preventDefault();
+			}
 		}
 	}
 
-	@HostListener('keydown.escape') exit(): void {
-		this.pattern = '';
-		this.filteredItems = [];
-		this.active = undefined;
+	@HostListener('window:keydown.escape') exit(): void {
+		if (this.isOpened) {
+			this.pattern = '';
+			this.filteredItems = [];
+			this.active = undefined;
+		}
+	}
+
+	@HostListener('window:click', ['$event']) blur($event: PointerEvent): void {
+		if (!(this.el.nativeElement as Node).contains($event.target as Node)) {
+			this.close();
+		}
 	}
 
 	formatter(label: string, filterPattern?: string): string {
@@ -102,19 +113,15 @@ export class ObSearchBoxComponent {
 		}
 	}
 
-	blur(): void {
-		this.toggle(false);
-	}
-
-	click(evt: MouseEvent): void {
-		// avoid to trigger a toggle on the dropdown component
-		evt.stopPropagation();
-	}
-
 	private toggle(state: boolean): void {
-		this.isOpened = state;
-		this.dropdown.expandedOrUndefined = state;
-		this.dropdown.isOpen = state;
+		if (state !== this.isOpened) {
+			if (state) {
+				this.popover.open();
+			} else {
+				this.popover.close();
+			}
+			this.isOpened = state;
+		}
 	}
 
 	private filterItems(item: ObISearchWidgetItem): boolean {
@@ -126,6 +133,18 @@ export class ObSearchBoxComponent {
 
 	private focusLink(index: number): void {
 		this.active = index;
-		this.links.toArray()[this.active].nativeElement.focus();
+		this.links
+			.toArray()
+			.map(link => link.nativeElement as HTMLElement)
+			.filter(link => this.filterOutUnboundedElements(link))
+			[this.active].focus();
+	}
+
+	private filterOutUnboundedElements(link: HTMLElement): boolean {
+		// each time the popover is opened, a new list of results is created. The `links` QueryList lists
+		// all results, including the ones that are no in the DOM anymore. Those are filtered out by
+		// looking at their root node. If it's not document, then they are ignored.
+		// This is a memory leak and is only acceptable because the search-box is deprecated
+		return link.getRootNode().nodeType === 9; // 9 is document
 	}
 }

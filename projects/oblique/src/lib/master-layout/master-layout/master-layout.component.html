@@ -1,41 +1,26 @@
-<nav class="ob-access-keys" role="navigation" aria-label="Access keys">
+<nav class="ob-access-keys" role="navigation" [attr.aria-label]="'i18n.oblique.master-layout.accesskey.title' | translate">
 	<ul>
 		<li>
-			<a
-				class="ob-accessible"
-				[class.ob-font-awesome]="useFontAwesomeIcons"
-				accesskey="0"
-				[routerLink]="route.path"
-				[queryParams]="route.params"
-				fragment="content"
-			>
-				<ob-icon icon="universal-access"></ob-icon>
+			<a class="ob-accessible" accesskey="0" [routerLink]="route.path" [queryParams]="route.params" fragment="content">
+				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access"></mat-icon></span>
 				{{ "i18n.oblique.master-layout.accesskey.main-content" | translate }}
 			</a>
 		</li>
 		<li *ngIf="!noNavigation && navigation.length">
-			<a
-				class="ob-accessible"
-				[class.ob-font-awesome]="useFontAwesomeIcons"
-				accesskey="1"
-				[routerLink]="route.path"
-				[queryParams]="route.params"
-				fragment="navigation"
-			>
-				<ob-icon icon="universal-access"></ob-icon>
+			<a class="ob-accessible" accesskey="1" [routerLink]="route.path" [queryParams]="route.params" fragment="navigation">
+				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access"></mat-icon></span>
 				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}
 			</a>
 		</li>
 		<li *ngFor="let skipLink of skipLinks; let i = index">
 			<a
 				class="ob-accessible"
-				[class.ob-font-awesome]="useFontAwesomeIcons"
 				[attr.accesskey]="skipLink.accessKey"
 				[routerLink]="skipLink.url === 'current' ? route.path : skipLink.url"
 				[queryParams]="route.params"
 				[fragment]="skipLink.fragment"
 			>
-				<ob-icon icon="universal-access"></ob-icon>
+				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access"></mat-icon></span>
 				{{ skipLink.label | translate }} [{{ skipLink.accessKey }}]
 			</a>
 		</li>
@@ -102,7 +87,7 @@
 			<ng-content select="[obOffCanvasTitle]"></ng-content>
 		</h2>
 		<button type="button" mat-icon-button obButton="secondary" obOffCanvasToggle class="ob-close" #offCanvasClose>
-			<ob-icon icon="cancel"></ob-icon>
+			<mat-icon svgIcon="cancel"></mat-icon>
 			<span class="ob-screen-reader-only">{{ "i18n.oblique.off-canvas.close" | translate }}</span>
 		</button>
 	</header>

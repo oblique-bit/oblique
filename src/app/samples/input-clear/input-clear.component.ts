@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
-import {ThemeService} from 'src/app/common/theme.service';
-import {Observable, map} from 'rxjs';
 
 @Component({
 	selector: 'sc-input-clear',
@@ -13,14 +11,12 @@ export class InputClearSampleComponent implements OnInit {
 	testModel3: string;
 	testModel4: string;
 	testForm: UntypedFormGroup;
-	isMaterialTheme$: Observable<boolean>;
 
-	constructor(private readonly formBuilder: UntypedFormBuilder, private readonly themeService: ThemeService) {}
+	constructor(private readonly formBuilder: UntypedFormBuilder) {}
 
 	ngOnInit(): void {
 		this.testForm = this.formBuilder.group({
 			field1: ['']
 		});
-		this.isMaterialTheme$ = this.themeService.theme$.pipe(map(() => this.themeService.isMaterial()));
 	}
 }

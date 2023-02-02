@@ -19,7 +19,7 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["zone.js"],
             "preserveSymlinks": true,
             "assets": [
               {
@@ -41,14 +41,6 @@
             ],
             "styles": [
               "projects/oblique/src/styles/scss/oblique-core.scss",
-              {
-                "input": "projects/oblique/src/styles/scss/themes/oblique-material.scss",
-                "inject": false
-              },
-              {
-                "input": "projects/oblique/src/styles/scss/themes/oblique-bootstrap.scss",
-                "inject": false
-              },
               {
                 "input": "projects/oblique/src/styles/css/frutiger.css",
                 "inject": false
@@ -147,19 +139,7 @@
                 "inject": false
               },
               {
-                "input": "projects/oblique/src/styles/scss/oblique-utilities.scss",
-                "inject": false
-              },
-              {
                 "input": "projects/stylesBuilder/oblique-components.scss",
-                "inject": false
-              },
-              {
-                "input": "projects/oblique/src/styles/scss/themes/oblique-material.scss",
-                "inject": false
-              },
-              {
-                "input": "projects/oblique/src/styles/scss/themes/oblique-bootstrap.scss",
                 "inject": false
               }
             ]
@@ -174,7 +154,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/oblique/tsconfig.lib.json",
             "project": "projects/oblique/ng-package.json"
@@ -209,6 +189,12 @@
     },
     "@schematics/angular:directive": {
       "prefix": "ob"
+    },
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
     }
   }
 }

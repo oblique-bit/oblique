@@ -1,0 +1,31 @@
+@use "../core/variables";
+
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
+ */
+.mat-tab-nav-bar,
+.mat-tab-header {
+	border-bottom: none;
+}
+
+.mat-tab-label {
+	color: variables.$ob-default;
+	background-color: variables.$ob-smoke;
+
+	+ .mat-tab-label {
+		margin-left: 2px;
+	}
+
+	&:hover,
+	&:focus {
+		color: variables.$ob-primary;
+		background-color: variables.$ob-extra-light;
+	}
+
+	&.mat-tab-label-active,
+	&:active {
+		color: variables.$ob-primary;
+		border-color: variables.$ob-primary;
+		background-color: variables.$ob-light;
+	}
+}

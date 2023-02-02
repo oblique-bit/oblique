@@ -3,13 +3,9 @@ import path from 'path';
 
 export class UpdatePaths {
 	private static readonly stylesDirectoryPath: string = path.join('dist', 'oblique', 'styles');
-	private static readonly fontAwesomePath = '~@fortawesome/fontawesome-free';
-	private static readonly obliquePath = '~@oblique/oblique/styles';
 
 	static perform(): void {
 		UpdatePaths.updateBackgroundImagePath();
-		UpdatePaths.updateScssFontAwesomePaths();
-		UpdatePaths.updateCssFontAwesomePaths();
 	}
 
 	private static updateBackgroundImagePath(): void {
@@ -17,20 +13,6 @@ export class UpdatePaths {
 			[path.join(UpdatePaths.stylesDirectoryPath, 'css', 'oblique-components.css')],
 			'cover-background.jpg',
 			'~@oblique/oblique/assets/images/cover-background.jpg'
-		);
-	}
-
-	private static updateScssFontAwesomePaths(): void {
-		const scssFilePaths = this.listFiles(path.join(UpdatePaths.stylesDirectoryPath, 'scss')).filter(filePath => filePath.endsWith('.scss'));
-		UpdatePaths.replaceInFiles(scssFilePaths, `${UpdatePaths.fontAwesomePath}/webfonts`, `${UpdatePaths.obliquePath}/fonts`);
-		UpdatePaths.replaceInFiles(scssFilePaths, `${UpdatePaths.fontAwesomePath}/scss`, `${UpdatePaths.obliquePath}/scss/fontawesome`);
-	}
-
-	private static updateCssFontAwesomePaths(): void {
-		UpdatePaths.replaceInFiles(
-			[path.join(UpdatePaths.stylesDirectoryPath, 'css', 'oblique-core.css')],
-			/(?<=url\()fa-/,
-			'~@oblique/oblique/styles/fonts/fa-'
 		);
 	}
 

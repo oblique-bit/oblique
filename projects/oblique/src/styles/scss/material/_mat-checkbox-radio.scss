@@ -1,0 +1,25 @@
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
+ */
+.mat-radio-label,
+.mat-checkbox-layout {
+	font-weight: 400;
+}
+
+.mat-checkbox.control-mandatory::before {
+	top: -2px;
+}
+
+.mat-radio-group.control-mandatory::before {
+	top: -1px;
+}
+
+.mat-checkbox-label,
+.mat-radio-label-content {
+	padding-top: 2px;
+}
+
+.mat-checkbox.mat-checkbox-disabled,
+.mat-radio-button.mat-radio-disabled .mat-radio-label {
+	cursor: not-allowed;
+}

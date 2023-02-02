@@ -4,6 +4,9 @@
 @use "../mixins/table";
 @use "../mixins/typography";
 
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11
+ */
 table {
 	border-collapse: collapse; // Prevent double borders
 }

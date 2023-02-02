@@ -1,5 +1,5 @@
 import {Directive, ElementRef, HostBinding, Input, OnChanges, OnInit, Optional} from '@angular/core';
-import {MatAnchor, MatButton} from '@angular/material/button';
+import {MatLegacyAnchor as MatAnchor, MatLegacyButton as MatButton} from '@angular/material/legacy-button';
 
 @Directive({
 	selector: '[obButton]',
@@ -13,6 +13,11 @@ export class ObButtonDirective implements OnInit, OnChanges {
 	private static readonly forbidden = ['mat-raised-button', 'mat-fab', 'mat-mini-fab', 'mat-stroked-button', 'mat-flat-button'];
 
 	constructor(@Optional() btn: MatButton, @Optional() link: MatAnchor, private readonly element: ElementRef) {
+		if (!btn && !link) {
+			throw new Error(
+				'Couldn\'t find a reference to "MatButton", make sure that "MatLegacyButtonModule" is imported instead of "MatButtonModule".'
+			);
+		}
 		(btn || link).color = 'primary';
 	}
 

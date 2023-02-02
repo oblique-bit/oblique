@@ -10,7 +10,6 @@ import {
 	Input,
 	OnDestroy,
 	OnInit,
-	Optional,
 	QueryList,
 	TemplateRef,
 	ViewChild,
@@ -29,7 +28,6 @@ import {ObEMasterLayoutEventValues, ObIDynamicSkipLink, ObIMasterLayoutEvent, Ob
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
-import {ObUseObliqueIcons} from '../../icon/icon.model';
 
 @Component({
 	selector: 'ob-master-layout',
@@ -39,8 +37,7 @@ import {ObUseObliqueIcons} from '../../icon/icon.model';
 		'./master-layout.component.scss',
 		'./master-layout.component-cover.scss',
 		'./master-layout.component-offcanvas.scss',
-		'./master-layout.component-accessibility.scss',
-		'./master-layout.component.firefox.scss'
+		'./master-layout.component-accessibility.scss'
 	],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout', 'ob-version': appVersion}
@@ -48,7 +45,6 @@ import {ObUseObliqueIcons} from '../../icon/icon.model';
 export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy {
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
-	useFontAwesomeIcons = false;
 	@Input() navigation: ObINavigationLink[] = [];
 	@Input() skipLinks: ObISkipLink[] | ObIDynamicSkipLink[] = [];
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
@@ -78,11 +74,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		private readonly router: Router,
 		private readonly scrollEvents: ObScrollingEvents,
 		private readonly globalEventsService: ObGlobalEventsService,
-		@Optional() @Inject(ObUseObliqueIcons) useObliqueIcons: boolean,
 		@Inject(DOCUMENT) private readonly document: any,
 		@Inject(WINDOW) private readonly window: Window
 	) {
-		this.useFontAwesomeIcons = !(useObliqueIcons ?? true);
 		this.layoutHasCoverChange();
 		this.layoutHasDefaultLayoutChange();
 		this.layoutHasMainNavigationChange();

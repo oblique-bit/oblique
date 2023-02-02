@@ -9,13 +9,9 @@ module.exports.collectCoverageFrom = [
 	'!**/*.module.ts',
 	'!**/**.harness.ts',
 	// the following files have no spec files and therefore have a 0 coverage. Tests will be written later
-	'!**/date-formatter.pipe.ts',
-	'!**/datepicker-i18n.service.ts',
 	'!**/http-api-interceptor.ts',
-	'!**/off-canvas-backdrop.directive.ts',
 	'!**/off-canvas-container.directive.ts',
-	'!**/schema-required.directive.ts',
-	'!**/spinner.component.ts'
+	'!**/schema-required.directive.ts'
 ];
 module.exports.coverageThreshold = {
 	/*
@@ -24,7 +20,7 @@ module.exports.coverageThreshold = {
 	 */
 	global: {
 		statements: 100,
-		branches: 90,
+		branches: 100,
 		functions: 100,
 		lines: 100
 	},
@@ -48,16 +44,10 @@ module.exports.coverageThreshold = {
 		lines: 100
 	},
 	'projects/oblique/src/lib/column-layout/*.ts': {
-		statements: 55,
-		branches: 47,
+		statements: 51,
+		branches: 35,
 		functions: 27,
-		lines: 58
-	},
-	'projects/oblique/src/lib/datepicker/*.ts': {
-		statements: 73,
-		branches: 27,
-		functions: 80,
-		lines: 71
+		lines: 54
 	},
 	'projects/oblique/src/lib/document-meta/*.ts': {
 		statements: 60,
@@ -65,35 +55,17 @@ module.exports.coverageThreshold = {
 		functions: 18,
 		lines: 59
 	},
-	'projects/oblique/src/lib/dropdown/*.ts': {
-		statements: 100,
-		branches: 83,
-		functions: 100,
-		lines: 100
-	},
 	'projects/oblique/src/lib/error-messages/*.ts': {
 		statements: 52,
 		branches: 0,
 		functions: 11,
 		lines: 52
 	},
-	'projects/oblique/src/lib/external-link/*.ts': {
-		statements: 90,
-		branches: 87,
-		functions: 85,
-		lines: 90
-	},
 	'projects/oblique/src/lib/file-upload/progress/*.ts': {
 		statements: 100,
 		branches: 88,
 		functions: 100,
 		lines: 100
-	},
-	'projects/oblique/src/lib/form-control-state/*.ts': {
-		statements: 88,
-		branches: 77,
-		functions: 88,
-		lines: 90
 	},
 	'projects/oblique/src/lib/http-api-interceptor/*.ts': {
 		statements: 25,
@@ -108,7 +80,7 @@ module.exports.coverageThreshold = {
 		lines: 95
 	},
 	'projects/oblique/src/lib/input-clear/*.ts': {
-		statements: 97,
+		statements: 96,
 		branches: 85,
 		functions: 100,
 		lines: 95
@@ -121,7 +93,7 @@ module.exports.coverageThreshold = {
 	},
 	'projects/oblique/src/lib/master-layout/master-layout/*.ts': {
 		statements: 87,
-		branches: 58,
+		branches: 56,
 		functions: 74,
 		lines: 86
 	},
@@ -132,22 +104,16 @@ module.exports.coverageThreshold = {
 		lines: 82
 	},
 	'projects/oblique/src/lib/master-layout/master-layout-navigation/*.ts': {
-		statements: 69,
+		statements: 65,
 		branches: 53,
 		functions: 53,
-		lines: 70
+		lines: 65
 	},
 	'projects/oblique/src/lib/multi-translate-loader/*.ts': {
 		statements: 22,
 		branches: 0,
 		functions: 0,
 		lines: 25
-	},
-	'projects/oblique/src/lib/multiselect/*.ts': {
-		statements: 82,
-		branches: 0,
-		functions: 70,
-		lines: 82
 	},
 	'projects/oblique/src/lib/nav-tree/*.ts': {
 		statements: 91,
@@ -187,15 +153,15 @@ module.exports.coverageThreshold = {
 	},
 	'projects/oblique/src/lib/scrolling/*.ts': {
 		statements: 66,
-		branches: 90,
+		branches: 83,
 		functions: 0,
 		lines: 63
 	},
 	'projects/oblique/src/lib/search-box/*.ts': {
-		statements: 91,
+		statements: 98,
 		branches: 84,
-		functions: 66,
-		lines: 89
+		functions: 94,
+		lines: 97
 	},
 	'projects/oblique/src/lib/selectable/*.ts': {
 		statements: 100,
@@ -214,17 +180,5 @@ module.exports.coverageThreshold = {
 		branches: 85,
 		functions: 100,
 		lines: 95
-	},
-	'projects/oblique/src/lib/telemetry/*.ts': {
-		statements: 96,
-		branches: 77,
-		functions: 83,
-		lines: 96
-	},
-	'projects/oblique/src/lib/unsaved-changes-tabs/*.ts': {
-		statements: 90,
-		branches: 80,
-		functions: 75,
-		lines: 89
 	}
 };

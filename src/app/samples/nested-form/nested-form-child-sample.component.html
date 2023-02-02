@@ -1,32 +1,15 @@
 <div [formGroup]="nestedForm">
-	<ng-container *ngIf="material | async; else bootstrap">
-		<mat-form-field obErrorMessages>
-			<mat-label>Reactive Material Child 1</mat-label>
-			<input matInput formControlName="field1" />
-			<mat-error></mat-error>
-		</mat-form-field>
-		<mat-form-field obErrorMessages>
-			<mat-label>Reactive Material Child 2</mat-label>
-			<input matInput formControlName="field2" />
-			<mat-error></mat-error>
-		</mat-form-field>
-		<ob-nested-form formControlName="grandchild" [nestedForm]="grandChild.grandChildForm">
-			<sc-nested-form-grandchild-sample #grandChild></sc-nested-form-grandchild-sample>
-		</ob-nested-form>
-	</ng-container>
-	<ng-template #bootstrap>
-		<div class="form-group" obFormControlState>
-			<label class="control-label">Reactive Bootstrap Child 1</label>
-			<input class="form-control" type="text" formControlName="field1" />
-			<ob-error-messages></ob-error-messages>
-		</div>
-		<div class="form-group" obFormControlState>
-			<label class="control-label">Reactive Bootstrap Child 2</label>
-			<input class="form-control" type="text" formControlName="field2" />
-			<ob-error-messages></ob-error-messages>
-		</div>
-		<ob-nested-form formControlName="grandchild" [nestedForm]="grandChildB.grandChildForm">
-			<sc-nested-form-grandchild-sample #grandChildB="grandChild"></sc-nested-form-grandchild-sample>
-		</ob-nested-form>
-	</ng-template>
+	<mat-form-field obErrorMessages>
+		<mat-label>Reactive Material Child 1</mat-label>
+		<input matInput formControlName="field1" />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<mat-form-field obErrorMessages>
+		<mat-label>Reactive Material Child 2</mat-label>
+		<input matInput formControlName="field2" />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<ob-nested-form formControlName="grandchild" [nestedForm]="grandChild.grandChildForm">
+		<sc-nested-form-grandchild-sample #grandChild></sc-nested-form-grandchild-sample>
+	</ob-nested-form>
 </div>

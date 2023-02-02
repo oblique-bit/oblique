@@ -2,16 +2,16 @@ import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing'
 import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ControlValueAccessor, FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatLegacyAutocompleteModule as MatAutocompleteModule} from '@angular/material/legacy-autocomplete';
+import {MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
 import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
+import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {MatIconTestingModule} from '@angular/material/icon/testing';
-import {MatFormFieldHarness} from '@angular/material/form-field/testing';
-import {MatInputHarness} from '@angular/material/input/testing';
-import {MatAutocompleteHarness} from '@angular/material/autocomplete/testing';
+import {MatLegacyFormFieldHarness as MatFormFieldHarness} from '@angular/material/legacy-form-field/testing';
+import {MatLegacyInputHarness as MatInputHarness} from '@angular/material/legacy-input/testing';
+import {MatLegacyAutocompleteHarness as MatAutocompleteHarness} from '@angular/material/legacy-autocomplete/testing';
 import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -20,7 +20,6 @@ import {ObAutocompleteHarness} from './../autocomplete/_harness/autocomplete.har
 import {ObOptionLabelIconModule} from '../autocomplete/option-label-icon/option-label-icon.module';
 import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup} from '../autocomplete/autocomplete.model';
 import {ObAutocompleteComponent} from './autocomplete.component';
-import {ObIconModule} from '../icon/icon.module';
 import {ObInputClearModule} from '../input-clear/input-clear.module';
 import {ObMockTranslateParamsModule} from '../translate-params/_mocks/mock-translate-params.module';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
@@ -59,7 +58,6 @@ describe('AutocompleteComponent', () => {
 				MatFormFieldModule,
 				MatIconModule,
 				MatInputModule,
-				ObIconModule,
 				ObInputClearModule,
 				ReactiveFormsModule,
 				HttpClientTestingModule,

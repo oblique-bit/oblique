@@ -1,937 +1,389 @@
 <sc-description component="button"></sc-description>
-<ng-container *ngIf="material | async">
-	<mat-form-field style="width: fit-content">
-		<mat-label>Dynamic Type Change</mat-label>
-		<mat-select [(value)]="obButton">
-			<mat-option value="primary">Primary</mat-option>
-			<mat-option value="secondary">Secondary</mat-option>
-			<mat-option value="tertiary">Tertiary</mat-option>
-		</mat-select>
-	</mat-form-field>
-</ng-container>
+
+<mat-form-field style="width: fit-content">
+	<mat-label>Dynamic Type Change</mat-label>
+	<mat-select [(value)]="obButton">
+		<mat-option value="primary">Primary</mat-option>
+		<mat-option value="secondary">Secondary</mat-option>
+		<mat-option value="tertiary">Tertiary</mat-option>
+	</mat-select>
+</mat-form-field>
 <table class="table">
-	<ng-container *ngIf="material | async; else bootstrap">
-		<thead>
-			<tr>
-				<th></th>
-				<th>Primary</th>
-				<th>Secondary</th>
-				<th>Tertiary</th>
-				<th>Dynamic</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td colspan="4">Button</td>
-			</tr>
-			<tr>
-				<th>
-					<label>Default</label>
-				</th>
-				<td>
-					<button type="button" mat-button obButton="primary">Primary</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="secondary">Secondary</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="tertiary">Tertiary</button>
-				</td>
-				<td>
-					<button type="button" mat-button [obButton]="obButton">Dynamic</button>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA icon</label>
-				</th>
-				<td>
-					<button type="button" mat-button obButton="primary"><span class="fas fa-sign-in-alt"></span> Primary</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="secondary"><span class="fas fa-sign-in-alt"></span> Secondary</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="tertiary"><span class="fas fa-sign-in-alt"></span> Tertiary</button>
-				</td>
-				<td>
-					<button type="button" mat-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span> Dynamic</button>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA mat-icon</label>
-				</th>
-				<td>
-					<button type="button" mat-button obButton="primary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Primary</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="secondary">
-						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Secondary
-					</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="tertiary">
-						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"> </mat-icon>Tertiary
-					</button>
-				</td>
-				<td>
-					<button type="button" mat-button [obButton]="obButton">
-						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Dynamic
-					</button>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>mat-icon</label>
-				</th>
-				<td>
-					<button type="button" mat-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon> Primary</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon> Secondary</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon> Tertiary</button>
-				</td>
-				<td>
-					<button type="button" mat-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon> Dynamic</button>
-				</td>
-			</tr>
-		</tbody>
-		<tbody>
-			<tr>
-				<td colspan="4">Button disabled</td>
-			</tr>
-			<tr>
-				<th>
-					<label>Default</label>
-				</th>
-				<td>
-					<button type="button" mat-button obButton="primary" disabled>Primary</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="secondary" disabled>Secondary</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="tertiary" disabled>Tertiary</button>
-				</td>
-				<td>
-					<button type="button" mat-button [obButton]="obButton" disabled>Dynamic</button>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA icon</label>
-				</th>
-				<td>
-					<button type="button" mat-button obButton="primary" disabled><span class="fas fa-sign-in-alt"></span> Primary</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="secondary" disabled><span class="fas fa-sign-in-alt"></span> Secondary</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="tertiary" disabled><span class="fas fa-sign-in-alt"></span> Tertiary</button>
-				</td>
-				<td>
-					<button type="button" mat-button [obButton]="obButton" disabled><span class="fas fa-sign-in-alt"></span> Dynamic</button>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA mat-icon</label>
-				</th>
-				<td>
-					<button type="button" mat-button obButton="primary" disabled>
-						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Primary
-					</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="secondary" disabled>
-						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Secondary
-					</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="tertiary" disabled>
-						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"> </mat-icon>Tertiary
-					</button>
-				</td>
-				<td>
-					<button type="button" mat-button [obButton]="obButton" disabled>
-						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Dynamic
-					</button>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>mat-icon</label>
-				</th>
-				<td>
-					<button type="button" mat-button obButton="primary" disabled><mat-icon svgIcon="logout"></mat-icon> Primary</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="secondary" disabled><mat-icon svgIcon="logout"></mat-icon> Secondary</button>
-				</td>
-				<td>
-					<button type="button" mat-button obButton="tertiary" disabled><mat-icon svgIcon="logout"></mat-icon> Tertiary</button>
-				</td>
-				<td>
-					<button type="button" mat-button [obButton]="obButton" disabled><mat-icon svgIcon="logout"></mat-icon> Dynamic</button>
-				</td>
-			</tr>
-		</tbody>
-		<tbody>
-			<tr>
-				<td colspan="4">Button without text</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA icon</label>
-				</th>
-				<td>
-					<button type="button" mat-icon-button obButton="primary"><span class="fas fa-sign-in-alt"></span></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button obButton="secondary"><span class="fas fa-sign-in-alt"></span></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button obButton="tertiary"><span class="fas fa-sign-in-alt"></span></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span></button>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA mat-icon</label>
-				</th>
-				<td>
-					<button type="button" mat-icon-button obButton="primary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button obButton="secondary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button obButton="tertiary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"> </mat-icon></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button [obButton]="obButton"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></button>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>mat-icon</label>
-				</th>
-				<td>
-					<button type="button" mat-icon-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon></button>
-				</td>
-			</tr>
-		</tbody>
-		<tbody>
-			<tr>
-				<td colspan="4">Button disabled without text</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA icon</label>
-				</th>
-				<td>
-					<button type="button" mat-icon-button obButton="primary" disabled><span class="fas fa-sign-in-alt"></span></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button obButton="secondary" disabled><span class="fas fa-sign-in-alt"></span></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button obButton="tertiary" disabled><span class="fas fa-sign-in-alt"></span></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button [obButton]="obButton" disabled><span class="fas fa-sign-in-alt"></span></button>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA mat-icon</label>
-				</th>
-				<td>
-					<button type="button" mat-icon-button obButton="primary" disabled>
-						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon>
-					</button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button obButton="secondary" disabled>
-						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon>
-					</button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button obButton="tertiary" disabled>
-						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"> </mat-icon>
-					</button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button [obButton]="obButton" disabled>
-						<mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon>
-					</button>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>mat-icon</label>
-				</th>
-				<td>
-					<button type="button" mat-icon-button obButton="primary" disabled><mat-icon svgIcon="logout"></mat-icon></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button obButton="secondary" disabled><mat-icon svgIcon="logout"></mat-icon></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button obButton="tertiary" disabled><mat-icon svgIcon="logout"></mat-icon></button>
-				</td>
-				<td>
-					<button type="button" mat-icon-button [obButton]="obButton" disabled><mat-icon svgIcon="logout"></mat-icon></button>
-				</td>
-			</tr>
-		</tbody>
-		<tbody>
-			<tr>
-				<td colspan="4">Link</td>
-			</tr>
-			<tr>
-				<th>
-					<label>Default</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary">Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary">Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary">Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton">Dynamic</a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA icon</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary"><span class="fas fa-sign-in-alt"></span> Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary"><span class="fas fa-sign-in-alt"></span> Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary"><span class="fas fa-sign-in-alt"></span> Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span> Dynamic</a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA mat-icon</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"> </mat-icon>Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Dynamic</a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>mat-icon</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon> Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon> Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon> Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon> Dynamic</a>
-				</td>
-			</tr>
-		</tbody>
-		<tbody>
-			<tr>
-				<td colspan="4">Link disabled</td>
-			</tr>
-			<tr>
-				<th>
-					<label>Default</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary" disabled>Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary" disabled>Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary" disabled>Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton" disabled>Dynamic</a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA icon</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary" disabled><span class="fas fa-sign-in-alt"></span> Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary" disabled><span class="fas fa-sign-in-alt"></span> Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary" disabled><span class="fas fa-sign-in-alt"></span> Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton" disabled><span class="fas fa-sign-in-alt"></span> Dynamic</a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA mat-icon</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"> </mat-icon>Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Dynamic</a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>mat-icon</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary" disabled><mat-icon svgIcon="logout"></mat-icon> Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary" disabled><mat-icon svgIcon="logout"></mat-icon> Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary" disabled><mat-icon svgIcon="logout"></mat-icon> Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton" disabled><mat-icon svgIcon="logout"></mat-icon> Dynamic</a>
-				</td>
-			</tr>
-		</tbody>
-		<tbody>
-			<tr>
-				<td colspan="4">Link without text</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA icon</label>
-				</th>
-				<td>
-					<a mat-icon-button obButton="primary"><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-				<td>
-					<a mat-icon-button obButton="secondary"><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-				<td>
-					<a mat-icon-button obButton="tertiary"><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-				<td>
-					<a mat-icon-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA mat-icon</label>
-				</th>
-				<td>
-					<a mat-icon-button obButton="primary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></a>
-				</td>
-				<td>
-					<a mat-icon-button obButton="secondary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></a>
-				</td>
-				<td>
-					<a mat-icon-button obButton="tertiary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"> </mat-icon></a>
-				</td>
-				<td>
-					<a mat-icon-button [obButton]="obButton"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>mat-icon</label>
-				</th>
-				<td>
-					<a mat-icon-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-				<td>
-					<a mat-icon-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-				<td>
-					<a mat-icon-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-				<td>
-					<a mat-icon-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-			</tr>
-		</tbody>
-		<tbody>
-			<tr>
-				<td colspan="4">Link disabled without text</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA icon</label>
-				</th>
-				<td>
-					<a mat-icon-button obButton="primary" disabled><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-				<td>
-					<a mat-icon-button obButton="secondary" disabled><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-				<td>
-					<a mat-icon-button obButton="tertiary" disabled><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-				<td>
-					<a mat-icon-button [obButton]="obButton" disabled><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA mat-icon</label>
-				</th>
-				<td>
-					<a mat-icon-button obButton="primary" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></a>
-				</td>
-				<td>
-					<a mat-icon-button obButton="secondary" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></a>
-				</td>
-				<td>
-					<a mat-icon-button obButton="tertiary" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"> </mat-icon></a>
-				</td>
-				<td>
-					<a mat-icon-button [obButton]="obButton" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>mat-icon</label>
-				</th>
-				<td>
-					<a mat-icon-button obButton="primary" disabled><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-				<td>
-					<a mat-icon-button obButton="secondary" disabled><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-				<td>
-					<a mat-icon-button obButton="tertiary" disabled><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-				<td>
-					<a mat-icon-button [obButton]="obButton" disabled><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-			</tr>
-		</tbody>
-		<tbody>
-			<tr>
-				<td colspan="4">External Link</td>
-			</tr>
-			<tr>
-				<th>
-					<label>Default</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary">Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary">Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary">Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton">Dynamic</a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA icon</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary"><span class="fas fa-sign-in-alt"></span> Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary"><span class="fas fa-sign-in-alt"></span> Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary"><span class="fas fa-sign-in-alt"></span> Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span> Dynamic</a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA mat-icon</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"> </mat-icon>Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Dynamic</a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>mat-icon</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon> Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon> Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon> Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon> Dynamic</a>
-				</td>
-			</tr>
-		</tbody>
-		<tbody>
-			<tr>
-				<td colspan="4">External Link disabled</td>
-			</tr>
-			<tr>
-				<th>
-					<label>Default</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary" disabled>Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary" disabled>Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary" disabled>Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton" disabled>Dynamic</a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA icon</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary" disabled><span class="fas fa-sign-in-alt"></span> Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary" disabled><span class="fas fa-sign-in-alt"></span> Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary" disabled><span class="fas fa-sign-in-alt"></span> Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton" disabled><span class="fas fa-sign-in-alt"></span> Dynamic</a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA mat-icon</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"> </mat-icon>Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon> Dynamic</a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>mat-icon</label>
-				</th>
-				<td>
-					<a href="" mat-button obButton="primary" disabled><mat-icon svgIcon="logout"></mat-icon> Primary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="secondary" disabled><mat-icon svgIcon="logout"></mat-icon> Secondary</a>
-				</td>
-				<td>
-					<a href="" mat-button obButton="tertiary" disabled><mat-icon svgIcon="logout"></mat-icon> Tertiary</a>
-				</td>
-				<td>
-					<a href="" mat-button [obButton]="obButton" disabled><mat-icon svgIcon="logout"></mat-icon> Dynamic</a>
-				</td>
-			</tr>
-		</tbody>
-		<tbody>
-			<tr>
-				<td colspan="4">External link without text</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA icon</label>
-				</th>
-				<td>
-					<a href="" mat-icon-button obButton="primary"><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button obButton="secondary"><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button obButton="tertiary"><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button [obButton]="obButton"><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA mat-icon</label>
-				</th>
-				<td>
-					<a href="" mat-icon-button obButton="primary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button obButton="secondary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button obButton="tertiary"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"> </mat-icon></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button [obButton]="obButton"><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>mat-icon</label>
-				</th>
-				<td>
-					<a href="" mat-icon-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-			</tr>
-		</tbody>
-		<tbody>
-			<tr>
-				<td colspan="4">External link disabled without text</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA icon</label>
-				</th>
-				<td>
-					<a href="" mat-icon-button obButton="primary" disabled><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button obButton="secondary" disabled><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button obButton="tertiary" disabled><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button [obButton]="obButton" disabled><span class="fas fa-sign-in-alt"></span></a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>FA mat-icon</label>
-				</th>
-				<td>
-					<a href="" mat-icon-button obButton="primary" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button obButton="secondary" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button obButton="tertiary" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"> </mat-icon></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button [obButton]="obButton" disabled><mat-icon fontSet="fa" fontIcon="fa-sign-in-alt"></mat-icon></a>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label>mat-icon</label>
-				</th>
-				<td>
-					<a href="" mat-icon-button obButton="primary" disabled><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button obButton="secondary" disabled><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button obButton="tertiary" disabled><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-				<td>
-					<a href="" mat-icon-button [obButton]="obButton" disabled><mat-icon svgIcon="logout"></mat-icon></a>
-				</td>
-			</tr>
-		</tbody>
-	</ng-container>
-	<ng-template #bootstrap>
-		<thead>
-			<tr>
-				<th></th>
-				<th>Normal & Hover</th>
-				<th>Focus</th>
-				<th>Active</th>
-				<th>Disabled</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>
-					<label class="form-control-static">Primary</label>
-				</td>
-				<td>
-					<button type="button" class="btn btn-primary">Primary</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-primary focus">Primary</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-primary active">Primary</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-primary" disabled="disabled">Primary</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label class="form-control-static">Secondary</label>
-				</td>
-				<td>
-					<button type="button" class="btn btn-secondary">Secondary</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-secondary focus">Secondary</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-secondary active">Secondary</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-secondary" disabled="disabled">Secondary</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label class="form-control-static">Success</label>
-				</td>
-				<td>
-					<button type="button" class="btn btn-success">Success</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-success focus">Success</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-success active">Success</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-success" disabled="disabled">Success</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label class="form-control-static">Warning</label>
-				</td>
-				<td>
-					<button type="button" class="btn btn-warning">Warning</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-warning focus">Warning</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-warning active">Warning</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-warning" disabled="disabled">Warning</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label class="form-control-static">Danger</label>
-				</td>
-				<td>
-					<button type="button" class="btn btn-danger">Danger</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-danger focus">Danger</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-danger active">Danger</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-danger" disabled="disabled">Danger</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label class="form-control-static">Link</label>
-				</td>
-				<td>
-					<button type="button" class="btn btn-link">Link</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-link focus">Link</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-link active">Link</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-link" disabled="disabled">Link</button>
-				</td>
-			</tr>
-		</tbody>
-	</ng-template>
+	<thead>
+		<tr>
+			<th></th>
+			<th>Primary</th>
+			<th>Secondary</th>
+			<th>Tertiary</th>
+			<th>Dynamic</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="4">Button</td>
+		</tr>
+		<tr>
+			<th>
+				<label>Default</label>
+			</th>
+			<td>
+				<button type="button" mat-button obButton="primary">Primary</button>
+			</td>
+			<td>
+				<button type="button" mat-button obButton="secondary">Secondary</button>
+			</td>
+			<td>
+				<button type="button" mat-button obButton="tertiary">Tertiary</button>
+			</td>
+			<td>
+				<button type="button" mat-button [obButton]="obButton">Dynamic</button>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<button type="button" mat-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon> Primary</button>
+			</td>
+			<td>
+				<button type="button" mat-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon> Secondary</button>
+			</td>
+			<td>
+				<button type="button" mat-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon> Tertiary</button>
+			</td>
+			<td>
+				<button type="button" mat-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon> Dynamic</button>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">Button disabled</td>
+		</tr>
+		<tr>
+			<th>
+				<label>Default</label>
+			</th>
+			<td>
+				<button type="button" mat-button obButton="primary" disabled>Primary</button>
+			</td>
+			<td>
+				<button type="button" mat-button obButton="secondary" disabled>Secondary</button>
+			</td>
+			<td>
+				<button type="button" mat-button obButton="tertiary" disabled>Tertiary</button>
+			</td>
+			<td>
+				<button type="button" mat-button [obButton]="obButton" disabled>Dynamic</button>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<button type="button" mat-button obButton="primary" disabled><mat-icon svgIcon="logout"></mat-icon> Primary</button>
+			</td>
+			<td>
+				<button type="button" mat-button obButton="secondary" disabled><mat-icon svgIcon="logout"></mat-icon> Secondary</button>
+			</td>
+			<td>
+				<button type="button" mat-button obButton="tertiary" disabled><mat-icon svgIcon="logout"></mat-icon> Tertiary</button>
+			</td>
+			<td>
+				<button type="button" mat-button [obButton]="obButton" disabled><mat-icon svgIcon="logout"></mat-icon> Dynamic</button>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">Button without text</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<button type="button" mat-icon-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon></button>
+			</td>
+			<td>
+				<button type="button" mat-icon-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon></button>
+			</td>
+			<td>
+				<button type="button" mat-icon-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon></button>
+			</td>
+			<td>
+				<button type="button" mat-icon-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon></button>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">Button disabled without text</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<button type="button" mat-icon-button obButton="primary" disabled><mat-icon svgIcon="logout"></mat-icon></button>
+			</td>
+			<td>
+				<button type="button" mat-icon-button obButton="secondary" disabled><mat-icon svgIcon="logout"></mat-icon></button>
+			</td>
+			<td>
+				<button type="button" mat-icon-button obButton="tertiary" disabled><mat-icon svgIcon="logout"></mat-icon></button>
+			</td>
+			<td>
+				<button type="button" mat-icon-button [obButton]="obButton" disabled><mat-icon svgIcon="logout"></mat-icon></button>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">Link</td>
+		</tr>
+		<tr>
+			<th>
+				<label>Default</label>
+			</th>
+			<td>
+				<a href="" mat-button obButton="primary">Primary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="secondary">Secondary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="tertiary">Tertiary</a>
+			</td>
+			<td>
+				<a href="" mat-button [obButton]="obButton">Dynamic</a>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<a href="" mat-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon> Primary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon> Secondary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon> Tertiary</a>
+			</td>
+			<td>
+				<a href="" mat-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon> Dynamic</a>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">Link disabled</td>
+		</tr>
+		<tr>
+			<th>
+				<label>Default</label>
+			</th>
+			<td>
+				<a href="" mat-button obButton="primary" disabled>Primary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="secondary" disabled>Secondary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="tertiary" disabled>Tertiary</a>
+			</td>
+			<td>
+				<a href="" mat-button [obButton]="obButton" disabled>Dynamic</a>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<a href="" mat-button obButton="primary" disabled><mat-icon svgIcon="logout"></mat-icon> Primary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="secondary" disabled><mat-icon svgIcon="logout"></mat-icon> Secondary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="tertiary" disabled><mat-icon svgIcon="logout"></mat-icon> Tertiary</a>
+			</td>
+			<td>
+				<a href="" mat-button [obButton]="obButton" disabled><mat-icon svgIcon="logout"></mat-icon> Dynamic</a>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">Link without text</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<a mat-icon-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+			<td>
+				<a mat-icon-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+			<td>
+				<a mat-icon-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+			<td>
+				<a mat-icon-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">Link disabled without text</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<a mat-icon-button obButton="primary" disabled><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+			<td>
+				<a mat-icon-button obButton="secondary" disabled><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+			<td>
+				<a mat-icon-button obButton="tertiary" disabled><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+			<td>
+				<a mat-icon-button [obButton]="obButton" disabled><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">External Link</td>
+		</tr>
+		<tr>
+			<th>
+				<label>Default</label>
+			</th>
+			<td>
+				<a href="" mat-button obButton="primary">Primary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="secondary">Secondary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="tertiary">Tertiary</a>
+			</td>
+			<td>
+				<a href="" mat-button [obButton]="obButton">Dynamic</a>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<a href="" mat-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon> Primary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon> Secondary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon> Tertiary</a>
+			</td>
+			<td>
+				<a href="" mat-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon> Dynamic</a>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">External Link disabled</td>
+		</tr>
+		<tr>
+			<th>
+				<label>Default</label>
+			</th>
+			<td>
+				<a href="" mat-button obButton="primary" disabled>Primary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="secondary" disabled>Secondary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="tertiary" disabled>Tertiary</a>
+			</td>
+			<td>
+				<a href="" mat-button [obButton]="obButton" disabled>Dynamic</a>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<a href="" mat-button obButton="primary" disabled><mat-icon svgIcon="logout"></mat-icon> Primary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="secondary" disabled><mat-icon svgIcon="logout"></mat-icon> Secondary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="tertiary" disabled><mat-icon svgIcon="logout"></mat-icon> Tertiary</a>
+			</td>
+			<td>
+				<a href="" mat-button [obButton]="obButton" disabled><mat-icon svgIcon="logout"></mat-icon> Dynamic</a>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">External link without text</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<a href="" mat-icon-button obButton="primary"><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+			<td>
+				<a href="" mat-icon-button obButton="secondary"><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+			<td>
+				<a href="" mat-icon-button obButton="tertiary"><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+			<td>
+				<a href="" mat-icon-button [obButton]="obButton"><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">External link disabled without text</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<a href="" mat-icon-button obButton="primary" disabled><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+			<td>
+				<a href="" mat-icon-button obButton="secondary" disabled><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+			<td>
+				<a href="" mat-icon-button obButton="tertiary" disabled><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+			<td>
+				<a href="" mat-icon-button [obButton]="obButton" disabled><mat-icon svgIcon="logout"></mat-icon></a>
+			</td>
+		</tr>
+	</tbody>
 </table>
 
 <sc-api component="button"></sc-api>

@@ -15,6 +15,7 @@
   "allowedNonPeerDependencies": [
     "@angular-eslint/schematics",
     "@schematics/angular",
+    "@angular/cdk",
     "ansi-colors",
     "rxjs"
   ]

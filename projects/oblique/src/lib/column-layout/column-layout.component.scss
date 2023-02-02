@@ -7,7 +7,6 @@
 .ob-column-layout {
 	display: flex;
 	flex-direction: column;
-	overflow: hidden; // cannot set overflow-x as it will add a vertical scrollbar
 
 	.ob-column-toggle-left,
 	.ob-column-toggle-right {
@@ -86,10 +85,6 @@
 			color: variables.$ob-gray-dark;
 			align-items: center;
 			justify-content: center;
-
-			@at-root #{selector.append(".ob-font-awesome", &)} {
-				color: variables.$ob-gray-light;
-			}
 
 			&:hover,
 			&:focus {
@@ -204,7 +199,6 @@
 		.ob-fixed-layout &.ob-full-height {
 			height: 100%;
 
-			.ob-column-main,
 			.ob-column-content {
 				overflow-y: auto;
 				overflow-x: hidden;

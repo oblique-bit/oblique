@@ -4,6 +4,5 @@
     "module": "esnext",
     "types": ["jest"]
   },
-  "files": ["polyfills.ts"],
   "include": ["**/*.spec.ts", "**/*.d.ts"]
 }

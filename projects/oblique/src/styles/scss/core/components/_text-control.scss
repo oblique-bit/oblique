@@ -1,5 +1,8 @@
 @use "../variables";
 
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11
+ */
 *::-ms-clear {
 	display: none;
 }
@@ -15,15 +18,6 @@
 		padding: 0;
 		opacity: 0;
 		transition: opacity variables.$ob-duration-fast;
-
-		.fa {
-			color: variables.$ob-gray;
-			transition: color variables.$ob-duration-fast;
-		}
-
-		&:hover .fa {
-			color: variables.$ob-gray-darker;
-		}
 	}
 
 	&:hover .ob-text-control-clear,

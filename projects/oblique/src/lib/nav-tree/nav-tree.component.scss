@@ -39,7 +39,6 @@
 	}
 
 	&.ob-nav-toggle {
-		$fa-fw-width-px: 20px;
 		$icon-width: 24px;
 		$indent-material: $icon-width + variables.$ob-spacing-default;
 
@@ -48,23 +47,6 @@
 				padding-left: $indent-material;
 			}
 			@include nav.ob-nav-indent($indent-material);
-
-			.ob-font-awesome & {
-				$indent-bootstrap: $fa-fw-width-px + variables.$ob-spacing-sm;
-
-				.ob-nav-link {
-					padding-left: $indent-bootstrap;
-				}
-
-				@include nav.ob-nav-indent($indent-bootstrap);
-			}
-		}
-
-		.ob-icon-wrapper .fa::before {
-			display: inline-block;
-			width: $fa-fw-width-px;
-			margin-left: -$fa-fw-width-px;
-			text-align: center;
 		}
 
 		.ob-icon-wrapper {
@@ -73,12 +55,6 @@
 
 		.mat-icon {
 			margin-left: -$indent-material + 5px + variables.$ob-spacing-sm;
-		}
-
-		.ob-nav-link.has-child {
-			+ .collapse:not(.show) {
-				display: none;
-			}
 		}
 	}
 

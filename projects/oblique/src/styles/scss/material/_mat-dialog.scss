@@ -1,0 +1,30 @@
+@use "../core/variables" as core-variables;
+@use "../core/mixins/shadow";
+@use "../core/mixins/typography";
+
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
+ */
+.mat-dialog-container {
+	box-shadow: none;
+	@include shadow.ob-drop-shadow($color: core-variables.$ob-gray-dark);
+
+	.mat-dialog-title {
+		@include typography.ob-h6();
+		position: relative;
+		margin-bottom: core-variables.$ob-spacing-default + core-variables.$ob-spacing-sm;
+	}
+
+	.mat-dialog-content {
+		@include typography.ob-body1();
+	}
+
+	.mat-dialog-actions {
+		margin-top: core-variables.$ob-spacing-default + core-variables.$ob-spacing-sm;
+		justify-content: flex-end;
+
+		.mat-button + .mat-button {
+			margin-left: core-variables.$ob-spacing-default;
+		}
+	}
+}

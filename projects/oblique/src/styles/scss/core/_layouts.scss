@@ -1,6 +1,9 @@
 @use "variables";
 @use "mixins/layout";
 
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11
+ */
 *,
 *::before,
 *::after {

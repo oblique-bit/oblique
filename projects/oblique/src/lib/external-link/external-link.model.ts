@@ -5,5 +5,6 @@ export interface ObIExternalLink {
 	rel: string;
 	target: '_blank' | '_self' | '_parent' | '_top' | string;
 	icon: ObEExternalLinkIcon;
+	isExternalLink: boolean | 'auto';
 }
 export const EXTERNAL_LINK = new InjectionToken<ObIExternalLink>('EXTERNAL_LINK');

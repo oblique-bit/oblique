@@ -2,8 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
 
-import {ObTelemetryService} from '../telemetry/telemetry.service';
-import {requireAndRecordTelemetry} from '../telemetry/telemetry-require';
 import {obliqueProviders} from '../utilities';
 
 export {ObDocumentMetaService} from './document-meta.service';
@@ -12,8 +10,4 @@ export {ObDocumentMetaService} from './document-meta.service';
 	imports: [CommonModule, TranslateModule],
 	providers: obliqueProviders()
 })
-export class ObDocumentMetaModule {
-	constructor(telemetry: ObTelemetryService) {
-		requireAndRecordTelemetry(telemetry, ObDocumentMetaModule);
-	}
-}
+export class ObDocumentMetaModule {}

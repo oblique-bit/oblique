@@ -18,20 +18,7 @@ import {
 	routingModulePath
 } from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {
-	ObliquePackage,
-	PathPerProject,
-	addAngularConfigInList,
-	addFile,
-	addTsCompilerOption,
-	createSafeRule,
-	getFilePathPerProject,
-	getPackageJsonPath,
-	getProjectList,
-	infoMigration,
-	packageJsonConfigPath,
-	readFile
-} from '../../utils';
+import {ObliquePackage, addAngularConfigInList, addFile, createSafeRule, infoMigration} from '../../utils';
 
 export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -39,10 +26,9 @@ export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 			addAjv(options.ajv),
 			addUnknownRoute(options.unknownRoute),
 			addInterceptors(options.httpInterceptors),
-			addBanner(options.banner),
+			addBanner(options.banner, options.environments),
 			addDefaultHomeComponent(options.prefix),
-			addExternalLink(options.externalLink),
-			addTelemetry(options.telemetry)
+			addExternalLink(options.externalLink)
 		])(tree, _context);
 }
 
@@ -96,43 +82,22 @@ function addInterceptors(httpInterceptors: boolean): Rule {
 	});
 }
 
-function addBanner(banner: boolean): Rule {
+function addBanner(banner: boolean, environments: string): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		if (banner) {
+		if (banner && environments) {
 			infoMigration(_context, 'Oblique feature: Adding environment banner');
-			addBannerData(tree);
-			tree = provideBanner(tree);
+			const provider = '{provide: OB_BANNER, useValue: environment.banner}';
+			const sourceFile = createSrcFile(tree, appModulePath);
+			const changes: Change[] = addProviderToModule(sourceFile, appModulePath, provider, ObliquePackage)
+				.concat(insertImport(sourceFile, appModulePath, 'environment', '../environments/environment'))
+				.filter((change: Change) => change instanceof InsertChange)
+				.map((change: InsertChange) => adaptInsertChange(tree, change, provider.replace(/\..*$/, ''), 'OB_BANNER'));
+
+			applyChanges(tree, appModulePath, changes);
 		}
 		return tree;
 	});
 }
-
-function addBannerData(tree: Tree): void {
-	const src = 'src/environments';
-	tree
-		.getDir(src)
-		.subfiles.map(file => `${src}/${file}`)
-		.forEach(file => {
-			const env = /environment\.(?<env>.*)\.ts/.exec(file)?.groups?.env || 'local';
-			const content = readFile(tree, file);
-			const banner = env === 'prod' ? 'undefined' : `{text: '${env}'}`;
-			if (content) {
-				tree.overwrite(file, content.replace('\n};', `,\n  banner: ${banner}\n};`));
-			}
-		});
-}
-
-function provideBanner(tree: Tree): Tree {
-	const provider = '{provide: OB_BANNER, useValue: environment.banner}';
-	const sourceFile = createSrcFile(tree, appModulePath);
-	const changes: Change[] = addProviderToModule(sourceFile, appModulePath, provider, ObliquePackage)
-		.concat(insertImport(sourceFile, appModulePath, 'environment', '../environments/environment'))
-		.filter((change: Change) => change instanceof InsertChange)
-		.map((change: InsertChange) => adaptInsertChange(tree, change, provider.replace(/\..*$/, ''), 'OB_BANNER'));
-
-	return applyChanges(tree, appModulePath, changes);
-}
-
 function addDefaultHomeComponent(prefix: string): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique feature: Adding default home component');
@@ -159,8 +124,8 @@ function addDefaultComponentToAppModule(tree: Tree): void {
 		const sourceFile = createSrcFile(tree, appModulePath);
 		const changes: Change[] = addDeclarationToModule(sourceFile, appModulePath, 'HomeComponent', './home/home.component');
 
-		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatButtonModule', '@angular/material/button'));
-		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatCardModule', '@angular/material/card'));
+		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatLegacyButtonModule', '@angular/material/legacy-button'));
+		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatLegacyCardModule', '@angular/material/legacy-card'));
 		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatIconModule', '@angular/material/icon'));
 
 		applyChanges(tree, appModulePath, changes);
@@ -192,67 +157,4 @@ function addExternalLink(externalLink: boolean): Rule {
 		}
 		return tree;
 	});
-}
-
-function addTelemetry(telemetry: boolean): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		if (telemetry) {
-			infoMigration(_context, 'Oblique feature:  Activate the telemetry feature that collects usage information');
-			const mainTsPathPerProject = getFilePathPerProject(tree, ['architect', 'build', 'options', 'main']);
-			const tsConfigPathsPerProject = getFilePathPerProject(tree, ['architect', 'build', 'options', 'tsConfig']);
-			getProjectList(tree)
-				.map(project => ({
-					project,
-					mainTsPath: getFilePathForProject(mainTsPathPerProject, project),
-					tsConfigPath: getFilePathForProject(tsConfigPathsPerProject, project)
-				}))
-				.filter(paths => !!paths.mainTsPath && !!paths.tsConfigPath)
-				.forEach(config => {
-					updateMainTs(tree, config.mainTsPath, config.project);
-					updateTsConfig(tree, config.tsConfigPath);
-					updatePackageJson(tree);
-				});
-		}
-		return tree;
-	});
-}
-
-function getFilePathForProject(target: PathPerProject[], project: string): string {
-	return target.find(config => config.project === project)?.path ?? '';
-}
-
-function updateMainTs(tree: Tree, mainTsPath: string, project: string): void {
-	const content = readFile(tree, mainTsPath);
-	if (!/{\s*provide\s*:\s*OB_PROJECT_INFO\s*,\s*useValue/.test(content)) {
-		tree.overwrite(
-			mainTsPath,
-			[
-				"import {OB_PROJECT_INFO} from '@oblique/oblique';",
-				`import packageInfo from '${getPackageJsonPath(tree, project)}';`,
-				content
-					.replace(
-						/(?<=platformBrowserDynamic\(\s*)\[?\s*(?<providers>{\s*provide.*})?\s*]?\s*(?=\))/s,
-						'[$<providers>,\n{provide: OB_PROJECT_INFO, useValue: {name: packageInfo.name, version: packageInfo.version, title: packageInfo.title}}\n]'
-					)
-					.replace(/\[,/, '[')
-			].join('\n')
-		);
-	}
-}
-
-function updateTsConfig(tree: Tree, tsConfigPath: string): void {
-	const content = readFile(tree, tsConfigPath);
-	let replacement = addTsCompilerOption(content, 'resolveJsonModule');
-	replacement = addTsCompilerOption(replacement, 'allowSyntheticDefaultImports');
-	tree.overwrite(tsConfigPath, replacement);
-}
-
-function updatePackageJson(tree: Tree): void {
-	const content = readFile(tree, packageJsonConfigPath);
-	if (!/^\s*"title"/m.test(content)) {
-		tree.overwrite(
-			packageJsonConfigPath,
-			content.replace(/^(?<tabs>\s*)"name"\s*:\s*"(?<name>.*)"/m, '$<tabs>"title": "$<name>",\n$<tabs>"name": "$<name>"')
-		);
-	}
 }

@@ -1,18 +1,21 @@
-import {Component} from '@angular/core';
-import {ObEIcon, ObINavigationLink, ObISearchWidgetItem, ObISkipLink} from '@oblique/oblique';
-import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Component, OnDestroy} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {Router} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
+import {ObEIcon, ObIAutocompleteInputOption, ObINavigationLink, ObISkipLink} from '@oblique/oblique';
+import {Observable, Subject} from 'rxjs';
+import {filter, map, startWith, takeUntil} from 'rxjs/operators';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
-import {FONTS, THEMES, ThemeService} from './common/theme.service';
+import {FONTS, FontService} from './common/font.service';
 
 @Component({
 	selector: 'sc-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
+	readonly search = new FormControl();
 	offCanvasOpen = false;
-	theme$: Observable<string>;
 	font$: Observable<string>;
 	readonly year = new Date().getFullYear();
 	navigation: ObINavigationLink[] = [
@@ -38,12 +41,9 @@ export class AppComponent {
 				{url: 'collapse', label: 'Collapse'},
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
 				{url: 'column-layout-full-height', label: 'Column layout full height'},
-				{url: 'datepicker', label: 'i18n.routes.samples.datepicker.title'},
-				{url: 'dropdown', label: 'Dropdown'},
 				{url: 'error-messages', label: 'Error messages'},
 				{url: 'external-link', label: 'External-link'},
 				{url: 'file-upload', label: 'File Upload'},
-				{url: 'form-control-state', label: 'i18n.routes.samples.form-control-state.title'},
 				{url: 'global-events', label: 'Global events'},
 				{url: 'horizontal-forms', label: 'Horizontal Forms'},
 				{url: 'http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
@@ -51,7 +51,6 @@ export class AppComponent {
 				{url: 'language', label: 'Language'},
 				{url: 'master-layout', label: 'i18n.routes.samples.master-layout.title'},
 				{url: 'multi-translate-loader', label: 'Multi translate loader'},
-				{url: 'multiselect', label: 'i18n.routes.samples.multiselect.title'},
 				{url: 'nav-tree', label: 'i18n.routes.samples.nav-tree.title'},
 				{url: 'nested-form', label: 'Nested froms'},
 				{url: 'notification', label: 'i18n.routes.samples.notification.title'},
@@ -84,16 +83,6 @@ export class AppComponent {
 				{url: 'alert', label: 'Alert'},
 				{url: 'palette', label: 'Palette'},
 				{url: 'screen-reader-only', label: 'Screen reader only'}
-			]
-		},
-		{
-			url: 'bootstrap',
-			label: 'Bootstrap',
-			children: [
-				{url: 'list-group', label: 'List group'},
-				{url: 'http://www.google.ch', label: 'Google'},
-				{url: 'http://www.google.ch', label: 'Google 2', sameTarget: true},
-				{url: 'tabs', label: 'Tabs', fragment: 'test', queryParams: {param1: 'a', param2: 'b'}}
 			]
 		},
 		{
@@ -140,39 +129,71 @@ export class AppComponent {
 		{url: '../samples', fragment: 'fragment', label: 'Skip to samples with fragment'},
 		{url: '../samples', label: 'Skip to samples without fragment'}
 	];
-	searchItems: ObISearchWidgetItem[] = [];
+	autocompleteItems$: Observable<ObIAutocompleteInputOption[]>;
+	private readonly unsubscribe = new Subject<void>();
 
-	constructor(private readonly theme: ThemeService, nav: DynamicNavigationService) {
-		this.populateSearchItems(this.navigation);
-		this.theme$ = this.theme.theme$.pipe(map(() => (theme.isMaterial() ? 'material' : 'bootstrap')));
-		this.font$ = this.theme.font$;
+	constructor(
+		private readonly font: FontService,
+		nav: DynamicNavigationService,
+		private readonly router: Router,
+		private readonly translate: TranslateService
+	) {
+		this.initializeSearch();
+		this.font$ = this.font.font$;
 		nav.setNavigation(this.navigation);
 		nav.navigationLinks$.subscribe(links => {
 			this.navigation = links;
 		});
 	}
 
-	toggleTheme(): void {
-		this.theme.setTheme(this.theme.isMaterial() ? THEMES.BOOTSTRAP : THEMES.MATERIAL);
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	toggleFont(font: string): void {
-		this.theme.setFont(font === FONTS.FRUTIGER ? FONTS.ROBOTO : FONTS.FRUTIGER);
+		this.font.setFont(font === FONTS.FRUTIGER ? FONTS.ROBOTO : FONTS.FRUTIGER);
 	}
 
-	populateSearchItems(items: ObINavigationLink[], base = ''): void {
-		items.forEach((item: ObINavigationLink) => {
-			const {url} = item;
-			if (item.children) {
-				this.populateSearchItems(item.children, url);
-			} else {
-				this.searchItems.push({
-					id: base ? `${base}_${url}` : url,
-					label: item.label,
-					routes: [base].concat(url.split('/')),
-					description: base ? `${base} > ${url}` : url
-				});
-			}
-		});
+	private initializeSearch(): void {
+		const searchItems = this.getChildNavigationLinks(this.navigation);
+		this.autocompleteItems$ = this.buildAutocompleteItemsObservable(searchItems);
+		this.search.valueChanges
+			.pipe(
+				takeUntil(this.unsubscribe),
+				map(value => searchItems.find(item => this.translate.instant(item.label) === value)),
+				filter(item => !!item)
+			)
+			.subscribe(item => {
+				this.search.reset('');
+				void this.router.navigate([item.url]);
+			});
+	}
+
+	private getChildNavigationLinks(items: ObINavigationLink[]): ObINavigationLink[] {
+		return items
+			.filter(item => item.children)
+			.filter(item => item.url !== 'icon sample')
+			.reduce<ObINavigationLink[]>(
+				(links, link) => [
+					...links,
+					...link.children.map(child => ({
+						...child,
+						url: `${link.url}/${child.url}`
+					}))
+				],
+				[]
+			);
+	}
+
+	private buildAutocompleteItemsObservable(items: ObINavigationLink[]): Observable<ObIAutocompleteInputOption[]> {
+		const autocompleteItems = items.reduce<ObIAutocompleteInputOption[]>(
+			(options, current) => [...options, {label: current.label, disabled: false}],
+			[]
+		);
+		return this.translate.onLangChange.pipe(
+			startWith(this.translate.currentLang),
+			map(() => autocompleteItems.map(item => ({...item, label: this.translate.instant(item.label)})))
+		);
 	}
 }

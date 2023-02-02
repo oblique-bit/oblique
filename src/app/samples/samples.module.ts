@@ -4,23 +4,22 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import {RouterModule} from '@angular/router';
-import {MatButtonModule} from '@angular/material/button';
+import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatCardModule} from '@angular/material/card';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
+import {MatLegacyCheckboxModule as MatCheckboxModule} from '@angular/material/legacy-checkbox';
+import {MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
 import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatSelectModule} from '@angular/material/select';
+import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
+import {MatLegacyMenuModule as MatMenuModule} from '@angular/material/legacy-menu';
+import {MatLegacyRadioModule as MatRadioModule} from '@angular/material/legacy-radio';
+import {MatLegacySelectModule as MatSelectModule} from '@angular/material/legacy-select';
 import {DateAdapter} from '@angular/material/core';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatListModule} from '@angular/material/list';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatLegacySlideToggleModule as MatSlideToggleModule} from '@angular/material/legacy-slide-toggle';
+import {MatLegacyListModule as MatListModule} from '@angular/material/legacy-list';
+import {MatLegacyDialogModule as MatDialogModule} from '@angular/material/legacy-dialog';
+import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
 import {TranslateModule} from '@ngx-translate/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SamplesRoutingModule} from './samples-routing.module';
@@ -28,13 +27,10 @@ import {SamplesRoutingModule} from './samples-routing.module';
 import {CollapseSampleComponent} from './collapse/collapse-sample.component';
 import {ColumnLayoutSampleComponent} from './column-layout/column-layout-sample.component';
 import {ColumnLayoutFullHeightSampleComponent} from './column-layout-full-height/column-layout-full-height-sample.component';
-import {DatepickerSampleComponent} from './datepicker-sample/datepicker-sample.component';
 import {ErrorMessagesSampleComponent} from './error-messages-sample/error-messages-sample.component';
 import {ExternalLinkComponent} from './external-link/external-link.component';
-import {FormControlStateSampleComponent} from './form-control-state-sample/form-control-state-sample.component';
 import {InputClearSampleComponent} from './input-clear/input-clear.component';
 import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
-import {MultiselectSampleComponent} from './multiselect/multiselect-sample.component';
 import {NavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
 import {NavTreeDetailSampleComponent} from './nav-tree/nav-tree-detail-sample.component';
 import {NestedFormSampleComponent} from './nested-form/nested-form-sample.component';
@@ -45,7 +41,6 @@ import {NumberFormatSampleComponent} from './number-format/number-format-sample.
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
-import {UnsavedChangesSampleModalComponent} from './unsaved-changes/unsaved-changes-sample-modal.component';
 import {GlobalEventsSampleComponent} from './global-events/global-events-sample.component';
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
 import {StickySampleComponent} from './sticky/sticky-sample.component';
@@ -58,16 +53,12 @@ import {
 	ObButtonModule,
 	ObCollapseModule,
 	ObColumnLayoutModule,
-	ObDatepickerModule,
-	ObDropdownModule,
 	ObErrorMessagesModule,
 	ObExternalLinkModule,
 	ObFileUploadModule,
-	ObFormControlStateModule,
 	ObInputClearModule,
 	ObLanguageModule,
 	ObLanguageService,
-	ObMultiselectModule,
 	ObNavTreeModule,
 	ObNestedFormModule,
 	ObNotificationModule,
@@ -79,8 +70,7 @@ import {
 	ObSpinnerModule,
 	ObStickyModule,
 	ObUnknownRouteModule,
-	ObUnsavedChangesModule,
-	ObUnsavedChangesTabsModule
+	ObUnsavedChangesModule
 } from '@oblique/oblique';
 import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
 import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
@@ -96,7 +86,6 @@ import {HorizontalFormsSampleComponent} from './horizontal-forms/horizontal-form
 import {BreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 import {FileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
 import {SharedModule} from '../common/shared.module';
-import {DropdownSampleComponent} from './dropdown/dropdown.component';
 import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
 
 @NgModule({
@@ -120,22 +109,17 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		MatSlideToggleModule,
 		MatSlideToggleModule,
 		MatTooltipModule,
-		NgbModule,
 		ObAlertModule,
 		ObBreadcrumbModule.forRoot({}),
 		ObAutocompleteModule,
 		ObButtonModule,
 		ObCollapseModule,
 		ObColumnLayoutModule,
-		ObDatepickerModule,
-		ObDropdownModule,
 		ObErrorMessagesModule,
 		ObExternalLinkModule,
 		ObFileUploadModule,
-		ObFormControlStateModule,
 		ObInputClearModule,
 		ObLanguageModule,
-		ObMultiselectModule,
 		ObNavTreeModule,
 		ObNestedFormModule,
 		ObNotificationModule,
@@ -148,7 +132,6 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		ObStickyModule,
 		ObUnknownRouteModule,
 		ObUnsavedChangesModule,
-		ObUnsavedChangesTabsModule,
 		ReactiveFormsModule,
 		RouterModule,
 		SamplesRoutingModule,
@@ -163,12 +146,9 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		CollapseSampleComponent,
 		ColumnLayoutFullHeightSampleComponent,
 		ColumnLayoutSampleComponent,
-		DatepickerSampleComponent,
-		DropdownSampleComponent,
 		ErrorMessagesSampleComponent,
 		ExternalLinkComponent,
 		FileUploadSampleComponent,
-		FormControlStateSampleComponent,
 		FormSampleComponent,
 		GlobalEventsSampleComponent,
 		HorizontalFormsSampleComponent,
@@ -176,7 +156,6 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		InputClearSampleComponent,
 		LanguageSampleComponent,
 		MasterLayoutSampleComponent,
-		MultiselectSampleComponent,
 		MultiTranslateLoaderSampleComponent,
 		NavTreeDetailSampleComponent,
 		NavTreeSampleComponent,
@@ -195,8 +174,7 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		SpinnerSampleComponent,
 		StickySampleComponent,
 		UnknownRouteSampleComponent,
-		UnsavedChangesSampleComponent,
-		UnsavedChangesSampleModalComponent
+		UnsavedChangesSampleComponent
 	],
 	exports: [RouterModule],
 	providers: [SampleDataResolver]

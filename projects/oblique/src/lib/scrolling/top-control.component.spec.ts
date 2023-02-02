@@ -4,7 +4,6 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {ObTopControlComponent} from './top-control.component';
-import {ObUseObliqueIcons} from '../icon/icon.model';
 import {WINDOW} from '../utilities';
 
 describe('ObTopControlComponent', () => {
@@ -35,10 +34,6 @@ describe('ObTopControlComponent', () => {
 
 		it('should have ob-top-control class', () => {
 			expect(fixture.debugElement.nativeElement.classList.contains('ob-top-control')).toBe(true);
-		});
-
-		it('should not have ob-font-awesome class', () => {
-			expect(fixture.debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(false);
 		});
 
 		describe('scrollTop', () => {
@@ -77,34 +72,6 @@ describe('ObTopControlComponent', () => {
 				topControlComponent.scrollTop();
 				expect(topControlComponent.scrollTarget.scrollTo).toHaveBeenCalledWith({top: 0, behavior: 'smooth'});
 			});
-		});
-	});
-
-	describe('without ObUseObliqueIcons', () => {
-		beforeEach(waitForAsync(() => {
-			TestBed.configureTestingModule({
-				declarations: [ObTopControlComponent, ObMockTranslatePipe],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [
-					{provide: TranslateService, useClass: ObMockTranslateService},
-					{provide: WINDOW, useValue: window},
-					{provide: ObUseObliqueIcons, useValue: false}
-				]
-			}).compileComponents();
-		}));
-
-		beforeEach(() => {
-			fixture = TestBed.createComponent(ObTopControlComponent);
-			topControlComponent = fixture.componentInstance;
-			fixture.detectChanges();
-		});
-
-		it('should create', () => {
-			expect(topControlComponent).toBeDefined();
-		});
-
-		it('should have ob-font-awesome class', () => {
-			expect(fixture.debugElement.nativeElement.classList.contains('ob-font-awesome')).toBe(true);
 		});
 	});
 });

@@ -1,0 +1,11 @@
+@use "projects/oblique/src/styles/scss/core/variables";
+
+.ob-table {
+	margin-bottom: variables.$ob-spacing-default;
+}
+
+.mat-radio-group {
+	display: flex;
+	flex-direction: column;
+	gap: variables.$ob-spacing-xs;
+}

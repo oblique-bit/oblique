@@ -1,0 +1,12 @@
+@use "../../styles/scss/core/variables";
+
+.ob-autocomplete {
+	.ob-text-control {
+		gap: variables.$ob-spacing-xs;
+	}
+
+	.mat-icon {
+		flex-shrink: 0;
+		font-size: 1.1875em; // empiric value
+	}
+}

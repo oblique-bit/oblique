@@ -46,32 +46,15 @@
 	<ng-container column-right-content>
 		<h3>Controls</h3>
 		<div>
-			<div class="form-check form-check-inline">
-				<input type="checkbox" id="or-column-layout-left" class="form-check-input" [(ngModel)]="left" />
-				<label class="form-check-label" for="or-column-layout-left">Left column?</label>
-			</div>
-			<button type="button" (click)="obColumnLayout.toggleLeft()" *ngIf="left">Toggle</button>
+			<mat-checkbox [(ngModel)]="left">Left column?</mat-checkbox>
+			<button type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()" *ngIf="left">Toggle</button>
 		</div>
 		<div>
-			<div class="form-check form-check-inline">
-				<input type="checkbox" id="or-column-layout-right" class="form-check-input" [(ngModel)]="right" />
-				<label class="form-check-label" for="or-column-layout-right">Right column?</label>
-			</div>
-			<button type="button" (click)="obColumnLayout.toggleRight()" *ngIf="right">Toggle</button>
+			<mat-checkbox [(ngModel)]="right">Right column?</mat-checkbox>
+			<button type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()" *ngIf="right">Toggle</button>
 		</div>
-		<div>
-			<div class="form-check form-check-inline">
-				<input type="checkbox" id="or-column-layout-no" class="form-check-input" [(ngModel)]="noLayout" />
-				<label class="form-check-label" for="or-column-layout-no">Remove layout</label>
-			</div>
-			<button type="button" (click)="noLayout = !noLayout" *ngIf="right">Toggle</button>
-		</div>
-		<div>
-			<div class="form-check form-check-inline">
-				<input type="checkbox" id="or-column-layout-wide" class="form-check-input" [(ngModel)]="wider" />
-				<label class="form-check-label" for="or-column-layout-wide">Wider columns</label>
-			</div>
-		</div>
+		<mat-slide-toggle [(ngModel)]="noLayout">Remove layout</mat-slide-toggle>
+		<mat-slide-toggle [(ngModel)]="wider">Wider columns</mat-slide-toggle>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non tellus vel nulla vehicula auctor. Curabitur vel lorem mi.
 			Vivamus condimentum mauris felis, eget ultricies lacus fringilla ac. Nullam lobortis nisl ut luctus sodales. Aenean a ex in justo

@@ -1,0 +1,44 @@
+@use "@angular/material" as mat;
+@use "core/variables" as core-variables;
+@use "material/material-palette";
+@use "material/variables";
+@use "material/mat-typography" as typo;
+
+/**
+ * @deprecated since Oblique 10. This SCSS files will no longer be distributed with Oblique 11.
+ */
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy(typo.$custom-typography);`
+@include mat.all-legacy-component-typographies(typo.$custom-typography);
+@include mat.legacy-core();
+
+@include mat.all-legacy-component-themes(
+	mat.define-light-theme(
+		mat.define-palette(material-palette.$oblique-primary),
+		mat.define-palette(material-palette.$oblique-accent),
+		mat.define-palette(material-palette.$oblique-warn)
+	)
+);
+
+// import to overwrite mat-component-specifics
+@import "material/mat-button";
+@import "material/mat-card";
+@import "material/mat-checkbox-radio";
+@import "material/mat-chip";
+@import "material/mat-datepicker";
+@import "material/mat-dialog";
+@import "material/mat-expansion-panel";
+@import "material/mat-form";
+@import "material/mat-form-field";
+@import "material/mat-icon";
+@import "material/mat-paginator";
+@import "material/mat-stepper";
+@import "material/mat-table";
+@import "material/mat-tab";
+@import "material/mat-tooltip";

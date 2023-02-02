@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, NgForm, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {ObNotificationService, ObSchemaValidationService} from '@oblique/oblique';
-import {Observable, of} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {ThemeService} from '../../common/theme.service';
+import {of} from 'rxjs';
 
 @Component({
 	selector: 'sc-schema-validation',
@@ -11,7 +9,6 @@ import {ThemeService} from '../../common/theme.service';
 	styleUrls: ['./schema-validation-sample.component.scss']
 })
 export class SchemaValidationSampleComponent implements OnInit {
-	material: Observable<boolean>;
 	materialTestForm: UntypedFormGroup;
 
 	selectOptions = [
@@ -91,8 +88,7 @@ export class SchemaValidationSampleComponent implements OnInit {
 	constructor(
 		private readonly schemaValidation: ObSchemaValidationService,
 		private readonly notification: ObNotificationService,
-		private readonly formBuilder: UntypedFormBuilder,
-		private readonly theme: ThemeService
+		private readonly formBuilder: UntypedFormBuilder
 	) {}
 
 	ngOnInit(): void {
@@ -113,7 +109,6 @@ export class SchemaValidationSampleComponent implements OnInit {
 			})
 		});
 
-		this.material = this.theme.theme$.pipe(map(() => this.theme.isMaterial()));
 		this.initMaterialForm();
 	}
 

@@ -1,7 +1,7 @@
 import {SelectionModel} from '@angular/cdk/collections';
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, merge} from 'rxjs';
 import {map, takeUntil, tap} from 'rxjs/operators';
@@ -57,15 +57,6 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
-	}
-
-	/**
-	 * @deprecated since version 9.2.1, will be removed with version 10.0.0.
-	 */
-	areAllItemsSelected(): boolean {
-		const numSelected = this.selection.selected.length;
-		const numRows = this.dataSource.data.length;
-		return numSelected === numRows;
 	}
 
 	selectOrUnselectAllItems(): void {

@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CollapseSampleComponent} from './collapse-sample.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
+import {MatLegacySelectModule as MatSelectModule} from '@angular/material/legacy-select';
 
 describe('ObCollapseSampleComponent', () => {
 	let component: CollapseSampleComponent;

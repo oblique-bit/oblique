@@ -1,10 +1,10 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
+import {MatIconRegistry} from '@angular/material/icon';
 import {By} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
-import {Subject} from 'rxjs';
+import {Subject, of} from 'rxjs';
 import {WINDOW} from '../utilities';
-import {ObUseObliqueIcons} from '../icon/icon.model';
 import {ObExternalLinkDirective} from './external-link.directive';
 import {EXTERNAL_LINK} from './external-link.model';
 
@@ -26,6 +26,7 @@ describe('ObExternalLink', () => {
 			declarations: [TestComponent, ObExternalLinkDirective],
 			providers: [
 				{provide: WINDOW, useValue: window},
+				{provide: MatIconRegistry, useValue: {getNamedSvgIcon: jest.fn().mockReturnValue(of(document.createElement('svg')))}},
 				{
 					provide: TranslateService,
 					useValue: {
@@ -33,8 +34,7 @@ describe('ObExternalLink', () => {
 						instant: jest.fn().mockReturnValue('Opens in new tab'),
 						stream: () => subject.asObservable()
 					}
-				},
-				{provide: ObUseObliqueIcons, useValue: false}
+				}
 			]
 		});
 	});
@@ -139,7 +139,7 @@ describe('ObExternalLink', () => {
 				directive.icon = 'none';
 				directive.ngOnChanges();
 				fixture.detectChanges();
-				expect(fixture.debugElement.query(By.css('.fa-external-link-alt'))).toBeFalsy();
+				expect(fixture.debugElement.query(By.css('.mat-icon'))).toBeFalsy();
 			});
 
 			describe('left', () => {
@@ -148,7 +148,7 @@ describe('ObExternalLink', () => {
 					directive.icon = 'left';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					span = fixture.debugElement.query(By.css('.fa-external-link-alt')).nativeElement;
+					span = fixture.debugElement.query(By.css('.mat-icon')).nativeElement;
 				});
 
 				it('should be span', () => {
@@ -158,14 +158,6 @@ describe('ObExternalLink', () => {
 				it('should be the first element', () => {
 					expect(span).toBe(element.firstChild);
 				});
-
-				it('should have fa class', () => {
-					expect(span.classList.contains('fa')).toBe(true);
-				});
-
-				it('should have a fa-external-link as class', () => {
-					expect(span.classList.contains('fa-external-link-alt')).toBe(true);
-				});
 			});
 
 			describe('right', () => {
@@ -174,7 +166,7 @@ describe('ObExternalLink', () => {
 					directive.icon = 'right';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					span = fixture.debugElement.query(By.css('.fa-external-link-alt')).nativeElement;
+					span = fixture.debugElement.query(By.css('.mat-icon')).nativeElement;
 				});
 
 				it('should be a span', () => {
@@ -184,14 +176,6 @@ describe('ObExternalLink', () => {
 				it('should be the last child', () => {
 					expect(span).toBe(element.lastChild);
 				});
-
-				it('should have fa class', () => {
-					expect(span.classList.contains('fa')).toBe(true);
-				});
-
-				it('should have a fa-external-link as class', () => {
-					expect(span.classList.contains('fa-external-link-alt')).toBe(true);
-				});
 			});
 
 			describe('remove', () => {
@@ -199,7 +183,7 @@ describe('ObExternalLink', () => {
 					directive.icon = 'none';
 					directive.ngOnChanges();
 					fixture.detectChanges();
-					expect(fixture.debugElement.query(By.css('.fa-external-link-alt'))).toBeFalsy();
+					expect(fixture.debugElement.query(By.css('.mat-icon'))).toBeFalsy();
 				});
 			});
 		});
@@ -236,7 +220,7 @@ describe('ObExternalLink', () => {
 			});
 
 			it('should have icon element in first position', () => {
-				expect((element.firstChild as HTMLSpanElement).classList.contains('fa-external-link-alt')).toBe(true);
+				expect((element.firstChild as HTMLSpanElement).classList.contains('mat-icon')).toBe(true);
 			});
 
 			it('should have the original text in second position ', () => {
@@ -268,14 +252,15 @@ describe('ObExternalLink', () => {
 			});
 
 			it('should have the icon element in last position', () => {
-				expect((element.lastChild as HTMLSpanElement).classList.contains('fa-external-link-alt')).toBe(true);
+				expect((element.lastChild as HTMLSpanElement).classList.contains('mat-icon')).toBe(true);
 			});
 		});
 	});
 
 	describe('With custom configuration', () => {
 		beforeEach(() => {
-			TestBed.overrideProvider(EXTERNAL_LINK, {useValue: {rel: 'custom rel', target: 'custom target', icon: 'left'}});
+			TestBed.overrideTemplate(TestComponent, '<a>Link</a>');
+			TestBed.overrideProvider(EXTERNAL_LINK, {useValue: {rel: 'custom rel', target: 'custom target', icon: 'left', isExternalLink: true}});
 			globalSetup();
 		});
 
@@ -290,6 +275,10 @@ describe('ObExternalLink', () => {
 		it('should have the icon on the left', () => {
 			expect(element.firstChild instanceof HTMLSpanElement).toBe(true);
 		});
+
+		it('should have the "ob-external-link" class', () => {
+			expect(element.classList).toContain('ob-external-link');
+		});
 	});
 
 	describe('with internal link', () => {
@@ -302,12 +291,12 @@ describe('ObExternalLink', () => {
 			expect(element.classList.contains('ob-external-link')).toBe(false);
 		});
 
-		it('should create an instance', () => {
+		it('should create a component instance', () => {
 			expect(fixture.componentInstance).toBeTruthy();
 		});
 
 		it('should create an instance', () => {
-			expect(directive).toBe(null);
+			expect(directive).toBeTruthy();
 		});
 
 		it('should not translate', () => {
@@ -315,7 +304,7 @@ describe('ObExternalLink', () => {
 		});
 
 		it('should not have a screen reader only element', () => {
-			expect(fixture.debugElement.query(By.css('.fa-external-link-alt'))).toBeFalsy();
+			expect(fixture.debugElement.query(By.css('.ob-screen-reader-only'))).toBeFalsy();
 		});
 
 		it('should not have a target attribute', () => {

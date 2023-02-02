@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatLegacyTableDataSource as MatTableDataSource, MatLegacyTableModule as MatTableModule} from '@angular/material/legacy-table';
 import {SelectionModel} from '@angular/cdk/collections';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, of, throwError} from 'rxjs';
@@ -209,17 +209,6 @@ describe('ObFileInfoComponent', () => {
 				component.ngOnDestroy();
 				uploadComplete.next();
 				expect(uploadService.getUploadedFiles).not.toHaveBeenCalled();
-			});
-		});
-
-		describe('areAllItemsSelected', () => {
-			it('should return false if not all items are selected', () => {
-				component.selection.toggle(component.dataSource.data[0]);
-				expect(component.areAllItemsSelected()).toBe(false);
-			});
-			it('should return true if all items are selected', () => {
-				component.dataSource.data.forEach(file => component.selection.select(file));
-				expect(component.areAllItemsSelected()).toBe(true);
 			});
 		});
 

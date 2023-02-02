@@ -2,7 +2,53 @@
 <sc-description component="external-link"></sc-description>
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
-		<a href="http://www.google.ch" [icon]="iconPosition">External Link</a>
+		<table class="ob-table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Dynamic</th>
+					<th>Auto</th>
+					<th>True</th>
+					<th>False</th>
+					<th>Default</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>External link</th>
+					<td><a href="http://www.google.ch" [isExternalLink]="isExternal" [icon]="iconPosition">Link</a></td>
+					<td><a href="http://www.google.ch" [isExternalLink]="'auto'" [icon]="iconPosition">Link</a></td>
+					<td><a href="http://www.google.ch" [isExternalLink]="true" [icon]="iconPosition">Link</a></td>
+					<td><a href="http://www.google.ch" [isExternalLink]="false" [icon]="iconPosition">Link</a></td>
+					<td><a href="http://www.google.ch" [icon]="iconPosition">Link</a></td>
+				</tr>
+				<tr>
+					<th>Internal link</th>
+					<td><a href="http://localhost:3001" [isExternalLink]="isExternal" [icon]="iconPosition">Link</a></td>
+					<td><a href="http://localhost:3001" [isExternalLink]="'auto'" [icon]="iconPosition">Link</a></td>
+					<td><a href="http://localhost:3001" [isExternalLink]="true" [icon]="iconPosition">Link</a></td>
+					<td><a href="http://localhost:3001" [isExternalLink]="false" [icon]="iconPosition">Link</a></td>
+					<td><a href="http://localhost:3001" [icon]="iconPosition">Link</a></td>
+				</tr>
+				<tr>
+					<th>Router link</th>
+					<td><a [routerLink]="'/'" [isExternalLink]="isExternal" [icon]="iconPosition">Link</a></td>
+					<td><a [routerLink]="'/'" [isExternalLink]="'auto'" [icon]="iconPosition">Link</a></td>
+					<td><a [routerLink]="'/'" [isExternalLink]="true" [icon]="iconPosition">Link</a></td>
+					<td><a [routerLink]="'/'" [isExternalLink]="false" [icon]="iconPosition">Link</a></td>
+					<td><a [routerLink]="'/'" [icon]="iconPosition">Link</a></td>
+				</tr>
+				<tr>
+					<th>Link without href</th>
+					<td><a [isExternalLink]="isExternal" [icon]="iconPosition">Link</a></td>
+					<td><a [isExternalLink]="'auto'" [icon]="iconPosition">Link</a></td>
+					<td><a [isExternalLink]="true" [icon]="iconPosition">Link</a></td>
+					<td><a [isExternalLink]="false" [icon]="iconPosition">Link</a></td>
+					<td><a [icon]="iconPosition">Link</a></td>
+				</tr>
+			</tbody>
+		</table>
+
 		<p>
 			This is an example paragraph that contains an <a href="http://www.google.ch" [icon]="iconPosition">External Link</a>. Lorem ipsum
 			dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -12,10 +58,21 @@
 		</p>
 	</ng-container>
 
-	<div column-right-content>
-		<mat-radio-group [(ngModel)]="iconPosition">
-			<mat-radio-button *ngFor="let variant of iconPositions" [value]="variant.value">{{ variant.viewValue }}</mat-radio-button>
-		</mat-radio-group>
-	</div>
+	<ng-container column-right-content>
+		<fieldset>
+			<legend>Icon position</legend>
+			<mat-radio-group [(ngModel)]="iconPosition">
+				<mat-radio-button *ngFor="let variant of iconPositions" [value]="variant.value">{{ variant.viewValue }}</mat-radio-button>
+			</mat-radio-group>
+		</fieldset>
+		<fieldset>
+			<legend>Is link presented as external link</legend>
+			<mat-radio-group [(ngModel)]="isExternal">
+				<mat-radio-button *ngFor="let variantIsExternal of isLinkExternal" [value]="variantIsExternal.value">{{
+					variantIsExternal.viewValue
+				}}</mat-radio-button>
+			</mat-radio-group>
+		</fieldset>
+	</ng-container>
 </ob-column-layout>
 <sc-api component="external-link"></sc-api>

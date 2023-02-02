@@ -25,6 +25,11 @@
       "description": "Upgrade Oblique to version 9",
       "version": "9.0.0-0",
       "factory": "./index/ng-update/index#upgradeToV9"
+    },
+    "migrate-9-to-10": {
+      "description": "Upgrade Oblique to version 10",
+      "version": "10.0.0-0",
+      "factory": "./index/ng-update/index#upgradeToV10"
     }
   }
 }

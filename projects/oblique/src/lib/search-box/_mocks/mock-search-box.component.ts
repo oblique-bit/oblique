@@ -12,8 +12,26 @@ export class ObMockSearchBoxComponent {
 	@Input() minPatternLength = 1;
 	@Input() maxResults = 10;
 	@Input() slide = true;
-
+	filteredItems: ObISearchWidgetItem[] = [];
+	isOpened = false;
+	id = 'search-input-0';
+	pattern = '';
 	open(): void {}
 
 	close(): void {}
+	navigateDown($event: KeyboardEvent): void {}
+
+	navigateUp($event: KeyboardEvent): void {}
+
+	exit(): void {}
+
+	blur($event: PointerEvent): void {}
+
+	formatter(label: string, filterPattern?: string): string {
+		return '';
+	}
+
+	focus(): void {}
+
+	click(evt: MouseEvent): void {}
 }

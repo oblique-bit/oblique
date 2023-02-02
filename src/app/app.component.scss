@@ -1,5 +1,13 @@
-@import "~projects/oblique/src/styles/scss/core/variables";
+@use "projects/oblique/src/styles/scss/core/variables";
 
-.fa-sign-in-alt {
-	transition: transform $ob-duration-default;
+mat-icon[svgIcon="login"] {
+	transition: transform variables.$ob-duration-default;
+
+	&.rotate180 {
+		transform: rotate(180deg);
+	}
+}
+
+a.ob-external-link {
+	display: inline-block;
 }

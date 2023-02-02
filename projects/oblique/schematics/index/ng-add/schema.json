@@ -51,19 +51,19 @@
       "type": "boolean",
       "default": false,
       "description": "Banner to show current environment",
-      "x-prompt": "[7 / 19] Add the ObBanner? It will show the current environment in the header."
+      "x-prompt": "[7 / 19] Add the ObBanner? It will show the current environment in the header.\n           This feature is only available if at least 1 environment will be defined at the next step."
+    },
+    "environments": {
+      "type": "string",
+      "default": "local dev ref test abn prod",
+      "description": "Environment files",
+      "x-prompt": "[8 / 19] Choose the application's environments. Use a whitespace separated list or leave empty to skip the feature.\n           'local' will create an 'environment.ts' file, all other environments will create a corresponding 'environment.<env>.ts' file.\n           Those files are necessary for the banner feature to work."
     },
     "externalLink": {
       "type": "boolean",
       "default": true,
       "description": "External link",
-      "x-prompt": "[8 / 19] Add the ObExternalLinkModule? It will transparently and automatically enhance external links."
-    },
-    "telemetry": {
-      "type": "boolean",
-      "default": true,
-      "description": "Telemetry",
-      "x-prompt": "[9 / 19] Activate the telemetry feature that collects usage information? More information about the data collected and usage: https://oblique.bit.admin.ch/components/telemetry"
+      "x-prompt": "[9 / 19] Add the ObExternalLinkModule? It will transparently and automatically enhance external links."
     },
     "prefix": {
       "type": "string",

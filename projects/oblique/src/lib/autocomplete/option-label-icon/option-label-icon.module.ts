@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 
 import {ObOptionLabelIconDirective} from './option-label-icon.directive';
-import {ObIconModule} from '../../icon/icon.module';
+import {ObIconModule} from './../../icon/icon.module';
 import {obliqueProviders} from '../../utilities';
 
 @NgModule({

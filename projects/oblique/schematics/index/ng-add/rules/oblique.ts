@@ -21,11 +21,12 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addAdditionalModules(),
 			addFeatureDetection(),
 			addMainCSS(),
-			addTheme(),
+			addAngularMaterialDependencies(),
 			addObliqueAssets(),
 			addFontStyle(options.font || 'none'),
 			addFontFiles(options.font || 'none'),
-			addLocales(options.locales.split(' '))
+			addLocales(options.locales.split(' ')),
+			raiseBuildBudget()
 		])(tree, _context);
 }
 
@@ -93,11 +94,12 @@ function addMainCSS(): Rule {
 	});
 }
 
-function addTheme(): Rule {
+function addAngularMaterialDependencies(): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Adding theme CSS');
-		addThemeDependencies(tree);
-		return addThemeCSS(tree);
+		infoMigration(_context, 'Oblique: Adding Angular Material dependencies');
+		addDependency(tree, '@angular/cdk');
+		addDependency(tree, '@angular/material');
+		return tree;
 	});
 }
 
@@ -148,25 +150,6 @@ function addFontFiles(font: string): Rule {
 	});
 }
 
-function addThemeDependencies(tree: Tree): void {
-	addDependency(tree, '@angular/cdk');
-	addDependency(tree, '@angular/material');
-}
-
-function addThemeCSS(tree: Tree): Tree {
-	const styleSheet = `node_modules/@oblique/oblique/styles/css/oblique-material.css`;
-	return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: string[]) => {
-		const index = config.indexOf(styleSheet.replace(`oblique-material.css`, `oblique-material.scss`));
-		if (index > -1) {
-			config[index] = config[index].replace(`oblique-material.scss`, `oblique-material.css`);
-		}
-		if (!config.includes(styleSheet)) {
-			config.splice(config.indexOf(obliqueCssPath) + 1, 0, styleSheet);
-		}
-		return config;
-	});
-}
-
 function addMasterLayout(tree: Tree, title: string): void {
 	const path = 'src/app/app.component.html';
 	if (tree.exists(path)) {
@@ -182,4 +165,26 @@ function addForRootToIconModule(tree: Tree): void {
 function addComment(tree: Tree): void {
 	const appModuleContent = readFile(tree, appModulePath);
 	tree.overwrite(appModulePath, appModuleContent.replace(/ObButtonModule,\n/, 'ObButtonModule, // add other Oblique modules as needed\n'));
+}
+
+function raiseBuildBudget(): Rule {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		infoMigration(_context, 'Raise build budget in angular.json');
+		return setAngularProjectsConfig(
+			tree,
+			['architect', 'build', 'configurations', 'production', 'budgets'],
+			[
+				{
+					type: 'initial',
+					maximumWarning: '1.3mb',
+					maximumError: '1.5mb'
+				},
+				{
+					type: 'anyComponentStyle',
+					maximumWarning: '3kb',
+					maximumError: '4kb'
+				}
+			]
+		);
+	});
 }

@@ -1,0 +1,64 @@
+@use "sass:selector";
+@use "../core/variables";
+
+/**
+ * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
+ */
+.mat-table {
+	&.ob-table {
+		.mat-row,
+		.mat-header-row,
+		.mat-footer-row {
+			height: auto;
+			min-height: auto;
+		}
+
+		.mat-cell,
+		.mat-footer-cell,
+		.mat-header-cell {
+			font-size: inherit;
+			padding: variables.$ob-spacing-sm;
+
+			@at-root #{selector.append(".ob-table-sm", &)} {
+				padding: variables.$ob-spacing-xs;
+			}
+
+			@at-root #{selector.append(".ob-table-lg", &)} {
+				padding: variables.$ob-spacing-default;
+			}
+		}
+
+		@at-root #{selector.append("mat-table", &)}:not(.table-plain) .mat-row:nth-child(odd) {
+			background-color: variables.$ob-gray-extra-light;
+		}
+	}
+
+	.mat-header-row {
+		.mat-header-cell,
+		.mat-sort-header-arrow {
+			color: variables.$ob-default;
+			font-size: 14px;
+		}
+	}
+
+	.mat-cell,
+	.mat-header-cell,
+	.mat-footer-cell,
+	.mat-row,
+	.mat-header-row,
+	.mat-footer-row {
+		border-color: variables.$ob-gray;
+
+		.mat-cell {
+			color: variables.$ob-default;
+		}
+	}
+
+	.mat-row:hover {
+		background-color: variables.$ob-extra-light;
+	}
+
+	.mat-sort-header {
+		cursor: pointer;
+	}
+}
