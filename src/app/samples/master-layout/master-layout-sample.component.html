@@ -51,12 +51,48 @@
 				Add a main navigation item
 			</button>
 			<button type="button" mat-button obButton (click)="removeItem()">
-				<mat-icon obIcon svgIcon="minus"></mat-icon> Remove the last navigation item
+				<mat-icon obIcon svgIcon="minus"></mat-icon>
+				Remove the last navigation item
 			</button>
 			<mat-form-field>
 				<mat-label>home page route</mat-label>
 				<input matInput type="text" [(ngModel)]="homePageRoute" />
 			</mat-form-field>
+		</mat-card-content>
+	</mat-card>
+	<mat-card>
+		<mat-card-title>Service navigation</mat-card-title>
+		<mat-card-content class="columns">
+			<fieldset>
+				<legend>Widget visibility settings</legend>
+				<mat-slide-toggle [(ngModel)]="hasApplicationsWidget">has applications</mat-slide-toggle>
+				<mat-slide-toggle [(ngModel)]="hasAuthenticationWidget">has authentication</mat-slide-toggle>
+				<mat-slide-toggle [(ngModel)]="hasInfoWidget">has info</mat-slide-toggle>
+				<mat-slide-toggle [(ngModel)]="hasLanguagesWidget">has language selection</mat-slide-toggle>
+				<mat-slide-toggle [(ngModel)]="hasMessageWidget">has message</mat-slide-toggle>
+				<mat-slide-toggle [(ngModel)]="hasProfileWidget">has profile</mat-slide-toggle>
+			</fieldset>
+			<fieldset>
+				<legend>Profile settings</legend>
+				<mat-slide-toggle [(ngModel)]="hasProfileLinks">has profile links</mat-slide-toggle>
+			</fieldset>
+			<fieldset>
+				<legend>Info settings</legend>
+				<mat-slide-toggle [(ngModel)]="hasInfoLinks">has info links</mat-slide-toggle>
+				<mat-slide-toggle [(ngModel)]="hasContactEmail">has contact email</mat-slide-toggle>
+				<mat-slide-toggle [(ngModel)]="hasContactPhone">has contact phone</mat-slide-toggle>
+			</fieldset>
+			<fieldset class="toggles">
+				<legend>Applications settings</legend>
+				<mat-form-field>
+					<mat-label>Max last used applications</mat-label>
+					<input type="number" matInput [(ngModel)]="maxLastUsedApplications" />
+				</mat-form-field>
+				<mat-form-field>
+					<mat-label>Max favorite applications</mat-label>
+					<input type="number" matInput [(ngModel)]="maxFavoriteApplications" />
+				</mat-form-field>
+			</fieldset>
 		</mat-card-content>
 	</mat-card>
 </div>
