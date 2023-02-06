@@ -93,6 +93,9 @@
 					<input type="number" matInput [(ngModel)]="maxFavoriteApplications" />
 				</mat-form-field>
 			</fieldset>
+			<p>
+				current login state: <output>{{ loginState$ | async }}</output>
+			</p>
 		</mat-card-content>
 	</mat-card>
 </div>

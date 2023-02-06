@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {ObEScrollMode, ObIHeaderControlContact, ObMasterLayoutService} from '@oblique/oblique';
+import {ObEScrollMode, ObIServiceNavigationContact, ObLoginState, ObMasterLayoutService} from '@oblique/oblique';
+import {Observable} from 'rxjs';
 import {DynamicNavigationService} from './dynamic-navigation.service';
 
 @Component({
@@ -10,12 +11,14 @@ import {DynamicNavigationService} from './dynamic-navigation.service';
 export class MasterLayoutSampleComponent {
 	coverLayout = false;
 	scrollMode = ObEScrollMode;
+	loginState$: Observable<ObLoginState>;
 	private readonly infoLinks = [...this.masterLayout.header.serviceNavigationConfiguration.infoLinks];
 	private readonly infoContact = {...this.masterLayout.header.serviceNavigationConfiguration.infoContact};
 	private readonly profileLinks = [...this.masterLayout.header.serviceNavigationConfiguration.profileLinks];
 
 	constructor(private readonly masterLayout: ObMasterLayoutService, private readonly dynamicNavigationService: DynamicNavigationService) {
 		this.coverLayout = this.masterLayout.layout.hasCover;
+		this.loginState$ = this.masterLayout.header.loginState$;
 	}
 
 	// Footer
@@ -248,7 +251,7 @@ export class MasterLayoutSampleComponent {
 		this.dynamicNavigationService.removeLastLink();
 	}
 
-	private buildContactInfo(hasTel: boolean, hasEmail: boolean): ObIHeaderControlContact {
+	private buildContactInfo(hasTel: boolean, hasEmail: boolean): ObIServiceNavigationContact {
 		return {
 			tel: hasTel ? this.infoContact.tel : undefined,
 			email: hasEmail ? this.infoContact.email : undefined
