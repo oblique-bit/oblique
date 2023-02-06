@@ -2,6 +2,7 @@ import {Component, ElementRef, Input, QueryList, TemplateRef} from '@angular/cor
 import {ObINavigationLink} from '../master-layout.module';
 import {ObILocaleObject} from '../master-layout.model';
 import {of} from 'rxjs';
+import {ObLoginState} from '../../service-navigation/service-navigation.model';
 
 @Component({
 	selector: 'ob-master-layout-header',
@@ -25,4 +26,6 @@ export class ObMockMasterLayoutHeaderComponent {
 	}
 
 	changeLang(lang: string): void {}
+
+	emitLoginState(loginState: ObLoginState): void {}
 }

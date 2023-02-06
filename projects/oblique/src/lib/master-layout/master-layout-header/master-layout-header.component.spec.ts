@@ -26,7 +26,8 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			configEvents$: new Subject<ObIMasterLayoutEvent>(),
 			isCustom: false,
 			isSmall: false,
-			serviceNavigation: {}
+			serviceNavigation: {},
+			emitLoginState: jest.fn()
 		},
 		layout: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isMenuOpened: false}
 	};
@@ -220,6 +221,21 @@ describe('ObMasterLayoutHeaderComponent', () => {
 						});
 					});
 				});
+			});
+		});
+
+		describe('emitLoginState', () => {
+			beforeEach(() => {
+				jest.spyOn(mockMasterLayoutService.header, 'emitLoginState');
+				component.emitLoginState('S2OK');
+			});
+
+			it('should call emitLoginState on master layout service once', () => {
+				expect(mockMasterLayoutService.header.emitLoginState).toHaveBeenCalledTimes(1);
+			});
+
+			it('should call emitLoginState on master layout service with the same parameter', () => {
+				expect(mockMasterLayoutService.header.emitLoginState).toHaveBeenCalledWith('S2OK');
 			});
 		});
 	});

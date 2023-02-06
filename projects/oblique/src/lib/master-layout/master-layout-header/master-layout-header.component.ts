@@ -36,6 +36,7 @@ import {
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObEColor} from '../../style/colors.model';
+import {ObLoginState} from '../../service-navigation/service-navigation.model';
 
 @Component({
 	selector: 'ob-master-layout-header',
@@ -111,6 +112,10 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 
 	changeLang(lang: string): void {
 		this.translate.use(lang);
+	}
+
+	emitLoginState(loginState: ObLoginState): void {
+		this.masterLayout.header.emitLoginState(loginState);
 	}
 
 	private addActionClass(elt: ElementRef): void {

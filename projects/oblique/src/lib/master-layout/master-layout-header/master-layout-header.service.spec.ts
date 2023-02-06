@@ -39,6 +39,22 @@ describe('ObMasterLayoutHeaderService', () => {
 		});
 	});
 
+	describe('loginState$', () => {
+		it('should expose a loginState$ observable', () => {
+			expect(service.loginState$ instanceof Observable).toBe(true);
+		});
+	});
+
+	describe('emitLoginState', () => {
+		it('should emit the given state through loginState$', done => {
+			service.loginState$.subscribe(loginState => {
+				expect(loginState).toBe('SA');
+				done();
+			});
+			service.emitLoginState('SA');
+		});
+	});
+
 	testSetter('isCustom', 'HEADER_IS_CUSTOM');
 	testSetter('isSmall', 'HEADER_IS_SMALL');
 	testSetter('isSticky', 'HEADER_IS_STICKY');

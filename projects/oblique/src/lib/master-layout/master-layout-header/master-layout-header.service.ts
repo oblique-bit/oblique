@@ -1,12 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
+import {ObLoginState} from '../../service-navigation/service-navigation.model';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObIServiceNavigationConfig} from '../master-layout.model';
 
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutHeaderService {
 	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
+	readonly loginState$: Observable<ObLoginState>;
 	private readonly events = new Subject<ObIMasterLayoutEvent>();
+	private readonly loginState = new Subject<ObLoginState>();
 	private isCustomInternal = this.config.header.isCustom;
 	private isSmallInternal = this.config.header.isSmall;
 	private isStickyInternal = this.config.header.isSticky;
@@ -15,6 +18,7 @@ export class ObMasterLayoutHeaderService {
 
 	constructor(private readonly config: ObMasterLayoutConfig) {
 		this.configEvents$ = this.events.asObservable();
+		this.loginState$ = this.loginState.asObservable();
 	}
 
 	get isCustom(): boolean {
@@ -75,5 +79,9 @@ export class ObMasterLayoutHeaderService {
 			name: ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION,
 			config: value
 		});
+	}
+
+	emitLoginState(loginState: ObLoginState): void {
+		this.loginState.next(loginState);
 	}
 }
