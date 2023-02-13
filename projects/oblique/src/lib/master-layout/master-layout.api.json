@@ -109,6 +109,13 @@
           "since": "8.2.0"
         },
         {
+          "name": "OB_PAMS_CONFIGURATION",
+          "text": "Provides the mandatory PAMS environment as well as an optional root url. This is only useful when <code>OB_ACTIVATE_SERVICE_NAVIGATION</code> is enabled.",
+          "type": "ObIPamsConfiguration",
+          "default": "undefined",
+          "since": "10.1.0"
+        },
+        {
           "name": "OB_ACTIVATE_SERVICE_NAVIGATION",
           "text": "Indicates whether or not the service navigation component should be used instead of the header controls area.",
           "type": "boolean",
@@ -652,6 +659,28 @@
           "type": "string",
           "isOptional": true,
           "since": "5.2.0"
+        }
+      ]
+    },
+    {
+      "name": "ObIPamsConfiguration",
+      "type": "interface",
+      "usage": "The PAMS configuration to allow the connection with PAMS services",
+      "since": "10.1.0",
+      "variables": [
+        {
+          "name": "environment",
+          "text": "The PAMS environment that will be used to build the root URL for the PAMS and ePortal links.",
+          "type": "ObEPamsEnvironment",
+          "since": "10.1.0"
+        },
+        {
+          "name": "rootUrl",
+          "text": "An alternate root URL for the PAMS and ePortal links. This take precedence over the root URL inferred from the environment.",
+          "type": "string",
+          "isOptional": true,
+          "default": null,
+          "since": "10.1.0"
         }
       ]
     },

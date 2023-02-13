@@ -68,7 +68,7 @@
 		</div>
 		<ng-container *ngIf="useServiceNavigation">
 			<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.service-navigation.title" | translate }}</h2>
-			<ob-service-navigation>
+			<ob-service-navigation [environment]="pamsConfiguration?.environment" [rootUrl]="pamsConfiguration?.rootUrl">
 				<ng-template #customWidgetTemplate *ngFor="let template of templates">
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</ng-template>

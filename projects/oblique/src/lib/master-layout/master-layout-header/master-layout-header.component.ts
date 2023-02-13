@@ -22,8 +22,8 @@ import {filter, takeUntil} from 'rxjs/operators';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {scrollEnabled} from '../master-layout.utility';
-import {OB_ACTIVATE_SERVICE_NAVIGATION, OB_BANNER, WINDOW} from '../../utilities';
-import {ObIBanner} from '../../utilities.model';
+import {OB_ACTIVATE_SERVICE_NAVIGATION, OB_BANNER, OB_PAMS_CONFIGURATION, WINDOW} from '../../utilities';
+import {ObIBanner, ObIPamsConfiguration} from '../../utilities.model';
 import {
 	ObEEnvironment,
 	ObEMasterLayoutEventValues,
@@ -68,6 +68,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		private readonly globalEventsService: ObGlobalEventsService,
 		@Inject(WINDOW) private readonly window: Window,
 		@Inject(OB_BANNER) @Optional() bannerToken: ObIBanner,
+		@Inject(OB_PAMS_CONFIGURATION) @Optional() public readonly pamsConfiguration: ObIPamsConfiguration,
 		@Inject(OB_ACTIVATE_SERVICE_NAVIGATION) @Optional() useServiceNavigation: boolean
 	) {
 		this.languages = this.formatLanguages(this.config.locale.languages);

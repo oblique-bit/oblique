@@ -141,6 +141,7 @@ export {
 	OB_BANNER,
 	OB_MATERIAL_CONFIG,
 	OB_ACTIVATE_SERVICE_NAVIGATION,
+	OB_PAMS_CONFIGURATION,
 	getTranslateLoader,
 	multiTranslateLoader,
 	WINDOW
