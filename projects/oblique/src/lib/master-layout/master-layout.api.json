@@ -8,7 +8,7 @@
       "type": "component",
       "usage": "This component takes care of the structure of the application and should be used in <code>app.component.html</code>",
       "since": "2.0.0",
-      "updated": "8.2.0",
+      "updated": "10.1.0",
       "inputs": [
         {
           "name": "skiplinks",
@@ -105,6 +105,13 @@
           "type": "boolean",
           "default": true,
           "since": "8.2.0"
+        },
+        {
+          "name": "OB_ACTIVATE_SERVICE_NAVIGATION",
+          "text": "Indicates whether or not the service navigation component should be used instead of the header controls area.",
+          "type": "boolean",
+          "default": false,
+          "since": "10.1.0"
         }
       ]
     },

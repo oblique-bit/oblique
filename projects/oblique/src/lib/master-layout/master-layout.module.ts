@@ -23,6 +23,7 @@ import {obliqueProviders} from '../utilities';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 import {ObIconModule} from '../icon/icon.module';
 import {ObButtonModule} from '../button/button.module';
+import {ObServiceNavigationModule} from '../service-navigation/service-navigation.module';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 
 export {ObMasterLayoutComponent} from './master-layout/master-layout.component';
@@ -57,6 +58,7 @@ export {ObOutlineDirective} from './outline.directive';
 		ObNotificationModule,
 		ObOffCanvasModule,
 		ObScrollingModule,
+		ObServiceNavigationModule,
 		ObSpinnerModule,
 		RouterModule,
 		ScrollingModule,

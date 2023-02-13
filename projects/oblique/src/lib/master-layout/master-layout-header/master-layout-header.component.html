@@ -37,7 +37,7 @@
 				</li>
 			</ul>
 		</div>
-		<div class="ob-master-layout-header-controls">
+		<div *ngIf="!useServiceNavigation" class="ob-master-layout-header-controls">
 			<ng-content select="[obHeaderCustomControl]"></ng-content>
 			<ng-container *ngIf="templates.length">
 				<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.controls.title" | translate }}</h2>
@@ -66,6 +66,14 @@
 				</li>
 			</ul>
 		</div>
+		<ng-container *ngIf="useServiceNavigation">
+			<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.service-navigation.title" | translate }}</h2>
+			<ob-service-navigation>
+				<ng-template #customWidgetTemplate *ngFor="let template of templates">
+					<ng-container [ngTemplateOutlet]="template"></ng-container>
+				</ng-template>
+			</ob-service-navigation>
+		</ng-container>
 	</ng-container>
 </div>
 <ob-master-layout-navigation [links]="navigation">

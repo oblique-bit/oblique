@@ -4,7 +4,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {OB_BANNER, WINDOW} from '../../utilities';
+import {OB_ACTIVATE_SERVICE_NAVIGATION, OB_BANNER, WINDOW} from '../../utilities';
 import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
 import {ObMasterLayoutHeaderComponent} from './master-layout-header.component';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
@@ -57,6 +57,21 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 		it('should have ob-master-layout-header class', () => {
 			expect(fixture.debugElement.nativeElement.classList.contains('ob-master-layout-header')).toBe(true);
+		});
+
+		describe('useServiceNavigation', () => {
+			it('should be false', () => {
+				expect(component.useServiceNavigation).toBe(false);
+			});
+
+			it('should not have an "ob-service-navigation" element', () => {
+				expect(fixture.debugElement.query(By.css('ob-service-navigation'))).toBeFalsy();
+			});
+
+			it('should have a ".ob-master-layout-header-controls" area', () => {
+				const headerControls = fixture.debugElement.query(By.css('.ob-master-layout-header-controls'));
+				expect(headerControls).toBeTruthy();
+			});
 		});
 
 		describe('properties', () => {
@@ -269,6 +284,50 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 			it('should have correct color', () => {
 				expect(banner.styles.color).toBe('rgb(17, 34, 51)');
+			});
+		});
+	});
+
+	describe('With OB_ACTIVATE_SERVICE_NAVIGATION injectionToken set to true', () => {
+		beforeEach(() => {
+			TestBed.overrideProvider(OB_ACTIVATE_SERVICE_NAVIGATION, {useValue: true});
+			globalSetup();
+		});
+
+		describe('useServiceNavigation', () => {
+			it('should be true', () => {
+				expect(component.useServiceNavigation).toBe(true);
+			});
+
+			it('should have an "ob-service-navigation" element', () => {
+				expect(fixture.debugElement.query(By.css('ob-service-navigation'))).toBeTruthy();
+			});
+
+			it('should not have a ".ob-master-layout-header-controls" area', () => {
+				const headerControls = fixture.debugElement.query(By.css('.ob-master-layout-header-controls'));
+				expect(headerControls).toBeFalsy();
+			});
+		});
+	});
+
+	describe('With OB_ACTIVATE_SERVICE_NAVIGATION injectionToken set to false', () => {
+		beforeEach(() => {
+			TestBed.overrideProvider(OB_ACTIVATE_SERVICE_NAVIGATION, {useValue: false});
+			globalSetup();
+		});
+
+		describe('useServiceNavigation', () => {
+			it('should be false', () => {
+				expect(component.useServiceNavigation).toBe(false);
+			});
+
+			it('should not have an "ob-service-navigation" element', () => {
+				expect(fixture.debugElement.query(By.css('ob-service-navigation'))).toBeFalsy();
+			});
+
+			it('should have a ".ob-master-layout-header-controls" area', () => {
+				const headerControls = fixture.debugElement.query(By.css('.ob-master-layout-header-controls'));
+				expect(headerControls).toBeTruthy();
 			});
 		});
 	});

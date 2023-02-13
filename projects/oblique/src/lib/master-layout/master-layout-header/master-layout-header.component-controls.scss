@@ -66,7 +66,8 @@
 		}
 	}
 
-	.ob-master-layout-header-controls {
+	.ob-master-layout-header-controls,
+	.ob-service-navigation {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -116,6 +117,20 @@
 
 		&.ob-header-locale {
 			margin-right: variables.$ob-spacing-default;
+		}
+
+		.ob-autocomplete .mat-form-field-wrapper {
+			padding-bottom: 0;
+		}
+	}
+
+	.ob-service-navigation {
+		margin-right: variables.$ob-spacing-default;
+		margin-left: variables.$ob-spacing-default;
+		justify-content: flex-end;
+
+		.ob-service-navigation-list {
+			flex-wrap: wrap;
 		}
 
 		.ob-autocomplete .mat-form-field-wrapper {

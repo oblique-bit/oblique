@@ -22,7 +22,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {scrollEnabled} from '../master-layout.utility';
-import {OB_BANNER, WINDOW} from '../../utilities';
+import {OB_ACTIVATE_SERVICE_NAVIGATION, OB_BANNER, WINDOW} from '../../utilities';
 import {ObIBanner} from '../../utilities.model';
 import {
 	ObEEnvironment,
@@ -48,6 +48,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 	languages: ObILanguage[];
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
+	useServiceNavigation = false;
 	@Input() navigation: ObINavigationLink[];
 	@HostBinding('class.ob-master-layout-header-small') isSmall = this.masterLayout.header.isSmall;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
@@ -66,7 +67,8 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		private readonly renderer: Renderer2,
 		private readonly globalEventsService: ObGlobalEventsService,
 		@Inject(WINDOW) private readonly window: Window,
-		@Inject(OB_BANNER) @Optional() bannerToken: ObIBanner
+		@Inject(OB_BANNER) @Optional() bannerToken: ObIBanner,
+		@Inject(OB_ACTIVATE_SERVICE_NAVIGATION) @Optional() useServiceNavigation: boolean
 	) {
 		this.languages = this.formatLanguages(this.config.locale.languages);
 		this.customChange();
@@ -74,6 +76,7 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.reduceOnScroll();
 		this.banner = this.initializeBanner(bannerToken);
 		this.home$ = this.masterLayout.homePageRouteChange$;
+		this.useServiceNavigation = useServiceNavigation ?? false;
 	}
 
 	ngAfterViewInit(): void {

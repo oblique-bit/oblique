@@ -26,6 +26,9 @@ import {ObIBanner, ObIMaterialConfig} from './utilities.model';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
+export const OB_ACTIVATE_SERVICE_NAVIGATION = new InjectionToken<boolean>(
+	'Indicates whether or not the service navigation component should be used instead of the header controls area.'
+);
 
 export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);
