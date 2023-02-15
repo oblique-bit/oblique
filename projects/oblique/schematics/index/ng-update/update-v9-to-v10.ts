@@ -1,4 +1,5 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
+import {addDependency} from '../ng-add/ng-add-utils';
 import {applyInTree, createSafeRule, infoMigration, removeImport, replaceInFile, setAngularProjectsConfig} from '../utils';
 import {ObIMigrations} from './ng-update.model';
 
@@ -16,7 +17,8 @@ export class UpdateV9toV10 implements ObIMigrations {
 				this.removeObUseObliqueIcons(),
 				this.removeTelemetryFromMainTs(),
 				this.removeBootstrapCSS(),
-				this.removeMaterialCSS()
+				this.removeMaterialCSS(),
+				this.addAngularAuthAndJwtDecodeDependencies()
 			])(tree, _context);
 	}
 
@@ -78,6 +80,15 @@ export class UpdateV9toV10 implements ObIMigrations {
 			return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) =>
 				(config || []).filter((style: string) => !/node_modules\/@oblique\/oblique\/styles\/s?css\/oblique-material\.s?css/.test(style))
 			);
+		});
+	}
+
+	private addAngularAuthAndJwtDecodeDependencies(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Oblique: Adding angular-oauth2-oidc and jwt-decode dependencies');
+			addDependency(tree, 'angular-oauth2-oidc');
+			addDependency(tree, 'jwt-decode');
+			return tree;
 		});
 	}
 }
