@@ -62,15 +62,11 @@ export class UpdateV9toV10 implements ObIMigrations {
 	private removeBootstrapCSS(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Remove oblique-bootstrap and oblique-utilities from angular.json');
-			const apply = (filePath: string): void => {
-				replaceInFile(
-					tree,
-					filePath,
-					/^\s*"node_modules\/@oblique\/oblique\/styles\/s?css\/oblique-(?:utilities|bootstrap)\.s?css",?\n?/gm,
-					''
-				);
-			};
-			return applyInTree(tree, apply, 'angular.json');
+			return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) =>
+				(config || []).filter(
+					(style: string) => !/node_modules\/@oblique\/oblique\/styles\/s?css\/oblique-(?:utilities|bootstrap)\.s?css?/.test(style)
+				)
+			);
 		});
 	}
 
