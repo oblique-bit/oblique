@@ -52,7 +52,7 @@ export class UpdateV9toV10 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'OB_PROJECT_INFO', '@oblique/oblique');
 				replaceInFile(tree, filePath, /import\s+packageInfo\s+from\s+['"]\.\.\/package\.json['"]\s*;\s?/s, '');
-				replaceInFile(tree, filePath, /(?:,\s*)?{\s*provide\s*:\s*OB_PROJECT_INFO\s*,\s*useValue\s*:\s*{.*}\s*}/s, '');
+				replaceInFile(tree, filePath, /(?:,\s*)?{\s*provide\s*:\s*OB_PROJECT_INFO\s*,\s*useValue\s*:\s*{.*}\s*,?\s*/s, '');
 				replaceInFile(tree, filePath, /\s*\[\s*]\s*/, '');
 			};
 			return applyInTree(tree, apply, 'main.ts');
