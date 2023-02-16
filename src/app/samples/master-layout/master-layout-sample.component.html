@@ -66,15 +66,35 @@
 			<fieldset>
 				<legend>Widget visibility settings</legend>
 				<mat-slide-toggle [(ngModel)]="hasApplicationsWidget">has applications</mat-slide-toggle>
-				<mat-slide-toggle [(ngModel)]="hasAuthenticationWidget">has authentication</mat-slide-toggle>
+				<mat-slide-toggle
+					[(ngModel)]="hasAuthenticationWidget"
+					[disabled]="isLoggedOut$ | async"
+					[matTooltip]="(isLoggedOut$ | async) ? 'You need to be logged in to activate this setting.' : undefined"
+					>has authentication</mat-slide-toggle
+				>
 				<mat-slide-toggle [(ngModel)]="hasInfoWidget">has info</mat-slide-toggle>
 				<mat-slide-toggle [(ngModel)]="hasLanguagesWidget">has language selection</mat-slide-toggle>
-				<mat-slide-toggle [(ngModel)]="hasMessageWidget">has message</mat-slide-toggle>
-				<mat-slide-toggle [(ngModel)]="hasProfileWidget">has profile</mat-slide-toggle>
+				<mat-slide-toggle
+					[(ngModel)]="hasMessageWidget"
+					[disabled]="isLoggedOut$ | async"
+					[matTooltip]="(isLoggedOut$ | async) ? 'You need to be logged in to activate this setting.' : undefined"
+					>has message</mat-slide-toggle
+				>
+				<mat-slide-toggle
+					[(ngModel)]="hasProfileWidget"
+					[disabled]="isLoggedOut$ | async"
+					[matTooltip]="(isLoggedOut$ | async) ? 'You need to be logged in to activate this setting.' : undefined"
+					>has profile</mat-slide-toggle
+				>
 			</fieldset>
 			<fieldset>
 				<legend>Profile settings</legend>
-				<mat-slide-toggle [(ngModel)]="hasProfileLinks">has profile links</mat-slide-toggle>
+				<mat-slide-toggle
+					[(ngModel)]="hasProfileLinks"
+					[disabled]="isLoggedOut$ | async"
+					[matTooltip]="(isLoggedOut$ | async) ? 'You need to be logged in to activate this setting.' : undefined"
+					>has profile links</mat-slide-toggle
+				>
 			</fieldset>
 			<fieldset>
 				<legend>Info settings</legend>
@@ -86,11 +106,23 @@
 				<legend>Applications settings</legend>
 				<mat-form-field>
 					<mat-label>Max last used applications</mat-label>
-					<input type="number" matInput [(ngModel)]="maxLastUsedApplications" />
+					<input
+						type="number"
+						matInput
+						[(ngModel)]="maxLastUsedApplications"
+						[disabled]="isLoggedOut$ | async"
+						[matTooltip]="(isLoggedOut$ | async) ? 'You need to be logged in to activate this setting.' : undefined"
+					/>
 				</mat-form-field>
 				<mat-form-field>
 					<mat-label>Max favorite applications</mat-label>
-					<input type="number" matInput [(ngModel)]="maxFavoriteApplications" />
+					<input
+						type="number"
+						matInput
+						[(ngModel)]="maxFavoriteApplications"
+						[disabled]="isLoggedOut$ | async"
+						[matTooltip]="(isLoggedOut$ | async) ? 'You need to be logged in to activate this setting.' : undefined"
+					/>
 				</mat-form-field>
 			</fieldset>
 			<p>

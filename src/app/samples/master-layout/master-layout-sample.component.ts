@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {ObEScrollMode, ObIServiceNavigationContact, ObLoginState, ObMasterLayoutService} from '@oblique/oblique';
-import {Observable} from 'rxjs';
+import {Observable, share} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {DynamicNavigationService} from './dynamic-navigation.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class MasterLayoutSampleComponent {
 	coverLayout = false;
 	scrollMode = ObEScrollMode;
 	loginState$: Observable<ObLoginState>;
+	isLoggedOut$: Observable<boolean>;
 	private readonly infoLinks = [...this.masterLayout.header.serviceNavigationConfiguration.infoLinks];
 	private readonly infoContact = {...this.masterLayout.header.serviceNavigationConfiguration.infoContact};
 	private readonly profileLinks = [...this.masterLayout.header.serviceNavigationConfiguration.profileLinks];
@@ -19,6 +21,10 @@ export class MasterLayoutSampleComponent {
 	constructor(private readonly masterLayout: ObMasterLayoutService, private readonly dynamicNavigationService: DynamicNavigationService) {
 		this.coverLayout = this.masterLayout.layout.hasCover;
 		this.loginState$ = this.masterLayout.header.loginState$;
+		this.isLoggedOut$ = this.loginState$.pipe(
+			map(loginState => !loginState?.includes('OK')),
+			share()
+		);
 	}
 
 	// Footer
