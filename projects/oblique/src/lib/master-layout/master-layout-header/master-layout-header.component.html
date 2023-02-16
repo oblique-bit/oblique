@@ -19,7 +19,7 @@
 				<li class="ob-control-item" *ngFor="let template of mobileTemplates" #headerMobileControl>
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</li>
-				<li class="ob-control-item">
+				<li class="ob-control-item ob-master-layout-header-toggle-container">
 					<button
 						type="button"
 						[title]="'i18n.oblique.header.toggle' | translate"

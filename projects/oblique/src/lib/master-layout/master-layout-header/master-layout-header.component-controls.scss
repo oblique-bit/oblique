@@ -3,6 +3,10 @@
 @use "../../../styles/scss/core/mixins/layout";
 
 .ob-master-layout-header {
+	.ob-master-layout-header-toggle-container {
+		display: flex;
+	}
+
 	.ob-header-toggle {
 		border: none;
 
