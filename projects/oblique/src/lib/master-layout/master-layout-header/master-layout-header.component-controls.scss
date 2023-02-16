@@ -142,20 +142,25 @@
 		@include layout.ob-media-breakpoint-up(md) {
 			justify-content: flex-end;
 		}
-	}
 
-	.ob-control-link {
-		padding: 0;
-		border: none;
-		background-color: transparent;
-		color: variables.$ob-gray-dark;
-		transition: color variables.$ob-duration-fast ease-in-out;
-
-		&:hover,
-		&:active,
-		&:focus {
+		&.ob-widget .ob-button.mat-button-base.mat-primary {
 			color: variables.$ob-default;
-			cursor: pointer;
+			border-color: variables.$ob-default;
+		}
+
+		&:not(.ob-widget) .ob-control-link {
+			padding: 0;
+			border: none;
+			background-color: transparent;
+			color: variables.$ob-gray-dark;
+			transition: color variables.$ob-duration-fast ease-in-out;
+
+			&:hover,
+			&:active,
+			&:focus {
+				color: variables.$ob-default;
+				cursor: pointer;
+			}
 		}
 	}
 

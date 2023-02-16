@@ -16,7 +16,7 @@
 				</span>
 			</div>
 			<ul class="ob-header-controls ob-header-toggle">
-				<li class="ob-control-item" *ngFor="let template of mobileTemplates" #headerMobileControl>
+				<li class="ob-control-item" [class.ob-widget]="useServiceNavigation" *ngFor="let template of mobileTemplates" #headerMobileControl>
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</li>
 				<li class="ob-control-item ob-master-layout-header-toggle-container">
