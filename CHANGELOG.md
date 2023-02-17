@@ -1,7 +1,8 @@
-# [10.0.0-RC.1](https://github.com/oblique-bit/oblique/compare/9.3.2...10.0.0-RC.1) (2023-01-30)
+# [10.0.0](https://github.com/oblique-bit/oblique/compare/9.3.2...10.0.0) (2023-02-17)
 
 ## Bug Fixes
 
+- **schematics:** add missing `jwt-decode` and `angular-oauth2-oidc` dependencies ([dcb0857](https://github.com/oblique-bit/oblique/commit/dcb0857d978b6bc8c7653a9de6bbcfadc616585e))
 - **autocomplete:** harmonize icon height and ensure gap between icons ([27eae6a](https://github.com/oblique-bit/oblique/commit/27eae6a441d2a6d114a595563bb74465943545b4))
 - **column-layout:** remove `overflow: hidden` ([a9c4603](https://github.com/oblique-bit/oblique/commit/a9c46038193eddbf786dcbb69a84e6a598db78ac))
 - **column-layout:** remove redundant scrollbars ([71f4f4a](https://github.com/oblique-bit/oblique/commit/71f4f4a9d9bd3a0c1a62dee86077ac0fe2b25819))
@@ -10,24 +11,18 @@
 - **master-layout:** ensure the autocomplete has no padding while injected in the header ([0b91f74](https://github.com/oblique-bit/oblique/commit/0b91f74314df957f922d1531a46e4ae8b5240214))
 - **master-layout:** translate access key label ([662d4ce](https://github.com/oblique-bit/oblique/commit/662d4cea844939d6eb61308306f377e28a2697f4))
 - **material:** fix labels are not fully displayed ([98da436](https://github.com/oblique-bit/oblique/commit/98da4369bff66f1b1abb06a6f63f5eab38d32ee1))
-- **schematics:** add missing `upgradeToV10` function ([89849e4](https://github.com/oblique-bit/oblique/commit/89849e49747c8171e065ac82c8136daf386eac25))
 - **schematics:** correctly update prefix of components ([8b58918](https://github.com/oblique-bit/oblique/commit/8b58918a80a9ffae7a3dff10de1ec3e969e8ac64))
 - **schematics:** ensure `removeImport` and `hasImport` do match multiple lines imports ([66dadbb](https://github.com/oblique-bit/oblique/commit/66dadbb972533e3ee865f6ef0940317c5ebf0c91))
 - **schematics:** increase building budget in ´angular.json´ ([21eb977](https://github.com/oblique-bit/oblique/commit/21eb977b42f6313c5cac3f585cdb6fd7495de9c2))
 - **schematics:** ng-add directly create the environment files with the banner ([75eb6a5](https://github.com/oblique-bit/oblique/commit/75eb6a5275709c0b7c4e2ec1bc0d9d2002490b3b))
 - **toolchain:** generate `oblique-components.scss` before transpiling ([b97d3eb](https://github.com/oblique-bit/oblique/commit/b97d3ebe685131e01138d8ef5382f4383b09fff6))
 
-## chore
-
-- **toolchain:** update dependencies and refactor accordingly ([ee190cf](https://github.com/oblique-bit/oblique/commit/ee190cf35964fdc1534bafd2b650c32ca06bc3bb))
-
 ## Features
 
 - **bootstrap:** remove the Bootstrap theme ([f0cc7c4](https://github.com/oblique-bit/oblique/commit/f0cc7c4ac343ee5922aabdcbfcf0278960534a29))
 - **button:** throw an explicit error message if no reference to `MatButton` can be found ([4718799](https://github.com/oblique-bit/oblique/commit/471879974ebb4ef09c01fecfc18fec586c7d9896))
-- completely remove font awesome and refactor accordingly ([2d20bb9](https://github.com/oblique-bit/oblique/commit/2d20bb9029fad384f03cfffe87ec23d77b7cefb8))
+- **toolchain:** completely remove font awesome and refactor accordingly ([2d20bb9](https://github.com/oblique-bit/oblique/commit/2d20bb9029fad384f03cfffe87ec23d77b7cefb8))
 - **datepicker:** remove the component and associated files ([232d0ab](https://github.com/oblique-bit/oblique/commit/232d0ab15d83edbe08f16e78d441182f1fe0df45))
-- **dropdown:** remove deprecated `dropdown` ([640c92a](https://github.com/oblique-bit/oblique/commit/640c92a65773e6156d679c45a115eb90cd351d7a))
 - **error-messages:** remove the component and associated files ([7260a25](https://github.com/oblique-bit/oblique/commit/7260a25982ec2efa7ef3f26e76c87476a2f3ab42))
 - **external-link:** add `isExternalLink` input to control externality ([9833fa6](https://github.com/oblique-bit/oblique/commit/9833fa6d017fbee0f9825c2579d37ad7f41aee12))
 - **external-link:** add `isExternalLink` property to `EXTERNAL_LINK` injection token ([5ba9964](https://github.com/oblique-bit/oblique/commit/5ba9964135ef4d666f5235a894ac18e64101c740))
@@ -41,15 +36,14 @@
 - **popover:** add `appendToBody` input ([6027983](https://github.com/oblique-bit/oblique/commit/6027983743b54d02efef7ce8bd838c3f9ce3692a))
 - **popover:** add `OBLIQUE_POPOVER_APPEND_TO_BODY` injection token ([872fe6b](https://github.com/oblique-bit/oblique/commit/872fe6b7184d9b51b1f1bf82502af0c5f2dc7019))
 - **popover:** change `appendToBody` input default value to `false` ([eb60fb3](https://github.com/oblique-bit/oblique/commit/eb60fb377d3644b94cc81819c6b703fa97b244a2))
-- remove `ob-icon` component ([cba88b7](https://github.com/oblique-bit/oblique/commit/cba88b79c46aa23700c97c0721bd36273fc7779f))
+- **icon:** remove `ob-icon` component ([cba88b7](https://github.com/oblique-bit/oblique/commit/cba88b79c46aa23700c97c0721bd36273fc7779f))
 - **schematics:** add an option for ng-add to create the environment files ([75aad77](https://github.com/oblique-bit/oblique/commit/75aad7743acd04c7a7619dd9e692cbc1bae5eb93))
-- **schematics:** add the structure of schematics for migration to oblique 10 ([f89c851](https://github.com/oblique-bit/oblique/commit/f89c851c321a2a30baff968329073234a18e7dea))
-- **schematics:** ng-add doesn't add `oblique-material` to `angular.json` anymore ([62bacb0](https://github.com/oblique-bit/oblique/commit/62bacb05248c47c71180f437b6e8c37ff0faf47a))
+- **schematics:** ng-add don't add `oblique-material` to `angular.json` anymore ([62bacb0](https://github.com/oblique-bit/oblique/commit/62bacb05248c47c71180f437b6e8c37ff0faf47a))
 - **schematics:** ng-add don't add the application's title in `package.json` anymore ([ae489fe](https://github.com/oblique-bit/oblique/commit/ae489fe0dd40b3e6384b3d995c0d7079e3771f7a))
 - **schematics:** ng-add don't add the banner if no environment is provided ([a3a067c](https://github.com/oblique-bit/oblique/commit/a3a067c6f603ae5a83c7f7c3c6ad2184426b3ce9))
 - **schematics:** ng-add don't set `emitDecoratorMetadata` to `true` anymore ([690f37b](https://github.com/oblique-bit/oblique/commit/690f37bd9d346ef467178e7b33147d21a90caf17))
 - **schematics:** ng-add installs `angular-oauth2-oidc` and `jwt-decode` ([70133f6](https://github.com/oblique-bit/oblique/commit/70133f6a79e2c40ae143a4ebc7b2a7d15fb3cc1e))
-- **schematics:** ng-add uses `[@use](https://github.com/use)` instead of `[@import](https://github.com/import)` for the default home component ([0ae68d2](https://github.com/oblique-bit/oblique/commit/0ae68d22efaa0e03a8b3eed77dc50e9533743089))
+- **schematics:** ng-add uses `@use` instead of `@import` for the default home component ([0ae68d2](https://github.com/oblique-bit/oblique/commit/0ae68d22efaa0e03a8b3eed77dc50e9533743089))
 - **schematics:** ng-update removes `oblique-bootstrap` and `oblique-utilities` from `angular.json` ([be62b8f](https://github.com/oblique-bit/oblique/commit/be62b8f4875d7107b9d720a1d1d1398c47e5ba3b))
 - **schematics:** ng-update removes `oblique-material` from `angular.json` ([958b4b7](https://github.com/oblique-bit/oblique/commit/958b4b729ff02ee71927208ff5404e0536322bca))
 - **search-box:** deprecate ´search-box´ ([af5f72b](https://github.com/oblique-bit/oblique/commit/af5f72b1cd036beabb6c7b12e702fb34b0594f7d))
@@ -63,8 +57,7 @@
 ## BREAKING CHANGES
 
 - **popover:** the popover is inserted right after its toggle per default
-- **material:** `oblique-material` has been removed, its rules have been moved
-  into `oblique-core` (Solved with Schematics)
+- **material:** `oblique-material` has been removed, its rules have been moved into `oblique-core` (Solved with Schematics)
 - **toolchain:** Angular has to be updated to version 15. Angular Material legacy modules have to be used
 - **file-upload:** `areAllItemsSelected` method has been removed in favor of `selectionStatus` property
 - **material:** `close` class for Material dialog button has been removed, use a standard footer button instead
@@ -78,10 +71,9 @@
 - **multiselect:** The Multiselect feature has been removed, use Material Select instead
 - **form-control-state:** The form control state feature has been removed without replacement
 - **datepicker:** The Bootstrap datepicker has been removed, use the Material Datepicker instead
-- **column-layout:** `overflow: hidden` of the `column-layout` has been removed
-  because it cut off the `box-shadow` of elements placed inside of it.
-  Due to this change, horizontal scrollbars may now appear.
+- **column-layout:** `overflow: hidden` of the `column-layout` has been removed because it cut off the `box-shadow` of elements placed inside of it. Due to this change, horizontal scrollbars may now appear.
 - **styles:** Firefox versions 12 to 88 are not supported anymore
+- **dropdown:** remove deprecated oblique dropdown ([640c92a](https://github.com/oblique-bit/oblique/commit/640c92a65773e6156d679c45a115eb90cd351d7a))
 
 # [9.3.2](https://github.com/oblique-bit/oblique/compare/9.3.1...9.3.2) (2022-12-16)
 
