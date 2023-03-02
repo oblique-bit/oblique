@@ -17,7 +17,7 @@ import {combineLatestWith, delay, distinctUntilChanged, map, startWith, takeUnti
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
 import {WINDOW} from '../utilities';
-import {ObIToggleDirection} from './column-layout.model';
+import {ObIDimension, ObIToggleDirection} from './column-layout.model';
 
 @Component({
 	selector: 'ob-column-layout',
@@ -54,19 +54,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 	}
 
 	ngAfterViewInit(): void {
-		this.dimensionChange
-			.pipe(
-				distinctUntilChanged((previous, current) =>
-					Object.keys(previous).reduce((hasNotChanged, key) => hasNotChanged && previous[key] === current[key], true)
-				),
-				combineLatestWith(this.getHeaderHeightObservable()),
-				map(([dimension, headerHeight]) => ({
-					...dimension,
-					headerHeight
-				})),
-				takeUntil(this.unsubscribe)
-			)
-			.subscribe(dimension => this.center(dimension));
+		this.getDimensionChangeObservable().subscribe(dimension => this.center(dimension));
 		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft, 'left', 'right');
 		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight, 'right', 'left');
 	}
@@ -88,6 +76,20 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 		if (this.columnRight) {
 			this.columnRight.toggle();
 		}
+	}
+
+	private getDimensionChangeObservable(): Observable<ObIDimension> {
+		return this.dimensionChange.pipe(
+			distinctUntilChanged((previous, current) =>
+				Object.keys(previous).reduce((hasNotChanged, key) => hasNotChanged && previous[key] === current[key], true)
+			),
+			combineLatestWith(this.getHeaderHeightObservable()),
+			map(([dimension, headerHeight]) => ({
+				...dimension,
+				headerHeight
+			})),
+			takeUntil(this.unsubscribe)
+		);
 	}
 
 	private getToggleDirection(
@@ -120,7 +122,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 		return element;
 	}
 
-	private center(dimension: {top: number; height: number; windowHeight: number; headerHeight: number}): void {
+	private center(dimension: ObIDimension): void {
 		// Math.min(Math.max(...)) simply contains the computation between 2 values
 		const top = Math.min(Math.max(0, dimension.headerHeight - dimension.top), dimension.windowHeight - dimension.top);
 		const bottom = Math.min(dimension.windowHeight - dimension.top, dimension.height);
