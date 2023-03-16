@@ -19,7 +19,6 @@
     "Severin Goddon <severin.goddon@bit.admin.ch>",
     "Michael Jehle <michael.jehle@bit.admin.ch>",
     "Quinavuidi Camilo <quinavuidi.camilo@bit.admin.ch>",
-    "Philippe Krüttli <philippe.kruttli@bit.admin.ch>",
     "Yanis Noa Weibel <yanisnoa.weibel@bit.admin.ch>",
     "Michèle Habegger <michele.habegger@bit.admin.ch>",
     "Yann Meuwly <yann.meuwly@bit.admin.ch>",
@@ -33,7 +32,8 @@
     "Louis Bernath",
     "Nicolas Müller",
     "Maya Hartmeier",
-    "Miro Albrecht"
+    "Miro Albrecht",
+    "Philippe Krüttli"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
