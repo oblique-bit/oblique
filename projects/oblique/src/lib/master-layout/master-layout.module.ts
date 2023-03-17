@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
 import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
-
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
 import {ObNotificationModule} from '../notification/notification.module';
@@ -59,6 +59,7 @@ export {ObOutlineDirective} from './outline.directive';
 		ObScrollingModule,
 		ObSpinnerModule,
 		RouterModule,
+		ScrollingModule,
 		TranslateModule
 	],
 	declarations: [
