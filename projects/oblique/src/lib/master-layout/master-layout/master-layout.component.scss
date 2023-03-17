@@ -2,9 +2,19 @@
 @use "sass:map";
 @use "../../../styles/scss/core/variables";
 @use "../../../styles/scss/core/mixins/layout";
+@use "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout {
+	*:not(input) {
+		@include shadow.ob-focus-visible-tab-focus-box-shadow();
+	}
+
+	a:focus-visible {
+		border-radius: 3px;
+	}
+
 	.ob-viewport {
+		background-color: variables.$ob-gray-50;
 		display: flex;
 		flex-direction: column;
 		width: 100%;
@@ -36,6 +46,11 @@
 		flex: 1 1 auto;
 	}
 
+	.ob-master-layout-header:has(ul.ob-has-opened-menu) ~ .ob-master-layout-wrapper {
+		backdrop-filter: brightness(0.5);
+		filter: brightness(0.5);
+	}
+
 	.ob-main-layout {
 		position: relative; // to prevent a double scrollbar with an ob-screen-reader-only out of the visible area
 		flex: 1 1 auto;
@@ -64,6 +79,12 @@
 				overflow: visible;
 			}
 		}
+
+		&:not(.ob-header-expanded) {
+			.ob-master-layout-header-title {
+				border-bottom: 1px solid variables.$ob-gray-200;
+			}
+		}
 	}
 
 	&.ob-has-max-width .ob-main-layout {
@@ -72,6 +93,24 @@
 
 		> * {
 			max-width: map.get(variables.$ob-grid-breakpoints, xl);
+		}
+	}
+
+	button {
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&.ob-header-expanded {
+		.ob-master-layout-header-toggle {
+			&:focus-visible {
+				.first-line,
+				.second-line,
+				.third-line {
+					margin-right: 4px;
+				}
+			}
 		}
 	}
 }
