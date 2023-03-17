@@ -7,6 +7,14 @@
 /**
  * @deprecated since Oblique 10. This SCSS files will no longer be distributed with Oblique 11.
  */
+$legacy-theme: (
+	color: (
+		primary: mat.define-palette(material-palette.$oblique-legacy-primary),
+		accent: mat.define-palette(material-palette.$oblique-legacy-accent),
+		warn: mat.define-palette(material-palette.$oblique-legacy-warn),
+	),
+	typography: typo.$custom-typography,
+);
 $theme: (
 	color: (
 		primary: mat.define-palette(material-palette.$oblique-primary),
@@ -18,24 +26,24 @@ $theme: (
 
 @include mat.legacy-core();
 
-@include mat.legacy-button-theme(mat.define-light-theme($theme));
-@include mat.legacy-card-theme(mat.define-light-theme($theme));
-@include mat.legacy-checkbox-theme(mat.define-light-theme($theme));
-@include mat.legacy-chips-theme(mat.define-light-theme($theme));
-@include mat.legacy-dialog-theme(mat.define-light-theme($theme));
-@include mat.legacy-form-field-theme(mat.define-light-theme($theme));
-@include mat.legacy-input-theme(mat.define-light-theme($theme));
-@include mat.legacy-list-theme(mat.define-light-theme($theme));
-@include mat.legacy-menu-theme(mat.define-light-theme($theme));
-@include mat.legacy-paginator-theme(mat.define-light-theme($theme));
-@include mat.legacy-progress-bar-theme(mat.define-light-theme($theme));
-@include mat.legacy-radio-theme(mat.define-light-theme($theme));
-@include mat.legacy-select-theme(mat.define-light-theme($theme));
-@include mat.legacy-slide-toggle-theme(mat.define-light-theme($theme));
-@include mat.legacy-slider-theme(mat.define-light-theme($theme));
-@include mat.legacy-table-theme(mat.define-light-theme($theme));
-@include mat.legacy-tabs-theme(mat.define-light-theme($theme));
-@include mat.legacy-tooltip-theme(mat.define-light-theme($theme));
+@include mat.legacy-button-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-card-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-checkbox-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-chips-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-dialog-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-form-field-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-input-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-list-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-menu-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-paginator-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-progress-bar-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-radio-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-select-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-slide-toggle-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-slider-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-table-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-tabs-theme(mat.define-light-theme($legacy-theme));
+@include mat.legacy-tooltip-theme(mat.define-light-theme($legacy-theme));
 
 @include mat.badge-theme(mat.define-light-theme($theme));
 @include mat.button-toggle-theme(mat.define-light-theme($theme));
