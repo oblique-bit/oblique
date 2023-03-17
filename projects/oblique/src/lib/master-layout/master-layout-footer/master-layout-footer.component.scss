@@ -5,23 +5,25 @@
 	position: relative;
 	display: flex;
 	flex-flow: column wrap;
-	color: variables.$ob-gray-darker;
+	color: variables.$ob-white;
 	font-size: variables.$ob-font-size-xs;
-	background-color: variables.$ob-gray-extra-light;
+	background-color: variables.$ob-secondary-600;
 	border-top: 1px solid variables.$ob-gray-light;
-	padding: variables.$ob-spacing-xs variables.$ob-spacing-default;
 
 	@include layout.ob-media-breakpoint-up(md) {
-		flex-direction: row;
+		flex-direction: column;
+	}
+
+	.ob-footer-logo-and-info {
+		display: flex;
+		justify-content: flex-start;
+		padding: 0.5rem 0;
+		align-items: center;
 	}
 
 	.ob-footer-item {
-		padding: variables.$ob-spacing-xs 0;
-		@include layout.ob-media-breakpoint-down(md) {
-			&:not(:last-child) {
-				border-bottom: 1px solid variables.$ob-gray-light;
-			}
-		}
+		padding-left: 1rem;
+		padding-right: 1rem;
 
 		p {
 			margin: 0;
@@ -43,6 +45,10 @@
 		}
 	}
 
+	.ob-footer-item-logo {
+		padding-top: 0.25rem;
+	}
+
 	@include layout.ob-media-breakpoint-up(md) {
 		.ob-footer-item-logo {
 			margin-right: variables.$ob-spacing-default;
@@ -52,6 +58,7 @@
 		&:not(.ob-logo-on-scroll) {
 			.ob-footer-item-logo {
 				margin-right: 0;
+				padding: 0;
 
 				img {
 					height: 0;
@@ -70,10 +77,35 @@
 		display: flex;
 		list-style: none;
 		margin: 0;
-		padding-left: 0;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		background-color: variables.$ob-secondary-700;
 
 		li + li {
 			padding-left: variables.$ob-spacing-sm;
+		}
+
+		a {
+			color: variables.$ob-white;
+			text-decoration: none;
+			margin-right: 1rem;
+			font-size: variables.$ob-font-size-sm;
+
+			&.ob-external-link .mat-icon {
+				width: 1.2em;
+				height: 0.65em;
+				margin-bottom: -1px;
+			}
+
+			&:not(.ob-show-external-link-icon) {
+				.mat-icon {
+					display: none;
+				}
+			}
+
+			&:hover {
+				color: variables.$ob-gray-300;
+			}
 		}
 	}
 }
