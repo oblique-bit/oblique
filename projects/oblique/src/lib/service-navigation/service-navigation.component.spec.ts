@@ -16,7 +16,8 @@ describe('ObServiceNavigationComponent', () => {
 	const mockService = {
 		setUpRootUrls: jest.fn(),
 		setReturnUrl: jest.fn(),
-		getLoginUrl$: jest.fn().mockReturnValue(of('loginUrl'))
+		getLoginUrl$: jest.fn().mockReturnValue(of('loginUrl')),
+		getLogoutUrl$: jest.fn().mockReturnValue(of('logoutUrl'))
 	};
 
 	beforeEach(() => {
@@ -114,22 +115,25 @@ describe('ObServiceNavigationComponent', () => {
 		});
 	});
 
-	describe('loginUrl$', () => {
+	describe.each([
+		{property: 'loginUrl$', method: 'getLoginUrl$', emit: 'loginUrl'},
+		{property: 'logoutUrl$', method: 'getLogoutUrl$', emit: 'logoutUrl'}
+	])('$method', ({property, method, emit}) => {
 		it('should be an observable', () => {
-			expect(component.loginUrl$ instanceof Observable).toBe(true);
+			expect(component[property] instanceof Observable).toBe(true);
 		});
 
-		it(`should call "ObServiceNavigationUrlsService.getLoginUrl$" once"`, () => {
-			expect(service.getLoginUrl$).toHaveBeenCalledTimes(1);
+		it(`should call "ObServiceNavigationUrlsService.${method}" once`, () => {
+			expect(service[method]).toHaveBeenCalledTimes(1);
 		});
 
-		it(`should call "ObServiceNavigationUrlsService.getLoginUrl$" without parameters"`, () => {
-			expect(service.getLoginUrl$).toHaveBeenCalledWith();
+		it(`should call "ObServiceNavigationUrlsService.${method}" without parameters`, () => {
+			expect(service[method]).toHaveBeenCalledWith();
 		});
 
-		it('should receive "loginUrl"', done => {
-			component.loginUrl$.subscribe(data => {
-				expect(data).toBe('loginUrl');
+		it(`should receive "${emit}"`, done => {
+			component[property].subscribe(data => {
+				expect(data).toBe(emit);
 				done();
 			});
 		});

@@ -38,6 +38,10 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 		expect(component.loginUrl).toBe('');
 	});
 
+	it('should have an empty "logoutUrl" property', () => {
+		expect(component.logoutUrl).toBe('');
+	});
+
 	describe('link', () => {
 		let link: TestElement;
 		beforeEach(async () => {

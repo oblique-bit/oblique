@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, ReplaySubject, switchMap} from 'rxjs';
-import {combineLatestWith, map, startWith} from 'rxjs/operators';
+import {combineLatestWith, map, shareReplay, startWith} from 'rxjs/operators';
 import {ObEPamsEnvironment} from './service-navigation.model';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 
@@ -9,7 +9,10 @@ import {ObServiceNavigationConfigApiService} from './api/service-navigation-conf
 export class ObServiceNavigationService {
 	private readonly rootUrl$ = new ReplaySubject<string>(1);
 	private readonly returnUrl$ = new ReplaySubject<string>(1);
-	private readonly config$ = this.rootUrl$.pipe(switchMap(rootUrl => this.configService.fetchUrls(rootUrl)));
+	private readonly config$ = this.rootUrl$.pipe(
+		switchMap(rootUrl => this.configService.fetchUrls(rootUrl)),
+		shareReplay(1)
+	);
 
 	constructor(private readonly configService: ObServiceNavigationConfigApiService, private readonly translateService: TranslateService) {}
 
@@ -34,6 +37,10 @@ export class ObServiceNavigationService {
 			this.combineWithLanguage<string>(),
 			map(([url, lang]) => url.replace('<yourLanguageID>', lang))
 		);
+	}
+
+	getLogoutUrl$(): Observable<string> {
+		return this.config$.pipe(map(config => config.logout.url));
 	}
 
 	private combineWithLanguage<T>(): (source$: Observable<T>) => Observable<[T, string]> {

@@ -13,7 +13,8 @@ describe('ObServiceNavigationService', () => {
 			url: 'http://login',
 			params: '?returnURL=<yourReturnlURL>&language=<yourLanguageID>',
 			method: ''
-		}
+		},
+		logout: {url: 'http://logout'}
 	};
 	const mockLangChange = new Subject<{lang: string}>();
 
@@ -68,14 +69,14 @@ describe('ObServiceNavigationService', () => {
 				}
 			});
 
-			describe('getLoginUrl$', () => {
+			describe.each(['getLoginUrl$', 'getLogoutUrl$'])('%s', method => {
 				it('should return an observable', () => {
 					expect(service.getLoginUrl$() instanceof Observable).toBe(true);
 				});
 
 				it('should not emit', fakeAsync(() => {
 					let hasEmitted = false;
-					service.getLoginUrl$().subscribe(() => {
+					service[method]().subscribe(() => {
 						hasEmitted = true;
 					});
 					tick(1000);
@@ -108,13 +109,13 @@ describe('ObServiceNavigationService', () => {
 						service.setReturnUrl('http://localhost');
 					});
 
-					describe('getLoginUrl$', () => {
+					describe.each(['getLoginUrl$', 'getLogoutUrl$'])('%s', method => {
 						beforeEach(done => {
-							service.getLoginUrl$().subscribe(() => done());
+							service[method]().subscribe(() => done());
 						});
 
 						it('should return an observable', () => {
-							expect(service.getLoginUrl$() instanceof Observable).toBe(true);
+							expect(service[method]() instanceof Observable).toBe(true);
 						});
 
 						describe('ObServiceNavigationConfigService.fetchUrls', () => {
@@ -137,6 +138,15 @@ describe('ObServiceNavigationService', () => {
 									done();
 								});
 								mockLangChange.next({lang: language});
+							});
+						});
+					});
+
+					describe('getLogoutUrl$', () => {
+						it('should emit "http://logout"', done => {
+							service.getLogoutUrl$().subscribe(url => {
+								expect(url).toBe('http://logout');
+								done();
 							});
 						});
 					});

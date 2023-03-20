@@ -9,4 +9,5 @@ import {Component, Input, ViewEncapsulation} from '@angular/core';
 })
 export class ObServiceNavigationAuthenticationComponent {
 	@Input() loginUrl = '';
+	@Input() logoutUrl = '';
 }

@@ -107,5 +107,7 @@
   "i18n.pagination.first-page": "Auf die erste Seite springen",
   "i18n.pagination.last-page": "Auf die letzte Seite springen",
   "i18n.oblique.service-navigation.authentication.login": "Anmelden",
-  "i18n.oblique.service-navigation.authentication.tooltip.login": "Klicken zum Anmelden"
+  "i18n.oblique.service-navigation.authentication.logout": "Abmelden",
+  "i18n.oblique.service-navigation.authentication.tooltip.login": "Klicken zum Anmelden",
+  "i18n.oblique.service-navigation.authentication.tooltip.logout": "Klicken zum Abmelden"
 }

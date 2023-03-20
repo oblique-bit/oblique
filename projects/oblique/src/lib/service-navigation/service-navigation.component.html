@@ -1,5 +1,8 @@
 <ul class="ob-service-navigation-list">
 	<li>
-		<ob-service-navigation-authentication [loginUrl]="loginUrl$ | async"></ob-service-navigation-authentication>
+		<ob-service-navigation-authentication
+			[loginUrl]="loginUrl$ | async"
+			[logoutUrl]="logoutUrl$ | async"
+		></ob-service-navigation-authentication>
 	</li>
 </ul>
