@@ -38,15 +38,6 @@
 			</ul>
 		</div>
 		<div *ngIf="!useServiceNavigation" class="ob-master-layout-header-controls">
-			<ng-content select="[obHeaderCustomControl]"></ng-content>
-			<ng-container *ngIf="templates.length">
-				<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.controls.title" | translate }}</h2>
-				<ul class="ob-header-controls">
-					<li class="ob-control-item" *ngFor="let template of templates" #headerControl>
-						<ng-container [ngTemplateOutlet]="template"></ng-container>
-					</li>
-				</ul>
-			</ng-container>
 			<h2 class="ob-screen-reader-only" id="ob-language-change">{{ "i18n.oblique.header.languages.title" | translate }}</h2>
 			<ng-content *ngIf="!languages.length" select="[obLocales]"></ng-content>
 			<ul *ngIf="languages.length > 1" aria-labelledby="ob-language-change" class="ob-header-controls ob-header-locale">
@@ -65,6 +56,15 @@
 					</button>
 				</li>
 			</ul>
+			<ng-container *ngIf="templates.length">
+				<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.controls.title" | translate }}</h2>
+				<ul class="ob-header-controls ob-non-custom-header-controls">
+					<li class="ob-control-item" *ngFor="let template of templates" #headerControl>
+						<ng-container [ngTemplateOutlet]="template"></ng-container>
+					</li>
+				</ul>
+			</ng-container>
+			<ng-content select="[obHeaderCustomControl]"></ng-content>
 		</div>
 		<ng-container *ngIf="useServiceNavigation">
 			<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.service-navigation.title" | translate }}</h2>

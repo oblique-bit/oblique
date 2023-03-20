@@ -1,6 +1,7 @@
 @use "sass:selector";
 @use "../../../styles/scss/core/variables";
 @use "../../../styles/scss/core/mixins/layout";
+@use "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout-header {
 	.ob-master-layout-header-toggle-container {
@@ -73,14 +74,56 @@
 		justify-content: space-between;
 		flex-wrap: wrap;
 
+		.ob-non-custom-header-controls {
+			order: 2;
+		}
+
+		.ob-header-locale {
+			order: 3;
+		}
+
 		@include layout.ob-media-breakpoint-down(md) {
 			padding-bottom: variables.$ob-spacing-sm;
 			transition: padding-bottom variables.$ob-duration-default;
+
+			@at-root .ob-master-layout.ob-header-expanded & {
+				border-bottom: 1px solid variables.$ob-red-800;
+			}
 
 			@at-root .ob-master-layout:not(.ob-header-expanded) & {
 				height: 0;
 				overflow: hidden; // hides controls in collapsed mode
 				padding-bottom: 0;
+			}
+			justify-content: stretch;
+
+			.ob-header-controls {
+				width: 100%;
+				place-content: flex-end;
+				padding-right: variables.$ob-spacing-sm;
+
+				&:not(:last-of-type) {
+					border-bottom: 1px solid variables.$ob-secondary-100;
+					padding-top: variables.$ob-spacing-sm;
+					padding-bottom: variables.$ob-spacing-sm;
+				}
+
+				&.ob-header-locale {
+					margin-right: 0;
+					order: unset;
+				}
+
+				&.ob-non-custom-header-controls {
+					order: unset;
+				}
+
+				&:first-of-type {
+					border-top: 1px solid variables.$ob-secondary-100;
+				}
+
+				&:last-of-type {
+					padding-top: variables.$ob-spacing-sm;
+				}
 			}
 		}
 	}
@@ -96,7 +139,15 @@
 
 		&:hover,
 		&.active {
-			background-color: variables.$ob-gray-lighter;
+			background-color: variables.$ob-secondary-100;
+		}
+
+		&:hover {
+			opacity: 0.5;
+		}
+
+		&:hover.active {
+			opacity: 1;
 		}
 	}
 
@@ -138,8 +189,51 @@
 	}
 
 	.ob-control-item {
+		&:not(.ob-widget) [class*="mdc-"] {
+			max-height: 1em;
+			max-width: 1em;
+		}
+
+		a,
+		button.mdc-icon-button {
+			margin-bottom: 12px;
+		}
+
+		.mat-icon {
+			color: variables.$ob-secondary-900;
+
+			svg {
+				fill: variables.$ob-secondary-900;
+			}
+
+			&:hover {
+				color: variables.$ob-secondary-400;
+
+				svg {
+					fill: variables.$ob-secondary-400;
+				}
+			}
+		}
+
+		&:hover {
+			color: variables.$ob-secondary-400;
+
+			.mat-icon {
+				color: variables.$ob-secondary-400;
+
+				svg {
+					fill: variables.$ob-secondary-400;
+				}
+			}
+		}
+
 		@include layout.ob-media-breakpoint-up(md) {
 			justify-content: flex-end;
+		}
+
+		&:not(:has(> :nth-child(1))):hover,
+		> *:hover {
+			cursor: pointer;
 		}
 
 		&.ob-widget .ob-button.mat-button-base.mat-primary {
@@ -151,13 +245,13 @@
 			padding: 0;
 			border: none;
 			background-color: transparent;
-			color: variables.$ob-gray-dark;
+			color: variables.$ob-secondary-900;
 			transition: color variables.$ob-duration-fast ease-in-out;
 
 			&:hover,
 			&:active,
 			&:focus {
-				color: variables.$ob-default;
+				color: variables.$ob-secondary-400;
 				cursor: pointer;
 			}
 		}
@@ -167,5 +261,39 @@
 		margin: 0;
 		vertical-align: middle;
 		font-size: variables.$ob-font-size-xl;
+	}
+
+	li {
+		&.ob-control-item:focus-within {
+			z-index: 1;
+		}
+
+		&.ob-control-item {
+			&:has(a:focus-visible, button:focus-visible) {
+				a,
+				button {
+					&:focus-visible {
+						mat-icon {
+							@include shadow.ob-tab-focus-box-shadow();
+						}
+					}
+				}
+			}
+
+			&:has(mat-icon) {
+				a,
+				button {
+					box-shadow: none;
+				}
+			}
+		}
+
+		@include layout.ob-media-breakpoint-up(md) {
+			&.ob-expanded {
+				a:focus-visible {
+					z-index: 2;
+				}
+			}
+		}
 	}
 }
