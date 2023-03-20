@@ -1,4 +1,5 @@
 @use "../variables";
+@use "./layout";
 
 @mixin ob-nav-hover($offset: 0) {
 	position: relative;
@@ -16,13 +17,20 @@
 			top: #{$offset}px;
 			bottom: #{$offset}px;
 			left: 0;
-			border-left: variables.$ob-line-width solid variables.$ob-accent;
 		}
 	}
 
 	&.active {
 		font-weight: 600;
-		background-color: variables.$ob-gray-light;
+		background-color: variables.$ob-gray-100;
+
+		@include layout.ob-media-breakpoint-up(md) {
+			color: variables.$ob-red-500;
+		}
+
+		span:not(.ob-icon-wrapper) {
+			color: variables.$ob-red-500;
+		}
 	}
 }
 
