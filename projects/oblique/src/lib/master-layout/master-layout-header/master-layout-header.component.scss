@@ -19,7 +19,6 @@
 		position: relative;
 		width: 100%;
 		background-color: inherit;
-		border-bottom: variables.$ob-line-width solid variables.$ob-accent;
 
 		@include layout.ob-media-breakpoint-up(md) {
 			display: flex;
