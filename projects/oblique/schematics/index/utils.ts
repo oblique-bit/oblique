@@ -152,6 +152,16 @@ export function setAngularProjectsConfig(tree: Tree, path: string[], config: any
 	return tree;
 }
 
+export function setOrCreateAngularProjectsConfig(tree: Tree, path: string[], config: any): Tree {
+	getAngularProjectsWithConfigs(tree, path).forEach(project => {
+		setAngularConfig(tree, path, {
+			project: project.project,
+			config: config instanceof Function ? config(project.config) : config
+		});
+	});
+	return tree;
+}
+
 export function addAngularConfigInList(tree: Tree, path: string[], value: any): Tree {
 	getAngularConfigs(tree, path).forEach(project =>
 		setAngularConfig(tree, path, {
