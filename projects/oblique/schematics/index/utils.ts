@@ -96,19 +96,21 @@ export function getJson(tree: any, path: string): any {
 }
 
 export function getAngularConfigs(tree: Tree, path: string[]): {project: string; config: any}[] {
+	return getAngularProjectsWithConfigs(tree, path).filter(project => project.config);
+}
+
+export function getAngularProjectsWithConfigs(tree: Tree, path: string[]): {project: string; config: any}[] {
 	const json = getJson(tree, angularJsonConfigPath);
-	return Object.keys(getJsonProperty(json, 'projects'))
-		.reduce(
-			(config, project) => [
-				...config,
-				{
-					project,
-					config: getJsonProperty(json, ['projects', project, ...path].join(';'))
-				}
-			],
-			[]
-		)
-		.filter(project => project.config);
+	return Object.keys(getJsonProperty(json, 'projects')).reduce(
+		(config, project) => [
+			...config,
+			{
+				project,
+				config: getJsonProperty(json, ['projects', project, ...path].join(';'))
+			}
+		],
+		[]
+	);
 }
 
 export function checkIfAngularConfigExists(tree: Tree, path: string[], config: string): boolean {
