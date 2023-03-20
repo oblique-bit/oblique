@@ -15,6 +15,7 @@ describe('ObServiceNavigationComponent', () => {
 	let harness: ObServiceNavigationHarness;
 	const mockService = {
 		setUpRootUrls: jest.fn(),
+		setReturnUrl: jest.fn(),
 		getLoginUrl$: jest.fn().mockReturnValue(of('loginUrl'))
 	};
 
@@ -88,6 +89,27 @@ describe('ObServiceNavigationComponent', () => {
 
 			it('should call "setUpRootUrls" with "http://root-url"', () => {
 				expect(service.setUpRootUrls).toHaveBeenCalledWith(ObEPamsEnvironment.TEST, undefined);
+			});
+		});
+	});
+
+	describe('returnUrl', () => {
+		it('should be initialized to undefined', () => {
+			expect(component.returnUrl).toBeUndefined();
+		});
+
+		describe('with "http://localhost/"', () => {
+			beforeEach(() => {
+				component.returnUrl = 'http://localhost/';
+				component.ngOnChanges();
+			});
+
+			it('should call "setReturnUrl" once', () => {
+				expect(service.setReturnUrl).toHaveBeenCalledTimes(1);
+			});
+
+			it('should call "setReturnUrl" with "http://localhost"', () => {
+				expect(service.setReturnUrl).toHaveBeenCalledWith('http://localhost/');
 			});
 		});
 	});

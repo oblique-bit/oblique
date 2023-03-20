@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, ViewEncapsulation} from '@angular/core';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObEPamsEnvironment} from './service-navigation.model';
 
@@ -10,14 +10,19 @@ import {ObEPamsEnvironment} from './service-navigation.model';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation'}
 })
-export class ObServiceNavigationComponent implements OnInit {
+export class ObServiceNavigationComponent implements OnInit, OnChanges {
 	@Input() environment: ObEPamsEnvironment;
 	@Input() rootUrl: string;
+	@Input() returnUrl: string;
 	readonly loginUrl$ = this.headerControlsService.getLoginUrl$();
 
 	constructor(private readonly headerControlsService: ObServiceNavigationService) {}
 
 	ngOnInit(): void {
 		this.headerControlsService.setUpRootUrls(this.environment, this.rootUrl);
+	}
+
+	ngOnChanges(): void {
+		this.headerControlsService.setReturnUrl(this.returnUrl);
 	}
 }

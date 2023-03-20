@@ -29,6 +29,13 @@
           "since": "10.1.0",
           "isOptional": true,
           "text": "The root URL for backend calls. If provided, it takes precedence over the one computed from the environment."
+        },
+        {
+          "name": "returnUrl",
+          "type": "string",
+          "default": "undefined",
+          "since": "10.1.0",
+          "text": "URL to which users will be redirected after successful authentication."
         }
       ]
     }

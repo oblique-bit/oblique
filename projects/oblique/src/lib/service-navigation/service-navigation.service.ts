@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Observable, ReplaySubject, switchMap} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {combineLatestWith, map} from 'rxjs/operators';
 import {ObEPamsEnvironment} from './service-navigation.model';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 
 @Injectable()
 export class ObServiceNavigationService {
 	private readonly rootUrl$ = new ReplaySubject<string>(1);
+	private readonly returnUrl$ = new ReplaySubject<string>(1);
 	private readonly config$ = this.rootUrl$.pipe(switchMap(rootUrl => this.configService.fetchUrls(rootUrl)));
 
 	constructor(private readonly configService: ObServiceNavigationConfigApiService) {}
@@ -19,10 +20,16 @@ export class ObServiceNavigationService {
 		}
 	}
 
+	setReturnUrl(returnUrl: string): void {
+		this.returnUrl$.next(returnUrl);
+	}
+
 	getLoginUrl$(): Observable<string> {
 		return this.config$.pipe(
 			map(config => config.login),
-			map(loginData => loginData.url + loginData.params)
+			map(loginData => loginData.url + loginData.params),
+			combineLatestWith(this.returnUrl$),
+			map(([loginUrl, returnUrl]) => loginUrl.replace('<yourReturnlURL>', returnUrl))
 		);
 	}
 }

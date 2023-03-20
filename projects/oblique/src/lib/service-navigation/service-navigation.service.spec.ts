@@ -38,15 +38,24 @@ describe('ObServiceNavigationService', () => {
 		expect(service).toBeTruthy();
 	});
 
-	describe('setUpRootUrls', () => {
+	describe('setUpRootUrls and setReturnUrl', () => {
 		describe.each([
-			{desc: 'not called', call: false},
-			{desc: 'called with "null" as "environment', call: true, environment: null},
-			{desc: 'called with "undefined" as "environment', call: true, environment: undefined}
-		])('$desc', ({call, environment}) => {
+			{desc: 'both not called', callSetupRootUrl: false, callSetReturnUrl: false},
+			{desc: 'only "setReturnUrl" called with "http://localhost"', callSetupRootUrl: false, callSetReturnUrl: true},
+			{desc: 'only "setUpRootUrls" called with "null" as "environment', callSetupRootUrl: true, environment: null, callSetReturnUrl: false},
+			{
+				desc: 'only "setUpRootUrls" called with "undefined" as "environment',
+				callSetupRootUrl: true,
+				environment: undefined,
+				callSetReturnUrl: false
+			}
+		])('$desc', ({callSetupRootUrl, environment, callSetReturnUrl}) => {
 			beforeEach(() => {
-				if (call) {
+				if (callSetupRootUrl) {
 					service.setUpRootUrls(environment);
+				}
+				if (callSetReturnUrl) {
+					service.setReturnUrl('http://localhost');
 				}
 			});
 
@@ -78,43 +87,47 @@ describe('ObServiceNavigationService', () => {
 			{environment: ObEPamsEnvironment.TEST, pamsRootUrl: 'https://pams-api.eportal-t.admin.ch/'},
 			{environment: ObEPamsEnvironment.ABN, pamsRootUrl: 'https://pams-api.eportal-a.admin.ch/'},
 			{environment: ObEPamsEnvironment.PROD, pamsRootUrl: 'https://pams-api.eportal.admin.ch/'}
-		])('called with "$environment" as "environment"', ({environment, pamsRootUrl}) => {
-			describe.each([
-				{desc: 'and no "rootUrl"', calledPamsUrl: pamsRootUrl},
-				{desc: 'and "http://root-url" as "rootUrl"', rootUrl: 'http://root-url/', calledPamsUrl: 'http://root-url/'}
-			])('$desc', ({rootUrl, calledPamsUrl}) => {
-				let result;
-				beforeEach(() => {
-					service.setUpRootUrls(environment, rootUrl);
+		])(
+			'"setReturnUrl" called with "http://localhost" and "setUpRootUrls" called with "$environment" as "environment"',
+			({environment, pamsRootUrl}) => {
+				describe.each([
+					{desc: 'and no "rootUrl"', calledPamsUrl: pamsRootUrl},
+					{desc: 'and "http://root-url" as "rootUrl"', rootUrl: 'http://root-url/', calledPamsUrl: 'http://root-url/'}
+				])('$desc', ({rootUrl, calledPamsUrl}) => {
+					let result;
+					beforeEach(() => {
+						service.setUpRootUrls(environment, rootUrl);
+						service.setReturnUrl('http://localhost');
+					});
+
+					describe('getLoginUrl$', () => {
+						beforeEach(done => {
+							service.getLoginUrl$().subscribe(data => {
+								result = data;
+								done();
+							});
+						});
+
+						it('should return an observable', () => {
+							expect(service.getLoginUrl$() instanceof Observable).toBe(true);
+						});
+
+						it('should emit "http://login?returnURL=http://localhost&language=<yourLanguageID>"', () => {
+							expect(result).toBe('http://login?returnURL=http://localhost&language=<yourLanguageID>');
+						});
+
+						describe('ObServiceNavigationConfigService.fetchUrls', () => {
+							it('should have been called once', () => {
+								expect(configService.fetchUrls).toHaveBeenCalledTimes(1);
+							});
+
+							it(`should have been called with "${calledPamsUrl}"`, () => {
+								expect(configService.fetchUrls).toHaveBeenCalledWith(calledPamsUrl);
+							});
+						});
+					});
 				});
-
-				describe('getLoginUrl$', () => {
-					beforeEach(done => {
-						service.getLoginUrl$().subscribe(data => {
-							result = data;
-							done();
-						});
-					});
-
-					it('should return an observable', () => {
-						expect(service.getLoginUrl$() instanceof Observable).toBe(true);
-					});
-
-					it('should emit "http://login?returnURL=<yourReturnlURL>&language=<yourLanguageID>"', () => {
-						expect(result).toBe('http://login?returnURL=<yourReturnlURL>&language=<yourLanguageID>');
-					});
-
-					describe('ObServiceNavigationConfigService.fetchUrls', () => {
-						it('should have been called once', () => {
-							expect(configService.fetchUrls).toHaveBeenCalledTimes(1);
-						});
-
-						it(`should have been called with "${calledPamsUrl}"`, () => {
-							expect(configService.fetchUrls).toHaveBeenCalledWith(calledPamsUrl);
-						});
-					});
-				});
-			});
-		});
+			}
+		);
 	});
 });
