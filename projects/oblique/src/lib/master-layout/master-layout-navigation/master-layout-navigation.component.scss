@@ -5,9 +5,15 @@
 @use "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout-navigation {
+	border-top: 1px solid variables.$ob-gray-200;
+
+	&:not(:has(.ob-has-opened-menu)) {
+		border-bottom: 1px solid variables.$ob-gray-200;
+	}
 	flex-grow: 1;
 
 	@include layout.ob-media-breakpoint-down(md) {
+		border-top: none;
 		display: none;
 
 		.ob-header-expanded & {
@@ -32,15 +38,13 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
-		background-color: variables.$ob-gray-extra-light;
+		background-color: variables.$ob-white;
 
 		@include layout.ob-media-breakpoint-up(md) {
 			.ob-master-layout:not(.ob-fixed-layout, .ob-continuous-layout) &:not(.ob-has-opened-menu) {
 				overflow: hidden; // prevents horizontal scrollbar with sticky footer and non sticky header
 			}
 		}
-
-		@include shadow.ob-inner-bottom-shadow();
 
 		&:not(.ob-sub-nav) {
 			@include layout.ob-media-breakpoint-up(md) {
@@ -52,6 +56,18 @@
 			@include button.ob-link-btn();
 		}
 
+		.ob-sub-menu li {
+			a {
+				&:hover:not(.active) {
+					background-color: variables.$ob-secondary-50;
+				}
+
+				&.active {
+					border-left: variables.$ob-line-width solid variables.$ob-accent;
+				}
+			}
+		}
+
 		a,
 		button {
 			display: flex;
@@ -61,7 +77,6 @@
 			padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
 			border-bottom: 1px solid variables.$ob-gray-light;
 			color: variables.$ob-default;
-			background-color: variables.$ob-white;
 			text-decoration: none;
 			cursor: pointer;
 			@include nav.ob-nav-hover(-1);
@@ -84,28 +99,37 @@
 		// First level only:
 		> .ob-main-nav-item {
 			@include layout.ob-media-breakpoint-up(md) {
+				&:has(button.active) {
+					background-color: variables.$ob-white;
+				}
+
 				> a,
 				> button {
-					border-right: 1px solid variables.$ob-gray-light;
-					border-bottom: 0 none;
+					border-bottom: 3px solid transparent;
 					display: inline-flex;
 					padding: variables.$ob-spacing-default;
 					white-space: nowrap;
 					font-size: variables.$ob-font-size-normal;
-					background-color: transparent;
 
 					&.active {
 						background-color: variables.$ob-white;
 					}
 
-					&:active,
+					&.active,
 					&:hover {
-						background-color: variables.$ob-gray-light;
+						border-bottom: 3px solid variables.$ob-red-500;
 					}
 
 					&::after {
 						display: none; // do not show red border on main nav 1st level
 					}
+				}
+			}
+
+			> a,
+			> button {
+				&:hover {
+					color: variables.$ob-red-500;
 				}
 			}
 		}
@@ -185,12 +209,6 @@
 			}
 		}
 
-		.ob-sub-nav {
-			@include layout.ob-media-breakpoint-up(md) {
-				background-color: variables.$ob-white;
-			}
-		}
-
 		& .ob-expanded > .ob-sub-menu {
 			visibility: visible;
 
@@ -216,6 +234,72 @@
 				overflow: hidden; // works together with text-overflow
 				text-overflow: ellipsis;
 				white-space: nowrap;
+			}
+		}
+
+		& > li.ob-main-nav-item {
+			& > a,
+			& > button {
+				&.ob-master-layout-navigation-link.cdk-keyboard-focused,
+				&.ob-sub-menu-back:focus-visible {
+					outline: none;
+					box-shadow: none;
+					@include layout.ob-media-breakpoint-up(md) {
+						padding: calc(variables.$ob-spacing-default - shadow.$tab-focus-width);
+					}
+					@include layout.ob-media-breakpoint-down(md) {
+						padding: calc(variables.$ob-spacing-sm - shadow.$tab-focus-width)
+							calc(variables.$ob-spacing-default - shadow.$tab-focus-width);
+					}
+				}
+			}
+
+			&.ob-expanded {
+				& > a.ob-master-layout-navigation-link.cdk-keyboard-focused,
+				& > button.ob-master-layout-navigation-link.cdk-keyboard-focused,
+				& > a.ob-sub-menu-back:focus-visible,
+				& > button.ob-sub-menu-back:focus-visible {
+					& ~ .ob-sub-menu {
+						@include layout.ob-media-breakpoint-up(md) {
+							margin-left: calc(-1 * shadow.$tab-focus-width);
+						}
+					}
+				}
+			}
+		}
+
+		@mixin nav-li-tab-focus-border() {
+			& > li {
+				&:has(
+						> a.ob-master-layout-navigation-link.cdk-keyboard-focused,
+						> button.ob-master-layout-navigation-link.cdk-keyboard-focused,
+						> a.ob-sub-menu-back:focus-visible,
+						> button.ob-sub-menu-back:focus-visible
+					) {
+					@include shadow.ob-tab-focus-border();
+				}
+			}
+		}
+
+		@include nav-li-tab-focus-border();
+
+		.ob-sub-nav {
+			@include nav-li-tab-focus-border();
+			@include layout.ob-media-breakpoint-up(md) {
+				background-color: variables.$ob-white;
+			}
+
+			& > li {
+				& > a,
+				& > button {
+					&.ob-master-layout-navigation-link.cdk-keyboard-focused,
+					&.ob-sub-menu-back:focus-visible {
+						padding: calc(variables.$ob-spacing-sm - shadow.$tab-focus-width)
+							calc(variables.$ob-spacing-default - shadow.$tab-focus-width);
+						outline: none;
+						box-shadow: none;
+					}
+				}
 			}
 		}
 	}
