@@ -1,5 +1,6 @@
 import {TestBed, fakeAsync, tick} from '@angular/core/testing';
-import {Observable, of} from 'rxjs';
+import {TranslateService} from '@ngx-translate/core';
+import {Observable, Subject, of} from 'rxjs';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObEPamsEnvironment} from './service-navigation.model';
 import {ObServiceNavigationService} from './service-navigation.service';
@@ -14,6 +15,7 @@ describe('ObServiceNavigationService', () => {
 			method: ''
 		}
 	};
+	const mockLangChange = new Subject<{lang: string}>();
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -22,6 +24,13 @@ describe('ObServiceNavigationService', () => {
 				{
 					provide: ObServiceNavigationConfigApiService,
 					useValue: {fetchUrls: jest.fn().mockReturnValue(of(mockUrls))}
+				},
+				{
+					provide: TranslateService,
+					useValue: {
+						onLangChange: mockLangChange.asObservable(),
+						currentLang: 'en'
+					}
 				}
 			]
 		});
@@ -94,7 +103,6 @@ describe('ObServiceNavigationService', () => {
 					{desc: 'and no "rootUrl"', calledPamsUrl: pamsRootUrl},
 					{desc: 'and "http://root-url" as "rootUrl"', rootUrl: 'http://root-url/', calledPamsUrl: 'http://root-url/'}
 				])('$desc', ({rootUrl, calledPamsUrl}) => {
-					let result;
 					beforeEach(() => {
 						service.setUpRootUrls(environment, rootUrl);
 						service.setReturnUrl('http://localhost');
@@ -102,18 +110,11 @@ describe('ObServiceNavigationService', () => {
 
 					describe('getLoginUrl$', () => {
 						beforeEach(done => {
-							service.getLoginUrl$().subscribe(data => {
-								result = data;
-								done();
-							});
+							service.getLoginUrl$().subscribe(() => done());
 						});
 
 						it('should return an observable', () => {
 							expect(service.getLoginUrl$() instanceof Observable).toBe(true);
-						});
-
-						it('should emit "http://login?returnURL=http://localhost&language=<yourLanguageID>"', () => {
-							expect(result).toBe('http://login?returnURL=http://localhost&language=<yourLanguageID>');
 						});
 
 						describe('ObServiceNavigationConfigService.fetchUrls', () => {
@@ -123,6 +124,19 @@ describe('ObServiceNavigationService', () => {
 
 							it(`should have been called with "${calledPamsUrl}"`, () => {
 								expect(configService.fetchUrls).toHaveBeenCalledWith(calledPamsUrl);
+							});
+						});
+					});
+
+					describe('getLoginUrl$', () => {
+						describe.each(['de', 'fr', 'it', 'en', 'es'])('with "%s" as language', language => {
+							it(`should emit "http://login?returnURL=http://localhost&language=${language}"`, done => {
+								const subscription = service.getLoginUrl$().subscribe(url => {
+									expect(url).toBe(`http://login?returnURL=http://localhost&language=${language}`);
+									subscription.unsubscribe();
+									done();
+								});
+								mockLangChange.next({lang: language});
 							});
 						});
 					});
