@@ -115,15 +115,16 @@
 
 .ob-button-card {
 	&,
-	&.mat-button {
+	&.mat-mdc-button {
 		padding: 0;
 		text-align: unset;
 		white-space: unset;
 		border: 0 none;
 		background-color: unset;
 		box-shadow: none;
+		align-items: unset;
 
-		&:not(.mat-button-disabled) {
+		&:not(.mat-mdc-button-disabled) {
 			@include tab-outline.ob-tab-outline-thick(".mat-card");
 		}
 	}

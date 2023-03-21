@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
+import {MatButtonModule} from '@angular/material/button';
 import {ObButtonDirective} from './button.directive';
 
 @Component({
@@ -31,14 +31,6 @@ describe('ButtonDirective', () => {
 			declarations: [ButtonDirectiveTestComponent, ObButtonDirective],
 			imports: [MatButtonModule]
 		}).compileComponents();
-	});
-
-	describe('without button', () => {
-		it('should throw an error', () => {
-			expect(() => new ObButtonDirective(undefined, undefined, undefined)).toThrowError(
-				'Couldn\'t find a reference to "MatButton", make sure that "MatLegacyButtonModule" is imported instead of "MatButtonModule".'
-			);
-		});
 	});
 
 	describe('primary button', () => {
@@ -73,14 +65,19 @@ describe('ButtonDirective', () => {
 			expect(selectableElement).toBeTruthy();
 		});
 
-		it('should have `.mat-flat-button` class', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-flat-button'));
+		it('should have `.mat-mdc-flat-button` class', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-flat-button'));
 			expect(selectableElement).toBeTruthy();
 		});
 
-		it('should not have class `.mat-stroked-button`', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-stroked-button'));
+		it('should not have class `.mat-mdc-stroked-button`', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-stroked-button'));
 			expect(selectableElement).toBeNull();
+		});
+
+		it('should have `.ob-button-primary` class', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.ob-button-primary'));
+			expect(selectableElement).toBeTruthy();
 		});
 	});
 
@@ -116,13 +113,18 @@ describe('ButtonDirective', () => {
 			expect(selectableElement).toBeTruthy();
 		});
 
-		it('should not have class `.mat-flat-button`', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-flat-button'));
+		it('should not have class `.mat-mdc-flat-button`', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-flat-button'));
 			expect(selectableElement).toBeNull();
 		});
 
-		it('should have class `.mat-stroked-button`', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-stroked-button'));
+		it('should have class `.mat-mdc-stroked-button`', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-stroked-button'));
+			expect(selectableElement).toBeTruthy();
+		});
+
+		it('should have `.ob-button-secondary` class', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.ob-button-secondary'));
 			expect(selectableElement).toBeTruthy();
 		});
 	});
@@ -159,14 +161,19 @@ describe('ButtonDirective', () => {
 			expect(selectableElement).toBeTruthy();
 		});
 
-		it('should not have class `.mat-flat-button`', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-flat-button'));
+		it('should not have class `.mat-mdc-flat-button`', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-flat-button'));
 			expect(selectableElement).toBeNull();
 		});
 
-		it('should not have class `.mat-stroked-button`', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-stroked-button'));
+		it('should not have class `.mat-mdc-stroked-button`', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-stroked-button'));
 			expect(selectableElement).toBeNull();
+		});
+
+		it('should have `.ob-button-tertiary` class', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.ob-button-tertiary'));
+			expect(selectableElement).toBeTruthy();
 		});
 	});
 
@@ -202,13 +209,18 @@ describe('ButtonDirective', () => {
 			expect(selectableElement).toBeTruthy();
 		});
 
-		it('should have `.mat-flat-button` class', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-flat-button'));
+		it('should have `.mat-mdc-flat-button` class', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-flat-button'));
 			expect(selectableElement).toBeTruthy();
 		});
 
-		it('should not have class `.mat-stroked-button`', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-stroked-button'));
+		it('should have `.ob-button-primary` class', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.ob-button-primary'));
+			expect(selectableElement).toBeTruthy();
+		});
+
+		it('should not have class `.mat-mdc-stroked-button`', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-stroked-button'));
 			expect(selectableElement).toBeNull();
 		});
 	});
@@ -245,13 +257,13 @@ describe('ButtonDirective', () => {
 			expect(selectableElement).toBeTruthy();
 		});
 
-		it('should not have class `.mat-flat-button`', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-flat-button'));
+		it('should not have class `.mat-mdc-flat-button`', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-flat-button'));
 			expect(selectableElement).toBeNull();
 		});
 
-		it('should not have class `.mat-stroked-button`', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-stroked-button'));
+		it('should not have class `.mat-mdc-stroked-button`', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-stroked-button'));
 			expect(selectableElement).toBeNull();
 		});
 	});
@@ -303,14 +315,19 @@ describe('ButtonDirective', () => {
 			expect(selectableElement).toBeTruthy();
 		});
 
-		it('should have `.mat-raised-button` class', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-raised-button'));
+		it('should have `.mat-mdc-raised-button` class', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-raised-button'));
 			expect(selectableElement).toBeTruthy();
 		});
 
-		it('should not have `.mat-stroked-button` class', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-stroked-button'));
+		it('should not have `.mat-mdc-stroked-button` class', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-stroked-button'));
 			expect(selectableElement).toBeNull();
+		});
+
+		it('should have `.ob-button-primary` class', () => {
+			const selectableElement = fixture.debugElement.query(By.css('.ob-button-primary'));
+			expect(selectableElement).toBeTruthy();
 		});
 	});
 
@@ -462,88 +479,103 @@ describe('ButtonDirective', () => {
 			expect(name).toBe('button');
 		});
 
-		// BEFORE CHANGE TEST
-		it('should create an instance', () => {
-			expect(component).toBeTruthy();
-			expect(directive).toBeTruthy();
+		describe('before change', () => {
+			it('should create an instance', () => {
+				expect(component).toBeTruthy();
+				expect(directive).toBeTruthy();
+			});
+
+			it(`should be ${parameter.expectedButtonBeforeChange} obButton`, () => {
+				expect(directive.obButton).toBe(parameter.expectedButtonBeforeChange);
+			});
+
+			it(`should ${parameter.expectedButtonClassBeforeChange.primary ? 'have ' : 'not have '} \`.mat-primary\` class`, () => {
+				const selectableElement = fixture.debugElement.query(By.css('.mat-primary'));
+				if (parameter.expectedButtonClassBeforeChange.primary) {
+					expect(selectableElement).toBeTruthy();
+				} else {
+					expect(selectableElement).toBeNull();
+				}
+			});
+
+			it(`should ${parameter.obButtonBeforeChange ? 'have ' : 'not have '} \`.ob-button-${parameter.obButtonBeforeChange}\` class`, () => {
+				const selectableElement = fixture.debugElement.query(By.css(`.ob-button-${parameter.obButtonBeforeChange}`));
+				if (parameter.obButtonBeforeChange) {
+					expect(selectableElement).toBeTruthy();
+				} else {
+					expect(selectableElement).toBeNull();
+				}
+			});
+
+			it(`should ${parameter.expectedButtonClassBeforeChange.flat ? 'have ' : 'not have '}\`.mat-mdc-flat-button\` class`, () => {
+				const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-flat-button'));
+				if (parameter.expectedButtonClassBeforeChange.flat) {
+					expect(selectableElement).toBeTruthy();
+				} else {
+					expect(selectableElement).toBeNull();
+				}
+			});
+
+			it(`should ${parameter.expectedButtonClassBeforeChange.stroked ? 'have ' : 'not have '}\`.mat-mdc-stroked-button\` class`, () => {
+				const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-stroked-button'));
+				if (parameter.expectedButtonClassBeforeChange.stroked) {
+					expect(selectableElement).toBeTruthy();
+				} else {
+					expect(selectableElement).toBeNull();
+				}
+			});
 		});
 
-		it(`should be ${parameter.expectedButtonBeforeChange} obButton`, () => {
-			expect(directive.obButton).toBe(parameter.expectedButtonBeforeChange);
-		});
+		describe('after change', () => {
+			beforeEach(() => {
+				component.obButton = parameter.obButtonAfterChange;
+				fixture.detectChanges();
+			});
 
-		it(`should ${parameter.expectedButtonClassBeforeChange.primary ? 'have ' : 'not have '} \`.mat-primary\` class`, () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-primary'));
-			if (parameter.expectedButtonClassBeforeChange.primary) {
-				expect(selectableElement).toBeTruthy();
-			} else {
-				expect(selectableElement).toBeNull();
-			}
-		});
+			it('should create an instance', () => {
+				expect(component).toBeTruthy();
+				expect(directive).toBeTruthy();
+			});
 
-		it(`should ${parameter.expectedButtonClassBeforeChange.flat ? 'have ' : 'not have '}\`.mat-flat-button\` class`, () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-flat-button'));
-			if (parameter.expectedButtonClassBeforeChange.flat) {
-				expect(selectableElement).toBeTruthy();
-			} else {
-				expect(selectableElement).toBeNull();
-			}
-		});
+			it(`should be ${parameter.expectedButtonAfterChange} obButton`, () => {
+				expect(directive.obButton).toBe(parameter.expectedButtonAfterChange);
+			});
 
-		it(`should ${parameter.expectedButtonClassBeforeChange.stroked ? 'have ' : 'not have '}\`.mat-stroked-button\` class`, () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-stroked-button'));
-			if (parameter.expectedButtonClassBeforeChange.stroked) {
-				expect(selectableElement).toBeTruthy();
-			} else {
-				expect(selectableElement).toBeNull();
-			}
-		});
+			it(`should ${parameter.expectedButtonClassAfterChange.primary ? 'have ' : 'not have '} \`.mat-primary\` class`, () => {
+				const selectableElement = fixture.debugElement.query(By.css('.mat-primary'));
+				if (parameter.expectedButtonClassAfterChange.primary) {
+					expect(selectableElement).toBeTruthy();
+				} else {
+					expect(selectableElement).toBeNull();
+				}
+			});
 
-		// AFTER CHANGE TEST
-		it('should create an instance', () => {
-			component.obButton = parameter.obButtonAfterChange;
-			fixture.detectChanges();
-			expect(component).toBeTruthy();
-			expect(directive).toBeTruthy();
-		});
+			it(`should ${parameter.obButtonAfterChange ? 'have ' : 'not have '} \`.ob-button-${parameter.obButtonAfterChange}\` class`, () => {
+				const selectableElement = fixture.debugElement.query(By.css(`.ob-button-${parameter.obButtonAfterChange}`));
+				if (parameter.obButtonAfterChange) {
+					expect(selectableElement).toBeTruthy();
+				} else {
+					expect(selectableElement).toBeNull();
+				}
+			});
 
-		it(`should be ${parameter.expectedButtonAfterChange} obButton`, () => {
-			component.obButton = parameter.obButtonAfterChange;
-			fixture.detectChanges();
-			expect(directive.obButton).toBe(parameter.expectedButtonAfterChange);
-		});
+			it(`should ${parameter.expectedButtonClassAfterChange.flat ? 'have ' : 'not have '}\`.mat-mdc-flat-button\` class`, () => {
+				const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-flat-button'));
+				if (parameter.expectedButtonClassAfterChange.flat) {
+					expect(selectableElement).toBeTruthy();
+				} else {
+					expect(selectableElement).toBeNull();
+				}
+			});
 
-		it(`should ${parameter.expectedButtonClassAfterChange.primary ? 'have ' : 'not have '} \`.mat-primary\` class`, () => {
-			component.obButton = parameter.obButtonAfterChange;
-			fixture.detectChanges();
-			const selectableElement = fixture.debugElement.query(By.css('.mat-primary'));
-			if (parameter.expectedButtonClassAfterChange.primary) {
-				expect(selectableElement).toBeTruthy();
-			} else {
-				expect(selectableElement).toBeNull();
-			}
-		});
-
-		it(`should ${parameter.expectedButtonClassAfterChange.flat ? 'have ' : 'not have '}\`.mat-flat-button\` class`, () => {
-			component.obButton = parameter.obButtonAfterChange;
-			fixture.detectChanges();
-			const selectableElement = fixture.debugElement.query(By.css('.mat-flat-button'));
-			if (parameter.expectedButtonClassAfterChange.flat) {
-				expect(selectableElement).toBeTruthy();
-			} else {
-				expect(selectableElement).toBeNull();
-			}
-		});
-
-		it(`should ${parameter.expectedButtonClassAfterChange.stroked ? 'have ' : 'not have '}\`.mat-stroked-button\` class`, () => {
-			component.obButton = parameter.obButtonAfterChange;
-			fixture.detectChanges();
-			const selectableElement = fixture.debugElement.query(By.css('.mat-stroked-button'));
-			if (parameter.expectedButtonClassAfterChange.stroked) {
-				expect(selectableElement).toBeTruthy();
-			} else {
-				expect(selectableElement).toBeNull();
-			}
+			it(`should ${parameter.expectedButtonClassAfterChange.stroked ? 'have ' : 'not have '}\`.mat-mdc-stroked-button\` class`, () => {
+				const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-stroked-button'));
+				if (parameter.expectedButtonClassAfterChange.stroked) {
+					expect(selectableElement).toBeTruthy();
+				} else {
+					expect(selectableElement).toBeNull();
+				}
+			});
 		});
 	});
 });

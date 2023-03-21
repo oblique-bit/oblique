@@ -124,7 +124,7 @@ function addDefaultComponentToAppModule(tree: Tree): void {
 		const sourceFile = createSrcFile(tree, appModulePath);
 		const changes: Change[] = addDeclarationToModule(sourceFile, appModulePath, 'HomeComponent', './home/home.component');
 
-		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatLegacyButtonModule', '@angular/material/legacy-button'));
+		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatButtonModule', '@angular/material/button'));
 		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatLegacyCardModule', '@angular/material/legacy-card'));
 		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatIconModule', '@angular/material/icon'));
 
