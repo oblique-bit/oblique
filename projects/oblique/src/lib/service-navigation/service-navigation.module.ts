@@ -8,13 +8,19 @@ import {obliqueProviders} from '../utilities';
 import {ObButtonModule} from '../button/button.module';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
 import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
+import {ObServiceNavigationPopoverSectionComponent} from './shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationAuthenticationComponent} from './authentication/service-navigation-authentication.component';
 import {ObServiceNavigationComponent} from './service-navigation.component';
 
 @NgModule({
 	providers: [...obliqueProviders()],
 	imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule, ObButtonModule, ObExternalLinkModule, TranslateModule],
-	declarations: [ObIsUserLoggedInPipe, ObServiceNavigationAuthenticationComponent, ObServiceNavigationComponent],
+	declarations: [
+		ObIsUserLoggedInPipe,
+		ObServiceNavigationAuthenticationComponent,
+		ObServiceNavigationComponent,
+		ObServiceNavigationPopoverSectionComponent
+	],
 	exports: [ObServiceNavigationComponent]
 })
 export class ObServiceNavigationModule {}

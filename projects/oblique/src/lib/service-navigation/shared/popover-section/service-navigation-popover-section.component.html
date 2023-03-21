@@ -1,0 +1,18 @@
+<section>
+	<header class="ob-popover-header">
+		{{ header | translate }}
+	</header>
+	<ul class="ob-popover-list" *ngIf="links?.length > 0">
+		<li *ngFor="let link of links">
+			<a
+				class="ob-popover-link"
+				[href]="link.url | translate"
+				[isExternalLink]="!link.isInternalLink"
+				[attr.aria-label]="link.ariaLabel?.text | translate : link.ariaLabel?.parameters"
+			>
+				<mat-icon *ngIf="link.icon" [svgIcon]="link.icon" class="ob-icon-text"></mat-icon>
+				{{ link.label | translate }}</a
+			>
+		</li>
+	</ul>
+</section>
