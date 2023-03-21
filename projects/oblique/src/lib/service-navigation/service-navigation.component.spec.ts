@@ -1,29 +1,33 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {TestElement} from '@angular/cdk/testing';
-import {Observable, of} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
+import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
 import {ObServiceNavigationAuthenticationHarness} from './authentication/service-navigation-authentication.harness';
 import {ObServiceNavigationComponent} from './service-navigation.component';
 import {ObServiceNavigationHarness} from './service-navigation.harness';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObEPamsEnvironment} from './service-navigation.model';
+import {ObLoginState} from './service-navigation.model';
 
 describe('ObServiceNavigationComponent', () => {
 	let component: ObServiceNavigationComponent;
 	let fixture: ComponentFixture<ObServiceNavigationComponent>;
 	let service: ObServiceNavigationService;
 	let harness: ObServiceNavigationHarness;
+	const mockLoginState = new BehaviorSubject<ObLoginState>('SA');
 	const mockService = {
 		setUpRootUrls: jest.fn(),
 		setReturnUrl: jest.fn(),
 		getLoginUrl$: jest.fn().mockReturnValue(of('loginUrl')),
-		getLogoutUrl$: jest.fn().mockReturnValue(of('logoutUrl'))
+		getLogoutUrl$: jest.fn().mockReturnValue(of('logoutUrl')),
+		getLoginState$: jest.fn().mockReturnValue(mockLoginState.asObservable())
 	};
 
 	beforeEach(() => {
 		TestBed.overrideProvider(ObServiceNavigationService, {useValue: mockService});
 		TestBed.configureTestingModule({
-			declarations: [ObServiceNavigationComponent]
+			declarations: [ObServiceNavigationComponent, ObIsUserLoggedInPipe]
 		}).compileComponents();
 	});
 
@@ -117,7 +121,8 @@ describe('ObServiceNavigationComponent', () => {
 
 	describe.each([
 		{property: 'loginUrl$', method: 'getLoginUrl$', emit: 'loginUrl'},
-		{property: 'logoutUrl$', method: 'getLogoutUrl$', emit: 'logoutUrl'}
+		{property: 'logoutUrl$', method: 'getLogoutUrl$', emit: 'logoutUrl'},
+		{property: 'loginState$', method: 'getLoginState$', emit: 'SA'}
 	])('$method', ({property, method, emit}) => {
 		it('should be an observable', () => {
 			expect(component[property] instanceof Observable).toBe(true);

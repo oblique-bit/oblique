@@ -3,6 +3,7 @@
 		<ob-service-navigation-authentication
 			[loginUrl]="loginUrl$ | async"
 			[logoutUrl]="logoutUrl$ | async"
+			[isLoggedIn]="loginState$ | async | obIsUserLoggedIn"
 		></ob-service-navigation-authentication>
 	</li>
 </ul>
