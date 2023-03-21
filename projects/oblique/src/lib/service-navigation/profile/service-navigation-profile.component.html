@@ -1,0 +1,15 @@
+<button
+	[matTooltip]="'i18n.oblique.service-navigation.profile.tooltip' | translate"
+	[obPopover]="popoverProfile"
+	mat-icon-button
+	obButton="secondary"
+	placement="bottom"
+	id="service-navigation-toggle-profile-icon-button"
+	class="ob-widget ob-user"
+	type="button"
+>
+	<mat-icon svgIcon="user"></mat-icon>
+	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.profile.button" | translate }}</span>
+</button>
+
+<ng-template #popoverProfile> </ng-template>

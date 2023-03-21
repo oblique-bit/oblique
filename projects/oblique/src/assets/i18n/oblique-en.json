@@ -109,5 +109,7 @@
   "i18n.oblique.service-navigation.authentication.login": "Login",
   "i18n.oblique.service-navigation.authentication.logout": "Logout",
   "i18n.oblique.service-navigation.authentication.tooltip.login": "Click to log in",
-  "i18n.oblique.service-navigation.authentication.tooltip.logout": "Click to log out"
+  "i18n.oblique.service-navigation.authentication.tooltip.logout": "Click to log out",
+  "i18n.oblique.service-navigation.profile.button": "Profile",
+  "i18n.oblique.service-navigation.profile.tooltip": "Click to toggle profile"
 }

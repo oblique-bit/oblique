@@ -3,6 +3,7 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {TestElement} from '@angular/cdk/testing';
 import {BehaviorSubject, Observable, firstValueFrom, of} from 'rxjs';
 import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
+import {ObServiceNavigationProfileHarness} from './profile/service-navigation-profile.harness';
 import {ObServiceNavigationAuthenticationHarness} from './authentication/service-navigation-authentication.harness';
 import {ObServiceNavigationComponent} from './service-navigation.component';
 import {ObServiceNavigationHarness} from './service-navigation.harness';
@@ -22,6 +23,10 @@ describe('ObServiceNavigationComponent', () => {
 		getLoginUrl$: jest.fn().mockReturnValue(of('loginUrl')),
 		getLogoutUrl$: jest.fn().mockReturnValue(of('logoutUrl')),
 		getLoginState$: jest.fn().mockReturnValue(mockLoginState.asObservable())
+	};
+	const selectors = {
+		auth: ObServiceNavigationAuthenticationHarness.hostSelector,
+		profile: ObServiceNavigationProfileHarness.hostSelector
 	};
 
 	beforeEach(() => {
@@ -143,10 +148,8 @@ describe('ObServiceNavigationComponent', () => {
 
 	describe('list', () => {
 		let list: TestElement;
-		let children: TestElement[];
 		beforeEach(async () => {
 			list = await harness.getListElement();
-			children = await harness.getListItemElements();
 		});
 
 		it('should be present', () => {
@@ -157,12 +160,29 @@ describe('ObServiceNavigationComponent', () => {
 			expect(await list.hasClass('ob-service-navigation-list')).toBe(true);
 		});
 
-		it('should have 1 children', () => {
-			expect(children.length).toBe(1);
-		});
+		describe.each([
+			{loginState: 'SA', widgets: [selectors.auth]},
+			{loginState: 'S1', widgets: [selectors.auth]},
+			{loginState: 'S2OK', widgets: [selectors.profile, selectors.auth]},
+			{loginState: 'S2+OK', widgets: [selectors.profile, selectors.auth]},
+			{loginState: 'S3OK', widgets: [selectors.profile, selectors.auth]},
+			{loginState: 'S3+OK', widgets: [selectors.profile, selectors.auth]}
+		])('loginState "$loginState"', ({loginState, widgets}) => {
+			let children: TestElement[];
+			beforeEach(async () => {
+				mockLoginState.next(loginState as ObLoginState);
+				fixture.detectChanges();
+				children = await harness.getListItemElements();
+			});
 
-		it('should have authentication widget as first child', async () => {
-			expect(await children[0].matchesSelector(ObServiceNavigationAuthenticationHarness.hostSelector)).toEqual(true);
+			it(`should have ${widgets.length} children`, () => {
+				expect(children.length).toBe(widgets.length);
+			});
+
+			it.each(widgets)('"%s" should be present', async selector => {
+				const index = widgets.findIndex(widget => widget === selector);
+				expect(await children[index].matchesSelector(selector)).toEqual(true);
+			});
 		});
 	});
 });
