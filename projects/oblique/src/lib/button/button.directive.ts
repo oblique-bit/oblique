@@ -1,25 +1,20 @@
-import {Directive, ElementRef, HostBinding, Input, OnChanges, OnInit, Optional} from '@angular/core';
-import {MatLegacyAnchor as MatAnchor, MatLegacyButton as MatButton} from '@angular/material/legacy-button';
+import {Directive, ElementRef, HostBinding, Input, OnChanges, OnInit} from '@angular/core';
 
 @Directive({
 	selector: '[obButton]',
 	exportAs: 'obButton',
-	host: {class: 'ob-button'}
+	host: {class: 'ob-button mat-primary'}
 })
 export class ObButtonDirective implements OnInit, OnChanges {
 	@Input() obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
-	@HostBinding('class.mat-flat-button') primaryClass: boolean;
-	@HostBinding('class.mat-stroked-button') secondaryClass: boolean;
+	@HostBinding('class.mat-mdc-flat-button') flatButtonClass: boolean;
+	@HostBinding('class.mat-mdc-stroked-button') strokedButtonClass: boolean;
+	@HostBinding('class.ob-button-primary') primaryClass: boolean;
+	@HostBinding('class.ob-button-secondary') secondaryClass: boolean;
+	@HostBinding('class.ob-button-tertiary') tertiaryClass: boolean;
 	private static readonly forbidden = ['mat-raised-button', 'mat-fab', 'mat-mini-fab', 'mat-stroked-button', 'mat-flat-button'];
 
-	constructor(@Optional() btn: MatButton, @Optional() link: MatAnchor, private readonly element: ElementRef) {
-		if (!btn && !link) {
-			throw new Error(
-				'Couldn\'t find a reference to "MatButton", make sure that "MatLegacyButtonModule" is imported instead of "MatButtonModule".'
-			);
-		}
-		(btn || link).color = 'primary';
-	}
+	constructor(private readonly element: ElementRef) {}
 
 	ngOnInit(): void {
 		this.validateButtonVariant();
@@ -33,8 +28,11 @@ export class ObButtonDirective implements OnInit, OnChanges {
 	private setButtonClass(): void {
 		/* eslint-disable logical-assignment-operators */
 		this.obButton = this.obButton || 'primary';
+		this.flatButtonClass = this.obButton === 'primary';
+		this.strokedButtonClass = this.obButton === 'secondary';
 		this.primaryClass = this.obButton === 'primary';
 		this.secondaryClass = this.obButton === 'secondary';
+		this.tertiaryClass = this.obButton === 'tertiary';
 	}
 
 	private validateButtonVariant(): void {

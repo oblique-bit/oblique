@@ -5,13 +5,13 @@
 /**
  * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
  */
-.mat-button-base {
+.mat-mdc-button-base {
 	&.ob-button {
 		color: core-variables.$ob-secondary-800;
 		line-height: 34px; // material design height
 		border: 1px solid transparent;
 
-		.mat-button-focus-overlay {
+		.mat-mdc-button-focus-overlay {
 			display: none;
 		}
 
@@ -19,9 +19,9 @@
 			display: inline-flex;
 		}
 
-		&.mat-primary:not(.ob-button-card) {
-			.mat-button-wrapper {
-				// so that it appears before the ripple effect (mat-button-icon have z-index: 2)
+		&.mat-mdc-primary:not(.ob-button-card) {
+			.mat-mdc-button-wrapper {
+				// so that it appears before the ripple effect (mat-mdc-button-icon have z-index: 2)
 				position: relative;
 				z-index: 2;
 			}
@@ -32,36 +32,73 @@
 			}
 		}
 
-		&.mat-icon-button {
-			height: unset;
-			width: unset;
-			padding: 0.3896em; // (mat-button-height - mat-button-font-size * ob-icon-font-size) / 2 = (34px - 14px * 1.65) / 2 = (2.4286em - 1.65em) / 2
+		$button-height: 36px;
+
+		&.mat-mdc-icon-button {
+			padding: 0.3896em; // (mat-mdc-button-height - mat-mdc-button-font-size * ob-icon-font-size) / 2 = (34px - 14px * 1.65) / 2 = (2.4286em - 1.65em) / 2
 			line-height: 1;
+
+			&.mat-mdc-button-base {
+				height: $button-height;
+				width: $button-height;
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+			}
+
+			svg {
+				height: 16px;
+				width: 16px;
+			}
 		}
 
-		&.mat-button-disabled {
+		&[disabled] {
 			cursor: not-allowed;
 		}
 
-		&[obbutton$="ary"] {
-			&:not(.mat-button-disabled) {
+		&.mat-mdc-button {
+			.mat-mdc-button-persistent-ripple::before {
+				background-color: unset;
+			}
+
+			&.mat-mdc-button-base {
+				height: $button-height;
+			}
+		}
+
+		&[class*="ob-button-"] {
+			&:not([disabled]) {
 				&:hover {
-					.mat-button-focus-overlay {
+					.mat-mdc-button-focus-overlay {
 						opacity: 0;
 					}
 				}
 
 				&:focus {
-					box-shadow: 0 0 0 3px core-variables.$ob-purple-300;
+					&:not(.ob-button-card) {
+						box-shadow: 0 0 0 3px core-variables.$ob-purple-300;
+					}
+				}
+
+				.mat-ripple {
+					&.mat-mdc-button-ripple {
+						.mat-ripple-element {
+							opacity: 1;
+						}
+					}
+				}
+
+				.mat-icon {
+					z-index: 1;
 				}
 			}
 		}
 
-		&[obbutton="secondary"],
-		&[obbutton="tertiary"] {
-			&:not(.mat-button-disabled) {
+		&.ob-button-secondary,
+		&.ob-button-tertiary {
+			&:not([disabled]) {
 				.mat-ripple {
-					&.mat-button-ripple {
+					&.mat-mdc-button-ripple {
 						.mat-ripple-element {
 							background-color: core-variables.$ob-red-50;
 						}
@@ -69,13 +106,13 @@
 				}
 			}
 
-			&.mat-button-disabled {
+			&[disabled] {
 				color: core-variables.$ob-secondary-300;
 			}
 		}
 
-		&[obbutton="primary"] {
-			&:not(.mat-button-disabled) {
+		&.ob-button-primary {
+			&:not([disabled]) {
 				background-color: core-variables.$ob-secondary-400;
 				color: core-variables.$ob-white;
 
@@ -84,7 +121,7 @@
 				}
 
 				.mat-ripple {
-					&.mat-button-ripple {
+					&.mat-mdc-button-ripple {
 						.mat-ripple-element {
 							background-color: core-variables.$ob-secondary-300;
 						}
@@ -92,14 +129,14 @@
 				}
 			}
 
-			&.mat-button-disabled {
+			&[disabled] {
 				background-color: core-variables.$ob-secondary-200;
 				color: core-variables.$ob-white;
 			}
 		}
 
-		&[obbutton="secondary"] {
-			&:not(.mat-button-disabled) {
+		&.ob-button-secondary {
+			&:not([disabled]) {
 				border-color: core-variables.$ob-red-600;
 				color: core-variables.$ob-red-600;
 
@@ -115,14 +152,14 @@
 				}
 			}
 
-			&.mat-button-disabled {
+			&[disabled] {
 				background-color: core-variables.$ob-white;
 				border-color: core-variables.$ob-secondary-300;
 			}
 		}
 
-		&[obbutton="tertiary"] {
-			&:not(.mat-button-disabled) {
+		&.ob-button-tertiary {
+			&:not([disabled]) {
 				color: core-variables.$ob-secondary-800;
 
 				&:hover {
@@ -137,21 +174,21 @@
 		}
 	}
 
-	&.mat-button,
-	&.mat-stroked-button,
-	&.mat-flat-button,
-	&.mat-raised-button,
-	&.mat-icon-button {
+	&.mat-mdc-button,
+	&.mat-mdc-stroked-button,
+	&.mat-mdc-flat-button,
+	&.mat-mdc-raised-button,
+	&.mat-mdc-icon-button {
 		border-radius: core-variables.$ob-border-radius-button;
 	}
 
 	// the only targets svg icons, i.e. Oblique ones, no default material ones
-	.mat-icon[data-mat-icon-type="svg"] {
+	.mat-mdc-icon[data-mat-mdc-icon-type="svg"] {
 		font-size: core-variables.$ob-font-size-biggest;
 		line-height: 1;
 
-		@at-root #{selector.append(":not(.mat-icon-button)", &)} {
-			margin-top: -0.1537em; // (mat-text-height - ob-icon-font-size) / 2 = (16px - 1em) / 2 = (0.6926em - 1em) / 2
+		@at-root #{selector.append(":not(.mat-mdc-icon-button)", &)} {
+			margin-top: -0.1537em; // (mat-mdc-text-height - ob-icon-font-size) / 2 = (16px - 1em) / 2 = (0.6926em - 1em) / 2
 		}
 	}
 }
