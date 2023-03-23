@@ -112,5 +112,6 @@
   "i18n.oblique.service-navigation.authentication.tooltip.logout": "Fare clic per uscire",
   "i18n.oblique.service-navigation.profile.button": "Profilo",
   "i18n.oblique.service-navigation.profile.guest": "Ospite",
-  "i18n.oblique.service-navigation.profile.tooltip": "Cliccare per aprire il profilo"
+  "i18n.oblique.service-navigation.profile.tooltip": "Cliccare per aprire il profilo",
+  "i18n.oblique.service-navigation.profile.settings": "Impostazioni"
 }

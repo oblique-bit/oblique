@@ -62,6 +62,23 @@ describe('ObServiceNavigationProfileComponent', () => {
 		});
 	});
 
+	describe('settingsUrl', () => {
+		it('should be initialized to an empty string', () => {
+			expect(component.settingsUrl).toBe('');
+		});
+
+		describe.each(['', 'Http://settings-url'])('set to "%s"', url => {
+			it(`should show "${url}" as link`, fakeAsync(async () => {
+				component.settingsUrl = url;
+				await harness.openPopover();
+				fixture.detectChanges();
+				tick();
+				const section = fixture.debugElement.query(By.directive(ObServiceNavigationPopoverSectionComponent)).componentInstance;
+				expect(section.links[0].url).toBe(url);
+			}));
+		});
+	});
+
 	describe('button', () => {
 		let button: TestElement;
 		beforeEach(async () => {
@@ -139,6 +156,21 @@ describe('ObServiceNavigationProfileComponent', () => {
 					describe('header', () => {
 						it('should have "i18n.oblique.service-navigation.profile.guest" as text', () => {
 							expect(section.header).toBe('i18n.oblique.service-navigation.profile.guest');
+						});
+					});
+
+					describe('links', () => {
+						it('should have 1', () => {
+							expect(section.links.length).toBe(1);
+						});
+
+						it.each([
+							{property: 'icon', value: 'cog'},
+							{property: 'isInternalLink', value: true},
+							{property: 'label', value: 'i18n.oblique.service-navigation.profile.settings'},
+							{property: 'url', value: ''}
+						])('should have "$value" as "$property" property', ({property, value}) => {
+							expect(section.links[0][property]).toBe(value);
 						});
 					});
 				});

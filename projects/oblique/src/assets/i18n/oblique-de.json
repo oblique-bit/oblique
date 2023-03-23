@@ -112,5 +112,6 @@
   "i18n.oblique.service-navigation.authentication.tooltip.logout": "Klicken zum Abmelden",
   "i18n.oblique.service-navigation.profile.button": "Profil",
   "i18n.oblique.service-navigation.profile.guest": "Gast",
-  "i18n.oblique.service-navigation.profile.tooltip": "Klicken um Profil zu öffnen oder zu schliessen"
+  "i18n.oblique.service-navigation.profile.tooltip": "Klicken um Profil zu öffnen oder zu schliessen",
+  "i18n.oblique.service-navigation.profile.settings": "Einstellungen"
 }

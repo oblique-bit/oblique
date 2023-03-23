@@ -1,6 +1,6 @@
 <ul class="ob-service-navigation-list">
 	<li *ngIf="loginState$ | async | obIsUserLoggedIn">
-		<ob-service-navigation-profile [userName]="userName$ | async"></ob-service-navigation-profile>
+		<ob-service-navigation-profile [userName]="userName$ | async" [settingsUrl]="settingsUrl$ | async"></ob-service-navigation-profile>
 	</li>
 	<li>
 		<ob-service-navigation-authentication

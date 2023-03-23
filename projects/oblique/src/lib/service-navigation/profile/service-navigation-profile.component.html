@@ -13,6 +13,9 @@
 </button>
 
 <ng-template #popoverProfile>
-	<ob-service-navigation-popover-section [header]="userName || 'i18n.oblique.service-navigation.profile.guest' | translate">
+	<ob-service-navigation-popover-section
+		[header]="userName || 'i18n.oblique.service-navigation.profile.guest' | translate"
+		[links]="[{ url: settingsUrl, label: 'i18n.oblique.service-navigation.profile.settings', icon: 'cog', isInternalLink: true }]"
+	>
 	</ob-service-navigation-popover-section>
 </ng-template>

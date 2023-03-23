@@ -22,6 +22,7 @@ describe('ObServiceNavigationComponent', () => {
 		setReturnUrl: jest.fn(),
 		getLoginUrl$: jest.fn().mockReturnValue(of('loginUrl')),
 		getLogoutUrl$: jest.fn().mockReturnValue(of('logoutUrl')),
+		getSettingsUrl$: jest.fn().mockReturnValue(of('settingsUrl')),
 		getUserName$: jest.fn().mockReturnValue(of('John Doe')),
 		getLoginState$: jest.fn().mockReturnValue(mockLoginState.asObservable())
 	};
@@ -128,6 +129,7 @@ describe('ObServiceNavigationComponent', () => {
 	describe.each([
 		{property: 'loginUrl$', method: 'getLoginUrl$', emit: 'loginUrl'},
 		{property: 'logoutUrl$', method: 'getLogoutUrl$', emit: 'logoutUrl'},
+		{property: 'settingsUrl$', method: 'getSettingsUrl$', emit: 'settingsUrl'},
 		{property: 'loginState$', method: 'getLoginState$', emit: 'SA'},
 		{property: 'userName$', method: 'getUserName$', emit: 'John Doe'}
 	])('$method', ({property, method, emit}) => {

@@ -51,6 +51,10 @@ export class ObServiceNavigationService {
 		return this.config$.pipe(map(config => config.logout.url));
 	}
 
+	getSettingsUrl$(): Observable<string> {
+		return this.config$.pipe(map(config => config.settings.url));
+	}
+
 	getLoginState$(): Observable<ObLoginState> {
 		return this.getState$().pipe(
 			map(state => state.loginState),

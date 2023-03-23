@@ -18,7 +18,8 @@ describe('ObServiceNavigationService', () => {
 			params: '?returnURL=<yourReturnlURL>&language=<yourLanguageID>',
 			method: ''
 		},
-		logout: {url: 'http://logout'}
+		logout: {url: 'http://logout'},
+		settings: {url: 'http://settings'}
 	};
 	const mockLangChange = new Subject<{lang: string}>();
 	const mockStateChange = new Subject<ObIServiceNavigationState>();
@@ -86,7 +87,7 @@ describe('ObServiceNavigationService', () => {
 					}
 				});
 
-				describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getUserName$'])('%s', method => {
+				describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getUserName$', 'getSettingsUrl$'])('%s', method => {
 					it('should return an observable', () => {
 						expect(service.getLoginUrl$() instanceof Observable).toBe(true);
 					});
@@ -142,7 +143,7 @@ describe('ObServiceNavigationService', () => {
 							service.setReturnUrl('http://localhost');
 						});
 
-						describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getLoginState$', 'getUserName$'])('%s', method => {
+						describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getLoginState$', 'getUserName$', 'getSettingsUrl$'])('%s', method => {
 							it('should return an observable', () => {
 								expect(service[method]() instanceof Observable).toBe(true);
 							});
@@ -172,9 +173,12 @@ describe('ObServiceNavigationService', () => {
 							});
 						});
 
-						describe('getLogoutUrl$', () => {
-							it('should emit "http://logout"', () => {
-								expect(firstValueFrom(service.getLogoutUrl$())).resolves.toBe('http://logout');
+						describe.each([
+							{method: 'getLogoutUrl$', url: 'http://logout'},
+							{method: 'getSettingsUrl$', url: 'http://settings'}
+						])('$method', ({method, url}) => {
+							it(`should emit "${url}"`, () => {
+								expect(firstValueFrom(service[method]())).resolves.toBe(url);
 							});
 						});
 
