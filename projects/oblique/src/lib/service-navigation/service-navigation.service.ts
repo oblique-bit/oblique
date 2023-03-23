@@ -59,6 +59,13 @@ export class ObServiceNavigationService {
 		);
 	}
 
+	getUserName$(): Observable<string> {
+		return this.getState$().pipe(
+			map(state => state.profile?.fullname),
+			distinctUntilChanged((previousState, newState) => previousState === newState)
+		);
+	}
+
 	private combineWithLanguage<T>(): (source$: Observable<T>) => Observable<[T, string]> {
 		return source$ =>
 			source$.pipe(

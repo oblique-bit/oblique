@@ -12,4 +12,7 @@
 	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.profile.button" | translate }}</span>
 </button>
 
-<ng-template #popoverProfile> </ng-template>
+<ng-template #popoverProfile>
+	<ob-service-navigation-popover-section [header]="userName || 'i18n.oblique.service-navigation.profile.guest' | translate">
+	</ob-service-navigation-popover-section>
+</ng-template>

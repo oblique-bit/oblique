@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 
 @Component({
 	selector: 'ob-service-navigation-profile',
@@ -7,4 +7,6 @@ import {Component, ViewEncapsulation} from '@angular/core';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation-profile'}
 })
-export class ObServiceNavigationProfileComponent {}
+export class ObServiceNavigationProfileComponent {
+	@Input() userName = '';
+}

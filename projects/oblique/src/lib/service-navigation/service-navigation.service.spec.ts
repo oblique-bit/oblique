@@ -86,7 +86,7 @@ describe('ObServiceNavigationService', () => {
 					}
 				});
 
-				describe.each(['getLoginUrl$', 'getLogoutUrl$'])('%s', method => {
+				describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getUserName$'])('%s', method => {
 					it('should return an observable', () => {
 						expect(service.getLoginUrl$() instanceof Observable).toBe(true);
 					});
@@ -142,7 +142,7 @@ describe('ObServiceNavigationService', () => {
 							service.setReturnUrl('http://localhost');
 						});
 
-						describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getLoginState$'])('%s', method => {
+						describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getLoginState$', 'getUserName$'])('%s', method => {
 							it('should return an observable', () => {
 								expect(service[method]() instanceof Observable).toBe(true);
 							});
@@ -185,6 +185,14 @@ describe('ObServiceNavigationService', () => {
 									mockStateChange.next({loginState} as ObIServiceNavigationState);
 									expect(promise).resolves.toEqual(loginState);
 								});
+							});
+						});
+
+						describe('getUserName$', () => {
+							it(`should emit "John Doe"`, () => {
+								const promise = firstValueFrom(service.getUserName$());
+								mockStateChange.next({profile: {fullname: 'John Doe'}} as ObIServiceNavigationState);
+								expect(promise).resolves.toEqual('John Doe');
 							});
 						});
 					});

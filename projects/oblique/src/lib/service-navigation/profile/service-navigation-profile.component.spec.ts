@@ -4,11 +4,14 @@ import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing'
 import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
 import {MatLegacyTooltipHarness as MatTooltipHarness} from '@angular/material/legacy-tooltip/testing';
+import {By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockExternalLinkModule} from '../../external-link/_mocks/mock-external-link.module';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObPopoverModule} from '../../popover/popover.module';
+import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationProfileHarness} from './service-navigation-profile.harness';
 import {ObServiceNavigationProfileComponent} from './service-navigation-profile.component';
 
@@ -20,7 +23,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ObMockExternalLinkModule, ObPopoverModule, MatIconTestingModule, MatTooltipModule],
-			declarations: [ObServiceNavigationProfileComponent, ObMockTranslatePipe],
+			declarations: [ObServiceNavigationProfileComponent, ObMockTranslatePipe, ObServiceNavigationPopoverSectionComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 
@@ -37,6 +40,26 @@ describe('ObServiceNavigationProfileComponent', () => {
 	it('should have "ob-service-navigation-profile" class', async () => {
 		const host = await harness.host();
 		expect(await host.hasClass('ob-service-navigation-profile')).toBe(true);
+	});
+
+	describe('userName', () => {
+		it('should be initialized to an empty string', () => {
+			expect(component.userName).toBe('');
+		});
+
+		describe.each([
+			{name: '', header: 'i18n.oblique.service-navigation.profile.guest'},
+			{name: 'John Doe', header: 'John Doe'}
+		])('set to "$name"', ({name, header}) => {
+			it(`should show "${header}" as header`, fakeAsync(async () => {
+				component.userName = name;
+				await harness.openPopover();
+				fixture.detectChanges();
+				tick();
+				const section = fixture.debugElement.query(By.directive(ObServiceNavigationPopoverSectionComponent)).componentInstance;
+				expect(section.header).toBe(header);
+			}));
+		});
 	});
 
 	describe('button', () => {
@@ -87,6 +110,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 		describe('popover', () => {
 			beforeEach(fakeAsync(async () => {
+				fixture.detectChanges();
 				await harness.openPopover();
 				fixture.detectChanges();
 				tick();
@@ -94,6 +118,30 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 			it(`should exist`, async () => {
 				expect(await harness.getPopoverHarness()).toBeTruthy();
+			});
+
+			describe('sections', () => {
+				let sections: DebugElement[];
+				beforeEach(() => {
+					sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
+				});
+
+				it('should have 1', () => {
+					expect(sections.length).toBe(1);
+				});
+
+				describe('first section', () => {
+					let section: ObServiceNavigationPopoverSectionComponent;
+					beforeEach(() => {
+						section = sections[0].componentInstance;
+					});
+
+					describe('header', () => {
+						it('should have "i18n.oblique.service-navigation.profile.guest" as text', () => {
+							expect(section.header).toBe('i18n.oblique.service-navigation.profile.guest');
+						});
+					});
+				});
 			});
 		});
 	});

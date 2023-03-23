@@ -111,5 +111,6 @@
   "i18n.oblique.service-navigation.authentication.tooltip.login": "Cliquer pour se connecter",
   "i18n.oblique.service-navigation.authentication.tooltip.logout": "Cliquer pour se déconnecter",
   "i18n.oblique.service-navigation.profile.button": "Profil",
+  "i18n.oblique.service-navigation.profile.guest": "Invité",
   "i18n.oblique.service-navigation.profile.tooltip": "Cliquer pour ouvrir le profil"
 }

@@ -17,6 +17,7 @@ export class ObServiceNavigationComponent implements OnInit, OnChanges {
 	readonly loginUrl$ = this.headerControlsService.getLoginUrl$();
 	readonly logoutUrl$ = this.headerControlsService.getLogoutUrl$();
 	readonly loginState$ = this.headerControlsService.getLoginState$();
+	readonly userName$ = this.headerControlsService.getUserName$();
 
 	constructor(private readonly headerControlsService: ObServiceNavigationService) {}
 
