@@ -46,5 +46,15 @@
   "i18n.oblique.chips.cleaning": "Nettoyage",
   "i18n.file-upload.name": "Nom du fichier",
   "i18n.file-upload.url": "Url du fichier",
-  "i18n.file-upload.test": "Test"
+  "i18n.file-upload.test": "Test",
+  "i18n.service-navigation.profile.link.unicorn.label": "Licorne",
+  "i18n.service-navigation.profile.link.unicorn.url": "https://fr.wikipedia.org/wiki/Licorne",
+  "i18n.service-navigation.profile.link.dragon.label": "Drake",
+  "i18n.service-navigation.profile.link.dragon.url": "https://fr.wikipedia.org/wiki/Drake",
+  "i18n.service-navigation.profile.link.phoenix.label": "Phénix",
+  "i18n.service-navigation.profile.link.phoenix.url": "https://fr.wikipedia.org/wiki/Phénix",
+  "i18n.service-navigation.profile.link.ork.label": "Ork",
+  "i18n.service-navigation.profile.link.ork.url": "https://fr.wikipedia.org/wiki/Orks",
+  "i18n.service-navigation.profile.link.kappa.label": "Cape",
+  "i18n.service-navigation.profile.link.kappa.url": "https://fr.wikipedia.org/wiki/Y%C5%8Dkai"
 }

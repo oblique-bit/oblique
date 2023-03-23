@@ -1,0 +1,7 @@
+@use "variables";
+
+.toggles {
+	display: flex;
+	flex-direction: column;
+	gap: variables.$ob-spacing-sm;
+}

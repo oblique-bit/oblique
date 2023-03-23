@@ -2,8 +2,18 @@
 <sc-description component="service-navigation"></sc-description>
 <ob-column-layout [left]="false">
 	<section column-main-content>
-		<ob-service-navigation [environment]="environment" [rootUrl]="rootUrl" [returnUrl]="returnUrl"></ob-service-navigation>
+		<ob-service-navigation
+			[environment]="environment"
+			[rootUrl]="rootUrl"
+			[returnUrl]="returnUrl"
+			[profileLinks]="profileLinks"
+		></ob-service-navigation>
 	</section>
-	<ng-container column-right-content> </ng-container>
+	<ng-container column-right-content>
+		<fieldset class="toggles">
+			<legend>Profile widget settings</legend>
+			<mat-slide-toggle [(ngModel)]="hasProfileLinks">toggle profile links</mat-slide-toggle>
+		</fieldset>
+	</ng-container>
 </ob-column-layout>
 <sc-api component="service-navigation"></sc-api>
