@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {TestElement} from '@angular/cdk/testing';
-import {BehaviorSubject, Observable, of} from 'rxjs';
+import {BehaviorSubject, Observable, firstValueFrom, of} from 'rxjs';
 import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
 import {ObServiceNavigationAuthenticationHarness} from './authentication/service-navigation-authentication.harness';
 import {ObServiceNavigationComponent} from './service-navigation.component';
@@ -136,11 +136,8 @@ describe('ObServiceNavigationComponent', () => {
 			expect(service[method]).toHaveBeenCalledWith();
 		});
 
-		it(`should receive "${emit}"`, done => {
-			component[property].subscribe(data => {
-				expect(data).toBe(emit);
-				done();
-			});
+		it(`should receive "${emit}"`, () => {
+			expect(firstValueFrom(component[property])).resolves.toBe(emit);
 		});
 	});
 

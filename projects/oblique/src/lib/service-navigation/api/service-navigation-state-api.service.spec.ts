@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TestBed} from '@angular/core/testing';
-import {Observable, of} from 'rxjs';
+import {Observable, firstValueFrom, of} from 'rxjs';
 import {ObServiceNavigationStateApiService} from './service-navigation-state-api.service';
 
 describe('ObServiceNavigationStateApiService', () => {
@@ -32,12 +32,8 @@ describe('ObServiceNavigationStateApiService', () => {
 			expect(service.get('http:/rootUrl/') instanceof Observable).toBe(true);
 		});
 
-		it('should receive that "data" part of the mockUrls', done => {
-			service.get('http://rootUrl/').subscribe(result => {
-				expect(result).toEqual(mockData.data);
-				done();
-			});
-		});
+		it('should receive that "data" part of the mockUrls', () =>
+			expect(firstValueFrom(service.get('http://rootUrl/'))).resolves.toEqual(mockData.data));
 
 		describe('http.get', () => {
 			beforeEach(() => {

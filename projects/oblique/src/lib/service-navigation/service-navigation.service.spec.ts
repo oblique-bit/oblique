@@ -1,10 +1,10 @@
 import {TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, Subject, count, of} from 'rxjs';
+import {Observable, Subject, count, firstValueFrom, of} from 'rxjs';
 import {skip} from 'rxjs/operators';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
-import {ObEPamsEnvironment, ObLoginState} from './service-navigation.model';
+import {ObEPamsEnvironment} from './service-navigation.model';
 import {ObIServiceNavigationState} from './api/service-navigation.api.model';
 import {ObServiceNavigationService} from './service-navigation.service';
 
@@ -108,20 +108,12 @@ describe('ObServiceNavigationService', () => {
 				});
 
 				describe('getLoginState$', () => {
-					let result: ObLoginState;
-					beforeEach(done => {
-						service.getLoginState$().subscribe(data => {
-							result = data;
-							done();
-						});
-					});
-
 					it('should return an observable', () => {
 						expect(service.getLoginState$() instanceof Observable).toBe(true);
 					});
 
 					it(`should emit "SA"`, () => {
-						expect(result).toBe('SA');
+						expect(firstValueFrom(service.getLoginState$())).resolves.toBe('SA');
 					});
 
 					describe('ObServiceNavigationConfigService.fetchUrls', () => {
@@ -151,15 +143,15 @@ describe('ObServiceNavigationService', () => {
 						});
 
 						describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getLoginState$'])('%s', method => {
-							beforeEach(done => {
-								service[method]().subscribe(() => done());
-							});
-
 							it('should return an observable', () => {
 								expect(service[method]() instanceof Observable).toBe(true);
 							});
 
 							describe('ObServiceNavigationConfigService.fetchUrls', () => {
+								beforeEach(() => {
+									service[method]().subscribe();
+								});
+
 								it('should have been called once', () => {
 									expect(configService.fetchUrls).toHaveBeenCalledTimes(1);
 								});
@@ -172,42 +164,26 @@ describe('ObServiceNavigationService', () => {
 
 						describe('getLoginUrl$', () => {
 							describe.each(['de', 'fr', 'it', 'en', 'es'])('with "%s" as language', language => {
-								it(`should emit "http://login?returnURL=http://localhost&language=${language}"`, done => {
-									const subscription = service.getLoginUrl$().subscribe(url => {
-										expect(url).toBe(`http://login?returnURL=http://localhost&language=${language}`);
-										subscription.unsubscribe();
-										done();
-									});
+								it(`should emit "http://login?returnURL=http://localhost&language=${language}"`, () => {
+									const promise = firstValueFrom(service.getLoginUrl$().pipe(skip(1)));
 									mockLangChange.next({lang: language});
+									expect(promise).resolves.toBe(`http://login?returnURL=http://localhost&language=${language}`);
 								});
 							});
 						});
 
 						describe('getLogoutUrl$', () => {
-							it('should emit "http://logout"', done => {
-								service.getLogoutUrl$().subscribe(url => {
-									expect(url).toBe('http://logout');
-									done();
-								});
+							it('should emit "http://logout"', () => {
+								expect(firstValueFrom(service.getLogoutUrl$())).resolves.toBe('http://logout');
 							});
 						});
 
 						describe('getLoginState$', () => {
 							describe.each(['S1', 'S2OK', 'S2+OK', 'S3OK', 'S3+OK'])('with "%s"', loginState => {
-								let received;
-								beforeEach(done => {
-									service
-										.getLoginState$()
-										.pipe(skip(1)) // skip default value
-										.subscribe(data => {
-											received = data;
-											done();
-										});
-									mockStateChange.next({loginState} as ObIServiceNavigationState);
-								});
-
 								it(`should emit "${loginState}"`, () => {
-									expect(received).toEqual(loginState);
+									const promise = firstValueFrom(service.getLoginState$().pipe(skip(1)));
+									mockStateChange.next({loginState} as ObIServiceNavigationState);
+									expect(promise).resolves.toEqual(loginState);
 								});
 							});
 						});
@@ -226,7 +202,6 @@ describe('ObServiceNavigationService', () => {
 			{inputs: ['S2OK', 'SA'], emitTimes: 3}
 		])('getLoginState$', ({inputs, emitTimes}) => {
 			const mockStateChangeDuplicate = new Subject();
-			let callNbr: number;
 			beforeEach(() => {
 				TestBed.overrideProvider(ObServiceNavigationPollingService, {
 					useValue: {
@@ -237,21 +212,12 @@ describe('ObServiceNavigationService', () => {
 				service = TestBed.inject(ObServiceNavigationService);
 			});
 
-			beforeEach(done => {
+			it(`should emit ${emitTimes} times`, () => {
 				service.setUpRootUrls(ObEPamsEnvironment.TEST);
-				service
-					.getLoginState$()
-					.pipe(count())
-					.subscribe(number => {
-						callNbr = number;
-						done();
-					});
+				const promise = firstValueFrom(service.getLoginState$().pipe(count()));
 				inputs.forEach(input => mockStateChangeDuplicate.next({loginState: input}));
 				mockStateChangeDuplicate.complete();
-			});
-
-			it(`should emit ${emitTimes} times`, () => {
-				expect(callNbr).toBe(emitTimes);
+				expect(promise).resolves.toBe(emitTimes);
 			});
 		});
 	});
