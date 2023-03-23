@@ -11,6 +11,7 @@ import {
 	removeAngularProjectsConfig,
 	replaceInFile,
 	setAngularProjectsConfig,
+	setOrCreateAngularProjectsConfig,
 	setRootAngularConfig,
 	writeFile
 } from '../../utils';
@@ -119,7 +120,7 @@ function addProxy(port: string): Rule {
 		if (/^\d+$/.test(port) && !tree.exists('proxy.conf.json')) {
 			infoMigration(_context, 'Toolchain: Adding proxy configuration');
 			addFile(tree, 'proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port));
-			setAngularProjectsConfig(tree, ['architect', 'serve', 'options', 'proxyConfig'], 'proxy.conf.json');
+			setOrCreateAngularProjectsConfig(tree, ['architect', 'serve', 'options', 'proxyConfig'], 'proxy.conf.json');
 		}
 		return tree;
 	});
