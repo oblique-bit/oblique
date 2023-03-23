@@ -10,4 +10,5 @@ import {Component, Input, ViewEncapsulation} from '@angular/core';
 export class ObServiceNavigationProfileComponent {
 	@Input() userName = '';
 	@Input() settingsUrl = '';
+	@Input() avatarImageUrl = '';
 }

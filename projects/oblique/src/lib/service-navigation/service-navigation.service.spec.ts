@@ -87,7 +87,7 @@ describe('ObServiceNavigationService', () => {
 					}
 				});
 
-				describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getUserName$', 'getSettingsUrl$'])('%s', method => {
+				describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getUserName$', 'getSettingsUrl$', 'getAvatarUrl$'])('%s', method => {
 					it('should return an observable', () => {
 						expect(service.getLoginUrl$() instanceof Observable).toBe(true);
 					});
@@ -143,25 +143,28 @@ describe('ObServiceNavigationService', () => {
 							service.setReturnUrl('http://localhost');
 						});
 
-						describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getLoginState$', 'getUserName$', 'getSettingsUrl$'])('%s', method => {
-							it('should return an observable', () => {
-								expect(service[method]() instanceof Observable).toBe(true);
-							});
-
-							describe('ObServiceNavigationConfigService.fetchUrls', () => {
-								beforeEach(() => {
-									service[method]().subscribe();
+						describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getLoginState$', 'getUserName$', 'getSettingsUrl$', 'getAvatarUrl$'])(
+							'%s',
+							method => {
+								it('should return an observable', () => {
+									expect(service[method]() instanceof Observable).toBe(true);
 								});
 
-								it('should have been called once', () => {
-									expect(configService.fetchUrls).toHaveBeenCalledTimes(1);
-								});
+								describe('ObServiceNavigationConfigService.fetchUrls', () => {
+									beforeEach(() => {
+										service[method]().subscribe();
+									});
 
-								it(`should have been called with "${calledPamsUrl}"`, () => {
-									expect(configService.fetchUrls).toHaveBeenCalledWith(calledPamsUrl);
+									it('should have been called once', () => {
+										expect(configService.fetchUrls).toHaveBeenCalledTimes(1);
+									});
+
+									it(`should have been called with "${calledPamsUrl}"`, () => {
+										expect(configService.fetchUrls).toHaveBeenCalledWith(calledPamsUrl);
+									});
 								});
-							});
-						});
+							}
+						);
 
 						describe('getLoginUrl$', () => {
 							describe.each(['de', 'fr', 'it', 'en', 'es'])('with "%s" as language', language => {
@@ -179,6 +182,19 @@ describe('ObServiceNavigationService', () => {
 						])('$method', ({method, url}) => {
 							it(`should emit "${url}"`, () => {
 								expect(firstValueFrom(service[method]())).resolves.toBe(url);
+							});
+						});
+
+						describe('getAvatarUrl$', () => {
+							it.each([
+								{avatarId: 1, url: ''},
+								{avatarId: 2, url: `https://eportal${environment}.admin.ch/assets/avatars/avatar_2.svg`},
+								{avatarId: 13, url: `https://eportal${environment}.admin.ch/assets/avatars/avatar_13.svg`},
+								{avatarId: 14, url: ''}
+							])('should emit "$url" with "$avatarId" as "avatarId"', ({avatarId, url}) => {
+								const promise = firstValueFrom(service.getAvatarUrl$());
+								mockStateChange.next({profile: {avatarID: avatarId}} as ObIServiceNavigationState);
+								expect(promise).resolves.toBe(url);
 							});
 						});
 

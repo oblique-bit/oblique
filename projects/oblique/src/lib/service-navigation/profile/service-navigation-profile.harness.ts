@@ -1,5 +1,6 @@
 import {ContentContainerComponentHarness, TestElement} from '@angular/cdk/testing';
 import {MatLegacyTooltipHarness as MatTooltipHarness} from '@angular/material/legacy-tooltip/testing';
+import {MatIconHarness} from '@angular/material/icon/testing';
 import {ObServiceNavigationPopOverHarness} from '../shared/popover-section/service-navigation-popover.harness';
 
 export class ObServiceNavigationProfileHarness extends ContentContainerComponentHarness {
@@ -16,6 +17,14 @@ export class ObServiceNavigationProfileHarness extends ContentContainerComponent
 
 	public getTooltipHarness(): Promise<MatTooltipHarness> {
 		return this.getHarnessOrNull(MatTooltipHarness);
+	}
+
+	public async getImage(): Promise<TestElement> {
+		return this.locatorForOptional('img')();
+	}
+
+	public async getIconHarness(): Promise<MatIconHarness> {
+		return this.getHarnessOrNull(MatIconHarness);
 	}
 
 	public async openPopover(): Promise<void> {

@@ -1,10 +1,11 @@
 import {TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
-import {MatIconTestingModule} from '@angular/material/icon/testing';
+import {MatIconHarness} from '@angular/material/icon/testing';
 import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
 import {MatLegacyTooltipHarness as MatTooltipHarness} from '@angular/material/legacy-tooltip/testing';
 import {By} from '@angular/platform-browser';
+import {MatIconModule} from '@angular/material/icon';
 import {DebugElement} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockExternalLinkModule} from '../../external-link/_mocks/mock-external-link.module';
@@ -22,7 +23,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockExternalLinkModule, ObPopoverModule, MatIconTestingModule, MatTooltipModule],
+			imports: [ObMockExternalLinkModule, ObPopoverModule, MatIconModule, MatTooltipModule],
 			declarations: [ObServiceNavigationProfileComponent, ObMockTranslatePipe, ObServiceNavigationPopoverSectionComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
@@ -76,6 +77,157 @@ describe('ObServiceNavigationProfileComponent', () => {
 				const section = fixture.debugElement.query(By.directive(ObServiceNavigationPopoverSectionComponent)).componentInstance;
 				expect(section.links[0].url).toBe(url);
 			}));
+		});
+	});
+
+	describe('avatarImageUrl', () => {
+		it('should be initialized to an empty string', () => {
+			expect(component.avatarImageUrl).toBe('');
+		});
+
+		describe.each(['', 'http://avatar-url'])('set to "%s"', url => {
+			let button: TestElement;
+			beforeEach(async () => {
+				component.avatarImageUrl = url;
+				button = await harness.getTriggerButton();
+			});
+
+			it.each([
+				{attribute: 'type', value: 'button'},
+				{attribute: 'placement', value: 'bottom'}
+			])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
+				expect(await button.getAttribute(attribute)).toBe(value);
+			});
+
+			it('should have "ob-widget" class', async () => {
+				expect(await button.hasClass('ob-widget')).toBe(true);
+			});
+		});
+
+		describe('set to ""', () => {
+			let button: TestElement;
+			beforeEach(async () => {
+				component.avatarImageUrl = '';
+				fixture.detectChanges();
+				button = await harness.getTriggerButton();
+			});
+
+			it.each([
+				{attribute: 'id', value: 'service-navigation-toggle-profile-icon-button'},
+				{attribute: 'obButton', value: 'secondary'},
+				{attribute: 'mat-icon-button', value: ''}
+			])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
+				expect(await button.getAttribute(attribute)).toBe(value);
+			});
+
+			it('should have "ob-widget" class', async () => {
+				expect(await button.hasClass('ob-widget')).toBe(true);
+			});
+
+			it(`should not contain an image`, async () => {
+				expect(await harness.getImage()).toBeNull();
+			});
+
+			describe('icon', () => {
+				let iconHarness: MatIconHarness;
+				beforeEach(async () => {
+					iconHarness = await harness.getIconHarness();
+				});
+
+				it('should exist', () => {
+					expect(iconHarness).toBeTruthy();
+				});
+
+				it('should be "user"', async () => {
+					expect(await iconHarness.getName()).toBe('user');
+				});
+			});
+
+			describe('popover header image', () => {
+				it('should not exist', fakeAsync(async () => {
+					fixture.detectChanges();
+					await harness.openPopover();
+					fixture.detectChanges();
+					tick();
+					const popoverHarness = await harness.getPopoverHarness();
+					const sections = await popoverHarness.getSections();
+					expect(await sections[0].getHeaderImage()).toBeNull();
+				}));
+			});
+		});
+
+		describe('set to "http://avatar-url"', () => {
+			let button: TestElement;
+			beforeEach(async () => {
+				component.avatarImageUrl = 'http://avatar-url';
+				button = await harness.getTriggerButton();
+			});
+
+			it.each([
+				{attribute: 'id', value: 'service-navigation-toggle-profile-image-button'},
+				{attribute: 'obButton', value: null},
+				{attribute: 'mat-icon-button', value: null}
+			])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
+				expect(await button.getAttribute(attribute)).toBe(value);
+			});
+
+			it('should have "ob-image-button" class', async () => {
+				expect(await button.hasClass('ob-image-button')).toBe(true);
+			});
+
+			it(`should not contain an icon`, async () => {
+				expect(await harness.getIconHarness()).toBeNull();
+			});
+
+			describe('image', () => {
+				let image: TestElement;
+				beforeEach(async () => {
+					image = await harness.getImage();
+				});
+
+				it(`should exist`, () => {
+					expect(image).toBeTruthy();
+				});
+
+				it.each([
+					{property: 'alt', value: 'i18n.oblique.service-navigation.profile.alt'},
+					{property: 'src', value: 'http://avatar-url'}
+				])(`should have "$value" as "$property" property`, async ({property, value}) => {
+					expect(await image.getAttribute(property)).toBe(value);
+				});
+
+				it('should have "ob-profile-avatar" class', async () => {
+					expect(await image.hasClass('ob-profile-avatar')).toBe(true);
+				});
+			});
+
+			describe('popover header image', () => {
+				let image: TestElement;
+				beforeEach(fakeAsync(async () => {
+					fixture.detectChanges();
+					await harness.openPopover();
+					fixture.detectChanges();
+					tick();
+					const popoverHarness = await harness.getPopoverHarness();
+					const sections = await popoverHarness.getSections();
+					image = await sections[0].getHeaderImage();
+				}));
+
+				it('should exist', () => {
+					expect(image).toBeTruthy();
+				});
+
+				it('should have "ob-avatar" as class', async () => {
+					expect(await image.hasClass('ob-avatar')).toBe(true);
+				});
+
+				it.each([
+					{property: 'src', value: 'http://avatar-url'},
+					{property: 'alt', value: 'i18n.oblique.service-navigation.profile.alt'}
+				])('should have "$value" as "$property" property', async ({property, value}) => {
+					expect(await image.getAttribute(property)).toBe(value);
+				});
+			});
 		});
 	});
 

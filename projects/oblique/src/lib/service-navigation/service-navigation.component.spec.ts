@@ -24,6 +24,7 @@ describe('ObServiceNavigationComponent', () => {
 		getLogoutUrl$: jest.fn().mockReturnValue(of('logoutUrl')),
 		getSettingsUrl$: jest.fn().mockReturnValue(of('settingsUrl')),
 		getUserName$: jest.fn().mockReturnValue(of('John Doe')),
+		getAvatarUrl$: jest.fn().mockReturnValue(of('http://avatar-url')),
 		getLoginState$: jest.fn().mockReturnValue(mockLoginState.asObservable())
 	};
 	const selectors = {
@@ -131,7 +132,8 @@ describe('ObServiceNavigationComponent', () => {
 		{property: 'logoutUrl$', method: 'getLogoutUrl$', emit: 'logoutUrl'},
 		{property: 'settingsUrl$', method: 'getSettingsUrl$', emit: 'settingsUrl'},
 		{property: 'loginState$', method: 'getLoginState$', emit: 'SA'},
-		{property: 'userName$', method: 'getUserName$', emit: 'John Doe'}
+		{property: 'userName$', method: 'getUserName$', emit: 'John Doe'},
+		{property: 'avatarUrl$', method: 'getAvatarUrl$', emit: 'http://avatar-url'}
 	])('$method', ({property, method, emit}) => {
 		it('should be an observable', () => {
 			expect(component[property] instanceof Observable).toBe(true);

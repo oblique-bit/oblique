@@ -10,6 +10,7 @@ import {ObEPamsEnvironment, ObLoginState} from './service-navigation.model';
 @Injectable()
 export class ObServiceNavigationService {
 	private readonly rootUrl$ = new ReplaySubject<string>(1);
+	private readonly avatarRootUrl$ = new ReplaySubject<string>(1);
 	private readonly returnUrl$ = new ReplaySubject<string>(1);
 	private readonly config$ = this.rootUrl$.pipe(
 		switchMap(rootUrl =>
@@ -28,7 +29,9 @@ export class ObServiceNavigationService {
 		// can't use !environment as ObEPamsEnvironment.PROD is an empty string
 		if (environment !== null && environment !== undefined) {
 			this.rootUrl$.next(rootUrl ?? `https://pams-api.eportal${environment}.admin.ch/`);
+			this.avatarRootUrl$.next(`https://eportal${environment}.admin.ch/assets/avatars/avatar_`);
 			this.rootUrl$.complete();
+			this.avatarRootUrl$.complete();
 		}
 	}
 
@@ -53,6 +56,16 @@ export class ObServiceNavigationService {
 
 	getSettingsUrl$(): Observable<string> {
 		return this.config$.pipe(map(config => config.settings.url));
+	}
+
+	getAvatarUrl$(): Observable<string> {
+		return this.getState$().pipe(
+			map(state => state.profile?.avatarID),
+			map(imageId => (imageId > 1 && imageId < 14 ? imageId.toString() : '')),
+			combineLatestWith(this.avatarRootUrl$),
+			map(([imageId, avatarRootUrl]) => (imageId ? `${avatarRootUrl + imageId}.svg` : imageId)),
+			distinctUntilChanged((previousState, newState) => previousState === newState)
+		);
 	}
 
 	getLoginState$(): Observable<ObLoginState> {

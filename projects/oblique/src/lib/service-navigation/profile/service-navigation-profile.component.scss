@@ -1,6 +1,39 @@
+@use "../../../styles/scss/core/variables";
+
 .ob-service-navigation-profile {
 	.ob-user {
 		font-size: 1.261em; // empiric value
 		border-radius: 50%;
+	}
+
+	.ob-image-button {
+		padding: 0;
+		border: none;
+		background-color: transparent;
+		cursor: pointer;
+
+		&:focus {
+			outline: none;
+		}
+
+		.ob-outline &:focus {
+			border-color: variables.$ob-default;
+			border-radius: 50%;
+			box-shadow: 0 0 variables.$ob-spacing-xs 0 variables.$ob-default;
+			outline: 1px solid variables.$ob-primary;
+			outline-offset: -3px;
+		}
+
+		.ob-profile-avatar {
+			$ob-image-size: 3.188em; // empiric value
+			width: $ob-image-size;
+			height: $ob-image-size;
+		}
+	}
+
+	.ob-avatar {
+		$icon-size: 1.6em; // empiric value
+		width: $icon-size;
+		height: $icon-size;
 	}
 }
