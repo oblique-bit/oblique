@@ -113,6 +113,7 @@
   "i18n.oblique.service-navigation.profile.alt": "Photo del profilo dell'utente registrato",
   "i18n.oblique.service-navigation.profile.button": "Profilo",
   "i18n.oblique.service-navigation.profile.guest": "Ospite",
+  "i18n.oblique.service-navigation.profile.links.header": "Collegamenti",
   "i18n.oblique.service-navigation.profile.tooltip": "Cliccare per aprire il profilo",
   "i18n.oblique.service-navigation.profile.settings": "Impostazioni"
 }

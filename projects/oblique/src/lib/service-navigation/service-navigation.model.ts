@@ -6,6 +6,11 @@ export enum ObEPamsEnvironment {
 	PROD = ''
 }
 
+export interface ObIServiceNavigationLink {
+	url: string;
+	label: string;
+}
+
 export interface ObISectionLink {
 	url: string;
 	label: string;

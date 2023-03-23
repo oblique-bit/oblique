@@ -1,3 +1,3 @@
 export {ObServiceNavigationComponent} from './service-navigation.component';
 export {ObServiceNavigationModule} from './service-navigation.module';
-export {ObEPamsEnvironment} from './service-navigation.model';
+export {ObEPamsEnvironment, ObIServiceNavigationLink} from './service-navigation.model';

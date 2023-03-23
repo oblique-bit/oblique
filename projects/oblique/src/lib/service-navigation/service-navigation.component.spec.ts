@@ -127,6 +127,12 @@ describe('ObServiceNavigationComponent', () => {
 		});
 	});
 
+	describe('profileLinks', () => {
+		it('should be initialized to an empty array', () => {
+			expect(component.profileLinks).toEqual([]);
+		});
+	});
+
 	describe.each([
 		{property: 'loginUrl$', method: 'getLoginUrl$', emit: 'loginUrl'},
 		{property: 'logoutUrl$', method: 'getLogoutUrl$', emit: 'logoutUrl'},

@@ -113,6 +113,7 @@
   "i18n.oblique.service-navigation.profile.alt": "Profile photo of the registered user",
   "i18n.oblique.service-navigation.profile.button": "Profile",
   "i18n.oblique.service-navigation.profile.guest": "Guest",
+  "i18n.oblique.service-navigation.profile.links.header": "Links",
   "i18n.oblique.service-navigation.profile.tooltip": "Click to toggle profile",
   "i18n.oblique.service-navigation.profile.settings": "Settings"
 }

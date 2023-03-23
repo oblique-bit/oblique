@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, ViewEncapsulation} from '@angular/core';
 import {ObServiceNavigationService} from './service-navigation.service';
-import {ObEPamsEnvironment} from './service-navigation.model';
+import {ObEPamsEnvironment, ObIServiceNavigationLink} from './service-navigation.model';
 
 @Component({
 	selector: 'ob-service-navigation',
@@ -11,6 +11,7 @@ import {ObEPamsEnvironment} from './service-navigation.model';
 	host: {class: 'ob-service-navigation'}
 })
 export class ObServiceNavigationComponent implements OnInit, OnChanges {
+	@Input() profileLinks: ObIServiceNavigationLink[] = [];
 	@Input() environment: ObEPamsEnvironment;
 	@Input() rootUrl: string;
 	@Input() returnUrl: string;
