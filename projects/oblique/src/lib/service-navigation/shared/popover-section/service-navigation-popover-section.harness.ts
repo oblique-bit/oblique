@@ -7,6 +7,9 @@ export class ObServiceNavigationPopOverSectionHarness extends ContentContainerCo
 	public async getHeader(): Promise<TestElement> {
 		return this.locatorForOptional('header')();
 	}
+	public async getHeaderImage(): Promise<TestElement> {
+		return this.locatorForOptional('header > img')();
+	}
 
 	public async getLinkList(): Promise<TestElement> {
 		return this.locatorForOptional('ul')();

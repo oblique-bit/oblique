@@ -1,5 +1,6 @@
 <section>
 	<header class="ob-popover-header">
+		<ng-content select="[obHeaderPrefix]"></ng-content>
 		{{ header | translate }}
 	</header>
 	<ul class="ob-popover-list" *ngIf="links?.length > 0">
