@@ -32,6 +32,17 @@ export class ServiceNavigationSampleComponent implements OnInit {
 		}
 	];
 	hasProfileLinks = true;
+	hasInfoLinks = true;
+	infoLinks: ObIServiceNavigationLink[] = [
+		{
+			url: 'i18n.service-navigation.info.link.user-documentation.url',
+			label: 'i18n.service-navigation.info.link.user-documentation.label'
+		},
+		{
+			url: 'i18n.service-navigation.info.link.multimedia-manual.url',
+			label: 'i18n.service-navigation.info.link.multimedia-manual.label'
+		}
+	];
 	readonly rootUrl = environment.pams.rootUrl;
 	readonly environment = environment.pams.environment;
 

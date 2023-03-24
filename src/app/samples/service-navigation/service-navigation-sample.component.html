@@ -7,9 +7,14 @@
 			[rootUrl]="rootUrl"
 			[returnUrl]="returnUrl"
 			[profileLinks]="profileLinks"
+			[infoLinks]="infoLinks"
 		></ob-service-navigation>
 	</section>
 	<ng-container column-right-content>
+		<fieldset class="toggles">
+			<legend>Info widget settings</legend>
+			<mat-slide-toggle [(ngModel)]="hasInfoLinks">toggle info links</mat-slide-toggle>
+		</fieldset>
 		<fieldset class="toggles">
 			<legend>Profile widget settings</legend>
 			<mat-slide-toggle [(ngModel)]="hasProfileLinks">toggle profile links</mat-slide-toggle>
