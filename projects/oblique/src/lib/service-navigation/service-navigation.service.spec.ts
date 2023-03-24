@@ -19,7 +19,8 @@ describe('ObServiceNavigationService', () => {
 			method: ''
 		},
 		logout: {url: 'http://logout'},
-		settings: {url: 'http://settings'}
+		settings: {url: 'http://settings'},
+		inboxMail: {url: 'http://inboxMail'}
 	};
 	const mockLangChange = new Subject<{lang: string}>();
 	const mockStateChange = new Subject<ObIServiceNavigationState>();
@@ -87,26 +88,29 @@ describe('ObServiceNavigationService', () => {
 					}
 				});
 
-				describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getUserName$', 'getSettingsUrl$', 'getAvatarUrl$'])('%s', method => {
-					it('should return an observable', () => {
-						expect(service.getLoginUrl$() instanceof Observable).toBe(true);
-					});
-
-					it('should not emit', fakeAsync(() => {
-						let hasEmitted = false;
-						service[method]().subscribe(() => {
-							hasEmitted = true;
+				describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getUserName$', 'getSettingsUrl$', 'getAvatarUrl$', 'getInboxMailUrl$'])(
+					'%s',
+					method => {
+						it('should return an observable', () => {
+							expect(service.getLoginUrl$() instanceof Observable).toBe(true);
 						});
-						tick(1000);
-						expect(hasEmitted).toBe(false);
-					}));
 
-					it('should not call "ObServiceNavigationConfigApiService.fetchUrls()"', fakeAsync(() => {
-						service.getLoginUrl$().subscribe();
-						tick(1000);
-						expect(configService.fetchUrls).not.toHaveBeenCalled();
-					}));
-				});
+						it('should not emit', fakeAsync(() => {
+							let hasEmitted = false;
+							service[method]().subscribe(() => {
+								hasEmitted = true;
+							});
+							tick(1000);
+							expect(hasEmitted).toBe(false);
+						}));
+
+						it('should not call "ObServiceNavigationConfigApiService.fetchUrls()"', fakeAsync(() => {
+							service.getLoginUrl$().subscribe();
+							tick(1000);
+							expect(configService.fetchUrls).not.toHaveBeenCalled();
+						}));
+					}
+				);
 
 				describe('getLoginState$', () => {
 					it('should return an observable', () => {
@@ -143,28 +147,33 @@ describe('ObServiceNavigationService', () => {
 							service.setReturnUrl('http://localhost');
 						});
 
-						describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getLoginState$', 'getUserName$', 'getSettingsUrl$', 'getAvatarUrl$'])(
-							'%s',
-							method => {
-								it('should return an observable', () => {
-									expect(service[method]() instanceof Observable).toBe(true);
+						describe.each([
+							'getLoginUrl$',
+							'getLogoutUrl$',
+							'getLoginState$',
+							'getUserName$',
+							'getSettingsUrl$',
+							'getAvatarUrl$',
+							'getInboxMailUrl$'
+						])('%s', method => {
+							it('should return an observable', () => {
+								expect(service[method]() instanceof Observable).toBe(true);
+							});
+
+							describe('ObServiceNavigationConfigService.fetchUrls', () => {
+								beforeEach(() => {
+									service[method]().subscribe();
 								});
 
-								describe('ObServiceNavigationConfigService.fetchUrls', () => {
-									beforeEach(() => {
-										service[method]().subscribe();
-									});
-
-									it('should have been called once', () => {
-										expect(configService.fetchUrls).toHaveBeenCalledTimes(1);
-									});
-
-									it(`should have been called with "${calledPamsUrl}"`, () => {
-										expect(configService.fetchUrls).toHaveBeenCalledWith(calledPamsUrl);
-									});
+								it('should have been called once', () => {
+									expect(configService.fetchUrls).toHaveBeenCalledTimes(1);
 								});
-							}
-						);
+
+								it(`should have been called with "${calledPamsUrl}"`, () => {
+									expect(configService.fetchUrls).toHaveBeenCalledWith(calledPamsUrl);
+								});
+							});
+						});
 
 						describe('getLoginUrl$', () => {
 							describe.each(['de', 'fr', 'it', 'en', 'es'])('with "%s" as language', language => {
@@ -178,7 +187,8 @@ describe('ObServiceNavigationService', () => {
 
 						describe.each([
 							{method: 'getLogoutUrl$', url: 'http://logout'},
-							{method: 'getSettingsUrl$', url: 'http://settings'}
+							{method: 'getSettingsUrl$', url: 'http://settings'},
+							{method: 'getInboxMailUrl$', url: 'http://inboxMail'}
 						])('$method', ({method, url}) => {
 							it(`should emit "${url}"`, () => {
 								expect(firstValueFrom(service[method]())).resolves.toBe(url);

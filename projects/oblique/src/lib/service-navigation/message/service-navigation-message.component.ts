@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 
 @Component({
 	selector: 'ob-service-navigation-message',
@@ -6,4 +6,6 @@ import {Component, ViewEncapsulation} from '@angular/core';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation-message'}
 })
-export class ObServiceNavigationMessageComponent {}
+export class ObServiceNavigationMessageComponent {
+	@Input() linkHref = '';
+}

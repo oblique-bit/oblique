@@ -24,6 +24,7 @@ describe('ObServiceNavigationComponent', () => {
 		getLoginUrl$: jest.fn().mockReturnValue(of('loginUrl')),
 		getLogoutUrl$: jest.fn().mockReturnValue(of('logoutUrl')),
 		getSettingsUrl$: jest.fn().mockReturnValue(of('settingsUrl')),
+		getInboxMailUrl$: jest.fn().mockReturnValue(of('inboxMailUrl')),
 		getUserName$: jest.fn().mockReturnValue(of('John Doe')),
 		getAvatarUrl$: jest.fn().mockReturnValue(of('http://avatar-url')),
 		getLoginState$: jest.fn().mockReturnValue(mockLoginState.asObservable())
@@ -141,7 +142,8 @@ describe('ObServiceNavigationComponent', () => {
 		{property: 'settingsUrl$', method: 'getSettingsUrl$', emit: 'settingsUrl'},
 		{property: 'loginState$', method: 'getLoginState$', emit: 'SA'},
 		{property: 'userName$', method: 'getUserName$', emit: 'John Doe'},
-		{property: 'avatarUrl$', method: 'getAvatarUrl$', emit: 'http://avatar-url'}
+		{property: 'avatarUrl$', method: 'getAvatarUrl$', emit: 'http://avatar-url'},
+		{property: 'inboxMailUrl$', method: 'getInboxMailUrl$', emit: 'inboxMailUrl'}
 	])('$method', ({property, method, emit}) => {
 		it('should be an observable', () => {
 			expect(component[property] instanceof Observable).toBe(true);

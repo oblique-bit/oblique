@@ -40,6 +40,19 @@ describe('ObServiceNavigationMessageComponent', () => {
 		expect(await host.hasClass('ob-service-navigation-message')).toBe(true);
 	});
 
+	describe('linkHref', () => {
+		it('should be initialized to an empty string', () => {
+			expect(component.linkHref).toBe('');
+		});
+
+		it('should be the target of the link', async () => {
+			component.linkHref = '/foo';
+			fixture.detectChanges();
+			const link = await harness.getLink();
+			expect(await link.getProperty('href')).toBe('http://localhost/foo');
+		});
+	});
+
 	describe('link', () => {
 		let link: TestElement;
 		beforeEach(async () => {
@@ -55,6 +68,10 @@ describe('ObServiceNavigationMessageComponent', () => {
 			{attribute: 'mat-icon-button', value: ''}
 		])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
 			expect(await link.getAttribute(attribute)).toBe(value);
+		});
+
+		it('should have an "isExternalLink" property set to "false"', async () => {
+			expect(await link.getProperty('isExternalLink')).toBe(false);
 		});
 
 		it('should have the "ob-widget" class', async () => {
