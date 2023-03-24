@@ -3,6 +3,7 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ComponentFixture} from '@angular/core/testing';
 import {MatIconHarness} from '@angular/material/icon/testing';
 import {MatLegacyTooltipHarness as MatTooltipHarness} from '@angular/material/legacy-tooltip/testing';
+import {ObServiceNavigationPopOverHarness} from '../shared/popover-section/service-navigation-popover.harness';
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
 
 export class ObServiceNavigationApplicationsHarness extends ContentContainerComponentHarness {
@@ -23,5 +24,14 @@ export class ObServiceNavigationApplicationsHarness extends ContentContainerComp
 
 	public getIconHarness(fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>): Promise<MatIconHarness> {
 		return TestbedHarnessEnvironment.documentRootLoader(fixture).getHarnessOrNull(MatIconHarness);
+	}
+
+	public async openPopover(): Promise<void> {
+		const trigger = await this.getTrigger();
+		return trigger.click();
+	}
+
+	public async getPopoverHarness(): Promise<ObServiceNavigationPopOverHarness> {
+		return this.getHarnessOrNull(ObServiceNavigationPopOverHarness);
 	}
 }

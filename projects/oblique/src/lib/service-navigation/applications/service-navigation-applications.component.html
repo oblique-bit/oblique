@@ -1,12 +1,36 @@
-<a
-	[href]="applicationsUrl"
-	[isExternalLink]="false"
-	id="service-navigation-applications-link"
+<button
+	*ngIf="isLoggedIn; else isLoggedOut"
+	type="button"
+	id="service-navigation-applications-button"
 	class="ob-widget"
 	mat-icon-button
 	obButton="secondary"
-	[matTooltip]="'i18n.oblique.service-navigation.applications.link.tooltip' | translate"
+	[matTooltip]="'i18n.oblique.service-navigation.applications.button.tooltip' | translate"
+	[obPopover]="popoverContent"
+	placement="bottom"
 >
 	<mat-icon svgIcon="apps"></mat-icon>
-	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.link.label" | translate }}</span>
-</a>
+	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.button.label" | translate }}</span>
+</button>
+
+<ng-template #isLoggedOut>
+	<a
+		[href]="applicationsUrl"
+		[isExternalLink]="false"
+		id="service-navigation-applications-link"
+		class="ob-widget"
+		mat-icon-button
+		obButton="secondary"
+		[matTooltip]="'i18n.oblique.service-navigation.applications.link.tooltip' | translate"
+	>
+		<mat-icon svgIcon="apps"></mat-icon>
+		<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.link.label" | translate }}</span>
+	</a>
+</ng-template>
+
+<ng-template #popoverContent>
+	<ob-service-navigation-popover-section
+		header="i18n.oblique.service-navigation.applications.links.header"
+		[links]="[{ url: applicationsUrl, label: 'i18n.oblique.service-navigation.applications.link.label', isInternalLink: true }]"
+	></ob-service-navigation-popover-section>
+</ng-template>

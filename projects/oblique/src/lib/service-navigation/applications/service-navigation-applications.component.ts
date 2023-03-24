@@ -8,4 +8,5 @@ import {Component, Input, ViewEncapsulation} from '@angular/core';
 })
 export class ObServiceNavigationApplicationsComponent {
 	@Input() applicationsUrl = '';
+	@Input() isLoggedIn = false;
 }
