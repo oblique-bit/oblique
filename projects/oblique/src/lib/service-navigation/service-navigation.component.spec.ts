@@ -145,6 +145,12 @@ describe('ObServiceNavigationComponent', () => {
 		});
 	});
 
+	describe('infoContact', () => {
+		it('should be initialized to undefined', () => {
+			expect(component.infoContact).toBeUndefined();
+		});
+	});
+
 	describe.each([
 		{property: 'loginUrl$', method: 'getLoginUrl$', emit: 'loginUrl'},
 		{property: 'logoutUrl$', method: 'getLogoutUrl$', emit: 'logoutUrl'},

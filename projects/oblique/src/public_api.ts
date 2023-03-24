@@ -51,7 +51,8 @@ export {
 	ObServiceNavigationComponent,
 	ObServiceNavigationModule,
 	ObEPamsEnvironment,
-	ObIServiceNavigationLink
+	ObIServiceNavigationLink,
+	ObIServiceNavigationContact
 } from './lib/service-navigation';
 export {
 	ObHttpApiInterceptor,

@@ -1,5 +1,5 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {ObIServiceNavigationLink} from '../service-navigation.model';
+import {ObIServiceNavigationContact, ObIServiceNavigationLink} from '../service-navigation.model';
 
 @Component({
 	selector: 'ob-service-navigation-info',
@@ -9,4 +9,5 @@ import {ObIServiceNavigationLink} from '../service-navigation.model';
 })
 export class ObServiceNavigationInfoComponent {
 	@Input() links: ObIServiceNavigationLink[] = [];
+	@Input() contact: ObIServiceNavigationContact;
 }

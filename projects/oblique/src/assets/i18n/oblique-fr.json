@@ -111,6 +111,8 @@
   "i18n.oblique.service-navigation.authentication.tooltip.login": "Cliquer pour se connecter",
   "i18n.oblique.service-navigation.authentication.tooltip.logout": "Cliquer pour se déconnecter",
   "i18n.oblique.service-navigation.info.button": "Aide",
+  "i18n.oblique.service-navigation.info.contact.header": "Contact",
+  "i18n.oblique.service-navigation.info.contact.text": "En cas de questions, vous pouvez nous contacter :",
   "i18n.oblique.service-navigation.info.header": "Aide",
   "i18n.oblique.service-navigation.info.tooltip": "Cliquer pour ouvrir l'aide",
   "i18n.oblique.service-navigation.message.link": "Messages",

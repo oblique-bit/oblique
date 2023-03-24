@@ -12,6 +12,7 @@ import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationInfoHarness} from './service-navigation-info.harness';
 import {ObServiceNavigationInfoComponent} from './service-navigation-info.component';
+import {ObContactToLinksPipe} from './contact-to-links.pipe';
 
 describe('ObServiceNavigationInfoComponent', () => {
 	let component: ObServiceNavigationInfoComponent;
@@ -21,7 +22,12 @@ describe('ObServiceNavigationInfoComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [MatIconModule, MatTooltipModule, ObPopoverModule],
-			declarations: [ObServiceNavigationInfoComponent, ObServiceNavigationPopoverSectionComponent, ObMockTranslatePipe]
+			declarations: [
+				ObServiceNavigationInfoComponent,
+				ObServiceNavigationPopoverSectionComponent,
+				ObMockTranslatePipe,
+				ObContactToLinksPipe
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationInfoComponent);
@@ -98,6 +104,147 @@ describe('ObServiceNavigationInfoComponent', () => {
 						{property: 'url', value: 'url_2'},
 						{property: 'label', value: 'URL 2'}
 					])('should have "$value" as "$property" property on the second link', ({property, value}) => {
+						expect(section.links[1][property]).toBe(value);
+					});
+				});
+			});
+		});
+	});
+
+	describe('contact', () => {
+		it('should be initialized to undefined', () => {
+			expect(component.contact).toBeUndefined();
+		});
+
+		describe('without contact', () => {
+			it('should have 0 section', fakeAsync(async () => {
+				component.links = [];
+				await harness.openPopover();
+				fixture.detectChanges();
+				tick();
+				const sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
+				expect(sections.length).toBe(0);
+			}));
+		});
+
+		describe('with tel property only', () => {
+			let sections: DebugElement[];
+			beforeEach(fakeAsync(async () => {
+				component.contact = {tel: '123'};
+				await harness.openPopover();
+				fixture.detectChanges();
+				tick();
+				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
+			}));
+
+			it('should have 1 section', () => {
+				expect(sections.length).toBe(1);
+			});
+
+			describe('first section', () => {
+				let section: ObServiceNavigationPopoverSectionComponent;
+				beforeEach(() => {
+					section = sections[0].componentInstance;
+				});
+
+				it('should have "i18n.oblique.service-navigation.info.contact.header" as header', () => {
+					expect(section.header).toBe('i18n.oblique.service-navigation.info.contact.header');
+				});
+
+				describe('links', () => {
+					it('should have 1', () => {
+						expect(section.links.length).toBe(1);
+					});
+
+					it.each([
+						{property: 'url', value: 'tel:123'},
+						{property: 'label', value: '123'}
+					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
+						expect(section.links[0][property]).toBe(value);
+					});
+				});
+			});
+		});
+
+		describe('with email property only', () => {
+			let sections: DebugElement[];
+			beforeEach(fakeAsync(async () => {
+				component.contact = {email: 'text@test.com'};
+				await harness.openPopover();
+				fixture.detectChanges();
+				tick();
+				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
+			}));
+
+			it('should have 1 section', () => {
+				expect(sections.length).toBe(1);
+			});
+
+			describe('first section', () => {
+				let section: ObServiceNavigationPopoverSectionComponent;
+				beforeEach(() => {
+					section = sections[0].componentInstance;
+				});
+
+				it('should have "i18n.oblique.service-navigation.info.contact.header" as header', () => {
+					expect(section.header).toBe('i18n.oblique.service-navigation.info.contact.header');
+				});
+
+				describe('links', () => {
+					it('should have 1', () => {
+						expect(section.links.length).toBe(1);
+					});
+
+					it.each([
+						{property: 'url', value: 'mailto:text@test.com'},
+						{property: 'label', value: 'text@test.com'}
+					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
+						expect(section.links[0][property]).toBe(value);
+					});
+				});
+			});
+		});
+
+		describe('with email and tel properties', () => {
+			let sections: DebugElement[];
+			beforeEach(fakeAsync(async () => {
+				component.contact = {email: 'text@test.com', tel: '123'};
+				await harness.openPopover();
+				fixture.detectChanges();
+				tick();
+				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
+			}));
+
+			it('should have 1 section', () => {
+				expect(sections.length).toBe(1);
+			});
+
+			describe('first section', () => {
+				let section: ObServiceNavigationPopoverSectionComponent;
+				beforeEach(() => {
+					section = sections[0].componentInstance;
+				});
+
+				it('should have "i18n.oblique.service-navigation.info.contact.header" as header', () => {
+					expect(section.header).toBe('i18n.oblique.service-navigation.info.contact.header');
+				});
+
+				describe('links', () => {
+					it('should have 2', () => {
+						expect(section.links.length).toBe(2);
+					});
+
+					it.each([
+						{property: 'url', value: 'mailto:text@test.com'},
+						{property: 'label', value: 'text@test.com'}
+					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
+						expect(section.links[0][property]).toBe(value);
+					});
+
+					it.each([
+						{property: 'url', value: 'tel:123'},
+						{property: 'label', value: '123'}
+					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
 						expect(section.links[1][property]).toBe(value);
 					});
 				});

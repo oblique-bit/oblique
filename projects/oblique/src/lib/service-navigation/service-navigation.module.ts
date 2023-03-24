@@ -16,6 +16,7 @@ import {ObServiceNavigationAuthenticationComponent} from './authentication/servi
 import {ObServiceNavigationProfileComponent} from './profile/service-navigation-profile.component';
 import {ObServiceNavigationMessageComponent} from './message/service-navigation-message.component';
 import {ObServiceNavigationInfoComponent} from './info/service-navigation-info.component';
+import {ObContactToLinksPipe} from './info/contact-to-links.pipe';
 import {ObServiceNavigationComponent} from './service-navigation.component';
 
 @NgModule({
@@ -33,6 +34,7 @@ import {ObServiceNavigationComponent} from './service-navigation.component';
 		TranslateModule
 	],
 	declarations: [
+		ObContactToLinksPipe,
 		ObIsUserLoggedInPipe,
 		ObServiceNavigationAuthenticationComponent,
 		ObServiceNavigationComponent,

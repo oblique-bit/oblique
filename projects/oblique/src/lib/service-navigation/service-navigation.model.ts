@@ -11,6 +11,11 @@ export interface ObIServiceNavigationLink {
 	label: string;
 }
 
+export interface ObIServiceNavigationContact {
+	email?: string;
+	tel?: string;
+}
+
 export interface ObISectionLink {
 	url: string;
 	label: string;
