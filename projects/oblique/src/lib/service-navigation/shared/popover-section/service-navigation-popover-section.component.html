@@ -3,6 +3,7 @@
 		<ng-content select="[obHeaderPrefix]"></ng-content>
 		{{ header | translate }}
 	</header>
+	<p *ngIf="text">{{ text | translate }}</p>
 	<ul class="ob-popover-list" *ngIf="links?.length > 0">
 		<li *ngFor="let link of links">
 			<a

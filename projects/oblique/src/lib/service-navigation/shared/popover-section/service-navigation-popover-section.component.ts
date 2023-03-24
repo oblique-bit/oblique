@@ -11,4 +11,5 @@ import {ObISectionLink} from '../../service-navigation.model';
 export class ObServiceNavigationPopoverSectionComponent {
 	@Input() header = '';
 	@Input() links: ObISectionLink[] = [];
+	@Input() text = '';
 }

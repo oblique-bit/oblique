@@ -69,6 +69,35 @@ describe('ObServiceNavigationPopoverSectionComponent', () => {
 			});
 		});
 
+		describe('text', () => {
+			it('should be initialized to an empty string', () => {
+				expect(component.text).toBe('');
+			});
+
+			describe('without value', () => {
+				it('should not exist', async () => {
+					expect(await harness.getParagraph()).toBeNull();
+				});
+			});
+
+			describe('with a value', () => {
+				let paragraph: TestElement;
+				beforeEach(async () => {
+					component.text = 'Section text';
+					fixture.detectChanges();
+					paragraph = await harness.getParagraph();
+				});
+
+				it('should exist', () => {
+					expect(paragraph).toBeTruthy();
+				});
+
+				it('should contain the text attribute', async () => {
+					expect(await paragraph.text()).toBe('Section text');
+				});
+			});
+		});
+
 		describe('list', () => {
 			let list: TestElement;
 			describe('with default value', () => {
