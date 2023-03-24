@@ -110,6 +110,7 @@
   "i18n.oblique.service-navigation.authentication.logout": "Abmelden",
   "i18n.oblique.service-navigation.authentication.tooltip.login": "Klicken zum Anmelden",
   "i18n.oblique.service-navigation.authentication.tooltip.logout": "Klicken zum Abmelden",
+  "i18n.oblique.service-navigation.message.link": "Benachrichtigungen",
   "i18n.oblique.service-navigation.profile.alt": "Profilbild des angemeldeten Benutzers",
   "i18n.oblique.service-navigation.profile.button": "Profil",
   "i18n.oblique.service-navigation.profile.guest": "Gast",

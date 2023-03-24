@@ -12,6 +12,7 @@ import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
 import {ObServiceNavigationPopoverSectionComponent} from './shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationAuthenticationComponent} from './authentication/service-navigation-authentication.component';
 import {ObServiceNavigationProfileComponent} from './profile/service-navigation-profile.component';
+import {ObServiceNavigationMessageComponent} from './message/service-navigation-message.component';
 import {ObServiceNavigationComponent} from './service-navigation.component';
 
 @NgModule({
@@ -30,6 +31,7 @@ import {ObServiceNavigationComponent} from './service-navigation.component';
 		ObIsUserLoggedInPipe,
 		ObServiceNavigationAuthenticationComponent,
 		ObServiceNavigationComponent,
+		ObServiceNavigationMessageComponent,
 		ObServiceNavigationPopoverSectionComponent,
 		ObServiceNavigationProfileComponent
 	],
