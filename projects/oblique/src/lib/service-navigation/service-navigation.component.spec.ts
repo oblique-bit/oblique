@@ -7,6 +7,7 @@ import {ObServiceNavigationProfileHarness} from './profile/service-navigation-pr
 import {ObServiceNavigationAuthenticationHarness} from './authentication/service-navigation-authentication.harness';
 import {ObServiceNavigationMessageHarness} from './message/service-navigation-message.harness';
 import {ObServiceNavigationInfoHarness} from './info/service-navigation-info.harness';
+import {ObServiceNavigationApplicationsHarness} from './applications/service-navigation-applications.harness';
 import {ObServiceNavigationComponent} from './service-navigation.component';
 import {ObServiceNavigationHarness} from './service-navigation.harness';
 import {ObServiceNavigationService} from './service-navigation.service';
@@ -35,7 +36,8 @@ describe('ObServiceNavigationComponent', () => {
 		auth: ObServiceNavigationAuthenticationHarness.hostSelector,
 		profile: ObServiceNavigationProfileHarness.hostSelector,
 		message: ObServiceNavigationMessageHarness.hostSelector,
-		info: ObServiceNavigationInfoHarness.hostSelector
+		info: ObServiceNavigationInfoHarness.hostSelector,
+		applications: ObServiceNavigationApplicationsHarness.hostSelector
 	};
 
 	beforeEach(() => {
@@ -193,12 +195,12 @@ describe('ObServiceNavigationComponent', () => {
 		});
 
 		describe.each([
-			{loginState: 'SA', widgets: [selectors.info, selectors.auth]},
-			{loginState: 'S1', widgets: [selectors.info, selectors.auth]},
-			{loginState: 'S2OK', widgets: [selectors.message, selectors.info, selectors.profile, selectors.auth]},
-			{loginState: 'S2+OK', widgets: [selectors.message, selectors.info, selectors.profile, selectors.auth]},
-			{loginState: 'S3OK', widgets: [selectors.message, selectors.info, selectors.profile, selectors.auth]},
-			{loginState: 'S3+OK', widgets: [selectors.message, selectors.info, selectors.profile, selectors.auth]}
+			{loginState: 'SA', widgets: [selectors.info, selectors.applications, selectors.auth]},
+			{loginState: 'S1', widgets: [selectors.info, selectors.applications, selectors.auth]},
+			{loginState: 'S2OK', widgets: [selectors.message, selectors.info, selectors.applications, selectors.profile, selectors.auth]},
+			{loginState: 'S2+OK', widgets: [selectors.message, selectors.info, selectors.applications, selectors.profile, selectors.auth]},
+			{loginState: 'S3OK', widgets: [selectors.message, selectors.info, selectors.applications, selectors.profile, selectors.auth]},
+			{loginState: 'S3+OK', widgets: [selectors.message, selectors.info, selectors.applications, selectors.profile, selectors.auth]}
 		])('loginState "$loginState"', ({loginState, widgets}) => {
 			let children: TestElement[];
 			beforeEach(async () => {

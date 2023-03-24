@@ -106,6 +106,8 @@
   "i18n.pagination.of-label": "di",
   "i18n.pagination.first-page": "Salta alla prima pagina",
   "i18n.pagination.last-page": "Salta all'ultima pagina",
+  "i18n.oblique.service-navigation.applications.link.label": "Tutti i servizi",
+  "i18n.oblique.service-navigation.applications.link.tooltip": "Fare clic per andare alla pagina iniziale di ePortal",
   "i18n.oblique.service-navigation.authentication.login": "Accedere",
   "i18n.oblique.service-navigation.authentication.logout": "Uscire",
   "i18n.oblique.service-navigation.authentication.tooltip.login": "Fare clic per accedere",

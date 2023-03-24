@@ -106,6 +106,8 @@
   "i18n.pagination.of-label": "of",
   "i18n.pagination.first-page": "Jump to first page",
   "i18n.pagination.last-page": "Jump to last page",
+  "i18n.oblique.service-navigation.applications.link.label": "All services",
+  "i18n.oblique.service-navigation.applications.link.tooltip": "Click to go to the ePortal home page",
   "i18n.oblique.service-navigation.authentication.login": "Login",
   "i18n.oblique.service-navigation.authentication.logout": "Logout",
   "i18n.oblique.service-navigation.authentication.tooltip.login": "Click to log in",
