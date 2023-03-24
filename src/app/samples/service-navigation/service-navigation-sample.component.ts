@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {ObIServiceNavigationLink, WINDOW} from '@oblique/oblique';
+import {ObIServiceNavigationContact, ObIServiceNavigationLink, WINDOW} from '@oblique/oblique';
 import {environment} from '../../../environments/environment';
 
 @Component({
@@ -43,12 +43,28 @@ export class ServiceNavigationSampleComponent implements OnInit {
 			label: 'i18n.service-navigation.info.link.multimedia-manual.label'
 		}
 	];
+	hasContactEmail = true;
+	hasContactPhone = true;
+	infoContact: ObIServiceNavigationContact = {
+		email: 'support@bit.admin.ch',
+		tel: '+41 58 461 61 11'
+	};
 	readonly rootUrl = environment.pams.rootUrl;
 	readonly environment = environment.pams.environment;
+
+	private readonly contactInfo: ObIServiceNavigationContact = {
+		email: 'support@bit.admin.ch',
+		tel: '+41 58 461 61 11'
+	};
 
 	constructor(@Inject(WINDOW) private readonly window: Window) {}
 
 	ngOnInit(): void {
 		this.returnUrl = this.window.location.href;
+	}
+
+	handleContactInfo(): void {
+		this.infoContact.email = this.hasContactEmail ? this.contactInfo.email : undefined;
+		this.infoContact.tel = this.hasContactPhone ? this.contactInfo.tel : undefined;
 	}
 }

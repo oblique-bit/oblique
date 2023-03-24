@@ -8,12 +8,15 @@
 			[returnUrl]="returnUrl"
 			[profileLinks]="profileLinks"
 			[infoLinks]="infoLinks"
+			[infoContact]="infoContact"
 		></ob-service-navigation>
 	</section>
 	<ng-container column-right-content>
 		<fieldset class="toggles">
 			<legend>Info widget settings</legend>
 			<mat-slide-toggle [(ngModel)]="hasInfoLinks">toggle info links</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="hasContactEmail" (change)="handleContactInfo()">toggle contact email</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="hasContactPhone" (change)="handleContactInfo()">toggle contact phone</mat-slide-toggle>
 		</fieldset>
 		<fieldset class="toggles">
 			<legend>Profile widget settings</legend>
