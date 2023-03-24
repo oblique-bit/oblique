@@ -6,6 +6,7 @@ import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
 import {ObServiceNavigationProfileHarness} from './profile/service-navigation-profile.harness';
 import {ObServiceNavigationAuthenticationHarness} from './authentication/service-navigation-authentication.harness';
 import {ObServiceNavigationMessageHarness} from './message/service-navigation-message.harness';
+import {ObServiceNavigationInfoHarness} from './info/service-navigation-info.harness';
 import {ObServiceNavigationComponent} from './service-navigation.component';
 import {ObServiceNavigationHarness} from './service-navigation.harness';
 import {ObServiceNavigationService} from './service-navigation.service';
@@ -33,7 +34,8 @@ describe('ObServiceNavigationComponent', () => {
 	const selectors = {
 		auth: ObServiceNavigationAuthenticationHarness.hostSelector,
 		profile: ObServiceNavigationProfileHarness.hostSelector,
-		message: ObServiceNavigationMessageHarness.hostSelector
+		message: ObServiceNavigationMessageHarness.hostSelector,
+		info: ObServiceNavigationInfoHarness.hostSelector
 	};
 
 	beforeEach(() => {
@@ -179,12 +181,12 @@ describe('ObServiceNavigationComponent', () => {
 		});
 
 		describe.each([
-			{loginState: 'SA', widgets: [selectors.auth]},
-			{loginState: 'S1', widgets: [selectors.auth]},
-			{loginState: 'S2OK', widgets: [selectors.message, selectors.profile, selectors.auth]},
-			{loginState: 'S2+OK', widgets: [selectors.message, selectors.profile, selectors.auth]},
-			{loginState: 'S3OK', widgets: [selectors.message, selectors.profile, selectors.auth]},
-			{loginState: 'S3+OK', widgets: [selectors.message, selectors.profile, selectors.auth]}
+			{loginState: 'SA', widgets: [selectors.info, selectors.auth]},
+			{loginState: 'S1', widgets: [selectors.info, selectors.auth]},
+			{loginState: 'S2OK', widgets: [selectors.message, selectors.info, selectors.profile, selectors.auth]},
+			{loginState: 'S2+OK', widgets: [selectors.message, selectors.info, selectors.profile, selectors.auth]},
+			{loginState: 'S3OK', widgets: [selectors.message, selectors.info, selectors.profile, selectors.auth]},
+			{loginState: 'S3+OK', widgets: [selectors.message, selectors.info, selectors.profile, selectors.auth]}
 		])('loginState "$loginState"', ({loginState, widgets}) => {
 			let children: TestElement[];
 			beforeEach(async () => {

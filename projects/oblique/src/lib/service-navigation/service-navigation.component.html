@@ -2,6 +2,9 @@
 	<li *ngIf="loginState$ | async | obIsUserLoggedIn">
 		<ob-service-navigation-message [linkHref]="inboxMailUrl$ | async" [count]="messageCount$ | async"></ob-service-navigation-message>
 	</li>
+	<li>
+		<ob-service-navigation-info></ob-service-navigation-info>
+	</li>
 	<li *ngIf="loginState$ | async | obIsUserLoggedIn">
 		<ob-service-navigation-profile
 			[userName]="userName$ | async"

@@ -1,0 +1,15 @@
+<button
+	type="button"
+	id="service-navigation-info-popover-toggle"
+	class="ob-widget"
+	mat-icon-button
+	obButton="secondary"
+	[matTooltip]="'i18n.oblique.service-navigation.info.tooltip' | translate"
+	[obPopover]="popoverInfo"
+	placement="bottom"
+>
+	<mat-icon svgIcon="help"></mat-icon>
+	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.info.button" | translate }}</span>
+</button>
+
+<ng-template #popoverInfo></ng-template>

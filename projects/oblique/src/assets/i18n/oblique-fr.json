@@ -110,6 +110,8 @@
   "i18n.oblique.service-navigation.authentication.logout": "Se déconnecter",
   "i18n.oblique.service-navigation.authentication.tooltip.login": "Cliquer pour se connecter",
   "i18n.oblique.service-navigation.authentication.tooltip.logout": "Cliquer pour se déconnecter",
+  "i18n.oblique.service-navigation.info.button": "Aide",
+  "i18n.oblique.service-navigation.info.tooltip": "Cliquer pour ouvrir l'aide",
   "i18n.oblique.service-navigation.message.link": "Messages",
   "i18n.oblique.service-navigation.message.tooltip.text": "Cliquer pour aller sur la boîte de réception ({{count}} {{messagePluralizationKey}})",
   "i18n.oblique.service-navigation.message.tooltip.singular": "nouveau message",

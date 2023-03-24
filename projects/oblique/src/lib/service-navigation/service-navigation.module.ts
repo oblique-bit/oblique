@@ -15,6 +15,7 @@ import {ObServiceNavigationPopoverSectionComponent} from './shared/popover-secti
 import {ObServiceNavigationAuthenticationComponent} from './authentication/service-navigation-authentication.component';
 import {ObServiceNavigationProfileComponent} from './profile/service-navigation-profile.component';
 import {ObServiceNavigationMessageComponent} from './message/service-navigation-message.component';
+import {ObServiceNavigationInfoComponent} from './info/service-navigation-info.component';
 import {ObServiceNavigationComponent} from './service-navigation.component';
 
 @NgModule({
@@ -35,6 +36,7 @@ import {ObServiceNavigationComponent} from './service-navigation.component';
 		ObIsUserLoggedInPipe,
 		ObServiceNavigationAuthenticationComponent,
 		ObServiceNavigationComponent,
+		ObServiceNavigationInfoComponent,
 		ObServiceNavigationMessageComponent,
 		ObServiceNavigationPopoverSectionComponent,
 		ObServiceNavigationProfileComponent
