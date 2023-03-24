@@ -21,7 +21,8 @@ describe('ObServiceNavigationService', () => {
 		},
 		logout: {url: 'http://logout'},
 		settings: {url: 'http://settings'},
-		inboxMail: {url: 'http://inboxMail'}
+		inboxMail: {url: 'http://inboxMail'},
+		allServices: {url: 'http://applications'}
 	};
 	const mockLangChange = new Subject<{lang: string}>();
 	const mockStateChange = new Subject<ObIServiceNavigationState>();
@@ -96,7 +97,8 @@ describe('ObServiceNavigationService', () => {
 					'getSettingsUrl$',
 					'getAvatarUrl$',
 					'getInboxMailUrl$',
-					'getMessageCount$'
+					'getMessageCount$',
+					'getApplicationsUrl$'
 				])('%s', method => {
 					it('should return an observable', () => {
 						expect(service.getLoginUrl$() instanceof Observable).toBe(true);
@@ -161,7 +163,8 @@ describe('ObServiceNavigationService', () => {
 							'getSettingsUrl$',
 							'getAvatarUrl$',
 							'getInboxMailUrl$',
-							'getMessageCount$'
+							'getMessageCount$',
+							'getApplicationsUrl$'
 						])('%s', method => {
 							it('should return an observable', () => {
 								expect(service[method]() instanceof Observable).toBe(true);
@@ -195,7 +198,8 @@ describe('ObServiceNavigationService', () => {
 						describe.each([
 							{method: 'getLogoutUrl$', url: 'http://logout'},
 							{method: 'getSettingsUrl$', url: 'http://settings'},
-							{method: 'getInboxMailUrl$', url: 'http://inboxMail'}
+							{method: 'getInboxMailUrl$', url: 'http://inboxMail'},
+							{method: 'getApplicationsUrl$', url: 'http://applications'}
 						])('$method', ({method, url}) => {
 							it(`should emit "${url}"`, () => {
 								expect(firstValueFrom(service[method]())).resolves.toBe(url);

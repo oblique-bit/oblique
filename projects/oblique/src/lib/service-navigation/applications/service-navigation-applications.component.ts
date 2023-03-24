@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 
 @Component({
 	selector: 'ob-service-navigation-applications',
@@ -6,4 +6,6 @@ import {Component, ViewEncapsulation} from '@angular/core';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation-applications'}
 })
-export class ObServiceNavigationApplicationsComponent {}
+export class ObServiceNavigationApplicationsComponent {
+	@Input() applicationsUrl = '';
+}

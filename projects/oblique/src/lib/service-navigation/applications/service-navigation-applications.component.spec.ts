@@ -39,6 +39,18 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 		expect(await host.hasClass('ob-service-navigation-applications')).toBe(true);
 	});
 
+	describe('applicationsUrl', () => {
+		it('should be initialized to an empty string', () => {
+			expect(component.applicationsUrl).toBe('');
+		});
+
+		it('should be mapped to the link "href" property', async () => {
+			component.applicationsUrl = 'applications-url';
+			const trigger = await harness.getTrigger();
+			expect(await trigger.getAttribute('href')).toBe('applications-url');
+		});
+	});
+
 	describe('trigger', () => {
 		let trigger: TestElement;
 		beforeEach(async () => {
@@ -53,9 +65,14 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 		it.each([
 			{attribute: 'id', val: `service-navigation-applications-link`},
 			{attribute: 'obButton', val: 'secondary'},
-			{attribute: 'mat-icon-button', val: ''}
-		])('should have $val as $attribute', async ({attribute, val}) => {
+			{attribute: 'mat-icon-button', val: ''},
+			{attribute: 'href', val: ''}
+		])('should have "$val" as "$attribute" attribute', async ({attribute, val}) => {
 			expect(await trigger.getAttribute(attribute)).toBe(val);
+		});
+
+		it('should have "false" as "isExternalLink" property', async () => {
+			expect(await trigger.getProperty('isExternalLink')).toBe(false);
 		});
 
 		it('should have "ob-widget" class', async () => {

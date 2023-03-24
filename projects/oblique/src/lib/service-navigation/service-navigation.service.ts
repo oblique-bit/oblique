@@ -74,6 +74,10 @@ export class ObServiceNavigationService {
 		return this.config$.pipe(map(config => config.inboxMail.url));
 	}
 
+	getApplicationsUrl$(): Observable<string> {
+		return this.config$.pipe(map(config => config.allServices.url));
+	}
+
 	getLoginState$(): Observable<ObLoginState> {
 		return this.getState$().pipe(
 			map(state => state.loginState),

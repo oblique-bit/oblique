@@ -25,6 +25,7 @@ export class ObServiceNavigationComponent implements OnInit, OnChanges {
 	readonly avatarUrl$ = this.headerControlsService.getAvatarUrl$();
 	readonly inboxMailUrl$ = this.headerControlsService.getInboxMailUrl$();
 	readonly messageCount$ = this.headerControlsService.getMessageCount$();
+	readonly applicationsUrl$ = this.headerControlsService.getApplicationsUrl$();
 
 	constructor(private readonly headerControlsService: ObServiceNavigationService) {}
 

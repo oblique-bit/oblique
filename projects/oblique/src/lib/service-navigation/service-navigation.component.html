@@ -6,7 +6,7 @@
 		<ob-service-navigation-info [links]="infoLinks" [contact]="infoContact"></ob-service-navigation-info>
 	</li>
 	<li>
-		<ob-service-navigation-applications></ob-service-navigation-applications>
+		<ob-service-navigation-applications [applicationsUrl]="applicationsUrl$ | async"></ob-service-navigation-applications>
 	</li>
 	<li *ngIf="loginState$ | async | obIsUserLoggedIn">
 		<ob-service-navigation-profile
