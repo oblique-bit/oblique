@@ -139,6 +139,12 @@ describe('ObServiceNavigationComponent', () => {
 		});
 	});
 
+	describe('infoLinks', () => {
+		it('should be initialized to an empty array', () => {
+			expect(component.infoLinks).toEqual([]);
+		});
+	});
+
 	describe.each([
 		{property: 'loginUrl$', method: 'getLoginUrl$', emit: 'loginUrl'},
 		{property: 'logoutUrl$', method: 'getLogoutUrl$', emit: 'logoutUrl'},

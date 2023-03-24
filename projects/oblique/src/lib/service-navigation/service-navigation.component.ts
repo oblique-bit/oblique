@@ -12,6 +12,7 @@ import {ObEPamsEnvironment, ObIServiceNavigationLink} from './service-navigation
 })
 export class ObServiceNavigationComponent implements OnInit, OnChanges {
 	@Input() profileLinks: ObIServiceNavigationLink[] = [];
+	@Input() infoLinks: ObIServiceNavigationLink[] = [];
 	@Input() environment: ObEPamsEnvironment;
 	@Input() rootUrl: string;
 	@Input() returnUrl: string;

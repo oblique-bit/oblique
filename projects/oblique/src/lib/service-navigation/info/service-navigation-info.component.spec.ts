@@ -5,6 +5,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatIconHarness} from '@angular/material/icon/testing';
 import {MatLegacyTooltipHarness as MatTooltipHarness} from '@angular/material/legacy-tooltip/testing';
 import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
@@ -35,6 +37,72 @@ describe('ObServiceNavigationInfoComponent', () => {
 	it('should have "ob-service-navigation-info" class', async () => {
 		const host = await harness.host();
 		expect(await host.hasClass('ob-service-navigation-info')).toBe(true);
+	});
+
+	describe('links', () => {
+		it('should be initialized to an empty array', () => {
+			expect(component.links).toEqual([]);
+		});
+
+		describe('without additional links', () => {
+			it('should have 0 section', fakeAsync(async () => {
+				component.links = [];
+				await harness.openPopover();
+				fixture.detectChanges();
+				tick();
+				const sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
+				expect(sections.length).toBe(0);
+			}));
+		});
+
+		describe('with additional links', () => {
+			let sections: DebugElement[];
+			beforeEach(fakeAsync(async () => {
+				component.links = [
+					{url: 'url_1', label: 'URL 1'},
+					{url: 'url_2', label: 'URL 2'}
+				];
+				await harness.openPopover();
+				fixture.detectChanges();
+				tick();
+				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
+			}));
+
+			it('should have 1 section', () => {
+				expect(sections.length).toBe(1);
+			});
+
+			describe('first section', () => {
+				let section: ObServiceNavigationPopoverSectionComponent;
+				beforeEach(() => {
+					section = sections[0].componentInstance;
+				});
+
+				it('should have "i18n.oblique.service-navigation.info.header" as header', () => {
+					expect(section.header).toBe('i18n.oblique.service-navigation.info.header');
+				});
+
+				describe('links', () => {
+					it('should have 2', () => {
+						expect(section.links.length).toBe(2);
+					});
+
+					it.each([
+						{property: 'url', value: 'url_1'},
+						{property: 'label', value: 'URL 1'}
+					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
+						expect(section.links[0][property]).toBe(value);
+					});
+
+					it.each([
+						{property: 'url', value: 'url_2'},
+						{property: 'label', value: 'URL 2'}
+					])('should have "$value" as "$property" property on the second link', ({property, value}) => {
+						expect(section.links[1][property]).toBe(value);
+					});
+				});
+			});
+		});
 	});
 
 	describe('button', () => {

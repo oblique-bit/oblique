@@ -111,6 +111,7 @@
   "i18n.oblique.service-navigation.authentication.tooltip.login": "Click to log in",
   "i18n.oblique.service-navigation.authentication.tooltip.logout": "Click to log out",
   "i18n.oblique.service-navigation.info.button": "Help",
+  "i18n.oblique.service-navigation.info.header": "Help",
   "i18n.oblique.service-navigation.info.tooltip": "Click to toggle help",
   "i18n.oblique.service-navigation.message.link": "Messages",
   "i18n.oblique.service-navigation.message.tooltip.text": "Click to go to your inbox ({{count}} new {{messagePluralizationKey}})",

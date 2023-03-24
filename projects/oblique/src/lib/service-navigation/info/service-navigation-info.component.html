@@ -12,4 +12,7 @@
 	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.info.button" | translate }}</span>
 </button>
 
-<ng-template #popoverInfo></ng-template>
+<ng-template #popoverInfo>
+	<ob-service-navigation-popover-section *ngIf="links?.length > 0" header="i18n.oblique.service-navigation.info.header" [links]="links">
+	</ob-service-navigation-popover-section>
+</ng-template>
