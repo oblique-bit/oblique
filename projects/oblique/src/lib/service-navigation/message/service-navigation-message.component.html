@@ -1,4 +1,28 @@
-<a [href]="linkHref" [isExternalLink]="false" mat-icon-button obButton="secondary" class="ob-widget">
-	<mat-icon svgIcon="inbox"></mat-icon>
+<a
+	[href]="linkHref"
+	[isExternalLink]="false"
+	mat-icon-button
+	obButton="secondary"
+	class="ob-widget"
+	[matTooltip]="
+		'i18n.oblique.service-navigation.message.tooltip.text'
+			| obTranslateParams
+				: {
+						messagePluralizationKey:
+							count > 1
+								? 'i18n.oblique.service-navigation.message.tooltip.plural'
+								: 'i18n.oblique.service-navigation.message.tooltip.singular',
+						count: count === 0 ? 'i18n.oblique.service-navigation.message.tooltip.count.zero' : count
+				  }
+	"
+>
+	<mat-icon
+		matBadgeColor="warn"
+		[matBadgeHidden]="!count"
+		matBadgePosition="above after"
+		matBadgeSize="small"
+		[matBadge]="count"
+		svgIcon="inbox"
+	></mat-icon>
 	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.message.link" | translate }}</span>
 </a>

@@ -27,7 +27,8 @@ describe('ObServiceNavigationComponent', () => {
 		getInboxMailUrl$: jest.fn().mockReturnValue(of('inboxMailUrl')),
 		getUserName$: jest.fn().mockReturnValue(of('John Doe')),
 		getAvatarUrl$: jest.fn().mockReturnValue(of('http://avatar-url')),
-		getLoginState$: jest.fn().mockReturnValue(mockLoginState.asObservable())
+		getLoginState$: jest.fn().mockReturnValue(mockLoginState.asObservable()),
+		getMessageCount$: jest.fn().mockReturnValue(of(42))
 	};
 	const selectors = {
 		auth: ObServiceNavigationAuthenticationHarness.hostSelector,
@@ -143,7 +144,8 @@ describe('ObServiceNavigationComponent', () => {
 		{property: 'loginState$', method: 'getLoginState$', emit: 'SA'},
 		{property: 'userName$', method: 'getUserName$', emit: 'John Doe'},
 		{property: 'avatarUrl$', method: 'getAvatarUrl$', emit: 'http://avatar-url'},
-		{property: 'inboxMailUrl$', method: 'getInboxMailUrl$', emit: 'inboxMailUrl'}
+		{property: 'inboxMailUrl$', method: 'getInboxMailUrl$', emit: 'inboxMailUrl'},
+		{property: 'messageCount$', method: 'getMessageCount$', emit: 42}
 	])('$method', ({property, method, emit}) => {
 		it('should be an observable', () => {
 			expect(component[property] instanceof Observable).toBe(true);

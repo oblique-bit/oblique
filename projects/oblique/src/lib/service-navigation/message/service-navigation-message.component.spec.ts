@@ -2,7 +2,10 @@ import {TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconHarness} from '@angular/material/icon/testing';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatLegacyTooltipHarness as MatTooltipHarness} from '@angular/material/legacy-tooltip/testing';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatBadgeHarness} from '@angular/material/badge/testing';
 import {MatIconModule} from '@angular/material/icon';
 import {TranslateService} from '@ngx-translate/core';
 import {ObTranslateParamsModule} from '../../translate-params/translate-params.module';
@@ -18,7 +21,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MatTooltipModule, ObTranslateParamsModule, MatIconModule],
+			imports: [MatTooltipModule, ObTranslateParamsModule, MatIconModule, MatBadgeModule],
 			declarations: [ObServiceNavigationMessageComponent, ObMockTranslatePipe],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
@@ -53,6 +56,81 @@ describe('ObServiceNavigationMessageComponent', () => {
 		});
 	});
 
+	describe('count', () => {
+		it('should be initialized to 0', () => {
+			expect(component.count).toBe(0);
+		});
+
+		describe.each([0, 1])('with %s message', count => {
+			beforeEach(() => {
+				component.count = count;
+				fixture.detectChanges();
+			});
+
+			describe('badge', () => {
+				let badge: MatBadgeHarness;
+
+				beforeEach(async () => {
+					badge = await harness.getBadgeHarness();
+				});
+
+				it('should exist', () => {
+					expect(badge).toBeTruthy();
+				});
+
+				it('should be small', async () => {
+					expect(await badge.getSize()).toBe('small');
+				});
+
+				it('should be above after', async () => {
+					expect(await badge.getPosition()).toBe('above after');
+				});
+
+				it(`should show ${count}`, async () => {
+					expect(await badge.getText()).toBe(count.toString());
+				});
+			});
+		});
+
+		describe('with 0 message', () => {
+			beforeEach(() => {
+				component.count = 0;
+				fixture.detectChanges();
+			});
+
+			describe('badge', () => {
+				let badge: MatBadgeHarness;
+
+				beforeEach(async () => {
+					badge = await harness.getBadgeHarness();
+				});
+
+				it(`should be hidden`, async () => {
+					expect(await badge.isHidden()).toBe(true);
+				});
+			});
+		});
+
+		describe('with 1 message', () => {
+			beforeEach(() => {
+				component.count = 1;
+				fixture.detectChanges();
+			});
+
+			describe('badge', () => {
+				let badge: MatBadgeHarness;
+
+				beforeEach(async () => {
+					badge = await harness.getBadgeHarness();
+				});
+
+				it(`should be shown`, async () => {
+					expect(await badge.isHidden()).toBe(false);
+				});
+			});
+		});
+	});
+
 	describe('link', () => {
 		let link: TestElement;
 		beforeEach(async () => {
@@ -80,6 +158,24 @@ describe('ObServiceNavigationMessageComponent', () => {
 
 		it('should have "i18n.oblique.service-navigation.message.link" as screen reader text', async () => {
 			expect(await harness.getLinkScreenReaderText()).toBe('i18n.oblique.service-navigation.message.link');
+		});
+
+		describe('tooltip', () => {
+			let tooltip: MatTooltipHarness;
+
+			beforeEach(async () => {
+				tooltip = await harness.getTooltipHarness();
+			});
+
+			it('should be defined', () => {
+				expect(tooltip).toBeTruthy();
+			});
+
+			it('should have "i18n.oblique.service-navigation.applications.link.tooltip" as text', async () => {
+				await tooltip.show();
+				const text = await tooltip.getTooltipText();
+				expect(text).toBe('i18n.oblique.service-navigation.message.tooltip.text');
+			});
 		});
 
 		describe('icon', () => {

@@ -13,6 +13,7 @@ describe('ObServiceNavigationService', () => {
 	let configService: ObServiceNavigationConfigApiService;
 	const mockUrls = {
 		pollingInterval: 10,
+		pollingNotificationsInterval: 30,
 		login: {
 			url: 'http://login',
 			params: '?returnURL=<yourReturnlURL>&language=<yourLanguageID>',
@@ -88,29 +89,34 @@ describe('ObServiceNavigationService', () => {
 					}
 				});
 
-				describe.each(['getLoginUrl$', 'getLogoutUrl$', 'getUserName$', 'getSettingsUrl$', 'getAvatarUrl$', 'getInboxMailUrl$'])(
-					'%s',
-					method => {
-						it('should return an observable', () => {
-							expect(service.getLoginUrl$() instanceof Observable).toBe(true);
+				describe.each([
+					'getLoginUrl$',
+					'getLogoutUrl$',
+					'getUserName$',
+					'getSettingsUrl$',
+					'getAvatarUrl$',
+					'getInboxMailUrl$',
+					'getMessageCount$'
+				])('%s', method => {
+					it('should return an observable', () => {
+						expect(service.getLoginUrl$() instanceof Observable).toBe(true);
+					});
+
+					it('should not emit', fakeAsync(() => {
+						let hasEmitted = false;
+						service[method]().subscribe(() => {
+							hasEmitted = true;
 						});
+						tick(1000);
+						expect(hasEmitted).toBe(false);
+					}));
 
-						it('should not emit', fakeAsync(() => {
-							let hasEmitted = false;
-							service[method]().subscribe(() => {
-								hasEmitted = true;
-							});
-							tick(1000);
-							expect(hasEmitted).toBe(false);
-						}));
-
-						it('should not call "ObServiceNavigationConfigApiService.fetchUrls()"', fakeAsync(() => {
-							service.getLoginUrl$().subscribe();
-							tick(1000);
-							expect(configService.fetchUrls).not.toHaveBeenCalled();
-						}));
-					}
-				);
+					it('should not call "ObServiceNavigationConfigApiService.fetchUrls()"', fakeAsync(() => {
+						service.getLoginUrl$().subscribe();
+						tick(1000);
+						expect(configService.fetchUrls).not.toHaveBeenCalled();
+					}));
+				});
 
 				describe('getLoginState$', () => {
 					it('should return an observable', () => {
@@ -154,7 +160,8 @@ describe('ObServiceNavigationService', () => {
 							'getUserName$',
 							'getSettingsUrl$',
 							'getAvatarUrl$',
-							'getInboxMailUrl$'
+							'getInboxMailUrl$',
+							'getMessageCount$'
 						])('%s', method => {
 							it('should return an observable', () => {
 								expect(service[method]() instanceof Observable).toBe(true);
@@ -223,6 +230,14 @@ describe('ObServiceNavigationService', () => {
 								const promise = firstValueFrom(service.getUserName$());
 								mockStateChange.next({profile: {fullname: 'John Doe'}} as ObIServiceNavigationState);
 								expect(promise).resolves.toEqual('John Doe');
+							});
+						});
+
+						describe('getMessageCount$', () => {
+							it(`should emit "42"`, () => {
+								const promise = firstValueFrom(service.getMessageCount$());
+								mockStateChange.next({messageCount: 42} as ObIServiceNavigationState);
+								expect(promise).resolves.toEqual(42);
 							});
 						});
 					});
