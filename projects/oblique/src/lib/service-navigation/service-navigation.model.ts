@@ -34,3 +34,8 @@ export interface ObIServiceNavigationApplication {
 }
 
 export type ObServiceNavigationApplicationStatus = 'online' | 'offline' | 'inaccessible';
+
+export interface ObILanguage {
+	code: string;
+	label: string;
+}

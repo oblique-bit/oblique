@@ -33,4 +33,11 @@
 			[isLoggedIn]="loginState$ | async | obIsUserLoggedIn"
 		></ob-service-navigation-authentication>
 	</li>
+	<li *ngIf="languages.length > 1">
+		<ob-service-navigation-languages
+			[languages]="languages"
+			[language]="language$ | async"
+			(languageChange)="changeLanguage($event)"
+		></ob-service-navigation-languages>
+	</li>
 </ul>

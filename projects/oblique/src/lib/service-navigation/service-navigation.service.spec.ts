@@ -50,7 +50,9 @@ describe('ObServiceNavigationService', () => {
 					provide: TranslateService,
 					useValue: {
 						onLangChange: mockLangChange.asObservable(),
-						currentLang: 'en'
+						currentLang: 'en',
+						getLangs: jest.fn().mockReturnValue(['en', 'de', 'fr', 'it']),
+						use: jest.fn()
 					}
 				}
 			]
@@ -143,6 +145,43 @@ describe('ObServiceNavigationService', () => {
 						it('should not have been called', () => {
 							expect(configService.fetchUrls).not.toHaveBeenCalled();
 						});
+					});
+				});
+
+				describe('getLanguage$', () => {
+					it('should return an observable', () => {
+						expect(service.getLanguage$() instanceof Observable).toBe(true);
+					});
+
+					it(`should emit "en"`, () => {
+						expect(firstValueFrom(service.getLanguage$())).resolves.toBe('en');
+					});
+				});
+
+				describe('getLanguages', () => {
+					it('should return an array containing "en" and "de"', () => {
+						expect(service.getLanguages()).toEqual([
+							{code: 'en', label: 'English'},
+							{code: 'de', label: 'Deutsch'},
+							{code: 'fr', label: 'Français'},
+							{code: 'it', label: 'Italiano'}
+						]);
+					});
+				});
+
+				describe('setLanguage', () => {
+					let translate: TranslateService;
+					beforeEach(() => {
+						service.setLanguage('fr');
+						translate = TestBed.inject(TranslateService);
+					});
+
+					it('should call "use" once', () => {
+						expect(translate.use).toHaveBeenCalledTimes(1);
+					});
+
+					it('should call "use" with "fr"', () => {
+						expect(translate.use).toHaveBeenCalledWith('fr');
 					});
 				});
 			});
@@ -281,6 +320,46 @@ describe('ObServiceNavigationService', () => {
 								});
 
 								it(`should emit a list of applications`, () => expect(promise).resolves.toEqual([{name}]));
+							});
+						});
+
+						describe('getLanguage$', () => {
+							it('should return an observable', () => {
+								expect(service.getLanguage$() instanceof Observable).toBe(true);
+							});
+
+							describe.each(['de', 'fr', 'it', 'en', 'es'])('with "%s" as language', language => {
+								it('should emit "en"', () => {
+									mockLangChange.next({lang: language});
+									expect(firstValueFrom(service.getLanguage$())).resolves.toBe(language);
+								});
+							});
+						});
+
+						describe('getLanguages', () => {
+							it('should return an array containing "en" and "de"', () => {
+								expect(service.getLanguages()).toEqual([
+									{code: 'en', label: 'English'},
+									{code: 'de', label: 'Deutsch'},
+									{code: 'fr', label: 'Français'},
+									{code: 'it', label: 'Italiano'}
+								]);
+							});
+						});
+
+						describe('setLanguage', () => {
+							let translate: TranslateService;
+							beforeEach(() => {
+								service.setLanguage('fr');
+								translate = TestBed.inject(TranslateService);
+							});
+
+							it('should call "use" once', () => {
+								expect(translate.use).toHaveBeenCalledTimes(1);
+							});
+
+							it('should call "use" with "fr"', () => {
+								expect(translate.use).toHaveBeenCalledWith('fr');
 							});
 						});
 					});

@@ -20,6 +20,7 @@ import {ObServiceNavigationMessageComponent} from './message/service-navigation-
 import {ObServiceNavigationInfoComponent} from './info/service-navigation-info.component';
 import {ObServiceNavigationApplicationsComponent} from './applications/service-navigation-applications.component';
 import {ObServiceNavigationApplicationAltPipe} from './applications/service-navigation-application-image-alt.pipe';
+import {ObServiceNavigationLanguagesComponent} from './languages/service-navigation-languages.component';
 import {ObContactToLinksPipe} from './info/contact-to-links.pipe';
 import {ObServiceNavigationComponent} from './service-navigation.component';
 
@@ -47,6 +48,7 @@ import {ObServiceNavigationComponent} from './service-navigation.component';
 		ObServiceNavigationAuthenticationComponent,
 		ObServiceNavigationComponent,
 		ObServiceNavigationInfoComponent,
+		ObServiceNavigationLanguagesComponent,
 		ObServiceNavigationMessageComponent,
 		ObServiceNavigationPopoverSectionComponent,
 		ObServiceNavigationProfileComponent

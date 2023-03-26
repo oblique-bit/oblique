@@ -32,6 +32,8 @@ export class ObServiceNavigationComponent implements OnInit, OnChanges {
 	readonly applicationsUrl$ = this.headerControlsService.getApplicationsUrl$();
 	readonly lastUsedApplications$ = this.headerControlsService.getLastUsedApplications$();
 	readonly favoriteApplications$ = this.headerControlsService.getFavoriteApplications$();
+	readonly language$ = this.headerControlsService.getLanguage$();
+	readonly languages = this.headerControlsService.getLanguages();
 
 	constructor(private readonly headerControlsService: ObServiceNavigationService) {}
 
@@ -41,5 +43,9 @@ export class ObServiceNavigationComponent implements OnInit, OnChanges {
 
 	ngOnChanges(): void {
 		this.headerControlsService.setReturnUrl(this.returnUrl);
+	}
+
+	changeLanguage(language: string): void {
+		this.headerControlsService.setLanguage(language);
 	}
 }

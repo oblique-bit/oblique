@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, ReplaySubject, switchMap} from 'rxjs';
 import {combineLatestWith, distinctUntilChanged, map, shareReplay, startWith, tap} from 'rxjs/operators';
-import {ObEPamsEnvironment, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
+import {ObEPamsEnvironment, ObILanguage, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
 import {ObIServiceNavigationApplicationParsedInfo, ObIServiceNavigationState} from './api/service-navigation.api.model';
@@ -10,6 +10,12 @@ import {ObServiceNavigationApplicationsService} from './applications/service-nav
 
 @Injectable()
 export class ObServiceNavigationService {
+	private static readonly languageLabels = {
+		de: 'Deutsch',
+		fr: 'Français',
+		it: 'Italiano',
+		en: 'English'
+	};
 	private readonly rootUrl$ = new ReplaySubject<string>(1);
 	private readonly avatarRootUrl$ = new ReplaySubject<string>(1);
 	private readonly returnUrl$ = new ReplaySubject<string>(1);
@@ -108,6 +114,22 @@ export class ObServiceNavigationService {
 
 	getFavoriteApplications$(): Observable<ObIServiceNavigationApplication[]> {
 		return this.getApplications$('favoriteApps');
+	}
+
+	getLanguage$(): Observable<string> {
+		return this.translateService.onLangChange.pipe(
+			map(event => event.lang),
+			startWith(this.translateService.currentLang),
+			shareReplay(1)
+		);
+	}
+
+	getLanguages(): ObILanguage[] {
+		return this.translateService.getLangs().map(language => ({code: language, label: ObServiceNavigationService.languageLabels[language]}));
+	}
+
+	setLanguage(language: string): void {
+		this.translateService.use(language);
 	}
 
 	private getApplications$(applicationListName: 'favoriteApps' | 'lastUsedApps'): Observable<ObIServiceNavigationApplication[]> {
