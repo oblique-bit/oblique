@@ -108,6 +108,8 @@
   "i18n.pagination.last-page": "Salta all'ultima pagina",
   "i18n.oblique.service-navigation.applications.button.label": "Servizi",
   "i18n.oblique.service-navigation.applications.button.tooltip": "Fare clic per attivare il pannello delle applicazioni",
+  "i18n.oblique.service-navigation.applications.image.inaccessible.alt": "Blocco nel cerchio rosso sopra l'icona dell'applicazione {{name}}",
+  "i18n.oblique.service-navigation.applications.image.offline.alt": "Croce nel cerchio rosso sopra l'icona dell'applicazione {{name}}",
   "i18n.oblique.service-navigation.applications.image.online.alt": "Icona dell'applicazione {{name}}",
   "i18n.oblique.service-navigation.applications.last-used.header": "Utilizzato di recente",
   "i18n.oblique.service-navigation.applications.link.label": "Tutti i servizi",

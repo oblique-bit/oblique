@@ -27,6 +27,15 @@ $ob-application-icon-size: 2.5em; // empiric value
 	.ob-application-image {
 		height: $ob-application-icon-size;
 		width: $ob-application-icon-size;
+
+		&.ob-status-image {
+			position: absolute;
+			z-index: 2;
+		}
+
+		&.ob-offline {
+			filter: grayscale(1);
+		}
 	}
 
 	.ob-application-title {

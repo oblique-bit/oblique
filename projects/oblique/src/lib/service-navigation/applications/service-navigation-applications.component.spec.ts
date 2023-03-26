@@ -13,6 +13,7 @@ import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObSafeImagePipe} from '../shared/safe-image.pipe';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
+import {ObServiceNavigationApplicationAltPipe} from './service-navigation-application-image-alt.pipe';
 import {ObServiceNavigationApplicationsHarness} from './service-navigation-applications.harness';
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
 
@@ -28,7 +29,8 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 				ObServiceNavigationApplicationsComponent,
 				ObMockTranslatePipe,
 				ObServiceNavigationPopoverSectionComponent,
-				ObSafeImagePipe
+				ObSafeImagePipe,
+				ObServiceNavigationApplicationAltPipe
 			],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
@@ -56,7 +58,10 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 		describe('with some applications and while loggedIn', () => {
 			beforeEach(fakeAsync(async () => {
 				component.isLoggedIn = true;
-				component.lastUsedApplications = [{name: 'applicationName', url: 'http://app-url', image: 'applicationImage'}];
+				component.lastUsedApplications = [
+					{name: 'applicationName1', url: 'http://app-url1', image: 'applicationImage1', status: 'online'},
+					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'}
+				];
 				await harness.openPopover();
 				fixture.detectChanges();
 				tick();
@@ -93,8 +98,8 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 							expect(content.classes['ob-applications']).toBe(true);
 						});
 
-						it('should have 1 child', () => {
-							expect(content.children.length).toBe(1);
+						it('should have 2 children', () => {
+							expect(content.children.length).toBe(2);
 						});
 
 						describe('first child', () => {
@@ -111,8 +116,8 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 								expect(link.classes['ob-application']).toBe(true);
 							});
 
-							it('should have "href" attribute set to "none"', () => {
-								expect(link.attributes.href).toBe('http://app-url');
+							it('should have "href" attribute set to "http://app-url1"', () => {
+								expect(link.attributes.href).toBe('http://app-url1');
 							});
 
 							it('should have "isExternalLink" property set to "false"', () => {
@@ -137,12 +142,16 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 									expect(image.classes['ob-application-image']).toBe(true);
 								});
 
+								it('should not have "ob-offline" class', () => {
+									expect(image.classes['ob-offline']).toBeUndefined();
+								});
+
 								it('should have "i18n.oblique.service-navigation.applications.image.online.alt" as "alt" attribute', () => {
 									expect(image.attributes.alt).toBe('i18n.oblique.service-navigation.applications.image.online.alt');
 								});
 
 								it('should have "applicationImage" as "src" attribute', () => {
-									expect(image.attributes.src).toBe('applicationImage');
+									expect(image.attributes.src).toBe('applicationImage1');
 								});
 							});
 
@@ -160,8 +169,112 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 									expect(span.classes['ob-application-title']).toBe(true);
 								});
 
-								it('should have "applicationName" as content', () => {
-									expect(span.nativeElement.textContent).toBe('applicationName');
+								it('should have "applicationName1" as content', () => {
+									expect(span.nativeElement.textContent).toBe('applicationName1');
+								});
+							});
+						});
+
+						describe('second child', () => {
+							let link: DebugElement;
+							beforeEach(() => {
+								link = content.children[1];
+							});
+
+							it('should be an anchor', () => {
+								expect(link.name).toBe('a');
+							});
+
+							it('should have "ob-application" class', () => {
+								expect(link.classes['ob-application']).toBe(true);
+							});
+
+							it('should have "href" attribute set to "http://app-url2"', () => {
+								expect(link.attributes.href).toBe('http://app-url2');
+							});
+
+							it('should have "icon" attribute set to "none"', () => {
+								expect(link.attributes.icon).toBe('none');
+							});
+
+							it('should have 3 children', () => {
+								expect(link.children.length).toBe(3);
+							});
+
+							describe('first child', () => {
+								let image: DebugElement;
+								beforeEach(() => {
+									image = link.children[0];
+								});
+
+								it('should be a "img"', () => {
+									expect(image.name).toBe('img');
+								});
+
+								it('should have "ob-application-image" class', () => {
+									expect(image.classes['ob-application-image']).toBe(true);
+								});
+
+								it('should have "ob-status-image" class', () => {
+									expect(image.classes['ob-status-image']).toBe(true);
+								});
+
+								it('should have "" as "alt" attribute', () => {
+									expect(image.attributes.alt).toBe('');
+								});
+
+								it('should have "applicationImage" as "src" attribute', () => {
+									expect(image.attributes.src.startsWith('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA')).toBe(true);
+								});
+
+								it('should have "true" as "aria-hidden" attribute', () => {
+									expect(image.attributes['aria-hidden']).toBe('true');
+								});
+							});
+
+							describe('second child', () => {
+								let image: DebugElement;
+								beforeEach(() => {
+									image = link.children[1];
+								});
+
+								it('should be a "img"', () => {
+									expect(image.name).toBe('img');
+								});
+
+								it('should have "ob-application-image" class', () => {
+									expect(image.classes['ob-application-image']).toBe(true);
+								});
+
+								it('should have "ob-offline" class', () => {
+									expect(image.classes['ob-offline']).toBe(true);
+								});
+
+								it('should have "i18n.oblique.service-navigation.applications.image.offline.alt" as "alt" attribute', () => {
+									expect(image.attributes.alt).toBe('i18n.oblique.service-navigation.applications.image.offline.alt');
+								});
+
+								it('should have "applicationImage" as "src" attribute', () => {
+									expect(image.attributes.src.startsWith('applicationImage2')).toBe(true);
+								});
+							});
+
+							describe('third child', () => {
+								let span: DebugElement;
+								beforeEach(() => {
+									span = link.children[2];
+								});
+
+								it('should be a "span"', () => {
+									expect(span.name).toBe('span');
+								});
+
+								it('should have "ob-application" class', () => {
+									expect(span.classes['ob-application-title']).toBe(true);
+								});
+
+								it('should have "applicationName2" as content', () => {
+									expect(span.nativeElement.textContent).toBe('applicationName2');
 								});
 							});
 						});

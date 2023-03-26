@@ -108,6 +108,8 @@
   "i18n.pagination.last-page": "Jump to last page",
   "i18n.oblique.service-navigation.applications.button.label": "Services",
   "i18n.oblique.service-navigation.applications.button.tooltip": "Click to toggle the applications panel",
+  "i18n.oblique.service-navigation.applications.image.inaccessible.alt": "Lock in red circle above the icon of the {{name}} application",
+  "i18n.oblique.service-navigation.applications.image.offline.alt": "Cross in red circle above the icon of the {{name}} application",
   "i18n.oblique.service-navigation.applications.image.online.alt": "Icon of the {{name}} application",
   "i18n.oblique.service-navigation.applications.last-used.header": "Recently used",
   "i18n.oblique.service-navigation.applications.link.label": "All services",

@@ -1,4 +1,4 @@
-import {ObLoginState} from '../service-navigation.model';
+import {ObLoginState, ObServiceNavigationApplicationStatus} from '../service-navigation.model';
 
 export interface ObIServiceNavigationResponse {
 	statusCode: number;
@@ -51,6 +51,7 @@ export interface ObIServiceNavigationApplicationParsedInfo {
 	image: string;
 	name: ObIServiceNavigationTranslation;
 	url: string;
+	status: ObServiceNavigationApplicationStatus;
 }
 
 export interface ObIServiceNavigationTranslation {

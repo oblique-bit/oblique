@@ -18,6 +18,7 @@ import {ObServiceNavigationProfileComponent} from './profile/service-navigation-
 import {ObServiceNavigationMessageComponent} from './message/service-navigation-message.component';
 import {ObServiceNavigationInfoComponent} from './info/service-navigation-info.component';
 import {ObServiceNavigationApplicationsComponent} from './applications/service-navigation-applications.component';
+import {ObServiceNavigationApplicationAltPipe} from './applications/service-navigation-application-image-alt.pipe';
 import {ObContactToLinksPipe} from './info/contact-to-links.pipe';
 import {ObServiceNavigationComponent} from './service-navigation.component';
 
@@ -39,6 +40,7 @@ import {ObServiceNavigationComponent} from './service-navigation.component';
 		ObContactToLinksPipe,
 		ObIsUserLoggedInPipe,
 		ObSafeImagePipe,
+		ObServiceNavigationApplicationAltPipe,
 		ObServiceNavigationApplicationsComponent,
 		ObServiceNavigationAuthenticationComponent,
 		ObServiceNavigationComponent,

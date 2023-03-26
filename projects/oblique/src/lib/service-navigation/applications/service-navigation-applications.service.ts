@@ -4,9 +4,11 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
 import {ObServiceNavigationApplicationsApiService} from '../api/service-navigation-applications-api.service';
 import {
 	ObIServiceNavigationApplicationIdentifier,
+	ObIServiceNavigationApplicationInfo,
 	ObIServiceNavigationApplicationParsedInfo,
 	ObIServiceNavigationRawApplication
 } from '../api/service-navigation.api.model';
+import {ObServiceNavigationApplicationStatus} from '../service-navigation.model';
 
 @Injectable()
 export class ObServiceNavigationApplicationsService {
@@ -20,16 +22,38 @@ export class ObServiceNavigationApplicationsService {
 				filter(applications => applications?.length > 0),
 				this.distinctUntilAppIDChange(),
 				switchMap(rawApplications =>
-					this.applicationsService.fetchApplicationsInfo(rootUrl, this.getApplicationsIdentifiers(rawApplications))
+					this.applicationsService
+						.fetchApplicationsInfo(rootUrl, this.getApplicationsIdentifiers(rawApplications))
+						.pipe(map(applications => this.mergeApplicationInfo(applications, rawApplications)))
 				),
 				map(applications =>
 					applications.map(application => ({
 						name: application.name,
 						url: application.url,
-						image: application.image
+						image: application.image,
+						status: this.getApplicationStatus(application)
 					}))
 				)
 			);
+	}
+
+	private getApplicationStatus(
+		application: ObIServiceNavigationApplicationInfo & ObIServiceNavigationRawApplication
+	): ObServiceNavigationApplicationStatus {
+		if (application.online && application.accessOK) {
+			return 'online';
+		}
+		return application.online ? 'inaccessible' : 'offline';
+	}
+
+	private mergeApplicationInfo(
+		applications: ObIServiceNavigationApplicationInfo[],
+		rawApplications: ObIServiceNavigationRawApplication[]
+	): (ObIServiceNavigationApplicationInfo & ObIServiceNavigationRawApplication)[] {
+		return applications.map(application => ({
+			...application,
+			...rawApplications.find(rawApp => rawApp.appID === application.applicationID)
+		}));
 	}
 
 	private distinctUntilAppIDChange(): (

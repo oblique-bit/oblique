@@ -1,5 +1,6 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {ObIServiceNavigationApplication} from '../service-navigation.model';
+import {base64StatusImages} from './service-navigation-applications-images';
 
 @Component({
 	selector: 'ob-service-navigation-applications',
@@ -12,4 +13,5 @@ export class ObServiceNavigationApplicationsComponent {
 	@Input() applicationsUrl = '';
 	@Input() isLoggedIn = false;
 	@Input() lastUsedApplications: ObIServiceNavigationApplication[] = [];
+	statusImage = base64StatusImages;
 }
