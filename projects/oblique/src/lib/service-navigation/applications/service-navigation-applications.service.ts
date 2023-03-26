@@ -2,8 +2,11 @@ import {Injectable} from '@angular/core';
 import {Observable, filter, switchMap} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {ObServiceNavigationApplicationsApiService} from '../api/service-navigation-applications-api.service';
-import {ObIServiceNavigationApplicationIdentifier, ObIServiceNavigationRawApplication} from '../api/service-navigation.api.model';
-import {ObIServiceNavigationApplication} from '../service-navigation.model';
+import {
+	ObIServiceNavigationApplicationIdentifier,
+	ObIServiceNavigationApplicationParsedInfo,
+	ObIServiceNavigationRawApplication
+} from '../api/service-navigation.api.model';
 
 @Injectable()
 export class ObServiceNavigationApplicationsService {
@@ -11,7 +14,7 @@ export class ObServiceNavigationApplicationsService {
 
 	getApplications(
 		rootUrl: string
-	): (source$: Observable<ObIServiceNavigationRawApplication[]>) => Observable<ObIServiceNavigationApplication[]> {
+	): (source$: Observable<ObIServiceNavigationRawApplication[]>) => Observable<ObIServiceNavigationApplicationParsedInfo[]> {
 		return source$ =>
 			source$.pipe(
 				filter(applications => applications?.length > 0),
@@ -21,7 +24,7 @@ export class ObServiceNavigationApplicationsService {
 				),
 				map(applications =>
 					applications.map(application => ({
-						name: application.name.en
+						name: application.name
 					}))
 				)
 			);

@@ -1,9 +1,10 @@
 import {TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, Subject, count, firstValueFrom, of} from 'rxjs';
-import {skip} from 'rxjs/operators';
+import {map, skip} from 'rxjs/operators';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
+import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
 import {ObEPamsEnvironment} from './service-navigation.model';
 import {ObIServiceNavigationState} from './api/service-navigation.api.model';
 import {ObServiceNavigationService} from './service-navigation.service';
@@ -11,6 +12,7 @@ import {ObServiceNavigationService} from './service-navigation.service';
 describe('ObServiceNavigationService', () => {
 	let service: ObServiceNavigationService;
 	let configService: ObServiceNavigationConfigApiService;
+	let applicationsService: ObServiceNavigationApplicationsService;
 	const mockUrls = {
 		pollingInterval: 10,
 		pollingNotificationsInterval: 30,
@@ -26,6 +28,7 @@ describe('ObServiceNavigationService', () => {
 	};
 	const mockLangChange = new Subject<{lang: string}>();
 	const mockStateChange = new Subject<ObIServiceNavigationState>();
+	const mockApplications = [{name: {en: 'name', fr: 'nom', de: 'Name', it: 'nome'}}];
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -38,6 +41,10 @@ describe('ObServiceNavigationService', () => {
 				{
 					provide: ObServiceNavigationPollingService,
 					useValue: {initializeStateUpdate: jest.fn(), state$: mockStateChange.asObservable()}
+				},
+				{
+					provide: ObServiceNavigationApplicationsService,
+					useValue: {getApplications: jest.fn().mockReturnValue(source$ => source$.pipe(map(() => mockApplications)))}
 				},
 				{
 					provide: TranslateService,
@@ -54,6 +61,7 @@ describe('ObServiceNavigationService', () => {
 		beforeEach(() => {
 			service = TestBed.inject(ObServiceNavigationService);
 			configService = TestBed.inject(ObServiceNavigationConfigApiService);
+			applicationsService = TestBed.inject(ObServiceNavigationApplicationsService);
 		});
 
 		afterEach(() => {
@@ -248,11 +256,29 @@ describe('ObServiceNavigationService', () => {
 						});
 
 						describe('getLastUsedApplications$', () => {
-							it(`should emit a list of applications`, () => {
-								const promise = firstValueFrom(service.getLastUsedApplications$());
-								const mockApplications = [{appID: 42, childAppID: 1, accessOK: true, online: true}];
-								mockStateChange.next({lastUsedApps: mockApplications} as ObIServiceNavigationState);
-								return expect(promise).resolves.toEqual([{appId: 42}]);
+							describe.each([
+								{language: 'de', name: 'Name'},
+								{language: 'fr', name: 'nom'},
+								{language: 'it', name: 'nome'},
+								{language: 'en', name: 'name'},
+								{language: 'es', name: 'name'}
+							])('with "$language" as language', ({language, name}) => {
+								let promise: Promise<any>;
+								beforeEach(() => {
+									promise = firstValueFrom(service.getLastUsedApplications$());
+									mockLangChange.next({lang: language});
+									mockStateChange.next({lastUsedApps: [{appID: 42}]} as ObIServiceNavigationState);
+								});
+
+								it('should call getApplications once', () => {
+									expect(applicationsService.getApplications).toHaveBeenCalledTimes(1);
+								});
+
+								it('should call getApplications with correct parameters', () => {
+									expect(applicationsService.getApplications).toHaveBeenCalledWith(rootUrl ?? pamsRootUrl);
+								});
+
+								it(`should emit a list of applications`, () => expect(promise).resolves.toEqual([{name}]));
 							});
 						});
 					});

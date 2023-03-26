@@ -5,7 +5,7 @@ import {combineLatestWith, distinctUntilChanged, map, shareReplay, startWith, ta
 import {ObEPamsEnvironment, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
-import {ObIServiceNavigationState} from './api/service-navigation.api.model';
+import {ObIServiceNavigationApplicationParsedInfo, ObIServiceNavigationState} from './api/service-navigation.api.model';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
 
 @Injectable()
@@ -107,7 +107,14 @@ export class ObServiceNavigationService {
 			switchMap(rootUrl =>
 				this.getState$().pipe(
 					map(state => state.lastUsedApps),
-					this.applicationsService.getApplications(rootUrl)
+					this.applicationsService.getApplications(rootUrl),
+					this.combineWithLanguage<ObIServiceNavigationApplicationParsedInfo[]>(),
+					map(([applicationsInfo, lang]) =>
+						applicationsInfo.map(applicationInfo => ({
+							...applicationInfo,
+							name: applicationInfo.name[lang] ?? applicationInfo.name[Object.keys(applicationInfo.name)[0]]
+						}))
+					)
 				)
 			)
 		);
