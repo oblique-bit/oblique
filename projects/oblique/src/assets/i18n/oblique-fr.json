@@ -108,6 +108,7 @@
   "i18n.pagination.last-page": "Sauter à la dernière page",
   "i18n.oblique.service-navigation.applications.button.label": "Services",
   "i18n.oblique.service-navigation.applications.button.tooltip": "Cliquer pour basculer le panneau des applications",
+  "i18n.oblique.service-navigation.applications.image.online.alt": "Icône de l'application {{name}}",
   "i18n.oblique.service-navigation.applications.last-used.header": "Récemment utilisé",
   "i18n.oblique.service-navigation.applications.link.label": "Tous les services",
   "i18n.oblique.service-navigation.applications.link.tooltip": "Cliquer pour accéder à la page d'accueil de ePortal",

@@ -108,6 +108,7 @@
   "i18n.pagination.last-page": "Auf die letzte Seite springen",
   "i18n.oblique.service-navigation.applications.button.label": "Services",
   "i18n.oblique.service-navigation.applications.button.tooltip": "Klicken um das Anwendungspanel zu öffnen oder zu schliessen",
+  "i18n.oblique.service-navigation.applications.image.online.alt": "Icon der {{name}}-Anwendung",
   "i18n.oblique.service-navigation.applications.last-used.header": "Zuletzt verwendet",
   "i18n.oblique.service-navigation.applications.link.label": "Alle Services",
   "i18n.oblique.service-navigation.applications.link.tooltip": "Klicken um zur ePortal-Startseite zu gehen",

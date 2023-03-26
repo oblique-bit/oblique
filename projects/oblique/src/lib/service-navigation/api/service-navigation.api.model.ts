@@ -48,6 +48,7 @@ export interface ObIServiceNavigationApplicationInfo {
 }
 
 export interface ObIServiceNavigationApplicationParsedInfo {
+	image: string;
 	name: ObIServiceNavigationTranslation;
 	url: string;
 }

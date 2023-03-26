@@ -72,7 +72,7 @@ describe('ObServiceNavigationApplicationsService', () => {
 			});
 
 			it(`should emit an application list with image, name and url`, () => {
-				expect(result).toEqual([{name: {en: 'EN', de: 'DE', fr: 'FR', it: 'IT'}, url: 'appUrl'}]);
+				expect(result).toEqual([{name: {en: 'EN', de: 'DE', fr: 'FR', it: 'IT'}, url: 'appUrl', image: 'imageBase64'}]);
 			});
 		});
 

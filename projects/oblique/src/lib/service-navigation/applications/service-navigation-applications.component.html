@@ -35,6 +35,11 @@
 	>
 		<div class="ob-applications" obContent>
 			<a *ngFor="let application of lastUsedApplications" class="ob-application" [href]="application.url" [isExternalLink]="false">
+				<img
+					class="ob-application-image"
+					[src]="application.image | obSafeImage"
+					[alt]="'i18n.oblique.service-navigation.applications.image.online.alt' | translate : { name: application.name }"
+				/>
 				<span class="ob-application-title">{{ application.name }}</span>
 			</a>
 		</div>

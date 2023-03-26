@@ -24,6 +24,11 @@ $ob-application-icon-size: 2.5em; // empiric value
 		}
 	}
 
+	.ob-application-image {
+		height: $ob-application-icon-size;
+		width: $ob-application-icon-size;
+	}
+
 	.ob-application-title {
 		max-width: 100%;
 		font-size: variables.$ob-font-size-smaller;

@@ -11,6 +11,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObPopoverModule} from '../../popover/popover.module';
+import {ObSafeImagePipe} from '../shared/safe-image.pipe';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationApplicationsHarness} from './service-navigation-applications.harness';
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
@@ -23,7 +24,12 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [MatButtonModule, MatIconModule, MatTooltipModule, ObPopoverModule],
-			declarations: [ObServiceNavigationApplicationsComponent, ObMockTranslatePipe, ObServiceNavigationPopoverSectionComponent],
+			declarations: [
+				ObServiceNavigationApplicationsComponent,
+				ObMockTranslatePipe,
+				ObServiceNavigationPopoverSectionComponent,
+				ObSafeImagePipe
+			],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 
@@ -50,7 +56,7 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 		describe('with some applications and while loggedIn', () => {
 			beforeEach(fakeAsync(async () => {
 				component.isLoggedIn = true;
-				component.lastUsedApplications = [{name: 'applicationName', url: 'http://app-url'}];
+				component.lastUsedApplications = [{name: 'applicationName', url: 'http://app-url', image: 'applicationImage'}];
 				await harness.openPopover();
 				fixture.detectChanges();
 				tick();
@@ -113,14 +119,37 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 								expect(link.properties.isExternalLink).toBe(false);
 							});
 
-							it('should have 1 child', () => {
-								expect(link.children.length).toBe(1);
+							it('should have 2 children', () => {
+								expect(link.children.length).toBe(2);
 							});
 
 							describe('first child', () => {
+								let image: DebugElement;
+								beforeEach(() => {
+									image = link.children[0];
+								});
+
+								it('should be a "img"', () => {
+									expect(image.name).toBe('img');
+								});
+
+								it('should have "ob-application-image" class', () => {
+									expect(image.classes['ob-application-image']).toBe(true);
+								});
+
+								it('should have "i18n.oblique.service-navigation.applications.image.online.alt" as "alt" attribute', () => {
+									expect(image.attributes.alt).toBe('i18n.oblique.service-navigation.applications.image.online.alt');
+								});
+
+								it('should have "applicationImage" as "src" attribute', () => {
+									expect(image.attributes.src).toBe('applicationImage');
+								});
+							});
+
+							describe('second child', () => {
 								let span: DebugElement;
 								beforeEach(() => {
-									span = link.children[0];
+									span = link.children[1];
 								});
 
 								it('should be a "span"', () => {
