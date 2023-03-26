@@ -1,4 +1,7 @@
 <ul class="ob-service-navigation-list">
+	<li *ngFor="let customControl of customWidgetTemplate" class="ob-service-navigation-custom-control">
+		<ng-container *ngTemplateOutlet="customControl"></ng-container>
+	</li>
 	<li *ngIf="loginState$ | async | obIsUserLoggedIn">
 		<ob-service-navigation-message [linkHref]="inboxMailUrl$ | async" [count]="messageCount$ | async"></ob-service-navigation-message>
 	</li>

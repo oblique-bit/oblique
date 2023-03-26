@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {TestElement} from '@angular/cdk/testing';
+import {Component} from '@angular/core';
 import {BehaviorSubject, Observable, firstValueFrom, of} from 'rxjs';
 import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
 import {ObServiceNavigationProfileHarness} from './profile/service-navigation-profile.harness';
@@ -13,6 +14,18 @@ import {ObServiceNavigationHarness} from './service-navigation.harness';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObEPamsEnvironment} from './service-navigation.model';
 import {ObLoginState} from './service-navigation.model';
+
+@Component({
+	template: `<ob-service-navigation>
+		<ng-template #customWidgetTemplate>
+			<button type="button">first button</button>
+		</ng-template>
+		<ng-template #customWidgetTemplate>
+			<button type="button">second button</button>
+		</ng-template>
+	</ob-service-navigation>`
+})
+class CustomControlsTestComponent {}
 
 describe('ObServiceNavigationComponent', () => {
 	let component: ObServiceNavigationComponent;
@@ -46,7 +59,7 @@ describe('ObServiceNavigationComponent', () => {
 	beforeEach(() => {
 		TestBed.overrideProvider(ObServiceNavigationService, {useValue: mockService});
 		TestBed.configureTestingModule({
-			declarations: [ObServiceNavigationComponent, ObIsUserLoggedInPipe]
+			declarations: [ObServiceNavigationComponent, ObIsUserLoggedInPipe, CustomControlsTestComponent]
 		}).compileComponents();
 	});
 
@@ -195,6 +208,66 @@ describe('ObServiceNavigationComponent', () => {
 
 		it(`should receive "${emit.toString()}"`, () => {
 			expect(firstValueFrom(component[property])).resolves.toEqual(emit);
+		});
+	});
+
+	describe('customControlTemplates', () => {
+		let customControlFixture: ComponentFixture<CustomControlsTestComponent>;
+		const allWidgets = ['button', 'button', selectors.message, selectors.info, selectors.applications, selectors.profile, selectors.auth];
+		beforeEach(async () => {
+			customControlFixture = TestBed.createComponent(CustomControlsTestComponent);
+			customControlFixture.detectChanges();
+			const loader = TestbedHarnessEnvironment.loader(customControlFixture);
+			harness = await loader.getHarness(ObServiceNavigationHarness);
+		});
+
+		describe.each([
+			{loginState: 'SA', widgets: ['button', 'button', selectors.info, selectors.applications, selectors.auth]},
+			{loginState: 'S1', widgets: ['button', 'button', selectors.info, selectors.applications, selectors.auth]},
+			{loginState: 'S2OK', widgets: allWidgets},
+			{loginState: 'S2+OK', widgets: allWidgets},
+			{loginState: 'S3OK', widgets: allWidgets},
+			{loginState: 'S3+OK', widgets: allWidgets}
+		])('loginState "$loginState"', ({loginState, widgets}) => {
+			let children: TestElement[];
+			beforeEach(async () => {
+				mockLoginState.next(loginState as ObLoginState);
+				fixture.detectChanges();
+				children = await harness.getListItemElements();
+			});
+
+			it(`should have ${widgets.length} children`, () => {
+				expect(children.length).toBe(widgets.length);
+			});
+
+			it.each(widgets)('"%s" should be present', async selector => {
+				const index = widgets.findIndex(widget => widget === selector);
+				expect(await children[index].matchesSelector(selector)).toEqual(true);
+			});
+		});
+
+		describe('custom widgets', () => {
+			let customElements: TestElement[];
+			beforeEach(async () => {
+				customElements = await harness.getCustomWidgets();
+			});
+
+			it('should have two custom elements', () => {
+				expect(customElements.length).toBe(2);
+			});
+
+			describe.each([
+				{description: 'first widget', index: 0, content: 'first button'},
+				{description: 'second widget', index: 1, content: 'second button'}
+			])('$description', ({index, content}) => {
+				it('should be a button', async () => {
+					expect(await customElements[index].matchesSelector('button')).toBe(true);
+				});
+
+				it('should be a button', async () => {
+					expect(await customElements[index].text()).toBe(content);
+				});
+			});
 		});
 	});
 

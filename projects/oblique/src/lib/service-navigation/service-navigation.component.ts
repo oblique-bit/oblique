@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, ContentChildren, Input, OnChanges, OnInit, QueryList, ViewEncapsulation} from '@angular/core';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObEPamsEnvironment, ObIServiceNavigationContact, ObIServiceNavigationLink} from './service-navigation.model';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
@@ -20,6 +20,7 @@ export class ObServiceNavigationComponent implements OnInit, OnChanges {
 	@Input() environment: ObEPamsEnvironment;
 	@Input() rootUrl: string;
 	@Input() returnUrl: string;
+	@ContentChildren('customWidgetTemplate') customWidgetTemplate: QueryList<unknown>;
 	readonly loginUrl$ = this.headerControlsService.getLoginUrl$();
 	readonly logoutUrl$ = this.headerControlsService.getLogoutUrl$();
 	readonly loginState$ = this.headerControlsService.getLoginState$();
