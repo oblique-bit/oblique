@@ -24,7 +24,8 @@ export class ObServiceNavigationApplicationsService {
 				),
 				map(applications =>
 					applications.map(application => ({
-						name: application.name
+						name: application.name,
+						url: application.url
 					}))
 				)
 			);

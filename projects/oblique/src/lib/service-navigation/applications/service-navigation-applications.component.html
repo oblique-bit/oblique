@@ -34,7 +34,7 @@
 		header="i18n.oblique.service-navigation.applications.last-used.header"
 	>
 		<div class="ob-applications" obContent>
-			<a *ngFor="let application of lastUsedApplications" class="ob-application" icon="none">
+			<a *ngFor="let application of lastUsedApplications" class="ob-application" [href]="application.url" [isExternalLink]="false">
 				<span class="ob-application-title">{{ application.name }}</span>
 			</a>
 		</div>

@@ -50,7 +50,7 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 		describe('with some applications and while loggedIn', () => {
 			beforeEach(fakeAsync(async () => {
 				component.isLoggedIn = true;
-				component.lastUsedApplications = [{name: 'applicationName'}];
+				component.lastUsedApplications = [{name: 'applicationName', url: 'http://app-url'}];
 				await harness.openPopover();
 				fixture.detectChanges();
 				tick();
@@ -105,8 +105,12 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 								expect(link.classes['ob-application']).toBe(true);
 							});
 
-							it('should have "icon" attribute set to "none"', () => {
-								expect(link.attributes.icon).toBe('none');
+							it('should have "href" attribute set to "none"', () => {
+								expect(link.attributes.href).toBe('http://app-url');
+							});
+
+							it('should have "isExternalLink" property set to "false"', () => {
+								expect(link.properties.isExternalLink).toBe(false);
 							});
 
 							it('should have 1 child', () => {
