@@ -98,7 +98,8 @@ describe('ObServiceNavigationService', () => {
 					'getAvatarUrl$',
 					'getInboxMailUrl$',
 					'getMessageCount$',
-					'getApplicationsUrl$'
+					'getApplicationsUrl$',
+					'getLastUsedApplications$'
 				])('%s', method => {
 					it('should return an observable', () => {
 						expect(service.getLoginUrl$() instanceof Observable).toBe(true);
@@ -164,7 +165,8 @@ describe('ObServiceNavigationService', () => {
 							'getAvatarUrl$',
 							'getInboxMailUrl$',
 							'getMessageCount$',
-							'getApplicationsUrl$'
+							'getApplicationsUrl$',
+							'getLastUsedApplications$'
 						])('%s', method => {
 							it('should return an observable', () => {
 								expect(service[method]() instanceof Observable).toBe(true);
@@ -242,6 +244,15 @@ describe('ObServiceNavigationService', () => {
 								const promise = firstValueFrom(service.getMessageCount$());
 								mockStateChange.next({messageCount: 42} as ObIServiceNavigationState);
 								expect(promise).resolves.toEqual(42);
+							});
+						});
+
+						describe('getLastUsedApplications$', () => {
+							it(`should emit a list of applications`, () => {
+								const promise = firstValueFrom(service.getLastUsedApplications$());
+								const mockApplications = [{appID: 42, childAppID: 1, accessOK: true, online: true}];
+								mockStateChange.next({lastUsedApps: mockApplications} as ObIServiceNavigationState);
+								return expect(promise).resolves.toEqual([{appId: 42}]);
 							});
 						});
 					});

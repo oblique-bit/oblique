@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, ReplaySubject, switchMap} from 'rxjs';
 import {combineLatestWith, distinctUntilChanged, map, shareReplay, startWith, tap} from 'rxjs/operators';
-import {ObEPamsEnvironment, ObLoginState} from './service-navigation.model';
+import {ObEPamsEnvironment, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
 import {ObIServiceNavigationState} from './api/service-navigation.api.model';
@@ -96,6 +96,14 @@ export class ObServiceNavigationService {
 	getMessageCount$(): Observable<number> {
 		return this.getState$().pipe(
 			map(state => state.messageCount),
+			distinctUntilChanged((previousState, newState) => previousState === newState)
+		);
+	}
+
+	getLastUsedApplications$(): Observable<ObIServiceNavigationApplication[]> {
+		return this.getState$().pipe(
+			map(state => state.lastUsedApps),
+			map(applications => applications.map(application => ({appID: application.appID}))),
 			distinctUntilChanged((previousState, newState) => previousState === newState)
 		);
 	}

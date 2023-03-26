@@ -9,6 +9,7 @@
 		<ob-service-navigation-applications
 			[applicationsUrl]="applicationsUrl$ | async"
 			[isLoggedIn]="loginState$ | async | obIsUserLoggedIn"
+			[lastUsedApplications]="lastUsedApplications$ | async"
 		></ob-service-navigation-applications>
 	</li>
 	<li *ngIf="loginState$ | async | obIsUserLoggedIn">

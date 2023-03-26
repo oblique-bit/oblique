@@ -30,6 +30,16 @@
 
 <ng-template #popoverContent>
 	<ob-service-navigation-popover-section
+		*ngIf="lastUsedApplications?.length > 0"
+		header="i18n.oblique.service-navigation.applications.last-used.header"
+	>
+		<div class="ob-applications" obContent>
+			<a *ngFor="let application of lastUsedApplications" class="ob-application" icon="none">
+				<span class="ob-application-title">{{ application.appID }}</span>
+			</a>
+		</div>
+	</ob-service-navigation-popover-section>
+	<ob-service-navigation-popover-section
 		header="i18n.oblique.service-navigation.applications.links.header"
 		[links]="[{ url: applicationsUrl, label: 'i18n.oblique.service-navigation.applications.link.label', isInternalLink: true }]"
 	></ob-service-navigation-popover-section>

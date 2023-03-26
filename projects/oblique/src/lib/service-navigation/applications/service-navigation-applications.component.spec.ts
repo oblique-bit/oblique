@@ -42,6 +42,102 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 		expect(await host.hasClass('ob-service-navigation-applications')).toBe(true);
 	});
 
+	describe('lastUsedApplications', () => {
+		it('should be initialized to an empty array', () => {
+			expect(component.lastUsedApplications).toEqual([]);
+		});
+
+		describe('with some applications and while loggedIn', () => {
+			beforeEach(fakeAsync(async () => {
+				component.isLoggedIn = true;
+				component.lastUsedApplications = [{appID: 42}];
+				await harness.openPopover();
+				fixture.detectChanges();
+				tick();
+			}));
+
+			describe('sections', () => {
+				let sections: DebugElement[];
+				beforeEach(() => {
+					sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
+				});
+
+				it('should be 2', () => {
+					expect(sections.length).toBe(2);
+				});
+
+				describe('first section', () => {
+					let section: ObServiceNavigationPopoverSectionComponent;
+					let content: DebugElement;
+					beforeEach(() => {
+						section = sections[0].componentInstance;
+						content = fixture.debugElement.query(By.css('[obContent]'));
+					});
+
+					it('should have "i18n.oblique.service-navigation.applications.last-used.header" as header', () => {
+						expect(section.header).toBe('i18n.oblique.service-navigation.applications.last-used.header');
+					});
+
+					describe('content', () => {
+						it('should exist', () => {
+							expect(content).toBeTruthy();
+						});
+
+						it('should have "ob-applications" class', () => {
+							expect(content.classes['ob-applications']).toBe(true);
+						});
+
+						it('should have 1 child', () => {
+							expect(content.children.length).toBe(1);
+						});
+
+						describe('first child', () => {
+							let link: DebugElement;
+							beforeEach(() => {
+								link = content.children[0];
+							});
+
+							it('should be an anchor', () => {
+								expect(link.name).toBe('a');
+							});
+
+							it('should have "ob-application" class', () => {
+								expect(link.classes['ob-application']).toBe(true);
+							});
+
+							it('should have "icon" attribute set to "none"', () => {
+								expect(link.attributes.icon).toBe('none');
+							});
+
+							it('should have 1 child', () => {
+								expect(link.children.length).toBe(1);
+							});
+
+							describe('first child', () => {
+								let span: DebugElement;
+								beforeEach(() => {
+									span = link.children[0];
+								});
+
+								it('should be a "span"', () => {
+									expect(span.name).toBe('span');
+								});
+
+								it('should have "ob-application" class', () => {
+									expect(span.classes['ob-application-title']).toBe(true);
+								});
+
+								it('should have "42" as content', () => {
+									expect(span.nativeElement.textContent).toBe('42');
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+
 	describe('applicationsUrl', () => {
 		it('should be initialized to an empty string', () => {
 			expect(component.applicationsUrl).toBe('');
