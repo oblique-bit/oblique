@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, filter, switchMap} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
-import {ObServiceNavigationApplicationsApiService} from '../api/service-navigation-applications-api.service';
+import {ObServiceNavigationApplicationsStoreService} from './service-navigation-applications-store.service';
 import {
 	ObIServiceNavigationApplicationIdentifier,
 	ObIServiceNavigationApplicationInfo,
@@ -12,7 +12,7 @@ import {ObServiceNavigationApplicationStatus} from '../service-navigation.model'
 
 @Injectable()
 export class ObServiceNavigationApplicationsService {
-	constructor(private readonly applicationsService: ObServiceNavigationApplicationsApiService) {}
+	constructor(private readonly applicationsService: ObServiceNavigationApplicationsStoreService) {}
 
 	getApplications(
 		rootUrl: string
