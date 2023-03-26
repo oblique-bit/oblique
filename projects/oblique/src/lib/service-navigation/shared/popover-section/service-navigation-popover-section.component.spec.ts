@@ -228,5 +228,17 @@ describe('ObServiceNavigationPopoverSectionComponent', () => {
 				expect(await image.getAttribute(property)).toBe(value);
 			});
 		});
+
+		describe('alternate content', () => {
+			it('should exists', async () => {
+				TestBed.overrideTemplate(
+					TestComponent,
+					`<ob-service-navigation-popover-section><div obContent></div></ob-service-navigation-popover-section>`
+				);
+				const testFixture = TestBed.createComponent(TestComponent);
+				harness = await TestbedHarnessEnvironment.harnessForFixture(testFixture, ObServiceNavigationPopOverSectionHarness);
+				expect(await harness.getAlternateContent()).toBeTruthy();
+			});
+		});
 	});
 });

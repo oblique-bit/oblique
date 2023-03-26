@@ -27,4 +27,8 @@ export class ObServiceNavigationPopOverSectionHarness extends ContentContainerCo
 		const loader = await this.getChildLoader(`ul > li:nth-child(${index})`);
 		return loader.getHarnessOrNull(MatIconHarness);
 	}
+
+	public async getAlternateContent(): Promise<TestElement> {
+		return this.locatorForOptional('[obContent]')();
+	}
 }
