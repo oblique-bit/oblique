@@ -11,7 +11,20 @@
 			[infoContact]="infoContact"
 			[maxLastUsedApplications]="maxLastUsedApplications"
 			[maxFavoriteApplications]="maxFavoriteApplications"
-		></ob-service-navigation>
+		>
+			<ng-container *ngIf="hasCustomWidgets">
+				<ng-template #customWidgetTemplate>
+					<button type="button" class="ob-widget" mat-icon-button obButton="secondary">
+						<mat-icon svgIcon="smile"></mat-icon>
+					</button>
+				</ng-template>
+				<ng-template #customWidgetTemplate>
+					<button type="button" class="ob-widget" mat-icon-button obButton="secondary">
+						<mat-icon svgIcon="thumbs-up"></mat-icon>
+					</button>
+				</ng-template>
+			</ng-container>
+		</ob-service-navigation>
 	</section>
 	<ng-container column-right-content>
 		<fieldset class="toggles">
@@ -40,6 +53,10 @@
 					>Display only {{ maxFavoriteApplications }} applications out of a total of {{ favoriteApplicationsLength$ | async }}.</mat-hint
 				>
 			</mat-form-field>
+		</fieldset>
+		<fieldset class="toggles">
+			<legend>Custom widgets settings</legend>
+			<mat-slide-toggle [(ngModel)]="hasCustomWidgets">toggle custom widgets</mat-slide-toggle>
 		</fieldset>
 	</ng-container>
 </ob-column-layout>

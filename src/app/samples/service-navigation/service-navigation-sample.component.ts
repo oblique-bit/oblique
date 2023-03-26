@@ -55,6 +55,7 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 		email: 'support@bit.admin.ch',
 		tel: '+41 58 461 61 11'
 	};
+	hasCustomWidgets = true;
 	readonly rootUrl = environment.pams.rootUrl;
 	readonly environment = environment.pams.environment;
 
