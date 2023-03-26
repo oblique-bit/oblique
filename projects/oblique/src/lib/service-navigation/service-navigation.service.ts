@@ -6,6 +6,7 @@ import {ObEPamsEnvironment, ObIServiceNavigationApplication, ObLoginState} from 
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
 import {ObIServiceNavigationState} from './api/service-navigation.api.model';
+import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
 
 @Injectable()
 export class ObServiceNavigationService {
@@ -24,6 +25,7 @@ export class ObServiceNavigationService {
 	constructor(
 		private readonly configService: ObServiceNavigationConfigApiService,
 		private readonly pollingService: ObServiceNavigationPollingService,
+		private readonly applicationsService: ObServiceNavigationApplicationsService,
 		private readonly translateService: TranslateService
 	) {}
 
@@ -101,10 +103,13 @@ export class ObServiceNavigationService {
 	}
 
 	getLastUsedApplications$(): Observable<ObIServiceNavigationApplication[]> {
-		return this.getState$().pipe(
-			map(state => state.lastUsedApps),
-			map(applications => applications.map(application => ({appID: application.appID}))),
-			distinctUntilChanged((previousState, newState) => previousState === newState)
+		return this.rootUrl$.pipe(
+			switchMap(rootUrl =>
+				this.getState$().pipe(
+					map(state => state.lastUsedApps),
+					this.applicationsService.getApplications(rootUrl)
+				)
+			)
 		);
 	}
 

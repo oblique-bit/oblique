@@ -1,0 +1,106 @@
+import {TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {count, from, of} from 'rxjs';
+import {ObServiceNavigationApplicationsApiService} from '../api/service-navigation-applications-api.service';
+import {ObServiceNavigationApplicationsService} from './service-navigation-applications.service';
+
+describe('ObServiceNavigationApplicationsService', () => {
+	let service: ObServiceNavigationApplicationsService;
+	let applicationsService: ObServiceNavigationApplicationsApiService;
+	const mockApplications = [
+		{
+			applicationID: 1,
+			image: 'imageBase64',
+			lastModificationDate: 'timestamp',
+			name: {en: 'EN', de: 'DE', fr: 'FR', it: 'IT'},
+			url: 'appUrl'
+		}
+	];
+
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			providers: [
+				ObServiceNavigationApplicationsService,
+				{
+					provide: ObServiceNavigationApplicationsApiService,
+					useValue: {fetchApplicationsInfo: jest.fn().mockReturnValue(of(mockApplications))}
+				}
+			]
+		});
+		service = TestBed.inject(ObServiceNavigationApplicationsService);
+		applicationsService = TestBed.inject(ObServiceNavigationApplicationsApiService);
+	});
+
+	describe('getApplications', () => {
+		describe.each([
+			{description: 'no application list', value: null},
+			{description: 'an empty application list', value: []}
+		])('with $description application as input', ({value}) => {
+			it('should not emit', fakeAsync(() => {
+				let emitted = false;
+				of(value)
+					.pipe(service.getApplications('http:/rootUrl/'))
+					.subscribe(() => {
+						emitted = true;
+					});
+				tick();
+				expect(emitted).toBe(false);
+			}));
+		});
+
+		describe('with 1 application as input', () => {
+			let result;
+			beforeEach(done => {
+				of([
+					{
+						appID: 1,
+						childAppID: 0,
+						accessOK: true,
+						online: true
+					}
+				])
+					.pipe(service.getApplications('http:/rootUrl/'))
+					.subscribe(received => {
+						result = received;
+						done();
+					});
+			});
+
+			it('should call fetchApplicationsInfo with correct parameters', () => {
+				expect(applicationsService.fetchApplicationsInfo).toHaveBeenCalledWith('http:/rootUrl/', [
+					{applicationID: 1, childApplicationID: 0}
+				]);
+			});
+
+			it(`should emit an application list with image, name and url`, () => {
+				expect(result).toEqual([
+					{
+						image: 'imageBase64',
+						name: {en: 'EN', de: 'DE', fr: 'FR', it: 'IT'},
+						url: 'appUrl',
+						status: 'online'
+					}
+				]);
+			});
+		});
+
+		describe('with multiple emissions', () => {
+			it('should emit 4 times', done => {
+				from([
+					[{appID: 1, childAppID: 0, online: true}],
+					[{appID: 1, childAppID: 0, online: true}],
+					[{appID: 2, childAppID: 0, online: true}],
+					[
+						{appID: 1, childAppID: 0, online: true},
+						{appID: 2, childAppID: 0, online: true}
+					],
+					[{appID: 2, childAppID: 0, online: true}]
+				])
+					.pipe(service.getApplications('http:/rootUrl/'), count())
+					.subscribe(number => {
+						expect(number).toBe(4);
+						done();
+					});
+			});
+		});
+	});
+});

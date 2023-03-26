@@ -50,7 +50,7 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 		describe('with some applications and while loggedIn', () => {
 			beforeEach(fakeAsync(async () => {
 				component.isLoggedIn = true;
-				component.lastUsedApplications = [{appID: 42}];
+				component.lastUsedApplications = [{name: 'applicationName'}];
 				await harness.openPopover();
 				fixture.detectChanges();
 				tick();
@@ -127,8 +127,8 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 									expect(span.classes['ob-application-title']).toBe(true);
 								});
 
-								it('should have "42" as content', () => {
-									expect(span.nativeElement.textContent).toBe('42');
+								it('should have "applicationName" as content', () => {
+									expect(span.nativeElement.textContent).toBe('applicationName');
 								});
 							});
 						});

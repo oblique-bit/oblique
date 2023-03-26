@@ -1,12 +1,13 @@
 import {Component, Input, OnChanges, OnInit, ViewEncapsulation} from '@angular/core';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObEPamsEnvironment, ObIServiceNavigationContact, ObIServiceNavigationLink} from './service-navigation.model';
+import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
 
 @Component({
 	selector: 'ob-service-navigation',
 	templateUrl: './service-navigation.component.html',
 	styleUrls: ['./service-navigation.component.scss'],
-	providers: [ObServiceNavigationService],
+	providers: [ObServiceNavigationService, ObServiceNavigationApplicationsService],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation'}
 })

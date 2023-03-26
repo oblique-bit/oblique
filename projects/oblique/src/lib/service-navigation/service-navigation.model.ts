@@ -27,5 +27,5 @@ export interface ObISectionLink {
 export type ObLoginState = 'SA' | 'S1' | 'S2OK' | 'S2+OK' | 'S3OK' | 'S3+OK';
 
 export interface ObIServiceNavigationApplication {
-	appID: number;
+	name: string;
 }

@@ -39,6 +39,26 @@ export interface ObIServiceNavigationRawApplication {
 	online: boolean;
 }
 
+export interface ObIServiceNavigationApplicationInfo {
+	applicationID: number;
+	image: string;
+	lastModificationDate: string;
+	name: ObIServiceNavigationTranslation;
+	url: string;
+}
+
+export interface ObIServiceNavigationTranslation {
+	de: string;
+	en: string;
+	fr: string;
+	it: string;
+}
+
+export interface ObIServiceNavigationApplicationIdentifier {
+	applicationID: number;
+	childApplicationID: number;
+}
+
 export interface ObIProfileState {
 	avatarID: number;
 	fullname: string;
