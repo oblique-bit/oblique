@@ -156,6 +156,18 @@ describe('ObServiceNavigationComponent', () => {
 		});
 	});
 
+	describe('maxLastUsedApplications', () => {
+		it('should be initialized to 3', () => {
+			expect(component.maxLastUsedApplications).toBe(3);
+		});
+	});
+
+	describe('maxFavoriteApplications', () => {
+		it('should be initialized to 3', () => {
+			expect(component.maxFavoriteApplications).toBe(3);
+		});
+	});
+
 	describe.each([
 		{property: 'loginUrl$', method: 'getLoginUrl$', emit: 'loginUrl'},
 		{property: 'logoutUrl$', method: 'getLogoutUrl$', emit: 'logoutUrl'},

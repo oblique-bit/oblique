@@ -13,6 +13,7 @@ import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObSafeImagePipe} from '../shared/safe-image.pipe';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
+import {ObLimitArraySizePipe} from '../shared/limit-array-size.pipe';
 import {ObServiceNavigationApplicationAltPipe} from './service-navigation-application-image-alt.pipe';
 import {ObServiceNavigationApplicationsHarness} from './service-navigation-applications.harness';
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
@@ -26,6 +27,7 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 		await TestBed.configureTestingModule({
 			imports: [MatButtonModule, MatIconModule, MatTooltipModule, ObPopoverModule],
 			declarations: [
+				ObLimitArraySizePipe,
 				ObServiceNavigationApplicationsComponent,
 				ObMockTranslatePipe,
 				ObServiceNavigationPopoverSectionComponent,
@@ -48,6 +50,28 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 	it('should have "ob-service-navigation-applications" class', async () => {
 		const host = await harness.host();
 		expect(await host.hasClass('ob-service-navigation-applications')).toBe(true);
+	});
+
+	describe('maxLastUsedApplications', () => {
+		it('should be initialized to "3"', () => {
+			expect(component.maxLastUsedApplications).toBe(3);
+		});
+
+		it('should throw an error when negative', () => {
+			const change = {maxLastUsedApplications: {currentValue: -1, previousValue: 3, firstChange: true, isFirstChange: () => true}};
+			expect(() => component.ngOnChanges(change)).toThrowError('maxLastUsedApplications cannot be negative.');
+		});
+	});
+
+	describe('maxFavoriteApplications', () => {
+		it('should be initialized to "3"', () => {
+			expect(component.maxFavoriteApplications).toBe(3);
+		});
+
+		it('should throw an error when negative', () => {
+			const change = {maxFavoriteApplications: {currentValue: -1, previousValue: 3, firstChange: true, isFirstChange: () => true}};
+			expect(() => component.ngOnChanges(change)).toThrowError('maxFavoriteApplications cannot be negative.');
+		});
 	});
 
 	describe('lastUsedApplications', () => {

@@ -34,7 +34,12 @@
 		header="i18n.oblique.service-navigation.applications.last-used.header"
 	>
 		<div class="ob-applications" obContent>
-			<a *ngFor="let application of lastUsedApplications" class="ob-application" [href]="application.url" [isExternalLink]="false">
+			<a
+				*ngFor="let application of lastUsedApplications | obLimitArraySize : maxLastUsedApplications"
+				class="ob-application"
+				[href]="application.url"
+				[isExternalLink]="false"
+			>
 				<img
 					*ngIf="application.status !== 'online'"
 					aria-hidden="true"
@@ -57,7 +62,12 @@
 		header="i18n.oblique.service-navigation.applications.favorite.header"
 	>
 		<div class="ob-applications" obContent>
-			<a *ngFor="let application of favoriteApplications" class="ob-application" [href]="application.url" [isExternalLink]="false">
+			<a
+				*ngFor="let application of favoriteApplications | obLimitArraySize : maxFavoriteApplications"
+				class="ob-application"
+				[href]="application.url"
+				[isExternalLink]="false"
+			>
 				<img
 					*ngIf="application.status !== 'online'"
 					aria-hidden="true"

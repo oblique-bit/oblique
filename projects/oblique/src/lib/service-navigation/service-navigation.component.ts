@@ -15,6 +15,8 @@ export class ObServiceNavigationComponent implements OnInit, OnChanges {
 	@Input() profileLinks: ObIServiceNavigationLink[] = [];
 	@Input() infoLinks: ObIServiceNavigationLink[] = [];
 	@Input() infoContact: ObIServiceNavigationContact;
+	@Input() maxLastUsedApplications = 3;
+	@Input() maxFavoriteApplications = 3;
 	@Input() environment: ObEPamsEnvironment;
 	@Input() rootUrl: string;
 	@Input() returnUrl: string;
