@@ -107,7 +107,8 @@ describe('ObServiceNavigationService', () => {
 					'getInboxMailUrl$',
 					'getMessageCount$',
 					'getApplicationsUrl$',
-					'getLastUsedApplications$'
+					'getLastUsedApplications$',
+					'getFavoriteApplications$'
 				])('%s', method => {
 					it('should return an observable', () => {
 						expect(service.getLoginUrl$() instanceof Observable).toBe(true);
@@ -174,7 +175,8 @@ describe('ObServiceNavigationService', () => {
 							'getInboxMailUrl$',
 							'getMessageCount$',
 							'getApplicationsUrl$',
-							'getLastUsedApplications$'
+							'getLastUsedApplications$',
+							'getFavoriteApplications$'
 						])('%s', method => {
 							it('should return an observable', () => {
 								expect(service[method]() instanceof Observable).toBe(true);
@@ -255,7 +257,7 @@ describe('ObServiceNavigationService', () => {
 							});
 						});
 
-						describe('getLastUsedApplications$', () => {
+						describe.each(['getLastUsedApplications$', 'getFavoriteApplications$'])('%s', method => {
 							describe.each([
 								{language: 'de', name: 'Name'},
 								{language: 'fr', name: 'nom'},
@@ -265,7 +267,7 @@ describe('ObServiceNavigationService', () => {
 							])('with "$language" as language', ({language, name}) => {
 								let promise: Promise<any>;
 								beforeEach(() => {
-									promise = firstValueFrom(service.getLastUsedApplications$());
+									promise = firstValueFrom(service[method]());
 									mockLangChange.next({lang: language});
 									mockStateChange.next({lastUsedApps: [{appID: 42}]} as ObIServiceNavigationState);
 								});

@@ -13,5 +13,6 @@ export class ObServiceNavigationApplicationsComponent {
 	@Input() applicationsUrl = '';
 	@Input() isLoggedIn = false;
 	@Input() lastUsedApplications: ObIServiceNavigationApplication[] = [];
+	@Input() favoriteApplications: ObIServiceNavigationApplication[] = [];
 	statusImage = base64StatusImages;
 }

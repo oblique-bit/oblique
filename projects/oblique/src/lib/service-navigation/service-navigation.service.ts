@@ -103,10 +103,18 @@ export class ObServiceNavigationService {
 	}
 
 	getLastUsedApplications$(): Observable<ObIServiceNavigationApplication[]> {
+		return this.getApplications$('lastUsedApps');
+	}
+
+	getFavoriteApplications$(): Observable<ObIServiceNavigationApplication[]> {
+		return this.getApplications$('favoriteApps');
+	}
+
+	private getApplications$(applicationListName: 'favoriteApps' | 'lastUsedApps'): Observable<ObIServiceNavigationApplication[]> {
 		return this.rootUrl$.pipe(
 			switchMap(rootUrl =>
 				this.getState$().pipe(
-					map(state => state.lastUsedApps),
+					map(state => state[applicationListName]),
 					this.applicationsService.getApplications(rootUrl),
 					this.combineWithLanguage<ObIServiceNavigationApplicationParsedInfo[]>(),
 					map(([applicationsInfo, lang]) =>

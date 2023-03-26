@@ -108,6 +108,7 @@
   "i18n.pagination.last-page": "Auf die letzte Seite springen",
   "i18n.oblique.service-navigation.applications.button.label": "Services",
   "i18n.oblique.service-navigation.applications.button.tooltip": "Klicken um das Anwendungspanel zu öffnen oder zu schliessen",
+  "i18n.oblique.service-navigation.applications.favorite.header": "Favoriten",
   "i18n.oblique.service-navigation.applications.image.inaccessible.alt": "Schloss im roten Kreis über dem Icon der {{name}}-Anwendung",
   "i18n.oblique.service-navigation.applications.image.offline.alt": "Kreuz im roten Kreis über dem Icon der {{name}}-Anwendung",
   "i18n.oblique.service-navigation.applications.image.online.alt": "Icon der {{name}}-Anwendung",

@@ -10,6 +10,7 @@
 			[applicationsUrl]="applicationsUrl$ | async"
 			[isLoggedIn]="loginState$ | async | obIsUserLoggedIn"
 			[lastUsedApplications]="lastUsedApplications$ | async"
+			[favoriteApplications]="favoriteApplications$ | async"
 		></ob-service-navigation-applications>
 	</li>
 	<li *ngIf="loginState$ | async | obIsUserLoggedIn">

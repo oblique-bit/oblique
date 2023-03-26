@@ -32,7 +32,8 @@ describe('ObServiceNavigationComponent', () => {
 		getLoginState$: jest.fn().mockReturnValue(mockLoginState.asObservable()),
 		getMessageCount$: jest.fn().mockReturnValue(of(42)),
 		getApplicationsUrl$: jest.fn().mockReturnValue(of('applicationsUrl')),
-		getLastUsedApplications$: jest.fn().mockReturnValue(of([{test: true}]))
+		getLastUsedApplications$: jest.fn().mockReturnValue(of([{test: true}])),
+		getFavoriteApplications$: jest.fn().mockReturnValue(of([{test: true}]))
 	};
 	const selectors = {
 		auth: ObServiceNavigationAuthenticationHarness.hostSelector,
@@ -165,7 +166,8 @@ describe('ObServiceNavigationComponent', () => {
 		{property: 'inboxMailUrl$', method: 'getInboxMailUrl$', emit: 'inboxMailUrl'},
 		{property: 'messageCount$', method: 'getMessageCount$', emit: 42},
 		{property: 'applicationsUrl$', method: 'getApplicationsUrl$', emit: 'applicationsUrl'},
-		{property: 'lastUsedApplications$', method: 'getLastUsedApplications$', emit: [{test: true}]}
+		{property: 'lastUsedApplications$', method: 'getLastUsedApplications$', emit: [{test: true}]},
+		{property: 'favoriteApplications$', method: 'getFavoriteApplications$', emit: [{test: true}]}
 	])('$method', ({property, method, emit}) => {
 		it('should be an observable', () => {
 			expect(component[property] instanceof Observable).toBe(true);

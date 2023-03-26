@@ -53,6 +53,29 @@
 		</div>
 	</ob-service-navigation-popover-section>
 	<ob-service-navigation-popover-section
+		*ngIf="favoriteApplications?.length > 0"
+		header="i18n.oblique.service-navigation.applications.favorite.header"
+	>
+		<div class="ob-applications" obContent>
+			<a *ngFor="let application of favoriteApplications" class="ob-application" [href]="application.url" [isExternalLink]="false">
+				<img
+					*ngIf="application.status !== 'online'"
+					aria-hidden="true"
+					[src]="'data:image/png;base64,' + statusImage[application.status] | obSafeImage"
+					class="ob-application-image ob-status-image"
+					alt=""
+				/>
+				<img
+					class="ob-application-image"
+					[src]="application.image | obSafeImage"
+					[class.ob-offline]="application.status !== 'online'"
+					alt="{{ application.status | ObServiceNavigationApplicationAlt | translate : { name: application.name } }}"
+				/>
+				<span class="ob-application-title">{{ application.name }}</span>
+			</a>
+		</div>
+	</ob-service-navigation-popover-section>
+	<ob-service-navigation-popover-section
 		header="i18n.oblique.service-navigation.applications.links.header"
 		[links]="[{ url: applicationsUrl, label: 'i18n.oblique.service-navigation.applications.link.label', isInternalLink: true }]"
 	></ob-service-navigation-popover-section>
