@@ -1,14 +1,20 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {ObIServiceNavigationContact, ObIServiceNavigationLink, WINDOW} from '@oblique/oblique';
+import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {ObIServiceNavigationContact, ObIServiceNavigationLink, ObServiceNavigationComponent, WINDOW} from '@oblique/oblique';
 import {environment} from '../../../environments/environment';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
 	selector: 'sc-service-navigation',
 	templateUrl: './service-navigation-sample.component.html',
 	styleUrls: ['./service-navigation-sample.component.scss']
 })
-export class ServiceNavigationSampleComponent implements OnInit {
+export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	returnUrl: string;
+	maxLastUsedApplications = 3;
+	maxFavoriteApplications = 3;
+	lastUsedApplicationsLength$: Observable<number>;
+	favoriteApplicationsLength$: Observable<number>;
 	profileLinks: ObIServiceNavigationLink[] = [
 		{
 			url: 'i18n.service-navigation.profile.link.unicorn.url',
@@ -56,11 +62,17 @@ export class ServiceNavigationSampleComponent implements OnInit {
 		email: 'support@bit.admin.ch',
 		tel: '+41 58 461 61 11'
 	};
+	@ViewChild(ObServiceNavigationComponent) private readonly headerControlsComponent: ObServiceNavigationComponent;
 
 	constructor(@Inject(WINDOW) private readonly window: Window) {}
 
 	ngOnInit(): void {
 		this.returnUrl = this.window.location.href;
+	}
+
+	ngAfterViewInit(): void {
+		this.lastUsedApplicationsLength$ = this.headerControlsComponent.lastUsedApplications$.pipe(map(applications => applications.length));
+		this.favoriteApplicationsLength$ = this.headerControlsComponent.favoriteApplications$.pipe(map(applications => applications.length));
 	}
 
 	handleContactInfo(): void {

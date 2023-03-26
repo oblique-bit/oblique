@@ -9,6 +9,8 @@
 			[profileLinks]="profileLinks"
 			[infoLinks]="infoLinks"
 			[infoContact]="infoContact"
+			[maxLastUsedApplications]="maxLastUsedApplications"
+			[maxFavoriteApplications]="maxFavoriteApplications"
 		></ob-service-navigation>
 	</section>
 	<ng-container column-right-content>
@@ -21,6 +23,23 @@
 		<fieldset class="toggles">
 			<legend>Profile widget settings</legend>
 			<mat-slide-toggle [(ngModel)]="hasProfileLinks">toggle profile links</mat-slide-toggle>
+		</fieldset>
+		<fieldset class="toggles">
+			<legend>Applications widget settings</legend>
+			<mat-form-field>
+				<mat-label>Max last used applications</mat-label>
+				<input type="number" matInput [(ngModel)]="maxLastUsedApplications" />
+				<mat-hint
+					>Display only {{ maxLastUsedApplications }} applications out of a total of {{ lastUsedApplicationsLength$ | async }}.</mat-hint
+				>
+			</mat-form-field>
+			<mat-form-field>
+				<mat-label>Max favorite applications</mat-label>
+				<input type="number" matInput [(ngModel)]="maxFavoriteApplications" />
+				<mat-hint
+					>Display only {{ maxFavoriteApplications }} applications out of a total of {{ favoriteApplicationsLength$ | async }}.</mat-hint
+				>
+			</mat-form-field>
 		</fieldset>
 	</ng-container>
 </ob-column-layout>
