@@ -1,6 +1,7 @@
 @use "sass:selector";
 @use "../core/variables" as core-variables;
 @use "../core/mixins/tab-outline";
+@use "../core/mixins/shadow";
 
 /**
  * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
@@ -37,18 +38,24 @@
 		&.mat-mdc-icon-button {
 			padding: 0.3896em; // (mat-mdc-button-height - mat-mdc-button-font-size * ob-icon-font-size) / 2 = (34px - 14px * 1.65) / 2 = (2.4286em - 1.65em) / 2
 			line-height: 1;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
 
-			&.mat-mdc-button-base {
-				height: $button-height;
-				width: $button-height;
-				display: flex;
-				justify-content: center;
-				align-items: flex-start;
+			&:not(.ob-close) {
+				&.mat-mdc-button-base {
+					height: $button-height;
+					width: $button-height;
+				}
+
+				svg {
+					height: 16px;
+					width: 16px;
+				}
 			}
 
-			svg {
-				height: 16px;
-				width: 16px;
+			&.ob-close {
+				align-items: center;
 			}
 		}
 
@@ -74,11 +81,7 @@
 					}
 				}
 
-				&:focus {
-					&:not(.ob-button-card) {
-						box-shadow: 0 0 0 3px core-variables.$ob-purple-300;
-					}
-				}
+				@include shadow.ob-focus-visible-tab-focus-box-shadow();
 
 				.mat-ripple {
 					&.mat-mdc-button-ripple {
@@ -91,6 +94,31 @@
 				.mat-icon {
 					z-index: 1;
 				}
+			}
+
+			&.ob-external-link {
+				&.mat-mdc-icon-button {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-size: unset;
+
+					.mat-icon {
+						height: unset;
+						width: unset;
+						margin-right: -4px;
+					}
+				}
+
+				&.mat-mdc-button {
+					.mat-icon {
+						margin-bottom: -1px;
+					}
+				}
+			}
+
+			mat-icon[svgicon="external"].mat-icon {
+				margin-left: -1px;
 			}
 		}
 
