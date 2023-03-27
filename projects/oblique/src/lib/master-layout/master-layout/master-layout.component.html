@@ -98,5 +98,5 @@
 <div class="ob-off-canvas-backdrop" *ngIf="hasOffCanvas"></div>
 <ob-spinner [fixed]="true"></ob-spinner>
 <ng-template #logo>
-	<img alt="{{ 'i18n.oblique.header.logo' | translate }}" src="assets/images/logo.svg" />
+	<img [alt]="'i18n.oblique.header.logo' | translate" src="assets/images/logo.svg" />
 </ng-template>

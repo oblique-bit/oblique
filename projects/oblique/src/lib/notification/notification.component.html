@@ -9,7 +9,7 @@
 	<button [id]="notification.idPrefix + 'close_button'" (click)="close(notification)" type="button" class="ob-close">
 		&times;<span class="ob-screen-reader-only">{{ "i18n.oblique.notification.close" | translate }}</span>
 	</button>
-	<span class="ob-occurrence" title="{{ 'i18n.oblique.occurrences' | translate }}" *ngIf="notification.occurrences > 1">{{
+	<span class="ob-occurrence" [title]="'i18n.oblique.occurrences' | translate" *ngIf="notification.occurrences > 1">{{
 		notification.occurrences
 	}}</span>
 	<div [id]="notification.idPrefix + 'title'" class="ob-notification-title">

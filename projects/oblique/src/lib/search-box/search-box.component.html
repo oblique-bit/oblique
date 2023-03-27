@@ -1,4 +1,4 @@
-<label class="ob-control-toggle" for="{{ id }}" [obPopover]="popoverSearch" [closeOnlyOnToggle]="true" placement="bottom-start">
+<label class="ob-control-toggle" [for]="id" [obPopover]="popoverSearch" [closeOnlyOnToggle]="true" placement="bottom-start">
 	<mat-icon svgIcon="search" class="ob-control-icon"></mat-icon>
 	<span class="ob-control-label ob-screen-reader-only">{{ "i18n.oblique.search.title" | translate }}</span>
 </label>
@@ -6,7 +6,7 @@
 	[id]="id"
 	class="ob-search-box-input"
 	type="search"
-	placeholder="{{ placeholder | translate }}"
+	[placeholder]="placeholder | translate"
 	role="searchbox"
 	[(ngModel)]="pattern"
 	(focus)="focus()"
