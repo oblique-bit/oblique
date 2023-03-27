@@ -64,8 +64,8 @@
 			<mat-form-field>
 				<mat-label>Channel</mat-label>
 				<mat-select [(ngModel)]="channel">
-					<mat-option value="{{ sampleChannel }}">{{ sampleChannel }}</mat-option>
-					<mat-option value="{{ appChannel }}">{{ appChannel }} (from NotificationConfig)</mat-option>
+					<mat-option [value]="sampleChannel">{{ sampleChannel }}</mat-option>
+					<mat-option [value]="appChannel">{{ appChannel }} (from NotificationConfig)</mat-option>
 				</mat-select>
 			</mat-form-field>
 			<mat-form-field>
