@@ -6,8 +6,48 @@
       "type": "component",
       "since": "10.1.0",
       "selector": "ob-service-navigation",
-      "usage": "The <code>ObServiceNavigationComponent</code> provides an area to display widgets and is declared by the <code>ObHeadersControlsModule</code>.",
+      "usage": "The <code>ObServiceNavigationComponent</code> provides an area to display widgets. It is directly integrated in the ObMasterLayout but could also be used independently, in which case the <code>ObHeadersControlsModule</code> needs to be imported. A collection of widgets is readily available (PAMS login, PAMS, logout, PAMS profile, PAMS messages, application info and language selection) and each one can be independently displayed. It is also possible to provide custom widgets.",
       "inputs": [
+        {
+          "name": "profileLinks",
+          "type": "ObIHeaderControlLink[]",
+          "text": "Custom list of <code>ObIHeaderControlLink</code>s. This list of profile links will be displayed inside the profile widget's panel.",
+          "default": "ObIHeaderControlLink[]",
+          "since": "10.1.0",
+          "isOptional": true
+        },
+        {
+          "name": "infoLinks",
+          "type": "ObIHeaderControlLink[]",
+          "text": "Custom list of <code>ObIHeaderControlLink</code>s. This list of info links will be displayed inside the info widget's panel.",
+          "default": "ObIHeaderControlLink[]",
+          "since": "10.1.0",
+          "isOptional": true
+        },
+        {
+          "name": "infoContact",
+          "type": "ObIHeaderControlContact",
+          "since": "10.1.0",
+          "default": "undefined",
+          "isOptional": true,
+          "text": "Configures your custom contact information. This custom contact information will be displayed inside the info widget's panel."
+        },
+        {
+          "name": "maxLastUsedApplications",
+          "type": "number",
+          "since": "10.1.0",
+          "default": "3",
+          "text": "Sets the maximum of last-used applications that will be listed inside the application widget's panel. This list is sent by PAMS and is linked to the registered user's profile.",
+          "isOptional": true
+        },
+        {
+          "name": "maxFavoriteApplications",
+          "type": "number",
+          "since": "10.1.0",
+          "default": "3",
+          "text": "Sets the maximum of favorite applications that will be listed inside the application widget's panel. This list is sent by PAMS and is linked to the registered user's profile.",
+          "isOptional": true
+        },
         {
           "name": "environment",
           "type": "ObEPamsEnvironment",
@@ -36,6 +76,105 @@
           "default": "undefined",
           "since": "10.1.0",
           "text": "URL to which users will be redirected after successful authentication."
+        },
+        {
+          "name": "displayMessage",
+          "type": "boolean",
+          "default": "false",
+          "since": "10.1.0",
+          "text": "Determines whether the message widget is displayed or not."
+        },
+        {
+          "name": "displayInfo",
+          "type": "boolean",
+          "default": "false",
+          "since": "10.1.0",
+          "text": "Determines whether the info widget is displayed or not."
+        },
+        {
+          "name": "displayApplications",
+          "type": "boolean",
+          "default": "false",
+          "since": "10.1.0",
+          "text": "Determines whether the applications widget is displayed or not."
+        },
+        {
+          "name": "displayProfile",
+          "type": "boolean",
+          "default": "false",
+          "since": "10.1.0",
+          "text": "Determines whether the profile widget is displayed or not."
+        },
+        {
+          "name": "displayAuthentication",
+          "type": "boolean",
+          "default": "false",
+          "since": "10.1.0",
+          "text": "Determines whether the authentication widget is displayed or not."
+        },
+        {
+          "name": "displayLanguages",
+          "type": "boolean",
+          "default": "true",
+          "since": "10.1.0",
+          "text": "Determines whether the languages widget is displayed or not."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "loginState$",
+          "type": "Observable<ObILoginState>",
+          "since": "10.1.0",
+          "text": "Emits changes of login state."
+        }
+      ],
+      "methods": [
+        {
+          "name": "changeLanguage",
+          "returns": "void",
+          "since": "10.1.0",
+          "text": "Changes the language of the <code>TranslateService</code> to the given value.",
+          "arguments": ["language: string"]
+        }
+      ]
+    },
+    {
+      "name": "ObIHeaderControlContact",
+      "type": "interface",
+      "since": "10.1.0",
+      "variables": [
+        {
+          "name": "email",
+          "type": "string",
+          "isOptional": true,
+          "since": "10.1.0",
+          "text": "Property that defines the email address of the contact information."
+        },
+        {
+          "name": "tel",
+          "type": "string",
+          "isOptional": true,
+          "since": "10.1.0",
+          "text": "Property to defines the telephone number of a contact information."
+        }
+      ]
+    },
+    {
+      "name": "ObIHeaderControlLink",
+      "type": "interface",
+      "since": "10.1.0",
+      "variables": [
+        {
+          "name": "url",
+          "type": "string",
+          "since": "10.1.0",
+          "text": "This property will be translated and applied to the <code>href</code> attribute of a link in the profile widget's panel."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "since": "10.1.0",
+          "text": "This property will be translated and used as the label of a link in the profile widget's panel."
         }
       ]
     }
