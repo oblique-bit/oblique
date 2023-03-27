@@ -2,13 +2,13 @@
 	<li *ngFor="let customControl of customWidgetTemplate" class="ob-service-navigation-custom-control">
 		<ng-container *ngTemplateOutlet="customControl"></ng-container>
 	</li>
-	<li *ngIf="loginState$ | async | obIsUserLoggedIn">
+	<li *ngIf="(loginState$ | async | obIsUserLoggedIn) && displayMessage">
 		<ob-service-navigation-message [linkHref]="inboxMailUrl$ | async" [count]="messageCount$ | async"></ob-service-navigation-message>
 	</li>
-	<li>
+	<li *ngIf="displayInfo">
 		<ob-service-navigation-info [links]="infoLinks" [contact]="infoContact"></ob-service-navigation-info>
 	</li>
-	<li>
+	<li *ngIf="displayApplications">
 		<ob-service-navigation-applications
 			[applicationsUrl]="applicationsUrl$ | async"
 			[isLoggedIn]="loginState$ | async | obIsUserLoggedIn"
@@ -18,7 +18,7 @@
 			[maxFavoriteApplications]="maxFavoriteApplications"
 		></ob-service-navigation-applications>
 	</li>
-	<li *ngIf="loginState$ | async | obIsUserLoggedIn">
+	<li *ngIf="(loginState$ | async | obIsUserLoggedIn) && displayProfile">
 		<ob-service-navigation-profile
 			[userName]="userName$ | async"
 			[settingsUrl]="settingsUrl$ | async"
@@ -26,14 +26,14 @@
 			[links]="profileLinks"
 		></ob-service-navigation-profile>
 	</li>
-	<li>
+	<li *ngIf="displayAuthentication">
 		<ob-service-navigation-authentication
 			[loginUrl]="loginUrl$ | async"
 			[logoutUrl]="logoutUrl$ | async"
 			[isLoggedIn]="loginState$ | async | obIsUserLoggedIn"
 		></ob-service-navigation-authentication>
 	</li>
-	<li *ngIf="languages.length > 1">
+	<li *ngIf="languages.length > 1 && displayLanguages">
 		<ob-service-navigation-languages
 			[languages]="languages"
 			[language]="language$ | async"

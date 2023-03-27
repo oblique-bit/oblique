@@ -20,6 +20,12 @@ export class ObServiceNavigationComponent implements OnInit, OnChanges {
 	@Input() environment: ObEPamsEnvironment;
 	@Input() rootUrl: string;
 	@Input() returnUrl: string;
+	@Input() displayMessage = false;
+	@Input() displayInfo = false;
+	@Input() displayApplications = false;
+	@Input() displayProfile = false;
+	@Input() displayAuthentication = false;
+	@Input() displayLanguages = true;
 	@ContentChildren('customWidgetTemplate') customWidgetTemplate: QueryList<unknown>;
 	readonly loginUrl$ = this.headerControlsService.getLoginUrl$();
 	readonly logoutUrl$ = this.headerControlsService.getLogoutUrl$();

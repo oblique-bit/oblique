@@ -2,6 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {TestElement} from '@angular/cdk/testing';
 import {Component} from '@angular/core';
+import {By} from '@angular/platform-browser';
 import {BehaviorSubject, Observable, firstValueFrom, of} from 'rxjs';
 import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
 import {ObServiceNavigationProfileHarness} from './profile/service-navigation-profile.harness';
@@ -66,6 +67,10 @@ describe('ObServiceNavigationComponent', () => {
 		TestBed.configureTestingModule({
 			declarations: [ObServiceNavigationComponent, ObIsUserLoggedInPipe, CustomControlsTestComponent]
 		}).compileComponents();
+	});
+
+	afterEach(() => {
+		jest.clearAllMocks();
 	});
 
 	describe('with one language', () => {
@@ -255,6 +260,54 @@ describe('ObServiceNavigationComponent', () => {
 			});
 		});
 
+		describe('widget visibility', () => {
+			const allWidgets = [selectors.message, selectors.info, selectors.applications, selectors.profile, selectors.auth];
+
+			describe.each([
+				{property: 'displayMessage', value: false},
+				{property: 'displayInfo', value: false},
+				{property: 'displayApplications', value: false},
+				{property: 'displayProfile', value: false},
+				{property: 'displayAuthentication', value: false},
+				{property: 'displayLanguages', value: true}
+			])('$property', ({property, value}) => {
+				it(`should be initialized to "${value}"`, () => {
+					expect(component[property]).toEqual(value);
+				});
+			});
+
+			describe.each([
+				{loginState: 'SA', widgets: [selectors.info, selectors.applications, selectors.auth]},
+				{loginState: 'S1', widgets: [selectors.info, selectors.applications, selectors.auth]},
+				{loginState: 'S2OK', widgets: allWidgets},
+				{loginState: 'S2+OK', widgets: allWidgets},
+				{loginState: 'S3OK', widgets: allWidgets},
+				{loginState: 'S3+OK', widgets: allWidgets}
+			])('loginState "$loginState" and all widgets', ({loginState, widgets}) => {
+				let children: TestElement[];
+				beforeEach(async () => {
+					component.displayMessage = true;
+					component.displayProfile = true;
+					component.displayInfo = true;
+					component.displayApplications = true;
+					component.displayAuthentication = true;
+					component.displayLanguages = true;
+					mockLoginState.next(loginState as ObLoginState);
+					fixture.detectChanges();
+					children = await harness.getListItemElements();
+				});
+
+				it(`should have ${widgets.length} children`, () => {
+					expect(children.length).toBe(widgets.length);
+				});
+
+				it.each(widgets)('"%s" should be present', async selector => {
+					const index = widgets.findIndex(widget => widget === selector);
+					expect(await children[index].matchesSelector(selector)).toEqual(true);
+				});
+			});
+		});
+
 		describe('customControlTemplates', () => {
 			let customControlFixture: ComponentFixture<CustomControlsTestComponent>;
 			const allWidgets = ['button', 'button', selectors.message, selectors.info, selectors.applications, selectors.profile, selectors.auth];
@@ -272,9 +325,16 @@ describe('ObServiceNavigationComponent', () => {
 				{loginState: 'S2+OK', widgets: allWidgets},
 				{loginState: 'S3OK', widgets: allWidgets},
 				{loginState: 'S3+OK', widgets: allWidgets}
-			])('loginState "$loginState"', ({loginState, widgets}) => {
+			])('loginState "$loginState" and all widgets', ({loginState, widgets}) => {
 				let children: TestElement[];
 				beforeEach(async () => {
+					const customComponent = customControlFixture.debugElement.query(By.directive(ObServiceNavigationComponent)).componentInstance;
+					customComponent.displayApplications = true;
+					customComponent.displayInfo = true;
+					customComponent.displayProfile = true;
+					customComponent.displayMessage = true;
+					customComponent.displayAuthentication = true;
+					customComponent.displayLanguages = true;
 					mockLoginState.next(loginState as ObLoginState);
 					fixture.detectChanges();
 					children = await harness.getListItemElements();
@@ -328,35 +388,10 @@ describe('ObServiceNavigationComponent', () => {
 			it('should have "ob-service-navigation-list" class', async () => {
 				expect(await list.hasClass('ob-service-navigation-list')).toBe(true);
 			});
-
-			describe.each([
-				{loginState: 'SA', widgets: [selectors.info, selectors.applications, selectors.auth]},
-				{loginState: 'S1', widgets: [selectors.info, selectors.applications, selectors.auth]},
-				{loginState: 'S2OK', widgets: [selectors.message, selectors.info, selectors.applications, selectors.profile, selectors.auth]},
-				{loginState: 'S2+OK', widgets: [selectors.message, selectors.info, selectors.applications, selectors.profile, selectors.auth]},
-				{loginState: 'S3OK', widgets: [selectors.message, selectors.info, selectors.applications, selectors.profile, selectors.auth]},
-				{loginState: 'S3+OK', widgets: [selectors.message, selectors.info, selectors.applications, selectors.profile, selectors.auth]}
-			])('loginState "$loginState"', ({loginState, widgets}) => {
-				let children: TestElement[];
-				beforeEach(async () => {
-					mockLoginState.next(loginState as ObLoginState);
-					fixture.detectChanges();
-					children = await harness.getListItemElements();
-				});
-
-				it(`should have ${widgets.length} children`, () => {
-					expect(children.length).toBe(widgets.length);
-				});
-
-				it.each(widgets)('"%s" should be present', async selector => {
-					const index = widgets.findIndex(widget => widget === selector);
-					expect(await children[index].matchesSelector(selector)).toEqual(true);
-				});
-			});
 		});
 	});
 
-	describe('with tow languages', () => {
+	describe('with two languages', () => {
 		beforeEach(() => {
 			mockService.getLanguages = jest.fn().mockReturnValue([
 				{code: 'en', label: ''},
@@ -409,6 +444,12 @@ describe('ObServiceNavigationComponent', () => {
 			])('loginState "$loginState"', ({loginState, widgets}) => {
 				let children: TestElement[];
 				beforeEach(async () => {
+					component.displayApplications = true;
+					component.displayInfo = true;
+					component.displayProfile = true;
+					component.displayMessage = true;
+					component.displayAuthentication = true;
+					component.displayLanguages = true;
 					mockLoginState.next(loginState as ObLoginState);
 					fixture.detectChanges();
 					children = await harness.getListItemElements();
