@@ -79,6 +79,16 @@
 			font-size: variables.$ob-font-size-biggest;
 			padding: 0;
 			color: variables.$ob-gray-dark;
+
+			&.mat-mdc-button-base.ob-button {
+				&:focus {
+					background-color: transparent;
+				}
+
+				&:hover {
+					background-color: variables.$ob-gray-200;
+				}
+			}
 		}
 	}
 
