@@ -6,6 +6,7 @@ export interface ObIAPI {
 	type?: string;
 	since: string;
 	updated?: string;
+	deprecated?: string;
 	variables?: ObIAPIelement[];
 	inputs?: ObIAPIelement[];
 	outputs?: ObIAPIelement[];
@@ -26,5 +27,6 @@ export interface ObIAPIelement {
 	default?: string | boolean | number;
 	since: string;
 	updated?: string;
+	deprecated?: string;
 	isOptional?: boolean;
 }
