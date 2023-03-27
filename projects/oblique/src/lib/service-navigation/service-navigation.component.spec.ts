@@ -192,11 +192,28 @@ describe('ObServiceNavigationComponent', () => {
 			});
 		});
 
+		describe.each(['loginState', 'loginState$'])('%s', property => {
+			it('should be an Observable', () => {
+				expect(component[property] instanceof Observable).toBe(true);
+			});
+
+			it('should call "ObServiceNavigationUrlsService.getLoginState$" twice', () => {
+				expect(service.getLoginState$).toHaveBeenCalledTimes(2);
+			});
+
+			it('should call "ObServiceNavigationUrlsService.getLoginState$" without parameters', () => {
+				expect(service.getLoginState$).toHaveBeenCalledWith();
+			});
+
+			it(`should receive "SA"`, () => {
+				expect(firstValueFrom(component[property])).resolves.toEqual('SA');
+			});
+		});
+
 		describe.each([
 			{property: 'loginUrl$', method: 'getLoginUrl$', emit: 'loginUrl'},
 			{property: 'logoutUrl$', method: 'getLogoutUrl$', emit: 'logoutUrl'},
 			{property: 'settingsUrl$', method: 'getSettingsUrl$', emit: 'settingsUrl'},
-			{property: 'loginState$', method: 'getLoginState$', emit: 'SA'},
 			{property: 'userName$', method: 'getUserName$', emit: 'John Doe'},
 			{property: 'avatarUrl$', method: 'getAvatarUrl$', emit: 'http://avatar-url'},
 			{property: 'inboxMailUrl$', method: 'getInboxMailUrl$', emit: 'inboxMailUrl'},

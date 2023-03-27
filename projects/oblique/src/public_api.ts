@@ -52,7 +52,8 @@ export {
 	ObServiceNavigationModule,
 	ObEPamsEnvironment,
 	ObIServiceNavigationLink,
-	ObIServiceNavigationContact
+	ObIServiceNavigationContact,
+	ObLoginState
 } from './lib/service-navigation';
 export {
 	ObHttpApiInterceptor,
