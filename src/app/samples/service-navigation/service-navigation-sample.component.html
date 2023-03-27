@@ -50,12 +50,14 @@
 		</fieldset>
 		<fieldset class="toggles">
 			<legend>Profile widget settings</legend>
-			<mat-slide-toggle [(ngModel)]="displayProfile">toggle profile</mat-slide-toggle>
-			<mat-slide-toggle [(ngModel)]="hasProfileLinks" [disabled]="!displayProfile">toggle profile links</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="displayProfile" [disabled]="loginState === 'SA'">toggle profile</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="hasProfileLinks" [disabled]="!displayProfile || loginState === 'SA'"
+				>toggle profile links</mat-slide-toggle
+			>
 		</fieldset>
 		<fieldset class="toggles">
 			<legend>Messages widget settings</legend>
-			<mat-slide-toggle [(ngModel)]="displayMessage">toggle message</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="displayMessage" [disabled]="loginState === 'SA'">toggle message</mat-slide-toggle>
 		</fieldset>
 		<fieldset class="toggles">
 			<legend>Authentication widget settings</legend>
