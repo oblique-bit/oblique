@@ -11,6 +11,12 @@
 			[infoContact]="infoContact"
 			[maxLastUsedApplications]="maxLastUsedApplications"
 			[maxFavoriteApplications]="maxFavoriteApplications"
+			[displayMessage]="displayMessage"
+			[displayInfo]="displayInfo"
+			[displayApplications]="displayApplications"
+			[displayProfile]="displayProfile"
+			[displayAuthentication]="displayAuthentication"
+			[displayLanguages]="displayLanguages"
 		>
 			<ng-container *ngIf="hasCustomWidgets">
 				<ng-template #customWidgetTemplate>
@@ -29,26 +35,45 @@
 	<ng-container column-right-content>
 		<fieldset class="toggles">
 			<legend>Info widget settings</legend>
-			<mat-slide-toggle [(ngModel)]="hasInfoLinks">toggle info links</mat-slide-toggle>
-			<mat-slide-toggle [(ngModel)]="hasContactEmail" (change)="handleContactInfo()">toggle contact email</mat-slide-toggle>
-			<mat-slide-toggle [(ngModel)]="hasContactPhone" (change)="handleContactInfo()">toggle contact phone</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="displayInfo">toggle info</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="hasInfoLinks" [disabled]="!displayInfo">toggle info links</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="hasContactEmail" [disabled]="!displayInfo" (change)="handleContactInfo()"
+				>toggle contact email</mat-slide-toggle
+			>
+			<mat-slide-toggle [(ngModel)]="hasContactPhone" [disabled]="!displayInfo" (change)="handleContactInfo()"
+				>toggle contact phone</mat-slide-toggle
+			>
 		</fieldset>
 		<fieldset class="toggles">
 			<legend>Profile widget settings</legend>
-			<mat-slide-toggle [(ngModel)]="hasProfileLinks">toggle profile links</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="displayProfile">toggle profile</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="hasProfileLinks" [disabled]="!displayProfile">toggle profile links</mat-slide-toggle>
+		</fieldset>
+		<fieldset class="toggles">
+			<legend>Messages widget settings</legend>
+			<mat-slide-toggle [(ngModel)]="displayMessage">toggle message</mat-slide-toggle>
+		</fieldset>
+		<fieldset class="toggles">
+			<legend>Authentication widget settings</legend>
+			<mat-slide-toggle [(ngModel)]="displayAuthentication">toggle authentication</mat-slide-toggle>
+		</fieldset>
+		<fieldset class="toggles">
+			<legend>Languages widget settings</legend>
+			<mat-slide-toggle [(ngModel)]="displayLanguages">toggle language</mat-slide-toggle>
 		</fieldset>
 		<fieldset class="toggles">
 			<legend>Applications widget settings</legend>
+			<mat-slide-toggle [(ngModel)]="displayApplications">toggle applications</mat-slide-toggle>
 			<mat-form-field>
 				<mat-label>Max last used applications</mat-label>
-				<input type="number" matInput [(ngModel)]="maxLastUsedApplications" />
+				<input type="number" matInput [(ngModel)]="maxLastUsedApplications" [disabled]="!displayApplications" />
 				<mat-hint
 					>Display only {{ maxLastUsedApplications }} applications out of a total of {{ lastUsedApplicationsLength$ | async }}.</mat-hint
 				>
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>Max favorite applications</mat-label>
-				<input type="number" matInput [(ngModel)]="maxFavoriteApplications" />
+				<input type="number" matInput [(ngModel)]="maxFavoriteApplications" [disabled]="!displayApplications" />
 				<mat-hint
 					>Display only {{ maxFavoriteApplications }} applications out of a total of {{ favoriteApplicationsLength$ | async }}.</mat-hint
 				>

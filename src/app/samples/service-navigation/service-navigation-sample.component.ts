@@ -15,6 +15,12 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	maxFavoriteApplications = 3;
 	lastUsedApplicationsLength$: Observable<number>;
 	favoriteApplicationsLength$: Observable<number>;
+	displayMessage = true;
+	displayInfo = true;
+	displayApplications = true;
+	displayProfile = true;
+	displayAuthentication = true;
+	displayLanguages = true;
 	profileLinks: ObIServiceNavigationLink[] = [
 		{
 			url: 'i18n.service-navigation.profile.link.unicorn.url',
