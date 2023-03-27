@@ -17,6 +17,7 @@
 			[displayProfile]="displayProfile"
 			[displayAuthentication]="displayAuthentication"
 			[displayLanguages]="displayLanguages"
+			(loginState)="loginState = $event"
 		>
 			<ng-container *ngIf="hasCustomWidgets">
 				<ng-template #customWidgetTemplate>
@@ -31,6 +32,9 @@
 				</ng-template>
 			</ng-container>
 		</ob-service-navigation>
+		<p>
+			Current login state: <output>{{ loginState }}</output>
+		</p>
 	</section>
 	<ng-container column-right-content>
 		<fieldset class="toggles">

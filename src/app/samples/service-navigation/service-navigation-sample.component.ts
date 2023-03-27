@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {ObIServiceNavigationContact, ObIServiceNavigationLink, ObServiceNavigationComponent, WINDOW} from '@oblique/oblique';
+import {ObIServiceNavigationContact, ObIServiceNavigationLink, ObLoginState, ObServiceNavigationComponent, WINDOW} from '@oblique/oblique';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -21,6 +21,7 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	displayProfile = true;
 	displayAuthentication = true;
 	displayLanguages = true;
+	loginState: ObLoginState;
 	profileLinks: ObIServiceNavigationLink[] = [
 		{
 			url: 'i18n.service-navigation.profile.link.unicorn.url',
