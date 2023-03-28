@@ -1,1 +1,11 @@
-<p>The sticky component will stick to the top or to the bottom when you reach its scroll position.</p>
+<p>
+	The sticky component is not to be confused with the <code>position: sticky</code> CSS rule. It simply provides a scrolling container with
+	optional fixed header and footer. This means the scrollbar will be applied to the <code>&lt;ng-template #obStickyMain></code> part while
+	both <code>&lt;ng-template #obStickyHeader></code> and <code>&lt;ng-template #obStickyFooter></code> remain fixed.
+</p>
+<p>
+	For the scrollbar to appear, the <code>ObStickyComponent</code> needs to be higher than its parent, which implies this component must be
+	used within a fixed height context. For example, it can be used to add a fixed header and footer in a
+	<code>ObColumnLayoutComponent</code> with the <code>ob-full-height</code> class. Or within the <code>ObMasterLayoutComponent</code> with
+	sticky header and footer.
+</p>
