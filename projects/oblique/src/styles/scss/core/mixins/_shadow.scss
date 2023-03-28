@@ -16,6 +16,26 @@
 	filter: drop-shadow($x-offset $y-offset 4px $color);
 }
 
+$tab-focus-color: variables.$ob-purple-500;
+$tab-focus-width: 3px;
+
+@mixin ob-tab-focus-box-shadow() {
+	box-shadow: 0 0 0 $tab-focus-width $tab-focus-color;
+	outline: none;
+}
+
+@mixin ob-focus-visible-tab-focus-box-shadow() {
+	&:focus-visible {
+		@include ob-tab-focus-box-shadow();
+	}
+}
+
+@mixin ob-tab-focus-border() {
+	border: $tab-focus-width solid $tab-focus-color;
+	box-shadow: none;
+	outline: none;
+}
+
 @mixin ob-inner-bottom-shadow() {
 	box-shadow: inset 0 -10px 10px -10px variables.$ob-gray-300;
 }
