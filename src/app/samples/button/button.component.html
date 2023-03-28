@@ -384,6 +384,72 @@
 			</td>
 		</tr>
 	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">External link without text explicitly using external mat icon</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<a href="" mat-icon-button obButton="primary"><mat-icon svgIcon="external"></mat-icon></a>
+			</td>
+			<td>
+				<a href="" mat-icon-button obButton="secondary"><mat-icon svgIcon="external"></mat-icon></a>
+			</td>
+			<td>
+				<a href="" mat-icon-button obButton="tertiary"><mat-icon svgIcon="external"></mat-icon></a>
+			</td>
+			<td>
+				<a href="" mat-icon-button [obButton]="obButton"><mat-icon svgIcon="external"></mat-icon></a>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">External link button using external link directive without text</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<a href="https://www.google.ch" mat-icon-button obButton="primary"><span class="ob-screen-reader-only">Google</span></a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" mat-icon-button obButton="secondary"><span class="ob-screen-reader-only">Google</span></a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" mat-icon-button obButton="tertiary"><span class="ob-screen-reader-only">Google</span></a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" mat-icon-button [obButton]="obButton"><span class="ob-screen-reader-only">Google</span></a>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<td colspan="4">External link button using external link directive with text</td>
+		</tr>
+		<tr>
+			<th>
+				<label>mat-icon</label>
+			</th>
+			<td>
+				<a href="https://www.google.ch" mat-button obButton="primary">Google</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" mat-button obButton="secondary">Google</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" mat-button obButton="tertiary">Google</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" mat-button [obButton]="obButton">Google</a>
+			</td>
+		</tr>
+	</tbody>
 </table>
 
 <sc-api component="button"></sc-api>
