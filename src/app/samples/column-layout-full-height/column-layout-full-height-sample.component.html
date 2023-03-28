@@ -40,6 +40,7 @@
 	<ng-container column-main-content>
 		<h2>{{ "i18n.routes.samples.column-layout.title" | translate }}</h2>
 		<p>In Full Height mode, the column layout uses all the available space and each column can be independently scrolled.</p>
+		<ob-autocomplete [autocompleteOptions]="[{ label: 'test' }]"></ob-autocomplete>
 		<sc-description component="column-layout"></sc-description>
 		<sc-api component="column-layout"></sc-api>
 	</ng-container>
