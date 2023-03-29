@@ -10,12 +10,12 @@
 		<mat-icon svgIcon="chevron-{{ direction }}"></mat-icon>
 		<span class="ob-screen-reader-only">{{ "i18n.oblique.column.left.toggle" | translate }}</span>
 	</button>
-	<div class="ob-column-content">
+	<div class="ob-column-content" cdkScrollable>
 		<ng-content select="[column-left-content]"></ng-content>
 	</div>
 </div>
 <div class="ob-column-main">
-	<div class="ob-column-content">
+	<div class="ob-column-content" cdkScrollable>
 		<ng-content select="[column-main-content]"></ng-content>
 	</div>
 </div>
@@ -31,7 +31,7 @@
 		<mat-icon svgIcon="chevron-{{ direction }}"></mat-icon>
 		<span class="ob-screen-reader-only">{{ "i18n.oblique.column.right.toggle" | translate }}</span>
 	</button>
-	<div class="ob-column-content">
+	<div class="ob-column-content" cdkScrollable>
 		<ng-content select="[column-right-content]"></ng-content>
 	</div>
 </div>
