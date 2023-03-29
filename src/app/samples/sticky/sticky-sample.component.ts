@@ -15,4 +15,5 @@ export class StickySampleComponent {
 		{num: 'md', name: 'Default'},
 		{num: 'sm', name: 'Small'}
 	];
+	parentHeight = 300;
 }
