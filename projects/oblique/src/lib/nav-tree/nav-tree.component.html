@@ -1,5 +1,5 @@
-<ng-template #itemList let-items let-parentExpanded="parentExpanded">
-	<ng-template ngFor [ngForOf]="items" let-item>
+<ng-template #itemList let-items let-isParentCollapsed="isParentCollapsed">
+	<ng-container *ngFor="let item of items">
 		<li
 			*ngIf="visible(item)"
 			class="open"
@@ -19,32 +19,34 @@
 				[queryParams]="item.queryParams"
 				[fragment]="item.fragment"
 				(click)="item.collapsed = !item.collapsed"
-				[class.collapsed]="item.collapsed"
+				[class.collapsed]="item.items ? isParentCollapsed || item.collapsed : undefined"
 				[class.has-child]="item.items"
 				[class.active]="isLinkActive(rla, item)"
 				[attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
 				[attr.disabled]="item.disabled === true || null"
-				[attr.aria-expanded]="item.items ? parentExpanded && !item.collapsed : undefined"
+				[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
 			>
 				<span class="ob-icon-wrapper"
-					><mat-icon svgIcon="chevron-{{ item.collapsed ? 'right' : 'down' }}" *ngIf="item.items"></mat-icon
+					><mat-icon svgIcon="chevron-{{ isParentCollapsed || item.collapsed ? 'down' : 'right' }}" *ngIf="item.items"></mat-icon
 				></span>
 				<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
 			</a>
-			<div id="#{{ itemKey(item) }}" class="collapse" *ngIf="item.items" [hidden]="!item.collapsed">
+			<div id="#{{ itemKey(item) }}" class="collapse" *ngIf="item.items" [hidden]="isParentCollapsed || item.collapsed">
 				<ul
 					class="ob-nav-tree"
 					[ngClass]="variant"
-					[class.ob-expanded]="parentExpanded && !item.collapsed"
+					[class.ob-expanded]="!isParentCollapsed && !item.collapsed"
 					[class.disabled]="item.disabled === true || null"
 					role="group"
 				>
-					<ng-container *ngTemplateOutlet="itemList; context: { $implicit: item.items, parentExpanded: parentExpanded && !item.collapsed }">
+					<ng-container
+						*ngTemplateOutlet="itemList; context: { $implicit: item.items, isParentCollapsed: isParentCollapsed || item.collapsed }"
+					>
 					</ng-container>
 				</ul>
 			</div>
 		</li>
-	</ng-template>
+	</ng-container>
 </ng-template>
 <ul
 	#root
@@ -54,5 +56,5 @@
 	[attr.aria-labelledby]="treeAriaLabelledBy"
 	[attr.aria-label]="treeAriaLabel"
 >
-	<ng-container *ngTemplateOutlet="itemList; context: { $implicit: items, parentExpanded: true }"></ng-container>
+	<ng-container *ngTemplateOutlet="itemList; context: { $implicit: items, isParentCollapsed: false }"></ng-container>
 </ul>
