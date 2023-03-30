@@ -3,7 +3,7 @@
 	<sc-description component="collapse"></sc-description>
 	<ob-column-layout [left]="false">
 		<ob-collapse [(active)]="active" [duration]="duration.value" column-main-content [iconPosition]="iconPosition.value">
-			<span id="{{ collapseTitle }}_title" obCollapseHeader>
+			<span [id]="collapseTitle + '_title'" obCollapseHeader>
 				{{ collapseTitle }}
 			</span>
 			<p obCollapseMain>

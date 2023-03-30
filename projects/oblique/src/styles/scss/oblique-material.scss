@@ -20,9 +20,13 @@
 
 @include mat.all-legacy-component-themes(
 	mat.define-light-theme(
-		mat.define-palette(material-palette.$oblique-primary),
-		mat.define-palette(material-palette.$oblique-accent),
-		mat.define-palette(material-palette.$oblique-warn)
+		(
+			color: (
+				primary: mat.define-palette(material-palette.$oblique-primary),
+				accent: mat.define-palette(material-palette.$oblique-accent),
+				warn: mat.define-palette(material-palette.$oblique-warn),
+			),
+		)
 	)
 );
 

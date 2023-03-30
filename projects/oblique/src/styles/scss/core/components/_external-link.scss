@@ -10,6 +10,7 @@
 
 	span.mat-icon {
 		align-self: center;
+		flex-shrink: 0;
 	}
 
 	&.mat-icon-button span.mat-icon {

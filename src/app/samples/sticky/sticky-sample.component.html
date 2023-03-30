@@ -1,6 +1,6 @@
 <h2 class="page-header">{{ "i18n.routes.samples.sticky.title" | translate }}</h2>
 <sc-description component="sticky"></sc-description>
-<ob-column-layout [left]="false">
+<ob-column-layout [left]="false" [style.height]="parentHeight + 'px'">
 	<ob-sticky [headerSize]="headerSize" [footerSize]="footerSize" [noLayout]="noLayout" column-main-content>
 		<ng-template #obStickyHeader *ngIf="stickyHeader">
 			<div role="group" aria-label="Basic example">
@@ -11,6 +11,7 @@
 		</ng-template>
 		<ng-template #obStickyMain>
 			<h1>Default Layout</h1>
+			<ob-autocomplete [autocompleteOptions]="[{ label: 'test' }]"></ob-autocomplete>
 			<div>
 				<div>Featured</div>
 				<div>
@@ -49,6 +50,11 @@
 			</mat-select>
 		</mat-form-field>
 		<mat-slide-toggle [(ngModel)]="noLayout">remove main content layout?</mat-slide-toggle>
+		<mat-form-field>
+			<mat-label>Parent height</mat-label>
+			<input type="number" matInput [(ngModel)]="parentHeight" />
+			<mat-hint>Change this value to demonstrate the effect of the parent height</mat-hint>
+		</mat-form-field>
 	</div>
 </ob-column-layout>
 <sc-api component="sticky"></sc-api>

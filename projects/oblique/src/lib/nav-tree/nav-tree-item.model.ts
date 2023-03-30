@@ -16,7 +16,7 @@ export class ObNavTreeItemModel {
 	queryParams?: any; // See `queryParams` docs under https://angular.io/api/router/RouterLink
 
 	disabled? = false;
-	collapsed? = false;
+	collapsed? = true;
 
 	parent?: ObNavTreeItemModel; // Reference to parent, if any.
 

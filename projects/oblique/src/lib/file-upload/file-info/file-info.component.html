@@ -38,7 +38,7 @@
 				[disabled]="selectionStatus === 'none'"
 				mat-icon-button
 				obButton="secondary"
-				matTooltip="{{ 'i18n.oblique.file-upload.selected.remove' | translate }}"
+				[matTooltip]="'i18n.oblique.file-upload.selected.remove' | translate"
 				(click)="delete(selection.selected)"
 			>
 				<mat-icon svgIcon="trash"></mat-icon>
@@ -50,7 +50,7 @@
 				type="button"
 				mat-icon-button
 				obButton="secondary"
-				matTooltip="{{ 'i18n.oblique.file-upload.remove' | translate }}"
+				[matTooltip]="'i18n.oblique.file-upload.remove' | translate"
 				(click)="delete([file])"
 			>
 				<mat-icon svgIcon="trash"></mat-icon>
