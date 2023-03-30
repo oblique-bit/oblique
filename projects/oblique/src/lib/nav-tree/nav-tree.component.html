@@ -27,11 +27,11 @@
 				[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
 			>
 				<span class="ob-icon-wrapper"
-					><mat-icon svgIcon="chevron-{{ isParentCollapsed || item.collapsed ? 'down' : 'right' }}" *ngIf="item.items"></mat-icon
+					><mat-icon [svgIcon]="'chevron-' + (isParentCollapsed || item.collapsed ? 'down' : 'right')" *ngIf="item.items"></mat-icon
 				></span>
 				<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
 			</a>
-			<div id="#{{ itemKey(item) }}" class="collapse" *ngIf="item.items" [hidden]="isParentCollapsed || item.collapsed">
+			<div [id]="'#' + itemKey(item)" class="collapse" *ngIf="item.items" [hidden]="isParentCollapsed || item.collapsed">
 				<ul
 					class="ob-nav-tree"
 					[ngClass]="variant"

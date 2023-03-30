@@ -1,3 +1,15 @@
+# [10.0.1](https://github.com/oblique-bit/oblique/compare/10.0.0...10.0.1) (2023-03-30)
+
+## Bug Fixes
+
+- **column-layout:** add `cdkScrollable` directive to monitor scroll events ([70bc848](https://github.com/oblique-bit/oblique/commit/70bc848f9deb3a2e0220ca692b1fc9bcdf2a168f))
+- **external-link:** ensure the icon doesn't shrink ([ef755b0](https://github.com/oblique-bit/oblique/commit/ef755b049f51d8238e40c445a80f0e041a6585d6))
+- **master-layout:** add `cdkScrollable` directive to monitor scroll events ([3c55147](https://github.com/oblique-bit/oblique/commit/3c5514735cf2b943326175e5cabebf91b82a8a17))
+- **nav-tree:** ensure `collapse` class is set according to the actual state of the tree ([12f2047](https://github.com/oblique-bit/oblique/commit/12f204703bd585e99d827fc9624a451753875e0f))
+- **nav-tree:** ensure that collapsed and expanded states reflect the actual state of the tree ([bcf8d4c](https://github.com/oblique-bit/oblique/commit/bcf8d4c61e2bafd03a1ca937b767c3027e4c8dbc))
+- **schematics:** ensure ng-add adds `proxyConfig` to angular.json ([e5db5ce](https://github.com/oblique-bit/oblique/commit/e5db5ce5c4bbc37786ae1881b54347cb82f88c31))
+- **sticky:** add `cdkScrollable` directive to monitor scroll events ([cdd3323](https://github.com/oblique-bit/oblique/commit/cdd3323bcd92974bf00dcee5975bfa4a5d054279))
+
 # [10.0.0](https://github.com/oblique-bit/oblique/compare/9.3.2...10.0.0) (2023-02-17)
 
 ## Bug Fixes

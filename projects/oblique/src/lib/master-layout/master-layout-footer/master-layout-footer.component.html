@@ -3,7 +3,7 @@
 <ng-container *ngIf="!isCustom">
 	<div class="ob-footer-item ob-footer-item-logo">
 		<a [routerLink]="home" class="ob-master-layout-logo">
-			<img src="./assets/images/logo.svg" alt="{{ 'i18n.oblique.header.logo' | translate }}" />
+			<img src="./assets/images/logo.svg" [alt]="'i18n.oblique.header.logo' | translate" />
 		</a>
 	</div>
 	<h2 class="ob-screen-reader-only">{{ "i18n.oblique.footer.info.title" | translate }}</h2>

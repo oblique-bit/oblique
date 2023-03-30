@@ -2,12 +2,12 @@
 	*ngIf="left"
 	class="ob-column-left"
 	role="complementary"
-	attr.aria-label="{{ 'i18n.oblique.column.left.title' | translate }}"
+	[attr.aria-label]="'i18n.oblique.column.left.title' | translate"
 	obColumnPanel
 	#columnLeft="obColumnPanel"
 >
 	<button type="button" class="ob-column-toggle-left" obColumnToggle #columnToggle *ngIf="toggleLeftIcon$ | async as direction">
-		<mat-icon svgIcon="chevron-{{ direction }}"></mat-icon>
+		<mat-icon [svgIcon]="'chevron-' + direction"></mat-icon>
 		<span class="ob-screen-reader-only">{{ "i18n.oblique.column.left.toggle" | translate }}</span>
 	</button>
 	<div class="ob-column-content" cdkScrollable>
@@ -23,12 +23,12 @@
 	*ngIf="right"
 	class="ob-column-right"
 	role="complementary"
-	attr.aria-label="{{ 'i18n.oblique.column.right.title' | translate }}"
+	[attr.aria-label]="'i18n.oblique.column.right.title' | translate"
 	obColumnPanel
 	#columnRight="obColumnPanel"
 >
 	<button type="button" class="ob-column-toggle-right" obColumnToggle #columnToggle *ngIf="toggleRightIcon$ | async as direction">
-		<mat-icon svgIcon="chevron-{{ direction }}"></mat-icon>
+		<mat-icon [svgIcon]="'chevron-' + direction"></mat-icon>
 		<span class="ob-screen-reader-only">{{ "i18n.oblique.column.right.toggle" | translate }}</span>
 	</button>
 	<div class="ob-column-content" cdkScrollable>

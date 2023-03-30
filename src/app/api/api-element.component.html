@@ -3,7 +3,7 @@
 		<dt>{{ element.name }}</dt>
 		<dd [innerHTML]="element.text"></dd>
 		<dd *ngIf="element.see">
-			See also: <a href="{{ element.see }}" target="_blank">{{ element.see }}</a>
+			See also: <a [href]="element.see" target="_blank">{{ element.see }}</a>
 		</dd>
 		<dd *ngIf="element.isOptional">
 			<b>Optional</b>
