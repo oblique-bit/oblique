@@ -169,12 +169,6 @@
 					border-color: core-variables.$ob-red-700;
 					color: core-variables.$ob-red-700;
 				}
-
-				&:focus {
-					background-color: core-variables.$ob-white;
-					border-color: core-variables.$ob-red-700;
-					color: core-variables.$ob-red-700;
-				}
 			}
 
 			&[disabled] {
