@@ -104,8 +104,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'stepper-vertical', label: 'Stepper vertical'},
 				{url: 'table', label: 'Table'},
 				{url: 'tabs', label: 'Tabs'},
-				{url: 'tooltip', label: 'Tooltip'},
-				{url: 'file-upload', label: 'File Upload'}
+				{url: 'tooltip', label: 'Tooltip'}
 			]
 		},
 		{
