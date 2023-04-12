@@ -1,11 +1,8 @@
 @use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
 @use "../../../styles/scss/core/mixins/tab-outline";
 
 .ob-drop-zone > div {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	padding: variables.$ob-spacing-lg;
 	border: 1px dashed variables.$ob-primary-700;
 	border-radius: variables.$ob-border-radius-base;
@@ -14,10 +11,23 @@
 
 	@include tab-outline.ob-tab-outline();
 
+	.ob-drop-zone-text {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
 	.ob-drop-zone-heading {
 		font-size: variables.$ob-font-size-bigger;
 		margin-bottom: 0;
 		color: variables.$ob-primary-500;
+
+		@include layout.ob-media-breakpoint-down(sm) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
 	}
 
 	&:hover,
@@ -34,6 +44,10 @@
 	.ob-upload-icon {
 		margin-right: variables.$ob-spacing-default;
 
+		@include layout.ob-media-breakpoint-down(sm) {
+			margin-right: 0;
+		}
+
 		.mat-icon {
 			font-size: 42.666px; // empiric number
 			vertical-align: bottom;
@@ -42,9 +56,6 @@
 
 	.ob-drop-zone-hints {
 		text-align: center;
-		margin-left: calc(
-			#{variables.$ob-spacing-default} + 42.666px * 1.5
-		); // icon margin + icon font-size * icon size
 		margin-bottom: 0;
 	}
 }
