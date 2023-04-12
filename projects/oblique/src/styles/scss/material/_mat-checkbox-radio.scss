@@ -1,22 +1,70 @@
-.mat-radio-label,
-.mat-checkbox-layout {
-	font-weight: 400;
+@use "../core/variables" as core-variables;
+@use "../core/mixins/shadow";
+@use "mixins/mat-checkbox-radio";
+
+.mat-mdc-checkbox.mat-mdc-checkbox-disabled,
+.mat-mdc-radio-button.mat-mdc-radio-disabled,
+.mat-mdc-radio-group[disabled] {
+	&,
+	label,
+	.mdc-form-field label,
+	input {
+		cursor: not-allowed;
+	}
 }
 
-.mat-checkbox.control-mandatory::before {
-	top: -2px;
+$disabled-color: core-variables.$ob-secondary-300;
+
+.mat-mdc-radio-button {
+	input:focus-visible ~ .mdc-radio__background {
+		.mdc-radio__outer-circle {
+			@include shadow.ob-tab-focus-box-shadow();
+		}
+	}
+
+	&.mat-radio-disabled {
+		@include mat-checkbox-radio.ob-radio-button-colors(
+			$disabled-color,
+			$disabled-color,
+			$disabled-color,
+			$disabled-color
+		);
+	}
+
+	&:not(.mat-radio-disabled) {
+		:not(.mdc-radio--disabled) ~ label {
+			cursor: pointer;
+		}
+	}
 }
 
-.mat-radio-group.control-mandatory::before {
-	top: -1px;
+.mat-mdc-checkbox {
+	input:focus-visible ~ .mdc-checkbox__background {
+		@include shadow.ob-tab-focus-box-shadow();
+		border-radius: 2px;
+	}
+
+	&.mat-mdc-checkbox-disabled {
+		pointer-events: unset;
+
+		.mat-mdc-checkbox-touch-target {
+			cursor: not-allowed;
+		}
+
+		@include mat-checkbox-radio.ob-checkbox-colors(
+			$disabled-color,
+			$disabled-color,
+			$disabled-color,
+			$disabled-color
+		);
+	}
 }
 
-.mat-checkbox-label,
-.mat-radio-label-content {
-	padding-top: 2px;
-}
-
-.mat-checkbox.mat-checkbox-disabled,
-.mat-radio-button.mat-radio-disabled .mat-radio-label {
-	cursor: not-allowed;
+.mat-mdc-radio-group,
+.mat-mdc-radio-button,
+.mat-mdc-checkbox {
+	&[readonly] {
+		pointer-events: none;
+		filter: opacity(0.75);
+	}
 }

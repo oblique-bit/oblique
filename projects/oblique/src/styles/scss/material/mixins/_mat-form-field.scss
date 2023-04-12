@@ -1,26 +1,27 @@
+@use "sass:selector";
 @use "../variables";
 
 @mixin ob-form-field-size($padding-top, $padding-bottom, $icon-size) {
 	$label-padding: variables.$ob-form-field-label-height + $padding-top;
 
-	.mat-form-field-infix {
+	.mat-mdc-form-field-infix {
 		padding: $padding-top 0 $padding-bottom 0;
 		border-top-width: variables.$ob-form-field-label-height;
+
+		@at-root #{selector.append(".ob-form-field-textarea", &)} {
+			padding-top: calc($padding-top + 16px);
+		}
 	}
 
-	.mat-form-field-label-wrapper {
+	.mdc-notched-outline__notch {
 		top: -(variables.$ob-form-field-label-height);
 		padding-top: $label-padding;
 	}
 
-	.mat-form-field-label {
-		top: $label-padding;
-	}
-
 	&.mat-form-field-can-float {
 		&.mat-form-field-should-float,
-		.mat-input-server:focus + .mat-form-field-label-wrapper {
-			.mat-form-field-label {
+		&:focus-within.ob-form-field-has-mat-input-server .mdc-notched-outline__notch {
+			.mdc-floating-label {
 				transform: translateY(-$label-padding) scale(0.75);
 			}
 		}
@@ -32,5 +33,78 @@
 		display: inline-flex;
 		align-items: center;
 		font-size: inherit;
+	}
+}
+
+@mixin ob-form-field-colors($color, $background-color) {
+	.mdc-notched-outline,
+	.mdc-floating-label.mdc-floating-label--float-above,
+	&:not(.ng-untouched, .ng-pristine) .mat-mdc-form-field-required-marker,
+	.mat-mdc-form-field-error,
+	.mdc-text-field--invalid .mdc-floating-label mat-label,
+	.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+		color: $color;
+	}
+
+	.mat-mdc-text-field-wrapper.mdc-text-field {
+		[class*="mdc-notched-outline__"] {
+			border-color: $color;
+		}
+	}
+
+	.mdc-floating-label mat-label,
+	.mdc-floating-label .mat-mdc-form-field-required-marker,
+	.mdc-notched-outline {
+		background-color: $background-color;
+	}
+
+	.mat-mdc-input-element {
+		caret-color: $color;
+	}
+}
+
+@mixin ob-focused-form-field-colors($color, $background-color) {
+	&.mat-focused {
+		@include ob-form-field-colors($color, $background-color);
+	}
+}
+
+$ob-standard-max-height: 40px;
+
+@mixin standard-max-height() {
+	max-height: $ob-standard-max-height;
+}
+
+@mixin sm-max-height() {
+	max-height: calc($ob-standard-max-height - 0.45em);
+}
+
+@mixin lg-max-height() {
+	max-height: calc($ob-standard-max-height + 1em);
+}
+
+@mixin hint-error-backdrop-filter() {
+	backdrop-filter: blur(8px) saturate(200%);
+}
+
+@mixin margin($margin) {
+	&:not(:first-of-type) {
+		.mat-mdc-text-field-wrapper {
+			margin-top: $margin;
+		}
+	}
+
+	&:not(:last-of-type) {
+		.mat-mdc-text-field-wrapper {
+			margin-bottom: $margin;
+		}
+	}
+
+	&:first-of-type:last-of-type,
+	.ob-inline-form & {
+		.mat-mdc-text-field-wrapper {
+			margin-top: $margin;
+			margin-bottom: $margin;
+		}
 	}
 }

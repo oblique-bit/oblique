@@ -1,0 +1,101 @@
+@use "sass:selector";
+@use "../../core/variables" as core-variables;
+
+@mixin radio-circles-border-color($checked-border-color) {
+	.mdc-radio__native-control:enabled + .mdc-radio__background {
+		.mdc-radio__inner-circle,
+		.mdc-radio__outer-circle {
+			border-color: $checked-border-color;
+		}
+	}
+}
+
+@mixin radio-ripple-color($background-color) {
+	.mat-ripple.mat-radio-ripple {
+		.mat-ripple-element,
+		.mat-ripple-element:not(.mat-radio-persistent-ripple) {
+			background-color: $background-color;
+		}
+	}
+}
+
+@mixin ob-radio-button-colors($background-color, $border-color, $checked-border-color, $color) {
+	.mdc-form-field .mdc-radio {
+		.mdc-radio__native-control:enabled + .mdc-radio__background .mdc-radio__outer-circle {
+			border-color: $border-color;
+		}
+
+		label {
+			color: $color;
+		}
+
+		&:not(:disabled):active {
+			@include radio-circles-border-color($checked-border-color);
+		}
+		@include radio-ripple-color($background-color);
+	}
+
+	&.mat-mdc-radio-checked,
+	&:active {
+		.mdc-form-field .mdc-radio {
+			@include radio-circles-border-color($checked-border-color);
+
+			&:hover,
+			&:not(:disabled):active {
+				@include radio-circles-border-color($checked-border-color);
+			}
+
+			@include radio-ripple-color($background-color);
+		}
+	}
+}
+
+@mixin ob-checkbox-colors(
+	$background-color,
+	$border-color,
+	$color,
+	$checkmark-color: core-variables.$ob-white
+) {
+	.mdc-form-field {
+		.mdc-checkbox,
+		.mdc-checkbox:not(:disabled):active {
+			@at-root #{selector.append(".mat-mdc-checkbox-checked ", &)} {
+				.mdc-checkbox__native-control {
+					&:enabled,
+					&:indeterminate {
+						& ~ {
+							.mdc-checkbox__background,
+							.mdc-checkbox__ripple {
+								background-color: $background-color;
+							}
+
+							.mdc-checkbox__background {
+								border-color: $background-color;
+
+								.mdc-checkbox__checkmark {
+									color: $checkmark-color;
+								}
+							}
+						}
+					}
+
+					.mdc-checkbox__background {
+						border-color: $border-color;
+					}
+				}
+			}
+
+			.mdc-checkbox__ripple {
+				background-color: $background-color;
+			}
+
+			.mat-ripple-element {
+				color: $background-color;
+			}
+
+			label {
+				color: $color;
+			}
+		}
+	}
+}

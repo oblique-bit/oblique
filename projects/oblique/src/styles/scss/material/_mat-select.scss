@@ -1,0 +1,30 @@
+@use "../core/variables" as core-variables;
+@use "mixins/mat-panel";
+
+.mat-mdc-select {
+	.mat-mdc-select-arrow {
+		color: core-variables.$ob-text-800;
+	}
+
+	.mat-mdc-select-arrow-wrapper,
+	.mat-mdc-select-value {
+		z-index: 1;
+	}
+
+	&[readonly] {
+		pointer-events: none;
+
+		.mat-mdc-select-arrow {
+			color: core-variables.$ob-text-600;
+		}
+	}
+
+	.mat-mdc-select-trigger {
+		.ob-form-lg &,
+		.mat-form-field-lg & {
+			margin-top: 12px;
+		}
+	}
+}
+
+@include mat-panel.margin-top-and-active("select", 3px);
