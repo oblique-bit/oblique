@@ -1,6 +1,6 @@
 import {AsyncFactoryFn, BaseHarnessFilters, ContentContainerComponentHarness, HarnessPredicate, TestElement} from '@angular/cdk/testing';
-import {MatLegacyInputHarness as MatInputHarness} from '@angular/material/legacy-input/testing';
-import {MatLegacyFormFieldHarness as MatFormFieldHarness} from '@angular/material/legacy-form-field/testing';
+import {MatInputHarness} from '@angular/material/input/testing';
+import {MatFormFieldHarness} from '@angular/material/form-field/testing';
 
 export class ObAutocompleteHarness extends ContentContainerComponentHarness {
 	static hostSelector = 'ob-autocomplete';

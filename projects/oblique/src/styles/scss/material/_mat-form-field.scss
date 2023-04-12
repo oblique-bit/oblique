@@ -1,42 +1,266 @@
+@use "sass:selector";
 @use "variables" as material-variables;
 @use "mixins/mat-form-field";
+@use "../core/mixins/shadow";
 @use "../core/variables" as core-variables;
 
-.mat-form-field {
+.mat-mdc-form-field {
 	width: 100%;
+	color: core-variables.$ob-text-800;
 
-	&.mat-form-field-type-mat-select.mat-form-field-disabled .mat-select-trigger {
+	&:not(.ob-form-field-textarea) {
+		&.mat-form-field-sm,
+		.ob-form-sm & {
+			input:not(.mat-datepicker-input) {
+				margin-bottom: 3px;
+			}
+
+			.mat-mdc-form-field-icon-suffix .mat-mdc-icon-button {
+				margin-bottom: 5px;
+			}
+
+			&.mat-form-field-appearance-outline .mdc-notched-outline {
+				top: 0.4em;
+			}
+		}
+
+		&.mat-form-field-lg,
+		.ob-form-lg & {
+			input,
+			.mat-mdc-form-field-icon-suffix .mat-mdc-icon-button {
+				margin-top: 10px;
+			}
+		}
+
+		.mat-mdc-text-field-wrapper {
+			@include mat-form-field.standard-max-height();
+
+			@at-root #{selector.append(".mat-form-field-sm", &)},
+				.ob-form-sm & {
+				@include mat-form-field.sm-max-height();
+			}
+
+			@at-root #{selector.append(".mat-form-field-lg", &)},
+				.ob-form-lg & {
+				@include mat-form-field.lg-max-height();
+			}
+
+			.mdc-notched-outline {
+				@include mat-form-field.standard-max-height();
+
+				@at-root #{selector.append(".mat-form-field-sm", &)},
+					.ob-form-sm & {
+					@include mat-form-field.sm-max-height();
+				}
+
+				@at-root #{selector.append(".mat-form-field-lg", &)},
+					.ob-form-lg & {
+					@include mat-form-field.lg-max-height();
+				}
+			}
+
+			.mat-mdc-form-field-flex {
+				align-items: center;
+
+				.mat-mdc-floating-label {
+					top: 21px;
+
+					@at-root #{selector.append(".mat-form-field-sm", &)},
+						.ob-form-sm & {
+						top: 17px;
+					}
+
+					@at-root #{selector.append(".mat-form-field-lg", &)},
+						.ob-form-lg & {
+						top: 26px;
+					}
+
+					&.mdc-floating-label--float-above {
+						top: 28px;
+					}
+				}
+			}
+		}
+	}
+
+	@include mat-form-field.ob-form-field-colors(
+		core-variables.$ob-text-800,
+		core-variables.$ob-white
+	);
+
+	.mat-mdc-form-field-infix {
+		display: flex;
+		align-items: center;
+
+		.mat-mdc-input-element {
+			z-index: 1;
+		}
+	}
+
+	&:not([readonly], .ob-form-field-readonly, .mat-form-field-disabled) {
+		&.mat-accent {
+			@include mat-form-field.ob-focused-form-field-colors(
+				core-variables.$ob-text-800,
+				core-variables.$ob-white
+			);
+		}
+
+		&.mat-warn {
+			@include mat-form-field.ob-focused-form-field-colors(
+				core-variables.$ob-red-800,
+				core-variables.$ob-white
+			);
+		}
+
+		&.mat-form-field-invalid {
+			@include mat-form-field.ob-focused-form-field-colors(
+				core-variables.$ob-red-800,
+				core-variables.$ob-red-50
+			);
+
+			&:not(:hover) {
+				[class*="mat-form-field-outline-"] {
+					border-width: 1px;
+				}
+			}
+		}
+
+		&:not(:focus-within) {
+			&.ob-form-field-required {
+				&.mat-form-field-invalid {
+					@include mat-form-field.ob-form-field-colors(
+						core-variables.$ob-red-800,
+						core-variables.$ob-red-50
+					);
+
+					&:not(:hover) {
+						[class*="mat-form-field-outline-"] {
+							border-width: 1px;
+						}
+					}
+				}
+
+				&.ng-dirty {
+					&.ng-valid {
+						@include mat-form-field.ob-form-field-colors(
+							core-variables.$ob-green-600,
+							core-variables.$ob-green-50
+						);
+					}
+				}
+			}
+		}
+	}
+
+	&.mat-form-field-disabled {
+		@include mat-form-field.ob-form-field-colors(
+			core-variables.$ob-secondary-300,
+			core-variables.$ob-white
+		);
+		cursor: not-allowed;
+
+		.mat-mdc-form-field-textarea-control {
+			resize: none;
+		}
+	}
+
+	[readonly],
+	&.ob-form-field-readonly {
+		pointer-events: none;
+
+		.mat-mdc-floating-label.mdc-floating-label {
+			pointer-events: none;
+		}
+
+		.mat-mdc-text-field-wrapper .mdc-notched-outline [class*="mdc-notched-outline__"] {
+			border-color: transparent;
+		}
+
+		.mdc-notched-outline,
+		mat-label {
+			background-color: core-variables.$ob-secondary-100;
+			backdrop-filter: brightness(95%);
+		}
+
+		.mat-mdc-form-field-textarea-control {
+			resize: none;
+		}
+
+		.mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+			color: core-variables.$ob-text-600;
+		}
+	}
+
+	&.mat-mdc-form-field-type-mat-select.mat-form-field-disabled .mat-mdc-select-trigger {
 		cursor: not-allowed;
 	}
 
-	.mat-form-field-outline {
-		background-color: core-variables.$ob-white;
+	.mat-mdc-input-element {
+		&::placeholder {
+			color: core-variables.$ob-text-500;
+		}
+
+		&:disabled {
+			color: core-variables.$ob-secondary-300;
+		}
+	}
+
+	mat-hint {
+		color: core-variables.$ob-secondary-300;
+	}
+
+	&.mat-focused {
+		.mat-mdc-form-field-label {
+			mat-label,
+			.mat-mdc-form-field-required-marker {
+				padding-top: 1px;
+			}
+
+			$padding: 0.5rem;
+
+			:not(.mdc-floating-label--float-above) mat-label,
+			.mat-mdc-form-field-required-marker {
+				padding-right: $padding;
+			}
+
+			mat-label {
+				padding-left: $padding;
+			}
+		}
+
+		.mat-mdc-form-field-error,
+		.mat-mdc-form-field-hint {
+			margin-top: 3px;
+		}
+	}
+
+	.mdc-notched-outline {
 		border-radius: core-variables.$ob-border-radius-base;
 
-		.mat-form-field-outline-start {
+		.mdc-notched-outline__leading {
 			border-radius: core-variables.$ob-border-radius-base 0 0 core-variables.$ob-border-radius-base;
 		}
 
-		.mat-form-field-outline-end {
+		.mdc-notched-outline__trailing {
 			border-radius: 0 core-variables.$ob-border-radius-base core-variables.$ob-border-radius-base 0;
 		}
 	}
 
 	&.mat-form-field-appearance-outline {
-		.mat-form-field-wrapper {
+		.mat-mdc-form-field-wrapper {
 			margin: material-variables.$ob-form-field-margin 0;
 			padding-bottom: 1.2em;
 		}
 
-		.mat-form-field-flex {
+		.mat-mdc-form-field-flex {
 			margin-top: -(material-variables.$ob-form-field-margin);
 		}
 
-		.mat-form-field-outline {
+		.mdc-notched-outline {
 			top: material-variables.$ob-form-field-margin;
 		}
 
-		.mat-form-field-label {
+		.mat-mdc-form-field-label {
 			margin-top: 1px; // empiric value
 			mat-label {
 				display: inline-block;
@@ -44,12 +268,12 @@
 			}
 		}
 
-		.mat-form-field-suffix .mat-datepicker-toggle .mat-button-wrapper {
+		.mat-mdc-form-field-suffix .mat-datepicker-toggle .mat-button-wrapper {
 			margin-top: 2px;
 		}
 
-		.mat-form-field-prefix,
-		.mat-form-field-suffix {
+		.mat-mdc-form-field-prefix,
+		.mat-mdc-form-field-suffix {
 			top: 0;
 
 			> .mat-datepicker-toggle {
@@ -63,7 +287,7 @@
 			}
 		}
 
-		.mat-form-field-subscript-wrapper {
+		.mat-mdc-form-field-subscript-wrapper {
 			margin-top: material-variables.$ob-form-field-margin;
 		}
 
@@ -79,6 +303,17 @@
 				0.25em,
 				1.8em
 			);
+
+			&.ob-form-field-textarea {
+				.mat-mdc-form-field-infix {
+					padding-bottom: 27px;
+				}
+
+				.mat-mdc-form-field-textarea-control {
+					position: relative;
+					top: 22px;
+				}
+			}
 		}
 
 		.ob-form-lg & {
@@ -87,30 +322,38 @@
 				1em,
 				2.5em
 			);
+
+			.mat-mdc-form-field-infix {
+				padding-bottom: 19px;
+			}
+
+			.mat-mdc-form-field-textarea-control {
+				position: relative;
+				top: 10px;
+			}
 		}
 
 		.ob-outline &.mat-focused {
-			.mat-form-field-outline {
-				box-shadow: 0 0 core-variables.$ob-spacing-xs 0 core-variables.$ob-default;
-				outline: 1px solid core-variables.$ob-primary;
+			.mdc-notched-outline {
+				@include shadow.ob-tab-focus-box-shadow();
+				outline: none;
 				outline-offset: -3px;
-				background-color: core-variables.$ob-light;
 
-				&.mat-form-field-outline-thick {
-					.mat-form-field-outline-start,
-					.mat-form-field-outline-end {
+				&.mdc-notched-outline__notch {
+					.mdc-notched-outline__leading,
+					.mdc-notched-outline__trailing {
 						border-width: 1px;
 						border-color: core-variables.$ob-default;
 					}
 
-					.mat-form-field-outline-gap {
+					.mdc-notched-outline-gap {
 						border-width: 1px;
 						border-bottom-color: core-variables.$ob-default;
 					}
 				}
 			}
 
-			.mat-form-field-label {
+			.mat-mdc-form-field-label {
 				color: core-variables.$ob-default;
 
 				mat-label {
@@ -120,39 +363,66 @@
 		}
 	}
 
-	&.mat-form-field-invalid .mat-form-field-label-wrapper::after {
+	&.mat-form-field-invalid .mat-mdc-form-field-label-wrapper::after {
 		content: "!";
 		position: absolute;
 		right: 0;
 		padding: 0 0.4em;
 		border-radius: 50%;
-		background-color: core-variables.$ob-error;
-		color: core-variables.$ob-white;
 		z-index: core-variables.$ob-z-index-controls;
 	}
 
-	.mat-error,
-	.mat-hint {
+	.mat-mdc-form-field-error,
+	.mat-mdc-form-field-hint {
 		line-height: 1.6; // 1.2em * 1.3333, i.e. the size of the padding-bottom with canceled 75% font-size
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+		margin-top: 2px;
+	}
+
+	.mat-mdc-form-field-hint-wrapper,
+	.mat-mdc-form-field-error-wrapper {
+		margin-top: 1px;
+
+		&:hover,
+		&:focus-within {
+			@include mat-form-field.hint-error-backdrop-filter();
+		}
+
+		@at-root #{selector.append(".mat-form-field-sm", &)},
+			.ob-form-sm & {
+			margin-top: 2px;
+		}
 	}
 
 	&:hover,
 	&:focus-within {
 		z-index: 1; // so that multilines hints & errors are above next elements
 
-		.mat-form-field-subscript-wrapper {
-			overflow: visible;
+		&:not([readonly], .ob-form-field-readonly, .mat-form-field-disabled) {
+			[class*="mdc-notched-outline__"] {
+				border-width: 2px;
+			}
 		}
 
-		.mat-error,
-		.mat-hint {
+		.mat-mdc-form-field-subscript-wrapper {
+			overflow: visible;
+			z-index: 1;
+		}
+
+		.mat-mdc-form-field-hint-wrapper,
+		.mat-mdc-form-field-error-wrapper {
+			@include mat-form-field.hint-error-backdrop-filter();
+		}
+
+		.mat-mdc-form-field-error,
+		.mat-mdc-form-field-hint {
 			height: auto;
 			white-space: normal;
 			position: relative;
 			overflow: visible;
+			margin-top: 4px;
 
 			&::before {
 				content: "";
@@ -171,5 +441,27 @@
 				}
 			}
 		}
+	}
+
+	&:hover {
+		.mat-mdc-form-field-subscript-wrapper {
+			z-index: 2;
+		}
+	}
+
+	.mat-mdc-form-field-icon-suffix {
+		z-index: 1;
+	}
+
+	@include mat-form-field.margin(1px);
+
+	.ob-form-sm &,
+	&.mat-form-field-sm {
+		@include mat-form-field.margin(0);
+	}
+
+	.ob-form-lg &,
+	&.mat-form-field-lg {
+		@include mat-form-field.margin(2px);
 	}
 }

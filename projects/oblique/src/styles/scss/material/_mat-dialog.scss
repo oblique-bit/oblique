@@ -14,6 +14,10 @@
 
 	.mat-dialog-content {
 		@include typography.ob-body1();
+
+		.ob-form-field:first-of-type {
+			margin-top: 3px;
+		}
 	}
 
 	.mat-dialog-actions {

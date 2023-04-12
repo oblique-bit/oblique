@@ -131,6 +131,11 @@ textarea {
 .ob-inline-form {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: flex-start;
 	column-gap: variables.$ob-spacing-default;
 	word-break: normal;
+
+	.mat-mdc-form-field {
+		width: auto;
+	}
 }

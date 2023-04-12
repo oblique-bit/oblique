@@ -6,7 +6,35 @@
 	}
 
 	.mat-icon {
+		z-index: 1;
 		flex-shrink: 0;
 		font-size: 1.1875em; // empiric value
+		cursor: pointer;
+	}
+
+	[class*="form-field"] {
+		[class*="autocomplete"] {
+			& ~ .mat-icon,
+			& ~ * .mat-icon {
+				&:hover {
+					color: variables.$ob-secondary-400;
+
+					svg {
+						fill: variables.$ob-secondary-400;
+					}
+				}
+			}
+		}
+	}
+}
+
+:hover .ob-autocomplete [class*="autocomplete"] {
+	& ~ .mat-icon,
+	& ~ * .mat-icon {
+		color: variables.$ob-secondary-900;
+
+		svg {
+			fill: variables.$ob-secondary-900;
+		}
 	}
 }

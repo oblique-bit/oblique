@@ -5,7 +5,7 @@
 @use "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout {
-	*:not(input) {
+	*:not(input, textarea, mat-select) {
 		@include shadow.ob-focus-visible-tab-focus-box-shadow();
 	}
 

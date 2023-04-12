@@ -31,27 +31,27 @@ $theme-alt-500: (
 
 @include mat.legacy-core();
 
-@include mat.legacy-checkbox-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-chips-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-dialog-theme(mat.define-light-theme($legacy-theme));
-@include mat.legacy-form-field-theme(mat.define-light-theme($legacy-theme));
-@include mat.legacy-input-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-list-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-menu-theme(mat.define-light-theme($legacy-theme));
-@include mat.legacy-radio-theme(mat.define-light-theme($legacy-theme));
-@include mat.legacy-select-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-slide-toggle-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-table-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-tabs-theme(mat.define-light-theme($legacy-theme));
 
+@include mat.autocomplete-theme(mat.define-light-theme($theme));
 @include mat.badge-theme(mat.define-light-theme($theme));
 @include mat.button-theme(mat.define-light-theme($theme));
 @include mat.button-toggle-theme(mat.define-light-theme($theme));
 @include mat.card-theme(mat.define-light-theme($theme));
-@include mat.datepicker-theme(mat.define-light-theme($theme));
+@include mat.checkbox-theme(mat.define-light-theme($theme));
+@include mat.datepicker-theme(mat.define-light-theme($theme-alt-500));
 @include mat.expansion-theme(mat.define-light-theme($theme));
 @include mat.fab-theme(mat.define-light-theme($theme));
+@include mat.form-field-theme(mat.define-light-theme($theme));
 @include mat.icon-theme(mat.define-light-theme($theme));
+@include mat.input-theme(mat.define-light-theme($theme));
+@include mat.radio-theme(mat.define-light-theme($theme));
 @include mat.paginator-theme(mat.define-light-theme($theme));
 @include mat.progress-bar-theme(mat.define-light-theme($theme));
 @include mat.slider-theme(mat.define-light-theme($theme-alt-500));
@@ -60,6 +60,7 @@ $theme-alt-500: (
 @include mat.tooltip-theme(mat.define-light-theme($theme));
 
 // import to overwrite mat-component-specifics
+@import "material/mat-autocomplete";
 @import "material/mat-button";
 @import "material/mat-card";
 @import "material/mat-checkbox-radio";
@@ -74,6 +75,7 @@ $theme-alt-500: (
 @import "material/mat-paginator";
 @import "material/mat-progress-bar";
 @import "material/mat-slider";
+@import "material/mat-select";
 @import "material/mat-stepper";
 @import "material/mat-table";
 @import "material/mat-tab";

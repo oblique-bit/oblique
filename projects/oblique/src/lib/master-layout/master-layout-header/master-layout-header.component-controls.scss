@@ -88,6 +88,12 @@
 
 		.ob-service-navigation-list {
 			flex-wrap: wrap;
+
+			.ob-autocomplete {
+				.mat-mdc-form-field {
+					padding-top: 1.1rem;
+				}
+			}
 		}
 
 		.ob-autocomplete .mat-form-field-wrapper {
