@@ -44,9 +44,9 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 
 	setDisabledState(isDisabled: boolean): void {
 		if (isDisabled) {
-			this.autocompleteInputControl.disable();
+			this.autocompleteInputControl.disable({emitEvent: false});
 		} else {
-			this.autocompleteInputControl.enable();
+			this.autocompleteInputControl.enable({emitEvent: false});
 		}
 	}
 
@@ -62,7 +62,7 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	 * Write a new value to the element.
 	 */
 	writeValue(value: string): void {
-		this.autocompleteInputControl.setValue(value);
+		this.autocompleteInputControl.setValue(value, {emitEvent: false});
 	}
 
 	/**
