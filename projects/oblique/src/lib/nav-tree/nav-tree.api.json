@@ -86,7 +86,8 @@
       "selector": "[obNavTreeFakeFocus]",
       "usage": "Set on an <code>nav-tree</code>, it will allow to navigate the tree while maintaining the focus on the filter input.",
       "type": "directive",
-      "since": "2.0.0"
+      "since": "2.0.0",
+      "deprecated": "10.1.0"
     },
     {
       "name": "ObNavTreeItemModel",
