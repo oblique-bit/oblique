@@ -69,7 +69,7 @@ describe('NestedFormComponent', () => {
 			});
 
 			it('should call patchValue with the correct parameters', () => {
-				expect(patchValueSpy).toHaveBeenCalledWith({field1: 'Field1-Testvalue', field2: 'Field2-Testvalue'});
+				expect(patchValueSpy).toHaveBeenCalledWith({field1: 'Field1-Testvalue', field2: 'Field2-Testvalue'}, {emitEvent: false});
 			});
 		});
 
