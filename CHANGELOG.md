@@ -1,3 +1,12 @@
+# [10.0.2](https://github.com/oblique-bit/oblique/compare/10.0.1...10.0.2) (2023-04-14)
+
+## Bug Fixes
+
+- **autocomplete:** avoid marking custom form elements as dirty ([36c466f](https://github.com/oblique-bit/oblique/commit/36c466f3d0b924e8f93a25cff2db9d42ab605a61))
+- **file-upload:** make dropzone responsive ([ad52836](https://github.com/oblique-bit/oblique/commit/ad528363fb0ffd6a238589f7a30b954cea511a34))
+- **nested-form:** avoid marking custom form elements as dirty ([ff2fb33](https://github.com/oblique-bit/oblique/commit/ff2fb33a4d2e85b15963da69d07c79c981f00756))
+- **notification:** call `ChangeDetectorRef.detectChanges` after closing a notification ([745bd2d](https://github.com/oblique-bit/oblique/commit/745bd2d87a31d977008de8921ee3573c7feb0e68))
+
 # [10.0.1](https://github.com/oblique-bit/oblique/compare/10.0.0...10.0.1) (2023-03-30)
 
 ## Bug Fixes
