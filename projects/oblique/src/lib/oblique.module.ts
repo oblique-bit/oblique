@@ -20,7 +20,6 @@ import {ObTranslateParamsModule} from './translate-params/translate-params.modul
 import {ObUnsavedChangesModule} from './unsaved-changes/unsaved-changes.module';
 import {ObNumberFormatModule} from './number-format/number-format.module';
 import {ObOffCanvasModule} from './off-canvas/off-canvas.module';
-import {ObSearchBoxModule} from './search-box/search-box.module';
 import {ObStickyModule} from './sticky/sticky.module';
 import {ObUnknownRouteModule} from './unknown-route/unknown-route.module';
 import {obliqueProviders} from './utilities';
@@ -50,7 +49,6 @@ const OBLIQUE_MODULES = [
 	ObPopoverModule,
 	ObSchemaValidationModule,
 	ObScrollingModule,
-	ObSearchBoxModule,
 	ObServiceNavigationModule,
 	ObSelectableModule,
 	ObSpinnerModule,
