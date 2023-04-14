@@ -56,7 +56,7 @@
     "test-debugging": "node --expose-gc ./node_modules/@angular/cli/bin/ng run oblique:test:development --log-heap-usage",
     "lint": "ts-node scripts/lint/run-lint-steps.ts",
     "format": "ts-node scripts/lint/run-format-steps.ts",
-    "dependencies-update": "npm update --save --audit false && npm audit fix && npm dedupe --audit false && npm prune --audit false",
+    "dependencies-update": "ts-node projects/oblique/scripts/release/update-dependencies.ts",
     "release": "ts-node projects/oblique/scripts/release/release.ts",
     "alpha": "npm run release -- alpha",
     "beta": "npm run release -- beta",
