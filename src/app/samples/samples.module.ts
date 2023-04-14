@@ -65,7 +65,6 @@ import {
 	ObNumberFormatModule,
 	ObPopoverModule,
 	ObSchemaValidationModule,
-	ObSearchBoxModule,
 	ObSelectableModule,
 	ObServiceNavigationModule,
 	ObSpinnerModule,
@@ -80,7 +79,6 @@ import {MultiTranslateLoaderSampleComponent} from './multi-translate-loader/mult
 import {SelectableSampleComponent} from './selectable/selectable-sample.component';
 import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
 import {LanguageSampleComponent} from './language/language-sample.component';
-import {SearchBoxSampleComponent} from './search-box/search-box.component';
 import {PopoverComponent} from './popover/popover.component';
 import {AlertSampleComponent} from './alert/alert.component';
 import {HorizontalFormsSampleComponent} from './horizontal-forms/horizontal-forms.component';
@@ -128,7 +126,6 @@ import {ServiceNavigationSampleComponent} from './service-navigation/service-nav
 		ObNumberFormatModule,
 		ObPopoverModule,
 		ObSchemaValidationModule,
-		ObSearchBoxModule,
 		ObSelectableModule,
 		ObServiceNavigationModule,
 		ObSpinnerModule,
@@ -172,7 +169,6 @@ import {ServiceNavigationSampleComponent} from './service-navigation/service-nav
 		PopoverComponent,
 		PopUpSampleComponent,
 		SchemaValidationSampleComponent,
-		SearchBoxSampleComponent,
 		SelectableSampleComponent,
 		ServiceNavigationSampleComponent,
 		SpinnerSampleComponent,

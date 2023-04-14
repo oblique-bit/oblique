@@ -27,7 +27,6 @@ import {NumberFormatSampleComponent} from './number-format/number-format-sample.
 import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
 import {PopoverComponent} from './popover/popover.component';
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
-import {SearchBoxSampleComponent} from './search-box/search-box.component';
 import {SelectableSampleComponent} from './selectable/selectable-sample.component';
 import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
 import {StickySampleComponent} from './sticky/sticky-sample.component';
@@ -129,7 +128,6 @@ const samplesRoutes: Routes = [
 	{path: 'pop-up', component: PopUpSampleComponent},
 	{path: 'popover', component: PopoverComponent},
 	{path: 'schema-validation', component: SchemaValidationSampleComponent},
-	{path: 'search-box', component: SearchBoxSampleComponent},
 	{path: 'selectable', component: SelectableSampleComponent},
 	{path: 'service-navigation', component: ServiceNavigationSampleComponent},
 	{path: 'sticky', component: StickySampleComponent},
