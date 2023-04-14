@@ -152,6 +152,7 @@ export class AppComponent implements OnDestroy {
 	}
 
 	toggleFont(font: string): void {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
 		this.font.setFont(font === FONTS.FRUTIGER ? FONTS.ROBOTO : FONTS.FRUTIGER);
 	}
 
