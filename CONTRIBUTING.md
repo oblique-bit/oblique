@@ -101,7 +101,6 @@ The scope is optional and should be the name of the Oblique feature affected:
 - **pop-up**
 - **schema-validation**
 - **scrolling**
-- **search-box**
 - **selectable**
 - **service-navigation**
 - **spinner**

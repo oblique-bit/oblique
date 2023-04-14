@@ -155,12 +155,6 @@ module.exports.coverageThreshold = {
 		functions: 0,
 		lines: 27
 	},
-	'projects/oblique/src/lib/search-box/*.ts': {
-		statements: 98,
-		branches: 84,
-		functions: 94,
-		lines: 97
-	},
 	'projects/oblique/src/lib/selectable/*.ts': {
 		statements: 100,
 		branches: 81,

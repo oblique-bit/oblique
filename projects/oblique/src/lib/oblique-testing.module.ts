@@ -7,7 +7,6 @@ import {ObMockTranslatePipe} from './_mocks/mock-translate.pipe';
 import {ObMockAuthenticationModule} from './authentication/_mocks/mock-authentication-module';
 import {ObMockCollapseModule} from './collapse/_mocks/mock-collapse.module';
 import {ObMockColumnLayoutModule} from './column-layout/_mocks/mock-column-layout.module';
-import {ObMockSearchBoxModule} from './search-box/_mocks/mock-search-box.module';
 import {ObMockDocumentMetaModule} from './document-meta/_mocks/mock-document-meta.module';
 import {ObMockErrorMessagesModule} from './error-messages/_mocks/mock-error-messages.module';
 import {ObMockExternalLinkModule} from './external-link/_mocks/mock-external-link.module';
@@ -106,7 +105,6 @@ export {
 	ObMockOffCanvasService,
 	ObMockOffCanvasToggleDirective
 } from './off-canvas/_mocks/mock-off-canvas.module';
-export {ObMockSearchBoxComponent, ObMockSearchBoxModule} from './search-box/_mocks/mock-search-box.module';
 export {
 	ObMockSchemaValidationModule,
 	ObMockSchemaRequiredDirective,
@@ -158,7 +156,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockPopoverModule,
 	ObMockSchemaValidationModule,
 	ObMockScrollingModule,
-	ObMockSearchBoxModule,
 	ObMockObSelectableModule,
 	ObMockSpinnerModule,
 	ObMockStickyModule,
