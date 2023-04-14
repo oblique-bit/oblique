@@ -40,15 +40,15 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 	setDisabledState(isDisabled: boolean): void {
 		// eslint-disable-next-line no-unused-expressions
 		if (isDisabled) {
-			this.nestedForm.disable();
+			this.nestedForm.disable({emitEvent: false});
 		} else {
-			this.nestedForm.enable();
+			this.nestedForm.enable({emitEvent: false});
 		}
 	}
 
 	writeValue(obj: {field1?: string; field2?: string}): void {
 		if (obj) {
-			this.nestedForm.patchValue(obj);
+			this.nestedForm.patchValue(obj, {emitEvent: false});
 		} else {
 			this.nestedForm.reset();
 		}

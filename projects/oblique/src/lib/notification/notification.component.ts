@@ -1,4 +1,4 @@
-import {Component, HostBinding, Inject, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectorRef, Component, HostBinding, Inject, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {WINDOW} from '../utilities';
 import {ObENotificationPlacement, ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
@@ -26,7 +26,11 @@ export class ObNotificationComponent implements OnInit, OnDestroy {
 
 	private readonly unsubscribe = new Subject<void>();
 
-	constructor(private readonly notificationService: ObNotificationService, @Inject(WINDOW) private readonly window: Window) {}
+	constructor(
+		private readonly notificationService: ObNotificationService,
+		private readonly changeDetectorRef: ChangeDetectorRef,
+		@Inject(WINDOW) private readonly window: Window
+	) {}
 
 	ngOnInit(): void {
 		/* eslint-disable logical-assignment-operators */
@@ -82,6 +86,7 @@ export class ObNotificationComponent implements OnInit, OnDestroy {
 		// don't use idPrefix, because multiple notifications could share the same one
 		notification.$state = 'remove';
 		this.notifications = this.notifications.filter(notif => notif.$state !== 'remove');
+		this.changeDetectorRef.detectChanges();
 	}
 
 	/**
