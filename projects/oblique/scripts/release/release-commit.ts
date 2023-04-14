@@ -1,3 +1,3 @@
-import {execSync} from 'child_process';
+import {Commit} from './commit';
 
-execSync(`git commit -am "chore(toolchain): release version ${process.env.npm_package_version}"`);
+Commit.perform(`chore(toolchain): release version ${process.env.npm_package_version}`);
