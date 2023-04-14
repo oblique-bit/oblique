@@ -58,7 +58,6 @@ export class AppComponent implements OnDestroy {
 				{url: 'pop-up', label: 'Pop-up'},
 				{url: 'popover', label: 'Popover'},
 				{url: 'schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
-				{url: 'search-box', label: 'Search Box'},
 				{url: 'selectable', label: 'Selectable'},
 				{url: 'service-navigation', label: 'Service navigation'},
 				{url: 'spinner', label: 'Spinner'},
