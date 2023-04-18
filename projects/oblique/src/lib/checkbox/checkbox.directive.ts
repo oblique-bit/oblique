@@ -1,5 +1,5 @@
 import {Directive, ElementRef, OnDestroy, OnInit, Renderer2} from '@angular/core';
-import {MatLegacyCheckbox} from '@angular/material/legacy-checkbox';
+import {MatCheckbox} from '@angular/material/checkbox';
 import {BehaviorSubject, Subject, takeUntil} from 'rxjs';
 
 @Directive({
@@ -12,7 +12,7 @@ export class ObCheckboxDirective implements OnInit, OnDestroy {
 	private readonly rowCheckedClass = 'ob-table-row-checked';
 	private readonly unsubscribe = new Subject<void>();
 
-	constructor(elRef: ElementRef, private readonly checkbox: MatLegacyCheckbox, private readonly renderer: Renderer2) {
+	constructor(elRef: ElementRef, private readonly checkbox: MatCheckbox, private readonly renderer: Renderer2) {
 		this.host = elRef.nativeElement;
 	}
 
@@ -26,25 +26,39 @@ export class ObCheckboxDirective implements OnInit, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	private adjustCheckedClassOnTableRow(checked: boolean): void {
-		const row = this.host.closest(`.ob-table tr,.ob-table .mat-row`);
+	private conditionallyAdjustCheckedClassOnTableRows(checked: boolean): void {
+		const row = this.host.closest(`.ob-table tr,.ob-table .mat-mdc-row`);
+
 		if (row) {
 			if (row.closest(`.${this.rowCheckedClass}`)) {
 				if (!checked) {
-					this.renderer.removeClass(row, this.rowCheckedClass);
+					this.adjustCheckedClassOnTableRows(row, 'removeClass');
 				}
 			} else if (checked) {
-				this.renderer.addClass(row, this.rowCheckedClass);
+				this.adjustCheckedClassOnTableRows(row, 'addClass');
 			}
 		}
 	}
+	private adjustCheckedClassOnTableRows(row: Element, addOrRemoveClass: 'addClass' | 'removeClass'): void {
+		this.renderer[addOrRemoveClass](row, this.rowCheckedClass);
+
+		if (row.closest('.mat-mdc-header-row')) {
+			this.host
+				.closest('.ob-table')
+				.querySelectorAll('.mat-mdc-row')
+				?.forEach(otherRow => {
+					this.renderer[addOrRemoveClass](otherRow, this.rowCheckedClass);
+				});
+		}
+	}
+
 	private initializeChecked(): void {
 		this.updateChecked(this.checkbox.checked);
 	}
 
 	private monitorForCheckedChanges(): void {
 		this.checkbox.change.pipe(takeUntil(this.unsubscribe)).subscribe(change => this.updateChecked(change.checked));
-		this.$checked.pipe(takeUntil(this.unsubscribe)).subscribe(checked => this.adjustCheckedClassOnTableRow(checked));
+		this.$checked.pipe(takeUntil(this.unsubscribe)).subscribe(checked => this.conditionallyAdjustCheckedClassOnTableRows(checked));
 	}
 
 	private updateChecked(checked: boolean): void {

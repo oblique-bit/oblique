@@ -1,7 +1,7 @@
 import {AfterViewInit, ContentChild, Directive, OnDestroy, Optional} from '@angular/core';
-import {MatLegacyInput as MatInput} from '@angular/material/legacy-input';
+import {MatInput} from '@angular/material/input';
 import {FormGroupDirective, NgForm, ValidationErrors} from '@angular/forms';
-import {MatLegacySelect as MatSelect} from '@angular/material/legacy-select';
+import {MatSelect} from '@angular/material/select';
 import {Observable, Subject, merge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
