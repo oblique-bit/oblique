@@ -11,7 +11,22 @@ table {
 .ob-table {
 	width: 100%;
 	color: variables.$ob-default;
-	@include typography.ob-body2();
+	@include typography.ob-body2-line-height-letter-spacing();
+
+	.mat-mdc-header-row {
+		background-color: variables.$ob-secondary-50;
+		border-bottom: 2px solid variables.$ob-secondary-200;
+	}
+
+	&,
+	thead,
+	tbody,
+	th,
+	td,
+	tr,
+	caption {
+		@include table.ob-table-font-size();
+	}
 
 	&.ob-table-cicd {
 		thead,
@@ -50,8 +65,15 @@ table {
 	}
 
 	&:not(.ob-table-plain) {
-		tbody tr:nth-child(odd) {
-			background-color: variables.$ob-gray-extra-light;
+		.mat-mdc-header-row,
+		tbody tr:nth-child(even) {
+			background-color: variables.$ob-secondary-50;
+		}
+
+		&:not(.ob-table-disable-hover-style) {
+			tbody tr:hover:not(.mat-mdc-header-row) {
+				background-color: variables.$ob-secondary-100;
+			}
 		}
 	}
 
@@ -73,9 +95,58 @@ table {
 		}
 	}
 
-	&.ob-table-hover tbody tr:hover,
-	tr.ob-active {
-		background-color: variables.$ob-extra-light;
+	&:not(.ob-table-disable-hover-style) tbody {
+		tr,
+		.mat-mdc-row {
+			&:hover,
+			&.ob-active {
+				&:not(.mat-mdc-header-row) {
+					background-color: variables.$ob-secondary-50;
+				}
+			}
+		}
+	}
+
+	&:not(.ob-table-disable-checked-style) {
+		tr,
+		.mat-mdc-row {
+			&:not(.mat-mdc-header-row).ob-table-row-checked {
+				background-color: variables.$ob-secondary-100;
+			}
+		}
+	}
+
+	&:not(.ob-table-disable-hover-style, .ob-table-disable-checked-style) tbody {
+		tr,
+		.mat-mdc-row {
+			&:hover,
+			&.ob-active {
+				&:not(.mat-mdc-header-row).ob-table-row-checked {
+					background-color: variables.$ob-secondary-200;
+				}
+			}
+		}
+	}
+
+	@include layout.ob-media-breakpoint-up(md) {
+		tbody {
+			tr,
+			.mat-mdc-row {
+				&:not(.mat-mdc-header-row) {
+					.mat-column-actions .actions {
+						visibility: hidden;
+					}
+
+					&:hover,
+					&.ob-active,
+					&.ob-table-row-checked {
+						.mat-column-actions .actions {
+							visibility: visible;
+						}
+					}
+				}
+			}
+		}
 	}
 }
 

@@ -1,18 +1,19 @@
 @use "sass:selector";
 @use "../core/variables";
+@use "../core/mixins/table";
 
-.mat-table {
+.mat-mdc-table {
 	&.ob-table {
-		.mat-row,
-		.mat-header-row,
-		.mat-footer-row {
+		.mat-mdc-row,
+		.mat-mdc-header-row,
+		.mat-mdc-footer-row {
 			height: auto;
 			min-height: auto;
 		}
 
-		.mat-cell,
-		.mat-footer-cell,
-		.mat-header-cell {
+		.mat-mdc-cell,
+		.mat-mdc-footer-cell,
+		.mat-mdc-header-cell {
 			font-size: inherit;
 			padding: variables.$ob-spacing-sm;
 
@@ -25,37 +26,38 @@
 			}
 		}
 
-		@at-root #{selector.append("mat-table", &)}:not(.table-plain) .mat-row:nth-child(odd) {
+		@at-root #{selector.append("mat-table", &)}:not(.table-plain) .mat-mdc-row:nth-child(odd) {
 			background-color: variables.$ob-gray-extra-light;
 		}
 	}
 
-	.mat-header-row {
-		.mat-header-cell,
+	.mat-mdc-header-row {
+		.mat-mdc-header-cell,
 		.mat-sort-header-arrow {
-			color: variables.$ob-default;
-			font-size: 14px;
+			color: variables.$ob-secondary-800;
 		}
 	}
 
-	.mat-cell,
-	.mat-header-cell,
-	.mat-footer-cell,
-	.mat-row,
-	.mat-header-row,
-	.mat-footer-row {
-		border-color: variables.$ob-gray;
+	.mat-mdc-cell,
+	.mat-mdc-header-cell,
+	.mat-mdc-footer-cell,
+	.mat-mdc-row,
+	.mat-mdc-header-row,
+	.mat-mdc-footer-row {
+		border-color: variables.$ob-secondary-200;
 
-		.mat-cell {
+		.mat-mdc-cell {
 			color: variables.$ob-default;
 		}
-	}
-
-	.mat-row:hover {
-		background-color: variables.$ob-extra-light;
 	}
 
 	.mat-sort-header {
 		cursor: pointer;
+	}
+
+	.mat-mdc-header-cell,
+	&.ob-table-collapse td::before {
+		@include table.ob-table-font-size();
+		text-transform: uppercase;
 	}
 }
