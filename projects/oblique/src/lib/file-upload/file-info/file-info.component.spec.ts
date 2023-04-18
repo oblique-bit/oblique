@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {MatLegacyTableDataSource as MatTableDataSource, MatLegacyTableModule as MatTableModule} from '@angular/material/legacy-table';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, of, throwError} from 'rxjs';

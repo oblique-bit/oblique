@@ -1,6 +1,6 @@
 import {ElementRef, Renderer2} from '@angular/core';
 import {ObCheckboxDirective} from './checkbox.directive';
-import {MatLegacyCheckbox} from '@angular/material/legacy-checkbox';
+import {MatCheckbox} from '@angular/material/checkbox';
 import {Subject} from 'rxjs';
 
 describe(`${ObCheckboxDirective.name}`, () => {
@@ -42,7 +42,7 @@ describe(`${ObCheckboxDirective.name}`, () => {
 
 		directive = new ObCheckboxDirective(
 			{nativeElement: {closest: (selector: string) => closest(selector)}} as unknown as ElementRef,
-			{checked, change} as unknown as MatLegacyCheckbox,
+			{checked, change} as unknown as MatCheckbox,
 			{addClass, removeClass} as unknown as Renderer2
 		);
 		directive.ngOnInit();
