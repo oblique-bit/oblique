@@ -34,6 +34,10 @@
 	justify-content: flex-start;
 	flex-wrap: wrap;
 
+	.ob-popover-content {
+		max-width: initial;
+	}
+
 	.ob-control-toggle {
 		line-height: 1;
 		margin: 0;
