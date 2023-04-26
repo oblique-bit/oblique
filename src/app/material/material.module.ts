@@ -18,7 +18,7 @@ import {MatLegacyAutocompleteModule as MatAutocompleteModule} from '@angular/mat
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatLegacyOptionModule as MatOptionModule} from '@angular/material/legacy-core';
 import {MatLegacyChipsModule as MatChipsModule} from '@angular/material/legacy-chips';
-import {MatLegacyProgressBarModule as MatProgressBarModule} from '@angular/material/legacy-progress-bar';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatLegacyDialogModule as MatDialogModule} from '@angular/material/legacy-dialog';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatSortModule} from '@angular/material/sort';
