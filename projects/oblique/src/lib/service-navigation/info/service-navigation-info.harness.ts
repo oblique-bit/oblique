@@ -1,6 +1,6 @@
 import {ContentContainerComponentHarness, TestElement} from '@angular/cdk/testing';
 import {MatIconHarness} from '@angular/material/icon/testing';
-import {MatLegacyTooltipHarness as MatTooltipHarness} from '@angular/material/legacy-tooltip/testing';
+import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {ObServiceNavigationPopOverHarness} from '../shared/popover-section/service-navigation-popover.harness';
 
 export class ObServiceNavigationInfoHarness extends ContentContainerComponentHarness {

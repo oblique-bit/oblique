@@ -2,7 +2,7 @@ import {TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconModule} from '@angular/material/icon';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconHarness} from '@angular/material/icon/testing';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObServiceNavigationAuthenticationHarness} from './service-navigation-authentication.harness';

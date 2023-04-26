@@ -6,7 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatIconHarness} from '@angular/material/icon/testing';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';

@@ -1,6 +1,6 @@
 import {ContentContainerComponentHarness, TestElement} from '@angular/cdk/testing';
 import {MatIconHarness} from '@angular/material/icon/testing';
-import {MatLegacyTooltipHarness as MatTooltipHarness} from '@angular/material/legacy-tooltip/testing';
+import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {MatBadgeHarness} from '@angular/material/badge/testing';
 
 export class ObServiceNavigationMessageHarness extends ContentContainerComponentHarness {
