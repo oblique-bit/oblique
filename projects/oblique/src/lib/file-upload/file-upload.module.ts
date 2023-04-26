@@ -5,7 +5,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatLegacyTableModule as MatTableModule} from '@angular/material/legacy-table';
 import {MatLegacyCheckboxModule as MatCheckboxModule} from '@angular/material/legacy-checkbox';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatLegacyProgressBarModule as MatProgressBarModule} from '@angular/material/legacy-progress-bar';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSortModule} from '@angular/material/sort';
 import {TranslateModule} from '@ngx-translate/core';
 import {obliqueProviders} from '../utilities';
