@@ -18,7 +18,7 @@ import {DateAdapter} from '@angular/material/core';
 import {MatLegacySlideToggleModule as MatSlideToggleModule} from '@angular/material/legacy-slide-toggle';
 import {MatLegacyListModule as MatListModule} from '@angular/material/legacy-list';
 import {MatLegacyDialogModule as MatDialogModule} from '@angular/material/legacy-dialog';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';

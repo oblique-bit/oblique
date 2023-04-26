@@ -7,7 +7,7 @@ import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-car
 import {MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
 import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
 import {MatLegacyListModule as MatListModule} from '@angular/material/legacy-list';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatLegacyRadioModule as MatRadioModule} from '@angular/material/legacy-radio';
 import {MatLegacySlideToggleModule as MatSlideToggleModule} from '@angular/material/legacy-slide-toggle';
 import {MatLegacySliderModule as MatSliderModule} from '@angular/material/legacy-slider';
