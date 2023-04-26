@@ -5,9 +5,10 @@
 /**
  * @deprecated since Oblique 10. This SCSS files will no longer be distributed with Oblique 11.
  */
-.mat-tooltip {
-	@include typography.ob-caption();
-	background-color: variables.$ob-gray-darker;
-	padding: 6px 7px 4px;
+.mat-mdc-tooltip {
 	@include shadow.ob-drop-shadow();
+
+	.mdc-tooltip__surface {
+		background-color: variables.$ob-secondary-700;
+	}
 }
