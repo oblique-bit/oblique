@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObExternalLinkModule} from '../external-link/external-link.module';

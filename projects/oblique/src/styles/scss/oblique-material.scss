@@ -42,7 +42,6 @@ $theme: (
 @include mat.legacy-slider-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-table-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-tabs-theme(mat.define-light-theme($legacy-theme));
-@include mat.legacy-tooltip-theme(mat.define-light-theme($legacy-theme));
 
 @include mat.badge-theme(mat.define-light-theme($theme));
 @include mat.button-theme(mat.define-light-theme($theme));
@@ -53,6 +52,7 @@ $theme: (
 @include mat.icon-theme(mat.define-light-theme($theme));
 @include mat.sort-theme(mat.define-light-theme($theme));
 @include mat.stepper-theme(mat.define-light-theme($theme));
+@include mat.tooltip-theme(mat.define-light-theme($theme));
 
 // import to overwrite mat-component-specifics
 @import "material/mat-button";
