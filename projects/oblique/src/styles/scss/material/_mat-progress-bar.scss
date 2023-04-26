@@ -1,0 +1,28 @@
+@use "../core/variables";
+
+/**
+ * This SCSS file will not be distributed with Oblique 11.
+ */
+.mat-mdc-progress-bar {
+	background-color: transparent;
+
+	.mdc-linear-progress__buffer-bar {
+		background-color: variables.$ob-secondary-100;
+	}
+
+	.mdc-linear-progress__buffer-dots {
+		background-image: url("data:image/svg+xml,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'><circle cx='1' cy='1' r='1' fill='%23dfe4e9'/></svg>");
+	}
+}
+
+.mat-mdc-progress-bar.mat-warn {
+	background-color: transparent;
+
+	.mdc-linear-progress__buffer-bar {
+		background-color: variables.$ob-red-200;
+	}
+
+	.mdc-linear-progress__buffer-dots {
+		background-image: url("data:image/svg+xml,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'><circle cx='1' cy='1' r='1' fill='%23ffccce'/></svg>");
+	}
+}
