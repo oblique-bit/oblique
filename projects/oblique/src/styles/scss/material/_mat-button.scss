@@ -3,9 +3,6 @@
 @use "../core/mixins/tab-outline";
 @use "../core/mixins/shadow";
 
-/**
- * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
- */
 .mat-mdc-button-base {
 	&.ob-button {
 		color: core-variables.$ob-secondary-800;

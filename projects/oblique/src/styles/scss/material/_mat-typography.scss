@@ -1,9 +1,6 @@
 @use "@angular/material" as mat;
 @use "../core/variables" as core-variables;
 
-/**
- * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
- */
 // Changes every px measure native to angular material to its rem equivalent,
 // provided that the base font-size is 16px which is browser's default.
 // example: for 24px ---> 24/16 = 1.5 so 1.5rem

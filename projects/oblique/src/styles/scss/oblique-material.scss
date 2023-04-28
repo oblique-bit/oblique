@@ -4,9 +4,6 @@
 @use "material/variables";
 @use "material/mat-typography" as typo;
 
-/**
- * @deprecated since Oblique 10. This SCSS files will no longer be distributed with Oblique 11.
- */
 $legacy-theme: (
 	color: (
 		primary: mat.define-palette(material-palette.$oblique-legacy-primary),
