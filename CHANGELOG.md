@@ -1,3 +1,27 @@
+# [10.1.0](https://github.com/oblique-bit/oblique/compare/10.0.2...10.1.0) (2023-04-28)
+
+## Bug Fixes
+
+- **column-layout:** correctly centers the toggles ([ef89740](https://github.com/oblique-bit/oblique/commit/ef897400e87eeeba880227bc35e795bbaa23193e))
+- **column-layout:** remove memory leak ([f3871bf](https://github.com/oblique-bit/oblique/commit/f3871bfc2b23567bf48fdbfc3e61b5df69607566))
+- **master-layout:** vertically center the menu toggle in collapse mode ([7960ecf](https://github.com/oblique-bit/oblique/commit/7960ecfbba72647904a760f92542138918500fb3))
+- **search-box:** ensure the search result do have enough space ([1f577f5](https://github.com/oblique-bit/oblique/commit/1f577f5e8ddf5a47079b5e9d498cfd009568cd02))
+- **toolchain:** update `icons` script to remove xml tag from svg file ([63fd4af](https://github.com/oblique-bit/oblique/commit/63fd4af98ce07f4bd4eb64710f15703c188ba818))
+
+## Features
+
+- **column-layout:** recenter the toggles on any box change, not only scroll event ([6872493](https://github.com/oblique-bit/oblique/commit/6872493ef4b456570cea982893417b0752ab2236))
+- **icon:** add new icons ([e619cfd](https://github.com/oblique-bit/oblique/commit/e619cfd2781a58ded017fb6cc194603d08cd0dae))
+- **master-layout:** add option to configure the service navigation ([e2f51e7](https://github.com/oblique-bit/oblique/commit/e2f51e7b5349af08e983c9920ee7cb460d9139f2))
+- **master-layout:** add option to use the service navigation instead of the header controls area ([38849ac](https://github.com/oblique-bit/oblique/commit/38849ac8598fe04ffc02b4e7f5ba5af3b7b03ed0))
+- **master-layout:** add service navigation configuration to `ObMasterLayoutConfig` ([8131b34](https://github.com/oblique-bit/oblique/commit/8131b34de0af10edade4436d747e83531f6b5411))
+- **master-layout:** add service navigation configuration to `ObMasterLayoutService` ([f056784](https://github.com/oblique-bit/oblique/commit/f05678492630fd58b457f6ce634a3fefb19b44c6))
+- **master-layout:** expose `loginState$` observable through the `ObMasterLayoutHeaderService` ([9cd0855](https://github.com/oblique-bit/oblique/commit/9cd08550dc380afa715281ad58bd341cc6f09ae3))
+- **master-layout:** mark `obLocales` and `obHeaderCustomControl` tokens as deprecated ([2eb1f95](https://github.com/oblique-bit/oblique/commit/2eb1f9532f998008bb06dc1d74546037b6805acb))
+- **master-layout:** use consistent design for the mobile header control ([13eb7df](https://github.com/oblique-bit/oblique/commit/13eb7df37b0209386ed27cc48d77e758c0de6bf9))
+- **schematics:** create schematic to replace header-widget with service-navigation ([9f920a0](https://github.com/oblique-bit/oblique/commit/9f920a0276d087087f62cabc2a723be24790aa73))
+- **service-navigation:** add feature ([a55b350](https://github.com/oblique-bit/oblique/commit/a55b350d5220f746b83c21458136582748d7ace7))
+
 # [10.0.2](https://github.com/oblique-bit/oblique/compare/10.0.1...10.0.2) (2023-04-14)
 
 ## Bug Fixes
