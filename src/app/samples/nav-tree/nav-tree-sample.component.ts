@@ -12,7 +12,6 @@ export class NavTreeSampleComponent implements OnInit, OnDestroy {
 	public items: ObNavTreeItemModel[];
 	public variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	public activateAncestors = true;
-	public useFakeFocus = false;
 
 	public filter = {
 		pattern: null,

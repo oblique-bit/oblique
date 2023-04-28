@@ -10,7 +10,6 @@
 		[filterPattern]="filter.pattern"
 		[activateAncestors]="activateAncestors"
 		[variant]="variant"
-		[obNavTreeFakeFocus]="useFakeFocus ? obFilterBox : null"
 	>
 		<li class="nav-item nav-header" role="presentation">
 			<h3 class="nav-header-title" *ngIf="!filter.pattern">Menu Sample</h3>
@@ -55,10 +54,6 @@
 		<fieldset>
 			<legend>Route options</legend>
 			<mat-checkbox [(ngModel)]="activateAncestors">Exact router link for active menu?</mat-checkbox>
-		</fieldset>
-		<fieldset>
-			<legend>Keyboard Navigation</legend>
-			<mat-checkbox [(ngModel)]="useFakeFocus">Use Fake Focus?</mat-checkbox>
 		</fieldset>
 		<router-outlet></router-outlet>
 	</div>
