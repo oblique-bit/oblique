@@ -34,6 +34,9 @@
           "updated": {
             "type": "string"
           },
+          "deprecated": {
+            "type": "string"
+          },
           "type": {
             "type": "string",
             "enum": [

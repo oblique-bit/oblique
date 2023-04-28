@@ -1,0 +1,43 @@
+@use "../../../../styles/scss/core/variables";
+@use "../../../../styles/scss/core/mixins/nav";
+@use "../../../../styles/scss/core/mixins/typography";
+@use "../../service-navigation.component";
+
+[id^="service-navigation"].ob-popover-content {
+	min-width: 380px; // empiric value that it valid for the header widget only;
+}
+
+.ob-service-navigation-popover-section {
+	display: block;
+
+	+ .ob-service-navigation-popover-section {
+		margin-top: variables.$ob-spacing-xl;
+	}
+
+	.ob-popover-header {
+		display: flex;
+		align-items: center;
+		gap: variables.$ob-spacing-sm;
+		padding-bottom: variables.$ob-spacing-sm;
+		@include typography.ob-h5();
+	}
+
+	.ob-popover-list {
+		margin: 0;
+		padding-left: 0;
+		list-style: none;
+
+		.ob-popover-link {
+			width: 100%;
+			padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
+			border-bottom: 1px solid variables.$ob-gray-light;
+			color: variables.$ob-default;
+			text-decoration: none;
+			@include nav.ob-nav-hover(-1);
+
+			&:not(.ob-external-link) {
+				display: inline-block;
+			}
+		}
+	}
+}

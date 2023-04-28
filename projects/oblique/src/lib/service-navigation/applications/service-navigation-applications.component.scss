@@ -1,0 +1,48 @@
+@use "../../../styles/scss/core/variables";
+
+$ob-application-icon-size: 2.5em; // empiric value
+.ob-service-navigation-applications {
+	.ob-applications {
+		display: flex;
+		flex-wrap: wrap;
+		gap: variables.$ob-spacing-default variables.$ob-spacing-lg;
+	}
+
+	.ob-application {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex-basis: 0;
+		flex-grow: 1;
+		max-width: 50%;
+		padding: variables.$ob-spacing-sm;
+		text-decoration: none;
+		color: variables.$ob-default;
+
+		&:hover {
+			background-color: variables.$ob-gray-100;
+		}
+	}
+
+	.ob-application-image {
+		height: $ob-application-icon-size;
+		width: $ob-application-icon-size;
+
+		&.ob-status-image {
+			position: absolute;
+			z-index: 2;
+		}
+
+		&.ob-offline {
+			filter: grayscale(1);
+		}
+	}
+
+	.ob-application-title {
+		max-width: 100%;
+		font-size: variables.$ob-font-size-smaller;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}

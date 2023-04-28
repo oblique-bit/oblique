@@ -9,6 +9,7 @@ import {ObINavigationLink, ObISearchWidgetItem} from '@oblique/oblique';
 export class SearchBoxSampleComponent {
 	searchItems: ObISearchWidgetItem[] = [];
 	slide = true;
+	limitWidth = false;
 	private readonly navigation: ObINavigationLink[] = [
 		{url: '/home', label: 'i18n.routes.home.title'},
 		{

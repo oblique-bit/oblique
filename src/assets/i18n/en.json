@@ -47,5 +47,19 @@
   "i18n.validation.invalidDateMin": "Date must be after: {{value}}",
   "i18n.file-upload.name": "File name",
   "i18n.file-upload.url": "File url",
-  "i18n.file-upload.test": "Test"
+  "i18n.file-upload.test": "Test",
+  "i18n.service-navigation.info.link.user-documentation.label": "Documentation for user",
+  "i18n.service-navigation.info.link.user-documentation.url": "https://eportal.admin.ch/assets/help/User%20documentation%202.0.pdf",
+  "i18n.service-navigation.info.link.multimedia-manual.label": "Multimedia manual",
+  "i18n.service-navigation.info.link.multimedia-manual.url": "https://vimeo.com/473753776/2f97c50ba7",
+  "i18n.service-navigation.profile.link.unicorn.label": "Unicorn",
+  "i18n.service-navigation.profile.link.unicorn.url": "https://en.wikipedia.org/wiki/Unicorn",
+  "i18n.service-navigation.profile.link.dragon.label": "Dragon",
+  "i18n.service-navigation.profile.link.dragon.url": "https://en.wikipedia.org/wiki/Dragon",
+  "i18n.service-navigation.profile.link.phoenix.label": "Phoenix",
+  "i18n.service-navigation.profile.link.phoenix.url": "https://en.wikipedia.org/wiki/Phoenix_(mythology)",
+  "i18n.service-navigation.profile.link.ork.label": "Orc",
+  "i18n.service-navigation.profile.link.ork.url": "https://en.wikipedia.org/wiki/Orc",
+  "i18n.service-navigation.profile.link.kappa.label": "Cappa",
+  "i18n.service-navigation.profile.link.kappa.url": "https://en.wikipedia.org/wiki/Kappa_(folklore)"
 }

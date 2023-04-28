@@ -14,3 +14,11 @@
 	reserved for the dropdown toggle). The label, while mandatory for accessibility reasons, can be hidden through the
 	<code>iconOnly</code> property. For consistency reasons, it is advised to either use icons for all entries or none of them.
 </p>
+<p>
+	Oblique 10.1.0 introduces the <code>ob-service-navigation</code> component that replaces the whole right hand area of the header (the part
+	where the language selection and the projected <code>obHeaderControl</code> elements are located). This component intends to replace the
+	Header Widget without the need of a Web Component. The change is currently opt-in and can be activated through the
+	<code>OB_ACTIVATE_SERVICE_NAVIGATION</code> injection token. With Oblique 11, the change will be mandatory, this means that
+	<code>obLocales</code> and <code>obHeaderCustomControl</code> content projection options will be removed. It will still be possible to
+	pass custom controls or an alternate language selection through the <code>obHeaderControl</code> content projection option.
+</p>

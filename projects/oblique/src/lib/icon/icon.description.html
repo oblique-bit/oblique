@@ -55,11 +55,12 @@
 <details>
 	<summary>How to register additional icons on build time?</summary>
 	<p>
-		A serialized icon set (see below) can be passed on to the <code>ObIconModule</code>'s configuration. The module's
-		<code>forRoot</code> method accepts a <code>config</code> parameter whose <code>additionalIcons</code> property serves that purpose.
+		An array of serialized icon sets (see below) can be passed on to the <code>ObIconModule</code>'s configuration. Each icon of the icon
+		sets must have an unique <code>id</code> property. The module's <code>forRoot</code> method accepts a <code>config</code> parameter
+		whose <code>additionalIcons</code> property serves that purpose.
 	</p>
 	<pre>
-const iconSet = '&lt;svg>&lt;defs>&lt;svg id="my-icon">...&lt;/svg>...&lt;/defs>&lt;/svg>';
+const iconSet = ['&lt;svg>&lt;defs>&lt;svg id="my-icon">...&lt;/svg>...&lt;/defs>&lt;/svg>'];
 
 @NgModule(&lcub;
 	imports: [

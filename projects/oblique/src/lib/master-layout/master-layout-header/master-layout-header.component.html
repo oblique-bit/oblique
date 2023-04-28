@@ -16,10 +16,10 @@
 				</span>
 			</div>
 			<ul class="ob-header-controls ob-header-toggle">
-				<li class="ob-control-item" *ngFor="let template of mobileTemplates" #headerMobileControl>
+				<li class="ob-control-item" [class.ob-widget]="useServiceNavigation" *ngFor="let template of mobileTemplates" #headerMobileControl>
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</li>
-				<li class="ob-control-item">
+				<li class="ob-control-item ob-master-layout-header-toggle-container">
 					<button
 						type="button"
 						[title]="'i18n.oblique.header.toggle' | translate"
@@ -37,7 +37,7 @@
 				</li>
 			</ul>
 		</div>
-		<div class="ob-master-layout-header-controls">
+		<div *ngIf="!useServiceNavigation" class="ob-master-layout-header-controls">
 			<ng-content select="[obHeaderCustomControl]"></ng-content>
 			<ng-container *ngIf="templates.length">
 				<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.controls.title" | translate }}</h2>
@@ -66,6 +66,30 @@
 				</li>
 			</ul>
 		</div>
+		<ng-container *ngIf="useServiceNavigation">
+			<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.service-navigation.title" | translate }}</h2>
+			<ob-service-navigation
+				[infoContact]="serviceNavigationConfig?.infoContact"
+				[infoLinks]="serviceNavigationConfig?.infoLinks"
+				[maxFavoriteApplications]="serviceNavigationConfig?.maxFavoriteApplications"
+				[maxLastUsedApplications]="serviceNavigationConfig?.maxLastUsedApplications"
+				[profileLinks]="serviceNavigationConfig?.profileLinks"
+				[returnUrl]="serviceNavigationConfig?.returnUrl"
+				[displayApplications]="serviceNavigationConfig?.displayApplications"
+				[displayAuthentication]="serviceNavigationConfig?.displayAuthentication"
+				[displayInfo]="serviceNavigationConfig?.displayInfo"
+				[displayLanguages]="serviceNavigationConfig?.displayLanguages"
+				[displayMessage]="serviceNavigationConfig?.displayMessage"
+				[displayProfile]="serviceNavigationConfig?.displayProfile"
+				[environment]="pamsConfiguration?.environment"
+				[rootUrl]="pamsConfiguration?.rootUrl"
+				(loginState)="emitLoginState($event)"
+			>
+				<ng-template #customWidgetTemplate *ngFor="let template of templates">
+					<ng-container [ngTemplateOutlet]="template"></ng-container>
+				</ng-template>
+			</ob-service-navigation>
+		</ng-container>
 	</ng-container>
 </div>
 <ob-master-layout-navigation [links]="navigation">

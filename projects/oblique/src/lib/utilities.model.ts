@@ -3,11 +3,17 @@ import {MatLegacyCheckboxDefaultOptions as MatCheckboxDefaultOptions} from '@ang
 import {MatLegacyRadioDefaultOptions as MatRadioDefaultOptions} from '@angular/material/legacy-radio';
 import {StepperOptions} from '@angular/cdk/stepper';
 import {MatLegacySlideToggleDefaultOptions as MatSlideToggleDefaultOptions} from '@angular/material/legacy-slide-toggle';
+import {ObEPamsEnvironment} from './service-navigation/service-navigation.model';
 
 export interface ObIBanner {
 	text: string;
 	color?: string;
 	bgColor?: string;
+}
+
+export interface ObIPamsConfiguration {
+	environment: ObEPamsEnvironment;
+	rootUrl?: string;
 }
 
 export interface ObIMaterialConfig {

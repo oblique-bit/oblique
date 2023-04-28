@@ -8,7 +8,7 @@
       "type": "component",
       "usage": "This component takes care of the structure of the application and should be used in <code>app.component.html</code>",
       "since": "2.0.0",
-      "updated": "8.2.0",
+      "updated": "10.1.0",
       "inputs": [
         {
           "name": "skiplinks",
@@ -55,12 +55,14 @@
         {
           "name": "[obLocales]",
           "text": "Content that will be projected as the locales choice. It will replace the default Oblique locales if locale management is disabled (see <code>ObMasterLayoutConfig</code>).",
-          "since": "3.0.0"
+          "since": "3.0.0",
+          "deprecated": "10.1.0"
         },
         {
           "name": "[obHeaderCustomControl]",
           "text": "Content that will be projected as the custom controls section of the main header (next to the locales choice)",
-          "since": "5.1.0"
+          "since": "5.1.0",
+          "deprecated": "10.1.0"
         },
         {
           "name": "<ng-template #obHeaderControl>",
@@ -105,6 +107,20 @@
           "type": "boolean",
           "default": true,
           "since": "8.2.0"
+        },
+        {
+          "name": "OB_PAMS_CONFIGURATION",
+          "text": "Provides the mandatory PAMS environment as well as an optional root url. This is only useful when <code>OB_ACTIVATE_SERVICE_NAVIGATION</code> is enabled.",
+          "type": "ObIPamsConfiguration",
+          "default": "undefined",
+          "since": "10.1.0"
+        },
+        {
+          "name": "OB_ACTIVATE_SERVICE_NAVIGATION",
+          "text": "Indicates whether or not the service navigation component should be used instead of the header controls area.",
+          "type": "boolean",
+          "default": false,
+          "since": "10.1.0"
         }
       ]
     },
@@ -113,7 +129,7 @@
       "type": "injectable(config)",
       "usage": "This is the default configuration of the master layout. Values can be tweaked by injecting this service into <code>app.module.ts</code> to customize the global structure of the application.",
       "since": "2.0.0",
-      "updated": "8.0.0",
+      "updated": "10.1.0",
       "variables": [
         {
           "name": "homePageRoute",
@@ -226,6 +242,20 @@
           "type": "boolean",
           "default": true,
           "since": "8.0.0"
+        },
+        {
+          "name": "header.serviceNavigation",
+          "text": "The default configuration for the service navigation. This property is <code>readonly</code> to ensure no option is set to <code>undefined</code>.",
+          "type": "ObIServiceNavigationConfig",
+          "default": {
+            "profileLinks": [],
+            "infoLinks": [],
+            "infoContact": {},
+            "maxLastUsedApplications": 3,
+            "maxFavoriteApplications": 3,
+            "displayLanguages": true
+          },
+          "since": "10.1.0"
         },
         {
           "name": "navigation.isFullWidth",
@@ -397,13 +427,19 @@
       "usage": "A service to configure the master layout header. The changes are live.",
       "type": "service",
       "since": "4.0.0",
-      "updated": "8.0.0",
+      "updated": "10.1.0",
       "variables": [
         {
           "name": "configEvents$",
           "text": "Emits every time one of its property is changed",
           "type": "Observable<ObIMasterLayoutEvent>",
           "since": "4.0.0"
+        },
+        {
+          "name": "loginState$",
+          "text": "Emits every time the login state changes",
+          "type": "Observable<ObILoginState>",
+          "since": "10.1.0"
         },
         {
           "name": "isCustom",
@@ -432,6 +468,20 @@
           "type": "boolean",
           "default": true,
           "since": "8.0.0"
+        },
+        {
+          "name": "serviceNavigationConfiguration",
+          "text": "Controls <code>ObMasterLayoutConfig.header.serviceNavigation</code> property.",
+          "type": "ObIServiceNavigationConfig",
+          "default": {
+            "profileLinks": [],
+            "infoLinks": [],
+            "infoContact": {},
+            "maxLastUsedApplications": 3,
+            "maxFavoriteApplications": 3,
+            "displayLanguages": true
+          },
+          "since": "10.1.0"
         }
       ]
     },
@@ -647,6 +697,128 @@
       ]
     },
     {
+      "name": "ObIPamsConfiguration",
+      "type": "interface",
+      "usage": "The PAMS configuration to allow the connection with PAMS services",
+      "since": "10.1.0",
+      "variables": [
+        {
+          "name": "environment",
+          "text": "The PAMS environment that will be used to build the root URL for the PAMS and ePortal links.",
+          "type": "ObEPamsEnvironment",
+          "since": "10.1.0"
+        },
+        {
+          "name": "rootUrl",
+          "text": "An alternate root URL for the PAMS and ePortal links. This take precedence over the root URL inferred from the environment.",
+          "type": "string",
+          "isOptional": true,
+          "default": null,
+          "since": "10.1.0"
+        }
+      ]
+    },
+    {
+      "name": "ObIServiceNavigationConfig",
+      "type": "interface",
+      "usage": "The structure of the service navigation configuration",
+      "since": "10.1.0",
+      "variables": [
+        {
+          "name": "profileLinks",
+          "text": "A list of links to be displayed in the profile widget. Each link label and url are localized.",
+          "type": "ObIServiceNavigationLink[]",
+          "isOptional": true,
+          "since": "10.1.0"
+        },
+        {
+          "name": "infoLinks",
+          "text": "A list of links to be displayed in the info widget. Each link label and url are localized.",
+          "type": "ObIServiceNavigationLink[]",
+          "isOptional": true,
+          "since": "10.1.0"
+        },
+        {
+          "name": "infoContact",
+          "text": "An object with a contact phone and email.",
+          "type": "ObIServiceNavigationContact",
+          "isOptional": true,
+          "since": "10.1.0"
+        },
+        {
+          "name": "maxLastUsedApplications",
+          "text": "The maximum number of listed last used applications in the applications widget.",
+          "type": "number",
+          "isOptional": true,
+          "default": 3,
+          "since": "10.1.0"
+        },
+        {
+          "name": "maxFavoriteApplications",
+          "text": "The maximum number of listed favorite applications in the applications widget.",
+          "type": "number",
+          "isOptional": true,
+          "default": 3,
+          "since": "10.1.0"
+        },
+        {
+          "name": "returnUrl",
+          "text": "The url that will be called once the login process is complete.",
+          "type": "string",
+          "isOptional": true,
+          "since": "10.1.0"
+        },
+        {
+          "name": "displayApplications",
+          "text": "Indicates if the applications widget should be displayed.",
+          "type": "boolean",
+          "isOptional": true,
+          "default": false,
+          "since": "10.1.0"
+        },
+        {
+          "name": "displayAuthentication",
+          "text": "Indicates if the authentication widget should be displayed.",
+          "type": "boolean",
+          "isOptional": true,
+          "default": false,
+          "since": "10.1.0"
+        },
+        {
+          "name": "displayInfo",
+          "text": "Indicates if the info widget should be displayed.",
+          "type": "boolean",
+          "isOptional": true,
+          "default": false,
+          "since": "10.1.0"
+        },
+        {
+          "name": "displayLanguages",
+          "text": "Indicates if the language selection widget should be displayed.",
+          "type": "boolean",
+          "isOptional": true,
+          "default": true,
+          "since": "10.1.0"
+        },
+        {
+          "name": "displayMessage",
+          "text": "Indicates if the message widget should be displayed.",
+          "type": "boolean",
+          "isOptional": true,
+          "default": false,
+          "since": "10.1.0"
+        },
+        {
+          "name": "displayProfile",
+          "text": "Indicates if the profile widget should be displayed.",
+          "type": "boolean",
+          "isOptional": true,
+          "default": false,
+          "since": "10.1.0"
+        }
+      ]
+    },
+    {
       "name": "ObIMasterLayoutEvent",
       "type": "interface",
       "usage": "The event emitted by the master layout",
@@ -672,7 +844,8 @@
             "ObEMasterLayoutEventValues.LAYOUT_HAS_MAX_WIDTH",
             "ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS",
             "ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH",
-            "ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE"
+            "ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE",
+            "ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION"
           ],
           "since": "4.0.0",
           "updated": "8.0.0"
@@ -695,6 +868,13 @@
           ],
           "isOptional": true,
           "since": "4.0.0"
+        },
+        {
+          "name": "config",
+          "text": "Service navigation configuration of the event",
+          "type": "ObIServiceNavigationConfig",
+          "isOptional": true,
+          "since": "10.1.0"
         }
       ]
     }

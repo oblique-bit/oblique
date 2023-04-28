@@ -1,0 +1,11 @@
+@use "variables";
+
+.toggles {
+	display: flex;
+	flex-direction: column;
+	gap: variables.$ob-spacing-sm;
+}
+
+p {
+	margin-top: variables.$ob-spacing-default;
+}

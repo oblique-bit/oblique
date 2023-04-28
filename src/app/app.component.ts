@@ -1,8 +1,8 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, Inject, OnDestroy} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import {ObEIcon, ObIAutocompleteInputOption, ObINavigationLink, ObISkipLink} from '@oblique/oblique';
+import {ObEIcon, ObIAutocompleteInputOption, ObINavigationLink, ObISkipLink, ObMasterLayoutHeaderService, WINDOW} from '@oblique/oblique';
 import {Observable, Subject} from 'rxjs';
 import {filter, map, startWith, takeUntil} from 'rxjs/operators';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
@@ -60,6 +60,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
 				{url: 'search-box', label: 'Search Box'},
 				{url: 'selectable', label: 'Selectable'},
+				{url: 'service-navigation', label: 'Service navigation'},
 				{url: 'spinner', label: 'Spinner'},
 				{url: 'sticky', label: 'Sticky'},
 				{url: 'unknown-route-sample', label: 'Unknown route'},
@@ -104,8 +105,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'stepper-vertical', label: 'Stepper vertical'},
 				{url: 'table', label: 'Table'},
 				{url: 'tabs', label: 'Tabs'},
-				{url: 'tooltip', label: 'Tooltip'},
-				{url: 'file-upload', label: 'File Upload'}
+				{url: 'tooltip', label: 'Tooltip'}
 			]
 		},
 		{
@@ -136,7 +136,9 @@ export class AppComponent implements OnDestroy {
 		private readonly font: FontService,
 		nav: DynamicNavigationService,
 		private readonly router: Router,
-		private readonly translate: TranslateService
+		private readonly translate: TranslateService,
+		private readonly header: ObMasterLayoutHeaderService,
+		@Inject(WINDOW) window: Window
 	) {
 		this.initializeSearch();
 		this.font$ = this.font.font$;
@@ -144,6 +146,9 @@ export class AppComponent implements OnDestroy {
 		nav.navigationLinks$.subscribe(links => {
 			this.navigation = links;
 		});
+		router.events
+			.pipe(filter(event => event instanceof NavigationEnd))
+			.subscribe(() => (header.serviceNavigationConfiguration.returnUrl = window.location.href));
 	}
 
 	ngOnDestroy(): void {

@@ -58,7 +58,15 @@ export class ObMasterLayoutConfig {
 		isSticky: true,
 		isSmall: false,
 		isCustom: false,
-		reduceOnScroll: true
+		reduceOnScroll: true,
+		serviceNavigation: {
+			profileLinks: [],
+			infoLinks: [],
+			infoContact: {},
+			maxLastUsedApplications: 3,
+			maxFavoriteApplications: 3,
+			displayLanguages: true
+		}
 	};
 
 	/**

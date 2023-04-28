@@ -11,10 +11,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {
+	OB_ACTIVATE_SERVICE_NAVIGATION,
 	OB_BANNER,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
+	OB_PAMS_CONFIGURATION,
 	ObAlertModule,
 	ObAutocompleteModule,
+	ObButtonModule,
 	ObDocumentMetaModule,
 	ObDocumentMetaService,
 	ObErrorMessagesModule,
@@ -49,6 +52,7 @@ import localeFR from '@angular/common/locales/fr-CH';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 import {FONTS, FontService} from './common/font.service';
 import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
+import {infoContact, infoLinks, profileLinks} from './service-navigation.config';
 
 registerLocaleData(localeFR);
 
@@ -69,6 +73,7 @@ registerLocaleData(localeFR);
 		MatTooltipModule,
 		ObAlertModule,
 		ObAutocompleteModule,
+		ObButtonModule,
 		ObDocumentMetaModule,
 		ObErrorMessagesModule,
 		ObExternalLinkModule,
@@ -89,6 +94,8 @@ registerLocaleData(localeFR);
 	],
 	providers: [
 		{provide: OB_BANNER, useValue: environment.banner},
+		{provide: OB_ACTIVATE_SERVICE_NAVIGATION, useValue: true},
+		{provide: OB_PAMS_CONFIGURATION, useValue: environment.pams},
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
 		{provide: OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, useValue: false}
@@ -111,5 +118,17 @@ export class AppModule {
 		config.locale.locales = ['en-us', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
 		font.setFont(FONTS.FRUTIGER);
+		this.configureServiceSNavigation(config);
+	}
+
+	private configureServiceSNavigation(config: ObMasterLayoutConfig): void {
+		config.header.serviceNavigation.profileLinks = profileLinks;
+		config.header.serviceNavigation.infoLinks = infoLinks;
+		config.header.serviceNavigation.infoContact = infoContact;
+		config.header.serviceNavigation.displayApplications = true;
+		config.header.serviceNavigation.displayAuthentication = true;
+		config.header.serviceNavigation.displayInfo = true;
+		config.header.serviceNavigation.displayMessage = true;
+		config.header.serviceNavigation.displayProfile = true;
 	}
 }

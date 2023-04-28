@@ -1,22 +1,23 @@
 import {
 	AfterViewInit,
 	Component,
+	DoCheck,
 	ElementRef,
 	HostBinding,
 	Inject,
 	Input,
+	OnDestroy,
 	QueryList,
 	Renderer2,
 	ViewChild,
 	ViewChildren,
 	ViewEncapsulation
 } from '@angular/core';
-import {delay, map, mergeMap, startWith} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {combineLatestWith, delay, distinctUntilChanged, map, startWith, takeUntil} from 'rxjs/operators';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
-import {ObScrollingEvents} from '../scrolling/scrolling-events';
 import {WINDOW} from '../utilities';
-import {ObIToggleDirection} from './column-layout.model';
+import {ObIDimension, ObIToggleDirection} from './column-layout.model';
 
 @Component({
 	selector: 'ob-column-layout',
@@ -26,7 +27,7 @@ import {ObIToggleDirection} from './column-layout.model';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-column-layout'}
 })
-export class ObColumnLayoutComponent implements AfterViewInit {
+export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestroy {
 	@Input() left = true;
 	@Input() right = true;
 	@Input() @HostBinding('class.ob-wider-columns') wider = false;
@@ -37,21 +38,32 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 	@ViewChild('columnRight') private readonly columnRight: ObColumnPanelDirective;
 	@ViewChildren('columnToggle') private readonly toggles: QueryList<ElementRef>;
 
-	private readonly window: Window;
+	private readonly unsubscribe = new Subject<void>();
+	private readonly dimensionChange = new Subject<{top: number; height: number; windowHeight: number}>();
+	private observer: ResizeObserver;
 
 	constructor(
-		private readonly el: ElementRef,
+		private readonly el: ElementRef<HTMLElement>,
 		private readonly renderer: Renderer2,
-		private readonly scroll: ObScrollingEvents,
-		@Inject(WINDOW) window
-	) {
-		this.window = window; // because AoT don't accept interfaces as DI
+		@Inject(WINDOW) private readonly window: Window
+	) {}
+
+	ngDoCheck(): void {
+		const {top, height} = this.el.nativeElement.getBoundingClientRect();
+		this.dimensionChange.next({top, height, windowHeight: this.window.innerHeight});
 	}
 
 	ngAfterViewInit(): void {
-		this.toggles.changes.pipe(mergeMap(() => this.scroll.scrolled)).subscribe(() => this.center());
+		this.getDimensionChangeObservable().subscribe(dimension => this.center(dimension));
 		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft, 'left', 'right');
 		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight, 'right', 'left');
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
+		this.dimensionChange.complete();
+		this.observer.disconnect();
 	}
 
 	toggleLeft(): void {
@@ -66,13 +78,18 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 		}
 	}
 
-	private static visibleHeight(dimension: ClientRect, window: Window): number {
-		if (dimension.top < 0 && dimension.top + dimension.height > window.innerHeight) {
-			return window.innerHeight;
-		} else if (dimension.top < 0) {
-			return dimension.height - dimension.top;
-		}
-		return window.innerHeight - dimension.top;
+	private getDimensionChangeObservable(): Observable<ObIDimension> {
+		return this.dimensionChange.pipe(
+			distinctUntilChanged((previous, current) =>
+				Object.keys(previous).reduce((hasNotChanged, key) => hasNotChanged && previous[key] === current[key], true)
+			),
+			combineLatestWith(this.getHeaderHeightObservable()),
+			map(([dimension, headerHeight]) => ({
+				...dimension,
+				headerHeight
+			})),
+			takeUntil(this.unsubscribe)
+		);
 	}
 
 	private getToggleDirection(
@@ -80,17 +97,37 @@ export class ObColumnLayoutComponent implements AfterViewInit {
 		expandedDirection: ObIToggleDirection,
 		collapsedDirection: ObIToggleDirection
 	): Observable<ObIToggleDirection> {
-		return column?.toggled?.pipe(
+		return column?.toggled.pipe(
 			startWith(false),
 			delay(0),
 			map(collapsed => (collapsed ? collapsedDirection : expandedDirection))
 		);
 	}
 
-	private center(): void {
-		const dimension = this.el.nativeElement.getBoundingClientRect();
-		const middle = ObColumnLayoutComponent.visibleHeight(dimension, this.window) / 2;
-		const top = this.window.innerHeight > dimension.height ? '50%' : `${middle}px`;
-		this.toggles.forEach(toggle => this.renderer.setStyle(toggle.nativeElement, 'top', top));
+	// this is hacky, the correct way would be that the master layout exposes an observable with the header height
+	private getHeaderHeightObservable(): Observable<number> {
+		// this ensures a value is emitted even when the master layout isn't there
+		const headerHeight$ = new BehaviorSubject<number>(0);
+		this.observer = new ResizeObserver(entries => headerHeight$.next(entries[0].contentRect.height));
+		this.observer.observe(this.getMasterLayout(this.el.nativeElement.parentElement).querySelector('.ob-master-layout-header'));
+
+		return headerHeight$;
+	}
+
+	private getMasterLayout(element: HTMLElement): HTMLElement {
+		if (element.nodeName !== 'OB-MASTER-LAYOUT' && element.parentElement) {
+			return this.getMasterLayout(element.parentElement);
+		}
+
+		return element;
+	}
+
+	private center(dimension: ObIDimension): void {
+		// Math.min(Math.max(...)) simply contains the computation between 2 values
+		const top = Math.min(Math.max(0, dimension.headerHeight - dimension.top), dimension.windowHeight - dimension.top);
+		const bottom = Math.min(dimension.windowHeight - dimension.top, dimension.height);
+		if (bottom > top) {
+			this.toggles.forEach(toggle => this.renderer.setStyle(toggle.nativeElement, 'top', `${(bottom + top) / 2}px`));
+		}
 	}
 }

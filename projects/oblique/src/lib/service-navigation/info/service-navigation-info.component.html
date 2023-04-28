@@ -1,0 +1,25 @@
+<button
+	type="button"
+	id="service-navigation-info-popover-toggle"
+	class="ob-widget"
+	mat-icon-button
+	obButton="secondary"
+	[matTooltip]="'i18n.oblique.service-navigation.info.tooltip' | translate"
+	[obPopover]="popoverInfo"
+	placement="bottom"
+>
+	<mat-icon svgIcon="help"></mat-icon>
+	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.info.button" | translate }}</span>
+</button>
+
+<ng-template #popoverInfo>
+	<ob-service-navigation-popover-section *ngIf="links?.length > 0" header="i18n.oblique.service-navigation.info.header" [links]="links">
+	</ob-service-navigation-popover-section>
+	<ob-service-navigation-popover-section
+		*ngIf="contact?.email || contact?.tel"
+		header="i18n.oblique.service-navigation.info.contact.header"
+		text="i18n.oblique.service-navigation.info.contact.text"
+		[links]="contact | obContactToLinks"
+	>
+	</ob-service-navigation-popover-section>
+</ng-template>

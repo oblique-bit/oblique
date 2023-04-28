@@ -1,0 +1,112 @@
+<p>
+	The <code>ObServiceNavigationComponent</code> is a regular Oblique component that aims at replacing the Header Widget. It proposes a
+	collection of ready-to-use widgets, such as PAMS authentication, PAMS user profile, PAMS messages (notifications), PAMS applications,
+	application info and language selection. Each widget can be individually shown or hidden and additional custom widget can be projected
+	into it.
+</p>
+<details>
+	<summary><h3 style="display: inline">Integration</h3></summary>
+	<p>
+		The <code>ObServiceNavigationComponent</code> should be located in the right corner of the header of your website. Oblique's
+		<code>master-layout</code> provides the easiest way to integrate it. See more information in documentation of
+		<code>ObMasterLayout</code>.
+	</p>
+</details>
+<details>
+	<summary><h3 style="display: inline">Structure</h3></summary>
+	<p class="ob-list-title">Controls of the <code>ObServiceNavigationComponent</code> are displayed from left to right as follows:</p>
+	<ol>
+		<li>Custom controls</li>
+		<li>Message widget</li>
+		<li>Info widget</li>
+		<li>Applications widget</li>
+		<li>Profile widget</li>
+		<li>Authentication widget</li>
+		<li>Language widget</li>
+	</ol>
+	<p>For consistency reasons, the order is not adaptable.</p>
+</details>
+<details>
+	<summary><h4 style="display: inline">Custom controls</h4></summary>
+	<p>
+		The <code>ObServiceNavigationComponent</code> has the possibility to add additional controls with templates that have the
+		<code>#customControlTemplate</code>-query.
+	</p>
+	<p>
+		For consistent styling, it's required to add the class <code>.ob-header-control</code> and Oblique's <code>ObButton</code>-directive to
+		every projected button, otherwise the design will be off.
+	</p>
+	<pre>
+&lt;ng-template #customControlTemplate>
+	... &lt;!-- For example --&gt;
+	&lt;button type="button" class="ob-header-control" mat-icon-button obButton="secondary">
+		&lt;mat-icon svgIcon="smile">&lt;/mat-icon>
+	&lt;/button>
+&lt;/ng-template>
+	</pre
+	>
+</details>
+<details>
+	<summary><h4 style="display: inline">Visibility of widgets</h4></summary>
+	<p>The language buttons are visible by default.</p>
+	<p>The widgets message, info, applications, profile and authentication are not visible by default.</p>
+	<p>Set the input of display[Widget] - property to true makes the widget or feature visible. For example:</p>
+	<pre>
+&lt;ob-service-navigation&gt;
+	....
+	[displayMessage]="true"
+	...
+&lt;/ob-service-navigation&gt;
+</pre
+	>
+</details>
+<details>
+	<summary><h4 style="display: inline">Message widget</h4></summary>
+	<p>
+		This widget is only displayed when the user is logged in with PAMS. It is a link to the ePortal notification page and shows how many
+		unread messages are waiting in the user's inbox. The badge is only visible if the amount of unread messages is greater than 0.
+	</p>
+</details>
+<details>
+	<summary><h4 style="display: inline">Info widget</h4></summary>
+	<p>
+		This widget opens a popover with project provided links and contact information. You should use the website's own help links and contact
+		information for the best user support.
+	</p>
+</details>
+<details>
+	<summary><h4 style="display: inline">Applications widget</h4></summary>
+	<p>
+		Is the user logged out, this widget is a link to the ePortal home page. Is the user logged in with PAMS, this widget opens a popover
+		with a link to the ePortal home page as well as a list of favorite and last used ePortal applications that is delivered by ePortal's
+		backend.
+	</p>
+	<h5>Maximum of list length</h5>
+	<p>
+		Change the maximum of the list-length with <code>maxLastUsedApplications</code> for the last used application list and
+		<code>maxFavoriteApplications</code> for the maximum amount of favorite applications. So it shows the list length of last used and
+		favorite applications, until the given maximum in the application widget popover.
+	</p>
+</details>
+<details>
+	<summary><h4 style="display: inline">Profile widget</h4></summary>
+	<p>
+		This widget is only displayed when the user is logged in with PAMS. It shows the user's profile image if any and falls back to the user
+		icon otherwise. It opens a popover with the logged in user information and an optional project provided link list.
+	</p>
+	<p>You can add your custom profile-related links with the input <code>profileLinks</code>.</p>
+</details>
+<details>
+	<summary><h4 style="display: inline">Authentication widget</h4></summary>
+	<p>
+		The authentication widget shows a login button if the user isn't logged in. Is the user logged in, the login button is replaced with the
+		logout button.
+	</p>
+</details>
+<details>
+	<summary><h4 style="display: inline">Language widget</h4></summary>
+	<p>
+		This widget is for language selection. When more than 1 language is configured in the <code>TranslateService</code>, then 1 button per
+		language will be displayed. For more configuration details see documentation of <code>ObMasterLayout</code> and <code>Language</code>.
+	</p>
+</details>

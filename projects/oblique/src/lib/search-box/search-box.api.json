@@ -8,6 +8,7 @@
       "type": "component",
       "since": "3.0.0",
       "updated": "7.0.2",
+      "deprecated": "10.0.0",
       "inputs": [
         {
           "name": "slide",

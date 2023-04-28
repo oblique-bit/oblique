@@ -1,0 +1,31 @@
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/tab-outline";
+
+.ob-service-navigation-languages {
+	.ob-language-list {
+		display: inline-flex;
+		flex-direction: row;
+		align-items: center;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		.ob-language-toggle {
+			padding: 0.375rem 0.75rem;
+			color: variables.$ob-default;
+			background-color: transparent;
+			border: none transparent;
+			border-radius: 0;
+			user-select: none;
+			transition: background-color variables.$ob-duration-fast ease-in-out;
+			cursor: pointer;
+
+			&:hover,
+			&.ob-active {
+				background-color: variables.$ob-gray-lighter;
+			}
+
+			@include tab-outline.ob-tab-outline();
+		}
+	}
+}

@@ -5,6 +5,10 @@
       "description": "Adds Oblique to the application",
       "factory": "./index/ng-add/index#addOblique",
       "schema": "./index/ng-add/schema.json"
+    },
+    "service-navigation": {
+      "description": "Replaces WebComponent HeaderWidget with Oblique's service-navigation",
+      "factory": "./index/service-navigation/index#serviceNavigation"
     }
   }
 }

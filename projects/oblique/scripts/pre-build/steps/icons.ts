@@ -26,7 +26,8 @@ export class Icons {
 			.replace(/\n*/g, '')
 			.replace(/#171717/g, 'currentColor')
 			.replace('<svg ', `<svg id="${id}" `)
-			.replace(/<title>.+?<\/title>/g, '');
+			.replace(/<title>.+?<\/title>/g, '')
+			.replace('<?xml version="1.0" encoding="UTF-8"?>', '');
 	}
 
 	private static writeIconSet(filePath: string, SVGs: string[]): void {

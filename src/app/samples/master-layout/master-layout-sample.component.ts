@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
-import {ObEScrollMode, ObMasterLayoutService} from '@oblique/oblique';
+import {ObEScrollMode, ObIServiceNavigationContact, ObLoginState, ObMasterLayoutService} from '@oblique/oblique';
+import {Observable, share} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {DynamicNavigationService} from './dynamic-navigation.service';
 
 @Component({
@@ -10,9 +12,19 @@ import {DynamicNavigationService} from './dynamic-navigation.service';
 export class MasterLayoutSampleComponent {
 	coverLayout = false;
 	scrollMode = ObEScrollMode;
+	loginState$: Observable<ObLoginState>;
+	isLoggedOut$: Observable<boolean>;
+	private readonly infoLinks = [...this.masterLayout.header.serviceNavigationConfiguration.infoLinks];
+	private readonly infoContact = {...this.masterLayout.header.serviceNavigationConfiguration.infoContact};
+	private readonly profileLinks = [...this.masterLayout.header.serviceNavigationConfiguration.profileLinks];
 
 	constructor(private readonly masterLayout: ObMasterLayoutService, private readonly dynamicNavigationService: DynamicNavigationService) {
 		this.coverLayout = this.masterLayout.layout.hasCover;
+		this.loginState$ = this.masterLayout.header.loginState$;
+		this.isLoggedOut$ = this.loginState$.pipe(
+			map(loginState => !loginState?.includes('OK')),
+			share()
+		);
 	}
 
 	// Footer
@@ -138,6 +150,102 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.navigation.scrollMode = value;
 	}
 
+	get hasApplicationsWidget(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.displayApplications;
+	}
+
+	set hasApplicationsWidget(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.displayApplications = value;
+	}
+
+	get hasAuthenticationWidget(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.displayAuthentication;
+	}
+
+	set hasAuthenticationWidget(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.displayAuthentication = value;
+	}
+
+	get hasInfoWidget(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.displayInfo;
+	}
+
+	set hasInfoWidget(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.displayInfo = value;
+	}
+
+	get hasLanguagesWidget(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.displayLanguages;
+	}
+
+	set hasLanguagesWidget(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.displayLanguages = value;
+	}
+
+	get hasMessageWidget(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.displayMessage;
+	}
+
+	set hasMessageWidget(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.displayMessage = value;
+	}
+
+	get hasProfileWidget(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.displayProfile;
+	}
+
+	set hasProfileWidget(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.displayProfile = value;
+	}
+
+	get hasInfoLinks(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.infoLinks?.length > 0;
+	}
+
+	set hasInfoLinks(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.infoLinks = value ? this.infoLinks : [];
+	}
+
+	get hasContactEmail(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.email?.length > 0;
+	}
+
+	set hasContactEmail(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact = this.buildContactInfo(this.hasContactPhone, value);
+	}
+
+	get hasContactPhone(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.tel?.length > 0;
+	}
+
+	set hasContactPhone(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact = this.buildContactInfo(value, this.hasContactEmail);
+	}
+
+	get hasProfileLinks(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.profileLinks?.length > 0;
+	}
+
+	set hasProfileLinks(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.profileLinks = value ? this.profileLinks : [];
+	}
+
+	get maxLastUsedApplications(): number {
+		return this.masterLayout.header.serviceNavigationConfiguration.maxLastUsedApplications;
+	}
+
+	set maxLastUsedApplications(value: number) {
+		this.masterLayout.header.serviceNavigationConfiguration.maxLastUsedApplications = value;
+	}
+
+	get maxFavoriteApplications(): number {
+		return this.masterLayout.header.serviceNavigationConfiguration.maxFavoriteApplications;
+	}
+
+	set maxFavoriteApplications(value: number) {
+		this.masterLayout.header.serviceNavigationConfiguration.maxFavoriteApplications = value;
+	}
+
 	addItem(): void {
 		this.dynamicNavigationService.addLink({
 			label: 'test',
@@ -147,5 +255,12 @@ export class MasterLayoutSampleComponent {
 
 	removeItem(): void {
 		this.dynamicNavigationService.removeLastLink();
+	}
+
+	private buildContactInfo(hasTel: boolean, hasEmail: boolean): ObIServiceNavigationContact {
+		return {
+			tel: hasTel ? this.infoContact.tel : undefined,
+			email: hasEmail ? this.infoContact.email : undefined
+		};
 	}
 }

@@ -27,6 +27,10 @@
 			<dt>Last updated</dt>
 			<dd>{{ component.updated }}</dd>
 		</ng-container>
+		<ng-container *ngIf="component.deprecated">
+			<dt>Deprecated</dt>
+			<dd>{{ component.deprecated }}</dd>
+		</ng-container>
 	</dl>
 	<ng-container *ngIf="component.variables">
 		<h5>Variables</h5>

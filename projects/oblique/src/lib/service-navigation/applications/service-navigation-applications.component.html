@@ -1,0 +1,92 @@
+<button
+	*ngIf="isLoggedIn; else isLoggedOut"
+	type="button"
+	id="service-navigation-applications-button"
+	class="ob-widget"
+	mat-icon-button
+	obButton="secondary"
+	[matTooltip]="'i18n.oblique.service-navigation.applications.button.tooltip' | translate"
+	[obPopover]="popoverContent"
+	placement="bottom"
+>
+	<mat-icon svgIcon="apps"></mat-icon>
+	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.button.label" | translate }}</span>
+</button>
+
+<ng-template #isLoggedOut>
+	<a
+		[href]="applicationsUrl"
+		[isExternalLink]="false"
+		id="service-navigation-applications-link"
+		class="ob-widget"
+		mat-icon-button
+		obButton="secondary"
+		[matTooltip]="'i18n.oblique.service-navigation.applications.link.tooltip' | translate"
+	>
+		<mat-icon svgIcon="apps"></mat-icon>
+		<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.link.label" | translate }}</span>
+	</a>
+</ng-template>
+
+<ng-template #popoverContent>
+	<ob-service-navigation-popover-section
+		*ngIf="lastUsedApplications?.length > 0"
+		header="i18n.oblique.service-navigation.applications.last-used.header"
+	>
+		<div class="ob-applications" obContent>
+			<a
+				*ngFor="let application of lastUsedApplications | obLimitArraySize : maxLastUsedApplications"
+				class="ob-application"
+				[href]="application.url"
+				[isExternalLink]="false"
+			>
+				<img
+					*ngIf="application.status !== 'online'"
+					aria-hidden="true"
+					[src]="'data:image/png;base64,' + statusImage[application.status] | obSafeImage"
+					class="ob-application-image ob-status-image"
+					alt=""
+				/>
+				<img
+					class="ob-application-image"
+					[src]="application.image | obSafeImage"
+					[class.ob-offline]="application.status !== 'online'"
+					[alt]="application.status | ObServiceNavigationApplicationAlt | translate : { name: application.name }"
+				/>
+				<span class="ob-application-title">{{ application.name }}</span>
+			</a>
+		</div>
+	</ob-service-navigation-popover-section>
+	<ob-service-navigation-popover-section
+		*ngIf="favoriteApplications?.length > 0"
+		header="i18n.oblique.service-navigation.applications.favorite.header"
+	>
+		<div class="ob-applications" obContent>
+			<a
+				*ngFor="let application of favoriteApplications | obLimitArraySize : maxFavoriteApplications"
+				class="ob-application"
+				[href]="application.url"
+				[isExternalLink]="false"
+			>
+				<img
+					*ngIf="application.status !== 'online'"
+					aria-hidden="true"
+					[src]="'data:image/png;base64,' + statusImage[application.status] | obSafeImage"
+					class="ob-application-image ob-status-image"
+					alt=""
+				/>
+				<img
+					class="ob-application-image"
+					[src]="application.image | obSafeImage"
+					[class.ob-offline]="application.status !== 'online'"
+					[alt]="application.status | ObServiceNavigationApplicationAlt | translate : { name: application.name }"
+				/>
+				<span class="ob-application-title">{{ application.name }}</span>
+			</a>
+		</div>
+	</ob-service-navigation-popover-section>
+	<ob-service-navigation-popover-section
+		header="i18n.oblique.service-navigation.applications.links.header"
+		[links]="[{ url: applicationsUrl, label: 'i18n.oblique.service-navigation.applications.link.label', isInternalLink: true }]"
+	></ob-service-navigation-popover-section>
+</ng-template>

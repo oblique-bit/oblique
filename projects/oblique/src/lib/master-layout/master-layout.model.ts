@@ -1,6 +1,7 @@
 import {IsActiveMatchOptions} from '@angular/router';
 import {InjectionToken} from '@angular/core';
 import {ObEIcon} from '../icon/icon.model';
+import {ObIServiceNavigationContact, ObIServiceNavigationLink} from '../service-navigation/service-navigation.model';
 
 export enum ObEScrollMode {
 	AUTO,
@@ -13,7 +14,24 @@ export interface ObIMasterLayoutHeader {
 	isSmall: boolean;
 	isCustom: boolean;
 	reduceOnScroll: boolean;
+	readonly serviceNavigation: ObIServiceNavigationConfig;
 }
+
+export interface ObIServiceNavigationConfig {
+	profileLinks?: ObIServiceNavigationLink[];
+	infoLinks?: ObIServiceNavigationLink[];
+	infoContact?: ObIServiceNavigationContact;
+	maxLastUsedApplications?: number;
+	maxFavoriteApplications?: number;
+	returnUrl?: string;
+	displayApplications?: boolean;
+	displayAuthentication?: boolean;
+	displayInfo?: boolean;
+	displayLanguages?: boolean;
+	displayMessage?: boolean;
+	displayProfile?: boolean;
+}
+
 export interface ObIMasterLayoutFooter {
 	isSticky: boolean;
 	isCustom: boolean;
@@ -76,6 +94,7 @@ export interface ObIMasterLayoutEvent {
 	name: ObEMasterLayoutEventValues;
 	value?: boolean;
 	mode?: ObEScrollMode;
+	config?: ObIServiceNavigationConfig;
 }
 
 export enum ObEMasterLayoutEventValues {
@@ -93,7 +112,8 @@ export enum ObEMasterLayoutEventValues {
 	LAYOUT_HAS_MAX_WIDTH,
 	LAYOUT_HAS_OFF_CANVAS,
 	NAVIGATION_IS_FULL_WIDTH,
-	NAVIGATION_SCROLL_MODE
+	NAVIGATION_SCROLL_MODE,
+	SERVICE_NAVIGATION_CONFIGURATION
 }
 
 export enum ObEEnvironment {

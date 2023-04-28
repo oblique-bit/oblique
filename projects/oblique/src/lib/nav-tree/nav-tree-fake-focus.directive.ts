@@ -12,6 +12,9 @@ import {Subject} from 'rxjs';
  *        ...
  * ></or-nav-tree>
  */
+/**
+ * @deprecated since version 10.1.0. It will be removed with Oblique 11 with no replacement.
+ */
 @Directive({
 	selector: '[obNavTreeFakeFocus]',
 	exportAs: 'obNavTreeFakeFocus'

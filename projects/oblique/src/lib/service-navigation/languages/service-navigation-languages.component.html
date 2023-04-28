@@ -1,0 +1,16 @@
+<span class="ob-screen-reader-only" id="ob-language-change">{{ "i18n.oblique.header.languages.title" | translate }}</span>
+<ul aria-labelledby="ob-language-change" class="ob-language-list">
+	<li *ngFor="let languageObject of languages">
+		<button
+			type="button"
+			[id]="'ob-language-' + languageObject.code + '-toggle'"
+			class="ob-language-toggle"
+			[attr.aria-current]="language === languageObject.code ? true : undefined"
+			[class.ob-active]="language === languageObject.code"
+			[attr.aria-label]="languageObject.label"
+			(click)="changeLanguage(languageObject.code)"
+		>
+			{{ languageObject.code.toUpperCase() }}
+		</button>
+	</li>
+</ul>

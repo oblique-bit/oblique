@@ -22,10 +22,16 @@ import {
 	MatLegacySlideToggleDefaultOptions as MatSlideToggleDefaultOptions
 } from '@angular/material/legacy-slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS, StepperOptions} from '@angular/cdk/stepper';
-import {ObIBanner, ObIMaterialConfig} from './utilities.model';
+import {ObIBanner, ObIMaterialConfig, ObIPamsConfiguration} from './utilities.model';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
+export const OB_ACTIVATE_SERVICE_NAVIGATION = new InjectionToken<boolean>(
+	'Indicates whether or not the service navigation component should be used instead of the header controls area.'
+);
+export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
+	'Provides the mandatory PAMS environment as well as an optional root url. This is only useful when OB_ACTIVATE_SERVICE_NAVIGATION is enabled.'
+);
 
 export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);

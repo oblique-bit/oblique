@@ -28,6 +28,7 @@ import {ObLanguageModule} from './language/language.module';
 import {ObExternalLinkModule} from './external-link/external-link.module';
 import {ObAlertModule} from './alert/alert.module';
 import {ObBreadcrumbModule} from './breadcrumb/breadcrumb.module';
+import {ObServiceNavigationModule} from './service-navigation/service-navigation.module';
 
 const OBLIQUE_MODULES = [
 	ObAlertModule,
@@ -50,6 +51,7 @@ const OBLIQUE_MODULES = [
 	ObSchemaValidationModule,
 	ObScrollingModule,
 	ObSearchBoxModule,
+	ObServiceNavigationModule,
 	ObSelectableModule,
 	ObSpinnerModule,
 	ObStickyModule,

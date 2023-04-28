@@ -7,10 +7,11 @@
 	</ng-template>
 	<ng-template #obHeaderControl>
 		<a
+			class="ob-widget"
 			href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique/"
 			[icon]="'none'"
 			matTooltip="Go to Oblique GIT repository"
-			[matTooltipPosition]="'left'"
+			obButton="secondary"
 			mat-icon-button
 		>
 			<mat-icon class="ob-control-icon" svgIcon="git-hub"></mat-icon>
@@ -19,18 +20,28 @@
 	<ng-template #obHeaderControl>
 		<button
 			type="button"
+			class="ob-widget"
 			obOffCanvasToggle
 			matTooltip="Toggle Off-Canvas"
-			[matTooltipPosition]="'left'"
 			(click)="offCanvasOpen = !offCanvasOpen"
 			tabindex="0"
 			mat-icon-button
+			obButton="secondary"
 		>
 			<mat-icon class="ob-control-icon" dropdown-toggle svgIcon="login" [class.rotate180]="!offCanvasOpen"></mat-icon>
 		</button>
 	</ng-template>
 	<ng-template #obHeaderControl>
-		<mat-icon class="ob-control-icon" svgIcon="cog" [obPopover]="languageButton"></mat-icon>
+		<button
+			type="button"
+			class="ob-widget"
+			mat-icon-button
+			obButton="secondary"
+			[obPopover]="languageButton"
+			matTooltip="Open example popover"
+		>
+			<mat-icon svgIcon="cog"></mat-icon>
+		</button>
 		<ng-template #languageButton>
 			<h4 translate>i18n.rtfas.nav.bar-header.language</h4>
 			<ul role="menu" class="ob-nav-tree" aria-hidden="false">
@@ -47,13 +58,27 @@
 		</ng-template>
 	</ng-template>
 	<ng-template #obHeaderControl>
-		<button type="button" (click)="toggleFont(font)">
+		<button
+			type="button"
+			(click)="toggleFont(font)"
+			mat-button
+			obButton="secondary"
+			class="ob-widget"
+			[matTooltip]="'Use ' + font + 'font'"
+		>
 			{{ font }}
 		</button>
 	</ng-template>
 
 	<ng-template #obHeaderMobileControl>
-		<button type="button" (click)="toggleFont(font)">
+		<button
+			type="button"
+			(click)="toggleFont(font)"
+			mat-button
+			obButton="secondary"
+			class="ob-widget"
+			[matTooltip]="'Use ' + font + 'font'"
+		>
 			{{ font }}
 		</button>
 	</ng-template>

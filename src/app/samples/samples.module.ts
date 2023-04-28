@@ -67,6 +67,7 @@ import {
 	ObSchemaValidationModule,
 	ObSearchBoxModule,
 	ObSelectableModule,
+	ObServiceNavigationModule,
 	ObSpinnerModule,
 	ObStickyModule,
 	ObUnknownRouteModule,
@@ -87,6 +88,7 @@ import {BreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 import {FileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
 import {SharedModule} from '../common/shared.module';
 import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
+import {ServiceNavigationSampleComponent} from './service-navigation/service-navigation-sample.component';
 
 @NgModule({
 	imports: [
@@ -128,6 +130,7 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		ObSchemaValidationModule,
 		ObSearchBoxModule,
 		ObSelectableModule,
+		ObServiceNavigationModule,
 		ObSpinnerModule,
 		ObStickyModule,
 		ObUnknownRouteModule,
@@ -171,6 +174,7 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 		SchemaValidationSampleComponent,
 		SearchBoxSampleComponent,
 		SelectableSampleComponent,
+		ServiceNavigationSampleComponent,
 		SpinnerSampleComponent,
 		StickySampleComponent,
 		UnknownRouteSampleComponent,

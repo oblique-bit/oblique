@@ -190,6 +190,7 @@ overrides:
       "@angular-eslint/component-max-inline-declarations": off
       "@angular-eslint/use-component-selector": off
       "@typescript-eslint/ban-ts-comment": off
+      "@typescript-eslint/no-empty-function": off
       "@typescript-eslint/no-floating-promises": off
       "@typescript-eslint/unbound-method": off # because "expect" uses unbound methods
       max-classes-per-file: off

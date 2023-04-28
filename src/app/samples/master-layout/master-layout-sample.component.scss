@@ -1,3 +1,4 @@
+@use "mixins/layout";
 @import "variables";
 
 .card-wrapper {
@@ -18,5 +19,11 @@
 
 	label {
 		margin-right: $ob-spacing-default;
+	}
+}
+
+@include layout.ob-media-breakpoint-up(sm) {
+	.columns {
+		column-count: 2;
 	}
 }

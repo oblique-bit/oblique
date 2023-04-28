@@ -1,0 +1,21 @@
+<a
+	[href]="isLoggedIn ? logoutUrl : loginUrl"
+	[id]="isLoggedIn ? 'ob-service-navigation-authentication-link-to-logout' : 'ob-service-navigation-authentication-link-to-login'"
+	[isExternalLink]="false"
+	mat-button
+	obButton="secondary"
+	icon="none"
+	class="ob-widget"
+	[matTooltip]="
+		(isLoggedIn
+			? 'i18n.oblique.service-navigation.authentication.tooltip.logout'
+			: 'i18n.oblique.service-navigation.authentication.tooltip.login'
+		) | translate
+	"
+>
+	{{
+		(isLoggedIn ? "i18n.oblique.service-navigation.authentication.logout" : "i18n.oblique.service-navigation.authentication.login")
+			| translate
+	}}
+	<mat-icon [svgIcon]="isLoggedIn ? 'logout' : 'login'"></mat-icon>
+</a>

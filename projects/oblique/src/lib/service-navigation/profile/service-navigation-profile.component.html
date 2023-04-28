@@ -1,0 +1,48 @@
+<button
+	*ngIf="avatarImageUrl; else buttonWithImage"
+	[matTooltip]="'i18n.oblique.service-navigation.profile.tooltip' | translate"
+	[obPopover]="popoverProfile"
+	placement="bottom"
+	class="ob-widget ob-image-button"
+	id="service-navigation-toggle-profile-image-button"
+	type="button"
+>
+	<img [alt]="'i18n.oblique.service-navigation.profile.alt' | translate" [src]="avatarImageUrl" class="ob-profile-avatar" />
+	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.profile.button" | translate }}</span>
+</button>
+
+<ng-template #buttonWithImage>
+	<button
+		[matTooltip]="'i18n.oblique.service-navigation.profile.tooltip' | translate"
+		[obPopover]="popoverProfile"
+		mat-icon-button
+		obButton="secondary"
+		placement="bottom"
+		id="service-navigation-toggle-profile-icon-button"
+		class="ob-widget ob-user"
+		type="button"
+	>
+		<mat-icon svgIcon="user"></mat-icon>
+		<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.profile.button" | translate }}</span>
+	</button>
+</ng-template>
+
+<ng-template #popoverProfile>
+	<ob-service-navigation-popover-section
+		[header]="userName || 'i18n.oblique.service-navigation.profile.guest' | translate"
+		[links]="[{ url: settingsUrl, label: 'i18n.oblique.service-navigation.profile.settings', icon: 'cog', isInternalLink: true }]"
+	>
+		<img
+			*ngIf="avatarImageUrl"
+			obHeaderPrefix
+			class="ob-avatar"
+			[alt]="'i18n.oblique.service-navigation.profile.alt' | translate"
+			[src]="avatarImageUrl"
+		/>
+	</ob-service-navigation-popover-section>
+	<ob-service-navigation-popover-section
+		*ngIf="links?.length > 0"
+		header="i18n.oblique.service-navigation.profile.links.header"
+		[links]="links"
+	></ob-service-navigation-popover-section>
+</ng-template>
