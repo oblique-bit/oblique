@@ -1,6 +1,6 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIMigrations} from './ng-update.model';
-import {applyInTree, createSafeRule, infoMigration, removeImport, replaceInFile} from '../utils';
+import {applyInTree, createSafeRule, infoMigration, removeImport, replaceInFile, setAngularProjectsConfig} from '../utils';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV10Schema {}
@@ -10,7 +10,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(_options: IUpdateV10Schema): Rule {
-		return (tree: Tree, _context: SchematicContext) => chain([this.removeObSearchBox()])(tree, _context);
+		return (tree: Tree, _context: SchematicContext) =>
+			chain([this.removeObSearchBox(), this.replaceScssWithCssStylesInAngularJson()])(tree, _context);
 	}
 
 	private removeObSearchBox(): Rule {
@@ -23,6 +24,22 @@ export class UpdateV10toV11 implements ObIMigrations {
 				replaceInFile(tree, filePath, /ObSearchBoxModule\s*,?\s*/, '');
 			};
 			return applyInTree(tree, apply, '*.ts');
+		});
+	}
+
+	private replaceScssWithCssStylesInAngularJson(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Replace scss with css styles in angular.json');
+			return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: string[]) => {
+				const styles = ['oblique-core', 'oblique-alert', 'oblique-icons'];
+				styles.forEach(style => {
+					const index = config.indexOf(`node_modules/@oblique/oblique/styles/scss/${style}.scss`);
+					if (index !== -1) {
+						config[index] = `node_modules/@oblique/oblique/styles/css/${style}.css`;
+					}
+				});
+				return config;
+			});
 		});
 	}
 }
