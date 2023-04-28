@@ -13,11 +13,11 @@ export {ObIconConfig, ObTIconConfig, ObEIcon} from './icon.model';
 	providers: [...obliqueProviders()]
 })
 export class ObIconModule {
-	static forRoot(config?: ObIconConfig): ModuleWithProviders<ObIconModule> {
+	static forRoot(config: ObIconConfig = {}): ModuleWithProviders<ObIconModule> {
 		return {
 			ngModule: ObIconModule,
 			providers: [
-				{provide: ObTIconConfig, useValue: config || defaultIconConfig},
+				{provide: ObTIconConfig, useValue: {...defaultIconConfig, ...config}},
 				{
 					provide: APP_INITIALIZER,
 					multi: true,
