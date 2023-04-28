@@ -1,9 +1,12 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {ObIServiceNavigationApplicationIdentifier, ObIServiceNavigationApplicationInfo} from './service-navigation.api.model';
+import {
+	ObIServiceNavigationApplicationIdentifier,
+	ObIServiceNavigationApplicationInfo,
+	ObIServiceNavigationResponse
+} from './service-navigation.api.model';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {ObIServiceNavigationResponse} from './service-navigation.api.model';
 
 @Injectable({
 	providedIn: 'root'

@@ -1,8 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, map} from 'rxjs';
-import {ObIServiceNavigationState} from './service-navigation.api.model';
-import {ObIServiceNavigationResponse} from './service-navigation.api.model';
+import {ObIServiceNavigationResponse, ObIServiceNavigationState} from './service-navigation.api.model';
 
 @Injectable({providedIn: 'root'})
 export class ObServiceNavigationStateApiService {

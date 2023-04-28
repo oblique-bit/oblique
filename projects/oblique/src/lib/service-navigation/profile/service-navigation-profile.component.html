@@ -7,7 +7,7 @@
 	id="service-navigation-toggle-profile-image-button"
 	type="button"
 >
-	<img alt="{{ 'i18n.oblique.service-navigation.profile.alt' | translate }}" src="{{ avatarImageUrl }}" class="ob-profile-avatar" />
+	<img [alt]="'i18n.oblique.service-navigation.profile.alt' | translate" [src]="avatarImageUrl" class="ob-profile-avatar" />
 	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.profile.button" | translate }}</span>
 </button>
 
@@ -36,8 +36,8 @@
 			*ngIf="avatarImageUrl"
 			obHeaderPrefix
 			class="ob-avatar"
-			alt="{{ 'i18n.oblique.service-navigation.profile.alt' | translate }}"
-			src="{{ avatarImageUrl }}"
+			[alt]="'i18n.oblique.service-navigation.profile.alt' | translate"
+			[src]="avatarImageUrl"
 		/>
 	</ob-service-navigation-popover-section>
 	<ob-service-navigation-popover-section

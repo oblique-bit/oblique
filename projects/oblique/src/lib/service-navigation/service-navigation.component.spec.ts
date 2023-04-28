@@ -14,8 +14,7 @@ import {ObServiceNavigationLanguagesHarness} from './languages/service-navigatio
 import {ObServiceNavigationComponent} from './service-navigation.component';
 import {ObServiceNavigationHarness} from './service-navigation.harness';
 import {ObServiceNavigationService} from './service-navigation.service';
-import {ObEPamsEnvironment} from './service-navigation.model';
-import {ObLoginState} from './service-navigation.model';
+import {ObEPamsEnvironment, ObLoginState} from './service-navigation.model';
 
 @Component({
 	template: `<ob-service-navigation>
