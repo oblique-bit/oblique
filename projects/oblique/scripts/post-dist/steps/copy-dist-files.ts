@@ -13,7 +13,7 @@ export class CopyDistFiles {
 				/\.description\.html|\.api\.json$/.test(filePath)
 			),
 			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'assets')),
-			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'styles'))
+			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'styles')).filter(filePath => !filePath.endsWith('.scss'))
 		]);
 	}
 
