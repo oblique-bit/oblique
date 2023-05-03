@@ -1,8 +1,52 @@
 @use "../core/variables";
 
-.mat-paginator {
+.mat-mdc-paginator {
 	&,
 	& .mat-button-wrapper {
 		color: variables.$ob-default;
+	}
+
+	.mat-mdc-paginator-icon > path {
+		display: none;
+	}
+
+	.mat-mdc-paginator-navigation-next,
+	.mat-mdc-paginator-navigation-previous,
+	.mat-mdc-paginator-navigation-first,
+	.mat-mdc-paginator-navigation-last {
+		border: 1px solid black;
+		width: 30px;
+		height: 30px;
+		margin: 10px;
+
+		/*
+SVG icon colors cannot be changed in scss. The icons are black and in this use case, they are needed in the color gray and red.
+To achieve this, filters are used.
+*/
+		filter: invert(20%) sepia(100%) saturate(7000%) hue-rotate(-10deg) brightness(80%);
+	}
+
+	.mat-mdc-paginator-navigation-next {
+		background-image: url("../../../../icons/ChevronRight.svg");
+	}
+
+	.mat-mdc-paginator-navigation-previous {
+		background-image: url("../../../../icons/ChevronLeft.svg");
+	}
+
+	.mat-mdc-paginator-navigation-first {
+		background-image: url("../../../../icons/ChevronLineLeft.svg");
+	}
+
+	.mat-mdc-paginator-navigation-last {
+		background-image: url("../../../../icons/ChevronLineRight.svg");
+	}
+
+	.mat-mdc-paginator-navigation-next[disabled],
+	.mat-mdc-paginator-navigation-last[disabled],
+	.mat-mdc-paginator-navigation-first[disabled],
+	.mat-mdc-paginator-navigation-previous[disabled] {
+		filter: grayscale(100%);
+		opacity: 0.5;
 	}
 }
