@@ -31,7 +31,6 @@ $theme: (
 @include mat.legacy-input-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-list-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-menu-theme(mat.define-light-theme($legacy-theme));
-@include mat.legacy-paginator-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-radio-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-select-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-slide-toggle-theme(mat.define-light-theme($legacy-theme));
@@ -46,6 +45,7 @@ $theme: (
 @include mat.expansion-theme(mat.define-light-theme($theme));
 @include mat.fab-theme(mat.define-light-theme($theme));
 @include mat.icon-theme(mat.define-light-theme($theme));
+@include mat.paginator-theme(mat.define-light-theme($theme));
 @include mat.progress-bar-theme(mat.define-light-theme($theme));
 @include mat.sort-theme(mat.define-light-theme($theme));
 @include mat.stepper-theme(mat.define-light-theme($theme));
