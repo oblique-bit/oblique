@@ -92,7 +92,7 @@
 				<mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
 				<mat-row *cdkRowDef="let row; columns: displayedColumns" [class.edit-mode]="row.editMode !== editMode.NONE"></mat-row>
 			</mat-table>
-			<mat-paginator [pageSizeOptions]="[10, 5, 2]"></mat-paginator>
+			<mat-paginator [showFirstLastButtons]="true" [pageSizeOptions]="[10, 5, 2]"></mat-paginator>
 
 			<ng-template #selectHeader let-tableManager="tableManager">
 				<mat-checkbox
