@@ -1,6 +1,6 @@
 import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
-import {MatLegacyPaginator as MatPaginator} from '@angular/material/legacy-paginator';
+import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {SelectionModel} from '@angular/cdk/collections';
