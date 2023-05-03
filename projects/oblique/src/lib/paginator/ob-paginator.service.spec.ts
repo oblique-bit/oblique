@@ -20,6 +20,7 @@ describe('ObPaginatorService', () => {
 			'i18n.pagination.next-page': 'Go to the next page',
 			'i18n.pagination.previous-page': 'Go to the previous page',
 			'i18n.pagination.of-label': 'of',
+			'i18n.pagination.page-label': 'Page',
 			'i18n.pagination.first-page': 'Jump to first page',
 			'i18n.pagination.last-page': 'Jump to last page'
 		});
@@ -28,6 +29,7 @@ describe('ObPaginatorService', () => {
 			'i18n.pagination.next-page': 'Auf die nächste Seite gehen',
 			'i18n.pagination.previous-page': 'Auf die vorige Seite gehen',
 			'i18n.pagination.of-label': 'von',
+			'i18n.pagination.page-label': 'Seite',
 			'i18n.pagination.first-page': 'Auf die erste Seite springen',
 			'i18n.pagination.last-page': 'Auf die letzte Seite springen'
 		});
@@ -36,6 +38,7 @@ describe('ObPaginatorService', () => {
 			'i18n.pagination.next-page': 'Aller à la page suivante',
 			'i18n.pagination.previous-page': 'Aller à la page précédente',
 			'i18n.pagination.of-label': 'de',
+			'i18n.pagination.page-label': 'Page',
 			'i18n.pagination.first-page': 'Sauter à la première page',
 			'i18n.pagination.last-page': 'Sauter à la dernière page'
 		});
@@ -44,6 +47,7 @@ describe('ObPaginatorService', () => {
 			'i18n.pagination.next-page': 'Andare alla pagina successiva',
 			'i18n.pagination.previous-page': 'Andare alla pagina precedente',
 			'i18n.pagination.of-label': 'di',
+			'i18n.pagination.page-label': 'Pagina',
 			'i18n.pagination.first-page': 'Salta alla prima pagina',
 			'i18n.pagination.last-page': "Salta all'ultima pagina"
 		});
@@ -56,11 +60,11 @@ describe('ObPaginatorService', () => {
 
 	describe('getRangeLabel', () => {
 		it.each([
-			{name: 'page 2, pageSize 5, length 25', page: 2, pageSize: 5, length: 25, expected: `11 - 15 of 25`},
-			{name: 'pageSize equal as length and page 0', page: 0, pageSize: 10, length: 10, expected: `1 - 10 of 10`},
-			{name: 'length 0', page: 0, pageSize: 2, length: 0, expected: `0 of 0`},
-			{name: 'pageSize 0', page: 0, pageSize: 0, length: 2, expected: `0 of 2`},
-			{name: 'length lower than page * pageSize', page: 2, pageSize: 3, length: 1, expected: `7 - 1 of 1`}
+			{name: 'page 2, pageSize 5, length 25', page: 1, pageSize: 5, length: 25, expected: `Page 2 of 5`},
+			{name: 'pageSize equal as length and page 0', page: 0, pageSize: 10, length: 10, expected: `Page 1 of 1`},
+			{name: 'length 0', page: 0, pageSize: 2, length: 0, expected: `Page 0 of 0`},
+			{name: 'pageSize 0', page: 0, pageSize: 0, length: 2, expected: `Page 0 of 2`},
+			{name: 'length lower than page * pageSize', page: 2, pageSize: 3, length: 1, expected: `Page 3 of 1`}
 		])(`should get $expected if $name`, ({page, pageSize, length, expected}) => {
 			const rangeLabel = paginatorService.getRangeLabel(page, pageSize, length);
 			expect(rangeLabel).toBe(expected);
@@ -75,7 +79,9 @@ describe('ObPaginatorService', () => {
 				{labelName: 'lastPageLabel', expectedTranslation: 'Jump to last page'},
 				{labelName: 'firstPageLabel', expectedTranslation: 'Jump to first page'},
 				{labelName: 'nextPageLabel', expectedTranslation: 'Go to the next page'},
-				{labelName: 'previousPageLabel', expectedTranslation: 'Go to the previous page'}
+				{labelName: 'previousPageLabel', expectedTranslation: 'Go to the previous page'},
+				{labelName: 'pageLabel', expectedTranslation: 'Page'},
+				{labelName: 'ofLabel', expectedTranslation: 'of'}
 			]
 		},
 		{
@@ -85,7 +91,9 @@ describe('ObPaginatorService', () => {
 				{labelName: 'lastPageLabel', expectedTranslation: "Salta all'ultima pagina"},
 				{labelName: 'nextPageLabel', expectedTranslation: 'Andare alla pagina successiva'},
 				{labelName: 'previousPageLabel', expectedTranslation: 'Andare alla pagina precedente'},
-				{labelName: 'firstPageLabel', expectedTranslation: 'Salta alla prima pagina'}
+				{labelName: 'firstPageLabel', expectedTranslation: 'Salta alla prima pagina'},
+				{labelName: 'pageLabel', expectedTranslation: 'Pagina'},
+				{labelName: 'ofLabel', expectedTranslation: 'di'}
 			]
 		},
 		{
@@ -95,7 +103,9 @@ describe('ObPaginatorService', () => {
 				{labelName: 'lastPageLabel', expectedTranslation: 'Auf die letzte Seite springen'},
 				{labelName: 'nextPageLabel', expectedTranslation: 'Auf die nächste Seite gehen'},
 				{labelName: 'previousPageLabel', expectedTranslation: 'Auf die vorige Seite gehen'},
-				{labelName: 'firstPageLabel', expectedTranslation: 'Auf die erste Seite springen'}
+				{labelName: 'firstPageLabel', expectedTranslation: 'Auf die erste Seite springen'},
+				{labelName: 'pageLabel', expectedTranslation: 'Seite'},
+				{labelName: 'ofLabel', expectedTranslation: 'von'}
 			]
 		},
 		{
@@ -105,7 +115,9 @@ describe('ObPaginatorService', () => {
 				{labelName: 'lastPageLabel', expectedTranslation: 'Sauter à la dernière page'},
 				{labelName: 'nextPageLabel', expectedTranslation: 'Aller à la page suivante'},
 				{labelName: 'previousPageLabel', expectedTranslation: 'Aller à la page précédente'},
-				{labelName: 'firstPageLabel', expectedTranslation: 'Sauter à la première page'}
+				{labelName: 'firstPageLabel', expectedTranslation: 'Sauter à la première page'},
+				{labelName: 'pageLabel', expectedTranslation: 'Page'},
+				{labelName: 'ofLabel', expectedTranslation: 'sur'}
 			]
 		}
 	])(`labels for $language language`, ({language, labels}) => {

@@ -106,6 +106,7 @@
   "i18n.pagination.next-page": "Auf die nächste Seite gehen",
   "i18n.pagination.previous-page": "Auf die vorige Seite gehen",
   "i18n.pagination.of-label": "von",
+  "i18n.pagination.page-label": "Seite",
   "i18n.pagination.first-page": "Auf die erste Seite springen",
   "i18n.pagination.last-page": "Auf die letzte Seite springen",
   "i18n.oblique.service-navigation.applications.button.label": "Services",
