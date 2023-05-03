@@ -1,8 +1,5 @@
 import {NgModule} from '@angular/core';
-import {
-	MatLegacyPaginatorIntl as MatPaginatorIntl,
-	MatLegacyPaginatorModule as MatPaginatorModule
-} from '@angular/material/legacy-paginator';
+import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
 
 import {ObPaginatorService} from './ob-paginator.service';
 import {obliqueProviders} from '../utilities';
