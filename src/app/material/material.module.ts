@@ -57,6 +57,7 @@ import {SharedModule} from '../common/shared.module';
 import {FormComponent} from './form/form.component';
 import {TableEditComponent} from './table/table-edit.component';
 import {ObPaginatorModule} from '@oblique/paginator/ob-paginator.module';
+import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -131,6 +132,7 @@ const appRoutes: Routes = [
 		ObButtonModule,
 		ObColumnLayoutModule,
 		ObErrorMessagesModule,
+		ObFormFieldModule,
 		ObIconModule,
 		ObInputClearModule,
 		ObPaginatorModule,
