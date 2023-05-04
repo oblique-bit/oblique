@@ -81,7 +81,7 @@ export {
 	ObMockMasterLayoutComponentService,
 	ObMockAriaMenuButtonDirective
 } from './master-layout/_mocks/mock-master-layout.module';
-export {ObMockNavTreeModule, ObMockNavTreeComponent, ObMockNavTreeFakeFocusDirective} from './nav-tree/_mocks/mock-nav-tree.module';
+export {ObMockNavTreeModule, ObMockNavTreeComponent} from './nav-tree/_mocks/mock-nav-tree.module';
 export {ObMockParentFormDirective, ObMockNestedFormModule, ObMockNestedFormComponent} from './nested-form/_mocks/mock-nested-form.module';
 export {
 	ObMockNotificationModule,

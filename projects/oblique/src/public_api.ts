@@ -84,7 +84,7 @@ export {
 	ObOutlineDirective,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION
 } from './lib/master-layout/master-layout.module';
-export {ObNavTreeComponent, ObNavTreeFakeFocusDirective, ObNavTreeModule, ObNavTreeItemModel} from './lib/nav-tree/nav-tree.module';
+export {ObNavTreeComponent, ObNavTreeModule, ObNavTreeItemModel} from './lib/nav-tree/nav-tree.module';
 export {ObNestedFormModule, ObNestedFormComponent, ObParentFormDirective} from './lib/nested-form/nested-form.module';
 export {
 	CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE,
