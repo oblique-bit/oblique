@@ -11,7 +11,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(_options: IUpdateV10Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) =>
-			chain([this.removeObSearchBox(), this.replaceScssWithCssStylesInAngularJson()])(tree, _context);
+			chain([this.removeObSearchBox(), this.removeFakeFocus(), this.replaceScssWithCssStylesInAngularJson()])(tree, _context);
 	}
 
 	private removeObSearchBox(): Rule {
@@ -24,6 +24,17 @@ export class UpdateV10toV11 implements ObIMigrations {
 				replaceInFile(tree, filePath, /ObSearchBoxModule\s*,?\s*/, '');
 			};
 			return applyInTree(tree, apply, '*.ts');
+		});
+	}
+
+	private removeFakeFocus(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove fake focus');
+			const apply = (filePath: string): void => {
+				removeImport(tree, filePath, 'ObNavTreeFakeFocusDirective', '@oblique/oblique');
+				replaceInFile(tree, filePath, /\[?obNavTreeFakeFocus]?\s*=\s*["'].*?["']\s*/g, '');
+			};
+			return applyInTree(tree, apply, '*.html');
 		});
 	}
 
