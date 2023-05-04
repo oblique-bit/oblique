@@ -87,6 +87,7 @@ import {FileUploadSampleComponent} from './file-upload-sample/file-upload-sample
 import {SharedModule} from '../common/shared.module';
 import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
 import {ServiceNavigationSampleComponent} from './service-navigation/service-navigation-sample.component';
+import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 
 @NgModule({
 	imports: [
@@ -118,6 +119,7 @@ import {ServiceNavigationSampleComponent} from './service-navigation/service-nav
 		ObErrorMessagesModule,
 		ObExternalLinkModule,
 		ObFileUploadModule,
+		ObFormFieldModule,
 		ObInputClearModule,
 		ObLanguageModule,
 		ObNavTreeModule,
