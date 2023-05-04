@@ -47,6 +47,7 @@ export {
 	ObIUploadEvent,
 	ObIFileDescription
 } from './lib/file-upload/file-upload.module';
+export {ObFormFieldModule, ObFormFieldDirective, ObSelectDirective} from './lib/form-field/form-field.module';
 export {
 	ObServiceNavigationComponent,
 	ObServiceNavigationModule,
