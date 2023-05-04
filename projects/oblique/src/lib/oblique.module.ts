@@ -28,6 +28,7 @@ import {ObExternalLinkModule} from './external-link/external-link.module';
 import {ObAlertModule} from './alert/alert.module';
 import {ObBreadcrumbModule} from './breadcrumb/breadcrumb.module';
 import {ObServiceNavigationModule} from './service-navigation/service-navigation.module';
+import {ObFormFieldModule} from './form-field/form-field.module';
 
 const OBLIQUE_MODULES = [
 	ObAlertModule,
@@ -38,6 +39,7 @@ const OBLIQUE_MODULES = [
 	ObDocumentMetaModule,
 	ObErrorMessagesModule,
 	ObFileUploadModule,
+	ObFormFieldModule,
 	ObLanguageModule,
 	ObMasterLayoutModule,
 	ObNavTreeModule,
