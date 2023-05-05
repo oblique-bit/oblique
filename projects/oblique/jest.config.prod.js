@@ -38,6 +38,12 @@ module.exports.coverageThreshold = {
 		functions: 100,
 		lines: 100
 	},
+	'projects/oblique/src/lib/checkbox/*.ts': {
+		statements: 90,
+		branches: 60,
+		functions: 70,
+		lines: 90
+	},
 	'projects/oblique/src/lib/collapse/*.ts': {
 		statements: 100,
 		branches: 81,
