@@ -1,11 +1,8 @@
 @use "projects/oblique/src/styles/scss/core/variables";
 
-mat-icon[svgIcon="login"] {
+.rotate180 {
+	transform: rotate(180deg);
 	transition: transform variables.$ob-duration-default;
-
-	&.rotate180 {
-		transform: rotate(180deg);
-	}
 }
 
 a.ob-external-link {
