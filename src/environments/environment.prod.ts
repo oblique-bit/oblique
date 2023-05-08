@@ -5,6 +5,6 @@ export const environment: Environment = {
 	production: true,
 	banner: undefined,
 	pams: {
-		environment: ObEPamsEnvironment.TEST
+		environment: ObEPamsEnvironment.REF
 	}
 };

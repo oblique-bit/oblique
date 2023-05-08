@@ -12,7 +12,7 @@ export const environment: Environment = {
 		text: 'LOCAL'
 	},
 	pams: {
-		environment: ObEPamsEnvironment.TEST,
+		environment: ObEPamsEnvironment.REF,
 		rootUrl: 'http://localhost:8207/'
 	}
 };
