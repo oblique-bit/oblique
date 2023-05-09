@@ -37,7 +37,7 @@ describe('ObPaginatorService', () => {
 			'i18n.pagination.items-per-page': 'Éléments par page',
 			'i18n.pagination.next-page': 'Aller à la page suivante',
 			'i18n.pagination.previous-page': 'Aller à la page précédente',
-			'i18n.pagination.of-label': 'de',
+			'i18n.pagination.of-label': 'sur',
 			'i18n.pagination.page-label': 'Page',
 			'i18n.pagination.first-page': 'Sauter à la première page',
 			'i18n.pagination.last-page': 'Sauter à la dernière page'
