@@ -54,10 +54,8 @@
 		<ob-master-layout-header [navigation]="navigation">
 			<ng-content select="[obHeader]" obHeader></ng-content>
 			<ng-content select="[obHeaderAction]" obHeaderAction></ng-content>
-			<ng-content select="[obLocales]" obLocales></ng-content>
 			<ng-content select="[obHeaderTitle]" obHeaderTitle></ng-content>
 			<ng-content select="[obNavigation]" obNavigation></ng-content>
-			<ng-content select="[obHeaderCustomControl]" obHeaderCustomControl></ng-content>
 			<ng-template #obHeaderControl *ngFor="let template of headerControlTemplates">
 				<ng-container [ngTemplateOutlet]="template"></ng-container>
 			</ng-template>

@@ -53,18 +53,6 @@
           "since": "3.0.0"
         },
         {
-          "name": "[obLocales]",
-          "text": "Content that will be projected as the locales choice. It will replace the default Oblique locales if locale management is disabled (see <code>ObMasterLayoutConfig</code>).",
-          "since": "3.0.0",
-          "deprecated": "10.1.0"
-        },
-        {
-          "name": "[obHeaderCustomControl]",
-          "text": "Content that will be projected as the custom controls section of the main header (next to the locales choice)",
-          "since": "5.1.0",
-          "deprecated": "10.1.0"
-        },
-        {
           "name": "<ng-template #obHeaderControl>",
           "text": "Templates that will be projected into the service navigation, in the right part of the main header.",
           "since": "3.0.0"
