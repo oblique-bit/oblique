@@ -5,10 +5,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {OB_BANNER, WINDOW} from '../../utilities';
-import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
 import {ObMasterLayoutHeaderComponent} from './master-layout-header.component';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
-import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObMockMasterLayoutConfig} from '../_mocks/mock-master-layout.config';
 import {ObMockScrollingEvents} from '../../scrolling/_mocks/mock-scrolling-events.service';
@@ -42,7 +40,6 @@ describe('ObMasterLayoutHeaderComponent', () => {
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
 				{provide: ObScrollingEvents, useClass: ObMockScrollingEvents},
-				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
 				{provide: WINDOW, useValue: window}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
