@@ -12,7 +12,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {
-	OB_ACTIVATE_SERVICE_NAVIGATION,
 	OB_BANNER,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
 	OB_PAMS_CONFIGURATION,
@@ -92,7 +91,6 @@ registerLocaleData(localeFR);
 	],
 	providers: [
 		{provide: OB_BANNER, useValue: environment.banner},
-		{provide: OB_ACTIVATE_SERVICE_NAVIGATION, useValue: true},
 		{provide: OB_PAMS_CONFIGURATION, useValue: environment.pams},
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
