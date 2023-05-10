@@ -22,7 +22,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 				this.wrapMultiLinerContentProjectionWithNgTemplate('obHeaderCustomControl'),
 				this.wrapMultiLinerContentProjectionWithNgTemplate('obLocales'),
 				this.removeContentProjectionMarker('obHeaderCustomControl'),
-				this.removeContentProjectionMarker('obLocales')
+				this.removeContentProjectionMarker('obLocales'),
+				this.removeActivateServiceNavigationToken()
 			])(tree, _context);
 	}
 
@@ -118,6 +119,22 @@ export class UpdateV10toV11 implements ObIMigrations {
 				replaceInFile(tree, filePath, new RegExp(`\\s*${token}`, 'g'), '');
 			};
 			return applyInTree(tree, apply, '*.html');
+		});
+	}
+
+	private removeActivateServiceNavigationToken(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, `Remove OB_ACTIVATE_SERVICE_NAVIGATION token`);
+			const apply = (filePath: string): void => {
+				replaceInFile(
+					tree,
+					filePath,
+					/{\s*provide\s*:\s*OB_ACTIVATE_SERVICE_NAVIGATION\s*,\s*useValue\s*:\s*(?:true|false)\s*}\s*,?\s*/,
+					''
+				);
+				replaceInFile(tree, filePath, /OB_ACTIVATE_SERVICE_NAVIGATION\s*,?\s*/, '');
+			};
+			return applyInTree(tree, apply, '*.ts');
 		});
 	}
 }

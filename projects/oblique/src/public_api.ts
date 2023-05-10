@@ -136,15 +136,7 @@ export {
 	ObUnsavedChangesModule,
 	ObUnsavedChangesService
 } from './lib/unsaved-changes/unsaved-changes.module';
-export {
-	OB_BANNER,
-	OB_MATERIAL_CONFIG,
-	OB_ACTIVATE_SERVICE_NAVIGATION,
-	OB_PAMS_CONFIGURATION,
-	getTranslateLoader,
-	multiTranslateLoader,
-	WINDOW
-} from './lib/utilities';
+export {OB_BANNER, OB_MATERIAL_CONFIG, OB_PAMS_CONFIGURATION, getTranslateLoader, multiTranslateLoader, WINDOW} from './lib/utilities';
 export {ObIBanner, ObIMaterialConfig} from './lib/utilities.model';
 export {ObEColor} from './lib/style/colors.model';
 export {ObMultiTranslateLoader, TRANSLATION_FILES} from './lib/multi-translate-loader/multi-translate-loader';

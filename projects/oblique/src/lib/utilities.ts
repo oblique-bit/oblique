@@ -26,11 +26,8 @@ import {ObIBanner, ObIMaterialConfig, ObIPamsConfiguration} from './utilities.mo
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
-export const OB_ACTIVATE_SERVICE_NAVIGATION = new InjectionToken<boolean>(
-	'Indicates whether or not the service navigation component should be used instead of the header controls area.'
-);
 export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
-	'Provides the mandatory PAMS environment as well as an optional root url. This is only useful when OB_ACTIVATE_SERVICE_NAVIGATION is enabled.'
+	'Provides the mandatory PAMS environment as well as an optional root url.'
 );
 
 export function windowProvider(doc: Document): Window {
