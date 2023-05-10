@@ -15,15 +15,15 @@
 					<a [routerLink]="home$ | async" class="ob-master-layout-brand-link"><ng-content select="[obHeaderTitle]"></ng-content></a>
 				</span>
 			</div>
-			<ul class="ob-collapsed-layout ob-header-toggle">
+			<ul class="ob-collapsed-layout">
 				<li class="ob-control-item ob-widget" *ngFor="let template of mobileTemplates" #headerMobileControl>
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</li>
-				<li class="ob-control-item ob-master-layout-header-toggle-container">
+				<li class="ob-master-layout-header-toggle-container">
 					<button
 						type="button"
 						[title]="'i18n.oblique.header.toggle' | translate"
-						class="ob-control-link"
+						class="ob-header-toggle"
 						obMasterLayoutHeaderToggle
 						obAriaMenuButton="navigation"
 					>

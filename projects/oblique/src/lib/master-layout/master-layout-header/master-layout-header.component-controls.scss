@@ -9,7 +9,18 @@
 	}
 
 	.ob-header-toggle {
+		padding: 0;
 		border: none;
+		background-color: transparent;
+		color: variables.$ob-secondary-900;
+		transition: color variables.$ob-duration-fast ease-in-out;
+
+		&:hover,
+		&:active,
+		&:focus {
+			color: variables.$ob-secondary-400;
+			cursor: pointer;
+		}
 
 		@include layout.ob-media-breakpoint-down(md) {
 			flex-wrap: nowrap;
@@ -112,11 +123,6 @@
 	}
 
 	.ob-control-item {
-		&:not(.ob-widget) [class*="mdc-"] {
-			max-height: 1em;
-			max-width: 1em;
-		}
-
 		a,
 		button.mdc-icon-button {
 			margin-bottom: 12px;
@@ -154,29 +160,9 @@
 			justify-content: flex-end;
 		}
 
-		&:not(:has(> :nth-child(1))):hover,
-		> *:hover {
-			cursor: pointer;
-		}
-
 		&.ob-widget .ob-button.mat-button-base.mat-primary {
 			color: variables.$ob-default;
 			border-color: variables.$ob-default;
-		}
-
-		.ob-control-link {
-			padding: 0;
-			border: none;
-			background-color: transparent;
-			color: variables.$ob-secondary-900;
-			transition: color variables.$ob-duration-fast ease-in-out;
-
-			&:hover,
-			&:active,
-			&:focus {
-				color: variables.$ob-secondary-400;
-				cursor: pointer;
-			}
 		}
 	}
 
