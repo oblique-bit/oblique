@@ -67,19 +67,20 @@
 		}
 	}
 
-	.ob-master-layout-header-controls,
 	.ob-service-navigation {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: flex-end;
 		flex-wrap: wrap;
+		margin-right: variables.$ob-spacing-default;
+		margin-left: variables.$ob-spacing-default;
 
-		.ob-non-custom-header-controls {
-			order: 2;
+		.ob-service-navigation-list {
+			flex-wrap: wrap;
 		}
 
-		.ob-header-locale {
-			order: 3;
+		.ob-autocomplete .mat-form-field-wrapper {
+			padding-bottom: 0;
 		}
 
 		@include layout.ob-media-breakpoint-down(md) {
@@ -96,58 +97,6 @@
 				padding-bottom: 0;
 			}
 			justify-content: stretch;
-
-			.ob-header-controls {
-				width: 100%;
-				place-content: flex-end;
-				padding-right: variables.$ob-spacing-sm;
-
-				&:not(:last-of-type) {
-					border-bottom: 1px solid variables.$ob-secondary-100;
-					padding-top: variables.$ob-spacing-sm;
-					padding-bottom: variables.$ob-spacing-sm;
-				}
-
-				&.ob-header-locale {
-					margin-right: 0;
-					order: unset;
-				}
-
-				&.ob-non-custom-header-controls {
-					order: unset;
-				}
-
-				&:first-of-type {
-					border-top: 1px solid variables.$ob-secondary-100;
-				}
-
-				&:last-of-type {
-					padding-top: variables.$ob-spacing-sm;
-				}
-			}
-		}
-	}
-
-	.ob-control-locale {
-		padding: 0.375rem 0.75rem;
-		color: variables.$ob-default;
-		background-color: transparent;
-		border: none transparent;
-		border-radius: 0;
-		user-select: none;
-		transition: background-color variables.$ob-duration-fast ease-in-out;
-
-		&:hover,
-		&.active {
-			background-color: variables.$ob-secondary-100;
-		}
-
-		&:hover {
-			opacity: 0.5;
-		}
-
-		&:hover.active {
-			opacity: 1;
 		}
 	}
 
@@ -160,31 +109,9 @@
 		padding: 0;
 		list-style: none;
 
-		&:not(.ob-header-locale) .ob-control-item {
+		.ob-control-item {
 			padding-right: variables.$ob-spacing-default;
 			padding-left: variables.$ob-spacing-default;
-		}
-
-		&.ob-header-locale {
-			margin-right: variables.$ob-spacing-default;
-		}
-
-		.ob-autocomplete .mat-form-field-wrapper {
-			padding-bottom: 0;
-		}
-	}
-
-	.ob-service-navigation {
-		margin-right: variables.$ob-spacing-default;
-		margin-left: variables.$ob-spacing-default;
-		justify-content: flex-end;
-
-		.ob-service-navigation-list {
-			flex-wrap: wrap;
-		}
-
-		.ob-autocomplete .mat-form-field-wrapper {
-			padding-bottom: 0;
 		}
 	}
 
