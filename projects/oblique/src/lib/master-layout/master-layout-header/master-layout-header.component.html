@@ -16,7 +16,7 @@
 				</span>
 			</div>
 			<ul class="ob-collapsed-layout">
-				<li class="ob-control-item ob-widget" *ngFor="let template of mobileTemplates" #headerMobileControl>
+				<li *ngFor="let template of mobileTemplates" #headerMobileControl>
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</li>
 				<li class="ob-master-layout-header-toggle-container">
