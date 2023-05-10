@@ -7,7 +7,6 @@
 	</ng-template>
 	<ng-template #obHeaderControl>
 		<a
-			class="ob-widget"
 			href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique/"
 			[icon]="'none'"
 			matTooltip="Go to Oblique GIT repository"
@@ -20,7 +19,6 @@
 	<ng-template #obHeaderControl>
 		<button
 			type="button"
-			class="ob-widget"
 			obOffCanvasToggle
 			matTooltip="Toggle Off-Canvas"
 			(click)="offCanvasOpen = !offCanvasOpen"
@@ -33,14 +31,7 @@
 		</button>
 	</ng-template>
 	<ng-template #obHeaderControl>
-		<button
-			type="button"
-			class="ob-widget"
-			mat-icon-button
-			obButton="secondary"
-			[obPopover]="languageButton"
-			matTooltip="Open example popover"
-		>
+		<button type="button" mat-icon-button obButton="secondary" [obPopover]="languageButton" matTooltip="Open example popover">
 			<mat-icon svgIcon="cog"></mat-icon>
 		</button>
 		<ng-template #languageButton>
@@ -59,28 +50,19 @@
 		</ng-template>
 	</ng-template>
 	<ng-template #obHeaderControl>
-		<button
-			type="button"
-			(click)="toggleFont(font)"
-			mat-button
-			obButton="secondary"
-			class="ob-widget"
-			[matTooltip]="'Use ' + font + 'font'"
-		>
+		<button type="button" (click)="toggleFont(font)" mat-button obButton="secondary" [matTooltip]="'Use ' + font + ' font'">
 			{{ font }}
 		</button>
 	</ng-template>
 
 	<ng-template #obHeaderMobileControl>
-		<button
-			type="button"
-			(click)="toggleFont(font)"
-			mat-button
-			obButton="secondary"
-			class="ob-widget"
-			[matTooltip]="'Use ' + font + 'font'"
-		>
+		<button type="button" (click)="toggleFont(font)" mat-button obButton="secondary" [matTooltip]="'Use ' + font + ' font'">
 			{{ font }}
+		</button>
+	</ng-template>
+	<ng-template #obHeaderMobileControl>
+		<button type="button" mat-icon-button obButton="secondary">
+			<mat-icon svgIcon="help"></mat-icon>
 		</button>
 	</ng-template>
 
