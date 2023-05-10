@@ -66,12 +66,12 @@
         },
         {
           "name": "<ng-template #obHeaderControl>",
-          "text": "Templates that will be projected into the controls section of the main header (next to the custom control section).",
+          "text": "Templates that will be projected into the service navigation, in the right part of the main header.",
           "since": "3.0.0"
         },
         {
           "name": "<ng-template #obHeaderMobileControl>",
-          "text": "Templates that will be projected into the controls section of the main header (next to the locales choice) for mobile layout.",
+          "text": "Templates that will be projected into the main header, left of the menu toggle. They will only appear in the mobile layout.",
           "since": "5.1.0"
         },
         {

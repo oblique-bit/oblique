@@ -16,7 +16,7 @@
 				</span>
 			</div>
 			<ul class="ob-header-controls ob-header-toggle">
-				<li class="ob-control-item" [class.ob-widget]="useServiceNavigation" *ngFor="let template of mobileTemplates" #headerMobileControl>
+				<li class="ob-control-item ob-widget" *ngFor="let template of mobileTemplates" #headerMobileControl>
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</li>
 				<li class="ob-control-item ob-master-layout-header-toggle-container">
@@ -37,61 +37,30 @@
 				</li>
 			</ul>
 		</div>
-		<div *ngIf="!useServiceNavigation" class="ob-master-layout-header-controls">
-			<h2 class="ob-screen-reader-only" id="ob-language-change">{{ "i18n.oblique.header.languages.title" | translate }}</h2>
-			<ng-content *ngIf="!languages.length" select="[obLocales]"></ng-content>
-			<ul *ngIf="languages.length > 1" aria-labelledby="ob-language-change" class="ob-header-controls ob-header-locale">
-				<li *ngFor="let language of languages" class="ob-control-item">
-					<button
-						(click)="changeLang(language.code)"
-						[attr.aria-current]="isLangActive(language.code) ? true : undefined"
-						[attr.id]="language.id"
-						[class.active]="isLangActive(language.code)"
-						[attr.aria-label]="language.label"
-						class="ob-control-locale"
-						obMasterLayoutHeaderToggle
-						type="button"
-					>
-						{{ language.code.toUpperCase() }}
-					</button>
-				</li>
-			</ul>
-			<ng-container *ngIf="templates.length">
-				<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.controls.title" | translate }}</h2>
-				<ul class="ob-header-controls ob-non-custom-header-controls">
-					<li class="ob-control-item" *ngFor="let template of templates" #headerControl>
-						<ng-container [ngTemplateOutlet]="template"></ng-container>
-					</li>
-				</ul>
-			</ng-container>
-			<ng-content select="[obHeaderCustomControl]"></ng-content>
-		</div>
-		<ng-container *ngIf="useServiceNavigation">
-			<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.service-navigation.title" | translate }}</h2>
-			<ob-service-navigation
-				[infoContact]="serviceNavigationConfig?.infoContact"
-				[infoLinks]="serviceNavigationConfig?.infoLinks"
-				[maxFavoriteApplications]="serviceNavigationConfig?.maxFavoriteApplications"
-				[maxLastUsedApplications]="serviceNavigationConfig?.maxLastUsedApplications"
-				[profileLinks]="serviceNavigationConfig?.profileLinks"
-				[returnUrl]="serviceNavigationConfig?.returnUrl"
-				[displayApplications]="serviceNavigationConfig?.displayApplications"
-				[displayAuthentication]="serviceNavigationConfig?.displayAuthentication"
-				[displayInfo]="serviceNavigationConfig?.displayInfo"
-				[displayLanguages]="serviceNavigationConfig?.displayLanguages"
-				[displayMessage]="serviceNavigationConfig?.displayMessage"
-				[displayProfile]="serviceNavigationConfig?.displayProfile"
-				[handleLogout]="serviceNavigationConfig?.handleLogout"
-				[environment]="pamsConfiguration?.environment"
-				[rootUrl]="pamsConfiguration?.rootUrl"
-				(loginState)="emitLoginState($event)"
-				(logoutTriggered)="emitLogoutUrl($event)"
-			>
-				<ng-template #customWidgetTemplate *ngFor="let template of templates">
-					<ng-container [ngTemplateOutlet]="template"></ng-container>
-				</ng-template>
-			</ob-service-navigation>
-		</ng-container>
+		<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.service-navigation.title" | translate }}</h2>
+		<ob-service-navigation
+			[infoContact]="serviceNavigationConfig?.infoContact"
+			[infoLinks]="serviceNavigationConfig?.infoLinks"
+			[maxFavoriteApplications]="serviceNavigationConfig?.maxFavoriteApplications"
+			[maxLastUsedApplications]="serviceNavigationConfig?.maxLastUsedApplications"
+			[profileLinks]="serviceNavigationConfig?.profileLinks"
+			[returnUrl]="serviceNavigationConfig?.returnUrl"
+			[displayApplications]="serviceNavigationConfig?.displayApplications"
+			[displayAuthentication]="serviceNavigationConfig?.displayAuthentication"
+			[displayInfo]="serviceNavigationConfig?.displayInfo"
+			[displayLanguages]="serviceNavigationConfig?.displayLanguages"
+			[displayMessage]="serviceNavigationConfig?.displayMessage"
+			[displayProfile]="serviceNavigationConfig?.displayProfile"
+			[handleLogout]="serviceNavigationConfig?.handleLogout"
+			[environment]="pamsConfiguration?.environment"
+			[rootUrl]="pamsConfiguration?.rootUrl"
+			(loginState)="emitLoginState($event)"
+			(logoutTriggered)="emitLogoutUrl($event)"
+		>
+			<ng-template #customWidgetTemplate *ngFor="let template of templates">
+				<ng-container [ngTemplateOutlet]="template"></ng-container>
+			</ng-template>
+		</ob-service-navigation>
 	</ng-container>
 </div>
 <ob-master-layout-navigation [links]="navigation">
