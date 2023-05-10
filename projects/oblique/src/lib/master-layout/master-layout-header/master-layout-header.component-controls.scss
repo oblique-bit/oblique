@@ -100,19 +100,15 @@
 		}
 	}
 
-	.ob-header-controls {
+	.ob-collapsed-layout {
 		display: inline-flex;
 		flex-direction: row;
 		align-items: center;
+		gap: variables.$ob-spacing-default;
 		min-height: inherit;
-		margin: 0;
+		margin: 0 variables.$ob-spacing-default;
 		padding: 0;
 		list-style: none;
-
-		.ob-control-item {
-			padding-right: variables.$ob-spacing-default;
-			padding-left: variables.$ob-spacing-default;
-		}
 	}
 
 	.ob-control-item {

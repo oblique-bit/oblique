@@ -15,7 +15,7 @@
 					<a [routerLink]="home$ | async" class="ob-master-layout-brand-link"><ng-content select="[obHeaderTitle]"></ng-content></a>
 				</span>
 			</div>
-			<ul class="ob-header-controls ob-header-toggle">
+			<ul class="ob-collapsed-layout ob-header-toggle">
 				<li class="ob-control-item ob-widget" *ngFor="let template of mobileTemplates" #headerMobileControl>
 					<ng-container [ngTemplateOutlet]="template"></ng-container>
 				</li>
