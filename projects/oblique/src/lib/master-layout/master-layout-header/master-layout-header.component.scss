@@ -133,7 +133,7 @@
 		text-decoration: none;
 	}
 
-	.ob-header-toggle {
+	.ob-collapsed-layout {
 		@include layout.ob-media-breakpoint-up(md) {
 			display: none !important;
 		}
