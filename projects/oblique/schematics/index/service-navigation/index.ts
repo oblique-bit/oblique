@@ -13,10 +13,6 @@ export function serviceNavigation(): Rule {
 					providerName: 'OB_PAMS_CONFIGURATION',
 					provide: '	{provide: OB_PAMS_CONFIGURATION, useValue: {environment: ObEPamsEnvironment.PROD}}\n',
 					additionalImports: ['ObEPamsEnvironment']
-				},
-				{
-					providerName: 'OB_ACTIVATE_SERVICE_NAVIGATION',
-					provide: '	{provide: OB_ACTIVATE_SERVICE_NAVIGATION, useValue: true}'
 				}
 			]),
 			removeEmptyLifecycleHook('ngOnInit'),

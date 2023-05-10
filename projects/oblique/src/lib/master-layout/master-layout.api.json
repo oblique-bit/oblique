@@ -98,16 +98,9 @@
         },
         {
           "name": "OB_PAMS_CONFIGURATION",
-          "text": "Provides the mandatory PAMS environment as well as an optional root url. This is only useful when <code>OB_ACTIVATE_SERVICE_NAVIGATION</code> is enabled.",
+          "text": "Provides the mandatory PAMS environment as well as an optional root url.",
           "type": "ObIPamsConfiguration",
           "default": "undefined",
-          "since": "10.1.0"
-        },
-        {
-          "name": "OB_ACTIVATE_SERVICE_NAVIGATION",
-          "text": "Indicates whether or not the service navigation component should be used instead of the header controls area.",
-          "type": "boolean",
-          "default": false,
           "since": "10.1.0"
         }
       ]
