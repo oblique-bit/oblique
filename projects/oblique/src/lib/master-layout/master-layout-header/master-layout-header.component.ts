@@ -13,7 +13,6 @@ import {
 	ViewChildren,
 	ViewEncapsulation
 } from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
 import {Observable, Subject} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
 
@@ -25,8 +24,6 @@ import {ObIBanner, ObIPamsConfiguration} from '../../utilities.model';
 import {
 	ObEEnvironment,
 	ObEMasterLayoutEventValues,
-	ObILanguage,
-	ObILocaleObject,
 	ObIMasterLayoutEvent,
 	ObINavigationLink,
 	ObIServiceNavigationConfig
@@ -44,7 +41,6 @@ import {ObLoginState} from '../../service-navigation/service-navigation.model';
 })
 export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	home$: Observable<string>;
-	languages: ObILanguage[];
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
 	serviceNavigationConfig: ObIServiceNavigationConfig;
@@ -59,7 +55,6 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
-		private readonly translate: TranslateService,
 		private readonly config: ObMasterLayoutConfig,
 		private readonly scrollEvents: ObScrollingEvents,
 		private readonly el: ElementRef,
@@ -67,7 +62,6 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 		@Inject(OB_BANNER) @Optional() bannerToken: ObIBanner,
 		@Inject(OB_PAMS_CONFIGURATION) @Optional() public readonly pamsConfiguration: ObIPamsConfiguration
 	) {
-		this.languages = this.formatLanguages(this.config.locale.languages);
 		this.customChange();
 		this.smallChange();
 		this.serviceNavigationConfiguration();
@@ -80,14 +74,6 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
-	}
-
-	isLangActive(lang: string): boolean {
-		return this.translate.currentLang === lang;
-	}
-
-	changeLang(lang: string): void {
-		this.translate.use(lang);
 	}
 
 	emitLoginState(loginState: ObLoginState): void {
@@ -129,22 +115,6 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(event => (this.serviceNavigationConfig = event.config));
-	}
-
-	private formatLanguages(languages: Record<string, string>): ObILanguage[] {
-		return this.config.locale.disabled || !this.config.locale.display
-			? []
-			: this.config.locale.locales
-					.map(locale => this.getLocaleObject(locale))
-					.map(locale => ({
-						code: locale.locale.split('-')[0],
-						id: locale.id
-					}))
-					.map(locale => ({...locale, label: languages[locale.code]}));
-	}
-
-	private getLocaleObject(locale: string | ObILocaleObject): ObILocaleObject {
-		return (locale as ObILocaleObject).locale ? (locale as ObILocaleObject) : {locale: locale as string};
 	}
 
 	private initializeBanner(bannerToken): ObIBanner {
