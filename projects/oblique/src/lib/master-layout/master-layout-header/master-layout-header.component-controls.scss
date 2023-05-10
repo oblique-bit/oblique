@@ -168,7 +168,7 @@
 			border-color: variables.$ob-default;
 		}
 
-		&:not(.ob-widget) .ob-control-link {
+		.ob-control-link {
 			padding: 0;
 			border: none;
 			background-color: transparent;
