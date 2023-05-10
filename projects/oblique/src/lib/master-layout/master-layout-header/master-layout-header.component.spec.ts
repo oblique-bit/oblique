@@ -1,12 +1,10 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {OB_BANNER, WINDOW} from '../../utilities';
 import {ObMasterLayoutHeaderComponent} from './master-layout-header.component';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObMockMasterLayoutConfig} from '../_mocks/mock-master-layout.config';
 import {ObMockScrollingEvents} from '../../scrolling/_mocks/mock-scrolling-events.service';
@@ -36,7 +34,6 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			imports: [RouterTestingModule],
 			declarations: [ObMasterLayoutHeaderComponent, ObMockTranslatePipe],
 			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
 				{provide: ObScrollingEvents, useClass: ObMockScrollingEvents},
@@ -97,41 +94,6 @@ describe('ObMasterLayoutHeaderComponent', () => {
 						config: {displayApplications: true}
 					});
 					expect(component.serviceNavigationConfig).toEqual({displayApplications: true});
-				});
-			});
-		});
-
-		describe('isLangActive', () => {
-			it('should return true for en', () => {
-				expect(component.isLangActive('en')).toBe(true);
-			});
-
-			it('should return true for de', () => {
-				expect(component.isLangActive('de')).toBe(false);
-			});
-		});
-
-		describe('changeLang', () => {
-			it('should call use', () => {
-				const translate = TestBed.inject(TranslateService);
-				jest.spyOn(translate, 'use');
-				component.changeLang('de');
-				expect(translate.use).toHaveBeenCalledWith('de');
-			});
-		});
-
-		describe('languages', () => {
-			describe('property', () => {
-				it('should be defined', () => {
-					expect(component.languages).toBeDefined();
-				});
-
-				it('should have a default values', () => {
-					expect(component.languages).toEqual([
-						{code: 'de', id: undefined, label: 'Deutsch'},
-						{code: 'fr', id: undefined, label: 'Français'},
-						{code: 'it', id: undefined, label: 'Italiano'}
-					]);
 				});
 			});
 		});
