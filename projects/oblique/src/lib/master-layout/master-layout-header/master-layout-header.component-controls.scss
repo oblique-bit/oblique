@@ -257,12 +257,6 @@
 		}
 	}
 
-	.ob-control-icon {
-		margin: 0;
-		vertical-align: middle;
-		font-size: variables.$ob-font-size-xl;
-	}
-
 	li {
 		&.ob-control-item:focus-within {
 			z-index: 1;
