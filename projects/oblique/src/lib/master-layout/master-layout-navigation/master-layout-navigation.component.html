@@ -73,10 +73,10 @@
 				>
 					<span class="ob-icon-wrapper"><mat-icon *ngIf="link.icon" [svgIcon]="link.icon"></mat-icon></span>
 					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
-					<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron-down" class="ob-nav-toggle ob-toggle-collapsed"></mat-icon></span>
-					<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron-up" class="ob-nav-toggle ob-toggle-expanded"></mat-icon></span>
-					<span class="ob-icon-wrapper"
-						><mat-icon svgIcon="chevron-right" class="ob-nav-toggle ob-toggle-layout-collapsed"></mat-icon
+					<span class="ob-icon-wrapper ob-toggle-collapsed"><mat-icon svgIcon="chevron-down" class="ob-nav-toggle"></mat-icon></span>
+					<span class="ob-icon-wrapper ob-toggle-expanded"><mat-icon svgIcon="chevron-up" class="ob-nav-toggle"></mat-icon></span>
+					<span class="ob-icon-wrapper ob-toggle-layout-collapsed"
+						><mat-icon svgIcon="chevron-right" class="ob-nav-toggle"></mat-icon
 					></span>
 				</button>
 				<div class="ob-sub-menu" [id]="'menu-' + (link.id || link.url)">
