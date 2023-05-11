@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../core/variables";
 // Some colors have been generated with the help of: http://mcg.mbitson.com/#!?mcgpalette0=%23ffc81b&themename=mcgtheme
 
@@ -80,6 +81,12 @@ $oblique-primary: (
 			A400: variables.$ob-white,
 			A700: variables.$ob-white,
 		),
+) !default;
+$oblique-primary-alt-500: map.merge(
+	$oblique-primary,
+	(
+		500: variables.$ob-secondary-400,
+	)
 ) !default;
 
 // accent colors are based on the secondary color scheme from the UX team: https://www.sketch.com/s/8ca1c363-8e0d-49c0-8f63-fb363cc27664/a/R8dmEe
