@@ -1,18 +1,8 @@
 <h2 class="page-header">Slider</h2>
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
-		<mat-slider
-			[disabled]="disabled"
-			[invert]="invert"
-			[max]="max"
-			[min]="min"
-			[step]="step"
-			[thumbLabel]="thumbLabel"
-			[tickInterval]="tickInterval"
-			[(ngModel)]="value"
-			[vertical]="vertical"
-			[color]="color"
-		>
+		<mat-slider [disabled]="disabled" [max]="max" [min]="min" [step]="step" [discrete]="thumbLabel" [color]="color">
+			<input matSliderThumb [(ngModel)]="value" />
 		</mat-slider>
 	</ng-container>
 	<ng-container column-right-content>
@@ -36,10 +26,6 @@
 					<mat-label>Step size</mat-label>
 					<input matInput type="number" [(ngModel)]="step" />
 				</mat-form-field>
-				<mat-form-field>
-					<mat-label>Tick interval</mat-label>
-					<input matInput type="number" [(ngModel)]="tickInterval" />
-				</mat-form-field>
 			</fieldset>
 			<fieldset>
 				<legend>Color</legend>
@@ -55,12 +41,6 @@
 				<legend>Toggle features</legend>
 				<mat-list-item>
 					<mat-slide-toggle (click)="toggleDisabled()" matTooltip="Toggle disabled">Disabled</mat-slide-toggle>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-slide-toggle (click)="toggleInverted()" matTooltip="Toggle inverted">Inverted</mat-slide-toggle>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-slide-toggle (click)="toggleVertical()" matTooltip="Toggle vertical/horizontal">Vertical</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
 					<mat-slide-toggle (click)="toggleThumbLabel()" matTooltip="Toggle thumb-label-visibility">Show thumb-label</mat-slide-toggle>

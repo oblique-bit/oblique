@@ -11,11 +11,8 @@ export class SliderComponent {
 	min = 0;
 	max = 100;
 	step = 1;
-	tickInterval = 0;
 
 	disabled = false;
-	invert = false;
-	vertical = false;
 	thumbLabel = false;
 
 	colors: ThemePalette[] = [];
@@ -34,15 +31,7 @@ export class SliderComponent {
 		this.disabled = !this.disabled;
 	}
 
-	toggleVertical(): void {
-		this.vertical = !this.vertical;
-	}
-
 	toggleThumbLabel(): void {
 		this.thumbLabel = !this.thumbLabel;
-	}
-
-	toggleInverted(): void {
-		this.invert = !this.invert;
 	}
 }
