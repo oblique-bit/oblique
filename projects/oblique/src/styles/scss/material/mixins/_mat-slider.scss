@@ -1,0 +1,13 @@
+@mixin ob-mat-slider-style($color) {
+	.mdc-slider__value-indicator-container {
+		.mdc-slider__value-indicator {
+			background-color: $color;
+			min-width: max-content; // Otherwise the mat slider visual thumb does not resize to fit the content
+			opacity: 1;
+
+			&::before {
+				border-top-color: $color;
+			}
+		}
+	}
+}

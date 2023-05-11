@@ -1,0 +1,13 @@
+@use "../core/variables";
+@use "mixins/mat-slider";
+
+.mat-mdc-slider {
+	&.mat-primary,
+	&.mat-accent {
+		@include mat-slider.ob-mat-slider-style(variables.$ob-secondary-400);
+	}
+
+	&.mat-warn {
+		@include mat-slider.ob-mat-slider-style(variables.$ob-red-800);
+	}
+}
