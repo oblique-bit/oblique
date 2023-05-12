@@ -1,3 +1,9 @@
+# [10.1.1](https://github.com/oblique-bit/oblique/compare/10.1.0...10.1.1) (2023-05-12)
+
+## Bug Fixes
+
+- **master-layout:** make sure the main navigation's chevron icon doesn't move when toggled ([f153b71](https://github.com/oblique-bit/oblique/commit/f153b71b95e18ab708eecce3f358e454d7a41e14))
+
 # [10.1.0](https://github.com/oblique-bit/oblique/compare/10.0.2...10.1.0) (2023-04-28)
 
 ## Bug Fixes
