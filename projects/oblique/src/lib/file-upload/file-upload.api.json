@@ -160,8 +160,8 @@
     {
       "name": "ObFileInfoComponent",
       "usage": "This component can simply be embedded in a template to show a list of uploaded files. It can be used independently of either <code>ob-file-upload</code> or <code>ob-drop-zone</code>.",
-      "selector": "ob-drop-zone",
-      "exported": "obDropZone",
+      "selector": "ob-file-info",
+      "exported": "obFileInfo",
       "type": "component",
       "since": "7.1.0",
       "inputs": [
