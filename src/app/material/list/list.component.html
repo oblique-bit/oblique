@@ -1,0 +1,58 @@
+<h2 class="page-header">List</h2>
+<ob-column-layout [left]="false">
+	<ng-container column-main-content>
+		<mat-list role="list" *ngIf="listType === 'list-without-icon'">
+			<mat-list-item *ngFor="let item of contentForList" role="listitem">
+				<h3 matListItemTitle>{{ item.line1 }}</h3>
+				<span matListItemLine>{{ item.line2 }}</span>
+				<span matListItemLine>{{ item.line3 }}</span>
+			</mat-list-item>
+		</mat-list>
+
+		<mat-list role="list" *ngIf="listType === 'list-with-icon'">
+			<mat-list-item *ngFor="let item of contentForList" role="listitem">
+				<mat-icon matListItemIcon [svgIcon]="item.icon"></mat-icon>
+				<h3 matListItemTitle>{{ item.line1 }}</h3>
+				<span matListItemLine>{{ item.line2 }}</span>
+				<span matListItemLine>{{ item.line3 }}</span>
+			</mat-list-item>
+		</mat-list>
+
+		<mat-selection-list role="list" *ngIf="listType === 'selection-list-without-icon'" [disabled]="isDisabled">
+			<mat-list-option *ngFor="let item of contentForList" role="listitem" [checkboxPosition]="invertIconAndCheckbox ? 'before' : 'after'">
+				<h3 matListItemTitle>{{ item.line1 }}</h3>
+				<span matListItemLine>{{ item.line2 }}</span>
+				<span matListItemLine>{{ item.line3 }}</span>
+			</mat-list-option>
+		</mat-selection-list>
+
+		<mat-selection-list role="list" *ngIf="listType === 'selection-list-with-icon'" [disabled]="isDisabled">
+			<mat-list-option *ngFor="let item of contentForList" role="listitem" [checkboxPosition]="invertIconAndCheckbox ? 'before' : 'after'">
+				<mat-icon matListItemIcon [svgIcon]="item.icon"></mat-icon>
+				<h3 matListItemTitle>{{ item.line1 }}</h3>
+				<span matListItemLine>{{ item.line2 }}</span>
+				<span matListItemLine>{{ item.line3 }}</span>
+			</mat-list-option>
+		</mat-selection-list>
+	</ng-container>
+	<ng-container column-right-content>
+		<h3>Controls</h3>
+		<fieldset>
+			<legend>Type of list</legend>
+			<mat-radio-group [(ngModel)]="listType">
+				<mat-radio-button [value]="type" *ngFor="let type of listTypes">
+					{{ type | titlecase }}
+				</mat-radio-button>
+			</mat-radio-group>
+		</fieldset>
+		<fieldset>
+			<legend>Variants</legend>
+			<div class="form-controls">
+				<mat-slide-toggle [(ngModel)]="isDisabled" [disabled]="!listType.includes('selection')">Disabled</mat-slide-toggle>
+				<mat-slide-toggle [(ngModel)]="invertIconAndCheckbox" [disabled]="!listType.includes('selection')"
+					>Invert icon and checkbox</mat-slide-toggle
+				>
+			</div>
+		</fieldset>
+	</ng-container>
+</ob-column-layout>

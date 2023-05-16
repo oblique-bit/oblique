@@ -1,0 +1,8 @@
+@use "variables";
+
+.mat-radio-group,
+.form-controls {
+	display: flex;
+	flex-direction: column;
+	gap: variables.$ob-spacing-xs;
+}

@@ -97,6 +97,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'expansion-panel', label: 'Expansion Panel'},
 				{url: 'form', label: 'Forms'},
 				{url: 'icon', label: 'Icons'},
+				{url: 'list', label: 'List'},
 				{url: 'mandatory', label: 'Mandatory'},
 				{url: 'progress-bar', label: 'Progress bar'},
 				{url: 'slider', label: 'Slider'},
