@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
 import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
-import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
+import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {TranslateModule} from '@ngx-translate/core';

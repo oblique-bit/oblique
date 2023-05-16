@@ -6,7 +6,7 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import {RouterModule} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
+import {MatCardModule} from '@angular/material/card';
 import {MatLegacyCheckboxModule as MatCheckboxModule} from '@angular/material/legacy-checkbox';
 import {MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
 import {MatIconModule} from '@angular/material/icon';
