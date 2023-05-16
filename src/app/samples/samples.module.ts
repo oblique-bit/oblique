@@ -16,7 +16,7 @@ import {MatLegacyRadioModule as MatRadioModule} from '@angular/material/legacy-r
 import {MatLegacySelectModule as MatSelectModule} from '@angular/material/legacy-select';
 import {DateAdapter} from '@angular/material/core';
 import {MatLegacySlideToggleModule as MatSlideToggleModule} from '@angular/material/legacy-slide-toggle';
-import {MatLegacyListModule as MatListModule} from '@angular/material/legacy-list';
+import {MatListModule} from '@angular/material/list';
 import {MatLegacyDialogModule as MatDialogModule} from '@angular/material/legacy-dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule} from '@ngx-translate/core';
