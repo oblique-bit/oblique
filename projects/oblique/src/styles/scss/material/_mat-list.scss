@@ -1,0 +1,72 @@
+@use "sass:selector";
+@use "../core/variables";
+@use "../core/mixins/typography";
+
+.mdc-list.mat-mdc-list-base {
+	.mat-mdc-list-item {
+		height: initial;
+		padding: variables.$ob-spacing-md variables.$ob-spacing-default;
+		background-color: variables.$ob-white;
+
+		&.mdc-list-item--disabled {
+			.mat-mdc-list-item-title,
+			.mat-mdc-list-item-line {
+				color: variables.$ob-secondary-300;
+				opacity: 1;
+			}
+		}
+
+		.mdc-list-item__start {
+			margin: 0 variables.$ob-spacing-default 0 0;
+			align-self: center;
+		}
+
+		.mdc-list-item__end {
+			margin: 0 variables.$ob-spacing-sm 0 variables.$ob-spacing-default;
+			align-self: center;
+		}
+
+		.mdc-checkbox {
+			width: variables.$ob-spacing-default;
+			height: variables.$ob-spacing-default;
+			margin: 0;
+			padding: variables.$ob-spacing-xs;
+
+			.mdc-checkbox__background {
+				top: initial;
+				left: initial;
+				width: variables.$ob-spacing-default;
+				height: variables.$ob-spacing-default;
+			}
+		}
+
+		.mdc-list-item__primary-text {
+			@include typography.ob-subtitle1();
+			margin-bottom: 0;
+			color: variables.$ob-default;
+
+			&::before,
+			&::after {
+				display: none;
+			}
+		}
+
+		.mdc-list-item__secondary-text {
+			@include typography.ob-body2();
+
+			&::before {
+				display: none;
+			}
+		}
+	}
+
+	&.mat-mdc-selection-list .mat-mdc-list-item:not(.mdc-list-item--disabled) {
+		&:hover {
+			background-color: variables.$ob-secondary-50;
+		}
+
+		&[aria-selected="true"] {
+			background-color: variables.$ob-secondary-100;
+		}
+	}
+}
