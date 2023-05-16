@@ -137,7 +137,7 @@
 		}
 
 		&.ob-button-primary {
-			&:not([disabled]) {
+			&:not([disabled], .ob-button-card) {
 				background-color: core-variables.$ob-secondary-400;
 				color: core-variables.$ob-white;
 
@@ -161,7 +161,7 @@
 		}
 
 		&.ob-button-secondary {
-			&:not([disabled]) {
+			&:not([disabled], .ob-button-card) {
 				border-color: core-variables.$ob-red-600;
 				color: core-variables.$ob-red-600;
 
@@ -184,7 +184,7 @@
 		}
 
 		&.ob-button-tertiary {
-			&:not([disabled]) {
+			&:not([disabled], .ob-button-card) {
 				color: core-variables.$ob-secondary-800;
 
 				&:hover {
