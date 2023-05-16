@@ -1,25 +1,29 @@
 @use "../core/variables";
 @use "../core/mixins/typography";
-@use "../core/mixins/tab-outline";
 
-.mat-card {
-	border: 1px solid variables.$ob-default;
+.mat-mdc-button-base.ob-button.mat-mdc-button.mat-mdc-button-base.ob-button-card {
+	height: initial;
+}
+
+.mat-mdc-card {
+	border: 1px solid variables.$ob-secondary-200;
 
 	&:not([class*="mat-elevation-z"]) {
 		box-shadow: none;
 	}
 
-	.mat-card-header {
+	.mat-mdc-card-header {
 		&:first-child {
 			padding-top: variables.$ob-spacing-xs;
 		}
 
-		.mat-card-title {
+		.mat-mdc-card-title {
 			@include typography.ob-h5();
 			margin-bottom: 0;
+			color: variables.$ob-secondary-800;
 		}
 
-		.mat-card-subtitle {
+		.mat-mdc-card-subtitle {
 			&,
 			&:not(:first-child) {
 				margin-top: 2px;
@@ -28,55 +32,66 @@
 		}
 	}
 
-	.mat-card-avatar {
+	.mat-mdc-card-avatar {
 		margin-top: variables.$ob-spacing-xs;
 		border-radius: variables.$ob-border-radius-base;
 	}
 
-	.mat-card-header-text:first-child {
+	.mat-mdc-card-header-text:first-child {
 		margin-left: 0;
 	}
 
-	.mat-card-subtitle,
-	.mat-card-content {
+	.mat-mdc-card-subtitle,
+	.mat-mdc-card-content {
 		@include typography.ob-body2();
+		color: variables.$ob-secondary-600;
 	}
 
-	.mat-card-header + .mat-card-content {
+	.mat-mdc-card-header + .mat-mdc-card-content {
 		margin-top: variables.$ob-spacing-default;
 	}
 
-	.mat-card-actions {
+	.mat-mdc-card-actions {
 		text-align: right;
+		justify-content: flex-end;
+		column-gap: variables.$ob-spacing-default;
+		padding: variables.$ob-spacing-default;
 	}
 
 	&.ob-selectable {
 		&.ob-selected {
-			background-color: variables.$ob-light;
+			background-color: variables.$ob-secondary-100;
 		}
 
-		@include tab-outline.ob-tab-outline-thick();
+		&:hover {
+			background-color: variables.$ob-secondary-50;
+		}
+
+		& > *:not(img):first-child {
+			margin-top: variables.$ob-spacing-xl + variables.$ob-spacing-default;
+		}
 
 		&::before {
 			position: absolute;
-			top: variables.$ob-spacing-sm;
-			right: variables.$ob-spacing-sm;
-			width: variables.$ob-spacing-lg;
-			height: variables.$ob-spacing-lg;
+			top: variables.$ob-spacing-default;
+			right: variables.$ob-spacing-default;
+			width: variables.$ob-spacing-default;
+			height: variables.$ob-spacing-default;
 			background-color: variables.$ob-white;
-			border: 3px solid variables.$ob-default;
+			border: 1px solid variables.$ob-default;
+			z-index: 1;
 		}
 
 		&[role="checkbox"] {
 			&::before {
 				content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHRpdGxlPkNoZWNrbWFyazwvdGl0bGU+PHBvbHlnb24gcG9pbnRzPSIyMC40NyA1LjM5MSA4Ljg0MiAxNy4wMTkgMy41MyAxMS43MDYgMi40NyAxMi43NjcgOC44NDIgMTkuMTQgMjEuNTMgNi40NTEgMjAuNDcgNS4zOTEiIGZpbGw9IiNmZmYiLz48L3N2Zz4=");
-				border-radius: variables.$ob-border-radius-base;
+				border-radius: variables.$ob-border-radius-button;
+				line-height: 1;
 			}
 
 			&.ob-selected::before {
 				background-color: variables.$ob-primary;
 				border-color: variables.$ob-primary;
-				border-width: 1px;
 			}
 		}
 
@@ -93,21 +108,62 @@
 			&.ob-selected::after {
 				content: "";
 				position: absolute;
-				top: 14px;
-				right: 14px;
-				width: 12px;
-				height: 12px;
+				top: 19px;
+				right: 19px;
+				left: initial; // to cancel a material rule
+				width: 10px;
+				height: 10px;
 				border-radius: 50%;
 				background-color: variables.$ob-primary;
+				z-index: 1;
 			}
+		}
+	}
+
+	@at-root {
+		.ob-button-card &,
+		.ob-link-card & {
+			&:hover {
+				background-color: variables.$ob-secondary-50;
+			}
+		}
+	}
+
+	.ob-alert {
+		margin: variables.$ob-spacing-default;
+
+		& + .mat-mdc-card-header {
+			padding-top: 0;
+		}
+	}
+
+	.ob-alert-content {
+		color: variables.$ob-secondary-800;
+	}
+
+	.mat-mdc-card-content .ob-signature {
+		display: flex;
+		justify-content: space-between;
+		margin: 0;
+	}
+
+	&.ob-selectable[disabled],
+	[disabled] & {
+		.mat-mdc-card-header .mat-mdc-card-title,
+		.mat-mdc-card-header .mat-mdc-card-subtitle,
+		.mat-mdc-card-content {
+			color: variables.$ob-secondary-300;
+		}
+
+		.mat-mdc-card-image,
+		.mat-mdc-card-avatar {
+			opacity: 0.4;
 		}
 	}
 }
 
 .ob-link-card {
 	text-decoration: none;
-
-	@include tab-outline.ob-tab-outline-thick(".mat-card");
 }
 
 .ob-button-card {
@@ -120,9 +176,11 @@
 		background-color: unset;
 		box-shadow: none;
 		align-items: unset;
+		display: block;
+		font-size: variables.$ob-font-size-base;
 
-		&:not(.mat-mdc-button-disabled) {
-			@include tab-outline.ob-tab-outline-thick(".mat-card");
+		&.mat-mdc-button-base.ob-button {
+			line-height: inherit;
 		}
 	}
 }
