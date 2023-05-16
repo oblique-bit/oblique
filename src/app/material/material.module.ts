@@ -29,6 +29,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatLegacyTabsModule as MatTabsModule} from '@angular/material/legacy-tabs';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {
+	ObAlertModule,
 	ObButtonModule,
 	ObColumnLayoutModule,
 	ObErrorMessagesModule,
@@ -132,6 +133,7 @@ const appRoutes: Routes = [
 		MatTableModule,
 		MatTabsModule,
 		MatTooltipModule,
+		ObAlertModule,
 		ObButtonModule,
 		ObColumnLayoutModule,
 		ObErrorMessagesModule,
