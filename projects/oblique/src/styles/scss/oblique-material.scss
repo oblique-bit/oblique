@@ -31,7 +31,6 @@ $theme-alt-500: (
 
 @include mat.legacy-core();
 
-@include mat.legacy-card-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-checkbox-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-chips-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-dialog-theme(mat.define-light-theme($legacy-theme));
@@ -48,6 +47,7 @@ $theme-alt-500: (
 @include mat.badge-theme(mat.define-light-theme($theme));
 @include mat.button-theme(mat.define-light-theme($theme));
 @include mat.button-toggle-theme(mat.define-light-theme($theme));
+@include mat.card-theme(mat.define-light-theme($theme));
 @include mat.datepicker-theme(mat.define-light-theme($theme));
 @include mat.expansion-theme(mat.define-light-theme($theme));
 @include mat.fab-theme(mat.define-light-theme($theme));
