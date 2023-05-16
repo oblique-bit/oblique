@@ -9,6 +9,7 @@
 					src="https://material.angular.io/assets/img/examples/shiba2.jpg"
 					alt="Photo of a Shiba Inu"
 				/>
+				<ob-alert *ngIf="alertVisible" type="info"> New feature </ob-alert>
 				<mat-card-header *ngIf="headerVisible">
 					<div *ngIf="avatarVisible" mat-card-avatar></div>
 					<mat-card-title *ngIf="titleVisible">Default Card</mat-card-title>
@@ -16,13 +17,17 @@
 				</mat-card-header>
 				<mat-card-content *ngIf="contentVisible">
 					<p>The default card is only a presentational artifact, without any form of interaction except for eventual buttons inside.</p>
+					<div class="ob-signature" *ngIf="signatureVisible">
+						<span>OFIT</span>
+						<span>Last login 20.07.2022</span>
+					</div>
 				</mat-card-content>
 				<mat-card-actions *ngIf="actionsVisible">
-					<button type="button" mat-stroked-button>Like</button>
-					<button type="button" mat-stroked-button>Share</button>
+					<button type="button" mat-button obButton="secondary">Like</button>
+					<button type="button" mat-button obButton="primary">Share</button>
 				</mat-card-actions>
 			</mat-card>
-			<button type="button" mat-button obButton="primary" class="ob-button-card">
+			<button type="button" mat-button obButton="primary" class="ob-button-card" [attr.disabled]="disabled ? '' : undefined">
 				<mat-card>
 					<img
 						*ngIf="pictureVisible"
@@ -30,6 +35,7 @@
 						src="https://material.angular.io/assets/img/examples/shiba2.jpg"
 						alt="Photo of a Shiba Inu"
 					/>
+					<ob-alert *ngIf="alertVisible" type="info"> New feature </ob-alert>
 					<mat-card-header *ngIf="headerVisible">
 						<div *ngIf="avatarVisible" mat-card-avatar></div>
 						<mat-card-title *ngIf="titleVisible">Button Card</mat-card-title>
@@ -37,10 +43,14 @@
 					</mat-card-header>
 					<mat-card-content *ngIf="contentVisible">
 						<p>The Button Card is a card wrapped in a button. The Whole card is clickable</p>
+						<div class="ob-signature" *ngIf="signatureVisible">
+							<span>OFIT</span>
+							<span>Last login 20.07.2022</span>
+						</div>
 					</mat-card-content>
 				</mat-card>
 			</button>
-			<a href="/material/card" class="ob-link-card">
+			<a href="/material/card" class="ob-link-card" [attr.disabled]="disabled ? '' : undefined">
 				<mat-card>
 					<img
 						*ngIf="pictureVisible"
@@ -48,6 +58,7 @@
 						src="https://material.angular.io/assets/img/examples/shiba2.jpg"
 						alt="Photo of a Shiba Inu"
 					/>
+					<ob-alert *ngIf="alertVisible" type="info"> New feature </ob-alert>
 					<mat-card-header *ngIf="headerVisible">
 						<div *ngIf="avatarVisible" mat-card-avatar></div>
 						<mat-card-title *ngIf="titleVisible">Link Card</mat-card-title>
@@ -55,16 +66,21 @@
 					</mat-card-header>
 					<mat-card-content *ngIf="contentVisible">
 						<p>Same concept as the Button Card, but wrapped in a link.</p>
+						<div class="ob-signature" *ngIf="signatureVisible">
+							<span>OFIT</span>
+							<span>Last login 20.07.2022</span>
+						</div>
 					</mat-card-content>
 				</mat-card>
 			</a>
-			<mat-card obSelectable>
+			<mat-card [attr.disabled]="disabled ? '' : undefined" obSelectable>
 				<img
 					*ngIf="pictureVisible"
 					mat-card-image
 					src="https://material.angular.io/assets/img/examples/shiba2.jpg"
 					alt="Photo of a Shiba Inu"
 				/>
+				<ob-alert *ngIf="alertVisible" type="info"> New feature </ob-alert>
 				<mat-card-header *ngIf="headerVisible">
 					<div *ngIf="avatarVisible" mat-card-avatar></div>
 					<mat-card-title *ngIf="titleVisible">Shiba Inu</mat-card-title>
@@ -75,15 +91,20 @@
 						The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
 						very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
 					</p>
+					<div class="ob-signature" *ngIf="signatureVisible">
+						<span>OFIT</span>
+						<span>Last login 20.07.2022</span>
+					</div>
 				</mat-card-content>
 			</mat-card>
-			<mat-card obSelectable>
+			<mat-card [attr.disabled]="disabled ? '' : undefined" obSelectable>
 				<img
 					*ngIf="pictureVisible"
 					mat-card-image
 					src="https://material.angular.io/assets/img/examples/shiba2.jpg"
 					alt="Photo of a Shiba Inu"
 				/>
+				<ob-alert *ngIf="alertVisible" type="info"> New feature </ob-alert>
 				<mat-card-header *ngIf="headerVisible">
 					<div *ngIf="avatarVisible" mat-card-avatar></div>
 					<mat-card-title *ngIf="titleVisible">Shiba Inu</mat-card-title>
@@ -94,6 +115,10 @@
 						The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
 						very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
 					</p>
+					<div class="ob-signature" *ngIf="signatureVisible">
+						<span>OFIT</span>
+						<span>Last login 20.07.2022</span>
+					</div>
 				</mat-card-content>
 			</mat-card>
 		</div>
@@ -125,7 +150,18 @@
 					<mat-slide-toggle [checked]="true" (click)="toggleActionsVisibility()" matTooltip="Toggle actions"> Actions </mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="toggleCheckboxMode()" matTooltip="Toggle actions"> Cheeckbox Mode </mat-slide-toggle>
+					<mat-slide-toggle [checked]="true" (click)="toggleCheckboxMode()" matTooltip="Toggle checkbox mode">
+						Checkbox Mode
+					</mat-slide-toggle>
+				</mat-list-item>
+				<mat-list-item>
+					<mat-slide-toggle [checked]="true" (click)="toggleAlertVisibility()" matTooltip="Toggle alert"> Alert </mat-slide-toggle>
+				</mat-list-item>
+				<mat-list-item>
+					<mat-slide-toggle [checked]="false" (click)="toggleDisabledMode()" matTooltip="Toggle disabled mode"> Disabled </mat-slide-toggle>
+				</mat-list-item>
+				<mat-list-item>
+					<mat-slide-toggle [checked]="true" (click)="toggleSignature()" matTooltip="Toggle signature"> Signature </mat-slide-toggle>
 				</mat-list-item>
 			</fieldset>
 		</mat-list>

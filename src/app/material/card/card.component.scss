@@ -8,11 +8,11 @@
 
 	> * {
 		flex: 1 1 400px;
-		max-width: 50%;
+		max-width: calc(50% - ($ob-spacing-sm / 2));
 	}
 }
 
-.mat-card-avatar {
+.mat-mdc-card-avatar {
 	background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
 	background-size: cover;
 }

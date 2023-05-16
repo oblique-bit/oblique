@@ -16,6 +16,9 @@ export class CardComponent {
 	contentVisible = true;
 	actionsVisible = true;
 	checkboxMode = true;
+	alertVisible = true;
+	disabled = false;
+	signatureVisible = true;
 
 	toggleAvatarVisibility(): void {
 		this.avatarVisible = !this.avatarVisible;
@@ -48,6 +51,18 @@ export class CardComponent {
 	toggleCheckboxMode(): void {
 		this.checkboxMode = !this.checkboxMode;
 		this.selectableGroup.mode = this.getSelectMode();
+	}
+
+	toggleAlertVisibility(): void {
+		this.alertVisible = !this.alertVisible;
+	}
+
+	toggleDisabledMode(): void {
+		this.disabled = !this.disabled;
+	}
+
+	toggleSignature(): void {
+		this.signatureVisible = !this.signatureVisible;
 	}
 
 	getSelectMode(): 'checkbox' | 'radio' {
