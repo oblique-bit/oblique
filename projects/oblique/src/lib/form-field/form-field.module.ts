@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ObFormFieldDirective} from './form-field.directive';
-import {obliqueProviders} from '@oblique/utilities';
+import {obliqueProviders} from '../utilities';
 import {ObSelectDirective} from './select.directive';
 
 export {ObFormFieldDirective} from './form-field.directive';
