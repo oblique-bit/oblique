@@ -7,7 +7,12 @@
     "predist": "ts-node scripts/pre-dist/run-pre-dist-steps.ts && ng build oblique-styles",
     "dist": "ng build oblique && npm run schematics",
     "postdist": "ts-node scripts/post-dist/run-post-dist-steps.ts",
-    "schematics": "tsc -p schematics/tsconfig.schematics.json"
+    "schematics": "tsc -p schematics/tsconfig.schematics.json",
+    "release": "ts-node scripts/release/release.ts",
+    "alpha": "npm run release -- alpha",
+    "beta": "npm run release -- beta",
+    "rc": "npm run release -- RC",
+    "release-commit": "ts-node scripts/release/release-commit.ts"
   },
   "peerDependencies": {
     "@angular/animations": "^15.0.0",
