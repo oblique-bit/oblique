@@ -1,14 +1,16 @@
 import {readFileSync, readdirSync, writeFileSync} from 'fs';
 import path from 'path';
+import {execSync} from 'child_process';
 
-export class CopyErrorMessages {
+class CopyErrorMessages {
 	static perform(): void {
-		const basePath = path.join('projects', 'oblique', 'src', 'assets', 'i18n');
-		const messagePath = path.join('projects', 'oblique', 'src', 'lib', 'error-messages', 'error-messages.description.html');
+		const basePath = path.join('src', 'assets', 'i18n');
+		const messagePath = path.join('src', 'lib', 'error-messages', 'error-messages.description.html');
 		writeFileSync(
 			messagePath,
 			CopyErrorMessages.adaptMessages(CopyErrorMessages.getTranslations(basePath), readFileSync(messagePath).toString())
 		);
+		CopyErrorMessages.prettify();
 	}
 
 	private static adaptMessages(translations: Record<string, string>, messages: string): string {
@@ -45,4 +47,10 @@ export class CopyErrorMessages {
 			}))
 			.reduce((translations, line) => ({...translations, [line.key]: line.value}), {});
 	}
+
+	private static prettify(): void {
+		execSync(`prettier "src/lib/error-messages/error-messages.description.html" --loglevel warn --write`, {stdio: 'inherit'});
+	}
 }
+
+CopyErrorMessages.perform();
