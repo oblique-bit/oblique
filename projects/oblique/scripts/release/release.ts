@@ -75,6 +75,8 @@ class Release {
 		stream.on('finish', () => {
 			const newLog: string = readFileSync('CHANGELOG.md')
 				.toString()
+				.replace(Release.getLinesWithNonObliquePrefix(), '')
+				.replace(Release.getObliquePrefix(), '')
 				.replace(/##(?<title>.*)\n/g, '#$<title>')
 				.replace(/\n\n\n/g, '\n\n');
 			writeFileSync('CHANGELOG.md', newLog + changelog);
@@ -83,6 +85,14 @@ class Release {
 			preset: 'angular',
 			tagPrefix: ''
 		}).pipe(stream);
+	}
+
+	private static getLinesWithNonObliquePrefix(): RegExp {
+		return /^[-*] \*{2}(?!oblique)[a-z-]+\/[a-z-]+:\*{2}.*$\n/g;
+	}
+
+	private static getObliquePrefix(): RegExp {
+		return /(?<=[-*] \*{2})oblique\/(?=[a-z-]+:\*{2})/g;
 	}
 }
 
