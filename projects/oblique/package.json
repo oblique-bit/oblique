@@ -1,6 +1,10 @@
 {
   "name": "@oblique/oblique",
   "version": "",
+  "scripts": {
+    "test": "cd ../.. && ng test oblique",
+    "test-debugging": "cd ../.. && node --expose-gc ../../node_modules/@angular/cli/bin/ng run oblique:test:development --log-heap-usage"
+  },
   "peerDependencies": {
     "@angular/animations": "^15.0.0",
     "@angular/cdk": "^15.0.0",
