@@ -8,6 +8,7 @@
     "dist": "ng build oblique && npm run schematics",
     "postdist": "ts-node scripts/post-dist/run-post-dist-steps.ts",
     "schematics": "tsc -p schematics/tsconfig.schematics.json",
+    "prerelease": "npm run update-error-messages && npm run update-icons",
     "release": "ts-node scripts/release/release.ts",
     "alpha": "npm run release -- alpha",
     "beta": "npm run release -- beta",
