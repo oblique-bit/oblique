@@ -27,13 +27,12 @@ class HookCommitRules {
 
 	private static checkLineLength(lines: string[], length: number): void {
 		if (lines.some(line => line.length > length)) {
-			const erroneousLines: string = lines
+			const erroneousLines = lines
 				.map((line, index) => (line.length > length ? index : -1))
 				.filter(number => number > -1)
-				.map(number => HookCommitRules.numeral(number))
-				.join(', ')
-				.replace(/,(?=[^,]*$)/, ' and');
-			throw new Error(`${erroneousLines} line${erroneousLines.includes('and') ? 's' : 0} exceeds ${length} characters.`);
+				.map(number => HookCommitRules.numeral(number));
+			const text = HookCommitRules.join(erroneousLines);
+			throw new Error(`${text} line${text.includes('and') ? 's' : ''} exceeds ${length} characters.`);
 		}
 	}
 
@@ -65,13 +64,13 @@ class HookCommitRules {
 
 	private static checkType(type: string, types: string[]): void {
 		if (!types.includes(type)) {
-			throw new Error(`1st line has an invalid type '${type}'. Allowed types are: ${types.join(', ').replace(/,(?=[^,]*$)/, ' and')}`);
+			throw new Error(`1st line has an invalid type '${type}'. Allowed types are: ${HookCommitRules.join(types)}`);
 		}
 	}
 
 	private static checkScope(scope: string, scopes: string[]): void {
 		if (scope && !scopes.includes(scope)) {
-			throw new Error(`1st line has an invalid scope '${scope}'. Allowed types are: ${scopes.join(', ').replace(/,(?=[^,]*$)/, ' and')}`);
+			throw new Error(`1st line has an invalid scope '${scope}'. Allowed types are: ${HookCommitRules.join(scopes)}`);
 		}
 	}
 
@@ -118,6 +117,10 @@ class HookCommitRules {
 			contributing.indexOf('#', ListStartIndex + 1)
 		);
 		return listBlock.match(/\*\*.*\*\*/g).map(item => item.replace(/\*\*/g, ''));
+	}
+
+	private static join(list: string[]): string {
+		return list.join(', ').replace(/,(?=[^,]*$)/, ' and');
 	}
 }
 
