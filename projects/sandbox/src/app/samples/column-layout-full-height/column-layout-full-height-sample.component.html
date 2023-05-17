@@ -1,0 +1,95 @@
+<ob-column-layout class="ob-full-height" [left]="left" [right]="right" [noLayout]="noLayout" [wider]="wider" #obColumnLayout>
+	<ng-container column-left-content>
+		<h3 class="nav-header-title">Left Column</h3>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non tellus vel nulla vehicula auctor. Curabitur vel lorem mi.
+			Vivamus condimentum mauris felis, eget ultricies lacus fringilla ac. Nullam lobortis nisl ut luctus sodales. Aenean a ex in justo
+			molestie semper. Aenean placerat ipsum hendrerit orci blandit, ut semper orci mollis. In enim purus, sollicitudin vitae lobortis quis,
+			egestas id augue. Nulla ullamcorper faucibus urna, at varius diam aliquam ac. Ut venenatis justo a commodo placerat. Nullam finibus
+			nec leo a ornare. Cras sodales massa eu magna lacinia fringilla. Curabitur eu risus eros. Suspendisse laoreet mi non eros dictum,
+			mattis aliquam justo ultricies. Suspendisse auctor tincidunt tellus et laoreet. Morbi mollis malesuada arcu ut accumsan.
+		</p>
+		<p>
+			Cras eget aliquam est. Ut volutpat condimentum facilisis. Nam rhoncus bibendum est at sodales. Suspendisse congue pulvinar dolor sed
+			bibendum. Maecenas ac eleifend nulla. Curabitur euismod sapien sapien, eu vestibulum libero mollis non. Suspendisse nec posuere odio,
+			ut convallis felis. Duis et sollicitudin dolor. Vestibulum ultricies, tortor sed scelerisque rutrum, nibh orci dictum diam, eu
+			interdum massa lorem ac eros. Vivamus nec urna tristique, faucibus velit ut, vestibulum mauris. Etiam ex neque, blandit at auctor
+			vitae, suscipit sit amet leo.
+		</p>
+		<p>
+			Aenean vitae turpis eu risus dignissim rutrum. Ut faucibus ornare egestas. Integer imperdiet tristique nisi at lacinia. Curabitur quis
+			ipsum ipsum. Vestibulum et euismod augue, in faucibus neque. Duis sit amet scelerisque diam. Sed id porta mi, a sollicitudin enim.
+			Suspendisse ut nisi in sapien rutrum malesuada a sed orci.
+		</p>
+		<p>
+			Duis pulvinar lobortis magna nec placerat. Duis ipsum nisi, accumsan vitae accumsan at, dictum quis justo. Pellentesque habitant morbi
+			tristique senectus et netus et malesuada fames ac turpis egestas. Ut quam ex, dignissim quis lobortis eu, blandit non leo. Sed
+			sollicitudin lobortis nisl tincidunt facilisis. Nullam mattis nulla et massa suscipit hendrerit. Cras blandit maximus ex sit amet
+			dapibus. Vivamus et dapibus odio, eget ullamcorper nulla. Sed consequat vehicula quam, sed ultrices nunc finibus eget. Vivamus a augue
+			quis nulla eleifend mattis. Nunc venenatis, dolor a dignissim lobortis, tellus sem rutrum mauris, porta dictum nisl arcu sit amet
+			lectus. Nullam vitae metus sed risus placerat varius. Fusce ac blandit diam.
+		</p>
+		<p>
+			Aenean sed felis eu eros rhoncus suscipit eu ut leo. Maecenas vestibulum urna massa, vel tristique urna iaculis eu. Nulla et libero
+			vestibulum nisi interdum aliquet semper sed enim. Etiam laoreet, felis eget mollis bibendum, ex magna maximus ligula, eget convallis
+			magna sapien eu quam. Duis in ultrices eros. Suspendisse potenti. Aliquam maximus commodo elit, non vulputate eros maximus eu.
+			Curabitur molestie volutpat augue quis molestie. Sed volutpat lacus ullamcorper dui maximus vulputate. Donec ullamcorper viverra
+			tincidunt. Etiam id efficitur orci, nec ornare dui. Etiam molestie cursus ligula, vitae convallis nunc.
+		</p>
+	</ng-container>
+	<ng-container column-main-content>
+		<h2>{{ "i18n.routes.samples.column-layout.title" | translate }}</h2>
+		<p>In Full Height mode, the column layout uses all the available space and each column can be independently scrolled.</p>
+		<ob-autocomplete [autocompleteOptions]="[{ label: 'test' }]"></ob-autocomplete>
+		<sb-description component="column-layout"></sb-description>
+		<sb-api component="column-layout"></sb-api>
+	</ng-container>
+	<ng-container column-right-content>
+		<h3>Controls</h3>
+		<div>
+			<mat-checkbox [(ngModel)]="left">Left column?</mat-checkbox>
+			<button type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()" *ngIf="left">Toggle</button>
+		</div>
+		<div>
+			<mat-checkbox [(ngModel)]="right">Right column?</mat-checkbox>
+			<button type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()" *ngIf="right">Toggle</button>
+		</div>
+		<mat-slide-toggle [(ngModel)]="noLayout">Remove layout</mat-slide-toggle>
+		<mat-slide-toggle [(ngModel)]="wider">Wider columns</mat-slide-toggle>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non tellus vel nulla vehicula auctor. Curabitur vel lorem mi.
+			Vivamus condimentum mauris felis, eget ultricies lacus fringilla ac. Nullam lobortis nisl ut luctus sodales. Aenean a ex in justo
+			molestie semper. Aenean placerat ipsum hendrerit orci blandit, ut semper orci mollis. In enim purus, sollicitudin vitae lobortis quis,
+			egestas id augue. Nulla ullamcorper faucibus urna, at varius diam aliquam ac. Ut venenatis justo a commodo placerat. Nullam finibus
+			nec leo a ornare. Cras sodales massa eu magna lacinia fringilla. Curabitur eu risus eros. Suspendisse laoreet mi non eros dictum,
+			mattis aliquam justo ultricies. Suspendisse auctor tincidunt tellus et laoreet. Morbi mollis malesuada arcu ut accumsan.
+		</p>
+		<p>
+			Cras eget aliquam est. Ut volutpat condimentum facilisis. Nam rhoncus bibendum est at sodales. Suspendisse congue pulvinar dolor sed
+			bibendum. Maecenas ac eleifend nulla. Curabitur euismod sapien sapien, eu vestibulum libero mollis non. Suspendisse nec posuere odio,
+			ut convallis felis. Duis et sollicitudin dolor. Vestibulum ultricies, tortor sed scelerisque rutrum, nibh orci dictum diam, eu
+			interdum massa lorem ac eros. Vivamus nec urna tristique, faucibus velit ut, vestibulum mauris. Etiam ex neque, blandit at auctor
+			vitae, suscipit sit amet leo.
+		</p>
+		<p>
+			Aenean vitae turpis eu risus dignissim rutrum. Ut faucibus ornare egestas. Integer imperdiet tristique nisi at lacinia. Curabitur quis
+			ipsum ipsum. Vestibulum et euismod augue, in faucibus neque. Duis sit amet scelerisque diam. Sed id porta mi, a sollicitudin enim.
+			Suspendisse ut nisi in sapien rutrum malesuada a sed orci.
+		</p>
+		<p>
+			Duis pulvinar lobortis magna nec placerat. Duis ipsum nisi, accumsan vitae accumsan at, dictum quis justo. Pellentesque habitant morbi
+			tristique senectus et netus et malesuada fames ac turpis egestas. Ut quam ex, dignissim quis lobortis eu, blandit non leo. Sed
+			sollicitudin lobortis nisl tincidunt facilisis. Nullam mattis nulla et massa suscipit hendrerit. Cras blandit maximus ex sit amet
+			dapibus. Vivamus et dapibus odio, eget ullamcorper nulla. Sed consequat vehicula quam, sed ultrices nunc finibus eget. Vivamus a augue
+			quis nulla eleifend mattis. Nunc venenatis, dolor a dignissim lobortis, tellus sem rutrum mauris, porta dictum nisl arcu sit amet
+			lectus. Nullam vitae metus sed risus placerat varius. Fusce ac blandit diam.
+		</p>
+		<p>
+			Aenean sed felis eu eros rhoncus suscipit eu ut leo. Maecenas vestibulum urna massa, vel tristique urna iaculis eu. Nulla et libero
+			vestibulum nisi interdum aliquet semper sed enim. Etiam laoreet, felis eget mollis bibendum, ex magna maximus ligula, eget convallis
+			magna sapien eu quam. Duis in ultrices eros. Suspendisse potenti. Aliquam maximus commodo elit, non vulputate eros maximus eu.
+			Curabitur molestie volutpat augue quis molestie. Sed volutpat lacus ullamcorper dui maximus vulputate. Donec ullamcorper viverra
+			tincidunt. Etiam id efficitur orci, nec ornare dui. Etiam molestie cursus ligula, vitae convallis nunc.
+		</p>
+	</ng-container>
+</ob-column-layout>

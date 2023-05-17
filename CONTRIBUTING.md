@@ -65,7 +65,7 @@ The type is mandatory and must be one of the following:
 - **refactor**: Changes to a feature that neither adds, removes nor fixes a behavior
 - **test**: Changes that affect tests and their configuration only
 - **docs**: Changes that affect the documentation only
-- **showcase**: Changes that affect the showcase only
+- **sandbox**: Changes that affect the sandbox only
 - **format**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 - **chore**: Anything that do not fit in any previous types (e.g. release, dependencies update, ...)
 

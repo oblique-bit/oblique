@@ -6,113 +6,6 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "oblique-showcase": {
-      "root": "",
-      "sourceRoot": "src",
-      "projectType": "application",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "allowedCommonJsDependencies": ["ajv", "ajv-formats"],
-            "outputPath": "target",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.app.json",
-            "polyfills": ["zone.js"],
-            "preserveSymlinks": true,
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets"
-              },
-              {
-                "glob": "**/*",
-                "input": "projects/oblique/src/assets",
-                "output": "/assets"
-              },
-              {
-                "glob": "**/*",
-                "input": "projects/oblique/src/styles/fonts",
-                "output": "/assets/fonts"
-              },
-              "src/Staticfile"
-            ],
-            "styles": [
-              "projects/oblique/src/styles/scss/oblique-core.scss",
-              {
-                "input": "projects/oblique/src/styles/css/frutiger.css",
-                "inject": false
-              },
-              {
-                "input": "projects/oblique/src/styles/css/roboto.css",
-                "inject": false
-              },
-              "projects/oblique/src/styles/scss/oblique-icons.scss",
-              "projects/oblique/src/styles/scss/oblique-alert.scss",
-              "src/scss/styles.scss"
-            ],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "projects/oblique/src/styles/scss/core",
-                "projects/oblique/src/styles/scss/core/mixins"
-              ]
-            },
-            "scripts": ["projects/oblique/src/ob-features.js"]
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6.5kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ]
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "port": 3001
-          },
-          "configurations": {
-            "development": {
-              "browserTarget": "oblique-showcase:build:development"
-            },
-            "production": {
-              "browserTarget": "oblique-showcase:build:prod"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "test": {
-          "builder": "@angular-builders/jest:run",
-          "options": {
-            "configPath": "src/jest.config.js",
-            "tsConfig": "src/tsconfig.spec.json",
-            "no-cache": ["true"],
-            "run-in-band": ["true"]
-          }
-        }
-      }
-    },
     "oblique-styles": {
       "root": "",
       "sourceRoot": "projects/oblique/src/styles",
@@ -176,6 +69,125 @@
             }
           },
           "defaultConfiguration": "production"
+        }
+      }
+    },
+    "sandbox": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/sandbox",
+      "sourceRoot": "projects/sandbox/src",
+      "prefix": "sb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies": ["ajv", "ajv-formats"],
+            "outputPath": "dist/sandbox",
+            "index": "projects/sandbox/src/index.html",
+            "main": "projects/sandbox/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/sandbox/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/sandbox/src/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/oblique/src/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/oblique/src/styles/fonts",
+                "output": "/assets/fonts"
+              }
+            ],
+            "styles": [
+              "projects/oblique/src/styles/scss/oblique-core.scss",
+              {
+                "input": "projects/oblique/src/styles/css/frutiger.css",
+                "inject": false
+              },
+              {
+                "input": "projects/oblique/src/styles/css/roboto.css",
+                "inject": false
+              },
+              "projects/oblique/src/styles/scss/oblique-icons.scss",
+              "projects/oblique/src/styles/scss/oblique-alert.scss",
+              "projects/sandbox/src/scss/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/oblique/src/styles/scss/core",
+                "projects/oblique/src/styles/scss/core/mixins"
+              ]
+            },
+            "scripts": ["projects/oblique/src/ob-features.js"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3mb",
+                  "maximumError": "3mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "12kb",
+                  "maximumError": "12kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/sandbox/src/environments/environment.ts",
+                  "with": "projects/sandbox/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 3001
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sandbox:build:production"
+            },
+            "development": {
+              "browserTarget": "sandbox:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "configPath": "jest.config.js",
+            "tsConfig": "tsconfig.spec.json",
+            "no-cache": ["true"],
+            "run-in-band": ["true"]
+          }
         }
       }
     }

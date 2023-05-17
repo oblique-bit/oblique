@@ -1,0 +1,103 @@
+<h2>Template-driven form</h2>
+
+<mat-form-field>
+	<mat-label>Mandatory</mat-label>
+	<input type="text" matInput placeholder="Mandatory" required ngModel />
+</mat-form-field>
+
+<mat-form-field>
+	<mat-label>Mandatory with input clear</mat-label>
+	<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatoryModel" #mandatoryControl="ngModel" />
+	<button type="button" role="button" [obInputClear]="mandatoryControl">
+		<mat-icon svgIcon="cancel-circle"></mat-icon>
+		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+	</button>
+</mat-form-field>
+
+<div class="ob-form-lg">
+	<mat-form-field>
+		<mat-label>Mandatory LG</mat-label>
+		<input type="text" matInput placeholder="Mandatory" required ngModel />
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Mandatory LG with input clear</mat-label>
+		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatoryLgModel" #mandatoryLgControl="ngModel" />
+		<button type="button" role="button" [obInputClear]="mandatoryLgControl">
+			<mat-icon svgIcon="cancel-circle"></mat-icon>
+			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+		</button>
+	</mat-form-field>
+</div>
+
+<div class="ob-form-sm">
+	<mat-form-field>
+		<mat-label>Mandatory SM</mat-label>
+		<input type="text" matInput placeholder="Mandatory" required ngModel />
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Mandatory SM with input clear</mat-label>
+		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatorySmModel" #mandatorySmControl="ngModel" />
+		<button type="button" role="button" [obInputClear]="mandatorySmControl">
+			<mat-icon svgIcon="cancel-circle"></mat-icon>
+			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+		</button>
+	</mat-form-field>
+</div>
+
+<mat-form-field>
+	<mat-label>Datepicker</mat-label>
+	<input matInput [matDatepicker]="datepicker" />
+	<mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+	<mat-datepicker #datepicker></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+	<mat-label>Datepicker with input clear</mat-label>
+	<input matInput [matDatepicker]="datepickerWithInputClear" #datepickerControl="ngModel" [(ngModel)]="datepickerModel" />
+	<mat-datepicker-toggle matSuffix [for]="datepickerWithInputClear"></mat-datepicker-toggle>
+	<mat-datepicker #datepickerWithInputClear></mat-datepicker>
+	<button type="button" role="button" [obInputClear]="datepickerControl" [datePickerRef]="datepickerWithInputClear">
+		<mat-icon svgIcon="cancel-circle"></mat-icon>
+		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+	</button>
+</mat-form-field>
+
+<h2>Untyped reactive form</h2>
+<div [formGroup]="untypedForm">
+	<mat-form-field>
+		<mat-label>Untyped test input</mat-label>
+		<input type="text" matInput formControlName="untypedFormField" />
+		<button type="button" role="button" [obInputClear]="untypedForm.get('untypedFormField')">
+			<mat-icon svgIcon="cancel-circle"></mat-icon>
+			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+		</button>
+	</mat-form-field>
+</div>
+
+<h2>Strongly typed reactive form</h2>
+<div [formGroup]="stronglyTypedForm">
+	<mat-form-field>
+		<mat-label>Strongly typed test input</mat-label>
+		<input type="text" matInput formControlName="stronglyTypedFormField" />
+		<button type="button" role="button" [obInputClear]="stronglyTypedForm.get('stronglyTypedFormField')">
+			<mat-icon svgIcon="cancel-circle"></mat-icon>
+			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+		</button>
+	</mat-form-field>
+</div>
+
+<h2>HTML input only</h2>
+<div>
+	<mat-form-field>
+		<mat-label>HTML test input</mat-label>
+		<input type="text" matInput #htmlControl />
+		<button type="button" role="button" [obInputClear]="htmlControl">
+			<mat-icon svgIcon="cancel-circle"></mat-icon>
+			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+		</button>
+	</mat-form-field>
+</div>
+
+<sb-api component="input-clear"></sb-api>

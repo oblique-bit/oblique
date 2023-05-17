@@ -1,0 +1,14 @@
+@import "projects/oblique/src/styles/scss/core/variables";
+
+.item {
+	background-color: $ob-gray-200;
+	text-align: center;
+}
+
+details {
+	margin-bottom: $ob-spacing-default;
+}
+
+section + section {
+	margin-top: $ob-spacing-xl;
+}

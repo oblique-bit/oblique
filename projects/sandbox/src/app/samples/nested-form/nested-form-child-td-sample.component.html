@@ -1,0 +1,15 @@
+<div ngForm>
+	<mat-form-field obErrorMessages>
+		<mat-label>Template Material Child 1</mat-label>
+		<input matInput name="field1" [(ngModel)]="field1" required />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<mat-form-field obErrorMessages>
+		<mat-label>Template Material Child 2</mat-label>
+		<input matInput name="field2" [(ngModel)]="field2" required />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<ob-nested-form name="grandchild" [(ngModel)]="grandchild" [nestedForm]="grandChildTD.ngForm.control">
+		<sb-nested-form-grandchild-td-sample #grandChildTD></sb-nested-form-grandchild-td-sample>
+	</ob-nested-form>
+</div>

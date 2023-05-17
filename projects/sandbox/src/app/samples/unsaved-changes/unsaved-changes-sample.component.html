@@ -1,0 +1,69 @@
+<h2 class="page-header">
+	{{ "i18n.routes.samples.unsavedChanges.title" | translate }}
+</h2>
+<sb-description component="unsaved-changes"></sb-description>
+<form #standAloneTemplate="ngForm" role="form" id="templateForm" obUnsavedChanges>
+	<mat-card>
+		<mat-card-header>
+			Preview with template driven form
+			<mat-icon
+				class="ob-icon-text"
+				svgIcon="checkmark"
+				matTooltip="Form does not contain unsaved changes"
+				*ngIf="!standAloneTemplate.form.dirty"
+			></mat-icon>
+			<mat-icon
+				class="ob-icon-text"
+				svgIcon="warning"
+				matTooltip="Form contains unsaved changes"
+				*ngIf="standAloneTemplate.form.dirty"
+			></mat-icon>
+		</mat-card-header>
+		<mat-card-content>
+			<mat-form-field>
+				<mat-label>Text</mat-label>
+				<input matInput type="text" name="text" [(ngModel)]="tabModels.standAloneTemplate.text" />
+			</mat-form-field>
+			<mat-form-field>
+				<mat-label>Number</mat-label>
+				<input matInput type="number" name="number" [(ngModel)]="tabModels.standAloneTemplate.number" />
+			</mat-form-field>
+			<mat-form-field>
+				<mat-label>Integer</mat-label>
+				<input matInput type="number" name="integer" [(ngModel)]="tabModels.standAloneTemplate.integer" />
+			</mat-form-field>
+			<pre>{{ tabModels.standAloneTemplate | json }}</pre>
+		</mat-card-content>
+		<mat-card-footer>
+			<button type="reset" obButton="secondary" mat-button>Reset</button>
+		</mat-card-footer>
+	</mat-card>
+</form>
+<form id="standAloneReactive" role="form" [formGroup]="standAloneReactive" obUnsavedChanges>
+	<mat-card>
+		<mat-card-header>
+			Preview with reactive form
+			<mat-icon svgIcon="checkmark" matTooltip="Form does not contain unsaved changes" *ngIf="!standAloneReactive.dirty"></mat-icon>
+			<mat-icon svgIcon="warning" matTooltip="Form contains unsaved changes" *ngIf="standAloneReactive.dirty"></mat-icon>
+		</mat-card-header>
+		<mat-card-content>
+			<mat-form-field>
+				<mat-label>Integer</mat-label>
+				<input matInput type="text" formControlName="text" />
+			</mat-form-field>
+			<mat-form-field>
+				<mat-label>Integer</mat-label>
+				<input matInput type="number" formControlName="number" />
+			</mat-form-field>
+			<mat-form-field>
+				<mat-label>Integer</mat-label>
+				<input matInput type="number" formControlName="integer" />
+			</mat-form-field>
+			<pre>{{ standAloneReactive.value | json }}</pre>
+		</mat-card-content>
+		<mat-card-footer>
+			<button type="reset" obButton="secondary" mat-button>Reset</button>
+		</mat-card-footer>
+	</mat-card>
+</form>
+<sb-api component="unsaved-changes"></sb-api>
