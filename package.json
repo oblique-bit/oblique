@@ -26,10 +26,6 @@
   "scripts": {
     "prebuild": "ts-node projects/oblique/scripts/pre-build/run-pre-build-steps.ts",
     "build": "ng build sandbox",
-    "schematics": "tsc -p projects/oblique/schematics/tsconfig.schematics.json",
-    "predist": "ts-node projects/oblique/scripts/pre-dist/run-pre-dist-steps.ts && ng build oblique-styles",
-    "dist": "ng build oblique && npm run schematics",
-    "postdist": "ts-node projects/oblique/scripts/post-dist/run-post-dist-steps.ts",
     "lint": "ts-node scripts/lint/run-lint-steps.ts",
     "format": "ts-node scripts/lint/run-format-steps.ts",
     "dependencies-update": "ts-node projects/oblique/scripts/release/update-dependencies.ts",

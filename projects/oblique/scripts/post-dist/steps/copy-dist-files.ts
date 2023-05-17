@@ -2,8 +2,8 @@ import {copyFileSync, mkdirSync, readdirSync, statSync} from 'fs';
 import path from 'path';
 
 export class CopyDistFiles {
-	private static readonly SOURCE = path.join('projects', 'oblique', 'src');
-	private static readonly DESTINATION = path.join('dist', 'oblique');
+	private static readonly SOURCE = path.join('..', 'oblique', 'src');
+	private static readonly DESTINATION = path.join('..', '..', 'dist', 'oblique');
 
 	static perform(): void {
 		CopyDistFiles.copyRootFiles(['README.md', 'CHANGELOG.md', 'LICENSE']);
@@ -28,14 +28,18 @@ export class CopyDistFiles {
 	}
 
 	private static copyRootFiles(fileList: string[]): void {
-		CopyDistFiles.copyFiles(fileList, /^/, `${CopyDistFiles.DESTINATION}${path.sep}`);
+		CopyDistFiles.copyFiles(
+			fileList.map(filename => path.join('..', '..', filename)),
+			path.join('..', '..'),
+			CopyDistFiles.DESTINATION
+		);
 	}
 
 	private static copyObliqueFiles(fileList: string[]): void {
 		CopyDistFiles.copyFiles(fileList, CopyDistFiles.SOURCE, CopyDistFiles.DESTINATION);
 	}
 
-	private static copyFiles(fileList: string[], source: string | RegExp, destination: string): void {
+	private static copyFiles(fileList: string[], source: string, destination: string): void {
 		fileList
 			.map(filePath => ({
 				source: filePath,
