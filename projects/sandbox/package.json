@@ -1,6 +1,9 @@
 {
   "name": "sandbox",
   "version": "",
+  "scripts": {
+    "start": "ng serve"
+  },
   "dependencies": {
     "raw-loader": "^4.0.2"
   }
