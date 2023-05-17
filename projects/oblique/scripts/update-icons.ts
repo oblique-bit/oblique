@@ -1,13 +1,15 @@
 import {readFileSync, readdirSync, writeFileSync} from 'fs';
 import path from 'path';
+import {execSync} from 'child_process';
 
-export class Icons {
+class Icons {
 	static perform(): void {
-		const SVGs = Icons.getSVGs(path.join('projects', 'oblique', 'icons'));
-		Icons.writeIconSet(path.join('projects', 'oblique', 'src', 'assets', 'obliqueIcons.svg'), SVGs);
-		Icons.writeIconSetTS(path.join('projects', 'oblique', 'src', 'assets', 'oblique-icons.ts'), SVGs);
-		Icons.writeIconCSS(path.join('projects', 'oblique', 'src', 'styles', 'scss', 'oblique-icons.scss'), SVGs);
-		Icons.writeIconEnum(path.join('projects', 'oblique', 'src', 'lib', 'icon', 'icon.model.ts'), SVGs);
+		const SVGs = Icons.getSVGs('icons');
+		Icons.writeIconSet(path.join('src', 'assets', 'obliqueIcons.svg'), SVGs);
+		Icons.writeIconSetTS(path.join('src', 'assets', 'oblique-icons.ts'), SVGs);
+		Icons.writeIconCSS(path.join('src', 'styles', 'scss', 'oblique-icons.scss'), SVGs);
+		Icons.writeIconEnum(path.join('src', 'lib', 'icon', 'icon.model.ts'), SVGs);
+		Icons.prettify();
 	}
 
 	private static getSVGs(iconsPath: string): string[] {
@@ -61,4 +63,11 @@ export class Icons {
 				.replace(/(?<=export enum ObEIcon {\r?\n).*(?=})/s, `${iconNames.map(name => `\t${name}`).join(',\n')}\n`)
 		);
 	}
+
+	private static prettify(): void {
+		const files = ['src/assets/oblique-icons.ts', 'src/styles/scss/oblique-icons.scss', 'src/lib/icon/icon.model.ts'].join(',');
+		execSync(`prettier "{${files}}" --loglevel warn --write`, {stdio: 'inherit'});
+	}
 }
+
+Icons.perform();

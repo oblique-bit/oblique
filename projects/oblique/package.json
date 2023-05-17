@@ -12,7 +12,8 @@
     "alpha": "npm run release -- alpha",
     "beta": "npm run release -- beta",
     "rc": "npm run release -- RC",
-    "release-commit": "ts-node scripts/release/release-commit.ts"
+    "release-commit": "ts-node scripts/release/release-commit.ts",
+    "update-icons": "ts-node scripts/update-icons.ts"
   },
   "peerDependencies": {
     "@angular/animations": "^15.0.0",
