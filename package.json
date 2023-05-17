@@ -21,6 +21,7 @@
   },
   "workspaces": [
     "projects/oblique",
+    "projects/sds",
     "projects/sandbox"
   ],
   "scripts": {

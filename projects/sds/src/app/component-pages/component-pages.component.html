@@ -1,0 +1,9 @@
+<app-tabs [idPrefix]="componentId" [id]="componentId | id : ['tabs']">
+	<app-tab title="Examples" [id]="componentId | id : ['examples-tab']"> <ng-template appCodeExample></ng-template> </app-tab>
+	<app-tab title="UI/UX" [id]="componentId | id : ['ui-ux-tab']">
+		<div [id]="componentId | id : ['html-container']" [innerHtml]="uiUxContent$ | async"></div
+	></app-tab>
+	<app-tab title="API" [id]="componentId | id : ['api-tab']">
+		<div [id]="componentId | id : ['html-container']" [innerHtml]="apiContent$ | async"></div>
+	</app-tab>
+</app-tabs>

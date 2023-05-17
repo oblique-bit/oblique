@@ -190,6 +190,121 @@
           }
         }
       }
+    },
+    "sds": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "prefix": "app"
+        },
+        "@schematics/angular:directive": {
+          "prefix": "app"
+        }
+      },
+      "root": "projects/sds",
+      "sourceRoot": "projects/sds/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/sds",
+            "index": "projects/sds/src/index.html",
+            "main": "projects/sds/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/sds/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/sds/src/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/oblique/src/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "*headers.conf",
+                "input": "src/nginx",
+                "output": "./../nginx/conf/includes"
+              },
+              {
+                "glob": "Staticfile",
+                "input": "src/nginx",
+                "output": "./.."
+              }
+            ],
+            "styles": [
+              "projects/oblique/src/styles/scss/oblique-core.scss",
+              {
+                "input": "projects/oblique/src/styles/css/frutiger.css",
+                "inject": false
+              },
+              "projects/sds/src/styles/styles.scss",
+              "node_modules/highlight.js/styles/sunburst.css"
+            ],
+            "scripts": ["projects/oblique/src/ob-features.js"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": {
+                "styles": {
+                  "inlineCritical": false
+                }
+              },
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3mb",
+                  "maximumError": "3.5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "12kb",
+                  "maximumError": "12kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4200
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sds:build:production"
+            },
+            "development": {
+              "browserTarget": "sds:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "configPath": "jest.config.js",
+            "tsConfig": "tsconfig.spec.json",
+            "no-cache": ["true"],
+            "run-in-band": ["true"]
+          }
+        }
+      }
     }
   },
   "schematics": {

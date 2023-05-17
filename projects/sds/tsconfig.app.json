@@ -1,0 +1,28 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": false,
+    "noImplicitOverride": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "downlevelIteration": true,
+    "module": "esnext"
+  },
+  "files": ["src/main.ts"],
+  "paths": {
+    "cms/*": ["src/app/cms/*"],
+    "component-pages/*": ["src/app/component-pages/*"],
+    "documentation-pages/*": ["src/app/documentation-pages/*"],
+    "shared/*": ["src/app/shared/*"],
+    "side-navigation/*": ["src/app/side-navigation/*"],
+    "test-helpers/*": ["src/test-helpers/*"]
+  },
+  "angularCompilerOptions": {
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": false
+  }
+}

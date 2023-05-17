@@ -1,0 +1,35 @@
+extends: "../../.eslintrc.yml"
+ignorePatterns:
+  - "!**/*"
+overrides:
+  - files:
+      - "*.ts"
+    parserOptions:
+      project:
+        - projects/sds/tsconfig.app.json
+        - projects/sds/tsconfig.spec.json
+    rules:
+      # reactivate some rules
+      "@angular-eslint/use-component-view-encapsulation": error
+      "@typescript-eslint/sort-type-constituents": error
+      "@typescript-eslint/explicit-module-boundary-types": error
+      "@typescript-eslint/no-unsafe-member-access": error
+      "@typescript-eslint/no-unsafe-assignment": error
+      "@typescript-eslint/no-unsafe-argument": error
+      "@typescript-eslint/no-misused-promises": error
+      "@typescript-eslint/no-unsafe-call": error
+      "@typescript-eslint/naming-convention": error
+      max-params: error
+      no-warning-comments: error
+
+      # rules that need strict mode to be enabled
+      "@typescript-eslint/prefer-nullish-coalescing": off
+
+  - files:
+      - "*.html"
+    rules:
+      "@angular-eslint/template/accessibility-label-has-associated-control": error
+      "@angular-eslint/template/cyclomatic-complexity": error
+      "@angular-eslint/template/no-call-expression": error
+      "@angular-eslint/template/attributes-order": error
+      "@angular-eslint/template/no-inline-styles": error

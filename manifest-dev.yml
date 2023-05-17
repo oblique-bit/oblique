@@ -1,11 +1,12 @@
-organization: bit-oblique
+organization: bit-sds
 caasp_version: 4
 applications:
-  - name: showcase
-    path: ./target
-    buildpack: staticfile_buildpack
+  - name: swiss-design-system
+    path: ./dist/sds
+    buildpack: https://repo.bit.admin.ch/repository/raw-cloudfoundry-buildpacks-hosted/staticfile_buildpack_latest.zip
+    stack: cflinuxfs3
     disk_quota: 768M
     instances: 1
     memory: 128M
     routes:
-      - route: oblique-showcase-dev.app.cfap02.atlantica.admin.ch
+      - route: sds-dev.app.cfap02.atlantica.admin.ch

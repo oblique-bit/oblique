@@ -1,0 +1,101 @@
+@import "../../../variables";
+
+.visible {
+	height: auto;
+	opacity: 1;
+	transition: height 0ms 0ms, opacity 600ms 0ms;
+}
+
+.hidden {
+	overflow: hidden;
+	height: 0;
+	opacity: 0;
+	transition: height 0ms 400ms, opacity 400ms 0ms;
+}
+
+@mixin triangle-pointing {
+	transition: transform 0.1s ease-out 0s;
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-top: 6px;
+	margin-left: 8px;
+	margin-right: 5px;
+	color: rgba(153, 153, 153, 60%);
+	border-top: 3px solid transparent;
+	border-bottom: 3px solid transparent;
+	border-left: 3px solid;
+}
+
+.triangle-pointing-down {
+	@include triangle-pointing();
+	transform: rotateZ(90deg);
+}
+
+.triangle-pointing-right {
+	@include triangle-pointing();
+	transform: none;
+}
+
+.button-container {
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: justify;
+	justify-content: space-between;
+	padding: 0 20px;
+	margin-top: 16px;
+	margin-bottom: 4px;
+	font-size: 11px;
+	font-weight: 900;
+	line-height: 16px;
+	min-height: 20px;
+	letter-spacing: 0.35em;
+	text-transform: uppercase;
+	color: $inactive;
+}
+
+button {
+	background: transparent;
+	border: none;
+	outline: none;
+	box-sizing: content-box;
+	cursor: pointer;
+	position: relative;
+	text-align: left;
+	font: inherit;
+	font-size: 13px;
+	font-weight: 1000;
+	color: inherit;
+	letter-spacing: inherit;
+	text-transform: inherit;
+	display: flex;
+	flex: 0 1 auto;
+	padding: 3px 10px 1px 1px;
+	margin: 0 0 0 -19px;
+	overflow: hidden;
+	border-radius: 26px;
+	transition: color 150ms ease 0s, box-shadow 150ms ease 0s;
+}
+
+.link {
+	cursor: pointer;
+	display: flex;
+	-webkit-box-align: start;
+	align-items: flex-start;
+	padding: 3px 23px 3px 38px;
+	font-size: 13px;
+	text-decoration: none;
+	color: rgb(51, 51, 51);
+	background: transparent;
+}
+
+.link[data-selected="true"] {
+	color: rgb(255, 255, 255);
+	background: $active;
+	font-weight: 700;
+}
+
+.button {
+	padding: 0 20px;
+}

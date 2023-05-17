@@ -1,0 +1,20 @@
+:host {
+	grid-column-start: 2;
+	grid-row-start: 1;
+	margin-top: 10px;
+	min-height: calc(100vh - 150px);
+	border-radius: 4px;
+	background-color: rgb(255, 255, 255);
+	border-width: 1px;
+	border-style: solid;
+	border-color: #e5e7eb;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	max-width: 1440px;
+	overflow-x: auto;
+
+	&.padding {
+		padding: 4rem 20px;
+	}
+}

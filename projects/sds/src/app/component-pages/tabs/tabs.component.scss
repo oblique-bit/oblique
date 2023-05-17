@@ -1,0 +1,38 @@
+@import "../../../variables";
+
+:host {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+
+	&::ng-deep app-tabs {
+		box-shadow: 0 0 10px rgba(0, 0, 0, 35%);
+	}
+}
+
+.tabs-container {
+	display: flex;
+}
+
+.tabs-content-container {
+	padding: 1rem;
+	border-radius: 0 4px 4px;
+}
+
+button {
+	border: none;
+	padding: 10px 25px;
+	background: #ffffff;
+	cursor: pointer;
+	color: $inactive;
+	font-weight: bold;
+
+	&.active {
+		border-bottom: 3px solid $active;
+		color: $active;
+	}
+}
+
+button ~ button {
+	margin-left: 1px;
+}
