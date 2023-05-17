@@ -66,6 +66,7 @@ The type is mandatory and must be one of the following:
 - **test**: Changes that affect tests and their configuration only
 - **docs**: Changes that affect the documentation only
 - **sandbox**: Changes that affect the sandbox only
+- **sds**: changes that affect the SCS only
 - **format**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 - **chore**: Anything that do not fit in any previous types (e.g. release, dependencies update, ...)
 
@@ -114,6 +115,10 @@ The scope is optional and should be the name of the Oblique feature affected:
 - **toolchain** (for the configuration, build, releases...)
 - **translation** (for the translations not directly linked to a feature)
 - **utilities** (for utilities.ts)
+- **cms** (for SDS only)
+- **component-pages** (for SDS only)
+- **documentation-pages** (for SDS only)
+- **side-navigation** (for SDS only)
 
 ###### Subject
 

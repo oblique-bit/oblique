@@ -21,8 +21,9 @@ nodejsPipelineTemplate {
 		'npmCredentialId': 'npmDeploymentTokenOblique'
 	]
 	deployCloudFoundry = [
-		'release/patch_*': ['space': 'patch', 'configuration': 'production'],
-        'release/minor_*': ['space': 'dev', 'configuration': 'production'],
         'release/major_*': ['space': 'dev', 'configuration': 'production']
+	]
+	securityScan = [
+		'branchName': ['master']
 	]
 }

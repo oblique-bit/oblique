@@ -1,0 +1,16 @@
+:host {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin-left: 26px;
+	margin-top: 20px;
+}
+
+label {
+	padding-right: 0.3rem;
+}
+
+select {
+	min-width: 3rem;
+	cursor: pointer;
+}

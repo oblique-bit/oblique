@@ -1,0 +1,6 @@
+<label for="version" [id]="idPrefix | id : [componentId, 'label']">Version:</label>
+<select name="version" [formControl]="selectedVersion" [id]="idPrefix | id : [componentId, 'select']">
+	<option *ngFor="let version of versions$ | async; let i = index" [id]="idPrefix | id : [componentId, 'option', i]" [ngValue]="version">
+		{{ version }}
+	</option>
+</select>

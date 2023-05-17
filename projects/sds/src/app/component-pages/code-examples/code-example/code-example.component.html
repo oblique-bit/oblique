@@ -1,0 +1,14 @@
+<app-tabs [id]="idPrefix | id : [componentId, 'tabs']" [idPrefix]="idPrefix | id : [componentId]">
+	<app-tab *ngIf="preview" title="Preview" [id]="idPrefix | id : [componentId, 'preview', 'tab']" [initiallyActive]="true">
+		<ng-container *ngIf="preview.createEmbeddedView" [ngTemplateOutlet]="preview"></ng-container>
+	</app-tab>
+	<app-tab *ngIf="example.html" #htmlTab title="HTML" [id]="idPrefix | id : [componentId, 'html', 'tab']">
+		<app-highlighted-code [idPrefix]="idPrefix | id : [componentId]" [codeBlock]="example.html"></app-highlighted-code>
+	</app-tab>
+	<app-tab *ngIf="example.scss" title="SCSS" [id]="idPrefix | id : [componentId, 'scss', 'tab']">
+		<app-highlighted-code [idPrefix]="idPrefix | id : [componentId]" [codeBlock]="example.scss"></app-highlighted-code>
+	</app-tab>
+	<app-tab *ngIf="example.ts" title="TS" [id]="idPrefix | id : [componentId, 'ts', 'tab']">
+		<app-highlighted-code [idPrefix]="idPrefix | id : [componentId]" [codeBlock]="example.ts"></app-highlighted-code>
+	</app-tab>
+</app-tabs>
