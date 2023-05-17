@@ -1,0 +1,21 @@
+extends: "../../.eslintrc.yml"
+ignorePatterns:
+  - "!**/*"
+overrides:
+  - files:
+      - "*.ts"
+    parserOptions:
+      project:
+        - projects/sandbox/tsconfig.app.json
+        - projects/sandbox/tsconfig.spec.json
+    rules:
+      "@angular-eslint/directive-selector":
+        - error
+        - type: attribute
+          prefix: sb
+          style: camelCase
+      "@angular-eslint/component-selector":
+        - error
+        - type: element
+          prefix: sb
+          style: kebab-case

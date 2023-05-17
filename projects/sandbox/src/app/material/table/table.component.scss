@@ -1,0 +1,93 @@
+@use "projects/oblique/src/styles/scss/core/variables";
+@use "projects/oblique/src/styles/scss/core/mixins/layout";
+
+// styles for the table
+td,
+th {
+	&.mat-column-actions {
+		width: 1px; // "fit-content" for a table cell
+	}
+}
+
+mat-cell,
+mat-header-cell {
+	&.mat-column-actions {
+		// "fit-content" for a flex table cell
+		flex-basis: auto;
+		flex-grow: 0;
+	}
+}
+
+.actions {
+	display: flex;
+	gap: variables.$ob-spacing-sm;
+}
+
+.edit-mode {
+	.mat-cell {
+		vertical-align: top;
+
+		&.mat-column-select {
+			padding-top: variables.$ob-spacing-default;
+		}
+	}
+
+	mat-cell {
+		.mat-column-select,
+		.mat-column-actions {
+			align-self: flex-start;
+		}
+	}
+}
+
+:host::ng-deep .mat-form-field-infix {
+	width: unset;
+}
+
+table {
+	&:not(.ob-table),
+	&:not(.ob-table-collapse),
+	&:not(.ob-table-collapse-sm),
+	&:not(.ob-table-collapse-md) {
+		.collapsed-table {
+			display: none;
+		}
+	}
+
+	@include layout.ob-media-breakpoint-down(md) {
+		&.ob-table.ob-table-collapse .collapsed-table {
+			display: table;
+		}
+	}
+
+	@include layout.ob-media-breakpoint-down(md) {
+		&.ob-table.ob-table-collapse-md .collapsed-table {
+			display: table;
+		}
+	}
+
+	@include layout.ob-media-breakpoint-down(sm) {
+		&.ob-table.ob-table-collapse-sm .collapsed-table {
+			display: table;
+		}
+	}
+}
+
+// styles for the controls
+.form-elements {
+	display: flex;
+	flex-direction: column;
+	gap: variables.$ob-spacing-sm;
+
+	> * {
+		width: fit-content;
+	}
+}
+
+fieldset + fieldset {
+	margin-top: variables.$ob-spacing-default;
+}
+
+.form-elements + .form-elements {
+	margin-top: variables.$ob-spacing-sm;
+}

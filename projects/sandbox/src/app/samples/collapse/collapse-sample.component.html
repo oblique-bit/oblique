@@ -1,0 +1,44 @@
+<div class="default-layout">
+	<h2 class="page-header">Collapse</h2>
+	<sb-description component="collapse"></sb-description>
+	<ob-column-layout [left]="false">
+		<ob-collapse [(active)]="active" [duration]="duration.value" column-main-content [iconPosition]="iconPosition.value">
+			<span [id]="collapseTitle + '_title'" obCollapseHeader>
+				{{ collapseTitle }}
+			</span>
+			<p obCollapseMain>
+				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+				erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
+				est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+				labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+				gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+				nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+				dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+			</p>
+		</ob-collapse>
+		<div column-right-content>
+			<mat-form-field>
+				<mat-label>animate duration</mat-label>
+				<mat-select [(value)]="duration">
+					<mat-option *ngFor="let variant of durations" [value]="variant">
+						{{ variant.viewValue }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+			<mat-form-field>
+				<mat-label>iconPositions</mat-label>
+				<mat-select [(value)]="iconPosition">
+					<mat-option *ngFor="let variant of iconPositions" [value]="variant">
+						{{ variant.viewValue }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+			<div mat-dialog-actions>
+				<button type="button" mat-button (click)="active = !active"><mat-icon svgIcon="compress"></mat-icon> collapse</button>
+			</div>
+		</div>
+	</ob-column-layout>
+	<sb-api component="collapse"></sb-api>
+</div>

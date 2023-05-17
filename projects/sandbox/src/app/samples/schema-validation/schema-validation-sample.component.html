@@ -1,0 +1,21 @@
+<ng-container *ngIf="schema$ | async as schema">
+	<h2 class="page-header">
+		{{ "i18n.routes.samples.schema-validation.title" | translate }}
+	</h2>
+	<sb-description component="schema-validation"></sb-description>
+	<form [formGroup]="materialTestForm">
+		<mat-form-field class="mat-form-field-sm" obErrorMessages>
+			<mat-label>Choose a date</mat-label>
+			<input matInput [matDatepicker]="picker" formControlName="dateField" />
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<mat-error></mat-error>
+		</mat-form-field>
+		<mat-form-field class="mat-form-field-sm" obErrorMessages>
+			<mat-label>Enter text</mat-label>
+			<input matInput name="text" type="text" placeholder="Text" formControlName="textField" />
+			<mat-error></mat-error>
+		</mat-form-field>
+	</form>
+	<sb-api component="schema-validation"></sb-api>
+</ng-container>

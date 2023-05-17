@@ -1,0 +1,74 @@
+<h2>{{ "i18n.routes.samples.number-format.title" | translate }}</h2>
+<sb-description component="number-format"></sb-description>
+<h3>Preview with template form</h3>
+<form>
+	<mat-form-field>
+		<mat-label>Number 1</mat-label>
+		<input type="number" matInput obNumberFormat name="number1" [(ngModel)]="number1" />
+		<mat-hint>Default format with 2 decimals and persistent changes.</mat-hint>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Number 2</mat-label>
+		<input type="number" matInput obNumberFormat [persistent]="false" name="number2" [(ngModel)]="number2" />
+		<mat-hint>2 decimals format without persistent change.</mat-hint>
+	</mat-form-field>
+	<dl>
+		<dt>Number 1 model value</dt>
+		<dd>{{ number1 }}</dd>
+		<dt>Number 2 model value</dt>
+		<dd>{{ number2 }}</dd>
+	</dl>
+	<button type="button" obButton mat-button (click)="number1 = 6.2654987; number2 = 6.2654987">Set values to 6.2654987</button>
+
+	<mat-form-field obErrorMessages>
+		<mat-label>Number format on required field with ObErrorMessage</mat-label>
+		<input
+			id="numberRequiredTemplate"
+			name="numberRequiredTemplate"
+			matInput
+			type="number"
+			placeholder="numberRequired"
+			[(ngModel)]="numberRequired"
+			obNumberFormat
+			required
+		/>
+		<mat-error></mat-error>
+	</mat-form-field>
+	<div>{{ numberRequired }}</div>
+</form>
+
+<h3>Preview with reactive form</h3>
+<form [formGroup]="formData">
+	<mat-form-field>
+		<mat-label>Number 5</mat-label>
+		<input type="number" matInput obNumberFormat [decimals]="4" formControlName="number5" />
+		<mat-hint>4 decimals and persistent changes.</mat-hint>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Number 6</mat-label>
+		<input type="number" matInput obNumberFormat [persistent]="false" formControlName="number6" />
+		<mat-hint>4 decimals format without persistent change.</mat-hint>
+	</mat-form-field>
+	<dl>
+		<dt>Number 5 model value</dt>
+		<dd>{{ formData.get("number5").value }}</dd>
+		<dt>Number 6 model value</dt>
+		<dd>{{ formData.get("number6").value }}</dd>
+	</dl>
+	<button type="button" obButton mat-button (click)="setNumber5(); setNumber6()">Set values to 6.2654987</button>
+
+	<mat-form-field obErrorMessages>
+		<mat-label>Number format on required field with ObErrorMessage</mat-label>
+		<input
+			id="numberRequiredReactive"
+			matInput
+			type="number"
+			placeholder="numberRequired"
+			formControlName="numberRequired"
+			obNumberFormat
+		/>
+		<mat-error></mat-error>
+	</mat-form-field>
+	<div>{{ formData.get("numberRequired").value }}</div>
+</form>
+<sb-api component="number-format"></sb-api>

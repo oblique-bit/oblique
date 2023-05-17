@@ -1,0 +1,112 @@
+<h2 class="page-header">Mandatory</h2>
+<sb-description component="mandatory"></sb-description>
+<div [formGroup]="testForm">
+	<mat-form-field data-test="input-required">
+		<mat-label>Test input required</mat-label>
+		<input type="text" matInput formControlName="inputRequired" />
+	</mat-form-field>
+	<mat-form-field data-test="input-dynamic-required">
+		<mat-label>Test input dynamic required</mat-label>
+		<input type="text" matInput formControlName="inputDynamicRequired" />
+	</mat-form-field>
+	<mat-form-field data-test="input-non-required">
+		<mat-label>Test input non required</mat-label>
+		<input type="text" matInput formControlName="inputNonRequired" />
+	</mat-form-field>
+	<mat-form-field data-test="input-date-required">
+		<mat-label>Test input datepicker required</mat-label>
+		<input matInput [matDatepicker]="pickerRequired" formControlName="inputDateRequired" />
+		<mat-datepicker-toggle matSuffix [for]="pickerRequired"></mat-datepicker-toggle>
+		<mat-datepicker #pickerRequired></mat-datepicker>
+	</mat-form-field>
+	<mat-form-field data-test="input-date-dynamic-required">
+		<mat-label>Test input datepicker dynamic required</mat-label>
+		<input matInput [matDatepicker]="pickerDynamicRequired" formControlName="inputDateDynamicRequired" />
+		<mat-datepicker-toggle matSuffix [for]="pickerDynamicRequired"></mat-datepicker-toggle>
+		<mat-datepicker #pickerDynamicRequired></mat-datepicker>
+	</mat-form-field>
+	<mat-form-field data-test="input-date-non-required">
+		<mat-label>Test input datepicker non required</mat-label>
+		<input matInput [matDatepicker]="pickerNonRequired" formControlName="inputDateNonRequired" />
+		<mat-datepicker-toggle matSuffix [for]="pickerNonRequired"></mat-datepicker-toggle>
+		<mat-datepicker #pickerNonRequired></mat-datepicker>
+	</mat-form-field>
+	<mat-form-field data-test="mat-select-required">
+		<mat-label>Test mat-select required</mat-label>
+		<mat-select formControlName="matSelectRequired">
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field data-test="mat-select-dynamic-required">
+		<mat-label>Test mat-select dynamic required</mat-label>
+		<mat-select formControlName="matSelectDynamicRequired">
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field data-test="mat-select-non-required">
+		<mat-label>Test mat-select non required</mat-label>
+		<mat-select formControlName="matSelectNonRequired">
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field data-test="select-required">
+		<mat-label>Test select required</mat-label>
+		<select formControlName="selectRequired" matNativeControl>
+			<option [value]="1">One</option>
+			<option [value]="2">Two</option>
+		</select>
+	</mat-form-field>
+	<mat-form-field data-test="select-dynamic-required">
+		<mat-label>Test select dynamic required</mat-label>
+		<select formControlName="selectDynamicRequired" matNativeControl>
+			<option [value]="1">One</option>
+			<option [value]="2">Two</option>
+		</select>
+	</mat-form-field>
+	<mat-form-field data-test="select-non-required">
+		<mat-label>Test select non required</mat-label>
+		<select formControlName="selectNonRequired" matNativeControl>
+			<option [value]="1">One</option>
+			<option [value]="2">Two</option>
+		</select>
+	</mat-form-field>
+	<mat-form-field data-test="textarea-required">
+		<mat-label>Test textarea required</mat-label>
+		<textarea matInput formControlName="textareaRequired"></textarea>
+	</mat-form-field>
+	<mat-form-field data-test="textarea-dynamic-required">
+		<mat-label>Test textarea dynamic required</mat-label>
+		<textarea matInput formControlName="textareaDynamicRequired"></textarea>
+	</mat-form-field>
+	<mat-form-field data-test="textarea-non-required">
+		<mat-label>Test textarea non required</mat-label>
+		<textarea matInput formControlName="textareaNonRequired"></textarea>
+	</mat-form-field>
+	<mat-form-field data-test="mat-chip-list-required">
+		<mat-label>Test mat-chip-list required</mat-label>
+		<mat-chip-list formControlName="matChipListRequired">
+			<mat-chip>One</mat-chip>
+			<mat-chip>Two</mat-chip>
+		</mat-chip-list>
+	</mat-form-field>
+	<mat-form-field data-test="mat-chip-list-dynamic-required">
+		<mat-label>Test mat-chip-list dynamic required</mat-label>
+		<mat-chip-list formControlName="matChipListDynamicRequired">
+			<mat-chip>One</mat-chip>
+			<mat-chip>Two</mat-chip>
+		</mat-chip-list>
+	</mat-form-field>
+	<mat-form-field data-test="mat-chip-list-non-required">
+		<mat-label>Test mat-chip-list non required</mat-label>
+		<mat-chip-list formControlName="matChipListNonRequired">
+			<mat-chip>One</mat-chip>
+			<mat-chip>Two</mat-chip>
+		</mat-chip-list>
+	</mat-form-field>
+</div>
+
+<button type="button" (click)="setRequired()">Set required</button>
+<button type="button" (click)="removeRequired()">Remove required</button>

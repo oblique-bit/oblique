@@ -1,0 +1,13 @@
+@import "projects/oblique/src/styles/scss/core/variables";
+
+.ob-selectable-sample {
+	background-color: $ob-extra-light;
+}
+
+.ob-selectable:hover {
+	box-shadow: 0 0 5px 5px $ob-extra-light;
+}
+
+.ob-selected {
+	background-color: $ob-extra-light;
+}

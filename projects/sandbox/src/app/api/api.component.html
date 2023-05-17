@@ -1,0 +1,63 @@
+<ng-container *ngFor="let component of api">
+	<h4>{{ component.name }}</h4>
+	<dl>
+		<ng-container *ngIf="component.selector">
+			<dt>Selector</dt>
+			<dd>
+				<code>{{ component.selector }}</code>
+			</dd>
+		</ng-container>
+		<ng-container *ngIf="component.type">
+			<dt>Type</dt>
+			<dd>{{ component.type }}</dd>
+		</ng-container>
+		<ng-container *ngIf="component.exported">
+			<dt>Exported as</dt>
+			<dd>
+				<code>{{ component.exported }}</code>
+			</dd>
+		</ng-container>
+		<ng-container *ngIf="component.usage">
+			<dt>Usage</dt>
+			<dd [innerHTML]="component.usage"></dd>
+		</ng-container>
+		<dt>Since</dt>
+		<dd>{{ component.since }}</dd>
+		<ng-container *ngIf="component.updated">
+			<dt>Last updated</dt>
+			<dd>{{ component.updated }}</dd>
+		</ng-container>
+		<ng-container *ngIf="component.deprecated">
+			<dt>Deprecated</dt>
+			<dd>{{ component.deprecated }}</dd>
+		</ng-container>
+	</dl>
+	<ng-container *ngIf="component.variables">
+		<h5>Variables</h5>
+		<sb-api-element [elements]="component.variables"></sb-api-element>
+	</ng-container>
+	<ng-container *ngIf="component.inputs">
+		<h5>Inputs</h5>
+		<sb-api-element [elements]="component.inputs"></sb-api-element>
+	</ng-container>
+	<ng-container *ngIf="component.outputs">
+		<h5>Outputs</h5>
+		<sb-api-element [elements]="component.outputs"></sb-api-element>
+	</ng-container>
+	<ng-container *ngIf="component.methods">
+		<h5>Methods</h5>
+		<sb-api-element [elements]="component.methods"></sb-api-element>
+	</ng-container>
+	<ng-container *ngIf="component.projection">
+		<h5>Content projection</h5>
+		<sb-api-element [elements]="component.projection"></sb-api-element>
+	</ng-container>
+	<ng-container *ngIf="component.internationalization">
+		<h5>Internationalization</h5>
+		<sb-api-element [elements]="component.internationalization"></sb-api-element>
+	</ng-container>
+	<ng-container *ngIf="component.tokens">
+		<h5>Injection tokens</h5>
+		<sb-api-element [elements]="component.tokens"></sb-api-element>
+	</ng-container>
+</ng-container>

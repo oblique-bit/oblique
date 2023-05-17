@@ -1,0 +1,38 @@
+<h2 class="page-header">Nested form</h2>
+<sb-description component="nested-form"></sb-description>
+<form [formGroup]="parentForm" (submit)="validateForm(parentForm.valid)" (reset)="resetForm()" obParentFormDirective>
+	<h3>Reactive form</h3>
+	<ob-nested-form formControlName="child" [nestedForm]="child.nestedForm">
+		<sb-nested-form-child-sample #child></sb-nested-form-child-sample>
+	</ob-nested-form>
+	<mat-form-field obErrorMessages>
+		<mat-label>Reactive Material Parent</mat-label>
+		<input matInput formControlName="parent" />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<div class="form-actions">
+		<button mat-flat-button type="reset">{{ "i18n.common.reset" | translate }}</button>
+		<button mat-flat-button type="submit" color="primary">{{ "i18n.common.save" | translate }}</button>
+	</div>
+</form>
+<h4>Form value</h4>
+<pre>{{ parentForm.value | json }}</pre>
+
+<form #ngForm (submit)="validateForm(ngForm.valid)" obParentFormDirective>
+	<h3>Template driven form</h3>
+	<ob-nested-form [(ngModel)]="model.child" name="child" [nestedForm]="childTD.ngForm.control">
+		<sb-nested-form-child-td-sample #childTD></sb-nested-form-child-td-sample>
+	</ob-nested-form>
+	<mat-form-field obErrorMessages>
+		<mat-label>Template Material Parent</mat-label>
+		<input matInput name="parent" [(ngModel)]="model.parent" required />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<div class="form-actions">
+		<button mat-flat-button type="reset">{{ "i18n.common.reset" | translate }}</button>
+		<button mat-flat-button type="submit" color="primary">{{ "i18n.common.save" | translate }}</button>
+	</div>
+</form>
+<h4>Form value</h4>
+<pre>{{ model | json }}</pre>
+<sb-api component="nested-form"></sb-api>
