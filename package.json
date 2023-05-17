@@ -28,7 +28,7 @@
     "build": "ng build sandbox",
     "lint": "ts-node scripts/lint/run-lint-steps.ts",
     "format": "ts-node scripts/lint/run-format-steps.ts",
-    "dependencies-update": "ts-node projects/oblique/scripts/release/update-dependencies.ts",
+    "dependencies-update": "ts-node scripts/update-dependencies.ts",
     "release": "ts-node projects/oblique/scripts/release/release.ts",
     "alpha": "npm run release -- alpha",
     "beta": "npm run release -- beta",
