@@ -44,6 +44,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'error-messages', label: 'Error messages'},
 				{url: 'external-link', label: 'External-link'},
 				{url: 'file-upload', label: 'File Upload'},
+				{url: 'form', label: 'Forms'},
 				{url: 'global-events', label: 'Global events'},
 				{url: 'horizontal-forms', label: 'Horizontal Forms'},
 				{url: 'http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
@@ -63,8 +64,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'spinner', label: 'Spinner'},
 				{url: 'sticky', label: 'Sticky'},
 				{url: 'unknown-route-sample', label: 'Unknown route'},
-				{url: 'unsaved-changes', label: 'Unsaved changes'},
-				{url: 'form', label: 'Forms'}
+				{url: 'unsaved-changes', label: 'Unsaved changes'}
 			]
 		},
 		{
@@ -95,6 +95,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'chips', label: 'Chips'},
 				{url: 'dialog', label: 'Dialog'},
 				{url: 'expansion-panel', label: 'Expansion Panel'},
+				{url: 'file-upload', label: 'File Upload'},
 				{url: 'form', label: 'Forms'},
 				{url: 'icon', label: 'Icons'},
 				{url: 'list', label: 'List'},
