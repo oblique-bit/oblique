@@ -24,7 +24,6 @@
     "projects/sandbox"
   ],
   "scripts": {
-    "build": "ng build sandbox",
     "lint": "ts-node scripts/lint.ts",
     "format": "ts-node scripts/lint.ts --fix",
     "dependencies-update": "ts-node scripts/update-dependencies.ts",
