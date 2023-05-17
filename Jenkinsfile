@@ -1,13 +1,7 @@
-@Library('jeap-pipelinelibrary@feature/oblique3.1') _
+@Library('jeap-pipelinelibrary@feature/oblique4') _
 nodejsPipelineTemplate {
-	testEngine = 'jest'
-	versionNumberType = 'none'
-	replacePackageJsonVersion = false
 	nexusPublishPath = './dist/oblique'
-	nodeJsVersion = '18.19.0'
-	singleCFConfig = true
-	fetchTags = true
-	safeModeWhitelist = ['esbuild']
+	nodeJsVersion = 18
 	gitPush = [
 		'credentialId': 'githubObliqueCredentials',
 		'repository': 'https://github.com/oblique-bit/oblique.git',
