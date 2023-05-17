@@ -3,7 +3,8 @@
   "version": "",
   "scripts": {
     "start": "ng serve",
-    "test": "cd ../.. && ng test sandbox"
+    "test": "cd ../.. && ng test sandbox",
+    "build": "ng build"
   },
   "dependencies": {
     "raw-loader": "^4.0.2"
