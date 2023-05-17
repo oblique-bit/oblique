@@ -15,6 +15,7 @@ class Release {
 
 	static perform(preVersion?: string): void {
 		const nextVersion = Release.computeVersion(Release.splitVersion(packageVersion), preVersion);
+		process.chdir('../..'); // so that the release is made with the info of the root package.json
 		execSync(`npm version ${nextVersion}`);
 		Release.bumpVersion(nextVersion);
 		Release.bumpPackageVersion(nextVersion, 'package.json');
