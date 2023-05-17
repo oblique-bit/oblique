@@ -47,19 +47,23 @@ class HookCommitRules {
 		const {type, scope, subject} = HookCommitRules.extractHeaderParts(header);
 		const contributing: string = readFileSync('CONTRIBUTING.md', 'utf8').toString();
 		HookCommitRules.checkType(type, HookCommitRules.extractList(contributing, 'Type'));
-		HookCommitRules.checkScope(scope, HookCommitRules.extractList(contributing, 'Scope'));
+		HookCommitRules.checkScope(
+			scope,
+			HookCommitRules.extractList(contributing, 'Scope prefixes'),
+			HookCommitRules.getScopeLists(contributing)
+		);
 		HookCommitRules.checkSubject(subject);
 	}
 
 	private static checkHeaderFormat(header: string): void {
-		if (!/^[a-z-]+(?:\([a-z-]+\))?:\s.+$/.test(header)) {
+		if (!/^[a-z-]+(?:\([a-z-/]+\))?:\s.+$/.test(header)) {
 			throw new Error(`1st line doesn't match the "type(scope): subject" format`);
 		}
 	}
 
 	private static extractHeaderParts(header: string): Header {
 		// "as unknown as Header" is necessary because Typescript can't infer the type directly from the regex
-		return /^(?<type>[a-z-]+)(?:\((?<scope>[a-z-]+)\))?:\s(?<subject>.+)$/.exec(header)?.groups as unknown as Header;
+		return /^(?<type>[a-z-]+)(?:\((?<scope>[a-z-/]+)\))?:\s(?<subject>.+)$/.exec(header)?.groups as unknown as Header;
 	}
 
 	private static checkType(type: string, types: string[]): void {
@@ -68,10 +72,58 @@ class HookCommitRules {
 		}
 	}
 
-	private static checkScope(scope: string, scopes: string[]): void {
-		if (scope && !scopes.includes(scope)) {
-			throw new Error(`1st line has an invalid scope '${scope}'. Allowed types are: ${HookCommitRules.join(scopes)}`);
+	private static getScopeLists(contributing: string): Record<string, string[]> {
+		return contributing
+			.match(/(?<=# )\w+(?= scopes)/g)
+			.map(scope => ({
+				[scope.toLowerCase()]: HookCommitRules.extractList(contributing, `${scope} scopes`)
+			}))
+			.reduce((array, current) => ({...array, ...current}), {});
+	}
+
+	private static checkScope(fullScope: string, prefixes: string[], scopes: Record<string, string[]>): void {
+		const [prefix, scope] = fullScope?.includes('/') ? fullScope.split('/') : [null, fullScope];
+		HookCommitRules.checkFullScopeValidity(fullScope);
+		HookCommitRules.checkPrefixLessScopeValidity(prefix, scope, scopes.additional);
+		HookCommitRules.checkScopePrefixValidity(prefix, prefixes);
+		HookCommitRules.checkScopeValidity(scope, Object.values(scopes).flat());
+		HookCommitRules.checkScopeAndPrefixCompatibility(scope, prefix, scopes);
+	}
+
+	private static checkFullScopeValidity(fullScope: string): void {
+		if (/\/.*\//.test(fullScope)) {
+			throw new Error(`1st line has an invalid scope '${fullScope}'. There may be only one prefix`);
 		}
+	}
+
+	private static checkPrefixLessScopeValidity(prefix: string, scope: string, prefixLessScopes: string[]): void {
+		if (!prefix && scope && !prefixLessScopes.includes(scope)) {
+			throw new Error(
+				`1st line has an invalid scope '${scope}'. Allowed scopes without prefix are: ${HookCommitRules.join(prefixLessScopes)}`
+			);
+		}
+	}
+
+	private static checkScopePrefixValidity(prefix: string, prefixes: string[]): void {
+		if (prefix && !prefixes.includes(prefix)) {
+			throw new Error(`1st line has an invalid scope prefix, '${prefix}'. Allowed prefixes are: ${HookCommitRules.join(prefixes)}`);
+		}
+	}
+
+	private static checkScopeValidity(scope: string, allScopes: string[]): void {
+		if (scope && !allScopes.includes(scope)) {
+			throw new Error(`1st line has an invalid scope, '${scope}'. Allowed scopes are: ${HookCommitRules.join(allScopes)}`);
+		}
+	}
+
+	private static checkScopeAndPrefixCompatibility(scope: string, prefix: string, scopes: Record<string, string[]>): void {
+		Object.keys(scopes)
+			.filter(scopePrefix => !['additional', 'base'].includes(scopePrefix))
+			.forEach(scopePrefix => {
+				if (scope && prefix === scopePrefix && ![...scopes[scopePrefix], ...scopes.base].includes(scope)) {
+					throw new Error(`1st line has an invalid scope: '${scope}' is not compatible with '${scopePrefix}' prefix`);
+				}
+			});
 	}
 
 	private static checkSubject(subject: string): void {
