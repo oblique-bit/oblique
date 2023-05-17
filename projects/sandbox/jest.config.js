@@ -10,6 +10,7 @@ module.exports.displayName = {
 	name: 'Sandbox',
 	color: 'magenta'
 };
+module.exports.reporters[1][1].publicPath = '<rootDir>/jest-report/sandbox';
 module.exports.coveragePathIgnorePatterns = [
 	'<rootDir>/node_modules/',
 	'<rootDir>/projects/oblique',

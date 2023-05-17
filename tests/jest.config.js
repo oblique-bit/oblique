@@ -11,7 +11,7 @@ module.exports = {
 		[
 			'jest-html-reporters',
 			{
-				publicPath: './jest-report'
+				publicPath: '<rootDir>/jest-report'
 			}
 		]
 	]

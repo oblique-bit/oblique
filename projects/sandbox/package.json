@@ -2,7 +2,8 @@
   "name": "sandbox",
   "version": "",
   "scripts": {
-    "start": "ng serve"
+    "start": "ng serve",
+    "test": "cd ../.. && ng test sandbox"
   },
   "dependencies": {
     "raw-loader": "^4.0.2"
