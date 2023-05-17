@@ -2,7 +2,7 @@ import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
 import path from 'path';
 
 export class UpdatePaths {
-	private static readonly stylesDirectoryPath: string = path.join('dist', 'oblique', 'styles');
+	private static readonly stylesDirectoryPath: string = path.join('..', '..', 'dist', 'oblique', 'styles');
 
 	static perform(): void {
 		UpdatePaths.updateBackgroundImagePath();
