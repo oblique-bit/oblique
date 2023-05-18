@@ -1,6 +1,6 @@
 {
   "name": "@oblique/schematics",
-  "version": "10.3.0",
+  "version": "",
   "description": "Oblique schematics",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
@@ -10,8 +10,6 @@
   "keywords": [
     "oblique-schematics"
   ],
-  "author": "",
-  "license": "MIT",
   "schematics": "./collection.json",
   "ng-update": {
     "migrations": "./migration.json"
