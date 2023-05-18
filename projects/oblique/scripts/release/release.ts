@@ -19,7 +19,6 @@ class Release {
 		execSync(`npm version ${nextVersion}`);
 		Release.bumpVersion(nextVersion);
 		Release.bumpPackageVersion(nextVersion, 'package.json');
-		Release.bumpPackageVersion(nextVersion, 'package-lock.json');
 		Release.writeChangelog();
 	}
 
