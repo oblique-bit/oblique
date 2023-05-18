@@ -18,7 +18,6 @@ class Release {
 		process.chdir('../..'); // so that the release is made with the info of the root package.json
 		execSync(`npm version ${nextVersion}`);
 		Release.bumpVersion(nextVersion);
-		Release.bumpPackageVersion(nextVersion, 'package.json');
 		Release.writeChangelog();
 	}
 
@@ -58,14 +57,6 @@ class Release {
 
 	private static bumpVersion(version: string): void {
 		writeFileSync(path.join('projects', 'oblique', 'src', 'lib', 'version.ts'), `export const appVersion = '${version}';\n`, {flag: 'w'});
-	}
-
-	private static bumpPackageVersion(version: string, fileName: string): void {
-		const filePath = path.join('projects', 'oblique', 'schematics', fileName);
-		const pkg = readFileSync(filePath)
-			.toString()
-			.replace(/"version": "[^"]*",/, `"version": "${version}",`);
-		writeFileSync(filePath, pkg);
 	}
 
 	private static writeChangelog(): void {
