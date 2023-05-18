@@ -25,7 +25,7 @@ export class AdaptPackageJson {
 
 	private static addProperties(distPackage: Json): Json {
 		const rootPackage = JSON.parse(readFileSync(path.join('..', '..', 'package.json')).toString());
-		['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs', 'publishConfig'].forEach(
+		['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs'].forEach(
 			field => (distPackage[field] = rootPackage[field])
 		);
 

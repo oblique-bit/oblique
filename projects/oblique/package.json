@@ -1,6 +1,9 @@
 {
   "name": "@oblique/oblique",
   "version": "",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
   "scripts": {
     "test": "cd ../.. && ng test oblique",
     "test-debugging": "cd ../.. && node --expose-gc ../../node_modules/@angular/cli/bin/ng run oblique:test:development --log-heap-usage",

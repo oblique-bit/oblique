@@ -12,9 +12,6 @@
   "contributors": [
     "https://github.com/oblique-bit/oblique/graphs/contributors"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/oblique-bit/oblique.git"
