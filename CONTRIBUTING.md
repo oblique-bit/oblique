@@ -23,8 +23,8 @@ The development team is available by [email](mailto:Oblique@bit.admin.ch).
 
 - Clone the repo: `git clone https://github.com/oblique-bit/oblique.git`.
 - Install project dependencies: `npm ci`
-- start the showcase: `npm start`
-- start the tests: `npm test`
+- start the sandbox: `npm start -w sandbox`
+- test the sandbox: `npm test -w sandbox`
 
 ## Commit messages
 
@@ -37,7 +37,7 @@ For better readability, please follow the following rules:
 - A change includes its tests, mocks, documentation and schematics.
 - 1 commit concerns 1 scope (see below), if a commit spans multiple scopes, split it into several commits. **Exception**: changes that spans most of the library can be grouped together. In that case, there is no scope
 - no line of the commit message can be longer than 100 characters.
-- changes to the showcase should NEVER come with another type (see below) as **showcase**. All showcase changes of an issue should be squashed together
+- changes to one package should NEVER come with another package.
 
 ### Format
 
@@ -126,6 +126,13 @@ The Oblique project may use those additional scopes:
 - **styles** for the global CSS
 - **translation** for the translations not directly linked to a feature
 - **utilities** for utilities.ts
+
+###### Sandbox scopes
+
+The sandbox project may use those additional scopes:
+
+- **material** for material design documentation pages
+- **styles** for styles documentation pages
 
 ###### SDS scopes
 
