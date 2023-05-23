@@ -6,7 +6,7 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateModule} from '@ngx-translate/core';
-import {ObSpinnerModule, multiTranslateLoader} from '@oblique/oblique';
+import {ObIconModule, ObSpinnerModule, multiTranslateLoader} from '@oblique/oblique';
 import {HttpApiInterceptor} from './shared/http-api-interceptor/http-api-interceptor';
 import {SideNavigationModule} from './side-navigation/side-navigation.module';
 import {AppRoutingModule} from './app-routing.module';
@@ -21,6 +21,7 @@ registerLocaleData(localeENUS);
 		BrowserAnimationsModule,
 		BrowserModule,
 		HttpClientModule,
+		ObIconModule.forRoot(),
 		ObSpinnerModule,
 		SideNavigationModule,
 		TranslateModule.forRoot(multiTranslateLoader())
