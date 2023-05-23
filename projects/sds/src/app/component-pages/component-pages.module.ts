@@ -11,8 +11,8 @@ import {ComponentPagesComponent} from './component-pages.component';
 import {TabComponent} from './tabs/tab/tab.component';
 import {TabsComponent} from './tabs/tabs.component';
 import {IdModule} from '../shared/id/id.module';
-import {AlertExampleInfoPreviewComponent} from './code-examples/alert/alert-example-info-preview/alert-example-info-preview.component';
-import {AlertExampleSuccessPreviewComponent} from './code-examples/alert/alert-example-success-preview/alert-example-success-preview.component';
+import {AlertExampleInfoPreviewComponent} from './code-examples/alert/previews/info/alert-example-info-preview.component';
+import {AlertExampleSuccessPreviewComponent} from './code-examples/alert/previews/success/alert-example-success-preview.component';
 import {HighlightedCodeComponent} from './code-examples/code-example/highlighted-code/highlighted-code.component';
 
 @NgModule({
