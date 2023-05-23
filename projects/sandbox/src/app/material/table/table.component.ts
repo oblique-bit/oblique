@@ -101,7 +101,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 				'ob-table': true,
 				'ob-table-cicd': false,
 				'ob-table-plain': false,
-				'ob-table-hover': false,
+				'ob-table-disable-hover-style': false,
+				'ob-table-disable-checked-style': false,
 				'ob-table-sm': false,
 				'ob-table-lg': false
 			}),
