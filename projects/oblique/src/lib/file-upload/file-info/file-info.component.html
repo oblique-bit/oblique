@@ -1,4 +1,9 @@
-<table mat-table matSort [dataSource]="dataSource" class="ob-table ob-table-plain">
+<table
+	mat-table
+	matSort
+	[dataSource]="dataSource"
+	class="ob-table ob-table-disable-checked-style ob-table-disable-hover-style ob-table-plain"
+>
 	<ng-container [matColumnDef]="field" *ngFor="let field of fields">
 		<th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>{{ "i18n.file-upload." + field | translate }}</th>
 		<td mat-cell *matCellDef="let file">{{ file[field] }}</td>
