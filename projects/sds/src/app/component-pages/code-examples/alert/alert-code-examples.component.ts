@@ -11,11 +11,11 @@ export class AlertCodeExamplesComponent implements CodeExamples {
 
 	readonly exampleInfo = new CodeExample({
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-var-requires
-		html: require('!!raw-loader!./alert-example-info-preview/alert-example-info-preview.component.html').default
+		html: require('!!raw-loader!./previews/info/alert-example-info-preview.component.html').default
 	});
 
 	readonly exampleSuccess = new CodeExample({
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-var-requires
-		html: require('!!raw-loader!./alert-example-success-preview/alert-example-success-preview.component.html').default
+		html: require('!!raw-loader!./previews/success/alert-example-success-preview.component.html').default
 	});
 }
