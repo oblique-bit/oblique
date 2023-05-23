@@ -1,9 +1,10 @@
+import {SelectionModel} from '@angular/cdk/collections';
 import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
-import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
-import {SelectionModel} from '@angular/cdk/collections';
+import {MatTableDataSource} from '@angular/material/table';
+
 import {ObPopUpService} from '@oblique/oblique';
 import {Connectable, ReplaySubject, connectable} from 'rxjs';
 import {filter, map, startWith} from 'rxjs/operators';
