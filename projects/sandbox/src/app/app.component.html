@@ -10,7 +10,7 @@
 			href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique/"
 			[icon]="'none'"
 			matTooltip="Go to Oblique GIT repository"
-			obButton="secondary"
+			obButton="tertiary"
 			mat-icon-button
 		>
 			<mat-icon svgIcon="git-hub"></mat-icon>
@@ -24,14 +24,14 @@
 			(click)="offCanvasOpen = !offCanvasOpen"
 			tabindex="0"
 			mat-icon-button
-			obButton="secondary"
+			obButton="tertiary"
 			[class.rotate180]="!offCanvasOpen"
 		>
 			<mat-icon dropdown-toggle svgIcon="login"></mat-icon>
 		</button>
 	</ng-template>
 	<ng-template #obHeaderControl>
-		<button type="button" mat-icon-button obButton="secondary" [obPopover]="languageButton" matTooltip="Open example popover">
+		<button type="button" mat-icon-button obButton="tertiary" [obPopover]="languageButton" matTooltip="Open example popover">
 			<mat-icon svgIcon="cog"></mat-icon>
 		</button>
 		<ng-template #languageButton>
@@ -50,18 +50,18 @@
 		</ng-template>
 	</ng-template>
 	<ng-template #obHeaderControl>
-		<button type="button" (click)="toggleFont(font)" mat-button obButton="secondary" [matTooltip]="'Use ' + font + ' font'">
+		<button type="button" (click)="toggleFont(font)" mat-button obButton="tertiary" [matTooltip]="'Use ' + font + ' font'">
 			{{ font }}
 		</button>
 	</ng-template>
 
 	<ng-template #obHeaderMobileControl>
-		<button type="button" (click)="toggleFont(font)" mat-button obButton="secondary" [matTooltip]="'Use ' + font + ' font'">
+		<button type="button" (click)="toggleFont(font)" mat-button obButton="tertiary" [matTooltip]="'Use ' + font + ' font'">
 			{{ font }}
 		</button>
 	</ng-template>
 	<ng-template #obHeaderMobileControl>
-		<button type="button" mat-icon-button obButton="secondary">
+		<button type="button" mat-icon-button obButton="tertiary">
 			<mat-icon svgIcon="help"></mat-icon>
 		</button>
 	</ng-template>
