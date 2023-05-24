@@ -1,0 +1,13 @@
+@use "../../../styles/scss/core/variables";
+
+.ob-service-navigation-authentication {
+	a.ob-button[id*="login"] {
+		display: flex;
+		flex-direction: row-reverse;
+
+		&.mat-mdc-button > .mat-icon {
+			margin-left: variables.$ob-spacing-xs;
+			margin-right: 0;
+		}
+	}
+}
