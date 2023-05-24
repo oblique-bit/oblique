@@ -4,6 +4,7 @@ import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angula
 	selector: 'ob-service-navigation-authentication',
 	templateUrl: './service-navigation-authentication.component.html',
 	encapsulation: ViewEncapsulation.None,
+	styleUrls: ['./service-navigation-authentication.component.scss'],
 	host: {class: 'ob-service-navigation-authentication'}
 })
 export class ObServiceNavigationAuthenticationComponent {
