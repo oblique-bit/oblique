@@ -589,7 +589,7 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 			});
 
 			it.each([
-				{attribute: 'obButton', val: 'secondary'},
+				{attribute: 'obButton', val: 'tertiary'},
 				{attribute: 'mat-icon-button', val: ''}
 			])('should have "$val" as "$attribute" attribute', async ({attribute, val}) => {
 				expect(await trigger.getAttribute(attribute)).toBe(val);
