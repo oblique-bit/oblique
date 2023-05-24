@@ -264,7 +264,7 @@ describe('ObServiceNavigationInfoComponent', () => {
 
 		it.each([
 			{attribute: 'type', value: 'button'},
-			{attribute: 'obButton', value: 'secondary'},
+			{attribute: 'obButton', value: 'tertiary'},
 			{attribute: 'mat-icon-button', value: ''},
 			{attribute: 'id', value: 'service-navigation-info-popover-toggle'},
 			{attribute: 'placement', value: 'bottom'}
