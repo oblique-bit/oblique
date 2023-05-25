@@ -26,7 +26,8 @@ import {
 	ObEMasterLayoutEventValues,
 	ObIMasterLayoutEvent,
 	ObINavigationLink,
-	ObIServiceNavigationConfig
+	ObIServiceNavigationConfig,
+	ObLanguageSelectorType
 } from '../master-layout.model';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObEColor} from '../../style/colors.model';
@@ -44,6 +45,7 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
 	serviceNavigationConfig: ObIServiceNavigationConfig;
+	@Input() languageSelectorStyle: ObLanguageSelectorType = 'dropdown';
 	@Input() navigation: ObINavigationLink[];
 	@HostBinding('class.ob-master-layout-header-small') isSmall = this.masterLayout.header.isSmall;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;

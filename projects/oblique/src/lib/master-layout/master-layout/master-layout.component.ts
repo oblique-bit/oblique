@@ -24,7 +24,14 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
-import {ObEMasterLayoutEventValues, ObIDynamicSkipLink, ObIMasterLayoutEvent, ObINavigationLink, ObISkipLink} from '../master-layout.model';
+import {
+	ObEMasterLayoutEventValues,
+	ObIDynamicSkipLink,
+	ObIMasterLayoutEvent,
+	ObINavigationLink,
+	ObISkipLink,
+	ObLanguageSelectorType
+} from '../master-layout.model';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
@@ -45,6 +52,7 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy {
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
+	@Input() languageSelectorStyle: ObLanguageSelectorType = 'dropdown';
 	@Input() navigation: ObINavigationLink[] = [];
 	@Input() skipLinks: ObISkipLink[] | ObIDynamicSkipLink[] = [];
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
