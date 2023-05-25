@@ -22,9 +22,9 @@
 	.mat-mdc-select-trigger {
 		.ob-form-lg &,
 		.mat-form-field-lg & {
-			margin-top: 12px;
+			margin-top: core-variables.$ob-spacing-md;
 		}
 	}
 }
 
-@include mat-panel.margin-top-and-active("select", 3px);
+@include mat-panel.margin-top-and-active("select", 0.75 * core-variables.$ob-spacing-xs);
