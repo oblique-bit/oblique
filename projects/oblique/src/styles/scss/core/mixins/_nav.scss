@@ -8,8 +8,7 @@
 	&:active,
 	&:hover,
 	&:focus {
-		background-color: variables.$ob-gray-extra-light;
-		z-index: 1;
+		z-index: variables.$ob-z-index-controls + 1;
 
 		&::after {
 			content: "";
@@ -20,17 +19,12 @@
 		}
 	}
 
-	&.active {
-		font-weight: 600;
-		background-color: variables.$ob-gray-100;
+	&:hover {
+		background-color: variables.$ob-secondary-50;
+	}
 
-		@include layout.ob-media-breakpoint-up(md) {
-			color: variables.$ob-red-500;
-		}
-
-		span:not(.ob-icon-wrapper) {
-			color: variables.$ob-red-500;
-		}
+	&:active {
+		background-color: variables.$ob-secondary-100;
 	}
 }
 
