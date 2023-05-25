@@ -80,6 +80,15 @@
 					<span class="ob-icon-wrapper ob-toggle-expanded"><mat-icon svgIcon="chevron-up" class="ob-nav-toggle"></mat-icon></span>
 				</button>
 				<div class="ob-sub-menu" [id]="'menu-' + (link.id || link.url)">
+					<button
+						type="button"
+						mat-button
+						obButton="tertiary"
+						class="ob-sub-menu-close-button"
+						(click)="obMasterLayoutNavigationItem.closeSubMenu(false)"
+					>
+						{{ "i18n.oblique.off-canvas.close" | translate }} <mat-icon matSuffix svgIcon="cancel"></mat-icon>
+					</button>
 					<ul class="ob-main-nav ob-sub-nav">
 						<li>
 							<button class="ob-sub-menu-back" type="button" (click)="obMasterLayoutNavigationItem.closeSubMenu(false)">

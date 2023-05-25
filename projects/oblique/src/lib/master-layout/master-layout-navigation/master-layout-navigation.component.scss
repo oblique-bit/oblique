@@ -56,6 +56,19 @@
 			@include button.ob-link-btn();
 		}
 
+		@include layout.ob-media-breakpoint-down(md) {
+			.ob-main-nav-item {
+				& > a,
+				& > button {
+					&.active,
+					&:hover {
+						border-left: variables.$ob-line-width solid variables.$ob-accent;
+						padding-left: variables.$ob-spacing-default - variables.$ob-line-width;
+					}
+				}
+			}
+		}
+
 		.ob-sub-menu {
 			visibility: hidden; // Do not use `display: none` to avoid reflow & transition issues!
 			position: absolute;
@@ -64,7 +77,6 @@
 			left: 0;
 			right: 0;
 			height: auto;
-			padding: 0;
 			margin: 0;
 			font-size: variables.$ob-font-size-smaller;
 			overflow-y: auto; // limits the height
@@ -74,6 +86,7 @@
 				transform variables.$ob-duration-default;
 
 			@include layout.ob-media-breakpoint-up(md) {
+				padding: 0 variables.$ob-spacing-xxl variables.$ob-spacing-xxl;
 				top: 100%;
 				bottom: auto;
 				left: auto;
@@ -95,14 +108,32 @@
 			}
 
 			li {
-				a {
-					&:hover:not(.active) {
-						background-color: variables.$ob-secondary-50;
-					}
+				display: flex;
 
-					&.active {
+				a,
+				button {
+					&.active,
+					&:hover {
 						border-left: variables.$ob-line-width solid variables.$ob-accent;
+						padding-left: variables.$ob-spacing-default - variables.$ob-line-width;
 					}
+				}
+			}
+
+			.ob-sub-menu-close-button {
+				margin-top: shadow.$tab-focus-width;
+				flex-direction: row-reverse;
+
+				@include layout.ob-media-breakpoint-down(md) {
+					display: none;
+				}
+
+				&.mat-mdc-button > .mat-icon {
+					margin-left: variables.$ob-spacing-xs;
+					margin-right: 0;
+					font-size: variables.$ob-font-size-base;
+					height: variables.$ob-font-size-base;
+					width: variables.$ob-font-size-base;
 				}
 			}
 		}
@@ -114,10 +145,10 @@
 			line-height: variables.$ob-line-height;
 			margin: 0;
 			padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
-			border-bottom: 1px solid variables.$ob-gray-light;
 			color: variables.$ob-default;
 			text-decoration: none;
 			cursor: pointer;
+
 			@include nav.ob-nav-hover(-1);
 
 			@include layout.ob-media-breakpoint-up(md) {
@@ -133,15 +164,15 @@
 					}
 				}
 			}
+
+			&:not(.ob-sub-menu-close-button) {
+				border-bottom: 1px solid variables.$ob-gray-light;
+			}
 		}
 
 		// First level only:
 		> .ob-main-nav-item {
 			@include layout.ob-media-breakpoint-up(md) {
-				&:has(button.active) {
-					background-color: variables.$ob-white;
-				}
-
 				> a,
 				> button {
 					border-bottom: 3px solid transparent;
@@ -152,6 +183,14 @@
 
 					&.active {
 						background-color: variables.$ob-white;
+
+						&:hover {
+							background-color: variables.$ob-secondary-50;
+						}
+
+						&:active {
+							background-color: variables.$ob-secondary-100;
+						}
 					}
 
 					&.active,
@@ -167,8 +206,8 @@
 
 			> a,
 			> button {
-				&:hover {
-					color: variables.$ob-red-500;
+				&:active {
+					background-color: variables.$ob-secondary-100;
 				}
 			}
 		}
