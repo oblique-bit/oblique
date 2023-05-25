@@ -34,17 +34,50 @@ export class AppComponent implements OnDestroy {
 			label: 'i18n.routes.samples.title',
 			icon: ObEIcon.BOOKMARK,
 			children: [
-				{url: 'alert', label: 'Alert'},
+				{
+					url: 'alert',
+					label: 'Alert',
+					children: [
+						{url: 'alert', label: 'Alert 1'},
+						{url: 'alert', label: 'Alert 2'},
+						{url: 'alert', label: 'Alert 3'}
+					]
+				},
 				{url: 'autocomplete', label: 'Autocomplete'},
 				{url: 'button', label: 'Buttons'},
 				{url: 'breadcrumb', label: 'Breadcrumb'},
-				{url: 'collapse', label: 'Collapse'},
+				{
+					url: 'collapse',
+					label: 'Collapse',
+					children: [
+						{url: 'collapse', label: 'Collapse 1'},
+						{url: 'collapse', label: 'Collapse 2'},
+						{url: 'collapse', label: 'Collapse 3'},
+						{url: 'collapse', label: 'Collapse 4'},
+						{url: 'collapse', label: 'Collapse 5'},
+						{url: 'collapse', label: 'Collapse 6'},
+						{url: 'collapse', label: 'Collapse 7'},
+						{url: 'collapse', label: 'Collapse 8'},
+						{url: 'collapse', label: 'Collapse 9'},
+						{url: 'collapse', label: 'Collapse 10'},
+						{url: 'collapse', label: 'Collapse 11'},
+						{url: 'collapse', label: 'Collapse 12'},
+						{url: 'collapse', label: 'Collapse 13'},
+						{url: 'collapse', label: 'Collapse 14'},
+						{url: 'collapse', label: 'Collapse 15'},
+						{url: 'collapse', label: 'Collapse 16'},
+						{url: 'collapse', label: 'Collapse 17'},
+						{url: 'collapse', label: 'Collapse 18'},
+						{url: 'collapse', label: 'Collapse 19'},
+						{url: 'collapse', label: 'Collapse 20'}
+					]
+				},
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
 				{url: 'column-layout-full-height', label: 'Column layout full height'},
 				{url: 'error-messages', label: 'Error messages'},
 				{url: 'external-link', label: 'External-link'},
 				{url: 'file-upload', label: 'File Upload'},
-				{url: 'form', label: 'Forms'},
+				{url: 'form', label: 'Forms', children: [{url: 'form', label: 'Forms 1'}]},
 				{url: 'global-events', label: 'Global events'},
 				{url: 'horizontal-forms', label: 'Horizontal Forms'},
 				{url: 'http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
@@ -61,7 +94,17 @@ export class AppComponent implements OnDestroy {
 				{url: 'schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
 				{url: 'selectable', label: 'Selectable'},
 				{url: 'service-navigation', label: 'Service navigation'},
-				{url: 'spinner', label: 'Spinner'},
+				{
+					url: 'spinner',
+					label: 'Spinner',
+					children: [
+						{url: 'spinner', label: 'Spinner 1'},
+						{url: 'spinner', label: 'Spinner 2'},
+						{url: 'spinner', label: 'Spinner 3'},
+						{url: 'spinner', label: 'Spinner 4'},
+						{url: 'spinner', label: 'Spinner 5'}
+					]
+				},
 				{url: 'sticky', label: 'Sticky'},
 				{url: 'unknown-route-sample', label: 'Unknown route'},
 				{url: 'unsaved-changes', label: 'Unsaved changes'}
