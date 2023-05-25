@@ -30,6 +30,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {
 	ObAlertModule,
 	ObButtonModule,
+	ObCheckboxModule,
 	ObColumnLayoutModule,
 	ObErrorMessagesModule,
 	ObIconModule,
@@ -134,6 +135,7 @@ const appRoutes: Routes = [
 		MatTooltipModule,
 		ObAlertModule,
 		ObButtonModule,
+		ObCheckboxModule,
 		ObColumnLayoutModule,
 		ObErrorMessagesModule,
 		ObFormFieldModule,
