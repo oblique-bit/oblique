@@ -56,14 +56,53 @@
 			@include button.ob-link-btn();
 		}
 
-		.ob-sub-menu li {
-			a {
-				&:hover:not(.active) {
-					background-color: variables.$ob-secondary-50;
-				}
+		.ob-sub-menu {
+			visibility: hidden; // Do not use `display: none` to avoid reflow & transition issues!
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: auto;
+			padding: 0;
+			margin: 0;
+			font-size: variables.$ob-font-size-smaller;
+			overflow-y: auto; // limits the height
+			z-index: variables.$ob-z-index-controls;
+			transform: translateX(105%);
+			transition: visibility variables.$ob-duration-default,
+				transform variables.$ob-duration-default;
 
-				&.active {
-					border-left: variables.$ob-line-width solid variables.$ob-accent;
+			@include layout.ob-media-breakpoint-up(md) {
+				top: 100%;
+				bottom: auto;
+				left: auto;
+				right: auto;
+				min-width: 30ch; // empiric number
+				max-height: 60vh;
+				background-color: variables.$ob-white;
+				transform: none;
+				transition: none;
+				display: block;
+				@include shadow.ob-drop-shadow();
+			}
+
+			@include layout.ob-media-breakpoint-down(md) {
+				> ul > li:last-child {
+					// [iOS only] Simulate a bottom spacing to ensure that last item is reachable when scrolling the menu and does not display under the MobileSafari tools menu:
+					margin-bottom: 70px;
+				}
+			}
+
+			li {
+				a {
+					&:hover:not(.active) {
+						background-color: variables.$ob-secondary-50;
+					}
+
+					&.active {
+						border-left: variables.$ob-line-width solid variables.$ob-accent;
+					}
 				}
 			}
 		}
@@ -151,45 +190,6 @@
 			.ob-master-layout-navigation-toggle[aria-expanded] .ob-toggle-collapsed,
 			.ob-master-layout-navigation-toggle:not([aria-expanded]) .ob-toggle-expanded {
 				display: none;
-			}
-		}
-
-		.ob-sub-menu {
-			visibility: hidden; // Do not use `display: none` to avoid reflow & transition issues!
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			height: auto;
-			padding: 0;
-			margin: 0;
-			font-size: variables.$ob-font-size-smaller;
-			overflow-y: auto; // limits the height
-			z-index: variables.$ob-z-index-controls;
-			transform: translateX(105%);
-			transition: visibility variables.$ob-duration-default,
-				transform variables.$ob-duration-default;
-
-			@include layout.ob-media-breakpoint-up(md) {
-				top: 100%;
-				bottom: auto;
-				left: auto;
-				right: auto;
-				min-width: 30ch; // empiric number
-				max-height: 60vh;
-				background-color: variables.$ob-white;
-				transform: none;
-				transition: none;
-				display: block;
-				@include shadow.ob-drop-shadow();
-			}
-
-			@include layout.ob-media-breakpoint-down(md) {
-				> ul > li:last-child {
-					// [iOS only] Simulate a bottom spacing to ensure that last item is reachable when scrolling the menu and does not display under the MobileSafari tools menu:
-					margin-bottom: 70px;
-				}
 			}
 		}
 
