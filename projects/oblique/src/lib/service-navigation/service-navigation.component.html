@@ -37,6 +37,7 @@
 		<ob-service-navigation-languages
 			[languages]="languages"
 			[language]="language$ | async"
+			[languageSelectorStyle]="languageSelectorStyle"
 			(languageChange)="changeLanguage($event)"
 		></ob-service-navigation-languages>
 	</li>

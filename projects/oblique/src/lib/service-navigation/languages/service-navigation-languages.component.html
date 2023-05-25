@@ -1,5 +1,20 @@
 <span class="ob-screen-reader-only" id="ob-language-change">{{ "i18n.oblique.header.languages.title" | translate }}</span>
-<ul aria-labelledby="ob-language-change" class="ob-language-list">
+<mat-form-field *ngIf="languageSelectorStyle === 'dropdown'" class="ob-language-dropdown">
+	<mat-select id="ob-language-dropdown" [value]="language" (openedChange)="changeChevron()" panelClass="ob-language-dropdown">
+		<mat-option
+			*ngFor="let languageObject of languages"
+			[id]="'ob-language-' + languageObject.code + '-option'"
+			[attr.aria-current]="language === languageObject.code ? true : undefined"
+			[class.ob-active]="language === languageObject.code"
+			[attr.aria-label]="languageObject.label"
+			[value]="languageObject.code"
+			(click)="changeLanguage(languageObject.code)"
+			>{{ languageObject.code.toUpperCase() }}</mat-option
+		>
+	</mat-select>
+	<mat-icon matSuffix [svgIcon]="chevron"></mat-icon>
+</mat-form-field>
+<ul *ngIf="languageSelectorStyle === 'tabs'" id="ob-language-tabs" aria-labelledby="ob-language-change" class="ob-language-list">
 	<li *ngFor="let languageObject of languages">
 		<button
 			type="button"

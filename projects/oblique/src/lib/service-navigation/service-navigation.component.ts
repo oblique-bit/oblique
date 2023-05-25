@@ -1,5 +1,6 @@
 import {Component, ContentChildren, Input, OnInit, Output, QueryList, ViewEncapsulation} from '@angular/core';
 import {Observable} from 'rxjs';
+import {ObLanguageSelectorType} from '../master-layout/master-layout.model';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObEPamsEnvironment, ObIServiceNavigationContact, ObIServiceNavigationLink, ObLoginState} from './service-navigation.model';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
@@ -29,6 +30,7 @@ export class ObServiceNavigationComponent implements OnInit {
 	@Input() profileLinks: ObIServiceNavigationLink[] = [];
 	@Input() infoLinks: ObIServiceNavigationLink[] = [];
 	@Input() infoContact: ObIServiceNavigationContact;
+	@Input() languageSelectorStyle: ObLanguageSelectorType = 'dropdown';
 	@Input() maxLastUsedApplications = 3;
 	@Input() maxFavoriteApplications = 3;
 	@Input() environment: ObEPamsEnvironment;
