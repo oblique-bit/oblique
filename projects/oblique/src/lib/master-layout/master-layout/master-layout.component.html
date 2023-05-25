@@ -51,7 +51,7 @@
 	<ng-container *ngIf="isFooterSticky && !isHeaderSticky" [ngTemplateOutlet]="footer"></ng-container>
 
 	<ng-template #header>
-		<ob-master-layout-header [navigation]="navigation">
+		<ob-master-layout-header [navigation]="navigation" [languageSelectorStyle]="languageSelectorStyle">
 			<ng-content select="[obHeader]" obHeader></ng-content>
 			<ng-content select="[obHeaderAction]" obHeaderAction></ng-content>
 			<ng-content select="[obHeaderTitle]" obHeaderTitle></ng-content>

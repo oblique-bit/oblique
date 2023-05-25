@@ -39,6 +39,7 @@ export {ObMasterLayoutConfig} from './master-layout.config';
 export {
 	ObINavigationLink,
 	ObEScrollMode,
+	ObLanguageSelectorType,
 	ObIMasterLayoutEvent,
 	ObEMasterLayoutEventValues,
 	ObISkipLink,
