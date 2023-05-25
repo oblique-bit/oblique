@@ -127,6 +127,16 @@
 								<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon"></mat-icon></span>
 								<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
 							</a>
+							<button
+								*ngIf="child.children"
+								type="button"
+								mat-icon-button
+								obButton="tertiary"
+								class="ob-sub-menu-go-to-children-button"
+								(click)="obMasterLayoutNavigationItem.closeSubMenu(false)"
+							>
+								<mat-icon matSuffix svgIcon="arrow-right"></mat-icon>
+							</button>
 						</li>
 					</ul>
 				</div>
