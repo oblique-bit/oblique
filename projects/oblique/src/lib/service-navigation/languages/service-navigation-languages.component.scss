@@ -1,5 +1,6 @@
 @use "../../../styles/scss/core/variables";
 @use "../../../styles/scss/core/mixins/tab-outline";
+@use "../../../styles/scss/core/mixins/shadow";
 
 .ob-service-navigation-languages {
 	.ob-language-dropdown {
@@ -61,6 +62,68 @@
 			}
 
 			@include tab-outline.ob-tab-outline();
+		}
+	}
+}
+
+.mat-mdc-select-panel {
+	&.ob-language-dropdown {
+		$ob-language-dropdown-top-spacing: 0.75 * variables.$ob-spacing-xs;
+		font-size: variables.$ob-font-size-subheading-1;
+		background-color: variables.$ob-white;
+		@include shadow.ob-default-panel-box-shadow();
+
+		&.mdc-menu-surface {
+			padding: 0;
+			padding-top: $ob-language-dropdown-top-spacing;
+
+			.mat-mdc-option {
+				padding-right: variables.$ob-line-width;
+
+				&:first-of-type {
+					margin-top: -($ob-language-dropdown-top-spacing);
+				}
+
+				&.mat-mdc-option-active {
+					border-left: variables.$ob-line-width solid variables.$ob-red-500;
+					background-color: variables.$ob-white;
+					z-index: 1;
+				}
+
+				&:not(.mat-mdc-option-active) {
+					padding-left: variables.$ob-line-width;
+				}
+
+				&:hover {
+					background-color: variables.$ob-secondary-50;
+				}
+			}
+			border-top: 1px solid variables.$ob-secondary-100;
+
+			[id*="cdk-overlay"] & {
+				&.ob-select-panel {
+					margin-top: 0.75 * variables.$ob-spacing-sm;
+				}
+			}
+		}
+
+		.mat-pseudo-checkbox,
+		.mat-pseudo-checkbox::after {
+			height: 0;
+			width: 0;
+			visibility: hidden;
+		}
+
+		.mat-pseudo-checkbox,
+		.mat-pseudo-checkbox::after,
+		.mat-mdc-option,
+		.mdc-list-item__primary-text {
+			margin: 0;
+			padding: 0;
+		}
+
+		.mat-mdc-option {
+			justify-content: center;
 		}
 	}
 }
