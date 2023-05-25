@@ -136,6 +136,22 @@
 					width: variables.$ob-font-size-base;
 				}
 			}
+
+			.ob-sub-menu-go-to-children-button {
+				align-self: flex-end;
+				margin-left: calc(-1 * (variables.$ob-spacing-xs * 0.25));
+
+				&.ob-button {
+					height: 39px;
+					width: 39px;
+					padding-left: calc(0.3896em + variables.$ob-spacing-xs * 0.5);
+					padding-top: calc(0.3896em + variables.$ob-spacing-xs * 0.5);
+
+					&:hover {
+						padding-left: calc(0.3896em - variables.$ob-spacing-xs * 0.75);
+					}
+				}
+			}
 		}
 
 		a,
