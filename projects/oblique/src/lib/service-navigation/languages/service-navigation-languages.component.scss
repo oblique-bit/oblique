@@ -2,6 +2,41 @@
 @use "../../../styles/scss/core/mixins/tab-outline";
 
 .ob-service-navigation-languages {
+	.ob-language-dropdown {
+		&.ob-form-field {
+			padding-top: variables.$ob-spacing-default;
+
+			.mat-mdc-text-field-wrapper {
+				padding-left: variables.$ob-spacing-sm;
+			}
+
+			[class*="mdc-notched-outline"] {
+				border: none;
+			}
+
+			.mat-mdc-form-field-infix {
+				width: min-content;
+
+				.mat-mdc-select-value {
+					padding-left: variables.$ob-spacing-xs;
+				}
+
+				.mat-mdc-select-arrow-wrapper {
+					visibility: hidden;
+					height: 0;
+					width: 0;
+				}
+			}
+
+			.mat-mdc-form-field-icon-suffix {
+				padding-left: 0;
+				padding-right: variables.$ob-spacing-xs;
+				padding-bottom: 0.25 * variables.$ob-spacing-xs;
+				cursor: pointer;
+			}
+		}
+	}
+
 	.ob-language-list {
 		display: inline-flex;
 		flex-direction: row;

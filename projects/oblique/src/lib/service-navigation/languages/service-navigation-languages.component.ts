@@ -1,3 +1,4 @@
+import {ObLanguageSelectorType} from '../../master-layout/master-layout.model';
 import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
 import {ObILanguage} from '../service-navigation.model';
 
@@ -11,7 +12,14 @@ import {ObILanguage} from '../service-navigation.model';
 export class ObServiceNavigationLanguagesComponent {
 	@Input() language: string;
 	@Input() languages: ObILanguage[] = [];
+	@Input() languageSelectorStyle: ObLanguageSelectorType = 'dropdown';
 	@Output() readonly languageChange = new EventEmitter<string>();
+
+	chevron: 'chevron-down' | 'chevron-up' = 'chevron-down';
+
+	changeChevron(): void {
+		this.chevron = this.chevron === 'chevron-down' ? 'chevron-up' : 'chevron-down';
+	}
 
 	changeLanguage(language: string): void {
 		this.languageChange.emit(language);
