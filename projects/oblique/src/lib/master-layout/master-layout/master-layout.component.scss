@@ -48,8 +48,8 @@
 
 	.ob-master-layout-header:has(ul.ob-has-opened-menu) ~ .ob-master-layout-wrapper,
 	.ob-master-layout-wrapper .ob-master-layout-header:has(ul.ob-has-opened-menu) ~ main {
-		backdrop-filter: brightness(0.5);
-		filter: brightness(0.5);
+		backdrop-filter: brightness(0.9);
+		filter: brightness(0.9);
 	}
 
 	.ob-main-layout {
