@@ -39,7 +39,7 @@ $theme-alt-500: (
 @include mat.legacy-tabs-theme(mat.define-light-theme($legacy-theme));
 
 @include mat.autocomplete-theme(mat.define-light-theme($theme));
-@include mat.badge-theme(mat.define-light-theme($theme));
+@include mat.badge-theme(mat.define-light-theme($theme-alt-500));
 @include mat.button-theme(mat.define-light-theme($theme));
 @include mat.button-toggle-theme(mat.define-light-theme($theme));
 @include mat.card-theme(mat.define-light-theme($theme));
