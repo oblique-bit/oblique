@@ -118,20 +118,35 @@
 				}
 			}
 
-			.ob-sub-menu-close-button {
-				margin-top: shadow.$tab-focus-width;
-				flex-direction: row-reverse;
+			.ob-sub-menu-back-close-container {
+				display: flex;
+				justify-content: space-between;
+				margin: variables.$ob-spacing-default 0;
 
-				@include layout.ob-media-breakpoint-down(md) {
+				@include layout.ob-media-breakpoint-up(md) {
 					display: none;
+					margin: variables.$ob-spacing-default 0;
+
+					&.just-close {
+						justify-content: flex-end;
+					}
 				}
 
-				&.mat-mdc-button > .mat-icon {
-					margin-left: variables.$ob-spacing-xs;
-					margin-right: 0;
-					font-size: variables.$ob-font-size-base;
-					height: variables.$ob-font-size-base;
-					width: variables.$ob-font-size-base;
+				.ob-sub-menu-close-button {
+					margin-top: shadow.$tab-focus-width;
+					flex-direction: row-reverse;
+
+					&.mat-mdc-button > .mat-icon {
+						margin-left: variables.$ob-spacing-xs;
+						margin-right: 0;
+						font-size: variables.$ob-font-size-base;
+						height: variables.$ob-font-size-base;
+						width: variables.$ob-font-size-base;
+					}
+				}
+
+				button {
+					width: fit-content;
 				}
 			}
 
@@ -179,7 +194,7 @@
 				}
 			}
 
-			&:not(.ob-sub-menu-close-button) {
+			&:not(.ob-sub-menu-close-button, .ob-sub-menu-desktop-back-button) {
 				border-bottom: 1px solid variables.$ob-gray-light;
 			}
 		}
@@ -270,7 +285,7 @@
 			}
 		}
 
-		.ob-sub-menu-back {
+		.ob-sub-menu-mobile-back-button {
 			font-weight: 600;
 
 			@include layout.ob-media-breakpoint-up(md) {
@@ -294,7 +309,7 @@
 			& > a,
 			& > button {
 				&.ob-master-layout-navigation-link.cdk-keyboard-focused,
-				&.ob-sub-menu-back:focus-visible {
+				&.ob-sub-menu-mobile-back-button:focus-visible {
 					outline: none;
 					box-shadow: none;
 					@include layout.ob-media-breakpoint-up(md) {
@@ -310,8 +325,8 @@
 			&.ob-expanded {
 				& > a.ob-master-layout-navigation-link.cdk-keyboard-focused,
 				& > button.ob-master-layout-navigation-link.cdk-keyboard-focused,
-				& > a.ob-sub-menu-back:focus-visible,
-				& > button.ob-sub-menu-back:focus-visible {
+				& > a.ob-sub-menu-mobile-back-button:focus-visible,
+				& > button.ob-sub-menu-mobile-back-button:focus-visible {
 					& ~ .ob-sub-menu {
 						@include layout.ob-media-breakpoint-up(md) {
 							margin-left: calc(-1 * shadow.$tab-focus-width);
@@ -326,8 +341,8 @@
 				&:has(
 						> a.ob-master-layout-navigation-link.cdk-keyboard-focused,
 						> button.ob-master-layout-navigation-link.cdk-keyboard-focused,
-						> a.ob-sub-menu-back:focus-visible,
-						> button.ob-sub-menu-back:focus-visible
+						> a.ob-sub-menu-mobile-back-button:focus-visible,
+						> button.ob-sub-menu-mobile-back-button:focus-visible
 					) {
 					@include shadow.ob-tab-focus-border();
 				}
@@ -346,7 +361,7 @@
 				& > a,
 				& > button {
 					&.ob-master-layout-navigation-link.cdk-keyboard-focused,
-					&.ob-sub-menu-back:focus-visible {
+					&.ob-sub-menu-mobile-back-button:focus-visible {
 						padding: calc(variables.$ob-spacing-sm - shadow.$tab-focus-width)
 							calc(variables.$ob-spacing-default - shadow.$tab-focus-width);
 						outline: none;

@@ -24,15 +24,7 @@ export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy 
 	) {}
 
 	ngOnInit(): void {
-		merge(
-			this.globalEventsService.click$.pipe(obOutsideFilter(this.element.nativeElement)),
-			this.globalEventsService.keyUp$.pipe(filter(event => event.key === 'Escape'))
-		)
-			.pipe(
-				filter(() => this.isExpanded),
-				takeUntil(this.unsubscribe)
-			)
-			.subscribe(() => this.closeSubMenu());
+		this.monitorForClickOutside();
 	}
 
 	ngOnDestroy(): void {
@@ -59,5 +51,31 @@ export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy 
 		if (closeMainMenu) {
 			this.masterLayout.isMenuOpened = false;
 		}
+	}
+
+	private isWithinElement(target: Event | KeyboardEvent, selector: string): boolean {
+		return !!(target.target as Element).closest(selector);
+	}
+
+	private isWithinSubMenuItemDesktopBackButton(target: Event | KeyboardEvent): boolean {
+		return this.isWithinElement(target, '.ob-sub-menu-desktop-back-button');
+	}
+
+	private isWithinSubMenuItemGoToChildrenButton(target: Event | KeyboardEvent): boolean {
+		return this.isWithinElement(target, '.ob-sub-menu-go-to-children-button');
+	}
+
+	private monitorForClickOutside(): void {
+		merge(
+			this.globalEventsService.click$.pipe(obOutsideFilter(this.element.nativeElement)),
+			this.globalEventsService.keyUp$.pipe(filter(event => event.key === 'Escape'))
+		)
+			.pipe(
+				filter(() => this.isExpanded),
+				filter(target => !this.isWithinSubMenuItemDesktopBackButton(target)),
+				filter(target => !this.isWithinSubMenuItemGoToChildrenButton(target)),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(() => this.closeSubMenu());
 	}
 }
