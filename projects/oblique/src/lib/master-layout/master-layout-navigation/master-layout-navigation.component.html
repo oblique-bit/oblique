@@ -80,24 +80,36 @@
 					<span class="ob-icon-wrapper ob-toggle-expanded"><mat-icon svgIcon="chevron-up" class="ob-nav-toggle"></mat-icon></span>
 				</button>
 				<div class="ob-sub-menu" [id]="'menu-' + (link.id || link.url)">
-					<button
-						type="button"
-						mat-button
-						obButton="tertiary"
-						class="ob-sub-menu-close-button"
-						(click)="obMasterLayoutNavigationItem.closeSubMenu(false)"
-					>
-						{{ "i18n.oblique.off-canvas.close" | translate }} <mat-icon matSuffix svgIcon="cancel"></mat-icon>
-					</button>
+					<div class="ob-sub-menu-back-close-container" [class.just-close]="currentParentLink === link.label">
+						<button
+							*ngIf="currentParentLink !== link.label"
+							type="button"
+							mat-button
+							obButton="tertiary"
+							class="ob-sub-menu-desktop-back-button"
+							(click)="backUpSubMenu()"
+						>
+							{{ currentParentLink | translate }} <mat-icon matPrefix svgIcon="arrow-left"></mat-icon>
+						</button>
+						<button
+							type="button"
+							mat-button
+							obButton="tertiary"
+							class="ob-sub-menu-close-button"
+							(click)="obMasterLayoutNavigationItem.closeSubMenu(false)"
+						>
+							{{ "i18n.oblique.off-canvas.close" | translate }} <mat-icon matSuffix svgIcon="cancel"></mat-icon>
+						</button>
+					</div>
 					<ul class="ob-main-nav ob-sub-nav">
 						<li>
 							<button
-								class="ob-sub-menu-back"
+								class="ob-sub-menu-mobile-back-button"
 								type="button"
 								(click)="currentParentLink === link.label ? obMasterLayoutNavigationItem.closeSubMenu(false) : backUpSubMenu()"
 							>
 								<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron-left"></mat-icon></span>
-								<span class="ob-label">{{ link.label | translate }}</span>
+								<span class="ob-label">{{ currentParentLink | translate }}</span>
 							</button>
 						</li>
 						<li *ngFor="let child of link.children">
@@ -110,7 +122,6 @@
 								[routerLinkActiveOptions]="routerLinkActiveOptions"
 								[routerLinkBase]="link.url"
 								(changeCurrentParent)="changeCurrentParentLink($event)"
-								class="first-child"
 							></ob-master-layout-navigation-sub-menu-item>
 						</li>
 					</ul>
