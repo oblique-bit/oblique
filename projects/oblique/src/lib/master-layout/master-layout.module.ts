@@ -25,6 +25,7 @@ import {ObIconModule} from '../icon/icon.module';
 import {ObButtonModule} from '../button/button.module';
 import {ObServiceNavigationModule} from '../service-navigation/service-navigation.module';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
+import {ObMasterLayoutNavigationSubMenuItemComponent} from './master-layout-navigation/sub-menu-item/master-layout-navigation-sub-menu-item.component';
 
 export {ObMasterLayoutComponent} from './master-layout/master-layout.component';
 export {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
@@ -74,6 +75,7 @@ export {ObOutlineDirective} from './outline.directive';
 		ObMasterLayoutNavigationComponent,
 		ObMasterLayoutNavigationItemDirective,
 		ObMasterLayoutNavigationMenuDirective,
+		ObMasterLayoutNavigationSubMenuItemComponent,
 		ObMasterLayoutNavigationToggleDirective,
 		ObOutlineDirective
 	],
