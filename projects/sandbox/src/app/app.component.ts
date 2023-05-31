@@ -38,9 +38,33 @@ export class AppComponent implements OnDestroy {
 					url: 'alert',
 					label: 'Alert',
 					children: [
-						{url: 'alert', label: 'Alert 1'},
-						{url: 'alert', label: 'Alert 2'},
-						{url: 'alert', label: 'Alert 3'}
+						{
+							url: '1',
+							label: 'Alert 1',
+							children: [
+								{
+									url: '1',
+									label: 'Alert 1.1',
+									children: [
+										{
+											url: '1',
+											label: 'Alert 1.1.1',
+											children: [
+												{url: '1', label: 'Alert 1.1.1.1'},
+												{url: '2', label: 'Alert 1.1.1.2'},
+												{url: '3', label: 'Alert 1.1.1.3'}
+											]
+										},
+										{url: '2', label: 'Alert 1.1.2'},
+										{url: '3', label: 'Alert 1.1.3'}
+									]
+								},
+								{url: '2', label: 'Alert 1.2'},
+								{url: '3', label: 'Alert 1.3'}
+							]
+						},
+						{url: '2', label: 'Alert 2'},
+						{url: '3', label: 'Alert 3'}
 					]
 				},
 				{url: 'autocomplete', label: 'Autocomplete'},
@@ -50,26 +74,26 @@ export class AppComponent implements OnDestroy {
 					url: 'collapse',
 					label: 'Collapse',
 					children: [
-						{url: 'collapse', label: 'Collapse 1'},
-						{url: 'collapse', label: 'Collapse 2'},
-						{url: 'collapse', label: 'Collapse 3'},
-						{url: 'collapse', label: 'Collapse 4'},
-						{url: 'collapse', label: 'Collapse 5'},
-						{url: 'collapse', label: 'Collapse 6'},
-						{url: 'collapse', label: 'Collapse 7'},
-						{url: 'collapse', label: 'Collapse 8'},
-						{url: 'collapse', label: 'Collapse 9'},
-						{url: 'collapse', label: 'Collapse 10'},
-						{url: 'collapse', label: 'Collapse 11'},
-						{url: 'collapse', label: 'Collapse 12'},
-						{url: 'collapse', label: 'Collapse 13'},
-						{url: 'collapse', label: 'Collapse 14'},
-						{url: 'collapse', label: 'Collapse 15'},
-						{url: 'collapse', label: 'Collapse 16'},
-						{url: 'collapse', label: 'Collapse 17'},
-						{url: 'collapse', label: 'Collapse 18'},
-						{url: 'collapse', label: 'Collapse 19'},
-						{url: 'collapse', label: 'Collapse 20'}
+						{url: '1', label: 'Collapse 1'},
+						{url: '2', label: 'Collapse 2'},
+						{url: '3', label: 'Collapse 3'},
+						{url: '4', label: 'Collapse 4'},
+						{url: '5', label: 'Collapse 5'},
+						{url: '6', label: 'Collapse 6'},
+						{url: '7', label: 'Collapse 7'},
+						{url: '8', label: 'Collapse 8'},
+						{url: '9', label: 'Collapse 9'},
+						{url: '10', label: 'Collapse 10'},
+						{url: '11', label: 'Collapse 11'},
+						{url: '12', label: 'Collapse 12'},
+						{url: '13', label: 'Collapse 13'},
+						{url: '14', label: 'Collapse 14'},
+						{url: '15', label: 'Collapse 15'},
+						{url: '16', label: 'Collapse 16'},
+						{url: '17', label: 'Collapse 17'},
+						{url: '18', label: 'Collapse 18'},
+						{url: '19', label: 'Collapse 19'},
+						{url: '20', label: 'Collapse 20'}
 					]
 				},
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
@@ -77,7 +101,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'error-messages', label: 'Error messages'},
 				{url: 'external-link', label: 'External-link'},
 				{url: 'file-upload', label: 'File Upload'},
-				{url: 'form', label: 'Forms', children: [{url: 'form', label: 'Forms 1'}]},
+				{url: 'form', label: 'Forms', children: [{url: '1', label: 'Forms 1'}]},
 				{url: 'global-events', label: 'Global events'},
 				{url: 'horizontal-forms', label: 'Horizontal Forms'},
 				{url: 'http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},
@@ -98,11 +122,11 @@ export class AppComponent implements OnDestroy {
 					url: 'spinner',
 					label: 'Spinner',
 					children: [
-						{url: 'spinner', label: 'Spinner 1'},
-						{url: 'spinner', label: 'Spinner 2'},
-						{url: 'spinner', label: 'Spinner 3'},
-						{url: 'spinner', label: 'Spinner 4'},
-						{url: 'spinner', label: 'Spinner 5'}
+						{url: '1', label: 'Spinner 1'},
+						{url: '2', label: 'Spinner 2'},
+						{url: '3', label: 'Spinner 3'},
+						{url: '4', label: 'Spinner 4'},
+						{url: '5', label: 'Spinner 5'}
 					]
 				},
 				{url: 'sticky', label: 'Sticky'},
