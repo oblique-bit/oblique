@@ -1,0 +1,8 @@
+.ob-master-layout-navigation-sub-menu-item {
+	display: flex;
+	width: 100%;
+
+	&.column {
+		flex-direction: column;
+	}
+}

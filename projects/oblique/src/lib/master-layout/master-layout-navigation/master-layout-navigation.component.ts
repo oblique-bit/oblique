@@ -25,6 +25,7 @@ import {
 } from '../master-layout.model';
 import {Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
+import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 
 @Component({
 	selector: 'ob-master-layout-navigation',
@@ -37,6 +38,8 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 	isFullWidth = this.masterLayout.navigation.isFullWidth;
 	activeClass = this.config.navigation.activeClass;
 	currentScroll = 0;
+	currentParentAncestors = [];
+	currentParentLink = '';
 	maxScroll = 0;
 	hasOpenedMenu = false;
 	hideExternalLinks = true;
@@ -78,6 +81,19 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 		this.unsubscribe.complete();
 	}
 
+	backUpSubMenu(): void {
+		const parentIndex = this.currentParentAncestors.indexOf(this.currentParentLink);
+		this.currentParentLink = this.currentParentAncestors[parentIndex - 1];
+		this.currentParentAncestors.length = parentIndex;
+	}
+
+	changeCurrentParentLink(linkId: string): void {
+		this.currentParentLink = linkId;
+		if (!this.currentParentAncestors.includes(linkId)) {
+			this.currentParentAncestors.push(linkId);
+		}
+	}
+
 	close(): void {
 		this.masterLayout.layout.isMenuOpened = false;
 	}
@@ -88,6 +104,11 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 
 	scrollRight(): void {
 		this.masterLayout.navigation.scrollRight();
+	}
+
+	toggleSubMenu(obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective, linkId: string): void {
+		obMasterLayoutNavigationItem.toggleSubMenu();
+		this.changeCurrentParentLink(linkId);
 	}
 
 	private checkForExternalLinks(links: ObINavigationLink[]): void {
