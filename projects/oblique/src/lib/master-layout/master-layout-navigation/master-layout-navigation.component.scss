@@ -106,7 +106,6 @@
 				transform: none;
 				transition: none;
 				display: block;
-				@include shadow.ob-drop-shadow();
 			}
 
 			@include layout.ob-media-breakpoint-down(md) {
@@ -116,13 +115,39 @@
 				}
 			}
 
+			@mixin sub-menu-active-hover-border-left() {
+				border-left: variables.$ob-line-width solid variables.$ob-accent;
+			}
+
 			li {
 				a,
 				button {
 					&.active,
 					&:hover {
-						border-left: variables.$ob-line-width solid variables.$ob-accent;
+						@include sub-menu-active-hover-border-left();
 						padding-left: variables.$ob-spacing-default - variables.$ob-line-width;
+					}
+				}
+			}
+
+			.ob-sub-menu-parent-link {
+				a {
+					font-size: variables.$ob-font-size-big;
+					font-weight: bold;
+					padding-left: variables.$ob-line-width;
+
+					&:hover {
+						@include sub-menu-active-hover-border-left();
+						padding-left: 0;
+					}
+				}
+
+				&.is-exact-match {
+					a {
+						&.active {
+							@include sub-menu-active-hover-border-left();
+							padding-left: 0;
+						}
 					}
 				}
 			}
@@ -130,10 +155,8 @@
 			.ob-sub-menu-back-close-container {
 				display: flex;
 				justify-content: space-between;
-				margin: variables.$ob-spacing-default 0;
 
 				@include layout.ob-media-breakpoint-up(md) {
-					display: none;
 					margin: variables.$ob-spacing-default 0;
 
 					&.just-close {
@@ -141,9 +164,17 @@
 					}
 				}
 
+				.ob-sub-menu-back-button-home-icon {
+					margin-bottom: -0.5 * variables.$ob-spacing-xs;
+				}
+
 				.ob-sub-menu-close-button {
 					margin-top: shadow.$tab-focus-width;
 					flex-direction: row-reverse;
+
+					@include layout.ob-media-breakpoint-down(md) {
+						display: none;
+					}
 
 					&.mat-mdc-button > .mat-icon {
 						margin-left: variables.$ob-spacing-xs;
@@ -161,7 +192,7 @@
 
 			.ob-sub-menu-go-to-children-button {
 				align-self: flex-end;
-				margin-left: calc(-1 * (variables.$ob-spacing-xs * 0.25));
+				margin-left: -0.25 * variables.$ob-spacing-xs;
 
 				&.ob-button {
 					height: 39px;
@@ -192,6 +223,10 @@
 			@include layout.ob-media-breakpoint-up(md) {
 				padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
 
+				&.hide-md-up {
+					display: none;
+				}
+
 				&.active,
 				&:active,
 				&:hover,
@@ -203,7 +238,7 @@
 				}
 			}
 
-			&:not(.ob-sub-menu-close-button, .ob-sub-menu-desktop-back-button) {
+			&:not(.ob-sub-menu-close-button, .ob-sub-menu-back-button) {
 				border-bottom: 1px solid variables.$ob-gray-light;
 			}
 		}
@@ -294,51 +329,28 @@
 			}
 		}
 
-		.ob-sub-menu-mobile-back-button {
-			font-weight: 600;
-
-			@include layout.ob-media-breakpoint-up(md) {
-				display: none;
-			}
-
-			.ob-icon-wrapper {
-				display: flex;
-				align-self: center;
-			}
-
-			.ob-label {
-				flex: 1;
-				overflow: hidden; // works together with text-overflow
-				text-overflow: ellipsis;
-				white-space: nowrap;
-			}
-		}
-
 		& > li.ob-main-nav-item {
 			& > a,
 			& > button {
-				&.ob-master-layout-navigation-link.cdk-keyboard-focused,
-				&.ob-sub-menu-mobile-back-button:focus-visible {
+				&.ob-master-layout-navigation-link.cdk-keyboard-focused {
 					outline: none;
 					box-shadow: none;
 					@include layout.ob-media-breakpoint-up(md) {
-						padding: calc(variables.$ob-spacing-default - shadow.$tab-focus-width);
+						padding: variables.$ob-spacing-default - shadow.$tab-focus-width;
 					}
 					@include layout.ob-media-breakpoint-down(md) {
-						padding: calc(variables.$ob-spacing-sm - shadow.$tab-focus-width)
-							calc(variables.$ob-spacing-default - shadow.$tab-focus-width);
+						padding: (variables.$ob-spacing-sm - shadow.$tab-focus-width)
+							(variables.$ob-spacing-default - shadow.$tab-focus-width);
 					}
 				}
 			}
 
 			&.ob-expanded {
 				& > a.ob-master-layout-navigation-link.cdk-keyboard-focused,
-				& > button.ob-master-layout-navigation-link.cdk-keyboard-focused,
-				& > a.ob-sub-menu-mobile-back-button:focus-visible,
-				& > button.ob-sub-menu-mobile-back-button:focus-visible {
+				& > button.ob-master-layout-navigation-link.cdk-keyboard-focused {
 					& ~ .ob-sub-menu {
 						@include layout.ob-media-breakpoint-up(md) {
-							margin-left: calc(-1 * shadow.$tab-focus-width);
+							margin-left: -(shadow.$tab-focus-width);
 						}
 					}
 				}
@@ -349,9 +361,7 @@
 			& > li {
 				&:has(
 						> a.ob-master-layout-navigation-link.cdk-keyboard-focused,
-						> button.ob-master-layout-navigation-link.cdk-keyboard-focused,
-						> a.ob-sub-menu-mobile-back-button:focus-visible,
-						> button.ob-sub-menu-mobile-back-button:focus-visible
+						> button.ob-master-layout-navigation-link.cdk-keyboard-focused
 					) {
 					@include shadow.ob-tab-focus-border();
 				}
@@ -369,10 +379,9 @@
 			& > li {
 				& > a,
 				& > button {
-					&.ob-master-layout-navigation-link.cdk-keyboard-focused,
-					&.ob-sub-menu-mobile-back-button:focus-visible {
-						padding: calc(variables.$ob-spacing-sm - shadow.$tab-focus-width)
-							calc(variables.$ob-spacing-default - shadow.$tab-focus-width);
+					&.ob-master-layout-navigation-link.cdk-keyboard-focused {
+						padding: (variables.$ob-spacing-sm - shadow.$tab-focus-width)
+							(variables.$ob-spacing-default - shadow.$tab-focus-width);
 						outline: none;
 						box-shadow: none;
 					}

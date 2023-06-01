@@ -6,6 +6,7 @@ import {Subject, merge} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {obOutsideFilter} from '../../global-events/outsideFilter';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
+import {obMasterLayoutNavigationSubMenuFilter} from './masterLayoutNavigationSubMenuFilter';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationItem]',
@@ -53,27 +54,13 @@ export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy 
 		}
 	}
 
-	private isWithinElement(target: Event | KeyboardEvent, selector: string): boolean {
-		return !!(target.target as Element).closest(selector);
-	}
-
-	private isWithinSubMenuItemDesktopBackButton(target: Event | KeyboardEvent): boolean {
-		return this.isWithinElement(target, '.ob-sub-menu-desktop-back-button');
-	}
-
-	private isWithinSubMenuItemGoToChildrenButton(target: Event | KeyboardEvent): boolean {
-		return this.isWithinElement(target, '.ob-sub-menu-go-to-children-button');
-	}
-
 	private monitorForClickOutside(): void {
 		merge(
-			this.globalEventsService.click$.pipe(obOutsideFilter(this.element.nativeElement)),
+			this.globalEventsService.click$.pipe(obOutsideFilter(this.element.nativeElement), obMasterLayoutNavigationSubMenuFilter()),
 			this.globalEventsService.keyUp$.pipe(filter(event => event.key === 'Escape'))
 		)
 			.pipe(
 				filter(() => this.isExpanded),
-				filter(target => !this.isWithinSubMenuItemDesktopBackButton(target)),
-				filter(target => !this.isWithinSubMenuItemGoToChildrenButton(target)),
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(() => this.closeSubMenu());

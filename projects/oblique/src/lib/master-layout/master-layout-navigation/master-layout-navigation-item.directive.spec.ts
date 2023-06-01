@@ -78,6 +78,24 @@ describe(ObMasterLayoutNavigationItemDirective.name, () => {
 			expect(directive.isExpanded).toBe(false);
 		});
 
+		test(`that it collapses on mouse click when target is truthy, but it's closest method is undefined`, () => {
+			const mouseEvent = new MouseEvent('click');
+			clickSubject.next({...mouseEvent, target: {} as EventTarget});
+			expect(directive.isExpanded).toBe(false);
+		});
+
+		test(`that it collapses on mouse click when target's closest returns false`, () => {
+			const mouseEvent = new MouseEvent('click');
+			clickSubject.next({...mouseEvent, target: {closest: () => false} as unknown as EventTarget});
+			expect(directive.isExpanded).toBe(false);
+		});
+
+		test(`that it does not collapse on mouse click when the target of the event is a non closing element within an .ob-sub-menu`, () => {
+			const mouseEvent = new MouseEvent('click');
+			clickSubject.next({...mouseEvent, target: {closest: (selector: string) => selector === '.ob-sub-menu'} as unknown as EventTarget});
+			expect(directive.isExpanded).toBe(true);
+		});
+
 		test('that it collapses on Escape key', () => {
 			keyUpSubject.next(new KeyboardEvent('keyup', {key: 'Escape'}));
 			expect(directive.isExpanded).toBe(false);

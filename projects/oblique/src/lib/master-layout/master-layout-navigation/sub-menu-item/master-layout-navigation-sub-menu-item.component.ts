@@ -1,8 +1,7 @@
 import {Component, EventEmitter, HostBinding, Input, OnChanges, Output, ViewEncapsulation} from '@angular/core';
 import {ObMasterLayoutNavigationItemDirective} from '../master-layout-navigation-item.directive';
 import {IsActiveMatchOptions} from '@angular/router';
-import {TranslateService} from '@ngx-translate/core';
-import {ObINavigationLink} from '../../master-layout.model';
+import {ObNavigationLink} from '../navigation-link.model';
 
 @Component({
 	selector: 'ob-master-layout-navigation-sub-menu-item',
@@ -14,36 +13,38 @@ import {ObINavigationLink} from '../../master-layout.model';
 export class ObMasterLayoutNavigationSubMenuItemComponent implements OnChanges {
 	@HostBinding('class.column') @Input() column = false;
 	@Input() activeClass = '';
-	@Input() child: ObINavigationLink;
-	@Input() currentParent = '';
-	@Input() link: ObINavigationLink;
+	@Input() child: ObNavigationLink = new ObNavigationLink();
+	@Input() currentParent: ObNavigationLink = new ObNavigationLink();
+	@Input() hideExternalLinks = true;
+	@Input() link: ObNavigationLink = new ObNavigationLink();
 	@Input() obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective;
 	@Input() routerLinkActiveOptions: IsActiveMatchOptions;
 	@Input() routerLinkBase: string;
-	@Output() readonly changeCurrentParent: EventEmitter<string> = new EventEmitter<string>();
-
-	constructor(private readonly translateService: TranslateService) {}
+	@Input() showChildren = true;
+	@Output() readonly changeCurrentParent: EventEmitter<ObNavigationLink> = new EventEmitter<ObNavigationLink>();
 
 	ngOnChanges(): void {
-		this.column = this.currentParent === this.getId(this.child.label, this.child.id) || this.doAnyDescendantsMatchCurrentParent(this.child);
+		this.column =
+			this.doesChildMatchCurrentParent(this.child, this.currentParent) ||
+			this.doAnyDescendantsMatchCurrentParent(this.child, this.currentParent);
 	}
 
-	goToChildren(child: ObINavigationLink): void {
-		this.changeCurrentParent.emit(this.getId(child.label, child.id));
+	goToChildren(child: ObNavigationLink): void {
+		this.changeCurrentParent.emit(child);
 	}
 
-	forwardCurrentParent(currentParent: string): void {
-		this.changeCurrentParent.emit(currentParent);
-	}
-
-	private doAnyDescendantsMatchCurrentParent(child: ObINavigationLink): boolean {
+	private doAnyDescendantsMatchCurrentParent(child: ObNavigationLink, currentParent: ObNavigationLink): boolean {
 		return (
-			child.children?.map(kid => this.currentParent === this.getId(kid.label, kid.id)).reduce((previous, current) => previous || current) ||
-			child.children?.map(kid => this.doAnyDescendantsMatchCurrentParent(kid)).reduce((previous, current) => previous || current)
+			child.children
+				?.map(grandchild => this.doesChildMatchCurrentParent(grandchild, currentParent))
+				.reduce((previous, current) => previous || current) ||
+			child.children
+				?.map(grandchild => this.doAnyDescendantsMatchCurrentParent(grandchild, currentParent))
+				.reduce((previous, current) => previous || current)
 		);
 	}
 
-	private getId(label: string, id?: string): string {
-		return id ?? (label.startsWith('i18n.') ? this.translateService.instant(label) : label);
+	private doesChildMatchCurrentParent(child: ObNavigationLink, currentParent: ObNavigationLink): boolean {
+		return currentParent.id === child.id;
 	}
 }
