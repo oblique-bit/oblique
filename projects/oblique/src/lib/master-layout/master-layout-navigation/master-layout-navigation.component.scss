@@ -67,6 +67,15 @@
 					}
 				}
 			}
+
+			&.ob-has-opened-menu {
+				.ob-master-layout-navigation-item.ob-main-nav-item {
+					&:not(.ob-expanded),
+					.ob-master-layout-navigation-toggle {
+						display: none;
+					}
+				}
+			}
 		}
 
 		.ob-sub-menu {
