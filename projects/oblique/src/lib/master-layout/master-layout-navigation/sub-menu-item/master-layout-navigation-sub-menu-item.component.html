@@ -1,25 +1,9 @@
-<ng-container *ngIf="currentParent === (link?.id ?? (link?.label | translate)); else descendants">
+<ng-container *ngIf="currentParent.id === link.id; else descendants">
 	<a
-		*ngIf="!child.isExternal"
-		class="ob-master-layout-navigation-link"
-		[attr.id]="child.id"
-		[routerLink]="routerLinkBase + '/' + child.url"
-		[routerLinkActive]="activeClass"
-		[fragment]="child.fragment"
-		[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
-		[queryParams]="child.queryParams"
-		[attr.aria-current]="link.active ? 'page' : undefined"
-		[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
-		(click)="obMasterLayoutNavigationItem.closeSubMenu()"
-	>
-		<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon"></mat-icon></span>
-		<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
-	</a>
-	<a
-		*ngIf="child.isExternal"
+		*ngIf="child.isExternal; else internalLink"
 		class="ob-master-layout-navigation-link"
 		[icon]="hideExternalLinks ? 'none' : 'right'"
-		[attr.id]="child.id"
+		[id]="child.id"
 		[href]="child.url"
 		[target]="child.sameTarget ? '' : undefined"
 		[rel]="child.sameTarget ? '' : undefined"
@@ -29,30 +13,52 @@
 		<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon"></mat-icon></span>
 		<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
 	</a>
+	<ng-template #internalLink>
+		<a
+			class="ob-master-layout-navigation-link"
+			[id]="child.id"
+			[routerLink]="routerLinkBase + '/' + child.url"
+			[routerLinkActive]="activeClass"
+			[fragment]="child.fragment"
+			[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
+			[queryParams]="child.queryParams"
+			[attr.aria-current]="link.active ? 'page' : undefined"
+			[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
+			(click)="obMasterLayoutNavigationItem.closeSubMenu()"
+		>
+			<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon"></mat-icon></span>
+			<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
+		</a>
+	</ng-template>
 	<button
-		*ngIf="child.children"
+		*ngIf="child.children && showChildren"
+		[id]="'ob-sub-menu-go-to-children-button-' + child.id"
 		type="button"
 		mat-icon-button
 		obButton="tertiary"
 		class="ob-sub-menu-go-to-children-button"
-		[class.hide]="currentParent !== (link.id ?? link.label)"
 		(click)="goToChildren(child)"
 	>
 		<mat-icon matSuffix svgIcon="arrow-right"></mat-icon>
+		<span class="ob-screen-reader-only">{{
+			"i18n.oblique.master-layout.navigation.link.go-to-children" | translate : { parentLabel: (child.label | translate) }
+		}}</span>
 	</button>
 </ng-container>
 <ng-template #descendants>
-	<ng-container *ngIf="child?.children">
+	<ng-container *ngIf="child.children && showChildren">
 		<ob-master-layout-navigation-sub-menu-item
 			*ngFor="let grandchild of child.children"
+			class="descendants"
 			[activeClass]="activeClass"
 			[child]="grandchild"
 			[currentParent]="currentParent"
+			[id]="'ob-descendants-' + link.id"
 			[link]="child"
 			[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
 			[routerLinkActiveOptions]="routerLinkActiveOptions"
 			[routerLinkBase]="routerLinkBase + '/' + child.url"
-			(changeCurrentParent)="forwardCurrentParent($event)"
+			(changeCurrentParent)="goToChildren($event)"
 		></ob-master-layout-navigation-sub-menu-item>
 	</ng-container>
 </ng-template>
