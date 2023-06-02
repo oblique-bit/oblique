@@ -95,17 +95,39 @@
 				transform variables.$ob-duration-default;
 
 			@include layout.ob-media-breakpoint-up(md) {
-				padding: 0 variables.$ob-spacing-xxl variables.$ob-spacing-xxl;
+				padding: 0 (1.3 * variables.$ob-spacing-xl) variables.$ob-spacing-xxl;
+				margin-left: -1 * variables.$ob-spacing-xl;
 				top: 100%;
 				bottom: auto;
 				left: auto;
 				right: auto;
-				min-width: 30ch; // empiric number
+				max-width: variables.$ob-navigation-sub-menu-max-width-md;
 				max-height: 60vh;
 				background-color: variables.$ob-white;
 				transform: none;
 				transition: none;
 				display: block;
+				width: stretch;
+
+				&.ob-has-current-parent-link {
+					padding: 0 (1.75 * variables.$ob-spacing-xl) variables.$ob-spacing-xxl;
+				}
+
+				&.ob-parent-link-has-icon-and-label {
+					padding: 0 (1.9 * variables.$ob-spacing-xl) variables.$ob-spacing-xxl;
+
+					&.ob-has-current-parent-link {
+						padding: 0 (2.25 * variables.$ob-spacing-xl) variables.$ob-spacing-xxl;
+					}
+				}
+
+				@include layout.ob-media-breakpoint-up(lg) {
+					max-width: variables.$ob-navigation-sub-menu-max-width-lg;
+
+					@include layout.ob-media-breakpoint-up(xl) {
+						max-width: variables.$ob-navigation-sub-menu-max-width-xl;
+					}
+				}
 			}
 
 			@include layout.ob-media-breakpoint-down(md) {
@@ -186,7 +208,12 @@
 				}
 
 				button {
+					padding: variables.$ob-spacing-sm variables.$ob-spacing-md;
 					width: fit-content;
+
+					&:not(:first-of-type) {
+						margin-left: variables.$ob-spacing-default;
+					}
 				}
 			}
 
@@ -239,7 +266,14 @@
 			}
 
 			&:not(.ob-sub-menu-close-button, .ob-sub-menu-back-button) {
-				border-bottom: 1px solid variables.$ob-gray-light;
+				border-bottom: 1px solid variables.$ob-secondary-100;
+			}
+		}
+
+		.ob-sub-menu-parent-link {
+			a,
+			button {
+				border-color: variables.$ob-secondary-200;
 			}
 		}
 
@@ -303,9 +337,7 @@
 			.ob-master-layout-navigation-toggle:not([aria-expanded]) .ob-toggle-expanded {
 				display: none;
 			}
-		}
 
-		@include layout.ob-media-breakpoint-up(md) {
 			&.ob-main-nav-fw .ob-sub-menu {
 				left: 0;
 				right: 0;
