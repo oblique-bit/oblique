@@ -190,7 +190,9 @@ export class AppComponent implements OnDestroy {
 				{url: 'http://www.google.ch', label: 'External, label only'},
 				{url: 'http://www.google.ch', label: 'External, icon only', icon: ObEIcon.ANCHOR, iconOnly: true}
 			]
-		}
+		},
+		{url: 'http://www.google.ch', label: 'About Us', isExternal: true, startOfRightSideLinks: true},
+		{url: 'http://www.google.ch', label: 'Contact', isExternal: true}
 	];
 	skipLinks: ObISkipLink[] = [
 		{url: 'current', fragment: 'fragment', label: 'i18n.application.skiplinks.custom'},
