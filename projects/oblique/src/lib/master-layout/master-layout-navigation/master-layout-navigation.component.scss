@@ -108,6 +108,7 @@
 				transition: none;
 				display: block;
 				width: stretch;
+				@include shadow.ob-default-panel-box-shadow();
 
 				&.ob-has-current-parent-link {
 					padding: 0 (1.75 * variables.$ob-spacing-xl) variables.$ob-spacing-xxl;
