@@ -28,6 +28,7 @@
 			obMasterLayoutNavigationItem
 			#obMasterLayoutNavigationItem="obMasterLayoutNavigationItem"
 			*ngFor="let link of initializedLinks"
+			[class.ob-start-of-right-side-links]="link.startOfRightSideLinks"
 		>
 			<ng-container *ngIf="!link.isExternal">
 				<a

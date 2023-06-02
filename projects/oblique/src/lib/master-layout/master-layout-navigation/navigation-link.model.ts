@@ -15,6 +15,7 @@ export class ObNavigationLink implements ObINavigationLink {
 	queryParams?: Record<string, string>;
 	routerLinkActiveOptions?: IsActiveMatchOptions;
 	sameTarget?: boolean;
+	startOfRightSideLinks?: boolean;
 
 	constructor(link?: ObINavigationLink) {
 		this.id = link?.id ?? ObNavigationLink.getKebabCaseId(link?.label, link?.url);
@@ -29,6 +30,7 @@ export class ObNavigationLink implements ObINavigationLink {
 		this.queryParams = link?.queryParams;
 		this.routerLinkActiveOptions = link?.routerLinkActiveOptions;
 		this.sameTarget = link?.sameTarget;
+		this.startOfRightSideLinks = link?.startOfRightSideLinks;
 	}
 
 	private static getKebabCaseId(label = '', url = ''): string {
