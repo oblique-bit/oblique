@@ -79,6 +79,7 @@ export interface ObINavigationLink {
 	routerLinkActiveOptions?: IsActiveMatchOptions;
 	icon?: ObEIcon | string;
 	iconOnly?: boolean;
+	startOfRightSideLinks?: boolean;
 }
 
 export interface ObISkipLink {

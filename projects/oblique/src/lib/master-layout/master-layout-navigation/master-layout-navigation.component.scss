@@ -281,6 +281,16 @@
 		// First level only:
 		> .ob-main-nav-item {
 			@include layout.ob-media-breakpoint-up(md) {
+				&.ob-start-of-right-side-links {
+					margin-left: auto !important;
+					padding-left: variables.$ob-spacing-xxl;
+
+					& ~ .ob-start-of-right-side-links {
+						margin-left: 0 !important;
+						padding-left: 0;
+					}
+				}
+
 				> a,
 				> button {
 					border-bottom: 3px solid transparent;
