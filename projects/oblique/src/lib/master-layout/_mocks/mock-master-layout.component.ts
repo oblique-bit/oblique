@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, QueryList, TemplateRef} from '@angular/core';
-import {ObINavigationLink} from '../master-layout.model';
+import {ObIDynamicSkipLink, ObINavigationLink, ObISkipLink} from '../master-layout.model';
 
 @Component({
 	selector: 'ob-master-layout',
@@ -10,6 +10,7 @@ export class ObMockMasterLayoutComponent {
 	home = '';
 	url: string;
 	@Input() navigation: ObINavigationLink[] = [];
+	@Input() skipLinks: ObISkipLink[] | ObIDynamicSkipLink[] = [];
 	hasCover = true;
 	hasLayout = true;
 	isMenuOpened = true;
