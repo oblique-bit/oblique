@@ -63,7 +63,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
 		this.dimensionChange.complete();
-		this.observer.disconnect();
+		this.observer?.disconnect();
 	}
 
 	toggleLeft(): void {
