@@ -5,10 +5,10 @@
 @use "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout-navigation {
-	border-top: 1px solid variables.$ob-gray-200;
+	border-top: variables.$ob-line-width-xs solid variables.$ob-gray-200;
 
 	&:not(:has(.ob-has-opened-menu)) {
-		border-bottom: 1px solid variables.$ob-gray-200;
+		border-bottom: variables.$ob-line-width-xs solid variables.$ob-gray-200;
 	}
 	flex-grow: 1;
 
@@ -132,6 +132,8 @@
 			}
 
 			@include layout.ob-media-breakpoint-down(md) {
+				overflow-x: clip;
+
 				> ul > li:last-child {
 					// [iOS only] Simulate a bottom spacing to ensure that last item is reachable when scrolling the menu and does not display under the MobileSafari tools menu:
 					margin-bottom: 70px;
@@ -267,7 +269,7 @@
 			}
 
 			&:not(.ob-sub-menu-close-button, .ob-sub-menu-back-button) {
-				border-bottom: 1px solid variables.$ob-secondary-100;
+				border-bottom: variables.$ob-line-width-xs solid variables.$ob-secondary-100;
 			}
 		}
 
@@ -291,9 +293,20 @@
 					}
 				}
 
+				&:last-of-type {
+					&.ob-expandable {
+						.ob-sub-menu {
+							margin-left: max(
+								calc(-20vw),
+								calc(-1 * (variables.$ob-navigation-sub-menu-max-width-md))
+							);
+						}
+					}
+				}
+
 				> a,
 				> button {
-					border-bottom: 3px solid transparent;
+					border-bottom: variables.$ob-line-width-sm solid transparent;
 					display: inline-flex;
 					padding: variables.$ob-spacing-default;
 					white-space: nowrap;
@@ -313,11 +326,43 @@
 
 					&.active,
 					&:hover {
-						border-bottom: 3px solid variables.$ob-red-500;
+						border-bottom: variables.$ob-line-width-sm solid variables.$ob-red-500;
 					}
 
 					&::after {
 						display: none; // do not show red border on main nav 1st level
+					}
+				}
+
+				&.ob-expanded {
+					> a,
+					> button {
+						&.active {
+							@include shadow.ob-expanded-active-main-nav-item-box-shadow();
+						}
+					}
+				}
+
+				&:first-of-type {
+					.ob-sub-menu {
+						margin-left: 0;
+						padding-left: 0.7 * variables.$ob-spacing-default;
+						padding-right: 0.7 * variables.$ob-spacing-default;
+
+						&.ob-has-current-parent-link {
+							padding-left: 1.4 * variables.$ob-spacing-default;
+							padding-right: 1.4 * variables.$ob-spacing-default;
+						}
+
+						&.ob-parent-link-has-icon-and-label {
+							padding-left: variables.$ob-spacing-xl;
+							padding-right: variables.$ob-spacing-xl;
+
+							&.ob-has-current-parent-link {
+								padding-left: 1.3 * variables.$ob-spacing-xl;
+								padding-right: 1.3 * variables.$ob-spacing-xl;
+							}
+						}
 					}
 				}
 			}
@@ -393,15 +438,24 @@
 				& > button.ob-master-layout-navigation-link.cdk-keyboard-focused {
 					& ~ .ob-sub-menu {
 						@include layout.ob-media-breakpoint-up(md) {
-							margin-left: -(shadow.$tab-focus-width);
+							margin-left: -(variables.$ob-spacing-xl + shadow.$tab-focus-width);
 						}
 					}
 				}
 			}
 		}
 
-		@mixin nav-li-tab-focus-border() {
-			& > li {
+		& > li {
+			&:has(
+					> a.ob-master-layout-navigation-link.cdk-keyboard-focused,
+					> button.ob-master-layout-navigation-link.cdk-keyboard-focused
+				) {
+				@include shadow.ob-tab-focus-border();
+			}
+		}
+
+		.ob-sub-nav {
+			.ob-master-layout-navigation-sub-menu-item {
 				&:has(
 						> a.ob-master-layout-navigation-link.cdk-keyboard-focused,
 						> button.ob-master-layout-navigation-link.cdk-keyboard-focused
@@ -409,24 +463,64 @@
 					@include shadow.ob-tab-focus-border();
 				}
 			}
-		}
-
-		@include nav-li-tab-focus-border();
-
-		.ob-sub-nav {
-			@include nav-li-tab-focus-border();
 			@include layout.ob-media-breakpoint-up(md) {
 				background-color: variables.$ob-white;
 			}
 
 			& > li {
-				& > a,
-				& > button {
-					&.ob-master-layout-navigation-link.cdk-keyboard-focused {
-						padding: (variables.$ob-spacing-sm - shadow.$tab-focus-width)
-							(variables.$ob-spacing-default - shadow.$tab-focus-width);
-						outline: none;
-						box-shadow: none;
+				.ob-master-layout-navigation-sub-menu-item {
+					& > a,
+					& > button {
+						&.cdk-keyboard-focused {
+							&.ob-master-layout-navigation-link,
+							&.ob-sub-menu-go-to-children-button {
+								outline: none;
+								box-shadow: none;
+							}
+
+							&.ob-master-layout-navigation-link {
+								padding: (variables.$ob-spacing-sm - shadow.$tab-focus-width)
+									(variables.$ob-spacing-default - shadow.$tab-focus-width);
+
+								&.active,
+								&:hover {
+									padding-left: variables.$ob-spacing-sm;
+								}
+
+								& ~ .ob-sub-menu-go-to-children-button {
+									height: 33px;
+									padding-left: 0.8 * variables.$ob-spacing-default;
+									padding-bottom: 1.1 * variables.$ob-spacing-default;
+
+									.mat-icon {
+										margin-right: -1.25 * variables.$ob-spacing-sm;
+										margin-top: -0.75 * variables.$ob-spacing-xs;
+									}
+
+									&:hover {
+										.mat-icon {
+											margin-left: -(variables.$ob-spacing-sm);
+											margin-top: -0.75 * variables.$ob-spacing-xs;
+										}
+									}
+								}
+							}
+
+							&.ob-sub-menu-go-to-children-button {
+								@include shadow.ob-tab-focus-border();
+								padding-left: variables.$ob-spacing-sm;
+								padding-bottom: 1.3 * variables.$ob-spacing-default;
+
+								.mat-icon {
+									margin-top: -0.75 * variables.$ob-spacing-xs;
+								}
+
+								&:hover {
+									border-left: variables.$ob-line-width solid variables.$ob-accent;
+									padding-left: 0.8 * variables.$ob-spacing-sm;
+								}
+							}
+						}
 					}
 				}
 			}
