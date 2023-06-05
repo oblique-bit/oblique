@@ -45,6 +45,10 @@ $tab-focus-width: 3px;
 	box-shadow: 0 5px 20px -2px rgba(0, 0, 0, 8%);
 }
 
+@mixin ob-expanded-active-main-nav-item-box-shadow() {
+	box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 6%), 1px 10px 70px -8px rgba(0, 0, 0, 13%);
+}
+
 // this is a placeholder since the box-shadow value has not yet been provided by the UX team
 @mixin ob-default-panel-box-shadow() {
 	box-shadow: 0 3px 4px 1px variables.$ob-secondary-300;
