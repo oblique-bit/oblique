@@ -13,6 +13,13 @@ The development team is available by [email](mailto:Oblique@bit.admin.ch).
 
 ## Get started
 
+This repo contains 4 district Angular projects:
+
+- **oblique**: this is the Oblique library that will be distributed on NPM.
+- **sds**: this is the Oblique documentation that will be deployed on http://oblique.bit.admin.ch. Use it to see Oblique in action.
+- **sandbox**: this is a sandbox application used by the Oblique's development team. This application is never deployed and doesn't match the usual quality requirements.
+- **stylesBuilder**: this is an internal project used by Oblique to generate global CSS files. Never use it.
+
 ### Prerequisites
 
 - GIT
@@ -23,8 +30,32 @@ The development team is available by [email](mailto:Oblique@bit.admin.ch).
 
 - Clone the repo: `git clone https://github.com/oblique-bit/oblique.git`.
 - Install project dependencies: `npm ci`
-- start the sandbox: `npm start -w sandbox`
-- test the sandbox: `npm test -w sandbox`
+
+### Useful commands
+
+#### Start projects
+
+- start Sandbox: `npm start -w projects/sandbox`
+- start SDS: `npm start -w projects/sds`
+- start all projects: `npm start -ws`
+
+#### Test projects
+
+- test Oblique `npm test -w projects/oblique`
+- test Sandbox: `npm test -w projects/sandbox`
+- test SDS: `npm test -w projects/sds`
+- test all projects: `npm test -ws`
+
+#### Lint projects
+
+- lint all projects: `npm run lint`
+- format (lint with auto fix) all projects: `npm run format`
+
+#### Miscellaneous commands
+
+- compile the schematics: `npm run schematics -w projects/oblique`
+- update icons (should be executed when there is a change in the `projects/oblique/icons` folder): `npm run update-icons -w projects/oblique`
+- update error messages (should be executed when there is a change in one of the translation keys starting with `i18n.validation`): `npm run update-error-messages -w projects/oblique`
 
 ## Commit messages
 
