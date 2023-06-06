@@ -14,7 +14,20 @@ You will find information about how to use Oblique, code samples, FAQ and many m
 
 ## Support
 
-For questions and support please contact us by [email](mailto:Oblique@bit.admin.ch).
+For questions and support please contact us by [email](<mailto:Oblique@bit.admin.ch?subject=%5BSupport%7C%20Question%7C%20Request%7C%20Feedback%5D&body=Hello%20Oblique%0D%0A%5BYour%20message%5D%0D%0A%0D%0A%0D%0AHere%20is%20my%20context%0D%0A%0D%0A-%20Names%20of%20the%20features%3A%0D%0A%0D%0A-%20Detailed%20description%20and%20screenshots%3A%0D%0A%0D%0A-%20npm%20version%3A%0D%0A%0D%0A-%20Node%20version%3A%0D%0A%0D%0A-%20Used%20Angular%20version%3A%0D%0A%0D%0A-%20Used%20Oblique%20version%3A%0D%0A%0D%0A-%20Other%20dependencies%20(if%20they%20play%20a%20role%20in%20your%20request)%3A%0D%0A%0D%0A-%20Link%20to%20reproduce%20the%20required%20steps%3A%0D%0A%0D%0AKind%20regards%0D%0A%5BYour%20signature%5D%0D%0A%0D%0A%0D%0A%0D%0A>).
+
+Please write your message as precisely as possible so that we can answer you more quickly.
+
+Helpful context could be:
+
+- Names of the features
+- Detailed description with screenshots
+- Used npm version
+- Used Node version
+- Used Angular version
+- Used Oblique version
+- Other dependencies (if they play a role in your request)
+- Link to reproduce the required steps
 
 ## Usage
 
