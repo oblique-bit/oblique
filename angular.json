@@ -209,7 +209,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sds",
+            "outputPath": "dist/sds/public",
             "index": "projects/sds/src/index.html",
             "main": "projects/sds/src/main.ts",
             "polyfills": ["zone.js"],
@@ -228,12 +228,12 @@
               },
               {
                 "glob": "*headers.conf",
-                "input": "src/nginx",
+                "input": "project/sds/src/nginx",
                 "output": "./../nginx/conf/includes"
               },
               {
                 "glob": "Staticfile",
-                "input": "src/nginx",
+                "input": "project/sds/src/nginx",
                 "output": "./.."
               }
             ],
