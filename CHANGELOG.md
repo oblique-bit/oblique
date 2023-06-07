@@ -1,3 +1,11 @@
+# [10.1.2](https://github.com/oblique-bit/oblique/compare/10.1.1...10.1.2) (2023-06-07)
+
+## Bug Fixes
+
+- **column-layout:** add optional chaining operator to observer of column layout ([2198c98](https://github.com/oblique-bit/oblique/commit/2198c98c7f021309dec72a6a70bca290d829f207))
+- **master-layout:** add Input `skipLinks` to mock ([bb2b9ab](https://github.com/oblique-bit/oblique/commit/bb2b9ab2efac9784bf214ed91a95f523c792d719))
+- **material:** labels are visible correctly with firefox ([e5c736a](https://github.com/oblique-bit/oblique/commit/e5c736a9bc8b9a7722cccb37b61d905a471ba2ba))
+
 # [10.1.1](https://github.com/oblique-bit/oblique/compare/10.1.0...10.1.1) (2023-05-12)
 
 ## Bug Fixes
