@@ -11,7 +11,7 @@
       "updated": "10.1.0",
       "inputs": [
         {
-          "name": "skiplinks",
+          "name": "skipLinks",
           "text": "A List of Links to be used as skiplinks in order to improve accessibility.",
           "type": "ObISkipLink[]",
           "default": "[]",

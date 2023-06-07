@@ -44,6 +44,9 @@ module.exports.coverageThreshold = {
 		functions: 100,
 		lines: 100
 	},
+	'projects/oblique/src/lib/column-layout/column-layout.component.ts': {
+		branches: 94
+	},
 	'projects/oblique/src/lib/document-meta/*.ts': {
 		statements: 60,
 		branches: 7,
