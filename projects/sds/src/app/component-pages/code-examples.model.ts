@@ -1,4 +1,5 @@
 import {SourceCode} from './code-example/source-code.model';
+import {Type} from '@angular/core';
 
 /**
  * Each *CodeExamplesComponent extends this class so that they all have the same type.
@@ -12,4 +13,14 @@ export class CodeExamples {
 			title
 		);
 	}
+}
+
+/**
+ * Each *Example*PreviewComponent implements this interface so that they all have the same type.
+ * This is necessary so that the CodeExampleComponent class can work with a single type
+ */
+export interface PreviewComponent {} // eslint-disable-line @typescript-eslint/no-empty-interface
+
+export interface CodeExample {
+	component?: Type<PreviewComponent>;
 }

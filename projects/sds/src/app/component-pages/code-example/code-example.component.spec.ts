@@ -1,4 +1,4 @@
-import {TemplateRef} from '@angular/core';
+import {Component, Type} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CodeExampleComponent} from './code-example.component';
 import {SourceCode} from './source-code.model';
@@ -8,13 +8,20 @@ import {IdModule} from '../../shared/id/id.module';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {UnitTestHelpers} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
 import {HighlightedCodeComponent} from './highlighted-code/highlighted-code.component';
+import {PreviewComponent} from '../code-examples.model';
+import {CodeExampleDirective} from '../code-example.directive';
+
+@Component({
+	selector: 'app-preview',
+	template: ''
+})
+class MockPreviewComponent implements PreviewComponent {}
 
 describe(`${CodeExampleComponent.name}`, () => {
 	let component: CodeExampleComponent;
 	let fixture: ComponentFixture<CodeExampleComponent>;
 
 	const idPipe = new IdPipe();
-	const preview = {} as TemplateRef<any>;
 
 	const getIdParts: (id?: string) => string[] = (id?: string) => {
 		const idParts = [component.componentId];
@@ -28,7 +35,14 @@ describe(`${CodeExampleComponent.name}`, () => {
 
 	const setupComponent = async (inputs?: ComponentInputs): Promise<void> => {
 		await TestBed.configureTestingModule({
-			declarations: [CodeExampleComponent, HighlightedCodeComponent, TabComponent, TabsComponent],
+			declarations: [
+				CodeExampleComponent,
+				HighlightedCodeComponent,
+				TabComponent,
+				TabsComponent,
+				MockPreviewComponent,
+				CodeExampleDirective
+			],
 			imports: [IdModule]
 		}).compileComponents();
 
@@ -89,7 +103,7 @@ describe(`${CodeExampleComponent.name}`, () => {
 			await setupComponent({
 				codeSnippets: [new SourceCode('soucecode', 'html'), new SourceCode('soucecode', 'scss'), new SourceCode('soucecode', 'ts')],
 				idPrefix: 'test',
-				preview
+				preview: MockPreviewComponent
 			});
 
 			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix, getIdParts(id)))).toBeTruthy();
@@ -100,5 +114,5 @@ describe(`${CodeExampleComponent.name}`, () => {
 interface ComponentInputs {
 	codeSnippets?: SourceCode[];
 	idPrefix?: string;
-	preview?: TemplateRef<any>;
+	preview?: Type<PreviewComponent>;
 }
