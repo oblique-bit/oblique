@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CodeExamples} from '../code-examples.model';
+import {CodeExamples} from '../../code-examples.model';
 
 @Component({
 	selector: 'app-code-example-banner',

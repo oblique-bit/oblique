@@ -9,8 +9,8 @@ import {ButtonExampleSecondaryLinkNoIconComponent} from './previews/secondary-li
 import {ButtonExampleSecondaryWheelchairComponent} from './previews/secondary-wheelchair/button-example-secondary-wheelchair.component';
 import {ButtonExampleTertiaryLinkNoIconDisabledComponent} from './previews/tertiary-link-no-icon-disabled/button-example-tertiary-link-no-icon-disabled.component';
 import {ButtonExampleTertiaryRepeatNoTextComponent} from './previews/tertiary-repeat-no-text/button-example-tertiary-repeat-no-text.component';
-import {CodeExampleComponent} from '../code-example/code-example.component';
-import {HighlightedCodeComponent} from '../code-example/highlighted-code/highlighted-code.component';
+import {CodeExampleComponent} from '../../code-example/code-example.component';
+import {HighlightedCodeComponent} from '../../code-example/highlighted-code/highlighted-code.component';
 import {TabComponent} from '../../tabs/tab/tab.component';
 import {TabsComponent} from '../../tabs//tabs.component';
 import {IdModule} from '../../../shared/id/id.module';

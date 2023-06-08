@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {SourceCode} from '../code-example/source-code.model';
-import {CodeExamples} from '../code-examples.model';
+import {SourceCode} from '../../code-example/source-code.model';
+import {CodeExamples} from '../../code-examples.model';
 
 @Component({
 	selector: 'app-code-example-alert',
