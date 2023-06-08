@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {IdModule} from '../../../../shared/id/id.module';
+import {IdModule} from '../../../shared/id/id.module';
 
 import {HighlightedCodeComponent} from './highlighted-code.component';
 
