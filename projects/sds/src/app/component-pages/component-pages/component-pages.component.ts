@@ -1,14 +1,14 @@
 import {Component, OnDestroy, OnInit, Type, ViewChild} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {CmsDataService} from '../cms/cms-data.service';
-import {CodeExampleDirective} from './code-example.directive';
-import {CodeExamplesMapper} from './code-examples/code-examples.mapper';
-import {CodeExamples} from './code-examples/code-examples.model';
-import {NoCodeExamplesMatchComponent} from './code-examples/no-match/no-code-examples-match.component';
+import {CmsDataService} from '../../cms/cms-data.service';
+import {CodeExampleDirective} from '../code-example.directive';
+import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
+import {CodeExamples} from '../code-examples/code-examples.model';
+import {NoCodeExamplesMatchComponent} from '../code-examples/no-match/no-code-examples-match.component';
 import {BehaviorSubject, Subscription, filter} from 'rxjs';
-import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
-import {URL_CONST} from '../shared/url/url.const';
+import {SlugToIdService} from '../../shared/slug-to-id/slug-to-id.service';
+import {URL_CONST} from '../../shared/url/url.const';
 
 @Component({
 	selector: 'app-component-pages',

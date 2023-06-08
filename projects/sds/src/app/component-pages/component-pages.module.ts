@@ -7,7 +7,7 @@ import {BannerCodeExamplesComponent} from './code-examples/banner/banner-code-ex
 import {CodeExampleComponent} from './code-examples/code-example/code-example.component';
 import {NoCodeExamplesMatchComponent} from './code-examples/no-match/no-code-examples-match.component';
 import {ComponentPagesRoutingModule} from './component-pages-routing.module';
-import {ComponentPagesComponent} from './component-pages.component';
+import {ComponentPagesComponent} from './component-pages/component-pages.component';
 import {TabComponent} from './tabs/tab/tab.component';
 import {TabsComponent} from './tabs/tabs.component';
 import {IdModule} from '../shared/id/id.module';
