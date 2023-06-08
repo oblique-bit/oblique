@@ -228,12 +228,12 @@
               },
               {
                 "glob": "*headers.conf",
-                "input": "project/sds/src/nginx",
+                "input": "projects/sds/src/nginx",
                 "output": "./../nginx/conf/includes"
               },
               {
                 "glob": "Staticfile",
-                "input": "project/sds/src/nginx",
+                "input": "projects/sds/src/nginx",
                 "output": "./.."
               }
             ],
