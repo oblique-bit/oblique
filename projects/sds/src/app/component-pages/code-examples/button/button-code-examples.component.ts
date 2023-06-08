@@ -9,7 +9,7 @@ import {ButtonExampleTertiaryRepeatNoTextComponent} from './previews/tertiary-re
 
 @Component({
 	selector: 'app-button-code-examples',
-	templateUrl: './button-code-examples.component.html',
+	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonCodeExamplesComponent extends CodeExamples {
