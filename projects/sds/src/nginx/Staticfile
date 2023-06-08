@@ -1,5 +1,5 @@
 pushstate: enabled
-root: public
+root: sds/public
 location_include: includes/custom_headers.conf
 http_strict_transport_security: true
 http_strict_transport_security_include_subdomains: true
