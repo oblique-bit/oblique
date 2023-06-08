@@ -5,4 +5,4 @@ import {CodeExamples} from '../../code-examples.model';
 	selector: 'app-code-example-banner',
 	templateUrl: './banner-code-examples.component.html'
 })
-export class BannerCodeExamplesComponent implements CodeExamples {}
+export class BannerCodeExamplesComponent extends CodeExamples {}
