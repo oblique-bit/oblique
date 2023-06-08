@@ -1,13 +1,13 @@
 <app-code-example
 	[codeSnippets]="codeSnippetsInfo"
-	[id]="componentId | id : ['info']"
+	[id]="componentId | id : previews[0].idParts"
 	[idPrefix]="componentId"
 	[preview]="previews[0].component"
 ></app-code-example>
 
 <app-code-example
 	[codeSnippets]="codeSnippetsSuccess"
-	[id]="componentId | id : ['success']"
+	[id]="componentId | id : previews[1].idParts"
 	[idPrefix]="componentId"
 	[preview]="previews[1].component"
 ></app-code-example>

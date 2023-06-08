@@ -39,11 +39,11 @@ export class ButtonCodeExamplesComponent extends CodeExamples {
 		this.getSnippet('button', 'tertiary-repeat-no-text/button-example-tertiary-repeat-no-text.component.html', 'HTML')
 	];
 	readonly previews: CodeExample[] = [
-		{component: ButtonExamplePrimaryLinkFrownComponent},
-		{component: ButtonExamplePrimaryLoginDisabledComponent},
-		{component: ButtonExampleSecondaryLinkNoIconComponent},
-		{component: ButtonExampleSecondaryWheelchairComponent},
-		{component: ButtonExampleTertiaryLinkNoIconDisabledComponent},
-		{component: ButtonExampleTertiaryRepeatNoTextComponent}
+		{component: ButtonExamplePrimaryLinkFrownComponent, idParts: ['primary', 'link', 'frown']},
+		{component: ButtonExamplePrimaryLoginDisabledComponent, idParts: ['primary', 'login', 'disabled']},
+		{component: ButtonExampleSecondaryLinkNoIconComponent, idParts: ['secondary', 'no-icon']},
+		{component: ButtonExampleSecondaryWheelchairComponent, idParts: ['secondary', 'wheelchair']},
+		{component: ButtonExampleTertiaryLinkNoIconDisabledComponent, idParts: ['tertiary', 'link', 'no-icon', 'disabled']},
+		{component: ButtonExampleTertiaryRepeatNoTextComponent, idParts: ['tertiary', 'repeat', 'no-text']}
 	];
 }
