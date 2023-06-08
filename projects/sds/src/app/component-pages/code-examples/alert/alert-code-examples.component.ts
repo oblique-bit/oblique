@@ -9,10 +9,16 @@ import {AlertExampleSuccessPreviewComponent} from './previews/success/alert-exam
 })
 export class AlertCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'alert-examples';
-	readonly codeSnippetsInfo = [this.getSnippet('alert', 'info/alert-example-info-preview.component.html', 'HTML')];
-	readonly codeSnippetsSuccess = [this.getSnippet('alert', 'success/alert-example-success-preview.component.html', 'HTML')];
 	readonly previews: CodeExample[] = [
-		{component: AlertExampleInfoPreviewComponent, idParts: ['info']},
-		{component: AlertExampleSuccessPreviewComponent, idParts: ['success']}
+		{
+			component: AlertExampleInfoPreviewComponent,
+			idParts: ['info'],
+			snippets: [this.getSnippet('alert', 'info/alert-example-info-preview.component.html', 'HTML')]
+		},
+		{
+			component: AlertExampleSuccessPreviewComponent,
+			idParts: ['success'],
+			snippets: [this.getSnippet('alert', 'success/alert-example-success-preview.component.html', 'HTML')]
+		}
 	];
 }
