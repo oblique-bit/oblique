@@ -147,12 +147,12 @@ If specified, the scope must be one of:
 - **translate-params**
 - **unknown-route**
 - **unsaved-changes**
+- **material** for material design
 
 ###### Oblique scopes
 
 The Oblique project may use those additional scopes:
 
-- **material** for material design components or styles
 - **schematics** for the schematics not directly linked to a feature
 - **styles** for the global CSS
 - **translation** for the translations not directly linked to a feature
@@ -162,7 +162,6 @@ The Oblique project may use those additional scopes:
 
 The sandbox project may use those additional scopes:
 
-- **material** for material design documentation pages
 - **styles** for styles documentation pages
 
 ###### SDS scopes
