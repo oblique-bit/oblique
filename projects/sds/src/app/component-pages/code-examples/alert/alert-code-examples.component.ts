@@ -5,7 +5,7 @@ import {AlertExampleSuccessPreviewComponent} from './previews/success/alert-exam
 
 @Component({
 	selector: 'app-code-example-alert',
-	templateUrl: './alert-code-examples.component.html'
+	templateUrl: '../../code-examples.component.html'
 })
 export class AlertCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'alert-examples';
