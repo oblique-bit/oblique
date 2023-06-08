@@ -11,5 +11,8 @@ export class AlertCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'alert-examples';
 	readonly codeSnippetsInfo = [this.getSnippet('alert', 'info/alert-example-info-preview.component.html', 'HTML')];
 	readonly codeSnippetsSuccess = [this.getSnippet('alert', 'success/alert-example-success-preview.component.html', 'HTML')];
-	readonly previews: CodeExample[] = [{component: AlertExampleInfoPreviewComponent}, {component: AlertExampleSuccessPreviewComponent}];
+	readonly previews: CodeExample[] = [
+		{component: AlertExampleInfoPreviewComponent, idParts: ['info']},
+		{component: AlertExampleSuccessPreviewComponent, idParts: ['success']}
+	];
 }
