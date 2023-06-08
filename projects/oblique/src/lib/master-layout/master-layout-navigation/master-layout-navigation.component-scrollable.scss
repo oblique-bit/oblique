@@ -29,17 +29,34 @@
 				padding: 0 variables.$ob-spacing-sm;
 				border: none;
 				display: inline-block;
-				background-color: variables.$ob-gray-extra-light;
-				z-index: variables.$ob-z-index-controls;
+				background-color: variables.$ob-white;
+				z-index: variables.$ob-z-index-controls + 2;
+
+				$ob-active-focus-border: variables.$ob-line-width-sm solid variables.$ob-red-500;
+				$ob-scrollable-box-shadow-left: 6px 0 4px (-4px) variables.$ob-secondary-100;
 
 				&.ob-navigation-scrollable-control-left {
-					@include shadow.ob-inner-bottom-shadow();
+					box-shadow: $ob-scrollable-box-shadow-left;
 					left: 0;
+
+					&:not([disabled]) {
+						&:active,
+						&:focus {
+							border-right: $ob-active-focus-border;
+						}
+					}
 				}
 
 				&.ob-navigation-scrollable-control-right {
-					@include shadow.ob-inner-bottom-shadow();
+					box-shadow: -$ob-scrollable-box-shadow-left;
 					right: 0;
+
+					&:not([disabled]) {
+						&:active,
+						&:focus {
+							border-left: $ob-active-focus-border;
+						}
+					}
 				}
 
 				.ob-icon-wrapper {
@@ -52,13 +69,23 @@
 
 				&:hover,
 				&:focus,
-				&:active {
-					cursor: pointer;
-					background-color: variables.$ob-gray-light;
+				&:active,
+				&[disabled] {
 					box-shadow: none;
+				}
 
-					.ob-icon-wrapper > * {
-						transform: scale(1.3);
+				&:not([disabled]) {
+					&:hover {
+						cursor: pointer;
+						background-color: variables.$ob-secondary-50;
+
+						.mat-icon {
+							transform: scale(1.3);
+						}
+					}
+
+					&:focus {
+						background-color: variables.$ob-secondary-100;
 					}
 				}
 			}
