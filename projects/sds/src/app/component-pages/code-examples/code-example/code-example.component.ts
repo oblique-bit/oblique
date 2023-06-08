@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, TemplateRef} from '@angular/core';
-import {CodeExample} from './code-example.model';
+import {SourceCode} from './source-code.model';
 
 @Component({
 	selector: 'app-code-example',
@@ -8,7 +8,7 @@ import {CodeExample} from './code-example.model';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CodeExampleComponent {
-	@Input() example: CodeExample = new CodeExample();
+	@Input() codeSnippets: SourceCode[] = [];
 	@Input() idPrefix = '';
 	@Input() preview?: TemplateRef<unknown>;
 

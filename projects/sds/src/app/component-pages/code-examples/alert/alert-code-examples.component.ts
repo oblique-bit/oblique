@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CodeExample} from '../code-example/code-example.model';
+import {SourceCode} from '../code-example/source-code.model';
 import {CodeExamples} from '../code-examples.model';
 
 @Component({
@@ -9,13 +9,19 @@ import {CodeExamples} from '../code-examples.model';
 export class AlertCodeExamplesComponent implements CodeExamples {
 	readonly componentId = 'alert-examples';
 
-	readonly exampleInfo = new CodeExample({
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-var-requires
-		html: require('!!raw-loader!./previews/info/alert-example-info-preview.component.html').default
-	});
+	readonly codeSnippetsInfo = [
+		new SourceCode(
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-var-requires
+			require('!!raw-loader!./previews/info/alert-example-info-preview.component.html').default as string,
+			'HTML'
+		)
+	];
 
-	readonly exampleSuccess = new CodeExample({
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-var-requires
-		html: require('!!raw-loader!./previews/success/alert-example-success-preview.component.html').default
-	});
+	readonly codeSnippetsSuccess = [
+		new SourceCode(
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-var-requires
+			require('!!raw-loader!./previews/success/alert-example-success-preview.component.html').default as string,
+			'HTML'
+		)
+	];
 }
