@@ -1,7 +1,7 @@
 import {TemplateRef} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CodeExampleComponent} from './code-example.component';
-import {CodeExample} from './code-example.model';
+import {SourceCode} from './source-code.model';
 import {TabComponent} from '../../tabs/tab/tab.component';
 import {TabsComponent} from '../../tabs/tabs.component';
 import {IdModule} from '../../../shared/id/id.module';
@@ -34,7 +34,7 @@ describe(`${CodeExampleComponent.name}`, () => {
 
 		fixture = TestBed.createComponent(CodeExampleComponent);
 		component = fixture.componentInstance;
-		component.example = inputs?.example ?? new CodeExample();
+		component.codeSnippets = inputs?.codeSnippets ?? [];
 		component.idPrefix = inputs?.idPrefix ?? '';
 		component.preview = inputs?.preview;
 
@@ -63,25 +63,31 @@ describe(`${CodeExampleComponent.name}`, () => {
 	);
 
 	it.each<{id: string}>([{id: 'tabs'}, {id: 'html-tab'}, {id: 'scss-tab'}, {id: 'ts-tab'}])(
-		'should display $id when only example & idPrefix inputs are truthy',
+		'should display $id when only codeSnippets & idPrefix inputs are truthy',
 		async ({id}) => {
-			await setupComponent({example: new CodeExample({html: 'html', scss: 'scss', ts: 'ts'}), idPrefix: 'test'});
+			await setupComponent({
+				codeSnippets: [new SourceCode('soucecode', 'html'), new SourceCode('soucecode', 'scss'), new SourceCode('soucecode', 'ts')],
+				idPrefix: 'test'
+			});
 
 			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix, getIdParts(id)))).toBeTruthy();
 		}
 	);
 
-	it.each<{id: string}>([{id: 'preview-tab'}])('should not display $id when only example & idPrefix inputs are truthy', async ({id}) => {
-		await setupComponent({example: new CodeExample({html: 'html', scss: 'scss', ts: 'ts'}), idPrefix: 'test'});
+	it.each<{id: string}>([{id: 'preview-tab'}])(
+		'should not display $id when only codeSnippets & idPrefix inputs are truthy',
+		async ({id}) => {
+			await setupComponent({codeSnippets: [new SourceCode('soucecode', 'title')], idPrefix: 'test'});
 
-		expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix, getIdParts(id)))).toBeFalsy();
-	});
+			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix, getIdParts(id)))).toBeFalsy();
+		}
+	);
 
 	it.each<{id: string}>([{id: 'tabs'}, {id: 'preview-tab'}, {id: 'html-tab'}, {id: 'scss-tab'}, {id: 'ts-tab'}])(
 		'should display $id when all inputs are truthy',
 		async ({id}) => {
 			await setupComponent({
-				example: new CodeExample({html: 'html', scss: 'scss', ts: 'ts'}),
+				codeSnippets: [new SourceCode('soucecode', 'html'), new SourceCode('soucecode', 'scss'), new SourceCode('soucecode', 'ts')],
 				idPrefix: 'test',
 				preview
 			});
@@ -92,7 +98,7 @@ describe(`${CodeExampleComponent.name}`, () => {
 });
 
 interface ComponentInputs {
-	example?: CodeExample;
+	codeSnippets?: SourceCode[];
 	idPrefix?: string;
 	preview?: TemplateRef<any>;
 }
