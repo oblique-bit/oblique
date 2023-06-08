@@ -14,36 +14,38 @@ import {ButtonExampleTertiaryRepeatNoTextComponent} from './previews/tertiary-re
 })
 export class ButtonCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'button-examples';
-
-	readonly codeSnippetsPrimaryLinkFrown = [
-		this.getSnippet('button', 'primary-link-frown/button-example-primary-link-frown.component.html', 'HTML')
-	];
-
-	readonly codeSnippetsPrimaryLoginDisabled = [
-		this.getSnippet('button', 'primary-login-disabled/button-example-primary-login-disabled.component.html', 'HTML')
-	];
-
-	readonly codeSnippetsSecondaryNoIcon = [
-		this.getSnippet('button', 'secondary-link-no-icon/button-example-secondary-link-no-icon.component.html', 'HTML')
-	];
-
-	readonly codeSnippetsSecondaryWheelchair = [
-		this.getSnippet('button', 'secondary-wheelchair/button-example-secondary-wheelchair.component.html', 'HTML')
-	];
-
-	readonly codeSnippetsTertiaryLinkNoIconDisabled = [
-		this.getSnippet('button', 'tertiary-link-no-icon-disabled/button-example-tertiary-link-no-icon-disabled.component.html', 'HTML')
-	];
-
-	readonly codeSnippetsTertiaryRepeatNoText = [
-		this.getSnippet('button', 'tertiary-repeat-no-text/button-example-tertiary-repeat-no-text.component.html', 'HTML')
-	];
 	readonly previews: CodeExample[] = [
-		{component: ButtonExamplePrimaryLinkFrownComponent, idParts: ['primary', 'link', 'frown']},
-		{component: ButtonExamplePrimaryLoginDisabledComponent, idParts: ['primary', 'login', 'disabled']},
-		{component: ButtonExampleSecondaryLinkNoIconComponent, idParts: ['secondary', 'no-icon']},
-		{component: ButtonExampleSecondaryWheelchairComponent, idParts: ['secondary', 'wheelchair']},
-		{component: ButtonExampleTertiaryLinkNoIconDisabledComponent, idParts: ['tertiary', 'link', 'no-icon', 'disabled']},
-		{component: ButtonExampleTertiaryRepeatNoTextComponent, idParts: ['tertiary', 'repeat', 'no-text']}
+		{
+			component: ButtonExamplePrimaryLinkFrownComponent,
+			idParts: ['primary', 'link', 'frown'],
+			snippets: [this.getSnippet('button', 'primary-link-frown/button-example-primary-link-frown.component.html', 'HTML')]
+		},
+		{
+			component: ButtonExamplePrimaryLoginDisabledComponent,
+			idParts: ['primary', 'login', 'disabled'],
+			snippets: [this.getSnippet('button', 'primary-login-disabled/button-example-primary-login-disabled.component.html', 'HTML')]
+		},
+		{
+			component: ButtonExampleSecondaryLinkNoIconComponent,
+			idParts: ['secondary', 'no-icon'],
+			snippets: [this.getSnippet('button', 'secondary-link-no-icon/button-example-secondary-link-no-icon.component.html', 'HTML')]
+		},
+		{
+			component: ButtonExampleSecondaryWheelchairComponent,
+			idParts: ['secondary', 'wheelchair'],
+			snippets: [this.getSnippet('button', 'secondary-wheelchair/button-example-secondary-wheelchair.component.html', 'HTML')]
+		},
+		{
+			component: ButtonExampleTertiaryLinkNoIconDisabledComponent,
+			idParts: ['tertiary', 'link', 'no-icon', 'disabled'],
+			snippets: [
+				this.getSnippet('button', 'tertiary-link-no-icon-disabled/button-example-tertiary-link-no-icon-disabled.component.html', 'HTML')
+			]
+		},
+		{
+			component: ButtonExampleTertiaryRepeatNoTextComponent,
+			idParts: ['tertiary', 'repeat', 'no-text'],
+			snippets: [this.getSnippet('button', 'tertiary-repeat-no-text/button-example-tertiary-repeat-no-text.component.html', 'HTML')]
+		}
 	];
 }
