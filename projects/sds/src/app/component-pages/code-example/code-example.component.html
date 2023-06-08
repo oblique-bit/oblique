@@ -1,6 +1,6 @@
 <app-tabs [id]="idPrefix | id : [componentId, 'tabs']" [idPrefix]="idPrefix | id : [componentId]">
 	<app-tab *ngIf="preview" title="Preview" [id]="idPrefix | id : [componentId, 'preview', 'tab']" [initiallyActive]="true">
-		<ng-container *ngIf="preview.createEmbeddedView" [ngTemplateOutlet]="preview"></ng-container>
+		<ng-template appCodeExample></ng-template>
 	</app-tab>
 
 	<app-tab
