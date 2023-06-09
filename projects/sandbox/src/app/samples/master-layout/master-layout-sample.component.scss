@@ -1,5 +1,5 @@
-@use "projects/oblique/src/styles/scss/core/mixins/layout";
-@import "projects/oblique/src/styles/scss/core/variables";
+@use "layout";
+@import "variables";
 
 .card-wrapper {
 	display: flex;
