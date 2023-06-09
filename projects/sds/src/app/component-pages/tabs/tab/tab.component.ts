@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChange, SimpleChanges} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnChanges, SimpleChange, SimpleChanges, inject} from '@angular/core';
 
 @Component({
 	selector: 'app-tab',
@@ -11,6 +11,8 @@ export class TabComponent implements OnChanges {
 
 	active = false;
 
+	private readonly cdr = inject(ChangeDetectorRef);
+
 	ngOnChanges(changes: TabChanges): void {
 		if (changes.initiallyActive) {
 			this.active = this.initiallyActive;
@@ -19,6 +21,7 @@ export class TabComponent implements OnChanges {
 
 	updateActive(active: boolean): void {
 		this.active = active;
+		this.cdr.detectChanges(); // so that the content of the tab is initially loaded when no preview is available
 	}
 }
 
