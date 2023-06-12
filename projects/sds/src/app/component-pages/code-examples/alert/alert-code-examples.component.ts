@@ -13,11 +13,13 @@ export class AlertCodeExamplesComponent extends CodeExamples {
 		{
 			component: AlertExampleInfoPreviewComponent,
 			idParts: ['info'],
+			title: 'Alert info',
 			snippets: [this.getSnippet('alert', 'info/alert-example-info-preview.component.html', 'HTML')]
 		},
 		{
 			component: AlertExampleSuccessPreviewComponent,
 			idParts: ['success'],
+			title: 'Alert success',
 			snippets: [this.getSnippet('alert', 'success/alert-example-success-preview.component.html', 'HTML')]
 		}
 	];
