@@ -24,5 +24,6 @@ export interface PreviewComponent {} // eslint-disable-line @typescript-eslint/n
 export interface CodeExample {
 	component?: Type<PreviewComponent>;
 	idParts: string[];
+	title?: string;
 	snippets: SourceCode[];
 }

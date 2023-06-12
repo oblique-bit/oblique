@@ -12,6 +12,7 @@ import {SourceCode} from './source-code.model';
 export class CodeExampleComponent implements AfterViewInit {
 	@Input() codeSnippets: SourceCode[] = [];
 	@Input() idPrefix = '';
+	@Input() title = '';
 	@Input() preview: Type<PreviewComponent>;
 	@ViewChild(CodeExampleDirective) host!: CodeExampleDirective;
 

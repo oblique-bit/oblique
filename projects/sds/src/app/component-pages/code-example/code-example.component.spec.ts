@@ -1,5 +1,6 @@
 import {Component, Type} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
 import {CodeExampleComponent} from './code-example.component';
 import {SourceCode} from './source-code.model';
 import {TabComponent} from '../tabs/tab/tab.component';
@@ -109,6 +110,48 @@ describe(`${CodeExampleComponent.name}`, () => {
 			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix, getIdParts(id)))).toBeTruthy();
 		}
 	);
+
+	describe('title property', () => {
+		beforeEach(() => {
+			// cannot use setupComponent because of whenStable
+			TestBed.configureTestingModule({
+				declarations: [
+					CodeExampleComponent,
+					HighlightedCodeComponent,
+					TabComponent,
+					TabsComponent,
+					MockPreviewComponent,
+					CodeExampleDirective
+				],
+				imports: [IdModule]
+			}).compileComponents();
+
+			fixture = TestBed.createComponent(CodeExampleComponent);
+			component = fixture.componentInstance;
+		});
+
+		it('should exists', () => {
+			expect(component.title).toBeDefined();
+		});
+
+		it('should be an empty string by default', () => {
+			expect(component.title).toBe('');
+		});
+
+		it('should not display a h2 when falsy', () => {
+			component.title = '';
+			fixture.detectChanges();
+			const titleElement = fixture.debugElement.query(By.css('h2'));
+			expect(titleElement).toBeFalsy();
+		});
+
+		it('should display a h2 when truthy', () => {
+			component.title = 'Title';
+			fixture.detectChanges();
+			const titleElement = fixture.debugElement.query(By.css('h2'));
+			expect(titleElement).toBeTruthy();
+		});
+	});
 });
 
 interface ComponentInputs {
