@@ -16,21 +16,25 @@ export class BadgeCodeExamplesComponent extends CodeExamples {
 		{
 			component: BadgeExampleDefaultComponent,
 			idParts: ['default'],
+			title: 'Default badge',
 			snippets: [this.getSnippet('badge', 'badge-example-default/badge-example-default.component.html', 'HTML')]
 		},
 		{
 			component: BadgeExampleColorWarnComponent,
 			idParts: ['color', 'warn'],
+			title: 'Warning badge',
 			snippets: [this.getSnippet('badge', 'badge-example-color-warn/badge-example-color-warn.component.html', 'HTML')]
 		},
 		{
 			component: BadgeExamplePositionBelowBeforeComponent,
 			idParts: ['below', 'before'],
+			title: 'Positioned badge',
 			snippets: [this.getSnippet('badge', 'badge-example-position-below-before/badge-example-position-below-before.component.html', 'HTML')]
 		},
 		{
 			component: BadgeExampleOverlapFalseComponent,
 			idParts: ['overlap', 'false'],
+			title: 'Badge without overlap',
 			snippets: [this.getSnippet('badge', 'badge-example-overlap-false/badge-example-overlap-false.component.html', 'HTML')]
 		}
 	];
