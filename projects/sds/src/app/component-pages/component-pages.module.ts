@@ -29,6 +29,9 @@ import {ButtonExampleSecondaryWheelchairComponent} from './code-examples/button/
 import {ButtonExampleTertiaryLinkNoIconDisabledComponent} from './code-examples/button/previews/tertiary-link-no-icon-disabled/button-example-tertiary-link-no-icon-disabled.component';
 import {ButtonExampleTertiaryRepeatNoTextComponent} from './code-examples/button/previews/tertiary-repeat-no-text/button-example-tertiary-repeat-no-text.component';
 import {BadgeExampleOverlapFalseComponent} from './code-examples/badge/previews/badge-example-overlap-false/badge-example-overlap-false.component';
+import {MatListModule} from '@angular/material/list';
+import {MatLineModule} from '@angular/material/core';
+import {ListGroupCodeExamplesComponent} from './code-examples/list-group/list-group-code-examples.component';
 
 @NgModule({
 	declarations: [
@@ -52,6 +55,7 @@ import {BadgeExampleOverlapFalseComponent} from './code-examples/badge/previews/
 		CodeExampleDirective,
 		ComponentPagesComponent,
 		HighlightedCodeComponent,
+		ListGroupCodeExamplesComponent,
 		NoCodeExamplesMatchComponent,
 		TabComponent,
 		TabsComponent
@@ -63,6 +67,8 @@ import {BadgeExampleOverlapFalseComponent} from './code-examples/badge/previews/
 		MatBadgeModule,
 		MatButtonModule,
 		MatIconModule,
+		MatLineModule,
+		MatListModule,
 		ObAlertModule,
 		ObButtonModule
 	]
