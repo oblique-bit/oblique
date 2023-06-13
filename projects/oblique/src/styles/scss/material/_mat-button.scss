@@ -83,7 +83,11 @@
 				.mat-ripple {
 					&.mat-mdc-button-ripple {
 						.mat-ripple-element {
-							opacity: 1;
+							opacity: 0;
+
+							@at-root #{selector.append(".cdk-focused", &)} {
+								opacity: 1;
+							}
 						}
 					}
 				}
