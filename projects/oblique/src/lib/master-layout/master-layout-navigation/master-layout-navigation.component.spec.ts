@@ -21,7 +21,7 @@ class DummyPrefixPathComponent {}
 @Component({template: ''})
 class DummyDefaultPathComponent {}
 
-describe('MasterLayoutNavigationComponent', () => {
+describe(ObMasterLayoutNavigationComponent.name, () => {
 	let router: Router;
 	let component: ObMasterLayoutNavigationComponent;
 	let fixture: ComponentFixture<ObMasterLayoutNavigationComponent>;
@@ -84,130 +84,62 @@ describe('MasterLayoutNavigationComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	test('that creation works', () => {
 		expect(component).toBeTruthy();
 	});
 
+	test.each<{idx: number}>([{idx: 0}, {idx: 1}, {idx: 2}])('that property isExternal of Link is set to false at index: $idx', ({idx}) => {
+		fixture.detectChanges();
+		expect(component.initializedLinks[idx].isExternal).toBe(false);
+	});
+
+	test.each<{route: string; label: string}>([
+		{route: 'defaultPathMatch', label: 'default'},
+		{route: 'full/2/users', label: 'ItemFull'}
+	])(
+		'that after routing to: $route, the textContent of the active element contains: $label',
+		fakeAsync(({route, label}) => {
+			router.navigate([route]);
+			tick();
+			expect(getElementByQueryAllCSS('.active')[0].nativeElement.textContent).toContain(label);
+		})
+	);
+
+	test.each<{route: string; length: number}>([
+		{route: 'defaultPathMatch', length: 1},
+		{route: 'prefix/2/users', length: 1},
+		{route: 'prefix/3/users', length: 0},
+		{route: 'full/1/users', length: 1},
+		{route: 'full/1', length: 0}
+	])(
+		'that $length element(s) have class active after routing to: $route',
+		fakeAsync(({route, length}) => {
+			router.navigate([route]);
+			tick();
+			const prefixLink = getElementByQueryAllCSS('.active');
+			expect(prefixLink.length).toBe(length);
+		})
+	);
+
 	describe('HTMLSelectElement in template pathMatch with navigation elements', () => {
-		describe('with prefix pathMatch strategy', () => {
+		describe.each<{id: string; label: string}>([
+			{id: 'prefix', label: 'ItemPrefix'},
+			{id: 'full', label: 'ItemFull'},
+			{id: 'default', label: 'default'}
+		])('with $id pathMatch strategy', ({id, label}) => {
 			let element: HTMLElement;
-			beforeEach(() => {
-				element = getHTMLSelectElementByQueryCSS('#prefix');
+			beforeAll(() => {
+				element = getHTMLSelectElementByQueryCSS(`#${id}`);
 			});
-			it('should have a link with prefix id', () => {
+			test('that there is a link with id: $id', () => {
 				expect(element).toBeTruthy();
 			});
-			it('should have prefix-path label', () => {
-				expect(element.textContent).toContain('ItemPrefix');
+			test('that link text contains $label', () => {
+				expect(element.textContent).toContain(label);
 			});
-			it('should have active class', () => {
+			test('that link has active attribute', () => {
 				expect(element.getAttribute('ng-reflect-router-link-active')).toBe('active');
 			});
-		});
-		describe('with full pathMatch strategy', () => {
-			let element: HTMLElement;
-			beforeEach(() => {
-				element = getHTMLSelectElementByQueryCSS('#full');
-			});
-			it('should have an element with full idk', () => {
-				expect(element).toBeTruthy();
-			});
-			it('should have full path-label', () => {
-				expect(element.textContent).toContain('ItemFull');
-			});
-			it('should have active attribute', () => {
-				expect(element.getAttribute('ng-reflect-router-link-active')).toBe('active');
-			});
-		});
-		describe('with default pathMatch strategy', () => {
-			let element: HTMLElement;
-			beforeEach(() => {
-				element = getHTMLSelectElementByQueryCSS('#default');
-			});
-			it('should have an element with default id', () => {
-				expect(element).toBeTruthy();
-			});
-			it('should have full path-label', () => {
-				expect(element.textContent).toContain('default');
-			});
-			it('should have active attribute', () => {
-				expect(element.getAttribute('ng-reflect-router-link-active')).toBe('active');
-			});
-		});
-	});
-	describe('Property isExternal', () => {
-		it('should set false in property isExternal of last  Link', () => {
-			fixture.detectChanges();
-			expect(component.links[component.links.length - 1].isExternal).toBe(false);
-		});
-
-		it('should set false in property isExternal of second Link', () => {
-			fixture.detectChanges();
-			expect(component.links[component.links.length - 2].isExternal).toBe(false);
-		});
-
-		it('should set false in property isExternal of first Link', () => {
-			expect(component.links[component.links.length - 3].isExternal).toBe(false);
-		});
-	});
-
-	describe('check after routing', () => {
-		describe('to DummyDefaultPathComponent', () => {
-			it('should have only one class active after routing', fakeAsync(() => {
-				router.navigate(['defaultPathMatch']);
-				tick();
-				const defaultLink = getElementByQueryAllCSS('.active');
-				expect(defaultLink.length).toBe(1);
-			}));
-			it('should have textContent "default" after routing', fakeAsync(() => {
-				router.navigate(['defaultPathMatch']);
-				tick();
-				const defaultLink = getElementByQueryAllCSS('.active');
-				expect(defaultLink[0].nativeElement.textContent).toContain('default');
-			}));
-		});
-		describe('to DummyPrefixPathComponent', () => {
-			const prefixPathUser2 = 'prefix/2/users';
-			const prefixPathUser3 = 'prefix/3/users';
-			it('should have only one class active after routing', fakeAsync(() => {
-				router.navigate([prefixPathUser2]);
-				tick();
-				const prefixLink = getElementByQueryAllCSS('.active');
-				expect(prefixLink.length).toBe(1);
-			}));
-			it('should have only one class active after routing by prefix', fakeAsync(() => {
-				router.navigate([prefixPathUser2]);
-				tick();
-				const prefixLink = getElementByQueryAllCSS('.active');
-				expect(prefixLink.length).toBe(1);
-			}));
-			it('shouldnt have class active after routing by unknown', fakeAsync(() => {
-				router.navigate([prefixPathUser3]);
-				tick();
-				const prefixLink = getElementByQueryAllCSS('.active');
-				expect(prefixLink.length).toBe(0);
-			}));
-		});
-		describe('to DummyFullPathComponent', () => {
-			const fullPathUser2 = 'full/2/users';
-			it('shouldnt have class active after routing', fakeAsync(() => {
-				router.navigate(['full/1']);
-				tick();
-				const defaultLink = getElementByQueryAllCSS('.active');
-				expect(defaultLink.length).toBe(0);
-			}));
-			it('should have class active after routing', fakeAsync(() => {
-				router.navigate(['full/1/users']);
-				tick();
-				const defaultLink = getElementByQueryAllCSS('.active');
-				expect(defaultLink.length).toBe(1);
-			}));
-			it('should have textContent "full" after routing', fakeAsync(() => {
-				router.navigate([fullPathUser2]);
-				tick();
-				const prefixLink = getElementByQueryAllCSS('.active');
-				expect(prefixLink[0].nativeElement.textContent).toContain('ItemFull');
-			}));
 		});
 	});
 
