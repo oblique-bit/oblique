@@ -3,7 +3,7 @@
 @use "../core/mixins/shadow";
 
 .mat-mdc-tooltip {
-	@include shadow.ob-drop-shadow();
+	@include shadow.ob-shadow-default();
 
 	.mdc-tooltip__surface {
 		background-color: variables.$ob-secondary-700;
