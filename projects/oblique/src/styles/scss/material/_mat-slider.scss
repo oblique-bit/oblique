@@ -1,5 +1,6 @@
 @use "../core/variables";
 @use "mixins/mat-slider";
+@use "../core/mixins/shadow";
 
 .mat-mdc-slider {
 	&.mat-primary,
@@ -9,5 +10,14 @@
 
 	&.mat-warn {
 		@include mat-slider.ob-mat-slider-style(variables.$ob-red-800);
+	}
+
+	.mdc-slider__thumb-knob:not([class*="mat-elevation-z"]) {
+		@include shadow.ob-shadow-md();
+	}
+
+	// Using drop-shadow variant of the shadow-md mixin because box shadow doesn't work correctly in this case. See: OUI-2324
+	.mdc-slider__thumb--focused {
+		filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 6%)) drop-shadow(0 1px 5px rgba(0, 0, 0, 8%));
 	}
 }
