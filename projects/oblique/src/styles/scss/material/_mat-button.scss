@@ -144,6 +144,7 @@
 			&:not([disabled], .ob-button-card) {
 				background-color: core-variables.$ob-secondary-400;
 				color: core-variables.$ob-white;
+				@include shadow.ob-shadow-default();
 
 				&:hover {
 					color: core-variables.$ob-text-300;
