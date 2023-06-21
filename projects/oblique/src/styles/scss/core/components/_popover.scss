@@ -6,7 +6,8 @@
 	max-width: 40%; // empiric value
 	background: variables.$ob-white;
 	z-index: variables.$ob-z-index-widget;
-	@include shadow.ob-drop-shadow();
+	// Using drop-shadow variant of the shadow-default mixin because box shadow doesn't work correctly in this case. See: OUI-2324
+	filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 6%)) drop-shadow(0 4px 10px rgba(0, 0, 0, 8%));
 
 	.ob-popover-arrow {
 		border-width: variables.$ob-spacing-sm;
