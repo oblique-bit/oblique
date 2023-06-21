@@ -1,6 +1,7 @@
 @use "sass:selector";
 @use "../variables";
 @use "../mixins/layout";
+@use "../mixins/shadow";
 @use "../mixins/table";
 @use "../mixins/typography";
 
@@ -12,6 +13,7 @@ table {
 	width: 100%;
 	color: variables.$ob-default;
 	@include typography.ob-body2-line-height-letter-spacing();
+	@include shadow.ob-shadow-md();
 
 	.mat-mdc-header-row {
 		background-color: variables.$ob-secondary-50;
