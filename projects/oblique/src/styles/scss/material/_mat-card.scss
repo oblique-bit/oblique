@@ -1,4 +1,5 @@
 @use "../core/variables";
+@use "../core/mixins/shadow";
 @use "../core/mixins/typography";
 
 .mat-mdc-button-base.ob-button.mat-mdc-button.mat-mdc-button-base.ob-button-card {
@@ -9,7 +10,7 @@
 	border: 1px solid variables.$ob-secondary-200;
 
 	&:not([class*="mat-elevation-z"]) {
-		box-shadow: none;
+		@include shadow.ob-shadow-lg();
 	}
 
 	.mat-mdc-card-header {
@@ -60,10 +61,12 @@
 
 	&.ob-selectable {
 		&.ob-selected {
+			@include shadow.ob-shadow-xl();
 			background-color: variables.$ob-secondary-100;
 		}
 
 		&:hover {
+			@include shadow.ob-shadow-xl();
 			background-color: variables.$ob-secondary-50;
 		}
 
@@ -124,6 +127,7 @@
 		.ob-button-card &,
 		.ob-link-card & {
 			&:hover {
+				@include shadow.ob-shadow-xl();
 				background-color: variables.$ob-secondary-50;
 			}
 		}
