@@ -3,7 +3,7 @@
 @use "../core/mixins/typography";
 
 .mat-mdc-dialog-container.mdc-dialog {
-	@include shadow.ob-box-shadow();
+	@include shadow.ob-shadow-lg();
 
 	.mat-mdc-dialog-title.mdc-dialog__title {
 		@include typography.ob-h2();
