@@ -1,16 +1,25 @@
 @use "../core/variables";
+@use "../core/mixins/shadow";
 
-.mat-expansion-panel-header {
-	height: 48px;
+.mat-accordion {
+	@include shadow.ob-shadow-md();
+}
 
-	&:hover,
-	&.mat-expanded:hover:not([aria-disabled="true"]) {
-		background: variables.$ob-gray-lighter;
+.mat-expansion-panel {
+	&:not([class*="mat-elevation-z"]) {
+		@include shadow.ob-shadow-md();
 	}
 
-	&:hover:not([aria-disabled="true"]) {
-		.mat-expansion-panel:not(.mat-expanded) & {
+	.mat-expansion-panel-header {
+		height: 48px;
+
+		&:hover,
+		&.mat-expanded:hover:not([aria-disabled="true"]) {
 			background: variables.$ob-gray-lighter;
 		}
+	}
+
+	&:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled="true"]) {
+		background: variables.$ob-gray-lighter;
 	}
 }
