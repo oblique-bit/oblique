@@ -76,6 +76,18 @@
 	</mat-form-field>
 </div>
 
+<h2>Strongly typed reactive form</h2>
+<div [formGroup]="stronglyTypedForm">
+	<mat-form-field>
+		<mat-label>Strongly typed test input</mat-label>
+		<input type="text" matInput formControlName="stronglyTypedFormField" />
+		<button type="button" role="button" [obInputClear]="stronglyTypedForm.get('stronglyTypedFormField')">
+			<mat-icon svgIcon="cancel-circle"></mat-icon>
+			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+		</button>
+	</mat-form-field>
+</div>
+
 <h2>HTML input only</h2>
 <div>
 	<mat-form-field>
