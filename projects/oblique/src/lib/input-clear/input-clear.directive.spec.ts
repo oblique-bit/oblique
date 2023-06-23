@@ -127,15 +127,15 @@ describe('InputClear', () => {
 				fixture.detectChanges();
 			});
 
-			it('should call the directive on button click', () => {
+			test('that it calls the directive on button click', () => {
 				expect(directive.onClick).toHaveBeenCalled();
 			});
 
-			it('should clear the FormControl', () => {
+			test('that it clears the FormControl', () => {
 				expect(component.testForm.get('field1').value).toBeNull();
 			});
 
-			it('should clear the input field', () => {
+			test('that it clears the input field', () => {
 				expect(input.value).toBe('');
 			});
 		});
@@ -216,15 +216,15 @@ describe('InputClear', () => {
 			fixture.nativeElement.querySelector('button').click();
 		});
 
-		it('should call the directive on button click', () => {
+		test('that it calls the directive on button click', () => {
 			expect(directive.onClick).toHaveBeenCalled();
 		});
 
-		it('should clear the input field', () => {
+		test('that it clears the input field', () => {
 			expect(input.value).toBe('');
 		});
 
-		it('should clear the model', () => {
+		test('that it clears the model', () => {
 			expect(component.testModel).toBeNull();
 		});
 	});
@@ -258,11 +258,11 @@ describe('InputClear', () => {
 				fixture.detectChanges();
 			});
 
-			it('should call the directive on button click', () => {
+			test('that it calls the directive on button click', () => {
 				expect(directive.onClick).toHaveBeenCalled();
 			});
 
-			it('should clear the input field', () => {
+			test('that it clears the input field', () => {
 				expect(input.value).toBe('');
 			});
 		});
@@ -295,11 +295,11 @@ describe('InputClear', () => {
 				fixture.nativeElement.querySelector('button').click();
 			});
 
-			it('should not clear the input field', () => {
+			test('that it does not clear the input field', () => {
 				expect(input.value).toEqual('testInput');
 			});
 
-			it('should write an warn message in the console', () => {
+			test('that it writes a warning message in the console', () => {
 				expect(console.warn).toHaveBeenCalledWith(
 					`${ObInputClearDirective.name}: illegal value for obInputClear Input, please use one of the following: [${AbstractControl.name}, ${HTMLInputElement.name}, ${NgModel.name}].`
 				);
