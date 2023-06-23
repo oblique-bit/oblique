@@ -6,9 +6,9 @@
 </mat-form-field>
 
 <mat-form-field>
-	<mat-label>Mandatory</mat-label>
-	<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel1" #control="ngModel" />
-	<button type="button" role="button" [obInputClear]="control">
+	<mat-label>Mandatory with input clear</mat-label>
+	<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatoryModel" #mandatoryControl="ngModel" />
+	<button type="button" role="button" [obInputClear]="mandatoryControl">
 		<mat-icon svgIcon="cancel-circle"></mat-icon>
 		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 	</button>
@@ -21,9 +21,9 @@
 	</mat-form-field>
 
 	<mat-form-field>
-		<mat-label>Mandatory LG</mat-label>
-		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel2" #controlLG="ngModel" />
-		<button type="button" role="button" [obInputClear]="controlLG">
+		<mat-label>Mandatory LG with input clear</mat-label>
+		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatoryLgModel" #mandatoryLgControl="ngModel" />
+		<button type="button" role="button" [obInputClear]="mandatoryLgControl">
 			<mat-icon svgIcon="cancel-circle"></mat-icon>
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
@@ -37,9 +37,9 @@
 	</mat-form-field>
 
 	<mat-form-field>
-		<mat-label>Mandatory SM</mat-label>
-		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel3" #controlSM="ngModel" />
-		<button type="button" role="button" [obInputClear]="controlSM">
+		<mat-label>Mandatory SM with input clear</mat-label>
+		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatorySmModel" #mandatorySmControl="ngModel" />
+		<button type="button" role="button" [obInputClear]="mandatorySmControl">
 			<mat-icon svgIcon="cancel-circle"></mat-icon>
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
@@ -48,28 +48,28 @@
 
 <mat-form-field>
 	<mat-label>Datepicker</mat-label>
-	<input matInput [matDatepicker]="picker" #controlD="ngModel" [(ngModel)]="testModel4" />
-	<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-	<mat-datepicker #picker></mat-datepicker>
-	<button type="button" role="button" [obInputClear]="controlD" [datePickerRef]="picker">
+	<input matInput [matDatepicker]="datepicker" />
+	<mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+	<mat-datepicker #datepicker></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+	<mat-label>Datepicker with input clear</mat-label>
+	<input matInput [matDatepicker]="datepickerWithInputClear" #datepickerControl="ngModel" [(ngModel)]="datepickerModel" />
+	<mat-datepicker-toggle matSuffix [for]="datepickerWithInputClear"></mat-datepicker-toggle>
+	<mat-datepicker #datepickerWithInputClear></mat-datepicker>
+	<button type="button" role="button" [obInputClear]="datepickerControl" [datePickerRef]="datepickerWithInputClear">
 		<mat-icon svgIcon="cancel-circle"></mat-icon>
 		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 	</button>
 </mat-form-field>
 
-<mat-form-field>
-	<mat-label>Datepicker</mat-label>
-	<input matInput [matDatepicker]="picker2" />
-	<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-	<mat-datepicker #picker2></mat-datepicker>
-</mat-form-field>
-
-<h2>Reactive form</h2>
-<div [formGroup]="testForm">
+<h2>Untyped reactive form</h2>
+<div [formGroup]="untypedForm">
 	<mat-form-field>
-		<mat-label>Test input</mat-label>
-		<input type="text" matInput formControlName="field1" />
-		<button type="button" role="button" [obInputClear]="testForm.get('field1')">
+		<mat-label>Untyped test input</mat-label>
+		<input type="text" matInput formControlName="untypedFormField" />
+		<button type="button" role="button" [obInputClear]="untypedForm.get('untypedFormField')">
 			<mat-icon svgIcon="cancel-circle"></mat-icon>
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
@@ -91,7 +91,7 @@
 <h2>HTML input only</h2>
 <div>
 	<mat-form-field>
-		<mat-label>Test input</mat-label>
+		<mat-label>HTML test input</mat-label>
 		<input type="text" matInput #htmlControl />
 		<button type="button" role="button" [obInputClear]="htmlControl">
 			<mat-icon svgIcon="cancel-circle"></mat-icon>
