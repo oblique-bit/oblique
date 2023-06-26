@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, inject} from '@angular/core';
 import {FormControl, FormGroup, UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 
 @Component({
@@ -13,7 +13,7 @@ export class InputClearSampleComponent implements OnInit {
 	untypedForm: UntypedFormGroup;
 	stronglyTypedForm: FormGroup<{stronglyTypedFormField: FormControl<string>}>;
 
-	constructor(private readonly formBuilder: UntypedFormBuilder) {}
+	private readonly formBuilder = inject(UntypedFormBuilder);
 
 	ngOnInit(): void {
 		this.untypedForm = this.formBuilder.group({
