@@ -22,8 +22,9 @@ import {ObInputClearDirective} from './input-clear.directive';
 })
 class UntypedReactiveFormTestComponent {
 	testForm: FormGroup;
+	private readonly formBuilder = inject(FormBuilder);
 
-	constructor(private readonly formBuilder: FormBuilder) {
+	constructor() {
 		this.testForm = this.formBuilder.group({
 			field1: ['']
 		});

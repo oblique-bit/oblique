@@ -1,4 +1,4 @@
-import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Inject, Input, OnInit, Output} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, inject} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
 import {AbstractControl, NgModel} from '@angular/forms';
 import {WINDOW} from '../utilities';
@@ -16,9 +16,11 @@ export class ObInputClearDirective implements OnInit {
 	@Output() readonly onClear = new EventEmitter<MouseEvent>();
 	@HostBinding('class.ob-text-control-clear') cssClass = true;
 
+	private readonly element = inject(ElementRef);
 	private readonly validControlTypes = [AbstractControl, HTMLInputElement, NgModel];
+	private readonly window: Window = inject(WINDOW);
 
-	constructor(private readonly element: ElementRef, @Inject(WINDOW) private readonly window: Window) {
+	constructor() {
 		// ensure matInput got resolved beforehand
 		this.window.setTimeout(() => {
 			const parent = this.element.nativeElement.parentElement;
