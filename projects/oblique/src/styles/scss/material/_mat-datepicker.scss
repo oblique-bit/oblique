@@ -1,6 +1,82 @@
+@use "../core/variables";
 @use "../core/mixins/shadow";
 
 .mat-datepicker-content {
-	box-shadow: none;
-	@include shadow.ob-drop-shadow();
+	.mat-calendar-table-header-divider::after {
+		background: unset;
+	}
+
+	.mat-calendar-controls .mdc-button__label,
+	.mat-calendar-body-label {
+		text-transform: lowercase;
+	}
+
+	.mat-calendar-controls .mdc-button__label {
+		&,
+		&::after {
+			color: variables.$ob-secondary-800;
+		}
+	}
+
+	@media (hover: hover) {
+		.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
+			> .mat-calendar-body-cell-content:not(
+				.mat-calendar-body-selected,
+				.mat-calendar-body-comparison-identical
+			) {
+			background-color: variables.$ob-secondary-50;
+		}
+	}
+
+	.mat-calendar-body-cell:not(.mat-calendar-body-disabled):active
+		> .mat-calendar-body-cell-content:not(
+			.mat-calendar-body-selected,
+			.mat-calendar-body-comparison-identical
+		) {
+		background-color: variables.$ob-secondary-100;
+	}
+
+	.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-today:not(
+			.mat-calendar-body-selected,
+			.mat-calendar-body-comparison-identical
+		) {
+		color: variables.$ob-secondary-800;
+		border-color: variables.$ob-secondary-800;
+	}
+
+	.mat-calendar-body-cell.mat-calendar-body-in-range::before {
+		background-color: variables.$ob-secondary-100;
+	}
+
+	/* oblique chevron left/right for the next/previous buttons */
+	.mat-calendar-previous-button::after,
+	.mat-calendar-next-button::after {
+		width: variables.$ob-spacing-default;
+		color: variables.$ob-secondary-800;
+		margin: unset;
+		border: unset;
+		transform: unset;
+	}
+
+	.mat-calendar-previous-button::after {
+		content: url("data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1sZWZ0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBvbHlnb24gcG9pbnRzPSIxMy45NDkgMjEuMzc1IDguNTM2IDEyIDEzLjk0OSAyLjYyNSAxNS4yNDggMy4zNzUgMTAuMjY4IDEyIDE1LjI0OCAyMC42MjUgMTMuOTQ5IDIxLjM3NSIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+");
+	}
+
+	.mat-calendar-next-button::after {
+		content: url("data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1yaWdodCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwb2x5Z29uIHBvaW50cz0iMTAuMDUxIDIxLjM3NSA4Ljc1MiAyMC42MjUgMTMuNzMyIDEyIDguNzUyIDMuMzc1IDEwLjA1MSAyLjYyNSAxNS40NjQgMTIgMTAuMDUxIDIxLjM3NSIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+");
+	}
+
+	.mat-calendar-controls .mat-mdc-icon-button.mat-mdc-button-base {
+		width: 32px; // 16px icon width + 2*8px padding
+	}
+}
+
+.cdk-keyboard-focused .mat-calendar-body-active,
+.cdk-program-focused .mat-calendar-body-active {
+	> span.mat-calendar-body-cell-content:not(
+			.mat-calendar-body-selected,
+			.mat-calendar-body-comparison-identical
+		) {
+		@include shadow.ob-tab-focus-box-shadow();
+	}
 }
