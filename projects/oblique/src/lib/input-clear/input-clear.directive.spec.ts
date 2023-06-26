@@ -20,7 +20,7 @@ import {ObInputClearDirective} from './input-clear.directive';
 		</mat-form-field>
 	</div>`
 })
-class ReactiveFormTestComponent {
+class UntypedReactiveFormTestComponent {
 	testForm: FormGroup;
 
 	constructor(private readonly formBuilder: FormBuilder) {
@@ -97,21 +97,21 @@ class WrongConfigurationTestComponent {
 
 describe('InputClear', () => {
 	describe('with reactive forms', () => {
-		let component: ReactiveFormTestComponent;
-		let fixture: ComponentFixture<ReactiveFormTestComponent>;
+		let component: UntypedReactiveFormTestComponent;
+		let fixture: ComponentFixture<UntypedReactiveFormTestComponent>;
 		let input: HTMLInputElement;
 		let directive: ObInputClearDirective;
 
 		beforeEach(waitForAsync(() => {
 			TestBed.configureTestingModule({
-				declarations: [ReactiveFormTestComponent, ObMockTranslatePipe, ObInputClearDirective],
+				declarations: [UntypedReactiveFormTestComponent, ObMockTranslatePipe, ObInputClearDirective],
 				imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule],
 				providers: [{provide: WINDOW, useValue: window}]
 			}).compileComponents();
 		}));
 
 		beforeEach(() => {
-			fixture = TestBed.createComponent(ReactiveFormTestComponent);
+			fixture = TestBed.createComponent(UntypedReactiveFormTestComponent);
 			component = fixture.componentInstance;
 			directive = fixture.debugElement.query(By.directive(ObInputClearDirective)).injector.get(ObInputClearDirective);
 			fixture.detectChanges();
