@@ -1,31 +1,34 @@
-@use "../core/variables" as core-variables;
+@use "../core/variables";
 @use "../core/mixins/shadow";
 @use "../core/mixins/typography";
 
-.mat-dialog-container {
-	box-shadow: none;
-	@include shadow.ob-drop-shadow($color: core-variables.$ob-gray-dark);
+.mat-mdc-dialog-container.mdc-dialog {
+	@include shadow.ob-box-shadow();
 
-	.mat-dialog-title {
-		@include typography.ob-h6();
-		position: relative;
-		margin-bottom: core-variables.$ob-spacing-default + core-variables.$ob-spacing-sm;
+	.mat-mdc-dialog-title.mdc-dialog__title {
+		@include typography.ob-h2();
 	}
 
-	.mat-dialog-content {
+	.mat-mdc-dialog-content.mdc-dialog__content {
 		@include typography.ob-body1();
-
-		.ob-form-field:first-of-type {
-			margin-top: 3px;
-		}
 	}
 
-	.mat-dialog-actions {
-		margin-top: core-variables.$ob-spacing-default + core-variables.$ob-spacing-sm;
-		justify-content: flex-end;
+	.mat-mdc-dialog-surface {
+		padding: variables.$ob-spacing-lg variables.$ob-spacing-lg variables.$ob-spacing-lg
+			variables.$ob-spacing-lg;
+	}
 
-		.mat-button + .mat-button {
-			margin-left: core-variables.$ob-spacing-default;
-		}
+	.mat-mdc-dialog-title {
+		padding: 0 0 variables.$ob-spacing-sm 0;
+	}
+
+	.mat-mdc-dialog-content {
+		padding: 0 0 variables.$ob-spacing-sm 0;
+	}
+
+	.mat-mdc-dialog-actions {
+		padding: 0;
+		justify-content: flex-end;
+		min-height: unset;
 	}
 }
