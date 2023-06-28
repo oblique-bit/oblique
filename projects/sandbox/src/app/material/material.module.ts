@@ -43,6 +43,7 @@ import {CardComponent} from './card/card.component';
 import {ChipsComponent} from './chips/chips.component';
 import {SliderComponent} from './slider/slider.component';
 import {BadgeComponent} from './badge/badge.component';
+import {DatepickerComponent} from './datepicker/datepicker.component';
 import {DialogComponent} from './dialog/dialog.component';
 import {ExampleDialogComponent} from './dialog/example-dialog/example-dialog.component';
 import {ExpansionPanelComponent} from './expansion-panel/expansion-panel.component';
@@ -66,6 +67,7 @@ const appRoutes: Routes = [
 	{path: 'button', component: ButtonComponent},
 	{path: 'card', component: CardComponent},
 	{path: 'chips', component: ChipsComponent},
+	{path: 'datepicker', component: DatepickerComponent},
 	{path: 'dialog', component: DialogComponent},
 	{path: 'expansion-panel', component: ExpansionPanelComponent},
 	{path: 'form', component: FormComponent},

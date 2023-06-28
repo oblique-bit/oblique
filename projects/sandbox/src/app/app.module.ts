@@ -48,11 +48,13 @@ import {environment} from '../environments/environment';
 import {registerLocaleData} from '@angular/common';
 
 import localeFR from '@angular/common/locales/fr-CH';
+import localeDE from '@angular/common/locales/de-CH';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 import {FONTS, FontService} from './common/font.service';
 import {infoContact, infoLinks, profileLinks} from './service-navigation.config';
 
 registerLocaleData(localeFR);
+registerLocaleData(localeDE);
 
 @NgModule({
 	declarations: [AppComponent, HomePageComponent],

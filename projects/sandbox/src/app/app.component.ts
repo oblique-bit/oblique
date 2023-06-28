@@ -93,6 +93,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'button', label: 'Button'},
 				{url: 'card', label: 'Card'},
 				{url: 'chips', label: 'Chips'},
+				{url: 'datepicker', label: 'Datepicker'},
 				{url: 'dialog', label: 'Dialog'},
 				{url: 'expansion-panel', label: 'Expansion Panel'},
 				{url: 'file-upload', label: 'File Upload'},
