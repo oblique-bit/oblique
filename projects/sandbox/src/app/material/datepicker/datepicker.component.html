@@ -1,0 +1,29 @@
+<h2 class="page-header">Datepicker</h2>
+
+<h3>Default</h3>
+<mat-form-field>
+	<mat-label>Choose a date</mat-label>
+	<input matInput [matDatepicker]="defaultDatepicker" />
+	<mat-hint>DD.MM.YYYY</mat-hint>
+	<mat-datepicker-toggle matIconSuffix [for]="defaultDatepicker"></mat-datepicker-toggle>
+	<mat-datepicker #defaultDatepicker></mat-datepicker>
+</mat-form-field>
+
+<h3>Min Max</h3>
+<mat-form-field>
+	<mat-label>Choose a to date</mat-label>
+	<input matInput [min]="minToDate" [max]="maxToDate" [matDatepicker]="minmaxDatepicker" (dateInput)="toDateChange('input', $event)" />
+	<mat-datepicker-toggle matSuffix [for]="minmaxDatepicker"></mat-datepicker-toggle>
+	<mat-datepicker #minmaxDatepicker></mat-datepicker>
+</mat-form-field>
+
+<h3>Range</h3>
+<mat-form-field>
+	<mat-date-range-input [rangePicker]="rangeDatepicker">
+		<input matStartDate placeholder="Start date" />
+		<input matEndDate placeholder="End date" />
+	</mat-date-range-input>
+	<mat-hint>DD.MM.YYYY - DD.MM.YYYY</mat-hint>
+	<mat-datepicker-toggle matIconSuffix [for]="rangeDatepicker"></mat-datepicker-toggle>
+	<mat-date-range-picker #rangeDatepicker></mat-date-range-picker>
+</mat-form-field>
