@@ -1,4 +1,5 @@
 import {BadgeExamplePositionBelowBeforeComponent} from './code-examples/badge/previews/badge-example-position-below-before/badge-example-position-below-before.component';
+import {DialogCodeExamplesComponent} from './code-examples/dialog/dialog-code-examples.component';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -57,6 +58,7 @@ import {PaginatorCodeExamplesComponent} from './code-examples/paginator/paginato
 		CodeExampleDirective,
 		ComponentPagesComponent,
 		DatepickerCodeExamplesComponent,
+		DialogCodeExamplesComponent,
 		HighlightedCodeComponent,
 		ListGroupCodeExamplesComponent,
 		NoCodeExamplesMatchComponent,
