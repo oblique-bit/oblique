@@ -32,6 +32,7 @@ import {BadgeExampleOverlapFalseComponent} from './code-examples/badge/previews/
 import {MatListModule} from '@angular/material/list';
 import {MatLineModule} from '@angular/material/core';
 import {ListGroupCodeExamplesComponent} from './code-examples/list-group/list-group-code-examples.component';
+import {DatepickerCodeExamplesComponent} from './code-examples/datepicker/datepicker-code-examples.component';
 
 @NgModule({
 	declarations: [
@@ -54,6 +55,7 @@ import {ListGroupCodeExamplesComponent} from './code-examples/list-group/list-gr
 		CodeExampleComponent,
 		CodeExampleDirective,
 		ComponentPagesComponent,
+		DatepickerCodeExamplesComponent,
 		HighlightedCodeComponent,
 		ListGroupCodeExamplesComponent,
 		NoCodeExamplesMatchComponent,
