@@ -6,6 +6,7 @@ import {ButtonCodeExamplesComponent} from './code-examples/button/button-code-ex
 import {BadgeCodeExamplesComponent} from './code-examples/badge/badge-code-examples.component';
 import {ListGroupCodeExamplesComponent} from './code-examples/list-group/list-group-code-examples.component';
 import {DatepickerCodeExamplesComponent} from './code-examples/datepicker/datepicker-code-examples.component';
+import {PaginatorCodeExamplesComponent} from './code-examples/paginator/paginator-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -13,8 +14,9 @@ export class CodeExamplesMapper {
 		badge: BadgeCodeExamplesComponent,
 		banner: BannerCodeExamplesComponent,
 		button: ButtonCodeExamplesComponent,
+		datepicker: DatepickerCodeExamplesComponent,
 		listGroup: ListGroupCodeExamplesComponent,
-		datepicker: DatepickerCodeExamplesComponent
+		paginator: PaginatorCodeExamplesComponent
 	};
 
 	static getCodeExampleComponent(slug: string): Type<CodeExamples> {

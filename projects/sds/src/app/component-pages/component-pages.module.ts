@@ -33,6 +33,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatLineModule} from '@angular/material/core';
 import {ListGroupCodeExamplesComponent} from './code-examples/list-group/list-group-code-examples.component';
 import {DatepickerCodeExamplesComponent} from './code-examples/datepicker/datepicker-code-examples.component';
+import {PaginatorCodeExamplesComponent} from './code-examples/paginator/paginator-code-examples.component';
 
 @NgModule({
 	declarations: [
@@ -59,6 +60,7 @@ import {DatepickerCodeExamplesComponent} from './code-examples/datepicker/datepi
 		HighlightedCodeComponent,
 		ListGroupCodeExamplesComponent,
 		NoCodeExamplesMatchComponent,
+		PaginatorCodeExamplesComponent,
 		TabComponent,
 		TabsComponent
 	],
