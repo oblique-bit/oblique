@@ -1,6 +1,6 @@
-import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Inject, Input, OnInit, Output} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, inject} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
-import {NgModel, UntypedFormControl} from '@angular/forms';
+import {AbstractControl, NgModel} from '@angular/forms';
 import {WINDOW} from '../utilities';
 
 @Directive({
@@ -9,14 +9,18 @@ import {WINDOW} from '../utilities';
 	host: {class: 'ob-input-clear'}
 })
 export class ObInputClearDirective implements OnInit {
-	@Input('obInputClear') control: HTMLInputElement | UntypedFormControl | NgModel;
+	@Input('obInputClear') control: AbstractControl | HTMLInputElement | NgModel;
 	@Input() focusOnClear = true;
 	@Input() datePickerRef: MatDatepicker<any>;
 	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
 	@Output() readonly onClear = new EventEmitter<MouseEvent>();
 	@HostBinding('class.ob-text-control-clear') cssClass = true;
 
-	constructor(private readonly element: ElementRef, @Inject(WINDOW) private readonly window: Window) {
+	private readonly element = inject(ElementRef);
+	private readonly validControlTypes = [AbstractControl, HTMLInputElement, NgModel];
+	private readonly window: Window = inject(WINDOW);
+
+	constructor() {
 		// ensure matInput got resolved beforehand
 		this.window.setTimeout(() => {
 			const parent = this.element.nativeElement.parentElement;
@@ -27,15 +31,7 @@ export class ObInputClearDirective implements OnInit {
 	}
 
 	ngOnInit(): void {
-		if (
-			!(this.control instanceof HTMLInputElement) &&
-			!(this.control instanceof UntypedFormControl) &&
-			!(this.control instanceof NgModel)
-		) {
-			console.warn(
-				'ObInputClearDirective: illegal value for obInputClear Input, please use one of the following: HTMLInputElement, FormControl or NgModel.'
-			);
-		}
+		this.checkControlType();
 	}
 
 	@HostListener('click', ['$event'])
@@ -44,6 +40,16 @@ export class ObInputClearDirective implements OnInit {
 		this.clearInputField();
 		this.setFocus();
 		this.onClear.next($event);
+	}
+
+	private checkControlType(): void {
+		if (this.isInvalidControlType()) {
+			console.warn(
+				`${ObInputClearDirective.name}: illegal value for obInputClear Input, please use one of the following: [${this.validControlTypes
+					.map(validControlType => validControlType.name)
+					.reduce((previous, current) => `${previous}, ${current}`)}].`
+			);
+		}
 	}
 
 	private clearDatePicker(): void {
@@ -59,7 +65,7 @@ export class ObInputClearDirective implements OnInit {
 	}
 
 	private clearReactiveForm(): void {
-		if (this.control instanceof UntypedFormControl) {
+		if (this.control instanceof AbstractControl) {
 			this.control.patchValue(null);
 		}
 	}
@@ -74,6 +80,12 @@ export class ObInputClearDirective implements OnInit {
 		if (this.control instanceof HTMLInputElement) {
 			this.control.value = '';
 		}
+	}
+
+	private isInvalidControlType(): boolean {
+		return this.validControlTypes
+			.map(validControlType => !(this.control instanceof validControlType))
+			.reduce((previous, current) => previous && current);
 	}
 
 	private setFocus(): void {
