@@ -327,6 +327,12 @@
 					&.active,
 					&:hover {
 						border-bottom: variables.$ob-line-width-sm solid variables.$ob-red-500;
+						@include shadow.ob-shadow-lg();
+					}
+
+					&.active[aria-expanded],
+					&[aria-expanded] {
+						@include shadow.ob-shadow-2xl();
 					}
 
 					&::after {
