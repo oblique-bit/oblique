@@ -37,6 +37,8 @@ $theme-alt-500: (
 @include mat.legacy-slide-toggle-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-tabs-theme(mat.define-light-theme($legacy-theme));
 
+@include mat.ripple-theme(mat.define-light-theme($theme));
+@include mat.option-theme(mat.define-light-theme($theme));
 @include mat.autocomplete-theme(mat.define-light-theme($theme));
 @include mat.badge-theme(mat.define-light-theme($theme-alt-500));
 @include mat.button-theme(mat.define-light-theme($theme));

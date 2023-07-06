@@ -1,4 +1,5 @@
 <mat-form-field>
+	<mat-icon svgIcon="search" matPrefix></mat-icon>
 	<mat-label *ngIf="inputLabelKey?.length > 0">{{ inputLabelKey | translate }}</mat-label>
 	<input (blur)="onModelTouched()" [formControl]="autocompleteInputControl" [matAutocomplete]="autocomplete" matInput type="text" />
 	<ng-content select="[matPrefix]"></ng-content>
