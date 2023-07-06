@@ -5,11 +5,15 @@
 		gap: variables.$ob-spacing-xs;
 	}
 
+	.mat-form-field-disabled .mat-icon {
+		color: variables.$ob-secondary-300;
+	}
 	.mat-icon {
 		z-index: 1;
 		flex-shrink: 0;
 		font-size: 1.1875em; // empiric value
 		cursor: pointer;
+		position: relative;
 	}
 
 	[class*="form-field"] {
