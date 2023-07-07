@@ -2,6 +2,8 @@
 @use "../core/mixins/shadow";
 
 .mat-datepicker-content {
+	@include shadow.ob-shadow-default();
+
 	.mat-calendar-table-header-divider::after {
 		background: unset;
 	}
