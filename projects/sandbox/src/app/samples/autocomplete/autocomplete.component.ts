@@ -8,6 +8,7 @@ import {FormControl} from '@angular/forms';
 	styleUrls: ['./autocomplete.component.scss']
 })
 export class AutocompleteSampleComponent implements OnInit {
+	isDisabled = false;
 	areDisabled = false;
 	optionGroupList: ObIAutocompleteInputOptionGroup[];
 	selectedOption: ObIAutocompleteInputOption;
@@ -132,5 +133,10 @@ formControl = new FormControl('');
 				  })
 				: (optionList.disabled = disabled)
 		);
+	}
+
+	toggleDisabledState(state: boolean): void {
+		if (state) this.formControl.disable();
+		else this.formControl.enable();
 	}
 }
