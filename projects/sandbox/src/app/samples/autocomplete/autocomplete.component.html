@@ -84,6 +84,21 @@
 			</mat-radio-group>
 		</fieldset>
 		<fieldset>
+			<legend>Disable</legend>
+			<mat-radio-group (change)="toggleDisabledState($event.value)" [(ngModel)]="isDisabled" aria-label="Disable">
+				<mat-radio-button
+					*ngFor="
+						let radio of [
+							{ text: 'Enabled', value: false },
+							{ text: 'Disabled', value: true }
+						]
+					"
+					[value]="radio.value"
+					>{{ radio.text }}</mat-radio-button
+				>
+			</mat-radio-group>
+		</fieldset>
+		<fieldset>
 			<legend>Disable options in list</legend>
 			<mat-radio-group (change)="disableOptions($event.value)" [(ngModel)]="areDisabled" aria-label="Select icon position">
 				<mat-radio-button
