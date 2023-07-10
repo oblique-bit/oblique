@@ -1,3 +1,4 @@
 @use "mixins/mat-panel";
 
-@include mat-panel.margin-top-and-active("autocomplete", 4px);
+@include mat-panel.margin-top("autocomplete", 4px);
+@include mat-panel.active("select");

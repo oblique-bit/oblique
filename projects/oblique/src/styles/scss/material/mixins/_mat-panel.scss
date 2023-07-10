@@ -1,6 +1,6 @@
 @use "../../core/variables" as core-variables;
 
-@mixin margin-top-and-active($panel-type: "select", $standard-margin-top: 3px) {
+@mixin margin-top($panel-type: "select", $standard-margin-top: 3px) {
 	:not(.mat-mdc-#{$panel-type}-panel-above) {
 		.ob-#{$panel-type}-panel {
 			&.mat-mdc-#{$panel-type}-panel.mdc-menu-surface {
@@ -12,7 +12,9 @@
 			}
 		}
 	}
+}
 
+@mixin active($panel-type: "select") {
 	.ob-#{$panel-type}-panel {
 		.mat-mdc-option {
 			&:hover:not(.mat-mdc-option-active) {
