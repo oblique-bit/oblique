@@ -28,4 +28,5 @@
 	}
 }
 
-@include mat-panel.margin-top-and-active("select", 0.75 * core-variables.$ob-spacing-xs);
+@include mat-panel.margin-top("select", 0.75 * core-variables.$ob-spacing-xs);
+@include mat-panel.active("select");
