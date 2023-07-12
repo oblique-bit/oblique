@@ -82,9 +82,26 @@ class HookCommitRules {
 	}
 
 	private static checkScope(fullScope: string, prefixes: string[], scopes: Record<string, string[]>): void {
-		const [prefix, scope] = fullScope?.includes('/') ? fullScope.split('/') : [null, fullScope];
 		HookCommitRules.checkFullScopeValidity(fullScope);
-		HookCommitRules.checkPrefixLessScopeValidity(prefix, scope, scopes.additional);
+
+		if (fullScope?.includes('/')) {
+			const [prefix, scope] = fullScope.split('/');
+			HookCommitRules.checkTwoPartedScope(prefix, scope, prefixes, scopes);
+		} else {
+			HookCommitRules.checkOnePartedScope(fullScope, prefixes, scopes);
+		}
+	}
+
+	private static checkOnePartedScope(scope: string, prefixes: string[], scopes: Record<string, string[]>): void {
+		const prefixLessScopes: string[] = scopes.additional;
+		const allowed: string[] = prefixes.concat(prefixLessScopes);
+
+		if (!allowed.includes(scope)) {
+			throw new Error(`1st line has an invalid scope '${scope}'. Allowed one-part scopes are: ${HookCommitRules.join(allowed)}`);
+		}
+	}
+
+	private static checkTwoPartedScope(prefix: string, scope: string, prefixes: string[], scopes: Record<string, string[]>): void {
 		HookCommitRules.checkScopePrefixValidity(prefix, prefixes);
 		HookCommitRules.checkScopeValidity(scope, Object.values(scopes).flat());
 		HookCommitRules.checkScopeAndPrefixCompatibility(scope, prefix, scopes);
@@ -93,14 +110,6 @@ class HookCommitRules {
 	private static checkFullScopeValidity(fullScope: string): void {
 		if (/\/.*\//.test(fullScope)) {
 			throw new Error(`1st line has an invalid scope '${fullScope}'. There may be only one prefix`);
-		}
-	}
-
-	private static checkPrefixLessScopeValidity(prefix: string, scope: string, prefixLessScopes: string[]): void {
-		if (!prefix && scope && !prefixLessScopes.includes(scope)) {
-			throw new Error(
-				`1st line has an invalid scope '${scope}'. Allowed scopes without prefix are: ${HookCommitRules.join(prefixLessScopes)}`
-			);
 		}
 	}
 
