@@ -175,7 +175,7 @@ The SDS project may use those additional scopes:
 
 ###### Additional scopes
 
-The following scopes may omit the prefix
+The following scopes must omit the prefix
 
 - **toolchain** for the configuration, build, releases...
 
