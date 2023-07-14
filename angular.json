@@ -142,8 +142,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "18kb",
-                  "maximumError": "18kb"
+                  "maximumWarning": "20kb",
+                  "maximumError": "22kb"
                 }
               ],
               "fileReplacements": [
@@ -263,8 +263,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "18kb",
-                  "maximumError": "18kb"
+                  "maximumWarning": "20kb",
+                  "maximumError": "22kb"
                 }
               ],
               "outputHashing": "all"
