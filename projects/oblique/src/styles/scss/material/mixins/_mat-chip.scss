@@ -1,0 +1,19 @@
+@mixin ob-background-color($colorSelected, $colorActive, $colorHover, $colorFocus, $border) {
+	&,
+	&.mat-mdc-standard-chip {
+		background-color: $colorSelected;
+	}
+
+	&:active {
+		background-color: $colorActive;
+	}
+
+	&:hover {
+		background-color: $colorHover;
+	}
+
+	&:focus {
+		background-color: $colorFocus;
+	}
+	border: $border;
+}
