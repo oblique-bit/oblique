@@ -1,5 +1,6 @@
 import {Type} from '@angular/core';
 import {AlertCodeExamplesComponent} from './code-examples/alert/alert-code-examples.component';
+import {AutocompleteCodeExamplesComponent} from './code-examples/autocomplete/autocomplete-code-examples.component';
 import {BannerCodeExamplesComponent} from './code-examples/banner/banner-code-examples.component';
 import {CodeExamples} from './code-examples.model';
 import {ButtonCodeExamplesComponent} from './code-examples/button/button-code-examples.component';
@@ -17,6 +18,7 @@ import {DialogCodeExamplesComponent} from './code-examples/dialog/dialog-code-ex
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
 		alert: AlertCodeExamplesComponent,
+		autocomplete: AutocompleteCodeExamplesComponent,
 		badge: BadgeCodeExamplesComponent,
 		banner: BannerCodeExamplesComponent,
 		button: ButtonCodeExamplesComponent,
