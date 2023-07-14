@@ -1,26 +1,25 @@
 @use "../core/variables";
 @use "../core/mixins/typography";
+@use "./mixins/mat-chip";
 
-.mat-chip-list-stacked {
+.mat-mdc-chip-listbox {
 	margin-top: variables.$ob-spacing-lg;
 }
 
-.mat-chip.mat-standard-chip {
+.mat-mdc-chip-option.mat-mdc-standard-chip {
 	@include typography.ob-caption();
-	background-color: variables.$ob-primary-100;
-	border-color: variables.$ob-primary-500;
-	color: variables.$ob-primary-500;
 
-	&.mat-chip-selected,
-	&.warning,
-	&.success,
-	&.info,
-	&.error {
-		color: variables.$ob-white;
-		border-color: inherit;
-	}
+	@include mat-chip.ob-background-color(
+		variables.$ob-secondary-600,
+		variables.$ob-secondary-700,
+		variables.$ob-secondary-500,
+		variables.$ob-secondary-600,
+		none
+	);
+	color: variables.$ob-white;
+	border-color: inherit;
 
-	&.mat-chip-with-trailing-icon {
+	&.mat-mdc-chip-with-trailing-icon {
 		padding-right: 0;
 
 		> .mat-icon {
@@ -32,39 +31,153 @@
 	}
 
 	&.success {
-		&,
-		&.mat-chip-selected {
-			background-color: variables.$ob-success-500;
-		}
+		@include mat-chip.ob-background-color(
+			variables.$ob-green-700,
+			variables.$ob-green-800,
+			variables.$ob-green-600,
+			variables.$ob-green-700,
+			none
+		);
 	}
 
 	&.info {
-		&,
-		&.mat-chip-selected {
-			background-color: variables.$ob-primary-500;
-		}
+		@include mat-chip.ob-background-color(
+			variables.$ob-blue-800,
+			variables.$ob-blue-900,
+			variables.$ob-blue-600,
+			variables.$ob-blue-800,
+			none
+		);
 	}
 
 	&.warning {
-		&,
-		&.mat-chip-selected {
-			background-color: variables.$ob-warning-500;
-		}
+		@include mat-chip.ob-background-color(
+			variables.$ob-orange-600,
+			variables.$ob-orange-700,
+			variables.$ob-orange-500,
+			variables.$ob-orange-600,
+			none
+		);
 	}
 
 	&.error {
-		&,
-		&.mat-chip-selected {
-			background-color: variables.$ob-error-500;
-		}
+		@include mat-chip.ob-background-color(
+			variables.$ob-red-800,
+			variables.$ob-red-900,
+			variables.$ob-red-700,
+			variables.$ob-red-800,
+			none
+		);
 	}
 
 	&.ob-selected {
 		&,
-		&.mat-chip-selected {
+		&.mat-mdc-chip-selected {
 			background-color: variables.$ob-primary-100;
 			border-color: variables.$ob-primary-500;
 			color: variables.$ob-primary-500;
+		}
+	}
+
+	&,
+	&.success,
+	&.info,
+	&.error,
+	&.warning {
+		--mdc-chip-label-text-color: variables.$ob-white;
+
+		&.cdk-keyboard-focused {
+			outline: 2px solid variables.$ob-purple-500;
+		}
+
+		&.mat-mdc-chip-disabled {
+			background-color: variables.$ob-secondary-200;
+		}
+	}
+}
+
+.mdc-text-field--no-label:not(.mdc-text-field--outlined, .mdc-text-field--textarea)
+	.mat-mdc-form-field-infix {
+	padding-top: 0 !important;
+}
+
+.mat-mdc-chip-row {
+	&.mat-mdc-chip-selected,
+	&.warning,
+	&.success,
+	&.info,
+	&.error {
+		color: variables.$ob-white;
+		border-color: inherit;
+	}
+
+	&,
+	&.mdc-evolution-chip--selectable {
+		background-color: variables.$ob-secondary-50;
+	}
+	border: 1px solid variables.$ob-secondary-600;
+
+	&:active {
+		background-color: variables.$ob-secondary-200;
+	}
+
+	&:hover &:focus {
+		background-color: variables.$ob-secondary-100;
+	}
+
+	&.success {
+		@include mat-chip.ob-background-color(
+			variables.$ob-success-50,
+			variables.$ob-green-300,
+			variables.$ob-green-600,
+			variables.$ob-green-100,
+			1px solid variables.$ob-green-800
+		);
+	}
+
+	&.info {
+		@include mat-chip.ob-background-color(
+			variables.$ob-primary-50,
+			variables.$ob-blue-300,
+			variables.$ob-blue-100,
+			variables.$ob-blue-100,
+			1px solid variables.$ob-blue-800
+		);
+	}
+
+	&.error {
+		@include mat-chip.ob-background-color(
+			variables.$ob-error-50,
+			variables.$ob-red-300,
+			variables.$ob-red-200,
+			variables.$ob-red-200,
+			1px solid variables.$ob-red-800
+		);
+	}
+
+	&.warning {
+		@include mat-chip.ob-background-color(
+			variables.$ob-warning-50,
+			variables.$ob-orange-300,
+			variables.$ob-orange-100,
+			variables.$ob-orange-100,
+			1px solid variables.$ob-orange-800
+		);
+	}
+
+	&,
+	&.success,
+	&.info,
+	&.error,
+	&.warning {
+		&.cdk-keyboard-focused {
+			outline: 2px solid variables.$ob-purple-500;
+		}
+
+		&.mat-mdc-chip-disabled {
+			background-color: variables.$ob-white;
+
+			--mdc-chip-label-text-color: variables.$ob-secondary-300;
 		}
 	}
 }
