@@ -35,6 +35,7 @@ import {MatLineModule} from '@angular/material/core';
 import {ListGroupCodeExamplesComponent} from './code-examples/list-group/list-group-code-examples.component';
 import {DatepickerCodeExamplesComponent} from './code-examples/datepicker/datepicker-code-examples.component';
 import {PaginatorCodeExamplesComponent} from './code-examples/paginator/paginator-code-examples.component';
+import {SliderCodeExamplesComponent} from './code-examples/slider/slider-code-examples.component';
 
 @NgModule({
 	declarations: [
@@ -63,6 +64,7 @@ import {PaginatorCodeExamplesComponent} from './code-examples/paginator/paginato
 		ListGroupCodeExamplesComponent,
 		NoCodeExamplesMatchComponent,
 		PaginatorCodeExamplesComponent,
+		SliderCodeExamplesComponent,
 		TabComponent,
 		TabsComponent
 	],
