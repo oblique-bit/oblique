@@ -1,5 +1,5 @@
 import {Directive, Input} from '@angular/core';
-import {OptionLabelIconPosition} from '@oblique/autocomplete/autocomplete-input.model';
+import {OptionLabelIconPosition} from '../autocomplete.model';
 
 @Directive({
 	selector: '[obOptionLabelIcon]'
