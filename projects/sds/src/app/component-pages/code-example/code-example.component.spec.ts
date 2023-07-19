@@ -5,7 +5,6 @@ import {CodeExampleComponent} from './code-example.component';
 import {SourceCode} from './source-code.model';
 import {TabComponent} from '../tabs/tab/tab.component';
 import {TabsComponent} from '../tabs/tabs.component';
-import {IdModule} from '../../shared/id/id.module';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {UnitTestHelpers} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
 import {HighlightedCodeComponent} from './highlighted-code/highlighted-code.component';
@@ -14,7 +13,8 @@ import {CodeExampleDirective} from '../code-example.directive';
 
 @Component({
 	selector: 'app-preview',
-	template: ''
+	template: '',
+	standalone: true
 })
 class MockPreviewComponent implements PreviewComponent {}
 
@@ -36,15 +36,15 @@ describe(`${CodeExampleComponent.name}`, () => {
 
 	const setupComponent = async (inputs?: ComponentInputs): Promise<void> => {
 		await TestBed.configureTestingModule({
-			declarations: [
+			imports: [
+				MockPreviewComponent,
+				IdPipe,
 				CodeExampleComponent,
 				HighlightedCodeComponent,
 				TabComponent,
 				TabsComponent,
-				MockPreviewComponent,
 				CodeExampleDirective
-			],
-			imports: [IdModule]
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(CodeExampleComponent);
@@ -115,15 +115,15 @@ describe(`${CodeExampleComponent.name}`, () => {
 		beforeEach(() => {
 			// cannot use setupComponent because of whenStable
 			TestBed.configureTestingModule({
-				declarations: [
+				imports: [
+					MockPreviewComponent,
+					IdPipe,
 					CodeExampleComponent,
 					HighlightedCodeComponent,
 					TabComponent,
 					TabsComponent,
-					MockPreviewComponent,
 					CodeExampleDirective
-				],
-				imports: [IdModule]
+				]
 			}).compileComponents();
 
 			fixture = TestBed.createComponent(CodeExampleComponent);

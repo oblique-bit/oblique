@@ -1,10 +1,10 @@
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-import {IdModule} from '../../shared/id/id.module';
 import {ComponentPagesComponent} from './component-pages.component';
 import {TabComponent} from '../tabs/tab/tab.component';
 import {TabsComponent} from '../tabs/tabs.component';
+import {IdPipe} from '../../shared/id/id.pipe';
 
 describe('ComponentPagesComponent', () => {
 	let component: ComponentPagesComponent;
@@ -12,8 +12,7 @@ describe('ComponentPagesComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [ComponentPagesComponent, TabsComponent, TabComponent],
-			imports: [HttpClientTestingModule, IdModule, RouterTestingModule]
+			imports: [HttpClientTestingModule, IdPipe, RouterTestingModule, ComponentPagesComponent, TabsComponent, TabComponent]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ComponentPagesComponent);

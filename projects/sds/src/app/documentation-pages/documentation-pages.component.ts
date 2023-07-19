@@ -5,11 +5,15 @@ import {BehaviorSubject, Subscription, filter} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {CmsDataService} from '../cms/cms-data.service';
+import {IdPipe} from '../shared/id/id.pipe';
+import {CommonModule} from '@angular/common';
 
 @Component({
 	selector: 'app-documentation-pages',
 	templateUrl: './documentation-pages.component.html',
-	styleUrls: ['./documentation-pages.component.scss']
+	styleUrls: ['./documentation-pages.component.scss'],
+	standalone: true,
+	imports: [CommonModule, IdPipe]
 })
 export class DocumentationPagesComponent implements OnInit, OnDestroy {
 	readonly componentId = 'documentation-page';

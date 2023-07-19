@@ -19,8 +19,16 @@ describe(`${SideNavigationComponent.name}`, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [AccordionLinksComponent, IdPipe, ImageComponent, SideNavigationComponent, VersionComponent],
-			imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule]
+			imports: [
+				ReactiveFormsModule,
+				RouterTestingModule,
+				HttpClientTestingModule,
+				AccordionLinksComponent,
+				IdPipe,
+				ImageComponent,
+				SideNavigationComponent,
+				VersionComponent
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(SideNavigationComponent);

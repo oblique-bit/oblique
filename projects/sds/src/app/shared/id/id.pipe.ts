@@ -1,6 +1,9 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
-@Pipe({name: 'id'})
+@Pipe({
+	name: 'id',
+	standalone: true
+})
 export class IdPipe implements PipeTransform {
 	transform(idPrefix: string, idParts: (number | string)[]): string {
 		let idPrefixPlusId = idPrefix;

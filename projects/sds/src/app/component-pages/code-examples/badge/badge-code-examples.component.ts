@@ -1,13 +1,18 @@
 import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {CodeExample, CodeExamples} from '../../code-examples.model';
 import {BadgeExampleColorWarnComponent} from './previews/badge-example-color-warn/badge-example-color-warn.component';
 import {BadgeExampleDefaultComponent} from './previews/badge-example-default/badge-example-default.component';
 import {BadgeExamplePositionBelowBeforeComponent} from './previews/badge-example-position-below-before/badge-example-position-below-before.component';
 import {BadgeExampleOverlapFalseComponent} from './previews/badge-example-overlap-false/badge-example-overlap-false.component';
+import {IdPipe} from '../../../shared/id/id.pipe';
+import {CodeExampleComponent} from '../../code-example/code-example.component';
 
 @Component({
 	selector: 'app-badge-code-examples',
-	templateUrl: '../../code-examples.component.html'
+	templateUrl: '../../code-examples.component.html',
+	standalone: true,
+	imports: [CommonModule, CodeExampleComponent, IdPipe]
 })
 export class BadgeCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'badge-examples';

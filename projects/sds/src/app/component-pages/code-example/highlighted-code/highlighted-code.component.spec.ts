@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {IdModule} from '../../../shared/id/id.module';
 
 import {HighlightedCodeComponent} from './highlighted-code.component';
+import {IdPipe} from '../../../shared/id/id.pipe';
 
 describe('HighlightedCodeComponent', () => {
 	let component: HighlightedCodeComponent;
@@ -9,8 +9,7 @@ describe('HighlightedCodeComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [HighlightedCodeComponent],
-			imports: [IdModule]
+			imports: [IdPipe, HighlightedCodeComponent]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(HighlightedCodeComponent);

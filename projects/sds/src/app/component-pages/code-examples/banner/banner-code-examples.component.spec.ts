@@ -7,7 +7,7 @@ describe('CodeExampleBannerComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [BannerCodeExamplesComponent]
+			imports: [BannerCodeExamplesComponent]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(BannerCodeExamplesComponent);

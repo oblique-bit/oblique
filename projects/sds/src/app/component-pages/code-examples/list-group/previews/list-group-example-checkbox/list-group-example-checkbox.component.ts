@@ -7,7 +7,7 @@ import {CommonModule} from '@angular/common';
 	standalone: true,
 	selector: 'app-list-group-example-check-box',
 	templateUrl: './list-group-example-checkbox.component.html',
-	imports: [CommonModule, MatListModule],
+	imports: [MatListModule, CommonModule],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListGroupExampleCheckBoxComponent implements PreviewComponent {

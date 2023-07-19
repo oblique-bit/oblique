@@ -1,14 +1,18 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CmsDataService} from '../../cms/cms-data.service';
 import {Version} from '../../cms/models/version.model';
 import {BehaviorSubject, Subscription} from 'rxjs';
+import {IdPipe} from '../../shared/id/id.pipe';
+import {CommonModule} from '@angular/common';
 
 @Component({
 	selector: 'app-version',
 	templateUrl: './version.component.html',
 	styleUrls: ['./version.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	standalone: true,
+	imports: [ReactiveFormsModule, CommonModule, IdPipe]
 })
 export class VersionComponent implements OnDestroy, OnInit {
 	@Input() idPrefix = '';

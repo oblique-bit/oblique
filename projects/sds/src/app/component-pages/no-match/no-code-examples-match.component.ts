@@ -3,6 +3,7 @@ import {CodeExamples} from '../code-examples.model';
 
 @Component({
 	selector: 'app-no-code-examples-match',
-	templateUrl: './no-code-examples-match.component.html'
+	templateUrl: './no-code-examples-match.component.html',
+	standalone: true
 })
 export class NoCodeExamplesMatchComponent extends CodeExamples {}

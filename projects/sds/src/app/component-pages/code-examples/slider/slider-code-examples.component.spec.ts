@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {SliderCodeExamplesComponent} from './slider-code-examples.component';
-import {IdModule} from '../../../shared/id/id.module';
+import {IdPipe} from '../../../shared/id/id.pipe';
 
 describe('SliderCodeExamplesComponent', () => {
 	let component: SliderCodeExamplesComponent;
@@ -9,8 +9,7 @@ describe('SliderCodeExamplesComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [SliderCodeExamplesComponent],
-			imports: [IdModule]
+			imports: [SliderCodeExamplesComponent, IdPipe]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(SliderCodeExamplesComponent);

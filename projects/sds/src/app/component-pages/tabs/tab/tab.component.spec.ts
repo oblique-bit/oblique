@@ -8,7 +8,7 @@ describe(`${TabComponent.name}`, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [IdPipe, TabComponent]
+			imports: [TabComponent, IdPipe]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TabComponent);

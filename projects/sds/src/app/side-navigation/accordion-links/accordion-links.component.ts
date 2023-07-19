@@ -1,12 +1,17 @@
 import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit} from '@angular/core';
+import {RouterLink} from '@angular/router';
+import {CommonModule} from '@angular/common';
 import {BehaviorSubject, combineLatest, map} from 'rxjs';
 import {Accordion, AccordionLinksChanges} from './accordion-links.model';
+import {IdPipe} from '../../shared/id/id.pipe';
 
 @Component({
 	selector: 'app-accordion-links',
 	templateUrl: './accordion-links.component.html',
 	styleUrls: ['./accordion-links.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	standalone: true,
+	imports: [CommonModule, RouterLink, IdPipe]
 })
 export class AccordionLinksComponent implements OnChanges, OnInit {
 	@Input() accordions: Accordion[] = [];

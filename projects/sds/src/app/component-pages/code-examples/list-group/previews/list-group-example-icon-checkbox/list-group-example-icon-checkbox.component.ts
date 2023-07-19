@@ -8,7 +8,7 @@ import {CommonModule} from '@angular/common';
 	standalone: true,
 	selector: 'app-list-group-example-icon',
 	templateUrl: './list-group-example-icon-checkbox.component.html',
-	imports: [CommonModule, MatListModule, MatIconModule],
+	imports: [MatListModule, MatIconModule, CommonModule],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListGroupExampleIconCheckboxComponent implements PreviewComponent {
