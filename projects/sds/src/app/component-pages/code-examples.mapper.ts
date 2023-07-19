@@ -8,6 +8,7 @@ import {BadgeCodeExamplesComponent} from './code-examples/badge/badge-code-examp
 import {ListGroupCodeExamplesComponent} from './code-examples/list-group/list-group-code-examples.component';
 import {DatepickerCodeExamplesComponent} from './code-examples/datepicker/datepicker-code-examples.component';
 import {PaginatorCodeExamplesComponent} from './code-examples/paginator/paginator-code-examples.component';
+import {SliderCodeExamplesComponent} from './code-examples/slider/slider-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -18,7 +19,8 @@ export class CodeExamplesMapper {
 		datepicker: DatepickerCodeExamplesComponent,
 		dialog: DialogCodeExamplesComponent,
 		listGroup: ListGroupCodeExamplesComponent,
-		paginator: PaginatorCodeExamplesComponent
+		paginator: PaginatorCodeExamplesComponent,
+		slider: SliderCodeExamplesComponent
 	};
 
 	static getCodeExampleComponent(slug: string): Type<CodeExamples> {
