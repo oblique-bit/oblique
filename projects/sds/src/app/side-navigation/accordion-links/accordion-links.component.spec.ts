@@ -12,8 +12,7 @@ describe(`${AccordionLinksComponent.name}`, () => {
 
 	const accordionLinksBeforeEach = async (accordions: Accordion[]): Promise<any> => {
 		await TestBed.configureTestingModule({
-			declarations: [AccordionLinksComponent, IdPipe],
-			imports: [RouterTestingModule]
+			imports: [RouterTestingModule, AccordionLinksComponent, IdPipe]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(AccordionLinksComponent);

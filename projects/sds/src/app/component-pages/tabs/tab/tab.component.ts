@@ -1,9 +1,12 @@
 import {ChangeDetectorRef, Component, Input, OnChanges, SimpleChange, SimpleChanges, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 @Component({
 	selector: 'app-tab',
 	templateUrl: './tab.component.html',
-	styleUrls: ['./tab.component.scss']
+	styleUrls: ['./tab.component.scss'],
+	standalone: true,
+	imports: [CommonModule]
 })
 export class TabComponent implements OnChanges {
 	@Input() initiallyActive = true;

@@ -1,12 +1,12 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule} from '@oblique/oblique';
-import {IdModule} from '../../../shared/id/id.module';
 import {BadgeCodeExamplesComponent} from './badge-code-examples.component';
 import {BadgeExamplePositionBelowBeforeComponent} from './previews/badge-example-position-below-before/badge-example-position-below-before.component';
 import {BadgeExampleOverlapFalseComponent} from './previews/badge-example-overlap-false/badge-example-overlap-false.component';
 import {BadgeExampleDefaultComponent} from './previews/badge-example-default/badge-example-default.component';
 import {BadgeExampleColorWarnComponent} from './previews/badge-example-color-warn/badge-example-color-warn.component';
+import {IdPipe} from '../../../shared/id/id.pipe';
 
 describe('BadgeCodeExamplesComponent', () => {
 	let component: BadgeCodeExamplesComponent;
@@ -14,14 +14,16 @@ describe('BadgeCodeExamplesComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [
+			imports: [
+				IdPipe,
+				MatButtonModule,
+				ObButtonModule,
 				BadgeCodeExamplesComponent,
 				BadgeExampleColorWarnComponent,
 				BadgeExampleDefaultComponent,
 				BadgeExampleOverlapFalseComponent,
 				BadgeExamplePositionBelowBeforeComponent
-			],
-			imports: [IdModule, MatButtonModule, ObButtonModule]
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(BadgeCodeExamplesComponent);

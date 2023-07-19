@@ -1,10 +1,14 @@
 import {AfterContentInit, Component, ContentChildren, Input, QueryList} from '@angular/core';
 import {TabComponent} from './tab/tab.component';
+import {IdPipe} from '../../shared/id/id.pipe';
+import {CommonModule} from '@angular/common';
 
 @Component({
 	selector: 'app-tabs',
 	templateUrl: './tabs.component.html',
-	styleUrls: ['./tabs.component.scss']
+	styleUrls: ['./tabs.component.scss'],
+	standalone: true,
+	imports: [CommonModule, IdPipe]
 })
 export class TabsComponent implements AfterContentInit {
 	@Input() idPrefix = '';

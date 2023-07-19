@@ -2,7 +2,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {DocumentationPagesComponent} from './documentation-pages.component';
-import {IdModule} from '../shared/id/id.module';
+import {IdPipe} from '../shared/id/id.pipe';
 
 describe('DocumentationPagesComponent', () => {
 	let component: DocumentationPagesComponent;
@@ -10,8 +10,7 @@ describe('DocumentationPagesComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [DocumentationPagesComponent],
-			imports: [HttpClientTestingModule, IdModule, RouterTestingModule]
+			imports: [HttpClientTestingModule, IdPipe, RouterTestingModule, DocumentationPagesComponent]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(DocumentationPagesComponent);

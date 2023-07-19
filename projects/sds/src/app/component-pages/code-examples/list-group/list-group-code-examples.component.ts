@@ -4,10 +4,15 @@ import {ListGroupExampleDefaultComponent} from './previews/list-group-example-de
 import {ListGroupExampleCheckBoxComponent} from './previews/list-group-example-checkbox/list-group-example-checkbox.component';
 import {ListGroupExampleIconComponent} from './previews/list-group-example-icon/list-group-example-icon.component';
 import {ListGroupExampleIconCheckboxComponent} from './previews/list-group-example-icon-checkbox/list-group-example-icon-checkbox.component';
+import {IdPipe} from '../../../shared/id/id.pipe';
+import {CodeExampleComponent} from '../../code-example/code-example.component';
+import {CommonModule} from '@angular/common';
 
 @Component({
 	selector: 'app-list-group-code-examples',
-	templateUrl: '../../code-examples.component.html'
+	templateUrl: '../../code-examples.component.html',
+	standalone: true,
+	imports: [CommonModule, CodeExampleComponent, IdPipe]
 })
 export class ListGroupCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'list-group-examples';

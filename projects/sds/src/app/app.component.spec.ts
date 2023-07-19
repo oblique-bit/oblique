@@ -2,6 +2,10 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {RouterTestingModule} from '@angular/router/testing';
+import {CmsDataService} from './cms/cms-data.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
 	let component: AppComponent;
@@ -9,7 +13,8 @@ describe('AppComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [AppComponent],
+			imports: [AppComponent, NoopAnimationsModule, RouterTestingModule, HttpClientTestingModule],
+			providers: [CmsDataService],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 

@@ -2,11 +2,16 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CodeExample, CodeExamples} from '../../code-examples.model';
 import {DialogExampleDefaultComponent} from './previews/default/dialog-example-default.component';
 import {DialogExampleSpinnerComponent} from './previews/spinner/dialog-example-spinner.component';
+import {CodeExampleComponent} from '../../code-example/code-example.component';
+import {CommonModule} from '@angular/common';
+import {IdPipe} from '../../../shared/id/id.pipe';
 
 @Component({
 	selector: 'app-dialog-code-example',
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	standalone: true,
+	imports: [CodeExampleComponent, CommonModule, IdPipe]
 })
 export class DialogCodeExamplesComponent extends CodeExamples {
 	readonly previews: CodeExample[] = [

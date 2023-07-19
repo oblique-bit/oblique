@@ -6,11 +6,16 @@ import {ButtonExampleSecondaryLinkNoIconComponent} from './previews/secondary-li
 import {ButtonExampleSecondaryWheelchairComponent} from './previews/secondary-wheelchair/button-example-secondary-wheelchair.component';
 import {ButtonExampleTertiaryLinkNoIconDisabledComponent} from './previews/tertiary-link-no-icon-disabled/button-example-tertiary-link-no-icon-disabled.component';
 import {ButtonExampleTertiaryRepeatNoTextComponent} from './previews/tertiary-repeat-no-text/button-example-tertiary-repeat-no-text.component';
+import {IdPipe} from '../../../shared/id/id.pipe';
+import {CodeExampleComponent} from '../../code-example/code-example.component';
+import {CommonModule} from '@angular/common';
 
 @Component({
 	selector: 'app-button-code-examples',
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	standalone: true,
+	imports: [CodeExampleComponent, IdPipe, CommonModule]
 })
 export class ButtonCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'button-examples';

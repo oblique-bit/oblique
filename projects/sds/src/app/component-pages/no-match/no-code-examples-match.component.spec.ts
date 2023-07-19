@@ -7,7 +7,7 @@ describe(`${NoCodeExamplesMatchComponent.name}`, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [NoCodeExamplesMatchComponent]
+			imports: [NoCodeExamplesMatchComponent]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(NoCodeExamplesMatchComponent);

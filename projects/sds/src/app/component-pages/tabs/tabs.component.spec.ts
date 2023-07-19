@@ -27,7 +27,8 @@ describe(`${TabsComponent.name}`, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [IdPipe, TabComponent, TabsComponent, TabsWrapperComponent],
+			declarations: [TabsWrapperComponent],
+			imports: [IdPipe, TabComponent, TabsComponent],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 

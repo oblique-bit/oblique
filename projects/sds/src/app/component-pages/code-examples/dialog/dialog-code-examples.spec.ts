@@ -1,7 +1,7 @@
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {DialogCodeExamplesComponent} from './dialog-code-examples.component';
-import {IdModule} from '../../../shared/id/id.module';
+import {IdPipe} from '../../../shared/id/id.pipe';
 
 describe(`${DialogCodeExamplesComponent.name}`, () => {
 	let component: DialogCodeExamplesComponent;
@@ -9,8 +9,7 @@ describe(`${DialogCodeExamplesComponent.name}`, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [DialogCodeExamplesComponent],
-			imports: [IdModule],
+			imports: [IdPipe, DialogCodeExamplesComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 

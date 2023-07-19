@@ -10,8 +10,7 @@ describe(`${VersionComponent.name}`, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [IdPipe, VersionComponent],
-			imports: [HttpClientTestingModule, ReactiveFormsModule],
+			imports: [HttpClientTestingModule, ReactiveFormsModule, IdPipe, VersionComponent],
 			providers: []
 		}).compileComponents();
 

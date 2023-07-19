@@ -35,7 +35,7 @@ describe(`${ImageComponent.name}`, () => {
 	const imageBeforeEach = async (imageInputsOptional?: ImageInputsOptional): Promise<any> => {
 		const {alt, maxHeight, maxWidth, idPrefix, src} = new ImageInputs(imageInputsOptional);
 		await TestBed.configureTestingModule({
-			declarations: [IdPipe, ImageComponent]
+			imports: [IdPipe, ImageComponent]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ImageComponent);

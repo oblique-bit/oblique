@@ -1,7 +1,10 @@
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {AlertCodeExamplesComponent} from './alert-code-examples.component';
-import {IdModule} from '../../../shared/id/id.module';
+import {IdPipe} from '../../../shared/id/id.pipe';
+import {TranslateService} from '@ngx-translate/core';
+import {ObMockTranslateService} from '@oblique/oblique';
+import {CommonModule} from '@angular/common';
 
 describe(`${AlertCodeExamplesComponent.name}`, () => {
 	let component: AlertCodeExamplesComponent;
@@ -9,9 +12,9 @@ describe(`${AlertCodeExamplesComponent.name}`, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [AlertCodeExamplesComponent],
-			imports: [IdModule],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+			imports: [IdPipe, AlertCodeExamplesComponent, CommonModule],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(AlertCodeExamplesComponent);
