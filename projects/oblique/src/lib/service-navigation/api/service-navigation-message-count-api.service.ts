@@ -11,7 +11,7 @@ export class ObServiceNavigationCountApiService {
 
 	get(environmentUrl: string): Observable<number> {
 		return this.httpClient
-			.get<ObIServiceNavigationResponse & {data: number}>(environmentUrl + this.resourceUrl, {withCredentials: true})
+			.get<ObIServiceNavigationResponse<number>>(environmentUrl + this.resourceUrl, {withCredentials: true})
 			.pipe(map(res => res.data));
 	}
 }
