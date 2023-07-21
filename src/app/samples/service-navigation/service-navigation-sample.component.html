@@ -17,7 +17,9 @@
 			[displayProfile]="displayProfile"
 			[displayAuthentication]="displayAuthentication"
 			[displayLanguages]="displayLanguages"
+			[handleLogout]="handleLogout"
 			(loginState)="loginState = $event"
+			(logoutTriggered)="logoutURL = $event"
 		>
 			<ng-container *ngIf="hasCustomWidgets">
 				<ng-template #customWidgetTemplate>
@@ -34,6 +36,9 @@
 		</ob-service-navigation>
 		<p>
 			Current login state: <output>{{ loginState }}</output>
+		</p>
+		<p>
+			Logout triggered with this logoutURL: <output>{{ logoutURL }}</output>
 		</p>
 	</section>
 	<ng-container column-right-content>
@@ -62,6 +67,7 @@
 		<fieldset class="toggles">
 			<legend>Authentication widget settings</legend>
 			<mat-slide-toggle [(ngModel)]="displayAuthentication">toggle authentication</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="handleLogout">toggle handleLogout</mat-slide-toggle>
 		</fieldset>
 		<fieldset class="toggles">
 			<legend>Languages widget settings</legend>
