@@ -1,4 +1,5 @@
 <a
+	*ngIf="!isLoggedIn || (isLoggedIn && handleLogout)"
 	[href]="isLoggedIn ? logoutUrl : loginUrl"
 	[id]="isLoggedIn ? 'ob-service-navigation-authentication-link-to-logout' : 'ob-service-navigation-authentication-link-to-login'"
 	[isExternalLink]="false"
@@ -19,3 +20,18 @@
 	}}
 	<mat-icon [svgIcon]="isLoggedIn ? 'logout' : 'login'"></mat-icon>
 </a>
+
+<button
+	*ngIf="isLoggedIn && !handleLogout"
+	type="button"
+	id="ob-service-navigation-authentication-button-to-logout"
+	class="ob-widget"
+	mat-button
+	obButton="secondary"
+	[matTooltip]="'i18n.oblique.service-navigation.authentication.tooltip.logout' | translate"
+	[attr.aria-label]="'i18n.oblique.service-navigation.authentication.tooltip.logout' | translate"
+	(click)="handleLogoutClick()"
+>
+	{{ "i18n.oblique.service-navigation.authentication.logout" | translate }}
+	<mat-icon svgIcon="logout"></mat-icon>
+</button>

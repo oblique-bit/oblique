@@ -118,6 +118,13 @@
           "default": "true",
           "since": "10.1.0",
           "text": "Determines whether the languages widget is displayed or not."
+        },
+        {
+          "name": "handleLogout",
+          "type": "boolean",
+          "default": "true",
+          "since": "10.2.0",
+          "text": "Determines if the logout should be handled in the service-navigation or not. If set to false, then the application must perform the logout itself. To do this, the logoutURL passed by the <code>logoutTriggere</code> output must be used."
         }
       ],
       "outputs": [
@@ -126,6 +133,12 @@
           "type": "Observable<ObILoginState>",
           "since": "10.1.0",
           "text": "Emits changes of login state."
+        },
+        {
+          "name": "logoutTriggered",
+          "type": "EventEmitter<string>",
+          "since": "10.2.0",
+          "text": "Emitted when the users clicks on the logout-Button and the <code>handleLogout</code> input is set to false. Emits the logoutURL."
         }
       ],
       "methods": [

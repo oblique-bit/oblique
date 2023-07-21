@@ -7,6 +7,10 @@ import {MatIconHarness} from '@angular/material/icon/testing';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObServiceNavigationAuthenticationHarness} from './service-navigation-authentication.harness';
 import {ObServiceNavigationAuthenticationComponent} from './service-navigation-authentication.component';
+import {By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
+import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
+import {ObButtonModule} from '../../button/button.module';
 
 describe('ObServiceNavigationAuthenticationComponent', () => {
 	let component: ObServiceNavigationAuthenticationComponent;
@@ -16,7 +20,7 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [ObServiceNavigationAuthenticationComponent, ObMockTranslatePipe],
-			imports: [MatIconModule, MatTooltipModule]
+			imports: [MatIconModule, MatTooltipModule, MatButtonModule, ObButtonModule]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationAuthenticationComponent);
@@ -39,6 +43,10 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 
 	it('should have an empty "logoutUrl" property', () => {
 		expect(component.logoutUrl).toBe('');
+	});
+
+	it('handleLogout should be initialized to "true"', () => {
+		expect(component.handleLogout).toBe(true);
 	});
 
 	describe('with "loginUrl" as "loginUrl" and "logoutUrl" as "logoutUrl"', () => {
@@ -136,6 +144,47 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 						});
 					});
 				});
+
+				describe('handleLogout', () => {
+					let button: DebugElement;
+					describe('set to "true"', () => {
+						beforeEach(() => {
+							component.handleLogout = true;
+							fixture.detectChanges();
+						});
+						describe('button', () => {
+							it('should not be displayed', () => {
+								button = fixture.debugElement.query(By.css('button'));
+
+								expect(button).toBe(null);
+							});
+						});
+						describe('link', () => {
+							it('should be displayed', async () => {
+								expect(await harness.getLinkElement()).toBeTruthy();
+							});
+						});
+					});
+
+					describe('set to "false"', () => {
+						beforeEach(() => {
+							component.handleLogout = false;
+							fixture.detectChanges();
+						});
+						describe('button', () => {
+							it('should not be displayed', () => {
+								button = fixture.debugElement.query(By.css('button'));
+
+								expect(button).toBe(null);
+							});
+						});
+						describe('link', () => {
+							it('should be displayed', async () => {
+								expect(await harness.getLinkElement()).toBeTruthy();
+							});
+						});
+					});
+				});
 			});
 
 			describe('set to "true" ', () => {
@@ -143,22 +192,96 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 					component.isLoggedIn = true;
 					fixture.detectChanges();
 				});
-
-				describe('link', () => {
-					it.each([
-						{attribute: 'href', value: 'logoutUrl'},
-						{attribute: 'id', value: 'ob-service-navigation-authentication-link-to-logout'}
-					])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
-						expect(await (await harness.getLinkElement()).getAttribute(attribute)).toBe(value);
+				describe('set handleLogout to "true', () => {
+					beforeEach(() => {
+						component.handleLogout = true;
+						fixture.detectChanges();
 					});
 
-					it('should have "i18n.oblique.service-navigation.authentication.logout" as text', async () => {
-						expect(await harness.getText()).toBe('i18n.oblique.service-navigation.authentication.logout');
+					describe('button', () => {
+						let button: DebugElement;
+						it('should not be displayed', () => {
+							button = fixture.debugElement.query(By.css('button'));
+
+							expect(button).toBe(null);
+						});
 					});
 
-					describe('icon', () => {
-						it('should be "logout"', async () => {
-							expect(await (await harness.getIconHarness()).getName()).toBe('logout');
+					describe('link', () => {
+						it.each([
+							{attribute: 'href', value: 'logoutUrl'},
+							{attribute: 'id', value: 'ob-service-navigation-authentication-link-to-logout'}
+						])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
+							expect(await (await harness.getLinkElement()).getAttribute(attribute)).toBe(value);
+						});
+
+						it('should have "i18n.oblique.service-navigation.authentication.logout" as text', async () => {
+							expect(await harness.getText()).toBe('i18n.oblique.service-navigation.authentication.logout');
+						});
+
+						describe('icon', () => {
+							it('should be "logout"', async () => {
+								expect(await (await harness.getIconHarness()).getName()).toBe('logout');
+							});
+						});
+					});
+				});
+
+				describe('set handleLogout to "false', () => {
+					beforeEach(() => {
+						component.handleLogout = false;
+						fixture.detectChanges();
+					});
+
+					describe('link', () => {
+						let link: DebugElement;
+
+						it('should not be displayed', () => {
+							link = fixture.debugElement.query(By.css('a'));
+
+							expect(link).toBe(null);
+						});
+					});
+
+					describe('button', () => {
+						let button: TestElement;
+
+						beforeEach(async () => {
+							fixture.detectChanges();
+							button = await harness.getButtonElement();
+						});
+						it.each([
+							{attribute: 'id', value: 'ob-service-navigation-authentication-button-to-logout'},
+							{attribute: 'mat-button', value: ''},
+							{attribute: 'obButton', value: 'secondary'},
+							{attribute: 'type', value: 'button'}
+						])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
+							expect(await (await harness.getButtonElement()).getAttribute(attribute)).toBe(value);
+						});
+
+						it('should have "i18n.oblique.service-navigation.authentication.logout" as text', async () => {
+							expect(await harness.getButtonText()).toBe('i18n.oblique.service-navigation.authentication.logout');
+						});
+
+						describe('on click', () => {
+							beforeEach(() => {
+								jest.spyOn(component.logoutClicked, 'emit');
+								button.click();
+							});
+
+							it('should call the logoutClicked Emitter once', () => {
+								expect(component.logoutClicked.emit).toHaveBeenCalledTimes(1);
+							});
+
+							it('should call the logoutClicked Emitter with the logoutURL', () => {
+								expect(component.logoutClicked.emit).toHaveBeenCalledWith(component.logoutUrl);
+							});
+						});
+
+						describe('icon', () => {
+							it('should be "logout"', async () => {
+								expect(await (await harness.getIconHarness()).getName()).toBe('logout');
+							});
 						});
 					});
 				});

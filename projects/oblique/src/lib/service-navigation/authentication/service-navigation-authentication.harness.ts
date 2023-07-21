@@ -9,8 +9,16 @@ export class ObServiceNavigationAuthenticationHarness extends ContentContainerCo
 		return this.locatorFor('a')();
 	}
 
+	public async getButtonElement(): Promise<TestElement> {
+		return this.locatorFor('button')();
+	}
+
 	public async getText(): Promise<string> {
 		return (await this.getLinkElement()).text();
+	}
+
+	public async getButtonText(): Promise<string> {
+		return (await this.getButtonElement()).text();
 	}
 
 	public async getIconHarness(): Promise<MatIconHarness> {
