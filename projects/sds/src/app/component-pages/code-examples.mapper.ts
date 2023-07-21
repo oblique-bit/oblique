@@ -9,6 +9,7 @@ import {ListGroupCodeExamplesComponent} from './code-examples/list-group/list-gr
 import {DatepickerCodeExamplesComponent} from './code-examples/datepicker/datepicker-code-examples.component';
 import {PaginatorCodeExamplesComponent} from './code-examples/paginator/paginator-code-examples.component';
 import {SliderCodeExamplesComponent} from './code-examples/slider/slider-code-examples.component';
+import {CardCodeExamplesComponent} from './code-examples/card/card-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -16,6 +17,7 @@ export class CodeExamplesMapper {
 		badge: BadgeCodeExamplesComponent,
 		banner: BannerCodeExamplesComponent,
 		button: ButtonCodeExamplesComponent,
+		card: CardCodeExamplesComponent,
 		datepicker: DatepickerCodeExamplesComponent,
 		dialog: DialogCodeExamplesComponent,
 		listGroup: ListGroupCodeExamplesComponent,
