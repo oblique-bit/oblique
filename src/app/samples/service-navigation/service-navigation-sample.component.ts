@@ -21,7 +21,9 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	displayProfile = true;
 	displayAuthentication = true;
 	displayLanguages = true;
+	handleLogout = true;
 	loginState: ObLoginState;
+	logoutURL: string;
 	profileLinks: ObIServiceNavigationLink[] = [
 		{
 			url: 'i18n.service-navigation.profile.link.unicorn.url',

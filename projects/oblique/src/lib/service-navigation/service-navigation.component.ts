@@ -1,4 +1,4 @@
-import {Component, ContentChildren, Input, OnChanges, OnInit, Output, QueryList, ViewEncapsulation} from '@angular/core';
+import {Component, ContentChildren, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, ViewEncapsulation} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObEPamsEnvironment, ObIServiceNavigationContact, ObIServiceNavigationLink, ObLoginState} from './service-navigation.model';
@@ -27,7 +27,10 @@ export class ObServiceNavigationComponent implements OnInit, OnChanges {
 	@Input() displayProfile = false;
 	@Input() displayAuthentication = false;
 	@Input() displayLanguages = true;
-	@Output() readonly loginState: Observable<ObLoginState> = this.headerControlsService.getLoginState$();
+	@Input() handleLogout = true;
+	@Output()
+	readonly loginState: Observable<ObLoginState> = this.headerControlsService.getLoginState$();
+	@Output() readonly logoutTriggered = new EventEmitter<string>();
 	@ContentChildren('customWidgetTemplate') customWidgetTemplate: QueryList<unknown>;
 	readonly loginUrl$ = this.headerControlsService.getLoginUrl$();
 	readonly logoutUrl$ = this.headerControlsService.getLogoutUrl$();
@@ -55,5 +58,9 @@ export class ObServiceNavigationComponent implements OnInit, OnChanges {
 
 	changeLanguage(language: string): void {
 		this.headerControlsService.setLanguage(language);
+	}
+
+	handleLogoutClick(logoutURL: string): void {
+		this.logoutTriggered.emit(logoutURL);
 	}
 }

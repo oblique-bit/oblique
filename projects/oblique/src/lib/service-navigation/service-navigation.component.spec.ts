@@ -185,6 +185,12 @@ describe('ObServiceNavigationComponent', () => {
 			});
 		});
 
+		describe('handleLogout', () => {
+			it('should be initialized to true', () => {
+				expect(component.handleLogout).toBe(true);
+			});
+		});
+
 		describe('maxFavoriteApplications', () => {
 			it('should be initialized to 3', () => {
 				expect(component.maxFavoriteApplications).toBe(3);
@@ -259,6 +265,21 @@ describe('ObServiceNavigationComponent', () => {
 
 			it('should receive formatted languages', () => {
 				expect(component.languages).toEqual([{code: 'en', label: 'English'}]);
+			});
+		});
+
+		describe('handleLogoutClick', () => {
+			beforeEach(() => {
+				jest.spyOn(component.logoutTriggered, 'emit');
+				component.handleLogoutClick('https://pams/api/logout');
+			});
+
+			it('should call the logoutTriggered Emitter once', () => {
+				expect(component.logoutTriggered.emit).toHaveBeenCalledTimes(1);
+			});
+
+			it('should call the logoutTriggered Emitter with "https://pams/api/logout"', () => {
+				expect(component.logoutTriggered.emit).toHaveBeenCalledWith('https://pams/api/logout');
 			});
 		});
 

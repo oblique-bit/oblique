@@ -31,6 +31,8 @@
 			[loginUrl]="loginUrl$ | async"
 			[logoutUrl]="logoutUrl$ | async"
 			[isLoggedIn]="loginState$ | async | obIsUserLoggedIn : true"
+			[handleLogout]="handleLogout"
+			(logoutClicked)="handleLogoutClick($event)"
 		></ob-service-navigation-authentication>
 	</li>
 	<li *ngIf="languages.length > 1 && displayLanguages">
