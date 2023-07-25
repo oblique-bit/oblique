@@ -11,7 +11,10 @@ class HookCommitRules {
 
 	static perform(): void {
 		try {
-			const message: string[] = readFileSync('.git/COMMIT_EDITMSG').toString().split('\n');
+			const message: string[] = readFileSync('.git/COMMIT_EDITMSG')
+				.toString()
+				.split('\n')
+				.filter(line => !line.startsWith('#'));
 			HookCommitRules.checkLineLength(message, HookCommitRules.maxLineLength);
 			HookCommitRules.checkEmptyLine(message);
 			HookCommitRules.checkHeader(message[0]);
