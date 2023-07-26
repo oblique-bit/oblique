@@ -6,6 +6,7 @@
 /projects/oblique/styles
 /tmp
 __ngcc_entry_points__.json
+/projects/sds/schematics/**/*.js
 
 # dependencies
 /node_modules

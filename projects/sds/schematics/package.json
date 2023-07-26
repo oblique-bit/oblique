@@ -1,0 +1,13 @@
+{
+  "name": "@oblique/sds",
+  "version": "",
+  "description": "Oblique SDS schematics",
+  "scripts": {
+    "build": "tsc -p tsconfig.schematics.json",
+    "build:watch": "tsc -p tsconfig.schematics.json --watch"
+  },
+  "keywords": [
+    "oblique-sds-schematics"
+  ],
+  "schematics": "./collection.json"
+}

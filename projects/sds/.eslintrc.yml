@@ -8,6 +8,7 @@ overrides:
       project:
         - projects/sds/tsconfig.app.json
         - projects/sds/tsconfig.spec.json
+        - projects/sds/schematics/tsconfig.schematics.json
     rules:
       # reactivate some rules
       "@angular-eslint/use-component-view-encapsulation": error

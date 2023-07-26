@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "add-code-example": {
+      "description": "Add a new code example feature.",
+      "factory": "./src/add-code-example/index#addCodeExamples",
+      "schema": "./src/add-code-example/schema.json"
+    },
+    "add-preview": {
+      "description": "Add a new preview to an existing or new code example feature.",
+      "factory": "./src/add-preview/index#addPreview",
+      "schema": "./src/add-preview/schema.json"
+    }
+  }
+}
