@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "add-preview",
+  "title": "Generate SDS preview schema",
+  "type": "object",
+  "properties": {
+    "codeExample": {
+      "type": "string",
+      "description": "The name of the code examples to add the preview to.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "To which code examples would you like to add a preview?"
+    },
+    "preview": {
+      "type": "string",
+      "description": "The name of the new SDS preview to generate.",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "What preview would you want to create?"
+    }
+  },
+  "required": ["preview", "codeExample"]
+}

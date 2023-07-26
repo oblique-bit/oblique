@@ -4,13 +4,17 @@
   "scripts": {
     "start": "ng serve",
     "test": "cd ../.. && ng test sds",
-    "build": "ng build"
+    "build": "ng build",
+    "add-code-example": "npm run schematics-build && cd ../../ && schematics ./projects/sds/schematics/collection:add-code-example --dry-run=false",
+    "add-preview": "npm run schematics-build  && cd ../../ && schematics ./projects/sds/schematics/collection:add-preview --dry-run=false",
+    "schematics-build": "cd ./schematics && npm run build"
   },
   "dependencies": {
     "highlight.js": "^11.7.0",
     "raw-loader": "^4.0.2"
   },
   "devDependencies": {
+    "@schematics/angular": "^15.0.4",
     "jest-raw-loader": "^1.0.1"
   }
 }
