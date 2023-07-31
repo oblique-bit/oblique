@@ -92,6 +92,8 @@ export class ComponentPagesComponent implements OnInit, OnDestroy {
 	@ViewChild(CodeExampleDirective, {static: true}) codeExample!: CodeExampleDirective;
 	readonly componentId = 'component-page';
 
+	title = '';
+
 	readonly apiContent$: BehaviorSubject<SafeHtml> = new BehaviorSubject<SafeHtml>('');
 	readonly uiUxContent$: BehaviorSubject<SafeHtml> = new BehaviorSubject<SafeHtml>('');
 
@@ -136,6 +138,7 @@ export class ComponentPagesComponent implements OnInit, OnDestroy {
 	private getContent(id: number): void {
 		this.subscriptions.push(
 			this.cmsDataService.getComponentPagesComplete(id).subscribe(cmsData => {
+				this.title = cmsData.data.name;
 				this.uiUxContent$.next(this.domSanitizer.bypassSecurityTrustHtml(cmsData.data.ui_ux));
 				this.apiContent$.next(this.domSanitizer.bypassSecurityTrustHtml(cmsData.data.api));
 				this.loadCodeExample(cmsData.data.slug);
