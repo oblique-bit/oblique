@@ -23,9 +23,18 @@ import {ObServiceNavigationApplicationAltPipe} from './applications/service-navi
 import {ObServiceNavigationLanguagesComponent} from './languages/service-navigation-languages.component';
 import {ObContactToLinksPipe} from './info/contact-to-links.pipe';
 import {ObServiceNavigationComponent} from './service-navigation.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {ObEportalCsrfInterceptor} from './eportal-csrf-interceptor/eportal-csrf-interceptor';
 
 @NgModule({
-	providers: [...obliqueProviders()],
+	providers: [
+		...obliqueProviders(),
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: ObEportalCsrfInterceptor,
+			multi: true
+		}
+	],
 	imports: [
 		CommonModule,
 		MatBadgeModule,

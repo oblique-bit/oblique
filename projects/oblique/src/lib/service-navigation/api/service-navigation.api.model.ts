@@ -1,8 +1,9 @@
 import {ObLoginState, ObServiceNavigationApplicationStatus} from '../service-navigation.model';
 
-export interface ObIServiceNavigationResponse {
+export interface ObIServiceNavigationResponse<T> {
 	statusCode: number;
 	success: boolean;
+	data: T;
 }
 
 export interface ObIServiceNavigationConfig {

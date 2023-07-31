@@ -12,7 +12,7 @@ export class ObServiceNavigationConfigApiService {
 
 	fetchUrls(rootUrl: string): Observable<ObIServiceNavigationConfig> {
 		return this.httpClient
-			.get<ObIServiceNavigationResponse & {data: ObIServiceNavigationConfig}>(rootUrl + this.resourceUrl, {withCredentials: true})
+			.get<ObIServiceNavigationResponse<ObIServiceNavigationConfig>>(rootUrl + this.resourceUrl, {withCredentials: true})
 			.pipe(map(response => response.data));
 	}
 }
