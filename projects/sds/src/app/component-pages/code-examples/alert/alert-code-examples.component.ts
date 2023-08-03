@@ -19,13 +19,19 @@ export class AlertCodeExamplesComponent extends CodeExamples {
 			component: AlertExampleInfoPreviewComponent,
 			idParts: ['info'],
 			title: 'Alert info',
-			snippets: [this.getSnippet('alert', 'info/alert-example-info-preview.component.html', 'HTML')]
+			snippets: [
+				this.getSnippet('alert', 'info/alert-example-info-preview.component.html', 'HTML'),
+				this.getSnippet('alert', 'info/alert-example-info-preview.component.ts', 'TS')
+			]
 		},
 		{
 			component: AlertExampleSuccessPreviewComponent,
 			idParts: ['success'],
 			title: 'Alert success',
-			snippets: [this.getSnippet('alert', 'success/alert-example-success-preview.component.html', 'HTML')]
+			snippets: [
+				this.getSnippet('alert', 'success/alert-example-success-preview.component.html', 'HTML'),
+				this.getSnippet('alert', 'success/alert-example-success-preview.component.ts', 'TS')
+			]
 		}
 	];
 }
