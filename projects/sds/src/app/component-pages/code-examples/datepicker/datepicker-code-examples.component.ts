@@ -18,8 +18,8 @@ export class DatepickerCodeExamplesComponent extends CodeExamples {
 			idParts: ['default'],
 			title: 'Default',
 			snippets: [
-				this.getSnippet('datepicker', 'default/datepicker-example-default.component.ts', 'TS'),
-				this.getSnippet('datepicker', 'default/datepicker-example-default.component.html', 'HTML')
+				this.getSnippet('datepicker', 'default/datepicker-example-default.component.html', 'HTML'),
+				this.getSnippet('datepicker', 'default/datepicker-example-default.component.ts', 'TS')
 			]
 		}
 	];
