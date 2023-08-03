@@ -29,7 +29,7 @@ export class SliderCodeExamplesComponent extends CodeExamples {
 		},
 		{
 			component: SliderOptionsComponent,
-			idParts: ['range'],
+			idParts: ['options'],
 			title: 'Slider with thumb label & ticks marks',
 			snippets: [
 				this.getSnippet('slider', 'slider-options/slider-options.component.html', 'HTML'),
