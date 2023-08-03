@@ -24,7 +24,7 @@ export class ListGroupCodeExamplesComponent extends CodeExamples {
 			title: 'Default list group',
 			snippets: [
 				this.getSnippet('list-group', 'list-group-example-default/list-group-example-default.component.html', 'HTML'),
-				this.getSnippet('list-group', 'list-group-example-default/list-group-example-default.component.ts', 'TypeScript')
+				this.getSnippet('list-group', 'list-group-example-default/list-group-example-default.component.ts', 'TS')
 			]
 		},
 		{
@@ -33,7 +33,7 @@ export class ListGroupCodeExamplesComponent extends CodeExamples {
 			title: 'List group with checkbox',
 			snippets: [
 				this.getSnippet('list-group', 'list-group-example-checkbox/list-group-example-checkbox.component.html', 'HTML'),
-				this.getSnippet('list-group', 'list-group-example-checkbox/list-group-example-checkbox.component.ts', 'TypeScript')
+				this.getSnippet('list-group', 'list-group-example-checkbox/list-group-example-checkbox.component.ts', 'TS')
 			]
 		},
 		{
@@ -42,7 +42,7 @@ export class ListGroupCodeExamplesComponent extends CodeExamples {
 			title: 'List group with icons',
 			snippets: [
 				this.getSnippet('list-group', 'list-group-example-icon/list-group-example-icon.component.html', 'HTML'),
-				this.getSnippet('list-group', 'list-group-example-icon/list-group-example-icon.component.ts', 'TypeScript')
+				this.getSnippet('list-group', 'list-group-example-icon/list-group-example-icon.component.ts', 'TS')
 			]
 		},
 		{
@@ -51,7 +51,7 @@ export class ListGroupCodeExamplesComponent extends CodeExamples {
 			title: 'List group with icons and checkbox',
 			snippets: [
 				this.getSnippet('list-group', 'list-group-example-icon-checkbox/list-group-example-icon-checkbox.component.html', 'HTML'),
-				this.getSnippet('list-group', 'list-group-example-icon-checkbox/list-group-example-icon-checkbox.component.ts', 'TypeScript')
+				this.getSnippet('list-group', 'list-group-example-icon-checkbox/list-group-example-icon-checkbox.component.ts', 'TS')
 			]
 		}
 	];
