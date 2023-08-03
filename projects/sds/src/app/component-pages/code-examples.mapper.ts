@@ -11,6 +11,7 @@ import {SliderCodeExamplesComponent} from './code-examples/slider/slider-code-ex
 import {CardCodeExamplesComponent} from './code-examples/card/card-code-examples.component';
 import {ChipsCodeExamplesComponent} from './code-examples/chips/chips-code-examples.component';
 import {TooltipCodeExamplesComponent} from './code-examples/tooltip/tooltip-code-examples.component';
+import {ProgressBarCodeExamplesComponent} from './code-examples/progress-bar/progress-bar-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -23,6 +24,7 @@ export class CodeExamplesMapper {
 		datepicker: DatepickerCodeExamplesComponent,
 		listGroup: ListGroupCodeExamplesComponent,
 		paginator: PaginatorCodeExamplesComponent,
+		progressBar: ProgressBarCodeExamplesComponent,
 		slider: SliderCodeExamplesComponent,
 		tooltip: TooltipCodeExamplesComponent
 	};
