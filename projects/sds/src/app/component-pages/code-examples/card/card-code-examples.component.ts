@@ -21,7 +21,10 @@ export class CardCodeExamplesComponent extends CodeExamples {
 			component: BasicCardComponent,
 			idParts: ['basic-card'],
 			title: 'Basic card',
-			snippets: [this.getSnippet('card', 'basic-card/basic-card.component.html', 'HTML')]
+			snippets: [
+				this.getSnippet('card', 'basic-card/basic-card.component.html', 'HTML'),
+				this.getSnippet('card', 'basic-card/basic-card.component.ts', 'TS')
+			]
 		},
 		{
 			component: ClickableCardsComponent,
@@ -29,6 +32,7 @@ export class CardCodeExamplesComponent extends CodeExamples {
 			title: 'Clickable cards',
 			snippets: [
 				this.getSnippet('card', 'clickable-cards/clickable-cards.component.html', 'HTML'),
+				this.getSnippet('card', 'clickable-cards/clickable-cards.component.ts', 'TS'),
 				this.getSnippet('card', 'clickable-cards/clickable-cards.component.scss', 'SCSS')
 			]
 		},
@@ -38,6 +42,7 @@ export class CardCodeExamplesComponent extends CodeExamples {
 			title: 'Card with multiple sections',
 			snippets: [
 				this.getSnippet('card', 'card-with-multiple-sections/card-with-multiple-sections.component.html', 'HTML'),
+				this.getSnippet('card', 'card-with-multiple-sections/card-with-multiple-sections.component.ts', 'TS'),
 				this.getSnippet('card', 'card-with-multiple-sections/card-with-multiple-sections.component.scss', 'SCSS')
 			]
 		}
