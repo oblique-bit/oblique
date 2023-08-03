@@ -23,7 +23,10 @@ export class ChipsCodeExamplesComponent extends CodeExamples {
 			component: ChipsExampleColorPreviewComponent,
 			idParts: ['color'],
 			title: 'Colors',
-			snippets: [this.getSnippet(this.directory, 'color/chips-example-color-preview.component.html', 'HTML')]
+			snippets: [
+				this.getSnippet(this.directory, 'color/chips-example-color-preview.component.html', 'HTML'),
+				this.getSnippet(this.directory, 'color/chips-example-color-preview.component.ts', 'TS')
+			]
 		},
 		{
 			component: ChipsExampleStackPreviewComponent,
