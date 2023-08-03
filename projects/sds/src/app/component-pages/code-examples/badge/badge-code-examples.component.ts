@@ -22,25 +22,37 @@ export class BadgeCodeExamplesComponent extends CodeExamples {
 			component: BadgeExampleDefaultComponent,
 			idParts: ['default'],
 			title: 'Default badge',
-			snippets: [this.getSnippet('badge', 'badge-example-default/badge-example-default.component.html', 'HTML')]
+			snippets: [
+				this.getSnippet('badge', 'badge-example-default/badge-example-default.component.html', 'HTML'),
+				this.getSnippet('badge', 'badge-example-default/badge-example-default.component.ts', 'TS')
+			]
 		},
 		{
 			component: BadgeExampleColorWarnComponent,
 			idParts: ['color', 'warn'],
 			title: 'Warning badge',
-			snippets: [this.getSnippet('badge', 'badge-example-color-warn/badge-example-color-warn.component.html', 'HTML')]
+			snippets: [
+				this.getSnippet('badge', 'badge-example-color-warn/badge-example-color-warn.component.html', 'HTML'),
+				this.getSnippet('badge', 'badge-example-color-warn/badge-example-color-warn.component.ts', 'TS')
+			]
 		},
 		{
 			component: BadgeExamplePositionBelowBeforeComponent,
 			idParts: ['below', 'before'],
 			title: 'Positioned badge',
-			snippets: [this.getSnippet('badge', 'badge-example-position-below-before/badge-example-position-below-before.component.html', 'HTML')]
+			snippets: [
+				this.getSnippet('badge', 'badge-example-position-below-before/badge-example-position-below-before.component.html', 'HTML'),
+				this.getSnippet('badge', 'badge-example-position-below-before/badge-example-position-below-before.component.ts', 'TS')
+			]
 		},
 		{
 			component: BadgeExampleOverlapFalseComponent,
 			idParts: ['overlap', 'false'],
 			title: 'Badge without overlap',
-			snippets: [this.getSnippet('badge', 'badge-example-overlap-false/badge-example-overlap-false.component.html', 'HTML')]
+			snippets: [
+				this.getSnippet('badge', 'badge-example-overlap-false/badge-example-overlap-false.component.html', 'HTML'),
+				this.getSnippet('badge', 'badge-example-overlap-false/badge-example-overlap-false.component.ts', 'TS')
+			]
 		}
 	];
 }
