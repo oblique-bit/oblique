@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {DialogCodeExamplesComponent} from './dialog-code-examples.component';
 
-describe(`${DialogCodeExamplesComponent.name}`, () => {
+describe(DialogCodeExamplesComponent.name, () => {
 	let component: DialogCodeExamplesComponent;
 	let fixture: ComponentFixture<DialogCodeExamplesComponent>;
 
