@@ -12,6 +12,7 @@ import {CardCodeExamplesComponent} from './code-examples/card/card-code-examples
 import {ChipsCodeExamplesComponent} from './code-examples/chips/chips-code-examples.component';
 import {TooltipCodeExamplesComponent} from './code-examples/tooltip/tooltip-code-examples.component';
 import {ProgressBarCodeExamplesComponent} from './code-examples/progress-bar/progress-bar-code-examples.component';
+import {DialogCodeExamplesComponent} from './code-examples/dialog/dialog-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -21,6 +22,7 @@ export class CodeExamplesMapper {
 		button: ButtonCodeExamplesComponent,
 		card: CardCodeExamplesComponent,
 		chips: ChipsCodeExamplesComponent,
+		dialog: DialogCodeExamplesComponent,
 		datepicker: DatepickerCodeExamplesComponent,
 		listGroup: ListGroupCodeExamplesComponent,
 		paginator: PaginatorCodeExamplesComponent,
