@@ -23,6 +23,7 @@ export class SliderCodeExamplesComponent extends CodeExamples {
 			title: 'Basic slider',
 			snippets: [
 				this.getSnippet('slider', 'basic-slider/basic-slider.component.html', 'HTML'),
+				this.getSnippet('slider', 'basic-slider/basic-slider.component.ts', 'TS'),
 				this.getSnippet('slider', 'basic-slider/basic-slider.component.scss', 'SCSS')
 			]
 		},
@@ -32,6 +33,7 @@ export class SliderCodeExamplesComponent extends CodeExamples {
 			title: 'Slider with thumb label & ticks marks',
 			snippets: [
 				this.getSnippet('slider', 'slider-options/slider-options.component.html', 'HTML'),
+				this.getSnippet('slider', 'slider-options/slider-options.component.ts', 'TS'),
 				this.getSnippet('slider', 'slider-options/slider-options.component.scss', 'SCSS')
 			]
 		},
@@ -41,6 +43,7 @@ export class SliderCodeExamplesComponent extends CodeExamples {
 			title: 'Range slider',
 			snippets: [
 				this.getSnippet('slider', 'range-slider/range-slider.component.html', 'HTML'),
+				this.getSnippet('slider', 'range-slider/range-slider.component.ts', 'TS'),
 				this.getSnippet('slider', 'range-slider/range-slider.component.scss', 'SCSS')
 			]
 		}
