@@ -19,7 +19,10 @@ export class PaginatorCodeExamplesComponent extends CodeExamples {
 			component: PaginatorComponent,
 			idParts: ['paginator'],
 			title: 'Paginator',
-			snippets: [this.getSnippet('paginator', 'paginator/paginator.component.html', 'HTML')]
+			snippets: [
+				this.getSnippet('paginator', 'paginator/paginator.component.html', 'HTML'),
+				this.getSnippet('paginator', 'paginator/paginator.component.ts', 'TS')
+			]
 		}
 	];
 }
