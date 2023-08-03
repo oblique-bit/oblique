@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, Type, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, Type, ViewChild, inject} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CmsDataService} from '../../cms/cms-data.service';
@@ -32,14 +32,11 @@ export class ComponentPagesComponent implements OnInit, OnDestroy {
 
 	private readonly subscriptions: Subscription[] = [];
 
-	// eslint-disable-next-line max-params
-	constructor(
-		private readonly cmsDataService: CmsDataService,
-		private readonly domSanitizer: DomSanitizer,
-		private readonly slugToIdService: SlugToIdService,
-		private readonly router: Router,
-		private readonly activatedRoute: ActivatedRoute
-	) {}
+	private readonly cmsDataService = inject(CmsDataService);
+	private readonly domSanitizer = inject(DomSanitizer);
+	private readonly slugToIdService = inject(SlugToIdService);
+	private readonly router = inject(Router);
+	private readonly activatedRoute = inject(ActivatedRoute);
 
 	ngOnInit(): void {
 		this.subscriptions.push(
