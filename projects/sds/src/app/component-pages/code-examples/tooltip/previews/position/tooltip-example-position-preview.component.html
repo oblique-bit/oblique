@@ -1,0 +1,17 @@
+<div>
+	<h3>Configured positioning to left</h3>
+	<a href="https://google.ch" matTooltip="I am visible with the position left" matTooltipPosition="left"> Hover to see tooltip at left </a>
+</div>
+<div>
+	<h3>Position by origin</h3>
+	<button
+		type="button"
+		aria-label="Button to demonstrate a tooltip with position at origin"
+		mat-button
+		obButton="primary"
+		matTooltip="I am positioned relative to the mouse"
+		[matTooltipPositionAtOrigin]="true"
+	>
+		Hover to see the tooltip positioned at origin
+	</button>
+</div>
