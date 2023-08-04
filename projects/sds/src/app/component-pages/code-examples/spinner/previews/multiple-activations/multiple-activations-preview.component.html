@@ -1,0 +1,15 @@
+<div>
+	<p class="placeholder">
+		The <code>ObSpinnerService</code> remembers how many times it has been activated per channel and needs to be deactivated an equal number
+		of times for the spinner to be removed. Spinner deactivations while there is no active spinner will be ignored. It is also possible to
+		force the spinner's deactivation regardless of its activations' number.
+	</p>
+	<ob-spinner [channel]="channel"></ob-spinner>
+</div>
+
+<p>Number of spinner activations: {{ counter }}</p>
+<div class="actions">
+	<button type="button" mat-button obButton (click)="activateSpinner()">Activate spinner</button>
+	<button type="button" mat-button obButton (click)="deactivateSpinner()">Deactivate spinner</button>
+	<button type="button" mat-button obButton (click)="forceDeactivateSpinner()">Force deactivate spinner</button>
+</div>

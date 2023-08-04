@@ -14,6 +14,7 @@ import {ChipsCodeExamplesComponent} from './code-examples/chips/chips-code-examp
 import {TooltipCodeExamplesComponent} from './code-examples/tooltip/tooltip-code-examples.component';
 import {ProgressBarCodeExamplesComponent} from './code-examples/progress-bar/progress-bar-code-examples.component';
 import {DialogCodeExamplesComponent} from './code-examples/dialog/dialog-code-examples.component';
+import {SpinnerCodeExamplesComponent} from './code-examples/spinner/spinner-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -30,7 +31,8 @@ export class CodeExamplesMapper {
 		paginator: PaginatorCodeExamplesComponent,
 		progressBar: ProgressBarCodeExamplesComponent,
 		slider: SliderCodeExamplesComponent,
-		tooltip: TooltipCodeExamplesComponent
+		tooltip: TooltipCodeExamplesComponent,
+		spinner: SpinnerCodeExamplesComponent
 	};
 
 	static getCodeExampleComponent(slug: string): Type<CodeExamples> {
