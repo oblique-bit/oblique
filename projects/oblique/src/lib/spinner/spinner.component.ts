@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewEncapsulation, inject} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 import {delay, filter, map, startWith} from 'rxjs/operators';
 import {Observable} from 'rxjs';
@@ -28,7 +28,8 @@ export class ObSpinnerComponent implements OnInit {
 	@Input() fixed = false;
 	state$: Observable<string>;
 
-	constructor(private readonly spinnerService: ObSpinnerService, private readonly element: ElementRef) {}
+	private readonly spinnerService = inject(ObSpinnerService);
+	private readonly element = inject(ElementRef);
 
 	ngOnInit(): void {
 		this.element.nativeElement.parentElement.classList.add('ob-has-overlay');
