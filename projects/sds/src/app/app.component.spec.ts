@@ -6,6 +6,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CmsDataService} from './cms/cms-data.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {TranslateService} from '@ngx-translate/core';
 
 describe('AppComponent', () => {
 	let component: AppComponent;
@@ -14,7 +15,7 @@ describe('AppComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [AppComponent, NoopAnimationsModule, RouterTestingModule, HttpClientTestingModule],
-			providers: [CmsDataService],
+			providers: [CmsDataService, {provide: TranslateService, useValue: {addLangs: jest.fn(), setDefaultLang: jest.fn(), use: jest.fn()}}],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 
@@ -33,5 +34,25 @@ describe('AppComponent', () => {
 
 	it('should have one router-outlet', () => {
 		expect(fixture.debugElement.queryAll(By.css('router-outlet')).length).toBe(1);
+	});
+
+	describe('Translate service', () => {
+		let translateService: TranslateService;
+
+		beforeEach(() => {
+			translateService = TestBed.inject(TranslateService);
+		});
+
+		it('should have english added', () => {
+			expect(translateService.addLangs).toHaveBeenCalledWith(['en']);
+		});
+
+		it('should have english as default language', () => {
+			expect(translateService.setDefaultLang).toHaveBeenCalledWith('en');
+		});
+
+		it('should use english', () => {
+			expect(translateService.use).toHaveBeenCalledWith('en');
+		});
 	});
 });
