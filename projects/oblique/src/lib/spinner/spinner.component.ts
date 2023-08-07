@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 import {delay, filter, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
@@ -27,7 +27,6 @@ import {ObISpinnerEvent} from './spinner.model';
 export class ObSpinnerComponent implements OnInit, OnDestroy {
 	@Input() channel: string = ObSpinnerService.CHANNEL;
 	@Input() fixed = false;
-	@ViewChild('spinnerContainer') spinnerContainer: ElementRef;
 	$state = 'out';
 	private readonly unsubscribe = new Subject<void>();
 
