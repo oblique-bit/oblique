@@ -196,10 +196,15 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "prefix": "app"
+          "prefix": "app",
+          "standalone": true
         },
         "@schematics/angular:directive": {
-          "prefix": "app"
+          "prefix": "app",
+          "standalone": true
+        },
+        "@schematics/angular:pipe": {
+          "standalone": true
         }
       },
       "root": "projects/sds",
