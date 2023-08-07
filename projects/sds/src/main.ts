@@ -1,6 +1,6 @@
 import {AppComponent} from './app/app.component';
 import {TranslateModule} from '@ngx-translate/core';
-import {ObIconModule, multiTranslateLoader} from '@oblique/oblique';
+import {ObIconModule, TRANSLATION_FILES, multiTranslateLoader} from '@oblique/oblique';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {HttpApiInterceptor} from './app/shared/http-api-interceptor/http-api-interceptor';
@@ -12,6 +12,7 @@ import {APP_ROUTES} from './app.routes';
 bootstrapApplication(AppComponent, {
 	providers: [
 		importProvidersFrom(ObIconModule.forRoot(), TranslateModule.forRoot(multiTranslateLoader())),
+		{provide: TRANSLATION_FILES, useValue: []}, // do not load SDS translation files as they don't exist
 		{provide: LOCALE_ID, useValue: 'en-US'},
 		{
 			provide: HTTP_INTERCEPTORS,
