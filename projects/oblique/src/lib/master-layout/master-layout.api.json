@@ -306,8 +306,9 @@
           "name": "footer.hasLogoOnScroll",
           "text": "Show the Confederation's logo in the footer when the page is scrolled.",
           "type": "boolean",
-          "default": true,
-          "since": "8.0.0"
+          "default": false,
+          "since": "8.0.0",
+          "updated": "11.0.0"
         }
       ]
     },
@@ -514,8 +515,9 @@
           "name": "hasLogoOnScroll",
           "text": "Controls <code>ObMasterLayoutConfig.footer.hasLogoOnScroll</code> property.",
           "type": "boolean",
-          "default": true,
-          "since": "8.0.0"
+          "default": false,
+          "since": "8.0.0",
+          "updated": "11.0.0"
         }
       ]
     },
