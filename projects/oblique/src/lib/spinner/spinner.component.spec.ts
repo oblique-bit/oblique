@@ -1,17 +1,19 @@
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {By} from '@angular/platform-browser';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {ObISpinnerEvent} from './spinner.model';
 import {ObSpinnerComponent} from './spinner.component';
 import {ObSpinnerService} from './spinner.service';
+import {skip} from 'rxjs/operators';
 
 describe('ObSpinnerComponent', () => {
 	let component: ObSpinnerComponent;
 	let fixture: ComponentFixture<ObSpinnerComponent>;
-	const mockObSpinnerService = {events$: new Subject<ObISpinnerEvent>()};
+	let mockObSpinnerService;
 
 	beforeEach(() => {
+		mockObSpinnerService = {events$: new Subject<ObISpinnerEvent>()};
 		TestBed.configureTestingModule({
 			declarations: [ObSpinnerComponent],
 			providers: [{provide: ObSpinnerService, useValue: mockObSpinnerService}],
@@ -55,30 +57,43 @@ describe('ObSpinnerComponent', () => {
 		});
 	});
 
-	describe('property "$state"', () => {
-		it('should be initialized to "out"', () => {
-			expect(component.$state).toBe('out');
+	describe('property "state$"', () => {
+		it('should be an Observable', () => {
+			expect(component.state$ instanceof Observable).toBe(true);
 		});
 
-		it.each([
-			{active: true, activeText: 'active', channel: ObSpinnerService.CHANNEL, channelText: 'the same', result: 'in'},
-			{active: false, activeText: 'inactive', channel: ObSpinnerService.CHANNEL, channelText: 'the same', result: 'out'},
-			{active: true, activeText: 'active', channel: 'alt', channelText: 'another', result: 'out'},
-			{active: false, activeText: 'inactive', channel: 'alt', channelText: 'another', result: 'out'}
-		])(
-			'should be set to "$result" when an $activeText ObISpinnerEvent is emitted in $channelText channel',
-			fakeAsync(({active, channel, result}) => {
-				mockObSpinnerService.events$.next({active, channel});
-				tick();
-				expect(component.$state).toBe(result);
-			})
-		);
+		it('should initially emit "out"', done => {
+			component.state$.subscribe(value => {
+				expect(value).toBe('out');
+				done();
+			});
+		});
 
-		it('should not changed after ngOnDestroy has been called', fakeAsync(() => {
-			component.ngOnDestroy();
+		it('should emit "in" when an active ObISpinnerEvent is emitted in the same channel', done => {
+			// skip(1) is to ignore the `startWith`value
+			component.state$.pipe(skip(1)).subscribe(value => {
+				expect(value).toBe('in');
+				done();
+			});
 			mockObSpinnerService.events$.next({active: true, channel: ObSpinnerService.CHANNEL});
+		});
+
+		it('should emit "out" when an active ObISpinnerEvent is emitted in the same channel', done => {
+			// skip(1) is to ignore the `startWith`value
+			component.state$.pipe(skip(1)).subscribe(value => {
+				expect(value).toBe('out');
+				done();
+			});
+			mockObSpinnerService.events$.next({active: false, channel: ObSpinnerService.CHANNEL});
+		});
+
+		it('should not emit when an ObISpinnerEvent is emitted in another channel', fakeAsync(() => {
+			let emitted = false;
+			// skip(1) is to ignore the `startWith`value
+			component.state$.pipe(skip(1)).subscribe(() => (emitted = true));
+			mockObSpinnerService.events$.next({active: true, channel: 'alt'});
 			tick();
-			expect(component.$state).toBe('out');
+			expect(emitted).toBe(false);
 		}));
 	});
 });

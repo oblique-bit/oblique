@@ -1,9 +1,8 @@
-import {Component, ElementRef, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
-import {delay, filter, takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {delay, filter, map, startWith} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 import {ObSpinnerService} from './spinner.service';
-import {ObISpinnerEvent} from './spinner.model';
 
 @Component({
 	selector: 'ob-spinner',
@@ -24,27 +23,20 @@ import {ObISpinnerEvent} from './spinner.model';
 	],
 	host: {class: 'ob-spinner'}
 })
-export class ObSpinnerComponent implements OnInit, OnDestroy {
+export class ObSpinnerComponent implements OnInit {
 	@Input() channel: string = ObSpinnerService.CHANNEL;
 	@Input() fixed = false;
-	$state = 'out';
-	private readonly unsubscribe = new Subject<void>();
+	state$: Observable<string>;
 
 	constructor(private readonly spinnerService: ObSpinnerService, private readonly element: ElementRef) {}
 
 	ngOnInit(): void {
 		this.element.nativeElement.parentElement.classList.add('ob-has-overlay');
-		this.spinnerService.events$
-			.pipe(
-				takeUntil(this.unsubscribe),
-				filter(event => event.channel === this.channel),
-				delay(0) // avoid ExpressionChangedAfterItHasBeenCheckedError when the spinner is activated during a component's initialisation process
-			)
-			.subscribe((event: ObISpinnerEvent) => (this.$state = event.active ? 'in' : 'out'));
-	}
-
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
+		this.state$ = this.spinnerService.events$.pipe(
+			filter(event => event.channel === this.channel),
+			map(event => (event.active ? 'in' : 'out')),
+			startWith('out'),
+			delay(0) // avoid ExpressionChangedAfterItHasBeenCheckedError when the spinner is activated during a component's initialisation process
+		);
 	}
 }
