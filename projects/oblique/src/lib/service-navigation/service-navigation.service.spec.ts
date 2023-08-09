@@ -8,11 +8,14 @@ import {ObServiceNavigationApplicationsService} from './applications/service-nav
 import {ObEPamsEnvironment} from './service-navigation.model';
 import {ObIServiceNavigationState} from './api/service-navigation.api.model';
 import {ObServiceNavigationService} from './service-navigation.service';
+import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
+import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
 
 describe('ObServiceNavigationService', () => {
 	let service: ObServiceNavigationService;
 	let configService: ObServiceNavigationConfigApiService;
 	let applicationsService: ObServiceNavigationApplicationsService;
+	let redirectorService: ObServiceNavigationTimeoutRedirectorService;
 	const mockUrls = {
 		pollingInterval: 10,
 		pollingNotificationsInterval: 30,
@@ -29,11 +32,14 @@ describe('ObServiceNavigationService', () => {
 	const mockLangChange = new Subject<{lang: string}>();
 	const mockStateChange = new Subject<ObIServiceNavigationState>();
 	const mockApplications = [{name: {en: 'name', fr: 'nom', de: 'Name', it: 'nome'}}];
+	const mockGetLogoutTrigger$ = jest.fn();
+	const mockRedirectorLogout = jest.fn();
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
 				ObServiceNavigationService,
+				{provide: ObServiceNavigationTimeoutService, useValue: {setUpEportalUrl: jest.fn(), logout: jest.fn()}},
 				{
 					provide: ObServiceNavigationConfigApiService,
 					useValue: {fetchUrls: jest.fn().mockReturnValue(of(mockUrls))}
@@ -41,6 +47,10 @@ describe('ObServiceNavigationService', () => {
 				{
 					provide: ObServiceNavigationPollingService,
 					useValue: {initializeStateUpdate: jest.fn(), state$: mockStateChange.asObservable()}
+				},
+				{
+					provide: ObServiceNavigationTimeoutRedirectorService,
+					useValue: {logoutTrigger$: mockGetLogoutTrigger$, logout: mockRedirectorLogout}
 				},
 				{
 					provide: ObServiceNavigationApplicationsService,
@@ -64,6 +74,7 @@ describe('ObServiceNavigationService', () => {
 			service = TestBed.inject(ObServiceNavigationService);
 			configService = TestBed.inject(ObServiceNavigationConfigApiService);
 			applicationsService = TestBed.inject(ObServiceNavigationApplicationsService);
+			redirectorService = TestBed.inject(ObServiceNavigationTimeoutRedirectorService);
 		});
 
 		afterEach(() => {
@@ -102,7 +113,6 @@ describe('ObServiceNavigationService', () => {
 
 				describe.each([
 					'getLoginUrl$',
-					'getLogoutUrl$',
 					'getUserName$',
 					'getSettingsUrl$',
 					'getAvatarUrl$',
@@ -188,6 +198,13 @@ describe('ObServiceNavigationService', () => {
 						expect(translate.use).toHaveBeenCalledWith('fr');
 					});
 				});
+
+				describe('logout', () => {
+					it('should call "logout" on redirector service', () => {
+						service.logout();
+						expect(mockRedirectorLogout).toHaveBeenCalledTimes(1);
+					});
+				});
 			});
 
 			describe.each([
@@ -210,7 +227,6 @@ describe('ObServiceNavigationService', () => {
 
 						describe.each([
 							'getLoginUrl$',
-							'getLogoutUrl$',
 							'getLoginState$',
 							'getUserName$',
 							'getSettingsUrl$',
@@ -251,7 +267,6 @@ describe('ObServiceNavigationService', () => {
 						});
 
 						describe.each([
-							{method: 'getLogoutUrl$', url: 'http://logout'},
 							{method: 'getSettingsUrl$', url: 'http://settings'},
 							{method: 'getInboxMailUrl$', url: 'http://inboxMail'},
 							{method: 'getApplicationsUrl$', url: 'http://applications'}
@@ -365,6 +380,26 @@ describe('ObServiceNavigationService', () => {
 
 							it('should call "use" with "fr"', () => {
 								expect(translate.use).toHaveBeenCalledWith('fr');
+							});
+						});
+
+						describe('HandleLogout', () => {
+							it('should have default value to true', () => {
+								service.setHandleLogout();
+								expect(redirectorService.handleLogout).toBe(true);
+							});
+
+							it('should be settable', () => {
+								const expected = false;
+								service.setHandleLogout(expected);
+								expect(redirectorService.handleLogout).toBe(expected);
+							});
+						});
+
+						describe('LogoutTrigger', () => {
+							it('should be gettable', () => {
+								const result = service.getLogoutTrigger$();
+								expect(result).toBe(mockGetLogoutTrigger$);
 							});
 						});
 					});
