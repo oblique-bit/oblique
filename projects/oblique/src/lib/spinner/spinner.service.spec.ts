@@ -1,82 +1,84 @@
-import {TestBed, fakeAsync, inject, tick} from '@angular/core/testing';
+import {TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {first} from 'rxjs/operators';
 import {ObISpinnerEvent} from './spinner.model';
 import {ObSpinnerService} from './spinner.service';
 
-describe('SpinnerService', () => {
+describe(ObSpinnerService.name, () => {
+	let service: ObSpinnerService;
+
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [ObSpinnerService]
 		});
+		service = TestBed.inject(ObSpinnerService);
 	});
 
-	it('should emit a SpinnerEvent if activated', inject([ObSpinnerService], (service: ObSpinnerService) => {
+	it('should emit a SpinnerEvent if activated', done => {
 		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
-			expect(event).toBe({active: true, channel: ObSpinnerService.CHANNEL});
+			expect(event).toEqual({active: true, channel: ObSpinnerService.CHANNEL});
+			done();
 		});
 		service.activate();
-	}));
+	});
 
-	it('should emit a SpinnerEvent on a custom channel if activated', inject([ObSpinnerService], (service: ObSpinnerService) => {
+	it('should emit a SpinnerEvent on a custom channel if activated', done => {
 		const channel = 'CUSTOM';
 		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
-			expect(event).toBe({active: true, channel});
+			expect(event).toEqual({active: true, channel});
+			done();
 		});
 		service.activate(channel);
-	}));
+	});
 
-	it('should emit a SpinnerEvent if deactivated', inject([ObSpinnerService], (service: ObSpinnerService) => {
+	it('should emit a SpinnerEvent if deactivated', done => {
 		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
-			expect(event).toBe({active: false, channel: ObSpinnerService.CHANNEL});
+			expect(event).toEqual({active: false, channel: ObSpinnerService.CHANNEL});
+			done();
 		});
 		service.deactivate();
-	}));
+	});
 
-	it('should emit a SpinnerEvent on a custom channel if deactivated', inject([ObSpinnerService], (service: ObSpinnerService) => {
+	it('should emit a SpinnerEvent on a custom channel if deactivated', done => {
 		const channel = 'CUSTOM';
 		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
-			expect(event).toBe({active: false, channel});
+			expect(event).toEqual({active: false, channel});
+			done();
 		});
 		service.deactivate(channel);
+	});
+
+	it('should not emit if there more activations than deactivation', fakeAsync(() => {
+		service.activate();
+		service.activate();
+		let emitted = false;
+		service.events$.subscribe(() => (emitted = true));
+		service.deactivate();
+		tick(1000);
+		expect(emitted).toBe(false);
 	}));
 
-	it('should not emit if there more activations than deactivation', fakeAsync(
-		inject([ObSpinnerService], (service: ObSpinnerService) => {
-			service.activate();
-			service.activate();
-			let emitted = false;
-			service.events$.subscribe(() => {
-				emitted = true;
-			});
-			service.deactivate();
-			tick(1000);
-			expect(emitted).toBe(false);
-		})
-	));
-
-	it('should emit deactivate event when activate and deactivate are called equally', inject(
-		[ObSpinnerService],
-		(service: ObSpinnerService) => {
-			service.activate();
-			service.activate();
-
-			service.events$.pipe().subscribe((event: ObISpinnerEvent) => {
-				expect(event).toBe({active: false, channel: ObSpinnerService.CHANNEL});
-			});
-
-			service.deactivate();
-			service.deactivate(); // Only now, deactivate event is emitted.
-		}
-	));
-
-	it('should deactivate immediately, when forceDeactivate is called.', inject([ObSpinnerService], (service: ObSpinnerService) => {
+	it('should emit deactivate event when activate and deactivate are called equally', done => {
 		service.activate();
 		service.activate();
 
 		service.events$.pipe().subscribe((event: ObISpinnerEvent) => {
-			expect(event).toBe({active: false, channel: ObSpinnerService.CHANNEL});
+			expect(event).toEqual({active: false, channel: ObSpinnerService.CHANNEL});
+			done();
+		});
+
+		service.deactivate();
+		service.deactivate(); // Only now, deactivate event is emitted.
+	});
+
+	it('should deactivate immediately, when forceDeactivate is called.', done => {
+		service.activate();
+		service.activate();
+
+		service.events$.pipe().subscribe((event: ObISpinnerEvent) => {
+			expect(event).toEqual({active: false, channel: ObSpinnerService.CHANNEL});
+			done();
 		});
 
 		service.forceDeactivate();
-	}));
+	});
 });
