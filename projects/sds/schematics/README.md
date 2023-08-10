@@ -27,7 +27,7 @@ It matters where you run the schematics from.
 ### Add-code-example
 
 ```
-cd ./projects/sds/ && npm run add-code-example [name] && ../../
+npm run add-code-example [name] -w projects/sds
 ```
 
 #### Add-code-example arguments
@@ -41,7 +41,7 @@ If you don't add the name the add-example-schematics will ask you for it.
 ### Add-preview
 
 ```
-cd ./projects/sds/ && npm run add-preview [code-example] [preview] && cd ../../
+npm run add-preview [code-example] [preview] -w projects/sds
 ```
 
 #### Add-preview arguments
@@ -64,7 +64,7 @@ If you want to run the schematics with the `@angular/schematics` package, you ne
 For example:
 
 ```
-cd ./projects/sds && npm run schematics-build
+npm run schematics-build -w projects/sds
 ```
 
 ## Options
