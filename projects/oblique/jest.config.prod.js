@@ -167,12 +167,6 @@ module.exports.coverageThreshold = {
 		functions: 100,
 		lines: 100
 	},
-	'projects/oblique/src/lib/spinner/*.ts': {
-		statements: 100,
-		branches: 81,
-		functions: 100,
-		lines: 100
-	},
 	'projects/oblique/src/lib/sticky/*.ts': {
 		statements: 93,
 		branches: 85,
