@@ -15,6 +15,8 @@ import {TooltipCodeExamplesComponent} from './code-examples/tooltip/tooltip-code
 import {ProgressBarCodeExamplesComponent} from './code-examples/progress-bar/progress-bar-code-examples.component';
 import {DialogCodeExamplesComponent} from './code-examples/dialog/dialog-code-examples.component';
 import {SpinnerCodeExamplesComponent} from './code-examples/spinner/spinner-code-examples.component';
+import {MaterialTableCodeExamplesComponent} from './code-examples/material-table/material-table-code-examples.component';
+import {HtmlTableCodeExamplesComponent} from './code-examples/html-table/html-table-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -25,9 +27,11 @@ export class CodeExamplesMapper {
 		button: ButtonCodeExamplesComponent,
 		card: CardCodeExamplesComponent,
 		chips: ChipsCodeExamplesComponent,
-		dialog: DialogCodeExamplesComponent,
 		datepicker: DatepickerCodeExamplesComponent,
+		dialog: DialogCodeExamplesComponent,
+		htmlTable: HtmlTableCodeExamplesComponent,
 		listGroup: ListGroupCodeExamplesComponent,
+		materialTable: MaterialTableCodeExamplesComponent,
 		paginator: PaginatorCodeExamplesComponent,
 		progressBar: ProgressBarCodeExamplesComponent,
 		slider: SliderCodeExamplesComponent,
