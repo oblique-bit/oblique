@@ -126,13 +126,9 @@ class HookCommitRules {
 	}
 
 	private static checkScopeAndPrefixCompatibility(scope: string, prefix: string, scopes: Record<string, string[]>): void {
-		Object.keys(scopes)
-			.filter(scopePrefix => !['additional', 'base'].includes(scopePrefix))
-			.forEach(scopePrefix => {
-				if (scope && prefix === scopePrefix && ![...scopes[scopePrefix], ...scopes.base].includes(scope)) {
-					throw new Error(`1st line has an invalid scope: '${scope}' is not compatible with '${scopePrefix}' prefix`);
-				}
-			});
+		if (![...scopes[prefix], ...scopes.base, ...scopes.additional].includes(scope)) {
+			throw new Error(`1st line has an invalid scope: '${scope}' is not compatible with '${prefix}' prefix`);
+		}
 	}
 
 	private static checkSubject(subject: string): void {
