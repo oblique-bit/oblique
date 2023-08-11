@@ -1,0 +1,41 @@
+<table mat-table class="ob-table" [dataSource]="dataSource">
+	<ng-container matColumnDef="position">
+		<th *matHeaderCellDef mat-header-cell>No.</th>
+		<td *matCellDef="let element" mat-cell>{{ element.position }}</td>
+	</ng-container>
+
+	<ng-container matColumnDef="name">
+		<th *matHeaderCellDef mat-header-cell>Name</th>
+		<td *matCellDef="let element" mat-cell>{{ element.name }}</td>
+	</ng-container>
+
+	<ng-container matColumnDef="weight">
+		<th *matHeaderCellDef mat-header-cell>Weight</th>
+		<td *matCellDef="let element" mat-cell>{{ element.weight }}</td>
+	</ng-container>
+
+	<ng-container matColumnDef="symbol">
+		<th *matHeaderCellDef mat-header-cell>Symbol</th>
+		<td *matCellDef="let element" mat-cell>{{ element.symbol }}</td>
+	</ng-container>
+
+	<ng-container matColumnDef="actions">
+		<th *matHeaderCellDef mat-header-cell>Actions</th>
+		<td *matCellDef="let element" mat-cell>
+			<div class="actions">
+				<button type="button" mat-icon-button obButton="secondary" matTooltip="Edit this row" (click)="editRow(element)">
+					<mat-icon svgIcon="pen"></mat-icon>
+				</button>
+				<button type="button" mat-icon-button obButton="secondary" matTooltip="Remove this row" (click)="deleteRow(element)">
+					<mat-icon svgIcon="trash"></mat-icon>
+				</button>
+			</div>
+		</td>
+	</ng-container>
+
+	<tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+	<tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+	<caption>
+		Example of an editable table via a MatDialog.
+	</caption>
+</table>
