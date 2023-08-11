@@ -174,7 +174,7 @@ class HookCommitRules {
 	private static extractList(contributing: string, type: string): string[] {
 		const listStartIndex: number = contributing.indexOf(`# ${type}`);
 		const listBlock: string = contributing.substring(
-			contributing.indexOf('*', listStartIndex),
+			contributing.indexOf('- **', listStartIndex),
 			contributing.indexOf('#', listStartIndex + 1)
 		);
 		return listBlock.match(/\*\*.*\*\*/g).map(item => item.replace(/\*\*/g, ''));
