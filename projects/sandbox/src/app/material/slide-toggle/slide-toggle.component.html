@@ -1,0 +1,47 @@
+<h2 class="page-header">Slide Toggle</h2>
+<table class="ob-table ob-table-disable-checked-style ob-table-disable-hover-style">
+	<tbody>
+		<tr>
+			<td>
+				<mat-slide-toggle>Default</mat-slide-toggle>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<mat-slide-toggle color="primary">Primary</mat-slide-toggle>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<mat-slide-toggle color="accent">Accent</mat-slide-toggle>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<mat-slide-toggle color="warn">Warn</mat-slide-toggle>
+			</td>
+		</tr>
+		<tr>
+			<td><mat-slide-toggle disabled>Disabled</mat-slide-toggle></td>
+		</tr>
+		<tr>
+			<td>
+				<mat-slide-toggle disabled [checked]="true">Disabled & Checked</mat-slide-toggle>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<mat-slide-toggle (toggleChange)="onMandatoryToggleChange()" required>Mandatory</mat-slide-toggle>
+				<mat-error *ngIf="!isMandatoryChecked"
+					>I am an error message that is shown when the Mandatory Slide Toggle is not checked!</mat-error
+				>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<mat-slide-toggle (toggleChange)="onHintToggleChange()">Hint</mat-slide-toggle>
+				<mat-hint *ngIf="isHintChecked">I am a hint message that is shown when the Hint Slide Toggle is checked!</mat-hint>
+			</td>
+		</tr>
+	</tbody>
+</table>
