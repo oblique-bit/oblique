@@ -28,12 +28,19 @@ $theme-alt-500: (
 	),
 	typography: typo.$custom-typography,
 );
+$theme-slide-toggle: (
+	color: (
+		primary: mat.define-palette(material-palette.$oblique-primary-slide-toggle),
+		accent: mat.define-palette(material-palette.$oblique-primary-slide-toggle),
+		warn: mat.define-palette(material-palette.$oblique-warn-slide-toggle),
+	),
+	typography: typo.$custom-typography,
+);
 
 @include mat.legacy-core();
 
 @include mat.legacy-list-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-menu-theme(mat.define-light-theme($legacy-theme));
-@include mat.legacy-slide-toggle-theme(mat.define-light-theme($legacy-theme));
 @include mat.legacy-tabs-theme(mat.define-light-theme($legacy-theme));
 
 @include mat.ripple-theme(mat.define-light-theme($theme));
@@ -55,6 +62,7 @@ $theme-alt-500: (
 @include mat.radio-theme(mat.define-light-theme($theme));
 @include mat.paginator-theme(mat.define-light-theme($theme));
 @include mat.progress-bar-theme(mat.define-light-theme($theme));
+@include mat.slide-toggle-theme(mat.define-light-theme($theme-slide-toggle));
 @include mat.slider-theme(mat.define-light-theme($theme-alt-500));
 @include mat.sort-theme(mat.define-light-theme($theme));
 @include mat.stepper-theme(mat.define-light-theme($theme));
