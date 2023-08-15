@@ -1,0 +1,102 @@
+@use "sass:selector";
+@use "../core/variables";
+@use "../core/mixins/shadow";
+
+mat-slide-toggle.mat-mdc-slide-toggle {
+	.mdc-form-field {
+		button.mdc-switch[role="switch"][type="button"] {
+			border-radius: 12px;
+			width: variables.$ob-slide-toggle-width;
+
+			@include shadow.ob-focus-visible-tab-focus-box-shadow();
+
+			&:focus {
+				outline: none;
+			}
+
+			.mdc-switch__track {
+				border-radius: variables.$ob-slide-toggle-border-radius;
+				height: variables.$ob-slide-toggle-height;
+				width: variables.$ob-slide-toggle-width;
+			}
+
+			& ~ .mat-mdc-form-field-hint,
+			& ~ .mat-mdc-form-field-error {
+				display: block;
+				font-size: variables.$ob-error-hint-font-size;
+				font-weight: variables.$ob-error-hint-font-weight;
+				margin-top: -(variables.$ob-spacing-sm);
+				margin-left: variables.$ob-spacing-xxl;
+			}
+
+			& ~ .mat-mdc-form-field-hint {
+				color: variables.$ob-secondary-400;
+			}
+
+			&.mdc-switch--unselected {
+				.mdc-switch__handle {
+					margin-left: variables.$ob-slide-toggle-handle-margin;
+				}
+
+				&:enabled {
+					.mdc-switch__track::before {
+						background: variables.$ob-secondary-300;
+					}
+
+					.mdc-switch__handle-track {
+						.mdc-switch__handle::after {
+							background: variables.$ob-white;
+						}
+					}
+				}
+
+				&:disabled {
+					.mdc-switch__handle-track {
+						.mdc-switch__handle::after {
+							background: variables.$ob-secondary-100;
+						}
+					}
+				}
+			}
+
+			&.mdc-switch--selected {
+				.mdc-switch__handle {
+					margin-left: -(variables.$ob-slide-toggle-handle-margin);
+				}
+			}
+
+			&:disabled {
+				.mdc-switch__track,
+				.mdc-switch__handle::after {
+					opacity: 1;
+				}
+
+				.mdc-switch__track::before,
+				.mdc-switch__handle::after {
+					background: variables.$ob-secondary-200;
+				}
+
+				&.mdc-switch--selected {
+					.mdc-switch__track::after {
+						background: variables.$ob-secondary-300;
+					}
+				}
+			}
+
+			.mdc-switch__icons {
+				opacity: 0;
+			}
+		}
+	}
+
+	&.mat-warn .mdc-form-field button.mdc-switch[role="switch"][type="button"],
+	.mdc-form-field button[aria-required][role="switch"][type="button"].mdc-switch {
+		&.mdc-switch--unselected {
+			&:enabled {
+				.mdc-switch__track::before {
+					background: variables.$ob-red-800;
+				}
+			}
+		}
+	}
+}
