@@ -61,6 +61,7 @@ import {FormComponent} from './form/form.component';
 import {TableEditComponent} from './table/table-edit.component';
 import {ObPaginatorModule} from '@oblique/paginator/ob-paginator.module';
 import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
+import {SlideToggleComponent} from './slide-toggle/slide-toggle.component';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -75,6 +76,7 @@ const appRoutes: Routes = [
 	{path: 'list', component: ListComponent},
 	{path: 'mandatory', component: MandatorySampleComponent},
 	{path: 'progress-bar', component: ProgressBarComponent},
+	{path: 'slide-toggle', component: SlideToggleComponent},
 	{path: 'slider', component: SliderComponent},
 	{path: 'stepper-horizontal', component: StepperHorizontalComponent},
 	{path: 'stepper-vertical', component: StepperVerticalComponent},
@@ -99,6 +101,7 @@ const appRoutes: Routes = [
 		MandatorySampleComponent,
 		ProgressBarComponent,
 		SliderComponent,
+		SlideToggleComponent,
 		StepperHorizontalComponent,
 		StepperVerticalComponent,
 		TableComponent,
