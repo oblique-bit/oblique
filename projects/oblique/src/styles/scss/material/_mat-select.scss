@@ -12,14 +12,6 @@
 		z-index: 1;
 	}
 
-	&[readonly] {
-		pointer-events: none;
-
-		.mat-mdc-select-arrow {
-			color: core-variables.$ob-text-600;
-		}
-	}
-
 	.mat-mdc-select-trigger {
 		.ob-form-lg &,
 		.mat-form-field-lg & {
