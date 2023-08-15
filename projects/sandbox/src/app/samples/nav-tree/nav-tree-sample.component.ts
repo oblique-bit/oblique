@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
-import {ObNavTreeComponent, ObNavTreeItemModel} from '@oblique/oblique';
+import {ObNavTreeItemModel} from '@oblique/oblique';
 import {Subject} from 'rxjs';
 
 @Component({
@@ -10,7 +10,6 @@ import {Subject} from 'rxjs';
 })
 export class NavTreeSampleComponent implements OnInit, OnDestroy {
 	public items: ObNavTreeItemModel[];
-	public variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	public activateAncestors = true;
 
 	public filter = {
