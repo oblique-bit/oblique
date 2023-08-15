@@ -88,6 +88,14 @@ $oblique-primary-alt-500: map.merge(
 		500: variables.$ob-secondary-400,
 	)
 ) !default;
+$oblique-primary-slide-toggle: map.merge(
+	$oblique-primary,
+	(
+		300: variables.$ob-secondary-700,
+		600: variables.$ob-white,
+		900: variables.$ob-white,
+	)
+) !default;
 
 // accent colors are based on the secondary color scheme from the UX team: https://www.sketch.com/s/8ca1c363-8e0d-49c0-8f63-fb363cc27664/a/R8dmEe
 $oblique-legacy-accent: (
@@ -249,4 +257,12 @@ $oblique-warn: (
 			A400: variables.$ob-default,
 			A700: variables.$ob-default,
 		),
+) !default;
+$oblique-warn-slide-toggle: map.merge(
+	$oblique-warn,
+	(
+		300: variables.$ob-red-800,
+		600: variables.$ob-white,
+		900: variables.$ob-white,
+	)
 ) !default;
