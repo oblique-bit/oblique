@@ -169,7 +169,8 @@ sup {
 }
 
 label {
-	font-weight: 600;
+	font-size: variables.$ob-font-size-base;
+	font-weight: variables.$ob-label-font-weight;
 }
 
 // lists
