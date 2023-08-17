@@ -124,7 +124,7 @@
           "type": "boolean",
           "default": "true",
           "since": "10.2.0",
-          "text": "Determines if the logout should be handled in the service-navigation or not. If set to false, then the application must perform the logout itself. To do this, the logoutURL passed by the <code>logoutTriggere</code> output must be used."
+          "text": "Determines if the logout should be handled in the service-navigation or not. If set to false, then the application must perform the logout itself. To do this, the logoutURL passed by the <code>logoutTriggered</code> output must be used."
         }
       ],
       "outputs": [
@@ -138,7 +138,7 @@
           "name": "logoutTriggered",
           "type": "EventEmitter<string>",
           "since": "10.2.0",
-          "text": "Emitted when the users clicks on the logout-Button and the <code>handleLogout</code> input is set to false. Emits the logoutURL."
+          "text": "Emitted when the user clicks on the logout button and the <code>handleLogout</code> input is set to <code>false</code>. Emits the logoutURL."
         }
       ],
       "methods": [
