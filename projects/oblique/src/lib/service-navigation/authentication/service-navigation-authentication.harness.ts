@@ -6,11 +6,11 @@ export class ObServiceNavigationAuthenticationHarness extends ContentContainerCo
 	static hostSelector = 'ob-service-navigation-authentication';
 
 	public async getLinkElement(): Promise<TestElement> {
-		return this.locatorFor('a')();
+		return this.locatorForOptional('a')();
 	}
 
 	public async getButtonElement(): Promise<TestElement> {
-		return this.locatorFor('button')();
+		return this.locatorForOptional('button')();
 	}
 
 	public async getText(): Promise<string> {
