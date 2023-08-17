@@ -88,6 +88,16 @@
 				>
 			</fieldset>
 			<fieldset>
+				<legend>Authentication settings</legend>
+				<mat-slide-toggle [(ngModel)]="handleLogout">let service navigation handle logout</mat-slide-toggle>
+				<p>
+					current login state: <output>{{ loginState$ | async }}</output>
+				</p>
+				<p matTooltip="Will only emit if the service navigation don't handle the logout and the logout button has been clicked">
+					last emitted logout url: <output>{{ logoutUrl$ | async }}</output>
+				</p>
+			</fieldset>
+			<fieldset>
 				<legend>Profile settings</legend>
 				<mat-slide-toggle
 					[(ngModel)]="hasProfileLinks"
@@ -125,9 +135,6 @@
 					/>
 				</mat-form-field>
 			</fieldset>
-			<p>
-				current login state: <output>{{ loginState$ | async }}</output>
-			</p>
 		</mat-card-content>
 	</mat-card>
 </div>

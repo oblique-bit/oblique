@@ -13,6 +13,7 @@ export class MasterLayoutSampleComponent {
 	coverLayout = false;
 	scrollMode = ObEScrollMode;
 	loginState$: Observable<ObLoginState>;
+	logoutUrl$: Observable<string>;
 	isLoggedOut$: Observable<boolean>;
 	private readonly infoLinks = [...this.masterLayout.header.serviceNavigationConfiguration.infoLinks];
 	private readonly infoContact = {...this.masterLayout.header.serviceNavigationConfiguration.infoContact};
@@ -21,6 +22,7 @@ export class MasterLayoutSampleComponent {
 	constructor(private readonly masterLayout: ObMasterLayoutService, private readonly dynamicNavigationService: DynamicNavigationService) {
 		this.coverLayout = this.masterLayout.layout.hasCover;
 		this.loginState$ = this.masterLayout.header.loginState$;
+		this.logoutUrl$ = this.masterLayout.header.logoutUrl$;
 		this.isLoggedOut$ = this.loginState$.pipe(
 			map(loginState => !loginState?.includes('OK')),
 			share()
@@ -244,6 +246,14 @@ export class MasterLayoutSampleComponent {
 
 	set maxFavoriteApplications(value: number) {
 		this.masterLayout.header.serviceNavigationConfiguration.maxFavoriteApplications = value;
+	}
+
+	get handleLogout(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.handleLogout;
+	}
+
+	set handleLogout(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.handleLogout = value;
 	}
 
 	addItem(): void {
