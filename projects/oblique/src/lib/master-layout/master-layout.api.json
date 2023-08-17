@@ -443,6 +443,12 @@
           "since": "10.1.0"
         },
         {
+          "name": "logoutTriggered",
+          "type": "Observable<string>",
+          "since": "10.2.0",
+          "text": "Emits the logout URL when the user clicks on the service navigation's logout button with the <code>handleLogout</code> input set to <code>false</code>."
+        },
+        {
           "name": "isCustom",
           "text": "Controls <code>ObMasterLayoutConfig.header.isCustom</code> property.",
           "type": "boolean",
@@ -820,7 +826,7 @@
         },
         {
           "name": "handleLogout",
-          "text": "Determines if the logout should be handled in the service-navigation or not. If set to false, then the application must perform the logout itself.",
+          "text": "Determines if the logout should be handled in the service-navigation or not. If set to false, then the application must perform the logout itself. To do this, the logoutURL passed by the <code>logoutTriggered</code> output must be used.",
           "type": "boolean",
           "isOptional": true,
           "default": true,
