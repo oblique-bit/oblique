@@ -253,7 +253,8 @@
             "infoContact": {},
             "maxLastUsedApplications": 3,
             "maxFavoriteApplications": 3,
-            "displayLanguages": true
+            "displayLanguages": true,
+            "handleLogout": true
           },
           "since": "10.1.0"
         },
@@ -479,7 +480,8 @@
             "infoContact": {},
             "maxLastUsedApplications": 3,
             "maxFavoriteApplications": 3,
-            "displayLanguages": true
+            "displayLanguages": true,
+            "handleLogout": true
           },
           "since": "10.1.0"
         }
@@ -815,6 +817,14 @@
           "isOptional": true,
           "default": false,
           "since": "10.1.0"
+        },
+        {
+          "name": "handleLogout",
+          "text": "Determines if the logout should be handled in the service-navigation or not. If set to false, then the application must perform the logout itself.",
+          "type": "boolean",
+          "isOptional": true,
+          "default": true,
+          "since": "10.2.0"
         }
       ]
     },
