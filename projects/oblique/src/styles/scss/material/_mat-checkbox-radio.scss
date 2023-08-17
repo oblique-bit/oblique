@@ -59,12 +59,3 @@ $disabled-color: core-variables.$ob-secondary-300;
 		);
 	}
 }
-
-.mat-mdc-radio-group,
-.mat-mdc-radio-button,
-.mat-mdc-checkbox {
-	&[readonly] {
-		pointer-events: none;
-		filter: opacity(0.75);
-	}
-}
