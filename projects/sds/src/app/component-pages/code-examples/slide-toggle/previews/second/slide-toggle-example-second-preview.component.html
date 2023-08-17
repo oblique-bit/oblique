@@ -1,0 +1,12 @@
+<mat-slide-toggle [checked]="true">Checked</mat-slide-toggle>
+<mat-slide-toggle ariaLabel="I have an aria label">Aria label</mat-slide-toggle>
+<mat-slide-toggle [disabled]="true">Disabled</mat-slide-toggle>
+<mat-slide-toggle labelPosition="before">Label position before</mat-slide-toggle>
+<mat-slide-toggle name="slide-toggle-with-name">Name</mat-slide-toggle>
+<mat-slide-toggle required>Required</mat-slide-toggle>
+<mat-slide-toggle id="slide-toggle-with-id">Id</mat-slide-toggle>
+<div>
+	<mat-slide-toggle (change)="onToggleChange()">Change</mat-slide-toggle>
+	<br />
+	<small>Change slide toggle is: {{ toggleValue }}</small>
+</div>

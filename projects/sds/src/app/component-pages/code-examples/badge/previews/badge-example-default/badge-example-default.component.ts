@@ -10,7 +10,6 @@ import {PreviewComponent} from '../../../../code-examples.model';
 	styleUrls: ['../../../../code-example-flex-layout.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [MatBadgeModule, MatButtonModule, ObButtonModule],
-	host: {class: 'layout-breakpoint-md'}
+	imports: [MatBadgeModule, MatButtonModule, ObButtonModule]
 })
 export class BadgeExampleDefaultComponent implements PreviewComponent {}

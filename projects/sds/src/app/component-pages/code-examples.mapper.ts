@@ -17,6 +17,7 @@ import {DialogCodeExamplesComponent} from './code-examples/dialog/dialog-code-ex
 import {SpinnerCodeExamplesComponent} from './code-examples/spinner/spinner-code-examples.component';
 import {MaterialTableCodeExamplesComponent} from './code-examples/material-table/material-table-code-examples.component';
 import {HtmlTableCodeExamplesComponent} from './code-examples/html-table/html-table-code-examples.component';
+import {SlideToggleCodeExamplesComponent} from './code-examples/slide-toggle/slide-toggle-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -35,8 +36,9 @@ export class CodeExamplesMapper {
 		paginator: PaginatorCodeExamplesComponent,
 		progressBar: ProgressBarCodeExamplesComponent,
 		slider: SliderCodeExamplesComponent,
-		tooltip: TooltipCodeExamplesComponent,
-		spinner: SpinnerCodeExamplesComponent
+		slideToggle: SlideToggleCodeExamplesComponent,
+		spinner: SpinnerCodeExamplesComponent,
+		tooltip: TooltipCodeExamplesComponent
 	};
 
 	static getCodeExampleComponent(slug: string): Type<CodeExamples> {
