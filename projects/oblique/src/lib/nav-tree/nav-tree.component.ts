@@ -28,6 +28,9 @@ export class ObNavTreeComponent implements OnDestroy {
 		this.translate
 	);
 	@Input() variant = ObNavTreeComponent.DEFAULTS.VARIANT;
+	/**
+	 * @deprecated since version 10.2.0. It will be removed with Oblique 11, and it won't be possible to deactivate the ancestors anymore
+	 */
 	@Input() activateAncestors = true;
 	@Input() treeAriaLabelledBy: string;
 	@Input() treeAriaLabel: string;
