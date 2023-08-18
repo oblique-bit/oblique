@@ -16,7 +16,7 @@
 	filter: drop-shadow($x-offset $y-offset 4px $color);
 }
 
-$tab-focus-color: variables.$ob-purple-300;
+$tab-focus-color: variables.$ob-purple-500;
 $tab-focus-width: 3px;
 
 @mixin ob-tab-focus-box-shadow() {
