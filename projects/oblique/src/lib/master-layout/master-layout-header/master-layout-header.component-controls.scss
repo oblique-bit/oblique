@@ -72,7 +72,6 @@
 		align-items: center;
 		justify-content: space-between;
 		flex-wrap: wrap;
-		white-space: nowrap;
 
 		@include layout.ob-media-breakpoint-down(md) {
 			padding-bottom: variables.$ob-spacing-sm;
