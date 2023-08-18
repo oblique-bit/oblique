@@ -17,6 +17,7 @@
     "@schematics/angular",
     "@angular/cdk",
     "ansi-colors",
-    "rxjs"
+    "rxjs",
+    "js-cookie"
   ]
 }
