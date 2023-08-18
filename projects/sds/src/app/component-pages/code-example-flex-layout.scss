@@ -1,0 +1,25 @@
+@use "sass:map";
+
+:host {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	row-gap: 2rem;
+
+	$ob-grid-breakpoints: (
+		xs: 0,
+		sm: 600px,
+		md: 905px,
+		lg: 1240px,
+		xl: 1440px,
+	) !default;
+
+	@each $name, $breakpoint in $ob-grid-breakpoints {
+		@media (min-width: map.get($ob-grid-breakpoints, $name)) {
+			&.layout-breakpoint-#{$name} {
+				flex-direction: row;
+				column-gap: 3rem;
+			}
+		}
+	}
+}
