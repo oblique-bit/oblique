@@ -48,6 +48,7 @@
           "name": "activateAncestors",
           "text": "Whether active link's ancestors also be active.",
           "type": "boolean",
+          "deprecated": "10.2.0",
           "default": true,
           "since": "2.0.0"
         },
