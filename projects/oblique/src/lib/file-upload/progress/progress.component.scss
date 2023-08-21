@@ -34,6 +34,18 @@
 		display: flex;
 		align-items: center;
 		height: variables.$ob-spacing-xl;
+
+		.mat-mdc-progress-bar {
+			&.completed {
+				.mdc-linear-progress__bar-inner {
+					border-color: variables.$ob-green-600;
+				}
+			}
+
+			&.mat-warn .mdc-linear-progress__buffer-bar {
+				background-color: variables.$ob-red-800;
+			}
+		}
 	}
 
 	.ob-button {
