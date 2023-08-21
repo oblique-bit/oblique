@@ -7,8 +7,6 @@ import {MatIconHarness} from '@angular/material/icon/testing';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObServiceNavigationAuthenticationHarness} from './service-navigation-authentication.harness';
 import {ObServiceNavigationAuthenticationComponent} from './service-navigation-authentication.component';
-import {By} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
 import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
 import {ObButtonModule} from '../../button/button.module';
 
@@ -146,17 +144,14 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 				});
 
 				describe('handleLogout', () => {
-					let button: DebugElement;
 					describe('set to "true"', () => {
 						beforeEach(() => {
 							component.handleLogout = true;
 							fixture.detectChanges();
 						});
 						describe('button', () => {
-							it('should not be displayed', () => {
-								button = fixture.debugElement.query(By.css('button'));
-
-								expect(button).toBe(null);
+							it('should not be displayed', async () => {
+								expect(await harness.getButtonElement()).toBe(null);
 							});
 						});
 						describe('link', () => {
@@ -172,10 +167,8 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 							fixture.detectChanges();
 						});
 						describe('button', () => {
-							it('should not be displayed', () => {
-								button = fixture.debugElement.query(By.css('button'));
-
-								expect(button).toBe(null);
+							it('should not be displayed', async () => {
+								expect(await harness.getButtonElement()).toBe(null);
 							});
 						});
 						describe('link', () => {
@@ -199,11 +192,8 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 					});
 
 					describe('button', () => {
-						let button: DebugElement;
-						it('should not be displayed', () => {
-							button = fixture.debugElement.query(By.css('button'));
-
-							expect(button).toBe(null);
+						it('should not be displayed', async () => {
+							expect(await harness.getButtonElement()).toBe(null);
 						});
 					});
 
@@ -234,12 +224,8 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 					});
 
 					describe('link', () => {
-						let link: DebugElement;
-
-						it('should not be displayed', () => {
-							link = fixture.debugElement.query(By.css('a'));
-
-							expect(link).toBe(null);
+						it('should not be displayed', async () => {
+							expect(await harness.getLinkElement()).toBe(null);
 						});
 					});
 

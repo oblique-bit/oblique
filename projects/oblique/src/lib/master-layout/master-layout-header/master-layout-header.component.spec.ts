@@ -27,7 +27,8 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			isCustom: false,
 			isSmall: false,
 			serviceNavigation: {},
-			emitLoginState: jest.fn()
+			emitLoginState: jest.fn(),
+			emitLogoutUrl: jest.fn()
 		},
 		layout: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isMenuOpened: false}
 	};
@@ -236,6 +237,21 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 			it('should call emitLoginState on master layout service with the same parameter', () => {
 				expect(mockMasterLayoutService.header.emitLoginState).toHaveBeenCalledWith('S2OK');
+			});
+		});
+
+		describe('emitLogoutUrl', () => {
+			beforeEach(() => {
+				jest.spyOn(mockMasterLayoutService.header, 'emitLogoutUrl');
+				component.emitLogoutUrl('http://logout');
+			});
+
+			it('should call emitLogoutUrl on master layout service once', () => {
+				expect(mockMasterLayoutService.header.emitLogoutUrl).toHaveBeenCalledTimes(1);
+			});
+
+			it('should call emitLogoutUrl on master layout service with the same parameter', () => {
+				expect(mockMasterLayoutService.header.emitLogoutUrl).toHaveBeenCalledWith('http://logout');
 			});
 		});
 	});

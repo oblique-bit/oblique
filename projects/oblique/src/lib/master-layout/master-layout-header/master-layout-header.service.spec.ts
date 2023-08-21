@@ -45,6 +45,12 @@ describe('ObMasterLayoutHeaderService', () => {
 		});
 	});
 
+	describe('logoutUrl$', () => {
+		it('should expose a logoutUrl$ observable', () => {
+			expect(service.logoutUrl$ instanceof Observable).toBe(true);
+		});
+	});
+
 	describe('emitLoginState', () => {
 		it('should emit the given state through loginState$', done => {
 			service.loginState$.subscribe(loginState => {
@@ -52,6 +58,16 @@ describe('ObMasterLayoutHeaderService', () => {
 				done();
 			});
 			service.emitLoginState('SA');
+		});
+	});
+
+	describe('emitLogoutUrl', () => {
+		it('should emit the given URL through logoutUrl$', done => {
+			service.logoutUrl$.subscribe(logoutUrl => {
+				expect(logoutUrl).toBe('http://logout');
+				done();
+			});
+			service.emitLogoutUrl('http://logout');
 		});
 	});
 

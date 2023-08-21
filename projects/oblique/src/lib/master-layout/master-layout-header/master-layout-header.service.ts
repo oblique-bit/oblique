@@ -8,8 +8,10 @@ import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObIServiceNavigationCo
 export class ObMasterLayoutHeaderService {
 	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
 	readonly loginState$: Observable<ObLoginState>;
+	readonly logoutUrl$: Observable<string>;
 	private readonly events = new Subject<ObIMasterLayoutEvent>();
 	private readonly loginState = new Subject<ObLoginState>();
+	private readonly logoutUrl = new Subject<string>();
 	private isCustomInternal = this.config.header.isCustom;
 	private isSmallInternal = this.config.header.isSmall;
 	private isStickyInternal = this.config.header.isSticky;
@@ -19,6 +21,7 @@ export class ObMasterLayoutHeaderService {
 	constructor(private readonly config: ObMasterLayoutConfig) {
 		this.configEvents$ = this.events.asObservable();
 		this.loginState$ = this.loginState.asObservable();
+		this.logoutUrl$ = this.logoutUrl.asObservable();
 	}
 
 	get isCustom(): boolean {
@@ -83,5 +86,9 @@ export class ObMasterLayoutHeaderService {
 
 	emitLoginState(loginState: ObLoginState): void {
 		this.loginState.next(loginState);
+	}
+
+	emitLogoutUrl(logoutUrl: string): void {
+		this.logoutUrl.next(logoutUrl);
 	}
 }
