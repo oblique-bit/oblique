@@ -1,15 +1,21 @@
 @use "../../../styles/scss/core/variables";
 @use "../../../styles/scss/core/mixins/layout";
+@use "../../../styles/scss/core/mixins/shadow";
 @use "../../../styles/scss/core/mixins/tab-outline";
 
 .ob-drop-zone > div {
 	padding: variables.$ob-spacing-lg;
-	border: 1px dashed variables.$ob-primary-700;
+	border: 1px dashed variables.$ob-secondary-600;
 	border-radius: variables.$ob-border-radius-base;
-	background-color: variables.$ob-gray-100;
+	background-color: variables.$ob-secondary-50;
 	transition: background-color variables.$ob-duration-fast;
 
-	@include tab-outline.ob-tab-outline();
+	@include shadow.ob-focus-visible-tab-focus-box-shadow();
+
+	&:hover,
+	&:focus {
+		border-color: variables.$ob-blue-800;
+	}
 
 	.ob-drop-zone-text {
 		display: flex;
@@ -17,10 +23,14 @@
 		align-items: center;
 	}
 
+	.ob-drop-zone-heading,
+	.ob-drop-zone-hints {
+		color: variables.$ob-secondary-800;
+	}
+
 	.ob-drop-zone-heading {
 		font-size: variables.$ob-font-size-bigger;
 		margin-bottom: 0;
-		color: variables.$ob-primary-500;
 
 		@include layout.ob-media-breakpoint-down(sm) {
 			display: flex;
@@ -28,17 +38,17 @@
 			align-items: center;
 			text-align: center;
 		}
+
+		.mat-icon {
+			color: variables.$ob-blue-800;
+		}
 	}
 
 	&:hover,
 	&:hover:focus,
 	&.ob-dragging {
 		cursor: pointer;
-		background-color: variables.$ob-primary-200;
-
-		.ob-drop-zone-heading {
-			color: variables.$ob-dark;
-		}
+		background-color: variables.$ob-secondary-100;
 	}
 
 	.ob-upload-icon {
@@ -57,5 +67,18 @@
 	.ob-drop-zone-hints {
 		text-align: center;
 		margin-bottom: 0;
+	}
+}
+
+.ob-drop-zone.disabled > div,
+.ob-file-upload.disabled .ob-drop-zone > div {
+	cursor: not-allowed;
+	pointer-events: none;
+	border-color: variables.$ob-secondary-300;
+
+	.ob-drop-zone-heading,
+	.ob-drop-zone-hints,
+	.mat-icon {
+		color: variables.$ob-secondary-300;
 	}
 }
