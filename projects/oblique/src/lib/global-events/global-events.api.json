@@ -51,6 +51,12 @@
           "since": "6.1.0"
         },
         {
+          "name": "wheel$",
+          "text": "Emits when the <code>Window</code> detects the user rotates a wheel button.",
+          "type": "Observable<Event>",
+          "since": "10.2.0"
+        },
+        {
           "name": "resize$",
           "text": "Emits when the <code>Window</code> is resized.",
           "type": "Observable<UIEvent>",

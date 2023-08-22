@@ -107,6 +107,19 @@ describe('ObGlobalEventsService', () => {
 		});
 	});
 
+	describe('wheel$', () => {
+		it('should be defined', () => {
+			expect(service.wheel$).toBeTruthy();
+		});
+		it('should emit an Event', done => {
+			service.wheel$.subscribe(event => {
+				expect(event instanceof Event).toBe(true);
+				done();
+			});
+			window.dispatchEvent(new Event('wheel'));
+		});
+	});
+
 	describe('resize$', () => {
 		it('should be defined', () => {
 			expect(service.resize$).toBeTruthy();
