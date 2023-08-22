@@ -8,12 +8,20 @@ import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@ang
 import {LOCALE_ID, importProvidersFrom} from '@angular/core';
 import {PreloadAllModules, provideRouter, withPreloading} from '@angular/router';
 import {APP_ROUTES} from './app.routes';
+import {UploadInterceptor} from './app/component-pages/code-examples/file-upload/file-upload-simulate-interceptor';
+
+export const uploadInterceptor = new UploadInterceptor();
 
 bootstrapApplication(AppComponent, {
 	providers: [
 		importProvidersFrom(ObIconModule.forRoot(), TranslateModule.forRoot(multiTranslateLoader())),
 		{provide: TRANSLATION_FILES, useValue: []}, // do not load SDS translation files as they don't exist
 		{provide: LOCALE_ID, useValue: 'en-US'},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useValue: uploadInterceptor,
+			multi: true
+		},
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: HttpApiInterceptor,
