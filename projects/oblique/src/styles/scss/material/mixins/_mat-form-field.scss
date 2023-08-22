@@ -26,8 +26,11 @@
 		}
 	}
 
-	.mat-form-field-suffix .mat-datepicker-toggle .mat-icon-button {
+	.mat-form-field-suffix .mat-datepicker-toggle .mdc-icon-button {
 		height: $icon-size;
 		width: $icon-size;
+		display: inline-flex;
+		align-items: center;
+		font-size: inherit;
 	}
 }
