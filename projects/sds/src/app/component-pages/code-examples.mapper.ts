@@ -17,6 +17,7 @@ import {DialogCodeExamplesComponent} from './code-examples/dialog/dialog-code-ex
 import {SpinnerCodeExamplesComponent} from './code-examples/spinner/spinner-code-examples.component';
 import {MaterialTableCodeExamplesComponent} from './code-examples/material-table/material-table-code-examples.component';
 import {HtmlTableCodeExamplesComponent} from './code-examples/html-table/html-table-code-examples.component';
+import {FileUploadCodeExamplesComponent} from './code-examples/file-upload/file-upload-code-examples.component';
 import {SlideToggleCodeExamplesComponent} from './code-examples/slide-toggle/slide-toggle-code-examples.component';
 import {TabsCodeExamplesComponent} from './code-examples/tabs/tabs-code-examples.component';
 import {MasterLayoutCodeExamplesComponent} from './code-examples/master-layout/master-layout-code-examples.component';
@@ -32,6 +33,7 @@ export class CodeExamplesMapper {
 		chips: ChipsCodeExamplesComponent,
 		datepicker: DatepickerCodeExamplesComponent,
 		dialog: DialogCodeExamplesComponent,
+		fileUpload: FileUploadCodeExamplesComponent,
 		htmlTable: HtmlTableCodeExamplesComponent,
 		listGroup: ListGroupCodeExamplesComponent,
 		masterLayout: MasterLayoutCodeExamplesComponent,

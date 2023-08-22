@@ -1,0 +1,19 @@
+<ob-file-upload [uploadUrl]="mockUrls[2].upload" (uploadEvent)="uploadEvent($event)"> </ob-file-upload>
+<table class="ob-table">
+	<caption>
+		Last 5 Upload events:
+	</caption>
+	<thead>
+		<tr>
+			<th>Event type</th>
+			<th>File name(s)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let event of last5UploadEvents">
+			<td>{{ event.eventType }}</td>
+
+			<td>{{ event.fileNames }}</td>
+		</tr>
+	</tbody>
+</table>
