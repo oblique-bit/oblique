@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, ReplaySubject, switchMap} from 'rxjs';
 import {combineLatestWith, distinctUntilChanged, map, shareReplay, startWith, tap} from 'rxjs/operators';
@@ -27,13 +27,11 @@ export class ObServiceNavigationService {
 		),
 		shareReplay(1)
 	);
-
-	constructor(
-		private readonly configService: ObServiceNavigationConfigApiService,
-		private readonly pollingService: ObServiceNavigationPollingService,
-		private readonly applicationsService: ObServiceNavigationApplicationsService,
-		private readonly translateService: TranslateService
-	) {}
+	private readonly configService = inject(ObServiceNavigationConfigApiService);
+	private readonly pollingService = inject(ObServiceNavigationPollingService);
+	private readonly applicationsService = inject(ObServiceNavigationApplicationsService);
+	private readonly translateService = inject(TranslateService);
+	private readonly logoutTriggered$ = new ReplaySubject<string>(1);
 
 	setUpRootUrls(environment: ObEPamsEnvironment, rootUrl?: string): void {
 		// can't use !environment as ObEPamsEnvironment.PROD is an empty string
