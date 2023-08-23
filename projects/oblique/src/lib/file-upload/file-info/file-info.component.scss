@@ -1,10 +1,6 @@
 @use "../../../styles/scss/core/variables";
 
 .ob-file-info {
-	.ob-table .ob-button {
-		font-size: variables.$ob-font-size-smallest;
-	}
-
 	tbody tr:not(:hover) .mat-column-action .ob-button:not(:focus) {
 		opacity: 0;
 	}
