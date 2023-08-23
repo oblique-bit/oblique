@@ -24,6 +24,7 @@ export class CodeExampleComponent implements AfterViewInit {
 	@ViewChild(CodeExampleDirective) host!: CodeExampleDirective;
 
 	componentId = 'code-example';
+	hasCodeInTitle = false;
 
 	private readonly cdr = inject(ChangeDetectorRef);
 
@@ -37,6 +38,10 @@ export class CodeExampleComponent implements AfterViewInit {
 			viewContainerRef.clear();
 			viewContainerRef.createComponent<PreviewComponent>(this.preview);
 			this.cdr.detectChanges(); // This ensures that the CSS of the preview component is loaded
+
+			if (this.title.includes('<code>')) {
+				this.hasCodeInTitle = true;
+			}
 		}
 	}
 }
