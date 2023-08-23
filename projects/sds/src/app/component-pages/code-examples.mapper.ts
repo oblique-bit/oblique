@@ -18,6 +18,7 @@ import {SpinnerCodeExamplesComponent} from './code-examples/spinner/spinner-code
 import {MaterialTableCodeExamplesComponent} from './code-examples/material-table/material-table-code-examples.component';
 import {HtmlTableCodeExamplesComponent} from './code-examples/html-table/html-table-code-examples.component';
 import {SlideToggleCodeExamplesComponent} from './code-examples/slide-toggle/slide-toggle-code-examples.component';
+import {TabsCodeExamplesComponent} from './code-examples/tabs/tabs-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -38,6 +39,7 @@ export class CodeExamplesMapper {
 		slider: SliderCodeExamplesComponent,
 		slideToggle: SlideToggleCodeExamplesComponent,
 		spinner: SpinnerCodeExamplesComponent,
+		tabs: TabsCodeExamplesComponent,
 		tooltip: TooltipCodeExamplesComponent
 	};
 

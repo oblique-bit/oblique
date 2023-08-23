@@ -1,0 +1,12 @@
+<mat-tab-group headerPosition="below">
+	<mat-tab label="First"> Content with headerPosition below 1 </mat-tab>
+	<mat-tab label="Second"> Content with headerPosition below 2 </mat-tab>
+	<mat-tab>
+		<ng-template mat-tab-label>
+			<mat-icon class="ob-icon tab-icon" [svgIcon]="'heart'"></mat-icon>
+			Icon header
+		</ng-template>
+		Content with icon in header & headerPosition below
+	</mat-tab>
+	<mat-tab label="Disabled" disabled="true"> Content Disabled </mat-tab>
+</mat-tab-group>
