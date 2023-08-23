@@ -1,4 +1,4 @@
-<h2 *ngIf="title">{{ title }}</h2>
+<h2 *ngIf="title" [class.has-code-in-title]="hasCodeInTitle" [innerHTML]="title"></h2>
 <app-tabs [id]="idPrefix | id : [componentId, 'tabs']" [idPrefix]="idPrefix | id : [componentId]">
 	<app-tab *ngIf="preview" name="Preview" [id]="idPrefix | id : [componentId, 'preview', 'tab']" [initiallyActive]="true">
 		<ng-template appCodeExample></ng-template>
