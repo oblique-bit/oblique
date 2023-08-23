@@ -26,6 +26,10 @@
 		width: 100%;
 
 		+ .ob-file-progress-bar {
+			margin-top: variables.$ob-spacing-sm;
+		}
+
+		+ .ob-file-progress-bar.negative-margin-top {
 			margin-top: -(variables.$ob-spacing-sm);
 		}
 	}
