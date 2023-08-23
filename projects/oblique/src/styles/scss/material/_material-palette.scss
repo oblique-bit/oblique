@@ -96,6 +96,12 @@ $oblique-primary-slide-toggle: map.merge(
 		900: variables.$ob-white,
 	)
 ) !default;
+$oblique-primary-tabs: map.merge(
+	$oblique-primary,
+	(
+		500: variables.$ob-black,
+	)
+) !default;
 
 // accent colors are based on the secondary color scheme from the UX team: https://www.sketch.com/s/8ca1c363-8e0d-49c0-8f63-fb363cc27664/a/R8dmEe
 $oblique-legacy-accent: (

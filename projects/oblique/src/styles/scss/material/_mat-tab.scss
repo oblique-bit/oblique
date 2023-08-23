@@ -1,28 +1,59 @@
 @use "../core/variables";
+@use "../core/mixins/shadow";
+@use "./mixins/mat-tab";
 
-.mat-tab-nav-bar,
-.mat-tab-header {
-	border-bottom: none;
+.mdc-tab__ripple::before,
+.mat-mdc-tab .mat-ripple-element,
+.mat-mdc-tab-link .mat-ripple-element {
+	background-color: variables.$ob-secondary-100;
 }
 
-.mat-tab-label {
-	color: variables.$ob-default;
-	background-color: variables.$ob-smoke;
+.mat-mdc-tab,
+.mat-mdc-tab-link {
+	&.mdc-tab--active {
+		background-color: variables.$ob-white;
 
-	+ .mat-tab-label {
-		margin-left: 2px;
+		.mdc-tab__text-label,
+		.mat-mdc-tab-link:not(.mat-mdc-tab-disabled) .mdc-tab__text-label {
+			@include mat-tab.ob-tabs-label-color();
+		}
 	}
 
-	&:hover,
-	&:focus {
-		color: variables.$ob-primary;
-		background-color: variables.$ob-extra-light;
+	&.mat-mdc-focus-indicator {
+		&:not(:hover, .mdc-tab--active) {
+			span.mdc-tab-indicator > span {
+				border-top: solid 1px variables.$ob-secondary-100;
+				border-bottom: solid 1px transparent;
+				border-left: solid 1px transparent;
+				border-right: solid 1px transparent;
+				opacity: 1;
+			}
+		}
+
+		&:not(.mat-mdc-tab-disabled):hover {
+			background-color: variables.$ob-secondary-50;
+
+			span.mdc-tab-indicator > span {
+				@include mat-tab.ob-tabs-bottom-border-red();
+				opacity: 1;
+			}
+		}
 	}
 
-	&.mat-tab-label-active,
-	&:active {
-		color: variables.$ob-primary;
-		border-color: variables.$ob-primary;
-		background-color: variables.$ob-light;
+	&.cdk-keyboard-focused:not(.mat-mdc-tab-disabled) .mdc-tab-indicator:not(.mat-mdc-tab-disabled) {
+		@include shadow.ob-tab-focus-border();
+
+		> span {
+			@include mat-tab.ob-tabs-bottom-border-red();
+			opacity: 1;
+		}
+	}
+
+	&:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
+		@include mat-tab.ob-tabs-bottom-border-red();
+	}
+
+	.mdc-tab__text-label {
+		@include mat-tab.ob-tabs-label-color();
 	}
 }
