@@ -2,6 +2,7 @@
 nodejsPipelineTemplate {
 	nexusPublishPath = './dist/oblique'
 	nodeJsVersion = 18
+	masterBranchName = 'release/major_11.0.0-alpha.1'
 	gitPush = [
 		'credentialId': 'githubObliqueCredentials',
 		'repository': 'https://github.com/oblique-bit/oblique.git',
