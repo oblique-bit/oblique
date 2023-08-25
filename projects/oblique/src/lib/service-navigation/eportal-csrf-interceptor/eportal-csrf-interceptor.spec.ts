@@ -19,53 +19,70 @@ describe('EportalCsrfInterceptor', () => {
 
 	beforeEach(() => {
 		interceptor = new ObEportalCsrfInterceptor();
-		Cookies.set(cookieName, randomCsrfValue);
+		Cookies.remove(cookieName);
 	});
 
-	describe('Csrf token', () => {
+	describe('Pams-csrf-token exists', () => {
 		beforeEach(() => {
-			const request = new HttpRequest('POST', pamsUrl, null);
-			interceptor.intercept(request, next);
+			Cookies.set(cookieName, randomCsrfValue);
 		});
 
-		it('should have the name Pams-Csrf-Token in the header', () => {
-			expect(httpResponseSpy.headers.has(headerName)).toBe(true);
+		describe('Csrf token', () => {
+			beforeEach(() => {
+				const request = new HttpRequest('POST', pamsUrl, null);
+				interceptor.intercept(request, next);
+			});
+
+			it('should have the name Pams-Csrf-Token in the header', () => {
+				expect(httpResponseSpy.headers.has(headerName)).toBe(true);
+			});
+
+			it('should have the name pams-csrf-token in the cookies', () => {
+				expect(httpResponseSpy.headers.get(headerName)).toBe(randomCsrfValue);
+			});
 		});
 
-		it('should have the name pams-csrf-token in the cookies', () => {
-			expect(httpResponseSpy.headers.get(headerName)).toBe(randomCsrfValue);
+		describe('Request without csrf token', () => {
+			it('should not add the csrf token when the method is GET', () => {
+				const request = new HttpRequest('GET', pamsUrl);
+				interceptor.intercept(request, next);
+
+				expect(httpResponseSpy.headers.get(headerName)).toBe(null);
+			});
+		});
+
+		describe('Request is PAMS', () => {
+			const cases = ['POST', 'PATCH', 'PUT', 'DELETE'];
+
+			it.each(cases)('should add the csrf token when the method is %p', method => {
+				const request = new HttpRequest(method, pamsUrl, null);
+				interceptor.intercept(request, next);
+
+				expect(httpResponseSpy.headers.get(headerName)).toBe(randomCsrfValue);
+			});
+		});
+
+		describe('Request is not PAMS', () => {
+			const cases = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'];
+			const notAPamsUrl = 'http://example.com';
+
+			it.each(cases)('should not add the csrf token when the method is %p', method => {
+				const request = new HttpRequest(method, notAPamsUrl, null);
+				interceptor.intercept(request, next);
+
+				expect(httpResponseSpy.headers.get(headerName)).toBe(null);
+			});
 		});
 	});
 
-	describe('Request without csrf token', () => {
-		it('should not add the csrf token when the method is GET', () => {
-			const request = new HttpRequest('GET', pamsUrl);
-			interceptor.intercept(request, next);
-
-			expect(httpResponseSpy.headers.get(headerName)).toBe(null);
-		});
-	});
-
-	describe('Request is PAMS', () => {
+	describe('pams-csrf-token not set', () => {
 		const cases = ['POST', 'PATCH', 'PUT', 'DELETE'];
 
-		it.each(cases)('should add the csrf token when the method is %p', method => {
+		it.each(cases)('should not change headers when cookie doesnt exist and method is %p', method => {
 			const request = new HttpRequest(method, pamsUrl, null);
 			interceptor.intercept(request, next);
 
-			expect(httpResponseSpy.headers.get(headerName)).toBe(randomCsrfValue);
-		});
-	});
-
-	describe('Request is not PAMS', () => {
-		const cases = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'];
-		const notAPamsUrl = 'http://example.com';
-
-		it.each(cases)('should not add the csrf token when the method is %p', method => {
-			const request = new HttpRequest(method, notAPamsUrl, null);
-			interceptor.intercept(request, next);
-
-			expect(httpResponseSpy.headers.get(headerName)).toBe(null);
+			expect(httpResponseSpy.headers.keys()).toHaveLength(0);
 		});
 	});
 });
