@@ -5,7 +5,7 @@ import {Injectable} from '@angular/core';
 })
 export class ObAutocompleteTextToFindService {
 	escapeRegexCharacter(text: string): string {
-		return text.replace(/[[\]{}()*+?.,\\^$|#]/g, '\\$&');
+		return text.replace(/[[\]{}()*+?.,\\^$|#-]/g, '\\$&');
 	}
 
 	createTextToFindRegex(pattern: string, regexFlags: string, textToFind: string): RegExp {
