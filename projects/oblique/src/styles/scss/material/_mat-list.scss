@@ -1,12 +1,19 @@
 @use "sass:selector";
 @use "../core/variables";
+@use "../core/mixins/shadow";
 @use "../core/mixins/typography";
 
 .mdc-list.mat-mdc-list-base {
 	.mat-mdc-list-item {
+		background-color: variables.$ob-white;
 		height: initial;
 		padding: variables.$ob-spacing-md variables.$ob-spacing-default;
-		background-color: variables.$ob-white;
+
+		&:focus-visible {
+			@include shadow.ob-tab-focus-border();
+			padding: (variables.$ob-spacing-md - shadow.$tab-focus-width)
+				(variables.$ob-spacing-default - shadow.$tab-focus-width);
+		}
 
 		&.mdc-list-item--disabled {
 			.mat-mdc-list-item-title,
@@ -41,9 +48,7 @@
 		}
 
 		.mdc-list-item__primary-text {
-			@include typography.ob-subtitle1();
 			margin-bottom: 0;
-			color: variables.$ob-default;
 
 			&::before,
 			&::after {
@@ -53,11 +58,36 @@
 
 		.mdc-list-item__secondary-text {
 			@include typography.ob-body2();
+			color: variables.$ob-secondary-800;
+			margin-bottom: 0;
 
 			&::before {
 				display: none;
 			}
 		}
+
+		&.mat-mdc-list-option .mdc-checkbox .mdc-checkbox__native-control:enabled {
+			&:checked ~ .mdc-checkbox__background {
+				border-color: variables.$ob-secondary-600;
+				background-color: variables.$ob-secondary-600;
+			}
+
+			&:not(:checked, :indeterminate, [data-indeterminate="true"]) ~ .mdc-checkbox__background {
+				border-color: variables.$ob-secondary-600;
+			}
+		}
+
+		.ob-list-item-image {
+			width: 56px;
+			height: 56px;
+			border-radius: 0;
+		}
+	}
+
+	.mdc-list-group__subheader,
+	.mat-mdc-list-item .mdc-list-item__primary-text {
+		@include typography.ob-subtitle1();
+		color: variables.$ob-secondary-800;
 	}
 
 	&.mat-mdc-selection-list .mat-mdc-list-item:not(.mdc-list-item--disabled) {
