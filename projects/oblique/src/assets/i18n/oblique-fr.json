@@ -33,7 +33,7 @@
   "i18n.oblique.column.right.toggle": "Basculer la colonne de droite",
   "i18n.oblique.column.right.title": "Colonne droite",
   "i18n.oblique.http.error.general": "Une erreur inconnue est survenue. Prière de réessayer plus tard.",
-  "i18n.oblique.http.error.status.400.title": "Mauvaise renquête",
+  "i18n.oblique.http.error.status.400.title": "Mauvaise requête",
   "i18n.oblique.http.error.status.400": "Votre requête contient des erreurs. Veuillez vérifier vos données (champs de formulaire et autres valeurs de saisie).",
   "i18n.oblique.http.error.status.403.title": "Interdit",
   "i18n.oblique.http.error.status.403": "Le compte avec lequel vous essayez d'accéder au contenu ne dispose pas de droits suffisants pour cette action.",
