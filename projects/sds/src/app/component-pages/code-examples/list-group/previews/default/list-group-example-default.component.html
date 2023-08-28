@@ -1,10 +1,9 @@
-<mat-selection-list>
+<mat-list role="list">
 	<ng-container *ngFor="let item of contentForList">
-		<mat-list-option togglePosition="before">
+		<mat-list-item role="listitem">
 			<p matListItemTitle>{{ item.line1 }}</p>
 			<p matListItemLine>{{ item.line2 }}</p>
 			<p matListItemLine>{{ item.line3 }}</p>
-		</mat-list-option>
-		<mat-divider></mat-divider>
+		</mat-list-item>
 	</ng-container>
-</mat-selection-list>
+</mat-list>

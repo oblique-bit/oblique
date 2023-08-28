@@ -1,11 +1,9 @@
-<mat-list role="list">
+<mat-selection-list>
 	<ng-container *ngFor="let item of contentForList">
-		<mat-list-item role="listitem">
-			<mat-icon matListItemIcon class="ob-icon" [svgIcon]="item.icon"></mat-icon>
+		<mat-list-option>
 			<p matListItemTitle>{{ item.line1 }}</p>
 			<p matListItemLine>{{ item.line2 }}</p>
 			<p matListItemLine>{{ item.line3 }}</p>
-		</mat-list-item>
-		<mat-divider></mat-divider>
+		</mat-list-option>
 	</ng-container>
-</mat-list>
+</mat-selection-list>

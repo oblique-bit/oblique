@@ -1,10 +1,10 @@
 <mat-list role="list">
 	<ng-container *ngFor="let item of contentForList">
 		<mat-list-item role="listitem">
+			<img matListItemAvatar class="ob-list-item-image" alt="List group example image" src="assets/images/ListGroupImageExample.svg" />
 			<p matListItemTitle>{{ item.line1 }}</p>
 			<p matListItemLine>{{ item.line2 }}</p>
 			<p matListItemLine>{{ item.line3 }}</p>
 		</mat-list-item>
-		<mat-divider></mat-divider>
 	</ng-container>
 </mat-list>

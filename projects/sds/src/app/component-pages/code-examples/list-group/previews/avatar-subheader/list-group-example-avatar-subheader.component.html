@@ -1,0 +1,11 @@
+<mat-list role="list">
+	<div mat-subheader>Subheader</div>
+	<ng-container *ngFor="let item of contentForList">
+		<mat-list-item role="listitem">
+			<img matListItemAvatar alt="Profile photo of the registered user" [src]="item.avatar" />
+			<p matListItemTitle>{{ item.line1 }}</p>
+			<p matListItemLine>{{ item.line2 }}</p>
+			<p matListItemLine>{{ item.line3 }}</p>
+		</mat-list-item>
+	</ng-container>
+</mat-list>
