@@ -1,11 +1,10 @@
 <mat-selection-list>
 	<ng-contaier *ngFor="let item of contentForList">
-		<mat-list-option togglePosition="before">
+		<mat-list-option>
 			<mat-icon matListItemIcon class="ob-icon" [svgIcon]="item.icon"></mat-icon>
 			<p matListItemTitle>{{ item.line1 }}</p>
 			<p matListItemLine>{{ item.line2 }}</p>
 			<p matListItemLine>{{ item.line3 }}</p>
 		</mat-list-option>
-		<mat-divider></mat-divider>
 	</ng-contaier>
 </mat-selection-list>
