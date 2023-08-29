@@ -19,6 +19,7 @@ import {MaterialTableCodeExamplesComponent} from './code-examples/material-table
 import {HtmlTableCodeExamplesComponent} from './code-examples/html-table/html-table-code-examples.component';
 import {SlideToggleCodeExamplesComponent} from './code-examples/slide-toggle/slide-toggle-code-examples.component';
 import {TabsCodeExamplesComponent} from './code-examples/tabs/tabs-code-examples.component';
+import {MasterLayoutCodeExamplesComponent} from './code-examples/master-layout/master-layout-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -33,6 +34,7 @@ export class CodeExamplesMapper {
 		dialog: DialogCodeExamplesComponent,
 		htmlTable: HtmlTableCodeExamplesComponent,
 		listGroup: ListGroupCodeExamplesComponent,
+		masterLayout: MasterLayoutCodeExamplesComponent,
 		materialTable: MaterialTableCodeExamplesComponent,
 		paginator: PaginatorCodeExamplesComponent,
 		progressBar: ProgressBarCodeExamplesComponent,
