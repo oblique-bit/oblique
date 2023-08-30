@@ -20,15 +20,15 @@ describe(SlideToggleCodeExamplesComponent.name, () => {
 		fixture.detectChanges();
 	});
 
-	test('should create', () => {
+	test('that creation works', () => {
 		expect(component).toBeTruthy();
 	});
 
-	it(`should have 2 ${CodeExampleComponent.name}s`, () => {
+	test(`that there are 2 ${CodeExampleComponent.name}s`, () => {
 		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
 	});
 
-	it(`should have 12 ${MatSlideToggle.name}s`, () => {
+	test(`that there are 12 ${MatSlideToggle.name}s`, () => {
 		expect(fixture.debugElement.queryAll(By.directive(MatSlideToggle)).length).toBe(12);
 	});
 });
