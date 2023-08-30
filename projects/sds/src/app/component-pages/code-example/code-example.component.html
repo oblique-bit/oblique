@@ -1,14 +1,10 @@
 <h2 *ngIf="title">{{ title }}</h2>
 <app-tabs [id]="idPrefix | id : [componentId, 'tabs']" [idPrefix]="idPrefix | id : [componentId]">
-	<app-tab *ngIf="preview" title="Preview" [id]="idPrefix | id : [componentId, 'preview', 'tab']" [initiallyActive]="true">
+	<app-tab *ngIf="preview" name="Preview" [id]="idPrefix | id : [componentId, 'preview', 'tab']" [initiallyActive]="true">
 		<ng-template appCodeExample></ng-template>
 	</app-tab>
 
-	<app-tab
-		*ngFor="let codeSnippet of codeSnippets"
-		[title]="codeSnippet.title"
-		[id]="idPrefix | id : [componentId, codeSnippet.title, 'tab']"
-	>
+	<app-tab *ngFor="let codeSnippet of codeSnippets" [name]="codeSnippet.name" [id]="idPrefix | id : [componentId, codeSnippet.name, 'tab']">
 		<app-highlighted-code [idPrefix]="idPrefix | id : [componentId]" [codeBlock]="codeSnippet.sourceCode"></app-highlighted-code>
 	</app-tab>
 </app-tabs>

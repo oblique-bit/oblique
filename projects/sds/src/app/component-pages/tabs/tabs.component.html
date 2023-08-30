@@ -6,7 +6,7 @@
 		[id]="idPrefix | id : [componentId, 'button', i]"
 		(click)="selectTab(tab)"
 	>
-		{{ tab.title }}
+		{{ tab.name }}
 	</button>
 </div>
 <div class="tabs-content-container" [id]="idPrefix | id : [componentId, 'content-container']">
