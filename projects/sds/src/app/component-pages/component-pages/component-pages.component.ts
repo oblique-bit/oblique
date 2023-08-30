@@ -1,62 +1,59 @@
 import {Component, OnDestroy, OnInit, Type, ViewChild, inject} from '@angular/core';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CmsDataService} from '../../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-example.directive';
 import {CodeExamplesMapper} from '../code-examples.mapper';
 import {CodeExamples} from '../code-examples.model';
-import {NoCodeExamplesMatchComponent} from '../no-match/no-code-examples-match.component';
-import {BehaviorSubject, Subscription, filter} from 'rxjs';
+import {BehaviorSubject, Observable, Subject, combineLatestWith, debounceTime, delay, filter, takeUntil} from 'rxjs';
 import {SlugToIdService} from '../../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../../shared/url/url.const';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {TabComponent} from '../tabs/tab/tab.component';
 import {TabsComponent} from '../tabs/tabs.component';
 import {CommonModule} from '@angular/common';
+import {SafeHtmlPipe} from '../../shared/safeHtml/safeHtml.pipe';
 
 @Component({
 	selector: 'app-component-pages',
 	templateUrl: './component-pages.component.html',
 	styleUrls: ['./component-pages.component.scss'],
 	standalone: true,
-	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe]
+	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe]
 })
 export class ComponentPagesComponent implements OnInit, OnDestroy {
-	@ViewChild(CodeExampleDirective, {static: true}) codeExample!: CodeExampleDirective;
+	@ViewChild(CodeExampleDirective, {static: false}) codeExample!: CodeExampleDirective;
+	@ViewChild('tabs') tabs: TabsComponent;
 	readonly componentId = 'component-page';
 
 	title = '';
 
-	readonly apiContent$: BehaviorSubject<SafeHtml> = new BehaviorSubject<SafeHtml>('');
-	readonly uiUxContent$: BehaviorSubject<SafeHtml> = new BehaviorSubject<SafeHtml>('');
+	public apiContent$: Observable<SafeHtml>;
+	public codeExampleComponent$: Observable<Type<CodeExamples> | undefined>;
+	public uiUxContent$: Observable<SafeHtml>;
 
-	private readonly subscriptions: Subscription[] = [];
+	private readonly apiContentSource: BehaviorSubject<SafeHtml> = new BehaviorSubject<SafeHtml>('');
+	private readonly codeExampleComponentSource: BehaviorSubject<Type<CodeExamples> | undefined> = new BehaviorSubject<
+		Type<CodeExamples> | undefined
+	>(undefined);
+	private readonly uiUxContentSource: BehaviorSubject<SafeHtml> = new BehaviorSubject<SafeHtml>('');
 
-	private readonly cmsDataService = inject(CmsDataService);
-	private readonly domSanitizer = inject(DomSanitizer);
-	private readonly slugToIdService = inject(SlugToIdService);
-	private readonly router = inject(Router);
+	private readonly unsubscribe = new Subject<void>();
+
 	private readonly activatedRoute = inject(ActivatedRoute);
+	private readonly cmsDataService = inject(CmsDataService);
+	private readonly router = inject(Router);
+	private readonly slugToIdService = inject(SlugToIdService);
 
 	ngOnInit(): void {
-		this.subscriptions.push(
-			this.slugToIdService.readyToMap.subscribe(() => {
-				this.getContentForSelectedSlug();
-				this.reactToNavigationEnd();
-			})
-		);
+		this.initObservables();
+		this.monitorForComponentPageChanges();
+		this.monitorForSlugToIdChanges();
 	}
 
 	ngOnDestroy(): void {
-		this.subscriptions.forEach(subscription => subscription.unsubscribe());
-	}
-
-	private reactToNavigationEnd(): void {
-		this.subscriptions.push(
-			this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-				this.getContentForSelectedSlug();
-			})
-		);
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
 	}
 
 	private getContentForSelectedSlug(): void {
@@ -66,26 +63,62 @@ export class ComponentPagesComponent implements OnInit, OnDestroy {
 	}
 
 	private getContent(id: number): void {
-		this.subscriptions.push(
-			this.cmsDataService.getComponentPagesComplete(id).subscribe(cmsData => {
+		this.cmsDataService
+			.getComponentPagesComplete(id)
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(cmsData => {
 				this.title = cmsData.data.name;
-				this.uiUxContent$.next(this.domSanitizer.bypassSecurityTrustHtml(cmsData.data.ui_ux));
-				this.apiContent$.next(this.domSanitizer.bypassSecurityTrustHtml(cmsData.data.api));
-				this.loadCodeExample(cmsData.data.slug);
-			})
-		);
+				this.apiContentSource.next(cmsData.data.api);
+				this.uiUxContentSource.next(cmsData.data.ui_ux);
+				this.codeExampleComponentSource.next(CodeExamplesMapper.getCodeExampleComponent(cmsData.data.slug));
+			});
 	}
 
-	private loadCodeExample(slug: string): void {
+	private initObservables(): void {
+		this.apiContent$ = this.apiContentSource.asObservable();
+		this.codeExampleComponent$ = this.codeExampleComponentSource.asObservable();
+		this.uiUxContent$ = this.uiUxContentSource.asObservable();
+	}
+
+	private loadCodeExample(codeExampleComponent: Type<CodeExamples> | undefined): void {
 		const {viewContainerRef} = this.codeExample;
 		viewContainerRef.clear();
 
-		const codeExampleComponent: Type<CodeExamples> = CodeExamplesMapper.getCodeExampleComponent(slug);
-
 		if (codeExampleComponent) {
 			viewContainerRef.createComponent<CodeExamples>(codeExampleComponent);
-		} else {
-			viewContainerRef.createComponent<CodeExamples>(NoCodeExamplesMatchComponent);
 		}
+	}
+
+	private monitorForComponentPageChanges(): void {
+		this.apiContent$
+			.pipe(takeUntil(this.unsubscribe), combineLatestWith(this.codeExampleComponent$, this.uiUxContent$), debounceTime(1))
+			.subscribe(next => {
+				const apiContent = next[0];
+				const codeExampleComponent = next[1];
+				const uiUxContent = next[2];
+
+				if (apiContent || codeExampleComponent || uiUxContent) {
+					this.loadCodeExample(codeExampleComponent);
+					this.tabs.setDefaultTabSelected();
+				}
+			});
+	}
+
+	private monitorForNavigationEndEvents(): void {
+		this.router.events
+			.pipe(
+				takeUntil(this.unsubscribe),
+				filter(event => event instanceof NavigationEnd)
+			)
+			.subscribe(() => {
+				this.getContentForSelectedSlug();
+			});
+	}
+
+	private monitorForSlugToIdChanges(): void {
+		this.slugToIdService.readyToMap.pipe(takeUntil(this.unsubscribe), delay(0)).subscribe(() => {
+			this.getContentForSelectedSlug();
+			this.monitorForNavigationEndEvents();
+		});
 	}
 }
