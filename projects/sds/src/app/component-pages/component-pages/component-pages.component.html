@@ -1,11 +1,12 @@
 <h1>{{ title }}</h1>
-
-<app-tabs [idPrefix]="componentId" [id]="componentId | id : ['tabs']">
-	<app-tab name="Examples" [id]="componentId | id : ['examples-tab']"> <ng-template appCodeExample></ng-template> </app-tab>
-	<app-tab name="UI/UX" [id]="componentId | id : ['ui-ux-tab']">
-		<div [id]="componentId | id : ['html-container']" [innerHtml]="uiUxContent$ | async"></div
+<app-tabs #tabs [idPrefix]="componentId" [id]="componentId | id : ['tabs']">
+	<app-tab name="Examples" [hidden]="!!!(codeExampleComponent$ | async)" [id]="componentId | id : ['examples-tab']">
+		<ng-template appCodeExample></ng-template>
+	</app-tab>
+	<app-tab name="UI/UX" [hidden]="!!!(uiUxContent$ | async)" [id]="componentId | id : ['ui-ux-tab']">
+		<div [id]="componentId | id : ['html-container']" [innerHtml]="uiUxContent$ | async | safeHtml"></div
 	></app-tab>
-	<app-tab name="API" [id]="componentId | id : ['api-tab']">
-		<div [id]="componentId | id : ['html-container']" [innerHtml]="apiContent$ | async"></div>
+	<app-tab name="API" [hidden]="!!!(apiContent$ | async)" [id]="componentId | id : ['api-tab']">
+		<div [id]="componentId | id : ['html-container']" [innerHtml]="apiContent$ | async | safeHtml"></div>
 	</app-tab>
 </app-tabs>
