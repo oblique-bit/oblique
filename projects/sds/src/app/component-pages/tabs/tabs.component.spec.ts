@@ -8,10 +8,10 @@ import {UnitTestHelpers} from '../../../test-helpers/unit-test-helpers/unit-test
 @Component({
 	selector: 'app-tabs-wrapper',
 	template: `<app-tabs [idPrefix]="componentId" [id]="componentId | id : ['tabs']">
-		<app-tab title="test-tab-1" [active]="true" [idPrefix]="componentId | id : ['tab', 1]" [id]="componentId | id : ['tab', 1]">
+		<app-tab name="test-tab-1" [active]="true" [idPrefix]="componentId | id : ['tab', 1]" [id]="componentId | id : ['tab', 1]">
 			<p [id]="componentId | id : ['tab-1-content']">test-tab-1-p</p></app-tab
 		>
-		<app-tab title="test-tab-2" [active]="false" [idPrefix]="componentId | id : ['tab', 2]" [id]="componentId | id : ['tab', 2]">
+		<app-tab name="test-tab-2" [active]="false" [idPrefix]="componentId | id : ['tab', 2]" [id]="componentId | id : ['tab', 2]">
 			<p [id]="componentId | id : ['tab-2-content']">test-tab-2-p</p></app-tab
 		>
 	</app-tabs>`

@@ -23,7 +23,7 @@ export class TabsComponent implements AfterContentInit {
 
 	selectTab(selectedTab: TabComponent): void {
 		this.tabs.toArray().forEach(tab => {
-			if (selectedTab.title === tab.title) {
+			if (selectedTab.name === tab.name) {
 				selectedTab.updateActive(true);
 			} else {
 				tab.updateActive(false);

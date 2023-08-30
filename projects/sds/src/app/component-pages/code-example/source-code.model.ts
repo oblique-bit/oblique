@@ -1,14 +1,14 @@
 export class SourceCode {
 	sourceCode: string;
-	title: string;
+	name: string;
 
 	/**
 	 *
 	 * @param sourceCode must be one of the following languages: 'html', 'scss' or 'ts'
-	 * @param title will be used as tab title
+	 * @param name will be used as tab title
 	 */
-	constructor(sourceCode: string, title: string) {
+	constructor(sourceCode: string, name: string) {
 		this.sourceCode = sourceCode;
-		this.title = title;
+		this.name = name;
 	}
 }
