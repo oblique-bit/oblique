@@ -1,0 +1,6 @@
+@use "../../core/variables";
+
+@mixin focus-highlight {
+	background-color: variables.$ob-secondary-50;
+	border: 1px solid variables.$ob-secondary-200;
+}

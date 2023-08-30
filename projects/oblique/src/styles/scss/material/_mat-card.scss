@@ -1,13 +1,16 @@
 @use "../core/variables";
 @use "../core/mixins/shadow";
 @use "../core/mixins/typography";
+@use "mixins/_mat-card.scss";
 
 .mat-mdc-button-base.ob-button.mat-mdc-button.mat-mdc-button-base.ob-button-card {
 	height: initial;
 }
 
 .mat-mdc-card {
-	border: 1px solid variables.$ob-secondary-200;
+	&.mdc-card {
+		border: 1px solid variables.$ob-secondary-100;
+	}
 
 	&:not([class*="mat-elevation-z"]) {
 		@include shadow.ob-shadow-lg();
@@ -60,14 +63,19 @@
 	}
 
 	&.ob-selectable {
-		&.ob-selected {
+		&.ob-selected:not(:focus-visible) {
 			@include shadow.ob-shadow-xl();
 			background-color: variables.$ob-secondary-100;
+			border: 1px solid variables.$ob-secondary-200;
 		}
 
-		&:hover {
+		&:hover:not(:focus-visible, [disabled]) {
 			@include shadow.ob-shadow-xl();
-			background-color: variables.$ob-secondary-50;
+			@include mat-card.focus-highlight();
+		}
+
+		&:focus-visible:not([disabled]) {
+			@include mat-card.focus-highlight();
 		}
 
 		& > *:not(img):first-child {
@@ -119,16 +127,6 @@
 				border-radius: 50%;
 				background-color: variables.$ob-primary;
 				z-index: 1;
-			}
-		}
-	}
-
-	@at-root {
-		.ob-button-card &,
-		.ob-link-card & {
-			&:hover {
-				@include shadow.ob-shadow-xl();
-				background-color: variables.$ob-secondary-50;
 			}
 		}
 	}
@@ -186,5 +184,17 @@
 		&.mat-mdc-button-base.ob-button {
 			line-height: inherit;
 		}
+	}
+}
+
+.ob-button-card,
+.ob-link-card {
+	&:hover:not(:focus-visible, [disabled]) .mat-mdc-card.mdc-card {
+		@include shadow.ob-shadow-xl();
+		@include mat-card.focus-highlight();
+	}
+
+	&:focus-visible:not([disabled]) .mat-mdc-card.mdc-card {
+		@include mat-card.focus-highlight();
 	}
 }
