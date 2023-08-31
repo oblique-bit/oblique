@@ -37,15 +37,6 @@
           "since": "2.0.0"
         },
         {
-          "name": "variant",
-          "text": "Classes applied to the component to customize it.",
-          "type": "string",
-          "deprecated": "10.2.1",
-          "default": "nav-bordered nav-hover",
-          "values": ["nav-bordered", "nav-hover"],
-          "since": "2.0.0"
-        },
-        {
           "name": "activateAncestors",
           "text": "Whether active link's ancestors also be active.",
           "type": "boolean",

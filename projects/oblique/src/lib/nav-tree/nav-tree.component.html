@@ -34,7 +34,6 @@
 			<div [id]="'#' + itemKey(item)" class="collapse" *ngIf="item.items" [hidden]="isParentCollapsed || item.collapsed">
 				<ul
 					class="ob-nav-tree"
-					[ngClass]="variant"
 					[class.ob-expanded]="!isParentCollapsed && !item.collapsed"
 					[class.disabled]="item.disabled === true || null"
 					role="group"
@@ -52,7 +51,6 @@
 	#root
 	class="ob-nav-tree ob-nav-indent ob-nav-toggle ob-expanded"
 	role="tree"
-	[ngClass]="variant"
 	[attr.aria-labelledby]="treeAriaLabelledBy"
 	[attr.aria-label]="treeAriaLabel"
 >

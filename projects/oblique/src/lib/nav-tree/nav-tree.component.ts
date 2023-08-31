@@ -15,7 +15,6 @@ import {Subject} from 'rxjs';
 })
 export class ObNavTreeComponent implements OnDestroy {
 	static DEFAULTS = {
-		VARIANT: 'ob-nav-bordered ob-nav-hover',
 		HIGHLIGHT: 'ob-pattern-highlight',
 		LABEL_FORMATTER: defaultLabelFormatterFactory
 	};
@@ -27,10 +26,6 @@ export class ObNavTreeComponent implements OnDestroy {
 	@Input() labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(
 		this.translate
 	);
-	/**
-	 * @deprecated since version 10.3.0. It will be removed with Oblique 11 with no replacement
-	 */
-	@Input() variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	/**
 	 * @deprecated since version 10.2.0. It will be removed with Oblique 11, and it won't be possible to deactivate the ancestors anymore
 	 */

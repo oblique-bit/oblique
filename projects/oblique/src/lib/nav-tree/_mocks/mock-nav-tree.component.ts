@@ -19,7 +19,6 @@ export class ObMockNavTreeComponent {
 	@Input() prefix = 'nav-tree';
 	@Input() filterPattern: string;
 	@Input() labelFormatter: any;
-	@Input() variant = ObMockNavTreeComponent.DEFAULTS.VARIANT;
 	@Input() activateAncestors = true;
 
 	@Input() patternMatcher(item: ObNavTreeItemModel, pattern = ''): boolean {
