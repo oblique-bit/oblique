@@ -45,7 +45,7 @@ export class CodeExamplesMapper {
 		tooltip: TooltipCodeExamplesComponent
 	};
 
-	static getCodeExampleComponent(slug: string): Type<CodeExamples> {
+	static getCodeExampleComponent(slug: string): Type<CodeExamples> | undefined {
 		return this.codeExamples[slug];
 	}
 }
