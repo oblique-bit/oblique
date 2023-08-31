@@ -10,5 +10,6 @@ export class ObMockGlobalEventsService {
 	public readonly keyUp$ = of({} as KeyboardEvent);
 	public readonly keyDown$ = of({} as KeyboardEvent);
 	public readonly scroll$ = of({} as Event);
+	public readonly wheel$ = of({} as Event);
 	public readonly resize$ = of({} as UIEvent);
 }

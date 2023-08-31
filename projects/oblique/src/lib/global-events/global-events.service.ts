@@ -14,6 +14,7 @@ export class ObGlobalEventsService {
 	public readonly keyDown$: Observable<KeyboardEvent>;
 	public readonly keyUp$: Observable<KeyboardEvent>;
 	public readonly scroll$: Observable<Event>;
+	public readonly wheel$: Observable<Event>;
 	public readonly resize$: Observable<UIEvent>;
 
 	constructor(@Inject(DOCUMENT) document: Document, @Inject(WINDOW) window: Window) {
@@ -24,6 +25,7 @@ export class ObGlobalEventsService {
 		this.keyDown$ = fromEvent<KeyboardEvent>(document, 'keydown');
 		this.keyUp$ = fromEvent<KeyboardEvent>(document, 'keyup');
 		this.scroll$ = fromEvent<Event>(window, 'scroll');
+		this.wheel$ = fromEvent<Event>(window, 'wheel');
 		this.resize$ = fromEvent<UIEvent>(window, 'resize');
 	}
 }

@@ -1,18 +1,31 @@
-import {Component, ContentChildren, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, ViewEncapsulation} from '@angular/core';
+import {Component, ContentChildren, Input, OnInit, Output, QueryList, ViewEncapsulation} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObEPamsEnvironment, ObIServiceNavigationContact, ObIServiceNavigationLink, ObLoginState} from './service-navigation.model';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
+import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
+import {ObServiceNavigationTimeoutCookieService} from './timeout/service-navigation-timeout-cookie.service';
+import {ObServiceNavigationTimeoutCookieActivityService} from './timeout/service-navigation-timeout-cookie-activity.service';
+import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
+import {ObServiceNavigationTimeoutReturnUrlService} from './timeout/service-navigation-timeout-return-url.service';
 
 @Component({
 	selector: 'ob-service-navigation',
 	templateUrl: './service-navigation.component.html',
 	styleUrls: ['./service-navigation.component.scss'],
-	providers: [ObServiceNavigationService, ObServiceNavigationApplicationsService],
+	providers: [
+		ObServiceNavigationService,
+		ObServiceNavigationApplicationsService,
+		ObServiceNavigationTimeoutService,
+		ObServiceNavigationTimeoutCookieService,
+		ObServiceNavigationTimeoutRedirectorService,
+		ObServiceNavigationTimeoutCookieActivityService,
+		ObServiceNavigationTimeoutReturnUrlService
+	],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation'}
 })
-export class ObServiceNavigationComponent implements OnInit, OnChanges {
+export class ObServiceNavigationComponent implements OnInit {
 	@Input() profileLinks: ObIServiceNavigationLink[] = [];
 	@Input() infoLinks: ObIServiceNavigationLink[] = [];
 	@Input() infoContact: ObIServiceNavigationContact;
@@ -20,20 +33,25 @@ export class ObServiceNavigationComponent implements OnInit, OnChanges {
 	@Input() maxFavoriteApplications = 3;
 	@Input() environment: ObEPamsEnvironment;
 	@Input() rootUrl: string;
-	@Input() returnUrl: string;
+	@Input()
+	set returnUrl(newReturnUrl) {
+		this.headerControlsService.setReturnUrl(newReturnUrl);
+	}
 	@Input() displayMessage = false;
 	@Input() displayInfo = false;
 	@Input() displayApplications = false;
 	@Input() displayProfile = false;
 	@Input() displayAuthentication = false;
 	@Input() displayLanguages = true;
-	@Input() handleLogout = true;
+	@Input()
+	set handleLogout(newHandleLogout: boolean) {
+		this.headerControlsService.setHandleLogout(newHandleLogout);
+	}
 	@Output()
 	readonly loginState: Observable<ObLoginState> = this.headerControlsService.getLoginState$();
-	@Output() readonly logoutTriggered = new EventEmitter<string>();
+	@Output() readonly logoutTriggered = this.headerControlsService.getLogoutTrigger$();
 	@ContentChildren('customWidgetTemplate') customWidgetTemplate: QueryList<unknown>;
 	readonly loginUrl$ = this.headerControlsService.getLoginUrl$();
-	readonly logoutUrl$ = this.headerControlsService.getLogoutUrl$();
 	readonly loginState$ = this.headerControlsService.getLoginState$();
 	readonly userName$ = this.headerControlsService.getUserName$();
 	readonly settingsUrl$ = this.headerControlsService.getSettingsUrl$();
@@ -50,17 +68,14 @@ export class ObServiceNavigationComponent implements OnInit, OnChanges {
 
 	ngOnInit(): void {
 		this.headerControlsService.setUpRootUrls(this.environment, this.rootUrl);
-	}
-
-	ngOnChanges(): void {
-		this.headerControlsService.setReturnUrl(this.returnUrl);
+		this.headerControlsService.setHandleLogout(this.handleLogout);
 	}
 
 	changeLanguage(language: string): void {
 		this.headerControlsService.setLanguage(language);
 	}
 
-	handleLogoutClick(logoutURL: string): void {
-		this.logoutTriggered.emit(logoutURL);
+	logoutClick(): void {
+		this.headerControlsService.logout();
 	}
 }

@@ -10,8 +10,12 @@ export class ObEportalCsrfInterceptor implements HttpInterceptor {
 			const cookieName = 'pams-csrf-token';
 			const headerName = 'Pams-Csrf-Token';
 
+			const cookie = Cookies.get(cookieName);
+			if (cookie === undefined) {
+				return next.handle(httpRequest);
+			}
 			const headers = {
-				[headerName]: Cookies.get(cookieName)
+				[headerName]: cookie
 			};
 			const modifiedReq = httpRequest.clone({setHeaders: headers});
 

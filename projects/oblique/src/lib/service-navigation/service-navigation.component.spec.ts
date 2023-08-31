@@ -15,6 +15,8 @@ import {ObServiceNavigationComponent} from './service-navigation.component';
 import {ObServiceNavigationHarness} from './service-navigation.harness';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObEPamsEnvironment, ObLoginState} from './service-navigation.model';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 @Component({
 	template: `<ob-service-navigation>
@@ -34,11 +36,10 @@ describe('ObServiceNavigationComponent', () => {
 	let service: ObServiceNavigationService;
 	let harness: ObServiceNavigationHarness;
 	const mockLoginState = new BehaviorSubject<ObLoginState>('SA');
-	const mockService = {
+	const mockServiceNavigationService = {
 		setUpRootUrls: jest.fn(),
 		setReturnUrl: jest.fn(),
 		getLoginUrl$: jest.fn().mockReturnValue(of('loginUrl')),
-		getLogoutUrl$: jest.fn().mockReturnValue(of('logoutUrl')),
 		getSettingsUrl$: jest.fn().mockReturnValue(of('settingsUrl')),
 		getInboxMailUrl$: jest.fn().mockReturnValue(of('inboxMailUrl')),
 		getUserName$: jest.fn().mockReturnValue(of('John Doe')),
@@ -50,8 +51,12 @@ describe('ObServiceNavigationComponent', () => {
 		getFavoriteApplications$: jest.fn().mockReturnValue(of([{test: true}])),
 		getLanguage$: jest.fn().mockReturnValue(of('en')),
 		getLanguages: jest.fn().mockReturnValue([{code: 'en', label: 'English'}]),
-		setLanguage: jest.fn()
+		setLanguage: jest.fn(),
+		logout: jest.fn(),
+		getLogoutTrigger$: jest.fn(),
+		setHandleLogout: jest.fn()
 	};
+
 	const selectors = {
 		auth: ObServiceNavigationAuthenticationHarness.hostSelector,
 		profile: ObServiceNavigationProfileHarness.hostSelector,
@@ -62,9 +67,10 @@ describe('ObServiceNavigationComponent', () => {
 	};
 
 	beforeEach(() => {
-		TestBed.overrideProvider(ObServiceNavigationService, {useValue: mockService});
+		TestBed.overrideProvider(ObServiceNavigationService, {useValue: mockServiceNavigationService});
 		TestBed.configureTestingModule({
-			declarations: [ObServiceNavigationComponent, ObIsUserLoggedInPipe, CustomControlsTestComponent]
+			declarations: [ObServiceNavigationComponent, ObIsUserLoggedInPipe, CustomControlsTestComponent],
+			imports: [RouterTestingModule, HttpClientTestingModule]
 		}).compileComponents();
 	});
 
@@ -148,7 +154,6 @@ describe('ObServiceNavigationComponent', () => {
 			describe('with "http://localhost/"', () => {
 				beforeEach(() => {
 					component.returnUrl = 'http://localhost/';
-					component.ngOnChanges();
 				});
 
 				it('should call "setReturnUrl" once', () => {
@@ -185,9 +190,11 @@ describe('ObServiceNavigationComponent', () => {
 			});
 		});
 
-		describe('handleLogout', () => {
-			it('should be initialized to true', () => {
-				expect(component.handleLogout).toBe(true);
+		describe('handleLogout setter', () => {
+			it('should set the value correctly ', () => {
+				const expectedResult = false;
+				component.handleLogout = expectedResult;
+				expect(mockServiceNavigationService.setHandleLogout).toBeCalledWith(expectedResult);
 			});
 		});
 
@@ -217,7 +224,6 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe.each([
 			{property: 'loginUrl$', method: 'getLoginUrl$', emit: 'loginUrl'},
-			{property: 'logoutUrl$', method: 'getLogoutUrl$', emit: 'logoutUrl'},
 			{property: 'settingsUrl$', method: 'getSettingsUrl$', emit: 'settingsUrl'},
 			{property: 'userName$', method: 'getUserName$', emit: 'John Doe'},
 			{property: 'avatarUrl$', method: 'getAvatarUrl$', emit: 'http://avatar-url'},
@@ -268,18 +274,13 @@ describe('ObServiceNavigationComponent', () => {
 			});
 		});
 
-		describe('handleLogoutClick', () => {
+		describe('logoutClick', () => {
 			beforeEach(() => {
-				jest.spyOn(component.logoutTriggered, 'emit');
-				component.handleLogoutClick('https://pams/api/logout');
+				component.logoutClick();
 			});
 
-			it('should call the logoutTriggered Emitter once', () => {
-				expect(component.logoutTriggered.emit).toHaveBeenCalledTimes(1);
-			});
-
-			it('should call the logoutTriggered Emitter with "https://pams/api/logout"', () => {
-				expect(component.logoutTriggered.emit).toHaveBeenCalledWith('https://pams/api/logout');
+			it('should call "ObServiceNavigationTimeoutRedirectorService.logout" once', () => {
+				expect(mockServiceNavigationService.logout).toHaveBeenCalledTimes(1);
 			});
 		});
 
@@ -430,11 +431,11 @@ describe('ObServiceNavigationComponent', () => {
 
 	describe('with two languages', () => {
 		beforeEach(() => {
-			mockService.getLanguages = jest.fn().mockReturnValue([
+			mockServiceNavigationService.getLanguages = jest.fn().mockReturnValue([
 				{code: 'en', label: ''},
 				{code: 'fr', label: ''}
 			]);
-			TestBed.overrideProvider(ObServiceNavigationService, {useValue: mockService});
+			TestBed.overrideProvider(ObServiceNavigationService, {useValue: mockServiceNavigationService});
 		});
 
 		beforeEach(async () => {

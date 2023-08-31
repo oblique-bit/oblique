@@ -9,12 +9,10 @@ import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angula
 })
 export class ObServiceNavigationAuthenticationComponent {
 	@Input() loginUrl = '';
-	@Input() logoutUrl = '';
 	@Input() isLoggedIn = false;
-	@Input() handleLogout = true;
-	@Output() readonly logoutClicked = new EventEmitter<string>();
+	@Output() readonly logoutClicked = new EventEmitter();
 
-	handleLogoutClick(): void {
-		this.logoutClicked.emit(this.logoutUrl);
+	logoutClick(): void {
+		this.logoutClicked.emit();
 	}
 }
