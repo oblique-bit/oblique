@@ -11,6 +11,8 @@
 	.ob-nav-link {
 		display: block;
 		padding: variables.$ob-spacing-xs variables.$ob-spacing-default;
+		border-bottom: 1px solid variables.$ob-gray-light;
+		@include nav.ob-nav-hover(-1);
 		text-decoration: none;
 		color: variables.$ob-default;
 
@@ -26,18 +28,6 @@
 		@include nav.ob-nav-indent();
 	}
 
-	&.ob-nav-bordered .ob-nav-link {
-		border-bottom: 1px solid variables.$ob-gray-light;
-	}
-
-	&.ob-nav-hover.ob-nav-bordered .ob-nav-link {
-		@include nav.ob-nav-hover(-1);
-	}
-
-	&.ob-nav-hover:not(.ob-nav-bordered) .ob-nav-link {
-		@include nav.ob-nav-hover();
-	}
-
 	&.ob-nav-toggle {
 		$icon-width: 24px;
 		$indent-material: $icon-width + variables.$ob-spacing-default;
@@ -46,6 +36,7 @@
 			.ob-nav-link {
 				padding-left: $indent-material;
 			}
+
 			@include nav.ob-nav-indent($indent-material);
 		}
 

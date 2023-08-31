@@ -1,6 +1,14 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIMigrations} from './ng-update.model';
-import {applyInTree, createSafeRule, infoMigration, removeImport, replaceInFile, setAngularProjectsConfig} from '../utils';
+import {
+	applyInTree,
+	createSafeRule,
+	infoMigration,
+	removeHtmlTagAttribute,
+	removeImport,
+	replaceInFile,
+	setAngularProjectsConfig
+} from '../utils';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV10Schema {}
@@ -12,6 +20,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 	applyMigrations(_options: IUpdateV10Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) =>
 			chain([
+				this.removeInputVariantInNavTree(),
 				this.removeObSearchBox(),
 				this.removeFakeFocus(),
 				this.replaceScssWithCssStylesInAngularJson(),
@@ -25,6 +34,16 @@ export class UpdateV10toV11 implements ObIMigrations {
 				this.removeContentProjectionMarker('obLocales'),
 				this.removeActivateServiceNavigationToken()
 			])(tree, _context);
+	}
+
+	private removeInputVariantInNavTree(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove the @Input "variant" in the nav-tree component');
+			const apply = (filePath: string): void => {
+				removeHtmlTagAttribute(tree, filePath, 'ob-nav-tree', 'variant');
+			};
+			return applyInTree(tree, apply, '*.html');
+		});
 	}
 
 	private removeObSearchBox(): Rule {

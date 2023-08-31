@@ -289,6 +289,13 @@ export function getProjectList(tree: Tree): string[] {
 	return Object.keys(getJsonProperty(json, 'projects'));
 }
 
+export function removeHtmlTagAttribute(tree: Tree, fileName: string, tagName: string, attributeName: string): void {
+	tree.overwrite(
+		fileName,
+		readFile(tree, fileName).replace(new RegExp(`(?<=<${tagName}.+)\\s*\\[?${attributeName}\\]?(?:=["']{1,2}.*?["']{1,2})?`, 'gs'), '')
+	);
+}
+
 function extractDirectoryFromPath(filePath: string): string {
 	return /(?<directory>.*\/)/.exec(filePath)?.groups?.directory ?? '';
 }

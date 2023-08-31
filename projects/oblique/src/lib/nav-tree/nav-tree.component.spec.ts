@@ -12,7 +12,6 @@ import {ObNavTreeComponent} from './nav-tree.component';
 	template: ` <ob-nav-tree
 		[items]="items"
 		[prefix]="prefix"
-		[variant]="variant"
 		[filterPattern]="filterPattern"
 		[labelFormatter]="labelFormatter"
 		[activateAncestors]="activateAncestors"
@@ -50,7 +49,6 @@ class TestComponent {
 	];
 
 	prefix = 'nav-tree-test';
-	variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	filterPattern: string;
 	public activateAncestors = true;
 
@@ -102,14 +100,6 @@ describe('NavTreeComponent', () => {
 
 		const navItems = fixture.debugElement.queryAll(By.css('li'));
 		expect(navItems.length).toBe(13);
-	});
-
-	it('should add a variant CSS class to the navigation trees', () => {
-		testComponent.variant = 'ob-nav-custom';
-		fixture.detectChanges();
-
-		const navTrees = fixture.debugElement.queryAll(By.css('.ob-nav-tree.ob-nav-custom'));
-		expect(navTrees.length).toBe(4);
 	});
 
 	// fit('should activate one navigation item on click', () => {
