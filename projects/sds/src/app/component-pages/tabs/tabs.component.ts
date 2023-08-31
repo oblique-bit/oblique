@@ -17,8 +17,7 @@ export class TabsComponent implements AfterContentInit {
 	readonly componentId = 'tabs';
 
 	ngAfterContentInit(): void {
-		const defaultSelectedTab: TabComponent = this.tabs.find(tab => !!tab.initiallyActive) ?? this.tabs.first;
-		this.selectTab(defaultSelectedTab);
+		this.setDefaultTabSelected();
 	}
 
 	selectTab(selectedTab: TabComponent): void {
@@ -29,5 +28,13 @@ export class TabsComponent implements AfterContentInit {
 				tab.updateActive(false);
 			}
 		});
+	}
+
+	setDefaultTabSelected(): void {
+		this.selectTab(this.getDefaultTab());
+	}
+
+	private getDefaultTab(): TabComponent {
+		return this.tabs.find(tab => !!tab.initiallyActive && !tab.hidden) ?? this.tabs.first;
 	}
 }

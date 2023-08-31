@@ -3,6 +3,7 @@
 		*ngFor="let tab of tabs; let i = index"
 		type="button"
 		[class.active]="tab.active"
+		[hidden]="tab.hidden"
 		[id]="idPrefix | id : [componentId, 'button', i]"
 		(click)="selectTab(tab)"
 	>
