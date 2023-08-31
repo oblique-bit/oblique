@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, ReplaySubject, switchMap} from 'rxjs';
 import {combineLatestWith, distinctUntilChanged, map, shareReplay, startWith, tap} from 'rxjs/operators';
@@ -7,6 +7,8 @@ import {ObServiceNavigationConfigApiService} from './api/service-navigation-conf
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
 import {ObIServiceNavigationApplicationParsedInfo, ObIServiceNavigationState} from './api/service-navigation.api.model';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
+import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
+import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
 
 @Injectable()
 export class ObServiceNavigationService {
@@ -21,21 +23,24 @@ export class ObServiceNavigationService {
 	private readonly returnUrl$ = new ReplaySubject<string>(1);
 	private readonly config$ = this.rootUrl$.pipe(
 		switchMap(rootUrl =>
-			this.configService
-				.fetchUrls(rootUrl)
-				.pipe(tap(data => this.pollingService.initializeStateUpdate(data.pollingInterval, data.pollingNotificationsInterval, rootUrl)))
+			this.configService.fetchUrls(rootUrl).pipe(
+				tap(data => this.pollingService.initializeStateUpdate(data.pollingInterval, data.pollingNotificationsInterval, rootUrl)),
+				tap(() => (this.timeoutService.rootUrl = rootUrl)),
+				tap(data => (this.timeoutService.logoutUrl = data.logout.url)),
+				tap(data => (this.redirectorService.logoutUrl = data.logout.url))
+			)
 		),
 		shareReplay(1)
 	);
-
-	constructor(
-		private readonly configService: ObServiceNavigationConfigApiService,
-		private readonly pollingService: ObServiceNavigationPollingService,
-		private readonly applicationsService: ObServiceNavigationApplicationsService,
-		private readonly translateService: TranslateService
-	) {}
+	private readonly configService = inject(ObServiceNavigationConfigApiService);
+	private readonly pollingService = inject(ObServiceNavigationPollingService);
+	private readonly applicationsService = inject(ObServiceNavigationApplicationsService);
+	private readonly translateService = inject(TranslateService);
+	private readonly redirectorService = inject(ObServiceNavigationTimeoutRedirectorService);
+	private readonly timeoutService = inject(ObServiceNavigationTimeoutService);
 
 	setUpRootUrls(environment: ObEPamsEnvironment, rootUrl?: string): void {
+		this.timeoutService.setUpEportalUrl(environment);
 		// can't use !environment as ObEPamsEnvironment.PROD is an empty string
 		if (environment !== null && environment !== undefined) {
 			this.rootUrl$.next(rootUrl ?? `https://pams-api.eportal${environment}.admin.ch/`);
@@ -49,6 +54,14 @@ export class ObServiceNavigationService {
 		this.returnUrl$.next(returnUrl);
 	}
 
+	setHandleLogout(handleLogout = true): void {
+		this.redirectorService.handleLogout = handleLogout;
+	}
+
+	getLogoutTrigger$(): Observable<string> {
+		return this.redirectorService.logoutTrigger$;
+	}
+
 	getLoginUrl$(): Observable<string> {
 		return this.config$.pipe(
 			map(config => config.login),
@@ -58,10 +71,6 @@ export class ObServiceNavigationService {
 			this.combineWithLanguage<string>(),
 			map(([url, lang]) => url.replace('<yourLanguageID>', lang))
 		);
-	}
-
-	getLogoutUrl$(): Observable<string> {
-		return this.config$.pipe(map(config => config.logout.url));
 	}
 
 	getSettingsUrl$(): Observable<string> {
@@ -132,6 +141,10 @@ export class ObServiceNavigationService {
 		this.translateService.use(language);
 	}
 
+	logout(): void {
+		this.redirectorService.logout();
+	}
+
 	private getApplications$(applicationListName: 'favoriteApps' | 'lastUsedApps'): Observable<ObIServiceNavigationApplication[]> {
 		return this.rootUrl$.pipe(
 			switchMap(rootUrl =>
@@ -165,7 +178,8 @@ export class ObServiceNavigationService {
 	private getState$(): Observable<ObIServiceNavigationState> {
 		return this.config$.pipe(
 			combineLatestWith(this.pollingService.state$),
-			map(values => values[1])
+			map(values => values[1]),
+			tap(values => (this.timeoutService.loginState = values.loginState))
 		);
 	}
 }

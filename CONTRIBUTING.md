@@ -133,6 +133,8 @@ Just as in the subject, use the imperative, present tense: "change" not "changed
 
 The footer is optional and should contain a reference to an issue if any, e.g.: `OUI-715`.
 
+If you want reference multiple issue numbers (like sub-tasks), you can do it with the following pattern: `<parent-task number> / <sub-task number>`, e.g.: `OUI-42 / OUI-21`.
+
 It should also contain any information about Breaking Changes.
 
 Breaking Changes have to start with the words `BREAKING CHANGE:` followed by a newline. The rest of the commit message is then used for this. Multiple breaking changes can be displayed with bullet points

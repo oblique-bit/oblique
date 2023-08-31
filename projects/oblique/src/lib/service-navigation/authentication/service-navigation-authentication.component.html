@@ -1,21 +1,30 @@
 <a
-	[href]="isLoggedIn ? logoutUrl : loginUrl"
-	[id]="isLoggedIn ? 'ob-service-navigation-authentication-link-to-logout' : 'ob-service-navigation-authentication-link-to-login'"
+	*ngIf="!isLoggedIn"
+	[href]="loginUrl"
+	id="ob-service-navigation-authentication-link-to-login"
 	[isExternalLink]="false"
 	mat-button
 	obButton="secondary"
 	icon="none"
 	class="ob-widget"
-	[matTooltip]="
-		(isLoggedIn
-			? 'i18n.oblique.service-navigation.authentication.tooltip.logout'
-			: 'i18n.oblique.service-navigation.authentication.tooltip.login'
-		) | translate
-	"
+	[matTooltip]="'i18n.oblique.service-navigation.authentication.tooltip.login' | translate"
 >
-	{{
-		(isLoggedIn ? "i18n.oblique.service-navigation.authentication.logout" : "i18n.oblique.service-navigation.authentication.login")
-			| translate
-	}}
-	<mat-icon [svgIcon]="isLoggedIn ? 'logout' : 'login'"></mat-icon>
+	{{ "i18n.oblique.service-navigation.authentication.login" | translate }}
+	<mat-icon svgIcon="login"></mat-icon>
 </a>
+
+<button
+	*ngIf="isLoggedIn"
+	type="button"
+	role="link"
+	id="ob-service-navigation-authentication-button-to-logout"
+	class="ob-widget"
+	mat-button
+	obButton="secondary"
+	[matTooltip]="'i18n.oblique.service-navigation.authentication.tooltip.logout' | translate"
+	[attr.aria-label]="'i18n.oblique.service-navigation.authentication.tooltip.logout' | translate"
+	(click)="logoutClick()"
+>
+	{{ "i18n.oblique.service-navigation.authentication.logout" | translate }}
+	<mat-icon svgIcon="logout"></mat-icon>
+</button>

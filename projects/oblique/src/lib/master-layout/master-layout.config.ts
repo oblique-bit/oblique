@@ -65,7 +65,8 @@ export class ObMasterLayoutConfig {
 			infoContact: {},
 			maxLastUsedApplications: 3,
 			maxFavoriteApplications: 3,
-			displayLanguages: true
+			displayLanguages: true,
+			handleLogout: true
 		}
 	};
 

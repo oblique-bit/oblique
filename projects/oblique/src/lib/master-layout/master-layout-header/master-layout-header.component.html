@@ -81,9 +81,11 @@
 				[displayLanguages]="serviceNavigationConfig?.displayLanguages"
 				[displayMessage]="serviceNavigationConfig?.displayMessage"
 				[displayProfile]="serviceNavigationConfig?.displayProfile"
+				[handleLogout]="serviceNavigationConfig?.handleLogout"
 				[environment]="pamsConfiguration?.environment"
 				[rootUrl]="pamsConfiguration?.rootUrl"
 				(loginState)="emitLoginState($event)"
+				(logoutTriggered)="emitLogoutUrl($event)"
 			>
 				<ng-template #customWidgetTemplate *ngFor="let template of templates">
 					<ng-container [ngTemplateOutlet]="template"></ng-container>

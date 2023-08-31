@@ -30,6 +30,7 @@ export interface ObIServiceNavigationConfig {
 	displayLanguages?: boolean;
 	displayMessage?: boolean;
 	displayProfile?: boolean;
+	handleLogout?: boolean;
 }
 
 export interface ObIMasterLayoutFooter {

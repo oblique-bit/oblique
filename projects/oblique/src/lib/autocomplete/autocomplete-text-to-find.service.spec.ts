@@ -1,5 +1,4 @@
 import {TestBed} from '@angular/core/testing';
-
 import {ObAutocompleteTextToFindService} from './autocomplete-text-to-find.service';
 
 describe('ObAutocompleteTextToFindService', () => {
@@ -40,9 +39,23 @@ describe('ObAutocompleteTextToFindService', () => {
 	});
 
 	describe('escapeRegexCharacter', () => {
-		it('should escape regex character', () => {
-			const escapeString = service.escapeRegexCharacter('{/*}');
-			expect(escapeString).toBe('\\{/\\*\\}');
+		it.each([
+			{value: '[]', expected: '\\[\\]'},
+			{value: '{}', expected: '\\{\\}'},
+			{value: '()', expected: '\\(\\)'},
+			{value: '*', expected: '\\*'},
+			{value: '+', expected: '\\+'},
+			{value: '?', expected: '\\?'},
+			{value: '.', expected: '\\.'},
+			{value: ',', expected: '\\,'},
+			{value: '^', expected: '\\^'},
+			{value: '$', expected: '\\$'},
+			{value: '|', expected: '\\|'},
+			{value: '#', expected: '\\#'},
+			{value: '-', expected: '\\-'}
+		])('should escape $value regex characters', ({value, expected}) => {
+			const escapeString = service.escapeRegexCharacter(value);
+			expect(escapeString).toBe(expected);
 		});
 	});
 });

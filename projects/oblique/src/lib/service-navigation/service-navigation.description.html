@@ -110,3 +110,12 @@
 		language will be displayed. For more configuration details see documentation of <code>ObMasterLayout</code> and <code>Language</code>.
 	</p>
 </details>
+<details>
+	<summary><h3 style="display: inline">Eportal CSRF interceptor</h3></summary>
+	<p>
+		The <code>ObEportalCsrfInterceptor</code> will add a security token inside all your <code>POST</code>, <code>PUT</code>,
+		<code>PATCH</code> and <code>DELETE</code> http calls to PAMS. This interceptor is mandatory for any application which communicates with
+		PAMS, eportal's backend. It will be automatically added if you import either the <code>ObServiceNavigationModule</code> or the
+		<code>ObMasterLayoutModule</code> in your project.
+	</p>
+</details>

@@ -118,6 +118,10 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 		this.masterLayout.header.emitLoginState(loginState);
 	}
 
+	emitLogoutUrl(logoutUrl: string): void {
+		this.masterLayout.header.emitLogoutUrl(logoutUrl);
+	}
+
 	private addActionClass(elt: ElementRef): void {
 		const actionable = ['a', 'button'];
 		if (actionable.includes(elt.nativeElement.nodeName.toLowerCase())) {

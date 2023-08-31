@@ -14,6 +14,8 @@
 		<dd>{{ (globalEvents.keyUp$ | async)?.target || "-" }}</dd>
 		<dt>Scroll</dt>
 		<dd>{{ (globalEvents.scroll$ | async)?.target || "-" }}</dd>
+		<dt>Wheel</dt>
+		<dd>{{ (globalEvents.wheel$ | async)?.target || "-" }}</dd>
 		<dt>Resize</dt>
 		<dd>{{ (globalEvents.resize$ | async)?.target || "-" }}</dd>
 	</dl>

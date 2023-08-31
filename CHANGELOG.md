@@ -1,3 +1,27 @@
+# [10.2.0](https://github.com/oblique-bit/oblique/compare/10.1.2...10.2.0) (2023-08-31)
+
+## Bug Fixes
+
+- **autocomplete:** escape the `-` character in the pattern ([7faa4b4](https://github.com/oblique-bit/oblique/commit/7faa4b40dfd1b1cb33a3042d9e8c5b1c77a7b012))
+- **autocomplete:** test correct value for match ([f48c47c](https://github.com/oblique-bit/oblique/commit/f48c47ccd03dba0ba703cb6a2754c3ae12a10155))
+- **master-layout:** correctly treat forced external links ([4da178f](https://github.com/oblique-bit/oblique/commit/4da178f9fd3b763ba20a79630c6e7ca695d1c9e6))
+- **master-layout:** remove white space wrap restriction in master layout header ([026776f](https://github.com/oblique-bit/oblique/commit/026776f9831787fbd31c7faf8eaf6f25d531d705))
+- **material:** correct selector and adjust display and font-size for mat-icon-button directive ([de5118a](https://github.com/oblique-bit/oblique/commit/de5118a4872a91eea68edeaee124c6ec29351e87))
+- **nav-tree:** invert chevron icons indicating collapsed/expanded states ([3a6be11](https://github.com/oblique-bit/oblique/commit/3a6be11a49bc18e61f247706c84a1a7c80d4e3fc))
+- **translation:** correct typo in English ([1a6f3a3](https://github.com/oblique-bit/oblique/commit/1a6f3a3452e02ab11c96cc0cd79d20be1bc51c9c))
+- **translation:** correct typos in French ([88d2a46](https://github.com/oblique-bit/oblique/commit/88d2a46ccb68081454089624737d2a080b62f902))
+- **translation:** correct typo in French ([0557fcd](https://github.com/oblique-bit/oblique/commit/0557fcdcbc2b18fefdfe52c7bd6157de682d7c1f))
+
+## Features
+
+- **global-events:** add wheel event ([837e96e](https://github.com/oblique-bit/oblique/commit/837e96e70ed559d33bbf1ac74c27b9990a593d73))
+- **icon:** add new icons ([4aac86f](https://github.com/oblique-bit/oblique/commit/4aac86fc62a5a4c48a59b1cdee3e3d264f292408))
+- **master-layout:** add the `handleLogout` configuration option ([fcef075](https://github.com/oblique-bit/oblique/commit/fcef075d283b352e3243b427c72cd577579abc89))
+- **master-layout:** add the `logoutUrl$` observable ([f8a6cee](https://github.com/oblique-bit/oblique/commit/f8a6ceee75d0c45a32d6ed22947022922c72ae5e))
+- **service-navigation:** add eportal csrf interceptor ([633f488](https://github.com/oblique-bit/oblique/commit/633f488e7d8cbe1c22305e5f9042db04e5f4bd56))
+- **service-navigation:** add possibility to handle the logout within the application ([e1702d1](https://github.com/oblique-bit/oblique/commit/e1702d1237901449c83beddd3f275ad8ff59ee2e))
+- **service-navigation:** add timeout feature ([94df3bf](https://github.com/oblique-bit/oblique/commit/94df3bf240afa4ed5ed256ca248d99207a3b6107))
+
 # [10.1.2](https://github.com/oblique-bit/oblique/compare/10.1.1...10.1.2) (2023-06-07)
 
 ## Bug Fixes

@@ -29,8 +29,8 @@
 	<li *ngIf="displayAuthentication">
 		<ob-service-navigation-authentication
 			[loginUrl]="loginUrl$ | async"
-			[logoutUrl]="logoutUrl$ | async"
 			[isLoggedIn]="loginState$ | async | obIsUserLoggedIn : true"
+			(logoutClicked)="logoutClick()"
 		></ob-service-navigation-authentication>
 	</li>
 	<li *ngIf="languages.length > 1 && displayLanguages">

@@ -15,7 +15,7 @@ export class ObHighlightTextPipe implements PipeTransform {
 		const toFind = this.textToFindService.escapeRegexCharacter(textToFind);
 		const regex = this.textToFindService.createTextToFindRegex(pattern, regexFlags, toFind);
 		// If there's no match, just return the original value.
-		if (!regex.test(toFind)) {
+		if (!regex.test(value)) {
 			return value;
 		}
 		return this.sanitizer.bypassSecurityTrustHtml(this.highlightText(value, regex, cssClass));

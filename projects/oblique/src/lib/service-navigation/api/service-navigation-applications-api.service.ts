@@ -21,7 +21,7 @@ export class ObServiceNavigationApplicationsApiService {
 		applications: ObIServiceNavigationApplicationIdentifier[]
 	): Observable<ObIServiceNavigationApplicationInfo[]> {
 		return this.httpClient
-			.post<ObIServiceNavigationResponse & {data: {applications: ObIServiceNavigationApplicationInfo[]}}>(
+			.post<ObIServiceNavigationResponse<{applications: ObIServiceNavigationApplicationInfo[]}>>(
 				rootUrl + this.resourceUrl,
 				{applications},
 				{withCredentials: true}
