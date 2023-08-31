@@ -1,3 +1,8 @@
+<mat-form-field *ngIf="hasFilter">
+	<mat-label>{{ "i18n.oblique.nav-tree.label.filter" | translate }}</mat-label>
+	<input type="text" matInput [(ngModel)]="filterPattern" />
+	<mat-icon svgIcon="search" matIconPrefix></mat-icon>
+</mat-form-field>
 <ng-template #itemList let-items let-isParentCollapsed="isParentCollapsed">
 	<ng-container *ngFor="let item of items">
 		<li

@@ -22,6 +22,7 @@ export class ObNavTreeComponent implements OnDestroy {
 	activeFragment: string; // TODO: remove when https://github.com/angular/angular/issues/13205
 	@Input() items: ObNavTreeItemModel[] = [];
 	@Input() prefix = 'nav-tree';
+	@Input() hasFilter = false;
 	@Input() filterPattern: string;
 	@Input() labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(
 		this.translate
