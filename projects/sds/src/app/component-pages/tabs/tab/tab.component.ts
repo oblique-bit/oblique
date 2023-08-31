@@ -9,6 +9,7 @@ import {CommonModule} from '@angular/common';
 	imports: [CommonModule]
 })
 export class TabComponent implements OnChanges {
+	@Input() hidden = false;
 	@Input() initiallyActive = true;
 	@Input() name = '';
 
