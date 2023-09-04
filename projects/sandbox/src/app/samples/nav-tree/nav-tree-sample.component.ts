@@ -10,7 +10,6 @@ import {Subject} from 'rxjs';
 })
 export class NavTreeSampleComponent implements OnInit, OnDestroy {
 	public items: ObNavTreeItemModel[];
-	public activateAncestors = true;
 
 	public filter = {
 		pattern: null,
