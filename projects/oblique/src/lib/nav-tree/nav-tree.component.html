@@ -20,7 +20,6 @@
 				[routerLink]="item.routes"
 				#rla="routerLinkActive"
 				routerLinkActive
-				[routerLinkActiveOptions]="{ exact: !activateAncestors }"
 				[queryParams]="item.queryParams"
 				[fragment]="item.fragment"
 				(click)="item.collapsed = !item.collapsed"

@@ -21,6 +21,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 		return (tree: Tree, _context: SchematicContext) =>
 			chain([
 				this.removeInputVariantInNavTree(),
+				this.removeInputActivateAncestorsInNavTree(),
 				this.removeObSearchBox(),
 				this.removeFakeFocus(),
 				this.replaceScssWithCssStylesInAngularJson(),
@@ -41,6 +42,16 @@ export class UpdateV10toV11 implements ObIMigrations {
 			infoMigration(_context, 'Remove the @Input "variant" in the nav-tree component');
 			const apply = (filePath: string): void => {
 				removeHtmlTagAttribute(tree, filePath, 'ob-nav-tree', 'variant');
+			};
+			return applyInTree(tree, apply, '*.html');
+		});
+	}
+
+	private removeInputActivateAncestorsInNavTree(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove the @Input "activateAncestors" in the nav-tree component');
+			const apply = (filePath: string): void => {
+				removeHtmlTagAttribute(tree, filePath, 'ob-nav-tree', 'activateAncestors');
 			};
 			return applyInTree(tree, apply, '*.html');
 		});
