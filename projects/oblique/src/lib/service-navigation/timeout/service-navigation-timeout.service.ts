@@ -48,7 +48,7 @@ export class ObServiceNavigationTimeoutService {
 		const logoutReminderUrl = Cookies.get(this.logoutReminderCookieName);
 		const noTimeoutInTheUrl = !this.window.location.href.includes('timeout=true');
 		if (logoutReminderUrl && noTimeoutInTheUrl) {
-			Cookies.remove(this.logoutReminderCookieName);
+			this.cookieService.deleteCookie(this.logoutReminderCookieName);
 			this.window.location.href = logoutReminderUrl;
 		}
 	}

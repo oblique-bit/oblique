@@ -40,8 +40,13 @@ describe('ServiceNavigationTimeout', () => {
 	const fakeApiService = {
 		refreshPamsToken: jest.fn(() => of())
 	};
+	const fakeCookieService = {
+		deleteCookie: jest.fn(() => of()),
+		setShortCookie: jest.fn(() => of()),
+		setCookie: jest.fn(() => of())
+	};
 
-	function configureTestbed(): void {
+	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [BrowserModule, HttpClientTestingModule],
 			providers: [
@@ -55,10 +60,9 @@ describe('ServiceNavigationTimeout', () => {
 				{provide: WINDOW, useValue: fakeWindow}
 			]
 		});
-	}
+		TestBed.overrideProvider(ObServiceNavigationTimeoutCookieService, {useValue: fakeCookieService});
 
-	beforeEach(() => {
-		configureTestbed();
+		fakeCookieService.deleteCookie.mockClear();
 		fakeRedirectorService.redirectOrEmit.mockClear();
 		fakeWindow.location.href = fakeRootUrl;
 
@@ -172,6 +176,16 @@ describe('ServiceNavigationTimeout', () => {
 			jest.advanceTimersByTime(10000);
 
 			expect(fakeWindow.location.href).toBe(newUrl);
+		});
+
+		it('should remove the cookie eportal-logout-reminder before the redirection', () => {
+			const newUrl = 'https://eportal.admin.ch';
+			Cookies.set(logoutReminderCookieName, newUrl);
+			service = TestBed.inject(ObServiceNavigationTimeoutService);
+			service.loginState = 'S3OK';
+
+			jest.advanceTimersByTime(10000);
+			expect(fakeCookieService.deleteCookie).toHaveBeenCalledTimes(1);
 		});
 	});
 });
