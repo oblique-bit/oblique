@@ -12,9 +12,7 @@ $ob-application-icon-size: 2.5em; // empiric value
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		flex-basis: 0;
-		flex-grow: 1;
-		max-width: 50%;
+		width: variables.$ob-service-navigation-applications-width;
 		padding: variables.$ob-spacing-sm;
 		text-decoration: none;
 		color: variables.$ob-default;
