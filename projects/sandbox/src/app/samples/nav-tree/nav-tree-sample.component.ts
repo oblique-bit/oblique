@@ -18,6 +18,7 @@ export class NavTreeSampleComponent implements OnInit, OnDestroy {
 			this.filter.pattern = null;
 		}
 	};
+	public hasEmbeddedFilter = false;
 	private readonly unsubscribe = new Subject<void>();
 
 	constructor(private readonly route: ActivatedRoute) {}
