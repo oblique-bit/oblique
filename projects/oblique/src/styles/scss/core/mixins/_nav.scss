@@ -29,29 +29,25 @@
 }
 
 @mixin ob-nav-indent($base: 0) {
-	$base: $base + variables.$ob-spacing-default;
+	$base: $base + variables.$ob-spacing-sm;
 
 	.ob-nav-tree > li > .ob-nav-link {
 		padding-left: $base;
 	}
 
 	.ob-nav-tree .ob-nav-tree > li > .ob-nav-link {
-		padding-left: $base + variables.$ob-spacing-default;
-		font-size: 90%;
+		padding-left: $base + variables.$ob-spacing-sm;
 	}
 
 	.ob-nav-tree .ob-nav-tree .ob-nav-tree > li > .ob-nav-link {
-		padding-left: $base + variables.$ob-spacing-default + variables.$ob-spacing-sm;
-		font-size: 85%;
+		padding-left: $base + variables.$ob-spacing-sm + variables.$ob-spacing-sm;
 	}
 
 	.ob-nav-tree .ob-nav-tree .ob-nav-tree .ob-nav-tree > li > .ob-nav-link {
-		padding-left: $base + variables.$ob-spacing-default + 2 * variables.$ob-spacing-sm;
-		font-size: 80%;
+		padding-left: $base + variables.$ob-spacing-sm + 2 * variables.$ob-spacing-sm;
 	}
 
 	.ob-nav-tree .ob-nav-tree .ob-nav-tree .ob-nav-tree .ob-nav-tree > li > .ob-nav-link {
-		padding-left: $base + variables.$ob-spacing-default + 3 * variables.$ob-spacing-sm;
-		font-size: 75%;
+		padding-left: $base + variables.$ob-spacing-sm + 3 * variables.$ob-spacing-sm;
 	}
 }

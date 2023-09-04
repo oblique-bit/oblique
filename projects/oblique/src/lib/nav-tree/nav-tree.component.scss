@@ -1,5 +1,11 @@
 @use "../../styles/scss/core/variables";
+@use "../../styles/scss/core/palette";
 @use "../../styles/scss/core/mixins/nav";
+@use "../../styles/scss/core/mixins/shadow";
+
+.ob-nav-indent {
+	@include shadow.ob-shadow-default();
+}
 
 .ob-nav-tree {
 	display: flex;
@@ -10,8 +16,8 @@
 
 	.ob-nav-link {
 		display: block;
-		padding: variables.$ob-spacing-xs variables.$ob-spacing-default;
-		border-bottom: 1px solid variables.$ob-gray-light;
+		padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
+		line-height: variables.$ob-line-height;
 		@include nav.ob-nav-hover(-1);
 		text-decoration: none;
 		color: variables.$ob-default;
@@ -22,10 +28,26 @@
 			color: variables.$ob-gray-dark;
 			cursor: not-allowed;
 		}
+
+		&.expanded,
+		&.active,
+		&:active,
+		&:hover,
+		&:focus {
+			z-index: variables.$ob-z-index-controls + 1;
+
+			&::after {
+				border-left: 3px solid variables.$ob-accent;
+			}
+		}
+	}
+
+	li:not(:last-child) .ob-nav-link {
+		border-bottom: 1px solid variables.$ob-secondary-100;
 	}
 
 	&.ob-nav-indent {
-		@include nav.ob-nav-indent();
+		@include nav.ob-nav-indent(variables.$ob-spacing-sm * 2);
 	}
 
 	&.ob-nav-toggle {
@@ -33,19 +55,17 @@
 		$indent-material: $icon-width + variables.$ob-spacing-default;
 
 		&.ob-nav-indent {
-			.ob-nav-link {
-				padding-left: $indent-material;
-			}
-
-			@include nav.ob-nav-indent($indent-material);
+			position: relative;
 		}
 
 		.ob-icon-wrapper {
 			display: inline-block;
+			width: variables.$ob-spacing-default;
+			margin-right: variables.$ob-spacing-sm;
 		}
 
 		.mat-icon {
-			margin-left: -$indent-material + 5px + variables.$ob-spacing-sm;
+			vertical-align: middle;
 		}
 	}
 
