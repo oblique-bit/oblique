@@ -9,6 +9,7 @@
 		[prefix]="'nav-tree-sample'"
 		[filterPattern]="filter.pattern"
 		[activateAncestors]="activateAncestors"
+		[hasFilter]="hasEmbeddedFilter"
 	>
 		<li class="nav-item nav-header" role="presentation">
 			<h3 class="nav-header-title" *ngIf="!filter.pattern">Menu Sample</h3>
@@ -17,14 +18,21 @@
 	</ob-nav-tree>
 	<div column-right-content>
 		<h2>Controls</h2>
-		<mat-form-field>
-			<mat-label>Filter</mat-label>
-			<input type="text" matInput [(ngModel)]="filter.pattern" #obFilterBox />
-		</mat-form-field>
-		<button type="button" obButton mat-button (click)="obNavTree.collapseAll()">
-			<mat-icon svgIcon="compress"></mat-icon> Collapse All
-		</button>
-		<button type="button" obButton mat-button (click)="obNavTree.expandAll()"><mat-icon svgIcon="expand"></mat-icon> Expand All</button>
+		<fieldset>
+			<legend>Options</legend>
+			<mat-form-field>
+				<mat-label>Filter</mat-label>
+				<input type="text" matInput [(ngModel)]="filter.pattern" #obFilterBox />
+			</mat-form-field>
+			<mat-slide-toggle [(ngModel)]="hasEmbeddedFilter">Embedded filter?</mat-slide-toggle>
+		</fieldset>
+		<fieldset>
+			<legend>Actions</legend>
+			<button type="button" obButton mat-button (click)="obNavTree.collapseAll()">
+				<mat-icon svgIcon="compress"></mat-icon> Collapse All
+			</button>
+			<button type="button" obButton mat-button (click)="obNavTree.expandAll()"><mat-icon svgIcon="expand"></mat-icon> Expand All</button>
+		</fieldset>
 		<fieldset>
 			<legend>Route options</legend>
 			<mat-checkbox [(ngModel)]="activateAncestors">Exact router link for active menu?</mat-checkbox>
