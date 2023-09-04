@@ -14,7 +14,6 @@ import {ObNavTreeComponent} from './nav-tree.component';
 		[prefix]="prefix"
 		[filterPattern]="filterPattern"
 		[labelFormatter]="labelFormatter"
-		[activateAncestors]="activateAncestors"
 	></ob-nav-tree>`
 })
 class TestComponent {
@@ -50,7 +49,6 @@ class TestComponent {
 
 	prefix = 'nav-tree-test';
 	filterPattern: string;
-	public activateAncestors = true;
 
 	labelFormatter(label: string): string {
 		return `${label} - ${this.prefix}`;
