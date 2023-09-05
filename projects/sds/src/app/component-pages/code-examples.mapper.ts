@@ -21,6 +21,7 @@ import {FileUploadCodeExamplesComponent} from './code-examples/file-upload/file-
 import {SlideToggleCodeExamplesComponent} from './code-examples/slide-toggle/slide-toggle-code-examples.component';
 import {TabsCodeExamplesComponent} from './code-examples/tabs/tabs-code-examples.component';
 import {MasterLayoutCodeExamplesComponent} from './code-examples/master-layout/master-layout-code-examples.component';
+import {NavTreeCodeExamplesComponent} from './code-examples/nav-tree/nav-tree-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -38,6 +39,7 @@ export class CodeExamplesMapper {
 		listGroup: ListGroupCodeExamplesComponent,
 		masterLayout: MasterLayoutCodeExamplesComponent,
 		materialTable: MaterialTableCodeExamplesComponent,
+		navTree: NavTreeCodeExamplesComponent,
 		paginator: PaginatorCodeExamplesComponent,
 		progressBar: ProgressBarCodeExamplesComponent,
 		slider: SliderCodeExamplesComponent,

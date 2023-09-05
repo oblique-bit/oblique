@@ -1,0 +1,6 @@
+<div class="buttons">
+	<button type="button" mat-button obButton="primary" (click)="obNavTree.collapseAll()">Collapse all</button>
+	<button type="button" mat-button obButton="primary" (click)="obNavTree.expandAll()">Expand all</button>
+</div>
+
+<ob-nav-tree #obNavTree [items]="items"> </ob-nav-tree>
