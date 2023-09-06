@@ -317,10 +317,15 @@
       "skipTests": false,
       "inlineTemplate": false,
       "prefix": "ob",
-      "style": "scss"
+      "style": "scss",
+      "standalone": true
     },
     "@schematics/angular:directive": {
-      "prefix": "ob"
+      "prefix": "ob",
+      "standalone": true
+    },
+    "@schematics/angular:pipe": {
+      "standalone": true
     },
     "@angular-eslint/schematics:application": {
       "setParserOptionsProject": true
