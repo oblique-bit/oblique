@@ -15,6 +15,8 @@ import {
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {Subject, filter, fromEvent, merge, tap} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {MatIconModule} from '@angular/material/icon';
+import {NgIf} from '@angular/common';
 
 export const OBLIQUE_COLLAPSE_ACTIVE = new InjectionToken<boolean>('OBLIQUE_COLLAPSE_STATUS');
 export const OBLIQUE_COLLAPSE_ICON_POSITION = new InjectionToken<'left' | 'right' | 'justified' | 'none'>('The default icon position');
@@ -43,7 +45,9 @@ export const OBLIQUE_COLLAPSE_DURATION = new InjectionToken<'slow' | 'fast' | nu
 			transition('open <=> close', animate('{{ time }}ms ease-in-out'))
 		])
 	],
-	host: {class: 'ob-collapse'}
+	host: {class: 'ob-collapse'},
+	standalone: true,
+	imports: [NgIf, MatIconModule]
 })
 export class ObCollapseComponent implements AfterViewInit, OnDestroy {
 	static index = 0;

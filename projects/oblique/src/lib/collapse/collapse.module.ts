@@ -1,19 +1,16 @@
-import {MatIconModule} from '@angular/material/icon';
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ObCollapseComponent} from './collapse.component';
 import {obliqueProviders} from '../utilities';
+import {ObCollapseComponent} from './collapse.component';
 
 export {
-	ObCollapseComponent,
 	OBLIQUE_COLLAPSE_ACTIVE,
+	OBLIQUE_COLLAPSE_DURATION,
 	OBLIQUE_COLLAPSE_ICON_POSITION,
-	OBLIQUE_COLLAPSE_DURATION
+	ObCollapseComponent
 } from './collapse.component';
 
 @NgModule({
-	imports: [CommonModule, MatIconModule],
-	declarations: [ObCollapseComponent],
+	imports: [ObCollapseComponent],
 	providers: obliqueProviders(),
 	exports: [ObCollapseComponent]
 })
