@@ -4,7 +4,7 @@ import {ObMockButtonDirective} from './mock-button.directive';
 export {ObMockButtonDirective} from './mock-button.directive';
 
 @NgModule({
-	declarations: [ObMockButtonDirective],
+	imports: [ObMockButtonDirective],
 	exports: [ObMockButtonDirective]
 })
 export class ObMockButtonModule {}

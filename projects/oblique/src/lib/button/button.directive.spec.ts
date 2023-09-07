@@ -28,8 +28,8 @@ describe('ButtonDirective', () => {
 	beforeEach(async () => {
 		TestBed.resetTestingModule();
 		await TestBed.configureTestingModule({
-			declarations: [ButtonDirectiveTestComponent, ObButtonDirective],
-			imports: [MatButtonModule]
+			declarations: [ButtonDirectiveTestComponent],
+			imports: [MatButtonModule, ObButtonDirective]
 		}).compileComponents();
 	});
 

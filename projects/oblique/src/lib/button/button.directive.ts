@@ -3,7 +3,8 @@ import {Directive, ElementRef, HostBinding, Input, OnChanges, OnInit} from '@ang
 @Directive({
 	selector: '[obButton]',
 	exportAs: 'obButton',
-	host: {class: 'ob-button mat-primary'}
+	host: {class: 'ob-button mat-primary'},
+	standalone: true
 })
 export class ObButtonDirective implements OnInit, OnChanges {
 	@Input() obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
