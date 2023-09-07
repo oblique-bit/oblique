@@ -1,17 +1,13 @@
-import {MatIconModule} from '@angular/material/icon';
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {TranslateModule} from '@ngx-translate/core';
 
-import {ObTopControlComponent} from './top-control.component';
 import {obliqueProviders} from '../utilities';
+import {ObTopControlComponent} from './top-control.component';
 
-export {ObTopControlComponent} from './top-control.component';
 export {ObScrollingEvents} from './scrolling-events';
+export {ObTopControlComponent} from './top-control.component';
 
 @NgModule({
-	imports: [CommonModule, MatIconModule, TranslateModule],
-	declarations: [ObTopControlComponent],
+	imports: [ObTopControlComponent],
 	providers: obliqueProviders(),
 	exports: [ObTopControlComponent]
 })
