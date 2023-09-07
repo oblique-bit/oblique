@@ -42,7 +42,8 @@ describe('ObAlertComponent', () => {
 	describe('with default inputs', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [DefaultTestComponent, ObMockTranslatePipe, ObAlertComponent],
+				imports: [ObAlertComponent, ObMockTranslatePipe],
+				declarations: [DefaultTestComponent],
 				providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA]
 			}).compileComponents();
@@ -111,7 +112,8 @@ describe('ObAlertComponent', () => {
 	describe('with custom inputs', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [ConfiguredTestComponent, ObMockTranslatePipe, ObAlertComponent],
+				imports: [ObAlertComponent, ObMockTranslatePipe],
+				declarations: [ConfiguredTestComponent],
 				providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA]
 			}).compileComponents();
@@ -151,7 +153,8 @@ describe('ObAlertComponent', () => {
 			beforeEach(async () => {
 				TestBed.resetTestingModule();
 				await TestBed.configureTestingModule({
-					declarations: [AlertRoleTestComponent, ObMockTranslatePipe, ObAlertComponent],
+					imports: [ObAlertComponent, ObMockTranslatePipe],
+					declarations: [AlertRoleTestComponent],
 					providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 					schemas: [CUSTOM_ELEMENTS_SCHEMA]
 				}).compileComponents();
@@ -199,7 +202,8 @@ describe('ObAlertComponent', () => {
 			beforeEach(async () => {
 				TestBed.resetTestingModule();
 				await TestBed.configureTestingModule({
-					declarations: [DefaultTestComponent, ObMockTranslatePipe, ObAlertComponent],
+					imports: [ObAlertComponent, ObMockTranslatePipe],
+					declarations: [DefaultTestComponent],
 					providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 					schemas: [CUSTOM_ELEMENTS_SCHEMA]
 				}).compileComponents();
@@ -302,7 +306,8 @@ describe('ObAlertComponent', () => {
 			beforeEach(async () => {
 				TestBed.resetTestingModule();
 				await TestBed.configureTestingModule({
-					declarations: [DefaultTestComponent, ObMockTranslatePipe, ObAlertComponent],
+					imports: [ObAlertComponent, ObMockTranslatePipe],
+					declarations: [DefaultTestComponent],
 					providers: [
 						{provide: TranslateService, useClass: ObMockTranslateService},
 						{provide: OBLIQUE_HAS_ROLE_ALERT, useValue: true}
@@ -368,7 +373,8 @@ describe('ObAlertComponent', () => {
 			beforeEach(async () => {
 				TestBed.resetTestingModule();
 				await TestBed.configureTestingModule({
-					declarations: [DefaultTestComponent, ObMockTranslatePipe, ObAlertComponent],
+					imports: [ObAlertComponent, ObMockTranslatePipe],
+					declarations: [DefaultTestComponent],
 					providers: [
 						{provide: TranslateService, useClass: ObMockTranslateService},
 						{provide: OBLIQUE_HAS_ROLE_ALERT, useValue: false}
