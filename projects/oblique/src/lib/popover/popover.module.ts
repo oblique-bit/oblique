@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {obliqueProviders} from '../utilities';
 import {ObPopoverDirective} from './popover.directive';
@@ -7,8 +6,7 @@ export {ObPopoverDirective, OBLIQUE_POPOVER_TOGGLE_HANDLE, OBLIQUE_POPOVER_CLOSE
 export {ObEToggleType} from './popover.model';
 
 @NgModule({
-	imports: [CommonModule],
-	declarations: [ObPopoverDirective],
+	imports: [ObPopoverDirective],
 	providers: obliqueProviders(),
 	exports: [ObPopoverDirective]
 })

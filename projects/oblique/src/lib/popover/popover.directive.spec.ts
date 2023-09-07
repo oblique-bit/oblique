@@ -28,7 +28,8 @@ describe('ObPopover', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			declarations: [TestPopoverComponent, ObPopoverDirective],
+			imports: [ObPopoverDirective],
+			declarations: [TestPopoverComponent],
 			providers: [{provide: WINDOW, useValue: window}],
 			schemas: [NO_ERRORS_SCHEMA]
 		});

@@ -1,12 +1,10 @@
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ObMockPopoverDirective} from './mock-popover.directive';
 
 export {ObMockPopoverDirective} from './mock-popover.directive';
 
 @NgModule({
-	imports: [CommonModule],
-	declarations: [ObMockPopoverDirective],
+	imports: [ObMockPopoverDirective],
 	exports: [ObMockPopoverDirective]
 })
 export class ObMockPopoverModule {}
