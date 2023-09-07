@@ -3,7 +3,7 @@ import {ObMockExternalLinkDirective} from './mock-external-link.directive';
 export {ObMockExternalLinkDirective} from './mock-external-link.directive';
 
 @NgModule({
-	declarations: [ObMockExternalLinkDirective],
+	imports: [ObMockExternalLinkDirective],
 	exports: [ObMockExternalLinkDirective]
 })
 export class ObMockExternalLinkModule {}
