@@ -1,10 +1,10 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {ObTopControlComponent} from './top-control.component';
 import {WINDOW} from '../utilities';
+import {ObTopControlComponent} from './top-control.component';
 
 describe('ObTopControlComponent', () => {
 	let fixture: ComponentFixture<ObTopControlComponent>;
@@ -13,7 +13,7 @@ describe('ObTopControlComponent', () => {
 	describe('without a scrollTarget', () => {
 		beforeEach(waitForAsync(() => {
 			TestBed.configureTestingModule({
-				declarations: [ObTopControlComponent, ObMockTranslatePipe],
+				imports: [ObTopControlComponent, ObMockTranslatePipe],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [
 					{provide: TranslateService, useClass: ObMockTranslateService},
@@ -47,7 +47,7 @@ describe('ObTopControlComponent', () => {
 	describe('with a scrollTarget', () => {
 		beforeEach(waitForAsync(() => {
 			TestBed.configureTestingModule({
-				declarations: [ObTopControlComponent, ObMockTranslatePipe],
+				imports: [ObTopControlComponent, ObMockTranslatePipe],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [
 					{provide: TranslateService, useClass: ObMockTranslateService},
