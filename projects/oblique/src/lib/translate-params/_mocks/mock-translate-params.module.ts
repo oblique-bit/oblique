@@ -5,7 +5,7 @@ import {ObMockTranslateParamsPipe} from './mock-translate-params.pipe';
 export {ObMockTranslateParamsPipe} from './mock-translate-params.pipe';
 
 @NgModule({
-	declarations: [ObMockTranslateParamsPipe],
+	imports: [ObMockTranslateParamsPipe],
 	exports: [ObMockTranslateParamsPipe]
 })
 export class ObMockTranslateParamsModule {}

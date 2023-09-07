@@ -4,7 +4,8 @@ import {TranslateService} from '@ngx-translate/core';
 @Pipe({
 	name: 'obTranslateParams',
 	// eslint-disable-next-line @angular-eslint/no-pipe-impure
-	pure: false
+	pure: false,
+	standalone: true
 })
 export class ObTranslateParamsPipe implements PipeTransform {
 	constructor(private readonly translate: TranslateService) {}
