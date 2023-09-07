@@ -15,9 +15,8 @@ describe('ObSpinnerComponent', () => {
 	beforeEach(() => {
 		mockObSpinnerService = {events$: new Subject<ObISpinnerEvent>()};
 		TestBed.configureTestingModule({
-			declarations: [ObSpinnerComponent],
 			providers: [{provide: ObSpinnerService, useValue: mockObSpinnerService}],
-			imports: [BrowserAnimationsModule]
+			imports: [ObSpinnerComponent, BrowserAnimationsModule]
 		}).compileComponents();
 	});
 

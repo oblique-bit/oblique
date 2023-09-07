@@ -1,17 +1,14 @@
-import {MatIconModule} from '@angular/material/icon';
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 
-import {ObSpinnerComponent} from './spinner.component';
 import {obliqueProviders} from '../utilities';
+import {ObSpinnerComponent} from './spinner.component';
 
 export {ObSpinnerComponent} from './spinner.component';
-export {ObSpinnerService} from './spinner.service';
 export {ObISpinnerEvent} from './spinner.model';
+export {ObSpinnerService} from './spinner.service';
 
 @NgModule({
-	imports: [CommonModule, MatIconModule],
-	declarations: [ObSpinnerComponent],
+	imports: [ObSpinnerComponent],
 	providers: obliqueProviders(),
 	exports: [ObSpinnerComponent]
 })

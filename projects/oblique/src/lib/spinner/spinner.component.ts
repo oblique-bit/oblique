@@ -1,7 +1,9 @@
-import {Component, ElementRef, Input, OnInit, ViewEncapsulation, inject} from '@angular/core';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
-import {delay, filter, map, startWith} from 'rxjs/operators';
+import {AsyncPipe} from '@angular/common';
+import {Component, ElementRef, Input, OnInit, ViewEncapsulation, inject} from '@angular/core';
+import {MatIconModule} from '@angular/material/icon';
 import {Observable} from 'rxjs';
+import {delay, filter, map, startWith} from 'rxjs/operators';
 import {ObSpinnerService} from './spinner.service';
 
 @Component({
@@ -14,14 +16,16 @@ import {ObSpinnerService} from './spinner.service';
 		trigger('inOut', [
 			state('in', style({opacity: 1, display: 'block'})),
 			transition('out => in', [
-				style({display: 'block'}), // As we can not animate the `display` property, we modify it before starting the next animation.
+				style({display: 'block'}),
 				animate('250ms ease-in-out', keyframes([style({offset: 0, opacity: 0}), style({offset: 1, opacity: 1})]))
 			]),
 			state('out', style({opacity: 0, display: 'none'})),
 			transition('in => out', [animate('250ms ease-in-out', keyframes([style({offset: 0, opacity: 1}), style({offset: 1, opacity: 0})]))])
 		])
 	],
-	host: {class: 'ob-spinner'}
+	host: {class: 'ob-spinner'},
+	standalone: true,
+	imports: [AsyncPipe, MatIconModule]
 })
 export class ObSpinnerComponent implements OnInit {
 	@Input() channel: string = ObSpinnerService.CHANNEL;
