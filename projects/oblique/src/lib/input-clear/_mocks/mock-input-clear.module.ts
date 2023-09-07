@@ -5,7 +5,7 @@ import {ObMockInputClearDirective} from './mock-input-clear.directive';
 export {ObMockInputClearDirective} from './mock-input-clear.directive';
 
 @NgModule({
-	declarations: [ObMockInputClearDirective],
+	imports: [ObMockInputClearDirective],
 	exports: [ObMockInputClearDirective]
 })
 export class ObMockInputClearModule {}
