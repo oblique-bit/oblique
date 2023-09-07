@@ -1,16 +1,14 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 
-import {ObUnsavedChangesDirective} from './unsaved-changes.directive';
 import {obliqueProviders} from '../utilities';
+import {ObUnsavedChangesDirective} from './unsaved-changes.directive';
 
 export {ObUnsavedChangesDirective} from './unsaved-changes.directive';
-export {ObUnsavedChangesService} from './unsaved-changes.service';
 export {ObUnsavedChangesGuard} from './unsaved-changes.guard';
+export {ObUnsavedChangesService} from './unsaved-changes.service';
 
 @NgModule({
-	imports: [CommonModule],
-	declarations: [ObUnsavedChangesDirective],
+	imports: [ObUnsavedChangesDirective],
 	providers: obliqueProviders(),
 	exports: [ObUnsavedChangesDirective]
 })
