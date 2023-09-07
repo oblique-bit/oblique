@@ -97,8 +97,8 @@ describe('SchemaValidation', () => {
 
 			beforeEach(() => {
 				TestBed.configureTestingModule({
-					declarations: [CONFIG.testComponent, ObSchemaValidationDirective, ObSchemaValidateDirective],
-					imports: [CONFIG.formModule],
+					declarations: [CONFIG.testComponent],
+					imports: [ObSchemaValidationDirective, ObSchemaValidateDirective, CONFIG.formModule],
 					providers: [{provide: WINDOW, useValue: window}]
 				}).compileComponents();
 			});
