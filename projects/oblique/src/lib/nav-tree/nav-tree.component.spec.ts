@@ -1,9 +1,8 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
-import {By} from '@angular/platform-browser';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
-import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {RouterTestingModule} from '@angular/router/testing';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {ObNavTreeItemModel} from './nav-tree-item.model';
 import {ObNavTreeComponent} from './nav-tree.component';
@@ -63,8 +62,8 @@ describe('NavTreeComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			imports: [RouterTestingModule],
-			declarations: [TestComponent, ObNavTreeComponent, ObMockTranslatePipe],
+			imports: [ObNavTreeComponent, RouterTestingModule, TranslateModule],
+			declarations: [TestComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
