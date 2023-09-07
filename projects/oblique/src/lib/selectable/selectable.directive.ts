@@ -4,7 +4,8 @@ import {ObSelectableGroupDirective} from './selectable-group.directive';
 @Directive({
 	selector: '[obSelectable]',
 	exportAs: 'obSelectable',
-	host: {class: 'ob-selectable'}
+	host: {class: 'ob-selectable'},
+	standalone: true
 })
 export class ObSelectableDirective implements OnInit {
 	@Input() value: any;

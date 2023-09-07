@@ -2,7 +2,8 @@ import {Directive, Input} from '@angular/core';
 
 @Directive({
 	selector: '[obSelectable]',
-	exportAs: 'obSelectable'
+	exportAs: 'obSelectable',
+	standalone: true
 })
 export class ObMockSelectableDirective {
 	@Input() selected = false;

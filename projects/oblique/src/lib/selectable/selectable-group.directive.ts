@@ -4,7 +4,8 @@ import {ObSelectableDirective} from './selectable.directive';
 @Directive({
 	selector: '[obSelectableGroup]',
 	exportAs: 'obSelectableGroup',
-	host: {class: 'ob-selectable-group'}
+	host: {class: 'ob-selectable-group'},
+	standalone: true
 })
 export class ObSelectableGroupDirective implements AfterContentInit {
 	@HostBinding('attr.role') role = 'group';
