@@ -4,7 +4,7 @@ import {ObMockNavTreeComponent} from './mock-nav-tree.component';
 export {ObMockNavTreeComponent} from './mock-nav-tree.component';
 
 @NgModule({
-	declarations: [ObMockNavTreeComponent],
+	imports: [ObMockNavTreeComponent],
 	exports: [ObMockNavTreeComponent]
 })
 export class ObMockNavTreeModule {}

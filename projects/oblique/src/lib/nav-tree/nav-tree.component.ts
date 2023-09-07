@@ -1,17 +1,36 @@
 import {Component, Input, OnDestroy, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute, RouterLinkActive} from '@angular/router';
-import {TranslateService} from '@ngx-translate/core';
+import {ActivatedRoute, RouterLink, RouterLinkActive, RouterModule} from '@angular/router';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
-import {ObNavTreeItemModel} from './nav-tree-item.model';
+import {NgClass, NgFor, NgIf, NgTemplateOutlet} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
 import {Subject} from 'rxjs';
+import {ObNavTreeItemModel} from './nav-tree-item.model';
 
 @Component({
 	selector: 'ob-nav-tree',
 	exportAs: 'obNavTree',
 	templateUrl: './nav-tree.component.html',
 	styleUrls: ['./nav-tree.component.scss'],
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
+	standalone: true,
+	imports: [
+		NgFor,
+		NgIf,
+		RouterLinkActive,
+		RouterLink,
+		MatIconModule,
+		NgClass,
+		NgTemplateOutlet,
+		FormsModule,
+		MatIconModule,
+		MatInputModule,
+		RouterModule,
+		TranslateModule
+	]
 })
 export class ObNavTreeComponent implements OnDestroy {
 	static DEFAULTS = {

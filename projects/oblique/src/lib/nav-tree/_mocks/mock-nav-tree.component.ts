@@ -6,7 +6,8 @@ import {ObNavTreeItemModel} from '../nav-tree-item.model';
 	selector: 'ob-nav-tree',
 	exportAs: 'obNavTree',
 	host: {class: 'ob-nav-tree'},
-	template: ''
+	template: '',
+	standalone: true
 })
 export class ObMockNavTreeComponent {
 	static DEFAULTS = {
