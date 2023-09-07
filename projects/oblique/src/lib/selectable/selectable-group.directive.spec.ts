@@ -23,7 +23,8 @@ describe('SelectableGroupDirective', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			declarations: [TestComponent, ObMockSelectableDirective, ObSelectableGroupDirective]
+			imports: [ObSelectableGroupDirective, ObMockSelectableDirective],
+			declarations: [TestComponent]
 		});
 	}));
 

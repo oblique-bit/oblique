@@ -38,7 +38,8 @@ describe('SelectableDirective', () => {
 	describe('without obSelectableGroup', () => {
 		beforeEach(waitForAsync(() => {
 			TestBed.configureTestingModule({
-				declarations: [FaultyTestComponent, ObSelectableDirective]
+				imports: [ObSelectableDirective],
+				declarations: [FaultyTestComponent]
 			});
 		}));
 
@@ -50,7 +51,8 @@ describe('SelectableDirective', () => {
 	describe('with obSelectableGroup', () => {
 		beforeEach(waitForAsync(() => {
 			TestBed.configureTestingModule({
-				declarations: [TestComponent, ObSelectableDirective, ObMockSelectableGroupDirective],
+				imports: [ObSelectableDirective],
+				declarations: [ObMockSelectableGroupDirective, TestComponent],
 				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}]
 			});
 		}));
