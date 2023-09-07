@@ -6,7 +6,8 @@ import {ObSchemaValidationService} from './schema-validation.service';
 	selector: '[obSchemaValidation]',
 	exportAs: 'obSchemaValidation',
 	providers: [ObSchemaValidationService],
-	host: {class: 'ob-schema-validation'}
+	host: {class: 'ob-schema-validation'},
+	standalone: true
 })
 export class ObSchemaValidationDirective implements OnInit {
 	@Input('obSchemaValidation') private readonly schema: any;
