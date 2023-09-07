@@ -3,7 +3,8 @@ import {Directive, ElementRef, HostBinding, OnInit} from '@angular/core';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'mat-form-field',
-	host: {class: 'ob-form-field'}
+	host: {class: 'ob-form-field'},
+	standalone: true
 })
 export class ObFormFieldDirective implements OnInit {
 	@HostBinding('class.ob-form-field-textarea') containsTextarea = false;
