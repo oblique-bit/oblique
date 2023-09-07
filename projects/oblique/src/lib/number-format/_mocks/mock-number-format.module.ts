@@ -4,7 +4,7 @@ import {ObMockNumberFormatDirective} from './mock-number-format.directive';
 export {ObMockNumberFormatDirective} from './mock-number-format.directive';
 
 @NgModule({
-	declarations: [ObMockNumberFormatDirective],
+	imports: [ObMockNumberFormatDirective],
 	exports: [ObMockNumberFormatDirective]
 })
 export class ObMockNumberFormatModule {}

@@ -35,8 +35,8 @@ describe('NumberFormatDirective', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			imports: [FormsModule],
-			declarations: [TestDefaultComponent, TestNonPersistentComponent, ObNumberFormatDirective]
+			imports: [ObNumberFormatDirective, FormsModule],
+			declarations: [TestDefaultComponent, TestNonPersistentComponent]
 		});
 	}));
 
