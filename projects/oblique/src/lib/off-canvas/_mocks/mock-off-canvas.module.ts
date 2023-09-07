@@ -12,8 +12,8 @@ export {ObMockOffCanvasContainerDirective} from './mock-off-canvas-container.dir
 export {ObMockOffCanvasService} from './mock-off-canvas.service';
 
 @NgModule({
+	imports: [ObMockOffCanvasBackdropDirective, ObMockOffCanvasContainerDirective, ObMockOffCanvasToggleDirective],
 	exports: [ObMockOffCanvasBackdropDirective, ObMockOffCanvasContainerDirective, ObMockOffCanvasToggleDirective],
-	declarations: [ObMockOffCanvasBackdropDirective, ObMockOffCanvasContainerDirective, ObMockOffCanvasToggleDirective],
 	providers: [{provide: ObOffCanvasService, useClass: ObMockOffCanvasService}]
 })
 export class ObMockOffCanvasModule {}
