@@ -7,7 +7,8 @@ import {ObEIcon} from '../../icon/icon.model';
 
 @Directive({
 	selector: '[obOptionLabelIcon]',
-	host: {class: 'ob-option-label-icon'}
+	host: {class: 'ob-option-label-icon'},
+	standalone: true
 })
 export class ObOptionLabelIconDirective implements OnChanges {
 	@Input() iconName?: ObEIcon;

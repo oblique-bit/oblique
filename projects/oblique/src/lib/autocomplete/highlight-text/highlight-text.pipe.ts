@@ -3,7 +3,8 @@ import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {ObAutocompleteTextToFindService} from '../autocomplete-text-to-find.service';
 
 @Pipe({
-	name: 'obHighlightTextPipe'
+	name: 'obHighlightTextPipe',
+	standalone: true
 })
 export class ObHighlightTextPipe implements PipeTransform {
 	constructor(private readonly sanitizer: DomSanitizer, private readonly textToFindService: ObAutocompleteTextToFindService) {}

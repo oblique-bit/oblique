@@ -26,8 +26,8 @@ describe('ObOptionLabelIconDirective', () => {
 	beforeEach(async () => {
 		TestBed.resetTestingModule();
 		await TestBed.configureTestingModule({
-			declarations: [OptionLabelTestComponent, ObOptionLabelIconDirective],
-			imports: [MatIconModule, ObIconModule.forRoot(), HttpClientTestingModule, CommonModule],
+			declarations: [OptionLabelTestComponent],
+			imports: [ObOptionLabelIconDirective, MatIconModule, ObIconModule.forRoot(), HttpClientTestingModule, CommonModule],
 			providers: [
 				{provide: ObIconService, useClass: ObIconService},
 				{provide: MatIconRegistry, useClass: MatIconRegistry}
