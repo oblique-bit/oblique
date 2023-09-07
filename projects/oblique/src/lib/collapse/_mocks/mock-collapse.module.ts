@@ -4,7 +4,7 @@ import {ObMockCollapseComponent} from './mock-collapse.component';
 export {ObMockCollapseComponent} from './mock-collapse.component';
 
 @NgModule({
-	declarations: [ObMockCollapseComponent],
+	imports: [ObMockCollapseComponent],
 	exports: [ObMockCollapseComponent]
 })
 export class ObMockCollapseModule {}

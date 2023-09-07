@@ -22,8 +22,7 @@ describe('CollapseComponent', () => {
 	describe('with token set to something truthy', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				declarations: [ObCollapseComponent],
-				imports: [NoopAnimationsModule],
+				imports: [ObCollapseComponent, NoopAnimationsModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: 'yes'}]
 			}).compileComponents();
@@ -65,8 +64,7 @@ describe('CollapseComponent', () => {
 	describe('with token set to something falsy', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				declarations: [ObCollapseComponent],
-				imports: [NoopAnimationsModule],
+				imports: [ObCollapseComponent, NoopAnimationsModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false}]
 			}).compileComponents();
@@ -95,8 +93,7 @@ describe('CollapseComponent', () => {
 	describe('without token', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				declarations: [ObCollapseComponent],
-				imports: [NoopAnimationsModule],
+				imports: [ObCollapseComponent, NoopAnimationsModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA]
 			}).compileComponents();
 		});
@@ -222,8 +219,8 @@ describe('CollapseComponent', () => {
 
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				declarations: [ObCollapseComponent, TestCollapseComponent],
-				imports: [NoopAnimationsModule],
+				declarations: [TestCollapseComponent],
+				imports: [ObCollapseComponent, NoopAnimationsModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA]
 			}).compileComponents();
 		});
