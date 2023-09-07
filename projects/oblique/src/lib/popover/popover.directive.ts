@@ -32,7 +32,8 @@ export const OBLIQUE_POPOVER_APPEND_TO_BODY = new InjectionToken<boolean>('Appen
 @Directive({
 	selector: '[obPopover]',
 	exportAs: 'obPopover',
-	host: {class: 'ob-popover'}
+	host: {class: 'ob-popover'},
+	standalone: true
 })
 export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	@Input('obPopover') target: TemplateRef<HTMLElement>;
