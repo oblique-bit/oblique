@@ -4,7 +4,8 @@ import {BehaviorSubject, Subject, takeUntil} from 'rxjs';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
-	selector: 'mat-checkbox'
+	selector: 'mat-checkbox',
+	standalone: true
 })
 export class ObCheckboxDirective implements OnInit, OnDestroy {
 	private readonly $checked = new BehaviorSubject<boolean>(false);
