@@ -7,8 +7,7 @@ import {ObIconModule} from './../../icon/icon.module';
 import {obliqueProviders} from '../../utilities';
 
 @NgModule({
-	declarations: [ObOptionLabelIconDirective],
-	imports: [CommonModule, MatIconModule, ObIconModule],
+	imports: [CommonModule, MatIconModule, ObIconModule, ObOptionLabelIconDirective],
 	providers: obliqueProviders(),
 	exports: [ObOptionLabelIconDirective]
 })
