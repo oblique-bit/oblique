@@ -1,7 +1,8 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-	name: 'obAcceptAll'
+	name: 'obAcceptAll',
+	standalone: true
 })
 export class ObAcceptAllPipe implements PipeTransform {
 	// "this: void" is not a parameter but rather a typescript feature that indicates that the function don't use "this"

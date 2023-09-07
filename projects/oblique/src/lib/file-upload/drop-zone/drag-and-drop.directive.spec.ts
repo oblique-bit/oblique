@@ -18,7 +18,8 @@ describe('ObDragDropDirective', () => {
 	let input: DebugElement;
 	beforeEach(() => {
 		fixture = TestBed.configureTestingModule({
-			declarations: [ObDragDropDirective, TestDropDirectiveComponent]
+			imports: [ObDragDropDirective],
+			declarations: [TestDropDirectiveComponent]
 		}).createComponent(TestDropDirectiveComponent);
 		input = fixture.debugElement.query(By.directive(ObDragDropDirective));
 		fixture.detectChanges();

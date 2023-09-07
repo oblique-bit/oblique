@@ -1,5 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {ObMockTranslateService} from '../oblique-testing.module';
 import {ObFileUploadComponent} from './file-upload.component';
 import {ObEUploadEventType, ObIUploadEvent} from './file-upload.model';
 
@@ -16,8 +18,9 @@ describe('ObFileUploadComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [ObFileUploadComponent],
-			schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
+			imports: [ObFileUploadComponent, TranslateModule],
+			schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 	});
 

@@ -29,7 +29,7 @@ describe('ObProgressComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [ObProgressComponent, ObMockTranslatePipe],
+			imports: [ObProgressComponent, ObMockTranslatePipe],
 			providers: [
 				{provide: ObFileUploadService, useClass: ObMockFileUploadService},
 				{provide: ObPopUpService, useClass: ObMockPopUpService},

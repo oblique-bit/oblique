@@ -1,7 +1,8 @@
 import {Directive, EventEmitter, HostBinding, HostListener, Output} from '@angular/core';
 
 @Directive({
-	selector: '[obDragDrop]'
+	selector: '[obDragDrop]',
+	standalone: true
 })
 export class ObDragDropDirective {
 	// eslint-disable-next-line  @angular-eslint/no-output-on-prefix
