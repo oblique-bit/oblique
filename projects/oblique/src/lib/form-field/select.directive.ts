@@ -6,7 +6,8 @@ import {ObSelectPanelClassHelper} from './select-panel-class-helper';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'mat-select',
-	host: {class: 'ob-select'}
+	host: {class: 'ob-select'},
+	standalone: true
 })
 export class ObSelectDirective implements OnInit, AfterContentInit, OnDestroy {
 	private readonly unsubscribe = new Subject<void>();
