@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnDestroy, Output, ViewEncapsulation, inject} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, Output, ViewEncapsulation, inject} from '@angular/core';
 import {HttpEvent, HttpEventType} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
 import {WINDOW} from '../../utilities';
@@ -20,14 +20,12 @@ export class ObProgressComponent implements OnDestroy {
 	uploadedFiles: ObIFileList = {} as ObIFileList;
 
 	private readonly changeDetectorRef = inject(ChangeDetectorRef);
-	private readonly window: Window;
+	private readonly fileUploadService = inject(ObFileUploadService);
+	private readonly popup = inject(ObPopUpService);
+	private readonly translate = inject(TranslateService);
+	private readonly window = inject(WINDOW);
 
-	constructor(
-		private readonly fileUploadService: ObFileUploadService,
-		private readonly popup: ObPopUpService,
-		private readonly translate: TranslateService,
-		@Inject(WINDOW) window: any
-	) {
+	constructor() {
 		this.window = window;
 	}
 
