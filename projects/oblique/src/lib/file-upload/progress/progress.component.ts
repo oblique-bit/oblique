@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, Input, OnDestroy, Output, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnDestroy, Output, ViewEncapsulation, inject} from '@angular/core';
 import {HttpEvent, HttpEventType} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
 import {WINDOW} from '../../utilities';
@@ -18,6 +18,8 @@ export class ObProgressComponent implements OnDestroy {
 	@Input() singleRequest: boolean;
 	@Input() uploadUrl: string;
 	uploadedFiles: ObIFileList = {} as ObIFileList;
+
+	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 	private readonly window: Window;
 
 	constructor(
@@ -43,6 +45,7 @@ export class ObProgressComponent implements OnDestroy {
 			this.uploadedFiles.files[file.index]?.subscription.unsubscribe();
 			this.uploadedFiles.files.splice(file.index, 1);
 			this.uploadedFiles.fileCount--;
+			this.changeDetectorRef.detectChanges();
 			this.uploadEvent.emit({type: ObEUploadEventType.CANCELED, files: this.arrayifyFiles(file.binary)});
 			this.isUploadComplete();
 		}
@@ -60,6 +63,7 @@ export class ObProgressComponent implements OnDestroy {
 
 	private uploadFiles(files: File[]): void {
 		this.uploadedFiles.fileCount = files.length;
+		this.changeDetectorRef.detectChanges();
 		if (this.singleRequest) {
 			this.uploadFilesTogether(files);
 		} else {
@@ -89,6 +93,7 @@ export class ObProgressComponent implements OnDestroy {
 			this.window.setTimeout(() => {
 				this.uploadedFiles.fileCount = 0;
 				this.uploadedFiles.files.length = 0;
+				this.changeDetectorRef.detectChanges();
 			}, 1000);
 		}
 	}
@@ -112,6 +117,7 @@ export class ObProgressComponent implements OnDestroy {
 		}
 		this.uploadedFiles.files[index].completed = event.type === HttpEventType.Response;
 		this.uploadedFiles.files[index].hasError = event.type === HttpEventType.User;
+		this.changeDetectorRef.detectChanges();
 		this.isUploadComplete();
 	}
 
