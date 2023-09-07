@@ -7,7 +7,7 @@ export {ObParentFormDirective} from './parent-form.directive';
 export {ObNestedFormComponent} from './nested-form.component';
 
 @NgModule({
-	declarations: [ObNestedFormComponent, ObParentFormDirective],
+	imports: [ObNestedFormComponent, ObParentFormDirective],
 	providers: obliqueProviders(),
 	exports: [ObNestedFormComponent, ObParentFormDirective]
 })

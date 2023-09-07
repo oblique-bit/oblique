@@ -10,7 +10,7 @@ describe('NestedFormComponent', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			declarations: [ObNestedFormComponent],
+			imports: [ObNestedFormComponent],
 			providers: [ObParentFormDirective]
 		}).compileComponents();
 		fixture = TestBed.createComponent(ObNestedFormComponent);
