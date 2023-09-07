@@ -1,4 +1,6 @@
 import {AfterViewInit, Component, ContentChild, HostBinding, Input, OnChanges, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {CdkScrollable} from '@angular/cdk/scrolling';
+import {NgClass, NgIf, NgTemplateOutlet} from '@angular/common';
 
 @Component({
 	selector: 'ob-sticky',
@@ -6,7 +8,9 @@ import {AfterViewInit, Component, ContentChild, HostBinding, Input, OnChanges, T
 	templateUrl: './sticky.component.html',
 	styleUrls: ['./sticky.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-sticky'}
+	host: {class: 'ob-sticky'},
+	standalone: true,
+	imports: [NgIf, NgTemplateOutlet, NgClass, CdkScrollable]
 })
 export class ObStickyComponent implements OnChanges, AfterViewInit {
 	@ContentChild('obStickyHeader') readonly stickyHeaderTemplate: TemplateRef<any>;

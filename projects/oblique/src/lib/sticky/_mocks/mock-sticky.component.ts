@@ -3,7 +3,8 @@ import {Component, Input, TemplateRef} from '@angular/core';
 @Component({
 	selector: 'ob-sticky',
 	exportAs: 'obSticky',
-	template: ''
+	template: '',
+	standalone: true
 })
 export class ObMockStickyComponent {
 	readonly stickyHeaderTemplate: TemplateRef<any>;

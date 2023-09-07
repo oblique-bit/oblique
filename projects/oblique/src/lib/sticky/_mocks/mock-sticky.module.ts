@@ -5,7 +5,7 @@ import {ObMockStickyComponent} from './mock-sticky.component';
 export {ObMockStickyComponent} from './mock-sticky.component';
 
 @NgModule({
-	declarations: [ObMockStickyComponent],
+	imports: [ObMockStickyComponent],
 	exports: [ObMockStickyComponent]
 })
 export class ObMockStickyModule {}

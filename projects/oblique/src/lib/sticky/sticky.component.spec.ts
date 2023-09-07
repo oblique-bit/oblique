@@ -1,5 +1,5 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, Component} from '@angular/core';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 
 import {ObStickyComponent} from './sticky.component';
@@ -26,7 +26,8 @@ describe('StickyComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			declarations: [TestFirstCaseComponent, ObStickyComponent],
+			imports: [ObStickyComponent],
+			declarations: [TestFirstCaseComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	}));
