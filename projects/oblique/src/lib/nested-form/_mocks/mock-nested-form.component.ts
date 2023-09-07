@@ -17,7 +17,8 @@ import {
 		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObMockNestedFormComponent},
 		{provide: NG_VALIDATORS, multi: true, useExisting: ObMockNestedFormComponent}
 	],
-	host: {class: 'ob-nested-form'}
+	host: {class: 'ob-nested-form'},
+	standalone: true
 })
 export class ObMockNestedFormComponent implements ControlValueAccessor, Validator {
 	@Input() nestedForm: UntypedFormGroup;
