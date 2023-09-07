@@ -7,7 +7,8 @@ import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
-	selector: 'a'
+	selector: 'a',
+	standalone: true
 })
 export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	@Input() @HostBinding('attr.rel') rel: string;
