@@ -1,21 +1,17 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {TranslateModule} from '@ngx-translate/core';
 
 import {ObMatErrorDirective} from './mat-error.directive';
 import {ObErrorMessagesDirective} from './error-messages.directive';
-import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
 import {obliqueProviders} from '../utilities';
+import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 
 export {ObErrorMessagesService} from './error-messages.service';
 export {ObMatErrorDirective} from './mat-error.directive';
 export {ObErrorMessagesDirective} from './error-messages.directive';
 
 @NgModule({
-	imports: [CommonModule, FormsModule, ObTranslateParamsModule, TranslateModule],
-	declarations: [ObErrorMessagesDirective, ObMatErrorDirective],
+	imports: [ObErrorMessagesDirective, ObMatErrorDirective, ObTranslateParamsPipe],
 	providers: obliqueProviders(),
-	exports: [ObErrorMessagesDirective, ObMatErrorDirective]
+	exports: [ObErrorMessagesDirective, ObMatErrorDirective, ObTranslateParamsPipe]
 })
 export class ObErrorMessagesModule {}

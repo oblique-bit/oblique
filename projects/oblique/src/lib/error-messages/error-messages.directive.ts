@@ -7,7 +7,8 @@ import {takeUntil} from 'rxjs/operators';
 
 @Directive({
 	selector: '[obErrorMessages]',
-	exportAs: 'obErrorMessages'
+	exportAs: 'obErrorMessages',
+	standalone: true
 })
 export class ObErrorMessagesDirective implements AfterViewInit, OnDestroy {
 	@ContentChild(MatInput) matInput;
