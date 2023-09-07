@@ -6,6 +6,8 @@ import {ObIUploadEvent} from '../file-upload.model';
 import {ObDropZoneComponent} from './ob-drop-zone.component';
 import {ObValidationService} from './validation.service';
 import {By} from '@angular/platform-browser';
+import {TranslateService} from '@ngx-translate/core';
+import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 
 @Pipe({
 	name: 'obAcceptAll'
@@ -28,8 +30,10 @@ describe('DropZoneComponent', () => {
 	beforeEach(async () => {
 		TestBed.overrideProvider(ObValidationService, {useValue: service});
 		await TestBed.configureTestingModule({
-			declarations: [ObDropZoneComponent, ObMockTranslatePipe, ObMockAreAllTypesAllowedPipe],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+			imports: [ObDropZoneComponent, ObMockTranslatePipe],
+			declarations: [ObMockAreAllTypesAllowedPipe],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 	});
 

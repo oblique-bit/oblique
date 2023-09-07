@@ -1,17 +1,18 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter, NO_ERRORS_SCHEMA} from '@angular/core';
-import {By} from '@angular/platform-browser';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {SelectionModel} from '@angular/cdk/collections';
+import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {By} from '@angular/platform-browser';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, of, throwError} from 'rxjs';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {ObPopUpService} from '../../pop-up/pop-up.service';
+import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObMockPopUpService} from '../../pop-up/_mocks/mock-pop-up.service';
-import {ObFileInfoComponent} from './file-info.component';
-import {ObFileUploadService} from '../file-upload.service';
+import {ObPopUpService} from '../../pop-up/pop-up.service';
 import {ObEUploadEventType, ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
+import {ObFileUploadService} from '../file-upload.service';
+import {ObFileInfoComponent} from './file-info.component';
 
 describe('ObFileInfoComponent', () => {
 	let component: ObFileInfoComponent;
@@ -28,8 +29,7 @@ describe('ObFileInfoComponent', () => {
 			delete: () => of()
 		};
 		await TestBed.configureTestingModule({
-			imports: [MatTableModule],
-			declarations: [ObFileInfoComponent, ObMockTranslatePipe],
+			imports: [MatTableModule, ObFileInfoComponent, ObMockTranslatePipe, NoopAnimationsModule],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 			providers: [
 				{provide: ObFileUploadService, useValue: mockFileUpload},

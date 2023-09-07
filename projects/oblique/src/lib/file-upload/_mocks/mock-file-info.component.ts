@@ -9,7 +9,8 @@ import {ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
 	exportAs: 'obFileInfo',
 	template: '',
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-file-info'}
+	host: {class: 'ob-file-info'},
+	standalone: true
 })
 export class ObMockFileInfoComponent {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();

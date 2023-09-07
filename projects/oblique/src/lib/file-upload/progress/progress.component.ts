@@ -1,8 +1,14 @@
-import {ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, Output, ViewEncapsulation, inject} from '@angular/core';
+import {NgFor, NgIf} from '@angular/common';
 import {HttpEvent, HttpEventType} from '@angular/common/http';
-import {TranslateService} from '@ngx-translate/core';
-import {WINDOW} from '../../utilities';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, Output, ViewEncapsulation, inject} from '@angular/core';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {ObButtonDirective} from '../../button/button.directive';
 import {ObPopUpService} from '../../pop-up/pop-up.service';
+import {WINDOW} from '../../utilities';
 import {ObEUploadEventType, ObIFile, ObIFileList, ObIUploadEvent} from '../file-upload.model';
 import {ObFileUploadService} from '../file-upload.service';
 
@@ -11,7 +17,9 @@ import {ObFileUploadService} from '../file-upload.service';
 	templateUrl: './progress.component.html',
 	styleUrls: ['./progress.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-progress'}
+	host: {class: 'ob-progress'},
+	standalone: true,
+	imports: [NgFor, NgIf, MatProgressBarModule, MatButtonModule, ObButtonDirective, MatTooltipModule, MatIconModule, TranslateModule]
 })
 export class ObProgressComponent implements OnDestroy {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
