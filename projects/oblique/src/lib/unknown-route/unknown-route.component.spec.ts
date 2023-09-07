@@ -1,8 +1,8 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 
+import {TranslateModule} from '@ngx-translate/core';
 import {ObUnknownRouteComponent} from './unknown-route.component';
-import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 
 describe('UnknownRouteComponent', () => {
 	let component: ObUnknownRouteComponent;
@@ -10,8 +10,7 @@ describe('UnknownRouteComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			declarations: [ObUnknownRouteComponent, ObMockTranslatePipe],
-			imports: [RouterTestingModule]
+			imports: [ObUnknownRouteComponent, RouterTestingModule, TranslateModule]
 		}).compileComponents();
 	}));
 

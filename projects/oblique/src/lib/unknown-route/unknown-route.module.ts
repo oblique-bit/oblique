@@ -10,15 +10,15 @@ export {ObUnknownRouteComponent} from './unknown-route.component';
 @NgModule({
 	imports: [
 		CommonModule,
-		TranslateModule,
+		ObUnknownRouteComponent,
 		RouterModule.forChild([
 			{path: 'unknown-route', component: ObUnknownRouteComponent}
 			// TODO uncomment once https://github.com/angular/angular/issues/12648 is fixed
 			// {path: '**', redirectTo: 'unknown-route'}
-		])
+		]),
+		TranslateModule
 	],
 	providers: obliqueProviders(),
-	declarations: [ObUnknownRouteComponent],
 	exports: [ObUnknownRouteComponent]
 })
 export class ObUnknownRouteModule {}
