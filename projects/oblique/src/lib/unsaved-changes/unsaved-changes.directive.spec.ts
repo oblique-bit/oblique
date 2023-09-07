@@ -37,9 +37,9 @@ describe('UnsavedChangesDirective', () => {
 		};
 
 		TestBed.configureTestingModule({
-			declarations: [FaultyTestComponent, TestComponent, ObUnsavedChangesDirective],
+			declarations: [FaultyTestComponent, TestComponent],
 			providers: [ControlContainer, {provide: ObUnsavedChangesService, useValue: unsavedChangesServiceMock}],
-			imports: [CommonModule]
+			imports: [ObUnsavedChangesDirective, CommonModule]
 		}).compileComponents();
 	}));
 

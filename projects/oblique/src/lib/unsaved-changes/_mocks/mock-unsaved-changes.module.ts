@@ -10,7 +10,7 @@ export {ObMockUnsavedChangesService} from './mock-unsaved-changes.service';
 export {ObMockUnsavedChangesGuard} from './mock-unsaved-changes.guard';
 
 @NgModule({
-	declarations: [ObMockUnsavedChangesDirective],
+	imports: [ObMockUnsavedChangesDirective],
 	exports: [ObMockUnsavedChangesDirective],
 	providers: [
 		{provide: ObUnsavedChangesService, useClass: ObMockUnsavedChangesService},
