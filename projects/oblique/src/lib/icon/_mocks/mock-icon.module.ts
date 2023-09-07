@@ -7,8 +7,8 @@ export {ObMockIconService} from './mock-icon.service';
 export {ObMockIconComponent} from './mock-icon.component';
 
 @NgModule({
+	imports: [ObMockIconComponent],
 	providers: [{provide: ObMockIconService, useClass: ObMockIconService}],
-	declarations: [ObMockIconComponent],
 	exports: [ObMockIconComponent]
 })
 export class ObMockIconModule {
