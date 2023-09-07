@@ -4,7 +4,8 @@ import {Observable} from 'rxjs';
 
 @Directive({
 	selector: '[obErrorMessages]',
-	exportAs: 'obErrorMessages'
+	exportAs: 'obErrorMessages',
+	standalone: true
 })
 export class ObMockErrorMessagesDirective {
 	readonly errors$: Observable<ValidationErrors>;
