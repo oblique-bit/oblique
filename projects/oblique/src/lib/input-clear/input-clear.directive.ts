@@ -6,7 +6,8 @@ import {WINDOW} from '../utilities';
 @Directive({
 	selector: '[obInputClear]',
 	exportAs: 'obInputClear',
-	host: {class: 'ob-input-clear'}
+	host: {class: 'ob-input-clear'},
+	standalone: true
 })
 export class ObInputClearDirective implements OnInit {
 	@Input('obInputClear') control: AbstractControl | HTMLInputElement | NgModel;
