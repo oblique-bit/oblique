@@ -1,9 +1,11 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {AlertCodeExamplesComponent} from './alert-code-examples.component';
 import {TranslateService} from '@ngx-translate/core';
-import {ObMockTranslateService} from '@oblique/oblique';
+import {ObAlertComponent, ObMockTranslateService} from '@oblique/oblique';
+import {CodeExampleComponent} from '../../code-example/code-example.component';
+import {By} from '@angular/platform-browser';
 
-describe(`${AlertCodeExamplesComponent.name}`, () => {
+describe(AlertCodeExamplesComponent.name, () => {
 	let component: AlertCodeExamplesComponent;
 	let fixture: ComponentFixture<AlertCodeExamplesComponent>;
 
@@ -18,7 +20,15 @@ describe(`${AlertCodeExamplesComponent.name}`, () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	test('that creation works', () => {
 		expect(component).toBeTruthy();
+	});
+
+	test(`that there are 2 ${CodeExampleComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
+	});
+
+	test(`that there are 8 ${ObAlertComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(ObAlertComponent)).length).toBe(8);
 	});
 });
