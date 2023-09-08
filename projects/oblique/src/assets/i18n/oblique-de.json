@@ -10,6 +10,7 @@
   "i18n.common.action": "Aktion",
   "i18n.common.close": "Schliessen",
   "i18n.common.clear": "Löschen",
+  "i18n.oblique.occurrences": "Anzahl Notifikationen: {{occurrences}}",
   "i18n.oblique.external": "Öffnet in einem neuen Tab.",
   "i18n.oblique.file-upload.all.select": "Alle Zeilen auswählen",
   "i18n.oblique.file-upload.all.deselect": "Alle Zeilen abwählen",
