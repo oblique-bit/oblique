@@ -127,14 +127,17 @@
 			}
 		}
 
-		&.ob-button-secondary,
-		&.ob-button-tertiary {
-			&:not([disabled]) {
-				.mat-ripple {
-					&.mat-mdc-button-ripple {
-						.mat-ripple-element {
-							background-color: core-variables.$ob-red-50;
-						}
+		&.ob-button-secondary:not(.ob-button-card),
+		&.ob-button-tertiary:not(.ob-button-card) {
+			&:hover,
+			&:focus-visible {
+				background-color: core-variables.$ob-secondary-50;
+			}
+
+			.mat-ripple {
+				&.mat-mdc-button-ripple {
+					.mat-ripple-element {
+						background-color: core-variables.$ob-secondary-100;
 					}
 				}
 			}
@@ -144,60 +147,35 @@
 			}
 		}
 
-		&.ob-button-primary {
-			&:not([disabled], .ob-button-card) {
-				background-color: core-variables.$ob-secondary-400;
-				color: core-variables.$ob-white;
-				@include shadow.ob-shadow-default();
+		&.ob-button-primary:not(.ob-button-card) {
+			color: core-variables.$ob-white;
+			background-color: core-variables.$ob-secondary-400;
+			@include shadow.ob-shadow-default();
 
-				&:hover {
-					color: core-variables.$ob-text-300;
-				}
+			&:hover,
+			&:focus-visible {
+				background-color: core-variables.$ob-secondary-500;
+			}
 
-				.mat-ripple {
-					&.mat-mdc-button-ripple {
-						.mat-ripple-element {
-							background-color: core-variables.$ob-secondary-300;
-						}
+			.mat-ripple {
+				&.mat-mdc-button-ripple {
+					.mat-ripple-element {
+						background-color: core-variables.$ob-secondary-600;
 					}
 				}
 			}
 
 			&[disabled] {
 				background-color: core-variables.$ob-secondary-200;
-				color: core-variables.$ob-white;
 			}
 		}
 
-		&.ob-button-secondary {
-			&:not([disabled], .ob-button-card) {
-				border-color: core-variables.$ob-red-600;
-				color: core-variables.$ob-red-600;
-
-				&:hover {
-					border-color: core-variables.$ob-red-700;
-					color: core-variables.$ob-red-700;
-				}
-			}
+		&.ob-button-secondary:not(.ob-button-card) {
+			border-color: core-variables.$ob-secondary-600;
+			background-color: core-variables.$ob-white;
 
 			&[disabled] {
-				background-color: core-variables.$ob-white;
 				border-color: core-variables.$ob-secondary-300;
-			}
-		}
-
-		&.ob-button-tertiary {
-			&:not([disabled], .ob-button-card) {
-				color: core-variables.$ob-secondary-800;
-
-				&:hover {
-					color: core-variables.$ob-red-600;
-				}
-
-				&:focus {
-					background-color: transparent;
-					color: core-variables.$ob-red-600;
-				}
 			}
 		}
 	}
