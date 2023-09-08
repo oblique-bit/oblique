@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CodeExample, CodeExamples} from '../../code-examples.model';
-import {AlertExampleInfoPreviewComponent} from './previews/info/alert-example-info-preview.component';
-import {AlertExampleSuccessPreviewComponent} from './previews/success/alert-example-success-preview.component';
+import {AlertExampleTypePreviewComponent} from './previews/type/alert-example-type-preview.component';
+import {AlertExampleHasRoleAlertPreviewComponent} from './previews/has-role-alert/alert-example-has-role-alert-preview.component';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 
@@ -16,21 +16,21 @@ export class AlertCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'alert-examples';
 	readonly previews: CodeExample[] = [
 		{
-			component: AlertExampleInfoPreviewComponent,
-			idParts: ['info'],
-			title: 'Alert info',
+			component: AlertExampleTypePreviewComponent,
+			idParts: ['type'],
+			title: 'Types [type]',
 			snippets: [
-				this.getSnippet('alert', 'info/alert-example-info-preview.component.html', 'HTML'),
-				this.getSnippet('alert', 'info/alert-example-info-preview.component.ts', 'TS')
+				this.getSnippet('alert', 'type/alert-example-type-preview.component.html', 'HTML'),
+				this.getSnippet('alert', 'type/alert-example-type-preview.component.ts', 'TS')
 			]
 		},
 		{
-			component: AlertExampleSuccessPreviewComponent,
-			idParts: ['success'],
-			title: 'Alert success',
+			component: AlertExampleHasRoleAlertPreviewComponent,
+			idParts: ['has', 'role', 'alert'],
+			title: 'ARIA: alert role [hasRoleAlert]',
 			snippets: [
-				this.getSnippet('alert', 'success/alert-example-success-preview.component.html', 'HTML'),
-				this.getSnippet('alert', 'success/alert-example-success-preview.component.ts', 'TS')
+				this.getSnippet('alert', 'has-role-alert/alert-example-has-role-alert-preview.component.html', 'HTML'),
+				this.getSnippet('alert', 'has-role-alert/alert-example-has-role-alert-preview.component.ts', 'TS')
 			]
 		}
 	];
