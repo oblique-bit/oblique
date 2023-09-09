@@ -5,9 +5,9 @@
   "license": "MIT",
   "organization": {
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
-    "url": "http://www.bit.admin.ch/"
+    "url": "https://www.bit.admin.ch/"
   },
-  "homepage": "http://oblique.bit.admin.ch",
+  "homepage": "https://oblique.bit.admin.ch",
   "author": "Oblique Team <oblique@bit.admin.ch>",
   "contributors": [
     "https://github.com/oblique-bit/oblique/graphs/contributors"
