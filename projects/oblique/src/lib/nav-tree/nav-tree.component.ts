@@ -27,6 +27,9 @@ export class ObNavTreeComponent implements OnDestroy {
 	@Input() labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(
 		this.translate
 	);
+	/**
+	 * @deprecated since version 10.2.1. It will be removed with Oblique 11 with no replacement
+	 */
 	@Input() variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	/**
 	 * @deprecated since version 10.2.0. It will be removed with Oblique 11, and it won't be possible to deactivate the ancestors anymore
