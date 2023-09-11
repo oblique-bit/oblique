@@ -2,6 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {ButtonCodeExamplesComponent} from './button-code-examples.component';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
+import {ObButtonDirective} from '@oblique/oblique';
 
 describe(`${ButtonCodeExamplesComponent.name}`, () => {
 	let fixture: ComponentFixture<ButtonCodeExamplesComponent>;
@@ -17,11 +18,15 @@ describe(`${ButtonCodeExamplesComponent.name}`, () => {
 		fixture.detectChanges();
 	});
 
-	it('should create', () => {
+	test('that creation works', () => {
 		expect(component).toBeTruthy();
 	});
 
-	it('should have 2 CodeExampleComponent', () => {
+	test(`that there are 2 ${CodeExampleComponent.name}s`, () => {
 		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
+	});
+
+	test(`that there are 7 ${ObButtonDirective.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(ObButtonDirective)).length).toBe(7);
 	});
 });
