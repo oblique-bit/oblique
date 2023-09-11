@@ -5,10 +5,12 @@ import {ObButtonModule} from '@oblique/oblique';
 import {PreviewComponent} from '../../../../code-examples.model';
 
 @Component({
-	selector: 'app-button-example-primary-login-disabled',
-	templateUrl: './button-example-primary-login-disabled.component.html',
+	selector: 'app-button-example-other-options',
+	templateUrl: './button-example-other-options.component.html',
+	styleUrls: ['../../../../code-example-flex-layout.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [MatButtonModule, ObButtonModule, MatIconModule]
+	imports: [MatButtonModule, ObButtonModule, MatIconModule],
+	host: {class: 'layout-breakpoint-sm'}
 })
-export class ButtonExamplePrimaryLoginDisabledComponent implements PreviewComponent {}
+export class ButtonExampleOtherOptionsComponent implements PreviewComponent {}

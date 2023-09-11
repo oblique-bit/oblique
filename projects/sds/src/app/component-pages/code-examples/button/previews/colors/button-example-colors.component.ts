@@ -5,10 +5,12 @@ import {PreviewComponent} from '../../../../code-examples.model';
 import {ObButtonModule} from '@oblique/oblique';
 
 @Component({
-	selector: 'app-button-example-primary-link-frown',
-	templateUrl: './button-example-primary-link-frown.component.html',
+	selector: 'app-button-example-colors',
+	templateUrl: './button-example-colors.component.html',
+	styleUrls: ['../../../../code-example-flex-layout.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [MatButtonModule, ObButtonModule, MatIconModule]
+	imports: [MatButtonModule, ObButtonModule, MatIconModule],
+	host: {class: 'layout-breakpoint-sm'}
 })
-export class ButtonExamplePrimaryLinkFrownComponent implements PreviewComponent {}
+export class ButtonExampleColorsComponent implements PreviewComponent {}
