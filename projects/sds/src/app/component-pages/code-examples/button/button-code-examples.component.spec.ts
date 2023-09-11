@@ -21,7 +21,7 @@ describe(`${ButtonCodeExamplesComponent.name}`, () => {
 		expect(component).toBeTruthy();
 	});
 
-	it('should have 6 CodeExampleComponent', () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(6);
+	it('should have 2 CodeExampleComponent', () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
 	});
 });
