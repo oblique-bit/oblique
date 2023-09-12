@@ -5,11 +5,12 @@ import {ObButtonModule} from '@oblique/oblique';
 import {PreviewComponent} from '../../../../code-examples.model';
 
 @Component({
-	selector: 'app-badge-example-default',
-	templateUrl: './badge-example-default.component.html',
+	selector: 'app-badge-example-other-options',
+	templateUrl: './badge-example-other-options.component.html',
 	styleUrls: ['../../../../code-example-flex-layout.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [MatBadgeModule, MatButtonModule, ObButtonModule]
+	imports: [MatBadgeModule, MatButtonModule, ObButtonModule],
+	host: {class: 'layout-breakpoint-md'}
 })
-export class BadgeExampleDefaultComponent implements PreviewComponent {}
+export class BadgeExampleOtherOptionsComponent implements PreviewComponent {}

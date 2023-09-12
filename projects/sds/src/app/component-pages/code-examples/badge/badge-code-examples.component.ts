@@ -1,10 +1,8 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CodeExample, CodeExamples} from '../../code-examples.model';
-import {BadgeExampleColorWarnComponent} from './previews/badge-example-color-warn/badge-example-color-warn.component';
-import {BadgeExampleDefaultComponent} from './previews/badge-example-default/badge-example-default.component';
-import {BadgeExamplePositionBelowBeforeComponent} from './previews/badge-example-position-below-before/badge-example-position-below-before.component';
-import {BadgeExampleOverlapFalseComponent} from './previews/badge-example-overlap-false/badge-example-overlap-false.component';
+import {BadgeExampleColorsComponent} from './previews/colors/badge-example-colors.component';
+import {BadgeExampleOtherOptionsComponent} from './previews/other-options/badge-example-other-options.component';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 
@@ -19,39 +17,21 @@ export class BadgeCodeExamplesComponent extends CodeExamples {
 
 	readonly previews: CodeExample[] = [
 		{
-			component: BadgeExampleDefaultComponent,
-			idParts: ['default'],
-			title: 'Default badge',
+			component: BadgeExampleColorsComponent,
+			idParts: ['colors'],
+			title: 'Colors',
 			snippets: [
-				this.getSnippet('badge', 'badge-example-default/badge-example-default.component.html', 'HTML'),
-				this.getSnippet('badge', 'badge-example-default/badge-example-default.component.ts', 'TS')
+				this.getSnippet('badge', 'colors/badge-example-colors.component.html', 'HTML'),
+				this.getSnippet('badge', 'colors/badge-example-colors.component.ts', 'TS')
 			]
 		},
 		{
-			component: BadgeExampleColorWarnComponent,
-			idParts: ['color', 'warn'],
-			title: 'Warning badge',
+			component: BadgeExampleOtherOptionsComponent,
+			idParts: ['other', 'options'],
+			title: 'Other options',
 			snippets: [
-				this.getSnippet('badge', 'badge-example-color-warn/badge-example-color-warn.component.html', 'HTML'),
-				this.getSnippet('badge', 'badge-example-color-warn/badge-example-color-warn.component.ts', 'TS')
-			]
-		},
-		{
-			component: BadgeExamplePositionBelowBeforeComponent,
-			idParts: ['below', 'before'],
-			title: 'Positioned badge',
-			snippets: [
-				this.getSnippet('badge', 'badge-example-position-below-before/badge-example-position-below-before.component.html', 'HTML'),
-				this.getSnippet('badge', 'badge-example-position-below-before/badge-example-position-below-before.component.ts', 'TS')
-			]
-		},
-		{
-			component: BadgeExampleOverlapFalseComponent,
-			idParts: ['overlap', 'false'],
-			title: 'Badge without overlap',
-			snippets: [
-				this.getSnippet('badge', 'badge-example-overlap-false/badge-example-overlap-false.component.html', 'HTML'),
-				this.getSnippet('badge', 'badge-example-overlap-false/badge-example-overlap-false.component.ts', 'TS')
+				this.getSnippet('badge', 'other-options/badge-example-other-options.component.html', 'HTML'),
+				this.getSnippet('badge', 'other-options/badge-example-other-options.component.ts', 'TS')
 			]
 		}
 	];
