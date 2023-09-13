@@ -71,14 +71,28 @@
 	.mat-calendar-controls .mat-mdc-icon-button.mat-mdc-button-base {
 		width: 32px; // 16px icon width + 2*8px padding
 	}
+
+	:focus,
+	:focus-visible {
+		outline: none;
+	}
+}
+
+.mat-datepicker-toggle {
+	:focus {
+		outline: none;
+	}
+
+	.mat-mdc-button-base {
+		&:disabled {
+			color: variables.$ob-secondary-300;
+		}
+	}
 }
 
 .cdk-keyboard-focused .mat-calendar-body-active,
 .cdk-program-focused .mat-calendar-body-active {
-	> span.mat-calendar-body-cell-content:not(
-			.mat-calendar-body-selected,
-			.mat-calendar-body-comparison-identical
-		) {
+	> span.mat-calendar-body-cell-content:not(.mat-calendar-body-comparison-identical) {
 		@include shadow.ob-tab-focus-box-shadow();
 	}
 }
