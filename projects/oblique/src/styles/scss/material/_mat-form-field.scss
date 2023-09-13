@@ -83,10 +83,12 @@
 		}
 	}
 
-	@include mat-form-field.ob-form-field-colors(
-		core-variables.$ob-text-800,
-		core-variables.$ob-white
-	);
+	&:not(.mat-form-field-invalid) {
+		@include mat-form-field.ob-form-field-colors(
+			core-variables.$ob-text-800,
+			core-variables.$ob-white
+		);
+	}
 
 	.mat-mdc-form-field-infix {
 		display: flex;
