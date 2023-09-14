@@ -293,7 +293,7 @@
 					}
 				}
 
-				&:last-of-type {
+				&:last-of-type:not(:nth-of-type(-n + 4)) {
 					&.ob-expandable {
 						.ob-sub-menu {
 							margin-left: max(
