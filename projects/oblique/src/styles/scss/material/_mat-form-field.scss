@@ -333,8 +333,6 @@
 		.ob-outline &.mat-focused {
 			.mdc-notched-outline {
 				@include shadow.ob-tab-focus-box-shadow();
-				outline: none;
-				outline-offset: -3px;
 
 				&.mdc-notched-outline__notch {
 					.mdc-notched-outline__leading,
