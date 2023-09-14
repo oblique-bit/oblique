@@ -1,0 +1,29 @@
+.paginator-container {
+	display: flex;
+	align-items: center;
+	width: 100%;
+
+	@media (min-width: 905px) {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+
+	@media (max-width: 1239px) {
+		flex-direction: column;
+	}
+
+	@media (min-width: 1240px) {
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	@media (min-width: 1440px) {
+		padding-left: 4rem;
+		padding-right: 4rem;
+	}
+
+	& > * {
+		margin: 0;
+		padding: 0;
+	}
+}

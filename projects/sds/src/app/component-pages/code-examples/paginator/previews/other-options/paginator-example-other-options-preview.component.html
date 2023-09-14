@@ -1,0 +1,36 @@
+<div class="paginator-container">
+	<h6>Color</h6>
+	<mat-paginator color="primary" [length]="1000"> </mat-paginator>
+</div>
+<div class="paginator-container">
+	<h6>Disabled</h6>
+	<mat-paginator disabled [length]="1000"> </mat-paginator>
+</div>
+<div class="paginator-container">
+	<h6>Hide page size</h6>
+	<mat-paginator hidePageSize [length]="1000"> </mat-paginator>
+</div>
+<div class="paginator-container">
+	<h6>Page index</h6>
+	<mat-paginator [length]="1000" [pageIndex]="10"> </mat-paginator>
+</div>
+<div class="paginator-container">
+	<h6>Select config</h6>
+	<mat-paginator
+		[length]="1000"
+		[pageSizeOptions]="[5, 10, 25, 100]"
+		[selectConfig]="{ disableOptionCentering: true, panelClass: 'i-will-be-added-to-mat-select-panel' }"
+	>
+	</mat-paginator>
+</div>
+<div class="paginator-container">
+	<h6>Page event</h6>
+	<mat-paginator [length]="1000" (page)="lastPageEvent = $event"> </mat-paginator>
+	<small>{{ lastPageEvent ? "Last page event:" : "No page events have occurred yet" }}</small>
+	<small>{{ lastPageEvent | json }}</small>
+</div>
+<div class="paginator-container">
+	<h6>Initialized</h6>
+	<mat-paginator #initialized [length]="1000"> </mat-paginator>
+	<small>{{ initializedText }}</small>
+</div>
