@@ -1,9 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CodeExample, CodeExamples} from '../../code-examples.model';
-import {PaginatorComponent} from './previews/paginator/paginator.component';
+import {PaginatorExampleCommonOptionsPreviewComponent} from './previews/common-options/paginator-example-common-options-preview.component';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {CommonModule} from '@angular/common';
+import {PaginatorExampleOtherOptionsPreviewComponent} from '../paginator/previews/other-options/paginator-example-other-options-preview.component';
 
 @Component({
 	selector: 'app-button-code-examples',
@@ -16,12 +17,21 @@ export class PaginatorCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'button-examples';
 	readonly previews: CodeExample[] = [
 		{
-			component: PaginatorComponent,
-			idParts: ['paginator'],
-			title: 'Paginator',
+			component: PaginatorExampleCommonOptionsPreviewComponent,
+			idParts: ['common', 'options'],
+			title: 'Common options',
 			snippets: [
-				this.getSnippet('paginator', 'paginator/paginator.component.html', 'HTML'),
-				this.getSnippet('paginator', 'paginator/paginator.component.ts', 'TS')
+				this.getSnippet('paginator', 'common-options/paginator-example-common-options-preview.component.html', 'HTML'),
+				this.getSnippet('paginator', 'common-options/paginator-example-common-options-preview.component.ts', 'TS')
+			]
+		},
+		{
+			component: PaginatorExampleOtherOptionsPreviewComponent,
+			idParts: ['other', 'options'],
+			title: 'Other options',
+			snippets: [
+				this.getSnippet('paginator', 'other-options/paginator-example-other-options-preview.component.html', 'HTML'),
+				this.getSnippet('paginator', 'other-options/paginator-example-other-options-preview.component.ts', 'TS')
 			]
 		}
 	];
