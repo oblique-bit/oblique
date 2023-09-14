@@ -19,14 +19,14 @@
 $tab-focus-color: variables.$ob-purple-500;
 $tab-focus-width: 3px;
 
-@mixin ob-tab-focus-box-shadow() {
-	box-shadow: 0 0 0 $tab-focus-width $tab-focus-color;
+@mixin ob-tab-focus-box-shadow($tab-focus-box-shadow-color: $tab-focus-color) {
+	box-shadow: 0 0 0 $tab-focus-width $tab-focus-box-shadow-color;
 	outline: none;
 }
 
-@mixin ob-focus-visible-tab-focus-box-shadow() {
+@mixin ob-focus-visible-tab-focus-box-shadow($tab-focus-box-shadow-color: $tab-focus-color) {
 	&:focus-visible {
-		@include ob-tab-focus-box-shadow();
+		@include ob-tab-focus-box-shadow($tab-focus-box-shadow-color);
 	}
 }
 
