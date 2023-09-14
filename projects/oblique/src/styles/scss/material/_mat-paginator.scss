@@ -1,9 +1,10 @@
 @use "../core/variables";
+@use "../core/mixins/shadow";
 
 .mat-mdc-paginator {
 	&,
 	& .mat-button-wrapper {
-		color: variables.$ob-default;
+		color: variables.$ob-secondary-600;
 	}
 
 	.mat-mdc-paginator-icon > path {
@@ -14,7 +15,7 @@
 	.mat-mdc-paginator-navigation-previous,
 	.mat-mdc-paginator-navigation-first,
 	.mat-mdc-paginator-navigation-last {
-		border: 1px solid black;
+		border: 1px solid variables.$ob-black;
 		width: 30px;
 		height: 30px;
 		margin: 10px;
@@ -23,7 +24,8 @@
 SVG icon colors cannot be changed in scss. The icons are black and in this use case, they are needed in the color gray and red.
 To achieve this, filters are used.
 */
-		filter: invert(20%) sepia(100%) saturate(7000%) hue-rotate(-10deg) brightness(80%);
+		// Filters $ob-black to $ob-secondary-600
+		filter: invert(22%) sepia(14%) saturate(1462%) hue-rotate(168deg) brightness(93%) contrast(86%);
 	}
 
 	.mat-mdc-paginator-navigation-next {
@@ -46,7 +48,38 @@ To achieve this, filters are used.
 	.mat-mdc-paginator-navigation-last[disabled],
 	.mat-mdc-paginator-navigation-first[disabled],
 	.mat-mdc-paginator-navigation-previous[disabled] {
-		filter: grayscale(100%);
-		opacity: 0.5;
+		// Filters $ob-black to $ob-secondary-300
+		filter: invert(64%) sepia(7%) saturate(675%) hue-rotate(169deg) brightness(86%) contrast(89%);
+	}
+
+	button {
+		&:focus {
+			outline: none;
+		}
+
+		// Results in a color close to $ob-purple-500 after above filter is applied, but it is not an exact match
+		@include shadow.ob-focus-visible-tab-focus-box-shadow(#28361e);
+	}
+
+	.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+		padding-top: variables.$ob-spacing-sm * 1.75;
+	}
+
+	.ob-outline & .mat-mdc-form-field-type-mat-select.mat-focused .mdc-notched-outline {
+		@include shadow.ob-tab-focus-box-shadow();
+	}
+
+	.mat-mdc-button-ripple:not(:empty) {
+		border-radius: variables.$ob-border-radius-button;
+		background: variables.$ob-black;
+		transform: scale(0);
+		animation: ripple 0.1s ease-out forwards;
+		opacity: 0.1;
+	}
+
+	@keyframes ripple {
+		to {
+			transform: scale(1);
+		}
 	}
 }
