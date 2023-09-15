@@ -100,13 +100,6 @@ describe('NavTreeComponent', () => {
 		expect(navItems.length).toBe(13);
 	});
 
-	// fit('should activate one navigation item on click', () => {
-	// 	let firstNavItem = fixture.debugElement.query(By.css('a.nav-link'));
-	// 	firstNavItem.nativeElement.click();
-	//
-	// 	expect(firstNavItem.classes['active']).toBeDefined();
-	// });
-
 	it('should custom format item labels', () => {
 		const suffix = '[custom]';
 		component.labelFormatter = (item: ObNavTreeItemModel) => `${item.label} - ${suffix}`;
