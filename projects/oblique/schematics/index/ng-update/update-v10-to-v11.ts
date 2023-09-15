@@ -1,4 +1,4 @@
-import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain, externalSchematic} from '@angular-devkit/schematics';
 import {ObIMigrations} from './ng-update.model';
 import {
 	applyInTree,
@@ -33,7 +33,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 				this.wrapMultiLinerContentProjectionWithNgTemplate('obLocales'),
 				this.removeContentProjectionMarker('obHeaderCustomControl'),
 				this.removeContentProjectionMarker('obLocales'),
-				this.removeActivateServiceNavigationToken()
+				this.removeActivateServiceNavigationToken(),
+				this.runMDCMigration()
 			])(tree, _context);
 	}
 
@@ -165,6 +166,15 @@ export class UpdateV10toV11 implements ObIMigrations {
 				replaceInFile(tree, filePath, /OB_ACTIVATE_SERVICE_NAVIGATION\s*,?\s*/, '');
 			};
 			return applyInTree(tree, apply, '*.ts');
+		});
+	}
+
+	private runMDCMigration(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, `Runs the mdc-migration.`);
+			return externalSchematic('@angular/material', 'mdc-migration', {
+				components: ['all']
+			});
 		});
 	}
 }
