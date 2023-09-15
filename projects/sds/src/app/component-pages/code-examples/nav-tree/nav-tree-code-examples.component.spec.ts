@@ -1,15 +1,15 @@
+import {RouterTestingModule} from '@angular/router/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {TranslateService} from '@ngx-translate/core';
+import {ObMockTranslateService} from '@oblique/oblique';
+import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {NavTreeExampleDataFromServicePreviewComponent} from './previews/data-from-service/nav-tree-example-data-from-service-preview.component';
 import {NavTreeExampleFilterPreviewComponent} from './previews/filter/nav-tree-example-filter-preview.component';
 import {NavTreeExampleExpandCollapsePreviewComponent} from './previews/expand-collapse/nav-tree-example-expand-collapse-preview.component';
 import {NavTreeExampleDefaultPreviewComponent} from './previews/default/nav-tree-example-default-preview.component';
-import {CodeExampleComponent} from './../../code-example/code-example.component';
-import {ObMockTranslateService} from '@oblique/oblique';
-import {RouterTestingModule} from '@angular/router/testing';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NavTreeCodeExamplesComponent} from './nav-tree-code-examples.component';
-import {TranslateService} from '@ngx-translate/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {By} from '@angular/platform-browser';
 
 describe(NavTreeCodeExamplesComponent.name, () => {
 	let component: NavTreeCodeExamplesComponent;
@@ -17,7 +17,7 @@ describe(NavTreeCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [NavTreeCodeExamplesComponent, RouterTestingModule, BrowserAnimationsModule],
+			imports: [NavTreeCodeExamplesComponent, RouterTestingModule, NoopAnimationsModule],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 
