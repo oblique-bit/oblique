@@ -13,7 +13,10 @@ export class CopyDistFiles {
 				/\.description\.html|\.api\.json$/.test(filePath)
 			),
 			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'assets')),
-			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'styles')).filter(filePath => !filePath.endsWith('.scss'))
+			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'styles')).filter(filePath => !filePath.endsWith('.scss')),
+			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'styles')).filter(filePath =>
+				/(?:core[\\/](?:_variables|_palette)|mixins[\\/](?:_layout|_shadow|_typography))\.scss$/.test(filePath)
+			)
 		]);
 	}
 
