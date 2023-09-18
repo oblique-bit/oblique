@@ -52,6 +52,12 @@
           "since": "9.1.0"
         }
       ]
+    },
+    {
+      "name": "ObPaginatorDirective",
+      "type": "directive",
+      "since": "11.0.0",
+      "usage": "It should be used when a <code>mat-paginator</code> containing a <code>mat-select</code> is present. This will ensure that the <code>mat-select</code> within the <code>mat-paginator</code> has the correct oblique styling."
     }
   ]
 }
