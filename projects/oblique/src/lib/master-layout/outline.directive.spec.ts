@@ -8,7 +8,7 @@ import {By} from '@angular/platform-browser';
 })
 class OutLineDirectiveTestComponent {}
 
-describe('ObOutlineDirective', () => {
+describe(ObOutlineDirective.name, () => {
 	let fixture: ComponentFixture<OutLineDirectiveTestComponent>;
 	let directive: ObOutlineDirective;
 
@@ -31,52 +31,52 @@ describe('ObOutlineDirective', () => {
 		jest.restoreAllMocks();
 	});
 
-	it('should be able to create the directive', () => {
+	test('that creation works', () => {
 		expect(directive).toBeTruthy();
 	});
 
-	it('should create an instance of the test component', () => {
+	test('that it creates instance of the test component', () => {
 		expect(fixture.componentInstance).toBeTruthy();
 	});
 
-	describe('Method addOutline', () => {
+	describe(`Method ${ObOutlineDirective.prototype.addOutline.name}`, () => {
 		beforeEach(() => {
 			directive.addOutline();
 		});
 
-		it('should call document.body.classList.add once', () => {
+		test('that it calls document.body.classList.add once', () => {
 			expect(document.body.classList.add).toHaveBeenCalledTimes(1);
 		});
 
-		it('should call document.body.classList.add with ob-outline', () => {
+		test('that it calls document.body.classList.add with ob-outline', () => {
 			expect(document.body.classList.add).toHaveBeenCalledWith('ob-outline');
 		});
 	});
 
-	describe('Method removeOutline', () => {
+	describe(`Method ${ObOutlineDirective.prototype.removeOutline.name}`, () => {
 		beforeEach(() => {
 			directive.removeOutline();
 		});
 
-		it('should call document.body.classList.remove once', () => {
+		test('that it calls document.body.classList.remove once', () => {
 			expect(document.body.classList.remove).toHaveBeenCalledTimes(1);
 		});
 
-		it('should call document.body.classList.remove with ob-outline', () => {
+		test('that it calls document.body.classList.remove with ob-outline', () => {
 			expect(document.body.classList.remove).toHaveBeenCalledWith('ob-outline');
 		});
 	});
 
 	describe('Used in template', () => {
 		describe.each(['tab', 'shift.tab', 'arrowUp', 'arrowDown', 'arrowRight', 'arrowLeft'])(`on press %s`, value => {
-			it('should call addOutline once', () => {
+			test(`that it calls ${ObOutlineDirective.prototype.addOutline.name} once`, () => {
 				window.dispatchEvent(new KeyboardEvent('keydown', {key: value}));
 				expect(directive.addOutline).toHaveBeenCalledTimes(1);
 			});
 		});
 
 		describe.each(['enter', 'shift', 'lalt', 'space'])(`on press %s`, value => {
-			it('should not call add addOutline', () => {
+			test(`that it does not call add ${ObOutlineDirective.prototype.addOutline.name}`, () => {
 				window.dispatchEvent(new KeyboardEvent('keydown', {key: value}));
 				expect(directive.addOutline).not.toHaveBeenCalled();
 			});
@@ -86,7 +86,7 @@ describe('ObOutlineDirective', () => {
 			{eventName: 'mousedown', eventObject: new MouseEvent('mousedown')},
 			{eventName: 'keydown', eventObject: new KeyboardEvent('keydown')}
 		])('on $eventName', ({eventObject}) => {
-			it('should call removeOutline once', () => {
+			test(`that it calls ${ObOutlineDirective.prototype.removeOutline.name} once`, () => {
 				window.dispatchEvent(eventObject);
 				expect(directive.removeOutline).toHaveBeenCalledTimes(1);
 			});
