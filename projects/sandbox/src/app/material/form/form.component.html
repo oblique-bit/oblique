@@ -8,6 +8,20 @@
 				<mat-hint>test</mat-hint>
 			</mat-form-field>
 			<mat-form-field>
+				<mat-label>Text prefix & suffix</mat-label>
+				<input type="text" matInput placeholder="Text prefix & suffix" ngModel name="text" required />
+				<span matTextPrefix>Text Prefix</span>
+				<span matTextSuffix>Text Suffix</span>
+				<mat-hint>test</mat-hint>
+			</mat-form-field>
+			<mat-form-field>
+				<mat-label>Icon prefix & suffix</mat-label>
+				<input type="text" matInput placeholder="Icon prefix & suffix" ngModel name="icon" required />
+				<mat-icon svgIcon="user" matIconPrefix></mat-icon>
+				<mat-icon svgIcon="star" matIconSuffix></mat-icon>
+				<mat-hint>test</mat-hint>
+			</mat-form-field>
+			<mat-form-field>
 				<mat-label>Default</mat-label>
 				<mat-select>
 					<mat-option [value]="1">One</mat-option>
