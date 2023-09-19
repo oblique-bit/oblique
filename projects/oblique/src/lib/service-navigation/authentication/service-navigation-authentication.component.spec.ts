@@ -17,8 +17,8 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [ObServiceNavigationAuthenticationComponent, ObMockTranslatePipe],
-			imports: [MatIconModule, MatTooltipModule, MatButtonModule, ObButtonModule]
+			declarations: [ObServiceNavigationAuthenticationComponent],
+			imports: [ObMockTranslatePipe, MatIconModule, MatTooltipModule, MatButtonModule, ObButtonModule]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationAuthenticationComponent);

@@ -21,13 +21,8 @@ describe('ObServiceNavigationInfoComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MatIconModule, MatTooltipModule, ObPopoverModule],
-			declarations: [
-				ObServiceNavigationInfoComponent,
-				ObServiceNavigationPopoverSectionComponent,
-				ObMockTranslatePipe,
-				ObContactToLinksPipe
-			]
+			imports: [ObMockTranslatePipe, MatIconModule, MatTooltipModule, ObPopoverModule],
+			declarations: [ObServiceNavigationInfoComponent, ObServiceNavigationPopoverSectionComponent, ObContactToLinksPipe]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationInfoComponent);

@@ -20,8 +20,8 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [ObServiceNavigationLanguagesComponent, ObMockTranslatePipe],
-			imports: [MatFormFieldModule, MatSelectModule, NoopAnimationsModule]
+			declarations: [ObServiceNavigationLanguagesComponent],
+			imports: [ObMockTranslatePipe, MatFormFieldModule, MatSelectModule, NoopAnimationsModule]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationLanguagesComponent);
