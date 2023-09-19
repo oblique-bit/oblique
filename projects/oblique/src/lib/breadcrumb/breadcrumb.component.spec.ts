@@ -50,8 +50,8 @@ describe('ObBreadcrumbComponent', () => {
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [ObBreadcrumbComponent, ObMockTranslatePipe],
-				imports: [RouterTestingModule, ObMockIconModule, MatIconTestingModule, MatTooltipModule],
+				declarations: [ObBreadcrumbComponent],
+				imports: [ObMockTranslatePipe, RouterTestingModule, ObMockIconModule, MatIconTestingModule, MatTooltipModule],
 				providers: [
 					{provide: TranslateService, useValue: translateServiceMock},
 					{provide: ObTBreadcrumbConfig, useValue: mockBreadcrumbConfig},
@@ -153,8 +153,8 @@ describe('ObBreadcrumbComponent', () => {
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [ObBreadcrumbComponent, ObMockTranslatePipe],
-				imports: [RouterTestingModule, ObMockIconModule, MatIconTestingModule, MatTooltipModule],
+				declarations: [ObBreadcrumbComponent],
+				imports: [ObMockTranslatePipe, RouterTestingModule, ObMockIconModule, MatIconTestingModule, MatTooltipModule],
 				providers: [
 					{provide: TranslateService, useValue: translateServiceMock},
 					{provide: ObTBreadcrumbConfig, useValue: mockBreadcrumbConfig},
@@ -237,8 +237,8 @@ describe('ObBreadcrumbComponent', () => {
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [ObBreadcrumbComponent, ObMockTranslatePipe],
-				imports: [RouterTestingModule, ObMockIconModule, MatIconTestingModule, MatTooltipModule],
+				declarations: [ObBreadcrumbComponent],
+				imports: [ObMockTranslatePipe, RouterTestingModule, ObMockIconModule, MatIconTestingModule, MatTooltipModule],
 				providers: [
 					{provide: TranslateService, useValue: translateServiceMock},
 					{provide: ObTBreadcrumbConfig, useValue: mockBreadcrumbConfig},
@@ -297,8 +297,8 @@ describe('ObBreadcrumbComponent', () => {
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [ObBreadcrumbComponent, ObMockTranslatePipe],
-				imports: [RouterTestingModule, ObMockIconModule, MatIconTestingModule, MatTooltipModule],
+				declarations: [ObBreadcrumbComponent],
+				imports: [ObMockTranslatePipe, RouterTestingModule, ObMockIconModule, MatIconTestingModule, MatTooltipModule],
 				providers: [
 					{provide: TranslateService, useValue: translateServiceMock},
 					{
