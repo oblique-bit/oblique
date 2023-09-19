@@ -46,7 +46,8 @@ describe('ObColumnLayoutComponent', () => {
 
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				declarations: [ObColumnLayoutComponent, ObColumnPanelDirective, ObMockTranslatePipe],
+				imports: [ObMockTranslatePipe],
+				declarations: [ObColumnLayoutComponent, ObColumnPanelDirective],
 				providers: [{provide: WINDOW, useValue: window}]
 			}).compileComponents();
 		});
@@ -183,7 +184,8 @@ describe('ObColumnLayoutComponent', () => {
 		let testComponent: TestComponent;
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective, ObMockTranslatePipe],
+				imports: [ObMockTranslatePipe],
+				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective],
 				providers: [{provide: WINDOW, useValue: window}]
 			}).compileComponents();
 		});
@@ -216,7 +218,8 @@ describe('ObColumnLayoutComponent', () => {
 
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective, ObMockTranslatePipe],
+				imports: [ObMockTranslatePipe],
+				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective],
 				providers: [{provide: WINDOW, useValue: window}]
 			}).compileComponents();
 		});
