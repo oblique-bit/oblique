@@ -38,8 +38,8 @@ describe('ObMasterLayoutComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			imports: [RouterTestingModule],
-			declarations: [ObMasterLayoutComponent, ObMockTranslatePipe],
+			imports: [ObMockTranslatePipe, RouterTestingModule],
+			declarations: [ObMasterLayoutComponent],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
