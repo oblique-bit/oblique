@@ -18,8 +18,8 @@ describe('ObServiceNavigationPopoverSectionComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MatIconModule],
-			declarations: [ObServiceNavigationPopoverSectionComponent, ObMockTranslatePipe, TestComponent]
+			imports: [ObMockTranslatePipe, MatIconModule],
+			declarations: [ObServiceNavigationPopoverSectionComponent, TestComponent]
 		}).compileComponents();
 	});
 

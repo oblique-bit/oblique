@@ -22,8 +22,8 @@ describe('ObServiceNavigationMessageComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MatTooltipModule, ObTranslateParamsModule, MatIconModule, MatBadgeModule],
-			declarations: [ObServiceNavigationMessageComponent, ObMockTranslatePipe],
+			imports: [ObMockTranslatePipe, MatTooltipModule, ObTranslateParamsModule, MatIconModule, MatBadgeModule],
+			declarations: [ObServiceNavigationMessageComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 	});

@@ -23,8 +23,8 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockExternalLinkModule, ObPopoverModule, MatIconModule, MatTooltipModule],
-			declarations: [ObServiceNavigationProfileComponent, ObMockTranslatePipe, ObServiceNavigationPopoverSectionComponent],
+			imports: [ObMockTranslatePipe, ObMockExternalLinkModule, ObPopoverModule, MatIconModule, MatTooltipModule],
+			declarations: [ObServiceNavigationProfileComponent, ObServiceNavigationPopoverSectionComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 

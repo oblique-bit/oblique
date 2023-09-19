@@ -26,11 +26,10 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MatButtonModule, MatIconModule, MatTooltipModule, ObPopoverModule, ObDisableLinkDirective],
+			imports: [ObMockTranslatePipe, MatButtonModule, MatIconModule, MatTooltipModule, ObPopoverModule, ObDisableLinkDirective],
 			declarations: [
 				ObLimitArraySizePipe,
 				ObServiceNavigationApplicationsComponent,
-				ObMockTranslatePipe,
 				ObServiceNavigationPopoverSectionComponent,
 				ObSafeImagePipe,
 				ObServiceNavigationApplicationAltPipe
