@@ -15,8 +15,16 @@ describe('ObSchemaValidationSampleComponent', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [FormsModule, ReactiveFormsModule, HttpClientTestingModule, RouterTestingModule, MatDatepickerModule, MatMomentDateModule],
-			declarations: [SchemaValidationSampleComponent, ObMockTranslatePipe],
+			imports: [
+				ObMockTranslatePipe,
+				FormsModule,
+				ReactiveFormsModule,
+				HttpClientTestingModule,
+				RouterTestingModule,
+				MatDatepickerModule,
+				MatMomentDateModule
+			],
+			declarations: [SchemaValidationSampleComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 		}).compileComponents();
