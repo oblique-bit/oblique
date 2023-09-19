@@ -35,12 +35,12 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				ObMasterLayoutNavigationComponent,
 				ObMasterLayoutNavigationSubMenuItemComponent,
 				ObMockMasterLayoutNavigationItemDirective,
-				ObMockTranslatePipe,
 				DummyFullPathComponent,
 				DummyPrefixPathComponent,
 				DummyDefaultPathComponent
 			],
 			imports: [
+				ObMockTranslatePipe,
 				RouterTestingModule.withRoutes([
 					{path: 'defaultPathMatch', component: DummyDefaultPathComponent},
 					{path: 'prefix/1/users', component: DummyPrefixPathComponent},

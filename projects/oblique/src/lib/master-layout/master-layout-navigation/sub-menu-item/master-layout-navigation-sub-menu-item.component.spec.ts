@@ -16,8 +16,8 @@ describe(ObMasterLayoutNavigationSubMenuItemComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [ObMasterLayoutNavigationSubMenuItemComponent, ObMockTranslatePipe],
-			imports: [BrowserModule, CommonModule],
+			declarations: [ObMasterLayoutNavigationSubMenuItemComponent],
+			imports: [ObMockTranslatePipe, BrowserModule, CommonModule],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 

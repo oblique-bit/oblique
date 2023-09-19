@@ -31,8 +31,8 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			imports: [RouterTestingModule],
-			declarations: [ObMasterLayoutHeaderComponent, ObMockTranslatePipe],
+			imports: [ObMockTranslatePipe, RouterTestingModule],
+			declarations: [ObMasterLayoutHeaderComponent],
 			providers: [
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
