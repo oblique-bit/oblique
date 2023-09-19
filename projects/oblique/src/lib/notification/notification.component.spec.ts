@@ -26,8 +26,8 @@ describe('NotificationComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			declarations: [ObNotificationComponent, ObMockTranslatePipe, ObMockAlertComponent],
-			imports: [CommonModule, NoopAnimationsModule, RouterTestingModule],
+			declarations: [ObNotificationComponent],
+			imports: [ObMockAlertComponent, ObMockTranslatePipe, CommonModule, NoopAnimationsModule, RouterTestingModule],
 			providers: [
 				{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
 				{provide: ObNotificationService, useClass: ObMockNotificationService},
