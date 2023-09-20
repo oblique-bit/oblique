@@ -23,8 +23,15 @@ describe(FileUploadCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [ObMockTranslatePipe],
-			imports: [CodeExampleComponent, CommonModule, FileUploadCodeExamplesComponent, HttpClientTestingModule, IdPipe, NoopAnimationsModule],
+			imports: [
+				ObMockTranslatePipe,
+				CodeExampleComponent,
+				CommonModule,
+				FileUploadCodeExamplesComponent,
+				HttpClientTestingModule,
+				IdPipe,
+				NoopAnimationsModule
+			],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: ObPopUpService, useClass: ObMockPopUpService}
