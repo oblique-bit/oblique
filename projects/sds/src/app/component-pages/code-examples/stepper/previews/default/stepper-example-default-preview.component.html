@@ -1,0 +1,42 @@
+<h3>Horizontal stepper</h3>
+<mat-horizontal-stepper #stepper [linear]="true">
+	<ng-template matStepperIcon="edit">
+		<mat-icon svgIcon="pen"></mat-icon>
+	</ng-template>
+
+	<ng-template matStepperIcon="done">
+		<mat-icon svgIcon="checkmark"></mat-icon>
+	</ng-template>
+
+	<mat-step [stepControl]="firstFormGroup">
+		<form [formGroup]="firstFormGroup">
+			<ng-template matStepLabel>Fill out your name</ng-template>
+			<mat-form-field>
+				<input matInput placeholder="Name" formControlName="firstCtrl" required />
+			</mat-form-field>
+			<div>
+				<button type="button" mat-button obButton="primary" matStepperNext>Next</button>
+			</div>
+		</form>
+	</mat-step>
+	<mat-step [stepControl]="secondFormGroup">
+		<form [formGroup]="secondFormGroup">
+			<ng-template matStepLabel>Fill out your address</ng-template>
+			<mat-form-field>
+				<input matInput placeholder="Address" formControlName="secondCtrl" required />
+			</mat-form-field>
+			<div class="actions">
+				<button type="button" mat-button obButton="primary" matStepperPrevious>Back</button>
+				<button type="button" mat-button obButton="primary" matStepperNext>Next</button>
+			</div>
+		</form>
+	</mat-step>
+	<mat-step>
+		<ng-template matStepLabel>Done</ng-template>
+		You are now done.
+		<div class="actions">
+			<button type="button" mat-button obButton="primary" matStepperPrevious>Back</button>
+			<button type="button" mat-button obButton="secondary" (click)="stepper.reset()">Reset</button>
+		</div>
+	</mat-step>
+</mat-horizontal-stepper>
