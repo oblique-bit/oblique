@@ -22,6 +22,7 @@ import {SlideToggleCodeExamplesComponent} from './code-examples/slide-toggle/sli
 import {TabsCodeExamplesComponent} from './code-examples/tabs/tabs-code-examples.component';
 import {MasterLayoutCodeExamplesComponent} from './code-examples/master-layout/master-layout-code-examples.component';
 import {NavTreeCodeExamplesComponent} from './code-examples/nav-tree/nav-tree-code-examples.component';
+import {StepperCodeExamplesComponent} from './code-examples/stepper/stepper-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -45,6 +46,7 @@ export class CodeExamplesMapper {
 		slider: SliderCodeExamplesComponent,
 		slideToggle: SlideToggleCodeExamplesComponent,
 		spinner: SpinnerCodeExamplesComponent,
+		stepper: StepperCodeExamplesComponent,
 		tabs: TabsCodeExamplesComponent,
 		tooltip: TooltipCodeExamplesComponent
 	};
