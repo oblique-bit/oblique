@@ -1,68 +1,84 @@
 @use "sass:selector";
 @use "../core/variables";
 
-.mat-step-header .mat-step-icon {
-	height: 26px;
-	width: 26px;
-	font-size: 12px;
-	color: variables.$ob-primary;
-	background-color: variables.$ob-white;
-	border: 1px solid variables.$ob-primary;
-
-	&:hover {
-		background-color: variables.$ob-light;
+.mat-step-header {
+	&.mat-step-header:hover,
+	&.mat-step-header:focus {
+		background-color: variables.$ob-secondary-50;
 	}
 
-	&.mat-step-icon-selected {
-		color: variables.$ob-white;
-		background-color: variables.$ob-primary;
-	}
-
-	&.mat-step-icon-state-done {
-		color: variables.$ob-success;
-		border-color: variables.$ob-success;
+	.mat-step-icon {
+		height: 26px;
+		width: 26px;
+		font-size: 12px;
+		color: variables.$ob-secondary-600;
+		background-color: variables.$ob-white;
+		border: 1px solid variables.$ob-secondary-600;
 
 		&:hover {
-			background-color: variables.$ob-success-light;
+			background-color: variables.$ob-light;
 		}
-	}
 
-	.mat-stepper-lg & {
-		height: 38px;
-		width: 38px;
-		font-size: 16px;
+		&.mat-step-icon-state-error {
+			color: variables.$ob-error-800;
+			border-color: variables.$ob-error-800;
+		}
 
-		.mat-icon {
-			font-size: 22px;
+		&.mat-step-icon-state-edit {
+			background-color: variables.$ob-secondary-600;
+			color: variables.$ob-white;
+		}
 
-			&:not(.ob-icon) {
-				height: 22px;
-				width: 22px;
+		&.mat-step-icon-state-done {
+			color: variables.$ob-success-600;
+			border-color: variables.$ob-success-600;
+
+			&:hover {
+				background-color: variables.$ob-success-light;
 			}
 		}
-	}
 
-	.mat-stepper-sm & {
-		height: 16px;
-		width: 16px;
-		font-size: 10px;
+		.mat-stepper-lg & {
+			height: 38px;
+			width: 38px;
+			font-size: 16px;
 
-		.mat-icon {
+			.mat-icon {
+				font-size: 22px;
+
+				&:not(.ob-icon) {
+					height: 22px;
+					width: 22px;
+				}
+			}
+		}
+
+		.mat-stepper-sm & {
+			height: 16px;
+			width: 16px;
 			font-size: 10px;
 
-			&:not(.ob-icon) {
-				height: 10px;
-				width: 10px;
+			.mat-icon {
+				font-size: 10px;
+
+				&:not(.ob-icon) {
+					height: 10px;
+					width: 10px;
+				}
 			}
 		}
-	}
 
-	@at-root #{selector.append("[ng-reflect-active=false]", &)} {
-		border-color: variables.$ob-gray-dark;
-		color: variables.$ob-gray-dark;
+		@at-root #{selector.append("[ng-reflect-active=false]", &)} {
+			border-color: variables.$ob-secondary-300;
+			color: variables.$ob-secondary-300;
 
-		&:hover {
-			background-color: variables.$ob-white;
+			&:hover {
+				background-color: variables.$ob-white;
+			}
+
+			.mat-step-text-label {
+				color: variables.$ob-secondary-300;
+			}
 		}
 	}
 }
@@ -71,31 +87,15 @@
 .mat-horizontal-stepper-header::after,
 .mat-stepper-horizontal-line,
 .mat-stepper-vertical-line::before {
-	border-color: variables.$ob-primary;
-}
-
-[ng-reflect-state="done"] {
-	&.mat-horizontal-stepper-header::before,
-	&.mat-horizontal-stepper-header::after,
-	& ~ .mat-stepper-horizontal-line,
-	& ~ .mat-stepper-vertical-line::before {
-		border-color: variables.$ob-success;
-	}
+	border-color: variables.$ob-secondary-300;
+	z-index: 1;
 }
 
 [ng-reflect-active="false"] {
-	&.mat-horizontal-stepper-header::before,
-	&.mat-horizontal-stepper-header::after,
-	& ~ .mat-stepper-horizontal-line,
-	& ~ .mat-stepper-vertical-line::before {
-		border-color: variables.$ob-gray-dark;
-	}
-
 	&.mat-step-header {
-		cursor: default;
-
-		&:hover {
-			background-color: inherit;
+		&:hover,
+		&:focus {
+			cursor: not-allowed;
 		}
 	}
 }
