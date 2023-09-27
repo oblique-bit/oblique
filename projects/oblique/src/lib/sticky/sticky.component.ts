@@ -2,6 +2,9 @@ import {AfterViewInit, Component, ContentChild, HostBinding, Input, OnChanges, T
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {NgClass, NgIf, NgTemplateOutlet} from '@angular/common';
 
+/**
+ * @deprecated since version 11.0.0. It will be removed with Oblique 12. CSS flexbox and / or position: sticky should be used instead.
+ */
 @Component({
 	selector: 'ob-sticky',
 	exportAs: 'obSticky',
