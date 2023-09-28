@@ -5,6 +5,7 @@
       "name": "ObPopUpService",
       "type": "service",
       "since": "5.0.0",
+      "deprecated": "10.2.1",
       "methods": [
         {
           "name": "confirm",

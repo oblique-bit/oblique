@@ -1,6 +1,9 @@
 import {Inject, Injectable} from '@angular/core';
 import {WINDOW} from '../utilities';
 
+/**
+ * @deprecated since version 10.2.1. It will be removed with Oblique 11. WINDOW should be used instead.
+ */
 @Injectable({
 	providedIn: 'root'
 })
