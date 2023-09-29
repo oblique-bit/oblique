@@ -1,3 +1,5 @@
+@use "../../../styles/scss/core/mixins/layout";
+
 :host {
 	display: flex;
 	align-items: center;
@@ -8,9 +10,24 @@
 
 label {
 	padding-right: 0.3rem;
+
+	@include layout.ob-media-breakpoint-up(xl) {
+		padding-right: 0.5rem;
+	}
 }
 
 select {
 	min-width: 3rem;
 	cursor: pointer;
+
+	@include layout.ob-media-breakpoint-up(xl) {
+		min-width: 4rem;
+	}
+}
+
+label,
+select {
+	@include layout.ob-media-breakpoint-up(xl) {
+		font-size: x-large;
+	}
 }

@@ -1,4 +1,6 @@
+@use "../styles/scss/core/mixins/layout";
+
 :host {
 	display: grid;
-	grid-template-columns: 10fr 30fr 1fr;
+	grid-template-columns: fit-content(500px) 30fr 1fr;
 }

@@ -1,4 +1,5 @@
 @use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
 
 .visible {
 	height: auto;
@@ -13,18 +14,30 @@
 	transition: height 0ms 400ms, opacity 400ms 0ms;
 }
 
+$triangle-pointing-border-width: 3px;
+$triangle-pointing-border-width-xl: $triangle-pointing-border-width * 2;
+
 @mixin triangle-pointing {
 	transition: transform 0.1s ease-out 0s;
 	display: inline-block;
 	width: 0;
 	height: 0;
-	margin-top: 6px;
+	margin-top: 4px;
 	margin-left: 8px;
 	margin-right: 5px;
 	color: rgba(153, 153, 153, 60%);
-	border-top: 3px solid transparent;
-	border-bottom: 3px solid transparent;
-	border-left: 3px solid;
+	border-top: $triangle-pointing-border-width solid transparent;
+	border-bottom: $triangle-pointing-border-width solid transparent;
+	border-left: $triangle-pointing-border-width solid;
+
+	@include layout.ob-media-breakpoint-up(xl) {
+		margin-top: 5px;
+		margin-left: 0;
+		margin-right: 10px;
+		border-top-width: $triangle-pointing-border-width-xl;
+		border-bottom-width: $triangle-pointing-border-width-xl;
+		border-left-width: $triangle-pointing-border-width-xl;
+	}
 }
 
 .triangle-pointing-down {
@@ -37,6 +50,9 @@
 	transform: none;
 }
 
+$font-size: 13px;
+$font-size-xl: $font-size * 1.5;
+
 .button-container {
 	display: flex;
 	-webkit-box-align: center;
@@ -48,11 +64,21 @@
 	margin-bottom: 4px;
 	font-size: 11px;
 	font-weight: 900;
-	line-height: 16px;
+	line-height: $font-size + 3px;
 	min-height: 20px;
 	letter-spacing: 0.35em;
 	text-transform: uppercase;
 	color: variables.$inactive;
+
+	@include layout.ob-media-breakpoint-up(xl) {
+		line-height: $font-size-xl + 3px;
+	}
+}
+
+@mixin font-size-xl() {
+	@include layout.ob-media-breakpoint-up(xl) {
+		font-size: $font-size-xl;
+	}
 }
 
 button {
@@ -63,7 +89,7 @@ button {
 	position: relative;
 	text-align: left;
 	font: inherit;
-	font-size: 13px;
+	font-size: $font-size;
 	font-weight: 1000;
 	color: inherit;
 	letter-spacing: inherit;
@@ -75,6 +101,8 @@ button {
 	overflow: hidden;
 	border-radius: 26px;
 	transition: color 150ms ease 0s, box-shadow 150ms ease 0s;
+
+	@include font-size-xl();
 }
 
 .link {
@@ -82,8 +110,8 @@ button {
 	display: flex;
 	-webkit-box-align: start;
 	align-items: flex-start;
-	padding: 3px 23px 3px 38px;
-	font-size: 13px;
+	padding: 3px 38px;
+	font-size: $font-size;
 	text-decoration: none;
 	color: rgb(51, 51, 51);
 	background: transparent;
@@ -91,6 +119,8 @@ button {
 	&:last-of-type {
 		margin-bottom: 2rem;
 	}
+
+	@include font-size-xl();
 }
 
 .link[data-selected="true"] {
