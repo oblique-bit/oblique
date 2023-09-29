@@ -1,4 +1,4 @@
-@import "../../../variables";
+@use "../../../styles/scss/core/variables";
 
 .visible {
 	height: auto;
@@ -52,7 +52,7 @@
 	min-height: 20px;
 	letter-spacing: 0.35em;
 	text-transform: uppercase;
-	color: $inactive;
+	color: variables.$inactive;
 }
 
 button {
@@ -95,7 +95,7 @@ button {
 
 .link[data-selected="true"] {
 	color: rgb(255, 255, 255);
-	background: $active;
+	background: variables.$active;
 	font-weight: 700;
 }
 
