@@ -1,4 +1,4 @@
-@import "../../../variables";
+@use "../../../styles/scss/core/variables";
 
 :host {
 	display: flex;
@@ -24,12 +24,12 @@ button {
 	padding: 10px 25px;
 	background: #ffffff;
 	cursor: pointer;
-	color: $inactive;
+	color: variables.$inactive;
 	font-weight: bold;
 
 	&.active {
-		border-bottom: 3px solid $active;
-		color: $active;
+		border-bottom: 3px solid variables.$active;
+		color: variables.$active;
 	}
 }
 

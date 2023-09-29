@@ -1,4 +1,4 @@
-@import "../../variables";
+@use "../../styles/scss/core/variables";
 
 app-image {
 	padding: 20px 20px 0;
@@ -9,7 +9,7 @@ app-image {
 input {
 	margin-left: 26px;
 	margin-top: 20px;
-	border: 1px solid $inactive;
+	border: 1px solid variables.$inactive;
 	padding: 9px 4px 9px 44px;
 	background: transparent url("../../assets/images/Search.svg") no-repeat 10px center;
 	border-radius: 4px;
