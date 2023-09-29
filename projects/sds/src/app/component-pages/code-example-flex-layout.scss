@@ -1,17 +1,11 @@
 @use "sass:map";
+@use "../../styles/scss/core/variables";
 
 :host {
 	display: flex;
 	flex-wrap: wrap;
 	column-gap: 3rem;
 	row-gap: 2rem;
-
-	$ob-grid-breakpoints: (
-		sm: 600px,
-		md: 905px,
-		lg: 1240px,
-		xl: 1440px,
-	) !default;
 
 	@mixin layout-column() {
 		flex-direction: column;
@@ -22,8 +16,8 @@
 		}
 	}
 
-	@each $name, $breakpoint in $ob-grid-breakpoints {
-		@media (max-width: map.get($ob-grid-breakpoints, $name)) {
+	@each $name, $breakpoint in variables.$ob-grid-breakpoints {
+		@media (max-width: map.get(variables.$ob-grid-breakpoints, $name)) {
 			&.layout-breakpoint-#{$name} {
 				@include layout-column();
 			}
