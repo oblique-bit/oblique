@@ -23,6 +23,7 @@ import {TabsCodeExamplesComponent} from './code-examples/tabs/tabs-code-examples
 import {MasterLayoutCodeExamplesComponent} from './code-examples/master-layout/master-layout-code-examples.component';
 import {NavTreeCodeExamplesComponent} from './code-examples/nav-tree/nav-tree-code-examples.component';
 import {StepperCodeExamplesComponent} from './code-examples/stepper/stepper-code-examples.component';
+import {ColumnLayoutCodeExamplesComponent} from './code-examples/column-layout/column-layout-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -33,6 +34,7 @@ export class CodeExamplesMapper {
 		button: ButtonCodeExamplesComponent,
 		card: CardCodeExamplesComponent,
 		chips: ChipsCodeExamplesComponent,
+		columnLayout: ColumnLayoutCodeExamplesComponent,
 		datepicker: DatepickerCodeExamplesComponent,
 		dialog: DialogCodeExamplesComponent,
 		fileUpload: FileUploadCodeExamplesComponent,
