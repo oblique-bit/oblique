@@ -5,6 +5,7 @@ import path from 'path';
 
 export class AddBanner {
 	private static readonly directory = 'dist';
+	private static readonly EOLDates = {};
 
 	static perform(): void {
 		const header = AddBanner.prepareHeader(currentVersion);
@@ -26,7 +27,8 @@ export class AddBanner {
 
 	private static prepareHeader(version: string): string {
 		const releaseDate = AddBanner.getTodayDate();
-		const endOfLifeDate = AddBanner.getEndOfLifeDate(`${version.split('.')[0]}.0.0`);
+		const majorVersion = `${version.split('.')[0]}.0.0`;
+		const endOfLifeDate: string = AddBanner.EOLDates[majorVersion] || AddBanner.getEndOfLifeDate(majorVersion);
 		return `/**
 * @file Oblique, The front-end framework for your Swiss branded UI.
 * @copyright 2020 - ${new Date().getFullYear()} Federal Office of Information Technology, Systems and Telecommunication FOITT {@link https://www.bit.admin.ch}
