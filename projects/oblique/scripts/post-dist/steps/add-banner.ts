@@ -38,7 +38,7 @@ export class AddBanner {
 `;
 	}
 
-	private static getEndOfLifeDate(version): string {
+	private static getEndOfLifeDate(version: string): string {
 		const versionReleaseDate = AddBanner.getTagDate(version);
 		const endOfLifeDate = new Date(versionReleaseDate);
 
