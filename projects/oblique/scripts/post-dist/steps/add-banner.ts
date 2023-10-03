@@ -5,7 +5,9 @@ import path from 'path';
 
 export class AddBanner {
 	private static readonly directory = 'dist';
-	private static readonly EOLDates = {};
+	private static readonly EOLDates = {
+		'10.0.0': '2024-06-30'
+	};
 
 	static perform(): void {
 		const header = AddBanner.prepareHeader(currentVersion);
