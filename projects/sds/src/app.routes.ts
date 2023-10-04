@@ -16,6 +16,10 @@ export const APP_ROUTES: Routes = [
 		loadChildren: () => import('./app/documentation-pages/documentation-pages.routes')
 	},
 	{
+		path: `helpers/:${URL_CONST.urlParams.selectedSlug}`,
+		loadChildren: () => import('./app/documentation-pages/documentation-pages.routes')
+	},
+	{
 		path: `components/:${URL_CONST.urlParams.selectedSlug}`,
 		loadChildren: () => import('./app/component-pages/component-pages.routes')
 	}
