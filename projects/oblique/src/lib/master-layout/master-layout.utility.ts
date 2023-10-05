@@ -13,7 +13,7 @@ export function scrollEnabled(service: ObMasterLayoutHeaderService): <T>(source:
 			})
 		).pipe(
 			filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL),
-			share({connector: () => new ReplaySubject(1), resetOnComplete: false})
+			share({connector: () => new ReplaySubject(1)})
 		),
 		(evt: ObIMasterLayoutEvent) => evt.value
 	);
