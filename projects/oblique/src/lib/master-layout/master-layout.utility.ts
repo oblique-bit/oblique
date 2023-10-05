@@ -1,5 +1,5 @@
 import {Observable, merge, of, partition} from 'rxjs';
-import {filter, repeatWhen, shareReplay, takeUntil} from 'rxjs/operators';
+import {filter, repeat, shareReplay, takeUntil} from 'rxjs/operators';
 import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from './master-layout.model';
 
@@ -19,9 +19,6 @@ export function scrollEnabled(service: ObMasterLayoutHeaderService): <T>(source:
 	);
 
 	return function <T>(source: Observable<T>): Observable<T> {
-		return source.pipe(
-			takeUntil(disabled$),
-			repeatWhen(() => enabled$)
-		);
+		return source.pipe(takeUntil(disabled$), repeat({delay: () => enabled$}));
 	};
 }
