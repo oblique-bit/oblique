@@ -1,7 +1,7 @@
 import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, ReplaySubject, switchMap} from 'rxjs';
-import {combineLatestWith, distinctUntilChanged, map, shareReplay, startWith, tap} from 'rxjs/operators';
+import {Observable, ReplaySubject, share, switchMap} from 'rxjs';
+import {combineLatestWith, distinctUntilChanged, map, startWith, tap} from 'rxjs/operators';
 import {ObEPamsEnvironment, ObILanguage, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
@@ -30,7 +30,7 @@ export class ObServiceNavigationService {
 				tap(data => (this.redirectorService.logoutUrl = data.logout.url))
 			)
 		),
-		shareReplay(1)
+		share({connector: () => new ReplaySubject(1), resetOnComplete: false, resetOnRefCountZero: false})
 	);
 	private readonly configService = inject(ObServiceNavigationConfigApiService);
 	private readonly pollingService = inject(ObServiceNavigationPollingService);
@@ -129,7 +129,7 @@ export class ObServiceNavigationService {
 		return this.translateService.onLangChange.pipe(
 			map(event => event.lang),
 			startWith(this.translateService.currentLang),
-			shareReplay(1)
+			share({connector: () => new ReplaySubject(1), resetOnComplete: false, resetOnRefCountZero: false})
 		);
 	}
 
