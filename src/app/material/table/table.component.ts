@@ -123,11 +123,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	private valueChanges<T>(field: string): Observable<T> {
 		const control = this.controls.get(field);
-		return control.valueChanges.pipe(
-			startWith(control.value),
-			share({connector: () => new ReplaySubject(1), resetOnComplete: false, resetOnRefCountZero: false}),
-			takeUntil(this.unsubscribe)
-		);
+		return control.valueChanges.pipe(startWith(control.value), share({connector: () => new ReplaySubject(1)}), takeUntil(this.unsubscribe));
 	}
 
 	private filter(filterText: string): void {
