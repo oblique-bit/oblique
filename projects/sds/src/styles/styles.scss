@@ -1,3 +1,5 @@
+@use "./scss/core/variables";
+
 body {
-	background: rgb(246, 249, 252);
+	background: variables.$main-background-color;
 }
