@@ -130,7 +130,7 @@ export class ObServiceNavigationService {
 		return this.translateService.onLangChange.pipe(
 			map(event => event.lang),
 			startWith(this.translateService.currentLang),
-			share({connector: () => new ReplaySubject(1), resetOnRefCountZero: false})
+			share({connector: () => new ReplaySubject(1)})
 		);
 	}
 
