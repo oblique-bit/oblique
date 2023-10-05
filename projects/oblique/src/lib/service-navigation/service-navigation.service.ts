@@ -30,6 +30,7 @@ export class ObServiceNavigationService {
 				tap(data => (this.redirectorService.logoutUrl = data.logout.url))
 			)
 		),
+		// the http request should not be fired again, hence the deactivation of both resets
 		share({connector: () => new ReplaySubject(1), resetOnComplete: false, resetOnRefCountZero: false})
 	);
 	private readonly configService = inject(ObServiceNavigationConfigApiService);
