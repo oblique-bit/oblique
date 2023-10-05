@@ -24,6 +24,7 @@ import {MasterLayoutCodeExamplesComponent} from './code-examples/master-layout/m
 import {NavTreeCodeExamplesComponent} from './code-examples/nav-tree/nav-tree-code-examples.component';
 import {StepperCodeExamplesComponent} from './code-examples/stepper/stepper-code-examples.component';
 import {ColumnLayoutCodeExamplesComponent} from './code-examples/column-layout/column-layout-code-examples.component';
+import {GridSystemCodeExamplesComponent} from './code-examples/grid-system/grid-system-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -38,6 +39,7 @@ export class CodeExamplesMapper {
 		datepicker: DatepickerCodeExamplesComponent,
 		dialog: DialogCodeExamplesComponent,
 		fileUpload: FileUploadCodeExamplesComponent,
+		gridSystem: GridSystemCodeExamplesComponent,
 		htmlTable: HtmlTableCodeExamplesComponent,
 		listGroup: ListGroupCodeExamplesComponent,
 		masterLayout: MasterLayoutCodeExamplesComponent,

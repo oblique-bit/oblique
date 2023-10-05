@@ -1,0 +1,15 @@
+@use "../../../../../styles/scss/core/variables";
+
+.ob-grid,
+.ob-flex {
+	& > * {
+		background-color: dimgray;
+		color: white;
+		padding: 0.5rem;
+		text-align: center;
+		border: 3px solid black;
+		border-radius: 0.5rem;
+		font-size: larger;
+		font-weight: bold;
+	}
+}
