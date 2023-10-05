@@ -1,5 +1,5 @@
-import {Observable, merge, of, partition} from 'rxjs';
-import {filter, repeat, shareReplay, takeUntil} from 'rxjs/operators';
+import {Observable, ReplaySubject, merge, of, partition, share} from 'rxjs';
+import {filter, repeat, takeUntil} from 'rxjs/operators';
 import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from './master-layout.model';
 
@@ -13,7 +13,7 @@ export function scrollEnabled(service: ObMasterLayoutHeaderService): <T>(source:
 			})
 		).pipe(
 			filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_REDUCE_ON_SCROLL),
-			shareReplay({refCount: true, bufferSize: 1})
+			share({connector: () => new ReplaySubject(1), resetOnComplete: false})
 		),
 		(evt: ObIMasterLayoutEvent) => evt.value
 	);
