@@ -127,7 +127,7 @@
   "i18n.oblique.service-navigation.info.contact.text": "En cas de questions, vous pouvez nous contacter :",
   "i18n.oblique.service-navigation.info.header": "Aide",
   "i18n.oblique.service-navigation.info.tooltip": "Cliquer pour ouvrir l'aide",
-  "i18n.oblique.service-navigation.message.link": "Messages",
+  "i18n.oblique.service-navigation.message.link": "Mes notifications",
   "i18n.oblique.service-navigation.message.tooltip.text": "Cliquer pour aller sur la boîte de réception ({{count}} {{messagePluralizationKey}})",
   "i18n.oblique.service-navigation.message.tooltip.singular": "nouvelle notification",
   "i18n.oblique.service-navigation.message.tooltip.plural": "nouvelles notifications",

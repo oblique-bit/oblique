@@ -127,7 +127,7 @@
   "i18n.oblique.service-navigation.info.contact.text": "You are welcome to contact us:",
   "i18n.oblique.service-navigation.info.header": "Help",
   "i18n.oblique.service-navigation.info.tooltip": "Click to toggle help",
-  "i18n.oblique.service-navigation.message.link": "Messages",
+  "i18n.oblique.service-navigation.message.link": "My notifications",
   "i18n.oblique.service-navigation.message.tooltip.text": "Click to go to your inbox ({{count}} {{messagePluralizationKey}})",
   "i18n.oblique.service-navigation.message.tooltip.singular": "new notification",
   "i18n.oblique.service-navigation.message.tooltip.plural": "new notifications",
