@@ -15,14 +15,14 @@
 						count: count === 0 ? 'i18n.oblique.service-navigation.message.tooltip.count.zero' : count
 				  }
 	"
+	[class.ob-longer-badge]="tooManyCount"
+	matBadgeOverlap="true"
+	matBadgeColor="warn"
+	[matBadgeHidden]="!count"
+	matBadgePosition="above after"
+	matBadgeSize="medium"
+	[matBadge]="tooManyCount ? '99+' : count"
 >
-	<mat-icon
-		matBadgeColor="warn"
-		[matBadgeHidden]="!count"
-		matBadgePosition="above after"
-		matBadgeSize="small"
-		[matBadge]="count"
-		svgIcon="inbox"
-	></mat-icon>
+	<mat-icon svgIcon="inbox"></mat-icon>
 	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.message.link" | translate }}</span>
 </a>

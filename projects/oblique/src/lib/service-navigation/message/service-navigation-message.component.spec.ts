@@ -13,6 +13,7 @@ import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObServiceNavigationMessageHarness} from './service-navigation-message.harness';
 import {ObServiceNavigationMessageComponent} from './service-navigation-message.component';
+import {SimpleChange} from '@angular/core';
 
 describe('ObServiceNavigationMessageComponent', () => {
 	let component: ObServiceNavigationMessageComponent;
@@ -78,8 +79,8 @@ describe('ObServiceNavigationMessageComponent', () => {
 					expect(badge).toBeTruthy();
 				});
 
-				it('should be small', async () => {
-					expect(await badge.getSize()).toBe('small');
+				it('should be medium', async () => {
+					expect(await badge.getSize()).toBe('medium');
 				});
 
 				it('should be above after', async () => {
@@ -126,6 +127,44 @@ describe('ObServiceNavigationMessageComponent', () => {
 
 				it(`should be shown`, async () => {
 					expect(await badge.isHidden()).toBe(false);
+				});
+			});
+		});
+
+		describe('with 100 message', () => {
+			beforeEach(() => {
+				component.count = 100;
+				fixture.detectChanges();
+			});
+
+			describe('badge', () => {
+				const expectMaximumCountString = '99+';
+				let badge: MatBadgeHarness;
+
+				beforeEach(async () => {
+					badge = await harness.getBadgeHarness();
+				});
+
+				describe('ngOnchange count 100', () => {
+					beforeEach(() => {
+						component.ngOnChanges({count: new SimpleChange(0, 100, true)});
+					});
+
+					it(`should display 99+ after input changed`, async () => {
+						expect(await badge.getText()).toContain(expectMaximumCountString);
+					});
+
+					it(`should have class ob-longer-badge`, async () => {
+						const host = await badge.host();
+						expect(await host.hasClass('ob-longer-badge')).toBe(true);
+					});
+				});
+
+				describe('ngOnchange without any count change', () => {
+					it(`should do nothing `, async () => {
+						component.ngOnChanges({});
+						expect(await badge.getText()).toContain(component.count.toString());
+					});
 				});
 			});
 		});
