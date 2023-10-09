@@ -1,0 +1,12 @@
+.actions {
+	display: flex;
+	gap: 1em;
+	justify-content: flex-end;
+}
+
+.ob-parent-form-directive,
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
