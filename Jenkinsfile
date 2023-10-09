@@ -15,7 +15,8 @@ nodejsPipelineTemplate {
 		],
 		'release/major_*': [
 			'cloudFoundry': [
-				['project': 'sds', 'space': 'dev']
+				['project': 'sds', 'space': 'dev'],
+				['project': 'sandbox', 'space': 'dev']
 			]
 		],
 		master: [
