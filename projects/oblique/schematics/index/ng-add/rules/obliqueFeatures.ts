@@ -140,8 +140,13 @@ function addDefaultComponentRouteToAppRoutingModule(tree: Tree): void {
 		const fileName = routingModule.split('/').pop();
 		if (fileName) {
 			changes.push(insertImport(sourceFile, routingModule, 'HomeComponent', './home/home.component'));
-			changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: '', redirectTo: 'home', pathMatch: 'full'}"));
-			changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: 'home', component: HomeComponent}"));
+			changes.push(
+				addRouteDeclarationToModule(
+					sourceFile,
+					fileName,
+					"{path: '', redirectTo: 'home', pathMatch: 'full'},{path: 'home', component: HomeComponent}"
+				)
+			);
 		}
 		applyChanges(tree, routingModule, changes);
 	}
