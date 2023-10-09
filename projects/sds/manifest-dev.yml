@@ -2,7 +2,7 @@ organization: bit-sds
 caasp_version: 4
 applications:
   - name: swiss-design-system
-    path: ./dist/sds
+    path: ../../dist/sds
     buildpack: https://repo.bit.admin.ch/repository/raw-cloudfoundry-buildpacks-hosted/staticfile_buildpack_latest.zip
     stack: cflinuxfs3
     disk_quota: 768M
