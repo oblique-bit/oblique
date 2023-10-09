@@ -1,23 +1,30 @@
-@Library('jeap-pipelinelibrary@feature/oblique4') _
+@Library('jeap-pipelinelibrary@feature/oblique5') _
 nodejsPipelineTemplate {
-	nexusPublishPath = './dist/oblique'
 	nodeJsVersion = 18
-	gitPush = [
-		'credentialId': 'githubObliqueCredentials',
-		'repository': 'https://github.com/oblique-bit/oblique.git',
-		'branches': ['master'],
-		'tags': ['master']
-	]
 	npmRepository = [
 		'repository': 'registry.npmjs.com',
 		'email': 'oblique@bit.admin.ch',
 		'userNamePasswordCredentialId': 'obliqueDeploymentUnamePassword',
 		'npmCredentialId': 'npmDeploymentTokenOblique'
 	]
-	deployCloudFoundry = [
-        'release/major_*': ['space': 'dev', 'configuration': 'production']
-	]
-	securityScan = [
-		'branchName': ['master']
+	branches = [
+		'*': [
+			'lint': 'npm run lint',
+			'test': 'npm test -ws',
+			'build': 'npm run build -ws',
+		],
+		'release/major_*': [
+			'cloudFoundry': [
+				['project': 'sds', 'space': 'dev']
+			]
+		],
+		master: [
+			'publish': './dist/oblique',
+			'gitTag': true,
+			'gitPush': [
+				'credentialId': 'githubObliqueCredentials',
+				'repository': 'https://github.com/oblique-bit/oblique.git',
+			]
+		]
 	]
 }
