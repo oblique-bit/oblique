@@ -1,0 +1,15 @@
+<div class="form" [formGroup]="nestedForm">
+	<mat-form-field obErrorMessages>
+		<mat-label>Child #1</mat-label>
+		<input matInput formControlName="field1" />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<mat-form-field obErrorMessages>
+		<mat-label>Child #2</mat-label>
+		<input matInput formControlName="field2" />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<ob-nested-form formControlName="grandchild" [nestedForm]="grandchild.grandchildForm">
+		<app-nested-form-example-reactive-preview-grandchild #grandchild></app-nested-form-example-reactive-preview-grandchild>
+	</ob-nested-form>
+</div>

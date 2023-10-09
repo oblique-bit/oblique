@@ -1,0 +1,16 @@
+<ob-notification [channel]="channel"></ob-notification>
+<form #ngForm obParentFormDirective (submit)="validateForm(ngForm)">
+	<mat-form-field obErrorMessages>
+		<mat-label>Parent</mat-label>
+		<input matInput name="parent" required [(ngModel)]="model.parent" />
+		<mat-error></mat-error>
+	</mat-form-field>
+	<ob-nested-form name="child" [nestedForm]="child.ngForm.control" [(ngModel)]="model.child">
+		<app-nested-form-example-template-driven-preview-child #child></app-nested-form-example-template-driven-preview-child>
+	</ob-nested-form>
+	<div class="actions">
+		<button mat-button obButton="secondary" type="reset">Reset</button>
+		<button mat-button obButton="primary" type="submit">Check</button>
+	</div>
+</form>
+<pre>{{ model | json }}</pre>

@@ -25,6 +25,7 @@ import {NavTreeCodeExamplesComponent} from './code-examples/nav-tree/nav-tree-co
 import {StepperCodeExamplesComponent} from './code-examples/stepper/stepper-code-examples.component';
 import {ColumnLayoutCodeExamplesComponent} from './code-examples/column-layout/column-layout-code-examples.component';
 import {GridSystemCodeExamplesComponent} from './code-examples/grid-system/grid-system-code-examples.component';
+import {NestedFormCodeExamplesComponent} from './code-examples/nested-form/nested-form-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -45,6 +46,7 @@ export class CodeExamplesMapper {
 		masterLayout: MasterLayoutCodeExamplesComponent,
 		materialTable: MaterialTableCodeExamplesComponent,
 		navTree: NavTreeCodeExamplesComponent,
+		nestedForm: NestedFormCodeExamplesComponent,
 		paginator: PaginatorCodeExamplesComponent,
 		progressBar: ProgressBarCodeExamplesComponent,
 		slider: SliderCodeExamplesComponent,
