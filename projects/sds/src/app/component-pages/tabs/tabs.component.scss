@@ -12,6 +12,8 @@
 
 .tabs-container {
 	display: flex;
+	text-wrap: nowrap;
+	overflow: auto;
 }
 
 .tabs-content-container {
