@@ -1,0 +1,69 @@
+@use "sass:map";
+@use "@oblique/oblique/src/styles/scss/core/variables";
+@use "@oblique/oblique/src/styles/scss/core/mixins/layout";
+@use "@oblique/oblique/src/styles/scss/core/mixins/shadow";
+
+.row,
+.column {
+	display: flex;
+	gap: 1rem;
+	padding: 1rem;
+	border: 3px solid variables.$ob-gray-darker;
+	border-radius: 5px;
+	align-items: center;
+	justify-content: center;
+	min-width: 22rem;
+
+	.item {
+		padding: 1rem;
+		background-color: variables.$ob-gray-darker;
+		border-radius: variables.$ob-spacing-xs;
+		color: variables.$ob-gray-extra-light;
+	}
+}
+
+.row {
+	flex-direction: row;
+
+	@each $name, $breakpoint in variables.$ob-grid-breakpoints {
+		@include layout.ob-media-breakpoint-down($name) {
+			&.#{$name}-down-column {
+				flex-direction: column;
+			}
+		}
+	}
+}
+
+.column {
+	flex-direction: column;
+
+	@each $name, $breakpoint in variables.$ob-grid-breakpoints {
+		@include layout.ob-media-breakpoint-up($name) {
+			&.#{$name}-up-row {
+				flex-direction: row;
+			}
+		}
+	}
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.breakpoints {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	font-style: normal;
+}
+
+.breakpoint {
+	padding: 1rem;
+	border-radius: 1rem;
+	box-shadow: 0 0 4px rgb(172, 180, 189);
+}

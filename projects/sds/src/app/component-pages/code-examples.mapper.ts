@@ -26,6 +26,7 @@ import {StepperCodeExamplesComponent} from './code-examples/stepper/stepper-code
 import {ColumnLayoutCodeExamplesComponent} from './code-examples/column-layout/column-layout-code-examples.component';
 import {GridSystemCodeExamplesComponent} from './code-examples/grid-system/grid-system-code-examples.component';
 import {NestedFormCodeExamplesComponent} from './code-examples/nested-form/nested-form-code-examples.component';
+import {PublicScssVariablesAndMixinsCodeExamplesComponent} from './code-examples/public-scss-variables-and-mixins/public-scss-variables-and-mixins-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -49,6 +50,7 @@ export class CodeExamplesMapper {
 		nestedForm: NestedFormCodeExamplesComponent,
 		paginator: PaginatorCodeExamplesComponent,
 		progressBar: ProgressBarCodeExamplesComponent,
+		publicScssVariablesAndMixins: PublicScssVariablesAndMixinsCodeExamplesComponent,
 		slider: SliderCodeExamplesComponent,
 		slideToggle: SlideToggleCodeExamplesComponent,
 		spinner: SpinnerCodeExamplesComponent,

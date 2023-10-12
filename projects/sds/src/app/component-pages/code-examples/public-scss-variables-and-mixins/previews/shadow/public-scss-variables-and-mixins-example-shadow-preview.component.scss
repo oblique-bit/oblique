@@ -1,0 +1,85 @@
+@use "@oblique/oblique/src/styles/scss/core/variables";
+@use "@oblique/oblique/src/styles/scss/core/mixins/shadow";
+
+.ob-drop-shadow {
+	@include shadow.ob-drop-shadow();
+}
+
+.ob-tab-focus-box-shadow {
+	@include shadow.ob-tab-focus-box-shadow();
+}
+
+.ob-focus-visible-tab-focus-box-shadow {
+	@include shadow.ob-focus-visible-tab-focus-box-shadow();
+}
+
+.ob-tab-focus-border {
+	@include shadow.ob-tab-focus-border();
+}
+
+.ob-inner-bottom-shadow {
+	@include shadow.ob-inner-bottom-shadow();
+}
+
+.ob-shadow-sm {
+	@include shadow.ob-shadow-sm();
+}
+
+.ob-shadow-md {
+	@include shadow.ob-shadow-md();
+}
+
+.ob-shadow-default {
+	@include shadow.ob-shadow-default();
+}
+
+.ob-shadow-lg {
+	@include shadow.ob-shadow-lg();
+}
+
+.ob-shadow-xl {
+	@include shadow.ob-shadow-xl();
+}
+
+.ob-shadow-2xl {
+	@include shadow.ob-shadow-2xl();
+}
+
+.ob-expanded-active-main-nav-item-box-shadow {
+	@include shadow.ob-expanded-active-main-nav-item-box-shadow();
+}
+
+.ob-default-panel-box-shadow {
+	@include shadow.ob-default-panel-box-shadow();
+}
+
+.item {
+	padding: 1rem;
+	color: variables.$ob-gray-darker;
+}
+
+.button-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 12rem;
+	min-width: 24rem;
+}
+
+button {
+	background-color: variables.$ob-white;
+	border: none;
+	border-radius: 0;
+	min-width: 18rem;
+	min-height: 5rem;
+}
+
+:host {
+	margin-bottom: 4rem;
+	margin-left: 0;
+	margin-right: 0;
+
+	.explanation {
+		margin-left: 3rem;
+	}
+}
