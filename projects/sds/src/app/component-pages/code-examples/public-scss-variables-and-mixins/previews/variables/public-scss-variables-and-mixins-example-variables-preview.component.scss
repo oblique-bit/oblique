@@ -1,0 +1,62 @@
+@use "@oblique/oblique/src/styles/scss/core/variables";
+
+$ob-spacing-sizes: (
+	xs: variables.$ob-spacing-xs,
+	sm: variables.$ob-spacing-sm,
+	md: variables.$ob-spacing-md,
+	default: variables.$ob-spacing-default,
+	lg: variables.$ob-spacing-lg,
+	xl: variables.$ob-spacing-xl,
+	xxl: variables.$ob-spacing-xxl,
+) !default;
+
+@each $name, $size in $ob-spacing-sizes {
+	.padding-ob-spacing-#{$name} {
+		padding: $size;
+		background-color: variables.$ob-gray-darker;
+		border-radius: variables.$ob-spacing-xs;
+		color: variables.$ob-gray-extra-light;
+	}
+}
+
+$ob-font-sizes: (
+	xs: variables.$ob-font-size-xs,
+	smallest: variables.$ob-font-size-smallest,
+	sm: variables.$ob-font-size-sm,
+	smaller: variables.$ob-font-size-smaller,
+	subheading-1: variables.$ob-font-size-subheading-1,
+	normal: variables.$ob-font-size-normal,
+	base: variables.$ob-font-size-base,
+	lg: variables.$ob-font-size-lg,
+	big: variables.$ob-font-size-big,
+	xl: variables.$ob-font-size-xl,
+	bigger: variables.$ob-font-size-bigger,
+	biggest: variables.$ob-font-size-biggest,
+) !default;
+
+@each $name, $font-size in $ob-font-sizes {
+	.ob-font-size-#{$name} {
+		font-size: $font-size;
+	}
+}
+
+:host {
+	align-items: baseline;
+}
+
+h4,
+hr {
+	width: 100%;
+	margin-bottom: -1rem;
+}
+
+.ob-font-size-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	border: 3px solid #374151;
+	border-radius: 5px;
+	min-height: 5rem;
+	min-width: 15rem;
+}

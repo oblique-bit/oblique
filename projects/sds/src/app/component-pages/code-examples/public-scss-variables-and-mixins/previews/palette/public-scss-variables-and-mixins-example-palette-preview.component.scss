@@ -1,0 +1,94 @@
+@use "@oblique/oblique/src/styles/scss/core/palette";
+
+.ob-venetian-red {
+	background-color: palette.$ob-venetian-red;
+	color: palette.$ob-gray-800;
+}
+
+.ob-primary-50 {
+	background-color: palette.$ob-primary-50;
+	color: palette.$ob-gray-800;
+}
+
+.ob-red-100 {
+	background-color: palette.$ob-red-100;
+	color: palette.$ob-gray-800;
+}
+
+.ob-error-200 {
+	background-color: palette.$ob-error-200;
+	color: palette.$ob-gray-800;
+}
+
+.ob-gray-300 {
+	background-color: palette.$ob-gray-300;
+	color: palette.$ob-gray-800;
+}
+
+.ob-green-400 {
+	background-color: palette.$ob-green-400;
+	color: palette.$ob-gray-800;
+}
+
+.ob-success-500 {
+	background-color: palette.$ob-success-500;
+	color: palette.$ob-white;
+}
+
+.ob-orange-600 {
+	background-color: palette.$ob-orange-600;
+	color: palette.$ob-gray-800;
+}
+
+.ob-warning-700 {
+	background-color: palette.$ob-warning-700;
+	color: palette.$ob-white;
+}
+
+.ob-secondary-800 {
+	background-color: palette.$ob-secondary-800;
+	color: palette.$ob-white;
+}
+
+.ob-text-900 {
+	background-color: palette.$ob-text-900;
+	color: palette.$ob-white;
+}
+
+.ob-blue-900 {
+	background-color: palette.$ob-blue-900;
+	color: palette.$ob-white;
+}
+
+.ob-indigo-800 {
+	background-color: palette.$ob-indigo-800;
+	color: palette.$ob-white;
+}
+
+.ob-pink-700 {
+	background-color: palette.$ob-pink-700;
+	color: palette.$ob-gray-800;
+}
+
+.ob-purple-600 {
+	background-color: palette.$ob-purple-600;
+	color: palette.$ob-gray-800;
+}
+
+.ob-teal-500 {
+	background-color: palette.$ob-teal-500;
+	color: palette.$ob-gray-800;
+}
+
+.ob-yellow-400 {
+	background-color: palette.$ob-yellow-400;
+	color: palette.$ob-gray-800;
+}
+
+.item {
+	display: flex;
+	justify-content: center;
+	padding: 1rem;
+	border-radius: 1rem;
+	min-width: 10rem;
+}
