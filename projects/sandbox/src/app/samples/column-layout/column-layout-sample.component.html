@@ -1,5 +1,4 @@
 <h2>{{ "i18n.routes.samples.column-layout.title" | translate }}</h2>
-<sb-description component="column-layout"></sb-description>
 <ob-column-layout [left]="false" [right]="true">
 	<ob-column-layout [left]="left" [right]="right" [noLayout]="noLayout" [wider]="wider" #obColumnLayout column-main-content>
 		<ng-container column-left-content>
@@ -94,4 +93,3 @@
 		<mat-slide-toggle [(ngModel)]="wider">Wider columns</mat-slide-toggle>
 	</ng-container>
 </ob-column-layout>
-<sb-api component="column-layout"></sb-api>
