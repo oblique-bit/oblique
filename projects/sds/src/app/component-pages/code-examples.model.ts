@@ -7,11 +7,21 @@ import {Type} from '@angular/core';
  */
 export class CodeExamples {
 	protected getSnippet(directory: string, filePath: string, title: string): SourceCode {
-		return new SourceCode(
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-var-requires
-			require(`!!raw-loader!./code-examples/${directory}/previews/${filePath}`).default as string,
-			title
-		);
+		return new SourceCode(this.getRequire(directory, filePath).default, title);
+	}
+
+	private getRequire(directory: string, filePath: string): {default: string} {
+		switch (directory) {
+			case 'node_modules/@oblique/oblique/src/styles/scss/core': {
+				return require(`!!raw-loader!../../../../../node_modules/@oblique/oblique/src/styles/scss/core/${filePath}`);
+			}
+			case 'node_modules/@oblique/oblique/src/styles/scss/core/mixins': {
+				return require(`!!raw-loader!../../../../../node_modules/@oblique/oblique/src/styles/scss/core/mixins/${filePath}`);
+			}
+			default: {
+				return require(`!!raw-loader!./code-examples/${directory}/previews/${filePath}`);
+			}
+		}
 	}
 }
 
