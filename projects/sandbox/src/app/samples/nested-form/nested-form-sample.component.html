@@ -1,5 +1,4 @@
 <h2 class="page-header">Nested form</h2>
-<sb-description component="nested-form"></sb-description>
 <form [formGroup]="parentForm" (submit)="validateForm(parentForm.valid)" (reset)="resetForm()" obParentFormDirective>
 	<h3>Reactive form</h3>
 	<ob-nested-form formControlName="child" [nestedForm]="child.nestedForm">
@@ -35,4 +34,3 @@
 </form>
 <h4>Form value</h4>
 <pre>{{ model | json }}</pre>
-<sb-api component="nested-form"></sb-api>
