@@ -1,5 +1,4 @@
 <h2 class="page-header">{{ "i18n.routes.samples.sticky.title" | translate }}</h2>
-<sb-description component="sticky"></sb-description>
 <ob-column-layout [left]="false" [style.height]="parentHeight + 'px'">
 	<ob-sticky [headerSize]="headerSize" [footerSize]="footerSize" [noLayout]="noLayout" column-main-content>
 		<ng-template #obStickyHeader *ngIf="stickyHeader">
@@ -57,4 +56,3 @@
 		</mat-form-field>
 	</div>
 </ob-column-layout>
-<sb-api component="sticky"></sb-api>
