@@ -9,9 +9,6 @@ export class CopyDistFiles {
 		CopyDistFiles.copyRootFiles(['README.md', 'CHANGELOG.md', 'LICENSE']);
 
 		CopyDistFiles.copyObliqueFiles([
-			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'lib')).filter(filePath =>
-				/\.description\.html|\.api\.json$/.test(filePath)
-			),
 			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'assets')),
 			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'styles')).filter(filePath => !filePath.endsWith('.scss')),
 			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'styles')).filter(filePath =>
