@@ -28,6 +28,7 @@ import {GridSystemCodeExamplesComponent} from './code-examples/grid-system/grid-
 import {NestedFormCodeExamplesComponent} from './code-examples/nested-form/nested-form-code-examples.component';
 import {PublicScssVariablesAndMixinsCodeExamplesComponent} from './code-examples/public-scss-variables-and-mixins/public-scss-variables-and-mixins-code-examples.component';
 import {StickyCodeExamplesComponent} from './code-examples/sticky/sticky-code-examples.component';
+import {PopoverCodeExamplesComponent} from './code-examples/popover/popover-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -50,6 +51,7 @@ export class CodeExamplesMapper {
 		navTree: NavTreeCodeExamplesComponent,
 		nestedForm: NestedFormCodeExamplesComponent,
 		paginator: PaginatorCodeExamplesComponent,
+		popover: PopoverCodeExamplesComponent,
 		progressBar: ProgressBarCodeExamplesComponent,
 		publicScssVariablesAndMixins: PublicScssVariablesAndMixinsCodeExamplesComponent,
 		slider: SliderCodeExamplesComponent,
