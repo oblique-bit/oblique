@@ -25,6 +25,7 @@ export class ObProgressComponent implements OnDestroy {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
 	@Input() singleRequest: boolean;
 	@Input() uploadUrl: string;
+	@Input() cancelConfirmation = true;
 	uploadedFiles: ObIFileList = {} as ObIFileList;
 
 	private readonly changeDetectorRef = inject(ChangeDetectorRef);
@@ -47,7 +48,7 @@ export class ObProgressComponent implements OnDestroy {
 	}
 
 	cancelUpload(file: ObIFile): void {
-		if (!file.completed && this.popup.confirm(this.translate.instant('i18n.oblique.file-upload.remove'))) {
+		if (!file.completed && (!this.cancelConfirmation || this.popup.confirm(this.translate.instant('i18n.oblique.file-upload.remove')))) {
 			this.uploadedFiles.files[file.index]?.subscription.unsubscribe();
 			this.uploadedFiles.files.splice(file.index, 1);
 			this.uploadedFiles.fileCount--;

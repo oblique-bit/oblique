@@ -82,83 +82,225 @@ describe('ObProgressComponent', () => {
 
 			describe('cancelUpload', () => {
 				describe('uncompleted file', () => {
-					it('should ask for confirmation', () => {
-						jest.spyOn(popupService, 'confirm');
-						component.cancelUpload(component.uploadedFiles.files[0]);
-						expect(popupService.confirm).toHaveBeenCalled();
-					});
+					describe('with cancelConfirmation not set', () => {
+						it('should ask for confirmation', () => {
+							jest.spyOn(popupService, 'confirm');
+							component.cancelUpload(component.uploadedFiles.files[0]);
+							expect(popupService.confirm).toHaveBeenCalled();
+						});
 
-					describe('when confirmed', () => {
-						let file: ObIFile;
-						let event: ObIUploadEvent;
-						beforeEach(done => {
-							file = component.uploadedFiles.files[0];
-							jest.spyOn(popupService, 'confirm').mockReturnValue(true);
-							jest.spyOn(file.subscription, 'unsubscribe');
-							component.uploadEvent.subscribe(evt => {
-								event = evt;
-								done();
+						describe('when confirmed', () => {
+							let file: ObIFile;
+							let event: ObIUploadEvent;
+							beforeEach(done => {
+								file = component.uploadedFiles.files[0];
+								jest.spyOn(popupService, 'confirm').mockReturnValue(true);
+								jest.spyOn(file.subscription, 'unsubscribe');
+								component.uploadEvent.subscribe(evt => {
+									event = evt;
+									done();
+								});
+								component.cancelUpload(file);
 							});
-							component.cancelUpload(file);
+
+							it('should unsubscribe', () => {
+								expect(file.subscription.unsubscribe).toHaveBeenCalled();
+							});
+
+							it('should reduce the files array', () => {
+								expect(component.uploadedFiles.files.length).toBe(4);
+							});
+
+							it('should remove the file from the file list', () => {
+								expect(component.uploadedFiles.files.find(uploadedFile => uploadedFile.index === 0)).toBeUndefined();
+							});
+
+							it('should reduce the file count', () => {
+								expect(component.uploadedFiles.fileCount).toBe(4);
+							});
+
+							it('should emit an event', () => {
+								expect(event).toBeDefined();
+							});
+
+							it('should emit an event of type canceled', () => {
+								expect(event.type).toBe(ObEUploadEventType.CANCELED);
+							});
+
+							it('should emit an event with canceled files', () => {
+								expect(event.files).toEqual([file.binary]);
+							});
 						});
 
-						it('should unsubscribe', () => {
-							expect(file.subscription.unsubscribe).toHaveBeenCalled();
-						});
+						describe('when not confirmed', () => {
+							let file: ObIFile;
+							beforeEach(() => {
+								file = component.uploadedFiles.files[0];
+								jest.spyOn(popupService, 'confirm').mockReturnValue(false);
+								jest.spyOn(file.subscription, 'unsubscribe');
+								jest.spyOn(component.uploadEvent, 'emit');
+								component.cancelUpload(file);
+							});
 
-						it('should reduce the files array', () => {
-							expect(component.uploadedFiles.files.length).toBe(4);
-						});
+							it('should not unsubscribe', () => {
+								expect(file.subscription.unsubscribe).not.toHaveBeenCalled();
+							});
 
-						it('should remove the file from the file list', () => {
-							expect(component.uploadedFiles.files.find(uploadedFile => uploadedFile.index === 0)).toBeUndefined();
-						});
+							it('should not reduce the files array', () => {
+								expect(component.uploadedFiles.files.length).toBe(5);
+							});
 
-						it('should reduce the file count', () => {
-							expect(component.uploadedFiles.fileCount).toBe(4);
-						});
+							it('should not remove the file from the file list', () => {
+								expect(component.uploadedFiles.files.find(localFile => localFile.index === 0)).toBeDefined();
+							});
 
-						it('should emit an event', () => {
-							expect(event).toBeDefined();
-						});
+							it('should not reduce the file count', () => {
+								expect(component.uploadedFiles.fileCount).toBe(5);
+							});
 
-						it('should emit an event of type canceled', () => {
-							expect(event.type).toBe(ObEUploadEventType.CANCELED);
-						});
-
-						it('should emit an event with canceled files', () => {
-							expect(event.files).toEqual([file.binary]);
+							it('should not emit an event', () => {
+								expect(component.uploadEvent.emit).not.toHaveBeenCalled();
+							});
 						});
 					});
 
-					describe('when not confirmed', () => {
-						let file: ObIFile;
+					describe('with cancelConfirmation set to true', () => {
 						beforeEach(() => {
-							file = component.uploadedFiles.files[0];
-							jest.spyOn(popupService, 'confirm').mockReturnValue(false);
-							jest.spyOn(file.subscription, 'unsubscribe');
-							jest.spyOn(component.uploadEvent, 'emit');
-							component.cancelUpload(file);
+							component.cancelConfirmation = true;
 						});
 
-						it('should not unsubscribe', () => {
-							expect(file.subscription.unsubscribe).not.toHaveBeenCalled();
+						it('should ask for confirmation', () => {
+							jest.spyOn(popupService, 'confirm');
+							component.cancelUpload(component.uploadedFiles.files[0]);
+							expect(popupService.confirm).toHaveBeenCalled();
 						});
 
-						it('should not reduce the files array', () => {
-							expect(component.uploadedFiles.files.length).toBe(5);
+						describe('when confirmed', () => {
+							let file: ObIFile;
+							let event: ObIUploadEvent;
+							beforeEach(done => {
+								file = component.uploadedFiles.files[0];
+								jest.spyOn(popupService, 'confirm').mockReturnValue(true);
+								jest.spyOn(file.subscription, 'unsubscribe');
+								component.uploadEvent.subscribe(evt => {
+									event = evt;
+									done();
+								});
+								component.cancelUpload(file);
+							});
+
+							it('should unsubscribe', () => {
+								expect(file.subscription.unsubscribe).toHaveBeenCalled();
+							});
+
+							it('should reduce the files array', () => {
+								expect(component.uploadedFiles.files.length).toBe(4);
+							});
+
+							it('should remove the file from the file list', () => {
+								expect(component.uploadedFiles.files.find(uploadedFile => uploadedFile.index === 0)).toBeUndefined();
+							});
+
+							it('should reduce the file count', () => {
+								expect(component.uploadedFiles.fileCount).toBe(4);
+							});
+
+							it('should emit an event', () => {
+								expect(event).toBeDefined();
+							});
+
+							it('should emit an event of type canceled', () => {
+								expect(event.type).toBe(ObEUploadEventType.CANCELED);
+							});
+
+							it('should emit an event with canceled files', () => {
+								expect(event.files).toEqual([file.binary]);
+							});
 						});
 
-						it('should not remove the file from the file list', () => {
-							expect(component.uploadedFiles.files.find(localFile => localFile.index === 0)).toBeDefined();
+						describe('when not confirmed', () => {
+							let file: ObIFile;
+							beforeEach(() => {
+								file = component.uploadedFiles.files[0];
+								jest.spyOn(popupService, 'confirm').mockReturnValue(false);
+								jest.spyOn(file.subscription, 'unsubscribe');
+								jest.spyOn(component.uploadEvent, 'emit');
+								component.cancelUpload(file);
+							});
+
+							it('should not unsubscribe', () => {
+								expect(file.subscription.unsubscribe).not.toHaveBeenCalled();
+							});
+
+							it('should not reduce the files array', () => {
+								expect(component.uploadedFiles.files.length).toBe(5);
+							});
+
+							it('should not remove the file from the file list', () => {
+								expect(component.uploadedFiles.files.find(localFile => localFile.index === 0)).toBeDefined();
+							});
+
+							it('should not reduce the file count', () => {
+								expect(component.uploadedFiles.fileCount).toBe(5);
+							});
+
+							it('should not emit an event', () => {
+								expect(component.uploadEvent.emit).not.toHaveBeenCalled();
+							});
+						});
+					});
+
+					describe('with cancelConfirmation set to false', () => {
+						beforeEach(() => {
+							component.cancelConfirmation = false;
 						});
 
-						it('should not reduce the file count', () => {
-							expect(component.uploadedFiles.fileCount).toBe(5);
+						it('should not ask for confirmation', () => {
+							jest.spyOn(popupService, 'confirm');
+							component.cancelUpload(component.uploadedFiles.files[0]);
+							expect(popupService.confirm).toHaveBeenCalledTimes(0);
 						});
 
-						it('should not emit an event', () => {
-							expect(component.uploadEvent.emit).not.toHaveBeenCalled();
+						describe('when cancelled', () => {
+							let file: ObIFile;
+							let event: ObIUploadEvent;
+							beforeEach(done => {
+								file = component.uploadedFiles.files[0];
+								jest.spyOn(file.subscription, 'unsubscribe');
+								component.uploadEvent.subscribe(evt => {
+									event = evt;
+									done();
+								});
+								component.cancelUpload(file);
+							});
+
+							it('should unsubscribe', () => {
+								expect(file.subscription.unsubscribe).toHaveBeenCalled();
+							});
+
+							it('should reduce the files array', () => {
+								expect(component.uploadedFiles.files.length).toBe(4);
+							});
+
+							it('should remove the file from the file list', () => {
+								expect(component.uploadedFiles.files.find(uploadedFile => uploadedFile.index === 0)).toBeUndefined();
+							});
+
+							it('should reduce the file count', () => {
+								expect(component.uploadedFiles.fileCount).toBe(4);
+							});
+
+							it('should emit an event', () => {
+								expect(event).toBeDefined();
+							});
+
+							it('should emit an event of type canceled', () => {
+								expect(event.type).toBe(ObEUploadEventType.CANCELED);
+							});
+
+							it('should emit an event with canceled files', () => {
+								expect(event.files).toEqual([file.binary]);
+							});
 						});
 					});
 				});
