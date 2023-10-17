@@ -1,4 +1,15 @@
-import {AfterViewInit, Component, ContentChild, HostBinding, Input, OnChanges, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {
+	AfterViewInit,
+	ChangeDetectorRef,
+	Component,
+	ContentChild,
+	HostBinding,
+	Input,
+	OnChanges,
+	TemplateRef,
+	ViewEncapsulation,
+	inject
+} from '@angular/core';
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {NgClass, NgIf, NgTemplateOutlet} from '@angular/common';
 
@@ -28,6 +39,7 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 
 	private static readonly SIZES = ['sm', 'md', 'lg'];
 	private readonly window: Window;
+	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
 	constructor() {
 		this.window = window; // because AoT don't accept interfaces as DI
@@ -59,6 +71,7 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 		} else if (this.stickyFooterTemplate) {
 			this.setMainStickySize(this.footerSize);
 		}
+		this.changeDetectorRef.detectChanges();
 	}
 
 	private setMainStickySize(size: string): void {
