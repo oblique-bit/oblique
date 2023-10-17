@@ -15,7 +15,7 @@ export const uploadInterceptor = new UploadInterceptor();
 bootstrapApplication(AppComponent, {
 	providers: [
 		importProvidersFrom(ObIconModule.forRoot(), TranslateModule.forRoot(multiTranslateLoader())),
-		{provide: LOCALE_ID, useValue: 'en-US'},
+		{provide: LOCALE_ID, useValue: 'en-CH'},
 		{
 			provide: HTTP_INTERCEPTORS,
 			useValue: uploadInterceptor,
