@@ -6,6 +6,8 @@ $ob-application-icon-size: 2.5em; // empiric value
 		display: flex;
 		flex-wrap: wrap;
 		gap: variables.$ob-spacing-default variables.$ob-spacing-lg;
+		padding: 0;
+		list-style: none;
 	}
 
 	.ob-application {

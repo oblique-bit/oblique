@@ -104,9 +104,11 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 				describe('first section', () => {
 					let section: ObServiceNavigationPopoverSectionComponent;
 					let content: DebugElement;
+					let links: DebugElement[];
 					beforeEach(() => {
 						section = sections[0].componentInstance;
 						content = fixture.debugElement.query(By.css('[obContent]'));
+						links = content.queryAll(By.css('a'));
 					});
 
 					it('should have "i18n.oblique.service-navigation.applications.last-used.header" as header', () => {
@@ -122,14 +124,18 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 							expect(content.classes['ob-applications']).toBe(true);
 						});
 
+						it('should have 2 list item', () => {
+							expect(content.queryAll(By.css('li')).length).toBe(2);
+						});
+
 						it('should have 2 children', () => {
-							expect(content.children.length).toBe(2);
+							expect(links.length).toBe(2);
 						});
 
 						describe('first child', () => {
 							let link: DebugElement;
 							beforeEach(() => {
-								link = content.children[0];
+								link = links[0];
 							});
 
 							it('should be an anchor', () => {
@@ -202,7 +208,7 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 						describe('second child', () => {
 							let link: DebugElement;
 							beforeEach(() => {
-								link = content.children[1];
+								link = links[1];
 							});
 
 							it('should be an anchor', () => {
@@ -338,9 +344,11 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 				describe('first section', () => {
 					let section: ObServiceNavigationPopoverSectionComponent;
 					let content: DebugElement;
+					let links: DebugElement[];
 					beforeEach(() => {
 						section = sections[0].componentInstance;
 						content = fixture.debugElement.query(By.css('[obContent]'));
+						links = content.queryAll(By.css('a'));
 					});
 
 					it('should have "i18n.oblique.service-navigation.applications.favorite.header" as header', () => {
@@ -356,14 +364,18 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 							expect(content.classes['ob-applications']).toBe(true);
 						});
 
+						it('should have 2 list item', () => {
+							expect(content.queryAll(By.css('li')).length).toBe(2);
+						});
+
 						it('should have 2 children', () => {
-							expect(content.children.length).toBe(2);
+							expect(links.length).toBe(2);
 						});
 
 						describe('first child', () => {
 							let link: DebugElement;
 							beforeEach(() => {
-								link = content.children[0];
+								link = links[0];
 							});
 
 							it('should be an anchor', () => {
@@ -436,7 +448,7 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 						describe('second child', () => {
 							let link: DebugElement;
 							beforeEach(() => {
-								link = content.children[1];
+								link = links[1];
 							});
 
 							it('should be an anchor', () => {
