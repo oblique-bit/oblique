@@ -17,6 +17,7 @@ import {ObLimitArraySizePipe} from '../shared/limit-array-size.pipe';
 import {ObServiceNavigationApplicationAltPipe} from './service-navigation-application-image-alt.pipe';
 import {ObServiceNavigationApplicationsHarness} from './service-navigation-applications.harness';
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
+import {ObDisableLinkDirective} from '../shared/disable-link/disable-link.directive';
 
 describe('ObServiceNavigationApplicationsComponent', () => {
 	let component: ObServiceNavigationApplicationsComponent;
@@ -25,7 +26,7 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MatButtonModule, MatIconModule, MatTooltipModule, ObPopoverModule],
+			imports: [MatButtonModule, MatIconModule, MatTooltipModule, ObPopoverModule, ObDisableLinkDirective],
 			declarations: [
 				ObLimitArraySizePipe,
 				ObServiceNavigationApplicationsComponent,
@@ -219,8 +220,12 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 								expect(link.classes['ob-application']).toBe(true);
 							});
 
-							it('should have "href" attribute set to "http://app-url2"', () => {
-								expect(link.attributes.href).toBe('http://app-url2');
+							it('should NOT have "href" attribute', () => {
+								expect(link.attributes.href).toBe(undefined);
+							});
+
+							it('should have aria-disabled', () => {
+								expect(link.attributes['aria-disabled']).toBe('true');
 							});
 
 							it('should have "isExternalLink" property set to "false"', () => {
@@ -459,8 +464,12 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 								expect(link.classes['ob-application']).toBe(true);
 							});
 
-							it('should have "href" attribute set to "http://app-url2"', () => {
-								expect(link.attributes.href).toBe('http://app-url2');
+							it('should NOT have "href" attribute', () => {
+								expect(link.attributes.href).toBe(undefined);
+							});
+
+							it('should have aria-disabled', () => {
+								expect(link.attributes['aria-disabled']).toBe('true');
 							});
 
 							it('should have "isExternalLink" property set to "false"', () => {
