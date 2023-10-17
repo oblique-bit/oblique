@@ -19,6 +19,7 @@
 			[maxFileSize]="maxFileSize"
 			[multiple]="multipleFile"
 			[singleRequest]="singleRequest"
+			[cancelConfirmation]="cancelConfirmation"
 			(uploadEvent)="uploadEvent($event)"
 		>
 		</ob-file-upload>
@@ -49,6 +50,9 @@
 					<mat-slide-toggle [(ngModel)]="singleRequest" matTooltip="Use a single request for all files" (change)="setUploadURL()">
 						singleRequest
 					</mat-slide-toggle>
+				</mat-list-item>
+				<mat-list-item>
+					<mat-slide-toggle [(ngModel)]="cancelConfirmation" matTooltip="Show a cancel confirmation"> cancelConfirmation </mat-slide-toggle>
 				</mat-list-item>
 				<mat-form-field>
 					<mat-label>accept</mat-label>
