@@ -3,5 +3,11 @@
 </ng-container>
 
 <ng-template #loading>
-	<ob-progress [files]="files" [singleRequest]="singleRequest" [uploadUrl]="uploadUrl" (uploadEvent)="processEvent($event)"></ob-progress>
+	<ob-progress
+		[files]="files"
+		[singleRequest]="singleRequest"
+		[uploadUrl]="uploadUrl"
+		[cancelConfirmation]="cancelConfirmation"
+		(uploadEvent)="processEvent($event)"
+	></ob-progress>
 </ng-template>
