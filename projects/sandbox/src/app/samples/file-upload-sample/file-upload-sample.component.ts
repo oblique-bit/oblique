@@ -13,6 +13,7 @@ export class FileUploadSampleComponent {
 	maxFileSize = 5;
 	multipleFile = true;
 	singleRequest = true;
+	cancelConfirmation = true;
 	acceptFilesOptions = [
 		['*'],
 		['.txt', '.ts'],
