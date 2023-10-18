@@ -412,6 +412,21 @@ describe('ObPopover', () => {
 					expect(popover.getAttribute('id')).toBe('popover-content');
 				});
 			});
+
+			describe('with a custom panelContentId', () => {
+				afterEach(() => {
+					jest.useRealTimers();
+				});
+				it('should add the given panelContentId', () => {
+					directive.panelContentId = 'custom-panel';
+					directive.ngOnInit();
+					jest.useFakeTimers();
+					directive.open();
+					jest.runOnlyPendingTimers();
+					popover = document.querySelector('.ob-popover-content');
+					expect(popover.getAttribute('id')).toBe('custom-panel');
+				});
+			});
 		});
 
 		describe('with appendToBody input', () => {
