@@ -181,7 +181,7 @@ export class UploadInterceptor implements HttpInterceptor, OnDestroy {
 	}
 }
 
-export const mockUrls: UploadGetUploadedFilesDelete[] = [...Array(3).keys()].map(idx => {
+export const mockUrls: UploadGetUploadedFilesDelete[] = [...Array(4).keys()].map(idx => {
 	const index = idx + 1;
 	return {
 		upload: `${mockUploadURL}/${index}`,

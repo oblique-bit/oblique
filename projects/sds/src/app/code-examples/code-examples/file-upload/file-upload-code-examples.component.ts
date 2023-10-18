@@ -7,6 +7,7 @@ import {FileUploadBasicOptionsPreviewComponent} from './previews/basic-options/f
 import {FileUploadUploadEventPreviewComponent} from './previews/upload-event/file-upload-upload-event-preview.component';
 import {FileUploadMapFunctionAndObFileInfoPreviewComponent} from './previews/map-function-and-ob-file-info/file-upload-map-function-and-ob-file-info-preview.component';
 import {FileUploadFullyFunctioningPreviewComponent} from './previews/fully-functioning/file-upload-fully-functioning-preview.component';
+import {FileUploadCancelUploadPreviewComponent} from './previews/cancel-upload/file-upload-cancel-upload-preview.component';
 
 @Component({
 	selector: 'app-code-example-file-upload',
@@ -25,6 +26,15 @@ export class FileUploadCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('file-upload', 'basic-options/file-upload-basic-options-preview.component.html', 'HTML'),
 				this.getSnippet('file-upload', 'basic-options/file-upload-basic-options-preview.component.ts', 'TS')
+			]
+		},
+		{
+			component: FileUploadCancelUploadPreviewComponent,
+			idParts: ['cancel-upload'],
+			title: 'Cancel upload',
+			snippets: [
+				this.getSnippet('file-upload', 'cancel-upload/file-upload-cancel-upload-preview.component.html', 'HTML'),
+				this.getSnippet('file-upload', 'cancel-upload/file-upload-cancel-upload-preview.component.ts', 'TS')
 			]
 		},
 		{

@@ -1,0 +1,14 @@
+<ob-alert>
+	For the opportunity to test the upload cancellation, please use a file size larger than 50 kB or use throttling on the browser. Otherwise,
+	the upload is almost instant.
+</ob-alert>
+
+<div>
+	<h3>Default</h3>
+	<ob-file-upload [uploadUrl]="mockUrls[3].upload"></ob-file-upload>
+</div>
+
+<div>
+	<h3>No cancel confirmation</h3>
+	<ob-file-upload [uploadUrl]="mockUrls[3].upload" [cancelConfirmation]="false"></ob-file-upload>
+</div>

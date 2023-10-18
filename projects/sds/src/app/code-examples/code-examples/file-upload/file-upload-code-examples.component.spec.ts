@@ -48,11 +48,11 @@ describe(FileUploadCodeExamplesComponent.name, () => {
 	});
 
 	it(`should have 4 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(4);
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(5);
 	});
 
 	it(`should have 7 ${ObFileUploadComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(ObFileUploadComponent)).length).toBe(7);
+		expect(fixture.debugElement.queryAll(By.directive(ObFileUploadComponent)).length).toBe(9);
 	});
 
 	it(`should have 2 ${ObFileInfoComponent.name}s`, () => {
@@ -60,6 +60,6 @@ describe(FileUploadCodeExamplesComponent.name, () => {
 	});
 
 	it(`should have 8 ${ObDropZoneComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(ObDropZoneComponent)).length).toBe(8);
+		expect(fixture.debugElement.queryAll(By.directive(ObDropZoneComponent)).length).toBe(10);
 	});
 });
