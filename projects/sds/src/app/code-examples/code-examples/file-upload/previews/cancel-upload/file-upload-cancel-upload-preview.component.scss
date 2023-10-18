@@ -1,0 +1,39 @@
+@use "sass:map";
+@use "../../../../../../styles/scss/core/variables";
+
+/*
+	Below is styling code that is used to style the layout of the page
+	It is NOT needed in order to use the component
+*/
+
+:host {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 3rem;
+	row-gap: 2rem;
+
+	@mixin layout-column() {
+		flex-direction: column;
+		align-items: flex-start;
+
+		&.flex-end {
+			align-items: flex-end;
+		}
+	}
+
+	@each $name, $breakpoint in variables.$ob-grid-breakpoints {
+		@media (max-width: map.get(variables.$ob-grid-breakpoints, $name)) {
+			&.layout-breakpoint-#{$name} {
+				@include layout-column();
+			}
+		}
+	}
+
+	&.layout-column {
+		@include layout-column();
+	}
+
+	.ob-alert {
+		width: 100%;
+	}
+}
