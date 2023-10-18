@@ -40,6 +40,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	@Input() placement: Placement = 'auto';
 	@Input() popperOptions: Options = {} as Options;
 	@Input() id: string;
+	@Input() panelContentId: string;
 	@Input() toggleHandle: ObEToggleType;
 	@Input() closeOnlyOnToggle: boolean;
 	@Input() appendToBody = false;
@@ -70,7 +71,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	ngOnInit(): void {
 		/* eslint-disable logical-assignment-operators */
 		this.id = this.id || `popover-${ObPopoverDirective.idCount++}`;
-		this.idContent = `${this.id}-content`;
+		this.idContent = this.panelContentId || `${this.id}-content`;
 		this.appendToBody = this.globalAppendToBody ?? this.appendToBody;
 		this.updateToggleMethod();
 		this.updateCloseOnlyOnToggle();
