@@ -4,13 +4,13 @@ import {ObEUploadEventType, ObFileUploadModule, ObIUploadEvent} from '@oblique/o
 import {mockUrls} from '../../file-upload-simulate-interceptor';
 
 @Component({
-	selector: 'app-file-upload-example-second-preview',
-	templateUrl: './file-upload-example-second-preview.component.html',
+	selector: 'app-file-upload-upload-event-preview',
+	templateUrl: './file-upload-upload-event-preview.component.html',
 	styleUrls: ['../../../../code-example-flex-layout.scss'],
 	standalone: true,
 	imports: [ObFileUploadModule, NgFor]
 })
-export class FileUploadExampleSecondPreviewComponent {
+export class FileUploadUploadEventPreviewComponent {
 	readonly mockUrls = mockUrls;
 
 	last5UploadEvents: UploadEventLog[] = [];

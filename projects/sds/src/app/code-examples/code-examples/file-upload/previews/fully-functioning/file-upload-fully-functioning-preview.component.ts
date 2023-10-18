@@ -5,13 +5,13 @@ import {CommonModule} from '@angular/common';
 import {uploadInterceptor} from '../../../../../../main';
 
 @Component({
-	selector: 'app-file-upload-example-fourth-preview',
-	templateUrl: './file-upload-example-fourth-preview.component.html',
+	selector: 'app-file-upload-fully-functioning-preview',
+	templateUrl: './file-upload-fully-functioning-preview.component.html',
 	styleUrls: ['../../../../code-example-flex-layout.scss'],
 	standalone: true,
 	imports: [CommonModule, ObFileUploadModule]
 })
-export class FileUploadExampleFourthPreviewComponent {
+export class FileUploadFullyFunctioningPreviewComponent {
 	mockUrls = mockUrls;
 
 	checkForCanceledUploads(event: ObIUploadEvent): void {
