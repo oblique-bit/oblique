@@ -27,6 +27,7 @@ import {ColumnLayoutCodeExamplesComponent} from './code-examples/column-layout/c
 import {GridSystemCodeExamplesComponent} from './code-examples/grid-system/grid-system-code-examples.component';
 import {NestedFormCodeExamplesComponent} from './code-examples/nested-form/nested-form-code-examples.component';
 import {PublicScssVariablesAndMixinsCodeExamplesComponent} from './code-examples/public-scss-variables-and-mixins/public-scss-variables-and-mixins-code-examples.component';
+import {StickyCodeExamplesComponent} from './code-examples/sticky/sticky-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -55,6 +56,7 @@ export class CodeExamplesMapper {
 		slideToggle: SlideToggleCodeExamplesComponent,
 		spinner: SpinnerCodeExamplesComponent,
 		stepper: StepperCodeExamplesComponent,
+		sticky: StickyCodeExamplesComponent,
 		tabs: TabsCodeExamplesComponent,
 		tooltip: TooltipCodeExamplesComponent
 	};
