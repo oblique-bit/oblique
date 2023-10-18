@@ -3,10 +3,10 @@ import {CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
-import {FileUploadExampleFirstPreviewComponent} from './previews/first/file-upload-example-first-preview.component';
-import {FileUploadExampleSecondPreviewComponent} from './previews/second/file-upload-example-second-preview.component';
-import {FileUploadExampleThirdPreviewComponent} from './previews/third/file-upload-example-third-preview.component';
-import {FileUploadExampleFourthPreviewComponent} from './previews/fourth/file-upload-example-fourth-preview.component';
+import {FileUploadBasicOptionsPreviewComponent} from './previews/basic-options/file-upload-basic-options-preview.component';
+import {FileUploadUploadEventPreviewComponent} from './previews/upload-event/file-upload-upload-event-preview.component';
+import {FileUploadMapFunctionAndObFileInfoPreviewComponent} from './previews/map-function-and-ob-file-info/file-upload-map-function-and-ob-file-info-preview.component';
+import {FileUploadFullyFunctioningPreviewComponent} from './previews/fully-functioning/file-upload-fully-functioning-preview.component';
 
 @Component({
 	selector: 'app-code-example-file-upload',
@@ -19,39 +19,43 @@ export class FileUploadCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'file-upload-examples';
 	readonly previews: CodeExample[] = [
 		{
-			component: FileUploadExampleFirstPreviewComponent,
-			idParts: ['first'],
+			component: FileUploadBasicOptionsPreviewComponent,
+			idParts: ['basic-options'],
 			title: 'Basic options',
 			snippets: [
-				this.getSnippet('file-upload', 'first/file-upload-example-first-preview.component.html', 'HTML'),
-				this.getSnippet('file-upload', 'first/file-upload-example-first-preview.component.ts', 'TS')
+				this.getSnippet('file-upload', 'basic-options/file-upload-basic-options-preview.component.html', 'HTML'),
+				this.getSnippet('file-upload', 'basic-options/file-upload-basic-options-preview.component.ts', 'TS')
 			]
 		},
 		{
-			component: FileUploadExampleSecondPreviewComponent,
-			idParts: ['second'],
+			component: FileUploadUploadEventPreviewComponent,
+			idParts: ['upload-event'],
 			title: 'Urls & <code>uploadEvent</code>',
 			snippets: [
-				this.getSnippet('file-upload', 'second/file-upload-example-second-preview.component.html', 'HTML'),
-				this.getSnippet('file-upload', 'second/file-upload-example-second-preview.component.ts', 'TS')
+				this.getSnippet('file-upload', 'upload-event/file-upload-upload-event-preview.component.html', 'HTML'),
+				this.getSnippet('file-upload', 'upload-event/file-upload-upload-event-preview.component.ts', 'TS')
 			]
 		},
 		{
-			component: FileUploadExampleThirdPreviewComponent,
-			idParts: ['third'],
+			component: FileUploadMapFunctionAndObFileInfoPreviewComponent,
+			idParts: ['map-function-and-ob-file-info'],
 			title: 'Urls, <code>mapFunction</code> & <code>ob-file-info</code>',
 			snippets: [
-				this.getSnippet('file-upload', 'third/file-upload-example-third-preview.component.html', 'HTML'),
-				this.getSnippet('file-upload', 'third/file-upload-example-third-preview.component.ts', 'TS')
+				this.getSnippet(
+					'file-upload',
+					'map-function-and-ob-file-info/file-upload-map-function-and-ob-file-info-preview.component.html',
+					'HTML'
+				),
+				this.getSnippet('file-upload', 'map-function-and-ob-file-info/file-upload-map-function-and-ob-file-info-preview.component.ts', 'TS')
 			]
 		},
 		{
-			component: FileUploadExampleFourthPreviewComponent,
-			idParts: ['fourth'],
+			component: FileUploadFullyFunctioningPreviewComponent,
+			idParts: ['fully-functioning'],
 			title: 'Fully functioning mock example',
 			snippets: [
-				this.getSnippet('file-upload', 'fourth/file-upload-example-fourth-preview.component.html', 'HTML'),
-				this.getSnippet('file-upload', 'fourth/file-upload-example-fourth-preview.component.ts', 'TS')
+				this.getSnippet('file-upload', 'fully-functioning/file-upload-fully-functioning-preview.component.html', 'HTML'),
+				this.getSnippet('file-upload', 'fully-functioning/file-upload-fully-functioning-preview.component.ts', 'TS')
 			]
 		}
 	];
