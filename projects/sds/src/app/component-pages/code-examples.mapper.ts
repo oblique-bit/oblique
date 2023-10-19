@@ -29,6 +29,7 @@ import {NestedFormCodeExamplesComponent} from './code-examples/nested-form/neste
 import {PublicScssVariablesAndMixinsCodeExamplesComponent} from './code-examples/public-scss-variables-and-mixins/public-scss-variables-and-mixins-code-examples.component';
 import {StickyCodeExamplesComponent} from './code-examples/sticky/sticky-code-examples.component';
 import {PopoverCodeExamplesComponent} from './code-examples/popover/popover-code-examples.component';
+import {OffCanvasCodeExamplesComponent} from './code-examples/off-canvas/off-canvas-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -50,6 +51,7 @@ export class CodeExamplesMapper {
 		materialTable: MaterialTableCodeExamplesComponent,
 		navTree: NavTreeCodeExamplesComponent,
 		nestedForm: NestedFormCodeExamplesComponent,
+		offCanvas: OffCanvasCodeExamplesComponent,
 		paginator: PaginatorCodeExamplesComponent,
 		popover: PopoverCodeExamplesComponent,
 		progressBar: ProgressBarCodeExamplesComponent,
