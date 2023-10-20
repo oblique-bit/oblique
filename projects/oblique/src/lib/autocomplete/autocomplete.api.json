@@ -34,6 +34,7 @@
           "text": "Input to override the regex pattern used for highlighting text of the options. In customised regex patterns, the string 'textToFind' marks the location where the entered input text will be.",
           "type": "string",
           "default": "'textToFind'",
+          "deprecated": "10.2.1",
           "since": "9.2.0"
         },
         {
