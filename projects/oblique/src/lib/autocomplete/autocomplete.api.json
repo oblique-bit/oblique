@@ -31,7 +31,7 @@
         },
         {
           "name": "filterRegexPattern",
-          "text": "Input to override the regex pattern used for highlighting text of the options. In customised regex patterns, the string 'textToFind' marks the location where the entered input text will be. e.g: <code>[textToFind]{2}</code> only highlights <code>oo</code> in 'Bal<u><b>oo<b><u>' and not the single <code>o</code> like in 'Dragon'.",
+          "text": "Input to override the regex pattern used for highlighting text of the options. In customised regex patterns, the string 'textToFind' marks the location where the entered input text will be.",
           "type": "string",
           "default": "'textToFind'",
           "since": "9.2.0"
