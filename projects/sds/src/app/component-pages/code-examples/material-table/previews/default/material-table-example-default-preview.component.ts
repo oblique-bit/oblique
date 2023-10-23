@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatTableModule} from '@angular/material/table';
 
 @Component({
@@ -8,7 +7,7 @@ import {MatTableModule} from '@angular/material/table';
 	imports: [MatTableModule],
 	standalone: true
 })
-export class MaterialTableExampleDefaultPreviewComponent implements PreviewComponent {
+export class MaterialTableExampleDefaultPreviewComponent {
 	displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 	dataSource = [
 		{position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},

@@ -1,6 +1,5 @@
 import {MatButtonModule} from '@angular/material/button';
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 
 @Component({
@@ -10,4 +9,4 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 	standalone: true,
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule]
 })
-export class MasterLayoutExampleStackblitzLinkPreviewComponent implements PreviewComponent {}
+export class MasterLayoutExampleStackblitzLinkPreviewComponent {}

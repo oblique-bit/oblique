@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {ObFileUploadModule, ObIFileDescription} from '@oblique/oblique';
 import {mockUrls} from '../../file-upload-simulate-interceptor';
 
@@ -10,7 +9,7 @@ import {mockUrls} from '../../file-upload-simulate-interceptor';
 	standalone: true,
 	imports: [ObFileUploadModule]
 })
-export class FileUploadExampleThirdPreviewComponent implements PreviewComponent {
+export class FileUploadExampleThirdPreviewComponent {
 	mockUrls = mockUrls;
 
 	mapData(files: ObIFileDescription[]): ObIFileDescription[] {

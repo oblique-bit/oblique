@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @Component({
@@ -9,4 +8,4 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 	standalone: true,
 	imports: [MatProgressBarModule]
 })
-export class ProgressBarExampleModesPreviewComponent implements PreviewComponent {}
+export class ProgressBarExampleModesPreviewComponent {}

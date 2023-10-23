@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatInputModule} from '@angular/material/input';
 
@@ -10,4 +9,4 @@ import {MatInputModule} from '@angular/material/input';
 	imports: [MatChipsModule, MatInputModule],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChipsExampleColorPreviewComponent implements PreviewComponent {}
+export class ChipsExampleColorPreviewComponent {}

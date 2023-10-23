@@ -1,5 +1,4 @@
 import {Component, OnDestroy, inject} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {ObButtonModule, ObSpinnerModule, ObSpinnerService} from '@oblique/oblique';
 import {MatButtonModule} from '@angular/material/button';
 
@@ -10,7 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 	imports: [ObSpinnerModule, ObButtonModule, MatButtonModule],
 	standalone: true
 })
-export class MultipleActivationsPreviewComponent implements PreviewComponent, OnDestroy {
+export class MultipleActivationsPreviewComponent implements OnDestroy {
 	counter = 0;
 	readonly channel = 'demoChannelMultipleActivations';
 	private readonly spinnerService = inject(ObSpinnerService);

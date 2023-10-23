@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {ObEUploadEventType, ObFileUploadModule, ObIUploadEvent} from '@oblique/oblique';
 import {mockUrls} from '../../file-upload-simulate-interceptor';
 import {CommonModule} from '@angular/common';
@@ -12,7 +11,7 @@ import {uploadInterceptor} from '../../../../../../main';
 	standalone: true,
 	imports: [CommonModule, ObFileUploadModule]
 })
-export class FileUploadExampleFourthPreviewComponent implements PreviewComponent {
+export class FileUploadExampleFourthPreviewComponent {
 	mockUrls = mockUrls;
 
 	checkForCanceledUploads(event: ObIUploadEvent): void {

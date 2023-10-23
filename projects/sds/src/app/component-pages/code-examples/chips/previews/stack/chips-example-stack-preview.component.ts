@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatChipsModule} from '@angular/material/chips';
 import {CommonModule} from '@angular/common';
 
@@ -15,7 +14,7 @@ export interface ChipColor {
 	templateUrl: './chips-example-stack-preview.component.html',
 	styleUrls: ['./chips-example-stack-preview.component.scss']
 })
-export class ChipsExampleStackPreviewComponent implements PreviewComponent {
+export class ChipsExampleStackPreviewComponent {
 	availableColors: ChipColor[] = [
 		{name: 'Default', color: 'default'},
 		{name: 'Info', color: 'info'},

@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {ObPaginatorDirective} from '@oblique/oblique';
 
@@ -11,4 +10,4 @@ import {ObPaginatorDirective} from '@oblique/oblique';
 	imports: [MatPaginatorModule, ObPaginatorDirective],
 	host: {class: 'layout-column flex-end'}
 })
-export class PaginatorExampleCommonOptionsPreviewComponent implements PreviewComponent {}
+export class PaginatorExampleCommonOptionsPreviewComponent {}

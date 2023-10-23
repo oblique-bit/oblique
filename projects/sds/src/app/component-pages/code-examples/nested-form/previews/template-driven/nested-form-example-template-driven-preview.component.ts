@@ -1,5 +1,4 @@
 import {Component, inject} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {JsonPipe} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -27,7 +26,7 @@ import {MatButtonModule} from '@angular/material/button';
 		ReactiveFormsModule
 	]
 })
-export class NestedFormExampleTemplateDrivenPreviewComponent implements PreviewComponent {
+export class NestedFormExampleTemplateDrivenPreviewComponent {
 	readonly channel = 'template-driven-channel';
 	readonly model = {
 		parent: '',

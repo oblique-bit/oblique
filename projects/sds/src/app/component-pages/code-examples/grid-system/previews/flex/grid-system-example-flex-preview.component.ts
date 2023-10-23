@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 
 @Component({
 	selector: 'app-grid-system-example-flex-preview',
@@ -7,4 +6,4 @@ import {PreviewComponent} from '../../../../code-examples.model';
 	styleUrls: ['../grid-system.scss'],
 	standalone: true
 })
-export class GridSystemExampleFlexPreviewComponent implements PreviewComponent {}
+export class GridSystemExampleFlexPreviewComponent {}

@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {ObAlertModule} from '@oblique/oblique';
-import {PreviewComponent} from '../../../../code-examples.model';
 
 @Component({
 	selector: 'app-alert-example-type-preview',
@@ -9,4 +8,4 @@ import {PreviewComponent} from '../../../../code-examples.model';
 	standalone: true,
 	imports: [ObAlertModule]
 })
-export class AlertExampleTypePreviewComponent implements PreviewComponent {}
+export class AlertExampleTypePreviewComponent {}

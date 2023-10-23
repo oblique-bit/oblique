@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 
@@ -10,4 +9,4 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 	standalone: true,
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule]
 })
-export class OffCanvasExampleStackblitzLinkPreviewComponent implements PreviewComponent {}
+export class OffCanvasExampleStackblitzLinkPreviewComponent {}

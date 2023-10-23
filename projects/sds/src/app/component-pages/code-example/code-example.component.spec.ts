@@ -1,4 +1,4 @@
-import {Component, Type} from '@angular/core';
+import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {CodeExampleComponent} from './code-example.component';
@@ -8,15 +8,15 @@ import {TabsComponent} from '../tabs/tabs.component';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {UnitTestHelpers} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
 import {HighlightedCodeComponent} from './highlighted-code/highlighted-code.component';
-import {PreviewComponent} from '../code-examples.model';
 import {CodeExampleDirective} from '../code-example.directive';
+import {PreviewComponent} from '../code-examples.model';
 
 @Component({
 	selector: 'app-preview',
 	template: '',
 	standalone: true
 })
-class MockPreviewComponent implements PreviewComponent {}
+class MockPreviewComponent {}
 
 describe(`${CodeExampleComponent.name}`, () => {
 	let component: CodeExampleComponent;
@@ -157,5 +157,5 @@ describe(`${CodeExampleComponent.name}`, () => {
 interface ComponentInputs {
 	codeSnippets?: SourceCode[];
 	idPrefix?: string;
-	preview?: Type<PreviewComponent>;
+	preview?: PreviewComponent;
 }

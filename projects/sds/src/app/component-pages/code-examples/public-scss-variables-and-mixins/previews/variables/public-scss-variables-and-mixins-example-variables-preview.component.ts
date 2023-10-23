@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 
 @Component({
 	selector: 'app-public-scss-variables-and-mixins-example-variables-preview',
@@ -11,4 +10,4 @@ import {PreviewComponent} from '../../../../code-examples.model';
 	],
 	standalone: true
 })
-export class PublicScssVariablesAndMixinsExampleVariablesPreviewComponent implements PreviewComponent {}
+export class PublicScssVariablesAndMixinsExampleVariablesPreviewComponent {}

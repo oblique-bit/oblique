@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule} from '@oblique/oblique';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -10,4 +9,4 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 	standalone: true,
 	imports: [MatButtonModule, ObButtonModule, MatTooltipModule]
 })
-export class TooltipExampleBasicPreviewComponent implements PreviewComponent {}
+export class TooltipExampleBasicPreviewComponent {}

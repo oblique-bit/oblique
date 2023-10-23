@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {CommonModule} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
@@ -11,7 +10,7 @@ import {MatListModule} from '@angular/material/list';
 	imports: [MatListModule, MatIconModule, CommonModule],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListGroupExampleImagePreviewComponent implements PreviewComponent {
+export class ListGroupExampleImagePreviewComponent {
 	readonly contentForList = [
 		{
 			id: 'list-item-1',

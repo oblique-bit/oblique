@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {NgFor} from '@angular/common';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {ObEUploadEventType, ObFileUploadModule, ObIUploadEvent} from '@oblique/oblique';
 import {mockUrls} from '../../file-upload-simulate-interceptor';
 
@@ -11,7 +10,7 @@ import {mockUrls} from '../../file-upload-simulate-interceptor';
 	standalone: true,
 	imports: [ObFileUploadModule, NgFor]
 })
-export class FileUploadExampleSecondPreviewComponent implements PreviewComponent {
+export class FileUploadExampleSecondPreviewComponent {
 	readonly mockUrls = mockUrls;
 
 	last5UploadEvents: UploadEventLog[] = [];
