@@ -6,7 +6,7 @@ import {WINDOW} from '../../utilities';
 export class ObServiceNavigationTimeoutCookieService {
 	private readonly window: Window = inject(WINDOW);
 	private readonly expirationIn1Hour = 3600;
-	private readonly shortCookieLifeSpan = 10;
+	private readonly shortCookieLifeSpan = 5;
 
 	public setShortCookie(key: string, value: string): void {
 		this.setCookie(key, value, this.shortCookieLifeSpan);

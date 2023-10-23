@@ -93,10 +93,10 @@ describe('ServiceNavigationTimeoutCookieService', () => {
 			cookie = CookiesMock.getDetails(fakeKey);
 		});
 
-		it('should set cookie with expiration date in the next 10 seconds', () => {
-			const tenSecondsInMilliseconds = 10000;
-			const expectedOneHour = new Date(Date.now() + tenSecondsInMilliseconds);
-			expect(cookie.options.expires).toEqual(expectedOneHour);
+		it('should set cookie with expiration date in the next 5 seconds', () => {
+			const fiveSecondsInMilliseconds = 5000;
+			const expectedExpirationDate = new Date(Date.now() + fiveSecondsInMilliseconds);
+			expect(cookie.options.expires).toEqual(expectedExpirationDate);
 		});
 	});
 
