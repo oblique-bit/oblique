@@ -25,14 +25,12 @@ export class CodeExamples {
 	}
 }
 
-/**
- * Each *Example*PreviewComponent implements this interface so that they all have the same type.
- * This is necessary so that the CodeExampleComponent class can work with a single type
- */
-export interface PreviewComponent {} // eslint-disable-line @typescript-eslint/no-empty-interface
+// Type<T> ensures that `component` is a class with all properties of T. It may have more but no less
+// Since the preview components don't have any mandatory properties, `T` is `void`
+export type PreviewComponent = Type<void>;
 
 export interface CodeExample {
-	component?: Type<PreviewComponent>;
+	component?: PreviewComponent;
 	idParts: string[];
 	title?: string;
 	snippets: SourceCode[];

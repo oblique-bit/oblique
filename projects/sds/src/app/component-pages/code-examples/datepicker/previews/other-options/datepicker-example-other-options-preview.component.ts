@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerInputEvent, MatDatepickerModule} from '@angular/material/datepicker';
@@ -25,7 +24,7 @@ import {ObFormFieldModule} from '@oblique/oblique';
 		ReactiveFormsModule
 	]
 })
-export class DatepickerExampleOtherOptionsPreviewComponent implements PreviewComponent {
+export class DatepickerExampleOtherOptionsPreviewComponent {
 	readonly august1st1891 = new Date(1891, 7, 1);
 	readonly errorControl = new FormControl(new Date(), [
 		function (control: FormControl) {

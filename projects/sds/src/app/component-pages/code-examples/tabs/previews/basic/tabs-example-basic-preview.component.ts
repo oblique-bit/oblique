@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import {ObIconModule} from '@oblique/oblique';
@@ -10,4 +9,4 @@ import {ObIconModule} from '@oblique/oblique';
 	standalone: true,
 	imports: [MatTabsModule, MatIconModule, ObIconModule]
 })
-export class TabsExampleBasicPreviewComponent implements PreviewComponent {}
+export class TabsExampleBasicPreviewComponent {}

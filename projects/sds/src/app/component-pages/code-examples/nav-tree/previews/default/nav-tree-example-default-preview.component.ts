@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ObNavTreeItemModel, ObNavTreeModule} from '@oblique/oblique';
-import {PreviewComponent} from '../../../../code-examples.model';
 
 @Component({
 	selector: 'app-nav-tree-example-default-preview',
@@ -8,7 +7,7 @@ import {PreviewComponent} from '../../../../code-examples.model';
 	standalone: true,
 	imports: [ObNavTreeModule]
 })
-export class NavTreeExampleDefaultPreviewComponent implements PreviewComponent, OnInit {
+export class NavTreeExampleDefaultPreviewComponent implements OnInit {
 	public items: ObNavTreeItemModel[];
 	private readonly tree = {
 		label: 'Navigation Tree',

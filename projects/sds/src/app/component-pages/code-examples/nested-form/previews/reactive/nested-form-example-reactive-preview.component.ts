@@ -1,5 +1,4 @@
 import {Component, inject} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ObButtonModule, ObErrorMessagesModule, ObNestedFormModule, ObNotificationModule, ObNotificationService} from '@oblique/oblique';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -26,7 +25,7 @@ import {MatButtonModule} from '@angular/material/button';
 		ReactiveFormsModule
 	]
 })
-export class NestedFormExampleReactivePreviewComponent implements PreviewComponent {
+export class NestedFormExampleReactivePreviewComponent {
 	readonly channel = 'reactive-channel';
 	readonly parentForm: UntypedFormGroup;
 	private readonly formBuilder = inject(UntypedFormBuilder);

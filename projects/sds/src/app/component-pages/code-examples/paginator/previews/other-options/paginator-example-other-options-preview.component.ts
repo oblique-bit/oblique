@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatPaginator, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import {ObPaginatorDirective} from '@oblique/oblique';
 import {JsonPipe} from '@angular/common';
@@ -12,7 +11,7 @@ import {JsonPipe} from '@angular/common';
 	imports: [JsonPipe, MatPaginatorModule, ObPaginatorDirective],
 	host: {class: 'layout-column flex-end'}
 })
-export class PaginatorExampleOtherOptionsPreviewComponent implements PreviewComponent, AfterViewInit {
+export class PaginatorExampleOtherOptionsPreviewComponent implements AfterViewInit {
 	initializedText = 'Paginator has not yet been initialized';
 	lastPageEvent: PageEvent;
 	@ViewChild('initialized') private readonly initializedPaginator!: MatPaginator;

@@ -2,7 +2,6 @@ import {Component, OnInit, inject} from '@angular/core';
 import {AsyncPipe} from '@angular/common';
 import {ObNavTreeItemModel, ObNavTreeModule} from '@oblique/oblique';
 import {Observable, map} from 'rxjs';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {DataService} from './nav-tree-data.service';
 
 @Component({
@@ -11,7 +10,7 @@ import {DataService} from './nav-tree-data.service';
 	standalone: true,
 	imports: [ObNavTreeModule, AsyncPipe]
 })
-export class NavTreeExampleDataFromServicePreviewComponent implements PreviewComponent, OnInit {
+export class NavTreeExampleDataFromServicePreviewComponent implements OnInit {
 	items$: Observable<ObNavTreeItemModel[]>;
 	private readonly dataService = inject(DataService);
 

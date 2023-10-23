@@ -1,7 +1,6 @@
 import {ObButtonModule} from '@oblique/oblique';
 import {MatInputModule} from '@angular/material/input';
 import {Component, OnInit} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatStepperModule} from '@angular/material/stepper';
 import {ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -15,7 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
 	standalone: true,
 	imports: [MatFormFieldModule, MatButtonModule, MatIconModule, MatInputModule, MatStepperModule, ObButtonModule, ReactiveFormsModule]
 })
-export class StepperExampleDefaultPreviewComponent implements PreviewComponent, OnInit {
+export class StepperExampleDefaultPreviewComponent implements OnInit {
 	firstFormGroup: UntypedFormGroup;
 	secondFormGroup: UntypedFormGroup;
 	constructor(private readonly formBuilder: UntypedFormBuilder) {}

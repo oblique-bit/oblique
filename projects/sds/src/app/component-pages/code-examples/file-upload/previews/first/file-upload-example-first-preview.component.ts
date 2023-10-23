@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {ObFileUploadModule} from '@oblique/oblique';
 
 @Component({
@@ -9,4 +8,4 @@ import {ObFileUploadModule} from '@oblique/oblique';
 	standalone: true,
 	imports: [ObFileUploadModule]
 })
-export class FileUploadExampleFirstPreviewComponent implements PreviewComponent {}
+export class FileUploadExampleFirstPreviewComponent {}

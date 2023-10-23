@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @Component({
@@ -10,7 +9,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 	imports: [MatSlideToggleModule],
 	host: {class: 'layout-breakpoint-lg'}
 })
-export class SlideToggleExampleSecondPreviewComponent implements PreviewComponent {
+export class SlideToggleExampleSecondPreviewComponent {
 	toggleValue: 'checked' | 'unchecked' = 'unchecked';
 
 	onToggleChange(): void {

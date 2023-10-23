@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 
 @Component({
 	selector: 'app-html-table-example-sizes-preview',
@@ -7,4 +6,4 @@ import {PreviewComponent} from '../../../../code-examples.model';
 	styleUrls: ['./html-table-example-sizes-preview.component.scss'],
 	standalone: true
 })
-export class HtmlTableExampleSizesPreviewComponent implements PreviewComponent {}
+export class HtmlTableExampleSizesPreviewComponent {}

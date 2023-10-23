@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
 import {ObButtonModule} from '@oblique/oblique';
-import {PreviewComponent} from '../../../../code-examples.model';
 
 @Component({
 	selector: 'app-badge-example-other-options',
@@ -13,4 +12,4 @@ import {PreviewComponent} from '../../../../code-examples.model';
 	imports: [MatBadgeModule, MatButtonModule, ObButtonModule],
 	host: {class: 'layout-breakpoint-md'}
 })
-export class BadgeExampleOtherOptionsComponent implements PreviewComponent {}
+export class BadgeExampleOtherOptionsComponent {}

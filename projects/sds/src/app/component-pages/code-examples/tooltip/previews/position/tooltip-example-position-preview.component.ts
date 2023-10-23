@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
-import {PreviewComponent} from '../../../../code-examples.model';
 
 @Component({
 	selector: 'app-tooltip-example-position-preview',
@@ -11,4 +10,4 @@ import {PreviewComponent} from '../../../../code-examples.model';
 	standalone: true,
 	imports: [MatTooltipModule, MatButtonModule, ObButtonModule, ObExternalLinkModule]
 })
-export class TooltipExamplePositionPreviewComponent implements PreviewComponent {}
+export class TooltipExamplePositionPreviewComponent {}

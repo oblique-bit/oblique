@@ -1,5 +1,4 @@
 import {Component, OnInit, inject} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule} from '../../../../../../../../oblique/src/public_api';
@@ -15,7 +14,7 @@ import {AppMaterialTableExampleEditableDialogComponent} from './material-table-e
 	imports: [MatTableModule, MatButtonModule, ObButtonModule, MatIconModule, MatDialogModule],
 	standalone: true
 })
-export class MaterialTableExampleEditablePreviewComponent implements PreviewComponent, OnInit {
+export class MaterialTableExampleEditablePreviewComponent implements OnInit {
 	public displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'actions'];
 	public dataSource = new MatTableDataSource<PeriodicElement>();
 

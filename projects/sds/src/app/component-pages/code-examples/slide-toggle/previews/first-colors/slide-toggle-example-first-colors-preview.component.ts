@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @Component({
@@ -10,4 +9,4 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 	imports: [MatSlideToggleModule],
 	host: {class: 'layout-breakpoint-sm'}
 })
-export class SlideToggleExampleFirstColorsPreviewComponent implements PreviewComponent {}
+export class SlideToggleExampleFirstColorsPreviewComponent {}

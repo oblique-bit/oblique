@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {ObButtonModule} from '@oblique/oblique';
 
 @Component({
@@ -13,4 +12,4 @@ import {ObButtonModule} from '@oblique/oblique';
 	imports: [MatButtonModule, ObButtonModule, MatIconModule],
 	host: {class: 'layout-breakpoint-sm'}
 })
-export class ButtonExampleColorsComponent implements PreviewComponent {}
+export class ButtonExampleColorsComponent {}

@@ -1,5 +1,4 @@
 import {Component, OnDestroy, inject} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleChange, MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {ObButtonModule, ObSpinnerModule, ObSpinnerService} from '@oblique/oblique';
@@ -11,7 +10,7 @@ import {ObButtonModule, ObSpinnerModule, ObSpinnerService} from '@oblique/obliqu
 	standalone: true,
 	imports: [ObSpinnerModule, MatButtonModule, ObButtonModule, MatSlideToggleModule]
 })
-export class CustomChannelPreviewComponent implements PreviewComponent, OnDestroy {
+export class CustomChannelPreviewComponent implements OnDestroy {
 	readonly channel = 'demoChannel';
 	private readonly spinnerService = inject(ObSpinnerService);
 

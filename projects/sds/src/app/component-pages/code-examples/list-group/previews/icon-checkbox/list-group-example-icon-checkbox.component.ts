@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {CommonModule} from '@angular/common';
@@ -11,7 +10,7 @@ import {CommonModule} from '@angular/common';
 	imports: [MatListModule, MatIconModule, CommonModule],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListGroupExampleIconCheckboxComponent implements PreviewComponent {
+export class ListGroupExampleIconCheckboxComponent {
 	readonly contentForList = [
 		{
 			id: 'list-item-1',

@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {ObStickyModule} from '@oblique/oblique';
-import {PreviewComponent} from '../../../../code-examples.model';
 
 @Component({
 	selector: 'app-sticky-example-sizes-preview',
@@ -9,4 +8,4 @@ import {PreviewComponent} from '../../../../code-examples.model';
 	standalone: true,
 	imports: [ObStickyModule]
 })
-export class StickyExampleSizesPreviewComponent implements PreviewComponent {}
+export class StickyExampleSizesPreviewComponent {}

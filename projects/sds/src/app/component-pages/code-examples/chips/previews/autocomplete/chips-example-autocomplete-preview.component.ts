@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {Observable, map, startWith} from 'rxjs';
@@ -26,7 +25,7 @@ import {MatListModule} from '@angular/material/list';
 	],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChipsExampleAutocompletePreviewComponent implements PreviewComponent {
+export class ChipsExampleAutocompletePreviewComponent {
 	separatorKeysCodes: number[] = [ENTER, COMMA];
 	fruitControl = new FormControl('');
 	filteredFruits$: Observable<string[]>;
