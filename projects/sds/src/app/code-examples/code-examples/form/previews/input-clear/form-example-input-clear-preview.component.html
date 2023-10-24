@@ -1,0 +1,30 @@
+<div [formGroup]="untypedForm">
+	<mat-form-field>
+		<mat-label>Untyped reactive input</mat-label>
+		<input type="text" matInput formControlName="untypedFormField" />
+		<button type="button" role="button" [obInputClear]="untypedFormField">
+			<mat-icon svgIcon="cancel-circle"></mat-icon>
+			<span class="ob-screen-reader-only">Clear</span>
+		</button>
+	</mat-form-field>
+</div>
+<div [formGroup]="stronglyTypedForm">
+	<mat-form-field>
+		<mat-label>Strongly typed reactive input</mat-label>
+		<input type="text" matInput formControlName="stronglyTypedFormField" />
+		<button type="button" role="button" [obInputClear]="stronglyTypedFormField">
+			<mat-icon svgIcon="cancel-circle"></mat-icon>
+			<span class="ob-screen-reader-only">Clear</span>
+		</button>
+	</mat-form-field>
+</div>
+<div>
+	<mat-form-field>
+		<mat-label>HTML input only</mat-label>
+		<input #htmlControl type="text" matInput />
+		<button type="button" role="button" [obInputClear]="htmlControl">
+			<mat-icon svgIcon="cancel-circle"></mat-icon>
+			<span class="ob-screen-reader-only">Clear</span>
+		</button>
+	</mat-form-field>
+</div>

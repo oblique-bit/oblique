@@ -1,0 +1,70 @@
+<div class="container">
+	<h3>Disabled</h3>
+	<mat-form-field>
+		<mat-label>Disabled</mat-label>
+		<input disabled type="text" matInput placeholder="Disabled" />
+	</mat-form-field>
+	<mat-checkbox disabled>Default</mat-checkbox>
+	<mat-radio-group disabled>
+		<mat-radio-button value="1">Default</mat-radio-button>
+	</mat-radio-group>
+	<mat-form-field>
+		<mat-label>Disabled</mat-label>
+		<mat-select disabled>
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+			<mat-option [value]="3">Three</mat-option>
+			<mat-option [value]="4">Four</mat-option>
+			<mat-option [value]="5">Five</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Primary</mat-label>
+		<textarea disabled matInput placeholder="Primary"></textarea>
+	</mat-form-field>
+</div>
+<div class="container">
+	<h3>Hint</h3>
+	<mat-form-field>
+		<mat-label>Hint</mat-label>
+		<input type="text" matInput placeholder="Hint" />
+		<mat-hint>This is a hint</mat-hint>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Hint</mat-label>
+		<mat-select>
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+			<mat-option [value]="3">Three</mat-option>
+			<mat-option [value]="4">Four</mat-option>
+			<mat-option [value]="5">Five</mat-option>
+		</mat-select>
+		<mat-hint>This is a hint</mat-hint>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Hint</mat-label>
+		<textarea matInput placeholder="Hint"></textarea>
+		<mat-hint>This is a hint</mat-hint>
+	</mat-form-field>
+</div>
+<div class="container">
+	<h3>Required</h3>
+	<mat-form-field>
+		<mat-label>Required</mat-label>
+		<input required type="text" matInput placeholder="Required" />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Required</mat-label>
+		<mat-select required>
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+			<mat-option [value]="3">Three</mat-option>
+			<mat-option [value]="4">Four</mat-option>
+			<mat-option [value]="5">Five</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Required</mat-label>
+		<textarea required matInput placeholder="Required"></textarea>
+	</mat-form-field>
+</div>
