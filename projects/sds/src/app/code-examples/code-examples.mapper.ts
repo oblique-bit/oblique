@@ -31,6 +31,7 @@ import {StickyCodeExamplesComponent} from './code-examples/sticky/sticky-code-ex
 import {PopoverCodeExamplesComponent} from './code-examples/popover/popover-code-examples.component';
 import {OffCanvasCodeExamplesComponent} from './code-examples/off-canvas/off-canvas-code-examples.component';
 import {NotificationCodeExamplesComponent} from './code-examples/notification/notification-code-examples.component';
+import {FormCodeExamplesComponent} from './code-examples/form/form-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -45,6 +46,7 @@ export class CodeExamplesMapper {
 		datepicker: DatepickerCodeExamplesComponent,
 		dialog: DialogCodeExamplesComponent,
 		fileUpload: FileUploadCodeExamplesComponent,
+		form: FormCodeExamplesComponent,
 		gridSystem: GridSystemCodeExamplesComponent,
 		htmlTable: HtmlTableCodeExamplesComponent,
 		listGroup: ListGroupCodeExamplesComponent,

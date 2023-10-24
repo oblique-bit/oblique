@@ -1,0 +1,36 @@
+/*
+	This file is used to style one or more of the Oblique code examples.
+	It is NOT required in order to use any Oblique components.
+*/
+
+@use "@oblique/oblique/src/styles/scss/core/variables";
+@use "@oblique/oblique/src/styles/scss/core/mixins/layout";
+
+:host {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+}
+
+.mat-mdc-checkbox,
+.mat-mdc-radio {
+	margin-bottom: 1rem;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1rem;
+	column-gap: 22.5%;
+	border: 3px solid variables.$ob-gray-darker;
+	border-radius: 5px;
+	align-content: flex-start;
+
+	@include layout.ob-media-breakpoint-up(md) {
+		max-width: 45%;
+	}
+
+	@include layout.ob-media-breakpoint-up(xl) {
+		max-width: 22%;
+	}
+}
