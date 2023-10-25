@@ -9,6 +9,12 @@
 	// Using drop-shadow variant of the shadow-default mixin because box shadow doesn't work correctly in this case. See: OUI-2324
 	filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 6%)) drop-shadow(0 4px 10px rgba(0, 0, 0, 8%));
 
+	.ob-popover-content-wrapper {
+		overflow-y: auto;
+		max-height: variables.$ob-pop-over-max-height;
+		padding-bottom: variables.$ob-spacing-sm;
+	}
+
 	.ob-popover-arrow {
 		border-width: variables.$ob-spacing-sm;
 		border-style: solid;

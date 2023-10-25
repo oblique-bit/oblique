@@ -158,7 +158,12 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 
 	private buildPopover(): HTMLDivElement {
 		const popover = this.renderer.createElement('div');
-		this.viewContainerRef.createEmbeddedView<HTMLElement>(this.target).rootNodes.forEach(node => this.renderer.appendChild(popover, node));
+		const contentWrapper = this.renderer.createElement('div');
+		this.renderer.addClass(contentWrapper, 'ob-popover-content-wrapper');
+		this.viewContainerRef.createEmbeddedView<HTMLElement>(this.target).rootNodes.forEach(node => {
+			this.renderer.appendChild(contentWrapper, node);
+		});
+		this.renderer.appendChild(popover, contentWrapper);
 		this.renderer.addClass(popover, 'ob-popover-content');
 		this.renderer.setAttribute(popover, 'role', 'tooltip');
 		this.renderer.setAttribute(popover, 'id', this.idContent);
