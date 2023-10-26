@@ -1,6 +1,10 @@
 @use "sass:map";
 @use "../../styles/scss/core/variables";
 
+/*
+	 This file can be used to add a flex layout to the host component.
+	Its content is NOT needed in order to use the component demonstrated.
+*/
 :host {
 	display: flex;
 	flex-wrap: wrap;

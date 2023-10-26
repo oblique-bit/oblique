@@ -1,0 +1,35 @@
+@use "@oblique/oblique/src/styles/scss/core/variables";
+
+/* the parent element of ob-notification has to have position: relative; for the notification to be display inside*/
+.channel {
+	position: relative;
+}
+
+/*
+	Below is styling code for the other options code example demo.
+	It is NOT needed in order to use the component.
+*/
+.channel {
+	width: 100%;
+	height: 350px;
+	outline: 3px solid red;
+}
+
+.buttons {
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+	padding: 1rem;
+	border: 3px solid variables.$ob-gray-darker;
+	border-radius: 5px;
+	justify-content: center;
+}
+
+/* layouting */
+.container {
+	flex-basis: calc(50% - 1.5rem); // 1.5rem is half of parent's column-gap
+}
+
+.container.notification-container {
+	flex-basis: 100%;
+}

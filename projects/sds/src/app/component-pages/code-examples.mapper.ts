@@ -30,6 +30,7 @@ import {PublicScssVariablesAndMixinsCodeExamplesComponent} from './code-examples
 import {StickyCodeExamplesComponent} from './code-examples/sticky/sticky-code-examples.component';
 import {PopoverCodeExamplesComponent} from './code-examples/popover/popover-code-examples.component';
 import {OffCanvasCodeExamplesComponent} from './code-examples/off-canvas/off-canvas-code-examples.component';
+import {NotificationCodeExamplesComponent} from './code-examples/notification/notification-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -52,6 +53,7 @@ export class CodeExamplesMapper {
 		navTree: NavTreeCodeExamplesComponent,
 		nestedForm: NestedFormCodeExamplesComponent,
 		offCanvas: OffCanvasCodeExamplesComponent,
+		notification: NotificationCodeExamplesComponent,
 		paginator: PaginatorCodeExamplesComponent,
 		popover: PopoverCodeExamplesComponent,
 		progressBar: ProgressBarCodeExamplesComponent,

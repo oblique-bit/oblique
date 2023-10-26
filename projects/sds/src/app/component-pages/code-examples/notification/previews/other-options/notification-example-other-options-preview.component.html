@@ -1,0 +1,64 @@
+<div class="container notification-container">
+	<h3>Notification container</h3>
+	<div class="channel">
+		<ob-notification [channel]="'demo'"></ob-notification>
+	</div>
+</div>
+<div class="container">
+	<h3>Send with placement</h3>
+	<div class="buttons">
+		<button type="button" mat-button obButton="primary" (click)="sendPlacement(placements.BOTTOM_LEFT)">bottom left</button>
+		<button type="button" mat-button obButton="primary" (click)="sendPlacement(placements.BOTTOM_RIGHT)">bottom right</button>
+		<button type="button" mat-button obButton="primary" (click)="sendPlacement(placements.TOP_LEFT)">top left</button>
+		<button type="button" mat-button obButton="primary" (click)="sendPlacement(placements.TOP_RIGHT)">top right</button>
+	</div>
+</div>
+<div class="container">
+	<h3>Send type</h3>
+	<div class="buttons">
+		<button type="button" mat-button obButton="primary" (click)="sendInfo()">info</button>
+		<button type="button" mat-button obButton="primary" (click)="sendSuccess()">success</button>
+		<button type="button" mat-button obButton="primary" (click)="sendWarning()">warning</button>
+		<button type="button" mat-button obButton="primary" (click)="sendError()">error</button>
+	</div>
+</div>
+<div class="container">
+	<h3>Send message with parameters</h3>
+	<div class="buttons">
+		<button type="button" mat-button obButton="primary" (click)="sendMessageParams({ message: 'foo', parameters: 'bar' })">
+			with params "foo" and "bar"
+		</button>
+	</div>
+</div>
+<div class="container">
+	<h3>Send type with groupSimilar</h3>
+	<div class="buttons">
+		<button type="button" mat-button obButton="primary" (click)="sendGroupSimilar(types.INFO)">info</button>
+		<button type="button" mat-button obButton="primary" (click)="sendGroupSimilar(types.SUCCESS)">success</button>
+		<button type="button" mat-button obButton="primary" (click)="sendGroupSimilar(types.WARNING)">warning</button>
+		<button type="button" mat-button obButton="primary" (click)="sendGroupSimilar(types.ERROR)">error</button>
+	</div>
+</div>
+<div class="container">
+	<h3>Send as sticky</h3>
+	<div class="buttons">
+		<button type="button" mat-button obButton="primary" (click)="sendSticky(true)">Sticky</button>
+		<button type="button" mat-button obButton="primary" (click)="sendSticky(false)">Not sticky</button>
+	</div>
+</div>
+<div class="container">
+	<h3>Send with timeout</h3>
+	<div class="buttons">
+		<button type="button" mat-button obButton="primary" (click)="sendTimeout(0)">0 ms (fallback to 350ms)</button>
+		<button type="button" mat-button obButton="primary" (click)="sendTimeout(500)">500 ms</button>
+		<button type="button" mat-button obButton="primary" (click)="sendTimeout(2000)">2000 ms</button>
+		<button type="button" mat-button obButton="primary" (click)="sendTimeout(5000)">5000 ms</button>
+	</div>
+</div>
+<div class="container">
+	<h3>Clear</h3>
+	<div class="buttons">
+		<button type="button" mat-button obButton="primary" (click)="clear()">Clear</button>
+		<button type="button" mat-button obButton="primary" (click)="clearAllChannels()">Clear All Channels</button>
+	</div>
+</div>
