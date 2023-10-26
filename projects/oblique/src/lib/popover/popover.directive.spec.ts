@@ -27,6 +27,9 @@ describe('ObPopover', () => {
 	let toggle: HTMLElement;
 
 	beforeEach(() => {
+		// added useFakeTimers() here because many of the tests need it and it's easier to call it here once than calling it multiple times in each describe() with cleanup.
+		// not added in a beforeAll() because not all issues could be resolved
+		jest.useFakeTimers();
 		TestBed.configureTestingModule({
 			imports: [ObPopoverDirective],
 			declarations: [TestPopoverComponent],
@@ -59,10 +62,6 @@ describe('ObPopover', () => {
 			});
 
 			describe('toggle', () => {
-				afterEach(() => {
-					jest.useRealTimers();
-				});
-
 				describe('with toggleHandle input not set', () => {
 					it("should call open if there's no popover", () => {
 						jest.spyOn(directive, 'open');
@@ -127,10 +126,6 @@ describe('ObPopover', () => {
 					setupAndOpen();
 				});
 
-				afterEach(() => {
-					jest.useRealTimers();
-				});
-
 				it('should insert the popover', () => {
 					expect(popover).toBeTruthy();
 				});
@@ -163,22 +158,16 @@ describe('ObPopover', () => {
 				});
 
 				it('should remove the popover from the DOM', () => {
-					jest.useFakeTimers();
 					directive.open();
 					jest.runOnlyPendingTimers();
 					directive.close();
 					// fixture.detectChanges();
 					popover = document.querySelector('.ob-popover-content');
 					expect(popover).toBeNull();
-					jest.useRealTimers();
 				});
 			});
 
 			describe('handleMouseEnter', () => {
-				afterEach(() => {
-					jest.useRealTimers();
-				});
-
 				describe('with toggleHandle input not set', () => {
 					beforeEach(() => {
 						toggleWithMouseEnter();
@@ -225,10 +214,6 @@ describe('ObPopover', () => {
 			});
 
 			describe('handleMouseLeave', () => {
-				afterEach(() => {
-					jest.useRealTimers();
-				});
-
 				describe('with toggleHandle input not set', () => {
 					it('should not throw an error when closed before opened', () => {
 						directive.handleMouseLeave();
@@ -300,14 +285,9 @@ describe('ObPopover', () => {
 			});
 
 			describe('events', () => {
-				afterEach(() => {
-					jest.useRealTimers();
-				});
-
 				describe('with closeOnlyOnToggle input not set', () => {
 					beforeEach(() => {
 						jest.spyOn(directive, 'close');
-						jest.useFakeTimers();
 						directive.open();
 						jest.runOnlyPendingTimers();
 						popover = document.querySelector('.ob-popover-content');
@@ -338,9 +318,7 @@ describe('ObPopover', () => {
 					beforeEach(() => {
 						directive.closeOnlyOnToggle = false;
 						directive.ngOnChanges();
-
 						jest.spyOn(directive, 'close');
-						jest.useFakeTimers();
 						directive.open();
 						jest.runOnlyPendingTimers();
 						popover = document.querySelector('.ob-popover-content');
@@ -373,7 +351,6 @@ describe('ObPopover', () => {
 						directive.ngOnChanges();
 
 						jest.spyOn(directive, 'close');
-						jest.useFakeTimers();
 						directive.open();
 						jest.runOnlyPendingTimers();
 						popover = document.querySelector('.ob-popover-content');
@@ -405,7 +382,6 @@ describe('ObPopover', () => {
 				it('should add the same id', () => {
 					directive.id = 'popover';
 					directive.ngOnInit();
-					jest.useFakeTimers();
 					directive.open();
 					jest.runOnlyPendingTimers();
 					popover = document.querySelector('.ob-popover-content');
@@ -414,13 +390,9 @@ describe('ObPopover', () => {
 			});
 
 			describe('with a custom panelContentId', () => {
-				afterEach(() => {
-					jest.useRealTimers();
-				});
 				it('should add the given panelContentId', () => {
 					directive.panelContentId = 'custom-panel';
 					directive.ngOnInit();
-					jest.useFakeTimers();
 					directive.open();
 					jest.runOnlyPendingTimers();
 					popover = document.querySelector('.ob-popover-content');
@@ -442,10 +414,6 @@ describe('ObPopover', () => {
 				);
 				globalSetup();
 				setupAndOpen();
-			});
-
-			afterEach(() => {
-				jest.useRealTimers();
 			});
 
 			describe('open', () => {
@@ -476,10 +444,6 @@ describe('ObPopover', () => {
 				setupAndOpen();
 			});
 
-			afterEach(() => {
-				jest.useRealTimers();
-			});
-
 			it('should insert the popover', () => {
 				expect(popover).toBeTruthy();
 			});
@@ -497,15 +461,10 @@ describe('ObPopover', () => {
 	describe('with OBLIQUE_POPOVER_TOGGLE_HANDLE set to click', () => {
 		beforeEach(() => {
 			TestBed.overrideProvider(OBLIQUE_POPOVER_TOGGLE_HANDLE, {useValue: ObEToggleType.CLICK});
-
 			globalSetup();
 		});
 
 		describe('toggle', () => {
-			afterEach(() => {
-				jest.useRealTimers();
-			});
-
 			describe('with toggleHandle input not set', () => {
 				it("should call open if there's no popover", () => {
 					jest.spyOn(directive, 'open');
@@ -566,10 +525,6 @@ describe('ObPopover', () => {
 		});
 
 		describe('handleMouseEnter', () => {
-			afterEach(() => {
-				jest.useRealTimers();
-			});
-
 			describe('with toggleHandle input not set', () => {
 				beforeEach(() => {
 					toggleWithMouseEnter();
@@ -616,10 +571,6 @@ describe('ObPopover', () => {
 		});
 
 		describe('handleMouseLeave', () => {
-			afterEach(() => {
-				jest.useRealTimers();
-			});
-
 			describe('with toggleHandle input not set', () => {
 				it('should not throw an error when closed before opened', () => {
 					directive.handleMouseLeave();
@@ -691,10 +642,6 @@ describe('ObPopover', () => {
 		});
 
 		describe('toggle', () => {
-			afterEach(() => {
-				jest.useRealTimers();
-			});
-
 			describe('with toggleHandle input not set', () => {
 				it("should call open if there's no popover", () => {
 					jest.spyOn(directive, 'open');
@@ -755,10 +702,6 @@ describe('ObPopover', () => {
 		});
 
 		describe('handleMouseEnter', () => {
-			afterEach(() => {
-				jest.useRealTimers();
-			});
-
 			describe('with toggleHandle input not set', () => {
 				beforeEach(() => {
 					toggleWithMouseEnter();
@@ -817,10 +760,6 @@ describe('ObPopover', () => {
 		});
 
 		describe('handleMouseLeave', () => {
-			afterEach(() => {
-				jest.useRealTimers();
-			});
-
 			describe('with toggleHandle input not set', () => {
 				it('should not throw an error when closed before opened', () => {
 					directive.handleMouseLeave();
@@ -895,14 +834,9 @@ describe('ObPopover', () => {
 			describe('events', () => {
 				beforeEach(() => {
 					jest.spyOn(directive, 'close');
-					jest.useFakeTimers();
 					directive.open();
 					jest.runOnlyPendingTimers();
 					popover = document.querySelector('.ob-popover-content');
-				});
-
-				afterEach(() => {
-					jest.useRealTimers();
 				});
 
 				it('should not close the popover upon click on the popover', () => {
@@ -936,14 +870,9 @@ describe('ObPopover', () => {
 			describe('events', () => {
 				beforeEach(() => {
 					jest.spyOn(directive, 'close');
-					jest.useFakeTimers();
 					directive.open();
 					jest.runOnlyPendingTimers();
 					popover = document.querySelector('.ob-popover-content');
-				});
-
-				afterEach(() => {
-					jest.useRealTimers();
 				});
 
 				it('should not close the popover upon click on the popover', () => {
@@ -977,14 +906,9 @@ describe('ObPopover', () => {
 			describe('events', () => {
 				beforeEach(() => {
 					jest.spyOn(directive, 'close');
-					jest.useFakeTimers();
 					directive.open();
 					jest.runOnlyPendingTimers();
 					popover = document.querySelector('.ob-popover-content');
-				});
-
-				afterEach(() => {
-					jest.useRealTimers();
 				});
 
 				it('should not close the popover upon click on the popover', () => {
@@ -1021,14 +945,9 @@ describe('ObPopover', () => {
 			describe('events', () => {
 				beforeEach(() => {
 					jest.spyOn(directive, 'close');
-					jest.useFakeTimers();
 					directive.open();
 					jest.runOnlyPendingTimers();
 					popover = document.querySelector('.ob-popover-content');
-				});
-
-				afterEach(() => {
-					jest.useRealTimers();
 				});
 
 				it('should not close the popover upon click on the popover', () => {
@@ -1062,14 +981,9 @@ describe('ObPopover', () => {
 			describe('events', () => {
 				beforeEach(() => {
 					jest.spyOn(directive, 'close');
-					jest.useFakeTimers();
 					directive.open();
 					jest.runOnlyPendingTimers();
 					popover = document.querySelector('.ob-popover-content');
-				});
-
-				afterEach(() => {
-					jest.useRealTimers();
 				});
 
 				it('should not close the popover upon click on the popover', () => {
@@ -1103,14 +1017,9 @@ describe('ObPopover', () => {
 			describe('events', () => {
 				beforeEach(() => {
 					jest.spyOn(directive, 'close');
-					jest.useFakeTimers();
 					directive.open();
 					jest.runOnlyPendingTimers();
 					popover = document.querySelector('.ob-popover-content');
-				});
-
-				afterEach(() => {
-					jest.useRealTimers();
 				});
 
 				it('should not close the popover upon click on the popover', () => {
@@ -1146,14 +1055,12 @@ describe('ObPopover', () => {
 	}
 
 	function setupAndOpen(): void {
-		jest.useFakeTimers();
 		directive.open();
 		jest.runOnlyPendingTimers();
 		popover = document.querySelector('.ob-popover-content');
 	}
 
 	function toggleWithMouseEnter(): void {
-		jest.useFakeTimers();
 		directive.ngOnChanges();
 		directive.handleMouseEnter();
 		jest.runOnlyPendingTimers();
