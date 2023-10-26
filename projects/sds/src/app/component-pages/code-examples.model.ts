@@ -18,6 +18,9 @@ export class CodeExamples {
 			case 'node_modules/@oblique/oblique/src/styles/scss/core/mixins': {
 				return require(`!!raw-loader!../../../../../node_modules/@oblique/oblique/src/styles/scss/core/mixins/${filePath}`);
 			}
+			case 'component-pages': {
+				return require(`!!raw-loader!./${filePath}`);
+			}
 			default: {
 				return require(`!!raw-loader!./code-examples/${directory}/previews/${filePath}`);
 			}
