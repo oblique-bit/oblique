@@ -44,6 +44,7 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
 	private readonly slugToIdService = inject(SlugToIdService);
+	private previousSlug: string;
 
 	ngOnInit(): void {
 		this.initObservables();
@@ -58,8 +59,11 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 
 	private getContentForSelectedSlug(): void {
 		const slug: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? '';
-		const id: number = this.slugToIdService.getIdForSlug(slug);
-		this.getContent(id);
+		if (slug !== this.previousSlug) {
+			const id: number = this.slugToIdService.getIdForSlug(slug);
+			this.getContent(id);
+		}
+		this.previousSlug = slug;
 	}
 
 	private getContent(id: number): void {
