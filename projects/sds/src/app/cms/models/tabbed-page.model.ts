@@ -8,6 +8,7 @@ export interface TabbedPageComplete {
 	id: number;
 	name: string;
 	slug: string;
+	category: number;
 	api: string;
 	ui_ux: string;
 	min_version: number;
