@@ -1,21 +1,13 @@
 import {Category} from '../../cms/models/category.model';
 import {Accordion, Link} from '../accordion-links/accordion-links.model';
-import {CMSPage, CMSPageShortList} from '../../cms/models/cms-page.model';
+import {CMSPage} from '../../cms/models/cms-page.model';
 
 export class AccordionMapper {
-	static mapCMSPageShortToAccordion(data: CMSPageShortList, category: Category): Accordion {
+	static mapCMSPageShortToAccordion(data: CMSPage[], category: Category): Accordion {
 		return {
 			id: `${category.id}`,
-			links: AccordionMapper.mapToLink(data.data.filter(entry => entry.category === category.id)),
+			links: AccordionMapper.mapToLink(data.filter(entry => entry.category === category.id)),
 			title: category.name.toLowerCase()
-		};
-	}
-
-	static mapTabbedPageShortToAccordion(data: CMSPageShortList): Accordion {
-		return {
-			id: 'component',
-			links: AccordionMapper.mapToLink(data.data),
-			title: 'components'
 		};
 	}
 
