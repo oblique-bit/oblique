@@ -172,7 +172,6 @@ The SDS project may use those additional scopes:
 
 - **cms**
 - **code-examples**
-- **component-pages**
 - **documentation-pages**
 - **schematics** for the schematics not directly linked to a feature
 - **side-navigation**
