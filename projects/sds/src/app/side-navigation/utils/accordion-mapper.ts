@@ -1,5 +1,5 @@
 import {Category} from '../../cms/models/category.model';
-import {ComponentPageShort, TabbedPageShortCms} from '../../cms/models/component-page.model';
+import {TabbedPageShort, TabbedPageShortCms} from '../../cms/models/component-page.model';
 import {DocumentationPageShort, DocumentationPageShortCms} from '../../cms/models/documentation-page.model';
 import {Accordion, Link} from '../accordion-links/accordion-links.model';
 
@@ -20,9 +20,9 @@ export class AccordionMapper {
 		};
 	}
 
-	private static mapToLink(data: ComponentPageShort[] | DocumentationPageShort[]): Link[] {
+	private static mapToLink(data: DocumentationPageShort[] | TabbedPageShort[]): Link[] {
 		return data.map(
-			(value: ComponentPageShort | DocumentationPageShort) =>
+			(value: DocumentationPageShort | TabbedPageShort) =>
 				({
 					id: value.id,
 					minVersion: value.min_version,
