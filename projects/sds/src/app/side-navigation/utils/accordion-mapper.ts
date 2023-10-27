@@ -1,10 +1,9 @@
 import {Category} from '../../cms/models/category.model';
-import {TabbedPageShort, TabbedPageShortCms} from '../../cms/models/tabbed-page.model';
-import {DocumentationPageShort, DocumentationPageShortCms} from '../../cms/models/documentation-page.model';
 import {Accordion, Link} from '../accordion-links/accordion-links.model';
+import {CMSPage, CMSPageShortList} from '../../cms/models/cms-page.model';
 
 export class AccordionMapper {
-	static mapDocumentationPageShortToAccordion(data: DocumentationPageShortCms, category: Category): Accordion {
+	static mapCMSPageShortToAccordion(data: CMSPageShortList, category: Category): Accordion {
 		return {
 			id: `${category.id}`,
 			links: AccordionMapper.mapToLink(data.data.filter(entry => entry.category === category.id)),
@@ -12,7 +11,7 @@ export class AccordionMapper {
 		};
 	}
 
-	static mapTabbedPageShortToAccordion(data: TabbedPageShortCms): Accordion {
+	static mapTabbedPageShortToAccordion(data: CMSPageShortList): Accordion {
 		return {
 			id: 'component',
 			links: AccordionMapper.mapToLink(data.data),
@@ -20,9 +19,9 @@ export class AccordionMapper {
 		};
 	}
 
-	private static mapToLink(data: DocumentationPageShort[] | TabbedPageShort[]): Link[] {
+	private static mapToLink(data: CMSPage[]): Link[] {
 		return data.map(
-			(value: DocumentationPageShort | TabbedPageShort) =>
+			(value: CMSPage) =>
 				({
 					id: value.id,
 					minVersion: value.min_version,

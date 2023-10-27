@@ -2,9 +2,10 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {CategoryCms} from './models/category.model';
-import {TabbedPageCompleteCms, TabbedPageShortCms} from './models/tabbed-page.model';
-import {DocumentationPageCompleteCms, DocumentationPageShortCms} from './models/documentation-page.model';
+import {TabbedPageCompleteCms} from './models/tabbed-page.model';
+import {DocumentationPageCompleteCms} from './models/documentation-page.model';
 import {VersionCms} from './models/version.model';
+import {CMSPageShortList} from './models/cms-page.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -22,10 +23,8 @@ export class CmsDataService {
 		return this.httpClient.get<CategoryCms>(`${this.baseUrl}items/Category`);
 	}
 
-	getDocumentationPagesShort(): Observable<DocumentationPageShortCms> {
-		return this.httpClient.get<DocumentationPageShortCms>(
-			`${this.baseUrl}items/Documentation?fields=id,name,slug,category,min_version,max_version`
-		);
+	getDocumentationPagesShort(): Observable<CMSPageShortList> {
+		return this.httpClient.get<CMSPageShortList>(`${this.baseUrl}items/Documentation?fields=id,name,slug,category,min_version,max_version`);
 	}
 
 	getDocumentationPagesComplete(id: number): Observable<DocumentationPageCompleteCms> {
@@ -36,7 +35,7 @@ export class CmsDataService {
 		return this.httpClient.get<TabbedPageCompleteCms>(`${this.baseUrl}items/TabbedPage/${id}`);
 	}
 
-	getTabbedPagesShort(): Observable<TabbedPageShortCms> {
-		return this.httpClient.get<TabbedPageShortCms>(`${this.baseUrl}items/TabbedPage?fields=id,name,slug,min_version,max_version`);
+	getTabbedPagesShort(): Observable<CMSPageShortList> {
+		return this.httpClient.get<CMSPageShortList>(`${this.baseUrl}items/TabbedPage?fields=id,name,slug,min_version,max_version`);
 	}
 }

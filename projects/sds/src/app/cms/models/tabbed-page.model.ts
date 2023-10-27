@@ -13,15 +13,3 @@ export interface TabbedPageComplete {
 	min_version: number;
 	max_version: number;
 }
-
-export interface TabbedPageShortCms {
-	data: TabbedPageShort[];
-}
-
-export interface TabbedPageShort {
-	id: number;
-	name: string;
-	slug: string;
-	min_version: number;
-	max_version: number;
-}
