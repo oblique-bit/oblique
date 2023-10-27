@@ -2,9 +2,9 @@ import {Component, OnDestroy, OnInit, Type, ViewChild, inject} from '@angular/co
 import {SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CmsDataService} from '../cms/cms-data.service';
-import {CodeExampleDirective} from '../component-pages/code-example.directive';
-import {CodeExamplesMapper} from '../component-pages/code-examples.mapper';
-import {CodeExamples} from '../component-pages/code-examples.model';
+import {CodeExampleDirective} from '../code-examples/code-example.directive';
+import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
+import {CodeExamples} from '../code-examples/code-examples.model';
 import {BehaviorSubject, Observable, Subject, combineLatestWith, debounceTime, delay, filter, takeUntil} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';

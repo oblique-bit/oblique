@@ -8,7 +8,7 @@ import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@ang
 import {LOCALE_ID, importProvidersFrom} from '@angular/core';
 import {PreloadAllModules, provideRouter, withPreloading} from '@angular/router';
 import {APP_ROUTES} from './app.routes';
-import {UploadInterceptor} from './app/component-pages/code-examples/file-upload/file-upload-simulate-interceptor';
+import {UploadInterceptor} from './app/code-examples/code-examples/file-upload/file-upload-simulate-interceptor';
 
 export const uploadInterceptor = new UploadInterceptor();
 
