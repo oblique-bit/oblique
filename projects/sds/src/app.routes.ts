@@ -13,11 +13,11 @@ export const APP_ROUTES: Routes = [
 	},
 	{
 		path: `foundations/:${URL_CONST.urlParams.selectedSlug}`,
-		loadChildren: () => import('./app/documentation-pages/documentation-pages.routes')
+		loadChildren: () => import('./app/tabbed-page/tabbed-pages.routes')
 	},
 	{
 		path: `helpers/:${URL_CONST.urlParams.selectedSlug}`,
-		loadChildren: () => import('./app/documentation-pages/documentation-pages.routes')
+		loadChildren: () => import('./app/tabbed-page/tabbed-pages.routes')
 	},
 	{
 		path: `components/:${URL_CONST.urlParams.selectedSlug}`,
