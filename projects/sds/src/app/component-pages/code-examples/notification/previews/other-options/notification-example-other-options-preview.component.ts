@@ -2,7 +2,6 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, ObENotificationPlacement, ObENotificationType, ObNotificationModule, ObNotificationService} from '@oblique/oblique';
 import {Component, inject} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
@@ -12,7 +11,7 @@ import {TranslateModule} from '@ngx-translate/core';
 	imports: [ObNotificationModule, ObButtonModule, MatButtonModule, TranslateModule, MatSlideToggleModule],
 	styleUrls: ['../../../../code-example-flex-layout.scss', './notification-example-other-options-preview.component.scss']
 })
-export class NotificationExampleOtherOptionsPreviewComponent implements PreviewComponent {
+export class NotificationExampleOtherOptionsPreviewComponent {
 	public types = ObENotificationType;
 	public placements = ObENotificationPlacement;
 	public channel = 'demo';

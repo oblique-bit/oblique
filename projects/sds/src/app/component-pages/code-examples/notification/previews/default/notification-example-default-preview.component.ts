@@ -1,7 +1,6 @@
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, ObNotificationModule, ObNotificationService} from '@oblique/oblique';
 import {Component, inject} from '@angular/core';
-import {PreviewComponent} from '../../../../code-examples.model';
 
 @Component({
 	selector: 'app-notification-example-default-preview',
@@ -9,7 +8,7 @@ import {PreviewComponent} from '../../../../code-examples.model';
 	standalone: true,
 	imports: [ObNotificationModule, ObButtonModule, MatButtonModule]
 })
-export class NotificationExampleDefaultPreviewComponent implements PreviewComponent {
+export class NotificationExampleDefaultPreviewComponent {
 	private readonly obNotificationService = inject(ObNotificationService);
 
 	send(): void {
