@@ -88,8 +88,8 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 		this.subscriptions.push(
 			forkJoin({
 				categories: this.cmsDataService.getCategories(),
-				componentAccordions: this.cmsDataService.getTabbedPagesShort(),
-				documentationAccordions: this.cmsDataService.getDocumentationPagesShort()
+				tabbedPages: this.cmsDataService.getTabbedPagesShort(),
+				documentationPages: this.cmsDataService.getDocumentationPagesShort()
 			})
 				.pipe(map(value => AccordionComposer.composeAccordions(value)))
 				.subscribe(accordions => {
