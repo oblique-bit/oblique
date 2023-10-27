@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TabComponent} from './tab.component';
-import {IdPipe} from '../../../shared/id/id.pipe';
+import {IdPipe} from '../../id/id.pipe';
 
 describe(`${TabComponent.name}`, () => {
 	let component: TabComponent;

@@ -1,6 +1,6 @@
 import {AfterContentInit, Component, ContentChildren, Input, QueryList} from '@angular/core';
 import {TabComponent} from './tab/tab.component';
-import {IdPipe} from '../../shared/id/id.pipe';
+import {IdPipe} from '../id/id.pipe';
 import {CommonModule} from '@angular/common';
 
 @Component({
