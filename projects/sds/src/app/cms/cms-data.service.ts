@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {CategoryCms} from './models/category.model';
-import {TabbedPageCompleteCms, TabbedPageShortCms} from './models/component-page.model';
+import {TabbedPageCompleteCms, TabbedPageShortCms} from './models/tabbed-page.model';
 import {DocumentationPageCompleteCms, DocumentationPageShortCms} from './models/documentation-page.model';
 import {VersionCms} from './models/version.model';
 
