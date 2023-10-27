@@ -2,9 +2,9 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TabbedPageComponent} from './tabbed-page.component';
-import {TabComponent} from '../tabs/tab/tab.component';
-import {TabsComponent} from '../tabs/tabs.component';
-import {IdPipe} from '../../shared/id/id.pipe';
+import {TabComponent} from '../component-pages/tabs/tab/tab.component';
+import {TabsComponent} from '../component-pages/tabs/tabs.component';
+import {IdPipe} from '../shared/id/id.pipe';
 
 describe('TabbedPageComponent', () => {
 	let component: TabbedPageComponent;
