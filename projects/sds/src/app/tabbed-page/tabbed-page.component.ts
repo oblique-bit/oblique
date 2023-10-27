@@ -9,8 +9,8 @@ import {BehaviorSubject, Observable, Subject, combineLatestWith, debounceTime, d
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
-import {TabComponent} from '../component-pages/tabs/tab/tab.component';
-import {TabsComponent} from '../component-pages/tabs/tabs.component';
+import {TabComponent} from '../shared/tabs/tab/tab.component';
+import {TabsComponent} from '../shared/tabs/tabs.component';
 import {CommonModule} from '@angular/common';
 import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
 

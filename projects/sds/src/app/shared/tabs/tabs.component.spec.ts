@@ -2,7 +2,7 @@ import {Component, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TabComponent} from './tab/tab.component';
 import {TabsComponent} from './tabs.component';
-import {IdPipe} from '../../shared/id/id.pipe';
+import {IdPipe} from '../id/id.pipe';
 import {UnitTestHelpers} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
 
 @Component({
