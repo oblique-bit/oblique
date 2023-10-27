@@ -47,7 +47,7 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
 		this.initObservables();
-		this.monitorForComponentPageChanges();
+		this.monitorForPageChanges();
 		this.monitorForSlugToIdChanges();
 	}
 
@@ -89,7 +89,7 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	private monitorForComponentPageChanges(): void {
+	private monitorForPageChanges(): void {
 		this.apiContent$
 			.pipe(takeUntil(this.unsubscribe), combineLatestWith(this.codeExampleComponent$, this.uiUxContent$), debounceTime(1))
 			.subscribe(next => {
