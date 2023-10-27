@@ -36,6 +36,6 @@ export class CmsDataService {
 	}
 
 	getTabbedPagesShort(): Observable<CMSPageShortList> {
-		return this.httpClient.get<CMSPageShortList>(`${this.baseUrl}items/TabbedPage?fields=id,name,slug,min_version,max_version`);
+		return this.httpClient.get<CMSPageShortList>(`${this.baseUrl}items/TabbedPage?fields=id,name,slug,category,min_version,max_version`);
 	}
 }
