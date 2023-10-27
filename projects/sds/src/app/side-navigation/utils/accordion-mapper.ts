@@ -1,5 +1,5 @@
 import {Category} from '../../cms/models/category.model';
-import {ComponentPageShort, ComponentPageShortCms} from '../../cms/models/component-page.model';
+import {ComponentPageShort, TabbedPageShortCms} from '../../cms/models/component-page.model';
 import {DocumentationPageShort, DocumentationPageShortCms} from '../../cms/models/documentation-page.model';
 import {Accordion, Link} from '../accordion-links/accordion-links.model';
 
@@ -12,7 +12,7 @@ export class AccordionMapper {
 		};
 	}
 
-	static mapComponentPageShortToAccordion(data: ComponentPageShortCms): Accordion {
+	static mapTabbedPageShortToAccordion(data: TabbedPageShortCms): Accordion {
 		return {
 			id: 'component',
 			links: AccordionMapper.mapToLink(data.data),
