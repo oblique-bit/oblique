@@ -175,6 +175,7 @@ The SDS project may use those additional scopes:
 - **documentation-pages**
 - **schematics** for the schematics not directly linked to a feature
 - **side-navigation**
+- **tabbed-page**
 
 ###### Additional scopes
 
