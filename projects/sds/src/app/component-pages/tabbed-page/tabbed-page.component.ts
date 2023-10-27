@@ -15,13 +15,13 @@ import {CommonModule} from '@angular/common';
 import {SafeHtmlPipe} from '../../shared/safeHtml/safeHtml.pipe';
 
 @Component({
-	selector: 'app-component-pages',
-	templateUrl: './component-pages.component.html',
-	styleUrls: ['./component-pages.component.scss'],
+	selector: 'app-tabbed-page',
+	templateUrl: './tabbed-page.component.html',
+	styleUrls: ['./tabbed-page.component.scss'],
 	standalone: true,
 	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe]
 })
-export class ComponentPagesComponent implements OnInit, OnDestroy {
+export class TabbedPageComponent implements OnInit, OnDestroy {
 	@ViewChild(CodeExampleDirective, {static: false}) codeExample!: CodeExampleDirective;
 	@ViewChild('tabs') tabs: TabsComponent;
 	readonly componentId = 'component-page';

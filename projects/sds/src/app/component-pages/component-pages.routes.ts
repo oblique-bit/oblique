@@ -1,3 +1,3 @@
-import {ComponentPagesComponent} from './component-pages/component-pages.component';
+import {TabbedPageComponent} from './tabbed-page/tabbed-page.component';
 
-export default [{path: '', component: ComponentPagesComponent}];
+export default [{path: '', component: TabbedPageComponent}];
