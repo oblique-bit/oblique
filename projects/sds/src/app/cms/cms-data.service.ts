@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {CategoryCms} from './models/category.model';
-import {ComponentPageCompleteCms, ComponentPageShortCms} from './models/component-page.model';
+import {ComponentPageCompleteCms, TabbedPageShortCms} from './models/component-page.model';
 import {DocumentationPageCompleteCms, DocumentationPageShortCms} from './models/documentation-page.model';
 import {VersionCms} from './models/version.model';
 
@@ -36,7 +36,7 @@ export class CmsDataService {
 		return this.httpClient.get<ComponentPageCompleteCms>(`${this.baseUrl}items/Component/${id}`);
 	}
 
-	getComponentPagesShort(): Observable<ComponentPageShortCms> {
-		return this.httpClient.get<ComponentPageShortCms>(`${this.baseUrl}items/Component?fields=id,name,slug,min_version,max_version`);
+	getTabbedPagesShort(): Observable<TabbedPageShortCms> {
+		return this.httpClient.get<TabbedPageShortCms>(`${this.baseUrl}items/Component?fields=id,name,slug,min_version,max_version`);
 	}
 }

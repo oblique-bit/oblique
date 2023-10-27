@@ -14,7 +14,7 @@ export interface ComponentPageComplete {
 	max_version: number;
 }
 
-export interface ComponentPageShortCms {
+export interface TabbedPageShortCms {
 	data: ComponentPageShort[];
 }
 
