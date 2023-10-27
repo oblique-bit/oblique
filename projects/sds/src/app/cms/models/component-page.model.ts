@@ -1,6 +1,6 @@
 // This is due to the CMS naming convention.
 /* eslint-disable @typescript-eslint/naming-convention */
-export interface ComponentPageCompleteCms {
+export interface TabbedPageCompleteCms {
 	data: ComponentPageComplete;
 }
 

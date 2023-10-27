@@ -64,7 +64,7 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 
 	private getContent(id: number): void {
 		this.cmsDataService
-			.getComponentPagesComplete(id)
+			.getTabbedPageComplete(id)
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(cmsData => {
 				this.title = cmsData.data.name;
