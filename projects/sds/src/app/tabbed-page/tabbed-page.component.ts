@@ -1,18 +1,18 @@
 import {Component, OnDestroy, OnInit, Type, ViewChild, inject} from '@angular/core';
 import {SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {CmsDataService} from '../../cms/cms-data.service';
-import {CodeExampleDirective} from '../code-example.directive';
-import {CodeExamplesMapper} from '../code-examples.mapper';
-import {CodeExamples} from '../code-examples.model';
+import {CmsDataService} from '../cms/cms-data.service';
+import {CodeExampleDirective} from '../component-pages/code-example.directive';
+import {CodeExamplesMapper} from '../component-pages/code-examples.mapper';
+import {CodeExamples} from '../component-pages/code-examples.model';
 import {BehaviorSubject, Observable, Subject, combineLatestWith, debounceTime, delay, filter, takeUntil} from 'rxjs';
-import {SlugToIdService} from '../../shared/slug-to-id/slug-to-id.service';
-import {URL_CONST} from '../../shared/url/url.const';
-import {IdPipe} from '../../shared/id/id.pipe';
-import {TabComponent} from '../tabs/tab/tab.component';
-import {TabsComponent} from '../tabs/tabs.component';
+import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
+import {URL_CONST} from '../shared/url/url.const';
+import {IdPipe} from '../shared/id/id.pipe';
+import {TabComponent} from '../component-pages/tabs/tab/tab.component';
+import {TabsComponent} from '../component-pages/tabs/tabs.component';
 import {CommonModule} from '@angular/common';
-import {SafeHtmlPipe} from '../../shared/safeHtml/safeHtml.pipe';
+import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
 
 @Component({
 	selector: 'app-tabbed-page',
