@@ -1,5 +1,5 @@
 import {CategoryCms} from '../../cms/models/category.model';
-import {TabbedPageShortCms} from '../../cms/models/component-page.model';
+import {TabbedPageShortCms} from '../../cms/models/tabbed-page.model';
 import {DocumentationPageShortCms} from '../../cms/models/documentation-page.model';
 import {Accordion} from '../accordion-links/accordion-links.model';
 import {AccordionMapper} from './accordion-mapper';
