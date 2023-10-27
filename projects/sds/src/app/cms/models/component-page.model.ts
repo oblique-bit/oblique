@@ -1,10 +1,10 @@
 // This is due to the CMS naming convention.
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface TabbedPageCompleteCms {
-	data: ComponentPageComplete;
+	data: TabbedPageComplete;
 }
 
-export interface ComponentPageComplete {
+export interface TabbedPageComplete {
 	id: number;
 	name: string;
 	slug: string;
