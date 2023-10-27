@@ -33,10 +33,10 @@ export class CmsDataService {
 	}
 
 	getTabbedPageComplete(id: number): Observable<TabbedPageCompleteCms> {
-		return this.httpClient.get<TabbedPageCompleteCms>(`${this.baseUrl}items/Component/${id}`);
+		return this.httpClient.get<TabbedPageCompleteCms>(`${this.baseUrl}items/TabbedPage/${id}`);
 	}
 
 	getTabbedPagesShort(): Observable<TabbedPageShortCms> {
-		return this.httpClient.get<TabbedPageShortCms>(`${this.baseUrl}items/Component?fields=id,name,slug,min_version,max_version`);
+		return this.httpClient.get<TabbedPageShortCms>(`${this.baseUrl}items/TabbedPage?fields=id,name,slug,min_version,max_version`);
 	}
 }
