@@ -6,7 +6,7 @@ import {TabComponent} from '../shared/tabs/tab/tab.component';
 import {TabsComponent} from '../shared/tabs/tabs.component';
 import {IdPipe} from '../shared/id/id.pipe';
 
-describe('TabbedPageComponent', () => {
+describe(TabbedPageComponent.name, () => {
 	let component: TabbedPageComponent;
 	let fixture: ComponentFixture<TabbedPageComponent>;
 
