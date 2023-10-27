@@ -15,10 +15,10 @@ export interface ComponentPageComplete {
 }
 
 export interface TabbedPageShortCms {
-	data: ComponentPageShort[];
+	data: TabbedPageShort[];
 }
 
-export interface ComponentPageShort {
+export interface TabbedPageShort {
 	id: number;
 	name: string;
 	slug: string;
