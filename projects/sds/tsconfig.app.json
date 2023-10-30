@@ -14,8 +14,6 @@
   "files": ["src/main.ts"],
   "paths": {
     "cms/*": ["src/app/cms/*"],
-    "component-pages/*": ["src/app/component-pages/*"],
-    "documentation-pages/*": ["src/app/documentation-pages/*"],
     "shared/*": ["src/app/shared/*"],
     "side-navigation/*": ["src/app/side-navigation/*"],
     "test-helpers/*": ["src/test-helpers/*"]
