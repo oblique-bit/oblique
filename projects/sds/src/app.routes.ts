@@ -5,11 +5,11 @@ export const APP_ROUTES: Routes = [
 	{path: '', redirectTo: 'introductions/welcome', pathMatch: 'full'},
 	{
 		path: `introductions/:${URL_CONST.urlParams.selectedSlug}`,
-		loadChildren: () => import('./app/documentation-pages/documentation-pages.routes')
+		loadChildren: () => import('./app/text-page/text-pages.routes')
 	},
 	{
 		path: `guidelines/:${URL_CONST.urlParams.selectedSlug}`,
-		loadChildren: () => import('./app/documentation-pages/documentation-pages.routes')
+		loadChildren: () => import('./app/text-page/text-pages.routes')
 	},
 	{
 		path: `foundations/:${URL_CONST.urlParams.selectedSlug}`,
