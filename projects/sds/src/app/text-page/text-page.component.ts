@@ -9,14 +9,14 @@ import {IdPipe} from '../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
 
 @Component({
-	selector: 'app-documentation-pages',
-	templateUrl: './documentation-pages.component.html',
-	styleUrls: ['./documentation-pages.component.scss'],
+	selector: 'app-text-page',
+	templateUrl: './text-page.component.html',
+	styleUrls: ['./text-page.component.scss'],
 	standalone: true,
 	imports: [CommonModule, IdPipe]
 })
-export class DocumentationPagesComponent implements OnInit, OnDestroy {
-	readonly componentId = 'documentation-page';
+export class TextPageComponent implements OnInit, OnDestroy {
+	readonly componentId = 'text-page';
 
 	readonly selectedContent$: BehaviorSubject<SafeHtml> = new BehaviorSubject<SafeHtml>('');
 
