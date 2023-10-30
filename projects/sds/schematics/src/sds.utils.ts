@@ -8,7 +8,7 @@ import {classify, dasherize} from '@angular-devkit/core/src/utils/strings';
 import {insertImport} from '@angular/cdk/schematics';
 import * as colors from 'ansi-colors';
 
-export const codeExampleMapperFilePath = `app/component-pages/code-examples.mapper.ts`;
+export const codeExampleMapperFilePath = `app/code-examples/code-examples.mapper.ts`;
 
 export async function getExampleDirectoryOrFalse(tree: Tree, exampleName: string): Promise<string | false> {
 	const exampleDirectoryPath = await createExampleDirectoryPath(tree, exampleName);
@@ -91,7 +91,7 @@ export async function getExampleComponentPathOrFalse(tree: Tree, exampleName: st
 
 // path must not exist and only returns the path string
 export async function createExampleDirectoryPath(tree: Tree, exampleName: string): Promise<string> {
-	return `${await getSdsSourceRootPath(tree)}/app/component-pages/code-examples/${dasherize(exampleName)}`;
+	return `${await getSdsSourceRootPath(tree)}/app/code-examples/code-examples/${dasherize(exampleName)}`;
 }
 
 // path must exist
