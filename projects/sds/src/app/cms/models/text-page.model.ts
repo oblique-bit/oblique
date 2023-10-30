@@ -1,11 +1,11 @@
 // This is due to the CMS naming convention.
 /* eslint-disable @typescript-eslint/naming-convention */
 
-export interface DocumentationPageCompleteCms {
-	data: DocumentationPageComplete;
+export interface TextPageCompleteCms {
+	data: TextPageComplete;
 }
 
-export interface DocumentationPageComplete {
+export interface TextPageComplete {
 	id: number;
 	name: string;
 	slug: string;
