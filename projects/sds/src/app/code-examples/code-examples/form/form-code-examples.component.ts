@@ -54,7 +54,7 @@ export class FormCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('form', 'input-clear/form-example-input-clear-preview.component.html', 'HTML'),
 				this.getSnippet('form', 'input-clear/form-example-input-clear-preview.component.ts', 'TS'),
-				this.getSnippet('component-pages', 'code-example-flex-layout.scss', 'SCSS')
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'SCSS')
 			]
 		}
 	];

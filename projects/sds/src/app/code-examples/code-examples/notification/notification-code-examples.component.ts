@@ -33,7 +33,7 @@ export class NotificationCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('notification', 'other-options/notification-example-other-options-preview.component.html', 'HTML'),
 				this.getSnippet('notification', 'other-options/notification-example-other-options-preview.component.ts', 'TS'),
 				this.getSnippet('notification', 'other-options/notification-example-other-options-preview.component.scss', 'SCSS'),
-				this.getSnippet('component-pages', 'code-example-flex-layout.scss', 'Flex Layout')
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];
