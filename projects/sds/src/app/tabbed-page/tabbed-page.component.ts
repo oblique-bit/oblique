@@ -24,7 +24,7 @@ import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
 export class TabbedPageComponent implements OnInit, OnDestroy {
 	@ViewChild(CodeExampleDirective, {static: false}) codeExample!: CodeExampleDirective;
 	@ViewChild('tabs') tabs: TabsComponent;
-	readonly componentId = 'component-page';
+	readonly componentId = 'tabbed-page';
 
 	title = '';
 
