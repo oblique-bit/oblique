@@ -61,7 +61,7 @@ export class TextPageComponent implements OnInit, OnDestroy {
 	private getContent(id: number): void {
 		this.subscriptions.push(
 			this.cmsDataService
-				.getDocumentationPagesComplete(id)
+				.getTextPagesComplete(id)
 				.subscribe(cmsData => this.selectedContent$.next(this.domSanitizer.bypassSecurityTrustHtml(cmsData.data.description)))
 		);
 	}

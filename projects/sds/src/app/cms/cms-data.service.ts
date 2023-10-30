@@ -23,12 +23,12 @@ export class CmsDataService {
 		return this.httpClient.get<CategoryCms>(`${this.baseUrl}items/Category`);
 	}
 
-	getDocumentationPagesShort(): Observable<CMSPageShortList> {
-		return this.httpClient.get<CMSPageShortList>(`${this.baseUrl}items/Documentation?fields=id,name,slug,category,min_version,max_version`);
+	getTextPagesShort(): Observable<CMSPageShortList> {
+		return this.httpClient.get<CMSPageShortList>(`${this.baseUrl}items/TextPage?fields=id,name,slug,category,min_version,max_version`);
 	}
 
-	getDocumentationPagesComplete(id: number): Observable<TextPageCompleteCms> {
-		return this.httpClient.get<TextPageCompleteCms>(`${this.baseUrl}items/Documentation/${id}`);
+	getTextPagesComplete(id: number): Observable<TextPageCompleteCms> {
+		return this.httpClient.get<TextPageCompleteCms>(`${this.baseUrl}items/TextPage/${id}`);
 	}
 
 	getTabbedPageComplete(id: number): Observable<TabbedPageCompleteCms> {
