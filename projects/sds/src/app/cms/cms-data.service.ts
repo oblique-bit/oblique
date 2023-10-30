@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {CategoryCms} from './models/category.model';
 import {TabbedPageCompleteCms} from './models/tabbed-page.model';
-import {DocumentationPageCompleteCms} from './models/documentation-page.model';
+import {TextPageCompleteCms} from './models/text-page.model';
 import {VersionCms} from './models/version.model';
 import {CMSPageShortList} from './models/cms-page.model';
 
@@ -27,8 +27,8 @@ export class CmsDataService {
 		return this.httpClient.get<CMSPageShortList>(`${this.baseUrl}items/Documentation?fields=id,name,slug,category,min_version,max_version`);
 	}
 
-	getDocumentationPagesComplete(id: number): Observable<DocumentationPageCompleteCms> {
-		return this.httpClient.get<DocumentationPageCompleteCms>(`${this.baseUrl}items/Documentation/${id}`);
+	getDocumentationPagesComplete(id: number): Observable<TextPageCompleteCms> {
+		return this.httpClient.get<TextPageCompleteCms>(`${this.baseUrl}items/Documentation/${id}`);
 	}
 
 	getTabbedPageComplete(id: number): Observable<TabbedPageCompleteCms> {
