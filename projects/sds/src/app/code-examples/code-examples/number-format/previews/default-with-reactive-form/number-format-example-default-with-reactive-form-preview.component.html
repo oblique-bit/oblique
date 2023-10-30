@@ -1,0 +1,9 @@
+<div>
+	<form [formGroup]="formData">
+		<p>Default format (2 decimals and persistent changes)</p>
+		<mat-form-field>
+			<input type="number" matInput obNumberFormat name="exampleReactive" formControlName="exampleReactive" />
+		</mat-form-field>
+	</form>
+	<p>Model value : {{ exampleReactive$ | async }}</p>
+</div>

@@ -32,6 +32,7 @@ import {PopoverCodeExamplesComponent} from './code-examples/popover/popover-code
 import {OffCanvasCodeExamplesComponent} from './code-examples/off-canvas/off-canvas-code-examples.component';
 import {NotificationCodeExamplesComponent} from './code-examples/notification/notification-code-examples.component';
 import {FormCodeExamplesComponent} from './code-examples/form/form-code-examples.component';
+import {NumberFormatCodeExamplesComponent} from './code-examples/number-format/number-format-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -56,6 +57,7 @@ export class CodeExamplesMapper {
 		nestedForm: NestedFormCodeExamplesComponent,
 		offCanvas: OffCanvasCodeExamplesComponent,
 		notification: NotificationCodeExamplesComponent,
+		numberFormat: NumberFormatCodeExamplesComponent,
 		paginator: PaginatorCodeExamplesComponent,
 		popover: PopoverCodeExamplesComponent,
 		progressBar: ProgressBarCodeExamplesComponent,
