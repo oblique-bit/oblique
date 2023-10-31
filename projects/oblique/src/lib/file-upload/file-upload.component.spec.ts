@@ -123,6 +123,30 @@ describe('ObFileUploadComponent', () => {
 			});
 		});
 
+		describe('canceled event', () => {
+			const uploadedEvent = {type: ObEUploadEventType.CANCELED, files};
+			let event: ObIUploadEvent;
+			beforeEach(done => {
+				component.uploadEvent.subscribe(evt => {
+					event = evt;
+					done();
+				});
+				component.processEvent(uploadedEvent);
+			});
+
+			it('should be forwarded', () => {
+				expect(event).toEqual(uploadedEvent);
+			});
+
+			it('should not toggle showLoadingBox', () => {
+				expect(component.showLoadingBox).toBe(false);
+			});
+
+			it('should not populate files property', () => {
+				expect(component.files).toBeUndefined();
+			});
+		});
+
 		describe('other event', () => {
 			const uploadedEvent = {type: ObEUploadEventType.DELETED, files};
 			let event: ObIUploadEvent;

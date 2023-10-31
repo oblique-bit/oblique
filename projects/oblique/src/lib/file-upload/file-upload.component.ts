@@ -25,7 +25,7 @@ export class ObFileUploadComponent {
 
 	processEvent(event: ObIUploadEvent): void {
 		this.uploadEvent.emit(event);
-		if (event.type === ObEUploadEventType.UPLOADED) {
+		if (event.type === ObEUploadEventType.UPLOADED || event.type === ObEUploadEventType.CANCELED) {
 			this.showLoadingBox = false;
 			this.files = undefined;
 		} else if (event.type === ObEUploadEventType.CHOSEN && this.uploadUrl) {
