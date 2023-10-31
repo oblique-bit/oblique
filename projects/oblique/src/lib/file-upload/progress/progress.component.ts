@@ -54,7 +54,6 @@ export class ObProgressComponent implements OnDestroy {
 			this.uploadedFiles.fileCount--;
 			this.changeDetectorRef.detectChanges();
 			this.uploadEvent.emit({type: ObEUploadEventType.CANCELED, files: this.arrayifyFiles(file.binary)});
-			this.isUploadComplete();
 		}
 	}
 
