@@ -1,0 +1,12 @@
+<div #group="obSelectableGroup" obSelectableGroup mode="checkbox">
+	<div obSelectable value="cat">a selectable cat</div>
+	<div obSelectable value="bird">a selectable bird</div>
+	<div obSelectable value="dog">a selectable dog</div>
+	<div obSelectable value="horse">a selectable horse</div>
+	<div obSelectable value="cow">a selectable cow</div>
+</div>
+<hr />
+Selected values:
+<ul>
+	<li *ngFor="let item of group.selected$ | async">{{ item.value }}</li>
+</ul>

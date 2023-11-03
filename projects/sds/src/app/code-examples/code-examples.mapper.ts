@@ -33,6 +33,7 @@ import {OffCanvasCodeExamplesComponent} from './code-examples/off-canvas/off-can
 import {NotificationCodeExamplesComponent} from './code-examples/notification/notification-code-examples.component';
 import {FormCodeExamplesComponent} from './code-examples/form/form-code-examples.component';
 import {NumberFormatCodeExamplesComponent} from './code-examples/number-format/number-format-code-examples.component';
+import {SelectableCodeExamplesComponent} from './code-examples/selectable/selectable-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -55,13 +56,14 @@ export class CodeExamplesMapper {
 		materialTable: MaterialTableCodeExamplesComponent,
 		navTree: NavTreeCodeExamplesComponent,
 		nestedForm: NestedFormCodeExamplesComponent,
-		offCanvas: OffCanvasCodeExamplesComponent,
 		notification: NotificationCodeExamplesComponent,
 		numberFormat: NumberFormatCodeExamplesComponent,
+		offCanvas: OffCanvasCodeExamplesComponent,
 		paginator: PaginatorCodeExamplesComponent,
 		popover: PopoverCodeExamplesComponent,
 		progressBar: ProgressBarCodeExamplesComponent,
 		publicScssVariablesAndMixins: PublicScssVariablesAndMixinsCodeExamplesComponent,
+		selectable: SelectableCodeExamplesComponent,
 		slider: SliderCodeExamplesComponent,
 		slideToggle: SlideToggleCodeExamplesComponent,
 		spinner: SpinnerCodeExamplesComponent,

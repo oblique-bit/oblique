@@ -1,0 +1,18 @@
+/*
+	This file is used to style one or more of the Oblique code examples.
+	It is NOT required in order to use any Oblique components.
+*/
+
+@use "@oblique/oblique/src/styles/scss/core/variables";
+
+/*
+	Selected elements are simply marked with the .ob-selected class but no style is applied to it by Oblique.
+ 	This styling is just an example.
+*/
+.ob-selected {
+	background-color: variables.$ob-secondary-100;
+}
+
+.ob-selectable:hover {
+	background-color: variables.$ob-secondary-50;
+}
