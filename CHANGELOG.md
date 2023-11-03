@@ -1,3 +1,29 @@
+# [10.3.0](https://github.com/oblique-bit/oblique/compare/10.2.0...10.3.0) (2023-11-03)
+
+## Bug Fixes
+
+- **column-layout:** add `overflow: hidden` to `.ob-column-layout` ([179f8e7](https://github.com/oblique-bit/oblique/commit/179f8e76afc426a56f35025f540de93818fa4cdb))
+- **global-events:** ensure there is only 1 listener per event ([d5b102d](https://github.com/oblique-bit/oblique/commit/d5b102d2acc744b82cc142448665951ec77a7dfd))
+- **notification:** add missing translation ([3f0b2f1](https://github.com/oblique-bit/oblique/commit/3f0b2f1a90c142e84ad3b12e49a781c5622ce749))
+- **service-navigation:** add a limitation to 99+ notifications ([c2ff197](https://github.com/oblique-bit/oblique/commit/c2ff197ecf7e73a393b2c2ab3abc0aebe05117a7))
+- **service-navigation:** do not redirect when application isn't online ([4f3fdeb](https://github.com/oblique-bit/oblique/commit/4f3fdeb86f454ebd5911a5b3beb8075a0a96feb8))
+- **service-navigation:** ensure language changes are not streamed if nobody is listening ([041a4fc](https://github.com/oblique-bit/oblique/commit/041a4fc5ee9c35260e5ac436c37abd0ebc4e10d9))
+- **service-navigation:** fix applications layout inside popover ([5fdaee7](https://github.com/oblique-bit/oblique/commit/5fdaee735c779a5919bdf0992a5adb2dcae82b1b))
+- **service-navigation:** fix eportal-logout-reminder cookie deletion ([ec555b5](https://github.com/oblique-bit/oblique/commit/ec555b5b184efee89a510329f0b18d9a093b4d1d))
+- **service-navigation:** move applications into a list ([3fdb4d2](https://github.com/oblique-bit/oblique/commit/3fdb4d2677a92303e2b305a401f5bf9b83411a29))
+- **service-navigation:** short cookie expiration set to 5s ([d347da7](https://github.com/oblique-bit/oblique/commit/d347da7816006d4d9d3558daed2ad8aba77d5e3c))
+- **service-navigation:** update notification widget's translations ([f0731ba](https://github.com/oblique-bit/oblique/commit/f0731ba30d58cdaea8fc39647e2b34bbc58960d3))
+- **translation:** correct typo in French ([619532b](https://github.com/oblique-bit/oblique/commit/619532b0f45f54d44b3e21ef0d27fce709b51ff5))
+
+## Features
+
+- **toolchain:** postpone Oblique 10 end of life date to 2024-06-30 ([74dcb02](https://github.com/oblique-bit/oblique/commit/74dcb02dc16d3f71682611c23be47a868555d083))
+
+## Deprecations
+
+- **sticky:** deprecate `ObStickyModule` in favor of CSS flexbox ([d6d461b4](https://github.com/oblique-bit/oblique/commit/252eeabcff91ab8d598c5108f7e3a12cf29d8ca0))
+- **pop-up:** deprecate `ObPopUpService` in favor of `WINDOW` ([3c5260cd9](https://github.com/oblique-bit/oblique/commit/e5add006b467216ae564d06908d684f13cda09cc))
+
 # [10.2.0](https://github.com/oblique-bit/oblique/compare/10.1.2...10.2.0) (2023-08-31)
 
 ## Bug Fixes
