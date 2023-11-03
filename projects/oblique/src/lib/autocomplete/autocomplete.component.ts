@@ -24,7 +24,7 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	@Input() autocompleteOptions: (ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[] = [];
 
 	/**
-	 * @deprecated since version 10.2.1. It will be removed with Oblique 11 with no replacement
+	 * @deprecated since version 10.3.0. It will be removed with Oblique 11 with no replacement
 	 */
 	@Input() filterRegexPattern = 'textToFind';
 	@Input() filterRegexFlag = 'gi';

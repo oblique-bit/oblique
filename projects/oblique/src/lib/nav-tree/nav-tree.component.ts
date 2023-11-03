@@ -28,7 +28,7 @@ export class ObNavTreeComponent implements OnDestroy {
 		this.translate
 	);
 	/**
-	 * @deprecated since version 10.2.1. It will be removed with Oblique 11 with no replacement
+	 * @deprecated since version 10.3.0. It will be removed with Oblique 11 with no replacement
 	 */
 	@Input() variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	/**
