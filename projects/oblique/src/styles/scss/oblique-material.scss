@@ -47,15 +47,13 @@ $theme-tabs: (
 
 @include mat.core();
 
-@include mat.ripple-theme(mat.define-light-theme($theme));
-@include mat.option-theme(mat.define-light-theme($theme));
 @include mat.autocomplete-theme(mat.define-light-theme($theme));
 @include mat.badge-theme(mat.define-light-theme($theme-alt-500));
 @include mat.button-theme(mat.define-light-theme($theme));
 @include mat.button-toggle-theme(mat.define-light-theme($theme));
 @include mat.card-theme(mat.define-light-theme($theme));
-@include mat.chips-theme(mat.define-light-theme($theme));
 @include mat.checkbox-theme(mat.define-light-theme($theme));
+@include mat.chips-theme(mat.define-light-theme($theme));
 @include mat.datepicker-theme(mat.define-light-theme($theme-alt-500));
 @include mat.dialog-theme(mat.define-light-theme($theme));
 @include mat.expansion-theme(mat.define-light-theme($theme));
@@ -65,16 +63,18 @@ $theme-tabs: (
 @include mat.input-theme(mat.define-light-theme($theme));
 @include mat.list-theme(mat.define-light-theme($theme));
 @include mat.menu-theme(mat.define-light-theme($theme));
-@include mat.radio-theme(mat.define-light-theme($theme));
 @include mat.paginator-theme(mat.define-light-theme($theme));
 @include mat.progress-bar-theme(mat.define-light-theme($theme));
+@include mat.radio-theme(mat.define-light-theme($theme));
+@include mat.ripple-theme(mat.define-light-theme($theme));
 @include mat.slide-toggle-theme(mat.define-light-theme($theme-slide-toggle));
 @include mat.slider-theme(mat.define-light-theme($theme-alt-500));
 @include mat.sort-theme(mat.define-light-theme($theme));
 @include mat.stepper-theme(mat.define-light-theme($theme));
 @include mat.table-theme(mat.define-light-theme($theme));
-@include mat.tooltip-theme(mat.define-light-theme($theme));
 @include mat.tabs-theme(mat.define-light-theme($theme-tabs));
+@include mat.tooltip-theme(mat.define-light-theme($theme));
+@include mat.option-theme(mat.define-light-theme($theme));
 
 // import to overwrite mat-component-specifics
 @import "material/mat-autocomplete";
