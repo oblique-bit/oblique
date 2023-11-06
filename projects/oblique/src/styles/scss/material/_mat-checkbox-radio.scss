@@ -1,6 +1,5 @@
 @use "../core/variables" as core-variables;
 @use "../core/mixins/shadow";
-@use "mixins/mat-checkbox-radio";
 
 .mat-mdc-checkbox.mat-mdc-checkbox-disabled,
 .mat-mdc-radio-button.mat-mdc-radio-disabled,
@@ -22,19 +21,8 @@ $disabled-color: core-variables.$ob-secondary-300;
 		}
 	}
 
-	&.mat-radio-disabled {
-		@include mat-checkbox-radio.ob-radio-button-colors(
-			$disabled-color,
-			$disabled-color,
-			$disabled-color,
-			$disabled-color
-		);
-	}
-
-	&:not(.mat-radio-disabled) {
-		:not(.mdc-radio--disabled) ~ label {
-			cursor: pointer;
-		}
+	label {
+		cursor: pointer;
 	}
 }
 
