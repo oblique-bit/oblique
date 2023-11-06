@@ -96,8 +96,8 @@
 			}
 		}
 
-		.ob-autocomplete .mat-form-field-wrapper {
-			padding-bottom: 0;
+		.ob-autocomplete .mat-mdc-form-field-subscript-wrapper {
+			display: none;
 		}
 
 		@include layout.ob-media-breakpoint-down(md) {
