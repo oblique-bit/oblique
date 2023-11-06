@@ -84,27 +84,21 @@
 		<mat-label>Test textarea non required</mat-label>
 		<textarea matInput formControlName="textareaNonRequired"></textarea>
 	</mat-form-field>
-	<mat-form-field data-test="mat-chip-list-required">
-		<mat-label>Test mat-chip-list required</mat-label>
-		<mat-chip-list formControlName="matChipListRequired">
-			<mat-chip>One</mat-chip>
-			<mat-chip>Two</mat-chip>
-		</mat-chip-list>
-	</mat-form-field>
-	<mat-form-field data-test="mat-chip-list-dynamic-required">
-		<mat-label>Test mat-chip-list dynamic required</mat-label>
-		<mat-chip-list formControlName="matChipListDynamicRequired">
-			<mat-chip>One</mat-chip>
-			<mat-chip>Two</mat-chip>
-		</mat-chip-list>
-	</mat-form-field>
-	<mat-form-field data-test="mat-chip-list-non-required">
-		<mat-label>Test mat-chip-list non required</mat-label>
-		<mat-chip-list formControlName="matChipListNonRequired">
-			<mat-chip>One</mat-chip>
-			<mat-chip>Two</mat-chip>
-		</mat-chip-list>
-	</mat-form-field>
+	<mat-label>Test mat-chip-list required</mat-label>
+	<mat-chip-listbox formControlName="matChipListRequired">
+		<mat-chip-option>One</mat-chip-option>
+		<mat-chip-option>Two</mat-chip-option>
+	</mat-chip-listbox>
+	<mat-label>Test mat-chip-list dynamic required</mat-label>
+	<mat-chip-listbox formControlName="matChipListDynamicRequired">
+		<mat-chip-option>One</mat-chip-option>
+		<mat-chip-option>Two</mat-chip-option>
+	</mat-chip-listbox>
+	<mat-label>Test mat-chip-list non required</mat-label>
+	<mat-chip-listbox formControlName="matChipListNonRequired">
+		<mat-chip-option>One</mat-chip-option>
+		<mat-chip-option>Two</mat-chip-option>
+	</mat-chip-listbox>
 </div>
 
 <button type="button" (click)="setRequired()">Set required</button>
