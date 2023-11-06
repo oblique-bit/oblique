@@ -11,7 +11,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import {MatLegacyMenuModule as MatMenuModule} from '@angular/material/legacy-menu';
 import {MatListModule} from '@angular/material/list';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import {MatRadioModule} from '@angular/material/radio';
@@ -103,7 +102,6 @@ import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 		MatIconModule,
 		MatInputModule,
 		MatListModule,
-		MatMenuModule,
 		MatMomentDateModule,
 		MatRadioModule,
 		MatSelectModule,
