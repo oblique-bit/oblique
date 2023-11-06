@@ -2,10 +2,7 @@
 @use "../core/mixins/shadow";
 
 .mat-mdc-paginator {
-	&,
-	& .mat-button-wrapper {
-		color: variables.$ob-secondary-600;
-	}
+	color: variables.$ob-secondary-600;
 
 	.mat-mdc-paginator-icon > path {
 		display: none;
