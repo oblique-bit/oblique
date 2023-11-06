@@ -45,7 +45,7 @@ $theme-tabs: (
 	typography: typo.$custom-typography,
 );
 
-@include mat.legacy-core();
+@include mat.core();
 
 @include mat.ripple-theme(mat.define-light-theme($theme));
 @include mat.option-theme(mat.define-light-theme($theme));
