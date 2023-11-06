@@ -7,7 +7,7 @@ import {MatIconHarness} from '@angular/material/icon/testing';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObServiceNavigationAuthenticationHarness} from './service-navigation-authentication.harness';
 import {ObServiceNavigationAuthenticationComponent} from './service-navigation-authentication.component';
-import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
+import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule} from '../../button/button.module';
 
 describe('ObServiceNavigationAuthenticationComponent', () => {
