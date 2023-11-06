@@ -3,7 +3,7 @@ import {COMMA, ENTER, SEMICOLON} from '@angular/cdk/keycodes';
 import {UntypedFormControl} from '@angular/forms';
 import {ThemePalette} from '@angular/material/core';
 import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import {MatLegacyChipInputEvent as MatChipInputEvent} from '@angular/material/legacy-chips';
+import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
