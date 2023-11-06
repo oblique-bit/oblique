@@ -9,8 +9,8 @@ th {
 	}
 }
 
-mat-cell,
-mat-header-cell {
+.mat-mdc-cell,
+.mat-mdc-header-cell {
 	&.mat-column-actions {
 		// "fit-content" for a flex table cell
 		flex-basis: auto;
@@ -24,7 +24,7 @@ mat-header-cell {
 }
 
 .edit-mode {
-	.mat-cell {
+	.mat-mdc-cell {
 		vertical-align: top;
 
 		&.mat-column-select {
@@ -40,7 +40,7 @@ mat-header-cell {
 	}
 }
 
-:host::ng-deep .mat-form-field-infix {
+:host::ng-deep .mat-mdc-form-field-infix {
 	width: unset;
 }
 
