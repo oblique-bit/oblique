@@ -17,23 +17,6 @@
 		top: -(variables.$ob-form-field-label-height);
 		padding-top: $label-padding;
 	}
-
-	&.mat-form-field-can-float {
-		&.mat-form-field-should-float,
-		&:focus-within.ob-form-field-has-mat-input-server .mdc-notched-outline__notch {
-			.mdc-floating-label {
-				transform: translateY(-$label-padding) scale(0.75);
-			}
-		}
-	}
-
-	.mat-form-field-suffix .mat-datepicker-toggle .mdc-icon-button {
-		height: $icon-size;
-		width: $icon-size;
-		display: inline-flex;
-		align-items: center;
-		font-size: inherit;
-	}
 }
 
 @mixin ob-form-field-colors($color, $background-color) {
