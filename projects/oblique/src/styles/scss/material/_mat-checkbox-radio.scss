@@ -50,12 +50,5 @@ $disabled-color: core-variables.$ob-secondary-300;
 		.mat-mdc-checkbox-touch-target {
 			cursor: not-allowed;
 		}
-
-		@include mat-checkbox-radio.ob-checkbox-colors(
-			$disabled-color,
-			$disabled-color,
-			$disabled-color,
-			$disabled-color
-		);
 	}
 }
