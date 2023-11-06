@@ -12,7 +12,7 @@
 		outline: none;
 	}
 
-	&:not(.mat-button-disabled):hover #{$innerSelector} {
+	&:hover #{$innerSelector} {
 		background-color: variables.$ob-primary-200;
 	}
 
