@@ -47,8 +47,6 @@ $theme-tabs: (
 
 @include mat.legacy-core();
 
-@include mat.legacy-list-theme(mat.define-light-theme($legacy-theme));
-
 @include mat.ripple-theme(mat.define-light-theme($theme));
 @include mat.option-theme(mat.define-light-theme($theme));
 @include mat.autocomplete-theme(mat.define-light-theme($theme));
@@ -65,6 +63,7 @@ $theme-tabs: (
 @include mat.form-field-theme(mat.define-light-theme($theme));
 @include mat.icon-theme(mat.define-light-theme($theme));
 @include mat.input-theme(mat.define-light-theme($theme));
+@include mat.list-theme(mat.define-light-theme($theme));
 @include mat.menu-theme(mat.define-light-theme($theme));
 @include mat.radio-theme(mat.define-light-theme($theme));
 @include mat.paginator-theme(mat.define-light-theme($theme));
