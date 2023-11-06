@@ -162,6 +162,7 @@ overrides:
         - ignoreDeclarationSort: true
 
       # rules that need some refactoring to be enabled
+      "@angular-eslint/prefer-standalone-component": off
       "@typescript-eslint/no-explicit-any": off
       "@typescript-eslint/explicit-module-boundary-types": off
       "@typescript-eslint/no-unsafe-member-access": off
@@ -187,6 +188,7 @@ overrides:
   - files:
       - "*.spec.ts"
     rules:
+      "@angular-eslint/template/prefer-self-closing-tags": off
       "@angular-eslint/component-max-inline-declarations": off
       "@angular-eslint/use-component-selector": off
       "@typescript-eslint/ban-ts-comment": off
@@ -217,15 +219,15 @@ overrides:
       - plugin:@angular-eslint/template/all
     rules:
       # deactivate unwanted rules
-      "@angular-eslint/template/accessibility-label-for": off # deprecated rule
       "@angular-eslint/template/i18n": off
       "@angular-eslint/template/use-track-by-function": off
 
       # rules that need some refactoring to be enabled
-      "@angular-eslint/template/accessibility-label-has-associated-control": off
       "@angular-eslint/template/click-events-have-key-events": off
       "@angular-eslint/template/cyclomatic-complexity": off
       "@angular-eslint/template/no-call-expression": off
       "@angular-eslint/template/attributes-order": off
       "@angular-eslint/template/no-inline-styles": off
       "@angular-eslint/template/accessibility-interactive-supports-focus": off
+      "@angular-eslint/template/prefer-self-closing-tags": off
+      "@angular-eslint/template/prefer-ngsrc": off

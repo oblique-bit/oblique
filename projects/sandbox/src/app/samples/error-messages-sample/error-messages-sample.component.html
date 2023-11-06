@@ -10,8 +10,8 @@
 	<mat-form-field class="form-element" obErrorMessages>
 		<mat-label>Select</mat-label>
 		<mat-select ngModel name="select" required>
-			<mat-option>1</mat-option>
-			<mat-option>2</mat-option>
+			<mat-option [value]="1">1</mat-option>
+			<mat-option [value]="2">2</mat-option>
 		</mat-select>
 		<mat-error></mat-error>
 	</mat-form-field>
@@ -25,8 +25,8 @@
 	<mat-form-field class="form-element" obErrorMessages>
 		<mat-label>Select</mat-label>
 		<mat-select formControlName="select">
-			<mat-option>1</mat-option>
-			<mat-option>2</mat-option>
+			<mat-option [value]="1">1</mat-option>
+			<mat-option [value]="2">2</mat-option>
 		</mat-select>
 		<mat-error></mat-error>
 	</mat-form-field>

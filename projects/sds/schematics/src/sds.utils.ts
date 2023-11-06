@@ -1,5 +1,10 @@
 import {Rule, SchematicContext, SchematicsException, Tree, noop} from '@angular-devkit/schematics';
-import * as ts from 'typescript';
+import {
+	ScriptKind,
+	ScriptTarget,
+	SourceFile,
+	createSourceFile
+} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {isImported} from '@schematics/angular/utility/ast-utils';
 import {InsertChange, ReplaceChange} from '@schematics/angular/utility/change';
 import {createHost} from './host.utils';
@@ -42,12 +47,12 @@ export function addImportToFile(toAdd: {symbolName: string; relativePath: string
 export async function getSourceFileOrFalse(
 	filePath: string,
 	tree: Tree,
-	scriptKind: ts.ScriptKind = ts.ScriptKind.TS
-): Promise<ts.SourceFile | false> {
+	scriptKind: ScriptKind = ScriptKind.TS
+): Promise<SourceFile | false> {
 	const host = createHost(tree);
 	if (await host.isFile(filePath)) {
 		const file = await createHost(tree).readFile(filePath);
-		return ts.createSourceFile(filePath, file.toString(), ts.ScriptTarget.Latest, true, scriptKind);
+		return createSourceFile(filePath, file.toString(), ScriptTarget.Latest, true, scriptKind);
 	}
 	return false;
 }

@@ -19,3 +19,6 @@ overrides:
         - type: element
           prefix: ob
           style: kebab-case
+
+        # rules that needs some refactoring before being activated
+      "@angular-eslint/sort-lifecycle-methods": off

@@ -19,3 +19,10 @@ overrides:
         - type: element
           prefix: sb
           style: kebab-case
+
+  - files:
+      - "*.html"
+
+    rules:
+      # rules that need some refactoring to be enabled
+      "@angular-eslint/template/label-has-associated-control": off
