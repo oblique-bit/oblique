@@ -4,18 +4,19 @@
 // Changes every px measure native to angular material to its rem equivalent,
 // provided that the base font-size is 16px which is browser's default.
 // example: for 24px ---> 24/16 = 1.5 so 1.5rem
-$custom-typography: mat.define-legacy-typography-config(
+$custom-typography: mat.define-typography-config(
 	$font-family: core-variables.$ob-font,
-	$display-4: mat.define-typography-level(7rem, 7rem, 300, $letter-spacing: -0.05rem),
-	$display-3: mat.define-typography-level(3.5rem, 3.5rem, 400, $letter-spacing: -0.02rem),
-	$display-2: mat.define-typography-level(2.8125rem, 3rem, 400, $letter-spacing: -0.005rem),
-	$display-1: mat.define-typography-level(2.125rem, 2.5rem, 400),
-	$headline: mat.define-typography-level(1.5rem, 2rem, 400),
-	$title: mat.define-typography-level(1.25rem, 2rem, 500),
-	$subheading-2: mat.define-typography-level(1rem, 1.75rem, 400),
-	$subheading-1: mat.define-typography-level(core-variables.$ob-font-size-subheading-1, 1.5rem, 400),
-	$body-2: mat.define-typography-level(0.875rem, 1.5rem, 500),
-	$body-1: mat.define-typography-level(0.875rem, 1.25rem, 400),
-	$caption: mat.define-typography-level(0.75rem, 1.25rem, 400),
-	$button: mat.define-typography-level(0.875rem, 0.875rem, 500),
+	$headline-1: mat.define-typography-level(6rem, 6rem, 300, -0.016),
+	$headline-2: mat.define-typography-level(3.75rem, 3.75rem, 300, -0.008),
+	$headline-3: mat.define-typography-level(3rem, 3.125rem, 400),
+	$headline-4: mat.define-typography-level(2.125rem, 2.5rem, 400, 0.007),
+	$headline-5: mat.define-typography-level(1.5rem, 2rem, 400),
+	$headline-6: mat.define-typography-level(1.125rem, 2rem, 500, 0.013),
+	$subtitle-1: mat.define-typography-level(1rem, 1.75rem, 400, 0.009),
+	$subtitle-2: mat.define-typography-level(0.875rem, 1.375rem, 400, 0.007),
+	$body-1: mat.define-typography-level(1rem, 1.5rem, 400, 0.031),
+	$body-2: mat.define-typography-level(0.875rem, 1.375rem, 400, 0.018),
+	$caption: mat.define-typography-level(0.75rem, 1.375rem, 400, 0.033),
+	$button: mat.define-typography-level(0.875rem, 2.25rem, 500, 0.089),
+	$overline: mat.define-typography-level(0.75rem, 2rem, 500, 1.167),
 );
