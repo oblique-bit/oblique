@@ -1,5 +1,5 @@
 @use "projects/oblique/src/styles/scss/core/variables";
 
-.mat-radio-button + .mat-radio-button {
+.mat-mdc-radio-button + .mat-mdc-radio-button {
 	margin-left: variables.$ob-spacing-default;
 }
