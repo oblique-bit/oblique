@@ -16,7 +16,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatChipsModule} from '@angular/material/chips';
-import {MatLegacyTabsModule as MatTabsModule} from '@angular/material/legacy-tabs';
+import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatRadioModule} from '@angular/material/radio';
