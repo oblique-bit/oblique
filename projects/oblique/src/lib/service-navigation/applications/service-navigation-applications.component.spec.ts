@@ -17,6 +17,7 @@ import {ObLimitArraySizePipe} from '../shared/limit-array-size.pipe';
 import {ObServiceNavigationApplicationAltPipe} from './service-navigation-application-image-alt.pipe';
 import {ObServiceNavigationApplicationsHarness} from './service-navigation-applications.harness';
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
+import {ObDisableLinkDirective} from '../shared/disable-link/disable-link.directive';
 
 describe('ObServiceNavigationApplicationsComponent', () => {
 	let component: ObServiceNavigationApplicationsComponent;
@@ -25,7 +26,7 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MatButtonModule, MatIconModule, MatTooltipModule, ObPopoverModule],
+			imports: [MatButtonModule, MatIconModule, MatTooltipModule, ObPopoverModule, ObDisableLinkDirective],
 			declarations: [
 				ObLimitArraySizePipe,
 				ObServiceNavigationApplicationsComponent,
@@ -104,9 +105,11 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 				describe('first section', () => {
 					let section: ObServiceNavigationPopoverSectionComponent;
 					let content: DebugElement;
+					let links: DebugElement[];
 					beforeEach(() => {
 						section = sections[0].componentInstance;
 						content = fixture.debugElement.query(By.css('[obContent]'));
+						links = content.queryAll(By.css('a'));
 					});
 
 					it('should have "i18n.oblique.service-navigation.applications.last-used.header" as header', () => {
@@ -122,14 +125,18 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 							expect(content.classes['ob-applications']).toBe(true);
 						});
 
+						it('should have 2 list item', () => {
+							expect(content.queryAll(By.css('li')).length).toBe(2);
+						});
+
 						it('should have 2 children', () => {
-							expect(content.children.length).toBe(2);
+							expect(links.length).toBe(2);
 						});
 
 						describe('first child', () => {
 							let link: DebugElement;
 							beforeEach(() => {
-								link = content.children[0];
+								link = links[0];
 							});
 
 							it('should be an anchor', () => {
@@ -202,7 +209,7 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 						describe('second child', () => {
 							let link: DebugElement;
 							beforeEach(() => {
-								link = content.children[1];
+								link = links[1];
 							});
 
 							it('should be an anchor', () => {
@@ -213,8 +220,12 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 								expect(link.classes['ob-application']).toBe(true);
 							});
 
-							it('should have "href" attribute set to "http://app-url2"', () => {
-								expect(link.attributes.href).toBe('http://app-url2');
+							it('should NOT have "href" attribute', () => {
+								expect(link.attributes.href).toBe(undefined);
+							});
+
+							it('should have aria-disabled', () => {
+								expect(link.attributes['aria-disabled']).toBe('true');
 							});
 
 							it('should have "isExternalLink" property set to "false"', () => {
@@ -338,9 +349,11 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 				describe('first section', () => {
 					let section: ObServiceNavigationPopoverSectionComponent;
 					let content: DebugElement;
+					let links: DebugElement[];
 					beforeEach(() => {
 						section = sections[0].componentInstance;
 						content = fixture.debugElement.query(By.css('[obContent]'));
+						links = content.queryAll(By.css('a'));
 					});
 
 					it('should have "i18n.oblique.service-navigation.applications.favorite.header" as header', () => {
@@ -356,14 +369,18 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 							expect(content.classes['ob-applications']).toBe(true);
 						});
 
+						it('should have 2 list item', () => {
+							expect(content.queryAll(By.css('li')).length).toBe(2);
+						});
+
 						it('should have 2 children', () => {
-							expect(content.children.length).toBe(2);
+							expect(links.length).toBe(2);
 						});
 
 						describe('first child', () => {
 							let link: DebugElement;
 							beforeEach(() => {
-								link = content.children[0];
+								link = links[0];
 							});
 
 							it('should be an anchor', () => {
@@ -436,7 +453,7 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 						describe('second child', () => {
 							let link: DebugElement;
 							beforeEach(() => {
-								link = content.children[1];
+								link = links[1];
 							});
 
 							it('should be an anchor', () => {
@@ -447,8 +464,12 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 								expect(link.classes['ob-application']).toBe(true);
 							});
 
-							it('should have "href" attribute set to "http://app-url2"', () => {
-								expect(link.attributes.href).toBe('http://app-url2');
+							it('should NOT have "href" attribute', () => {
+								expect(link.attributes.href).toBe(undefined);
+							});
+
+							it('should have aria-disabled', () => {
+								expect(link.attributes['aria-disabled']).toBe('true');
 							});
 
 							it('should have "isExternalLink" property set to "false"', () => {

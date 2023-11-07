@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
-import {merge, takeUntil} from 'rxjs/operators';
+import {mergeWith, takeUntil} from 'rxjs/operators';
 
 @Component({
 	selector: 'sc-nav-tree-detail-sample',
@@ -14,7 +14,7 @@ export class NavTreeDetailSampleComponent implements OnInit, OnDestroy {
 	constructor(private readonly route: ActivatedRoute, private readonly router: Router) {}
 
 	ngOnInit(): void {
-		this.route.params.pipe(merge(this.route.fragment), takeUntil(this.unsubscribe)).subscribe(() => {
+		this.route.params.pipe(mergeWith(this.route.fragment), takeUntil(this.unsubscribe)).subscribe(() => {
 			this.routing = this.router.routerState.snapshot.url;
 		});
 	}

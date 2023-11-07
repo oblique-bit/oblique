@@ -5,6 +5,9 @@ import path from 'path';
 
 export class AddBanner {
 	private static readonly directory = 'dist';
+	private static readonly EOLDates = {
+		'10.0.0': '2024-06-30'
+	};
 
 	static perform(): void {
 		const header = AddBanner.prepareHeader(currentVersion);
@@ -26,19 +29,20 @@ export class AddBanner {
 
 	private static prepareHeader(version: string): string {
 		const releaseDate = AddBanner.getTodayDate();
-		const endOfLifeDate = AddBanner.getEndOfLifeDate(`${version.split('.')[0]}.0.0`);
+		const majorVersion = `${version.split('.')[0]}.0.0`;
+		const endOfLifeDate: string = AddBanner.EOLDates[majorVersion] || AddBanner.getEndOfLifeDate(majorVersion);
 		return `/**
 * @file Oblique, The front-end framework for your Swiss branded UI.
-* @copyright 2020 - ${new Date().getFullYear()} Federal Office of Information Technology, Systems and Telecommunication FOITT {@link http://www.bit.admin.ch}
+* @copyright 2020 - ${new Date().getFullYear()} Federal Office of Information Technology, Systems and Telecommunication FOITT {@link https://www.bit.admin.ch}
 * @version ${version} (released on ${releaseDate}, supported at least until ${endOfLifeDate})
 * @author Oblique team, FOITT, BS-BSC-EN4 <oblique@bit.admin.ch>
 * @license MIT {@link https://oblique.bit.admin.ch/license}
-* @see http://oblique.bit.oblique.ch
+* @see https://oblique.bit.oblique.ch
 */
 `;
 	}
 
-	private static getEndOfLifeDate(version): string {
+	private static getEndOfLifeDate(version: string): string {
 		const versionReleaseDate = AddBanner.getTagDate(version);
 		const endOfLifeDate = new Date(versionReleaseDate);
 

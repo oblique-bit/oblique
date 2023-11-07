@@ -1,0 +1,4 @@
+@Library('jeap-pipelinelibrary@feature/oblique5') _
+nodejsPipelineReleaseTemplate {
+	nodeJsVersion = 18
+}

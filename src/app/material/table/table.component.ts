@@ -5,8 +5,8 @@ import {AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators} from 
 import {MatLegacyInput as MatInput} from '@angular/material/legacy-input';
 import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {ObPopUpService} from '@oblique/oblique';
-import {Observable, Subject, combineLatest} from 'rxjs';
-import {delay, filter, map, shareReplay, startWith, takeUntil, tap} from 'rxjs/operators';
+import {Observable, ReplaySubject, Subject, combineLatest, share} from 'rxjs';
+import {delay, filter, map, startWith, takeUntil, tap} from 'rxjs/operators';
 import {ObIPeriodicElement} from './table.model';
 import {EditMode, Mode, TableManager} from './table-manager';
 
@@ -123,7 +123,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	private valueChanges<T>(field: string): Observable<T> {
 		const control = this.controls.get(field);
-		return control.valueChanges.pipe(startWith(control.value), shareReplay(1), takeUntil(this.unsubscribe));
+		return control.valueChanges.pipe(startWith(control.value), share({connector: () => new ReplaySubject(1)}), takeUntil(this.unsubscribe));
 	}
 
 	private filter(filterText: string): void {

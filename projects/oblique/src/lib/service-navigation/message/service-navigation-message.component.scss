@@ -1,6 +1,12 @@
+@use "../../../styles/scss/core/variables" as core-variables;
+
 .ob-service-navigation-message {
-	.mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
-		top: 0;
-		right: 0;
+	.mat-badge-content {
+		z-index: 2;
+	}
+
+	.ob-longer-badge .mat-badge-content {
+		width: core-variables.$ob-service-navigation-messages-many-count-width;
+		border-radius: core-variables.$ob-service-navigation-messages-many-count-border-radius;
 	}
 }

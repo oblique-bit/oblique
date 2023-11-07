@@ -25,6 +25,7 @@ import {ObContactToLinksPipe} from './info/contact-to-links.pipe';
 import {ObServiceNavigationComponent} from './service-navigation.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ObEportalCsrfInterceptor} from './eportal-csrf-interceptor/eportal-csrf-interceptor';
+import {ObDisableLinkDirective} from './shared/disable-link/disable-link.directive';
 
 @NgModule({
 	providers: [
@@ -42,6 +43,7 @@ import {ObEportalCsrfInterceptor} from './eportal-csrf-interceptor/eportal-csrf-
 		MatIconModule,
 		MatTooltipModule,
 		ObButtonModule,
+		ObDisableLinkDirective,
 		ObExternalLinkModule,
 		ObPopoverModule,
 		ObTranslateParamsModule,

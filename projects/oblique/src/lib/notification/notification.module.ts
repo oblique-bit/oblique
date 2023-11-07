@@ -5,6 +5,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {ObNotificationComponent} from './notification.component';
 import {obliqueProviders} from '../utilities';
 import {ObAlertModule} from '../alert/alert.module';
+import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
 
 export {ObNotificationComponent} from './notification.component';
 export {ObNotificationService} from './notification.service';
@@ -12,7 +13,7 @@ export {ObNotificationConfig, CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE, GROUP_SIMILAR
 export {ObINotification, ObINotificationConfig, ObENotificationType, ObENotificationPlacement} from './notification.model';
 
 @NgModule({
-	imports: [CommonModule, ObAlertModule, TranslateModule],
+	imports: [CommonModule, MatTooltipModule, ObAlertModule, TranslateModule],
 	declarations: [ObNotificationComponent],
 	providers: obliqueProviders(),
 	exports: [ObNotificationComponent]

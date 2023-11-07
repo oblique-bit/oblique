@@ -1,6 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {Observable, fromEvent} from 'rxjs';
+import {share} from 'rxjs/operators';
 import {WINDOW} from '../utilities';
 
 @Injectable({
@@ -18,14 +19,18 @@ export class ObGlobalEventsService {
 	public readonly resize$: Observable<UIEvent>;
 
 	constructor(@Inject(DOCUMENT) document: Document, @Inject(WINDOW) window: Window) {
-		this.beforeUnload$ = fromEvent<BeforeUnloadEvent>(window, 'beforeunload');
-		this.click$ = fromEvent<MouseEvent>(document, 'click');
-		this.mouseDown$ = fromEvent<MouseEvent>(document, 'mousedown');
-		this.mouseMove$ = fromEvent<MouseEvent>(document, 'mousemove');
-		this.keyDown$ = fromEvent<KeyboardEvent>(document, 'keydown');
-		this.keyUp$ = fromEvent<KeyboardEvent>(document, 'keyup');
-		this.scroll$ = fromEvent<Event>(window, 'scroll');
-		this.wheel$ = fromEvent<Event>(window, 'wheel');
-		this.resize$ = fromEvent<UIEvent>(window, 'resize');
+		this.beforeUnload$ = this.buildObservable<BeforeUnloadEvent>(window, 'beforeunload');
+		this.click$ = this.buildObservable<MouseEvent>(document, 'click');
+		this.mouseDown$ = this.buildObservable<MouseEvent>(document, 'mousedown');
+		this.mouseMove$ = this.buildObservable<MouseEvent>(document, 'mousemove');
+		this.keyDown$ = this.buildObservable<KeyboardEvent>(document, 'keydown');
+		this.keyUp$ = this.buildObservable<KeyboardEvent>(document, 'keyup');
+		this.scroll$ = this.buildObservable<Event>(window, 'scroll');
+		this.wheel$ = this.buildObservable<Event>(window, 'wheel');
+		this.resize$ = this.buildObservable<UIEvent>(window, 'resize');
+	}
+
+	private buildObservable<T>(target: Window | Document, event: string): Observable<T> {
+		return fromEvent<T>(target, event).pipe(share());
 	}
 }

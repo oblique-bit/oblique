@@ -4,7 +4,7 @@
 @use "../../service-navigation.component";
 
 [id^="service-navigation"].ob-popover-content {
-	min-width: 380px; // empiric value that it valid for the header widget only;
+	max-width: 380px; // empiric value that it valid for the header widget only;
 }
 
 .ob-service-navigation-popover-section {
