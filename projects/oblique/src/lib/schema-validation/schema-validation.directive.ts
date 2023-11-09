@@ -10,7 +10,7 @@ import {ObSchemaValidationService} from './schema-validation.service';
 	standalone: true
 })
 export class ObSchemaValidationDirective implements OnInit {
-	@Input('obSchemaValidation') private readonly schema: any;
+	@Input('obSchemaValidation') schema: any;
 	private validator;
 
 	constructor(private readonly schemaValidationService: ObSchemaValidationService) {}
