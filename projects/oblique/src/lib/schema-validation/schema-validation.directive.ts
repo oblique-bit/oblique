@@ -1,6 +1,7 @@
 import {Directive, Input, OnInit} from '@angular/core';
 import {ValidationErrors} from '@angular/forms';
 import {ObSchemaValidationService} from './schema-validation.service';
+import {ObSchemaValidatorInstance} from './schema-validator.instance';
 
 @Directive({
 	selector: '[obSchemaValidation]',
@@ -11,7 +12,7 @@ import {ObSchemaValidationService} from './schema-validation.service';
 })
 export class ObSchemaValidationDirective implements OnInit {
 	@Input('obSchemaValidation') schema: any;
-	private validator;
+	private validator: ObSchemaValidatorInstance;
 
 	constructor(private readonly schemaValidationService: ObSchemaValidationService) {}
 
