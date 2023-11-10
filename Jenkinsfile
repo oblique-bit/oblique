@@ -26,14 +26,6 @@ nodejsPipelineTemplate {
 				'credentialId': 'githubObliqueCredentials',
 				'repository': 'https://github.com/oblique-bit/oblique.git',
 			]
-		],
-		'release/major_11.0.0-alpha.2': [
-			'publish': './dist/oblique',
-			'gitTag': true,
-			'gitPush': [
-				'credentialId': 'githubObliqueCredentials',
-				'repository': 'https://github.com/oblique-bit/oblique.git',
-			]
 		]
 	]
 }
