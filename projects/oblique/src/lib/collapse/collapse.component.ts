@@ -12,11 +12,11 @@ import {
 	ViewChild,
 	ViewEncapsulation
 } from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
 import {Subject, filter, fromEvent, merge, tap} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {MatIconModule} from '@angular/material/icon';
 import {NgIf} from '@angular/common';
+import {animations} from './collapse.component.animations';
 
 export const OBLIQUE_COLLAPSE_ACTIVE = new InjectionToken<boolean>('OBLIQUE_COLLAPSE_STATUS');
 export const OBLIQUE_COLLAPSE_ICON_POSITION = new InjectionToken<'left' | 'right' | 'justified' | 'none'>('The default icon position');
@@ -28,23 +28,7 @@ export const OBLIQUE_COLLAPSE_DURATION = new InjectionToken<'slow' | 'fast' | nu
 	encapsulation: ViewEncapsulation.None,
 	templateUrl: './collapse.component.html',
 	styleUrls: ['./collapse.component.scss'],
-	animations: [
-		trigger('expandCollapse', [
-			state(
-				'open',
-				style({
-					height: '*'
-				})
-			),
-			state(
-				'close',
-				style({
-					height: 0
-				})
-			),
-			transition('open <=> close', animate('{{ time }}ms ease-in-out'))
-		])
-	],
+	animations: [animations],
 	host: {class: 'ob-collapse'},
 	standalone: true,
 	imports: [NgIf, MatIconModule]
