@@ -27,6 +27,7 @@ import {PaginatorCodeExamplesComponent} from './code-examples/paginator/paginato
 import {PopoverCodeExamplesComponent} from './code-examples/popover/popover-code-examples.component';
 import {ProgressBarCodeExamplesComponent} from './code-examples/progress-bar/progress-bar-code-examples.component';
 import {PublicScssVariablesAndMixinsCodeExamplesComponent} from './code-examples/public-scss-variables-and-mixins/public-scss-variables-and-mixins-code-examples.component';
+import {SchemaValidationCodeExamplesComponent} from './code-examples/schema-validation/schema-validation-code-examples.component';
 import {SelectableCodeExamplesComponent} from './code-examples/selectable/selectable-code-examples.component';
 import {SlideToggleCodeExamplesComponent} from './code-examples/slide-toggle/slide-toggle-code-examples.component';
 import {SliderCodeExamplesComponent} from './code-examples/slider/slider-code-examples.component';
@@ -70,6 +71,7 @@ export class CodeExamplesMapper {
 		popover: PopoverCodeExamplesComponent,
 		'progress-bar': ProgressBarCodeExamplesComponent,
 		'public-scss-variables-and-mixins': PublicScssVariablesAndMixinsCodeExamplesComponent,
+		'schema-validation': SchemaValidationCodeExamplesComponent,
 		selectable: SelectableCodeExamplesComponent,
 		slider: SliderCodeExamplesComponent,
 		'slide-toggle': SlideToggleCodeExamplesComponent,

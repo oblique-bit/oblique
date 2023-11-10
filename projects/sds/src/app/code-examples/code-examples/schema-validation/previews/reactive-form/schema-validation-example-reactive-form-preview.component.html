@@ -1,0 +1,19 @@
+<form [obSchemaValidation]="schema" [formGroup]="nameFormGroup">
+	<mat-form-field obErrorMessages>
+		<mat-label>First name</mat-label>
+		<input matInput obSchemaValidate formControlName="firstName" type="text" />
+		<mat-error></mat-error>
+	</mat-form-field>
+
+	<mat-form-field obErrorMessages>
+		<mat-label>Last name</mat-label>
+		<input matInput obSchemaValidate formControlName="lastName" type="text" />
+		<mat-error></mat-error>
+	</mat-form-field>
+
+	<mat-form-field obErrorMessages>
+		<mat-label>Age</mat-label>
+		<input matInput obSchemaValidate formControlName="age" type="number" />
+		<mat-error></mat-error>
+	</mat-form-field>
+</form>
