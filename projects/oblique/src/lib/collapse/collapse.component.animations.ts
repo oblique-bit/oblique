@@ -1,11 +1,13 @@
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 const visibleStyle = {
-	height: '*'
+	height: '*',
+	visibility: 'visible'
 };
 
 const hiddenStyle = {
-	height: 0
+	height: 0,
+	visibility: 'hidden'
 };
 
 export const animations = trigger('expandCollapse', [
