@@ -76,35 +76,53 @@ describe(ObValidationService.name, () => {
 				jest.spyOn(notification, 'error');
 			});
 
-			test('that first file is returned', () => {
-				const filteredFiles = service.filterInvalidFiles(files, ['text/plain'], 50, true);
-				expect(filteredFiles.length).toBe(1);
-			});
+			describe('accepting text', () => {
+				test('that first file is returned', () => {
+					const filteredFiles = service.filterInvalidFiles(files, ['text/plain'], 50, true);
+					expect(filteredFiles.length).toBe(1);
+				});
 
-			test('that mime error is displayed', () => {
-				service.filterInvalidFiles(files, ['text/plain'], 50, true);
-				expect(notification.error).toHaveBeenCalledWith({
-					message: 'i18n.oblique.file-upload.error.type',
-					messageParams: {ignoredFiles: 'sample.jpg', supportedTypes: 'text/plain'},
-					title: 'i18n.oblique.file-upload.error.title'
+				test('that mime error is displayed', () => {
+					service.filterInvalidFiles(files, ['text/plain'], 50, true);
+					expect(notification.error).toHaveBeenCalledWith({
+						message: 'i18n.oblique.file-upload.error.type',
+						messageParams: {ignoredFiles: 'sample.jpg', supportedTypes: 'text/plain'},
+						title: 'i18n.oblique.file-upload.error.title'
+					});
+				});
+
+				test('that generic mime error is displayed', () => {
+					service.filterInvalidFiles(files, ['text/*'], 50, true);
+					expect(notification.error).toHaveBeenCalledWith({
+						message: 'i18n.oblique.file-upload.error.type',
+						messageParams: {ignoredFiles: 'sample.jpg', supportedTypes: 'text/*'},
+						title: 'i18n.oblique.file-upload.error.title'
+					});
+				});
+
+				test('that unknown mime error is displayed', () => {
+					service.filterInvalidFiles(files, ['text/unknown'], 50, true);
+					expect(notification.error).toHaveBeenCalledWith({
+						message: 'i18n.oblique.file-upload.error.type',
+						messageParams: {ignoredFiles: 'sample.txt, sample.jpg', supportedTypes: 'text/unknown'},
+						title: 'i18n.oblique.file-upload.error.title'
+					});
 				});
 			});
 
-			test('that generic mime error is displayed', () => {
-				service.filterInvalidFiles(files, ['text/*'], 50, true);
-				expect(notification.error).toHaveBeenCalledWith({
-					message: 'i18n.oblique.file-upload.error.type',
-					messageParams: {ignoredFiles: 'sample.jpg', supportedTypes: 'text/*'},
-					title: 'i18n.oblique.file-upload.error.title'
+			describe('accepting image with wild card', () => {
+				test('that second file is returned', () => {
+					const filteredFiles = service.filterInvalidFiles(files, ['image/*'], 50, true);
+					expect(filteredFiles.length).toBe(1);
 				});
-			});
 
-			test('that unknown mime error is displayed', () => {
-				service.filterInvalidFiles(files, ['text/unknown'], 50, true);
-				expect(notification.error).toHaveBeenCalledWith({
-					message: 'i18n.oblique.file-upload.error.type',
-					messageParams: {ignoredFiles: 'sample.txt, sample.jpg', supportedTypes: 'text/unknown'},
-					title: 'i18n.oblique.file-upload.error.title'
+				test('that generic mime error is displayed', () => {
+					service.filterInvalidFiles(files, ['image/*'], 50, true);
+					expect(notification.error).toHaveBeenCalledWith({
+						message: 'i18n.oblique.file-upload.error.type',
+						messageParams: {ignoredFiles: 'sample.txt', supportedTypes: 'image/*'},
+						title: 'i18n.oblique.file-upload.error.title'
+					});
 				});
 			});
 
