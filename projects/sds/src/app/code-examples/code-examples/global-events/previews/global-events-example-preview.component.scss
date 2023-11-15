@@ -1,0 +1,29 @@
+/*
+	This file is used to style one or more of the Oblique code examples.
+	It is NOT required in order to use any Oblique components.
+*/
+
+@use "@oblique/oblique/src/styles/scss/core/variables";
+@use "@oblique/oblique/src/styles/scss/core/mixins/layout";
+
+.container {
+	display: flex;
+	flex-flow: column wrap;
+	padding: 1rem;
+	border: 3px solid variables.$ob-gray-darker;
+	border-radius: 5px;
+	align-content: flex-start;
+	flex-basis: 95%;
+
+	@include layout.ob-media-breakpoint-up(md) {
+		flex-basis: 45%;
+	}
+
+	@include layout.ob-media-breakpoint-up(xl) {
+		flex-basis: 30%;
+	}
+}
+
+p {
+	margin-bottom: 0;
+}
