@@ -12,6 +12,7 @@ import {DatepickerCodeExamplesComponent} from './code-examples/datepicker/datepi
 import {DialogCodeExamplesComponent} from './code-examples/dialog/dialog-code-examples.component';
 import {FileUploadCodeExamplesComponent} from './code-examples/file-upload/file-upload-code-examples.component';
 import {FormCodeExamplesComponent} from './code-examples/form/form-code-examples.component';
+import {GlobalEventsCodeExamplesComponent} from './code-examples/global-events/global-events-code-examples.component';
 import {GridSystemCodeExamplesComponent} from './code-examples/grid-system/grid-system-code-examples.component';
 import {HtmlTableCodeExamplesComponent} from './code-examples/html-table/html-table-code-examples.component';
 import {ListGroupCodeExamplesComponent} from './code-examples/list-group/list-group-code-examples.component';
@@ -54,6 +55,7 @@ export class CodeExamplesMapper {
 		dialog: DialogCodeExamplesComponent,
 		fileUpload: FileUploadCodeExamplesComponent,
 		form: FormCodeExamplesComponent,
+		'global-events': GlobalEventsCodeExamplesComponent,
 		gridSystem: GridSystemCodeExamplesComponent,
 		htmlTable: HtmlTableCodeExamplesComponent,
 		listGroup: ListGroupCodeExamplesComponent,
