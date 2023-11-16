@@ -14,7 +14,10 @@ export function checkPropertyLiteralExists(
 		SyntaxKind.PropertyAssignment,
 		undefined,
 		true
-	).filter(node => node.getText().includes(toFindConfig.propertyName || toFindConfig.className));
+	).filter(node => {
+		const nodeText = node.getText().split(':')[0].trim();
+		return nodeText === toFindConfig.propertyName || nodeText === toFindConfig.className;
+	});
 	return syntaxList.length > 0;
 }
 
