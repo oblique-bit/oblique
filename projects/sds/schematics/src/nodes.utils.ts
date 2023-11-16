@@ -89,8 +89,8 @@ function getSortedText(syntaxList: ts.Node, kind: SyntaxKind, toAddText: string)
 	listText.push(toAddText);
 	return listText
 		.sort((textA, textB) => {
-			const upperCaseA = textA.toUpperCase();
-			const toUpperCaseB = textB.toUpperCase();
+			const upperCaseA = textA.toUpperCase().replace("'", '');
+			const toUpperCaseB = textB.toUpperCase().replace("'", '');
 			if (upperCaseA < toUpperCaseB) {
 				return -1;
 			}

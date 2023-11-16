@@ -1,4 +1,4 @@
-import {camelize, classify, dasherize} from '@angular-devkit/core/src/utils/strings';
+import {classify, dasherize} from '@angular-devkit/core/src/utils/strings';
 import {getSourceNodes} from '@schematics/angular/utility/ast-utils';
 import {Rule, SchematicContext, SchematicsException, Tree, apply, chain, mergeWith, move, template, url} from '@angular-devkit/schematics';
 import {getSdsSourceRootPath} from '../workspace.utils';
@@ -42,7 +42,10 @@ export function updateMapper(exampleName: string): Rule {
 function addSlug(exampleName: string): Rule {
 	return async (tree: Tree, context: SchematicContext) => {
 		const pathToMapper = `${await getSdsSourceRootPath(tree)}/${codeExampleMapperFilePath}`;
-		const slugText = `${camelize(exampleName)}: ${getExampleSymbolName(exampleName)}`;
+		const dasherizedExampleName = dasherize(exampleName);
+		const slugText = `${dasherizedExampleName.includes('-') ? `'${dasherizedExampleName}'` : dasherizedExampleName}: ${getExampleSymbolName(
+			exampleName
+		)}`;
 		const mapperSourceFile = await getSourceFileOrFalse(pathToMapper, tree);
 		if (!mapperSourceFile) {
 			context.logger.warn(
@@ -87,7 +90,7 @@ function importSlugSymbol(exampleName: string): Rule {
 function checkSlugAlreadyExists(sourceFile: ts.SourceFile, name: string, context: SchematicContext): boolean {
 	const elementToFind = {
 		identifierName: 'codeExamples',
-		propertyName: `${camelize(name)}`,
+		propertyName: `${dasherize(name)}`,
 		className: `${classify(name)}CodeExamplesComponent`
 	};
 	const alreadyExists = checkPropertyLiteralExists(getSourceNodes(sourceFile), elementToFind);
