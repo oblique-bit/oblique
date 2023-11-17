@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {Type} from '@angular/core';
 import {AlertCodeExamplesComponent} from './code-examples/alert/alert-code-examples.component';
 import {AutocompleteCodeExamplesComponent} from './code-examples/autocomplete/autocomplete-code-examples.component';
@@ -34,6 +35,7 @@ import {NotificationCodeExamplesComponent} from './code-examples/notification/no
 import {FormCodeExamplesComponent} from './code-examples/form/form-code-examples.component';
 import {NumberFormatCodeExamplesComponent} from './code-examples/number-format/number-format-code-examples.component';
 import {SelectableCodeExamplesComponent} from './code-examples/selectable/selectable-code-examples.component';
+import {TranslateParamsCodeExamplesComponent} from './code-examples/translate-params/translate-params-code-examples.component';
 
 export class CodeExamplesMapper {
 	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
@@ -70,7 +72,8 @@ export class CodeExamplesMapper {
 		stepper: StepperCodeExamplesComponent,
 		sticky: StickyCodeExamplesComponent,
 		tabs: TabsCodeExamplesComponent,
-		tooltip: TooltipCodeExamplesComponent
+		tooltip: TooltipCodeExamplesComponent,
+		'translate-params': TranslateParamsCodeExamplesComponent
 	};
 
 	static getCodeExampleComponent(slug: string): Type<CodeExamples> | undefined {
