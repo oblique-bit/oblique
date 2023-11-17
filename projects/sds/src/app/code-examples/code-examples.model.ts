@@ -10,6 +10,10 @@ export class CodeExamples {
 		return new SourceCode(this.getRequire(directory, filePath).default, title);
 	}
 
+	protected getJsonSnippet(directory: string, filePath: string, title: string): SourceCode {
+		return new SourceCode(this.getJsonRequire(directory, filePath), title);
+	}
+
 	private getRequire(directory: string, filePath: string): {default: string} {
 		switch (directory) {
 			case 'node_modules/@oblique/oblique/src/styles/scss/core': {
@@ -23,6 +27,19 @@ export class CodeExamples {
 			}
 			default: {
 				return require(`!!raw-loader!./code-examples/${directory}/previews/${filePath}`);
+			}
+		}
+	}
+
+	private getJsonRequire(directory: string, filePath: string): string {
+		switch (directory) {
+			case 'i18n': {
+				// eslint-disable-next-line @typescript-eslint/no-var-requires
+				return JSON.stringify(require(`../../assets/i18n/${filePath}`), null, 2);
+			}
+			default: {
+				// eslint-disable-next-line @typescript-eslint/no-var-requires
+				return JSON.stringify(require(filePath), null, 2);
 			}
 		}
 	}

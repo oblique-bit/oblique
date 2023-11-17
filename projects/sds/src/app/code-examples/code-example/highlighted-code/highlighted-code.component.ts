@@ -19,7 +19,7 @@ export class HighlightedCodeComponent implements AfterViewInit {
 
 	ngAfterViewInit(): void {
 		/* eslint-disable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
-		hljs.configure({languages: ['html', 'scss', 'ts']});
+		hljs.configure({languages: ['html', 'scss', 'ts', 'json']});
 		hljs.highlightElement(this.code.nativeElement);
 		/* eslint-enable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 	}

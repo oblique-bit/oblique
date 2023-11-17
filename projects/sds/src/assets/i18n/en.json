@@ -1,5 +1,7 @@
 {
   "i18n.file-upload.name": "File name",
   "i18n.file-upload.number": "#",
-  "i18n.notification.sampleMessage": "This is a sample message {{message}} and {{parameters}}"
+  "i18n.notification.sampleMessage": "This is a sample message {{message}} and {{parameters}}",
+  "i18n.translate-params.key": "Example text with a translated {{ param }}.",
+  "i18n.translate-params.param": "parameter"
 }
