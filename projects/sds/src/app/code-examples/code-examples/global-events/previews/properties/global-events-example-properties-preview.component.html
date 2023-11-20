@@ -1,0 +1,41 @@
+<div class="container">
+	<h5><code>beforeUnload$</code></h5>
+	<p>Number of cancelled reload events: {{ beforeUnload$ | async }}</p>
+</div>
+<div class="container">
+	<h5><code>click$</code></h5>
+	<p>Number of clicks on the document: {{ click$ | async }}</p>
+</div>
+
+<div class="container">
+	<h5><code>mouseDown$</code></h5>
+	<p>Number of mouse downs on the document: {{ mouseDown$ | async }}</p>
+</div>
+<div class="container">
+	<h5><code>mouseMove$</code></h5>
+	<p>Actual coordinates of the mouse:</p>
+	<ng-container *ngIf="mouseMove$ | async as loc">
+		<small>X: {{ loc.xCoordinate }}</small>
+		<small>Y: {{ loc.yCoordinate }}</small>
+	</ng-container>
+</div>
+<div class="container">
+	<h5><code>keyDown$</code></h5>
+	<p>Last key pressed: {{ keyDown$ | async }}</p>
+</div>
+<div class="container">
+	<h5><code>keyUp$</code></h5>
+	<p>Last key released: {{ keyUp$ | async }}</p>
+</div>
+<div class="container">
+	<h5><code>scroll$</code></h5>
+	<p>Actual vertical scroll position of the document: {{ scroll$ | async }}</p>
+</div>
+<div class="container">
+	<h5><code>resize$</code></h5>
+	<p>Actual size of the window:</p>
+	<ng-container *ngIf="resize$ | async as box">
+		<small>Width: {{ box.width }}</small>
+		<small>Height: {{ box.height }}</small>
+	</ng-container>
+</div>
