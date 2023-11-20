@@ -37,6 +37,7 @@ import {StickyCodeExamplesComponent} from './code-examples/sticky/sticky-code-ex
 import {TabsCodeExamplesComponent} from './code-examples/tabs/tabs-code-examples.component';
 import {TooltipCodeExamplesComponent} from './code-examples/tooltip/tooltip-code-examples.component';
 import {TranslateParamsCodeExamplesComponent} from './code-examples/translate-params/translate-params-code-examples.component';
+import {TranslationsCodeExamplesComponent} from './code-examples/translations/translations-code-examples.component';
 import {Type} from '@angular/core';
 /* These imports are sorted alphabetically to reduce merge conflicts.
    If you add a new import above, please make sure it is sorted
@@ -80,7 +81,8 @@ export class CodeExamplesMapper {
 		sticky: StickyCodeExamplesComponent,
 		tabs: TabsCodeExamplesComponent,
 		tooltip: TooltipCodeExamplesComponent,
-		'translate-params': TranslateParamsCodeExamplesComponent
+		'translate-params': TranslateParamsCodeExamplesComponent,
+		translations: TranslationsCodeExamplesComponent
 	};
 
 	static getCodeExampleComponent(slug: string): Type<CodeExamples> | undefined {
