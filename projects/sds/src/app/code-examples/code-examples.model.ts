@@ -37,6 +37,10 @@ export class CodeExamples {
 				// eslint-disable-next-line @typescript-eslint/no-var-requires
 				return JSON.stringify(require(`../../assets/i18n/${filePath}`), null, 2);
 			}
+			case 'node_modules/@oblique/oblique/src/assets/i18n': {
+				// eslint-disable-next-line @typescript-eslint/no-var-requires
+				return JSON.stringify(require(`../../../../../node_modules/@oblique/oblique/src/assets/i18n/${filePath}`), null, 2);
+			}
 			default: {
 				// eslint-disable-next-line @typescript-eslint/no-var-requires
 				return JSON.stringify(require(filePath), null, 2);
