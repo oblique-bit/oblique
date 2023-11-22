@@ -14,7 +14,10 @@ export function checkPropertyLiteralExists(
 		SyntaxKind.PropertyAssignment,
 		undefined,
 		true
-	).filter(node => node.getText().includes(toFindConfig.propertyName || toFindConfig.className));
+	).filter(node => {
+		const nodeText = node.getText().split(':')[0].trim();
+		return nodeText === toFindConfig.propertyName || nodeText === toFindConfig.className;
+	});
 	return syntaxList.length > 0;
 }
 
@@ -89,8 +92,8 @@ function getSortedText(syntaxList: ts.Node, kind: SyntaxKind, toAddText: string)
 	listText.push(toAddText);
 	return listText
 		.sort((textA, textB) => {
-			const upperCaseA = textA.toUpperCase();
-			const toUpperCaseB = textB.toUpperCase();
+			const upperCaseA = textA.toUpperCase().replace("'", '');
+			const toUpperCaseB = textB.toUpperCase().replace("'", '');
 			if (upperCaseA < toUpperCaseB) {
 				return -1;
 			}
