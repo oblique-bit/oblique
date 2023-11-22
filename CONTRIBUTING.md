@@ -174,6 +174,7 @@ The SDS project may use those additional scopes:
 - **code-examples**
 - **schematics** for the schematics not directly linked to a feature
 - **side-navigation**
+- **styles** for the global CSS
 - **tabbed-page**
 - **text-page**
 
