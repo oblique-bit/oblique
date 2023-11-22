@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {Component, DebugElement, Directive, EventEmitter, Output} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {Observable} from 'rxjs';
@@ -181,7 +181,9 @@ describe(ObColumnLayoutComponent.name, () => {
 	});
 
 	describe('with custom inputs', () => {
+		let fixture: ComponentFixture<TestComponent>;
 		let testComponent: TestComponent;
+
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [ObMockTranslatePipe],
@@ -191,9 +193,11 @@ describe(ObColumnLayoutComponent.name, () => {
 		});
 
 		beforeEach(() => {
-			const fixture = TestBed.createComponent(TestComponent);
+			fixture = TestBed.createComponent(TestComponent);
 			testComponent = fixture.componentInstance;
 			component = fixture.debugElement.query(By.directive(ObColumnLayoutComponent)).injector.get(ObColumnLayoutComponent);
+			component.left = false;
+			component.right = false;
 			fixture.detectChanges();
 		});
 
@@ -205,9 +209,47 @@ describe(ObColumnLayoutComponent.name, () => {
 			expect(component).toBeTruthy();
 		});
 
-		describe.each(['toggleLeftIcon$', 'toggleRightIcon$'])('property %s', property => {
+		describe.each(['toggleLeftIcon$', 'toggleRightIcon$'])('property %s unchanged', property => {
 			test('that it is not defined', () => {
 				expect(component[property]).toBeUndefined();
+			});
+		});
+
+		describe.each([
+			{property: 'toggleLeftIcon$', initialValue: 'left', toggledValue: 'right', index: 0},
+			{property: 'toggleRightIcon$', initialValue: 'right', toggledValue: 'left', index: 1}
+		])('property $property changed back', ({property, initialValue, toggledValue, index}) => {
+			let panels: ObColumnPanelDirective[];
+
+			beforeEach(fakeAsync(() => {
+				component.left = true;
+				component.right = true;
+				component.ngOnChanges();
+				fixture.detectChanges();
+				tick();
+
+				panels = fixture.debugElement
+					.queryAll(By.directive(ObColumnPanelDirective))
+					.map(element => element.injector.get(ObColumnPanelDirective));
+			}));
+
+			test('that it is an observable', () => {
+				expect(component[property] instanceof Observable).toBe(true);
+			});
+
+			test(`that it initially emits "${initialValue}"`, done => {
+				component[property].subscribe(value => {
+					expect(value).toBe(initialValue);
+					done();
+				});
+			});
+
+			test(`that it emits "${toggledValue}" after toggle has been toggled`, done => {
+				component[property].pipe(skip(1)).subscribe(value => {
+					expect(value).toBe(toggledValue);
+					done();
+				});
+				panels[index].toggle();
 			});
 		});
 	});
