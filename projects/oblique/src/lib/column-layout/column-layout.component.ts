@@ -1,11 +1,13 @@
 import {
 	AfterViewInit,
+	ChangeDetectorRef,
 	Component,
 	DoCheck,
 	ElementRef,
 	HostBinding,
 	Inject,
 	Input,
+	OnChanges,
 	OnDestroy,
 	QueryList,
 	Renderer2,
@@ -27,7 +29,10 @@ import {ObIDimension, ObIToggleDirection} from './column-layout.model';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-column-layout'}
 })
-export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestroy {
+/* A warning is given by eslint when using both DoCheck and OnChanges to prevent checking @Input changes in the DoCheck hook.
+	As long as the OnChanges lifecycle exclusively deals with @Input changes this warning isn't necessary. */
+/* eslint-disable @angular-eslint/no-conflicting-lifecycle */
+export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestroy, OnChanges {
 	@Input() left = true;
 	@Input() right = true;
 	@Input() @HostBinding('class.ob-wider-columns') wider = false;
@@ -45,6 +50,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 	constructor(
 		private readonly el: ElementRef<HTMLElement>,
 		private readonly renderer: Renderer2,
+		private readonly changeDetectorRef: ChangeDetectorRef,
 		@Inject(WINDOW) private readonly window: Window
 	) {}
 
@@ -53,10 +59,15 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 		this.dimensionChange.next({top, height, windowHeight: this.window.innerHeight});
 	}
 
+	ngOnChanges(): void {
+		// this is used to force update the columns
+		this.changeDetectorRef.detectChanges();
+		this.setupToggleIcons();
+	}
+
 	ngAfterViewInit(): void {
 		this.getDimensionChangeObservable().subscribe(dimension => this.center(dimension));
-		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft, 'left', 'right');
-		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight, 'right', 'left');
+		this.setupToggleIcons();
 	}
 
 	ngOnDestroy(): void {
@@ -64,6 +75,11 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 		this.unsubscribe.complete();
 		this.dimensionChange.complete();
 		this.observer?.disconnect();
+	}
+
+	setupToggleIcons(): void {
+		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft, 'left', 'right');
+		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight, 'right', 'left');
 	}
 
 	toggleLeft(): void {
