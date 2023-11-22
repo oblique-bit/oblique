@@ -20,10 +20,6 @@ export const APP_ROUTES: Routes = [
 		loadChildren: () => import('./app/tabbed-page/tabbed-pages.routes')
 	},
 	{
-		path: `internationalization/:${URL_CONST.urlParams.selectedSlug}`,
-		loadChildren: () => import('./app/tabbed-page/tabbed-pages.routes')
-	},
-	{
 		path: `components/:${URL_CONST.urlParams.selectedSlug}`,
 		loadChildren: () => import('./app/tabbed-page/tabbed-pages.routes')
 	}
