@@ -231,16 +231,6 @@
                 "glob": "**/*",
                 "input": "projects/oblique/src/assets",
                 "output": "/assets"
-              },
-              {
-                "glob": "*headers.conf",
-                "input": "projects/sds/src/nginx",
-                "output": "./../nginx/conf/includes"
-              },
-              {
-                "glob": "Staticfile",
-                "input": "projects/sds/src/nginx",
-                "output": "./.."
               }
             ],
             "styles": [

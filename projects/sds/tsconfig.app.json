@@ -11,7 +11,7 @@
     "downlevelIteration": true,
     "module": "esnext"
   },
-  "files": ["src/main.ts"],
+  "include": ["src/main.ts", "scripts/**/*"],
   "paths": {
     "cms/*": ["src/app/cms/*"],
     "shared/*": ["src/app/shared/*"],
