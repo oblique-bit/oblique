@@ -5,22 +5,22 @@ import {UnitTestHelpers} from '../../../test-helpers/unit-test-helpers/unit-test
 
 interface ImageInputsOptional {
 	alt?: string;
-	maxHeight?: string;
-	maxWidth?: string;
+	height: number;
+	width: number;
 	idPrefix?: string;
-	src?: string;
+	src: string;
 }
 
 class ImageInputs {
 	alt = '';
-	maxHeight = '';
-	maxWidth = '';
+	height = 0;
+	width = 0;
 	idPrefix = '';
 	src = '';
 	constructor(imageInputsOptional?: ImageInputsOptional) {
 		this.alt = imageInputsOptional?.alt ?? '';
-		this.maxHeight = imageInputsOptional?.maxHeight ?? '';
-		this.maxWidth = imageInputsOptional?.maxWidth ?? '';
+		this.height = imageInputsOptional?.height ?? 0;
+		this.width = imageInputsOptional?.width ?? 0;
 		this.idPrefix = imageInputsOptional?.idPrefix ?? '';
 		this.src = imageInputsOptional?.src ?? '';
 	}
@@ -33,7 +33,7 @@ describe(`${ImageComponent.name}`, () => {
 	const imgId = 'img';
 
 	const imageBeforeEach = async (imageInputsOptional?: ImageInputsOptional): Promise<any> => {
-		const {alt, maxHeight, maxWidth, idPrefix, src} = new ImageInputs(imageInputsOptional);
+		const {alt, height, width, idPrefix, src} = new ImageInputs(imageInputsOptional);
 		await TestBed.configureTestingModule({
 			imports: [IdPipe, ImageComponent]
 		}).compileComponents();
@@ -41,10 +41,10 @@ describe(`${ImageComponent.name}`, () => {
 		fixture = TestBed.createComponent(ImageComponent);
 		component = fixture.componentInstance;
 		component.alt = alt;
-		component.maxHeight = maxHeight;
-		component.maxWidth = maxWidth;
+		component.height = height;
+		component.width = width;
 		component.idPrefix = idPrefix;
-		component.src = src;
+		component.ngSrc = src;
 		fixture.autoDetectChanges();
 		return fixture.whenStable();
 	};
@@ -57,8 +57,8 @@ describe(`${ImageComponent.name}`, () => {
 		beforeEach(async () => {
 			await imageBeforeEach({
 				alt: 'alternate text',
-				maxHeight: '500px',
-				maxWidth: 'none',
+				height: 500,
+				width: 500,
 				idPrefix: 'content',
 				src: 'http://www.image-src.com'
 			});
@@ -70,28 +70,9 @@ describe(`${ImageComponent.name}`, () => {
 					.attributes
 			).toEqual(
 				expect.objectContaining({
-					src: 'http://www.image-src.com',
-					style: 'max-width: none; max-height: 500px;'
+					src: 'http://www.image-src.com'
 				})
 			);
-		});
-	});
-
-	describe('falsy alt & src', () => {
-		beforeEach(async () => {
-			await imageBeforeEach({
-				alt: undefined,
-				maxHeight: '500px',
-				maxWidth: 'none',
-				idPrefix: 'content',
-				src: undefined
-			});
-		});
-
-		it('should display image even when alt & src are both falsy', () => {
-			expect(
-				UnitTestHelpers.getDebugElementById<ImageComponent>(fixture, idPipe.transform(component.idPrefix, [component.componentId, imgId]))
-			).toBeTruthy();
 		});
 	});
 
@@ -99,32 +80,14 @@ describe(`${ImageComponent.name}`, () => {
 		beforeEach(async () => {
 			await imageBeforeEach({
 				alt: undefined,
-				maxHeight: '500px',
-				maxWidth: 'none',
+				height: 500,
+				width: 500,
 				idPrefix: 'content',
 				src: 'http://www.image-src.com'
 			});
 		});
 
 		it('should display image when just alt is falsy', () => {
-			expect(
-				UnitTestHelpers.getDebugElementById<ImageComponent>(fixture, idPipe.transform(component.idPrefix, [component.componentId, imgId]))
-			).toBeTruthy();
-		});
-	});
-
-	describe('falsy src', () => {
-		beforeEach(async () => {
-			await imageBeforeEach({
-				alt: 'alternate text',
-				maxHeight: '500px',
-				maxWidth: 'none',
-				idPrefix: 'content',
-				src: undefined
-			});
-		});
-
-		it('should display image when just src is falsy', () => {
 			expect(
 				UnitTestHelpers.getDebugElementById<ImageComponent>(fixture, idPipe.transform(component.idPrefix, [component.componentId, imgId]))
 			).toBeTruthy();

@@ -162,6 +162,11 @@
 			opacity: 0.4;
 		}
 	}
+
+	.mat-mdc-card-image,
+	.mdc-card__media {
+		width: 100%;
+	}
 }
 
 .ob-link-card {

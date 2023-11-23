@@ -1,10 +1,1 @@
-<!-- eslint-disable @angular-eslint/template/no-inline-styles -->
-<img
-	[id]="idPrefix | id : [componentId, 'img']"
-	[ngStyle]="{
-		maxWidth: maxWidth,
-		maxHeight: maxHeight
-	}"
-	[alt]="alt"
-	[src]="src"
-/>
+<img priority [alt]="alt" [height]="height" [id]="idPrefix | id : [componentId, 'img']" [ngSrc]="ngSrc" [width]="width" />

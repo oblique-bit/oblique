@@ -4,6 +4,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconModule} from '@angular/material/icon';
 import {MatIconHarness} from '@angular/material/icon/testing';
 import {Component} from '@angular/core';
+import {NgOptimizedImage} from '@angular/common';
 import {ObMockTranslatePipe} from './../../../_mocks/mock-translate.pipe';
 import {ObServiceNavigationPopOverSectionHarness} from './service-navigation-popover-section.harness';
 import {ObServiceNavigationPopoverSectionComponent} from './service-navigation-popover-section.component';
@@ -18,7 +19,7 @@ describe('ObServiceNavigationPopoverSectionComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, MatIconModule],
+			imports: [ObMockTranslatePipe, MatIconModule, NgOptimizedImage],
 			declarations: [ObServiceNavigationPopoverSectionComponent, TestComponent]
 		}).compileComponents();
 	});
@@ -210,7 +211,7 @@ describe('ObServiceNavigationPopoverSectionComponent', () => {
 			beforeEach(async () => {
 				TestBed.overrideTemplate(
 					TestComponent,
-					`<ob-service-navigation-popover-section><img obHeaderPrefix alt="altText" src="http://image-src" /></ob-service-navigation-popover-section>`
+					`<ob-service-navigation-popover-section><img obHeaderPrefix alt="altText" ngSrc="http://image-src" [height]="500" [width]="500" /></ob-service-navigation-popover-section>`
 				);
 				const testFixture = TestBed.createComponent(TestComponent);
 				harness = await TestbedHarnessEnvironment.harnessForFixture(testFixture, ObServiceNavigationPopOverSectionHarness);

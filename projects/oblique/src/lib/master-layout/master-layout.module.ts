@@ -1,6 +1,6 @@
 import {MatIconModule} from '@angular/material/icon';
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -54,6 +54,7 @@ export {ObOutlineDirective} from './outline.directive';
 		MatButtonModule,
 		MatIconModule,
 		MatTooltipModule,
+		NgOptimizedImage,
 		ObButtonModule,
 		ObExternalLinkModule,
 		ObIconModule,

@@ -26,9 +26,9 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 
 	readonly logo: Logo = {
 		alt: 'Swiss Confederation Logo',
-		maxHeight: 'string',
-		maxWidth: 'string',
-		src: '../assets/images/SwissConfederationLogo.svg'
+		height: 64,
+		width: 259,
+		ngSrc: '../assets/images/SwissConfederationLogo.svg'
 	};
 
 	search = new FormControl('');

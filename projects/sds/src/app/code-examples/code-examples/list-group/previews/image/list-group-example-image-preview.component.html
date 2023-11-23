@@ -1,7 +1,14 @@
 <mat-list role="list">
 	<ng-container *ngFor="let item of contentForList">
 		<mat-list-item role="listitem">
-			<img matListItemAvatar class="ob-list-item-image" alt="List group example image" src="assets/images/ListGroupImageExample.jpg" />
+			<img
+				matListItemAvatar
+				class="ob-list-item-image"
+				alt="List group example image"
+				ngSrc="assets/images/ListGroupImageExample.jpg"
+				[height]="56"
+				[width]="56"
+			/>
 			<p matListItemTitle>{{ item.line1 }}</p>
 			<p matListItemLine>{{ item.line2 }}</p>
 			<p matListItemLine>{{ item.line3 }}</p>
