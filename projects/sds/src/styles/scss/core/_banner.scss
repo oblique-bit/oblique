@@ -1,0 +1,53 @@
+/*
+These styles are exclusively used for content from Directus in the Banner API
+*/
+@use "@oblique/oblique/src/styles/scss/core/variables";
+
+.banner {
+	padding: variables.$ob-spacing-default;
+	border-radius: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 7rem;
+
+	h6 {
+		margin: 0;
+		font-weight: bolder;
+	}
+
+	&.local {
+		background-color: #00813a;
+	}
+
+	&.dev {
+		background-color: #ffd700;
+	}
+
+	&.ref {
+		background-color: #e75e00;
+	}
+
+	&.test {
+		background-color: #006699;
+	}
+
+	&.abn {
+		background-color: #b00020;
+	}
+
+	&.dev,
+	&.ref {
+		h6 {
+			color: #171717;
+		}
+	}
+
+	&.local,
+	&.test,
+	&.abn {
+		h6 {
+			color: #ffffff;
+		}
+	}
+}
