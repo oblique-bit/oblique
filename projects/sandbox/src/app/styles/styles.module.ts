@@ -22,18 +22,18 @@ import {SharedModule} from '../common/shared.module';
 	imports: [
 		CommonModule,
 		RouterModule.forChild([
-			{path: 'typography', component: TypographyComponent},
+			{path: 'alert', component: AlertComponent},
 			{path: 'block', component: BlockElementsComponent},
 			{path: 'grid', component: GridComponent},
 			{path: 'icon', component: IconSampleComponent},
 			{path: 'inline', component: InlineElementComponent},
 			{path: 'lists', component: ListsComponent},
 			{path: 'palette', component: PaletteComponent},
-			{path: 'table', component: TableComponent},
-			{path: 'stepper', component: StepperComponent},
-			{path: 'tabs', component: TabsComponent},
-			{path: 'alert', component: AlertComponent},
 			{path: 'screen-reader-only', component: ScreenReaderOnlyComponent},
+			{path: 'stepper', component: StepperComponent},
+			{path: 'table', component: TableComponent},
+			{path: 'tabs', component: TabsComponent},
+			{path: 'typography', component: TypographyComponent},
 			{path: '', redirectTo: 'typography', pathMatch: 'full'}
 		]),
 		FormsModule,

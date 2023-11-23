@@ -68,8 +68,8 @@ export class AppComponent implements OnDestroy {
 					]
 				},
 				{url: 'autocomplete', label: 'Autocomplete'},
-				{url: 'button', label: 'Buttons'},
 				{url: 'breadcrumb', label: 'Breadcrumb'},
+				{url: 'button', label: 'Buttons'},
 				{
 					url: 'collapse',
 					label: 'Collapse',
@@ -97,7 +97,7 @@ export class AppComponent implements OnDestroy {
 					]
 				},
 				{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
-				{url: 'column-layout-full-height', label: 'Column layout full height'},
+				{url: 'column-layout-full-height', label: 'Column Layout full height'},
 				{url: 'error-messages', label: 'Error messages'},
 				{url: 'external-link', label: 'External-link'},
 				{url: 'file-upload', label: 'File Upload'},
@@ -138,18 +138,18 @@ export class AppComponent implements OnDestroy {
 			url: 'styles',
 			label: 'Styles',
 			children: [
-				{url: 'typography', label: 'Typography'},
+				{url: 'alert', label: 'Alert'},
 				{url: 'block', label: 'Block elements'},
 				{url: 'grid', label: 'Grid system'},
+				{url: 'stepper', label: 'HTML Stepper'},
+				{url: 'table', label: 'HTML table'},
+				{url: 'tabs', label: 'HTML tabs'},
 				{url: 'icon', label: 'Icons as class'},
 				{url: 'inline', label: 'Inline elements'},
 				{url: 'lists', label: 'Lists'},
-				{url: 'table', label: 'HTML table'},
-				{url: 'stepper', label: 'HTML Stepper'},
-				{url: 'tabs', label: 'HTML tabs'},
-				{url: 'alert', label: 'Alert'},
 				{url: 'palette', label: 'Palette'},
-				{url: 'screen-reader-only', label: 'Screen reader only'}
+				{url: 'screen-reader-only', label: 'Screen reader only'},
+				{url: 'typography', label: 'Typography'}
 			]
 		},
 		{
@@ -163,7 +163,6 @@ export class AppComponent implements OnDestroy {
 				{url: 'datepicker', label: 'Datepicker'},
 				{url: 'dialog', label: 'Dialog'},
 				{url: 'expansion-panel', label: 'Expansion Panel'},
-				{url: 'file-upload', label: 'File Upload'},
 				{url: 'form', label: 'Forms'},
 				{url: 'icon', label: 'Icons'},
 				{url: 'list', label: 'List'},

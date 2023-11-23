@@ -38,8 +38,8 @@
 		<mat-card-content>
 			<mat-slide-toggle [(ngModel)]="isNavigationFullWidth">is full width</mat-slide-toggle>
 			<div class="form-element">
-				<label class="button-group-label">scroll mode</label>
-				<mat-button-toggle-group [(ngModel)]="navigationScrollMode">
+				<label for="sandbox-samples-master-layout-scroll-mode" class="button-group-label">scroll mode</label>
+				<mat-button-toggle-group id="sandbox-samples-master-layout-scroll-mode" [(ngModel)]="navigationScrollMode">
 					<mat-button-toggle [value]="scrollMode.AUTO">Auto</mat-button-toggle>
 					<mat-button-toggle [value]="scrollMode.ENABLED">Enabled</mat-button-toggle>
 					<mat-button-toggle [value]="scrollMode.DISABLED">Disabled</mat-button-toggle>

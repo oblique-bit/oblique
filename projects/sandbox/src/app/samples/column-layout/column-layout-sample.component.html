@@ -84,10 +84,7 @@
 			<button type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()" *ngIf="right">Toggle</button>
 		</div>
 		<div>
-			<div class="form-check form-check-inline">
-				<input type="checkbox" id="or-column-layout-overflow" class="form-check-input" [(ngModel)]="overflow" />
-				<label class="form-check-label" for="or-column-layout-overflow">Overflow</label>
-			</div>
+			<mat-checkbox [(ngModel)]="overflow">Overflow</mat-checkbox>
 		</div>
 		<mat-slide-toggle [(ngModel)]="noLayout">Remove layout</mat-slide-toggle>
 		<mat-slide-toggle [(ngModel)]="wider">Wider columns</mat-slide-toggle>

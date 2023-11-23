@@ -1,13 +1,19 @@
 <h2 class="page-header">Chips</h2>
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
-		<mat-chip-listbox *ngIf="!showAutocompleteForm" [ngClass]="{ 'mat-chip-list-stacked': stacked }">
-			<mat-chip-option [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Default</mat-chip-option>
-			<mat-chip-option [color]="color" [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Selected</mat-chip-option>
-		</mat-chip-listbox>
+		<mat-list *ngIf="!showAutocompleteForm">
+			<mat-list-item>
+				<mat-chip-listbox class="mdc-evolution-chip-set" [class.mat-mdc-chip-set-stacked]="stacked">
+					<mat-chip-option [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Default</mat-chip-option>
+					<mat-chip-option [color]="color" [ngClass]="variant" [selected]="true" [disabled]="disabled" [class.ob-selected]="selected"
+						>Selected</mat-chip-option
+					>
+				</mat-chip-listbox>
+			</mat-list-item>
+		</mat-list>
 		<mat-form-field *ngIf="showAutocompleteForm">
-			<mat-chip-grid #chipList>
-				<mat-chip-option *ngFor="let tag of tags" [removable]="true" (removed)="remove(tag)">
+			<mat-chip-grid #matChipGrid aria-label="Tag selection" [disabled]="disabled">
+				<mat-chip-option *ngFor="let tag of tags" class="mat-warning" (removed)="remove(tag)">
 					{{ tag }}
 					<mat-icon svgIcon="cancel-circle" matChipRemove />
 				</mat-chip-option>
@@ -16,17 +22,18 @@
 					#tagInput
 					[formControl]="tagsCtrl"
 					[matAutocomplete]="auto"
-					[matChipInputFor]="chipList"
+					[matChipInputFor]="matChipGrid"
 					[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
 					[matChipInputAddOnBlur]="true"
 					(matChipInputTokenEnd)="add($event)"
 				/>
+
+				<mat-autocomplete #auto="matAutocomplete" (optionSelected)="select($event)">
+					<mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+						{{ tag }}
+					</mat-option>
+				</mat-autocomplete>
 			</mat-chip-grid>
-			<mat-autocomplete #auto="matAutocomplete" (optionSelected)="select($event)">
-				<mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
-					{{ tag }}
-				</mat-option>
-			</mat-autocomplete>
 		</mat-form-field>
 	</ng-container>
 	<ng-container column-right-content>
@@ -55,10 +62,12 @@
 			<fieldset>
 				<legend>Toggle features</legend>
 				<mat-list-item *ngIf="!showAutocompleteForm">
-					<mat-slide-toggle (click)="toggleStacked()" matTooltip="Toggle stacked">Stack</mat-slide-toggle>
+					<mat-slide-toggle (click)="stacked = !stacked" matTooltip="Toggle stacked">Stack</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle (click)="toggleAutocompleteForm()" matTooltip="Toggle autocomplete">Autocomplete form</mat-slide-toggle>
+					<mat-slide-toggle (click)="showAutocompleteForm = !showAutocompleteForm" matTooltip="Toggle autocomplete"
+						>Autocomplete form</mat-slide-toggle
+					>
 				</mat-list-item>
 				<mat-list-item>
 					<mat-slide-toggle (click)="disabled = !disabled">Disabled</mat-slide-toggle>
