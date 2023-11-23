@@ -35,9 +35,7 @@
 		>
 			<span obOptionLabelIcon [iconName]="option['iconName'] || ''" [iconPosition]="optionIconPosition">
 				<span
-					[innerHTML]="
-						option.label | obHighlightTextPipe : autocompleteInputControl.value : highlightCssClass : filterRegexPattern : filterRegexFlag
-					"
+					[innerHTML]="option.label | obHighlightTextPipe : autocompleteInputControl.value : highlightCssClass : filterRegexFlag"
 				></span>
 			</span>
 		</mat-option>

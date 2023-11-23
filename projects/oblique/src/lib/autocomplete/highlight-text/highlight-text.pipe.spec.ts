@@ -36,26 +36,8 @@ describe('ObHighlightTextPipe', () => {
 		});
 
 		it('should return the initial value when no match was found', () => {
-			const result = pipe.transform(testString, 'Z', 'ob-highlight-text', 'textToFind{2}');
+			const result = pipe.transform(testString, 'Z', 'ob-highlight-text');
 			expect(result).toEqual(testString);
-		});
-
-		it("should throw error with error message if  parameter 'pattern' empty", () => {
-			expect(() => {
-				pipe.transform(testString, 'This', 'ob-highlight-text', '');
-			}).toThrow("Property pattern should not be empty. Default value is 'textToFind'. That will replace with the value");
-		});
-
-		it("should throw an error with error message if parameter 'pattern' not includes textToFind", () => {
-			expect(() => {
-				pipe.transform(testString, 'This', 'ob-highlight-text', 'FalsyPattern');
-			}).toThrow("In customised regex patterns, the string 'textToFind' should mark the location where the entered text will be.");
-		});
-
-		it("should throw an error with error message 'In customised regex patterns, the string 'textToFind' should mark the location where the entered text will be.' if parameter 'pattern' empty", () => {
-			expect(() => {
-				pipe.transform(testString, 'This', 'ob-highlight-searched-text', 'FalsyPattern');
-			}).toThrow("In customised regex patterns, the string 'textToFind' should mark the location where the entered text will be.");
 		});
 	});
 });

@@ -8,13 +8,7 @@ export class ObAutocompleteTextToFindService {
 		return text.replace(/[[\]{}()*+?.,\\^$|#-]/g, '\\$&');
 	}
 
-	createTextToFindRegex(pattern: string, regexFlags: string, textToFind: string): RegExp {
-		if (pattern.length <= 0) {
-			throw Error("Property pattern should not be empty. Default value is 'textToFind'. That will replace with the value");
-		}
-		if (!pattern.includes('textToFind')) {
-			throw Error("In customised regex patterns, the string 'textToFind' should mark the location where the entered text will be.");
-		}
-		return new RegExp(pattern.replace('textToFind', textToFind), regexFlags);
+	createTextToFindRegex(regexFlags: string, textToFind: string): RegExp {
+		return new RegExp(textToFind, regexFlags);
 	}
 }

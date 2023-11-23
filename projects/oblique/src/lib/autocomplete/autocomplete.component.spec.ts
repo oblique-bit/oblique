@@ -114,10 +114,6 @@ describe('AutocompleteComponent', () => {
 				expect(component.autocompleteOptions.length).toBe(0);
 			});
 
-			it("should have filterRegex.pattern to be 'textToFind'", () => {
-				expect(component.filterRegexPattern).toBe('textToFind');
-			});
-
 			it("should have filterRegex.flags to be 'gi'", () => {
 				expect(component.filterRegexFlag).toBe('gi');
 			});
