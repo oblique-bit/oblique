@@ -6,6 +6,7 @@ import {IdPipe} from '../id/id.pipe';
 import {UnitTestHelpers} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
 
 @Component({
+	standalone: true,
 	selector: 'app-tabs-wrapper',
 	template: `<app-tabs [idPrefix]="componentId" [id]="componentId | id : ['tabs']">
 		<app-tab name="test-tab-1" [active]="true" [idPrefix]="componentId | id : ['tab', 1]" [id]="componentId | id : ['tab', 1]">
@@ -14,7 +15,8 @@ import {UnitTestHelpers} from '../../../test-helpers/unit-test-helpers/unit-test
 		<app-tab name="test-tab-2" [active]="false" [idPrefix]="componentId | id : ['tab', 2]" [id]="componentId | id : ['tab', 2]">
 			<p [id]="componentId | id : ['tab-2-content']">test-tab-2-p</p></app-tab
 		>
-	</app-tabs>`
+	</app-tabs>`,
+	imports: [IdPipe, TabComponent, TabsComponent]
 })
 class TabsWrapperComponent {
 	readonly componentId = 'tabs-wrapper';
@@ -27,8 +29,7 @@ describe(`${TabsComponent.name}`, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [TabsWrapperComponent],
-			imports: [IdPipe, TabComponent, TabsComponent],
+			imports: [TabsWrapperComponent],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
 

@@ -11,6 +11,7 @@ overrides:
         - projects/sds/schematics/tsconfig.schematics.json
     rules:
       # reactivate some rules
+      "@angular-eslint/prefer-standalone-component": error
       "@angular-eslint/use-component-view-encapsulation": error
       "@typescript-eslint/sort-type-constituents": error
       "@typescript-eslint/explicit-module-boundary-types": error
