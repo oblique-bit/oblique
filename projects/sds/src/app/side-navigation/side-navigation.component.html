@@ -1,9 +1,9 @@
 <app-image
 	[alt]="logo.alt"
 	[idPrefix]="componentId"
-	[maxHeight]="logo.maxHeight"
-	[maxWidth]="logo.maxWidth"
-	[src]="logo.src"
+	[height]="logo.height"
+	[width]="logo.width"
+	[ngSrc]="logo.ngSrc"
 	[id]="componentId | id : ['logo']"
 />
 <app-version [id]="componentId | id : ['version']" [idPrefix]="componentId" (versionChanged)="updateVersion($event)" />

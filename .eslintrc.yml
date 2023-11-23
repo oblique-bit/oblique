@@ -228,4 +228,3 @@ overrides:
       "@angular-eslint/template/attributes-order": off
       "@angular-eslint/template/no-inline-styles": off
       "@angular-eslint/template/accessibility-interactive-supports-focus": off
-      "@angular-eslint/template/prefer-ngsrc": off
