@@ -30,7 +30,6 @@ export class AutocompleteSampleComponent implements OnInit {
 		[optionIconPosition]="optionIconPosition"
 		[formControl]="formControl"
 		[filterRegexFlag]="'gi'"
-		[filterRegexPattern]="pattern"
 		>
 	</ob-autocomplete>
 
@@ -44,7 +43,6 @@ formControl = new FormControl('');
 		[autocompleteOptions]="options"
 		[optionIconPosition]="optionIconPosition"
 		[filterRegexFlag]="'gi'"
-		[filterRegexPattern]="pattern"
 		>
 	</ob-autocomplete>` as string;
 	pattern = 'textToFind';
