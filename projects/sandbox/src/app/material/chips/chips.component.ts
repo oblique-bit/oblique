@@ -9,23 +9,24 @@ import {map} from 'rxjs/operators';
 
 @Component({
 	selector: 'sb-chips',
-	templateUrl: './chips.component.html'
+	templateUrl: './chips.component.html',
+	styleUrls: ['./chips.component.scss']
 })
 export class ChipsComponent implements OnInit {
-	showAutocompleteForm = false;
 	color: ThemePalette = null;
-	variant: string = null;
 	disabled = false;
+	filteredTags: Observable<string[]>;
 	selected = false;
-	readonly colors: ThemePalette[] = [null, 'warn', 'primary', 'accent'];
-	readonly variants: string[] = [null, 'info', 'success', 'warning', 'error'];
-	readonly separatorKeysCodes = [ENTER, COMMA, SEMICOLON];
+	showAutocompleteForm = false;
+	stacked = false;
+	variant: string = null;
 
-	private stacked = false;
-	private readonly tagsCtrl = new UntypedFormControl();
-	private filteredTags: Observable<string[]>;
-	private readonly allTags = ['IT', 'Sales', 'Marketing', 'Management', 'HR', 'Cleaning'];
-	private readonly tags = this.allTags.splice(0, 3);
+	readonly allTags = ['IT', 'Sales', 'Marketing', 'Management', 'HR', 'Cleaning'];
+	readonly colors: ThemePalette[] = [null, 'warn', 'primary', 'accent'];
+	readonly separatorKeysCodes = [ENTER, COMMA, SEMICOLON];
+	readonly tags = this.allTags.splice(0, 3);
+	readonly tagsCtrl = new UntypedFormControl();
+	readonly variants: string[] = [null, 'info', 'success', 'warning', 'error'];
 
 	@ViewChild('tagInput', {static: false}) private readonly tagInput: ElementRef<HTMLInputElement>;
 	@ViewChild('auto', {static: false}) private readonly matAutocomplete: MatAutocomplete;
@@ -33,14 +34,6 @@ export class ChipsComponent implements OnInit {
 	ngOnInit(): void {
 		this.color = this.colors[0];
 		this.filteredTags = this.tagsCtrl.valueChanges.pipe(map((tag: string | null) => (tag ? this.filter(tag) : this.remainingTags())));
-	}
-
-	toggleStacked(): void {
-		this.stacked = !this.stacked;
-	}
-
-	toggleAutocompleteForm(): void {
-		this.showAutocompleteForm = !this.showAutocompleteForm;
 	}
 
 	add(event: MatChipInputEvent): void {

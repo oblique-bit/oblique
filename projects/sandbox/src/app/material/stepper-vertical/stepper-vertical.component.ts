@@ -3,7 +3,8 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sb-stepper-vertical',
-	templateUrl: './stepper-vertical.component.html'
+	templateUrl: './stepper-vertical.component.html',
+	styleUrls: ['./stepper-vertical.component.scss']
 })
 export class StepperVerticalComponent implements OnInit {
 	firstFormGroup: UntypedFormGroup;

@@ -13,7 +13,7 @@ export class DialogComponent {
 	dialogState: string;
 
 	private readonly DIALOG_STATE_NEVER_OPENED = 'Never opened';
-	private readonly DIALOG_STATE_CURRENTLY_OPEN = 'Currently open';
+	private readonly DIALOG_STATE_OPEN = 'Open';
 	private readonly DIALOG_STATE_CLOSED = 'Closed';
 	private readonly DIALOG_WIDTH = '250px';
 
@@ -22,7 +22,7 @@ export class DialogComponent {
 	}
 
 	openDialog(): void {
-		this.dialogState = this.DIALOG_STATE_CURRENTLY_OPEN;
+		this.dialogState = this.DIALOG_STATE_OPEN;
 		const dialogRef = this.dialog.open(ExampleDialogComponent, {
 			width: this.DIALOG_WIDTH,
 			data: {name: this.name, animal: this.animal, spinner: this.spinner}

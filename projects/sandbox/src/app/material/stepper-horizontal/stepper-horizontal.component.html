@@ -34,7 +34,7 @@
 					<mat-form-field>
 						<input matInput placeholder="Address" formControlName="secondCtrl" required />
 					</mat-form-field>
-					<div>
+					<div class="buttons-container">
 						<button type="button" mat-flat-button matStepperPrevious color="accent">Back</button>
 						<button type="button" mat-flat-button matStepperNext color="primary">Next</button>
 					</div>
@@ -43,7 +43,7 @@
 			<mat-step>
 				<ng-template matStepLabel>Done</ng-template>
 				You are now done.
-				<div>
+				<div class="buttons-container">
 					<button type="button" mat-flat-button matStepperPrevious color="accent">Back</button>
 					<button type="button" mat-flat-button (click)="stepper.reset()" color="warn">Reset</button>
 				</div>
