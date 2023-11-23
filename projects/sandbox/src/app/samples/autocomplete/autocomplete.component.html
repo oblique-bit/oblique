@@ -6,7 +6,6 @@
 				(selectedOptionChange)="showSelection($event)"
 				[autocompleteOptions]="visibleOptionList"
 				[filterRegexFlag]="'gi'"
-				[filterRegexPattern]="pattern"
 				[formControl]="formControl"
 				[optionIconPosition]="optionIconPosition"
 			>
@@ -26,7 +25,6 @@
 				[(ngModel)]="searchText"
 				[autocompleteOptions]="visibleOptionList"
 				[filterRegexFlag]="'gi'"
-				[filterRegexPattern]="pattern"
 				[optionIconPosition]="optionIconPosition"
 			>
 			</ob-autocomplete>

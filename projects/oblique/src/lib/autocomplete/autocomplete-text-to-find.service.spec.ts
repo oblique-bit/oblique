@@ -15,26 +15,8 @@ describe('ObAutocompleteTextToFindService', () => {
 
 	describe('createTextToFindRegex', () => {
 		it("should return regex '/this is a string this/gi'", () => {
-			const result = service.createTextToFindRegex('this is a string textToFind', 'gi', 'this');
-			expect(result).toEqual(/this is a string this/gi);
-		});
-
-		it("should throw error with error message if  parameter 'pattern' empty", () => {
-			expect(() => {
-				service.createTextToFindRegex('noPlaceholder', 'gi', 'This');
-			}).toThrow("In customised regex patterns, the string 'textToFind' should mark the location where the entered text will be.");
-		});
-
-		it("should throw error with error message if  parameter 'pattern' empty", () => {
-			expect(() => {
-				service.createTextToFindRegex('', 'gi', 'This');
-			}).toThrow("Property pattern should not be empty. Default value is 'textToFind'. That will replace with the value");
-		});
-
-		it("should throw an error with error message if parameter 'pattern' not includes textToFind", () => {
-			expect(() => {
-				service.createTextToFindRegex('FalsyPattern', 'gi', 'This');
-			}).toThrow("In customised regex patterns, the string 'textToFind' should mark the location where the entered text will be.");
+			const result = service.createTextToFindRegex('gi', 'this');
+			expect(result).toEqual(/this/gi);
 		});
 	});
 
