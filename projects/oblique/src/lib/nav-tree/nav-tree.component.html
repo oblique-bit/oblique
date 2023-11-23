@@ -1,7 +1,7 @@
 <mat-form-field *ngIf="hasFilter">
 	<mat-label>{{ "i18n.oblique.nav-tree.label.filter" | translate }}</mat-label>
 	<input type="text" matInput [(ngModel)]="filterPattern" />
-	<mat-icon svgIcon="search" matIconPrefix></mat-icon>
+	<mat-icon svgIcon="search" matIconPrefix />
 </mat-form-field>
 <ng-template #itemList let-items let-isParentCollapsed="isParentCollapsed">
 	<ng-container *ngFor="let item of items">
@@ -31,8 +31,8 @@
 				[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
 			>
 				<span class="ob-icon-wrapper"
-					><mat-icon [svgIcon]="'chevron-' + (isParentCollapsed || item.collapsed ? 'right' : 'down')" *ngIf="item.items"></mat-icon
-				></span>
+					><mat-icon [svgIcon]="'chevron-' + (isParentCollapsed || item.collapsed ? 'right' : 'down')" *ngIf="item.items"
+				/></span>
 				<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
 			</a>
 			<div [id]="'#' + itemKey(item)" class="collapse" *ngIf="item.items" [hidden]="isParentCollapsed || item.collapsed">
@@ -44,8 +44,7 @@
 				>
 					<ng-container
 						*ngTemplateOutlet="itemList; context: { $implicit: item.items, isParentCollapsed: isParentCollapsed || item.collapsed }"
-					>
-					</ng-container>
+					/>
 				</ul>
 			</div>
 		</li>
@@ -58,5 +57,5 @@
 	[attr.aria-labelledby]="treeAriaLabelledBy"
 	[attr.aria-label]="treeAriaLabel"
 >
-	<ng-container *ngTemplateOutlet="itemList; context: { $implicit: items, isParentCollapsed: false }"></ng-container>
+	<ng-container *ngTemplateOutlet="itemList; context: { $implicit: items, isParentCollapsed: false }" />
 </ul>

@@ -9,7 +9,7 @@
 			<div class="ob-master-layout-brand">
 				<aside *ngIf="banner.text" [style.color]="banner.color" [style.backgroundColor]="banner.bgColor">{{ banner.text }}</aside>
 				<a class="ob-master-layout-logo" [routerLink]="home$ | async" tabindex="-1">
-					<ng-container [ngTemplateOutlet]="obLogo"></ng-container>
+					<ng-container [ngTemplateOutlet]="obLogo" />
 				</a>
 				<span class="ob-master-layout-brand-app-title">
 					<a [routerLink]="home$ | async" class="ob-master-layout-brand-link"><ng-content select="[obHeaderTitle]"></ng-content></a>
@@ -17,7 +17,7 @@
 			</div>
 			<ul class="ob-collapsed-layout">
 				<li *ngFor="let template of mobileTemplates" #headerMobileControl>
-					<ng-container [ngTemplateOutlet]="template"></ng-container>
+					<ng-container [ngTemplateOutlet]="template" />
 				</li>
 				<li class="ob-master-layout-header-toggle-container">
 					<button
@@ -59,7 +59,7 @@
 			(logoutTriggered)="emitLogoutUrl($event)"
 		>
 			<ng-template #customWidgetTemplate *ngFor="let template of templates">
-				<ng-container [ngTemplateOutlet]="template"></ng-container>
+				<ng-container [ngTemplateOutlet]="template" />
 			</ng-template>
 		</ob-service-navigation>
 	</ng-container>

@@ -9,7 +9,7 @@
 	[obPopover]="popoverContent"
 	placement="bottom"
 >
-	<mat-icon svgIcon="apps"></mat-icon>
+	<mat-icon svgIcon="apps" />
 	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.button.label" | translate }}</span>
 </button>
 
@@ -23,7 +23,7 @@
 		obButton="tertiary"
 		[matTooltip]="'i18n.oblique.service-navigation.applications.link.tooltip' | translate"
 	>
-		<mat-icon svgIcon="apps"></mat-icon>
+		<mat-icon svgIcon="apps" />
 		<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.link.label" | translate }}</span>
 	</a>
 </ng-template>
@@ -82,5 +82,5 @@
 	<ob-service-navigation-popover-section
 		header="i18n.oblique.service-navigation.applications.links.header"
 		[links]="[{ url: applicationsUrl, label: 'i18n.oblique.service-navigation.applications.link.label', isInternalLink: true }]"
-	></ob-service-navigation-popover-section>
+	/>
 </ng-template>

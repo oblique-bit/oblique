@@ -188,7 +188,6 @@ overrides:
   - files:
       - "*.spec.ts"
     rules:
-      "@angular-eslint/template/prefer-self-closing-tags": off
       "@angular-eslint/component-max-inline-declarations": off
       "@angular-eslint/use-component-selector": off
       "@typescript-eslint/ban-ts-comment": off
@@ -229,5 +228,4 @@ overrides:
       "@angular-eslint/template/attributes-order": off
       "@angular-eslint/template/no-inline-styles": off
       "@angular-eslint/template/accessibility-interactive-supports-focus": off
-      "@angular-eslint/template/prefer-self-closing-tags": off
       "@angular-eslint/template/prefer-ngsrc": off

@@ -16,7 +16,7 @@
 		<h2 class="ob-screen-reader-only">{{ "i18n.oblique.footer.links.title" | translate }}</h2>
 		<ul class="ob-footer-item ob-footer-item-links">
 			<li *ngFor="let template of templates">
-				<ng-container [ngTemplateOutlet]="template"></ng-container>
+				<ng-container [ngTemplateOutlet]="template" />
 			</li>
 		</ul>
 	</ng-container>
