@@ -7,7 +7,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ErrorMessagesSampleComponent} from './error-messages-sample.component';
 
-describe('ObErrorMessagesSampleComponent', () => {
+describe(ErrorMessagesSampleComponent.name, () => {
 	let component: ErrorMessagesSampleComponent;
 	let fixture: ComponentFixture<ErrorMessagesSampleComponent>;
 
