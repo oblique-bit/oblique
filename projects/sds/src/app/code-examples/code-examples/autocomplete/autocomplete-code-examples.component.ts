@@ -3,7 +3,6 @@ import {CodeExample, CodeExamples} from '../../code-examples.model';
 import {AutocompleteExampleDefaultComponent} from './previews/default/autocomplete-example-default.component';
 import {AutocompleteExampleIconPositionStartComponent} from './previews/icon-position-start/autocomplete-example-icon-position-start.component';
 import {AutocompleteExampleIconOptionsGroupComponent} from './previews/options-group/autocomplete-example-options-group.component';
-import {AutocompleteExampleFilterRegexPatternComponent} from './previews/filter-regex-pattern/autocomplete-example-filter-regex-pattern.component';
 import {CommonModule} from '@angular/common';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {IdPipe} from '../../../shared/id/id.pipe';
@@ -41,15 +40,6 @@ export class AutocompleteCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('autocomplete', 'options-group/autocomplete-example-options-group.component.html', 'HTML'),
 				this.getSnippet('autocomplete', 'options-group/autocomplete-example-options-group.component.ts', 'TS')
-			]
-		},
-		{
-			component: AutocompleteExampleFilterRegexPatternComponent,
-			idParts: ['autocomplete', 'filter', 'regex', 'pattern'],
-			title: 'Autocomplete filter regex pattern',
-			snippets: [
-				this.getSnippet('autocomplete', 'filter-regex-pattern/autocomplete-example-filter-regex-pattern.component.html', 'HTML'),
-				this.getSnippet('autocomplete', 'filter-regex-pattern/autocomplete-example-filter-regex-pattern.component.ts', 'TS')
 			]
 		}
 	];
