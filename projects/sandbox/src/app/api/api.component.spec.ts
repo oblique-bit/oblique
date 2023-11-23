@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ApiComponent} from './api.component';
 
-describe('ApiComponent', () => {
+describe(ApiComponent.name, () => {
 	let component: ApiComponent;
 	let fixture: ComponentFixture<ApiComponent>;
 

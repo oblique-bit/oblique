@@ -4,7 +4,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {BreadcrumbSampleComponent} from './breadcrumb.component';
 
-describe('BreadcrumbSampleComponent', () => {
+describe(BreadcrumbSampleComponent.name, () => {
 	let component: BreadcrumbSampleComponent;
 	let fixture: ComponentFixture<BreadcrumbSampleComponent>;
 

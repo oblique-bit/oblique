@@ -11,7 +11,7 @@ import {ObliqueTestingModule} from '@oblique/oblique';
 import {NavTreeSampleComponent} from './nav-tree-sample.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
-describe('ObNavTreeSampleComponent', () => {
+describe(NavTreeSampleComponent.name, () => {
 	let component: NavTreeSampleComponent;
 	let fixture: ComponentFixture<NavTreeSampleComponent>;
 

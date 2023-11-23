@@ -4,7 +4,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ObliqueTestingModule} from '@oblique/oblique';
 import {NumberFormatSampleComponent} from './number-format-sample.component';
 
-describe('ObNumberFormatSampleComponent', () => {
+describe(NumberFormatSampleComponent.name, () => {
 	let component: NumberFormatSampleComponent;
 	let fixture: ComponentFixture<NumberFormatSampleComponent>;
 

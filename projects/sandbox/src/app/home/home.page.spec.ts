@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {HomePageComponent} from './home.page';
 import {ObliqueTestingModule} from '@oblique/oblique';
 
-describe('HomePageComponent', () => {
+describe(HomePageComponent.name, () => {
 	let component: HomePageComponent;
 	let fixture: ComponentFixture<HomePageComponent>;
 

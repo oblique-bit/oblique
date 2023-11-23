@@ -3,7 +3,7 @@ import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {ObliqueTestingModule} from '@oblique/oblique';
 import {StickySampleComponent} from './sticky-sample.component';
 
-describe('StickySampleComponent', () => {
+describe(StickySampleComponent.name, () => {
 	let component: StickySampleComponent;
 	let fixture: ComponentFixture<StickySampleComponent>;
 
