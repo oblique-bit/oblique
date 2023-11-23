@@ -1,13 +1,13 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
-import {CommonModule} from '@angular/common';
+import {NgFor} from '@angular/common';
 
 @Component({
 	standalone: true,
 	selector: 'app-list-group-example-avatar-subheader',
 	templateUrl: './list-group-example-avatar-subheader.component.html',
-	imports: [MatListModule, MatIconModule, CommonModule],
+	imports: [MatListModule, MatIconModule, NgFor],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListGroupExampleAvatarSubheaderComponent {
