@@ -1,7 +1,7 @@
 <h2 class="page-header">{{ "i18n.routes.samples.notification.title" | translate }}</h2>
 <ob-column-layout [left]="false">
 	<div column-main-content>
-		<ob-notification [channel]="sampleChannel"></ob-notification>
+		<ob-notification [channel]="sampleChannel" />
 	</div>
 	<div column-right-content>
 		<h3>Controls</h3>
@@ -97,7 +97,7 @@
 				(click)="clear()"
 				matTooltip="Clears notifications from current selected channel."
 			>
-				<mat-icon svgIcon="trash"></mat-icon>
+				<mat-icon svgIcon="trash" />
 				<span>Clear</span>
 			</button>
 			<button
@@ -107,11 +107,11 @@
 				(click)="clearAllChannels()"
 				matTooltip="Clears notifications from all channels."
 			>
-				<mat-icon svgIcon="trash"></mat-icon>
+				<mat-icon svgIcon="trash" />
 				<span>Clear all</span>
 			</button>
 			<button obButton="secondary" mat-button type="button" (click)="send()">
-				<mat-icon svgIcon="paper-plane"></mat-icon>
+				<mat-icon svgIcon="paper-plane" />
 				<span>Send notification</span>
 			</button>
 		</div>

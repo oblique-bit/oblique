@@ -1,5 +1,5 @@
 <ng-container *ngIf="!showLoadingBox; else loading">
-	<ob-drop-zone [accept]="accept" [maxFileSize]="maxFileSize" [multiple]="multiple" (uploadEvent)="processEvent($event)"></ob-drop-zone>
+	<ob-drop-zone [accept]="accept" [maxFileSize]="maxFileSize" [multiple]="multiple" (uploadEvent)="processEvent($event)" />
 </ng-container>
 
 <ng-template #loading>
@@ -9,5 +9,5 @@
 		[uploadUrl]="uploadUrl"
 		[cancelConfirmation]="cancelConfirmation"
 		(uploadEvent)="processEvent($event)"
-	></ob-progress>
+	/>
 </ng-template>

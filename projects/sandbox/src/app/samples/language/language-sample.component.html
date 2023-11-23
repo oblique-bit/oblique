@@ -1,13 +1,13 @@
 <h2 class="page-header">Language</h2>
-<sb-description component="language"></sb-description>
+<sb-description component="language" />
 <ob-column-layout [left]="false" [right]="true">
 	<div column-main-content>
 		{{ 0 | obDate : format : timezone }}
 		<mat-form-field class="ms-fix">
 			<mat-label>Datepicker</mat-label>
 			<input matInput [matDatepicker]="picker" [value]="today" />
-			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-			<mat-datepicker #picker></mat-datepicker>
+			<mat-datepicker-toggle matSuffix [for]="picker" />
+			<mat-datepicker #picker />
 		</mat-form-field>
 	</div>
 	<div column-right-content>
@@ -16,4 +16,4 @@
 		<input [(ngModel)]="timezone" />
 	</div>
 </ob-column-layout>
-<sb-api component="language"></sb-api>
+<sb-api component="language" />

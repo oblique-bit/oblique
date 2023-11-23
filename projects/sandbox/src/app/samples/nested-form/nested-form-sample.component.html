@@ -2,12 +2,12 @@
 <form [formGroup]="parentForm" (submit)="validateForm(parentForm.valid)" (reset)="resetForm()" obParentFormDirective>
 	<h3>Reactive form</h3>
 	<ob-nested-form formControlName="child" [nestedForm]="child.nestedForm">
-		<sb-nested-form-child-sample #child></sb-nested-form-child-sample>
+		<sb-nested-form-child-sample #child />
 	</ob-nested-form>
 	<mat-form-field obErrorMessages>
 		<mat-label>Reactive Material Parent</mat-label>
 		<input matInput formControlName="parent" />
-		<mat-error></mat-error>
+		<mat-error />
 	</mat-form-field>
 	<div class="form-actions">
 		<button mat-flat-button type="reset">{{ "i18n.common.reset" | translate }}</button>
@@ -20,12 +20,12 @@
 <form #ngForm (submit)="validateForm(ngForm.valid)" obParentFormDirective>
 	<h3>Template driven form</h3>
 	<ob-nested-form [(ngModel)]="model.child" name="child" [nestedForm]="childTD.ngForm.control">
-		<sb-nested-form-child-td-sample #childTD></sb-nested-form-child-td-sample>
+		<sb-nested-form-child-td-sample #childTD />
 	</ob-nested-form>
 	<mat-form-field obErrorMessages>
 		<mat-label>Template Material Parent</mat-label>
 		<input matInput name="parent" [(ngModel)]="model.parent" required />
-		<mat-error></mat-error>
+		<mat-error />
 	</mat-form-field>
 	<div class="form-actions">
 		<button mat-flat-button type="reset">{{ "i18n.common.reset" | translate }}</button>

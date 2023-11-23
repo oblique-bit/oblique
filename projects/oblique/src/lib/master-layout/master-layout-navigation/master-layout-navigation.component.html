@@ -10,7 +10,7 @@
 	aria-hidden="true"
 	id="ob-navigation-scrollable-control-left"
 >
-	<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron-left"></mat-icon></span>
+	<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron-left" /></span>
 </button>
 <ng-content *ngIf="!initializedLinks.length"></ng-content>
 <nav aria-labelledby="ob-navigationlabel">
@@ -44,7 +44,7 @@
 						[rel]="link.sameTarget ? '' : undefined"
 						[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
 					>
-						<span class="ob-icon-wrapper"><mat-icon *ngIf="link.icon" [svgIcon]="link.icon"></mat-icon></span>
+						<span class="ob-icon-wrapper"><mat-icon *ngIf="link.icon" [svgIcon]="link.icon" /></span>
 						<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
 					</a>
 				</ng-container>
@@ -61,7 +61,7 @@
 						[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
 						(click)="close()"
 					>
-						<span class="ob-icon-wrapper"><mat-icon *ngIf="link.icon" [svgIcon]="link.icon"></mat-icon></span>
+						<span class="ob-icon-wrapper"><mat-icon *ngIf="link.icon" [svgIcon]="link.icon" /></span>
 						<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
 					</a>
 				</ng-template>
@@ -77,13 +77,11 @@
 					(click)="toggleSubMenu(obMasterLayoutNavigationItem, link)"
 					[obAriaMenuButton]="'ob-menu-' + link.id"
 				>
-					<span class="ob-icon-wrapper ob-toggle-layout-collapsed"
-						><mat-icon svgIcon="chevron-right" class="ob-nav-toggle"></mat-icon
-					></span>
-					<span class="ob-icon-wrapper"><mat-icon *ngIf="link.icon" [svgIcon]="link.icon"></mat-icon></span>
+					<span class="ob-icon-wrapper ob-toggle-layout-collapsed"><mat-icon svgIcon="chevron-right" class="ob-nav-toggle" /></span>
+					<span class="ob-icon-wrapper"><mat-icon *ngIf="link.icon" [svgIcon]="link.icon" /></span>
 					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
-					<span class="ob-icon-wrapper ob-toggle-collapsed"><mat-icon svgIcon="chevron-down" class="ob-nav-toggle"></mat-icon></span>
-					<span class="ob-icon-wrapper ob-toggle-expanded"><mat-icon svgIcon="chevron-up" class="ob-nav-toggle"></mat-icon></span>
+					<span class="ob-icon-wrapper ob-toggle-collapsed"><mat-icon svgIcon="chevron-down" class="ob-nav-toggle" /></span>
+					<span class="ob-icon-wrapper ob-toggle-expanded"><mat-icon svgIcon="chevron-up" class="ob-nav-toggle" /></span>
 				</button>
 				<div
 					class="ob-sub-menu"
@@ -105,9 +103,9 @@
 								>{{ currentGrandparentLink.label | translate }}
 							</ng-container>
 							<ng-template #homeIcon>
-								<mat-icon class="ob-sub-menu-back-button-home-icon" matSuffix svgIcon="home"></mat-icon>
+								<mat-icon class="ob-sub-menu-back-button-home-icon" matSuffix svgIcon="home" />
 							</ng-template>
-							<mat-icon matPrefix svgIcon="arrow-left"></mat-icon>
+							<mat-icon matPrefix svgIcon="arrow-left" />
 						</button>
 						<button
 							type="button"
@@ -117,7 +115,7 @@
 							[id]="'ob-sub-menu-close-button-' + link.id"
 							(click)="closeSubMenu(obMasterLayoutNavigationItem, link)"
 						>
-							{{ "i18n.common.close" | translate }} <mat-icon matSuffix svgIcon="cancel"></mat-icon>
+							{{ "i18n.common.close" | translate }} <mat-icon matSuffix svgIcon="cancel" />
 						</button>
 					</div>
 					<ob-master-layout-navigation-sub-menu-item
@@ -133,7 +131,7 @@
 						[showChildren]="false"
 						class="ob-sub-menu-parent-link"
 						[class.is-exact-match]="isCurrentParentLinkExactMatch"
-					></ob-master-layout-navigation-sub-menu-item>
+					/>
 					<ul class="ob-main-nav ob-sub-nav">
 						<li *ngFor="let child of link.children">
 							<ob-master-layout-navigation-sub-menu-item
@@ -146,7 +144,7 @@
 								[routerLinkActiveOptions]="routerLinkActiveOptions"
 								[routerLinkBase]="link.url"
 								(changeCurrentParent)="changeCurrentParentLink($event)"
-							></ob-master-layout-navigation-sub-menu-item>
+							/>
 						</li>
 					</ul>
 				</div>
@@ -163,5 +161,5 @@
 	aria-hidden="true"
 	id="ob-navigation-scrollable-control-right"
 >
-	<mat-icon svgIcon="chevron-right"></mat-icon>
+	<mat-icon svgIcon="chevron-right" />
 </button>

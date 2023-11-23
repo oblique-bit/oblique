@@ -12,7 +12,7 @@
 			>{{ languageObject.code.toUpperCase() }}</mat-option
 		>
 	</mat-select>
-	<mat-icon matSuffix [svgIcon]="chevron"></mat-icon>
+	<mat-icon matSuffix [svgIcon]="chevron" />
 </mat-form-field>
 <ul *ngIf="languageSelectorStyle === 'tabs'" id="ob-language-tabs" aria-labelledby="ob-language-change" class="ob-language-list">
 	<li *ngFor="let languageObject of languages">

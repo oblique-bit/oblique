@@ -12,7 +12,7 @@
 				[isExternalLink]="!link.isInternalLink"
 				[attr.aria-label]="link.ariaLabel?.text | translate : link.ariaLabel?.parameters"
 			>
-				<mat-icon *ngIf="link.icon" [svgIcon]="link.icon" class="ob-icon-text"></mat-icon>
+				<mat-icon *ngIf="link.icon" [svgIcon]="link.icon" class="ob-icon-text" />
 				{{ link.label | translate }}</a
 			>
 		</li>

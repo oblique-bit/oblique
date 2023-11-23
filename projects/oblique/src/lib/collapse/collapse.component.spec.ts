@@ -6,9 +6,9 @@ import {OBLIQUE_COLLAPSE_ACTIVE, ObCollapseComponent} from './collapse.component
 
 @Component({
 	template: `
-		<ob-collapse></ob-collapse>
-		<ob-collapse id="my-custom-id-for-test"></ob-collapse>
-		<ob-collapse></ob-collapse>
+		<ob-collapse />
+		<ob-collapse id="my-custom-id-for-test" />
+		<ob-collapse />
 	`
 })
 class TestCollapseComponent {}

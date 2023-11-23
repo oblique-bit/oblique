@@ -7,7 +7,7 @@
 			[value]="file.progress"
 			[color]="file.hasError ? 'warn' : 'primary'"
 			[class.completed]="file.completed"
-		></mat-progress-bar>
+		/>
 		<button
 			*ngIf="!file.completed && file.hasError"
 			type="button"
@@ -16,7 +16,7 @@
 			[matTooltip]="'i18n.oblique.file-upload.retry' | translate"
 			(click)="retryUpload(file)"
 		>
-			<mat-icon svgIcon="repeat"></mat-icon>
+			<mat-icon svgIcon="repeat" />
 			<span class="ob-screen-reader-only">{{ "i18n.oblique.file-upload.retry" | translate }}</span>
 		</button>
 		<button
@@ -27,7 +27,7 @@
 			obButton="secondary"
 			(click)="cancelUpload(file)"
 		>
-			<mat-icon svgIcon="cancel"></mat-icon>
+			<mat-icon svgIcon="cancel" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.cancel" | translate }}</span>
 		</button>
 	</div>

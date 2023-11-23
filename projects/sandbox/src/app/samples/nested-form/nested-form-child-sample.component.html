@@ -2,14 +2,14 @@
 	<mat-form-field obErrorMessages>
 		<mat-label>Reactive Material Child 1</mat-label>
 		<input matInput formControlName="field1" />
-		<mat-error></mat-error>
+		<mat-error />
 	</mat-form-field>
 	<mat-form-field obErrorMessages>
 		<mat-label>Reactive Material Child 2</mat-label>
 		<input matInput formControlName="field2" />
-		<mat-error></mat-error>
+		<mat-error />
 	</mat-form-field>
 	<ob-nested-form formControlName="grandchild" [nestedForm]="grandChild.grandChildForm">
-		<sb-nested-form-grandchild-sample #grandChild></sb-nested-form-grandchild-sample>
+		<sb-nested-form-grandchild-sample #grandChild />
 	</ob-nested-form>
 </div>

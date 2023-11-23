@@ -11,7 +11,7 @@
 
 		<mat-list role="list" *ngIf="listType === 'list-with-icon'">
 			<mat-list-item *ngFor="let item of contentForList" role="listitem">
-				<mat-icon matListItemIcon [svgIcon]="item.icon"></mat-icon>
+				<mat-icon matListItemIcon [svgIcon]="item.icon" />
 				<h3 matListItemTitle>{{ item.line1 }}</h3>
 				<span matListItemLine>{{ item.line2 }}</span>
 				<span matListItemLine>{{ item.line3 }}</span>
@@ -28,7 +28,7 @@
 
 		<mat-selection-list role="list" *ngIf="listType === 'selection-list-with-icon'" [disabled]="isDisabled">
 			<mat-list-option *ngFor="let item of contentForList" role="listitem" [checkboxPosition]="invertIconAndCheckbox ? 'before' : 'after'">
-				<mat-icon matListItemIcon [svgIcon]="item.icon"></mat-icon>
+				<mat-icon matListItemIcon [svgIcon]="item.icon" />
 				<h3 matListItemTitle>{{ item.line1 }}</h3>
 				<span matListItemLine>{{ item.line2 }}</span>
 				<span matListItemLine>{{ item.line3 }}</span>

@@ -1,18 +1,17 @@
 <mat-form-field>
-	<mat-icon svgIcon="search" matPrefix></mat-icon>
+	<mat-icon svgIcon="search" matPrefix />
 	<mat-label *ngIf="inputLabelKey?.length > 0">{{ inputLabelKey | translate }}</mat-label>
 	<input (blur)="onModelTouched()" [formControl]="autocompleteInputControl" [matAutocomplete]="autocomplete" matInput type="text" />
 	<ng-content select="[matPrefix]"></ng-content>
 	<button [obInputClear]="autocompleteInputControl" type="button">
-		<mat-icon svgIcon="cancel-circle"></mat-icon>
+		<mat-icon svgIcon="cancel-circle" />
 		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 	</button>
 	<ng-content select="[matSuffix]"></ng-content>
 </mat-form-field>
 
 <mat-autocomplete #autocomplete="matAutocomplete" class="ob-autocomplete-panel" classList="ob-autocomplete-panel">
-	<ng-container *ngTemplateOutlet="hasGroupOptions ? optionGroups : onlyOptions; context: { $implicit: (filteredOptions$ | async) }">
-	</ng-container>
+	<ng-container *ngTemplateOutlet="hasGroupOptions ? optionGroups : onlyOptions; context: { $implicit: (filteredOptions$ | async) }" />
 
 	<ng-template #optionGroups let-options>
 		<mat-optgroup *ngFor="let group of options; let i = index" [disabled]="group['disabled']" [label]="group['groupLabel']">
@@ -21,8 +20,7 @@
 					group['groupOptions']?.length > 0 && hasGroupOptions ? onlyOptions : optionGroups;
 					context: { $implicit: group['groupOptions'] }
 				"
-			>
-			</ng-container>
+			/>
 		</mat-optgroup>
 	</ng-template>
 

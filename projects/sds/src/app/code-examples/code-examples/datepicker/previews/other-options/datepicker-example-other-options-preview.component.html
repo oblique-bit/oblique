@@ -6,8 +6,8 @@
 			<input matEndDate placeholder="End date" />
 		</mat-date-range-input>
 		<mat-hint>DD.MM.YYYY – DD.MM.YYYY</mat-hint>
-		<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-		<mat-date-range-picker #picker></mat-date-range-picker>
+		<mat-datepicker-toggle matIconSuffix [for]="picker" />
+		<mat-date-range-picker #picker />
 	</mat-form-field>
 </div>
 <div>
@@ -15,8 +15,8 @@
 		<mat-label>Error</mat-label>
 		<input matInput [matDatepicker]="errorDatepicker" [formControl]="errorControl" />
 		<mat-hint>Selecting a past date triggers an error</mat-hint>
-		<mat-datepicker-toggle matIconSuffix [for]="errorDatepicker"></mat-datepicker-toggle>
-		<mat-datepicker #errorDatepicker></mat-datepicker>
+		<mat-datepicker-toggle matIconSuffix [for]="errorDatepicker" />
+		<mat-datepicker #errorDatepicker />
 		<mat-error>That date is in the past!!!</mat-error>
 	</mat-form-field>
 </div>
@@ -24,40 +24,40 @@
 	<mat-form-field>
 		<mat-label>Disabled</mat-label>
 		<input matInput [disabled]="true" [matDatepicker]="disabledDatepicker" />
-		<mat-datepicker-toggle matIconSuffix [for]="disabledDatepicker"></mat-datepicker-toggle>
-		<mat-datepicker #disabledDatepicker></mat-datepicker>
+		<mat-datepicker-toggle matIconSuffix [for]="disabledDatepicker" />
+		<mat-datepicker #disabledDatepicker />
 	</mat-form-field>
 </div>
 <div>
 	<mat-form-field>
 		<mat-label>Min</mat-label>
 		<input matInput [min]="today" [matDatepicker]="minDatepicker" />
-		<mat-datepicker-toggle matIconSuffix [for]="minDatepicker"></mat-datepicker-toggle>
-		<mat-datepicker #minDatepicker></mat-datepicker>
+		<mat-datepicker-toggle matIconSuffix [for]="minDatepicker" />
+		<mat-datepicker #minDatepicker />
 	</mat-form-field>
 </div>
 <div>
 	<mat-form-field>
 		<mat-label>Max</mat-label>
 		<input matInput [max]="today" [matDatepicker]="maxDatepicker" />
-		<mat-datepicker-toggle matIconSuffix [for]="maxDatepicker"></mat-datepicker-toggle>
-		<mat-datepicker #maxDatepicker></mat-datepicker>
+		<mat-datepicker-toggle matIconSuffix [for]="maxDatepicker" />
+		<mat-datepicker #maxDatepicker />
 	</mat-form-field>
 </div>
 <div>
 	<mat-form-field>
 		<mat-label>Value</mat-label>
 		<input matInput [value]="august1st1891" [matDatepicker]="valueDatepicker" />
-		<mat-datepicker-toggle matIconSuffix [for]="valueDatepicker"></mat-datepicker-toggle>
-		<mat-datepicker #valueDatepicker></mat-datepicker>
+		<mat-datepicker-toggle matIconSuffix [for]="valueDatepicker" />
+		<mat-datepicker #valueDatepicker />
 	</mat-form-field>
 </div>
 <div>
 	<mat-form-field>
 		<mat-label>Date change</mat-label>
 		<input matInput [matDatepicker]="dateChangeDatepicker" (dateChange)="onDateChange($event)" />
-		<mat-datepicker-toggle matIconSuffix [for]="dateChangeDatepicker"></mat-datepicker-toggle>
-		<mat-datepicker #dateChangeDatepicker></mat-datepicker>
+		<mat-datepicker-toggle matIconSuffix [for]="dateChangeDatepicker" />
+		<mat-datepicker #dateChangeDatepicker />
 		<mat-hint *ngIf="lastDateChange">Last date change: {{ lastDateChange.value | date }}</mat-hint>
 	</mat-form-field>
 </div>
@@ -65,8 +65,8 @@
 	<mat-form-field>
 		<mat-label>Date input</mat-label>
 		<input matInput [matDatepicker]="inputChangeDatepicker" (dateInput)="onDateInput($event)" />
-		<mat-datepicker-toggle matIconSuffix [for]="inputChangeDatepicker"></mat-datepicker-toggle>
-		<mat-datepicker #inputChangeDatepicker></mat-datepicker>
+		<mat-datepicker-toggle matIconSuffix [for]="inputChangeDatepicker" />
+		<mat-datepicker #inputChangeDatepicker />
 		<mat-hint *ngIf="lastDateInput">Last date input: {{ lastDateInput.value | date }}</mat-hint>
 	</mat-form-field>
 </div>

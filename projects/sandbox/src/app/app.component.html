@@ -2,7 +2,7 @@
 	<ng-container obHeaderTitle>Oblique</ng-container>
 	<ng-template #obHeaderControl>
 		<ob-autocomplete [autocompleteOptions]="autocompleteItems$ | async" [formControl]="search">
-			<mat-icon svgIcon="search" matSuffix></mat-icon>
+			<mat-icon svgIcon="search" matSuffix />
 		</ob-autocomplete>
 	</ng-template>
 	<ng-template #obHeaderControl>
@@ -13,7 +13,7 @@
 			obButton="tertiary"
 			mat-icon-button
 		>
-			<mat-icon svgIcon="git-hub"></mat-icon>
+			<mat-icon svgIcon="git-hub" />
 		</a>
 	</ng-template>
 	<ng-template #obHeaderControl>
@@ -27,12 +27,12 @@
 			obButton="tertiary"
 			[class.rotate180]="!offCanvasOpen"
 		>
-			<mat-icon dropdown-toggle svgIcon="login"></mat-icon>
+			<mat-icon dropdown-toggle svgIcon="login" />
 		</button>
 	</ng-template>
 	<ng-template #obHeaderControl>
 		<button type="button" mat-icon-button obButton="tertiary" [obPopover]="languageButton" matTooltip="Open example popover">
-			<mat-icon svgIcon="cog"></mat-icon>
+			<mat-icon svgIcon="cog" />
 		</button>
 		<ng-template #languageButton>
 			<h4 translate>i18n.rtfas.nav.bar-header.language</h4>
@@ -62,7 +62,7 @@
 	</ng-template>
 	<ng-template #obHeaderMobileControl>
 		<button type="button" mat-icon-button obButton="tertiary">
-			<mat-icon svgIcon="help"></mat-icon>
+			<mat-icon svgIcon="help" />
 		</button>
 	</ng-template>
 
