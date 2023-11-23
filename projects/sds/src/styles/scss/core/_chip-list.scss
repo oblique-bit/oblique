@@ -1,0 +1,39 @@
+/*
+These styles are exclusively used for content from Directus in the Public SCSS variables & mixins API
+(Palette & Variables sections)
+*/
+@use "@oblique/oblique/src/styles/scss/core/variables";
+
+.chip-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin: 1rem;
+	margin-bottom: 3rem;
+
+	& > *:not(div),
+	& > div > *:not(em) {
+		padding: 1rem;
+		box-shadow: 0 0 5px variables.$ob-secondary-200;
+		border-radius: 1rem;
+		margin-bottom: 0;
+	}
+
+	& > div {
+		display: flex;
+		align-items: center;
+
+		& > em {
+			font-size: 0.875em;
+			font-family: monospace;
+
+			&:first-child {
+				padding: 1rem 0.4rem 1rem 0;
+			}
+
+			&:last-child {
+				padding: 1rem 0 1rem 0.4rem;
+			}
+		}
+	}
+}

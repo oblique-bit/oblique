@@ -1,0 +1,70 @@
+@use "@oblique/oblique/src/styles/scss/core/palette";
+@use "@oblique/oblique/src/styles/scss/core/variables";
+
+table {
+	border-collapse: collapse;
+	background-color: #fafafa;
+	border: 1px solid palette.$ob-secondary-200;
+	box-shadow: 0 0 5px palette.$ob-secondary-200;
+	border-style: solid;
+	text-align: left;
+	min-width: 18rem;
+	margin: variables.$ob-spacing-xs 0;
+
+	/*
+     The table.unsupported styles below are exclusively used for content from Directus in the Form API
+    */
+	&.unsupported {
+		background-color: palette.$ob-secondary-100;
+		border-color: palette.$ob-secondary-300;
+
+		thead tr {
+			background-color: palette.$ob-secondary-200;
+		}
+
+		th,
+		td {
+			border-color: palette.$ob-secondary-300;
+		}
+	}
+
+	thead tr {
+		background-color: palette.$ob-secondary-50;
+	}
+
+	tr:first-of-type {
+		th,
+		td {
+			min-width: 9rem;
+		}
+	}
+
+	th,
+	td {
+		padding: variables.$ob-spacing-default;
+		border: 1px solid palette.$ob-secondary-200;
+	}
+
+	td {
+		strong,
+		code + small {
+			white-space: pre;
+			text-wrap: wrap;
+		}
+
+		strong::before {
+			content: "\a\a";
+		}
+
+		code + small,
+		strong ~ strong {
+			&::before {
+				content: "\a";
+			}
+		}
+	}
+
+	& + table {
+		margin-top: variables.$ob-spacing-lg;
+	}
+}
