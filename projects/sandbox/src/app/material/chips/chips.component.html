@@ -4,9 +4,9 @@
 		<mat-list *ngIf="!showAutocompleteForm">
 			<mat-list-item>
 				<mat-chip-listbox class="mdc-evolution-chip-set" [class.mat-mdc-chip-set-stacked]="stacked">
-					<mat-chip-option [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Default</mat-chip-option>
-					<mat-chip-option [color]="color" [ngClass]="variant" [selected]="true" [disabled]="disabled" [class.ob-selected]="selected"
-						>Selected</mat-chip-option
+					<mat-chip-row [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Default</mat-chip-row>
+					<mat-chip-row [color]="color" [ngClass]="variant" [selected]="true" [disabled]="disabled" [class.ob-selected]="selected"
+						>Selected</mat-chip-row
 					>
 				</mat-chip-listbox>
 			</mat-list-item>
