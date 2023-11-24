@@ -40,6 +40,7 @@ import {TranslateParamsCodeExamplesComponent} from './code-examples/translate-pa
 import {TranslationsCodeExamplesComponent} from './code-examples/translations/translations-code-examples.component';
 import {Type} from '@angular/core';
 import {UnknownRouteCodeExamplesComponent} from './code-examples/unknown-route/unknown-route-code-examples.component';
+import {UnsavedChangesCodeExamplesComponent} from './code-examples/unsaved-changes/unsaved-changes-code-examples.component';
 /* These imports are sorted alphabetically to reduce merge conflicts.
    If you add a new import above, please make sure it is sorted
    correctly as well to do your part in preventing merge conflicts. */
@@ -84,7 +85,8 @@ export class CodeExamplesMapper {
 		tooltip: TooltipCodeExamplesComponent,
 		'translate-params': TranslateParamsCodeExamplesComponent,
 		translations: TranslationsCodeExamplesComponent,
-		'unknown-route': UnknownRouteCodeExamplesComponent
+		'unknown-route': UnknownRouteCodeExamplesComponent,
+		'unsaved-changes': UnsavedChangesCodeExamplesComponent
 	};
 
 	static getCodeExampleComponent(slug: string): Type<CodeExamples> | undefined {
