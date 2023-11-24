@@ -39,6 +39,7 @@ import {TooltipCodeExamplesComponent} from './code-examples/tooltip/tooltip-code
 import {TranslateParamsCodeExamplesComponent} from './code-examples/translate-params/translate-params-code-examples.component';
 import {TranslationsCodeExamplesComponent} from './code-examples/translations/translations-code-examples.component';
 import {Type} from '@angular/core';
+import {UnknownRouteCodeExamplesComponent} from './code-examples/unknown-route/unknown-route-code-examples.component';
 /* These imports are sorted alphabetically to reduce merge conflicts.
    If you add a new import above, please make sure it is sorted
    correctly as well to do your part in preventing merge conflicts. */
@@ -74,15 +75,16 @@ export class CodeExamplesMapper {
 		'public-scss-variables-and-mixins': PublicScssVariablesAndMixinsCodeExamplesComponent,
 		'schema-validation': SchemaValidationCodeExamplesComponent,
 		selectable: SelectableCodeExamplesComponent,
-		slider: SliderCodeExamplesComponent,
 		'slide-toggle': SlideToggleCodeExamplesComponent,
+		slider: SliderCodeExamplesComponent,
 		spinner: SpinnerCodeExamplesComponent,
 		stepper: StepperCodeExamplesComponent,
 		sticky: StickyCodeExamplesComponent,
 		tabs: TabsCodeExamplesComponent,
 		tooltip: TooltipCodeExamplesComponent,
 		'translate-params': TranslateParamsCodeExamplesComponent,
-		translations: TranslationsCodeExamplesComponent
+		translations: TranslationsCodeExamplesComponent,
+		'unknown-route': UnknownRouteCodeExamplesComponent
 	};
 
 	static getCodeExampleComponent(slug: string): Type<CodeExamples> | undefined {
