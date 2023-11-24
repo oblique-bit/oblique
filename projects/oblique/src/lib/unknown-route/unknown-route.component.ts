@@ -1,6 +1,5 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
-import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {TranslateModule} from '@ngx-translate/core';
 import {RouterLink} from '@angular/router';
 
@@ -11,7 +10,7 @@ import {RouterLink} from '@angular/router';
 	styleUrls: ['./unknown-route.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	standalone: true,
-	imports: [RouterLink, TranslateModule, ObMockTranslatePipe]
+	imports: [RouterLink, TranslateModule]
 })
 export class ObUnknownRouteComponent {
 	public homePageRoute;
