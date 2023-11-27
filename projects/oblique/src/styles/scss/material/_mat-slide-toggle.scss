@@ -1,6 +1,7 @@
 @use "sass:selector";
 @use "../core/variables";
 @use "../core/mixins/shadow";
+@use "./mixins/mat-slide-toggle";
 
 .mat-mdc-slide-toggle {
 	.mdc-form-field {
@@ -20,18 +21,7 @@
 				width: variables.$ob-slide-toggle-width;
 			}
 
-			& ~ .mat-mdc-form-field-hint,
-			& ~ .mat-mdc-form-field-error {
-				display: block;
-				font-size: variables.$ob-error-hint-font-size;
-				font-weight: variables.$ob-error-hint-font-weight;
-				margin-top: -(variables.$ob-spacing-sm);
-				margin-left: variables.$ob-spacing-xxl;
-			}
-
-			& ~ .mat-mdc-form-field-hint {
-				color: variables.$ob-secondary-400;
-			}
+			@include mat-slide-toggle.adjacent-hint-error();
 
 			&.mdc-switch--unselected {
 				.mdc-switch__handle {
@@ -99,4 +89,6 @@
 			}
 		}
 	}
+
+	@include mat-slide-toggle.adjacent-hint-error();
 }

@@ -1,0 +1,16 @@
+@use "../../core/variables";
+
+@mixin adjacent-hint-error() {
+	& ~ .mat-mdc-form-field-hint,
+	& ~ .mat-mdc-form-field-error {
+		display: block;
+		font-size: variables.$ob-error-hint-font-size;
+		font-weight: variables.$ob-error-hint-font-weight;
+		margin-top: -(variables.$ob-spacing-sm);
+		margin-left: variables.$ob-spacing-xxl;
+	}
+
+	& ~ .mat-mdc-form-field-hint {
+		color: variables.$ob-secondary-400;
+	}
+}
