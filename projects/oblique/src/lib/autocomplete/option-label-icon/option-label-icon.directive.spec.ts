@@ -17,7 +17,7 @@ class OptionLabelTestComponent {
 	position: OptionLabelIconPosition = 'end';
 }
 
-describe('ObOptionLabelIconDirective', () => {
+describe(ObOptionLabelIconDirective.name, () => {
 	let fixture: ComponentFixture<OptionLabelTestComponent>;
 	let component: OptionLabelTestComponent;
 	let directive: ObOptionLabelIconDirective;
@@ -76,11 +76,11 @@ describe('ObOptionLabelIconDirective', () => {
 			fixture.detectChanges();
 		});
 
-		it('should create an instance of ObOptionTestDirective', () => {
+		it(`should create an instance of ${ObOptionLabelIconDirective.name}`, () => {
 			expect(directive).toBeTruthy();
 		});
 
-		it('should create an instance of TestComponent', () => {
+		it(`should create an instance of ${OptionLabelTestComponent.name}`, () => {
 			expect(component).toBeTruthy();
 		});
 

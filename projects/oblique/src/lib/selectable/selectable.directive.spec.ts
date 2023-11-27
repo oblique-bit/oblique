@@ -28,7 +28,7 @@ export class ObMockSelectableGroupDirective {
 	focus = jest.fn();
 }
 
-describe('SelectableDirective', () => {
+describe(ObSelectableDirective.name, () => {
 	let directive: ObSelectableDirective;
 	let group: ObSelectableGroupDirective;
 	let component: TestComponent;

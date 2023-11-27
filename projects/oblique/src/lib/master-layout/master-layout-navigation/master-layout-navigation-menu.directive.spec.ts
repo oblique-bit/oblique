@@ -8,7 +8,7 @@ import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-
 })
 class TestComponent {}
 
-describe('ObMasterLayoutNavigationMenuDirective', () => {
+describe(ObMasterLayoutNavigationMenuDirective.name, () => {
 	let element: HTMLSpanElement;
 	let fixture: ComponentFixture<TestComponent>;
 	let directive: ObMasterLayoutNavigationMenuDirective;

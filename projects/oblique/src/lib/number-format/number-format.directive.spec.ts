@@ -20,7 +20,7 @@ class TestNonPersistentComponent {
 	number;
 }
 
-describe('NumberFormatDirective', () => {
+describe(ObNumberFormatDirective.name, () => {
 	let testComponent: TestDefaultComponent | TestNonPersistentComponent;
 	let fixture: ComponentFixture<TestDefaultComponent>;
 	let element: DebugElement;

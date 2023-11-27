@@ -19,7 +19,7 @@ import {ObServiceNavigationApplicationsHarness} from './service-navigation-appli
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
 import {ObDisableLinkDirective} from '../shared/disable-link/disable-link.directive';
 
-describe('ObServiceNavigationApplicationsComponent', () => {
+describe(ObServiceNavigationApplicationsComponent.name, () => {
 	let component: ObServiceNavigationApplicationsComponent;
 	let fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>;
 	let harness: ObServiceNavigationApplicationsHarness;

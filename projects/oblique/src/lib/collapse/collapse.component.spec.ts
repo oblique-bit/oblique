@@ -13,7 +13,7 @@ import {OBLIQUE_COLLAPSE_ACTIVE, ObCollapseComponent} from './collapse.component
 })
 class TestCollapseComponent {}
 
-describe('CollapseComponent', () => {
+describe(ObCollapseComponent.name, () => {
 	let fixture: ComponentFixture<ObCollapseComponent>;
 	let debugElement: DebugElement;
 	let toggleElement: HTMLDivElement;

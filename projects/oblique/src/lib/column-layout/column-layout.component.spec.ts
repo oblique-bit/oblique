@@ -37,7 +37,7 @@ class ObColumnPanelDirective {
 })
 class TestComponent {}
 
-describe('ObColumnLayoutComponent', () => {
+describe(ObColumnLayoutComponent.name, () => {
 	let component: ObColumnLayoutComponent;
 
 	describe('with default inputs', () => {

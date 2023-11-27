@@ -7,7 +7,7 @@ import {ObSchemaValidationService} from './schema-validation.service';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 import {ObSchemaValidateDirective} from './schema-validator';
 
-describe('SchemaValidation', () => {
+describe(ObSchemaValidateDirective.name, () => {
 	const schema = {
 		title: 'SampleSchemaValidation',
 		type: 'object',

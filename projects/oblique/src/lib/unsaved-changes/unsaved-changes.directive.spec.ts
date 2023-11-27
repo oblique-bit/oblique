@@ -17,7 +17,7 @@ class FaultyTestComponent {}
 })
 class TestComponent {}
 
-describe('UnsavedChangesDirective', () => {
+describe(ObUnsavedChangesDirective.name, () => {
 	let fixture;
 	let directive: ObUnsavedChangesDirective;
 	let unsavedChangesServiceMock: ObMockUnsavedChangesService;
