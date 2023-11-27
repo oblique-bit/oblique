@@ -61,13 +61,13 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	hasGroupOptions = false;
 	private readonly unsubscribe = new Subject<void>();
 
+	ngOnChanges(): void {
+		this.setupOptionsFilter();
+	}
+
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
-	}
-
-	ngOnChanges(): void {
-		this.setupOptionsFilter();
 	}
 
 	setDisabledState(isDisabled: boolean): void {

@@ -45,12 +45,12 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 		this.window = window; // because AoT don't accept interfaces as DI
 	}
 
-	ngAfterViewInit(): void {
-		this.window.setTimeout(() => this.manageSizes()); // so that initial values are taken into account
-	}
-
 	ngOnChanges(): void {
 		this.manageSizes();
+	}
+
+	ngAfterViewInit(): void {
+		this.window.setTimeout(() => this.manageSizes()); // so that initial values are taken into account
 	}
 
 	private static validateSize(size: string): void {

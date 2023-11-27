@@ -78,6 +78,10 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		this.fullWidthChange();
 	}
 
+	ngOnChanges(): void {
+		this.initializedLinks = this.links.map(link => new ObNavigationLink(link));
+	}
+
 	ngOnInit(): void {
 		this.closeOnEscape();
 		this.markActiveLink();
@@ -95,10 +99,6 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
-	}
-
-	ngOnChanges(): void {
-		this.initializedLinks = this.links.map(link => new ObNavigationLink(link));
 	}
 
 	backUpOrCloseSubMenu(link: ObNavigationLink, obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective): void {
