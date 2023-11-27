@@ -26,19 +26,19 @@ To achieve this, filters are used.
 	}
 
 	.mat-mdc-paginator-navigation-next {
-		background-image: url("../../../../icons/ChevronRight.svg");
+		background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><title>ChevronRight</title><polygon points='10.051 21.375 8.752 20.625 13.732 12 8.752 3.375 10.051 2.625 15.464 12 10.051 21.375' fill='%23171717'/></svg>");
 	}
 
 	.mat-mdc-paginator-navigation-previous {
-		background-image: url("../../../../icons/ChevronLeft.svg");
+		background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><title>ChevronLeft</title><polygon points='13.949 21.375 8.536 12 13.949 2.625 15.248 3.375 10.268 12 15.248 20.625 13.949 21.375' fill='%23171717'/></svg>");
 	}
 
 	.mat-mdc-paginator-navigation-first {
-		background-image: url("../../../../icons/ChevronLineLeft.svg");
+		background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><title>ChevronLineLeft</title><polygon points='17.2 3.375 15.901 2.625 10.489 12 15.901 21.375 17.2 20.625 12.221 12 17.2 3.375' fill='%23171717'/><rect x='6.05371' y='3.00025' width='1.5' height='18' fill='%23171717'/></svg>");
 	}
 
 	.mat-mdc-paginator-navigation-last {
-		background-image: url("../../../../icons/ChevronLineRight.svg");
+		background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><title>ChevronLineRight</title><polygon points='6.154 3.375 11.134 12 6.154 20.625 7.453 21.375 12.866 12 7.453 2.625 6.154 3.375' fill='%23171717'/><rect x='15.80078' y='3' width='1.5' height='18' fill='%23171717'/></svg>");
 	}
 
 	.mat-mdc-paginator-navigation-next[disabled],
