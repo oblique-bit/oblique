@@ -44,7 +44,9 @@ describe(ObSelectableDirective.name, () => {
 		}));
 
 		it('should throw an error', () => {
-			expect(() => TestBed.createComponent(FaultyTestComponent)).toThrowError();
+			expect(() => TestBed.createComponent(FaultyTestComponent)).toThrow(
+				'The ObSelectableDirectives need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more info'
+			);
 		});
 	});
 

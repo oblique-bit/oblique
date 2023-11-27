@@ -1,6 +1,6 @@
-import {TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
-import {Component} from '@angular/core';
+import {Component, Type} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {ObUnsavedChangesDirective} from './unsaved-changes.directive';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
@@ -18,10 +18,10 @@ class FaultyTestComponent {}
 class TestComponent {}
 
 describe(ObUnsavedChangesDirective.name, () => {
-	let fixture;
+	let fixture: ComponentFixture<FaultyTestComponent | TestComponent>;
 	let directive: ObUnsavedChangesDirective;
 	let unsavedChangesServiceMock: ObMockUnsavedChangesService;
-	const initFixture = (component: any): void => {
+	const initFixture = (component: Type<FaultyTestComponent | TestComponent>): void => {
 		fixture = TestBed.createComponent(component);
 		fixture.detectChanges();
 		directive = fixture.debugElement.query(By.directive(ObUnsavedChangesDirective)).injector.get(ObUnsavedChangesDirective);
