@@ -22,7 +22,7 @@ class TestFirstCaseComponent {
 
 describe(ObStickyComponent.name, () => {
 	let fixture: ComponentFixture<TestFirstCaseComponent>;
-	let testComponent: TestFirstCaseComponent;
+	let component: TestFirstCaseComponent;
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
@@ -34,44 +34,57 @@ describe(ObStickyComponent.name, () => {
 
 	beforeEach(waitForAsync(() => {
 		fixture = TestBed.createComponent(TestFirstCaseComponent);
-		testComponent = fixture.componentInstance;
+		component = fixture.componentInstance;
 		fixture.detectChanges();
 	}));
 
 	it('should create', () => {
-		expect(testComponent).toBeTruthy();
+		expect(component).toBeTruthy();
 	});
 
 	it('should contain sticky class', () => {
-		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).toContain('ob-sticky');
+		expect(fixture.debugElement.query(By.directive(ObStickyComponent)).nativeElement.classList).toContain('ob-sticky');
 	});
 
-	it('should contain sticky-sm and not sticky-lg class with small header', () => {
-		testComponent.headerSize = 'sm';
+	it('should contain sticky-sm class with small header', () => {
+		component.headerSize = 'sm';
 		fixture.detectChanges();
-		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).toContain('ob-sticky-sm');
-		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).not.toContain('ob-sticky-lg');
+		expect(fixture.debugElement.query(By.directive(ObStickyComponent)).nativeElement.classList).toContain('ob-sticky-sm');
 	});
 
-	it('should contain sticky-lg and not sticky-sm class with large header', () => {
-		testComponent.headerSize = 'lg';
+	it('should not contain sticky-lg class with small header', () => {
+		component.headerSize = 'sm';
 		fixture.detectChanges();
-		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).not.toContain('ob-sticky-sm');
-		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).toContain('ob-sticky-lg');
+		expect(fixture.debugElement.query(By.directive(ObStickyComponent)).nativeElement.classList).not.toContain('ob-sticky-lg');
 	});
 
-	it('should not contain neither sticky-lg nor sticky-sm with medium (default) header', () => {
-		testComponent.headerSize = 'md';
+	it('should contain sticky-lg class with large header', () => {
+		component.headerSize = 'lg';
 		fixture.detectChanges();
-		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).not.toContain('ob-sticky-sm');
-		expect(fixture.debugElement.query(By.css('ob-sticky')).nativeElement.classList).not.toContain('ob-sticky-lg');
+		expect(fixture.debugElement.query(By.directive(ObStickyComponent)).nativeElement.classList).toContain('ob-sticky-lg');
+	});
+
+	it('should not contain sticky-sm class with large header', () => {
+		component.headerSize = 'lg';
+		fixture.detectChanges();
+		expect(fixture.debugElement.query(By.directive(ObStickyComponent)).nativeElement.classList).not.toContain('ob-sticky-sm');
+	});
+
+	it('should not contain sticky-lg class with medium (default) header', () => {
+		component.headerSize = 'md';
+		fixture.detectChanges();
+		expect(fixture.debugElement.query(By.directive(ObStickyComponent)).nativeElement.classList).not.toContain('ob-sticky-lg');
+	});
+
+	it('should not contain sticky-sm class with medium (default) header', () => {
+		component.headerSize = 'md';
+		fixture.detectChanges();
+		expect(fixture.debugElement.query(By.directive(ObStickyComponent)).nativeElement.classList).not.toContain('ob-sticky-sm');
 	});
 
 	it('should throw an error with illegal size', () => {
-		const comp = fixture.debugElement.query(By.css('ob-sticky')).componentInstance;
+		const comp = fixture.debugElement.query(By.directive(ObStickyComponent)).componentInstance;
 		comp.headerSize = 'testSize';
-		expect(comp.ngOnChanges.bind(comp)).toThrowError(
-			'"testSize" is not a valid size.Only "lg", "md" and "sm" are acceptable alternatives.'
-		);
+		expect(comp.ngOnChanges.bind(comp)).toThrow('"testSize" is not a valid size.Only "lg", "md" and "sm" are acceptable alternatives.');
 	});
 });

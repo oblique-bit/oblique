@@ -84,12 +84,12 @@ describe(ObOptionLabelIconDirective.name, () => {
 			expect(component).toBeTruthy();
 		});
 
-		it(`iconName should to be  ${expected.iconName}`, () => {
+		it(`iconName should be  ${expected.iconName}`, () => {
 			fixture.detectChanges();
 			expect(directive.iconName).toBe(expected.iconName);
 		});
 
-		it(`should have an default iconPosition to be ${expected.iconPosition}`, () => {
+		it(`should have a default iconPosition of ${expected.iconPosition}`, () => {
 			expect(directive.iconPosition).toBe(expected.iconPosition);
 		});
 
@@ -98,7 +98,7 @@ describe(ObOptionLabelIconDirective.name, () => {
 			expect(directiveNode.nativeNode.getElementsByClassName('ob-option-label-icon')).toBeTruthy();
 		});
 
-		it(`should have an content to be ${expected.innerHtml}`, () => {
+		it(`should have a content of ${expected.innerHtml}`, () => {
 			expect(directiveNode.nativeNode.innerHTML).toBe(expected.innerHtml);
 		});
 	});
@@ -114,7 +114,7 @@ describe(ObOptionLabelIconDirective.name, () => {
 			fixture.detectChanges();
 		});
 
-		it(`should have an content to be Text`, () => {
+		it(`should have a content of "Text"`, () => {
 			component.iconName = ObEIcon.INFO;
 			fixture.detectChanges();
 			expect(directiveNode.nativeNode.innerHTML).toBe(
