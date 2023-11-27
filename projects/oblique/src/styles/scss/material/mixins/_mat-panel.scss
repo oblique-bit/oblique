@@ -1,4 +1,5 @@
 @use "../../core/variables" as core-variables;
+@use "../../core/mixins/shadow";
 
 @mixin margin-top($panel-type: "select", $standard-margin-top: 3px) {
 	:not(.mat-mdc-#{$panel-type}-panel-above) {
@@ -20,10 +21,22 @@
 			&:hover:not(.mat-mdc-option-active) {
 				background-color: core-variables.$ob-secondary-50;
 			}
+
+			&.mat-mdc-option-active,
+			&:focus {
+				&.mdc-list-item {
+					background-color: core-variables.$ob-secondary-100;
+				}
+			}
 		}
 
-		.mat-mdc-option-active {
-			background-color: core-variables.$ob-secondary-100;
+		.mat-mdc-option,
+		&.mat-mdc-#{$panel-type}-panel {
+			background-color: core-variables.$ob-white;
+		}
+
+		&.mat-mdc-#{$panel-type}-panel {
+			@include shadow.ob-default-panel-box-shadow();
 		}
 	}
 }
