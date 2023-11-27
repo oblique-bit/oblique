@@ -87,6 +87,17 @@
 		&:disabled {
 			color: variables.$ob-secondary-300;
 		}
+
+		&:focus-visible {
+			.ob-master-layout & {
+				box-shadow: none; // cancel default Oblique focus because the button is greater than the available space
+			}
+
+			svg {
+				@include shadow.ob-tab-focus-box-shadow();
+				border-radius: 2px;
+			}
+		}
 	}
 }
 
