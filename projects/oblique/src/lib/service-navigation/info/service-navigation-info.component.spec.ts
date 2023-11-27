@@ -14,7 +14,7 @@ import {ObServiceNavigationInfoHarness} from './service-navigation-info.harness'
 import {ObServiceNavigationInfoComponent} from './service-navigation-info.component';
 import {ObContactToLinksPipe} from './contact-to-links.pipe';
 
-describe('ObServiceNavigationInfoComponent', () => {
+describe(ObServiceNavigationInfoComponent.name, () => {
 	let component: ObServiceNavigationInfoComponent;
 	let fixture: ComponentFixture<ObServiceNavigationInfoComponent>;
 	let harness: ObServiceNavigationInfoHarness;

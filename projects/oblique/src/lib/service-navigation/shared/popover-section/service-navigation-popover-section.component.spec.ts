@@ -12,7 +12,7 @@ import {ObServiceNavigationPopoverSectionComponent} from './service-navigation-p
 @Component({template: ''})
 class TestComponent {}
 
-describe('ObServiceNavigationPopoverSectionComponent', () => {
+describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 	let component: ObServiceNavigationPopoverSectionComponent;
 	let fixture: ComponentFixture<ObServiceNavigationPopoverSectionComponent>;
 	let harness: ObServiceNavigationPopOverSectionHarness;

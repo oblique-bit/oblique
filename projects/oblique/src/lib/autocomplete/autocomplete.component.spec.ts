@@ -43,7 +43,7 @@ class TestParentComponent {
 	parentFormControl = new FormGroup({model: this.model});
 }
 
-describe('AutocompleteComponent', () => {
+describe(ObAutocompleteComponent.name, () => {
 	let fixture: ComponentFixture<ObAutocompleteComponent>;
 	let component: ObAutocompleteComponent;
 	let parentFixture: ComponentFixture<TestParentComponent>;
@@ -231,11 +231,11 @@ describe('AutocompleteComponent', () => {
 			parentFixture.detectChanges();
 		});
 
-		it('should have TestParentComponent created', () => {
+		it(`should create ${TestParentComponent.name}`, () => {
 			expect(parentComponent).toBeTruthy();
 		});
 
-		it('should have ObAutocompleteComponent', () => {
+		it(`should have ${ObAutocompleteComponent.name}`, () => {
 			expect(component).toBeTruthy();
 		});
 

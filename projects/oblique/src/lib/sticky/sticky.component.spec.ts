@@ -20,7 +20,7 @@ class TestFirstCaseComponent {
 	headerSize = 'md';
 }
 
-describe('StickyComponent', () => {
+describe(ObStickyComponent.name, () => {
 	let fixture: ComponentFixture<TestFirstCaseComponent>;
 	let testComponent: TestFirstCaseComponent;
 

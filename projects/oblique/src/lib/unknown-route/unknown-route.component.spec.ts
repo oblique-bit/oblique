@@ -4,7 +4,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {ObUnknownRouteComponent} from './unknown-route.component';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-describe('UnknownRouteComponent', () => {
+describe(ObUnknownRouteComponent.name, () => {
 	let component: ObUnknownRouteComponent;
 	let fixture: ComponentFixture<ObUnknownRouteComponent>;
 

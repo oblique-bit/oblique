@@ -49,7 +49,7 @@ class TestComponent {
 	}
 }
 
-describe('NavTreeComponent', () => {
+describe(ObNavTreeComponent.name, () => {
 	let testComponent: TestComponent;
 	let component: ObNavTreeComponent;
 	let fixture: ComponentFixture<TestComponent>;

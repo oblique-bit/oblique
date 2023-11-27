@@ -13,7 +13,7 @@ import {EXTERNAL_LINK} from './external-link.model';
 })
 class TestComponent {}
 
-describe('ObExternalLink', () => {
+describe(ObExternalLinkDirective.name, () => {
 	let directive: ObExternalLinkDirective;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: HTMLElement;
