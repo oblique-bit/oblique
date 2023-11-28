@@ -19,7 +19,7 @@ export class ListGroupExampleAvatarSubheaderComponent {
 			line2: 'CHE-123.456.789 (active)',
 			line3: 'Musterstrasse 99, 3000 Bern',
 			icon: 'user-checkmark',
-			avatar: 'https://eportal-t.admin.ch/assets/avatars/avatar_7.svg'
+			avatar: 'assets/images/ListGroupImageExample.jpg'
 		},
 		{
 			id: 'list-item-2',
@@ -28,7 +28,7 @@ export class ListGroupExampleAvatarSubheaderComponent {
 			line2: 'CHE-123.633.789',
 			line3: 'Laupenfuss 59, 3002 Bern',
 			icon: 'user',
-			avatar: 'https://eportal-t.admin.ch/assets/avatars/avatar_11.svg'
+			avatar: 'assets/images/ListGroupImageExample.jpg'
 		},
 		{
 			id: 'list-item-3',
@@ -37,7 +37,7 @@ export class ListGroupExampleAvatarSubheaderComponent {
 			line2: 'CHE-123.456.408 (active)',
 			line3: 'Taubendorfstrasse 45, 3004 Bern',
 			icon: 'user-checkmark',
-			avatar: 'https://eportal-t.admin.ch/assets/avatars/avatar_3.svg'
+			avatar: 'assets/images/ListGroupImageExample.jpg'
 		}
 	];
 }
