@@ -24,7 +24,9 @@ export class CmsDataService {
 	}
 
 	getTextPagesShort(): Observable<CMSPageShortList> {
-		return this.httpClient.get<CMSPageShortList>(`${this.baseUrl}items/TextPage?fields=id,name,slug,category,min_version,max_version`);
+		return this.httpClient.get<CMSPageShortList>(
+			`${this.baseUrl}items/TextPage?fields=id,name,slug,category,min_version,max_version&sort=name`
+		);
 	}
 
 	getTextPagesComplete(id: number): Observable<TextPageCompleteCms> {
@@ -36,6 +38,8 @@ export class CmsDataService {
 	}
 
 	getTabbedPagesShort(): Observable<CMSPageShortList> {
-		return this.httpClient.get<CMSPageShortList>(`${this.baseUrl}items/TabbedPage?fields=id,name,slug,category,min_version,max_version`);
+		return this.httpClient.get<CMSPageShortList>(
+			`${this.baseUrl}items/TabbedPage?fields=id,name,slug,category,min_version,max_version&sort=name`
+		);
 	}
 }
