@@ -128,6 +128,28 @@
 		}
 
 		&:not(:focus-within) {
+			&.mat-form-field-invalid {
+				@include mat-form-field.ob-form-field-colors(
+					core-variables.$ob-red-800,
+					core-variables.$ob-red-50
+				);
+
+				&:not(:hover) {
+					[class*="mat-form-field-outline-"] {
+						border-width: 1px;
+					}
+				}
+			}
+
+			&.ng-dirty {
+				&.ng-valid {
+					@include mat-form-field.ob-form-field-colors(
+						core-variables.$ob-green-600,
+						core-variables.$ob-green-50
+					);
+				}
+			}
+
 			&.ob-form-field-required {
 				&.mat-form-field-invalid {
 					@include mat-form-field.ob-form-field-colors(
