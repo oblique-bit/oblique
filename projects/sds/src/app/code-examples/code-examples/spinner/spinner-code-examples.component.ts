@@ -7,7 +7,7 @@ import {CustomChannelPreviewComponent} from './previews/custom-channel/custom-ch
 import {MultipleActivationsPreviewComponent} from './previews/multiple-activations/multiple-activations-preview.component';
 
 @Component({
-	selector: 'app-slider-code-examples',
+	selector: 'app-spinner-code-examples',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [CodeExampleComponent, CommonModule, IdPipe],
