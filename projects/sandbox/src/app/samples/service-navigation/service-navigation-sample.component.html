@@ -1,5 +1,5 @@
 <h2 class="page-header">Service navigation</h2>
-<sb-description component="service-navigation"></sb-description>
+<sb-description component="service-navigation" />
 <ob-column-layout [left]="false">
 	<section column-main-content>
 		<ob-service-navigation
@@ -24,12 +24,12 @@
 			<ng-container *ngIf="hasCustomWidgets">
 				<ng-template #customWidgetTemplate>
 					<button type="button" class="ob-widget" mat-icon-button obButton="secondary">
-						<mat-icon svgIcon="smile"></mat-icon>
+						<mat-icon svgIcon="smile" />
 					</button>
 				</ng-template>
 				<ng-template #customWidgetTemplate>
 					<button type="button" class="ob-widget" mat-icon-button obButton="secondary">
-						<mat-icon svgIcon="thumbs-up"></mat-icon>
+						<mat-icon svgIcon="thumbs-up" />
 					</button>
 				</ng-template>
 			</ng-container>
@@ -97,4 +97,4 @@
 		</fieldset>
 	</ng-container>
 </ob-column-layout>
-<sb-api component="service-navigation"></sb-api>
+<sb-api component="service-navigation" />

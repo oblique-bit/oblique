@@ -14,6 +14,12 @@ console.warn = jest.fn().mockImplementation(() => {});
 console.info = jest.fn().mockImplementation(() => {});
 /* eslint-enable @typescript-eslint/no-empty-function */
 
+global.ResizeObserver = jest.fn().mockImplementation(() => ({
+	observe: jest.fn(),
+	unobserve: jest.fn(),
+	disconnect: jest.fn()
+}));
+
 Object.defineProperty(window, 'localStorage', {value: mock()});
 Object.defineProperty(window, 'sessionStorage', {value: mock()});
 Object.defineProperty(window, 'scrollIntoView', {value: mock()});
@@ -22,9 +28,3 @@ Object.defineProperty(window, 'getComputedStyle', {
 });
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 (window as any).HTMLElement.prototype.scrollIntoView = function () {};
-Object.defineProperty(document.body.style, 'transform', {
-	value: () => ({
-		enumerable: true,
-		configurable: true
-	})
-});

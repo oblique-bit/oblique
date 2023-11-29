@@ -2,103 +2,133 @@
 @use "../core/mixins/typography";
 @use "./mixins/mat-chip";
 
+.mat-mdc-chip {
+	&.mat-mdc-chip-row,
+	&.mat-mdc-chip-option,
+	&.mat-mdc-standard-chip {
+		z-index: 1;
+	}
+
+	&.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
+		.mdc-evolution-chip__checkmark {
+			color: variables.$ob-white;
+		}
+	}
+}
+
 .mat-mdc-chip-listbox {
 	margin-top: variables.$ob-spacing-lg;
 }
 
-.mat-mdc-chip-option.mat-mdc-standard-chip {
-	@include typography.ob-caption();
+.mat-mdc-form-field {
+	&.mat-mdc-form-field-type-mat-chip-grid {
+		.mat-mdc-text-field-wrapper.mdc-text-field,
+		.mat-mdc-text-field-wrapper.mdc-text-field .mdc-notched-outline {
+			max-height: 45px;
 
-	@include mat-chip.ob-background-color(
-		variables.$ob-secondary-600,
-		variables.$ob-secondary-700,
-		variables.$ob-secondary-500,
-		variables.$ob-secondary-600,
-		none
-	);
-	color: variables.$ob-white;
-	border-color: inherit;
-
-	&.mat-mdc-chip-with-trailing-icon {
-		padding-right: 0;
-
-		> .mat-icon {
-			font-size: variables.$ob-font-size-biggest;
-			margin: 0 variables.$ob-spacing-xs;
-			width: 1em;
-			height: 1em;
-		}
-	}
-
-	&.success {
-		@include mat-chip.ob-background-color(
-			variables.$ob-green-700,
-			variables.$ob-green-800,
-			variables.$ob-green-600,
-			variables.$ob-green-700,
-			none
-		);
-	}
-
-	&.info {
-		@include mat-chip.ob-background-color(
-			variables.$ob-blue-800,
-			variables.$ob-blue-900,
-			variables.$ob-blue-600,
-			variables.$ob-blue-800,
-			none
-		);
-	}
-
-	&.warning {
-		@include mat-chip.ob-background-color(
-			variables.$ob-orange-600,
-			variables.$ob-orange-700,
-			variables.$ob-orange-500,
-			variables.$ob-orange-600,
-			none
-		);
-	}
-
-	&.error {
-		@include mat-chip.ob-background-color(
-			variables.$ob-red-800,
-			variables.$ob-red-900,
-			variables.$ob-red-700,
-			variables.$ob-red-800,
-			none
-		);
-	}
-
-	&.ob-selected {
-		&,
-		&.mat-mdc-chip-selected {
-			background-color: variables.$ob-primary-100;
-			border-color: variables.$ob-primary-500;
-			color: variables.$ob-primary-500;
-		}
-	}
-
-	&,
-	&.success,
-	&.info,
-	&.error,
-	&.warning {
-		--mdc-chip-label-text-color: variables.$ob-white;
-
-		&.cdk-keyboard-focused {
-			outline: 2px solid variables.$ob-purple-500;
-		}
-
-		&.mat-mdc-chip-disabled {
-			background-color: variables.$ob-secondary-200;
+			.mat-mdc-chip {
+				margin-top: 10px;
+			}
 		}
 	}
 }
 
-.mdc-text-field--no-label:not(.mdc-text-field--outlined, .mdc-text-field--textarea)
-	.mat-mdc-form-field-infix {
-	padding-top: 0 !important;
+.mat-mdc-chip-option,
+.mat-mdc-chip-row {
+	&.mat-mdc-standard-chip {
+		@include typography.ob-caption();
+
+		@include mat-chip.ob-background-color(
+			variables.$ob-secondary-600,
+			variables.$ob-secondary-700,
+			variables.$ob-secondary-500,
+			variables.$ob-secondary-600,
+			none
+		);
+		color: variables.$ob-white;
+		border-color: inherit;
+
+		&.mat-mdc-chip-with-trailing-icon {
+			padding-right: 0;
+
+			> .mat-icon {
+				font-size: variables.$ob-font-size-biggest;
+				margin: 0 variables.$ob-spacing-xs;
+				width: 1em;
+				height: 1em;
+			}
+		}
+
+		&.success {
+			@include mat-chip.ob-background-color(
+				variables.$ob-green-700,
+				variables.$ob-green-800,
+				variables.$ob-green-600,
+				variables.$ob-green-700,
+				none
+			);
+		}
+
+		&.info {
+			@include mat-chip.ob-background-color(
+				variables.$ob-blue-800,
+				variables.$ob-blue-900,
+				variables.$ob-blue-600,
+				variables.$ob-blue-800,
+				none
+			);
+		}
+
+		&.warning {
+			@include mat-chip.ob-background-color(
+				variables.$ob-orange-600,
+				variables.$ob-orange-700,
+				variables.$ob-orange-500,
+				variables.$ob-orange-600,
+				none
+			);
+		}
+
+		&.error {
+			@include mat-chip.ob-background-color(
+				variables.$ob-red-800,
+				variables.$ob-red-900,
+				variables.$ob-red-700,
+				variables.$ob-red-800,
+				none
+			);
+		}
+
+		&.ob-selected {
+			&,
+			&.mat-mdc-chip-selected {
+				background-color: variables.$ob-primary-100;
+				border-color: variables.$ob-primary-500;
+				color: variables.$ob-primary-500;
+			}
+		}
+
+		&,
+		&.success,
+		&.info,
+		&.error,
+		&.warning {
+			--mdc-chip-label-text-color: variables.$ob-white;
+
+			&.cdk-keyboard-focused {
+				outline: 2px solid variables.$ob-purple-500;
+			}
+
+			&.mat-mdc-chip-disabled {
+				background-color: variables.$ob-secondary-200;
+			}
+		}
+	}
+
+	.mdc-text-field--no-label:not(.mdc-text-field--outlined, .mdc-text-field--textarea)
+		.mat-mdc-form-field-infix {
+		padding-top: 0 !important;
+	}
 }
 
 .mat-mdc-chip-row {

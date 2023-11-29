@@ -2,13 +2,13 @@
 	<ul>
 		<li>
 			<a class="ob-accessible" accesskey="0" [routerLink]="route.path" [queryParams]="route.params" fragment="content">
-				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access"></mat-icon></span>
+				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access" /></span>
 				{{ "i18n.oblique.master-layout.accesskey.main-content" | translate }}
 			</a>
 		</li>
 		<li *ngIf="!noNavigation && navigation.length">
 			<a class="ob-accessible" accesskey="1" [routerLink]="route.path" [queryParams]="route.params" fragment="navigation">
-				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access"></mat-icon></span>
+				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access" /></span>
 				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}
 			</a>
 		</li>
@@ -20,7 +20,7 @@
 				[queryParams]="route.params"
 				[fragment]="skipLink.fragment"
 			>
-				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access"></mat-icon></span>
+				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access" /></span>
 				{{ skipLink.label | translate }} [{{ skipLink.accessKey }}]
 			</a>
 		</li>
@@ -32,23 +32,23 @@
 	[class.ob-continuous-layout]="!isFooterSticky && !isHeaderSticky"
 	[class.ob-off-canvas-main]="hasOffCanvas"
 >
-	<ng-container *ngIf="isHeaderSticky && !isFooterSticky" [ngTemplateOutlet]="header"></ng-container>
+	<ng-container *ngIf="isHeaderSticky && !isFooterSticky" [ngTemplateOutlet]="header" />
 	<div class="ob-master-layout-wrapper" cdkScrollable (scroll)="scrollTop(wrapper)" #wrapper>
-		<ng-container *ngIf="!isHeaderSticky || isFooterSticky" [ngTemplateOutlet]="header"></ng-container>
+		<ng-container *ngIf="!isHeaderSticky || isFooterSticky" [ngTemplateOutlet]="header" />
 		<div class="ob-cover-layout" *ngIf="hasCover; else normalLayout">
 			<div class="ob-cover-viewport">
-				<ng-container *ngTemplateOutlet="normalLayout"></ng-container>
+				<ng-container *ngTemplateOutlet="normalLayout" />
 			</div>
 		</div>
 		<ng-template #normalLayout>
 			<main id="content" class="ob-main-layout" tabindex="-1" cdkScrollable (scroll)="scrollTop(main)" #main>
-				<ob-notification channel="oblique"></ob-notification>
-				<router-outlet></router-outlet>
+				<ob-notification channel="oblique" />
+				<router-outlet />
 			</main>
 		</ng-template>
-		<ng-container *ngIf="!isFooterSticky || isHeaderSticky" [ngTemplateOutlet]="footer"></ng-container>
+		<ng-container *ngIf="!isFooterSticky || isHeaderSticky" [ngTemplateOutlet]="footer" />
 	</div>
-	<ng-container *ngIf="isFooterSticky && !isHeaderSticky" [ngTemplateOutlet]="footer"></ng-container>
+	<ng-container *ngIf="isFooterSticky && !isHeaderSticky" [ngTemplateOutlet]="footer" />
 
 	<ng-template #header>
 		<ob-master-layout-header [navigation]="navigation" [languageSelectorStyle]="languageSelectorStyle">
@@ -57,13 +57,13 @@
 			<ng-content select="[obHeaderTitle]" obHeaderTitle></ng-content>
 			<ng-content select="[obNavigation]" obNavigation></ng-content>
 			<ng-template #obHeaderControl *ngFor="let template of headerControlTemplates">
-				<ng-container [ngTemplateOutlet]="template"></ng-container>
+				<ng-container [ngTemplateOutlet]="template" />
 			</ng-template>
 			<ng-template #obHeaderMobileControl *ngFor="let template of headerMobileControlTemplates">
-				<ng-container [ngTemplateOutlet]="template"></ng-container>
+				<ng-container [ngTemplateOutlet]="template" />
 			</ng-template>
 			<ng-template #obHeaderLogo>
-				<ng-container [ngTemplateOutlet]="obLogo || logo"></ng-container>
+				<ng-container [ngTemplateOutlet]="obLogo || logo" />
 			</ng-template>
 		</ob-master-layout-header>
 	</ng-template>
@@ -73,19 +73,19 @@
 			<ng-content select="[obFooter]" obFooter></ng-content>
 			<ng-content select="[obFooterInfo]" obFooterInfo></ng-content>
 			<ng-template #obFooterLink *ngFor="let template of footerLinkTemplates">
-				<ng-container [ngTemplateOutlet]="template"></ng-container>
+				<ng-container [ngTemplateOutlet]="template" />
 			</ng-template>
 		</ob-master-layout-footer>
 	</ng-template>
 </div>
-<ob-top-control [scrollTarget]="scrollTarget"></ob-top-control>
+<ob-top-control [scrollTarget]="scrollTarget" />
 <div class="ob-off-canvas-sidebar" *ngIf="hasOffCanvas">
 	<header class="ob-off-canvas-header">
 		<h2>
 			<ng-content select="[obOffCanvasTitle]"></ng-content>
 		</h2>
 		<button type="button" mat-icon-button obButton="secondary" obOffCanvasToggle class="ob-close" #offCanvasClose>
-			<mat-icon svgIcon="cancel"></mat-icon>
+			<mat-icon svgIcon="cancel" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.close" | translate }}</span>
 		</button>
 	</header>
@@ -94,7 +94,7 @@
 	</div>
 </div>
 <div class="ob-off-canvas-backdrop" *ngIf="hasOffCanvas"></div>
-<ob-spinner [fixed]="true"></ob-spinner>
+<ob-spinner [fixed]="true" />
 <ng-template #logo>
-	<img [alt]="'i18n.oblique.header.logo' | translate" src="assets/images/logo.svg" />
+	<img [alt]="'i18n.oblique.header.logo' | translate" ngSrc="assets/images/logo.svg" priority [height]="38" [width]="156" />
 </ng-template>

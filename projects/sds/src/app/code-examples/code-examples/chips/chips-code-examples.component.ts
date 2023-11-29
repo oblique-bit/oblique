@@ -8,7 +8,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 
 @Component({
-	selector: 'app-button-code-examples',
+	selector: 'app-chip-code-examples',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,

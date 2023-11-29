@@ -1,7 +1,17 @@
+@use "@oblique/oblique/src/styles/scss/core/variables";
+
 .bottom-spacing {
 	margin-bottom: 30px;
 
 	&.bottom-spacing-sm {
 		margin-bottom: 15px;
+	}
+}
+
+.mdc-list.mat-mdc-list-base .mat-mdc-list-item {
+	padding: calc(variables.$ob-spacing-md - variables.$ob-spacing-xs) variables.$ob-spacing-default;
+
+	.mat-mdc-form-field {
+		padding: variables.$ob-spacing-xs 0;
 	}
 }

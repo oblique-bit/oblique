@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -138,6 +138,7 @@ const appRoutes: Routes = [
 		MatTableModule,
 		MatTabsModule,
 		MatTooltipModule,
+		NgOptimizedImage,
 		ObAlertModule,
 		ObButtonModule,
 		ObCheckboxModule,

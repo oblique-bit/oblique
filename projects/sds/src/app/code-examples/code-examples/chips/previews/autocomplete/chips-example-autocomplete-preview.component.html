@@ -3,7 +3,7 @@
 		<mat-chip-row *ngFor="let fruit of fruits" class="warning" (removed)="remove(fruit)">
 			{{ fruit }}
 			<button type="button" matChipRemove [attr.aria-label]="'remove ' + fruit">
-				<mat-icon svgIcon="cancel"></mat-icon>
+				<mat-icon svgIcon="cancel" />
 			</button>
 		</mat-chip-row>
 	</mat-chip-grid>

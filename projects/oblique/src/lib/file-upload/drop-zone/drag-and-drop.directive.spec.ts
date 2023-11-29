@@ -13,7 +13,7 @@ class TestDropDirectiveComponent {
 	}
 }
 
-describe('ObDragDropDirective', () => {
+describe(ObDragDropDirective.name, () => {
 	let fixture: ComponentFixture<TestDropDirectiveComponent>;
 	let input: DebugElement;
 	beforeEach(() => {

@@ -1,6 +1,6 @@
 export interface Logo {
 	alt: string;
-	maxHeight: string;
-	maxWidth: string;
-	src: string;
+	height: number;
+	width: number;
+	ngSrc: string;
 }

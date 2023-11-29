@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
@@ -45,6 +45,7 @@ import {ObDisableLinkDirective} from './shared/disable-link/disable-link.directi
 		MatIconModule,
 		MatSelectModule,
 		MatTooltipModule,
+		NgOptimizedImage,
 		ObButtonModule,
 		ObDisableLinkDirective,
 		ObExternalLinkModule,

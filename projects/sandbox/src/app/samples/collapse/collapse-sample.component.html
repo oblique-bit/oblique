@@ -1,6 +1,6 @@
 <div class="default-layout">
 	<h2 class="page-header">Collapse</h2>
-	<sb-description component="collapse"></sb-description>
+	<sb-description component="collapse" />
 	<ob-column-layout [left]="false">
 		<ob-collapse [(active)]="active" [duration]="duration.value" column-main-content [iconPosition]="iconPosition.value">
 			<span [id]="collapseTitle + '_title'" obCollapseHeader>
@@ -36,9 +36,9 @@
 			</mat-form-field>
 
 			<div mat-dialog-actions>
-				<button type="button" mat-button (click)="active = !active"><mat-icon svgIcon="compress"></mat-icon> collapse</button>
+				<button type="button" mat-button (click)="active = !active"><mat-icon svgIcon="compress" /> collapse</button>
 			</div>
 		</div>
 	</ob-column-layout>
-	<sb-api component="collapse"></sb-api>
+	<sb-api component="collapse" />
 </div>

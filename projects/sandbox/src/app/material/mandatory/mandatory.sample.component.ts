@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {FormControl, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sb-mandatory.sample',
-	templateUrl: './mandatory.sample.component.html'
+	templateUrl: './mandatory.sample.component.html',
+	styleUrls: ['./mandatory.sample.component.scss']
 })
 export class MandatorySampleComponent implements OnInit {
 	/**
@@ -15,24 +16,24 @@ export class MandatorySampleComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.testForm = this.formBuilder.group({
-			inputRequired: ['', Validators.required],
-			inputDynamicRequired: '',
-			inputNonRequired: '',
-			inputDateRequired: ['', Validators.required],
-			inputDateDynamicRequired: '',
-			inputDateNonRequired: '',
-			selectRequired: ['', Validators.required],
-			selectDynamicRequired: '',
-			selectNonRequired: '',
-			matSelectRequired: ['', Validators.required],
-			matSelectDynamicRequired: '',
-			matSelectNonRequired: '',
-			textareaRequired: ['', Validators.required],
-			textareaDynamicRequired: '',
-			textareaNonRequired: '',
-			matChipListRequired: ['', Validators.required],
-			matChipListDynamicRequired: '',
-			matChipListNonRequired: ''
+			inputRequired: new FormControl<string>('', Validators.required),
+			inputDynamicRequired: new FormControl<string>(''),
+			inputOptional: new FormControl<string>(''),
+			inputDateRequired: new FormControl<string>('', Validators.required),
+			inputDateDynamicRequired: new FormControl<string>(''),
+			inputDateOptional: new FormControl<string>(''),
+			selectRequired: new FormControl<string>('', Validators.required),
+			selectDynamicRequired: new FormControl<string>(''),
+			selectOptional: new FormControl<string>(''),
+			matSelectRequired: new FormControl<string>('', Validators.required),
+			matSelectDynamicRequired: new FormControl<string>(''),
+			matSelectOptional: new FormControl<string>(''),
+			textareaRequired: new FormControl<string>('', Validators.required),
+			textareaDynamicRequired: new FormControl<string>(''),
+			textareaOptional: new FormControl<string>(''),
+			matChipListRequired: new FormControl<string[]>([''], Validators.required),
+			matChipListDynamicRequired: new FormControl<string[]>(['']),
+			matChipListOptional: new FormControl<string[]>([''])
 		});
 	}
 

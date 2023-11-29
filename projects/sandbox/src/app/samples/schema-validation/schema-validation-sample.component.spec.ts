@@ -9,7 +9,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe, ObMockTranslateService} from '@oblique/oblique';
 import {SchemaValidationSampleComponent} from './schema-validation-sample.component';
 
-describe('ObSchemaValidationSampleComponent', () => {
+describe(SchemaValidationSampleComponent.name, () => {
 	let component: SchemaValidationSampleComponent;
 	let fixture: ComponentFixture<SchemaValidationSampleComponent>;
 

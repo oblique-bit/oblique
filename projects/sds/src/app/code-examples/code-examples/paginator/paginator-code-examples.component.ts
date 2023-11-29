@@ -7,7 +7,7 @@ import {CommonModule} from '@angular/common';
 import {PaginatorExampleOtherOptionsPreviewComponent} from './previews/other-options/paginator-example-other-options-preview.component';
 
 @Component({
-	selector: 'app-button-code-examples',
+	selector: 'app-paginator-code-examples',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,

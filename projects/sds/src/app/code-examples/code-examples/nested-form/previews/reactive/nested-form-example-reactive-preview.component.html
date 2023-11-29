@@ -1,12 +1,12 @@
-<ob-notification [channel]="channel"></ob-notification>
+<ob-notification [channel]="channel" />
 <form obParentFormDirective [formGroup]="parentForm" (submit)="validateForm(parentForm.valid)" (reset)="resetForm()">
 	<mat-form-field obErrorMessages>
 		<mat-label>Parent</mat-label>
 		<input matInput formControlName="parent" />
-		<mat-error></mat-error>
+		<mat-error />
 	</mat-form-field>
 	<ob-nested-form formControlName="child" [nestedForm]="child.nestedForm">
-		<app-nested-form-example-reactive-preview-child #child></app-nested-form-example-reactive-preview-child>
+		<app-nested-form-example-reactive-preview-child #child />
 	</ob-nested-form>
 	<div class="actions">
 		<button mat-button obButton="secondary" type="reset">Reset</button>

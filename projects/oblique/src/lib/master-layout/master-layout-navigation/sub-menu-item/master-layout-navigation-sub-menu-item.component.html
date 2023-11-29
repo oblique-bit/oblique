@@ -10,7 +10,7 @@
 		[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
 		(click)="obMasterLayoutNavigationItem.closeSubMenu()"
 	>
-		<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon"></mat-icon></span>
+		<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon" /></span>
 		<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
 	</a>
 	<ng-template #internalLink>
@@ -26,7 +26,7 @@
 			[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
 			(click)="obMasterLayoutNavigationItem.closeSubMenu()"
 		>
-			<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon"></mat-icon></span>
+			<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon" /></span>
 			<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
 		</a>
 	</ng-template>
@@ -39,7 +39,7 @@
 		class="ob-sub-menu-go-to-children-button"
 		(click)="goToChildren(child)"
 	>
-		<mat-icon matSuffix svgIcon="arrow-right"></mat-icon>
+		<mat-icon matSuffix svgIcon="arrow-right" />
 		<span class="ob-screen-reader-only">{{
 			"i18n.oblique.master-layout.navigation.link.go-to-children" | translate : { parentLabel: (child.label | translate) }
 		}}</span>
@@ -59,6 +59,6 @@
 			[routerLinkActiveOptions]="routerLinkActiveOptions"
 			[routerLinkBase]="routerLinkBase + '/' + child.url"
 			(changeCurrentParent)="goToChildren($event)"
-		></ob-master-layout-navigation-sub-menu-item>
+		/>
 	</ng-container>
 </ng-template>

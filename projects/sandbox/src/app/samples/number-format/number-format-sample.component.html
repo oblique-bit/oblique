@@ -1,5 +1,5 @@
 <h2>{{ "i18n.routes.samples.number-format.title" | translate }}</h2>
-<sb-description component="number-format"></sb-description>
+<sb-description component="number-format" />
 <h3>Preview with template form</h3>
 <form>
 	<mat-form-field>
@@ -32,7 +32,7 @@
 			obNumberFormat
 			required
 		/>
-		<mat-error></mat-error>
+		<mat-error />
 	</mat-form-field>
 	<div>{{ numberRequired }}</div>
 </form>
@@ -67,8 +67,8 @@
 			formControlName="numberRequired"
 			obNumberFormat
 		/>
-		<mat-error></mat-error>
+		<mat-error />
 	</mat-form-field>
 	<div>{{ formData.get("numberRequired").value }}</div>
 </form>
-<sb-api component="number-format"></sb-api>
+<sb-api component="number-format" />

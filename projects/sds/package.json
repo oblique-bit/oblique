@@ -4,7 +4,7 @@
   "scripts": {
     "start": "ng serve",
     "test": "cd ../.. && ng test sds",
-    "build": "ng build",
+    "build": "ng build && ts-node scripts/post-dist/copy-nginx.ts",
     "add-code-example": "npm run schematics-build && cd ../../ && schematics ./projects/sds/schematics/collection:add-code-example --dry-run=false",
     "add-preview": "npm run schematics-build  && cd ../../ && schematics ./projects/sds/schematics/collection:add-preview --dry-run=false",
     "schematics-build": "npm run build --prefix schematics"
@@ -14,7 +14,7 @@
     "raw-loader": "^4.0.2"
   },
   "devDependencies": {
-    "@schematics/angular": "^15.0.4",
+    "@schematics/angular": "^16.2.9",
     "jest-raw-loader": "^1.0.1"
   }
 }

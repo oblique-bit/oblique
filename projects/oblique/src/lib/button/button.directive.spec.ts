@@ -20,7 +20,7 @@ interface ButtonDirectiveTestParameter {
 	expectedButtonClassAfterChange: {primary: boolean; flat: boolean; stroked: boolean};
 }
 
-describe('ButtonDirective', () => {
+describe(ObButtonDirective.name, () => {
 	let directive: ObButtonDirective;
 	let component: ButtonDirectiveTestComponent;
 	let fixture: ComponentFixture<ButtonDirectiveTestComponent>;

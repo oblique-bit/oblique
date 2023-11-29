@@ -5,7 +5,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CollapseSampleComponent} from './collapse-sample.component';
 import {MatSelectModule} from '@angular/material/select';
 
-describe('ObCollapseSampleComponent', () => {
+describe(CollapseSampleComponent.name, () => {
 	let component: CollapseSampleComponent;
 	let fixture: ComponentFixture<CollapseSampleComponent>;
 

@@ -3,7 +3,7 @@ import {getSourceNodes} from '@schematics/angular/utility/ast-utils';
 import {Rule, SchematicContext, SchematicsException, Tree, apply, chain, mergeWith, move, template, url} from '@angular-devkit/schematics';
 import {getSdsSourceRootPath} from '../workspace.utils';
 import {addNodeToSyntaxList, checkPropertyLiteralExists} from '../nodes.utils';
-import ts, {SyntaxKind} from 'typescript';
+import {SourceFile, SyntaxKind} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import * as colors from 'ansi-colors';
 import {AddCodeExampleOptions} from './add-code-example.model';
 import {
@@ -87,7 +87,7 @@ function importSlugSymbol(exampleName: string): Rule {
 	};
 }
 
-function checkSlugAlreadyExists(sourceFile: ts.SourceFile, name: string, context: SchematicContext): boolean {
+function checkSlugAlreadyExists(sourceFile: SourceFile, name: string, context: SchematicContext): boolean {
 	const elementToFind = {
 		identifierName: 'codeExamples',
 		propertyName: `${dasherize(name)}`,

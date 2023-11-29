@@ -1,5 +1,5 @@
 <h2>Popover</h2>
-<sb-description component="popover"></sb-description>
+<sb-description component="popover" />
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
 		<div class="large-popover">
@@ -36,7 +36,7 @@
 	<ng-container column-right-content>
 		<fieldset>
 			<legend>Alignment</legend>
-			<mat-select [(ngModel)]="this.placement">
+			<mat-select [(ngModel)]="placement">
 				<mat-option value="auto">Auto</mat-option>
 				<mat-option value="top-start">Top left</mat-option>
 				<mat-option value="top">Top center</mat-option>
@@ -58,7 +58,7 @@
 		</fieldset>
 		<fieldset>
 			<legend>Toggle position</legend>
-			<mat-radio-group [(ngModel)]="this.openPopoverPosition">
+			<mat-radio-group [(ngModel)]="openPopoverPosition">
 				<mat-radio-button value="left">Left</mat-radio-button>
 				<mat-radio-button value="center">Center</mat-radio-button>
 				<mat-radio-button value="right">Right</mat-radio-button>
@@ -66,7 +66,7 @@
 		</fieldset>
 		<fieldset>
 			<legend>Toggle handle</legend>
-			<mat-radio-group [(ngModel)]="this.toggleHandle">
+			<mat-radio-group [(ngModel)]="toggleHandle">
 				<mat-radio-button [value]="undefined">Not set</mat-radio-button>
 				<mat-radio-button [value]="toggleTypeHover">Hover</mat-radio-button>
 				<mat-radio-button [value]="toggleTypeClick">Click</mat-radio-button>
@@ -74,7 +74,7 @@
 		</fieldset>
 		<fieldset *ngIf="toggleHandle === toggleTypeClick || toggleHandle === undefined">
 			<legend>Close only on toggle</legend>
-			<mat-radio-group [(ngModel)]="this.closeOnlyOnToggle">
+			<mat-radio-group [(ngModel)]="closeOnlyOnToggle">
 				<mat-radio-button [value]="undefined">Not set</mat-radio-button>
 				<mat-radio-button [value]="true">true</mat-radio-button>
 				<mat-radio-button [value]="false">false</mat-radio-button>
@@ -82,4 +82,4 @@
 		</fieldset>
 	</ng-container>
 </ob-column-layout>
-<sb-api component="popover"></sb-api>
+<sb-api component="popover" />

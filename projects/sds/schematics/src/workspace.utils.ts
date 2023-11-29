@@ -1,7 +1,7 @@
 import {workspaces} from '@angular-devkit/core';
 import {Tree} from '@angular-devkit/schematics';
 import {WorkspaceDefinition} from '@schematics/angular/utility';
-import {WorkspaceFormat} from '@angular-devkit/core/src/workspace';
+import {WorkspaceFormat} from '@angular-devkit/core/src/workspace/index';
 import {createHost} from './host.utils';
 import {ProjectDefinition} from '@angular-devkit/core/src/workspace/definitions';
 

@@ -9,7 +9,7 @@ import {ObNumberFormatDirective} from './number-format.directive';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 class TestDefaultComponent {
-	number;
+	number: number;
 }
 
 @Component({
@@ -17,10 +17,10 @@ class TestDefaultComponent {
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 class TestNonPersistentComponent {
-	number;
+	number: number;
 }
 
-describe('NumberFormatDirective', () => {
+describe(ObNumberFormatDirective.name, () => {
 	let testComponent: TestDefaultComponent | TestNonPersistentComponent;
 	let fixture: ComponentFixture<TestDefaultComponent>;
 	let element: DebugElement;

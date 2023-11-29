@@ -5,6 +5,6 @@
 	</app-tab>
 
 	<app-tab *ngFor="let codeSnippet of codeSnippets" [name]="codeSnippet.name" [id]="idPrefix | id : [componentId, codeSnippet.name, 'tab']">
-		<app-highlighted-code [idPrefix]="idPrefix | id : [componentId]" [codeBlock]="codeSnippet.sourceCode"></app-highlighted-code>
+		<app-highlighted-code [idPrefix]="idPrefix | id : [componentId]" [codeBlock]="codeSnippet.sourceCode" />
 	</app-tab>
 </app-tabs>

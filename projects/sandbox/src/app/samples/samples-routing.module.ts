@@ -50,7 +50,6 @@ const samplesRoutes: Routes = [
 	{path: 'alert/2', component: AlertSampleComponent},
 	{path: 'alert/3', component: AlertSampleComponent},
 	{path: 'autocomplete', component: AutocompleteSampleComponent},
-	{path: 'button', component: ButtonSampleComponent},
 	{
 		path: 'breadcrumb',
 		component: BreadcrumbSampleComponent,
@@ -110,6 +109,7 @@ const samplesRoutes: Routes = [
 			}
 		]
 	},
+	{path: 'button', component: ButtonSampleComponent},
 	{path: 'collapse', component: CollapseSampleComponent},
 	{path: 'collapse/1', component: CollapseSampleComponent},
 	{path: 'collapse/2', component: CollapseSampleComponent},

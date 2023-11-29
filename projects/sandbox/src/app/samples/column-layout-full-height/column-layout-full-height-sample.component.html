@@ -40,7 +40,7 @@
 	<ng-container column-main-content>
 		<h2>{{ "i18n.routes.samples.column-layout.title" | translate }}</h2>
 		<p>In Full Height mode, the column layout uses all the available space and each column can be independently scrolled.</p>
-		<ob-autocomplete [autocompleteOptions]="[{ label: 'test' }]"></ob-autocomplete>
+		<ob-autocomplete [autocompleteOptions]="[{ label: 'test' }]" />
 	</ng-container>
 	<ng-container column-right-content>
 		<h3>Controls</h3>
@@ -50,7 +50,7 @@
 		</div>
 		<div>
 			<mat-checkbox [(ngModel)]="right">Right column?</mat-checkbox>
-			<button type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()" *ngIf="right">Toggle</button>
+			<button type="button" obButton mat-button (click)="obColumnLayout.toggleRight()" *ngIf="right">Toggle</button>
 		</div>
 		<mat-slide-toggle [(ngModel)]="noLayout">Remove layout</mat-slide-toggle>
 		<mat-slide-toggle [(ngModel)]="wider">Wider columns</mat-slide-toggle>

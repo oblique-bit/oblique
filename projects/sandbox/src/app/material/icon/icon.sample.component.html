@@ -1,22 +1,22 @@
 <h2 class="page-header">Icon</h2>
-<sb-description component="icon"></sb-description>
+<sb-description component="icon" />
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
 		<section>
 			<h3>Icons with text</h3>
 			<h4>
-				<mat-icon svgIcon="anchor" class="ob-icon-text"></mat-icon>
+				<mat-icon svgIcon="anchor" class="ob-icon-text" />
 				Some title
 			</h4>
 			<p>
 				A paragraph with an
-				<mat-icon svgIcon="anchor" class="ob-icon-text"></mat-icon>
+				<mat-icon svgIcon="anchor" class="ob-icon-text" />
 				icon within it.
 			</p>
 			<p>
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
 				erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Another paragraph with text above and below the
-				<mat-icon svgIcon="anchor" class="ob-icon-text"></mat-icon>
+				<mat-icon svgIcon="anchor" class="ob-icon-text" />
 				icon. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
 				sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
 				accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -24,13 +24,7 @@
 		</section>
 		<section>
 			<h3>Icon list</h3>
-			<mat-icon
-				*ngFor="let icon of icons"
-				class="icon-list"
-				[svgIcon]="icon"
-				[style.color]="color"
-				[style.font-size]="fontSize + 'px'"
-			></mat-icon>
+			<mat-icon *ngFor="let icon of icons" class="icon-list" [svgIcon]="icon" [style.color]="color" [style.font-size]="fontSize + 'px'" />
 		</section>
 	</ng-container>
 	<ng-container column-right-content>
@@ -50,4 +44,4 @@
 		</mat-form-field>
 	</ng-container>
 </ob-column-layout>
-<sb-api component="icon"></sb-api>
+<sb-api component="icon" />

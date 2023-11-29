@@ -1,13 +1,13 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ErrorMessagesSampleComponent} from './error-messages-sample.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {ErrorMessagesSampleComponent} from './error-messages-sample.component';
 
-describe('ObErrorMessagesSampleComponent', () => {
+describe(ErrorMessagesSampleComponent.name, () => {
 	let component: ErrorMessagesSampleComponent;
 	let fixture: ComponentFixture<ErrorMessagesSampleComponent>;
 

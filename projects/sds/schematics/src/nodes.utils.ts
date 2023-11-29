@@ -1,12 +1,11 @@
 import {Rule, SchematicContext, SchematicsException, chain, noop} from '@angular-devkit/schematics';
 import {findNodes, getSourceNodes} from '@schematics/angular/utility/ast-utils';
-import * as ts from 'typescript';
-import {SyntaxKind} from 'typescript';
+import {Node, SourceFile, SyntaxKind} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {changeInsertLeft, changeInsertRight, replaceUpdate, showAlreadyExistsMessage} from './sds.utils';
 import {InsertChange, ReplaceChange} from '@schematics/angular/utility/change';
 
 export function checkPropertyLiteralExists(
-	nodes: ts.Node[],
+	nodes: Node[],
 	toFindConfig: {identifierName: string; propertyName: string; className: string}
 ): boolean {
 	const syntaxList = findNodes(
@@ -21,8 +20,8 @@ export function checkPropertyLiteralExists(
 	return syntaxList.length > 0;
 }
 
-export function findIdentifierNode(nodes: ts.Node[], identifierName: string): ts.Node {
-	const foundNode = nodes.find(node => node.kind === ts.SyntaxKind.Identifier && node.getText() === identifierName);
+export function findIdentifierNode(nodes: Node[], identifierName: string): Node {
+	const foundNode = nodes.find(node => node.kind === SyntaxKind.Identifier && node.getText() === identifierName);
 	if (!foundNode?.parent) {
 		throw new SchematicsException(`Error: Expected variable ${identifierName} not found in ${nodes.pop().parent.getText()}.`);
 	}
@@ -30,10 +29,10 @@ export function findIdentifierNode(nodes: ts.Node[], identifierName: string): ts
 }
 
 export function addNodeToSyntaxList(
-	sourceFile: ts.SourceFile,
+	sourceFile: SourceFile,
 	identifierName: string,
 	toAdd: {
-		kind: ts.SyntaxKind.ArrayLiteralExpression | ts.SyntaxKind.ObjectLiteralExpression;
+		kind: SyntaxKind.ArrayLiteralExpression | SyntaxKind.ObjectLiteralExpression;
 		text: string;
 		insert?: 'ascending' | 'left' | 'right';
 	}
@@ -84,7 +83,7 @@ export function addNodeToSyntaxList(
 	};
 }
 
-function getSortedText(syntaxList: ts.Node, kind: SyntaxKind, toAddText: string): string {
+function getSortedText(syntaxList: Node, kind: SyntaxKind, toAddText: string): string {
 	const listText = syntaxList
 		.getChildren()
 		.filter(node => node.kind !== SyntaxKind.CommaToken)
@@ -106,23 +105,23 @@ function getSortedText(syntaxList: ts.Node, kind: SyntaxKind, toAddText: string)
 }
 
 function findSyntaxList(
-	nodes: ts.Node[],
+	nodes: Node[],
 	identifierName: string,
-	kind: ts.SyntaxKind.ArrayLiteralExpression | ts.SyntaxKind.ObjectLiteralExpression
-): ts.Node {
-	const identifier: ts.Node = findByTextAndKind(nodes, {kind: ts.SyntaxKind.Identifier, text: identifierName});
+	kind: SyntaxKind.ArrayLiteralExpression | SyntaxKind.ObjectLiteralExpression
+): Node {
+	const identifier: Node = findByTextAndKind(nodes, {kind: SyntaxKind.Identifier, text: identifierName});
 	const siblings = identifier.parent.getChildren().filter(node => node.getText() !== identifier.getText());
 	const toAddNode = siblings.find(node => node.kind === kind);
 	return findNodeBySyntaxKind(toAddNode, SyntaxKind.SyntaxList);
 }
 
-function getTextToAddWithComma(syntaxList: ts.Node, textToAdd: string): string {
+function getTextToAddWithComma(syntaxList: Node, textToAdd: string): string {
 	const lastSign = syntaxList.getText().at(-1);
 	const hasComma = lastSign === ',' || textToAdd.at(0) === ',';
 	return hasComma || lastSign === undefined ? `\n\t\t${textToAdd},\n` : `,\n\t\t${textToAdd},\n`;
 }
 
-function findByTextAndKind(nodes: ts.Node[], toFind: {kind: SyntaxKind; text: string}, childIndex = 0): ts.Node {
+function findByTextAndKind(nodes: Node[], toFind: {kind: SyntaxKind; text: string}, childIndex = 0): Node {
 	return nodes.find(node => {
 		if (node.kind === toFind.kind && node.getText().includes(toFind.text)) {
 			return node;
@@ -134,8 +133,8 @@ function findByTextAndKind(nodes: ts.Node[], toFind: {kind: SyntaxKind; text: st
 	});
 }
 
-function findNodeBySyntaxKind(nodes: ts.Node, kind: SyntaxKind, errorMessage?: string): ts.Node {
-	const foundNode: ts.Node = nodes.getChildren().find(node => node.kind === kind);
+function findNodeBySyntaxKind(nodes: Node, kind: SyntaxKind, errorMessage?: string): Node {
+	const foundNode: Node = nodes.getChildren().find(node => node.kind === kind);
 	if (!foundNode) {
 		if (errorMessage) {
 			throw new SchematicsException(errorMessage);
