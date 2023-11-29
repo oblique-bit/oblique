@@ -17,6 +17,7 @@ export class ObFileUploadComponent {
 	@Input() accept = ['*'];
 	@Input() singleRequest = true;
 	@Input() maxFileSize = 5;
+	@Input() maxFileAmount = 0;
 	@Input() multiple = true;
 	@Input() uploadUrl: string;
 	@Input() cancelConfirmation = true;

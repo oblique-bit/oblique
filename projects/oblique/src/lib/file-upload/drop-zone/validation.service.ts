@@ -10,20 +10,23 @@ export class ObValidationService {
 	constructor(private readonly notification: ObNotificationService) {}
 
 	// eslint-disable-next-line @typescript-eslint/default-param-last
-	public filterInvalidFiles(files: File[], accept: string[] = ['*'], maxSize: number, multiple: boolean): File[] {
-		const dispatchedFiles: ObIFileValidation = this.dispatchFiles(files, accept, maxSize, multiple);
-		this.notifyErrors('i18n.oblique.file-upload.error.single', {ignoredFiles: dispatchedFiles.overflowing});
+	public filterInvalidFiles(files: File[], accept: string[] = ['*'], maxSize: number, maxAmount: number, multiple: boolean): File[] {
+		const dispatchedFiles: ObIFileValidation = this.dispatchFiles(files, accept, maxSize, maxAmount, multiple);
+
+		if (multiple) this.notifyErrors('i18n.oblique.file-upload.error.overflow', {ignoredFiles: dispatchedFiles.overflowing, maxAmount});
+		else this.notifyErrors('i18n.oblique.file-upload.error.single', {ignoredFiles: dispatchedFiles.overflowing});
+
 		this.notifyErrors('i18n.oblique.file-upload.error.type', {ignoredFiles: dispatchedFiles.invalid, supportedTypes: accept.join(', ')});
 		this.notifyErrors('i18n.oblique.file-upload.error.size', {ignoredFiles: dispatchedFiles.tooLarge, maxSize});
 
 		return dispatchedFiles.valid;
 	}
 
-	private dispatchFiles(files: File[], accept: string[], maxSize: number, multiple: boolean): ObIFileValidation {
+	private dispatchFiles(files: File[], accept: string[], maxSize: number, maxAmount: number, multiple: boolean): ObIFileValidation {
 		return files.reduce(
 			(result, file, index) => {
 				const size = file.size / 1024 / 1024;
-				if (index > 0 && !multiple) {
+				if ((index > 0 && !multiple) || (maxAmount > 0 && files.length > maxAmount)) {
 					result.overflowing.push(file.name);
 				} else if (!this.isFileTypeValid(file.name.toLowerCase(), accept)) {
 					result.invalid.push(file.name);
