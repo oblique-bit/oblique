@@ -64,7 +64,8 @@ table {
 		}
 	}
 
-	& + table {
+	& + table,
+	& + p {
 		margin-top: variables.$ob-spacing-lg;
 	}
 }
