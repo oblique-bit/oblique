@@ -8,7 +8,7 @@ export class AdaptPackageJson {
 	private static readonly DIST_PATH = path.join('..', '..', 'dist', 'oblique');
 
 	static perform(): void {
-		const filePath = path.join('..', '..', 'dist', 'oblique', 'package.json');
+		const filePath = path.join(AdaptPackageJson.DIST_PATH, 'package.json');
 		const fields = ['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs'];
 		const distPackage = PackageJson.getData(filePath);
 		const rootPackage = PackageJson.filterIn(path.join('..', '..', 'package.json'), fields);
