@@ -4,7 +4,13 @@
 	<section column-main-content>
 		<h3>Drop Zone</h3>
 		<p>The below example only provides a drop zone, it doesn't perform the actual upload</p>
-		<ob-drop-zone [accept]="acceptFiles" [maxFileSize]="maxFileSize" [multiple]="multipleFile" (uploadEvent)="uploadEvent($event)" />
+		<ob-drop-zone
+			[accept]="acceptFiles"
+			[maxFileSize]="maxFileSize"
+			[maxFileAmount]="maxFileAmount"
+			[multiple]="multipleFile"
+			(uploadEvent)="uploadEvent($event)"
+		/>
 
 		<h3>File upload</h3>
 		<p>The below example actually performs the upload</p>
@@ -12,6 +18,7 @@
 			[uploadUrl]="uploadUrl"
 			[accept]="acceptFiles"
 			[maxFileSize]="maxFileSize"
+			[maxFileAmount]="maxFileAmount"
 			[multiple]="multipleFile"
 			[singleRequest]="singleRequest"
 			[cancelConfirmation]="cancelConfirmation"
@@ -54,6 +61,11 @@
 					<mat-label>maxFileSize</mat-label>
 					<input type="number" matInput [(ngModel)]="maxFileSize" />
 					<mat-hint>Maximal file size in MB</mat-hint>
+				</mat-form-field>
+				<mat-form-field>
+					<mat-label>maxFileAmount</mat-label>
+					<input type="number" matInput [(ngModel)]="maxFileAmount" />
+					<mat-hint>Maximal amount of files in the queue. If 0, no limit</mat-hint>
 				</mat-form-field>
 			</fieldset>
 			<fieldset>
