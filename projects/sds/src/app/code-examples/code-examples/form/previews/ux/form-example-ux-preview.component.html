@@ -51,11 +51,12 @@
 	<h3>Required</h3>
 	<mat-form-field>
 		<mat-label>Required</mat-label>
-		<input required type="text" matInput placeholder="Required" />
+		<input required type="text" matInput placeholder="Required" ngModel />
 	</mat-form-field>
 	<mat-form-field>
 		<mat-label>Required</mat-label>
-		<mat-select required>
+		<mat-select required ngModel>
+			<mat-option [value]="" />
 			<mat-option [value]="1">One</mat-option>
 			<mat-option [value]="2">Two</mat-option>
 			<mat-option [value]="3">Three</mat-option>
@@ -65,6 +66,6 @@
 	</mat-form-field>
 	<mat-form-field>
 		<mat-label>Required</mat-label>
-		<textarea required matInput placeholder="Required"></textarea>
+		<textarea required matInput placeholder="Required" ngModel></textarea>
 	</mat-form-field>
 </div>
