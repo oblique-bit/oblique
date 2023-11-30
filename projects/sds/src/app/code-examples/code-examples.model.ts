@@ -40,7 +40,8 @@ export class CodeExamples {
 				return require(`../../../../../node_modules/@oblique/oblique/src/assets/i18n/${filePath}`);
 			}
 			default: {
-				return require(filePath);
+				// adding `.json` tells `require` that the file is a JSON. Otherwise, it tries to load any file type
+				return require(`${filePath.replace('.json', '')}.json`);
 			}
 		}
 	}
