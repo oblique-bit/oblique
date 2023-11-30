@@ -17,3 +17,5 @@ export class CopyNginx {
 		copyFileSync(path.join(source, filename), path.join(destination, filename));
 	}
 }
+
+CopyNginx.perform();
