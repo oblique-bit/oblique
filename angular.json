@@ -215,6 +215,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["ajv", "ajv-formats"],
             "outputPath": "dist/sds/public",
             "index": "projects/sds/src/index.html",
             "main": "projects/sds/src/main.ts",
