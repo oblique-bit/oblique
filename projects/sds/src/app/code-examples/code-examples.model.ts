@@ -11,7 +11,7 @@ export class CodeExamples {
 	}
 
 	protected getJsonSnippet(directory: string, filePath: string, title: string): SourceCode {
-		return new SourceCode(this.getJsonRequire(directory, filePath), title);
+		return new SourceCode(JSON.stringify(this.getJsonRequire(directory, filePath), null, 2), title);
 	}
 
 	private getRequire(directory: string, filePath: string): {default: string} {
@@ -34,16 +34,13 @@ export class CodeExamples {
 	private getJsonRequire(directory: string, filePath: string): string {
 		switch (directory) {
 			case 'i18n': {
-				// eslint-disable-next-line @typescript-eslint/no-var-requires
-				return JSON.stringify(require(`../../assets/i18n/${filePath}`), null, 2);
+				return require(`../../assets/i18n/${filePath}`);
 			}
 			case 'node_modules/@oblique/oblique/src/assets/i18n': {
-				// eslint-disable-next-line @typescript-eslint/no-var-requires
-				return JSON.stringify(require(`../../../../../node_modules/@oblique/oblique/src/assets/i18n/${filePath}`), null, 2);
+				return require(`../../../../../node_modules/@oblique/oblique/src/assets/i18n/${filePath}`);
 			}
 			default: {
-				// eslint-disable-next-line @typescript-eslint/no-var-requires
-				return JSON.stringify(require(filePath), null, 2);
+				return require(filePath);
 			}
 		}
 	}
