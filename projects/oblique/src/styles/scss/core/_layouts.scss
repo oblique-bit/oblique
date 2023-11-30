@@ -28,23 +28,3 @@ body {
 	word-break: break-word;
 	color: variables.$ob-default;
 }
-
-.bg-secondary {
-	background-color: variables.$ob-extra-light !important;
-	height: 100%;
-}
-
-.hover-visible {
-	visibility: hidden;
-	opacity: 0;
-	transition-property: opacity, visibility;
-	transition-duration: variables.$ob-duration-fast, 0s;
-	transition-timing-function: ease-in-out;
-	transition-delay: 0s, variables.$ob-duration-fast;
-
-	*:hover > & {
-		visibility: visible;
-		opacity: 1;
-		transition-delay: 0s;
-	}
-}
