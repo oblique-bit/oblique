@@ -11,6 +11,9 @@ export class CodeExamples {
 	}
 
 	protected getJsonSnippet(directory: string, filePath: string, title: string): SourceCode {
+		if (!filePath.endsWith('.json')) {
+			throw new Error(`${filePath} cannot be loaded with the JSON loader`);
+		}
 		return new SourceCode(JSON.stringify(this.getJsonRequire(directory, filePath), null, 2), title);
 	}
 
@@ -41,6 +44,7 @@ export class CodeExamples {
 			}
 			default: {
 				// adding `.json` tells `require` that the file is a JSON. Otherwise, it tries to load any file type
+				// which causes errors
 				return require(`${filePath.replace('.json', '')}.json`);
 			}
 		}
