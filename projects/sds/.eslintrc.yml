@@ -9,6 +9,7 @@ overrides:
         - projects/sds/tsconfig.app.json
         - projects/sds/tsconfig.spec.json
         - projects/sds/schematics/tsconfig.schematics.json
+        - projects/sds/scripts/tsconfig.scripts.json
     rules:
       # reactivate some rules
       "@angular-eslint/prefer-standalone-component": error
