@@ -16,7 +16,6 @@ export class ChipsComponent implements OnInit {
 	color: ThemePalette = null;
 	disabled = false;
 	filteredTags: Observable<string[]>;
-	selected = false;
 	showAutocompleteForm = false;
 	stacked = false;
 	variant: string = null;
