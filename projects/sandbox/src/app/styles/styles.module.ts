@@ -11,7 +11,6 @@ import {ListsComponent} from './lists/lists.component';
 import {PaletteComponent} from './palette/palette.component';
 import {TableComponent} from './table/table.component';
 import {StepperComponent} from './stepper/stepper.component';
-import {TabsComponent} from './tabs/tabs.component';
 import {AlertComponent} from './alert/alert.component';
 import {IconSampleComponent} from './icon/icon.component';
 import {GridComponent} from './grid/grid.component';
@@ -32,7 +31,6 @@ import {SharedModule} from '../common/shared.module';
 			{path: 'screen-reader-only', component: ScreenReaderOnlyComponent},
 			{path: 'stepper', component: StepperComponent},
 			{path: 'table', component: TableComponent},
-			{path: 'tabs', component: TabsComponent},
 			{path: 'typography', component: TypographyComponent},
 			{path: '', redirectTo: 'typography', pathMatch: 'full'}
 		]),
@@ -53,7 +51,6 @@ import {SharedModule} from '../common/shared.module';
 		ScreenReaderOnlyComponent,
 		StepperComponent,
 		TableComponent,
-		TabsComponent,
 		TypographyComponent
 	]
 })
