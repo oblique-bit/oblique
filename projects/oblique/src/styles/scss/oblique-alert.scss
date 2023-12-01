@@ -6,6 +6,7 @@
 	padding: variables.$ob-spacing-default variables.$ob-spacing-default variables.$ob-spacing-default
 		(calc(2 * 1.5em + #{variables.$ob-spacing-default})); // icon font-size * icon width + text padding; icon means the ::before pseudo element
 	margin-bottom: variables.$ob-spacing-default;
+	border-radius: variables.$ob-border-radius-base;
 
 	.ob-close {
 		float: right;
@@ -37,19 +38,19 @@
 	}
 
 	@at-root #{selector.append(".ob-alert-info", &)} {
-		background-color: variables.$ob-light;
+		background-color: variables.$ob-blue-200;
 	}
 
 	@at-root #{selector.append(".ob-alert-success", &)} {
-		background-color: variables.$ob-success-light;
+		background-color: variables.$ob-green-100;
 	}
 
 	@at-root #{selector.append(".ob-alert-warning", &)} {
-		background-color: variables.$ob-warning-light;
+		background-color: variables.$ob-orange-100;
 	}
 
 	@at-root #{selector.append(".ob-alert-error", &)} {
-		background-color: variables.$ob-error-light;
+		background-color: variables.$ob-red-100;
 	}
 
 	&::before {
@@ -61,25 +62,26 @@
 		padding: variables.$ob-spacing-sm;
 		width: 1.5em;
 		font-size: 2em;
+		border-radius: variables.$ob-border-radius-base 0 0 variables.$ob-border-radius-base;
 
 		@at-root #{selector.append(".ob-alert-info", &)} {
 			content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGNpcmNsZSBjeD0iMTIiIGN5PSI0LjUiIHI9IjEuNSIgZmlsbD0iI2ZmZiIvPjxyZWN0IHg9IjEwLjUiIHk9IjkuMTY1MDIiIHdpZHRoPSIzIiBoZWlnaHQ9IjExLjgzOTk3IiBmaWxsPSIjZmZmIi8+PC9zdmc+");
-			background-color: variables.$ob-primary;
+			background-color: variables.$ob-blue-800;
 		}
 
 		@at-root #{selector.append(".ob-alert-success", &)} {
 			content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBvbHlnb24gcG9pbnRzPSI4Ljg5MiAyMC4yODQgMS44NyAxMy4yNjEgMy45OTEgMTEuMTQgOC44OTIgMTYuMDQyIDE5LjkzOSA0Ljk5NCAyMi4wNjEgNy4xMTUgOC44OTIgMjAuMjg0IiBmaWxsPSIjZmZmIi8+PC9zdmc+");
-			background-color: variables.$ob-success;
+			background-color: variables.$ob-green-700;
 		}
 
 		@at-root #{selector.append(".ob-alert-warning", &)} {
-			content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxOS41IiByPSIxLjUiIGZpbGw9IiMwMDAiLz48bGluZSB4MT0iMTIiIHkxPSIzIiB4Mj0iMTIiIHkyPSIxNC44MzE1NCIgZmlsbD0iIzAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS13aWR0aD0iMyIvPjwvc3ZnPg==");
-			background-color: variables.$ob-warning;
+			content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxOS41IiByPSIxLjUiIGZpbGw9IiNmZmYiLz48bGluZSB4MT0iMTIiIHkxPSIzIiB4Mj0iMTIiIHkyPSIxNC44MzE1NCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS13aWR0aD0iMyIvPjwvc3ZnPg==");
+			background-color: variables.$ob-orange-600;
 		}
 
 		@at-root #{selector.append(".ob-alert-error", &)} {
 			content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBvbHlnb24gcG9pbnRzPSIxNC4xOSAxMS45OTcgMTkuMjQgMTcuMDQ3IDE3LjEyIDE5LjE2NyAxMi4wNyAxNC4xMTcgNy4wMiAxOS4xNjcgNC45IDE3LjA0NyA5Ljk1IDExLjk5NyA0LjkgNi45NDcgNy4wMiA0LjgyNyAxMi4wNyA5Ljg3NyAxNy4xMiA0LjgyNyAxOS4yNCA2Ljk0NyAxNC4xOSAxMS45OTciIGZpbGw9IiNmZmYiLz48L3N2Zz4=");
-			background-color: variables.$ob-error;
+			background-color: variables.$ob-red-800;
 		}
 	}
 }
