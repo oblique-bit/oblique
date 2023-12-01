@@ -16,7 +16,7 @@
 	.mat-calendar-controls .mdc-button__label {
 		&,
 		&::after {
-			color: variables.$ob-secondary-800;
+			color: variables.$ob-default;
 		}
 	}
 
@@ -42,8 +42,8 @@
 			.mat-calendar-body-selected,
 			.mat-calendar-body-comparison-identical
 		) {
-		color: variables.$ob-secondary-800;
-		border-color: variables.$ob-secondary-800;
+		color: variables.$ob-default;
+		border-color: variables.$ob-default;
 	}
 
 	.mat-calendar-body-cell.mat-calendar-body-in-range::before {
@@ -54,7 +54,7 @@
 	.mat-calendar-previous-button::after,
 	.mat-calendar-next-button::after {
 		width: variables.$ob-spacing-default;
-		color: variables.$ob-secondary-800;
+		color: variables.$ob-default;
 		margin: unset;
 		border: unset;
 		transform: unset;

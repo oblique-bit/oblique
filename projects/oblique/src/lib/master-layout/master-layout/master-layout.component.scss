@@ -14,7 +14,6 @@
 	}
 
 	.ob-viewport {
-		background-color: variables.$ob-gray-50;
 		display: flex;
 		flex-direction: column;
 		width: 100%;
@@ -83,7 +82,7 @@
 
 		&:not(.ob-header-expanded) {
 			.ob-master-layout-header-title {
-				border-bottom: 1px solid variables.$ob-gray-200;
+				border-bottom: 1px solid variables.$ob-gray-lighter;
 			}
 		}
 	}

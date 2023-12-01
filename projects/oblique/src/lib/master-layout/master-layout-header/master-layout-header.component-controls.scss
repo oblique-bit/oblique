@@ -38,21 +38,11 @@
 			display: block;
 			width: variables.$ob-font-size-normal;
 			height: 1px;
-			background-color: variables.$ob-gray-dark;
+			background-color: variables.$ob-default;
 			background-clip: border-box;
 			transition:
 				variables.$ob-duration-default transform,
 				variables.$ob-duration-default opacity;
-		}
-
-		&:focus,
-		&:active,
-		&:hover {
-			.first-line,
-			.second-line,
-			.third-line {
-				background-color: variables.$ob-default;
-			}
 		}
 
 		.first-line {
@@ -110,7 +100,7 @@
 			transition: padding-bottom variables.$ob-duration-default;
 
 			@at-root .ob-master-layout.ob-header-expanded & {
-				border-bottom: 1px solid variables.$ob-red-800;
+				border-bottom: 1px solid variables.$ob-accent;
 			}
 
 			@at-root .ob-master-layout:not(.ob-header-expanded) & {

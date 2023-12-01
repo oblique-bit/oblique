@@ -15,7 +15,7 @@ legend {
 	width: 100%;
 	padding: 0;
 	margin-bottom: variables.$ob-spacing-sm;
-	border-bottom: 1px dotted variables.$ob-gray;
+	border-bottom: variables.$ob-line-width-xs solid variables.$ob-gray-lighter;
 	font-size: variables.$ob-font-size-bigger;
 	font-weight: 600;
 	line-height: inherit;

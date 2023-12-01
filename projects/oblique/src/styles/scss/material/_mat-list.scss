@@ -58,7 +58,7 @@
 
 		.mdc-list-item__secondary-text {
 			@include typography.ob-body2();
-			color: variables.$ob-secondary-800;
+			color: variables.$ob-default;
 			margin-bottom: 0;
 
 			&::before {
@@ -87,7 +87,7 @@
 	.mdc-list-group__subheader,
 	.mat-mdc-list-item .mdc-list-item__primary-text {
 		@include typography.ob-subtitle1();
-		color: variables.$ob-secondary-800;
+		color: variables.$ob-default;
 	}
 
 	&.mat-mdc-selection-list .mat-mdc-list-item:not(.mdc-list-item--disabled) {

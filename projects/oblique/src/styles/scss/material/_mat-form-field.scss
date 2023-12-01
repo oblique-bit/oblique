@@ -6,7 +6,7 @@
 
 .mat-mdc-form-field {
 	width: 100%;
-	color: core-variables.$ob-text-800;
+	color: core-variables.$ob-default;
 
 	&:not(.ob-form-field-textarea) {
 		&.mat-form-field-sm,
@@ -85,7 +85,7 @@
 
 	&:not(.mat-form-field-invalid) {
 		@include mat-form-field.ob-form-field-colors(
-			core-variables.$ob-text-800,
+			core-variables.$ob-default,
 			core-variables.$ob-white
 		);
 	}
@@ -102,7 +102,7 @@
 	&:not([readonly], .ob-form-field-readonly, .mat-form-field-disabled) {
 		&.mat-accent {
 			@include mat-form-field.ob-focused-form-field-colors(
-				core-variables.$ob-text-800,
+				core-variables.$ob-default,
 				core-variables.$ob-white
 			);
 		}
@@ -216,7 +216,7 @@
 
 	.mat-mdc-input-element {
 		&::placeholder {
-			color: core-variables.$ob-text-500;
+			color: core-variables.$ob-default;
 		}
 
 		&:disabled {
@@ -436,10 +436,6 @@
 				opacity: 0.75;
 				z-index: -1;
 				height: unset;
-
-				.ob-table:not(.ob-table-plain) tbody tr:nth-child(odd) & {
-					background-color: core-variables.$ob-gray-extra-light;
-				}
 			}
 		}
 	}

@@ -8,7 +8,6 @@
 	color: variables.$ob-white;
 	font-size: variables.$ob-font-size-xs;
 	background-color: variables.$ob-secondary-600;
-	border-top: 1px solid variables.$ob-gray-light;
 
 	@include layout.ob-media-breakpoint-up(md) {
 		flex-direction: column;
@@ -106,7 +105,7 @@
 			}
 
 			&:hover {
-				color: variables.$ob-gray-300;
+				color: variables.$ob-gray-lighter;
 			}
 		}
 	}

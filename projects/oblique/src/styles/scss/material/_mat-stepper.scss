@@ -16,8 +16,8 @@
 		border: 1px solid variables.$ob-secondary-600;
 
 		&.mat-step-icon-state-error {
-			color: variables.$ob-error-800;
-			border-color: variables.$ob-error-800;
+			color: variables.$ob-red-800;
+			border-color: variables.$ob-red-800;
 		}
 
 		&.mat-step-icon-state-edit {
@@ -26,8 +26,8 @@
 		}
 
 		&.mat-step-icon-state-done {
-			color: variables.$ob-success-600;
-			border-color: variables.$ob-success-600;
+			color: variables.$ob-success;
+			border-color: variables.$ob-success;
 
 			&:hover {
 				background-color: variables.$ob-success-light;

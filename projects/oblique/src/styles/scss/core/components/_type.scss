@@ -8,7 +8,6 @@ h4,
 h5,
 h6 {
 	margin: 0 0 0.25em;
-	color: variables.$ob-black;
 }
 
 h1 {
@@ -37,11 +36,19 @@ h6 {
 
 // inline elements
 a {
-	color: variables.$ob-primary;
+	color: variables.$ob-blue-700;
 
 	&:hover,
+	&:focus {
+		color: variables.$ob-blue-800;
+	}
+
+	&:active {
+		color: variables.$ob-blue-900;
+	}
+
 	&:visited {
-		color: variables.$ob-dark;
+		color: variables.$ob-purple-700;
 	}
 
 	&:not([href], [tabindex]),
@@ -94,7 +101,7 @@ mark {
 }
 
 ins {
-	background-color: variables.$ob-light;
+	background-color: variables.$ob-secondary-50;
 }
 
 pre,

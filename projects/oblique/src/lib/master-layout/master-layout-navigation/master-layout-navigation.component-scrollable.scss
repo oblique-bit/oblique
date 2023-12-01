@@ -32,7 +32,7 @@
 				background-color: variables.$ob-white;
 				z-index: variables.$ob-z-index-controls + 2;
 
-				$ob-active-focus-border: variables.$ob-line-width-sm solid variables.$ob-red-500;
+				$ob-active-focus-border: variables.$ob-line-width-sm solid variables.$ob-accent;
 				$ob-scrollable-box-shadow-left: 6px 0 4px (-4px) variables.$ob-secondary-100;
 
 				&.ob-navigation-scrollable-control-left {

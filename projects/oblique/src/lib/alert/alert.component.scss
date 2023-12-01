@@ -17,15 +17,15 @@
 		}
 
 		@at-root #{selector.append(".ob-alert-success", &)} {
-			background-color: variables.$ob-green-700;
+			background-color: variables.$ob-success;
 		}
 
 		@at-root #{selector.append(".ob-alert-warning", &)} {
-			background-color: variables.$ob-orange-600;
+			background-color: variables.$ob-warning;
 		}
 
 		@at-root #{selector.append(".ob-alert-error", &)} {
-			background-color: variables.$ob-red-800;
+			background-color: variables.$ob-error;
 		}
 	}
 
@@ -51,15 +51,15 @@
 		}
 
 		@at-root #{selector.append(".ob-alert-success", &)} {
-			background-color: variables.$ob-green-100;
+			background-color: variables.$ob-success-light;
 		}
 
 		@at-root #{selector.append(".ob-alert-warning", &)} {
-			background-color: variables.$ob-orange-100;
+			background-color: variables.$ob-warning-light;
 		}
 
 		@at-root #{selector.append(".ob-alert-error", &)} {
-			background-color: variables.$ob-red-100;
+			background-color: variables.$ob-error-light;
 		}
 	}
 }

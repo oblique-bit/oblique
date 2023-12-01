@@ -24,7 +24,7 @@
 		.mat-mdc-card-title {
 			@include typography.ob-h5();
 			margin-bottom: 0;
-			color: variables.$ob-secondary-800;
+			color: variables.$ob-default;
 		}
 
 		.mat-mdc-card-subtitle {
@@ -101,8 +101,8 @@
 			}
 
 			&.ob-selected::before {
-				background-color: variables.$ob-primary;
-				border-color: variables.$ob-primary;
+				background-color: variables.$ob-gray-darker;
+				border-color: variables.$ob-gray-darker;
 			}
 		}
 
@@ -113,7 +113,7 @@
 			}
 
 			&.ob-selected::before {
-				border-color: variables.$ob-primary;
+				border-color: variables.$ob-gray-darker;
 			}
 
 			&.ob-selected::after {
@@ -125,7 +125,7 @@
 				width: 10px;
 				height: 10px;
 				border-radius: 50%;
-				background-color: variables.$ob-primary;
+				background-color: variables.$ob-gray-darker;
 				z-index: 1;
 			}
 		}
@@ -140,7 +140,7 @@
 	}
 
 	.ob-alert-content {
-		color: variables.$ob-secondary-800;
+		color: variables.$ob-default;
 	}
 
 	.mat-mdc-card-content .ob-signature {

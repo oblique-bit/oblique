@@ -5,10 +5,10 @@
 @use "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout-navigation {
-	border-top: variables.$ob-line-width-xs solid variables.$ob-gray-200;
+	border-top: variables.$ob-line-width-xs solid variables.$ob-gray-lighter;
 
 	&:not(:has(.ob-has-opened-menu)) {
-		border-bottom: variables.$ob-line-width-xs solid variables.$ob-gray-200;
+		border-bottom: variables.$ob-line-width-xs solid variables.$ob-gray-lighter;
 	}
 	flex-grow: 1;
 
@@ -321,7 +321,7 @@
 
 					&.active,
 					&:hover {
-						border-bottom: variables.$ob-line-width-sm solid variables.$ob-red-500;
+						border-bottom: variables.$ob-line-width-sm solid variables.$ob-accent;
 						@include shadow.ob-shadow-lg();
 					}
 

@@ -15,16 +15,11 @@
 	padding: 8px 14px;
 	bottom: -52px;
 	right: -150px;
-	color: variables.$ob-gray-dark;
+	color: variables.$ob-default;
 	border: none;
 	border-bottom-left-radius: variables.$ob-border-radius-base;
 	border-top-left-radius: variables.$ob-border-radius-base;
-	background-color: rgba(
-		color.red(variables.$ob-gray-light),
-		color.green(variables.$ob-gray-light),
-		color.blue(variables.$ob-gray-light),
-		65%
-	);
+	background-color: variables.$ob-gray-lighter;
 	transition: all variables.$ob-duration-default ease-in-out;
 
 	.ob-control-icon {

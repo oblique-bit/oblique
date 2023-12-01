@@ -6,12 +6,12 @@
 	justify-content: center;
 	align-items: center;
 	padding: variables.$ob-spacing-lg;
-	border: 1px dashed variables.$ob-primary-700;
+	border: 1px dashed variables.$ob-gray-darker;
 	border-radius: variables.$ob-border-radius-base;
-	background-color: variables.$ob-primary-50;
+	background-color: variables.$ob-extra-light;
 
 	.ob-progress-heading {
-		color: variables.$ob-primary-500;
+		color: variables.$ob-default;
 	}
 
 	.ob-file-progress {
@@ -47,7 +47,7 @@
 			}
 
 			&.mat-warn .mdc-linear-progress__buffer-bar {
-				background-color: variables.$ob-red-800;
+				background-color: variables.$ob-error;
 			}
 		}
 	}
