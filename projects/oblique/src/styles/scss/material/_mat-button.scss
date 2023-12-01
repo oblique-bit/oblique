@@ -20,19 +20,6 @@
 			display: inline-flex;
 		}
 
-		&.mat-mdc-primary:not(.ob-button-card) {
-			.mat-mdc-button-wrapper {
-				// so that it appears before the ripple effect (mat-mdc-button-icon have z-index: 2)
-				position: relative;
-				z-index: 2;
-			}
-
-			.mat-ripple-element {
-				background-color: core-variables.$ob-primary-300;
-				opacity: 1;
-			}
-		}
-
 		$button-height: 36px;
 
 		&.mat-mdc-icon-button {
