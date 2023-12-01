@@ -15,10 +15,6 @@
 		background-color: variables.$ob-white;
 		border: 1px solid variables.$ob-secondary-600;
 
-		&:hover {
-			background-color: variables.$ob-light;
-		}
-
 		&.mat-step-icon-state-error {
 			color: variables.$ob-error-800;
 			border-color: variables.$ob-error-800;
