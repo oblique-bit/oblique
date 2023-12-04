@@ -20,6 +20,10 @@ export class TabsComponent implements AfterContentInit {
 		this.setDefaultTabSelected();
 	}
 
+	setDefaultTabSelected(): void {
+		this.selectTab(this.getDefaultTab());
+	}
+
 	selectTab(selectedTab: TabComponent): void {
 		this.tabs.toArray().forEach(tab => {
 			if (selectedTab.name === tab.name) {
@@ -28,10 +32,6 @@ export class TabsComponent implements AfterContentInit {
 				tab.updateActive(false);
 			}
 		});
-	}
-
-	setDefaultTabSelected(): void {
-		this.selectTab(this.getDefaultTab());
 	}
 
 	private getDefaultTab(): TabComponent {
