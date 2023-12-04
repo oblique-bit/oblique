@@ -57,6 +57,54 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
+	private initObservables(): void {
+		this.apiContent$ = this.apiContentSource.asObservable();
+		this.codeExampleComponent$ = this.codeExampleComponentSource.asObservable();
+		this.uiUxContent$ = this.uiUxContentSource.asObservable();
+	}
+
+	private monitorForPageChanges(): void {
+		this.apiContent$
+			.pipe(takeUntil(this.unsubscribe), combineLatestWith(this.codeExampleComponent$, this.uiUxContent$), debounceTime(1))
+			.subscribe(next => {
+				const apiContent = next[0];
+				const codeExampleComponent = next[1];
+				const uiUxContent = next[2];
+
+				if (apiContent || codeExampleComponent || uiUxContent) {
+					this.loadCodeExample(codeExampleComponent);
+					this.tabs.setDefaultTabSelected();
+				}
+			});
+	}
+
+	private loadCodeExample(codeExampleComponent: Type<CodeExamples> | undefined): void {
+		const {viewContainerRef} = this.codeExample;
+		viewContainerRef.clear();
+
+		if (codeExampleComponent) {
+			viewContainerRef.createComponent<CodeExamples>(codeExampleComponent);
+		}
+	}
+
+	private monitorForSlugToIdChanges(): void {
+		this.slugToIdService.readyToMap.pipe(takeUntil(this.unsubscribe), delay(0)).subscribe(() => {
+			this.getContentForSelectedSlug();
+			this.monitorForNavigationEndEvents();
+		});
+	}
+
+	private monitorForNavigationEndEvents(): void {
+		this.router.events
+			.pipe(
+				takeUntil(this.unsubscribe),
+				filter(event => event instanceof NavigationEnd)
+			)
+			.subscribe(() => {
+				this.getContentForSelectedSlug();
+			});
+	}
+
 	private getContentForSelectedSlug(): void {
 		const slug: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? '';
 		if (slug !== this.previousSlug) {
@@ -76,53 +124,5 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 				this.uiUxContentSource.next(cmsData.data.ui_ux);
 				this.codeExampleComponentSource.next(CodeExamplesMapper.getCodeExampleComponent(cmsData.data.slug));
 			});
-	}
-
-	private initObservables(): void {
-		this.apiContent$ = this.apiContentSource.asObservable();
-		this.codeExampleComponent$ = this.codeExampleComponentSource.asObservable();
-		this.uiUxContent$ = this.uiUxContentSource.asObservable();
-	}
-
-	private loadCodeExample(codeExampleComponent: Type<CodeExamples> | undefined): void {
-		const {viewContainerRef} = this.codeExample;
-		viewContainerRef.clear();
-
-		if (codeExampleComponent) {
-			viewContainerRef.createComponent<CodeExamples>(codeExampleComponent);
-		}
-	}
-
-	private monitorForPageChanges(): void {
-		this.apiContent$
-			.pipe(takeUntil(this.unsubscribe), combineLatestWith(this.codeExampleComponent$, this.uiUxContent$), debounceTime(1))
-			.subscribe(next => {
-				const apiContent = next[0];
-				const codeExampleComponent = next[1];
-				const uiUxContent = next[2];
-
-				if (apiContent || codeExampleComponent || uiUxContent) {
-					this.loadCodeExample(codeExampleComponent);
-					this.tabs.setDefaultTabSelected();
-				}
-			});
-	}
-
-	private monitorForNavigationEndEvents(): void {
-		this.router.events
-			.pipe(
-				takeUntil(this.unsubscribe),
-				filter(event => event instanceof NavigationEnd)
-			)
-			.subscribe(() => {
-				this.getContentForSelectedSlug();
-			});
-	}
-
-	private monitorForSlugToIdChanges(): void {
-		this.slugToIdService.readyToMap.pipe(takeUntil(this.unsubscribe), delay(0)).subscribe(() => {
-			this.getContentForSelectedSlug();
-			this.monitorForNavigationEndEvents();
-		});
 	}
 }
