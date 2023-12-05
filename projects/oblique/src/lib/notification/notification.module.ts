@@ -5,7 +5,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {ObNotificationComponent} from './notification.component';
 import {obliqueProviders} from '../utilities';
 import {ObAlertModule} from '../alert/alert.module';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 export {ObNotificationComponent} from './notification.component';
 export {ObNotificationService} from './notification.service';
