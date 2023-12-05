@@ -44,15 +44,16 @@
 	John Doe<br />
 	123 Somewhere St.<br />
 	City, State<br />
-	<a href="mailto:john@doe.com">jim@rock.com</a><br />
+	<a href="mailto:john@doe.com">{{ "jim@rock.com" }}</a
+	><br />
 	<a href="tel:+13115552368">(311) 555-2368</a>
 </address>
 
 <h2><code>&lt;pre&gt;</code> preformatted text (usually use for code samples)</h2>
-<pre>
-import {{ "{" }}}MasterLayoutModule, NotificationModule, ...} from '@oblique/oblique';
+<pre
+	>{{ "import {MasterLayoutModule, NotificationModule, ...} from '@oblique/oblique';" }}
 
-@NgModule({{ "{" }}}
+{{ "@NgModule({" }}
 	declarations: [...],
 	imports: [
 	...,
@@ -61,8 +62,8 @@ import {{ "{" }}}MasterLayoutModule, NotificationModule, ...} from '@oblique/obl
 	...
 ],
 ...,
-})
-export class AppModule {{ "{" }}}}
+{{ "})" }}
+export class AppModule &#123;&#125;
 	</pre
 >
 
