@@ -1,7 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {COMMA, ENTER, SEMICOLON} from '@angular/cdk/keycodes';
 import {UntypedFormControl} from '@angular/forms';
-import {ThemePalette} from '@angular/material/core';
 import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
@@ -13,7 +12,6 @@ import {map} from 'rxjs/operators';
 	styleUrls: ['./chips.component.scss']
 })
 export class ChipsComponent implements OnInit {
-	color: ThemePalette = null;
 	disabled = false;
 	filteredTags: Observable<string[]>;
 	showAutocompleteForm = false;
@@ -21,7 +19,6 @@ export class ChipsComponent implements OnInit {
 	variant: string = null;
 
 	readonly allTags = ['IT', 'Sales', 'Marketing', 'Management', 'HR', 'Cleaning'];
-	readonly colors: ThemePalette[] = [null, 'warn', 'primary', 'accent'];
 	readonly separatorKeysCodes = [ENTER, COMMA, SEMICOLON];
 	readonly tags = this.allTags.splice(0, 3);
 	readonly tagsCtrl = new UntypedFormControl();
@@ -31,7 +28,6 @@ export class ChipsComponent implements OnInit {
 	@ViewChild('auto', {static: false}) private readonly matAutocomplete: MatAutocomplete;
 
 	ngOnInit(): void {
-		this.color = this.colors[0];
 		this.filteredTags = this.tagsCtrl.valueChanges.pipe(map((tag: string | null) => (tag ? this.filter(tag) : this.remainingTags())));
 	}
 

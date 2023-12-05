@@ -5,7 +5,7 @@
 			<mat-list-item>
 				<mat-chip-listbox class="mdc-evolution-chip-set" [class.mat-mdc-chip-set-stacked]="stacked">
 					<mat-chip-row [ngClass]="variant" [disabled]="disabled">Chip 1</mat-chip-row>
-					<mat-chip-row [color]="color" [ngClass]="variant" [disabled]="disabled">Chip 2</mat-chip-row>
+					<mat-chip-row [ngClass]="variant" [disabled]="disabled">Chip 2</mat-chip-row>
 				</mat-chip-listbox>
 			</mat-list-item>
 		</mat-list>
@@ -37,16 +37,6 @@
 	<ng-container column-right-content>
 		<h3>Controls</h3>
 		<mat-list>
-			<fieldset *ngIf="!showAutocompleteForm">
-				<legend>Color</legend>
-				<mat-radio-group [(ngModel)]="color">
-					<mat-list-item *ngFor="let chipColor of colors">
-						<mat-radio-button [value]="chipColor">
-							{{ chipColor ? (chipColor | titlecase) : "Default" }}
-						</mat-radio-button>
-					</mat-list-item>
-				</mat-radio-group>
-			</fieldset>
 			<fieldset *ngIf="!showAutocompleteForm">
 				<legend>Variants</legend>
 				<mat-radio-group [(ngModel)]="variant">
