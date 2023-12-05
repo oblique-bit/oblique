@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -11,6 +12,6 @@ import {ObFormFieldModule} from '@oblique/oblique';
 	templateUrl: './form-example-ux-preview.component.html',
 	styleUrls: ['./form-example-ux-preview.component.scss'],
 	standalone: true,
-	imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, ObFormFieldModule]
+	imports: [FormsModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, ObFormFieldModule]
 })
 export class FormExampleUxPreviewComponent {}
