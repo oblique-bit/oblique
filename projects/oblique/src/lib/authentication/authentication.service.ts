@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {OAuthService} from 'angular-oauth2-oidc';
-import jwtDecode from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 import {ObIResourceAccessRoles, ObIResourceAccessToken} from './authentication.model';
 
 @Injectable()

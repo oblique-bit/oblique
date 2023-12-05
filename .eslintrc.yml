@@ -61,6 +61,7 @@ overrides:
       "@angular-eslint/prefer-on-push-component-change-detection": off
       "@angular-eslint/use-component-view-encapsulation": off # oblique uses ViewEncapsulation.NONE
       "@angular-eslint/use-injectable-provided-in": off # some specialized services are directly provided in a component
+      "@typescript-eslint/class-methods-use-this": off #ideally, this rule should be limited to private methods
       "@typescript-eslint/consistent-type-exports": off
       "@typescript-eslint/consistent-type-imports": off
       "@typescript-eslint/explicit-member-accessibility": off # public methods and property only accessed from the template should not be marked as public
@@ -163,6 +164,7 @@ overrides:
 
       # rules that need some refactoring to be enabled
       "@angular-eslint/prefer-standalone-component": off
+      "@typescript-eslint/max-params": off
       "@typescript-eslint/no-explicit-any": off
       "@typescript-eslint/explicit-module-boundary-types": off
       "@typescript-eslint/no-unsafe-member-access": off
@@ -174,6 +176,7 @@ overrides:
       "@typescript-eslint/no-misused-promises": off # this rule had an error with the update to eslint 8.25.0
       "@typescript-eslint/no-unsafe-call": off
       "@typescript-eslint/naming-convention": off
+      "@typescript-eslint/prefer-destructuring": off
       "@typescript-eslint/prefer-nullish-coalescing": off
       max-params: off
       no-warning-comments: off
@@ -228,3 +231,4 @@ overrides:
       "@angular-eslint/template/attributes-order": off
       "@angular-eslint/template/no-inline-styles": off
       "@angular-eslint/template/accessibility-interactive-supports-focus": off
+      "@angular-eslint/template/prefer-control-flow": off
