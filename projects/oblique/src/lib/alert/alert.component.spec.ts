@@ -74,8 +74,8 @@ describe('ObAlertComponent', () => {
 				it('should have type info ', () => {
 					expect(obAlertComponent.type).toBe('info');
 				});
-				it('should have info icon', () => {
-					expect(obAlertComponent.icon).toBe('info');
+				it('should have alert:info icon', () => {
+					expect(obAlertComponent.icon).toBe('alert:info');
 				});
 
 				it('should have class ob-alert-info', () => {

@@ -24,7 +24,7 @@ export class ObAlertComponent implements OnInit {
 	@HostBinding('class.ob-alert-warning') warning = false;
 	@HostBinding('class.ob-alert-error') error = false;
 	@HostBinding('attr.role') role: string = this.initialRole;
-	icon = 'info';
+	icon = 'alert:info';
 
 	private currentType: ObIAlertType = 'info';
 	private hasAlertRole?: boolean | undefined;
