@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ObNotificationService} from '../../notification/notification.service';
-import {ObEMimeTypes, ObEWildCardMimeTypes, ObIFileValidation} from '../file-upload.model';
+import {ObEMimeTypes, ObEWildCardMimeTypes, ObIFileValidation, ObIFileValidationOptions} from '../file-upload.model';
 import {ObAcceptAllPipe} from './accept-all.pipe';
 
 @Injectable()
@@ -9,28 +9,35 @@ export class ObValidationService {
 
 	constructor(private readonly notification: ObNotificationService) {}
 
-	// eslint-disable-next-line @typescript-eslint/default-param-last
-	public filterInvalidFiles(files: File[], accept: string[] = ['*'], maxSize: number, maxAmount: number, multiple: boolean): File[] {
-		const dispatchedFiles: ObIFileValidation = this.dispatchFiles(files, accept, maxSize, maxAmount, multiple);
+	public filterInvalidFiles(fileOptions: ObIFileValidationOptions): File[] {
+		if (!fileOptions.accept) fileOptions.accept = ['*'];
+		const dispatchedFiles: ObIFileValidation = this.dispatchFiles(fileOptions);
 
-		if (multiple) this.notifyErrors('i18n.oblique.file-upload.error.overflow', {ignoredFiles: dispatchedFiles.overflowing, maxAmount});
+		if (fileOptions.multiple)
+			this.notifyErrors('i18n.oblique.file-upload.error.overflow', {
+				ignoredFiles: dispatchedFiles.overflowing,
+				maxAmount: fileOptions.maxAmount
+			});
 		else this.notifyErrors('i18n.oblique.file-upload.error.single', {ignoredFiles: dispatchedFiles.overflowing});
 
-		this.notifyErrors('i18n.oblique.file-upload.error.type', {ignoredFiles: dispatchedFiles.invalid, supportedTypes: accept.join(', ')});
-		this.notifyErrors('i18n.oblique.file-upload.error.size', {ignoredFiles: dispatchedFiles.tooLarge, maxSize});
+		this.notifyErrors('i18n.oblique.file-upload.error.type', {
+			ignoredFiles: dispatchedFiles.invalid,
+			supportedTypes: fileOptions.accept.join(', ')
+		});
+		this.notifyErrors('i18n.oblique.file-upload.error.size', {ignoredFiles: dispatchedFiles.tooLarge, maxSize: fileOptions.maxSize});
 
 		return dispatchedFiles.valid;
 	}
 
-	private dispatchFiles(files: File[], accept: string[], maxSize: number, maxAmount: number, multiple: boolean): ObIFileValidation {
-		return files.reduce(
+	private dispatchFiles(fileOptions: ObIFileValidationOptions): ObIFileValidation {
+		return fileOptions.files.reduce(
 			(result, file, index) => {
 				const size = file.size / 1024 / 1024;
-				if ((index > 0 && !multiple) || (maxAmount > 0 && files.length > maxAmount)) {
+				if ((index > 0 && !fileOptions.multiple) || (fileOptions.maxAmount > 0 && fileOptions.files.length > fileOptions.maxAmount)) {
 					result.overflowing.push(file.name);
-				} else if (!this.isFileTypeValid(file.name.toLowerCase(), accept)) {
+				} else if (!this.isFileTypeValid(file.name.toLowerCase(), fileOptions.accept)) {
 					result.invalid.push(file.name);
-				} else if (size > maxSize) {
+				} else if (size > fileOptions.maxSize) {
 					result.tooLarge.push(`${file.name} (${size.toFixed(2)} MB)`);
 				} else {
 					result.valid.push(file);

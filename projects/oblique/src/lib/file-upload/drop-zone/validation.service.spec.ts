@@ -22,12 +22,12 @@ describe(ObValidationService.name, () => {
 
 	describe('filterInvalidFiles', () => {
 		test('that current file list is returned if all valid', () => {
-			expect(service.filterInvalidFiles(files, undefined, 50, 0, true)).toEqual(files);
+			expect(service.filterInvalidFiles({files, accept: undefined, maxSize: 50, maxAmount: 0, multiple: true})).toEqual(files);
 		});
 
 		test('that uppercase types are accepted', () => {
 			const testFiles = [new File(['text'], 'sample.TXT', {type: 'text/plain'})];
-			const filteredFiles = service.filterInvalidFiles(testFiles, ['.txt'], 50, 0, true);
+			const filteredFiles = service.filterInvalidFiles({files: testFiles, accept: ['.txt'], maxSize: 50, maxAmount: 0, multiple: true});
 			expect(filteredFiles[0]?.name).toBe('sample.TXT');
 		});
 
@@ -36,7 +36,7 @@ describe(ObValidationService.name, () => {
 			describe('single', () => {
 				beforeEach(() => {
 					jest.spyOn(notification, 'error');
-					filteredFiles = service.filterInvalidFiles(files, ['*'], 50, 0, false);
+					filteredFiles = service.filterInvalidFiles({files, accept: ['*'], maxSize: 50, maxAmount: 0, multiple: false});
 				});
 
 				test('that 1st file is returned', () => {
@@ -56,7 +56,7 @@ describe(ObValidationService.name, () => {
 				describe('accept 1 file', () => {
 					beforeEach(() => {
 						jest.spyOn(notification, 'error');
-						filteredFiles = service.filterInvalidFiles(files, ['*'], 50, 1, true);
+						filteredFiles = service.filterInvalidFiles({files, accept: ['*'], maxSize: 50, maxAmount: 1, multiple: true});
 					});
 
 					test('that no file is returned', () => {
@@ -75,7 +75,7 @@ describe(ObValidationService.name, () => {
 				describe('accept 2 files', () => {
 					beforeEach(() => {
 						jest.spyOn(notification, 'error');
-						filteredFiles = service.filterInvalidFiles(files, ['*'], 50, 2, true);
+						filteredFiles = service.filterInvalidFiles({files, accept: ['*'], maxSize: 50, maxAmount: 2, multiple: true});
 					});
 
 					test('that two files are returned', () => {
@@ -93,7 +93,7 @@ describe(ObValidationService.name, () => {
 			let filteredFiles;
 			beforeEach(() => {
 				jest.spyOn(notification, 'error');
-				filteredFiles = service.filterInvalidFiles(files, ['.txt'], 50, 0, true);
+				filteredFiles = service.filterInvalidFiles({files, accept: ['.txt'], maxSize: 50, maxAmount: 0, multiple: true});
 			});
 
 			test('that first file is returned', () => {
@@ -116,12 +116,12 @@ describe(ObValidationService.name, () => {
 
 			describe('accepting text', () => {
 				test('that first file is returned', () => {
-					const filteredFiles = service.filterInvalidFiles(files, ['text/plain'], 50, 0, true);
+					const filteredFiles = service.filterInvalidFiles({files, accept: ['text/plain'], maxSize: 50, maxAmount: 0, multiple: true});
 					expect(filteredFiles.length).toBe(1);
 				});
 
 				test('that mime error is displayed', () => {
-					service.filterInvalidFiles(files, ['text/plain'], 50, 0, true);
+					service.filterInvalidFiles({files, accept: ['text/plain'], maxSize: 50, maxAmount: 0, multiple: true});
 					expect(notification.error).toHaveBeenCalledWith({
 						message: 'i18n.oblique.file-upload.error.type',
 						messageParams: {ignoredFiles: 'sample.jpg', supportedTypes: 'text/plain'},
@@ -130,7 +130,7 @@ describe(ObValidationService.name, () => {
 				});
 
 				test('that generic mime error is displayed', () => {
-					service.filterInvalidFiles(files, ['text/*'], 50, 0, true);
+					service.filterInvalidFiles({files, accept: ['text/*'], maxSize: 50, maxAmount: 0, multiple: true});
 					expect(notification.error).toHaveBeenCalledWith({
 						message: 'i18n.oblique.file-upload.error.type',
 						messageParams: {ignoredFiles: 'sample.jpg', supportedTypes: 'text/*'},
@@ -139,7 +139,7 @@ describe(ObValidationService.name, () => {
 				});
 
 				test('that unknown mime error is displayed', () => {
-					service.filterInvalidFiles(files, ['text/unknown'], 50, 0, true);
+					service.filterInvalidFiles({files, accept: ['text/unknown'], maxSize: 50, maxAmount: 0, multiple: true});
 					expect(notification.error).toHaveBeenCalledWith({
 						message: 'i18n.oblique.file-upload.error.type',
 						messageParams: {ignoredFiles: 'sample.txt, sample.jpg', supportedTypes: 'text/unknown'},
@@ -150,12 +150,12 @@ describe(ObValidationService.name, () => {
 
 			describe('accepting image with wild card', () => {
 				test('that second file is returned', () => {
-					const filteredFiles = service.filterInvalidFiles(files, ['image/*'], 50, 0, true);
+					const filteredFiles = service.filterInvalidFiles({files, accept: ['image/*'], maxSize: 50, maxAmount: 0, multiple: true});
 					expect(filteredFiles.length).toBe(1);
 				});
 
 				test('that generic mime error is displayed', () => {
-					service.filterInvalidFiles(files, ['image/*'], 50, 0, true);
+					service.filterInvalidFiles({files, accept: ['image/*'], maxSize: 50, maxAmount: 0, multiple: true});
 					expect(notification.error).toHaveBeenCalledWith({
 						message: 'i18n.oblique.file-upload.error.type',
 						messageParams: {ignoredFiles: 'sample.txt', supportedTypes: 'image/*'},
@@ -165,7 +165,7 @@ describe(ObValidationService.name, () => {
 			});
 
 			test('that unknown generic mime error is displayed', () => {
-				service.filterInvalidFiles(files, ['unknown/*'], 50, 0, true);
+				service.filterInvalidFiles({files, accept: ['unknown/*'], maxSize: 50, maxAmount: 0, multiple: true});
 				expect(notification.error).toHaveBeenCalledWith({
 					message: 'i18n.oblique.file-upload.error.type',
 					messageParams: {ignoredFiles: 'sample.txt, sample.jpg', supportedTypes: 'unknown/*'},
@@ -178,7 +178,7 @@ describe(ObValidationService.name, () => {
 			let filteredFiles;
 			beforeEach(() => {
 				jest.spyOn(notification, 'error');
-				filteredFiles = service.filterInvalidFiles(files, ['*'], 0.000004, 0, true);
+				filteredFiles = service.filterInvalidFiles({files, accept: ['*'], maxSize: 0.000004, maxAmount: 0, multiple: true});
 			});
 
 			test('that first file is returned', () => {
