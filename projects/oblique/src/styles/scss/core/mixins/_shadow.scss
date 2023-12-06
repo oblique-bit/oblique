@@ -45,27 +45,39 @@ $tab-focus-width: 3px;
 }
 
 @mixin ob-shadow-md() {
-	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 6%), 0 1px 5px 0 rgba(0, 0, 0, 8%);
+	box-shadow:
+		0 1px 2px 0 rgba(0, 0, 0, 6%),
+		0 1px 5px 0 rgba(0, 0, 0, 8%);
 }
 
 @mixin ob-shadow-default() {
-	box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 6%), 0 4px 10px -1px rgba(0, 0, 0, 8%);
+	box-shadow:
+		0 2px 4px -1px rgba(0, 0, 0, 6%),
+		0 4px 10px -1px rgba(0, 0, 0, 8%);
 }
 
 @mixin ob-shadow-lg() {
-	box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 5%), 0 5px 20px -2px rgba(0, 0, 0, 8%);
+	box-shadow:
+		0 2px 6px -1px rgba(0, 0, 0, 5%),
+		0 5px 20px -2px rgba(0, 0, 0, 8%);
 }
 
 @mixin ob-shadow-xl() {
-	box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 4%), 0 15px 25px -3px rgba(0, 0, 0, 9%);
+	box-shadow:
+		0 6px 10px -5px rgba(0, 0, 0, 4%),
+		0 15px 25px -3px rgba(0, 0, 0, 9%);
 }
 
 @mixin ob-shadow-2xl() {
-	box-shadow: 1px 10px 70px -8px rgba(0, 0, 0, 13%), 0 10px 20px 0 rgba(0, 0, 0, 5%);
+	box-shadow:
+		1px 10px 70px -8px rgba(0, 0, 0, 13%),
+		0 10px 20px 0 rgba(0, 0, 0, 5%);
 }
 
 @mixin ob-expanded-active-main-nav-item-box-shadow() {
-	box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 6%), 1px 10px 70px -8px rgba(0, 0, 0, 13%);
+	box-shadow:
+		0 10px 20px 0 rgba(0, 0, 0, 6%),
+		1px 10px 70px -8px rgba(0, 0, 0, 13%);
 }
 
 // this is a placeholder since the box-shadow value has not yet been provided by the UX team

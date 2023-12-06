@@ -51,7 +51,10 @@ export class ObNavTreeComponent implements OnDestroy {
 	private readonly unsubscribe = new Subject<void>();
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
-	constructor(private readonly route: ActivatedRoute, private readonly translate: TranslateService) {
+	constructor(
+		private readonly route: ActivatedRoute,
+		private readonly translate: TranslateService
+	) {
 		this.route.fragment.pipe(takeUntil(this.unsubscribe)).subscribe(fragment => {
 			this.activeFragment = fragment;
 		});

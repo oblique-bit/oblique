@@ -2,7 +2,7 @@
 <sb-description component="language" />
 <ob-column-layout [left]="false" [right]="true">
 	<div column-main-content>
-		{{ 0 | obDate : format : timezone }}
+		{{ 0 | obDate: format : timezone }}
 		<mat-form-field class="ms-fix">
 			<mat-label>Datepicker</mat-label>
 			<input matInput [matDatepicker]="picker" [value]="today" />

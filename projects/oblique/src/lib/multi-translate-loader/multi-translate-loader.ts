@@ -8,7 +8,10 @@ import {DeepString, ObITranslationFile} from './multi-translate-loader.model';
 export const TRANSLATION_FILES = new InjectionToken('TRANSLATION_FILES');
 
 export class ObMultiTranslateLoader implements TranslateLoader {
-	constructor(private readonly http: HttpClient, private readonly resources: ObITranslationFile[]) {}
+	constructor(
+		private readonly http: HttpClient,
+		private readonly resources: ObITranslationFile[]
+	) {}
 
 	public getTranslation(language: string): Observable<Record<string, string>> {
 		const requests = this.resources

@@ -202,8 +202,7 @@
 			height: 100%;
 
 			.ob-column-content {
-				overflow-y: auto;
-				overflow-x: hidden;
+				overflow: hidden auto;
 			}
 		}
 	}

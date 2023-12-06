@@ -27,7 +27,10 @@ export class GlobalEventsExamplePropertiesPreviewComponent implements OnInit, On
 		mouseDown: 0
 	};
 
-	constructor(private readonly events: ObGlobalEventsService, @Inject(WINDOW) private readonly window: Window) {}
+	constructor(
+		private readonly events: ObGlobalEventsService,
+		@Inject(WINDOW) private readonly window: Window
+	) {}
 
 	ngOnInit(): void {
 		this.setupClick();

@@ -13,7 +13,10 @@ export class ObSelectDirective implements OnInit, AfterContentInit, OnDestroy {
 	private readonly unsubscribe = new Subject<void>();
 	private readonly host: HTMLElement;
 
-	constructor(elRef: ElementRef, private readonly select: MatSelect) {
+	constructor(
+		elRef: ElementRef,
+		private readonly select: MatSelect
+	) {
 		this.host = elRef.nativeElement;
 	}
 

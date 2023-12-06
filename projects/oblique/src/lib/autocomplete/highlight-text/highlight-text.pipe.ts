@@ -7,7 +7,10 @@ import {ObAutocompleteTextToFindService} from '../autocomplete-text-to-find.serv
 	standalone: true
 })
 export class ObHighlightTextPipe implements PipeTransform {
-	constructor(private readonly sanitizer: DomSanitizer, private readonly textToFindService: ObAutocompleteTextToFindService) {}
+	constructor(
+		private readonly sanitizer: DomSanitizer,
+		private readonly textToFindService: ObAutocompleteTextToFindService
+	) {}
 
 	transform(value: string, textToFind: string, cssClass = 'ob-highlight-text', regexFlags = 'gi'): SafeHtml {
 		if (!textToFind) {

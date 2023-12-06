@@ -11,7 +11,10 @@ export class NavTreeDetailSampleComponent implements OnInit, OnDestroy {
 	routing: string;
 	private readonly unsubscribe = new Subject<void>();
 
-	constructor(private readonly route: ActivatedRoute, private readonly router: Router) {}
+	constructor(
+		private readonly route: ActivatedRoute,
+		private readonly router: Router
+	) {}
 
 	ngOnInit(): void {
 		this.route.params.pipe(mergeWith(this.route.fragment), takeUntil(this.unsubscribe)).subscribe(() => {

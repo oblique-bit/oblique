@@ -16,7 +16,10 @@ export class NestedFormSampleComponent {
 	@ViewChild(FormGroupDirective) reactiveForm: FormGroupDirective;
 	@ViewChild(NgForm) templateForm: NgForm;
 
-	constructor(private readonly fb: UntypedFormBuilder, private readonly notification: ObNotificationService) {
+	constructor(
+		private readonly fb: UntypedFormBuilder,
+		private readonly notification: ObNotificationService
+	) {
 		this.parentForm = this.fb.group({
 			child: [''],
 			parent: ['', [Validators.required]]

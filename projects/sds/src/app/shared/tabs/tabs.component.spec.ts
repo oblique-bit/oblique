@@ -8,12 +8,12 @@ import {UnitTestHelpers} from '../../../test-helpers/unit-test-helpers/unit-test
 @Component({
 	standalone: true,
 	selector: 'app-tabs-wrapper',
-	template: `<app-tabs [idPrefix]="componentId" [id]="componentId | id : ['tabs']">
-		<app-tab name="test-tab-1" [initiallyActive]="true" [idPrefix]="componentId | id : ['tab', 1]" [id]="componentId | id : ['tab', 1]">
-			<p [id]="componentId | id : ['tab-1-content']">test-tab-1-p</p></app-tab
+	template: `<app-tabs [idPrefix]="componentId" [id]="componentId | id: ['tabs']">
+		<app-tab name="test-tab-1" [initiallyActive]="true" [idPrefix]="componentId | id: ['tab', 1]" [id]="componentId | id: ['tab', 1]">
+			<p [id]="componentId | id: ['tab-1-content']">test-tab-1-p</p></app-tab
 		>
-		<app-tab name="test-tab-2" [initiallyActive]="false" [idPrefix]="componentId | id : ['tab', 2]" [id]="componentId | id : ['tab', 2]">
-			<p [id]="componentId | id : ['tab-2-content']">test-tab-2-p</p></app-tab
+		<app-tab name="test-tab-2" [initiallyActive]="false" [idPrefix]="componentId | id: ['tab', 2]" [id]="componentId | id: ['tab', 2]">
+			<p [id]="componentId | id: ['tab-2-content']">test-tab-2-p</p></app-tab
 		>
 	</app-tabs>`,
 	imports: [IdPipe, TabComponent, TabsComponent]

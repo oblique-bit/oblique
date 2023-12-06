@@ -16,8 +16,7 @@
 	}
 
 	.ob-cover-viewport {
-		overflow-y: auto;
-		overflow-x: hidden;
+		overflow: hidden auto;
 		background-color: rgba(
 			color.red(variables.$ob-white),
 			color.green(variables.$ob-white),

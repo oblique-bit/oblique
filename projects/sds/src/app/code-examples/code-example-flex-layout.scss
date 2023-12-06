@@ -8,8 +8,7 @@
 :host {
 	display: flex;
 	flex-wrap: wrap;
-	column-gap: 3rem;
-	row-gap: 2rem;
+	gap: 2rem 3rem;
 
 	@mixin layout-column() {
 		flex-direction: column;

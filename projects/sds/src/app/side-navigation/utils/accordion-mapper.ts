@@ -20,7 +20,7 @@ export class AccordionMapper {
 					maxVersion: value.max_version,
 					slug: value.slug,
 					title: value.name
-				} as Link)
+				}) as Link
 		);
 	}
 }

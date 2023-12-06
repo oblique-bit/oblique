@@ -2,12 +2,12 @@
 	<mat-icon svgIcon="search" matPrefix />
 	<mat-label *ngIf="inputLabelKey?.length > 0">{{ inputLabelKey | translate }}</mat-label>
 	<input (blur)="onModelTouched()" [formControl]="autocompleteInputControl" [matAutocomplete]="autocomplete" matInput type="text" />
-	<ng-content select="[matPrefix]"></ng-content>
+	<ng-content select="[matPrefix]" />
 	<button [obInputClear]="autocompleteInputControl" type="button">
 		<mat-icon svgIcon="cancel-circle" />
 		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 	</button>
-	<ng-content select="[matSuffix]"></ng-content>
+	<ng-content select="[matSuffix]" />
 </mat-form-field>
 
 <mat-autocomplete #autocomplete="matAutocomplete" class="ob-autocomplete-panel" classList="ob-autocomplete-panel">
@@ -32,9 +32,7 @@
 			[disabled]="option.disabled"
 		>
 			<span obOptionLabelIcon [iconName]="option['iconName'] || ''" [iconPosition]="optionIconPosition">
-				<span
-					[innerHTML]="option.label | obHighlightTextPipe : autocompleteInputControl.value : highlightCssClass : filterRegexFlag"
-				></span>
+				<span [innerHTML]="option.label | obHighlightTextPipe: autocompleteInputControl.value : highlightCssClass : filterRegexFlag"></span>
 			</span>
 		</mat-option>
 	</ng-template>

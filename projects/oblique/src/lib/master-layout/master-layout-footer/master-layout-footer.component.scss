@@ -41,7 +41,9 @@
 			float: left;
 			width: variables.$ob-logo-width;
 			height: variables.$ob-logo-height;
-			transition: width variables.$ob-duration-fast, height variables.$ob-duration-fast;
+			transition:
+				width variables.$ob-duration-fast,
+				height variables.$ob-duration-fast;
 		}
 	}
 

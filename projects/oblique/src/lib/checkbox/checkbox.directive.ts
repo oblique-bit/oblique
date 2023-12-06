@@ -13,7 +13,11 @@ export class ObCheckboxDirective implements OnInit, OnDestroy {
 	private readonly rowCheckedClass = 'ob-table-row-checked';
 	private readonly unsubscribe = new Subject<void>();
 
-	constructor(elRef: ElementRef, private readonly checkbox: MatCheckbox, private readonly renderer: Renderer2) {
+	constructor(
+		elRef: ElementRef,
+		private readonly checkbox: MatCheckbox,
+		private readonly renderer: Renderer2
+	) {
 		this.host = elRef.nativeElement;
 	}
 

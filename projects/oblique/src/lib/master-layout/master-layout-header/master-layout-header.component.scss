@@ -37,10 +37,7 @@
 				content: "";
 				position: absolute;
 				display: block;
-				top: 0;
-				bottom: 0;
-				right: -100px;
-				left: -100px;
+				inset: 0 -100px;
 				background-color: inherit;
 				z-index: -1;
 			}
@@ -99,7 +96,8 @@
 		width: variables.$ob-logo-width-collapsed;
 		height: variables.$ob-logo-height-collapsed;
 		margin-right: variables.$ob-spacing-default;
-		transition: width variables.$ob-duration-default ease-in-out,
+		transition:
+			width variables.$ob-duration-default ease-in-out,
 			height variables.$ob-duration-default ease-in-out;
 
 		@include layout.ob-media-breakpoint-up(md) {

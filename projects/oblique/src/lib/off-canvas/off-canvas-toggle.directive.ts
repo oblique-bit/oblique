@@ -9,7 +9,10 @@ import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
 	standalone: true
 })
 export class ObOffCanvasToggleDirective {
-	constructor(private readonly offCanvas: ObOffCanvasService, @Inject(WINDOW) private readonly window: Window) {}
+	constructor(
+		private readonly offCanvas: ObOffCanvasService,
+		@Inject(WINDOW) private readonly window: Window
+	) {}
 
 	@HostListener('click', ['$event'])
 	@HostListener('keyup.enter', ['$event'])

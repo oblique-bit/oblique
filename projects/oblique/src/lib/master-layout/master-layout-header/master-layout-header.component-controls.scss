@@ -40,7 +40,9 @@
 			height: 1px;
 			background-color: variables.$ob-gray-dark;
 			background-clip: border-box;
-			transition: variables.$ob-duration-default transform, variables.$ob-duration-default opacity;
+			transition:
+				variables.$ob-duration-default transform,
+				variables.$ob-duration-default opacity;
 		}
 
 		&:focus,

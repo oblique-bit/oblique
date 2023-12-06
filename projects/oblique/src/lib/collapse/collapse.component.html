@@ -10,7 +10,7 @@
 	[id]="id + '-toggle'"
 >
 	<mat-icon [svgIcon]="'chevron-' + (active ? 'up' : 'down')" *ngIf="iconPosition === 'left'" />
-	<ng-content select="[obCollapseHeader]"></ng-content>
+	<ng-content select="[obCollapseHeader]" />
 	<mat-icon [svgIcon]="'chevron-' + (active ? 'up' : 'down')" *ngIf="iconPosition === 'right' || iconPosition === 'justified'" />
 </div>
 <div
@@ -21,5 +21,5 @@
 		params: { time: time }
 	}"
 >
-	<ng-content select="[obCollapseMain]"></ng-content>
+	<ng-content select="[obCollapseMain]" />
 </div>

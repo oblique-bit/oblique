@@ -12,35 +12,35 @@
 				<caption *ngIf="hasCaption$ | async">
 					This is a table caption
 					<div class="collapsed-table">
-						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{tableManager}" />
+						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager }" />
 					</div>
 				</caption>
 				<ng-container [matColumnDef]="COLUMN_NAME_SELECT">
 					<th mat-header-cell *matHeaderCellDef>
-						<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{tableManager}" />
+						<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{ tableManager }" />
 					</th>
 					<td mat-cell *matCellDef="let row">
-						<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{row, tableManager}" />
+						<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{ row, tableManager }" />
 					</td>
 				</ng-container>
 
 				<ng-container *ngFor="let column of columns">
 					<ng-container [matColumnDef]="column.key">
 						<th mat-header-cell *matHeaderCellDef mat-sort-header>
-							<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{column}" />
+							<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{ column }" />
 						</th>
 						<td mat-cell *matCellDef="let element" [attr.data-title]="column.name">
-							<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{column, element, tableManager, editMode}" />
+							<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
 						</td>
 					</ng-container>
 				</ng-container>
 
 				<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
 					<th mat-header-cell *matHeaderCellDef>
-						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{tableManager}" />
+						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager }" />
 					</th>
 					<td mat-cell *matCellDef="let element" [attr.data-title]="'Actions'">
-						<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{tableManager, element, editMode}" />
+						<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{ tableManager, element, editMode }" />
 					</td>
 				</ng-container>
 
@@ -56,30 +56,30 @@
 			>
 				<ng-container [cdkColumnDef]="COLUMN_NAME_SELECT">
 					<mat-header-cell *cdkHeaderCellDef>
-						<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{tableManager}" />
+						<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{ tableManager }" />
 					</mat-header-cell>
 					<mat-cell *cdkCellDef="let row">
-						<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{row, tableManager}" />
+						<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{ row, tableManager }" />
 					</mat-cell>
 				</ng-container>
 
 				<ng-container *ngFor="let column of columns">
 					<ng-container [matColumnDef]="column.key">
 						<mat-header-cell *matHeaderCellDef mat-sort-header>
-							<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{column}" />
+							<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{ column }" />
 						</mat-header-cell>
 						<mat-cell *matCellDef="let element">
-							<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{column, element, tableManager, editMode}" />
+							<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
 						</mat-cell>
 					</ng-container>
 				</ng-container>
 
 				<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
 					<mat-header-cell *matHeaderCellDef>
-						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{tableManager}" />
+						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager }" />
 					</mat-header-cell>
 					<mat-cell *matCellDef="let element">
-						<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{tableManager, element, editMode}" />
+						<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{ tableManager, element, editMode }" />
 					</mat-cell>
 				</ng-container>
 
