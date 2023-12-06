@@ -6,7 +6,10 @@ import {ObNotificationService, ObPopUpService} from '@oblique/oblique';
 	templateUrl: './pop-up-sample.component.html'
 })
 export class PopUpSampleComponent {
-	constructor(private readonly popup: ObPopUpService, private readonly notification: ObNotificationService) {}
+	constructor(
+		private readonly popup: ObPopUpService,
+		private readonly notification: ObNotificationService
+	) {}
 
 	confirm(text: string): void {
 		if (this.popup.confirm(text)) {

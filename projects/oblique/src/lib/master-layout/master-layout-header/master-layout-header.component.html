@@ -1,9 +1,9 @@
 <div class="ob-header">
-	<ng-content select="[obHeader]" *ngIf="isCustom"></ng-content>
+	<ng-content select="[obHeader]" *ngIf="isCustom" />
 	<h1 class="ob-screen-reader-only">{{ "i18n.oblique.header.title" | translate }}</h1>
 	<ng-container *ngIf="!isCustom">
 		<div class="ob-master-layout-header-action">
-			<ng-content select="[obHeaderAction]"></ng-content>
+			<ng-content select="[obHeaderAction]" />
 		</div>
 		<div class="ob-master-layout-header-title">
 			<div class="ob-master-layout-brand">
@@ -12,7 +12,7 @@
 					<ng-container [ngTemplateOutlet]="obLogo" />
 				</a>
 				<span class="ob-master-layout-brand-app-title">
-					<a [routerLink]="home$ | async" class="ob-master-layout-brand-link"><ng-content select="[obHeaderTitle]"></ng-content></a>
+					<a [routerLink]="home$ | async" class="ob-master-layout-brand-link"><ng-content select="[obHeaderTitle]" /></a>
 				</span>
 			</div>
 			<ul class="ob-collapsed-layout">
@@ -65,5 +65,5 @@
 	</ng-container>
 </div>
 <ob-master-layout-navigation [links]="navigation">
-	<ng-content select="[obNavigation]"></ng-content>
+	<ng-content select="[obNavigation]" />
 </ob-master-layout-navigation>

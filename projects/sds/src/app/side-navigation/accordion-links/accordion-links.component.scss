@@ -4,14 +4,18 @@
 .visible {
 	height: auto;
 	opacity: 1;
-	transition: height 0ms 0ms, opacity 600ms 0ms;
+	transition:
+		height 0ms 0ms,
+		opacity 600ms 0ms;
 }
 
 .hidden {
 	overflow: hidden;
 	height: 0;
 	opacity: 0;
-	transition: height 0ms 400ms, opacity 400ms 0ms;
+	transition:
+		height 0ms 400ms,
+		opacity 400ms 0ms;
 }
 
 $triangle-pointing-border-width: 3px;
@@ -100,7 +104,9 @@ button {
 	margin: 0 0 0 -19px;
 	overflow: hidden;
 	border-radius: 26px;
-	transition: color 150ms ease 0s, box-shadow 150ms ease 0s;
+	transition:
+		color 150ms ease 0s,
+		box-shadow 150ms ease 0s;
 
 	@include font-size-xl();
 }

@@ -441,10 +441,7 @@
 				content: "";
 				position: absolute;
 				display: block;
-				right: -12px;
-				left: -12px;
-				top: 0;
-				bottom: -1 * core-variables.$ob-spacing-xs;
+				inset: 0 -12px -1 * core-variables.$ob-spacing-xs -12px;
 				background-color: core-variables.$ob-white;
 				opacity: 0.75;
 				z-index: -1;

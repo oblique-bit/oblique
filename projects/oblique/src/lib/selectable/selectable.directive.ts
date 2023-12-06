@@ -15,7 +15,10 @@ export class ObSelectableDirective implements OnInit {
 	@HostBinding('style.cursor') readonly cursor = 'pointer';
 	@HostBinding('attr.role') role = 'checkbox';
 
-	constructor(private readonly element: ElementRef, @Optional() private readonly group: ObSelectableGroupDirective) {
+	constructor(
+		private readonly element: ElementRef,
+		@Optional() private readonly group: ObSelectableGroupDirective
+	) {
 		if (!group) {
 			throw new Error(
 				'The ObSelectableDirectives need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more info'

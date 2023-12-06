@@ -1,5 +1,5 @@
 <h1 class="ob-screen-reader-only">{{ "i18n.oblique.footer.title" | translate }}</h1>
-<ng-content select="[obFooter]" *ngIf="isCustom"></ng-content>
+<ng-content select="[obFooter]" *ngIf="isCustom" />
 <ng-container *ngIf="!isCustom">
 	<div class="ob-footer-logo-and-info">
 		<div class="ob-footer-item ob-footer-item-logo">
@@ -9,7 +9,7 @@
 		</div>
 		<h2 class="ob-screen-reader-only">{{ "i18n.oblique.footer.info.title" | translate }}</h2>
 		<div class="ob-footer-item ob-footer-item-info">
-			<ng-content select="[obFooterInfo]"></ng-content>
+			<ng-content select="[obFooterInfo]" />
 		</div>
 	</div>
 	<ng-container *ngIf="templates.length">

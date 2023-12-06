@@ -14,7 +14,10 @@ export class ObNumberFormatDirective implements OnInit {
 	private changed = false;
 	private focused = false;
 
-	constructor(private readonly ngControl: NgControl, private readonly el: ElementRef) {}
+	constructor(
+		private readonly ngControl: NgControl,
+		private readonly el: ElementRef
+	) {}
 
 	@HostListener('blur')
 	onBlur(): void {
