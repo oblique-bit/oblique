@@ -4,10 +4,8 @@
 		<mat-list *ngIf="!showAutocompleteForm">
 			<mat-list-item>
 				<mat-chip-listbox class="mdc-evolution-chip-set" [class.mat-mdc-chip-set-stacked]="stacked">
-					<mat-chip-row [ngClass]="variant" [disabled]="disabled" [class.ob-selected]="selected">Default</mat-chip-row>
-					<mat-chip-row [color]="color" [ngClass]="variant" [selected]="true" [disabled]="disabled" [class.ob-selected]="selected"
-						>Selected</mat-chip-row
-					>
+					<mat-chip-row [ngClass]="variant" [disabled]="disabled">Chip 1</mat-chip-row>
+					<mat-chip-row [ngClass]="variant" [disabled]="disabled">Chip 2</mat-chip-row>
 				</mat-chip-listbox>
 			</mat-list-item>
 		</mat-list>
@@ -40,16 +38,6 @@
 		<h3>Controls</h3>
 		<mat-list>
 			<fieldset *ngIf="!showAutocompleteForm">
-				<legend>Color</legend>
-				<mat-radio-group [(ngModel)]="color">
-					<mat-list-item *ngFor="let chipColor of colors">
-						<mat-radio-button [value]="chipColor">
-							{{ chipColor ? (chipColor | titlecase) : "Default" }}
-						</mat-radio-button>
-					</mat-list-item>
-				</mat-radio-group>
-			</fieldset>
-			<fieldset *ngIf="!showAutocompleteForm">
 				<legend>Variants</legend>
 				<mat-radio-group [(ngModel)]="variant">
 					<mat-list-item *ngFor="let chipColor of variants">
@@ -71,9 +59,6 @@
 				</mat-list-item>
 				<mat-list-item>
 					<mat-slide-toggle (click)="disabled = !disabled">Disabled</mat-slide-toggle>
-				</mat-list-item>
-				<mat-list-item>
-					<mat-slide-toggle (click)="selected = !selected">Selected</mat-slide-toggle>
 				</mat-list-item>
 			</fieldset>
 		</mat-list>
