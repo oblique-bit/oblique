@@ -37,6 +37,14 @@ export enum ObEUploadEventType {
 	ERRORED = 'errored'
 }
 
+export interface ObIFileValidationOptions {
+	files: File[];
+	accept: string[];
+	maxSize: number;
+	maxAmount: number;
+	multiple: boolean;
+}
+
 export interface ObIFileValidation {
 	valid: File[];
 	overflowing: string[];

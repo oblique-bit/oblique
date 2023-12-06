@@ -30,13 +30,13 @@ export class ObDropZoneComponent {
 
 	addFiles(fileList: FileList): void {
 		const fileArray = Array.from(fileList);
-		const files: File[] = this.validationService.filterInvalidFiles(
-			fileArray,
-			this.accept,
-			this.maxFileSize,
-			this.maxFileAmount,
-			this.multiple
-		);
+		const files: File[] = this.validationService.filterInvalidFiles({
+			files: fileArray,
+			accept: this.accept,
+			maxSize: this.maxFileSize,
+			maxAmount: this.maxFileAmount,
+			multiple: this.multiple
+		});
 		if (files.length) {
 			this.uploadEvent.emit({type: ObEUploadEventType.CHOSEN, files});
 		}
