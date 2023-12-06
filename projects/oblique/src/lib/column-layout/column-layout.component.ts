@@ -54,15 +54,15 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 		@Inject(WINDOW) private readonly window: Window
 	) {}
 
-	ngDoCheck(): void {
-		const {top, height} = this.el.nativeElement.getBoundingClientRect();
-		this.dimensionChange.next({top, height, windowHeight: this.window.innerHeight});
-	}
-
 	ngOnChanges(): void {
 		// this is used to force update the columns
 		this.changeDetectorRef.detectChanges();
 		this.setupToggleIcons();
+	}
+
+	ngDoCheck(): void {
+		const {top, height} = this.el.nativeElement.getBoundingClientRect();
+		this.dimensionChange.next({top, height, windowHeight: this.window.innerHeight});
 	}
 
 	ngAfterViewInit(): void {
