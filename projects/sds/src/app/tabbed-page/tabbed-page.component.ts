@@ -11,8 +11,9 @@ import {URL_CONST} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
 import {TabComponent} from '../shared/tabs/tab/tab.component';
 import {TabsComponent} from '../shared/tabs/tabs.component';
-import {CommonModule} from '@angular/common';
+import {CommonModule, Location} from '@angular/common';
 import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
+import {TabNameMapper} from './utils/tab-name-mapper';
 
 @Component({
 	selector: 'app-tabbed-page',
@@ -44,6 +45,7 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
 	private readonly slugToIdService = inject(SlugToIdService);
+	private readonly location = inject(Location);
 	private previousSlug: string;
 
 	ngOnInit(): void {
@@ -55,6 +57,16 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+	}
+
+	handleTabChanged(tabName: string): void {
+		const urlParamForTab: string = TabNameMapper.getUrlParamForTabName(tabName);
+
+		const newUrl: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab)
+			? this.router.url.replace(/[^/]*$/, urlParamForTab)
+			: `${this.router.url}/${urlParamForTab}`;
+
+		this.location.replaceState(newUrl);
 	}
 
 	private initObservables(): void {
@@ -73,7 +85,8 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 
 				if (apiContent || codeExampleComponent || uiUxContent) {
 					this.loadCodeExample(codeExampleComponent);
-					this.tabs.setDefaultTabSelected();
+					const tabToSelect: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab) ?? '';
+					this.tabs.selectTabWithName(TabNameMapper.getTabNameFromUrlParam(tabToSelect));
 				}
 			});
 	}
