@@ -1,33 +1,5 @@
-// CI/CD colors
-$ob-venetian-red: #dc0018;
-$ob-red: #f7001d; // unused
-$ob-cerulean: #006699;
-$ob-malibu: #66afe9; // unused
-$ob-pattens-blue: #d8e8ef; // unused
-$ob-solitude: #e7edef; // unused
-$ob-clear-day: #f2f7f9; // unused
-$ob-mocassin: #fffab2; // unused
 $ob-white: #ffffff;
-$ob-smoke: #f5f5f5;
-$ob-gainsboro: #e5e5e5;
-$ob-light-gray: #d5d5d5;
-$ob-silver: #cccccc; // unused
-$ob-empress: #757575;
-$ob-coal: #454545;
-$ob-night-rider: #333333;
 $ob-black: #000000;
-
-// Oblique colors
-$ob-primary-50: #f2f7fa; // use $ob-default as contrast color
-$ob-primary-100: #cce0eb; // use $ob-default as contrast color
-$ob-primary-200: #99c2d6; // use $ob-default as contrast color
-$ob-primary-300: #66a3c2; // use $ob-default as contrast color
-$ob-primary-400: #267da8; // use $ob-white as contrast color
-$ob-primary-500: $ob-cerulean; // use $ob-white as contrast color
-$ob-primary-600: #0a5b84; // use $ob-white as contrast color
-$ob-primary-700: #14516f; // use $ob-white as contrast color
-$ob-primary-800: #214456; // use $ob-white as contrast color
-$ob-primary-900: #293d47; // use $ob-white as contrast color
 
 // Red
 $ob-red-50: #ffedee;
@@ -41,30 +13,6 @@ $ob-red-700: #bf1f25;
 $ob-red-800: #99191e;
 $ob-red-900: #801519;
 
-// Error
-$ob-error-50: $ob-red-50; // use $ob-default as contrast color
-$ob-error-100: $ob-red-100; // use $ob-default as contrast color
-$ob-error-200: $ob-red-200; // use $ob-default as contrast color
-$ob-error-300: $ob-red-300; // use $ob-white as contrast color
-$ob-error-400: $ob-red-400; // use $ob-white as contrast color
-$ob-error-500: $ob-red-500; // use $ob-white as contrast color
-$ob-error-600: $ob-red-600; // use $ob-white as contrast color
-$ob-error-700: $ob-red-700; // use $ob-white as contrast color
-$ob-error-800: $ob-red-800; // use $ob-white as contrast color
-$ob-error-900: $ob-red-900; // use $ob-white as contrast color
-
-// Gray
-$ob-gray-50: #f9fafb; // use $ob-default as contrast color
-$ob-gray-100: #f3f4f6; // use $ob-default as contrast color
-$ob-gray-200: #e5e7eb; // use $ob-default as contrast color
-$ob-gray-300: #d1d5db; // use $ob-default as contrast color
-$ob-gray-400: #9ca3af; // use $ob-default as contrast color
-$ob-gray-500: #6b7280; // use $ob-white as contrast color
-$ob-gray-600: #4b5563; // use $ob-white as contrast color
-$ob-gray-700: #374151; // use $ob-white as contrast color
-$ob-gray-800: #1f2937; // use $ob-white as contrast color
-$ob-gray-900: #111827; // use $ob-white as contrast color
-
 // Green
 $ob-green-50: #ecfdf5;
 $ob-green-100: #d1fae5;
@@ -76,18 +24,6 @@ $ob-green-600: #059669;
 $ob-green-700: #047857;
 $ob-green-800: #065f46;
 $ob-green-900: #064e3b;
-
-// Success
-$ob-success-50: $ob-green-50; // use $ob-default as contrast color
-$ob-success-100: $ob-green-100; // use $ob-default as contrast color
-$ob-success-200: $ob-green-200; // use $ob-default as contrast color
-$ob-success-300: $ob-green-300; // use $ob-default as contrast color
-$ob-success-400: $ob-green-400; // use $ob-white as contrast color
-$ob-success-500: $ob-green-500; // use $ob-white as contrast color
-$ob-success-600: $ob-green-600; // use $ob-white as contrast color
-$ob-success-700: $ob-green-700; // use $ob-white as contrast color
-$ob-success-800: $ob-green-800; // use $ob-white as contrast color
-$ob-success-900: $ob-green-900; // use $ob-white as contrast color
 
 // Orange
 $ob-orange-50: #fff7ed;
@@ -101,18 +37,6 @@ $ob-orange-700: #c2410c;
 $ob-orange-800: #9a3412;
 $ob-orange-900: #7c2d12;
 
-// Warning
-$ob-warning-50: $ob-orange-50; // use $ob-default as contrast color
-$ob-warning-100: $ob-orange-100; // use $ob-default as contrast color
-$ob-warning-200: $ob-orange-200; // use $ob-default as contrast color
-$ob-warning-300: $ob-orange-300; // use $ob-default as contrast color
-$ob-warning-400: $ob-orange-400; // use $ob-default as contrast color
-$ob-warning-500: $ob-orange-500; // use $ob-default as contrast color
-$ob-warning-600: $ob-orange-600; // use $ob-white as contrast color
-$ob-warning-700: $ob-orange-700; // use $ob-white as contrast color
-$ob-warning-800: $ob-orange-800; // use $ob-white as contrast color
-$ob-warning-900: $ob-orange-900; // use $ob-white as contrast color
-
 // Secondary
 $ob-secondary-50: #f0f4f7;
 $ob-secondary-100: #dfe4e9;
@@ -125,86 +49,13 @@ $ob-secondary-700: #263645;
 $ob-secondary-800: #1c2834;
 $ob-secondary-900: #131b22;
 
-// Text
-$ob-text-50: $ob-gray-50; // use $ob-default as contrast color
-$ob-text-100: $ob-gray-100; // use $ob-default as contrast color
-$ob-text-200: $ob-gray-200; // use $ob-default as contrast color
-$ob-text-300: $ob-gray-300; // use $ob-white as contrast color
-$ob-text-400: $ob-gray-400; // use $ob-white as contrast color
-$ob-text-500: $ob-gray-500; // use $ob-white as contrast color
-$ob-text-600: $ob-gray-600; // use $ob-white as contrast color
-$ob-text-700: $ob-gray-700; // use $ob-white as contrast color
-$ob-text-800: $ob-gray-800; // use $ob-white as contrast color
-$ob-text-900: $ob-gray-900; // use $ob-white as contrast color
-
 // Blue
-$ob-blue-50: #eff6ff;
-$ob-blue-100: #dbeafe;
 $ob-blue-200: #bfdbfe;
-$ob-blue-300: #93c5fd;
-$ob-blue-400: #60a5fa;
-$ob-blue-500: #3b82f6;
 $ob-blue-600: #2563eb;
 $ob-blue-700: #1d4ed8;
 $ob-blue-800: #1e40af;
 $ob-blue-900: #1e3a8a;
 
-// Indigo
-$ob-indigo-50: #eef2ff;
-$ob-indigo-100: #e0e7ff;
-$ob-indigo-200: #c7d2fe;
-$ob-indigo-300: #a5b4fc;
-$ob-indigo-400: #818cf8;
-$ob-indigo-500: #6366f1;
-$ob-indigo-600: #4f46e5;
-$ob-indigo-700: #4338ca;
-$ob-indigo-800: #3730a3;
-$ob-indigo-900: #312e81;
-
-// Pink
-$ob-pink-50: #fdf2f8;
-$ob-pink-100: #fce7f3;
-$ob-pink-200: #fbcfe8;
-$ob-pink-300: #f9a8d4;
-$ob-pink-400: #f472b6;
-$ob-pink-500: #ec4899;
-$ob-pink-600: #db2777;
-$ob-pink-700: #be185d;
-$ob-pink-800: #9d174d;
-$ob-pink-900: #831843;
-
 // Purple
-$ob-purple-50: #f5f3ff;
-$ob-purple-100: #ede9fe;
-$ob-purple-200: #ddd6fe;
-$ob-purple-300: #c4b5fd;
-$ob-purple-400: #a78bfa;
 $ob-purple-500: #8655f6;
-$ob-purple-600: #7c3aed;
 $ob-purple-700: #6d28d9;
-$ob-purple-800: #5b21b6;
-$ob-purple-900: #4c1d95;
-
-// Teal
-$ob-teal-50: #f2fdfc;
-$ob-teal-100: #cbfbf8;
-$ob-teal-200: #98f6f3;
-$ob-teal-300: #5de8ea;
-$ob-teal-400: #2bced4;
-$ob-teal-500: #14afb8;
-$ob-teal-600: #0d8b96;
-$ob-teal-700: #0f6b75;
-$ob-teal-800: #11575f;
-$ob-teal-900: #13474e;
-
-// Yellow
-$ob-yellow-50: #fffbeb;
-$ob-yellow-100: #fef3c7;
-$ob-yellow-200: #fde68a;
-$ob-yellow-300: #fcd34d;
-$ob-yellow-400: #fbbf24;
-$ob-yellow-500: #f59e0b;
-$ob-yellow-600: #d97706;
-$ob-yellow-700: #b45309;
-$ob-yellow-800: #92400e;
-$ob-yellow-900: #78350f;
