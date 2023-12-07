@@ -56,6 +56,11 @@
 	@include typography.ob-overline();
 }
 
+/*
+	All further styles in this file are only used to enhance the appearance of the demo.
+	They are NOT necessary for the demonstrated feature to function correctly.
+*/
+
 .item {
 	display: flex;
 	align-items: center;
@@ -65,4 +70,14 @@
 	border-radius: 5px;
 	min-height: 7rem;
 	min-width: 20rem;
+}
+
+:host {
+	gap: 1rem;
+	margin-left: 3rem;
+	margin-right: 3rem;
+
+	p {
+		margin: 0;
+	}
 }

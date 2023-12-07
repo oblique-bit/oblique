@@ -1,3 +1,8 @@
+/*
+	This file is used to style one or more of the Oblique code examples.
+	It is NOT required in order to use any Oblique features.
+*/
+
 @use "sass:map";
 @use "@oblique/oblique/src/styles/scss/core/variables";
 @use "@oblique/oblique/src/styles/scss/core/mixins/layout";
@@ -66,4 +71,25 @@
 	padding: 1rem;
 	border-radius: 1rem;
 	box-shadow: 0 0 4px rgb(172, 180, 189);
+}
+
+:host {
+	gap: 1rem;
+	margin-left: 3rem;
+	margin-right: 3rem;
+
+	p {
+		margin: 0;
+	}
+
+	.explanation {
+		margin-top: 1rem;
+		font-style: italic;
+		font-size: large;
+		width: 100%;
+
+		code {
+			font-style: normal;
+		}
+	}
 }
