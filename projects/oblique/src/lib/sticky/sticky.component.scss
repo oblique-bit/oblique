@@ -29,17 +29,6 @@
 	display: flex;
 	min-width: 0; // Important, for text ellipsis of .sticky-title (cf. https://css-tricks.com/flexbox-truncated-text/)!
 
-	.ob-sticky-title {
-		margin: 0;
-		padding: 0;
-		color: variables.$ob-gray-darker;
-		font-size: 22px;
-		line-height: 38px;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		overflow: hidden;
-	}
-
 	.ob-sticky-actions {
 		margin-left: auto;
 	}
