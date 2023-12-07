@@ -1,0 +1,36 @@
+@use "@oblique/oblique/src/styles/scss/core/variables";
+
+$ob-spacing-sizes: (
+	xs: variables.$ob-spacing-xs,
+	sm: variables.$ob-spacing-sm,
+	md: variables.$ob-spacing-md,
+	default: variables.$ob-spacing-default,
+	lg: variables.$ob-spacing-lg,
+	xl: variables.$ob-spacing-xl,
+	xxl: variables.$ob-spacing-xxl,
+) !default;
+
+@each $name, $size in $ob-spacing-sizes {
+	.padding-ob-spacing-#{$name} {
+		padding: $size;
+		background-color: variables.$ob-gray-darker;
+		border-radius: variables.$ob-spacing-xs;
+		color: variables.$ob-gray-extra-light;
+	}
+}
+
+/*
+	All further styles in this file are only used to enhance the appearance of the demo.
+	They are NOT necessary for the demonstrated feature to function correctly.
+*/
+
+:host {
+	align-items: baseline;
+	gap: 1rem;
+	margin-left: 3rem;
+	margin-right: 3rem;
+
+	p {
+		margin: 0;
+	}
+}
