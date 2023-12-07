@@ -40,9 +40,6 @@
 
 	&:hover,
 	&:focus {
-		text-decoration: none;
-		color: variables.$ob-default;
-		background-color: variables.$ob-gray-light;
 		@include shadow.ob-drop-shadow();
 	}
 
