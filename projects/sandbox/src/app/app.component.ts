@@ -141,7 +141,6 @@ export class AppComponent implements OnDestroy {
 				{url: 'alert', label: 'Alert'},
 				{url: 'block', label: 'Block elements'},
 				{url: 'grid', label: 'Grid system'},
-				{url: 'stepper', label: 'HTML Stepper'},
 				{url: 'table', label: 'HTML table'},
 				{url: 'icon', label: 'Icons as class'},
 				{url: 'inline', label: 'Inline elements'},
