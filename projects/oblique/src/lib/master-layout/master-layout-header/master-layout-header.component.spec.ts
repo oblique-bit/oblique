@@ -131,16 +131,16 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 	describe('With OB_BANNER injectionToken', () => {
 		const backgroundColors: Record<ObEEnvironment, string> = {
-			LOCAL: 'rgb(0, 129, 58)',
+			LOCAL: 'rgb(4, 120, 87)',
 			DEV: 'rgb(255, 215, 0)',
-			REF: 'rgb(231, 94, 0)',
-			TEST: 'rgb(0, 102, 153)',
-			ABN: 'rgb(176, 0, 32)'
+			REF: 'rgb(234, 88, 12)',
+			TEST: 'rgb(70, 89, 107)',
+			ABN: 'rgb(153, 25, 30)'
 		};
 		const colors: Record<ObEEnvironment, string> = {
 			LOCAL: 'rgb(255, 255, 255)',
-			DEV: 'rgb(23, 23, 23)',
-			REF: 'rgb(23, 23, 23)',
+			DEV: 'rgb(28, 40, 52)',
+			REF: 'rgb(28, 40, 52)',
 			TEST: 'rgb(255, 255, 255)',
 			ABN: 'rgb(255, 255, 255)'
 		};
@@ -178,7 +178,7 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			});
 
 			it('should have correct background-color', () => {
-				expect(banner.styles['background-color']).toBe('rgb(0, 129, 58)');
+				expect(banner.styles['background-color']).toBe('rgb(4, 120, 87)');
 			});
 
 			it('should have correct color', () => {
