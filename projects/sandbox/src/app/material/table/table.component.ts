@@ -99,7 +99,6 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 			mode: Mode.DIALOG,
 			style: formBuilder.group({
 				'ob-table': true,
-				'ob-table-cicd': false,
 				'ob-table-plain': false,
 				'ob-table-disable-hover-style': false,
 				'ob-table-disable-checked-style': false,
