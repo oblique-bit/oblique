@@ -309,6 +309,24 @@ export function addInjectionInClass(tree: Tree, filePath: string, token: string,
 	}
 }
 
+export function removeInjectionInClass(tree: Tree, filePath: string, token: string, pkg: string): void {
+	removeInjectionFromInject(tree, filePath, token);
+	removeInjectionFromConstructor(tree, filePath, token);
+	removeImport(tree, filePath, token, pkg);
+}
+
+function removeInjectionFromConstructor(tree: Tree, filePath: string, token: string): void {
+	replaceInFile(tree, filePath, new RegExp(`(?<=constructor.*?)[\\w\\s]+\\s*:\\s*${token},?`, 's'), '');
+	removeEmptyConstructor(tree, filePath);
+}
+function removeEmptyConstructor(tree: Tree, filePath: string): void {
+	replaceInFile(tree, filePath, /constructor\s*\(\s*\)\s*\{\s*}/, '');
+}
+
+function removeInjectionFromInject(tree: Tree, filePath: string, token: string): void {
+	replaceInFile(tree, filePath, new RegExp(`[\\w\\s]*(?::\\s*${token})?\\s*=\\s*inject\\(\\s*${token}\\s*\\)\\s*;\n?`), '');
+}
+
 function extractDirectoryFromPath(filePath: string): string {
 	return /(?<directory>.*\/)/.exec(filePath)?.groups?.directory ?? '';
 }
