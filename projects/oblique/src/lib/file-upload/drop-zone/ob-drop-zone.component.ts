@@ -22,6 +22,7 @@ export class ObDropZoneComponent {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
 	@Input() accept = ['*'];
 	@Input() maxFileSize = 5;
+	@Input() maxFileAmount = 0;
 	@Input() multiple = true;
 	@ViewChild('fileInput') private readonly fileInput: ElementRef<HTMLInputElement>;
 
@@ -29,7 +30,13 @@ export class ObDropZoneComponent {
 
 	addFiles(fileList: FileList): void {
 		const fileArray = Array.from(fileList);
-		const files: File[] = this.validationService.filterInvalidFiles(fileArray, this.accept, this.maxFileSize, this.multiple);
+		const files: File[] = this.validationService.filterInvalidFiles({
+			files: fileArray,
+			accept: this.accept,
+			maxSize: this.maxFileSize,
+			maxAmount: this.maxFileAmount,
+			multiple: this.multiple
+		});
 		if (files.length) {
 			this.uploadEvent.emit({type: ObEUploadEventType.CHOSEN, files});
 		}

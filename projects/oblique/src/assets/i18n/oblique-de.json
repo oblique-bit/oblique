@@ -18,6 +18,7 @@
   "i18n.oblique.file-upload.empty": "Nichts zu zeigen",
   "i18n.oblique.file-upload.error.failed": "Die folgenden Dateien konnten nicht hochgeladen werden: {{ failedFiles }}",
   "i18n.oblique.file-upload.error.single": "Mehrere Datei-Uploads sind nicht erlaubt. Die folgenden Dateien werden ignoriert: {{ ignoredFiles }}.",
+  "i18n.oblique.file-upload.error.overflow": "Die maximale Anzahl der hochzuladenden Dateien beträgt {{ maxAmount }}. Die folgenden Dateien werden ignoriert: {{ ignoredFiles }}.",
   "i18n.oblique.file-upload.error.size": "Die maximale Datei Größe beträgt {{ maxSize }} MB. Die folgenden Dateien werden ignoriert: {{ ignoredFiles }}.",
   "i18n.oblique.file-upload.error.title": "Hochladefehler",
   "i18n.oblique.file-upload.error.type": "Es werden nur die folgenden Dateiformate unterstützt: {{ supportedTypes }}. Die folgenden Dateien werden ignoriert: {{ ignoredFiles }}.",

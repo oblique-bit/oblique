@@ -11,6 +11,7 @@ export class FileUploadSampleComponent {
 	deleteUrl = 'http://localhost:8080/delete';
 	getUrl = 'http://localhost:8080/files';
 	maxFileSize = 5;
+	maxFileAmount = 0;
 	multipleFile = true;
 	singleRequest = true;
 	cancelConfirmation = true;

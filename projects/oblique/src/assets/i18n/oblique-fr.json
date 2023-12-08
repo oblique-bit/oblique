@@ -18,6 +18,7 @@
   "i18n.oblique.file-upload.empty": "Rien à afficher",
   "i18n.oblique.file-upload.error.failed": "Les fichiers suivants n'ont pas pu être téléchargés : {{ failedFiles }}",
   "i18n.oblique.file-upload.error.single": "Le téléchargement de plusieurs fichiers n'est pas autorisé. Les fichiers suivants sont ignorés : {{ ignoredFiles }}.",
+  "i18n.oblique.file-upload.error.overflow": "Le nombre maximum de fichiers à téléverser est {{ maxAmount }}. Les fichiers suivants sont ignorés : {{ ignoredFiles }}.",
   "i18n.oblique.file-upload.error.size": "La taille maximale de fichier est de {{ maxSize }} MB. Les fichiers suivants sont ignorés : {{ ignoredFiles }}.",
   "i18n.oblique.file-upload.error.title": "Erreur d'upload",
   "i18n.oblique.file-upload.error.type": "Seuls les formats de fichiers suivants sont supportés : {{ supportedTypes }}. Les fichiers suivants sont ignorés : {{ ignoredFiles }}.",
