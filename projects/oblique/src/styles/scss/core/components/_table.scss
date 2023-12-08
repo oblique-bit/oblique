@@ -30,28 +30,12 @@ table {
 		@include table.ob-table-font-size();
 	}
 
-	&.ob-table-cicd {
-		thead,
-		tfoot {
-			background-color: variables.$ob-gray-lighter;
-		}
-
-		th {
-			font-weight: 700;
-		}
-	}
-
 	td,
 	th {
 		border-top: 1px solid variables.$ob-gray-light;
 		border-bottom: 1px solid variables.$ob-gray-light;
 		padding: variables.$ob-spacing-sm;
 		text-align: inherit;
-
-		@at-root #{selector.append(".ob-table-cicd", &)} {
-			border-right: 1px solid variables.$ob-gray-light;
-			border-left: 1px solid variables.$ob-gray-light;
-		}
 
 		@at-root #{selector.append(".ob-table-sm", &)} {
 			padding: variables.$ob-spacing-xs;
@@ -62,7 +46,7 @@ table {
 		}
 	}
 
-	&:not(.ob-table-cicd) thead tr:first-child th {
+	thead tr:first-child th {
 		border-top: none;
 	}
 
