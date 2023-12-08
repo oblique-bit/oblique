@@ -6,7 +6,6 @@ import {Component} from '@angular/core';
 })
 export class TableComponent {
 	oblique = true;
-	cicd = false;
 	hover = true;
 	plain = false;
 	collapse = true;

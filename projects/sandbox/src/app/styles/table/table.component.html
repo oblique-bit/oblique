@@ -3,11 +3,9 @@
 <ob-column-layout [left]="false">
 	<table
 		column-main-content
-		class="table"
 		[class.ob-table]="oblique"
 		[class.ob-table-disable-hover-style]="hover"
 		[class.ob-table-plain]="plain"
-		[class.ob-table-cicd]="cicd"
 		[class.ob-table-collapse]="collapse"
 		[class.ob-table-sm]="size === 'small'"
 		[class.ob-table-lg]="size === 'large'"
@@ -45,7 +43,6 @@
 		<input type="checkbox" [(ngModel)]="oblique" /> Oblique<br />
 		<input type="checkbox" [(ngModel)]="hover" /> Hover<br />
 		<input type="checkbox" [(ngModel)]="plain" /> Plain<br />
-		<input type="checkbox" [(ngModel)]="cicd" /> CI/CD<br />
 		<input type="checkbox" [(ngModel)]="collapse" /> Collapse<br />
 		<input type="radio" [(ngModel)]="size" name="size" value="small" /> SM
 		<input type="radio" [(ngModel)]="size" name="size" value="medium" /> MD
