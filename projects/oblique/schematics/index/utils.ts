@@ -296,6 +296,19 @@ export function removeHtmlTagAttribute(tree: Tree, fileName: string, tagName: st
 	);
 }
 
+export function addInjectionInClass(tree: Tree, filePath: string, token: string, pkg: string): void {
+	if (!new RegExp(`inject\\(\\s*${token}\\s*\\)`).test(readFile(tree, filePath))) {
+		addImport(tree, filePath, token, pkg);
+		addImport(tree, filePath, 'inject', '@angular/core');
+		replaceInFile(
+			tree,
+			filePath,
+			/(?<indent>[^\S\r\n]+)(?<!(?:new|get|set|=)\s*)(?=\w+\()/,
+			`$<indent>private readonly ${token.toLowerCase()} = inject(${token});\n\n$<indent>`
+		);
+	}
+}
+
 function extractDirectoryFromPath(filePath: string): string {
 	return /(?<directory>.*\/)/.exec(filePath)?.groups?.directory ?? '';
 }
