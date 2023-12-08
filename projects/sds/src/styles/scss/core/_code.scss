@@ -1,9 +1,8 @@
-@use "@oblique/oblique/src/styles/scss/core/palette";
 @use "@oblique/oblique/src/styles/scss/core/variables";
 
 code {
-	border: 1px solid palette.$ob-gray-300;
-	background-color: palette.$ob-gray-100;
+	border: 1px solid #d1d5db;
+	background-color: #f3f4f6;
 	color: #1f2937;
 	padding: 0 variables.$ob-spacing-xs;
 }
