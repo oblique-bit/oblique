@@ -1,7 +1,6 @@
 @use "../../../styles/scss/core/variables";
 @use "../../../styles/scss/core/mixins/layout";
 @use "../../../styles/scss/core/mixins/shadow";
-@use "../../../styles/scss/core/mixins/tab-outline";
 
 .ob-drop-zone > div {
 	padding: variables.$ob-spacing-lg;

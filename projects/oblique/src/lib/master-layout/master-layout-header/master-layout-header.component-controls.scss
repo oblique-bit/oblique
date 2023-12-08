@@ -36,12 +36,11 @@
 		.second-line,
 		.third-line {
 			display: block;
-			width: 25px;
-			height: 4px;
+			width: variables.$ob-font-size-normal;
+			height: 1px;
 			background-color: variables.$ob-gray-dark;
 			background-clip: border-box;
-			border-radius: 2px;
-			transition: 0.25s transform, 0.15s opacity, 0.25s border-color;
+			transition: variables.$ob-duration-default transform, variables.$ob-duration-default opacity;
 		}
 
 		&:focus,
@@ -55,14 +54,18 @@
 		}
 
 		.first-line {
-			margin-bottom: 5px;
+			transform-origin: bottom left;
 
 			.ob-header-expanded & {
-				transform: rotate(45deg) translate(8px, 5px) scale(1.1);
+				transform: rotate(45deg) scaleX(1.3); // 1.3 is an empiric number
 			}
 		}
 
 		.second-line {
+			$margin: calc((#{variables.$ob-font-size-normal} - 3px) / 2);
+			margin-top: $margin;
+			margin-bottom: $margin;
+
 			.ob-header-expanded & {
 				opacity: 0;
 				transform: scale(0);
@@ -70,10 +73,10 @@
 		}
 
 		.third-line {
-			margin-top: 5px;
+			transform-origin: top left;
 
 			.ob-header-expanded & {
-				transform: rotate(-45deg) translate(8px, -5px) scale(1.1);
+				transform: rotate(-45deg) scaleX(1.3); // 1.3 is en empiric number
 			}
 		}
 	}

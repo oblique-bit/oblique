@@ -6,6 +6,8 @@
 .ob-top-control-btn {
 	visibility: hidden; // A11y: ensure element is not reachable when tabbing.
 	position: fixed;
+	display: flex;
+	column-gap: variables.$ob-spacing-default;
 	z-index: variables.$ob-z-index-widget;
 	opacity: 0;
 	white-space: nowrap;
@@ -26,24 +28,7 @@
 	transition: all variables.$ob-duration-default ease-in-out;
 
 	.ob-control-icon {
-		float: left;
 		font-size: variables.$ob-font-size-lg;
-	}
-
-	.ob-control-label {
-		float: left;
-		vertical-align: top;
-		white-space: normal;
-		width: calc(100% - 40px);
-		padding: 3px 0;
-	}
-
-	&:hover,
-	&:focus {
-		text-decoration: none;
-		color: variables.$ob-default;
-		background-color: variables.$ob-gray-light;
-		@include shadow.ob-drop-shadow();
 	}
 
 	.ob-master-layout-scrolling & {
@@ -57,6 +42,7 @@
 
 		&:hover,
 		&:focus {
+			@include shadow.ob-drop-shadow();
 			opacity: 1;
 			right: 0;
 		}
