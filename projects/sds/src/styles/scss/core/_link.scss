@@ -1,0 +1,11 @@
+@use "@oblique/oblique/src/styles/scss/core/variables";
+
+a[href^="mailto:"]::after {
+	margin-left: variables.$ob-spacing-xs;
+	width: variables.$ob-font-size-normal;
+	height: variables.$ob-font-size-normal;
+	content: "";
+	display: inline-block;
+	background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Ctitle%3EEnvelope%3C/title%3E%3Cpath d="M1.25,3.25025v17.5h21.5v-17.5Zm19.628,1.5L12,9.87525l-8.878-5.125Zm-18.128,14.5V6.26734L12,11.60767l9.25-5.34033V19.25025Z" fill="black"/%3E%3C/svg%3E')
+		no-repeat bottom right;
+}
