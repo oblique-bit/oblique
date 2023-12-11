@@ -11,8 +11,9 @@ import {URL_CONST} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
 import {TabComponent} from '../shared/tabs/tab/tab.component';
 import {TabsComponent} from '../shared/tabs/tabs.component';
-import {CommonModule} from '@angular/common';
+import {CommonModule, Location} from '@angular/common';
 import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
+import {TabNameMapper} from './utils/tab-name-mapper';
 
 @Component({
 	selector: 'app-tabbed-page',
@@ -44,6 +45,7 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
 	private readonly slugToIdService = inject(SlugToIdService);
+	private readonly location = inject(Location);
 	private previousSlug: string;
 
 	ngOnInit(): void {
@@ -55,6 +57,65 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+	}
+
+	handleTabChanged(tabName: string): void {
+		const urlParamForTab: string = TabNameMapper.getUrlParamForTabName(tabName);
+
+		const newUrl: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab)
+			? this.router.url.replace(/[^/]*$/, urlParamForTab)
+			: `${this.router.url}/${urlParamForTab}`;
+
+		this.location.replaceState(newUrl);
+	}
+
+	private initObservables(): void {
+		this.apiContent$ = this.apiContentSource.asObservable();
+		this.codeExampleComponent$ = this.codeExampleComponentSource.asObservable();
+		this.uiUxContent$ = this.uiUxContentSource.asObservable();
+	}
+
+	private monitorForPageChanges(): void {
+		this.apiContent$
+			.pipe(takeUntil(this.unsubscribe), combineLatestWith(this.codeExampleComponent$, this.uiUxContent$), debounceTime(1))
+			.subscribe(next => {
+				const apiContent = next[0];
+				const codeExampleComponent = next[1];
+				const uiUxContent = next[2];
+
+				if (apiContent || codeExampleComponent || uiUxContent) {
+					this.loadCodeExample(codeExampleComponent);
+					const tabToSelect: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab) ?? '';
+					this.tabs.selectTabWithName(TabNameMapper.getTabNameFromUrlParam(tabToSelect));
+				}
+			});
+	}
+
+	private loadCodeExample(codeExampleComponent: Type<CodeExamples> | undefined): void {
+		const {viewContainerRef} = this.codeExample;
+		viewContainerRef.clear();
+
+		if (codeExampleComponent) {
+			viewContainerRef.createComponent<CodeExamples>(codeExampleComponent);
+		}
+	}
+
+	private monitorForSlugToIdChanges(): void {
+		this.slugToIdService.readyToMap.pipe(takeUntil(this.unsubscribe), delay(0)).subscribe(() => {
+			this.getContentForSelectedSlug();
+			this.monitorForNavigationEndEvents();
+		});
+	}
+
+	private monitorForNavigationEndEvents(): void {
+		this.router.events
+			.pipe(
+				takeUntil(this.unsubscribe),
+				filter(event => event instanceof NavigationEnd)
+			)
+			.subscribe(() => {
+				this.getContentForSelectedSlug();
+			});
 	}
 
 	private getContentForSelectedSlug(): void {
@@ -76,53 +137,5 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 				this.uiUxContentSource.next(cmsData.data.ui_ux);
 				this.codeExampleComponentSource.next(CodeExamplesMapper.getCodeExampleComponent(cmsData.data.slug));
 			});
-	}
-
-	private initObservables(): void {
-		this.apiContent$ = this.apiContentSource.asObservable();
-		this.codeExampleComponent$ = this.codeExampleComponentSource.asObservable();
-		this.uiUxContent$ = this.uiUxContentSource.asObservable();
-	}
-
-	private loadCodeExample(codeExampleComponent: Type<CodeExamples> | undefined): void {
-		const {viewContainerRef} = this.codeExample;
-		viewContainerRef.clear();
-
-		if (codeExampleComponent) {
-			viewContainerRef.createComponent<CodeExamples>(codeExampleComponent);
-		}
-	}
-
-	private monitorForPageChanges(): void {
-		this.apiContent$
-			.pipe(takeUntil(this.unsubscribe), combineLatestWith(this.codeExampleComponent$, this.uiUxContent$), debounceTime(1))
-			.subscribe(next => {
-				const apiContent = next[0];
-				const codeExampleComponent = next[1];
-				const uiUxContent = next[2];
-
-				if (apiContent || codeExampleComponent || uiUxContent) {
-					this.loadCodeExample(codeExampleComponent);
-					this.tabs.setDefaultTabSelected();
-				}
-			});
-	}
-
-	private monitorForNavigationEndEvents(): void {
-		this.router.events
-			.pipe(
-				takeUntil(this.unsubscribe),
-				filter(event => event instanceof NavigationEnd)
-			)
-			.subscribe(() => {
-				this.getContentForSelectedSlug();
-			});
-	}
-
-	private monitorForSlugToIdChanges(): void {
-		this.slugToIdService.readyToMap.pipe(takeUntil(this.unsubscribe), delay(0)).subscribe(() => {
-			this.getContentForSelectedSlug();
-			this.monitorForNavigationEndEvents();
-		});
 	}
 }

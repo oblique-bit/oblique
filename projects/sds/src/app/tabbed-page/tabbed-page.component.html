@@ -1,5 +1,5 @@
 <h1>{{ title }}</h1>
-<app-tabs #tabs [idPrefix]="componentId" [id]="componentId | id : ['tabs']">
+<app-tabs #tabs [idPrefix]="componentId" [id]="componentId | id : ['tabs']" (tabChanged)="handleTabChanged($event)">
 	<app-tab name="Examples" [hidden]="!!!(codeExampleComponent$ | async)" [id]="componentId | id : ['examples-tab']">
 		<ng-template appCodeExample></ng-template>
 	</app-tab>

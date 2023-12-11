@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, ContentChildren, Input, QueryList} from '@angular/core';
+import {Component, ContentChildren, EventEmitter, Input, Output, QueryList} from '@angular/core';
 import {TabComponent} from './tab/tab.component';
 import {IdPipe} from '../id/id.pipe';
 import {CommonModule} from '@angular/common';
@@ -10,14 +10,20 @@ import {CommonModule} from '@angular/common';
 	standalone: true,
 	imports: [CommonModule, IdPipe]
 })
-export class TabsComponent implements AfterContentInit {
+export class TabsComponent {
 	@Input() idPrefix = '';
 	@ContentChildren(TabComponent) tabs: QueryList<TabComponent> = new QueryList<TabComponent>();
+	@Output() readonly tabChanged = new EventEmitter<string>();
 
 	readonly componentId = 'tabs';
 
-	ngAfterContentInit(): void {
-		this.setDefaultTabSelected();
+	selectTabWithName(tabName: string): void {
+		const foundTab: TabComponent = this.tabs.find(tab => tab.name === tabName && !tab.hidden);
+		if (foundTab) {
+			this.selectTab(foundTab);
+		} else {
+			this.selectTab(this.getDefaultTab());
+		}
 	}
 
 	selectTab(selectedTab: TabComponent): void {
@@ -28,10 +34,7 @@ export class TabsComponent implements AfterContentInit {
 				tab.updateActive(false);
 			}
 		});
-	}
-
-	setDefaultTabSelected(): void {
-		this.selectTab(this.getDefaultTab());
+		this.tabChanged.emit(selectedTab.name);
 	}
 
 	private getDefaultTab(): TabComponent {
