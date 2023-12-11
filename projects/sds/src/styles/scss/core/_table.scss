@@ -1,7 +1,7 @@
 @use "@oblique/oblique/src/styles/scss/core/palette";
 @use "@oblique/oblique/src/styles/scss/core/variables";
 
-table {
+table:not(.ob-table) {
 	border-collapse: collapse;
 	background-color: #fafafa;
 	border: 1px solid palette.$ob-secondary-200;
