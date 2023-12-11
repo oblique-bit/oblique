@@ -1,0 +1,12 @@
+@use "@oblique/oblique/src/styles/scss/core/variables" as oblique-variables;
+@use "variables";
+
+section {
+	margin-left: oblique-variables.$ob-spacing-default;
+	margin-right: oblique-variables.$ob-spacing-default;
+
+	&:not(:last-of-type) {
+		padding-bottom: oblique-variables.$ob-spacing-default;
+		border-bottom: 1px solid variables.$hr-color;
+	}
+}
