@@ -33,8 +33,7 @@ export class MaterialTableCodeExamplesComponent extends CodeExamples {
 			title: 'Styles',
 			snippets: [
 				this.getSnippet('material-table', 'styles/material-table-example-styles-preview.component.html', 'HTML'),
-				this.getSnippet('material-table', 'styles/material-table-example-styles-preview.component.ts', 'TS'),
-				this.getSnippet('material-table', 'styles/material-table-example-styles-preview.component.scss', 'SCSS')
+				this.getSnippet('material-table', 'styles/material-table-example-styles-preview.component.ts', 'TS')
 			]
 		},
 		{

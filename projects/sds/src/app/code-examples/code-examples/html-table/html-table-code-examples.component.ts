@@ -33,8 +33,7 @@ export class HtmlTableCodeExamplesComponent extends CodeExamples {
 			title: 'Styles',
 			snippets: [
 				this.getSnippet('html-table', 'styles/html-table-example-styles-preview.component.html', 'HTML'),
-				this.getSnippet('html-table', 'styles/html-table-example-styles-preview.component.ts', 'TS'),
-				this.getSnippet('html-table', 'styles/html-table-example-styles-preview.component.scss', 'SCSS')
+				this.getSnippet('html-table', 'styles/html-table-example-styles-preview.component.ts', 'TS')
 			]
 		},
 		{

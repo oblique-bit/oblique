@@ -34,6 +34,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 				this.removeContentProjectionMarker('obHeaderCustomControl'),
 				this.removeContentProjectionMarker('obLocales'),
 				this.removeActivateServiceNavigationToken(),
+				this.removeTableCicd(),
 				this.runMDCMigration()
 			])(tree, _context);
 	}
@@ -166,6 +167,20 @@ export class UpdateV10toV11 implements ObIMigrations {
 				replaceInFile(tree, filePath, /OB_ACTIVATE_SERVICE_NAVIGATION\s*,?\s*/, '');
 			};
 			return applyInTree(tree, apply, '*.ts');
+		});
+	}
+
+	private removeTableCicd(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, `Remove ob-table-cicd class`);
+			const apply = (filePath: string): void => {
+				replaceInFile(tree, filePath, /\[class\.ob-table-cicd]=["']\w+["']/g, ''); // [class.ob-table-cicd]="true"
+				replaceInFile(tree, filePath, /['"]ob-table-cicd["']\s*:[^},]*,?/g, ''); // [ngClass]="{'ob-table-cicd': true}"
+				replaceInFile(tree, filePath, /ob-table-cicd/g, ''); // class="ob-table-cicd"
+				replaceInFile(tree, filePath, /class\s*=\s*["']\s*["']/g, ''); // class=""
+				replaceInFile(tree, filePath, /\[ngClass]\s*=\s*['"]\{\s*}\s*["']/g, ''); // [ngClass]="{}"
+			};
+			return applyInTree(tree, apply, '*.html');
 		});
 	}
 
