@@ -2,10 +2,33 @@
 @use "projects/oblique/src/styles/scss/core/mixins/layout";
 
 // styles for the table
-td,
-th {
-	&.mat-column-actions {
+@mixin table-width() {
+	.mat-column-actions {
 		width: 1px; // "fit-content" for a table cell
+	}
+}
+
+.ob-table {
+	&:not(.ob-table-collapse, .ob-table-collapse-md, .ob-table-collapse-sm) {
+		@include table-width();
+	}
+
+	&.ob-table-collapse {
+		@include layout.ob-media-breakpoint-up(md) {
+			@include table-width();
+		}
+	}
+
+	&.ob-table-collapse-md {
+		@include layout.ob-media-breakpoint-up(md) {
+			@include table-width();
+		}
+	}
+
+	&.ob-table-collapse-sm {
+		@include layout.ob-media-breakpoint-up(sm) {
+			@include table-width();
+		}
 	}
 }
 
