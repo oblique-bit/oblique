@@ -61,15 +61,11 @@
 	letter-spacing: 0.5px;
 }
 
-@mixin ob-body2-line-height-letter-spacing {
-	line-height: 1.42857;
-	letter-spacing: 0.25px;
-}
-
 @mixin ob-body2 {
 	font-size: 0.875rem;
 	font-weight: 400;
-	@include ob-body2-line-height-letter-spacing();
+	line-height: 1.42857;
+	letter-spacing: 0.25px;
 }
 
 @mixin ob-button {
