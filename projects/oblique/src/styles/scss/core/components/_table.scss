@@ -62,21 +62,15 @@ table {
 	}
 
 	&.ob-table-collapse {
-		@include layout.ob-media-breakpoint-down(md) {
-			@include table.ob-table-collapse();
-		}
+		@include table.ob-table-collapse(md);
 	}
 
 	&.ob-table-collapse-sm {
-		@include layout.ob-media-breakpoint-down(sm) {
-			@include table.ob-table-collapse();
-		}
+		@include table.ob-table-collapse(sm);
 	}
 
 	&.ob-table-collapse-md {
-		@include layout.ob-media-breakpoint-down(md) {
-			@include table.ob-table-collapse();
-		}
+		@include table.ob-table-collapse(md);
 	}
 }
 

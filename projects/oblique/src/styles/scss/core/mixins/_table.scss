@@ -1,46 +1,49 @@
 @use "sass:selector";
 @use "../variables";
+@use "../mixins/layout";
 
-@mixin ob-table-collapse() {
-	&,
-	thead,
-	tbody,
-	th,
-	td,
-	tr,
-	caption {
-		display: block;
-	}
+@mixin ob-table-collapse($breakpoint) {
+	@include layout.ob-media-breakpoint-down($breakpoint) {
+		&,
+		thead,
+		tbody,
+		th,
+		td,
+		tr,
+		caption {
+			display: block;
+		}
 
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-
-	td {
-		position: relative;
-		margin-left: variables.$ob-table-collapsed-header-width;
-		min-height: calc(
-			1.42857em + 2 * #{variables.$ob-spacing-sm} + 1px
-		); // line-height + padding + border
-		border: none;
-		border-top: 1px solid variables.$ob-secondary-200;
-
-		&::before {
-			content: attr(data-title);
+		thead tr {
 			position: absolute;
-			top: -1px;
-			bottom: -1px;
-			left: -1px;
-			width: variables.$ob-table-collapsed-header-width + 1px;
-			padding: inherit;
-			margin-left: -(variables.$ob-table-collapsed-header-width);
-			border: 1px solid variables.$ob-secondary-200;
-			border-left: none;
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
+			top: -9999px;
+			left: -9999px;
+		}
+
+		td {
+			position: relative;
+			margin-left: variables.$ob-table-collapsed-header-width;
+			min-height: calc(
+				1.42857em + 2 * #{variables.$ob-spacing-sm} + 1px
+			); // line-height + padding + border
+			border: none;
+			border-top: 1px solid variables.$ob-secondary-200;
+
+			&::before {
+				content: attr(data-title);
+				position: absolute;
+				top: -1px;
+				bottom: -1px;
+				left: -1px;
+				width: variables.$ob-table-collapsed-header-width + 1px;
+				padding: inherit;
+				margin-left: -(variables.$ob-table-collapsed-header-width);
+				border: 1px solid variables.$ob-secondary-200;
+				border-left: none;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
 		}
 	}
 }
