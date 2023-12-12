@@ -39,7 +39,7 @@ export class CodeExampleComponent implements AfterViewInit {
 			viewContainerRef.createComponent(this.preview);
 			this.cdr.detectChanges(); // This ensures that the CSS of the preview component is loaded
 
-			if (this.title.includes('<code>')) {
+			if (this.title?.includes('<code>')) {
 				this.hasCodeInTitle = true;
 			}
 		}
