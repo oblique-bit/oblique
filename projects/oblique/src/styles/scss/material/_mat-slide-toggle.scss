@@ -79,14 +79,25 @@
 		}
 	}
 
-	&.mat-warn .mdc-form-field button.mdc-switch[role="switch"][type="button"],
-	.mdc-form-field button[aria-required][role="switch"][type="button"].mdc-switch {
-		&.mdc-switch--unselected {
-			&:enabled {
+	&.mat-warn .mdc-form-field button.mdc-switch[role="switch"][type="button"] {
+		&:enabled {
+			&.mdc-switch--selected {
+				.mdc-switch__track::after {
+					background: variables.$ob-red-900;
+				}
+			}
+
+			&.mdc-switch--unselected {
 				.mdc-switch__track::before {
 					background: variables.$ob-red-800;
 				}
 			}
+		}
+	}
+
+	.mdc-form-field button[aria-required][role="switch"][type="button"].mdc-switch {
+		&.mdc-switch--unselected:enabled .mdc-switch__track::before {
+			background: variables.$ob-red-800;
 		}
 	}
 
