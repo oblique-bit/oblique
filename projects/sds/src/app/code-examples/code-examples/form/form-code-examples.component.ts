@@ -4,7 +4,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {FormExampleSizesPreviewComponent} from '../form/previews/sizes/form-example-sizes-preview.component';
-import {FormExampleUxPreviewComponent} from '../form/previews/ux/form-example-ux-preview.component';
+import {FormExampleStatesPreviewComponent} from './previews/states/form-example-states-preview.component';
 import {FormExampleHorizontalPreviewComponent} from '../form/previews/horizontal/form-example-horizontal-preview.component';
 import {FormExampleInputClearPreviewComponent} from '../form/previews/input-clear/form-example-input-clear-preview.component';
 
@@ -29,13 +29,13 @@ export class FormCodeExamplesComponent extends CodeExamples {
 			]
 		},
 		{
-			component: FormExampleUxPreviewComponent,
-			idParts: ['ux'],
-			title: 'UX',
+			component: FormExampleStatesPreviewComponent,
+			idParts: ['states'],
+			title: 'States',
 			snippets: [
-				this.getSnippet('form', 'ux/form-example-ux-preview.component.html', 'HTML'),
-				this.getSnippet('form', 'ux/form-example-ux-preview.component.ts', 'TS'),
-				this.getSnippet('form', 'ux/form-example-ux-preview.component.scss', 'SCSS')
+				this.getSnippet('form', 'states/form-example-states-preview.component.html', 'HTML'),
+				this.getSnippet('form', 'states/form-example-states-preview.component.ts', 'TS'),
+				this.getSnippet('form', 'states/form-example-states-preview.component.scss', 'SCSS')
 			]
 		},
 		{

@@ -8,10 +8,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {ObFormFieldModule} from '@oblique/oblique';
 
 @Component({
-	selector: 'app-form-example-ux-preview',
-	templateUrl: './form-example-ux-preview.component.html',
-	styleUrls: ['./form-example-ux-preview.component.scss'],
+	selector: 'app-form-example-states-preview',
+	templateUrl: './form-example-states-preview.component.html',
+	styleUrls: ['./form-example-states-preview.component.scss'],
 	standalone: true,
 	imports: [FormsModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, ObFormFieldModule]
 })
-export class FormExampleUxPreviewComponent {}
+export class FormExampleStatesPreviewComponent {}

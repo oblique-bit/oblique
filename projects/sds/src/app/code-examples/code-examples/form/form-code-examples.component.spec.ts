@@ -11,7 +11,7 @@ import {MatInput} from '@angular/material/input';
 import {MatSelect} from '@angular/material/select';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FormExampleSizesPreviewComponent} from './previews/sizes/form-example-sizes-preview.component';
-import {FormExampleUxPreviewComponent} from './previews/ux/form-example-ux-preview.component';
+import {FormExampleStatesPreviewComponent} from './previews/states/form-example-states-preview.component';
 import {FormExampleHorizontalPreviewComponent} from './previews/horizontal/form-example-horizontal-preview.component';
 import {FormExampleInputClearPreviewComponent} from './previews/input-clear/form-example-input-clear-preview.component';
 
@@ -41,8 +41,8 @@ describe(FormCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.directive(FormExampleSizesPreviewComponent)).length).toBe(1);
 	});
 
-	test(`that there is 1 ${FormExampleUxPreviewComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(FormExampleUxPreviewComponent)).length).toBe(1);
+	test(`that there is 1 ${FormExampleStatesPreviewComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(FormExampleStatesPreviewComponent)).length).toBe(1);
 	});
 
 	test(`that there is 1 ${FormExampleHorizontalPreviewComponent.name}s`, () => {
