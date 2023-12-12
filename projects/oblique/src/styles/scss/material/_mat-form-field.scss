@@ -95,6 +95,7 @@
 		align-items: center;
 
 		.mat-mdc-input-element {
+			margin-top: core-variables.$ob-spacing-xs;
 			z-index: 1;
 		}
 	}
@@ -123,6 +124,41 @@
 			&:not(:hover) {
 				[class*="mat-form-field-outline-"] {
 					border-width: 1px;
+				}
+			}
+
+			.mat-mdc-form-field-infix::after {
+				content: "!";
+				position: absolute;
+				right: 0;
+				padding: 0 core-variables.$ob-font-size-smallest;
+				border-radius: 50%;
+				background-color: core-variables.$ob-red-800;
+				color: core-variables.$ob-white;
+				font-size: core-variables.$ob-font-size-smallest;
+				margin-top: core-variables.$ob-spacing-xs * 0.75;
+				z-index: core-variables.$ob-z-index-controls;
+
+				@at-root #{selector.append(".ob-form-field-has-text-suffix", &)} {
+					right: core-variables.$ob-spacing-xs;
+				}
+
+				@at-root #{selector.append(".mat-form-field-lg", &)},
+					.ob-form-lg & {
+					margin-top: core-variables.$ob-spacing-sm;
+				}
+
+				@at-root #{selector.append(".ob-form-field-textarea", &)} {
+					margin-top: -(core-variables.$ob-spacing-lg) + (core-variables.$ob-spacing-xs * 0.25);
+
+					@at-root #{selector.append(".mat-form-field-lg", &)},
+						.ob-form-lg & {
+						margin-top: -(core-variables.$ob-spacing-sm);
+					}
+				}
+
+				@at-root #{selector.append(".mat-mdc-form-field-type-mat-select", &)} {
+					right: core-variables.$ob-spacing-default;
 				}
 			}
 		}
@@ -214,6 +250,10 @@
 		cursor: not-allowed;
 	}
 
+	.mat-mdc-select-trigger {
+		margin-top: core-variables.$ob-spacing-xs;
+	}
+
 	.mat-mdc-input-element {
 		&::placeholder {
 			color: core-variables.$ob-default;
@@ -245,6 +285,10 @@
 			mat-label {
 				padding-left: $padding;
 			}
+		}
+
+		&.mat-mdc-form-field-type-mat-select .mdc-floating-label:not(.mdc-floating-label--float-above) {
+			margin-top: -(core-variables.$ob-spacing-xs);
 		}
 
 		.mat-mdc-form-field-error,
@@ -312,7 +356,8 @@
 			2em
 		);
 
-		.ob-form-sm & {
+		.ob-form-sm &,
+		&.mat-form-field-sm {
 			@include mat-form-field.ob-form-field-size(
 				material-variables.$ob-form-field-padding-top-sm,
 				0.25em,
@@ -320,18 +365,22 @@
 			);
 
 			&.ob-form-field-textarea {
-				.mat-mdc-form-field-infix {
-					padding-bottom: 27px;
-				}
+				padding-bottom: 0;
 
 				.mat-mdc-form-field-textarea-control {
 					position: relative;
-					top: 22px;
+					top: core-variables.$ob-spacing-sm;
+					margin-bottom: core-variables.$ob-spacing-sm;
+				}
+
+				.mdc-floating-label:not(.mdc-floating-label--float-above) {
+					padding-bottom: core-variables.$ob-spacing-default * 1.25;
 				}
 			}
 		}
 
-		.ob-form-lg & {
+		.ob-form-lg &,
+		&.mat-form-field-lg {
 			@include mat-form-field.ob-form-field-size(
 				material-variables.$ob-form-field-padding-top-lg,
 				1em,
@@ -340,11 +389,15 @@
 
 			.mat-mdc-form-field-infix {
 				padding-bottom: 19px;
+
+				@at-root #{selector.append(".mat-mdc-form-field-type-mat-select", &)} {
+					padding-bottom: core-variables.$ob-spacing-sm;
+				}
 			}
 
 			.mat-mdc-form-field-textarea-control {
 				position: relative;
-				top: 10px;
+				top: core-variables.$ob-spacing-sm;
 			}
 		}
 
@@ -374,15 +427,6 @@
 				}
 			}
 		}
-	}
-
-	&.mat-form-field-invalid .mat-mdc-form-field-label-wrapper::after {
-		content: "!";
-		position: absolute;
-		right: 0;
-		padding: 0 0.4em;
-		border-radius: 50%;
-		z-index: core-variables.$ob-z-index-controls;
 	}
 
 	.mat-mdc-form-field-error,
@@ -453,6 +497,15 @@
 		z-index: 1;
 	}
 
+	@at-root #{selector.append(".mat-mdc-form-field-type-mat-input", &)} {
+		.mat-mdc-form-field-icon-prefix,
+		.mat-mdc-form-field-icon-suffix {
+			& > .mat-icon {
+				margin-bottom: core-variables.$ob-spacing-xs * 0.75;
+			}
+		}
+	}
+
 	@include mat-form-field.margin(1px);
 
 	.ob-form-sm &,
@@ -463,5 +516,24 @@
 	.ob-form-lg &,
 	&.mat-form-field-lg {
 		@include mat-form-field.margin(2px);
+
+		&.mat-mdc-form-field-type-mat-select {
+			margin-top: core-variables.$ob-spacing-xs * 1.5;
+			padding-bottom: core-variables.$ob-spacing-sm;
+
+			.mat-mdc-select {
+				&:not(.mat-mdc-select-empty) {
+					padding-bottom: core-variables.$ob-spacing-xs * -0.5;
+				}
+
+				.mat-mdc-select-trigger {
+					margin-top: core-variables.$ob-spacing-sm + core-variables.$ob-spacing-xs * 0.25;
+				}
+			}
+		}
+	}
+
+	.mat-mdc-input-element:not([class*="autocomplete"]) ~ .ob-input-clear {
+		margin-top: core-variables.$ob-spacing-xs * 0.75;
 	}
 }
