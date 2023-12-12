@@ -506,6 +506,20 @@
 		}
 	}
 
+	&.ob-form-field-has-text-prefix {
+		.mat-mdc-input-element,
+		.mdc-floating-label:not(.mdc-floating-label--float-above) {
+			padding-left: core-variables.$ob-spacing-default;
+		}
+	}
+
+	&.ob-form-field-has-text-suffix {
+		.mat-mdc-input-element,
+		.mdc-floating-label:not(.mdc-floating-label--float-above) {
+			padding-right: core-variables.$ob-spacing-default;
+		}
+	}
+
 	@include mat-form-field.margin(1px);
 
 	.ob-form-sm &,
