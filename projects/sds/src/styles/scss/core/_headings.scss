@@ -1,29 +1,30 @@
-@use "@oblique/oblique/src/styles/scss/core/variables";
+@use "@oblique/oblique/src/styles/scss/core/variables" as oblique-variables;
+@use "variables";
 
 h1:not(:first-child) {
-	margin-top: variables.$ob-spacing-xxl;
+	margin-top: oblique-variables.$ob-spacing-xxl;
 }
 
 h2:not(:first-child) {
-	margin-top: variables.$ob-spacing-xl +
-		((variables.$ob-spacing-xxl - variables.$ob-spacing-xl) * calc(2 / 3));
+	margin-top: oblique-variables.$ob-spacing-xl +
+		((oblique-variables.$ob-spacing-xxl - oblique-variables.$ob-spacing-xl) * calc(2 / 3));
 }
 
 h3:not(:first-child) {
-	margin-top: variables.$ob-spacing-xl +
-		((variables.$ob-spacing-xxl - variables.$ob-spacing-xl) * calc(1 / 3));
+	margin-top: oblique-variables.$ob-spacing-xl +
+		((oblique-variables.$ob-spacing-xxl - oblique-variables.$ob-spacing-xl) * calc(1 / 3));
 }
 
 h4 {
-	margin-top: variables.$ob-spacing-xl;
+	margin-top: oblique-variables.$ob-spacing-xl;
 }
 
 h5 {
-	margin-top: variables.$ob-spacing-lg;
+	margin-top: oblique-variables.$ob-spacing-lg;
 }
 
 h6 {
-	margin-top: variables.$ob-spacing-default;
+	margin-top: oblique-variables.$ob-spacing-default;
 }
 
 h1,
@@ -33,7 +34,7 @@ h4,
 h5,
 h6 {
 	& + div {
-		border-color: rgba(0, 0, 0, 12%);
+		border-color: variables.$hr-color;
 
 		hr {
 			border-color: inherit;
