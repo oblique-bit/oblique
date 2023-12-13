@@ -14,6 +14,7 @@ import {FormExampleSizesPreviewComponent} from './previews/sizes/form-example-si
 import {FormExampleStatesPreviewComponent} from './previews/states/form-example-states-preview.component';
 import {FormExampleHorizontalPreviewComponent} from './previews/horizontal/form-example-horizontal-preview.component';
 import {FormExampleInputClearPreviewComponent} from './previews/input-clear/form-example-input-clear-preview.component';
+import {FormExampleInputPrefixesAndSuffixesPreviewComponent} from './previews/input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component';
 
 describe(FormCodeExamplesComponent.name, () => {
 	let component: FormCodeExamplesComponent;
@@ -33,8 +34,8 @@ describe(FormCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	test(`that there are 4 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(4);
+	test(`that there are 5 ${CodeExampleComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(5);
 	});
 
 	test(`that there is 1 ${FormExampleSizesPreviewComponent.name}s`, () => {
@@ -53,12 +54,16 @@ describe(FormCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.directive(FormExampleInputClearPreviewComponent)).length).toBe(1);
 	});
 
-	test(`that there are 24 ${MatFormField.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatFormField)).length).toBe(24);
+	test(`that there is 1 ${FormExampleInputPrefixesAndSuffixesPreviewComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(FormExampleInputClearPreviewComponent)).length).toBe(1);
 	});
 
-	test(`that there are 17 ${MatInput.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatInput)).length).toBe(17);
+	test(`that there are 30 ${MatFormField.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MatFormField)).length).toBe(30);
+	});
+
+	test(`that there are 23 ${MatInput.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MatInput)).length).toBe(23);
 	});
 
 	test(`that there are 2 ${MatCheckbox.name}s`, () => {

@@ -7,6 +7,7 @@ import {FormExampleSizesPreviewComponent} from '../form/previews/sizes/form-exam
 import {FormExampleStatesPreviewComponent} from './previews/states/form-example-states-preview.component';
 import {FormExampleHorizontalPreviewComponent} from '../form/previews/horizontal/form-example-horizontal-preview.component';
 import {FormExampleInputClearPreviewComponent} from '../form/previews/input-clear/form-example-input-clear-preview.component';
+import {FormExampleInputPrefixesAndSuffixesPreviewComponent} from '../form/previews/input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component';
 
 @Component({
 	selector: 'app-code-example-form',
@@ -55,6 +56,17 @@ export class FormCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('form', 'input-clear/form-example-input-clear-preview.component.html', 'HTML'),
 				this.getSnippet('form', 'input-clear/form-example-input-clear-preview.component.ts', 'TS'),
 				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'SCSS')
+			]
+		},
+		{
+			component: FormExampleInputPrefixesAndSuffixesPreviewComponent,
+			idParts: ['input', 'prefixes', 'and', 'suffixes'],
+			title: 'Input prefixes & suffixes',
+			snippets: [
+				this.getSnippet('form', 'input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component.html', 'HTML'),
+				this.getSnippet('form', 'input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component.ts', 'TS'),
+				this.getSnippet('form', 'input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component.scss', 'SCSS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];
