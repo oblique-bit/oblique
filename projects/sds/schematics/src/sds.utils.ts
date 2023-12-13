@@ -123,3 +123,7 @@ export function showAlreadyExistsMessage(
 		} It will not be added again.`
 	);
 }
+
+export function isNameValid(name: string): boolean {
+	return !/^-|[^\w-]|-(?![^-])/.test(name);
+}

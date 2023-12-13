@@ -8,7 +8,8 @@ import {
 	getExampleComponentPathOrFalse,
 	getExampleDirectoryOrFalse,
 	getExampleDirectoryPath,
-	getSourceFileOrFalse
+	getSourceFileOrFalse,
+	isNameValid
 } from '../sds.utils';
 import {isImported} from '@schematics/angular/utility/ast-utils';
 import {addNodeToSyntaxList} from '../nodes.utils';
@@ -121,9 +122,17 @@ export function areOptionsValid(options: AddPreviewOptions, context: SchematicCo
 			)} or ${colors.white(colors.bgBlackBright(`yourFeature yourFeatureState`))}.`
 		);
 		isValid = false;
+	} else if (!isNameValid(options.preview)) {
+		context.logger.error(
+			`${colors.symbols.cross}\tError: Invalid preview name. The name can contain only letters (a-z, A-Z) or hyphens (-) and must start and end with a letter.`
+		);
+		isValid = false;
 	}
+
 	if (!options.codeExample) {
 		context.logger.error('Error: A code example must be provided for the component.');
+		isValid = false;
+	} else if (!isNameValid(options.codeExample)) {
 		isValid = false;
 	}
 	return isValid;

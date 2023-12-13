@@ -12,6 +12,7 @@ import {
 	createExampleFileName,
 	getExampleSymbolName,
 	getSourceFileOrFalse,
+	isNameValid,
 	showAlreadyExistsMessage
 } from '../sds.utils';
 import {createHost} from '../host.utils';
@@ -22,8 +23,10 @@ export function areCodeExampleOptionsValid(options: AddCodeExampleOptions, tree:
 		context.logger.error(`${colors.symbols.cross}\tError: A name must be provided for the example.`);
 		isValid = false;
 	}
-	if (/\W/.test(options.name)) {
-		context.logger.error(`${colors.symbols.cross}\tError: The example name should only have [a-zA-Z]`);
+	if (!isNameValid(options.name)) {
+		context.logger.error(
+			`${colors.symbols.cross}\tError: Invalid code example name. The name can contain only letters (a-z, A-Z) or hyphens (-) and must start and end with a letter.`
+		);
 		isValid = false;
 	}
 	return isValid;
