@@ -116,10 +116,6 @@ button {
 	color: rgb(51, 51, 51);
 	background: transparent;
 
-	&:last-of-type {
-		margin-bottom: 2rem;
-	}
-
 	@include font-size-xl();
 }
 
