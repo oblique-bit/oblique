@@ -13,14 +13,15 @@
 			{{ accordion.title }}
 		</button>
 	</div>
-	<a
-		*ngFor="let link of accordion.links; let j = index"
-		class="link"
-		[attr.data-selected]="link.slug === selectedSlug"
-		[id]="idPrefix | id : [componentId, 'link', i, j]"
-		[ngClass]="(collapsedAccordionsRecord$ | async)![accordion.id] ? 'hidden' : 'visible'"
-		[routerLink]="['/' + accordion.title, link.slug]"
-	>
-		{{ link.title }}
-	</a>
+	<ng-container *ngFor="let link of accordion.links; let j = index">
+		<a
+			*ngIf="!(collapsedAccordionsRecord$ | async)[accordion.id]"
+			class="link"
+			[attr.data-selected]="link.slug === selectedSlug ? true : null"
+			[id]="idPrefix | id : [componentId, 'link', i, j]"
+			[routerLink]="['/' + accordion.title, link.slug]"
+		>
+			{{ link.title }}
+		</a>
+	</ng-container>
 </ng-container>
