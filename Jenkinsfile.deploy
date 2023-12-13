@@ -1,4 +1,4 @@
-@Library('jeap-pipelinelibrary@feature/oblique5') _
+@Library('jeap-pipelinelibrary@feature/oblique6') _
 nodejsPipelineReleaseTemplate {
 	nodeJsVersion = 18
 }
