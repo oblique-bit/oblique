@@ -4,7 +4,7 @@
 	<table
 		column-main-content
 		[class.ob-table]="oblique"
-		[class.ob-table-disable-hover-style]="hover"
+		[class.ob-table-disable-hover-style]="!hover"
 		[class.ob-table-plain]="plain"
 		[class.ob-table-collapse]="collapse"
 		[class.ob-table-sm]="size === 'small'"
@@ -16,7 +16,7 @@
 		<thead>
 			<tr>
 				<th>Table header 1</th>
-				<th class="active">Table header 2</th>
+				<th>Table header 2</th>
 				<th>Table header 3</th>
 			</tr>
 		</thead>

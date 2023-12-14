@@ -1,75 +1,49 @@
 @use "sass:selector";
 @use "../variables";
+@use "../mixins/layout";
 
-@mixin ob-table-font-size() {
-	font-size: 16px;
-}
+@mixin ob-table-collapse($breakpoint) {
+	@include layout.ob-media-breakpoint-down($breakpoint) {
+		&,
+		thead,
+		tbody,
+		th,
+		td,
+		tr,
+		caption {
+			display: block;
+		}
 
-@mixin ob-table-collapse() {
-	&,
-	thead,
-	tbody,
-	th,
-	td,
-	tr,
-	caption {
-		display: block;
-	}
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
 
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
+		td {
+			position: relative;
+			margin-left: variables.$ob-table-collapsed-header-width;
+			min-height: calc(
+				1.42857em + 2 * #{variables.$ob-spacing-sm} + 1px
+			); // line-height + padding + border
+			border: none;
+			border-top: 1px solid variables.$ob-secondary-200;
 
-	tr {
-		border-bottom: 1px solid variables.$ob-secondary-200;
-
-		@at-root #{selector.append(":not(.ob-table-disable-checked-style):not(.ob-table-disable-hover-style)", &)} {
-			&.ob-table-row-checked:hover {
-				td,
-				td::before {
-					border-color: variables.$ob-secondary-300;
-				}
-
-				td:last-of-type::before {
-					border-bottom-color: variables.$ob-secondary-200;
-				}
+			&::before {
+				content: attr(data-title);
+				position: absolute;
+				top: -1px;
+				bottom: -1px;
+				left: -1px;
+				width: variables.$ob-table-collapsed-header-width + 1px;
+				padding: inherit;
+				margin-left: -(variables.$ob-table-collapsed-header-width);
+				border: 1px solid variables.$ob-secondary-200;
+				border-left: none;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
 			}
 		}
-	}
-
-	td {
-		position: relative;
-		margin-left: variables.$ob-table-collapsed-header-width;
-		min-height: calc(
-			1.42857em + 2 * #{variables.$ob-spacing-sm} + 1px
-		); // line-height + padding + border
-		border: none;
-		border-top: 1px solid variables.$ob-secondary-200;
-
-		&.mdc-data-table__cell {
-			overflow: visible;
-		}
-
-		&.mat-column-actions {
-			width: unset;
-		}
-	}
-
-	td::before {
-		content: attr(data-title);
-		position: absolute;
-		top: -1px;
-		bottom: -1px;
-		left: -1px;
-		width: variables.$ob-table-collapsed-header-width + 1px;
-		padding: inherit;
-		margin-left: -(variables.$ob-table-collapsed-header-width);
-		border: 1px solid variables.$ob-secondary-200;
-		border-left: none;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
 	}
 }

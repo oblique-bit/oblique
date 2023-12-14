@@ -12,13 +12,8 @@ table {
 .ob-table {
 	width: 100%;
 	color: variables.$ob-default;
-	@include typography.ob-body2-line-height-letter-spacing();
-	@include shadow.ob-shadow-md();
-
-	.mat-mdc-header-row {
-		background-color: variables.$ob-secondary-50;
-		border-bottom: 2px solid variables.$ob-secondary-200;
-	}
+	line-height: 1.42857;
+	letter-spacing: 0.25px;
 
 	&,
 	thead,
@@ -27,13 +22,33 @@ table {
 	td,
 	tr,
 	caption {
-		@include table.ob-table-font-size();
+		font-size: variables.$ob-font-size-normal;
+	}
+
+	thead tr:nth-child(odd),
+	&:not(.ob-table-plain) tbody tr:nth-child(even) {
+		background-color: variables.$ob-secondary-50;
+	}
+
+	&:not(.ob-table-disable-hover-style) tbody tr:hover {
+		background-color: variables.$ob-secondary-100;
+	}
+
+	tr {
+		border-bottom: 1px solid variables.$ob-secondary-200;
+	}
+
+	thead tr:last-child {
+		border-width: 2px;
+	}
+
+	thead th {
+		text-transform: uppercase;
+		font-weight: normal;
 	}
 
 	td,
 	th {
-		border-top: 1px solid variables.$ob-gray-light;
-		border-bottom: 1px solid variables.$ob-gray-light;
 		padding: variables.$ob-spacing-sm;
 		text-align: inherit;
 
@@ -46,93 +61,16 @@ table {
 		}
 	}
 
-	thead tr:first-child th {
-		border-top: none;
-	}
-
-	&:not(.ob-table-plain) {
-		.mat-mdc-header-row,
-		tbody tr:nth-child(even) {
-			background-color: variables.$ob-secondary-50;
-		}
-
-		&:not(.ob-table-disable-hover-style) {
-			tbody tr:hover:not(.mat-mdc-header-row) {
-				background-color: variables.$ob-secondary-100;
-			}
-		}
-	}
-
 	&.ob-table-collapse {
-		@include layout.ob-media-breakpoint-down(md) {
-			@include table.ob-table-collapse();
-		}
+		@include table.ob-table-collapse(md);
 	}
 
 	&.ob-table-collapse-sm {
-		@include layout.ob-media-breakpoint-down(sm) {
-			@include table.ob-table-collapse();
-		}
+		@include table.ob-table-collapse(sm);
 	}
 
 	&.ob-table-collapse-md {
-		@include layout.ob-media-breakpoint-down(md) {
-			@include table.ob-table-collapse();
-		}
-	}
-
-	&:not(.ob-table-disable-hover-style) tbody {
-		tr,
-		.mat-mdc-row {
-			&:hover,
-			&.ob-active {
-				&:not(.mat-mdc-header-row) {
-					background-color: variables.$ob-secondary-50;
-				}
-			}
-		}
-	}
-
-	&:not(.ob-table-disable-checked-style) {
-		tr,
-		.mat-mdc-row {
-			&:not(.mat-mdc-header-row).ob-table-row-checked {
-				background-color: variables.$ob-secondary-100;
-			}
-		}
-	}
-
-	&:not(.ob-table-disable-hover-style, .ob-table-disable-checked-style) tbody {
-		tr,
-		.mat-mdc-row {
-			&:hover,
-			&.ob-active {
-				&:not(.mat-mdc-header-row).ob-table-row-checked {
-					background-color: variables.$ob-secondary-200;
-				}
-			}
-		}
-	}
-
-	@include layout.ob-media-breakpoint-up(md) {
-		tbody {
-			tr,
-			.mat-mdc-row {
-				&:not(.mat-mdc-header-row) {
-					.mat-column-actions .actions {
-						visibility: hidden;
-					}
-
-					&:hover,
-					&.ob-active,
-					&.ob-table-row-checked {
-						.mat-column-actions .actions {
-							visibility: visible;
-						}
-					}
-				}
-			}
-		}
+		@include table.ob-table-collapse(md);
 	}
 }
 
