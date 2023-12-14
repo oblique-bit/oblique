@@ -31,7 +31,7 @@ const versions: Record<string, string | versionFunc> = {
 	jest: '^29.0.0',
 	'@types/jest': '^29.0.0',
 	'@angular-builders/jest': version => `^${version}.0.0`,
-	'jest-sonar-reporter': '2.0.0',
+	'jest-sonar-reporter': '^2.0.0',
 	'eslint-config-prettier': '^8.0.0',
 	'eslint-plugin-prettier': '^4.0.0',
 	prettier: '^3.0.0',
