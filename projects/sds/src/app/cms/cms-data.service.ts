@@ -11,7 +11,7 @@ import {CMSPageShortList} from './models/cms-page.model';
 	providedIn: 'root'
 })
 export class CmsDataService {
-	readonly baseUrl = 'https://ob-directus.azurewebsites.net/';
+	readonly baseUrl = 'https://oblique.directus.app/';
 
 	constructor(private readonly httpClient: HttpClient) {}
 
