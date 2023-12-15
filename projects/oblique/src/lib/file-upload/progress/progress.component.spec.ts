@@ -8,8 +8,6 @@ import {WINDOW} from '../../utilities';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMockFileUploadService} from '../_mocks/mock-file-upload.sevice';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
-import {ObPopUpService} from '../../pop-up/pop-up.service';
-import {ObMockPopUpService} from '../../pop-up/_mocks/mock-pop-up.service';
 import {ObFileUploadService} from '../file-upload.service';
 import {ObEUploadEventType, ObIFile, ObIUploadEvent} from '../file-upload.model';
 import {ObProgressComponent} from './progress.component';
@@ -25,21 +23,18 @@ describe('ObProgressComponent', () => {
 	let component: ObProgressComponent;
 	let fixture: ComponentFixture<ObProgressComponent>;
 	let uploadService: ObFileUploadService;
-	let popupService: ObPopUpService;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ObProgressComponent, ObMockTranslatePipe],
 			providers: [
 				{provide: ObFileUploadService, useClass: ObMockFileUploadService},
-				{provide: ObPopUpService, useClass: ObMockPopUpService},
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: WINDOW, useValue: window}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 		}).compileComponents();
 		uploadService = TestBed.inject(ObFileUploadService);
-		popupService = TestBed.inject(ObPopUpService);
 	});
 
 	beforeEach(() => {
@@ -84,9 +79,9 @@ describe('ObProgressComponent', () => {
 				describe('uncompleted file', () => {
 					describe('with cancelConfirmation not set', () => {
 						it('should ask for confirmation', () => {
-							jest.spyOn(popupService, 'confirm');
+							jest.spyOn(window, 'confirm');
 							component.cancelUpload(component.uploadedFiles.files[0]);
-							expect(popupService.confirm).toHaveBeenCalled();
+							expect(window.confirm).toHaveBeenCalled();
 						});
 
 						describe('when confirmed', () => {
@@ -94,7 +89,7 @@ describe('ObProgressComponent', () => {
 							let event: ObIUploadEvent;
 							beforeEach(done => {
 								file = component.uploadedFiles.files[0];
-								jest.spyOn(popupService, 'confirm').mockReturnValue(true);
+								jest.spyOn(window, 'confirm').mockReturnValue(true);
 								jest.spyOn(file.subscription, 'unsubscribe');
 								component.uploadEvent.subscribe(evt => {
 									event = evt;
@@ -136,7 +131,7 @@ describe('ObProgressComponent', () => {
 							let file: ObIFile;
 							beforeEach(() => {
 								file = component.uploadedFiles.files[0];
-								jest.spyOn(popupService, 'confirm').mockReturnValue(false);
+								jest.spyOn(window, 'confirm').mockReturnValue(false);
 								jest.spyOn(file.subscription, 'unsubscribe');
 								jest.spyOn(component.uploadEvent, 'emit');
 								component.cancelUpload(file);
@@ -170,9 +165,9 @@ describe('ObProgressComponent', () => {
 						});
 
 						it('should ask for confirmation', () => {
-							jest.spyOn(popupService, 'confirm');
+							jest.spyOn(window, 'confirm');
 							component.cancelUpload(component.uploadedFiles.files[0]);
-							expect(popupService.confirm).toHaveBeenCalled();
+							expect(window.confirm).toHaveBeenCalled();
 						});
 
 						describe('when confirmed', () => {
@@ -180,7 +175,7 @@ describe('ObProgressComponent', () => {
 							let event: ObIUploadEvent;
 							beforeEach(done => {
 								file = component.uploadedFiles.files[0];
-								jest.spyOn(popupService, 'confirm').mockReturnValue(true);
+								jest.spyOn(window, 'confirm').mockReturnValue(true);
 								jest.spyOn(file.subscription, 'unsubscribe');
 								component.uploadEvent.subscribe(evt => {
 									event = evt;
@@ -222,7 +217,7 @@ describe('ObProgressComponent', () => {
 							let file: ObIFile;
 							beforeEach(() => {
 								file = component.uploadedFiles.files[0];
-								jest.spyOn(popupService, 'confirm').mockReturnValue(false);
+								jest.spyOn(window, 'confirm').mockReturnValue(false);
 								jest.spyOn(file.subscription, 'unsubscribe');
 								jest.spyOn(component.uploadEvent, 'emit');
 								component.cancelUpload(file);
@@ -256,9 +251,9 @@ describe('ObProgressComponent', () => {
 						});
 
 						it('should not ask for confirmation', () => {
-							jest.spyOn(popupService, 'confirm');
+							jest.spyOn(window, 'confirm').mockReset();
 							component.cancelUpload(component.uploadedFiles.files[0]);
-							expect(popupService.confirm).toHaveBeenCalledTimes(0);
+							expect(window.confirm).toHaveBeenCalledTimes(0);
 						});
 
 						describe('when cancelled', () => {
@@ -267,6 +262,7 @@ describe('ObProgressComponent', () => {
 							beforeEach(done => {
 								file = component.uploadedFiles.files[0];
 								jest.spyOn(file.subscription, 'unsubscribe');
+								jest.spyOn(window, 'confirm').mockReturnValue(true);
 								component.uploadEvent.subscribe(evt => {
 									event = evt;
 									done();
