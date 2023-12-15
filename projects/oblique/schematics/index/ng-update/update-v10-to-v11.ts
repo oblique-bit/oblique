@@ -1,11 +1,15 @@
 import {Rule, SchematicContext, Tree, chain, externalSchematic} from '@angular-devkit/schematics';
 import {ObIMigrations} from './ng-update.model';
 import {
+	addImport,
+	addInjectionInClass,
 	applyInTree,
 	createSafeRule,
 	infoMigration,
+	readFile,
 	removeHtmlTagAttribute,
 	removeImport,
+	removeInjectionInClass,
 	replaceInFile,
 	setAngularProjectsConfig
 } from '../utils';
@@ -20,6 +24,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	applyMigrations(_options: IUpdateV10Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) =>
 			chain([
+				this.replaceObPopUpWithWindowInTests(),
+				this.replaceObPopUpWithWindow(),
 				this.removeInputVariantInNavTree(),
 				this.removeInputActivateAncestorsInNavTree(),
 				this.removeObSearchBox(),
@@ -37,6 +43,50 @@ export class UpdateV10toV11 implements ObIMigrations {
 				this.removeTableCicd(),
 				this.runMDCMigration()
 			])(tree, _context);
+	}
+
+	private replaceObPopUpWithWindowInTests(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Replace ObPopUpService with Window');
+			const apply = (filePath: string): void => {
+				const content = readFile(tree, filePath);
+				if (content.includes('ObPopUpService')) {
+					addImport(tree, filePath, 'WINDOW', '@oblique/oblique');
+					removeImport(tree, filePath, 'ObPopUpService', '@oblique/oblique');
+					removeImport(tree, filePath, 'ObMockPopUpService', '@oblique/oblique');
+					replaceInFile(
+						tree,
+						filePath,
+						/\{\s*provide\s*:\s*ObPopUpService\s*,\s*useClass\s*:\s*Ob(?:Mock)?PopUpService\s*},?/g,
+						'{provide: WINDOW, useValue: window},'
+					);
+					const propertyName =
+						/(?<propertyName>\w+)\s*(?::\s*ObPopUpService)?\s*=\s*TestBed\s*\.\s*inject\(\s*ObPopUpService\s*\)\s*;/.exec(content)?.groups
+							?.propertyName;
+					if (propertyName) {
+						replaceInFile(tree, filePath, new RegExp(`let\\s+${propertyName}\\s*(?::\\s*ObPopUpService\\s*)?;`, 'g'), '');
+						replaceInFile(tree, filePath, new RegExp(`${propertyName}`, 'g'), 'window');
+						replaceInFile(tree, filePath, /[^;]*TestBed\s*.\s*inject\(\s*ObPopUpService\s*\)\s*;/gs, '');
+					}
+				}
+			};
+			return applyInTree(tree, apply, '*.spec.ts');
+		});
+	}
+
+	private replaceObPopUpWithWindow(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Replace ObPopUpService with Window');
+			const apply = (filePath: string): void => {
+				const varName = /(?<varname>\w+)\s*:\s*ObPopUpService/.exec(readFile(tree, filePath))?.groups?.varname;
+				if (varName) {
+					addInjectionInClass(tree, filePath, 'WINDOW', '@oblique/oblique');
+					removeInjectionInClass(tree, filePath, 'ObPopUpService', '@oblique/oblique');
+					replaceInFile(tree, filePath, new RegExp(`${varName}`, 'g'), 'window');
+				}
+			};
+			return applyInTree(tree, apply, '*.ts');
+		});
 	}
 
 	private removeInputVariantInNavTree(): Rule {
