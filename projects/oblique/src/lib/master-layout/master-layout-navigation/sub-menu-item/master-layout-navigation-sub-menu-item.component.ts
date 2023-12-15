@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostBinding, Input, OnChanges, Output, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostBinding, Input, OnChanges, Output, ViewEncapsulation, inject} from '@angular/core';
 import {ObMasterLayoutNavigationItemDirective} from '../master-layout-navigation-item.directive';
 import {IsActiveMatchOptions} from '@angular/router';
 import {ObNavigationLink} from '../navigation-link.model';
@@ -12,6 +12,7 @@ import {ObNavigationLink} from '../navigation-link.model';
 })
 export class ObMasterLayoutNavigationSubMenuItemComponent implements OnChanges {
 	@HostBinding('class.column') @Input() column = false;
+	@HostBinding('class.ob-has-keyboard-focused-child') hasFocusedChild = false;
 	@Input() activeClass = '';
 	@Input() child: ObNavigationLink = new ObNavigationLink();
 	@Input() currentParent: ObNavigationLink = new ObNavigationLink();
@@ -23,6 +24,8 @@ export class ObMasterLayoutNavigationSubMenuItemComponent implements OnChanges {
 	@Input() showChildren = true;
 	@Output() readonly changeCurrentParent: EventEmitter<ObNavigationLink> = new EventEmitter<ObNavigationLink>();
 
+	private readonly el = inject(ElementRef);
+
 	ngOnChanges(): void {
 		this.column =
 			this.doesChildMatchCurrentParent(this.child, this.currentParent) ||
@@ -31,6 +34,11 @@ export class ObMasterLayoutNavigationSubMenuItemComponent implements OnChanges {
 
 	goToChildren(child: ObNavigationLink): void {
 		this.changeCurrentParent.emit(child);
+	}
+
+	toggleFocus(childId: string): void {
+		const focusedEl = this.el.nativeElement.querySelector(`#${childId}`);
+		this.hasFocusedChild = focusedEl.classList.contains('cdk-keyboard-focused');
 	}
 
 	private doAnyDescendantsMatchCurrentParent(child: ObNavigationLink, currentParent: ObNavigationLink): boolean {

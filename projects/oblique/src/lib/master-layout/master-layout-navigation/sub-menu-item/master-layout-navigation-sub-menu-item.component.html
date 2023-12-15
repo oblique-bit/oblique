@@ -9,6 +9,8 @@
 		[rel]="child.sameTarget ? '' : undefined"
 		[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
 		(click)="obMasterLayoutNavigationItem.closeSubMenu()"
+		(focus)="toggleFocus(child.id)"
+		(focusout)="toggleFocus(child.id)"
 	>
 		<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon" /></span>
 		<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
@@ -25,6 +27,8 @@
 			[attr.aria-current]="link.active ? 'page' : undefined"
 			[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
 			(click)="obMasterLayoutNavigationItem.closeSubMenu()"
+			(focus)="toggleFocus(child.id)"
+			(focusout)="toggleFocus(child.id)"
 		>
 			<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon" /></span>
 			<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>

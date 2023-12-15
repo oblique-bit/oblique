@@ -1,10 +1,10 @@
 import {Directive, ElementRef, HostBinding, OnDestroy, OnInit} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
-import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {Subject, merge} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {obOutsideFilter} from '../../global-events/outsideFilter';
+import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
 import {obMasterLayoutNavigationSubMenuFilter} from './masterLayoutNavigationSubMenuFilter';
 
@@ -44,6 +44,8 @@ export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy 
 	openSubMenu(): void {
 		this.isExpanded = true;
 		this.mainMenu.menuOpened();
+		const header: HTMLElement = this.element.nativeElement.closest('.ob-master-layout-header');
+		header.classList.add('ob-has-opened-menu');
 	}
 
 	closeSubMenu(closeMainMenu = true): void {
@@ -52,6 +54,8 @@ export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy 
 		if (closeMainMenu) {
 			this.masterLayout.isMenuOpened = false;
 		}
+		const header: HTMLElement = this.element.nativeElement.closest('.ob-master-layout-header');
+		header.classList.remove('ob-has-opened-menu');
 	}
 
 	private monitorForClickOutside(): void {

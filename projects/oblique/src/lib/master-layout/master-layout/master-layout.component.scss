@@ -45,8 +45,8 @@
 		flex: 1 1 auto;
 	}
 
-	.ob-master-layout-header:has(ul.ob-has-opened-menu) ~ .ob-master-layout-wrapper,
-	.ob-master-layout-wrapper .ob-master-layout-header:has(ul.ob-has-opened-menu) ~ main {
+	.ob-master-layout-header.ob-has-opened-menu ~ .ob-master-layout-wrapper,
+	.ob-master-layout-wrapper .ob-master-layout-header.ob-has-opened-menu ~ main {
 		backdrop-filter: brightness(0.9);
 		filter: brightness(0.9);
 	}

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {
 	AfterViewInit,
 	Component,
@@ -15,7 +16,8 @@ import {
 import {IsActiveMatchOptions, NavigationEnd, Router} from '@angular/router';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
-import {ObMasterLayoutService} from '../master-layout.service';
+import {BehaviorSubject, Observable, Subject, combineLatestWith} from 'rxjs';
+import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
@@ -24,10 +26,9 @@ import {
 	ObIMasterLayoutEvent,
 	ObINavigationLink
 } from '../master-layout.model';
-import {ObNavigationLink} from './navigation-link.model';
-import {BehaviorSubject, Observable, Subject, combineLatestWith} from 'rxjs';
-import {ObGlobalEventsService} from '../../global-events/global-events.service';
+import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
+import {ObNavigationLink} from './navigation-link.model';
 
 @Component({
 	selector: 'ob-master-layout-navigation',
@@ -99,6 +100,17 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+	}
+
+	toggleFocus(prefix: string, linkId: string): void {
+		const focusedEl: HTMLElement = this.el.nativeElement.querySelector(`.ob-master-layout-navigation-link.ob-main-nav-link#${linkId}`);
+		const idOfNavItem = `#${prefix}${linkId}`;
+		const navItem: HTMLElement = this.el.nativeElement.querySelector(idOfNavItem);
+		if (focusedEl.classList.contains('cdk-keyboard-focused')) {
+			navItem.classList.add('ob-has-keyboard-focused-child');
+		} else {
+			navItem.classList.remove('ob-has-keyboard-focused-child');
+		}
 	}
 
 	backUpOrCloseSubMenu(link: ObNavigationLink, obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective): void {

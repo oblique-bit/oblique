@@ -6,10 +6,7 @@
 
 .ob-master-layout-navigation {
 	border-top: variables.$ob-line-width-xs solid variables.$ob-gray-lighter;
-
-	&:not(:has(.ob-has-opened-menu)) {
-		border-bottom: variables.$ob-line-width-xs solid variables.$ob-gray-lighter;
-	}
+	border-bottom: variables.$ob-line-width-xs solid variables.$ob-gray-lighter;
 	flex-grow: 1;
 
 	@include layout.ob-media-breakpoint-down(md) {
@@ -446,23 +443,13 @@
 			}
 		}
 
-		& > li {
-			&:has(
-					> a.ob-master-layout-navigation-link.cdk-keyboard-focused,
-					> button.ob-master-layout-navigation-link.cdk-keyboard-focused
-				) {
-				@include shadow.ob-tab-focus-border();
-			}
+		& > li.ob-has-keyboard-focused-child {
+			@include shadow.ob-tab-focus-border();
 		}
 
 		.ob-sub-nav {
-			.ob-master-layout-navigation-sub-menu-item {
-				&:has(
-						> a.ob-master-layout-navigation-link.cdk-keyboard-focused,
-						> button.ob-master-layout-navigation-link.cdk-keyboard-focused
-					) {
-					@include shadow.ob-tab-focus-border();
-				}
+			.ob-master-layout-navigation-sub-menu-item.ob-has-keyboard-focused-child {
+				@include shadow.ob-tab-focus-border();
 			}
 			@include layout.ob-media-breakpoint-up(md) {
 				background-color: variables.$ob-white;
