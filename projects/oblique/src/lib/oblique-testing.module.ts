@@ -19,7 +19,6 @@ import {ObMockNotificationModule} from './notification/_mocks/mock-notification.
 import {ObMockNumberFormatModule} from './number-format/_mocks/mock-number-format.module';
 import {ObMockHttpApiInterceptorModule} from './http-api-interceptor/_mocks/mock-http-api-interceptor.module';
 import {ObMockOffCanvasModule} from './off-canvas/_mocks/mock-off-canvas.module';
-import {ObMockPopUpModule} from './pop-up/_mocks/mock-pop-up.module';
 import {ObMockPopoverModule} from './popover/_mocks/mock-popover.module';
 import {ObMockSchemaValidationModule} from './schema-validation/_mocks/mock-schema-validation.module';
 import {ObMockObSelectableModule} from './selectable/_mocks/mock-selectable.module';
@@ -90,7 +89,6 @@ export {
 	ObMockNotificationConfig
 } from './notification/_mocks/mock-notification.module';
 export {ObMockNumberFormatModule, ObMockNumberFormatDirective} from './number-format/_mocks/mock-number-format.module';
-export {ObMockPopUpModule, ObMockPopUpService} from './pop-up/_mocks/mock-pop-up.module';
 export {ObMockPopoverDirective, ObMockPopoverModule} from './popover/_mocks/mock-popover.module';
 export {
 	ObMockHttpApiInterceptorModule,
@@ -152,7 +150,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockNotificationModule,
 	ObMockNumberFormatModule,
 	ObMockOffCanvasModule,
-	ObMockPopUpModule,
 	ObMockPopoverModule,
 	ObMockSchemaValidationModule,
 	ObMockScrollingModule,

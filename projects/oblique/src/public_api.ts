@@ -144,7 +144,6 @@ export {ObIBanner, ObIMaterialConfig} from './lib/utilities.model';
 export {ObEColor} from './lib/style/colors.model';
 export {ObMultiTranslateLoader, TRANSLATION_FILES} from './lib/multi-translate-loader/multi-translate-loader';
 export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';
-export {ObPopUpService} from './lib/pop-up/pop-up.service';
 export {ObGlobalEventsService} from './lib/global-events/global-events.service';
 export {obOutsideFilter} from './lib/global-events/outsideFilter';
 export {ObliqueModule} from './lib/oblique.module';
