@@ -1,5 +1,5 @@
 <div [formGroup]="untypedForm">
-	<mat-form-field>
+	<mat-form-field class="untyped-reactive-input">
 		<mat-label>Untyped reactive input</mat-label>
 		<input type="text" matInput formControlName="untypedFormField" />
 		<button type="button" role="button" [obInputClear]="untypedFormField">
@@ -9,7 +9,7 @@
 	</mat-form-field>
 </div>
 <div [formGroup]="stronglyTypedForm">
-	<mat-form-field>
+	<mat-form-field class="strongly-typed-reactive-input">
 		<mat-label>Strongly typed reactive input</mat-label>
 		<input type="text" matInput formControlName="stronglyTypedFormField" />
 		<button type="button" role="button" [obInputClear]="stronglyTypedFormField">
