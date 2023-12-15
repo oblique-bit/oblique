@@ -113,7 +113,6 @@ export class AppComponent implements OnDestroy {
 				{url: 'nested-form', label: 'Nested froms'},
 				{url: 'notification', label: 'i18n.routes.samples.notification.title'},
 				{url: 'number-format', label: 'i18n.routes.samples.number-format.title'},
-				{url: 'pop-up', label: 'Pop-up'},
 				{url: 'popover', label: 'Popover'},
 				{url: 'schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
 				{url: 'selectable', label: 'Selectable'},
