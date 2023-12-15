@@ -4,7 +4,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import {AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {MatInput} from '@angular/material/input';
 import {MatDialog} from '@angular/material/dialog';
-import {ObPopUpService} from '@oblique/oblique';
 import {Observable, ReplaySubject, Subject, combineLatest, share} from 'rxjs';
 import {delay, filter, map, startWith, takeUntil, tap} from 'rxjs/operators';
 import {ObIPeriodicElement} from './table.model';
@@ -54,10 +53,9 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	constructor(
 		private readonly formBuilder: UntypedFormBuilder,
-		popup: ObPopUpService,
 		dialog: MatDialog
 	) {
-		this.tableManager = new TableManager<ObIPeriodicElement>(this.ELEMENT_DATA, popup, dialog);
+		this.tableManager = new TableManager<ObIPeriodicElement>(this.ELEMENT_DATA, dialog);
 	}
 
 	ngOnInit(): void {
