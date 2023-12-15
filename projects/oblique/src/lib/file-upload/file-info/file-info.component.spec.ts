@@ -6,10 +6,9 @@ import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, of, throwError} from 'rxjs';
+import {WINDOW} from '../../utilities';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
-import {ObMockPopUpService} from '../../pop-up/_mocks/mock-pop-up.service';
-import {ObPopUpService} from '../../pop-up/pop-up.service';
 import {ObEUploadEventType, ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
 import {ObFileUploadService} from '../file-upload.service';
 import {ObFileInfoComponent} from './file-info.component';
@@ -18,7 +17,7 @@ describe('ObFileInfoComponent', () => {
 	let component: ObFileInfoComponent;
 	let fixture: ComponentFixture<ObFileInfoComponent>;
 	let uploadService: ObFileUploadService;
-	let popupService: ObPopUpService;
+
 	const uploadComplete = new Subject<void>();
 	const files = [{name: 'file.txt'}, {name: 'file.jpg'}, {name: 'file.pdf'}];
 
@@ -33,12 +32,11 @@ describe('ObFileInfoComponent', () => {
 			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 			providers: [
 				{provide: ObFileUploadService, useValue: mockFileUpload},
-				{provide: ObPopUpService, useClass: ObMockPopUpService},
+				{provide: WINDOW, useValue: window},
 				{provide: TranslateService, useClass: ObMockTranslateService}
 			]
 		}).compileComponents();
 		uploadService = TestBed.inject(ObFileUploadService);
-		popupService = TestBed.inject(ObPopUpService);
 	});
 
 	beforeEach(() => {
@@ -265,14 +263,14 @@ describe('ObFileInfoComponent', () => {
 		describe('delete', () => {
 			it('should ask for confirmation', () => {
 				component.deleteUrl = 'url';
-				jest.spyOn(popupService, 'confirm');
+				jest.spyOn(window, 'confirm');
 				component.delete([files[0]]);
-				expect(popupService.confirm).toHaveBeenCalled();
+				expect(window.confirm).toHaveBeenCalled();
 			});
 
 			it('should do nothing if not confirmed', () => {
 				component.deleteUrl = 'url';
-				jest.spyOn(popupService, 'confirm').mockReturnValue(false);
+				jest.spyOn(window, 'confirm').mockReturnValue(false);
 				jest.spyOn(uploadService, 'delete');
 				component.delete([files[0]]);
 				expect(uploadService.delete).not.toHaveBeenCalled();
@@ -280,7 +278,7 @@ describe('ObFileInfoComponent', () => {
 
 			it('should do nothing if confirmed without deleteUrl', () => {
 				component.deleteUrl = undefined;
-				jest.spyOn(popupService, 'confirm').mockReturnValue(true);
+				jest.spyOn(window, 'confirm').mockReturnValue(true);
 				jest.spyOn(uploadService, 'delete').mockReturnValue(of());
 				component.delete([files[0]]);
 				expect(uploadService.delete).not.toHaveBeenCalled();
@@ -289,7 +287,7 @@ describe('ObFileInfoComponent', () => {
 			describe('with confirmed and deleteUrl', () => {
 				beforeEach(() => {
 					component.deleteUrl = 'url';
-					jest.spyOn(popupService, 'confirm').mockReturnValue(true);
+					jest.spyOn(window, 'confirm').mockReturnValue(true);
 					jest.spyOn(uploadService, 'delete').mockReturnValue(of({}));
 					component.selection.select(files[0]);
 					component.selection.select(files[1]);
@@ -320,7 +318,7 @@ describe('ObFileInfoComponent', () => {
 
 				beforeEach(done => {
 					component.deleteUrl = 'url';
-					jest.spyOn(popupService, 'confirm').mockReturnValue(true);
+					jest.spyOn(window, 'confirm').mockReturnValue(true);
 					jest.spyOn(uploadService, 'delete').mockReturnValue(throwError(() => errorMessage));
 					component.uploadEvent.subscribe(evt => {
 						event = evt;
