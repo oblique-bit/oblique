@@ -1,10 +1,10 @@
 <h2 *ngIf="title" [class.has-code-in-title]="hasCodeInTitle" [innerHTML]="title"></h2>
-<app-tabs [id]="idPrefix | id : [componentId, 'tabs']" [idPrefix]="idPrefix | id : [componentId]">
-	<app-tab *ngIf="preview" name="Preview" [id]="idPrefix | id : [componentId, 'preview', 'tab']" [initiallyActive]="true">
-		<ng-template appCodeExample></ng-template>
+<app-tabs [id]="idPrefix | id: [componentId, 'tabs']" [idPrefix]="idPrefix | id: [componentId]">
+	<app-tab *ngIf="preview" name="Preview" [id]="idPrefix | id: [componentId, 'preview', 'tab']" [initiallyActive]="true">
+		<ng-template appCodeExample />
 	</app-tab>
 
-	<app-tab *ngFor="let codeSnippet of codeSnippets" [name]="codeSnippet.name" [id]="idPrefix | id : [componentId, codeSnippet.name, 'tab']">
-		<app-highlighted-code [idPrefix]="idPrefix | id : [componentId]" [codeBlock]="codeSnippet.sourceCode" />
+	<app-tab *ngFor="let codeSnippet of codeSnippets" [name]="codeSnippet.name" [id]="idPrefix | id: [componentId, codeSnippet.name, 'tab']">
+		<app-highlighted-code [idPrefix]="idPrefix | id: [componentId]" [codeBlock]="codeSnippet.sourceCode" />
 	</app-tab>
 </app-tabs>

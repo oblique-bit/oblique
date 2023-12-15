@@ -1,6 +1,6 @@
 <section>
 	<header class="ob-popover-header">
-		<ng-content select="[obHeaderPrefix]"></ng-content>
+		<ng-content select="[obHeaderPrefix]" />
 		{{ header | translate }}
 	</header>
 	<p *ngIf="text">{{ text | translate }}</p>
@@ -10,12 +10,12 @@
 				class="ob-popover-link"
 				[href]="link.url | translate"
 				[isExternalLink]="!link.isInternalLink"
-				[attr.aria-label]="link.ariaLabel?.text | translate : link.ariaLabel?.parameters"
+				[attr.aria-label]="link.ariaLabel?.text | translate: link.ariaLabel?.parameters"
 			>
 				<mat-icon *ngIf="link.icon" [svgIcon]="link.icon" class="ob-icon-text" />
 				{{ link.label | translate }}</a
 			>
 		</li>
 	</ul>
-	<ng-content select="[obContent]"></ng-content>
+	<ng-content select="[obContent]" />
 </section>

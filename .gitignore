@@ -53,3 +53,6 @@ testem.log
 Thumbs.db
 /nvm.env
 /before.env
+
+#nx
+.nx/cache/*

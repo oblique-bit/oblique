@@ -31,13 +31,13 @@ const versions: Record<string, string | versionFunc> = {
 	jest: '^29.0.0',
 	'@types/jest': '^29.0.0',
 	'@angular-builders/jest': version => `^${version}.0.0`,
-	'jest-sonar-reporter': '2.0.0',
+	'jest-sonar-reporter': '^2.0.0',
 	'eslint-config-prettier': '^8.0.0',
 	'eslint-plugin-prettier': '^4.0.0',
-	prettier: '^2.0.0',
+	prettier: '^3.0.0',
 	husky: '^8.0.0',
 	'angular-oauth2-oidc': version => `^${version > 15 ? 15 : version}.0.0`,
-	'jwt-decode': '^3.0.0'
+	'jwt-decode': '^4.0.0'
 };
 
 export function getPreconditionVersion(tree: Tree, pkg: string): string {

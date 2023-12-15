@@ -29,7 +29,8 @@
 	background-color: variables.$ob-warning-light;
 	opacity: 0;
 	transform: translateY(-100%);
-	transition: transform variables.$ob-duration-default cubic-bezier(0.7, 0, 0.3, 1),
+	transition:
+		transform variables.$ob-duration-default cubic-bezier(0.7, 0, 0.3, 1),
 		opacity variables.$ob-duration-default ease-in-out;
 	@include shadow.ob-drop-shadow();
 

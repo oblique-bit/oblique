@@ -11,12 +11,12 @@
 		<span class="ob-screen-reader-only">{{ "i18n.oblique.column.left.toggle" | translate }}</span>
 	</button>
 	<div class="ob-column-content" cdkScrollable>
-		<ng-content select="[column-left-content]"></ng-content>
+		<ng-content select="[column-left-content]" />
 	</div>
 </div>
 <div class="ob-column-main">
 	<div class="ob-column-content" cdkScrollable>
-		<ng-content select="[column-main-content]"></ng-content>
+		<ng-content select="[column-main-content]" />
 	</div>
 </div>
 <div
@@ -32,6 +32,6 @@
 		<span class="ob-screen-reader-only">{{ "i18n.oblique.column.right.toggle" | translate }}</span>
 	</button>
 	<div class="ob-column-content" cdkScrollable>
-		<ng-content select="[column-right-content]"></ng-content>
+		<ng-content select="[column-right-content]" />
 	</div>
 </div>

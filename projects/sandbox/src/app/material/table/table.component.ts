@@ -52,7 +52,11 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
 	];
 
-	constructor(private readonly formBuilder: UntypedFormBuilder, popup: ObPopUpService, dialog: MatDialog) {
+	constructor(
+		private readonly formBuilder: UntypedFormBuilder,
+		popup: ObPopUpService,
+		dialog: MatDialog
+	) {
 		this.tableManager = new TableManager<ObIPeriodicElement>(this.ELEMENT_DATA, popup, dialog);
 	}
 

@@ -13,7 +13,10 @@ import {Subject} from 'rxjs';
 export class ObOffCanvasBackdropDirective implements OnInit, OnDestroy {
 	private readonly unsubscribe = new Subject<void>();
 
-	constructor(private readonly offCanvas: ObOffCanvasService, private readonly globalEventsService: ObGlobalEventsService) {}
+	constructor(
+		private readonly offCanvas: ObOffCanvasService,
+		private readonly globalEventsService: ObGlobalEventsService
+	) {}
 
 	@HostListener('click')
 	close(): void {

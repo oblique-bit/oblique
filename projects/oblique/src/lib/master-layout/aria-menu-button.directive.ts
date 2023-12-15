@@ -13,7 +13,10 @@ export class ObAriaMenuButtonDirective implements OnInit {
 	@HostBinding('attr.aria-expanded') active = undefined;
 	@HostBinding('attr.aria-haspopup') popup = true;
 
-	constructor(private readonly globalEvents: ObGlobalEventsService, private readonly element: ElementRef) {}
+	constructor(
+		private readonly globalEvents: ObGlobalEventsService,
+		private readonly element: ElementRef
+	) {}
 
 	ngOnInit(): void {
 		this.monitorForClickOutside();

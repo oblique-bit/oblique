@@ -11,7 +11,10 @@ import {ObSelectPanelClassHelper} from '../form-field/select-panel-class-helper'
 export class ObPaginatorDirective implements AfterContentInit {
 	private readonly host: HTMLAnchorElement;
 
-	constructor(elRef: ElementRef, private readonly paginator: MatPaginator) {
+	constructor(
+		elRef: ElementRef,
+		private readonly paginator: MatPaginator
+	) {
 		this.host = elRef.nativeElement;
 	}
 

@@ -35,7 +35,7 @@
 		header="i18n.oblique.service-navigation.applications.last-used.header"
 	>
 		<ul class="ob-applications" obContent>
-			<li *ngFor="let application of lastUsedApplications | obLimitArraySize : maxLastUsedApplications">
+			<li *ngFor="let application of lastUsedApplications | obLimitArraySize: maxLastUsedApplications">
 				<a class="ob-application" [href]="application.url" [obDisableLink]="application.status !== 'online'" [isExternalLink]="false">
 					<img
 						*ngIf="application.status !== 'online'"
@@ -48,7 +48,7 @@
 						class="ob-application-image"
 						[src]="application.image | obSafeImage"
 						[class.ob-offline]="application.status !== 'online'"
-						[alt]="application.status | ObServiceNavigationApplicationAlt | translate : { name: application.name }"
+						[alt]="application.status | ObServiceNavigationApplicationAlt | translate: { name: application.name }"
 					/>
 					<span class="ob-application-title">{{ application.name }}</span>
 				</a>
@@ -60,7 +60,7 @@
 		header="i18n.oblique.service-navigation.applications.favorite.header"
 	>
 		<ul class="ob-applications" obContent>
-			<li *ngFor="let application of favoriteApplications | obLimitArraySize : maxFavoriteApplications">
+			<li *ngFor="let application of favoriteApplications | obLimitArraySize: maxFavoriteApplications">
 				<a class="ob-application" [href]="application.url" [obDisableLink]="application.status !== 'online'" [isExternalLink]="false">
 					<img
 						*ngIf="application.status !== 'online'"
@@ -73,7 +73,7 @@
 						class="ob-application-image"
 						[src]="application.image | obSafeImage"
 						[class.ob-offline]="application.status !== 'online'"
-						[alt]="application.status | ObServiceNavigationApplicationAlt | translate : { name: application.name }"
+						[alt]="application.status | ObServiceNavigationApplicationAlt | translate: { name: application.name }"
 					/>
 					<span class="ob-application-title">{{ application.name }}</span>
 				</a>

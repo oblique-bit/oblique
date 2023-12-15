@@ -7,7 +7,7 @@ export class Lint {
 		Lint.execute(`eslint "{projects,scripts,tests}/**/*.{ts,js,html}" --cache ${lintParam}`);
 		Lint.execute(`stylelint "projects/**/*.{css,scss}" --cache ${lintParam} --allow-empty-input`);
 		Lint.execute(
-			`prettier "{projects,scripts,tests}/**/*.{ts,js,html,json,yml,md,css,scss}" "*.{ts,js,html,json,yml,md,css,scss}" --loglevel warn ${prettierParam}`
+			`prettier "{projects,scripts,tests}/**/*.{ts,js,html,json,yml,md,css,scss}" "*.{ts,js,html,json,yml,md,css,scss}" --log-level warn ${prettierParam}`
 		);
 	}
 

@@ -36,7 +36,11 @@ export class TableManager<T> {
 	private readonly EDIT_MODE_NAME = 'editMode';
 	private mode = Mode.DIALOG;
 
-	constructor(data: (T & Data)[], private readonly popup: ObPopUpService, private readonly dialog: MatDialog) {
+	constructor(
+		data: (T & Data)[],
+		private readonly popup: ObPopUpService,
+		private readonly dialog: MatDialog
+	) {
 		this.originalData = data.map(item => ({...item, isSelected: false, editMode: EditMode.NONE}));
 		this.dataSource.data = [...this.originalData];
 

@@ -1,15 +1,15 @@
-<div class="tabs-container" [id]="idPrefix | id : [componentId, 'container']">
+<div class="tabs-container" [id]="idPrefix | id: [componentId, 'container']">
 	<button
 		*ngFor="let tab of tabs; let i = index"
 		type="button"
 		[class.active]="tab.active"
 		[hidden]="tab.hidden"
-		[id]="idPrefix | id : [componentId, 'button', i]"
+		[id]="idPrefix | id: [componentId, 'button', i]"
 		(click)="selectTab(tab)"
 	>
 		{{ tab.name }}
 	</button>
 </div>
-<div class="tabs-content-container" [id]="idPrefix | id : [componentId, 'content-container']">
-	<ng-content></ng-content>
+<div class="tabs-content-container" [id]="idPrefix | id: [componentId, 'content-container']">
+	<ng-content />
 </div>

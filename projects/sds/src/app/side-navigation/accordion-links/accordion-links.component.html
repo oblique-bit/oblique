@@ -1,13 +1,13 @@
 <ng-container *ngFor="let accordion of accordions; let i = index">
-	<div class="button-container" [id]="idPrefix | id : [componentId, 'button-container', i]">
+	<div class="button-container" [id]="idPrefix | id: [componentId, 'button-container', i]">
 		<button
 			type="button"
 			class="button"
-			[id]="idPrefix | id : [componentId, 'button', i]"
+			[id]="idPrefix | id: [componentId, 'button', i]"
 			(click)="updateCollapsedAccordionIds(accordion.id)"
 		>
 			<span
-				[id]="idPrefix | id : [componentId, 'triangle', i]"
+				[id]="idPrefix | id: [componentId, 'triangle', i]"
 				[ngClass]="'triangle-pointing-' + ((collapsedAccordionsRecord$ | async)![accordion.id] ? 'right' : 'down')"
 			></span>
 			{{ accordion.title }}
@@ -18,7 +18,7 @@
 			*ngIf="!(collapsedAccordionsRecord$ | async)[accordion.id]"
 			class="link"
 			[attr.data-selected]="link.slug === selectedSlug ? true : null"
-			[id]="idPrefix | id : [componentId, 'link', i, j]"
+			[id]="idPrefix | id: [componentId, 'link', i, j]"
 			[routerLink]="['/' + accordion.title, link.slug]"
 		>
 			{{ link.title }}

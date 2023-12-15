@@ -19,7 +19,10 @@ export class MasterLayoutSampleComponent {
 	private readonly infoContact = {...this.masterLayout.header.serviceNavigationConfiguration.infoContact};
 	private readonly profileLinks = [...this.masterLayout.header.serviceNavigationConfiguration.profileLinks];
 
-	constructor(private readonly masterLayout: ObMasterLayoutService, private readonly dynamicNavigationService: DynamicNavigationService) {
+	constructor(
+		private readonly masterLayout: ObMasterLayoutService,
+		private readonly dynamicNavigationService: DynamicNavigationService
+	) {
 		this.coverLayout = this.masterLayout.layout.hasCover;
 		this.loginState$ = this.masterLayout.header.loginState$;
 		this.logoutUrl$ = this.masterLayout.header.logoutUrl$;

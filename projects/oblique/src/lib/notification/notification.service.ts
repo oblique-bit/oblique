@@ -19,7 +19,10 @@ export class ObNotificationService {
 	private readonly eventSubject: Subject<ObINotification> = new Subject<ObINotification>();
 	private readonly events$ = this.eventSubject.asObservable();
 
-	constructor(public config: ObNotificationConfig, router: Router) {
+	constructor(
+		public config: ObNotificationConfig,
+		router: Router
+	) {
 		router.events.pipe(filter(evt => evt instanceof NavigationEnd && this.clearAllOnNavigate)).subscribe(() => this.clearAll());
 	}
 

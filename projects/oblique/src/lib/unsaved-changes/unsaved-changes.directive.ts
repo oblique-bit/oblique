@@ -12,7 +12,10 @@ export class ObUnsavedChangesDirective implements OnChanges, OnInit, OnDestroy {
 	@Input() id: string;
 	@Input() isActive = true;
 
-	constructor(private readonly unsavedChangesService: ObUnsavedChangesService, private readonly form: ControlContainer) {}
+	constructor(
+		private readonly unsavedChangesService: ObUnsavedChangesService,
+		private readonly form: ControlContainer
+	) {}
 
 	ngOnChanges(): void {
 		if (this.id) {
