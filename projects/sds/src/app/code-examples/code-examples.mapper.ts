@@ -3,6 +3,7 @@ import {AlertCodeExamplesComponent} from './code-examples/alert/alert-code-examp
 import {AutocompleteCodeExamplesComponent} from './code-examples/autocomplete/autocomplete-code-examples.component';
 import {BadgeCodeExamplesComponent} from './code-examples/badge/badge-code-examples.component';
 import {BannerCodeExamplesComponent} from './code-examples/banner/banner-code-examples.component';
+import {BreadcrumbCodeExamplesComponent} from './code-examples/breadcrumb/breadcrumb-code-examples.component';
 import {ButtonCodeExamplesComponent} from './code-examples/button/button-code-examples.component';
 import {CardCodeExamplesComponent} from './code-examples/card/card-code-examples.component';
 import {ChipsCodeExamplesComponent} from './code-examples/chips/chips-code-examples.component';
@@ -43,6 +44,7 @@ import {TypographyCodeExamplesComponent} from './code-examples/typography/typogr
 import {UnknownRouteCodeExamplesComponent} from './code-examples/unknown-route/unknown-route-code-examples.component';
 import {UnsavedChangesCodeExamplesComponent} from './code-examples/unsaved-changes/unsaved-changes-code-examples.component';
 import {ShadowCodeExamplesComponent} from './code-examples/shadow/shadow-code-examples.component';
+
 /* These imports are sorted alphabetically to reduce merge conflicts.
    If you add a new import above, please make sure it is sorted
    correctly as well to do your part in preventing merge conflicts. */
@@ -53,6 +55,7 @@ export class CodeExamplesMapper {
 		autocomplete: AutocompleteCodeExamplesComponent,
 		badge: BadgeCodeExamplesComponent,
 		banner: BannerCodeExamplesComponent,
+		breadcrumb: BreadcrumbCodeExamplesComponent,
 		button: ButtonCodeExamplesComponent,
 		card: CardCodeExamplesComponent,
 		chips: ChipsCodeExamplesComponent,
