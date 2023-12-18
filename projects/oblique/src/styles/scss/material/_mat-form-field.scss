@@ -398,11 +398,6 @@
 	.mat-mdc-form-field-error-wrapper {
 		margin-top: 1px;
 
-		&:hover,
-		&:focus-within {
-			@include mat-form-field.hint-error-backdrop-filter();
-		}
-
 		@at-root #{selector.append(".mat-form-field-sm", &)},
 			.ob-form-sm & {
 			margin-top: 2px;
@@ -424,18 +419,13 @@
 			z-index: 1;
 		}
 
-		.mat-mdc-form-field-hint-wrapper,
-		.mat-mdc-form-field-error-wrapper {
-			@include mat-form-field.hint-error-backdrop-filter();
-		}
-
 		.mat-mdc-form-field-error,
 		.mat-mdc-form-field-hint {
 			height: auto;
 			white-space: normal;
 			position: relative;
 			overflow: visible;
-			margin-top: 4px;
+			margin-top: 5px; // empiric value
 
 			&::before {
 				content: "";
@@ -445,6 +435,7 @@
 				background-color: core-variables.$ob-white;
 				opacity: 0.75;
 				z-index: -1;
+				height: unset;
 
 				.ob-table:not(.ob-table-plain) tbody tr:nth-child(odd) & {
 					background-color: core-variables.$ob-gray-extra-light;
