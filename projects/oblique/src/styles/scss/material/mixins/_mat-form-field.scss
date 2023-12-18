@@ -66,10 +66,6 @@ $ob-standard-max-height: 40px;
 	max-height: calc($ob-standard-max-height + 1em);
 }
 
-@mixin hint-error-backdrop-filter() {
-	backdrop-filter: blur(8px) saturate(200%);
-}
-
 @mixin margin($margin) {
 	&:not(:first-of-type) {
 		.mat-mdc-text-field-wrapper {

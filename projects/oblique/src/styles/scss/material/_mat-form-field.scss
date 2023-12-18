@@ -398,11 +398,6 @@
 	.mat-mdc-form-field-error-wrapper {
 		margin-top: 1px;
 
-		&:hover,
-		&:focus-within {
-			@include mat-form-field.hint-error-backdrop-filter();
-		}
-
 		@at-root #{selector.append(".mat-form-field-sm", &)},
 			.ob-form-sm & {
 			margin-top: 2px;
@@ -422,11 +417,6 @@
 		.mat-mdc-form-field-subscript-wrapper {
 			overflow: visible;
 			z-index: 1;
-		}
-
-		.mat-mdc-form-field-hint-wrapper,
-		.mat-mdc-form-field-error-wrapper {
-			@include mat-form-field.hint-error-backdrop-filter();
 		}
 
 		.mat-mdc-form-field-error,
