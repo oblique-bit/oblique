@@ -32,10 +32,6 @@ export class ObProgressComponent implements OnDestroy {
 	private readonly translate = inject(TranslateService);
 	private readonly window = inject(WINDOW);
 
-	constructor() {
-		this.window = window;
-	}
-
 	@Input() set files(files: File[]) {
 		// let some time for the other inputs to be processed
 		this.window.setTimeout(() => this.uploadFiles(files));
