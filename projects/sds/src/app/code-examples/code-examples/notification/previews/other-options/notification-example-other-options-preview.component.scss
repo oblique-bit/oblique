@@ -1,13 +1,17 @@
 @use "@oblique/oblique/src/styles/scss/core/variables";
 
-/* the parent element of ob-notification has to have position: relative; for the notification to be display inside */
+/*
+	In the rare occurences where this component is used outside of the master-layout component,
+	then it is necessary to give to the parent element of ob-notification a position: relative;
+	in order to have the notification displayed within this parent component.
+*/
 .channel {
 	position: relative;
 }
 
 /*
-	Below is styling code for the other options code example demo.
-	It is NOT needed in order to use the component.
+	The rest of this file is used to enhance the appearance of one or more of the Oblique code examples.
+	It is NOT required in order to use any Oblique features.
 */
 div.channel {
 	width: 100%;

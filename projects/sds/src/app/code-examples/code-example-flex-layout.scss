@@ -1,10 +1,10 @@
+/*
+    This file is used to enhance the appearance of one or more of the Oblique code examples.
+    It is NOT required in order to use any Oblique features.
+*/
 @use "sass:map";
 @use "../../styles/scss/core/variables";
 
-/*
-	 This file can be used to add a flex layout to the host component.
-	Its content is NOT needed in order to use the component demonstrated.
-*/
 :host {
 	display: flex;
 	flex-wrap: wrap;

@@ -1,10 +1,10 @@
+/*
+	This file is used to enhance the appearance of one or more of the Oblique code examples.
+	It is NOT required in order to use any Oblique features.
+*/
+
 @use "sass:map";
 @use "../../../../../../styles/scss/core/variables";
-
-/*
-	Below is styling code that is used to style the layout of the page
-	It is NOT needed in order to use the component
-*/
 
 :host {
 	display: flex;
