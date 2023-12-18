@@ -425,7 +425,7 @@
 			white-space: normal;
 			position: relative;
 			overflow: visible;
-			margin-top: 4px;
+			margin-top: 5px; // empiric value
 
 			&::before {
 				content: "";
@@ -435,6 +435,7 @@
 				background-color: core-variables.$ob-white;
 				opacity: 0.75;
 				z-index: -1;
+				height: unset;
 
 				.ob-table:not(.ob-table-plain) tbody tr:nth-child(odd) & {
 					background-color: core-variables.$ob-gray-extra-light;
