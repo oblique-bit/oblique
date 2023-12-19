@@ -21,7 +21,7 @@ describe('ObServiceNavigationService', () => {
 		pollingNotificationsInterval: 30,
 		login: {
 			url: 'http://login',
-			params: '?returnURL=<yourReturnlURL>&language=<yourLanguageID>',
+			params: '?returnURL=<yourReturnURL>&language=<yourLanguageID>',
 			method: ''
 		},
 		logout: {url: 'http://logout'},

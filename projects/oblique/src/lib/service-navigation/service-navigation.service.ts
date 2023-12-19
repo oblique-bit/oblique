@@ -68,7 +68,7 @@ export class ObServiceNavigationService {
 			map(config => config.login),
 			map(loginData => loginData.url + loginData.params),
 			combineLatestWith(this.returnUrl$),
-			map(([loginUrl, returnUrl]) => loginUrl.replace('<yourReturnlURL>', returnUrl)),
+			map(([loginUrl, returnUrl]) => loginUrl.replace('<yourReturnURL>', returnUrl)),
 			this.combineWithLanguage<string>(),
 			map(([url, lang]) => url.replace('<yourLanguageID>', lang))
 		);
