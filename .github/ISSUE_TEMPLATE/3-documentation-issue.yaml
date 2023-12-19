@@ -1,0 +1,54 @@
+name: Documentation Issue
+description: Propose a change for our documentation
+
+body:
+  - type: input
+    id: ob-version
+    attributes:
+      label: Oblique version
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      render: true
+      label: Description
+      placeholder: Describe the problem you are facing with the documentation
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      placeholder: Provide the page or section that needs our attention
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-situation
+    attributes:
+      render: true
+      label: Current content
+      placeholder: If necessary please provide the current content of the documentation
+    validations:
+      required: false
+  
+  - type: textarea
+    id: additional-context
+    attributes:
+      render: true
+      label: Context
+      placeholder: Add additional context if needed
+    validations:
+      required: false
+
+  - type: textarea
+    id: solution
+    attributes:
+      render: true
+      label: Proposed solution
+      placeholder: Share your idea on how this could be implemented
+    validations:
+      required: false
