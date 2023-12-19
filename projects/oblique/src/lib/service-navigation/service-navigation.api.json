@@ -78,6 +78,13 @@
           "text": "URL to which users will be redirected after successful authentication."
         },
         {
+          "name": "pamsAppId",
+          "text": "The app id in which the service-navigation is used. It allows PAMS to know which login level is required.",
+          "type": "string",
+          "isOptional": true,
+          "since": "10.3.1"
+        },
+        {
           "name": "displayMessage",
           "type": "boolean",
           "default": "false",

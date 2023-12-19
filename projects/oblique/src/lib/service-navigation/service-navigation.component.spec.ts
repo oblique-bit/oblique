@@ -52,6 +52,7 @@ describe('ObServiceNavigationComponent', () => {
 		getLanguage$: jest.fn().mockReturnValue(of('en')),
 		getLanguages: jest.fn().mockReturnValue([{code: 'en', label: 'English'}]),
 		setLanguage: jest.fn(),
+		setPamsAppId: jest.fn(),
 		logout: jest.fn(),
 		getLogoutTrigger$: jest.fn(),
 		setHandleLogout: jest.fn()
@@ -195,6 +196,15 @@ describe('ObServiceNavigationComponent', () => {
 				const expectedResult = false;
 				component.handleLogout = expectedResult;
 				expect(mockServiceNavigationService.setHandleLogout).toBeCalledWith(expectedResult);
+			});
+		});
+
+		describe('setPamsAppId setter', () => {
+			it('should set the value correctly ', () => {
+				const expectedResult = 'randomAppId';
+				component.pamsAppId = expectedResult;
+				component.ngOnInit();
+				expect(mockServiceNavigationService.setPamsAppId).toBeCalledWith(expectedResult);
 			});
 		});
 

@@ -37,6 +37,7 @@ export class ObServiceNavigationComponent implements OnInit {
 	set returnUrl(newReturnUrl) {
 		this.headerControlsService.setReturnUrl(newReturnUrl);
 	}
+	@Input() pamsAppId: string | undefined = undefined;
 	@Input() displayMessage = false;
 	@Input() displayInfo = false;
 	@Input() displayApplications = false;
@@ -69,6 +70,7 @@ export class ObServiceNavigationComponent implements OnInit {
 	ngOnInit(): void {
 		this.headerControlsService.setUpRootUrls(this.environment, this.rootUrl);
 		this.headerControlsService.setHandleLogout(this.handleLogout);
+		this.headerControlsService.setPamsAppId(this.pamsAppId);
 	}
 
 	changeLanguage(language: string): void {

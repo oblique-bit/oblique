@@ -21,6 +21,7 @@ export class ObServiceNavigationService {
 	private readonly rootUrl$ = new ReplaySubject<string>(1);
 	private readonly avatarRootUrl$ = new ReplaySubject<string>(1);
 	private readonly returnUrl$ = new ReplaySubject<string>(1);
+	private readonly pamsAppId$ = new ReplaySubject<string>(1);
 	private readonly config$ = this.rootUrl$.pipe(
 		switchMap(rootUrl =>
 			this.configService.fetchUrls(rootUrl).pipe(
@@ -55,6 +56,10 @@ export class ObServiceNavigationService {
 		this.returnUrl$.next(returnUrl);
 	}
 
+	setPamsAppId(appId: string): void {
+		this.pamsAppId$.next(appId);
+	}
+
 	setHandleLogout(handleLogout = true): void {
 		this.redirectorService.handleLogout = handleLogout;
 	}
@@ -70,7 +75,12 @@ export class ObServiceNavigationService {
 			combineLatestWith(this.returnUrl$),
 			map(([loginUrl, returnUrl]) => loginUrl.replace('<yourReturnURL>', returnUrl)),
 			this.combineWithLanguage<string>(),
-			map(([url, lang]) => url.replace('<yourLanguageID>', lang))
+			map(([url, lang]) => url.replace('<yourLanguageID>', lang)),
+			combineLatestWith(this.pamsAppId$),
+			tap(([, pamsAppId]) => {
+				if (!pamsAppId) console.warn("Service-navigation requires an appId. Otherwise some stepup logins won't work");
+			}),
+			map(([url, pamsAppId]) => (pamsAppId ? `${url}&appid=${pamsAppId}` : url))
 		);
 	}
 
