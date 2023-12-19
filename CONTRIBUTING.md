@@ -139,7 +139,6 @@ If specified, the scope must be one of:
 - **off-canvas**
 - **paginator**
 - **popover**
-- **pop-up**
 - **schema-validation**
 - **scrolling**
 - **selectable**

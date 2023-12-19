@@ -1,6 +1,6 @@
 import {SelectionModel} from '@angular/cdk/collections';
 import {NgFor, NgIf} from '@angular/common';
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewEncapsulation, inject} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
@@ -10,9 +10,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {Subject, merge} from 'rxjs';
 import {map, takeUntil, tap} from 'rxjs/operators';
+import {WINDOW} from '../../utilities';
 import {ObAlertComponent} from '../../alert/alert.component';
 import {ObButtonDirective} from '../../button/button.directive';
-import {ObPopUpService} from '../../pop-up/pop-up.service';
 import {ObEUploadEventType, ObIFileDescription, ObIUploadEvent, ObTSelectionStatus} from '../file-upload.model';
 import {ObFileUploadService} from '../file-upload.service';
 
@@ -55,9 +55,10 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	private readonly unsubscribe = new Subject<void>();
 	private readonly dataChange = new Subject<void>();
 
+	private readonly window = inject(WINDOW);
+
 	constructor(
 		private readonly fileUploadService: ObFileUploadService,
-		private readonly popup: ObPopUpService,
 		private readonly translate: TranslateService
 	) {}
 
@@ -96,7 +97,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 
 	delete(files: ObIFileDescription[]): void {
 		const fileNames = files.map(file => file.name);
-		if (this.deleteUrl && this.popup.confirm(this.translate.instant('i18n.oblique.file-upload.selected.remove'))) {
+		if (this.deleteUrl && this.window.confirm(this.translate.instant('i18n.oblique.file-upload.selected.remove'))) {
 			this.fileUploadService
 				.delete(this.deleteUrl, fileNames)
 				.pipe(

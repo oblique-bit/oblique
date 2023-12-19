@@ -1,10 +1,11 @@
+import {inject} from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
-import {ObPopUpService} from '@oblique/oblique';
+import {WINDOW} from '@oblique/oblique';
 import {Connectable, ReplaySubject, connectable} from 'rxjs';
 import {filter, map, startWith} from 'rxjs/operators';
 import {TableEditComponent} from './table-edit.component';
@@ -36,9 +37,10 @@ export class TableManager<T> {
 	private readonly EDIT_MODE_NAME = 'editMode';
 	private mode = Mode.DIALOG;
 
+	private readonly window = inject(WINDOW);
+
 	constructor(
 		data: (T & Data)[],
-		private readonly popup: ObPopUpService,
 		private readonly dialog: MatDialog
 	) {
 		this.originalData = data.map(item => ({...item, isSelected: false, editMode: EditMode.NONE}));
@@ -132,7 +134,7 @@ export class TableManager<T> {
 
 	removeRows(row?: T & Data): void {
 		const items = row ? [row] : this.selection.selected;
-		if (this.popup.confirm('Delete Row?\nThis action will delete the selected row(s).\nDo you want to proceed?')) {
+		if (this.window.confirm('Delete Row?\nThis action will delete the selected row(s).\nDo you want to proceed?')) {
 			this.dataSource.data = this.dataSource.data.filter(data => !items.find(item => Object.is(data, item)));
 			this.originalData = [...this.dataSource.data];
 			this.selection.deselect(...items);

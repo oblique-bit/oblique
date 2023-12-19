@@ -24,7 +24,6 @@ import {NavTreeDetailSampleComponent} from './nav-tree/nav-tree-detail-sample.co
 import {NestedFormSampleComponent} from './nested-form/nested-form-sample.component';
 import {NotificationSampleComponent} from './notification/notification-sample.component';
 import {NumberFormatSampleComponent} from './number-format/number-format-sample.component';
-import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
 import {PopoverComponent} from './popover/popover.component';
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {SelectableSampleComponent} from './selectable/selectable-sample.component';
@@ -160,7 +159,6 @@ const samplesRoutes: Routes = [
 	{path: 'nested-form', component: NestedFormSampleComponent},
 	{path: 'notification', component: NotificationSampleComponent},
 	{path: 'number-format', component: NumberFormatSampleComponent},
-	{path: 'pop-up', component: PopUpSampleComponent},
 	{path: 'popover', component: PopoverComponent},
 	{path: 'schema-validation', component: SchemaValidationSampleComponent},
 	{path: 'selectable', component: SelectableSampleComponent},

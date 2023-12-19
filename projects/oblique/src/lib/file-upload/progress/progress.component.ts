@@ -7,7 +7,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {ObButtonDirective} from '../../button/button.directive';
-import {ObPopUpService} from '../../pop-up/pop-up.service';
 import {WINDOW} from '../../utilities';
 import {ObEUploadEventType, ObIFile, ObIFileList, ObIUploadEvent} from '../file-upload.model';
 import {ObFileUploadService} from '../file-upload.service';
@@ -30,13 +29,8 @@ export class ObProgressComponent implements OnDestroy {
 
 	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 	private readonly fileUploadService = inject(ObFileUploadService);
-	private readonly popup = inject(ObPopUpService);
 	private readonly translate = inject(TranslateService);
 	private readonly window = inject(WINDOW);
-
-	constructor() {
-		this.window = window;
-	}
 
 	@Input() set files(files: File[]) {
 		// let some time for the other inputs to be processed
@@ -48,7 +42,7 @@ export class ObProgressComponent implements OnDestroy {
 	}
 
 	cancelUpload(file: ObIFile): void {
-		if (!file.completed && (!this.cancelConfirmation || this.popup.confirm(this.translate.instant('i18n.oblique.file-upload.remove')))) {
+		if (!file.completed && (!this.cancelConfirmation || this.window.confirm(this.translate.instant('i18n.oblique.file-upload.remove')))) {
 			this.uploadedFiles.files[file.index]?.subscription.unsubscribe();
 			this.uploadedFiles.files.splice(file.index, 1);
 			this.uploadedFiles.fileCount--;

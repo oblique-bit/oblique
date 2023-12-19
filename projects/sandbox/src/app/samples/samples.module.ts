@@ -71,7 +71,6 @@ import {
 	ObUnknownRouteModule,
 	ObUnsavedChangesModule
 } from '@oblique/oblique';
-import {PopUpSampleComponent} from './pop-up/pop-up-sample.component';
 import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
 import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
 import {MultiTranslateLoaderSampleComponent} from './multi-translate-loader/multi-translate-loader-sample.component';
@@ -167,7 +166,6 @@ import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 		NotificationSampleComponent,
 		NumberFormatSampleComponent,
 		PopoverComponent,
-		PopUpSampleComponent,
 		SchemaValidationSampleComponent,
 		SelectableSampleComponent,
 		ServiceNavigationSampleComponent,

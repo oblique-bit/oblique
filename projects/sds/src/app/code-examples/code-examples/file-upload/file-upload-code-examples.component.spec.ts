@@ -4,14 +4,7 @@ import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {FileUploadCodeExamplesComponent} from './file-upload-code-examples.component';
-import {
-	ObDropZoneComponent,
-	ObFileUploadComponent,
-	ObMockPopUpService,
-	ObMockTranslatePipe,
-	ObMockTranslateService,
-	ObPopUpService
-} from '@oblique/oblique';
+import {ObDropZoneComponent, ObFileUploadComponent, ObMockTranslatePipe, ObMockTranslateService, WINDOW} from '@oblique/oblique';
 import {TranslateService} from '@ngx-translate/core';
 import {By} from '@angular/platform-browser';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
@@ -34,7 +27,7 @@ describe(FileUploadCodeExamplesComponent.name, () => {
 			],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: ObPopUpService, useClass: ObMockPopUpService}
+				{provide: WINDOW, useValue: window}
 			]
 		}).compileComponents();
 
