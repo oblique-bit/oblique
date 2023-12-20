@@ -29,8 +29,9 @@ import {PopoverCodeExamplesComponent} from './code-examples/popover/popover-code
 import {ProgressBarCodeExamplesComponent} from './code-examples/progress-bar/progress-bar-code-examples.component';
 import {SchemaValidationCodeExamplesComponent} from './code-examples/schema-validation/schema-validation-code-examples.component';
 import {SelectableCodeExamplesComponent} from './code-examples/selectable/selectable-code-examples.component';
-import {SlideToggleCodeExamplesComponent} from './code-examples/slide-toggle/slide-toggle-code-examples.component';
+import {ShadowCodeExamplesComponent} from './code-examples/shadow/shadow-code-examples.component';
 import {SliderCodeExamplesComponent} from './code-examples/slider/slider-code-examples.component';
+import {SlideToggleCodeExamplesComponent} from './code-examples/slide-toggle/slide-toggle-code-examples.component';
 import {SpacingAndLayoutCodeExamplesComponent} from './code-examples/spacing-and-layout/spacing-and-layout-code-examples.component';
 import {SpinnerCodeExamplesComponent} from './code-examples/spinner/spinner-code-examples.component';
 import {StepperCodeExamplesComponent} from './code-examples/stepper/stepper-code-examples.component';
@@ -43,7 +44,6 @@ import {Type} from '@angular/core';
 import {TypographyCodeExamplesComponent} from './code-examples/typography/typography-code-examples.component';
 import {UnknownRouteCodeExamplesComponent} from './code-examples/unknown-route/unknown-route-code-examples.component';
 import {UnsavedChangesCodeExamplesComponent} from './code-examples/unsaved-changes/unsaved-changes-code-examples.component';
-import {ShadowCodeExamplesComponent} from './code-examples/shadow/shadow-code-examples.component';
 
 /* These imports are sorted alphabetically to reduce merge conflicts.
    If you add a new import above, please make sure it is sorted
