@@ -4,7 +4,7 @@ nodejsPipelineTemplate {
 	versionNumberType = 'none'
 	replacePackageJsonVersion = false
 	nexusPublishPath = './dist/oblique'
-	nodeJsVersion = 18
+	nodeJsVersion = '18.19.0'
 	singleCFConfig = true
 	fetchTags = true
 	safeModeWhitelist = ['esbuild']
