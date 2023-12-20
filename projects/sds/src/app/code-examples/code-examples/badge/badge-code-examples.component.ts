@@ -22,7 +22,8 @@ export class BadgeCodeExamplesComponent extends CodeExamples {
 			title: 'Colors',
 			snippets: [
 				this.getSnippet('badge', 'colors/badge-example-colors.component.html', 'HTML'),
-				this.getSnippet('badge', 'colors/badge-example-colors.component.ts', 'TS')
+				this.getSnippet('badge', 'colors/badge-example-colors.component.ts', 'TS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		},
 		{
@@ -31,7 +32,8 @@ export class BadgeCodeExamplesComponent extends CodeExamples {
 			title: 'Other options',
 			snippets: [
 				this.getSnippet('badge', 'other-options/badge-example-other-options.component.html', 'HTML'),
-				this.getSnippet('badge', 'other-options/badge-example-other-options.component.ts', 'TS')
+				this.getSnippet('badge', 'other-options/badge-example-other-options.component.ts', 'TS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];

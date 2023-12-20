@@ -22,7 +22,8 @@ export class SlideToggleCodeExamplesComponent extends CodeExamples {
 			title: 'Colors',
 			snippets: [
 				this.getSnippet('slide-toggle', 'first-colors/slide-toggle-example-first-colors-preview.component.html', 'HTML'),
-				this.getSnippet('slide-toggle', 'first-colors/slide-toggle-example-first-colors-preview.component.ts', 'TS')
+				this.getSnippet('slide-toggle', 'first-colors/slide-toggle-example-first-colors-preview.component.ts', 'TS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		},
 		{
@@ -31,7 +32,8 @@ export class SlideToggleCodeExamplesComponent extends CodeExamples {
 			title: 'Other options',
 			snippets: [
 				this.getSnippet('slide-toggle', 'second/slide-toggle-example-second-preview.component.html', 'HTML'),
-				this.getSnippet('slide-toggle', 'second/slide-toggle-example-second-preview.component.ts', 'TS')
+				this.getSnippet('slide-toggle', 'second/slide-toggle-example-second-preview.component.ts', 'TS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];

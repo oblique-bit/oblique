@@ -21,7 +21,8 @@ export class TypographyCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('typography', 'typography/typography-example-typography-preview.component.html', 'HTML'),
 				this.getSnippet('typography', 'typography/typography-example-typography-preview.component.ts', 'TS'),
-				this.getSnippet('typography', 'typography/typography-example-typography-preview.component.scss', 'SCSS')
+				this.getSnippet('typography', 'typography/typography-example-typography-preview.component.scss', 'SCSS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];

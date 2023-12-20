@@ -21,7 +21,8 @@ export class AlertCodeExamplesComponent extends CodeExamples {
 			title: 'Types [type]',
 			snippets: [
 				this.getSnippet('alert', 'type/alert-example-type-preview.component.html', 'HTML'),
-				this.getSnippet('alert', 'type/alert-example-type-preview.component.ts', 'TS')
+				this.getSnippet('alert', 'type/alert-example-type-preview.component.ts', 'TS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		},
 		{
@@ -30,7 +31,8 @@ export class AlertCodeExamplesComponent extends CodeExamples {
 			title: 'ARIA: alert role [hasRoleAlert]',
 			snippets: [
 				this.getSnippet('alert', 'has-role-alert/alert-example-has-role-alert-preview.component.html', 'HTML'),
-				this.getSnippet('alert', 'has-role-alert/alert-example-has-role-alert-preview.component.ts', 'TS')
+				this.getSnippet('alert', 'has-role-alert/alert-example-has-role-alert-preview.component.ts', 'TS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];

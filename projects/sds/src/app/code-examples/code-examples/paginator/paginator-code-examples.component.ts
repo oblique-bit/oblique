@@ -22,7 +22,9 @@ export class PaginatorCodeExamplesComponent extends CodeExamples {
 			title: 'Common options',
 			snippets: [
 				this.getSnippet('paginator', 'common-options/paginator-example-common-options-preview.component.html', 'HTML'),
-				this.getSnippet('paginator', 'common-options/paginator-example-common-options-preview.component.ts', 'TS')
+				this.getSnippet('paginator', 'common-options/paginator-example-common-options-preview.component.ts', 'TS'),
+				this.getSnippet('paginator', 'paginator-example-preview.component.scss', 'SCSS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		},
 		{
@@ -31,7 +33,9 @@ export class PaginatorCodeExamplesComponent extends CodeExamples {
 			title: 'Other options',
 			snippets: [
 				this.getSnippet('paginator', 'other-options/paginator-example-other-options-preview.component.html', 'HTML'),
-				this.getSnippet('paginator', 'other-options/paginator-example-other-options-preview.component.ts', 'TS')
+				this.getSnippet('paginator', 'other-options/paginator-example-other-options-preview.component.ts', 'TS'),
+				this.getSnippet('paginator', 'paginator-example-preview.component.scss', 'SCSS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];

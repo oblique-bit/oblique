@@ -22,7 +22,8 @@ export class ButtonCodeExamplesComponent extends CodeExamples {
 			title: 'Colors',
 			snippets: [
 				this.getSnippet('button', 'colors/button-example-colors.component.html', 'HTML'),
-				this.getSnippet('button', 'colors/button-example-colors.component.ts', 'TS')
+				this.getSnippet('button', 'colors/button-example-colors.component.ts', 'TS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		},
 		{
@@ -31,7 +32,8 @@ export class ButtonCodeExamplesComponent extends CodeExamples {
 			title: 'Other options',
 			snippets: [
 				this.getSnippet('button', 'other-options/button-example-other-options.component.html', 'HTML'),
-				this.getSnippet('button', 'other-options/button-example-other-options.component.ts', 'TS')
+				this.getSnippet('button', 'other-options/button-example-other-options.component.ts', 'TS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];

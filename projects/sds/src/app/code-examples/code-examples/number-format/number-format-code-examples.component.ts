@@ -32,7 +32,7 @@ export class NumberFormatCodeExamplesComponent extends CodeExamples {
 					'default-with-reactive-form/number-format-example-default-with-reactive-form-preview.component.ts',
 					'TS'
 				),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'SCSS')
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		},
 		{
@@ -50,7 +50,7 @@ export class NumberFormatCodeExamplesComponent extends CodeExamples {
 					'default-with-template-from/number-format-example-default-with-template-from-preview.component.ts',
 					'TS'
 				),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'SCSS')
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		},
 		{
@@ -60,7 +60,7 @@ export class NumberFormatCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('number-format', 'other-options/number-format-example-other-options-preview.component.html', 'HTML'),
 				this.getSnippet('number-format', 'other-options/number-format-example-other-options-preview.component.ts', 'TS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'SCSS')
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];

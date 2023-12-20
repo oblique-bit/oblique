@@ -25,7 +25,8 @@ export class FileUploadCodeExamplesComponent extends CodeExamples {
 			title: 'Basic options',
 			snippets: [
 				this.getSnippet('file-upload', 'basic-options/file-upload-basic-options-preview.component.html', 'HTML'),
-				this.getSnippet('file-upload', 'basic-options/file-upload-basic-options-preview.component.ts', 'TS')
+				this.getSnippet('file-upload', 'basic-options/file-upload-basic-options-preview.component.ts', 'TS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		},
 		{
@@ -34,7 +35,8 @@ export class FileUploadCodeExamplesComponent extends CodeExamples {
 			title: 'Cancel upload',
 			snippets: [
 				this.getSnippet('file-upload', 'cancel-upload/file-upload-cancel-upload-preview.component.html', 'HTML'),
-				this.getSnippet('file-upload', 'cancel-upload/file-upload-cancel-upload-preview.component.ts', 'TS')
+				this.getSnippet('file-upload', 'cancel-upload/file-upload-cancel-upload-preview.component.ts', 'TS'),
+				this.getSnippet('file-upload', 'cancel-upload/file-upload-cancel-upload-preview.component.scss', 'SCSS')
 			]
 		},
 		{
@@ -43,7 +45,8 @@ export class FileUploadCodeExamplesComponent extends CodeExamples {
 			title: 'Urls & <code>uploadEvent</code>',
 			snippets: [
 				this.getSnippet('file-upload', 'upload-event/file-upload-upload-event-preview.component.html', 'HTML'),
-				this.getSnippet('file-upload', 'upload-event/file-upload-upload-event-preview.component.ts', 'TS')
+				this.getSnippet('file-upload', 'upload-event/file-upload-upload-event-preview.component.ts', 'TS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		},
 		{
@@ -56,7 +59,12 @@ export class FileUploadCodeExamplesComponent extends CodeExamples {
 					'map-function-and-ob-file-info/file-upload-map-function-and-ob-file-info-preview.component.html',
 					'HTML'
 				),
-				this.getSnippet('file-upload', 'map-function-and-ob-file-info/file-upload-map-function-and-ob-file-info-preview.component.ts', 'TS')
+				this.getSnippet(
+					'file-upload',
+					'map-function-and-ob-file-info/file-upload-map-function-and-ob-file-info-preview.component.ts',
+					'TS'
+				),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		},
 		{
@@ -65,7 +73,8 @@ export class FileUploadCodeExamplesComponent extends CodeExamples {
 			title: 'Fully functioning mock example',
 			snippets: [
 				this.getSnippet('file-upload', 'fully-functioning/file-upload-fully-functioning-preview.component.html', 'HTML'),
-				this.getSnippet('file-upload', 'fully-functioning/file-upload-fully-functioning-preview.component.ts', 'TS')
+				this.getSnippet('file-upload', 'fully-functioning/file-upload-fully-functioning-preview.component.ts', 'TS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];

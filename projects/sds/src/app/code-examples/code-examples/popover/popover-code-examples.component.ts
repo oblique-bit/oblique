@@ -31,7 +31,9 @@ export class PopoverCodeExamplesComponent extends CodeExamples {
 			title: 'Other options',
 			snippets: [
 				this.getSnippet('popover', 'other-options/popover-example-other-options-preview.component.html', 'HTML'),
-				this.getSnippet('popover', 'other-options/popover-example-other-options-preview.component.ts', 'TS')
+				this.getSnippet('popover', 'other-options/popover-example-other-options-preview.component.ts', 'TS'),
+				this.getSnippet('popover', 'other-options/popover-example-other-options-preview.component.scss', 'SCSS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];

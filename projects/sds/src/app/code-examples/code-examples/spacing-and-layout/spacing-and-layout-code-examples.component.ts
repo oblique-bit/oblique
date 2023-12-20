@@ -23,7 +23,8 @@ export class SpacingAndLayoutCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('spacing-and-layout', 'spacing/spacing-and-layout-example-spacing-preview.component.html', 'HTML'),
 				this.getSnippet('spacing-and-layout', 'spacing/spacing-and-layout-example-spacing-preview.component.ts', 'TS'),
-				this.getSnippet('spacing-and-layout', 'spacing/spacing-and-layout-example-spacing-preview.component.scss', 'SCSS')
+				this.getSnippet('spacing-and-layout', 'spacing/spacing-and-layout-example-spacing-preview.component.scss', 'SCSS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		},
 		{
@@ -33,7 +34,8 @@ export class SpacingAndLayoutCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('spacing-and-layout', 'layout/spacing-and-layout-example-layout-preview.component.html', 'HTML'),
 				this.getSnippet('spacing-and-layout', 'layout/spacing-and-layout-example-layout-preview.component.ts', 'TS'),
-				this.getSnippet('spacing-and-layout', 'layout/spacing-and-layout-example-layout-preview.component.scss', 'SCSS')
+				this.getSnippet('spacing-and-layout', 'layout/spacing-and-layout-example-layout-preview.component.scss', 'SCSS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];

@@ -21,7 +21,8 @@ export class ShadowCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('shadow', 'shadow/shadow-example-shadow-preview.component.html', 'HTML'),
 				this.getSnippet('shadow', 'shadow/shadow-example-shadow-preview.component.ts', 'TS'),
-				this.getSnippet('shadow', 'shadow/shadow-example-shadow-preview.component.scss', 'SCSS')
+				this.getSnippet('shadow', 'shadow/shadow-example-shadow-preview.component.scss', 'SCSS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];

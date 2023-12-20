@@ -29,7 +29,8 @@ export class DatepickerCodeExamplesComponent extends CodeExamples {
 			title: 'Other options',
 			snippets: [
 				this.getSnippet('datepicker', 'other-options/datepicker-example-other-options-preview.component.html', 'HTML'),
-				this.getSnippet('datepicker', 'other-options/datepicker-example-other-options-preview.component.ts', 'TS')
+				this.getSnippet('datepicker', 'other-options/datepicker-example-other-options-preview.component.ts', 'TS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}
 	];
