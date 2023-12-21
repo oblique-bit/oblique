@@ -32,6 +32,7 @@ describe('ObServiceNavigationService', () => {
 	const mockLangChange = new Subject<{lang: string}>();
 	const mockStateChange = new Subject<ObIServiceNavigationState>();
 	const mockApplications = [{name: {en: 'name', fr: 'nom', de: 'Name', it: 'nome'}}];
+	const warningSpy = jest.spyOn(console, `warn`).mockImplementation(() => {});
 	const mockGetLogoutTrigger$ = jest.fn();
 	const mockRedirectorLogout = jest.fn();
 
@@ -67,6 +68,7 @@ describe('ObServiceNavigationService', () => {
 				}
 			]
 		});
+		warningSpy.mockClear();
 	});
 
 	describe('fetch a single state', () => {
@@ -258,10 +260,44 @@ describe('ObServiceNavigationService', () => {
 
 						describe('getLoginUrl$', () => {
 							describe.each(['de', 'fr', 'it', 'en', 'es'])('with "%s" as language', language => {
-								it(`should emit "http://login?returnURL=http://localhost&language=${language}"`, () => {
-									const promise = firstValueFrom(service.getLoginUrl$().pipe(skip(1)));
-									mockLangChange.next({lang: language});
-									expect(promise).resolves.toBe(`http://login?returnURL=http://localhost&language=${language}`);
+								describe('Without pamsAppId', () => {
+									beforeEach(() => {
+										service.setPamsAppId(undefined);
+									});
+
+									it(`should emit "http://login?returnURL=http://localhost&language=${language}"`, async () => {
+										const promise = firstValueFrom(service.getLoginUrl$().pipe(skip(1)));
+										mockLangChange.next({lang: language});
+										expect(await promise).toBe(`http://login?returnURL=http://localhost&language=${language}`);
+									});
+
+									it(`should emit a warning when pamsAppId is undefined`, async () => {
+										const promise = firstValueFrom(service.getLoginUrl$().pipe(skip(1)));
+										mockLangChange.next({lang: language});
+										await promise;
+										expect(warningSpy).toBeCalledWith(`Service-navigation requires an appId. Otherwise some stepup logins won't work`);
+									});
+								});
+
+								describe('With pamsAppId', () => {
+									const randomPamsAppId = 'randomPamsAppId';
+
+									beforeEach(() => {
+										service.setPamsAppId(randomPamsAppId);
+									});
+
+									it(`should not emit a warning when pamsAppId is defined`, async () => {
+										const promise = firstValueFrom(service.getLoginUrl$().pipe(skip(1)));
+										mockLangChange.next({lang: language});
+										await promise;
+										expect(warningSpy).toBeCalledTimes(0);
+									});
+
+									it(`should emit "http://login?returnURL=http://localhost&language=${language}&appid=${randomPamsAppId}"`, async () => {
+										const promise = firstValueFrom(service.getLoginUrl$().pipe(skip(1)));
+										mockLangChange.next({lang: language});
+										expect(await promise).toBe(`http://login?returnURL=http://localhost&language=${language}&appid=${randomPamsAppId}`);
+									});
 								});
 							});
 						});

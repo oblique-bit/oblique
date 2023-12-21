@@ -66,6 +66,7 @@ export class ObMasterLayoutConfig {
 			maxLastUsedApplications: 3,
 			maxFavoriteApplications: 3,
 			displayLanguages: true,
+			pamsAppId: undefined,
 			handleLogout: true
 		}
 	};
