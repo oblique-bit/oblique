@@ -34,20 +34,11 @@
 			<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
 		</a>
 	</ng-template>
-	<button
-		*ngIf="child.children && showChildren"
-		[id]="'ob-sub-menu-go-to-children-button-' + child.id"
-		type="button"
-		mat-icon-button
-		obButton="tertiary"
-		class="ob-sub-menu-go-to-children-button"
-		(click)="goToChildren(child)"
-	>
-		<mat-icon matSuffix svgIcon="arrow-right" />
-		<span class="ob-screen-reader-only">{{
-			"i18n.oblique.master-layout.navigation.link.go-to-children" | translate: { parentLabel: (child.label | translate) }
-		}}</span>
-	</button>
+	<ob-master-layout-navigation-go-to-children
+		[isCurrentParent]="child.label === currentParent.label"
+		[link]="child"
+		(changeCurrentParent)="goToChildren($event)"
+	/>
 </ng-container>
 <ng-template #descendants>
 	<ng-container *ngIf="child.children && showChildren">

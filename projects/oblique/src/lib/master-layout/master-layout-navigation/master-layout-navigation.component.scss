@@ -55,6 +55,9 @@
 
 		@include layout.ob-media-breakpoint-down(md) {
 			.ob-main-nav-item {
+				display: flex;
+				width: 100%;
+
 				& > a,
 				& > button {
 					&.active,

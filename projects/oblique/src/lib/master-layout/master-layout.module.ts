@@ -26,6 +26,7 @@ import {ObButtonModule} from '../button/button.module';
 import {ObServiceNavigationModule} from '../service-navigation/service-navigation.module';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 import {ObMasterLayoutNavigationSubMenuItemComponent} from './master-layout-navigation/sub-menu-item/master-layout-navigation-sub-menu-item.component';
+import {ObMasterLayoutNavigationGoToChildrenComponent} from './master-layout-navigation/go-to-children/master-layout-navigation-go-to-children.component';
 
 export {ObMasterLayoutComponent} from './master-layout/master-layout.component';
 export {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
@@ -58,6 +59,7 @@ export {ObOutlineDirective} from './outline.directive';
 		ObButtonModule,
 		ObExternalLinkModule,
 		ObIconModule,
+		ObMasterLayoutNavigationGoToChildrenComponent,
 		ObNotificationModule,
 		ObOffCanvasModule,
 		ObScrollingModule,

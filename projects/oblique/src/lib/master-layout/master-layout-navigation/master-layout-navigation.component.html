@@ -88,6 +88,11 @@
 					<span class="ob-icon-wrapper ob-toggle-collapsed"><mat-icon svgIcon="chevron-down" class="ob-nav-toggle" /></span>
 					<span class="ob-icon-wrapper ob-toggle-expanded"><mat-icon svgIcon="chevron-up" class="ob-nav-toggle" /></span>
 				</button>
+				<ob-master-layout-navigation-go-to-children
+					[isCurrentParent]="currentParentLink.id === link.id"
+					[link]="link"
+					(changeCurrentParent)="toggleSubMenu(obMasterLayoutNavigationItem, $event)"
+				/>
 				<div
 					class="ob-sub-menu"
 					[id]="'ob-menu-' + link.id"

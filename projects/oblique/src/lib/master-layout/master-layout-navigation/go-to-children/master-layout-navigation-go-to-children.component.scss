@@ -1,0 +1,26 @@
+@use "../../../../styles/scss/core/mixins/layout";
+@use "../../../../styles/scss/core/mixins/nav";
+@use "../../../../styles/scss/core/variables";
+
+:host.hide {
+	display: none;
+}
+
+@include layout.ob-media-breakpoint-down(md) {
+	.ob-main-nav-item {
+		// @include nav.ob-nav-hover();
+		display: flex;
+
+		.ob-sub-menu-go-to-children-button {
+			align-self: flex-end;
+			margin-left: -0.25 * variables.$ob-spacing-xs;
+
+			&.ob-button.ob-button-tertiary.mat-mdc-button-base.mat-mdc-icon-button {
+				height: 41px;
+				width: 41px;
+				padding-left: calc(0.3896em + variables.$ob-spacing-xs * 0.5);
+				padding-top: calc(0.3896em + variables.$ob-spacing-xs * 0.5);
+			}
+		}
+	}
+}
