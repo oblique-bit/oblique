@@ -1,7 +1,7 @@
 import {Component, OnInit, inject} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
-import {ObButtonModule} from '@oblique/oblique';
+import {ObButtonModule, WINDOW} from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MockBackEndService, PeriodicElement} from './mock-backend.service';
@@ -20,6 +20,7 @@ export class MaterialTableExampleEditablePreviewComponent implements OnInit {
 
 	private readonly dialog = inject(MatDialog);
 	private readonly mockBackEndService = new MockBackEndService();
+	private readonly window = inject(WINDOW);
 
 	ngOnInit(): void {
 		this.getData();
@@ -43,7 +44,9 @@ export class MaterialTableExampleEditablePreviewComponent implements OnInit {
 	}
 
 	deleteRow(element: PeriodicElement): void {
-		this.mockBackEndService.removeData(element);
-		this.getData();
+		if (this.window.confirm(`Please confirm that you want to delete ${element.name}.`)) {
+			this.mockBackEndService.removeData(element);
+			this.getData();
+		}
 	}
 }
