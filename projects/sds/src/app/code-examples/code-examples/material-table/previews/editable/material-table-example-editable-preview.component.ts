@@ -1,7 +1,7 @@
 import {Component, OnInit, inject} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
-import {ObButtonModule} from '../../../../../../../../oblique/src/public_api';
+import {ObButtonModule} from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MockBackEndService, PeriodicElement} from './mock-backend.service';
