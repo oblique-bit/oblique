@@ -18,6 +18,10 @@
 		position: relative;
 	}
 
+	[svgicon="search"].mat-icon {
+		margin-top: variables.$ob-spacing-xs * 0.5;
+	}
+
 	[class*="form-field"] {
 		[class*="autocomplete"] {
 			& ~ .mat-icon,
