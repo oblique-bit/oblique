@@ -1,3 +1,11 @@
+# [10.3.1](https://github.com/oblique-bit/oblique/compare/10.3.0...10.3.1) (2023-12-22)
+
+## Bug Fixes
+
+- **master-layout:** add pamsAppId ([23b3b51](https://github.com/oblique-bit/oblique/commit/23b3b517320557fb2205aae4eabd7a5f216f742d))
+- **service-navigation:** correct typo with the yourReturnURL ([2d80671](https://github.com/oblique-bit/oblique/commit/2d806719cd62aacf0957a4b068776a86e2ec9bdd))
+- **service-navigation:** add pamsAppId ([4c5be39](https://github.com/oblique-bit/oblique/commit/4c5be3934ae4deeed11e395b50b239ce76f1eb52))
+
 # [10.3.0](https://github.com/oblique-bit/oblique/compare/10.2.0...10.3.0) (2023-11-03)
 
 ## Bug Fixes
