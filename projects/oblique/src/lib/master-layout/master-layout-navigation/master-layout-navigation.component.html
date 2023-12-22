@@ -92,6 +92,7 @@
 				</button>
 				@if (!currentGrandparentLink?.label) {
 					<ob-master-layout-navigation-go-to-children
+						[disableRipple]="true"
 						[isCurrentParent]="currentParentLink.id === link.id"
 						[link]="link"
 						(changeCurrentParent)="toggleSubMenu(obMasterLayoutNavigationItem, $event)"

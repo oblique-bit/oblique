@@ -26,6 +26,13 @@
 	}
 
 	.ob-master-layout-navigation-item.ob-main-nav-item.ob-expandable {
+		&
+			> .ob-master-layout-navigation-go-to-children
+			.ob-master-layout-navigation-go-to-children-button {
+			height: variables.$ob-button-height + variables.$ob-spacing-xs;
+			width: variables.$ob-button-height + variables.$ob-spacing-xs;
+		}
+
 		button,
 		&
 			> .ob-master-layout-navigation-go-to-children

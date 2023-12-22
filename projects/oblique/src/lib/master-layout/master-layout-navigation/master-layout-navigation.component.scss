@@ -57,7 +57,7 @@
 			.ob-main-nav-item {
 				display: flex;
 				width: 100%;
-				height: variables.$ob-button-height;
+				height: variables.$ob-button-height + variables.$ob-spacing-sm;
 
 				& > a,
 				& > button {
@@ -224,6 +224,8 @@
 					width: fit-content;
 
 					@include layout.ob-media-breakpoint-down(md) {
+						padding: variables.$ob-spacing-md;
+						height: variables.$ob-button-height + variables.$ob-spacing-sm;
 						width: 100%;
 						justify-content: flex-start;
 					}
