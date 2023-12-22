@@ -19,10 +19,7 @@ export class OffCanvasCodeExamplesComponent extends CodeExamples {
 			component: OffCanvasExampleStackblitzLinkPreviewComponent,
 			idParts: ['stackblitz', 'link'],
 			title: 'Link to Stackblitz Example',
-			snippets: [
-				this.getSnippet('off-canvas', 'stackblitz-link/off-canvas-example-stackblitz-link-preview.component.html', 'HTML'),
-				this.getSnippet('off-canvas', 'stackblitz-link/off-canvas-example-stackblitz-link-preview.component.ts', 'TS')
-			]
+			snippets: []
 		}
 	];
 }
