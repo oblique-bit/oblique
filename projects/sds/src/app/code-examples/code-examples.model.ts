@@ -59,5 +59,5 @@ export interface CodeExample {
 	component?: PreviewComponent;
 	idParts: string[];
 	title?: string;
-	snippets: SourceCode[];
+	snippets?: SourceCode[];
 }
