@@ -24,4 +24,15 @@
 			}
 		}
 	}
+
+	.ob-master-layout-navigation-item.ob-main-nav-item.ob-expandable {
+		button,
+		&
+			> .ob-master-layout-navigation-go-to-children
+			.ob-master-layout-navigation-go-to-children-button {
+			&:hover {
+				background-color: transparent;
+			}
+		}
+	}
 }

@@ -31,6 +31,8 @@
 			*ngFor="let link of initializedLinks"
 			[class.ob-start-of-right-side-links]="link.startOfRightSideLinks"
 			[class.ob-expandable]="link.children?.length"
+			[class.ob-just-close]="currentParentLink.id === link.id"
+			[class.ob-has-grandparent]="!!currentGrandparentLink?.label"
 			[id]="'ob-main-nav-item-' + link.id"
 		>
 			<ng-container *ngIf="!link.children?.length; else expandable">
@@ -88,24 +90,27 @@
 					<span class="ob-icon-wrapper ob-toggle-collapsed"><mat-icon svgIcon="chevron-down" class="ob-nav-toggle" /></span>
 					<span class="ob-icon-wrapper ob-toggle-expanded"><mat-icon svgIcon="chevron-up" class="ob-nav-toggle" /></span>
 				</button>
-				<ob-master-layout-navigation-go-to-children
-					[isCurrentParent]="currentParentLink.id === link.id"
-					[link]="link"
-					(changeCurrentParent)="toggleSubMenu(obMasterLayoutNavigationItem, $event)"
-				/>
+				@if (!currentGrandparentLink?.label) {
+					<ob-master-layout-navigation-go-to-children
+						[isCurrentParent]="currentParentLink.id === link.id"
+						[link]="link"
+						(changeCurrentParent)="toggleSubMenu(obMasterLayoutNavigationItem, $event)"
+					/>
+				}
 				<div
 					class="ob-sub-menu"
 					[id]="'ob-menu-' + link.id"
 					[class.ob-parent-link-has-icon-and-label]="!!link.icon && !link.iconOnly"
 					[class.ob-has-current-parent-link]="currentParentLink.id !== link.id"
 				>
-					<div class="ob-sub-menu-back-close-container" [class.just-close]="currentParentLink.id === link.id">
+					<div class="ob-sub-menu-back-close-container" [class.ob-just-close]="currentParentLink.id === link.id">
 						<button
 							type="button"
 							mat-button
 							obButton="tertiary"
 							class="ob-sub-menu-back-button"
 							[class.hide-md-up]="currentParentLink.id === link.id"
+							[class.ob-just-sub-menu-back-button-home-icon]="!currentGrandparentLink?.label"
 							[id]="'ob-sub-menu-back-button-' + link.id"
 							(click)="backUpOrCloseSubMenu(link, obMasterLayoutNavigationItem)"
 						>
