@@ -18,8 +18,7 @@ export class BreadcrumbCodeExamplesComponent extends CodeExamples {
 		{
 			component: BreadcrumbExampleDefaultPreviewComponent,
 			idParts: ['stackblitz', 'link'],
-			title: 'Link to Stackblitz Example',
-			snippets: []
+			title: 'Link to Stackblitz Example'
 		}
 	];
 }

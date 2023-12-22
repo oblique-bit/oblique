@@ -18,8 +18,7 @@ export class BannerCodeExamplesComponent extends CodeExamples {
 		{
 			component: BannerExampleDefaultPreviewComponent,
 			idParts: ['default'],
-			title: 'Link to Stackblitz Example',
-			snippets: []
+			title: 'Link to Stackblitz Example'
 		}
 	];
 }

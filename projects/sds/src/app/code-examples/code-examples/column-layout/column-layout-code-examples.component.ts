@@ -18,8 +18,7 @@ export class ColumnLayoutCodeExamplesComponent extends CodeExamples {
 		{
 			component: ColumnLayoutExampleStackblitzLinkPreviewComponent,
 			idParts: ['stackblitz', 'link'],
-			title: 'Link to Stackblitz Example',
-			snippets: []
+			title: 'Link to Stackblitz Example'
 		}
 	];
 }

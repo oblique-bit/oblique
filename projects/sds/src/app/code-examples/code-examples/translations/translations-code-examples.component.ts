@@ -19,8 +19,7 @@ export class TranslationsCodeExamplesComponent extends CodeExamples {
 		{
 			component: TranslationsExampleStackblitzLinkPreviewComponent,
 			idParts: ['stackblitz', 'link'],
-			title: 'Link to Stackblitz Example',
-			snippets: []
+			title: 'Link to Stackblitz Example'
 		},
 		{
 			idParts: ['files'],
