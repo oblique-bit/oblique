@@ -1,10 +1,10 @@
-@Library('jeap-pipelinelibrary@feature/oblique3') _
+@Library('jeap-pipelinelibrary@feature/oblique3.1') _
 nodejsPipelineTemplate {
 	testEngine = 'jest'
 	versionNumberType = 'none'
 	replacePackageJsonVersion = false
 	nexusPublishPath = './dist/oblique'
-	nodeJsVersion = 18
+	nodeJsVersion = '18.19.0'
 	singleCFConfig = true
 	fetchTags = true
 	safeModeWhitelist = ['esbuild']

@@ -130,5 +130,6 @@ export class AppModule {
 		config.header.serviceNavigation.displayInfo = true;
 		config.header.serviceNavigation.displayMessage = true;
 		config.header.serviceNavigation.displayProfile = true;
+		config.header.serviceNavigation.pamsAppId = '1';
 	}
 }

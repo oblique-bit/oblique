@@ -1,0 +1,40 @@
+name: Feature Request
+description: Request a feature for future releases of Oblique
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      render: true
+      label: Description
+      placeholder: Provide a clear and concise description of the feature you would like to request
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      render: true
+      label: Use case
+      placeholder: Explain how this feature could be useful
+    validations:
+      required: false
+
+  - type: textarea
+    id: information
+    attributes:
+      render: true
+      label: Relation to existing issue
+      placeholder: Is this request related to an existing problem you are facing? 
+    validations:
+      required: false
+
+  - type: textarea
+    id: solution
+    attributes:
+      render: true
+      label: Proposed solution
+      placeholder: Share your idea on how this could be implemented
+    validations:
+      required: false
+
