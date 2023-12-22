@@ -57,6 +57,7 @@
 			.ob-main-nav-item {
 				display: flex;
 				width: 100%;
+				height: variables.$ob-button-height;
 
 				& > a,
 				& > button {
