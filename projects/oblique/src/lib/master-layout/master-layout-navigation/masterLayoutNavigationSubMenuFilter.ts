@@ -19,7 +19,7 @@ function isWithinElement(target: Event | KeyboardEvent, selector: string): boole
 }
 
 function isWithinSubMenu(target: KeyboardEvent | Event): boolean {
-	return isWithinElement(target, '.ob-sub-menu') || isWithinElement(target, '.ob-sub-menu-go-to-children-button');
+	return isWithinElement(target, '.ob-sub-menu') || isWithinElement(target, '.ob-master-layout-navigation-go-to-children-button');
 }
 
 function isWithinSubMenuLink(target: KeyboardEvent | Event): boolean {

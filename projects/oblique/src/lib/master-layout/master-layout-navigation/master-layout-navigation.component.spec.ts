@@ -14,6 +14,7 @@ import {ObMockMasterLayoutNavigationItemDirective} from '../_mocks/mock-master-l
 import {ObMasterLayoutNavigationSubMenuItemComponent} from './sub-menu-item/master-layout-navigation-sub-menu-item.component';
 import {basicMockLinks, mockLinksWithChildren} from './master-layout-navigation.component.spec-data';
 import {ObNavigationLink} from './navigation-link.model';
+import {ObMasterLayoutNavigationGoToChildrenComponent} from './go-to-children/master-layout-navigation-go-to-children.component';
 
 @Component({template: ''})
 class DummyFullPathComponent {}
@@ -40,6 +41,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				DummyDefaultPathComponent
 			],
 			imports: [
+				ObMasterLayoutNavigationGoToChildrenComponent,
 				ObMockTranslatePipe,
 				RouterTestingModule.withRoutes([
 					{path: 'defaultPathMatch', component: DummyDefaultPathComponent},
@@ -251,7 +253,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 	}
 
 	function clickGoToChildrenButton(linkIndex: number, childIndex: number): void {
-		clickChildButton(linkIndex, childIndex, 'ob-sub-menu-go-to-children-button');
+		clickChildButton(linkIndex, childIndex, 'ob-master-layout-navigation-go-to-children-button');
 	}
 
 	function expandMainNavItem(linkIndex: number): void {

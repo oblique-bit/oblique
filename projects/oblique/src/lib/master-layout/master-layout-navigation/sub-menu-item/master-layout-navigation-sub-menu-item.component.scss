@@ -1,8 +1,74 @@
+@use "../../../../styles/scss/core/mixins/shadow";
+@use "../../../../styles/scss/core/variables";
+
 .ob-master-layout-navigation-sub-menu-item {
 	display: flex;
 	width: 100%;
 
 	&.column {
 		flex-direction: column;
+	}
+
+	.ob-master-layout-navigation .ob-main-nav .ob-sub-menu & {
+		.ob-master-layout-navigation-go-to-children-button {
+			align-self: flex-end;
+			margin-left: -0.25 * variables.$ob-spacing-xs;
+
+			&.ob-button {
+				height: 39px;
+				width: 39px;
+				padding-left: calc(0.3896em + variables.$ob-spacing-xs * 0.5);
+				padding-top: calc(0.3896em + variables.$ob-spacing-xs * 0.5);
+
+				&:hover {
+					padding-left: calc(0.3896em - variables.$ob-spacing-xs * 0.75);
+				}
+			}
+		}
+
+		& > a,
+		& > button {
+			&.cdk-keyboard-focused {
+				.ob-master-layout-navigation-go-to-children-button {
+					outline: none;
+					box-shadow: none;
+				}
+
+				&.ob-master-layout-navigation-link {
+					& ~ .ob-master-layout-navigation-go-to-children-button {
+						height: 33px;
+						padding-left: 0.8 * variables.$ob-spacing-default;
+						padding-bottom: 1.1 * variables.$ob-spacing-default;
+
+						.mat-icon {
+							margin-right: -1.25 * variables.$ob-spacing-sm;
+							margin-top: -0.75 * variables.$ob-spacing-xs;
+						}
+
+						&:hover {
+							.mat-icon {
+								margin-left: -(variables.$ob-spacing-sm);
+								margin-top: -0.75 * variables.$ob-spacing-xs;
+							}
+						}
+					}
+				}
+
+				&.ob-master-layout-navigation-go-to-children-button {
+					@include shadow.ob-tab-focus-border();
+					padding-left: variables.$ob-spacing-sm;
+					padding-bottom: 1.3 * variables.$ob-spacing-default;
+
+					.mat-icon {
+						margin-top: -0.75 * variables.$ob-spacing-xs;
+					}
+
+					&:hover {
+						border-left: variables.$ob-line-width solid variables.$ob-accent;
+						padding-left: 0.8 * variables.$ob-spacing-sm;
+					}
+				}
+			}
+		}
 	}
 }

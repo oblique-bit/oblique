@@ -16,7 +16,7 @@ describe(`${obMasterLayoutNavigationSubMenuFilter.name}`, () => {
 	test.each<{elementTag: keyof HTMLElementTagNameMap; classes: string[]; expected: boolean}>([
 		{elementTag: 'div', classes: ['ob-sub-menu'], expected: false},
 		{elementTag: 'button', classes: ['ob-sub-menu-close-button'], expected: true},
-		{elementTag: 'button', classes: ['ob-sub-menu-go-to-children-button'], expected: false},
+		{elementTag: 'button', classes: ['ob-master-layout-navigation-go-to-children-button'], expected: false},
 		{elementTag: 'a', classes: ['ob-master-layout-navigation-link'], expected: true},
 		{elementTag: 'a', classes: ['ob-master-layout-navigation-link', 'ob-main-nav-link'], expected: true},
 		{elementTag: 'button', classes: ['ob-master-layout-navigation-link', 'ob-main-nav-link'], expected: true},
