@@ -72,5 +72,11 @@
 		& + p {
 			margin-top: variables.$ob-spacing-lg;
 		}
+
+		caption {
+			text-align: start;
+			caption-side: bottom;
+			font-weight: normal;
+		}
 	}
 }
