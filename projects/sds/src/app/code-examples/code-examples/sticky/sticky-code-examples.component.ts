@@ -23,7 +23,7 @@ export class StickyCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('sticky', 'default/sticky-example-default-preview.component.html', 'HTML'),
 				this.getSnippet('sticky', 'default/sticky-example-default-preview.component.ts', 'TS'),
-				this.getSnippet('sticky', 'sticky-examples.scss', 'SCSS')
+				this.getSnippet('sticky', 'sticky-example.scss', 'SCSS')
 			]
 		},
 		{
@@ -33,7 +33,7 @@ export class StickyCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('sticky', 'sizes/sticky-example-sizes-preview.component.html', 'HTML'),
 				this.getSnippet('sticky', 'sizes/sticky-example-sizes-preview.component.ts', 'TS'),
-				this.getSnippet('sticky', 'sticky-examples.scss', 'SCSS')
+				this.getSnippet('sticky', 'sticky-example.scss', 'SCSS')
 			]
 		}
 	];
