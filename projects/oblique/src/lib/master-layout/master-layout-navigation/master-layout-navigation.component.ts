@@ -90,6 +90,14 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 		this.masterLayout.navigation.scrollRight();
 	}
 
+	removeLink(link: ObINavigationLink, mouseEvent: MouseEvent): void {
+		mouseEvent.preventDefault();
+		const index = this.links.indexOf(link);
+		if (index > -1) {
+			this.links.splice(index, 1);
+		}
+	}
+
 	private checkForExternalLinks(links: ObINavigationLink[]): void {
 		if (links?.length) {
 			links.forEach(link => {

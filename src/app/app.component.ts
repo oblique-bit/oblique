@@ -121,6 +121,11 @@ export class AppComponent implements OnDestroy {
 				{url: 'http://www.google.ch', label: 'External, label only'},
 				{url: 'http://www.google.ch', label: 'External, icon only', icon: ObEIcon.ANCHOR, iconOnly: true}
 			]
+		},
+		{
+			url: 'home',
+			label: 'Removable',
+			removable: true
 		}
 	];
 	skipLinks: ObISkipLink[] = [
