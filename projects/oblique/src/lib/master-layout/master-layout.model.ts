@@ -80,6 +80,7 @@ export interface ObINavigationLink {
 	routerLinkActiveOptions?: IsActiveMatchOptions;
 	icon?: ObEIcon | string;
 	iconOnly?: boolean;
+	removable?: boolean;
 }
 
 export interface ObISkipLink {
