@@ -36,13 +36,6 @@
 			background-color: palette.$ob-secondary-50;
 		}
 
-		tr:first-of-type {
-			th,
-			td {
-				min-width: 9rem;
-			}
-		}
-
 		th,
 		td {
 			padding: variables.$ob-spacing-default;
