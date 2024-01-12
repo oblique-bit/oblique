@@ -53,6 +53,21 @@ export function createSafeRule(callback: (tree: Tree, context: SchematicContext)
 	};
 }
 
+export function checkForStandalone(): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		infoMigration(_context, 'Check if application is standalone ');
+		const apply = (filePath: string): void => {
+			const standalone = /standalone\s*:\s*true/.test(readFile(tree, filePath));
+			if (standalone) {
+				error(
+					'Standalone application detected. Oblique schematics are not compatible with standalone applications. Either convert the application to non-standalone or perform the changes manually. Check the documentation for guidance.'
+				);
+			}
+		};
+		return applyInTree(tree, apply, '*.ts');
+	};
+}
+
 export function infoHighlights(context: SchematicContext, msg: string, ...highlights: string[]): void {
 	const message = highlights.reduce((text, highlight) => text.replace('%c', colors.bold(highlight)), msg);
 	context.logger.info(`${message}\n`);
