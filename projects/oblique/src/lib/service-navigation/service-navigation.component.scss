@@ -1,4 +1,5 @@
 @use "../../styles/scss/core/variables";
+@use "../../styles/scss/core/mixins/layout";
 
 .ob-service-navigation {
 	.ob-service-navigation-list {
@@ -8,5 +9,22 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
+
+		@mixin full-width() {
+			&:not(.ob-autocomplete, .mat-mdc-form-field),
+			& .mat-mdc-form-field {
+				width: calc(100vw - variables.$ob-spacing-xl);
+			}
+		}
+
+		.ob-sm-down-width-100 {
+			@include layout.ob-media-breakpoint-down(sm) {
+				@include full-width();
+			}
+		}
+
+		.ob-md-down-width-100 {
+			@include full-width();
+		}
 	}
 }
