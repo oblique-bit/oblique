@@ -10,8 +10,10 @@
 	}
 
 	&.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
-		.mdc-evolution-chip__checkmark {
+		.mdc-evolution-chip__checkmark,
+		.mdc-evolution-chip__icon--trailing {
 			color: variables.$ob-white;
+			opacity: 1;
 		}
 	}
 }
@@ -24,13 +26,19 @@
 	&.mat-mdc-form-field-type-mat-chip-grid {
 		.mat-mdc-text-field-wrapper.mdc-text-field,
 		.mat-mdc-text-field-wrapper.mdc-text-field .mdc-notched-outline {
-			max-height: 45px;
+			max-height: none;
 
 			.mat-mdc-chip {
-				margin-top: 10px;
+				margin-top: 8px;
+				margin-bottom: 0;
 			}
 		}
 	}
+}
+
+.mat-mdc-form-field-infix:has(.mat-mdc-chip-set) {
+	padding-bottom: 4px !important;
+	padding-top: 18px !important;
 }
 
 .mat-mdc-chip-option,
@@ -111,13 +119,16 @@
 			}
 
 			&.mat-mdc-chip-disabled {
-				background-color: variables.$ob-secondary-200;
+				background-color: variables.$ob-secondary-300;
+				opacity: 1;
+
+				.mdc-evolution-chip__text-label,
+				.mdc-evolution-chip__checkmark,
+				.mdc-evolution-chip__icon--trailing {
+					color: variables.$ob-white;
+					opacity: 1;
+				}
 			}
 		}
-	}
-
-	.mdc-text-field--no-label:not(.mdc-text-field--outlined, .mdc-text-field--textarea)
-		.mat-mdc-form-field-infix {
-		padding-top: 0 !important;
 	}
 }

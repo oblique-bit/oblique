@@ -17,12 +17,14 @@ export class ChipsComponent implements OnInit {
 	showAutocompleteForm = false;
 	stacked = false;
 	variant: string = null;
+	type: (typeof this.types)[number] = 'row';
 
 	readonly allTags = ['IT', 'Sales', 'Marketing', 'Management', 'HR', 'Cleaning'];
 	readonly separatorKeysCodes = [ENTER, COMMA, SEMICOLON];
 	readonly tags = this.allTags.splice(0, 3);
 	readonly tagsCtrl = new UntypedFormControl();
 	readonly variants: string[] = [null, 'info', 'success', 'warning', 'error'];
+	readonly types: string[] = ['row', 'option'];
 
 	@ViewChild('tagInput', {static: false}) private readonly tagInput: ElementRef<HTMLInputElement>;
 	@ViewChild('auto', {static: false}) private readonly matAutocomplete: MatAutocomplete;
