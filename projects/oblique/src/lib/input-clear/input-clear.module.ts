@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 
 import {ObInputClearDirective} from './input-clear.directive';
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 
 export {ObInputClearDirective} from './input-clear.directive';
 
 @NgModule({
 	imports: [ObInputClearDirective],
 	providers: obliqueProviders(),
-	exports: [ObInputClearDirective]
+	exports: [ObInputClearDirective, ...obliqueExports]
 })
 export class ObInputClearModule {}
