@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 import {ObCollapseComponent} from './collapse.component';
 
 export {
@@ -12,6 +12,6 @@ export {
 @NgModule({
 	imports: [ObCollapseComponent],
 	providers: obliqueProviders(),
-	exports: [ObCollapseComponent]
+	exports: [ObCollapseComponent, ...obliqueExports]
 })
 export class ObCollapseModule {}
