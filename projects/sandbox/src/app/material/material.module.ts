@@ -56,7 +56,6 @@ import {StepperHorizontalComponent} from './stepper-horizontal/stepper-horizonta
 import {TabsComponent} from './tabs/tabs.component';
 import {IconSampleComponent} from './icon/icon.sample.component';
 import {MandatorySampleComponent} from './mandatory/mandatory.sample.component';
-import {SharedModule} from '../common/shared.module';
 import {FormComponent} from './form/form.component';
 import {TableEditComponent} from './table/table-edit.component';
 import {ObPaginatorModule} from '@oblique/paginator/ob-paginator.module';
@@ -151,8 +150,7 @@ const appRoutes: Routes = [
 		ObSelectableModule,
 		ObSpinnerModule,
 		ReactiveFormsModule,
-		RouterModule.forChild(appRoutes),
-		SharedModule
+		RouterModule.forChild(appRoutes)
 	]
 })
 export class MaterialModule {}

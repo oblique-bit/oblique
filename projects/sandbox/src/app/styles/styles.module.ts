@@ -14,7 +14,6 @@ import {AlertComponent} from './alert/alert.component';
 import {IconSampleComponent} from './icon/icon.component';
 import {GridComponent} from './grid/grid.component';
 import {ScreenReaderOnlyComponent} from './screen-reader-only/screen-reader-only.component';
-import {SharedModule} from '../common/shared.module';
 
 @NgModule({
 	imports: [
@@ -35,8 +34,7 @@ import {SharedModule} from '../common/shared.module';
 		FormsModule,
 		MatRadioModule,
 		ObColumnLayoutModule,
-		ReactiveFormsModule,
-		SharedModule
+		ReactiveFormsModule
 	],
 	declarations: [
 		AlertComponent,
