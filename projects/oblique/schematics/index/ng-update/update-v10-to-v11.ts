@@ -4,6 +4,7 @@ import {
 	addImport,
 	addInjectionInClass,
 	applyInTree,
+	checkForStandalone,
 	createSafeRule,
 	infoMigration,
 	readFile,
@@ -24,6 +25,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 	applyMigrations(_options: IUpdateV10Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) =>
 			chain([
+				checkForStandalone(),
 				this.replaceObPopUpWithWindowInTests(),
 				this.replaceObPopUpWithWindow(),
 				this.removeInputVariantInNavTree(),
