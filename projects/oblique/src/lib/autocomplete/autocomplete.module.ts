@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 import {ObAutocompleteComponent} from './autocomplete.component';
 
 export {ObAutocompleteComponent} from './autocomplete.component';
@@ -8,7 +8,7 @@ export {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup, OptionLabel
 
 @NgModule({
 	imports: [ObAutocompleteComponent],
-	exports: [ObAutocompleteComponent],
+	exports: [ObAutocompleteComponent, ...obliqueExports],
 	providers: obliqueProviders()
 })
 export class ObAutocompleteModule {}
