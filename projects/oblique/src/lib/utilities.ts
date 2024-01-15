@@ -11,6 +11,8 @@ import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioDefaultOptions} from '@angular/materi
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, MatSlideToggleDefaultOptions} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS, StepperOptions} from '@angular/cdk/stepper';
 import {ObIBanner, ObIMaterialConfig, ObIPamsConfiguration} from './utilities.model';
+import {ObCheckboxModule} from './checkbox/checkbox.module';
+import {ObFormFieldModule} from './form-field/form-field.module';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
@@ -75,6 +77,8 @@ export function obliqueProviders(): Provider[] {
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]}
 	];
 }
+
+export const obliqueExports = [ObFormFieldModule, ObCheckboxModule];
 
 // as the Enter key on a button triggers both the click an keyup events, lets ensure the function is called only once
 export function isNotKeyboardEventOnButton(event: MouseEvent | KeyboardEvent): boolean {
