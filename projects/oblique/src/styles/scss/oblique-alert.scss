@@ -38,7 +38,7 @@
 	}
 
 	@at-root #{selector.append(".ob-alert-info", &)} {
-		background-color: variables.$ob-blue-200;
+		background-color: variables.$ob-blue-100;
 	}
 
 	@at-root #{selector.append(".ob-alert-success", &)} {
