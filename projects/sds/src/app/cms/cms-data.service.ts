@@ -20,12 +20,12 @@ export class CmsDataService {
 	}
 
 	getCategories(): Observable<CategoryCms> {
-		return this.httpClient.get<CategoryCms>(`${this.baseUrl}items/Category`);
+		return this.httpClient.get<CategoryCms>(`${this.baseUrl}items/Category?sort=order`);
 	}
 
 	getTextPagesShort(): Observable<CMSPageShortList> {
 		return this.httpClient.get<CMSPageShortList>(
-			`${this.baseUrl}items/TextPage?fields=id,name,slug,category,min_version,max_version&sort=name`
+			`${this.baseUrl}items/TextPage?fields=id,name,slug,category,min_version,max_version&sort=order,name`
 		);
 	}
 
@@ -39,7 +39,7 @@ export class CmsDataService {
 
 	getTabbedPagesShort(): Observable<CMSPageShortList> {
 		return this.httpClient.get<CMSPageShortList>(
-			`${this.baseUrl}items/TabbedPage?fields=id,name,slug,category,min_version,max_version&sort=name`
+			`${this.baseUrl}items/TabbedPage?fields=id,name,slug,category,min_version,max_version&sort=order,name`
 		);
 	}
 }
