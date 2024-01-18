@@ -38,26 +38,65 @@ describe(CollectorService.name, () => {
 				expect(window.ATL_JQ_PAGE_PROPS).toBeTruthy();
 			});
 
-			test('that they contain 1 property', () => {
-				expect(Object.keys(window.ATL_JQ_PAGE_PROPS).length).toBe(1);
+			test('that they contain 2 properties', () => {
+				expect(Object.keys(window.ATL_JQ_PAGE_PROPS).length).toBe(2);
 			});
 
 			test('that they contain a "triggerFunction" property', () => {
 				expect(window.ATL_JQ_PAGE_PROPS.triggerFunction).toBeTruthy();
 			});
+
+			test('that they contain a "fieldValues" property', () => {
+				expect(window.ATL_JQ_PAGE_PROPS.fieldValues).toBeTruthy();
+			});
 		});
 	});
 
 	describe(`method ${CollectorService.prototype.collect.name}`, () => {
-		const triggerFunction = jest.fn();
-		beforeEach(() => {
-			service.initializeCollector('id');
-			window.ATL_JQ_PAGE_PROPS.triggerFunction(triggerFunction);
-			service.collect();
+		describe('without defaultValues', () => {
+			const triggerFunction = jest.fn();
+			beforeEach(() => {
+				service.initializeCollector('id');
+				window.ATL_JQ_PAGE_PROPS.triggerFunction(triggerFunction);
+				service.collect();
+			});
+
+			test('that the trigger function is called', () => {
+				expect(triggerFunction).toHaveBeenCalled();
+			});
+
+			test('that the fieldValues are empty', () => {
+				expect(Object.keys(window.ATL_JQ_PAGE_PROPS.fieldValues).length).toBe(0);
+			});
 		});
 
-		test('that the trigger function is called', () => {
-			expect(triggerFunction).toHaveBeenCalled();
+		describe.each([{key1: () => 'a'}, {key2: () => 'b', key3: () => 'b'}])('with defaultValues (%s)', configuration => {
+			const triggerFunction = jest.fn();
+			const keys = Object.keys(configuration);
+			beforeEach(() => {
+				service.initializeCollector('id');
+				service.defaultValues = configuration;
+				window.ATL_JQ_PAGE_PROPS.triggerFunction(triggerFunction);
+				window.ATL_JQ_PAGE_PROPS.fieldValues();
+				service.collect();
+			});
+
+			test('that the trigger function is called', () => {
+				expect(triggerFunction).toHaveBeenCalled();
+			});
+
+			test(`that the fieldValues contains ${keys.length} values`, () => {
+				expect(Object.keys(window.ATL_JQ_PAGE_PROPS.fieldValues).length).toBe(keys.length);
+			});
+
+			test.each(keys)('that the fieldValues contains a "%s" property', key => {
+				expect(Object.keys(window.ATL_JQ_PAGE_PROPS.fieldValues).includes(key)).toBe(true);
+			});
+
+			test.each(keys)('that the fieldValues has the correct value for %s property', key => {
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+				expect(window.ATL_JQ_PAGE_PROPS.fieldValues[key]).toBe(configuration[key]());
+			});
 		});
 	});
 });

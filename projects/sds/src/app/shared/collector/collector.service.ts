@@ -1,12 +1,17 @@
 import {Injectable, RendererFactory2, inject} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {CollectorConfiguration, CollectorFunction} from './collector.model';
+import {CollectorConfiguration, CollectorDefaultValues, CollectorFunction} from './collector.model';
 
 @Injectable()
 export class CollectorService {
 	private readonly renderer = inject(RendererFactory2).createRenderer(null, null);
 	private readonly document = inject(DOCUMENT);
 	private openCollectorDialog: CollectorFunction;
+	private defaultValuesInternal: CollectorDefaultValues = {};
+
+	set defaultValues(values: CollectorDefaultValues) {
+		this.defaultValuesInternal = values ?? {};
+	}
 
 	initializeCollector(collectorId: string): void {
 		this.addCollectorScript(collectorId);
@@ -15,6 +20,7 @@ export class CollectorService {
 
 	collect(): void {
 		if (this.openCollectorDialog) {
+			this.updateCollectorFields();
 			this.openCollectorDialog();
 		}
 	}
@@ -29,7 +35,14 @@ export class CollectorService {
 		return {
 			triggerFunction: (showCollectorDialog: CollectorFunction) => {
 				this.openCollectorDialog = showCollectorDialog;
-			}
+			},
+			fieldValues: () => ({})
 		};
+	}
+
+	private updateCollectorFields(): void {
+		Object.keys(this.defaultValuesInternal).forEach(key => {
+			window.ATL_JQ_PAGE_PROPS.fieldValues[key] = this.defaultValuesInternal[key]();
+		});
 	}
 }
