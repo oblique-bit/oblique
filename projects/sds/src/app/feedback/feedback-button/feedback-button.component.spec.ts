@@ -5,7 +5,7 @@ import {FeedbackButtonComponent} from './feedback-button.component';
 describe(FeedbackButtonComponent.name, () => {
 	let component: FeedbackButtonComponent;
 	let fixture: ComponentFixture<FeedbackButtonComponent>;
-	const service = {initializeCollector: jest.fn(), collect: jest.fn()};
+	const service = {initializeCollector: jest.fn(), defaultValues: {}, collect: jest.fn()};
 
 	beforeEach(async () => {
 		TestBed.overrideProvider(CollectorService, {useValue: service});
@@ -33,6 +33,11 @@ describe(FeedbackButtonComponent.name, () => {
 
 		test('that initializeCollector have been called with "6dfd32b3"', () => {
 			expect(service.initializeCollector).toHaveBeenCalledWith('6dfd32b3');
+		});
+
+		test('that default values are passed to the service', () => {
+			// eslint-disable-next-line @typescript-eslint/naming-convention,camelcase
+			expect(JSON.stringify(service.defaultValues)).toEqual(JSON.stringify({customfield_12505: () => window.location.href}));
 		});
 	});
 
