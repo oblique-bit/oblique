@@ -6,7 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatSelectModule} from '@angular/material/select';
 import {TranslateModule} from '@ngx-translate/core';
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 import {ObButtonModule} from '../button/button.module';
 import {ObFormFieldModule} from '../form-field/form-field.module';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
@@ -69,6 +69,6 @@ import {ObDisableLinkDirective} from './shared/disable-link/disable-link.directi
 		ObServiceNavigationPopoverSectionComponent,
 		ObServiceNavigationProfileComponent
 	],
-	exports: [ObServiceNavigationComponent]
+	exports: [ObServiceNavigationComponent, ...obliqueExports]
 })
 export class ObServiceNavigationModule {}

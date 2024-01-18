@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 import {ObSchemaRequiredDirective} from './schema-required.directive';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 import {ObSchemaValidateDirective} from './schema-validator';
@@ -15,6 +15,6 @@ export {ObSchemaValidatorInstance} from './schema-validator.instance';
 @NgModule({
 	imports: [ObSchemaRequiredDirective, ObSchemaValidateDirective, ObSchemaValidationDirective],
 	providers: obliqueProviders(),
-	exports: [ObSchemaRequiredDirective, ObSchemaValidateDirective, ObSchemaValidationDirective]
+	exports: [ObSchemaRequiredDirective, ObSchemaValidateDirective, ObSchemaValidationDirective, ...obliqueExports]
 })
 export class ObSchemaValidationModule {}

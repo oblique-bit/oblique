@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {ObExternalLinkDirective} from './external-link.directive';
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 
 export {ObExternalLinkDirective} from './external-link.directive';
 export {EXTERNAL_LINK, ObEExternalLinkIcon, ObIExternalLink} from './external-link.model';
@@ -8,6 +8,6 @@ export {EXTERNAL_LINK, ObEExternalLinkIcon, ObIExternalLink} from './external-li
 @NgModule({
 	imports: [ObExternalLinkDirective],
 	providers: obliqueProviders(),
-	exports: [ObExternalLinkDirective]
+	exports: [ObExternalLinkDirective, ...obliqueExports]
 })
 export class ObExternalLinkModule {}

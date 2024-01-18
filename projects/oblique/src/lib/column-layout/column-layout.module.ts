@@ -8,7 +8,7 @@ import {ObColumnLayoutComponent} from './column-layout.component';
 import {ObColumnToggleDirective} from './column-toggle.directive';
 import {ObColumnPanelDirective} from './column-panel.directive';
 
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 
 export {ObColumnLayoutComponent} from './column-layout.component';
 export {ObColumnPanelDirective} from './column-panel.directive';
@@ -18,6 +18,6 @@ export {ObColumnToggleDirective} from './column-toggle.directive';
 	imports: [CdkScrollableModule, CommonModule, MatIconModule, TranslateModule],
 	declarations: [ObColumnLayoutComponent, ObColumnPanelDirective, ObColumnToggleDirective],
 	providers: obliqueProviders(),
-	exports: [ObColumnLayoutComponent, ObColumnPanelDirective, ObColumnToggleDirective]
+	exports: [ObColumnLayoutComponent, ObColumnPanelDirective, ObColumnToggleDirective, ...obliqueExports]
 })
 export class ObColumnLayoutModule {}
