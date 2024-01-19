@@ -3,6 +3,9 @@ import {ObINavigationLink} from '../master-layout.module';
 import {of} from 'rxjs';
 import {ObLoginState} from '../../service-navigation/service-navigation.model';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @Component({
 	selector: 'ob-master-layout-header',
 	exportAs: 'obMasterLayoutHeader',

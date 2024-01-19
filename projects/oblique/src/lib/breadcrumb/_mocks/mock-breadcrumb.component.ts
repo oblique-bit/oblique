@@ -3,6 +3,9 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {ObBreadcrumbConfig, ObIBreadcrumb} from '../breadcrumb.model';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @Component({
 	selector: 'ob-breadcrumb',
 	exportAs: 'obBreadcrumb',

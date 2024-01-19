@@ -1,6 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {ObINavigationLink} from '../master-layout.module';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @Component({
 	selector: 'ob-master-layout-navigation',
 	exportAs: 'obMasterLayoutNavigation',

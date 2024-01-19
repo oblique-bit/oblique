@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ObEScrollMode, ObILocale, ObIMasterLayoutFooter, ObIMasterLayoutHeader, ObIMasterLayoutNavigation} from '../master-layout.model';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @Injectable({providedIn: 'root'})
 export class ObMockMasterLayoutConfig {
 	homePageRoute = '/home';

@@ -3,6 +3,9 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {DefaultLangChangeEvent, LangChangeEvent, TranslationChangeEvent} from '@ngx-translate/core';
 import {EMPTY, Observable, of} from 'rxjs';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @Injectable()
 export class ObMockTranslateService {
 	translations: any;

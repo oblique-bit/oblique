@@ -2,6 +2,9 @@ import {Injectable} from '@angular/core';
 import {EMPTY, Observable, of} from 'rxjs';
 import {ObIHttpApiRequest} from '../http-api-interceptor.model';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @Injectable()
 export class ObMockHttpApiInterceptorEvents {
 	get requestIntercepted(): Observable<ObIHttpApiRequest> {
