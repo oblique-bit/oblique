@@ -1,12 +1,16 @@
 import {TestBed} from '@angular/core/testing';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {of} from 'rxjs';
 import {CollectorService} from './collector.service';
 
 describe(CollectorService.name, () => {
 	let service: CollectorService;
+	let dialog: MatDialog;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({providers: [CollectorService]});
 		service = TestBed.inject(CollectorService);
+		dialog = TestBed.inject(MatDialog);
 	});
 
 	test('that is is created', () => {
@@ -53,49 +57,64 @@ describe(CollectorService.name, () => {
 	});
 
 	describe(`method ${CollectorService.prototype.collect.name}`, () => {
-		describe('without defaultValues', () => {
-			const triggerFunction = jest.fn();
-			beforeEach(() => {
-				service.initializeCollector('id');
-				window.ATL_JQ_PAGE_PROPS.triggerFunction(triggerFunction);
-				service.collect();
+		describe('with collector', () => {
+			describe('without defaultValues', () => {
+				const triggerFunction = jest.fn();
+				beforeEach(() => {
+					service.initializeCollector('id');
+					window.ATL_JQ_PAGE_PROPS.triggerFunction(triggerFunction);
+					jest.spyOn(dialog, 'open');
+					service.collect();
+				});
+
+				test('that the trigger function is called', () => {
+					expect(triggerFunction).toHaveBeenCalled();
+				});
+
+				test('that the fieldValues are empty', () => {
+					expect(Object.keys(window.ATL_JQ_PAGE_PROPS.fieldValues).length).toBe(0);
+				});
 			});
 
-			test('that the trigger function is called', () => {
-				expect(triggerFunction).toHaveBeenCalled();
-			});
+			describe.each([{key1: () => 'a'}, {key2: () => 'b', key3: () => 'b'}])('with defaultValues (%s)', configuration => {
+				const triggerFunction = jest.fn();
+				const keys = Object.keys(configuration);
+				beforeEach(() => {
+					service.initializeCollector('id');
+					service.defaultValues = configuration;
+					window.ATL_JQ_PAGE_PROPS.triggerFunction(triggerFunction);
+					window.ATL_JQ_PAGE_PROPS.fieldValues();
+					service.collect();
+				});
 
-			test('that the fieldValues are empty', () => {
-				expect(Object.keys(window.ATL_JQ_PAGE_PROPS.fieldValues).length).toBe(0);
+				test('that the trigger function is called', () => {
+					expect(triggerFunction).toHaveBeenCalled();
+				});
+
+				test(`that the fieldValues contains ${keys.length} values`, () => {
+					expect(Object.keys(window.ATL_JQ_PAGE_PROPS.fieldValues).length).toBe(keys.length);
+				});
+
+				test.each(keys)('that the fieldValues contains a "%s" property', key => {
+					expect(Object.keys(window.ATL_JQ_PAGE_PROPS.fieldValues).includes(key)).toBe(true);
+				});
+
+				test.each(keys)('that the fieldValues has the correct value for %s property', key => {
+					// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+					expect(window.ATL_JQ_PAGE_PROPS.fieldValues[key]).toBe(configuration[key]());
+				});
 			});
 		});
 
-		describe.each([{key1: () => 'a'}, {key2: () => 'b', key3: () => 'b'}])('with defaultValues (%s)', configuration => {
-			const triggerFunction = jest.fn();
-			const keys = Object.keys(configuration);
+		describe('without collector', () => {
 			beforeEach(() => {
-				service.initializeCollector('id');
-				service.defaultValues = configuration;
-				window.ATL_JQ_PAGE_PROPS.triggerFunction(triggerFunction);
-				window.ATL_JQ_PAGE_PROPS.fieldValues();
+				jest.spyOn(dialog, 'open').mockReturnValue({afterClosed: () => of(undefined)} as MatDialogRef<unknown>);
+				service.fallbackDialog = undefined;
 				service.collect();
 			});
 
-			test('that the trigger function is called', () => {
-				expect(triggerFunction).toHaveBeenCalled();
-			});
-
-			test(`that the fieldValues contains ${keys.length} values`, () => {
-				expect(Object.keys(window.ATL_JQ_PAGE_PROPS.fieldValues).length).toBe(keys.length);
-			});
-
-			test.each(keys)('that the fieldValues contains a "%s" property', key => {
-				expect(Object.keys(window.ATL_JQ_PAGE_PROPS.fieldValues).includes(key)).toBe(true);
-			});
-
-			test.each(keys)('that the fieldValues has the correct value for %s property', key => {
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-				expect(window.ATL_JQ_PAGE_PROPS.fieldValues[key]).toBe(configuration[key]());
+			test('that the dialog is opened', () => {
+				expect(dialog.open).toHaveBeenCalled();
 			});
 		});
 	});

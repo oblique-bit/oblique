@@ -1,16 +1,24 @@
 import {Injectable, RendererFactory2, inject} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
+import {MatDialog} from '@angular/material/dialog';
+import {ComponentType} from '@angular/cdk/overlay';
 import {CollectorConfiguration, CollectorDefaultValues, CollectorFunction} from './collector.model';
 
 @Injectable()
 export class CollectorService {
 	private readonly renderer = inject(RendererFactory2).createRenderer(null, null);
 	private readonly document = inject(DOCUMENT);
+	private readonly dialog = inject(MatDialog);
 	private openCollectorDialog: CollectorFunction;
 	private defaultValuesInternal: CollectorDefaultValues = {};
+	private fallbackDialogInternal: ComponentType<unknown>;
 
 	set defaultValues(values: CollectorDefaultValues) {
 		this.defaultValuesInternal = values ?? {};
+	}
+
+	set fallbackDialog(component: ComponentType<unknown>) {
+		this.fallbackDialogInternal = component;
 	}
 
 	initializeCollector(collectorId: string): void {
@@ -22,6 +30,8 @@ export class CollectorService {
 		if (this.openCollectorDialog) {
 			this.updateCollectorFields();
 			this.openCollectorDialog();
+		} else {
+			this.dialog.open(this.fallbackDialogInternal);
 		}
 	}
 
