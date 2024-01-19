@@ -9,6 +9,9 @@ export {ObMockUnsavedChangesDirective} from './mock-unsaved-changes.directive';
 export {ObMockUnsavedChangesService} from './mock-unsaved-changes.service';
 export {ObMockUnsavedChangesGuard} from './mock-unsaved-changes.guard';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @NgModule({
 	imports: [ObMockUnsavedChangesDirective],
 	exports: [ObMockUnsavedChangesDirective],

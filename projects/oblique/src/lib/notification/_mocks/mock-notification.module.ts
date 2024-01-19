@@ -9,6 +9,9 @@ export {ObMockNotificationComponent} from './mock-notification.component';
 export {ObMockNotificationService} from './mock-notification.service';
 export {ObMockNotificationConfig} from './mock-notification.config';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @NgModule({
 	declarations: [ObMockNotificationComponent],
 	exports: [ObMockNotificationComponent],

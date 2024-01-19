@@ -4,6 +4,9 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @Component({
 	selector: 'ob-file-info',
 	exportAs: 'obFileInfo',

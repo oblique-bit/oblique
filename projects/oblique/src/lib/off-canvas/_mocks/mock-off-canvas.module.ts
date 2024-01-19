@@ -11,6 +11,9 @@ export {ObMockOffCanvasBackdropDirective} from './mock-off-canvas-backdrop.direc
 export {ObMockOffCanvasContainerDirective} from './mock-off-canvas-container.directive';
 export {ObMockOffCanvasService} from './mock-off-canvas.service';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @NgModule({
 	imports: [ObMockOffCanvasBackdropDirective, ObMockOffCanvasContainerDirective, ObMockOffCanvasToggleDirective],
 	exports: [ObMockOffCanvasBackdropDirective, ObMockOffCanvasContainerDirective, ObMockOffCanvasToggleDirective],

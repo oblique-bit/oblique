@@ -7,6 +7,9 @@ import {ObMockSpinnerService} from './mock-spinner.service';
 export {ObMockSpinnerComponent} from './mock-spinner.component';
 export {ObMockSpinnerService} from './mock-spinner.service';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @NgModule({
 	imports: [ObMockSpinnerComponent],
 	exports: [ObMockSpinnerComponent],
