@@ -58,8 +58,8 @@ describe(FormCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.directive(FormExampleInputClearPreviewComponent)).length).toBe(1);
 	});
 
-	test(`that there are 30 ${MatFormField.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatFormField)).length).toBe(30);
+	test(`that there are 37 ${MatFormField.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MatFormField)).length).toBe(37);
 	});
 
 	test(`that there are 23 ${MatInput.name}s`, () => {
@@ -78,8 +78,8 @@ describe(FormCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.directive(MatRadioButton)).length).toBe(2);
 	});
 
-	test(`that there are 7 ${MatSelect.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatSelect)).length).toBe(7);
+	test(`that there are 14 ${MatSelect.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MatSelect)).length).toBe(14);
 	});
 
 	test(`that there are 7 textareas`, () => {

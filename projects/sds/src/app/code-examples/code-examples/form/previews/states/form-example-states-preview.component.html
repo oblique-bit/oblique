@@ -19,6 +19,16 @@
 		</mat-select>
 	</mat-form-field>
 	<mat-form-field>
+		<mat-label>Multiselect</mat-label>
+		<mat-select disabled multiple>
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+			<mat-option [value]="3">Three</mat-option>
+			<mat-option [value]="4">Four</mat-option>
+			<mat-option [value]="5">Five</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field>
 		<mat-label>Primary</mat-label>
 		<textarea disabled matInput placeholder="Primary"></textarea>
 	</mat-form-field>
@@ -43,6 +53,17 @@
 	</mat-form-field>
 	<mat-form-field>
 		<mat-label>Hint</mat-label>
+		<mat-select multiple>
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+			<mat-option [value]="3">Three</mat-option>
+			<mat-option [value]="4">Four</mat-option>
+			<mat-option [value]="5">Five</mat-option>
+		</mat-select>
+		<mat-hint>This is a hint of the multiselect</mat-hint>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Hint</mat-label>
 		<textarea matInput placeholder="Hint"></textarea>
 		<mat-hint>This is a hint</mat-hint>
 	</mat-form-field>
@@ -64,6 +85,17 @@
 			<mat-option [value]="5">Five</mat-option>
 		</mat-select>
 	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Multiselect</mat-label>
+		<mat-select required ngModel multiple>
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+			<mat-option [value]="3">Three</mat-option>
+			<mat-option [value]="4">Four</mat-option>
+			<mat-option [value]="5">Five</mat-option>
+		</mat-select>
+	</mat-form-field>
+
 	<mat-form-field>
 		<mat-label>Required</mat-label>
 		<textarea required matInput placeholder="Required" ngModel></textarea>
