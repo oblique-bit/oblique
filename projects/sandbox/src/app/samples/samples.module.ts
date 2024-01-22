@@ -82,7 +82,6 @@ import {AlertSampleComponent} from './alert/alert.component';
 import {HorizontalFormsSampleComponent} from './horizontal-forms/horizontal-forms.component';
 import {BreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 import {FileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
-import {SharedModule} from '../common/shared.module';
 import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
 import {ServiceNavigationSampleComponent} from './service-navigation/service-navigation-sample.component';
 import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
@@ -134,7 +133,6 @@ import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 		ReactiveFormsModule,
 		RouterModule,
 		SamplesRoutingModule,
-		SharedModule,
 		TranslateModule
 	],
 	declarations: [

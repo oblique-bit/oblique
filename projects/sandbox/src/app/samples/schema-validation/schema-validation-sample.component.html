@@ -2,7 +2,6 @@
 	<h2 class="page-header">
 		{{ "i18n.routes.samples.schema-validation.title" | translate }}
 	</h2>
-	<sb-description component="schema-validation" />
 	<form [formGroup]="materialTestForm">
 		<mat-form-field class="mat-form-field-sm" obErrorMessages>
 			<mat-label>Choose a date</mat-label>
@@ -17,5 +16,4 @@
 			<mat-error />
 		</mat-form-field>
 	</form>
-	<sb-api component="schema-validation" />
 </ng-container>
