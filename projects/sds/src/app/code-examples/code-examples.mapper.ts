@@ -16,6 +16,7 @@ import {FormCodeExamplesComponent} from './code-examples/form/form-code-examples
 import {GlobalEventsCodeExamplesComponent} from './code-examples/global-events/global-events-code-examples.component';
 import {GridSystemCodeExamplesComponent} from './code-examples/grid-system/grid-system-code-examples.component';
 import {HtmlTableCodeExamplesComponent} from './code-examples/html-table/html-table-code-examples.component';
+import {IconsCodeExamplesComponent} from './code-examples/icons/icons-code-examples.component';
 import {ListGroupCodeExamplesComponent} from './code-examples/list-group/list-group-code-examples.component';
 import {MasterLayoutCodeExamplesComponent} from './code-examples/master-layout/master-layout-code-examples.component';
 import {MaterialTableCodeExamplesComponent} from './code-examples/material-table/material-table-code-examples.component';
@@ -67,6 +68,7 @@ export class CodeExamplesMapper {
 		'global-events': GlobalEventsCodeExamplesComponent,
 		'grid-system': GridSystemCodeExamplesComponent,
 		'html-table': HtmlTableCodeExamplesComponent,
+		icons: IconsCodeExamplesComponent,
 		'list-group': ListGroupCodeExamplesComponent,
 		'master-layout': MasterLayoutCodeExamplesComponent,
 		'material-table': MaterialTableCodeExamplesComponent,
