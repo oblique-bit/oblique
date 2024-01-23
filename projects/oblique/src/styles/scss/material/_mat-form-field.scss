@@ -127,6 +127,10 @@
 				}
 			}
 
+			.mat-mdc-input-element {
+				padding-right: 28px; // empiric number: icon width + $ob-spacing-xs
+			}
+
 			.mat-mdc-form-field-infix::after {
 				content: "!";
 				position: absolute;
