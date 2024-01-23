@@ -34,11 +34,6 @@
 		/>
 	</li>
 	<li *ngIf="languages.length > 1 && displayLanguages">
-		<ob-service-navigation-languages
-			[languages]="languages"
-			[language]="language$ | async"
-			[languageSelectorStyle]="languageSelectorStyle"
-			(languageChange)="changeLanguage($event)"
-		/>
+		<ob-service-navigation-languages [languages]="languages" [language]="language$ | async" (languageChange)="changeLanguage($event)" />
 	</li>
 </ul>

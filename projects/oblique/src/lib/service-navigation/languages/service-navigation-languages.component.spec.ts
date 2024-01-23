@@ -97,124 +97,54 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 				fixture.detectChanges();
 			});
 
-			describe('With default language selector style (dropdown)', () => {
-				beforeEach(async () => {
-					select = await harness.getSelect(loader);
-					await select.open();
-					selectOptions = await select.getOptions();
-				});
-
-				test('that it has 4 options', () => {
-					expect(selectOptions.length).toBe(4);
-				});
-
-				describe.each(['', 'de', 'fr', 'it', 'en'])('with "%s" as language', language => {
-					beforeEach(() => {
-						if (language) {
-							component.language = language;
-						}
-						fixture.detectChanges();
-					});
-
-					describe.each([
-						{index: 0, id: 'ob-language-de-option', label: 'Deutsch', active: language === 'de', text: 'DE', lang: 'de'},
-						{index: 1, id: 'ob-language-fr-option', label: 'Français', active: language === 'fr', text: 'FR', lang: 'fr'},
-						{index: 2, id: 'ob-language-it-option', label: 'Italiano', active: language === 'it', text: 'IT', lang: 'it'},
-						{index: 3, id: 'ob-language-en-option', label: 'English', active: language === 'en', text: 'EN', lang: 'en'}
-					])('select option index: $index', ({index, id, label, active, text}) => {
-						let selectOption: MatOptionHarness;
-						let selectOptionTestElement: TestElement;
-						beforeEach(async () => {
-							select = await harness.getSelect(loader);
-							await select.open();
-							selectOptions = await select.getOptions();
-							selectOption = selectOptions[index];
-							selectOptionTestElement = await selectOption.host();
-						});
-
-						test.each([{className: 'ob-active', value: active}])('that it has "$className" class: $value', async ({className, value}) => {
-							expect(await selectOptionTestElement.hasClass(className)).toBe(value);
-						});
-
-						test.each([
-							{attribute: 'id', value: id},
-							{attribute: 'aria-label', value: label},
-							{attribute: 'aria-current', value: active ? 'true' : null}
-						])('that it has "$value" as "$attribute" attribute', async ({attribute, value}) => {
-							expect(await selectOptionTestElement.getAttribute(attribute)).toBe(value);
-						});
-
-						test(`that it has $text as text`, async () => {
-							expect(await selectOptionTestElement.text()).toEqual(text);
-						});
-					});
-				});
+			beforeEach(async () => {
+				select = await harness.getSelect(loader);
+				await select.open();
+				selectOptions = await select.getOptions();
 			});
 
-			describe('With language selector style of: tabs', () => {
-				beforeEach(async () => {
-					component.languageSelectorStyle = 'tabs';
+			test('that it has 4 options', () => {
+				expect(selectOptions.length).toBe(4);
+			});
+
+			describe.each(['', 'de', 'fr', 'it', 'en'])('with "%s" as language', language => {
+				beforeEach(() => {
+					if (language) {
+						component.language = language;
+					}
 					fixture.detectChanges();
-					buttons = await harness.getLanguageButtons();
 				});
 
-				test('that it has 4 buttons', () => {
-					expect(buttons.length).toBe(4);
-				});
-
-				describe.each(['', 'de', 'fr', 'it', 'en'])('with "%s" as language', language => {
-					beforeEach(() => {
-						if (language) {
-							component.language = language;
-						}
-						fixture.detectChanges();
+				describe.each([
+					{index: 0, id: 'ob-language-de-option', label: 'Deutsch', active: language === 'de', text: 'DE', lang: 'de'},
+					{index: 1, id: 'ob-language-fr-option', label: 'Français', active: language === 'fr', text: 'FR', lang: 'fr'},
+					{index: 2, id: 'ob-language-it-option', label: 'Italiano', active: language === 'it', text: 'IT', lang: 'it'},
+					{index: 3, id: 'ob-language-en-option', label: 'English', active: language === 'en', text: 'EN', lang: 'en'}
+				])('select option index: $index', ({index, id, label, active, text}) => {
+					let selectOption: MatOptionHarness;
+					let selectOptionTestElement: TestElement;
+					beforeEach(async () => {
+						select = await harness.getSelect(loader);
+						await select.open();
+						selectOptions = await select.getOptions();
+						selectOption = selectOptions[index];
+						selectOptionTestElement = await selectOption.host();
 					});
 
-					describe.each([
-						{index: 0, id: 'ob-language-de-toggle', label: 'Deutsch', active: language === 'de', text: 'DE', lang: 'de'},
-						{index: 1, id: 'ob-language-fr-toggle', label: 'Français', active: language === 'fr', text: 'FR', lang: 'fr'},
-						{index: 2, id: 'ob-language-it-toggle', label: 'Italiano', active: language === 'it', text: 'IT', lang: 'it'},
-						{index: 3, id: 'ob-language-en-toggle', label: 'English', active: language === 'en', text: 'EN', lang: 'en'}
-					])('$label button, index: $index', ({index, id, label, active, text, lang}) => {
-						let button: TestElement;
-						beforeEach(() => {
-							button = buttons[index];
-						});
+					test.each([{className: 'ob-active', value: active}])('that it has "$className" class: $value', async ({className, value}) => {
+						expect(await selectOptionTestElement.hasClass(className)).toBe(value);
+					});
 
-						test.each([
-							{className: 'ob-language-toggle', value: true},
-							{className: 'ob-active', value: active}
-						])('that it has "$className" class: $value', async ({className, value}) => {
-							expect(await button.hasClass(className)).toBe(value);
-						});
+					test.each([
+						{attribute: 'id', value: id},
+						{attribute: 'aria-label', value: label},
+						{attribute: 'aria-current', value: active ? 'true' : null}
+					])('that it has "$value" as "$attribute" attribute', async ({attribute, value}) => {
+						expect(await selectOptionTestElement.getAttribute(attribute)).toBe(value);
+					});
 
-						test.each([
-							{attribute: 'type', value: 'button'},
-							{attribute: 'id', value: id},
-							{attribute: 'aria-label', value: label},
-							{attribute: 'aria-current', value: active ? 'true' : null}
-						])('that it has "$value" as "$attribute" attribute', async ({attribute, value}) => {
-							expect(await button.getAttribute(attribute)).toBe(value);
-						});
-
-						test(`that it has "${text}" as text`, async () => {
-							expect(await button.text()).toEqual(text);
-						});
-
-						describe('on click', () => {
-							beforeEach(() => {
-								jest.spyOn(component, 'changeLanguage');
-								button.click();
-							});
-
-							test('that it calls changeLanguage once', () => {
-								expect(component.changeLanguage).toHaveBeenCalledTimes(1);
-							});
-
-							test(`that it calls changeLanguage with "${lang}"`, () => {
-								expect(component.changeLanguage).toHaveBeenCalledWith(lang);
-							});
-						});
+					test(`that it has $text as text`, async () => {
+						expect(await selectOptionTestElement.text()).toEqual(text);
 					});
 				});
 			});
