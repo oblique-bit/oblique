@@ -2,9 +2,11 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
-import {TypographyCodeExamplesComponent} from './typography-code-examples.component';
 import {By} from '@angular/platform-browser';
-import {TypographyExampleTypographyPreviewComponent} from './previews/typography/typography-example-typography-preview.component';
+import {TypographyExampleInlineElementsPreviewComponent} from './previews/inline-elements/typography-example-inline-elements-preview.component';
+import {TypographyCodeExamplesComponent} from './typography-code-examples.component';
+import {TypographyExampleHeadingsPreviewComponent} from './previews/headings/typography-example-headings-preview.component';
+import {TypographyExampleMixinsPreviewComponent} from './previews/mixins/typography-example-mixins-preview.component';
 
 describe(TypographyCodeExamplesComponent.name, () => {
 	let component: TypographyCodeExamplesComponent;
@@ -24,11 +26,19 @@ describe(TypographyCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	test(`that there is 1 ${CodeExampleComponent.name}`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(1);
+	test(`that there is 4 ${CodeExampleComponent.name}`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(4);
 	});
 
-	test(`that there is 1 ${TypographyExampleTypographyPreviewComponent.name}`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(TypographyExampleTypographyPreviewComponent)).length).toBe(1);
+	test(`that there is 1 ${TypographyExampleInlineElementsPreviewComponent.name}`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(TypographyExampleInlineElementsPreviewComponent)).length).toBe(1);
+	});
+
+	test(`that there is 1 ${TypographyExampleHeadingsPreviewComponent.name}`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(TypographyExampleHeadingsPreviewComponent)).length).toBe(1);
+	});
+
+	test(`that there is 1 ${TypographyExampleMixinsPreviewComponent.name}`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(TypographyExampleMixinsPreviewComponent)).length).toBe(1);
 	});
 });
