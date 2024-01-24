@@ -67,7 +67,6 @@ export {
 export {ObTIconConfig, ObIconModule, ObIconService, ObIconConfig, ObEIcon} from './lib/icon/icon.module';
 export {ObLanguageModule, ObLanguageService, ObDatePipe} from './lib/language/language.module';
 export {
-	ObLanguageSelectorType,
 	ObMasterLayoutComponent,
 	ObMasterLayoutComponentService,
 	ObMasterLayoutConfig,

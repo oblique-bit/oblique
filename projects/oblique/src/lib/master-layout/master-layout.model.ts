@@ -130,5 +130,3 @@ export enum ObEEnvironment {
 export const OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION = new InjectionToken<boolean>(
 	'Are external links icons hidden in the main navigation'
 );
-
-export type ObLanguageSelectorType = 'dropdown' | 'tabs';
