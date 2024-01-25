@@ -43,7 +43,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 				this.removeContentProjectionMarker('obLocales'),
 				this.removeActivateServiceNavigationToken(),
 				this.removeTableCicd(),
-				this.runMDCMigration()
+				this.runMDCMigration(),
+				this.removeTransformMock()
 			])(tree, _context);
 	}
 
@@ -242,6 +243,19 @@ export class UpdateV10toV11 implements ObIMigrations {
 			return externalSchematic('@angular/material', 'mdc-migration', {
 				components: ['all']
 			});
+		});
+	}
+
+	private removeTransformMock(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, `Remove transform mock in jest configuration`);
+			const path = 'tests/jestGlobalMocks.ts';
+			tree.overwrite(
+				path,
+				readFile(tree, path).replace(/Object\.defineProperty\s*\(\s*document\.body\.style\s*,\s*['"]transform['"].*?}\s*\)\s*;\s+/gs, '')
+			);
+			// can't use applyInTree as the target file is outside sourceRoot
+			return tree;
 		});
 	}
 }
