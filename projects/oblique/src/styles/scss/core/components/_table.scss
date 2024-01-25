@@ -30,6 +30,10 @@ table {
 		background-color: variables.$ob-secondary-50;
 	}
 
+	.mat-mdc-row {
+		height: auto;
+	}
+
 	&:not(.ob-table-disable-hover-style) tbody tr:hover {
 		background-color: variables.$ob-secondary-100;
 	}
