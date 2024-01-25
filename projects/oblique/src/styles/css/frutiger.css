@@ -1,3 +1,7 @@
+/**
+ * @deprecated since version 11.0.0. Frutiger will be replaced by Noto from Oblique 12 on.
+ */
+
 /* ../../../ is to cancel assets/styles/css path while keeping an eventual baseHref */
 @font-face {
 	font-family: "Frutiger Neue";
