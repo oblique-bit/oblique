@@ -5,13 +5,17 @@ import {
 	OnChanges,
 	OnInit,
 	Output,
-	SimpleChange,SimpleChanges,
+	SimpleChange,
+	SimpleChanges,
 	ViewEncapsulation,
 	booleanAttribute,
 	inject,
 	numberAttribute
 } from '@angular/core';
-import {NgIf} from '@angular/common';
+import {NgFor, NgIf} from '@angular/common';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatBadgeModule} from '@angular/material/badge';
 import {Observable} from 'rxjs';
 import {ObServiceNavigationModule} from '../../../oblique/src/lib/service-navigation/service-navigation.module';
 import {
@@ -20,8 +24,10 @@ import {
 	ObIServiceNavigationLink,
 	ObLoginState
 } from '../../../oblique/src/lib/service-navigation/service-navigation.model';
+import {ObEIcon} from '../../../oblique/src/lib/icon/icon.model';
+import {ObButtonModule} from '../../../oblique/src/lib/button/button.module';
 import {TranslationsService} from './translations-service';
-import {ObILink} from './service-navigation-web-component.model';
+import {ObICustomButton, ObILink} from './service-navigation-web-component.model';
 
 @Component({
 	standalone: true,
@@ -29,7 +35,7 @@ import {ObILink} from './service-navigation-web-component.model';
 	templateUrl: './service-navigation-web-component.component.html',
 	styleUrl: '../../../oblique/src/styles/scss/oblique-core.scss',
 	encapsulation: ViewEncapsulation.None,
-	imports: [ObServiceNavigationModule, NgIf],
+	imports: [ObServiceNavigationModule, NgIf, MatButtonModule, MatIconModule, NgFor, MatBadgeModule, ObButtonModule],
 	providers: [TranslationsService]
 })
 export class ObServiceNavigationWebComponentComponent implements OnChanges, OnInit {
@@ -49,13 +55,16 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	@Input({transform: booleanAttribute}) displayAuthentication: boolean;
 	@Input() rootUrl: string;
 	@Input() returnUrl: string;
+	@Input() customButtons: string;
 	@Output() readonly languageChange: Observable<string>;
 	@Output() readonly loginState = new EventEmitter<ObLoginState>();
+	@Output() readonly buttonClickedEmitter = new EventEmitter<ObEIcon>();
 
 	environmentParsed: ObEPamsEnvironment;
 	infoContactParsed: ObIServiceNavigationContact | undefined;
 	infoLinksParsed: ObIServiceNavigationLink[] = [];
 	profileLinksParsed: ObIServiceNavigationLink[] = [];
+	customButtonsParsed: ObICustomButton[] = [];
 	private readonly translationService = inject(TranslationsService);
 
 	constructor() {
@@ -66,6 +75,7 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 		this.infoContactParsed = this.parseContact(changes.infoContact);
 		this.infoLinksParsed = this.parseLinks(changes.infoLinks, 'info');
 		this.profileLinksParsed = this.parseLinks(changes.profileLinks, 'profile');
+		this.customButtonsParsed = this.parseCustomButtons(changes.customButtons);
 		this.translationService.handleTranslations(this.infoLinks, this.profileLinks);
 	}
 
@@ -99,5 +109,9 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 			url: `${type}-link.${index}.url`,
 			label: `${type}-link.${index}.label`
 		}));
+	}
+
+	private parseCustomButtons(customButtons: SimpleChange | undefined): ObICustomButton[] {
+		return customButtons ? JSON.parse(customButtons.currentValue || '[]') : this.customButtonsParsed;
 	}
 }

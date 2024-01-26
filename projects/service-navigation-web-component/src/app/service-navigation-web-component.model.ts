@@ -1,3 +1,5 @@
+import {ObEIcon} from '@oblique/oblique';
+
 export interface ObILink {
 	de: string;
 	fr: string;
@@ -10,4 +12,9 @@ export interface ObILink {
 		it: string;
 		en: string;
 	};
+}
+
+export interface ObICustomButton {
+	obliqueIconName: ObEIcon;
+	badge: string;
 }

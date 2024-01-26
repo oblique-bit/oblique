@@ -15,4 +15,19 @@
 	[rootUrl]="rootUrl"
 	[returnUrl]="returnUrl"
 	(loginState)="loginState.emit($event)"
-/>
+>
+	<ng-container *ngFor="let button of customButtonsParsed">
+		<ng-template #customWidgetTemplate>
+			<button
+				type="button"
+				mat-icon-button
+				obButton="tertiary"
+				[matBadge]="button.badge"
+				matBadgeColor="warn"
+				(click)="buttonClickedEmitter.emit(button.obliqueIconName)"
+			>
+				<mat-icon [svgIcon]="button.obliqueIconName" />
+			</button>
+		</ng-template>
+	</ng-container>
+</ob-service-navigation>
