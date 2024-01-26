@@ -1,7 +1,18 @@
-import {Component, Input, OnInit, ViewEncapsulation, booleanAttribute, inject, numberAttribute} from '@angular/core';
+import {
+	Component,
+	Input,
+	OnChanges,
+	OnInit,
+	SimpleChange,
+	SimpleChanges,
+	ViewEncapsulation,
+	booleanAttribute,
+	inject,
+	numberAttribute
+} from '@angular/core';
 import {NgIf} from '@angular/common';
 import {ObServiceNavigationModule} from '../../../oblique/src/lib/service-navigation/service-navigation.module';
-import {ObEPamsEnvironment} from '../../../oblique/src/lib/service-navigation/service-navigation.model';
+import {ObEPamsEnvironment, ObIServiceNavigationContact} from '../../../oblique/src/lib/service-navigation/service-navigation.model';
 import {TranslationsService} from './translations-service';
 
 @Component({
@@ -13,10 +24,11 @@ import {TranslationsService} from './translations-service';
 	imports: [ObServiceNavigationModule, NgIf],
 	providers: [TranslationsService]
 })
-export class ObServiceNavigationWebComponentComponent implements OnInit {
+export class ObServiceNavigationWebComponentComponent implements OnChanges, OnInit {
 	@Input() languageList: string;
 	@Input() defaultLanguage: string;
 	@Input() environment: 'DEV' | 'REF' | 'TEST' | 'ABN' | 'PROD';
+	@Input() infoContact: string;
 	@Input({transform: numberAttribute}) maxLastUsedApplications: number;
 	@Input({transform: numberAttribute}) maxFavoriteApplications: number;
 	@Input({transform: booleanAttribute}) displayLanguages: boolean;
@@ -29,7 +41,12 @@ export class ObServiceNavigationWebComponentComponent implements OnInit {
 	@Input() returnUrl: string;
 
 	environmentParsed: ObEPamsEnvironment;
+	infoContactParsed: ObIServiceNavigationContact | undefined;
 	private readonly translationService = inject(TranslationsService);
+
+	ngOnChanges(changes: SimpleChanges): void {
+		this.infoContactParsed = this.parseContact(changes.infoContact);
+	}
 
 	ngOnInit(): void {
 		this.translationService.initializeTranslations(this.languageList, this.defaultLanguage);
@@ -44,5 +61,10 @@ export class ObServiceNavigationWebComponentComponent implements OnInit {
 			);
 		}
 		return ObEPamsEnvironment[environmentName];
+	}
+
+	private parseContact(infoContact: SimpleChange | undefined): ObIServiceNavigationContact | undefined {
+		// undefined is coalesced into null because JSON.parse(null) is valid
+		return infoContact ? JSON.parse(infoContact.currentValue || null) : this.infoContactParsed;
 	}
 }
