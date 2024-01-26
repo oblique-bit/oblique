@@ -1,4 +1,5 @@
 import {createApplication} from '@angular/platform-browser';
+import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideHttpClient} from '@angular/common/http';
 import {importProvidersFrom} from '@angular/core';
 import {createCustomElement} from '@angular/elements';
@@ -8,7 +9,11 @@ import {multiTranslateLoader} from '../../oblique/src/lib/utilities';
 import {ObServiceNavigationWebComponentComponent} from './app/service-navigation-web-component.component';
 
 createApplication({
-	providers: [provideHttpClient(), importProvidersFrom(ObIconModule.forRoot(), TranslateModule.forRoot(multiTranslateLoader()))]
+	providers: [
+		provideHttpClient(),
+		importProvidersFrom(ObIconModule.forRoot(), TranslateModule.forRoot(multiTranslateLoader())),
+		provideAnimations()
+	]
 })
 	.then(appRef => {
 		const element = createCustomElement(ObServiceNavigationWebComponentComponent, {injector: appRef.injector});
