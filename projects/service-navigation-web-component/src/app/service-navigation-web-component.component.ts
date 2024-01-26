@@ -12,8 +12,13 @@ import {
 } from '@angular/core';
 import {NgIf} from '@angular/common';
 import {ObServiceNavigationModule} from '../../../oblique/src/lib/service-navigation/service-navigation.module';
-import {ObEPamsEnvironment, ObIServiceNavigationContact} from '../../../oblique/src/lib/service-navigation/service-navigation.model';
+import {
+	ObEPamsEnvironment,
+	ObIServiceNavigationContact,
+	ObIServiceNavigationLink
+} from '../../../oblique/src/lib/service-navigation/service-navigation.model';
 import {TranslationsService} from './translations-service';
+import {ObILink} from './service-navigation-web-component.model';
 
 @Component({
 	standalone: true,
@@ -29,6 +34,8 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	@Input() defaultLanguage: string;
 	@Input() environment: 'DEV' | 'REF' | 'TEST' | 'ABN' | 'PROD';
 	@Input() infoContact: string;
+	@Input() infoLinks: string;
+	@Input() profileLinks: string;
 	@Input({transform: numberAttribute}) maxLastUsedApplications: number;
 	@Input({transform: numberAttribute}) maxFavoriteApplications: number;
 	@Input({transform: booleanAttribute}) displayLanguages: boolean;
@@ -42,14 +49,20 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 
 	environmentParsed: ObEPamsEnvironment;
 	infoContactParsed: ObIServiceNavigationContact | undefined;
+	infoLinksParsed: ObIServiceNavigationLink[] = [];
+	profileLinksParsed: ObIServiceNavigationLink[] = [];
 	private readonly translationService = inject(TranslationsService);
 
 	ngOnChanges(changes: SimpleChanges): void {
 		this.infoContactParsed = this.parseContact(changes.infoContact);
+		this.infoLinksParsed = this.parseLinks(changes.infoLinks, 'info');
+		this.profileLinksParsed = this.parseLinks(changes.profileLinks, 'profile');
+		this.translationService.handleTranslations(this.infoLinks, this.profileLinks);
 	}
 
 	ngOnInit(): void {
 		this.translationService.initializeTranslations(this.languageList, this.defaultLanguage);
+		this.translationService.handleTranslations(this.infoLinks, this.profileLinks); // necessary because ngOnChanges is called before ngOnInit
 		this.environmentParsed = this.parseEnvironment(this.environment);
 	}
 
@@ -66,5 +79,16 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	private parseContact(infoContact: SimpleChange | undefined): ObIServiceNavigationContact | undefined {
 		// undefined is coalesced into null because JSON.parse(null) is valid
 		return infoContact ? JSON.parse(infoContact.currentValue || null) : this.infoContactParsed;
+	}
+
+	private parseLinks(rawLinks: SimpleChange | undefined, type: 'info' | 'profile'): ObIServiceNavigationLink[] {
+		if (!rawLinks) {
+			return type === 'info' ? this.infoLinksParsed : this.profileLinksParsed;
+		}
+		const links: ObILink[] = JSON.parse(rawLinks.currentValue ?? '[]');
+		return links.map((link, index) => ({
+			url: `${type}-link.${index}.url`,
+			label: `${type}-link.${index}.label`
+		}));
 	}
 }

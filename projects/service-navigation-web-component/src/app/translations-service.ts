@@ -5,6 +5,7 @@ import * as translationsDE from '../../../oblique/src/assets/i18n/oblique-de.jso
 import * as translationsFR from '../../../oblique/src/assets/i18n/oblique-fr.json';
 import * as translationsIT from '../../../oblique/src/assets/i18n/oblique-it.json';
 import * as translationsEN from '../../../oblique/src/assets/i18n/oblique-en.json';
+import {ObILink} from './service-navigation-web-component.model';
 
 @Injectable()
 export class TranslationsService {
@@ -14,6 +15,14 @@ export class TranslationsService {
 		const languages = this.parseLanguages(languageList);
 		const parsedDefaultLanguage = this.parseDefaultLanguage(defaultLanguage, languages);
 		this.registerLanguagesAndTranslations(languages, parsedDefaultLanguage);
+	}
+
+	handleTranslations(infoLinks: string, profileLinks: string): void {
+		const languages = this.translate.getLangs();
+		const translations = this.buildTranslations(languages, infoLinks, profileLinks);
+		languages.forEach(language => {
+			this.translate.setTranslation(language, translations[language], true);
+		});
 	}
 
 	private parseLanguages(languageList: string): string[] {
@@ -40,7 +49,7 @@ export class TranslationsService {
 	private registerLanguagesAndTranslations(languages: string[], defaultLanguage: string): void {
 		this.translate.addLangs(languages);
 		languages.forEach(language => {
-			this.translate.setTranslation(language, this.getObliqueTranslations(language));
+			this.translate.setTranslation(language, this.getObliqueTranslations(language), true);
 		});
 		this.translate.setDefaultLang(defaultLanguage);
 		this.translate.use(defaultLanguage);
@@ -59,5 +68,36 @@ export class TranslationsService {
 			default:
 				throw new Error(`Unknown "${language}" language`);
 		}
+	}
+
+	private buildTranslations(languages: string[], infoLinks: string, profileLinks: string): Record<string, Record<string, string>> {
+		let translations = this.initializeTranslationsObject(languages);
+		translations = this.populateTranslations(infoLinks, 'info', languages, translations);
+		translations = this.populateTranslations(profileLinks, 'profile', languages, translations);
+		return translations;
+	}
+
+	private initializeTranslationsObject(languages: string[]): Record<string, Record<string, string>> {
+		return languages.reduce((translations, language) => ({...translations, [language]: {}}), {});
+	}
+
+	private populateTranslations(
+		rawLinks: string | undefined,
+		type: string,
+		languages: string[],
+		translations: Record<string, Record<string, string>>
+	): Record<string, Record<string, string>> {
+		if (rawLinks) {
+			const links: ObILink[] = JSON.parse(rawLinks);
+			links.forEach((link, index) => {
+				languages.forEach(language => {
+					translations[language][`${type}-link.${index}.label`] = link[language];
+					if (link.links) {
+						translations[language][`${type}-link.${index}.url`] = link.links[language];
+					}
+				});
+			});
+		}
+		return translations;
 	}
 }
