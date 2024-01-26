@@ -49,8 +49,11 @@
 		}
 	}
 
-	&:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
-		@include mat-tab.ob-tabs-bottom-border-red();
+	&:not(.mat-mdc-tab-disabled),
+	&.mdc-tab--active:focus {
+		.mdc-tab-indicator .mdc-tab-indicator__content--underline {
+			@include mat-tab.ob-tabs-bottom-border-red();
+		}
 	}
 
 	.mdc-tab__text-label {
