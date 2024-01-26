@@ -71,8 +71,8 @@ export class FeedbackFormComponent {
 		const control = this.formGroup.get(controlName);
 		return control.valueChanges.pipe(
 			debounceTime(200),
-			map(() => this.validateControl(control, controlName)),
-			startWith('')
+			startWith(''),
+			map(() => this.validateControl(control, controlName))
 		);
 	}
 

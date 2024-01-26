@@ -27,6 +27,7 @@
 		<mat-error>{{ errors.email$ | async }}</mat-error>
 	</mat-form-field>
 	<div class="form-actions">
+		<button type="button" mat-button obButton="secondary" (click)="close()">Close</button>
 		<button type="reset" mat-button obButton="secondary" (click)="reset($event)">Reset</button>
 		<a
 			mat-button
