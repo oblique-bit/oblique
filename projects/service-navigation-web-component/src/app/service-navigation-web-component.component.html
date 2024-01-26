@@ -1,1 +1,8 @@
-<ob-service-navigation />
+<ob-service-navigation
+	*ngIf="environmentParsed"
+	[environment]="environmentParsed"
+	[maxLastUsedApplications]="maxLastUsedApplications"
+	[maxFavoriteApplications]="maxFavoriteApplications"
+	[rootUrl]="rootUrl"
+	[returnUrl]="returnUrl"
+/>
