@@ -49,6 +49,9 @@
 			document.querySelector("#showAuthentication").addEventListener("change", (event) => {
 				document.querySelector("ob-service-navigation-web-component").setAttribute("display-authentication", event.srcElement.checked);
 			});
+			document
+				.querySelector("ob-service-navigation-web-component")
+				.addEventListener("languageChange", (event) => console.log("languageChange", event.detail));
 		</script>
 	</body>
 </html>

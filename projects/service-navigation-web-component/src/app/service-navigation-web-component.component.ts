@@ -3,6 +3,7 @@ import {
 	Input,
 	OnChanges,
 	OnInit,
+	Output,
 	SimpleChange,
 	SimpleChanges,
 	ViewEncapsulation,
@@ -11,6 +12,7 @@ import {
 	numberAttribute
 } from '@angular/core';
 import {NgIf} from '@angular/common';
+import {Observable} from 'rxjs';
 import {ObServiceNavigationModule} from '../../../oblique/src/lib/service-navigation/service-navigation.module';
 import {
 	ObEPamsEnvironment,
@@ -46,12 +48,17 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	@Input({transform: booleanAttribute}) displayAuthentication: boolean;
 	@Input() rootUrl: string;
 	@Input() returnUrl: string;
+	@Output() readonly languageChange: Observable<string>;
 
 	environmentParsed: ObEPamsEnvironment;
 	infoContactParsed: ObIServiceNavigationContact | undefined;
 	infoLinksParsed: ObIServiceNavigationLink[] = [];
 	profileLinksParsed: ObIServiceNavigationLink[] = [];
 	private readonly translationService = inject(TranslationsService);
+
+	constructor() {
+		this.languageChange = this.translationService.languageChange$;
+	}
 
 	ngOnChanges(changes: SimpleChanges): void {
 		this.infoContactParsed = this.parseContact(changes.infoContact);

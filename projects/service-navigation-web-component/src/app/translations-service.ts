@@ -1,5 +1,6 @@
 import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {Observable, map} from 'rxjs';
 
 import * as translationsDE from '../../../oblique/src/assets/i18n/oblique-de.json';
 import * as translationsFR from '../../../oblique/src/assets/i18n/oblique-fr.json';
@@ -9,7 +10,12 @@ import {ObILink} from './service-navigation-web-component.model';
 
 @Injectable()
 export class TranslationsService {
+	readonly languageChange$: Observable<string>;
 	private readonly translate = inject(TranslateService);
+
+	constructor() {
+		this.languageChange$ = this.translate.onLangChange.pipe(map(event => event.lang));
+	}
 
 	initializeTranslations(languageList: string, defaultLanguage: string | undefined): void {
 		const languages = this.parseLanguages(languageList);
