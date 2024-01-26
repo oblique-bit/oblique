@@ -1,11 +1,11 @@
 import {
 	Component,
+	EventEmitter,
 	Input,
 	OnChanges,
 	OnInit,
 	Output,
-	SimpleChange,
-	SimpleChanges,
+	SimpleChange,SimpleChanges,
 	ViewEncapsulation,
 	booleanAttribute,
 	inject,
@@ -17,7 +17,8 @@ import {ObServiceNavigationModule} from '../../../oblique/src/lib/service-naviga
 import {
 	ObEPamsEnvironment,
 	ObIServiceNavigationContact,
-	ObIServiceNavigationLink
+	ObIServiceNavigationLink,
+	ObLoginState
 } from '../../../oblique/src/lib/service-navigation/service-navigation.model';
 import {TranslationsService} from './translations-service';
 import {ObILink} from './service-navigation-web-component.model';
@@ -49,6 +50,7 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	@Input() rootUrl: string;
 	@Input() returnUrl: string;
 	@Output() readonly languageChange: Observable<string>;
+	@Output() readonly loginState = new EventEmitter<ObLoginState>();
 
 	environmentParsed: ObEPamsEnvironment;
 	infoContactParsed: ObIServiceNavigationContact | undefined;
