@@ -343,7 +343,7 @@ function removeInjectionFromInject(tree: Tree, filePath: string, token: string):
 }
 
 function extractDirectoryFromPath(filePath: string): string {
-	return /(?<directory>.*\/)/.exec(filePath)?.groups?.directory ?? '';
+	return /(?<directory>.*)\//.exec(filePath)?.groups?.directory ?? '';
 }
 
 function extractBootstrappedModule(fileContent: string): string {
