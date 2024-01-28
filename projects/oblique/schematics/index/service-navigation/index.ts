@@ -1,8 +1,17 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {Change} from '@schematics/angular/utility/change';
 import {addSymbolToNgModuleMetadata, insertImport} from '@schematics/angular/utility/ast-utils';
-import {ObliquePackage, applyInTree, createSafeRule, infoMigration, readFile, replaceInFile} from '../utils';
-import {appModulePath, applyChanges, createSrcFile} from '../ng-add/ng-add-utils';
+import {
+	ObliquePackage,
+	applyInTree,
+	createSafeRule,
+	getFilePathPerProject,
+	getRootModulePathPerProject,
+	infoMigration,
+	readFile,
+	replaceInFile
+} from '../utils';
+import {applyChanges, createSrcFile} from '../ng-add/ng-add-utils';
 
 export function serviceNavigation(): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -80,23 +89,27 @@ export function removeCode(regex: RegExp, caseDescription: string): Rule {
 
 export function addProvidersToRootModule(providers: {provide: string; providerName: string; additionalImports?: string[]}[]): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		const providerChanges: Change[] = [];
-		const sourceFile = createSrcFile(tree, appModulePath);
-		const providerImports: string[] = [];
-		providers.forEach((provider: {provide: string; providerName: string; additionalImports?: string[]}) => {
-			if (!providerAlreadyExists(provider.providerName, readFile(tree, appModulePath))) {
-				providerChanges.push(...addSymbolToNgModuleMetadata(sourceFile, appModulePath, 'providers', provider.provide));
-				providerImports.push(...setupImportArray(provider.providerName, tree, provider.additionalImports));
-				infoMigration(_context, `Oblique's ServiceNavigation: Adding provider  ${provider.providerName} in ${appModulePath}`);
-			}
+		const mainTsPathPerProject = getFilePathPerProject(tree, ['architect', 'build', 'options', 'main']);
+		getRootModulePathPerProject(tree, mainTsPathPerProject).forEach(({path: appModulePath}) => {
+			const providerChanges: Change[] = [];
+			const sourceFile = createSrcFile(tree, appModulePath);
+			const providerImports: string[] = [];
+			providers.forEach((provider: {provide: string; providerName: string; additionalImports?: string[]}) => {
+				if (!providerAlreadyExists(provider.providerName, readFile(tree, appModulePath))) {
+					providerChanges.push(...addSymbolToNgModuleMetadata(sourceFile, appModulePath, 'providers', provider.provide));
+					providerImports.push(...setupImportArray(provider.providerName, tree, appModulePath, provider.additionalImports));
+					infoMigration(_context, `Oblique's ServiceNavigation: Adding provider  ${provider.providerName} in ${appModulePath}`);
+				}
+			});
+			const importChanges = importProviderModules(providerImports, sourceFile, appModulePath, _context);
+			const changes = [...providerChanges, ...importChanges];
+			applyChanges(tree, appModulePath, changes);
 		});
-		const importChanges = importProviderModules(providerImports, sourceFile, _context);
-		const changes = [...providerChanges, ...importChanges];
-		return applyChanges(tree, appModulePath, changes);
+		return tree;
 	});
 }
 
-export function setupImportArray(providerName: string, tree: Tree, additionalImports?: string[]): string[] {
+export function setupImportArray(providerName: string, tree: Tree, appModulePath: string, additionalImports?: string[]): string[] {
 	const providerImports: string[] = [];
 	if (additionalImports && additionalImports.length > 0) {
 		providerImports.push(...additionalImports);
@@ -115,7 +128,12 @@ export function providerAlreadyExists(providerName: string, fileContent: string)
 	return hasProviderRegex.test(fileContent);
 }
 
-export function importProviderModules(importModuleNames: string[], sourceFile: any, _context: SchematicContext): Change[] {
+export function importProviderModules(
+	importModuleNames: string[],
+	sourceFile: any,
+	appModulePath: string,
+	_context: SchematicContext
+): Change[] {
 	return importModuleNames.map(providerModule => {
 		infoMigration(_context, `Oblique's ServiceNavigation: Adding import ${providerModule} in ${appModulePath}`);
 		return insertImport(sourceFile, appModulePath, providerModule, ObliquePackage);
