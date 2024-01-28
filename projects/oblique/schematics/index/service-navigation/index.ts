@@ -31,12 +31,8 @@ export function serviceNavigation(): Rule {
 
 export function removeHeaderWidgetCode(): Rule[] {
 	return [
-		removeCode(/\s*<header-widget-mobile.*\s*.*\s*<\/header-widget-mobile>\s*/g, '<header-widget-mobile> tags'),
+		removeCode(/^\s*<ng-template #obHeaderMobileControl>\s*<header-widget-mobile.*?<\/ng-template>\s*$/gms, '<header-widget-mobile> tags'),
 		removeCode(/\s*<header-widget\s?(?:obHeaderCustomControl)?\s*>\s*.*\s*<\/header-widget>\s*/g, '<header-widget> tags'),
-		removeCode(
-			/\s*<ng-template #obHeaderMobileControl>\s*<\/ng-template>\s*/g,
-			"ng-templates with obHeaderMobileControl-query if it's empty"
-		),
 		removeCode(/\s*(?:const|let)?.*headerWidgetScriptElement.*\s?.*\s?;\s*$/gm, 'headerWidgetScriptElement declaration'),
 		removeCode(/\s*headerWidgetScriptElement.setAttribute\(.*\s?.*\s*\)?;\s*$/gm, 'headerWidgetScriptElement.setAttribute code'),
 		removeCode(
