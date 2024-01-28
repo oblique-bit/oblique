@@ -15,6 +15,13 @@ export interface PathPerProject {
 	path: string;
 }
 
+export interface RootFilesPaths {
+	projectName: string;
+	appModulePath: string;
+	appComponentPath: string;
+	appComponentTemplatePath: string;
+}
+
 export function error(msg: string): void {
 	throw new Error(`${colors.symbols.cross} Migration failed: ${msg}\n`);
 }
@@ -299,6 +306,23 @@ export function getRootModulePathPerProject(tree: Tree, mainTsPaths: PathPerProj
 		.map(file => ({project: file.project, path: file.rootModulePath}));
 }
 
+export function getRootFilesPaths(tree: Tree): RootFilesPaths[] {
+	const mainTsPathPerProject = getFilePathPerProject(tree, ['architect', 'build', 'options', 'main']);
+	return getRootModulePathPerProject(tree, mainTsPathPerProject)
+		.map(project => ({...project, content: readFile(tree, project.path)}))
+		.map(project => ({...project, componentName: extractBootstrappedComponent(project.content)}))
+		.map(project => ({...project, componentPath: extractComponentPath(project.componentName, project.content)}))
+		.map(project => ({...project, componentPath: mergePaths(project.path, project.componentPath)}))
+		.map(project => ({...project, content: readFile(tree, project.componentPath)}))
+		.map(project => ({...project, templatePath: extractTemplatePath(project.content)}))
+		.map(project => ({
+			projectName: project.project,
+			appModulePath: project.path,
+			appComponentPath: project.componentPath,
+			appComponentTemplatePath: mergePaths(project.componentPath, project.templatePath)
+		}));
+}
+
 export function getProjectList(tree: Tree): string[] {
 	const json = getJson(tree, angularJsonConfigPath);
 	return Object.keys(getJsonProperty(json, 'projects'));
@@ -322,6 +346,33 @@ export function addInjectionInClass(tree: Tree, filePath: string, token: string,
 			filePath,
 			/(?<indent>[^\S\r\n]+)(?<!(?:new|get|set|=)\s*)(?=\w+\()/,
 			`$<indent>private readonly ${name} = inject(${token});\n\n$<indent>`
+		);
+	}
+}
+
+export function appendPrivateVoidFunctionToClass(tree: Tree, filePath: string, code: string): void {
+	const fileContent = readFile(tree, filePath);
+	if (!fileContent.includes(code)) {
+		tree.overwrite(filePath, fileContent.replace(/(?=}\s*$)/, `\tprivate ${code}(): void{\t\t\n}\n`));
+	}
+}
+
+export function appendCodeToFunction(tree: Tree, filePath: string, functionName: string, code: string): void {
+	const fileContent = readFile(tree, filePath);
+	if (!fileContent.includes(code)) {
+		tree.overwrite(
+			filePath,
+			fileContent.replace(new RegExp(`(?<=${functionName}\\s*\\(.*?\\)(?:\\s*:\\s*\\w+)?\\s*\\{.*?)(?=}(?![;)]))`, 's'), `\t${code}\n\t`)
+		);
+	}
+}
+
+export function addConstructor(tree: Tree, filePath: string): void {
+	const fileContent = readFile(tree, filePath);
+	if (!fileContent.includes('constructor')) {
+		tree.overwrite(
+			filePath,
+			fileContent.replace(/(?<indent>[^\S\r\n]+)(?<!(?:new|get|set|=)\s*)(?=\w+\()/, `$<indent>constructor() {};\n\n`)
 		);
 	}
 }
@@ -399,4 +450,28 @@ function setOption(json: any, path: string[], value?: any): void {
 			delete json[option];
 		}
 	}
+}
+
+function mergePaths(basePath: string, filePath: string): string {
+	let depth = 0;
+	while (filePath.startsWith('../')) {
+		filePath.replace('../', '');
+		depth++;
+	}
+
+	return [...basePath.split('/').slice(0, -(depth + 1)), ...filePath.replace('./', '').split('/')].join('/');
+}
+
+function extractBootstrappedComponent(fileContent: string): string {
+	return /bootstrap\s*:\s*\[\s*(?<appComponent>\w*)\s*]/s.exec(fileContent)?.groups?.appComponent ?? '';
+}
+
+function extractComponentPath(componentName: string, fileContent: string): string {
+	const filePath =
+		new RegExp(`import\\s+{\\s*${componentName}\\s*}\\s*from\\s*['"](?<path>.*?)['"]`, 's').exec(fileContent)?.groups?.path ?? '';
+	return addFileExtension(filePath);
+}
+
+function extractTemplatePath(fileContent: string): string {
+	return /templateUrl\s*:\s*['"](?<templatePath>.*?)['"]/s.exec(fileContent)?.groups?.templatePath ?? '';
 }

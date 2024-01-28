@@ -1,21 +1,29 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {Change} from '@schematics/angular/utility/change';
-import {addSymbolToNgModuleMetadata, insertImport} from '@schematics/angular/utility/ast-utils';
+import {addImportToModule, addSymbolToNgModuleMetadata, insertImport} from '@schematics/angular/utility/ast-utils';
 import {
 	ObliquePackage,
+	addConstructor,
+	addInjectionInClass,
+	appendCodeToFunction,
+	appendPrivateVoidFunctionToClass,
 	applyInTree,
 	createSafeRule,
 	getFilePathPerProject,
+	getRootFilesPaths,
 	getRootModulePathPerProject,
 	infoMigration,
+	infoText,
 	readFile,
-	replaceInFile
+	replaceInFile,
+	warn
 } from '../utils';
 import {applyChanges, createSrcFile} from '../ng-add/ng-add-utils';
 
 export function serviceNavigation(): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
+			addServiceNavigationConfiguration(),
 			...removeHeaderWidgetCode(),
 			addProvidersToRootModule([
 				{
@@ -27,6 +35,137 @@ export function serviceNavigation(): Rule {
 			removeEmptyLifecycleHook('ngOnInit'),
 			removeEmptyLifecycleHook('ngAfterViewInit')
 		])(tree, _context);
+}
+
+function addServiceNavigationConfiguration(): Rule {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		getRootFilesPaths(tree)
+			.map(project => ({...project, templateContent: readFile(tree, project.appComponentTemplatePath)}))
+			.map(project => ({...project, parameters: extractHeaderWidgetParameters(project.templateContent)}))
+			.forEach(({appModulePath, appComponentPath, parameters}) => {
+				parameters.forEach(({name, value}) => mapParameter(tree, name, value, appModulePath, appComponentPath, context));
+			});
+
+		return tree;
+	});
+}
+
+function extractHeaderWidgetParameters(fileContent: string): {name: string; value: string}[] {
+	return (/<header-widget(?<parameters>.*?)(?:><\/header-widget|\/)>/s.exec(fileContent)?.groups?.parameters ?? '')
+		.replace(/\s+/gs, ' ')
+		.trim()
+		.split(/(?<=["']) /)
+		.map(attribute => attribute.split('='))
+		.map(([name, value]) => ({name: formatKey(name), value: formatValue(value)}));
+}
+
+function formatKey(key: string): string {
+	return key.replace(/[()[\]]/g, '').replace(/-[a-z]/g, match => match[1].toUpperCase());
+}
+
+function formatValue(value: string | undefined): string {
+	return (value ?? '').replace(/^["']|["']$/g, '');
+}
+
+function mapParameter(
+	tree: Tree,
+	name: string,
+	value: string,
+	appModulePath: string,
+	appComponentPath: string,
+	context: SchematicContext
+): void {
+	switch (name) {
+		case 'environment':
+			return mapEnvironment(tree, value, appModulePath);
+		case 'languageList':
+			return addMasterLayoutConfig(tree, 'locale.locales', `['${value.split(',').join("','")}']`, appModulePath);
+		case 'defaultLanguage':
+			return addMasterLayoutConfig(tree, 'locale.defaultLanguage', `'${value}'`, appModulePath);
+		case 'contact':
+			return addMasterLayoutConfig(tree, 'header.serviceNavigation.infoContact', value, appModulePath);
+		case 'appId':
+			return addMasterLayoutConfig(tree, 'header.serviceNavigation.pamsAppId', value, appModulePath);
+		case 'showInfo':
+			return addWidgetVisibility(tree, 'displayInfo', value, appModulePath);
+		case 'showLanguages':
+			return addWidgetVisibility(tree, 'displayLanguages', value, appModulePath);
+		case 'showNotifications':
+			return addWidgetVisibility(tree, 'displayMessage', value, appModulePath);
+		case 'showEportalServices':
+			return addWidgetVisibility(tree, 'displayApplications', value, appModulePath);
+		case 'loginStatus':
+			return mapLoginStatus(tree, value, appComponentPath);
+		case 'languageChange':
+			return mapLanguageChange(tree, value, appComponentPath);
+		case 'links':
+		case 'profileLinks':
+		case 'customButtons':
+			warn(context, `"The ${name}" Header Widget parameter couldn't be automatically migrated, you need to process it manually.`);
+			return undefined;
+		case 'openInNewTab':
+		case 'cms':
+		case 'showSettings':
+			warn(context, `The "${name}" Header Widget parameter doesn't exist with the Service Navigation, it will be removed.`);
+			return undefined;
+		default:
+			infoText(context, `The "${name}" Header Widget parameter is unknown and will be ignored`);
+			return undefined;
+	}
+}
+
+function addMasterLayoutConfig(tree: Tree, property: string, value: string | boolean, appModulePath: string): void {
+	addInjectionInClass(tree, appModulePath, 'ObMasterLayoutConfig', '@oblique/oblique');
+	appendPrivateVoidFunctionToClass(tree, appModulePath, 'configureServiceNavigation');
+	addConstructor(tree, appModulePath);
+	appendCodeToFunction(tree, appModulePath, 'constructor', `this.configureServiceNavigation();`);
+	appendCodeToFunction(tree, appModulePath, 'configureServiceNavigation', `this.masterLayoutConfig.${property} = ${value};`);
+}
+
+function mapEnvironment(tree: Tree, value: string, appModulePath: string): void {
+	const sourceFile = createSrcFile(tree, appModulePath);
+	const changes = [
+		...addSymbolToNgModuleMetadata(
+			sourceFile,
+			appModulePath,
+			'providers',
+			`{provide: OB_PAMS_CONFIGURATION, useValue: {environment: ObEEnvironment.${value}}}`
+		),
+		...addImportToModule(sourceFile, appModulePath, 'OB_PAMS_CONFIGURATION', '@oblique/oblique'),
+		...addImportToModule(sourceFile, appModulePath, 'ObEEnvironment', '@oblique/oblique')
+	];
+	applyChanges(tree, appModulePath, changes);
+}
+
+function addWidgetVisibility(tree: Tree, property: string, value: string, appModulePath: string): void {
+	return addMasterLayoutConfig(
+		tree,
+		`header.serviceNavigation.${property}`,
+		typeof value === 'boolean' ? value : value === 'true',
+		appModulePath
+	);
+}
+
+function mapLoginStatus(tree: Tree, value: string, appComponentPath: string): void {
+	addInjectionInClass(tree, appComponentPath, 'ObMasterLayoutService', '@oblique/oblique');
+	addConstructor(tree, appComponentPath);
+	appendCodeToFunction(
+		tree,
+		appComponentPath,
+		'constructor',
+		`this.masterLayoutService.header.loginState$.subscribe($event => this.${value})`
+	);
+}
+
+function mapLanguageChange(tree: Tree, value: string, appComponentPath: string): void {
+	addInjectionInClass(tree, appComponentPath, 'TranslateService', '@ngx-translate/core');
+	addConstructor(tree, appComponentPath);
+	appendCodeToFunction(
+		tree,
+		appComponentPath,
+		'constructor',
+		`this.translateService.onLangChange.subscribe(({lang}) => this.${value.replace('$event', 'lang')})`
+	);
 }
 
 export function removeHeaderWidgetCode(): Rule[] {
