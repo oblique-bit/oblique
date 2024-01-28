@@ -37,12 +37,12 @@ export function removeHeaderWidgetCode(): Rule[] {
 			'<header-widget> tags'
 		),
 		removeCode(/\s*(?:const|let)?.*headerWidgetScriptElement.*\s?.*\s?;\s*$/gm, 'headerWidgetScriptElement declaration'),
-		removeCode(/\s*headerWidgetScriptElement.setAttribute\(.*\s?.*\s*\)?;\s*$/gm, 'headerWidgetScriptElement.setAttribute code'),
+		removeCode(/\s*headerWidgetScriptElement\.setAttribute\(.*\s?.*\s*\)?;\s*$/gm, 'headerWidgetScriptElement.setAttribute code'),
 		removeCode(
 			/\s*document.body.append\(headerWidgetScriptElement\)(?:.*\s?.*\s*)?;\s*$/gm,
 			'document.body.append of headerWidgetScriptElement'
 		),
-		removeCode(/\s*<script.*widget.eportal.admin.ch\/header-widget.js.*<\/script>\s*/g, 'script tags with script header-widget.js'),
+		removeCode(/\s*<script.*widget\.eportal<.admin\.ch\/header-widget\.js.*<\/script>\s*/g, 'script tags with script header-widget.js'),
 		removeCode(
 			/\s*(?:const|let)?\s?widgetMobile\s*=\s*document\.getElementById\(.widget-mobile.\);\s*$/gm,
 			'widgetMobile variable by Id widget-mobile'
