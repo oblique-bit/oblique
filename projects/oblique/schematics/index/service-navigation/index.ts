@@ -32,7 +32,10 @@ export function serviceNavigation(): Rule {
 export function removeHeaderWidgetCode(): Rule[] {
 	return [
 		removeCode(/^\s*<ng-template #obHeaderMobileControl>\s*<header-widget-mobile.*?<\/ng-template>\s*$/gms, '<header-widget-mobile> tags'),
-		removeCode(/\s*<header-widget\s?(?:obHeaderCustomControl)?\s*>\s*.*\s*<\/header-widget>\s*/g, '<header-widget> tags'),
+		removeCode(
+			/(?:^\s*<ng-template #obHeaderControl>\s*)?^\s*<header-widget.*(?:<\/header-widget>|\/>)\s*$(?:\s*<\/ng-template>\s*$)?/gms,
+			'<header-widget> tags'
+		),
 		removeCode(/\s*(?:const|let)?.*headerWidgetScriptElement.*\s?.*\s?;\s*$/gm, 'headerWidgetScriptElement declaration'),
 		removeCode(/\s*headerWidgetScriptElement.setAttribute\(.*\s?.*\s*\)?;\s*$/gm, 'headerWidgetScriptElement.setAttribute code'),
 		removeCode(
@@ -44,7 +47,6 @@ export function removeHeaderWidgetCode(): Rule[] {
 			/\s*(?:const|let)?\s?widgetMobile\s*=\s*document\.getElementById\(.widget-mobile.\);\s*$/gm,
 			'widgetMobile variable by Id widget-mobile'
 		),
-		removeCode(/\s*<ng-template\s*#obHeaderControl>\s*<\/ng-template>\s*/g, 'ng-templates with obHeaderControl-query'),
 		removeCode(
 			/\s*(?:const|let)?.*obliqueHeader\s=\sdocument\.querySelector\(.\.ob-header-controls.\);\s*obliqueHeader\.prepend\(widgetMobile\);\s*$/gm,
 			'variable obliqueHeader that prepend widgetMobile'
