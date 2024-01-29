@@ -331,8 +331,10 @@
                 "glob": "favicon.png",
                 "input": "projects/oblique/src/assets/images",
                 "output": "/assets/images"
-              }
-            ]
+              },
+              "projects/service-navigation-web-component/src/assets"
+            ],
+            "styles": ["projects/oblique/src/styles/css/frutiger.css"]
           },
           "configurations": {
             "production": {
@@ -345,10 +347,10 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "4kb",
-                  "maximumError": "8kb"
+                  "maximumError": "160kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "optimization": false,

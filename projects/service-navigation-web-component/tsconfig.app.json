@@ -2,8 +2,21 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": []
+    "module": "es2015",
+    "moduleResolution": "node",
+    "declaration": true,
+    "inlineSources": true,
+    "importHelpers": true,
+    "types": ["node"]
   },
   "files": ["src/main.ts"],
-  "include": ["src/**/*.d.ts"]
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "enableResourceInlining": true
+  },
+  "include": ["src/**/*.d.ts"],
+  "exclude": ["src/test.ts", "**/*.spec.ts"]
 }
