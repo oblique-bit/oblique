@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewEncapsulation, inject, numberAttribute} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation, booleanAttribute, inject, numberAttribute} from '@angular/core';
 import {NgIf} from '@angular/common';
 import {ObServiceNavigationModule} from '../../../oblique/src/lib/service-navigation/service-navigation.module';
 import {ObEPamsEnvironment} from '../../../oblique/src/lib/service-navigation/service-navigation.model';
@@ -19,6 +19,12 @@ export class ObServiceNavigationWebComponentComponent implements OnInit {
 	@Input() environment: 'DEV' | 'REF' | 'TEST' | 'ABN' | 'PROD';
 	@Input({transform: numberAttribute}) maxLastUsedApplications: number;
 	@Input({transform: numberAttribute}) maxFavoriteApplications: number;
+	@Input({transform: booleanAttribute}) displayLanguages: boolean;
+	@Input({transform: booleanAttribute}) displayMessage: boolean;
+	@Input({transform: booleanAttribute}) displayInfo: boolean;
+	@Input({transform: booleanAttribute}) displayApplications: boolean;
+	@Input({transform: booleanAttribute}) displayProfile: boolean;
+	@Input({transform: booleanAttribute}) displayAuthentication: boolean;
 	@Input() rootUrl: string;
 	@Input() returnUrl: string;
 
