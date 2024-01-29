@@ -13,11 +13,10 @@
 	<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron-left" /></span>
 </button>
 <ng-content *ngIf="!initializedLinks.length" />
-<nav aria-labelledby="ob-navigationlabel">
+<nav *ngIf="initializedLinks.length" aria-labelledby="ob-navigationlabel">
 	<ul
 		aria-labelledby="ob-navigationlabel"
 		id="navigation"
-		*ngIf="initializedLinks.length"
 		class="ob-main-nav"
 		[class.ob-navigation-scrollable-content]="isScrollable"
 		[class.ob-main-nav-fw]="isFullWidth"
