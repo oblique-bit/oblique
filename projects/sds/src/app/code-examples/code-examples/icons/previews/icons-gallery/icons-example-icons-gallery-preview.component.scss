@@ -19,11 +19,7 @@
 		line-height: variables.$ob-spacing-default;
 	}
 
-	.mat-mdc-button-base.ob-button.mat-mdc-icon-button:not(.ob-close).mat-mdc-button-base {
-		font-size: 24px;
-	}
-
-	mat-icon {
+	.mat-icon.icon {
 		font-size: 48px;
 	}
 
