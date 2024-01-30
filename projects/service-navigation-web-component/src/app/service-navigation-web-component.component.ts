@@ -53,6 +53,7 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	@Input({transform: booleanAttribute}) displayApplications: boolean;
 	@Input({transform: booleanAttribute}) displayProfile: boolean;
 	@Input({transform: booleanAttribute}) displayAuthentication: boolean;
+	@Input() pamsAppId: string;
 	@Input() rootUrl: string;
 	@Input() returnUrl: string;
 	@Input() customButtons: string;
