@@ -53,6 +53,7 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	@Input({transform: booleanAttribute}) displayApplications: boolean;
 	@Input({transform: booleanAttribute}) displayProfile: boolean;
 	@Input({transform: booleanAttribute}) displayAuthentication: boolean;
+	@Input({transform: booleanAttribute}) handleLogout: boolean;
 	@Input() pamsAppId: string;
 	@Input() rootUrl: string;
 	@Input() returnUrl: string;
@@ -60,6 +61,7 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	@Output() readonly languageChange: Observable<string>;
 	@Output() readonly loginState = new EventEmitter<ObLoginState>();
 	@Output() readonly buttonClickedEmitter = new EventEmitter<ObEIcon>();
+	@Output() readonly logoutTriggered = new EventEmitter<string>();
 
 	environmentParsed: ObEPamsEnvironment;
 	infoContactParsed: ObIServiceNavigationContact | undefined;

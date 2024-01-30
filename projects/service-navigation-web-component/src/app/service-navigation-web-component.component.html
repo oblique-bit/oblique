@@ -7,6 +7,7 @@
 	[maxLastUsedApplications]="maxLastUsedApplications"
 	[maxFavoriteApplications]="maxFavoriteApplications"
 	[pamsAppId]="pamsAppId"
+	[handleLogout]="handleLogout"
 	[displayLanguages]="displayLanguages"
 	[displayMessage]="displayMessage"
 	[displayInfo]="displayInfo"
@@ -16,6 +17,7 @@
 	[rootUrl]="rootUrl"
 	[returnUrl]="returnUrl"
 	(loginState)="loginState.emit($event)"
+	(logoutTriggered)="logoutTriggered.emit($event)"
 >
 	<ng-container *ngFor="let button of customButtonsParsed">
 		<ng-template #customWidgetTemplate>

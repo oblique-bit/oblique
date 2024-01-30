@@ -26,6 +26,7 @@
 			pams-app-id="21"
 			display-applications="true"
 			display-profile="true"
+			handle-logout="true"
 			display-authentication="true"
 			info-contact='{"tel":"+41 026 402 13 38"}'
 			info-links='[{"fr":"Lien de contact","en":"Contact link","links":{"fr":"https://fr.contact.com","en":"https://en.contact.com"}}]'
@@ -60,6 +61,9 @@
 			document
 				.querySelector("ob-service-navigation-web-component")
 				.addEventListener("buttonClickedEmitter", (event) => console.log("button clicked", event.detail));
+			document
+				.querySelector("ob-service-navigation-web-component")
+				.addEventListener("logoutTriggered", (event) => console.log("logout triggered", event.detail));
 		</script>
 	</body>
 </html>
