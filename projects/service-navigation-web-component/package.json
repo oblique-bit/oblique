@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "ng serve",
+    "test": "cd ../.. && ng test service-navigation-web-component",
     "build": "ng build && npm run pack-component",
     "pack-component": "cat ../../dist/service-navigation-web-component/runtime.js ../../dist/service-navigation-web-component/polyfills.js ../../dist/service-navigation-web-component/main.js > ../../dist/service-navigation-web-component/service-navigation-web-component.js"
   },
