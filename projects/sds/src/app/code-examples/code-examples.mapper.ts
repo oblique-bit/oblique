@@ -11,6 +11,7 @@ import {CodeExamples} from './code-examples.model';
 import {ColumnLayoutCodeExamplesComponent} from './code-examples/column-layout/column-layout-code-examples.component';
 import {DatepickerCodeExamplesComponent} from './code-examples/datepicker/datepicker-code-examples.component';
 import {DialogCodeExamplesComponent} from './code-examples/dialog/dialog-code-examples.component';
+import {ExpansionPanelCodeExamplesComponent} from './code-examples/expansion-panel/expansion-panel-code-examples.component';
 import {FileUploadCodeExamplesComponent} from './code-examples/file-upload/file-upload-code-examples.component';
 import {FormCodeExamplesComponent} from './code-examples/form/form-code-examples.component';
 import {GlobalEventsCodeExamplesComponent} from './code-examples/global-events/global-events-code-examples.component';
@@ -63,6 +64,7 @@ export class CodeExamplesMapper {
 		'column-layout': ColumnLayoutCodeExamplesComponent,
 		datepicker: DatepickerCodeExamplesComponent,
 		dialog: DialogCodeExamplesComponent,
+		'expansion-panel': ExpansionPanelCodeExamplesComponent,
 		'file-upload': FileUploadCodeExamplesComponent,
 		form: FormCodeExamplesComponent,
 		'global-events': GlobalEventsCodeExamplesComponent,
