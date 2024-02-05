@@ -4,6 +4,43 @@
 .mat-mdc-paginator {
 	color: variables.$ob-secondary-600;
 
+	.mat-mdc-form-field:not(.mat-form-field-invalid)
+		.mat-mdc-text-field-wrapper.mdc-text-field
+		[class*="mdc-notched-outline__"] {
+		border-color: variables.$ob-secondary-400;
+	}
+
+	.mat-mdc-select-value-text {
+		font-size: variables.$ob-font-size-base;
+	}
+
+	.mat-mdc-select-arrow {
+		// 1.2 is magic number to get the icon to match design (visual look of 10px width).
+		width: variables.$ob-font-size-base * 1.2;
+		height: variables.$ob-font-size-base * 1.2;
+
+		& > svg {
+			z-index: -1;
+		}
+
+		&::after {
+			content: url("data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1zbWFsbC1kb3duIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBvbHlnb24gcG9pbnRzPSIxMiAxNC41ODQgNS42NzQgMTAuOTMyIDYuNDI0IDkuNjMzIDEyIDEyLjg1MiAxNy41NzYgOS42MzMgMTguMzI2IDEwLjkzMiAxMiAxNC41ODQiIGZpbGw9ImN1cnJlbnRDb2xvciIvPjwvc3ZnPg==");
+			color: variables.$ob-secondary-800;
+			background-color: variables.$ob-white;
+		}
+	}
+
+	.mat-mdc-form-field:first-of-type:last-of-type .mat-mdc-text-field-wrapper,
+	.mat-mdc-form-field .mat-mdc-text-field-wrapper {
+		margin-top: 0;
+		margin-bottom: 0;
+		max-height: none;
+	}
+
+	.mat-mdc-paginator-page-size {
+		align-items: center;
+	}
+
 	.mat-mdc-paginator-icon > path {
 		display: none;
 	}
@@ -13,14 +50,17 @@
 	.mat-mdc-paginator-navigation-first,
 	.mat-mdc-paginator-navigation-last {
 		border: 1px solid variables.$ob-black;
-		width: 30px;
-		height: 30px;
+		width: 36px;
+		height: 36px;
 		margin: 10px;
+		background-size: 16px;
+		background-repeat: no-repeat;
+		background-position: center;
 
 		/*
-SVG icon colors cannot be changed in scss. The icons are black and in this use case, they are needed in the color gray and red.
-To achieve this, filters are used.
-*/
+			SVG icon colors cannot be changed in scss. The icons are black and in this use case, they are needed in the color gray and red.
+			To achieve this, filters are used.
+		*/
 		// Filters $ob-black to $ob-secondary-600
 		filter: invert(22%) sepia(14%) saturate(1462%) hue-rotate(168deg) brightness(93%) contrast(86%);
 	}
@@ -45,7 +85,7 @@ To achieve this, filters are used.
 	.mat-mdc-paginator-navigation-last[disabled],
 	.mat-mdc-paginator-navigation-first[disabled],
 	.mat-mdc-paginator-navigation-previous[disabled] {
-		// Filters $ob-black to $ob-secondary-300
+		// filters to make it be close to $ob-secondary-300 / #828E9A
 		filter: invert(64%) sepia(7%) saturate(675%) hue-rotate(169deg) brightness(86%) contrast(89%);
 	}
 
@@ -59,11 +99,22 @@ To achieve this, filters are used.
 	}
 
 	.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
-		padding-top: variables.$ob-spacing-sm * 1.75;
+		padding: unset;
+	}
+
+	.mat-mdc-form-field {
+		.mat-mdc-form-field-flex {
+			margin-top: initial;
+
+			.mdc-notched-outline {
+				top: initial;
+			}
+		}
 	}
 
 	.ob-outline & .mat-mdc-form-field-type-mat-select.mat-focused .mdc-notched-outline {
 		@include shadow.ob-tab-focus-box-shadow();
+		top: unset;
 	}
 
 	.mat-mdc-button-ripple:not(:empty) {
