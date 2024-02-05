@@ -86,6 +86,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 					addInjectionInClass(tree, filePath, 'WINDOW', '@oblique/oblique');
 					removeInjectionInClass(tree, filePath, 'ObPopUpService', '@oblique/oblique');
 					replaceInFile(tree, filePath, new RegExp(`${varName}`, 'g'), 'window');
+					replaceInFile(tree, filePath, 'wINDOW', 'window');
 				}
 			};
 			return applyInTree(tree, apply, '*.ts');
