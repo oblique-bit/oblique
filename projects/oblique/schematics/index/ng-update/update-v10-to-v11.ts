@@ -44,7 +44,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 				this.removeActivateServiceNavigationToken(),
 				this.removeTableCicd(),
 				this.runMDCMigration(),
-				this.removeTransformMock()
+				this.removeTransformMock(),
+				this.deactivatePreferStandalone()
 			])(tree, _context);
 	}
 
@@ -255,6 +256,28 @@ export class UpdateV10toV11 implements ObIMigrations {
 				path,
 				readFile(tree, path).replace(/Object\.defineProperty\s*\(\s*document\.body\.style\s*,\s*['"]transform['"].*?}\s*\)\s*;\s+/gs, '')
 			);
+			// can't use applyInTree as the target file is outside sourceRoot
+			return tree;
+		});
+	}
+
+	private deactivatePreferStandalone(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, `Deactivate "@angular-eslint/prefer-standalone-component" rule`);
+			const path = '.eslintrc.json';
+			const eslintConfiguration: {overrides: {files: string[]; rules?: Record<string, string>}[]} = JSON.parse(readFile(tree, path));
+			// can't use filter or conditional chaining as we need to modify a value
+			if (eslintConfiguration.overrides) {
+				eslintConfiguration.overrides.forEach(configuration => {
+					if (configuration.files && configuration.files[0] === '*.ts') {
+						if (!configuration.rules) {
+							configuration.rules = {};
+						}
+						configuration.rules['@angular-eslint/prefer-standalone-component'] = 'off';
+					}
+				});
+			}
+			tree.overwrite(path, JSON.stringify(eslintConfiguration, null, 2));
 			// can't use applyInTree as the target file is outside sourceRoot
 			return tree;
 		});
