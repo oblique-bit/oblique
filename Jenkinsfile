@@ -20,7 +20,10 @@ nodejsPipelineTemplate {
 			]
 		],
 		master: [
-			'publish': ['./dist/oblique'],
+			'publish': [
+				'./dist/oblique',
+				'./dist/service-navigation-web-component'
+			],
 			'gitTag': true,
 			'gitPush': [
 				'credentialId': 'githubObliqueCredentials',

@@ -328,6 +328,11 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               {
+                "glob": "package.json",
+                "input": "projects/service-navigation-web-component/",
+                "output": "./"
+              },
+              {
                 "glob": "favicon.png",
                 "input": "projects/oblique/src/assets/images",
                 "output": "/assets/images"
