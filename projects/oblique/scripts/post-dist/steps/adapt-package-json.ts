@@ -15,7 +15,11 @@ export class AdaptPackageJson {
 		PackageJson.write(filePath, {
 			...distPackage,
 			...rootPackage,
-			exports: {...distPackage.exports, ...AdaptPackageJson.getExportEntriesForSCSS()}
+			exports: {
+				...distPackage.exports,
+				...AdaptPackageJson.getExportEntriesForSCSS(),
+				'./assets/images/cover-background.jpg': './assets/images/cover-background.jpg' // used by oblique-components.css
+			}
 		});
 	}
 
