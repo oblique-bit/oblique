@@ -3,23 +3,39 @@
 
 .mat-accordion {
 	@include shadow.ob-shadow-md();
-}
 
-.mat-expansion-panel {
-	&:not([class*="mat-elevation-z"]) {
-		@include shadow.ob-shadow-md();
-	}
-
-	.mat-expansion-panel-header {
-		height: 48px;
-
-		&:hover,
-		&.mat-expanded:hover:not([aria-disabled="true"]) {
-			background: variables.$ob-gray-lighter;
+	mat-expansion-panel.mat-expansion-panel {
+		&:not([class*="mat-elevation-z"]) {
+			@include shadow.ob-shadow-md();
 		}
-	}
 
-	&:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled="true"]) {
-		background: variables.$ob-gray-lighter;
+		.mat-expansion-panel-header {
+			height: 48px;
+
+			&:hover,
+			&.mat-expanded:hover:not([aria-disabled="true"]) {
+				background-color: variables.$ob-gray-extra-light;
+			}
+
+			span.mat-expansion-indicator::after {
+				content: url("data:image/svg+xml;base64,PHN2ZyBpZD0iY2hldnJvbi1zbWFsbC1kb3duIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBvbHlnb24gcG9pbnRzPSIxMiAxNC41ODQgNS42NzQgMTAuOTMyIDYuNDI0IDkuNiAxMiAxMi44NTIgMTcuNTc2IDkuNjMzIDE4LjMyNiAxMC45MzIgMTIgMTQuNTg0IiBmaWxsPSJjdXJyZW50Q29sb3IiLz48L3N2Zz4=");
+				width: 40px;
+				height: 40px;
+				border: 0;
+				transform: rotate(360deg);
+				filter: invert(64%) sepia(7%) saturate(675%) hue-rotate(169deg) brightness(86%)
+					contrast(89%); // This filter is for ensuring that the SVG icon's color matches 'variables.$ob-gray-extra-light'.
+			}
+		}
+
+		&:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled="true"]) {
+			background-color: variables.$ob-gray-extra-light;
+		}
+
+		.mat-expansion-panel-header:not([aria-disabled="true"]).cdk-keyboard-focused,
+		.mat-expansion-panel
+			.mat-expansion-panel-header:not([aria-disabled="true"]).cdk-program-focused {
+			background-color: variables.$ob-gray-extra-light;
+		}
 	}
 }
