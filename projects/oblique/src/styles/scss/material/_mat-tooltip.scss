@@ -2,7 +2,7 @@
 @use "../core/mixins/typography";
 @use "../core/mixins/shadow";
 
-.mat-mdc-tooltip {
+div .mat-mdc-tooltip {
 	@include shadow.ob-shadow-default();
 
 	.mdc-tooltip__surface {
