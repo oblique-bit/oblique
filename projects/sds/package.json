@@ -10,7 +10,7 @@
     "schematics-build": "npm run build --prefix schematics"
   },
   "dependencies": {
-    "highlight.js": "^11.7.0",
+    "highlight.js": "^11.9.0",
     "jquery": "^3.7.1",
     "raw-loader": "^4.0.2"
   },

@@ -144,7 +144,7 @@ function extractVersion(version: string): ObIVersion | undefined {
 				major: parseInt(hit.groups.major, 10),
 				minor: parseInt(hit.groups.minor, 10),
 				patch: parseInt(hit.groups.patch, 10)
-		  }
+			}
 		: undefined;
 }
 

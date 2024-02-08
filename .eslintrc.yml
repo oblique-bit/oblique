@@ -166,6 +166,7 @@ overrides:
       "@angular-eslint/prefer-standalone-component": off
       "@typescript-eslint/max-params": off
       "@typescript-eslint/no-explicit-any": off
+      "@typescript-eslint/no-useless-template-literals": off
       "@typescript-eslint/explicit-module-boundary-types": off
       "@typescript-eslint/no-unsafe-member-access": off
       "@typescript-eslint/no-unsafe-assignment": off
@@ -177,6 +178,7 @@ overrides:
       "@typescript-eslint/no-unsafe-call": off
       "@typescript-eslint/naming-convention": off
       "@typescript-eslint/prefer-destructuring": off
+      "@typescript-eslint/prefer-find": off
       "@typescript-eslint/prefer-nullish-coalescing": off
       max-params: off
       no-warning-comments: off
