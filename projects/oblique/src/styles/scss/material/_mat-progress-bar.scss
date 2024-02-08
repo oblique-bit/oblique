@@ -1,7 +1,17 @@
 @use "../core/variables";
 
-.mat-mdc-progress-bar {
+mat-progress-bar.mat-mdc-progress-bar {
 	background-color: transparent;
+	height: variables.$ob-progress-bar-height;
+
+	.mdc-linear-progress__bar-inner {
+		border-top-width: variables.$ob-progress-bar-height;
+	}
+
+	.mdc-linear-progress__bar,
+	.mdc-linear-progress__buffer {
+		height: variables.$ob-progress-bar-height;
+	}
 
 	.mdc-linear-progress__buffer-bar {
 		background-color: variables.$ob-secondary-100;
