@@ -16,7 +16,7 @@ export class UnitTestHelpers {
 	}
 
 	static getDebugElementByCss<T>(fixture: ComponentFixture<T>, css: string): DebugElement {
-		return fixture.debugElement.query(By.css(`${css}`));
+		return fixture.debugElement.query(By.css(css));
 	}
 
 	static getDebugElementById<T>(fixture: ComponentFixture<T>, id: string): DebugElementExtended {

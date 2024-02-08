@@ -93,14 +93,14 @@ function importSlugSymbol(exampleName: string): Rule {
 function checkSlugAlreadyExists(sourceFile: SourceFile, name: string, context: SchematicContext): boolean {
 	const elementToFind = {
 		identifierName: 'codeExamples',
-		propertyName: `${dasherize(name)}`,
+		propertyName: dasherize(name),
 		className: `${classify(name)}CodeExamplesComponent`
 	};
 	const alreadyExists = checkPropertyLiteralExists(getSourceNodes(sourceFile), elementToFind);
 	if (alreadyExists) {
 		showAlreadyExistsMessage(context, {
 			elementDescription: 'slug',
-			symbol: `${elementToFind.propertyName}`,
+			symbol: elementToFind.propertyName,
 			existsIn: `in the array ${elementToFind.identifierName}`
 		});
 	}

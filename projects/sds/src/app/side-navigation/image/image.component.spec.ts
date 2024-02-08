@@ -26,7 +26,7 @@ class ImageInputs {
 	}
 }
 
-describe(`${ImageComponent.name}`, () => {
+describe(ImageComponent.name, () => {
 	let component: ImageComponent;
 	let fixture: ComponentFixture<ImageComponent>;
 	const idPipe = new IdPipe();

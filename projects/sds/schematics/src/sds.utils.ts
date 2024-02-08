@@ -18,7 +18,7 @@ export const codeExampleMapperFilePath = `app/code-examples/code-examples.mapper
 export async function getExampleDirectoryOrFalse(tree: Tree, exampleName: string): Promise<string | false> {
 	const exampleDirectoryPath = await createExampleDirectoryPath(tree, exampleName);
 	const host = createHost(tree);
-	const isDirectory = await host.isDirectory(`${exampleDirectoryPath}`);
+	const isDirectory = await host.isDirectory(exampleDirectoryPath);
 	return isDirectory ? tree.getDir(exampleDirectoryPath).path : false;
 }
 

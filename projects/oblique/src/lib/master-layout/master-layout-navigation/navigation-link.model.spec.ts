@@ -1,7 +1,7 @@
 import {ObINavigationLink} from '../master-layout.model';
 import {ObNavigationLink} from './navigation-link.model';
 
-describe(`${ObNavigationLink.name}`, () => {
+describe(ObNavigationLink.name, () => {
 	describe('constructor', () => {
 		test.each<{expected: string; label: string; url: string}>([
 			{expected: 'i18n-url-and-ending', label: '', url: 'i18n.url.and-----ENDING_____'},

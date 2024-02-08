@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TabComponent} from './tab.component';
 import {IdPipe} from '../../id/id.pipe';
 
-describe(`${TabComponent.name}`, () => {
+describe(TabComponent.name, () => {
 	let component: TabComponent;
 	let fixture: ComponentFixture<TabComponent>;
 

@@ -42,7 +42,7 @@ export function addNodeToSyntaxList(
 		if (findByTextAndKind(nodes, {kind: SyntaxKind.PropertyAssignment, text: toAdd.text})) {
 			showAlreadyExistsMessage(context, {
 				elementDescription: 'element',
-				symbol: `${toAdd.text}`,
+				symbol: toAdd.text,
 				existsIn: `in the list ${identifierName} within the file ${sourceFile.fileName}`
 			});
 			return chain([]);

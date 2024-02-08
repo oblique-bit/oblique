@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {VersionComponent} from './version.component';
 
-describe(`${VersionComponent.name}`, () => {
+describe(VersionComponent.name, () => {
 	let component: VersionComponent;
 	let fixture: ComponentFixture<VersionComponent>;
 

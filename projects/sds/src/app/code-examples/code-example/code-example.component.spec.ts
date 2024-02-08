@@ -18,7 +18,7 @@ import {PreviewComponent} from '../code-examples.model';
 })
 class MockPreviewComponent {}
 
-describe(`${CodeExampleComponent.name}`, () => {
+describe(CodeExampleComponent.name, () => {
 	let component: CodeExampleComponent;
 	let fixture: ComponentFixture<CodeExampleComponent>;
 

@@ -2,8 +2,8 @@ import {TestBed} from '@angular/core/testing';
 import {SafeHtmlPipe} from './safeHtml.pipe';
 import {BrowserModule, SafeHtml} from '@angular/platform-browser';
 
-describe(`${SafeHtmlPipe.name}`, () => {
-	describe(`${SafeHtmlPipe.prototype.transform.name}`, () => {
+describe(SafeHtmlPipe.name, () => {
+	describe(SafeHtmlPipe.prototype.transform.name, () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [BrowserModule]

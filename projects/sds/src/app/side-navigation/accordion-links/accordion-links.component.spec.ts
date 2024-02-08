@@ -5,7 +5,7 @@ import {AccordionLinksComponent} from './accordion-links.component';
 import {Accordion} from './accordion-links.model';
 import {UnitTestHelpers} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
 
-describe(`${AccordionLinksComponent.name}`, () => {
+describe(AccordionLinksComponent.name, () => {
 	let component: AccordionLinksComponent;
 	let fixture: ComponentFixture<AccordionLinksComponent>;
 	const idPipe = new IdPipe();
