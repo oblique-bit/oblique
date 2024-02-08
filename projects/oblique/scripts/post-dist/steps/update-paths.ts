@@ -12,7 +12,7 @@ export class UpdatePaths {
 		UpdatePaths.replaceInFiles(
 			[path.join(UpdatePaths.stylesDirectoryPath, 'css', 'oblique-components.css')],
 			'cover-background.jpg',
-			'~@oblique/oblique/assets/images/cover-background.jpg'
+			'@oblique/oblique/assets/images/cover-background.jpg'
 		);
 	}
 
