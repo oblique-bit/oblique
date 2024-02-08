@@ -177,7 +177,6 @@ overrides:
       "@typescript-eslint/no-unsafe-call": off
       "@typescript-eslint/naming-convention": off
       "@typescript-eslint/prefer-destructuring": off
-      "@typescript-eslint/prefer-find": off
       "@typescript-eslint/prefer-nullish-coalescing": off
       max-params: off
       no-warning-comments: off
