@@ -60,7 +60,7 @@ export class ObServiceNavigationService {
 		this.pamsAppId$.next(appId);
 	}
 
-	setHandleLogout(handleLogout = true): void {
+	setHandleLogout(handleLogout: boolean): void {
 		this.redirectorService.handleLogout = handleLogout;
 	}
 

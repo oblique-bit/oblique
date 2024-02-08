@@ -52,6 +52,12 @@ describe('ServiceNavigationTimeoutRedirectorService', () => {
 		});
 
 		describe('handleLogout', () => {
+			it('should redirect when handleLogout as its default value', () => {
+				service = TestBed.inject(ObServiceNavigationTimeoutRedirectorService);
+				service.logout();
+				expect(fakeWindow.location.href).toBe(fakeLogoutUrl);
+			});
+
 			it('should redirect when handleLogout is true', () => {
 				service.handleLogout = true;
 
