@@ -26,7 +26,7 @@
 		.ob-form-lg & {
 			input,
 			.mat-mdc-form-field-icon-suffix .mat-mdc-icon-button {
-				margin-top: 10px;
+				margin-top: 12px;
 			}
 		}
 
@@ -60,17 +60,33 @@
 					top: 21px;
 
 					.ob-form-sm & {
-						top: 17px;
+						top: 15px;
 					}
 
 					.ob-form-lg & {
-						top: 26px;
+						top: 29px;
 					}
 
 					&.mdc-floating-label--float-above {
-						top: 28px;
+						top: 29px;
 					}
 				}
+			}
+		}
+	}
+
+	&.ob-form-field-textarea {
+		.mat-mdc-text-field-wrapper
+			.mat-mdc-form-field-flex
+			.mat-mdc-floating-label:not(.mdc-floating-label--float-above) {
+			top: 21px;
+
+			.ob-form-sm & {
+				top: 25px;
+			}
+
+			.ob-form-lg & {
+				top: 29px;
 			}
 		}
 	}
@@ -87,7 +103,7 @@
 		align-items: center;
 
 		.mat-mdc-input-element {
-			margin-top: core-variables.$ob-spacing-xs;
+			margin-top: 4px; // empiric value
 			z-index: 1;
 		}
 	}
@@ -228,6 +244,14 @@
 
 	.mat-mdc-select-trigger {
 		margin-top: core-variables.$ob-spacing-xs;
+
+		.ob-form-sm & {
+			margin-top: 0; // empiric value
+		}
+
+		.ob-form-lg & {
+			margin-top: 6px; // empiric value
+		}
 	}
 
 	.mat-mdc-input-element {
@@ -297,6 +321,18 @@
 
 		.mdc-notched-outline {
 			top: material-variables.$ob-form-field-margin;
+
+			@at-root #{selector.append(".ob-form-field-textarea", &)} {
+				.ob-form-sm & {
+					top: 6px; // empiric value
+				}
+			}
+
+			@at-root #{selector.append(".mat-mdc-form-field-type-mat-select", &)} {
+				.ob-form-lg & {
+					top: -3px; // empiric value
+				}
+			}
 		}
 
 		.mat-mdc-form-field-label {
@@ -344,7 +380,7 @@
 
 				.mat-mdc-form-field-textarea-control {
 					position: relative;
-					top: core-variables.$ob-spacing-sm;
+					top: 8px; // empiric value
 					margin-bottom: core-variables.$ob-spacing-sm;
 				}
 
@@ -493,15 +529,7 @@
 		}
 	}
 
-	@include mat-form-field.margin(1px);
-
-	.ob-form-sm & {
-		@include mat-form-field.margin(0);
-	}
-
 	.ob-form-lg & {
-		@include mat-form-field.margin(2px);
-
 		&.mat-mdc-form-field-type-mat-select {
 			margin-top: core-variables.$ob-spacing-xs * 1.5;
 			padding-bottom: core-variables.$ob-spacing-sm;
@@ -509,10 +537,6 @@
 			.mat-mdc-select {
 				&:not(.mat-mdc-select-empty) {
 					padding-bottom: core-variables.$ob-spacing-xs * -0.5;
-				}
-
-				.mat-mdc-select-trigger {
-					margin-top: core-variables.$ob-spacing-sm + core-variables.$ob-spacing-xs * 0.25;
 				}
 			}
 		}

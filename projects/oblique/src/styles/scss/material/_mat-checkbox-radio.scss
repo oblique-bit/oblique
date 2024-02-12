@@ -14,6 +14,19 @@
 
 $disabled-color: core-variables.$ob-secondary-300;
 
+.mat-mdc-checkbox,
+.mat-mdc-radio-group {
+	margin-top: 5px; // empiric number
+
+	.ob-form-sm & {
+		margin-top: 2px; // empiric number
+	}
+
+	.ob-form-lg & {
+		margin-top: 13px; // empiric number
+	}
+}
+
 .mat-mdc-radio-button {
 	input:focus-visible ~ .mdc-radio__background {
 		.mdc-radio__outer-circle {
