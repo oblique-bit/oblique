@@ -66,7 +66,7 @@ class Icons {
 
 	private static prettify(): void {
 		const files = ['src/assets/oblique-icons.ts', 'src/styles/scss/oblique-icons.scss', 'src/lib/icon/icon.model.ts'].join(',');
-		execSync(`prettier "{${files}}" --loglevel warn --write`, {stdio: 'inherit'});
+		execSync(`prettier "{${files}}" --log-level warn --write`, {stdio: 'inherit'});
 	}
 }
 

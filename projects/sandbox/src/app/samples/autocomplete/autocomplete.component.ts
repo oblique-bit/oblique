@@ -126,9 +126,9 @@ formControl = new FormControl('');
 		this.visibleOptionList.map(optionList =>
 			optionList?.groupOptions
 				? // eslint-disable-next-line array-callback-return
-				  optionList?.groupOptions.map(option => {
+					optionList?.groupOptions.map(option => {
 						option.disabled = disabled;
-				  })
+					})
 				: (optionList.disabled = disabled)
 		);
 	}

@@ -11,7 +11,7 @@ import {VersionComponent} from './version/version.component';
 
 type SideNavigationIds = 'accordion-links' | 'logo' | 'search-input' | 'version';
 
-describe(`${SideNavigationComponent.name}`, () => {
+describe(SideNavigationComponent.name, () => {
 	let component: SideNavigationComponent;
 	let fixture: ComponentFixture<SideNavigationComponent>;
 

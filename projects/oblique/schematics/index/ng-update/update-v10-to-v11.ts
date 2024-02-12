@@ -69,7 +69,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 							?.propertyName;
 					if (propertyName) {
 						replaceInFile(tree, filePath, new RegExp(`let\\s+${propertyName}\\s*(?::\\s*ObPopUpService\\s*)?;`, 'g'), '');
-						replaceInFile(tree, filePath, new RegExp(`${propertyName}`, 'g'), 'window');
+						replaceInFile(tree, filePath, new RegExp(propertyName, 'g'), 'window');
 						replaceInFile(tree, filePath, /[^;]*TestBed\s*.\s*inject\(\s*ObPopUpService\s*\)\s*;/gs, '');
 					}
 				}
@@ -86,7 +86,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 				if (varName) {
 					addInjectionInClass(tree, filePath, 'WINDOW', '@oblique/oblique');
 					removeInjectionInClass(tree, filePath, 'ObPopUpService', '@oblique/oblique');
-					replaceInFile(tree, filePath, new RegExp(`${varName}`, 'g'), 'window');
+					replaceInFile(tree, filePath, new RegExp(varName, 'g'), 'window');
 					replaceInFile(tree, filePath, 'wINDOW', 'window');
 				}
 			};

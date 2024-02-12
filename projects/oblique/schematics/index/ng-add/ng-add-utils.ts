@@ -21,22 +21,21 @@ type versionFunc = (version: number) => string;
 const versions: Record<string, string | versionFunc> = {
 	ajv: '^8.0.0',
 	'ajv-formats': '^2.0.0',
-	'@ngx-translate/core': version => `^${version > 15 ? 15 : 14}.0.0`,
+	'@ngx-translate/core': `^15.0.0`,
 	'@angular/cdk': version => `^${version}.0.0`,
 	'@angular/material': version => `^${version}.0.0`,
 	'@angular/core': version => `^${version}.0.0`,
 	'@angular/router': version => `^${version}.0.0`,
 	'@popperjs/core': '^2.0.0',
-
 	jest: '^29.0.0',
 	'@types/jest': '^29.0.0',
 	'@angular-builders/jest': version => `^${version}.0.0`,
 	'jest-sonar-reporter': '^2.0.0',
-	'eslint-config-prettier': '^8.0.0',
-	'eslint-plugin-prettier': '^4.0.0',
+	'eslint-config-prettier': '^9.0.0',
+	'eslint-plugin-prettier': '^5.0.0',
 	prettier: '^3.0.0',
-	husky: '^8.0.0',
-	'angular-oauth2-oidc': version => `^${version > 15 ? 15 : version}.0.0`,
+	husky: '^9.0.0',
+	'angular-oauth2-oidc': version => `^${version}.0.0`,
 	'jwt-decode': '^4.0.0'
 };
 
@@ -145,7 +144,7 @@ function extractVersion(version: string): ObIVersion | undefined {
 				major: parseInt(hit.groups.major, 10),
 				minor: parseInt(hit.groups.minor, 10),
 				patch: parseInt(hit.groups.patch, 10)
-		  }
+			}
 		: undefined;
 }
 

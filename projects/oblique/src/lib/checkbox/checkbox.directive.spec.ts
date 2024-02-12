@@ -3,7 +3,7 @@ import {ObCheckboxDirective} from './checkbox.directive';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {Subject} from 'rxjs';
 
-describe(`${ObCheckboxDirective.name}`, () => {
+describe(ObCheckboxDirective.name, () => {
 	let directive: ObCheckboxDirective;
 
 	const tableRow: Element = {} as Element;

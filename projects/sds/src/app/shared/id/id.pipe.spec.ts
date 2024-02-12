@@ -1,7 +1,7 @@
 import {IdPipe} from './id.pipe';
 
-describe(`${IdPipe.name}`, () => {
-	describe(`${IdPipe.prototype.transform.name}`, () => {
+describe(IdPipe.name, () => {
+	describe(IdPipe.prototype.transform.name, () => {
 		it.each<{idPrefix: string; idParts: (number | string)[]; expected: string}>([
 			{idPrefix: '', idParts: [], expected: ''},
 			{idPrefix: 'content', idParts: [''], expected: 'content--'},

@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 
 import {SlugToIdService} from './slug-to-id.service';
 
-describe(`${SlugToIdService.name}`, () => {
+describe(SlugToIdService.name, () => {
 	let service: SlugToIdService;
 
 	beforeEach(() => {
@@ -14,7 +14,7 @@ describe(`${SlugToIdService.name}`, () => {
 		expect(service).toBeTruthy();
 	});
 
-	describe(`${SlugToIdService.prototype.setupDataSet.name}`, () => {
+	describe(SlugToIdService.prototype.setupDataSet.name, () => {
 		it('should emit readyToMap once', () => {
 			jest.spyOn(service.readyToMap, 'next');
 
@@ -24,7 +24,7 @@ describe(`${SlugToIdService.name}`, () => {
 		});
 	});
 
-	describe(`${SlugToIdService.prototype.getIdForSlug.name}`, () => {
+	describe(SlugToIdService.prototype.getIdForSlug.name, () => {
 		beforeEach(() => {
 			service.setupDataSet(
 				new Map<string, number>([

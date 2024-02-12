@@ -22,7 +22,7 @@ class TabsWrapperComponent {
 	readonly componentId = 'tabs-wrapper';
 }
 
-describe(`${TabsComponent.name}`, () => {
+describe(TabsComponent.name, () => {
 	let fixture: ComponentFixture<TabsWrapperComponent>;
 	let component: TabsWrapperComponent;
 	const idPipe = new IdPipe();

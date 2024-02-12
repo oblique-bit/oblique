@@ -56,6 +56,9 @@ function finalize(options: ObIOptionsSchema): Rule {
 		} else {
 			warn(_context, 'Oblique has only been partially integrated. Please check for warnings in the console and review the changes.');
 		}
+		if (options.husky) {
+			infoText(_context, 'Please run "npm prepare" to finalize Husky installation.');
+		}
 
 		return tree;
 	});

@@ -4,7 +4,7 @@ import {ButtonCodeExamplesComponent} from './button-code-examples.component';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {ObButtonDirective} from '@oblique/oblique';
 
-describe(`${ButtonCodeExamplesComponent.name}`, () => {
+describe(ButtonCodeExamplesComponent.name, () => {
 	let fixture: ComponentFixture<ButtonCodeExamplesComponent>;
 	let component: ButtonCodeExamplesComponent;
 

@@ -41,7 +41,7 @@ export function addPreviewToPreviewsInCodeExample(previewName: string, exampleNa
 			showExampleComponentPathNotFoundWarning(context, previewTextToAdd, exampleName);
 			return noop();
 		}
-		exampleComponentFilePath = `${exampleComponentFilePath}`;
+		exampleComponentFilePath = exampleComponentFilePath.toString();
 		let sourceFile = await getSourceFileOrFalse(exampleComponentFilePath, tree);
 		if (exampleComponentFilePath && !sourceFile) {
 			showExampleComponentSourceFileNotFoundWarning(context, {exampleComponentFilePath, previewTextToAdd, exampleName});
@@ -79,7 +79,7 @@ function createPreviewsElementText(previewName: string, exampleName: string, pre
 }
 
 function getIdParts(previewName: string): string {
-	return `${dasherize(previewName).split('-').join("', '")}`;
+	return dasherize(previewName).split('-').join("', '");
 }
 
 function showExampleComponentPathNotFoundWarning(context: SchematicContext, previewTextToAdd: string, exampleName: string): void {
