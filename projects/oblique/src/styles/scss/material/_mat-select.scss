@@ -13,8 +13,7 @@
 	}
 
 	.mat-mdc-select-trigger {
-		.ob-form-lg &,
-		.mat-form-field-lg & {
+		.ob-form-lg & {
 			margin-top: core-variables.$ob-spacing-md;
 		}
 	}
