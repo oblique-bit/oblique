@@ -27,7 +27,7 @@ describe(StepperCodeExamplesComponent.name, () => {
 	});
 
 	test(`that there are 2 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(3);
 	});
 
 	test(`that there is 1 ${StepperExampleDefaultPreviewComponent.name}`, () => {
