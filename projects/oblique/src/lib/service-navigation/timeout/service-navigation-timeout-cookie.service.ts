@@ -32,9 +32,7 @@ export class ObServiceNavigationTimeoutCookieService {
 	}
 
 	private isLocal(): boolean {
-		const currentUrl = this.window.location.href;
-		const possibleLocalhostUrls = ['http://localhost:', 'http://127.0.0.1:'];
-		return possibleLocalhostUrls.some(validUrl => currentUrl.startsWith(validUrl));
+		return /^https?:\/\/(?:localhost|127.0.0.1):/.test(this.window.location.href);
 	}
 
 	private getDomainUrl(): string {
