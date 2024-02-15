@@ -13,9 +13,6 @@ $ob-spacing-sizes: (
 @each $name, $size in $ob-spacing-sizes {
 	.padding-ob-spacing-#{$name} {
 		padding: $size;
-		background-color: variables.$ob-gray-darker;
-		border-radius: variables.$ob-spacing-xs;
-		color: variables.$ob-gray-extra-light;
 	}
 }
 
@@ -32,5 +29,8 @@ $ob-spacing-sizes: (
 
 	p {
 		margin: 0;
+		background-color: variables.$ob-gray-darker;
+		border-radius: variables.$ob-spacing-xs;
+		color: variables.$ob-gray-extra-light;
 	}
 }
