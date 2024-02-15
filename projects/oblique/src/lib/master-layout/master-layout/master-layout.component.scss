@@ -80,10 +80,8 @@
 			}
 		}
 
-		&:not(.ob-header-expanded) {
-			.ob-master-layout-header-title {
-				border-bottom: 1px solid variables.$ob-gray-lighter;
-			}
+		.ob-master-layout-header-title {
+			border-bottom: 1px solid variables.$ob-gray-lighter;
 		}
 	}
 

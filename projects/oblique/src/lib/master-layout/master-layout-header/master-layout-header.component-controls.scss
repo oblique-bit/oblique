@@ -99,10 +99,6 @@
 			padding-bottom: variables.$ob-spacing-sm;
 			transition: padding-bottom variables.$ob-duration-default;
 
-			@at-root .ob-master-layout.ob-header-expanded & {
-				border-bottom: 1px solid variables.$ob-accent;
-			}
-
 			@at-root .ob-master-layout:not(.ob-header-expanded) & {
 				height: 0;
 				overflow: hidden; // hides controls in collapsed mode
