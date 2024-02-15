@@ -80,7 +80,7 @@ describe('ServiceNavigationTimeout', () => {
 			service.loginState = 'S3OK';
 			service.logoutUrl = fakeLogoutUrl;
 			service.rootUrl = fakeRootUrl;
-			service.setUpEportalUrl(ObEPamsEnvironment.DEV);
+			service.initialize(ObEPamsEnvironment.DEV);
 			getLoginStateEmitter.next('OK');
 		});
 
@@ -171,6 +171,7 @@ describe('ServiceNavigationTimeout', () => {
 			const newUrl = 'https://eportal.admin.ch';
 			Cookies.set(logoutReminderCookieName, newUrl);
 			service = TestBed.inject(ObServiceNavigationTimeoutService);
+			service.initialize(ObEPamsEnvironment.DEV);
 			service.loginState = 'S3OK';
 
 			jest.advanceTimersByTime(10000);
@@ -182,6 +183,7 @@ describe('ServiceNavigationTimeout', () => {
 			const newUrl = 'https://eportal.admin.ch';
 			Cookies.set(logoutReminderCookieName, newUrl);
 			service = TestBed.inject(ObServiceNavigationTimeoutService);
+			service.initialize(ObEPamsEnvironment.DEV);
 			service.loginState = 'S3OK';
 
 			jest.advanceTimersByTime(10000);
