@@ -123,15 +123,12 @@ describe(ObSelectDirective.name, () => {
 		expected(panelClass);
 	});
 
-	test.each<{selector: string}>([{selector: '.ob-form-sm'}, {selector: '.mat-form-field-sm'}])(
-		`that it adds ob-select-panel-sm to select panelClass when $selector matches on host or one if it's parent elements`,
-		({selector}) => {
-			obSelectDirectiveBeforeEach('bla', (sel: string) => sel === selector);
-			expect((select.panelClass as string).includes('ob-select-panel-sm')).toBeTruthy();
-		}
-	);
+	test(`that it adds ob-select-panel-sm to select panelClass when $selector matches on host or one if it's parent elements`, () => {
+		obSelectDirectiveBeforeEach('bla', (sel: string) => sel === '.ob-form-sm');
+		expect((select.panelClass as string).includes('ob-select-panel-sm')).toBeTruthy();
+	});
 
-	test(`that it does not add ob-select-panel-sm when no matches are found for .ob-form-sm or .mat-form-field-sm on host or one if it's parent elements`, () => {
+	test(`that it does not add ob-select-panel-sm when no matches are found for .ob-form-sm on host or one if it's parent elements`, () => {
 		obSelectDirectiveBeforeEach('bla');
 		expect((select.panelClass as string).includes('ob-select-panel-sm')).toBeFalsy();
 	});

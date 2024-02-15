@@ -9,7 +9,7 @@
 		border-top-width: variables.$ob-form-field-label-height;
 
 		@at-root #{selector.append(".ob-form-field-textarea", &)} {
-			padding-top: calc($padding-top + 16px);
+			padding-top: 13px; // empiric value
 		}
 	}
 
@@ -64,26 +64,4 @@ $ob-standard-max-height: 40px;
 
 @mixin lg-max-height() {
 	max-height: calc($ob-standard-max-height + 1em);
-}
-
-@mixin margin($margin) {
-	&:not(:first-of-type) {
-		.mat-mdc-text-field-wrapper {
-			margin-top: $margin;
-		}
-	}
-
-	&:not(:last-of-type) {
-		.mat-mdc-text-field-wrapper {
-			margin-bottom: $margin;
-		}
-	}
-
-	&:first-of-type:last-of-type,
-	.ob-inline-form & {
-		.mat-mdc-text-field-wrapper {
-			margin-top: $margin;
-			margin-bottom: $margin;
-		}
-	}
 }

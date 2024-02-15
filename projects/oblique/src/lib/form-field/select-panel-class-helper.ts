@@ -4,7 +4,7 @@ import {MatSelect} from '@angular/material/select';
 export class ObSelectPanelClassHelper {
 	private static readonly obSelectPanelClass = 'ob-select-panel';
 	private static readonly obSelectPanelSmallClass = `${this.obSelectPanelClass}-sm`;
-	private static readonly obSmallFormClasses: string[] = ['.ob-form-sm', '.mat-form-field-sm'];
+	private static readonly obSmallFormClass: string = '.ob-form-sm';
 
 	static ensureAdditionalClassesAreIncluded(host: HTMLElement, select: SelectType): void {
 		this.ensureObSelectIsIncluded(select);
@@ -76,7 +76,7 @@ export class ObSelectPanelClassHelper {
 	}
 
 	private static isSmall(host: HTMLElement): boolean {
-		return this.obSmallFormClasses.map(className => !!host.closest(className)).reduce((previous, current) => previous || current);
+		return !!host.closest(this.obSmallFormClass);
 	}
 }
 

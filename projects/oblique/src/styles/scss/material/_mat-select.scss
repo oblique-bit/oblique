@@ -11,13 +11,6 @@
 	.mat-mdc-select-value {
 		z-index: 1;
 	}
-
-	.mat-mdc-select-trigger {
-		.ob-form-lg &,
-		.mat-form-field-lg & {
-			margin-top: core-variables.$ob-spacing-md;
-		}
-	}
 }
 
 @include mat-panel.margin-top("select", 0.75 * core-variables.$ob-spacing-xs);

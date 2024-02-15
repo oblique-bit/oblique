@@ -116,15 +116,12 @@ describe(ObPaginatorDirective.name, () => {
 		expected(panelClass);
 	});
 
-	test.each<{selector: string}>([{selector: '.ob-form-sm'}, {selector: '.mat-form-field-sm'}])(
-		`that it adds ob-select-panel-sm to select panelClass when $selector matches on host or one if it's parent elements`,
-		({selector}) => {
-			obPaginatorDirectiveBeforeEach('bla', (sel: string) => sel === selector);
-			expect((paginator.selectConfig.panelClass as string).includes('ob-select-panel-sm')).toBeTruthy();
-		}
-	);
+	test(`that it adds ob-select-panel-sm to select panelClass when $selector matches on host or one if it's parent elements`, () => {
+		obPaginatorDirectiveBeforeEach('bla', (sel: string) => sel === '.ob-form-sm');
+		expect((paginator.selectConfig.panelClass as string).includes('ob-select-panel-sm')).toBeTruthy();
+	});
 
-	test(`that it does not add ob-select-panel-sm when no matches are found for .ob-form-sm or .mat-form-field-sm on host or one if it's parent elements`, () => {
+	test(`that it does not add ob-select-panel-sm when no matches are found for .ob-form-sm on host or one if it's parent elements`, () => {
 		obPaginatorDirectiveBeforeEach('bla');
 		expect((paginator.selectConfig.panelClass as string).includes('ob-select-panel-sm')).toBeFalsy();
 	});
