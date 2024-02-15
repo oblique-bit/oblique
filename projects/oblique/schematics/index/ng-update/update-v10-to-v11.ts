@@ -6,6 +6,7 @@ import {
 	applyInTree,
 	checkForStandalone,
 	createSafeRule,
+	getAngularConfigs,
 	infoMigration,
 	readFile,
 	removeHtmlTagAttribute,
@@ -45,7 +46,9 @@ export class UpdateV10toV11 implements ObIMigrations {
 				this.removeTableCicd(),
 				this.runMDCMigration(),
 				this.removeTransformMock(),
-				this.deactivatePreferStandalone()
+				this.deactivatePreferStandalone(),
+				this.removeGlobalsFromJestConfig(),
+				this.addNodeToCompilerOptions()
 			])(tree, _context);
 	}
 
@@ -278,6 +281,34 @@ export class UpdateV10toV11 implements ObIMigrations {
 				});
 			}
 			tree.overwrite(path, JSON.stringify(eslintConfiguration, null, 2));
+			// can't use applyInTree as the target file is outside sourceRoot
+			return tree;
+		});
+	}
+
+	private removeGlobalsFromJestConfig(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, `Remove "globals" configuration from jest configuration`);
+			const path = 'tests/jest.config.js';
+			tree.overwrite(path, readFile(tree, path).replace(/\s*globals.*?}(?:,|(?=\s*};))/s, ''));
+			// can't use applyInTree as the target file is outside sourceRoot
+			return tree;
+		});
+	}
+
+	private addNodeToCompilerOptions(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, `Add "node" to compiler options for tests`);
+			getAngularConfigs(tree, ['architect', 'test', 'options', 'tsConfig'])
+				.map(({config}) => config)
+				.filter(path => tree.exists(path))
+				.map(path => ({path, content: JSON.parse(readFile(tree, path))}))
+				.filter(({content}) => content?.compilerOptions?.types && !content.compilerOptions.types.includes('node'))
+				.forEach(({path, content}) => {
+					content.compilerOptions.types.push('node');
+					tree.overwrite(path, JSON.stringify(content, null, 2));
+				});
+
 			// can't use applyInTree as the target file is outside sourceRoot
 			return tree;
 		});
