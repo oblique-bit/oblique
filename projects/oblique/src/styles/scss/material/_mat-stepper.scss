@@ -2,9 +2,15 @@
 @use "../core/variables";
 
 .mat-step-header {
-	&.mat-step-header:hover,
-	&.mat-step-header:focus {
-		background-color: variables.$ob-secondary-50;
+	&.mat-step-header:not([aria-disabled]) {
+		&:hover,
+		&:focus {
+			background-color: variables.$ob-secondary-50;
+		}
+
+		&:active {
+			background-color: variables.$ob-secondary-100;
+		}
 	}
 
 	.mat-step-icon {
@@ -28,10 +34,6 @@
 		&.mat-step-icon-state-done {
 			color: variables.$ob-success;
 			border-color: variables.$ob-success;
-
-			&:hover {
-				background-color: variables.$ob-success-light;
-			}
 		}
 
 		.mat-stepper-lg & {
