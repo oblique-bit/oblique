@@ -51,4 +51,8 @@
 
 .ob-autocomplete-panel.mat-mdc-autocomplete-panel {
 	@include shadow.ob-shadow-default();
+
+	.mdc-list-item__primary-text {
+		flex-grow: 1;
+	}
 }
