@@ -43,6 +43,10 @@
 		margin: 0;
 		background-color: variables.$ob-gray-darker;
 		border-radius: variables.$ob-spacing-xs;
-		color: variables.$ob-gray-extra-light;
+		line-height: 1;
+
+		span {
+			background-color: white;
+		}
 	}
 }
