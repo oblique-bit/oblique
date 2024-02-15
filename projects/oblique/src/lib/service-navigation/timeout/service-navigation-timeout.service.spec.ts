@@ -167,26 +167,20 @@ describe('ServiceNavigationTimeout', () => {
 
 	// Cookies.get works only if we set the cookies before the service instantiation.
 	describe('redirectAfterLogout', () => {
-		it('should redirect when the eportal-logout-reminder cookie exist', () => {
-			const newUrl = 'https://eportal.admin.ch';
+		const newUrl = 'https://eportal.admin.ch';
+		beforeEach(() => {
 			Cookies.set(logoutReminderCookieName, newUrl);
 			service = TestBed.inject(ObServiceNavigationTimeoutService);
 			service.initialize(ObEPamsEnvironment.DEV);
 			service.loginState = 'S3OK';
-
 			jest.advanceTimersByTime(10000);
+		});
 
+		it('should redirect when the eportal-logout-reminder cookie exist', () => {
 			expect(fakeWindow.location.href).toBe(newUrl);
 		});
 
 		it('should remove the cookie eportal-logout-reminder before the redirection', () => {
-			const newUrl = 'https://eportal.admin.ch';
-			Cookies.set(logoutReminderCookieName, newUrl);
-			service = TestBed.inject(ObServiceNavigationTimeoutService);
-			service.initialize(ObEPamsEnvironment.DEV);
-			service.loginState = 'S3OK';
-
-			jest.advanceTimersByTime(10000);
 			expect(fakeCookieService.deleteCookie).toHaveBeenCalledTimes(1);
 		});
 	});
