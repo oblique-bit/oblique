@@ -1,8 +1,8 @@
 @use "sass:selector";
 @use "../core/variables";
 
-.mat-step-header {
-	&.mat-step-header:not([aria-disabled]) {
+mat-step-header.mat-step-header {
+	&:not([aria-disabled]) {
 		&:hover,
 		&:focus {
 			background-color: variables.$ob-secondary-50;
@@ -13,10 +13,37 @@
 		}
 	}
 
+	.mat-step-label {
+		color: variables.$ob-secondary-800;
+	}
+
+	&[ng-reflect-state="error"] {
+		.mat-step-label {
+			color: variables.$ob-secondary-300;
+			font-size: variables.$ob-font-size-smaller;
+		}
+	}
+
+	&[ng-reflect-active="false"] {
+		&:hover,
+		&:focus {
+			cursor: not-allowed;
+		}
+
+		.mat-step-icon {
+			border-color: variables.$ob-secondary-300;
+			color: variables.$ob-secondary-300;
+		}
+
+		.mat-step-label {
+			color: variables.$ob-secondary-300;
+		}
+	}
+
 	.mat-step-icon {
 		height: 26px;
 		width: 26px;
-		font-size: 12px;
+		font-size: variables.$ob-stepper-font-size;
 		color: variables.$ob-secondary-600;
 		background-color: variables.$ob-white;
 		border: 1px solid variables.$ob-secondary-600;
@@ -24,6 +51,12 @@
 		&.mat-step-icon-state-error {
 			color: variables.$ob-red-800;
 			border-color: variables.$ob-red-800;
+
+			.mat-icon {
+				font-size: 16px;
+				height: 16px;
+				width: 16px;
+			}
 		}
 
 		&.mat-step-icon-state-edit {
@@ -37,9 +70,9 @@
 		}
 
 		.mat-stepper-lg & {
-			height: 38px;
-			width: 38px;
-			font-size: 16px;
+			height: variables.$ob-stepper-size-lg;
+			width: variables.$ob-stepper-size-lg;
+			font-size: variables.$ob-stepper-lg-font-size;
 
 			.mat-icon {
 				font-size: 22px;
@@ -52,30 +85,17 @@
 		}
 
 		.mat-stepper-sm & {
-			height: 16px;
-			width: 16px;
-			font-size: 10px;
+			height: variables.$ob-stepper-size-sm;
+			width: variables.$ob-stepper-size-sm;
+			font-size: variables.$ob-stepper-sm-font-size;
 
 			.mat-icon {
-				font-size: 10px;
+				font-size: variables.$ob-stepper-sm-font-size;
 
 				&:not(.ob-icon) {
 					height: 10px;
 					width: 10px;
 				}
-			}
-		}
-
-		@at-root #{selector.append("[ng-reflect-active=false]", &)} {
-			border-color: variables.$ob-secondary-300;
-			color: variables.$ob-secondary-300;
-
-			&:hover {
-				background-color: variables.$ob-white;
-			}
-
-			.mat-step-text-label {
-				color: variables.$ob-secondary-300;
 			}
 		}
 	}
@@ -87,15 +107,6 @@
 .mat-stepper-vertical-line::before {
 	border-color: variables.$ob-secondary-300;
 	z-index: 1;
-}
-
-[ng-reflect-active="false"] {
-	&.mat-step-header {
-		&:hover,
-		&:focus {
-			cursor: not-allowed;
-		}
-	}
 }
 
 $padding-sm: 20px;
