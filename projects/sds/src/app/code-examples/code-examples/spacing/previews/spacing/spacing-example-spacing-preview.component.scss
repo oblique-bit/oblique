@@ -1,19 +1,31 @@
 @use "@oblique/oblique/src/styles/scss/core/variables";
 
-$ob-spacing-sizes: (
-	xs: variables.$ob-spacing-xs,
-	sm: variables.$ob-spacing-sm,
-	md: variables.$ob-spacing-md,
-	default: variables.$ob-spacing-default,
-	lg: variables.$ob-spacing-lg,
-	xl: variables.$ob-spacing-xl,
-	xxl: variables.$ob-spacing-xxl,
-) !default;
+.padding-ob-spacing-xs {
+	padding: variables.$ob-spacing-xs;
+}
 
-@each $name, $size in $ob-spacing-sizes {
-	.padding-ob-spacing-#{$name} {
-		padding: $size;
-	}
+.padding-ob-spacing-sm {
+	padding: variables.$ob-spacing-sm;
+}
+
+.padding-ob-spacing-md {
+	padding: variables.$ob-spacing-md;
+}
+
+.padding-ob-spacing-default {
+	padding: variables.$ob-spacing-default;
+}
+
+.padding-ob-spacing-lg {
+	padding: variables.$ob-spacing-lg;
+}
+
+.padding-ob-spacing-xl {
+	padding: variables.$ob-spacing-xl;
+}
+
+.padding-ob-spacing-xxl {
+	padding: variables.$ob-spacing-xxl;
 }
 
 /*
