@@ -1,8 +1,8 @@
 @use "sass:selector";
 @use "../core/variables";
 
-.mat-step-header {
-	&.mat-step-header:not([aria-disabled]) {
+mat-step-header.mat-step-header {
+	&:not([aria-disabled]) {
 		&:hover,
 		&:focus {
 			background-color: variables.$ob-secondary-50;
@@ -10,6 +10,33 @@
 
 		&:active {
 			background-color: variables.$ob-secondary-100;
+		}
+	}
+
+	.mat-step-label {
+		color: variables.$ob-secondary-800;
+	}
+
+	&[ng-reflect-state="error"] {
+		.mat-step-label {
+			color: variables.$ob-secondary-300;
+			font-size: variables.$ob-font-size-smaller;
+		}
+	}
+
+	&[ng-reflect-active="false"] {
+		&:hover,
+		&:focus {
+			cursor: not-allowed;
+		}
+
+		.mat-step-icon {
+			border-color: variables.$ob-secondary-300;
+			color: variables.$ob-secondary-300;
+		}
+
+		.mat-step-label {
+			color: variables.$ob-secondary-300;
 		}
 	}
 
@@ -24,6 +51,12 @@
 		&.mat-step-icon-state-error {
 			color: variables.$ob-red-800;
 			border-color: variables.$ob-red-800;
+
+			.mat-icon {
+				font-size: 16px;
+				height: 16px;
+				width: 16px;
+			}
 		}
 
 		&.mat-step-icon-state-edit {
@@ -65,19 +98,6 @@
 				}
 			}
 		}
-
-		@at-root #{selector.append("[ng-reflect-active=false]", &)} {
-			border-color: variables.$ob-secondary-300;
-			color: variables.$ob-secondary-300;
-
-			&:hover {
-				background-color: variables.$ob-white;
-			}
-
-			.mat-step-text-label {
-				color: variables.$ob-secondary-300;
-			}
-		}
 	}
 }
 
@@ -87,15 +107,6 @@
 .mat-stepper-vertical-line::before {
 	border-color: variables.$ob-secondary-300;
 	z-index: 1;
-}
-
-[ng-reflect-active="false"] {
-	&.mat-step-header {
-		&:hover,
-		&:focus {
-			cursor: not-allowed;
-		}
-	}
 }
 
 $padding-sm: 20px;
