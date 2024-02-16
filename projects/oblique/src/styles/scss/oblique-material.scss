@@ -39,6 +39,10 @@ $theme-tabs: (
 
 @include mat.core();
 
+@include mat.tree-theme(mat.define-light-theme($theme));
+@include mat.toolbar-theme(mat.define-light-theme($theme));
+@include mat.bottom-sheet-theme(mat.define-light-theme($theme));
+@include mat.snack-bar-theme(mat.define-light-theme($theme));
 @include mat.autocomplete-theme(mat.define-light-theme($theme));
 @include mat.badge-theme(mat.define-light-theme($theme-alt-500));
 @include mat.button-theme(mat.define-light-theme($theme));
