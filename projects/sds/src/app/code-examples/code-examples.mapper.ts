@@ -34,7 +34,7 @@ import {SelectableCodeExamplesComponent} from './code-examples/selectable/select
 import {ShadowCodeExamplesComponent} from './code-examples/shadow/shadow-code-examples.component';
 import {SliderCodeExamplesComponent} from './code-examples/slider/slider-code-examples.component';
 import {SlideToggleCodeExamplesComponent} from './code-examples/slide-toggle/slide-toggle-code-examples.component';
-import {SpacingAndLayoutCodeExamplesComponent} from './code-examples/spacing-and-layout/spacing-and-layout-code-examples.component';
+import {SpacingCodeExamplesComponent} from './code-examples/spacing/spacing-code-examples.component';
 import {SpinnerCodeExamplesComponent} from './code-examples/spinner/spinner-code-examples.component';
 import {StepperCodeExamplesComponent} from './code-examples/stepper/stepper-code-examples.component';
 import {StickyCodeExamplesComponent} from './code-examples/sticky/sticky-code-examples.component';
@@ -89,7 +89,7 @@ export class CodeExamplesMapper {
 		shadow: ShadowCodeExamplesComponent,
 		'slide-toggle': SlideToggleCodeExamplesComponent,
 		slider: SliderCodeExamplesComponent,
-		'spacing-and-layout': SpacingAndLayoutCodeExamplesComponent,
+		spacing: SpacingCodeExamplesComponent,
 		spinner: SpinnerCodeExamplesComponent,
 		stepper: StepperCodeExamplesComponent,
 		sticky: StickyCodeExamplesComponent,
