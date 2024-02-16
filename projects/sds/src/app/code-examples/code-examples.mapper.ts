@@ -47,6 +47,7 @@ import {TypographyCodeExamplesComponent} from './code-examples/typography/typogr
 import {UnknownRouteCodeExamplesComponent} from './code-examples/unknown-route/unknown-route-code-examples.component';
 import {UnsavedChangesCodeExamplesComponent} from './code-examples/unsaved-changes/unsaved-changes-code-examples.component';
 import {CollapseCodeExamplesComponent} from './code-examples/collapse/collapse-code-examples.component';
+import {DateCodeExamplesComponent} from './code-examples/date/date-code-examples.component';
 
 /* These imports are sorted alphabetically to reduce merge conflicts.
    If you add a new import above, please make sure it is sorted
@@ -64,6 +65,7 @@ export class CodeExamplesMapper {
 		chips: ChipsCodeExamplesComponent,
 		collapse: CollapseCodeExamplesComponent,
 		'column-layout': ColumnLayoutCodeExamplesComponent,
+		date: DateCodeExamplesComponent,
 		datepicker: DatepickerCodeExamplesComponent,
 		dialog: DialogCodeExamplesComponent,
 		'expansion-panel': ExpansionPanelCodeExamplesComponent,
