@@ -1,6 +1,9 @@
 @use "../../../styles/scss/core/variables" as core-variables;
 
 .ob-service-navigation-message {
+	position: relative;
+	z-index: 1;
+
 	.ob-longer-badge .mat-badge-content {
 		width: core-variables.$ob-service-navigation-messages-many-count-width;
 		border-radius: core-variables.$ob-service-navigation-messages-many-count-border-radius;
