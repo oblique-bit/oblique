@@ -15,6 +15,7 @@ export class ObServiceNavigationTimeoutService {
 	public logoutUrl: string;
 	public rootUrl: string;
 	private eportalUrl: string;
+	private isInitialized = false;
 	private readonly logoutReminderCookieName = 'eportal-logout-reminder';
 	private readonly timeoutCookieName = 'eportal-timeout';
 	private readonly secondsFactor = 1000;
@@ -26,16 +27,14 @@ export class ObServiceNavigationTimeoutService {
 	private readonly cookieService = inject(ObServiceNavigationTimeoutCookieService);
 	private readonly returnUrlService = inject(ObServiceNavigationTimeoutReturnUrlService);
 
-	public constructor() {
-		this.redirectAfterLogout();
-
-		this.setCookieDetector();
-
-		this.tokenExpirationAndInactivityCheck();
-	}
-
-	public setUpEportalUrl(environment: ObEPamsEnvironment): void {
+	public initialize(environment: ObEPamsEnvironment): void {
 		this.eportalUrl = `https://eportal${environment}.admin.ch`;
+		if (!this.isInitialized) {
+			this.redirectAfterLogout();
+			this.setCookieDetector();
+			this.tokenExpirationAndInactivityCheck();
+			this.isInitialized = true;
+		}
 	}
 
 	/**
