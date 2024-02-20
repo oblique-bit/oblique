@@ -1,9 +1,18 @@
 <h2>Default</h2>
 <form class="ob-inline-form">
 	<label>Default</label>
+	<button type="button" mat-button obButton>button</button>
 	<mat-form-field>
 		<mat-label>Default</mat-label>
 		<input type="text" matInput placeholder="Default" />
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Default</mat-label>
+		<input matInput [matDatepicker]="defaultDatepicker" />
+		<mat-hint>DD.MM.YYYY</mat-hint>
+		<mat-datepicker-toggle matIconSuffix [for]="defaultDatepicker" />
+		<mat-datepicker #defaultDatepicker />
 	</mat-form-field>
 
 	<mat-checkbox>Default</mat-checkbox>
@@ -33,9 +42,18 @@
 <h2>Small</h2>
 <form class="ob-inline-form ob-form-sm">
 	<label>Default</label>
+	<button type="button" mat-button obButton>button</button>
 	<mat-form-field>
 		<mat-label>Default</mat-label>
 		<input type="text" matInput placeholder="Default" />
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Default</mat-label>
+		<input matInput [matDatepicker]="defaultDatepickerSM" />
+		<mat-hint>DD.MM.YYYY</mat-hint>
+		<mat-datepicker-toggle matIconSuffix [for]="defaultDatepickerSM" />
+		<mat-datepicker #defaultDatepickerSM />
 	</mat-form-field>
 
 	<mat-checkbox>Default</mat-checkbox>
@@ -65,9 +83,18 @@
 <h2>Large</h2>
 <form class="ob-inline-form ob-form-lg">
 	<label>Default</label>
+	<button type="button" mat-button obButton>button</button>
 	<mat-form-field>
 		<mat-label>Default</mat-label>
 		<input type="text" matInput placeholder="Default" />
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Default</mat-label>
+		<input matInput [matDatepicker]="defaultDatepickerLG" />
+		<mat-hint>DD.MM.YYYY</mat-hint>
+		<mat-datepicker-toggle matIconSuffix [for]="defaultDatepickerLG" />
+		<mat-datepicker #defaultDatepickerLG />
 	</mat-form-field>
 
 	<mat-checkbox>Default</mat-checkbox>
