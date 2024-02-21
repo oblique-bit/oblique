@@ -7,6 +7,10 @@
 		padding-top: $ob-form-field-label-padding-top;
 	}
 
+	.ob-button {
+		margin-top: 4px; // empiric value
+	}
+
 	&.ob-form-sm {
 		> label {
 			padding-top: $ob-form-field-label-padding-top-sm;
@@ -16,6 +20,10 @@
 	&.ob-form-lg {
 		> label {
 			padding-top: $ob-form-field-label-padding-top-lg;
+		}
+
+		.ob-button {
+			margin-top: 13px; // empiric value
 		}
 	}
 }
