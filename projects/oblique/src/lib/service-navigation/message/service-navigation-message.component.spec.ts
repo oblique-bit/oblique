@@ -181,7 +181,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 		});
 
 		it.each([
-			{attribute: 'obButton', value: 'secondary'},
+			{attribute: 'obButton', value: 'tertiary'},
 			{attribute: 'mat-icon-button', value: ''}
 		])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
 			expect(await link.getAttribute(attribute)).toBe(value);
