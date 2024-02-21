@@ -1,3 +1,15 @@
+# [11.0.0-RC.3](https://github.com/oblique-bit/oblique/compare/11.0.0-RC.2...11.0.0-RC.3) (2024-02-21)
+
+## Bug Fixes
+
+- **collapse:** vertically align the toggle icon with the text ([51f2fdd](https://github.com/oblique-bit/oblique/commit/51f2fdd35019b81f7bac1146e126417dc2f3e9f3))
+- **material:** add material styling for tree, toolbar, bottom-sheet and snack-bar([64b5615](https://github.com/oblique-bit/oblique/commit/64b561559550f1de2d1870dd143cf58cf9832ea0))
+- **service-navigation:** allow `https` connection on localhost ([6b53b04](https://github.com/oblique-bit/oblique/commit/6b53b0438faa09b974a03a99ed557d96b7f2354c))
+- **service-navigation:** don't start the timeout service when PAMS is not configured ([7a63b3b](https://github.com/oblique-bit/oblique/commit/7a63b3b28aa74821525b66ba8ac62524d00f9763))
+- **service-navigation:** make sure badge on message widget is displayed above next element ([9273116](https://github.com/oblique-bit/oblique/commit/927311635a61ce22f463fab8ff010a8b0aa508a9))
+- **service-navigation:** use a tertiary button instead of a secondary one ([cc45bdd](https://github.com/oblique-bit/oblique/commit/cc45bdd32642bc379b0a99c04df4f5ea70ce6edc))
+- **styles:** vertically align button in an `ob-inline-form` ([a53bc8f](https://github.com/oblique-bit/oblique/commit/a53bc8f8ffeef7b626ec56bbe4edd6d39abb16d0))
+
 # [11.0.0-RC.2](https://github.com/oblique-bit/oblique/compare/10.3.1...11.0.0-RC.2) (2024-02-15)
 
 ## Bug Fixes
