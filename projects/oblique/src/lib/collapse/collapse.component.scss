@@ -3,6 +3,7 @@
 .ob-collapse {
 	.ob-collapse-toggle {
 		display: flex;
+		align-items: center;
 		cursor: pointer;
 
 		&.ob-toggle-justified {
