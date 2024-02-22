@@ -33,7 +33,7 @@ import {ObICustomButton, ObILink} from './service-navigation-web-component.model
 	standalone: true,
 	selector: 'ob-service-navigation-web-component',
 	templateUrl: './service-navigation-web-component.component.html',
-	styleUrl: '../../../oblique/src/styles/scss/oblique-core.scss',
+	styleUrls: ['./service-navigation-web-component.component.scss', '../../../oblique/src/styles/scss/oblique-core.scss'],
 	encapsulation: ViewEncapsulation.None,
 	imports: [ObServiceNavigationModule, NgIf, MatButtonModule, MatIconModule, NgFor, MatBadgeModule, ObButtonModule],
 	providers: [TranslationsService]
