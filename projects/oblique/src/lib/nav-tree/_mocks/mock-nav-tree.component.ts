@@ -2,11 +2,15 @@ import {Component, Input} from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {ObNavTreeItemModel} from '../nav-tree-item.model';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @Component({
 	selector: 'ob-nav-tree',
 	exportAs: 'obNavTree',
 	host: {class: 'ob-nav-tree'},
-	template: ''
+	template: '',
+	standalone: true
 })
 export class ObMockNavTreeComponent {
 	static DEFAULTS = {
@@ -19,8 +23,6 @@ export class ObMockNavTreeComponent {
 	@Input() prefix = 'nav-tree';
 	@Input() filterPattern: string;
 	@Input() labelFormatter: any;
-	@Input() variant = ObMockNavTreeComponent.DEFAULTS.VARIANT;
-	@Input() activateAncestors = true;
 
 	@Input() patternMatcher(item: ObNavTreeItemModel, pattern = ''): boolean {
 		return true;

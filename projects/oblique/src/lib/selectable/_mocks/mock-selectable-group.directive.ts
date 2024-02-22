@@ -2,9 +2,13 @@ import {Directive} from '@angular/core';
 import {ObSelectableDirective} from '../selectable.directive';
 import {of} from 'rxjs';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @Directive({
 	selector: '[obSelectableGroup]',
-	exportAs: 'obSelectableGroup'
+	exportAs: 'obSelectableGroup',
+	standalone: true
 })
 export class ObMockSelectableGroupDirective {
 	role = 'group';

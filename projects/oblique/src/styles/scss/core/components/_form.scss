@@ -1,8 +1,5 @@
 @use "../variables";
 
-/**
- * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11
- */
 fieldset {
 	min-width: 0;
 	padding: 0;
@@ -18,7 +15,7 @@ legend {
 	width: 100%;
 	padding: 0;
 	margin-bottom: variables.$ob-spacing-sm;
-	border-bottom: 1px dotted variables.$ob-gray;
+	border-bottom: variables.$ob-line-width-xs solid variables.$ob-gray-lighter;
 	font-size: variables.$ob-font-size-bigger;
 	font-weight: 600;
 	line-height: inherit;
@@ -134,6 +131,11 @@ textarea {
 .ob-inline-form {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: flex-start;
 	column-gap: variables.$ob-spacing-default;
 	word-break: normal;
+
+	.mat-mdc-form-field {
+		width: auto;
+	}
 }

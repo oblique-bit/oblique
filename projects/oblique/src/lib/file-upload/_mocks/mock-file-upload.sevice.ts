@@ -2,6 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpEvent} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @Injectable()
 export class ObMockFileUploadService {
 	uploadComplete$ = new Observable<void>();

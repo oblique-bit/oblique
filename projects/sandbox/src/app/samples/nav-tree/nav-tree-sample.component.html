@@ -1,0 +1,34 @@
+<h2 id="navTreeSampleTitle" class="page-header">{{ "i18n.routes.samples.nav-tree.title" | translate }}</h2>
+<ob-column-layout [left]="false" [right]="true">
+	<ob-nav-tree
+		#obNavTree
+		column-main-content
+		[treeAriaLabelledBy]="'navTreeSampleTitle'"
+		[items]="items"
+		[prefix]="'nav-tree-sample'"
+		[filterPattern]="filter.pattern"
+		[hasFilter]="hasEmbeddedFilter"
+	>
+		<li class="nav-item nav-header" role="presentation">
+			<h3 class="nav-header-title" *ngIf="!filter.pattern">Menu Sample</h3>
+			<h3 class="nav-header-title" *ngIf="filter.pattern">{{ "i18n.common.filter.results" | translate }}</h3>
+		</li>
+	</ob-nav-tree>
+	<div column-right-content>
+		<h2>Controls</h2>
+		<fieldset>
+			<legend>Options</legend>
+			<mat-form-field>
+				<mat-label>Filter</mat-label>
+				<input type="text" matInput [(ngModel)]="filter.pattern" #obFilterBox />
+			</mat-form-field>
+			<mat-slide-toggle [(ngModel)]="hasEmbeddedFilter">Embedded filter?</mat-slide-toggle>
+		</fieldset>
+		<fieldset>
+			<legend>Actions</legend>
+			<button type="button" obButton mat-button (click)="obNavTree.collapseAll()"><mat-icon svgIcon="compress" /> Collapse All</button>
+			<button type="button" obButton mat-button (click)="obNavTree.expandAll()"><mat-icon svgIcon="expand" /> Expand All</button>
+		</fieldset>
+		<router-outlet />
+	</div>
+</ob-column-layout>

@@ -28,7 +28,7 @@ export class ObServiceNavigationApplicationsStoreService {
 			? this.applicationInfoService.fetchApplicationsInfo(rootUrl, applicationsToFetch).pipe(
 					tap(receivedApplications => this.storeApplications(receivedApplications, cachedApplicationIds)),
 					map(() => applications.map(application => this.cachedApplications[application.applicationID]))
-			  )
+				)
 			: of(applications.map(application => application.applicationID).map(applicationId => this.cachedApplications[applicationId]));
 	}
 

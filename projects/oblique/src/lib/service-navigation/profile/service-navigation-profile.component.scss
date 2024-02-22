@@ -17,11 +17,7 @@
 		}
 
 		.ob-outline &:focus {
-			border-color: variables.$ob-default;
 			border-radius: 50%;
-			box-shadow: 0 0 variables.$ob-spacing-xs 0 variables.$ob-default;
-			outline: 1px solid variables.$ob-primary;
-			outline-offset: -3px;
 		}
 
 		.ob-profile-avatar {

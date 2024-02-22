@@ -13,6 +13,12 @@ export class ObServiceNavigationLanguagesComponent {
 	@Input() languages: ObILanguage[] = [];
 	@Output() readonly languageChange = new EventEmitter<string>();
 
+	chevron: 'chevron-down' | 'chevron-up' = 'chevron-down';
+
+	changeChevron(): void {
+		this.chevron = this.chevron === 'chevron-down' ? 'chevron-up' : 'chevron-down';
+	}
+
 	changeLanguage(language: string): void {
 		this.languageChange.emit(language);
 	}

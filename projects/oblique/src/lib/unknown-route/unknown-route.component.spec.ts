@@ -2,16 +2,16 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 
 import {ObUnknownRouteComponent} from './unknown-route.component';
-import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
-
-describe('UnknownRouteComponent', () => {
+import {TranslateService} from '@ngx-translate/core';
+import {ObMockTranslateService} from '../_mocks/mock-translate.service';
+describe(ObUnknownRouteComponent.name, () => {
 	let component: ObUnknownRouteComponent;
 	let fixture: ComponentFixture<ObUnknownRouteComponent>;
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			declarations: [ObUnknownRouteComponent, ObMockTranslatePipe],
-			imports: [RouterTestingModule]
+			imports: [ObUnknownRouteComponent, RouterTestingModule],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 	}));
 

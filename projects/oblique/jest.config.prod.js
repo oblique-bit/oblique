@@ -38,6 +38,12 @@ module.exports.coverageThreshold = {
 		functions: 100,
 		lines: 100
 	},
+	'projects/oblique/src/lib/checkbox/*.ts': {
+		statements: 90,
+		branches: 60,
+		functions: 70,
+		lines: 90
+	},
 	'projects/oblique/src/lib/collapse/*.ts': {
 		statements: 100,
 		branches: 81,
@@ -107,6 +113,12 @@ module.exports.coverageThreshold = {
 		functions: 53,
 		lines: 65
 	},
+	'projects/oblique/src/lib/master-layout/master-layout-navigation/sub-menu-item/*.ts': {
+		statements: 80,
+		branches: 88,
+		functions: 90,
+		lines: 80
+	},
 	'projects/oblique/src/lib/multi-translate-loader/*.ts': {
 		statements: 22,
 		branches: 0,
@@ -155,19 +167,7 @@ module.exports.coverageThreshold = {
 		functions: 0,
 		lines: 27
 	},
-	'projects/oblique/src/lib/search-box/*.ts': {
-		statements: 98,
-		branches: 84,
-		functions: 94,
-		lines: 97
-	},
 	'projects/oblique/src/lib/selectable/*.ts': {
-		statements: 100,
-		branches: 81,
-		functions: 100,
-		lines: 100
-	},
-	'projects/oblique/src/lib/spinner/*.ts': {
 		statements: 100,
 		branches: 81,
 		functions: 100,

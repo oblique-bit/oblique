@@ -1,29 +1,29 @@
-import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
+import {NgModule} from '@angular/core';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
-import {MatLegacyTableModule as MatTableModule} from '@angular/material/legacy-table';
-import {MatLegacyCheckboxModule as MatCheckboxModule} from '@angular/material/legacy-checkbox';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
-import {MatLegacyProgressBarModule as MatProgressBarModule} from '@angular/material/legacy-progress-bar';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule} from '@ngx-translate/core';
-import {obliqueProviders} from '../utilities';
-import {ObFileUploadComponent} from './file-upload.component';
-import {ObFileInfoComponent} from './file-info/file-info.component';
-import {ObDragDropDirective} from './drop-zone/drag-and-drop.directive';
 import {ObAlertModule} from '../alert/alert.module';
-import {ObNotificationModule} from '../notification/notification.module';
 import {ObButtonModule} from '../button/button.module';
+import {ObNotificationModule} from '../notification/notification.module';
+import {obliqueExports, obliqueProviders} from '../utilities';
 import {ObAcceptAllPipe} from './drop-zone/accept-all.pipe';
+import {ObDragDropDirective} from './drop-zone/drag-and-drop.directive';
 import {ObDropZoneComponent} from './drop-zone/ob-drop-zone.component';
+import {ObFileInfoComponent} from './file-info/file-info.component';
+import {ObFileUploadComponent} from './file-upload.component';
 import {ObProgressComponent} from './progress/progress.component';
 
-export {ObFileUploadComponent} from './file-upload.component';
 export {ObDropZoneComponent} from './drop-zone/ob-drop-zone.component';
-export {ObFileUploadService} from './file-upload.service';
 export {ObFileInfoComponent} from './file-info/file-info.component';
-export {ObIFileDescription, ObIUploadEvent, ObEUploadEventType} from './file-upload.model';
+export {ObFileUploadComponent} from './file-upload.component';
+export {ObEUploadEventType, ObIFileDescription, ObIUploadEvent} from './file-upload.model';
+export {ObFileUploadService} from './file-upload.service';
 
 @NgModule({
 	imports: [
@@ -35,20 +35,18 @@ export {ObIFileDescription, ObIUploadEvent, ObEUploadEventType} from './file-upl
 		MatSortModule,
 		MatTableModule,
 		MatTooltipModule,
+		ObAcceptAllPipe,
 		ObAlertModule,
 		ObButtonModule,
-		ObNotificationModule,
-		TranslateModule
-	],
-	declarations: [
-		ObAcceptAllPipe,
 		ObDragDropDirective,
 		ObDropZoneComponent,
 		ObFileInfoComponent,
 		ObFileUploadComponent,
-		ObProgressComponent
+		ObNotificationModule,
+		ObProgressComponent,
+		TranslateModule
 	],
-	exports: [ObDropZoneComponent, ObFileInfoComponent, ObFileUploadComponent],
+	exports: [ObDropZoneComponent, ObFileInfoComponent, ObFileUploadComponent, ...obliqueExports],
 	providers: obliqueProviders()
 })
 export class ObFileUploadModule {}

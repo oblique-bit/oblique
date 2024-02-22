@@ -1,12 +1,10 @@
 @use "sass:selector";
 @use "../variables";
 @use "../mixins/layout";
+@use "../mixins/shadow";
 @use "../mixins/table";
 @use "../mixins/typography";
 
-/**
- * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11
- */
 table {
 	border-collapse: collapse; // Prevent double borders
 }
@@ -14,30 +12,49 @@ table {
 .ob-table {
 	width: 100%;
 	color: variables.$ob-default;
-	@include typography.ob-body2();
+	line-height: 1.42857;
+	letter-spacing: 0.25px;
 
-	&.ob-table-cicd {
-		thead,
-		tfoot {
-			background-color: variables.$ob-gray-lighter;
-		}
+	&,
+	thead,
+	tbody,
+	th,
+	td,
+	tr,
+	caption {
+		font-size: variables.$ob-font-size-normal;
+	}
 
-		th {
-			font-weight: 700;
-		}
+	thead tr:nth-child(odd),
+	&:not(.ob-table-plain) tbody tr:nth-child(even) {
+		background-color: variables.$ob-secondary-50;
+	}
+
+	.mat-mdc-row {
+		height: auto;
+	}
+
+	&:not(.ob-table-disable-hover-style) tbody tr:hover {
+		background-color: variables.$ob-secondary-100;
+	}
+
+	tr {
+		border-bottom: 1px solid variables.$ob-secondary-200;
+	}
+
+	thead tr:last-child {
+		border-width: 2px;
+	}
+
+	thead th {
+		text-transform: uppercase;
+		font-weight: normal;
 	}
 
 	td,
 	th {
-		border-top: 1px solid variables.$ob-gray-light;
-		border-bottom: 1px solid variables.$ob-gray-light;
 		padding: variables.$ob-spacing-sm;
 		text-align: inherit;
-
-		@at-root #{selector.append(".ob-table-cicd", &)} {
-			border-right: 1px solid variables.$ob-gray-light;
-			border-left: 1px solid variables.$ob-gray-light;
-		}
 
 		@at-root #{selector.append(".ob-table-sm", &)} {
 			padding: variables.$ob-spacing-xs;
@@ -48,37 +65,16 @@ table {
 		}
 	}
 
-	&:not(.ob-table-cicd) thead tr:first-child th {
-		border-top: none;
-	}
-
-	&:not(.ob-table-plain) {
-		tbody tr:nth-child(odd) {
-			background-color: variables.$ob-gray-extra-light;
-		}
-	}
-
 	&.ob-table-collapse {
-		@include layout.ob-media-breakpoint-down(md) {
-			@include table.ob-table-collapse();
-		}
+		@include table.ob-table-collapse(md);
 	}
 
 	&.ob-table-collapse-sm {
-		@include layout.ob-media-breakpoint-down(sm) {
-			@include table.ob-table-collapse();
-		}
+		@include table.ob-table-collapse(sm);
 	}
 
 	&.ob-table-collapse-md {
-		@include layout.ob-media-breakpoint-down(md) {
-			@include table.ob-table-collapse();
-		}
-	}
-
-	&.ob-table-hover tbody tr:hover,
-	tr.ob-active {
-		background-color: variables.$ob-extra-light;
+		@include table.ob-table-collapse(md);
 	}
 }
 

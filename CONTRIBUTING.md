@@ -11,24 +11,53 @@ This project and everyone participating in it is governed by the [Oblique code o
 Your comments, feedbacks and questions are welcome.
 The development team is available by [email](mailto:Oblique@bit.admin.ch).
 
-## Instructions for contributing to code
+## Get started
 
-### Get started
+This repo contains 4 district Angular projects:
 
-#### Prerequisites
+- **oblique**: this is the Oblique library that will be distributed on NPM.
+- **sds**: this is the Oblique documentation that will be deployed on http://oblique.bit.admin.ch. Use it to see Oblique in action.
+- **sandbox**: this is a sandbox application used by the Oblique's development team. This application is never deployed and doesn't match the usual quality requirements.
+- **stylesBuilder**: this is an internal project used by Oblique to generate global CSS files. Never use it.
+
+### Prerequisites
 
 - GIT
 - nodejs & npm
 - AngularCli installed globally: `npm i -g @angular/cli`
 
-#### Setup the environment
+### Setup the environment
 
 - Clone the repo: `git clone https://github.com/oblique-bit/oblique.git`.
 - Install project dependencies: `npm ci`
-- start the showcase: `npm start`
-- start the tests: `npm test`
 
-### Commit message
+### Useful commands
+
+#### Start projects
+
+- start Sandbox: `npm start -w projects/sandbox`
+- start SDS: `npm start -w projects/sds`
+- start all projects: `npm start -ws`
+
+#### Test projects
+
+- test Oblique `npm test -w projects/oblique`
+- test Sandbox: `npm test -w projects/sandbox`
+- test SDS: `npm test -w projects/sds`
+- test all projects: `npm test -ws`
+
+#### Lint projects
+
+- lint all projects: `npm run lint`
+- format (lint with auto fix) all projects: `npm run format`
+
+#### Miscellaneous commands
+
+- compile the schematics: `npm run schematics -w projects/oblique`
+- update icons (should be executed when there is a change in the `projects/oblique/icons` folder): `npm run update-icons -w projects/oblique`
+- update error messages (should be executed when there is a change in one of the translation keys starting with `i18n.validation`): `npm run update-error-messages -w projects/oblique`
+
+## Commit messages
 
 We have very precise rules over how our git commit messages can be formatted. This leads to more readable messages that are easy to follow when looking
 through the project history. The git commit messages will also be used to generate Oblique's change log.
@@ -39,9 +68,9 @@ For better readability, please follow the following rules:
 - A change includes its tests, mocks, documentation and schematics.
 - 1 commit concerns 1 scope (see below), if a commit spans multiple scopes, split it into several commits. **Exception**: changes that spans most of the library can be grouped together. In that case, there is no scope
 - no line of the commit message can be longer than 100 characters.
-- changes to the showcase should NEVER come with another type (see below) as **showcase**. All showcase changes of an issue should be squashed together
+- changes to one package should NEVER come with another package.
 
-#### Format
+### Format
 
 Each commit message consists of a **header**, a **body** and a **footer**. The header has a special format that includes a **type**, a **scope** and a
 **subject**:
@@ -52,11 +81,11 @@ Each commit message consists of a **header**, a **body** and a **footer**. The h
 
     <footer>
 
-##### Header
+#### Header
 
 The header is mandatory and lowercase only. The scope of the header is optional. There no space between **type** and **scope**.
 
-###### Type
+##### Type
 
 The type is mandatory and must be one of the following:
 
@@ -64,14 +93,27 @@ The type is mandatory and must be one of the following:
 - **fix**: Changes that fixes a bug
 - **refactor**: Changes to a feature that neither adds, removes nor fixes a behavior
 - **test**: Changes that affect tests and their configuration only
-- **docs**: Changes that affect the documentation only
-- **showcase**: Changes that affect the showcase only
 - **format**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 - **chore**: Anything that do not fit in any previous types (e.g. release, dependencies update, ...)
 
-###### Scope
+##### Scope
 
-The scope is optional and should be the name of the Oblique feature affected:
+The scope is optional.
+
+###### Scope prefixes
+
+If specified, the scope must be prefixed by the package name, separated with a slash (**/**). The **toolchain** scope is an exception to this rule.
+
+- **oblique**
+- **sandbox**
+- **sds**
+- **service-navigation**
+
+Prefixes may be used alone for changes that are not linked to a particular scope.
+
+###### Base scopes
+
+If specified, the scope must be one of:
 
 - **alert**
 - **authentication**
@@ -98,10 +140,8 @@ The scope is optional and should be the name of the Oblique feature affected:
 - **off-canvas**
 - **paginator**
 - **popover**
-- **pop-up**
 - **schema-validation**
 - **scrolling**
-- **search-box**
 - **selectable**
 - **service-navigation**
 - **spinner**
@@ -109,14 +149,43 @@ The scope is optional and should be the name of the Oblique feature affected:
 - **translate-params**
 - **unknown-route**
 - **unsaved-changes**
-- **material** (for material design components or styles)
-- **schematics** (for the schematics not directly linked to a feature)
-- **styles** (for the global CSS)
-- **toolchain** (for the configuration, build, releases...)
-- **translation** (for the translations not directly linked to a feature)
-- **utilities** (for utilities.ts)
+- **material** for material design
 
-###### Subject
+###### Oblique scopes
+
+The Oblique project may use those additional scopes:
+
+- **schematics** for the schematics not directly linked to a feature
+- **styles** for the global CSS
+- **translation** for the translations not directly linked to a feature
+- **utilities** for utilities.ts
+
+###### Sandbox scopes
+
+The sandbox project may use those additional scopes:
+
+- **styles** for styles documentation pages
+
+###### SDS scopes
+
+The SDS project may use those additional scopes:
+
+- **cms**
+- **code-examples**
+- **feedback**
+- **schematics** for the schematics not directly linked to a feature
+- **side-navigation**
+- **styles** for the global CSS
+- **tabbed-page**
+- **text-page**
+
+###### Additional scopes
+
+The following scopes may be used with any prefix or no prefix at all
+
+- **toolchain** for the configuration, build, releases...
+
+##### Subject
 
 The subject is mandatory and contains a **succinct** description of the change:
 
@@ -124,12 +193,12 @@ The subject is mandatory and contains a **succinct** description of the change:
 - don't capitalize the first letter
 - no dot (.) at the end
 
-##### Body
+#### Body
 
 The body is optional.
 Just as in the subject, use the imperative, present tense: "change" not "changed" nor "changes". The body should include the motivation for the change and contrast this with previous behavior.
 
-##### Footer
+#### Footer
 
 The footer is optional and should contain a reference to an issue if any, e.g.: `OUI-715`.
 

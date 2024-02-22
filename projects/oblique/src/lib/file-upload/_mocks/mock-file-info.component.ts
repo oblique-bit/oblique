@@ -1,15 +1,19 @@
 import {SelectionModel} from '@angular/cdk/collections';
 import {Component, EventEmitter, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
-import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
+import {MatTableDataSource} from '@angular/material/table';
 import {ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @Component({
 	selector: 'ob-file-info',
 	exportAs: 'obFileInfo',
 	template: '',
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-file-info'}
+	host: {class: 'ob-file-info'},
+	standalone: true
 })
 export class ObMockFileInfoComponent {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();

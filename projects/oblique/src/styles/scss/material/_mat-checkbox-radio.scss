@@ -1,25 +1,55 @@
-/**
- * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
- */
-.mat-radio-label,
-.mat-checkbox-layout {
-	font-weight: 400;
+@use "../core/variables" as core-variables;
+@use "../core/mixins/shadow";
+
+.mat-mdc-checkbox.mat-mdc-checkbox-disabled,
+.mat-mdc-radio-button.mat-mdc-radio-disabled,
+.mat-mdc-radio-group[disabled] {
+	&,
+	label,
+	.mdc-form-field label,
+	input {
+		cursor: not-allowed;
+	}
 }
 
-.mat-checkbox.control-mandatory::before {
-	top: -2px;
+$disabled-color: core-variables.$ob-secondary-300;
+
+.mat-mdc-checkbox,
+.mat-mdc-radio-group {
+	margin-top: 5px; // empiric number
+
+	.ob-form-sm & {
+		margin-top: 2px; // empiric number
+	}
+
+	.ob-form-lg & {
+		margin-top: 13px; // empiric number
+	}
 }
 
-.mat-radio-group.control-mandatory::before {
-	top: -1px;
+.mat-mdc-radio-button {
+	input:focus-visible ~ .mdc-radio__background {
+		.mdc-radio__outer-circle {
+			@include shadow.ob-tab-focus-box-shadow();
+		}
+	}
+
+	label {
+		cursor: pointer;
+	}
 }
 
-.mat-checkbox-label,
-.mat-radio-label-content {
-	padding-top: 2px;
-}
+.mat-mdc-checkbox {
+	input:focus-visible ~ .mdc-checkbox__background {
+		@include shadow.ob-tab-focus-box-shadow();
+		border-radius: 2px;
+	}
 
-.mat-checkbox.mat-checkbox-disabled,
-.mat-radio-button.mat-radio-disabled .mat-radio-label {
-	cursor: not-allowed;
+	&.mat-mdc-checkbox-disabled {
+		pointer-events: unset;
+
+		.mat-mdc-checkbox-touch-target {
+			cursor: not-allowed;
+		}
+	}
 }

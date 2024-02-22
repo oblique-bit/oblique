@@ -26,7 +26,7 @@ function addDevEnv(dev: boolean): Rule {
 						config.dev.sourceMap = true;
 					}
 					return config;
-			  })
+				})
 			: tree;
 }
 

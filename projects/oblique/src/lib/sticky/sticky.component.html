@@ -1,5 +1,5 @@
 <div class="ob-sticky-header" *ngIf="stickyHeaderTemplate">
-	<ng-container *ngTemplateOutlet="stickyHeaderTemplate"></ng-container>
+	<ng-container *ngTemplateOutlet="stickyHeaderTemplate" />
 </div>
 <div class="ob-sticky-main" [class.ob-sticky-content]="!stickyHeaderTemplate || !stickyFooterTemplate">
 	<div
@@ -9,17 +9,17 @@
 		*ngIf="stickyHeaderTemplate && stickyFooterTemplate; else mainContent"
 	>
 		<div class="ob-sticky-main ob-sticky-content" cdkScrollable>
-			<ng-container *ngTemplateOutlet="mainContent"></ng-container>
+			<ng-container *ngTemplateOutlet="mainContent" />
 		</div>
 		<div class="ob-sticky-footer" *ngIf="stickyFooterTemplate">
-			<ng-container *ngTemplateOutlet="stickyFooterTemplate"></ng-container>
+			<ng-container *ngTemplateOutlet="stickyFooterTemplate" />
 		</div>
 	</div>
 </div>
 <div class="ob-sticky-footer" *ngIf="!stickyHeaderTemplate && stickyFooterTemplate">
-	<ng-container *ngTemplateOutlet="stickyFooterTemplate"></ng-container>
+	<ng-container *ngTemplateOutlet="stickyFooterTemplate" />
 </div>
 
 <ng-template #mainContent>
-	<ng-container *ngTemplateOutlet="stickyMainTemplate"></ng-container>
+	<ng-container *ngTemplateOutlet="stickyMainTemplate" />
 </ng-template>

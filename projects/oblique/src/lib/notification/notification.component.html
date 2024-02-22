@@ -11,13 +11,13 @@
 	</button>
 	<span
 		class="ob-occurrence"
-		[matTooltip]="'i18n.oblique.occurrences' | translate : { occurrences: notification.occurrences }"
+		[matTooltip]="'i18n.oblique.occurrences' | translate: { occurrences: notification.occurrences }"
 		*ngIf="notification.occurrences > 1"
 	>
 		{{ notification.occurrences }}
 	</span>
 	<div [id]="notification.idPrefix + 'title'" class="ob-notification-title">
-		{{ notification.title | translate : notification.titleParams }}
+		{{ notification.title | translate: notification.titleParams }}
 	</div>
-	<p [id]="notification.idPrefix + 'text'">{{ notification.message | translate : notification.messageParams }}</p>
+	<p [id]="notification.idPrefix + 'text'">{{ notification.message | translate: notification.messageParams }}</p>
 </ob-alert>

@@ -1,0 +1,17 @@
+@use "../core/mixins/shadow";
+@use "../core/variables" as core-variables;
+@use "mixins/mat-panel";
+
+.mat-mdc-select {
+	.mat-mdc-select-arrow {
+		color: core-variables.$ob-default;
+	}
+
+	.mat-mdc-select-arrow-wrapper,
+	.mat-mdc-select-value {
+		z-index: 1;
+	}
+}
+
+@include mat-panel.margin-top("select", 0.75 * core-variables.$ob-spacing-xs);
+@include mat-panel.active("select");

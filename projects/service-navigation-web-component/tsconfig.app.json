@@ -1,0 +1,22 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "module": "es2015",
+    "moduleResolution": "node",
+    "declaration": true,
+    "inlineSources": true,
+    "importHelpers": true,
+    "types": ["node"]
+  },
+  "files": ["src/main.ts"],
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "enableResourceInlining": true
+  },
+  "include": ["src/**/*.d.ts"],
+  "exclude": ["src/test.ts", "**/*.spec.ts"]
+}

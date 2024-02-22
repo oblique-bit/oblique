@@ -28,7 +28,7 @@ export class ObMockSelectableGroupDirective {
 	focus = jest.fn();
 }
 
-describe('SelectableDirective', () => {
+describe(ObSelectableDirective.name, () => {
 	let directive: ObSelectableDirective;
 	let group: ObSelectableGroupDirective;
 	let component: TestComponent;
@@ -38,19 +38,23 @@ describe('SelectableDirective', () => {
 	describe('without obSelectableGroup', () => {
 		beforeEach(waitForAsync(() => {
 			TestBed.configureTestingModule({
-				declarations: [FaultyTestComponent, ObSelectableDirective]
+				imports: [ObSelectableDirective],
+				declarations: [FaultyTestComponent]
 			});
 		}));
 
 		it('should throw an error', () => {
-			expect(() => TestBed.createComponent(FaultyTestComponent)).toThrowError();
+			expect(() => TestBed.createComponent(FaultyTestComponent)).toThrow(
+				'The ObSelectableDirectives need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more info'
+			);
 		});
 	});
 
 	describe('with obSelectableGroup', () => {
 		beforeEach(waitForAsync(() => {
 			TestBed.configureTestingModule({
-				declarations: [TestComponent, ObSelectableDirective, ObMockSelectableGroupDirective],
+				imports: [ObSelectableDirective],
+				declarations: [ObMockSelectableGroupDirective, TestComponent],
 				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}]
 			});
 		}));

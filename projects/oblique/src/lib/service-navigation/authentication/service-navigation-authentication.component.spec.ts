@@ -2,12 +2,12 @@ import {TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconModule} from '@angular/material/icon';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconHarness} from '@angular/material/icon/testing';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObServiceNavigationAuthenticationHarness} from './service-navigation-authentication.harness';
 import {ObServiceNavigationAuthenticationComponent} from './service-navigation-authentication.component';
-import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
+import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule} from '../../button/button.module';
 
 describe('ObServiceNavigationAuthenticationComponent', () => {
@@ -17,8 +17,8 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [ObServiceNavigationAuthenticationComponent, ObMockTranslatePipe],
-			imports: [MatIconModule, MatTooltipModule, MatButtonModule, ObButtonModule]
+			declarations: [ObServiceNavigationAuthenticationComponent],
+			imports: [ObMockTranslatePipe, MatIconModule, MatTooltipModule, MatButtonModule, ObButtonModule]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationAuthenticationComponent);

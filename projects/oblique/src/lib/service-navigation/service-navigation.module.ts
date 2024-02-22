@@ -1,12 +1,14 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatSelectModule} from '@angular/material/select';
 import {TranslateModule} from '@ngx-translate/core';
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 import {ObButtonModule} from '../button/button.module';
+import {ObFormFieldModule} from '../form-field/form-field.module';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
 import {ObPopoverModule} from '../popover/popover.module';
 import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
@@ -41,10 +43,13 @@ import {ObDisableLinkDirective} from './shared/disable-link/disable-link.directi
 		MatBadgeModule,
 		MatButtonModule,
 		MatIconModule,
+		MatSelectModule,
 		MatTooltipModule,
+		NgOptimizedImage,
 		ObButtonModule,
 		ObDisableLinkDirective,
 		ObExternalLinkModule,
+		ObFormFieldModule,
 		ObPopoverModule,
 		ObTranslateParamsModule,
 		TranslateModule
@@ -64,6 +69,6 @@ import {ObDisableLinkDirective} from './shared/disable-link/disable-link.directi
 		ObServiceNavigationPopoverSectionComponent,
 		ObServiceNavigationProfileComponent
 	],
-	exports: [ObServiceNavigationComponent]
+	exports: [ObServiceNavigationComponent, ...obliqueExports]
 })
 export class ObServiceNavigationModule {}

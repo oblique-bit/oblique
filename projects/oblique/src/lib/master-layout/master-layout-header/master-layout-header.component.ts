@@ -1,5 +1,4 @@
 import {
-	AfterViewInit,
 	Component,
 	ContentChild,
 	ContentChildren,
@@ -10,31 +9,26 @@ import {
 	OnDestroy,
 	Optional,
 	QueryList,
-	Renderer2,
 	TemplateRef,
 	ViewChildren,
 	ViewEncapsulation
 } from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
 import {Observable, Subject} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {scrollEnabled} from '../master-layout.utility';
-import {OB_ACTIVATE_SERVICE_NAVIGATION, OB_BANNER, OB_PAMS_CONFIGURATION, WINDOW} from '../../utilities';
+import {OB_BANNER, OB_PAMS_CONFIGURATION, WINDOW} from '../../utilities';
 import {ObIBanner, ObIPamsConfiguration} from '../../utilities.model';
 import {
 	ObEEnvironment,
 	ObEMasterLayoutEventValues,
-	ObILanguage,
-	ObILocaleObject,
 	ObIMasterLayoutEvent,
 	ObINavigationLink,
 	ObIServiceNavigationConfig
 } from '../master-layout.model';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
-import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObEColor} from '../../style/colors.model';
 import {ObLoginState} from '../../service-navigation/service-navigation.model';
 
@@ -45,12 +39,10 @@ import {ObLoginState} from '../../service-navigation/service-navigation.model';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout-header'}
 })
-export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
+export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	home$: Observable<string>;
-	languages: ObILanguage[];
 	isCustom = this.masterLayout.header.isCustom;
 	banner: ObIBanner;
-	useServiceNavigation = false;
 	serviceNavigationConfig: ObIServiceNavigationConfig;
 	@Input() navigation: ObINavigationLink[];
 	@HostBinding('class.ob-master-layout-header-small') isSmall = this.masterLayout.header.isSmall;
@@ -63,55 +55,25 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
-		private readonly translate: TranslateService,
 		private readonly config: ObMasterLayoutConfig,
 		private readonly scrollEvents: ObScrollingEvents,
 		private readonly el: ElementRef,
-		private readonly renderer: Renderer2,
-		private readonly globalEventsService: ObGlobalEventsService,
 		@Inject(WINDOW) private readonly window: Window,
 		@Inject(OB_BANNER) @Optional() bannerToken: ObIBanner,
-		@Inject(OB_PAMS_CONFIGURATION) @Optional() public readonly pamsConfiguration: ObIPamsConfiguration,
-		@Inject(OB_ACTIVATE_SERVICE_NAVIGATION) @Optional() useServiceNavigation: boolean
+		@Inject(OB_PAMS_CONFIGURATION) @Optional() public readonly pamsConfiguration: ObIPamsConfiguration
 	) {
-		this.languages = this.formatLanguages(this.config.locale.languages);
 		this.customChange();
 		this.smallChange();
 		this.serviceNavigationConfiguration();
 		this.reduceOnScroll();
 		this.banner = this.initializeBanner(bannerToken);
 		this.home$ = this.masterLayout.homePageRouteChange$;
-		this.useServiceNavigation = useServiceNavigation ?? false;
 		this.serviceNavigationConfig = this.config.header.serviceNavigation;
-	}
-
-	ngAfterViewInit(): void {
-		this.globalEventsService.resize$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.onResize());
-		this.setFocusable(this.masterLayout.layout.isMenuOpened);
-		this.masterLayout.layout.configEvents$
-			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.IS_MENU_OPENED))
-			.subscribe(value => this.setFocusable(!value));
-		this.headerControl
-			.toArray()
-			.concat(this.headerMobileControl.toArray())
-			.forEach(elt => this.addActionClass(elt));
 	}
 
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
-	}
-
-	onResize(): void {
-		this.setFocusable(this.masterLayout.layout.isMenuOpened);
-	}
-
-	isLangActive(lang: string): boolean {
-		return this.translate.currentLang === lang;
-	}
-
-	changeLang(lang: string): void {
-		this.translate.use(lang);
 	}
 
 	emitLoginState(loginState: ObLoginState): void {
@@ -120,18 +82,6 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 
 	emitLogoutUrl(logoutUrl: string): void {
 		this.masterLayout.header.emitLogoutUrl(logoutUrl);
-	}
-
-	private addActionClass(elt: ElementRef): void {
-		const actionable = ['a', 'button'];
-		if (actionable.includes(elt.nativeElement.nodeName.toLowerCase())) {
-			this.renderer.addClass(elt.nativeElement, 'ob-control-link');
-		} else {
-			const el = elt.nativeElement.querySelector('a, button');
-			if (el) {
-				this.renderer.addClass(el, 'ob-control-link');
-			}
-		}
 	}
 
 	private reduceOnScroll(): void {
@@ -167,30 +117,6 @@ export class ObMasterLayoutHeaderComponent implements AfterViewInit, OnDestroy {
 			.subscribe(event => (this.serviceNavigationConfig = event.config));
 	}
 
-	private formatLanguages(languages: Record<string, string>): ObILanguage[] {
-		return this.config.locale.disabled || !this.config.locale.display
-			? []
-			: this.config.locale.locales
-					.map(locale => this.getLocaleObject(locale))
-					.map(locale => ({
-						code: locale.locale.split('-')[0],
-						id: locale.id
-					}))
-					.map(locale => ({...locale, label: languages[locale.code]}));
-	}
-
-	private getLocaleObject(locale: string | ObILocaleObject): ObILocaleObject {
-		return (locale as ObILocaleObject).locale ? (locale as ObILocaleObject) : {locale: locale as string};
-	}
-
-	private setFocusable(isMenuOpened: boolean): void {
-		// these elements must not be focusable during the closing animation. Otherwise, the focused element will be scrolled into view
-		// and the header will appear empty.
-		const isFocusable = this.window.innerWidth > 991 || !isMenuOpened;
-		this.el.nativeElement.querySelectorAll('.ob-master-layout-header-controls a.ob-control-link').forEach(el => {
-			this.renderer.setAttribute(el, 'tabindex', isFocusable ? '0' : '-1');
-		});
-	}
 	private initializeBanner(bannerToken): ObIBanner {
 		switch (bannerToken?.text) {
 			case ObEEnvironment.LOCAL:

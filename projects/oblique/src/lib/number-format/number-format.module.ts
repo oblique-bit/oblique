@@ -1,15 +1,13 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 
 import {ObNumberFormatDirective} from './number-format.directive';
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 
 export {ObNumberFormatDirective} from './number-format.directive';
 
 @NgModule({
-	imports: [CommonModule],
-	declarations: [ObNumberFormatDirective],
+	imports: [ObNumberFormatDirective],
 	providers: obliqueProviders(),
-	exports: [ObNumberFormatDirective]
+	exports: [ObNumberFormatDirective, ...obliqueExports]
 })
 export class ObNumberFormatModule {}

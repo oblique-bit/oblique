@@ -45,7 +45,7 @@ export class ObLanguageService {
 	}
 
 	private getLocale(locales: string[], language: string): string {
-		return locales.filter(lang => lang.split('-')[0] === language)[0] || language;
+		return locales.find(lang => lang.split('-')[0] === language) || language;
 	}
 
 	private initTranslateService(languages: string[], defaultLanguage: string): void {

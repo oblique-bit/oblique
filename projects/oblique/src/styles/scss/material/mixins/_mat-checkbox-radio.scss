@@ -1,0 +1,11 @@
+@use "sass:selector";
+@use "../../core/variables" as core-variables;
+
+@mixin radio-circles-border-color($checked-border-color) {
+	.mdc-radio__native-control:enabled + .mdc-radio__background {
+		.mdc-radio__inner-circle,
+		.mdc-radio__outer-circle {
+			border-color: $checked-border-color;
+		}
+	}
+}

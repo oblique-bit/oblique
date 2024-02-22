@@ -1,12 +1,13 @@
-<p class="ob-progress-heading">{{ "i18n.oblique.file-upload.progress-bar.title" | translate : { fileCount: uploadedFiles.fileCount } }}</p>
+<p class="ob-progress-heading">{{ "i18n.oblique.file-upload.progress-bar.title" | translate: { fileCount: uploadedFiles.fileCount } }}</p>
 <div class="ob-file-progress" *ngFor="let file of uploadedFiles.files">
 	<span class="ob-file-progress-title" *ngIf="file.name">{{ file.name }}</span>
-	<div class="ob-file-progress-bar">
+	<div class="ob-file-progress-bar" [class.negative-margin-top]="file.hasError || file.completed">
 		<mat-progress-bar
 			[id]="'ob-progress-bar-' + file.index"
 			[value]="file.progress"
 			[color]="file.hasError ? 'warn' : 'primary'"
-		></mat-progress-bar>
+			[class.completed]="file.completed"
+		/>
 		<button
 			*ngIf="!file.completed && file.hasError"
 			type="button"
@@ -15,7 +16,7 @@
 			[matTooltip]="'i18n.oblique.file-upload.retry' | translate"
 			(click)="retryUpload(file)"
 		>
-			<mat-icon svgIcon="repeat"></mat-icon>
+			<mat-icon svgIcon="repeat" />
 			<span class="ob-screen-reader-only">{{ "i18n.oblique.file-upload.retry" | translate }}</span>
 		</button>
 		<button
@@ -26,7 +27,7 @@
 			obButton="secondary"
 			(click)="cancelUpload(file)"
 		>
-			<mat-icon svgIcon="cancel"></mat-icon>
+			<mat-icon svgIcon="cancel" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.cancel" | translate }}</span>
 		</button>
 	</div>

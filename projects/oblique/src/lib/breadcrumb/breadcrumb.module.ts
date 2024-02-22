@@ -1,11 +1,11 @@
 import {CommonModule} from '@angular/common';
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObBreadcrumbComponent} from '../breadcrumb/breadcrumb.component';
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 import {ObBreadcrumbConfig, ObTBreadcrumbConfig, defaultBreadcrumbConfig} from './breadcrumb.model';
 
 export {ObBreadcrumbConfig, ObTBreadcrumbConfig} from './breadcrumb.model';
@@ -15,7 +15,7 @@ export {ObBreadcrumbComponent} from './breadcrumb.component';
 	declarations: [ObBreadcrumbComponent],
 	imports: [CommonModule, MatIconModule, MatTooltipModule, RouterModule, TranslateModule],
 	providers: obliqueProviders(),
-	exports: [ObBreadcrumbComponent]
+	exports: [ObBreadcrumbComponent, ...obliqueExports]
 })
 export class ObBreadcrumbModule {
 	static forRoot(config?: ObBreadcrumbConfig): ModuleWithProviders<ObBreadcrumbModule> {

@@ -1,29 +1,29 @@
 <div class="ob-header">
-	<ng-content select="[obHeader]" *ngIf="isCustom"></ng-content>
+	<ng-content select="[obHeader]" *ngIf="isCustom" />
 	<h1 class="ob-screen-reader-only">{{ "i18n.oblique.header.title" | translate }}</h1>
 	<ng-container *ngIf="!isCustom">
 		<div class="ob-master-layout-header-action">
-			<ng-content select="[obHeaderAction]"></ng-content>
+			<ng-content select="[obHeaderAction]" />
 		</div>
 		<div class="ob-master-layout-header-title">
 			<div class="ob-master-layout-brand">
 				<aside *ngIf="banner.text" [style.color]="banner.color" [style.backgroundColor]="banner.bgColor">{{ banner.text }}</aside>
 				<a class="ob-master-layout-logo" [routerLink]="home$ | async" tabindex="-1">
-					<ng-container [ngTemplateOutlet]="obLogo"></ng-container>
+					<ng-container [ngTemplateOutlet]="obLogo" />
 				</a>
 				<span class="ob-master-layout-brand-app-title">
-					<a [routerLink]="home$ | async" class="ob-master-layout-brand-link"><ng-content select="[obHeaderTitle]"></ng-content></a>
+					<a [routerLink]="home$ | async" class="ob-master-layout-brand-link"><ng-content select="[obHeaderTitle]" /></a>
 				</span>
 			</div>
-			<ul class="ob-header-controls ob-header-toggle">
-				<li class="ob-control-item" [class.ob-widget]="useServiceNavigation" *ngFor="let template of mobileTemplates" #headerMobileControl>
-					<ng-container [ngTemplateOutlet]="template"></ng-container>
+			<ul class="ob-collapsed-layout">
+				<li *ngFor="let template of mobileTemplates" #headerMobileControl>
+					<ng-container [ngTemplateOutlet]="template" />
 				</li>
-				<li class="ob-control-item ob-master-layout-header-toggle-container">
+				<li class="ob-master-layout-header-toggle-container">
 					<button
 						type="button"
 						[title]="'i18n.oblique.header.toggle' | translate"
-						class="ob-control-link"
+						class="ob-header-toggle"
 						obMasterLayoutHeaderToggle
 						obAriaMenuButton="navigation"
 					>
@@ -37,64 +37,33 @@
 				</li>
 			</ul>
 		</div>
-		<div *ngIf="!useServiceNavigation" class="ob-master-layout-header-controls">
-			<ng-content select="[obHeaderCustomControl]"></ng-content>
-			<ng-container *ngIf="templates.length">
-				<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.controls.title" | translate }}</h2>
-				<ul class="ob-header-controls">
-					<li class="ob-control-item" *ngFor="let template of templates" #headerControl>
-						<ng-container [ngTemplateOutlet]="template"></ng-container>
-					</li>
-				</ul>
-			</ng-container>
-			<h2 class="ob-screen-reader-only" id="ob-language-change">{{ "i18n.oblique.header.languages.title" | translate }}</h2>
-			<ng-content *ngIf="!languages.length" select="[obLocales]"></ng-content>
-			<ul *ngIf="languages.length > 1" aria-labelledby="ob-language-change" class="ob-header-controls ob-header-locale">
-				<li *ngFor="let language of languages" class="ob-control-item">
-					<button
-						(click)="changeLang(language.code)"
-						[attr.aria-current]="isLangActive(language.code) ? true : undefined"
-						[attr.id]="language.id"
-						[class.active]="isLangActive(language.code)"
-						[attr.aria-label]="language.label"
-						class="ob-control-locale"
-						obMasterLayoutHeaderToggle
-						type="button"
-					>
-						{{ language.code.toUpperCase() }}
-					</button>
-				</li>
-			</ul>
-		</div>
-		<ng-container *ngIf="useServiceNavigation">
-			<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.service-navigation.title" | translate }}</h2>
-			<ob-service-navigation
-				[infoContact]="serviceNavigationConfig?.infoContact"
-				[infoLinks]="serviceNavigationConfig?.infoLinks"
-				[maxFavoriteApplications]="serviceNavigationConfig?.maxFavoriteApplications"
-				[maxLastUsedApplications]="serviceNavigationConfig?.maxLastUsedApplications"
-				[profileLinks]="serviceNavigationConfig?.profileLinks"
-				[returnUrl]="serviceNavigationConfig?.returnUrl"
-				[pamsAppId]="serviceNavigationConfig?.pamsAppId"
-				[displayApplications]="serviceNavigationConfig?.displayApplications"
-				[displayAuthentication]="serviceNavigationConfig?.displayAuthentication"
-				[displayInfo]="serviceNavigationConfig?.displayInfo"
-				[displayLanguages]="serviceNavigationConfig?.displayLanguages"
-				[displayMessage]="serviceNavigationConfig?.displayMessage"
-				[displayProfile]="serviceNavigationConfig?.displayProfile"
-				[handleLogout]="serviceNavigationConfig?.handleLogout"
-				[environment]="pamsConfiguration?.environment"
-				[rootUrl]="pamsConfiguration?.rootUrl"
-				(loginState)="emitLoginState($event)"
-				(logoutTriggered)="emitLogoutUrl($event)"
-			>
-				<ng-template #customWidgetTemplate *ngFor="let template of templates">
-					<ng-container [ngTemplateOutlet]="template"></ng-container>
-				</ng-template>
-			</ob-service-navigation>
-		</ng-container>
+		<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.service-navigation.title" | translate }}</h2>
+		<ob-service-navigation
+			[infoContact]="serviceNavigationConfig?.infoContact"
+			[infoLinks]="serviceNavigationConfig?.infoLinks"
+			[maxFavoriteApplications]="serviceNavigationConfig?.maxFavoriteApplications"
+			[maxLastUsedApplications]="serviceNavigationConfig?.maxLastUsedApplications"
+			[profileLinks]="serviceNavigationConfig?.profileLinks"
+			[returnUrl]="serviceNavigationConfig?.returnUrl"
+			[pamsAppId]="serviceNavigationConfig?.pamsAppId"
+			[displayApplications]="serviceNavigationConfig?.displayApplications"
+			[displayAuthentication]="serviceNavigationConfig?.displayAuthentication"
+			[displayInfo]="serviceNavigationConfig?.displayInfo"
+			[displayLanguages]="serviceNavigationConfig?.displayLanguages"
+			[displayMessage]="serviceNavigationConfig?.displayMessage"
+			[displayProfile]="serviceNavigationConfig?.displayProfile"
+			[handleLogout]="serviceNavigationConfig?.handleLogout"
+			[environment]="pamsConfiguration?.environment"
+			[rootUrl]="pamsConfiguration?.rootUrl"
+			(loginState)="emitLoginState($event)"
+			(logoutTriggered)="emitLogoutUrl($event)"
+		>
+			<ng-template #customWidgetTemplate *ngFor="let template of templates">
+				<ng-container [ngTemplateOutlet]="template" />
+			</ng-template>
+		</ob-service-navigation>
 	</ng-container>
 </div>
 <ob-master-layout-navigation [links]="navigation">
-	<ng-content select="[obNavigation]"></ng-content>
+	<ng-content select="[obNavigation]" />
 </ob-master-layout-navigation>

@@ -1,0 +1,18 @@
+{
+  "name": "@oblique/service-navigation-web-component",
+  "version": "0.0.0",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
+  "scripts": {
+    "start": "ng serve",
+    "test": "cd ../.. && ng test service-navigation-web-component",
+    "build": "ng build && ts-node scripts/post-dist"
+  },
+  "keywords": [
+    "service-navigation-web-component"
+  ],
+  "dependencies": {
+    "@angular/elements": "^17.1.0"
+  }
+}

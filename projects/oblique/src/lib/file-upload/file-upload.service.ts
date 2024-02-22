@@ -11,7 +11,10 @@ export class ObFileUploadService {
 	private readonly uploadComplete = new Subject<void>();
 	private readonly events = [HttpEventType.UploadProgress, HttpEventType.Response];
 
-	constructor(private readonly httpClient: HttpClient, private readonly notification: ObNotificationService) {
+	constructor(
+		private readonly httpClient: HttpClient,
+		private readonly notification: ObNotificationService
+	) {
 		this.uploadComplete$ = this.uploadComplete.asObservable();
 	}
 

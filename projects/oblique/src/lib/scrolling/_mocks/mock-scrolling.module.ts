@@ -7,8 +7,11 @@ import {ObMockScrollingEvents} from './mock-scrolling-events.service';
 export {ObMockTopControlComponent} from './mock-top-control.component';
 export {ObMockScrollingEvents} from './mock-scrolling-events.service';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @NgModule({
-	declarations: [ObMockTopControlComponent],
+	imports: [ObMockTopControlComponent],
 	exports: [ObMockTopControlComponent],
 	providers: [{provide: ObScrollingEvents, useClass: ObMockScrollingEvents}]
 })

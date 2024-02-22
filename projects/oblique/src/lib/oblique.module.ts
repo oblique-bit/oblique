@@ -20,7 +20,6 @@ import {ObTranslateParamsModule} from './translate-params/translate-params.modul
 import {ObUnsavedChangesModule} from './unsaved-changes/unsaved-changes.module';
 import {ObNumberFormatModule} from './number-format/number-format.module';
 import {ObOffCanvasModule} from './off-canvas/off-canvas.module';
-import {ObSearchBoxModule} from './search-box/search-box.module';
 import {ObStickyModule} from './sticky/sticky.module';
 import {ObUnknownRouteModule} from './unknown-route/unknown-route.module';
 import {obliqueProviders} from './utilities';
@@ -29,6 +28,8 @@ import {ObExternalLinkModule} from './external-link/external-link.module';
 import {ObAlertModule} from './alert/alert.module';
 import {ObBreadcrumbModule} from './breadcrumb/breadcrumb.module';
 import {ObServiceNavigationModule} from './service-navigation/service-navigation.module';
+import {ObFormFieldModule} from './form-field/form-field.module';
+import {ObCheckboxModule} from './checkbox/checkbox.module';
 
 const OBLIQUE_MODULES = [
 	ObAlertModule,
@@ -39,6 +40,7 @@ const OBLIQUE_MODULES = [
 	ObDocumentMetaModule,
 	ObErrorMessagesModule,
 	ObFileUploadModule,
+	ObFormFieldModule,
 	ObLanguageModule,
 	ObMasterLayoutModule,
 	ObNavTreeModule,
@@ -50,11 +52,11 @@ const OBLIQUE_MODULES = [
 	ObPopoverModule,
 	ObSchemaValidationModule,
 	ObScrollingModule,
-	ObSearchBoxModule,
 	ObServiceNavigationModule,
 	ObSelectableModule,
 	ObSpinnerModule,
 	ObStickyModule,
+	ObCheckboxModule,
 	ObInputClearModule,
 	ObTranslateParamsModule,
 	ObUnknownRouteModule,

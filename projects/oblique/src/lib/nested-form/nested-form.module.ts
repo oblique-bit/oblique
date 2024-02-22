@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {ObParentFormDirective} from './parent-form.directive';
 import {ObNestedFormComponent} from './nested-form.component';
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 
 export {ObParentFormDirective} from './parent-form.directive';
 export {ObNestedFormComponent} from './nested-form.component';
 
 @NgModule({
-	declarations: [ObNestedFormComponent, ObParentFormDirective],
+	imports: [ObNestedFormComponent, ObParentFormDirective],
 	providers: obliqueProviders(),
-	exports: [ObNestedFormComponent, ObParentFormDirective]
+	exports: [ObNestedFormComponent, ObParentFormDirective, ...obliqueExports]
 })
 export class ObNestedFormModule {}

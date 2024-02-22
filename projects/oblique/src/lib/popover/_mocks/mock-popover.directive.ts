@@ -2,10 +2,14 @@ import {Directive, Input, TemplateRef} from '@angular/core';
 import {Options, Placement} from '@popperjs/core';
 import {ObEToggleType} from '../popover.model';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @Directive({
 	selector: '[obPopover]',
 	exportAs: 'obPopover',
-	host: {class: 'ob-popover'}
+	host: {class: 'ob-popover'},
+	standalone: true
 })
 export class ObMockPopoverDirective {
 	@Input('obPopover') target: TemplateRef<HTMLElement>;

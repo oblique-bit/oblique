@@ -1,12 +1,30 @@
-import {AfterViewInit, Component, ContentChild, HostBinding, Input, OnChanges, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {
+	AfterViewInit,
+	ChangeDetectorRef,
+	Component,
+	ContentChild,
+	HostBinding,
+	Input,
+	OnChanges,
+	TemplateRef,
+	ViewEncapsulation,
+	inject
+} from '@angular/core';
+import {CdkScrollable} from '@angular/cdk/scrolling';
+import {NgClass, NgIf, NgTemplateOutlet} from '@angular/common';
 
+/**
+ * @deprecated since version 11.0.0. It will be removed with Oblique 12. CSS flexbox and / or position: sticky should be used instead.
+ */
 @Component({
 	selector: 'ob-sticky',
 	exportAs: 'obSticky',
 	templateUrl: './sticky.component.html',
 	styleUrls: ['./sticky.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-sticky'}
+	host: {class: 'ob-sticky'},
+	standalone: true,
+	imports: [NgIf, NgTemplateOutlet, NgClass, CdkScrollable]
 })
 export class ObStickyComponent implements OnChanges, AfterViewInit {
 	@ContentChild('obStickyHeader') readonly stickyHeaderTemplate: TemplateRef<any>;
@@ -21,17 +39,18 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 
 	private static readonly SIZES = ['sm', 'md', 'lg'];
 	private readonly window: Window;
+	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
 	constructor() {
 		this.window = window; // because AoT don't accept interfaces as DI
 	}
 
-	ngAfterViewInit(): void {
-		this.window.setTimeout(() => this.manageSizes()); // so that initial values are taken into account
-	}
-
 	ngOnChanges(): void {
 		this.manageSizes();
+	}
+
+	ngAfterViewInit(): void {
+		this.window.setTimeout(() => this.manageSizes()); // so that initial values are taken into account
 	}
 
 	private static validateSize(size: string): void {
@@ -52,6 +71,7 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 		} else if (this.stickyFooterTemplate) {
 			this.setMainStickySize(this.footerSize);
 		}
+		this.changeDetectorRef.detectChanges();
 	}
 
 	private setMainStickySize(size: string): void {

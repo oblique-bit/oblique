@@ -3,8 +3,8 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {MatIconModule} from '@angular/material/icon';
 import {MatIconHarness} from '@angular/material/icon/testing';
-import {MatLegacyTooltipHarness as MatTooltipHarness} from '@angular/material/legacy-tooltip/testing';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatTooltipHarness} from '@angular/material/tooltip/testing';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
@@ -14,20 +14,15 @@ import {ObServiceNavigationInfoHarness} from './service-navigation-info.harness'
 import {ObServiceNavigationInfoComponent} from './service-navigation-info.component';
 import {ObContactToLinksPipe} from './contact-to-links.pipe';
 
-describe('ObServiceNavigationInfoComponent', () => {
+describe(ObServiceNavigationInfoComponent.name, () => {
 	let component: ObServiceNavigationInfoComponent;
 	let fixture: ComponentFixture<ObServiceNavigationInfoComponent>;
 	let harness: ObServiceNavigationInfoHarness;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MatIconModule, MatTooltipModule, ObPopoverModule],
-			declarations: [
-				ObServiceNavigationInfoComponent,
-				ObServiceNavigationPopoverSectionComponent,
-				ObMockTranslatePipe,
-				ObContactToLinksPipe
-			]
+			imports: [ObMockTranslatePipe, MatIconModule, MatTooltipModule, ObPopoverModule],
+			declarations: [ObServiceNavigationInfoComponent, ObServiceNavigationPopoverSectionComponent, ObContactToLinksPipe]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationInfoComponent);
@@ -264,7 +259,7 @@ describe('ObServiceNavigationInfoComponent', () => {
 
 		it.each([
 			{attribute: 'type', value: 'button'},
-			{attribute: 'obButton', value: 'secondary'},
+			{attribute: 'obButton', value: 'tertiary'},
 			{attribute: 'mat-icon-button', value: ''},
 			{attribute: 'id', value: 'service-navigation-info-popover-toggle'},
 			{attribute: 'placement', value: 'bottom'}

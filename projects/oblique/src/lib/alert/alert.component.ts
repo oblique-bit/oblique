@@ -1,8 +1,9 @@
 import {DomSanitizer} from '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material/icon';
+import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {Attribute, Component, HostBinding, Inject, InjectionToken, Input, OnInit, Optional, ViewEncapsulation} from '@angular/core';
 import {ObIAlertType} from './alert.model';
 import {alertIcons} from './alert-icons';
+import {TranslateModule} from '@ngx-translate/core';
 
 export const OBLIQUE_HAS_ROLE_ALERT = new InjectionToken<boolean>(
 	'Flag to globally add role="alert" per default on all ob-alert components'
@@ -13,7 +14,9 @@ export const OBLIQUE_HAS_ROLE_ALERT = new InjectionToken<boolean>(
 	templateUrl: './alert.component.html',
 	styleUrls: ['./alert.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-alert ob-angular'}
+	host: {class: 'ob-alert ob-angular'},
+	standalone: true,
+	imports: [MatIconModule, TranslateModule]
 })
 export class ObAlertComponent implements OnInit {
 	@HostBinding('class.ob-alert-info') info = true;
@@ -21,7 +24,7 @@ export class ObAlertComponent implements OnInit {
 	@HostBinding('class.ob-alert-warning') warning = false;
 	@HostBinding('class.ob-alert-error') error = false;
 	@HostBinding('attr.role') role: string = this.initialRole;
-	icon = 'info';
+	icon = 'alert:info';
 
 	private currentType: ObIAlertType = 'info';
 	private hasAlertRole?: boolean | undefined;

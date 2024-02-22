@@ -1,0 +1,81 @@
+<ob-master-layout [skipLinks]="skipLinks" [navigation]="navigation" *ngIf="font$ | async as font">
+	<ng-container obHeaderTitle>Oblique</ng-container>
+	<ng-template #obHeaderControl>
+		<ob-autocomplete class="ob-sm-down-width-100" [autocompleteOptions]="autocompleteItems$ | async" [formControl]="search">
+			<mat-icon svgIcon="search" matSuffix />
+		</ob-autocomplete>
+	</ng-template>
+	<ng-template #obHeaderControl>
+		<a
+			href="https://stash.eap.bit.admin.ch/projects/OUI/repos/oblique/"
+			[icon]="'none'"
+			matTooltip="Go to Oblique GIT repository"
+			obButton="tertiary"
+			mat-icon-button
+		>
+			<mat-icon svgIcon="git-hub" />
+		</a>
+	</ng-template>
+	<ng-template #obHeaderControl>
+		<button
+			type="button"
+			obOffCanvasToggle
+			matTooltip="Toggle Off-Canvas"
+			(click)="offCanvasOpen = !offCanvasOpen"
+			tabindex="0"
+			mat-icon-button
+			obButton="tertiary"
+			[class.rotate180]="!offCanvasOpen"
+		>
+			<mat-icon dropdown-toggle svgIcon="login" />
+		</button>
+	</ng-template>
+	<ng-template #obHeaderControl>
+		<button type="button" mat-icon-button obButton="tertiary" [obPopover]="languageButton" matTooltip="Open example popover">
+			<mat-icon svgIcon="cog" />
+		</button>
+		<ng-template #languageButton>
+			<h4 translate>i18n.rtfas.nav.bar-header.language</h4>
+			<ul role="menu" class="ob-nav-tree" aria-hidden="false">
+				<li role="menuitem">
+					<a role="button">FR</a>
+				</li>
+				<li role="menuitem">
+					<a role="button">DE</a>
+				</li>
+				<li role="menuitem">
+					<a role="button">EN</a>
+				</li>
+			</ul>
+		</ng-template>
+	</ng-template>
+	<ng-template #obHeaderControl>
+		<button type="button" (click)="toggleFont(font)" mat-button obButton="tertiary" [matTooltip]="'Use ' + font + ' font'">
+			{{ font }}
+		</button>
+	</ng-template>
+
+	<ng-template #obHeaderMobileControl>
+		<button type="button" (click)="toggleFont(font)" mat-button obButton="tertiary" [matTooltip]="'Use ' + font + ' font'">
+			{{ font }}
+		</button>
+	</ng-template>
+	<ng-template #obHeaderMobileControl>
+		<button type="button" mat-icon-button obButton="tertiary">
+			<mat-icon svgIcon="help" />
+		</button>
+	</ng-template>
+
+	<ng-template #obFooterLink>
+		<a href="http://www.google.ch" role="button" matTooltip="google.ch" target="_blank">Google</a>
+	</ng-template>
+	<ng-template #obFooterLink>
+		<a class="ob-show-external-link-icon" href="http://www.blick.ch" role="button" target="_blank" placement="left">Blick</a>
+	</ng-template>
+
+	<ng-container obFooterInfo>
+		<p>&copy; {{ year }} {{ "i18n.application.organization.name" | translate }}</p>
+	</ng-container>
+	<ng-container obOffCanvasTitle>Hello world title</ng-container>
+	<ng-container obOffCanvasContent>Hello world content</ng-container>
+</ob-master-layout>

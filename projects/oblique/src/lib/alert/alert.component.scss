@@ -10,9 +10,10 @@
 		padding: variables.$ob-spacing-sm variables.$ob-spacing-sm 0 variables.$ob-spacing-sm;
 		text-align: center;
 		color: variables.$ob-white;
+		border-radius: variables.$ob-border-radius-base 0 0 variables.$ob-border-radius-base;
 
 		@at-root #{selector.append(".ob-alert-info", &)} {
-			background-color: variables.$ob-primary;
+			background-color: variables.$ob-blue-800;
 		}
 
 		@at-root #{selector.append(".ob-alert-success", &)} {
@@ -20,7 +21,6 @@
 		}
 
 		@at-root #{selector.append(".ob-alert-warning", &)} {
-			color: variables.$ob-default;
 			background-color: variables.$ob-warning;
 		}
 
@@ -32,6 +32,7 @@
 	.ob-alert-content {
 		padding: variables.$ob-spacing-default;
 		flex-grow: 1;
+		border-radius: 0 variables.$ob-border-radius-base variables.$ob-border-radius-base 0;
 
 		a {
 			color: variables.$ob-default;
@@ -46,7 +47,7 @@
 		}
 
 		@at-root #{selector.append(".ob-alert-info", &)} {
-			background-color: variables.$ob-light;
+			background-color: variables.$ob-blue-100;
 		}
 
 		@at-root #{selector.append(".ob-alert-success", &)} {

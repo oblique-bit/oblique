@@ -1,4 +1,6 @@
-<h2 id="ob-navigationlabel" class="ob-screen-reader-only" *ngIf="links.length">{{ "i18n.oblique.header.navigation.title" | translate }}</h2>
+<h2 id="ob-navigationlabel" class="ob-screen-reader-only" *ngIf="initializedLinks.length">
+	{{ "i18n.oblique.header.navigation.title" | translate }}
+</h2>
 <button
 	class="ob-navigation-scrollable-control ob-navigation-scrollable-control-left"
 	type="button"
@@ -6,15 +8,15 @@
 	*ngIf="isScrollable"
 	[disabled]="!currentScroll"
 	aria-hidden="true"
+	id="ob-navigation-scrollable-control-left"
 >
-	<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron-left"></mat-icon></span>
+	<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron-left" /></span>
 </button>
-<ng-content *ngIf="!links.length"></ng-content>
-<nav aria-labelledby="ob-navigationlabel">
+<ng-content *ngIf="!initializedLinks.length" />
+<nav *ngIf="initializedLinks.length" aria-labelledby="ob-navigationlabel">
 	<ul
 		aria-labelledby="ob-navigationlabel"
 		id="navigation"
-		*ngIf="links.length"
 		class="ob-main-nav"
 		[class.ob-navigation-scrollable-content]="isScrollable"
 		[class.ob-main-nav-fw]="isFullWidth"
@@ -25,103 +27,143 @@
 			class="ob-main-nav-item"
 			obMasterLayoutNavigationItem
 			#obMasterLayoutNavigationItem="obMasterLayoutNavigationItem"
-			*ngFor="let link of links"
+			*ngFor="let link of initializedLinks"
+			[class.ob-start-of-right-side-links]="link.startOfRightSideLinks"
+			[class.ob-expandable]="link.children?.length"
+			[class.ob-just-close]="currentParentLink.id === link.id"
+			[class.ob-has-grandparent]="!!currentGrandparentLink?.label"
+			[id]="'ob-main-nav-item-' + link.id"
 		>
-			<ng-container *ngIf="!link.isExternal">
-				<a
-					class="ob-master-layout-navigation-link"
-					[attr.id]="link.id"
-					[routerLink]="link.url"
-					[routerLinkActive]="activeClass"
-					[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
-					[fragment]="link.fragment"
-					[queryParams]="link.queryParams"
-					[attr.aria-current]="link.active ? 'page' : undefined"
-					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
-					*ngIf="!link.children"
-					(click)="close()"
-				>
-					<span class="ob-icon-wrapper"><mat-icon *ngIf="link.icon" [svgIcon]="link.icon"></mat-icon></span>
-					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
-				</a>
+			<ng-container *ngIf="!link.children?.length; else expandable">
+				<ng-container *ngIf="link.isExternal; else internalLink">
+					<a
+						class="ob-master-layout-navigation-link ob-main-nav-link"
+						[icon]="hideExternalLinks ? 'none' : 'right'"
+						[id]="link.id"
+						[href]="link.url"
+						[target]="link.sameTarget ? '' : undefined"
+						[rel]="link.sameTarget ? '' : undefined"
+						[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
+						(focus)="toggleFocus('ob-main-nav-item-', link.id)"
+						(focusout)="toggleFocus('ob-main-nav-item-', link.id)"
+					>
+						<span class="ob-icon-wrapper"><mat-icon *ngIf="link.icon" [svgIcon]="link.icon" /></span>
+						<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
+					</a>
+				</ng-container>
+				<ng-template #internalLink>
+					<a
+						class="ob-master-layout-navigation-link ob-main-nav-link"
+						[id]="link.id"
+						[routerLink]="link.url"
+						[routerLinkActive]="activeClass"
+						[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
+						[fragment]="link.fragment"
+						[queryParams]="link.queryParams"
+						[attr.aria-current]="link.active ? 'page' : undefined"
+						[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
+						(click)="close()"
+						(focus)="toggleFocus('ob-main-nav-item-', link.id)"
+						(focusout)="toggleFocus('ob-main-nav-item-', link.id)"
+					>
+						<span class="ob-icon-wrapper"><mat-icon *ngIf="link.icon" [svgIcon]="link.icon" /></span>
+						<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
+					</a>
+				</ng-template>
 			</ng-container>
-			<ng-container *ngIf="link.isExternal">
-				<a
-					class="ob-master-layout-navigation-link"
-					[icon]="hideExternalLinks ? 'none' : 'right'"
-					[attr.id]="link.id"
-					[href]="link.url"
-					[target]="link.sameTarget ? '' : '_blank'"
-					[rel]="link.sameTarget ? '' : 'noopener noreferrer'"
-					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
-					*ngIf="!link.children"
-				>
-					<span class="ob-icon-wrapper"><mat-icon *ngIf="link.icon" [svgIcon]="link.icon"></mat-icon></span>
-					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
-				</a>
-			</ng-container>
-			<ng-container *ngIf="link.children">
+			<ng-template #expandable>
 				<button
 					type="button"
-					class="ob-master-layout-navigation-link ob-master-layout-navigation-toggle"
-					[attr.id]="link.id"
+					class="ob-master-layout-navigation-link ob-main-nav-link ob-master-layout-navigation-toggle"
+					[id]="link.id"
 					[class.active]="link.active"
 					[attr.aria-current]="link.active ? 'page' : undefined"
 					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
-					(click)="obMasterLayoutNavigationItem.toggleSubMenu()"
-					[obAriaMenuButton]="'menu-' + link.id || link.url"
+					(click)="toggleSubMenu(obMasterLayoutNavigationItem, link)"
+					(focus)="toggleFocus('ob-main-nav-item-', link.id)"
+					(focusout)="toggleFocus('ob-main-nav-item-', link.id)"
+					[obAriaMenuButton]="'ob-menu-' + link.id"
 				>
-					<span class="ob-icon-wrapper"><mat-icon *ngIf="link.icon" [svgIcon]="link.icon"></mat-icon></span>
+					<span class="ob-icon-wrapper"><mat-icon *ngIf="link.icon" [svgIcon]="link.icon" /></span>
 					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
-					<span class="ob-icon-wrapper ob-toggle-collapsed"><mat-icon svgIcon="chevron-down" class="ob-nav-toggle"></mat-icon></span>
-					<span class="ob-icon-wrapper ob-toggle-expanded"><mat-icon svgIcon="chevron-up" class="ob-nav-toggle"></mat-icon></span>
-					<span class="ob-icon-wrapper ob-toggle-layout-collapsed"
-						><mat-icon svgIcon="chevron-right" class="ob-nav-toggle"></mat-icon
-					></span>
+					<span class="ob-icon-wrapper ob-toggle-collapsed"><mat-icon svgIcon="chevron-down" class="ob-nav-toggle" /></span>
+					<span class="ob-icon-wrapper ob-toggle-expanded"><mat-icon svgIcon="chevron-up" class="ob-nav-toggle" /></span>
 				</button>
-				<div class="ob-sub-menu" [id]="'menu-' + (link.id || link.url)">
+				@if (!currentGrandparentLink?.label) {
+					<ob-master-layout-navigation-go-to-children
+						[disableRipple]="true"
+						[isCurrentParent]="currentParentLink.id === link.id"
+						[link]="link"
+						(changeCurrentParent)="toggleSubMenu(obMasterLayoutNavigationItem, $event)"
+					/>
+				}
+				<div
+					class="ob-sub-menu"
+					[id]="'ob-menu-' + link.id"
+					[class.ob-parent-link-has-icon-and-label]="!!link.icon && !link.iconOnly"
+					[class.ob-has-current-parent-link]="currentParentLink.id !== link.id"
+				>
+					<div class="ob-sub-menu-back-close-container" [class.ob-just-close]="currentParentLink.id === link.id">
+						<button
+							type="button"
+							mat-button
+							obButton="tertiary"
+							class="ob-sub-menu-back-button"
+							[class.hide-md-up]="currentParentLink.id === link.id"
+							[class.ob-just-sub-menu-back-button-home-icon]="!currentGrandparentLink?.label"
+							[id]="'ob-sub-menu-back-button-' + link.id"
+							(click)="backUpOrCloseSubMenu(link, obMasterLayoutNavigationItem)"
+						>
+							<ng-container *ngIf="!!currentGrandparentLink?.label; else homeIcon"
+								>{{ currentGrandparentLink.label | translate }}
+							</ng-container>
+							<ng-template #homeIcon>
+								<mat-icon class="ob-sub-menu-back-button-home-icon" matSuffix svgIcon="home" />
+							</ng-template>
+							<mat-icon matPrefix svgIcon="arrow-left" />
+						</button>
+						<button
+							type="button"
+							mat-button
+							obButton="tertiary"
+							class="ob-sub-menu-close-button"
+							[id]="'ob-sub-menu-close-button-' + link.id"
+							(click)="closeSubMenu(obMasterLayoutNavigationItem, link)"
+						>
+							{{ "i18n.common.close" | translate }} <mat-icon matSuffix svgIcon="cancel" />
+						</button>
+					</div>
+					<ob-master-layout-navigation-sub-menu-item
+						*ngIf="currentParentLink.id !== link.id"
+						[activeClass]="activeClass"
+						[child]="currentParentLink"
+						[currentParent]="currentParentLink"
+						[hideExternalLinks]="hideExternalLinks"
+						[link]="currentParentLink"
+						[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
+						[routerLinkActiveOptions]="routerLinkActiveOptions"
+						[routerLinkBase]="currentParentRouterLinkBase$ | async"
+						[showChildren]="false"
+						class="ob-sub-menu-parent-link"
+						[class.is-exact-match]="isCurrentParentLinkExactMatch"
+					/>
 					<ul class="ob-main-nav ob-sub-nav">
-						<li>
-							<button class="ob-sub-menu-back" type="button" (click)="obMasterLayoutNavigationItem.closeSubMenu(false)">
-								<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron-left"></mat-icon></span>
-								<span class="ob-label">{{ link.label | translate }}</span>
-							</button>
-						</li>
 						<li *ngFor="let child of link.children">
-							<a
-								*ngIf="!child.isExternal"
-								class="ob-master-layout-navigation-link"
-								[attr.id]="child.id"
-								[routerLink]="link.url + '/' + child.url"
-								[routerLinkActive]="activeClass"
-								[fragment]="child.fragment"
-								[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
-								[queryParams]="child.queryParams"
-								[attr.aria-current]="link.active ? 'page' : undefined"
-								[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
-								(click)="obMasterLayoutNavigationItem.closeSubMenu()"
-							>
-								<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon"></mat-icon></span>
-								<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
-							</a>
-							<a
-								*ngIf="child.isExternal"
-								class="ob-master-layout-navigation-link"
-								[icon]="hideExternalLinks ? 'none' : 'right'"
-								[attr.id]="child.id"
-								[href]="child.url"
-								[target]="child.sameTarget ? '' : '_blank'"
-								[rel]="child.sameTarget ? '' : 'noopener noreferrer'"
-								[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
-								(click)="obMasterLayoutNavigationItem.closeSubMenu()"
-							>
-								<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon"></mat-icon></span>
-								<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
-							</a>
+							<ob-master-layout-navigation-sub-menu-item
+								[activeClass]="activeClass"
+								[child]="child"
+								[currentParent]="currentParentLink"
+								[hideExternalLinks]="hideExternalLinks"
+								[link]="link"
+								[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
+								[routerLinkActiveOptions]="routerLinkActiveOptions"
+								[routerLinkBase]="link.url"
+								(changeCurrentParent)="changeCurrentParentLink($event)"
+							/>
 						</li>
 					</ul>
 				</div>
-			</ng-container>
+			</ng-template>
 		</li>
 	</ul>
 </nav>
@@ -132,6 +174,7 @@
 	*ngIf="isScrollable"
 	[disabled]="currentScroll === maxScroll"
 	aria-hidden="true"
+	id="ob-navigation-scrollable-control-right"
 >
-	<mat-icon svgIcon="chevron-right"></mat-icon>
+	<mat-icon svgIcon="chevron-right" />
 </button>

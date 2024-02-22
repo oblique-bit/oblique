@@ -2,11 +2,12 @@ import {TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {MatIconHarness} from '@angular/material/icon/testing';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
-import {MatLegacyTooltipHarness as MatTooltipHarness} from '@angular/material/legacy-tooltip/testing';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {By} from '@angular/platform-browser';
 import {MatIconModule} from '@angular/material/icon';
 import {DebugElement} from '@angular/core';
+import {NgOptimizedImage} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockExternalLinkModule} from '../../external-link/_mocks/mock-external-link.module';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
@@ -23,8 +24,8 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockExternalLinkModule, ObPopoverModule, MatIconModule, MatTooltipModule],
-			declarations: [ObServiceNavigationProfileComponent, ObMockTranslatePipe, ObServiceNavigationPopoverSectionComponent],
+			imports: [ObMockTranslatePipe, ObMockExternalLinkModule, ObPopoverModule, MatIconModule, MatTooltipModule, NgOptimizedImage],
+			declarations: [ObServiceNavigationProfileComponent, ObServiceNavigationPopoverSectionComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 

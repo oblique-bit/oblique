@@ -1,5 +1,5 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconRegistry} from '@angular/material/icon';
 import {By} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
@@ -13,7 +13,7 @@ import {EXTERNAL_LINK} from './external-link.model';
 })
 class TestComponent {}
 
-describe('ObExternalLink', () => {
+describe(ObExternalLinkDirective.name, () => {
 	let directive: ObExternalLinkDirective;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: HTMLElement;
@@ -23,7 +23,8 @@ describe('ObExternalLink', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			declarations: [TestComponent, ObExternalLinkDirective],
+			imports: [ObExternalLinkDirective],
+			declarations: [TestComponent],
 			providers: [
 				{provide: WINDOW, useValue: window},
 				{provide: MatIconRegistry, useValue: {getNamedSvgIcon: jest.fn().mockReturnValue(of(document.createElement('svg')))}},

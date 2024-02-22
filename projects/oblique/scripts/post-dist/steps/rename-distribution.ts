@@ -3,7 +3,7 @@ import path from 'path';
 export class RenameDistribution {
 	private static readonly searchValue = 'oblique-oblique';
 	private static readonly replaceValue = 'oblique';
-	private static readonly directory = 'dist';
+	private static readonly directory = path.join('..', '..', 'dist');
 
 	static perform(): void {
 		// Please note that order is important!

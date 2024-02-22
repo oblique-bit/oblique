@@ -1,8 +1,18 @@
+import {AsyncPipe, NgFor, NgIf, NgTemplateOutlet} from '@angular/common';
 import {Component, EventEmitter, Input, OnChanges, OnDestroy, Output, ViewEncapsulation} from '@angular/core';
-import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup, OptionLabelIconPosition} from '../autocomplete/autocomplete.model';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatOptionModule} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {TranslateModule} from '@ngx-translate/core';
 import {Observable, Subject, debounceTime} from 'rxjs';
 import {map, startWith, takeUntil} from 'rxjs/operators';
+import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup, OptionLabelIconPosition} from '../autocomplete/autocomplete.model';
+import {ObInputClearDirective} from '../input-clear/input-clear.directive';
+import {ObHighlightTextPipe} from './highlight-text/highlight-text.pipe';
+import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.directive';
 
 @Component({
 	selector: 'ob-autocomplete',
@@ -16,6 +26,24 @@ import {map, startWith, takeUntil} from 'rxjs/operators';
 			useExisting: ObAutocompleteComponent,
 			multi: true
 		}
+	],
+	standalone: true,
+	imports: [
+		MatFormFieldModule,
+		MatIconModule,
+		NgIf,
+		MatInputModule,
+		FormsModule,
+		MatAutocompleteModule,
+		ReactiveFormsModule,
+		ObInputClearDirective,
+		NgTemplateOutlet,
+		NgFor,
+		MatOptionModule,
+		ObOptionLabelIconDirective,
+		AsyncPipe,
+		ObHighlightTextPipe,
+		TranslateModule
 	]
 })
 export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor, OnDestroy {
@@ -23,10 +51,6 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	@Input() noResultKey = 'i18n.oblique.search.no-results';
 	@Input() autocompleteOptions: (ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[] = [];
 
-	/**
-	 * @deprecated since version 10.3.0. It will be removed with Oblique 11 with no replacement
-	 */
-	@Input() filterRegexPattern = 'textToFind';
 	@Input() filterRegexFlag = 'gi';
 	@Input() highlightCssClass = 'ob-highlight-text';
 	@Input() optionIconPosition: OptionLabelIconPosition = 'end';
@@ -37,13 +61,13 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	hasGroupOptions = false;
 	private readonly unsubscribe = new Subject<void>();
 
+	ngOnChanges(): void {
+		this.setupOptionsFilter();
+	}
+
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
-	}
-
-	ngOnChanges(): void {
-		this.setupOptionsFilter();
 	}
 
 	setDisabledState(isDisabled: boolean): void {

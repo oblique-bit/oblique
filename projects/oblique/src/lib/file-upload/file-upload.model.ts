@@ -37,6 +37,14 @@ export enum ObEUploadEventType {
 	ERRORED = 'errored'
 }
 
+export interface ObIFileValidationOptions {
+	files: File[];
+	accept: string[];
+	maxSize: number;
+	maxAmount: number;
+	multiple: boolean;
+}
+
 export interface ObIFileValidation {
 	valid: File[];
 	overflowing: string[];
@@ -51,7 +59,7 @@ export type ObTSelectionStatus = 'none' | 'some' | 'all';
 export enum ObEWildCardMimeTypes {
 	'application/*' = 'bin|exe|oda|pdf|ai|ps|eps|rtf|mif|fm|gtar|shar|tar|hqx',
 	'audio/*' = 'au|snd|aif|aiff|aifc|wav|',
-	'image/*' = 'jpeg|jpg|jpe|tiff|tif|rgb|xbm|xpm|xwd',
+	'image/*' = 'jpeg|jpg|jpe|tiff|tif|rgb|xbm|xpm|xwd|png|gif|bmp|svg|webp',
 	'text/*' = 'htm|html|txt|rtx|tsv|etx|',
 	'video/*' = 'mpeg|mpg|mpe|qt|mov|avi|movie|viv|',
 	'magnus-internal/*' = 'cgi|exe|bat|jsp|map|shtml',

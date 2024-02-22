@@ -7,7 +7,6 @@ import {ObMockTranslatePipe} from './_mocks/mock-translate.pipe';
 import {ObMockAuthenticationModule} from './authentication/_mocks/mock-authentication-module';
 import {ObMockCollapseModule} from './collapse/_mocks/mock-collapse.module';
 import {ObMockColumnLayoutModule} from './column-layout/_mocks/mock-column-layout.module';
-import {ObMockSearchBoxModule} from './search-box/_mocks/mock-search-box.module';
 import {ObMockDocumentMetaModule} from './document-meta/_mocks/mock-document-meta.module';
 import {ObMockErrorMessagesModule} from './error-messages/_mocks/mock-error-messages.module';
 import {ObMockExternalLinkModule} from './external-link/_mocks/mock-external-link.module';
@@ -20,7 +19,6 @@ import {ObMockNotificationModule} from './notification/_mocks/mock-notification.
 import {ObMockNumberFormatModule} from './number-format/_mocks/mock-number-format.module';
 import {ObMockHttpApiInterceptorModule} from './http-api-interceptor/_mocks/mock-http-api-interceptor.module';
 import {ObMockOffCanvasModule} from './off-canvas/_mocks/mock-off-canvas.module';
-import {ObMockPopUpModule} from './pop-up/_mocks/mock-pop-up.module';
 import {ObMockPopoverModule} from './popover/_mocks/mock-popover.module';
 import {ObMockSchemaValidationModule} from './schema-validation/_mocks/mock-schema-validation.module';
 import {ObMockObSelectableModule} from './selectable/_mocks/mock-selectable.module';
@@ -82,7 +80,7 @@ export {
 	ObMockMasterLayoutComponentService,
 	ObMockAriaMenuButtonDirective
 } from './master-layout/_mocks/mock-master-layout.module';
-export {ObMockNavTreeModule, ObMockNavTreeComponent, ObMockNavTreeFakeFocusDirective} from './nav-tree/_mocks/mock-nav-tree.module';
+export {ObMockNavTreeModule, ObMockNavTreeComponent} from './nav-tree/_mocks/mock-nav-tree.module';
 export {ObMockParentFormDirective, ObMockNestedFormModule, ObMockNestedFormComponent} from './nested-form/_mocks/mock-nested-form.module';
 export {
 	ObMockNotificationModule,
@@ -91,7 +89,6 @@ export {
 	ObMockNotificationConfig
 } from './notification/_mocks/mock-notification.module';
 export {ObMockNumberFormatModule, ObMockNumberFormatDirective} from './number-format/_mocks/mock-number-format.module';
-export {ObMockPopUpModule, ObMockPopUpService} from './pop-up/_mocks/mock-pop-up.module';
 export {ObMockPopoverDirective, ObMockPopoverModule} from './popover/_mocks/mock-popover.module';
 export {
 	ObMockHttpApiInterceptorModule,
@@ -106,7 +103,6 @@ export {
 	ObMockOffCanvasService,
 	ObMockOffCanvasToggleDirective
 } from './off-canvas/_mocks/mock-off-canvas.module';
-export {ObMockSearchBoxComponent, ObMockSearchBoxModule} from './search-box/_mocks/mock-search-box.module';
 export {
 	ObMockSchemaValidationModule,
 	ObMockSchemaRequiredDirective,
@@ -154,11 +150,9 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockNotificationModule,
 	ObMockNumberFormatModule,
 	ObMockOffCanvasModule,
-	ObMockPopUpModule,
 	ObMockPopoverModule,
 	ObMockSchemaValidationModule,
 	ObMockScrollingModule,
-	ObMockSearchBoxModule,
 	ObMockObSelectableModule,
 	ObMockSpinnerModule,
 	ObMockStickyModule,
@@ -169,12 +163,11 @@ const MOCK_OBLIQUE_MODULES = [
 ];
 
 /**
- * @deprecated since version 9.0.0. It will be removed with Oblique 11. Real implementation of Oblique Modules should be used instead.
+ * @deprecated since version 9.0.0. It will be removed with Oblique 12. Real implementation of Oblique Modules should be used instead.
  */
 @NgModule({
-	imports: MOCK_OBLIQUE_MODULES,
+	imports: [...MOCK_OBLIQUE_MODULES, ObMockTranslatePipe],
 	exports: [...MOCK_OBLIQUE_MODULES, ObMockTranslatePipe],
-	declarations: [ObMockTranslatePipe],
 	providers: [
 		{provide: TranslateService, useClass: ObMockTranslateService},
 		{provide: WINDOW, useValue: window}

@@ -7,7 +7,7 @@ import {ObSchemaValidationService} from './schema-validation.service';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 import {ObSchemaValidateDirective} from './schema-validator';
 
-describe('SchemaValidation', () => {
+describe(ObSchemaValidateDirective.name, () => {
 	const schema = {
 		title: 'SampleSchemaValidation',
 		type: 'object',
@@ -57,7 +57,10 @@ describe('SchemaValidation', () => {
 		sampleForm: FormGroup;
 		validator;
 
-		constructor(private readonly formBuilder: FormBuilder, private readonly schemaValidationService: ObSchemaValidationService) {
+		constructor(
+			private readonly formBuilder: FormBuilder,
+			private readonly schemaValidationService: ObSchemaValidationService
+		) {
 			this.validator = schemaValidationService.compileSchema(schema);
 		}
 
@@ -97,8 +100,8 @@ describe('SchemaValidation', () => {
 
 			beforeEach(() => {
 				TestBed.configureTestingModule({
-					declarations: [CONFIG.testComponent, ObSchemaValidationDirective, ObSchemaValidateDirective],
-					imports: [CONFIG.formModule],
+					declarations: [CONFIG.testComponent],
+					imports: [ObSchemaValidationDirective, ObSchemaValidateDirective, CONFIG.formModule],
 					providers: [{provide: WINDOW, useValue: window}]
 				}).compileComponents();
 			});

@@ -1,6 +1,6 @@
 @use "../variables";
 
-@mixin ob-drop-shadow($direction: down-right, $color: variables.$ob-gray-400) {
+@mixin ob-drop-shadow($direction: down-right, $color: variables.$ob-light) {
 	$x-offset: 2px;
 	$y-offset: 4px;
 	@if $direction == down-left {
@@ -16,6 +16,72 @@
 	filter: drop-shadow($x-offset $y-offset 4px $color);
 }
 
+$tab-focus-color: variables.$ob-purple-500;
+$tab-focus-width: 3px;
+
+@mixin ob-tab-focus-box-shadow($tab-focus-box-shadow-color: $tab-focus-color) {
+	box-shadow: 0 0 0 $tab-focus-width $tab-focus-box-shadow-color;
+	outline: none;
+}
+
+@mixin ob-focus-visible-tab-focus-box-shadow($tab-focus-box-shadow-color: $tab-focus-color) {
+	&:focus-visible {
+		@include ob-tab-focus-box-shadow($tab-focus-box-shadow-color);
+	}
+}
+
+@mixin ob-tab-focus-border() {
+	border: $tab-focus-width solid $tab-focus-color;
+	box-shadow: none;
+	outline: none;
+	z-index: variables.$ob-z-index-layout;
+}
+
 @mixin ob-inner-bottom-shadow() {
-	box-shadow: inset 0 -10px 10px -10px variables.$ob-gray-300;
+	box-shadow: inset 0 -10px 10px -10px variables.$ob-gray;
+}
+
+@mixin ob-shadow-sm() {
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 5%);
+}
+
+@mixin ob-shadow-md() {
+	box-shadow:
+		0 1px 2px 0 rgba(0, 0, 0, 6%),
+		0 1px 5px 0 rgba(0, 0, 0, 8%);
+}
+
+@mixin ob-shadow-default() {
+	box-shadow:
+		0 2px 4px -1px rgba(0, 0, 0, 6%),
+		0 4px 10px -1px rgba(0, 0, 0, 8%);
+}
+
+@mixin ob-shadow-lg() {
+	box-shadow:
+		0 2px 6px -1px rgba(0, 0, 0, 5%),
+		0 5px 20px -2px rgba(0, 0, 0, 8%);
+}
+
+@mixin ob-shadow-xl() {
+	box-shadow:
+		0 6px 10px -5px rgba(0, 0, 0, 4%),
+		0 15px 25px -3px rgba(0, 0, 0, 9%);
+}
+
+@mixin ob-shadow-2xl() {
+	box-shadow:
+		1px 10px 70px -8px rgba(0, 0, 0, 13%),
+		0 10px 20px 0 rgba(0, 0, 0, 5%);
+}
+
+@mixin ob-expanded-active-main-nav-item-box-shadow() {
+	box-shadow:
+		0 10px 20px 0 rgba(0, 0, 0, 6%),
+		1px 10px 70px -8px rgba(0, 0, 0, 13%);
+}
+
+// this is a placeholder since the box-shadow value has not yet been provided by the UX team
+@mixin ob-default-panel-box-shadow() {
+	box-shadow: 0 3px 4px 1px variables.$ob-secondary-300;
 }

@@ -7,7 +7,13 @@
 	id="service-navigation-toggle-profile-image-button"
 	type="button"
 >
-	<img [alt]="'i18n.oblique.service-navigation.profile.alt' | translate" [src]="avatarImageUrl" class="ob-profile-avatar" />
+	<img
+		[alt]="'i18n.oblique.service-navigation.profile.alt' | translate"
+		[ngSrc]="avatarImageUrl"
+		height="51"
+		width="51"
+		class="ob-profile-avatar"
+	/>
 	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.profile.button" | translate }}</span>
 </button>
 
@@ -22,7 +28,7 @@
 		class="ob-widget ob-user"
 		type="button"
 	>
-		<mat-icon svgIcon="user"></mat-icon>
+		<mat-icon svgIcon="user" />
 		<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.profile.button" | translate }}</span>
 	</button>
 </ng-template>
@@ -37,12 +43,14 @@
 			obHeaderPrefix
 			class="ob-avatar"
 			[alt]="'i18n.oblique.service-navigation.profile.alt' | translate"
-			[src]="avatarImageUrl"
+			[ngSrc]="avatarImageUrl"
+			height="32"
+			width="32"
 		/>
 	</ob-service-navigation-popover-section>
 	<ob-service-navigation-popover-section
 		*ngIf="links?.length > 0"
 		header="i18n.oblique.service-navigation.profile.links.header"
 		[links]="links"
-	></ob-service-navigation-popover-section>
+	/>
 </ng-template>

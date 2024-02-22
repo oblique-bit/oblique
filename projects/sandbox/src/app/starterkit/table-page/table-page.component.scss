@@ -1,0 +1,6 @@
+@use "projects/oblique/src/styles/scss/core/variables";
+
+.actions {
+	display: flex;
+	gap: variables.$ob-spacing-sm;
+}

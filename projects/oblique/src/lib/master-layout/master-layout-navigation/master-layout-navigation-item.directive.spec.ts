@@ -9,11 +9,11 @@ import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
 
 @Component({
-	template: '<li role="presentation" obMasterLayoutNavigationItem> test </li>'
+	template: '<div class="ob-master-layout-header"><li role="presentation" obMasterLayoutNavigationItem> test </li></div>'
 })
 class TestComponent {}
 
-describe('ObMasterLayoutNavigationItemDirective', () => {
+describe(ObMasterLayoutNavigationItemDirective.name, () => {
 	let element: HTMLElement;
 	let fixture: ComponentFixture<TestComponent>;
 	let directive: ObMasterLayoutNavigationItemDirective;
@@ -52,37 +52,56 @@ describe('ObMasterLayoutNavigationItemDirective', () => {
 		mock.menuClosed.mockReset();
 	});
 
-	it('should create', () => {
+	test('that creation works', () => {
 		expect(directive).toBeDefined();
 	});
 
-	it('should have ob-master-layout-navigation-item class', () => {
+	test('that it has ob-master-layout-navigation-item class', () => {
 		expect(element.classList.contains('ob-master-layout-navigation-item')).toBe(true);
 	});
-	it('should not be expanded', () => {
+	test('that it is not expanded', () => {
 		expect(directive.isExpanded).toBe(false);
 	});
 
-	it('should not have ob-expanded class', () => {
+	test('that it does not have ob-expanded class', () => {
 		expect(element.classList.contains('ob-expanded')).toBe(false);
 	});
 
 	describe('ngOnInit', () => {
 		beforeEach(() => {
+			directive.ngOnInit();
 			directive.isExpanded = true;
 		});
 
-		it('should collapse on mouse click', () => {
+		test('that it collapses on mouse click', () => {
 			clickSubject.next(new MouseEvent('click'));
 			expect(directive.isExpanded).toBe(false);
 		});
 
-		it('should collapse on Escape key', () => {
+		test(`that it collapses on mouse click when target is truthy, but it's closest method is undefined`, () => {
+			const mouseEvent = new MouseEvent('click');
+			clickSubject.next({...mouseEvent, target: {} as EventTarget});
+			expect(directive.isExpanded).toBe(false);
+		});
+
+		test(`that it collapses on mouse click when target's closest returns false`, () => {
+			const mouseEvent = new MouseEvent('click');
+			clickSubject.next({...mouseEvent, target: {closest: () => false} as unknown as EventTarget});
+			expect(directive.isExpanded).toBe(false);
+		});
+
+		test(`that it does not collapse on mouse click when the target of the event is a non closing element within an .ob-sub-menu`, () => {
+			const mouseEvent = new MouseEvent('click');
+			clickSubject.next({...mouseEvent, target: {closest: (selector: string) => selector === '.ob-sub-menu'} as unknown as EventTarget});
+			expect(directive.isExpanded).toBe(true);
+		});
+
+		test('that it collapses on Escape key', () => {
 			keyUpSubject.next(new KeyboardEvent('keyup', {key: 'Escape'}));
 			expect(directive.isExpanded).toBe(false);
 		});
 
-		it('should not collapse on Space key', () => {
+		test('that it does not collapse on Space key', () => {
 			keyUpSubject.next(new KeyboardEvent('keyup', {key: 'Space'}));
 			expect(directive.isExpanded).toBe(true);
 		});
@@ -99,7 +118,7 @@ describe('ObMasterLayoutNavigationItemDirective', () => {
 				directive.openSubMenu();
 			});
 
-			it('should be expanded', () => {
+			test('that it is expanded', () => {
 				expect(directive.isExpanded).toBe(true);
 			});
 		});
@@ -110,7 +129,7 @@ describe('ObMasterLayoutNavigationItemDirective', () => {
 				directive.toggleSubMenu();
 			});
 
-			it('should not be expanded', () => {
+			test('that it is not expanded', () => {
 				expect(directive.isExpanded).toBe(false);
 			});
 		});
@@ -123,15 +142,15 @@ describe('ObMasterLayoutNavigationItemDirective', () => {
 			fixture.detectChanges();
 		});
 
-		it('should be expanded', () => {
+		test('that it is expanded', () => {
 			expect(directive.isExpanded).toBe(true);
 		});
 
-		it('should have ob-expanded class', () => {
+		test('that it has ob-expanded class', () => {
 			expect(element.classList.contains('ob-expanded')).toBe(true);
 		});
 
-		it('should open the menu', () => {
+		test('that it opens the menu', () => {
 			expect(mock.menuOpened).toHaveBeenCalled();
 		});
 	});
@@ -145,19 +164,19 @@ describe('ObMasterLayoutNavigationItemDirective', () => {
 			fixture.detectChanges();
 		});
 
-		it('should not be expanded', () => {
+		test('that it is not expanded', () => {
 			expect(directive.isExpanded).toBe(false);
 		});
 
-		it('should not have ob-expanded class', () => {
+		test('that it does not have ob-expanded class', () => {
 			expect(element.classList.contains('ob-expanded')).toBe(false);
 		});
 
-		it('should close the menu', () => {
+		test('that it closes the menu', () => {
 			expect(mock.menuClosed).toHaveBeenCalled();
 		});
 
-		it('should expand / collapse the hamburger menu', () => {
+		test('that it expands / collapses the hamburger menu', () => {
 			expect(masterLayoutService.isMenuOpened).toBe(!(value ?? true));
 		});
 	});

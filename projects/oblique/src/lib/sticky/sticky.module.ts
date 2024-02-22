@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {CdkScrollableModule} from '@angular/cdk/scrolling';
-import {ObStickyComponent} from './sticky.component';
 import {obliqueProviders} from '../utilities';
+import {ObStickyComponent} from './sticky.component';
 
 export {ObStickyComponent} from './sticky.component';
 
+/**
+ * @deprecated since version 11.0.0. It will be removed with Oblique 12. CSS flexbox and / or position: sticky should be used instead.
+ */
 @NgModule({
-	imports: [CdkScrollableModule, CommonModule],
-	declarations: [ObStickyComponent],
+	imports: [ObStickyComponent],
 	exports: [ObStickyComponent],
 	providers: obliqueProviders()
 })

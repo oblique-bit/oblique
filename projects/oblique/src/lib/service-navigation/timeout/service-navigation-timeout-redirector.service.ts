@@ -5,7 +5,7 @@ import {Observable, ReplaySubject} from 'rxjs';
 
 @Injectable()
 export class ObServiceNavigationTimeoutRedirectorService {
-	public handleLogout: boolean;
+	public handleLogout = true;
 	public logoutUrl: string;
 	public readonly logoutCookieName = 'eportal-logout';
 	public readonly logoutTrigger$: Observable<string>;

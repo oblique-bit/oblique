@@ -1,4 +1,9 @@
-<table mat-table matSort [dataSource]="dataSource" class="ob-table ob-table-plain">
+<table
+	mat-table
+	matSort
+	[dataSource]="dataSource"
+	class="ob-table ob-table-disable-checked-style ob-table-disable-hover-style ob-table-plain"
+>
 	<ng-container [matColumnDef]="field" *ngFor="let field of fields">
 		<th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>{{ "i18n.file-upload." + field | translate }}</th>
 		<td mat-cell *matCellDef="let file">{{ file[field] }}</td>
@@ -14,8 +19,7 @@
 				[aria-label]="
 					(selectionStatus === 'all' ? 'i18n.oblique.file-upload.all.deselect' : 'i18n.oblique.file-upload.all.select') | translate
 				"
-			>
-			</mat-checkbox>
+			/>
 		</th>
 		<td mat-cell *matCellDef="let row; let i = index">
 			<mat-checkbox
@@ -24,10 +28,9 @@
 				[checked]="selection.isSelected(row)"
 				[aria-label]="
 					(selection.isSelected(row) ? 'i18n.oblique.file-upload.row.deselect' : 'i18n.oblique.file-upload.row.select')
-						| translate : { index: i + 1 }
+						| translate: { index: i + 1 }
 				"
-			>
-			</mat-checkbox>
+			/>
 		</td>
 	</ng-container>
 
@@ -41,7 +44,7 @@
 				[matTooltip]="'i18n.oblique.file-upload.selected.remove' | translate"
 				(click)="delete(selection.selected)"
 			>
-				<mat-icon svgIcon="trash"></mat-icon>
+				<mat-icon svgIcon="trash" />
 				<span class="ob-screen-reader-only">{{ "i18n.oblique.file-upload.selected.remove" | translate }}</span>
 			</button>
 		</th>
@@ -53,7 +56,7 @@
 				[matTooltip]="'i18n.oblique.file-upload.remove' | translate"
 				(click)="delete([file])"
 			>
-				<mat-icon svgIcon="trash"></mat-icon>
+				<mat-icon svgIcon="trash" />
 				<span class="ob-screen-reader-only">{{ "i18n.oblique.file-upload.remove" | translate }}</span>
 			</button>
 		</td>

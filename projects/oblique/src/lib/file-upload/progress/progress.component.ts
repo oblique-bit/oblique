@@ -1,8 +1,13 @@
-import {Component, EventEmitter, Inject, Input, OnDestroy, Output, ViewEncapsulation} from '@angular/core';
+import {NgFor, NgIf} from '@angular/common';
 import {HttpEvent, HttpEventType} from '@angular/common/http';
-import {TranslateService} from '@ngx-translate/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, Output, ViewEncapsulation, inject} from '@angular/core';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {ObButtonDirective} from '../../button/button.directive';
 import {WINDOW} from '../../utilities';
-import {ObPopUpService} from '../../pop-up/pop-up.service';
 import {ObEUploadEventType, ObIFile, ObIFileList, ObIUploadEvent} from '../file-upload.model';
 import {ObFileUploadService} from '../file-upload.service';
 
@@ -11,23 +16,21 @@ import {ObFileUploadService} from '../file-upload.service';
 	templateUrl: './progress.component.html',
 	styleUrls: ['./progress.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-progress'}
+	host: {class: 'ob-progress'},
+	standalone: true,
+	imports: [NgFor, NgIf, MatProgressBarModule, MatButtonModule, ObButtonDirective, MatTooltipModule, MatIconModule, TranslateModule]
 })
 export class ObProgressComponent implements OnDestroy {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
 	@Input() singleRequest: boolean;
 	@Input() uploadUrl: string;
+	@Input() cancelConfirmation = true;
 	uploadedFiles: ObIFileList = {} as ObIFileList;
-	private readonly window: Window;
 
-	constructor(
-		private readonly fileUploadService: ObFileUploadService,
-		private readonly popup: ObPopUpService,
-		private readonly translate: TranslateService,
-		@Inject(WINDOW) window: any
-	) {
-		this.window = window;
-	}
+	private readonly changeDetectorRef = inject(ChangeDetectorRef);
+	private readonly fileUploadService = inject(ObFileUploadService);
+	private readonly translate = inject(TranslateService);
+	private readonly window = inject(WINDOW);
 
 	@Input() set files(files: File[]) {
 		// let some time for the other inputs to be processed
@@ -39,12 +42,12 @@ export class ObProgressComponent implements OnDestroy {
 	}
 
 	cancelUpload(file: ObIFile): void {
-		if (!file.completed && this.popup.confirm(this.translate.instant('i18n.oblique.file-upload.remove'))) {
+		if (!file.completed && (!this.cancelConfirmation || this.window.confirm(this.translate.instant('i18n.oblique.file-upload.remove')))) {
 			this.uploadedFiles.files[file.index]?.subscription.unsubscribe();
 			this.uploadedFiles.files.splice(file.index, 1);
 			this.uploadedFiles.fileCount--;
+			this.changeDetectorRef.detectChanges();
 			this.uploadEvent.emit({type: ObEUploadEventType.CANCELED, files: this.arrayifyFiles(file.binary)});
-			this.isUploadComplete();
 		}
 	}
 
@@ -60,6 +63,7 @@ export class ObProgressComponent implements OnDestroy {
 
 	private uploadFiles(files: File[]): void {
 		this.uploadedFiles.fileCount = files.length;
+		this.changeDetectorRef.detectChanges();
 		if (this.singleRequest) {
 			this.uploadFilesTogether(files);
 		} else {
@@ -89,6 +93,7 @@ export class ObProgressComponent implements OnDestroy {
 			this.window.setTimeout(() => {
 				this.uploadedFiles.fileCount = 0;
 				this.uploadedFiles.files.length = 0;
+				this.changeDetectorRef.detectChanges();
 			}, 1000);
 		}
 	}
@@ -112,6 +117,7 @@ export class ObProgressComponent implements OnDestroy {
 		}
 		this.uploadedFiles.files[index].completed = event.type === HttpEventType.Response;
 		this.uploadedFiles.files[index].hasError = event.type === HttpEventType.User;
+		this.changeDetectorRef.detectChanges();
 		this.isUploadComplete();
 	}
 

@@ -6,9 +6,12 @@ import {ObMockIconComponent} from './mock-icon.component';
 export {ObMockIconService} from './mock-icon.service';
 export {ObMockIconComponent} from './mock-icon.component';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @NgModule({
+	imports: [ObMockIconComponent],
 	providers: [{provide: ObMockIconService, useClass: ObMockIconService}],
-	declarations: [ObMockIconComponent],
 	exports: [ObMockIconComponent]
 })
 export class ObMockIconModule {

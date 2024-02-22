@@ -1,6 +1,11 @@
+import {NgFor, NgIf} from '@angular/common';
 import {Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
-import {ObValidationService} from './validation.service';
+import {MatIconModule} from '@angular/material/icon';
+import {TranslateModule} from '@ngx-translate/core';
 import {ObEUploadEventType, ObIUploadEvent} from '../file-upload.model';
+import {ObAcceptAllPipe} from './accept-all.pipe';
+import {ObDragDropDirective} from './drag-and-drop.directive';
+import {ObValidationService} from './validation.service';
 
 @Component({
 	selector: 'ob-drop-zone',
@@ -9,12 +14,15 @@ import {ObEUploadEventType, ObIUploadEvent} from '../file-upload.model';
 	styleUrls: ['./ob-drop-zone.component.scss'],
 	providers: [ObValidationService],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-drop-zone'}
+	host: {class: 'ob-drop-zone'},
+	standalone: true,
+	imports: [ObDragDropDirective, MatIconModule, NgIf, NgFor, TranslateModule, ObAcceptAllPipe]
 })
 export class ObDropZoneComponent {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
 	@Input() accept = ['*'];
 	@Input() maxFileSize = 5;
+	@Input() maxFileAmount = 0;
 	@Input() multiple = true;
 	@ViewChild('fileInput') private readonly fileInput: ElementRef<HTMLInputElement>;
 
@@ -22,7 +30,13 @@ export class ObDropZoneComponent {
 
 	addFiles(fileList: FileList): void {
 		const fileArray = Array.from(fileList);
-		const files: File[] = this.validationService.filterInvalidFiles(fileArray, this.accept, this.maxFileSize, this.multiple);
+		const files: File[] = this.validationService.filterInvalidFiles({
+			files: fileArray,
+			accept: this.accept,
+			maxSize: this.maxFileSize,
+			maxAmount: this.maxFileAmount,
+			multiple: this.multiple
+		});
 		if (files.length) {
 			this.uploadEvent.emit({type: ObEUploadEventType.CHOSEN, files});
 		}

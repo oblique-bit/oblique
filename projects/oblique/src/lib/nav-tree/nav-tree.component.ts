@@ -1,21 +1,39 @@
 import {Component, Input, OnDestroy, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute, RouterLinkActive} from '@angular/router';
-import {TranslateService} from '@ngx-translate/core';
+import {ActivatedRoute, RouterLink, RouterLinkActive, RouterModule} from '@angular/router';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
-import {ObNavTreeItemModel} from './nav-tree-item.model';
+import {NgClass, NgFor, NgIf, NgTemplateOutlet} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
 import {Subject} from 'rxjs';
+import {ObNavTreeItemModel} from './nav-tree-item.model';
 
 @Component({
 	selector: 'ob-nav-tree',
 	exportAs: 'obNavTree',
 	templateUrl: './nav-tree.component.html',
 	styleUrls: ['./nav-tree.component.scss'],
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
+	standalone: true,
+	imports: [
+		NgFor,
+		NgIf,
+		RouterLinkActive,
+		RouterLink,
+		MatIconModule,
+		NgClass,
+		NgTemplateOutlet,
+		FormsModule,
+		MatIconModule,
+		MatInputModule,
+		RouterModule,
+		TranslateModule
+	]
 })
 export class ObNavTreeComponent implements OnDestroy {
 	static DEFAULTS = {
-		VARIANT: 'ob-nav-bordered ob-nav-hover',
 		HIGHLIGHT: 'ob-pattern-highlight',
 		LABEL_FORMATTER: defaultLabelFormatterFactory
 	};
@@ -23,24 +41,20 @@ export class ObNavTreeComponent implements OnDestroy {
 	activeFragment: string; // TODO: remove when https://github.com/angular/angular/issues/13205
 	@Input() items: ObNavTreeItemModel[] = [];
 	@Input() prefix = 'nav-tree';
+	@Input() hasFilter = false;
 	@Input() filterPattern: string;
 	@Input() labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(
 		this.translate
 	);
-	/**
-	 * @deprecated since version 10.3.0. It will be removed with Oblique 11 with no replacement
-	 */
-	@Input() variant = ObNavTreeComponent.DEFAULTS.VARIANT;
-	/**
-	 * @deprecated since version 10.2.0. It will be removed with Oblique 11, and it won't be possible to deactivate the ancestors anymore
-	 */
-	@Input() activateAncestors = true;
 	@Input() treeAriaLabelledBy: string;
 	@Input() treeAriaLabel: string;
 	private readonly unsubscribe = new Subject<void>();
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
-	constructor(private readonly route: ActivatedRoute, private readonly translate: TranslateService) {
+	constructor(
+		private readonly route: ActivatedRoute,
+		private readonly translate: TranslateService
+	) {
 		this.route.fragment.pipe(takeUntil(this.unsubscribe)).subscribe(fragment => {
 			this.activeFragment = fragment;
 		});

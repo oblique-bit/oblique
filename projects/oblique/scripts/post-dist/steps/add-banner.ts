@@ -4,7 +4,7 @@ import {version as currentVersion} from './../../../../../package.json';
 import path from 'path';
 
 export class AddBanner {
-	private static readonly directory = 'dist';
+	private static readonly directory = path.join('..', '..', 'dist');
 	private static readonly EOLDates = {
 		'10.0.0': '2024-06-30'
 	};

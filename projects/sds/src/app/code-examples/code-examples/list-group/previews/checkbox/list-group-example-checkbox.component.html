@@ -1,0 +1,9 @@
+<mat-selection-list>
+	<ng-container *ngFor="let item of contentForList">
+		<mat-list-option>
+			<p matListItemTitle>{{ item.line1 }}</p>
+			<p matListItemLine>{{ item.line2 }}</p>
+			<p matListItemLine>{{ item.line3 }}</p>
+		</mat-list-option>
+	</ng-container>
+</mat-selection-list>

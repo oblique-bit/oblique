@@ -1,0 +1,8 @@
+<app-code-example
+	*ngFor="let preview of previews"
+	[codeSnippets]="preview.snippets"
+	[id]="componentId | id: preview.idParts"
+	[idPrefix]="componentId"
+	[preview]="preview.component"
+	[title]="preview.title"
+/>

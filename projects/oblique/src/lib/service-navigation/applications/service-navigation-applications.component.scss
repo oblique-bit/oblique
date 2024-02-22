@@ -20,7 +20,7 @@ $ob-application-icon-size: 2.5em; // empiric value
 		color: variables.$ob-default;
 
 		&:hover {
-			background-color: variables.$ob-gray-100;
+			background-color: variables.$ob-gray-lighter;
 		}
 	}
 

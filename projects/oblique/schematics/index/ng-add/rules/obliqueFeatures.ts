@@ -124,8 +124,8 @@ function addDefaultComponentToAppModule(tree: Tree): void {
 		const sourceFile = createSrcFile(tree, appModulePath);
 		const changes: Change[] = addDeclarationToModule(sourceFile, appModulePath, 'HomeComponent', './home/home.component');
 
-		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatLegacyButtonModule', '@angular/material/legacy-button'));
-		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatLegacyCardModule', '@angular/material/legacy-card'));
+		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatButtonModule', '@angular/material/button'));
+		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatCardModule', '@angular/material/card'));
 		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatIconModule', '@angular/material/icon'));
 
 		applyChanges(tree, appModulePath, changes);
@@ -140,8 +140,13 @@ function addDefaultComponentRouteToAppRoutingModule(tree: Tree): void {
 		const fileName = routingModule.split('/').pop();
 		if (fileName) {
 			changes.push(insertImport(sourceFile, routingModule, 'HomeComponent', './home/home.component'));
-			changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: '', redirectTo: 'home', pathMatch: 'full'}"));
-			changes.push(addRouteDeclarationToModule(sourceFile, fileName, "{path: 'home', component: HomeComponent}"));
+			changes.push(
+				addRouteDeclarationToModule(
+					sourceFile,
+					fileName,
+					"{path: '', redirectTo: 'home', pathMatch: 'full'},{path: 'home', component: HomeComponent}"
+				)
+			);
 		}
 		applyChanges(tree, routingModule, changes);
 	}

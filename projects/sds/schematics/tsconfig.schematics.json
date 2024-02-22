@@ -1,0 +1,14 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "rootDir": "src/",
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "sourceMap": false,
+    "target": "es6",
+    "types": ["node"],
+    "lib": ["es2018", "dom"]
+  },
+  "exclude": ["src/add-code-example/templates/*", "src/add-preview/templates/*"]
+}

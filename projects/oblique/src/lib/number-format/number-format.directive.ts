@@ -5,7 +5,8 @@ import {distinctUntilChanged} from 'rxjs/operators';
 @Directive({
 	selector: '[obNumberFormat]',
 	exportAs: 'obNumberFormat',
-	host: {class: 'ob-number-format'}
+	host: {class: 'ob-number-format'},
+	standalone: true
 })
 export class ObNumberFormatDirective implements OnInit {
 	@Input() decimals = 2;
@@ -13,7 +14,10 @@ export class ObNumberFormatDirective implements OnInit {
 	private changed = false;
 	private focused = false;
 
-	constructor(private readonly ngControl: NgControl, private readonly el: ElementRef) {}
+	constructor(
+		private readonly ngControl: NgControl,
+		private readonly el: ElementRef
+	) {}
 
 	@HostListener('blur')
 	onBlur(): void {

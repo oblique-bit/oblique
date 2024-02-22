@@ -1,30 +1,32 @@
-import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {ControlValueAccessor, FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
-import {MatLegacyAutocompleteModule as MatAutocompleteModule} from '@angular/material/legacy-autocomplete';
-import {MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {MatIconTestingModule} from '@angular/material/icon/testing';
-import {MatLegacyFormFieldHarness as MatFormFieldHarness} from '@angular/material/legacy-form-field/testing';
-import {MatLegacyInputHarness as MatInputHarness} from '@angular/material/legacy-input/testing';
-import {MatLegacyAutocompleteHarness as MatAutocompleteHarness} from '@angular/material/legacy-autocomplete/testing';
 import {CommonModule} from '@angular/common';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {Component} from '@angular/core';
+import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {ControlValueAccessor, FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatAutocompleteHarness} from '@angular/material/autocomplete/testing';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldHarness} from '@angular/material/form-field/testing';
+import {MatIconModule} from '@angular/material/icon';
+import {MatIconTestingModule} from '@angular/material/icon/testing';
+import {MatInputModule} from '@angular/material/input';
+import {MatInputHarness} from '@angular/material/input/testing';
 import {By} from '@angular/platform-browser';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
-import {ObAutocompleteHarness} from './../autocomplete/_harness/autocomplete.harness';
-import {ObOptionLabelIconModule} from '../autocomplete/option-label-icon/option-label-icon.module';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup} from '../autocomplete/autocomplete.model';
-import {ObAutocompleteComponent} from './autocomplete.component';
+import {ObOptionLabelIconModule} from '../autocomplete/option-label-icon/option-label-icon.module';
 import {ObInputClearModule} from '../input-clear/input-clear.module';
 import {ObMockTranslateParamsModule} from '../translate-params/_mocks/mock-translate-params.module';
-import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ObAutocompleteHarness} from './../autocomplete/_harness/autocomplete.harness';
 import {ObMockHighlightTextPipe} from './_mocks/mock-highlight-text.pipe';
 import {ObAutocompleteTextToFindService} from './autocomplete-text-to-find.service';
+import {ObAutocompleteComponent} from './autocomplete.component';
 
 @Component({
 	template: ``
@@ -41,7 +43,7 @@ class TestParentComponent {
 	parentFormControl = new FormGroup({model: this.model});
 }
 
-describe('AutocompleteComponent', () => {
+describe(ObAutocompleteComponent.name, () => {
 	let fixture: ComponentFixture<ObAutocompleteComponent>;
 	let component: ObAutocompleteComponent;
 	let parentFixture: ComponentFixture<TestParentComponent>;
@@ -53,6 +55,9 @@ describe('AutocompleteComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [
+				ObAutocompleteComponent,
+				ObMockTranslatePipe,
+				ObMockHighlightTextPipe,
 				FormsModule,
 				MatAutocompleteModule,
 				MatFormFieldModule,
@@ -65,10 +70,11 @@ describe('AutocompleteComponent', () => {
 				ObOptionLabelIconModule,
 				NoopAnimationsModule,
 				CommonModule,
-				MatIconTestingModule
+				MatIconTestingModule,
+				TranslateModule
 			],
-			declarations: [ObAutocompleteComponent, ObMockTranslatePipe, TestParentComponent, ObMockHighlightTextPipe],
-			providers: [{provide: ObAutocompleteTextToFindService}]
+			declarations: [TestParentComponent],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}, {provide: ObAutocompleteTextToFindService}]
 		}).compileComponents();
 	});
 
@@ -106,10 +112,6 @@ describe('AutocompleteComponent', () => {
 
 			it('should have autocompleteOptions to be empty', () => {
 				expect(component.autocompleteOptions.length).toBe(0);
-			});
-
-			it("should have filterRegex.pattern to be 'textToFind'", () => {
-				expect(component.filterRegexPattern).toBe('textToFind');
 			});
 
 			it("should have filterRegex.flags to be 'gi'", () => {
@@ -229,11 +231,11 @@ describe('AutocompleteComponent', () => {
 			parentFixture.detectChanges();
 		});
 
-		it('should have TestParentComponent created', () => {
+		it(`should create ${TestParentComponent.name}`, () => {
 			expect(parentComponent).toBeTruthy();
 		});
 
-		it('should have ObAutocompleteComponent', () => {
+		it(`should have ${ObAutocompleteComponent.name}`, () => {
 			expect(component).toBeTruthy();
 		});
 

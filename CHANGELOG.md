@@ -1,3 +1,182 @@
+# [11.0.0](https://github.com/oblique-bit/oblique/compare/10.3.1...11.0.0) (2024-02-22)
+
+## Bug Fixes
+
+- **alert:** use correct default icon ([abc9b75](https://github.com/oblique-bit/oblique/commit/abc9b75c213e6f87e830690931ae580d1af05b5a))
+- **collapse:** vertically align the toggle icon with the text ([51f2fdd](https://github.com/oblique-bit/oblique/commit/51f2fdd35019b81f7bac1146e126417dc2f3e9f3))
+- **collapse:** hidden part is now invisible to screen readers ([12fbcff](https://github.com/oblique-bit/oblique/commit/12fbcffaf6c4dada85f7daa7edc1a0e441e21fbf))
+- **service-navigation:** don't start the timeout service when PAMS is not configured ([7a63b3b](https://github.com/oblique-bit/oblique/commit/7a63b3b28aa74821525b66ba8ac62524d00f9763))
+- **column-layout:** make toggles work when column is initially disabled ([a487c38](https://github.com/oblique-bit/oblique/commit/a487c3864ba0698ce47fabb08a91bfb0ea6dee15))
+- **file-upload:** remove uploaded event emission upon upload cancellation ([d15e96d](https://github.com/oblique-bit/oblique/commit/d15e96d03543028aa9d9d0ae961b0e1eb727b5e8))
+- **file-upload:** use `WINDOW` token from Oblique instead of `window` property from JS ([d83bdc6](https://github.com/oblique-bit/oblique/commit/d83bdc6ccd38a17a0ea7cf6826764f0479d022dc))
+- **file-upload:** make it work with `OnPush` change detection ([e80e2c2](https://github.com/oblique-bit/oblique/commit/e80e2c2e8b9014892284f8315aab28c12fecb4ed))
+- **global-events:** ensure there is only 1 listener per event ([0725a11](https://github.com/oblique-bit/oblique/commit/0725a11f9a0b173a979495f8da077f19b2005094))
+- **master-layout:** remove empty `nav` when no navigation is provided ([b533e84](https://github.com/oblique-bit/oblique/commit/b533e84a2cc59d994bb40774233771fcee969927))
+- **material:** ensure focused tab uses the correct color ([9458271](https://github.com/oblique-bit/oblique/commit/9458271f9b311e722e85e1c44a9a7004aedb6730))
+- **material:** reserve space for the error icon in form fields ([65f10b0](https://github.com/oblique-bit/oblique/commit/65f10b002c27c5fd1062535f86de69e7b1a815b3))
+- **notification:** add missing translation ([ba183d5](https://github.com/oblique-bit/oblique/commit/ba183d578773547f8c40d0bf3bbaef70a1e3af9d))
+- **schematics:** fix comma issue in route declaration when adding oblique ([27dd2bf](https://github.com/oblique-bit/oblique/commit/27dd2bf930aab4245e8fabb85df5c1fef575755e))
+- **schematics:** let ng-add properly configure jest ([42be040](https://github.com/oblique-bit/oblique/commit/42be0402326a7ad12b8ee463a173fd844296cd16))
+- **schematics:** let ng-update properly configure jest ([90e941e](https://github.com/oblique-bit/oblique/commit/90e941ee921dc5c093c937b3f5966469578a8f06))
+- **schematics:** make ng-add deactivate `@angular-eslint/prefer-standalone-component` ([37c7a18](https://github.com/oblique-bit/oblique/commit/37c7a18b4129f86ff47751f7c88dcf3f19914bc5))
+- **schematics:** make ng-update deactivate `@angular-eslint/prefer-standalone-component` ([571127e](https://github.com/oblique-bit/oblique/commit/571127efdb5aa8246e443fd4f4067a89e8bab69d))
+- **service-navigation:** add a limitation to 99+ notifications ([bc6469e](https://github.com/oblique-bit/oblique/commit/bc6469ea5af8a3d59c23127ecbb092f8b8dc332c))
+- **service-navigation:** do not redirect when application isn't online ([00a7eea](https://github.com/oblique-bit/oblique/commit/00a7eea3577f4d96cea36adaae1a1029fca856b6))
+- **service-navigation:** ensure language changes are not streamed if nobody is listening ([22f1244](https://github.com/oblique-bit/oblique/commit/22f1244b63744e1ddf21714e815de653ac741285))
+- **service-navigation:** fix applications layout inside popover ([f231701](https://github.com/oblique-bit/oblique/commit/f231701018ce63ea338993e2880289e370483ba3))
+- **service-navigation:** move applications into a list ([2f6137c](https://github.com/oblique-bit/oblique/commit/2f6137c0055636ed0935f7f120aec4ca70457124))
+- **service-navigation:** short cookie expiration set to 5s ([e8479aa](https://github.com/oblique-bit/oblique/commit/e8479aa0948ec7c1be0c681cc4a3a3bdec24f6e4))
+- **service-navigation:** update notification widget's translations ([a99d965](https://github.com/oblique-bit/oblique/commit/a99d9655acf89c456627a16ee030cca582bf8ed8))
+- **styles:** remove unnecessary colors ([decfa5d](https://github.com/oblique-bit/oblique/commit/decfa5de25f13100072d3560079d14d0dcf48ba6))
+- **toolchain:** allow angular versions 17 & 18 as peer dependencies ([7369c75](https://github.com/oblique-bit/oblique/commit/7369c759d3427fd53620e920783a509874ae0bf3))
+- **toolchain:** don't use `~` to load the cover background in `oblique-components.css` ([cd1b340](https://github.com/oblique-bit/oblique/commit/cd1b340ecd618a4eef0cc465e60d8e0a52218428))
+- **toolchain:** list `js-cookie` as a `dependencies` ([8ee5d1b](https://github.com/oblique-bit/oblique/commit/8ee5d1b28d692e77f9dd4d97959fcda9b7bcfc80))
+- **translation:** correct typo in French ([5720713](https://github.com/oblique-bit/oblique/commit/5720713c78b36980a98bf6b9356f33cdb30090b2))
+
+## Features
+
+- **alert:** redesign to match wgl 2023 ([6df360e](https://github.com/oblique-bit/oblique/commit/6df360ebdec5e81fc8b84013d24a389d7a8d93ce))
+- **alert:** update to standalone ([6cb4112](https://github.com/oblique-bit/oblique/commit/6cb4112d1f7c61e9c944b622dc5cb0eae43d6405))
+- **autocomplete:** remove deprecated `filterRegexPattern` ([33cd6d6](https://github.com/oblique-bit/oblique/commit/33cd6d609168c3e48cd638925b8c309458f2bfd2))
+- **autocomplete:** update to standalone ([1ea67ab](https://github.com/oblique-bit/oblique/commit/1ea67ab06ed4cf21e404711bbeeadee65365d261))
+- **button:** update to standalone ([62bd961](https://github.com/oblique-bit/oblique/commit/62bd9613bd2ca5ac53876f43077956959a1ab6e9))
+- **collapse:** update to standalone ([4de63b1](https://github.com/oblique-bit/oblique/commit/4de63b190838c9cbb82adaeba259f39c704a86f5))
+- **error-messages:** update to standalone ([8562276](https://github.com/oblique-bit/oblique/commit/8562276dacbec531a7c5db311bf79d5ca516d019))
+- **external-link:** update to standalone ([b075a80](https://github.com/oblique-bit/oblique/commit/b075a8055f8ffcb15d7d6e109c8bb212715c3383))
+- **file-upload:** add file amount limit input ([f487140](https://github.com/oblique-bit/oblique/commit/f487140a77bbacbf57a0cbd7d7ccae0fda5bb58b))
+- **file-upload:** redesign to match the WGL 2023 ([f146343](https://github.com/oblique-bit/oblique/commit/f146343274c8cd36408445e6023758e829769f57))
+- **file-upload:** implement optional cancel confirmation prompt ([c3832a8](https://github.com/oblique-bit/oblique/commit/c3832a82d04dd3dab2d1f78b53d987f7bab022df))
+- **file-upload:** update `image/*` wildcard to accept more common file types ([2c08155](https://github.com/oblique-bit/oblique/commit/2c08155f9887929951173cb35e4e78f391120cf9))
+- **file-upload:** update to standalone ([1367e90](https://github.com/oblique-bit/oblique/commit/1367e90db5a6c08b78cd0c5fef198c91946ca1ad))
+- **file-upload:** replace legacy module of the progress-bar ([1e6778f](https://github.com/oblique-bit/oblique/commit/1e6778f3b39cc21454227ec37d096db133d51484))
+- **icon:** merge custom configuration with the default one instead of overriding it ([706cb0c](https://github.com/oblique-bit/oblique/commit/706cb0ca8edd781fa4784245d80fe4fb41d68e96))
+- **icon:** update to standalone ([dd576c4](https://github.com/oblique-bit/oblique/commit/dd576c4f3cc9ff547137b8c577d28b228f8b02f6))
+- **input-clear:** update to standalone ([61f6a8c](https://github.com/oblique-bit/oblique/commit/61f6a8c4bbb1ac7fabbc94788f7dfd0d03c21d87))
+- **language:** update `obDatePipe` to standalone ([b86c5e7](https://github.com/oblique-bit/oblique/commit/b86c5e7378bd356277027c4cdbdc18f084659e67))
+- **master-layout:** `obLocales` and `obHeaderCustomControl` content projection options are gone ([bb503ac](https://github.com/oblique-bit/oblique/commit/bb503ace9a43c5b9375c7f245f64c90b10576eea))
+- **master-layout:** redesign of the footer to match WGL 2023 ([edf1c5a](https://github.com/oblique-bit/oblique/commit/edf1c5ab7c7b447118428773a99f5fccf03e664c))
+- **master-layout:** redesign of the header to match WGL 2023 ([43388f8](https://github.com/oblique-bit/oblique/commit/43388f8990501db6ac78e8955b32186800dde5ee))
+- **master-layout:** redesign of the navigation to match WGL 2023 ([fe1e227](https://github.com/oblique-bit/oblique/commit/fe1e227a46deef682ab1a2b38c11e57d560ec3f1))
+- **master-layout:** redesign of the off-canvas to match WGL 2023 ([4ed839a](https://github.com/oblique-bit/oblique/commit/4ed839a3ff427e01ce8ec70c242ca78834445307))
+- **master-layout:** remove `OB_ACTIVATE_SERVICE_NAVIGATION` token ([5053b5a](https://github.com/oblique-bit/oblique/commit/5053b5aaf4d73159c12dadff5fdb43f142144643))
+- **master-layout:** remove header controls area and always show service navigation ([c1f54c1](https://github.com/oblique-bit/oblique/commit/c1f54c1ed1c20d898be333b282d558a56186d315))
+- **master-layout:** remove unused `ob-control-icon` class ([3a9d010](https://github.com/oblique-bit/oblique/commit/3a9d010c7a74630dd291c6f4c68e137ea480df7c))
+- **master-layout:** add dynamic back button to sub menu ([8018cd5](https://github.com/oblique-bit/oblique/commit/8018cd55429f12877fb5ea7f512078d221d83ab1))
+- **master-layout:** add go to children button to sub menu ([0612a96](https://github.com/oblique-bit/oblique/commit/0612a9646c84d94351850d62fd37b138de861f58))
+- **master-layout:** add option to move links to right side ([4069b9b](https://github.com/oblique-bit/oblique/commit/4069b9b12395dfe420c50a673f911e6d28f51806))
+- **master-layout:** add recursive master layout sub menu item component ([1367626](https://github.com/oblique-bit/oblique/commit/136762640a85c79ff577028d9816688214e869e9))
+- **master-layout:** menu icon size proportional to font size ([ca016b3](https://github.com/oblique-bit/oblique/commit/ca016b3e8ac99f2ad1a182c74a229a93e51c4b68))
+- **master-layout:** set default value of `footer.hasLogoOnScroll` to `false` ([743600d](https://github.com/oblique-bit/oblique/commit/743600d6d229504e4d2240afed777a06a9f35bb5))
+- **material:** redesign of the autocomplete to match WGL 2023 ([d388c5e](https://github.com/oblique-bit/oblique/commit/d388c5e999d630edecd9ea74f66ce8a5b1a2c5d5))
+- **material:** redesign of the badge to match new design ([8fd32d3](https://github.com/oblique-bit/oblique/commit/8fd32d3a308b5e610ff2310f6c29bee5c33f7a77))
+- **material:** redesign of the button to match WGL 2023 ([6ac215d](https://github.com/oblique-bit/oblique/commit/6ac215dec2dcf688a996546406a7f07152eefc93))
+- **material:** redesign of the card to match the WGL 2023 ([4a65b51](https://github.com/oblique-bit/oblique/commit/4a65b519504892e6520c594f477a18e7f05e4dc4))
+- **material:** redesign of the chips to match the WGL 2023 ([7b69aae](https://github.com/oblique-bit/oblique/commit/7b69aae280ad990623d6cf7f687f5234eab515f5))
+- **material:** redesign of the color palette to match WGL 2023 ([072492b](https://github.com/oblique-bit/oblique/commit/072492b67e2576c7753516d17f683c3440e5be7c))
+- **material:** redesign of the datepicker to match WGL 2023 ([5c8caf5](https://github.com/oblique-bit/oblique/commit/5c8caf5d6f93a2ee7eace56639bb9c62c6706775))
+- **material:** redesign of the dialog to match the WGL 2023 ([78b5a0b](https://github.com/oblique-bit/oblique/commit/78b5a0bd986877a5ee5d0c87a58202e65cb53fe4))
+- **material:** redesign of the form elements to match the WGL 2023 ([0e66b46](https://github.com/oblique-bit/oblique/commit/0e66b468e71112977a26123f945e8ee456a0300b))
+- **material:** redesign of the list to match the WGL 2023 ([2cfd3a7](https://github.com/oblique-bit/oblique/commit/2cfd3a7933f5b4d20f307f14f2ba01a5ccf8a30d))
+- **material:** redesign of the paginator to match the WGL 2023 ([b5fc7ac](https://github.com/oblique-bit/oblique/commit/b5fc7ac1e2421e2e0da26dda72962788de8409c4))
+- **material:** redesign of the progress-bar to match the WGL 2023 ([c5fd7d8](https://github.com/oblique-bit/oblique/commit/c5fd7d8b6a28f5375b9a8bbdad249c1bea24d3ca))
+- **material:** redesign of the slider to match the WGL 2023 ([0548ebc](https://github.com/oblique-bit/oblique/commit/0548ebcb596e6d202d1f442a62ddad1cf86efa6c))
+- **material:** redesign ot the slide-toggle to match the WGL 2023 ([4d3526a](https://github.com/oblique-bit/oblique/commit/4d3526a989773c3940956916a79ba0445113cf9f))
+- **material:** redesign of the stepper to match wgl 2023 ([d3f078a](https://github.com/oblique-bit/oblique/commit/d3f078adccfeed6ee41bf0a3169e80ea4c61836f))
+- **material:** redesign of the table to match the WGL 2023 ([b4ea040](https://github.com/oblique-bit/oblique/commit/b4ea0404a8a632947aac749200aa572aaf31e9f8))
+- **material:** redesign of the tooltip to match the WGL 2023 ([37c36cb](https://github.com/oblique-bit/oblique/commit/37c36cbfddcf07f8fae791520ade558e2c99c57a))
+- **material:** replace `MatLegacyButtonModule` with `MatButtonModule` ([e5fcdb2](https://github.com/oblique-bit/oblique/commit/e5fcdb2d6f4ce88661886bd70b38f225c93e9fe2))
+- **material:** replace `MatLegacyCardModule` with `MatCardModule` ([363b187](https://github.com/oblique-bit/oblique/commit/363b187d2e7506ce948dc18849a51f7edb320889))
+- **material:** replace `MatLegacyDialog` with `MatDialog` ([ef379d5](https://github.com/oblique-bit/oblique/commit/ef379d5ad01311d6ec8127a28dac07492122b303))
+- **material:** replace `MatLegacyTooltipModule` with `MatTooltipModule` ([7003fc2](https://github.com/oblique-bit/oblique/commit/7003fc2d9d40cf2f18493a67b1ccc6f19b8df193))
+- **material:** apply material legacy migration for core styles ([5f6eb4a](https://github.com/oblique-bit/oblique/commit/5f6eb4a845a994e752453a18d1e91e63e23605fc))
+- **material:** apply material legacy migration for list ([0c3cb21](https://github.com/oblique-bit/oblique/commit/0c3cb2138f8046e1f2293ff83be3acf905ac1bcf))
+- **material:** apply material legacy migration for menu ([320bcbe](https://github.com/oblique-bit/oblique/commit/320bcbe25e125a18d3125bd093379527843480d5))
+- **material:** apply material legacy migration for typography ([f1cef4f](https://github.com/oblique-bit/oblique/commit/f1cef4f334fea0cc7cc423e887a43949bbf7de96))
+- **material:** apply material legacy migration for table ([26d2833](https://github.com/oblique-bit/oblique/commit/26d2833b22175ea1113fa990438bca00ac45551c))
+- **material:** remove legacy-chips-theme ([8c987a6](https://github.com/oblique-bit/oblique/commit/8c987a6d7da9cbe6aba7bf13fefcf0fd0d3a5973))
+- **material:** create `ObPaginator` directive ([7358f87](https://github.com/oblique-bit/oblique/commit/7358f87d18ae4ae93484fbe2dbda17a3ce94a434))
+- **material:** remove `ob-selected` class for chips ([5ecf39e](https://github.com/oblique-bit/oblique/commit/5ecf39ed289ae51c4faa538351e45a54595a0e53))
+- **nav-tree:** remove fake focus ([ae7b590](https://github.com/oblique-bit/oblique/commit/ae7b5909f2796804e429fbe659c0f029d1a76cee))
+- **nav-tree:** add `hasFilter` input ([609bd27](https://github.com/oblique-bit/oblique/commit/609bd27887564ad77cd169f05f18cf21afc176e2))
+- **nav-tree:** redesign to match wgl 2023 ([5159625](https://github.com/oblique-bit/oblique/commit/51596255a383529d98fe4d7c598c1e8c0235c485))
+- **nav-tree:** remove deprecated `activateAncestors` input ([62a5856](https://github.com/oblique-bit/oblique/commit/62a58562fa30dfb503721be25209c6f2a4cece4d))
+- **nav-tree:** remove deprecated `variant` input ([ed3c946](https://github.com/oblique-bit/oblique/commit/ed3c946bd1e0a254f4661cb1e5f752ab2226bfb5))
+- **nav-tree:** update to standalone ([f395597](https://github.com/oblique-bit/oblique/commit/f395597ce49428aabf64877a8decb95e798ff69b))
+- **nested-form:** update to standalone ([e310076](https://github.com/oblique-bit/oblique/commit/e3100761882be08ec7e9adac76075c83391943ab))
+- **number-format:** update to standalone ([cf20913](https://github.com/oblique-bit/oblique/commit/cf20913e348c610426b5148b364bfda7823ebe22))
+- **off-canvas:** update to standalone ([67866e6](https://github.com/oblique-bit/oblique/commit/67866e6ca1241c0ab4b69824377e1a113d1db2ed))
+- **paginator:** remove `MatLegacyPaginatorIntl` and `MatLegacyPaginatorModule` ([f008775](https://github.com/oblique-bit/oblique/commit/f00877594aa65f65f02892b5ec11a384aaf34eb8))
+- **pop-up:** remove the deprecated pop-up feature ([94d445b](https://github.com/oblique-bit/oblique/commit/94d445b9c5706fbfa9e87d1768ecfa0e7af6772c))
+- **popover:** add `panelContentId` input ([a2b55f7](https://github.com/oblique-bit/oblique/commit/a2b55f70a6af19518b12ebebe89d0b8f4a8f0e60))
+- **popover:** redesign to match WGL 2023 ([b7d7fac](https://github.com/oblique-bit/oblique/commit/b7d7fac03e6e56c47310f51ca4fb6fd5e96a3a33))
+- **popover:** update to standalone ([67b477d](https://github.com/oblique-bit/oblique/commit/67b477dc55522506c08bbf3445fd0b72d000518e))
+- **schema-validation:** update to standalone ([8e666d8](https://github.com/oblique-bit/oblique/commit/8e666d8779d23d885be6f3c4e54f50ccff5340a5))
+- **schematics:** add rule to run material mdc-migration on ng-update ([df725a5](https://github.com/oblique-bit/oblique/commit/df725a5e167bd9bb9420d999cc0abc28e4c55036))
+- **schematics:** add standalone check ([3e64dbd](https://github.com/oblique-bit/oblique/commit/3e64dbd3d4b2e2638503b8d8cf134c11987a6d7e))
+- **schematics:** ng-update removes `transform` mock in jest configuration ([264131b](https://github.com/oblique-bit/oblique/commit/264131b4549dfd70cf3dc3e90186fa96bff652d1))
+- **schematics:** ng-update replaces scss with css styles in `angular.json` ([4f14f8d](https://github.com/oblique-bit/oblique/commit/4f14f8db52b8aaab31c3682760bcd1db8b631447))
+- **schematics:** ng-add installs husky 9 ([0af6c21](https://github.com/oblique-bit/oblique/commit/0af6c2191830fdbda1eaed73480fdc073682daeb))
+- **schematics:** update peer dependencies installed by ng-add ([dbfe187](https://github.com/oblique-bit/oblique/commit/dbfe1870718fa166baae6d79f326a668c27d928c))
+- **scrolling:** update to standalone ([4016b5b](https://github.com/oblique-bit/oblique/commit/4016b5b4302593d28fc49a69ef9c2d161679c02c))
+- **selectable:** update to standalone ([a8127c8](https://github.com/oblique-bit/oblique/commit/a8127c863418961e5e99cbd1382b85afe55c57f6))
+- **search-box:** remove deprecated feature ([3cb94dd](https://github.com/oblique-bit/oblique/commit/3cb94dd3e0d8ecca980a18b34412b4ddef478e94))
+- **selectable:** update to standalone ([a8127c8](https://github.com/oblique-bit/oblique/commit/a8127c863418961e5e99cbd1382b85afe55c57f6))
+- **service-navigation:** redesign to match WGL 2023 ([d980788](https://github.com/oblique-bit/oblique/commit/d98078860efc69e6c59e9422c5ede49804ae84a5))
+- **service-navigation:** adjust non login ob buttons from `secondary` to `tertiary` ([8ec1435](https://github.com/oblique-bit/oblique/commit/8ec143529c41b5e22f8a44c4b485683f06c90beb))
+- **service-navigation:** make sure the schematics runs for all projects ([ba5165c](https://github.com/oblique-bit/oblique/commit/ba5165cb3d73fde669f6327fb7ec963a0f51569c))
+- **service-navigation:** move login icon from left side to right side of login text ([2b18db1](https://github.com/oblique-bit/oblique/commit/2b18db16ebddfcc9af22de8177ebca7412bd847d))
+- **spinner:** update to standalone ([164cc4b](https://github.com/oblique-bit/oblique/commit/164cc4b56e903341f1010024da91ad0777c5e296))
+- **spinner:** redesign to match WGL 2023 ([aae7982](https://github.com/oblique-bit/oblique/commit/aae7982534c5f8d3c8256a78d240b01b9621d90d))
+- **sticky:** deprecate `ObStickyComponent` ([88d4342](https://github.com/oblique-bit/oblique/commit/88d4342700d6be7dca1a6d4907e2f6ac7451bbdc))
+- **sticky:** make sticky compatible with `onPush` ([87a8ce0](https://github.com/oblique-bit/oblique/commit/87a8ce0c40babcf09a40006f4df37401397466d5))
+- **sticky:** update to standalone ([7c101ce](https://github.com/oblique-bit/oblique/commit/7c101cee886e6c606b83e1d9819c494eb43f06a2))
+- **styles:** add `$ob-spacing-md` variable ([9e96087](https://github.com/oblique-bit/oblique/commit/9e9608716b3263e880e7dfd97eab34e2923465e2))
+- **styles:** deprecate `frutiger.css` & `roboto.css` ([13ad819](https://github.com/oblique-bit/oblique/commit/13ad819e8d6ed5e5300d2dfa8a0cedae123dd68d))
+- **styles:** no longer distribute scss styles ([e58ed8a](https://github.com/oblique-bit/oblique/commit/e58ed8ab24adeda139d32dcbfb2e200eaef4686d))
+- **styles:** migrate Oblique colors to WGL 2023 color scheme ([1150dbd](https://github.com/oblique-bit/oblique/commit/1150dbd1b48496009b37c17050220dcabe5631c2))
+- **styles:** remove `hover-visible` and `bg-secondary` classes ([d076c78](https://github.com/oblique-bit/oblique/commit/d076c781e911cdaedf10698067b5f332a7ea022e))
+- **styles:** remove `ob-table-cicd` class ([b1684f5](https://github.com/oblique-bit/oblique/commit/b1684f5328caafae2932852a899fc419f633e724))
+- **styles:** remove `ob-tabs` and associated classes ([ba8a0a2](https://github.com/oblique-bit/oblique/commit/ba8a0a2c0455dcf3463b092a25a427aa8a295496))
+- **styles:** remove styling for HTML stepper ([3101a15](https://github.com/oblique-bit/oblique/commit/3101a15527a48d554ced0ff809904c0f90a805a9))
+- **toolchain:** limit `exports` in `package.json` to scss files ([30c043c](https://github.com/oblique-bit/oblique/commit/30c043c71323b589524ec750661a7f45cee916eb))
+- **translate-params:** update to standalone ([48a97a6](https://github.com/oblique-bit/oblique/commit/48a97a6e91bf10baaa937a576f3e52f4aac4044b))
+- **translation:** replace key `i18n.oblique.off-canvas.close` with `i18n.common.close` ([46b0760](https://github.com/oblique-bit/oblique/commit/46b07606986388368e90f9264e24ab96687fc39d))
+- **unknown-route:** update to standalone ([2b3d7fc](https://github.com/oblique-bit/oblique/commit/2b3d7fc4ed3c8e1d34e44a382671a7b273ccdd19))
+- **unsaved-changes:** update to standalone ([355e07e](https://github.com/oblique-bit/oblique/commit/355e07ed5b8b6d851de4c6dc11610569ce3211e1))
+- **toolchain:** migrate from Angular 15 to 16 ([c10d083](https://github.com/oblique-bit/oblique/commit/c10d083b57124312fa58fbd1502973725efffcad))
+- **toolchain:** migrate from angular 16 to 17 ([2c37ea9](https://github.com/oblique-bit/oblique/commit/2c37ea9d85a199304ffe17398e923bc9796faae3))
+- **toolchain:** update all non angular dependencies ([334d177](https://github.com/oblique-bit/oblique/commit/334d177b5c92376a29d6f16d55e3bd4d78134b40))
+
+## BREAKING CHANGES
+
+- **icon:** When passing a custom configuration, settings that are not specified within it will not be overridden anymore. Projects that rely on this behavior to override default settings will need to specify all settings in the custom configuration.
+- **master-layout:** `obLocales` content projection option have been replaced with `#obHeaderControl` (Solved with Schematics)
+- **master-layout:** `obHeaderCustomControl` content projection option have been replaced with `#obHeaderControl` (Solved with Schematics)
+- **master-layout:** Footer links (`<a>` within `#obFooterLink`) will no longer have the external link icon added by default. Now, the `ob-show-external-link-icon` class needs to be added for the external link icon to be shown.
+- **master-layout:** `OB_ACTIVATE_SERVICE_NAVIGATION` have been removed with no replacement (Solved with Schematics)
+- **material:** all legacy modules have been replaced by their standard implementations (Solved with Schematics)
+- **material:** `ob-selected` class has no effect on chips anymore
+- **material:** `ob-table-hover` class has been removed in favor of `ob-table-disable-hover-style` class and its effect has been inverted. Now a table row's background color will change by default on hover and if this behavior is to be disabled, the class `ob-table-disable-hover-style` will need to be applied.
+- **material:** `ObFormFieldModule` now needs to be imported for certain form related styles to work correctly.
+- **nav-tree:** `ObNavTreeFakeFocusDirective` has been removed without replacement
+- **nav-tree:** The `activateAncestors` input has been removed without replacement. Ancestors are now always active. (Solved with Schematics)
+- **nav-tree:** The `variant` input has been removed without replacement. The "bordered" and "hovered" styles are now always active. (Solved with Schematics)
+- **pop-up:** `ObPopUpService` has been removed in favor of `Window` (Solved with Schematics)
+- **search-box:** `ObSearchBox` feature has been removed in favor of `ObAutocomplete`
+- **styles:** All Oblique colors do have a new value
+- **styles:** `ob-table-cicd` class has been removed without replacement (Solved with Schematics)
+- **styles:** `ob-nav-stepper` class has been removed together with its associated classes in favor of the Material stepper
+- **styles:** `ob-tabs` and associated classes have been removed in favor of Material tabs
+- **styles:** `ob-table-hover` class has been removed in favor of `ob-table-disable-hover-style` class and it's effect has been inverted. Now a table row's background color will change by default on hover and if this behavior is to be disabled, the class `ob-table-disable-hover-style` will need to be applied.
+- **styles:** `hover-visible` class has been removed without replacement
+- **styles:** `bg-secondary` class has been removed without replacement
+- **styles:** scss styles are no longer distributed
+- **toolchain:** jwt-decode 3 is no longer supported
+- **toolchain:** Angular 15 is no longer supported
+- **toolchain:** `*.api.json` files have been removed without replacement
+- **toolchain:** `*.description.json` files have been removed without replacement
+- **translation:** translation key `i18n.oblique.off-canvas.close` has been removed in favor of `i18n.common.close`
+
 # [10.3.1](https://github.com/oblique-bit/oblique/compare/10.3.0...10.3.1) (2023-12-22)
 
 ## Bug Fixes
@@ -10,27 +189,27 @@
 
 ## Bug Fixes
 
-- **column-layout:** add `overflow: hidden` to `.ob-column-layout` ([179f8e7](https://github.com/oblique-bit/oblique/commit/179f8e76afc426a56f35025f540de93818fa4cdb))
-- **global-events:** ensure there is only 1 listener per event ([d5b102d](https://github.com/oblique-bit/oblique/commit/d5b102d2acc744b82cc142448665951ec77a7dfd))
-- **notification:** add missing translation ([3f0b2f1](https://github.com/oblique-bit/oblique/commit/3f0b2f1a90c142e84ad3b12e49a781c5622ce749))
-- **service-navigation:** add a limitation to 99+ notifications ([c2ff197](https://github.com/oblique-bit/oblique/commit/c2ff197ecf7e73a393b2c2ab3abc0aebe05117a7))
-- **service-navigation:** do not redirect when application isn't online ([4f3fdeb](https://github.com/oblique-bit/oblique/commit/4f3fdeb86f454ebd5911a5b3beb8075a0a96feb8))
-- **service-navigation:** ensure language changes are not streamed if nobody is listening ([041a4fc](https://github.com/oblique-bit/oblique/commit/041a4fc5ee9c35260e5ac436c37abd0ebc4e10d9))
-- **service-navigation:** fix applications layout inside popover ([5fdaee7](https://github.com/oblique-bit/oblique/commit/5fdaee735c779a5919bdf0992a5adb2dcae82b1b))
+- **column-layout:** add `overflow: hidden` to `.ob-column-layout` ([2d26841](https://github.com/oblique-bit/oblique/commit/2d26841191a8685960001957e501548015e6720a))
+- **global-events:** ensure there is only 1 listener per event ([0725a11](https://github.com/oblique-bit/oblique/commit/0725a11f9a0b173a979495f8da077f19b2005094))
+- **notification:** add missing translation ([ba183d5](https://github.com/oblique-bit/oblique/commit/ba183d578773547f8c40d0bf3bbaef70a1e3af9d))
+- **service-navigation:** add a limitation to 99+ notifications ([bc6469e](https://github.com/oblique-bit/oblique/commit/bc6469ea5af8a3d59c23127ecbb092f8b8dc332c))
+- **service-navigation:** do not redirect when application isn't online ([00a7eea](https://github.com/oblique-bit/oblique/commit/00a7eea3577f4d96cea36adaae1a1029fca856b6))
+- **service-navigation:** ensure language changes are not streamed if nobody is listening ([22f1244](https://github.com/oblique-bit/oblique/commit/22f1244b63744e1ddf21714e815de653ac741285))
+- **service-navigation:** fix applications layout inside popover ([f231701](https://github.com/oblique-bit/oblique/commit/f231701018ce63ea338993e2880289e370483ba3))
 - **service-navigation:** fix eportal-logout-reminder cookie deletion ([ec555b5](https://github.com/oblique-bit/oblique/commit/ec555b5b184efee89a510329f0b18d9a093b4d1d))
-- **service-navigation:** move applications into a list ([3fdb4d2](https://github.com/oblique-bit/oblique/commit/3fdb4d2677a92303e2b305a401f5bf9b83411a29))
-- **service-navigation:** short cookie expiration set to 5s ([d347da7](https://github.com/oblique-bit/oblique/commit/d347da7816006d4d9d3558daed2ad8aba77d5e3c))
-- **service-navigation:** update notification widget's translations ([f0731ba](https://github.com/oblique-bit/oblique/commit/f0731ba30d58cdaea8fc39647e2b34bbc58960d3))
-- **translation:** correct typo in French ([619532b](https://github.com/oblique-bit/oblique/commit/619532b0f45f54d44b3e21ef0d27fce709b51ff5))
+- **service-navigation:** move applications into a list ([2f6137c](https://github.com/oblique-bit/oblique/commit/2f6137c0055636ed0935f7f120aec4ca70457124))
+- **service-navigation:** short cookie expiration set to 5s ([e8479aa](https://github.com/oblique-bit/oblique/commit/e8479aa0948ec7c1be0c681cc4a3a3bdec24f6e4))
+- **service-navigation:** update notification widget's translations ([a99d965](https://github.com/oblique-bit/oblique/commit/a99d9655acf89c456627a16ee030cca582bf8ed8))
+- **translation:** correct typo in French ([5720713](https://github.com/oblique-bit/oblique/commit/5720713c78b36980a98bf6b9356f33cdb30090b2))
 
 ## Features
 
-- **toolchain:** postpone Oblique 10 end of life date to 2024-06-30 ([74dcb02](https://github.com/oblique-bit/oblique/commit/74dcb02dc16d3f71682611c23be47a868555d083))
+- **toolchain:** postpone Oblique 10 end of life date to 2024-06-30 ([e1c4323](https://github.com/oblique-bit/oblique/commit/e1c4323483f8701b541fbb5de84891de646ccc60))
 
-## Deprecations
+## BREAKING CHANGES
 
-- **sticky:** deprecate `ObStickyModule` in favor of CSS flexbox ([d6d461b4](https://github.com/oblique-bit/oblique/commit/252eeabcff91ab8d598c5108f7e3a12cf29d8ca0))
-- **pop-up:** deprecate `ObPopUpService` in favor of `WINDOW` ([3c5260cd9](https://github.com/oblique-bit/oblique/commit/e5add006b467216ae564d06908d684f13cda09cc))
+- **sticky:** deprecate `ObStickyModule` in favor of CSS flexbox
+- **pop-up:** deprecate `ObPopUpService` in favor of `WINDOW`
 
 # [10.2.0](https://github.com/oblique-bit/oblique/compare/10.1.2...10.2.0) (2023-08-31)
 
@@ -55,6 +234,279 @@
 - **service-navigation:** add eportal csrf interceptor ([633f488](https://github.com/oblique-bit/oblique/commit/633f488e7d8cbe1c22305e5f9042db04e5f4bd56))
 - **service-navigation:** add possibility to handle the logout within the application ([e1702d1](https://github.com/oblique-bit/oblique/commit/e1702d1237901449c83beddd3f275ad8ff59ee2e))
 - **service-navigation:** add timeout feature ([94df3bf](https://github.com/oblique-bit/oblique/commit/94df3bf240afa4ed5ed256ca248d99207a3b6107))
+
+# [11.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/10.1.2...11.0.0-alpha.1) (2023-08-25)
+
+## Bug Fixes
+
+- **button:** don't style buttons with the `ob-button-card` class ([088db29](https://github.com/oblique-bit/oblique/commit/088db29af421675ada8e12d2df9623d0e54d1667))
+- **material:** don't import from `@oblique/utilities` ([5ae6816](https://github.com/oblique-bit/oblique/commit/5ae6816c505bc0c637c2b79437b5ae71345bf1d2))
+- **button:** limit disabling of default focus to oblique buttons ([449546f](https://github.com/oblique-bit/oblique/commit/449546f15c18282bda549757fcdc9fcdddd8ae78))
+- **master-layout:** correct mobile sub menu when scrolling down ([ad0e0b4](https://github.com/oblique-bit/oblique/commit/ad0e0b4e46c3860bf5e12f988a0a555406d31b90))
+- **master-layout:** ensure backdrop works with sticky layout ([e2ec58a](https://github.com/oblique-bit/oblique/commit/e2ec58a810382f566b366881436030411e5d3d29))
+- **material:** correct button ripple staying visible after click ([254c553](https://github.com/oblique-bit/oblique/commit/254c553ccb1ab66659cbe8aa1d2ec6ebf5f1d8fc))
+- **sandbox/master-layout:** adapt to the removal of Angular Material legacy components ([8cd2636](https://github.com/oblique-bit/oblique/commit/8cd2636c75eee4ef441c54c2ca8127535e150eee))
+- **sds/component-pages:** ensure a content is shown when no preview is available ([9a3be80](https://github.com/oblique-bit/oblique/commit/9a3be80fb0ea736ee1a56c956f9bee42c3e96d4b))
+- **sds/material:** use the correct id for the slider's preview ([5cc9067](https://github.com/oblique-bit/oblique/commit/5cc9067bf879b969f98853043b9851f1a2854bd6))
+- **sds:** do not load SDS translations files as they do not exist ([9022098](https://github.com/oblique-bit/oblique/commit/9022098d94766c84b60a8589476ad5246984a74e))
+- **sds:** initialize the `TranslateService` so that translations are loaded ([a7b70f3](https://github.com/oblique-bit/oblique/commit/a7b70f3c645d6da66045f758b94ea45cd0f96667))
+- **sds:** make left menu button outline be visible again ([0024514](https://github.com/oblique-bit/oblique/commit/0024514c313f091a4fc9bd062c86c6d05b0294b6))
+- **service-navigation:** remove unwanted margin on authentication ([4f4eaa0](https://github.com/oblique-bit/oblique/commit/4f4eaa0582078237ccf8b3af1bfdca7538af118b))
+- **toolchain:** allow `toolchain` scope to be used with any prefix in `hooks.commit-rules.ts` ([08d932b](https://github.com/oblique-bit/oblique/commit/08d932b54cb63bd4dd81470eba7976116ec6bdae))
+- **toolchain:** correction for nginx configuration ([cd9b966](https://github.com/oblique-bit/oblique/commit/cd9b966952bfb38c829044bb1a88699482289796))
+- **toolchain:** correctly extract lists in `hook.commit-rules.ts` ([6e56914](https://github.com/oblique-bit/oblique/commit/6e56914714f349ffc4c2d612cb6add853995ef33))
+- **toolchain:** don't throw an error when stylelint don't find any changed file ([59f3c20](https://github.com/oblique-bit/oblique/commit/59f3c20aa0125e34e284ba7da8eeb7a08eaa81bf))
+- **toolchain:** update path in `manifest-dev.yml` ([25a8576](https://github.com/oblique-bit/oblique/commit/25a8576f099cd2759c002500f5c3e11a31c9ba1d))
+- **toolchain:** update root path in Staticfile ([c565509](https://github.com/oblique-bit/oblique/commit/c565509d07dc0554ee3a9f99e1e449d50ff8e1ae))
+
+## Features
+
+- **file-upload:** replace legacy module of the progress-bar ([918e4b0](https://github.com/oblique-bit/oblique/commit/918e4b0962782666937196639d87ff1e11284a23))
+- **icon:** merge custom configuration with the default one instead of overriding it ([821a135](https://github.com/oblique-bit/oblique/commit/821a1357da843b850feb9b40886b6cf45a5b203d))
+- **master-layout:** `obLocales` and `obHeaderCustomControl` content projection options are gone ([c7f0bda](https://github.com/oblique-bit/oblique/commit/c7f0bda320d4651ff5c24420301f6f1df61e1c0b))
+- **master-layout:** adjust footer to match new design ([6fd9883](https://github.com/oblique-bit/oblique/commit/6fd98830b6ffb7ca7132795ed824e3c7340233d1))
+- **master-layout:** adjust header to match new design ([f09027c](https://github.com/oblique-bit/oblique/commit/f09027c7374afe3749d102b394cf6625e8bffe2c))
+- **master-layout:** adjust navigation styles for new design ([29713ff](https://github.com/oblique-bit/oblique/commit/29713ff91cb25c01f015d2ecaab172248444c966))
+- **master-layout:** adjust offcanvas ob-close button background coloring ([31cf80d](https://github.com/oblique-bit/oblique/commit/31cf80dd3e1d5821933e324a956d1f4c5fef719b))
+- **master-layout:** remove `OB_ACTIVATE_SERVICE_NAVIGATION` token ([c2b4f5f](https://github.com/oblique-bit/oblique/commit/c2b4f5fc9a6ca2e794e329a040c9234cc6f3fc39))
+- **master-layout:** remove header controls area and always show service navigation ([ee1009c](https://github.com/oblique-bit/oblique/commit/ee1009cb685ed4164442a5cb959dc79a522c68bc))
+- **master-layout:** remove unused `ob-control-icon` class ([f6eed99](https://github.com/oblique-bit/oblique/commit/f6eed990de1bcafa8510319042f68fe2a8f0c45f))
+- **master-layout:** small adjustments to match new design ([ef89cde](https://github.com/oblique-bit/oblique/commit/ef89cdec187ade84eae0a6f44bbaa20a3735dae4))
+- **material:** add `mat-form-field` and `mat-select` directives ([80ab321](https://github.com/oblique-bit/oblique/commit/80ab3219b2623205331d75cfdfc12681bdc0c2fc))
+- **material:** adjust button styles for new design ([c7486f9](https://github.com/oblique-bit/oblique/commit/c7486f9fd0402123d997517a35592696c3f15705))
+- **material:** adjust to color palette for new design ([8b49373](https://github.com/oblique-bit/oblique/commit/8b49373ce82687fc146d98c7834dad14ea1f8936))
+- **material:** apply new style of material paginator ([bb7d3ca](https://github.com/oblique-bit/oblique/commit/bb7d3ca8b744ba17fed4d4213b3fb1cc2b35eedd))
+- **material:** apply new style of material tooltip ([6952227](https://github.com/oblique-bit/oblique/commit/69522276287c95f4b01ab7b3869323552697937f))
+- **material:** icon adjustments ([778e3f4](https://github.com/oblique-bit/oblique/commit/778e3f4634a053c768f4ab3f53d41fd46b90ff70))
+- **material:** redesign of the card to match the WGL 2023 ([c2dbe86](https://github.com/oblique-bit/oblique/commit/c2dbe860c6ab72f7beca63511ab979bbbed40219))
+- **material:** redesign of the list to match the WGL 2023 ([c433c53](https://github.com/oblique-bit/oblique/commit/c433c53f0e0090f34c4a986df2479f6a01b96381))
+- **material:** redesign of the progress-bar ([277b070](https://github.com/oblique-bit/oblique/commit/277b070756d7b9613e3c4ea41da79da0837ab2e9))
+- **material:** redesign of the slider ([92ed896](https://github.com/oblique-bit/oblique/commit/92ed896c345da4b9d157fd8437b0bddc102c8f9a))
+- **material:** replace `MatLegacyButtonModule` with `MatButtonModule` ([daf09d0](https://github.com/oblique-bit/oblique/commit/daf09d095ca8eb59b1ac89f72e286b51d44301e5))
+- **material:** replace `MatLegacyTooltipModule` with `MatTooltipModule` ([045fb9d](https://github.com/oblique-bit/oblique/commit/045fb9d148bac9f9aac2062be7f0698283d4e882))
+- **material:** replace legacy mat form modules & implement their redesign ([8edbd21](https://github.com/oblique-bit/oblique/commit/8edbd21bdf0dae265d72b0adc7505f9fd82d3ae7))
+- **material:** replace the legacy modules of the cards ([5baf28e](https://github.com/oblique-bit/oblique/commit/5baf28e0abe004f8b579b9afcd3c683b0ccac047))
+- **nav-tree:** remove fake focus ([e69d1e2](https://github.com/oblique-bit/oblique/commit/e69d1e2771036c483a19e902c7727392d82e12e1))
+- **file-upload:** adjust file upload table classes ([9a5d9cc](https://github.com/oblique-bit/oblique/commit/9a5d9cc1ff13738b1c0f9a8d6bb43106ac5491fc))
+- **master-layout:** add `languageSelectorStyle` with `dropdown` and `tabs` options ([886fec6](https://github.com/oblique-bit/oblique/commit/886fec6544e82bd04b5f6a17a3fa96fafc82fb2c))
+- **master-layout:** add dynamic back button to sub menu ([e1aab9b](https://github.com/oblique-bit/oblique/commit/e1aab9ba8e3d76f26caa18f2963784f74c00cbbd))
+- **master-layout:** add go to children button to sub menu ([1e76492](https://github.com/oblique-bit/oblique/commit/1e76492810cfc471f967e08b55f25890475ed84f))
+- **master-layout:** add option to move links to right side ([e9fc7ed](https://github.com/oblique-bit/oblique/commit/e9fc7ed49098a79a514852276cf84b7d6fcec460))
+- **master-layout:** add placeholder box-shadow variable ([bad16eb](https://github.com/oblique-bit/oblique/commit/bad16ebbfe9491c912baeddc38f531f385a1f0bb))
+- **master-layout:** add recursive master layout sub menu item component ([8b22d56](https://github.com/oblique-bit/oblique/commit/8b22d56b7f6dfe52a48ea7c946147963766d3146))
+- **master-layout:** adjust scroll buttons to look & feel like `.ob-main-nav-item` buttons ([685c54d](https://github.com/oblique-bit/oblique/commit/685c54d7308df823613c4c2cff0dee4ab33dc731))
+- **master-layout:** adjust sub-menu open content brightness filters (0.5 => 0.9) ([3438495](https://github.com/oblique-bit/oblique/commit/34384953c9a6ee2d4c281c5def7586e1e3692c4a))
+- **master-layout:** navigation redesign to match the WGL 2023 ([3cafdaf](https://github.com/oblique-bit/oblique/commit/3cafdaf84764a818b203fa20d3bec6a18935aa6e))
+- **master-layout:** set default value of `footer.hasLogoOnScroll` to `false` ([bd01ded](https://github.com/oblique-bit/oblique/commit/bd01ded33aa09d48ecf24082d4a71e51a6cc69e2))
+- **master-layout:** sub-menu - add parent link & consolidate mobile & desktop back buttons ([cd5baf4](https://github.com/oblique-bit/oblique/commit/cd5baf449eba8acb8b95122f4941465809c31f7b))
+- **master-layout:** sub-menu fixes & nav cleanup ([3661d9c](https://github.com/oblique-bit/oblique/commit/3661d9ce4085e5fc5bca5a40382c95eb98088b63))
+- **master-layout:** sub-menu layout & color changes ([973dbcc](https://github.com/oblique-bit/oblique/commit/973dbcc25c0ba5efdf0485e6e83bea5fd5036742))
+- **oblique/material): feat(oblique/material:** redesign of table to match the WGL 2023 ([0106902](https://github.com/oblique-bit/oblique/commit/0106902cd6713626a0a144b2c90e005754c676e0))
+- **material:** add `ObCheckboxDirective` & `ObCheckboxModule` ([e2a16e7](https://github.com/oblique-bit/oblique/commit/e2a16e7a8093ca178ddf2ab678544fb23a04b582))
+- **material:** add subheading-1 value as font-size variable & use it in `mat-typography` ([49ce6ec](https://github.com/oblique-bit/oblique/commit/49ce6ec79ed6b24647878fa747573ae089490d35))
+- **material:** adjust `mat-select` panel styles for `.ob-language-dropdown` ([1136839](https://github.com/oblique-bit/oblique/commit/1136839d22022f15d27480918433a3a38ee7e7da))
+- **material:** adjust badge to match new design ([ffe690d](https://github.com/oblique-bit/oblique/commit/ffe690de4ec7871e6ffad6b6eb5be811bb1ddead))
+- **material:** adjust color of `mat-hint` within `mat-form-field` ([6dd7733](https://github.com/oblique-bit/oblique/commit/6dd773312f55ce0703bbd3bde76b70b270bd1c09))
+- **material:** adjust tab focus color ([fd56ec9](https://github.com/oblique-bit/oblique/commit/fd56ec9de59292082573c4d0b2be106521bb2397))
+- **material:** change focus boxshadow color acording to wgl 2023 ([7396752](https://github.com/oblique-bit/oblique/commit/7396752a26eef41b4571108c552985ece7190160))
+- **material:** datepicker design according to WGL 2023 ([4334345](https://github.com/oblique-bit/oblique/commit/4334345194a710be2a1f9f17cd895c600480aea9))
+- **material:** material table legacy replacements ([a0f5bfc](https://github.com/oblique-bit/oblique/commit/a0f5bfc538ac6ba3d17d2d6b2c016eebf085d016))
+- **material:** readonly form field adjustments ([338ad38](https://github.com/oblique-bit/oblique/commit/338ad3831e6dea8b9967ec9663c127a7dca08fe1))
+- **material:** redesign of the autocomplete to match the WGL 2023 ([27f7e39](https://github.com/oblique-bit/oblique/commit/27f7e39643e96e3ca39b687bcee02af7bcaf8605))
+- **material:** redesign of the chips to match the WGL 2023 ([658a9e7](https://github.com/oblique-bit/oblique/commit/658a9e73330865d203241543252141f636d55d56))
+- **material:** redesign of the dialog to match the WGL 2023 ([41d6f9c](https://github.com/oblique-bit/oblique/commit/41d6f9c13f28e93f6e6132965cd29d1e06e45b1f))
+- **material:** remove `readonly` styles from `mat-radio` & `mat-checkbox` ([32ed7c8](https://github.com/oblique-bit/oblique/commit/32ed7c8d4cc3a7374786044a1612edeedde2798c))
+- **material:** remove `readonly` styles from `mat-select` ([155b7da](https://github.com/oblique-bit/oblique/commit/155b7dafaaeed714c040fcd34449c58da67d724a))
+- **material:** remove legacy-chips-theme ([9fc51ea](https://github.com/oblique-bit/oblique/commit/9fc51ea699c543f7c3766cdf905fc72e3c6e02dd))
+- **material:** remove unnecessary button focus style ([5090c93](https://github.com/oblique-bit/oblique/commit/5090c9328f200297c5e5d209d8eebbf458720ead))
+- **material:** replace MatLegacyDialog with MatDialog ([5dc863d](https://github.com/oblique-bit/oblique/commit/5dc863d25ff5a86f58d3fe143fa7de541eac085d))
+- **material:** update slide toggle themes ([f3f893b](https://github.com/oblique-bit/oblique/commit/f3f893b34b8b330711e850db71d8ff722780b9a7))
+- **material:** use new shadow mixin for autocompletes ([d4ab02f](https://github.com/oblique-bit/oblique/commit/d4ab02fe8436263eafa5086f41486838c5ac888d))
+- **material:** use new shadow mixin for cards ([69ce991](https://github.com/oblique-bit/oblique/commit/69ce991010528a7f36302ad8d8eb75821b74e869))
+- **material:** use new shadow mixin for datepickers ([8a764da](https://github.com/oblique-bit/oblique/commit/8a764da85874cac622c88eb5b9d4e6ec4df427f0))
+- **material:** use new shadow mixin for dialogs ([cea4ae2](https://github.com/oblique-bit/oblique/commit/cea4ae2ff519edda3da119e181b90fbcb2e65afd))
+- **material:** use new shadow mixin for expansion panels ([c7dfc1f](https://github.com/oblique-bit/oblique/commit/c7dfc1fac110041978a977ab30817903f3f286f3))
+- **material:** use new shadow mixin for main nav ([df7ca2e](https://github.com/oblique-bit/oblique/commit/df7ca2e0455f83401b0e92d0166b1a6f73a0d77a))
+- **material:** use new shadow mixin for notifications ([9050cb5](https://github.com/oblique-bit/oblique/commit/9050cb542b70d650843032e0b87a01ded65eaedb))
+- **material:** use new shadow mixin for popover ([b5d9131](https://github.com/oblique-bit/oblique/commit/b5d9131055696cf97001bded12ad3e19a8a15905))
+- **material:** use new shadow mixin for primary buttons ([19fca90](https://github.com/oblique-bit/oblique/commit/19fca900129399d75b7e86f285e7e428d7bb0806))
+- **material:** use new shadow mixin for sliders ([2cdf5e9](https://github.com/oblique-bit/oblique/commit/2cdf5e9745e452dfce20993a0d6c378860024fd9))
+- **material:** use new shadow mixin for tables ([4aee950](https://github.com/oblique-bit/oblique/commit/4aee950f01100565e6a65bd51b7b1f4eb77a4974))
+- **material:** use new shadow mixin for tooltips ([351eb5a](https://github.com/oblique-bit/oblique/commit/351eb5a6bb1d773abfb286d06c9aff728655c8c0))
+- **service-navigation:** `gap` => `column-gap` & `$ob-spacing-default` => `$ob-spacing-sm` ([d621101](https://github.com/oblique-bit/oblique/commit/d62110151f6d5cf52851dcc249edb8b3427db317))
+- **service-navigation:** adjust non login ob buttons from `secondary` to `tertiary` ([8832cbc](https://github.com/oblique-bit/oblique/commit/8832cbcd2086bd1f4469e4499890fb87f5784160))
+- **service-navigation:** move login icon from left side to right side of login text ([17b913c](https://github.com/oblique-bit/oblique/commit/17b913cc73347267af3bffc26ad64f4cf20035f1))
+- **service-navigation:** utilize `languageSelectorStyle` input from master layout ([7cee1d0](https://github.com/oblique-bit/oblique/commit/7cee1d008beec92ff7a0ed2f2f357ac9bb460d94))
+- **styles:** add mixins for shadows ([be535ab](https://github.com/oblique-bit/oblique/commit/be535aba9858b30f858d87a94d1c64d803520c3e))
+- **translation:** replace key `i18n.oblique.off-canvas.close` with `i18n.common.close` ([10947e1](https://github.com/oblique-bit/oblique/commit/10947e1ec671974981a1719e1c33a0c5d8bf8c6b))
+- **oblique:** adjust standard label font size & weight ([7c48f69](https://github.com/oblique-bit/oblique/commit/7c48f69b57622b1766597194e67c425a2c41be50))
+- **paginator:** remove `MatLegacyPaginatorIntl` and `MatLegacyPaginatorModule` ([0a5bddd](https://github.com/oblique-bit/oblique/commit/0a5bddda3ff80a9185d927c117fd053a725207eb))
+- **sandbox/master-layout:** add granchildren examples to samples sub menu ([1100e30](https://github.com/oblique-bit/oblique/commit/1100e30803c69252629f3438ede055608e91de94))
+- **sandbox/master-layout:** add startOfRightSideLinks to samples ([fcfd161](https://github.com/oblique-bit/oblique/commit/fcfd161027657ed9c2d89b9de84536012da856ac))
+- **sandbox/master-layout:** adjust custom header control ob buttons from `secondary` to `tertiary` ([bd582c7](https://github.com/oblique-bit/oblique/commit/bd582c751df3d8fd77d1440cc952ea6ccddb8c70))
+- **sandbox/master-layout:** master-layout sub-menu nesting examples ([705c94e](https://github.com/oblique-bit/oblique/commit/705c94ea5d362088386ee0e995998fe248a55892))
+- **sandbox/material:** add checkbox module ([4e71443](https://github.com/oblique-bit/oblique/commit/4e7144342084f36535740e7d748fc53f8d1ef5c9))
+- **sandbox/material:** add slide toggle page ([4f66527](https://github.com/oblique-bit/oblique/commit/4f66527258e7af3065ef420cdb75ef2b251d651b))
+- **sandbox/material:** add toggle button to demonstrate the disabled state ([69a039b](https://github.com/oblique-bit/oblique/commit/69a039ba5be20a0fd215194f1e12a34949508316))
+- **sandbox/material:** adjust table hover & checked class application ([0cea0f5](https://github.com/oblique-bit/oblique/commit/0cea0f5360e59f83fc1e82865d57d752f714728a))
+- **sandbox/material:** german examples of datepicker with the WGL 2023 design ([2159bb3](https://github.com/oblique-bit/oblique/commit/2159bb3a09baf763fc53489ae8d9eb605d73ad34))
+- **sandbox/material:** improve forms examples vertical alignment ([6dd4894](https://github.com/oblique-bit/oblique/commit/6dd4894f68fe2b658a4bc7e222ff3fa69e3ca0ff))
+- **sandbox/material:** replace MatLegacyDialog with MatDialog (dialog and table example) ([4c4c70b](https://github.com/oblique-bit/oblique/commit/4c4c70ba76da3494583917533902174cfb2f5554))
+- **schematics:** create new schematic harness for oblique 11 ([21bde79](https://github.com/oblique-bit/oblique/commit/21bde795c2e50ede08156e6149217c03c3ff59dd))
+- **schematics:** replace scss with css styles in `angular.json` ([21d67ab](https://github.com/oblique-bit/oblique/commit/21d67ab09a8d52b51dbeb41542c5b1cff70de15d))
+- **sds/alert:** add TS files to the previews ([bfbddcb](https://github.com/oblique-bit/oblique/commit/bfbddcbbbff8bff2e6f6e0ad40cd6bd3d97250a7))
+- **sds/autocomplete:** add autocomplete code examples ([5043a15](https://github.com/oblique-bit/oblique/commit/5043a15344d0d622448dccd388809b2c949ae04b))
+- **sds/button:** add code examples ([4754b95](https://github.com/oblique-bit/oblique/commit/4754b95e9f0918f0c95f6245a1a3df2e4c809ca3))
+- **sds/button:** add TS files to the previews ([61289d9](https://github.com/oblique-bit/oblique/commit/61289d9d142ce651a23ecfb4feee24e74a94809f))
+- **sds/component-pages:** add a title to alert previews ([a0b3716](https://github.com/oblique-bit/oblique/commit/a0b37161c4fd3e9bd7dfc546f616a5cc55c0f2b1))
+- **sds/component-pages:** add a title to badge previews ([3c0c379](https://github.com/oblique-bit/oblique/commit/3c0c37946590cbd61c51541b2203074338950827))
+- **sds/component-pages:** add a title to button previews ([fc24c49](https://github.com/oblique-bit/oblique/commit/fc24c49981bea6413523fe58af66c07c9d1bdabc))
+- **sds/component-pages:** add possibility to add a title to the previews ([0a4fdf7](https://github.com/oblique-bit/oblique/commit/0a4fdf7b142fbce4e1589c185ed572dd831dace6))
+- **sds/component-pages:** add previews for tooltip ([e957a63](https://github.com/oblique-bit/oblique/commit/e957a63c569bdf5d22870e0a895c986568dbed6a))
+- **sds/component-pages:** add slide toggle code examples ([9d8a7d7](https://github.com/oblique-bit/oblique/commit/9d8a7d7cbeca4e5cc853e63d671abd7c936c259d))
+- **sds/component-pages:** add style for example components ([a3feec5](https://github.com/oblique-bit/oblique/commit/a3feec5a5662f0d00afb240f2dfa85f76516f9ee))
+- **sds/component-pages:** add title above the tab selection ([8656bb8](https://github.com/oblique-bit/oblique/commit/8656bb8737fc1d13515e95b7ed055e6d401a1b1f))
+- **sds/component-pages:** let the previews render a component instead of a template ([daf1396](https://github.com/oblique-bit/oblique/commit/daf139651450474b37d00b38d150457a911a3bfa))
+- **sds/component-pages:** loop on each preview instead of duplicating the code ([2381e42](https://github.com/oblique-bit/oblique/commit/2381e42c634ca5e536afdc0631218e40963db788))
+- **sds/component-pages:** move the `idParts` info to `previews` property ([4b0b447](https://github.com/oblique-bit/oblique/commit/4b0b44746b30a848fcaa103d53a82684a0b9ee2a))
+- **sds/component-pages:** move the `snippets` info to the `previews` property ([36aa2a4](https://github.com/oblique-bit/oblique/commit/36aa2a47954beac3e4b8fd7ff7b8a54147077c63))
+- **sds/component-pages:** use the same template for all `CodeExamples` components ([ab40002](https://github.com/oblique-bit/oblique/commit/ab40002ede783c70419a58d0346bbacbb66b7a6a))
+- **sds/material:** add badge code examples ([056a3c2](https://github.com/oblique-bit/oblique/commit/056a3c23d31f959c1bea791ae944554f6e36f7a3))
+- **sds/material:** add card code examples ([2d35e09](https://github.com/oblique-bit/oblique/commit/2d35e09a5231266703f5617014b3fd4f6e55a990))
+- **sds/material:** add chips code examples ([01dc80e](https://github.com/oblique-bit/oblique/commit/01dc80e27768808566626ba2e0d337947569ed0c))
+- **sds/material:** add dialog code examples ([0972279](https://github.com/oblique-bit/oblique/commit/0972279e1a1135fccba5be4cdb7aa1647eff1f52))
+- **sds/material:** add list-group code examples ([f168b1a](https://github.com/oblique-bit/oblique/commit/f168b1a4f29ebb20b304ec2c07c3d2beff325f69))
+- **sds/material:** add mapping to dialog code examples ([d73b225](https://github.com/oblique-bit/oblique/commit/d73b2256906035dff3376411f797dd7e8838bfef))
+- **sds/material:** add paginator code examples ([ac5e1e4](https://github.com/oblique-bit/oblique/commit/ac5e1e449a8255813dfc56ddabfda54293f0e540))
+- **sds/material:** add progress bar code examples ([91fc46b](https://github.com/oblique-bit/oblique/commit/91fc46b58a3342e3adb01d9b2f38e5c46b2edbb0))
+- **sds/material:** add slider code examples ([cf67030](https://github.com/oblique-bit/oblique/commit/cf670309dd1e90845119a0d2e7765d129015242c))
+- **sds/material:** add spinner code examples ([c0879be](https://github.com/oblique-bit/oblique/commit/c0879beb2813ade230fa7c4af809aaac56f0dabf))
+- **sds/material:** add table code examples ([0b3a49c](https://github.com/oblique-bit/oblique/commit/0b3a49c2d6f118c62162e075510428c6efcbbcba))
+- **sds/material:** add TS files to the badge's previews ([a570a90](https://github.com/oblique-bit/oblique/commit/a570a908a393ea6191b1f20006a87225adeb211b))
+- **sds/material:** add TS files to the card's previews ([f247039](https://github.com/oblique-bit/oblique/commit/f24703929e89bc37f8ffcc0d30e88292d09f700b))
+- **sds/material:** add TS files to the chips's previews ([4902f15](https://github.com/oblique-bit/oblique/commit/4902f158bf53cb5f2a96d2e264e6aa73fa42dfa3))
+- **sds/material:** add TS files to the slider's previews ([72ec6a6](https://github.com/oblique-bit/oblique/commit/72ec6a6aecf2d58e951fb6c4247c0259384aa3e3))
+- **sds/material:** default datepicker demonstrating the WGL 2023 design ([04ecc78](https://github.com/oblique-bit/oblique/commit/04ecc780a1ae6fb77ece3fe840b83972cfd20630))
+- **sds/material:** renamed TS tab of the list-group's previews ([0e330d0](https://github.com/oblique-bit/oblique/commit/0e330d0f9c3f86ad8f54fe367a47e91c99b7bb44))
+- **sds/material:** reorder snippets of the datepicker's previews ([aa38f05](https://github.com/oblique-bit/oblique/commit/aa38f058b43057e59b29d9fbe00681934db37392))
+- **sds/material:** reorder snippets of the dialog's previews ([48d6871](https://github.com/oblique-bit/oblique/commit/48d687199f46d9d822d8d4aea201712389ef23f8))
+- **sds/paginator:** add TS files to the previews ([791a035](https://github.com/oblique-bit/oblique/commit/791a035172840d29f45a7bd696d9952df41e9f8f))
+- **sds/schematics:** add code-example and preview generation ([376c609](https://github.com/oblique-bit/oblique/commit/376c60941ab94a215e191da7808ab4780aedafa3))
+- **search-box:** remove deprecated feature ([b70ceb9](https://github.com/oblique-bit/oblique/commit/b70ceb912b0fb5fedb0101248473210de6fe0c03))
+- **spinner:** redesign ([12540b0](https://github.com/oblique-bit/oblique/commit/12540b01657f8a10c0f2ac7ea92ae75181e87d27))
+- **styles:** add `$ob-spacing-md` variable ([cab5122](https://github.com/oblique-bit/oblique/commit/cab5122e455029c21bb6f40664ff26e3c20a0097))
+- **styles:** add `ob-box-shadow` & `ob-focus-visible` mixins to shadow mixins ([0b9dd7a](https://github.com/oblique-bit/oblique/commit/0b9dd7adab08ef03769016134ade85b1ef6aabbe))
+- **styles:** no longer distribute scss styles ([926d673](https://github.com/oblique-bit/oblique/commit/926d673e0337fbb8789c14d532fa69a1ff4e35a4))
+- **styles:** remove deprecation notices from scss files ([077687f](https://github.com/oblique-bit/oblique/commit/077687f2aa721e26c77e3483a760b180be7171f6))
+- **toolchain:** simplify SDS schematics commands ([90add94](https://github.com/oblique-bit/oblique/commit/90add945921751b246a1dcd2d00b11a78d762945))
+
+## BREAKING CHANGES
+
+- **translation:** \* translation key `i18n.oblique.off-canvas.close` has been removed in favor of `i18n.common.close`
+- **oblique/material): feat(oblique/material:** `ob-table-hover` class has been removed in favor of
+  `ob-table-disable-hover-style` class and it's effect has been inverted.
+  Now a table row's background color will change by default on hover and
+  if this behavior is to be disabled, the class `ob-table-disable-hover-style` will
+  need to be applied.
+- **material:** - MatLegacyTableModule has been removed in favor of MatTableModule
+
+* MatLegacyTableDataSource has been removed in favor of TableDataSource
+* mat.legacy-table-theme has been removed in favor of mat.table-theme
+* mat.legacy-table-typography has been removed in favor of
+  mat.table-typography
+
+feat(material): replace form field related legacy modules & adjust styles
+
+OUI-2219
+
+- **material:** \* `MatLegacyAutocompleteModule` has been removed in favor of
+  `MatAutocompleteModule`
+- `mat.legacy-autocomplete-typography` has been removed in favor of
+  `mat.autocomplete-typography`
+- `mat.legacy-autocomplete-theme` has been removed in favor of
+  `mat.autocomplete-theme`
+- `MatLegacyCardModule` has been removed in favor of
+  `MatCardModule`
+- `mat.legacy-card-theme` has been removed in favor of
+  `mat.card-theme`
+- `mat.legacy-card-typography` has been removed in favor of
+  `mat.card-typography`
+- `MatLegacyCheckboxModule` has been removed in favor of
+  `MatCheckboxModule`
+- `mat.legacy-checkbox-theme` has been removed in favor of
+  `mat.checkbox-theme`
+- `mat.legacy-checkbox-typography` has been removed in favor of
+  `mat.checkbox-typography`
+- `MAT_LEGACY_CHECKBOX_DEFAULT_OPTIONS` has been
+  removed in favor of `MAT_CHECKBOX_DEFAULT_OPTIONS`
+- `MatLegacyCheckboxDefaultOptions` has been removed in favor of
+  `MatCheckboxDefaultOptions`
+- `MatLegacyFormFieldModule` has been removed in favor of
+  `MatFormFieldModule`
+- `mat.legacy-form-field-theme` has been removed in favor of
+  `mat.form-field-theme`
+- `mat.legacy-form-field-typography ` has been removed in favor of
+  `mat.form-field-typography`
+- `MAT_LEGACY_FORM_FIELD_DEFAULT_OPTIONS` has been
+  removed in favor of `MAT_FORM_FIELD_DEFAULT_OPTIONS`
+- `MatLegacyFormFieldDefaultOptions` has been removed in favor of
+  `MatFormFieldDefaultOptions`
+- `MatLegacyFormFieldHarness` has been removed in favor of
+  `MatFormFieldHarness`
+- `MatLegacyInputModule` has been removed in favor of
+  `MatInputModule`
+- `MatLegacyInputHarness` has been removed in favor of
+  `MatInputHarness`
+- `MatLegacyRadioModule` has been removed in favor of
+  `MatRadioModule`
+- `mat.legacy-radio-theme` has been removed in favor of
+  `mat.radio-theme`
+- `mat.legacy-radio-typography` has been removed in favor of
+  `mat.radio-typography`
+- `MAT_LEGACY_RADIO_DEFAULT_OPTIONS` has been
+  removed in favor of `MAT_RADIO_DEFAULT_OPTIONS`
+- `MatLegacyRadioDefaultOptions` has been removed in favor of
+  `MatRadioDefaultOptions`
+- `MatLegacySelectModule` has been removed in favor of
+  `MatSelectModule`
+- `mat.legacy-select-theme` has been removed in favor of
+  `mat.select-theme`
+- `mat.legacy-select-typography` has been removed in favor of
+  `mat.select-typography`
+- `MatLegacySlideToggleModule` has been removed in favor of
+  `MatSlideToggleModule`
+- `mat.legacy-slide-toggle-theme` has been removed in favor of
+  `mat.slide-toggle-theme`
+- `mat.legacy-slide-toggle-typography` has been removed in favor of
+  `mat.slide-toggle-typography`
+- `MAT_LEGACY_SLIDE_TOGGLE_DEFAULT_OPTIONS` has been
+  removed in favor of `MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS`
+- `MatLegacySlideToggleDefaultOptions` has been removed in favor of
+  `MatSlideToggleDefaultOptions`
+- `ObFormFieldModule` now needs to be imported for certain form
+  related styles to work correctly.
+- **master-layout:** `OB_ACTIVATE_SERVICE_NAVIGATION` have been removed with no replacement (Solved with Schematics)
+- **master-layout:** \* `obLocales` content projection option have been replaced with `#obHeaderControl` (Solved with
+  Schematics)
+- `obHeaderCustomControl` content projection option have been replaced with `#obHeaderControl`
+  (Solved with Schematics)
+- **nav-tree:** `ObNavTreeFakeFocusDirective` has been removed without replacement
+- **styles:** \* scss styles are no longer distributed
+- **icon:** When passing a custom configuration, settings that are not specified within it will not be
+  overridden anymore. Projects that rely on this behavior to override default settings will need to
+  specify all settings in the custom configuration.
+- **file-upload:** `MatLegacyProgressBarModule` have been removed in favor of `MatProgressBarModule`
+- **material:** `MatLegacyTooltipModule` has been removed in favor of `MatTooltipModule`
+- **master-layout:** \* Footer links (`<a>` within `#obFooterLink`) will no longer have
+  the external link icon added by default. Now, the `ob-show-external-link-icon`
+  class needs to be added for the external link icon to be shown. Example:
+
+  `<ng-template #obFooterLink>
+	  <a class="ob-show-external-link-icon">External link shown</a>
+</ng-template>`
+
+- **search-box:** `ObSearchBox` feature has been removed in favor of `ObAutocomplete`
+- **material:** \* `MatLegacyButtonModule` has been removed in favor of `MatButtonModule`
 
 # [10.1.2](https://github.com/oblique-bit/oblique/compare/10.1.1...10.1.2) (2023-06-07)
 

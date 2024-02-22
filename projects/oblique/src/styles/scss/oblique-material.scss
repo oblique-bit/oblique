@@ -4,33 +4,76 @@
 @use "material/variables";
 @use "material/mat-typography" as typo;
 
-/**
- * @deprecated since Oblique 10. This SCSS files will no longer be distributed with Oblique 11.
- */
-// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
-//  The following line adds:
-//    1. Default typography styles for all components
-//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
-//  If you specify typography styles for the components you use elsewhere, you should delete this line.
-//  If you don't need the default component typographies but still want the hierarchy styles,
-//  you can delete this line and instead use:
-//    `@include mat.legacy-typography-hierarchy(typo.$custom-typography);`
-@include mat.all-legacy-component-typographies(typo.$custom-typography);
-@include mat.legacy-core();
-
-@include mat.all-legacy-component-themes(
-	mat.define-light-theme(
-		(
-			color: (
-				primary: mat.define-palette(material-palette.$oblique-primary),
-				accent: mat.define-palette(material-palette.$oblique-accent),
-				warn: mat.define-palette(material-palette.$oblique-warn),
-			),
-		)
-	)
+$theme: (
+	color: (
+		primary: mat.define-palette(material-palette.$oblique-primary, 600, 100, 700),
+		accent: mat.define-palette(material-palette.$oblique-primary, 600, 100, 700),
+		warn: mat.define-palette(material-palette.$oblique-warn, 800, 100, 900),
+	),
+	typography: typo.$custom-typography,
+);
+$theme-alt-500: (
+	color: (
+		primary: mat.define-palette(material-palette.$oblique-primary, 400, 100, 700),
+		accent: mat.define-palette(material-palette.$oblique-primary, 400, 100, 700),
+		warn: mat.define-palette(material-palette.$oblique-warn, 800, 100, 900),
+	),
+	typography: typo.$custom-typography,
+);
+$theme-slide-toggle: (
+	color: (
+		primary: mat.define-palette(material-palette.$oblique-primary-slide-toggle),
+		accent: mat.define-palette(material-palette.$oblique-primary-slide-toggle),
+		warn: mat.define-palette(material-palette.$oblique-warn-slide-toggle),
+	),
+	typography: typo.$custom-typography,
+);
+$theme-tabs: (
+	color: (
+		primary: mat.define-palette(material-palette.$oblique-primary-tabs),
+		accent: mat.define-palette(material-palette.$oblique-primary-tabs),
+		warn: mat.define-palette(material-palette.$oblique-warn),
+	),
+	typography: typo.$custom-typography,
 );
 
+@include mat.core();
+
+@include mat.tree-theme(mat.define-light-theme($theme));
+@include mat.toolbar-theme(mat.define-light-theme($theme));
+@include mat.bottom-sheet-theme(mat.define-light-theme($theme));
+@include mat.snack-bar-theme(mat.define-light-theme($theme));
+@include mat.autocomplete-theme(mat.define-light-theme($theme));
+@include mat.badge-theme(mat.define-light-theme($theme-alt-500));
+@include mat.button-theme(mat.define-light-theme($theme));
+@include mat.button-toggle-theme(mat.define-light-theme($theme));
+@include mat.card-theme(mat.define-light-theme($theme));
+@include mat.checkbox-theme(mat.define-light-theme($theme));
+@include mat.chips-theme(mat.define-light-theme($theme));
+@include mat.datepicker-theme(mat.define-light-theme($theme-alt-500));
+@include mat.dialog-theme(mat.define-light-theme($theme));
+@include mat.expansion-theme(mat.define-light-theme($theme));
+@include mat.fab-theme(mat.define-light-theme($theme));
+@include mat.form-field-theme(mat.define-light-theme($theme));
+@include mat.icon-theme(mat.define-light-theme($theme));
+@include mat.input-theme(mat.define-light-theme($theme));
+@include mat.list-theme(mat.define-light-theme($theme));
+@include mat.menu-theme(mat.define-light-theme($theme));
+@include mat.paginator-theme(mat.define-light-theme($theme));
+@include mat.progress-bar-theme(mat.define-light-theme($theme-alt-500));
+@include mat.radio-theme(mat.define-light-theme($theme));
+@include mat.ripple-theme(mat.define-light-theme($theme));
+@include mat.slide-toggle-theme(mat.define-light-theme($theme-slide-toggle));
+@include mat.slider-theme(mat.define-light-theme($theme-alt-500));
+@include mat.sort-theme(mat.define-light-theme($theme));
+@include mat.stepper-theme(mat.define-light-theme($theme));
+@include mat.table-theme(mat.define-light-theme($theme));
+@include mat.tabs-theme(mat.define-light-theme($theme-tabs));
+@include mat.tooltip-theme(mat.define-light-theme($theme));
+@include mat.option-theme(mat.define-light-theme($theme));
+
 // import to overwrite mat-component-specifics
+@import "material/mat-autocomplete";
 @import "material/mat-button";
 @import "material/mat-card";
 @import "material/mat-checkbox-radio";
@@ -41,7 +84,12 @@
 @import "material/mat-form";
 @import "material/mat-form-field";
 @import "material/mat-icon";
+@import "material/mat-list";
 @import "material/mat-paginator";
+@import "material/mat-progress-bar";
+@import "material/mat-slide-toggle";
+@import "material/mat-slider";
+@import "material/mat-select";
 @import "material/mat-stepper";
 @import "material/mat-table";
 @import "material/mat-tab";

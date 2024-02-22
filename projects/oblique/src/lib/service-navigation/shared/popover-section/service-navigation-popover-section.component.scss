@@ -30,7 +30,7 @@
 		.ob-popover-link {
 			width: 100%;
 			padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
-			border-bottom: 1px solid variables.$ob-gray-light;
+			border-bottom: 1px solid variables.$ob-gray-lighter;
 			color: variables.$ob-default;
 			text-decoration: none;
 			@include nav.ob-nav-hover(-1);

@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
-
-import {ObMockNavTreeFakeFocusDirective} from './mock-nav-tree-fake-focus.directive';
 import {ObMockNavTreeComponent} from './mock-nav-tree.component';
 
-export {ObMockNavTreeFakeFocusDirective} from './mock-nav-tree-fake-focus.directive';
 export {ObMockNavTreeComponent} from './mock-nav-tree.component';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @NgModule({
-	declarations: [ObMockNavTreeComponent, ObMockNavTreeFakeFocusDirective],
-	exports: [ObMockNavTreeComponent, ObMockNavTreeFakeFocusDirective]
+	imports: [ObMockNavTreeComponent],
+	exports: [ObMockNavTreeComponent]
 })
 export class ObMockNavTreeModule {}

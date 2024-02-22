@@ -14,7 +14,7 @@ import {ObMockSelectableDirective} from './_mocks/mock-selectable.directive';
 })
 class TestComponent {}
 
-describe('SelectableGroupDirective', () => {
+describe(ObSelectableGroupDirective.name, () => {
 	let directive: ObSelectableGroupDirective;
 	let component: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
@@ -23,7 +23,8 @@ describe('SelectableGroupDirective', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			declarations: [TestComponent, ObMockSelectableDirective, ObSelectableGroupDirective]
+			imports: [ObSelectableGroupDirective, ObMockSelectableDirective],
+			declarations: [TestComponent]
 		});
 	}));
 

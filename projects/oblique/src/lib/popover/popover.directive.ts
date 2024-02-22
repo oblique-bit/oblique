@@ -32,13 +32,15 @@ export const OBLIQUE_POPOVER_APPEND_TO_BODY = new InjectionToken<boolean>('Appen
 @Directive({
 	selector: '[obPopover]',
 	exportAs: 'obPopover',
-	host: {class: 'ob-popover'}
+	host: {class: 'ob-popover'},
+	standalone: true
 })
 export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	@Input('obPopover') target: TemplateRef<HTMLElement>;
 	@Input() placement: Placement = 'auto';
 	@Input() popperOptions: Options = {} as Options;
 	@Input() id: string;
+	@Input() panelContentId: string;
 	@Input() toggleHandle: ObEToggleType;
 	@Input() closeOnlyOnToggle: boolean;
 	@Input() appendToBody = false;
@@ -69,7 +71,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	ngOnInit(): void {
 		/* eslint-disable logical-assignment-operators */
 		this.id = this.id || `popover-${ObPopoverDirective.idCount++}`;
-		this.idContent = `${this.id}-content`;
+		this.idContent = this.panelContentId || `${this.id}-content`;
 		this.appendToBody = this.globalAppendToBody ?? this.appendToBody;
 		this.updateToggleMethod();
 		this.updateCloseOnlyOnToggle();
@@ -156,7 +158,12 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 
 	private buildPopover(): HTMLDivElement {
 		const popover = this.renderer.createElement('div');
-		this.viewContainerRef.createEmbeddedView<HTMLElement>(this.target).rootNodes.forEach(node => this.renderer.appendChild(popover, node));
+		const contentWrapper = this.renderer.createElement('div');
+		this.renderer.addClass(contentWrapper, 'ob-popover-content-wrapper');
+		this.viewContainerRef.createEmbeddedView<HTMLElement>(this.target).rootNodes.forEach(node => {
+			this.renderer.appendChild(contentWrapper, node);
+		});
+		this.renderer.appendChild(popover, contentWrapper);
 		this.renderer.addClass(popover, 'ob-popover-content');
 		this.renderer.setAttribute(popover, 'role', 'tooltip');
 		this.renderer.setAttribute(popover, 'id', this.idContent);

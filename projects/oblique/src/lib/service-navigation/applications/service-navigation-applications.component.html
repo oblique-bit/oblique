@@ -1,15 +1,16 @@
+<!-- eslint-disable @angular-eslint/template/prefer-ngsrc -->
 <button
 	*ngIf="isLoggedIn; else isLoggedOut"
 	type="button"
 	id="service-navigation-applications-button"
 	class="ob-widget"
 	mat-icon-button
-	obButton="secondary"
+	obButton="tertiary"
 	[matTooltip]="'i18n.oblique.service-navigation.applications.button.tooltip' | translate"
 	[obPopover]="popoverContent"
 	placement="bottom"
 >
-	<mat-icon svgIcon="apps"></mat-icon>
+	<mat-icon svgIcon="apps" />
 	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.button.label" | translate }}</span>
 </button>
 
@@ -20,10 +21,10 @@
 		id="service-navigation-applications-link"
 		class="ob-widget"
 		mat-icon-button
-		obButton="secondary"
+		obButton="tertiary"
 		[matTooltip]="'i18n.oblique.service-navigation.applications.link.tooltip' | translate"
 	>
-		<mat-icon svgIcon="apps"></mat-icon>
+		<mat-icon svgIcon="apps" />
 		<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.link.label" | translate }}</span>
 	</a>
 </ng-template>
@@ -34,7 +35,7 @@
 		header="i18n.oblique.service-navigation.applications.last-used.header"
 	>
 		<ul class="ob-applications" obContent>
-			<li *ngFor="let application of lastUsedApplications | obLimitArraySize : maxLastUsedApplications">
+			<li *ngFor="let application of lastUsedApplications | obLimitArraySize: maxLastUsedApplications">
 				<a class="ob-application" [href]="application.url" [obDisableLink]="application.status !== 'online'" [isExternalLink]="false">
 					<img
 						*ngIf="application.status !== 'online'"
@@ -47,7 +48,7 @@
 						class="ob-application-image"
 						[src]="application.image | obSafeImage"
 						[class.ob-offline]="application.status !== 'online'"
-						[alt]="application.status | ObServiceNavigationApplicationAlt | translate : { name: application.name }"
+						[alt]="application.status | ObServiceNavigationApplicationAlt | translate: { name: application.name }"
 					/>
 					<span class="ob-application-title">{{ application.name }}</span>
 				</a>
@@ -59,7 +60,7 @@
 		header="i18n.oblique.service-navigation.applications.favorite.header"
 	>
 		<ul class="ob-applications" obContent>
-			<li *ngFor="let application of favoriteApplications | obLimitArraySize : maxFavoriteApplications">
+			<li *ngFor="let application of favoriteApplications | obLimitArraySize: maxFavoriteApplications">
 				<a class="ob-application" [href]="application.url" [obDisableLink]="application.status !== 'online'" [isExternalLink]="false">
 					<img
 						*ngIf="application.status !== 'online'"
@@ -72,7 +73,7 @@
 						class="ob-application-image"
 						[src]="application.image | obSafeImage"
 						[class.ob-offline]="application.status !== 'online'"
-						[alt]="application.status | ObServiceNavigationApplicationAlt | translate : { name: application.name }"
+						[alt]="application.status | ObServiceNavigationApplicationAlt | translate: { name: application.name }"
 					/>
 					<span class="ob-application-title">{{ application.name }}</span>
 				</a>
@@ -82,5 +83,5 @@
 	<ob-service-navigation-popover-section
 		header="i18n.oblique.service-navigation.applications.links.header"
 		[links]="[{ url: applicationsUrl, label: 'i18n.oblique.service-navigation.applications.link.label', isInternalLink: true }]"
-	></ob-service-navigation-popover-section>
+	/>
 </ng-template>

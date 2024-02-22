@@ -1,73 +1,134 @@
 @use "../core/variables";
 @use "../core/mixins/typography";
+@use "./mixins/mat-chip";
 
-/**
- * @deprecated since Oblique 10. This SCSS file will no longer be distributed with Oblique 11.
- */
-.mat-chip-list-stacked {
+.mat-mdc-chip {
+	&.mat-mdc-chip-row,
+	&.mat-mdc-chip-option,
+	&.mat-mdc-standard-chip {
+		z-index: 1;
+	}
+
+	&.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
+		.mdc-evolution-chip__checkmark,
+		.mdc-evolution-chip__icon--trailing {
+			color: variables.$ob-white;
+			opacity: 1;
+		}
+	}
+}
+
+.mat-mdc-chip-listbox {
 	margin-top: variables.$ob-spacing-lg;
 }
 
-.mat-chip.mat-standard-chip {
-	@include typography.ob-caption();
-	background-color: variables.$ob-primary-100;
-	border-color: variables.$ob-primary-500;
-	color: variables.$ob-primary-500;
+.mat-mdc-form-field {
+	&.mat-mdc-form-field-type-mat-chip-grid {
+		.mat-mdc-text-field-wrapper.mdc-text-field,
+		.mat-mdc-text-field-wrapper.mdc-text-field .mdc-notched-outline {
+			max-height: none;
 
-	&.mat-chip-selected,
-	&.warning,
-	&.success,
-	&.info,
-	&.error {
+			.mat-mdc-chip {
+				margin-top: 8px;
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.mat-mdc-form-field-infix:has(.mat-mdc-chip-set) {
+	padding-bottom: 4px !important;
+	padding-top: 18px !important;
+}
+
+.mat-mdc-chip-option,
+.mat-mdc-chip-row {
+	&.mat-mdc-standard-chip {
+		@include typography.ob-caption();
+
+		@include mat-chip.ob-background-color(
+			variables.$ob-secondary-600,
+			variables.$ob-secondary-700,
+			variables.$ob-secondary-500,
+			variables.$ob-secondary-600,
+			none
+		);
 		color: variables.$ob-white;
 		border-color: inherit;
-	}
 
-	&.mat-chip-with-trailing-icon {
-		padding-right: 0;
+		&.mat-mdc-chip-with-trailing-icon {
+			padding-right: 0;
 
-		> .mat-icon {
-			font-size: variables.$ob-font-size-biggest;
-			margin: 0 variables.$ob-spacing-xs;
-			width: 1em;
-			height: 1em;
+			> .mat-icon {
+				font-size: variables.$ob-font-size-biggest;
+				margin: 0 variables.$ob-spacing-xs;
+				width: 1em;
+				height: 1em;
+			}
 		}
-	}
 
-	&.success {
-		&,
-		&.mat-chip-selected {
-			background-color: variables.$ob-success-500;
+		&.success {
+			@include mat-chip.ob-background-color(
+				variables.$ob-green-700,
+				variables.$ob-green-800,
+				variables.$ob-green-600,
+				variables.$ob-green-700,
+				none
+			);
 		}
-	}
 
-	&.info {
-		&,
-		&.mat-chip-selected {
-			background-color: variables.$ob-primary-500;
+		&.info {
+			@include mat-chip.ob-background-color(
+				variables.$ob-blue-800,
+				variables.$ob-blue-900,
+				variables.$ob-blue-600,
+				variables.$ob-blue-800,
+				none
+			);
 		}
-	}
 
-	&.warning {
-		&,
-		&.mat-chip-selected {
-			background-color: variables.$ob-warning-500;
+		&.warning {
+			@include mat-chip.ob-background-color(
+				variables.$ob-orange-600,
+				variables.$ob-orange-700,
+				variables.$ob-orange-500,
+				variables.$ob-orange-600,
+				none
+			);
 		}
-	}
 
-	&.error {
-		&,
-		&.mat-chip-selected {
-			background-color: variables.$ob-error-500;
+		&.error {
+			@include mat-chip.ob-background-color(
+				variables.$ob-red-800,
+				variables.$ob-red-900,
+				variables.$ob-red-700,
+				variables.$ob-red-800,
+				none
+			);
 		}
-	}
 
-	&.ob-selected {
 		&,
-		&.mat-chip-selected {
-			background-color: variables.$ob-primary-100;
-			border-color: variables.$ob-primary-500;
-			color: variables.$ob-primary-500;
+		&.success,
+		&.info,
+		&.error,
+		&.warning {
+			--mdc-chip-label-text-color: variables.$ob-white;
+
+			&.cdk-keyboard-focused {
+				outline: 2px solid variables.$ob-purple-500;
+			}
+
+			&.mat-mdc-chip-disabled {
+				background-color: variables.$ob-secondary-300;
+				opacity: 1;
+
+				.mdc-evolution-chip__text-label,
+				.mdc-evolution-chip__checkmark,
+				.mdc-evolution-chip__icon--trailing {
+					color: variables.$ob-white;
+					opacity: 1;
+				}
+			}
 		}
 	}
 }

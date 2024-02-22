@@ -49,11 +49,11 @@ export class ObSpinnerService {
 		this.events.next(event);
 	}
 
-	private increase(channel: string = ObSpinnerService.CHANNEL): number {
+	private increase(channel: string): number {
 		return (this.calls[channel] = (this.calls[channel] || 0) + 1);
 	}
 
-	private decrease(channel: string = ObSpinnerService.CHANNEL): number {
+	private decrease(channel: string): number {
 		return (this.calls[channel] = (this.calls[channel] || 1) - 1);
 	}
 }

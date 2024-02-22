@@ -6,12 +6,12 @@
 	justify-content: center;
 	align-items: center;
 	padding: variables.$ob-spacing-lg;
-	border: 1px dashed variables.$ob-primary-700;
+	border: 1px dashed variables.$ob-gray-darker;
 	border-radius: variables.$ob-border-radius-base;
-	background-color: variables.$ob-primary-50;
+	background-color: variables.$ob-extra-light;
 
 	.ob-progress-heading {
-		color: variables.$ob-primary-500;
+		color: variables.$ob-default;
 	}
 
 	.ob-file-progress {
@@ -26,6 +26,10 @@
 		width: 100%;
 
 		+ .ob-file-progress-bar {
+			margin-top: variables.$ob-spacing-sm;
+		}
+
+		+ .ob-file-progress-bar.negative-margin-top {
 			margin-top: -(variables.$ob-spacing-sm);
 		}
 	}
@@ -34,10 +38,21 @@
 		display: flex;
 		align-items: center;
 		height: variables.$ob-spacing-xl;
+
+		.mat-mdc-progress-bar {
+			&.completed {
+				.mdc-linear-progress__bar-inner {
+					border-color: variables.$ob-green-600;
+				}
+			}
+
+			&.mat-warn .mdc-linear-progress__buffer-bar {
+				background-color: variables.$ob-error;
+			}
+		}
 	}
 
 	.ob-button {
-		font-size: variables.$ob-font-size-smallest;
 		margin-left: variables.$ob-spacing-sm;
 	}
 }

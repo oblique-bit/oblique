@@ -1,16 +1,18 @@
 import {Directive, Input, OnInit} from '@angular/core';
 import {ValidationErrors} from '@angular/forms';
 import {ObSchemaValidationService} from './schema-validation.service';
+import {ObSchemaValidatorInstance} from './schema-validator.instance';
 
 @Directive({
 	selector: '[obSchemaValidation]',
 	exportAs: 'obSchemaValidation',
 	providers: [ObSchemaValidationService],
-	host: {class: 'ob-schema-validation'}
+	host: {class: 'ob-schema-validation'},
+	standalone: true
 })
 export class ObSchemaValidationDirective implements OnInit {
-	@Input('obSchemaValidation') private readonly schema: any;
-	private validator;
+	@Input('obSchemaValidation') schema: any;
+	private validator: ObSchemaValidatorInstance;
 
 	constructor(private readonly schemaValidationService: ObSchemaValidationService) {}
 

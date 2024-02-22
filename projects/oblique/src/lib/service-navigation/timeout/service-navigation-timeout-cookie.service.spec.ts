@@ -56,6 +56,8 @@ describe('ServiceNavigationTimeoutCookieService', () => {
 			it.each([
 				['localhost', fake127001Url],
 				['localhost', fakeLocalhostUrl],
+				['localhost', 'https://localhost:1234'],
+				['localhost', 'https://127.0.0.1:1234'],
 				['.admin.ch', eportalUrl]
 			])('should be "%s" when the current url is %s', (expectedResult, url) => {
 				fakeWindow.location.href = url;
@@ -75,6 +77,8 @@ describe('ServiceNavigationTimeoutCookieService', () => {
 			it.each([
 				[false, fakeLocalhostUrl],
 				[false, fake127001Url],
+				[false, 'https://localhost:1234'],
+				[false, 'https://127.0.0.1:1234'],
 				[true, eportalUrl]
 			])('should be %s when the current url is %s', (expectedSecure, url) => {
 				fakeWindow.location.href = url;

@@ -1,22 +1,14 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
-import {By} from '@angular/platform-browser';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
-import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {RouterTestingModule} from '@angular/router/testing';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {ObNavTreeItemModel} from './nav-tree-item.model';
 import {ObNavTreeComponent} from './nav-tree.component';
 
 @Component({
-	template: ` <ob-nav-tree
-		[items]="items"
-		[prefix]="prefix"
-		[variant]="variant"
-		[filterPattern]="filterPattern"
-		[labelFormatter]="labelFormatter"
-		[activateAncestors]="activateAncestors"
-	></ob-nav-tree>`
+	template: ` <ob-nav-tree [items]="items" [prefix]="prefix" [filterPattern]="filterPattern" [labelFormatter]="labelFormatter" />`
 })
 class TestComponent {
 	items = [
@@ -50,16 +42,14 @@ class TestComponent {
 	];
 
 	prefix = 'nav-tree-test';
-	variant = ObNavTreeComponent.DEFAULTS.VARIANT;
 	filterPattern: string;
-	public activateAncestors = true;
 
 	labelFormatter(label: string): string {
 		return `${label} - ${this.prefix}`;
 	}
 }
 
-describe('NavTreeComponent', () => {
+describe(ObNavTreeComponent.name, () => {
 	let testComponent: TestComponent;
 	let component: ObNavTreeComponent;
 	let fixture: ComponentFixture<TestComponent>;
@@ -67,8 +57,8 @@ describe('NavTreeComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			imports: [RouterTestingModule],
-			declarations: [TestComponent, ObNavTreeComponent, ObMockTranslatePipe],
+			imports: [ObNavTreeComponent, RouterTestingModule, TranslateModule],
+			declarations: [TestComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 			schemas: [NO_ERRORS_SCHEMA]
 		}).compileComponents();
@@ -103,21 +93,6 @@ describe('NavTreeComponent', () => {
 		const navItems = fixture.debugElement.queryAll(By.css('li'));
 		expect(navItems.length).toBe(13);
 	});
-
-	it('should add a variant CSS class to the navigation trees', () => {
-		testComponent.variant = 'ob-nav-custom';
-		fixture.detectChanges();
-
-		const navTrees = fixture.debugElement.queryAll(By.css('.ob-nav-tree.ob-nav-custom'));
-		expect(navTrees.length).toBe(4);
-	});
-
-	// fit('should activate one navigation item on click', () => {
-	// 	let firstNavItem = fixture.debugElement.query(By.css('a.nav-link'));
-	// 	firstNavItem.nativeElement.click();
-	//
-	// 	expect(firstNavItem.classes['active']).toBeDefined();
-	// });
 
 	it('should custom format item labels', () => {
 		const suffix = '[custom]';

@@ -69,7 +69,6 @@ export class ObServiceNavigationComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.headerControlsService.setUpRootUrls(this.environment, this.rootUrl);
-		this.headerControlsService.setHandleLogout(this.handleLogout);
 		this.headerControlsService.setPamsAppId(this.pamsAppId);
 	}
 

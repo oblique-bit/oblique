@@ -36,6 +36,9 @@ export {ObMockMasterLayoutConfig} from './mock-master-layout.config';
 export {ObMockMasterLayoutService} from './mock-master-layout.service';
 export {ObMockAriaMenuButtonDirective} from './mock-aria-menu-button.directive';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @NgModule({
 	declarations: [
 		ObMockAriaMenuButtonDirective,

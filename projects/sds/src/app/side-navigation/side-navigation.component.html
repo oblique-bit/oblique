@@ -1,0 +1,17 @@
+<app-image
+	[alt]="logo.alt"
+	[idPrefix]="componentId"
+	[height]="logo.height"
+	[width]="logo.width"
+	[ngSrc]="logo.ngSrc"
+	[id]="componentId | id: ['logo']"
+/>
+<app-version [id]="componentId | id: ['version']" [idPrefix]="componentId" (versionChanged)="updateVersion($event)" />
+<input type="search" [id]="componentId | id: ['search-input']" [formControl]="search" />
+<app-accordion-links
+	#accordionLinks
+	[accordions]="(filteredAccordions$ | async) ?? []"
+	[idPrefix]="componentId"
+	[selectedSlug]="(selectedSlug$ | async) ?? ''"
+	[id]="componentId | id: ['accordion-links']"
+/>

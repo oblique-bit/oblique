@@ -41,7 +41,7 @@ export class ObContactToLinksPipe implements PipeTransform {
 							.filter(character => character !== ' ')
 							.join(', ')
 					}
-			  }
+				}
 			: undefined;
 	}
 }

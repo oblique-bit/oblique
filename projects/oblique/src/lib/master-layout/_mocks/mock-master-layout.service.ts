@@ -4,6 +4,9 @@ import {ObMasterLayoutFooterService} from '../master-layout-footer/master-layout
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {ObMasterLayoutNavigationService} from '../master-layout-navigation/master-layout-navigation.service';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @Injectable()
 export class ObMockMasterLayoutService {
 	constructor(

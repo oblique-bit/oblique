@@ -1,9 +1,9 @@
 import {MatIconModule} from '@angular/material/icon';
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
@@ -19,12 +19,14 @@ import {ObMasterLayoutNavigationComponent} from './master-layout-navigation/mast
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/master-layout-navigation-item.directive';
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 import {ObOutlineDirective} from './outline.directive';
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 import {ObIconModule} from '../icon/icon.module';
 import {ObButtonModule} from '../button/button.module';
 import {ObServiceNavigationModule} from '../service-navigation/service-navigation.module';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
+import {ObMasterLayoutNavigationSubMenuItemComponent} from './master-layout-navigation/sub-menu-item/master-layout-navigation-sub-menu-item.component';
+import {ObMasterLayoutNavigationGoToChildrenComponent} from './master-layout-navigation/go-to-children/master-layout-navigation-go-to-children.component';
 
 export {ObMasterLayoutComponent} from './master-layout/master-layout.component';
 export {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
@@ -52,9 +54,11 @@ export {ObOutlineDirective} from './outline.directive';
 		MatButtonModule,
 		MatIconModule,
 		MatTooltipModule,
+		NgOptimizedImage,
 		ObButtonModule,
 		ObExternalLinkModule,
 		ObIconModule,
+		ObMasterLayoutNavigationGoToChildrenComponent,
 		ObNotificationModule,
 		ObOffCanvasModule,
 		ObScrollingModule,
@@ -73,6 +77,7 @@ export {ObOutlineDirective} from './outline.directive';
 		ObMasterLayoutNavigationComponent,
 		ObMasterLayoutNavigationItemDirective,
 		ObMasterLayoutNavigationMenuDirective,
+		ObMasterLayoutNavigationSubMenuItemComponent,
 		ObMasterLayoutNavigationToggleDirective,
 		ObOutlineDirective
 	],
@@ -82,7 +87,8 @@ export {ObOutlineDirective} from './outline.directive';
 		ObMasterLayoutFooterComponent,
 		ObMasterLayoutHeaderComponent,
 		ObMasterLayoutNavigationComponent,
-		ObOutlineDirective
+		ObOutlineDirective,
+		...obliqueExports
 	]
 })
 export class ObMasterLayoutModule {}

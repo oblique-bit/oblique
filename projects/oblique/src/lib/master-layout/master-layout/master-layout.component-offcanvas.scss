@@ -39,15 +39,6 @@
 		transition-duration: variables.$ob-duration-default;
 		transition-timing-function: ease;
 
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			color: variables.$ob-default;
-		}
-
 		@include layout.ob-media-breakpoint-up(md) {
 			width: variables.$ob-off-canvas-sidebar-width;
 		}
@@ -74,11 +65,21 @@
 			margin: 0;
 		}
 
-		.ob-close {
+		.ob-close.ob-button {
 			@include button.ob-link-btn();
 			font-size: variables.$ob-font-size-biggest;
 			padding: 0;
-			color: variables.$ob-gray-dark;
+			color: variables.$ob-default;
+
+			&.mat-mdc-button-base.ob-button {
+				&:focus {
+					background-color: transparent;
+				}
+
+				&:hover {
+					background-color: variables.$ob-gray-lighter;
+				}
+			}
 		}
 	}
 

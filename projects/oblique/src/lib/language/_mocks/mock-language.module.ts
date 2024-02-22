@@ -1,12 +1,13 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {ObMockDatePipe} from './mock-date.pipe';
 
 export {ObMockDatePipe} from './mock-date.pipe';
 
+/**
+ *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ */
 @NgModule({
-	declarations: [ObMockDatePipe],
-	exports: [ObMockDatePipe],
-	imports: [CommonModule]
+	imports: [ObMockDatePipe],
+	exports: [ObMockDatePipe]
 })
 export class ObMockLanguageModule {}

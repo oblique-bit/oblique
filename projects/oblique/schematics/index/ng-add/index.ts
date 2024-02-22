@@ -1,17 +1,22 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {addDependency, checkPrecondition, getPreconditionVersion} from './ng-add-utils';
 import {ObIOptionsSchema} from './ng-add.model';
-import {createSafeRule, infoMigration, infoText, installDependencies, isSuccessful, success, warn} from '../utils';
+import {checkForStandalone, createSafeRule, infoMigration, infoText, installDependencies, isSuccessful, success, warn} from '../utils';
 import {obliqueFeatures} from './rules/obliqueFeatures';
 import {toolchain} from './rules/toolchain';
 import {oblique} from './rules/oblique';
 
 export function addOblique(_options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
-		chain([preconditions(), oblique(_options), obliqueFeatures(_options), toolchain(_options), installDependencies(), finalize(_options)])(
-			tree,
-			_context
-		);
+		chain([
+			checkForStandalone(),
+			preconditions(),
+			oblique(_options),
+			obliqueFeatures(_options),
+			toolchain(_options),
+			installDependencies(),
+			finalize(_options)
+		])(tree, _context);
 }
 
 function preconditions(): Rule {
@@ -50,6 +55,9 @@ function finalize(options: ObIOptionsSchema): Rule {
 			success(_context, 'Oblique has been successfully integrated. Please review the changes.');
 		} else {
 			warn(_context, 'Oblique has only been partially integrated. Please check for warnings in the console and review the changes.');
+		}
+		if (options.husky) {
+			infoText(_context, 'Please run "npm prepare" to finalize Husky installation.');
 		}
 
 		return tree;

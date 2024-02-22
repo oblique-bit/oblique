@@ -1,0 +1,12 @@
+@use "../../core/variables";
+
+@mixin ob-tabs-label-color {
+	color: variables.$ob-black;
+}
+
+@mixin ob-tabs-bottom-border-red {
+	border-top: solid 2px variables.$ob-red-600;
+	border-bottom: solid 0 transparent;
+	border-left: solid 0 transparent;
+	border-right: solid 0 transparent;
+}

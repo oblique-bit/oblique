@@ -42,9 +42,9 @@ export class ObServiceNavigationService {
 	private readonly timeoutService = inject(ObServiceNavigationTimeoutService);
 
 	setUpRootUrls(environment: ObEPamsEnvironment, rootUrl?: string): void {
-		this.timeoutService.setUpEportalUrl(environment);
 		// can't use !environment as ObEPamsEnvironment.PROD is an empty string
 		if (environment !== null && environment !== undefined) {
+			this.timeoutService.initialize(environment);
 			this.rootUrl$.next(rootUrl ?? `https://pams-api.eportal${environment}.admin.ch/`);
 			this.avatarRootUrl$.next(`https://eportal${environment}.admin.ch/assets/avatars/avatar_`);
 			this.rootUrl$.complete();
@@ -60,7 +60,7 @@ export class ObServiceNavigationService {
 		this.pamsAppId$.next(appId);
 	}
 
-	setHandleLogout(handleLogout = true): void {
+	setHandleLogout(handleLogout: boolean): void {
 		this.redirectorService.handleLogout = handleLogout;
 	}
 

@@ -2,8 +2,8 @@ import {TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconHarness} from '@angular/material/icon/testing';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
-import {MatLegacyTooltipHarness as MatTooltipHarness} from '@angular/material/legacy-tooltip/testing';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatBadgeHarness} from '@angular/material/badge/testing';
 import {MatIconModule} from '@angular/material/icon';
@@ -22,8 +22,8 @@ describe('ObServiceNavigationMessageComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MatTooltipModule, ObTranslateParamsModule, MatIconModule, MatBadgeModule],
-			declarations: [ObServiceNavigationMessageComponent, ObMockTranslatePipe],
+			imports: [ObMockTranslatePipe, MatTooltipModule, ObTranslateParamsModule, MatIconModule, MatBadgeModule],
+			declarations: [ObServiceNavigationMessageComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 	});
@@ -181,7 +181,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 		});
 
 		it.each([
-			{attribute: 'obButton', value: 'secondary'},
+			{attribute: 'obButton', value: 'tertiary'},
 			{attribute: 'mat-icon-button', value: ''}
 		])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
 			expect(await link.getAttribute(attribute)).toBe(value);

@@ -1,0 +1,103 @@
+<div class="container">
+	<h3>Disabled</h3>
+	<mat-form-field>
+		<mat-label>Disabled Input</mat-label>
+		<input disabled type="text" matInput placeholder="Disabled Input" />
+	</mat-form-field>
+	<mat-checkbox disabled="true">Default Checkbox</mat-checkbox>
+	<mat-radio-group disabled>
+		<mat-radio-button value="1">Default Radio Button</mat-radio-button>
+	</mat-radio-group>
+	<mat-form-field>
+		<mat-label>Disabled Select</mat-label>
+		<mat-select disabled>
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+			<mat-option [value]="3">Three</mat-option>
+			<mat-option [value]="4">Four</mat-option>
+			<mat-option [value]="5">Five</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Disabled Multiselect</mat-label>
+		<mat-select disabled multiple>
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+			<mat-option [value]="3">Three</mat-option>
+			<mat-option [value]="4">Four</mat-option>
+			<mat-option [value]="5">Five</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Disabled Textarea</mat-label>
+		<textarea disabled matInput placeholder="Disabled Textarea"></textarea>
+	</mat-form-field>
+</div>
+<div class="container">
+	<h3>Hint</h3>
+	<mat-form-field>
+		<mat-label>Input with Hint</mat-label>
+		<input type="text" matInput placeholder="Input with Hint" />
+		<mat-hint>This is a hint</mat-hint>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Select with Hint</mat-label>
+		<mat-select>
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+			<mat-option [value]="3">Three</mat-option>
+			<mat-option [value]="4">Four</mat-option>
+			<mat-option [value]="5">Five</mat-option>
+		</mat-select>
+		<mat-hint>This is a hint</mat-hint>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Multiselect with Hint</mat-label>
+		<mat-select multiple>
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+			<mat-option [value]="3">Three</mat-option>
+			<mat-option [value]="4">Four</mat-option>
+			<mat-option [value]="5">Five</mat-option>
+		</mat-select>
+		<mat-hint>This is a hint of the multiselect</mat-hint>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Textarea with Hint</mat-label>
+		<textarea matInput placeholder="Textarea with Hint"></textarea>
+		<mat-hint>This is a hint</mat-hint>
+	</mat-form-field>
+</div>
+<div class="container">
+	<h3>Required</h3>
+	<mat-form-field>
+		<mat-label>Required Input</mat-label>
+		<input required type="text" matInput placeholder="Required Input" ngModel />
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Required Select</mat-label>
+		<mat-select required ngModel>
+			<mat-option [value]="" />
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+			<mat-option [value]="3">Three</mat-option>
+			<mat-option [value]="4">Four</mat-option>
+			<mat-option [value]="5">Five</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Required Multiselect</mat-label>
+		<mat-select required ngModel multiple>
+			<mat-option [value]="1">One</mat-option>
+			<mat-option [value]="2">Two</mat-option>
+			<mat-option [value]="3">Three</mat-option>
+			<mat-option [value]="4">Four</mat-option>
+			<mat-option [value]="5">Five</mat-option>
+		</mat-select>
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Required Textarea</mat-label>
+		<textarea required matInput placeholder="Required Textarea" ngModel></textarea>
+	</mat-form-field>
+</div>

@@ -1,0 +1,7 @@
+<ob-autocomplete
+	[autocompleteOptions]="optionList"
+	[optionIconPosition]="'start'"
+	[(ngModel)]="selectedOption"
+	(selectedOptionChange)="showSelection($event)"
+/>
+<p>selectedOption: {{ selectedOption }}</p>

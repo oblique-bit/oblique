@@ -32,7 +32,7 @@
 		position: relative; // so that the close button is correctly positioned
 		width: 65vw;
 		margin: 5px; // Reserve spacing for box shadow!
-		@include shadow.ob-drop-shadow();
+		@include shadow.ob-shadow-default();
 
 		@include layout.ob-media-breakpoint-up(md) {
 			width: 380px;
@@ -99,19 +99,19 @@
 	}
 
 	.ob-alert-info .ob-occurrence {
-		background-color: variables.$ob-dark;
+		background-color: variables.$ob-blue-800;
 	}
 
 	.ob-alert-success .ob-occurrence {
-		background-color: variables.$ob-success-dark;
+		background-color: variables.$ob-success;
 	}
 
 	.ob-alert-warning .ob-occurrence {
-		background-color: variables.$ob-warning-dark;
+		background-color: variables.$ob-warning;
 	}
 
 	.ob-alert-error .ob-occurrence {
-		background-color: variables.$ob-error-dark;
+		background-color: variables.$ob-error;
 	}
 
 	@keyframes notification-fade-out {

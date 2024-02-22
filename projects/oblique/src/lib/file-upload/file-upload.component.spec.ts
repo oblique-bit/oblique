@@ -1,5 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {ObMockTranslateService} from '../oblique-testing.module';
 import {ObFileUploadComponent} from './file-upload.component';
 import {ObEUploadEventType, ObIUploadEvent} from './file-upload.model';
 
@@ -16,8 +18,9 @@ describe('ObFileUploadComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [ObFileUploadComponent],
-			schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
+			imports: [ObFileUploadComponent, TranslateModule],
+			schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 	});
 
@@ -98,6 +101,30 @@ describe('ObFileUploadComponent', () => {
 
 		describe('uploaded event', () => {
 			const uploadedEvent = {type: ObEUploadEventType.UPLOADED, files};
+			let event: ObIUploadEvent;
+			beforeEach(done => {
+				component.uploadEvent.subscribe(evt => {
+					event = evt;
+					done();
+				});
+				component.processEvent(uploadedEvent);
+			});
+
+			it('should be forwarded', () => {
+				expect(event).toEqual(uploadedEvent);
+			});
+
+			it('should not toggle showLoadingBox', () => {
+				expect(component.showLoadingBox).toBe(false);
+			});
+
+			it('should not populate files property', () => {
+				expect(component.files).toBeUndefined();
+			});
+		});
+
+		describe('canceled event', () => {
+			const uploadedEvent = {type: ObEUploadEventType.CANCELED, files};
 			let event: ObIUploadEvent;
 			beforeEach(done => {
 				component.uploadEvent.subscribe(evt => {

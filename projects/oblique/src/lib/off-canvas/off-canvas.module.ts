@@ -1,10 +1,9 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 
 import {ObOffCanvasToggleDirective} from './off-canvas-toggle.directive';
 import {ObOffCanvasContainerDirective} from './off-canvas-container.directive';
 import {ObOffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 
 export {ObOffCanvasToggleDirective} from './off-canvas-toggle.directive';
 export {ObOffCanvasService} from './off-canvas.service';
@@ -12,9 +11,8 @@ export {ObOffCanvasContainerDirective} from './off-canvas-container.directive';
 export {ObOffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
 
 @NgModule({
-	imports: [CommonModule],
-	declarations: [ObOffCanvasBackdropDirective, ObOffCanvasContainerDirective, ObOffCanvasToggleDirective],
+	imports: [ObOffCanvasBackdropDirective, ObOffCanvasContainerDirective, ObOffCanvasToggleDirective],
 	providers: obliqueProviders(),
-	exports: [ObOffCanvasBackdropDirective, ObOffCanvasContainerDirective, ObOffCanvasToggleDirective]
+	exports: [ObOffCanvasBackdropDirective, ObOffCanvasContainerDirective, ObOffCanvasToggleDirective, ...obliqueExports]
 })
 export class ObOffCanvasModule {}

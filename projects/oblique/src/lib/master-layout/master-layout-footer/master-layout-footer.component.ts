@@ -19,7 +19,10 @@ export class ObMasterLayoutFooterComponent implements OnDestroy {
 	@HostBinding('class.ob-logo-on-scroll') hasLogoOnScroll = this.config.footer.hasLogoOnScroll;
 	private readonly unsubscribe = new Subject<void>();
 
-	constructor(private readonly masterLayout: ObMasterLayoutService, private readonly config: ObMasterLayoutConfig) {
+	constructor(
+		private readonly masterLayout: ObMasterLayoutService,
+		private readonly config: ObMasterLayoutConfig
+	) {
 		this.customChange();
 		this.hasLogoChange();
 	}

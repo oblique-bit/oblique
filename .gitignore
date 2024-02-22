@@ -6,6 +6,7 @@
 /projects/oblique/styles
 /tmp
 __ngcc_entry_points__.json
+/projects/sds/schematics/**/*.js
 
 # dependencies
 /node_modules
@@ -52,3 +53,6 @@ testem.log
 Thumbs.db
 /nvm.env
 /before.env
+
+#nx
+.nx/cache/*

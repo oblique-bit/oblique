@@ -1,9 +1,8 @@
 import {TestBed, inject} from '@angular/core/testing';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
-import {ObPopUpService} from '../pop-up/pop-up.service';
+import {WINDOW} from '../utilities';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {ObMockPopUpService} from '../pop-up/_mocks/mock-pop-up.module';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {Subject} from 'rxjs';
@@ -11,7 +10,7 @@ import {Subject} from 'rxjs';
 describe('UnsavedChangesService', () => {
 	let unsavedChangesService: ObUnsavedChangesService;
 	let globalEventsService: ObGlobalEventsService;
-	let popUpService: ObPopUpService;
+
 	const unload = new Subject();
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -19,10 +18,9 @@ describe('UnsavedChangesService', () => {
 				ObUnsavedChangesService,
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: ObGlobalEventsService, useValue: {beforeUnload$: unload.asObservable()}},
-				{provide: ObPopUpService, useClass: ObMockPopUpService}
+				{provide: WINDOW, useValue: window}
 			]
 		});
-		popUpService = TestBed.inject(ObPopUpService);
 		globalEventsService = TestBed.inject(ObGlobalEventsService);
 	});
 
@@ -76,9 +74,9 @@ describe('UnsavedChangesService', () => {
 	describe('canDeactivate()', () => {
 		describe('with no watched form', () => {
 			it("shouldn't call window.confirm", () => {
-				jest.spyOn(popUpService, 'confirm');
+				jest.spyOn(window, 'confirm');
 				unsavedChangesService.canDeactivate();
-				expect(popUpService.confirm).not.toHaveBeenCalled();
+				expect(window.confirm).not.toHaveBeenCalled();
 			});
 
 			it('should return true', () => {
@@ -93,9 +91,9 @@ describe('UnsavedChangesService', () => {
 			});
 
 			it("shouldn't call window.confirm", () => {
-				jest.spyOn(popUpService, 'confirm');
+				jest.spyOn(window, 'confirm');
 				unsavedChangesService.canDeactivate();
-				expect(popUpService.confirm).not.toHaveBeenCalled();
+				expect(window.confirm).not.toHaveBeenCalled();
 			});
 
 			it('should return true', () => {
@@ -110,18 +108,18 @@ describe('UnsavedChangesService', () => {
 			});
 
 			it('should call window.confirm', () => {
-				jest.spyOn(popUpService, 'confirm');
+				jest.spyOn(window, 'confirm');
 				unsavedChangesService.canDeactivate();
-				expect(popUpService.confirm).toHaveBeenCalled();
+				expect(window.confirm).toHaveBeenCalled();
 			});
 
 			it('should return false, if not confirmed', () => {
-				jest.spyOn(popUpService, 'confirm').mockImplementation(() => false);
+				jest.spyOn(window, 'confirm').mockImplementation(() => false);
 				expect(unsavedChangesService.canDeactivate()).toBeFalsy();
 			});
 
 			it('should return true, if confirmed', () => {
-				jest.spyOn(popUpService, 'confirm').mockImplementation(() => true);
+				jest.spyOn(window, 'confirm').mockImplementation(() => true);
 				expect(unsavedChangesService.canDeactivate()).toBeTruthy();
 			});
 		});
@@ -132,7 +130,7 @@ describe('UnsavedChangesService', () => {
 			});
 
 			it('should return true, if confirmed', () => {
-				jest.spyOn(popUpService, 'confirm').mockImplementation(() => true);
+				jest.spyOn(window, 'confirm').mockImplementation(() => true);
 				expect(unsavedChangesService.canDeactivate()).toBeTruthy();
 			});
 		});
@@ -158,7 +156,7 @@ describe('UnsavedChangesService', () => {
 			});
 
 			it('should NOT ignore changes', () => {
-				jest.spyOn(popUpService, 'confirm').mockImplementation(() => false);
+				jest.spyOn(window, 'confirm').mockImplementation(() => false);
 				expect(unsavedChangesService.ignoreChanges()).toBe(false);
 			});
 		});

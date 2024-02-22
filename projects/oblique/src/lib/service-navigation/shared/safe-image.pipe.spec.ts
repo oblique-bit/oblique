@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {BrowserModule, DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {ObSafeImagePipe} from './safe-image.pipe';
 
 describe('ObSafeImagePipe', () => {
@@ -9,7 +9,6 @@ describe('ObSafeImagePipe', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [BrowserModule],
 			providers: [
 				{provide: DomSanitizer, useValue: {bypassSecurityTrustResourceUrl: jest.fn().mockReturnValue(mockBypassSecurityTrustResourceUrl)}}
 			]

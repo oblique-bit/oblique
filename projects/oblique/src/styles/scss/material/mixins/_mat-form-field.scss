@@ -1,36 +1,67 @@
+@use "sass:selector";
 @use "../variables";
 
 @mixin ob-form-field-size($padding-top, $padding-bottom, $icon-size) {
 	$label-padding: variables.$ob-form-field-label-height + $padding-top;
 
-	.mat-form-field-infix {
+	.mat-mdc-form-field-infix {
 		padding: $padding-top 0 $padding-bottom 0;
 		border-top-width: variables.$ob-form-field-label-height;
-	}
 
-	.mat-form-field-label-wrapper {
-		top: -(variables.$ob-form-field-label-height);
-		padding-top: $label-padding;
-	}
-
-	.mat-form-field-label {
-		top: $label-padding;
-	}
-
-	&.mat-form-field-can-float {
-		&.mat-form-field-should-float,
-		.mat-input-server:focus + .mat-form-field-label-wrapper {
-			.mat-form-field-label {
-				transform: translateY(-$label-padding) scale(0.75);
-			}
+		@at-root #{selector.append(".ob-form-field-textarea", &)} {
+			padding-top: 13px; // empiric value
 		}
 	}
 
-	.mat-form-field-suffix .mat-datepicker-toggle .mdc-icon-button {
-		height: $icon-size;
-		width: $icon-size;
-		display: inline-flex;
-		align-items: center;
-		font-size: inherit;
+	.mdc-notched-outline__notch {
+		top: -(variables.$ob-form-field-label-height);
+		padding-top: $label-padding;
 	}
+}
+
+@mixin ob-form-field-colors($color, $background-color) {
+	.mdc-notched-outline,
+	.mdc-floating-label.mdc-floating-label--float-above,
+	&:not(.ng-untouched, .ng-pristine) .mat-mdc-form-field-required-marker,
+	.mat-mdc-form-field-error,
+	.mdc-text-field--invalid .mdc-floating-label mat-label,
+	.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+		color: $color;
+	}
+
+	.mat-mdc-text-field-wrapper.mdc-text-field {
+		[class*="mdc-notched-outline__"] {
+			border-color: $color;
+		}
+	}
+
+	.mdc-floating-label mat-label,
+	.mdc-floating-label .mat-mdc-form-field-required-marker,
+	.mdc-notched-outline {
+		background-color: $background-color;
+	}
+
+	.mat-mdc-input-element {
+		caret-color: $color;
+	}
+}
+
+@mixin ob-focused-form-field-colors($color, $background-color) {
+	&.mat-focused {
+		@include ob-form-field-colors($color, $background-color);
+	}
+}
+
+$ob-standard-max-height: 40px;
+
+@mixin standard-max-height() {
+	max-height: $ob-standard-max-height;
+}
+
+@mixin sm-max-height() {
+	max-height: calc($ob-standard-max-height - 0.45em);
+}
+
+@mixin lg-max-height() {
+	max-height: calc($ob-standard-max-height + 1em);
 }

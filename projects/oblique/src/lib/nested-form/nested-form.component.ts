@@ -18,7 +18,8 @@ import {ObParentFormDirective} from './parent-form.directive';
 		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObNestedFormComponent},
 		{provide: NG_VALIDATORS, multi: true, useExisting: ObNestedFormComponent}
 	],
-	host: {class: 'ob-nested-form'}
+	host: {class: 'ob-nested-form'},
+	standalone: true
 })
 export class ObNestedFormComponent implements ControlValueAccessor, Validator, AfterViewInit {
 	@Input() nestedForm: UntypedFormGroup;

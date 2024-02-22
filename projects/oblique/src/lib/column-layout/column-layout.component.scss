@@ -81,18 +81,16 @@
 			font-size: 17px;
 			text-align: center;
 			padding: 0;
-			border: 1px solid variables.$ob-gray-light;
+			border: 1px solid variables.$ob-gray-lighter;
 			background-color: variables.$ob-white;
 			transition: all variables.$ob-duration-default;
-			color: variables.$ob-gray-dark;
+			color: variables.$ob-default;
 			align-items: center;
 			justify-content: center;
 
 			&:hover,
 			&:focus {
 				transform: scale(1.25);
-				color: variables.$ob-default;
-				border-color: variables.$ob-gray;
 				cursor: pointer;
 			}
 
@@ -202,8 +200,7 @@
 			height: 100%;
 
 			.ob-column-content {
-				overflow-y: auto;
-				overflow-x: hidden;
+				overflow: hidden auto;
 			}
 		}
 	}

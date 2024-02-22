@@ -201,11 +201,8 @@ function addHusky(husky: boolean): Rule {
 		if (husky) {
 			infoMigration(_context, 'Toolchain: Adding git hooks for code auto-formatting');
 			addDevDependency(tree, 'husky');
-			addRootProperty(tree, 'husky', {
-				hooks: {
-					'pre-push': 'npm run format'
-				}
-			});
+			addScript(tree, 'prepare', 'husky');
+			tree.create('.husky/pre-commit', 'npm run format');
 		}
 		return tree;
 	});

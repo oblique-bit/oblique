@@ -1,31 +1,32 @@
 @use "palette";
 @forward "palette";
 
-$ob-gray-extra-light: palette.$ob-gray-100 !default;
-$ob-gray-lighter: palette.$ob-gray-200 !default;
-$ob-gray-light: palette.$ob-gray-300 !default;
-$ob-gray: palette.$ob-gray-400 !default;
-$ob-gray-dark: palette.$ob-gray-500 !default;
-$ob-gray-darker: palette.$ob-gray-700 !default;
-$ob-default: palette.$ob-gray-800 !default;
-$ob-accent: palette.$ob-venetian-red !default;
-$ob-extra-light: palette.$ob-primary-50 !default;
-$ob-light: palette.$ob-primary-100 !default;
-$ob-primary: palette.$ob-primary-500 !default;
-$ob-dark: palette.$ob-primary-700 !default;
-$ob-success-light: palette.$ob-success-100 !default;
-$ob-success: palette.$ob-success-800 !default;
-$ob-success-dark: palette.$ob-success-900 !default;
-$ob-warning-light: palette.$ob-warning-50 !default;
-$ob-warning: palette.$ob-warning-500 !default;
-$ob-warning-dark: palette.$ob-warning-700 !default;
-$ob-error-light: palette.$ob-error-100 !default;
-$ob-error: palette.$ob-error-500 !default;
-$ob-error-dark: palette.$ob-error-700 !default;
+$ob-gray-extra-light: palette.$ob-secondary-50 !default;
+$ob-gray-lighter: palette.$ob-secondary-100 !default;
+$ob-gray-light: palette.$ob-secondary-200 !default;
+$ob-gray: palette.$ob-secondary-300 !default;
+$ob-gray-dark: palette.$ob-secondary-500 !default;
+$ob-gray-darker: palette.$ob-secondary-600 !default;
+$ob-default: palette.$ob-secondary-800 !default;
+$ob-accent: palette.$ob-red-500 !default;
+$ob-extra-light: palette.$ob-secondary-50 !default;
+$ob-light: palette.$ob-secondary-200 !default;
+$ob-primary: palette.$ob-secondary-500 !default;
+$ob-dark: palette.$ob-secondary-700 !default;
+$ob-success-light: palette.$ob-green-100 !default;
+$ob-success: palette.$ob-green-700 !default;
+$ob-success-dark: palette.$ob-green-900 !default;
+$ob-warning-light: palette.$ob-orange-100 !default;
+$ob-warning: palette.$ob-orange-600 !default;
+$ob-warning-dark: palette.$ob-orange-700 !default;
+$ob-error-light: palette.$ob-red-100 !default;
+$ob-error: palette.$ob-red-800 !default;
+$ob-error-dark: palette.$ob-red-900 !default;
 $ob-duration-default: 0.6s !default;
 $ob-duration-fast: 0.25s !default;
 $ob-smaller: 0.875 !default;
 $ob-smallest: 0.8 !default;
+$ob-big: 1.1 !default;
 $ob-bigger: 1.25 !default;
 $ob-biggest: 1.65 !default;
 $ob-font-size-base: 1rem !default;
@@ -36,12 +37,16 @@ $ob-font-size-xs: $ob-font-size-base * $ob-smallest !default;
 $ob-font-size-normal: 1em !default;
 $ob-font-size-biggest: $ob-font-size-normal * $ob-biggest !default;
 $ob-font-size-bigger: $ob-font-size-normal * $ob-bigger !default;
+$ob-font-size-big: $ob-font-size-normal * $ob-big !default;
 $ob-font-size-smaller: $ob-font-size-normal * $ob-smaller !default;
 $ob-font-size-smallest: $ob-font-size-normal * $ob-smallest !default;
+$ob-font-size-subheading-1: $ob-font-size-base * 0.9375 !default;
 $ob-line-height: 1.5 !default;
+$ob-spacing-xxl: 48px !default;
 $ob-spacing-xl: 32px !default;
 $ob-spacing-lg: 24px !default;
 $ob-spacing-default: 16px !default;
+$ob-spacing-md: 12px !default;
 $ob-spacing-sm: 8px !default;
 $ob-spacing-xs: 4px !default;
 $ob-body-width: 248px !default;
@@ -51,14 +56,21 @@ $ob-z-index-layout: 101 !default;
 $ob-z-index-widget: 200 !default;
 $ob-z-index-overlay: 1005 !default; // because material overlay is 1000
 $ob-z-index-overlay-top: 1010 !default;
-$ob-logo-width: 216px !default;
-$ob-logo-height: 55px !default;
+$ob-logo-width: 218px !default;
+$ob-logo-height: 53px !default;
 $ob-logo-height-collapsed: 34px !default;
 $ob-logo-width-collapsed: 30px !default;
 $ob-line-width: 5px !default;
+$ob-line-width-sm: 0.6 * $ob-line-width !default;
+$ob-line-width-xs: 0.2 * $ob-line-width !default;
 $ob-border-radius-base: 4px !default;
 $ob-border-radius-button: 2px !default;
+$ob-button-height: 36px !default;
 $ob-navigation-scrollable-padding: 2 * $ob-spacing-default !default;
+$ob-navigation-sub-menu-max-width-md: 400px !default;
+$ob-navigation-sub-menu-max-width-lg: 560px !default;
+$ob-navigation-sub-menu-max-width-xl: 860px !default;
+$ob-pop-over-max-height: 50vh !default;
 $ob-column-width: 20% !default;
 $ob-off-canvas-sidebar-width: 40% !default;
 $ob-off-canvas-sidebar-collapsed-width: 80% !default;
@@ -66,6 +78,13 @@ $ob-alert-symbol-width: 54px !default;
 $ob-column-layout-toggle-height: 60px !default;
 $ob-column-layout-toggle-width: $ob-spacing-default !default;
 $ob-column-layout-toggle-radius: $ob-spacing-default !default;
+$ob-error-hint-font-size: 12px !default;
+$ob-error-hint-font-weight: 400 !default;
+$ob-label-font-weight: 400 !default;
+$ob-slide-toggle-border-radius: 12px !default;
+$ob-slide-toggle-handle-margin: 2px !default;
+$ob-slide-toggle-height: 24px !default;
+$ob-slide-toggle-width: 44px !default;
 $ob-sticky-element-height: 64px !default;
 $ob-sticky-element-height-sm: 45px !default;
 $ob-sticky-element-height-lg: 98px !default;
@@ -83,7 +102,15 @@ $ob-grid-breakpoints: (
 	lg: 1240px,
 	xl: 1440px,
 ) !default;
-$ob-font: "Frutiger Neue", Roboto, Arial, system-ui, -apple-system, BlinkMacSystemFont, sans-serif !default;
+$ob-font:
+	"Frutiger Neue",
+	Roboto,
+	Arial,
+	system-ui,
+	-apple-system,
+	BlinkMacSystemFont,
+	sans-serif !default;
 $ob-service-navigation-applications-width: 100px !default;
 $ob-service-navigation-messages-many-count-width: 30px !default;
 $ob-service-navigation-messages-many-count-border-radius: 20px !default;
+$ob-progress-bar-height: 6px !default;

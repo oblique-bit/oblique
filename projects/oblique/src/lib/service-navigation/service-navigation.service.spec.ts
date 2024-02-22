@@ -40,7 +40,7 @@ describe('ObServiceNavigationService', () => {
 		TestBed.configureTestingModule({
 			providers: [
 				ObServiceNavigationService,
-				{provide: ObServiceNavigationTimeoutService, useValue: {setUpEportalUrl: jest.fn(), logout: jest.fn()}},
+				{provide: ObServiceNavigationTimeoutService, useValue: {initialize: jest.fn(), logout: jest.fn()}},
 				{
 					provide: ObServiceNavigationConfigApiService,
 					useValue: {fetchUrls: jest.fn().mockReturnValue(of(mockUrls))}
@@ -420,11 +420,6 @@ describe('ObServiceNavigationService', () => {
 						});
 
 						describe('HandleLogout', () => {
-							it('should have default value to true', () => {
-								service.setHandleLogout();
-								expect(redirectorService.handleLogout).toBe(true);
-							});
-
 							it('should be settable', () => {
 								const expected = false;
 								service.setHandleLogout(expected);

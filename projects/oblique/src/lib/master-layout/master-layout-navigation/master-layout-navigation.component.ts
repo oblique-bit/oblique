@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {
 	AfterViewInit,
 	Component,
@@ -5,6 +6,7 @@ import {
 	HostBinding,
 	Inject,
 	Input,
+	OnChanges,
 	OnDestroy,
 	OnInit,
 	Optional,
@@ -12,9 +14,10 @@ import {
 	ViewEncapsulation
 } from '@angular/core';
 import {IsActiveMatchOptions, NavigationEnd, Router} from '@angular/router';
-import {filter, takeUntil} from 'rxjs/operators';
+import {filter, map, takeUntil} from 'rxjs/operators';
 
-import {ObMasterLayoutService} from '../master-layout.service';
+import {BehaviorSubject, Observable, Subject, combineLatestWith} from 'rxjs';
+import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
@@ -23,8 +26,9 @@ import {
 	ObIMasterLayoutEvent,
 	ObINavigationLink
 } from '../master-layout.model';
-import {Subject} from 'rxjs';
-import {ObGlobalEventsService} from '../../global-events/global-events.service';
+import {ObMasterLayoutService} from '../master-layout.service';
+import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
+import {ObNavigationLink} from './navigation-link.model';
 
 @Component({
 	selector: 'ob-master-layout-navigation',
@@ -33,10 +37,16 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout-navigation'}
 })
-export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy {
 	isFullWidth = this.masterLayout.navigation.isFullWidth;
 	activeClass = this.config.navigation.activeClass;
 	currentScroll = 0;
+
+	currentGrandparentLink: ObNavigationLink = new ObNavigationLink();
+	currentParentLink: ObNavigationLink = new ObNavigationLink();
+	currentParentRouterLinkBase$: Observable<string>;
+	initializedLinks: ObNavigationLink[] = [];
+	isCurrentParentLinkExactMatch = false;
 	maxScroll = 0;
 	hasOpenedMenu = false;
 	hideExternalLinks = true;
@@ -45,6 +55,12 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 	routerLinkActiveOptions: IsActiveMatchOptions = {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'};
 	private static readonly buttonWidth = 30;
 	private nav: HTMLElement;
+	private readonly currentParentAncestors: BehaviorSubject<ObNavigationLink[]> = new BehaviorSubject<ObNavigationLink[]>([]);
+	private readonly currentParentLinkSource: BehaviorSubject<ObNavigationLink> = new BehaviorSubject<ObNavigationLink>(
+		new ObNavigationLink()
+	);
+	private readonly currentParentRouterLinkBase: BehaviorSubject<string> = new BehaviorSubject<string>('');
+	private readonly currentUrl: BehaviorSubject<string> = new BehaviorSubject<string>('');
 	private readonly unsubscribe: Subject<void> = new Subject<void>();
 
 	constructor(
@@ -58,14 +74,22 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 	) {
 		this.hideExternalLinks = hideExternalLinks ?? true;
 		this.masterLayout.navigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
+		this.currentParentRouterLinkBase$ = this.currentParentRouterLinkBase.asObservable();
 		this.scrollModeChange();
 		this.fullWidthChange();
+	}
+
+	ngOnChanges(): void {
+		this.initializedLinks = this.links.map(link => new ObNavigationLink(link));
 	}
 
 	ngOnInit(): void {
 		this.closeOnEscape();
 		this.markActiveLink();
-		this.checkForExternalLinks(this.links);
+		this.monitorForIsCurrentParentLinkExactMatchChanges();
+		this.monitorForCurrentParentAncestorChanges();
+		this.monitorForCurrentParentLinkChanges();
+		this.monitorForNavigationEndEvents();
 	}
 
 	ngAfterViewInit(): void {
@@ -76,6 +100,37 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+	}
+
+	toggleFocus(prefix: string, linkId: string): void {
+		const focusedEl: HTMLElement = this.el.nativeElement.querySelector(`.ob-master-layout-navigation-link.ob-main-nav-link#${linkId}`);
+		const idOfNavItem = `#${prefix}${linkId}`;
+		const navItem: HTMLElement = this.el.nativeElement.querySelector(idOfNavItem);
+		if (focusedEl.classList.contains('cdk-keyboard-focused')) {
+			navItem.classList.add('ob-has-keyboard-focused-child');
+		} else {
+			navItem.classList.remove('ob-has-keyboard-focused-child');
+		}
+	}
+
+	backUpOrCloseSubMenu(link: ObNavigationLink, obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective): void {
+		if (this.currentParentLink.id === link.id) {
+			this.closeSubMenu(obMasterLayoutNavigationItem, link);
+		} else {
+			this.backUpSubMenu();
+		}
+	}
+
+	changeCurrentParentLink(link: ObNavigationLink): void {
+		this.currentParentLinkSource.next(link);
+		if (!this.isLinkInCurrentParentAncestors(link)) {
+			this.addCurrentParentAncestor(link);
+		}
+	}
+
+	closeSubMenu(obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective, link: ObNavigationLink): void {
+		obMasterLayoutNavigationItem.closeSubMenu(false);
+		this.onSubMenuExpandedChanges(obMasterLayoutNavigationItem, link);
 	}
 
 	close(): void {
@@ -90,13 +145,29 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 		this.masterLayout.navigation.scrollRight();
 	}
 
-	private checkForExternalLinks(links: ObINavigationLink[]): void {
-		if (links?.length) {
-			links.forEach(link => {
-				/* eslint-disable logical-assignment-operators */
-				link.isExternal = link.isExternal ?? /^https?:\/\//.test(link.url);
-				this.checkForExternalLinks(link.children);
-			});
+	toggleSubMenu(obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective, link: ObNavigationLink): void {
+		obMasterLayoutNavigationItem.toggleSubMenu();
+		this.onSubMenuExpandedChanges(obMasterLayoutNavigationItem, link);
+	}
+
+	private addCurrentParentAncestor(link: ObNavigationLink): void {
+		const currentParentAncestors = this.currentParentAncestors.value;
+		currentParentAncestors.push(link);
+		this.currentParentAncestors.next(currentParentAncestors);
+	}
+
+	private backUpSubMenu(): void {
+		const parentIndex = this.getParentIndex();
+		if (parentIndex > -1) {
+			this.currentParentLinkSource.next(this.getCurrentGrandparentLink(parentIndex));
+			const currentParentAncestors = this.currentParentAncestors.value;
+			currentParentAncestors.length = parentIndex;
+			this.currentParentAncestors.next(currentParentAncestors);
+		} else {
+			this.resetCurrentAncestorRelatedProps();
+			throw Error(
+				`parentIndex is: ${parentIndex} in ${ObMasterLayoutNavigationComponent.name}.${ObMasterLayoutNavigationComponent.prototype.backUpSubMenu.name}`
+			);
 		}
 	}
 
@@ -127,6 +198,18 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 			.subscribe(() => this.close());
 	}
 
+	private getCurrentGrandparentLink(parentIndex: number = this.getParentIndex()): ObNavigationLink {
+		return this.currentParentAncestors.value[parentIndex - 1];
+	}
+
+	private getParentIndex(): number {
+		return this.currentParentAncestors.value.indexOf(this.currentParentLinkSource.value);
+	}
+
+	private isLinkInCurrentParentAncestors(link: ObNavigationLink): boolean {
+		return this.currentParentAncestors.value.includes(link);
+	}
+
 	private markActiveLink(): void {
 		this.router.events
 			.pipe(
@@ -134,11 +217,60 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 				filter(evt => evt instanceof NavigationEnd)
 			)
 			.subscribe(() => {
-				// do not use map so that the reference to the links array remains the same. This allows the navigation to be dynamic
-				this.links.forEach(link => {
+				// do not use map so that the reference to the initializedLinks array remains the same. This allows the navigation to be dynamic
+				this.initializedLinks.forEach(link => {
 					link.active = this.router.isActive(link.url, link.routerLinkActiveOptions || this.routerLinkActiveOptions);
 				});
 			});
+	}
+
+	private monitorForCurrentParentAncestorChanges(): void {
+		this.currentParentAncestors.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.onCurrentParentAncestorsChange());
+	}
+
+	private monitorForIsCurrentParentLinkExactMatchChanges(): void {
+		this.currentUrl
+			.pipe(combineLatestWith(this.currentParentRouterLinkBase, this.currentParentLinkSource), takeUntil(this.unsubscribe))
+			.subscribe(([url, currentParentRouterLinkBase, currentParentLink]) => {
+				this.isCurrentParentLinkExactMatch = url.endsWith(`${currentParentRouterLinkBase}/${currentParentLink.url}`);
+			});
+	}
+
+	private monitorForCurrentParentLinkChanges(): void {
+		this.currentParentLinkSource
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(currentParentLink => (this.currentParentLink = currentParentLink));
+	}
+
+	private monitorForNavigationEndEvents(): void {
+		this.router.events
+			.pipe(
+				filter(routerEvent => routerEvent instanceof NavigationEnd),
+				map(routerEvent => (routerEvent as NavigationEnd).url),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(url => {
+				this.currentUrl.next(url);
+				this.resetCurrentAncestorRelatedProps();
+			});
+	}
+
+	private onCurrentParentAncestorsChange(): void {
+		this.currentParentRouterLinkBase.next(
+			this.currentParentAncestors.value
+				.slice(0, -1)
+				.map(link => link.url)
+				.reduce((previous, current) => `${previous}/${current}`, '')
+		);
+		this.currentGrandparentLink = this.getCurrentGrandparentLink();
+	}
+
+	private onSubMenuExpandedChanges(obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective, link: ObNavigationLink): void {
+		if (obMasterLayoutNavigationItem.isExpanded) {
+			this.changeCurrentParentLink(link);
+		} else {
+			this.resetCurrentAncestorRelatedProps();
+		}
 	}
 
 	private refresh(): void {
@@ -152,8 +284,15 @@ export class ObMasterLayoutNavigationComponent implements OnInit, AfterViewInit,
 				this.isScrollable = scrollMode === ObEScrollMode.ENABLED ? true : childWidth > this.nav.clientWidth;
 			}
 			this.updateScroll(this.isScrollable ? 0 : -this.currentScroll);
-			this.checkForExternalLinks(this.links);
 		}
+	}
+
+	private resetCurrentAncestorRelatedProps(): void {
+		this.currentParentAncestors.next([]);
+		this.currentParentRouterLinkBase.next('');
+		this.currentParentLinkSource.next(new ObNavigationLink());
+		this.currentGrandparentLink = new ObNavigationLink();
+		this.isCurrentParentLinkExactMatch = false;
 	}
 
 	private updateScroll(delta: number): void {

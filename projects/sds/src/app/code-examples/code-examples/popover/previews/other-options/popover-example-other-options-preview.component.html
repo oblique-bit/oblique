@@ -1,0 +1,38 @@
+<ng-template #popover>
+	<p>Popover example. Here goes your content!</p>
+</ng-template>
+<div class="container">
+	<h3>Placement</h3>
+	<div class="buttons">
+		<button type="button" mat-button obButton="primary" [obPopover]="popover" [placement]="'top-start'">Top start</button>
+		<button type="button" mat-button obButton="primary" [obPopover]="popover" [placement]="'right-end'">Right end</button>
+		<button type="button" mat-button obButton="primary" [obPopover]="popover" [placement]="'bottom-end'">Bottom end</button>
+	</div>
+</div>
+<div class="container">
+	<h3>Append</h3>
+	<div class="buttons">
+		<button type="button" mat-button obButton="primary" [obPopover]="popover" [appendToBody]="true">Append to body</button>
+		<button type="button" mat-button obButton="primary" [obPopover]="popover" [appendToBody]="false">
+			Render popover after the toggle (Default)
+		</button>
+	</div>
+</div>
+<div class="container">
+	<h3>Handle</h3>
+	<div class="buttons">
+		<button type="button" mat-button obButton="primary" [obPopover]="popover" [toggleHandle]="toggleTypeHover">Hover</button>
+		<button type="button" mat-button obButton="primary" [obPopover]="popover" [toggleHandle]="toggleTypeClick">Click (Default)</button>
+	</div>
+</div>
+<div class="container">
+	<h3>Close</h3>
+	<div class="buttons">
+		<button type="button" mat-button obButton="primary" [obPopover]="popover" [closeOnlyOnToggle]="true">
+			On click on the toggle element
+		</button>
+		<button type="button" mat-button obButton="primary" [obPopover]="popover" [closeOnlyOnToggle]="false">
+			On click outside and on ESC keydown (Default)
+		</button>
+	</div>
+</div>

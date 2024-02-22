@@ -10,7 +10,7 @@ import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 })
 class TestComponent {}
 
-describe('ObAriaMenuButtonDirective', () => {
+describe(ObAriaMenuButtonDirective.name, () => {
 	let component: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: HTMLElement;

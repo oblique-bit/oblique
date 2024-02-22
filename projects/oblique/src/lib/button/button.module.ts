@@ -1,14 +1,12 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {ObButtonDirective} from './button.directive';
-import {obliqueProviders} from '../utilities';
+import {obliqueExports, obliqueProviders} from '../utilities';
 
 export {ObButtonDirective} from './button.directive';
 
 @NgModule({
-	imports: [CommonModule],
-	declarations: [ObButtonDirective],
+	imports: [ObButtonDirective],
 	providers: obliqueProviders(),
-	exports: [ObButtonDirective]
+	exports: [ObButtonDirective, ...obliqueExports]
 })
 export class ObButtonModule {}

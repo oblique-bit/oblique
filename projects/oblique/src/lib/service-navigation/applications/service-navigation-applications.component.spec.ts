@@ -6,7 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatIconHarness} from '@angular/material/icon/testing';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
-import {MatLegacyTooltipModule as MatTooltipModule} from '@angular/material/legacy-tooltip';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
@@ -19,18 +19,17 @@ import {ObServiceNavigationApplicationsHarness} from './service-navigation-appli
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
 import {ObDisableLinkDirective} from '../shared/disable-link/disable-link.directive';
 
-describe('ObServiceNavigationApplicationsComponent', () => {
+describe(ObServiceNavigationApplicationsComponent.name, () => {
 	let component: ObServiceNavigationApplicationsComponent;
 	let fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>;
 	let harness: ObServiceNavigationApplicationsHarness;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MatButtonModule, MatIconModule, MatTooltipModule, ObPopoverModule, ObDisableLinkDirective],
+			imports: [ObMockTranslatePipe, MatButtonModule, MatIconModule, MatTooltipModule, ObPopoverModule, ObDisableLinkDirective],
 			declarations: [
 				ObLimitArraySizePipe,
 				ObServiceNavigationApplicationsComponent,
-				ObMockTranslatePipe,
 				ObServiceNavigationPopoverSectionComponent,
 				ObSafeImagePipe,
 				ObServiceNavigationApplicationAltPipe
@@ -589,7 +588,7 @@ describe('ObServiceNavigationApplicationsComponent', () => {
 			});
 
 			it.each([
-				{attribute: 'obButton', val: 'secondary'},
+				{attribute: 'obButton', val: 'tertiary'},
 				{attribute: 'mat-icon-button', val: ''}
 			])('should have "$val" as "$attribute" attribute', async ({attribute, val}) => {
 				expect(await trigger.getAttribute(attribute)).toBe(val);

@@ -1,0 +1,27 @@
+@use "../core/variables";
+
+mat-progress-bar.mat-mdc-progress-bar {
+	background-color: transparent;
+	height: variables.$ob-progress-bar-height;
+
+	.mdc-linear-progress__bar-inner {
+		border-top-width: variables.$ob-progress-bar-height;
+	}
+
+	.mdc-linear-progress__bar,
+	.mdc-linear-progress__buffer {
+		height: variables.$ob-progress-bar-height;
+	}
+
+	.mdc-linear-progress__buffer-bar {
+		background-color: variables.$ob-secondary-100;
+	}
+}
+
+.mat-mdc-progress-bar.mat-warn {
+	background-color: transparent;
+
+	.mdc-linear-progress__buffer-bar {
+		background-color: variables.$ob-red-200;
+	}
+}
