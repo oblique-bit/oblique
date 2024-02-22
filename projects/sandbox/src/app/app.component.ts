@@ -188,6 +188,15 @@ export class AppComponent implements OnDestroy {
 				{url: 'http://www.google.ch', label: 'External, icon only', icon: ObEIcon.ANCHOR, iconOnly: true}
 			]
 		},
+		{
+			url: 'starterkit',
+			label: 'Starterkit pages',
+			children: [
+				{url: 'title-page', label: 'Title page'},
+				{url: 'nav-page', label: 'Nav page'},
+				{url: 'table-page', label: 'Table page'}
+			]
+		},
 		{url: 'http://www.google.ch', label: 'About Us', isExternal: true, startOfRightSideLinks: true},
 		{url: 'http://www.google.ch', label: 'Contact', isExternal: true}
 	];
