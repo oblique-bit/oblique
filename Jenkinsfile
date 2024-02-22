@@ -28,6 +28,9 @@ nodejsPipelineTemplate {
 			'gitPush': [
 				'credentialId': 'githubObliqueCredentials',
 				'repository': 'https://github.com/oblique-bit/oblique.git',
+			],
+			'cloudFoundry': [
+				['project': 'sds', 'space': 'prod']
 			]
 		]
 	]
