@@ -83,12 +83,6 @@
 
 		.ob-service-navigation-list {
 			flex-wrap: wrap;
-
-			.ob-autocomplete {
-				.mat-mdc-form-field {
-					padding-top: variables.$ob-spacing-sm;
-				}
-			}
 		}
 
 		.ob-autocomplete .mat-mdc-form-field-subscript-wrapper {
