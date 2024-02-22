@@ -23,7 +23,7 @@ export class ObErrorMessagesDirective implements AfterViewInit, OnDestroy {
 		this.form = ngForm || formGroupDirective;
 
 		if (!this.form) {
-			throw new Error('The ErrorsDirective needs either a NgForm or a FormGroupDirective!');
+			throw new Error('The ErrorMessagesDirective needs to be either within a NgForm or a FormGroupDirective!');
 		}
 	}
 
