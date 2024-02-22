@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>ServiceNavigationWebComponent</title>
+		<base href="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link href="assets/images/favicon.png" rel="shortcut icon" />
+	</head>
+	<body>
+		<input type="checkbox" id="showLanguages" checked /><label for="showLanguages">show language widget</label><br />
+		<input type="checkbox" id="showMessage" checked /><label for="showMessage">show message widget</label><br />
+		<input type="checkbox" id="showInfo" checked /><label for="showInfo">show info widget</label><br />
+		<input type="checkbox" id="showApplications" checked /><label for="showApplications">show applications widget</label><br />
+		<input type="checkbox" id="showProfile" checked /><label for="showProfile">show profile widget</label><br />
+		<input type="checkbox" id="showAuthentication" checked /><label for="showAuthentication">show authentication widget</label><br />
+		<hr />
+		<ob-service-navigation-web-component
+			environment="TEST"
+			root-url="http://localhost:8207/"
+			language-list="en,fr"
+			default-language="en"
+			display-languages="true"
+			display-message="true"
+			display-info="true"
+			pams-app-id="21"
+			display-applications="true"
+			display-profile="true"
+			handle-logout="true"
+			display-authentication="true"
+			info-contact='{"tel":"+41 026 402 13 38"}'
+			info-links='[{"fr":"Lien de contact","en":"Contact link","links":{"fr":"https://fr.contact.com","en":"https://en.contact.com"}}]'
+			profile-links='[{"fr":"Lien de profile 1","en":"Profile link 1","links":{"fr":"https://fr.profile.com","en":"https://en.profile.com"}},{"fr":"Lien de profile 2","en":"Profile link 2","link":"https://profile.com"}]'
+			custom-buttons='[{"obliqueIconName":"smile", "badge":"1"},{"obliqueIconName":"calendar"}]'
+		/>
+		<script>
+			document.querySelector("#showLanguages").addEventListener("change", (event) => {
+				document.querySelector("ob-service-navigation-web-component").setAttribute("display-languages", event.srcElement.checked);
+			});
+			document.querySelector("#showMessage").addEventListener("change", (event) => {
+				document.querySelector("ob-service-navigation-web-component").setAttribute("display-message", event.srcElement.checked);
+			});
+			document.querySelector("#showInfo").addEventListener("change", (event) => {
+				document.querySelector("ob-service-navigation-web-component").setAttribute("display-info", event.srcElement.checked);
+			});
+			document.querySelector("#showApplications").addEventListener("change", (event) => {
+				document.querySelector("ob-service-navigation-web-component").setAttribute("display-applications", event.srcElement.checked);
+			});
+			document.querySelector("#showProfile").addEventListener("change", (event) => {
+				document.querySelector("ob-service-navigation-web-component").setAttribute("display-profile", event.srcElement.checked);
+			});
+			document.querySelector("#showAuthentication").addEventListener("change", (event) => {
+				document.querySelector("ob-service-navigation-web-component").setAttribute("display-authentication", event.srcElement.checked);
+			});
+			document
+				.querySelector("ob-service-navigation-web-component")
+				.addEventListener("languageChange", (event) => console.log("languageChange", event.detail));
+			document
+				.querySelector("ob-service-navigation-web-component")
+				.addEventListener("loginState", (event) => console.log("loginState", event.detail));
+			document
+				.querySelector("ob-service-navigation-web-component")
+				.addEventListener("buttonClickedEmitter", (event) => console.log("button clicked", event.detail));
+			document
+				.querySelector("ob-service-navigation-web-component")
+				.addEventListener("logoutTriggered", (event) => console.log("logout triggered", event.detail));
+		</script>
+	</body>
+</html>

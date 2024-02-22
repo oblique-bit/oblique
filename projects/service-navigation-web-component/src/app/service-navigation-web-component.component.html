@@ -1,0 +1,36 @@
+<ob-service-navigation
+	*ngIf="environmentParsed"
+	[environment]="environmentParsed"
+	[infoContact]="infoContactParsed"
+	[infoLinks]="infoLinksParsed"
+	[profileLinks]="profileLinksParsed"
+	[maxLastUsedApplications]="maxLastUsedApplications"
+	[maxFavoriteApplications]="maxFavoriteApplications"
+	[pamsAppId]="pamsAppId"
+	[handleLogout]="handleLogout"
+	[displayLanguages]="displayLanguages"
+	[displayMessage]="displayMessage"
+	[displayInfo]="displayInfo"
+	[displayApplications]="displayApplications"
+	[displayProfile]="displayProfile"
+	[displayAuthentication]="displayAuthentication"
+	[rootUrl]="rootUrl"
+	[returnUrl]="returnUrl"
+	(loginState)="loginState.emit($event)"
+	(logoutTriggered)="logoutTriggered.emit($event)"
+>
+	<ng-container *ngFor="let button of customButtonsParsed">
+		<ng-template #customWidgetTemplate>
+			<button
+				type="button"
+				mat-icon-button
+				obButton="tertiary"
+				[matBadge]="button.badge"
+				matBadgeColor="warn"
+				(click)="buttonClickedEmitter.emit(button.obliqueIconName)"
+			>
+				<mat-icon [svgIcon]="button.obliqueIconName" />
+			</button>
+		</ng-template>
+	</ng-container>
+</ob-service-navigation>

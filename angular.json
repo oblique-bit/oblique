@@ -305,6 +305,86 @@
           }
         }
       }
+    },
+    "service-navigation-web-component": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/service-navigation-web-component",
+      "sourceRoot": "projects/service-navigation-web-component/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/service-navigation-web-component",
+            "index": "projects/service-navigation-web-component/src/index.html",
+            "main": "projects/service-navigation-web-component/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/service-navigation-web-component/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "favicon.png",
+                "input": "projects/oblique/src/assets/images",
+                "output": "/assets/images"
+              },
+              "projects/service-navigation-web-component/src/assets"
+            ],
+            "styles": ["projects/oblique/src/styles/css/frutiger.css"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "3mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kb",
+                  "maximumError": "160kb"
+                }
+              ],
+              "outputHashing": "none"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 3003
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "service-navigation-web-component:build:production"
+            },
+            "development": {
+              "buildTarget": "service-navigation-web-component:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "configPath": "jest.config.js",
+            "tsConfig": "tsconfig.spec.json",
+            "no-cache": ["true"],
+            "run-in-band": ["true"]
+          }
+        }
+      }
     }
   },
   "schematics": {

@@ -107,6 +107,7 @@ If specified, the scope must be prefixed by the package name, separated with a s
 - **oblique**
 - **sandbox**
 - **sds**
+- **service-navigation**
 
 Prefixes may be used alone for changes that are not linked to a particular scope.
 
