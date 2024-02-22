@@ -1,11 +1,6 @@
 @use "../../styles/scss/core/variables";
 @use "../../styles/scss/core/palette";
 @use "../../styles/scss/core/mixins/nav";
-@use "../../styles/scss/core/mixins/shadow";
-
-.ob-nav-indent {
-	@include shadow.ob-shadow-default();
-}
 
 .ob-nav-tree {
 	display: flex;
@@ -42,7 +37,7 @@
 		}
 	}
 
-	li:not(:last-child) .ob-nav-link {
+	li .ob-nav-link {
 		border-bottom: 1px solid variables.$ob-secondary-100;
 	}
 
