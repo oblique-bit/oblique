@@ -3,7 +3,7 @@ import {CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
-import {UnknownRouteExampleDefaultPreviewComponent} from './previews/default/unknown-route-example-default-preview.component';
+import {UnknownRouteExampleStackblitzLinkPreviewComponent} from '../unknown-route/previews/stackblitz-link/unknown-route-example-stackblitz-link-preview.component';
 
 @Component({
 	selector: 'app-code-example-unknown-route',
@@ -16,12 +16,12 @@ export class UnknownRouteCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'unknown-route-examples';
 	readonly previews: CodeExample[] = [
 		{
-			component: UnknownRouteExampleDefaultPreviewComponent,
-			idParts: ['default'],
-			title: 'UnknownRoute',
+			component: UnknownRouteExampleStackblitzLinkPreviewComponent,
+			idParts: ['stackblitz', 'link'],
+			title: 'Link to Stackblitz Example',
 			snippets: [
-				this.getSnippet('unknown-route', 'default/unknown-route-example-default-preview.component.html', 'HTML'),
-				this.getSnippet('unknown-route', 'default/unknown-route-example-default-preview.component.ts', 'TS')
+				this.getSnippet('unknown-route', 'stackblitz-link/unknown-route-example-stackblitz-link-preview.component.html', 'HTML'),
+				this.getSnippet('unknown-route', 'stackblitz-link/unknown-route-example-stackblitz-link-preview.component.ts', 'TS')
 			]
 		}
 	];
