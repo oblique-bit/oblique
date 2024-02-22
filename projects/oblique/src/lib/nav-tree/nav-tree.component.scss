@@ -1,11 +1,6 @@
 @use "../../styles/scss/core/variables";
 @use "../../styles/scss/core/palette";
 @use "../../styles/scss/core/mixins/nav";
-@use "../../styles/scss/core/mixins/shadow";
-
-.ob-nav-indent {
-	@include shadow.ob-shadow-default();
-}
 
 .ob-nav-tree {
 	display: flex;
