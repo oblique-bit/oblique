@@ -19,6 +19,11 @@ nodejsPipelineTemplate {
 				['project': 'sandbox', 'space': 'dev']
 			]
 		],
+		'release/minor_*': [
+			'cloudFoundry': [
+				['project': 'sds', 'space': 'dev']
+			]
+		],
 		master: [
 			'publish': [
 				'./dist/oblique',
