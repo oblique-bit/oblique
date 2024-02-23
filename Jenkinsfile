@@ -21,7 +21,13 @@ nodejsPipelineTemplate {
 		],
 		'release/minor_*': [
 			'cloudFoundry': [
-				['project': 'sds', 'space': 'dev']
+				['project': 'sds', 'space': 'dev'],
+				['project': 'sandbox', 'space': 'dev']
+			]
+		],
+		'release/patch_*': [
+			'cloudFoundry': [
+				['project': 'sandbox', 'space': 'patch']
 			]
 		],
 		master: [
