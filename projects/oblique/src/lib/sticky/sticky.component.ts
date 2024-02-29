@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {NgClass, NgIf, NgTemplateOutlet} from '@angular/common';
+import {WINDOW} from './../utilities';
 
 /**
  * @deprecated since version 11.0.0. It will be removed with Oblique 12. CSS flexbox and / or position: sticky should be used instead.
@@ -38,12 +39,8 @@ export class ObStickyComponent implements OnChanges, AfterViewInit {
 	nestedStickySize: string;
 
 	private static readonly SIZES = ['sm', 'md', 'lg'];
-	private readonly window: Window;
+	private readonly window: Window = inject(WINDOW);
 	private readonly changeDetectorRef = inject(ChangeDetectorRef);
-
-	constructor() {
-		this.window = window; // because AoT don't accept interfaces as DI
-	}
 
 	ngOnChanges(): void {
 		this.manageSizes();

@@ -2,6 +2,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, Component} from '@angular/core';
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 
+import {WINDOW} from '../utilities';
 import {ObStickyComponent} from './sticky.component';
 
 @Component({
@@ -28,6 +29,7 @@ describe(ObStickyComponent.name, () => {
 		TestBed.configureTestingModule({
 			imports: [ObStickyComponent],
 			declarations: [TestFirstCaseComponent],
+			providers: [{provide: WINDOW, useValue: window}],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	}));

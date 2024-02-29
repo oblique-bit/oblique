@@ -2,6 +2,7 @@ import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed, fakeAsync, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {first, skip} from 'rxjs/operators';
+import {WINDOW} from '../utilities';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
 import {ObMockSelectableDirective} from './_mocks/mock-selectable.directive';
 
@@ -24,6 +25,7 @@ describe(ObSelectableGroupDirective.name, () => {
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
 			imports: [ObSelectableGroupDirective, ObMockSelectableDirective],
+			providers: [{provide: WINDOW, useValue: window}],
 			declarations: [TestComponent]
 		});
 	}));
