@@ -38,9 +38,6 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	@ViewChild(CodeExampleDirective, {static: false}) codeExample!: CodeExampleDirective;
 	@ViewChild('tabs') tabs: TabsComponent;
 	readonly componentId = 'tabbed-page';
-
-	title = '';
-
 	public cmsData$: Observable<CmsData>;
 
 	private readonly unsubscribe = new Subject<void>();
@@ -100,10 +97,6 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 			map(cmsData => this.buildCmsData(cmsData.data)),
 			share({connector: () => new ReplaySubject(1)})
 		);
-
-		this.cmsData$.pipe(takeUntil(this.unsubscribe)).subscribe((cmsData: CmsData) => {
-			this.title = cmsData.title;
-		});
 	}
 
 	private buildCmsData(cmsData: TabbedPageComplete): CmsData {

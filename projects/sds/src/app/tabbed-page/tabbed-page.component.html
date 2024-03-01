@@ -1,4 +1,4 @@
-<h1>{{ title }}</h1>
+<h1>{{ (cmsData$ | async)?.title }}</h1>
 <app-tabs #tabs [idPrefix]="componentId" [id]="componentId | id: ['tabs']" (tabChanged)="handleTabChanged($event)">
 	<app-tab name="Examples" [hidden]="!!!(cmsData$ | async)?.source" [id]="componentId | id: ['examples-tab']">
 		<ng-template appCodeExample />
