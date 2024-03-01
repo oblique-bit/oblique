@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {BehaviorSubject, Subscription, filter} from 'rxjs';
+import {BehaviorSubject, Subscription, concatWith, filter, first} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {CmsDataService} from '../cms/cms-data.service';
@@ -31,23 +31,16 @@ export class TextPageComponent implements OnDestroy {
 		private readonly activatedRoute: ActivatedRoute
 	) {
 		this.subscriptions.push(
-			this.slugToIdService.readyToMap.subscribe(() => {
-				this.getContentForSelectedSlug();
-				this.reactToNavigationEnd();
-			})
+			this.slugToIdService.readyToMap
+				.pipe(first(), concatWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))))
+				.subscribe(() => {
+					this.getContentForSelectedSlug();
+				})
 		);
 	}
 
 	ngOnDestroy(): void {
 		this.subscriptions.forEach(subscription => subscription.unsubscribe());
-	}
-
-	private reactToNavigationEnd(): void {
-		this.subscriptions.push(
-			this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-				this.getContentForSelectedSlug();
-			})
-		);
 	}
 
 	private getContentForSelectedSlug(): void {
