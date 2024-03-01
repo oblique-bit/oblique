@@ -117,17 +117,13 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 				mergeWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
 				map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
 				distinctUntilChanged(),
+				map(slug => this.slugToIdService.getIdForSlug(slug)),
 				takeUntil(this.unsubscribe),
 				delay(0)
 			)
-			.subscribe((slug: string) => {
-				this.getContentForSelectedSlug(slug);
+			.subscribe((id: number) => {
+				this.getContent(id);
 			});
-	}
-
-	private getContentForSelectedSlug(slug: string): void {
-		const id: number = this.slugToIdService.getIdForSlug(slug);
-		this.getContent(id);
 	}
 
 	private getContent(id: number): void {
