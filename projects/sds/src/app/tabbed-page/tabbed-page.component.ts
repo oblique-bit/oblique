@@ -16,6 +16,7 @@ import {
 	filter,
 	map,
 	mergeWith,
+	switchMap,
 	takeUntil
 } from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
@@ -118,18 +119,10 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 				map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
 				distinctUntilChanged(),
 				map(slug => this.slugToIdService.getIdForSlug(slug)),
+				switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
 				takeUntil(this.unsubscribe),
 				delay(0)
 			)
-			.subscribe((id: number) => {
-				this.getContent(id);
-			});
-	}
-
-	private getContent(id: number): void {
-		this.cmsDataService
-			.getTabbedPageComplete(id)
-			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(cmsData => {
 				this.title = cmsData.data.name;
 				this.apiContentSource.next(cmsData.data.api);
