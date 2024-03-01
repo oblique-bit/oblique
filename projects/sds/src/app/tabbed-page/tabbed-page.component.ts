@@ -47,15 +47,6 @@ export class TabbedPageComponent implements OnInit {
 		this.location.replaceState(newUrl);
 	}
 
-	private loadCodeExample(codeExampleComponent: Type<CodeExamples> | undefined): void {
-		const {viewContainerRef} = this.codeExample;
-		viewContainerRef.clear();
-
-		if (codeExampleComponent) {
-			viewContainerRef.createComponent<CodeExamples>(codeExampleComponent);
-		}
-	}
-
 	private monitorForSlugToIdChanges(): void {
 		this.cmsData$ = this.slugToIdService.readyToMap.pipe(
 			mergeWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
@@ -77,6 +68,15 @@ export class TabbedPageComponent implements OnInit {
 			uiUx: cmsData.ui_ux,
 			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug)
 		};
+	}
+
+	private loadCodeExample(codeExampleComponent: Type<CodeExamples> | undefined): void {
+		const {viewContainerRef} = this.codeExample;
+		viewContainerRef.clear();
+
+		if (codeExampleComponent) {
+			viewContainerRef.createComponent<CodeExamples>(codeExampleComponent);
+		}
 	}
 
 	private activateTab(cmsData: CmsData): void {
