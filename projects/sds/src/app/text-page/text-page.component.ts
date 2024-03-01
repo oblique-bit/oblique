@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {BehaviorSubject, Subscription, filter} from 'rxjs';
@@ -15,7 +15,7 @@ import {CommonModule} from '@angular/common';
 	standalone: true,
 	imports: [CommonModule, IdPipe]
 })
-export class TextPageComponent implements OnInit, OnDestroy {
+export class TextPageComponent implements OnDestroy {
 	readonly componentId = 'text-page';
 
 	readonly selectedContent$: BehaviorSubject<SafeHtml> = new BehaviorSubject<SafeHtml>('');
@@ -29,9 +29,7 @@ export class TextPageComponent implements OnInit, OnDestroy {
 		private readonly domSanitizer: DomSanitizer,
 		private readonly router: Router,
 		private readonly activatedRoute: ActivatedRoute
-	) {}
-
-	ngOnInit(): void {
+	) {
 		this.subscriptions.push(
 			this.slugToIdService.readyToMap.subscribe(() => {
 				this.getContentForSelectedSlug();
