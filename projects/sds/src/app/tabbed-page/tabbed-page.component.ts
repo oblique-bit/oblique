@@ -8,14 +8,15 @@ import {CodeExamples} from '../code-examples/code-examples.model';
 import {
 	BehaviorSubject,
 	Observable,
+	ReplaySubject,
 	Subject,
 	combineLatestWith,
 	debounceTime,
-	delay,
 	distinctUntilChanged,
 	filter,
 	map,
 	mergeWith,
+	share,
 	switchMap,
 	takeUntil
 } from 'rxjs';
@@ -46,6 +47,7 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	public apiContent$: Observable<SafeHtml>;
 	public codeExampleComponent$: Observable<Type<CodeExamples> | undefined>;
 	public uiUxContent$: Observable<SafeHtml>;
+	public cmsData$: Observable<CmsData>;
 
 	private readonly apiContentSource: BehaviorSubject<SafeHtml> = new BehaviorSubject<SafeHtml>('');
 	private readonly codeExampleComponentSource: BehaviorSubject<Type<CodeExamples> | undefined> = new BehaviorSubject<
@@ -114,23 +116,22 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	}
 
 	private monitorForSlugToIdChanges(): void {
-		this.slugToIdService.readyToMap
-			.pipe(
-				mergeWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
-				map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
-				distinctUntilChanged(),
-				map(slug => this.slugToIdService.getIdForSlug(slug)),
-				switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
-				map(cmsData => this.buildCmsData(cmsData.data)),
-				takeUntil(this.unsubscribe),
-				delay(0)
-			)
-			.subscribe((cmsData: CmsData) => {
-				this.title = cmsData.title;
-				this.apiContentSource.next(cmsData.api);
-				this.uiUxContentSource.next(cmsData.uiUx);
-				this.codeExampleComponentSource.next(cmsData.source);
-			});
+		this.cmsData$ = this.slugToIdService.readyToMap.pipe(
+			mergeWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
+			map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
+			distinctUntilChanged(),
+			map(slug => this.slugToIdService.getIdForSlug(slug)),
+			switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
+			map(cmsData => this.buildCmsData(cmsData.data)),
+			share({connector: () => new ReplaySubject(1)})
+		);
+
+		this.cmsData$.pipe(takeUntil(this.unsubscribe)).subscribe((cmsData: CmsData) => {
+			this.title = cmsData.title;
+			this.apiContentSource.next(cmsData.api);
+			this.uiUxContentSource.next(cmsData.uiUx);
+			this.codeExampleComponentSource.next(cmsData.source);
+		});
 	}
 
 	private buildCmsData(cmsData: TabbedPageComplete): CmsData {
