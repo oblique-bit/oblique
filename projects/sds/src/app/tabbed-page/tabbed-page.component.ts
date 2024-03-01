@@ -10,7 +10,6 @@ import {
 	Observable,
 	ReplaySubject,
 	Subject,
-	combineLatestWith,
 	debounceTime,
 	distinctUntilChanged,
 	filter,
@@ -65,8 +64,8 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
 		this.initObservables();
-		this.monitorForPageChanges();
 		this.monitorForSlugToIdChanges();
+		this.monitorForPageChanges();
 	}
 
 	ngOnDestroy(): void {
@@ -91,19 +90,13 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	}
 
 	private monitorForPageChanges(): void {
-		this.apiContent$
-			.pipe(takeUntil(this.unsubscribe), combineLatestWith(this.codeExampleComponent$, this.uiUxContent$), debounceTime(1))
-			.subscribe(next => {
-				const apiContent = next[0];
-				const codeExampleComponent = next[1];
-				const uiUxContent = next[2];
-
-				if (apiContent || codeExampleComponent || uiUxContent) {
-					this.loadCodeExample(codeExampleComponent);
-					const tabToSelect: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab) ?? '';
-					this.tabs.selectTabWithName(TabNameMapper.getTabNameFromUrlParam(tabToSelect));
-				}
-			});
+		this.cmsData$.pipe(takeUntil(this.unsubscribe), debounceTime(1)).subscribe(cmsData => {
+			if (cmsData.api || cmsData.source || cmsData.uiUx) {
+				this.loadCodeExample(cmsData.source);
+				const tabToSelect: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab) ?? '';
+				this.tabs.selectTabWithName(TabNameMapper.getTabNameFromUrlParam(tabToSelect));
+			}
+		});
 	}
 
 	private loadCodeExample(codeExampleComponent: Type<CodeExamples> | undefined): void {
