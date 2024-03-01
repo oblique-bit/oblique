@@ -5,7 +5,7 @@ import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
 import {CodeExamples} from '../code-examples/code-examples.model';
-import {BehaviorSubject, Observable, Subject, combineLatestWith, debounceTime, delay, filter, takeUntil} from 'rxjs';
+import {BehaviorSubject, Observable, Subject, combineLatestWith, debounceTime, delay, filter, mergeWith, takeUntil} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -101,18 +101,8 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	}
 
 	private monitorForSlugToIdChanges(): void {
-		this.slugToIdService.readyToMap.pipe(takeUntil(this.unsubscribe), delay(0)).subscribe(() => {
-			this.getContentForSelectedSlug();
-			this.monitorForNavigationEndEvents();
-		});
-	}
-
-	private monitorForNavigationEndEvents(): void {
-		this.router.events
-			.pipe(
-				takeUntil(this.unsubscribe),
-				filter(event => event instanceof NavigationEnd)
-			)
+		this.slugToIdService.readyToMap
+			.pipe(mergeWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))), takeUntil(this.unsubscribe), delay(0))
 			.subscribe(() => {
 				this.getContentForSelectedSlug();
 			});
