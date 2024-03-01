@@ -5,7 +5,19 @@ import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
 import {CodeExamples} from '../code-examples/code-examples.model';
-import {BehaviorSubject, Observable, Subject, combineLatestWith, debounceTime, delay, filter, map, mergeWith, takeUntil} from 'rxjs';
+import {
+	BehaviorSubject,
+	Observable,
+	Subject,
+	combineLatestWith,
+	debounceTime,
+	delay,
+	distinctUntilChanged,
+	filter,
+	map,
+	mergeWith,
+	takeUntil
+} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -46,7 +58,6 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	private readonly router = inject(Router);
 	private readonly slugToIdService = inject(SlugToIdService);
 	private readonly location = inject(Location);
-	private previousSlug: string;
 
 	ngOnInit(): void {
 		this.initObservables();
@@ -105,6 +116,7 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 			.pipe(
 				mergeWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
 				map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
+				distinctUntilChanged(),
 				takeUntil(this.unsubscribe),
 				delay(0)
 			)
@@ -114,11 +126,8 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	}
 
 	private getContentForSelectedSlug(slug: string): void {
-		if (slug !== this.previousSlug) {
-			const id: number = this.slugToIdService.getIdForSlug(slug);
-			this.getContent(id);
-		}
-		this.previousSlug = slug;
+		const id: number = this.slugToIdService.getIdForSlug(slug);
+		this.getContent(id);
 	}
 
 	private getContent(id: number): void {
