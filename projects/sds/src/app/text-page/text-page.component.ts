@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {BehaviorSubject, Subscription, concatWith, filter, first} from 'rxjs';
+import {BehaviorSubject, Subscription, concatWith, filter, first, map} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {CmsDataService} from '../cms/cms-data.service';
@@ -32,21 +32,19 @@ export class TextPageComponent implements OnDestroy {
 	) {
 		this.subscriptions.push(
 			this.slugToIdService.readyToMap
-				.pipe(first(), concatWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))))
-				.subscribe(() => {
-					this.getContentForSelectedSlug();
+				.pipe(
+					first(), concatWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
+					map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
+					map(slug => this.slugToIdService.getIdForSlug(slug))
+				)
+				.subscribe((id: number) => {
+					this.getContent(id);
 				})
 		);
 	}
 
 	ngOnDestroy(): void {
 		this.subscriptions.forEach(subscription => subscription.unsubscribe());
-	}
-
-	private getContentForSelectedSlug(): void {
-		const slug: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? '';
-		const id: number = this.slugToIdService.getIdForSlug(slug);
-		this.getContent(id);
 	}
 
 	private getContent(id: number): void {
