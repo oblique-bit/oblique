@@ -129,11 +129,16 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 				this.title = cmsData.title;
 				this.apiContentSource.next(cmsData.api);
 				this.uiUxContentSource.next(cmsData.uiUx);
-				this.codeExampleComponentSource.next(CodeExamplesMapper.getCodeExampleComponent(cmsData.slug));
+				this.codeExampleComponentSource.next(cmsData.source);
 			});
 	}
 
 	private buildCmsData(cmsData: TabbedPageComplete): CmsData {
-		return {title: cmsData.name, api: cmsData.api, uiUx: cmsData.ui_ux, slug: cmsData.slug};
+		return {
+			title: cmsData.name,
+			api: cmsData.api,
+			uiUx: cmsData.ui_ux,
+			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug)
+		};
 	}
 }
