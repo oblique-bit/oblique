@@ -34,7 +34,7 @@ export class TabbedPageComponent implements OnInit {
 	private readonly location = inject(Location);
 
 	ngOnInit(): void {
-		this.monitorForSlugToIdChanges();
+		this.cmsData$ = this.buildCmsDataObservable();
 	}
 
 	handleTabChanged(tabName: string): void {
@@ -47,8 +47,8 @@ export class TabbedPageComponent implements OnInit {
 		this.location.replaceState(newUrl);
 	}
 
-	private monitorForSlugToIdChanges(): void {
-		this.cmsData$ = this.slugToIdService.readyToMap.pipe(
+	private buildCmsDataObservable(): Observable<CmsData> {
+		return this.slugToIdService.readyToMap.pipe(
 			mergeWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
 			map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
 			distinctUntilChanged(),
