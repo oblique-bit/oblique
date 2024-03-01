@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Observable, concatWith, filter, first, map, switchMap} from 'rxjs';
@@ -17,24 +17,22 @@ import {CommonModule} from '@angular/common';
 })
 export class TextPageComponent {
 	readonly componentId = 'text-page';
-
 	readonly selectedContent$: Observable<SafeHtml>;
 
-	// eslint-disable-next-line max-params
-	constructor(
-		private readonly cmsDataService: CmsDataService,
-		private readonly slugToIdService: SlugToIdService,
-		private readonly domSanitizer: DomSanitizer,
-		private readonly router: Router,
-		private readonly activatedRoute: ActivatedRoute
-	) {
-		this.selectedContent$ = this.slugToIdService.readyToMap.pipe(
+	constructor() {
+		const cmsDataService = inject(CmsDataService);
+		const slugToIdService = inject(SlugToIdService);
+		const domSanitizer = inject(DomSanitizer);
+		const router = inject(Router);
+		const activatedRoute = inject(ActivatedRoute);
+
+		this.selectedContent$ = slugToIdService.readyToMap.pipe(
 			first(),
-			concatWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
-			map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
-			map(slug => this.slugToIdService.getIdForSlug(slug)),
-			switchMap(id => this.cmsDataService.getTextPagesComplete(id)),
-			map(cmsData => this.domSanitizer.bypassSecurityTrustHtml(cmsData.data.description))
+			concatWith(router.events.pipe(filter(event => event instanceof NavigationEnd))),
+			map(() => activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
+			map(slug => slugToIdService.getIdForSlug(slug)),
+			switchMap(id => cmsDataService.getTextPagesComplete(id)),
+			map(cmsData => domSanitizer.bypassSecurityTrustHtml(cmsData.data.description))
 		);
 	}
 }
