@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {BehaviorSubject, Subscription, concatWith, filter, first, map} from 'rxjs';
+import {BehaviorSubject, Subscription, concatWith, filter, first, map, switchMap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {CmsDataService} from '../cms/cms-data.service';
@@ -35,23 +35,16 @@ export class TextPageComponent implements OnDestroy {
 				.pipe(
 					first(), concatWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
 					map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
-					map(slug => this.slugToIdService.getIdForSlug(slug))
+					map(slug => this.slugToIdService.getIdForSlug(slug)),
+					switchMap(id => this.cmsDataService.getTextPagesComplete(id))
 				)
-				.subscribe((id: number) => {
-					this.getContent(id);
+				.subscribe(cmsData => {
+					this.selectedContent$.next(this.domSanitizer.bypassSecurityTrustHtml(cmsData.data.description));
 				})
 		);
 	}
 
 	ngOnDestroy(): void {
 		this.subscriptions.forEach(subscription => subscription.unsubscribe());
-	}
-
-	private getContent(id: number): void {
-		this.subscriptions.push(
-			this.cmsDataService
-				.getTextPagesComplete(id)
-				.subscribe(cmsData => this.selectedContent$.next(this.domSanitizer.bypassSecurityTrustHtml(cmsData.data.description)))
-		);
 	}
 }
