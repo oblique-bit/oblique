@@ -36,10 +36,11 @@ export class TextPageComponent implements OnDestroy {
 					first(), concatWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
 					map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
 					map(slug => this.slugToIdService.getIdForSlug(slug)),
-					switchMap(id => this.cmsDataService.getTextPagesComplete(id))
+					switchMap(id => this.cmsDataService.getTextPagesComplete(id)),
+					map(cmsData => this.domSanitizer.bypassSecurityTrustHtml(cmsData.data.description))
 				)
-				.subscribe(cmsData => {
-					this.selectedContent$.next(this.domSanitizer.bypassSecurityTrustHtml(cmsData.data.description));
+				.subscribe(selectedContent => {
+					this.selectedContent$.next(selectedContent);
 				})
 		);
 	}
