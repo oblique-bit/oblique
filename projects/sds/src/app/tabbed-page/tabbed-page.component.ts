@@ -1,12 +1,10 @@
 import {Component, OnDestroy, OnInit, Type, ViewChild, inject} from '@angular/core';
-import {SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
 import {CodeExamples} from '../code-examples/code-examples.model';
 import {
-	BehaviorSubject,
 	Observable,
 	ReplaySubject,
 	Subject,
@@ -43,16 +41,7 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 
 	title = '';
 
-	public apiContent$: Observable<SafeHtml>;
-	public codeExampleComponent$: Observable<Type<CodeExamples> | undefined>;
-	public uiUxContent$: Observable<SafeHtml>;
 	public cmsData$: Observable<CmsData>;
-
-	private readonly apiContentSource: BehaviorSubject<SafeHtml> = new BehaviorSubject<SafeHtml>('');
-	private readonly codeExampleComponentSource: BehaviorSubject<Type<CodeExamples> | undefined> = new BehaviorSubject<
-		Type<CodeExamples> | undefined
-	>(undefined);
-	private readonly uiUxContentSource: BehaviorSubject<SafeHtml> = new BehaviorSubject<SafeHtml>('');
 
 	private readonly unsubscribe = new Subject<void>();
 
@@ -63,7 +52,6 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	private readonly location = inject(Location);
 
 	ngOnInit(): void {
-		this.initObservables();
 		this.monitorForSlugToIdChanges();
 		this.monitorForPageChanges();
 	}
@@ -81,12 +69,6 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 			: `${this.router.url}/${urlParamForTab}`;
 
 		this.location.replaceState(newUrl);
-	}
-
-	private initObservables(): void {
-		this.apiContent$ = this.apiContentSource.asObservable();
-		this.codeExampleComponent$ = this.codeExampleComponentSource.asObservable();
-		this.uiUxContent$ = this.uiUxContentSource.asObservable();
 	}
 
 	private monitorForPageChanges(): void {
@@ -121,9 +103,6 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 
 		this.cmsData$.pipe(takeUntil(this.unsubscribe)).subscribe((cmsData: CmsData) => {
 			this.title = cmsData.title;
-			this.apiContentSource.next(cmsData.api);
-			this.uiUxContentSource.next(cmsData.uiUx);
-			this.codeExampleComponentSource.next(cmsData.source);
 		});
 	}
 
