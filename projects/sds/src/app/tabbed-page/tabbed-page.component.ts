@@ -26,6 +26,7 @@ import {TabComponent} from '../shared/tabs/tab/tab.component';
 import {TabsComponent} from '../shared/tabs/tabs.component';
 import {CommonModule, Location} from '@angular/common';
 import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
+import {CmsData, TabbedPageComplete} from '../cms/models/tabbed-page.model';
 import {TabNameMapper} from './utils/tab-name-mapper';
 
 @Component({
@@ -120,14 +121,19 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 				distinctUntilChanged(),
 				map(slug => this.slugToIdService.getIdForSlug(slug)),
 				switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
+				map(cmsData => this.buildCmsData(cmsData.data)),
 				takeUntil(this.unsubscribe),
 				delay(0)
 			)
-			.subscribe(cmsData => {
-				this.title = cmsData.data.name;
-				this.apiContentSource.next(cmsData.data.api);
-				this.uiUxContentSource.next(cmsData.data.ui_ux);
-				this.codeExampleComponentSource.next(CodeExamplesMapper.getCodeExampleComponent(cmsData.data.slug));
+			.subscribe((cmsData: CmsData) => {
+				this.title = cmsData.title;
+				this.apiContentSource.next(cmsData.api);
+				this.uiUxContentSource.next(cmsData.uiUx);
+				this.codeExampleComponentSource.next(CodeExamplesMapper.getCodeExampleComponent(cmsData.slug));
 			});
+	}
+
+	private buildCmsData(cmsData: TabbedPageComplete): CmsData {
+		return {title: cmsData.name, api: cmsData.api, uiUx: cmsData.ui_ux, slug: cmsData.slug};
 	}
 }

@@ -14,3 +14,10 @@ export interface TabbedPageComplete {
 	min_version: number;
 	max_version: number;
 }
+
+export interface CmsData {
+	title: string;
+	api: string;
+	uiUx: string;
+	slug: string;
+}
