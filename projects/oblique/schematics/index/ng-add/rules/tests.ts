@@ -58,7 +58,7 @@ function createJestConfigFiles() {
 		addFile(
 			tree,
 			'tests/setupJest.ts',
-			"import 'jest-preset-angular';\nimport './jestGlobalMocks'; // browser mocks globally available for every test"
+			"import 'jest-preset-angular/setup-jest';\nimport './jestGlobalMocks'; // browser mocks globally available for every test"
 		);
 		addFile(tree, 'tests/jestGlobalMocks.ts', getTemplate(tree, 'default-jestGlobalMocks.config'));
 
