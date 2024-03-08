@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewChild, inject} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CodeExampleDirective} from '../code-example.directive';
 import {SourceCode} from './source-code.model';
@@ -21,27 +21,17 @@ export class CodeExampleComponent implements AfterViewInit {
 	@Input() idPrefix = '';
 	@Input() title = '';
 	@Input() preview: PreviewComponent;
-	@ViewChild(CodeExampleDirective) host!: CodeExampleDirective;
 
 	componentId = 'code-example';
 	hasCodeInTitle = false;
-
-	private readonly cdr = inject(ChangeDetectorRef);
 
 	ngAfterViewInit(): void {
 		this.loadComponent();
 	}
 
 	private loadComponent(): void {
-		if (this.host && this.preview) {
-			const {viewContainerRef} = this.host;
-			viewContainerRef.clear();
-			viewContainerRef.createComponent(this.preview);
-			this.cdr.detectChanges(); // This ensures that the CSS of the preview component is loaded
-
-			if (this.title?.includes('<code>')) {
-				this.hasCodeInTitle = true;
-			}
+		if (this.title?.includes('<code>')) {
+			this.hasCodeInTitle = true;
 		}
 	}
 }

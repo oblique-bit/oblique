@@ -1,9 +1,8 @@
-import {Component, Type, ViewChild, inject} from '@angular/core';
+import {Component, ViewChild, inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
-import {CodeExamples} from '../code-examples/code-examples.model';
 import {Observable, ReplaySubject, distinctUntilChanged, filter, map, mergeWith, share, switchMap, tap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
@@ -23,7 +22,6 @@ import {TabNameMapper} from './utils/tab-name-mapper';
 	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe]
 })
 export class TabbedPageComponent {
-	@ViewChild(CodeExampleDirective, {static: false}) codeExample!: CodeExampleDirective;
 	@ViewChild('tabs') tabs: TabsComponent;
 	readonly componentId = 'tabbed-page';
 	readonly cmsData$: Observable<CmsData>;
@@ -66,7 +64,6 @@ export class TabbedPageComponent {
 			map(slug => this.slugToIdService.getIdForSlug(slug)),
 			switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
 			map(cmsData => this.buildCmsData(cmsData.data)),
-			tap(cmsData => this.loadCodeExample(cmsData.source)),
 			tap(cmsData => this.activateTab(cmsData)),
 			share({connector: () => new ReplaySubject(1)})
 		);
@@ -79,17 +76,6 @@ export class TabbedPageComponent {
 			uiUx: cmsData.ui_ux,
 			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug)
 		};
-	}
-
-	private loadCodeExample(codeExampleComponent: Type<CodeExamples> | undefined): void {
-		setTimeout(() => {
-			const {viewContainerRef} = this.codeExample;
-			viewContainerRef.clear();
-
-			if (codeExampleComponent) {
-				viewContainerRef.createComponent<CodeExamples>(codeExampleComponent);
-			}
-		}, 100);
 	}
 
 	private activateTab(cmsData: CmsData): void {
