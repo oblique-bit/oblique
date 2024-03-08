@@ -19,20 +19,12 @@ export class TabsComponent {
 
 	selectTabWithName(tabName: string): void {
 		const foundTab: TabComponent = this.tabs.find(tab => tab.name === tabName && !tab.hidden);
-		if (foundTab) {
-			this.selectTab(foundTab);
-		} else {
-			this.selectTab(this.getDefaultTab());
-		}
+		this.selectTab(foundTab ?? this.getDefaultTab());
 	}
 
 	selectTab(selectedTab: TabComponent): void {
 		this.tabs.toArray().forEach(tab => {
-			if (selectedTab.name === tab.name) {
-				selectedTab.updateActive(true);
-			} else {
-				tab.updateActive(false);
-			}
+			tab.updateActive(selectedTab.name === tab.name);
 		});
 		this.tabChanged.emit(selectedTab.name);
 	}
