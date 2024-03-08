@@ -15,7 +15,8 @@ import {
 	mergeWith,
 	share,
 	switchMap,
-	takeUntil
+	takeUntil,
+	tap
 } from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
@@ -71,7 +72,6 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 	private monitorForPageChanges(): void {
 		this.cmsData$.pipe(takeUntil(this.unsubscribe), debounceTime(1)).subscribe(cmsData => {
 			if (cmsData.api || cmsData.source || cmsData.uiUx) {
-				this.loadCodeExample(cmsData.source);
 				const tabToSelect: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab) ?? '';
 				this.tabs.selectTabWithName(TabNameMapper.getTabNameFromUrlParam(tabToSelect));
 			}
@@ -95,6 +95,7 @@ export class TabbedPageComponent implements OnInit, OnDestroy {
 			map(slug => this.slugToIdService.getIdForSlug(slug)),
 			switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
 			map(cmsData => this.buildCmsData(cmsData.data)),
+			tap(cmsData => this.loadCodeExample(cmsData.source)),
 			share({connector: () => new ReplaySubject(1)})
 		);
 	}
