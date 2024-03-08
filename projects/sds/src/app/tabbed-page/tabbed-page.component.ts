@@ -1,4 +1,4 @@
-import {Component, OnInit, Type, ViewChild, inject} from '@angular/core';
+import {Component, Type, ViewChild, inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
@@ -22,18 +22,18 @@ import {TabNameMapper} from './utils/tab-name-mapper';
 	standalone: true,
 	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe]
 })
-export class TabbedPageComponent implements OnInit {
+export class TabbedPageComponent {
 	@ViewChild(CodeExampleDirective, {static: false}) codeExample!: CodeExampleDirective;
 	@ViewChild('tabs') tabs: TabsComponent;
 	readonly componentId = 'tabbed-page';
-	public cmsData$: Observable<CmsData>;
+	readonly cmsData$: Observable<CmsData>;
 	private readonly activatedRoute = inject(ActivatedRoute);
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
 	private readonly slugToIdService = inject(SlugToIdService);
 	private readonly location = inject(Location);
 
-	ngOnInit(): void {
+	constructor() {
 		this.cmsData$ = this.buildCmsDataObservable();
 	}
 
