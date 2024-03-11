@@ -3,7 +3,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
-import {Observable, ReplaySubject, distinctUntilChanged, filter, map, mergeWith, share, switchMap, tap} from 'rxjs';
+import {Observable, distinctUntilChanged, filter, map, mergeWith, switchMap, tap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -64,8 +64,7 @@ export class TabbedPageComponent {
 			map(slug => this.slugToIdService.getIdForSlug(slug)),
 			switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
 			map(cmsData => this.buildCmsData(cmsData.data)),
-			tap(cmsData => this.activateTab(cmsData)),
-			share({connector: () => new ReplaySubject(1)})
+			tap(cmsData => this.activateTab(cmsData))
 		);
 	}
 
