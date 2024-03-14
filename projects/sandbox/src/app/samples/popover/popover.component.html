@@ -27,8 +27,12 @@
 				Open Popover
 			</p>
 			<ng-template #popover>
-				<p>Popover example. Here goes your content! {{ param }}</p>
-				<button type="button" mat-button>Click me!</button>
+				<div cdkTrapFocus cdkTrapFocusAutoCapture>
+					<p>Popover example. Here goes your content! {{ param }}</p>
+					<button type="button" mat-button>Maybe</button>
+					<button type="button" cdkFocusInitial mat-button>Yes</button>
+					<button type="button" mat-button>Not sure</button>
+				</div>
 			</ng-template>
 		</div>
 	</ng-container>
