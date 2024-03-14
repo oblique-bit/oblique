@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CodeExampleDirective} from '../code-example.directive';
 import {SourceCode} from './source-code.model';
@@ -16,7 +16,7 @@ import {PreviewComponent} from '../code-examples.model';
 	standalone: true,
 	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, HighlightedCodeComponent, IdPipe]
 })
-export class CodeExampleComponent implements AfterViewInit {
+export class CodeExampleComponent implements OnInit {
 	@Input() codeSnippets: SourceCode[] = [];
 	@Input() idPrefix = '';
 	@Input() title = '';
@@ -25,13 +25,7 @@ export class CodeExampleComponent implements AfterViewInit {
 	componentId = 'code-example';
 	hasCodeInTitle = false;
 
-	ngAfterViewInit(): void {
-		this.loadComponent();
-	}
-
-	private loadComponent(): void {
-		if (this.title?.includes('<code>')) {
-			this.hasCodeInTitle = true;
-		}
+	ngOnInit(): void {
+		this.hasCodeInTitle = this.title?.includes('<code>');
 	}
 }
