@@ -472,13 +472,11 @@
 			white-space: normal;
 			position: relative;
 			overflow: visible;
-			margin-top: 5px; // empiric value
 
-			&::before {
+			&::after {
 				content: "";
 				position: absolute;
-				display: block;
-				inset: 0 -12px -1 * core-variables.$ob-spacing-xs -12px;
+				inset: 4px -2px 0; // empiric values
 				background-color: core-variables.$ob-white;
 				opacity: 0.75;
 				z-index: -1;
