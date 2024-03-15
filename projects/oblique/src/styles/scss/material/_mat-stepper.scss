@@ -156,6 +156,10 @@ $offset-lg: 51px;
 					width: calc(50% - 15px);
 				}
 			}
+
+			.mat-step-label {
+				padding-top: variables.$ob-spacing-sm;
+			}
 		}
 	}
 }
