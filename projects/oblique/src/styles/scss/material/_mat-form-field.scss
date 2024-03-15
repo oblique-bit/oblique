@@ -290,11 +290,6 @@
 		&.mat-mdc-form-field-type-mat-select .mdc-floating-label:not(.mdc-floating-label--float-above) {
 			margin-top: -(core-variables.$ob-spacing-xs);
 		}
-
-		.mat-mdc-form-field-error,
-		.mat-mdc-form-field-hint {
-			margin-top: 3px;
-		}
 	}
 
 	.mdc-notched-outline {
@@ -474,7 +469,6 @@
 
 		.mat-mdc-form-field-error,
 		.mat-mdc-form-field-hint {
-			height: auto;
 			white-space: normal;
 			position: relative;
 			overflow: visible;
