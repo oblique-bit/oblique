@@ -15,6 +15,7 @@ mat-step-header.mat-step-header {
 
 	.mat-step-label {
 		color: variables.$ob-secondary-800;
+		font-size: variables.$ob-font-size-normal;
 	}
 
 	&[ng-reflect-state="error"] {
