@@ -1,7 +1,17 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {addDependency, checkPrecondition, getPreconditionVersion} from './ng-add-utils';
 import {ObIOptionsSchema} from './ng-add.model';
-import {checkForStandalone, createSafeRule, infoMigration, infoText, installDependencies, isSuccessful, success, warn} from '../utils';
+import {
+	checkForSSR,
+	checkForStandalone,
+	createSafeRule,
+	infoMigration,
+	infoText,
+	installDependencies,
+	isSuccessful,
+	success,
+	warn
+} from '../utils';
 import {obliqueFeatures} from './rules/obliqueFeatures';
 import {toolchain} from './rules/toolchain';
 import {oblique} from './rules/oblique';
@@ -10,6 +20,7 @@ export function addOblique(_options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
 			checkForStandalone(),
+			checkForSSR(),
 			preconditions(),
 			oblique(_options),
 			obliqueFeatures(_options),
