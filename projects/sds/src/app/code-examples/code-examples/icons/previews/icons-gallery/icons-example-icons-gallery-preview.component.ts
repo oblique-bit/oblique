@@ -7,6 +7,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {Observable, map, startWith} from 'rxjs';
 
 @Component({
 	selector: 'app-icons-example-icons-gallery-preview',
@@ -22,15 +26,25 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 		ObPopoverModule,
 		TranslateModule,
 		MatTooltipModule,
-		ObNotificationModule
+		ObNotificationModule,
+		ReactiveFormsModule,
+		MatFormFieldModule,
+		MatInputModule
 	],
 	standalone: true
 })
 export class IconsExampleIconsGalleryPreviewComponent {
-	icons = Object.values(ObEIcon);
+	iconsFilter = new FormControl('');
+	filteredIcons$: Observable<ObEIcon[]>;
+
 	protected readonly toggleType = ObEToggleType.CLICK;
+	private readonly icons = Object.values(ObEIcon);
 	private readonly notificationService = inject(ObNotificationService);
 	private readonly translateService = inject(TranslateService);
+
+	constructor() {
+		this.filteredIcons$ = this.setUpIconsFilter();
+	}
 
 	public copy(text: string, element = 'Icon name'): void {
 		const timeoutDuration = 4000;
@@ -48,5 +62,16 @@ export class IconsExampleIconsGalleryPreviewComponent {
 					timeout: timeoutDuration
 				})
 		);
+	}
+
+	private setUpIconsFilter(): Observable<ObEIcon[]> {
+		return this.iconsFilter.valueChanges.pipe(
+			map(txt => this.filterIcons(txt)),
+			startWith(this.icons)
+		);
+	}
+
+	private filterIcons(text: string): ObEIcon[] {
+		return this.icons.filter(iconName => iconName.toLowerCase().includes(text.toLowerCase()));
 	}
 }
