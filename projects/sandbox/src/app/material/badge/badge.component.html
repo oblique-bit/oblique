@@ -1,7 +1,9 @@
 <h2 class="page-header">Badge</h2>
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
-		<p [matBadge]="badgeContent" matBadgeOverlap="false" [matBadgePosition]="position" [matBadgeColor]="color">Text with a badge</p>
+		<p>
+			<span [matBadge]="badgeContent" matBadgeOverlap="false" [matBadgePosition]="position" [matBadgeColor]="color">Text with a badge</span>
+		</p>
 		<p>
 			Button with a badge
 			<button
@@ -17,7 +19,7 @@
 		</p>
 		<p>
 			Icon with a badge
-			<mat-icon [matBadge]="badgeContent" [matBadgePosition]="position" [matBadgeColor]="color">home</mat-icon>
+			<mat-icon [matBadge]="badgeContent" [matBadgePosition]="position" [matBadgeColor]="color" svgIcon="home" />
 		</p>
 	</ng-container>
 	<ng-container column-right-content>
