@@ -21,6 +21,29 @@
 			Icon with a badge
 			<mat-icon [matBadge]="badgeContent" [matBadgePosition]="position" [matBadgeColor]="color" svgIcon="home" />
 		</p>
+		<p>
+			Badge overlapping the next element
+			<button
+				type="button"
+				mat-raised-button
+				color="primary"
+				[matBadge]="badgeContent"
+				[matBadgePosition]="position"
+				[matBadgeColor]="color"
+			>
+				Action
+			</button>
+			<button
+				type="button"
+				mat-raised-button
+				color="primary"
+				[matBadge]="badgeContent"
+				[matBadgePosition]="position"
+				[matBadgeColor]="color"
+			>
+				Action
+			</button>
+		</p>
 	</ng-container>
 	<ng-container column-right-content>
 		<h3>Controls</h3>
