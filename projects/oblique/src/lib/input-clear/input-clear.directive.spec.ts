@@ -14,7 +14,7 @@ import {ObInputClearDirective} from './input-clear.directive';
 		<mat-form-field>
 			<mat-label>Test input</mat-label>
 			<input type="text" matInput formControlName="field1" />
-			<button type="button" role="button" [obInputClear]="testForm.get('field1')">
+			<button type="button" [obInputClear]="testForm.get('field1')">
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
@@ -36,7 +36,7 @@ class UntypedReactiveFormTestComponent {
 		<mat-form-field>
 			<mat-label>Test input</mat-label>
 			<input type="text" matInput formControlName="field1" />
-			<button type="button" role="button" [obInputClear]="testForm.get('field1')">
+			<button type="button" [obInputClear]="testForm.get('field1')">
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
@@ -58,7 +58,7 @@ class StronglyTypedReactiveFormTestComponent {
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
 			<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="testModel" #control="ngModel" />
-			<button type="button" role="button" [obInputClear]="control">
+			<button type="button" [obInputClear]="control">
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
@@ -73,7 +73,7 @@ class TemplateDrivenFormTestComponent {
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
 			<input type="text" matInput placeholder="Mandatory" required #control />
-			<button type="button" role="button" [obInputClear]="control">
+			<button type="button" [obInputClear]="control">
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
@@ -86,7 +86,7 @@ class HtmlInputTestComponent {}
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
 			<input type="text" matInput placeholder="Mandatory" required />
-			<button type="button" role="button" [obInputClear]="testModel">
+			<button type="button" [obInputClear]="testModel">
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
