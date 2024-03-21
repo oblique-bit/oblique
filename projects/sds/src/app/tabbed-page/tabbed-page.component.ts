@@ -39,12 +39,23 @@ export class TabbedPageComponent implements OnInit {
 
 	handleTabChanged(tabName: string): void {
 		const urlParamForTab: string = TabNameMapper.getUrlParamForTabName(tabName);
+		const snapshotTabParam = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab);
+		let fragment: RegExpExecArray;
 
-		const newUrl: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab)
-			? this.router.url.replace(/[^/]*$/, urlParamForTab)
-			: `${this.router.url}/${urlParamForTab}`;
+		//if we don't navigate using the sidebar navigation but directly, check for a fragment
+		if (this.location.path(true) === this.router.url && snapshotTabParam === urlParamForTab) {
+			//getting fragment using path and not snapshot because snapshot is not up to date
+			fragment = /(?<=#).*/.exec(this.location.path(true));
+		}
 
+		const params = fragment ? `${urlParamForTab}#${fragment[0]}` : urlParamForTab;
+		const newUrl: string = snapshotTabParam ? this.router.url.replace(/[^/]*$/, params) : `${this.router.url}/${params}`;
 		this.location.replaceState(newUrl);
+
+		if (fragment) {
+			const el = document.getElementById(fragment[0]);
+			el?.scrollIntoView();
+		}
 	}
 
 	private buildCmsDataObservable(): Observable<CmsData> {
