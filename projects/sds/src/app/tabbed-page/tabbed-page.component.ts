@@ -82,12 +82,14 @@ export class TabbedPageComponent implements OnInit {
 	}
 
 	private loadCodeExample(codeExampleComponent: Type<CodeExamples> | undefined): void {
-		const {viewContainerRef} = this.codeExample;
-		viewContainerRef.clear();
+		setTimeout(() => {
+			const {viewContainerRef} = this.codeExample;
+			viewContainerRef.clear();
 
-		if (codeExampleComponent) {
-			viewContainerRef.createComponent<CodeExamples>(codeExampleComponent);
-		}
+			if (codeExampleComponent) {
+				viewContainerRef.createComponent<CodeExamples>(codeExampleComponent);
+			}
+		}, 100);
 	}
 
 	private activateTab(cmsData: CmsData): void {
