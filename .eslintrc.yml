@@ -49,6 +49,7 @@ overrides:
     parserOptions:
       project:
         - tsconfig.json
+        - tsconfig.other.json
       createDefaultProgram: true
     extends:
       - eslint:all
@@ -162,34 +163,6 @@ overrides:
         - error
         - ignoreDeclarationSort: true
 
-      # rules that need some refactoring to be enabled
-      "@angular-eslint/consistent-component-styles": off
-      "@angular-eslint/prefer-standalone": off
-      "@angular-eslint/prefer-standalone-component": off
-      "@typescript-eslint/max-params": off
-      "@typescript-eslint/no-explicit-any": off
-      "@typescript-eslint/explicit-module-boundary-types": off
-      "@typescript-eslint/no-unsafe-member-access": off
-      "@typescript-eslint/no-unsafe-assignment": off
-      "@typescript-eslint/strict-boolean-expressions": off
-      "@typescript-eslint/no-unnecessary-condition": off
-      "@typescript-eslint/no-unsafe-argument": off
-      "@typescript-eslint/no-magic-numbers": off
-      "@typescript-eslint/no-misused-promises": off # this rule had an error with the update to eslint 8.25.0
-      "@typescript-eslint/no-unsafe-call": off
-      "@typescript-eslint/naming-convention": off
-      "@typescript-eslint/prefer-destructuring": off
-      "@typescript-eslint/prefer-nullish-coalescing": off
-      max-params: off
-      no-warning-comments: off
-
-  - files:
-      - mock-*.ts
-    rules:
-      "@angular-eslint/component-max-inline-declarations": off
-      "@typescript-eslint/no-unused-vars": off
-      "@typescript-eslint/no-empty-function": off
-
   - files:
       - "*.spec.ts"
     rules:
@@ -205,17 +178,23 @@ overrides:
       max-statements: off
 
   - files:
-      - "schematics/**/*.ts"
+      - "scripts/**/*.ts"
     rules:
-      max-lines: off
-      max-lines-per-function: off
-      max-statements: off
-      no-param-reassign: off
+      "@typescript-eslint/max-params": off
+      "@typescript-eslint/no-magic-numbers": off
+      "@typescript-eslint/no-unnecessary-condition": off
+      "@typescript-eslint/prefer-destructuring": off
+      "@typescript-eslint/prefer-nullish-coalescing": off
+      "@typescript-eslint/strict-boolean-expressions": off
 
   - files:
-      - "*.decorator.ts"
+      - "tests/*.ts"
     rules:
-      max-lines-per-function: off
+      "@typescript-eslint/no-unnecessary-condition": off
+      "@typescript-eslint/prefer-nullish-coalescing": off
+      "@typescript-eslint/strict-boolean-expressions": off
+      "@typescript-eslint/no-explicit-any": off
+      "@typescript-eslint/no-unsafe-member-access": off
 
   - files:
       - "*.html"
@@ -225,12 +204,3 @@ overrides:
       # deactivate unwanted rules
       "@angular-eslint/template/i18n": off
       "@angular-eslint/template/use-track-by-function": off
-
-      # rules that need some refactoring to be enabled
-      "@angular-eslint/template/click-events-have-key-events": off
-      "@angular-eslint/template/cyclomatic-complexity": off
-      "@angular-eslint/template/no-call-expression": off
-      "@angular-eslint/template/attributes-order": off
-      "@angular-eslint/template/no-inline-styles": off
-      "@angular-eslint/template/accessibility-interactive-supports-focus": off
-      "@angular-eslint/template/prefer-control-flow": off
