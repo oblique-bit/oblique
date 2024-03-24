@@ -4,6 +4,8 @@
   "scripts": {
     "start": "ng serve",
     "start-pams": "ng serve --configuration pams",
+    "lint": "ts-node scripts/lint.ts",
+    "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test sandbox",
     "build": "ng build"
   },
