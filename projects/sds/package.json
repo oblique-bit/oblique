@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "start": "ng serve",
+    "lint": "ts-node scripts/lint.ts",
+    "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test sds",
     "build": "ng build && ts-node scripts/post-dist/copy-nginx.ts",
     "add-code-example": "npm run schematics-build && cd ../../ && schematics ./projects/sds/schematics/collection:add-code-example --dry-run=false",

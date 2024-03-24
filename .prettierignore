@@ -1,4 +1,0 @@
-# ignore generated files
-projects/sds/schematics/src/**/*.js
-projects/sds/schematics/src/add-code-example/templates/**/*
-projects/sds/schematics/src/add-preview/templates/**/*
