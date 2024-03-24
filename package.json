@@ -23,8 +23,8 @@
     "projects/service-navigation-web-component"
   ],
   "scripts": {
-    "lint": "npm run lint -w @oblique/oblique && npm run lint -w sandbox && npm run lint -w swiss-design-system && ts-node scripts/lint.ts",
-    "format": "npm run format -w @oblique/oblique && npm run format -w sandbox && npm run format -w swiss-design-system  && ts-node scripts/lint.ts --fix",
+    "lint": "npm run lint -ws && ts-node scripts/lint.ts",
+    "format": "npm run format -ws && ts-node scripts/lint.ts --fix",
     "dependencies-update": "ts-node scripts/update-dependencies.ts",
     "postinstall": "ts-node scripts/sanitize-package-lock.ts",
     "hook-pre-commit": "npx lint-staged",
