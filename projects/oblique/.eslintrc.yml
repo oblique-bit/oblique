@@ -1,6 +1,7 @@
 extends: "../../.eslintrc.yml"
 ignorePatterns:
-  - "!**/*"
+  - styles/**/*
+  - schematics/**/*.js
 overrides:
   - files:
       - "*.ts"

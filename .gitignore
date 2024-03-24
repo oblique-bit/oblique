@@ -43,6 +43,7 @@ testem.log
 /jest-report/*
 .eslintcache
 .stylelintcache
+.prettiercache
 
 # e2e
 /e2e/*.js

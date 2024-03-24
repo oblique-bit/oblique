@@ -5,6 +5,8 @@
     "registry": "https://registry.npmjs.com/"
   },
   "scripts": {
+    "lint": "ts-node scripts/lint.ts",
+    "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test oblique",
     "test-debugging": "cd ../.. && node --expose-gc ../../node_modules/@angular/cli/bin/ng run oblique:test:development --log-heap-usage",
     "prebuild": "ts-node scripts/pre-dist/run-pre-dist-steps.ts && ng build oblique-styles",
