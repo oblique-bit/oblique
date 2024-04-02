@@ -290,11 +290,6 @@
 		&.mat-mdc-form-field-type-mat-select .mdc-floating-label:not(.mdc-floating-label--float-above) {
 			margin-top: -(core-variables.$ob-spacing-xs);
 		}
-
-		.mat-mdc-form-field-error,
-		.mat-mdc-form-field-hint {
-			margin-top: 3px;
-		}
 	}
 
 	.mdc-notched-outline {
@@ -445,15 +440,10 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		margin-top: 2px;
-	}
-
-	.mat-mdc-form-field-hint-wrapper,
-	.mat-mdc-form-field-error-wrapper {
-		margin-top: 1px;
+		margin-top: -3px;
 
 		.ob-form-sm & {
-			margin-top: 2px;
+			margin-top: 0;
 		}
 	}
 
@@ -474,17 +464,14 @@
 
 		.mat-mdc-form-field-error,
 		.mat-mdc-form-field-hint {
-			height: auto;
 			white-space: normal;
 			position: relative;
 			overflow: visible;
-			margin-top: 5px; // empiric value
 
-			&::before {
+			&::after {
 				content: "";
 				position: absolute;
-				display: block;
-				inset: 0 -12px -1 * core-variables.$ob-spacing-xs -12px;
+				inset: 4px -2px 0; // empiric values
 				background-color: core-variables.$ob-white;
 				opacity: 0.75;
 				z-index: -1;

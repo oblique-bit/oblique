@@ -15,6 +15,7 @@ mat-step-header.mat-step-header {
 
 	.mat-step-label {
 		color: variables.$ob-secondary-800;
+		font-size: variables.$ob-font-size-normal;
 	}
 
 	&[ng-reflect-state="error"] {
@@ -155,6 +156,10 @@ $offset-lg: 51px;
 				@at-root #{selector.append(".mat-stepper-sm", &)} {
 					width: calc(50% - 15px);
 				}
+			}
+
+			.mat-step-label {
+				padding-top: variables.$ob-spacing-sm;
 			}
 		}
 	}

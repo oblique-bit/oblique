@@ -4,6 +4,7 @@ import {
 	addImport,
 	addInjectionInClass,
 	applyInTree,
+	checkForSSR,
 	checkForStandalone,
 	createSafeRule,
 	getAngularConfigs,
@@ -27,6 +28,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 		return (tree: Tree, _context: SchematicContext) =>
 			chain([
 				checkForStandalone(),
+				checkForSSR(),
 				this.replaceObPopUpWithWindowInTests(),
 				this.replaceObPopUpWithWindow(),
 				this.removeInputVariantInNavTree(),

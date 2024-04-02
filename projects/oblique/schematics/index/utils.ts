@@ -75,6 +75,15 @@ export function checkForStandalone(): Rule {
 	};
 }
 
+export function checkForSSR(): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		infoMigration(_context, 'Check if application uses SSR');
+		if (getAngularConfigs(tree, ['architect', 'build', 'options', 'ssr', 'entry']).length) {
+			error('SSR application detected. Oblique is not yet compatible with SSR applications. SSR needs to be deactivated.');
+		}
+	};
+}
+
 export function infoHighlights(context: SchematicContext, msg: string, ...highlights: string[]): void {
 	const message = highlights.reduce((text, highlight) => text.replace('%c', colors.bold(highlight)), msg);
 	context.logger.info(`${message}\n`);

@@ -1,3 +1,20 @@
+# [11.0.1](https://github.com/oblique-bit/oblique/compare/11.0.0...11.0.1) (2024-04-02)
+
+## Bug Fixes
+
+- **autocomplete:** ensure that results are vertically aligned ([d2edee9](https://github.com/oblique-bit/oblique/commit/d2edee96a55430950f0aa253b16ac0fcfa3c81a1))
+- **material:** ensure hint and error are displayed right below their form element ([421f4a9](https://github.com/oblique-bit/oblique/commit/421f4a96cf3c2f07bd5e9060512ed110c98df8c9))
+- **material:** ensure hint and error don't move when hovered ([b25a9dc](https://github.com/oblique-bit/oblique/commit/b25a9dca87bd2994be6d28a93d21e8c7d7eb9218))
+- **material:** keep font-size constant for stepper label ([646960f](https://github.com/oblique-bit/oblique/commit/646960f3318d0e68be43b52e96f1cf4d195b5f48))
+- **material:** make sure badges are displayed above any following element ([1896545](https://github.com/oblique-bit/oblique/commit/18965451b7e91914231fd417a8e8f37b9e619cfe))
+- **material:** reduce top padding for horizontal stepper label ([0c9679e](https://github.com/oblique-bit/oblique/commit/0c9679e9df2eddde4ebfa3104d90afa49971bbbc))
+- **popover:** add support for `cdkFocusInitial` ([c15e624](https://github.com/oblique-bit/oblique/commit/c15e624474e83b053f4342d8be3f4b212cc8b2a6))
+- **schematics:** add SSR check ([8003621](https://github.com/oblique-bit/oblique/commit/800362132a2f0470a8806fcba7cbd63d7c7cd43d))
+- **schematics:** correct `jest-preset-angular` import in the `setupJest` file ([c481fea](https://github.com/oblique-bit/oblique/commit/c481fea5a45d742c20a22ea20baa13ed0e79d61a))
+- **schematics:** correct link to changelog ([4ad1161](https://github.com/oblique-bit/oblique/commit/4ad11614aeb48386bf53e429f59402f0254e3513))
+- **styles:** make sure `ob-media-breakpoint-up` and `ob-media-breakpoint-down` don't overlap ([ef18834](https://github.com/oblique-bit/oblique/commit/ef188340684a8923c2f46a7b9eb5ee84c4f1ac5d))
+- **oblique:** inject `window` for ssr compatibility ([3fdbf89](https://github.com/oblique-bit/oblique/commit/3fdbf89fc6b212f27131ed8c7da66727b12fa8cc))
+
 # [11.0.0](https://github.com/oblique-bit/oblique/compare/10.3.1...11.0.0) (2024-02-22)
 
 ## Bug Fixes

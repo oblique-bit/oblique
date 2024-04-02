@@ -1,7 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {BehaviorSubject, Subscription, filter} from 'rxjs';
+import {Observable, concatWith, filter, first, map, switchMap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {CmsDataService} from '../cms/cms-data.service';
@@ -15,54 +15,24 @@ import {CommonModule} from '@angular/common';
 	standalone: true,
 	imports: [CommonModule, IdPipe]
 })
-export class TextPageComponent implements OnInit, OnDestroy {
+export class TextPageComponent {
 	readonly componentId = 'text-page';
+	readonly selectedContent$: Observable<SafeHtml>;
 
-	readonly selectedContent$: BehaviorSubject<SafeHtml> = new BehaviorSubject<SafeHtml>('');
+	constructor() {
+		const cmsDataService = inject(CmsDataService);
+		const slugToIdService = inject(SlugToIdService);
+		const domSanitizer = inject(DomSanitizer);
+		const router = inject(Router);
+		const activatedRoute = inject(ActivatedRoute);
 
-	private readonly subscriptions: Subscription[] = [];
-
-	// eslint-disable-next-line max-params
-	constructor(
-		private readonly cmsDataService: CmsDataService,
-		private readonly slugToIdService: SlugToIdService,
-		private readonly domSanitizer: DomSanitizer,
-		private readonly router: Router,
-		private readonly activatedRoute: ActivatedRoute
-	) {}
-
-	ngOnInit(): void {
-		this.subscriptions.push(
-			this.slugToIdService.readyToMap.subscribe(() => {
-				this.getContentForSelectedSlug();
-				this.reactToNavigationEnd();
-			})
-		);
-	}
-
-	ngOnDestroy(): void {
-		this.subscriptions.forEach(subscription => subscription.unsubscribe());
-	}
-
-	private reactToNavigationEnd(): void {
-		this.subscriptions.push(
-			this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-				this.getContentForSelectedSlug();
-			})
-		);
-	}
-
-	private getContentForSelectedSlug(): void {
-		const slug: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? '';
-		const id: number = this.slugToIdService.getIdForSlug(slug);
-		this.getContent(id);
-	}
-
-	private getContent(id: number): void {
-		this.subscriptions.push(
-			this.cmsDataService
-				.getTextPagesComplete(id)
-				.subscribe(cmsData => this.selectedContent$.next(this.domSanitizer.bypassSecurityTrustHtml(cmsData.data.description)))
+		this.selectedContent$ = slugToIdService.readyToMap.pipe(
+			first(),
+			concatWith(router.events.pipe(filter(event => event instanceof NavigationEnd))),
+			map(() => activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
+			map(slug => slugToIdService.getIdForSlug(slug)),
+			switchMap(id => cmsDataService.getTextPagesComplete(id)),
+			map(cmsData => domSanitizer.bypassSecurityTrustHtml(cmsData.data.description))
 		);
 	}
 }

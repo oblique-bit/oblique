@@ -73,12 +73,12 @@ export class ObOptionLabelIconDirective implements OnChanges {
 	}
 
 	private setupIconPositionStyle(span: HTMLSpanElement, host: HTMLElement, iconPosition: OptionLabelIconPosition): void {
-		if (iconPosition === 'start') {
-			this.renderer.setStyle(host, 'display', 'block');
-		} else if (iconPosition === 'end') {
-			this.renderer.setStyle(host, 'display', 'flex');
+		if (iconPosition === 'end') {
 			this.renderer.setStyle(host, 'align-items', 'center');
 			this.renderer.setStyle(span, 'margin-left', 'auto');
+		}
+		if (['start', 'end'].includes(iconPosition)) {
+			this.renderer.setStyle(host, 'display', 'flex');
 		} else {
 			this.removeIcon(this.iconSpan, this.host);
 		}

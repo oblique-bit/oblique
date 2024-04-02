@@ -38,6 +38,6 @@ describe(BadgeCodeExamplesComponent.name, () => {
 	});
 
 	test(`that there are 11 ${MatBadge.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatBadge)).length).toBe(11);
+		expect(fixture.debugElement.queryAll(By.directive(MatBadge)).length).toBe(10);
 	});
 });

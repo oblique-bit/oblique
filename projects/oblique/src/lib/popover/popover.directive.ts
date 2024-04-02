@@ -129,12 +129,12 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 			this.listenForCloseEvent();
 		}
 
+		const parent = this.appendToBody ? this.body : this.host.parentNode;
+		const referenceNode = this.appendToBody ? null : this.host.nextSibling;
+		this.renderer.insertBefore(parent, this.popover, referenceNode);
+		this.instance = createPopper(this.host, this.popover, defaultConfig);
 		// without the setTimeout, the options aren't applied
 		setTimeout(() => {
-			const parent = this.appendToBody ? this.body : this.host.parentNode;
-			const referenceNode = this.appendToBody ? null : this.host.nextSibling;
-			this.renderer.insertBefore(parent, this.popover, referenceNode);
-			this.instance = createPopper(this.host, this.popover, defaultConfig);
 			this.setPopperOptionsAndUpdate();
 		});
 	}

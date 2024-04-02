@@ -1,8 +1,9 @@
-import {Directive, ElementRef, HostBinding, Inject, Input, OnChanges, OnDestroy, OnInit, Optional, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostBinding, Inject, Input, OnChanges, OnDestroy, OnInit, Optional, Renderer2, inject} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, switchMap} from 'rxjs';
 import {first, startWith, takeUntil, tap} from 'rxjs/operators';
+import {WINDOW} from './../utilities';
 import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 
 @Directive({
@@ -25,6 +26,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	private readonly isLinkExternal$ = new Subject<boolean>();
 	private defaultRel: string;
 	private defaultTarget: string;
+	private readonly window: Window = inject(WINDOW);
 
 	constructor(
 		@Optional() @Inject(EXTERNAL_LINK) private readonly config,
@@ -64,7 +66,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 
 	private isUrlExternal(url: string | undefined): boolean {
 		if (this.isExternalLink === 'auto') {
-			return url ? !url.includes(window.location.host) : false;
+			return url ? !url.includes(this.window.location.host) : false;
 		}
 		return this.isExternalLink;
 	}

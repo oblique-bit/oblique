@@ -1,32 +1,49 @@
 <h2 class="page-header">Badge</h2>
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
-		<mat-list>
-			<mat-list-item>
-				<p [matBadge]="badgeContent" matBadgeOverlap="false" [matBadgePosition]="position" [matBadgeColor]="color">Text with a badge</p>
-			</mat-list-item>
-			<mat-list-item>
-				<p>
-					Button with a badge
-					<button
-						type="button"
-						mat-raised-button
-						color="primary"
-						[matBadge]="badgeContent"
-						[matBadgePosition]="position"
-						[matBadgeColor]="color"
-					>
-						Action
-					</button>
-				</p>
-			</mat-list-item>
-			<mat-list-item>
-				<p>
-					Icon with a badge
-					<mat-icon [matBadge]="badgeContent" [matBadgePosition]="position" [matBadgeColor]="color">home</mat-icon>
-				</p>
-			</mat-list-item>
-		</mat-list>
+		<p>
+			<span [matBadge]="badgeContent" matBadgeOverlap="false" [matBadgePosition]="position" [matBadgeColor]="color">Text with a badge</span>
+		</p>
+		<p>
+			Button with a badge
+			<button
+				type="button"
+				mat-raised-button
+				color="primary"
+				[matBadge]="badgeContent"
+				[matBadgePosition]="position"
+				[matBadgeColor]="color"
+			>
+				Action
+			</button>
+		</p>
+		<p>
+			Icon with a badge
+			<mat-icon [matBadge]="badgeContent" [matBadgePosition]="position" [matBadgeColor]="color" svgIcon="home" />
+		</p>
+		<p>
+			Badge overlapping the next element
+			<button
+				type="button"
+				mat-raised-button
+				color="primary"
+				[matBadge]="badgeContent"
+				[matBadgePosition]="position"
+				[matBadgeColor]="color"
+			>
+				Action
+			</button>
+			<button
+				type="button"
+				mat-raised-button
+				color="primary"
+				[matBadge]="badgeContent"
+				[matBadgePosition]="position"
+				[matBadgeColor]="color"
+			>
+				Action
+			</button>
+		</p>
 	</ng-container>
 	<ng-container column-right-content>
 		<h3>Controls</h3>

@@ -1,4 +1,4 @@
-organization: bit-sds
+organization: bit-oblique
 caasp_version: 4
 applications:
   - name: swiss-design-system
@@ -10,4 +10,4 @@ applications:
     memory: 128M
     routes:
       - route: oblique.bit.admin.ch
-      - route: sds-dev.app.cfap02.atlantica.admin.ch
+      - route: sds-prod.app.cfap02.atlantica.admin.ch

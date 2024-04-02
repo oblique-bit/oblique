@@ -1,4 +1,5 @@
-import {AfterContentInit, Directive, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
+import {AfterContentInit, Directive, EventEmitter, HostBinding, HostListener, Input, Output, inject} from '@angular/core';
+import {WINDOW} from './../utilities';
 import {ObSelectableDirective} from './selectable.directive';
 
 @Directive({
@@ -17,7 +18,7 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 	private focused: number;
 	private prevFocused: number;
 	private startFocused: number;
-	private readonly window: Window;
+	private readonly window: Window = inject(WINDOW);
 	private readonly modeToggle = {
 		checkbox: this.checkboxSelect.bind(this),
 		radio: this.radioSelect.bind(this),
@@ -25,7 +26,6 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 	};
 
 	constructor() {
-		this.window = window; // because AoT don't accept interfaces as DI
 		this.mode$.subscribe(mode => {
 			this.role = mode === 'radio' ? 'radiogroup' : 'group';
 			if (mode === 'radio') {
