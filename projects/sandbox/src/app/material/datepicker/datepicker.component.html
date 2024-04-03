@@ -37,4 +37,14 @@
 		<mat-date-range-picker #rangeDatepicker />
 		<mat-error />
 	</mat-form-field>
+
+	<h3>Filter</h3>
+	<mat-form-field obErrorMessages>
+		<mat-label>Choose a to date</mat-label>
+		<input formControlName="filterControl" matInput [matDatepickerFilter]="myFilter" [matDatepicker]="filterDatepicker" />
+		<mat-hint>Filter prevents Saturday & Sunday from being selected</mat-hint>
+		<mat-datepicker-toggle matSuffix [for]="filterDatepicker" />
+		<mat-datepicker #filterDatepicker />
+		<mat-error />
+	</mat-form-field>
 </form>

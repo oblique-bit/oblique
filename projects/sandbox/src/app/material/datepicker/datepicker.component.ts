@@ -33,7 +33,8 @@ export class DatepickerComponent implements OnInit {
 	ngOnInit(): void {
 		this.adapter.setLocale('de-CH');
 		this.untypedForm = this.formBuilder.group({
-			minMaxControl: []
+			minMaxControl: [],
+			filterControl: []
 		});
 	}
 
@@ -44,4 +45,10 @@ export class DatepickerComponent implements OnInit {
 			this.minFromDate = new Date(event.value.getFullYear(), event.value.getMonth(), event.value.getDate() - 30);
 		}
 	}
+
+	myFilter = (date: Date | null): boolean => {
+		const day = (date || new Date()).getDay();
+		// Prevent Saturday and Sunday from being selected.
+		return day !== 0 && day !== 6;
+	};
 }
