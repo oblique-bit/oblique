@@ -7,7 +7,7 @@ class Release {
 	static perform(): void {
 		const {version, issue} = Release.parseBranchName();
 		Release.bumpVersion(version);
-		Changelog.perform();
+		Changelog.perform(version);
 		Release.commit(version, issue);
 	}
 
