@@ -1,6 +1,7 @@
 import {execSync} from 'child_process';
-import {createWriteStream, readFileSync, writeFileSync} from 'fs';
+import {writeFileSync} from 'fs';
 import path from 'path';
+import {Changelog} from './changelog';
 import {version as packageVersion} from '../../../../package.json';
 
 interface Version {
@@ -10,13 +11,10 @@ interface Version {
 }
 
 class Release {
-	// conventionalChangelog is not available as an ESM module therefore it has to be imported with require and not with import
-	private static readonly conventionalChangelog = require('conventional-changelog');
-
 	static perform(preVersion?: string): void {
 		const nextVersion = Release.computeVersion(Release.splitVersion(packageVersion), preVersion);
 		Release.bumpVersion(nextVersion);
-		Release.writeChangelog();
+		Changelog.perform();
 	}
 
 	private static splitVersion(version): Version {
@@ -57,32 +55,6 @@ class Release {
 		process.chdir('../..'); // so that the release is made with the info of the root package.json
 		execSync(`npm version ${version}`);
 		writeFileSync(path.join('projects', 'oblique', 'src', 'lib', 'version.ts'), `export const appVersion = '${version}';\n`, {flag: 'w'});
-	}
-
-	private static writeChangelog(): void {
-		const changelog: string = readFileSync('CHANGELOG.md').toString();
-		const stream = createWriteStream('CHANGELOG.md');
-		stream.on('finish', () => {
-			const newLog: string = readFileSync('CHANGELOG.md')
-				.toString()
-				.replace(Release.getLinesWithNonObliquePrefix(), '')
-				.replace(Release.getObliquePrefix(), '')
-				.replace(/##(?<title>.*)\n/g, '#$<title>')
-				.replace(/\n\n\n/g, '\n\n');
-			writeFileSync('CHANGELOG.md', newLog + changelog);
-		});
-		Release.conventionalChangelog({
-			preset: 'angular',
-			tagPrefix: ''
-		}).pipe(stream);
-	}
-
-	private static getLinesWithNonObliquePrefix(): RegExp {
-		return /^[-*] \*{2}(?!oblique)[a-z-]+\/[a-z-]+:\*{2}.*$\n/g;
-	}
-
-	private static getObliquePrefix(): RegExp {
-		return /(?<=[-*] \*{2})oblique\/(?=[a-z-]+:\*{2})/g;
 	}
 }
 
