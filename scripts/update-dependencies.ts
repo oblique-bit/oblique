@@ -3,7 +3,7 @@ import {execSync} from 'child_process';
 class UpdateDependencies {
 	static perform(): void {
 		UpdateDependencies.execute('npm update --save --audit false');
-		UpdateDependencies.execute('npm audit fix');
+		UpdateDependencies.execute('npm audit fix --audit-level=none');
 		UpdateDependencies.execute('npm dedupe --audit false');
 		UpdateDependencies.execute('npm prune --audit false');
 		UpdateDependencies.commit('chore(toolchain): update dependencies and refactor accordingly');
