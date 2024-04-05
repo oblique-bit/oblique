@@ -162,6 +162,20 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "pams": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/sandbox/src/environments/environment.ts",
+                  "with": "projects/sandbox/src/environments/environment.pams.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -177,6 +191,10 @@
             },
             "development": {
               "buildTarget": "sandbox:build:development"
+            },
+            "pams": {
+              "buildTarget": "sandbox:build:pams",
+              "port": 3000
             }
           },
           "defaultConfiguration": "development"
