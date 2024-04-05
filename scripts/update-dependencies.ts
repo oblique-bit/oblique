@@ -10,7 +10,7 @@ class UpdateDependencies {
 	}
 
 	private static execute(command: string): void {
-		execSync(command, {stdio: 'inherit'});
+		execSync(`${command} --fund false`, {stdio: 'inherit'});
 	}
 
 	private static commit(header: string): void {
