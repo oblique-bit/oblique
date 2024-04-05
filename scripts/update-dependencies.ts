@@ -1,8 +1,18 @@
 import {execSync} from 'child_process';
 import {Commit} from './commit';
 
-execSync('npm update --save --audit false', {stdio: 'inherit'});
-execSync('npm audit fix', {stdio: 'inherit'});
-execSync('npm dedupe --audit false', {stdio: 'inherit'});
-execSync('npm prune --audit false', {stdio: 'inherit'});
-Commit.perform('chore(toolchain): update dependencies and refactor accordingly');
+class UpdateDependencies {
+	static perform(): void {
+		UpdateDependencies.execute('npm update --save --audit false');
+		UpdateDependencies.execute('npm audit fix');
+		UpdateDependencies.execute('npm dedupe --audit false');
+		UpdateDependencies.execute('npm prune --audit false');
+		Commit.perform('chore(toolchain): update dependencies and refactor accordingly');
+	}
+
+	private static execute(command: string): void {
+		execSync(command, {stdio: 'inherit'});
+	}
+}
+
+UpdateDependencies.perform();
