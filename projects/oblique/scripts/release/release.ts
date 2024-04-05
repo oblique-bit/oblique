@@ -1,6 +1,7 @@
 import {execSync} from 'child_process';
 import {writeFileSync} from 'fs';
 import path from 'path';
+import {Commit} from '../../../../scripts/commit';
 import {Changelog} from './changelog';
 
 class Release {
@@ -8,6 +9,7 @@ class Release {
 		const nextVersion = Release.getVersionFromBranchName();
 		Release.bumpVersion(nextVersion);
 		Changelog.perform();
+		Commit.perform(`chore(toolchain): release version ${process.env.npm_package_version}`);
 	}
 
 	private static getVersionFromBranchName(): string {
