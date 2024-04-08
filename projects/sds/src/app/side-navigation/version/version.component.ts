@@ -1,10 +1,14 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatOption, MatSelect} from '@angular/material/select';
+import {MatTooltip} from '@angular/material/tooltip';
 import {CmsDataService} from '../../cms/cms-data.service';
 import {Version} from '../../cms/models/version.model';
 import {BehaviorSubject, Subscription} from 'rxjs';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
+import {ObSelectDirective} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-version',
@@ -12,7 +16,7 @@ import {CommonModule} from '@angular/common';
 	styleUrls: ['./version.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [ReactiveFormsModule, CommonModule, IdPipe]
+	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, ObSelectDirective, MatLabel, MatTooltip]
 })
 export class VersionComponent implements OnDestroy, OnInit {
 	@Input() idPrefix = '';
