@@ -23,7 +23,7 @@ export class VersionComponent {
 	@Output() readonly versionChanged: Observable<number>;
 
 	readonly componentId = 'version';
-	selectedVersion = new FormControl<number | undefined>(undefined);
+	readonly selectedVersion = new FormControl<number | undefined>(undefined);
 	readonly versions$: Observable<number[]>;
 	private readonly cmsDataService = inject(CmsDataService);
 
