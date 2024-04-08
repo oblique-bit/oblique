@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {VersionComponent} from './version.component';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe(VersionComponent.name, () => {
 	let component: VersionComponent;
@@ -10,7 +11,7 @@ describe(VersionComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule, ReactiveFormsModule, IdPipe, VersionComponent],
+			imports: [HttpClientTestingModule, ReactiveFormsModule, IdPipe, VersionComponent, NoopAnimationsModule],
 			providers: []
 		}).compileComponents();
 
