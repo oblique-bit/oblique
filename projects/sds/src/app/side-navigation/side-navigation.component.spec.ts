@@ -8,6 +8,7 @@ import {AccordionLinksComponent} from './accordion-links/accordion-links.compone
 import {ImageComponent} from './image/image.component';
 import {SideNavigationComponent} from './side-navigation.component';
 import {VersionComponent} from './version/version.component';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 type SideNavigationIds = 'accordion-links' | 'logo' | 'search-input' | 'version';
 
@@ -27,7 +28,8 @@ describe(SideNavigationComponent.name, () => {
 				IdPipe,
 				ImageComponent,
 				SideNavigationComponent,
-				VersionComponent
+				VersionComponent,
+				NoopAnimationsModule
 			]
 		}).compileComponents();
 

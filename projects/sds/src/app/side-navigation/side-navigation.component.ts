@@ -1,6 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
+import {MatIcon} from '@angular/material/icon';
 import {CmsDataService} from '../cms/cms-data.service';
 import {BehaviorSubject, Observable, Subscription, combineLatestWith, debounceTime, filter, forkJoin, map, of, switchMap, take} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
@@ -19,7 +22,20 @@ import {ImageComponent} from './image/image.component';
 	templateUrl: './side-navigation.component.html',
 	styleUrls: ['./side-navigation.component.scss'],
 	standalone: true,
-	imports: [ImageComponent, VersionComponent, FormsModule, ReactiveFormsModule, AccordionLinksComponent, CommonModule, IdPipe]
+	imports: [
+		ImageComponent,
+		VersionComponent,
+		FormsModule,
+		ReactiveFormsModule,
+		AccordionLinksComponent,
+		CommonModule,
+		IdPipe,
+		MatFormField,
+		MatLabel,
+		MatInput,
+		MatIcon,
+		MatPrefix
+	]
 })
 export class SideNavigationComponent implements OnInit, OnDestroy {
 	readonly componentId = 'side-navigation';
