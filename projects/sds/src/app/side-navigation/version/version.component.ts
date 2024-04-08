@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit, Output, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, Output, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
@@ -18,20 +18,17 @@ import {ObSelectDirective} from '@oblique/oblique';
 	standalone: true,
 	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, ObSelectDirective, MatLabel, MatTooltip]
 })
-export class VersionComponent implements OnInit {
+export class VersionComponent {
 	@Input() idPrefix = '';
 	@Output() readonly versionChanged: Observable<number>;
 
 	readonly componentId = 'version';
 	selectedVersion = new FormControl<number | undefined>(undefined);
-	versions$: Observable<number[]>;
+	readonly versions$: Observable<number[]>;
 	private readonly cmsDataService = inject(CmsDataService);
 
 	constructor() {
 		this.versionChanged = this.selectedVersion.valueChanges;
-	}
-
-	ngOnInit(): void {
 		this.versions$ = this.setupVersions();
 	}
 
