@@ -56,13 +56,16 @@ $triangle-pointing-border-width: 6px;
 	-webkit-box-pack: justify;
 	justify-content: space-between;
 	padding: 0 20px;
-	margin-top: 16px;
 	margin-bottom: 4px;
 	font-weight: 900;
 	min-height: 20px;
 	letter-spacing: 0.35em;
 	text-transform: uppercase;
 	color: variables.$inactive;
+
+	&:not(:first-child) {
+		margin-top: 16px;
+	}
 }
 
 button {

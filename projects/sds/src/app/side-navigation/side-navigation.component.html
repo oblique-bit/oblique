@@ -7,7 +7,11 @@
 	[id]="componentId | id: ['logo']"
 />
 <app-version [id]="componentId | id: ['version']" [idPrefix]="componentId" (versionChanged)="updateVersion($event)" />
-<input type="search" [id]="componentId | id: ['search-input']" [formControl]="search" />
+<mat-form-field>
+	<mat-label>Filter</mat-label>
+	<input matInput type="search" [id]="componentId | id: ['search-input']" [formControl]="search" />
+	<mat-icon svgIcon="search" matIconPrefix />
+</mat-form-field>
 <app-accordion-links
 	#accordionLinks
 	[accordions]="(filteredAccordions$ | async) ?? []"

@@ -6,12 +6,7 @@ app-image {
 	align-items: center;
 }
 
-input {
+.mat-mdc-form-field {
 	margin-left: 26px;
-	margin-top: 20px;
-	border: 1px solid variables.$inactive;
-	padding: 9px 4px 9px 44px;
-	background: transparent url("../../assets/images/Search.svg") no-repeat 10px center;
-	border-radius: 4px;
-	font-size: 15px;
+	width: calc(100% - 54px);
 }
