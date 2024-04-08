@@ -5,7 +5,7 @@ import {MatOption, MatSelect} from '@angular/material/select';
 import {MatTooltip} from '@angular/material/tooltip';
 import {CmsDataService} from '../../cms/cms-data.service';
 import {Version} from '../../cms/models/version.model';
-import {BehaviorSubject, Subscription} from 'rxjs';
+import {Observable, Subscription, map, tap} from 'rxjs';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
 import {ObSelectDirective} from '@oblique/oblique';
@@ -25,7 +25,7 @@ export class VersionComponent implements OnDestroy, OnInit {
 	readonly componentId = 'version';
 	selectedVersion = new FormControl<number | undefined>(undefined);
 
-	versions$: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([]);
+	versions$: Observable<number[]>;
 
 	private readonly subscriptions: Subscription[] = [];
 
@@ -33,7 +33,7 @@ export class VersionComponent implements OnDestroy, OnInit {
 
 	ngOnInit(): void {
 		this.handleSelectedVersionChanged();
-		this.setupVersions();
+		this.versions$ = this.setupVersions();
 	}
 
 	ngOnDestroy(): void {
@@ -44,14 +44,10 @@ export class VersionComponent implements OnDestroy, OnInit {
 		this.subscriptions.push(this.selectedVersion.valueChanges.subscribe(version => this.versionChanged.emit(version ?? undefined)));
 	}
 
-	private setupVersions(): void {
-		this.subscriptions.push(
-			this.cmsDataService.getVersions().subscribe(versionCms => {
-				const versions: number[] = this.mapCmsData(versionCms.data);
-
-				this.versions$.next(versions);
-				this.selectedVersion.setValue(this.getLatestVersion(versions));
-			})
+	private setupVersions(): Observable<number[]> {
+		return this.cmsDataService.getVersions().pipe(
+			map(versionCms => this.mapCmsData(versionCms.data)),
+			tap(versions => this.selectedVersion.setValue(this.getLatestVersion(versions)))
 		);
 	}
 
