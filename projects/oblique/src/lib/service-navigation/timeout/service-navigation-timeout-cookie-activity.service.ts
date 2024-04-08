@@ -9,7 +9,7 @@ export class ObServiceNavigationTimeoutCookieActivityService {
 	private readonly globalEventService = inject(ObGlobalEventsService);
 	private readonly cookieService = inject(ObServiceNavigationTimeoutCookieService);
 
-	public constructor() {
+	public initialize(): void {
 		merge(
 			this.globalEventService.wheel$,
 			this.globalEventService.mouseMove$,
