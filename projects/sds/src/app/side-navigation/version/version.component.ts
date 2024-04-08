@@ -1,11 +1,11 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, Output} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatTooltip} from '@angular/material/tooltip';
 import {CmsDataService} from '../../cms/cms-data.service';
 import {Version} from '../../cms/models/version.model';
-import {Observable, Subscription, map, tap} from 'rxjs';
+import {Observable, map, tap} from 'rxjs';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
 import {ObSelectDirective} from '@oblique/oblique';
@@ -18,30 +18,21 @@ import {ObSelectDirective} from '@oblique/oblique';
 	standalone: true,
 	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, ObSelectDirective, MatLabel, MatTooltip]
 })
-export class VersionComponent implements OnDestroy, OnInit {
+export class VersionComponent implements OnInit {
 	@Input() idPrefix = '';
-	@Output() readonly versionChanged: EventEmitter<number> = new EventEmitter<number>();
+	@Output() readonly versionChanged: Observable<number>;
 
 	readonly componentId = 'version';
 	selectedVersion = new FormControl<number | undefined>(undefined);
 
 	versions$: Observable<number[]>;
 
-	private readonly subscriptions: Subscription[] = [];
-
-	constructor(private readonly cmsDataService: CmsDataService) {}
+	constructor(private readonly cmsDataService: CmsDataService) {
+		this.versionChanged = this.selectedVersion.valueChanges;
+	}
 
 	ngOnInit(): void {
-		this.handleSelectedVersionChanged();
 		this.versions$ = this.setupVersions();
-	}
-
-	ngOnDestroy(): void {
-		this.subscriptions.forEach(subscription => subscription.unsubscribe());
-	}
-
-	private handleSelectedVersionChanged(): void {
-		this.subscriptions.push(this.selectedVersion.valueChanges.subscribe(version => this.versionChanged.emit(version ?? undefined)));
 	}
 
 	private setupVersions(): Observable<number[]> {
