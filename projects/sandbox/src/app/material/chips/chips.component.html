@@ -4,32 +4,43 @@
 		<mat-list *ngIf="!showAutocompleteForm">
 			<mat-list-item>
 				<mat-chip-listbox class="mdc-evolution-chip-set" [class.mat-mdc-chip-set-stacked]="stacked">
-					<ng-container *ngIf="type === 'row'">
+					<ng-container *ngIf="type === 'mat-chip-row'">
 						<mat-chip-row [ngClass]="variant" [disabled]="disabled">Chip 1</mat-chip-row>
 						<mat-chip-row [ngClass]="variant" [disabled]="disabled">Chip 2</mat-chip-row>
 					</ng-container>
 
-					<ng-container *ngIf="type === 'option'">
+					<ng-container *ngIf="type === 'mat-chip-option'">
 						<mat-chip-option [ngClass]="variant" [disabled]="disabled">Chip 1</mat-chip-option>
 						<mat-chip-option [ngClass]="variant" [disabled]="disabled">Chip 2</mat-chip-option>
+					</ng-container>
+					<ng-container *ngIf="type === 'mat-chip'">
+						<mat-chip [ngClass]="variant" [disabled]="disabled">Chip 1</mat-chip>
+						<mat-chip [ngClass]="variant" [disabled]="disabled">Chip 2</mat-chip>
 					</ng-container>
 				</mat-chip-listbox>
 			</mat-list-item>
 		</mat-list>
 		<mat-form-field *ngIf="showAutocompleteForm">
 			<mat-chip-grid #matChipGrid aria-label="Tag selection" [disabled]="disabled">
-				<ng-container *ngIf="type === 'row'">
+				<ng-container *ngIf="type === 'mat-chip-row'">
 					<mat-chip-row *ngFor="let tag of tags" [ngClass]="variant" (removed)="remove(tag)">
 						{{ tag }}
 						<mat-icon svgIcon="cancel-circle" matChipRemove />
 					</mat-chip-row>
 				</ng-container>
 
-				<ng-container *ngIf="type === 'option'">
+				<ng-container *ngIf="type === 'mat-chip-option'">
 					<mat-chip-option *ngFor="let tag of tags" [ngClass]="variant" (removed)="remove(tag)">
 						{{ tag }}
 						<mat-icon svgIcon="cancel-circle" matChipRemove />
 					</mat-chip-option>
+				</ng-container>
+
+				<ng-container *ngIf="type === 'mat-chip'">
+					<mat-chip *ngFor="let tag of tags" [ngClass]="variant" (removed)="remove(tag)">
+						{{ tag }}
+						<mat-icon svgIcon="cancel-circle" matChipRemove />
+					</mat-chip>
 				</ng-container>
 
 				<input
