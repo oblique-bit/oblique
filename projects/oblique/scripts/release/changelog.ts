@@ -51,7 +51,7 @@ export class Changelog {
 
 	private static parseCommit(commit: string, separator: string): Commit {
 		const {type, scope, subject, breakingChanges, hash} = new RegExp(
-			`(?<type>\\w+)\\((?<scope>\\w+)\\): (?<subject>[^${separator}]*)${separator}.*?(?:BREAKING CHANGE:(?<breakingChanges>[^${separator}]*))?${separator}(?<hash>\\w*)`
+			`(?<type>\\w+)\\((?<scope>[\\w-]+)\\): (?<subject>[^${separator}]*)${separator}.*?(?:BREAKING CHANGE:(?<breakingChanges>[^${separator}]*))?${separator}(?<hash>\\w*)`
 		).exec(commit).groups;
 		return {type, scope, subject, breakingChanges, hash};
 	}
