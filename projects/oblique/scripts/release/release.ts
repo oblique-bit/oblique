@@ -12,7 +12,7 @@ class Release {
 	}
 
 	private static parseBranchName(): {version: string; issue: string} {
-		const branchName = execSync('git rev-parse --abbrev-ref HEAD').toString();
+		const branchName = execSync('git branch --show-current').toString();
 		const regexp = /(?<issue>OUI-\d+).*?(?<version>\d+\.\d+\.\d+(?:-(?:alpha|beta|RC)\.\d+)?)/;
 		if (!regexp.test(branchName)) {
 			console.error('The branch MUST contain the version number to release and the Jira issue number');
