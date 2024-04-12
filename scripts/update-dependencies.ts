@@ -11,7 +11,7 @@ class UpdateDependencies {
 		UpdateDependencies.execute('npm dedupe --audit false');
 		UpdateDependencies.execute('npm prune --audit false');
 		UpdateDependencies.restorePeerDependencies(peerDependencies);
-		UpdateDependencies.commit('chore(toolchain): update dependencies and refactor accordingly');
+		UpdateDependencies.commit();
 	}
 
 	private static savePeerDependencies(): Record<string, string> {
@@ -33,10 +33,9 @@ class UpdateDependencies {
 		execSync(`${command} --fund false`, {stdio: 'inherit'});
 	}
 
-	private static commit(header: string): void {
+	private static commit(): void {
 		const issueNumber = (/OUI-\d+/.exec(execSync('git branch --show-current').toString()) ?? [])[0];
-		const message = issueNumber ? `${header}\n\n${issueNumber}` : header;
-		execSync(`git commit -am "${message}"`);
+		execSync(`git commit -am "chore(toolchain): update dependencies and refactor accordingly" -m "${issueNumber}"`);
 	}
 }
 
