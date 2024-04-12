@@ -32,7 +32,7 @@ export class Changelog {
 			.toString()
 			.replace(/\n/g, '')
 			.split(commitSeparator)
-			.filter(commit => /^(?:fix|feat)\(oblique/.test(commit))
+			.filter(commit => /^(?:fix|feat)\(oblique(?!\/toolchain)/.test(commit))
 			.map(commit => commit.replace('oblique/', ''))
 			.map(commit => Changelog.formatCommit(commit, separator))
 			.sort((first, second) => first.scope.localeCompare(second.scope))
