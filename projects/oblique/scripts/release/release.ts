@@ -1,89 +1,35 @@
 import {execSync} from 'child_process';
-import {createWriteStream, readFileSync, writeFileSync} from 'fs';
+import {writeFileSync} from 'fs';
 import path from 'path';
-import {version as packageVersion} from '../../../../package.json';
-
-interface Version {
-	version: string;
-	preVersionType: string;
-	preVersionNumber: number;
-}
+import {Changelog} from './changelog';
 
 class Release {
-	// conventionalChangelog is not available as an ESM module therefore it has to be imported with require and not with import
-	private static readonly conventionalChangelog = require('conventional-changelog');
-
-	static perform(preVersion?: string): void {
-		const nextVersion = Release.computeVersion(Release.splitVersion(packageVersion), preVersion);
-		process.chdir('../..'); // so that the release is made with the info of the root package.json
-		execSync(`npm version ${nextVersion}`);
-		Release.bumpVersion(nextVersion);
-		Release.writeChangelog();
+	static perform(): void {
+		const {version, issue} = Release.parseBranchName();
+		Release.bumpVersion(version);
+		Changelog.perform(version);
+		Release.commit(version, issue);
 	}
 
-	private static splitVersion(version): Version {
-		const {groups} = version.match(/(?<version>\d+\.\d+\.\d+)(?:-(?<type>[^.]+)\.(?<typeNbr>\d+))?/);
-		return {
-			version: groups?.version,
-			preVersionType: groups?.type,
-			preVersionNumber: +groups?.typeNbr
-		};
-	}
-
-	private static computeVersion(version: Version, preVersion: string): string {
-		if (!version.preVersionType) {
-			const newVersion = Release.getVersionFromGit(version.version);
-			return preVersion ? `${newVersion}-${preVersion}.1` : newVersion;
+	private static parseBranchName(): {version: string; issue: string} {
+		const branchName = execSync('git branch --show-current').toString();
+		const regexp = /(?<issue>OUI-\d+).*?(?<version>\d+\.\d+\.\d+(?:-(?:alpha|beta|RC)\.\d+)?)/;
+		if (!regexp.test(branchName)) {
+			console.error('The branch MUST contain the version number to release and the Jira issue number');
+			throw new Error('Version or Issue number not found');
 		}
-		if (!preVersion) {
-			return version.version;
-		}
-		if (version.preVersionType !== preVersion) {
-			return `${version.version}-${preVersion}.1`;
-		}
-		return `${version.version}-${version.preVersionType}.${version.preVersionNumber + 1}`;
-	}
-
-	private static getVersionFromGit(versionNbr: string): string {
-		const current = /(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/.exec(versionNbr).groups;
-		const commits = execSync(`git log ${versionNbr}..HEAD --abbrev-commit`).toString();
-		if (commits.includes('BREAKING CHANGE')) {
-			return `${+current?.major + 1}.0.0`;
-		}
-		return commits.includes('feat:') || commits.includes('feat(')
-			? `${current?.major}.${+current?.minor + 1}.0`
-			: `${current?.major}.${current?.minor}.${+current?.patch + 1}`;
+		return regexp.exec(branchName).groups as {version: string; issue: string};
 	}
 
 	private static bumpVersion(version: string): void {
+		process.chdir('../..'); // so that the release is made with the info of the root package.json
+		execSync(`npm version ${version}`);
 		writeFileSync(path.join('projects', 'oblique', 'src', 'lib', 'version.ts'), `export const appVersion = '${version}';\n`, {flag: 'w'});
 	}
 
-	private static writeChangelog(): void {
-		const changelog: string = readFileSync('CHANGELOG.md').toString();
-		const stream = createWriteStream('CHANGELOG.md');
-		stream.on('finish', () => {
-			const newLog: string = readFileSync('CHANGELOG.md')
-				.toString()
-				.replace(Release.getLinesWithNonObliquePrefix(), '')
-				.replace(Release.getObliquePrefix(), '')
-				.replace(/##(?<title>.*)\n/g, '#$<title>')
-				.replace(/\n\n\n/g, '\n\n');
-			writeFileSync('CHANGELOG.md', newLog + changelog);
-		});
-		Release.conventionalChangelog({
-			preset: 'angular',
-			tagPrefix: ''
-		}).pipe(stream);
-	}
-
-	private static getLinesWithNonObliquePrefix(): RegExp {
-		return /^[-*] \*{2}(?!oblique)[a-z-]+\/[a-z-]+:\*{2}.*$\n/g;
-	}
-
-	private static getObliquePrefix(): RegExp {
-		return /(?<=[-*] \*{2})oblique\/(?=[a-z-]+:\*{2})/g;
+	private static commit(version: string, issue: string): void {
+		execSync(`git commit -am "chore(toolchain): release version ${version}" -m "${issue}"`);
 	}
 }
 
-Release.perform(process.argv[2]);
+Release.perform();

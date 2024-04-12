@@ -44,6 +44,10 @@ describe('ServiceNavigationTimeoutCookieActivityService', () => {
 	});
 
 	describe('refreshActivity()', () => {
+		beforeEach(() => {
+			service.initialize();
+		});
+
 		it.each([
 			['wheel', () => fakeWheel],
 			['mouse move', () => fakeMouseMove],

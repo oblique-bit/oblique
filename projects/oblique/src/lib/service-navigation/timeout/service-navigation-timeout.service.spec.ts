@@ -52,7 +52,10 @@ describe('ServiceNavigationTimeout', () => {
 			providers: [
 				ObServiceNavigationTimeoutService,
 				{provide: ObServiceNavigationService, useValue: fakeHeaderService},
-				{provide: ObServiceNavigationTimeoutCookieActivityService, useValue: {activityCookieName: eportalLastUserActivityCookieName}},
+				{
+					provide: ObServiceNavigationTimeoutCookieActivityService,
+					useValue: {activityCookieName: eportalLastUserActivityCookieName, initialize: jest.fn()}
+				},
 				{provide: ObServiceNavigationTimeoutRedirectorService, useValue: fakeRedirectorService},
 				{provide: ObServiceNavigationTimeoutApiService, useValue: fakeApiService},
 				ObServiceNavigationTimeoutReturnUrlService,

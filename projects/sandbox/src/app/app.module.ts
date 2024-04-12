@@ -120,14 +120,16 @@ export class AppModule {
 	}
 
 	private configureServiceSNavigation(config: ObMasterLayoutConfig): void {
-		config.header.serviceNavigation.profileLinks = profileLinks;
-		config.header.serviceNavigation.infoLinks = infoLinks;
-		config.header.serviceNavigation.infoContact = infoContact;
-		config.header.serviceNavigation.displayApplications = true;
-		config.header.serviceNavigation.displayAuthentication = true;
 		config.header.serviceNavigation.displayInfo = true;
-		config.header.serviceNavigation.displayMessage = true;
-		config.header.serviceNavigation.displayProfile = true;
-		config.header.serviceNavigation.pamsAppId = '1';
+		config.header.serviceNavigation.infoContact = infoContact;
+		if (environment.pams) {
+			config.header.serviceNavigation.profileLinks = profileLinks;
+			config.header.serviceNavigation.infoLinks = infoLinks;
+			config.header.serviceNavigation.displayApplications = true;
+			config.header.serviceNavigation.displayAuthentication = true;
+			config.header.serviceNavigation.displayMessage = true;
+			config.header.serviceNavigation.displayProfile = true;
+			config.header.serviceNavigation.pamsAppId = '1';
+		}
 	}
 }

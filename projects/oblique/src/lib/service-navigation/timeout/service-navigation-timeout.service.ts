@@ -34,6 +34,7 @@ export class ObServiceNavigationTimeoutService {
 			this.setCookieDetector();
 			this.tokenExpirationAndInactivityCheck();
 			this.isInitialized = true;
+			this.activityCookieService.initialize();
 		}
 	}
 
