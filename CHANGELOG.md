@@ -1,4 +1,4 @@
-[11.0.2](https://github.com/oblique-bit/oblique/compare/11.0.1...11.0.2) (2024-04-12)
+# [11.0.2](https://github.com/oblique-bit/oblique/compare/11.0.1...11.0.2) (2024-04-12)
 
 ## Bug Fixes
 
