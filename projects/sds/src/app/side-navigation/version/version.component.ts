@@ -8,6 +8,8 @@ import {Version} from '../../cms/models/version.model';
 import {Observable, map, tap} from 'rxjs';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
+import {latest} from '../../../obliqueVersion';
+import {VersionOption} from './version.model';
 import {ObSelectDirective} from '@oblique/oblique';
 
 @Component({
@@ -24,7 +26,7 @@ export class VersionComponent {
 
 	readonly componentId = 'version';
 	readonly selectedVersion = new FormControl<number | undefined>(undefined);
-	readonly versions$: Observable<number[]>;
+	readonly versions$: Observable<VersionOption[]>;
 	private readonly cmsDataService = inject(CmsDataService);
 
 	constructor() {
@@ -32,18 +34,24 @@ export class VersionComponent {
 		this.versions$ = this.setupVersions();
 	}
 
-	private setupVersions(): Observable<number[]> {
+	private setupVersions(): Observable<VersionOption[]> {
 		return this.cmsDataService.getVersions().pipe(
 			map(versionCms => this.mapCmsData(versionCms.data)),
 			tap(versions => this.selectedVersion.setValue(this.getLatestVersion(versions)))
 		);
 	}
 
-	private mapCmsData(versions: Version[]): number[] {
-		return versions.map(version => version.version_number).sort((v1, v2) => v2 - v1);
+	private mapCmsData(versions: Version[]): VersionOption[] {
+		return versions
+			.map(version => version.version_number)
+			.sort((v1, v2) => v2 - v1)
+			.map((version, index) => ({
+				number: version,
+				label: index === 0 ? `${latest} (latest)` : `${version}`
+			}));
 	}
 
-	private getLatestVersion(versions: number[]): number {
-		return Math.max(...versions);
+	private getLatestVersion(versions: VersionOption[]): number {
+		return Math.max(...versions.map(version => version.number));
 	}
 }

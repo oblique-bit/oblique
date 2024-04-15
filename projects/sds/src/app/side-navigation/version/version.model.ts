@@ -1,4 +1,4 @@
-export interface Version {
-	id: number;
-	releaseNotes?: string;
+export interface VersionOption {
+	number: number;
+	label: string;
 }
