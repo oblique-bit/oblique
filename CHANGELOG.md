@@ -2,7 +2,7 @@
 
 ## Bug Fixes
 
-- **service-navigation:** make sure cookie activity is only monitored if PAMS is activated ([5d85b670](https://github.com/oblique-bit/oblique/commit/5d85b6709a38acbc69c6eb1c5126fe46e8307e24))
+- **service-navigation:** make sure cookie activity is only monitored if PAMS is activated ([f91ca52c](https://github.com/oblique-bit/oblique/commit/f91ca52c60c1c0824b13ae7252bb1145f1bacb01))
 
 # [11.0.1](https://github.com/oblique-bit/oblique/compare/11.0.0...11.0.1) (2024-04-02)
 
