@@ -247,10 +247,6 @@
             ],
             "styles": [
               "projects/oblique/src/styles/scss/oblique-core.scss",
-              {
-                "input": "projects/oblique/src/styles/css/frutiger.css",
-                "inject": false
-              },
               "projects/sds/src/styles/styles.scss",
               "node_modules/highlight.js/styles/sunburst.css"
             ],
