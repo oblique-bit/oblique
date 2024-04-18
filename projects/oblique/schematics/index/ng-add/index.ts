@@ -55,13 +55,15 @@ function installMissingDependencies(tree: Tree, context: SchematicContext, depen
 function finalize(options: ObIOptionsSchema): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		/* eslint-disable max-len */
-		const text =
-			options.font === 'frutiger'
-				? 'Due to licence restrictions, Frutiger font files cannot be delivered with Oblique. \nThey can either be obtained from the federal chancellery intranet\n(https://intranet.bk.admin.ch/bk-intra/de/home/dl-koordination-bund/kommunikation/webforum-bund/Downloads.html) or requested from webforum@bk.admin.ch. Moreover, each project is responsible for the font protection according to its licence. (https://github.com/swiss/styleguide/blob/master/src/assets/fonts/LICENSE). The proposed solution consist of only delivering the font if the Referer Http header is whitelisted.'
-				: 'Frutiger is mandatory for CI/CD conformity';
+		if (options.font === 'frutiger') {
+			warn(
+				_context,
+				'Due to licence restrictions, Frutiger font files cannot be delivered with Oblique. ' +
+					'\nThey can be requested from webforum@bk.admin.ch. Moreover, each project is responsible for the font protection according to its licence. ' +
+					'(https://github.com/swiss/styleguide/blob/master/src/assets/fonts/LICENSE). The proposed solution consist of only delivering the font if the Referer Http header is whitelisted.'
+			);
+		}
 		/* eslint-enable max-len */
-
-		warn(_context, text);
 		if (isSuccessful) {
 			success(_context, 'Oblique has been successfully integrated. Please review the changes.');
 		} else {

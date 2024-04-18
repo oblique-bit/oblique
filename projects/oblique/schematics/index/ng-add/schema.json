@@ -21,7 +21,7 @@
       "enum": ["frutiger", "roboto", "none"],
       "default": "frutiger",
       "description": "Application's font",
-      "x-prompt": "[2 / 19] Choose a font. Please note: Frutiger is mandatory for CI/CD conformity. \"none\" option will not include any external font, meaning Arial will be used."
+      "x-prompt": "[2 / 19] Choose a font. \"none\" option will not include any external font, meaning Arial will be used."
     },
     "locales": {
       "type": "string",
