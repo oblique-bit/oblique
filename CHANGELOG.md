@@ -1,3 +1,10 @@
+# [11.0.3](https://github.com/oblique-bit/oblique/compare/11.0.2...11.0.3) (2024-04-19)
+
+## Bug Fixes
+
+- **material:** make margin-top consistent for all mat-chip ([9a86f715](https://github.com/oblique-bit/oblique/commit/9a86f71531616196900b73e8a0efb3bd01e69930))
+- **material:** ensure that chip colors are applied for all types of chips ([981253c1](https://github.com/oblique-bit/oblique/commit/981253c18d5c3703b768bf2b53a27d867620225d))
+
 # [11.0.2](https://github.com/oblique-bit/oblique/compare/11.0.1...11.0.2) (2024-04-12)
 
 ## Bug Fixes
