@@ -9,7 +9,7 @@ export class ObliqueVersion {
 	static perform(): void {
 		const changelog = readFileSync('../../CHANGELOG.md').toString();
 		const {latest} = /# \[(?<latest>\d+\.\d+.\d+)]/.exec(changelog).groups; // get the latest non-pre-release version
-		writeFileSync(path.join('projects', 'sds', 'src', 'obliqueVersion.ts'), `export const latest = '${latest}';\n`, {flag: 'w'});
+		writeFileSync(path.join('src', 'obliqueVersion.ts'), `export const latest = '${latest}';\n`, {flag: 'w'});
 	}
 }
 ObliqueVersion.perform();
