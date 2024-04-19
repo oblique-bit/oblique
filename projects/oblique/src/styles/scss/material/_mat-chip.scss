@@ -16,33 +16,7 @@
 			opacity: 1;
 		}
 	}
-}
 
-.mat-mdc-chip-listbox {
-	margin-top: variables.$ob-spacing-lg;
-}
-
-.mat-mdc-form-field {
-	&.mat-mdc-form-field-type-mat-chip-grid {
-		.mat-mdc-text-field-wrapper.mdc-text-field,
-		.mat-mdc-text-field-wrapper.mdc-text-field .mdc-notched-outline {
-			max-height: none;
-
-			.mat-mdc-chip {
-				margin-top: 8px;
-				margin-bottom: 0;
-			}
-		}
-	}
-}
-
-.mat-mdc-form-field-infix:has(.mat-mdc-chip-set) {
-	padding-bottom: 4px !important;
-	padding-top: 18px !important;
-}
-
-.mat-mdc-chip-option,
-.mat-mdc-chip-row {
 	&.mat-mdc-standard-chip {
 		@include typography.ob-caption();
 
@@ -131,4 +105,29 @@
 			}
 		}
 	}
+}
+
+.mat-mdc-chip-grid,
+.mat-mdc-chip-set,
+.mat-mdc-chip-listbox {
+	margin-top: variables.$ob-spacing-lg;
+}
+
+.mat-mdc-form-field {
+	&.mat-mdc-form-field-type-mat-chip-grid {
+		.mat-mdc-text-field-wrapper.mdc-text-field,
+		.mat-mdc-text-field-wrapper.mdc-text-field .mdc-notched-outline {
+			max-height: none;
+
+			.mat-mdc-chip {
+				margin-top: 8px;
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.mat-mdc-form-field-infix:has(.mat-mdc-chip-set) {
+	padding-bottom: 4px !important;
+	padding-top: 18px !important;
 }

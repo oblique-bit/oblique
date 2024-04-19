@@ -7,7 +7,8 @@
     "build": "ng build && ts-node scripts/post-dist/copy-nginx.ts",
     "add-code-example": "npm run schematics-build && cd ../../ && schematics ./projects/sds/schematics/collection:add-code-example --dry-run=false",
     "add-preview": "npm run schematics-build  && cd ../../ && schematics ./projects/sds/schematics/collection:add-preview --dry-run=false",
-    "schematics-build": "npm run build --prefix schematics"
+    "schematics-build": "npm run build --prefix schematics",
+    "post-oblique-release": "ts-node scripts/oblique-version.ts"
   },
   "dependencies": {
     "highlight.js": "^11.9.0",

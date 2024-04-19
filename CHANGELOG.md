@@ -1,8 +1,15 @@
-[11.0.2](https://github.com/oblique-bit/oblique/compare/11.0.1...11.0.2) (2024-04-12)
+# [11.0.3](https://github.com/oblique-bit/oblique/compare/11.0.2...11.0.3) (2024-04-19)
 
 ## Bug Fixes
 
-- **service-navigation:** make sure cookie activity is only monitored if PAMS is activated ([5d85b670](https://github.com/oblique-bit/oblique/commit/5d85b6709a38acbc69c6eb1c5126fe46e8307e24))
+- **material:** make margin-top consistent for all mat-chip ([9a86f715](https://github.com/oblique-bit/oblique/commit/9a86f71531616196900b73e8a0efb3bd01e69930))
+- **material:** ensure that chip colors are applied for all types of chips ([981253c1](https://github.com/oblique-bit/oblique/commit/981253c18d5c3703b768bf2b53a27d867620225d))
+
+# [11.0.2](https://github.com/oblique-bit/oblique/compare/11.0.1...11.0.2) (2024-04-12)
+
+## Bug Fixes
+
+- **service-navigation:** make sure cookie activity is only monitored if PAMS is activated ([f91ca52c](https://github.com/oblique-bit/oblique/commit/f91ca52c60c1c0824b13ae7252bb1145f1bacb01))
 
 # [11.0.1](https://github.com/oblique-bit/oblique/compare/11.0.0...11.0.1) (2024-04-02)
 

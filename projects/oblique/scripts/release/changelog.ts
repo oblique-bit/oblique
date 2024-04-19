@@ -88,7 +88,7 @@ export class Changelog {
 
 	private static getTitle(nextVersion: string, previousVersion: string): string {
 		const today = new Date().toISOString().split('T')[0];
-		return `[${nextVersion}](https://github.com/oblique-bit/oblique/compare/${previousVersion}...${nextVersion}) (${today})`;
+		return `# [${nextVersion}](https://github.com/oblique-bit/oblique/compare/${previousVersion}...${nextVersion}) (${today})`;
 	}
 
 	private static getSection(commits: string[], title: string): string {

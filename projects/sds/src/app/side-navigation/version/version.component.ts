@@ -1,10 +1,16 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, Output, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatOption, MatSelect} from '@angular/material/select';
+import {MatTooltip} from '@angular/material/tooltip';
 import {CmsDataService} from '../../cms/cms-data.service';
 import {Version} from '../../cms/models/version.model';
-import {BehaviorSubject, Subscription} from 'rxjs';
+import {Observable, map, tap} from 'rxjs';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
+import {latest} from '../../../obliqueVersion';
+import {VersionOption} from './version.model';
+import {ObSelectDirective} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-version',
@@ -12,50 +18,40 @@ import {CommonModule} from '@angular/common';
 	styleUrls: ['./version.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [ReactiveFormsModule, CommonModule, IdPipe]
+	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, ObSelectDirective, MatLabel, MatTooltip]
 })
-export class VersionComponent implements OnDestroy, OnInit {
+export class VersionComponent {
 	@Input() idPrefix = '';
-	@Output() readonly versionChanged: EventEmitter<number> = new EventEmitter<number>();
+	@Output() readonly versionChanged: Observable<number>;
 
 	readonly componentId = 'version';
-	selectedVersion = new FormControl<number | undefined>(undefined);
+	readonly selectedVersion = new FormControl<number | undefined>(undefined);
+	readonly versions$: Observable<VersionOption[]>;
+	private readonly cmsDataService = inject(CmsDataService);
 
-	versions$: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([]);
-
-	private readonly subscriptions: Subscription[] = [];
-
-	constructor(private readonly cmsDataService: CmsDataService) {}
-
-	ngOnInit(): void {
-		this.handleSelectedVersionChanged();
-		this.setupVersions();
+	constructor() {
+		this.versionChanged = this.selectedVersion.valueChanges;
+		this.versions$ = this.setupVersions();
 	}
 
-	ngOnDestroy(): void {
-		this.subscriptions.forEach(subscription => subscription.unsubscribe());
-	}
-
-	private handleSelectedVersionChanged(): void {
-		this.subscriptions.push(this.selectedVersion.valueChanges.subscribe(version => this.versionChanged.emit(version ?? undefined)));
-	}
-
-	private setupVersions(): void {
-		this.subscriptions.push(
-			this.cmsDataService.getVersions().subscribe(versionCms => {
-				const versions: number[] = this.mapCmsData(versionCms.data);
-
-				this.versions$.next(versions);
-				this.selectedVersion.setValue(this.getLatestVersion(versions));
-			})
+	private setupVersions(): Observable<VersionOption[]> {
+		return this.cmsDataService.getVersions().pipe(
+			map(versionCms => this.mapCmsData(versionCms.data)),
+			tap(versions => this.selectedVersion.setValue(this.getLatestVersion(versions)))
 		);
 	}
 
-	private mapCmsData(versions: Version[]): number[] {
-		return versions.map(version => version.version_number).sort((v1, v2) => v2 - v1);
+	private mapCmsData(versions: Version[]): VersionOption[] {
+		return versions
+			.map(version => version.version_number)
+			.sort((v1, v2) => v2 - v1)
+			.map((version, index) => ({
+				number: version,
+				label: index === 0 ? `${latest} (latest)` : `${version}`
+			}));
 	}
 
-	private getLatestVersion(versions: number[]): number {
-		return Math.max(...versions);
+	private getLatestVersion(versions: VersionOption[]): number {
+		return Math.max(...versions.map(version => version.number));
 	}
 }
