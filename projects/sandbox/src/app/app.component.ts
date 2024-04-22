@@ -6,6 +6,7 @@ import {ObEIcon, ObIAutocompleteInputOption, ObINavigationLink, ObISkipLink, ObM
 import {Observable, Subject} from 'rxjs';
 import {filter, map, startWith, takeUntil} from 'rxjs/operators';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
+
 @Component({
 	selector: 'sb-root',
 	templateUrl: './app.component.html',
@@ -14,7 +15,6 @@ import {DynamicNavigationService} from './samples/master-layout/dynamic-navigati
 export class AppComponent implements OnDestroy {
 	readonly search = new FormControl();
 	offCanvasOpen = false;
-	font$: Observable<string>;
 	readonly year = new Date().getFullYear();
 	navigation: ObINavigationLink[] = [
 		{

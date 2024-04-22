@@ -1,4 +1,4 @@
-<ob-master-layout [skipLinks]="skipLinks" [navigation]="navigation" *ngIf="font$ | async as font">
+<ob-master-layout [skipLinks]="skipLinks" [navigation]="navigation">
 	<ng-container obHeaderTitle>Oblique</ng-container>
 	<ng-template #obHeaderControl>
 		<ob-autocomplete class="ob-sm-down-width-100" [autocompleteOptions]="autocompleteItems$ | async" [formControl]="search">
