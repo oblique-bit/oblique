@@ -50,7 +50,6 @@ import {registerLocaleData} from '@angular/common';
 import localeFR from '@angular/common/locales/fr-CH';
 import localeDE from '@angular/common/locales/de-CH';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
-import {FONTS, FontService} from './common/font.service';
 import {infoContact, infoLinks, profileLinks} from './service-navigation.config';
 
 registerLocaleData(localeFR);
@@ -104,8 +103,7 @@ export class AppModule {
 	constructor(
 		private readonly documentMetaService: ObDocumentMetaService,
 		interceptorConfig: ObHttpApiInterceptorConfig,
-		config: ObMasterLayoutConfig,
-		font: FontService
+		config: ObMasterLayoutConfig
 	) {
 		// As the HEAD `title` element and the `description` meta element are outside any
 		// Angular entry component, we use a service to update these element values:
@@ -115,7 +113,6 @@ export class AppModule {
 		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
 		config.locale.locales = ['en-us', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
-		font.setFont(FONTS.FRUTIGER);
 		this.configureServiceSNavigation(config);
 	}
 
