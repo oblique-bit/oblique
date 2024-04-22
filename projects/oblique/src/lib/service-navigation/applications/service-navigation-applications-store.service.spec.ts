@@ -328,7 +328,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 					it('should store data in localStorage', () => {
 						expect(window.localStorage.setItem).toHaveBeenCalledWith(
 							'ObliqueHeaderWidgetApplications',
-							'{"1":{"applicationID":1,"image":"imageBase64_1","lastModificationDate":"timestamp_1","name":{"en":"EN_1","de":"DE_1","fr":"FR_1","it":"IT_1"},"url":"appUrl_1"}}'
+							'{"1_0":{"applicationID":1,"childApplicationID":0,"image":"imageBase64_1","lastModificationDate":"timestamp_1","name":{"en":"EN_1","de":"DE_1","fr":"FR_1","it":"IT_1"},"url":"appUrl_1"}}'
 						);
 					});
 
@@ -389,7 +389,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 					it('should store data in localStorage', () => {
 						expect(window.localStorage.setItem).toHaveBeenCalledWith(
 							'ObliqueHeaderWidgetApplications',
-							'{"1":{"applicationID":1,"image":"imageBase64_1","lastModificationDate":"timestamp_1","name":{"en":"EN_1","de":"DE_1","fr":"FR_1","it":"IT_1"},"url":"appUrl_1"}}'
+							'{"1_0":{"applicationID":1,"childApplicationID":0,"image":"imageBase64_1","lastModificationDate":"timestamp_1","name":{"en":"EN_1","de":"DE_1","fr":"FR_1","it":"IT_1"},"url":"appUrl_1"}}'
 						);
 					});
 
@@ -458,7 +458,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						expect(window.localStorage.setItem).toHaveBeenNthCalledWith(
 							1,
 							'ObliqueHeaderWidgetApplications',
-							'{"1":{"applicationID":1,"image":"imageBase64_1","lastModificationDate":"timestamp_1","name":{"en":"EN_1","de":"DE_1","fr":"FR_1","it":"IT_1"},"url":"appUrl_1"}}'
+							'{"1_0":{"applicationID":1,"childApplicationID":0,"image":"imageBase64_1","lastModificationDate":"timestamp_1","name":{"en":"EN_1","de":"DE_1","fr":"FR_1","it":"IT_1"},"url":"appUrl_1"}}'
 						);
 					});
 
@@ -466,7 +466,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						expect(window.localStorage.setItem).toHaveBeenNthCalledWith(
 							2,
 							'ObliqueHeaderWidgetApplications',
-							'{"1":{"applicationID":1,"image":"imageBase64_1","lastModificationDate":"timestamp_1","name":{"en":"EN_1","de":"DE_1","fr":"FR_1","it":"IT_1"},"url":"appUrl_1"},"2":{"applicationID":2,"image":"imageBase64_2","lastModificationDate":"timestamp_2","name":{"en":"EN_2","de":"DE_2","fr":"FR_2","it":"IT_2"},"url":"appUrl_2"}}'
+							'{"1_0":{"applicationID":1,"childApplicationID":0,"image":"imageBase64_1","lastModificationDate":"timestamp_1","name":{"en":"EN_1","de":"DE_1","fr":"FR_1","it":"IT_1"},"url":"appUrl_1"},"2_0":{"applicationID":2,"childApplicationID":0,"image":"imageBase64_2","lastModificationDate":"timestamp_2","name":{"en":"EN_2","de":"DE_2","fr":"FR_2","it":"IT_2"},"url":"appUrl_2"}}'
 						);
 					});
 
@@ -539,7 +539,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						expect(window.localStorage.setItem).toHaveBeenNthCalledWith(
 							1,
 							'ObliqueHeaderWidgetApplications',
-							'{"1":{"applicationID":1,"image":"imageBase64_1","lastModificationDate":"timestamp_1","name":{"en":"EN_1","de":"DE_1","fr":"FR_1","it":"IT_1"},"url":"appUrl_1"}}'
+							'{"1_0":{"applicationID":1,"childApplicationID":0,"image":"imageBase64_1","lastModificationDate":"timestamp_1","name":{"en":"EN_1","de":"DE_1","fr":"FR_1","it":"IT_1"},"url":"appUrl_1"}}'
 						);
 					});
 
@@ -547,7 +547,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						expect(window.localStorage.setItem).toHaveBeenNthCalledWith(
 							2,
 							'ObliqueHeaderWidgetApplications',
-							'{"1":{"applicationID":1,"image":"imageBase64_1","lastModificationDate":"timestamp_1","name":{"en":"EN_1","de":"DE_1","fr":"FR_1","it":"IT_1"},"url":"appUrl_1"},"2":{"applicationID":2,"image":"imageBase64_2","lastModificationDate":"timestamp_2","name":{"en":"EN_2","de":"DE_2","fr":"FR_2","it":"IT_2"},"url":"appUrl_2"}}'
+							'{"1_0":{"applicationID":1,"childApplicationID":0,"image":"imageBase64_1","lastModificationDate":"timestamp_1","name":{"en":"EN_1","de":"DE_1","fr":"FR_1","it":"IT_1"},"url":"appUrl_1"},"2_0":{"applicationID":2,"childApplicationID":0,"image":"imageBase64_2","lastModificationDate":"timestamp_2","name":{"en":"EN_2","de":"DE_2","fr":"FR_2","it":"IT_2"},"url":"appUrl_2"}}'
 						);
 					});
 
@@ -567,8 +567,9 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 				TestBed.overrideProvider(WINDOW, {useValue: window});
 				jest.spyOn(window.localStorage, 'getItem').mockReturnValue(
 					JSON.stringify({
-						1: {
+						'1_0': {
 							applicationID: 1,
+							childApplicationID: 0,
 							image: 'imageBase64_1',
 							lastModificationDate: 'timestamp_1',
 							name: {en: 'EN_1', de: 'DE_1', fr: 'FR_1', it: 'IT_1'},
@@ -628,6 +629,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 			const numeral = index + 1;
 			return {
 				applicationID: numeral,
+				childApplicationID: 0,
 				image: `imageBase64_${numeral}`,
 				lastModificationDate: `timestamp_${numeral}`,
 				name: {en: `EN_${numeral}`, de: `DE_${numeral}`, fr: `FR_${numeral}`, it: `IT_${numeral}`},
