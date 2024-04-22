@@ -6,8 +6,6 @@ import {ObEIcon, ObIAutocompleteInputOption, ObINavigationLink, ObISkipLink, ObM
 import {Observable, Subject} from 'rxjs';
 import {filter, map, startWith, takeUntil} from 'rxjs/operators';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
-import {FONTS, FontService} from './common/font.service';
-
 @Component({
 	selector: 'sb-root',
 	templateUrl: './app.component.html',
@@ -210,7 +208,6 @@ export class AppComponent implements OnDestroy {
 	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
-		private readonly font: FontService,
 		nav: DynamicNavigationService,
 		private readonly router: Router,
 		private readonly translate: TranslateService,
@@ -218,7 +215,6 @@ export class AppComponent implements OnDestroy {
 		@Inject(WINDOW) window: Window
 	) {
 		this.initializeSearch();
-		this.font$ = this.font.font$;
 		nav.setNavigation(this.navigation);
 		nav.navigationLinks$.subscribe(links => {
 			this.navigation = links;
@@ -231,11 +227,6 @@ export class AppComponent implements OnDestroy {
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
-	}
-
-	toggleFont(font: string): void {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
-		this.font.setFont(font === FONTS.FRUTIGER ? FONTS.ROBOTO : FONTS.FRUTIGER);
 	}
 
 	private initializeSearch(): void {
