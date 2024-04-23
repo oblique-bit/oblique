@@ -1,6 +1,7 @@
 import {Inject, Injectable, Optional} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
+import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {WINDOW} from '../../utilities';
 import {ObServiceNavigationApplicationsApiService} from '../api/service-navigation-applications-api.service';
 import {ObIServiceNavigationApplicationIdentifier, ObIServiceNavigationApplicationInfo} from '../api/service-navigation.api.model';
@@ -14,8 +15,15 @@ export class ObServiceNavigationApplicationsStoreService {
 
 	constructor(
 		private readonly applicationInfoService: ObServiceNavigationApplicationsApiService,
+		globalEvents: ObGlobalEventsService,
 		@Inject(WINDOW) @Optional() private readonly window: Window
-	) {}
+	) {
+		globalEvents.beforeUnload$.subscribe(() => {
+			if (this.window?.localStorage) {
+				this.window.localStorage.removeItem(this.localStorageKey);
+			}
+		});
+	}
 
 	fetchApplicationsInfo(
 		rootUrl: string,
