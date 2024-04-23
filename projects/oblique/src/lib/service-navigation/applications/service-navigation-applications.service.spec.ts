@@ -1,11 +1,11 @@
 import {TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {count, from, of} from 'rxjs';
-import {ObServiceNavigationApplicationsApiService} from '../api/service-navigation-applications-api.service';
+import {ObServiceNavigationApplicationsStoreService} from './service-navigation-applications-store.service';
 import {ObServiceNavigationApplicationsService} from './service-navigation-applications.service';
 
 describe('ObServiceNavigationApplicationsService', () => {
 	let service: ObServiceNavigationApplicationsService;
-	let applicationsService: ObServiceNavigationApplicationsApiService;
+	let applicationsService: ObServiceNavigationApplicationsStoreService;
 	const mockApplications = [
 		{
 			applicationID: 1,
@@ -42,13 +42,13 @@ describe('ObServiceNavigationApplicationsService', () => {
 			providers: [
 				ObServiceNavigationApplicationsService,
 				{
-					provide: ObServiceNavigationApplicationsApiService,
+					provide: ObServiceNavigationApplicationsStoreService,
 					useValue: {fetchApplicationsInfo: jest.fn().mockReturnValue(of(mockApplications))}
 				}
 			]
 		});
 		service = TestBed.inject(ObServiceNavigationApplicationsService);
-		applicationsService = TestBed.inject(ObServiceNavigationApplicationsApiService);
+		applicationsService = TestBed.inject(ObServiceNavigationApplicationsStoreService);
 	});
 
 	describe('getApplications', () => {
