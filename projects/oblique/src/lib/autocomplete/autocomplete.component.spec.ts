@@ -444,7 +444,8 @@ describe(ObAutocompleteComponent.name, () => {
 				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}],
 				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}]
 			],
-			['dragon', [{label: 'fat-dragon 1'}, {label: 'fat dragon 2'}], [{label: 'fat-dragon 1'}, {label: 'fat dragon 2'}]]
+			['dragon', [{label: 'fat-dragon 1'}, {label: 'fat dragon 2'}], [{label: 'fat-dragon 1'}, {label: 'fat dragon 2'}]],
+			['.', [{label: 'fat.dragon 1'}, {label: 'fat dragon 2'}], [{label: 'fat.dragon 1'}]]
 		];
 
 		beforeEach(() => {
