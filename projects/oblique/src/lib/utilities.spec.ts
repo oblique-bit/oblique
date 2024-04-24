@@ -5,6 +5,7 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
+import {MATERIAL_SANITY_CHECKS} from '@angular/material/core';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {TranslateLoader} from '@ngx-translate/core';
 import {of} from 'rxjs';
@@ -176,8 +177,8 @@ describe('utilities', () => {
 	});
 
 	describe('obliqueProviders', () => {
-		it('should return 6 configurations', () => {
-			expect(obliqueProviders().length).toBe(6);
+		it('should return 7 configurations', () => {
+			expect(obliqueProviders().length).toBe(7);
 		});
 
 		it.each([
@@ -186,7 +187,8 @@ describe('utilities', () => {
 			MAT_CHECKBOX_DEFAULT_OPTIONS,
 			MAT_RADIO_DEFAULT_OPTIONS,
 			MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS,
-			WINDOW
+			WINDOW,
+			MATERIAL_SANITY_CHECKS
 		])('should contain ½s', provide => {
 			expect(obliqueProviders().find(provider => (provider as ValueProvider).provide === provide)).toBeTruthy();
 		});
