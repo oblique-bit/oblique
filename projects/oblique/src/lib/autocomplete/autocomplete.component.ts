@@ -147,8 +147,7 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	}
 
 	private filterOptions(options: ObIAutocompleteInputOption[], searchText: string): ObIAutocompleteInputOption[] {
-		const regex = new RegExp(searchText, this.filterRegexFlag);
-		return options.filter((option: ObIAutocompleteInputOption) => regex.test(option.label));
+		return options.filter((option: ObIAutocompleteInputOption) => new RegExp(searchText, this.filterRegexFlag).test(option.label));
 	}
 
 	private isGroupOption(option: ObIAutocompleteInputOptionGroup | ObIAutocompleteInputOption): boolean {
