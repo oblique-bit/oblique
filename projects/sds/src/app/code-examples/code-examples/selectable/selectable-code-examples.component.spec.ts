@@ -24,11 +24,11 @@ describe(SelectableCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	test(`that there are 3 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(3);
+	test(`that there are 4 ${CodeExampleComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(4);
 	});
 
-	test(`that there are 3 ${ObSelectableGroupDirective.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(ObSelectableGroupDirective)).length).toBe(3);
+	test(`that there are 4 ${ObSelectableGroupDirective.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(ObSelectableGroupDirective)).length).toBe(4);
 	});
 });
