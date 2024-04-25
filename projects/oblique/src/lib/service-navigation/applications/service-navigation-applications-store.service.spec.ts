@@ -1,17 +1,22 @@
 import {TestBed} from '@angular/core/testing';
-import {of} from 'rxjs';
+import {Subject, of} from 'rxjs';
 import {WINDOW} from '../../utilities';
 import {ObIServiceNavigationApplicationInfo} from '../api/service-navigation.api.model';
 import {ObServiceNavigationApplicationsStoreService} from './service-navigation-applications-store.service';
 import {ObServiceNavigationApplicationsApiService} from '../api/service-navigation-applications-api.service';
+import {ObGlobalEventsService} from '../../global-events/global-events.service';
 
 describe('ObServiceNavigationApplicationsStoreService', () => {
 	let service: ObServiceNavigationApplicationsStoreService;
 	let applicationService: ObServiceNavigationApplicationsApiService;
+	const mockedBeforeUnload = new Subject<void>();
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [{provide: ObServiceNavigationApplicationsApiService, useValue: {fetchApplicationsInfo: jest.fn()}}]
+			providers: [
+				{provide: ObServiceNavigationApplicationsApiService, useValue: {fetchApplicationsInfo: jest.fn()}},
+				{provide: ObGlobalEventsService, useValue: {beforeUnload$: mockedBeforeUnload}}
+			]
 		});
 	});
 
@@ -250,6 +255,23 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 		beforeEach(() => {
 			TestBed.overrideProvider(WINDOW, {useValue: window});
 			jest.spyOn(window.localStorage, 'setItem');
+			jest.spyOn(window.localStorage, 'removeItem');
+		});
+
+		describe('on unload', () => {
+			beforeEach(() => {
+				service = TestBed.inject(ObServiceNavigationApplicationsStoreService);
+			});
+
+			it('should remove data in localStorage once', () => {
+				mockedBeforeUnload.next();
+				expect(window.localStorage.removeItem).toHaveBeenCalledTimes(1);
+			});
+
+			it('should remove data in localStorage', () => {
+				mockedBeforeUnload.next();
+				expect(window.localStorage.removeItem).toHaveBeenCalledWith('ObliqueHeaderWidgetApplications');
+			});
 		});
 
 		describe('with empty localStorage', () => {
