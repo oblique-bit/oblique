@@ -13,6 +13,7 @@ import {STEPPER_GLOBAL_OPTIONS, StepperOptions} from '@angular/cdk/stepper';
 import {ObIBanner, ObIMaterialConfig, ObIPamsConfiguration} from './utilities.model';
 import {ObCheckboxModule} from './checkbox/checkbox.module';
 import {ObFormFieldModule} from './form-field/form-field.module';
+import {MATERIAL_SANITY_CHECKS} from '@angular/material/core';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
@@ -74,7 +75,8 @@ export function obliqueProviders(): Provider[] {
 		{provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useFactory: checkboxOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
 		{provide: MAT_RADIO_DEFAULT_OPTIONS, useFactory: radioOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
 		{provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, useFactory: slideToggleOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]}
+		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
+		{provide: MATERIAL_SANITY_CHECKS, useValue: {theme: false}}
 	];
 }
 
