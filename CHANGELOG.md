@@ -1,9 +1,26 @@
+# [11.1.0](https://github.com/oblique-bit/oblique/compare/11.0.3...11.1.0) (2024-04-26)
+
+## Bug Fixes
+
+- **autocomplete:** escape special characters in the search term ([fae80bfe](https://github.com/oblique-bit/oblique/commit/fae80bfe3585ff75df7eff43e44bbafd71afdef2))
+- **autocomplete:** correct filter omitting matched results ([0c7dbbf0](https://github.com/oblique-bit/oblique/commit/0c7dbbf0aacdd844b25372f78d80e9c1777dea44))
+- **service-navigation:** properly identify applications ([6f23fc41](https://github.com/oblique-bit/oblique/commit/6f23fc41bd91e7942897b00143ea8d1d1bcd2f28))
+
+## Features
+
+- **global-events:** `obOutsideFilter` accepts generics of type `Event` ([389666c4](https://github.com/oblique-bit/oblique/commit/389666c462c19da391506e1b9fda47c06cea7c77))
+- **language:** change text for required fields ([e25eccc9](https://github.com/oblique-bit/oblique/commit/e25eccc984c77a6fa0603c841f2b4fa25e520eba))
+- **material:** add datepicker validation translations ([5df0526e](https://github.com/oblique-bit/oblique/commit/5df0526e69611ae1dbd3b7e104b6e5ee23420b3c))
+- **oblique:** add rule to prevent warnings from material ([abba4f57](https://github.com/oblique-bit/oblique/commit/abba4f5756f0d09cfe0c6f7628f525f09974beb3))
+- **schematics:** remove obsolete information regarding Frutiger from ng-add ([daa109ce](https://github.com/oblique-bit/oblique/commit/daa109ce9291ff210612414a4ed2f5888d2fd7fd))
+- **service-navigation:** empty the applications cache when the application is closed ([a4b2fec1](https://github.com/oblique-bit/oblique/commit/a4b2fec10224fdff8b5d82c2736d3c8d262df418))
+
 # [11.0.3](https://github.com/oblique-bit/oblique/compare/11.0.2...11.0.3) (2024-04-19)
 
 ## Bug Fixes
 
-- **material:** make margin-top consistent for all mat-chip ([9a86f715](https://github.com/oblique-bit/oblique/commit/9a86f71531616196900b73e8a0efb3bd01e69930))
-- **material:** ensure that chip colors are applied for all types of chips ([981253c1](https://github.com/oblique-bit/oblique/commit/981253c18d5c3703b768bf2b53a27d867620225d))
+- **material:** make margin-top consistent for all mat-chip ([563a79fc](https://github.com/oblique-bit/oblique/commit/563a79fc910e6658959164dedffab5feffcb7333))
+- **material:** ensure that chip colors are applied for all types of chips ([e73453f2](https://github.com/oblique-bit/oblique/commit/e73453f21470f421bf2c1da9d79cd4ea58f2951d))
 
 # [11.0.2](https://github.com/oblique-bit/oblique/compare/11.0.1...11.0.2) (2024-04-12)
 
