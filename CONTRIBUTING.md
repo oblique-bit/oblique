@@ -140,6 +140,7 @@ If specified, the scope must be one of:
 - **off-canvas**
 - **paginator**
 - **popover**
+- **rxjs-operators**
 - **schema-validation**
 - **scrolling**
 - **selectable**

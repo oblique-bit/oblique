@@ -116,6 +116,7 @@ export {
 	OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE,
 	ObEToggleType
 } from './lib/popover/popover.module';
+export {obPauseWhenPageHidden} from './lib/rxjs-operators';
 export {
 	draft07Convert,
 	ObSchemaRequiredDirective,
