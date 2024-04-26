@@ -59,7 +59,7 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 		return this.disabled$.getValue();
 	}
 
-	@Input({transform: booleanAttribute}) private set disabled(state: boolean) {
+	@HostBinding('attr.disabled') @Input({transform: booleanAttribute}) private set disabled(state: boolean) {
 		this.disabled$.next(state);
 	}
 

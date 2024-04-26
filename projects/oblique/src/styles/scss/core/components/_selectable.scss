@@ -1,0 +1,6 @@
+.ob-selectable-group {
+	&[disabled]:not([disabled="false"]) .ob-selectable {
+		opacity: 0.38; // same value as in material
+		cursor: not-allowed;
+	}
+}
