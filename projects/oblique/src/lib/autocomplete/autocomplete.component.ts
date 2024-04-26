@@ -1,5 +1,5 @@
 import {AsyncPipe, NgFor, NgIf, NgTemplateOutlet} from '@angular/common';
-import {Component, EventEmitter, Input, OnChanges, OnDestroy, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, Output, ViewEncapsulation, inject} from '@angular/core';
 import {ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatOptionModule} from '@angular/material/core';
@@ -11,6 +11,7 @@ import {Observable, Subject, debounceTime} from 'rxjs';
 import {map, startWith, takeUntil} from 'rxjs/operators';
 import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup, OptionLabelIconPosition} from '../autocomplete/autocomplete.model';
 import {ObInputClearDirective} from '../input-clear/input-clear.directive';
+import {ObAutocompleteTextToFindService} from './autocomplete-text-to-find.service';
 import {ObHighlightTextPipe} from './highlight-text/highlight-text.pipe';
 import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.directive';
 
@@ -60,6 +61,7 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	filteredOptions$: Observable<(ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[]>;
 	hasGroupOptions = false;
 	private readonly unsubscribe = new Subject<void>();
+	private readonly obAutocompleteTextToFindService = inject(ObAutocompleteTextToFindService);
 
 	ngOnChanges(): void {
 		this.setupOptionsFilter();
@@ -147,8 +149,8 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	}
 
 	private filterOptions(options: ObIAutocompleteInputOption[], searchText: string): ObIAutocompleteInputOption[] {
-		const regex = new RegExp(searchText, this.filterRegexFlag);
-		return options.filter((option: ObIAutocompleteInputOption) => regex.test(option.label));
+		const escapedSearchText = this.obAutocompleteTextToFindService.escapeRegexCharacter(searchText);
+		return options.filter((option: ObIAutocompleteInputOption) => new RegExp(escapedSearchText, this.filterRegexFlag).test(option.label));
 	}
 
 	private isGroupOption(option: ObIAutocompleteInputOptionGroup | ObIAutocompleteInputOption): boolean {

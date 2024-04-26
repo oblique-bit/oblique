@@ -1,4 +1,4 @@
-<ob-master-layout [skipLinks]="skipLinks" [navigation]="navigation" *ngIf="font$ | async as font">
+<ob-master-layout [skipLinks]="skipLinks" [navigation]="navigation">
 	<ng-container obHeaderTitle>Oblique</ng-container>
 	<ng-template #obHeaderControl>
 		<ob-autocomplete class="ob-sm-down-width-100" [autocompleteOptions]="autocompleteItems$ | async" [formControl]="search">
@@ -48,17 +48,6 @@
 				</li>
 			</ul>
 		</ng-template>
-	</ng-template>
-	<ng-template #obHeaderControl>
-		<button type="button" (click)="toggleFont(font)" mat-button obButton="tertiary" [matTooltip]="'Use ' + font + ' font'">
-			{{ font }}
-		</button>
-	</ng-template>
-
-	<ng-template #obHeaderMobileControl>
-		<button type="button" (click)="toggleFont(font)" mat-button obButton="tertiary" [matTooltip]="'Use ' + font + ' font'">
-			{{ font }}
-		</button>
 	</ng-template>
 	<ng-template #obHeaderMobileControl>
 		<button type="button" mat-icon-button obButton="tertiary">

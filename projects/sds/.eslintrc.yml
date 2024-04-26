@@ -1,6 +1,8 @@
 extends: "../../.eslintrc.yml"
 ignorePatterns:
-  - "!**/*"
+  - schematics/src/add-preview/templates/*
+  - schematics/src/add-code-example/templates/*
+  - schematics/src/**/*.js
 overrides:
   - files:
       - "*.ts"
@@ -12,28 +14,25 @@ overrides:
         - projects/sds/schematics/tsconfig.schematics.json
         - projects/sds/scripts/tsconfig.scripts.json
     rules:
-      # reactivate some rules
-      "@angular-eslint/prefer-standalone-component": error
-      "@angular-eslint/use-component-view-encapsulation": error
-      "@typescript-eslint/sort-type-constituents": error
-      "@typescript-eslint/explicit-module-boundary-types": error
-      "@typescript-eslint/no-unsafe-member-access": error
-      "@typescript-eslint/no-unsafe-assignment": error
-      "@typescript-eslint/no-unsafe-argument": error
-      "@typescript-eslint/no-misused-promises": error
-      "@typescript-eslint/no-unsafe-call": error
-      "@typescript-eslint/naming-convention": error
-      max-params: error
-      no-warning-comments: error
-
-      # rules that need strict mode to be enabled
+      # rules that need some refactoring to be enabled
+      "@angular-eslint/consistent-component-styles": off
+      "@typescript-eslint/consistent-type-imports": off
+      "@typescript-eslint/max-params": off
+      "@typescript-eslint/no-explicit-any": off
+      "@typescript-eslint/no-magic-numbers": off
+      "@typescript-eslint/no-require-imports": off
+      "@typescript-eslint/no-unnecessary-condition": off
+      "@typescript-eslint/no-unsafe-return": off
+      "@typescript-eslint/parameter-properties": off # disallows declaring variables in constructor
+      "@typescript-eslint/prefer-destructuring": off
       "@typescript-eslint/prefer-nullish-coalescing": off
+      "@typescript-eslint/strict-boolean-expressions": off
+      func-names: off
+      max-lines-per-function: off
+      max-statements: off
+      no-param-reassign: off
 
   - files:
       - "*.html"
     rules:
-      "@angular-eslint/template/label-has-associated-control": error
-      "@angular-eslint/template/cyclomatic-complexity": error
-      "@angular-eslint/template/no-call-expression": error
-      "@angular-eslint/template/attributes-order": error
-      "@angular-eslint/template/no-inline-styles": error
+      "@angular-eslint/template/prefer-control-flow": off

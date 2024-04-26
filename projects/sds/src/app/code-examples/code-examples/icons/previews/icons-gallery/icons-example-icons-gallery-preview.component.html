@@ -1,6 +1,13 @@
 <ob-notification />
+<fieldset>
+	<legend>Search</legend>
+	<mat-form-field>
+		<mat-label>Icon name</mat-label>
+		<input matInput [formControl]="iconsFilter" />
+	</mat-form-field>
+</fieldset>
 <div class="container">
-	<mat-card *ngFor="let icon of icons" class="icon-card">
+	<mat-card *ngFor="let icon of filteredIcons$ | async" class="icon-card">
 		<mat-card-actions class="card-actions">
 			<button
 				mat-icon-button

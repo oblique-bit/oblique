@@ -6,26 +6,11 @@ overrides:
       - "*.ts"
     parserOptions:
       project:
-        - projects/sandbox/tsconfig.app.json
-        - projects/sandbox/tsconfig.env.json
-        - projects/sandbox/tsconfig.spec.json
+        - projects/service-navigation-web-component/tsconfig.app.json
+        - projects/service-navigation-web-component/tsconfig.spec.json
+        - projects/service-navigation-web-component/tsconfig.scripts.json
     rules:
-      "@angular-eslint/directive-selector":
-        - error
-        - type: attribute
-          prefix: sb
-          style: camelCase
-      "@angular-eslint/component-selector":
-        - error
-        - type: element
-          prefix: sb
-          style: kebab-case
-
       # rules that need some refactoring to be enabled
-      "@angular-eslint/consistent-component-styles": off
-      "@angular-eslint/prefer-standalone": off
-      "@angular-eslint/prefer-standalone-component": off
-      "@typescript-eslint/explicit-module-boundary-types": off
       "@typescript-eslint/max-params": off
       "@typescript-eslint/naming-convention": off
       "@typescript-eslint/no-explicit-any": off
@@ -42,10 +27,5 @@ overrides:
   - files:
       - "*.html"
     rules:
-      # rules that need some refactoring to be enabled
       "@angular-eslint/template/attributes-order": off
-      "@angular-eslint/template/cyclomatic-complexity": off
-      "@angular-eslint/template/label-has-associated-control": off
-      "@angular-eslint/template/no-call-expression": off
-      "@angular-eslint/template/no-inline-styles": off
       "@angular-eslint/template/prefer-control-flow": off

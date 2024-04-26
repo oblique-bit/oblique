@@ -6,6 +6,8 @@
   },
   "scripts": {
     "start": "ng serve",
+    "lint": "ts-node scripts/lint.ts",
+    "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test service-navigation-web-component",
     "build": "ng build && ts-node scripts/post-dist"
   },
@@ -13,6 +15,6 @@
     "service-navigation-web-component"
   ],
   "dependencies": {
-    "@angular/elements": "^17.3.5"
+    "@angular/elements": "^17.3.6"
   }
 }

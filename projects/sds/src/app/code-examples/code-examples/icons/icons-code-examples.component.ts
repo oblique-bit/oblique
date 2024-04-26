@@ -19,11 +19,6 @@ export class IconsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'icons-examples';
 	readonly previews: CodeExample[] = [
 		{
-			component: IconsExampleIconsGalleryPreviewComponent,
-			idParts: ['icons', 'gallery'],
-			title: 'Icon Gallery'
-		},
-		{
 			component: IconsExampleDefaultPreviewComponent,
 			idParts: ['default'],
 			title: 'Icon Default',
@@ -51,6 +46,11 @@ export class IconsCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('icons', 'font-size/icons-example-font-size-preview.component.ts', 'TS'),
 				this.getSnippet('icons', 'font-size/icons-example-font-size-preview.component.scss', 'SCSS')
 			]
+		},
+		{
+			component: IconsExampleIconsGalleryPreviewComponent,
+			idParts: ['icons', 'gallery'],
+			title: 'Icon Gallery'
 		}
 	];
 }

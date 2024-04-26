@@ -113,14 +113,7 @@
             ],
             "styles": [
               "projects/oblique/src/styles/scss/oblique-core.scss",
-              {
-                "input": "projects/oblique/src/styles/css/frutiger.css",
-                "inject": false
-              },
-              {
-                "input": "projects/oblique/src/styles/css/roboto.css",
-                "inject": false
-              },
+              "projects/oblique/src/styles/css/roboto.css",
               "projects/oblique/src/styles/scss/oblique-icons.scss",
               "projects/oblique/src/styles/scss/oblique-alert.scss",
               "projects/sandbox/src/scss/styles.scss"
@@ -254,10 +247,6 @@
             ],
             "styles": [
               "projects/oblique/src/styles/scss/oblique-core.scss",
-              {
-                "input": "projects/oblique/src/styles/css/frutiger.css",
-                "inject": false
-              },
               "projects/sds/src/styles/styles.scss",
               "node_modules/highlight.js/styles/sunburst.css"
             ],

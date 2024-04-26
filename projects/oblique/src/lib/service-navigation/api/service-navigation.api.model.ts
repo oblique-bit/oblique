@@ -42,6 +42,7 @@ export interface ObIServiceNavigationRawApplication {
 
 export interface ObIServiceNavigationApplicationInfo {
 	applicationID: number;
+	childApplicationID?: number;
 	image: string;
 	lastModificationDate: string;
 	name: ObIServiceNavigationTranslation;

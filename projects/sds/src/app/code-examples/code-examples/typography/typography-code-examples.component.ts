@@ -7,6 +7,7 @@ import {TypographyExampleInlineElementsPreviewComponent} from './previews/inline
 import {TypographyExampleHeadingsPreviewComponent} from './previews/headings/typography-example-headings-preview.component';
 import {TypographyExampleMixinsPreviewComponent} from './previews/mixins/typography-example-mixins-preview.component';
 import {TypographyExampleBlockElementsPreviewComponent} from './previews/block-elements/typography-example-block-elements-preview.component';
+import {TypographyExampleListsPreviewComponent} from '../typography/previews/lists/typography-example-lists-preview.component';
 
 @Component({
 	selector: 'app-code-example-typography',
@@ -56,6 +57,15 @@ export class TypographyCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('typography', 'block-elements/typography-example-block-elements-preview.component.html', 'HTML'),
 				this.getSnippet('typography', 'block-elements/typography-example-block-elements-preview.component.ts', 'TS'),
 				this.getSnippet('typography', 'block-elements/typography-example-block-elements-preview.component.scss', 'SCSS')
+			]
+		},
+		{
+			component: TypographyExampleListsPreviewComponent,
+			idParts: ['lists'],
+			title: 'Lists',
+			snippets: [
+				this.getSnippet('typography', 'lists/typography-example-lists-preview.component.html', 'HTML'),
+				this.getSnippet('typography', 'lists/typography-example-lists-preview.component.ts', 'TS')
 			]
 		}
 	];

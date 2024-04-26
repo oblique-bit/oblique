@@ -423,4 +423,79 @@ describe(ObAutocompleteComponent.name, () => {
 			});
 		});
 	});
+
+	describe('filter options', () => {
+		const testData = [
+			[
+				'dragon',
+				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}],
+				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}]
+			],
+			[
+				'Dragon',
+				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}],
+				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}]
+			],
+			['1', [{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}], [{label: 'fat dragon 1'}, {label: 'unicorn 1'}]],
+			['2', [{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}], [{label: 'fat dragon 2'}]],
+			['search term that matches nothing', [{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}], []],
+			[
+				'',
+				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}],
+				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}]
+			],
+			['dragon', [{label: 'fat-dragon 1'}, {label: 'fat dragon 2'}], [{label: 'fat-dragon 1'}, {label: 'fat dragon 2'}]],
+			['.', [{label: 'fat.dragon 1'}, {label: 'fat dragon 2'}], [{label: 'fat.dragon 1'}]]
+		];
+
+		beforeEach(() => {
+			parentFixture = TestBed.overrideComponent(TestParentComponent, {
+				set: {
+					template: `<form [formGroup]="parentFormControl"><ob-autocomplete [autocompleteOptions]="autocompleteOptions" formControlName="model"></ob-autocomplete></form>`
+				}
+			}).createComponent(TestParentComponent);
+
+			parentComponent = parentFixture.componentInstance;
+			component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+			parentComponent.model = new FormControl<string>('');
+			parentComponent.searchText = '';
+			parentFixture.detectChanges();
+		});
+
+		it.each(testData)(
+			'should filter for %i',
+			fakeAsync((searchTerm: string, options: {label: string}[], expectedOptions: {label: string}[]) => {
+				parentComponent.autocompleteOptions = options;
+
+				let foundOptions: (ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[] = [];
+				component.filteredOptions$.subscribe(filteredOptions => {
+					foundOptions = filteredOptions;
+				});
+
+				component.autocompleteInputControl.setValue(searchTerm);
+				parentFixture.detectChanges();
+				tick(300);
+
+				expect(foundOptions).toStrictEqual(expectedOptions);
+			})
+		);
+
+		it.each(testData)(
+			'should show expected amount of results',
+			fakeAsync((searchTerm: string, options: {label: string}[], expectedOptions: {label: string}[]) => {
+				parentComponent.autocompleteOptions = options;
+
+				let foundOptions: (ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[] = [];
+				component.filteredOptions$.subscribe(filteredOptions => {
+					foundOptions = filteredOptions;
+				});
+
+				component.autocompleteInputControl.setValue(searchTerm);
+				parentFixture.detectChanges();
+				tick(300);
+
+				expect(foundOptions.length).toBe(expectedOptions.length);
+			})
+		);
+	});
 });
