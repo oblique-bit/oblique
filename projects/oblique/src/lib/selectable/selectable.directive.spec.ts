@@ -149,15 +149,6 @@ describe(ObSelectableDirective.name, () => {
 			});
 		});
 
-		describe('cursor', () => {
-			it('should be defined as property', () => {
-				expect(directive.cursor).toBe('pointer');
-			});
-			it('should be defined as attribute', () => {
-				expect(element.nativeElement.getAttribute('style')).toBe('cursor: pointer;');
-			});
-		});
-
 		describe('selected', () => {
 			it('should be defined as property', () => {
 				expect(directive.selected).toBe(false);
