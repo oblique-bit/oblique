@@ -1,4 +1,5 @@
-import {Directive, ElementRef, HostBinding, HostListener, Input, OnInit, Optional} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {DestroyRef, Directive, ElementRef, HostBinding, HostListener, Input, OnInit, Optional, inject} from '@angular/core';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
 
 @Directive({
@@ -12,8 +13,10 @@ export class ObSelectableDirective implements OnInit {
 	@Input() @HostBinding('class.ob-selected') @HostBinding('attr.aria-checked') selected = false;
 	@HostBinding('class.ob-selectable') readonly selectable = true;
 	@Input() @HostBinding('attr.tabindex') tabindex = 0;
-	@HostBinding('style.cursor') readonly cursor = 'pointer';
 	@HostBinding('attr.role') role = 'checkbox';
+	private readonly destroyRef = inject(DestroyRef);
+	private disabled = false;
+	private initialTabindex: number;
 
 	constructor(
 		private readonly element: ElementRef,
@@ -27,8 +30,12 @@ export class ObSelectableDirective implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.initialTabindex = this.tabindex;
 		this.group.register(this);
 		this.group.mode$.subscribe(mode => (this.role = mode === 'windows' ? undefined : mode));
+		this.group.disabled$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(disabled => {
+			this.toggleDisabled(disabled);
+		});
 	}
 
 	@HostListener('click', ['$event'])
@@ -37,7 +44,9 @@ export class ObSelectableDirective implements OnInit {
 	@HostListener('keydown.control.space', ['$event'])
 	onClick($event: KeyboardEvent | MouseEvent): void {
 		$event.preventDefault();
-		this.group.toggle(this, $event.ctrlKey, $event.shiftKey);
+		if (!this.disabled) {
+			this.group.toggle(this, $event.ctrlKey, $event.shiftKey);
+		}
 	}
 
 	@HostListener('focus')
@@ -47,5 +56,10 @@ export class ObSelectableDirective implements OnInit {
 
 	public focus(): void {
 		this.element.nativeElement.focus();
+	}
+
+	private toggleDisabled(state: boolean): void {
+		this.disabled = state;
+		this.tabindex = state ? -1 : this.initialTabindex;
 	}
 }
