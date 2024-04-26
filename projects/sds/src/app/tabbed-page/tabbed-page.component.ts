@@ -1,9 +1,9 @@
-import {Component, ViewChild, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
-import {Observable, distinctUntilChanged, filter, map, mergeWith, switchMap, tap} from 'rxjs';
+import {Observable, distinctUntilChanged, filter, map, mergeWith, switchMap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -22,9 +22,9 @@ import {TabNameMapper} from './utils/tab-name-mapper';
 	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe]
 })
 export class TabbedPageComponent {
-	@ViewChild('tabs') tabs: TabsComponent;
 	readonly componentId = 'tabbed-page';
 	readonly cmsData$: Observable<CmsData>;
+	readonly selectedTab: string;
 	private readonly activatedRoute = inject(ActivatedRoute);
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
@@ -33,6 +33,7 @@ export class TabbedPageComponent {
 
 	constructor() {
 		this.cmsData$ = this.buildCmsDataObservable();
+		this.selectedTab = TabNameMapper.getTabNameFromUrlParam(this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab));
 	}
 
 	handleTabChanged(tabName: string): void {
@@ -63,8 +64,7 @@ export class TabbedPageComponent {
 			distinctUntilChanged(),
 			map(slug => this.slugToIdService.getIdForSlug(slug)),
 			switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
-			map(cmsData => this.buildCmsData(cmsData.data)),
-			tap(cmsData => this.activateTab(cmsData))
+			map(cmsData => this.buildCmsData(cmsData.data))
 		);
 	}
 
@@ -75,13 +75,5 @@ export class TabbedPageComponent {
 			uiUx: cmsData.ui_ux,
 			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug)
 		};
-	}
-
-	private activateTab(cmsData: CmsData): void {
-		if (cmsData.api || cmsData.source || cmsData.uiUx) {
-			const tabToSelect: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab) ?? '';
-			// setTimeout delays the tab selection until the view is initialized and the tabs are available
-			setTimeout(() => this.tabs.selectTabWithName(TabNameMapper.getTabNameFromUrlParam(tabToSelect)));
-		}
 	}
 }
