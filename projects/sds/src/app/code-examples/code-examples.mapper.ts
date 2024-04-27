@@ -30,6 +30,7 @@ import {OffCanvasCodeExamplesComponent} from './code-examples/off-canvas/off-can
 import {PaginatorCodeExamplesComponent} from './code-examples/paginator/paginator-code-examples.component';
 import {PopoverCodeExamplesComponent} from './code-examples/popover/popover-code-examples.component';
 import {ProgressBarCodeExamplesComponent} from './code-examples/progress-bar/progress-bar-code-examples.component';
+import {RxjsOperatorsCodeExamplesComponent} from './code-examples/rxjs-operators/rxjs-operators-code-examples.component';
 import {SchemaValidationCodeExamplesComponent} from './code-examples/schema-validation/schema-validation-code-examples.component';
 import {SelectableCodeExamplesComponent} from './code-examples/selectable/selectable-code-examples.component';
 import {ShadowCodeExamplesComponent} from './code-examples/shadow/shadow-code-examples.component';
@@ -90,6 +91,7 @@ export class CodeExamplesMapper {
 		paginator: PaginatorCodeExamplesComponent,
 		popover: PopoverCodeExamplesComponent,
 		'progress-bar': ProgressBarCodeExamplesComponent,
+		'rxjs-operators': RxjsOperatorsCodeExamplesComponent,
 		'schema-validation': SchemaValidationCodeExamplesComponent,
 		selectable: SelectableCodeExamplesComponent,
 		shadow: ShadowCodeExamplesComponent,
