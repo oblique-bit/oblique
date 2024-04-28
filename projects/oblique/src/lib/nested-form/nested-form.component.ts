@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
+import {AfterViewInit, Component, HostListener, Input} from '@angular/core';
 import {
 	AbstractControl,
 	ControlValueAccessor,
@@ -23,8 +23,13 @@ import {ObParentFormDirective} from './parent-form.directive';
 })
 export class ObNestedFormComponent implements ControlValueAccessor, Validator, AfterViewInit {
 	@Input() nestedForm: UntypedFormGroup;
+	private onTouched: () => void;
 
 	constructor(private readonly parent: ObParentFormDirective) {}
+
+	@HostListener('focusout') onBlur(): void {
+		this.onTouched();
+	}
 
 	ngAfterViewInit(): void {
 		this.parent.submit$.subscribe(() => this.nestedForm.markAllAsTouched());
@@ -35,8 +40,9 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 		this.nestedForm.valueChanges.subscribe(val => fn(val));
 	}
 
-	// eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-	registerOnTouched(fn: any): void {}
+	registerOnTouched(fn: () => void): void {
+		this.onTouched = fn;
+	}
 
 	setDisabledState(isDisabled: boolean): void {
 		// eslint-disable-next-line no-unused-expressions
