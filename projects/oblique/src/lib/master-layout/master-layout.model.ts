@@ -24,7 +24,7 @@ export interface ObIServiceNavigationConfig {
 	maxLastUsedApplications?: number;
 	maxFavoriteApplications?: number;
 	returnUrl?: string;
-	pamsAppId?: string | undefined;
+	pamsAppId?: string;
 	displayApplications?: boolean;
 	displayAuthentication?: boolean;
 	displayInfo?: boolean;
