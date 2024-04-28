@@ -32,8 +32,9 @@ describe('ObServiceNavigationStateApiService', () => {
 			expect(service.get('http:/rootUrl/') instanceof Observable).toBe(true);
 		});
 
-		it('should receive that "data" part of the mockUrls', () =>
-			expect(firstValueFrom(service.get('http://rootUrl/'))).resolves.toEqual(mockData.data));
+		it('should receive that "data" part of the mockUrls', async () => {
+			await expect(firstValueFrom(service.get('http://rootUrl/'))).resolves.toEqual(mockData.data);
+		});
 
 		describe('http.get', () => {
 			beforeEach(() => {

@@ -56,10 +56,10 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 			expect(component.languageChange instanceof EventEmitter).toBe(true);
 		});
 
-		test('that it emits', () => {
+		test('that it emits', async () => {
 			const promise = firstValueFrom(component.languageChange);
 			component.changeLanguage('de');
-			expect(promise).resolves.toBe('de');
+			await expect(promise).resolves.toBe('de');
 		});
 	});
 

@@ -227,8 +227,8 @@ describe('ObServiceNavigationComponent', () => {
 				expect(service.getLoginState$).toHaveBeenCalledWith();
 			});
 
-			it(`should receive "SA"`, () => {
-				expect(firstValueFrom(component[property])).resolves.toEqual('SA');
+			it(`should receive "SA"`, async () => {
+				await expect(firstValueFrom(component[property])).resolves.toEqual('SA');
 			});
 		});
 
@@ -255,8 +255,8 @@ describe('ObServiceNavigationComponent', () => {
 				expect(service[method]).toHaveBeenCalledWith();
 			});
 
-			it(`should receive "${emit.toString()}"`, () => {
-				expect(firstValueFrom(component[property])).resolves.toEqual(emit);
+			it(`should receive "${emit.toString()}"`, async () => {
+				await expect(firstValueFrom(component[property])).resolves.toEqual(emit);
 			});
 		});
 
@@ -269,8 +269,8 @@ describe('ObServiceNavigationComponent', () => {
 				expect(service.getLanguage$).toHaveBeenCalled();
 			});
 
-			it(`should receive "en"`, () => {
-				expect(firstValueFrom(component.language$)).resolves.toBe('en');
+			it(`should receive "en"`, async () => {
+				await expect(firstValueFrom(component.language$)).resolves.toBe('en');
 			});
 		});
 
