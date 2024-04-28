@@ -228,8 +228,8 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	}
 
 	private extractUrlPart(url: string, regex: RegExp): string {
-		// substr remove the leading #, ? or & character
-		return (url.match(regex) || [])[0]?.substr(1);
+		// substring removes the leading #, ? or & character
+		return (url.match(regex) || [])[0]?.substring(1);
 	}
 
 	private formatQueryParameters(parameters: string): Params {
