@@ -30,11 +30,11 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 		this.activateSpinner(obliqueRequest.spinner, request.url);
 
 		return next.handle(this.setupHeader(request)).pipe(
-			catchError(error => throwError({error, handled: false})),
+			catchError(error => throwError(() => ({error, handled: false}))),
 			catchError(error => this.handleUnknownError(error)),
 			catchError(error => this.handleSessionExpiredError(error)),
 			catchError(error => this.handleHttpError(error, obliqueRequest)),
-			catchError(error => throwError(error.error)),
+			catchError(error => throwError(() => error.error)),
 			finalize(() => {
 				clearTimeout(timer);
 				this.deactivateSpinner(obliqueRequest.spinner, request.url);
@@ -61,7 +61,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 			action();
 			error.handled = true;
 		}
-		return throwError(error);
+		return throwError(() => error);
 	}
 
 	private setupHeader(request: HttpRequest<any>): HttpRequest<any> {
