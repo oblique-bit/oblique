@@ -321,6 +321,9 @@
           "configurations": {
             "default": {
               "configPath": "jest.config.js"
+            },
+            "ci": {
+              "configPath": "jest.config.ci.js"
             }
           },
           "defaultConfiguration": "default"
