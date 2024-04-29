@@ -7,6 +7,7 @@
     "lint": "ts-node scripts/lint.ts",
     "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test sandbox",
+    "test-ci": "cd ../.. && ng run sandbox:test:ci",
     "build": "ng build"
   },
   "dependencies": {
