@@ -37,7 +37,7 @@
     "node": ">=18.13.0"
   },
   "jestSonar": {
-    "reportPath": "./coverage",
+    "reportPath": "./coverage/oblique",
     "reportFile": "sqr.xml",
     "indent": 4,
     "sonar56x": true

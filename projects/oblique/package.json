@@ -8,6 +8,7 @@
     "lint": "ts-node scripts/lint.ts",
     "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test oblique",
+    "test-ci": "cd ../.. && ng run oblique:test:ci",
     "test-debugging": "cd ../.. && node --expose-gc ../../node_modules/@angular/cli/bin/ng test oblique --log-heap-usage",
     "prebuild": "ts-node scripts/pre-dist/run-pre-dist-steps.ts && ng build oblique-styles",
     "build": "ng build oblique && npm run schematics",

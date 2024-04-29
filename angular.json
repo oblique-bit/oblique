@@ -64,8 +64,8 @@
             "default": {
               "configPath": "jest.config.js"
             },
-            "production": {
-              "configPath": "jest.config.prod.js"
+            "ci": {
+              "configPath": "jest.config.ci.js"
             }
           },
           "defaultConfiguration": "default"
