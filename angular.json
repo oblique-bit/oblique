@@ -411,7 +411,13 @@
             "tsConfig": "tsconfig.spec.json",
             "no-cache": ["true"],
             "run-in-band": ["true"]
-          }
+          },
+          "configurations": {
+            "default": {
+              "configPath": "jest.config.js"
+            }
+          },
+          "defaultConfiguration": "default"
         }
       }
     }
