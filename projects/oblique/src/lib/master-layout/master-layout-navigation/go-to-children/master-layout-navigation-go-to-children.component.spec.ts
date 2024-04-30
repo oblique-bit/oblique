@@ -27,12 +27,12 @@ describe(ObMasterLayoutNavigationGoToChildrenComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	test('that button is shown by default', () => {
-		expect(harness.getButton()).resolves.toBeTruthy();
+	test('that button is shown by default', async () => {
+		await expect(harness.getButton()).resolves.toBeTruthy();
 	});
 
-	test('that button is hidden when hide is set to true', () => {
+	test('that button is hidden when hide is set to true', async () => {
 		component.hide = true;
-		expect(harness.getButton()).rejects.toBeTruthy();
+		await expect(harness.getButton()).rejects.toBeTruthy();
 	});
 });
