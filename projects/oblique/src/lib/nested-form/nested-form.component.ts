@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, HostListener, Input, inject} from '@angular/core';
+import {AfterViewInit, Component, DestroyRef, HostListener, Input, inject} from '@angular/core';
 import {
 	AbstractControl,
 	ControlValueAccessor,
@@ -9,6 +9,7 @@ import {
 	Validator
 } from '@angular/forms';
 import {ObParentFormDirective} from './parent-form.directive';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'ob-nested-form',
@@ -25,18 +26,19 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 	@Input() nestedForm: UntypedFormGroup;
 	private onTouched: () => void;
 	private readonly parent = inject(ObParentFormDirective);
+	private readonly destroyRef = inject(DestroyRef);
 
 	@HostListener('focusout') onBlur(): void {
 		this.onTouched();
 	}
 
 	ngAfterViewInit(): void {
-		this.parent.submit$.subscribe(() => this.nestedForm.markAllAsTouched());
-		this.parent.reset$.subscribe(() => this.nestedForm.reset());
+		this.parent.submit$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.nestedForm.markAllAsTouched());
+		this.parent.reset$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.nestedForm.reset());
 	}
 
 	registerOnChange(fn: any): void {
-		this.nestedForm.valueChanges.subscribe(val => fn(val));
+		this.nestedForm.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(val => fn(val));
 	}
 
 	registerOnTouched(fn: () => void): void {
