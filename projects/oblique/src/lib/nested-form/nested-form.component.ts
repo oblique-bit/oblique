@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, HostListener, Input} from '@angular/core';
+import {AfterViewInit, Component, HostListener, Input, inject} from '@angular/core';
 import {
 	AbstractControl,
 	ControlValueAccessor,
@@ -24,8 +24,7 @@ import {ObParentFormDirective} from './parent-form.directive';
 export class ObNestedFormComponent implements ControlValueAccessor, Validator, AfterViewInit {
 	@Input() nestedForm: UntypedFormGroup;
 	private onTouched: () => void;
-
-	constructor(private readonly parent: ObParentFormDirective) {}
+	private readonly parent = inject(ObParentFormDirective);
 
 	@HostListener('focusout') onBlur(): void {
 		this.onTouched();
