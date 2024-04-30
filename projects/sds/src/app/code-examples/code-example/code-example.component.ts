@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewChild, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CodeExampleDirective} from '../code-example.directive';
 import {SourceCode} from './source-code.model';
@@ -16,32 +16,16 @@ import {PreviewComponent} from '../code-examples.model';
 	standalone: true,
 	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, HighlightedCodeComponent, IdPipe]
 })
-export class CodeExampleComponent implements AfterViewInit {
+export class CodeExampleComponent implements OnInit {
 	@Input() codeSnippets: SourceCode[] = [];
 	@Input() idPrefix = '';
 	@Input() title = '';
 	@Input() preview: PreviewComponent;
-	@ViewChild(CodeExampleDirective) host!: CodeExampleDirective;
 
 	componentId = 'code-example';
 	hasCodeInTitle = false;
 
-	private readonly cdr = inject(ChangeDetectorRef);
-
-	ngAfterViewInit(): void {
-		this.loadComponent();
-	}
-
-	private loadComponent(): void {
-		if (this.host && this.preview) {
-			const {viewContainerRef} = this.host;
-			viewContainerRef.clear();
-			viewContainerRef.createComponent(this.preview);
-			this.cdr.detectChanges(); // This ensures that the CSS of the preview component is loaded
-
-			if (this.title?.includes('<code>')) {
-				this.hasCodeInTitle = true;
-			}
-		}
+	ngOnInit(): void {
+		this.hasCodeInTitle = this.title?.includes('<code>');
 	}
 }
