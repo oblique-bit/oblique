@@ -46,7 +46,6 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 	}
 
 	setDisabledState(isDisabled: boolean): void {
-		// eslint-disable-next-line no-unused-expressions
 		if (isDisabled) {
 			this.nestedForm.disable({emitEvent: false});
 		} else {
