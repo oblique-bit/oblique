@@ -85,12 +85,14 @@
 		}
 	}
 
-	&.ob-has-max-width .ob-main-layout {
-		display: flex;
-		justify-content: center;
+	@include layout.ob-media-breakpoint-up(lg) {
+		&.ob-has-max-width .ob-main-layout {
+			display: flex;
+			justify-content: center;
 
-		> * {
-			max-width: map.get(variables.$ob-grid-breakpoints, xl);
+			> * {
+				max-width: map.get(variables.$ob-grid-breakpoints, xl);
+			}
 		}
 	}
 
