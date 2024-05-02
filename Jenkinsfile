@@ -12,6 +12,7 @@ nodejsPipelineTemplate {
 			'lint': 'npm run lint',
 			'test': 'npm test -ws',
 			'build': 'npm run build -ws',
+			sonar: true
 		],
 		'release/major_*': [
 			'cloudFoundry': [

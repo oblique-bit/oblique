@@ -12,7 +12,8 @@ import {
 	Optional,
 	Renderer2,
 	TemplateRef,
-	ViewContainerRef
+	ViewContainerRef,
+	inject
 } from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {Instance, Options, Placement, createPopper} from '@popperjs/core';
@@ -53,16 +54,16 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	private popover: HTMLDivElement;
 	private isMouseHoverConfigured: boolean;
 	private isCloseOnlyOnToggleConfigured: boolean;
+	private readonly globalEventsService = inject(ObGlobalEventsService);
+	private readonly viewContainerRef = inject(ViewContainerRef);
+	private readonly renderer = inject(Renderer2);
 
 	constructor(
 		el: ElementRef,
-		private readonly renderer: Renderer2,
 		@Inject(DOCUMENT) document: Document,
 		@Optional() @Inject(OBLIQUE_POPOVER_TOGGLE_HANDLE) private readonly globalToggleHandle: ObEToggleType,
 		@Optional() @Inject(OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE) private readonly globalCloseOnlyOnToggle: boolean,
-		@Optional() @Inject(OBLIQUE_POPOVER_APPEND_TO_BODY) private readonly globalAppendToBody: boolean,
-		private readonly globalEventsService: ObGlobalEventsService,
-		private readonly viewContainerRef: ViewContainerRef
+		@Optional() @Inject(OBLIQUE_POPOVER_APPEND_TO_BODY) private readonly globalAppendToBody: boolean
 	) {
 		this.body = document.body;
 		this.host = el.nativeElement;

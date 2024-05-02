@@ -27,7 +27,7 @@ export class ObAlertComponent implements OnInit {
 	icon = 'alert:info';
 
 	private currentType: ObIAlertType = 'info';
-	private hasAlertRole?: boolean | undefined;
+	private hasAlertRole: boolean | undefined;
 
 	constructor(
 		@Optional() @Inject(OBLIQUE_HAS_ROLE_ALERT) private readonly hasGlobalAlertRole: boolean,

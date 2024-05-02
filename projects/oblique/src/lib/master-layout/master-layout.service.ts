@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap} from 'rxjs/operators';
 import {BehaviorSubject, Observable} from 'rxjs';
@@ -13,17 +13,17 @@ import {ObMasterLayoutConfig} from './master-layout.config';
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutService {
 	public readonly homePageRouteChange$: Observable<string>;
+	readonly header = inject(ObMasterLayoutHeaderService);
+	readonly footer = inject(ObMasterLayoutFooterService);
+	readonly navigation = inject(ObMasterLayoutNavigationService);
+	readonly layout = inject(ObMasterLayoutComponentService);
+	private readonly router = inject(Router);
+	private readonly activatedRoute = inject(ActivatedRoute);
+	private readonly config = inject(ObMasterLayoutConfig);
 	private homePageRouteInternal = this.config.homePageRoute;
 	private readonly homePageRouteChange = new BehaviorSubject<string>(this.config.homePageRoute);
 
 	constructor(
-		private readonly router: Router,
-		private readonly activatedRoute: ActivatedRoute,
-		private readonly config: ObMasterLayoutConfig,
-		public readonly header: ObMasterLayoutHeaderService,
-		public readonly footer: ObMasterLayoutFooterService,
-		public readonly navigation: ObMasterLayoutNavigationService,
-		public readonly layout: ObMasterLayoutComponentService,
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		language: ObLanguageService // ObLanguageService needs to be there to be instantiated
 	) {

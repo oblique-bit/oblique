@@ -34,14 +34,12 @@ export class ObAutocompleteHarness extends ContentContainerComponentHarness {
 
 	async openPanelAndGetAllOptions(): Promise<TestElement[]> {
 		await this.openAutocompletePanel();
-		const options = await this.getOptions();
-		return options;
+		return this.getOptions();
 	}
 
 	async openPanelAndGetAllOptionGroups(): Promise<TestElement[]> {
 		await this.openAutocompletePanel();
-		const options = await this.getOptionGroup();
-		return options;
+		return this.getOptionGroup();
 	}
 
 	async getInputValue(): Promise<string> {
@@ -55,8 +53,7 @@ export class ObAutocompleteHarness extends ContentContainerComponentHarness {
 	}
 
 	async getFormFieldElement(): Promise<TestElement> {
-		const formField = await this.getFormField();
-		return formField;
+		return this.getFormField();
 	}
 }
 
