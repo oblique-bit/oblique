@@ -2,7 +2,6 @@
 
 module.exports = require('./jest.config');
 module.exports.testResultsProcessor = 'jest-sonar-reporter';
-module.exports.reporters = undefined;
 module.exports.collectCoverageFrom = [
 	'<rootDir>/projects/oblique/src/lib/**/*.ts',
 	'!**/_mocks/**',

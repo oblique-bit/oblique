@@ -10,7 +10,6 @@ module.exports.displayName = {
 	name: 'Service Navigation Web Component',
 	color: 'magenta'
 };
-module.exports.reporters[1][1].publicPath = '<rootDir>/jest-report/service-navigation-web-component';
 module.exports.coveragePathIgnorePatterns = [
 	'<rootDir>/node_modules/',
 	'<rootDir>/projects/oblique',
