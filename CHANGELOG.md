@@ -1,3 +1,12 @@
+# [11.1.1](https://github.com/oblique-bit/oblique/compare/11.1.0...11.1.1) (2024-05-03)
+
+## Bug Fixes
+
+- **external-link:** set missing `ObNavigationLink.isExternal` in main nav links ([1060075e](https://github.com/oblique-bit/oblique/commit/1060075e1b32e5027f73e534fc7bf4394855c5b0))
+- **master-layout:** don't apply `hasMaxWidth` on small screens ([aed65a70](https://github.com/oblique-bit/oblique/commit/aed65a70102ab3a746ae974cdd6edeae3af8adf1))
+- **nested-form:** make sure to unsubscribe to every Observable ([3c1c1030](https://github.com/oblique-bit/oblique/commit/3c1c10302b7ec03007aaa05be5d5a6283679be09))
+- **nested-form:** mark the component as touched when the focus is lost ([d2e752a4](https://github.com/oblique-bit/oblique/commit/d2e752a4e1536123c8ac15f4f7ea5f71c63e0929))
+
 # [11.1.0](https://github.com/oblique-bit/oblique/compare/11.0.3...11.1.0) (2024-04-26)
 
 ## Bug Fixes
