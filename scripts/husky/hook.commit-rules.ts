@@ -25,14 +25,15 @@ class HookCommitRules {
 		}
 	}
 
-	private static checkLineLength(lines: string[], length: number): void {
-		if (lines.some(line => line.length > length)) {
-			const erroneousLines = lines
-				.map((line, index) => (line.length > length ? index : -1))
-				.filter(number => number > -1)
-				.map(number => HookCommitRules.numeral(number));
-			const text = HookCommitRules.join(erroneousLines);
-			throw new Error(`${text} line${text.includes('and') ? 's' : ''} exceeds ${length} characters.`);
+	private static checkLineLength(lines: string[], maxLength: number): void {
+		if (lines.some(line => line.length > maxLength)) {
+			throw new Error(
+				lines
+					.map((line, index) => ({length: line.length, index: HookCommitRules.numeral(index)}))
+					.filter(({length}) => length > maxLength)
+					.map(({length, index}) => `${index} line is ${length - maxLength} characters over the limit of ${maxLength}`)
+					.join('. ')
+			);
 		}
 	}
 

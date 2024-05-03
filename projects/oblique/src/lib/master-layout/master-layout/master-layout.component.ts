@@ -6,14 +6,14 @@ import {
 	DoCheck,
 	ElementRef,
 	HostBinding,
-	Inject,
 	Input,
 	OnDestroy,
 	OnInit,
 	QueryList,
 	TemplateRef,
 	ViewChild,
-	ViewEncapsulation
+	ViewEncapsulation,
+	inject
 } from '@angular/core';
 import {NavigationEnd, Params, Router} from '@angular/router';
 import {DOCUMENT} from '@angular/common';
@@ -66,16 +66,16 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	@ViewChild('wrapper') readonly wrapper: ElementRef<HTMLElement>;
 	private readonly unsubscribe = new Subject<void>();
 	private navigationLength: number;
+	private readonly router = inject(Router);
+	private readonly offCanvasService = inject(ObOffCanvasService);
+	private readonly scrollEvents = inject(ObScrollingEvents);
+	private readonly globalEventsService = inject(ObGlobalEventsService);
+	private readonly document = inject(DOCUMENT);
+	private readonly window = inject(WINDOW);
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
-		private readonly config: ObMasterLayoutConfig,
-		private readonly offCanvasService: ObOffCanvasService,
-		private readonly router: Router,
-		private readonly scrollEvents: ObScrollingEvents,
-		private readonly globalEventsService: ObGlobalEventsService,
-		@Inject(DOCUMENT) private readonly document: any,
-		@Inject(WINDOW) private readonly window: Window
+		private readonly config: ObMasterLayoutConfig
 	) {
 		this.layoutHasCoverChange();
 		this.layoutHasDefaultLayoutChange();
@@ -224,12 +224,12 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 				map(url => this.extractUrlPart(url, /#[^?&]*/)),
 				filter(fragment => this.config.focusableFragments.includes(fragment))
 			)
-			.subscribe(fragment => this.document.querySelector(`#${fragment}`)?.focus());
+			.subscribe(fragment => this.document.querySelector<HTMLElement>(`#${fragment}`)?.focus());
 	}
 
 	private extractUrlPart(url: string, regex: RegExp): string {
-		// substr remove the leading #, ? or & character
-		return (url.match(regex) || [])[0]?.substr(1);
+		// substring removes the leading #, ? or & character
+		return (url.match(regex) || [])[0]?.substring(1);
 	}
 
 	private formatQueryParameters(parameters: string): Params {

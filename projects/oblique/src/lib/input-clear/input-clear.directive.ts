@@ -45,10 +45,11 @@ export class ObInputClearDirective implements OnInit {
 
 	private checkControlType(): void {
 		if (this.isInvalidControlType()) {
+			const inputTypes = this.validControlTypes
+				.map(validControlType => validControlType.name)
+				.reduce((previous, current) => `${previous}, ${current}`);
 			console.warn(
-				`${ObInputClearDirective.name}: illegal value for obInputClear Input, please use one of the following: [${this.validControlTypes
-					.map(validControlType => validControlType.name)
-					.reduce((previous, current) => `${previous}, ${current}`)}].`
+				`${ObInputClearDirective.name}: illegal value for obInputClear Input, please use one of the following: [${inputTypes}].`
 			);
 		}
 	}

@@ -39,10 +39,10 @@ describe('ObServiceNavigationApplicationsApiService', () => {
 			expect(service.fetchApplicationsInfo('http:/rootUrl/', [{applicationID: 1, childApplicationID: 0}]) instanceof Observable).toBe(true);
 		});
 
-		it('should receive that "data" part of the mockUrls', () => {
-			expect(firstValueFrom(service.fetchApplicationsInfo('http:/rootUrl/', [{applicationID: 1, childApplicationID: 0}]))).resolves.toEqual(
-				mockUrls.data
-			);
+		it('should receive that "data" part of the mockUrls', async () => {
+			await expect(
+				firstValueFrom(service.fetchApplicationsInfo('http:/rootUrl/', [{applicationID: 1, childApplicationID: 0}]))
+			).resolves.toEqual(mockUrls.data.applications);
 		});
 
 		describe('http.post', () => {

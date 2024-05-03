@@ -149,8 +149,8 @@ describe('ObServiceNavigationService', () => {
 						expect(service.getLoginState$() instanceof Observable).toBe(true);
 					});
 
-					it(`should emit "SA"`, () => {
-						expect(firstValueFrom(service.getLoginState$())).resolves.toBe('SA');
+					it(`should emit "SA"`, async () => {
+						await expect(firstValueFrom(service.getLoginState$())).resolves.toBe('SA');
 					});
 
 					describe('ObServiceNavigationConfigService.fetchUrls', () => {
@@ -166,10 +166,10 @@ describe('ObServiceNavigationService', () => {
 					});
 
 					describe.each(['de', 'fr', 'it', 'en', 'es'])('with "%s" as language', language => {
-						it(`should emit "${language}"`, () => {
+						it(`should emit "${language}"`, async () => {
 							const promise = firstValueFrom(service.getLanguage$().pipe(skip(1)));
 							mockLangChange.next({lang: language});
-							expect(promise).resolves.toBe(language);
+							await expect(promise).resolves.toBe(language);
 						});
 					});
 				});
@@ -307,8 +307,8 @@ describe('ObServiceNavigationService', () => {
 							{method: 'getInboxMailUrl$', url: 'http://inboxMail'},
 							{method: 'getApplicationsUrl$', url: 'http://applications'}
 						])('$method', ({method, url}) => {
-							it(`should emit "${url}"`, () => {
-								expect(firstValueFrom(service[method]())).resolves.toBe(url);
+							it(`should emit "${url}"`, async () => {
+								await expect(firstValueFrom(service[method]())).resolves.toBe(url);
 							});
 						});
 
@@ -318,36 +318,36 @@ describe('ObServiceNavigationService', () => {
 								{avatarId: 2, url: `https://eportal${environment}.admin.ch/assets/avatars/avatar_2.svg`},
 								{avatarId: 13, url: `https://eportal${environment}.admin.ch/assets/avatars/avatar_13.svg`},
 								{avatarId: 14, url: ''}
-							])('should emit "$url" with "$avatarId" as "avatarId"', ({avatarId, url}) => {
+							])('should emit "$url" with "$avatarId" as "avatarId"', async ({avatarId, url}) => {
 								const promise = firstValueFrom(service.getAvatarUrl$());
 								mockStateChange.next({profile: {avatarID: avatarId}} as ObIServiceNavigationState);
-								expect(promise).resolves.toBe(url);
+								await expect(promise).resolves.toBe(url);
 							});
 						});
 
 						describe('getLoginState$', () => {
 							describe.each(['S1', 'S2OK', 'S2+OK', 'S3OK', 'S3+OK'])('with "%s"', loginState => {
-								it(`should emit "${loginState}"`, () => {
+								it(`should emit "${loginState}"`, async () => {
 									const promise = firstValueFrom(service.getLoginState$().pipe(skip(1)));
 									mockStateChange.next({loginState} as ObIServiceNavigationState);
-									expect(promise).resolves.toEqual(loginState);
+									await expect(promise).resolves.toEqual(loginState);
 								});
 							});
 						});
 
 						describe('getUserName$', () => {
-							it(`should emit "John Doe"`, () => {
+							it(`should emit "John Doe"`, async () => {
 								const promise = firstValueFrom(service.getUserName$());
 								mockStateChange.next({profile: {fullname: 'John Doe'}} as ObIServiceNavigationState);
-								expect(promise).resolves.toEqual('John Doe');
+								await expect(promise).resolves.toEqual('John Doe');
 							});
 						});
 
 						describe('getMessageCount$', () => {
-							it(`should emit "42"`, () => {
+							it(`should emit "42"`, async () => {
 								const promise = firstValueFrom(service.getMessageCount$());
 								mockStateChange.next({messageCount: 42} as ObIServiceNavigationState);
-								expect(promise).resolves.toEqual(42);
+								await expect(promise).resolves.toEqual(42);
 							});
 						});
 
@@ -374,7 +374,9 @@ describe('ObServiceNavigationService', () => {
 									expect(applicationsService.getApplications).toHaveBeenCalledWith(rootUrl ?? pamsRootUrl);
 								});
 
-								it(`should emit a list of applications`, () => expect(promise).resolves.toEqual([{name}]));
+								it(`should emit a list of applications`, async () => {
+									await expect(promise).resolves.toEqual([{name}]);
+								});
 							});
 						});
 
@@ -384,10 +386,10 @@ describe('ObServiceNavigationService', () => {
 							});
 
 							describe.each(['de', 'fr', 'it', 'en', 'es'])('with "%s" as language', language => {
-								it(`should emit "${language}"`, () => {
+								it(`should emit "${language}"`, async () => {
 									const promise = firstValueFrom(service.getLanguage$().pipe(skip(1)));
 									mockLangChange.next({lang: language});
-									expect(promise).resolves.toBe(language);
+									await expect(promise).resolves.toBe(language);
 								});
 							});
 						});
@@ -458,12 +460,12 @@ describe('ObServiceNavigationService', () => {
 				service = TestBed.inject(ObServiceNavigationService);
 			});
 
-			it(`should emit ${emitTimes} times`, () => {
+			it(`should emit ${emitTimes} times`, async () => {
 				service.setUpRootUrls(ObEPamsEnvironment.TEST);
 				const promise = firstValueFrom(service.getLoginState$().pipe(count()));
 				inputs.forEach(input => mockStateChangeDuplicate.next({loginState: input}));
 				mockStateChangeDuplicate.complete();
-				expect(promise).resolves.toBe(emitTimes);
+				await expect(promise).resolves.toBe(emitTimes);
 			});
 		});
 	});

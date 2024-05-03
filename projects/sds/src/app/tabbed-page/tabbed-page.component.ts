@@ -1,10 +1,9 @@
-import {Component, OnInit, Type, ViewChild, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
-import {CodeExamples} from '../code-examples/code-examples.model';
-import {Observable, ReplaySubject, distinctUntilChanged, filter, map, mergeWith, share, switchMap, tap} from 'rxjs';
+import {Observable, distinctUntilChanged, filter, map, mergeWith, switchMap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -22,19 +21,19 @@ import {TabNameMapper} from './utils/tab-name-mapper';
 	standalone: true,
 	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe]
 })
-export class TabbedPageComponent implements OnInit {
-	@ViewChild(CodeExampleDirective, {static: false}) codeExample!: CodeExampleDirective;
-	@ViewChild('tabs') tabs: TabsComponent;
+export class TabbedPageComponent {
 	readonly componentId = 'tabbed-page';
-	public cmsData$: Observable<CmsData>;
+	readonly cmsData$: Observable<CmsData>;
+	readonly selectedTab: string;
 	private readonly activatedRoute = inject(ActivatedRoute);
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
 	private readonly slugToIdService = inject(SlugToIdService);
 	private readonly location = inject(Location);
 
-	ngOnInit(): void {
+	constructor() {
 		this.cmsData$ = this.buildCmsDataObservable();
+		this.selectedTab = TabNameMapper.getTabNameFromUrlParam(this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab));
 	}
 
 	handleTabChanged(tabName: string): void {
@@ -65,10 +64,7 @@ export class TabbedPageComponent implements OnInit {
 			distinctUntilChanged(),
 			map(slug => this.slugToIdService.getIdForSlug(slug)),
 			switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
-			map(cmsData => this.buildCmsData(cmsData.data)),
-			tap(cmsData => this.loadCodeExample(cmsData.source)),
-			tap(cmsData => this.activateTab(cmsData)),
-			share({connector: () => new ReplaySubject(1)})
+			map(cmsData => this.buildCmsData(cmsData.data))
 		);
 	}
 
@@ -79,24 +75,5 @@ export class TabbedPageComponent implements OnInit {
 			uiUx: cmsData.ui_ux,
 			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug)
 		};
-	}
-
-	private loadCodeExample(codeExampleComponent: Type<CodeExamples> | undefined): void {
-		setTimeout(() => {
-			const {viewContainerRef} = this.codeExample;
-			viewContainerRef.clear();
-
-			if (codeExampleComponent) {
-				viewContainerRef.createComponent<CodeExamples>(codeExampleComponent);
-			}
-		}, 100);
-	}
-
-	private activateTab(cmsData: CmsData): void {
-		if (cmsData.api || cmsData.source || cmsData.uiUx) {
-			const tabToSelect: string = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab) ?? '';
-			// setTimeout delays the tab selection until the view is initialized and the tabs are available
-			setTimeout(() => this.tabs.selectTabWithName(TabNameMapper.getTabNameFromUrlParam(tabToSelect)));
-		}
 	}
 }

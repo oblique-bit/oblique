@@ -50,10 +50,12 @@ export class ObSpinnerService {
 	}
 
 	private increase(channel: string): number {
-		return (this.calls[channel] = (this.calls[channel] || 0) + 1);
+		this.calls[channel] = (this.calls[channel] || 0) + 1;
+		return this.calls[channel];
 	}
 
 	private decrease(channel: string): number {
-		return (this.calls[channel] = (this.calls[channel] || 1) - 1);
+		this.calls[channel] = (this.calls[channel] || 1) - 1;
+		return this.calls[channel];
 	}
 }
