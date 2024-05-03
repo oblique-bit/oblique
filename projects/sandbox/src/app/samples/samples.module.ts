@@ -86,6 +86,7 @@ import {FileUploadSampleComponent} from './file-upload-sample/file-upload-sample
 import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
 import {ServiceNavigationSampleComponent} from './service-navigation/service-navigation-sample.component';
 import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
+import {RxjsOperatorsComponent} from './rxjs-operators/rxjs-operators.component';
 
 @NgModule({
 	imports: [
@@ -166,6 +167,7 @@ import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 		NotificationSampleComponent,
 		NumberFormatSampleComponent,
 		PopoverComponent,
+		RxjsOperatorsComponent,
 		SchemaValidationSampleComponent,
 		SelectableSampleComponent,
 		ServiceNavigationSampleComponent,

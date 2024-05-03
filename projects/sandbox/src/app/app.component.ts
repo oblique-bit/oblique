@@ -112,6 +112,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'notification', label: 'i18n.routes.samples.notification.title'},
 				{url: 'number-format', label: 'i18n.routes.samples.number-format.title'},
 				{url: 'popover', label: 'Popover'},
+				{url: 'rxjs-operators', label: 'RxJS operators'},
 				{url: 'schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
 				{url: 'selectable', label: 'Selectable'},
 				{url: 'service-navigation', label: 'Service navigation'},
