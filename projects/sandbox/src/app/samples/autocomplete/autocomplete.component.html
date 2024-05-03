@@ -63,6 +63,10 @@
 			</mat-radio-group>
 		</fieldset>
 		<fieldset>
+			<legend>Reset control</legend>
+			<button mat-button type="button" obButton="primary" (click)="reset()">Reset</button>
+		</fieldset>
+		<fieldset>
 			<legend>Icon position in options</legend>
 			<mat-radio-group [(ngModel)]="optionIconPosition" aria-label="Select icon position">
 				<mat-radio-button
