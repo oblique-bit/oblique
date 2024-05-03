@@ -35,6 +35,7 @@ rules:
   scss/at-mixin-argumentless-call-parentheses: always
   # deactivate unwanted rules
   scss/double-slash-comment-empty-line-before: null
+  shorthand-property-no-redundant-values: null
   # rules that need some refactoring to be enabled
 #  no-descending-specificity: null
 #  selector-class-pattern: ^([a-z][a-z0-9]*)([-_]{0,2}[a-z0-9]+)*$

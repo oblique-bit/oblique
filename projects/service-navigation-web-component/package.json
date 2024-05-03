@@ -15,6 +15,6 @@
     "service-navigation-web-component"
   ],
   "dependencies": {
-    "@angular/elements": "^17.3.6"
+    "@angular/elements": "^17.3.7"
   }
 }
