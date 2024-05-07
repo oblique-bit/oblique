@@ -3,7 +3,7 @@ import {NgControl} from '@angular/forms';
 
 @Injectable({providedIn: 'root'})
 export class ObErrorMessagesService {
-	createMessages(control: NgControl): {key: string; params: Record<string, any>}[] {
+	createMessages(control: NgControl): {key: string; params: Record<string, unknown>}[] {
 		return Object.keys(control.errors).map(key => {
 			const subkeys = Object.keys(control.errors[key]);
 			// If the subproperty is an object, it has to be the error
