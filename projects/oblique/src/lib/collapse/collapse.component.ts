@@ -57,8 +57,8 @@ export class ObCollapseComponent implements AfterViewInit, OnDestroy {
 
 	constructor(
 		@Optional() @Inject(OBLIQUE_COLLAPSE_ACTIVE) private isActive: boolean,
-		@Optional() @Inject(OBLIQUE_COLLAPSE_ICON_POSITION) iconPos: any, // NOTE, the real type will throw an error during build, should be fixed with Ivy
-		@Optional() @Inject(OBLIQUE_COLLAPSE_DURATION) animationSpeed: any // NOTE, the real type will throw an error during build, should be fixed with Ivy
+		@Optional() @Inject(OBLIQUE_COLLAPSE_ICON_POSITION) iconPos: 'left' | 'right' | 'justified' | 'none',
+		@Optional() @Inject(OBLIQUE_COLLAPSE_DURATION) animationSpeed: 'slow' | 'fast' | number
 	) {
 		this.isActive = !!this.isActive;
 		this.iconPosition = iconPos ?? this.iconPosition;
