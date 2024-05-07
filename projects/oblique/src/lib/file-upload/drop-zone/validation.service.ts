@@ -52,7 +52,7 @@ export class ObValidationService {
 		);
 	}
 
-	private notifyErrors(message: string, parameters: {ignoredFiles: string[]; [key: string]: any}): void {
+	private notifyErrors(message: string, parameters: {ignoredFiles: string[]; [key: string]: unknown}): void {
 		if (parameters.ignoredFiles.length) {
 			const params = {
 				...parameters,

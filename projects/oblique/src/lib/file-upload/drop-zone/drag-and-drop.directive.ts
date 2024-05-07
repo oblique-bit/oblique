@@ -6,7 +6,7 @@ import {Directive, EventEmitter, HostBinding, HostListener, Output} from '@angul
 })
 export class ObDragDropDirective {
 	// eslint-disable-next-line  @angular-eslint/no-output-on-prefix
-	@Output() readonly onFileDropped = new EventEmitter<any>();
+	@Output() readonly onFileDropped = new EventEmitter<FileList>();
 	@HostBinding('class.ob-dragging') private isDragging = false;
 
 	@HostListener('dragover', ['$event'])
