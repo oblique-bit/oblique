@@ -5,8 +5,7 @@ import {Directive, EventEmitter, HostBinding, HostListener, Output} from '@angul
 	standalone: true
 })
 export class ObDragDropDirective {
-	// eslint-disable-next-line  @angular-eslint/no-output-on-prefix
-	@Output() readonly onFileDropped = new EventEmitter<FileList>();
+	@Output() readonly fileDropped = new EventEmitter<FileList>();
 	@HostBinding('class.ob-dragging') private isDragging = false;
 
 	@HostListener('dragover', ['$event'])
@@ -29,7 +28,7 @@ export class ObDragDropDirective {
 		event.stopPropagation();
 		const {files} = event.dataTransfer;
 		if (files.length) {
-			this.onFileDropped.emit(files);
+			this.fileDropped.emit(files);
 			this.isDragging = false;
 		}
 	}
