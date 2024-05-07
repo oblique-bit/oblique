@@ -5,7 +5,7 @@ import {ObAcceptAllPipe} from './accept-all.pipe';
 
 @Injectable()
 export class ObValidationService {
-	private readonly areAllTypesAllowed = new ObAcceptAllPipe().transform;
+	private readonly areAllTypesAllowed = new ObAcceptAllPipe().transform.bind(this);
 
 	constructor(private readonly notification: ObNotificationService) {}
 
