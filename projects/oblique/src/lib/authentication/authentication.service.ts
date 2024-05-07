@@ -7,7 +7,7 @@ import {ObIResourceAccessRoles, ObIResourceAccessToken} from './authentication.m
 export class ObAuthenticationService {
 	constructor(readonly oAuthService: OAuthService) {}
 
-	performLogin(additionalState?: string, params?: any): void {
+	performLogin(additionalState?: string, params?: object): void {
 		this.oAuthService.initLoginFlow(additionalState, params);
 	}
 
