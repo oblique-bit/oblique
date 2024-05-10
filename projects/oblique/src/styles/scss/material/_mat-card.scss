@@ -17,10 +17,6 @@
 	}
 
 	.mat-mdc-card-header {
-		&:first-child {
-			padding-top: variables.$ob-spacing-xs;
-		}
-
 		.mat-mdc-card-title {
 			@include typography.ob-h5();
 			margin-bottom: 0;
