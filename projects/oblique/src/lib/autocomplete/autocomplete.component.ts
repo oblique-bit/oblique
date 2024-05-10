@@ -61,6 +61,7 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	filteredOptions$: Observable<(ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[]>;
 	hasGroupOptions = false;
 	private readonly unsubscribe = new Subject<void>();
+	private readonly unsubscribeOptions = new Subject<void>();
 	private readonly obAutocompleteTextToFindService = inject(ObAutocompleteTextToFindService);
 
 	ngOnChanges(): void {
@@ -70,6 +71,8 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+		this.unsubscribeOptions.next();
+		this.unsubscribeOptions.complete();
 	}
 
 	setDisabledState(isDisabled: boolean): void {
@@ -93,6 +96,11 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	 */
 	writeValue(value: string): void {
 		this.autocompleteInputControl.setValue(value, {emitEvent: false});
+		// when the value is reset, the options should also be reset
+		if (value === null || value === undefined) {
+			this.unsubscribeOptions.next(); // kill the current stream before creating a new one
+			this.setupOptionsFilter();
+		}
 	}
 
 	/**
@@ -116,6 +124,7 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 
 	private setupOptionsFilter(): void {
 		this.filteredOptions$ = this.autocompleteInputControl.valueChanges.pipe(
+			takeUntil(this.unsubscribeOptions),
 			startWith(''),
 			debounceTime(200),
 			map((searchValue: string) => {
