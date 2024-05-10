@@ -10,6 +10,7 @@ import {ObSelectableDirective} from './selectable.directive';
 	standalone: true
 })
 export class ObSelectableGroupDirective implements AfterContentInit {
+	@HostBinding('attr.disabled') isDisabled = undefined;
 	@HostBinding('attr.role') role = 'group';
 	@HostBinding('class.ob-selectable-group') readonly selectable = true;
 	@Output() readonly selected$ = new EventEmitter<ObSelectableDirective[]>();
@@ -59,7 +60,8 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 		return this.disabled$.getValue();
 	}
 
-	@HostBinding('attr.disabled') @Input({transform: booleanAttribute}) private set disabled(state: boolean) {
+	@Input({transform: booleanAttribute}) private set disabled(state: boolean) {
+		this.isDisabled = state ? '' : undefined;
 		this.disabled$.next(state);
 	}
 
