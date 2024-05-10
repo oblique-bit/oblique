@@ -32,7 +32,7 @@ export class ObLanguageService {
 		}
 	}
 
-	setLocaleOnAdapter(adapter: DateAdapter<any>): void {
+	setLocaleOnAdapter(adapter: DateAdapter<unknown>): void {
 		if (this.locale$) {
 			this.locale$.subscribe(locale => adapter.setLocale(locale));
 		}
