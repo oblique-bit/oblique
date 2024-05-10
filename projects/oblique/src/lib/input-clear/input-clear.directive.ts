@@ -12,7 +12,7 @@ import {WINDOW} from '../utilities';
 export class ObInputClearDirective implements OnInit {
 	@Input('obInputClear') control: AbstractControl | HTMLInputElement | NgModel;
 	@Input() focusOnClear = true;
-	@Input() datePickerRef: MatDatepicker<any>;
+	@Input() datePickerRef: MatDatepicker<unknown>;
 	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
 	@Output() readonly onClear = new EventEmitter<MouseEvent>();
 	@HostBinding('class.ob-text-control-clear') cssClass = true;
