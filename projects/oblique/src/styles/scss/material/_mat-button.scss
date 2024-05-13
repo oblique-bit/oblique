@@ -8,6 +8,10 @@
 		line-height: 34px; // material design height
 		border: 1px solid transparent;
 
+		&.mdc-button {
+			padding: core-variables.$ob-spacing-md;
+		}
+
 		&:focus {
 			outline: none;
 		}
@@ -21,11 +25,16 @@
 		}
 
 		&.mat-mdc-icon-button {
-			padding: 0.3896em; // (mat-mdc-ob-button-height - mat-mdc-button-font-size * ob-icon-font-size) / 2 = (34px - 14px * 1.65) / 2 = (2.4286em - 1.65em) / 2
+			padding: core-variables.$ob-spacing-md;
 			line-height: 1;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+
+			&.mdc-icon-button > .mat-icon {
+				margin: 0;
+				overflow: visible;
+			}
 
 			&:not(.ob-close) {
 				&.mat-mdc-button-base {
