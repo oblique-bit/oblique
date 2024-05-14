@@ -25,7 +25,7 @@ class Release {
 	private static bumpVersion(version: string): void {
 		process.chdir('../..'); // so that the release is made with the info of the root package.json
 		execSync(`npm version ${version}`);
-		writeFileSync(path.join('projects', 'oblique', 'src', 'lib', 'version.ts'), `export const appVersion = '${version}';\n`, {flag: 'w'});
+		writeFileSync(path.join('projects', 'oblique', 'src', 'lib', 'version.ts'), `export const appVersion = '${version}';\n`);
 	}
 
 	private static updateCopyrightDate(): void {
