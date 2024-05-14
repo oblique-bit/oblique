@@ -37,7 +37,7 @@ export class AddBanner {
 * @version ${version} (released on ${releaseDate}, supported at least until ${endOfLifeDate})
 * @author Oblique team, FOITT, BS-BSC-EN4 <oblique@bit.admin.ch>
 * @license MIT {@link https://oblique.bit.admin.ch/license}
-* @see https://oblique.bit.oblique.ch
+* @see https://oblique.bit.admin.ch
 */
 `;
 	}
