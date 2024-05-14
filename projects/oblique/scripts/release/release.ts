@@ -1,5 +1,5 @@
 import {execSync} from 'child_process';
-import {writeFileSync} from 'fs';
+import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
 import {Changelog} from './changelog';
 
@@ -8,6 +8,7 @@ class Release {
 		const {version, issue} = Release.parseBranchName();
 		Release.bumpVersion(version);
 		Changelog.perform(version);
+		Release.updateCopyrightDate();
 		Release.commit(version, issue);
 	}
 
@@ -25,6 +26,16 @@ class Release {
 		process.chdir('../..'); // so that the release is made with the info of the root package.json
 		execSync(`npm version ${version}`);
 		writeFileSync(path.join('projects', 'oblique', 'src', 'lib', 'version.ts'), `export const appVersion = '${version}';\n`, {flag: 'w'});
+	}
+
+	private static updateCopyrightDate(): void {
+		const licensePath = 'LICENSE';
+		writeFileSync(
+			licensePath,
+			readFileSync(licensePath)
+				.toString()
+				.replace(/(?!2020-)\d{4}/, new Date().getFullYear().toString())
+		);
 	}
 
 	private static commit(version: string, issue: string): void {
