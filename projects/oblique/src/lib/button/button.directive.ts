@@ -8,8 +8,6 @@ import {Directive, ElementRef, HostBinding, Input, OnChanges, OnInit} from '@ang
 })
 export class ObButtonDirective implements OnInit, OnChanges {
 	@Input() obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
-	@HostBinding('class.mat-mdc-flat-button') flatButtonClass: boolean;
-	@HostBinding('class.mat-mdc-stroked-button') strokedButtonClass: boolean;
 	@HostBinding('class.ob-button-primary') primaryClass: boolean;
 	@HostBinding('class.ob-button-secondary') secondaryClass: boolean;
 	@HostBinding('class.ob-button-tertiary') tertiaryClass: boolean;
@@ -27,10 +25,7 @@ export class ObButtonDirective implements OnInit, OnChanges {
 	}
 
 	private setButtonClass(): void {
-		/* eslint-disable logical-assignment-operators */
-		this.obButton = this.obButton || 'primary';
-		this.flatButtonClass = this.obButton === 'primary';
-		this.strokedButtonClass = this.obButton === 'secondary';
+		this.obButton ||= 'primary';
 		this.primaryClass = this.obButton === 'primary';
 		this.secondaryClass = this.obButton === 'secondary';
 		this.tertiaryClass = this.obButton === 'tertiary';
