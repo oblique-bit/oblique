@@ -61,14 +61,14 @@
             "run-in-band": ["true"]
           },
           "configurations": {
-            "development": {
+            "default": {
               "configPath": "jest.config.js"
             },
-            "production": {
-              "configPath": "jest.config.prod.js"
+            "ci": {
+              "configPath": "jest.config.ci.js"
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "default"
         }
       }
     },
@@ -195,11 +195,19 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "configPath": "jest.config.js",
             "tsConfig": "tsconfig.spec.json",
             "no-cache": ["true"],
             "run-in-band": ["true"]
-          }
+          },
+          "configurations": {
+            "default": {
+              "configPath": "jest.config.js"
+            },
+            "ci": {
+              "configPath": "jest.config.ci.js"
+            }
+          },
+          "defaultConfiguration": "default"
         }
       }
     },
@@ -309,7 +317,16 @@
             "tsConfig": "tsconfig.spec.json",
             "no-cache": ["true"],
             "run-in-band": ["true"]
-          }
+          },
+          "configurations": {
+            "default": {
+              "configPath": "jest.config.js"
+            },
+            "ci": {
+              "configPath": "jest.config.ci.js"
+            }
+          },
+          "defaultConfiguration": "default"
         }
       }
     },
@@ -394,7 +411,16 @@
             "tsConfig": "tsconfig.spec.json",
             "no-cache": ["true"],
             "run-in-band": ["true"]
-          }
+          },
+          "configurations": {
+            "default": {
+              "configPath": "jest.config.js"
+            },
+            "ci": {
+              "configPath": "jest.config.ci.js"
+            }
+          },
+          "defaultConfiguration": "default"
         }
       }
     }

@@ -4,7 +4,7 @@ import {version as currentVersion} from './../../../../package.json';
 import path from 'path';
 
 export class AddBanner {
-	private static readonly directory = path.join('..', '..', 'dist');
+	private static readonly directory = path.join('..', '..', 'dist', 'service-navigation-web-component');
 	private static readonly EOLDates = {
 		'10.0.0': '2024-06-30'
 	};
@@ -37,7 +37,7 @@ export class AddBanner {
 * @version ${version} (released on ${releaseDate}, supported at least until ${endOfLifeDate})
 * @author Oblique team, FOITT, BS-BSC-EN4 <oblique@bit.admin.ch>
 * @license MIT {@link https://oblique.bit.admin.ch/license}
-* @see https://oblique.bit.oblique.ch
+* @see https://github.com/oblique-bit/oblique/blob/master/LICENSE
 */
 `;
 	}

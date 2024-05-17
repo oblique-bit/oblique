@@ -8,7 +8,8 @@
     "lint": "ts-node scripts/lint.ts",
     "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test oblique",
-    "test-debugging": "cd ../.. && node --expose-gc ../../node_modules/@angular/cli/bin/ng run oblique:test:development --log-heap-usage",
+    "test-ci": "cd ../.. && ng run oblique:test:ci",
+    "test-debugging": "cd ../.. && node --expose-gc ../../node_modules/@angular/cli/bin/ng test oblique --log-heap-usage",
     "prebuild": "ts-node scripts/pre-dist/run-pre-dist-steps.ts && ng build oblique-styles",
     "build": "ng build oblique && npm run schematics",
     "postbuild": "ts-node scripts/post-dist/run-post-dist-steps.ts",
@@ -37,7 +38,7 @@
     "rxjs": "^7.0.0"
   },
   "dependencies": {
-    "@angular-eslint/schematics": "^17.3.0",
+    "@angular-eslint/schematics": "^17.4.1",
     "@angular/cdk": "^17.0.0 || ^18.0.0",
     "@schematics/angular": "^17.0.5",
     "ansi-colors": "^4.1.3",

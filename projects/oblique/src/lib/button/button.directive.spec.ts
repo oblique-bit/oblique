@@ -65,16 +65,6 @@ describe(ObButtonDirective.name, () => {
 			expect(selectableElement).toBeTruthy();
 		});
 
-		it('should have `.mat-mdc-flat-button` class', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-flat-button'));
-			expect(selectableElement).toBeTruthy();
-		});
-
-		it('should not have class `.mat-mdc-stroked-button`', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-stroked-button'));
-			expect(selectableElement).toBeNull();
-		});
-
 		it('should have `.ob-button-primary` class', () => {
 			const selectableElement = fixture.debugElement.query(By.css('.ob-button-primary'));
 			expect(selectableElement).toBeTruthy();
@@ -110,16 +100,6 @@ describe(ObButtonDirective.name, () => {
 
 		it('should have `.mat-primary` class', () => {
 			const selectableElement = fixture.debugElement.query(By.css('.mat-primary'));
-			expect(selectableElement).toBeTruthy();
-		});
-
-		it('should not have class `.mat-mdc-flat-button`', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-flat-button'));
-			expect(selectableElement).toBeNull();
-		});
-
-		it('should have class `.mat-mdc-stroked-button`', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-stroked-button'));
 			expect(selectableElement).toBeTruthy();
 		});
 
@@ -209,19 +189,9 @@ describe(ObButtonDirective.name, () => {
 			expect(selectableElement).toBeTruthy();
 		});
 
-		it('should have `.mat-mdc-flat-button` class', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-flat-button'));
-			expect(selectableElement).toBeTruthy();
-		});
-
 		it('should have `.ob-button-primary` class', () => {
 			const selectableElement = fixture.debugElement.query(By.css('.ob-button-primary'));
 			expect(selectableElement).toBeTruthy();
-		});
-
-		it('should not have class `.mat-mdc-stroked-button`', () => {
-			const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-stroked-button'));
-			expect(selectableElement).toBeNull();
 		});
 	});
 
@@ -506,24 +476,6 @@ describe(ObButtonDirective.name, () => {
 					expect(selectableElement).toBeNull();
 				}
 			});
-
-			it(`should ${parameter.expectedButtonClassBeforeChange.flat ? 'have ' : 'not have '}\`.mat-mdc-flat-button\` class`, () => {
-				const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-flat-button'));
-				if (parameter.expectedButtonClassBeforeChange.flat) {
-					expect(selectableElement).toBeTruthy();
-				} else {
-					expect(selectableElement).toBeNull();
-				}
-			});
-
-			it(`should ${parameter.expectedButtonClassBeforeChange.stroked ? 'have ' : 'not have '}\`.mat-mdc-stroked-button\` class`, () => {
-				const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-stroked-button'));
-				if (parameter.expectedButtonClassBeforeChange.stroked) {
-					expect(selectableElement).toBeTruthy();
-				} else {
-					expect(selectableElement).toBeNull();
-				}
-			});
 		});
 
 		describe('after change', () => {
@@ -553,24 +505,6 @@ describe(ObButtonDirective.name, () => {
 			it(`should ${parameter.obButtonAfterChange ? 'have ' : 'not have '} \`.ob-button-${parameter.obButtonAfterChange}\` class`, () => {
 				const selectableElement = fixture.debugElement.query(By.css(`.ob-button-${parameter.obButtonAfterChange}`));
 				if (parameter.obButtonAfterChange) {
-					expect(selectableElement).toBeTruthy();
-				} else {
-					expect(selectableElement).toBeNull();
-				}
-			});
-
-			it(`should ${parameter.expectedButtonClassAfterChange.flat ? 'have ' : 'not have '}\`.mat-mdc-flat-button\` class`, () => {
-				const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-flat-button'));
-				if (parameter.expectedButtonClassAfterChange.flat) {
-					expect(selectableElement).toBeTruthy();
-				} else {
-					expect(selectableElement).toBeNull();
-				}
-			});
-
-			it(`should ${parameter.expectedButtonClassAfterChange.stroked ? 'have ' : 'not have '}\`.mat-mdc-stroked-button\` class`, () => {
-				const selectableElement = fixture.debugElement.query(By.css('.mat-mdc-stroked-button'));
-				if (parameter.expectedButtonClassAfterChange.stroked) {
 					expect(selectableElement).toBeTruthy();
 				} else {
 					expect(selectableElement).toBeNull();

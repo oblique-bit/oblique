@@ -72,7 +72,7 @@ function addFeatureDetection(): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Oblique: Adding browser compatibility check');
 		getIndexPaths(tree).forEach((indexPath: string) =>
-			overwriteIndexFile(indexPath, tree, '<body>\n', `<body>\n${getTemplate(tree, 'default-index.html')}`)
+			overwriteIndexFile(indexPath, tree, /<body>(?<lineBreak>\r?\n)/, `<body>$<lineBreak>${getTemplate(tree, 'default-index.html')}`)
 		);
 		return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
 	});

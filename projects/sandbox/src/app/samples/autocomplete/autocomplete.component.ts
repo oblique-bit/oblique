@@ -79,6 +79,10 @@ formControl = new FormControl('');
 		this.updateVisibleOptionList();
 	}
 
+	reset(): void {
+		this.formControl.reset();
+	}
+
 	createOptionGroupList(amount: number, disabled = false): ObIAutocompleteInputOptionGroup[] {
 		const optionGroupList = [];
 		for (let index = 0; index < amount; index++) {

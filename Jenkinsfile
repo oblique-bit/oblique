@@ -10,7 +10,7 @@ nodejsPipelineTemplate {
 	branches = [
 		'*': [
 			'lint': 'npm run lint',
-			'test': 'npm test -ws',
+			'test': 'npm run test-ci -ws',
 			'build': 'npm run build -ws',
 			sonar: true
 		],

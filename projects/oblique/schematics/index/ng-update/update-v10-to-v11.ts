@@ -8,7 +8,9 @@ import {
 	checkForStandalone,
 	createSafeRule,
 	getAngularConfigs,
+	getIndexPaths,
 	infoMigration,
+	overwriteIndexFile,
 	readFile,
 	removeHtmlTagAttribute,
 	removeImport,
@@ -50,7 +52,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 				this.removeTransformMock(),
 				this.deactivatePreferStandalone(),
 				this.removeGlobalsFromJestConfig(),
-				this.addNodeToCompilerOptions()
+				this.addNodeToCompilerOptions(),
+				this.addDataNoSnippet()
 			])(tree, _context);
 	}
 
@@ -312,6 +315,16 @@ export class UpdateV10toV11 implements ObIMigrations {
 				});
 
 			// can't use applyInTree as the target file is outside sourceRoot
+			return tree;
+		});
+	}
+
+	private addDataNoSnippet(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, `Add data-nosnippet to browser compatibility warning in the index.html`);
+			getIndexPaths(tree).forEach((indexPath: string) =>
+				overwriteIndexFile(indexPath, tree, 'class="ob-compatibility"', 'class="ob-compatibility" data-nosnippet')
+			);
 			return tree;
 		});
 	}

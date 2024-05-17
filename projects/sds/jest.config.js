@@ -2,6 +2,10 @@
 
 module.exports = require('../../tests/jest.config');
 module.exports.roots = ['<rootDir>/projects/sds'];
+module.exports.displayName = {
+	name: 'SDS',
+	color: 'gray'
+};
 module.exports.moduleNameMapper = {
 	'^content(.*)$': '<rootDir>/src/app/content$1',
 	'^cms(.*)$': '<rootDir>/src/app/cms$1',
@@ -15,8 +19,5 @@ module.exports.testPathIgnorePatterns = [
 	'<rootDir>/projects/sds/schematics/src/add-code-example/templates',
 	'<rootDir>/projects/sds/schematics/src/add-preview/templates'
 ];
-module.exports.reporters[1][1].publicPath = '<rootDir>/jest-report/sds';
-module.exports.displayName = {
-	name: 'SDS',
-	color: 'gray'
-};
+module.exports.coverageDirectory = '<rootDir>/coverage/sds';
+module.exports.coveragePathIgnorePatterns = ['<rootDir>/projects/oblique'];
