@@ -1,3 +1,14 @@
+# [11.1.2](https://github.com/oblique-bit/oblique/compare/11.1.1...11.1.2) (2024-05-17)
+
+## Bug Fixes
+
+- **autocomplete:** reset options list when the formControl is reset ([fd98c04c](https://github.com/oblique-bit/oblique/commit/fd98c04ca1b0ed068e21562b960997c5baac60f9))
+- **button:** increase lateral padding ([145a29d9](https://github.com/oblique-bit/oblique/commit/145a29d9b8035507d006ea7727ddcd105ac874aa))
+- **material:** make sure the header card's padding is consistent ([7f393468](https://github.com/oblique-bit/oblique/commit/7f393468ebb77340ea3535255e71edf70b57294e))
+- **material:** make sure the card's top padding is consistent ([a929a92e](https://github.com/oblique-bit/oblique/commit/a929a92eadca05f2967ddd4e89d23884418ad4d5))
+- **schematics:** correctly handle new lines for windows when adding feature detection ([c826de10](https://github.com/oblique-bit/oblique/commit/c826de101d081c55a9fa2b981d05f08131d8406e))
+- **schematics:** prevent browser compatibility warning being shown in google search ([26a88fb2](https://github.com/oblique-bit/oblique/commit/26a88fb238e7be3b56921d551d1466959414baaf))
+
 # [11.1.1](https://github.com/oblique-bit/oblique/compare/11.1.0...11.1.1) (2024-05-03)
 
 ## Bug Fixes
