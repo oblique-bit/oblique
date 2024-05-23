@@ -1,4 +1,5 @@
 import {
+	AfterContentChecked,
 	AfterViewInit,
 	Component,
 	ContentChild,
@@ -28,6 +29,7 @@ import {ObEMasterLayoutEventValues, ObIDynamicSkipLink, ObIMasterLayoutEvent, Ob
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
+import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 
 @Component({
 	selector: 'ob-master-layout',
@@ -42,9 +44,10 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout', 'ob-version': appVersion}
 })
-export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy {
+export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, AfterContentChecked, OnDestroy {
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
+	hasHighContrast = false;
 	@Input() navigation: ObINavigationLink[] = [];
 	@Input() skipLinks: ObISkipLink[] | ObIDynamicSkipLink[] = [];
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
@@ -72,6 +75,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	private readonly globalEventsService = inject(ObGlobalEventsService);
 	private readonly document = inject(DOCUMENT);
 	private readonly window = inject(WINDOW);
+	private readonly highContrastModeDetector = inject(HighContrastModeDetector);
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
@@ -115,6 +119,10 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		}
 	}
 
+	ngAfterContentChecked(): void {
+		this.hasHighContrast = this.isInHighContrastMode();
+	}
+
 	ngAfterViewInit(): void {
 		// to avoid a ExpressionHasBeenChangedAfterItHasBeenCheckedError
 		setTimeout(() => (this.scrollTarget = this.getScrollTarget()));
@@ -123,6 +131,11 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+	}
+
+	private isInHighContrastMode(): boolean {
+		const currentHighContrastMode: HighContrastMode = this.highContrastModeDetector.getHighContrastMode();
+		return currentHighContrastMode === HighContrastMode.WHITE_ON_BLACK;
 	}
 
 	private getScrollTarget(): HTMLElement | Window {
