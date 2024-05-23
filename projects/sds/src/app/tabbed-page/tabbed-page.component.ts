@@ -24,7 +24,6 @@ import {TabNameMapper} from './utils/tab-name-mapper';
 export class TabbedPageComponent {
 	readonly componentId = 'tabbed-page';
 	readonly cmsData$: Observable<CmsData>;
-	readonly selectedTab: string;
 	private readonly activatedRoute = inject(ActivatedRoute);
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
@@ -33,7 +32,6 @@ export class TabbedPageComponent {
 
 	constructor() {
 		this.cmsData$ = this.buildCmsDataObservable();
-		this.selectedTab = TabNameMapper.getTabNameFromUrlParam(this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab));
 	}
 
 	handleTabChanged(tabName: string): void {
@@ -73,7 +71,12 @@ export class TabbedPageComponent {
 			title: cmsData.name,
 			api: cmsData.api,
 			uiUx: cmsData.ui_ux,
-			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug)
+			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug),
+			tab: this.getSelectedTab()
 		};
+	}
+
+	private getSelectedTab(): string {
+		return TabNameMapper.getTabNameFromUrlParam(this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab));
 	}
 }

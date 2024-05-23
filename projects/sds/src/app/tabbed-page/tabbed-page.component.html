@@ -1,6 +1,6 @@
 @if (cmsData$ | async; as cmsData) {
 	<h1>{{ cmsData.title }}</h1>
-	<app-tabs [idPrefix]="componentId" [id]="componentId | id: ['tabs']" [selectedTab]="selectedTab" (tabChanged)="handleTabChanged($event)">
+	<app-tabs [idPrefix]="componentId" [id]="componentId | id: ['tabs']" [selectedTab]="cmsData.tab" (tabChanged)="handleTabChanged($event)">
 		<app-tab name="Examples" [hidden]="!!!cmsData.source" [id]="componentId | id: ['examples-tab']">
 			<ng-template appCodeExample [codeExampleComponent]="cmsData.source" />
 		</app-tab>
