@@ -173,6 +173,10 @@
 	text-decoration: none;
 }
 
+.mat-mdc-button-base.mdc-button.ob-button.ob-button-card {
+	padding: 0;
+}
+
 .ob-button-card {
 	&,
 	&.mat-mdc-button {
