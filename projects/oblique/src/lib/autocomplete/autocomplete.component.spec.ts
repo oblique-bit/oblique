@@ -133,10 +133,6 @@ describe(ObAutocompleteComponent.name, () => {
 			it('should have hasGroupOptions with value false', () => {
 				expect(component.hasGroupOptions).toBe(false);
 			});
-
-			it('should throw error if onModelTouched has not been overwritten ', () => {
-				expect(component.onModelTouched).toThrowError('Method onModelTouched has not been overwritten by the ControlValueAccessor.');
-			});
 		});
 	});
 

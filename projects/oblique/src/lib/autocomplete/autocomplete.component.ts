@@ -60,6 +60,7 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	autocompleteInputControl = new FormControl('', {updateOn: 'change'});
 	filteredOptions$: Observable<(ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[]>;
 	hasGroupOptions = false;
+	onModelTouched: () => void;
 	private readonly unsubscribe = new Subject<void>();
 	private readonly unsubscribeOptions = new Subject<void>();
 	private readonly obAutocompleteTextToFindService = inject(ObAutocompleteTextToFindService);
@@ -82,14 +83,6 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 			this.autocompleteInputControl.enable({emitEvent: false});
 		}
 	}
-
-	/**
-	 * @remarks
-	 * This method must be overwritten by ControlValueAccessor, this is why an error is thrown by default.
-	 */
-	onModelTouched: () => void = () => {
-		throw Error('Method onModelTouched has not been overwritten by the ControlValueAccessor.');
-	};
 
 	/**
 	 * Write a new value to the element.
