@@ -16,7 +16,7 @@ export class ErrorMessagesExampleReactiveFormPreviewComponent {
 
 	constructor() {
 		this.form = this.formBuilder.group({
-			control: [null, [Validators.required]]
+			control: [null, Validators.required]
 		});
 	}
 }
