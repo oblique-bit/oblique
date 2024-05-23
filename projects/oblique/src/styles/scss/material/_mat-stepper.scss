@@ -2,6 +2,21 @@
 @use "../core/variables";
 
 mat-step-header.mat-step-header {
+	&[aria-disabled] {
+		&:hover {
+			cursor: not-allowed;
+		}
+
+		.mat-step-icon {
+			border-color: variables.$ob-secondary-300;
+			color: variables.$ob-secondary-300;
+		}
+
+		.mat-step-label {
+			color: variables.$ob-secondary-300;
+		}
+	}
+
 	&:not([aria-disabled]) {
 		&:hover,
 		&:focus {
@@ -16,29 +31,6 @@ mat-step-header.mat-step-header {
 	.mat-step-label {
 		color: variables.$ob-secondary-800;
 		font-size: variables.$ob-font-size-normal;
-	}
-
-	&[ng-reflect-state="error"] {
-		.mat-step-label {
-			color: variables.$ob-secondary-300;
-			font-size: variables.$ob-font-size-smaller;
-		}
-	}
-
-	&[ng-reflect-active="false"] {
-		&:hover,
-		&:focus {
-			cursor: not-allowed;
-		}
-
-		.mat-step-icon {
-			border-color: variables.$ob-secondary-300;
-			color: variables.$ob-secondary-300;
-		}
-
-		.mat-step-label {
-			color: variables.$ob-secondary-300;
-		}
 	}
 
 	.mat-step-icon {
