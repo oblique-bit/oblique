@@ -23,4 +23,5 @@ export interface CmsData {
 	api: string;
 	uiUx: string;
 	source: Type<CodeExamples> | undefined;
+	tab: string;
 }
