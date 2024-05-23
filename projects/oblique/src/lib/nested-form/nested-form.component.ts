@@ -37,7 +37,7 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 		this.parent.reset$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.nestedForm.reset());
 	}
 
-	registerOnChange(fn: any): void {
+	registerOnChange(fn: (value: unknown) => void): void {
 		this.nestedForm.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(val => fn(val));
 	}
 

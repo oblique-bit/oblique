@@ -8,7 +8,7 @@ import {BehaviorSubject, Subject, takeUntil} from 'rxjs';
 	standalone: true
 })
 export class ObCheckboxDirective implements OnInit, OnDestroy {
-	private readonly $checked = new BehaviorSubject<boolean>(false);
+	private readonly checked$ = new BehaviorSubject<boolean>(false);
 	private readonly host: HTMLAnchorElement;
 	private readonly rowCheckedClass = 'ob-table-row-checked';
 	private readonly unsubscribe = new Subject<void>();
@@ -63,10 +63,10 @@ export class ObCheckboxDirective implements OnInit, OnDestroy {
 
 	private monitorForCheckedChanges(): void {
 		this.checkbox.change.pipe(takeUntil(this.unsubscribe)).subscribe(change => this.updateChecked(change.checked));
-		this.$checked.pipe(takeUntil(this.unsubscribe)).subscribe(checked => this.conditionallyAdjustCheckedClassOnTableRows(checked));
+		this.checked$.pipe(takeUntil(this.unsubscribe)).subscribe(checked => this.conditionallyAdjustCheckedClassOnTableRows(checked));
 	}
 
 	private updateChecked(checked: boolean): void {
-		this.$checked.next(checked);
+		this.checked$.next(checked);
 	}
 }

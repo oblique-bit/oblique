@@ -100,7 +100,7 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	 * Set the function to be called
 	 * when the control receives a change event.
 	 */
-	registerOnChange(fn: (v: any) => void): void {
+	registerOnChange(fn: (v: unknown) => void): void {
 		this.autocompleteInputControl.valueChanges.pipe(takeUntil(this.unsubscribe)).subscribe(value => fn(value));
 	}
 

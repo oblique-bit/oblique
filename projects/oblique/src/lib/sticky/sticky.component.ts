@@ -28,9 +28,9 @@ import {WINDOW} from './../utilities';
 	imports: [NgIf, NgTemplateOutlet, NgClass, CdkScrollable]
 })
 export class ObStickyComponent implements OnChanges, AfterViewInit {
-	@ContentChild('obStickyHeader') readonly stickyHeaderTemplate: TemplateRef<any>;
-	@ContentChild('obStickyMain') readonly stickyMainTemplate: TemplateRef<any>;
-	@ContentChild('obStickyFooter') readonly stickyFooterTemplate: TemplateRef<any>;
+	@ContentChild('obStickyHeader') readonly stickyHeaderTemplate: TemplateRef<unknown>;
+	@ContentChild('obStickyMain') readonly stickyMainTemplate: TemplateRef<unknown>;
+	@ContentChild('obStickyFooter') readonly stickyFooterTemplate: TemplateRef<unknown>;
 	@Input() headerSize: string;
 	@Input() footerSize: string;
 	@Input() @HostBinding('class.ob-no-layout') noLayout = false;

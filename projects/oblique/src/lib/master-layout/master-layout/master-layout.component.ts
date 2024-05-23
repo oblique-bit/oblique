@@ -60,10 +60,10 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	isHeaderSticky = this.masterLayout.header.isSticky;
 	isFooterSticky = this.masterLayout.footer.isSticky;
 	scrollTarget: HTMLElement | Window;
-	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
-	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<any>>;
-	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<any>>;
-	@ContentChildren('obFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
+	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<unknown>;
+	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<unknown>>;
+	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<unknown>>;
+	@ContentChildren('obFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<HTMLLinkElement>>;
 	@ViewChild('offCanvasClose', {read: ElementRef}) readonly offCanvasClose: ElementRef<HTMLElement>;
 	@ViewChild('main') readonly main: ElementRef<HTMLElement>;
 	@ViewChild('wrapper') readonly wrapper: ElementRef<HTMLElement>;

@@ -24,7 +24,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 		@Inject(WINDOW) private readonly window: Window
 	) {}
 
-	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+	intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 		const obliqueRequest = this.broadcast();
 		const timer = this.setTimer();
 		this.activateSpinner(obliqueRequest.spinner, request.url);
@@ -64,7 +64,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 		return throwError(() => error);
 	}
 
-	private setupHeader(request: HttpRequest<any>): HttpRequest<any> {
+	private setupHeader(request: HttpRequest<unknown>): HttpRequest<unknown> {
 		return request.clone(this.isApiCall(request.url) ? {headers: request.headers.set('X-Requested-With', 'XMLHttpRequest')} : undefined);
 	}
 
