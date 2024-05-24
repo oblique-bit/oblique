@@ -383,7 +383,10 @@ export function appendCodeToFunction(tree: Tree, filePath: string, functionName:
 export function addConstructor(tree: Tree, filePath: string): void {
 	const fileContent = readFile(tree, filePath);
 	if (!fileContent.includes('constructor')) {
-		tree.overwrite(filePath, fileContent.replace(/(?<indent>\s+)(?<!(?:new|get|set|=)\s*)(?=\w+\()/, `$<indent>constructor() {};\n\n`));
+		tree.overwrite(
+			filePath,
+			fileContent.replace(/(?<indent>\s+)(?<!(?:new|get|set|=)\s*)(?=[\s\w]+\()/, `$<indent>constructor() {}$<indent>`)
+		);
 	}
 }
 
