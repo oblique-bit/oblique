@@ -74,7 +74,7 @@ export class ObBreadcrumbComponent implements OnInit {
 
 	private createNextBreadcrumb(
 		route: ActivatedRoute,
-		next: ({label, url}: ObIBreadcrumb) => Observable<ObIBreadcrumb[]>,
+		next: (parameters: ObIBreadcrumb) => Observable<ObIBreadcrumb[]>,
 		url: string,
 		label: string,
 		pathSplitter: string[]

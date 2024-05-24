@@ -46,9 +46,9 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	serviceNavigationConfig: ObIServiceNavigationConfig;
 	@Input() navigation: ObINavigationLink[];
 	@HostBinding('class.ob-master-layout-header-small') isSmall = this.masterLayout.header.isSmall;
-	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<any>;
-	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<any>>;
-	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<any>>;
+	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<unknown>;
+	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<unknown>>;
+	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<unknown>>;
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
 	@ViewChildren('headerMobileControl') readonly headerMobileControl: QueryList<ElementRef>;
 	private readonly unsubscribe = new Subject<void>();

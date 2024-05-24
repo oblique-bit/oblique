@@ -24,16 +24,15 @@ import {TabNameMapper} from './utils/tab-name-mapper';
 export class TabbedPageComponent {
 	readonly componentId = 'tabbed-page';
 	readonly cmsData$: Observable<CmsData>;
-	readonly selectedTab: string;
 	private readonly activatedRoute = inject(ActivatedRoute);
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
 	private readonly slugToIdService = inject(SlugToIdService);
 	private readonly location = inject(Location);
+	private isNull = true;
 
 	constructor() {
 		this.cmsData$ = this.buildCmsDataObservable();
-		this.selectedTab = TabNameMapper.getTabNameFromUrlParam(this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab));
 	}
 
 	handleTabChanged(tabName: string): void {
@@ -73,7 +72,24 @@ export class TabbedPageComponent {
 			title: cmsData.name,
 			api: cmsData.api,
 			uiUx: cmsData.ui_ux,
-			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug)
+			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug),
+			tab: this.getSelectedTab()
 		};
+	}
+
+	private getSelectedTab(): string {
+		// the selected tab is reevaluated each time the URL changes and is passed to the child component as input. Unfortunately, when the URL
+		// changes but the selected tab remains "undefined", there is no change to the input value and the child component isn't reevaluated.
+		// to circumvent this problem, "undefined" is converted to "null" every other times so that the input has a new value each time the URL
+		// changes
+		return (
+			TabNameMapper.getTabNameFromUrlParam(this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab)) ||
+			this.toggleBetweenNullAndUndefined()
+		);
+	}
+
+	private toggleBetweenNullAndUndefined(): null | undefined {
+		this.isNull = !this.isNull;
+		return this.isNull ? null : undefined;
 	}
 }

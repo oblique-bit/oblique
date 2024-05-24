@@ -1,3 +1,11 @@
+# [11.1.3](https://github.com/oblique-bit/oblique/compare/11.1.2...11.1.3) (2024-05-24)
+
+## Bug Fixes
+
+- **autocomplete:** ensure no error is thrown in `onModelTouched()` ([02e853b1](https://github.com/oblique-bit/oblique/commit/02e853b173a4192fcbb6722d1b1ef1fa6c34e022))
+- **master-layout:** show white logo when `HighContrastMode` is activated ([b9ee4514](https://github.com/oblique-bit/oblique/commit/b9ee451430ec1305181cca1d6f6f934e40c238fd))
+- **material:** adapt stepper error styling ([71c7f43f](https://github.com/oblique-bit/oblique/commit/71c7f43fd891076c1277aef8ee4dc8a6821e6953))
+
 # [11.1.2](https://github.com/oblique-bit/oblique/compare/11.1.1...11.1.2) (2024-05-17)
 
 ## Bug Fixes

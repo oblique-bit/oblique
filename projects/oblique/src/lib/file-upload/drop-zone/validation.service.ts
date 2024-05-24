@@ -5,20 +5,24 @@ import {ObAcceptAllPipe} from './accept-all.pipe';
 
 @Injectable()
 export class ObValidationService {
-	private readonly areAllTypesAllowed = new ObAcceptAllPipe().transform;
+	private readonly areAllTypesAllowed = new ObAcceptAllPipe().transform.bind(this);
 
 	constructor(private readonly notification: ObNotificationService) {}
 
 	public filterInvalidFiles(fileOptions: ObIFileValidationOptions): File[] {
-		if (!fileOptions.accept) fileOptions.accept = ['*'];
+		if (!fileOptions.accept) {
+			fileOptions.accept = ['*'];
+		}
 		const dispatchedFiles: ObIFileValidation = this.dispatchFiles(fileOptions);
 
-		if (fileOptions.multiple)
+		if (fileOptions.multiple) {
 			this.notifyErrors('i18n.oblique.file-upload.error.overflow', {
 				ignoredFiles: dispatchedFiles.overflowing,
 				maxAmount: fileOptions.maxAmount
 			});
-		else this.notifyErrors('i18n.oblique.file-upload.error.single', {ignoredFiles: dispatchedFiles.overflowing});
+		} else {
+			this.notifyErrors('i18n.oblique.file-upload.error.single', {ignoredFiles: dispatchedFiles.overflowing});
+		}
 
 		this.notifyErrors('i18n.oblique.file-upload.error.type', {
 			ignoredFiles: dispatchedFiles.invalid,
@@ -48,7 +52,7 @@ export class ObValidationService {
 		);
 	}
 
-	private notifyErrors(message: string, parameters: {ignoredFiles: string[]; [key: string]: any}): void {
+	private notifyErrors(message: string, parameters: {ignoredFiles: string[]; [key: string]: unknown}): void {
 		if (parameters.ignoredFiles.length) {
 			const params = {
 				...parameters,

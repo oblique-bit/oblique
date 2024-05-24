@@ -19,7 +19,7 @@ export interface ObIFile {
 export interface ObIFileDescription {
 	name: string;
 
-	[key: string]: any;
+	[key: string]: unknown;
 }
 
 export interface ObIUploadEvent {
