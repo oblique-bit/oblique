@@ -1,6 +1,7 @@
 import {Rule, SchematicContext, Tree, chain, externalSchematic} from '@angular-devkit/schematics';
 import {ObIMigrations} from './ng-update.model';
 import {
+	addFile,
 	addImport,
 	addInjectionInClass,
 	applyInTree,
@@ -18,6 +19,7 @@ import {
 	replaceInFile,
 	setAngularProjectsConfig
 } from '../utils';
+import {getTemplate} from '../ng-add/ng-add-utils';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV10Schema {}
@@ -53,7 +55,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 				this.deactivatePreferStandalone(),
 				this.removeGlobalsFromJestConfig(),
 				this.addNodeToCompilerOptions(),
-				this.addDataNoSnippet()
+				this.addDataNoSnippet(),
+				this.addBrowserslistrcFile()
 			])(tree, _context);
 	}
 
@@ -325,6 +328,15 @@ export class UpdateV10toV11 implements ObIMigrations {
 			getIndexPaths(tree).forEach((indexPath: string) =>
 				overwriteIndexFile(indexPath, tree, 'class="ob-compatibility"', 'class="ob-compatibility" data-nosnippet')
 			);
+			return tree;
+		});
+	}
+
+	private addBrowserslistrcFile(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Add the .browserslistrc file if not already present');
+			const browserlistrcFile = getTemplate(tree, 'default-browserslistrc.config');
+			addFile(tree, '.browserslistrc', browserlistrcFile);
 			return tree;
 		});
 	}
