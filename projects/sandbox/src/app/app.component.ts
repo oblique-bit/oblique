@@ -164,6 +164,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'icon', label: 'Icons'},
 				{url: 'list', label: 'List'},
 				{url: 'mandatory', label: 'Mandatory'},
+				{url: 'menu', label: 'Menu'},
 				{url: 'progress-bar', label: 'Progress bar'},
 				{url: 'slide-toggle', label: 'Slide Toggle'},
 				{url: 'slider', label: 'Slider'},
