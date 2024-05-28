@@ -126,6 +126,7 @@ If specified, the scope must be one of:
 - **error-messages**
 - **external-link**
 - **file-upload**
+- **focus-invalid**
 - **global-events**
 - **http-interceptor**
 - **input-clear**
