@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
 
 @Component({
-	template: '<span obMasterLayoutNavigationMenu> test </span>'
+	template: '<div class="ob-master-layout-header"><span obMasterLayoutNavigationMenu> test </span></div>'
 })
 class TestComponent {}
 
