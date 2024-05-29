@@ -61,6 +61,8 @@ import {TableEditComponent} from './table/table-edit.component';
 import {ObPaginatorModule} from '@oblique/paginator/ob-paginator.module';
 import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 import {SlideToggleComponent} from './slide-toggle/slide-toggle.component';
+import {MenuComponent} from './menu/menu.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -74,6 +76,7 @@ const appRoutes: Routes = [
 	{path: 'icon', component: IconSampleComponent},
 	{path: 'list', component: ListComponent},
 	{path: 'mandatory', component: MandatorySampleComponent},
+	{path: 'menu', component: MenuComponent},
 	{path: 'progress-bar', component: ProgressBarComponent},
 	{path: 'slide-toggle', component: SlideToggleComponent},
 	{path: 'slider', component: SliderComponent},
@@ -98,6 +101,7 @@ const appRoutes: Routes = [
 		IconSampleComponent,
 		ListComponent,
 		MandatorySampleComponent,
+		MenuComponent,
 		ProgressBarComponent,
 		SliderComponent,
 		SlideToggleComponent,
@@ -125,6 +129,7 @@ const appRoutes: Routes = [
 		MatIconModule,
 		MatInputModule,
 		MatListModule,
+		MatMenuModule,
 		MatNativeDateModule,
 		MatOptionModule,
 		MatProgressBarModule,

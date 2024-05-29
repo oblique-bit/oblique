@@ -1,0 +1,5 @@
+@use "../core/mixins/shadow";
+
+.mat-mdc-menu-panel {
+	@include shadow.ob-shadow-default();
+}
