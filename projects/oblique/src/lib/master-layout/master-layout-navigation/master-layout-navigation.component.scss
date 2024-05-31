@@ -108,8 +108,8 @@
 				transform variables.$ob-duration-default;
 
 			@include layout.ob-media-breakpoint-up(md) {
-				padding: 0 (1.3 * variables.$ob-spacing-xl) variables.$ob-spacing-xxl;
-				inset: 100% auto auto -1 * variables.$ob-spacing-xl;
+				padding: 0 variables.$ob-spacing-md variables.$ob-spacing-md;
+				inset: 100% auto auto -1 * variables.$ob-spacing-md;
 				max-width: variables.$ob-navigation-sub-menu-max-width-md;
 				max-height: 60vh;
 				background-color: variables.$ob-white;
@@ -119,18 +119,6 @@
 				width: max-content;
 				z-index: variables.$ob-z-index-controls + 1;
 				@include shadow.ob-default-panel-box-shadow();
-
-				&.ob-has-current-parent-link {
-					padding: 0 (1.75 * variables.$ob-spacing-xl) variables.$ob-spacing-xxl;
-				}
-
-				&.ob-parent-link-has-icon-and-label {
-					padding: 0 (1.9 * variables.$ob-spacing-xl) variables.$ob-spacing-xxl;
-
-					&.ob-has-current-parent-link {
-						padding: 0 (2.25 * variables.$ob-spacing-xl) variables.$ob-spacing-xxl;
-					}
-				}
 
 				@include layout.ob-media-breakpoint-up(lg) {
 					max-width: variables.$ob-navigation-sub-menu-max-width-lg;
@@ -302,9 +290,9 @@
 					position: relative;
 				}
 
-				&:nth-of-type(n + 5).ob-expandable .ob-sub-menu {
+				&:nth-of-type(n + 6).ob-expandable .ob-sub-menu {
 					left: unset;
-					right: -1 * variables.$ob-spacing-xl;
+					right: -1 * variables.$ob-spacing-md;
 				}
 
 				&:last-of-type.ob-expandable .ob-sub-menu {
