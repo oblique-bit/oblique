@@ -117,6 +117,7 @@
 				transition: none;
 				display: block;
 				width: max-content;
+				z-index: variables.$ob-z-index-controls + 1;
 				@include shadow.ob-default-panel-box-shadow();
 
 				&.ob-has-current-parent-link {
