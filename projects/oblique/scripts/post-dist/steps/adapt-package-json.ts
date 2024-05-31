@@ -26,6 +26,7 @@ export class AdaptPackageJson {
 	private static getExportEntriesForSCSS(): ExportEntries {
 		return AdaptPackageJson.listFiles(path.join(AdaptPackageJson.DIST_PATH, 'styles', 'scss'))
 			.map(filePath => filePath.replace(AdaptPackageJson.DIST_PATH, '.'))
+			.map(filePath => filePath.replace(/\\/g, '/'))
 			.map(filePath => ({importPath: filePath.replace(/_|\.scss/g, ''), filePath}))
 			.reduce<ExportEntries>((exportEntries, file) => ({...exportEntries, [file.importPath]: {sass: file.filePath}}), {});
 	}
