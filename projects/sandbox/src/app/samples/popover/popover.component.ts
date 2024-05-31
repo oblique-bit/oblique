@@ -14,6 +14,7 @@ export class PopoverComponent {
 	toggleHandle: ObEToggleType;
 	closeOnlyOnToggle: boolean;
 	appendToBody = false;
+	hasScrollBar = false;
 
 	toggleTypeClick = ObEToggleType.CLICK;
 	toggleTypeHover = ObEToggleType.HOVER;

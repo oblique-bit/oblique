@@ -23,9 +23,23 @@ class TestComponent {}
 })
 export class ObMockSelectableGroupDirective {
 	mode$ = new BehaviorSubject<string>('checkbox');
+	disabled$ = new BehaviorSubject<boolean>(false);
 	register = jest.fn();
 	toggle = jest.fn();
 	focus = jest.fn();
+}
+
+@Directive({
+	selector: '[obSelectableGroup]',
+	exportAs: 'obSelectableGroup'
+})
+export class ObMockDisabledSelectableGroupDirective {
+	mode$ = new BehaviorSubject<string>('checkbox');
+	disabled$ = new BehaviorSubject<boolean>(true);
+	register = jest.fn();
+	toggle = jest.fn();
+	focus = jest.fn();
+	isDisabled = true;
 }
 
 describe(ObSelectableDirective.name, () => {
@@ -66,6 +80,10 @@ describe(ObSelectableDirective.name, () => {
 			element = fixture.debugElement.query(By.directive(ObSelectableDirective));
 			directive = element.injector.get(ObSelectableDirective);
 			group = fixture.debugElement.query(By.directive(ObMockSelectableGroupDirective)).injector.get(ObSelectableGroupDirective);
+		});
+
+		afterEach(() => {
+			jest.clearAllMocks();
 		});
 
 		it('should create an instance', () => {
@@ -131,15 +149,6 @@ describe(ObSelectableDirective.name, () => {
 			});
 		});
 
-		describe('cursor', () => {
-			it('should be defined as property', () => {
-				expect(directive.cursor).toBe('pointer');
-			});
-			it('should be defined as attribute', () => {
-				expect(element.nativeElement.getAttribute('style')).toBe('cursor: pointer;');
-			});
-		});
-
 		describe('selected', () => {
 			it('should be defined as property', () => {
 				expect(directive.selected).toBe(false);
@@ -184,6 +193,40 @@ describe(ObSelectableDirective.name, () => {
 			const event = {preventDefault: jest.fn()} as unknown as MouseEvent;
 			directive.onClick(event);
 			expect(group.toggle).toHaveBeenCalledWith(directive, undefined, undefined);
+		});
+		afterEach(() => {
+			jest.clearAllMocks();
+		});
+	});
+
+	describe('the parent ObSelectableGroupDirective is disabled', () => {
+		beforeEach(waitForAsync(() => {
+			TestBed.configureTestingModule({
+				imports: [ObSelectableDirective],
+				declarations: [ObMockDisabledSelectableGroupDirective, TestComponent],
+				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockDisabledSelectableGroupDirective}]
+			});
+		}));
+
+		beforeEach(() => {
+			fixture = TestBed.createComponent(TestComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+			element = fixture.debugElement.query(By.directive(ObSelectableDirective));
+			directive = element.injector.get(ObSelectableDirective);
+			group = fixture.debugElement.query(By.directive(ObMockDisabledSelectableGroupDirective)).injector.get(ObSelectableGroupDirective);
+		});
+
+		describe('onclick', () => {
+			it('should not call toggle on group', () => {
+				const event = {preventDefault: jest.fn()} as unknown as MouseEvent;
+				directive.onClick(event);
+				expect(group.toggle).toHaveBeenCalledTimes(0);
+			});
+		});
+
+		afterEach(() => {
+			jest.clearAllMocks();
 		});
 	});
 

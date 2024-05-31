@@ -30,6 +30,7 @@ import {OffCanvasCodeExamplesComponent} from './code-examples/off-canvas/off-can
 import {PaginatorCodeExamplesComponent} from './code-examples/paginator/paginator-code-examples.component';
 import {PopoverCodeExamplesComponent} from './code-examples/popover/popover-code-examples.component';
 import {ProgressBarCodeExamplesComponent} from './code-examples/progress-bar/progress-bar-code-examples.component';
+import {RxjsOperatorsCodeExamplesComponent} from './code-examples/rxjs-operators/rxjs-operators-code-examples.component';
 import {SchemaValidationCodeExamplesComponent} from './code-examples/schema-validation/schema-validation-code-examples.component';
 import {SelectableCodeExamplesComponent} from './code-examples/selectable/selectable-code-examples.component';
 import {ShadowCodeExamplesComponent} from './code-examples/shadow/shadow-code-examples.component';
@@ -50,6 +51,7 @@ import {UnsavedChangesCodeExamplesComponent} from './code-examples/unsaved-chang
 import {CollapseCodeExamplesComponent} from './code-examples/collapse/collapse-code-examples.component';
 import {DateCodeExamplesComponent} from './code-examples/date/date-code-examples.component';
 import {ErrorMessagesCodeExamplesComponent} from './code-examples/error-messages/error-messages-code-examples.component';
+import {FocusInvalidCodeExamplesComponent} from './code-examples/focus-invalid/focus-invalid-code-examples.component';
 
 /* These imports are sorted alphabetically to reduce merge conflicts.
    If you add a new import above, please make sure it is sorted
@@ -73,13 +75,14 @@ export class CodeExamplesMapper {
 		'error-messages': ErrorMessagesCodeExamplesComponent,
 		'expansion-panel': ExpansionPanelCodeExamplesComponent,
 		'file-upload': FileUploadCodeExamplesComponent,
+		'focus-invalid': FocusInvalidCodeExamplesComponent,
 		form: FormCodeExamplesComponent,
 		'global-events': GlobalEventsCodeExamplesComponent,
 		'grid-system': GridSystemCodeExamplesComponent,
 		'html-table': HtmlTableCodeExamplesComponent,
 		icons: IconsCodeExamplesComponent,
-		'list-group': ListGroupCodeExamplesComponent,
 		language: LanguageCodeExamplesComponent,
+		'list-group': ListGroupCodeExamplesComponent,
 		'master-layout': MasterLayoutCodeExamplesComponent,
 		'material-table': MaterialTableCodeExamplesComponent,
 		'nav-tree': NavTreeCodeExamplesComponent,
@@ -90,6 +93,7 @@ export class CodeExamplesMapper {
 		paginator: PaginatorCodeExamplesComponent,
 		popover: PopoverCodeExamplesComponent,
 		'progress-bar': ProgressBarCodeExamplesComponent,
+		'rxjs-operators': RxjsOperatorsCodeExamplesComponent,
 		'schema-validation': SchemaValidationCodeExamplesComponent,
 		selectable: SelectableCodeExamplesComponent,
 		shadow: ShadowCodeExamplesComponent,

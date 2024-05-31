@@ -1,4 +1,5 @@
-import {AfterContentInit, Directive, EventEmitter, HostBinding, HostListener, Input, Output, inject} from '@angular/core';
+import {AfterContentInit, Directive, EventEmitter, HostBinding, HostListener, Input, Output, booleanAttribute, inject} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 import {WINDOW} from './../utilities';
 import {ObSelectableDirective} from './selectable.directive';
 
@@ -9,10 +10,13 @@ import {ObSelectableDirective} from './selectable.directive';
 	standalone: true
 })
 export class ObSelectableGroupDirective implements AfterContentInit {
+	@HostBinding('attr.disabled') isDisabled = undefined;
 	@HostBinding('attr.role') role = 'group';
 	@HostBinding('class.ob-selectable-group') readonly selectable = true;
 	@Output() readonly selected$ = new EventEmitter<ObSelectableDirective[]>();
 	@Output() readonly mode$ = new EventEmitter<'checkbox' | 'radio' | 'windows'>();
+
+	public readonly disabled$ = new BehaviorSubject<boolean>(false);
 	private readonly selectables: ObSelectableDirective[] = [];
 	private modeValue: 'checkbox' | 'radio' | 'windows' = 'checkbox';
 	private focused: number;
@@ -50,6 +54,15 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 	@Input() set mode(mode: 'checkbox' | 'radio' | 'windows') {
 		this.modeValue = mode || 'checkbox';
 		this.mode$.emit(this.modeValue);
+	}
+
+	get disabled(): boolean {
+		return this.disabled$.getValue();
+	}
+
+	@Input({transform: booleanAttribute}) private set disabled(state: boolean) {
+		this.isDisabled = state ? '' : undefined;
+		this.disabled$.next(state);
 	}
 
 	register(directive: ObSelectableDirective): void {

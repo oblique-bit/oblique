@@ -56,6 +56,7 @@ import {
 	ObErrorMessagesModule,
 	ObExternalLinkModule,
 	ObFileUploadModule,
+	ObFocusInvalidModule,
 	ObInputClearModule,
 	ObLanguageModule,
 	ObLanguageService,
@@ -86,6 +87,8 @@ import {FileUploadSampleComponent} from './file-upload-sample/file-upload-sample
 import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
 import {ServiceNavigationSampleComponent} from './service-navigation/service-navigation-sample.component';
 import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
+import {RxjsOperatorsComponent} from './rxjs-operators/rxjs-operators.component';
+import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.component';
 
 @NgModule({
 	imports: [
@@ -117,6 +120,7 @@ import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 		ObErrorMessagesModule,
 		ObExternalLinkModule,
 		ObFileUploadModule,
+		ObFocusInvalidModule,
 		ObFormFieldModule,
 		ObInputClearModule,
 		ObLanguageModule,
@@ -148,6 +152,7 @@ import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 		ErrorMessagesSampleComponent,
 		ExternalLinkComponent,
 		FileUploadSampleComponent,
+		FocusInvalidSampleComponent,
 		FormSampleComponent,
 		GlobalEventsSampleComponent,
 		HorizontalFormsSampleComponent,
@@ -166,6 +171,7 @@ import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 		NotificationSampleComponent,
 		NumberFormatSampleComponent,
 		PopoverComponent,
+		RxjsOperatorsComponent,
 		SchemaValidationSampleComponent,
 		SelectableSampleComponent,
 		ServiceNavigationSampleComponent,

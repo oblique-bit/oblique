@@ -1,0 +1,102 @@
+<h2 class="page-header">Focus Invalid</h2>
+<ob-column-layout [left]="false">
+	<ng-container column-main-content>
+		<h3>Reactive form</h3>
+		<form #ngForm [formGroup]="focusInvalidFormGroup" obFocusInvalid (submit)="validateForm(ngForm.valid)">
+			<mat-form-field obErrorMessages>
+				<mat-label>Text</mat-label>
+				<input type="text" matInput formControlName="text" />
+				<mat-error />
+			</mat-form-field>
+
+			<mat-form-field obErrorMessages>
+				<mat-label>Datepicker</mat-label>
+				<input matInput [matDatepicker]="defaultDatepicker" formControlName="datepicker" />
+				<mat-hint>DD.MM.YYYY</mat-hint>
+				<mat-datepicker-toggle matIconSuffix [for]="defaultDatepicker" />
+				<mat-datepicker #defaultDatepicker />
+				<mat-error />
+			</mat-form-field>
+
+			<mat-form-field obErrorMessages>
+				<mat-label>Select</mat-label>
+				<mat-select formControlName="select">
+					<mat-option [value]="null" />
+					<mat-option [value]="1">One</mat-option>
+					<mat-option [value]="2">Two</mat-option>
+					<mat-option [value]="3">Three</mat-option>
+					<mat-option [value]="4">Four</mat-option>
+					<mat-option [value]="5">Five</mat-option>
+				</mat-select>
+				<mat-error />
+			</mat-form-field>
+
+			<mat-checkbox formControlName="checkbox">Checkbox</mat-checkbox>
+
+			<mat-form-field class="ob-form-field-textarea">
+				<mat-label>Textarea</mat-label>
+				<textarea matInput formControlName="textarea"></textarea>
+				<mat-error />
+			</mat-form-field>
+
+			<mat-radio-group formControlName="radio">
+				<mat-radio-button value="1">one</mat-radio-button>
+				<mat-radio-button value="2">two</mat-radio-button>
+			</mat-radio-group>
+
+			<div class="buttons">
+				<button mat-button obButton="secondary" type="reset">Reset</button>
+				<button mat-button obButton="primary" type="submit">Submit</button>
+			</div>
+		</form>
+
+		<h3>Template driven form</h3>
+		<form #templateForm="ngForm" obFocusInvalid (submit)="validateForm(templateForm.valid)">
+			<mat-form-field obErrorMessages>
+				<mat-label>Text</mat-label>
+				<input type="text" matInput [(ngModel)]="text" name="text" required />
+				<mat-error />
+			</mat-form-field>
+
+			<mat-form-field obErrorMessages>
+				<mat-label>Datepicker</mat-label>
+				<input matInput [matDatepicker]="defaultDatepicker2" [(ngModel)]="datepicker" name="datepicker" required />
+				<mat-hint>DD.MM.YYYY</mat-hint>
+				<mat-datepicker-toggle matIconSuffix [for]="defaultDatepicker2" />
+				<mat-datepicker #defaultDatepicker2 />
+				<mat-error />
+			</mat-form-field>
+
+			<mat-form-field obErrorMessages>
+				<mat-label>Select</mat-label>
+				<mat-select [(ngModel)]="select" name="select" required>
+					<mat-option [value]="null" />
+					<mat-option [value]="1">One</mat-option>
+					<mat-option [value]="2">Two</mat-option>
+					<mat-option [value]="3">Three</mat-option>
+					<mat-option [value]="4">Four</mat-option>
+					<mat-option [value]="5">Five</mat-option>
+				</mat-select>
+				<mat-error />
+			</mat-form-field>
+
+			<mat-checkbox [(ngModel)]="checkbox" name="checkbox" required>Checkbox</mat-checkbox>
+
+			<mat-form-field class="ob-form-field-textarea">
+				<mat-label>Textarea</mat-label>
+				<textarea matInput [(ngModel)]="textarea" name="textarea" required></textarea>
+				<mat-error />
+			</mat-form-field>
+
+			<mat-radio-group [(ngModel)]="radio" name="radio" required>
+				<mat-radio-button value="1">one</mat-radio-button>
+				<mat-radio-button value="2">two</mat-radio-button>
+			</mat-radio-group>
+
+			<div class="buttons">
+				<button mat-button obButton="secondary" type="reset">Reset</button>
+				<button mat-button obButton="primary" type="submit">Submit</button>
+			</div>
+		</form>
+	</ng-container>
+</ob-column-layout>

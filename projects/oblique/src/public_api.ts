@@ -48,6 +48,7 @@ export {
 	ObIUploadEvent,
 	ObIFileDescription
 } from './lib/file-upload/file-upload.module';
+export {ObFocusInvalidModule, ObFocusInvalidDirective} from './lib/focus-invalid/focus-invalid.module';
 export {ObFormFieldModule, ObFormFieldDirective, ObSelectDirective} from './lib/form-field/form-field.module';
 export {
 	ObServiceNavigationComponent,
@@ -116,6 +117,7 @@ export {
 	OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE,
 	ObEToggleType
 } from './lib/popover/popover.module';
+export {obPauseWhenPageHidden} from './lib/rxjs-operators';
 export {
 	draft07Convert,
 	ObSchemaRequiredDirective,

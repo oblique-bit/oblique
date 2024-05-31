@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, ReplaySubject, combineLatest, switchMap, timer} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {obPauseWhenPageHidden} from '../../rxjs-operators';
 import {ObServiceNavigationStateApiService} from './service-navigation-state-api.service';
 import {ObServiceNavigationCountApiService} from './service-navigation-message-count-api.service';
 import {ObIServiceNavigationState} from './service-navigation.api.model';
@@ -25,7 +26,10 @@ export class ObServiceNavigationPollingService {
 			timer(0, stateInterval * secondsMultiplier).pipe(switchMap(() => this.stateApiService.get(environmentUrl))),
 			timer(0, countInterval * secondsMultiplier).pipe(switchMap(() => this.countApiService.get(environmentUrl)))
 		])
-			.pipe(map(results => ({...results[0], messageCount: results[1]})))
+			.pipe(
+				map(results => ({...results[0], messageCount: results[1]})),
+				obPauseWhenPageHidden()
+			)
 			.subscribe(result => this.pollingDataState.next(result));
 	}
 }

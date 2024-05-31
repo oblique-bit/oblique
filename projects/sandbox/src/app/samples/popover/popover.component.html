@@ -29,6 +29,17 @@
 			<ng-template #popover>
 				<div cdkTrapFocus cdkTrapFocusAutoCapture>
 					<p>Popover example. Here goes your content! {{ param }}</p>
+					@if (hasScrollBar) {
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare lacus enim, et suscipit neque accumsan eget. Phasellus
+							dapibus, dui sed finibus pharetra, urna libero sodales ante, et porta quam tellus ut elit. Suspendisse enim nibh, sagittis in
+							pellentesque ut, malesuada vel nisi. Nullam efficitur turpis a egestas pellentesque. Curabitur id eros tristique, semper sem
+							vitae, mollis nunc. Cras convallis felis non ullamcorper mattis. Pellentesque habitant morbi tristique senectus et netus et
+							malesuada fames ac turpis egestas. Nulla vel pretium nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+							egestas scelerisque nibh suscipit rhoncus. Donec in ipsum vulputate, tempus enim non, consectetur felis. Donec libero risus,
+							tristique eget porta ut, efficitur a nisi. Donec malesuada lacus sit amet tellus mattis porta.
+						</p>
+					}
 					<button type="button" mat-button>Maybe</button>
 					<button type="button" cdkFocusInitial mat-button>Yes</button>
 					<button type="button" mat-button>Not sure</button>
@@ -58,6 +69,10 @@
 		<fieldset>
 			<legend>Append to body</legend>
 			<mat-slide-toggle [(ngModel)]="appendToBody">Append to Body</mat-slide-toggle>
+		</fieldset>
+		<fieldset>
+			<legend>Has scrollbar</legend>
+			<mat-slide-toggle [(ngModel)]="hasScrollBar">Add vertical scrollbar</mat-slide-toggle>
 		</fieldset>
 		<fieldset>
 			<legend>Toggle position</legend>
