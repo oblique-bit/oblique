@@ -1,3 +1,23 @@
+# [11.2.0](https://github.com/oblique-bit/oblique/compare/11.1.3...11.2.0) (2024-05-31)
+
+## Bug Fixes
+
+- **material:** add missing shadow to `mat-menu` ([58fba9a6](https://github.com/oblique-bit/oblique/commit/58fba9a68e0c514335f248f337f501417a295d53))
+- **material:** cancel padding for button with a card within ([f257c560](https://github.com/oblique-bit/oblique/commit/f257c5603c6a1815eb01f2b8739eae2f8d5e8697))
+- **popover:** ensure the vertical scrollbar is added on the edge ([53739874](https://github.com/oblique-bit/oblique/commit/5373987445766912cc70b8b47c47dc891a939f19))
+- **schematics:** ensure the `.browserslistrc` file is present ([8e90687d](https://github.com/oblique-bit/oblique/commit/8e90687df3c134b12d6587ee77d7a14a88c5f344))
+- **selectable:** don't add `disabled` attribute when `disabled` is set to `false` ([722d9f21](https://github.com/oblique-bit/oblique/commit/722d9f21b3c0b5c5f38dff3435c3d1c59a8c1ae7))
+- **selectable:** add unsubscribe for mode$ ([d4bf07a6](https://github.com/oblique-bit/oblique/commit/d4bf07a679e63cadda852f5e470f7bc62e4562a2))
+- **service-navigation:** make sure the application list is always wide enough ([922543e3](https://github.com/oblique-bit/oblique/commit/922543e3b7e36bfec96fd032cfab75972dc96e27))
+
+## Features
+
+- **focus-invalid:** add new focus-invalid directive ([95494678](https://github.com/oblique-bit/oblique/commit/9549467826aee57e8cdf9dfc938c110eecd79bb3))
+- **master-layout:** apply the same styling to all links in the footer ([bcecab1b](https://github.com/oblique-bit/oblique/commit/bcecab1b8bf6bf452fb9b00b0f7d3ce6794151b9))
+- **rxjs-operators:** add `obPauseWhenPageHidden` operator ([31349b59](https://github.com/oblique-bit/oblique/commit/31349b59a10c5ffc0c0a8bc509fdf65d376398bb))
+- **selectable:** add `disabled` feature ([f5d98306](https://github.com/oblique-bit/oblique/commit/f5d983061fbe405089ec2a570387a36f4117761b))
+- **service-navigation:** pause the polling when the page is not visible ([69f3e97c](https://github.com/oblique-bit/oblique/commit/69f3e97c575a6468c4883e1492825b3d04c012a2))
+
 # [11.1.3](https://github.com/oblique-bit/oblique/compare/11.1.2...11.1.3) (2024-05-24)
 
 ## Bug Fixes
