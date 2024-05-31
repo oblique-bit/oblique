@@ -169,10 +169,10 @@
 					font-size: variables.$ob-font-size-big;
 					font-weight: bold;
 					padding-left: variables.$ob-line-width;
+					border-left: variables.$ob-line-width solid transparent;
 
 					&:hover {
-						@include sub-menu-active-hover-border-left();
-						padding-left: 0;
+						border-left-color: variables.$ob-accent;
 					}
 				}
 
@@ -180,7 +180,6 @@
 					a {
 						&.active {
 							@include sub-menu-active-hover-border-left();
-							padding-left: 0;
 						}
 					}
 				}
