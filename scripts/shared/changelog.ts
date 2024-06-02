@@ -83,13 +83,13 @@ export class Changelog {
 
 	private static writeChangelog(commits: Commits, previousVersion: string, nextVersion: string): void {
 		writeFileSync(
-			'CHANGELOG.md',
+			'../../CHANGELOG.md',
 			[
 				Changelog.getTitle(nextVersion, previousVersion),
 				Changelog.getSection(commits.fix, 'Bug Fixes'),
 				Changelog.getSection(commits.feat, 'Features'),
 				Changelog.getSection(commits.breakingChanges, 'BREAKING CHANGES'),
-				readFileSync('CHANGELOG.md').toString()
+				readFileSync('../../CHANGELOG.md').toString()
 			].join('\n\n')
 		);
 	}
