@@ -57,9 +57,6 @@ export class ObServiceNavigationService {
 	}
 
 	setPamsAppId(appId: string): void {
-		if (!appId) {
-			console.warn("Service-navigation requires an appId. Otherwise some stepup logins won't work");
-		}
 		this.pamsAppId$.next(appId);
 	}
 
@@ -80,7 +77,7 @@ export class ObServiceNavigationService {
 			this.combineWithLanguage<string>(),
 			map(([url, lang]) => url.replace('<yourLanguageID>', lang)),
 			combineLatestWith(this.pamsAppId$),
-			map(([url, pamsAppId]) => (pamsAppId ? `${url}&appid=${pamsAppId}` : url))
+			map(([url, pamsAppId]) => this.addAppId(url, pamsAppId))
 		);
 	}
 
@@ -192,5 +189,13 @@ export class ObServiceNavigationService {
 			map(values => values[1]),
 			tap(values => (this.timeoutService.loginState = values.loginState))
 		);
+	}
+
+	private addAppId(url: string, pamsAppId: string): string {
+		if (!pamsAppId) {
+			console.warn("Service-navigation requires an appId. Otherwise some stepup logins won't work");
+			return url;
+		}
+		return `${url}&appid=${pamsAppId}`;
 	}
 }
