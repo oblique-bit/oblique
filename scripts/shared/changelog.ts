@@ -82,16 +82,18 @@ export class Changelog {
 	}
 
 	private static writeChangelog(commits: Commits, previousVersion: string, nextVersion: string): void {
-		writeFileSync(
-			'../../CHANGELOG.md',
-			[
-				Changelog.getTitle(nextVersion, previousVersion),
-				Changelog.getSection(commits.fix, 'Bug Fixes'),
-				Changelog.getSection(commits.feat, 'Features'),
-				Changelog.getSection(commits.breakingChanges, 'BREAKING CHANGES'),
-				readFileSync('../../CHANGELOG.md').toString()
-			].join('\n\n')
-		);
+		if (commits.feat.length || commits.fix.length) {
+			writeFileSync(
+				'../../CHANGELOG.md',
+				[
+					Changelog.getTitle(nextVersion, previousVersion),
+					Changelog.getSection(commits.fix, 'Bug Fixes'),
+					Changelog.getSection(commits.feat, 'Features'),
+					Changelog.getSection(commits.breakingChanges, 'BREAKING CHANGES'),
+					readFileSync('../../CHANGELOG.md').toString()
+				].join('\n\n')
+			);
+		}
 	}
 
 	private static getTitle(nextVersion: string, previousVersion: string): string {
