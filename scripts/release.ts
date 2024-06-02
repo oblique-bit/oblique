@@ -7,7 +7,7 @@ class Release {
 		const {version, issue} = Release.parseBranchName();
 		executeCommand(`npm version ${version}`, true);
 		Release.updateCopyrightDate();
-		executeCommand(`npm run release -w @oblique/oblique`);
+		executeCommand(`npm run release -w @oblique/oblique -w sandbox`);
 		executeCommand(`git commit -am "chore(toolchain): release version ${version}" -m "${issue}"`);
 	}
 
