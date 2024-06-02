@@ -17,7 +17,7 @@ import {firstValueFrom} from 'rxjs';
 class TestComponent {}
 
 describe(ObSelectableGroupDirective.name, () => {
-	let directive: ObSelectableGroupDirective;
+	let directive: ObSelectableGroupDirective<number>;
 	let component: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;

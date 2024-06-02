@@ -43,8 +43,8 @@ export class ObMockDisabledSelectableGroupDirective {
 }
 
 describe(ObSelectableDirective.name, () => {
-	let directive: ObSelectableDirective;
-	let group: ObSelectableGroupDirective;
+	let directive: ObSelectableDirective<string>;
+	let group: ObSelectableGroupDirective<string>;
 	let component: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
