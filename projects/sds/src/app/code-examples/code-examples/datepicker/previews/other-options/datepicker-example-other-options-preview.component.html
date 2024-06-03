@@ -26,6 +26,7 @@
 		<input matInput [disabled]="true" [matDatepicker]="disabledDatepicker" />
 		<mat-datepicker-toggle matIconSuffix [for]="disabledDatepicker" />
 		<mat-datepicker #disabledDatepicker />
+		<mat-hint>This date picker is disabled</mat-hint>
 	</mat-form-field>
 </div>
 <div>
@@ -34,6 +35,9 @@
 		<input matInput [min]="today" [matDatepicker]="minDatepicker" />
 		<mat-datepicker-toggle matIconSuffix [for]="minDatepicker" />
 		<mat-datepicker #minDatepicker />
+		<mat-hint
+			>Dates in the past can't be selected. They can still be manually entered because there is no error control on this example.</mat-hint
+		>
 	</mat-form-field>
 </div>
 <div>
@@ -42,6 +46,10 @@
 		<input matInput [max]="today" [matDatepicker]="maxDatepicker" />
 		<mat-datepicker-toggle matIconSuffix [for]="maxDatepicker" />
 		<mat-datepicker #maxDatepicker />
+		<mat-hint
+			>Dates in the future can't be selected. They can still be manually entered because there is no error control on this
+			example.</mat-hint
+		>
 	</mat-form-field>
 </div>
 <div>
@@ -50,6 +58,7 @@
 		<input matInput [value]="august1st1891" [matDatepicker]="valueDatepicker" />
 		<mat-datepicker-toggle matIconSuffix [for]="valueDatepicker" />
 		<mat-datepicker #valueDatepicker />
+		<mat-hint>A date picker with an initial date</mat-hint>
 	</mat-form-field>
 </div>
 <div>
@@ -59,6 +68,7 @@
 		<mat-datepicker-toggle matIconSuffix [for]="dateChangeDatepicker" />
 		<mat-datepicker #dateChangeDatepicker />
 		<mat-hint *ngIf="lastDateChange">Last date change: {{ lastDateChange.value | date }}</mat-hint>
+		<mat-hint *ngIf="!lastDateChange">This date picker reacts to the "change" event</mat-hint>
 	</mat-form-field>
 </div>
 <div>
@@ -68,5 +78,6 @@
 		<mat-datepicker-toggle matIconSuffix [for]="inputChangeDatepicker" />
 		<mat-datepicker #inputChangeDatepicker />
 		<mat-hint *ngIf="lastDateInput">Last date input: {{ lastDateInput.value | date }}</mat-hint>
+		<mat-hint *ngIf="!lastDateInput">This date picker reacts to the "input" event</mat-hint>
 	</mat-form-field>
 </div>

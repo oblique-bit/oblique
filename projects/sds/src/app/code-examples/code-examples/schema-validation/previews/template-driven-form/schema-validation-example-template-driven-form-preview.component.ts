@@ -3,22 +3,11 @@ import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {ObErrorMessagesModule, ObFormFieldDirective, ObSchemaValidationModule} from '@oblique/oblique';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
 
 @Component({
 	selector: 'app-schema-validation-example-template-driven-form-preview',
 	templateUrl: './schema-validation-example-template-driven-form-preview.component.html',
-	imports: [
-		CommonModule,
-		MatInputModule,
-		ObSchemaValidationModule,
-		ObErrorMessagesModule,
-		FormsModule,
-		MatDatepickerModule,
-		ObFormFieldDirective,
-		MatNativeDateModule
-	],
+	imports: [CommonModule, MatInputModule, ObSchemaValidationModule, ObErrorMessagesModule, FormsModule, ObFormFieldDirective],
 	standalone: true
 })
 export class SchemaValidationExampleTemplateDrivenFormPreviewComponent {
