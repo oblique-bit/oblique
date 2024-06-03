@@ -15,7 +15,7 @@
     "postbuild": "ts-node scripts/post-dist.ts",
     "schematics": "tsc -p schematics/tsconfig.schematics.json",
     "prerelease": "npm run update-icons",
-    "release": "ts-node scripts/release/release.ts",
+    "release": "ts-node scripts/release.ts",
     "update-icons": "ts-node scripts/update-icons.ts"
   },
   "peerDependencies": {

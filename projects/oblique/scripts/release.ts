@@ -1,7 +1,7 @@
 import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
-import {executeCommand} from '../../../../scripts/shared/utils';
-import {Changelog} from '../../../../scripts/shared/changelog';
+import {executeCommand} from '../../../scripts/shared/utils';
+import {Changelog} from '../../../scripts/shared/changelog';
 
 class Release {
 	static perform(): void {
