@@ -2,10 +2,19 @@ import {Component, Inject, OnDestroy} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import {ObEIcon, ObIAutocompleteInputOption, ObINavigationLink, ObISkipLink, ObMasterLayoutHeaderService, WINDOW} from '@oblique/oblique';
+import {
+	ObEIcon,
+	ObIAutocompleteInputOption,
+	ObINavigationLink,
+	ObISkipLink,
+	ObLanguageService,
+	ObMasterLayoutHeaderService,
+	WINDOW
+} from '@oblique/oblique';
 import {Observable, Subject} from 'rxjs';
 import {filter, map, startWith, takeUntil} from 'rxjs/operators';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
+import {DateAdapter} from '@angular/material/core';
 
 @Component({
 	selector: 'sb-root',
@@ -215,8 +224,11 @@ export class AppComponent implements OnDestroy {
 		private readonly router: Router,
 		private readonly translate: TranslateService,
 		private readonly header: ObMasterLayoutHeaderService,
-		@Inject(WINDOW) window: Window
+		@Inject(WINDOW) window: Window,
+		adapter: DateAdapter<any>,
+		language: ObLanguageService
 	) {
+		language.setLocaleOnAdapter(adapter);
 		this.initializeSearch();
 		nav.setNavigation(this.navigation);
 		nav.navigationLinks$.subscribe(links => {
