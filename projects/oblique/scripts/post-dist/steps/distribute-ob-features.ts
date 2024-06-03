@@ -1,7 +1,7 @@
-import {execSync} from 'child_process';
+import {executeCommand} from '../../../../../scripts/shared/utils';
 
 export class DistributeObFeatures {
 	static perform(): void {
-		execSync(`uglifyjs --compress --mangle --output ../../dist/oblique/ob-features.js -- src/ob-features.js`);
+		executeCommand(`uglifyjs --compress --mangle --output ../../dist/oblique/ob-features.js -- src/ob-features.js`);
 	}
 }

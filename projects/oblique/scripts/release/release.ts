@@ -1,7 +1,7 @@
-import {execSync} from 'child_process';
 import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
 import {Changelog} from './changelog';
+import {executeCommand} from '../../../../scripts/shared/utils';
 
 class Release {
 	static perform(): void {
@@ -13,7 +13,7 @@ class Release {
 	}
 
 	private static parseBranchName(): {version: string; issue: string} {
-		const branchName = execSync('git branch --show-current').toString();
+		const branchName = executeCommand('git branch --show-current');
 		const regexp = /(?<issue>OUI-\d+).*?(?<version>\d+\.\d+\.\d+(?:-(?:alpha|beta|RC)\.\d+)?)/;
 		if (!regexp.test(branchName)) {
 			console.error('The branch MUST contain the version number to release and the Jira issue number');
@@ -24,7 +24,7 @@ class Release {
 
 	private static bumpVersion(version: string): void {
 		process.chdir('../..'); // so that the release is made with the info of the root package.json
-		execSync(`npm version ${version}`);
+		executeCommand(`npm version ${version}`, true);
 		writeFileSync(path.join('projects', 'oblique', 'src', 'lib', 'version.ts'), `export const appVersion = '${version}';\n`);
 	}
 
@@ -39,7 +39,7 @@ class Release {
 	}
 
 	private static commit(version: string, issue: string): void {
-		execSync(`git commit -am "chore(toolchain): release version ${version}" -m "${issue}"`);
+		executeCommand(`git commit -am "chore(toolchain): release version ${version}" -m "${issue}"`, true);
 	}
 }
 

@@ -1,7 +1,7 @@
 import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
-import {execSync} from 'child_process';
 import {version as currentVersion} from './../../../../package.json';
 import path from 'path';
+import {executeCommand} from '../../../../scripts/shared/utils';
 
 export class AddBanner {
 	private static readonly directory = path.join('..', '..', 'dist', 'service-navigation-web-component');
@@ -51,8 +51,8 @@ export class AddBanner {
 	}
 
 	private static getTagDate(tag: string): string {
-		return execSync(`git tag -l '${tag}'`).toString()
-			? execSync(`git show -s --format=%ci ${tag}`).toString().split(' ')[0]
+		return executeCommand(`git tag -l '${tag}'`)
+			? executeCommand(`git show -s --format=%ci ${tag}`).split(' ')[0]
 			: AddBanner.getTodayDate();
 	}
 

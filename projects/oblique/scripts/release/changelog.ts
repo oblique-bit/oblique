@@ -1,5 +1,5 @@
 import {readFileSync, writeFileSync} from 'fs';
-import {execSync} from 'child_process';
+import {executeCommand} from '../../../../scripts/shared/utils';
 
 interface Commits {
 	fix: string[];
@@ -22,14 +22,13 @@ export class Changelog {
 	}
 
 	private static getPreviousVersion(): string {
-		return execSync('git describe --tags --abbrev=0').toString().trim();
+		return executeCommand('git describe --tags --abbrev=0');
 	}
 
 	private static getCommits(previousVersion: string): Commits {
 		const separator = ';;';
 		const commitSeparator = '##';
-		return execSync(`git log --pretty=format:"%s${separator}%b${separator}%H${commitSeparator}" ${previousVersion}..HEAD`)
-			.toString()
+		return executeCommand(`git log --pretty=format:"%s${separator}%b${separator}%H${commitSeparator}" ${previousVersion}..HEAD`)
 			.replace(/\n/g, '')
 			.split(commitSeparator)
 			.filter(commit => /^(?:fix|feat)\(oblique(?!\/toolchain)/.test(commit))

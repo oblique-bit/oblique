@@ -1,6 +1,6 @@
 import {readFileSync, readdirSync, writeFileSync} from 'fs';
 import path from 'path';
-import {execSync} from 'child_process';
+import {executeCommand} from '../../../scripts/shared/utils';
 
 class Icons {
 	static perform(): void {
@@ -66,7 +66,7 @@ class Icons {
 
 	private static prettify(): void {
 		const files = ['src/assets/oblique-icons.ts', 'src/styles/scss/oblique-icons.scss', 'src/lib/icon/icon.model.ts'].join(',');
-		execSync(`prettier "{${files}}" --log-level warn --write`, {stdio: 'inherit'});
+		executeCommand(`prettier "{${files}}" --log-level warn --write`);
 	}
 }
 

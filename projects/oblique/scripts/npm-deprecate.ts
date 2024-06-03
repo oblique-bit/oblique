@@ -8,8 +8,8 @@
 //    reach its end of life. The second one is the major version that has to be deprecate.
 //    ts-node scripts/npm-deprecate.ts 2021-11-02 6
 
-import {execSync} from 'child_process';
 import {exit} from 'process';
+import {executeCommand} from '../../../scripts/shared/utils';
 
 class NpmDeprecate {
 	static perform(date: string, versions: string[]): void {
@@ -39,22 +39,22 @@ class NpmDeprecate {
 	}
 
 	private static login(): void {
-		if (execSync(`npm whoami`).toString().trim() !== 'oblique') {
-			execSync('npm login');
+		if (executeCommand(`npm whoami`) !== 'oblique') {
+			executeCommand('npm login');
 		}
 	}
 
 	private static deprecateMajorVersion(version: string, date: string): void {
-		execSync(`npm deprecate @oblique/oblique@${version}.x "Oblique ${version} has reached its End Of Life on ${date}"`);
+		executeCommand(`npm deprecate @oblique/oblique@${version}.x "Oblique ${version} has reached its End Of Life on ${date}"`, true);
 	}
 
 	private static deprecateExactVersion(version: string, date: string): void {
-		execSync(`npm deprecate @oblique/oblique@${version} "Oblique ${version.split('.')[0]} has been released on ${date}"`);
+		executeCommand(`npm deprecate @oblique/oblique@${version} "Oblique ${version.split('.')[0]} has been released on ${date}"`, true);
 	}
 
 	private static removeNextTag(): void {
-		if (execSync(`npm dist-tag`).toString().includes('next')) {
-			execSync(`npm dist-tag rm @oblique/oblique next`);
+		if (executeCommand(`npm dist-tag`).includes('next')) {
+			executeCommand(`npm dist-tag rm @oblique/oblique next`, true);
 		}
 	}
 }
