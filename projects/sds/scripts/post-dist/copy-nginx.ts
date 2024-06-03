@@ -1,20 +1,16 @@
-import {copyFileSync, mkdirSync} from 'fs';
 import path from 'path';
+import {CopyFiles} from '../../../../scripts/shared/copy-files';
 
 export class CopyNginx {
 	private static readonly source = path.join('src', 'nginx');
-	private static readonly rootDestination = path.join('..', '..', 'dist', 'sds');
-	private static readonly confDestination = path.join(CopyNginx.rootDestination, 'nginx', 'conf', 'includes');
+	private static readonly confDestination = path.join('nginx', 'conf', 'includes');
 
 	static perform(): void {
-		CopyNginx.copyFile('Staticfile', CopyNginx.source, CopyNginx.rootDestination);
-		CopyNginx.copyFile('custom_headers.conf', CopyNginx.source, CopyNginx.confDestination);
-		CopyNginx.copyFile('security_headers.conf', CopyNginx.source, CopyNginx.confDestination);
-	}
-
-	private static copyFile(filename: string, source: string, destination: string): void {
-		mkdirSync(destination, {recursive: true});
-		copyFileSync(path.join(source, filename), path.join(destination, filename));
+		CopyFiles.initialize('sds')
+			.copyFile('Staticfile', CopyNginx.source, 'nginx')
+			.copyFile('custom_headers.conf', CopyNginx.source, CopyNginx.confDestination)
+			.copyFile('security_headers.conf', CopyNginx.source, CopyNginx.confDestination)
+			.finalize();
 	}
 }
 
