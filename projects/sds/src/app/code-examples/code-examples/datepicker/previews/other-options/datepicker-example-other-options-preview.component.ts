@@ -20,6 +20,18 @@ export class DatepickerExampleOtherOptionsPreviewComponent {
 			return new Date((control.value as Date).toDateString()) < new Date(new Date().toDateString()) ? {pastDate: true} : null;
 		}
 	]);
+
+	readonly minErrorControl = new FormControl(new Date(), [
+		function (control: FormControl) {
+			return new Date(control.value as Date) < new Date() ? {pastDate: true} : null;
+		}
+	]);
+
+	readonly maxErrorControl = new FormControl(new Date(), [
+		function (control: FormControl) {
+			return new Date(control.value as Date) > new Date() ? {futureDate: true} : null;
+		}
+	]);
 	lastDateChange: MatDatepickerInputEvent<any>;
 	lastDateInput: MatDatepickerInputEvent<any>;
 	readonly today = new Date();
