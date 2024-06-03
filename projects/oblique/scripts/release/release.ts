@@ -1,13 +1,13 @@
 import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
-import {Changelog} from './changelog';
 import {executeCommand} from '../../../../scripts/shared/utils';
+import {Changelog} from '../../../../scripts/shared/changelog';
 
 class Release {
 	static perform(): void {
 		const {version, issue} = Release.parseBranchName();
 		Release.bumpVersion(version);
-		Changelog.perform(version);
+		Changelog.update(version, 'oblique');
 		Release.updateCopyrightDate();
 		Release.commit(version, issue);
 	}
