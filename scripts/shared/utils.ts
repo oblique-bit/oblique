@@ -25,3 +25,7 @@ export function hasFlag(flag: string): boolean {
 export function camelToKebabCase(key: string): string {
 	return key.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`);
 }
+
+export function buildPath(...pathParts: string[]): string {
+	return path.join(...pathParts.filter(part => !!part));
+}

@@ -1,26 +1,19 @@
 import path from 'path';
-import {PackageJson} from './package-json';
 import {listFiles} from '../../../../../scripts/shared/utils';
-
-type ExportEntries = Record<string, Record<'sass', string>>;
+import {ExportEntries, PackageJson} from '../../../../../scripts/shared/package-json';
 
 export class AdaptPackageJson {
 	private static readonly DIST_PATH = path.join('..', '..', 'dist', 'oblique');
 
 	static perform(): void {
-		const filePath = path.join(AdaptPackageJson.DIST_PATH, 'package.json');
-		const fields = ['version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs'];
-		const distPackage = PackageJson.getData(filePath);
-		const rootPackage = PackageJson.filterIn(path.join('..', '..', 'package.json'), fields);
-		PackageJson.write(filePath, {
-			...distPackage,
-			...rootPackage,
-			exports: {
-				...distPackage.exports,
+		PackageJson.initialize('oblique')
+			.addFieldsFromRoot('version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs')
+			.addExports({
 				...AdaptPackageJson.getExportEntriesForSCSS(),
 				'./assets/images/cover-background.jpg': './assets/images/cover-background.jpg' // used by oblique-components.css
-			}
-		});
+			})
+			.write()
+			.finalize();
 	}
 
 	private static getExportEntriesForSCSS(): ExportEntries {
@@ -28,6 +21,6 @@ export class AdaptPackageJson {
 			.map(filePath => filePath.replace(AdaptPackageJson.DIST_PATH, '.'))
 			.map(filePath => filePath.replace(/\\/g, '/'))
 			.map(filePath => ({importPath: filePath.replace(/_|\.scss/g, ''), filePath}))
-			.reduce<ExportEntries>((exportEntries, file) => ({...exportEntries, [file.importPath]: {sass: file.filePath}}), {});
+			.reduce<ExportEntries>((exportEntries, {importPath, filePath}) => ({...exportEntries, [importPath]: {sass: filePath}}), {});
 	}
 }
