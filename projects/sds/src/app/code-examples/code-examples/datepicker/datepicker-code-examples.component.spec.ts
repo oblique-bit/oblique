@@ -6,6 +6,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {DatepickerExampleDefaultComponent} from './previews/default/datepicker-example-default.component';
 import {MatDatepicker} from '@angular/material/datepicker';
 import {DatepickerExampleOtherOptionsPreviewComponent} from './previews/other-options/datepicker-example-other-options-preview.component';
+import {provideNativeDateAdapter} from '@angular/material/core';
 
 describe(DatepickerCodeExamplesComponent.name, () => {
 	let component: DatepickerCodeExamplesComponent;
@@ -13,7 +14,8 @@ describe(DatepickerCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [DatepickerCodeExamplesComponent, NoopAnimationsModule]
+			imports: [DatepickerCodeExamplesComponent, NoopAnimationsModule],
+			providers: [provideNativeDateAdapter()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(DatepickerCodeExamplesComponent);
