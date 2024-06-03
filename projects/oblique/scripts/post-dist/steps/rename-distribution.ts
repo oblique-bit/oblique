@@ -1,5 +1,7 @@
-import {readFileSync, readdirSync, renameSync, statSync, writeFileSync} from 'fs';
+import {readFileSync, renameSync, writeFileSync} from 'fs';
 import path from 'path';
+import {listFiles} from '../../../../../scripts/shared/utils';
+
 export class RenameDistribution {
 	private static readonly searchValue = 'oblique-oblique';
 	private static readonly replaceValue = 'oblique';
@@ -7,19 +9,9 @@ export class RenameDistribution {
 
 	static perform(): void {
 		// Please note that order is important!
-		const fileList = RenameDistribution.listFiles(RenameDistribution.directory);
+		const fileList = listFiles(RenameDistribution.directory);
 		RenameDistribution.renameInFiles(fileList, RenameDistribution.searchValue, RenameDistribution.replaceValue);
 		RenameDistribution.renameFiles(fileList, RenameDistribution.searchValue, RenameDistribution.replaceValue);
-	}
-
-	private static listFiles(directory: string): string[] {
-		return readdirSync(directory)
-			.map(fileName => path.join(directory, fileName))
-			.reduce(
-				(filePaths, filePath) =>
-					statSync(filePath).isDirectory() ? [...filePaths, ...RenameDistribution.listFiles(filePath)] : [...filePaths, filePath],
-				[]
-			);
 	}
 
 	private static renameFiles(fileList: string[], searchValue: string, replaceValue: string): void {

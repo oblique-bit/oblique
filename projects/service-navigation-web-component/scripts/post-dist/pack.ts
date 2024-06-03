@@ -1,5 +1,6 @@
 import {readFileSync, readdirSync, rmSync, statSync, unlinkSync, writeFileSync} from 'fs';
 import path from 'path';
+import {listFiles} from '../../../../scripts/shared/utils';
 
 export class Pack {
 	private static readonly directory = path.join('..', '..', 'dist', 'service-navigation-web-component');
@@ -20,19 +21,9 @@ export class Pack {
 	}
 
 	private static removeUnwantedFiles(): void {
-		Pack.listFiles(Pack.directory)
+		listFiles(Pack.directory)
 			.filter(filePath => !new RegExp(`${Pack.fileName}|package.json$`).test(filePath))
 			.forEach(filePath => unlinkSync(filePath));
-	}
-
-	private static listFiles(directory: string): string[] {
-		return readdirSync(directory)
-			.map(fileName => path.join(directory, fileName))
-			.reduce(
-				(filePaths, filePath) =>
-					statSync(filePath).isDirectory() ? [...filePaths, ...Pack.listFiles(filePath)] : [...filePaths, filePath],
-				[]
-			);
 	}
 
 	private static removeEmptyDirectories(): void {

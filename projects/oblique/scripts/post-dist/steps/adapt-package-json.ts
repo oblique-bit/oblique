@@ -1,6 +1,6 @@
 import path from 'path';
 import {PackageJson} from './package-json';
-import {readdirSync, statSync} from 'fs';
+import {listFiles} from '../../../../../scripts/shared/utils';
 
 type ExportEntries = Record<string, Record<'sass', string>>;
 
@@ -24,20 +24,10 @@ export class AdaptPackageJson {
 	}
 
 	private static getExportEntriesForSCSS(): ExportEntries {
-		return AdaptPackageJson.listFiles(path.join(AdaptPackageJson.DIST_PATH, 'styles', 'scss'))
+		return listFiles(path.join(AdaptPackageJson.DIST_PATH, 'styles', 'scss'))
 			.map(filePath => filePath.replace(AdaptPackageJson.DIST_PATH, '.'))
 			.map(filePath => filePath.replace(/\\/g, '/'))
 			.map(filePath => ({importPath: filePath.replace(/_|\.scss/g, ''), filePath}))
 			.reduce<ExportEntries>((exportEntries, file) => ({...exportEntries, [file.importPath]: {sass: file.filePath}}), {});
-	}
-
-	private static listFiles(directory: string): string[] {
-		return readdirSync(directory)
-			.map(fileName => path.join(directory, fileName))
-			.reduce(
-				(filePaths, filePath) =>
-					statSync(filePath).isDirectory() ? [...filePaths, ...AdaptPackageJson.listFiles(filePath)] : [...filePaths, filePath],
-				[]
-			);
 	}
 }

@@ -1,5 +1,6 @@
-import {copyFileSync, mkdirSync, readdirSync, statSync} from 'fs';
+import {copyFileSync, mkdirSync} from 'fs';
 import path from 'path';
+import {listFiles} from '../../../../../scripts/shared/utils';
 
 export class CopyDistFiles {
 	private static readonly SOURCE = path.join('..', 'oblique', 'src');
@@ -9,22 +10,12 @@ export class CopyDistFiles {
 		CopyDistFiles.copyRootFiles(['README.md', 'CHANGELOG.md', 'LICENSE']);
 
 		CopyDistFiles.copyObliqueFiles([
-			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'assets')),
-			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'styles')).filter(filePath => !filePath.endsWith('.scss')),
-			...CopyDistFiles.listFiles(path.join(CopyDistFiles.SOURCE, 'styles')).filter(filePath =>
+			...listFiles(path.join(CopyDistFiles.SOURCE, 'assets')),
+			...listFiles(path.join(CopyDistFiles.SOURCE, 'styles')).filter(filePath => !filePath.endsWith('.scss')),
+			...listFiles(path.join(CopyDistFiles.SOURCE, 'styles')).filter(filePath =>
 				/(?:core[\\/](?:_variables|_palette)|mixins[\\/](?:_layout|_shadow|_typography))\.scss$/.test(filePath)
 			)
 		]);
-	}
-
-	private static listFiles(directory: string): string[] {
-		return readdirSync(directory)
-			.map(fileName => path.join(directory, fileName))
-			.reduce(
-				(filePaths, filePath) =>
-					statSync(filePath).isDirectory() ? [...filePaths, ...CopyDistFiles.listFiles(filePath)] : [...filePaths, filePath],
-				[]
-			);
 	}
 
 	private static copyRootFiles(fileList: string[]): void {

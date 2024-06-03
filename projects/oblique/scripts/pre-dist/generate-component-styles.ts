@@ -1,5 +1,6 @@
-import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
+import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
+import {listFiles} from '../../../../scripts/shared/utils';
 
 export class GenerateComponentStyles {
 	static perform(): void {
@@ -11,7 +12,8 @@ export class GenerateComponentStyles {
 	}
 
 	private static generateComponentFile(directoryPath: string): string {
-		return GenerateComponentStyles.listFiles(directoryPath)
+		return listFiles(directoryPath)
+			.filter(filePath => filePath.endsWith('.component.ts'))
 			.map(filePath => ({
 				filePath: GenerateComponentStyles.getDirectoryPath(filePath),
 				content: readFileSync(filePath, 'utf8')
@@ -26,18 +28,6 @@ export class GenerateComponentStyles {
 			.map(styleUrl => `@import "${styleUrl}";`)
 			.concat('')
 			.join('\n');
-	}
-
-	private static listFiles(directory: string): string[] {
-		return readdirSync(directory)
-			.map(fileName => path.join(directory, fileName))
-			.filter(fileName => !fileName.includes('mock'))
-			.reduce<string[]>(
-				(filePaths, filePath) =>
-					statSync(filePath).isDirectory() ? [...filePaths, ...GenerateComponentStyles.listFiles(filePath)] : [...filePaths, filePath],
-				[]
-			)
-			.filter(filePath => filePath.endsWith('.component.ts'));
 	}
 
 	private static getDirectoryPath(filePath: string): string {

@@ -1,7 +1,7 @@
-import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
+import {readFileSync, writeFileSync} from 'fs';
 import {version as currentVersion} from './../../../../package.json';
 import path from 'path';
-import {executeCommand} from '../../../../scripts/shared/utils';
+import {executeCommand, listFiles} from '../../../../scripts/shared/utils';
 
 export class AddBanner {
 	private static readonly directory = path.join('..', '..', 'dist', 'service-navigation-web-component');
@@ -11,20 +11,10 @@ export class AddBanner {
 
 	static perform(): void {
 		const header = AddBanner.prepareHeader(currentVersion);
-		AddBanner.listFiles(AddBanner.directory)
+		listFiles(AddBanner.directory)
 			.filter(filePath => /\.(?:m?js|css)$/.test(filePath))
 			.map(filePath => ({path: filePath, content: readFileSync(filePath).toString()}))
 			.forEach(file => writeFileSync(file.path, `${header}\n${file.content}`));
-	}
-
-	private static listFiles(directory: string): string[] {
-		return readdirSync(directory)
-			.map(fileName => path.join(directory, fileName))
-			.reduce(
-				(filePaths, filePath) =>
-					statSync(filePath).isDirectory() ? [...filePaths, ...AddBanner.listFiles(filePath)] : [...filePaths, filePath],
-				[]
-			);
 	}
 
 	private static prepareHeader(version: string): string {
