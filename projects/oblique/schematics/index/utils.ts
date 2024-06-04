@@ -284,9 +284,12 @@ export function addTsCompilerOption(content: string, option: string): string {
 		return content.replace(new RegExp(`(?<="${option}"\\s*:\\s*)false`), 'true');
 	}
 	if (content.includes('compilerOptions')) {
-		return content.replace(/(?<=compilerOptions.*)\n/, `\n    "${option}": true,\n`);
+		return content.replace(/(?<=compilerOptions"\s*:\s*{)(?<whitespace>\s*)/, `$<whitespace>"${option}": true,$<whitespace>`);
 	}
-	return content.replace('{', `{\n  "compilerOptions": {\n    "${option}": true\n  },`);
+	return content.replace(
+		/(?<={)(?<whitespace>\s*)/,
+		`$<whitespace>"compilerOptions": {$<whitespace>  "${option}": true}$<whitespace>},$<whitespace>`
+	);
 }
 
 export function getPackageJsonPath(tree: Tree, project: string): string {
@@ -362,7 +365,8 @@ export function addInjectionInClass(tree: Tree, filePath: string, token: string,
 export function appendPrivateVoidFunctionToClass(tree: Tree, filePath: string, code: string): void {
 	const fileContent = readFile(tree, filePath);
 	if (!fileContent.includes(code)) {
-		tree.overwrite(filePath, fileContent.replace(/(?=}\s*$)/, `\tprivate ${code}(): void{\t\t\n}\n`));
+		const indent = /class.*?{(?<indent>\s*)/.exec(fileContent)?.groups?.indent ?? '\n';
+		tree.overwrite(filePath, fileContent.replace(/(?=}\s*$)/, `${indent}private ${code}(): void {${indent}}\n`));
 	}
 }
 
@@ -381,7 +385,7 @@ export function addConstructor(tree: Tree, filePath: string): void {
 	if (!fileContent.includes('constructor')) {
 		tree.overwrite(
 			filePath,
-			fileContent.replace(/(?<indent>[^\S\r\n]+)(?<!(?:new|get|set|=)\s*)(?=\w+\()/, `$<indent>constructor() {};\n\n`)
+			fileContent.replace(/(?<indent>\s+)(?<!(?:new|get|set|=)\s*)(?=[\s\w]+\()/, `$<indent>constructor() {}$<indent>`)
 		);
 	}
 }
