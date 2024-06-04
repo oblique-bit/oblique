@@ -10,6 +10,9 @@ import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 @Injectable({
 	providedIn: 'root'
 })
+/**
+ * @deprecated since Oblique 11.3.0. It will be removed with Oblique 12 with no replacement as it won't be needed anymore.
+ */
 export class ObLanguageService {
 	readonly locale$: Observable<string>;
 	private static readonly token = 'oblique_lang';
