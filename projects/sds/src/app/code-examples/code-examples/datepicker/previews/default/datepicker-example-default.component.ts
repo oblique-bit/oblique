@@ -1,4 +1,3 @@
-import {MatNativeDateModule} from '@angular/material/core';
 import {Component} from '@angular/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
@@ -7,8 +6,9 @@ import {ObFormFieldModule} from '@oblique/oblique';
 
 @Component({
 	standalone: true,
-	imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, ObFormFieldModule],
+	imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, ObFormFieldModule],
 	selector: 'app-datepicker-example-default',
-	templateUrl: './datepicker-example-default.component.html'
+	templateUrl: './datepicker-example-default.component.html',
+	providers: []
 })
 export class DatepickerExampleDefaultComponent {}
