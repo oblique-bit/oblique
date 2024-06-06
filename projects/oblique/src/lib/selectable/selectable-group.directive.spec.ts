@@ -9,9 +9,9 @@ import {firstValueFrom} from 'rxjs';
 
 @Component({
 	template: ` <div obSelectableGroup>
-		<div obSelectable value="1"></div>
-		<div obSelectable value="2"></div>
-		<div obSelectable value="3"></div>
+		<div obSelectable [value]="1"></div>
+		<div obSelectable [value]="2"></div>
+		<div obSelectable [value]="3"></div>
 	</div>`
 })
 class TestComponent {}
@@ -464,9 +464,9 @@ describe(ObSelectableGroupDirective.name, () => {
 			fixture = TestBed.overrideComponent(TestComponent, {
 				set: {
 					template: ` <div obSelectableGroup disabled>
-										<div obSelectable value="1"></div>
-										<div obSelectable value="2"></div>
-										<div obSelectable value="3"></div>
+										<div obSelectable [value]="1"></div>
+										<div obSelectable [value]="2"></div>
+										<div obSelectable [value]="3"></div>
 									</div>`
 				}
 			}).createComponent(TestComponent);
