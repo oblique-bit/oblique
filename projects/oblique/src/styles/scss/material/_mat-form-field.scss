@@ -139,7 +139,7 @@
 				padding-right: 28px; // empiric number: icon width + $ob-spacing-xs
 			}
 
-			.mat-mdc-form-field-infix::after {
+			&:not(.mat-mdc-form-field-type-mat-native-select) .mat-mdc-form-field-infix::after {
 				content: "!";
 				position: absolute;
 				right: 0;
@@ -531,5 +531,9 @@
 
 	.mat-mdc-input-element:not([class*="autocomplete"]) ~ .ob-input-clear {
 		margin-top: core-variables.$ob-spacing-xs * 0.75;
+	}
+
+	&.mat-mdc-form-field-type-mat-native-select .mat-mdc-form-field-infix::after {
+		z-index: 1;
 	}
 }
