@@ -1,5 +1,5 @@
 import {ObAutocompleteModule, ObEIcon, ObIAutocompleteInputOption} from '@oblique/oblique';
-import {Component} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import {FormsModule} from '@angular/forms';
 	selector: 'app-autocomplete-example-icon-position-start',
 	templateUrl: './autocomplete-example-icon-position-start.component.html'
 })
-export class AutocompleteExampleIconPositionStartComponent {
+export class AutocompleteExampleIconPositionStartComponent implements AfterViewInit {
 	selectedOption: ObIAutocompleteInputOption;
 
 	optionList: ObIAutocompleteInputOption[] = [
@@ -30,5 +30,17 @@ export class AutocompleteExampleIconPositionStartComponent {
 	];
 	showSelection($event: ObIAutocompleteInputOption): void {
 		this.selectedOption = $event;
+	}
+
+	/* The following code is simply a workaround for https://github.com/angular/components/issues/26428. This is an Angular bug
+	 * that prevents input prefix from being used in a Tab. */
+	show = false; // eslint-disable-line @typescript-eslint/member-ordering
+	private readonly cdf = inject(ChangeDetectorRef); // eslint-disable-line @typescript-eslint/member-ordering
+
+	ngAfterViewInit(): void {
+		setTimeout(() => {
+			this.show = true;
+			this.cdf.markForCheck();
+		}, 100);
 	}
 }
