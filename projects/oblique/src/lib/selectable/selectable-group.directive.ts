@@ -9,15 +9,15 @@ import {ObSelectableDirective} from './selectable.directive';
 	host: {class: 'ob-selectable-group'},
 	standalone: true
 })
-export class ObSelectableGroupDirective implements AfterContentInit {
+export class ObSelectableGroupDirective<T = any> implements AfterContentInit {
 	@HostBinding('attr.disabled') isDisabled = undefined;
 	@HostBinding('attr.role') role = 'group';
 	@HostBinding('class.ob-selectable-group') readonly selectable = true;
-	@Output() readonly selected$ = new EventEmitter<ObSelectableDirective[]>();
+	@Output() readonly selected$ = new EventEmitter<ObSelectableDirective<T>[]>();
 	@Output() readonly mode$ = new EventEmitter<'checkbox' | 'radio' | 'windows'>();
 
 	public readonly disabled$ = new BehaviorSubject<boolean>(false);
-	private readonly selectables: ObSelectableDirective[] = [];
+	private readonly selectables: ObSelectableDirective<T>[] = [];
 	private modeValue: 'checkbox' | 'radio' | 'windows' = 'checkbox';
 	private focused: number;
 	private prevFocused: number;
@@ -65,16 +65,16 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 		this.disabled$.next(state);
 	}
 
-	register(directive: ObSelectableDirective): void {
+	register(directive: ObSelectableDirective<T>): void {
 		this.selectables.push(directive);
 	}
 
-	toggle(directive: ObSelectableDirective, ctrl = false, shift = false): void {
+	toggle(directive: ObSelectableDirective<T>, ctrl = false, shift = false): void {
 		this.modeToggle[this.mode](directive, ctrl, shift);
 		this.updateSelection();
 	}
 
-	focus(directive: ObSelectableDirective): void {
+	focus(directive: ObSelectableDirective<T>): void {
 		this.prevFocused = this.focused;
 		this.focused = this.selectables.findIndex(item => item === directive);
 	}
@@ -93,7 +93,7 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 		}
 	}
 
-	sort(sortFunction: (a: ObSelectableDirective, b: ObSelectableDirective) => number): void {
+	sort(sortFunction: (a: ObSelectableDirective<T>, b: ObSelectableDirective<T>) => number): void {
 		this.selectables.sort(sortFunction);
 	}
 
@@ -172,16 +172,16 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 		}
 	}
 
-	private checkboxSelect(directive: ObSelectableDirective): void {
+	private checkboxSelect(directive: ObSelectableDirective<T>): void {
 		directive.selected = !directive.selected;
 	}
 
-	private radioSelect(directive: ObSelectableDirective): void {
+	private radioSelect(directive: ObSelectableDirective<T>): void {
 		this.selectables.forEach(item => (item.selected = false));
 		directive.selected = true;
 	}
 
-	private windowsSelect(directive: ObSelectableDirective, ctrl = false, shift = false): void {
+	private windowsSelect(directive: ObSelectableDirective<T>, ctrl = false, shift = false): void {
 		if (ctrl) {
 			this.startFocused = undefined;
 			if (this.getSelected().length > 1 || !directive.selected) {
@@ -205,7 +205,7 @@ export class ObSelectableGroupDirective implements AfterContentInit {
 		this.selected$.emit(this.getSelected());
 	}
 
-	private getSelected(): ObSelectableDirective[] {
+	private getSelected(): ObSelectableDirective<T>[] {
 		return this.selectables.filter(item => item.selected);
 	}
 }

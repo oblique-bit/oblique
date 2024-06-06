@@ -10,19 +10,19 @@ import {of} from 'rxjs';
 	exportAs: 'obSelectableGroup',
 	standalone: true
 })
-export class ObMockSelectableGroupDirective {
+export class ObMockSelectableGroupDirective<T = any> {
 	role = 'group';
-	selected$ = of([] as ObSelectableDirective[]);
+	selected$ = of([] as ObSelectableDirective<T>[]);
 	mode$ = of('checkbox');
 	mode = 'checkbox';
 
-	register(directive: ObSelectableDirective): void {}
+	register(directive: ObSelectableDirective<T>): void {}
 
-	toggle(directive: ObSelectableDirective, ctrl = false, shift = false): void {}
+	toggle(directive: ObSelectableDirective<T>, ctrl = false, shift = false): void {}
 
-	focus(directive: ObSelectableDirective): void {}
+	focus(directive: ObSelectableDirective<T>): void {}
 
-	sort(sortFunction: (a: ObSelectableDirective, b: ObSelectableDirective) => number): void {}
+	sort(sortFunction: (a: ObSelectableDirective<T>, b: ObSelectableDirective<T>) => number): void {}
 
 	onArrowDown($event: KeyboardEvent): void {}
 
