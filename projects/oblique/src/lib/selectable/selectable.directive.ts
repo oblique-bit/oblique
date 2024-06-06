@@ -24,7 +24,7 @@ export class ObSelectableDirective<T = any> implements OnInit {
 	) {
 		if (!group) {
 			throw new Error(
-				'The ObSelectableDirectives need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more info'
+				'ObSelectableDirective need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more information'
 			);
 		}
 	}
