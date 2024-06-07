@@ -9,7 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
+import {MatOptionModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -130,7 +130,6 @@ const appRoutes: Routes = [
 		MatInputModule,
 		MatListModule,
 		MatMenuModule,
-		MatNativeDateModule,
 		MatOptionModule,
 		MatProgressBarModule,
 		MatRadioModule,

@@ -44,8 +44,6 @@ export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy 
 	openSubMenu(): void {
 		this.isExpanded = true;
 		this.mainMenu.menuOpened();
-		const header: HTMLElement = this.element.nativeElement.closest('.ob-master-layout-header');
-		header.classList.add('ob-has-opened-menu');
 	}
 
 	closeSubMenu(closeMainMenu = true): void {
@@ -54,8 +52,6 @@ export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy 
 		if (closeMainMenu) {
 			this.masterLayout.isMenuOpened = false;
 		}
-		const header: HTMLElement = this.element.nativeElement.closest('.ob-master-layout-header');
-		header.classList.remove('ob-has-opened-menu');
 	}
 
 	private monitorForClickOutside(): void {

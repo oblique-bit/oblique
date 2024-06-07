@@ -1,3 +1,18 @@
+# [11.2.1](https://github.com/oblique-bit/oblique/compare/11.2.0...11.2.1) (2024-06-07)
+
+## Bug Fixes
+
+- **column-layout:** enhance toggles and panels accessibility ([04a20c5e](https://github.com/oblique-bit/oblique/commit/04a20c5ee781bf2abadd042e780d4608c1f83af1))
+- **master-layout:** make sure main navigation menus are correctly placed ([5e6907ab](https://github.com/oblique-bit/oblique/commit/5e6907ab80b0d6f8fd01484f01aabab7a789b8eb))
+- **master-layout:** toggle backdrop if a menu is opened ([d508b5ad](https://github.com/oblique-bit/oblique/commit/d508b5ad2242183eceb9ef73abafbb4332c634f2))
+- **material:** don't show two outlines in mat-native selects ([688825a1](https://github.com/oblique-bit/oblique/commit/688825a10408c55fce796e9347be08fc49d23f2a))
+- **material:** show caret in mat-native selects ([021c1a86](https://github.com/oblique-bit/oblique/commit/021c1a865acb483411090d96c3dfab74b801af8e))
+- **material:** use Oblique icons for table's sorting arrows ([762ae2e4](https://github.com/oblique-bit/oblique/commit/762ae2e4bfc5a6066a9f9613d88df512126ef883))
+- **schematics:** add SCSS variable interpolation and whitespaces in schematics home template ([15f9b249](https://github.com/oblique-bit/oblique/commit/15f9b2498a557cd67ac148f63e6b0c504a55efcd))
+- **schematics:** make sure the constructor is inserted in the correct place ([e87b0542](https://github.com/oblique-bit/oblique/commit/e87b0542c58e1d89ca3b0daf6793811a64c49477))
+- **schematics:** keep the source file indentation style for generated code ([749a3eef](https://github.com/oblique-bit/oblique/commit/749a3eef0f0788ba73a74fe64ff5b6a3f8af8f26))
+- **service-navigation:** don't issue pamsAppId warning if pams is not configured ([9c278c61](https://github.com/oblique-bit/oblique/commit/9c278c61c9744ec9e9abe88ab3f0f41897250873))
+
 # [11.2.0](https://github.com/oblique-bit/oblique/compare/11.1.3...11.2.0) (2024-05-31)
 
 ## Bug Fixes

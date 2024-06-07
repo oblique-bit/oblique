@@ -1,4 +1,3 @@
-import {MatNativeDateModule} from '@angular/material/core';
 import {ObButtonModule, ObErrorMessagesDirective, ObFocusInvalidDirective, ObFormFieldModule, ObMatErrorDirective} from '@oblique/oblique';
 import {MatSelectModule} from '@angular/material/select';
 import {Component, OnInit, inject} from '@angular/core';
@@ -20,7 +19,6 @@ import {MatButtonModule} from '@angular/material/button';
 		MatDatepickerModule,
 		MatFormFieldModule,
 		MatInputModule,
-		MatNativeDateModule,
 		MatRadioModule,
 		MatCheckboxModule,
 		MatSelectModule,

@@ -26,22 +26,27 @@
 		<input matInput [disabled]="true" [matDatepicker]="disabledDatepicker" />
 		<mat-datepicker-toggle matIconSuffix [for]="disabledDatepicker" />
 		<mat-datepicker #disabledDatepicker />
+		<mat-hint>This date picker is disabled</mat-hint>
 	</mat-form-field>
 </div>
 <div>
 	<mat-form-field>
 		<mat-label>Min</mat-label>
-		<input matInput [min]="today" [matDatepicker]="minDatepicker" />
+		<input matInput [min]="today" [matDatepicker]="minDatepicker" [formControl]="minErrorControl" />
 		<mat-datepicker-toggle matIconSuffix [for]="minDatepicker" />
 		<mat-datepicker #minDatepicker />
+		<mat-hint>"min" input prevent past dates to be selected. To prevent them from being manually set, error control is needed.</mat-hint>
+		<mat-error>The date may not be in the past. Note that no value means January 1, 1970.</mat-error>
 	</mat-form-field>
 </div>
 <div>
 	<mat-form-field>
 		<mat-label>Max</mat-label>
-		<input matInput [max]="today" [matDatepicker]="maxDatepicker" />
+		<input matInput [max]="today" [matDatepicker]="maxDatepicker" [formControl]="maxErrorControl" />
 		<mat-datepicker-toggle matIconSuffix [for]="maxDatepicker" />
 		<mat-datepicker #maxDatepicker />
+		<mat-hint>"max" input prevent future dates to be selected. To prevent them from being manually set, error control is needed.</mat-hint>
+		<mat-error>The date may not be in the future</mat-error>
 	</mat-form-field>
 </div>
 <div>
@@ -50,6 +55,7 @@
 		<input matInput [value]="august1st1891" [matDatepicker]="valueDatepicker" />
 		<mat-datepicker-toggle matIconSuffix [for]="valueDatepicker" />
 		<mat-datepicker #valueDatepicker />
+		<mat-hint>A date picker with an initial date</mat-hint>
 	</mat-form-field>
 </div>
 <div>
@@ -59,6 +65,7 @@
 		<mat-datepicker-toggle matIconSuffix [for]="dateChangeDatepicker" />
 		<mat-datepicker #dateChangeDatepicker />
 		<mat-hint *ngIf="lastDateChange">Last date change: {{ lastDateChange.value | date }}</mat-hint>
+		<mat-hint *ngIf="!lastDateChange">This date picker reacts to the "change" event</mat-hint>
 	</mat-form-field>
 </div>
 <div>
@@ -68,5 +75,6 @@
 		<mat-datepicker-toggle matIconSuffix [for]="inputChangeDatepicker" />
 		<mat-datepicker #inputChangeDatepicker />
 		<mat-hint *ngIf="lastDateInput">Last date input: {{ lastDateInput.value | date }}</mat-hint>
+		<mat-hint *ngIf="!lastDateInput">This date picker reacts to the "input" event</mat-hint>
 	</mat-form-field>
 </div>
