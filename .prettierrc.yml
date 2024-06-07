@@ -11,3 +11,6 @@ overrides:
       semi: true
       singleQuote: false
       bracketSpacing: false
+  - files: "*.html"
+    options:
+      trailingComma: none
