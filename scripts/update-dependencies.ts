@@ -1,6 +1,6 @@
-import {execSync} from 'child_process';
 import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
+import {executeCommand} from './shared/utils';
 
 class UpdateDependencies {
 	private static readonly packageJsonPath = path.join('projects', 'oblique', 'package.json');
@@ -30,12 +30,12 @@ class UpdateDependencies {
 	}
 
 	private static execute(command: string): void {
-		execSync(`${command} --fund false`, {stdio: 'inherit'});
+		executeCommand(`${command} --fund false`, true);
 	}
 
 	private static commit(): void {
-		const issueNumber = (/OUI-\d+/.exec(execSync('git branch --show-current').toString()) ?? [])[0];
-		execSync(`git commit -am "chore(toolchain): update dependencies and refactor accordingly" -m "${issueNumber}"`);
+		const issueNumber = (/OUI-\d+/.exec(executeCommand('git branch --show-current')) ?? [])[0];
+		executeCommand(`git commit -am "chore(toolchain): update dependencies and refactor accordingly" -m "${issueNumber}"`);
 	}
 }
 

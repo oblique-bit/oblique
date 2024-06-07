@@ -1,5 +1,7 @@
 import {readFileSync, writeFileSync} from 'fs';
-import {execSync} from 'child_process';
+import {executeCommand} from './utils';
+
+type CommitType = 'fix' | 'feat';
 
 interface Commits {
 	fix: string[];
@@ -8,7 +10,7 @@ interface Commits {
 }
 
 interface Commit {
-	type: string;
+	type: CommitType;
 	scope: string;
 	subject: string;
 	breakingChanges: string;
@@ -16,30 +18,36 @@ interface Commit {
 }
 
 export class Changelog {
-	static perform(nextVersion: string): void {
+	constructor() {
+		throw new Error('"Changelog" may not be instantiated.');
+	}
+
+	static update(nextVersion: string, projectName: string): void {
 		const previousVersion = Changelog.getPreviousVersion();
-		Changelog.writeChangelog(Changelog.getCommits(previousVersion), previousVersion, nextVersion);
+		Changelog.writeChangelog(Changelog.getCommits(previousVersion, projectName), previousVersion, nextVersion);
 	}
 
 	private static getPreviousVersion(): string {
-		return execSync('git describe --tags --abbrev=0').toString().trim();
+		return executeCommand('git describe --tags --abbrev=0');
 	}
 
-	private static getCommits(previousVersion: string): Commits {
+	private static getCommits(previousVersion: string, projectName: string): Commits {
 		const separator = ';;';
 		const commitSeparator = '##';
-		return execSync(`git log --pretty=format:"%s${separator}%b${separator}%H${commitSeparator}" ${previousVersion}..HEAD`)
-			.toString()
+		return executeCommand(`git log --pretty=format:"%s${separator}%b${separator}%H${commitSeparator}" ${previousVersion}..HEAD`)
 			.replace(/\n/g, '')
 			.split(commitSeparator)
-			.filter(commit => /^(?:fix|feat)\(oblique(?!\/toolchain)/.test(commit))
-			.map(commit => commit.replace('oblique/', ''))
+			.filter(commit => new RegExp(`^(?:fix|feat)\\(${projectName}(?!/toolchain)`).test(commit))
+			.map(commit => commit.replace(`${projectName}/`, ''))
 			.map(commit => Changelog.formatCommit(commit, separator))
 			.sort((first, second) => first.scope.localeCompare(second.scope))
 			.reduce<Commits>(Changelog.groupCommitsByType, {fix: [], feat: [], breakingChanges: []});
 	}
 
-	private static formatCommit(commit: string, separator: string): {text: string; type: string; scope: string; breakingChanges: string[]} {
+	private static formatCommit(
+		commit: string,
+		separator: string
+	): {text: string; type: CommitType; scope: string; breakingChanges: string[]} {
 		const {type, scope, subject, breakingChanges, hash} = Changelog.parseCommit(commit, separator);
 		return {
 			text: `- **${scope}:** ${subject} ([${hash.substring(0, 8)}](https://github.com/oblique-bit/oblique/commit/${hash}))`,
@@ -53,7 +61,7 @@ export class Changelog {
 		const {type, scope, subject, breakingChanges, hash} = new RegExp(
 			`(?<type>\\w+)\\((?<scope>[\\w-]+)\\): (?<subject>[^${separator}]*)${separator}.*?(?:BREAKING CHANGE:(?<breakingChanges>[^${separator}]*))?${separator}(?<hash>\\w*)`
 		).exec(commit).groups;
-		return {type, scope, subject, breakingChanges, hash};
+		return {type, scope, subject, breakingChanges, hash} as Commit;
 	}
 
 	private static parseBreakingChanges(breakingChanges: string, scope: string): string[] {
@@ -65,7 +73,7 @@ export class Changelog {
 			: [];
 	}
 
-	private static groupCommitsByType(changes: Commits, commit: {text: string; type: string; breakingChanges: string[]}): Commits {
+	private static groupCommitsByType(changes: Commits, commit: {text: string; type: CommitType; breakingChanges: string[]}): Commits {
 		return {
 			...changes,
 			[commit.type]: [...changes[commit.type], commit.text],

@@ -7,7 +7,7 @@
     "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test sds",
     "test-ci": "cd ../.. && ng run sds:test:ci",
-    "build": "ng build && ts-node scripts/post-dist/copy-nginx.ts",
+    "build": "ng build && ts-node scripts/post-dist.ts",
     "add-code-example": "npm run schematics-build && cd ../../ && schematics ./projects/sds/schematics/collection:add-code-example --dry-run=false",
     "add-preview": "npm run schematics-build  && cd ../../ && schematics ./projects/sds/schematics/collection:add-preview --dry-run=false",
     "schematics-build": "npm run build --prefix schematics",
