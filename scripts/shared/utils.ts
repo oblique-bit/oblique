@@ -1,5 +1,5 @@
 import {execSync} from 'child_process';
-import {readdirSync, statSync} from 'fs';
+import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
 import path from 'path';
 
 export function executeCommand(command: string, showCommand = false): string {
@@ -28,4 +28,10 @@ export function camelToKebabCase(key: string): string {
 
 export function buildPath(...pathParts: string[]): string {
 	return path.join(...pathParts.filter(part => !!part));
+}
+
+export function updatePackageJsonVersion(version: string): void {
+	const fileContent = JSON.parse(readFileSync('package.json').toString()) as Record<'version', string>;
+	fileContent.version = version;
+	writeFileSync('package.json', JSON.stringify(fileContent, null, 2));
 }

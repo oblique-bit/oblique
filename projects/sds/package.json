@@ -11,7 +11,7 @@
     "add-code-example": "npm run schematics-build && cd ../../ && schematics ./projects/sds/schematics/collection:add-code-example --dry-run=false",
     "add-preview": "npm run schematics-build  && cd ../../ && schematics ./projects/sds/schematics/collection:add-preview --dry-run=false",
     "schematics-build": "npm run build --prefix schematics",
-    "post-oblique-release": "ts-node scripts/oblique-version.ts"
+    "release": "ts-node scripts/release.ts"
   },
   "dependencies": {
     "highlight.js": "^11.9.0",

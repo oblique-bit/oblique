@@ -31,7 +31,7 @@
     "hook-commit-msg": "ts-node scripts/husky/hook.commit-rules.ts",
     "hook-post-checkout": "ts-node scripts/husky/dependency-update.ts",
     "prepare": "husky install",
-    "postversion": "npm run post-oblique-release -w projects/sds"
+    "release": "ts-node scripts/release.ts"
   },
   "engines": {
     "node": ">=18.13.0"

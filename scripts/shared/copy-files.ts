@@ -38,6 +38,13 @@ export class CopyFiles {
 		return CopyFiles.instance;
 	}
 
+	copyProjectRootFiles(...fileList: string[]): CopyFiles {
+		fileList.forEach(fileName => {
+			copyFileSync(fileName, path.join(this.distFolder, fileName));
+		});
+		return CopyFiles.instance;
+	}
+
 	copyFile(fileName: string, source: string, destination: string): CopyFiles {
 		const destinationFolder = path.join(this.distFolder, destination);
 		mkdirSync(destinationFolder, {recursive: true});

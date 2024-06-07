@@ -18,7 +18,7 @@ class PostDist {
 
 	private static copyDistFiles(): void {
 		CopyFiles.initialize('oblique')
-			.copyRootFiles('README.md', 'CHANGELOG.md', 'LICENSE')
+			.copyRootFiles('README.md', 'LICENSE')
 			.copyProjectFiles(
 				'src',
 				...listFiles(path.join('src', 'assets')),
@@ -27,6 +27,7 @@ class PostDist {
 					/(?:core[\\/](?:_variables|_palette)|mixins[\\/](?:_layout|_shadow|_typography))\.scss$/.test(filePath)
 				)
 			)
+			.copyProjectRootFiles('CHANGELOG.md')
 			.finalize();
 	}
 
