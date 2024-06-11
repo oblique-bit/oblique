@@ -6,6 +6,8 @@ import {WINDOW} from '../utilities';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
 import {ObMockSelectableDirective} from './_mocks/mock-selectable.directive';
 import {firstValueFrom} from 'rxjs';
+import {FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
+import {ObSelectableDirective} from '@oblique/oblique';
 
 @Component({
 	template: `<div obSelectableGroup>
@@ -14,7 +16,9 @@ import {firstValueFrom} from 'rxjs';
 		<div obSelectable [value]="3"></div>
 	</div>`
 })
-class TestComponent {}
+class TestComponent {
+	selectableGroup = new FormControl([1]);
+}
 
 describe(ObSelectableGroupDirective.name, () => {
 	let directive: ObSelectableGroupDirective<number>;
@@ -25,7 +29,7 @@ describe(ObSelectableGroupDirective.name, () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			imports: [ObSelectableGroupDirective, ObMockSelectableDirective],
+			imports: [ObSelectableGroupDirective, ObMockSelectableDirective, ReactiveFormsModule],
 			providers: [{provide: WINDOW, useValue: window}],
 			declarations: [TestComponent]
 		});
@@ -46,8 +50,11 @@ describe(ObSelectableGroupDirective.name, () => {
 			items.forEach(item => directive.register(item));
 		});
 
-		it('should create an instance', () => {
+		it('should create a component instance', () => {
 			expect(component).toBeTruthy();
+		});
+
+		it('should create a directive instance', () => {
 			expect(directive).toBeTruthy();
 		});
 
@@ -65,6 +72,23 @@ describe(ObSelectableGroupDirective.name, () => {
 
 		it('should have a disabled$ property', () => {
 			expect(directive.disabled$).toBeDefined();
+		});
+
+		it('should have a registerOnChange method', () => {
+			expect(directive.registerOnChange).toBeDefined();
+		});
+
+		it('should have a registerOnTouched method', () => {
+			expect(directive.registerOnTouched).toBeDefined();
+		});
+
+		it('should have a setDisabledState method', () => {
+			expect(directive.setDisabledState).toBeDefined();
+		});
+
+		it('should have a ControlValueAccessor', () => {
+			const valueAccessor = element.injector.get(NG_VALUE_ACCESSOR);
+			expect(valueAccessor).toBeTruthy();
 		});
 
 		describe('register function', () => {
@@ -510,6 +534,52 @@ describe(ObSelectableGroupDirective.name, () => {
 		describe('disabled property', () => {
 			it('should initially be set to true', () => {
 				expect(directive.disabled).toBe(true);
+			});
+		});
+	});
+
+	describe('with a reactive form', () => {
+		const selectableDirectives = [{value: 1} as ObSelectableDirective<number>, {value: 2} as ObSelectableDirective<number>];
+		beforeEach(() => {
+			fixture = TestBed.overrideComponent(TestComponent, {
+				set: {
+					template: `<div obSelectableGroup [formControl]="selectableGroup">
+										<div obSelectable [value]="1"></div>
+										<div obSelectable [value]="2"></div>
+									</div>`
+				}
+			}).createComponent(TestComponent);
+			component = fixture.debugElement.query(By.directive(ObSelectableGroupDirective)).componentInstance;
+			fixture.detectChanges();
+			element = fixture.debugElement.query(By.directive(ObSelectableGroupDirective));
+			directive = element.injector.get(ObSelectableGroupDirective);
+			selectableDirectives.forEach(selectableDirective => directive.register(selectableDirective));
+			// reset state before each test case
+			selectableDirectives.forEach(selectableDirective => (selectableDirective.selected = false));
+		});
+
+		describe('writeValue function', () => {
+			it('should select the corresponding element', done => {
+				directive.writeValue([2]);
+				directive.selected$.subscribe(value => {
+					expect(value).toEqual([{selected: true, value: 2}]);
+					done();
+				});
+			});
+
+			it('should unselect everything when undefined', done => {
+				directive.writeValue(undefined);
+				directive.selected$.subscribe(value => {
+					expect(value).toEqual([]);
+					done();
+				});
+			});
+		});
+
+		describe('toggle function', () => {
+			it('should update the form', () => {
+				directive.toggle(selectableDirectives[1]);
+				expect(component.selectableGroup.value).toEqual([2]);
 			});
 		});
 	});

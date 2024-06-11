@@ -1,5 +1,6 @@
-import {AfterContentInit, Directive, EventEmitter, HostBinding, HostListener, Input, Output, booleanAttribute, inject} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
+import {AfterContentInit, Directive, EventEmitter, HostBinding, HostListener, Input, Output, booleanAttribute, inject} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {WINDOW} from './../utilities';
 import {ObSelectableDirective} from './selectable.directive';
 
@@ -7,9 +8,16 @@ import {ObSelectableDirective} from './selectable.directive';
 	selector: '[obSelectableGroup]',
 	exportAs: 'obSelectableGroup',
 	host: {class: 'ob-selectable-group'},
-	standalone: true
+	standalone: true,
+	providers: [
+		{
+			provide: NG_VALUE_ACCESSOR,
+			useExisting: ObSelectableGroupDirective,
+			multi: true
+		}
+	]
 })
-export class ObSelectableGroupDirective<T = any> implements AfterContentInit {
+export class ObSelectableGroupDirective<T = any> implements AfterContentInit, ControlValueAccessor {
 	@HostBinding('attr.disabled') isDisabled = undefined;
 	@HostBinding('attr.role') role = 'group';
 	@HostBinding('class.ob-selectable-group') readonly selectable = true;
@@ -22,6 +30,7 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit {
 	private focused: number;
 	private prevFocused: number;
 	private startFocused: number;
+	private initialSelection: T[] = [];
 	private readonly window: Window = inject(WINDOW);
 	private readonly modeToggle = {
 		checkbox: this.checkboxSelect.bind(this),
@@ -65,13 +74,37 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit {
 		this.disabled$.next(state);
 	}
 
+	registerOnChange(fn: (value: T[]) => void): void {
+		this.onChange = fn;
+	}
+
+	registerOnTouched(fn: () => void): void {
+		this.onTouched = fn;
+	}
+
+	writeValue(selection: T[]): void {
+		this.initialSelection = selection ?? []; // because the first call to writeValue happens before register
+		this.selectables.forEach(selectable => {
+			selectable.selected = selection?.includes(selectable.value);
+		});
+	}
+
+	setDisabledState(isDisabled: boolean): void {
+		this.isDisabled = isDisabled;
+	}
+
 	register(directive: ObSelectableDirective<T>): void {
 		this.selectables.push(directive);
+		// because writeValue have already been called once
+		if (this.initialSelection.includes(directive.value)) {
+			directive.selected = true;
+		}
 	}
 
 	toggle(directive: ObSelectableDirective<T>, ctrl = false, shift = false): void {
 		this.modeToggle[this.mode](directive, ctrl, shift);
 		this.updateSelection();
+		this.onTouched();
 	}
 
 	focus(directive: ObSelectableDirective<T>): void {
@@ -202,10 +235,15 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit {
 	}
 
 	private updateSelection(): void {
-		this.selected$.emit(this.getSelected());
+		const selection = this.getSelected();
+		this.selected$.emit(selection);
+		this.onChange(selection.map(item => item.value));
 	}
 
 	private getSelected(): ObSelectableDirective<T>[] {
 		return this.selectables.filter(item => item.selected);
 	}
+
+	private onChange: (value: T[]) => void = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
+	private onTouched: () => void = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 }
