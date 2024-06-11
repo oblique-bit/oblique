@@ -7,6 +7,7 @@ import {SelectableExampleCheckboxPreviewComponent} from '../selectable/previews/
 import {SelectableExampleRadioPreviewComponent} from '../selectable/previews/radio/selectable-example-radio-preview.component';
 import {SelectableExampleWindowsPreviewComponent} from '../selectable/previews/windows/selectable-example-windows-preview.component';
 import {SelectableExampleDisabledPreviewComponent} from './previews/disabled/selectable-example-disabled-preview.component';
+import {SelectableExampleInAFormPreviewComponent} from './previews/in-a-form/selectable-example-in-a-form-preview.component';
 
 @Component({
 	selector: 'app-code-example-selectable',
@@ -55,6 +56,16 @@ export class SelectableCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('selectable', 'disabled/selectable-example-disabled-preview.component.html', 'HTML'),
 				this.getSnippet('selectable', 'disabled/selectable-example-disabled-preview.component.ts', 'TS'),
+				this.getSnippet('selectable', 'selectable-example-preview.component.scss', 'SCSS')
+			]
+		},
+		{
+			component: SelectableExampleInAFormPreviewComponent,
+			idParts: ['in-a-form'],
+			title: 'In a form',
+			snippets: [
+				this.getSnippet('selectable', 'in-a-form/selectable-example-in-a-form-preview.component.html', 'HTML'),
+				this.getSnippet('selectable', 'in-a-form/selectable-example-in-a-form-preview.component.ts', 'TS'),
 				this.getSnippet('selectable', 'selectable-example-preview.component.scss', 'SCSS')
 			]
 		}
