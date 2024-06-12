@@ -13,7 +13,7 @@
 		(focus)="toggleFocus(child.id)"
 		(focusout)="toggleFocus(child.id)"
 	>
-		<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon" /></span>
+		<span class="ob-icon-wrapper" *ngIf="child.icon"><mat-icon [svgIcon]="child.icon" /></span>
 		<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
 	</a>
 	<ng-template #internalLink>
@@ -32,7 +32,7 @@
 			(focus)="toggleFocus(child.id)"
 			(focusout)="toggleFocus(child.id)"
 		>
-			<span class="ob-icon-wrapper"><mat-icon *ngIf="child.icon" [svgIcon]="child.icon" /></span>
+			<span class="ob-icon-wrapper" *ngIf="child.icon"><mat-icon [svgIcon]="child.icon" /></span>
 			<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
 		</a>
 	</ng-template>
