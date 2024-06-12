@@ -1,4 +1,13 @@
 'use strict';
 
 module.exports = require('./jest.config');
-module.exports.testResultsProcessor = 'jest-sonar-reporter';
+module.exports.reporters = [
+	'default',
+	[
+		'jest-sonar',
+		{
+			outputDirectory: '<rootDir>/coverage/oblique',
+			outputName: 'sqr.xml'
+		}
+	]
+];
