@@ -169,12 +169,11 @@ class HookCommitRules {
 	}
 
 	private static extractList(contributing: string, type: string): string[] {
-		const listStartIndex: number = contributing.indexOf(`# ${type}`);
-		const listBlock: string = contributing.substring(
-			contributing.indexOf('- **', listStartIndex),
-			contributing.indexOf('#', listStartIndex + 1)
-		);
-		return listBlock.match(/\*\*.*\*\*/g).map(item => item.replace(/\*\*/g, ''));
+		return new RegExp(`(?<=# <a name="${type.toLowerCase()}"><\\/a> ${type}.*)(?<block>- .*?^$)`, 'sm')
+			.exec(contributing)
+			.groups.block.split('\n')
+			.filter(line => !!line)
+			.map(line => /(?<=\*\*)(?<item>[a-z-]+)(?=\*\*)/.exec(line).groups.item);
 	}
 
 	private static join(list: string[]): string {
