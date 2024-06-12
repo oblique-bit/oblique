@@ -14,7 +14,8 @@ nodejsPipelineTemplate {
 			'build': 'npm run build -ws',
 			'sonar': [
 				'./projects/oblique',
-				'./projects/sandbox'
+				'./projects/sandbox',
+				'./projects/sds'
 			]
 		],
 		'release/major_*': [

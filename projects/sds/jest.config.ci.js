@@ -1,4 +1,13 @@
 'use strict';
 
 module.exports = require('./jest.config');
-module.exports.collectCoverage = false;
+module.exports.reporters = [
+	'default',
+	[
+		'jest-sonar',
+		{
+			outputDirectory: '<rootDir>/coverage/sds',
+			outputName: 'sqr.xml'
+		}
+	]
+];
