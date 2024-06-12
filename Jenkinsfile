@@ -1,4 +1,4 @@
-@Library('jeap-pipelinelibrary@feature/oblique7') _
+@Library('jeap-pipelinelibrary@feature/oblique8') _
 nodejsPipelineTemplate {
 	nodeJsVersion = 20
 	npmRepository = [
@@ -12,7 +12,9 @@ nodejsPipelineTemplate {
 			'lint': 'npm run lint',
 			'test': 'npm run test-ci -ws',
 			'build': 'npm run build -ws',
-			sonar: true
+			'sonar': [
+				'./projects/oblique'
+			]
 		],
 		'release/major_*': [
 			'cloudFoundry': [
