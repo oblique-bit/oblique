@@ -13,7 +13,8 @@ nodejsPipelineTemplate {
 			'test': 'npm run test-ci -ws',
 			'build': 'npm run build -ws',
 			'sonar': [
-				'./projects/oblique'
+				'./projects/oblique',
+				'./projects/sandbox'
 			]
 		],
 		'release/major_*': [
