@@ -2,10 +2,14 @@ import {execSync} from 'child_process';
 import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
 import path from 'path';
 
-export function executeCommand(command: string, showCommand = false): string {
-	if (showCommand) {
+export function executeCommand(command: string, showCommandResult = false): void {
+	if (showCommandResult) {
 		console.info(command);
 	}
+	execSync(command, showCommandResult ? {stdio: 'inherit'} : undefined);
+}
+
+export function getResultFromCommand(command: string): string {
 	return execSync(command).toString().trim();
 }
 
