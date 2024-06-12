@@ -15,7 +15,8 @@ nodejsPipelineTemplate {
 			'sonar': [
 				'./projects/oblique',
 				'./projects/sandbox',
-				'./projects/sds'
+				'./projects/sds',
+				'./projects/service-navigation-web-component'
 			]
 		],
 		'release/major_*': [
