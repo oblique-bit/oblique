@@ -18,6 +18,12 @@
 		justify-content: flex-start;
 		padding: 0.5rem 0;
 		align-items: center;
+
+		@include layout.ob-media-breakpoint-down(sm) {
+			flex-direction: column;
+			row-gap: variables.$ob-spacing-default;
+			align-items: flex-start;
+		}
 	}
 
 	.ob-footer-item {
