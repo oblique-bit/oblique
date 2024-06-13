@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
@@ -49,14 +49,10 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 
 	private readonly accordions$: BehaviorSubject<Accordion[]> = new BehaviorSubject<Accordion[]>([]);
 	private readonly subscriptions: Subscription[] = [];
-
-	// eslint-disable-next-line max-params
-	constructor(
-		private readonly activatedRoute: ActivatedRoute,
-		private readonly cmsDataService: CmsDataService,
-		private readonly router: Router,
-		private readonly slugToIdService: SlugToIdService
-	) {}
+	private readonly activatedRoute = inject(ActivatedRoute);
+	private readonly cmsDataService = inject(CmsDataService);
+	private readonly router = inject(Router);
+	private readonly slugToIdService = inject(SlugToIdService);
 
 	ngOnInit(): void {
 		this.prepareAccordions();
