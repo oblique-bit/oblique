@@ -56,10 +56,9 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 	search = new FormControl('');
 
 	filteredAccordions$: Observable<Accordion[]>;
-	searchText$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 	selectedSlug$: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
 	version$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
-	urlParamVersion$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
+	urlParamVersion$: Observable<number | undefined>;
 
 	private readonly subscriptions: Subscription[] = [];
 	private readonly activatedRoute = inject(ActivatedRoute);
@@ -68,6 +67,7 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 	private readonly slugToIdService = inject(SlugToIdService);
 
 	constructor() {
+		this.urlParamVersion$ = this.prepareUrlParams();
 		this.filteredAccordions$ = this.prepareAccordions();
 	}
 
@@ -84,17 +84,6 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 				)
 				.subscribe(selectedSlug => {
 					this.selectedSlug$.next(selectedSlug);
-				}),
-			this.search.valueChanges.pipe(debounceTime(300)).subscribe(searchText => {
-				this.searchText$.next(searchText ?? '');
-			}),
-			this.router.events
-				.pipe(
-					filter(event => event instanceof NavigationEnd),
-					map(() => this.activatedRoute)
-				)
-				.subscribe(activatedRoute => {
-					this.urlParamVersion$.next(this.getVersionFromUrlParam(activatedRoute));
 				})
 		);
 	}
@@ -115,11 +104,27 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 		}).pipe(
 			map(value => AccordionComposer.composeAccordions(value)),
 			tap(accordions => this.setUpSlugToIdServiceDataSet(accordions)),
-			combineLatestWith(this.searchText$, this.version$, this.urlParamVersion$),
+			combineLatestWith(this.prepareSearchText(), this.version$, this.urlParamVersion$),
 			map(([accordions, searchText, versionId, urlParamVersion]) =>
 				this.getAccordionsMatchingSearchTextAndVersion(accordions, searchText, versionId, urlParamVersion)
 			),
 			startWith([])
+		);
+	}
+
+	private prepareSearchText(): Observable<string> {
+		return this.search.valueChanges.pipe(
+			debounceTime(300),
+			map(searchText => searchText ?? ''),
+			startWith('')
+		);
+	}
+
+	private prepareUrlParams(): Observable<number> {
+		return this.router.events.pipe(
+			filter(event => event instanceof NavigationEnd),
+			map(() => this.activatedRoute),
+			map(activatedRoute => this.getVersionFromUrlParam(activatedRoute))
 		);
 	}
 
