@@ -8,7 +8,6 @@ import {CmsDataService} from '../cms/cms-data.service';
 import {BehaviorSubject, Observable, Subscription, combineLatestWith, debounceTime, filter, forkJoin, map, of, switchMap, take} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
-import {Logo} from './side-navigation.model';
 import {Accordion, Link} from './accordion-links/accordion-links.model';
 import {AccordionComposer} from './utils/accordion-composer';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -39,13 +38,6 @@ import {ImageComponent} from './image/image.component';
 })
 export class SideNavigationComponent implements OnInit, OnDestroy {
 	readonly componentId = 'side-navigation';
-
-	readonly logo: Logo = {
-		alt: 'Swiss Confederation Logo',
-		height: 64,
-		width: 259,
-		ngSrc: '../assets/images/SwissConfederationLogo.svg'
-	};
 
 	search = new FormControl('');
 
