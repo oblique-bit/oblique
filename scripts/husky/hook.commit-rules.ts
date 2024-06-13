@@ -1,7 +1,10 @@
 import {readFileSync} from 'fs';
+import {executeCommand} from '../shared/utils';
+import path from 'path';
 
 interface Header {
 	type: string;
+	pkg: string;
 	scope: string;
 	subject: string;
 }
@@ -45,26 +48,23 @@ class HookCommitRules {
 
 	private static checkHeader(header: string): void {
 		HookCommitRules.checkHeaderFormat(header);
-		const {type, scope, subject} = HookCommitRules.extractHeaderParts(header);
+		const {type, pkg, scope, subject} = HookCommitRules.extractHeaderParts(header);
 		const contributing: string = readFileSync('CONTRIBUTING.md', 'utf8').toString();
 		HookCommitRules.checkType(type, HookCommitRules.extractList(contributing, 'Type'));
-		HookCommitRules.checkScope(
-			scope,
-			HookCommitRules.extractList(contributing, 'Scope prefixes'),
-			HookCommitRules.getScopeLists(contributing)
-		);
+		HookCommitRules.checkPackage(pkg, HookCommitRules.extractList(contributing, 'Package'));
+		HookCommitRules.checkScope(scope, pkg);
 		HookCommitRules.checkSubject(subject);
 	}
 
 	private static checkHeaderFormat(header: string): void {
-		if (!/^[a-z-]+(?:\([a-z-/]+\))?:\s.+$/.test(header)) {
-			throw new Error(`1st line doesn't match the "type(scope): subject" format`);
+		if (!/^[a-z-]+(?:\([a-z-/]+(?:\/[a-z-]+)?\))?:\s.+$/.test(header)) {
+			throw new Error(`1st line matches neither the "type(package/scope): subject" nor the "type(package): subject" formats`);
 		}
 	}
 
 	private static extractHeaderParts(header: string): Header {
 		// "as unknown as Header" is necessary because Typescript can't infer the type directly from the regex
-		return /^(?<type>[a-z-]+)(?:\((?<scope>[a-z-/]+)\))?:\s(?<subject>.+)$/.exec(header)?.groups as unknown as Header;
+		return /^(?<type>[a-z-]+)\((?<pkg>[a-z-]+)(?:\/(?<scope>[a-z-]+))?\)?:\s(?<subject>.+)$/.exec(header)?.groups as unknown as Header;
 	}
 
 	private static checkType(type: string, types: string[]): void {
@@ -73,62 +73,35 @@ class HookCommitRules {
 		}
 	}
 
-	private static getScopeLists(contributing: string): Record<string, string[]> {
-		return contributing
-			.match(/(?<=# )\w+(?= scopes)/g)
-			.map(scope => ({
-				[scope.toLowerCase()]: HookCommitRules.extractList(contributing, `${scope} scopes`)
-			}))
-			.reduce((array, current) => ({...array, ...current}), {});
-	}
+	private static checkPackage(pkg: string, packages: string[]): void {
+		if (!packages.includes(pkg)) {
+			throw new Error(`1st line has an invalid type '${pkg}'. Allowed packages are: ${HookCommitRules.join(packages)}`);
+		}
 
-	private static checkScope(fullScope: string, prefixes: string[], scopes: Record<string, string[]>): void {
-		HookCommitRules.checkFullScopeValidity(fullScope);
-
-		if (fullScope?.includes('/')) {
-			const [prefix, scope] = fullScope.split('/');
-			HookCommitRules.checkTwoPartedScope(prefix, scope, prefixes, scopes);
-		} else {
-			HookCommitRules.checkOnePartedScope(fullScope, prefixes, scopes);
+		const filePaths = executeCommand('git diff --cached --name-only')
+			.split('\n')
+			.filter(filePath => !new RegExp(`projects/${HookCommitRules.getFolderName(pkg)}/.*`).test(filePath));
+		if (filePaths.length && pkg !== 'toolchain') {
+			throw new Error(
+				`1st line has an invalid package '${pkg}' that some commited files aren't compatible with: ${HookCommitRules.join(filePaths)}`
+			);
 		}
 	}
 
-	private static checkOnePartedScope(scope: string, prefixes: string[], scopes: Record<string, string[]>): void {
-		const prefixLessScopes: string[] = scopes.additional;
-		const allowed: string[] = prefixes.concat(prefixLessScopes);
-
-		if (!allowed.includes(scope)) {
-			throw new Error(`1st line has an invalid scope '${scope}'. Allowed one-part scopes are: ${HookCommitRules.join(allowed)}`);
+	private static checkScope(scope: string, pkg: string): void {
+		if (pkg === 'toolchain' && scope) {
+			throw new Error(`1st line has an invalid scope '${scope}'. No scope are allowed with 'toolchain' package`);
 		}
-	}
 
-	private static checkTwoPartedScope(prefix: string, scope: string, prefixes: string[], scopes: Record<string, string[]>): void {
-		HookCommitRules.checkScopePrefixValidity(prefix, prefixes);
-		HookCommitRules.checkScopeValidity(scope, Object.values(scopes).flat());
-		HookCommitRules.checkScopeAndPrefixCompatibility(scope, prefix, scopes);
-	}
+		if (scope) {
+			const contributing: string = readFileSync(path.join('projects', pkg, 'CONTRIBUTING.md'), 'utf8').toString();
+			const scopes = HookCommitRules.extractList(contributing, 'Scope');
 
-	private static checkFullScopeValidity(fullScope: string): void {
-		if (/\/.*\//.test(fullScope)) {
-			throw new Error(`1st line has an invalid scope '${fullScope}'. There may be only one prefix`);
-		}
-	}
-
-	private static checkScopePrefixValidity(prefix: string, prefixes: string[]): void {
-		if (prefix && !prefixes.includes(prefix)) {
-			throw new Error(`1st line has an invalid scope prefix, '${prefix}'. Allowed prefixes are: ${HookCommitRules.join(prefixes)}`);
-		}
-	}
-
-	private static checkScopeValidity(scope: string, allScopes: string[]): void {
-		if (scope && !allScopes.includes(scope)) {
-			throw new Error(`1st line has an invalid scope, '${scope}'. Allowed scopes are: ${HookCommitRules.join(allScopes)}`);
-		}
-	}
-
-	private static checkScopeAndPrefixCompatibility(scope: string, prefix: string, scopes: Record<string, string[]>): void {
-		if (![...scopes[prefix], ...scopes.base, ...scopes.additional].includes(scope)) {
-			throw new Error(`1st line has an invalid scope: '${scope}' is not compatible with '${prefix}' prefix`);
+			if (!scopes.includes(scope)) {
+				throw new Error(
+					`1st line has an invalid scope '${scope}'. Allowed scopes for '${pkg}' package are: ${HookCommitRules.join(scopes)}`
+				);
+			}
 		}
 	}
 
@@ -155,6 +128,15 @@ class HookCommitRules {
 		}
 	}
 
+	private static getFolderName(pkg: string): string {
+		switch (pkg) {
+			case 'service-navigation':
+				return 'service-navigation-web-component';
+			default:
+				return pkg;
+		}
+	}
+
 	private static numeral(digit: number): string {
 		switch (digit + 1) {
 			case 1:
@@ -169,12 +151,11 @@ class HookCommitRules {
 	}
 
 	private static extractList(contributing: string, type: string): string[] {
-		const listStartIndex: number = contributing.indexOf(`# ${type}`);
-		const listBlock: string = contributing.substring(
-			contributing.indexOf('- **', listStartIndex),
-			contributing.indexOf('#', listStartIndex + 1)
-		);
-		return listBlock.match(/\*\*.*\*\*/g).map(item => item.replace(/\*\*/g, ''));
+		return new RegExp(`(?<=# <a name="${type.toLowerCase()}"><\\/a> ${type}.*)(?<block>- .*?^$)`, 'sm')
+			.exec(contributing)
+			.groups.block.split('\n')
+			.filter(line => !!line)
+			.map(line => /(?<=\*\*)(?<item>[a-z-]+)(?=\*\*)/.exec(line).groups.item);
 	}
 
 	private static join(list: string[]): string {

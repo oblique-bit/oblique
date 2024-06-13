@@ -1,91 +1,92 @@
 # Contributing to Oblique
 
 Welcome, and thank you for your interest in contributing to Oblique.
+As a contributor, here are the guidelines we would like you to follow:
 
-## Code of conduct
+- [Code of Conduct](#coc)
+- [Providing Feedback & Asking Questions](#feedback)
+- [Submitting a Pull Request](#pr)
+- [Commit Message Guidelines](#commit)
+  - [General Rules](#general)
+  - [Format](#format)
+    - [Header](#header)
+      - [Type](#type)
+      - [Package](#package)
+      - [Scope](#scope)
+      - [Subject](#subject)
+    - [Body](#body)
+    - [Footer](#footer)
 
-This project and everyone participating in it is governed by the [Oblique code of conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
+## <a name="coc"></a> Code of Conduct
 
-## Providing Feedback & asking questions
+This project and everyone participating in it is governed by the [Oblique code of conduct](CODE_OF_CONDUCT.md). By
+participating, you are expected to uphold this code.
 
-Your comments, feedbacks and questions are welcome.
-The development team is available by [email](mailto:Oblique@bit.admin.ch).
+## <a name="feedback"></a> Providing Feedback & Asking Questions
 
-## Get started
+Issues are for bug reports and feature requests. For general support questions the development team is available on
+[email](mailto:oblique@bit.admin.ch).
 
-This repo contains 4 district Angular projects:
+## <a name="pr"></a> Submitting a Pull Request (PR)
 
-- **oblique**: this is the Oblique library that will be distributed on NPM.
-- **sds**: this is the Oblique documentation that will be deployed on http://oblique.bit.admin.ch. Use it to see Oblique in action.
-- **sandbox**: this is a sandbox application used by the Oblique's development team. This application is never deployed and doesn't match the usual quality requirements.
-- **stylesBuilder**: this is an internal project used by Oblique to generate global CSS files. Never use it.
+You are welcomed to submit Pull Requests following the following guidelines:
 
-### Prerequisites
+- We have strict linting rules in place, don't try to circumvent them
+- Write unit tests for your code, and make sure not to lower the test coverage
+- Document all public API methods and properties
+- Follow our [Commit Message Guidelines](#commit)
+- Make sure to have a clean history, use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) when necessary
+- Target the `master` branch. We will make sure to redirect your PR to the next release branch
 
-- GIT
-- nodejs & npm
-- AngularCli installed globally: `npm i -g @angular/cli`
+The Oblique team reserves the right not to accept PRs from the community.
 
-### Setup the environment
+## <a name="commit"></a> Commit Message Guidelines
 
-- Clone the repo: `git clone https://github.com/oblique-bit/oblique.git`.
-- Install project dependencies: `npm ci`
+_This specification is inspired by and supersedes the [AngularJS Git Commit Message Conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)._
 
-### Useful commands
+We have very precise rules over how our git commit messages can be formatted. The goal is to have an easy-to-read
+project history which provides 3 main advantages:
 
-#### Start projects
+- It allows to easily understand what has been done
+- It greatly improves the experience of finding when, how and why a change has been made
+- It simplifies the generation of the changelogs
 
-- start Sandbox: `npm start -w projects/sandbox`
-- start SDS: `npm start -w projects/sds`
-- start all projects: `npm start -ws`
+### <a name="general"></a> General Rules
 
-#### Test projects
+A good commit message:
 
-- test Oblique `npm test -w projects/oblique`
-- test Sandbox: `npm test -w projects/sandbox`
-- test SDS: `npm test -w projects/sds`
-- test all projects: `npm test -ws`
+- uses 1 and only one [Package](#package), if multiples packages are concerned, split the commit.
+- uses 1 and only one [Scope](#scope), if a commit spans multiple scopes, split it into several commits. **Exception**: changes that spans most of the library can be grouped together, in which case the scope should be omitted
+- concerns 1 and only one change, a change includes its tests, documentation and schematics
+- keep all lines below 101 characters
 
-#### Lint projects
+### <a name="format"></a> Format
 
-- lint all projects: `npm run lint`
-- format (lint with auto fix) all projects: `npm run format`
+Each commit message consists of a **header**, a **body**, and a **footer** separated with blank lines.
 
-#### Miscellaneous commands
+```
+<header>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+```
 
-- compile the schematics: `npm run schematics -w projects/oblique`
-- update icons (should be executed when there is a change in the `projects/oblique/icons` folder): `npm run update-icons -w projects/oblique`
-- update error messages (should be executed when there is a change in one of the translation keys starting with `i18n.validation`): `npm run update-error-messages -w projects/oblique`
+The `header` is mandatory and must conform to the [Header](#header) format.
 
-## Commit messages
+The `body` is optional but must conform to the [Body](#body) format if present.
 
-We have very precise rules over how our git commit messages can be formatted. This leads to more readable messages that are easy to follow when looking
-through the project history. The git commit messages will also be used to generate Oblique's change log.
+The `footer` is optional but must conform to the [Footer](#footer) format if present.
 
-For better readability, please follow the following rules:
+#### <a name="header"></a> Header
 
-- 1 commit per change, fixes have to be squashed together.
-- A change includes its tests, mocks, documentation and schematics.
-- 1 commit concerns 1 scope (see below), if a commit spans multiple scopes, split it into several commits. **Exception**: changes that spans most of the library can be grouped together. In that case, there is no scope
-- no line of the commit message can be longer than 100 characters.
-- changes to one package should NEVER come with another package.
+The header is mandatory and follows the following structure:
 
-### Format
+```
+<type>(<package>/<scope>): <subject>
+```
 
-Each commit message consists of a **header**, a **body** and a **footer**. The header has a special format that includes a **type**, a **scope** and a
-**subject**:
-
-    <type>(<scope>): <subject>
-
-    <body>
-
-    <footer>
-
-#### Header
-
-The header is mandatory and lowercase only. The scope of the header is optional. There no space between **type** and **scope**.
-
-##### Type
+##### <a name="type"></a> Type
 
 The type is mandatory and must be one of the following:
 
@@ -93,125 +94,61 @@ The type is mandatory and must be one of the following:
 - **fix**: Changes that fixes a bug
 - **refactor**: Changes to a feature that neither adds, removes nor fixes a behavior
 - **test**: Changes that affect tests and their configuration only
-- **format**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- **format**: Changes that do not affect the meaning of the code (white-space, formatting, missing semicolons, etc.)
 - **chore**: Anything that do not fit in any previous types (e.g. release, dependencies update, ...)
 
-##### Scope
+##### <a name="package"></a> Package
 
-The scope is optional.
+The package is mandatory and must be one of the following:
 
-###### Scope prefixes
+- **oblique**: for changes in the Oblique library, including the changes to the service-navigation component
+- **sandbox**: for changes in the Sandbox project
+- **sds**: for changes in the Swiss Design System project
+- **service-navigation**: for changes in the service-navigation-web-component project
+- **toolchain**: for general changes about the whole repository
 
-If specified, the scope must be prefixed by the package name, separated with a slash (**/**). The **toolchain** scope is an exception to this rule.
+##### <a name="scope"></a> Scope
 
-- **oblique**
-- **sandbox**
-- **sds**
-- **service-navigation**
+The scope is optional but usually present. If the scope is omitted, then the separating slash (`/`) before it is also
+omitted. The list of available scopes depends on the project involved:
 
-Prefixes may be used alone for changes that are not linked to a particular scope.
+- [Oblique](projects/oblique/CONTRIBUTING.md)
+- [Sandbox](projects/sandbox/CONTRIBUTING.md)
+- [SDS](projects/sds/CONTRIBUTING.md)
+- [Service Navigation](projects/service-navigation-web-component/CONTRIBUTING.md)
 
-###### Base scopes
-
-If specified, the scope must be one of:
-
-- **alert**
-- **authentication**
-- **autocomplete**
-- **button**
-- **breadcrumb**
-- **collapse**
-- **column-layout**
-- **document-meta**
-- **error-messages**
-- **external-link**
-- **file-upload**
-- **focus-invalid**
-- **global-events**
-- **http-interceptor**
-- **input-clear**
-- **icon**
-- **language**
-- **master-layout**
-- **multi-translate-loader**
-- **nav-tree**
-- **nested-form**
-- **notification**
-- **number-format**
-- **off-canvas**
-- **paginator**
-- **popover**
-- **rxjs-operators**
-- **schema-validation**
-- **scrolling**
-- **selectable**
-- **service-navigation**
-- **spinner**
-- **sticky**
-- **translate-params**
-- **unknown-route**
-- **unsaved-changes**
-- **material** for material design
-
-###### Oblique scopes
-
-The Oblique project may use those additional scopes:
-
-- **schematics** for the schematics not directly linked to a feature
-- **styles** for the global CSS
-- **translation** for the translations not directly linked to a feature
-- **utilities** for utilities.ts
-
-###### Sandbox scopes
-
-The sandbox project may use those additional scopes:
-
-- **styles** for styles documentation pages
-
-###### SDS scopes
-
-The SDS project may use those additional scopes:
-
-- **cms**
-- **code-examples**
-- **feedback**
-- **schematics** for the schematics not directly linked to a feature
-- **side-navigation**
-- **styles** for the global CSS
-- **tabbed-page**
-- **text-page**
-
-###### Additional scopes
-
-The following scopes may be used with any prefix or no prefix at all
-
-- **toolchain** for the configuration, build, releases...
-
-##### Subject
+##### <a name="subject"></a> Subject
 
 The subject is mandatory and contains a **succinct** description of the change:
 
-- use the imperative, present tense: "change" not "changed" nor "changes"
+- describe what the change achieves, not why or how it achieves that
+- avoid technical details, don't say `replace MatLegacyModule with MatModule` but `stop using MatLegacyModule`
+- use the imperative, present tense, e.g.: "change" not "changed" nor "changes"
 - don't capitalize the first letter
 - no dot (.) at the end
 
-#### Body
+#### <a name="body"></a> Body
 
-The body is optional.
-Just as in the subject, use the imperative, present tense: "change" not "changed" nor "changes". The body should include the motivation for the change and contrast this with previous behavior.
+The body is optional and just as in the subject, use the imperative, present tense, e.g.: "change" not "changed" nor "changes".
 
-#### Footer
+Explain the motivation for the change, explain _why_ you are making the change.
+You can include a comparison of the previous behavior with the new one in order to illustrate the impact of the change.
 
-The footer is optional and should contain a reference to an issue if any, e.g.: `OUI-715`.
+#### <a name="footer"></a> Footer
 
-If you want reference multiple issue numbers (like sub-tasks), you can do it with the following pattern: `<parent-task number> / <sub-task number>`, e.g.: `OUI-42 / OUI-21`.
+The footer is optional must follow the following structure if present:
 
-It should also contain any information about Breaking Changes.
+```
+OUI-715
+BREAKING CHANGE:
+* function `funcA` has been removed in favor of `funcB`
+* property `prop` has been removed with no replacement
+* file `fileName` has been renamed into `myFile`
+```
 
-Breaking Changes have to start with the words `BREAKING CHANGE:` followed by a newline. The rest of the commit message is then used for this. Multiple breaking changes can be displayed with bullet points
+The footer is the place to include a reference to a JIRA issue, if any. There must be only 1 issue, omit parent issue
+for sub-tasks. GitHub's issues are always linked to a JIRA issue as well, une only the latter.
 
-    OUI-715
-    BREAKING CHANGE:
-    * function `funcA` has been removed in favor of `funcB`
-    * property `prop` has been removed with no replacement
-    * file `fileName` has been renamed into `myFile`
+Following the issue number is the breaking changes section that must start with the phrase "BREAKING CHANGE:"
+followed by a new line. Multiple breaking changes may be broken down with bullet points. Each Breaking changes must
+contain migration instructions and a note about Schematics solving it if applicable.
