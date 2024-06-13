@@ -15,6 +15,7 @@ import {
 	forkJoin,
 	map,
 	of,
+	startWith,
 	switchMap,
 	take,
 	tap
@@ -54,7 +55,7 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 
 	search = new FormControl('');
 
-	filteredAccordions$: BehaviorSubject<Accordion[]> = new BehaviorSubject<Accordion[]>([]);
+	filteredAccordions$: Observable<Accordion[]>;
 	searchText$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 	selectedSlug$: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
 	version$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
@@ -69,6 +70,13 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 
 	constructor() {
 		this.accordions$ = this.prepareAccordions();
+		this.filteredAccordions$ = this.accordions$.pipe(
+			combineLatestWith(this.searchText$, this.version$, this.urlParamVersion$),
+			map(([accordions, searchText, versionId, urlParamVersion]) =>
+				this.getAccordionsMatchingSearchTextAndVersion(accordions, searchText, versionId, urlParamVersion)
+			),
+			startWith([])
+		);
 	}
 
 	ngOnInit(): void {
@@ -85,11 +93,6 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 				.subscribe(selectedSlug => {
 					this.selectedSlug$.next(selectedSlug);
 				}),
-			this.accordions$
-				.pipe(combineLatestWith(this.searchText$, this.version$, this.urlParamVersion$))
-				.subscribe(([accordions, searchText, versionId, urlParamVersion]) =>
-					this.filteredAccordions$.next(this.getAccordionsMatchingSearchTextAndVersion(accordions, searchText, versionId, urlParamVersion))
-				),
 			this.search.valueChanges.pipe(debounceTime(300)).subscribe(searchText => {
 				this.searchText$.next(searchText ?? '');
 			}),
