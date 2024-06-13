@@ -61,7 +61,6 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 	version$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
 	urlParamVersion$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
 
-	private readonly accordions$: Observable<Accordion[]>;
 	private readonly subscriptions: Subscription[] = [];
 	private readonly activatedRoute = inject(ActivatedRoute);
 	private readonly cmsDataService = inject(CmsDataService);
@@ -69,14 +68,7 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 	private readonly slugToIdService = inject(SlugToIdService);
 
 	constructor() {
-		this.accordions$ = this.prepareAccordions();
-		this.filteredAccordions$ = this.accordions$.pipe(
-			combineLatestWith(this.searchText$, this.version$, this.urlParamVersion$),
-			map(([accordions, searchText, versionId, urlParamVersion]) =>
-				this.getAccordionsMatchingSearchTextAndVersion(accordions, searchText, versionId, urlParamVersion)
-			),
-			startWith([])
-		);
+		this.filteredAccordions$ = this.prepareAccordions();
 	}
 
 	ngOnInit(): void {
@@ -122,7 +114,12 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 			textPages: this.cmsDataService.getTextPagesShort()
 		}).pipe(
 			map(value => AccordionComposer.composeAccordions(value)),
-			tap(accordions => this.setUpSlugToIdServiceDataSet(accordions))
+			tap(accordions => this.setUpSlugToIdServiceDataSet(accordions)),
+			combineLatestWith(this.searchText$, this.version$, this.urlParamVersion$),
+			map(([accordions, searchText, versionId, urlParamVersion]) =>
+				this.getAccordionsMatchingSearchTextAndVersion(accordions, searchText, versionId, urlParamVersion)
+			),
+			startWith([])
 		);
 	}
 
