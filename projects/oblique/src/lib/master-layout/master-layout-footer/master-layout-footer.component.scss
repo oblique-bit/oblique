@@ -37,6 +37,15 @@
 				margin-top: 2px;
 			}
 		}
+
+		a {
+			color: variables.$ob-white;
+			text-decoration: none;
+
+			&:hover {
+				color: variables.$ob-gray-lighter;
+			}
+		}
 	}
 
 	.ob-master-layout-logo {
@@ -81,7 +90,6 @@
 		}
 	}
 
-	&,
 	.ob-footer-item-links {
 		display: flex;
 		list-style: none;
