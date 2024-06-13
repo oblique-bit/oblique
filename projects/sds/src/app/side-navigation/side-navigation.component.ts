@@ -5,7 +5,20 @@ import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatIcon} from '@angular/material/icon';
 import {CmsDataService} from '../cms/cms-data.service';
-import {BehaviorSubject, Observable, Subscription, combineLatestWith, debounceTime, filter, forkJoin, map, of, switchMap, take} from 'rxjs';
+import {
+	BehaviorSubject,
+	Observable,
+	Subscription,
+	combineLatestWith,
+	debounceTime,
+	filter,
+	forkJoin,
+	map,
+	of,
+	switchMap,
+	take,
+	tap
+} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {Accordion, Link} from './accordion-links/accordion-links.model';
@@ -47,16 +60,18 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 	version$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
 	urlParamVersion$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
 
-	private readonly accordions$: BehaviorSubject<Accordion[]> = new BehaviorSubject<Accordion[]>([]);
+	private readonly accordions$: Observable<Accordion[]>;
 	private readonly subscriptions: Subscription[] = [];
 	private readonly activatedRoute = inject(ActivatedRoute);
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
 	private readonly slugToIdService = inject(SlugToIdService);
 
-	ngOnInit(): void {
-		this.prepareAccordions();
+	constructor() {
+		this.accordions$ = this.prepareAccordions();
+	}
 
+	ngOnInit(): void {
 		this.subscriptions.push(
 			this.getSelectedSlug(this.activatedRoute)
 				.pipe(take(1))
@@ -97,18 +112,14 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 		this.version$.next(version);
 	}
 
-	private prepareAccordions(): void {
-		this.subscriptions.push(
-			forkJoin({
-				categories: this.cmsDataService.getCategories(),
-				tabbedPages: this.cmsDataService.getTabbedPagesShort(),
-				textPages: this.cmsDataService.getTextPagesShort()
-			})
-				.pipe(map(value => AccordionComposer.composeAccordions(value)))
-				.subscribe(accordions => {
-					this.accordions$.next(accordions);
-					this.setUpSlugToIdServiceDataSet(accordions);
-				})
+	private prepareAccordions(): Observable<Accordion[]> {
+		return forkJoin({
+			categories: this.cmsDataService.getCategories(),
+			tabbedPages: this.cmsDataService.getTabbedPagesShort(),
+			textPages: this.cmsDataService.getTextPagesShort()
+		}).pipe(
+			map(value => AccordionComposer.composeAccordions(value)),
+			tap(accordions => this.setUpSlugToIdServiceDataSet(accordions))
 		);
 	}
 
