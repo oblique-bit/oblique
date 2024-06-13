@@ -1,25 +1,11 @@
-import {Component, OnDestroy, OnInit, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatIcon} from '@angular/material/icon';
 import {CmsDataService} from '../cms/cms-data.service';
-import {
-	BehaviorSubject,
-	Observable,
-	Subscription,
-	combineLatestWith,
-	debounceTime,
-	filter,
-	forkJoin,
-	map,
-	of,
-	startWith,
-	switchMap,
-	take,
-	tap
-} from 'rxjs';
+import {BehaviorSubject, Observable, combineLatestWith, debounceTime, filter, forkJoin, map, of, startWith, switchMap, tap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {Accordion, Link} from './accordion-links/accordion-links.model';
@@ -50,17 +36,16 @@ import {ImageComponent} from './image/image.component';
 		MatPrefix
 	]
 })
-export class SideNavigationComponent implements OnInit, OnDestroy {
+export class SideNavigationComponent {
 	readonly componentId = 'side-navigation';
 
 	search = new FormControl('');
 
 	filteredAccordions$: Observable<Accordion[]>;
-	selectedSlug$: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
+	selectedSlug$: Observable<string | undefined>;
 	version$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
 	urlParamVersion$: Observable<number | undefined>;
 
-	private readonly subscriptions: Subscription[] = [];
 	private readonly activatedRoute = inject(ActivatedRoute);
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
@@ -68,28 +53,8 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 
 	constructor() {
 		this.urlParamVersion$ = this.prepareUrlParams();
+		this.selectedSlug$ = this.prepareSelectedSlug();
 		this.filteredAccordions$ = this.prepareAccordions();
-	}
-
-	ngOnInit(): void {
-		this.subscriptions.push(
-			this.getSelectedSlug(this.activatedRoute)
-				.pipe(take(1))
-				.subscribe(selectedSlug => this.selectedSlug$.next(selectedSlug)),
-			this.router.events
-				.pipe(
-					filter(event => event instanceof NavigationEnd),
-					map(() => this.activatedRoute),
-					switchMap(activatedRoute => this.getSelectedSlug(activatedRoute))
-				)
-				.subscribe(selectedSlug => {
-					this.selectedSlug$.next(selectedSlug);
-				})
-		);
-	}
-
-	ngOnDestroy(): void {
-		this.subscriptions.forEach(subscription => subscription.unsubscribe());
 	}
 
 	updateVersion(version?: number): void {
@@ -125,6 +90,15 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 			filter(event => event instanceof NavigationEnd),
 			map(() => this.activatedRoute),
 			map(activatedRoute => this.getVersionFromUrlParam(activatedRoute))
+		);
+	}
+
+	private prepareSelectedSlug(): Observable<string> {
+		return this.router.events.pipe(
+			filter(event => event instanceof NavigationEnd),
+			startWith(undefined),
+			map(() => this.activatedRoute),
+			switchMap(activatedRoute => this.getSelectedSlug(activatedRoute))
 		);
 	}
 
