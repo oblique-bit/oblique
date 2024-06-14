@@ -80,6 +80,7 @@ class HookCommitRules {
 
 		const filePaths = getResultFromCommand('git diff --cached --name-only')
 			.split('\n')
+			.filter(filePath => !!filePath)
 			.filter(filePath => !new RegExp(`projects/${HookCommitRules.getFolderName(pkg)}/.*`).test(filePath));
 		if (filePaths.length && pkg !== 'toolchain') {
 			throw new Error(
