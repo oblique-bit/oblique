@@ -6,7 +6,7 @@ class PostDist {
 		const source = path.join('src', 'nginx');
 		const destination = path.join('nginx', 'conf', 'includes');
 		CopyFiles.initialize('sds')
-			.copyFile('Staticfile', source, 'nginx')
+			.copyFile('Staticfile', source, '')
 			.copyFile('custom_headers.conf', source, destination)
 			.copyFile('security_headers.conf', source, destination)
 			.finalize();
