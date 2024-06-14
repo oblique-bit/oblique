@@ -1,3 +1,9 @@
+# [11.2.3](https://github.com/oblique-bit/oblique/compare/11.2.2...11.2.3) (2024-06-14)
+
+## Bug Fixes
+
+- **oblique:** export `package.json` and `oblique.mjs` from `package.json` ([3b2b82e3](https://github.com/oblique-bit/oblique/commit/3b2b82e3b8263d793068b99347a08a246091f16b))
+
 # [11.2.2](https://github.com/oblique-bit/oblique/compare/11.2.1...11.2.2) (2024-06-14)
 
 ## Bug Fixes
