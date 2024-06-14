@@ -33,7 +33,10 @@ export class PackageJson {
 	}
 
 	addExports(fields: ExportEntries): PackageJson {
-		this.content.exports = Object.keys(fields).reduce<ExportEntries>((exports, field) => ({...exports, [field]: fields[field]}), {});
+		this.content.exports = {
+			...(this.content.exports as object),
+			...Object.keys(fields).reduce<ExportEntries>((exports, field) => ({...exports, [field]: fields[field]}), {})
+		};
 		return PackageJson.instance;
 	}
 
