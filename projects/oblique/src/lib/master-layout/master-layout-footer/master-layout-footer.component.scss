@@ -18,6 +18,12 @@
 		justify-content: flex-start;
 		padding: 0.5rem 0;
 		align-items: center;
+
+		@include layout.ob-media-breakpoint-down(sm) {
+			flex-direction: column;
+			row-gap: variables.$ob-spacing-default;
+			align-items: flex-start;
+		}
 	}
 
 	.ob-footer-item {
@@ -29,6 +35,15 @@
 
 			& + p {
 				margin-top: 2px;
+			}
+		}
+
+		a {
+			color: variables.$ob-white;
+			text-decoration: none;
+
+			&:hover {
+				color: variables.$ob-gray-lighter;
 			}
 		}
 	}
@@ -60,6 +75,7 @@
 			.ob-footer-item-logo {
 				margin-right: 0;
 				padding: 0;
+				width: 0;
 
 				img {
 					height: 0;
@@ -74,7 +90,6 @@
 		}
 	}
 
-	&,
 	.ob-footer-item-links {
 		display: flex;
 		list-style: none;

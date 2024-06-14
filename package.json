@@ -1,7 +1,7 @@
 {
   "title": "Oblique",
   "name": "oblique",
-  "version": "11.2.1",
+  "version": "11.2.2",
   "license": "MIT",
   "organization": {
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
@@ -31,7 +31,7 @@
     "hook-commit-msg": "ts-node scripts/husky/hook.commit-rules.ts",
     "hook-post-checkout": "ts-node scripts/husky/dependency-update.ts",
     "prepare": "husky install",
-    "postversion": "npm run post-oblique-release -w projects/sds"
+    "release": "ts-node scripts/release.ts"
   },
   "engines": {
     "node": ">=18.13.0"
@@ -84,8 +84,8 @@
     "husky": "^9.0.11",
     "jest": "^29.7.0",
     "jest-sonar-reporter": "^2.0.0",
-    "lint-staged": "^15.2.5",
-    "prettier": "^3.3.1",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.2",
     "stylelint": "^16.6.1",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard-scss": "^13.1.0",

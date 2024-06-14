@@ -137,3 +137,7 @@
 		}
 	}
 }
+
+.ob-master-layout.ob-no-navigation .ob-master-layout-header .ob-header {
+	border-bottom: variables.$ob-line-width-xs solid variables.$ob-gray-lighter;
+}

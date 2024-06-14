@@ -1,17 +1,7 @@
-import {execSync} from 'child_process';
+import {hasFlag} from './shared/utils';
+import {Lint} from './shared/lint';
 
-export class Lint {
-	static perform(param: string): void {
-		const lintParam = param === '--fix' ? '--fix' : '';
-		const prettierParam = param === '--fix' ? '--write' : '--check';
-		const prettierFiles = '{ts,js,html,json,yml,md,css,scss}';
-		Lint.execute(`eslint "{scripts,tests}/**/*.{ts,js,html}" --cache ${lintParam}`);
-		Lint.execute(`prettier "{scripts,tests}/**/*.${prettierFiles}" "*.${prettierFiles}" --log-level warn ${prettierParam}`);
-	}
-
-	private static execute(command: string): void {
-		execSync(command, {stdio: 'inherit'});
-	}
-}
-
-Lint.perform(process.argv[2]);
+const fileTypes = '{ts,js,html,json,yml,md,css,scss}';
+Lint.initialize(hasFlag('fix'))
+	.esLint('{scripts,tests}/**/*')
+	.prettier([`{scripts,tests}/**/*.${fileTypes}`, `*.${fileTypes}`]);

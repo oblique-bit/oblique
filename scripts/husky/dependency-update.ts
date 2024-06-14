@@ -1,12 +1,12 @@
-import {execSync} from 'child_process';
+import {executeCommand} from '../shared/utils';
 
 class DependencyUpdate {
 	static perform(): void {
 		// Disabled on windows because npm ci is too slow
 		if (process.platform !== 'win32') {
-			const diff = execSync('git diff --name-only HEAD@{1} HEAD').toString();
+			const diff = executeCommand('git diff --name-only HEAD@{1} HEAD');
 			if (/^package-lock\.json$/m.test(diff)) {
-				execSync('npm ci', {stdio: 'inherit'});
+				executeCommand('npm ci', true);
 			}
 		}
 	}

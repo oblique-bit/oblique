@@ -10,6 +10,7 @@
 	<img
 		[alt]="'i18n.oblique.service-navigation.profile.alt' | translate"
 		[ngSrc]="avatarImageUrl"
+		aria-hidden="true"
 		height="51"
 		width="51"
 		class="ob-profile-avatar"
@@ -42,6 +43,7 @@
 			*ngIf="avatarImageUrl"
 			obHeaderPrefix
 			class="ob-avatar"
+			aria-hidden="true"
 			[alt]="'i18n.oblique.service-navigation.profile.alt' | translate"
 			[ngSrc]="avatarImageUrl"
 			height="32"

@@ -1,6 +1,6 @@
 {
   "name": "@oblique/service-navigation-web-component",
-  "version": "0.0.0",
+  "version": "11.2.2",
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
   },
@@ -10,7 +10,8 @@
     "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test service-navigation-web-component",
     "test-ci": "cd ../.. && ng run service-navigation-web-component:test:ci",
-    "build": "ng build && ts-node scripts/post-dist"
+    "build": "ng build && ts-node scripts/post-dist",
+    "release": "ts-node scripts/release.ts"
   },
   "keywords": [
     "service-navigation-web-component"
