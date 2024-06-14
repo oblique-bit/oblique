@@ -1,3 +1,9 @@
+# [11.2.2](https://github.com/oblique-bit/oblique/compare/11.2.1...11.2.2) (2024-06-14)
+
+## Features
+
+- **master-layout:** add a link in the footer info area ([1f37daff](https://github.com/oblique-bit/oblique/commit/1f37daff390171d50e766346caf372d2617ee53e))
+
 # [11.2.1](https://github.com/oblique-bit/oblique/compare/11.2.0...11.2.1) (2024-06-07)
 
 ## Bug Fixes

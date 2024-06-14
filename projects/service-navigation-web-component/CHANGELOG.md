@@ -1,3 +1,11 @@
+# [11.2.2](https://github.com/oblique-bit/oblique/compare/11.2.1...11.2.2) (2024-06-14)
+
+## Features
+
+- **service-navigation:** add `LICENSE`, `README.md` and `CHANGELOG.md` to the distribution ([1dbff54c](https://github.com/oblique-bit/oblique/commit/1dbff54c87eee0c9809a9ad8f28b3d53192e8eeb))
+- **service-navigation:** add a `release` script ([0f282a05](https://github.com/oblique-bit/oblique/commit/0f282a051fb1c8b2ebc1586726d7f1609380ad1c))
+- **service-navigation:** generate `CHANGELOG.md` ([7a7e68a4](https://github.com/oblique-bit/oblique/commit/7a7e68a4a137f21289754221b2add2aa21a88361))
+
 # [11.2.1](https://github.com/oblique-bit/oblique/compare/11.2.0...11.2.1) (2024-06-07)
 
 ## Features
