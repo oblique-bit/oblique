@@ -1,3 +1,10 @@
+# [11.2.2](https://github.com/oblique-bit/oblique/compare/11.2.1...11.2.2) (2024-06-14)
+
+## Bug Fixes
+
+- **autocomplete:** ensure input prefix doesn't overlap with input label ([334d0e7d](https://github.com/oblique-bit/oblique/commit/334d0e7d47a06950ad80237d693284c5d1fea18b))
+- **material:** ensure input prefix doesn't overlap with input label ([42b87846](https://github.com/oblique-bit/oblique/commit/42b8784648ab99f83917db134dce5ee578ed9a49))
+
 # [11.2.1](https://github.com/oblique-bit/oblique/compare/11.2.0...11.2.1) (2024-06-07)
 
 ## Bug Fixes

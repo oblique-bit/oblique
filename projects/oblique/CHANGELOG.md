@@ -1,3 +1,13 @@
+# [11.2.2](https://github.com/oblique-bit/oblique/compare/11.2.1...11.2.2) (2024-06-14)
+
+## Bug Fixes
+
+- **master-layout:** ensure the links area in the footer has the correct background color ([a160fb26](https://github.com/oblique-bit/oblique/commit/a160fb268aaf76dbf1ffa66cc8fe016e0ff04206))
+- **master-layout:** make sure that footer info is always correctly aligned ([b83884a3](https://github.com/oblique-bit/oblique/commit/b83884a32b9699a3d451634c8e12fa3b87fd08ea))
+- **master-layout:** display footer info below logo on small viewports ([88859583](https://github.com/oblique-bit/oblique/commit/88859583ed4c8abca3e97448789ebb472bc321c2))
+- **master-layout:** show separation line between header and content ([93ea192f](https://github.com/oblique-bit/oblique/commit/93ea192ff7662a320dbcf06579d5e60895fcd20c))
+- **service-navigation:** add `aria-hidden` to profile image ([5571832e](https://github.com/oblique-bit/oblique/commit/5571832ea8a8d9482aa7c97921b7b2dfce040432))
+
 # [11.2.1](https://github.com/oblique-bit/oblique/compare/11.2.0...11.2.1) (2024-06-07)
 
 ## Bug Fixes
