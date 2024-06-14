@@ -20,6 +20,7 @@
 			[attr.data-selected]="link.slug === selectedSlug ? true : null"
 			[id]="idPrefix | id: [componentId, 'link', i, j]"
 			[routerLink]="['/' + accordion.title, link.slug]"
+			[queryParams]="urlParamVersion ? { version: urlParamVersion } : null"
 		>
 			{{ link.title }}
 		</a>

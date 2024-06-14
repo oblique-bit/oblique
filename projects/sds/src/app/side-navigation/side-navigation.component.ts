@@ -53,6 +53,7 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 	searchText$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 	selectedSlug$: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
 	version$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
+	urlParamVersion$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
 
 	private readonly accordions$: BehaviorSubject<Accordion[]> = new BehaviorSubject<Accordion[]>([]);
 	private readonly subscriptions: Subscription[] = [];
@@ -82,13 +83,21 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 					this.selectedSlug$.next(selectedSlug);
 				}),
 			this.accordions$
-				.pipe(combineLatestWith(this.searchText$, this.version$))
-				.subscribe(([accordions, searchText, versionId]) =>
-					this.filteredAccordions$.next(this.getAccordionsMatchingSearchTextAndVersion(accordions, searchText, versionId))
+				.pipe(combineLatestWith(this.searchText$, this.version$, this.urlParamVersion$))
+				.subscribe(([accordions, searchText, versionId, urlParamVersion]) =>
+					this.filteredAccordions$.next(this.getAccordionsMatchingSearchTextAndVersion(accordions, searchText, versionId, urlParamVersion))
 				),
 			this.search.valueChanges.pipe(debounceTime(300)).subscribe(searchText => {
 				this.searchText$.next(searchText ?? '');
-			})
+			}),
+			this.router.events
+				.pipe(
+					filter(event => event instanceof NavigationEnd),
+					map(() => this.activatedRoute)
+				)
+				.subscribe(activatedRoute => {
+					this.urlParamVersion$.next(this.getVersionFromUrlParam(activatedRoute));
+				})
 		);
 	}
 
@@ -134,11 +143,16 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 			: accordions;
 	}
 
-	private getAccordionsMatchingSearchTextAndVersion(accordions: Accordion[], searchText?: string, version?: number): Accordion[] {
+	private getAccordionsMatchingSearchTextAndVersion(
+		accordions: Accordion[],
+		searchText?: string,
+		dropDownVersion?: number,
+		urlParamVersion?: number
+	): Accordion[] {
 		return this.getAccordionsMatchingSearchText(accordions, searchText)
 			.map(accordion => ({
 				...accordion,
-				links: this.getNewestLinksForVersion(accordion, version)
+				links: this.getNewestLinksForVersion(accordion, urlParamVersion ?? dropDownVersion)
 			}))
 			.filter(accordion => accordion.links.length > 0);
 	}
@@ -159,5 +173,9 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 		return accordion.links.filter(
 			link => (!link.minVersion || link.minVersion <= (version ?? 9999)) && (!link.maxVersion || link.maxVersion >= (version ?? -1))
 		);
+	}
+
+	private getVersionFromUrlParam(activatedRoute?: ActivatedRoute): number | undefined {
+		return +activatedRoute.snapshot.queryParamMap.get('version') || undefined;
 	}
 }
