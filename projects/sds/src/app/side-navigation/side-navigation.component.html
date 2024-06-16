@@ -6,7 +6,12 @@
 	[ngSrc]="logo.ngSrc"
 	[id]="componentId | id: ['logo']"
 />
-<app-version [id]="componentId | id: ['version']" [idPrefix]="componentId" (versionChanged)="updateVersion($event)" />
+<app-version
+	[isDisabled]="(urlParamVersion$ | async) ? true : false"
+	[id]="componentId | id: ['version']"
+	[idPrefix]="componentId"
+	(versionChanged)="updateVersion($event)"
+/>
 <mat-form-field>
 	<mat-label>Filter</mat-label>
 	<input matInput type="search" [id]="componentId | id: ['search-input']" [formControl]="search" />
@@ -17,5 +22,6 @@
 	[accordions]="(filteredAccordions$ | async) ?? []"
 	[idPrefix]="componentId"
 	[selectedSlug]="(selectedSlug$ | async) ?? ''"
+	[urlParamVersion]="(urlParamVersion$ | async) ?? null"
 	[id]="componentId | id: ['accordion-links']"
 />

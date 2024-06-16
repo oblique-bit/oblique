@@ -22,6 +22,7 @@ import {ObSelectDirective} from '@oblique/oblique';
 })
 export class VersionComponent {
 	@Input() idPrefix = '';
+	@Input() isDisabled = false;
 	@Output() readonly versionChanged: Observable<number>;
 
 	readonly componentId = 'version';
