@@ -8,3 +8,4 @@ All commits related to the Service Navigation Web Component package must use the
 
 - **toolchain**
 - **web-component**
+- **sample**: used for changes in `index.html`
