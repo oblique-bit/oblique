@@ -38,14 +38,13 @@ import {ImageComponent} from './image/image.component';
 })
 export class SideNavigationComponent {
 	readonly componentId = 'side-navigation';
-
-	search = new FormControl('');
+	readonly search = new FormControl('');
 
 	filteredAccordions$: Observable<Accordion[]>;
 	selectedSlug$: Observable<string | undefined>;
-	version$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
 	urlParamVersion$: Observable<number | undefined>;
 
+	private readonly version$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
 	private readonly activatedRoute = inject(ActivatedRoute);
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
