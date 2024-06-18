@@ -1,5 +1,5 @@
 import {readFileSync} from 'fs';
-import {executeCommand} from '../shared/utils';
+import {getResultFromCommand} from '../shared/utils';
 import path from 'path';
 
 interface Header {
@@ -78,7 +78,7 @@ class HookCommitRules {
 			throw new Error(`1st line has an invalid type '${pkg}'. Allowed packages are: ${HookCommitRules.join(packages)}`);
 		}
 
-		const filePaths = executeCommand('git diff --cached --name-only')
+		const filePaths = getResultFromCommand('git diff --cached --name-only')
 			.split('\n')
 			.filter(filePath => !new RegExp(`projects/${HookCommitRules.getFolderName(pkg)}/.*`).test(filePath));
 		if (filePaths.length && pkg !== 'toolchain') {

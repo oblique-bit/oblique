@@ -1,5 +1,5 @@
 import {readFileSync, writeFileSync} from 'fs';
-import {executeCommand} from './utils';
+import {getResultFromCommand} from './utils';
 
 type CommitType = 'fix' | 'feat';
 
@@ -28,13 +28,13 @@ export class Changelog {
 	}
 
 	private static getPreviousVersion(): string {
-		return executeCommand('git describe --tags --abbrev=0');
+		return getResultFromCommand('git describe --tags --abbrev=0');
 	}
 
 	private static getCommits(previousVersion: string, projectName: string): Commits {
 		const separator = ';;';
 		const commitSeparator = '##';
-		return executeCommand(`git log --pretty=format:"%s${separator}%b${separator}%H${commitSeparator}" ${previousVersion}..HEAD`)
+		return getResultFromCommand(`git log --pretty=format:"%s${separator}%b${separator}%H${commitSeparator}" ${previousVersion}..HEAD`)
 			.replace(/\n/g, '')
 			.split(commitSeparator)
 			.filter(commit => new RegExp(`^(?:fix|feat)\\(${projectName}(?!/toolchain)`).test(commit))
