@@ -80,6 +80,7 @@ class HookCommitRules {
 
 		const filePaths = getResultFromCommand('git diff --cached --name-only')
 			.split('\n')
+			.filter(filePath => !!filePath)
 			.filter(filePath => !new RegExp(`projects/${HookCommitRules.getFolderName(pkg)}/.*`).test(filePath));
 		if (filePaths.length && pkg !== 'toolchain') {
 			throw new Error(
@@ -94,7 +95,10 @@ class HookCommitRules {
 		}
 
 		if (scope) {
-			const contributing: string = readFileSync(path.join('projects', pkg, 'CONTRIBUTING.md'), 'utf8').toString();
+			const contributing: string = readFileSync(
+				path.join('projects', HookCommitRules.getFolderName(pkg), 'CONTRIBUTING.md'),
+				'utf8'
+			).toString();
 			const scopes = HookCommitRules.extractList(contributing, 'Scope');
 
 			if (!scopes.includes(scope)) {
