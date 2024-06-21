@@ -27,6 +27,15 @@ export class Changelog {
 		Changelog.prependRelease(Changelog.getCommits(previousTag, 'HEAD', projectName), previousTag, version);
 	}
 
+	static generate(projectName: string): void {
+		getResultFromCommand(' git tag --sort v:refname')
+			.split('\n')
+			.filter(tag => /^\d+\.\d+\.\d+$/.test(tag))
+			.map((tag, index, tags) => ({from: tag, to: tags[index + 1]}))
+			.filter(({to}) => !!to)
+			.forEach(({from, to}) => Changelog.prependRelease(Changelog.getCommits(from, to, projectName), from, to));
+	}
+
 	private static getPreviousTag(): string {
 		return getResultFromCommand('git describe --tags --abbrev=0');
 	}
