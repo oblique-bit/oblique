@@ -8,7 +8,7 @@ import {ObMockSelectableDirective} from './_mocks/mock-selectable.directive';
 import {firstValueFrom} from 'rxjs';
 
 @Component({
-	template: ` <div obSelectableGroup>
+	template: `<div obSelectableGroup>
 		<div obSelectable [value]="1"></div>
 		<div obSelectable [value]="2"></div>
 		<div obSelectable [value]="3"></div>
@@ -31,7 +31,7 @@ describe(ObSelectableGroupDirective.name, () => {
 		});
 	}));
 
-	describe('when not disabled', () => {
+	describe('default', () => {
 		beforeEach(() => {
 			fixture = TestBed.createComponent(TestComponent);
 			component = fixture.componentInstance;
@@ -67,14 +67,14 @@ describe(ObSelectableGroupDirective.name, () => {
 			expect(directive.disabled$).toBeDefined();
 		});
 
-		describe('register', () => {
+		describe('register function', () => {
 			it('should store registered directives', () => {
 				// @ts-expect-error
 				expect(directive.selectables).toEqual(items);
 			});
 		});
 
-		describe('focus', () => {
+		describe('focus function', () => {
 			beforeEach(() => {
 				directive.focus(items[0]);
 				directive.focus(items[1]);
@@ -101,13 +101,13 @@ describe(ObSelectableGroupDirective.name, () => {
 				event = {preventDefault: jest.fn()} as unknown as KeyboardEvent;
 			});
 
-			describe('mode', () => {
+			describe('mode property', () => {
 				it('should emit on set', () => {
 					expect(mode).toBe('checkbox');
 				});
 			});
 
-			describe('role', () => {
+			describe('role property', () => {
 				it('should be defined as property', () => {
 					expect(directive.role).toBe('group');
 				});
@@ -117,7 +117,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				});
 			});
 
-			describe('toggle', () => {
+			describe('toggle function', () => {
 				it('should check all called items', done => {
 					directive.selected$.pipe(first()).subscribe(selection => {
 						expect(selection).toEqual([items[2], items[3], items[4]]);
@@ -127,7 +127,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				});
 			});
 
-			describe('selectAll', () => {
+			describe('selectAll function', () => {
 				it('should check all items', () => {
 					directive.selected$.pipe(first()).subscribe(selection => {
 						expect(selection).toEqual(items);
@@ -136,7 +136,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				});
 			});
 
-			describe('deselectAll', () => {
+			describe('deselectAll function', () => {
 				it('should uncheck all items', () => {
 					directive.selected$.pipe(first()).subscribe(selection => {
 						expect(selection).toEqual([]);
@@ -145,7 +145,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				});
 			});
 
-			describe('sort', () => {
+			describe('sort function', () => {
 				it('should sort directives', () => {
 					directive.sort((firstElement, secondElement) => secondElement.value - firstElement.value);
 					// @ts-expect-error
@@ -197,7 +197,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				directive.toggle(items[2]);
 				event = {preventDefault: jest.fn()} as unknown as KeyboardEvent;
 			});
-			describe('mode', () => {
+			describe('mode property', () => {
 				it('should emit on set', () => {
 					expect(mode).toBe('radio');
 				});
@@ -214,7 +214,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				});
 			});
 
-			describe('role', () => {
+			describe('role property', () => {
 				it('should be defined as property', () => {
 					expect(directive.role).toBe('radiogroup');
 				});
@@ -224,7 +224,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				});
 			});
 
-			describe('toggle', () => {
+			describe('toggle function', () => {
 				it('should check only check last called item', done => {
 					directive.selected$.subscribe(selection => {
 						expect(selection).toEqual([items[3]]);
@@ -234,7 +234,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				});
 			});
 
-			describe('selectAll', () => {
+			describe('selectAll function', () => {
 				it('should do nothing', fakeAsync(() => {
 					let data;
 					directive.selected$.subscribe(selection => (data = selection));
@@ -244,7 +244,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				}));
 			});
 
-			describe('deselectAll', () => {
+			describe('deselectAll function', () => {
 				it('should do nothing', () => {
 					let data;
 					directive.selected$.subscribe(selection => (data = selection));
@@ -305,7 +305,7 @@ describe(ObSelectableGroupDirective.name, () => {
 
 		describe('windows mode', () => {
 			let event: KeyboardEvent;
-			let mode;
+			let mode: string;
 			beforeEach(() => {
 				directive.mode$.subscribe(newMode => (mode = newMode));
 				directive.mode = 'windows';
@@ -314,12 +314,12 @@ describe(ObSelectableGroupDirective.name, () => {
 				directive.toggle(items[2]);
 				event = {preventDefault: jest.fn()} as unknown as KeyboardEvent;
 			});
-			describe('mode', () => {
+			describe('mode property', () => {
 				it('should emit on set', () => {
 					expect(mode).toBe('windows');
 				});
 			});
-			describe('role', () => {
+			describe('role property', () => {
 				it('should be defined as property', () => {
 					expect(directive.role).toBe('group');
 				});
@@ -329,7 +329,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				});
 			});
 
-			describe('toggle', () => {
+			describe('toggle function', () => {
 				it('without ctrl and shift, should check only check last called item', done => {
 					directive.selected$.pipe(first()).subscribe(selection => {
 						expect(selection).toEqual([items[1]]);
@@ -370,7 +370,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				});
 			});
 
-			describe('selectAll', () => {
+			describe('selectAll function', () => {
 				it('should check all items', () => {
 					directive.selected$.pipe(first()).subscribe(selection => {
 						expect(selection).toEqual(items);
@@ -379,7 +379,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				});
 			});
 
-			describe('deselectAll', () => {
+			describe('deselectAll function', () => {
 				it('should uncheck all items', () => {
 					directive.selected$.pipe(first()).subscribe(selection => {
 						expect(selection).toEqual([]);
@@ -459,11 +459,11 @@ describe(ObSelectableGroupDirective.name, () => {
 		});
 	});
 
-	describe(' disabled ', () => {
+	describe('disabled group', () => {
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(TestComponent, {
 				set: {
-					template: ` <div obSelectableGroup disabled>
+					template: `<div obSelectableGroup disabled>
 										<div obSelectable [value]="1"></div>
 										<div obSelectable [value]="2"></div>
 										<div obSelectable [value]="3"></div>
@@ -477,13 +477,14 @@ describe(ObSelectableGroupDirective.name, () => {
 			directive = element.injector.get(ObSelectableGroupDirective);
 		});
 
-		describe('disabled$', () => {
+		describe('disabled$ property', () => {
 			it('should emit true as initial value', async () => {
 				await expect(firstValueFrom(directive.disabled$)).resolves.toBe(true);
 			});
 		});
-		describe('disabled', () => {
-			it('should be set to true', () => {
+
+		describe('disabled property', () => {
+			it('should initially be set to true', () => {
 				expect(directive.disabled).toBe(true);
 			});
 		});
