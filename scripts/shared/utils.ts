@@ -23,7 +23,7 @@ export function listFiles(directory: string): string[] {
 }
 
 export function hasFlag(flag: string): boolean {
-	return process.argv.some(arg => arg === flag);
+	return process.argv.some(arg => arg === `--${flag}`);
 }
 
 export function camelToKebabCase(key: string): string {
