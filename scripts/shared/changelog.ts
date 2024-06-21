@@ -24,17 +24,17 @@ export class Changelog {
 
 	static addRelease(version: string, projectName: string): void {
 		const previousTag = Changelog.getPreviousTag();
-		Changelog.prependRelease(Changelog.getCommits(previousTag, projectName), previousTag, version);
+		Changelog.prependRelease(Changelog.getCommits(previousTag, 'HEAD', projectName), previousTag, version);
 	}
 
 	private static getPreviousTag(): string {
 		return getResultFromCommand('git describe --tags --abbrev=0');
 	}
 
-	private static getCommits(from: string, projectName: string): Commits {
+	private static getCommits(from: string, to: string, projectName: string): Commits {
 		const separator = ';;';
 		const commitSeparator = '##';
-		return getResultFromCommand(`git log --pretty=format:"%s${separator}%b${separator}%H${commitSeparator}" ${from}..HEAD`)
+		return getResultFromCommand(`git log --pretty=format:"%s${separator}%b${separator}%H${commitSeparator}" ${from}..${to}`)
 			.replace(/\n/g, '')
 			.split(commitSeparator)
 			.filter(commit => new RegExp(`^(?:fix|feat)\\(${projectName}(?!/toolchain)`).test(commit))
@@ -97,8 +97,14 @@ export class Changelog {
 	}
 
 	private static getTitle(version: string, previousTag: string): string {
-		const today = new Date().toISOString().split('T')[0];
-		return `# [${version}](https://github.com/oblique-bit/oblique/compare/${previousTag}...${version}) (${today})`;
+		const date = Changelog.getReleaseDate(version);
+		return `# [${version}](https://github.com/oblique-bit/oblique/compare/${previousTag}...${version}) (${date})`;
+	}
+
+	private static getReleaseDate(tag: string): string {
+		return getResultFromCommand(`git show-ref --tags ${tag}`)
+			? getResultFromCommand(`git log -1 --format=%as ${tag}`)
+			: new Date().toISOString().split('T')[0];
 	}
 
 	private static getSection(commits: string[], title: string): string {
