@@ -22,19 +22,19 @@ export class Changelog {
 		throw new Error('"Changelog" may not be instantiated.');
 	}
 
-	static update(nextVersion: string, projectName: string): void {
-		const previousVersion = Changelog.getPreviousVersion();
-		Changelog.writeChangelog(Changelog.getCommits(previousVersion, projectName), previousVersion, nextVersion);
+	static addRelease(version: string, projectName: string): void {
+		const previousTag = Changelog.getPreviousTag();
+		Changelog.prependRelease(Changelog.getCommits(previousTag, projectName), previousTag, version);
 	}
 
-	private static getPreviousVersion(): string {
+	private static getPreviousTag(): string {
 		return getResultFromCommand('git describe --tags --abbrev=0');
 	}
 
-	private static getCommits(previousVersion: string, projectName: string): Commits {
+	private static getCommits(from: string, projectName: string): Commits {
 		const separator = ';;';
 		const commitSeparator = '##';
-		return getResultFromCommand(`git log --pretty=format:"%s${separator}%b${separator}%H${commitSeparator}" ${previousVersion}..HEAD`)
+		return getResultFromCommand(`git log --pretty=format:"%s${separator}%b${separator}%H${commitSeparator}" ${from}..HEAD`)
 			.replace(/\n/g, '')
 			.split(commitSeparator)
 			.filter(commit => new RegExp(`^(?:fix|feat)\\(${projectName}(?!/toolchain)`).test(commit))
@@ -81,12 +81,12 @@ export class Changelog {
 		};
 	}
 
-	private static writeChangelog(commits: Commits, previousVersion: string, nextVersion: string): void {
+	private static prependRelease(commits: Commits, previousTag: string, version: string): void {
 		if (commits.feat.length || commits.fix.length) {
 			writeFileSync(
 				'CHANGELOG.md',
 				[
-					Changelog.getTitle(nextVersion, previousVersion),
+					Changelog.getTitle(version, previousTag),
 					Changelog.getSection(commits.fix, 'Bug Fixes'),
 					Changelog.getSection(commits.feat, 'Features'),
 					Changelog.getSection(commits.breakingChanges, 'BREAKING CHANGES'),
@@ -96,9 +96,9 @@ export class Changelog {
 		}
 	}
 
-	private static getTitle(nextVersion: string, previousVersion: string): string {
+	private static getTitle(version: string, previousTag: string): string {
 		const today = new Date().toISOString().split('T')[0];
-		return `# [${nextVersion}](https://github.com/oblique-bit/oblique/compare/${previousVersion}...${nextVersion}) (${today})`;
+		return `# [${version}](https://github.com/oblique-bit/oblique/compare/${previousTag}...${version}) (${today})`;
 	}
 
 	private static getSection(commits: string[], title: string): string {
