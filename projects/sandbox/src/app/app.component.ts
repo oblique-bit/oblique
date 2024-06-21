@@ -125,6 +125,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'rxjs-operators', label: 'RxJS operators'},
 				{url: 'schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
 				{url: 'selectable', label: 'Selectable'},
+				{url: 'selectable-form', label: 'Selectable Form'},
 				{url: 'service-navigation', label: 'Service navigation'},
 				{
 					url: 'spinner',
