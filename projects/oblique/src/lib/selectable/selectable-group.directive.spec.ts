@@ -367,6 +367,15 @@ describe(ObSelectableGroupDirective.name, () => {
 						directive.focus(items[0]);
 						directive.toggle(items[0], false, true);
 					});
+					it('should expand the range when click multiple times', done => {
+						directive.selected$.pipe(skip(1), first()).subscribe(selection => {
+							expect(selection).toEqual([items[0], items[1], items[2]]);
+							done();
+						});
+						directive.focus(items[1]);
+						directive.toggle(items[1], false, true);
+						directive.toggle(items[0], false, true);
+					});
 				});
 			});
 
@@ -457,6 +466,16 @@ describe(ObSelectableGroupDirective.name, () => {
 				});
 			});
 		});
+
+		describe('undefined mode', () => {
+			it('should default to "checkbox"', done => {
+				directive.mode$.subscribe(mode => {
+					expect(mode).toBe('checkbox');
+					done();
+				});
+				directive.mode = undefined;
+			});
+		});
 	});
 
 	describe('disabled group', () => {
@@ -480,6 +499,11 @@ describe(ObSelectableGroupDirective.name, () => {
 		describe('disabled$ property', () => {
 			it('should emit true as initial value', async () => {
 				await expect(firstValueFrom(directive.disabled$)).resolves.toBe(true);
+			});
+
+			it('should reflect the value of the disabled input', async () => {
+				directive.disabled = false;
+				await expect(firstValueFrom(directive.disabled$)).resolves.toBe(false);
 			});
 		});
 
