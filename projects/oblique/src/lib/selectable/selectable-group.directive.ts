@@ -60,7 +60,7 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit {
 		return this.disabled$.getValue();
 	}
 
-	@Input({transform: booleanAttribute}) private set disabled(state: boolean) {
+	@Input({transform: booleanAttribute}) set disabled(state: boolean) {
 		this.isDisabled = state ? '' : undefined;
 		this.disabled$.next(state);
 	}
