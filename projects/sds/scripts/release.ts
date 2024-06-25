@@ -4,5 +4,5 @@ import {version} from '../../../package.json';
 import {ObliqueVersion} from './oblique-version';
 
 ObliqueVersion.updateObliqueVersion();
-Changelog.update(version, 'sds');
+Changelog.addRelease(version, 'sds');
 updatePackageJsonVersion(version);
