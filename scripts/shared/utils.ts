@@ -39,3 +39,13 @@ export function updatePackageJsonVersion(version: string): void {
 	fileContent.version = version;
 	writeFileSync('package.json', JSON.stringify(fileContent, null, 2));
 }
+
+export function updateSonarPropertiesVersion(version: string): void {
+	const filePath = 'sonar-project.properties';
+	writeFileSync(
+		filePath,
+		readFileSync(filePath)
+			.toString()
+			.replace(/(?<=sonar\.projectVersion=)\d+\.\d+\.\d+/, version)
+	);
+}

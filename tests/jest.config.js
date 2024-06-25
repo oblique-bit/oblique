@@ -5,5 +5,15 @@ globalThis.ngJest = {
 module.exports = {
 	preset: 'jest-preset-angular',
 	setupFilesAfterEnv: ['<rootDir>/tests/setupJest.ts'],
-	collectCoverage: true
+	collectCoverage: true,
+	reporters: [
+		'default',
+		[
+			'jest-sonar',
+			{
+				outputDirectory: '<rootDir>/coverage/oblique',
+				outputName: 'sqr.xml'
+			}
+		]
+	]
 };
