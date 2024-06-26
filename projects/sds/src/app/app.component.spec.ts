@@ -7,6 +7,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {CmsDataService} from './cms/cms-data.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TranslateService} from '@ngx-translate/core';
+import {of} from 'rxjs';
 
 describe('AppComponent', () => {
 	let component: AppComponent;
@@ -15,7 +16,13 @@ describe('AppComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [AppComponent, NoopAnimationsModule, RouterTestingModule, HttpClientTestingModule],
-			providers: [CmsDataService, {provide: TranslateService, useValue: {addLangs: jest.fn(), setDefaultLang: jest.fn(), use: jest.fn()}}],
+			providers: [
+				CmsDataService,
+				{
+					provide: TranslateService,
+					useValue: {addLangs: jest.fn(), setDefaultLang: jest.fn(), use: jest.fn(), stream: jest.fn().mockReturnValue(of(''))}
+				}
+			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 
