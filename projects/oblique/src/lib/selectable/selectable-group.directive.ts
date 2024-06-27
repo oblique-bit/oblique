@@ -181,7 +181,7 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit {
 		directive.selected = true;
 	}
 
-	private windowsSelect(directive: ObSelectableDirective<T>, ctrl = false, shift = false): void {
+	private windowsSelect(directive: ObSelectableDirective<T>, ctrl: boolean, shift: boolean): void {
 		if (ctrl) {
 			this.startFocused = undefined;
 			if (this.getSelected().length > 1 || !directive.selected) {
