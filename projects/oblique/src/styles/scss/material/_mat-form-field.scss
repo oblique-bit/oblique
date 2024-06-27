@@ -210,6 +210,7 @@
 			core-variables.$ob-white
 		);
 		cursor: not-allowed;
+		color: core-variables.$ob-secondary-300;
 
 		.mat-mdc-form-field-textarea-control {
 			resize: none;
