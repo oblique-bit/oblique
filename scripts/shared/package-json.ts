@@ -1,27 +1,22 @@
 import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
 import {buildPath} from './utils';
+import {StaticScript} from './static-script';
 
 export type ExportEntries = Record<string, string | Record<'sass', string>>;
 type PackageJsonContent = Record<string, unknown>;
 
-export class PackageJson {
-	private static instance: PackageJson;
+export class PackageJson extends StaticScript {
 	private content: PackageJsonContent;
 	private path: string;
 
-	// the constructor needs to be private to impede the class instantiation
-	private constructor() {
-		if (PackageJson.instance) {
-			throw new Error('The "finalize" method needs to be called before calling "initialize" again.');
-		}
-	}
-
 	static initialize(projectName: string, folder?: string): PackageJson {
 		PackageJson.instance = new PackageJson();
-		PackageJson.instance.path = buildPath('..', '..', 'dist', projectName, folder, 'package.json');
-		PackageJson.instance.content = JSON.parse(readFileSync(PackageJson.instance.path).toString()) as PackageJsonContent;
-		return PackageJson.instance;
+		(PackageJson.instance as PackageJson).path = buildPath('..', '..', 'dist', projectName, folder, 'package.json');
+		(PackageJson.instance as PackageJson).content = JSON.parse(
+			readFileSync((PackageJson.instance as PackageJson).path).toString()
+		) as PackageJsonContent;
+		return PackageJson.instance as PackageJson;
 	}
 
 	addFieldsFromRoot(...fields: string[]): PackageJson {
@@ -29,7 +24,7 @@ export class PackageJson {
 		Object.keys(rootPackage)
 			.filter(key => fields.includes(key))
 			.forEach(key => (this.content[key] = rootPackage[key]));
-		return PackageJson.instance;
+		return PackageJson.instance as PackageJson;
 	}
 
 	addExports(fields: ExportEntries): PackageJson {
@@ -37,7 +32,7 @@ export class PackageJson {
 			...(this.content.exports as object),
 			...Object.keys(fields).reduce<ExportEntries>((exports, field) => ({...exports, [field]: fields[field]}), {})
 		};
-		return PackageJson.instance;
+		return PackageJson.instance as PackageJson;
 	}
 
 	removeDependencies(dependencyType: 'devDependencies' | 'dependencies', ...dependencyNames: string[]): PackageJson {
@@ -45,21 +40,17 @@ export class PackageJson {
 		if (!Object.keys(this.content[dependencyType]).length) {
 			delete this.content[dependencyType];
 		}
-		return PackageJson.instance;
+		return PackageJson.instance as PackageJson;
 	}
 
 	removeScripts(): PackageJson {
 		delete this.content.scripts;
-		return PackageJson.instance;
+		return PackageJson.instance as PackageJson;
 	}
 
 	write(): PackageJson {
 		writeFileSync(this.path, JSON.stringify(this.content, null, 2));
-		return PackageJson.instance;
-	}
-
-	finalize(): void {
-		PackageJson.instance = undefined;
+		return PackageJson.instance as PackageJson;
 	}
 
 	private static readRootPackageJson(): PackageJsonContent {

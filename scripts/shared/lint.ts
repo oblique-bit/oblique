@@ -1,20 +1,13 @@
 import {camelToKebabCase, executeCommand} from './utils';
+import {StaticScript} from './static-script';
 
-export class Lint {
-	private static instance: Lint;
+export class Lint extends StaticScript {
 	private hasFix: boolean;
-
-	// the constructor needs to be private to impede the class instantiation
-	private constructor() {
-		if (Lint.instance) {
-			throw new Error('The "finalize" method needs to be called before calling "initialize" again.');
-		}
-	}
 
 	static initialize(hasFix: boolean): Lint {
 		Lint.instance = new Lint();
-		Lint.instance.hasFix = hasFix;
-		return Lint.instance;
+		(Lint.instance as Lint).hasFix = hasFix;
+		return Lint.instance as Lint;
 	}
 
 	esLint(files: string | string[], config?: string): Lint {
@@ -23,7 +16,7 @@ export class Lint {
 			cache: true,
 			fix: this.hasFix
 		});
-		return Lint.instance;
+		return Lint.instance as Lint;
 	}
 
 	styleLint(files: string | string[]): Lint {
@@ -32,7 +25,7 @@ export class Lint {
 			allowEmptyInput: true,
 			fix: this.hasFix
 		});
-		return Lint.instance;
+		return Lint.instance as Lint;
 	}
 
 	prettier(files: string | string[]): Lint {
@@ -43,7 +36,7 @@ export class Lint {
 			write: this.hasFix,
 			check: !this.hasFix
 		});
-		return Lint.instance;
+		return Lint.instance as Lint;
 	}
 
 	finalize(): void {
