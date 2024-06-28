@@ -16,7 +16,8 @@
     "schematics": "tsc -p schematics/tsconfig.schematics.json",
     "prerelease": "npm run update-icons",
     "release": "ts-node scripts/release.ts",
-    "update-icons": "ts-node scripts/update-icons.ts"
+    "update-icons": "ts-node scripts/update-icons.ts",
+    "tarball": "ts-node scripts/tarball.ts"
   },
   "peerDependencies": {
     "@angular/animations": "^18.0.0 || ^19.0.0",
