@@ -1,0 +1,18 @@
+@use "../../styles/scss/core/variables";
+
+:host {
+	background-color: variables.$active;
+	color: white;
+	display: flex;
+	justify-content: space-around;
+	font-size: 14px;
+	font-weight: bold;
+
+	p {
+		margin-bottom: 0;
+	}
+
+	a {
+		color: white;
+	}
+}
