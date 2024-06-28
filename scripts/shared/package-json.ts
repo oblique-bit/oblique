@@ -13,7 +13,7 @@ export class PackageJson {
 	// the constructor needs to be private to impede the class instantiation
 	private constructor() {
 		if (PackageJson.instance) {
-			throw new Error('"finalize" needs to be called in between calls to "initialize".');
+			throw new Error('The "finalize" method needs to be called before calling "initialize" again.');
 		}
 	}
 
