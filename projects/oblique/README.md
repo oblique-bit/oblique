@@ -24,6 +24,7 @@ You will find information about how to use Oblique, code samples, FAQ and many m
 - **build**: build the library; Automatically run on the CI pipeline
 - **release**: create a new release, i.e. bump version number and updates the changelog
 - **update-icons**: create icon sets and icons as CSS files, should be called whenever there is a change to any icon SVG
+- **tarball**: creates a tarball with a fresh build. If one or more paths to other projects can be passed as parameter, the tarball will be installed in those projects
 
 ## Usage
 
