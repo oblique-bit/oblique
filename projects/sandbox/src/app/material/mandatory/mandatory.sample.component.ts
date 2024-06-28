@@ -22,6 +22,7 @@ export class MandatorySampleComponent implements OnInit {
 			inputDateRequired: new FormControl<string>('', Validators.required),
 			inputDateDynamicRequired: new FormControl<string>(''),
 			inputDateOptional: new FormControl<string>(''),
+			inputDateNonRequired: new FormControl<string>(''),
 			selectRequired: new FormControl<string>('', Validators.required),
 			selectDynamicRequired: new FormControl<string>(''),
 			selectOptional: new FormControl<string>(''),
@@ -33,7 +34,8 @@ export class MandatorySampleComponent implements OnInit {
 			textareaOptional: new FormControl<string>(''),
 			matChipListRequired: new FormControl<string[]>([''], Validators.required),
 			matChipListDynamicRequired: new FormControl<string[]>(['']),
-			matChipListOptional: new FormControl<string[]>([''])
+			matChipListOptional: new FormControl<string[]>(['']),
+			matChipListNonRequired: new FormControl<string[]>([''])
 		});
 	}
 

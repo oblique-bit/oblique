@@ -17,6 +17,7 @@ export class AccordionLinksComponent implements OnChanges, OnInit {
 	@Input() accordions: Accordion[] = [];
 	@Input() idPrefix = '';
 	@Input() selectedSlug = '';
+	@Input() urlParamVersion = null;
 
 	readonly componentId = 'accordion-links';
 

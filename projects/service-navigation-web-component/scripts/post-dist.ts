@@ -1,4 +1,4 @@
-import {copyFileSync, readFileSync, readdirSync, rmSync, statSync, unlinkSync, writeFileSync} from 'fs';
+import {readFileSync, readdirSync, rmSync, statSync, unlinkSync, writeFileSync} from 'fs';
 import path from 'path';
 import {PackageJson} from '../../../scripts/shared/package-json';
 import {listFiles} from '../../../scripts/shared/utils';
@@ -55,10 +55,6 @@ export class PostDist {
 			.map(fileName => path.join(directory, fileName))
 			.filter(filePath => statSync(filePath).isDirectory())
 			.forEach(filePath => rmSync(filePath, {recursive: true}));
-	}
-
-	private static copyChangelog(): void {
-		copyFileSync('CHANGELOG.md', path.join(path.join('..', '..', 'dist', 'service-navigation-web-component', 'CHANGELOG.md')));
 	}
 }
 

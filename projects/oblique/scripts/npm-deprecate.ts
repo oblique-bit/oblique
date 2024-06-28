@@ -9,7 +9,7 @@
 //    ts-node scripts/npm-deprecate.ts 2021-11-02 6
 
 import {exit} from 'process';
-import {executeCommand} from '../../../scripts/shared/utils';
+import {executeCommand, getResultFromCommand} from '../../../scripts/shared/utils';
 
 class NpmDeprecate {
 	static perform(date: string, versions: string[]): void {
@@ -39,7 +39,7 @@ class NpmDeprecate {
 	}
 
 	private static login(): void {
-		if (executeCommand(`npm whoami`) !== 'oblique') {
+		if (getResultFromCommand(`npm whoami`) !== 'oblique') {
 			executeCommand('npm login');
 		}
 	}
@@ -53,7 +53,7 @@ class NpmDeprecate {
 	}
 
 	private static removeNextTag(): void {
-		if (executeCommand(`npm dist-tag`).includes('next')) {
+		if (getResultFromCommand(`npm dist-tag`).includes('next')) {
 			executeCommand(`npm dist-tag rm @oblique/oblique next`, true);
 		}
 	}

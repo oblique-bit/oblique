@@ -4,13 +4,14 @@ import {RouterOutlet} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {SideNavigationComponent} from './side-navigation/side-navigation.component';
 import {FeedbackButtonComponent} from './feedback/feedback-button/feedback-button.component';
+import {BannerComponent} from './banner/banner.component';
 
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss'],
 	standalone: true,
-	imports: [RouterOutlet, ObSpinnerModule, SideNavigationComponent, FeedbackButtonComponent]
+	imports: [RouterOutlet, ObSpinnerModule, SideNavigationComponent, FeedbackButtonComponent, BannerComponent]
 })
 export class AppComponent {
 	constructor() {

@@ -2,7 +2,7 @@ import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
 import {EOL} from 'os';
 import {version as currentVersion} from './../../package.json';
-import {executeCommand, listFiles} from './utils';
+import {getResultFromCommand, listFiles} from './utils';
 
 export class Banner {
 	// manually set for versions with prolonged support
@@ -49,6 +49,8 @@ export class Banner {
 	}
 
 	private static getTagDate(tag: string): string {
-		return executeCommand(`git tag -l '${tag}'`) ? executeCommand(`git show -s --format=%ci ${tag}`).split(' ')[0] : Banner.getTodayDate();
+		return getResultFromCommand(`git tag -l '${tag}'`)
+			? getResultFromCommand(`git show -s --format=%ci ${tag}`).split(' ')[0]
+			: Banner.getTodayDate();
 	}
 }

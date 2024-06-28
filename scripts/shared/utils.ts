@@ -2,10 +2,14 @@ import {execSync} from 'child_process';
 import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
 import path from 'path';
 
-export function executeCommand(command: string, showCommand = false): string {
-	if (showCommand) {
+export function executeCommand(command: string, showCommandResult = false): void {
+	if (showCommandResult) {
 		console.info(command);
 	}
+	execSync(command, showCommandResult ? {stdio: 'inherit'} : undefined);
+}
+
+export function getResultFromCommand(command: string): string {
 	return execSync(command).toString().trim();
 }
 
@@ -19,7 +23,7 @@ export function listFiles(directory: string): string[] {
 }
 
 export function hasFlag(flag: string): boolean {
-	return process.argv.some(arg => arg === flag);
+	return process.argv.some(arg => arg === `--${flag}`);
 }
 
 export function camelToKebabCase(key: string): string {
@@ -34,4 +38,14 @@ export function updatePackageJsonVersion(version: string): void {
 	const fileContent = JSON.parse(readFileSync('package.json').toString()) as Record<'version', string>;
 	fileContent.version = version;
 	writeFileSync('package.json', JSON.stringify(fileContent, null, 2));
+}
+
+export function updateSonarPropertiesVersion(version: string): void {
+	const filePath = 'sonar-project.properties';
+	writeFileSync(
+		filePath,
+		readFileSync(filePath)
+			.toString()
+			.replace(/(?<=sonar\.projectVersion=)\d+\.\d+\.\d+/, version)
+	);
 }

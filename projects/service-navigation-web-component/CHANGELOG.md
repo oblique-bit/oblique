@@ -1,33 +1,25 @@
-# [11.2.2](https://github.com/oblique-bit/oblique/compare/11.2.1...11.2.2) (2024-06-14)
-
-## Features
-
-- **service-navigation:** add `LICENSE`, `README.md` and `CHANGELOG.md` to the distribution ([1dbff54c](https://github.com/oblique-bit/oblique/commit/1dbff54c87eee0c9809a9ad8f28b3d53192e8eeb))
-- **service-navigation:** add a `release` script ([0f282a05](https://github.com/oblique-bit/oblique/commit/0f282a051fb1c8b2ebc1586726d7f1609380ad1c))
-- **service-navigation:** generate `CHANGELOG.md` ([7a7e68a4](https://github.com/oblique-bit/oblique/commit/7a7e68a4a137f21289754221b2add2aa21a88361))
-
-# [11.2.1](https://github.com/oblique-bit/oblique/compare/11.2.0...11.2.1) (2024-06-07)
-
-## Features
-
-- **service-navigation:** add `LICENSE`, `README.md` and `CHANGELOG.md` to the distribution ([1e2c4f20](https://github.com/oblique-bit/oblique/commit/1e2c4f203aa3e4883782eecfda8098e80bf32c4a))
-- **service-navigation:** generate a CHANGELOG on releases ([4caecc14](https://github.com/oblique-bit/oblique/commit/4caecc14e81952b288d0324d43d98d290b6584ce))
-- **service-navigation:** generate `CHANGELOG.md` ([dfc1af63](https://github.com/oblique-bit/oblique/commit/dfc1af6367c1ae3fb73db0d162f24150bc0b2a34))
-
-# [11.2.0](https://github.com/oblique-bit/oblique/compare/11.1.3...11.2.0) (2024-06-02)
+# [11.2.0](https://github.com/oblique-bit/oblique/compare/11.1.3...11.2.0) (2024-05-31)
 
 ## Bug Fixes
 
-- **service-navigation:** list `@angular/elements` as a `devDependency` ([0d827aee](https://github.com/oblique-bit/oblique/commit/0d827aeeea8b8418acafec141f9b3b98871b871a))
+- **toolchain:** list `@angular/elements` as a `devDependency` ([0d827aee](https://github.com/oblique-bit/oblique/commit/0d827aeeea8b8418acafec141f9b3b98871b871a))
 
 ## Features
 
-- **service-navigation:** remove `@angular/elements` from the distributed `package.json` ([d6ca432f](https://github.com/oblique-bit/oblique/commit/d6ca432f1453ef0d520cda6903fd0c3feac55ad3))
+- **toolchain:** remove `@angular/elements` from the distributed `package.json` ([d6ca432f](https://github.com/oblique-bit/oblique/commit/d6ca432f1453ef0d520cda6903fd0c3feac55ad3))
 
-# [11.1.2](https://github.com/oblique-bit/oblique/compare/11.1.1...11.1.2) (2024-06-02)
+# [11.0.0](https://github.com/oblique-bit/oblique/compare/10.3.1...11.0.0) (2024-02-22)
 
-## Bug Fixes
+## Features
 
-- **service-navigation:** ensure the banner is only added to service-navigation files ([2775d5f1](https://github.com/oblique-bit/oblique/commit/2775d5f1e6131d0b92b898be16e2066638e3f1b6))
-- **service-navigation:** fix oblique license link in the banner ([cbc401f2](https://github.com/oblique-bit/oblique/commit/cbc401f2e87d09558f5e70d464fd075a9197c4f0))
-- **service-navigation:** fix oblique documentation link in the banner ([e2928070](https://github.com/oblique-bit/oblique/commit/e2928070790ca2e3746fb8bf758d66d31f074e11))
+- **web-component:** add `handleLogout` and `logoutTriggered` ([525bd8a6](https://github.com/oblique-bit/oblique/commit/525bd8a6fe9f4257aa88ad4a29387c855525d788))
+- **web-component:** add `pamsAppId` ([ba5f4d74](https://github.com/oblique-bit/oblique/commit/ba5f4d7423855ff4f78fe2cf790ec12c3af72a8c))
+- **web-component:** add basic content projection ([f1b796b9](https://github.com/oblique-bit/oblique/commit/f1b796b95338bbe3e515d39252f449c1edab9e14))
+- **web-component:** add `loginState` event ([490185b1](https://github.com/oblique-bit/oblique/commit/490185b125a8120fa2a0a068fbc55d1530a616dc))
+- **web-component:** add `languageChange` event ([4845e64d](https://github.com/oblique-bit/oblique/commit/4845e64d16220a770895f917e7a5c4bf716a6f7c))
+- **web-component:** add `infoLinks` and `profileLinks` ([da6c39ab](https://github.com/oblique-bit/oblique/commit/da6c39ab9091587417e52d4d2cc47ffc1bc16bbc))
+- **web-component:** add `infoContact` ([9797f1fe](https://github.com/oblique-bit/oblique/commit/9797f1feebdd560ca421f362af05ee0fe3328d6a))
+- **web-component:** add display inputs ([54d355ad](https://github.com/oblique-bit/oblique/commit/54d355adc50e7b96dd0e48f1a7cade7780321e96))
+- **web-component:** add languages management ([6c8dac85](https://github.com/oblique-bit/oblique/commit/6c8dac8510ea246114f1629763cc40f70fd13f0a))
+- **web-component:** add environment and basic inputs ([0d89e2b7](https://github.com/oblique-bit/oblique/commit/0d89e2b7bfe425395e5e7026805e3033a3ba587c))
+- **web-component:** provide the service navigation as a web-component ([ecebb231](https://github.com/oblique-bit/oblique/commit/ecebb231e1be084eaba484432af18f7da2f96d5c))

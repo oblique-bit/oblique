@@ -1,3 +1,10 @@
+# [11.2.4](https://github.com/oblique-bit/oblique/compare/11.2.3...11.2.4) (2024-06-28)
+
+## Bug Fixes
+
+- **material:** ensure formfields are fully grayed when disabled ([c8f01fef](https://github.com/oblique-bit/oblique/commit/c8f01fef0fae1328b14df095ca81d2ab4d2d3405))
+- **schematics:** only run mdc-migration if angular 17 is installed ([a152f16d](https://github.com/oblique-bit/oblique/commit/a152f16d8bfbe75127ce04be0c6ccdae61d6d6b3))
+
 # [11.2.3](https://github.com/oblique-bit/oblique/compare/11.2.2...11.2.3) (2024-06-14)
 
 ## Bug Fixes
@@ -18,7 +25,7 @@
 
 ## Bug Fixes
 
-- **column-layout:** enhance toggles and panels accessibility ([04a20c5e](https://github.com/oblique-bit/oblique/commit/04a20c5ee781bf2abadd042e780d4608c1f83af1))
+- **column-layout:** enhance toggles' and panels' accessibility ([04a20c5e](https://github.com/oblique-bit/oblique/commit/04a20c5ee781bf2abadd042e780d4608c1f83af1))
 - **master-layout:** make sure main navigation menus are correctly placed ([5e6907ab](https://github.com/oblique-bit/oblique/commit/5e6907ab80b0d6f8fd01484f01aabab7a789b8eb))
 - **master-layout:** toggle backdrop if a menu is opened ([d508b5ad](https://github.com/oblique-bit/oblique/commit/d508b5ad2242183eceb9ef73abafbb4332c634f2))
 - **material:** don't show two outlines in mat-native selects ([688825a1](https://github.com/oblique-bit/oblique/commit/688825a10408c55fce796e9347be08fc49d23f2a))

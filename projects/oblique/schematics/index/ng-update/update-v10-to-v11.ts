@@ -17,9 +17,10 @@ import {
 	removeImport,
 	removeInjectionInClass,
 	replaceInFile,
-	setAngularProjectsConfig
+	setAngularProjectsConfig,
+	warn
 } from '../utils';
-import {getTemplate} from '../ng-add/ng-add-utils';
+import {getDepVersion, getTemplate} from '../ng-add/ng-add-utils';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV10Schema {}
@@ -252,10 +253,16 @@ export class UpdateV10toV11 implements ObIMigrations {
 
 	private runMDCMigration(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, `Runs the mdc-migration.`);
-			return externalSchematic('@angular/material', 'mdc-migration', {
-				components: ['all']
-			});
+			infoMigration(_context, `Check the @angular/material version before running the mdc-migration.`);
+			const angularMaterialVersion = getDepVersion(tree, '@angular/material') || '';
+			if (angularMaterialVersion.startsWith('17')) {
+				infoMigration(_context, `Runs the mdc-migration.`);
+				return externalSchematic('@angular/material', 'mdc-migration', {
+					components: ['all']
+				});
+			}
+			warn(_context, `No compatible @angular/material version found to run the mdc-migration. @angular/material@17 is needed.`);
+			return tree;
 		});
 	}
 

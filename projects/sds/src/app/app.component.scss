@@ -1,6 +1,21 @@
-@use "../styles/scss/core/mixins/layout";
-
 :host {
 	display: grid;
+	grid-template-columns: fit-content(500px) auto;
+	grid-template-rows: 50px 1fr;
+}
+
+.banner {
+	width: 100%;
+	grid-column: 1 / -1;
+	grid-row: auto;
+	border-radius: 0;
+	text-align: center;
+}
+
+.main-content {
+	grid-column: 1 / -1;
+	grid-row: 2;
+	display: grid;
 	grid-template-columns: fit-content(500px) 30fr 1fr;
+	overflow: hidden;
 }

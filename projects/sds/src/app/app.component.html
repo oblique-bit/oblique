@@ -1,4 +1,7 @@
-<app-side-navigation />
-<router-outlet />
-<ob-spinner [channel]="'main'" [fixed]="true" />
-<feedback-button />
+<app-banner class="banner" role="banner" />
+<span class="main-content">
+	<app-side-navigation />
+	<router-outlet />
+	<ob-spinner [channel]="'main'" [fixed]="true" />
+	<feedback-button />
+</span>

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, Output, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, Output, SimpleChanges, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
@@ -20,8 +20,9 @@ import {ObSelectDirective} from '@oblique/oblique';
 	standalone: true,
 	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, ObSelectDirective, MatLabel, MatTooltip]
 })
-export class VersionComponent {
+export class VersionComponent implements OnChanges {
 	@Input() idPrefix = '';
+	@Input() isDisabled = false;
 	@Output() readonly versionChanged: Observable<number>;
 
 	readonly componentId = 'version';
@@ -32,6 +33,16 @@ export class VersionComponent {
 	constructor() {
 		this.versionChanged = this.selectedVersion.valueChanges;
 		this.versions$ = this.setupVersions();
+	}
+
+	ngOnChanges(changes: SimpleChanges): void {
+		if (changes.isDisabled) {
+			if (this.isDisabled) {
+				this.selectedVersion.disable();
+			} else {
+				this.selectedVersion.enable();
+			}
+		}
 	}
 
 	private setupVersions(): Observable<VersionOption[]> {

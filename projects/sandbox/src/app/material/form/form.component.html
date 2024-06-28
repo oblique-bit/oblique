@@ -4,26 +4,26 @@
 			<label>Label</label>
 			<mat-form-field>
 				<mat-label>Default</mat-label>
-				<input type="text" matInput placeholder="Default" ngModel name="default" required />
+				<input type="text" matInput [disabled]="disabled" placeholder="Default" ngModel name="default" required />
 				<mat-hint>test</mat-hint>
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>Text prefix & suffix</mat-label>
-				<input type="text" matInput placeholder="Text prefix & suffix" ngModel name="text" required />
+				<input type="text" matInput [disabled]="disabled" placeholder="Text prefix & suffix" ngModel name="text" required />
 				<span matTextPrefix>Text Prefix</span>
 				<span matTextSuffix>Text Suffix</span>
 				<mat-hint>test</mat-hint>
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>Icon prefix & suffix</mat-label>
-				<input type="text" matInput placeholder="Icon prefix & suffix" ngModel name="icon" required />
+				<input type="text" matInput [disabled]="disabled" placeholder="Icon prefix & suffix" ngModel name="icon" required />
 				<mat-icon svgIcon="user" matIconPrefix />
 				<mat-icon svgIcon="star" matIconSuffix />
 				<mat-hint>test</mat-hint>
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>Default</mat-label>
-				<mat-select>
+				<mat-select [disabled]="disabled">
 					<mat-option [value]="1">One</mat-option>
 					<mat-option [value]="2">Two</mat-option>
 					<mat-option [value]="3">Three</mat-option>
@@ -33,17 +33,17 @@
 			</mat-form-field>
 			<mat-form-field class="ms-fix">
 				<mat-label>Datepicker</mat-label>
-				<input matInput [matDatepicker]="picker" />
+				<input matInput [disabled]="disabled" [matDatepicker]="picker" />
 				<mat-datepicker-toggle matSuffix [for]="picker" />
 				<mat-datepicker #picker />
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>Default</mat-label>
-				<textarea matInput placeholder="Default"></textarea>
+				<textarea matInput [disabled]="disabled" placeholder="Default"></textarea>
 			</mat-form-field>
-			<mat-checkbox>Default</mat-checkbox>
+			<mat-checkbox [disabled]="disabled">Default</mat-checkbox>
 			<mat-radio-group>
-				<mat-radio-button value="1">Default</mat-radio-button>
+				<mat-radio-button [disabled]="disabled" value="1">Default</mat-radio-button>
 			</mat-radio-group>
 		</form>
 	</ng-container>
@@ -57,5 +57,6 @@
 			</mat-select>
 		</mat-form-field>
 		<mat-slide-toggle [(ngModel)]="inline">Inline</mat-slide-toggle>
+		<mat-slide-toggle [(ngModel)]="disabled">Disabled</mat-slide-toggle>
 	</ng-container>
 </ob-column-layout>

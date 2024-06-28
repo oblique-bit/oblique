@@ -1,5 +1,5 @@
 import {readFileSync, writeFileSync} from 'fs';
-import {executeCommand} from './utils';
+import {getResultFromCommand} from './utils';
 
 type CommitType = 'fix' | 'feat';
 
@@ -22,19 +22,28 @@ export class Changelog {
 		throw new Error('"Changelog" may not be instantiated.');
 	}
 
-	static update(nextVersion: string, projectName: string): void {
-		const previousVersion = Changelog.getPreviousVersion();
-		Changelog.writeChangelog(Changelog.getCommits(previousVersion, projectName), previousVersion, nextVersion);
+	static addRelease(version: string, projectName: string): void {
+		const previousTag = Changelog.getPreviousTag();
+		Changelog.prependRelease(Changelog.getCommits(previousTag, 'HEAD', projectName), previousTag, version);
 	}
 
-	private static getPreviousVersion(): string {
-		return executeCommand('git describe --tags --abbrev=0');
+	static generate(projectName: string): void {
+		getResultFromCommand(' git tag --sort v:refname')
+			.split('\n')
+			.filter(tag => /^\d+\.\d+\.\d+$/.test(tag))
+			.map((tag, index, tags) => ({from: tag, to: tags[index + 1]}))
+			.filter(({to}) => !!to)
+			.forEach(({from, to}) => Changelog.prependRelease(Changelog.getCommits(from, to, projectName), from, to));
 	}
 
-	private static getCommits(previousVersion: string, projectName: string): Commits {
+	private static getPreviousTag(): string {
+		return getResultFromCommand('git describe --tags --abbrev=0');
+	}
+
+	private static getCommits(from: string, to: string, projectName: string): Commits {
 		const separator = ';;';
 		const commitSeparator = '##';
-		return executeCommand(`git log --pretty=format:"%s${separator}%b${separator}%H${commitSeparator}" ${previousVersion}..HEAD`)
+		return getResultFromCommand(`git log --pretty=format:"%s${separator}%b${separator}%H${commitSeparator}" ${from}..${to}`)
 			.replace(/\n/g, '')
 			.split(commitSeparator)
 			.filter(commit => new RegExp(`^(?:fix|feat)\\(${projectName}(?!/toolchain)`).test(commit))
@@ -81,12 +90,12 @@ export class Changelog {
 		};
 	}
 
-	private static writeChangelog(commits: Commits, previousVersion: string, nextVersion: string): void {
+	private static prependRelease(commits: Commits, previousTag: string, version: string): void {
 		if (commits.feat.length || commits.fix.length) {
 			writeFileSync(
 				'CHANGELOG.md',
 				[
-					Changelog.getTitle(nextVersion, previousVersion),
+					Changelog.getTitle(version, previousTag),
 					Changelog.getSection(commits.fix, 'Bug Fixes'),
 					Changelog.getSection(commits.feat, 'Features'),
 					Changelog.getSection(commits.breakingChanges, 'BREAKING CHANGES'),
@@ -96,9 +105,13 @@ export class Changelog {
 		}
 	}
 
-	private static getTitle(nextVersion: string, previousVersion: string): string {
-		const today = new Date().toISOString().split('T')[0];
-		return `# [${nextVersion}](https://github.com/oblique-bit/oblique/compare/${previousVersion}...${nextVersion}) (${today})`;
+	private static getTitle(version: string, previousTag: string): string {
+		const date = Changelog.getReleaseDate();
+		return `# [${version}](https://github.com/oblique-bit/oblique/compare/${previousTag}...${version}) (${date})`;
+	}
+
+	private static getReleaseDate(): string {
+		return new Date().toISOString().split('T')[0];
 	}
 
 	private static getSection(commits: string[], title: string): string {

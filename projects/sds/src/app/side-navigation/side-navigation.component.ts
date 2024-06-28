@@ -1,14 +1,13 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatIcon} from '@angular/material/icon';
 import {CmsDataService} from '../cms/cms-data.service';
-import {BehaviorSubject, Observable, Subscription, combineLatestWith, debounceTime, filter, forkJoin, map, of, switchMap, take} from 'rxjs';
+import {BehaviorSubject, Observable, combineLatestWith, debounceTime, filter, forkJoin, map, of, startWith, switchMap, tap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
-import {Logo} from './side-navigation.model';
 import {Accordion, Link} from './accordion-links/accordion-links.model';
 import {AccordionComposer} from './utils/accordion-composer';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -37,81 +36,68 @@ import {ImageComponent} from './image/image.component';
 		MatPrefix
 	]
 })
-export class SideNavigationComponent implements OnInit, OnDestroy {
+export class SideNavigationComponent {
 	readonly componentId = 'side-navigation';
+	readonly search = new FormControl('');
 
-	readonly logo: Logo = {
-		alt: 'Swiss Confederation Logo',
-		height: 64,
-		width: 259,
-		ngSrc: '../assets/images/SwissConfederationLogo.svg'
-	};
+	filteredAccordions$: Observable<Accordion[]>;
+	selectedSlug$: Observable<string | undefined>;
+	urlParamVersion$: Observable<number | undefined>;
 
-	search = new FormControl('');
+	private readonly version$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
+	private readonly activatedRoute = inject(ActivatedRoute);
+	private readonly cmsDataService = inject(CmsDataService);
+	private readonly router = inject(Router);
+	private readonly slugToIdService = inject(SlugToIdService);
 
-	filteredAccordions$: BehaviorSubject<Accordion[]> = new BehaviorSubject<Accordion[]>([]);
-	searchText$: BehaviorSubject<string> = new BehaviorSubject<string>('');
-	selectedSlug$: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
-	version$: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
-
-	private readonly accordions$: BehaviorSubject<Accordion[]> = new BehaviorSubject<Accordion[]>([]);
-	private readonly subscriptions: Subscription[] = [];
-
-	// eslint-disable-next-line max-params
-	constructor(
-		private readonly activatedRoute: ActivatedRoute,
-		private readonly cmsDataService: CmsDataService,
-		private readonly router: Router,
-		private readonly slugToIdService: SlugToIdService
-	) {}
-
-	ngOnInit(): void {
-		this.prepareAccordions();
-
-		this.subscriptions.push(
-			this.getSelectedSlug(this.activatedRoute)
-				.pipe(take(1))
-				.subscribe(selectedSlug => this.selectedSlug$.next(selectedSlug)),
-			this.router.events
-				.pipe(
-					filter(event => event instanceof NavigationEnd),
-					map(() => this.activatedRoute),
-					switchMap(activatedRoute => this.getSelectedSlug(activatedRoute))
-				)
-				.subscribe(selectedSlug => {
-					this.selectedSlug$.next(selectedSlug);
-				}),
-			this.accordions$
-				.pipe(combineLatestWith(this.searchText$, this.version$))
-				.subscribe(([accordions, searchText, versionId]) =>
-					this.filteredAccordions$.next(this.getAccordionsMatchingSearchTextAndVersion(accordions, searchText, versionId))
-				),
-			this.search.valueChanges.pipe(debounceTime(300)).subscribe(searchText => {
-				this.searchText$.next(searchText ?? '');
-			})
-		);
-	}
-
-	ngOnDestroy(): void {
-		this.subscriptions.forEach(subscription => subscription.unsubscribe());
+	constructor() {
+		this.urlParamVersion$ = this.prepareUrlParams();
+		this.selectedSlug$ = this.prepareSelectedSlug();
+		this.filteredAccordions$ = this.prepareAccordions();
 	}
 
 	updateVersion(version?: number): void {
 		this.version$.next(version);
 	}
 
-	private prepareAccordions(): void {
-		this.subscriptions.push(
-			forkJoin({
-				categories: this.cmsDataService.getCategories(),
-				tabbedPages: this.cmsDataService.getTabbedPagesShort(),
-				textPages: this.cmsDataService.getTextPagesShort()
-			})
-				.pipe(map(value => AccordionComposer.composeAccordions(value)))
-				.subscribe(accordions => {
-					this.accordions$.next(accordions);
-					this.setUpSlugToIdServiceDataSet(accordions);
-				})
+	private prepareAccordions(): Observable<Accordion[]> {
+		return forkJoin({
+			categories: this.cmsDataService.getCategories(),
+			tabbedPages: this.cmsDataService.getTabbedPagesShort(),
+			textPages: this.cmsDataService.getTextPagesShort()
+		}).pipe(
+			map(value => AccordionComposer.composeAccordions(value)),
+			tap(accordions => this.setUpSlugToIdServiceDataSet(accordions)),
+			combineLatestWith(this.prepareSearchText(), this.version$, this.urlParamVersion$),
+			map(([accordions, searchText, versionId, urlParamVersion]) =>
+				this.getAccordionsMatchingSearchTextAndVersion(accordions, searchText, versionId, urlParamVersion)
+			),
+			startWith([])
+		);
+	}
+
+	private prepareSearchText(): Observable<string> {
+		return this.search.valueChanges.pipe(
+			debounceTime(300),
+			map(searchText => searchText ?? ''),
+			startWith('')
+		);
+	}
+
+	private prepareUrlParams(): Observable<number> {
+		return this.router.events.pipe(
+			filter(event => event instanceof NavigationEnd),
+			map(() => this.activatedRoute),
+			map(activatedRoute => this.getVersionFromUrlParam(activatedRoute))
+		);
+	}
+
+	private prepareSelectedSlug(): Observable<string> {
+		return this.router.events.pipe(
+			filter(event => event instanceof NavigationEnd),
+			startWith(undefined),
+			map(() => this.activatedRoute),
+			switchMap(activatedRoute => this.getSelectedSlug(activatedRoute))
 		);
 	}
 
@@ -134,11 +120,16 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 			: accordions;
 	}
 
-	private getAccordionsMatchingSearchTextAndVersion(accordions: Accordion[], searchText?: string, version?: number): Accordion[] {
+	private getAccordionsMatchingSearchTextAndVersion(
+		accordions: Accordion[],
+		searchText?: string,
+		dropDownVersion?: number,
+		urlParamVersion?: number
+	): Accordion[] {
 		return this.getAccordionsMatchingSearchText(accordions, searchText)
 			.map(accordion => ({
 				...accordion,
-				links: this.getNewestLinksForVersion(accordion, version)
+				links: this.getNewestLinksForVersion(accordion, urlParamVersion ?? dropDownVersion)
 			}))
 			.filter(accordion => accordion.links.length > 0);
 	}
@@ -159,5 +150,9 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
 		return accordion.links.filter(
 			link => (!link.minVersion || link.minVersion <= (version ?? 9999)) && (!link.maxVersion || link.maxVersion >= (version ?? -1))
 		);
+	}
+
+	private getVersionFromUrlParam(activatedRoute?: ActivatedRoute): number | undefined {
+		return +activatedRoute.snapshot.queryParamMap.get('version') || undefined;
 	}
 }
