@@ -4,8 +4,9 @@ import {CopyFiles} from '../../../scripts/shared/copy-files';
 import {adaptReadmeLinks, executeCommand, listFiles} from '../../../scripts/shared/utils';
 import {ExportEntries, PackageJson} from '../../../scripts/shared/package-json';
 import {Banner} from '../../../scripts/shared/banner';
+import {StaticScript} from '../../../scripts/shared/static-script';
 
-class PostDist {
+class PostDist extends StaticScript {
 	static perform(): void {
 		PostDist.copyDistFiles();
 		PostDist.renameDistribution();

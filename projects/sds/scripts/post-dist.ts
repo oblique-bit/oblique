@@ -1,7 +1,8 @@
 import path from 'path';
 import {CopyFiles} from '../../../scripts/shared/copy-files';
+import {StaticScript} from '../../../scripts/shared/static-script';
 
-class PostDist {
+class PostDist extends StaticScript {
 	static perform(): void {
 		const source = path.join('src', 'nginx');
 		const destination = path.join('nginx', 'conf', 'includes');

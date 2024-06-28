@@ -10,8 +10,9 @@
 
 import {exit} from 'process';
 import {executeCommand, getResultFromCommand} from '../../../scripts/shared/utils';
+import {StaticScript} from '../../../scripts/shared/static-script';
 
-class NpmDeprecate {
+class NpmDeprecate extends StaticScript {
 	static perform(date: string, versions: string[]): void {
 		if (!NpmDeprecate.isDateValid(date) || !versions.length || !NpmDeprecate.areVersionsValid(versions)) {
 			console.error(`This script needs at least 2 arguments and will deprecate, either a list of pre-versions under the "next" tag, or all versions of a major version under the "latest" tag.

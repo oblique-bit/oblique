@@ -1,8 +1,9 @@
 import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
 import {executeCommand, getResultFromCommand} from './shared/utils';
+import {StaticScript} from './shared/static-script';
 
-class UpdateDependencies {
+class UpdateDependencies extends StaticScript {
 	private static readonly packageJsonPath = path.join('projects', 'oblique', 'package.json');
 	static perform(): void {
 		const peerDependencies = UpdateDependencies.savePeerDependencies();

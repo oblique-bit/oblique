@@ -1,7 +1,8 @@
 import {executeCommand} from './shared/utils';
+import {StaticScript} from './shared/static-script';
 import {readFileSync, writeFileSync} from 'fs';
 
-class Troubleshoot {
+class Troubleshoot extends StaticScript {
 	static perform(): void {
 		Troubleshoot.createTroubleshootBranch();
 		Troubleshoot.adaptJenkinsFile('Jenkinsfile');

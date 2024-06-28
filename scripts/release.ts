@@ -1,8 +1,9 @@
 import {execSync} from 'child_process';
 import {readFileSync, writeFileSync} from 'fs';
 import {executeCommand} from './shared/utils';
+import {StaticScript} from './shared/static-script';
 
-class Release {
+class Release extends StaticScript {
 	static perform(): void {
 		const {version, issue} = Release.parseBranchName();
 		executeCommand(`npm version ${version}`, true);

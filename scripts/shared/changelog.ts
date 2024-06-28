@@ -1,5 +1,6 @@
 import {readFileSync, writeFileSync} from 'fs';
 import {getResultFromCommand} from './utils';
+import {StaticScript} from './static-script';
 
 type CommitType = 'fix' | 'feat';
 
@@ -17,11 +18,7 @@ interface Commit {
 	hash: string;
 }
 
-export class Changelog {
-	constructor() {
-		throw new Error('"Changelog" may not be instantiated.');
-	}
-
+export class Changelog extends StaticScript {
 	static addRelease(version: string, projectName: string): void {
 		const previousTag = Changelog.getPreviousTag();
 		Changelog.prependRelease(Changelog.getCommits(previousTag, 'HEAD', projectName), previousTag, version);

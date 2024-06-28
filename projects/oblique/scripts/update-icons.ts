@@ -1,8 +1,9 @@
 import {readFileSync, readdirSync, writeFileSync} from 'fs';
 import path from 'path';
 import {executeCommand} from '../../../scripts/shared/utils';
+import {StaticScript} from '../../../scripts/shared/static-script';
 
-class Icons {
+class Icons extends StaticScript {
 	static perform(): void {
 		const SVGs = Icons.getSVGs('icons');
 		Icons.writeIconSet(path.join('src', 'assets', 'obliqueIcons.svg'), SVGs);
