@@ -1,6 +1,6 @@
 import {readFileSync, writeFileSync} from 'fs';
-import {getResultFromCommand} from './utils';
 import {StaticScript} from './static-script';
+import {Git} from './git';
 
 type CommitType = 'fix' | 'feat';
 
@@ -20,12 +20,12 @@ interface Commit {
 
 export class Changelog extends StaticScript {
 	static addRelease(version: string, projectName: string): void {
-		const previousTag = Changelog.getPreviousTag();
+		const previousTag = Git.getLatestTag();
 		Changelog.prependRelease(Changelog.getCommits(previousTag, 'HEAD', projectName), previousTag, version);
 	}
 
 	static generate(projectName: string): void {
-		getResultFromCommand(' git tag --sort v:refname')
+		Git.listExistingTags()
 			.split('\n')
 			.filter(tag => /^\d+\.\d+\.\d+$/.test(tag))
 			.map((tag, index, tags) => ({from: tag, to: tags[index + 1]}))
@@ -33,14 +33,10 @@ export class Changelog extends StaticScript {
 			.forEach(({from, to}) => Changelog.prependRelease(Changelog.getCommits(from, to, projectName), from, to));
 	}
 
-	private static getPreviousTag(): string {
-		return getResultFromCommand('git describe --tags --abbrev=0');
-	}
-
 	private static getCommits(from: string, to: string, projectName: string): Commits {
 		const separator = ';;';
 		const commitSeparator = '##';
-		return getResultFromCommand(`git log --pretty=format:"%s${separator}%b${separator}%H${commitSeparator}" ${from}..${to}`)
+		return Git.listCommits(['subject', 'body', 'hash'], separator, commitSeparator, from, to)
 			.replace(/\n/g, '')
 			.split(commitSeparator)
 			.filter(commit => new RegExp(`^(?:fix|feat)\\(${projectName}(?!/toolchain)`).test(commit))
@@ -108,9 +104,7 @@ export class Changelog extends StaticScript {
 	}
 
 	private static getReleaseDate(tag: string): string {
-		return getResultFromCommand(`git tag -l ${tag}`)
-			? getResultFromCommand(`git log -1 --format=%as ${tag}`)
-			: new Date().toISOString().split('T')[0];
+		return Git.doTagExist(tag) ? Git.getTagDate(tag) : new Date().toISOString().split('T')[0];
 	}
 
 	private static getSection(commits: string[], title: string): string {

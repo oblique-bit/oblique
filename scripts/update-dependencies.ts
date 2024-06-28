@@ -1,7 +1,8 @@
 import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
-import {executeCommand, getResultFromCommand} from './shared/utils';
+import {executeCommand} from './shared/utils';
 import {StaticScript} from './shared/static-script';
+import {Git} from './shared/git';
 
 class UpdateDependencies extends StaticScript {
 	private static readonly packageJsonPath = path.join('projects', 'oblique', 'package.json');
@@ -35,8 +36,8 @@ class UpdateDependencies extends StaticScript {
 	}
 
 	private static commit(): void {
-		const issueNumber = (/OUI-\d+/.exec(getResultFromCommand('git branch --show-current')) ?? [])[0];
-		executeCommand(`git commit -am "chore(toolchain): update dependencies and refactor accordingly" -m "${issueNumber}"`);
+		const issueNumber = (/OUI-\d+/.exec(Git.getBranchName()) ?? [])[0];
+		Git.commit('chore(toolchain): update dependencies and refactor accordingly', issueNumber);
 	}
 }
 

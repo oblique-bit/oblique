@@ -2,8 +2,9 @@ import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
 import {EOL} from 'os';
 import {version as currentVersion} from './../../package.json';
-import {getResultFromCommand, listFiles} from './utils';
+import {listFiles} from './utils';
 import {StaticScript} from './static-script';
+import {Git} from './git';
 
 export class Banner extends StaticScript {
 	// manually set for versions with prolonged support
@@ -46,8 +47,6 @@ export class Banner extends StaticScript {
 	}
 
 	private static getTagDate(tag: string): string {
-		return getResultFromCommand(`git tag -l '${tag}'`)
-			? getResultFromCommand(`git show -s --format=%ci ${tag}`).split(' ')[0]
-			: Banner.getTodayDate();
+		return Git.doTagExist(tag) ? Git.getTagDate(tag) : Banner.getTodayDate();
 	}
 }
