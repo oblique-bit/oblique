@@ -1,3 +1,10 @@
+# [11.2.4](https://github.com/oblique-bit/oblique/compare/11.2.3...11.2.4) (2024-06-28)
+
+## Bug Fixes
+
+- **material:** ensure formfields are fully grayed when disabled ([c8f01fef](https://github.com/oblique-bit/oblique/commit/c8f01fef0fae1328b14df095ca81d2ab4d2d3405))
+- **schematics:** only run mdc-migration if angular 17 is installed ([a152f16d](https://github.com/oblique-bit/oblique/commit/a152f16d8bfbe75127ce04be0c6ccdae61d6d6b3))
+
 # [11.2.3](https://github.com/oblique-bit/oblique/compare/11.2.2...11.2.3) (2024-06-14)
 
 ## Bug Fixes

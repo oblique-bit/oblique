@@ -1,3 +1,13 @@
+# [11.2.4](https://github.com/oblique-bit/oblique/compare/11.2.3...11.2.4) (2024-06-28)
+
+## Bug Fixes
+
+- **material:** add missing formControls to the mandatory example ([449b91b3](https://github.com/oblique-bit/oblique/commit/449b91b3fbfa1c372c59f2a2ab862e5b6dbfc1db))
+
+## Features
+
+- **material:** show disabled state in the form example ([f1e70719](https://github.com/oblique-bit/oblique/commit/f1e707197bbe01a1e43dbb805d095c8cc00d03ca))
+
 # [11.2.2](https://github.com/oblique-bit/oblique/compare/11.2.1...11.2.2) (2024-06-14)
 
 ## Features

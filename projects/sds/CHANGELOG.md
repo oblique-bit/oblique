@@ -1,3 +1,23 @@
+# [11.2.4](https://github.com/oblique-bit/oblique/compare/11.2.3...11.2.4) (2024-06-28)
+
+## Bug Fixes
+
+- **code-examples:** update link to new stackblitz unsaved changes example ([4ce4b9df](https://github.com/oblique-bit/oblique/commit/4ce4b9dfc8a53b77f8ee620beff58b984a6dd2f4))
+- **code-examples:** update link to new stackblitz master layout example ([ece66f36](https://github.com/oblique-bit/oblique/commit/ece66f366fd457d78eb23a452c117773a139aadb))
+- **code-examples:** update link to new stackblitz translations example ([b7dbb9a4](https://github.com/oblique-bit/oblique/commit/b7dbb9a4b8d1fe0114fd5a8115cf6a8b66f3e1c1))
+- **code-examples:** update link to new stackblitz date pipe example ([955f5b69](https://github.com/oblique-bit/oblique/commit/955f5b69b03281797a6710a2584e9983d1500c40))
+- **code-examples:** update link to new stackblitz unknown route example ([c4513de2](https://github.com/oblique-bit/oblique/commit/c4513de2165c6f8a817e0c0e87e93ec26dfbd7a0))
+- **code-examples:** update link to new stackblitz setLocaleOnAdapter() example ([37348001](https://github.com/oblique-bit/oblique/commit/373480018292ff055021f0ff34e6c53ebad74d47))
+- **code-examples:** update link to new stackblitz breadcrumb example ([b69fd0dc](https://github.com/oblique-bit/oblique/commit/b69fd0dc356abbdeb0b6ce2f0ae0d9e0d43ed184))
+- **code-examples:** update link to new stackblitz column layout example ([b16cd2ea](https://github.com/oblique-bit/oblique/commit/b16cd2ea29256d66f55f4a371c518b77ebea3515))
+- **code-examples:** update link to new stackblitz banner example ([25520008](https://github.com/oblique-bit/oblique/commit/25520008083a21781fbb3da1b4f12f4ca58ad3b2))
+- **code-examples:** update link to new stackblitz off canvas example ([2334cf07](https://github.com/oblique-bit/oblique/commit/2334cf07bccd4d9189d41b1de8594f3e9776ca62))
+- **side-navigation:** avoid mixing template driven and reactive forms on the version control ([d3a1256b](https://github.com/oblique-bit/oblique/commit/d3a1256b3fc3d077d9225e15c18b1a670822128e))
+
+## Features
+
+- **sds:** add banner for disability pride month ([4517e9cf](https://github.com/oblique-bit/oblique/commit/4517e9cf69b3371a226bacb1f404b213dd8e744f))
+
 # [11.2.2](https://github.com/oblique-bit/oblique/compare/11.2.1...11.2.2) (2024-06-14)
 
 ## Bug Fixes

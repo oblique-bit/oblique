@@ -106,14 +106,12 @@ export class Changelog {
 	}
 
 	private static getTitle(version: string, previousTag: string): string {
-		const date = Changelog.getReleaseDate(version);
+		const date = Changelog.getReleaseDate();
 		return `# [${version}](https://github.com/oblique-bit/oblique/compare/${previousTag}...${version}) (${date})`;
 	}
 
-	private static getReleaseDate(tag: string): string {
-		return getResultFromCommand(`git show-ref --tags ${tag}`)
-			? getResultFromCommand(`git log -1 --format=%as ${tag}`)
-			: new Date().toISOString().split('T')[0];
+	private static getReleaseDate(): string {
+		return new Date().toISOString().split('T')[0];
 	}
 
 	private static getSection(commits: string[], title: string): string {
