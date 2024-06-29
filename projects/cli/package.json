@@ -5,6 +5,8 @@
   "scripts": {
     "lint": "ts-node scripts/lint.ts",
     "format": "npm run lint -- --fix",
+    "test": "jest",
+    "test-ci": "jest",
     "build": "tsc -p tsconfig.app.json"
   }
 }

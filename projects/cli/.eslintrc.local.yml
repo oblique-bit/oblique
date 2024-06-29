@@ -5,4 +5,5 @@ overrides:
     parserOptions:
       project:
         - tsconfig.app.json
+        - tsconfig.spec.json
         - tsconfig.scripts.json
