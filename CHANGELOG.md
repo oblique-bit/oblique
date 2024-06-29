@@ -1,3 +1,4 @@
+- [Design System](projects%2Fdesign-system%2FCHANGELOG.md)
 - [Oblique](projects%2Foblique%2FCHANGELOG.md)
 - [Sandbox](projects%2Fsandbox%2FCHANGELOG.md)
 - [SDS](projects%2Fsds%2FCHANGELOG.md)
