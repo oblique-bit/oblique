@@ -1,0 +1,8 @@
+{
+  "name": "@oblique/cli",
+  "version": "11.2.4",
+  "description": "CLI to generate and update a new Angular application with the Oblique library",
+  "scripts": {
+    "build": "tsc -p tsconfig.app.json"
+  }
+}
