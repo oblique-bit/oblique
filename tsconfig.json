@@ -14,7 +14,8 @@
     "lib": ["es2016", "dom"],
     "paths": {
       "@oblique/oblique": ["projects/oblique/src/public_api"],
-      "@oblique/*": ["projects/oblique/src/lib/*"]
+      "@oblique/*": ["projects/oblique/src/lib/*"],
+      "@oblique/design-system": ["projects/design-system/src/public-api"]
     },
     "resolveJsonModule": true,
     "useDefineForClassFields": false
