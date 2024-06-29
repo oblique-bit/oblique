@@ -14,6 +14,8 @@ You will find information about how to use Oblique, its CLI, code samples, FAQ a
 
 ## Scripts
 
+- **lint**: lints the project with EsLint and Prettier; Automatically run on the CI pipeline
+- **format**: same as lint, but with autofix parameter
 - **build**: build CLI; Automatically run on the CI pipeline
 
 ## Usage
