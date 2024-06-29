@@ -31,7 +31,8 @@
     "hook-commit-msg": "ts-node scripts/husky/hook.commit-rules.ts",
     "hook-post-checkout": "ts-node scripts/husky/dependency-update.ts",
     "prepare": "husky install",
-    "release": "ts-node scripts/release.ts"
+    "release": "ts-node scripts/release.ts",
+    "troubleshoot": "ts-node scripts/troubleshoot.ts"
   },
   "engines": {
     "node": ">=18.13.0"
