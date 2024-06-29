@@ -49,3 +49,15 @@ export function updateSonarPropertiesVersion(version: string): void {
 			.replace(/(?<=sonar\.projectVersion=)\d+\.\d+\.\d+/, version)
 	);
 }
+
+export function adaptReadmeLinks(project: string): void {
+	const filePath = path.join('..', '..', 'dist', project, 'README.md');
+	writeFileSync(
+		filePath,
+		readFileSync(filePath)
+			.toString()
+			.replace('../../README.md)', 'https://github.com/oblique-bit/oblique/blob/master/README.md) on GitHub')
+			.replace('../../CONTRIBUTING.md)', 'https://github.com/oblique-bit/oblique/blob/master/CONTRIBUTING.md) on GitHub')
+			.replace('../../LICENSE', 'LICENSE')
+	);
+}
