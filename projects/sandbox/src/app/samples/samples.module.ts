@@ -74,6 +74,7 @@ import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-
 import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
 import {MultiTranslateLoaderSampleComponent} from './multi-translate-loader/multi-translate-loader-sample.component';
 import {SelectableSampleComponent} from './selectable/selectable-sample.component';
+import {SelectableFormSampleComponent} from './selectable-form/selectable-form-sample.component';
 import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
 import {LanguageSampleComponent} from './language/language-sample.component';
 import {PopoverComponent} from './popover/popover.component';
@@ -169,6 +170,7 @@ import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.
 		PopoverComponent,
 		RxjsOperatorsComponent,
 		SchemaValidationSampleComponent,
+		SelectableFormSampleComponent,
 		SelectableSampleComponent,
 		ServiceNavigationSampleComponent,
 		SpinnerSampleComponent,
