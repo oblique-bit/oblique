@@ -7,7 +7,7 @@
     "format": "npm run lint -- --fix",
     "test": "jest",
     "test-ci": "jest",
-    "build": "tsc -p tsconfig.app.json",
+    "build": "tsc -p tsconfig.app.json && ts-node scripts/post-build.ts",
     "release": "ts-node scripts/release.ts"
   }
 }
