@@ -3,7 +3,9 @@
   "version": "11.2.4",
   "scripts": {
     "lint": "ts-node scripts/lint.ts",
-    "format": "ts-node scripts/lint.ts --fix"
+    "format": "ts-node scripts/lint.ts --fix",
+    "test": "cd ../.. && ng test design-system",
+    "test-ci": "cd ../.. && ng run design-system:test:ci"
   },
   "peerDependencies": {
     "@angular/cdk": "^17.0.0 || ^18.0.0",

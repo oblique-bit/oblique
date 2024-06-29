@@ -18,6 +18,8 @@ You will find information about how to use Oblique, code samples, FAQ and many m
 
 - **lint**: lints the projects with EsLint, StyleLint and Prettier; Automatically run on the CI pipeline
 - **format**: same as lint, but with autofix parameter
+- **test**: run all tests and collects coverage
+- **test-ci**: same as test, but an additional Sonar report is generated; Automatically run on the CI pipeline
 
 ## Usage
 
