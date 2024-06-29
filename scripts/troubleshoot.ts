@@ -22,7 +22,8 @@ class Troubleshoot {
 					/(?<=branches = \[\s\t\t).*(?=\s\t])/ms,
 					`troubleshoot: [
 			build: 'npm run build -w projects/sds',
-			cloudFoundry: [[project: 'sds', space: 'prod']]
+			cloudFoundry: [[project: 'sds', space: 'prod']],
+			gitTag: 'origin/master'
 		]`
 				)
 		);
