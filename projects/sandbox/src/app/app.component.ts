@@ -36,6 +36,7 @@ export class AppComponent implements OnDestroy {
 		},
 		{url: 'http://www.google.ch', label: 'Google', icon: ObEIcon.SEARCH},
 		{url: 'http://www.google.ch', label: 'Google sameTarget', sameTarget: true},
+		{url: 'design-system', label: 'Design System', children: [{url: '', label: 'Demo'}]},
 		{
 			url: 'samples',
 			label: 'i18n.routes.samples.title',

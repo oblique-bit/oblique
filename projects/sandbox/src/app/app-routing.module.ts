@@ -10,6 +10,7 @@ const appRoutes: Routes = [
 	{path: 'material', loadChildren: () => import('./material/material.module').then(module => module.MaterialModule)},
 	{path: 'styles', loadChildren: () => import('./styles/styles.module').then(module => module.StylesModule)},
 	{path: 'starterkit', loadChildren: () => import('./starterkit/starterkit.module').then(module => module.StarterkitModule)},
+	{path: 'design-system', loadChildren: () => import('./design-system/design-system.module').then(module => module.DesignSystemModule)},
 	{path: '', redirectTo: 'home', pathMatch: 'full'},
 	{path: '**', redirectTo: 'unknown-route'}
 ];
