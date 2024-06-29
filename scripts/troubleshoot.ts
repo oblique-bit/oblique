@@ -23,7 +23,12 @@ class Troubleshoot {
 					`troubleshoot: [
 			build: 'npm run build -w projects/sds',
 			cloudFoundry: [[project: 'sds', space: 'prod']],
-			gitTag: 'origin/master'
+			gitTag: 'origin/master',
+			gitPush: [
+				credentialId: 'githubObliqueCredentials',
+				repository: 'https://github.com/oblique-bit/oblique.git',
+				branch: 'master'
+			]
 		]`
 				)
 		);
