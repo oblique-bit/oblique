@@ -1,6 +1,10 @@
 {
   "name": "@oblique/design-system",
   "version": "11.2.4",
+  "scripts": {
+    "lint": "ts-node scripts/lint.ts",
+    "format": "ts-node scripts/lint.ts --fix"
+  },
   "peerDependencies": {
     "@angular/cdk": "^17.0.0 || ^18.0.0",
     "@angular/common": "^17.0.0 || ^18.0.0",

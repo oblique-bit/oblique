@@ -16,6 +16,9 @@ You will find information about how to use Oblique, code samples, FAQ and many m
 
 ## Scripts
 
+- **lint**: lints the projects with EsLint, StyleLint and Prettier; Automatically run on the CI pipeline
+- **format**: same as lint, but with autofix parameter
+
 ## Usage
 
 Install Oblique's Design System with
