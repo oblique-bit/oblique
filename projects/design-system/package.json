@@ -6,7 +6,8 @@
     "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test design-system",
     "test-ci": "cd ../.. && ng run design-system:test:ci",
-    "build": "ng build design-system && ts-node scripts/post-build.ts"
+    "build": "ng build design-system && ts-node scripts/post-build.ts",
+    "release": "ts-node scripts/release.ts"
   },
   "peerDependencies": {
     "@angular/cdk": "^17.0.0 || ^18.0.0",
