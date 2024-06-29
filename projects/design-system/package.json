@@ -1,0 +1,18 @@
+{
+  "name": "@oblique/design-system",
+  "version": "11.2.4",
+  "peerDependencies": {
+    "@angular/cdk": "^17.0.0 || ^18.0.0",
+    "@angular/common": "^17.0.0 || ^18.0.0",
+    "@angular/core": "^17.0.0 || ^18.0.0",
+    "@angular/material": "^17.0.0 || ^18.0.0",
+    "@ngx-translate/core": ">=15.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "ng-packagr": "^17.3.0"
+  },
+  "sideEffects": false
+}

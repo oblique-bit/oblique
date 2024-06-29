@@ -1,0 +1,19 @@
+extends: "../../.eslintrc.yml"
+overrides:
+  - files:
+      - "*.ts"
+    parserOptions:
+      project:
+        - projects/design-system/tsconfig.lib.json
+        - projects/design-system/tsconfig.spec.json
+    rules:
+      "@angular-eslint/directive-selector":
+        - error
+        - type: attribute
+          prefix: ob
+          style: camelCase
+      "@angular-eslint/component-selector":
+        - error
+        - type: element
+          prefix: ob
+          style: kebab-case
