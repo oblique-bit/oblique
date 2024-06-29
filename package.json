@@ -17,6 +17,7 @@
     "url": "https://github.com/oblique-bit/oblique.git"
   },
   "workspaces": [
+    "projects/cli",
     "projects/design-system",
     "projects/oblique",
     "projects/sds",
