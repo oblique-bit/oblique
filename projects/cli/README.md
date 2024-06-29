@@ -19,6 +19,7 @@ You will find information about how to use Oblique, its CLI, code samples, FAQ a
 - **test**: run all tests and collects coverage
 - **test-ci**: same as test, but an additional Sonar report is generated; Automatically run on the CI pipeline
 - **build**: build CLI; Automatically run on the CI pipeline
+- **release**: create a new release, i.e. bump version number and updates the changelog
 
 ## Usage
 
