@@ -12,6 +12,8 @@ See [README.md](../../README.md) for information about the other packages.
 - **start-ssr**: starts the project, with SSR, but using dist as source, on port 3004
 - **lint**: lints the projects with EsLint, StyleLint and Prettier; Automatically run on the CI pipeline
 - **format**: same as lint, but with autofix parameter
+- **test**: run all tests and collects coverage
+- **test-ci**: same as test, but an additional Sonar report is generated; Automatically run on the CI pipeline
 - **build**: build the library; Automatically run on the CI pipeline
 
 ## License
