@@ -15,6 +15,7 @@ See [README.md](../../README.md) for information about the other packages.
 - **test**: run all tests and collects coverage
 - **test-ci**: same as test, but an additional Sonar report is generated; Automatically run on the CI pipeline
 - **build**: build the library; Automatically run on the CI pipeline
+- **release**: create a new release, i.e. bump version number and updates the changelog
 
 ## License
 
