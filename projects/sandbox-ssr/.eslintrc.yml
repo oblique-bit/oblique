@@ -6,6 +6,7 @@ overrides:
       project:
         - projects/sandbox-ssr/tsconfig.app.json
         - projects/sandbox-ssr/tsconfig.spec.json
+        - projects/sandbox-ssr/tsconfig.scripts.json
     rules:
       "@angular-eslint/directive-selector":
         - error
