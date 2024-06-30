@@ -4,6 +4,8 @@
   "scripts": {
     "start": "ng serve",
     "start-ssr": "node ../../dist/sandbox-ssr/server/server.mjs",
+    "lint": "ts-node scripts/lint.ts",
+    "format": "ts-node scripts/lint.ts --fix",
     "build": "ng build sandbox-ssr"
   },
   "dependencies": {
