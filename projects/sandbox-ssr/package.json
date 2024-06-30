@@ -8,7 +8,8 @@
     "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test sandbox-ssr",
     "test-ci": "cd ../.. && ng run sandbox-ssr:test:ci",
-    "build": "ng build sandbox-ssr"
+    "build": "ng build sandbox-ssr",
+    "release": "ts-node scripts/release.ts"
   },
   "dependencies": {
     "@angular/platform-server": "^17.2.1",
