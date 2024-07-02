@@ -1,5 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {provideRouter} from '@angular/router';
 import {AppComponent} from './app.component';
+import {routes} from './app.routes';
 
 describe(AppComponent.name, () => {
 	let fixture: ComponentFixture<AppComponent>;
@@ -7,7 +9,8 @@ describe(AppComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [AppComponent]
+			imports: [AppComponent],
+			providers: [provideRouter(routes)]
 		}).compileComponents();
 		fixture = TestBed.createComponent(AppComponent);
 		fixture.detectChanges();
@@ -18,12 +21,13 @@ describe(AppComponent.name, () => {
 		expect(app).toBeTruthy();
 	});
 
-	test(`'sandbox-ssr' title`, () => {
-		expect(app.title).toEqual('sandbox-ssr');
+	test('side navigation presence', () => {
+		const compiled = fixture.nativeElement as HTMLElement;
+		expect(compiled.querySelector('nav')).toBeTruthy();
 	});
 
-	test('H1 title', () => {
+	test('router-outlet presence', () => {
 		const compiled = fixture.nativeElement as HTMLElement;
-		expect(compiled.querySelector('h1')?.textContent).toContain('Hello, sandbox-ssr');
+		expect(compiled.querySelector('router-outlet')).toBeTruthy();
 	});
 });
