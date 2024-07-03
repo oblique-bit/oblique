@@ -1,7 +1,7 @@
 import {readFileSync, readdirSync, rmSync, statSync, unlinkSync, writeFileSync} from 'fs';
 import path from 'path';
 import {PackageJson} from '../../../scripts/shared/package-json';
-import {listFiles} from '../../../scripts/shared/utils';
+import {adaptReadmeLinks, listFiles} from '../../../scripts/shared/utils';
 import {Banner} from '../../../scripts/shared/banner';
 import {CopyFiles} from '../../../scripts/shared/copy-files';
 
@@ -11,9 +11,10 @@ export class PostDist {
 		PostDist.pack();
 		PostDist.addBanner();
 		CopyFiles.initialize('service-navigation-web-component')
-			.copyRootFiles('README.md', 'LICENSE')
-			.copyProjectRootFiles('CHANGELOG.md')
+			.copyRootFiles('LICENSE')
+			.copyProjectRootFiles('README.md', 'CHANGELOG.md')
 			.finalize();
+		adaptReadmeLinks('service-navigation-web-component');
 	}
 
 	private static adaptPackageJson(): void {
