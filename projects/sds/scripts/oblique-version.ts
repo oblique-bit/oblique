@@ -1,8 +1,9 @@
 import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
 import {version as currentVersion} from '../../../package.json';
+import {StaticScript} from '../../../scripts/shared/static-script';
 
-export class ObliqueVersion {
+export class ObliqueVersion extends StaticScript {
 	static updateObliqueVersion(): void {
 		const latest = ObliqueVersion.getLatestNonPreReleaseVersion();
 		writeFileSync(path.join('src', 'obliqueVersion.ts'), `export const latest = '${latest}';\n`, {flag: 'w'});

@@ -2,17 +2,15 @@ import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
 import {EOL} from 'os';
 import {version as currentVersion} from './../../package.json';
-import {getResultFromCommand, listFiles} from './utils';
+import {listFiles} from './utils';
+import {StaticScript} from './static-script';
+import {Git} from './git';
 
-export class Banner {
+export class Banner extends StaticScript {
 	// manually set for versions with prolonged support
 	private static readonly eolDates = {
 		'10.0.0': '2024-06-30' // eslint-disable-line @typescript-eslint/naming-convention
 	};
-
-	constructor() {
-		throw new Error('"Banner" may not be instantiated.');
-	}
 
 	static addToFilesInProject(projectName: string): void {
 		const banner = Banner.prepareBanner(currentVersion);
@@ -49,8 +47,6 @@ export class Banner {
 	}
 
 	private static getTagDate(tag: string): string {
-		return getResultFromCommand(`git tag -l '${tag}'`)
-			? getResultFromCommand(`git show -s --format=%ci ${tag}`).split(' ')[0]
-			: Banner.getTodayDate();
+		return Git.doTagExist(tag) ? Git.getTagDate(tag) : Banner.getTodayDate();
 	}
 }

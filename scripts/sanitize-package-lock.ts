@@ -1,6 +1,7 @@
 import {existsSync, readFileSync, writeFileSync} from 'fs';
+import {StaticScript} from './shared/static-script';
 
-class Sanitize {
+class Sanitize extends StaticScript {
 	static perform(): void {
 		if (existsSync('package-lock.json')) {
 			writeFileSync(

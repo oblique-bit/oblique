@@ -1,8 +1,9 @@
 import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
 import {listFiles} from '../../../scripts/shared/utils';
+import {StaticScript} from '../../../scripts/shared/static-script';
 
-class PreDist {
+class PreDist extends StaticScript {
 	static perform(): void {
 		const componentPath = path.join('..', 'stylesBuilder', 'oblique-components.scss');
 		const directoryPath = path.join('..', 'oblique', 'src', 'lib');

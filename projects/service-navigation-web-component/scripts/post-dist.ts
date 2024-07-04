@@ -4,8 +4,9 @@ import {PackageJson} from '../../../scripts/shared/package-json';
 import {adaptReadmeLinks, listFiles} from '../../../scripts/shared/utils';
 import {Banner} from '../../../scripts/shared/banner';
 import {CopyFiles} from '../../../scripts/shared/copy-files';
+import {StaticScript} from '../../../scripts/shared/static-script';
 
-export class PostDist {
+export class PostDist extends StaticScript {
 	static perform(): void {
 		PostDist.adaptPackageJson();
 		PostDist.pack();
