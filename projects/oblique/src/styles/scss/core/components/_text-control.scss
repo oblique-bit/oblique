@@ -14,13 +14,13 @@
 		border: none;
 		padding: 0;
 		opacity: 0;
-		transition: opacity variables.$ob-duration-fast;
 	}
 
 	&:hover .ob-text-control-clear,
 	input:focus + .ob-text-control-clear,
 	.ob-text-control-clear:focus {
 		opacity: 1;
+		transition: opacity variables.$ob-duration-fast;
 	}
 
 	input[disabled] + .ob-text-control-clear,
