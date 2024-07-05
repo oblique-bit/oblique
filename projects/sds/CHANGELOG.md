@@ -1,3 +1,11 @@
+# [11.3.0](https://github.com/oblique-bit/oblique/compare/11.2.4...11.3.0) (2024-07-05)
+
+## Features
+
+- **code-examples:** add external link example ([1b16c1c5](https://github.com/oblique-bit/oblique/commit/1b16c1c56))
+- **selectable:** add sample as custom form element ([f35bac94](https://github.com/oblique-bit/oblique/commit/f35bac94b))
+- **styles:** enable separate scrolling for side navigation and content ([8b0f1eb3](https://github.com/oblique-bit/oblique/commit/8b0f1eb35))
+
 # [11.2.4](https://github.com/oblique-bit/oblique/compare/11.2.3...11.2.4) (2024-06-28)
 
 ## Bug Fixes
