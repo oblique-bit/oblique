@@ -76,6 +76,7 @@ overrides:
       "@typescript-eslint/no-require-imports": off # used by node scripts and to load some static assets
       "@typescript-eslint/no-type-alias": off
       "@typescript-eslint/no-unsafe-return": off # reports many false positive
+      "@typescript-eslint/non-nullable-type-assertion-style": off # conflicts with @typescript-eslint/no-non-null-assertion
       "@typescript-eslint/parameter-properties": off # disallows declaring variables in constructor
       "@typescript-eslint/prefer-enum-initializers": off
       "@typescript-eslint/prefer-readonly-parameter-types": off # forces "readonly" on functions where it is not allowed
