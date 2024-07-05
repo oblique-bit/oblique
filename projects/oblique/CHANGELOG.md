@@ -1,3 +1,20 @@
+# [11.3.0](https://github.com/oblique-bit/oblique/compare/11.2.4...11.3.0) (2024-07-05)
+
+## Bug Fixes
+
+- **input-clear:** prevent input clear icon from flickering during initial loading ([6d2800e8](https://github.com/oblique-bit/oblique/commit/6d2800e8e))
+- **master-layout:** make sure the menu item shadow don't overflow into the flyout ([098ffc1c](https://github.com/oblique-bit/oblique/commit/098ffc1c6))
+- **master-layout:** remove empty icon wrapper in the main navigation ([f71c0641](https://github.com/oblique-bit/oblique/commit/f71c0641e))
+- **selectable:** remove `private` modifier on `disabled` input ([ac162a6b](https://github.com/oblique-bit/oblique/commit/ac162a6b6))
+
+## Features
+
+- **language:** deprecate `ObLanguageService` ([da3953d9](https://github.com/oblique-bit/oblique/commit/da3953d94))
+- **language:** deprecate `setLocaleOnAdapter` and automate its logic ([a8507418](https://github.com/oblique-bit/oblique/commit/a8507418c))
+- **master-layout:** reduce and harmonize padding on main navigation flyouts ([b3cd4da4](https://github.com/oblique-bit/oblique/commit/b3cd4da4f))
+- **selectable:** turn `ObSelectableGroup` into a custom form element ([5fca7f1d](https://github.com/oblique-bit/oblique/commit/5fca7f1dd))
+- **selectable:** add generics for the `value` type ([b44beec7](https://github.com/oblique-bit/oblique/commit/b44beec75))
+
 # [11.2.4](https://github.com/oblique-bit/oblique/compare/11.2.3...11.2.4) (2024-06-28)
 
 ## Bug Fixes

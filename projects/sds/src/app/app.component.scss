@@ -1,7 +1,9 @@
+$banner-height: 50px;
+
 :host {
 	display: grid;
 	grid-template-columns: fit-content(500px) auto;
-	grid-template-rows: 50px 1fr;
+	grid-template-rows: $banner-height 1fr;
 }
 
 .banner {
@@ -17,5 +19,6 @@
 	grid-row: 2;
 	display: grid;
 	grid-template-columns: fit-content(500px) 30fr 1fr;
-	overflow: hidden;
+	height: calc(100vh - $banner-height);
+	width: 100vw;
 }

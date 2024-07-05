@@ -52,6 +52,7 @@ import {CollapseCodeExamplesComponent} from './code-examples/collapse/collapse-c
 import {DateCodeExamplesComponent} from './code-examples/date/date-code-examples.component';
 import {ErrorMessagesCodeExamplesComponent} from './code-examples/error-messages/error-messages-code-examples.component';
 import {FocusInvalidCodeExamplesComponent} from './code-examples/focus-invalid/focus-invalid-code-examples.component';
+import {ExternalLinkCodeExamplesComponent} from './code-examples/external-link/external-link-code-examples.component';
 
 /* These imports are sorted alphabetically to reduce merge conflicts.
    If you add a new import above, please make sure it is sorted
@@ -74,6 +75,7 @@ export class CodeExamplesMapper {
 		dialog: DialogCodeExamplesComponent,
 		'error-messages': ErrorMessagesCodeExamplesComponent,
 		'expansion-panel': ExpansionPanelCodeExamplesComponent,
+		'external-link': ExternalLinkCodeExamplesComponent,
 		'file-upload': FileUploadCodeExamplesComponent,
 		'focus-invalid': FocusInvalidCodeExamplesComponent,
 		form: FormCodeExamplesComponent,

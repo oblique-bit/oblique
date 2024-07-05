@@ -27,6 +27,7 @@ import {NumberFormatSampleComponent} from './number-format/number-format-sample.
 import {PopoverComponent} from './popover/popover.component';
 import {SchemaValidationSampleComponent} from './schema-validation/schema-validation-sample.component';
 import {SelectableSampleComponent} from './selectable/selectable-sample.component';
+import {SelectableFormSampleComponent} from './selectable-form/selectable-form-sample.component';
 import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
 import {StickySampleComponent} from './sticky/sticky-sample.component';
 import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
@@ -166,6 +167,7 @@ const samplesRoutes: Routes = [
 	{path: 'rxjs-operators', component: RxjsOperatorsComponent},
 	{path: 'schema-validation', component: SchemaValidationSampleComponent},
 	{path: 'selectable', component: SelectableSampleComponent},
+	{path: 'selectable-form', component: SelectableFormSampleComponent},
 	{path: 'service-navigation', component: ServiceNavigationSampleComponent},
 	{path: 'sticky', component: StickySampleComponent},
 	{path: 'spinner', component: SpinnerSampleComponent},

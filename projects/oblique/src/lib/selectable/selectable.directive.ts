@@ -8,8 +8,8 @@ import {ObSelectableGroupDirective} from './selectable-group.directive';
 	host: {class: 'ob-selectable'},
 	standalone: true
 })
-export class ObSelectableDirective implements OnInit {
-	@Input() value: any;
+export class ObSelectableDirective<T = any> implements OnInit {
+	@Input() value: T;
 	@Input() @HostBinding('class.ob-selected') @HostBinding('attr.aria-checked') selected = false;
 	@HostBinding('class.ob-selectable') readonly selectable = true;
 	@Input() @HostBinding('attr.tabindex') tabindex = 0;
@@ -20,11 +20,11 @@ export class ObSelectableDirective implements OnInit {
 
 	constructor(
 		private readonly element: ElementRef,
-		@Optional() private readonly group: ObSelectableGroupDirective
+		@Optional() private readonly group: ObSelectableGroupDirective<T>
 	) {
 		if (!group) {
 			throw new Error(
-				'The ObSelectableDirectives need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more info'
+				'ObSelectableDirective need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more information'
 			);
 		}
 	}

@@ -8,7 +8,7 @@ import {Directive, Input} from '@angular/core';
 	exportAs: 'obSelectable',
 	standalone: true
 })
-export class ObMockSelectableDirective {
+export class ObMockSelectableDirective<T = any> {
 	@Input() selected = false;
 	@Input() tabindex = 0;
 	@Input() value: any;

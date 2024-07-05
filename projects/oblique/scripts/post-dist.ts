@@ -1,11 +1,12 @@
 import path from 'path';
 import {readFileSync, renameSync, writeFileSync} from 'fs';
 import {CopyFiles} from '../../../scripts/shared/copy-files';
-import {executeCommand, listFiles} from '../../../scripts/shared/utils';
+import {adaptReadmeLinks, executeCommand, listFiles} from '../../../scripts/shared/utils';
 import {ExportEntries, PackageJson} from '../../../scripts/shared/package-json';
 import {Banner} from '../../../scripts/shared/banner';
+import {StaticScript} from '../../../scripts/shared/static-script';
 
-class PostDist {
+class PostDist extends StaticScript {
 	static perform(): void {
 		PostDist.copyDistFiles();
 		PostDist.renameDistribution();
@@ -14,11 +15,12 @@ class PostDist {
 		PostDist.updateBackgroundImagePath();
 		PostDist.distributeObFeatures();
 		PostDist.addBanner();
+		adaptReadmeLinks('oblique');
 	}
 
 	private static copyDistFiles(): void {
 		CopyFiles.initialize('oblique')
-			.copyRootFiles('README.md', 'LICENSE')
+			.copyRootFiles('LICENSE')
 			.copyProjectFiles(
 				'src',
 				...listFiles(path.join('src', 'assets')),
@@ -27,7 +29,7 @@ class PostDist {
 					/(?:core[\\/](?:_variables|_palette)|mixins[\\/](?:_layout|_shadow|_typography))\.scss$/.test(filePath)
 				)
 			)
-			.copyProjectRootFiles('CHANGELOG.md')
+			.copyProjectRootFiles('README.md', 'CHANGELOG.md')
 			.finalize();
 	}
 

@@ -43,8 +43,8 @@ export class ObMockDisabledSelectableGroupDirective {
 }
 
 describe(ObSelectableDirective.name, () => {
-	let directive: ObSelectableDirective;
-	let group: ObSelectableGroupDirective;
+	let directive: ObSelectableDirective<string>;
+	let group: ObSelectableGroupDirective<string>;
 	let component: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
@@ -59,7 +59,7 @@ describe(ObSelectableDirective.name, () => {
 
 		it('should throw an error', () => {
 			expect(() => TestBed.createComponent(FaultyTestComponent)).toThrow(
-				'The ObSelectableDirectives need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more info'
+				'ObSelectableDirective need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more information'
 			);
 		});
 	});

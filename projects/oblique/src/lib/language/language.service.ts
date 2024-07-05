@@ -1,4 +1,4 @@
-import {Inject, Injectable, Renderer2, RendererFactory2} from '@angular/core';
+import {Inject, Injectable, Optional, Renderer2, RendererFactory2} from '@angular/core';
 import {DateAdapter} from '@angular/material/core';
 import {DOCUMENT} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
@@ -10,6 +10,9 @@ import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 @Injectable({
 	providedIn: 'root'
 })
+/**
+ * @deprecated since Oblique 11.3.0. It will be removed with Oblique 12 with no replacement as it won't be needed anymore.
+ */
 export class ObLanguageService {
 	readonly locale$: Observable<string>;
 	private static readonly token = 'oblique_lang';
@@ -19,7 +22,8 @@ export class ObLanguageService {
 		private readonly translate: TranslateService,
 		rendererFactory: RendererFactory2,
 		config: ObMasterLayoutConfig,
-		@Inject(DOCUMENT) document: Document
+		@Inject(DOCUMENT) document: Document,
+		@Optional() adapter: DateAdapter<unknown>
 	) {
 		if (!config.locale.disabled) {
 			const locales = config.locale.locales.map(locale => (locale as ObILocaleObject).locale || locale) as string[];
@@ -29,14 +33,16 @@ export class ObLanguageService {
 			this.locale = new BehaviorSubject<string>(this.getLocale(locales, translate.currentLang));
 			this.locale$ = this.locale.asObservable();
 			this.languageChange(locales, rendererFactory.createRenderer(null, null), document.head.parentElement);
+			this.setLocaleOnDateAdapter(adapter);
 		}
 	}
 
-	setLocaleOnAdapter(adapter: DateAdapter<unknown>): void {
-		if (this.locale$) {
-			this.locale$.subscribe(locale => adapter.setLocale(locale));
-		}
-	}
+	/**
+	 * @deprecated since Oblique 11.3.0. It will be removed with Oblique 12 with no replacement. As of Oblique 11.3.0 this method don't do
+	 * anything anymore and can safely be removed. Its purpose is now fully automated by the MasterLayout.
+	 */
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars,@typescript-eslint/no-empty-function
+	setLocaleOnAdapter(adapter: DateAdapter<unknown>): void {}
 
 	private validateLocales(locales: string[]): void {
 		if (!Array.isArray(locales) || !locales.length) {
@@ -79,5 +85,15 @@ export class ObLanguageService {
 		return this.getSupportedLang(languages, this.translate.getDefaultLang())
 			|| this.getSupportedLang(languages, defaultLanguage)
 			|| languages[0];
+	}
+
+	private setLocaleOnDateAdapter(adapter: DateAdapter<unknown>): void {
+		if (adapter) {
+			this.locale$.subscribe(locale => adapter.setLocale(locale));
+		} else {
+			console.warn(
+				'No DateAdapter is provided, this means the datepicker might not work properly. "provideMomentDateAdapter" should be added to the root providers.'
+			);
+		}
 	}
 }

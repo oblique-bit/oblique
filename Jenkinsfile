@@ -48,6 +48,9 @@ nodejsPipelineTemplate {
 			],
 			'cloudFoundry': [
 				['project': 'sds', 'space': 'prod']
+			],
+			securityScan: [
+				apps: [[project: 'sds', space: 'prod']]
 			]
 		]
 	]

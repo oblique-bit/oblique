@@ -10,3 +10,7 @@ app-image {
 	margin-left: 26px;
 	width: calc(100% - 54px);
 }
+
+:host {
+	overflow-y: scroll;
+}
