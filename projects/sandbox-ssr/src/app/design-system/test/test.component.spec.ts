@@ -1,10 +1,11 @@
 import {TestBed} from '@angular/core/testing';
 import {TestComponent} from './test.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe(TestComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [TestComponent]
+			imports: [TestComponent, TranslateModule.forRoot()]
 		}).compileComponents();
 	});
 

@@ -28,3 +28,9 @@ overrides:
       # rules cannot be turned off in HTML files
       "@angular-eslint/template/no-inline-styles": off # necessary for compatibility warnings
       "@angular-eslint/template/prefer-self-closing-tags": off # not compatible with SSR
+
+  - files:
+      - "*.spec.ts"
+    rules:
+      # should be disabled globally but would be overwritten on line 21
+      "@typescript-eslint/no-magic-numbers": off
