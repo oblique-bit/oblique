@@ -14,6 +14,7 @@ module.exports.coverageDirectory = '<rootDir>/coverage/sandbox-ssr';
 module.exports.coveragePathIgnorePatterns = ['<rootDir>/projects/oblique'];
 module.exports.collectCoverageFrom = [
 	'<rootDir>/projects/sandbox-ssr/src/app/**/*.ts',
+	'!**/multi-translate-loader*',
 	'!**/app.config.server.ts',
 	'!**/app.config.ts',
 	'!**/*.routes.ts'

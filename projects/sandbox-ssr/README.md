@@ -4,6 +4,9 @@ An application with SSR and standalone activated. It is used by the Oblique deve
 in a real application. Since it covers every feature, it can be used to see Oblique in actions. The Oblique development
 team uses it intensively to ensure the usability and compatibility of our features.
 
+As `@oblique/oblique` package is not compatible with SSR, this application doesn't use the Master Layout yet. All newly
+build components will be documented there to ensure their compatibility with both SSR and standalone components.
+
 See [README.md](../../README.md) for information about the other packages.
 
 ## Scripts
