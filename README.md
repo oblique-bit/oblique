@@ -2,6 +2,7 @@
 
 The Oblique repository consists of multiple packages:
 
+- [CLI](projects/cli/README.md)
 - [Design System](projects/design-system/README.md)
 - [Oblique](projects/oblique/README.md)
 - [Sandbox](projects/sandbox/README.md)
