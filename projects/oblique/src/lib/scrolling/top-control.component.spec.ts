@@ -5,6 +5,7 @@ import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {WINDOW} from '../utilities';
 import {ObTopControlComponent} from './top-control.component';
+import {Observable} from 'rxjs';
 
 describe('ObTopControlComponent', () => {
 	let fixture: ComponentFixture<ObTopControlComponent>;
@@ -36,8 +37,23 @@ describe('ObTopControlComponent', () => {
 			expect(fixture.debugElement.nativeElement.classList.contains('ob-top-control')).toBe(true);
 		});
 
+		describe('scrollToTop', () => {
+			it('should be an observable', () => {
+				expect(topControlComponent.scrollToTop instanceof Observable).toBe(true);
+			});
+			it('should emit when scrollTop is called', () => {
+				jest.spyOn(topControlComponent.scrollToTop, 'emit');
+				topControlComponent.scrollTop();
+				expect(topControlComponent.scrollToTop.emit).toHaveBeenCalledWith();
+			});
+		});
+
 		describe('scrollTop', () => {
-			it('should do nothing', () => {
+			it('should not scroll', () => {
+				topControlComponent.scrollTop();
+				expect(topControlComponent.scrollTarget).toBeUndefined();
+			});
+			it('should emit', () => {
 				topControlComponent.scrollTop();
 				expect(topControlComponent.scrollTarget).toBeUndefined();
 			});
