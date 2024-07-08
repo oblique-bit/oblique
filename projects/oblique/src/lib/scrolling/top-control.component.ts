@@ -19,7 +19,7 @@ export class ObTopControlComponent {
 	constructor(@Inject(WINDOW) private readonly window: Window) {}
 
 	public scrollTop(): void {
-		(this.scrollTarget || this.window).scrollTo({top: 0, behavior: 'smooth'});
+		this.scrollTarget?.scrollTo({top: 0, behavior: 'smooth'});
 		this.scrollToTop.emit();
 	}
 }
