@@ -243,4 +243,20 @@ describe('ObMasterLayoutComponent', () => {
 			});
 		});
 	});
+
+	describe('focusElement', () => {
+		let element: HTMLElement;
+		beforeEach(() => {
+			element = document.getElementById('content');
+			jest.spyOn(element, 'scrollIntoView');
+			jest.spyOn(element, 'focus');
+			component.focusElement('content');
+		});
+		it('should scroll to the element', () => {
+			expect(element.scrollIntoView).toHaveBeenCalledWith({behavior: 'smooth'});
+		});
+		it('should focus the element', () => {
+			expect(element.focus).toHaveBeenCalledWith({preventScroll: true});
+		});
+	});
 });

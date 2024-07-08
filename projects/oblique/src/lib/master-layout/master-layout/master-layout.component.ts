@@ -103,6 +103,16 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		}
 	}
 
+	focusElement(elementId: string): void {
+		if (this.config.focusableFragments.includes(elementId)) {
+			const element = this.document.querySelector<HTMLElement>(`#${elementId}`);
+			if (element) {
+				element.scrollIntoView({behavior: 'smooth'});
+				element.focus({preventScroll: true});
+			}
+		}
+	}
+
 	ngOnInit(): void {
 		this.globalEventsService.scroll$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.scrollTop());
 		this.masterLayout.layout.configEvents$

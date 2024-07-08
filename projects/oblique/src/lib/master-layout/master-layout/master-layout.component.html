@@ -78,7 +78,7 @@
 		</ob-master-layout-footer>
 	</ng-template>
 </div>
-<ob-top-control [scrollTarget]="scrollTarget" />
+<ob-top-control (scrollToTop)="focusElement('content')" />
 <div class="ob-off-canvas-sidebar" *ngIf="hasOffCanvas">
 	<header class="ob-off-canvas-header">
 		<h2>
