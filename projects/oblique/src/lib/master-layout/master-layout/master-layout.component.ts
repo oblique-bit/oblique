@@ -247,14 +247,10 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 				map((evt: NavigationEnd) => evt.url),
 				tap(url => (this.route.path = (/^[^?&#]*/.exec(url) || [])[0])),
 				tap(url => (this.route.params = this.formatQueryParameters(this.extractUrlPart(url, /[?&][^#]*/)))),
-				map(url => this.extractUrlPart(url, /#[^?&]*/)),
-				filter(fragment => this.config.focusableFragments.includes(fragment)),
-				map(fragment => this.document.querySelector<HTMLElement>(`#${fragment}`)),
-				filter(element => !!element)
+				map(url => this.extractUrlPart(url, /#[^?&]*/))
 			)
-			.subscribe(element => {
-				element.scrollIntoView({behavior: 'smooth'});
-				element.focus({preventScroll: true});
+			.subscribe(fragment => {
+				this.focusElement(fragment);
 			});
 	}
 
