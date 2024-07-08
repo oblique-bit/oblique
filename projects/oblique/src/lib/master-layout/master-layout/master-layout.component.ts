@@ -48,6 +48,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
 	hasHighContrast = false;
+	readonly contentId = 'content';
 	@Input() navigation: ObINavigationLink[] = [];
 	@Input() skipLinks: ObISkipLink[] | ObIDynamicSkipLink[] = [];
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
@@ -247,9 +248,14 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 				tap(url => (this.route.path = (/^[^?&#]*/.exec(url) || [])[0])),
 				tap(url => (this.route.params = this.formatQueryParameters(this.extractUrlPart(url, /[?&][^#]*/)))),
 				map(url => this.extractUrlPart(url, /#[^?&]*/)),
-				filter(fragment => this.config.focusableFragments.includes(fragment))
+				filter(fragment => this.config.focusableFragments.includes(fragment)),
+				map(fragment => this.document.querySelector<HTMLElement>(`#${fragment}`)),
+				filter(element => !!element)
 			)
-			.subscribe(fragment => this.document.querySelector<HTMLElement>(`#${fragment}`)?.focus());
+			.subscribe(element => {
+				element.scrollIntoView({behavior: 'smooth'});
+				element.focus({preventScroll: true});
+			});
 	}
 
 	private extractUrlPart(url: string, regex: RegExp): string {
