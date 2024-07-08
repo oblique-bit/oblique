@@ -1,0 +1,9 @@
+extends: "../../.eslintrc.yml"
+overrides:
+  - files:
+      - "*.ts"
+    parserOptions:
+      project:
+        - projects/cli/tsconfig.app.json
+        - projects/cli/tsconfig.spec.json
+        - projects/cli/tsconfig.scripts.json
