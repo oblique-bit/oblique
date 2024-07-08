@@ -101,6 +101,7 @@ The type is mandatory and must be one of the following:
 
 The package is mandatory and must be one of the following:
 
+- **design-system**: for change in the Design System library
 - **oblique**: for changes in the Oblique library, including the changes to the service-navigation component
 - **sandbox**: for changes in the Sandbox project
 - **sds**: for changes in the Swiss Design System project
@@ -112,6 +113,7 @@ The package is mandatory and must be one of the following:
 The scope is optional but usually present. If the scope is omitted, then the separating slash (`/`) before it is also
 omitted. The list of available scopes depends on the project involved:
 
+- [Design System](projects/design-system/CONTRIBUTING.md)
 - [Oblique](projects/oblique/CONTRIBUTING.md)
 - [Sandbox](projects/sandbox/CONTRIBUTING.md)
 - [SDS](projects/sds/CONTRIBUTING.md)
