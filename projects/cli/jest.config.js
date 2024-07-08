@@ -13,15 +13,5 @@ module.exports = {
 		'^.+\\.ts$': 'ts-jest'
 	},
 	collectCoverage: true,
-	coverageDirectory: '../../coverage/cli',
-	reporters: [
-		'default',
-		[
-			'jest-sonar',
-			{
-				outputDirectory: '../../coverage/cli',
-				outputName: 'sqr.xml'
-			}
-		]
-	]
+	coverageDirectory: '../../coverage/cli'
 };
