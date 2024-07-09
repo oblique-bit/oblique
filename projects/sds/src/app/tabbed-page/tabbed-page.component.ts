@@ -13,13 +13,14 @@ import {CommonModule, Location} from '@angular/common';
 import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
 import {CmsData, TabbedPageComplete} from '../cms/models/tabbed-page.model';
 import {TabNameMapper} from './utils/tab-name-mapper';
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
 	selector: 'app-tabbed-page',
 	templateUrl: './tabbed-page.component.html',
 	styleUrls: ['./tabbed-page.component.scss'],
 	standalone: true,
-	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe]
+	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe, MatChipsModule]
 })
 export class TabbedPageComponent {
 	readonly componentId = 'tabbed-page';
@@ -73,7 +74,8 @@ export class TabbedPageComponent {
 			api: cmsData.api,
 			uiUx: cmsData.ui_ux,
 			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug),
-			tab: this.getSelectedTab()
+			tab: this.getSelectedTab(),
+			deprecation: cmsData.deprecation
 		};
 	}
 
