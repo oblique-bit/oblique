@@ -48,6 +48,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
 	hasHighContrast = false;
+	readonly contentId = 'content';
 	@Input() navigation: ObINavigationLink[] = [];
 	@Input() skipLinks: ObISkipLink[] | ObIDynamicSkipLink[] = [];
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
@@ -100,6 +101,16 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		if (this.isScrolling !== scrollTop > 0) {
 			this.isScrolling = scrollTop > 0;
 			this.scrollEvents.scrolling(this.isScrolling);
+		}
+	}
+
+	focusElement(elementId: string): void {
+		if (this.config.focusableFragments.includes(elementId)) {
+			const element = this.document.querySelector<HTMLElement>(`#${elementId}`);
+			if (element) {
+				element.scrollIntoView({behavior: 'smooth'});
+				element.focus({preventScroll: true});
+			}
 		}
 	}
 
@@ -236,10 +247,11 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 				map((evt: NavigationEnd) => evt.url),
 				tap(url => (this.route.path = (/^[^?&#]*/.exec(url) || [])[0])),
 				tap(url => (this.route.params = this.formatQueryParameters(this.extractUrlPart(url, /[?&][^#]*/)))),
-				map(url => this.extractUrlPart(url, /#[^?&]*/)),
-				filter(fragment => this.config.focusableFragments.includes(fragment))
+				map(url => this.extractUrlPart(url, /#[^?&]*/))
 			)
-			.subscribe(fragment => this.document.querySelector<HTMLElement>(`#${fragment}`)?.focus());
+			.subscribe(fragment => {
+				this.focusElement(fragment);
+			});
 	}
 
 	private extractUrlPart(url: string, regex: RegExp): string {

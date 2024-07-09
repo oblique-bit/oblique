@@ -1,7 +1,7 @@
 <nav class="ob-access-keys" role="navigation" [attr.aria-label]="'i18n.oblique.master-layout.accesskey.title' | translate">
 	<ul>
 		<li>
-			<a class="ob-accessible" accesskey="0" [routerLink]="route.path" [queryParams]="route.params" fragment="content">
+			<a class="ob-accessible" accesskey="0" [routerLink]="route.path" [queryParams]="route.params" [fragment]="contentId">
 				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access" /></span>
 				{{ "i18n.oblique.master-layout.accesskey.main-content" | translate }}
 			</a>
@@ -78,7 +78,7 @@
 		</ob-master-layout-footer>
 	</ng-template>
 </div>
-<ob-top-control [scrollTarget]="scrollTarget" />
+<ob-top-control (scrollToTop)="focusElement(this.contentId)" />
 <div class="ob-off-canvas-sidebar" *ngIf="hasOffCanvas">
 	<header class="ob-off-canvas-header">
 		<h2>

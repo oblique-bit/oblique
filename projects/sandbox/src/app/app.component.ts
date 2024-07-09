@@ -216,7 +216,8 @@ export class AppComponent implements OnDestroy {
 		{url: 'current', fragment: 'fragment', label: 'i18n.application.skiplinks.custom'},
 		{url: 'current', label: 'Skip to current without fragment'},
 		{url: '../samples', fragment: 'fragment', label: 'Skip to samples with fragment'},
-		{url: '../samples', label: 'Skip to samples without fragment'}
+		{url: '../samples', label: 'Skip to samples without fragment'},
+		{url: 'current', fragment: 'link-to-blick-ch', label: 'Skip to "Blick" link in the footer'}
 	];
 	autocompleteItems$: Observable<ObIAutocompleteInputOption[]>;
 	private readonly unsubscribe = new Subject<void>();
