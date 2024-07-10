@@ -13,6 +13,8 @@ nodejsPipelineTemplate {
 			'test': 'npm run test-ci -ws',
 			'build': 'npm run build -ws',
 			'sonar': [
+				'./projects/design-system',
+				'./projects/cli',
 				'./projects/oblique',
 				'./projects/sandbox',
 				'./projects/sds',
