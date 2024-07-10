@@ -3,6 +3,9 @@ import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {MaterialTableCodeExamplesComponent} from './material-table-code-examples.component';
+import {ObMockTranslateService} from '@oblique/oblique';
+import {TranslateService} from '@ngx-translate/core';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe(MaterialTableCodeExamplesComponent.name, () => {
 	let component: MaterialTableCodeExamplesComponent;
@@ -10,7 +13,8 @@ describe(MaterialTableCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MaterialTableCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [MaterialTableCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent, NoopAnimationsModule],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(MaterialTableCodeExamplesComponent);
