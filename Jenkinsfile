@@ -17,6 +17,7 @@ nodejsPipelineTemplate {
 				'./projects/cli',
 				'./projects/oblique',
 				'./projects/sandbox',
+				'./projects/sandbox-ssr',
 				'./projects/sds',
 				'./projects/service-navigation-web-component'
 			]

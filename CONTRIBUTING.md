@@ -105,6 +105,7 @@ The package is mandatory and must be one of the following:
 - **design-system**: for change in the Design System library
 - **oblique**: for changes in the Oblique library, including the changes to the service-navigation component
 - **sandbox**: for changes in the Sandbox project
+- **sandbox-ssr**: for change in the Sandbox-SSR project
 - **sds**: for changes in the Swiss Design System project
 - **service-navigation**: for changes in the service-navigation-web-component project
 - **toolchain**: for general changes about the whole repository
@@ -118,6 +119,7 @@ omitted. The list of available scopes depends on the project involved:
 - [Design System](projects/design-system/CONTRIBUTING.md)
 - [Oblique](projects/oblique/CONTRIBUTING.md)
 - [Sandbox](projects/sandbox/CONTRIBUTING.md)
+- [Sandbox-SSR](projects/sandbox-ssr/CONTRIBUTING.md)
 - [SDS](projects/sds/CONTRIBUTING.md)
 - [Service Navigation](projects/service-navigation-web-component/CONTRIBUTING.md)
 
