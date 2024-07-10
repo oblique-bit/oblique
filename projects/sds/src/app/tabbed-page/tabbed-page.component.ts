@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, HostListener, inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
@@ -34,6 +34,16 @@ export class TabbedPageComponent {
 
 	constructor() {
 		this.cmsData$ = this.buildCmsDataObservable();
+	}
+
+	@HostListener('click', ['$event'])
+	onClick(event: MouseEvent): void {
+		const {target} = event;
+		if (!(target instanceof HTMLAnchorElement)) {
+			return;
+		}
+		event.preventDefault();
+		void this.router.navigate([target.pathname]);
 	}
 
 	handleTabChanged(tabName: string): void {
