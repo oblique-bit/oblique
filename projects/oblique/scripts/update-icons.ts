@@ -1,16 +1,19 @@
 import {readFileSync, readdirSync, writeFileSync} from 'fs';
 import path from 'path';
-import {executeCommand} from '../../../scripts/shared/utils';
+import {executeCommandWithLog} from '../../../scripts/shared/utils';
 import {StaticScript} from '../../../scripts/shared/static-script';
+import {Log} from '../../../scripts/shared/log';
 
 class Icons extends StaticScript {
 	static perform(): void {
+		Log.start('Update all files related to icons');
 		const SVGs = Icons.getSVGs('icons');
 		Icons.writeIconSet(path.join('src', 'assets', 'obliqueIcons.svg'), SVGs);
 		Icons.writeIconSetTS(path.join('src', 'assets', 'oblique-icons.ts'), SVGs);
 		Icons.writeIconCSS(path.join('src', 'styles', 'scss', 'oblique-icons.scss'), SVGs);
 		Icons.writeIconEnum(path.join('src', 'lib', 'icon', 'icon.model.ts'), SVGs);
 		Icons.prettify();
+		Log.success();
 	}
 
 	private static getSVGs(iconsPath: string): string[] {
@@ -34,16 +37,19 @@ class Icons extends StaticScript {
 	}
 
 	private static writeIconSet(filePath: string, SVGs: string[]): void {
+		Log.info('Generate icon set as SVG: obliqueIcons.svg');
 		const iconSet = ['<svg>', '\t<defs>', ...SVGs.map(svg => `\t\t${svg}`), '\t</defs>', '</svg>'];
 		writeFileSync(filePath, iconSet.join('\n'));
 	}
 
 	private static writeIconSetTS(filePath: string, SVGs: string[]): void {
+		Log.info('Generate icon set as TypeScript variable: oblique-icons.ts');
 		const iconSet = ['<svg>', '<defs>', ...SVGs, '</defs>', '</svg>'];
 		writeFileSync(filePath, `export const iconSet =\n\t'${iconSet.join('')}';\n`);
 	}
 
 	private static writeIconCSS(filePath: string, SVGs: string[]): void {
+		Log.info('Generate icon set as CSS classes: oblique-icons.scss');
 		const iconCSS = [
 			`.ob-icon::before {\n\tdisplay: inline-block;\n\twidth: 1em;\n\theight: 1em;\n}`,
 			...SVGs.map(svg => ({name: /(?<=id=")[a-z-]*(?=")/.exec(svg)[0], content: Buffer.from(svg).toString('base64')})).map(
@@ -54,6 +60,7 @@ class Icons extends StaticScript {
 	}
 
 	private static writeIconEnum(filePath: string, SVGs: string[]): void {
+		Log.info('Generate icon set as Enum: icon.model.ts');
 		const iconNames = SVGs.map(svg => /(?<=id=")[a-z-]*(?=")/.exec(svg).toString()).map(
 			name => `${name.toUpperCase().replace(/-/g, '_')} = '${name}'`
 		);
@@ -67,7 +74,7 @@ class Icons extends StaticScript {
 
 	private static prettify(): void {
 		const files = ['src/assets/oblique-icons.ts', 'src/styles/scss/oblique-icons.scss', 'src/lib/icon/icon.model.ts'].join(',');
-		executeCommand(`prettier "{${files}}" --log-level warn --write`);
+		executeCommandWithLog(`prettier "{${files}}" --log-level warn --write`, 'Prettify generated files');
 	}
 }
 
