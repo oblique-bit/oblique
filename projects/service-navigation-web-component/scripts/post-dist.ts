@@ -1,13 +1,15 @@
 import {readFileSync, readdirSync, rmSync, statSync, unlinkSync, writeFileSync} from 'fs';
 import path from 'path';
 import {PackageJson} from '../../../scripts/shared/package-json';
-import {adaptReadmeLinks, listFiles} from '../../../scripts/shared/utils';
+import {adaptReadmeLinks, humanizeList, listFiles} from '../../../scripts/shared/utils';
 import {Banner} from '../../../scripts/shared/banner';
 import {CopyFiles} from '../../../scripts/shared/copy-files';
 import {StaticScript} from '../../../scripts/shared/static-script';
+import {Log} from '../../../scripts/shared/log';
 
 export class PostDist extends StaticScript {
 	static perform(): void {
+		Log.start('Finalize build');
 		PostDist.adaptPackageJson();
 		PostDist.pack();
 		PostDist.addBanner();
@@ -16,6 +18,7 @@ export class PostDist extends StaticScript {
 			.copyProjectRootFiles('README.md', 'CHANGELOG.md')
 			.finalize();
 		adaptReadmeLinks('service-navigation-web-component');
+		Log.success();
 	}
 
 	private static adaptPackageJson(): void {
@@ -39,7 +42,9 @@ export class PostDist extends StaticScript {
 	}
 
 	private static packJsFiles(directory: string, packFileName: string): void {
-		const content = ['runtime.js', 'polyfills.js', 'main.js']
+		const files = ['runtime.js', 'polyfills.js', 'main.js'];
+		Log.info(`Pack ${humanizeList(files)} files together`);
+		const content = files
 			.map(fileName => `${directory}/${fileName}`)
 			.map(filePath => readFileSync(filePath).toString())
 			.reduce((total, currentFile) => total + currentFile, '');
@@ -47,12 +52,13 @@ export class PostDist extends StaticScript {
 	}
 
 	private static removeUnwantedFiles(directory: string, packFileName: string): void {
-		listFiles(directory)
-			.filter(filePath => !new RegExp(`${packFileName}|package.json$`).test(filePath))
-			.forEach(filePath => unlinkSync(filePath));
+		const files = listFiles(directory).filter(filePath => !new RegExp(`${packFileName}|package.json$`).test(filePath));
+		Log.info(`Remove unnecessary files`);
+		files.forEach(filePath => unlinkSync(filePath));
 	}
 
 	private static removeEmptyDirectories(directory: string): void {
+		Log.info(`Remove empty directories`);
 		readdirSync(directory)
 			.map(fileName => path.join(directory, fileName))
 			.filter(filePath => statSync(filePath).isDirectory())
