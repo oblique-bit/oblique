@@ -4,11 +4,8 @@ import path from 'path';
 import {Log} from './log';
 import {Files} from './files';
 
-export function executeCommand(command: string, showCommandResult = false): void {
-	if (showCommandResult) {
-		console.info(command);
-	}
-	execSync(command, showCommandResult ? {stdio: 'inherit'} : undefined);
+export function executeCommand(command: string): void {
+	execSync(command);
 }
 
 export function executeCommandWithLog(command: string, messagePrefix: string): void {
