@@ -1,5 +1,15 @@
 @if (cmsData$ | async; as cmsData) {
-	<h1>{{ cmsData.title }}</h1>
+	<div class="title-container">
+		<h1>{{ cmsData.title }}</h1>
+		@if (cmsData.deprecation) {
+			<mat-chip-set>
+				<mat-chip class="error">Deprecated</mat-chip>
+			</mat-chip-set>
+		}
+	</div>
+	@if (cmsData.deprecation) {
+		<div class="deprecation-container" [innerHtml]="cmsData.deprecation | safeHtml"></div>
+	}
 	<app-tabs [idPrefix]="componentId" [id]="componentId | id: ['tabs']" [selectedTab]="cmsData.tab" (tabChanged)="handleTabChanged($event)">
 		<app-tab name="Examples" [hidden]="!!!cmsData.source" [id]="componentId | id: ['examples-tab']">
 			<ng-template appCodeExample [codeExampleComponent]="cmsData.source" />

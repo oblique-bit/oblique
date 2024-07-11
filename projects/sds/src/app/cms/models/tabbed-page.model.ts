@@ -16,6 +16,7 @@ export interface TabbedPageComplete {
 	ui_ux: string;
 	min_version: number;
 	max_version: number;
+	deprecation: string;
 }
 
 export interface CmsData {
@@ -24,4 +25,5 @@ export interface CmsData {
 	uiUx: string;
 	source: Type<CodeExamples> | undefined;
 	tab: string;
+	deprecation: string;
 }
