@@ -7,16 +7,16 @@ import {Banner} from '../../../scripts/shared/banner';
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {Log} from '../../../scripts/shared/log';
 
-class PostDist extends StaticScript {
+class PostBuild extends StaticScript {
 	static perform(): void {
 		Log.start('Finalize build');
-		PostDist.copyDistFiles();
-		PostDist.renameDistribution();
-		PostDist.adaptPackageJson();
-		PostDist.adaptSchematicsPackageJson();
-		PostDist.updateBackgroundImagePath();
-		PostDist.distributeObFeatures();
-		PostDist.addBanner();
+		PostBuild.copyDistFiles();
+		PostBuild.renameDistribution();
+		PostBuild.adaptPackageJson();
+		PostBuild.adaptSchematicsPackageJson();
+		PostBuild.updateBackgroundImagePath();
+		PostBuild.distributeObFeatures();
+		PostBuild.addBanner();
 		adaptReadmeLinks('oblique');
 		Log.success();
 	}
@@ -41,15 +41,15 @@ class PostDist extends StaticScript {
 		const replaceValue = 'oblique';
 		// Please note that order is important!
 		const fileList = listFiles(path.join('..', '..', 'dist'));
-		PostDist.renameInFiles(fileList, searchValue, replaceValue);
-		PostDist.renameFiles(fileList, searchValue, replaceValue);
+		PostBuild.renameInFiles(fileList, searchValue, replaceValue);
+		PostBuild.renameFiles(fileList, searchValue, replaceValue);
 	}
 
 	private static adaptPackageJson(): void {
 		PackageJson.initialize('oblique')
 			.addFieldsFromRoot('version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs')
 			.addExports({
-				...PostDist.getExportEntriesForSCSS(),
+				...PostBuild.getExportEntriesForSCSS(),
 				'./assets/images/cover-background.jpg': './assets/images/cover-background.jpg' // used by oblique-components.css
 			})
 			.write()
@@ -66,7 +66,7 @@ class PostDist extends StaticScript {
 
 	private static updateBackgroundImagePath(): void {
 		Log.info(`Update path to cover-background.jpg.`);
-		PostDist.replaceInFiles(
+		PostBuild.replaceInFiles(
 			[path.join('..', '..', 'dist', 'oblique', 'styles', 'css', 'oblique-components.css')],
 			'cover-background.jpg',
 			'@oblique/oblique/assets/images/cover-background.jpg'
@@ -117,4 +117,4 @@ class PostDist extends StaticScript {
 	}
 }
 
-PostDist.perform();
+PostBuild.perform();
