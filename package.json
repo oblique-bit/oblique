@@ -26,7 +26,7 @@
     "projects/service-navigation-web-component"
   ],
   "scripts": {
-    "lint": "npm run lint -ws && ts-node scripts/lint.ts",
+    "lint": "ts-node scripts/lint.ts && npm run lint -ws",
     "format": "npm run format -ws && ts-node scripts/lint.ts --fix",
     "dependencies-update": "ts-node scripts/update-dependencies.ts",
     "postinstall": "ts-node scripts/sanitize-package-lock.ts",
