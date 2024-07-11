@@ -246,17 +246,36 @@ describe('ObMasterLayoutComponent', () => {
 
 	describe('focusElement', () => {
 		let element: HTMLElement;
-		beforeEach(() => {
-			element = document.getElementById('content');
-			jest.spyOn(element, 'scrollIntoView');
-			jest.spyOn(element, 'focus');
-			component.focusElement('content');
+		describe('without H1', () => {
+			beforeEach(() => {
+				element = document.getElementById('content');
+				jest.spyOn(element, 'scrollIntoView');
+				jest.spyOn(element, 'focus');
+				component.focusElement('content');
+			});
+			it('should scroll to the element', () => {
+				expect(element.scrollIntoView).toHaveBeenCalledWith({behavior: 'smooth'});
+			});
+			it('should focus the element', () => {
+				expect(element.focus).toHaveBeenCalledWith({preventScroll: true});
+			});
 		});
-		it('should scroll to the element', () => {
-			expect(element.scrollIntoView).toHaveBeenCalledWith({behavior: 'smooth'});
-		});
-		it('should focus the element', () => {
-			expect(element.focus).toHaveBeenCalledWith({preventScroll: true});
+
+		describe('with H1', () => {
+			beforeEach(() => {
+				const content = document.getElementById('content');
+				content.prepend(document.createElement('h1'));
+				element = content.querySelector('h1');
+				jest.spyOn(element, 'scrollIntoView');
+				jest.spyOn(element, 'focus');
+				component.focusElement('content');
+			});
+			it('should scroll to the element', () => {
+				expect(element.scrollIntoView).toHaveBeenCalledWith({behavior: 'smooth'});
+			});
+			it('should focus the element', () => {
+				expect(element.focus).toHaveBeenCalledWith({preventScroll: true});
+			});
 		});
 	});
 });
