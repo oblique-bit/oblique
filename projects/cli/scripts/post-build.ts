@@ -3,11 +3,13 @@ import {Banner} from '../../../scripts/shared/banner';
 import {CopyFiles} from '../../../scripts/shared/copy-files';
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {adaptReadmeLinks} from '../../../scripts/shared/utils';
+import {Log} from '../../../scripts/shared/log';
 
 export class PostBuild extends StaticScript {
 	private static readonly projectName = 'cli';
 
 	static perform(): void {
+		Log.start('Finalize build');
 		CopyFiles.initialize(PostBuild.projectName)
 			.copyRootFiles('LICENSE')
 			.copyProjectRootFiles('README.md', 'CHANGELOG.md', 'package.json')
@@ -15,6 +17,7 @@ export class PostBuild extends StaticScript {
 		PostBuild.adaptPackageJson();
 		PostBuild.addBanner();
 		adaptReadmeLinks(PostBuild.projectName);
+		Log.success();
 	}
 
 	private static adaptPackageJson(): void {
