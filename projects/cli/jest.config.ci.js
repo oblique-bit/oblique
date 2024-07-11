@@ -6,7 +6,7 @@ module.exports.reporters = [
 	[
 		'jest-sonar',
 		{
-			outputDirectory: '<rootDir>/coverage/sandbox',
+			outputDirectory: '../../coverage/cli',
 			outputName: 'sqr.xml'
 		}
 	]
