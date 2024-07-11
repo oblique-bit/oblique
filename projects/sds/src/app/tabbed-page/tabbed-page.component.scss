@@ -18,3 +18,12 @@ h1 {
 	padding-top: 0.75rem;
 	padding-left: 0.75rem;
 }
+
+.title-container {
+	display: flex;
+	gap: 16px;
+}
+
+.deprecation-container {
+	padding: 1rem;
+}
