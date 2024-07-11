@@ -5,33 +5,33 @@ import {StaticScript} from './shared/static-script';
 import {Git} from './shared/git';
 import {Log} from './shared/log';
 
-class UpdateDependencies extends StaticScript {
+class DependenciesUpdate extends StaticScript {
 	private static readonly packageJsonPath = path.join('projects', 'oblique', 'package.json');
 	static perform(): void {
 		Log.start('Update dependencies');
-		const peerDependencies = UpdateDependencies.savePeerDependencies();
-		UpdateDependencies.execute('npm update --save --audit false');
-		UpdateDependencies.execute('npm audit fix --audit-level=none');
-		UpdateDependencies.execute('npm dedupe --audit false');
-		UpdateDependencies.execute('npm prune --audit false');
-		UpdateDependencies.restorePeerDependencies(peerDependencies);
-		UpdateDependencies.commit();
+		const peerDependencies = DependenciesUpdate.savePeerDependencies();
+		DependenciesUpdate.execute('npm update --save --audit false');
+		DependenciesUpdate.execute('npm audit fix --audit-level=none');
+		DependenciesUpdate.execute('npm dedupe --audit false');
+		DependenciesUpdate.execute('npm prune --audit false');
+		DependenciesUpdate.restorePeerDependencies(peerDependencies);
+		DependenciesUpdate.commit();
 		Log.success();
 	}
 
 	private static savePeerDependencies(): Record<string, string> {
-		return UpdateDependencies.readPackageJson().peerDependencies;
+		return DependenciesUpdate.readPackageJson().peerDependencies;
 	}
 
 	private static restorePeerDependencies(peerDependencies: Record<string, string>): void {
 		writeFileSync(
-			UpdateDependencies.packageJsonPath,
-			JSON.stringify({...UpdateDependencies.readPackageJson(), peerDependencies}, null, '  ')
+			DependenciesUpdate.packageJsonPath,
+			JSON.stringify({...DependenciesUpdate.readPackageJson(), peerDependencies}, null, '  ')
 		);
 	}
 
 	private static readPackageJson(): {peerDependencies: Record<string, string>} {
-		return JSON.parse(readFileSync(UpdateDependencies.packageJsonPath).toString());
+		return JSON.parse(readFileSync(DependenciesUpdate.packageJsonPath).toString());
 	}
 
 	private static execute(command: string): void {
@@ -44,4 +44,4 @@ class UpdateDependencies extends StaticScript {
 	}
 }
 
-UpdateDependencies.perform();
+DependenciesUpdate.perform();
