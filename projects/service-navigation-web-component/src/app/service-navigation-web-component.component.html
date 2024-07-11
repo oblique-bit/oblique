@@ -1,5 +1,5 @@
 <ob-service-navigation
-	*ngIf="environmentParsed"
+	*ngIf="environmentParsed !== undefined"
 	[environment]="environmentParsed"
 	[infoContact]="infoContactParsed"
 	[infoLinks]="infoLinksParsed"

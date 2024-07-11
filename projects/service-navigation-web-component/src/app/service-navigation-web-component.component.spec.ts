@@ -3,7 +3,8 @@ import {ObServiceNavigationWebComponentComponent} from './service-navigation-web
 import {TranslateModule} from '@ngx-translate/core';
 import {SimpleChange, SimpleChanges} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {multiTranslateLoader} from '../../../oblique/src/lib/utilities';
+import {By} from '@angular/platform-browser';
+import {ObServiceNavigationComponent, multiTranslateLoader} from '@oblique/oblique';
 
 function defaultChangesValues(): SimpleChanges {
 	return {environment: new SimpleChange(undefined, 'DEV', undefined)};
@@ -50,6 +51,14 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 					expect(component.environmentParsed).toBe(environmentCode);
 				}
 			);
+		});
+
+		it.each(['DEV', 'TEST', 'REF', 'ABN', 'PROD'])('should embed service-navigation', environment => {
+			component.environment = environment as 'DEV' | 'TEST' | 'REF' | 'ABN' | 'PROD';
+			component.languageList = 'en';
+			fixture.detectChanges();
+			const serviceNavigation = fixture.debugElement.query(By.directive(ObServiceNavigationComponent));
+			expect(serviceNavigation).toBeTruthy();
 		});
 	});
 
