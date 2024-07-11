@@ -3,7 +3,7 @@ import {CopyFiles} from '../../../scripts/shared/copy-files';
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {Log} from '../../../scripts/shared/log';
 
-class PostDist extends StaticScript {
+class PostBuild extends StaticScript {
 	static perform(): void {
 		Log.start('Finalize build');
 		const source = path.join('src', 'nginx');
@@ -17,4 +17,4 @@ class PostDist extends StaticScript {
 	}
 }
 
-PostDist.perform();
+PostBuild.perform();
