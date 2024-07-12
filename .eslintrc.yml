@@ -188,6 +188,16 @@ overrides:
       "@typescript-eslint/prefer-destructuring": off
       "@typescript-eslint/prefer-nullish-coalescing": off
       "@typescript-eslint/strict-boolean-expressions": off
+      no-console:
+        - error
+
+  - files:
+      - "scripts/shared/log.ts"
+    rules:
+      no-console:
+        - error
+        - allow:
+            - log
 
   - files:
       - "tests/*.ts"

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import chalk, {Chalk} from 'chalk';
 import {StaticScript} from './static-script';
 import {Timer} from './timer';
