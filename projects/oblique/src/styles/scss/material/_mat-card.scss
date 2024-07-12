@@ -1,7 +1,7 @@
 @use "../core/variables";
 @use "../core/mixins/shadow";
 @use "../core/mixins/typography";
-@use "mixins/mat-card.scss";
+@use "mixins/mat-card";
 
 .mat-mdc-button-base.ob-button.mat-mdc-button.mat-mdc-button-base.ob-button-card {
 	height: initial;
