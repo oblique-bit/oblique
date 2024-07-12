@@ -1,3 +1,9 @@
+# [11.3.1](https://github.com/oblique-bit/oblique/compare/11.3.0...11.3.1) (2024-07-12)
+
+## Bug Fixes
+
+- **master-layout:** correctly size external link icons in the footer ([069a87a1](https://github.com/oblique-bit/oblique/commit/069a87a11))
+
 # [11.3.0](https://github.com/oblique-bit/oblique/compare/11.2.4...11.3.0) (2024-07-05)
 
 ## Bug Fixes

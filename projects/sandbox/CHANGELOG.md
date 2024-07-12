@@ -1,3 +1,9 @@
+# [11.3.1](https://github.com/oblique-bit/oblique/compare/11.3.0...11.3.1) (2024-07-12)
+
+## Bug Fixes
+
+- **master-layout:** remove styling that breaks the external link icons ([2154e032](https://github.com/oblique-bit/oblique/commit/2154e0322))
+
 # [11.3.0](https://github.com/oblique-bit/oblique/compare/11.2.4...11.3.0) (2024-07-05)
 
 ## Features
