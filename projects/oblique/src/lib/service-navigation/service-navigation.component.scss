@@ -13,7 +13,7 @@
 		@mixin full-width() {
 			&:not(.ob-autocomplete, .mat-mdc-form-field),
 			& .mat-mdc-form-field {
-				width: calc(100vw - variables.$ob-spacing-xl);
+				width: calc(100vw - #{variables.$ob-spacing-xl});
 			}
 		}
 
