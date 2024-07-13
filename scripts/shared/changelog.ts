@@ -19,9 +19,14 @@ interface Commit {
 }
 
 export class Changelog extends StaticScript {
-	static addRelease(version: string, projectName: string): void {
+	static addRelease(version: string, projectName: string, additionalPackageWithScope?: string): void {
+		if (additionalPackageWithScope && !additionalPackageWithScope.includes('/')) {
+			throw new Error(
+				'A package and a scope, separated by a forward slash, e.g. "oblique/service-navigation" is expected. See the root CONTRIBUTING.md for valid packages and the CONTRIBUTING.md of the relevant package for valid scopes.'
+			);
+		}
 		const previousTag = Git.getLatestTag();
-		Changelog.prependRelease(Changelog.getCommits(previousTag, 'HEAD', projectName), previousTag, version);
+		Changelog.prependRelease(Changelog.getCommits(previousTag, 'HEAD', projectName, additionalPackageWithScope), previousTag, version);
 	}
 
 	static generate(projectName: string): void {
@@ -33,14 +38,19 @@ export class Changelog extends StaticScript {
 			.forEach(({from, to}) => Changelog.prependRelease(Changelog.getCommits(from, to, projectName), from, to));
 	}
 
-	private static getCommits(from: string, to: string, projectName: string): Commits {
+	private static getCommits(from: string, to: string, projectName: string, additionalPackageWithScope = ''): Commits {
 		const separator = ';;';
 		const commitSeparator = '##';
 		return Git.listCommits(['subject', 'body', 'hash'], separator, commitSeparator, from, to)
 			.replace(/\n/g, '')
 			.split(commitSeparator)
-			.filter(commit => new RegExp(`^(?:fix|feat)\\(${projectName}(?!/toolchain)(?:/[a-z-]+)?\\)`).test(commit))
+			.filter(
+				commit =>
+					new RegExp(`^(?:fix|feat)\\(${projectName}(?!/toolchain)(?:/[a-z-]+)?\\)`).test(commit) ||
+					new RegExp(`^(?:fix|feat)\\(${additionalPackageWithScope}\\)`).test(commit)
+			)
 			.map(commit => commit.replace(`${projectName}/`, ''))
+			.map(commit => commit.replace(additionalPackageWithScope, additionalPackageWithScope.split('/').pop()))
 			.map(commit => Changelog.formatCommit(commit, separator))
 			.sort((first, second) => first.scope.localeCompare(second.scope))
 			.reduce<Commits>(Changelog.groupCommitsByType, {fix: [], feat: [], breakingChanges: []});
