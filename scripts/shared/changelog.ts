@@ -39,7 +39,7 @@ export class Changelog extends StaticScript {
 		return Git.listCommits(['subject', 'body', 'hash'], separator, commitSeparator, from, to)
 			.replace(/\n/g, '')
 			.split(commitSeparator)
-			.filter(commit => new RegExp(`^(?:fix|feat)\\(${projectName}(?!/toolchain)`).test(commit))
+			.filter(commit => new RegExp(`^(?:fix|feat)\\(${projectName}(?!/toolchain)(?:/[a-z-]+)?\\)`).test(commit))
 			.map(commit => commit.replace(`${projectName}/`, ''))
 			.map(commit => Changelog.formatCommit(commit, separator))
 			.sort((first, second) => first.scope.localeCompare(second.scope))
