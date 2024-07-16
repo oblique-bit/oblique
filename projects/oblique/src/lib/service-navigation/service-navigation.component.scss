@@ -13,7 +13,7 @@
 		@mixin full-width() {
 			&:not(.ob-autocomplete, .mat-mdc-form-field),
 			& .mat-mdc-form-field {
-				width: calc(100vw - variables.$ob-spacing-xl);
+				width: calc(100vw - #{variables.$ob-spacing-xl});
 			}
 		}
 
@@ -25,6 +25,13 @@
 
 		.ob-md-down-width-100 {
 			@include full-width();
+		}
+	}
+
+	.ob-button,
+	.mat-mdc-button-base.ob-button[class*="ob-button-"].ob-external-link.mat-mdc-icon-button {
+		.mat-icon {
+			font-size: variables.$ob-font-size-bigger;
 		}
 	}
 }
