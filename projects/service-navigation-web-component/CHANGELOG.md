@@ -2,7 +2,7 @@
 
 ## Bug Fixes
 
-- **web-component:** ensure the service-navigation component is embedded in PROD ([4155b147](https://github.com/oblique-bit/oblique/commit/4155b147e))
+- **web-component:** ensure the service-navigation component is embedded in PROD ([4155b147](https://github.com/oblique-bit/oblique/commit/4155b147e2d19f71e197c08249de58f1559d0d39))
 
 # [11.2.0](https://github.com/oblique-bit/oblique/compare/11.1.3...11.2.0) (2024-05-31)
 
