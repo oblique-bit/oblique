@@ -2,9 +2,9 @@
 
 ## Features
 
-- **code-examples:** add external link example ([1b16c1c5](https://github.com/oblique-bit/oblique/commit/1b16c1c56))
-- **selectable:** add sample as custom form element ([f35bac94](https://github.com/oblique-bit/oblique/commit/f35bac94b))
-- **styles:** enable separate scrolling for side navigation and content ([8b0f1eb3](https://github.com/oblique-bit/oblique/commit/8b0f1eb35))
+- **code-examples:** add external link example ([1b16c1c5](https://github.com/oblique-bit/oblique/commit/1b16c1c56072f69eee6ff987d76288ad5671d6e8))
+- **selectable:** add sample as custom form element ([f35bac94](https://github.com/oblique-bit/oblique/commit/f35bac94bfdefccf81576654ed67b356eee4503b))
+- **styles:** enable separate scrolling for side navigation and content ([8b0f1eb3](https://github.com/oblique-bit/oblique/commit/8b0f1eb35b0281d18a05d420349f4c4eed444b55))
 
 # [11.2.4](https://github.com/oblique-bit/oblique/compare/11.2.3...11.2.4) (2024-06-28)
 

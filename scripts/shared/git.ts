@@ -4,7 +4,7 @@ export class Git {
 	private static readonly format = {
 		subject: '%s',
 		body: '%b',
-		hash: '%h'
+		hash: '%H'
 	};
 	private static readonly diffRange = {
 		changedFiles: '--cached',
