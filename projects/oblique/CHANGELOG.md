@@ -2,24 +2,24 @@
 
 ## Bug Fixes
 
-- **master-layout:** correctly size external link icons in the footer ([069a87a1](https://github.com/oblique-bit/oblique/commit/069a87a11))
+- **master-layout:** correctly size external link icons in the footer ([069a87a1](https://github.com/oblique-bit/oblique/commit/069a87a11927101a0da98a49bee72e9a2a087ac1))
 
 # [11.3.0](https://github.com/oblique-bit/oblique/compare/11.2.4...11.3.0) (2024-07-05)
 
 ## Bug Fixes
 
-- **input-clear:** prevent input clear icon from flickering during initial loading ([6d2800e8](https://github.com/oblique-bit/oblique/commit/6d2800e8e))
-- **master-layout:** make sure the menu item shadow don't overflow into the flyout ([098ffc1c](https://github.com/oblique-bit/oblique/commit/098ffc1c6))
-- **master-layout:** remove empty icon wrapper in the main navigation ([f71c0641](https://github.com/oblique-bit/oblique/commit/f71c0641e))
-- **selectable:** remove `private` modifier on `disabled` input ([ac162a6b](https://github.com/oblique-bit/oblique/commit/ac162a6b6))
+- **input-clear:** prevent input clear icon from flickering during initial loading ([6d2800e8](https://github.com/oblique-bit/oblique/commit/6d2800e8e9bcdb64f8d71592bed5f3b9b117e282))
+- **master-layout:** make sure the menu item shadow don't overflow into the flyout ([098ffc1c](https://github.com/oblique-bit/oblique/commit/098ffc1c6bdde42e53d2e3552ae1965acda059ca))
+- **master-layout:** remove empty icon wrapper in the main navigation ([f71c0641](https://github.com/oblique-bit/oblique/commit/f71c0641ea3436d27dd3853aefd0da99c321d6a7))
+- **selectable:** remove `private` modifier on `disabled` input ([ac162a6b](https://github.com/oblique-bit/oblique/commit/ac162a6b6cfd0d9118e923ba1664760ad7e9f217))
 
 ## Features
 
-- **language:** deprecate `ObLanguageService` ([da3953d9](https://github.com/oblique-bit/oblique/commit/da3953d94))
-- **language:** deprecate `setLocaleOnAdapter` and automate its logic ([a8507418](https://github.com/oblique-bit/oblique/commit/a8507418c))
-- **master-layout:** reduce and harmonize padding on main navigation flyouts ([b3cd4da4](https://github.com/oblique-bit/oblique/commit/b3cd4da4f))
-- **selectable:** turn `ObSelectableGroup` into a custom form element ([5fca7f1d](https://github.com/oblique-bit/oblique/commit/5fca7f1dd))
-- **selectable:** add generics for the `value` type ([b44beec7](https://github.com/oblique-bit/oblique/commit/b44beec75))
+- **language:** deprecate `ObLanguageService` ([da3953d9](https://github.com/oblique-bit/oblique/commit/da3953d9499a36a43028dfdfcab7bb615594c4a8))
+- **language:** deprecate `setLocaleOnAdapter` and automate its logic ([a8507418](https://github.com/oblique-bit/oblique/commit/a8507418c2e49f82a834ba5abb26651298dd42f4))
+- **master-layout:** reduce and harmonize padding on main navigation flyouts ([b3cd4da4](https://github.com/oblique-bit/oblique/commit/b3cd4da4f9342741b79ac84cd13598b0c306b820))
+- **selectable:** turn `ObSelectableGroup` into a custom form element ([5fca7f1d](https://github.com/oblique-bit/oblique/commit/5fca7f1ddaaf32ff7695f5fc1a2ff025dca033cb))
+- **selectable:** add generics for the `value` type ([b44beec7](https://github.com/oblique-bit/oblique/commit/b44beec759d2db14e6b664d2e05d2c24aac7bb78))
 
 # [11.2.4](https://github.com/oblique-bit/oblique/compare/11.2.3...11.2.4) (2024-06-28)
 
