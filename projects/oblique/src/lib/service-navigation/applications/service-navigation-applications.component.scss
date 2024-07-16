@@ -24,17 +24,21 @@ $ob-application-icon-size: 2.5em; // empiric value
 		}
 	}
 
-	.ob-application-image {
-		height: $ob-application-icon-size;
-		width: $ob-application-icon-size;
+	li {
+		position: relative;
 
-		&.ob-status-image {
-			position: absolute;
-			z-index: 2;
-		}
+		.ob-application-image {
+			height: $ob-application-icon-size;
+			width: $ob-application-icon-size;
 
-		&.ob-offline {
-			filter: grayscale(1);
+			&.ob-status-image {
+				position: absolute;
+				z-index: 2;
+			}
+
+			&.ob-offline {
+				filter: grayscale(1);
+			}
 		}
 	}
 
