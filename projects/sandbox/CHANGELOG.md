@@ -2,13 +2,13 @@
 
 ## Bug Fixes
 
-- **master-layout:** remove styling that breaks the external link icons ([2154e032](https://github.com/oblique-bit/oblique/commit/2154e0322))
+- **master-layout:** remove styling that breaks the external link icons ([2154e032](https://github.com/oblique-bit/oblique/commit/2154e0322477dce5c8303b0d569c455e63dd4126))
 
 # [11.3.0](https://github.com/oblique-bit/oblique/compare/11.2.4...11.3.0) (2024-07-05)
 
 ## Features
 
-- **selectable:** add sample as custom form element ([52c37889](https://github.com/oblique-bit/oblique/commit/52c37889d))
+- **selectable:** add sample as custom form element ([52c37889](https://github.com/oblique-bit/oblique/commit/52c37889d845645320225d1908e5c278618c2afa))
 
 # [11.2.4](https://github.com/oblique-bit/oblique/compare/11.2.3...11.2.4) (2024-06-28)
 
