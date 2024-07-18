@@ -11,6 +11,7 @@ import {
 	OnDestroy,
 	OnInit,
 	QueryList,
+	Renderer2,
 	TemplateRef,
 	ViewChild,
 	ViewEncapsulation,
@@ -77,6 +78,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	private readonly document = inject(DOCUMENT);
 	private readonly window = inject(WINDOW);
 	private readonly highContrastModeDetector = inject(HighContrastModeDetector);
+	private readonly renderer = inject(Renderer2);
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
@@ -106,11 +108,12 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 
 	focusElement(elementId: string): void {
 		if (this.config.focusableFragments.includes(elementId)) {
-			const element = this.document.querySelector<HTMLElement>(`#${elementId}`);
-			if (element) {
-				element.scrollIntoView({behavior: 'smooth'});
-				element.focus({preventScroll: true});
+			const element = this.getElementToFocus(elementId);
+			if (elementId === this.contentId && !element.hasAttribute('tabindex')) {
+				this.renderer.setAttribute(element, 'tabindex', '-1');
 			}
+			element.scrollIntoView({behavior: 'smooth'});
+			element.focus({preventScroll: true});
 		}
 	}
 
@@ -275,5 +278,10 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 				delay(600) // duration of the open animation
 			)
 			.subscribe(() => this.offCanvasClose.nativeElement.focus());
+	}
+
+	private getElementToFocus(elementId: string): HTMLElement {
+		const element = this.document.querySelector<HTMLElement>(`#${elementId}`);
+		return elementId === this.contentId ? (element.querySelector<HTMLHeadingElement>('h1') ?? element) : element;
 	}
 }
