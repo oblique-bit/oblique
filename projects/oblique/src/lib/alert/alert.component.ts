@@ -68,6 +68,6 @@ export class ObAlertComponent implements OnInit {
 	}
 
 	private getAlertRole(): string {
-		return this.hasRoleAlert ?? this.hasGlobalAlertRole ?? (this.initialRole !== null && this.role === 'alert') ? 'alert' : undefined;
+		return (this.hasRoleAlert ?? this.hasGlobalAlertRole ?? (this.initialRole !== null && this.role === 'alert')) ? 'alert' : undefined;
 	}
 }
