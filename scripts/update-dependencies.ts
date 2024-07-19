@@ -1,12 +1,14 @@
 import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
-import {executeCommand} from './shared/utils';
+import {executeCommandWithLog} from './shared/utils';
 import {StaticScript} from './shared/static-script';
 import {Git} from './shared/git';
+import {Log} from './shared/log';
 
 class UpdateDependencies extends StaticScript {
 	private static readonly packageJsonPath = path.join('projects', 'oblique', 'package.json');
 	static perform(): void {
+		Log.start('Update dependencies');
 		const peerDependencies = UpdateDependencies.savePeerDependencies();
 		UpdateDependencies.execute('npm update --save --audit false');
 		UpdateDependencies.execute('npm audit fix --audit-level=none');
@@ -14,6 +16,7 @@ class UpdateDependencies extends StaticScript {
 		UpdateDependencies.execute('npm prune --audit false');
 		UpdateDependencies.restorePeerDependencies(peerDependencies);
 		UpdateDependencies.commit();
+		Log.success();
 	}
 
 	private static savePeerDependencies(): Record<string, string> {
@@ -32,7 +35,7 @@ class UpdateDependencies extends StaticScript {
 	}
 
 	private static execute(command: string): void {
-		executeCommand(`${command} --fund false`, true);
+		executeCommandWithLog(`${command} --fund false`, `Execute`);
 	}
 
 	private static commit(): void {

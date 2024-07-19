@@ -1,6 +1,8 @@
 import {readFileSync, writeFileSync} from 'fs';
 import {StaticScript} from './static-script';
 import {Git} from './git';
+import {Log} from './log';
+import {fatal} from './utils';
 
 type CommitType = 'fix' | 'feat';
 
@@ -20,8 +22,9 @@ interface Commit {
 
 export class Changelog extends StaticScript {
 	static addRelease(version: string, projectName: string, additionalPackageWithScope?: string): void {
+		Log.info(`Add version ${version} to CHANGELOG.md`);
 		if (additionalPackageWithScope && !additionalPackageWithScope.includes('/')) {
-			throw new Error(
+			fatal(
 				'A package and a scope, separated by a forward slash, e.g. "oblique/service-navigation" is expected. See the root CONTRIBUTING.md for valid packages and the CONTRIBUTING.md of the relevant package for valid scopes.'
 			);
 		}
@@ -30,6 +33,7 @@ export class Changelog extends StaticScript {
 	}
 
 	static generate(projectName: string): void {
+		Log.info(`Generate CHANGELOG.md`);
 		Git.listExistingTags()
 			.split('\n')
 			.filter(tag => /^\d+\.\d+\.\d+$/.test(tag))
