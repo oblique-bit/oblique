@@ -1,3 +1,10 @@
+# [11.3.2](https://github.com/oblique-bit/oblique/compare/11.3.1...11.3.2) (2024-07-19)
+
+## Bug Fixes
+
+- **service-navigation:** increase icon size ([83f5b171](https://github.com/oblique-bit/oblique/commit/83f5b171b3dfecda14873a090bbe5e1b718444ff))
+- **service-navigation:** ensure the status icon are tied to their applications ([a9f8b640](https://github.com/oblique-bit/oblique/commit/a9f8b64071f578adab52c2c0b75ad3d430c755e1))
+
 # [11.3.1](https://github.com/oblique-bit/oblique/compare/11.3.0...11.3.1) (2024-07-12)
 
 ## Bug Fixes

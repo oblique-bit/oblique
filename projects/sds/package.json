@@ -1,6 +1,6 @@
 {
   "name": "swiss-design-system",
-  "version": "11.3.1",
+  "version": "11.3.2",
   "scripts": {
     "start": "ng serve",
     "lint": "ts-node scripts/lint.ts",
