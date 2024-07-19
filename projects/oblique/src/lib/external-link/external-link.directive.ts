@@ -86,7 +86,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	private static initializeAttribute(currentValue: string, defaultValue: string): string {
-		return currentValue === '' ? undefined : currentValue ?? defaultValue;
+		return currentValue === '' ? undefined : (currentValue ?? defaultValue);
 	}
 
 	private addScreenReaderOnlyTextElement(): void {
