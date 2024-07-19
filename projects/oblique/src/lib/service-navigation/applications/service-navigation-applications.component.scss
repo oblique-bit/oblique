@@ -5,7 +5,7 @@ $ob-application-icon-size: 2.5em; // empiric value
 	.ob-applications {
 		display: flex;
 		flex-wrap: wrap;
-		gap: variables.$ob-spacing-default variables.$ob-spacing-lg;
+		gap: variables.$ob-spacing-default;
 		padding: 0;
 		list-style: none;
 	}

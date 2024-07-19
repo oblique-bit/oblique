@@ -1,4 +1,4 @@
-import {CodeExampleComponent} from './../../code-example/code-example.component';
+import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
