@@ -1,4 +1,4 @@
-import {executeCommand, getResultFromCommand} from './utils';
+import {executeCommandWithLog, getResultFromCommand} from './utils';
 
 export class Git {
 	private static readonly format = {
@@ -15,11 +15,11 @@ export class Git {
 	};
 
 	static commit(header: string, ...lines: string[]): void {
-		executeCommand(`git commit ${[`-am "${header}"`, ...lines].join(' -m ')}`);
+		executeCommandWithLog(`git commit ${[`-am "${header}"`, ...lines].join(' -m ')}`, `Commit changes`);
 	}
 
 	static createBranchFrom(branch: string, sourceBranch: string): void {
-		executeCommand(`git checkout -b ${branch} --no-track ${sourceBranch}`);
+		executeCommandWithLog(`git checkout -b ${branch} --no-track ${sourceBranch}`, `Create ${branch} branch from ${sourceBranch}`);
 	}
 
 	static doTagExist(tag: string): boolean {
@@ -27,7 +27,7 @@ export class Git {
 	}
 
 	static fetch(branch: string): void {
-		executeCommand(`git fetch ${branch}`);
+		executeCommandWithLog(`git fetch origin ${branch}`, `Fetch ${branch} branch`);
 	}
 
 	static getBranchName(): string {

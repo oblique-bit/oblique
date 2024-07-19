@@ -47,12 +47,14 @@ export function buildPath(...pathParts: string[]): string {
 }
 
 export function updatePackageJsonVersion(version: string): void {
+	Log.info(`Update package.json version to ${version}.`);
 	const fileContent = JSON.parse(readFileSync('package.json').toString()) as Record<'version', string>;
 	fileContent.version = version;
 	writeFileSync('package.json', JSON.stringify(fileContent, null, 2));
 }
 
 export function updateSonarPropertiesVersion(version: string): void {
+	Log.info(`Update Sonar properties' project version to ${version}.`);
 	const filePath = 'sonar-project.properties';
 	writeFileSync(
 		filePath,
@@ -63,6 +65,7 @@ export function updateSonarPropertiesVersion(version: string): void {
 }
 
 export function adaptReadmeLinks(project: string): void {
+	Log.info('Update links in the distributed README.md');
 	const filePath = path.join('..', '..', 'dist', project, 'README.md');
 	writeFileSync(
 		filePath,
