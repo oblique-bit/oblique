@@ -1,9 +1,9 @@
 import {execSync} from 'child_process';
-import {readFileSync, writeFileSync} from 'fs';
 import {executeCommand, executeCommandWithLog} from './shared/utils';
 import {StaticScript} from './shared/static-script';
 import {Git} from './shared/git';
 import {Log} from './shared/log';
+import {Files} from './shared/files';
 
 class Release extends StaticScript {
 	static perform(): void {
@@ -30,12 +30,7 @@ class Release extends StaticScript {
 	private static updateCopyrightDate(): void {
 		Log.info(`Update copyright date in LICENSE`);
 		const licensePath = 'LICENSE';
-		writeFileSync(
-			licensePath,
-			readFileSync(licensePath)
-				.toString()
-				.replace(/(?!2020-)\d{4}/, new Date().getFullYear().toString())
-		);
+		Files.write(licensePath, Files.read(licensePath).replace(/(?!2020-)\d{4}/, new Date().getFullYear().toString()));
 	}
 
 	private static execute(command: string): string {

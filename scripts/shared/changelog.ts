@@ -1,8 +1,8 @@
-import {readFileSync, writeFileSync} from 'fs';
 import {StaticScript} from './static-script';
 import {Git} from './git';
 import {Log} from './log';
 import {fatal} from './utils';
+import {Files} from './files';
 
 type CommitType = 'fix' | 'feat';
 
@@ -99,14 +99,14 @@ export class Changelog extends StaticScript {
 
 	private static prependRelease(commits: Commits, previousTag: string, version: string): void {
 		if (commits.feat.length || commits.fix.length) {
-			writeFileSync(
+			Files.write(
 				'CHANGELOG.md',
 				[
 					Changelog.getTitle(version, previousTag),
 					Changelog.getSection(commits.fix, 'Bug Fixes'),
 					Changelog.getSection(commits.feat, 'Features'),
 					Changelog.getSection(commits.breakingChanges, 'BREAKING CHANGES'),
-					readFileSync('CHANGELOG.md').toString()
+					Files.read('CHANGELOG.md')
 				].join('\n\n')
 			);
 		}

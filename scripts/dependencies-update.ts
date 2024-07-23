@@ -1,12 +1,11 @@
-import {readFileSync, writeFileSync} from 'fs';
-import path from 'path';
 import {executeCommandWithLog} from './shared/utils';
 import {StaticScript} from './shared/static-script';
 import {Git} from './shared/git';
 import {Log} from './shared/log';
+import {Files} from './shared/files';
 
 class DependenciesUpdate extends StaticScript {
-	private static readonly packageJsonPath = path.join('projects', 'oblique', 'package.json');
+	private static readonly packageJsonPath = 'projects/oblique/package.json';
 	static perform(): void {
 		Log.start('Update dependencies');
 		const peerDependencies = DependenciesUpdate.savePeerDependencies();
@@ -24,14 +23,11 @@ class DependenciesUpdate extends StaticScript {
 	}
 
 	private static restorePeerDependencies(peerDependencies: Record<string, string>): void {
-		writeFileSync(
-			DependenciesUpdate.packageJsonPath,
-			JSON.stringify({...DependenciesUpdate.readPackageJson(), peerDependencies}, null, '  ')
-		);
+		Files.writeJson(DependenciesUpdate.packageJsonPath, {...DependenciesUpdate.readPackageJson(), peerDependencies});
 	}
 
 	private static readPackageJson(): {peerDependencies: Record<string, string>} {
-		return JSON.parse(readFileSync(DependenciesUpdate.packageJsonPath).toString());
+		return Files.readJson(DependenciesUpdate.packageJsonPath);
 	}
 
 	private static execute(command: string): void {
