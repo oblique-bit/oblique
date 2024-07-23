@@ -1,7 +1,8 @@
 import {execSync} from 'child_process';
-import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
+import {readdirSync, statSync} from 'fs';
 import path from 'path';
 import {Log} from './log';
+import {Files} from './files';
 
 export function executeCommand(command: string, showCommandResult = false): void {
 	if (showCommandResult) {
@@ -48,29 +49,23 @@ export function buildPath(...pathParts: string[]): string {
 
 export function updatePackageJsonVersion(version: string): void {
 	Log.info(`Update package.json version to ${version}.`);
-	const fileContent = JSON.parse(readFileSync('package.json').toString()) as Record<'version', string>;
+	const fileContent = Files.readJson<Record<'version', string>>('package.json');
 	fileContent.version = version;
-	writeFileSync('package.json', JSON.stringify(fileContent, null, 2));
+	Files.writeJson('package.json', fileContent);
 }
 
 export function updateSonarPropertiesVersion(version: string): void {
 	Log.info(`Update Sonar properties' project version to ${version}.`);
 	const filePath = 'sonar-project.properties';
-	writeFileSync(
-		filePath,
-		readFileSync(filePath)
-			.toString()
-			.replace(/(?<=sonar\.projectVersion=)\d+\.\d+\.\d+/, version)
-	);
+	Files.write(filePath, Files.read(filePath).replace(/(?<=sonar\.projectVersion=)\d+\.\d+\.\d+/, version));
 }
 
 export function adaptReadmeLinks(project: string): void {
 	Log.info('Update links in the distributed README.md');
-	const filePath = path.join('..', '..', 'dist', project, 'README.md');
-	writeFileSync(
+	const filePath = `../../dist/${project}/README.md`;
+	Files.write(
 		filePath,
-		readFileSync(filePath)
-			.toString()
+		Files.read(filePath)
 			.replace('../../README.md)', 'https://github.com/oblique-bit/oblique/blob/master/README.md) on GitHub')
 			.replace('../../CONTRIBUTING.md)', 'https://github.com/oblique-bit/oblique/blob/master/CONTRIBUTING.md) on GitHub')
 			.replace('../../LICENSE', 'LICENSE')

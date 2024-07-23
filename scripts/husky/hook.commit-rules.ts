@@ -1,8 +1,7 @@
-import {readFileSync} from 'fs';
-import path from 'path';
 import {Git} from '../shared/git';
 import {Log} from '../shared/log';
 import {fatal} from '../shared/utils';
+import {Files} from '../shared/files';
 
 interface Header {
 	type: string;
@@ -18,8 +17,7 @@ class HookCommitRules {
 		Log.start('Validate commit message');
 		Log.info('Read commit message');
 
-		const message: string[] = readFileSync('.git/COMMIT_EDITMSG')
-			.toString()
+		const message: string[] = Files.read('.git/COMMIT_EDITMSG')
 			.split('\n')
 			.filter(line => !line.startsWith('#'));
 		HookCommitRules.checkLineLength(message, HookCommitRules.maxLineLength);
@@ -51,7 +49,7 @@ class HookCommitRules {
 	private static checkHeader(header: string): void {
 		HookCommitRules.checkHeaderFormat(header);
 		const {type, pkg, scope, subject} = HookCommitRules.extractHeaderParts(header);
-		const contributing: string = readFileSync('CONTRIBUTING.md', 'utf8').toString();
+		const contributing: string = Files.read('CONTRIBUTING.md');
 		HookCommitRules.checkType(type, HookCommitRules.extractList(contributing, 'Type'));
 		HookCommitRules.checkPackage(pkg, HookCommitRules.extractList(contributing, 'Package'));
 		HookCommitRules.checkScope(scope, pkg);
@@ -102,10 +100,7 @@ class HookCommitRules {
 		}
 
 		if (scope) {
-			const contributing: string = readFileSync(
-				path.join('projects', HookCommitRules.getFolderName(pkg), 'CONTRIBUTING.md'),
-				'utf8'
-			).toString();
+			const contributing: string = Files.read(`projects/${HookCommitRules.getFolderName(pkg)}/CONTRIBUTING.md`);
 			const scopes = HookCommitRules.extractList(contributing, 'Scope');
 
 			if (!scopes.includes(scope)) {
