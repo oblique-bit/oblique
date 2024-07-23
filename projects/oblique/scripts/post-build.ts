@@ -1,11 +1,10 @@
-import path from 'path';
-import {readFileSync, renameSync, writeFileSync} from 'fs';
 import {CopyFiles} from '../../../scripts/shared/copy-files';
-import {adaptReadmeLinks, executeCommandWithLog, listFiles} from '../../../scripts/shared/utils';
+import {adaptReadmeLinks, executeCommandWithLog} from '../../../scripts/shared/utils';
 import {ExportEntries, PackageJson} from '../../../scripts/shared/package-json';
 import {Banner} from '../../../scripts/shared/banner';
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {Log} from '../../../scripts/shared/log';
+import {Files} from '../../../scripts/shared/files';
 
 class PostBuild extends StaticScript {
 	static perform(): void {
@@ -26,9 +25,9 @@ class PostBuild extends StaticScript {
 			.copyRootFiles('LICENSE')
 			.copyProjectFiles(
 				'src',
-				...listFiles(path.join('src', 'assets')),
-				...listFiles(path.join('src', 'styles')).filter(filePath => !filePath.endsWith('.scss')),
-				...listFiles(path.join('src', 'styles')).filter(filePath =>
+				...Files.list('src/assets'),
+				...Files.list('src/styles').filter(filePath => !filePath.endsWith('.scss')),
+				...Files.list('src/styles').filter(filePath =>
 					/(?:core[\\/](?:_variables|_palette)|mixins[\\/](?:_layout|_shadow|_typography))\.scss$/.test(filePath)
 				)
 			)
@@ -40,7 +39,7 @@ class PostBuild extends StaticScript {
 		const searchValue = 'oblique-oblique';
 		const replaceValue = 'oblique';
 		// Please note that order is important!
-		const fileList = listFiles(path.join('..', '..', 'dist'));
+		const fileList = Files.list('../../dist');
 		PostBuild.renameInFiles(fileList, searchValue, replaceValue);
 		PostBuild.renameFiles(fileList, searchValue, replaceValue);
 	}
@@ -67,7 +66,7 @@ class PostBuild extends StaticScript {
 	private static updateBackgroundImagePath(): void {
 		Log.info(`Update path to cover-background.jpg.`);
 		PostBuild.replaceInFiles(
-			[path.join('..', '..', 'dist', 'oblique', 'styles', 'css', 'oblique-components.css')],
+			['../../dist/oblique/styles/css/oblique-components.css'],
 			'cover-background.jpg',
 			'@oblique/oblique/assets/images/cover-background.jpg'
 		);
@@ -88,21 +87,21 @@ class PostBuild extends StaticScript {
 		Log.info(`Rename ${searchValue} into ${replaceValue} in all distributed files.`);
 		fileList
 			.filter(filePath => !filePath.includes(`CHANGELOG.md`))
-			.map(filePath => ({file: readFileSync(filePath).toString(), filePath}))
+			.map(filePath => ({file: Files.read(filePath), filePath}))
 			.filter(({file}) => file.includes(searchValue))
-			.forEach(({filePath, file}) => writeFileSync(filePath, file.replace(new RegExp(searchValue, `g`), replaceValue)));
+			.forEach(({filePath, file}) => Files.write(filePath, file.replace(new RegExp(searchValue, `g`), replaceValue)));
 	}
 
 	private static renameFiles(fileList: string[], searchValue: string, replaceValue: string): void {
 		Log.info(`Rename ${searchValue} file into ${replaceValue}.`);
 		fileList
 			.filter(filePath => filePath.includes(searchValue))
-			.forEach(filePath => renameSync(filePath, filePath.replace(searchValue, replaceValue)));
+			.forEach(filePath => Files.rename(filePath, filePath.replace(searchValue, replaceValue)));
 	}
 
 	private static getExportEntriesForSCSS(): ExportEntries {
-		const distPath = path.join('..', '..', 'dist', 'oblique');
-		return listFiles(path.join(distPath, 'styles', 'scss'))
+		const distPath = '../../dist/oblique';
+		return Files.list(`${distPath}/styles/scss`)
 			.map(filePath => filePath.replace(distPath, '.'))
 			.map(filePath => filePath.replace(/\\/g, '/'))
 			.map(filePath => ({importPath: filePath.replace(/_|\.scss/g, ''), filePath}))
@@ -111,9 +110,9 @@ class PostBuild extends StaticScript {
 
 	private static replaceInFiles(filePathList: string[], searchValue: string | RegExp, replaceValue: string): void {
 		filePathList
-			.map(filePath => ({file: readFileSync(filePath).toString(), filePath}))
+			.map(filePath => ({file: Files.read(filePath), filePath}))
 			.filter(fileObject => (typeof searchValue === 'string' ? fileObject.file.includes(searchValue) : searchValue.test(fileObject.file)))
-			.forEach(fileObject => writeFileSync(fileObject.filePath, fileObject.file.replace(new RegExp(searchValue, 'g'), replaceValue)));
+			.forEach(fileObject => Files.write(fileObject.filePath, fileObject.file.replace(new RegExp(searchValue, 'g'), replaceValue)));
 	}
 }
 
