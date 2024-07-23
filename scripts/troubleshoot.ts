@@ -21,9 +21,8 @@ class Troubleshoot extends StaticScript {
 
 	private static adaptJenkinsFile(jenkinsFilePath: string): void {
 		Log.info('Update JenkinsFile');
-		Files.write(
-			jenkinsFilePath,
-			Files.read(jenkinsFilePath).replace(
+		Files.overwrite(jenkinsFilePath, content =>
+			content.replace(
 				/(?<=branches = \[\s\t\t).*(?=\s\t])/ms,
 				`troubleshoot: [
 			build: 'npm run build -w projects/sds',

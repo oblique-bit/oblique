@@ -29,8 +29,7 @@ class Release extends StaticScript {
 
 	private static updateCopyrightDate(): void {
 		Log.info(`Update copyright date in LICENSE`);
-		const licensePath = 'LICENSE';
-		Files.write(licensePath, Files.read(licensePath).replace(/(?!2020-)\d{4}/, new Date().getFullYear().toString()));
+		Files.overwrite('LICENSE', content => content.replace(/(?!2020-)\d{4}/, new Date().getFullYear().toString()));
 	}
 
 	private static execute(command: string): string {

@@ -56,16 +56,14 @@ export function updatePackageJsonVersion(version: string): void {
 
 export function updateSonarPropertiesVersion(version: string): void {
 	Log.info(`Update Sonar properties' project version to ${version}.`);
-	const filePath = 'sonar-project.properties';
-	Files.write(filePath, Files.read(filePath).replace(/(?<=sonar\.projectVersion=)\d+\.\d+\.\d+/, version));
+	Files.overwrite('sonar-project.properties', content => content.replace(/(?<=sonar\.projectVersion=)\d+\.\d+\.\d+/, version));
 }
 
 export function adaptReadmeLinks(project: string): void {
 	Log.info('Update links in the distributed README.md');
 	const filePath = `../../dist/${project}/README.md`;
-	Files.write(
-		filePath,
-		Files.read(filePath)
+	Files.overwrite(filePath, content =>
+		content
 			.replace('../../README.md)', 'https://github.com/oblique-bit/oblique/blob/master/README.md) on GitHub')
 			.replace('../../CONTRIBUTING.md)', 'https://github.com/oblique-bit/oblique/blob/master/CONTRIBUTING.md) on GitHub')
 			.replace('../../LICENSE', 'LICENSE')
