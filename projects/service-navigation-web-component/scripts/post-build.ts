@@ -1,11 +1,10 @@
-import {readFileSync, readdirSync, rmSync, statSync, unlinkSync, writeFileSync} from 'fs';
-import path from 'path';
 import {PackageJson} from '../../../scripts/shared/package-json';
-import {adaptReadmeLinks, humanizeList, listFiles} from '../../../scripts/shared/utils';
+import {adaptReadmeLinks, humanizeList} from '../../../scripts/shared/utils';
 import {Banner} from '../../../scripts/shared/banner';
 import {CopyFiles} from '../../../scripts/shared/copy-files';
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {Log} from '../../../scripts/shared/log';
+import {Files} from '../../../scripts/shared/files';
 
 export class PostDist extends StaticScript {
 	static perform(): void {
@@ -30,7 +29,7 @@ export class PostDist extends StaticScript {
 	}
 
 	private static pack(): void {
-		const directory = path.join('..', '..', 'dist', 'service-navigation-web-component');
+		const directory = '../../dist/service-navigation-web-component';
 		const fileName = 'service-navigation-web-component.js';
 		PostDist.packJsFiles(directory, fileName);
 		PostDist.removeUnwantedFiles(directory, fileName);
@@ -46,23 +45,23 @@ export class PostDist extends StaticScript {
 		Log.info(`Pack ${humanizeList(files)} files together`);
 		const content = files
 			.map(fileName => `${directory}/${fileName}`)
-			.map(filePath => readFileSync(filePath).toString())
+			.map(filePath => Files.read(filePath))
 			.reduce((total, currentFile) => total + currentFile, '');
-		writeFileSync(path.join(directory, packFileName), content);
+		Files.write(`${directory}/${packFileName}`, content);
 	}
 
 	private static removeUnwantedFiles(directory: string, packFileName: string): void {
-		const files = listFiles(directory).filter(filePath => !new RegExp(`${packFileName}|package.json$`).test(filePath));
+		const files = Files.list(directory).filter(filePath => !new RegExp(`${packFileName}|package.json$`).test(filePath));
 		Log.info(`Remove unnecessary files`);
-		files.forEach(filePath => unlinkSync(filePath));
+		files.forEach(filePath => Files.remove(filePath));
 	}
 
 	private static removeEmptyDirectories(directory: string): void {
 		Log.info(`Remove empty directories`);
-		readdirSync(directory)
-			.map(fileName => path.join(directory, fileName))
-			.filter(filePath => statSync(filePath).isDirectory())
-			.forEach(filePath => rmSync(filePath, {recursive: true}));
+		Files.readDirectory(directory)
+			.map(fileName => `${directory}/${fileName}`)
+			.filter(filePath => Files.isDirectory(filePath))
+			.forEach(filePath => Files.remove(filePath));
 	}
 }
 
