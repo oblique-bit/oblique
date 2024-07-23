@@ -99,14 +99,13 @@ export class Changelog extends StaticScript {
 
 	private static prependRelease(commits: Commits, previousTag: string, version: string): void {
 		if (commits.feat.length || commits.fix.length) {
-			Files.write(
-				'CHANGELOG.md',
+			Files.overwrite('CHANGELOG.md', content =>
 				[
 					Changelog.getTitle(version, previousTag),
 					Changelog.getSection(commits.fix, 'Bug Fixes'),
 					Changelog.getSection(commits.feat, 'Features'),
 					Changelog.getSection(commits.breakingChanges, 'BREAKING CHANGES'),
-					Files.read('CHANGELOG.md')
+					content
 				].join('\n\n')
 			);
 		}
