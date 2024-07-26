@@ -7,7 +7,6 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "downlevelIteration": true,
-    "module": "esnext",
     "strict": true,
     "sourceMap": false,
     "outDir": "../../dist/cli"
