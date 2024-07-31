@@ -20,6 +20,7 @@ export class Banner extends StaticScript {
 		listFiles(path.join('..', '..', 'dist', projectName))
 			.filter(filePath => /\.(?:m?js|css)$/.test(filePath))
 			.map(filePath => ({filePath, content: readFileSync(filePath).toString()}))
+			.filter(({content}) => !content.includes(banner))
 			.map(file => ({...file, content: Banner.addBannerToFileContent(file.content, banner)}))
 			.forEach(({filePath, content}) => writeFileSync(filePath, content));
 	}
