@@ -7,3 +7,12 @@ overrides:
         - projects/cli/tsconfig.app.json
         - projects/cli/tsconfig.spec.json
         - projects/cli/tsconfig.scripts.json
+    rules:
+      no-console:
+        - error
+        - allow:
+            - info
+            - warn
+            - error
+            - time
+            - timeEnd
