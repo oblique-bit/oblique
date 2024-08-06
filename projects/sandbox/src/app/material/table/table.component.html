@@ -1,19 +1,13 @@
 <h2 class="page-header">Table</h2>
 <ob-column-layout [left]="false">
 	<div column-main-content [class.ob-table-scrollable]="isScrollable$ | async">
-		<form [formGroup]="tableManager.editForm">
-			<table
-				*ngIf="isStructureDefault$ | async"
-				mat-table
-				matSort
-				[dataSource]="tableManager.dataSource"
-				[ngClass]="obliqueStyles$ | async"
-			>
+		<form [formGroup]="tableManager.editForm" [ngClass]="collapsedStyles$ | async">
+			<div class="actions-header">
+				<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager }" />
+			</div>
+			<table *ngIf="isStructureDefault$ | async" mat-table matSort [dataSource]="tableManager.dataSource" [ngClass]="tableStyles$ | async">
 				<caption *ngIf="hasCaption$ | async">
 					This is a table caption
-					<div class="collapsed-table">
-						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager }" />
-					</div>
 				</caption>
 				<ng-container [matColumnDef]="COLUMN_NAME_SELECT">
 					<th mat-header-cell *matHeaderCellDef>
