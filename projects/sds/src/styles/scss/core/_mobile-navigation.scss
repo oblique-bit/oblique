@@ -1,0 +1,77 @@
+@use "../../../styles/scss/core/mixins/layout";
+
+app-text-page,
+app-tabbed-page {
+	margin-top: 10px;
+}
+
+// (case breakpoint-down + overlay is shown)
+// rules written here will have higher specificity than
+// rules defined in tabbed-page.component.scss and text-page.component.scss (for the case breakpoint-down)
+@include layout.ob-media-breakpoint-down(md) {
+	app-side-navigation {
+		overflow-y: unset;
+	}
+
+	.side-navigation {
+		display: none;
+	}
+
+	app-root.has-opened-mobile-navigation {
+		app-side-navigation {
+			overflow-y: scroll;
+		}
+
+		.side-navigation {
+			display: block;
+		}
+
+		app-text-page,
+		app-tabbed-page {
+			filter: blur(4px);
+			margin-top: 10px;
+		}
+
+		app-side-navigation header.mobile-header app-image {
+			visibility: hidden;
+		}
+	}
+}
+
+header.mobile-header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 100;
+
+	.hamburger {
+		padding: 1em; // padding + icon = 56px for the whole hamburger button (2*1em + 1.5em) i.e 2*16+24 = 56
+		border: 0;
+		background-color: unset;
+		line-height: 1;
+		cursor: pointer;
+
+		&::before {
+			// copy from oblique source ob-menu::before (oblique is not a dependency of sds)
+			content: url("data:image/svg+xml;base64,PHN2ZyBpZD0ibWVudSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxyZWN0IHg9IjEuOTk5NzMiIHk9IjMuMjQ5ODQiIHdpZHRoPSIyMCIgaGVpZ2h0PSIxLjUiIGZpbGw9ImN1cnJlbnRDb2xvciIvPjxyZWN0IHg9IjEuOTk5NzMiIHk9IjExLjI0OTg0IiB3aWR0aD0iMjAiIGhlaWdodD0iMS41IiBmaWxsPSJjdXJyZW50Q29sb3IiLz48cmVjdCB4PSIxLjk5OTczIiB5PSIxOS4yNDk4NCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjEuNSIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+");
+			display: inline-block;
+			width: 1.5em;
+			height: 1.5em;
+			line-height: 1;
+		}
+
+		&.has-opened-mobile-navigation {
+			&::before {
+				// copy from oblique source ob-cancel::before (oblique is not a dependency of sds)
+				content: url("data:image/svg+xml;base64,PHN2ZyBpZD0iY2FuY2VsIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBvbHlnb24gcG9pbnRzPSIxOS42MjYgNS40NzMgMTguNTY2IDQuNDEyIDEyLjAwNiAxMC45NzIgNS40NDYgNC40MTIgNC4zODYgNS40NzMgMTAuOTQ2IDEyLjAzMyA0LjQxOSAxOC41NiA1LjQ3OSAxOS42MiAxMi4wMDYgMTMuMDkzIDE4LjUyNyAxOS42MTQgMTkuNTg4IDE4LjU1NCAxMy4wNjcgMTIuMDMzIDE5LjYyNiA1LjQ3MyIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+");
+			}
+		}
+	}
+
+	@include layout.ob-media-breakpoint-up(md) {
+		display: none;
+	}
+}
