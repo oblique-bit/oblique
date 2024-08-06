@@ -1,27 +1,44 @@
-<app-image
-	alt="Swiss Confederation Logo"
-	ngSrc="../assets/images/SwissConfederationLogo.svg"
-	[idPrefix]="componentId"
-	[height]="64"
-	[width]="259"
-	[id]="componentId | id: ['logo']"
-/>
-<app-version
-	[isDisabled]="(urlParamVersion$ | async) ? true : false"
-	[id]="componentId | id: ['version']"
-	[idPrefix]="componentId"
-	(versionChanged)="updateVersion($event)"
-/>
-<mat-form-field>
-	<mat-label>Filter</mat-label>
-	<input matInput type="search" [id]="componentId | id: ['search-input']" [formControl]="search" />
-	<mat-icon svgIcon="search" matIconPrefix />
-</mat-form-field>
-<app-accordion-links
-	#accordionLinks
-	[accordions]="(filteredAccordions$ | async) ?? []"
-	[idPrefix]="componentId"
-	[selectedSlug]="(selectedSlug$ | async) ?? ''"
-	[urlParamVersion]="(urlParamVersion$ | async) ?? null"
-	[id]="componentId | id: ['accordion-links']"
-/>
+<header class="mobile-header">
+	<app-image
+		alt="Swiss Confederation Logo"
+		ngSrc="../assets/images/SwissConfederationLogo.svg"
+		[idPrefix]="componentId"
+		[height]="64"
+		[width]="259"
+		[id]="componentId | id: ['logo']"
+	/>
+	<button type="button" class="hamburger" [class.has-opened-mobile-navigation]="displayMobileNavigation" (click)="toggleMobileNavigation()">
+		<span class="ob-screen-reader-only" aria-controls="side-navigation" [attr.aria-expanded]="displayMobileNavigation ? 'open' : 'close'"
+			>Toggle side navigation</span
+		>
+	</button>
+</header>
+<div class="side-navigation" id="side-navigation">
+	<app-image
+		alt="Swiss Confederation Logo"
+		ngSrc="../assets/images/SwissConfederationLogo.svg"
+		[idPrefix]="componentId"
+		[height]="64"
+		[width]="259"
+		[id]="componentId | id: ['logo']"
+	/>
+	<app-version
+		[isDisabled]="(urlParamVersion$ | async) ? true : false"
+		[id]="componentId | id: ['version']"
+		[idPrefix]="componentId"
+		(versionChanged)="updateVersion($event)"
+	/>
+	<mat-form-field>
+		<mat-label>Filter</mat-label>
+		<input matInput type="search" [id]="componentId | id: ['search-input']" [formControl]="search" />
+		<mat-icon svgIcon="search" matIconPrefix />
+	</mat-form-field>
+	<app-accordion-links
+		#accordionLinks
+		[accordions]="(filteredAccordions$ | async) ?? []"
+		[idPrefix]="componentId"
+		[selectedSlug]="(selectedSlug$ | async) ?? ''"
+		[urlParamVersion]="(urlParamVersion$ | async) ?? null"
+		[id]="componentId | id: ['accordion-links']"
+	/>
+</div>
