@@ -11,10 +11,11 @@
 				[toggleHandle]="toggleHandle"
 				[closeOnlyOnToggle]="closeOnlyOnToggle"
 				[appendToBody]="appendToBody"
+				(visibilityChange)="setVisibility($event)"
 				id="poptest"
 				*ngIf="toggleHandle === toggleTypeClick || toggleHandle === undefined"
 			>
-				Open Popover
+				{{ popoverVisible ? "Close" : "Open" }} Popover
 			</button>
 			<p
 				tabindex="0"
@@ -22,9 +23,10 @@
 				[obPopover]="popover"
 				[placement]="placement"
 				[toggleHandle]="toggleHandle"
+				(visibilityChange)="setVisibility($event)"
 				*ngIf="toggleHandle === toggleTypeHover"
 			>
-				Open Popover
+				{{ popoverVisible ? "Leave to close" : "Hover to open" }} the Popover
 			</p>
 			<ng-template #popover>
 				<div cdkTrapFocus cdkTrapFocusAutoCapture>
@@ -46,6 +48,10 @@
 				</div>
 			</ng-template>
 		</div>
+		<p *ngIf="lastVisibilityEventTimestamp">
+			Last visibility event emitted at:
+			<span class="timestamp">{{ lastVisibilityEventTimestamp | date: "HH:mm:ss.SSS" }}</span>
+		</p>
 	</ng-container>
 	<ng-container column-right-content>
 		<fieldset>
