@@ -19,6 +19,7 @@
 	width: 600px;
 	border: solid black 1px;
 	position: relative;
+	margin-bottom: 1rem;
 }
 
 .large-popover::before {
@@ -33,4 +34,8 @@
 	content: "";
 	width: 1px;
 	display: block;
+}
+
+.timestamp {
+	font-weight: bold;
 }
