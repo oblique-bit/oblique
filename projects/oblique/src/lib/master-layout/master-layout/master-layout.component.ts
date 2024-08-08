@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {
 	AfterContentChecked,
 	AfterViewInit,
@@ -15,7 +16,8 @@ import {
 	TemplateRef,
 	ViewChild,
 	ViewEncapsulation,
-	inject
+	inject,
+	isDevMode
 } from '@angular/core';
 import {NavigationEnd, Params, Router} from '@angular/router';
 import {DOCUMENT} from '@angular/common';
@@ -107,13 +109,25 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	}
 
 	focusElement(elementId: string): void {
-		if (this.config.focusableFragments.includes(elementId)) {
-			const element = this.getElementToFocus(elementId);
-			if (elementId === this.contentId && !element.hasAttribute('tabindex')) {
-				this.renderer.setAttribute(element, 'tabindex', '-1');
-			}
-			element.scrollIntoView({behavior: 'smooth'});
+		if (!this.config.focusableFragments.includes(elementId)) {
+			console.warn(
+				`${elementId} is not in the whitelist of ids of fragments that are allowed to be focused:\n ${this.config.focusableFragments.join(', ')}\n The whitelist of fragments that are allowed to be focused is defined in ObMasterLayoutConfig.focusableFragments`
+			);
+			return;
+		}
+
+		const element = this.getElementToFocus(elementId);
+		if (!(element instanceof Element) && isDevMode()) {
+			console.error(`${elementId} does not correspond to an existing DOM element.`);
+			return;
+		}
+
+		element.scrollIntoView({behavior: 'smooth'});
+		element.focus({preventScroll: true});
+		if (document.activeElement !== element && isDevMode()) {
+			element.setAttribute('tabindex', '-1');
 			element.focus({preventScroll: true});
+			console.info(`The element with the id: ${elementId} is not focusable. Oblique added a tabindex in order to make it focusable.`);
 		}
 	}
 
