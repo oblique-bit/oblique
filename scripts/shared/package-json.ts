@@ -1,7 +1,8 @@
 import {readFileSync, writeFileSync} from 'fs';
 import path from 'path';
-import {buildPath} from './utils';
+import {buildPath, humanizeList} from './utils';
 import {StaticScript} from './static-script';
+import {Log} from './log';
 
 export type ExportEntries = Record<string, string | Record<'sass', string>>;
 type PackageJsonContent = Record<string, unknown>;
@@ -20,6 +21,7 @@ export class PackageJson extends StaticScript {
 	}
 
 	addFieldsFromRoot(...fields: string[]): PackageJson {
+		Log.info(`Add ${humanizeList(fields)} properties to the distributed package.json`);
 		const rootPackage = PackageJson.readRootPackageJson();
 		Object.keys(rootPackage)
 			.filter(key => fields.includes(key))
@@ -28,6 +30,7 @@ export class PackageJson extends StaticScript {
 	}
 
 	addExports(fields: ExportEntries): PackageJson {
+		Log.info(`Add export property to the distributed package.json`);
 		this.content.exports = {
 			...(this.content.exports as object),
 			...Object.keys(fields).reduce<ExportEntries>((exports, field) => ({...exports, [field]: fields[field]}), {})
@@ -36,6 +39,7 @@ export class PackageJson extends StaticScript {
 	}
 
 	removeDependencies(dependencyType: 'devDependencies' | 'dependencies', ...dependencyNames: string[]): PackageJson {
+		Log.info(`Remove ${humanizeList(dependencyNames)} ${dependencyType} from the distributed package.json`);
 		dependencyNames.forEach(dependencyName => delete this.content[dependencyType][dependencyName]);
 		if (!Object.keys(this.content[dependencyType]).length) {
 			delete this.content[dependencyType];
@@ -44,6 +48,7 @@ export class PackageJson extends StaticScript {
 	}
 
 	removeScripts(): PackageJson {
+		Log.info(`Remove scripts from the distributed package.json`);
 		delete this.content.scripts;
 		return PackageJson.instance as PackageJson;
 	}

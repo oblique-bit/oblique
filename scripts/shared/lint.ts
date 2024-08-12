@@ -1,4 +1,4 @@
-import {camelToKebabCase, executeCommand} from './utils';
+import {camelToKebabCase, executeCommandWithLog} from './utils';
 import {StaticScript} from './static-script';
 
 export class Lint extends StaticScript {
@@ -44,7 +44,8 @@ export class Lint extends StaticScript {
 	}
 
 	private static executeCommand(commandName: string, files: string | string[], options?: Record<string, string | boolean>): void {
-		executeCommand(this.buildCommand(commandName, Array.isArray(files) ? files : [files], options), true);
+		const command = this.buildCommand(commandName, Array.isArray(files) ? files : [files], options);
+		executeCommandWithLog(command, `Lint with ${commandName}`);
 	}
 
 	private static buildCommand(command: string, files: string[], options?: Record<string, string | boolean>): string {

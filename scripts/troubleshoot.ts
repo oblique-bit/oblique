@@ -1,12 +1,17 @@
 import {StaticScript} from './shared/static-script';
 import {readFileSync, writeFileSync} from 'fs';
 import {Git} from './shared/git';
+import {Log} from './shared/log';
 
 class Troubleshoot extends StaticScript {
 	static perform(): void {
+		Log.start('Troubleshoot the release');
 		Troubleshoot.createTroubleshootBranch();
 		Troubleshoot.adaptJenkinsFile('Jenkinsfile');
 		Git.commit('chore(toolchain): troubleshoot release');
+		Log.success(
+			'Push the changes with: `git push -u origin troubleshoot` and continue the troubleshooting process according to the troubleshoot checklist.'
+		);
 	}
 
 	private static createTroubleshootBranch(): void {
@@ -15,6 +20,7 @@ class Troubleshoot extends StaticScript {
 	}
 
 	private static adaptJenkinsFile(jenkinsFilePath: string): void {
+		Log.info('Update JenkinsFile');
 		writeFileSync(
 			jenkinsFilePath,
 			readFileSync(jenkinsFilePath)

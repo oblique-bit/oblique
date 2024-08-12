@@ -1,6 +1,8 @@
 import path from 'path';
 import {StaticScript} from './static-script';
 import {copyFileSync, mkdirSync} from 'fs';
+import {Log} from './log';
+import {humanizeList} from './utils';
 
 export class CopyFiles extends StaticScript {
 	private distFolder: string;
@@ -12,6 +14,7 @@ export class CopyFiles extends StaticScript {
 	}
 
 	copyRootFiles(...fileList: string[]): CopyFiles {
+		Log.info(`Add ${humanizeList(fileList)} to the distribution`);
 		fileList.forEach(fileName => {
 			copyFileSync(path.join('..', '..', fileName), path.join(this.distFolder, fileName));
 		});
@@ -19,6 +22,7 @@ export class CopyFiles extends StaticScript {
 	}
 
 	copyProjectFiles(source: string, ...fileList: string[]): CopyFiles {
+		Log.info(`Add assets to the distribution`);
 		fileList
 			.map(filePath => ({
 				source: filePath,
@@ -32,6 +36,7 @@ export class CopyFiles extends StaticScript {
 	}
 
 	copyProjectRootFiles(...fileList: string[]): CopyFiles {
+		Log.info(`Add ${humanizeList(fileList)} to the distribution`);
 		fileList.forEach(fileName => {
 			copyFileSync(fileName, path.join(this.distFolder, fileName));
 		});
@@ -39,6 +44,7 @@ export class CopyFiles extends StaticScript {
 	}
 
 	copyFile(fileName: string, source: string, destination: string): CopyFiles {
+		Log.info(`Add ${fileName} to the distribution`);
 		const destinationFolder = path.join(this.distFolder, destination);
 		mkdirSync(destinationFolder, {recursive: true});
 		copyFileSync(path.join(source, fileName), path.join(destinationFolder, fileName));

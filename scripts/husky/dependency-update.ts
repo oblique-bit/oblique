@@ -1,4 +1,4 @@
-import {executeCommand} from '../shared/utils';
+import {executeCommandWithLog} from '../shared/utils';
 import {Git} from '../shared/git';
 
 class DependencyUpdate {
@@ -7,7 +7,7 @@ class DependencyUpdate {
 		if (process.platform !== 'win32') {
 			const diff = Git.getFileNameDiffWithLastHead();
 			if (/^package-lock\.json$/m.test(diff)) {
-				executeCommand('npm ci', true);
+				executeCommandWithLog('npm ci  --audit false --fund false`', 'Install dependencies');
 			}
 		}
 	}

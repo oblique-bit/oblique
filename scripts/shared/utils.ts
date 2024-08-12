@@ -1,12 +1,24 @@
 import {execSync} from 'child_process';
 import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
 import path from 'path';
+import {Log} from './log';
 
 export function executeCommand(command: string, showCommandResult = false): void {
 	if (showCommandResult) {
 		console.info(command);
 	}
 	execSync(command, showCommandResult ? {stdio: 'inherit'} : undefined);
+}
+
+export function executeCommandWithLog(command: string, messagePrefix: string): void {
+	Log.info(`${messagePrefix}: ${command}`);
+	try {
+		execSync(command, {stdio: 'pipe'});
+	} catch (rawError) {
+		const error = rawError as {stdout: Buffer; stderr: Buffer};
+		const buffer = error.stdout?.length ? error.stdout : error.stderr;
+		fatal(buffer.toString());
+	}
 }
 
 export function getResultFromCommand(command: string): string {
@@ -35,12 +47,14 @@ export function buildPath(...pathParts: string[]): string {
 }
 
 export function updatePackageJsonVersion(version: string): void {
+	Log.info(`Update package.json version to ${version}.`);
 	const fileContent = JSON.parse(readFileSync('package.json').toString()) as Record<'version', string>;
 	fileContent.version = version;
 	writeFileSync('package.json', JSON.stringify(fileContent, null, 2));
 }
 
 export function updateSonarPropertiesVersion(version: string): void {
+	Log.info(`Update Sonar properties' project version to ${version}.`);
 	const filePath = 'sonar-project.properties';
 	writeFileSync(
 		filePath,
@@ -51,6 +65,7 @@ export function updateSonarPropertiesVersion(version: string): void {
 }
 
 export function adaptReadmeLinks(project: string): void {
+	Log.info('Update links in the distributed README.md');
 	const filePath = path.join('..', '..', 'dist', project, 'README.md');
 	writeFileSync(
 		filePath,
@@ -60,4 +75,13 @@ export function adaptReadmeLinks(project: string): void {
 			.replace('../../CONTRIBUTING.md)', 'https://github.com/oblique-bit/oblique/blob/master/CONTRIBUTING.md) on GitHub')
 			.replace('../../LICENSE', 'LICENSE')
 	);
+}
+
+export function humanizeList(list: string[]): string {
+	return list.join(', ').replace(/,(?=[^,]*$)/, ' and');
+}
+
+export function fatal(error: string): void {
+	Log.error(error);
+	process.exit(-1);
 }
