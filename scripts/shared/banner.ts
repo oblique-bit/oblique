@@ -5,6 +5,7 @@ import {version as currentVersion} from './../../package.json';
 import {listFiles} from './utils';
 import {StaticScript} from './static-script';
 import {Git} from './git';
+import {Log} from './log';
 
 export class Banner extends StaticScript {
 	// manually set for versions with prolonged support
@@ -13,6 +14,7 @@ export class Banner extends StaticScript {
 	};
 
 	static addToFilesInProject(projectName: string): void {
+		Log.info('Add a banner in all css, js and mjs files of the distribution');
 		const banner = Banner.prepareBanner(currentVersion);
 
 		listFiles(path.join('..', '..', 'dist', projectName))

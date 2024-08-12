@@ -1,13 +1,15 @@
 import path from 'path';
 import {readFileSync, renameSync, writeFileSync} from 'fs';
 import {CopyFiles} from '../../../scripts/shared/copy-files';
-import {adaptReadmeLinks, executeCommand, listFiles} from '../../../scripts/shared/utils';
+import {adaptReadmeLinks, executeCommandWithLog, listFiles} from '../../../scripts/shared/utils';
 import {ExportEntries, PackageJson} from '../../../scripts/shared/package-json';
 import {Banner} from '../../../scripts/shared/banner';
 import {StaticScript} from '../../../scripts/shared/static-script';
+import {Log} from '../../../scripts/shared/log';
 
 class PostDist extends StaticScript {
 	static perform(): void {
+		Log.start('Finalize build');
 		PostDist.copyDistFiles();
 		PostDist.renameDistribution();
 		PostDist.adaptPackageJson();
@@ -16,6 +18,7 @@ class PostDist extends StaticScript {
 		PostDist.distributeObFeatures();
 		PostDist.addBanner();
 		adaptReadmeLinks('oblique');
+		Log.success();
 	}
 
 	private static copyDistFiles(): void {
@@ -62,6 +65,7 @@ class PostDist extends StaticScript {
 	}
 
 	private static updateBackgroundImagePath(): void {
+		Log.info(`Update path to cover-background.jpg.`);
 		PostDist.replaceInFiles(
 			[path.join('..', '..', 'dist', 'oblique', 'styles', 'css', 'oblique-components.css')],
 			'cover-background.jpg',
@@ -70,7 +74,10 @@ class PostDist extends StaticScript {
 	}
 
 	private static distributeObFeatures(): void {
-		executeCommand(`uglifyjs --compress --mangle --output ../../dist/oblique/ob-features.js -- src/ob-features.js`);
+		executeCommandWithLog(
+			`uglifyjs --compress --mangle --output ../../dist/oblique/ob-features.js -- src/ob-features.js`,
+			'Copy and minify ob-features.js'
+		);
 	}
 
 	private static addBanner(): void {
@@ -78,6 +85,7 @@ class PostDist extends StaticScript {
 	}
 
 	private static renameInFiles(fileList: string[], searchValue: string, replaceValue: string): void {
+		Log.info(`Rename ${searchValue} into ${replaceValue} in all distributed files.`);
 		fileList
 			.filter(filePath => !filePath.includes(`CHANGELOG.md`))
 			.map(filePath => ({file: readFileSync(filePath).toString(), filePath}))
@@ -86,6 +94,7 @@ class PostDist extends StaticScript {
 	}
 
 	private static renameFiles(fileList: string[], searchValue: string, replaceValue: string): void {
+		Log.info(`Rename ${searchValue} file into ${replaceValue}.`);
 		fileList
 			.filter(filePath => filePath.includes(searchValue))
 			.forEach(filePath => renameSync(filePath, filePath.replace(searchValue, replaceValue)));

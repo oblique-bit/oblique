@@ -8,17 +8,20 @@
 //    reach its end of life. The second one is the major version that has to be deprecate.
 //    ts-node scripts/npm-deprecate.ts 2021-11-02 6
 
-import {exit} from 'process';
-import {executeCommand, getResultFromCommand} from '../../../scripts/shared/utils';
+import {executeCommand, executeCommandWithLog, fatal, getResultFromCommand, humanizeList} from '../../../scripts/shared/utils';
 import {StaticScript} from '../../../scripts/shared/static-script';
+import {Log} from '../../../scripts/shared/log';
 
 class NpmDeprecate extends StaticScript {
 	static perform(date: string, versions: string[]): void {
+		Log.start(`Deprecate ${humanizeList(versions)} versions`);
+		Log.info('Validate inputs');
 		if (!NpmDeprecate.isDateValid(date) || !versions.length || !NpmDeprecate.areVersionsValid(versions)) {
-			console.error(`This script needs at least 2 arguments and will deprecate, either a list of pre-versions under the "next" tag, or all versions of a major version under the "latest" tag.
+			fatal(
+				`This script needs at least 2 arguments and will deprecate, either a list of pre-versions under the "next" tag, or all versions of a major version under the "latest" tag.
 			\nIn the first case a date, in ISO format, and a list of exact versions, e.g. "2021-11-02 6.0.0-RC.1 6.0.0-alpha.1", are expected. All listed version will be deprecated with the given date as the deprecation date.
-			\nIn the second case, a date, in ISO format, and a major version number, e.g. "2021-11-02 6" are expected. All versions starting with the number will be deprecated with the given date as the deprecation date.`);
-			exit(-1);
+			\nIn the second case, a date, in ISO format, and a major version number, e.g. "2021-11-02 6" are expected. All versions starting with the number will be deprecated with the given date as the deprecation date.`
+			);
 		}
 		NpmDeprecate.login();
 
@@ -28,6 +31,7 @@ class NpmDeprecate extends StaticScript {
 			versions.forEach(version => NpmDeprecate.deprecateExactVersion(version, date));
 			NpmDeprecate.removeNextTag();
 		}
+		Log.success();
 	}
 
 	private static isDateValid(date: string): boolean {
@@ -46,16 +50,18 @@ class NpmDeprecate extends StaticScript {
 	}
 
 	private static deprecateMajorVersion(version: string, date: string): void {
-		executeCommand(`npm deprecate @oblique/oblique@${version}.x "Oblique ${version} has reached its End Of Life on ${date}"`, true);
+		const command = `npm deprecate @oblique/oblique@${version}.x "Oblique ${version} has reached its End Of Life on ${date}"`;
+		executeCommandWithLog(command, `Deprecate major version`);
 	}
 
 	private static deprecateExactVersion(version: string, date: string): void {
-		executeCommand(`npm deprecate @oblique/oblique@${version} "Oblique ${version.split('.')[0]} has been released on ${date}"`, true);
+		const command = `npm deprecate @oblique/oblique@${version} "Oblique ${version.split('.')[0]} has been released on ${date}"`;
+		executeCommandWithLog(command, `Deprecate version`);
 	}
 
 	private static removeNextTag(): void {
 		if (getResultFromCommand(`npm dist-tag`).includes('next')) {
-			executeCommand(`npm dist-tag rm @oblique/oblique next`, true);
+			executeCommandWithLog(`npm dist-tag rm @oblique/oblique next`, 'Remove next tag');
 		}
 	}
 }
