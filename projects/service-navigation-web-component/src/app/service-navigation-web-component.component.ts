@@ -24,6 +24,7 @@ import {
 	ObIServiceNavigationLink,
 	ObLoginState
 } from '../../../oblique/src/lib/service-navigation/service-navigation.model';
+import {appVersion} from './version';
 import {ObEIcon} from '../../../oblique/src/lib/icon/icon.model';
 import {ObButtonModule} from '../../../oblique/src/lib/button/button.module';
 import {TranslationsService} from './translations-service';
@@ -36,7 +37,8 @@ import {ObICustomButton, ObILink} from './service-navigation-web-component.model
 	styleUrls: ['./service-navigation-web-component.component.scss', '../../../oblique/src/styles/scss/oblique-core.scss'],
 	encapsulation: ViewEncapsulation.None,
 	imports: [ObServiceNavigationModule, NgIf, MatButtonModule, MatIconModule, NgFor, MatBadgeModule, ObButtonModule],
-	providers: [TranslationsService]
+	providers: [TranslationsService],
+	host: {'ob-version': appVersion}
 })
 export class ObServiceNavigationWebComponentComponent implements OnChanges, OnInit {
 	@Input() languageList: string;

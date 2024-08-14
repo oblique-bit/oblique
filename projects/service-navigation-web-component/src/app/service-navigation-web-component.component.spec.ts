@@ -5,6 +5,7 @@ import {SimpleChange, SimpleChanges} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {By} from '@angular/platform-browser';
 import {ObServiceNavigationComponent, multiTranslateLoader} from '@oblique/oblique';
+import {appVersion} from './version';
 
 function defaultChangesValues(): SimpleChanges {
 	return {environment: new SimpleChange(undefined, 'DEV', undefined)};
@@ -22,6 +23,10 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 
 		fixture = TestBed.createComponent(ObServiceNavigationWebComponentComponent);
 		component = fixture.componentInstance;
+	});
+
+	it('should have an ob-version attribute whose value is the current Oblique version number', () => {
+		expect(fixture.debugElement.nativeElement.getAttribute('ob-version')).toBe(appVersion);
 	});
 
 	describe('environment', () => {
