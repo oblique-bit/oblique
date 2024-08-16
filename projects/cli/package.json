@@ -1,7 +1,13 @@
 {
   "name": "@oblique/cli",
   "version": "11.3.0",
-  "description": "CLI to generate and update a new Angular application with the Oblique library",
+  "description": "Command Line Interface to manage Oblique projects",
+  "keywords": [
+    "ob",
+    "oblique",
+    "cli",
+    "npmtool"
+  ],
   "bin": {
     "ob": "./src/index.js"
   },

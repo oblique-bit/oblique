@@ -27,6 +27,22 @@ Install the Oblique CLI globally:
 
 `npm install -g @oblique/cli`
 
+### Options
+
+- **ob -v**: Shows the current version of @oblique/cli.
+- **ob -h**: Shows a help message for the selected command in the console.
+
+## How to test locally
+
+Tests must be run with the `test` script and not through the IDE because the IDE can't properly execute `ts-node` commands.
+To test that the CLI is globally executable, you need to execute the following commands:
+
+- `npm run build -w projects/cli`
+- `cd dist/cli`
+- `npm link`
+
+You can now call the CLI directly with `ob <command>`.
+
 ## Contribute to Oblique CLI
 
 If you'd like to contribute, please follow our [contributing guidelines](../../CONTRIBUTING.md).
