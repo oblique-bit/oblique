@@ -9,7 +9,7 @@
     "importHelpers": true,
     "types": ["node"]
   },
-  "files": ["src/main.ts"],
+  "files": ["src/main.ts", "src/app/version.ts"],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
