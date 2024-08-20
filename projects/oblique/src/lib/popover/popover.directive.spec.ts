@@ -123,6 +123,7 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('open', () => {
 				beforeEach(() => {
+					jest.spyOn(directive.visibilityChange, 'emit');
 					setupAndOpen();
 				});
 
@@ -149,6 +150,10 @@ describe(ObPopoverDirective.name, () => {
 				it('should have an arrow', () => {
 					expect(popover.querySelector('.ob-popover-arrow')).toBeTruthy();
 				});
+
+				it('should notify the visbility change', () => {
+					expect(directive.visibilityChange.emit).toHaveBeenCalledWith(true);
+				});
 			});
 
 			describe('close', () => {
@@ -164,6 +169,12 @@ describe(ObPopoverDirective.name, () => {
 					// fixture.detectChanges();
 					popover = document.querySelector('.ob-popover-content');
 					expect(popover).toBeNull();
+				});
+
+				it('should notify the visibility change', () => {
+					jest.spyOn(directive.visibilityChange, 'emit');
+					directive.close();
+					expect(directive.visibilityChange.emit).toHaveBeenCalledWith(false);
 				});
 			});
 

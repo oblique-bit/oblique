@@ -18,4 +18,12 @@ export class PopoverComponent {
 
 	toggleTypeClick = ObEToggleType.CLICK;
 	toggleTypeHover = ObEToggleType.HOVER;
+
+	popoverVisible = false;
+	lastVisibilityEventTimestamp: Date | null = null;
+
+	setVisibility(visible: boolean): void {
+		this.popoverVisible = visible;
+		this.lastVisibilityEventTimestamp = new Date();
+	}
 }

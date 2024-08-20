@@ -1,6 +1,7 @@
 import {
 	Directive,
 	ElementRef,
+	EventEmitter,
 	HostBinding,
 	HostListener,
 	Inject,
@@ -10,6 +11,7 @@ import {
 	OnDestroy,
 	OnInit,
 	Optional,
+	Output,
 	Renderer2,
 	TemplateRef,
 	ViewContainerRef,
@@ -45,6 +47,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	@Input() toggleHandle: ObEToggleType;
 	@Input() closeOnlyOnToggle: boolean;
 	@Input() appendToBody = false;
+	@Output() readonly visibilityChange = new EventEmitter<boolean>();
 	@HostBinding('attr.aria-describedby') idContent: string;
 
 	private static idCount = 0;
@@ -121,6 +124,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		this.popover = undefined;
 		this.instance?.destroy();
 		this.instance = undefined;
+		this.visibilityChange.emit(false);
 	}
 
 	open(): void {
@@ -138,6 +142,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		setTimeout(() => {
 			this.setPopperOptionsAndUpdate();
 		});
+		this.visibilityChange.emit(true);
 	}
 
 	private updateToggleMethod(): void {
