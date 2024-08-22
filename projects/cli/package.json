@@ -6,6 +6,7 @@
     "ob": "./src/index.js"
   },
   "scripts": {
+    "start": "ts-node src/index.ts",
     "lint": "ts-node scripts/lint.ts",
     "format": "npm run lint -- --fix",
     "test": "jest",
