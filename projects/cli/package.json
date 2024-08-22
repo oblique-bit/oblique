@@ -2,6 +2,9 @@
   "name": "@oblique/cli",
   "version": "11.3.0",
   "description": "CLI to generate and update a new Angular application with the Oblique library",
+  "bin": {
+    "ob": "./src/index.js"
+  },
   "scripts": {
     "lint": "ts-node scripts/lint.ts",
     "format": "npm run lint -- --fix",
