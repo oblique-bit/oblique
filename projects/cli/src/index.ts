@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import * as packageFile from '../package.json';
 import {Command} from 'commander';
 

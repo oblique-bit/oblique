@@ -20,7 +20,21 @@ export class Banner extends StaticScript {
 		listFiles(path.join('..', '..', 'dist', projectName))
 			.filter(filePath => /\.(?:m?js|css)$/.test(filePath))
 			.map(filePath => ({filePath, content: readFileSync(filePath).toString()}))
-			.forEach(({filePath, content}) => writeFileSync(filePath, `${banner}${EOL}${content}`));
+			.filter(({content}) => !content.includes(banner))
+			.map(file => ({...file, content: Banner.addBannerToFileContent(file.content, banner)}))
+			.forEach(({filePath, content}) => writeFileSync(filePath, content));
+	}
+
+	private static addBannerToFileContent(content: string, banner: string): string {
+		const SHEBANG_REGEX = /(?<shebang>^#!.*)/;
+		const shebangMatch = SHEBANG_REGEX.exec(content);
+		return shebangMatch?.groups?.shebang
+			? Banner.insertAfterTarget(content, banner, shebangMatch.groups.shebang)
+			: `${banner}${EOL}${content}`;
+	}
+
+	private static insertAfterTarget(content: string, toInsert: string, target: string): string {
+		return content.replace(target, `${target}${EOL}${EOL}${toInsert}${EOL}`);
 	}
 
 	private static prepareBanner(version: string): string {
