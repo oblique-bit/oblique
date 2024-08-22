@@ -86,6 +86,7 @@ class HookCommitRules {
 		const filePaths = Git.getChangedFileNames()
 			.split('\n')
 			.filter(filePath => !!filePath)
+			.filter(filePath => filePath !== 'package-lock.json')
 			.filter(filePath => !new RegExp(`projects/${HookCommitRules.getFolderName(pkg)}/.*`).test(filePath));
 		if (filePaths.length && pkg !== 'toolchain') {
 			HookCommitRules.fatal(
