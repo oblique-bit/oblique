@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import chalk, {Chalk} from 'chalk';
 import {StaticScript} from './static-script';
+import {Timer} from './timer';
 
 type LogPrefix = 'info' | 'success' | 'error';
 
@@ -8,6 +9,8 @@ export class Log extends StaticScript {
 	private static primaryTask: string;
 	private static task: string;
 	private static readonly indent = '\t';
+	private static readonly primaryTimer = 'primary';
+	private static readonly taskTimer = 'task';
 	private static readonly prefixes: Record<LogPrefix, {icon: string; text: string; color: Chalk}> = {
 		info: {
 			icon: 'ℹ',
@@ -28,6 +31,7 @@ export class Log extends StaticScript {
 	private static readonly padLength = Math.max(...Object.values(Log.prefixes).map(prefix => prefix.text.length));
 
 	static start(message: string): void {
+		Timer.startTimer(Log.primaryTimer);
 		if (Log.primaryTask) {
 			Log.fatal(
 				`The "start" method may only be called once per script. It has already been called with "${Log.primaryTask}" and is called again with ${message}.`
@@ -35,11 +39,13 @@ export class Log extends StaticScript {
 		}
 		Log.primaryTask = message;
 		Log.write('info', message);
+		Timer.startTimer(Log.taskTimer);
 	}
 
 	static info(message: string): void {
 		Log.validate('info');
 		Log.completePreviousTask();
+		Timer.startTimer(Log.taskTimer);
 		Log.task = message;
 		Log.write('info', `${Log.indent}${Log.task}`);
 	}
@@ -47,7 +53,7 @@ export class Log extends StaticScript {
 	static success(message?: string): void {
 		Log.validate('success');
 		Log.completePreviousTask();
-		Log.write('success', Log.primaryTask);
+		Log.write('success', `${Log.primaryTask} (${Timer.getTimerTime(Log.primaryTimer)})`);
 		Log.primaryTask = undefined;
 		Log.task = undefined;
 		if (message) {
@@ -78,7 +84,7 @@ export class Log extends StaticScript {
 
 	private static completePreviousTask(): void {
 		if (Log.task) {
-			Log.write('success', `${Log.indent}${Log.task}`);
+			Log.write('success', `${Log.indent}${Log.task} (${Timer.getTimerTime(Log.taskTimer)})`);
 		}
 	}
 
