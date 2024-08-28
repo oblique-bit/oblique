@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
-import {ObPaginatorDirective} from '@oblique/oblique';
+import {ObPaginatorModule} from '@oblique/oblique';
 import {JsonPipe} from '@angular/common';
 
 @Component({
@@ -8,7 +8,7 @@ import {JsonPipe} from '@angular/common';
 	templateUrl: './paginator-example-other-options-preview.component.html',
 	styleUrls: ['../paginator-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
 	standalone: true,
-	imports: [JsonPipe, MatPaginatorModule, ObPaginatorDirective],
+	imports: [JsonPipe, MatPaginatorModule, ObPaginatorModule],
 	host: {class: 'layout-column flex-end'}
 })
 export class PaginatorExampleOtherOptionsPreviewComponent implements AfterViewInit {
