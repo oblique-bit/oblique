@@ -10,7 +10,7 @@ class DependencyUpdate {
 			const diff = Git.getFileNameDiffWithLastHead();
 			if (/^package-lock\.json$/m.test(diff)) {
 				Log.info('Changes detected to the dependencies, reinstalling');
-				executeCommandWithLog('npm ci  --audit false --fund false`', 'Install dependencies');
+				executeCommandWithLog('npm ci  --audit false --fund false', 'Install dependencies');
 			}
 			Log.success();
 		}
