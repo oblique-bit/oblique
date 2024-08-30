@@ -1,3 +1,9 @@
+# [11.3.3](https://github.com/oblique-bit/oblique/compare/11.3.2...11.3.3) (2024-08-30)
+
+## Bug Fixes
+
+- **master-layout:** fix scroll to top behavior ([e5839299](https://github.com/oblique-bit/oblique/commit/e5839299a1c1020993c834cc97539eb6c9054579))
+
 # [11.3.2](https://github.com/oblique-bit/oblique/compare/11.3.1...11.3.2) (2024-07-19)
 
 ## Bug Fixes

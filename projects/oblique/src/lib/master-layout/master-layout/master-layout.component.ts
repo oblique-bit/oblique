@@ -211,20 +211,22 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		this.masterLayout.header.configEvents$
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_STICKY),
+				tap((evt: ObIMasterLayoutEvent) => (this.isHeaderSticky = evt.value)),
 				tap(() => (this.scrollTarget = this.getScrollTarget())),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.isHeaderSticky = event.value));
+			.subscribe();
 	}
 
 	private footerIsStickyChange(): void {
 		this.masterLayout.footer.configEvents$
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.FOOTER_IS_STICKY),
+				tap((evt: ObIMasterLayoutEvent) => (this.isFooterSticky = evt.value)),
 				tap(() => (this.scrollTarget = this.getScrollTarget())),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.isFooterSticky = event.value));
+			.subscribe();
 	}
 
 	private focusFragment(): void {

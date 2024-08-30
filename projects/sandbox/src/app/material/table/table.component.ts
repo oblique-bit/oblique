@@ -19,7 +19,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatInput) firstInput: MatInput;
 	controls: UntypedFormGroup;
-	obliqueStyles$: Observable<Record<string, boolean>>;
+	tableStyles$: Observable<Record<string, boolean>>;
+	collapsedStyles$: Observable<Record<string, boolean>>;
 	isStructureDefault$: Observable<boolean>;
 	hasCaption$: Observable<boolean>;
 	isScrollable$: Observable<boolean>;
@@ -120,7 +121,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.isStructureDefault$ = this.valueChanges<boolean>('default').pipe(tap(isDefault => this.structureChange(isDefault)));
 		this.hasCaption$ = this.valueChanges<boolean>('caption');
 		this.isScrollable$ = this.valueChanges<string>('collapsed').pipe(map(value => value === 'ob-table-scrollable'));
-		this.obliqueStyles$ = this.getCollapsedStylesObservable();
+		this.tableStyles$ = this.getTableStylesObservable();
+		this.collapsedStyles$ = this.getCollapsedStylesObservable();
 	}
 
 	private valueChanges<T>(field: string): Observable<T> {
@@ -160,14 +162,17 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		}
 	}
 
+	private getTableStylesObservable(): Observable<Record<string, boolean>> {
+		return combineLatest([this.valueChanges<Record<string, boolean>>('style'), this.getCollapsedStylesObservable()]).pipe(
+			map(classes => ({...classes[0], ...classes[1]}))
+		);
+	}
+
 	private getCollapsedStylesObservable(): Observable<Record<string, boolean>> {
 		const collapse = ['ob-table-collapse', 'ob-table-collapse-sm', 'ob-table-collapse-md'];
-		return combineLatest([
-			this.valueChanges<Record<string, boolean>>('style'),
-			this.valueChanges<string>('collapsed').pipe(
-				map(value => collapse.reduce<Record<string, boolean>>((total, current) => ({...total, [current]: current === value}), {}))
-			)
-		]).pipe(map(classes => ({...classes[0], ...classes[1]})));
+		return this.valueChanges<string>('collapsed').pipe(
+			map(value => collapse.reduce<Record<string, boolean>>((total, current) => ({...total, [current]: current === value}), {}))
+		);
 	}
 
 	private handleDisableState(isEnabled: boolean): void {

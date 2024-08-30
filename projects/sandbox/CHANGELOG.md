@@ -1,3 +1,9 @@
+# [11.3.3](https://github.com/oblique-bit/oblique/compare/11.3.2...11.3.3) (2024-08-30)
+
+## Bug Fixes
+
+- **material:** move actions header outside table caption ([967f6896](https://github.com/oblique-bit/oblique/commit/967f68961cd783e391eccfe636609b2ac10ff2d1))
+
 # [11.3.1](https://github.com/oblique-bit/oblique/compare/11.3.0...11.3.1) (2024-07-12)
 
 ## Bug Fixes
