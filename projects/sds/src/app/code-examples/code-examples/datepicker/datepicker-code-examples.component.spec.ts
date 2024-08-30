@@ -5,7 +5,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {DatepickerExampleDefaultComponent} from './previews/default/datepicker-example-default.component';
 import {MatDatepicker} from '@angular/material/datepicker';
-import {DatepickerExampleOtherOptionsPreviewComponent} from './previews/other-options/datepicker-example-other-options-preview.component';
+import {DatepickerExampleOtherOptionsPreviewComponent} from '../form/previews/other-options/datepicker-example-other-options-preview.component';
 import {provideNativeDateAdapter} from '@angular/material/core';
 
 describe(DatepickerCodeExamplesComponent.name, () => {
@@ -27,19 +27,15 @@ describe(DatepickerCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	test(`that there are 2 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
+	test(`that there are 1 ${CodeExampleComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(1);
 	});
 
 	test(`that there is 1 ${DatepickerExampleDefaultComponent.name}`, () => {
 		expect(fixture.debugElement.queryAll(By.directive(DatepickerExampleDefaultComponent)).length).toBe(1);
 	});
 
-	test(`that there is 1 ${DatepickerExampleOtherOptionsPreviewComponent.name}`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(DatepickerExampleOtherOptionsPreviewComponent)).length).toBe(1);
-	});
-
 	test(`that there are 8 ${MatDatepicker.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatDatepicker)).length).toBe(8);
+		expect(fixture.debugElement.queryAll(By.directive(MatDatepicker)).length).toBe(1);
 	});
 });
