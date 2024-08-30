@@ -408,6 +408,10 @@ function removeInjectionFromInject(tree: Tree, filePath: string, token: string):
 	replaceInFile(tree, filePath, new RegExp(`[\\w\\s]*(?::\\s*${token})?\\s*=\\s*inject\\(\\s*${token}\\s*\\)\\s*;\n?`), '');
 }
 
+export function removeServiceMethodCall(tree: Tree, filePath: string, methodToken: string): void {
+	replaceInFile(tree, filePath, new RegExp(`\\w*\\.(?:${methodToken})\\s*\\(\\w+\\)\\s*;\\s*`, 'g'), '');
+}
+
 function extractDirectoryFromPath(filePath: string): string {
 	return /(?<directory>.*)\//.exec(filePath)?.groups?.directory ?? '';
 }
