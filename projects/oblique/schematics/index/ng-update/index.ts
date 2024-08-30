@@ -9,6 +9,7 @@ import {UpdateV7toV8} from './update-v7-to-v8';
 import {UpdateV8toV9} from './update-v8-to-v9';
 import {UpdateV9toV10} from './update-v9-to-v10';
 import {UpdateV10toV11} from './update-v10-to-v11';
+import {UpdateV11toV12} from './update-v11-to-v12';
 
 export function upgradeToV5(_options: Record<string, any>): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -43,6 +44,11 @@ export function upgradeToV10(_options: Record<string, any>): Rule {
 export function upgradeToV11(_options: Record<string, any>): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV10toV11(), _options);
+}
+
+export function upgradeToV12(_options: Record<string, any>): Rule {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV11toV12(), _options);
 }
 
 function startup(migrations: ObIMigrations, _options: Record<string, any>): Rule {
