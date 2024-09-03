@@ -10,7 +10,7 @@
     "format": "npm run lint -- --fix",
     "test": "jest",
     "test-ci": "jest --config=jest.config.ci.js",
-    "build": "tsc -p tsconfig.app.json && ts-node scripts/post-build.ts",
+    "build": "ts-node scripts/pre-build.ts && tsc -p tsconfig.app.json && ts-node scripts/post-build.ts",
     "release": "ts-node scripts/release.ts"
   }
 }
