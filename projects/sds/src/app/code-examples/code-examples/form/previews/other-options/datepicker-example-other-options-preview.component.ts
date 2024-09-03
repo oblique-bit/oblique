@@ -17,7 +17,7 @@ export class DatepickerExampleOtherOptionsPreviewComponent {
 	readonly august1st1891 = new Date(1891, 7, 1);
 	readonly errorControl = new FormControl(new Date(), [
 		function (control: FormControl) {
-			return new Date((control.value as Date).toDateString()) < new Date(new Date().toDateString()) ? {pastDate: true} : null;
+			return new Date(control.value as Date) < new Date() ? {pastDate: true} : null;
 		}
 	]);
 
