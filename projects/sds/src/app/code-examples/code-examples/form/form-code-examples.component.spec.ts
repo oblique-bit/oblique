@@ -93,6 +93,6 @@ describe(FormCodeExamplesComponent.name, () => {
 	});
 
 	test(`that there are 5 forms`, () => {
-		expect(fixture.debugElement.queryAll(By.css('form')).length).toBe(4);
+		expect(fixture.debugElement.queryAll(By.css('form')).length).toBe(5);
 	});
 });
