@@ -98,6 +98,36 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		this.focusOffCanvasClose();
 	}
 
+	ngOnInit(): void {
+		this.globalEventsService.scroll$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.scrollTop());
+		this.masterLayout.layout.configEvents$
+			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION))
+			.subscribe(evt => this.updateSkipLinks(evt.value));
+		this.updateSkipLinks(!this.noNavigation);
+	}
+
+	ngDoCheck(): void {
+		if (this.navigation?.length !== this.navigationLength) {
+			this.navigationLength = this.navigation.length;
+			this.masterLayout.navigation.refresh();
+			this.updateSkipLinks(!this.noNavigation);
+		}
+	}
+
+	ngAfterContentChecked(): void {
+		this.hasHighContrast = this.isInHighContrastMode();
+	}
+
+	ngAfterViewInit(): void {
+		// to avoid a ExpressionHasBeenChangedAfterItHasBeenCheckedError
+		setTimeout(() => (this.scrollTarget = this.getScrollTarget()));
+	}
+
+	ngOnDestroy(): void {
+		this.unsubscribe.next();
+		this.unsubscribe.complete();
+	}
+
 	scrollTop(element?: HTMLElement): void {
 		const scrollTop =
 			element?.scrollTop ?? (this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
@@ -129,36 +159,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 			element.focus({preventScroll: true});
 			console.info(`The element with the id: ${elementId} is not focusable. Oblique added a tabindex in order to make it focusable.`);
 		}
-	}
-
-	ngOnInit(): void {
-		this.globalEventsService.scroll$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.scrollTop());
-		this.masterLayout.layout.configEvents$
-			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION))
-			.subscribe(evt => this.updateSkipLinks(evt.value));
-		this.updateSkipLinks(!this.noNavigation);
-	}
-
-	ngDoCheck(): void {
-		if (this.navigation?.length !== this.navigationLength) {
-			this.navigationLength = this.navigation.length;
-			this.masterLayout.navigation.refresh();
-			this.updateSkipLinks(!this.noNavigation);
-		}
-	}
-
-	ngAfterContentChecked(): void {
-		this.hasHighContrast = this.isInHighContrastMode();
-	}
-
-	ngAfterViewInit(): void {
-		// to avoid a ExpressionHasBeenChangedAfterItHasBeenCheckedError
-		setTimeout(() => (this.scrollTarget = this.getScrollTarget()));
-	}
-
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
 	}
 
 	private isInHighContrastMode(): boolean {
