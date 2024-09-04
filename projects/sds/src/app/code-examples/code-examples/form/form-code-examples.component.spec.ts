@@ -15,6 +15,9 @@ import {FormExampleStatesPreviewComponent} from './previews/states/form-example-
 import {FormExampleHorizontalPreviewComponent} from './previews/horizontal/form-example-horizontal-preview.component';
 import {FormExampleInputClearPreviewComponent} from './previews/input-clear/form-example-input-clear-preview.component';
 import {FormExampleInputPrefixesAndSuffixesPreviewComponent} from './previews/input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {ObMockTranslateService} from '@oblique/oblique';
+import {TranslateService} from '@ngx-translate/core';
 
 describe(FormCodeExamplesComponent.name, () => {
 	let component: FormCodeExamplesComponent;
@@ -22,7 +25,8 @@ describe(FormCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [CodeExampleComponent, CommonModule, FormCodeExamplesComponent, IdPipe, NoopAnimationsModule]
+			imports: [CodeExampleComponent, CommonModule, FormCodeExamplesComponent, IdPipe, NoopAnimationsModule],
+			providers: [provideNativeDateAdapter(), {provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(FormCodeExamplesComponent);
@@ -58,20 +62,14 @@ describe(FormCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.directive(FormExampleInputClearPreviewComponent)).length).toBe(1);
 	});
 
-	test(`that there are 37 ${MatFormField.name}s`, done => {
-		setTimeout(() => {
-			fixture.detectChanges();
-			expect(fixture.debugElement.queryAll(By.directive(MatFormField)).length).toBe(37);
-			done();
-		}, 500);
+	test(`that there are 37 ${MatFormField.name}s`, () => {
+		fixture.detectChanges();
+		expect(fixture.debugElement.queryAll(By.directive(MatFormField)).length).toBe(37);
 	});
 
-	test(`that there are 23 ${MatInput.name}s`, done => {
-		setTimeout(() => {
-			fixture.detectChanges();
-			expect(fixture.debugElement.queryAll(By.directive(MatInput)).length).toBe(23);
-			done();
-		}, 500);
+	test(`that there are 23 ${MatInput.name}s`, () => {
+		fixture.detectChanges();
+		expect(fixture.debugElement.queryAll(By.directive(MatInput)).length).toBe(23);
 	});
 
 	test(`that there are 5 ${MatCheckbox.name}s`, () => {
@@ -94,7 +92,7 @@ describe(FormCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.css('textarea')).length).toBe(7);
 	});
 
-	test(`that there are 4 forms`, () => {
+	test(`that there are 5 forms`, () => {
 		expect(fixture.debugElement.queryAll(By.css('form')).length).toBe(4);
 	});
 });
