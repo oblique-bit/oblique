@@ -74,16 +74,16 @@ describe(FormCodeExamplesComponent.name, () => {
 		}, 500);
 	});
 
-	test(`that there are 2 ${MatCheckbox.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatCheckbox)).length).toBe(2);
+	test(`that there are 5 ${MatCheckbox.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MatCheckbox)).length).toBe(5);
 	});
 
-	test(`that there are 2 ${MatRadioGroup.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatRadioGroup)).length).toBe(2);
+	test(`that there are 5 ${MatRadioGroup.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MatRadioGroup)).length).toBe(5);
 	});
 
-	test(`that there are 2 ${MatRadioButton.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatRadioButton)).length).toBe(2);
+	test(`that there are 5 ${MatRadioButton.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MatRadioButton)).length).toBe(5);
 	});
 
 	test(`that there are 14 ${MatSelect.name}s`, () => {
