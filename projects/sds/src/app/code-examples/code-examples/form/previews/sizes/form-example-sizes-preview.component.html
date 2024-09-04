@@ -10,6 +10,12 @@
 			<mat-radio-button value="1">Default Radio Button</mat-radio-button>
 		</mat-radio-group>
 		<mat-form-field>
+			<mat-label>Default Datepicker</mat-label>
+			<input matInput [matDatepicker]="defaultDatepicker" />
+			<mat-datepicker-toggle matIconSuffix [for]="defaultDatepicker" />
+			<mat-datepicker #defaultDatepicker />
+		</mat-form-field>
+		<mat-form-field>
 			<mat-label>Default Select</mat-label>
 			<mat-select>
 				<mat-option [value]="1">One</mat-option>
@@ -47,6 +53,12 @@
 			<mat-radio-button value="1">Large Radio Button</mat-radio-button>
 		</mat-radio-group>
 		<mat-form-field>
+			<mat-label>Large Datepicker</mat-label>
+			<input matInput [matDatepicker]="largeDatepicker" />
+			<mat-datepicker-toggle matIconSuffix [for]="largeDatepicker" />
+			<mat-datepicker #largeDatepicker />
+		</mat-form-field>
+		<mat-form-field>
 			<mat-label>Large Select</mat-label>
 			<mat-select>
 				<mat-option [value]="1">One</mat-option>
@@ -83,6 +95,12 @@
 		<mat-radio-group>
 			<mat-radio-button value="1">Small Radio Button</mat-radio-button>
 		</mat-radio-group>
+		<mat-form-field>
+			<mat-label>Small Datepicker</mat-label>
+			<input matInput [matDatepicker]="smallDatepicker" />
+			<mat-datepicker-toggle matIconSuffix [for]="smallDatepicker" />
+			<mat-datepicker #smallDatepicker />
+		</mat-form-field>
 		<mat-form-field>
 			<mat-label>Small Select</mat-label>
 			<mat-select>
