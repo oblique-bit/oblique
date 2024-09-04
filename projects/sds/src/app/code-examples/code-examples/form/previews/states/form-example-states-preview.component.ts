@@ -6,7 +6,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
-import {ObFormFieldModule} from '@oblique/oblique';
+import {ObErrorMessagesModule, ObFormFieldModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-form-example-states-preview',
@@ -21,7 +21,8 @@ import {ObFormFieldModule} from '@oblique/oblique';
 		MatRadioModule,
 		MatSelectModule,
 		ObFormFieldModule,
-		MatDatepickerModule
+		MatDatepickerModule,
+		ObErrorMessagesModule
 	]
 })
 export class FormExampleStatesPreviewComponent {}
