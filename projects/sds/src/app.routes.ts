@@ -22,5 +22,9 @@ export const APP_ROUTES: Routes = [
 	{
 		path: `components/:${URL_CONST.urlParams.selectedSlug}`,
 		loadChildren: () => import('./app/tabbed-page/tabbed-pages.routes')
+	},
+	{
+		path: '**',
+		redirectTo: 'introductions/welcome'
 	}
 ];
