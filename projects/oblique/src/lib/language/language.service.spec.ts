@@ -103,15 +103,6 @@ describe('LanguageService', () => {
 				});
 			});
 		});
-
-		// This test case is only there to avoid a decrease of the test coverage
-		describe('setAdapter', () => {
-			it('should do nothing', () => {
-				jest.spyOn(service, 'setLocaleOnAdapter');
-				service.setLocaleOnAdapter(null);
-				expect(service.setLocaleOnAdapter).toHaveBeenCalled();
-			});
-		});
 	});
 
 	describe('with valid locales and an DateAdapter', () => {
