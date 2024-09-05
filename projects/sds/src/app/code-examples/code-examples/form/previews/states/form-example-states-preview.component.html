@@ -9,6 +9,12 @@
 		<mat-radio-button value="1">Default Radio Button</mat-radio-button>
 	</mat-radio-group>
 	<mat-form-field>
+		<mat-label>Disabled Datepicker</mat-label>
+		<input disabled matInput [matDatepicker]="disabledDatepicker" />
+		<mat-datepicker-toggle matIconSuffix [for]="disabledDatepicker" />
+		<mat-datepicker #disabledDatepicker />
+	</mat-form-field>
+	<mat-form-field>
 		<mat-label>Disabled Select</mat-label>
 		<mat-select disabled>
 			<mat-option [value]="1">One</mat-option>
@@ -41,6 +47,13 @@
 		<mat-hint>This is a hint</mat-hint>
 	</mat-form-field>
 	<mat-form-field>
+		<mat-label>Datepicker with Hint</mat-label>
+		<input matInput [matDatepicker]="datepickerWithHint" />
+		<mat-hint>DD.MM.YYYY</mat-hint>
+		<mat-datepicker-toggle matIconSuffix [for]="datepickerWithHint" />
+		<mat-datepicker #datepickerWithHint />
+	</mat-form-field>
+	<mat-form-field>
 		<mat-label>Select with Hint</mat-label>
 		<mat-select>
 			<mat-option [value]="1">One</mat-option>
@@ -69,35 +82,48 @@
 	</mat-form-field>
 </div>
 <div class="container">
-	<h3>Required</h3>
-	<mat-form-field>
-		<mat-label>Required Input</mat-label>
-		<input required type="text" matInput placeholder="Required Input" ngModel />
-	</mat-form-field>
-	<mat-form-field>
-		<mat-label>Required Select</mat-label>
-		<mat-select required ngModel>
-			<mat-option [value]="" />
-			<mat-option [value]="1">One</mat-option>
-			<mat-option [value]="2">Two</mat-option>
-			<mat-option [value]="3">Three</mat-option>
-			<mat-option [value]="4">Four</mat-option>
-			<mat-option [value]="5">Five</mat-option>
-		</mat-select>
-	</mat-form-field>
-	<mat-form-field>
-		<mat-label>Required Multiselect</mat-label>
-		<mat-select required ngModel multiple>
-			<mat-option [value]="1">One</mat-option>
-			<mat-option [value]="2">Two</mat-option>
-			<mat-option [value]="3">Three</mat-option>
-			<mat-option [value]="4">Four</mat-option>
-			<mat-option [value]="5">Five</mat-option>
-		</mat-select>
-	</mat-form-field>
-
-	<mat-form-field>
-		<mat-label>Required Textarea</mat-label>
-		<textarea required matInput placeholder="Required Textarea" ngModel></textarea>
-	</mat-form-field>
+	<form>
+		<h3>Required</h3>
+		<mat-form-field obErrorMessages>
+			<mat-label>Required Input</mat-label>
+			<input required name="requiredInput" type="text" matInput placeholder="Required Input" ngModel />
+			<mat-error />
+		</mat-form-field>
+		<mat-form-field obErrorMessages>
+			<mat-label>Required Datepicker</mat-label>
+			<input required matInput name="requiredDatepicker" ngModel [matDatepicker]="requiredDatepicker" />
+			<mat-datepicker-toggle matIconSuffix [for]="requiredDatepicker" />
+			<mat-datepicker #requiredDatepicker />
+			<mat-error />
+		</mat-form-field>
+		<mat-form-field obErrorMessages>
+			<mat-label>Required Select</mat-label>
+			<mat-select name="requiredSelect" required ngModel>
+				<mat-option [value]="" />
+				<mat-option [value]="1">One</mat-option>
+				<mat-option [value]="2">Two</mat-option>
+				<mat-option [value]="3">Three</mat-option>
+				<mat-option [value]="4">Four</mat-option>
+				<mat-option [value]="5">Five</mat-option>
+			</mat-select>
+			<mat-error />
+		</mat-form-field>
+		<mat-form-field obErrorMessages>
+			<mat-label>Required Multiselect</mat-label>
+			<mat-select name="requiredMultiselect" required ngModel multiple>
+				<mat-option [value]="1">One</mat-option>
+				<mat-option [value]="2">Two</mat-option>
+				<mat-option [value]="3">Three</mat-option>
+				<mat-option [value]="4">Four</mat-option>
+				<mat-option [value]="5">Five</mat-option>
+			</mat-select>
+			<mat-error />
+		</mat-form-field>
+		<mat-form-field obErrorMessages>
+			<mat-label>Required Textarea</mat-label>
+			<textarea name="requiredTextfield" required matInput placeholder="Required Textarea" ngModel></textarea>
+			<mat-error />
+		</mat-form-field>
+	</form>
 </div>
+<p>Note: Checkboxes and radio buttons can't use hints and errors, and thus can't be marked as required.</p>
