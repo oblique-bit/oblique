@@ -9,7 +9,6 @@ import {CardCodeExamplesComponent} from './code-examples/card/card-code-examples
 import {ChipsCodeExamplesComponent} from './code-examples/chips/chips-code-examples.component';
 import {CodeExamples} from './code-examples.model';
 import {ColumnLayoutCodeExamplesComponent} from './code-examples/column-layout/column-layout-code-examples.component';
-import {DatepickerCodeExamplesComponent} from './code-examples/datepicker/datepicker-code-examples.component';
 import {DialogCodeExamplesComponent} from './code-examples/dialog/dialog-code-examples.component';
 import {ExpansionPanelCodeExamplesComponent} from './code-examples/expansion-panel/expansion-panel-code-examples.component';
 import {FileUploadCodeExamplesComponent} from './code-examples/file-upload/file-upload-code-examples.component';
@@ -71,7 +70,6 @@ export class CodeExamplesMapper {
 		collapse: CollapseCodeExamplesComponent,
 		'column-layout': ColumnLayoutCodeExamplesComponent,
 		date: DateCodeExamplesComponent,
-		datepicker: DatepickerCodeExamplesComponent,
 		dialog: DialogCodeExamplesComponent,
 		'error-messages': ErrorMessagesCodeExamplesComponent,
 		'expansion-panel': ExpansionPanelCodeExamplesComponent,
