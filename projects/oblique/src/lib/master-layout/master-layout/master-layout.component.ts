@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {
 	AfterContentChecked,
 	AfterViewInit,
@@ -15,7 +16,8 @@ import {
 	TemplateRef,
 	ViewChild,
 	ViewEncapsulation,
-	inject
+	inject,
+	isDevMode
 } from '@angular/core';
 import {NavigationEnd, Params, Router} from '@angular/router';
 import {DOCUMENT} from '@angular/common';
@@ -96,27 +98,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		this.focusOffCanvasClose();
 	}
 
-	scrollTop(element?: HTMLElement): void {
-		const scrollTop =
-			element?.scrollTop ?? (this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
-		this.scrollEvents.hasScrolled(scrollTop);
-		if (this.isScrolling !== scrollTop > 0) {
-			this.isScrolling = scrollTop > 0;
-			this.scrollEvents.scrolling(this.isScrolling);
-		}
-	}
-
-	focusElement(elementId: string): void {
-		if (this.config.focusableFragments.includes(elementId)) {
-			const element = this.getElementToFocus(elementId);
-			if (elementId === this.contentId && !element.hasAttribute('tabindex')) {
-				this.renderer.setAttribute(element, 'tabindex', '-1');
-			}
-			element.scrollIntoView({behavior: 'smooth'});
-			element.focus({preventScroll: true});
-		}
-	}
-
 	ngOnInit(): void {
 		this.globalEventsService.scroll$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.scrollTop());
 		this.masterLayout.layout.configEvents$
@@ -145,6 +126,39 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+	}
+
+	scrollTop(element?: HTMLElement): void {
+		const scrollTop =
+			element?.scrollTop ?? (this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
+		this.scrollEvents.hasScrolled(scrollTop);
+		if (this.isScrolling !== scrollTop > 0) {
+			this.isScrolling = scrollTop > 0;
+			this.scrollEvents.scrolling(this.isScrolling);
+		}
+	}
+
+	focusElement(elementId: string): void {
+		if (!this.config.focusableFragments.includes(elementId)) {
+			console.warn(
+				`${elementId} is not in the whitelist of ids of fragments that are allowed to be focused:\n ${this.config.focusableFragments.join(', ')}\n The whitelist of fragments that are allowed to be focused is defined in ObMasterLayoutConfig.focusableFragments`
+			);
+			return;
+		}
+
+		const element = this.getElementToFocus(elementId);
+		if (!(element instanceof Element) && isDevMode()) {
+			console.error(`${elementId} does not correspond to an existing DOM element.`);
+			return;
+		}
+
+		element.scrollIntoView({behavior: 'smooth'});
+		element.focus({preventScroll: true});
+		if (document.activeElement !== element && isDevMode()) {
+			element.setAttribute('tabindex', '-1');
+			element.focus({preventScroll: true});
+			console.info(`The element with the id: ${elementId} is not focusable. Oblique added a tabindex in order to make it focusable.`);
+		}
 	}
 
 	private isInHighContrastMode(): boolean {
