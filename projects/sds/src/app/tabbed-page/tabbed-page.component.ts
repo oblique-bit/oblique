@@ -46,7 +46,7 @@ export class TabbedPageComponent {
 	@HostListener('click', ['$event'])
 	onClick(event: MouseEvent): void {
 		const {target} = event;
-		if (!(target instanceof HTMLAnchorElement)) {
+		if (!(target instanceof HTMLAnchorElement) || !target.closest('.deprecation-container')) {
 			return;
 		}
 		event.preventDefault();
