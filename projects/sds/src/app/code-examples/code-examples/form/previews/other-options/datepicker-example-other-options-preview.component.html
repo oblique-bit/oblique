@@ -11,7 +11,7 @@
 	</mat-form-field>
 </div>
 <div>
-	<mat-form-field>
+	<mat-form-field obErrorMessages>
 		<mat-label>Error</mat-label>
 		<input matInput [matDatepicker]="errorDatepicker" [formControl]="errorControl" />
 		<mat-hint>Selecting a past date triggers an error</mat-hint>
@@ -30,7 +30,7 @@
 	</mat-form-field>
 </div>
 <div>
-	<mat-form-field>
+	<mat-form-field obErrorMessages>
 		<mat-label>Min</mat-label>
 		<input matInput [min]="today" [matDatepicker]="minDatepicker" [formControl]="minErrorControl" />
 		<mat-datepicker-toggle matIconSuffix [for]="minDatepicker" />
@@ -40,7 +40,7 @@
 	</mat-form-field>
 </div>
 <div>
-	<mat-form-field>
+	<mat-form-field obErrorMessages>
 		<mat-label>Max</mat-label>
 		<input matInput [max]="today" [matDatepicker]="maxDatepicker" [formControl]="maxErrorControl" />
 		<mat-datepicker-toggle matIconSuffix [for]="maxDatepicker" />
