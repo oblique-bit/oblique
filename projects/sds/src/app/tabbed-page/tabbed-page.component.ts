@@ -3,7 +3,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
-import {Observable, distinctUntilChanged, filter, map, mergeWith, switchMap} from 'rxjs';
+import {Observable, distinctUntilChanged, filter, map, mergeWith, partition, switchMap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -14,6 +14,7 @@ import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
 import {CmsData, TabbedPageComplete} from '../cms/models/tabbed-page.model';
 import {TabNameMapper} from './utils/tab-name-mapper';
 import {MatChipsModule} from '@angular/material/chips';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'app-tabbed-page',
@@ -33,7 +34,12 @@ export class TabbedPageComponent {
 	private isNull = true;
 
 	constructor() {
-		this.cmsData$ = this.buildCmsDataObservable();
+		const [validPageId$, invalidPageId$] = this.buildPageIdObservables();
+		invalidPageId$.pipe(takeUntilDestroyed()).subscribe(() => {
+			void this.router.navigate(['introductions', 'welcome']);
+		});
+
+		this.cmsData$ = this.buildCmsDataObservable(validPageId$);
 	}
 
 	@HostListener('click', ['$event'])
@@ -67,12 +73,20 @@ export class TabbedPageComponent {
 		}
 	}
 
-	private buildCmsDataObservable(): Observable<CmsData> {
-		return this.slugToIdService.readyToMap.pipe(
-			mergeWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
-			map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
-			distinctUntilChanged(),
-			map(slug => this.slugToIdService.getIdForSlug(slug)),
+	private buildPageIdObservables(): [Observable<number>, Observable<number>] {
+		return partition(
+			this.slugToIdService.readyToMap.pipe(
+				mergeWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
+				map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
+				distinctUntilChanged(),
+				map(slug => this.slugToIdService.getIdForSlug(slug))
+			),
+			id => id !== undefined
+		);
+	}
+
+	private buildCmsDataObservable(validPageId$: Observable<number>): Observable<CmsData> {
+		return validPageId$.pipe(
 			switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
 			map(cmsData => this.buildCmsData(cmsData.data))
 		);
