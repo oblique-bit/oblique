@@ -30,7 +30,7 @@ export class Git {
 		executeCommandWithLog(`git fetch origin ${branch}`, `Fetch ${branch} branch`);
 	}
 
-	static getBranchName(): string {
+	static getCurrentBranchName(): string {
 		return getResultFromCommand('git branch --show-current');
 	}
 
