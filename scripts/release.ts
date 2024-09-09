@@ -17,7 +17,7 @@ class Release extends StaticScript {
 
 	private static parseBranchName(): {version: string; issue: string} {
 		Log.info('Extract the version number and the Jira issue number from the branch name');
-		const branchName = Git.getBranchName();
+		const branchName = Git.getCurrentBranchName();
 		const regexp = /(?<issue>OUI-\d+).*?(?<version>\d+\.\d+\.\d+(?:-(?:alpha|beta|RC)\.\d+)?)/;
 		if (!regexp.test(branchName)) {
 			Log.error('The branch MUST contain the version number to release and the Jira issue number');
