@@ -3,6 +3,7 @@ import {PackageJson} from '../../../scripts/shared/package-json';
 import {Banner} from '../../../scripts/shared/banner';
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {Log} from '../../../scripts/shared/log';
+import {adaptReadmeLinks} from '../../../scripts/shared/utils';
 
 class PostBuild extends StaticScript {
 	private static readonly projectName = 'design-system';
@@ -11,7 +12,8 @@ class PostBuild extends StaticScript {
 		Log.start('Finalize build');
 		PostBuild.copyDistFiles();
 		PostBuild.adaptPackageJson();
-		PostBuild.addBanner();
+		Banner.addToFilesInProject(PostBuild.projectName);
+		adaptReadmeLinks(PostBuild.projectName);
 		Log.success();
 	}
 
@@ -24,10 +26,6 @@ class PostBuild extends StaticScript {
 			.addFieldsFromRoot('version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs')
 			.write()
 			.finalize();
-	}
-
-	private static addBanner(): void {
-		Banner.addToFilesInProject(PostBuild.projectName);
 	}
 }
 
