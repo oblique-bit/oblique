@@ -11,11 +11,8 @@ export class PostDist extends StaticScript {
 		Log.start('Finalize build');
 		PostDist.adaptPackageJson();
 		PostDist.pack();
-		PostDist.addBanner();
-		CopyFiles.initialize('service-navigation-web-component')
-			.copyRootFiles('LICENSE')
-			.copyProjectRootFiles('README.md', 'CHANGELOG.md')
-			.finalize();
+		PostDist.copyProjectFiles();
+		Banner.addToFilesInProject('service-navigation-web-component');
 		adaptReadmeLinks('service-navigation-web-component');
 		Log.success();
 	}
@@ -36,8 +33,11 @@ export class PostDist extends StaticScript {
 		PostDist.removeEmptyDirectories(directory);
 	}
 
-	private static addBanner(): void {
-		Banner.addToFilesInProject('service-navigation-web-component');
+	private static copyProjectFiles(): void {
+		CopyFiles.initialize('service-navigation-web-component')
+			.copyRootFiles('LICENSE')
+			.copyProjectRootFiles('README.md', 'CHANGELOG.md')
+			.finalize();
 	}
 
 	private static packJsFiles(directory: string, packFileName: string): void {
