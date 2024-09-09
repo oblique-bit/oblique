@@ -15,7 +15,7 @@ class PostBuild extends StaticScript {
 		PostBuild.adaptSchematicsPackageJson();
 		PostBuild.updateBackgroundImagePath();
 		PostBuild.distributeObFeatures();
-		PostBuild.addBanner();
+		Banner.addToFilesInProject('oblique');
 		adaptReadmeLinks('oblique');
 		Log.success();
 	}
@@ -77,10 +77,6 @@ class PostBuild extends StaticScript {
 			`uglifyjs --compress --mangle --output ../../dist/oblique/ob-features.js -- src/ob-features.js`,
 			'Copy and minify ob-features.js'
 		);
-	}
-
-	private static addBanner(): void {
-		Banner.addToFilesInProject('oblique');
 	}
 
 	private static renameInFiles(fileList: string[], searchValue: string, replaceValue: string): void {
