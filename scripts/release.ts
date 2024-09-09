@@ -1,4 +1,3 @@
-import {execSync} from 'child_process';
 import {executeCommand, executeCommandWithLog} from './shared/utils';
 import {StaticScript} from './shared/static-script';
 import {Git} from './shared/git';
@@ -30,10 +29,6 @@ class Release extends StaticScript {
 	private static updateCopyrightDate(): void {
 		Log.info(`Update copyright date in LICENSE`);
 		Files.overwrite('LICENSE', content => content.replace(/(?!2020-)\d{4}/, new Date().getFullYear().toString()));
-	}
-
-	private static execute(command: string): string {
-		return execSync(command).toString();
 	}
 }
 
