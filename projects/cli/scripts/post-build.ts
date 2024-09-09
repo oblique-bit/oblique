@@ -10,14 +10,18 @@ export class PostBuild extends StaticScript {
 
 	static perform(): void {
 		Log.start('Finalize build');
+		PostBuild.copyProjectFiles();
+		PostBuild.adaptPackageJson();
+		Banner.addToFilesInProject(PostBuild.projectName);
+		adaptReadmeLinks(PostBuild.projectName);
+		Log.success();
+	}
+
+	private static copyProjectFiles(): void {
 		CopyFiles.initialize(PostBuild.projectName)
 			.copyRootFiles('LICENSE')
 			.copyProjectRootFiles('README.md', 'CHANGELOG.md', 'package.json')
 			.finalize();
-		PostBuild.adaptPackageJson();
-		PostBuild.addBanner();
-		adaptReadmeLinks(PostBuild.projectName);
-		Log.success();
 	}
 
 	private static adaptPackageJson(): void {
@@ -26,10 +30,6 @@ export class PostBuild extends StaticScript {
 			.removeScripts()
 			.write()
 			.finalize();
-	}
-
-	private static addBanner(): void {
-		Banner.addToFilesInProject(PostBuild.projectName);
 	}
 }
 
