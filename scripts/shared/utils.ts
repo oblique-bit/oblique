@@ -1,6 +1,4 @@
 import {execSync} from 'child_process';
-import {readdirSync, statSync} from 'fs';
-import path from 'path';
 import {Log} from './log';
 import {Files} from './files';
 
@@ -23,25 +21,12 @@ export function getResultFromCommand(command: string): string {
 	return execSync(command).toString().trim();
 }
 
-export function listFiles(directory: string): string[] {
-	return readdirSync(directory)
-		.map(fileName => path.join(directory, fileName))
-		.reduce<string[]>(
-			(filePaths, filePath) => (statSync(filePath).isDirectory() ? [...filePaths, ...listFiles(filePath)] : [...filePaths, filePath]),
-			[]
-		);
-}
-
 export function hasFlag(flag: string): boolean {
 	return process.argv.some(arg => arg === `--${flag}`);
 }
 
 export function camelToKebabCase(key: string): string {
 	return key.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`);
-}
-
-export function buildPath(...pathParts: string[]): string {
-	return path.join(...pathParts.filter(part => !!part));
 }
 
 export function updatePackageJsonVersion(version: string): void {
