@@ -1,20 +1,29 @@
 #!/usr/bin/env node
 
-import * as packageFile from '../package.json';
-import {Command} from 'commander';
+import {program} from '@commander-js/extra-typings';
+import * as cliPackage from '../package.json';
+import {exampleUsageText, obTitle, obUsageText, optionDescriptions, runObCommand, startObCommand, titleText} from './utils/cli-utils';
 
-new Command()
+program
 	.name('ob')
-	.description('Oblique CLI for managing projects')
-	.version(packageFile.version)
-	.usage(
-		'new <project-name>\t\t\tCreates a new project in current place\n' +
-			'or \n' +
-			'ob update <project-name>\t\t\tUpdates the oblique package in the project and runs migration\n'
+	.description(cliPackage.description)
+	.version(cliPackage.version, optionDescriptions.version.flags, optionDescriptions.version.description)
+	.helpOption(optionDescriptions.help.flags, optionDescriptions.help.description)
+	.usage(obUsageText)
+	.addHelpText('beforeAll', titleText(`How to use the ${obTitle}`.toUpperCase(), ''))
+	.addHelpText(
+		'after',
+		exampleUsageText([
+			{command: optionDescriptions.version.command, description: optionDescriptions.version.description},
+			{command: optionDescriptions.help.command, description: optionDescriptions.help.description}
+		])
 	)
-	.action(() => {
-		console.info('Starts Oblique CLI');
-	})
+	.action(handleAction)
 	.showSuggestionAfterError(true)
-	.showHelpAfterError(true)
-	.parse();
+	.showHelpAfterError(true);
+
+program.parse();
+
+function handleAction(options: Record<string, string>): void {
+	startObCommand(options, runObCommand, 'Oblique CLI completed in');
+}
