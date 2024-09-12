@@ -28,11 +28,11 @@
   "scripts": {
     "lint": "ts-node scripts/lint.ts && npm run lint -ws",
     "format": "npm run format -ws && ts-node scripts/lint.ts --fix",
-    "dependencies-update": "ts-node scripts/update-dependencies.ts",
+    "dependencies-update": "ts-node scripts/dependencies-update.ts",
     "postinstall": "ts-node scripts/sanitize-package-lock.ts",
     "hook-pre-commit": "npx lint-staged",
     "hook-commit-msg": "ts-node scripts/husky/hook.commit-rules.ts",
-    "hook-post-checkout": "ts-node scripts/husky/dependency-update.ts",
+    "hook-post-checkout": "ts-node scripts/husky/install-dependencies.ts",
     "prepare": "husky install",
     "release": "ts-node scripts/release.ts",
     "troubleshoot": "ts-node scripts/troubleshoot.ts"

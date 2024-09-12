@@ -1,8 +1,7 @@
-import {readFileSync, writeFileSync} from 'fs';
-import path from 'path';
-import {buildPath, humanizeList} from './utils';
+import {humanizeList} from './utils';
 import {StaticScript} from './static-script';
 import {Log} from './log';
+import {Files} from './files';
 
 export type ExportEntries = Record<string, string | Record<'sass', string>>;
 type PackageJsonContent = Record<string, unknown>;
@@ -13,10 +12,9 @@ export class PackageJson extends StaticScript {
 
 	static initialize(projectName: string, folder?: string): PackageJson {
 		PackageJson.instance = new PackageJson();
-		(PackageJson.instance as PackageJson).path = buildPath('..', '..', 'dist', projectName, folder, 'package.json');
-		(PackageJson.instance as PackageJson).content = JSON.parse(
-			readFileSync((PackageJson.instance as PackageJson).path).toString()
-		) as PackageJsonContent;
+		const subPath = folder ? `${projectName}/${folder}` : projectName;
+		(PackageJson.instance as PackageJson).path = `../../dist/${subPath}/package.json`;
+		(PackageJson.instance as PackageJson).content = Files.readJson<PackageJsonContent>((PackageJson.instance as PackageJson).path);
 		return PackageJson.instance as PackageJson;
 	}
 
@@ -54,11 +52,11 @@ export class PackageJson extends StaticScript {
 	}
 
 	write(): PackageJson {
-		writeFileSync(this.path, JSON.stringify(this.content, null, 2));
+		Files.writeJson(this.path, this.content);
 		return PackageJson.instance as PackageJson;
 	}
 
 	private static readRootPackageJson(): PackageJsonContent {
-		return JSON.parse(readFileSync(path.join('..', '..', 'package.json')).toString()) as PackageJsonContent;
+		return Files.readJson<PackageJsonContent>('../../package.json');
 	}
 }
