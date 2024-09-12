@@ -33,21 +33,30 @@ describe(TranslationsService.name, () => {
 		});
 	});
 
+	describe('setLang', () => {
+		it('should call use', () => {
+			jest.spyOn(translate, 'use');
+			service.initializeTranslations('en,fr', 'fr', 'fr');
+			service.setLang('en');
+			expect(translate.use).toHaveBeenCalledWith('en');
+		});
+	});
+
 	describe('initializeTranslations', () => {
 		describe('parseLanguages', () => {
 			it('should fail when using wrong languages format', () => {
-				const func = (): void => service.initializeTranslations('en,error', undefined);
+				const func = (): void => service.initializeTranslations('en,error', undefined, undefined);
 				expect(func).toThrow(`"language-list" expects a comma`);
 			});
 
 			it('should fail when using unknown language `zz` is used', () => {
-				const func = (): void => service.initializeTranslations('en,zz', undefined);
+				const func = (): void => service.initializeTranslations('en,zz', undefined, undefined);
 				expect(func).toThrow(`Unknown "zz" language`);
 			});
 
 			it('should find en,fr,de in the translate service', () => {
 				const languageList = ['en', 'fr', 'de', 'it'];
-				service.initializeTranslations(languageList.join(','), undefined);
+				service.initializeTranslations(languageList.join(','), undefined, undefined);
 
 				expect(translate.langs).toEqual(languageList);
 			});
@@ -56,20 +65,20 @@ describe(TranslationsService.name, () => {
 		describe('parseDefaultLanguage', () => {
 			const languageList = 'en,fr';
 			it('should fail when using wrong languages format', () => {
-				const func = (): void => service.initializeTranslations(languageList, 'error');
+				const func = (): void => service.initializeTranslations(languageList, undefined, 'error');
 				expect(func).toThrow(`"default-language" expects an ISO 639-1`);
 			});
 
 			it('should display a message when using an unknown languages format', () => {
 				const infoSpy = jest.spyOn(console, `info`).mockImplementation(() => {});
-				service.initializeTranslations(languageList, 'zz');
+				service.initializeTranslations(languageList, undefined, 'zz');
 
 				expect(infoSpy).toHaveBeenCalledWith(`No or invalid default language is provided, falling back to en`);
 			});
 
 			it('should find en the translate service as defaultLang', () => {
 				const expectedLang = 'en';
-				service.initializeTranslations(languageList, expectedLang);
+				service.initializeTranslations(languageList, undefined, expectedLang);
 
 				expect(translate.defaultLang).toEqual(expectedLang);
 			});
@@ -82,7 +91,7 @@ describe(TranslationsService.name, () => {
 
 			beforeEach(() => {
 				translate.setDefaultLang('en');
-				service.initializeTranslations('en', 'en');
+				service.initializeTranslations('en', 'en', 'en');
 				service.handleTranslations(JSON.stringify(infoLinks), '');
 			});
 
@@ -99,7 +108,7 @@ describe(TranslationsService.name, () => {
 			describe('empty', () => {
 				it('should not fail', () => {
 					translate.setDefaultLang('en');
-					service.initializeTranslations('en', 'en');
+					service.initializeTranslations('en', 'en', 'en');
 					const func = (): void => service.handleTranslations('', null);
 					expect(func).not.toThrow();
 				});
@@ -112,7 +121,7 @@ describe(TranslationsService.name, () => {
 
 				beforeEach(() => {
 					translate.setDefaultLang('en');
-					service.initializeTranslations('en', 'en');
+					service.initializeTranslations('en', 'en', 'en');
 					service.handleTranslations('', JSON.stringify(profileLinks));
 				});
 
