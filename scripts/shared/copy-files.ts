@@ -1,22 +1,21 @@
-import path from 'path';
 import {StaticScript} from './static-script';
-import {copyFileSync, mkdirSync} from 'fs';
 import {Log} from './log';
 import {humanizeList} from './utils';
+import {Files} from './files';
 
 export class CopyFiles extends StaticScript {
 	private distFolder: string;
 
 	static initialize(projectName: string): CopyFiles {
 		StaticScript.instance = new CopyFiles();
-		(StaticScript.instance as CopyFiles).distFolder = path.join('..', '..', 'dist', projectName);
+		(StaticScript.instance as CopyFiles).distFolder = `../../dist/${projectName}`;
 		return CopyFiles.instance as CopyFiles;
 	}
 
 	copyRootFiles(...fileList: string[]): CopyFiles {
 		Log.info(`Add ${humanizeList(fileList)} to the distribution`);
 		fileList.forEach(fileName => {
-			copyFileSync(path.join('..', '..', fileName), path.join(this.distFolder, fileName));
+			Files.copy(`../../${fileName}`, `${this.distFolder}/${fileName}`);
 		});
 		return CopyFiles.instance as CopyFiles;
 	}
@@ -29,8 +28,7 @@ export class CopyFiles extends StaticScript {
 				destination: filePath.replace(source, this.distFolder)
 			}))
 			.forEach(file => {
-				mkdirSync(path.dirname(file.destination), {recursive: true});
-				copyFileSync(file.source, file.destination);
+				Files.copy(file.source, file.destination);
 			});
 		return CopyFiles.instance as CopyFiles;
 	}
@@ -38,16 +36,15 @@ export class CopyFiles extends StaticScript {
 	copyProjectRootFiles(...fileList: string[]): CopyFiles {
 		Log.info(`Add ${humanizeList(fileList)} to the distribution`);
 		fileList.forEach(fileName => {
-			copyFileSync(fileName, path.join(this.distFolder, fileName));
+			Files.copy(fileName, `${this.distFolder}/${fileName}`);
 		});
 		return CopyFiles.instance as CopyFiles;
 	}
 
 	copyFile(fileName: string, source: string, destination: string): CopyFiles {
 		Log.info(`Add ${fileName} to the distribution`);
-		const destinationFolder = path.join(this.distFolder, destination);
-		mkdirSync(destinationFolder, {recursive: true});
-		copyFileSync(path.join(source, fileName), path.join(destinationFolder, fileName));
+		const destinationFolder = `${this.distFolder}/${destination}`;
+		Files.copy(`${source}/${fileName}`, `${destinationFolder}/${fileName}`);
 		return CopyFiles.instance as CopyFiles;
 	}
 }
