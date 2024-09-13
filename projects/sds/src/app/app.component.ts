@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, HostBinding, inject} from '@angular/core';
 import {ObSpinnerModule} from '@oblique/oblique';
 import {RouterOutlet} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
@@ -14,10 +14,15 @@ import {BannerComponent} from './banner/banner.component';
 	imports: [RouterOutlet, ObSpinnerModule, SideNavigationComponent, FeedbackButtonComponent, BannerComponent]
 })
 export class AppComponent {
+	@HostBinding('class.has-opened-mobile-navigation') showMobileNavigation = false;
 	constructor() {
 		const translate = inject(TranslateService);
 		translate.addLangs(['en']);
 		translate.setDefaultLang('en');
 		translate.use('en');
+	}
+
+	doShowMobileNavigation(event: boolean): void {
+		this.showMobileNavigation = event;
 	}
 }

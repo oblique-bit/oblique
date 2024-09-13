@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, EventEmitter, Output, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
@@ -37,6 +37,8 @@ import {ImageComponent} from './image/image.component';
 	]
 })
 export class SideNavigationComponent {
+	@Output() readonly showMobileNavigation = new EventEmitter<boolean>();
+	displayMobileNavigation = false;
 	readonly componentId = 'side-navigation';
 	readonly search = new FormControl('');
 
@@ -58,6 +60,11 @@ export class SideNavigationComponent {
 
 	updateVersion(version?: number): void {
 		this.version$.next(version);
+	}
+
+	toggleMobileNavigation(): void {
+		this.displayMobileNavigation = !this.displayMobileNavigation;
+		this.showMobileNavigation.emit(this.displayMobileNavigation);
 	}
 
 	private prepareAccordions(): Observable<Accordion[]> {
