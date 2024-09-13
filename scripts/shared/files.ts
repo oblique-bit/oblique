@@ -71,6 +71,6 @@ export class Files {
 	}
 
 	static buildOSSafePath(filePath: string): string {
-		return path.join(...filePath.split('/'));
+		return filePath.replace('/', path.sep).replace(`${path.sep}${path.sep}`, path.sep);
 	}
 }
