@@ -70,7 +70,7 @@ export class Files {
 		return Files.readDirectory(directory).map(fileName => path.join(directoryPath, fileName));
 	}
 
-	static buildOSSafePath(filePath: string): string {
-		return filePath.replace('/', path.sep).replace(`${path.sep}${path.sep}`, path.sep);
+	static buildOSSafePath(...filePaths: string[]): string {
+		return path.join(...filePaths.map(filePath => filePath.replace('/', path.sep).replace(`${path.sep}${path.sep}`, path.sep)));
 	}
 }
