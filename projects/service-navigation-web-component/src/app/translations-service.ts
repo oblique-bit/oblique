@@ -12,15 +12,19 @@ import {ObILink} from './service-navigation-web-component.model';
 export class TranslationsService {
 	readonly languageChange$: Observable<string>;
 	private readonly translate = inject(TranslateService);
+	private parsedLanguages: string[];
+	private parsedDefaultLanguage: string;
 
 	constructor() {
 		this.languageChange$ = this.translate.onLangChange.pipe(map(event => event.lang));
 	}
 
-	initializeTranslations(languageList: string, defaultLanguage: string | undefined): void {
-		const languages = this.parseLanguages(languageList);
-		const parsedDefaultLanguage = this.parseDefaultLanguage(defaultLanguage, languages);
-		this.registerLanguagesAndTranslations(languages, parsedDefaultLanguage);
+	initializeTranslations(languageList: string, language: string | undefined, defaultLanguage: string | undefined): void {
+		this.parsedLanguages = this.parseLanguages(languageList);
+		this.parsedDefaultLanguage = this.parseDefaultLanguage(defaultLanguage, this.parsedLanguages);
+		const parsedLanguage = this.parseLanguage(language, this.parsedDefaultLanguage, this.parsedLanguages);
+
+		this.registerLanguagesAndTranslations(this.parsedLanguages, this.parsedDefaultLanguage, parsedLanguage);
 	}
 
 	handleTranslations(infoLinks: string, profileLinks: string): void {
@@ -29,6 +33,13 @@ export class TranslationsService {
 		languages.forEach(language => {
 			this.translate.setTranslation(language, translations[language], true);
 		});
+	}
+
+	setLang(lang: string): void {
+		if (this.parsedLanguages && this.parsedDefaultLanguage) {
+			const newLang = this.parseLanguage(lang, this.parsedDefaultLanguage, this.parsedLanguages);
+			this.translate.use(newLang);
+		}
 	}
 
 	private parseLanguages(languageList: string): string[] {
@@ -41,9 +52,8 @@ export class TranslationsService {
 	}
 
 	private parseDefaultLanguage(defaultLanguage: string | undefined, languages: string[]): string {
-		if (defaultLanguage && !/^[a-z]{2}$/.test(defaultLanguage)) {
-			throw new Error(`"default-language" expects an ISO 639-1 language (e.g. en) but received "${defaultLanguage}"`);
-		}
+		this.checkLanguageFormat(defaultLanguage, 'default-language');
+
 		if (!languages.includes(defaultLanguage)) {
 			const language = languages[0];
 			console.info(`No or invalid default language is provided, falling back to ${language}`);
@@ -52,13 +62,29 @@ export class TranslationsService {
 		return defaultLanguage;
 	}
 
-	private registerLanguagesAndTranslations(languages: string[], defaultLanguage: string): void {
+	private parseLanguage(language: string | undefined, defaultLanguage: string, languages: string[]): string {
+		this.checkLanguageFormat(language, 'language');
+
+		if (!languages.includes(language)) {
+			console.info(`Invalid language is provided, falling back to ${defaultLanguage}`);
+			return defaultLanguage;
+		}
+		return language;
+	}
+
+	private checkLanguageFormat(language: string | undefined, label: 'default-language' | 'language'): void {
+		if (language && !/^[a-z]{2}$/.test(language)) {
+			throw new Error(`"${label}" expects an ISO 639-1 language (e.g. en) but received "${language}"`);
+		}
+	}
+
+	private registerLanguagesAndTranslations(languages: string[], defaultLanguage: string, language: string): void {
 		this.translate.addLangs(languages);
-		languages.forEach(language => {
-			this.translate.setTranslation(language, this.getObliqueTranslations(language), true);
+		languages.forEach(lang => {
+			this.translate.setTranslation(lang, this.getObliqueTranslations(lang), true);
 		});
 		this.translate.setDefaultLang(defaultLanguage);
-		this.translate.use(defaultLanguage);
+		this.translate.use(language);
 	}
 
 	private getObliqueTranslations(language: string): Record<any, string> {
