@@ -1,15 +1,15 @@
-import {execSync} from 'child_process';
+import {ExecSyncOptions, execSync} from 'child_process';
 import {Log} from './log';
 import {Files} from './files';
 
-export function executeCommand(command: string): void {
-	execSync(command);
+export function executeCommand(command: string, options?: ExecSyncOptions): void {
+	execSync(command, options);
 }
 
-export function executeCommandWithLog(command: string, messagePrefix: string): void {
+export function executeCommandWithLog(command: string, messagePrefix: string, options: ExecSyncOptions = {}): void {
 	Log.info(`${messagePrefix}: ${command}`);
 	try {
-		execSync(command, {stdio: 'pipe'});
+		execSync(command, {...options, stdio: 'pipe'});
 	} catch (rawError) {
 		const error = rawError as {stdout: Buffer; stderr: Buffer};
 		const errorMessage = [error.stdout, error.stderr]
@@ -20,8 +20,8 @@ export function executeCommandWithLog(command: string, messagePrefix: string): v
 	}
 }
 
-export function getResultFromCommand(command: string): string {
-	return execSync(command).toString().trim();
+export function getResultFromCommand(command: string, options?: ExecSyncOptions): string {
+	return execSync(command, options).toString().trim();
 }
 
 export function hasFlag(flag: string): boolean {
