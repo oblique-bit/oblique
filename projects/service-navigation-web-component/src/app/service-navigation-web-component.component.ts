@@ -43,6 +43,7 @@ import {ObICustomButton, ObILink} from './service-navigation-web-component.model
 export class ObServiceNavigationWebComponentComponent implements OnChanges, OnInit {
 	@Input() languageList: string;
 	@Input() defaultLanguage: string;
+	@Input() language: string;
 	@Input() environment: 'DEV' | 'REF' | 'TEST' | 'ABN' | 'PROD';
 	@Input() infoContact: string;
 	@Input() infoLinks: string;
@@ -82,10 +83,11 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 		this.profileLinksParsed = this.parseLinks(changes.profileLinks, 'profile');
 		this.customButtonsParsed = this.parseCustomButtons(changes.customButtons);
 		this.translationService.handleTranslations(this.infoLinks, this.profileLinks);
+		this.handleNewLanguage(changes.language);
 	}
 
 	ngOnInit(): void {
-		this.translationService.initializeTranslations(this.languageList, this.defaultLanguage);
+		this.translationService.initializeTranslations(this.languageList, this.language, this.defaultLanguage);
 		this.translationService.handleTranslations(this.infoLinks, this.profileLinks); // necessary because ngOnChanges is called before ngOnInit
 		this.environmentParsed = this.parseEnvironment(this.environment);
 	}
@@ -118,5 +120,11 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 
 	private parseCustomButtons(customButtons: SimpleChange | undefined): ObICustomButton[] {
 		return customButtons ? JSON.parse(customButtons.currentValue || '[]') : this.customButtonsParsed;
+	}
+
+	private handleNewLanguage(language: SimpleChange | undefined): void {
+		if (language) {
+			this.translationService.setLang(language.currentValue);
+		}
 	}
 }
