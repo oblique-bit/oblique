@@ -1,5 +1,5 @@
 import {Component, HostListener, inject} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router, UrlSerializer} from '@angular/router';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
@@ -32,6 +32,7 @@ export class TabbedPageComponent {
 	private readonly slugToIdService = inject(SlugToIdService);
 	private readonly location = inject(Location);
 	private isNull = true;
+	private readonly serializer = inject(UrlSerializer);
 
 	constructor() {
 		const [validPageId$, invalidPageId$] = this.buildPageIdObservables();
@@ -53,22 +54,19 @@ export class TabbedPageComponent {
 	}
 
 	handleTabChanged(tabName: string): void {
-		const urlParamForTab: string = TabNameMapper.getUrlParamForTabName(tabName);
-		const snapshotTabParam = this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab);
-		let fragment: RegExpExecArray;
-
-		//if we don't navigate using the sidebar navigation but directly, check for a fragment
-		if (this.location.path(true) === this.router.url && snapshotTabParam === urlParamForTab) {
-			//getting fragment using path and not snapshot because snapshot is not up to date
-			fragment = /(?<=#).*/.exec(this.location.path(true));
-		}
-
-		const params = fragment ? `${urlParamForTab}#${fragment[0]}` : urlParamForTab;
-		const newUrl: string = snapshotTabParam ? this.router.url.replace(/[^/]*$/, params) : `${this.router.url}/${params}`;
+		const urlParamForTab: string = TabNameMapper.getUrlParamForTabName(tabName); //newly requested tab
+		const newUrl = this.serializer.serialize(
+			this.router.createUrlTree([urlParamForTab], {
+				relativeTo: this.activatedRoute.parent,
+				queryParamsHandling: 'preserve',
+				preserveFragment: true
+			})
+		);
 		this.location.replaceState(newUrl);
 
+		const {fragment} = this.activatedRoute.snapshot;
 		if (fragment) {
-			const el = document.getElementById(fragment[0]);
+			const el = document.getElementById(fragment);
 			el?.scrollIntoView();
 		}
 	}
