@@ -29,6 +29,7 @@
     "lint": "ts-node scripts/lint.ts && npm run lint -ws",
     "format": "npm run format -ws && ts-node scripts/lint.ts --fix",
     "dependencies-update": "ts-node scripts/dependencies-update.ts",
+    "update-angular": "ts-node scripts/update-angular.ts",
     "postinstall": "ts-node scripts/sanitize-package-lock.ts",
     "hook-pre-commit": "npx lint-staged",
     "hook-commit-msg": "ts-node scripts/husky/hook.commit-rules.ts",
