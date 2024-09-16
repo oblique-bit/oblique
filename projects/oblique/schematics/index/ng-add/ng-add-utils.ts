@@ -20,7 +20,7 @@ type versionFunc = (version: number) => string;
 
 const versions: Record<string, string | versionFunc> = {
 	ajv: '^8.0.0',
-	'ajv-formats': '^2.0.0',
+	'ajv-formats': '^3.0.0',
 	'@ngx-translate/core': `^15.0.0`,
 	'@angular/cdk': version => `^${version}.0.0`,
 	'@angular/material': version => `^${version}.0.0`,
