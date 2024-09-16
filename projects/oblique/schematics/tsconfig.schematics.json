@@ -17,7 +17,7 @@
     "skipLibCheck": true,
     "sourceMap": false,
     "strictNullChecks": true,
-    "target": "es6",
+    "target": "ES2022",
     "types": ["node"]
   },
   "include": ["index/**/*"],
