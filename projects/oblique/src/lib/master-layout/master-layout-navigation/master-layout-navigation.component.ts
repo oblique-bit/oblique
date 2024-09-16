@@ -246,7 +246,7 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		this.router.events
 			.pipe(
 				filter(routerEvent => routerEvent instanceof NavigationEnd),
-				map(routerEvent => (routerEvent as NavigationEnd).url),
+				map(routerEvent => routerEvent.url),
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(url => {
