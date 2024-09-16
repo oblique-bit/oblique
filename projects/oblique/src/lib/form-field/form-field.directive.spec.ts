@@ -88,8 +88,8 @@ describe(ObFormFieldDirective.name, () => {
 		{propertyToCheck: 'isRequired', testComponentType: IsRequiredTestComponent}
 	])('', ({propertyToCheck, testComponentType}) => {
 		const readablePropertyName = propertyToCheck
-			.replace(/(?<upperCaseLetter>[A-Z])/g, ' $1')
-			.replace(/(?<containsHasOrIs>contains|has|is) /, '')
+			.replace(/([A-Z])/g, ' $1') // eslint-disable-line prefer-named-capture-group
+			.replace(/contains|has|is /, '')
 			.toLowerCase();
 
 		test(`that it correctly identifies a non ${readablePropertyName} form field`, async () => {
