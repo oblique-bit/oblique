@@ -12,8 +12,11 @@ export function executeCommandWithLog(command: string, messagePrefix: string): v
 		execSync(command, {stdio: 'pipe'});
 	} catch (rawError) {
 		const error = rawError as {stdout: Buffer; stderr: Buffer};
-		const buffer = error.stdout?.length ? error.stdout : error.stderr;
-		fatal(buffer.toString());
+		const errorMessage = [error.stdout, error.stderr]
+			.filter(buffer => !!buffer)
+			.map(buffer => buffer.toString())
+			.join('\n');
+		fatal(errorMessage);
 	}
 }
 
