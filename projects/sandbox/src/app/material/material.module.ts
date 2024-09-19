@@ -42,6 +42,7 @@ import {ButtonComponent} from './button/button.component';
 import {CardComponent} from './card/card.component';
 import {ChipsComponent} from './chips/chips.component';
 import {SliderComponent} from './slider/slider.component';
+import {SpinnerComponent} from './spinner/spinner.component';
 import {BadgeComponent} from './badge/badge.component';
 import {DatepickerComponent} from './datepicker/datepicker.component';
 import {DialogComponent} from './dialog/dialog.component';
@@ -63,6 +64,7 @@ import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 import {SlideToggleComponent} from './slide-toggle/slide-toggle.component';
 import {MenuComponent} from './menu/menu.component';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -80,6 +82,7 @@ const appRoutes: Routes = [
 	{path: 'progress-bar', component: ProgressBarComponent},
 	{path: 'slide-toggle', component: SlideToggleComponent},
 	{path: 'slider', component: SliderComponent},
+	{path: 'spinner', component: SpinnerComponent},
 	{path: 'stepper-horizontal', component: StepperHorizontalComponent},
 	{path: 'stepper-vertical', component: StepperVerticalComponent},
 	{path: 'table', component: TableComponent},
@@ -105,6 +108,7 @@ const appRoutes: Routes = [
 		ProgressBarComponent,
 		SliderComponent,
 		SlideToggleComponent,
+		SpinnerComponent,
 		StepperHorizontalComponent,
 		StepperVerticalComponent,
 		TableComponent,
@@ -132,6 +136,7 @@ const appRoutes: Routes = [
 		MatMenuModule,
 		MatOptionModule,
 		MatProgressBarModule,
+		MatProgressSpinnerModule,
 		MatRadioModule,
 		MatSelectModule,
 		MatSliderModule,
