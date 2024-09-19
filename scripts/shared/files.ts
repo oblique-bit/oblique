@@ -5,7 +5,7 @@ export class Files {
 	static readonly separator = path.sep;
 
 	static read(filePath: string): string {
-		return readFileSync(Files.buildOSPath(filePath)).toString('utf8');
+		return readFileSync(Files.buildOSSafePath(filePath)).toString('utf8');
 	}
 
 	static readJson<T>(filePath: string): T {
@@ -17,7 +17,7 @@ export class Files {
 	}
 
 	static write(filePath: string, content: string): void {
-		writeFileSync(Files.buildOSPath(filePath), content);
+		writeFileSync(Files.buildOSSafePath(filePath), content);
 	}
 
 	static writeJson(filePath: string, content: Record<string, unknown>): void {
@@ -25,19 +25,19 @@ export class Files {
 	}
 
 	static readDirectory(filePath: string): string[] {
-		return readdirSync(Files.buildOSPath(filePath));
+		return readdirSync(Files.buildOSSafePath(filePath));
 	}
 
 	static isDirectory(filePath: string): boolean {
-		return statSync(Files.buildOSPath(filePath)).isDirectory();
+		return statSync(Files.buildOSSafePath(filePath)).isDirectory();
 	}
 
 	static rename(oldPath: string, newPath: string): void {
-		renameSync(Files.buildOSPath(oldPath), Files.buildOSPath(newPath));
+		renameSync(Files.buildOSSafePath(oldPath), Files.buildOSSafePath(newPath));
 	}
 
 	static remove(filePath: string): void {
-		const target = Files.buildOSPath(filePath);
+		const target = Files.buildOSSafePath(filePath);
 		if (Files.isDirectory(target)) {
 			rmSync(target, {recursive: true});
 		} else {
@@ -46,17 +46,17 @@ export class Files {
 	}
 
 	static exists(filePath: string): boolean {
-		return existsSync(Files.buildOSPath(filePath));
+		return existsSync(Files.buildOSSafePath(filePath));
 	}
 
 	static copy(sourcePath: string, destinationPath: string): void {
-		const destination = Files.buildOSPath(destinationPath);
+		const destination = Files.buildOSSafePath(destinationPath);
 		mkdirSync(path.dirname(destination), {recursive: true});
-		copyFileSync(Files.buildOSPath(sourcePath), destination);
+		copyFileSync(Files.buildOSSafePath(sourcePath), destination);
 	}
 
 	static list(directory: string): string[] {
-		const directoryPath = Files.buildOSPath(directory);
+		const directoryPath = Files.buildOSSafePath(directory);
 		return Files.readDirectory(directory)
 			.map(fileName => path.join(directoryPath, fileName))
 			.reduce<string[]>(
@@ -66,11 +66,11 @@ export class Files {
 	}
 
 	static listDirectories(directory: string): string[] {
-		const directoryPath = Files.buildOSPath(directory);
+		const directoryPath = Files.buildOSSafePath(directory);
 		return Files.readDirectory(directory).map(fileName => path.join(directoryPath, fileName));
 	}
 
-	private static buildOSPath(filePath: string): string {
-		return path.join(...filePath.split('/'));
+	static buildOSSafePath(...filePaths: string[]): string {
+		return path.join(...filePaths.map(filePath => filePath.replace('/', path.sep).replace(`${path.sep}${path.sep}`, path.sep)));
 	}
 }
