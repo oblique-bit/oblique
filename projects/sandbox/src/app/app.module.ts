@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -58,13 +58,13 @@ registerLocaleData(localeDE);
 
 @NgModule({
 	declarations: [AppComponent, HomePageComponent],
+	bootstrap: [AppComponent],
 	imports: [
 		AppRoutingModule,
 		ObIconModule.forRoot(),
 		BrowserAnimationsModule,
 		BrowserModule,
 		FormsModule,
-		HttpClientModule,
 		MatButtonModule,
 		MatCardModule,
 		MatFormFieldModule,
@@ -97,9 +97,9 @@ registerLocaleData(localeDE);
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
 		{provide: OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, useValue: false},
-		provideMomentDateAdapter()
-	],
-	bootstrap: [AppComponent]
+		provideMomentDateAdapter(),
+		provideHttpClient(withInterceptorsFromDi())
+	]
 })
 export class AppModule {
 	constructor(

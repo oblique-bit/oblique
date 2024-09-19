@@ -65,6 +65,11 @@ export class Files {
 			);
 	}
 
+	static listDirectories(directory: string): string[] {
+		const directoryPath = Files.buildOSPath(directory);
+		return Files.readDirectory(directory).map(fileName => path.join(directoryPath, fileName));
+	}
+
 	private static buildOSPath(filePath: string): string {
 		return path.join(...filePath.split('/'));
 	}
