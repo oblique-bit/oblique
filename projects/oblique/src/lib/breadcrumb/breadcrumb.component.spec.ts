@@ -23,7 +23,7 @@ describe('ObBreadcrumbComponent', () => {
 	};
 
 	const translations = {
-		'test.translation-key-param': 'Translated Label with :param',
+		'test.translation-key-param': 'Translated Label with {{param}}',
 		'test.translation': 'Translated Label'
 	};
 
@@ -141,7 +141,7 @@ describe('ObBreadcrumbComponent', () => {
 					params: {'param-only': 'param-value-2'},
 					firstChild: createRoute({
 						path: 'path-with-label/:param',
-						label: 'Path with Label and the value :param',
+						label: 'Path with Label and the value {{param}}',
 						params: {param: 'My Value'},
 						firstChild: createRoute({
 							path: 'path-with-label/:param',
