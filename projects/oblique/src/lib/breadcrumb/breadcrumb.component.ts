@@ -87,27 +87,30 @@ export class ObBreadcrumbComponent implements OnInit {
 		const params = pathSplitter
 			.filter(text => text.startsWith(':'))
 			.map(text => ({key: text, val: route.snapshot.params[text.substring(1)]}));
-		const urlWithParamValues = this.applyParams(url, params);
+		const urlWithParamValues = this.applyParams(url, params, 'url');
 
 		if (label) {
-			if (label.startsWith('i18n')) {
-				const beautifiedParams = params.map(({key, val}) => ({key, val: this.beautify(val)}));
-				return this.translateService.get(label).pipe(
-					map(translatedLabel => this.applyParams(translatedLabel, beautifiedParams)),
-					switchMap(translatedLabel => next({label: translatedLabel, url: urlWithParamValues}))
-				);
-			}
-
-			const labelWithParamValues = this.beautify(this.applyParams(label, params));
-			return next({label: labelWithParamValues, url: urlWithParamValues});
+			const beautifiedParams = params.map(({key, val}) => ({key, val: this.beautify(val)}));
+			return this.translateService.get(label).pipe(
+				map(translatedLabel => this.applyParams(translatedLabel, beautifiedParams, 'i18n')),
+				switchMap(translatedLabel => next({label: translatedLabel, url: urlWithParamValues}))
+			);
 		}
 
-		const labelFromUrlWithParamValues = pathSplitter.map(text => this.beautify(this.applyParams(text, params))).join(this.separator);
+		const labelFromUrlWithParamValues = pathSplitter.map(text => this.beautify(this.applyParams(text, params, 'url'))).join(this.separator);
 		return next({label: labelFromUrlWithParamValues, url: urlWithParamValues});
 	}
 
-	private applyParams(source: string, params: {key: string; val: string}[]): string {
-		return params.reduce((text, {key, val}) => text.replace(key, val), source);
+	private replaceSyntax(pattern: 'url' | 'i18n', key: string): string {
+		if (pattern === 'url') {
+			return `:${key}`;
+		}
+
+		return `{{${key}}}`;
+	}
+
+	private applyParams(text: string, params: {key: string; val: string}[], pattern: 'url' | 'i18n'): string {
+		return params.reduce((str, {key, val}) => str.replace(this.replaceSyntax(pattern, key.substring(1)), val), text);
 	}
 
 	private beautify(path: string): string {
