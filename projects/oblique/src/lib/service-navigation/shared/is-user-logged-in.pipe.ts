@@ -9,6 +9,6 @@ export class ObIsUserLoggedInPipe implements PipeTransform {
 		if (loginState === 'S1') {
 			return isGuestAllowed;
 		}
-		return loginState.includes('OK');
+		return !!loginState?.includes('OK');
 	}
 }
