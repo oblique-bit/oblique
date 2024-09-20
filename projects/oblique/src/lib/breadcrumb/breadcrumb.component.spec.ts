@@ -22,8 +22,13 @@ describe('ObBreadcrumbComponent', () => {
 		maxWidth: '4ch'
 	};
 
+	const translations = {
+		'test.translation-key-param': 'Translated Label with :param',
+		'test.translation': 'Translated Label'
+	};
+
 	const translateServiceMock = {
-		get: jest.fn((key: string) => of(key.includes('param') ? 'Translated Label with :param' : 'Translated Label')),
+		get: jest.fn((key: string) => of(translations[key] ?? key)),
 		onLangChange: of({})
 	};
 
@@ -222,12 +227,12 @@ describe('ObBreadcrumbComponent', () => {
 		const dynamicRouteMock = {
 			root: createRoute({
 				path: 'path-with-no-label/:param',
-				label: 'i18n.translation-key-param',
+				label: 'test.translation-key-param',
 				params: {param: 'param-value-1'},
 				firstChild: createRoute({
 					path: ':param-only',
 					params: {'param-only': 'param-value-2'},
-					label: 'i18n.translation',
+					label: 'test.translation',
 					firstChild: createRoute({
 						path: 'placeholder'
 					})
@@ -281,7 +286,7 @@ describe('ObBreadcrumbComponent', () => {
 		const dynamicRouteMock = {
 			root: createRoute({
 				path: 'path-with-no-label/:param',
-				label: 'i18n.translation-key-param',
+				label: 'test.translation-key-param',
 				params: {param: 'param-value-1'},
 				firstChild: createRoute({
 					path: 'double/path',

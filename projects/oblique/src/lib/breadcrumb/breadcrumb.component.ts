@@ -90,16 +90,11 @@ export class ObBreadcrumbComponent implements OnInit {
 		const urlWithParamValues = this.applyParams(url, params);
 
 		if (label) {
-			if (label.startsWith('i18n')) {
-				const beautifiedParams = params.map(({key, val}) => ({key, val: this.beautify(val)}));
-				return this.translateService.get(label).pipe(
-					map(translatedLabel => this.applyParams(translatedLabel, beautifiedParams)),
-					switchMap(translatedLabel => next({label: translatedLabel, url: urlWithParamValues}))
-				);
-			}
-
-			const labelWithParamValues = this.beautify(this.applyParams(label, params));
-			return next({label: labelWithParamValues, url: urlWithParamValues});
+			const beautifiedParams = params.map(({key, val}) => ({key, val: this.beautify(val)}));
+			return this.translateService.get(label).pipe(
+				map(translatedLabel => this.applyParams(translatedLabel, beautifiedParams)),
+				switchMap(translatedLabel => next({label: translatedLabel, url: urlWithParamValues}))
+			);
 		}
 
 		const labelFromUrlWithParamValues = pathSplitter.map(text => this.beautify(this.applyParams(text, params))).join(this.separator);
