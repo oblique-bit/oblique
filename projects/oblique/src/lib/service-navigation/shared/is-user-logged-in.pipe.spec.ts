@@ -8,6 +8,14 @@ describe('IsUserLoggedInPipe', () => {
 	});
 
 	describe('transform', () => {
+		describe('Without loginState', () => {
+			describe.each([true, false])('With "%s" as isGuestAllowed', isGuestAllowed => {
+				it('should be falsy', () => {
+					expect(pipe.transform(undefined, isGuestAllowed)).toBe(false);
+				});
+			});
+		});
+
 		describe('With "SA" as loginState', () => {
 			describe.each([true, false])('With "%s" as isGuestAllowed', isGuestAllowed => {
 				it('should be false', () => {
