@@ -4,7 +4,6 @@ export interface ObIOptionsSchema {
 	environments: string;
 	eslint: boolean;
 	externalLink: boolean;
-	font: string;
 	httpInterceptors: boolean;
 	husky: boolean;
 	jenkins: string;
