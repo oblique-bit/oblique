@@ -24,8 +24,8 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addMainCSS(),
 			addAngularMaterialDependencies(),
 			addObliqueAssets(),
-			addFontStyle(options.font || 'none'),
-			addFontFiles(options.font || 'none'),
+			addFontStyle(),
+			addFontFiles(),
 			addLocales(options.locales.split(' ')),
 			raiseBuildBudget(),
 			addBrowserslistrcFile()
@@ -119,35 +119,31 @@ function addObliqueAssets(): Rule {
 	});
 }
 
-function addFontStyle(font: string): Rule {
+function addFontStyle(): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		if (font !== 'none') {
-			infoMigration(_context, 'Oblique: Adding font');
-			const styleSheet = `node_modules/@oblique/oblique/styles/css/${font}.css`;
-			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: string[]) => {
-				if (!config.includes(styleSheet)) {
-					config.splice(config.indexOf(obliqueCssPath) + 1, 0, styleSheet);
-				}
-				return config;
-			});
-		}
+		infoMigration(_context, 'Oblique: Adding font');
+		const styleSheet = `node_modules/@oblique/oblique/styles/css/roboto.css`;
+		setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: string[]) => {
+			if (!config.includes(styleSheet)) {
+				config.splice(config.indexOf(obliqueCssPath) + 1, 0, styleSheet);
+			}
+			return config;
+		});
 		return tree;
 	});
 }
 
-function addFontFiles(font: string): Rule {
+function addFontFiles(): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		if (font === 'roboto') {
-			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => {
-				config.splice(1, 0, {
-					glob: '*/**',
-					input: 'node_modules/@oblique/oblique/styles/fonts',
-					output: 'assets/fonts'
-				});
-				return config;
+		setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => {
+			config.splice(1, 0, {
+				glob: '*/**',
+				input: 'node_modules/@oblique/oblique/styles/fonts',
+				output: 'assets/fonts'
 			});
-		}
+			return config;
+		});
 		return tree;
 	});
 }
