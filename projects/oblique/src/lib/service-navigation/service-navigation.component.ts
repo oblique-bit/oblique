@@ -55,7 +55,7 @@ export class ObServiceNavigationComponent implements OnInit {
 	readonly loginUrl$ = this.headerControlsService.getLoginUrl$();
 	readonly loginState$ = this.headerControlsService.getLoginState$();
 	readonly userName$ = this.headerControlsService.getUserName$();
-	readonly settingsUrl$ = this.headerControlsService.getSettingsUrl$();
+	readonly profileUrls$ = this.headerControlsService.getProfileUrls$();
 	readonly avatarUrl$ = this.headerControlsService.getAvatarUrl$();
 	readonly inboxMailUrl$ = this.headerControlsService.getInboxMailUrl$();
 	readonly messageCount$ = this.headerControlsService.getMessageCount$();

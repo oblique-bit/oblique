@@ -145,5 +145,8 @@
   "i18n.oblique.service-navigation.profile.guest": "Guest",
   "i18n.oblique.service-navigation.profile.links.header": "Links",
   "i18n.oblique.service-navigation.profile.tooltip": "Click to toggle profile",
-  "i18n.oblique.service-navigation.profile.settings": "Settings"
+  "i18n.oblique.service-navigation.profile.my-profile": "My profile",
+  "i18n.oblique.service-navigation.profile.my-permissions": "My permissions",
+  "i18n.oblique.service-navigation.profile.my-push-notifications": "My push-notifications",
+  "i18n.oblique.service-navigation.profile.my-business-partnerships": "My business partnerships"
 }

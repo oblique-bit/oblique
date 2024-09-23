@@ -5,7 +5,7 @@ import {map, skip} from 'rxjs/operators';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
-import {ObEPamsEnvironment} from './service-navigation.model';
+import {ObEPamsEnvironment, ObISectionLink} from './service-navigation.model';
 import {ObIServiceNavigationState} from './api/service-navigation.api.model';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
@@ -114,7 +114,7 @@ describe('ObServiceNavigationService', () => {
 				describe.each([
 					'getLoginUrl$',
 					'getUserName$',
-					'getSettingsUrl$',
+					'getProfileUrls$',
 					'getAvatarUrl$',
 					'getInboxMailUrl$',
 					'getMessageCount$',
@@ -234,7 +234,7 @@ describe('ObServiceNavigationService', () => {
 							'getLoginUrl$',
 							'getLoginState$',
 							'getUserName$',
-							'getSettingsUrl$',
+							'getProfileUrls$',
 							'getAvatarUrl$',
 							'getInboxMailUrl$',
 							'getMessageCount$',
@@ -293,12 +293,57 @@ describe('ObServiceNavigationService', () => {
 						});
 
 						describe.each([
-							{method: 'getSettingsUrl$', url: 'http://settings'},
 							{method: 'getInboxMailUrl$', url: 'http://inboxMail'},
 							{method: 'getApplicationsUrl$', url: 'http://applications'}
 						])('$method', ({method, url}) => {
-							it(`should emit "${url}"`, async () => {
+							it(`should emit "${JSON.stringify(url)}"`, async () => {
 								await expect(firstValueFrom(service[method]())).resolves.toBe(url);
+							});
+						});
+
+						describe('getProfileUrls$', () => {
+							describe.each([
+								{
+									index: 0,
+									url: `http://applications/profile/details`,
+									label: 'i18n.oblique.service-navigation.profile.my-profile',
+									isInternalLink: true
+								},
+								{
+									index: 1,
+									url: `http://applications/profile/permissions`,
+									label: 'i18n.oblique.service-navigation.profile.my-permissions',
+									isInternalLink: true
+								},
+								{
+									index: 2,
+									url: `http://applications/profile/push-notifications`,
+									label: 'i18n.oblique.service-navigation.profile.my-push-notifications',
+									isInternalLink: true
+								},
+								{
+									index: 3,
+									url: `http://applications/profile/business-partnerships`,
+									label: 'i18n.oblique.service-navigation.profile.my-business-partnerships',
+									isInternalLink: true
+								}
+							])('Url number $index', expectedUrl => {
+								let urls: ObISectionLink[];
+								beforeEach(async () => {
+									urls = await firstValueFrom(service.getProfileUrls$());
+								});
+
+								it(`should contain url ${expectedUrl.url}`, () => {
+									expect(urls[expectedUrl.index].url).toBe(expectedUrl.url);
+								});
+
+								it(`should contain label ${expectedUrl.label}`, () => {
+									expect(urls[expectedUrl.index].label).toBe(expectedUrl.label);
+								});
+
+								it(`should  contain label ${expectedUrl.isInternalLink}`, () => {
+									expect(urls[expectedUrl.index].isInternalLink).toBe(expectedUrl.isInternalLink);
+								});
 							});
 						});
 

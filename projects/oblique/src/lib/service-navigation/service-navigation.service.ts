@@ -2,7 +2,7 @@ import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, ReplaySubject, share, switchMap} from 'rxjs';
 import {combineLatestWith, distinctUntilChanged, map, startWith, tap} from 'rxjs/operators';
-import {ObEPamsEnvironment, ObILanguage, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
+import {ObEPamsEnvironment, ObILanguage, ObISectionLink, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
 import {ObIServiceNavigationApplicationParsedInfo, ObIServiceNavigationState} from './api/service-navigation.api.model';
@@ -81,8 +81,26 @@ export class ObServiceNavigationService {
 		);
 	}
 
-	getSettingsUrl$(): Observable<string> {
-		return this.config$.pipe(map(config => config.settings.url));
+	getProfileUrls$(): Observable<ObISectionLink[]> {
+		return this.config$.pipe(
+			map((config): ObISectionLink[] => {
+				const base = config.allServices.url;
+				return [
+					{url: `${base}/profile/details`, label: 'i18n.oblique.service-navigation.profile.my-profile', isInternalLink: true},
+					{url: `${base}/profile/permissions`, label: 'i18n.oblique.service-navigation.profile.my-permissions', isInternalLink: true},
+					{
+						url: `${base}/profile/push-notifications`,
+						label: 'i18n.oblique.service-navigation.profile.my-push-notifications',
+						isInternalLink: true
+					},
+					{
+						url: `${base}/profile/business-partnerships`,
+						label: 'i18n.oblique.service-navigation.profile.my-business-partnerships',
+						isInternalLink: true
+					}
+				];
+			})
+		);
 	}
 
 	getAvatarUrl$(): Observable<string> {
