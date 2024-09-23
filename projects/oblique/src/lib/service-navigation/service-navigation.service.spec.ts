@@ -147,9 +147,14 @@ describe('ObServiceNavigationService', () => {
 						expect(service.getLoginState$() instanceof Observable).toBe(true);
 					});
 
-					it(`should emit "SA"`, async () => {
-						await expect(firstValueFrom(service.getLoginState$())).resolves.toBe('SA');
-					});
+					it('should not emit', fakeAsync(() => {
+						let hasEmitted = false;
+						service.getLoginState$().subscribe(() => {
+							hasEmitted = true;
+						});
+						tick(1000);
+						expect(hasEmitted).toBe(false);
+					}));
 
 					describe('ObServiceNavigationConfigService.fetchUrls', () => {
 						it('should not have been called', () => {
@@ -313,7 +318,7 @@ describe('ObServiceNavigationService', () => {
 						describe('getLoginState$', () => {
 							describe.each(['S1', 'S2OK', 'S2+OK', 'S3OK', 'S3+OK'])('with "%s"', loginState => {
 								it(`should emit "${loginState}"`, async () => {
-									const promise = firstValueFrom(service.getLoginState$().pipe(skip(1)));
+									const promise = firstValueFrom(service.getLoginState$());
 									mockStateChange.next({loginState} as ObIServiceNavigationState);
 									await expect(promise).resolves.toEqual(loginState);
 								});
@@ -431,8 +436,8 @@ describe('ObServiceNavigationService', () => {
 			{inputs: ['SA', 'SA'], emitTimes: 1},
 			{inputs: ['SA', 'S2OK'], emitTimes: 2},
 			{inputs: ['SA', 'S2OK', 'S2OK'], emitTimes: 2},
-			{inputs: ['S2OK'], emitTimes: 2},
-			{inputs: ['S2OK', 'SA'], emitTimes: 3}
+			{inputs: ['S2OK'], emitTimes: 1},
+			{inputs: ['S2OK', 'SA'], emitTimes: 2}
 		])('getLoginState$', ({inputs, emitTimes}) => {
 			const mockStateChangeDuplicate = new Subject();
 			beforeEach(() => {

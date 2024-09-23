@@ -1,4 +1,4 @@
-import {Component, ContentChildren, Input, OnInit, Output, QueryList, ViewEncapsulation} from '@angular/core';
+import {Component, ContentChildren, Input, OnInit, Output, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObEPamsEnvironment, ObIServiceNavigationContact, ObIServiceNavigationLink, ObLoginState} from './service-navigation.model';
@@ -51,7 +51,7 @@ export class ObServiceNavigationComponent implements OnInit {
 	@Output()
 	readonly loginState: Observable<ObLoginState> = this.headerControlsService.getLoginState$();
 	@Output() readonly logoutTriggered = this.headerControlsService.getLogoutTrigger$();
-	@ContentChildren('customWidgetTemplate') customWidgetTemplate: QueryList<unknown>;
+	@ContentChildren('customWidgetTemplate') customWidgetTemplate: QueryList<TemplateRef<unknown>>;
 	readonly loginUrl$ = this.headerControlsService.getLoginUrl$();
 	readonly loginState$ = this.headerControlsService.getLoginState$();
 	readonly userName$ = this.headerControlsService.getUserName$();
