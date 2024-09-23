@@ -2,6 +2,7 @@ import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {addDependency, checkPrecondition, getPreconditionVersion} from './ng-add-utils';
 import {ObIOptionsSchema} from './ng-add.model';
 import {
+	checkForMultiProject,
 	checkForSSR,
 	checkForStandalone,
 	createSafeRule,
@@ -20,6 +21,7 @@ export function addOblique(_options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
 			checkForStandalone(),
+			checkForMultiProject(),
 			checkForSSR(),
 			preconditions(),
 			oblique(_options),
