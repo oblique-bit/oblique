@@ -106,7 +106,6 @@ export class ObServiceNavigationService {
 	getLoginState$(): Observable<ObLoginState> {
 		return this.getState$().pipe(
 			map(state => state.loginState),
-			startWith('SA' as ObLoginState),
 			distinctUntilChanged((previousState, newState) => previousState === newState)
 		);
 	}
