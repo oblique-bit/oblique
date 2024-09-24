@@ -1,4 +1,5 @@
 @use "../../styles/scss/core/variables";
+@use "../../styles/scss/core/mixins/layout";
 
 :host {
 	background-color: variables.$active;
@@ -14,5 +15,9 @@
 
 	a {
 		color: white;
+	}
+	@include layout.ob-media-breakpoint-down(md) {
+		font-size: 11px;
+		line-height: 13px;
 	}
 }
