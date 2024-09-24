@@ -16,7 +16,7 @@ import {BannerComponent} from './banner/banner.component';
 })
 export class AppComponent {
 	@HostBinding('class.has-opened-mobile-navigation') showMobileNavigation = false;
-	@HostBinding('class.has-banner') hasBanner = true;
+	@HostBinding('class.has-banner') hasBanner = false;
 
 	constructor() {
 		const translate = inject(TranslateService);
