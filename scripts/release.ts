@@ -9,6 +9,7 @@ class Release extends StaticScript {
 		Log.start('Release');
 		const {version, issue} = Release.parseBranchName();
 		executeCommandWithLog(`npm version ${version}`, 'Bump version');
+		Release.updateJenkinsFile(version);
 		Release.updateCopyrightDate();
 		executeCommand(`npm run release -ws`);
 		Git.commit(`chore(toolchain): release version ${version}`, issue);
@@ -29,6 +30,16 @@ class Release extends StaticScript {
 	private static updateCopyrightDate(): void {
 		Log.info(`Update copyright date in LICENSE`);
 		Files.overwrite('LICENSE', content => content.replace(/(?!2020-)\d{4}/, new Date().getFullYear().toString()));
+	}
+
+	private static updateJenkinsFile(version: string): void {
+		if (version.includes('-')) {
+			Log.info('Adding publish instruction to JenkinsFile');
+			const branchName = Git.getCurrentBranchName();
+			Files.overwrite('Jenkinsfile', content =>
+				content.replace(/(?=master)/, `'${branchName}': [\n\t\t\tpublish: ['./dist/oblique'],\n\t\t\tgitTag: true\n\t\t],\n\t\t`)
+			);
+		}
 	}
 }
 
