@@ -4,6 +4,16 @@
 
 - **material:** add mat-spinner example ([c508ee50](https://github.com/oblique-bit/oblique/commit/c508ee501139bd13a155cbfc4fda1cdb1115671a))
 
+# [12.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/11.3.3...12.0.0-rc.1) (2024-09-26)
+
+## Features
+
+- **language:** remove setLocaleOnAdapter() uses ([50a065d9](https://github.com/oblique-bit/oblique/commit/50a065d9f84197b2426c347ed36bb70167a7e12b))
+- **master-layout:** add examples skiplinks to demo warning logs ([b5b91213](https://github.com/oblique-bit/oblique/commit/b5b912132284fd004b653e2def9b40b573001a7a))
+- **master-layout:** add skip link to the "Blick" link in the footer ([c34f435f](https://github.com/oblique-bit/oblique/commit/c34f435ff0904722af2c2e48fba7ce69fc79a510))
+- **material:** move buttons in table header from `th` to `td` ([1b493fe1](https://github.com/oblique-bit/oblique/commit/1b493fe116094869c19a75c7d2138ecb1e6eedd8))
+- **popover:** add example for visibility change property ([18c8ce0f](https://github.com/oblique-bit/oblique/commit/18c8ce0f4136fe3e6b113a9be14b667fce078df5))
+
 # [11.3.3](https://github.com/oblique-bit/oblique/compare/11.3.2...11.3.3) (2024-08-30)
 
 ## Bug Fixes
