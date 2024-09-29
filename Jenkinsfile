@@ -39,9 +39,6 @@ nodejsPipelineTemplate {
 				['project': 'sandbox', 'space': 'patch']
 			]
 		],
-		'feature/OUI-3308-release-oblique-12.0.0-rc.1': [
-			publish: ['./dist/oblique']
-		],
 		master: [
 			'publish': [
 				'./dist/oblique',
