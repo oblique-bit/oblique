@@ -244,6 +244,14 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 		return this.selectables.filter(item => item.selected);
 	}
 
-	private onChange: (value: T[]) => void = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
-	private onTouched: () => void = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
+	private onChange: (value: T[]) => void = () => {
+		// in a form, this function will be overridden by the one provided by registerOnChange
+		// outside a form, this function remains empty
+		// this commend is necessary so that neither EsLint nor Sonar report an issue
+	};
+	private onTouched: () => void = () => {
+		// in a form, this function will be overridden by the one provided by registerOnTouched
+		// outside a form, this function remains empty
+		// this commend is necessary so that neither EsLint nor Sonar report an issue
+	};
 }
