@@ -15,7 +15,7 @@ class Tarball extends StaticScript {
 		executeCommandWithLog('npm run build', 'Build Oblique');
 		Log.info('Pack Oblique');
 		const data = getResultFromCommand('npm pack', {cwd: Files.buildOSSafePath('../../dist/oblique')});
-		return /oblique-oblique-\d+\.\d+\.\d+(?:-(?:alpha|beta|RC)\.\d+)?\.tgz/.exec(data)[0];
+		return /oblique-oblique-\d+\.\d+\.\d+(?:-(?:alpha|beta|rc)\.\d+)?\.tgz/.exec(data)[0];
 	}
 
 	private static installInProject(targetProject: string, tarball: string): void {
