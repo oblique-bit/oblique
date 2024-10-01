@@ -1,3 +1,9 @@
+# [11.3.4](https://github.com/oblique-bit/oblique/compare/11.3.3...11.3.4) (2024-10-01)
+
+## Features
+
+- **material:** add mat-spinner example ([c508ee50](https://github.com/oblique-bit/oblique/commit/c508ee501139bd13a155cbfc4fda1cdb1115671a))
+
 # [11.3.3](https://github.com/oblique-bit/oblique/compare/11.3.2...11.3.3) (2024-08-30)
 
 ## Bug Fixes

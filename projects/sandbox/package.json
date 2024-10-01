@@ -1,6 +1,6 @@
 {
   "name": "sandbox",
-  "version": "11.3.3",
+  "version": "11.3.4",
   "scripts": {
     "start": "ng serve",
     "start-pams": "ng serve --configuration pams",
