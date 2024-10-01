@@ -1,3 +1,11 @@
+# [11.3.4](https://github.com/oblique-bit/oblique/compare/11.3.3...11.3.4) (2024-10-01)
+
+## Bug Fixes
+
+- **breadcrumb:** use regular params interpolation for translations ([6525aab7](https://github.com/oblique-bit/oblique/commit/6525aab7b5c312b5584a0bd29a7eafe8382775ad))
+- **breadcrumb:** do not force translation keys to start with i18n prefix ([ea251657](https://github.com/oblique-bit/oblique/commit/ea251657846ca6731e6ac51a68f2b30f1d446ecc))
+- **styles:** add theme styling for mat-spinner ([97d8c5db](https://github.com/oblique-bit/oblique/commit/97d8c5db419009ac390cf667361dde302f7c88e3))
+
 # [11.3.3](https://github.com/oblique-bit/oblique/compare/11.3.2...11.3.3) (2024-08-30)
 
 ## Bug Fixes

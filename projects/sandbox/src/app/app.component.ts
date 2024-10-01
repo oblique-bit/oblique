@@ -178,6 +178,7 @@ export class AppComponent implements OnDestroy {
 				{url: 'progress-bar', label: 'Progress bar'},
 				{url: 'slide-toggle', label: 'Slide Toggle'},
 				{url: 'slider', label: 'Slider'},
+				{url: 'spinner', label: 'Spinner'},
 				{url: 'stepper-horizontal', label: 'Stepper horizontal'},
 				{url: 'stepper-vertical', label: 'Stepper vertical'},
 				{url: 'table', label: 'Table'},
