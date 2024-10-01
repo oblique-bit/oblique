@@ -38,7 +38,7 @@
     "rxjs": "^7.0.0"
   },
   "dependencies": {
-    "@angular-eslint/schematics": "^17.5.2",
+    "@angular-eslint/schematics": "^17.5.3",
     "@angular/cdk": "^17.0.0 || ^18.0.0",
     "@schematics/angular": "^17.0.5",
     "ansi-colors": "^4.1.3",
