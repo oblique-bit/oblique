@@ -61,6 +61,7 @@ $theme-tabs: (
 @include mat.menu-theme(mat.m2-define-light-theme($theme));
 @include mat.paginator-theme(mat.m2-define-light-theme($theme));
 @include mat.progress-bar-theme(mat.m2-define-light-theme($theme-alt-500));
+@include mat.progress-spinner-theme(mat.m2-define-light-theme($theme));
 @include mat.radio-theme(mat.m2-define-light-theme($theme));
 @include mat.ripple-theme(mat.m2-define-light-theme($theme));
 @include mat.slide-toggle-theme(mat.m2-define-light-theme($theme-slide-toggle));
