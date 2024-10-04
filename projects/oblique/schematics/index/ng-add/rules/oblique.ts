@@ -23,6 +23,7 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addFeatureDetection(),
 			addMainCSS(),
 			addAngularMaterialDependencies(),
+			addLocalAssets(),
 			addObliqueAssets(),
 			addFontStyle(),
 			addFontFiles(),
@@ -102,6 +103,13 @@ function addAngularMaterialDependencies(): Rule {
 		addDependency(tree, '@angular/cdk');
 		addDependency(tree, '@angular/material');
 		return tree;
+	});
+}
+
+function addLocalAssets(): Rule {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		infoMigration(_context, 'Oblique: Adding local assets');
+		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => ['src/assets', ...config]);
 	});
 }
 

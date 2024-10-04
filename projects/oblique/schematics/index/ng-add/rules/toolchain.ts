@@ -70,9 +70,9 @@ function addNpmrc(add: boolean): Rule {
 function removeFavicon(): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, "Toolchain: Removing Angular's favicon");
-		deleteFile(tree, 'src/favicon.ico');
-		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) =>
-			(config || []).filter((conf: string) => !conf.indexOf || !conf.includes('favicon'))
+		deleteFile(tree, 'public/favicon.ico');
+		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: (string | Record<string, string>)[]) =>
+			(config || []).filter(item => typeof item === 'string' || JSON.stringify(item) !== '{"glob":"**/*","input":"public"}')
 		);
 	});
 }
