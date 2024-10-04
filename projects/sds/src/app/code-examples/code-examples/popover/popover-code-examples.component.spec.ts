@@ -5,7 +5,6 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 import {WINDOW} from '@oblique/oblique';
 import {By} from '@angular/platform-browser';
 import {PopoverCodeExamplesComponent} from './popover-code-examples.component';
-import {PopoverExampleEventsPreviewComponent} from './previews/events/popover-example-events-preview.component';
 import {PopoverExampleOtherOptionsPreviewComponent} from './previews/other-options/popover-example-other-options-preview.component';
 import {PopoverExampleDefaultPreviewComponent} from './previews/default/popover-example-default-preview.component';
 
@@ -29,7 +28,7 @@ describe(PopoverCodeExamplesComponent.name, () => {
 	});
 
 	test(`that there are 3 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(3);
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
 	});
 
 	test(`that there is 1 ${PopoverExampleDefaultPreviewComponent.name}`, () => {
@@ -38,9 +37,5 @@ describe(PopoverCodeExamplesComponent.name, () => {
 
 	test(`that there is 1 ${PopoverExampleOtherOptionsPreviewComponent.name}`, () => {
 		expect(fixture.debugElement.queryAll(By.directive(PopoverExampleOtherOptionsPreviewComponent)).length).toBe(1);
-	});
-
-	test(`that there is 1 ${PopoverExampleEventsPreviewComponent.name}`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(PopoverExampleEventsPreviewComponent)).length).toBe(1);
 	});
 });

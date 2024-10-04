@@ -5,7 +5,6 @@ import {CommonModule} from '@angular/common';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {PopoverExampleDefaultPreviewComponent} from './previews/default/popover-example-default-preview.component';
 import {PopoverExampleOtherOptionsPreviewComponent} from './previews/other-options/popover-example-other-options-preview.component';
-import {PopoverExampleEventsPreviewComponent} from './previews/events/popover-example-events-preview.component';
 
 @Component({
 	selector: 'app-code-example-popover',
@@ -35,16 +34,6 @@ export class PopoverCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('popover', 'other-options/popover-example-other-options-preview.component.ts', 'TS'),
 				this.getSnippet('popover', 'other-options/popover-example-other-options-preview.component.scss', 'SCSS'),
 				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
-		},
-		{
-			component: PopoverExampleEventsPreviewComponent,
-			idParts: ['events'],
-			title: 'Events',
-			snippets: [
-				this.getSnippet('popover', 'events/popover-example-events-preview.component.html', 'HTML'),
-				this.getSnippet('popover', 'events/popover-example-events-preview.component.ts', 'TS'),
-				this.getSnippet('popover', 'events/popover-example-events-preview.component.scss', 'SCSS')
 			]
 		}
 	];
