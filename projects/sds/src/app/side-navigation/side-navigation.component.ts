@@ -1,9 +1,11 @@
 import {Component, EventEmitter, Output, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, NavigationExtras, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatIcon} from '@angular/material/icon';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {skip} from 'rxjs/operators';
 import {CmsDataService} from '../cms/cms-data.service';
 import {BehaviorSubject, Observable, combineLatestWith, debounceTime, filter, forkJoin, map, of, startWith, switchMap, tap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
@@ -56,6 +58,7 @@ export class SideNavigationComponent {
 		this.urlParamVersion$ = this.prepareUrlParams();
 		this.selectedSlug$ = this.prepareSelectedSlug();
 		this.filteredAccordions$ = this.prepareAccordions();
+		this.redirectOnVersionChange();
 	}
 
 	updateVersion(version?: number): void {
@@ -161,5 +164,42 @@ export class SideNavigationComponent {
 
 	private getVersionFromUrlParam(activatedRoute?: ActivatedRoute): number | undefined {
 		return +activatedRoute.snapshot.queryParamMap.get('version') || undefined;
+	}
+
+	private redirectOnVersionChange(): void {
+		this.version$
+			.pipe(
+				skip(3),
+				combineLatestWith(this.selectedSlug$),
+				takeUntilDestroyed(),
+				map(([version, slug]) => this.getNewSlug(version, slug)),
+				filter(slug => !!slug)
+			)
+			.subscribe(slug => {
+				const extras: NavigationExtras = {queryParamsHandling: 'preserve', preserveFragment: true};
+				if (slug.startsWith('welcome')) {
+					void this.router.navigate(['introductions', slug], extras);
+				} else {
+					void this.router.navigate(['..', slug], {...extras, relativeTo: this.activatedRoute.children[0]});
+				}
+			});
+	}
+
+	private getNewSlug(version: number, slug: string): string | undefined {
+		if (slug === 'welcome-10' && version !== 10) {
+			return 'welcome';
+		}
+
+		switch (version) {
+			case 10:
+				return 'welcome-10';
+			case 11:
+				return ['master-layout-12', 'popover-12'].includes(slug) ? slug.replace('-12', '') : undefined;
+			case 12:
+				if (slug === 'language') return 'welcome';
+				return ['master-layout', 'popover'].includes(slug) ? `${slug}-12` : undefined;
+			default:
+				return undefined;
+		}
 	}
 }
