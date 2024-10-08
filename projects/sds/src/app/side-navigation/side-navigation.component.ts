@@ -17,6 +17,7 @@ import {CommonModule} from '@angular/common';
 import {AccordionLinksComponent} from './accordion-links/accordion-links.component';
 import {VersionComponent} from './version/version.component';
 import {ImageComponent} from './image/image.component';
+import {VersionService} from '../shared/version/version.service';
 
 @Component({
 	selector: 'app-side-navigation',
@@ -53,6 +54,7 @@ export class SideNavigationComponent {
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
 	private readonly slugToIdService = inject(SlugToIdService);
+	private readonly versionService = inject(VersionService);
 
 	constructor() {
 		this.urlParamVersion$ = this.prepareUrlParams();
@@ -63,6 +65,7 @@ export class SideNavigationComponent {
 
 	updateVersion(version?: number): void {
 		this.version$.next(version);
+		this.versionService.setCurrentVersion(version);
 	}
 
 	toggleMobileNavigation(): void {

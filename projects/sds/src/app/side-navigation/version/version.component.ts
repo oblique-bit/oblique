@@ -13,6 +13,7 @@ import {latest} from '../../../obliqueVersion';
 import {VersionOption} from './version.model';
 import {ObSelectDirective} from '@oblique/oblique';
 import {URL_CONST} from '../../shared/url/url.const';
+import {VersionService} from '../../shared/version/version.service';
 
 @Component({
 	selector: 'app-version',
@@ -33,6 +34,7 @@ export class VersionComponent implements OnChanges {
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly activatedRoute = inject(ActivatedRoute);
 	private readonly router = inject(Router);
+	private readonly versionService = inject(VersionService);
 
 	constructor() {
 		this.versionChanged = this.selectedVersion.valueChanges;
@@ -54,6 +56,7 @@ export class VersionComponent implements OnChanges {
 			filter(event => event instanceof NavigationEnd),
 			first(),
 			switchMap(() => this.cmsDataService.getVersions()),
+			tap(versionCms => this.versionService.setCmsData(versionCms.data)),
 			map(versionCms => this.mapCmsData(versionCms.data)),
 			tap(versions => this.selectedVersion.setValue(this.getVersion(versions)))
 		);
