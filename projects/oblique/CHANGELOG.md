@@ -1,34 +1,28 @@
-# [11.3.4](https://github.com/oblique-bit/oblique/compare/11.3.3...11.3.4) (2024-10-01)
+# [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
 
 ## Bug Fixes
 
-- **breadcrumb:** use regular params interpolation for translations ([6525aab7](https://github.com/oblique-bit/oblique/commit/6525aab7b5c312b5584a0bd29a7eafe8382775ad))
-- **breadcrumb:** do not force translation keys to start with i18n prefix ([ea251657](https://github.com/oblique-bit/oblique/commit/ea251657846ca6731e6ac51a68f2b30f1d446ecc))
-- **styles:** add theme styling for mat-spinner ([97d8c5db](https://github.com/oblique-bit/oblique/commit/97d8c5db419009ac390cf667361dde302f7c88e3))
-
-# [12.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/11.3.3...12.0.0-rc.1) (2024-09-26)
-
-## Bug Fixes
-
-- **popover:** styles overflowing popover ([30cb0522](https://github.com/oblique-bit/oblique/commit/30cb0522eafe4577bd69b6fc2d3da049bdf41ff2))
-- **service-navigation:** adjust styling of application popover content ([54d3f1d0](https://github.com/oblique-bit/oblique/commit/54d3f1d00bc93375c74659cbf8574cb2496ff15d))
+- **popover:** styles overflowing popover ([056593a7](https://github.com/oblique-bit/oblique/commit/056593a7d46ae54b78679c3f432099ea93c5752e))
+- **schematics:** ng-add correctly removes default Angular favicon ([01092cd9](https://github.com/oblique-bit/oblique/commit/01092cd9719c8d101bcfa0517515ca5d78929a10))
+- **schematics:** ng-add add `src/assets` entry to Angular.json's assets configuration ([78a32a03](https://github.com/oblique-bit/oblique/commit/78a32a03abfd1339f11f47e4a1d197c49451f55d))
+- **service-navigation:** adjust styling of application popover content ([da51c286](https://github.com/oblique-bit/oblique/commit/da51c28613575d613abd3dc83519392d3e6aab22))
+- **styles:** add theme styling for mat-spinner ([a1366fe5](https://github.com/oblique-bit/oblique/commit/a1366fe5801bf9dfa569d77403953e89ab23f60a))
 
 ## Features
 
-- **language:** remove `ObLanguageService` ([c16f95fa](https://github.com/oblique-bit/oblique/commit/c16f95fa63b35b3a8d147a70a61f196b58bb2782))
-- **master-layout:** make master layout logs when skiplink fragments are not focusable ([d6298269](https://github.com/oblique-bit/oblique/commit/d6298269f1dfa8f3edbb76655694fb11e024b465))
-- **master-layout:** focus `H1` instead of `main` ([66fe2206](https://github.com/oblique-bit/oblique/commit/66fe22069a27d4dc75f5c3e19119b47922944791))
-- **master-layout:** focus `#content` when back to top button is clicked ([352fc149](https://github.com/oblique-bit/oblique/commit/352fc149cdaa42c4f6658673b2c449e3f0cbf8c6))
-- **popover:** add visibility change property ([ca8e023a](https://github.com/oblique-bit/oblique/commit/ca8e023acfb00d1167c66b686d3626e587bab210))
-- **schematics:** add check for multi-project applications ([b68c7947](https://github.com/oblique-bit/oblique/commit/b68c79476c6e47e35f22dd50e49fe0deb300be7e))
-- **schematics:** remove Frutiger font from ng-add schematics ([b36b34ba](https://github.com/oblique-bit/oblique/commit/b36b34baf4feb42977e49f64165d815bcf812bc8))
-- **schematics:** add migration schematics for V12 ([c2fa0f7f](https://github.com/oblique-bit/oblique/commit/c2fa0f7ffa2a13bb1223cfd1cb0eb06313c6fa7c))
-- **scrolling:** top control only scrolls if a `scrollTarget` is provided ([6f284c3a](https://github.com/oblique-bit/oblique/commit/6f284c3aa0e3248fd32b377196ba660106ac3ab5))
-- **scrolling:** emit an event when the back to top button is clicked ([9e23b570](https://github.com/oblique-bit/oblique/commit/9e23b570962686a04517ad92db908cd924534c57))
-- **service-navigation:** don't show the authentication widget until `loginState` is known ([8c92513a](https://github.com/oblique-bit/oblique/commit/8c92513ac2e969261dc11cfd4173f417df42a01a))
-- **service-navigation:** `loginState` only emits once the server responded ([be6af27f](https://github.com/oblique-bit/oblique/commit/be6af27fc201b8e34b512562a8f364c94995b21a))
-- **service-navigation:** throw error in case of missing `pamsAppId` ([5fde17ff](https://github.com/oblique-bit/oblique/commit/5fde17ffc6ee0c782d8660de3756ed1eec2b284c))
-- **translation:** improve italian translations ([234beed5](https://github.com/oblique-bit/oblique/commit/234beed5b25f80bd64a2f68190d32b6f5b210797))
+- **language:** remove `ObLanguageService` ([c055990a](https://github.com/oblique-bit/oblique/commit/c055990aa45148648c3c43fb3da6ea49d75c8908))
+- **master-layout:** make master layout logs when skiplink fragments are not focusable ([b7d3baed](https://github.com/oblique-bit/oblique/commit/b7d3baed833b1e120620542d7957873b360ff8fc))
+- **master-layout:** focus `H1` instead of `main` ([86faf85e](https://github.com/oblique-bit/oblique/commit/86faf85e565433a648fe1230f0a9cad8c087e846))
+- **master-layout:** focus `#content` when back to top button is clicked ([377d6f9f](https://github.com/oblique-bit/oblique/commit/377d6f9fbeff1a3a20a65b9ba473bf81fe99d4ea))
+- **popover:** add visibility change property ([49e93f9d](https://github.com/oblique-bit/oblique/commit/49e93f9d70d4412bf0654dbd902a072dc02ea157))
+- **schematics:** add check for multi-project applications ([7df624b1](https://github.com/oblique-bit/oblique/commit/7df624b1d2b85b1c0e2b09612a96b882fc64391b))
+- **schematics:** remove Frutiger font from ng-add schematics ([f3fadc46](https://github.com/oblique-bit/oblique/commit/f3fadc46bd057f1fa6b0ea30dffcf402c5f5131e))
+- **scrolling:** top control only scrolls if a `scrollTarget` is provided ([f2dc4536](https://github.com/oblique-bit/oblique/commit/f2dc4536c9ea4bf606eefab931d83f1c846be88b))
+- **scrolling:** emit an event when the back to top button is clicked ([2f6dc766](https://github.com/oblique-bit/oblique/commit/2f6dc766a656d3949dc11a602b5fd071b010cf3b))
+- **service-navigation:** don't show the authentication widget until `loginState` is known ([7e3f9ce6](https://github.com/oblique-bit/oblique/commit/7e3f9ce606e511e0a101f7c6f7a9362e9f54fdaa))
+- **service-navigation:** `loginState` only emits once the server responded ([0a194f36](https://github.com/oblique-bit/oblique/commit/0a194f36694d0f6ac744676bb2f9370842193ac0))
+- **service-navigation:** throw error in case of missing `pamsAppId` ([848f71a6](https://github.com/oblique-bit/oblique/commit/848f71a6eb4cf2d961aaaf110167e9b97f8d8d2f))
+- **translation:** improve italian translations ([2d4a2ffe](https://github.com/oblique-bit/oblique/commit/2d4a2ffeeaf89dcdb571642dc63f53083dfebda0))
 
 ## BREAKING CHANGES
 
@@ -36,6 +30,14 @@
 - **scrolling:** `ObTopControlComponent` don't fall back on `window` if no `scrollTarget` is provided. If yourelied on this behavior, you need to explicitly provide `window` to `scrollTarget`.
 - **service-navigation:** `loginState` doesn't emit `SA` on startup anymore. Instead, it only emits once it's value is known
 - **service-navigation:** The application now throws an error if no `pamsAppId` is provided
+
+# [11.3.4](https://github.com/oblique-bit/oblique/compare/11.3.3...11.3.4) (2024-10-01)
+
+## Bug Fixes
+
+- **breadcrumb:** use regular params interpolation for translations ([6525aab7](https://github.com/oblique-bit/oblique/commit/6525aab7b5c312b5584a0bd29a7eafe8382775ad))
+- **breadcrumb:** do not force translation keys to start with i18n prefix ([ea251657](https://github.com/oblique-bit/oblique/commit/ea251657846ca6731e6ac51a68f2b30f1d446ecc))
+- **styles:** add theme styling for mat-spinner ([97d8c5db](https://github.com/oblique-bit/oblique/commit/97d8c5db419009ac390cf667361dde302f7c88e3))
 
 # [11.3.3](https://github.com/oblique-bit/oblique/compare/11.3.2...11.3.3) (2024-08-30)
 

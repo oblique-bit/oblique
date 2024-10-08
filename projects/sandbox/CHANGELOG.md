@@ -1,18 +1,18 @@
+# [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
+
+## Features
+
+- **language:** remove setLocaleOnAdapter() uses ([20d0cb4c](https://github.com/oblique-bit/oblique/commit/20d0cb4cad2ee781ed20f5ca44abbfcc682ab278))
+- **master-layout:** add examples skiplinks to demo warning logs ([9208ad79](https://github.com/oblique-bit/oblique/commit/9208ad79554d020fbb7916ed4940c25a9b2e1aa7))
+- **master-layout:** add skip link to the "Blick" link in the footer ([b7172fce](https://github.com/oblique-bit/oblique/commit/b7172fcefe791765da22543a7add33e4a1e5d980))
+- **material:** move buttons in table header from `th` to `td` ([e001fdff](https://github.com/oblique-bit/oblique/commit/e001fdff36d3dc33df4863044f28663134ff3890))
+- **popover:** add example for visibility change property ([0cd92bc5](https://github.com/oblique-bit/oblique/commit/0cd92bc518aad719b594f199f3df201842756ab4))
+
 # [11.3.4](https://github.com/oblique-bit/oblique/compare/11.3.3...11.3.4) (2024-10-01)
 
 ## Features
 
 - **material:** add mat-spinner example ([c508ee50](https://github.com/oblique-bit/oblique/commit/c508ee501139bd13a155cbfc4fda1cdb1115671a))
-
-# [12.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/11.3.3...12.0.0-rc.1) (2024-09-26)
-
-## Features
-
-- **language:** remove setLocaleOnAdapter() uses ([50a065d9](https://github.com/oblique-bit/oblique/commit/50a065d9f84197b2426c347ed36bb70167a7e12b))
-- **master-layout:** add examples skiplinks to demo warning logs ([b5b91213](https://github.com/oblique-bit/oblique/commit/b5b912132284fd004b653e2def9b40b573001a7a))
-- **master-layout:** add skip link to the "Blick" link in the footer ([c34f435f](https://github.com/oblique-bit/oblique/commit/c34f435ff0904722af2c2e48fba7ce69fc79a510))
-- **material:** move buttons in table header from `th` to `td` ([1b493fe1](https://github.com/oblique-bit/oblique/commit/1b493fe116094869c19a75c7d2138ecb1e6eedd8))
-- **popover:** add example for visibility change property ([18c8ce0f](https://github.com/oblique-bit/oblique/commit/18c8ce0f4136fe3e6b113a9be14b667fce078df5))
 
 # [11.3.3](https://github.com/oblique-bit/oblique/compare/11.3.2...11.3.3) (2024-08-30)
 

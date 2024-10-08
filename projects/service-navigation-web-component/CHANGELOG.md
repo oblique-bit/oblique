@@ -1,16 +1,16 @@
-# [12.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/11.3.3...12.0.0-rc.1) (2024-09-26)
+# [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
 
 ## Bug Fixes
 
-- **service-navigation:** adjust styling of application popover content ([54d3f1d0](https://github.com/oblique-bit/oblique/commit/54d3f1d00bc93375c74659cbf8574cb2496ff15d))
+- **service-navigation:** adjust styling of application popover content ([da51c286](https://github.com/oblique-bit/oblique/commit/da51c28613575d613abd3dc83519392d3e6aab22))
 
 ## Features
 
-- **sample:** add language input property ([d4ceed3b](https://github.com/oblique-bit/oblique/commit/d4ceed3bab1d49b50d0e38e7b60a31a84dc31464))
-- **service-navigation:** don't show the authentication widget until `loginState` is known ([8c92513a](https://github.com/oblique-bit/oblique/commit/8c92513ac2e969261dc11cfd4173f417df42a01a))
-- **service-navigation:** `loginState` only emits once the server responded ([be6af27f](https://github.com/oblique-bit/oblique/commit/be6af27fc201b8e34b512562a8f364c94995b21a))
-- **service-navigation:** throw error in case of missing `pamsAppId` ([5fde17ff](https://github.com/oblique-bit/oblique/commit/5fde17ffc6ee0c782d8660de3756ed1eec2b284c))
-- **web-component:** add language input property ([71169cd2](https://github.com/oblique-bit/oblique/commit/71169cd2b181329a476211a22322ecfb87a178c4))
+- **sample:** add language input property ([89685610](https://github.com/oblique-bit/oblique/commit/89685610d338caf5ff7b42313d2059617bd5387e))
+- **service-navigation:** don't show the authentication widget until `loginState` is known ([7e3f9ce6](https://github.com/oblique-bit/oblique/commit/7e3f9ce606e511e0a101f7c6f7a9362e9f54fdaa))
+- **service-navigation:** `loginState` only emits once the server responded ([0a194f36](https://github.com/oblique-bit/oblique/commit/0a194f36694d0f6ac744676bb2f9370842193ac0))
+- **service-navigation:** throw error in case of missing `pamsAppId` ([848f71a6](https://github.com/oblique-bit/oblique/commit/848f71a6eb4cf2d961aaaf110167e9b97f8d8d2f))
+- **web-component:** add language input property ([cff248dc](https://github.com/oblique-bit/oblique/commit/cff248dc11e5019ba188ca0a42178ba4540e53da))
 
 ## BREAKING CHANGES
 

@@ -1,5 +1,5 @@
-# [12.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/11.3.3...12.0.0-rc.1) (2024-09-26)
+# [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
 
 ## Features
 
-- **cli:** add library ([1cd6af5b](https://github.com/oblique-bit/oblique/commit/1cd6af5bdb705f1eaec7712c57fc5999bfe1ec67))
+- **cli:** add library ([204b93f5](https://github.com/oblique-bit/oblique/commit/204b93f565b87f51444a850a8e8f92a5bf74e0e7))

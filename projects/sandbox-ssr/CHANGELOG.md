@@ -1,7 +1,7 @@
-# [12.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/11.3.3...12.0.0-rc.1) (2024-09-26)
+# [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
 
 ## Features
 
-- **home:** add home page ([92062283](https://github.com/oblique-bit/oblique/commit/920622838b6326ac25d66a778978796c222ec521))
-- **sandbox-ssr:** add translations management with `ngx-translate` ([c9f53657](https://github.com/oblique-bit/oblique/commit/c9f536578e7ed835661de0a979aedf8f573a8dc5))
-- **sandbox-ssr:** add application ([5daeea68](https://github.com/oblique-bit/oblique/commit/5daeea68505ad67200fd14d3980a421e9898b477))
+- **home:** add home page ([d1a199a6](https://github.com/oblique-bit/oblique/commit/d1a199a67daeb5b4eb0ee07a2c827bf911534b8a))
+- **sandbox-ssr:** add translations management with `ngx-translate` ([dc25f456](https://github.com/oblique-bit/oblique/commit/dc25f456a64906293957fb01fffa75b25b6ba423))
+- **sandbox-ssr:** add application ([b73a4fca](https://github.com/oblique-bit/oblique/commit/b73a4fca2965fc2d7b9867a69962faa3e221388e))

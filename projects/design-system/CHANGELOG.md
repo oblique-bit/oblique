@@ -1,5 +1,5 @@
-# [12.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/11.3.3...12.0.0-rc.1) (2024-09-26)
+# [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
 
 ## Features
 
-- **design-system:** add library ([34c9f165](https://github.com/oblique-bit/oblique/commit/34c9f165005a6d8ad71c04ca050b0ccf6bbfb764))
+- **design-system:** add library ([e8513eb8](https://github.com/oblique-bit/oblique/commit/e8513eb8620f81bbd6cb59f10455b2d5879f0171))
