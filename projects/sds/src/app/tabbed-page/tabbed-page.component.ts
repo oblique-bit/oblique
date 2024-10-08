@@ -15,6 +15,7 @@ import {CmsData, TabbedPageComplete} from '../cms/models/tabbed-page.model';
 import {TabNameMapper} from './utils/tab-name-mapper';
 import {MatChipsModule} from '@angular/material/chips';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {VersionService} from '../shared/version/version.service';
 
 @Component({
 	selector: 'app-tabbed-page',
@@ -33,6 +34,7 @@ export class TabbedPageComponent {
 	private readonly location = inject(Location);
 	private isNull = true;
 	private readonly serializer = inject(UrlSerializer);
+	private readonly versionService = inject(VersionService);
 
 	constructor() {
 		const [validPageId$, invalidPageId$] = this.buildPageIdObservables();
@@ -91,9 +93,10 @@ export class TabbedPageComponent {
 	}
 
 	private buildCmsData(cmsData: TabbedPageComplete): CmsData {
+		const baseUrl = this.versionService.getBaseUrl();
 		return {
 			title: cmsData.name,
-			api: cmsData.api,
+			api: baseUrl ? cmsData.api.replace('https://v17.material.angular.io/', baseUrl) : cmsData.api,
 			uiUx: cmsData.ui_ux,
 			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug),
 			tab: this.getSelectedTab(),

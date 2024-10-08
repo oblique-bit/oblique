@@ -7,4 +7,5 @@ export interface VersionCms {
 export interface Version {
 	id: number;
 	version_number: number;
+	base_url: string;
 }
