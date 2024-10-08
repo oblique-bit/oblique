@@ -3,14 +3,17 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatTooltip} from '@angular/material/tooltip';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CmsDataService} from '../../cms/cms-data.service';
 import {Version} from '../../cms/models/version.model';
-import {Observable, map, tap} from 'rxjs';
+import {Observable, filter, first, map, switchMap, tap} from 'rxjs';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
 import {latest} from '../../../obliqueVersion';
 import {VersionOption} from './version.model';
 import {ObSelectDirective} from '@oblique/oblique';
+import {URL_CONST} from '../../shared/url/url.const';
+import {VersionService} from '../../shared/version/version.service';
 
 @Component({
 	selector: 'app-version',
@@ -29,6 +32,9 @@ export class VersionComponent implements OnChanges {
 	readonly selectedVersion = new FormControl<number | undefined>(undefined);
 	readonly versions$: Observable<VersionOption[]>;
 	private readonly cmsDataService = inject(CmsDataService);
+	private readonly activatedRoute = inject(ActivatedRoute);
+	private readonly router = inject(Router);
+	private readonly versionService = inject(VersionService);
 
 	constructor() {
 		this.versionChanged = this.selectedVersion.valueChanges;
@@ -46,9 +52,13 @@ export class VersionComponent implements OnChanges {
 	}
 
 	private setupVersions(): Observable<VersionOption[]> {
-		return this.cmsDataService.getVersions().pipe(
+		return this.router.events.pipe(
+			filter(event => event instanceof NavigationEnd),
+			first(),
+			switchMap(() => this.cmsDataService.getVersions()),
+			tap(versionCms => this.versionService.setCmsData(versionCms.data)),
 			map(versionCms => this.mapCmsData(versionCms.data)),
-			tap(versions => this.selectedVersion.setValue(this.getLatestVersion(versions)))
+			tap(versions => this.selectedVersion.setValue(this.getVersion(versions)))
 		);
 	}
 
@@ -60,6 +70,12 @@ export class VersionComponent implements OnChanges {
 				number: version,
 				label: index === 0 ? `${latest} (latest)` : `${version}`
 			}));
+	}
+
+	private getVersion(versions: VersionOption[]): number {
+		const currentSlug = this.activatedRoute.snapshot.children[0].paramMap.get(URL_CONST.urlParams.selectedSlug);
+		const versionFromURL = /(?<=-)\d+$/.exec(currentSlug) ?? [];
+		return parseInt(versionFromURL[0], 10) || this.getLatestVersion(versions);
 	}
 
 	private getLatestVersion(versions: VersionOption[]): number {

@@ -1,10 +1,9 @@
-import {readFileSync, writeFileSync} from 'fs';
-import path from 'path';
 import {EOL} from 'os';
 import {version as currentVersion} from './../../package.json';
-import {listFiles} from './utils';
 import {StaticScript} from './static-script';
 import {Git} from './git';
+import {Log} from './log';
+import {Files} from './files';
 
 export class Banner extends StaticScript {
 	// manually set for versions with prolonged support
@@ -13,12 +12,27 @@ export class Banner extends StaticScript {
 	};
 
 	static addToFilesInProject(projectName: string): void {
+		Log.info('Add a banner in all css, js and mjs files of the distribution');
 		const banner = Banner.prepareBanner(currentVersion);
 
-		listFiles(path.join('..', '..', 'dist', projectName))
+		Files.list(`../../dist/${projectName}`)
 			.filter(filePath => /\.(?:m?js|css)$/.test(filePath))
-			.map(filePath => ({filePath, content: readFileSync(filePath).toString()}))
-			.forEach(({filePath, content}) => writeFileSync(filePath, `${banner}${EOL}${content}`));
+			.map(filePath => ({filePath, content: Files.read(filePath)}))
+			.filter(({content}) => !content.includes(banner))
+			.map(file => ({...file, content: Banner.addBannerToFileContent(file.content, banner)}))
+			.forEach(({filePath, content}) => Files.write(filePath, content));
+	}
+
+	private static addBannerToFileContent(content: string, banner: string): string {
+		const SHEBANG_REGEX = /(?<shebang>^#!.*)/;
+		const shebangMatch = SHEBANG_REGEX.exec(content);
+		return shebangMatch?.groups?.shebang
+			? Banner.insertAfterTarget(content, banner, shebangMatch.groups.shebang)
+			: `${banner}${EOL}${content}`;
+	}
+
+	private static insertAfterTarget(content: string, toInsert: string, target: string): string {
+		return content.replace(target, `${target}${EOL}${EOL}${toInsert}${EOL}`);
 	}
 
 	private static prepareBanner(version: string): string {

@@ -3,6 +3,15 @@ import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {MaterialTableCodeExamplesComponent} from './material-table-code-examples.component';
+import {ObMockTranslateService} from '@oblique/oblique';
+import {TranslateService} from '@ngx-translate/core';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {By} from '@angular/platform-browser';
+import {MaterialTableExampleDefaultPreviewComponent} from './previews/default/material-table-example-default-preview.component';
+import {MaterialTableExampleEditablePreviewComponent} from './previews/editable/material-table-example-editable-preview.component';
+import {MaterialTableExampleSelectablePreviewComponent} from './previews/selectable/material-table-example-selectable-preview.component';
+import {MaterialTableExampleSizesPreviewComponent} from './previews/sizes/material-table-example-sizes-preview.component';
+import {MaterialTableExampleStylesPreviewComponent} from './previews/styles/material-table-example-styles-preview.component';
 
 describe(MaterialTableCodeExamplesComponent.name, () => {
 	let component: MaterialTableCodeExamplesComponent;
@@ -10,7 +19,8 @@ describe(MaterialTableCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MaterialTableCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [MaterialTableCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent, NoopAnimationsModule],
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(MaterialTableCodeExamplesComponent);
@@ -20,5 +30,29 @@ describe(MaterialTableCodeExamplesComponent.name, () => {
 
 	test('should create', () => {
 		expect(component).toBeTruthy();
+	});
+
+	test(`that there are 5 ${CodeExampleComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(5);
+	});
+
+	test(`that there is 1 ${MaterialTableExampleDefaultPreviewComponent.name}`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MaterialTableExampleDefaultPreviewComponent)).length).toBe(1);
+	});
+
+	test(`that there is 1 ${MaterialTableExampleEditablePreviewComponent.name}`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MaterialTableExampleEditablePreviewComponent)).length).toBe(1);
+	});
+
+	test(`that there is 1 ${MaterialTableExampleSelectablePreviewComponent.name}`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MaterialTableExampleSelectablePreviewComponent)).length).toBe(1);
+	});
+
+	test(`that there is 1 ${MaterialTableExampleSizesPreviewComponent.name}`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MaterialTableExampleSizesPreviewComponent)).length).toBe(1);
+	});
+
+	test(`that there is 1 ${MaterialTableExampleStylesPreviewComponent.name}`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MaterialTableExampleStylesPreviewComponent)).length).toBe(1);
 	});
 });

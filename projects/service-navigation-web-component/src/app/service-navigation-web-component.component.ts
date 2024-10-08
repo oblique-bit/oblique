@@ -24,6 +24,7 @@ import {
 	ObIServiceNavigationLink,
 	ObLoginState
 } from '../../../oblique/src/lib/service-navigation/service-navigation.model';
+import {appVersion} from './version';
 import {ObEIcon} from '../../../oblique/src/lib/icon/icon.model';
 import {ObButtonModule} from '../../../oblique/src/lib/button/button.module';
 import {TranslationsService} from './translations-service';
@@ -36,11 +37,13 @@ import {ObICustomButton, ObILink} from './service-navigation-web-component.model
 	styleUrls: ['./service-navigation-web-component.component.scss', '../../../oblique/src/styles/scss/oblique-core.scss'],
 	encapsulation: ViewEncapsulation.None,
 	imports: [ObServiceNavigationModule, NgIf, MatButtonModule, MatIconModule, NgFor, MatBadgeModule, ObButtonModule],
-	providers: [TranslationsService]
+	providers: [TranslationsService],
+	host: {'ob-version': appVersion}
 })
 export class ObServiceNavigationWebComponentComponent implements OnChanges, OnInit {
 	@Input() languageList: string;
 	@Input() defaultLanguage: string;
+	@Input() language: string;
 	@Input() environment: 'DEV' | 'REF' | 'TEST' | 'ABN' | 'PROD';
 	@Input() infoContact: string;
 	@Input() infoLinks: string;
@@ -80,10 +83,11 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 		this.profileLinksParsed = this.parseLinks(changes.profileLinks, 'profile');
 		this.customButtonsParsed = this.parseCustomButtons(changes.customButtons);
 		this.translationService.handleTranslations(this.infoLinks, this.profileLinks);
+		this.handleNewLanguage(changes.language);
 	}
 
 	ngOnInit(): void {
-		this.translationService.initializeTranslations(this.languageList, this.defaultLanguage);
+		this.translationService.initializeTranslations(this.languageList, this.language, this.defaultLanguage);
 		this.translationService.handleTranslations(this.infoLinks, this.profileLinks); // necessary because ngOnChanges is called before ngOnInit
 		this.environmentParsed = this.parseEnvironment(this.environment);
 	}
@@ -116,5 +120,11 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 
 	private parseCustomButtons(customButtons: SimpleChange | undefined): ObICustomButton[] {
 		return customButtons ? JSON.parse(customButtons.currentValue || '[]') : this.customButtonsParsed;
+	}
+
+	private handleNewLanguage(language: SimpleChange | undefined): void {
+		if (language) {
+			this.translationService.setLang(language.currentValue);
+		}
 	}
 }

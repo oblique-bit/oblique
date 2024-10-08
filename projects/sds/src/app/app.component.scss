@@ -1,9 +1,16 @@
+@use "../styles/scss/core/variables";
+@use "../styles/scss/core/mixins/layout";
+
 $banner-height: 50px;
 
-:host {
+:host.has-banner {
 	display: grid;
 	grid-template-columns: fit-content(500px) auto;
 	grid-template-rows: $banner-height 1fr;
+
+	.main-content {
+		height: calc(100vh - $banner-height);
+	}
 }
 
 .banner {
@@ -19,6 +26,9 @@ $banner-height: 50px;
 	grid-row: 2;
 	display: grid;
 	grid-template-columns: fit-content(500px) 30fr 1fr;
-	height: calc(100vh - $banner-height);
+	height: 100vh;
 	width: 100vw;
+	@include layout.ob-media-breakpoint-down(md) {
+		grid-template-columns: fit-content(500px) 30fr;
+	}
 }

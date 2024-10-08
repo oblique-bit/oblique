@@ -2,19 +2,10 @@ import {Component, Inject, OnDestroy} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import {
-	ObEIcon,
-	ObIAutocompleteInputOption,
-	ObINavigationLink,
-	ObISkipLink,
-	ObLanguageService,
-	ObMasterLayoutHeaderService,
-	WINDOW
-} from '@oblique/oblique';
+import {ObEIcon, ObIAutocompleteInputOption, ObINavigationLink, ObISkipLink, ObMasterLayoutHeaderService, WINDOW} from '@oblique/oblique';
 import {Observable, Subject} from 'rxjs';
 import {filter, map, startWith, takeUntil} from 'rxjs/operators';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
-import {DateAdapter} from '@angular/material/core';
 
 @Component({
 	selector: 'sb-root',
@@ -36,6 +27,7 @@ export class AppComponent implements OnDestroy {
 		},
 		{url: 'http://www.google.ch', label: 'Google', icon: ObEIcon.SEARCH},
 		{url: 'http://www.google.ch', label: 'Google sameTarget', sameTarget: true},
+		{url: 'design-system', label: 'Design System', children: [{url: '', label: 'Demo'}]},
 		{
 			url: 'samples',
 			label: 'i18n.routes.samples.title',
@@ -216,7 +208,16 @@ export class AppComponent implements OnDestroy {
 		{url: 'current', fragment: 'fragment', label: 'i18n.application.skiplinks.custom'},
 		{url: 'current', label: 'Skip to current without fragment'},
 		{url: '../samples', fragment: 'fragment', label: 'Skip to samples with fragment'},
-		{url: '../samples', label: 'Skip to samples without fragment'}
+		{url: '../samples', label: 'Skip to samples without fragment'},
+		{url: 'current', fragment: 'link-to-blick-ch', label: 'Skip to "Blick" link in the footer'},
+		{url: '../samples/file-upload', fragment: 'fantasy', label: 'Example to demo console message for a non existing element.'},
+		{url: '../samples/file-upload', fragment: 'acceptFiles', label: 'Example to demo console message for a non focusable element.'},
+		{
+			url: 'current',
+			fragment: 'link-to-google-ch',
+			label:
+				'Example to demo console message for an element existing and focusable (footer link to google), but not whitelisted in ObMasterLayoutConfig.focusableFragments.'
+		}
 	];
 	autocompleteItems$: Observable<ObIAutocompleteInputOption[]>;
 	private readonly unsubscribe = new Subject<void>();
@@ -226,11 +227,8 @@ export class AppComponent implements OnDestroy {
 		private readonly router: Router,
 		private readonly translate: TranslateService,
 		private readonly header: ObMasterLayoutHeaderService,
-		@Inject(WINDOW) window: Window,
-		adapter: DateAdapter<any>,
-		language: ObLanguageService
+		@Inject(WINDOW) window: Window
 	) {
-		language.setLocaleOnAdapter(adapter);
 		this.initializeSearch();
 		nav.setNavigation(this.navigation);
 		nav.navigationLinks$.subscribe(links => {

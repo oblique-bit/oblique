@@ -1,0 +1,36 @@
+extends: "../../.eslintrc.yml"
+overrides:
+  - files:
+      - "*.ts"
+    parserOptions:
+      project:
+        - projects/sandbox-ssr/tsconfig.app.json
+        - projects/sandbox-ssr/tsconfig.spec.json
+        - projects/sandbox-ssr/tsconfig.scripts.json
+    rules:
+      "@angular-eslint/directive-selector":
+        - error
+        - type: attribute
+          prefix: ssr
+          style: camelCase
+      "@angular-eslint/component-selector":
+        - error
+        - type: element
+          prefix: ssr
+          style: kebab-case
+      "@typescript-eslint/no-magic-numbers":
+        - error
+        - ignoreReadonlyClassProperties: true
+
+  - files:
+      - "index.html"
+    rules:
+      # rules cannot be turned off in HTML files
+      "@angular-eslint/template/no-inline-styles": off # necessary for compatibility warnings
+      "@angular-eslint/template/prefer-self-closing-tags": off # not compatible with SSR
+
+  - files:
+      - "*.spec.ts"
+    rules:
+      # should be disabled globally but would be overwritten on line 21
+      "@typescript-eslint/no-magic-numbers": off

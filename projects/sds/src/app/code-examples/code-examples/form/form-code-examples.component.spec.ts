@@ -15,6 +15,9 @@ import {FormExampleStatesPreviewComponent} from './previews/states/form-example-
 import {FormExampleHorizontalPreviewComponent} from './previews/horizontal/form-example-horizontal-preview.component';
 import {FormExampleInputClearPreviewComponent} from './previews/input-clear/form-example-input-clear-preview.component';
 import {FormExampleInputPrefixesAndSuffixesPreviewComponent} from './previews/input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {ObMockTranslateService} from '@oblique/oblique';
+import {TranslateService} from '@ngx-translate/core';
 
 describe(FormCodeExamplesComponent.name, () => {
 	let component: FormCodeExamplesComponent;
@@ -22,7 +25,8 @@ describe(FormCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [CodeExampleComponent, CommonModule, FormCodeExamplesComponent, IdPipe, NoopAnimationsModule]
+			imports: [CodeExampleComponent, CommonModule, FormCodeExamplesComponent, IdPipe, NoopAnimationsModule],
+			providers: [provideNativeDateAdapter(), {provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(FormCodeExamplesComponent);
@@ -34,8 +38,8 @@ describe(FormCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	test(`that there are 5 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(5);
+	test(`that there are 6 ${CodeExampleComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(6);
 	});
 
 	test(`that there is 1 ${FormExampleSizesPreviewComponent.name}s`, () => {
@@ -58,32 +62,26 @@ describe(FormCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.directive(FormExampleInputClearPreviewComponent)).length).toBe(1);
 	});
 
-	test(`that there are 37 ${MatFormField.name}s`, done => {
-		setTimeout(() => {
-			fixture.detectChanges();
-			expect(fixture.debugElement.queryAll(By.directive(MatFormField)).length).toBe(37);
-			done();
-		}, 500);
+	test(`that there are 45 ${MatFormField.name}s`, () => {
+		fixture.detectChanges();
+		expect(fixture.debugElement.queryAll(By.directive(MatFormField)).length).toBe(45);
 	});
 
-	test(`that there are 23 ${MatInput.name}s`, done => {
-		setTimeout(() => {
-			fixture.detectChanges();
-			expect(fixture.debugElement.queryAll(By.directive(MatInput)).length).toBe(23);
-			done();
-		}, 500);
+	test(`that there are 30 ${MatInput.name}s`, () => {
+		fixture.detectChanges();
+		expect(fixture.debugElement.queryAll(By.directive(MatInput)).length).toBe(30);
 	});
 
-	test(`that there are 2 ${MatCheckbox.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatCheckbox)).length).toBe(2);
+	test(`that there are 5 ${MatCheckbox.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MatCheckbox)).length).toBe(5);
 	});
 
-	test(`that there are 2 ${MatRadioGroup.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatRadioGroup)).length).toBe(2);
+	test(`that there are 5 ${MatRadioGroup.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MatRadioGroup)).length).toBe(5);
 	});
 
-	test(`that there are 2 ${MatRadioButton.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatRadioButton)).length).toBe(2);
+	test(`that there are 5 ${MatRadioButton.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MatRadioButton)).length).toBe(5);
 	});
 
 	test(`that there are 14 ${MatSelect.name}s`, () => {
@@ -94,7 +92,7 @@ describe(FormCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.css('textarea')).length).toBe(7);
 	});
 
-	test(`that there are 4 forms`, () => {
-		expect(fixture.debugElement.queryAll(By.css('form')).length).toBe(4);
+	test(`that there are 5 forms`, () => {
+		expect(fixture.debugElement.queryAll(By.css('form')).length).toBe(5);
 	});
 });

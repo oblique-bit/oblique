@@ -1,4 +1,4 @@
-import {CodeExampleComponent} from './../../code-example/code-example.component';
+import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
@@ -27,7 +27,7 @@ describe(PopoverCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	test(`that there are 2 ${CodeExampleComponent.name}s`, () => {
+	test(`that there are 3 ${CodeExampleComponent.name}s`, () => {
 		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
 	});
 

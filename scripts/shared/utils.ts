@@ -1,25 +1,27 @@
-import {execSync} from 'child_process';
-import {readFileSync, readdirSync, statSync, writeFileSync} from 'fs';
-import path from 'path';
+import {ExecSyncOptions, execSync} from 'child_process';
+import {Log} from './log';
+import {Files} from './files';
 
-export function executeCommand(command: string, showCommandResult = false): void {
-	if (showCommandResult) {
-		console.info(command);
+export function executeCommand(command: string, options?: ExecSyncOptions): void {
+	execSync(command, options);
+}
+
+export function executeCommandWithLog(command: string, messagePrefix: string, options: ExecSyncOptions = {}): void {
+	Log.info(`${messagePrefix}: ${command}`);
+	try {
+		execSync(command, {...options, stdio: 'pipe'});
+	} catch (rawError) {
+		const error = rawError as {stdout: Buffer; stderr: Buffer};
+		const errorMessage = [error.stdout, error.stderr]
+			.filter(buffer => !!buffer)
+			.map(buffer => buffer.toString())
+			.join('\n');
+		fatal(errorMessage);
 	}
-	execSync(command, showCommandResult ? {stdio: 'inherit'} : undefined);
 }
 
-export function getResultFromCommand(command: string): string {
-	return execSync(command).toString().trim();
-}
-
-export function listFiles(directory: string): string[] {
-	return readdirSync(directory)
-		.map(fileName => path.join(directory, fileName))
-		.reduce<string[]>(
-			(filePaths, filePath) => (statSync(filePath).isDirectory() ? [...filePaths, ...listFiles(filePath)] : [...filePaths, filePath]),
-			[]
-		);
+export function getResultFromCommand(command: string, options?: ExecSyncOptions): string {
+	return execSync(command, options).toString().trim();
 }
 
 export function hasFlag(flag: string): boolean {
@@ -30,34 +32,34 @@ export function camelToKebabCase(key: string): string {
 	return key.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`);
 }
 
-export function buildPath(...pathParts: string[]): string {
-	return path.join(...pathParts.filter(part => !!part));
-}
-
 export function updatePackageJsonVersion(version: string): void {
-	const fileContent = JSON.parse(readFileSync('package.json').toString()) as Record<'version', string>;
+	Log.info(`Update package.json version to ${version}.`);
+	const fileContent = Files.readJson<Record<'version', string>>('package.json');
 	fileContent.version = version;
-	writeFileSync('package.json', JSON.stringify(fileContent, null, 2));
+	Files.writeJson('package.json', fileContent);
 }
 
 export function updateSonarPropertiesVersion(version: string): void {
-	const filePath = 'sonar-project.properties';
-	writeFileSync(
-		filePath,
-		readFileSync(filePath)
-			.toString()
-			.replace(/(?<=sonar\.projectVersion=)\d+\.\d+\.\d+/, version)
-	);
+	Log.info(`Update Sonar properties' project version to ${version}.`);
+	Files.overwrite('sonar-project.properties', content => content.replace(/(?<=sonar\.projectVersion=)\d+\.\d+\.\d+/, version));
 }
 
 export function adaptReadmeLinks(project: string): void {
-	const filePath = path.join('..', '..', 'dist', project, 'README.md');
-	writeFileSync(
-		filePath,
-		readFileSync(filePath)
-			.toString()
+	Log.info('Update links in the distributed README.md');
+	const filePath = `../../dist/${project}/README.md`;
+	Files.overwrite(filePath, content =>
+		content
 			.replace('../../README.md)', 'https://github.com/oblique-bit/oblique/blob/master/README.md) on GitHub')
 			.replace('../../CONTRIBUTING.md)', 'https://github.com/oblique-bit/oblique/blob/master/CONTRIBUTING.md) on GitHub')
 			.replace('../../LICENSE', 'LICENSE')
 	);
+}
+
+export function humanizeList(list: string[]): string {
+	return list.join(', ').replace(/,(?=[^,]*$)/, ' and');
+}
+
+export function fatal(error: string): void {
+	Log.error(error);
+	process.exit(-1);
 }

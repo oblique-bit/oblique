@@ -75,6 +75,18 @@ export function checkForStandalone(): Rule {
 	};
 }
 
+export function checkForMultiProject(): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		infoMigration(_context, 'Check if project is a multi-project angular application ');
+		const multiProject = !tree.exists('./src/app/app.module.ts');
+		if (multiProject) {
+			error(
+				'Multi-project application detected. Oblique schematics are not compatible with multi-project applications. Either convert the application to non multi-project or perform the changes manually. Check the documentation for guidance.'
+			);
+		}
+	};
+}
+
 export function checkForSSR(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Check if application uses SSR');
@@ -406,6 +418,10 @@ function removeEmptyConstructor(tree: Tree, filePath: string): void {
 
 function removeInjectionFromInject(tree: Tree, filePath: string, token: string): void {
 	replaceInFile(tree, filePath, new RegExp(`[\\w\\s]*(?::\\s*${token})?\\s*=\\s*inject\\(\\s*${token}\\s*\\)\\s*;\n?`), '');
+}
+
+export function removeServiceMethodCall(tree: Tree, filePath: string, methodToken: string): void {
+	replaceInFile(tree, filePath, new RegExp(`\\w*\\.(?:${methodToken})\\s*\\(\\w+\\)\\s*;\\s*`, 'g'), '');
 }
 
 function extractDirectoryFromPath(filePath: string): string {

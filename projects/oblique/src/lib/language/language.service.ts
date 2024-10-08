@@ -37,13 +37,6 @@ export class ObLanguageService {
 		}
 	}
 
-	/**
-	 * @deprecated since Oblique 11.3.0. It will be removed with Oblique 12 with no replacement. As of Oblique 11.3.0 this method don't do
-	 * anything anymore and can safely be removed. Its purpose is now fully automated by the MasterLayout.
-	 */
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars,@typescript-eslint/no-empty-function
-	setLocaleOnAdapter(adapter: DateAdapter<unknown>): void {}
-
 	private validateLocales(locales: string[]): void {
 		if (!Array.isArray(locales) || !locales.length) {
 			throw new Error("Oblique's MasterLayout config needs to either define at least 1 locale or to be disabled.");

@@ -9,7 +9,6 @@ import {CardCodeExamplesComponent} from './code-examples/card/card-code-examples
 import {ChipsCodeExamplesComponent} from './code-examples/chips/chips-code-examples.component';
 import {CodeExamples} from './code-examples.model';
 import {ColumnLayoutCodeExamplesComponent} from './code-examples/column-layout/column-layout-code-examples.component';
-import {DatepickerCodeExamplesComponent} from './code-examples/datepicker/datepicker-code-examples.component';
 import {DialogCodeExamplesComponent} from './code-examples/dialog/dialog-code-examples.component';
 import {ExpansionPanelCodeExamplesComponent} from './code-examples/expansion-panel/expansion-panel-code-examples.component';
 import {FileUploadCodeExamplesComponent} from './code-examples/file-upload/file-upload-code-examples.component';
@@ -53,6 +52,7 @@ import {DateCodeExamplesComponent} from './code-examples/date/date-code-examples
 import {ErrorMessagesCodeExamplesComponent} from './code-examples/error-messages/error-messages-code-examples.component';
 import {FocusInvalidCodeExamplesComponent} from './code-examples/focus-invalid/focus-invalid-code-examples.component';
 import {ExternalLinkCodeExamplesComponent} from './code-examples/external-link/external-link-code-examples.component';
+import {Popover12CodeExamplesComponent} from './code-examples/popover-12/popover12-code-examples.component';
 
 /* These imports are sorted alphabetically to reduce merge conflicts.
    If you add a new import above, please make sure it is sorted
@@ -71,7 +71,6 @@ export class CodeExamplesMapper {
 		collapse: CollapseCodeExamplesComponent,
 		'column-layout': ColumnLayoutCodeExamplesComponent,
 		date: DateCodeExamplesComponent,
-		datepicker: DatepickerCodeExamplesComponent,
 		dialog: DialogCodeExamplesComponent,
 		'error-messages': ErrorMessagesCodeExamplesComponent,
 		'expansion-panel': ExpansionPanelCodeExamplesComponent,
@@ -86,6 +85,7 @@ export class CodeExamplesMapper {
 		language: LanguageCodeExamplesComponent,
 		'list-group': ListGroupCodeExamplesComponent,
 		'master-layout': MasterLayoutCodeExamplesComponent,
+		'master-layout-12': MasterLayoutCodeExamplesComponent,
 		'material-table': MaterialTableCodeExamplesComponent,
 		'nav-tree': NavTreeCodeExamplesComponent,
 		'nested-form': NestedFormCodeExamplesComponent,
@@ -94,6 +94,7 @@ export class CodeExamplesMapper {
 		'off-canvas': OffCanvasCodeExamplesComponent,
 		paginator: PaginatorCodeExamplesComponent,
 		popover: PopoverCodeExamplesComponent,
+		'popover-12': Popover12CodeExamplesComponent,
 		'progress-bar': ProgressBarCodeExamplesComponent,
 		'rxjs-operators': RxjsOperatorsCodeExamplesComponent,
 		'schema-validation': SchemaValidationCodeExamplesComponent,

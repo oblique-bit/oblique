@@ -1,12 +1,17 @@
 import {StaticScript} from './shared/static-script';
-import {readFileSync, writeFileSync} from 'fs';
 import {Git} from './shared/git';
+import {Log} from './shared/log';
+import {Files} from './shared/files';
 
 class Troubleshoot extends StaticScript {
 	static perform(): void {
+		Log.start('Troubleshoot the release');
 		Troubleshoot.createTroubleshootBranch();
 		Troubleshoot.adaptJenkinsFile('Jenkinsfile');
 		Git.commit('chore(toolchain): troubleshoot release');
+		Log.success(
+			'Push the changes with: `git push -u origin troubleshoot` and continue the troubleshooting process according to the troubleshoot checklist.'
+		);
 	}
 
 	private static createTroubleshootBranch(): void {
@@ -15,13 +20,11 @@ class Troubleshoot extends StaticScript {
 	}
 
 	private static adaptJenkinsFile(jenkinsFilePath: string): void {
-		writeFileSync(
-			jenkinsFilePath,
-			readFileSync(jenkinsFilePath)
-				.toString()
-				.replace(
-					/(?<=branches = \[\s\t\t).*(?=\s\t])/ms,
-					`troubleshoot: [
+		Log.info('Update JenkinsFile');
+		Files.overwrite(jenkinsFilePath, content =>
+			content.replace(
+				/(?<=branches = \[\s\t\t).*(?=\s\t])/ms,
+				`troubleshoot: [
 			build: 'npm run build -w projects/sds',
 			cloudFoundry: [[project: 'sds', space: 'prod']],
 			gitTag: 'origin/master',
@@ -31,7 +34,7 @@ class Troubleshoot extends StaticScript {
 				branch: 'master'
 			]
 		]`
-				)
+			)
 		);
 	}
 }

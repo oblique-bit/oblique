@@ -32,7 +32,6 @@ describe('ObServiceNavigationService', () => {
 	const mockLangChange = new Subject<{lang: string}>();
 	const mockStateChange = new Subject<ObIServiceNavigationState>();
 	const mockApplications = [{name: {en: 'name', fr: 'nom', de: 'Name', it: 'nome'}}];
-	const warningSpy = jest.spyOn(console, `warn`).mockImplementation(() => {});
 	const mockGetLogoutTrigger$ = jest.fn();
 	const mockRedirectorLogout = jest.fn();
 
@@ -68,7 +67,6 @@ describe('ObServiceNavigationService', () => {
 				}
 			]
 		});
-		warningSpy.mockClear();
 	});
 
 	describe('fetch a single state', () => {
@@ -149,9 +147,14 @@ describe('ObServiceNavigationService', () => {
 						expect(service.getLoginState$() instanceof Observable).toBe(true);
 					});
 
-					it(`should emit "SA"`, async () => {
-						await expect(firstValueFrom(service.getLoginState$())).resolves.toBe('SA');
-					});
+					it('should not emit', fakeAsync(() => {
+						let hasEmitted = false;
+						service.getLoginState$().subscribe(() => {
+							hasEmitted = true;
+						});
+						tick(1000);
+						expect(hasEmitted).toBe(false);
+					}));
 
 					describe('ObServiceNavigationConfigService.fetchUrls', () => {
 						it('should not have been called', () => {
@@ -261,21 +264,15 @@ describe('ObServiceNavigationService', () => {
 						describe('getLoginUrl$', () => {
 							describe.each(['de', 'fr', 'it', 'en', 'es'])('with "%s" as language', language => {
 								describe('Without pamsAppId', () => {
-									beforeEach(() => {
+									const error = new Error(
+										'Service Navigation requires an appId for step-up logins to work. The appId can be found on the application configuration page on ePortal.'
+									);
+
+									it(`should throw an error`, async () => {
 										service.setPamsAppId(undefined);
-									});
-
-									it(`should emit "http://login?returnURL=http://localhost&language=${language}"`, async () => {
-										const promise = firstValueFrom(service.getLoginUrl$().pipe(skip(1)));
+										const promise = firstValueFrom(service.getLoginUrl$());
 										mockLangChange.next({lang: language});
-										expect(await promise).toBe(`http://login?returnURL=http://localhost&language=${language}`);
-									});
-
-									it(`should emit a warning when pamsAppId is undefined`, async () => {
-										const promise = firstValueFrom(service.getLoginUrl$().pipe(skip(1)));
-										mockLangChange.next({lang: language});
-										await promise;
-										expect(warningSpy).toBeCalledWith(`Service-navigation requires an appId. Otherwise some stepup logins won't work`);
+										await expect(promise).rejects.toEqual(error);
 									});
 								});
 
@@ -284,13 +281,6 @@ describe('ObServiceNavigationService', () => {
 
 									beforeEach(() => {
 										service.setPamsAppId(randomPamsAppId);
-									});
-
-									it(`should not emit a warning when pamsAppId is defined`, async () => {
-										const promise = firstValueFrom(service.getLoginUrl$().pipe(skip(1)));
-										mockLangChange.next({lang: language});
-										await promise;
-										expect(warningSpy).toBeCalledTimes(0);
 									});
 
 									it(`should emit "http://login?returnURL=http://localhost&language=${language}&appid=${randomPamsAppId}"`, async () => {
@@ -328,7 +318,7 @@ describe('ObServiceNavigationService', () => {
 						describe('getLoginState$', () => {
 							describe.each(['S1', 'S2OK', 'S2+OK', 'S3OK', 'S3+OK'])('with "%s"', loginState => {
 								it(`should emit "${loginState}"`, async () => {
-									const promise = firstValueFrom(service.getLoginState$().pipe(skip(1)));
+									const promise = firstValueFrom(service.getLoginState$());
 									mockStateChange.next({loginState} as ObIServiceNavigationState);
 									await expect(promise).resolves.toEqual(loginState);
 								});
@@ -446,8 +436,8 @@ describe('ObServiceNavigationService', () => {
 			{inputs: ['SA', 'SA'], emitTimes: 1},
 			{inputs: ['SA', 'S2OK'], emitTimes: 2},
 			{inputs: ['SA', 'S2OK', 'S2OK'], emitTimes: 2},
-			{inputs: ['S2OK'], emitTimes: 2},
-			{inputs: ['S2OK', 'SA'], emitTimes: 3}
+			{inputs: ['S2OK'], emitTimes: 1},
+			{inputs: ['S2OK', 'SA'], emitTimes: 2}
 		])('getLoginState$', ({inputs, emitTimes}) => {
 			const mockStateChangeDuplicate = new Subject();
 			beforeEach(() => {

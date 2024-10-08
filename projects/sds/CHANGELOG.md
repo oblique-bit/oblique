@@ -1,3 +1,45 @@
+# [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
+
+## Bug Fixes
+
+- **cms:** add `base_url` tp the `Version` interface ([0b44b493](https://github.com/oblique-bit/oblique/commit/0b44b493aa3c51071533d88bd69f2d09951b2594))
+- **code-examples:** fix error date example not showing an error ([3581e36a](https://github.com/oblique-bit/oblique/commit/3581e36ad0666af4544920cfa9dae2f6e413bee5))
+- **paginator:** use `ObPaginatorModule` instead of `ObPaginatorDirective` ([57523ffb](https://github.com/oblique-bit/oblique/commit/57523ffb6d277fe865679d63a6cc06a769233ba0))
+- **sds:** replace wrapping `span` with `main` ([dd5f8068](https://github.com/oblique-bit/oblique/commit/dd5f8068e0250163c8ffeca3af7e3f702b2622fa))
+- **sds:** use higher contrast colors for accessibility ([0a077f25](https://github.com/oblique-bit/oblique/commit/0a077f25fb8a2ca59f5b40cefae5bb9709a47c1c))
+- **side-navigation:** redirect to the correct page when the version changes ([377f0804](https://github.com/oblique-bit/oblique/commit/377f080425c106efccf6939e9cbaa87bdae2e954))
+- **side-navigation:** make sure the selected version match the one in the URL ([af7e3636](https://github.com/oblique-bit/oblique/commit/af7e363693b8b43e483d06ad394a1b9c2a411bf2))
+- **tabbed-page:** prevent interception of external links ([cff91ba7](https://github.com/oblique-bit/oblique/commit/cff91ba73c55d2aaa4a16d7819da54023338c7a5))
+- **tabbed-page:** made routing handle reloads ([ef9ad9f3](https://github.com/oblique-bit/oblique/commit/ef9ad9f32a7a5fe01263c60c4170552e94a1fe7c))
+
+## Features
+
+- **banner:** hide the banner ([e207b41b](https://github.com/oblique-bit/oblique/commit/e207b41bca85961b1440819b836491195fc19a45))
+- **banner:** make banner presence depend on a setting ([d4d2870e](https://github.com/oblique-bit/oblique/commit/d4d2870ed3eb5f658dba8773abf45b755a97cff4))
+- **banner:** make banner responsive ([3da2fbce](https://github.com/oblique-bit/oblique/commit/3da2fbcedfb2cc6e5faec0ab09b3e884f0cb236f))
+- **cms:** add a version service to store the version data ([360603f3](https://github.com/oblique-bit/oblique/commit/360603f37b7be34211344843577d04a1781dbe28))
+- **code-examples:** remove datepicker code example page ([a8ceac85](https://github.com/oblique-bit/oblique/commit/a8ceac85bc94e83b676a9fce9f662538ffc69c6c))
+- **code-examples:** move datepicker example to form examples ([d14bb14f](https://github.com/oblique-bit/oblique/commit/d14bb14fde71eb428d3b6d78fdca29848c4f1699))
+- **code-examples:** improve error handling in form examples ([ad3faea0](https://github.com/oblique-bit/oblique/commit/ad3faea0d1e4663c01dc5b03b8410d18cf8ca318))
+- **code-examples:** add datepickers to form examples ([6cd0e677](https://github.com/oblique-bit/oblique/commit/6cd0e6771d27cfcb67b5d7a782bb89d1a1cb4987))
+- **code-examples:** add checkboxes & radiobuttons to form examples ([47b20802](https://github.com/oblique-bit/oblique/commit/47b208023a29db8e1d3404d8bae7648b27eb07b2))
+- **feedback:** move trigger to the bottom on mobile view ([26f20cd8](https://github.com/oblique-bit/oblique/commit/26f20cd844f686e210902be64abefcfbc7014c8e))
+- **master-layout:** add documentation for version 12 ([a4fbb986](https://github.com/oblique-bit/oblique/commit/a4fbb986696ff73ea4cda2a604e3ccd95a584ab6))
+- **material:** add unit tests for material table ([98faf39f](https://github.com/oblique-bit/oblique/commit/98faf39f0e1fea4c88d0b90c70659b89e504665a))
+- **material:** add selectable table code example ([8728c0a7](https://github.com/oblique-bit/oblique/commit/8728c0a7d67da2777db8abb7d7ccb03f7f25629c))
+- **popover:** remove event example from version 11 ([2e878665](https://github.com/oblique-bit/oblique/commit/2e878665d904411d8f9b69f48b219e64ac940402))
+- **popover:** add documentation for version 12 ([b8538680](https://github.com/oblique-bit/oblique/commit/b8538680c92be6ec24787903000f74b945c8907b))
+- **popover:** add popover visibility change event example ([8062056a](https://github.com/oblique-bit/oblique/commit/8062056a8ee0cd77980b39ad70dabb3c477a03ad))
+- **popover:** add example to demonstrate popover with large content ([f3fbe217](https://github.com/oblique-bit/oblique/commit/f3fbe21757e56466cc1bebec2d1fae3392e5ab3f))
+- **sds:** add wildcard route ([1db70c0b](https://github.com/oblique-bit/oblique/commit/1db70c0b3b128e2571477775a0fb0e65891b7cdb))
+- **side-navigation:** store version info into the version service ([40ca7448](https://github.com/oblique-bit/oblique/commit/40ca7448950b4c642c2c04f9670cb737f8d4feff))
+- **side-navigation:** on mobile move side-navigation into an hamburger menu ([bc71e8a8](https://github.com/oblique-bit/oblique/commit/bc71e8a854c3cab3510f0376261a4863c7f386f0))
+- **tabbed-page:** update the base url according to the current version in the API tab ([0fa648c6](https://github.com/oblique-bit/oblique/commit/0fa648c6909170a6b2ad1b6c1b929404a8e8d809))
+- **tabbed-page:** redirect to welcome page if loading page fails ([1975cc73](https://github.com/oblique-bit/oblique/commit/1975cc730b5adb321cd9feda0df67b2755c5980f))
+- **tabbed-page:** use `router.navigate()` when clicking on a link inside the deprecation notice ([19873511](https://github.com/oblique-bit/oblique/commit/19873511c221179a4c8d2802ace261acb788ab6c))
+- **tabbed-page:** add deprecation notice to SDS ([32e0bc8c](https://github.com/oblique-bit/oblique/commit/32e0bc8c30904ebb35e3b11ef7659d86d4197a81))
+- **text-page:** redirect to welcome page if loading page fails ([7af44d04](https://github.com/oblique-bit/oblique/commit/7af44d04ff669d562c436463d4717164e2f9dd95))
+
 # [11.3.0](https://github.com/oblique-bit/oblique/compare/11.2.4...11.3.0) (2024-07-05)
 
 ## Features

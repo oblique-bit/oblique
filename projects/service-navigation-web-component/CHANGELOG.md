@@ -1,3 +1,22 @@
+# [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
+
+## Bug Fixes
+
+- **service-navigation:** adjust styling of application popover content ([da51c286](https://github.com/oblique-bit/oblique/commit/da51c28613575d613abd3dc83519392d3e6aab22))
+
+## Features
+
+- **sample:** add language input property ([89685610](https://github.com/oblique-bit/oblique/commit/89685610d338caf5ff7b42313d2059617bd5387e))
+- **service-navigation:** don't show the authentication widget until `loginState` is known ([7e3f9ce6](https://github.com/oblique-bit/oblique/commit/7e3f9ce606e511e0a101f7c6f7a9362e9f54fdaa))
+- **service-navigation:** `loginState` only emits once the server responded ([0a194f36](https://github.com/oblique-bit/oblique/commit/0a194f36694d0f6ac744676bb2f9370842193ac0))
+- **service-navigation:** throw error in case of missing `pamsAppId` ([848f71a6](https://github.com/oblique-bit/oblique/commit/848f71a6eb4cf2d961aaaf110167e9b97f8d8d2f))
+- **web-component:** add language input property ([cff248dc](https://github.com/oblique-bit/oblique/commit/cff248dc11e5019ba188ca0a42178ba4540e53da))
+
+## BREAKING CHANGES
+
+- **service-navigation:** `loginState` doesn't emit `SA` on startup anymore. Instead, it only emits once it's value is known
+- **service-navigation:** The application now throws an error if no `pamsAppId` is provided
+
 # [11.3.2](https://github.com/oblique-bit/oblique/compare/11.3.1...11.3.2) (2024-07-19)
 
 ## Bug Fixes

@@ -1,0 +1,22 @@
+{
+  "name": "sandbox-ssr",
+  "version": "12.0.0",
+  "scripts": {
+    "start": "ng serve",
+    "start-ssr": "node ../../dist/sandbox-ssr/server/server.mjs",
+    "lint": "ts-node scripts/lint.ts",
+    "format": "ts-node scripts/lint.ts --fix",
+    "test": "cd ../.. && ng test sandbox-ssr",
+    "test-ci": "cd ../.. && ng run sandbox-ssr:test:ci",
+    "build": "ng build sandbox-ssr",
+    "release": "ts-node scripts/release.ts"
+  },
+  "dependencies": {
+    "@angular/platform-server": "^18.2.7",
+    "@angular/ssr": "^18.2.7",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21"
+  }
+}

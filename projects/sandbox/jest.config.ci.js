@@ -1,4 +1,13 @@
 'use strict';
 
 module.exports = require('./jest.config');
-module.exports.reporters[1][1].outputDirectory = '<rootDir>/coverage/sandbox';
+module.exports.reporters = [
+	'default',
+	[
+		'jest-sonar',
+		{
+			outputDirectory: '<rootDir>/coverage/sandbox',
+			outputName: 'sqr.xml'
+		}
+	]
+];

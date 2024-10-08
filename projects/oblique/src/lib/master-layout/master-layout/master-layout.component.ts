@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {
 	AfterContentChecked,
 	AfterViewInit,
@@ -11,10 +12,12 @@ import {
 	OnDestroy,
 	OnInit,
 	QueryList,
+	Renderer2,
 	TemplateRef,
 	ViewChild,
 	ViewEncapsulation,
-	inject
+	inject,
+	isDevMode
 } from '@angular/core';
 import {NavigationEnd, Params, Router} from '@angular/router';
 import {DOCUMENT} from '@angular/common';
@@ -48,6 +51,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
 	hasHighContrast = false;
+	readonly contentId = 'content';
 	@Input() navigation: ObINavigationLink[] = [];
 	@Input() skipLinks: ObISkipLink[] | ObIDynamicSkipLink[] = [];
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
@@ -76,6 +80,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	private readonly document = inject(DOCUMENT);
 	private readonly window = inject(WINDOW);
 	private readonly highContrastModeDetector = inject(HighContrastModeDetector);
+	private readonly renderer = inject(Renderer2);
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
@@ -91,16 +96,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		this.headerIsStickyChange();
 		this.focusFragment();
 		this.focusOffCanvasClose();
-	}
-
-	scrollTop(element?: HTMLElement): void {
-		const scrollTop =
-			element?.scrollTop ?? (this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
-		this.scrollEvents.hasScrolled(scrollTop);
-		if (this.isScrolling !== scrollTop > 0) {
-			this.isScrolling = scrollTop > 0;
-			this.scrollEvents.scrolling(this.isScrolling);
-		}
 	}
 
 	ngOnInit(): void {
@@ -131,6 +126,39 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+	}
+
+	scrollTop(element?: HTMLElement): void {
+		const scrollTop =
+			element?.scrollTop ?? (this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
+		this.scrollEvents.hasScrolled(scrollTop);
+		if (this.isScrolling !== scrollTop > 0) {
+			this.isScrolling = scrollTop > 0;
+			this.scrollEvents.scrolling(this.isScrolling);
+		}
+	}
+
+	focusElement(elementId: string): void {
+		if (!this.config.focusableFragments.includes(elementId)) {
+			console.warn(
+				`${elementId} is not in the whitelist of ids of fragments that are allowed to be focused:\n ${this.config.focusableFragments.join(', ')}\n The whitelist of fragments that are allowed to be focused is defined in ObMasterLayoutConfig.focusableFragments`
+			);
+			return;
+		}
+
+		const element = this.getElementToFocus(elementId);
+		if (!(element instanceof Element) && isDevMode()) {
+			console.error(`${elementId} does not correspond to an existing DOM element.`);
+			return;
+		}
+
+		element.scrollIntoView({behavior: 'smooth'});
+		element.focus({preventScroll: true});
+		if (document.activeElement !== element && isDevMode()) {
+			element.setAttribute('tabindex', '-1');
+			element.focus({preventScroll: true});
+			console.info(`The element with the id: ${elementId} is not focusable. Oblique added a tabindex in order to make it focusable.`);
+		}
 	}
 
 	private isInHighContrastMode(): boolean {
@@ -236,10 +264,11 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 				map((evt: NavigationEnd) => evt.url),
 				tap(url => (this.route.path = (/^[^?&#]*/.exec(url) || [])[0])),
 				tap(url => (this.route.params = this.formatQueryParameters(this.extractUrlPart(url, /[?&][^#]*/)))),
-				map(url => this.extractUrlPart(url, /#[^?&]*/)),
-				filter(fragment => this.config.focusableFragments.includes(fragment))
+				map(url => this.extractUrlPart(url, /#[^?&]*/))
 			)
-			.subscribe(fragment => this.document.querySelector<HTMLElement>(`#${fragment}`)?.focus());
+			.subscribe(fragment => {
+				this.focusElement(fragment);
+			});
 	}
 
 	private extractUrlPart(url: string, regex: RegExp): string {
@@ -263,5 +292,10 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 				delay(600) // duration of the open animation
 			)
 			.subscribe(() => this.offCanvasClose.nativeElement.focus());
+	}
+
+	private getElementToFocus(elementId: string): HTMLElement {
+		const element = this.document.querySelector<HTMLElement>(`#${elementId}`);
+		return elementId === this.contentId ? (element.querySelector<HTMLHeadingElement>('h1') ?? element) : element;
 	}
 }

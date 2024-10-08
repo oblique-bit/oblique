@@ -2,6 +2,7 @@ import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {addDependency, checkPrecondition, getPreconditionVersion} from './ng-add-utils';
 import {ObIOptionsSchema} from './ng-add.model';
 import {
+	checkForMultiProject,
 	checkForSSR,
 	checkForStandalone,
 	createSafeRule,
@@ -20,6 +21,7 @@ export function addOblique(_options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
 			checkForStandalone(),
+			checkForMultiProject(),
 			checkForSSR(),
 			preconditions(),
 			oblique(_options),
@@ -54,15 +56,6 @@ function installMissingDependencies(tree: Tree, context: SchematicContext, depen
 
 function finalize(options: ObIOptionsSchema): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		/* eslint-disable max-len */
-		if (options.font === 'frutiger') {
-			warn(
-				_context,
-				'Due to licence restrictions, Frutiger font files cannot be delivered with Oblique. ' +
-					'\nThey can be requested from webforum@bk.admin.ch. Moreover, each project is responsible for the font protection according to its licence. ' +
-					'(https://github.com/swiss/styleguide/blob/master/src/assets/fonts/LICENSE). The proposed solution consist of only delivering the font if the Referer Http header is whitelisted.'
-			);
-		}
 		/* eslint-enable max-len */
 		if (isSuccessful) {
 			success(_context, 'Oblique has been successfully integrated. Please review the changes.');

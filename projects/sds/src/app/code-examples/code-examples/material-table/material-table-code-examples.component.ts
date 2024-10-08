@@ -7,6 +7,7 @@ import {MaterialTableExampleDefaultPreviewComponent} from './previews/default/ma
 import {MaterialTableExampleStylesPreviewComponent} from './previews/styles/material-table-example-styles-preview.component';
 import {MaterialTableExampleSizesPreviewComponent} from './previews/sizes/material-table-example-sizes-preview.component';
 import {MaterialTableExampleEditablePreviewComponent} from './previews/editable/material-table-example-editable-preview.component';
+import {MaterialTableExampleSelectablePreviewComponent} from './previews/selectable/material-table-example-selectable-preview.component';
 
 @Component({
 	selector: 'app-code-example-material-table',
@@ -57,6 +58,16 @@ export class MaterialTableCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('material-table', 'editable/material-table-editable-dialog.component.html', 'HTML (Dialog)'),
 				this.getSnippet('material-table', 'editable/material-table-editable-dialog.component.ts', 'TS (Dialog)'),
 				this.getSnippet('material-table', 'editable/mock-backend.service.ts', 'TS (Mock Backend)')
+			]
+		},
+		{
+			component: MaterialTableExampleSelectablePreviewComponent,
+			idParts: ['selectable'],
+			title: 'Selectable',
+			snippets: [
+				this.getSnippet('material-table', 'selectable/material-table-example-selectable-preview.component.html', 'HTML'),
+				this.getSnippet('material-table', 'selectable/material-table-example-selectable-preview.component.ts', 'TS'),
+				this.getSnippet('material-table', 'selectable/material-table-example-selectable-preview.component.scss', 'SCSS')
 			]
 		}
 	];

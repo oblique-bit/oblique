@@ -106,7 +106,6 @@ export class ObServiceNavigationService {
 	getLoginState$(): Observable<ObLoginState> {
 		return this.getState$().pipe(
 			map(state => state.loginState),
-			startWith('SA' as ObLoginState),
 			distinctUntilChanged((previousState, newState) => previousState === newState)
 		);
 	}
@@ -193,8 +192,9 @@ export class ObServiceNavigationService {
 
 	private addAppId(url: string, pamsAppId: string): string {
 		if (!pamsAppId) {
-			console.warn("Service-navigation requires an appId. Otherwise some stepup logins won't work");
-			return url;
+			throw new Error(
+				'Service Navigation requires an appId for step-up logins to work. The appId can be found on the application configuration page on ePortal.'
+			);
 		}
 		return `${url}&appid=${pamsAppId}`;
 	}

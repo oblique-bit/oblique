@@ -1,7 +1,8 @@
+@use "../../styles/scss/core/mixins/layout";
+
 :host {
 	grid-column-start: 2;
 	grid-row-start: 1;
-	margin-top: 10px;
 	min-height: calc(100vh - 150px);
 	border-radius: 4px;
 	background-color: rgb(255, 255, 255);
@@ -13,8 +14,23 @@
 	justify-content: flex-start;
 	overflow-x: auto;
 }
+@include layout.ob-media-breakpoint-down(md) {
+	:host {
+		margin-top: 104px; // free space for the header, with 20px padding-like space around logo
+		border-radius: 0;
+	}
+}
 
 h1 {
 	padding-top: 0.75rem;
 	padding-left: 0.75rem;
+}
+
+.title-container {
+	display: flex;
+	gap: 16px;
+}
+
+.deprecation-container {
+	padding: 1rem;
 }

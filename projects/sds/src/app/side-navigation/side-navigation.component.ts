@@ -1,9 +1,11 @@
-import {Component, inject} from '@angular/core';
+import {Component, EventEmitter, Output, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, NavigationExtras, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatIcon} from '@angular/material/icon';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {skip} from 'rxjs/operators';
 import {CmsDataService} from '../cms/cms-data.service';
 import {BehaviorSubject, Observable, combineLatestWith, debounceTime, filter, forkJoin, map, of, startWith, switchMap, tap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
@@ -15,6 +17,7 @@ import {CommonModule} from '@angular/common';
 import {AccordionLinksComponent} from './accordion-links/accordion-links.component';
 import {VersionComponent} from './version/version.component';
 import {ImageComponent} from './image/image.component';
+import {VersionService} from '../shared/version/version.service';
 
 @Component({
 	selector: 'app-side-navigation',
@@ -37,6 +40,8 @@ import {ImageComponent} from './image/image.component';
 	]
 })
 export class SideNavigationComponent {
+	@Output() readonly showMobileNavigation = new EventEmitter<boolean>();
+	displayMobileNavigation = false;
 	readonly componentId = 'side-navigation';
 	readonly search = new FormControl('');
 
@@ -49,15 +54,23 @@ export class SideNavigationComponent {
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
 	private readonly slugToIdService = inject(SlugToIdService);
+	private readonly versionService = inject(VersionService);
 
 	constructor() {
 		this.urlParamVersion$ = this.prepareUrlParams();
 		this.selectedSlug$ = this.prepareSelectedSlug();
 		this.filteredAccordions$ = this.prepareAccordions();
+		this.redirectOnVersionChange();
 	}
 
 	updateVersion(version?: number): void {
 		this.version$.next(version);
+		this.versionService.setCurrentVersion(version);
+	}
+
+	toggleMobileNavigation(): void {
+		this.displayMobileNavigation = !this.displayMobileNavigation;
+		this.showMobileNavigation.emit(this.displayMobileNavigation);
 	}
 
 	private prepareAccordions(): Observable<Accordion[]> {
@@ -154,5 +167,42 @@ export class SideNavigationComponent {
 
 	private getVersionFromUrlParam(activatedRoute?: ActivatedRoute): number | undefined {
 		return +activatedRoute.snapshot.queryParamMap.get('version') || undefined;
+	}
+
+	private redirectOnVersionChange(): void {
+		this.version$
+			.pipe(
+				skip(3),
+				combineLatestWith(this.selectedSlug$),
+				takeUntilDestroyed(),
+				map(([version, slug]) => this.getNewSlug(version, slug)),
+				filter(slug => !!slug)
+			)
+			.subscribe(slug => {
+				const extras: NavigationExtras = {queryParamsHandling: 'preserve', preserveFragment: true};
+				if (slug.startsWith('welcome')) {
+					void this.router.navigate(['introductions', slug], extras);
+				} else {
+					void this.router.navigate(['..', slug], {...extras, relativeTo: this.activatedRoute.children[0]});
+				}
+			});
+	}
+
+	private getNewSlug(version: number, slug: string): string | undefined {
+		if (slug === 'welcome-10' && version !== 10) {
+			return 'welcome';
+		}
+
+		switch (version) {
+			case 10:
+				return 'welcome-10';
+			case 11:
+				return ['master-layout-12', 'popover-12'].includes(slug) ? slug.replace('-12', '') : undefined;
+			case 12:
+				if (slug === 'language') return 'welcome';
+				return ['master-layout', 'popover'].includes(slug) ? `${slug}-12` : undefined;
+			default:
+				return undefined;
+		}
 	}
 }

@@ -1,3 +1,13 @@
+# [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
+
+## Features
+
+- **language:** remove setLocaleOnAdapter() uses ([20d0cb4c](https://github.com/oblique-bit/oblique/commit/20d0cb4cad2ee781ed20f5ca44abbfcc682ab278))
+- **master-layout:** add examples skiplinks to demo warning logs ([9208ad79](https://github.com/oblique-bit/oblique/commit/9208ad79554d020fbb7916ed4940c25a9b2e1aa7))
+- **master-layout:** add skip link to the "Blick" link in the footer ([b7172fce](https://github.com/oblique-bit/oblique/commit/b7172fcefe791765da22543a7add33e4a1e5d980))
+- **material:** move buttons in table header from `th` to `td` ([e001fdff](https://github.com/oblique-bit/oblique/commit/e001fdff36d3dc33df4863044f28663134ff3890))
+- **popover:** add example for visibility change property ([0cd92bc5](https://github.com/oblique-bit/oblique/commit/0cd92bc518aad719b594f199f3df201842756ab4))
+
 # [11.3.4](https://github.com/oblique-bit/oblique/compare/11.3.3...11.3.4) (2024-10-01)
 
 ## Features

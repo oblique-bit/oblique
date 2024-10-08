@@ -1,4 +1,4 @@
-import {Component, Inject, Input, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, Output, ViewEncapsulation} from '@angular/core';
 import {WINDOW} from '../utilities';
 import {TranslateModule} from '@ngx-translate/core';
 import {MatIconModule} from '@angular/material/icon';
@@ -14,10 +14,12 @@ import {MatIconModule} from '@angular/material/icon';
 })
 export class ObTopControlComponent {
 	@Input() scrollTarget: HTMLElement | Window;
+	@Output() readonly scrollToTop = new EventEmitter<void>();
 
 	constructor(@Inject(WINDOW) private readonly window: Window) {}
 
 	public scrollTop(): void {
-		(this.scrollTarget || this.window).scrollTo({top: 0, behavior: 'smooth'});
+		this.scrollTarget?.scrollTo({top: 0, behavior: 'smooth'});
+		this.scrollToTop.emit();
 	}
 }

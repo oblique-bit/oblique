@@ -43,6 +43,7 @@ All commits related to the SDS package must use the **sds** package and 1 of the
 - **unknown-route**
 - **unsaved-changes**
 - **material** for material design
+- **banner**
 - **cms**
 - **code-examples**
 - **feedback**

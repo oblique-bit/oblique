@@ -15,6 +15,11 @@
 		<input type="checkbox" id="showProfile" checked /><label for="showProfile">show profile widget (needs to be logged in)</label><br />
 		<input type="checkbox" id="showAuthentication" checked /><label for="showAuthentication">show authentication widget</label><br />
 		<hr />
+		<select id="languageSelect">
+			<option value="en">EN</option>
+			<option value="fr">FR</option>
+		</select>
+		<hr />
 		<ob-service-navigation-web-component
 			environment="TEST"
 			root-url="http://localhost:8207/"
@@ -32,7 +37,8 @@
 			info-links='[{"fr":"Lien de contact","en":"Contact link","links":{"fr":"https://fr.contact.com","en":"https://en.contact.com"}}]'
 			profile-links='[{"fr":"Lien de profile 1","en":"Profile link 1","links":{"fr":"https://fr.profile.com","en":"https://en.profile.com"}},{"fr":"Lien de profile 2","en":"Profile link 2","link":"https://profile.com"}]'
 			custom-buttons='[{"obliqueIconName":"smile", "badge":"1"},{"obliqueIconName":"calendar"}]'
-		/>
+		></ob-service-navigation-web-component>
+
 		<script>
 			document.querySelector("#showLanguages").addEventListener("change", (event) => {
 				document.querySelector("ob-service-navigation-web-component").setAttribute("display-languages", event.srcElement.checked);
@@ -52,9 +58,11 @@
 			document.querySelector("#showAuthentication").addEventListener("change", (event) => {
 				document.querySelector("ob-service-navigation-web-component").setAttribute("display-authentication", event.srcElement.checked);
 			});
-			document
-				.querySelector("ob-service-navigation-web-component")
-				.addEventListener("languageChange", (event) => console.log("languageChange", event.detail));
+			document.querySelector("ob-service-navigation-web-component").addEventListener("languageChange", (event) => {
+				const lang = event.detail;
+				document.querySelector("#languageSelect").value = lang;
+				console.log("languageChange", lang);
+			});
 			document
 				.querySelector("ob-service-navigation-web-component")
 				.addEventListener("loginState", (event) => console.log("loginState", event.detail));
@@ -64,6 +72,9 @@
 			document
 				.querySelector("ob-service-navigation-web-component")
 				.addEventListener("logoutTriggered", (event) => console.log("logout triggered", event.detail));
+			document.querySelector("#languageSelect").addEventListener("change", (event) => {
+				document.querySelector("ob-service-navigation-web-component").setAttribute("language", event.target.value);
+			});
 		</script>
 	</body>
 </html>
