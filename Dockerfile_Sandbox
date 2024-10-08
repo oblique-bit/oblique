@@ -12,7 +12,7 @@ USER root
 ENV DOCROOT=/usr/share/nginx/html
 
 # Copy the files from build step
-COPY /dist/sandbox/public ${DOCROOT}
+COPY /dist/sandbox ${DOCROOT}
 
 RUN mkdir /etc/nginx/includes
 
