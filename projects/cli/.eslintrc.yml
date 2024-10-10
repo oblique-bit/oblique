@@ -16,3 +16,9 @@ overrides:
             - error
             - time
             - timeEnd
+      "@typescript-eslint/no-magic-numbers":
+        - error
+        - ignore:
+            - -1
+            - 0
+            - 1
