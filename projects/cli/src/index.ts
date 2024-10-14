@@ -7,15 +7,15 @@ import {exampleUsageText, obTitle, obUsageText, optionDescriptions, runObCommand
 program
 	.name('ob')
 	.description(cliPackage.description)
-	.version(cliPackage.version, optionDescriptions.version.flags, optionDescriptions.version.description)
-	.helpOption(optionDescriptions.help.flags, optionDescriptions.help.description)
+	.version(cliPackage.version, optionDescriptions.ob.version.flags, optionDescriptions.ob.version.description)
+	.helpOption(optionDescriptions.ob.help.flags, optionDescriptions.ob.help.description)
 	.usage(obUsageText)
 	.addHelpText('beforeAll', titleText(`How to use the ${obTitle}`.toUpperCase(), ''))
 	.addHelpText(
 		'after',
 		exampleUsageText([
-			{command: optionDescriptions.version.command, description: optionDescriptions.version.description},
-			{command: optionDescriptions.help.command, description: optionDescriptions.help.description}
+			{command: optionDescriptions.ob.version.command, description: optionDescriptions.ob.version.description},
+			{command: optionDescriptions.ob.help.command, description: optionDescriptions.ob.help.description}
 		])
 	)
 	.action(handleAction)

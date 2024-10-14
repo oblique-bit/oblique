@@ -12,15 +12,15 @@ import {
 import SpyInstance = jest.SpyInstance;
 
 test('cliOptions.version.flags should be correct', () => {
-	expect(cliOptions.version.flags).toBe('-v, --version');
+	expect(cliOptions.ob.version.flags).toBe('-v, --version');
 });
 
 test('cliOptions.version.description should be correct', () => {
-	expect(cliOptions.version.description).toBe('Shows the current version of @oblique/cli');
+	expect(cliOptions.ob.version.description).toBe('Shows the current version of @oblique/cli');
 });
 
 test('cliOptions.version.command should be correct', () => {
-	expect(cliOptions.version.command).toBe('ob -v');
+	expect(cliOptions.ob.version.command).toBe('ob -v');
 });
 
 test('obTitle should have correct value', () => {
@@ -28,15 +28,15 @@ test('obTitle should have correct value', () => {
 });
 
 test('cliOptions.help.flags should be correct', () => {
-	expect(cliOptions.help.flags).toBe('-h, --help');
+	expect(cliOptions.ob.help.flags).toBe('-h, --help');
 });
 
 test('cliOptions.help.description should be correct', () => {
-	expect(cliOptions.help.description).toBe('Shows a help message for the "ob" command in the console.');
+	expect(cliOptions.ob.help.description).toBe('Shows a help message for the "ob" command in the console.');
 });
 
 test('cliOptions.help.command should be correct', () => {
-	expect(cliOptions.help.command).toBe('ob -h');
+	expect(cliOptions.ob.help.command).toBe('ob -h');
 });
 
 test('obUsageText should generate correct command usage text', () => {

@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 
 export const optionDescriptions = {
-	version: {
-		flags: '-v, --version',
-		description: 'Shows the current version of @oblique/cli',
-		command: 'ob -v'
-	},
-	help: {
-		flags: '-h, --help',
-		description: getHelpText('ob'),
-		command: 'ob -h'
+	ob: {
+		version: {
+			flags: '-v, --version',
+			description: 'Shows the current version of @oblique/cli',
+			command: 'ob -v'
+		},
+		help: {
+			flags: '-h, --help',
+			description: getHelpText('ob'),
+			command: 'ob -h'
+		}
 	}
 };
 export const obUsageText: string = commandUsageText();
