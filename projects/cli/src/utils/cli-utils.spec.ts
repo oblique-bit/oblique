@@ -4,7 +4,6 @@ import {
 	exampleUsageText,
 	getHelpText,
 	obTitle,
-	obUsageText,
 	runObCommand,
 	startObCommand,
 	titleText
@@ -39,14 +38,12 @@ test('cliOptions.help.command should be correct', () => {
 	expect(cliOptions.ob.help.command).toBe('ob -h');
 });
 
-test('obUsageText should generate correct command usage text', () => {
-	expect(obUsageText).toBe('<command> [option]');
-});
-
 test('runObCommand should log correct message', () => {
 	const consoleSpy = jest.spyOn(console, 'info').mockImplementation(() => {});
 	runObCommand();
-	expect(consoleSpy).toHaveBeenCalledWith('\nOblique CLI is running now!\n');
+	expect(consoleSpy).toHaveBeenCalledWith(
+		'\n  Use `ob new <project-name>` to create a new project\n  Use `ob --help` to explore the available commands\n'
+	);
 	consoleSpy.mockRestore();
 });
 
