@@ -20,7 +20,7 @@ program
 	)
 	.action(handleAction)
 	.showSuggestionAfterError(true)
-	.showHelpAfterError(true);
+	.showHelpAfterError('(Add --help for additional information)');
 
 program.parse();
 
