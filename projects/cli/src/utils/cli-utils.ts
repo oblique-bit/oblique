@@ -36,12 +36,8 @@ export function getHelpText(command: 'ob'): string {
 	return `Shows a help message for the "${command}" command in the console.`;
 }
 
-export const startObCommand = (
-	options: Record<string, string>,
-	callback: (options: Record<string, string>) => void,
-	label: string
-): void => {
-	console.info(titleText(obTitle.toUpperCase(), '', ' '));
+export const startObCommand = <T>(callback: (options: T) => void, label: string, options: T): void => {
+	console.info(obTitle.toUpperCase());
 	console.time(label);
 	callback(options);
 	console.timeEnd(label);

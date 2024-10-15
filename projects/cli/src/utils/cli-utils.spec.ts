@@ -85,7 +85,7 @@ describe('startObCommand', () => {
 		const options = {key: 'value'};
 		const label = 'Test Label';
 
-		startObCommand(options, callback, label);
+		startObCommand(callback, label, options);
 
 		expect(callback).toHaveBeenCalledWith(options);
 	});
@@ -94,7 +94,7 @@ describe('startObCommand', () => {
 		const options = {key: 'value'};
 		const label = 'Test Label';
 
-		startObCommand(options, callback, label);
+		startObCommand(callback, label, options);
 
 		expect(consoleTimeSpy).toHaveBeenCalledWith(label);
 	});
@@ -103,7 +103,7 @@ describe('startObCommand', () => {
 		const options = {key: 'value'};
 		const label = 'Test Label';
 
-		startObCommand(options, callback, label);
+		startObCommand(callback, label, options);
 
 		expect(consoleTimeEndSpy).toHaveBeenCalledWith(label);
 	});
@@ -114,9 +114,9 @@ describe('startObCommand', () => {
 		const options = {key: 'value'};
 		const label = 'Test Label';
 
-		startObCommand(options, callback, label);
+		startObCommand(callback, label, options);
 
-		expect(consoleInfoSpy).toHaveBeenCalledWith(`${uppercaseTitle} `);
+		expect(consoleInfoSpy).toHaveBeenCalledWith(uppercaseTitle);
 	});
 });
 

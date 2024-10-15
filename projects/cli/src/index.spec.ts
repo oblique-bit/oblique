@@ -30,8 +30,8 @@ describe('Oblique CLI', () => {
 
 	describe.each(['-v', '--version'])('version option with %s', flag => {
 		test(`stdout should contain the version from package.json`, () => {
-			const result = spawnSync('ts-node', [cliPath, flag], options);
-			expect(cleanOutput(result.stdout.toString())).toBe(cleanOutput(packageFile.version));
+			const result = spawnSync('ts-node', [cliPath, flag]);
+			expect(cleanOutput(result.stdout)).toBe(cleanOutput(packageFile.version));
 		});
 
 		test(`stderr should be empty`, () => {

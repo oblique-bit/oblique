@@ -28,7 +28,7 @@ program
 program.parse();
 
 export function handleAction(options: Record<string, string>): void {
-	startObCommand(options, runObCommand, 'Oblique CLI completed in');
+	startObCommand(runObCommand, 'Oblique CLI completed in', options);
 }
 
 export function getMaxCommandLength(examples: {command: string; description: string}[]): number {
