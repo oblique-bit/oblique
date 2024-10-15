@@ -2,6 +2,7 @@
 
 import {program} from '@commander-js/extra-typings';
 import * as cliPackage from '../package.json';
+import {createObNewCommand} from './new/ob-new';
 import {
 	commandUsageText,
 	createAdditionalHelpText,
@@ -24,6 +25,10 @@ program
 	.action(handleAction)
 	.showSuggestionAfterError(true)
 	.showHelpAfterError('(Add --help for additional information)');
+
+const obNewCommandConfigured = createObNewCommand();
+
+program.addCommand(obNewCommandConfigured);
 
 program.parse();
 
