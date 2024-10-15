@@ -53,7 +53,7 @@ export function commandUsageText(subCommand: '<command>' | 'new' | 'update' = '<
 
 export function exampleUsageText(examples: {command: string; description: string}[]): string {
 	const title = '\nExamples of use:\n';
-	return [title, examples.map(example => `${spaceUnit}${example.command} ${example.description}`).join('\n')].join('');
+	return [title, examples.map(example => `${spaceUnit}${example.command}${example.description}`).join('\n')].join('');
 }
 const PADDING_SIZE = 5;
 export function createAdditionalHelpText(

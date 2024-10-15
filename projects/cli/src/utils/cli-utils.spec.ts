@@ -1,6 +1,7 @@
 import {
 	optionDescriptions as cliOptions,
 	commandUsageText,
+	createAdditionalHelpText,
 	exampleUsageText,
 	getHelpText,
 	obTitle,
@@ -136,9 +137,81 @@ test('exampleUsageText should return formatted examples', () => {
 		{command: 'ob new', description: 'Creates a new project'},
 		{command: 'ob update', description: 'Updates the project'}
 	];
-	const expectedOutput = `Examples of use: ob new Creates a new project ob update Updates the project`;
+	const expectedOutput = `
+Examples of use:
+  ob newCreates a new project
+  ob updateUpdates the project`;
 	const result = exampleUsageText(examples);
-	expect(cleanOutput(result)).toBe(expectedOutput);
+	expect(result).toBe(expectedOutput);
+});
+
+describe('createAdditionalHelpText', () => {
+	const spaceUnit = ' ';
+
+	test('should return a properly formatted string', () => {
+		const title = 'Usage';
+		const examples = [
+			{command: 'cmd1', description: 'description1'},
+			{command: 'cmd2', description: 'description2'}
+		];
+		const maxCommandWidth = 4;
+
+		const result = createAdditionalHelpText(title, examples, maxCommandWidth);
+		const expected = ['Usage', ` ${spaceUnit}cmd1     description1\n${spaceUnit} cmd2     description2`].join('');
+
+		expect(result).toBe(expected);
+	});
+
+	test('should handle empty examples array', () => {
+		const title = 'Usage';
+		const examples: {command: string; description: string}[] = [];
+		const maxCommandWidth = 4;
+
+		const result = createAdditionalHelpText(title, examples, maxCommandWidth);
+		const expected = 'Usage';
+
+		expect(result).toBe(expected);
+	});
+
+	test('should pad commands correctly with given maxCommandWidth', () => {
+		const title = 'Usage';
+		const examples = [
+			{command: 'cmd1', description: 'description1'},
+			{command: 'cmd2', description: 'description2'}
+		];
+		const maxCommandWidth = 5;
+
+		const result = createAdditionalHelpText(title, examples, maxCommandWidth);
+		const expected = ['Usage', `${spaceUnit}cmd1    description1\n${spaceUnit}cmd2    description2`].join('');
+
+		expect(cleanOutput(result)).toBe(cleanOutput(expected));
+	});
+
+	test('should handle longer commands correctly without truncation', () => {
+		const title = 'Usage';
+		const examples = [
+			{command: 'longcommand1 ', description: 'description1'},
+			{command: 'cmd2', description: 'description2'}
+		];
+
+		const result = createAdditionalHelpText(title, examples, examples[0].command.length);
+
+		expect(result).toBe(
+			[
+				[
+					title,
+					'  ',
+					examples[0].command,
+					'     ',
+					examples[0].description,
+					'\n  ',
+					examples[1].command,
+					'              ',
+					examples[1].description
+				].join('')
+			].join('')
+		);
+	});
 });
 
 function cleanOutput(output: Buffer | string): string {
