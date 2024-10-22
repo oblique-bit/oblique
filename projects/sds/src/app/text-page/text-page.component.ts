@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, HostListener, inject} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
@@ -32,6 +32,16 @@ export class TextPageComponent {
 		});
 
 		this.selectedContent$ = this.buildSelectedContentObservable(validPageId$);
+	}
+
+	@HostListener('click', ['$event'])
+	onClick(event: MouseEvent): void {
+		const {target} = event;
+		if (!(target instanceof HTMLAnchorElement && target.target !== '_blank')) {
+			return;
+		}
+		event.preventDefault();
+		void this.router.navigate([target.pathname]);
 	}
 
 	private buildPageIdObservables(): [Observable<number>, Observable<number>] {
