@@ -10,6 +10,7 @@
   "i18n.common.action": "Azione",
   "i18n.common.close": "Chiudere",
   "i18n.common.clear": "Eliminare",
+  "i18n.oblique.breadcrumb": "Le Breadcrumb",
   "i18n.oblique.occurrences": "Numero di notifiche: {{occurrences}}",
   "i18n.oblique.external": "Si apre in una nuova scheda.",
   "i18n.oblique.file-upload.all.select": "Selezionare tutte le righe",
