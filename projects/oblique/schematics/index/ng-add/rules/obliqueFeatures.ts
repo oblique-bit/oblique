@@ -13,7 +13,6 @@ import {
 	appModulePath,
 	applyChanges,
 	createSrcFile,
-	getAngularVersion,
 	getTemplate,
 	routingModulePath
 } from '../ng-add-utils';
@@ -38,10 +37,8 @@ function addAjv(ajv: boolean): Rule {
 			infoMigration(_context, 'Oblique feature: Adding schema validation');
 			addDevDependency(tree, 'ajv');
 			addDevDependency(tree, 'ajv-formats');
-			if (getAngularVersion(tree) >= 10) {
-				addAngularConfigInList(tree, ['architect', 'build', 'options', 'allowedCommonJsDependencies'], 'ajv');
-				addAngularConfigInList(tree, ['architect', 'build', 'options', 'allowedCommonJsDependencies'], 'ajv-formats');
-			}
+			addAngularConfigInList(tree, ['architect', 'build', 'options', 'allowedCommonJsDependencies'], 'ajv');
+			addAngularConfigInList(tree, ['architect', 'build', 'options', 'allowedCommonJsDependencies'], 'ajv-formats');
 		}
 		return tree;
 	});
