@@ -1,5 +1,5 @@
 {
-  "name": "sandbox",
+  "name": "@oblique/sandbox",
   "version": "12.0.4",
   "scripts": {
     "start": "ng serve",

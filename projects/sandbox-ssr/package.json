@@ -1,5 +1,5 @@
 {
-  "name": "sandbox-ssr",
+  "name": "@oblique/sandbox-ssr",
   "version": "12.0.4",
   "scripts": {
     "start": "ng serve",
