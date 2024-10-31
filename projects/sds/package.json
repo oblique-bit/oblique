@@ -1,5 +1,5 @@
 {
-  "name": "swiss-design-system",
+  "name": "@oblique/sds",
   "version": "12.0.4",
   "scripts": {
     "start": "ng serve",
