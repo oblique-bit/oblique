@@ -183,7 +183,7 @@ function raiseBuildBudget(): Rule {
 				{
 					type: 'initial',
 					maximumWarning: '1.3mb',
-					maximumError: '1.5mb'
+					maximumError: '1.8mb'
 				},
 				{
 					type: 'anyComponentStyle',
