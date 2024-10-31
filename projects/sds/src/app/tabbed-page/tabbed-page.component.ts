@@ -3,7 +3,7 @@ import {ActivatedRoute, NavigationEnd, Router, UrlSerializer} from '@angular/rou
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
-import {Observable, distinctUntilChanged, filter, map, mergeWith, partition, switchMap} from 'rxjs';
+import {Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {URL_CONST} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -76,9 +76,9 @@ export class TabbedPageComponent {
 	private buildPageIdObservables(): [Observable<number>, Observable<number>] {
 		return partition(
 			this.slugToIdService.readyToMap.pipe(
-				mergeWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
+				first(),
+				concatWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
 				map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
-				distinctUntilChanged(),
 				map(slug => this.slugToIdService.getIdForSlug(slug))
 			),
 			id => id !== undefined
