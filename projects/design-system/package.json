@@ -1,6 +1,6 @@
 {
   "name": "@oblique/design-system",
-  "version": "12.0.0",
+  "version": "12.0.1",
   "scripts": {
     "lint": "ts-node scripts/lint.ts",
     "format": "ts-node scripts/lint.ts --fix",
