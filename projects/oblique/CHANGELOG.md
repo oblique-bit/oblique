@@ -1,3 +1,12 @@
+# [12.0.1](https://github.com/oblique-bit/oblique/compare/12.0.0...12.0.1) (2024-11-01)
+
+## Bug Fixes
+
+- **breadcrumb:** ensure accessibility using aria attributes ([9cabfc04](https://github.com/oblique-bit/oblique/commit/9cabfc044672645a513aea4fb7064f91cb1d359b))
+- **button:** make it an inline element ([d854f320](https://github.com/oblique-bit/oblique/commit/d854f32086acfa95ee6750e3e1d42233af9754f0))
+- **master-layout:** add a padding around the service navigation ([12a3dfe2](https://github.com/oblique-bit/oblique/commit/12a3dfe221080d57ca0a729566c5707404326f9c))
+- **service-navigation:** make sure the language selection's height is consistent ([506c5f1a](https://github.com/oblique-bit/oblique/commit/506c5f1a7a4c7743867e9d3dcd22cb0c77f2ee5d))
+
 # [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
 
 ## Bug Fixes

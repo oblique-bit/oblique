@@ -1,3 +1,10 @@
+# [12.0.1](https://github.com/oblique-bit/oblique/compare/12.0.0...12.0.1) (2024-11-01)
+
+## Bug Fixes
+
+- **tabbed-page:** don't navigate to welcome page when clicking on component links ([22b84a83](https://github.com/oblique-bit/oblique/commit/22b84a834a08db3fd365892f8758478a93841a48))
+- **text-page:** don't reload whole page for internal links ([f3cf8219](https://github.com/oblique-bit/oblique/commit/f3cf8219d4fd3d42fd8c72d47f51859c28bfb326))
+
 # [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
 
 ## Bug Fixes

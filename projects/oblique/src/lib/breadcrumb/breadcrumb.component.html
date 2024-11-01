@@ -1,9 +1,10 @@
-<nav>
+<nav [attr.aria-label]="'i18n.oblique.breadcrumb' | translate">
 	<ol class="ob-breadcrumbs">
 		<li *ngFor="let crumb of breadcrumbs$ | async; last as isLast">
 			<ng-container *ngIf="!isLast">
 				<a
 					class="ob-breadcrumb-label"
+					[attr.mat-label]="crumb.label | translate"
 					#element
 					[routerLink]="crumb.url"
 					[style.max-width]="maxWidth"
@@ -15,7 +16,7 @@
 				<span class="ob-breadcrumb-separator ob-icon-text"><mat-icon svgIcon="chevron-small-right" /></span>
 			</ng-container>
 
-			<span class="ob-breadcrumb-label" *ngIf="isLast">{{ crumb.label | translate }}</span>
+			<span aria-current="page" class="ob-breadcrumb-label" *ngIf="isLast">{{ crumb.label | translate }}</span>
 		</li>
 	</ol>
 </nav>

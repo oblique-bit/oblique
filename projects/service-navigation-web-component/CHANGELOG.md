@@ -1,3 +1,9 @@
+# [12.0.1](https://github.com/oblique-bit/oblique/compare/12.0.0...12.0.1) (2024-11-01)
+
+## Bug Fixes
+
+- **service-navigation:** make sure the language selection's height is consistent ([506c5f1a](https://github.com/oblique-bit/oblique/commit/506c5f1a7a4c7743867e9d3dcd22cb0c77f2ee5d))
+
 # [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
 
 ## Bug Fixes
