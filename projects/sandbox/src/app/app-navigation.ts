@@ -86,6 +86,7 @@ export const appNavigation = [
 			{url: 'file-upload', label: 'File Upload'},
 			{url: 'form', label: 'Forms', children: [{url: '1', label: 'Forms 1'}]},
 			{url: 'focus-invalid', label: 'Focus Invalid'},
+			{url: 'focus-with-outline', label: 'Focus with outline'},
 			{url: 'global-events', label: 'Global events'},
 			{url: 'horizontal-forms', label: 'Horizontal Forms'},
 			{url: 'http-interceptor', label: 'i18n.routes.samples.http-interceptor.title'},

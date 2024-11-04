@@ -86,6 +86,7 @@ import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component
 import {ServiceNavigationSampleComponent} from './service-navigation/service-navigation-sample.component';
 import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 import {RxjsOperatorsComponent} from './rxjs-operators/rxjs-operators.component';
+import {FocusSampleComponent} from './focus/focus-sample.component';
 import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.component';
 
 @NgModule({
@@ -150,6 +151,7 @@ import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.
 		ExternalLinkComponent,
 		FileUploadSampleComponent,
 		FocusInvalidSampleComponent,
+		FocusSampleComponent,
 		FormSampleComponent,
 		GlobalEventsSampleComponent,
 		HorizontalFormsSampleComponent,

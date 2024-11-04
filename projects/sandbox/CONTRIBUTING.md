@@ -17,6 +17,7 @@ All commits related to the Sandbox package must use the **sandbox** package and 
 - **error-messages**
 - **external-link**
 - **file-upload**
+- **focus-with-outline**
 - **focus-invalid**
 - **global-events**
 - **http-interceptor**
