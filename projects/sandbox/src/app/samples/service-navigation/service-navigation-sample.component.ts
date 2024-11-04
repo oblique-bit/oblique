@@ -65,8 +65,8 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 		tel: '+41 58 461 61 11'
 	};
 	hasCustomWidgets = true;
-	readonly rootUrl = environment.pams.rootUrl;
-	readonly environment = environment.pams.environment;
+	readonly rootUrl = environment.pams?.rootUrl;
+	readonly environment = environment.pams?.environment;
 
 	private readonly contactInfo: ObIServiceNavigationContact = {
 		email: 'support@bit.admin.ch',
