@@ -248,7 +248,7 @@ describe('ObMasterLayoutComponent', () => {
 		let element: HTMLElement;
 		let content: HTMLElement;
 
-		describe('targetting the id "content" when there is no h1 in the page', () => {
+		describe('targeting the id "content" when there is no h1 in the page', () => {
 			beforeEach(() => {
 				element = document.getElementById('content');
 				jest.spyOn(element, 'scrollIntoView');
@@ -263,7 +263,7 @@ describe('ObMasterLayoutComponent', () => {
 			});
 		});
 
-		describe('targetting the id "content" when there is a h1 in the page', () => {
+		describe('targeting the id "content" when there is a h1 in the page', () => {
 			beforeEach(() => {
 				content = document.getElementById('content');
 				content.prepend(document.createElement('h1'));
@@ -281,7 +281,7 @@ describe('ObMasterLayoutComponent', () => {
 			});
 		});
 
-		describe('targetting an id is not in the whitelist of ids of fragments that are allowed to be focused. (in ObMasterLayoutConfig.focusableFragments)', () => {
+		describe('targeting an id is not in the whitelist of ids of fragments that are allowed to be focused. (in ObMasterLayoutConfig.focusableFragments)', () => {
 			beforeEach(() => {
 				content = document.getElementById('content');
 				const config = TestBed.inject(ObMasterLayoutConfig);
@@ -309,7 +309,7 @@ describe('ObMasterLayoutComponent', () => {
 			});
 		});
 
-		describe('targetting an id that is corresponding to an non-existing dom element', () => {
+		describe('targeting an id that is corresponding to an non-existing dom element', () => {
 			beforeEach(() => {
 				content = document.getElementById('content');
 				content.innerHTML = '<div></div>';
@@ -334,7 +334,7 @@ describe('ObMasterLayoutComponent', () => {
 				jest.clearAllMocks();
 			});
 		});
-		describe('targetting an id that is corresponding to an existing dom element that is not focusable', () => {
+		describe('targeting an id that is corresponding to an existing dom element that is not focusable', () => {
 			beforeEach(() => {
 				content = document.getElementById('content');
 				content.innerHTML = '<input id="not_focusable_element" disabled />';
