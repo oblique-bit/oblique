@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {provideRouter} from '@angular/router';
+import {CUSTOM_ELEMENTS_SCHEMA, Component} from '@angular/core';
+import {Router, provideRouter} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 import {WINDOW} from '../../utilities';
@@ -18,6 +18,9 @@ import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 import {appVersion} from '../../version';
+
+@Component({template: ''})
+export class MockComponent {}
 
 describe('ObMasterLayoutComponent', () => {
 	let component: ObMasterLayoutComponent;
@@ -41,7 +44,7 @@ describe('ObMasterLayoutComponent', () => {
 			imports: [ObMockTranslatePipe],
 			declarations: [ObMasterLayoutComponent],
 			providers: [
-				provideRouter([]),
+				provideRouter([{path: 'some/path', component: MockComponent}]),
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
@@ -70,6 +73,27 @@ describe('ObMasterLayoutComponent', () => {
 
 	it('should have ob-version attribute', () => {
 		expect(fixture.debugElement.nativeElement.getAttribute('ob-version')).toBe(appVersion);
+	});
+
+	describe('initialization', () => {
+		beforeEach(async () => {
+			jest.spyOn(component, 'focusElement');
+			const router = TestBed.inject(Router);
+			router.initialNavigation();
+			await router.navigate(['some/path'], {fragment: 'someFragment', queryParams: {param: 'someParam'}});
+		});
+
+		it('should store the current route', () => {
+			expect(component.route.path).toBe('/some/path');
+		});
+
+		it('should store the current parameters', () => {
+			expect(component.route.params).toEqual({param: 'someParam'});
+		});
+
+		it('should call focusElement with "someFragment"', () => {
+			expect(component.focusElement).toHaveBeenCalledWith('someFragment');
+		});
 	});
 
 	describe('properties', () => {
