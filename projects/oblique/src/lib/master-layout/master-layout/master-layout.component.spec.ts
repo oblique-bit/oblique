@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {provideRouter} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 import {WINDOW} from '../../utilities';
@@ -38,9 +38,10 @@ describe('ObMasterLayoutComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, RouterTestingModule],
+			imports: [ObMockTranslatePipe],
 			declarations: [ObMasterLayoutComponent],
 			providers: [
+				provideRouter([]),
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
