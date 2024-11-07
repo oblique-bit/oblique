@@ -101,7 +101,7 @@ module.exports.coverageThreshold = {
 	},
 	'projects/oblique/src/lib/master-layout/master-layout/*.ts': {
 		statements: 97,
-		branches: 88,
+		branches: 92,
 		functions: 94,
 		lines: 97
 	},

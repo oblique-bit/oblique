@@ -76,23 +76,46 @@ describe('ObMasterLayoutComponent', () => {
 	});
 
 	describe('initialization', () => {
-		beforeEach(async () => {
-			jest.spyOn(component, 'focusElement');
-			const router = TestBed.inject(Router);
-			router.initialNavigation();
-			await router.navigate(['some/path'], {fragment: 'someFragment', queryParams: {param: 'someParam'}});
+		describe('with a fragment', () => {
+			beforeEach(async () => {
+				jest.spyOn(component, 'focusElement');
+				const router = TestBed.inject(Router);
+				router.initialNavigation();
+				await router.navigate(['some/path'], {fragment: 'someFragment', queryParams: {param: 'someParam'}});
+			});
+
+			it('should store the current route', () => {
+				expect(component.route.path).toBe('/some/path');
+			});
+
+			it('should store the current parameters', () => {
+				expect(component.route.params).toEqual({param: 'someParam'});
+			});
+
+			it('should call focusElement with "someFragment"', () => {
+				expect(component.focusElement).toHaveBeenCalledWith('someFragment');
+			});
 		});
 
-		it('should store the current route', () => {
-			expect(component.route.path).toBe('/some/path');
-		});
+		describe('without fragment', () => {
+			beforeEach(async () => {
+				jest.spyOn(component, 'focusElement');
+				const router = TestBed.inject(Router);
+				router.initialNavigation();
+				await router.navigate(['some/path'], {queryParams: {param: 'someParam'}});
+			});
 
-		it('should store the current parameters', () => {
-			expect(component.route.params).toEqual({param: 'someParam'});
-		});
+			it('should store the current route', () => {
+				expect(component.route.path).toBe('/some/path');
+			});
 
-		it('should call focusElement with "someFragment"', () => {
-			expect(component.focusElement).toHaveBeenCalledWith('someFragment');
+			it('should store the current parameters', () => {
+				expect(component.route.params).toEqual({param: 'someParam'});
+			});
+
+			it('should not call focusElement', () => {
+				expect(component.focusElement).not.toHaveBeenCalled();
+			});
 		});
 	});
 
