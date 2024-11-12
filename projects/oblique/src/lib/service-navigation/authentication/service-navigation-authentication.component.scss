@@ -1,6 +1,9 @@
 @use "../../../styles/scss/core/variables";
 
 .ob-service-navigation-authentication {
+	padding-right: variables.$ob-spacing-sm;
+	padding-left: variables.$ob-spacing-sm;
+
 	a.ob-button[id*="login"] {
 		display: flex;
 		flex-direction: row-reverse;
