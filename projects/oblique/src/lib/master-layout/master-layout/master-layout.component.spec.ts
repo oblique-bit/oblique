@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, Component} from '@angular/core';
+import {Router, provideRouter} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 import {WINDOW} from '../../utilities';
@@ -18,6 +18,9 @@ import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 import {appVersion} from '../../version';
+
+@Component({template: ''})
+export class MockComponent {}
 
 describe('ObMasterLayoutComponent', () => {
 	let component: ObMasterLayoutComponent;
@@ -38,9 +41,10 @@ describe('ObMasterLayoutComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, RouterTestingModule],
+			imports: [ObMockTranslatePipe],
 			declarations: [ObMasterLayoutComponent],
 			providers: [
+				provideRouter([{path: 'some/path', component: MockComponent}]),
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
@@ -69,6 +73,50 @@ describe('ObMasterLayoutComponent', () => {
 
 	it('should have ob-version attribute', () => {
 		expect(fixture.debugElement.nativeElement.getAttribute('ob-version')).toBe(appVersion);
+	});
+
+	describe('initialization', () => {
+		describe('with a fragment', () => {
+			beforeEach(async () => {
+				jest.spyOn(component, 'focusElement');
+				const router = TestBed.inject(Router);
+				router.initialNavigation();
+				await router.navigate(['some/path'], {fragment: 'someFragment', queryParams: {param: 'someParam'}});
+			});
+
+			it('should store the current route', () => {
+				expect(component.route.path).toBe('/some/path');
+			});
+
+			it('should store the current parameters', () => {
+				expect(component.route.params).toEqual({param: 'someParam'});
+			});
+
+			it('should call focusElement with "someFragment"', () => {
+				expect(component.focusElement).toHaveBeenCalledWith('someFragment');
+			});
+		});
+
+		describe('without fragment', () => {
+			beforeEach(async () => {
+				jest.spyOn(component, 'focusElement');
+				const router = TestBed.inject(Router);
+				router.initialNavigation();
+				await router.navigate(['some/path'], {queryParams: {param: 'someParam'}});
+			});
+
+			it('should store the current route', () => {
+				expect(component.route.path).toBe('/some/path');
+			});
+
+			it('should store the current parameters', () => {
+				expect(component.route.params).toEqual({param: 'someParam'});
+			});
+
+			it('should not call focusElement', () => {
+				expect(component.focusElement).not.toHaveBeenCalled();
+			});
+		});
 	});
 
 	describe('properties', () => {
@@ -248,7 +296,7 @@ describe('ObMasterLayoutComponent', () => {
 		let element: HTMLElement;
 		let content: HTMLElement;
 
-		describe('targetting the id "content" when there is no h1 in the page', () => {
+		describe('targeting the id "content" when there is no h1 in the page', () => {
 			beforeEach(() => {
 				element = document.getElementById('content');
 				jest.spyOn(element, 'scrollIntoView');
@@ -263,7 +311,7 @@ describe('ObMasterLayoutComponent', () => {
 			});
 		});
 
-		describe('targetting the id "content" when there is a h1 in the page', () => {
+		describe('targeting the id "content" when there is a h1 in the page', () => {
 			beforeEach(() => {
 				content = document.getElementById('content');
 				content.prepend(document.createElement('h1'));
@@ -281,7 +329,7 @@ describe('ObMasterLayoutComponent', () => {
 			});
 		});
 
-		describe('targetting an id is not in the whitelist of ids of fragments that are allowed to be focused. (in ObMasterLayoutConfig.focusableFragments)', () => {
+		describe('targeting an id is not in the whitelist of ids of fragments that are allowed to be focused. (in ObMasterLayoutConfig.focusableFragments)', () => {
 			beforeEach(() => {
 				content = document.getElementById('content');
 				const config = TestBed.inject(ObMasterLayoutConfig);
@@ -309,7 +357,7 @@ describe('ObMasterLayoutComponent', () => {
 			});
 		});
 
-		describe('targetting an id that is corresponding to an non-existing dom element', () => {
+		describe('targeting an id that is corresponding to an non-existing dom element', () => {
 			beforeEach(() => {
 				content = document.getElementById('content');
 				content.innerHTML = '<div></div>';
@@ -334,7 +382,7 @@ describe('ObMasterLayoutComponent', () => {
 				jest.clearAllMocks();
 			});
 		});
-		describe('targetting an id that is corresponding to an existing dom element that is not focusable', () => {
+		describe('targeting an id that is corresponding to an existing dom element that is not focusable', () => {
 			beforeEach(() => {
 				content = document.getElementById('content');
 				content.innerHTML = '<input id="not_focusable_element" disabled />';

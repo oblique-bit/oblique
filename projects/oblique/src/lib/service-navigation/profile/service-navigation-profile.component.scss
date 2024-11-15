@@ -1,6 +1,9 @@
 @use "../../../styles/scss/core/variables";
 
 .ob-service-navigation-profile {
+	padding-right: variables.$ob-spacing-sm;
+	padding-left: variables.$ob-spacing-sm;
+
 	.ob-user {
 		font-size: 1.261em; // empiric value
 		border-radius: 50%;

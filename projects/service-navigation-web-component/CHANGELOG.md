@@ -1,3 +1,10 @@
+# [12.0.2](https://github.com/oblique-bit/oblique/compare/12.0.1...12.0.2) (2024-11-15)
+
+## Bug Fixes
+
+- **service-navigation:** increase the padding around the profile & authentication widgets ([1853ee4e](https://github.com/oblique-bit/oblique/commit/1853ee4e279688567e1936f60f261af2a7665abc))
+- **web-component:** only import needed styles ([81a38d1a](https://github.com/oblique-bit/oblique/commit/81a38d1a9291eab822e7a13a31d88ef16003b731))
+
 # [12.0.1](https://github.com/oblique-bit/oblique/compare/12.0.0...12.0.1) (2024-11-01)
 
 ## Bug Fixes

@@ -5,29 +5,48 @@ import {Log} from './shared/log';
 import {Files} from './shared/files';
 
 class DependenciesUpdate extends StaticScript {
-	private static readonly packageJsonPath = 'projects/oblique/package.json';
+	private static readonly packageJsonPaths = DependenciesUpdate.buildPackageJsonList();
+
 	static perform(): void {
 		Log.start('Update dependencies');
-		const peerDependencies = DependenciesUpdate.savePeerDependencies();
+		const dependencies = DependenciesUpdate.readPackagesJson();
+
 		DependenciesUpdate.execute('npm update --save --audit false');
 		DependenciesUpdate.execute('npm audit fix --audit-level=none');
 		DependenciesUpdate.execute('npm dedupe --audit false');
 		DependenciesUpdate.execute('npm prune --audit false');
-		DependenciesUpdate.restorePeerDependencies(peerDependencies);
+		DependenciesUpdate.restoreDependencies(dependencies);
 		DependenciesUpdate.commit();
 		Log.success();
 	}
 
-	private static savePeerDependencies(): Record<string, string> {
-		return DependenciesUpdate.readPackageJson().peerDependencies;
+	private static buildPackageJsonList(): string[] {
+		const dir = `${__dirname}/../projects/`;
+		const files = Files.readDirectory(dir)
+			.filter(path => Files.isDirectory(`${dir}${path}`))
+			.filter(path => Files.exists(`${dir}${path}/package.json`))
+			.map(path => `${dir}${path}/package.json`);
+
+		if (Files.exists('package.json')) {
+			files.push('package.json');
+		}
+
+		return files;
 	}
 
-	private static restorePeerDependencies(peerDependencies: Record<string, string>): void {
-		Files.writeJson(DependenciesUpdate.packageJsonPath, {...DependenciesUpdate.readPackageJson(), peerDependencies});
+	private static restoreDependencies(dependencies: {peerDependencies: Record<string, string>}[]): void {
+		DependenciesUpdate.packageJsonPaths.forEach((path, iterator) => {
+			if (dependencies[iterator]?.peerDependencies) {
+				Files.writeJson(path, {
+					...DependenciesUpdate.readPackagesJson()[iterator],
+					peerDependencies: dependencies[iterator].peerDependencies
+				});
+			}
+		});
 	}
 
-	private static readPackageJson(): {peerDependencies: Record<string, string>} {
-		return Files.readJson(DependenciesUpdate.packageJsonPath);
+	private static readPackagesJson(): {peerDependencies: Record<string, string>}[] {
+		return DependenciesUpdate.packageJsonPaths.map(path => Files.readJson(path));
 	}
 
 	private static execute(command: string): void {
