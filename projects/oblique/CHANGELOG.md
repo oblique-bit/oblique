@@ -1,3 +1,11 @@
+# [12.0.2](https://github.com/oblique-bit/oblique/compare/12.0.1...12.0.2) (2024-11-15)
+
+## Bug Fixes
+
+- **master-layout:** removes the padding around the service navigation in collapsed mode ([5e140b33](https://github.com/oblique-bit/oblique/commit/5e140b3356982c722f203ca303f8af8a00020234))
+- **master-layout:** don't process fragments if none is provided ([ddaf7028](https://github.com/oblique-bit/oblique/commit/ddaf7028f18b62d7222c31b593cfe69cdc723a2f))
+- **service-navigation:** increase the padding around the profile & authentication widgets ([1853ee4e](https://github.com/oblique-bit/oblique/commit/1853ee4e279688567e1936f60f261af2a7665abc))
+
 # [12.0.1](https://github.com/oblique-bit/oblique/compare/12.0.0...12.0.1) (2024-11-01)
 
 ## Bug Fixes

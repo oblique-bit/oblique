@@ -1,3 +1,9 @@
+# [12.0.2](https://github.com/oblique-bit/oblique/compare/12.0.1...12.0.2) (2024-11-15)
+
+## Bug Fixes
+
+- **service-navigation:** avoid `undefined` error when started without PAMS ([8e111b63](https://github.com/oblique-bit/oblique/commit/8e111b63d187d4b86b5997601065a31048b85b5b))
+
 # [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
 
 ## Features
