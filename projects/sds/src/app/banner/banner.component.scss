@@ -1,13 +1,15 @@
 @use "../../styles/scss/core/variables";
 @use "../../styles/scss/core/mixins/layout";
 
-:host {
+.banner-content {
 	background-color: variables.$active;
 	color: white;
 	display: flex;
 	justify-content: space-around;
+	align-items: center;
 	font-size: 14px;
 	font-weight: bold;
+	height: 100%;
 
 	p {
 		margin-bottom: 0;
@@ -16,6 +18,7 @@
 	a {
 		color: white;
 	}
+
 	@include layout.ob-media-breakpoint-down(md) {
 		font-size: 11px;
 		line-height: 13px;
