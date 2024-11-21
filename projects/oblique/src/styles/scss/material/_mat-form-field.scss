@@ -494,6 +494,10 @@
 		z-index: 1;
 	}
 
+	.mat-mdc-form-field-text-suffix {
+		padding-left: core-variables.$ob-spacing-xs;
+	}
+
 	@at-root #{selector.append(".mat-mdc-form-field-type-mat-input", &)} {
 		.mat-mdc-form-field-icon-prefix,
 		.mat-mdc-form-field-icon-suffix {
