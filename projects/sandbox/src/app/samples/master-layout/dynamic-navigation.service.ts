@@ -20,12 +20,12 @@ export class DynamicNavigationService {
 	}
 
 	addLink(link: ObINavigationLink): void {
-		this.links.push(link);
+		this.links = this.links.concat(link);
 		this.navigationLinks.next(this.links);
 	}
 
 	removeLastLink(): void {
-		this.links.pop();
+		this.links = this.links.slice(0, -1);
 		this.navigationLinks.next(this.links);
 	}
 }
