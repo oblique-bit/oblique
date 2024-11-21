@@ -1,6 +1,5 @@
 /* eslint-disable max-lines */
 import {
-	AfterContentChecked,
 	AfterViewInit,
 	Component,
 	ContentChild,
@@ -47,7 +46,7 @@ import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout', 'ob-version': appVersion}
 })
-export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, AfterContentChecked, OnDestroy {
+export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy {
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
 	hasHighContrast = false;
@@ -104,6 +103,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION))
 			.subscribe(evt => this.updateSkipLinks(evt.value));
 		this.updateSkipLinks(!this.noNavigation);
+		this.hasHighContrast = this.isInHighContrastMode();
 	}
 
 	ngDoCheck(): void {
@@ -112,10 +112,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 			this.masterLayout.navigation.refresh();
 			this.updateSkipLinks(!this.noNavigation);
 		}
-	}
-
-	ngAfterContentChecked(): void {
-		this.hasHighContrast = this.isInHighContrastMode();
 	}
 
 	ngAfterViewInit(): void {
