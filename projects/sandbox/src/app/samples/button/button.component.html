@@ -7,23 +7,23 @@
 	</mat-select>
 </mat-form-field>
 <table class="ob-table">
+	<caption>
+		Primary, secondary, and tertiary buttons
+	</caption>
 	<thead>
 		<tr>
-			<th></th>
-			<th>Primary</th>
-			<th>Secondary</th>
-			<th>Tertiary</th>
-			<th>Dynamic</th>
+			<th scope="col">Button type</th>
+			<th scope="col">Variant</th>
+			<th scope="col">Primary</th>
+			<th scope="col">Secondary</th>
+			<th scope="col">Tertiary</th>
+			<th scope="col">Dynamic</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td colspan="4">Button</td>
-		</tr>
-		<tr>
-			<th>
-				<label>Default</label>
-			</th>
+			<th scope="rowgroup" rowspan="3">Button</th>
+			<th scope="row">Text only</th>
 			<td>
 				<button type="button" mat-button obButton="primary">Primary</button>
 			</td>
@@ -38,9 +38,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
+			<th scope="row">Icon and text</th>
 			<td>
 				<button type="button" mat-button obButton="primary"><mat-icon svgIcon="logout" /> Primary</button>
 			</td>
@@ -54,54 +52,8 @@
 				<button type="button" mat-button [obButton]="obButton"><mat-icon svgIcon="logout" /> Dynamic</button>
 			</td>
 		</tr>
-	</tbody>
-	<tbody>
 		<tr>
-			<td colspan="4">Button disabled</td>
-		</tr>
-		<tr>
-			<th>
-				<label>Default</label>
-			</th>
-			<td>
-				<button type="button" mat-button obButton="primary" disabled>Primary</button>
-			</td>
-			<td>
-				<button type="button" mat-button obButton="secondary" disabled>Secondary</button>
-			</td>
-			<td>
-				<button type="button" mat-button obButton="tertiary" disabled>Tertiary</button>
-			</td>
-			<td>
-				<button type="button" mat-button [obButton]="obButton" disabled>Dynamic</button>
-			</td>
-		</tr>
-		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
-			<td>
-				<button type="button" mat-button obButton="primary" disabled><mat-icon svgIcon="logout" /> Primary</button>
-			</td>
-			<td>
-				<button type="button" mat-button obButton="secondary" disabled><mat-icon svgIcon="logout" /> Secondary</button>
-			</td>
-			<td>
-				<button type="button" mat-button obButton="tertiary" disabled><mat-icon svgIcon="logout" /> Tertiary</button>
-			</td>
-			<td>
-				<button type="button" mat-button [obButton]="obButton" disabled><mat-icon svgIcon="logout" /> Dynamic</button>
-			</td>
-		</tr>
-	</tbody>
-	<tbody>
-		<tr>
-			<td colspan="4">Button without text</td>
-		</tr>
-		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
+			<th scope="row">Icon only</th>
 			<td>
 				<button type="button" mat-icon-button obButton="primary"><mat-icon svgIcon="logout" /></button>
 			</td>
@@ -118,12 +70,38 @@
 	</tbody>
 	<tbody>
 		<tr>
-			<td colspan="4">Button disabled without text</td>
+			<th scope="rowgroup" rowspan="3">Button disabled</th>
+			<th scope="row">Text only</th>
+			<td>
+				<button type="button" mat-button obButton="primary" disabled>Primary</button>
+			</td>
+			<td>
+				<button type="button" mat-button obButton="secondary" disabled>Secondary</button>
+			</td>
+			<td>
+				<button type="button" mat-button obButton="tertiary" disabled>Tertiary</button>
+			</td>
+			<td>
+				<button type="button" mat-button [obButton]="obButton" disabled>Dynamic</button>
+			</td>
 		</tr>
 		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
+			<th scope="row">Icon and text</th>
+			<td>
+				<button type="button" mat-button obButton="primary" disabled><mat-icon svgIcon="logout" /> Primary</button>
+			</td>
+			<td>
+				<button type="button" mat-button obButton="secondary" disabled><mat-icon svgIcon="logout" /> Secondary</button>
+			</td>
+			<td>
+				<button type="button" mat-button obButton="tertiary" disabled><mat-icon svgIcon="logout" /> Tertiary</button>
+			</td>
+			<td>
+				<button type="button" mat-button [obButton]="obButton" disabled><mat-icon svgIcon="logout" /> Dynamic</button>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">Icon only</th>
 			<td>
 				<button type="button" mat-icon-button obButton="primary" disabled><mat-icon svgIcon="logout" /></button>
 			</td>
@@ -140,90 +118,38 @@
 	</tbody>
 	<tbody>
 		<tr>
-			<td colspan="4">Link</td>
-		</tr>
-		<tr>
-			<th>
-				<label>Default</label>
-			</th>
+			<th rowspan="3" scope="rowgroup">Link</th>
+			<th>Text only</th>
 			<td>
-				<a href="https://www.google.ch" mat-button obButton="primary">Primary</a>
+				<a href="" mat-button obButton="primary">Primary</a>
 			</td>
 			<td>
-				<a href="https://www.google.ch" mat-button obButton="secondary">Secondary</a>
+				<a href="" mat-button obButton="secondary">Secondary</a>
 			</td>
 			<td>
-				<a href="https://www.google.ch" mat-button obButton="tertiary">Tertiary</a>
+				<a href="" mat-button obButton="tertiary">Tertiary</a>
 			</td>
 			<td>
-				<a href="https://www.google.ch" mat-button [obButton]="obButton">Dynamic</a>
+				<a href="" mat-button [obButton]="obButton">Dynamic</a>
 			</td>
 		</tr>
 		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
+			<th>Icon and text</th>
 			<td>
-				<a href="https://www.google.ch" mat-button obButton="primary"><mat-icon svgIcon="logout" /> Primary</a>
+				<a href="" mat-button obButton="primary"><mat-icon svgIcon="logout" /> Primary</a>
 			</td>
 			<td>
-				<a href="https://www.google.ch" mat-button obButton="secondary"><mat-icon svgIcon="logout" /> Secondary</a>
+				<a href="" mat-button obButton="secondary"><mat-icon svgIcon="logout" /> Secondary</a>
 			</td>
 			<td>
-				<a href="https://www.google.ch" mat-button obButton="tertiary"><mat-icon svgIcon="logout" /> Tertiary</a>
+				<a href="" mat-button obButton="tertiary"><mat-icon svgIcon="logout" /> Tertiary</a>
 			</td>
 			<td>
-				<a href="https://www.google.ch" mat-button [obButton]="obButton"><mat-icon svgIcon="logout" /> Dynamic</a>
-			</td>
-		</tr>
-	</tbody>
-	<tbody>
-		<tr>
-			<td colspan="4">Link disabled</td>
-		</tr>
-		<tr>
-			<th>
-				<label>Default</label>
-			</th>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="primary" disabled>Primary</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="secondary" disabled>Secondary</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="tertiary" disabled>Tertiary</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button [obButton]="obButton" disabled>Dynamic</a>
+				<a href="" mat-button [obButton]="obButton"><mat-icon svgIcon="logout" /> Dynamic</a>
 			</td>
 		</tr>
 		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="primary" disabled><mat-icon svgIcon="logout" /> Primary</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="secondary" disabled><mat-icon svgIcon="logout" /> Secondary</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="tertiary" disabled><mat-icon svgIcon="logout" /> Tertiary</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button [obButton]="obButton" disabled><mat-icon svgIcon="logout" /> Dynamic</a>
-			</td>
-		</tr>
-	</tbody>
-	<tbody>
-		<tr>
-			<td colspan="4">Link without text</td>
-		</tr>
-		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
+			<th scope="row">Icon only</th>
 			<td>
 				<a mat-icon-button obButton="primary"><mat-icon svgIcon="logout" /></a>
 			</td>
@@ -240,12 +166,38 @@
 	</tbody>
 	<tbody>
 		<tr>
-			<td colspan="4">Link disabled without text</td>
+			<th rowspan="3" scope="rowgroup">Link disabled</th>
+			<th scope="row">Text only</th>
+			<td>
+				<a href="" mat-button obButton="primary" disabled>Primary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="secondary" disabled>Secondary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="tertiary" disabled>Tertiary</a>
+			</td>
+			<td>
+				<a href="" mat-button [obButton]="obButton" disabled>Dynamic</a>
+			</td>
 		</tr>
 		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
+			<th scope="row">Icon and text</th>
+			<td>
+				<a href="" mat-button obButton="primary" disabled><mat-icon svgIcon="logout" /> Primary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="secondary" disabled><mat-icon svgIcon="logout" /> Secondary</a>
+			</td>
+			<td>
+				<a href="" mat-button obButton="tertiary" disabled><mat-icon svgIcon="logout" /> Tertiary</a>
+			</td>
+			<td>
+				<a href="" mat-button [obButton]="obButton" disabled><mat-icon svgIcon="logout" /> Dynamic</a>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">Icon only</th>
 			<td>
 				<a mat-icon-button obButton="primary" disabled><mat-icon svgIcon="logout" /></a>
 			</td>
@@ -262,12 +214,8 @@
 	</tbody>
 	<tbody>
 		<tr>
-			<td colspan="4">External Link</td>
-		</tr>
-		<tr>
-			<th>
-				<label>Default</label>
-			</th>
+			<th rowspan="3" scope="rowgroup">External Link</th>
+			<th scope="row">Text only</th>
 			<td>
 				<a href="https://www.google.ch" mat-button obButton="primary">Primary</a>
 			</td>
@@ -282,9 +230,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
+			<th scope="row">Icon and text</th>
 			<td>
 				<a href="https://www.google.ch" mat-button obButton="primary"><mat-icon svgIcon="logout" /> Primary</a>
 			</td>
@@ -298,54 +244,8 @@
 				<a href="https://www.google.ch" mat-button [obButton]="obButton"><mat-icon svgIcon="logout" /> Dynamic</a>
 			</td>
 		</tr>
-	</tbody>
-	<tbody>
 		<tr>
-			<td colspan="4">External Link disabled</td>
-		</tr>
-		<tr>
-			<th>
-				<label>Default</label>
-			</th>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="primary" disabled>Primary</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="secondary" disabled>Secondary</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="tertiary" disabled>Tertiary</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button [obButton]="obButton" disabled>Dynamic</a>
-			</td>
-		</tr>
-		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="primary" disabled><mat-icon svgIcon="logout" /> Primary</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="secondary" disabled><mat-icon svgIcon="logout" /> Secondary</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="tertiary" disabled><mat-icon svgIcon="logout" /> Tertiary</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button [obButton]="obButton" disabled><mat-icon svgIcon="logout" /> Dynamic</a>
-			</td>
-		</tr>
-	</tbody>
-	<tbody>
-		<tr>
-			<td colspan="4">External link without text</td>
-		</tr>
-		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
+			<th scope="row">Icon only</th>
 			<td>
 				<a href="https://www.google.ch" mat-icon-button obButton="primary"><mat-icon svgIcon="logout" /></a>
 			</td>
@@ -362,12 +262,38 @@
 	</tbody>
 	<tbody>
 		<tr>
-			<td colspan="4">External link disabled without text</td>
+			<th rowspan="3" scope="rowgroup">External Link disabled</th>
+			<th scope="row">Text only</th>
+			<td>
+				<a href="https://www.google.ch" mat-button obButton="primary" disabled>Primary</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" mat-button obButton="secondary" disabled>Secondary</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" mat-button obButton="tertiary" disabled>Tertiary</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" mat-button [obButton]="obButton" disabled>Dynamic</a>
+			</td>
 		</tr>
 		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
+			<th scope="row">icon and text</th>
+			<td>
+				<a href="https://www.google.ch" mat-button obButton="primary" disabled><mat-icon svgIcon="logout" /> Primary</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" mat-button obButton="secondary" disabled><mat-icon svgIcon="logout" /> Secondary</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" mat-button obButton="tertiary" disabled><mat-icon svgIcon="logout" /> Tertiary</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" mat-button [obButton]="obButton" disabled><mat-icon svgIcon="logout" /> Dynamic</a>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">Icon only</th>
 			<td>
 				<a href="https://www.google.ch" mat-icon-button obButton="primary" disabled><mat-icon svgIcon="logout" /></a>
 			</td>
@@ -379,74 +305,6 @@
 			</td>
 			<td>
 				<a href="https://www.google.ch" mat-icon-button [obButton]="obButton" disabled><mat-icon svgIcon="logout" /></a>
-			</td>
-		</tr>
-	</tbody>
-	<tbody>
-		<tr>
-			<td colspan="4">External link without text explicitly using external mat icon</td>
-		</tr>
-		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
-			<td>
-				<a href="https://www.google.ch" mat-icon-button obButton="primary"><mat-icon svgIcon="external" /></a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-icon-button obButton="secondary"><mat-icon svgIcon="external" /></a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-icon-button obButton="tertiary"><mat-icon svgIcon="external" /></a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-icon-button [obButton]="obButton"><mat-icon svgIcon="external" /></a>
-			</td>
-		</tr>
-	</tbody>
-	<tbody>
-		<tr>
-			<td colspan="4">
-				External link button using external link directive without text. The buttons should be empty as no content is provided.
-			</td>
-		</tr>
-		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
-			<td>
-				<a href="https://www.google.ch" mat-icon-button obButton="primary"><span class="ob-screen-reader-only">Google</span></a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-icon-button obButton="secondary"><span class="ob-screen-reader-only">Google</span></a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-icon-button obButton="tertiary"><span class="ob-screen-reader-only">Google</span></a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-icon-button [obButton]="obButton"><span class="ob-screen-reader-only">Google</span></a>
-			</td>
-		</tr>
-	</tbody>
-	<tbody>
-		<tr>
-			<td colspan="4">External link button using external link directive with text</td>
-		</tr>
-		<tr>
-			<th>
-				<label>mat-icon</label>
-			</th>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="primary">Google</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="secondary">Google</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button obButton="tertiary">Google</a>
-			</td>
-			<td>
-				<a href="https://www.google.ch" mat-button [obButton]="obButton">Google</a>
 			</td>
 		</tr>
 	</tbody>

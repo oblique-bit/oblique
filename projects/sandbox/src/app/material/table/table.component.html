@@ -3,16 +3,16 @@
 	<div column-main-content [class.ob-table-scrollable]="isScrollable$ | async">
 		<form [formGroup]="tableManager.editForm" [ngClass]="collapsedStyles$ | async">
 			<div class="actions-header">
-				<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager }" />
+				<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager, isInTable: false }" />
 			</div>
 			<table *ngIf="isStructureDefault$ | async" mat-table matSort [dataSource]="tableManager.dataSource" [ngClass]="tableStyles$ | async">
 				<caption *ngIf="hasCaption$ | async">
-					This is a table caption
+					Characteristics of periodical elements
 				</caption>
 				<ng-container [matColumnDef]="COLUMN_NAME_SELECT">
-					<th mat-header-cell *matHeaderCellDef>
+					<td mat-cell *matHeaderCellDef>
 						<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{ tableManager }" />
-					</th>
+					</td>
 					<td mat-cell *matCellDef="let row">
 						<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{ row, tableManager }" />
 					</td>
@@ -20,18 +20,24 @@
 
 				<ng-container *ngFor="let column of columns">
 					<ng-container [matColumnDef]="column.key">
-						<th mat-header-cell *matHeaderCellDef mat-sort-header>
+						<th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>
 							<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{ column }" />
 						</th>
-						<td mat-cell *matCellDef="let element" [attr.data-title]="column.name">
-							<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
-						</td>
+						@if (column.name === "Name") {
+							<th scope="row" mat-header-cell *matCellDef="let element" [attr.data-title]="column.name">
+								<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
+							</th>
+						} @else {
+							<td mat-cell *matCellDef="let element" [attr.data-title]="column.name">
+								<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
+							</td>
+						}
 					</ng-container>
 				</ng-container>
 
 				<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
-					<td mat-header-cell *matHeaderCellDef>
-						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager }" />
+					<td mat-cell *matHeaderCellDef>
+						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager, isInTable: true }" />
 					</td>
 					<td mat-cell *matCellDef="let element" [attr.data-title]="'Actions'">
 						<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{ tableManager, element, editMode }" />
@@ -49,9 +55,9 @@
 				[ngClass]="tableStyles$ | async"
 			>
 				<ng-container [cdkColumnDef]="COLUMN_NAME_SELECT">
-					<mat-header-cell *cdkHeaderCellDef>
+					<mat-cell *cdkHeaderCellDef>
 						<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{ tableManager }" />
-					</mat-header-cell>
+					</mat-cell>
 					<mat-cell *cdkCellDef="let row">
 						<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{ row, tableManager }" />
 					</mat-cell>
@@ -59,19 +65,25 @@
 
 				<ng-container *ngFor="let column of columns">
 					<ng-container [matColumnDef]="column.key">
-						<mat-header-cell *matHeaderCellDef mat-sort-header>
+						<mat-header-cell scope="col" *matHeaderCellDef mat-sort-header>
 							<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{ column }" />
 						</mat-header-cell>
-						<mat-cell *matCellDef="let element">
-							<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
-						</mat-cell>
+						@if (column.name === "Name") {
+							<mat-header-cell scope="row" *matCellDef="let element">
+								<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
+							</mat-header-cell>
+						} @else {
+							<mat-cell *matCellDef="let element">
+								<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
+							</mat-cell>
+						}
 					</ng-container>
 				</ng-container>
 
 				<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
-					<mat-header-cell *matHeaderCellDef>
-						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager }" />
-					</mat-header-cell>
+					<mat-cell *matHeaderCellDef>
+						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager, isInTable: true }" />
+					</mat-cell>
 					<mat-cell *matCellDef="let element">
 						<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{ tableManager, element, editMode }" />
 					</mat-cell>
@@ -117,13 +129,13 @@
 				</ng-template>
 			</ng-template>
 
-			<ng-template #actionsHeader let-tableManager="tableManager">
+			<ng-template #actionsHeader let-tableManager="tableManager" let-isInTable="isInTable">
 				<div class="actions">
 					<button
 						type="button"
 						mat-icon-button
 						obButton="secondary"
-						matTooltip="Add a new row"
+						[matTooltip]="'Add a new row' + (isInTable ? '' : ' to the table of characteristics of periodical elements')"
 						[disabled]="tableManager.isEditMode$ | async"
 						(click)="tableManager.addRow()"
 					>
@@ -133,7 +145,7 @@
 						type="button"
 						mat-icon-button
 						obButton="secondary"
-						matTooltip="Remove all selected rows"
+						[matTooltip]="'Remove all selected rows' + (isInTable ? '' : ' from the table of characteristics of periodical elements')"
 						[disabled]="(tableManager.isEditMode$ | async) || (tableManager.isMasterRemoveDisabled$ | async)"
 						(click)="tableManager.removeRows()"
 					>
