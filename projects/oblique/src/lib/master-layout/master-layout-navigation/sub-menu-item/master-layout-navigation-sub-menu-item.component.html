@@ -1,32 +1,14 @@
 <ng-container *ngIf="currentParent.id === link.id; else descendants">
-	<a
-		*ngIf="child.isExternal; else internalLink"
-		class="ob-master-layout-navigation-link"
-		[icon]="hideExternalLinks ? 'none' : 'right'"
-		[id]="child.id"
-		[href]="child.url"
-		[target]="child.sameTarget ? '' : undefined"
-		[isExternalLink]="child.isExternal"
-		[rel]="child.sameTarget ? '' : undefined"
-		[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
-		(click)="obMasterLayoutNavigationItem.closeSubMenu()"
-		(focus)="toggleFocus(child.id)"
-		(focusout)="toggleFocus(child.id)"
-	>
-		<span class="ob-icon-wrapper" *ngIf="child.icon"><mat-icon [svgIcon]="child.icon" /></span>
-		<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
-	</a>
-	<ng-template #internalLink>
+	@if (child.url) {
 		<a
+			*ngIf="child.isExternal; else internalLink"
 			class="ob-master-layout-navigation-link"
+			[icon]="hideExternalLinks ? 'none' : 'right'"
 			[id]="child.id"
-			[routerLink]="routerLinkBase + '/' + child.url"
-			[routerLinkActive]="activeClass"
-			[fragment]="child.fragment"
+			[href]="child.url"
+			[target]="child.sameTarget ? '' : undefined"
 			[isExternalLink]="child.isExternal"
-			[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
-			[queryParams]="child.queryParams"
-			[attr.aria-current]="link.active ? 'page' : undefined"
+			[rel]="child.sameTarget ? '' : undefined"
 			[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
 			(click)="obMasterLayoutNavigationItem.closeSubMenu()"
 			(focus)="toggleFocus(child.id)"
@@ -35,12 +17,41 @@
 			<span class="ob-icon-wrapper" *ngIf="child.icon"><mat-icon [svgIcon]="child.icon" /></span>
 			<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
 		</a>
-	</ng-template>
-	<ob-master-layout-navigation-go-to-children
-		[isCurrentParent]="child.label === currentParent.label"
-		[link]="child"
-		(changeCurrentParent)="goToChildren($event)"
-	/>
+		<ng-template #internalLink>
+			<a
+				class="ob-master-layout-navigation-link"
+				[id]="child.id"
+				[routerLink]="routerLinkBase + '/' + child.url"
+				[routerLinkActive]="activeClass"
+				[fragment]="child.fragment"
+				[isExternalLink]="child.isExternal"
+				[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
+				[queryParams]="child.queryParams"
+				[attr.aria-current]="link.active ? 'page' : undefined"
+				[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
+				(click)="obMasterLayoutNavigationItem.closeSubMenu()"
+				(focus)="toggleFocus(child.id)"
+				(focusout)="toggleFocus(child.id)"
+			>
+				<span class="ob-icon-wrapper" *ngIf="child.icon"><mat-icon [svgIcon]="child.icon" /></span>
+				<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
+			</a>
+		</ng-template>
+		<ob-master-layout-navigation-go-to-children
+			[isCurrentParent]="child.label === currentParent.label"
+			[link]="child"
+			[isChildWithoutUrl]="false"
+			(changeCurrentParent)="goToChildren($event)"
+		/>
+	} @else {
+		<ob-master-layout-navigation-go-to-children
+			class="ob-master-layout-navigation-go-to-children-without-url"
+			[isCurrentParent]="child.label === currentParent.label"
+			[isChildWithoutUrl]="true"
+			[link]="child"
+			(changeCurrentParent)="goToChildren($event)"
+		/>
+	}
 </ng-container>
 <ng-template #descendants>
 	<ng-container *ngIf="child.children && showChildren">

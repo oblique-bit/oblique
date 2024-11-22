@@ -10,7 +10,9 @@
 	}
 
 	.ob-master-layout-navigation .ob-main-nav .ob-sub-menu & {
-		.ob-master-layout-navigation-go-to-children-button {
+		.ob-master-layout-navigation-go-to-children-button:not(
+				.ob-master-layout-navigation-go-to-children-button-without-url
+			) {
 			align-self: flex-end;
 			margin-left: -0.25 * variables.$ob-spacing-xs;
 
@@ -22,6 +24,25 @@
 
 				&:hover {
 					padding-left: calc(0.3896em - variables.$ob-spacing-xs * 0.75);
+				}
+			}
+		}
+
+		.ob-master-layout-navigation-go-to-children-button.ob-master-layout-navigation-go-to-children-button-without-url {
+			font-weight: unset;
+			justify-content: space-between;
+
+			&.ob-button {
+				padding-left: 1.1428em;
+				padding-right: 0.7142em;
+
+				svg {
+					height: 14px;
+					width: 14px;
+				}
+
+				&:hover {
+					padding-left: 0.7857em;
 				}
 			}
 		}

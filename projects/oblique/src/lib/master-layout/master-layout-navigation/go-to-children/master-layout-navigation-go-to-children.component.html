@@ -1,16 +1,31 @@
 @if (!hide) {
-	<button
-		[id]="'ob-master-layout-navigation-go-to-children-button-' + link.id"
-		type="button"
-		mat-icon-button
-		obButton="tertiary"
-		[disableRipple]="disableRipple"
-		class="ob-master-layout-navigation-go-to-children-button"
-		(click)="goToChildren()"
-	>
-		<mat-icon matSuffix svgIcon="arrow-right" />
-		<span class="ob-screen-reader-only">{{
-			"i18n.oblique.master-layout.navigation.link.go-to-children" | translate: { parentLabel: (link.label | translate) }
-		}}</span>
-	</button>
+	@if (isChildWithoutUrl) {
+		<button
+			[id]="'ob-master-layout-navigation-go-to-children-button-' + link.id"
+			type="button"
+			mat-button
+			obButton="tertiary"
+			[disableRipple]="disableRipple"
+			class="ob-master-layout-navigation-go-to-children-button ob-master-layout-navigation-go-to-children-button-without-url"
+			(click)="goToChildren()"
+		>
+			<mat-icon iconPositionEnd matSuffix svgIcon="arrow-right" />
+			<span>{{ "i18n.oblique.master-layout.navigation.link.go-to-children" | translate: { parentLabel: (link.label | translate) } }}</span>
+		</button>
+	} @else {
+		<button
+			[id]="'ob-master-layout-navigation-go-to-children-button-' + link.id"
+			type="button"
+			mat-icon-button
+			obButton="tertiary"
+			[disableRipple]="disableRipple"
+			class="ob-master-layout-navigation-go-to-children-button"
+			(click)="goToChildren()"
+		>
+			<mat-icon matSuffix svgIcon="arrow-right" />
+			<span class="ob-screen-reader-only">{{
+				"i18n.oblique.master-layout.navigation.link.go-to-children" | translate: { parentLabel: (link.label | translate) }
+			}}</span>
+		</button>
+	}
 }

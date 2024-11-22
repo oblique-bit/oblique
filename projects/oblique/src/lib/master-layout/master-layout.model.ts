@@ -75,7 +75,7 @@ export interface ObILanguage {
 
 export interface ObINavigationLink {
 	label: string;
-	url: string;
+	url?: string;
 	fragment?: string;
 	queryParams?: Record<string, string>;
 	children?: ObINavigationLink[];
