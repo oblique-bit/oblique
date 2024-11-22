@@ -1,3 +1,9 @@
+# [12.0.3](https://github.com/oblique-bit/oblique/compare/12.0.2...12.0.3) (2024-11-22)
+
+## Bug Fixes
+
+- **master-layout:** use immutable methods to alter array of links ([7290c99e](https://github.com/oblique-bit/oblique/commit/7290c99ec9fc06ce85f4407fee50f135cbb53939))
+
 # [12.0.2](https://github.com/oblique-bit/oblique/compare/12.0.1...12.0.2) (2024-11-15)
 
 ## Bug Fixes
