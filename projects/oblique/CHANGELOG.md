@@ -1,3 +1,9 @@
+# [12.0.3](https://github.com/oblique-bit/oblique/compare/12.0.2...12.0.3) (2024-11-22)
+
+## Bug Fixes
+
+- **master-layout:** check for high contrast mode limited to init ([53924d2c](https://github.com/oblique-bit/oblique/commit/53924d2c69c6fdb3acba468d54119a11a751d16c))
+
 # [12.0.2](https://github.com/oblique-bit/oblique/compare/12.0.1...12.0.2) (2024-11-15)
 
 ## Bug Fixes
