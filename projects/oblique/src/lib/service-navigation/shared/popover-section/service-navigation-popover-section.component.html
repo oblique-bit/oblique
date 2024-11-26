@@ -7,6 +7,7 @@
 	<ul class="ob-popover-list" *ngIf="links?.length > 0">
 		<li *ngFor="let link of links">
 			<a
+				[id]="link.label + '-ob-popover-link'"
 				class="ob-popover-link"
 				[href]="link.url | translate"
 				[isExternalLink]="!link.isInternalLink"
