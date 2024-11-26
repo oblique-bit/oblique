@@ -7,3 +7,4 @@ All commits related to the CLI package must use the **cli** package and 1 of the
 ## <a name="scope"></a> Scope
 
 - **toolchain**
+- **utils**
