@@ -185,6 +185,22 @@ export const appNavigation = [
 			{url: 'table-page', label: 'Table page'}
 		]
 	},
+	{
+		url: 'home',
+		label: 'Main Nav',
+		children: [
+			{
+				url: 'home',
+				label: 'Sub nav with url',
+				children: [{url: 'home', label: 'Subnav'}]
+			},
+			{
+				url: null,
+				label: 'Sub nav without url',
+				children: [{url: 'home', label: 'Subnav'}]
+			}
+		]
+	},
 	{url: 'http://www.google.ch', label: 'About Us', isExternal: true, startOfRightSideLinks: true},
 	{url: 'http://www.google.ch', label: 'Contact', isExternal: true}
 ];
