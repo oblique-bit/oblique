@@ -21,6 +21,7 @@
 			</mat-list-item>
 		</mat-list>
 		<mat-form-field *ngIf="showAutocompleteForm">
+			<mat-label>Chips autocomplete</mat-label>
 			<mat-chip-grid #matChipGrid aria-label="Tag selection" [disabled]="disabled">
 				<ng-container *ngIf="type === 'mat-chip-row'">
 					<mat-chip-row *ngFor="let tag of tags" [ngClass]="variant" (removed)="remove(tag)">
