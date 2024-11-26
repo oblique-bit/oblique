@@ -112,10 +112,13 @@
 		.mat-mdc-text-field-wrapper.mdc-text-field,
 		.mat-mdc-text-field-wrapper.mdc-text-field .mdc-notched-outline {
 			max-height: none;
+		}
 
-			.mat-mdc-chip {
-				margin-top: 8px;
-				margin-bottom: 0;
+		mat-chip-row,
+		mat-chip-option,
+		mat-chip {
+			&.mdc-evolution-chip {
+				margin: 1px 4px 4px 4px;
 			}
 		}
 	}
