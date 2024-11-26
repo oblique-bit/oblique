@@ -22,3 +22,11 @@ overrides:
             - -1
             - 0
             - 1
+  - files:
+      - "*.spec.ts"
+    parserOptions:
+      project:
+        - projects/cli/tsconfig.spec.json
+    rules:
+      "@typescript-eslint/no-magic-numbers": "off"
+      "@typescript-eslint/no-unsafe-assignment": "off"
