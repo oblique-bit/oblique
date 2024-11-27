@@ -5,7 +5,7 @@
 	padding-left: variables.$ob-spacing-sm;
 
 	a.ob-button[id*="login"] {
-		display: flex;
+		display: inline-flex;
 		flex-direction: row-reverse;
 
 		&.mat-mdc-button > .mat-icon {
