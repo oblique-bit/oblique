@@ -14,6 +14,7 @@ import {ObIBanner, ObIMaterialConfig, ObIPamsConfiguration} from './utilities.mo
 import {ObCheckboxModule} from './checkbox/checkbox.module';
 import {ObFormFieldModule} from './form-field/form-field.module';
 import {MATERIAL_SANITY_CHECKS} from '@angular/material/core';
+import {MAT_TABS_CONFIG, MatTabsConfig} from '@angular/material/tabs';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
@@ -66,6 +67,10 @@ export function slideToggleOptionsProvider(config?: ObIMaterialConfig): MatSlide
 	return config?.MAT_SLIDE_TOGGLE_OPTIONS || {color: 'primary'};
 }
 
+export function tabsOptionsProvider(config?: ObIMaterialConfig): MatTabsConfig {
+	return config?.MAT_TABS_CONFIG || {stretchTabs: false};
+}
+
 export const OB_MATERIAL_CONFIG = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
 
 export function obliqueProviders(): Provider[] {
@@ -75,6 +80,7 @@ export function obliqueProviders(): Provider[] {
 		{provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useFactory: checkboxOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
 		{provide: MAT_RADIO_DEFAULT_OPTIONS, useFactory: radioOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
 		{provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, useFactory: slideToggleOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
+		{provide: MAT_TABS_CONFIG, useFactory: tabsOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
 		{provide: MATERIAL_SANITY_CHECKS, useValue: {theme: false}}
 	];
