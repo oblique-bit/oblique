@@ -72,6 +72,7 @@ $theme-tabs: (
 @include mat.tabs-theme(mat.m2-define-light-theme($theme-tabs));
 @include mat.tooltip-theme(mat.m2-define-light-theme($theme));
 @include mat.option-theme(mat.m2-define-light-theme($theme));
+@include mat.pseudo-checkbox-theme(mat.m2-define-light-theme($theme));
 
 // import to overwrite mat-component-specifics
 @import "material/mat-autocomplete";
