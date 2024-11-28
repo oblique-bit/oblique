@@ -13,6 +13,7 @@
   },
   "scripts": {
     "start": "ts-node src/index.ts",
+    "link": "npm uninstall @oblique/cli -g && npm run build && cd ../../dist/cli && npm link",
     "lint": "ts-node scripts/lint.ts",
     "format": "npm run lint -- --fix",
     "test": "jest",

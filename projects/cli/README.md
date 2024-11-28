@@ -14,6 +14,7 @@ You will find information about how to use Oblique, its CLI, code samples, FAQ a
 
 ## Scripts
 
+- **link**: builds the CLI and call `npm link` on the artifact to allow the CLI to be called globally
 - **lint**: lints the project with EsLint and Prettier; Automatically run on the CI pipeline
 - **format**: same as lint, but with autofix parameter
 - **test**: run all tests and collects coverage
