@@ -72,10 +72,23 @@ function addInterceptors(httpInterceptors: boolean): Rule {
 			const obliqueInterceptorProvider = '{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true}';
 			const sourceFile = createSrcFile(tree, appModulePath);
 			const changes = addProviderToModule(sourceFile, appModulePath, obliqueInterceptorProvider, ObliquePackage)
-				.concat(insertImport(sourceFile, appModulePath, 'HTTP_INTERCEPTORS', '@angular/common/http'))
+				.concat(addProviderToModule(sourceFile, appModulePath, 'provideHttpClient(withInterceptorsFromDi())', '@angular/common/http'))
 				.filter((change: Change) => change instanceof InsertChange)
-				.map((change: InsertChange) => adaptInsertChange(tree, change, obliqueInterceptorProvider, obliqueInterceptorModuleName));
-
+				.map((change: InsertChange) => adaptInsertChange(tree, change, obliqueInterceptorProvider, obliqueInterceptorModuleName))
+				.map((change: InsertChange) =>
+					adaptInsertChange(
+						tree,
+						change,
+						'provideHttpClient(withInterceptorsFromDi())',
+						'provideHttpClient, HTTP_INTERCEPTORS, withInterceptorsFromDi'
+					)
+				);
+			tree = applyChanges(tree, appModulePath, changes);
+		} else {
+			const sourceFile = createSrcFile(tree, appModulePath);
+			const changes = addProviderToModule(sourceFile, appModulePath, 'provideHttpClient()', '@angular/common/http')
+				.filter((change: Change) => change instanceof InsertChange)
+				.map((change: InsertChange) => adaptInsertChange(tree, change, 'provideHttpClient()', 'provideHttpClient'));
 			tree = applyChanges(tree, appModulePath, changes);
 		}
 		return tree;

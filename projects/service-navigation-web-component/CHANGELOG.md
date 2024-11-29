@@ -1,3 +1,11 @@
+# [12.0.4](https://github.com/oblique-bit/oblique/compare/12.0.3...12.0.4) (2024-11-29)
+
+## Bug Fixes
+
+- **service-navigation:** change `flex` to `inline-flex` for authentication widget ([e7c5e361](https://github.com/oblique-bit/oblique/commit/e7c5e361b077a756d17145459838e213d1ac5685))
+- **web-component:** add missing styles ([f88ddec9](https://github.com/oblique-bit/oblique/commit/f88ddec90198727b6dfefe7b1cb079a93d7ca3d1))
+- **web-component:** add missing default values ([90d9209e](https://github.com/oblique-bit/oblique/commit/90d9209ee6de9b0aa1dc444eb17ec512572d7138))
+
 # [12.0.2](https://github.com/oblique-bit/oblique/compare/12.0.1...12.0.2) (2024-11-15)
 
 ## Bug Fixes

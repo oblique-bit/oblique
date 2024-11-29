@@ -36,7 +36,7 @@ describe(TabsCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	it('should have 2 CodeExampleComponent', () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
+	it('should have 3 CodeExampleComponent', () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(3);
 	});
 });

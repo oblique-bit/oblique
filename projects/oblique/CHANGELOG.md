@@ -1,3 +1,13 @@
+# [12.0.4](https://github.com/oblique-bit/oblique/compare/12.0.3...12.0.4) (2024-11-29)
+
+## Bug Fixes
+
+- **material:** deactivate stretchTabs per default ([d7366cdd](https://github.com/oblique-bit/oblique/commit/d7366cdd33ec09f3c6b3678d3ae173bc21c006f1))
+- **material:** add missing theme for pseudo-checkboxes ([183eb334](https://github.com/oblique-bit/oblique/commit/183eb33401c4dc23268cd81c1408f685066aaf99))
+- **material:** add missing shadow to mat-menu ([d65e6d2f](https://github.com/oblique-bit/oblique/commit/d65e6d2f3a5a6a3cf9c8947ec7c7918bbbc6c917))
+- **schematics:** provide `provideHttpClient` instead of deprecated `HttpClientModule` ([5924c7da](https://github.com/oblique-bit/oblique/commit/5924c7dacd226eb280624bc3992336619ea87033))
+- **service-navigation:** change `flex` to `inline-flex` for authentication widget ([e7c5e361](https://github.com/oblique-bit/oblique/commit/e7c5e361b077a756d17145459838e213d1ac5685))
+
 # [12.0.3](https://github.com/oblique-bit/oblique/compare/12.0.2...12.0.3) (2024-11-22)
 
 ## Bug Fixes

@@ -22,8 +22,10 @@ import {
 	radioOptionsProvider,
 	slideToggleOptionsProvider,
 	stepperOptionsOptionsProvider,
+	tabsOptionsProvider,
 	windowProvider
 } from './utilities';
+import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 
 describe('utilities', () => {
 	describe('windowProvider', () => {
@@ -176,9 +178,19 @@ describe('utilities', () => {
 		});
 	});
 
+	describe('tabsOptionsProvider', () => {
+		it('should return default config without parameters', () => {
+			expect(tabsOptionsProvider()).toEqual({stretchTabs: false});
+		});
+
+		it('should return given config when provided as parameters', () => {
+			expect(tabsOptionsProvider({MAT_TABS_CONFIG: {stretchTabs: true}})).toEqual({stretchTabs: true});
+		});
+	});
+
 	describe('obliqueProviders', () => {
-		it('should return 7 configurations', () => {
-			expect(obliqueProviders().length).toBe(7);
+		it('should return 8 configurations', () => {
+			expect(obliqueProviders().length).toBe(8);
 		});
 
 		it.each([
@@ -187,6 +199,7 @@ describe('utilities', () => {
 			MAT_CHECKBOX_DEFAULT_OPTIONS,
 			MAT_RADIO_DEFAULT_OPTIONS,
 			MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS,
+			MAT_TABS_CONFIG,
 			WINDOW,
 			MATERIAL_SANITY_CHECKS
 		])('should contain ½s', provide => {

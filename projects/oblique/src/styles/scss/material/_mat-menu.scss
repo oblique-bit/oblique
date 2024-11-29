@@ -1,5 +1,5 @@
 @use "../core/mixins/shadow";
 
-.mat-mdc-menu-panel {
+.mat-mdc-menu-panel.mat-mdc-elevation-specific {
 	@include shadow.ob-shadow-default();
 }
