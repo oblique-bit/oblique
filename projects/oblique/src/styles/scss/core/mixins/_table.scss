@@ -20,7 +20,9 @@
 			left: -9999px;
 		}
 
-		td {
+		td,
+		tbody > tr > th,
+		tfoot > tr > th {
 			position: relative;
 			margin-left: variables.$ob-table-collapsed-header-width;
 			min-height: calc(
