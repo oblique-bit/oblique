@@ -1,5 +1,13 @@
 @use "@oblique/oblique/src/styles/scss/core/variables";
 
+.ob-service-navigation {
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+}
+
 .ob-service-navigation,
 .ob-language-dropdown {
 	font-family: variables.$ob-font;
