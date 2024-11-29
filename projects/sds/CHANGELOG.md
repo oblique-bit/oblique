@@ -1,3 +1,9 @@
+# [12.0.4](https://github.com/oblique-bit/oblique/compare/12.0.3...12.0.4) (2024-11-29)
+
+## Features
+
+- **material:** add stretchTabs example for tabs ([d1a68625](https://github.com/oblique-bit/oblique/commit/d1a6862590932aded61d6574109925225992251a))
+
 # [12.0.1](https://github.com/oblique-bit/oblique/compare/12.0.0...12.0.1) (2024-11-01)
 
 ## Bug Fixes
