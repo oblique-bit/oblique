@@ -330,7 +330,9 @@ describe('ObServiceNavigationService', () => {
 							])('Url number $index', expectedUrl => {
 								let urls: ObISectionLink[];
 								beforeEach(async () => {
-									urls = await firstValueFrom(service.getProfileUrls$());
+									const profileUrls = firstValueFrom(service.getProfileUrls$());
+									mockStateChange.next({loginState: 'S3+OK'} as ObIServiceNavigationState);
+									urls = await profileUrls;
 								});
 
 								it(`should contain url ${expectedUrl.url}`, () => {
@@ -343,6 +345,15 @@ describe('ObServiceNavigationService', () => {
 
 								it(`should  contain label ${expectedUrl.isInternalLink}`, () => {
 									expect(urls[expectedUrl.index].isInternalLink).toBe(expectedUrl.isInternalLink);
+								});
+							});
+
+							describe.each(['SA', 'S1'])('no enough rights with %s', rightLevel => {
+								it(`should return empty array`, async () => {
+									const profileUrls = firstValueFrom(service.getProfileUrls$());
+									mockStateChange.next({loginState: rightLevel} as ObIServiceNavigationState);
+									const urls = await profileUrls;
+									expect(urls).toHaveLength(0);
 								});
 							});
 						});

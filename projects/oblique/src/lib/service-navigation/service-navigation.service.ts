@@ -83,7 +83,12 @@ export class ObServiceNavigationService {
 
 	getProfileUrls$(): Observable<ObISectionLink[]> {
 		return this.config$.pipe(
-			map((config): ObISectionLink[] => {
+			combineLatestWith(this.pollingService.state$),
+			map(([config, state]): ObISectionLink[] => {
+				if (state.loginState === 'SA' || state.loginState === 'S1') {
+					return [];
+				}
+
 				const base = config.allServices.url;
 				return [
 					{url: `${base}/profile/details`, label: 'i18n.oblique.service-navigation.profile.my-profile', isInternalLink: true},
