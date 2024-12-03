@@ -83,10 +83,6 @@ export class ObLanguageService {
 	private setLocaleOnDateAdapter(adapter: DateAdapter<unknown>): void {
 		if (adapter) {
 			this.locale$.subscribe(locale => adapter.setLocale(locale));
-		} else {
-			console.warn(
-				'No DateAdapter is provided, this means the datepicker might not work properly. "provideMomentDateAdapter" should be added to the root providers.'
-			);
 		}
 	}
 }
