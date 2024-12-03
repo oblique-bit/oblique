@@ -3,6 +3,9 @@ import {MatSelect} from '@angular/material/select';
 import {Subject, takeUntil} from 'rxjs';
 import {ObSelectPanelClassHelper} from './select-panel-class-helper';
 
+/**
+ *  @deprecated since Oblique 12.1.0. It will be removed with Oblique 13.
+ */
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'mat-select',
