@@ -5,7 +5,9 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
 import {DebugElement} from '@angular/core';
 import {Subject} from 'rxjs';
+import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {ObNotificationComponent} from './notification.component';
 import {ObNotificationConfig} from './notification.config';
 import {ObNotificationService} from './notification.service';
@@ -14,6 +16,7 @@ import {ObMockNotificationConfig} from './_mocks/mock-notification.config';
 import {ObMockNotificationService} from './_mocks/mock-notification.service';
 import {ObMockAlertComponent} from '../alert/_mocks/mock-alert.component';
 import {WINDOW} from '../utilities';
+import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
 
 describe('NotificationComponent', () => {
 	let component: ObNotificationComponent;
@@ -27,10 +30,18 @@ describe('NotificationComponent', () => {
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
 			declarations: [ObNotificationComponent],
-			imports: [ObMockAlertComponent, ObMockTranslatePipe, CommonModule, NoopAnimationsModule, RouterTestingModule],
+			imports: [
+				ObMockAlertComponent,
+				ObMockTranslatePipe,
+				ObTranslateParamsModule,
+				CommonModule,
+				NoopAnimationsModule,
+				RouterTestingModule
+			],
 			providers: [
 				{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
 				{provide: ObNotificationService, useClass: ObMockNotificationService},
+				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: WINDOW, useValue: window}
 			]
 		}).compileComponents();
