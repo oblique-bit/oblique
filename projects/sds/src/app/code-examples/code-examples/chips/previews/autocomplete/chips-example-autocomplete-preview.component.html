@@ -1,4 +1,5 @@
 <mat-form-field>
+	<mat-label>Chips autocomplete example</mat-label>
 	<mat-chip-grid #chipGrid aria-label="Fruit selection">
 		<mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
 			{{ fruit }}

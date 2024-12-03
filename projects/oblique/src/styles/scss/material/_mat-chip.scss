@@ -107,21 +107,18 @@
 	}
 }
 
-.mat-mdc-chip-grid,
-.mat-mdc-chip-set,
-.mat-mdc-chip-listbox {
-	margin-top: variables.$ob-spacing-lg;
-}
-
 .mat-mdc-form-field {
 	&.mat-mdc-form-field-type-mat-chip-grid {
 		.mat-mdc-text-field-wrapper.mdc-text-field,
 		.mat-mdc-text-field-wrapper.mdc-text-field .mdc-notched-outline {
 			max-height: none;
+		}
 
-			.mat-mdc-chip {
-				margin-top: 8px;
-				margin-bottom: 0;
+		mat-chip-row,
+		mat-chip-option,
+		mat-chip {
+			&.mdc-evolution-chip {
+				margin: 1px 4px 4px 4px;
 			}
 		}
 	}
