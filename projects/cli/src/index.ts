@@ -13,6 +13,7 @@ import {
 	startObCommand,
 	titleText
 } from './utils/cli-utils';
+import {createObUpdateCommand} from './update/ob-update';
 
 program
 	.name('ob')
@@ -27,8 +28,10 @@ program
 	.showHelpAfterError('(Add --help for additional information)');
 
 const obNewCommandConfigured = createObNewCommand();
+const obUpdateCommandConfigured = createObUpdateCommand();
 
 program.addCommand(obNewCommandConfigured);
+program.addCommand(obUpdateCommandConfigured);
 
 program.parse();
 
