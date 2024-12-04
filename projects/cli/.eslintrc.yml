@@ -28,5 +28,6 @@ overrides:
       project:
         - projects/cli/tsconfig.spec.json
     rules:
+      "no-console": "off"
       "@typescript-eslint/no-magic-numbers": "off"
       "@typescript-eslint/no-unsafe-assignment": "off"
