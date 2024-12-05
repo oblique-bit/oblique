@@ -1,6 +1,8 @@
 import {
 	Component,
 	EventEmitter,
+	HostListener,
+	Inject,
 	Input,
 	OnChanges,
 	OnInit,
@@ -12,7 +14,7 @@ import {
 	inject,
 	numberAttribute
 } from '@angular/core';
-import {NgFor, NgIf} from '@angular/common';
+import {DOCUMENT, NgFor, NgIf} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -78,8 +80,24 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	customButtonsParsed: ObICustomButton[] = [];
 	private readonly translationService = inject(TranslationsService);
 
-	constructor() {
+	constructor(@Inject(DOCUMENT) private readonly document: Document) {
 		this.languageChange = this.translationService.languageChange$;
+	}
+
+	@HostListener('window:mousedown')
+	@HostListener('window:keydown')
+	removeOutline(): void {
+		this.document.querySelector('ob-service-navigation-web-component').classList.remove('ob-outline');
+	}
+
+	@HostListener('window:keydown.tab')
+	@HostListener('window:keydown.shift.tab')
+	@HostListener('window:keydown.arrowUp')
+	@HostListener('window:keydown.arrowDown')
+	@HostListener('window:keydown.arrowRight')
+	@HostListener('window:keydown.arrowLeft')
+	addOutline(): void {
+		this.document.querySelector('ob-service-navigation-web-component').classList.add('ob-outline');
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {
