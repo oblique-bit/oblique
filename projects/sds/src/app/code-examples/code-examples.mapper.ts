@@ -53,6 +53,7 @@ import {ErrorMessagesCodeExamplesComponent} from './code-examples/error-messages
 import {FocusInvalidCodeExamplesComponent} from './code-examples/focus-invalid/focus-invalid-code-examples.component';
 import {ExternalLinkCodeExamplesComponent} from './code-examples/external-link/external-link-code-examples.component';
 import {Popover12CodeExamplesComponent} from './code-examples/popover-12/popover12-code-examples.component';
+import {FocusWithOutlineExamplesComponent} from './code-examples/focus-with-outline/focus-with-outline-examples.component';
 
 /* These imports are sorted alphabetically to reduce merge conflicts.
    If you add a new import above, please make sure it is sorted
@@ -77,6 +78,7 @@ export class CodeExamplesMapper {
 		'external-link': ExternalLinkCodeExamplesComponent,
 		'file-upload': FileUploadCodeExamplesComponent,
 		'focus-invalid': FocusInvalidCodeExamplesComponent,
+		'focus-with-outline': FocusWithOutlineExamplesComponent,
 		form: FormCodeExamplesComponent,
 		'global-events': GlobalEventsCodeExamplesComponent,
 		'grid-system': GridSystemCodeExamplesComponent,

@@ -18,6 +18,7 @@ All commits related to the SDS package must use the **sds** package and 1 of the
 - **external-link**
 - **file-upload**
 - **focus-invalid**
+- **focus-with-outline**
 - **global-events**
 - **http-interceptor**
 - **input-clear**
