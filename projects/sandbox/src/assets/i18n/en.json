@@ -61,5 +61,8 @@
   "i18n.service-navigation.profile.link.ork.label": "Orc",
   "i18n.service-navigation.profile.link.ork.url": "https://en.wikipedia.org/wiki/Orc",
   "i18n.service-navigation.profile.link.kappa.label": "Cappa",
-  "i18n.service-navigation.profile.link.kappa.url": "https://en.wikipedia.org/wiki/Kappa_(folklore)"
+  "i18n.service-navigation.profile.link.kappa.url": "https://en.wikipedia.org/wiki/Kappa_(folklore)",
+  "i18n.notification.sampleMessage": "This is a {{message}} with {{parameters}}",
+  "message": "sample message",
+  "parameters": "sample parameter"
 }
