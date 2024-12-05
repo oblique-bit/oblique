@@ -42,10 +42,16 @@ export class ObMasterLayoutFooterService {
 		});
 	}
 
+	/**
+	 *  @deprecated since Oblique 12. It will be removed with Oblique 13. In an effort to reduce the size of the header and the footer, the logo will not be displayed in the footer anymore and it will be possible to use the logo without the text.
+	 */
 	get hasLogoOnScroll(): boolean {
 		return this.hasLogoOnScrollInternal;
 	}
 
+	/**
+	 *  @deprecated since Oblique 12. It will be removed with Oblique 13. In an effort to reduce the size of the header and the footer, the logo will not be displayed in the footer anymore and it will be possible to use the logo without the text.
+	 */
 	set hasLogoOnScroll(value: boolean) {
 		this.hasLogoOnScrollInternal = value;
 		this.events.next({
