@@ -71,10 +71,13 @@
 				border-color: variables.$ob-secondary-600;
 				background-color: variables.$ob-secondary-600;
 			}
-
-			&:not(:checked, :indeterminate, [data-indeterminate="true"]) ~ .mdc-checkbox__background {
+			/* stylelint-disable selector-not-notation */
+			// because Angular don't support pseudo-class together with the complex selector-not-notation
+			&:not(:checked):not(:indeterminate):not([data-indeterminate="true"])
+				~ .mdc-checkbox__background {
 				border-color: variables.$ob-secondary-600;
 			}
+			/* stylelint-enable selector-not-notation */
 		}
 
 		.ob-list-item-image {
