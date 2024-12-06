@@ -37,7 +37,8 @@ describe('CLI Utils', () => {
 				{command: optionDescriptions.ob.version.command, description: optionDescriptions.ob.version.description},
 				{command: optionDescriptions.ob.help.command, description: optionDescriptions.ob.help.description},
 				{command: optionDescriptions.new.obNewCommand.command, description: optionDescriptions.new.obNewCommand.description},
-				{command: optionDescriptions.new.help.command, description: optionDescriptions.new.help.description}
+				{command: optionDescriptions.new.help.command, description: optionDescriptions.new.help.description},
+				{command: optionDescriptions.update.obUpdateCommand.command, description: optionDescriptions.update.obUpdateCommand.description}
 			]);
 		});
 	});
@@ -114,12 +115,13 @@ describe('CLI Utils', () => {
 
 	describe('commandUsageText', () => {
 		test.each([
-			{property: `new` as 'new' | 'update' | '<command>', expected: `<project-name> [...options]`},
-			{property: `update` as 'new' | 'update' | '<command>', expected: `update [...options]`},
-			{property: `<command>` as 'new' | 'update' | '<command>', expected: `<command> [...options]`},
-			{property: undefined as 'new' | 'update' | '<command>', expected: `<command> [...options]`}
-		])('commandUsageText("$property") should return correct usage text', ({property, expected}) => {
-			expect(commandUsageText(property)).toBe(expected);
+			{subCommand: `new` as 'new' | 'update' | '<command>', option: undefined, expected: `<project-name> [...options]`},
+			{subCommand: `new` as 'new' | 'update' | '<command>', option: 'options', expected: `<project-name> options`},
+			{subCommand: `update` as 'new' | 'update' | '<command>', option: 'options', expected: `options`},
+			{subCommand: `<command>` as 'new' | 'update' | '<command>', expected: `<command> [...options]`},
+			{subCommand: undefined as 'new' | 'update' | '<command>', expected: `<command> [...options]`}
+		])('commandUsageText("$property") should return correct usage text', ({subCommand, option, expected}) => {
+			expect(commandUsageText(subCommand, option)).toBe(expected);
 		});
 
 		test('commandUsageText("<command>") should return correct usage text', () => {
@@ -127,7 +129,7 @@ describe('CLI Utils', () => {
 		});
 
 		test('commandUsageText("update") should return correct usage text', () => {
-			expect(commandUsageText('update')).toBe('update [...options]');
+			expect(commandUsageText('update', ' ')).toBe(' ');
 		});
 	});
 

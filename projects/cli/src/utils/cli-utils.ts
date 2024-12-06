@@ -2,7 +2,12 @@ export const currentVersions = {
 	/* eslint-disable @typescript-eslint/naming-convention */
 	'@oblique/oblique': '12',
 	'@angular/cli': '18',
-	'@angular/material': '18'
+	'@angular/material': '18',
+	'@angular/core': '18',
+	'@angular-eslint/schematics': '18',
+	'@types/jest': '29',
+	'@angular-builders/jest': '18',
+	jest: '29'
 	/* eslint-enable @typescript-eslint/naming-convention */
 } as const;
 
@@ -29,14 +34,26 @@ export const optionDescriptions = {
 			description: getHelpText('ob new'),
 			command: 'ob new -h'
 		}
+	},
+	update: {
+		obUpdateCommand: {
+			command: 'ob update',
+			description: 'Update an Oblique project'
+		}
 	}
+};
+
+export const ngAddOblique = {
+	command: 'ng add @oblique/oblique',
+	description: 'add Oblique to the project'
 };
 
 export const obExamples = [
 	{command: optionDescriptions.ob.version.command, description: optionDescriptions.ob.version.description},
 	{command: optionDescriptions.ob.help.command, description: optionDescriptions.ob.help.description},
 	{command: optionDescriptions.new.obNewCommand.command, description: optionDescriptions.new.obNewCommand.description},
-	{command: optionDescriptions.new.help.command, description: optionDescriptions.new.help.description}
+	{command: optionDescriptions.new.help.command, description: optionDescriptions.new.help.description},
+	{command: optionDescriptions.update.obUpdateCommand.command, description: optionDescriptions.update.obUpdateCommand.description}
 ];
 
 const spaceUnit = `\t`;
@@ -52,7 +69,7 @@ export const runObCommand = (): void => {
 
 export const obTitle = `Oblique Cli`;
 
-export function getHelpText(command: 'ob' | 'ob new'): string {
+export function getHelpText(command: 'ob' | 'ob new' | 'ob update'): string {
 	return `Shows a help message for the "${command}" command in the console`;
 }
 
@@ -67,7 +84,7 @@ export function commandUsageText(subCommand: '<command>' | 'new' | 'update' = '<
 	if (subCommand === 'new') {
 		return `${projectNamePlaceholder} ${option}`;
 	}
-	return `${subCommand} ${option}`;
+	return subCommand === 'update' ? option : `${subCommand} ${option}`;
 }
 
 export function exampleUsageText(examples: {command: string; description: string}[]): string {
@@ -91,5 +108,5 @@ export function titleText(title: string, delimiterStart = '\n', delimiterEnd = '
 }
 
 export function getVersionedDependency(dependency: keyof typeof currentVersions): string {
-	return `${dependency}@${currentVersions[dependency]}`;
+	return `${dependency}${currentVersions[dependency].length > 0 ? '@' : ''}${currentVersions[dependency]}`;
 }
