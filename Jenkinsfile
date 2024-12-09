@@ -42,6 +42,7 @@ nodejsPipelineTemplate {
 		master: [
 			'publish': [
 				'./dist/oblique',
+				'./dist/cli',
 				'./dist/service-navigation-web-component'
 			],
 			'gitTag': true,

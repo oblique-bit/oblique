@@ -1,3 +1,10 @@
+# [12.1.0](https://github.com/oblique-bit/oblique/compare/12.0.4...12.1.0) (2024-12-09)
+
+## Bug Fixes
+
+- **service-navigation:** make language dropdown keyboard accessible ([df2f38ef](https://github.com/oblique-bit/oblique/commit/df2f38efbf0d75396758cecd999ab919ae8b3cab))
+- **web-component:** show focus on language dropdown ([8f8580cd](https://github.com/oblique-bit/oblique/commit/8f8580cdb0afd7f5f356a8468a9c027cb05a06b6))
+
 # [12.0.4](https://github.com/oblique-bit/oblique/compare/12.0.3...12.0.4) (2024-11-29)
 
 ## Bug Fixes
