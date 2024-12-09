@@ -1,5 +1,5 @@
 import {Command, OptionValues} from '@commander-js/extra-typings';
-import {getVersionedDependency, projectNamePlaceholder} from '../utils/cli-utils';
+import {projectNamePlaceholder} from '../utils/cli-utils';
 
 export type ObNewOptions<ValueType> = Record<OptionKeys, ValueType>;
 
@@ -64,7 +64,6 @@ export const obNewConfig = {
 };
 
 export const createsWorkspaceMessage = `\nCreates a new Angular workspace`;
-export const ngAddStringCommand = `npx ${getVersionedDependency('@angular/cli')} add ${getVersionedDependency('@oblique/oblique')}`;
 
 /* Generated content, do not edit */
 export const version = '12.2.3';

@@ -2,7 +2,6 @@ import {Command, OptionValues} from '@commander-js/extra-typings';
 import * as cliPackage from '../../package.json';
 import * as obNewSchema from './schema.json';
 import {execSync} from 'child_process';
-import {addStringFlag, getTitlesCommandOption} from './ob-new';
 import {HandleObNewActionOptions, ObNewOptions, ObNewSchemaOption, obNewConfig} from './ob-new.model';
 import {currentVersions} from '../utils/cli-utils';
 import path from 'path';
@@ -26,60 +25,6 @@ describe('Ob new command', () => {
 	let obNew: ObNewModuleType = require('./ob-new') as ObNewModuleType;
 	let obNewCommand: Command<[string], OptionValues>;
 	let parsedObNewCommand: Command<[string], OptionValues>;
-	describe('addStringFlag', () => {
-		test.each([
-			{
-				description: 'title command option when option key is "title" and property type is "string"',
-				option: {key: 'title', value: 'My Project'},
-				property: {type: 'string'} as ObNewSchemaOption,
-				expected: [getTitlesCommandOption({key: 'title', value: 'My Project'}, projectName)]
-			},
-			{
-				description: 'string flag command option for non-title keys when property type is "string"',
-				option: {key: 'description', value: 'This is a test'},
-				property: {type: 'string'} as ObNewSchemaOption,
-				expected: ['--description="This is a test"']
-			},
-			{
-				description: 'empty array when property type is not "string"',
-				option: {key: 'title', value: 'My Project'},
-				property: {type: 'number'} as ObNewSchemaOption,
-				expected: []
-			},
-			{
-				description: 'empty array when property does not have a "type" property',
-				option: {key: 'title', value: 'My Project'},
-				property: {type: undefined} as ObNewSchemaOption,
-				expected: []
-			}
-		])('$description', ({option, property, expected}) => {
-			const result = addStringFlag(option, projectName, property);
-			expect(result).toEqual(expected);
-		});
-	});
-
-	describe('getTitlesCommandOption', () => {
-		test.each([
-			{
-				description: 'title option when option key is "title" and value is not empty',
-				option: {key: 'title', value: 'My Custom Title'},
-				expected: '--title="My Custom Title"'
-			},
-			{
-				description: 'title option when option key is "title" and value is an empty string',
-				option: {key: 'title', value: ''},
-				expected: `--title="${projectName}"`
-			},
-			{
-				description: 'empty string when option key is not "title"',
-				option: {key: 'description', value: 'A description'},
-				expected: ''
-			}
-		])('returns $description', ({option, expected}) => {
-			const result = getTitlesCommandOption(option, projectName);
-			expect(result).toBe(expected);
-		});
-	});
 
 	describe('after createObNewCommand', () => {
 		describe('without error', () => {
@@ -254,14 +199,11 @@ describe('Ob new command', () => {
 			});
 
 			describe('handleObNewActions execSync calls', () => {
-				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --style="scss" --prefix=app`, () => {
+				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --style="scss" --prefix="app"`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						1,
-						`npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --style="scss" --prefix=app`,
-						{
-							cwd: process.cwd(),
-							stdio: 'inherit'
-						}
+						`npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --style="scss" --prefix="app"`,
+						{stdio: 'inherit'}
 					);
 				});
 

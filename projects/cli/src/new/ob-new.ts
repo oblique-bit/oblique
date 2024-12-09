@@ -1,21 +1,11 @@
 import {Command, OptionValues} from '@commander-js/extra-typings';
-import {execSync} from 'child_process';
-import {
-	buildOption,
-	commandUsageText,
-	getVersionedDependency,
-	optionDescriptions,
-	projectNamePlaceholder,
-	startObCommand
-} from '../utils/cli-utils';
+import {buildOption, commandUsageText, execute, optionDescriptions, projectNamePlaceholder, startObCommand} from '../utils/cli-utils';
 import {addObNewCommandOptions, convertOptionPropertyNames} from '../utils/ob-configure-command';
 import {
 	HandleObNewActionOptions,
 	ObNewOptions,
-	ObNewSchemaOption,
 	createsWorkspaceMessage,
 	immutableOptions,
-	ngAddStringCommand,
 	obNewConfig,
 	schema,
 	version
@@ -35,26 +25,6 @@ export function handleObNewActions(options: HandleObNewActionOptions): void {
 	} catch (error) {
 		console.error('Installation failed: ', error);
 	}
-}
-
-export function createAddObliqueCommand(
-	command: string,
-	options: Record<string, string | boolean | ObNewSchemaOption>,
-	projectName: string
-): string {
-	const commandOptions: string[] = [];
-	const properties = schema.properties as Record<string, ObNewSchemaOption>;
-	for (const [key, value] of Object.entries(options)) {
-		const propertyOptions: ObNewSchemaOption = properties[key];
-		if (Object.prototype.hasOwnProperty.call(propertyOptions, 'type')) {
-			const optionsList: string[] =
-				propertyOptions.type === 'boolean'
-					? addBooleanFlag(key, value as boolean)
-					: addStringFlag({key, value: value as string}, projectName, propertyOptions);
-			commandOptions.push(...optionsList);
-		}
-	}
-	return [command, ...commandOptions].join(' ');
 }
 
 function initializeCommand(command: Command<[string], OptionValues>): Command<[string], OptionValues> {
@@ -98,58 +68,22 @@ function getApplicationDirectory(projectName: string): string {
 }
 
 export function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string): void {
-	const command = createAddObliqueCommand(ngAddStringCommand, options, projectName);
 	const dir: string = getApplicationDirectory(projectName);
 	installMaterial(dir);
-	execSync(command, {stdio: 'inherit', cwd: dir});
+	const projectTitle = options.title === projectNamePlaceholder || options.title === '' ? projectName : options.title;
+	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: {...options, title: projectTitle}, execSyncOptions: {cwd: dir}});
 	console.info(`[Complete]: Oblique added`);
 }
 
 function installMaterial(dir: string): void {
 	console.info(`[Info]: Installs Angular Material`);
-	execSync(`npm install ${getVersionedDependency('@angular/material')}`, {stdio: 'inherit', cwd: dir});
+	execute({name: 'npmInstall', dependencies: ['@angular/material'], execSyncOptions: {cwd: dir}});
 }
 
-export function runNgNewAngularWorkspace(projectName?: string, prefix?: string | 'app'): void {
+export function runNgNewAngularWorkspace(projectName: string, prefix: string | 'app'): void {
 	console.info(createsWorkspaceMessage);
-	const options: string[] = [];
-	Object.entries(immutableOptions).forEach(([key, flag]) => {
-		options.push(`--${buildOption(key, flag.value)}`);
-	});
-	execSync(`npx ${getVersionedDependency('@angular/cli')} new ${projectName} ${options.join(' ')} --prefix=${prefix}`, {
-		stdio: 'inherit',
-		cwd: process.cwd()
-	});
-}
-
-function addBooleanFlag(key: string, value: boolean): string[] {
-	const commandOptions: string[] = [];
-	if (value) {
-		commandOptions.push(`--${key}`);
-	} else {
-		commandOptions.push(`--no-${key}`);
-	}
-	return commandOptions;
-}
-
-export function getTitlesCommandOption(option: {key: string; value: string}, projectName: string): string {
-	if (option.key === 'title') {
-		if (option.value === projectNamePlaceholder || option.value === '') {
-			return `--${option.key}="${projectName}"`;
-		}
-		return `--${option.key}="${option.value}"`;
-	}
-	return '';
-}
-
-export function addStringFlag(option: {key: string; value: string}, projectName: string, property: ObNewSchemaOption): string[] {
-	const commandOptions: string[] = [];
-	if (Object.prototype.hasOwnProperty.call(property, 'type') && property.type === 'string') {
-		if (option.key === 'title') {
-			commandOptions.push(getTitlesCommandOption(option, projectName));
-		} else {
-			commandOptions.push(`--${option.key}="${option.value}"`);
-		}
-	}
-	return commandOptions;
+	const baseOptions = Object.entries(immutableOptions)
+		.map(([key, option]) => ({key, value: option.value}))
+		.reduce((options, option) => ({...options, [option.key]: option.value}), {});
+	execute({name: 'ngNew', projectName, options: {...baseOptions, prefix}});
 }
