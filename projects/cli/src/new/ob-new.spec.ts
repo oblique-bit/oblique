@@ -254,10 +254,10 @@ describe('Ob new command', () => {
 			});
 
 			describe('handleObNewActions execSync calls', () => {
-				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone  --no-ssr  --style scss --prefix=app`, () => {
+				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --style="scss" --prefix=app`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						1,
-						`npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone  --no-ssr  --style scss --prefix=app`,
+						`npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --style="scss" --prefix=app`,
 						{
 							cwd: process.cwd(),
 							stdio: 'inherit'
@@ -265,7 +265,7 @@ describe('Ob new command', () => {
 					);
 				});
 
-				test(`should call npm installl @angular/material@${currentVersions['@angular/material']}`, () => {
+				test(`should call npm install @angular/material@${currentVersions['@angular/material']}`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(2, `npm install @angular/material@${currentVersions['@angular/material']}`, {
 						cwd: path.join(process.cwd(), projectName),
 						stdio: 'inherit'

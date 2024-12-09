@@ -1,6 +1,13 @@
 import {Command, OptionValues} from '@commander-js/extra-typings';
 import {execSync} from 'child_process';
-import {commandUsageText, getVersionedDependency, optionDescriptions, projectNamePlaceholder, startObCommand} from '../utils/cli-utils';
+import {
+	buildOption,
+	commandUsageText,
+	getVersionedDependency,
+	optionDescriptions,
+	projectNamePlaceholder,
+	startObCommand
+} from '../utils/cli-utils';
 import {addObNewCommandOptions, convertOptionPropertyNames} from '../utils/ob-configure-command';
 import {
 	HandleObNewActionOptions,
@@ -79,9 +86,8 @@ export function addImmutableOptionsText(command: Command<[string], OptionValues>
 	const padEnd = 36;
 
 	Object.entries(immutableOptions).forEach(([key, flag]) => {
-		const flagValue =
-			Object.prototype.hasOwnProperty.call(flag, 'value') && flag.value !== undefined && flag.value.length > 0 ? `=${flag.value}` : '';
-		const newFlagValue = `  --${key}${flagValue}`.padEnd(padEnd, ' ');
+		const flagValue = buildOption(key, flag.value);
+		const newFlagValue = `  --${flagValue}`.padEnd(padEnd, ' ');
 		command.addHelpText('after', `${newFlagValue} ${flag.description}`);
 	});
 	return command;
@@ -108,7 +114,7 @@ export function runNgNewAngularWorkspace(projectName?: string, prefix?: string |
 	console.info(createsWorkspaceMessage);
 	const options: string[] = [];
 	Object.entries(immutableOptions).forEach(([key, flag]) => {
-		options.push(`--${key} ${!key.startsWith('no') && Object.prototype.hasOwnProperty.call(flag, 'value') ? flag.value : ''}`);
+		options.push(`--${buildOption(key, flag.value)}`);
 	});
 	execSync(`npx ${getVersionedDependency('@angular/cli')} new ${projectName} ${options.join(' ')} --prefix=${prefix}`, {
 		stdio: 'inherit',
