@@ -110,3 +110,10 @@ export function titleText(title: string, delimiterStart = '\n', delimiterEnd = '
 export function getVersionedDependency(dependency: keyof typeof currentVersions): string {
 	return `${dependency}@${currentVersions[dependency]}`;
 }
+
+export function buildOption(key: string, value: string | boolean): string {
+	if (typeof value === 'string') {
+		return `${key}="${value}"`;
+	}
+	return value ? key : `no-${key}`;
+}

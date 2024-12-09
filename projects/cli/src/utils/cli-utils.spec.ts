@@ -1,5 +1,6 @@
 import {handleAction} from '../index';
 import {
+	buildOption,
 	commandUsageText,
 	createAdditionalHelpText,
 	exampleUsageText,
@@ -238,6 +239,20 @@ Examples of use:
 		test('titleText should return title text with custom delimiters', () => {
 			const title = 'Test Title';
 			expect(titleText(title, '', ' - ')).toBe('Test Title - ');
+		});
+	});
+
+	describe('buildOption', () => {
+		test('should return key="value" with a string value', () => {
+			expect(buildOption('key', 'value')).toEqual('key="value"');
+		});
+
+		test('should return key with true as value', () => {
+			expect(buildOption('key', true)).toEqual('key');
+		});
+
+		test('should return no-key with false as value', () => {
+			expect(buildOption('key', false)).toEqual('no-key');
 		});
 	});
 });
