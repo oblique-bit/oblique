@@ -14,7 +14,7 @@
   "dependencies": {
     "@angular/platform-server": "^18.2.13",
     "@angular/ssr": "^18.2.12",
-    "express": "^4.21.1"
+    "express": "^4.21.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.21"
