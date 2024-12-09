@@ -1,3 +1,17 @@
+# [12.1.0](https://github.com/oblique-bit/oblique/compare/12.0.4...12.1.0) (2024-12-09)
+
+## Bug Fixes
+
+- **material:** add missing label to chips autocomplete example ([c78d591f](https://github.com/oblique-bit/oblique/commit/c78d591f192909c568a361f5b471c4090580ae1b))
+
+## Features
+
+- **banner:** get banner presence and content from directus ([d351e4f5](https://github.com/oblique-bit/oblique/commit/d351e4f582f9c71067936ba37fce4b6f5dd2b605))
+- **banner:** avoid conflict with global `banner` class ([5443bce9](https://github.com/oblique-bit/oblique/commit/5443bce967aad481c76c2c1ef9eb0605225717e2))
+- **component-page:** add newsletter ([ef7056e8](https://github.com/oblique-bit/oblique/commit/ef7056e804c011bb3459fa3768440b77ada4cdb9))
+- **component-page:** add new component-page component ([bc6df8e0](https://github.com/oblique-bit/oblique/commit/bc6df8e03282b03f426ea7d8551facdc9c50c46f))
+- **focus-with-outline:** add focus with outline example ([39550a95](https://github.com/oblique-bit/oblique/commit/39550a959bcb19d9b7c6c50123a426c109af870b))
+
 # [12.0.4](https://github.com/oblique-bit/oblique/compare/12.0.3...12.0.4) (2024-11-29)
 
 ## Features

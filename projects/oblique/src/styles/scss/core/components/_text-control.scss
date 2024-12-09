@@ -4,6 +4,10 @@
 	display: none;
 }
 
+.mat-mdc-form-field.mat-form-field-invalid .ob-text-control-clear {
+	padding-right: variables.$ob-spacing-lg + variables.$ob-spacing-sm;
+}
+
 .ob-text-control {
 	display: flex !important;
 

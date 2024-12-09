@@ -13,12 +13,11 @@ import {
 	appModulePath,
 	applyChanges,
 	createSrcFile,
-	getAngularVersion,
 	getTemplate,
 	routingModulePath
 } from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {ObliquePackage, addAngularConfigInList, addFile, createSafeRule, infoMigration} from '../../utils';
+import {ObliquePackage, addFile, createSafeRule, infoMigration, setOrCreateAngularProjectsConfig} from '../../utils';
 
 export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -38,11 +37,8 @@ function addAjv(ajv: boolean): Rule {
 			infoMigration(_context, 'Oblique feature: Adding schema validation');
 			addDevDependency(tree, 'ajv');
 			addDevDependency(tree, 'ajv-formats');
-			if (getAngularVersion(tree) >= 10) {
-				addAngularConfigInList(tree, ['architect', 'build', 'options', 'allowedCommonJsDependencies'], 'ajv');
-				addAngularConfigInList(tree, ['architect', 'build', 'options', 'allowedCommonJsDependencies'], 'ajv-formats');
-			}
 		}
+		setOrCreateAngularProjectsConfig(tree, ['architect', 'build', 'options', 'allowedCommonJsDependencies'], ['ajv', 'ajv-formats']);
 		return tree;
 	});
 }

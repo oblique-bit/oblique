@@ -96,3 +96,13 @@ export function isNotKeyboardEventOnButton(event: MouseEvent | KeyboardEvent): b
 export function getRootRoute(route: ActivatedRoute): ActivatedRoute {
 	return route.firstChild ? getRootRoute(route.firstChild) : route;
 }
+
+export function obFocusWithOutline(doc: Document, focusableElement: HTMLElement): void {
+	doc.body.classList.add('ob-outline');
+
+	const {contentEditable} = focusableElement;
+	focusableElement.contentEditable = 'true';
+
+	focusableElement.focus();
+	focusableElement.contentEditable = contentEditable;
+}

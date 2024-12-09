@@ -35,6 +35,7 @@ import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-s
 import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
 import {ServiceNavigationSampleComponent} from './service-navigation/service-navigation-sample.component';
 import {RxjsOperatorsComponent} from './rxjs-operators/rxjs-operators.component';
+import {FocusSampleComponent} from './focus/focus-sample.component';
 import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.component';
 
 const samplesRoutes: Routes = [
@@ -138,9 +139,10 @@ const samplesRoutes: Routes = [
 	{path: 'error-messages', component: ErrorMessagesSampleComponent},
 	{path: 'external-link', component: ExternalLinkComponent},
 	{path: 'file-upload', component: FileUploadSampleComponent},
+	{path: 'focus-invalid', component: FocusInvalidSampleComponent},
+	{path: 'focus-with-outline', component: FocusSampleComponent},
 	{path: 'form', component: FormSampleComponent},
 	{path: 'form/1', component: FormSampleComponent},
-	{path: 'focus-invalid', component: FocusInvalidSampleComponent},
 	{path: 'global-events', component: GlobalEventsSampleComponent},
 	{path: 'horizontal-forms', component: HorizontalFormsSampleComponent},
 	{path: 'http-interceptor', component: HttpInterceptorSampleComponent},

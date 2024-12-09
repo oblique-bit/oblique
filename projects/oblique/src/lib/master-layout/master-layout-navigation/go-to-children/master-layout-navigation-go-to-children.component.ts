@@ -19,6 +19,7 @@ export class ObMasterLayoutNavigationGoToChildrenComponent implements OnChanges 
 	@HostBinding('class.hide') hide = false;
 	@Input() disableRipple = false;
 	@Input() isCurrentParent = false;
+	@Input() isChildWithoutUrl = false;
 	@Input() link: ObNavigationLink = new ObNavigationLink();
 	@Input() showChildren = true;
 	@Output() readonly changeCurrentParent: EventEmitter<ObNavigationLink> = new EventEmitter<ObNavigationLink>();

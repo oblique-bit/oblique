@@ -7,6 +7,9 @@ import {MatFormField} from '@angular/material/form-field';
 	host: {class: 'ob-form-field'},
 	standalone: true
 })
+/**
+ *  @deprecated since Oblique 12.1.0. It will be removed with Oblique 13.
+ */
 export class ObFormFieldDirective implements OnInit, AfterContentInit {
 	@HostBinding('class.ob-form-field-textarea') containsTextarea = false;
 	@HostBinding('class.ob-form-field-has-mat-input-server') hasMatInputServer = false;

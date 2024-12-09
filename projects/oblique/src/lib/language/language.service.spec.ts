@@ -76,12 +76,6 @@ describe('LanguageService', () => {
 			expect(translate.use).toHaveBeenCalledWith('de');
 		});
 
-		it('should show a warning in the console', () => {
-			expect(console.warn).toHaveBeenCalledWith(
-				'No DateAdapter is provided, this means the datepicker might not work properly. "provideMomentDateAdapter" should be added to the root providers.'
-			);
-		});
-
 		describe('locale$', () => {
 			it('should be an observable', () => {
 				expect(service.locale$ instanceof Observable).toBe(true);

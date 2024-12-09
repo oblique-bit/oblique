@@ -18,6 +18,7 @@ import {
 	isNotKeyboardEventOnButton,
 	matFormFieldDefaultOptionsProvider,
 	multiTranslateLoader,
+	obFocusWithOutline,
 	obliqueProviders,
 	radioOptionsProvider,
 	slideToggleOptionsProvider,
@@ -243,6 +244,15 @@ describe('utilities', () => {
 		it('should return the route itself when there is no firstChild', () => {
 			const route = {outlet: 'childLessRoot'} as ActivatedRoute;
 			expect(getRootRoute(route)).toEqual({outlet: 'childLessRoot'});
+		});
+	});
+
+	describe('obFocusWithOutline', () => {
+		it('should set the focus on the HTML input element', () => {
+			const htmlInputElement = document.createElement('input');
+			document.body.appendChild(htmlInputElement);
+			obFocusWithOutline(document, htmlInputElement);
+			expect(document.activeElement).toBe(htmlInputElement);
 		});
 	});
 });

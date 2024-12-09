@@ -1,7 +1,7 @@
 {
   "title": "Oblique",
   "name": "oblique",
-  "version": "12.0.4",
+  "version": "12.1.0",
   "license": "MIT",
   "organization": {
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
@@ -70,7 +70,7 @@
     "@angular-devkit/core": "^18.2.4",
     "@angular-eslint/eslint-plugin": "^18.3.1",
     "@angular-eslint/eslint-plugin-template": "^18.3.1",
-    "@angular-eslint/template-parser": "^18.4.2",
+    "@angular-eslint/template-parser": "^18.4.3",
     "@angular/cli": "^18.2.12",
     "@angular/compiler-cli": "^18.2.13",
     "@types/jest": "^29.5.14",
@@ -85,7 +85,7 @@
     "jest": "^29.7.0",
     "jest-sonar": "^0.2.16",
     "lint-staged": "^15.2.10",
-    "prettier": "^3.4.1",
+    "prettier": "^3.4.2",
     "stylelint": "^16.11.0",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard-scss": "^13.1.0",

@@ -1,3 +1,30 @@
+# [12.1.0](https://github.com/oblique-bit/oblique/compare/12.0.4...12.1.0) (2024-12-09)
+
+## Bug Fixes
+
+- **input-clear:** ensure the control is visible when the field is in error ([69793d3f](https://github.com/oblique-bit/oblique/commit/69793d3f38052cd98c9240514dbd03384910d0aa))
+- **language:** remove export of `ObLanguageService` ([c89c123e](https://github.com/oblique-bit/oblique/commit/c89c123eb46e29fb396c15970328d25c48782c5d))
+- **material:** don't mix CSS pseudo-class with `not` ([11bcc11d](https://github.com/oblique-bit/oblique/commit/11bcc11d4f39569009cdedf41b29901353e3f1eb))
+- **material:** ensure chips autocomplete is the same height as a form field ([a83f64b1](https://github.com/oblique-bit/oblique/commit/a83f64b15c9fa6e3bcddd6c20c32ee7adc9d46f2))
+- **material:** remove margin-top from all chip variants ([7e504db2](https://github.com/oblique-bit/oblique/commit/7e504db2ca51cddc19647ca5e41bb826fe68ce75))
+- **material:** add padding before an input suffix ([cb86d9cd](https://github.com/oblique-bit/oblique/commit/cb86d9cd49076f7e68435d36c4e9eba32fd5cf51))
+- **notification:** enable dynamic change of translations ([44733804](https://github.com/oblique-bit/oblique/commit/447338048b685cdede5ae43e9c553c6d9820f6a4))
+- **schematics:** add 'allowedCommonJsDependencies' config to avoid ajv warnings on build ([cfc0ca18](https://github.com/oblique-bit/oblique/commit/cfc0ca186751af7dcc71959df3ce6974414b16ec))
+- **service-navigation:** make language dropdown keyboard accessible ([df2f38ef](https://github.com/oblique-bit/oblique/commit/df2f38efbf0d75396758cecd999ab919ae8b3cab))
+
+## Features
+
+- **language:** remove `DateAdapter` warning ([98f3d36e](https://github.com/oblique-bit/oblique/commit/98f3d36edfd91bd6ad274ed0eb52df9397ea3f3f))
+- **master-layout:** add support for parent main menu item without URL ([cc58b075](https://github.com/oblique-bit/oblique/commit/cc58b07576a6880662eb5e0a6025247bcc76759c))
+- **master-layout:** deprecate `hasLogoOnScroll` and `reduceOnScroll` ([c2e08cb1](https://github.com/oblique-bit/oblique/commit/c2e08cb19f505dc98950e1d2874e7a7cd471ef9c))
+- **material:** deprecate `ObSelectDirective` ([f069add7](https://github.com/oblique-bit/oblique/commit/f069add799b2c6dc37c0c447579a37a82ea9fdb5))
+- **material:** deprecate `ObFormFieldModule` ([2a124305](https://github.com/oblique-bit/oblique/commit/2a124305d6d6268c4eaa16e752cb24a64ca3106a))
+- **material:** deprecate `ObFormFieldDirective` ([835557e5](https://github.com/oblique-bit/oblique/commit/835557e550b51aef06befc00ef3d58baae33b2ce))
+- **schematics:** remove `BrowserModule` from `app.module.ts` with ng-add ([7c39e3fb](https://github.com/oblique-bit/oblique/commit/7c39e3fb7706f8f6b0239fbd50fcd004c8de60aa))
+- **schematics:** remove Angular version check for 'allowedCommonJsDependencies' config ([cb704499](https://github.com/oblique-bit/oblique/commit/cb7044994be49c44aa4e90ea1853d90652193409))
+- **schematics:** increase `maximumError` budget to 1.8mb to avoid error on build ([95e49a62](https://github.com/oblique-bit/oblique/commit/95e49a6286ee2b83df20af9e85640a9a33b867cf))
+- **utilities:** add API to focus with outline ([8cd67063](https://github.com/oblique-bit/oblique/commit/8cd670638280e432cda27800d8b934fcd2c9c98d))
+
 # [12.0.4](https://github.com/oblique-bit/oblique/compare/12.0.3...12.0.4) (2024-11-29)
 
 ## Bug Fixes

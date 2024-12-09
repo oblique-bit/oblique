@@ -1,13 +1,16 @@
-import {Component} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {ObExternalLinkModule} from '@oblique/oblique';
-import {RouterLink} from '@angular/router';
+import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
 
 @Component({
 	selector: 'app-banner',
 	standalone: true,
-	imports: [MatTooltipModule, ObExternalLinkModule, RouterLink],
+	imports: [MatTooltipModule, ObExternalLinkModule, SafeHtmlPipe],
 	templateUrl: './banner.component.html',
-	styleUrl: './banner.component.scss'
+	styleUrl: './banner.component.scss',
+	encapsulation: ViewEncapsulation.None
 })
-export class BannerComponent {}
+export class BannerComponent {
+	@Input() content: string;
+}

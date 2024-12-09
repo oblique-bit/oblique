@@ -1,6 +1,6 @@
 {
-  "name": "swiss-design-system",
-  "version": "12.0.4",
+  "name": "@oblique/sds",
+  "version": "12.1.0",
   "scripts": {
     "start": "ng serve",
     "lint": "ts-node scripts/lint.ts",

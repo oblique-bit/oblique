@@ -10,9 +10,6 @@ import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 @Injectable({
 	providedIn: 'root'
 })
-/**
- * @deprecated since Oblique 11.3.0. It will be removed with Oblique 12 with no replacement as it won't be needed anymore.
- */
 export class ObLanguageService {
 	readonly locale$: Observable<string>;
 	private static readonly token = 'oblique_lang';
@@ -83,10 +80,6 @@ export class ObLanguageService {
 	private setLocaleOnDateAdapter(adapter: DateAdapter<unknown>): void {
 		if (adapter) {
 			this.locale$.subscribe(locale => adapter.setLocale(locale));
-		} else {
-			console.warn(
-				'No DateAdapter is provided, this means the datepicker might not work properly. "provideMomentDateAdapter" should be added to the root providers.'
-			);
 		}
 	}
 }

@@ -6,6 +6,7 @@ import {TabbedPageCompleteCms} from './models/tabbed-page.model';
 import {TextPageCompleteCms} from './models/text-page.model';
 import {VersionCms} from './models/version.model';
 import {CMSPageShortList} from './models/cms-page.model';
+import {BannerCms} from './models/banner.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -41,5 +42,9 @@ export class CmsDataService {
 		return this.httpClient.get<CMSPageShortList>(
 			`${this.baseUrl}items/TabbedPage?fields=id,name,slug,category,min_version,max_version&sort=order,name`
 		);
+	}
+
+	getBanner(): Observable<BannerCms> {
+		return this.httpClient.get<BannerCms>(`${this.baseUrl}items/Banner`);
 	}
 }

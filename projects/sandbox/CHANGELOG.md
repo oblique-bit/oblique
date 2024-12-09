@@ -1,3 +1,16 @@
+# [12.1.0](https://github.com/oblique-bit/oblique/compare/12.0.4...12.1.0) (2024-12-09)
+
+## Bug Fixes
+
+- **material:** add missing label to chips autocomplete example ([3bfadcdc](https://github.com/oblique-bit/oblique/commit/3bfadcdc3b832669ca73428351880312040f6e66))
+- **notification:** add missing translation keys ([e5c4feec](https://github.com/oblique-bit/oblique/commit/e5c4feec9c5cc1e82d089ed1146c7811c3cbbff8))
+
+## Features
+
+- **focus-with-outline:** add focus sample ([1165148a](https://github.com/oblique-bit/oblique/commit/1165148a9ad10ff4e044441df5b3d2319c969eb8))
+- **input-clear:** demonstrate clear button with error icon and suffix ([63e58783](https://github.com/oblique-bit/oblique/commit/63e58783afd57cb741f4080f978797afbfc078fb))
+- **master-layout:** show parent main menu item without URL ([3d892fad](https://github.com/oblique-bit/oblique/commit/3d892fad583d33f4cfa6d5eb7fb1fb851e0b2fb3))
+
 # [12.0.3](https://github.com/oblique-bit/oblique/compare/12.0.2...12.0.3) (2024-11-22)
 
 ## Bug Fixes

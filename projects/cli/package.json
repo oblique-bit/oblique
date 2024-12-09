@@ -1,6 +1,6 @@
 {
   "name": "@oblique/cli",
-  "version": "12.0.4",
+  "version": "12.1.0",
   "description": "Command Line Interface to manage Oblique projects",
   "keywords": [
     "ob",
@@ -13,6 +13,7 @@
   },
   "scripts": {
     "start": "ts-node src/index.ts",
+    "link": "npm uninstall @oblique/cli -g && npm run build && cd ../../dist/cli && npm link",
     "lint": "ts-node scripts/lint.ts",
     "format": "npm run lint -- --fix",
     "test": "jest",
@@ -21,6 +22,7 @@
     "release": "ts-node scripts/release.ts"
   },
   "dependencies": {
-    "@commander-js/extra-typings": "^12.1.0"
+    "@commander-js/extra-typings": "^12.1.0",
+    "chalk": "^4.1.2"
   }
 }

@@ -7,6 +7,8 @@ import {FormControl, FormGroup, UntypedFormBuilder, UntypedFormGroup} from '@ang
 })
 export class InputClearSampleComponent implements OnInit {
 	mandatoryModel: string;
+	minlengthModel: string;
+	minlengthPrefixSuffixModel: string;
 	mandatoryLgModel: string;
 	mandatorySmModel: string;
 	datepickerModel: string;
