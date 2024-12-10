@@ -8,7 +8,6 @@ import {By} from '@angular/platform-browser';
 import {IconsExampleIconsGalleryPreviewComponent} from './previews/icons-gallery/icons-example-icons-gallery-preview.component';
 import {IconsExampleFontSizePreviewComponent} from './previews/font-size/icons-example-font-size-preview.component';
 import {IconsExampleDefaultPreviewComponent} from './previews/default/icons-example-default-preview.component';
-import {IconsExampleColorPreviewComponent} from './previews/color/icons-example-color-preview.component';
 import {MatIcon} from '@angular/material/icon';
 import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
 import {TranslateService} from '@ngx-translate/core';
@@ -35,8 +34,8 @@ describe(IconsCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	test(`that there are 4 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(4);
+	test(`that there are 3 ${CodeExampleComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(3);
 	});
 
 	test(`that there is 1 ${IconsExampleIconsGalleryPreviewComponent.name}s`, () => {
@@ -51,11 +50,7 @@ describe(IconsCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.directive(IconsExampleDefaultPreviewComponent)).length).toBe(1);
 	});
 
-	test(`that there is 1 ${IconsExampleColorPreviewComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(IconsExampleColorPreviewComponent)).length).toBe(1);
-	});
-
-	test(`that there are 706 ${MatIcon.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatIcon)).length).toBe(706);
+	test(`that there are 702 ${MatIcon.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MatIcon)).length).toBe(702);
 	});
 });
