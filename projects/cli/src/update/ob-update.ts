@@ -1,8 +1,7 @@
 import {Command, OptionValues} from '@commander-js/extra-typings';
 import * as path from 'node:path';
 import fs from 'node:fs';
-import {execSync} from 'node:child_process';
-import {commandUsageText, currentVersions, getHelpText, getVersionedDependency, ngAddOblique, startObCommand} from '../utils/cli-utils';
+import {commandUsageText, currentVersions, execute, getHelpText, ngAddOblique, startObCommand} from '../utils/cli-utils';
 import {PackageDependencies, updateDescriptions} from './ob-update.model';
 import chalk from 'chalk';
 
@@ -51,36 +50,31 @@ export function checkNeededDependencies(): void {
 
 export function runUpdateDependencies(): void {
 	try {
-		const dependencies: string[] = [];
-		for (const dependency of Object.keys(currentVersions) as (keyof typeof currentVersions)[]) {
-			if (isDependencyInPackage(dependency)) {
-				dependencies.push(getVersionedDependency(dependency));
-			}
-		}
-		const npxCommand = `npx ${getVersionedDependency('@angular/cli')} update ${dependencies.join(' ')}`;
-		execSync(npxCommand, {stdio: 'inherit', cwd: process.cwd()});
+		const dependencies = Object.entries(currentVersions)
+			.map(([dependency]) => dependency as keyof typeof currentVersions)
+			.filter(dependency => isDependencyInPackage(dependency));
+		execute({name: 'ngUpdate', dependencies});
 	} catch (error) {
 		console.error(error);
 	}
 }
 
 function runUpdateSave(): void {
-	let result = '';
 	console.info(chalk.blue('[Info]: Runs npm update'));
 	try {
-		result = execSync(`npm update --save`, {stdio: 'inherit', cwd: process.cwd(), encoding: undefined}).toString();
-	} catch (ex) {
-		console.info(result);
+		execute({name: 'npmUpdate'});
+	} catch (error) {
+		console.info(error);
 	}
 }
 
 export function outputOutdatedDependencies(): void {
 	console.info(chalk.blue('[Info]: Following dependencies should also be manually updated.\n'));
-	let result = '';
 	try {
-		result = execSync('npm outdated', {stdio: 'inherit', cwd: process.cwd(), encoding: undefined}).toString();
-	} catch (ex) {
-		console.info(result);
+		execute({name: 'npmOutdated'});
+	} catch (error) {
+		// npm outdated always fails, but no error management is needed since the execute function will already print its output.
+		// the try..catch block only serves to avoid the error being thrown
 	}
 }
 
