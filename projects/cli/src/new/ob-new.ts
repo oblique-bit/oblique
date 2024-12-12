@@ -17,16 +17,6 @@ export function createObNewCommand(): Command<[string], OptionValues> {
 	return configureCommandOptions(initializedCommand);
 }
 
-export function handleObNewActions(options: HandleObNewActionOptions): void {
-	const cmdOptions: ObNewOptions<string | boolean> = convertOptionPropertyNames(options.command.opts() as ObNewOptions<string | boolean>);
-	try {
-		runNgNewAngularWorkspace(options.projectName, cmdOptions.prefix as string);
-		runAddOblique(cmdOptions, options.projectName);
-	} catch (error) {
-		console.error('Installation failed: ', error);
-	}
-}
-
 function initializeCommand(command: Command<[string], OptionValues>): Command<[string], OptionValues> {
 	command
 		.name('new')
@@ -46,6 +36,41 @@ export function handleAction(options: HandleObNewActionOptions): void {
 	startObCommand(handleObNewActions as (options: HandleObNewActionOptions) => void, 'Oblique CLI ob new completed in', options);
 }
 
+export function handleObNewActions(options: HandleObNewActionOptions): void {
+	const cmdOptions: ObNewOptions<string | boolean> = convertOptionPropertyNames(options.command.opts() as ObNewOptions<string | boolean>);
+	try {
+		runNgNewAngularWorkspace(options.projectName, cmdOptions.prefix as string);
+		runAddOblique(cmdOptions, options.projectName);
+	} catch (error) {
+		console.error('Installation failed: ', error);
+	}
+}
+
+export function runNgNewAngularWorkspace(projectName: string, prefix: string | 'app'): void {
+	console.info(createsWorkspaceMessage);
+	const baseOptions = Object.entries(immutableOptions)
+		.map(([key, option]) => ({key, value: option.value}))
+		.reduce((options, option) => ({...options, [option.key]: option.value}), {});
+	execute({name: 'ngNew', projectName, options: {...baseOptions, prefix}});
+}
+
+export function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string): void {
+	const dir: string = getApplicationDirectory(projectName);
+	installMaterial(dir);
+	const projectTitle = options.title === projectNamePlaceholder || options.title === '' ? projectName : options.title;
+	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: {...options, title: projectTitle}, execSyncOptions: {cwd: dir}});
+	console.info(`[Complete]: Oblique added`);
+}
+
+function getApplicationDirectory(projectName: string): string {
+	return [process.cwd(), projectName].join('/');
+}
+
+function installMaterial(dir: string): void {
+	console.info(`[Info]: Installs Angular Material`);
+	execute({name: 'npmInstall', dependencies: ['@angular/material'], execSyncOptions: {cwd: dir}});
+}
+
 function configureCommandOptions(newCommand: Command<[string], OptionValues>): Command<[string], OptionValues> {
 	const commandWithOptions = addObNewCommandOptions(schema, newCommand);
 	return addImmutableOptionsText(commandWithOptions);
@@ -61,29 +86,4 @@ export function addImmutableOptionsText(command: Command<[string], OptionValues>
 		command.addHelpText('after', `${newFlagValue} ${flag.description}`);
 	});
 	return command;
-}
-
-function getApplicationDirectory(projectName: string): string {
-	return [process.cwd(), projectName].join('/');
-}
-
-export function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string): void {
-	const dir: string = getApplicationDirectory(projectName);
-	installMaterial(dir);
-	const projectTitle = options.title === projectNamePlaceholder || options.title === '' ? projectName : options.title;
-	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: {...options, title: projectTitle}, execSyncOptions: {cwd: dir}});
-	console.info(`[Complete]: Oblique added`);
-}
-
-function installMaterial(dir: string): void {
-	console.info(`[Info]: Installs Angular Material`);
-	execute({name: 'npmInstall', dependencies: ['@angular/material'], execSyncOptions: {cwd: dir}});
-}
-
-export function runNgNewAngularWorkspace(projectName: string, prefix: string | 'app'): void {
-	console.info(createsWorkspaceMessage);
-	const baseOptions = Object.entries(immutableOptions)
-		.map(([key, option]) => ({key, value: option.value}))
-		.reduce((options, option) => ({...options, [option.key]: option.value}), {});
-	execute({name: 'ngNew', projectName, options: {...baseOptions, prefix}});
 }
