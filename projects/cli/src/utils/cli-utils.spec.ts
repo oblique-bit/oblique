@@ -12,13 +12,16 @@ import {
 	titleText
 } from './cli-utils';
 
-// Mock console methods to capture their outputs
-console.info = jest.fn();
-console.time = jest.fn();
-console.timeEnd = jest.fn();
-const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
-
 describe('CLI Utils', () => {
+	const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
+
+	beforeAll(() => {
+		// Mock console methods to capture their outputs
+		console.info = jest.fn();
+		console.time = jest.fn();
+		console.timeEnd = jest.fn();
+	});
+
 	describe('optionDescriptions', () => {
 		test('optionDescriptions.ob.version.description should be correct', () => {
 			expect(optionDescriptions.ob.version.description).toBe('Shows the current version of @oblique/cli');
