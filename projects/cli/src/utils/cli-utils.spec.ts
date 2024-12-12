@@ -2,9 +2,11 @@ import {
 	buildOption,
 	commandUsageText,
 	createAdditionalHelpText,
+	currentVersions,
 	exampleUsageText,
 	execute,
 	getHelpText,
+	getVersionedDependency,
 	obExamples,
 	optionDescriptions,
 	runObCommand,
@@ -231,6 +233,13 @@ Examples of use:
 		test('titleText should return title text with custom delimiters', () => {
 			const title = 'Test Title';
 			expect(titleText(title, '', ' - ')).toBe('Test Title - ');
+		});
+	});
+
+	describe('getVersionedDependency', () => {
+		test.each(Object.entries(currentVersions))('%s@"s', (dependency, version) => {
+			// @ts-expect-error dependency doesn't have the correct type
+			expect(getVersionedDependency(dependency)).toBe(`${dependency}@${version}`);
 		});
 	});
 
