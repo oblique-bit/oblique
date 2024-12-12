@@ -108,5 +108,5 @@ export function titleText(title: string, delimiterStart = '\n', delimiterEnd = '
 }
 
 export function getVersionedDependency(dependency: keyof typeof currentVersions): string {
-	return `${dependency}${currentVersions[dependency].length > 0 ? '@' : ''}${currentVersions[dependency]}`;
+	return `${dependency}@${currentVersions[dependency]}`;
 }
