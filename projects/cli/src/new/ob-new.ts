@@ -32,11 +32,11 @@ function initializeCommand(command: Command<[string], OptionValues>): Command<[s
 	return command;
 }
 
-export function handleAction(options: HandleObNewActionOptions): void {
+function handleAction(options: HandleObNewActionOptions): void {
 	startObCommand(handleObNewActions as (options: HandleObNewActionOptions) => void, 'Oblique CLI ob new completed in', options);
 }
 
-export function handleObNewActions(options: HandleObNewActionOptions): void {
+function handleObNewActions(options: HandleObNewActionOptions): void {
 	const cmdOptions: ObNewOptions<string | boolean> = convertOptionPropertyNames(options.command.opts() as ObNewOptions<string | boolean>);
 	try {
 		runNgNewAngularWorkspace(options.projectName, cmdOptions.prefix as string);
@@ -46,7 +46,7 @@ export function handleObNewActions(options: HandleObNewActionOptions): void {
 	}
 }
 
-export function runNgNewAngularWorkspace(projectName: string, prefix: string | 'app'): void {
+function runNgNewAngularWorkspace(projectName: string, prefix: string | 'app'): void {
 	console.info(createsWorkspaceMessage);
 	const baseOptions = Object.entries(immutableOptions)
 		.map(([key, option]) => ({key, value: option.value}))
@@ -54,7 +54,7 @@ export function runNgNewAngularWorkspace(projectName: string, prefix: string | '
 	execute({name: 'ngNew', projectName, options: {...baseOptions, prefix}});
 }
 
-export function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string): void {
+function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string): void {
 	const dir: string = getApplicationDirectory(projectName);
 	installMaterial(dir);
 	const projectTitle = options.title === projectNamePlaceholder || options.title === '' ? projectName : options.title;
@@ -76,7 +76,7 @@ function configureCommandOptions(newCommand: Command<[string], OptionValues>): C
 	return addImmutableOptionsText(commandWithOptions);
 }
 
-export function addImmutableOptionsText(command: Command<[string], OptionValues>): Command<[string], OptionValues> {
+function addImmutableOptionsText(command: Command<[string], OptionValues>): Command<[string], OptionValues> {
 	command.addHelpText('after', '\nThese options are set per default:\n');
 	const padEnd = 36;
 
