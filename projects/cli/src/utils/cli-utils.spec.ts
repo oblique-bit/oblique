@@ -67,6 +67,16 @@ describe('CLI Utils', () => {
 		});
 	});
 
+	describe('getHelpText', () => {
+		test('getHelpText("ob") should return correct help text', () => {
+			expect(getHelpText('ob')).toBe('Shows a help message for the "ob" command in the console');
+		});
+
+		test('getHelpText("ob new") should return correct help text', () => {
+			expect(getHelpText('ob new')).toBe('Shows a help message for the "ob new" command in the console');
+		});
+	});
+
 	describe('startObCommand', () => {
 		test('startObCommand should start the timer', () => {
 			const mockCallback = jest.fn();
@@ -96,16 +106,6 @@ describe('CLI Utils', () => {
 			startObCommand(mockCallback, label, options);
 
 			expect(console.timeEnd).toHaveBeenCalledWith(label);
-		});
-	});
-
-	describe('getHelpText', () => {
-		test('getHelpText("ob") should return correct help text', () => {
-			expect(getHelpText('ob')).toBe('Shows a help message for the "ob" command in the console');
-		});
-
-		test('getHelpText("ob new") should return correct help text', () => {
-			expect(getHelpText('ob new')).toBe('Shows a help message for the "ob new" command in the console');
 		});
 	});
 
@@ -139,6 +139,17 @@ describe('CLI Utils', () => {
 Examples of use:
 \tob newCreates a new project
 \tob updateUpdates the project`;
+			const result = exampleUsageText(examples);
+			expect(result).toBe(expectedOutput);
+		});
+
+		test('exampleUsageText should return formatted example usage text', () => {
+			const examples = [
+				{command: 'ob -v', description: ' Shows the current version of @oblique/cli'},
+				{command: 'ob -h', description: ' Shows a help message for the "ob" command in the console'}
+			];
+			const expectedOutput =
+				'\nExamples of use:\n\tob -v Shows the current version of @oblique/cli\n\tob -h Shows a help message for the "ob" command in the console';
 			const result = exampleUsageText(examples);
 			expect(result).toBe(expectedOutput);
 		});
@@ -197,21 +208,7 @@ Examples of use:
 
 			expect(result).toBe(expected);
 		});
-	});
-	describe('exampleUsageText', () => {
-		test('exampleUsageText should return formatted example usage text', () => {
-			const examples = [
-				{command: 'ob -v', description: ' Shows the current version of @oblique/cli'},
-				{command: 'ob -h', description: ' Shows a help message for the "ob" command in the console'}
-			];
-			const expectedOutput =
-				'\nExamples of use:\n\tob -v Shows the current version of @oblique/cli\n\tob -h Shows a help message for the "ob" command in the console';
-			const result = exampleUsageText(examples);
-			expect(result).toBe(expectedOutput);
-		});
-	});
 
-	describe('createAdditionalHelpText', () => {
 		test('createAdditionalHelpText should return help text with padded commands', () => {
 			const title = '\nExample usages:\n';
 			const examples = [
