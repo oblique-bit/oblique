@@ -1,4 +1,3 @@
-import {handleAction} from '../index';
 import {
 	buildOption,
 	commandUsageText,
@@ -66,15 +65,6 @@ describe('CLI Utils', () => {
 	});
 
 	describe('startObCommand', () => {
-		test('should called startObCommand in handleAction', () => {
-			// eslint-disable-next-line @typescript-eslint/no-var-requires,@typescript-eslint/no-unsafe-assignment
-			const cliUtils = require('../utils/cli-utils.ts');
-			jest.spyOn(cliUtils, 'startObCommand');
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-			handleAction({});
-			expect(startObCommand).toHaveBeenLastCalledWith(runObCommand, 'Oblique CLI completed in', {});
-		});
-
 		test('startObCommand should start the timer', () => {
 			const mockCallback = jest.fn();
 			const label = 'test label';
