@@ -2,42 +2,27 @@ import {Command, OptionValues} from '@commander-js/extra-typings';
 import * as cliPackage from '../../package.json';
 import * as obNewSchema from './schema.json';
 import {execSync} from 'child_process';
-import {HandleObNewActionOptions, ObNewOptions, ObNewSchemaOption, obNewConfig} from './ob-new.model';
+import {obNewConfig} from './ob-new.model';
 import {currentVersions} from '../utils/cli-utils';
 import path from 'path';
+import {createObNewCommand} from './ob-new';
 
 const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
-interface ObNewModuleType {
-	createAddObliqueCommand: (command: string, options: Record<string, string | boolean | ObNewSchemaOption>, projectName: string) => string;
-	runNgNewAngularWorkspace: (projectName?: string, prefix?: string | 'app') => void;
-	handleObNewActions: (options: HandleObNewActionOptions) => void;
-	addImmutableOptionsText: (command: Command<[string], OptionValues>) => Command<[string], OptionValues>;
-	createObNewCommand: () => Command<[string], OptionValues>;
-	runAddOblique: (options: ObNewOptions<string | boolean>, projectName: string) => void;
-	addStringFlag: (option: {key: string; value: string}, projectName: string, property: ObNewSchemaOption) => string[];
-	handleAction: (options: HandleObNewActionOptions) => void;
-	getTitlesCommandOption: (option: {key: string; value: string}, projectName: string) => string;
-}
 
 describe('Ob new command', () => {
 	const projectName = 'SuperduperProject';
-	// eslint-disable-next-line @typescript-eslint/no-var-requires
-	let obNew: ObNewModuleType = require('./ob-new') as ObNewModuleType;
-	let obNewCommand: Command<[string], OptionValues>;
 	let parsedObNewCommand: Command<[string], OptionValues>;
+	beforeAll(() => {
+		jest.spyOn(console, 'info').mockImplementation(() => {});
+		jest.spyOn(console, 'timeEnd').mockImplementation(() => {});
+		jest.spyOn(console, 'error').mockImplementation(() => {});
+	});
 
 	describe('after createObNewCommand', () => {
 		describe('without error', () => {
 			beforeAll(() => {
-				const nodeChildProcessWithoutErrorSpy = jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
-				jest.mock('node:child_process', () => ({
-					...jest.requireActual('node:child_process'),
-					execSync: nodeChildProcessWithoutErrorSpy
-				}));
-				jest.spyOn(console, 'info');
-				jest.spyOn(console, 'timeEnd');
-				obNew = require('./ob-new');
-				obNewCommand = obNew.createObNewCommand();
+				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				const obNewCommand = createObNewCommand();
 				parsedObNewCommand = obNewCommand.parse([projectName], {from: 'user'});
 			});
 
@@ -70,7 +55,6 @@ describe('Ob new command', () => {
 				});
 			});
 
-			/* eslint-disable no-console */
 			describe.each([
 				{index: 1, message: 'OBLIQUE CLI', type: 'info'},
 				{index: 2, message: '\nCreates a new Angular workspace', type: 'info'},
@@ -79,13 +63,11 @@ describe('Ob new command', () => {
 				{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'}
 			])('calls console ', ({index, message, type}) => {
 				test(`${type} ${message}`, () => {
-					// eslint
 					expect(console[type]).toHaveBeenNthCalledWith(index, message);
 				});
 			});
 
 			const optionProperties = Object.entries(obNewSchema.properties).map(property => ({key: property[0], value: property[1]}));
-			/* eslint-enable */
 
 			describe.each(optionProperties)('default option', ({key, value}) => {
 				test(`should have option for ${key} with default value "${value.defaultValue}"`, () => {
@@ -230,22 +212,13 @@ describe('Ob new command', () => {
 		describe('with error in ', () => {
 			const errorMessage = 'bad bad error';
 			beforeAll(() => {
-				const nodeChildProcessWithErrorSpy = jest
+				jest
 					.spyOn(nodeChildProcess, 'execSync')
 					.mockImplementationOnce(() => {
 						throw new Error(errorMessage);
 					})
 					.mockImplementation(() => 'ok');
-				jest.mock('node:child_process', () => ({
-					...jest.requireActual('node:child_process'),
-					execSync: nodeChildProcessWithErrorSpy
-				}));
-				jest.spyOn(console, 'error');
-				jest.spyOn(console, 'info');
-				jest.spyOn(console, 'timeEnd');
-				obNew = require('./ob-new');
-				obNewCommand = obNew.createObNewCommand();
-				// eslint-disable @typescript-eslint/no-unsafe-call @typescript-eslint/no-unsafe-member-access
+				const obNewCommand = createObNewCommand();
 				parsedObNewCommand = obNewCommand.parse([projectName], {from: 'user'});
 			});
 
