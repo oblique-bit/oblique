@@ -41,7 +41,12 @@ export class TextPageComponent {
 			return;
 		}
 		event.preventDefault();
-		void this.router.navigate([target.pathname]);
+		if (target.hash) {
+			const fragment = target.hash.replace('#', '');
+			void this.router.navigate([target.pathname], {fragment});
+		} else {
+			void this.router.navigate([target.pathname]);
+		}
 	}
 
 	private buildPageIdObservables(): [Observable<number>, Observable<number>] {
