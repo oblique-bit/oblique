@@ -29,6 +29,33 @@
 					<button type="button" mat-button obButton="primary">Share</button>
 				</mat-card-actions>
 			</mat-card>
+			<mat-card>
+				<img
+					*ngIf="pictureVisible"
+					mat-card-image
+					alt="A person in a space suit holding luminous balloons"
+					ngSrc="assets/images/alex-shuper_person-in-a-space-suit.jpg"
+					[height]="200"
+					[width]="200"
+				/>
+				<ob-alert *ngIf="alertVisible" type="info"> New feature </ob-alert>
+				<mat-card-header *ngIf="headerVisible">
+					<div *ngIf="avatarVisible" mat-card-avatar></div>
+					<mat-card-title *ngIf="titleVisible">Default Card</mat-card-title>
+					<mat-card-subtitle *ngIf="subtitleVisible">Subtitle</mat-card-subtitle>
+				</mat-card-header>
+				<mat-card-content *ngIf="contentVisible">
+					<p>This card shows a small image.</p>
+					<div class="ob-signature" *ngIf="signatureVisible">
+						<span>OFIT</span>
+						<span>Last login 20.07.2022</span>
+					</div>
+				</mat-card-content>
+				<mat-card-actions *ngIf="actionsVisible">
+					<button type="button" mat-button obButton="secondary">Like</button>
+					<button type="button" mat-button obButton="primary">Share</button>
+				</mat-card-actions>
+			</mat-card>
 			<button type="button" mat-button obButton="primary" class="ob-button-card" [attr.disabled]="disabled ? '' : undefined">
 				<mat-card>
 					<img
