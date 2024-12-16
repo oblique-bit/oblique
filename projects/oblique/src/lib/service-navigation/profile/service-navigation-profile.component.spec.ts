@@ -64,19 +64,22 @@ describe('ObServiceNavigationProfileComponent', () => {
 		});
 	});
 
-	describe('settingsUrl', () => {
-		it('should be initialized to an empty string', () => {
-			expect(component.settingsUrl).toBe('');
+	describe('profileUrls', () => {
+		it('should be initialized to an empty array', () => {
+			expect(component.profileUrls.length).toBe(0);
 		});
 
-		describe.each(['', 'Http://settings-url'])('set to "%s"', url => {
-			it(`should show "${url}" as link`, fakeAsync(async () => {
-				component.settingsUrl = url;
+		describe.each([
+			{url: '', label: ''},
+			{url: 'Http://settings-url', label: 'settings url', isInternalLink: true}
+		])('set to "%s"', url => {
+			it(`should show "${url.url}" as link`, fakeAsync(async () => {
+				component.profileUrls = [url];
 				await harness.openPopover();
 				fixture.detectChanges();
 				tick();
 				const section = fixture.debugElement.query(By.directive(ObServiceNavigationPopoverSectionComponent)).componentInstance;
-				expect(section.links[0].url).toBe(url);
+				expect(section.links[0].url).toBe(url.url);
 			}));
 		});
 	});
@@ -345,9 +348,15 @@ describe('ObServiceNavigationProfileComponent', () => {
 		});
 
 		describe('popover', () => {
+			const fakeProfileUrls = [
+				{url: 'http://fakeUrl1.url', label: 'url1'},
+				{url: 'http://fakeUrl2.url', label: 'url2'}
+			];
+
 			beforeEach(fakeAsync(async () => {
 				fixture.detectChanges();
 				await harness.openPopover();
+				component.profileUrls = fakeProfileUrls;
 				fixture.detectChanges();
 				tick();
 			}));
@@ -379,17 +388,8 @@ describe('ObServiceNavigationProfileComponent', () => {
 					});
 
 					describe('links', () => {
-						it('should have 1', () => {
-							expect(section.links.length).toBe(1);
-						});
-
-						it.each([
-							{property: 'icon', value: 'cog'},
-							{property: 'isInternalLink', value: true},
-							{property: 'label', value: 'i18n.oblique.service-navigation.profile.settings'},
-							{property: 'url', value: ''}
-						])('should have "$value" as "$property" property', ({property, value}) => {
-							expect(section.links[0][property]).toBe(value);
+						it('should have 2', () => {
+							expect(section.links.length).toBe(2);
 						});
 					});
 				});

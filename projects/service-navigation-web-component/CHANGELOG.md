@@ -1,3 +1,11 @@
+# [12.2.0](https://github.com/oblique-bit/oblique/compare/12.1.0...12.2.0) (2024-12-16)
+
+## Features
+
+- **service-navigation:** remove profile links when in guest mode ([0ef1c72f](https://github.com/oblique-bit/oblique/commit/0ef1c72fa001b880b151f60ebb494a79a3a07dcb))
+- **service-navigation:** add id's to the profile links and my-notification button ([ccc05102](https://github.com/oblique-bit/oblique/commit/ccc05102206bcb33e6e99c7ae06775a11a9eb0be))
+- **service-navigation:** change settings link to 4 profile links ([3056decb](https://github.com/oblique-bit/oblique/commit/3056decb54e99b8e36a24dfd9ade2cf52c6ef5ca))
+
 # [12.1.0](https://github.com/oblique-bit/oblique/compare/12.0.4...12.1.0) (2024-12-09)
 
 ## Bug Fixes

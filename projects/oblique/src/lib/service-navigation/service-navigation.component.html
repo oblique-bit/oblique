@@ -21,7 +21,7 @@
 	<li *ngIf="(loginState$ | async | obIsUserLoggedIn: true) && displayProfile">
 		<ob-service-navigation-profile
 			[userName]="userName$ | async"
-			[settingsUrl]="settingsUrl$ | async"
+			[profileUrls]="profileUrls$ | async"
 			[avatarImageUrl]="avatarUrl$ | async"
 			[links]="profileLinks"
 		/>

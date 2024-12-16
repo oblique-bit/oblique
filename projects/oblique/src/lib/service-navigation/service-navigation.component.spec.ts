@@ -40,7 +40,7 @@ describe('ObServiceNavigationComponent', () => {
 		setUpRootUrls: jest.fn(),
 		setReturnUrl: jest.fn(),
 		getLoginUrl$: jest.fn().mockReturnValue(of('loginUrl')),
-		getSettingsUrl$: jest.fn().mockReturnValue(of('settingsUrl')),
+		getProfileUrls$: jest.fn().mockReturnValue(of([{url: 'profileUrl', label: 'profile', isInternalLink: true}])),
 		getInboxMailUrl$: jest.fn().mockReturnValue(of('inboxMailUrl')),
 		getUserName$: jest.fn().mockReturnValue(of('John Doe')),
 		getAvatarUrl$: jest.fn().mockReturnValue(of('http://avatar-url')),
@@ -234,7 +234,7 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe.each([
 			{property: 'loginUrl$', method: 'getLoginUrl$', emit: 'loginUrl'},
-			{property: 'settingsUrl$', method: 'getSettingsUrl$', emit: 'settingsUrl'},
+			{property: 'profileUrls$', method: 'getProfileUrls$', emit: [{url: 'profileUrl', label: 'profile', isInternalLink: true}]},
 			{property: 'userName$', method: 'getUserName$', emit: 'John Doe'},
 			{property: 'avatarUrl$', method: 'getAvatarUrl$', emit: 'http://avatar-url'},
 			{property: 'inboxMailUrl$', method: 'getInboxMailUrl$', emit: 'inboxMailUrl'},
@@ -255,7 +255,7 @@ describe('ObServiceNavigationComponent', () => {
 				expect(service[method]).toHaveBeenCalledWith();
 			});
 
-			it(`should receive "${emit.toString()}"`, async () => {
+			it(`should receive "${JSON.stringify(emit)}"`, async () => {
 				await expect(firstValueFrom(component[property])).resolves.toEqual(emit);
 			});
 		});

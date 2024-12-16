@@ -1,5 +1,5 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {ObIServiceNavigationLink} from '../service-navigation.model';
+import {ObISectionLink, ObIServiceNavigationLink} from '../service-navigation.model';
 
 @Component({
 	selector: 'ob-service-navigation-profile',
@@ -10,7 +10,7 @@ import {ObIServiceNavigationLink} from '../service-navigation.model';
 })
 export class ObServiceNavigationProfileComponent {
 	@Input() userName = '';
-	@Input() settingsUrl = '';
+	@Input() profileUrls: ObISectionLink[] = [];
 	@Input() avatarImageUrl = '';
 	@Input() links: ObIServiceNavigationLink[] = [];
 }

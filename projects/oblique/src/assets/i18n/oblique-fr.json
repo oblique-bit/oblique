@@ -145,5 +145,8 @@
   "i18n.oblique.service-navigation.profile.guest": "Invité",
   "i18n.oblique.service-navigation.profile.links.header": "Liens",
   "i18n.oblique.service-navigation.profile.tooltip": "Cliquer pour ouvrir le profil de l'utilisateur",
-  "i18n.oblique.service-navigation.profile.settings": "Paramètres"
+  "i18n.oblique.service-navigation.profile.my-profile": "Mon profil",
+  "i18n.oblique.service-navigation.profile.my-permissions": "Mes autorisations",
+  "i18n.oblique.service-navigation.profile.my-push-notifications": "Mes notifications push",
+  "i18n.oblique.service-navigation.profile.my-business-partnerships": "Mes partenariats commerciaux"
 }
