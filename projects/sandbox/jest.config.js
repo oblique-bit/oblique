@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = require('../../tests/jest.config');
 module.exports.roots = ['<rootDir>/projects/sandbox'];
 module.exports.displayName = {
