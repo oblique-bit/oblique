@@ -1,3 +1,11 @@
+# [12.2.1](https://github.com/oblique-bit/oblique/compare/12.2.0...12.2.1) (2024-12-20)
+
+## Bug Fixes
+
+- **master-layout:** ensure that the main navigation is scrollable even if initially empty ([ba829189](https://github.com/oblique-bit/oblique/commit/ba8291890f6bb4fc15858a9322712101b41a099c))
+- **material:** make collapsed mode support th cells ([bcbd8778](https://github.com/oblique-bit/oblique/commit/bcbd877884a956448bcd611c449b47e84ad9eb9d))
+- **material:** don't stretch images in cards ([203a2617](https://github.com/oblique-bit/oblique/commit/203a26179a7ebce6d3628f92e99ac4b9b7d7f30e))
+
 # [12.2.0](https://github.com/oblique-bit/oblique/compare/12.1.0...12.2.0) (2024-12-16)
 
 ## Features

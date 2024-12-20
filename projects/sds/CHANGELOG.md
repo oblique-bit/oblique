@@ -1,3 +1,11 @@
+# [12.2.1](https://github.com/oblique-bit/oblique/compare/12.2.0...12.2.1) (2024-12-20)
+
+## Bug Fixes
+
+- **icon:** remove icon color example ([27db13c5](https://github.com/oblique-bit/oblique/commit/27db13c57395782633e89f9dff2ff2ce03385d01))
+- **text-page:** scroll to fragment if present ([d9f81ce4](https://github.com/oblique-bit/oblique/commit/d9f81ce4e8596573c293a81ec26bb8340b0bb6f0))
+- **text-page:** preserve fragments when navigating ([97a9e045](https://github.com/oblique-bit/oblique/commit/97a9e045ec0038b867b43a75a5fba3cabbf9dd97))
+
 # [12.1.0](https://github.com/oblique-bit/oblique/compare/12.0.4...12.1.0) (2024-12-09)
 
 ## Bug Fixes
