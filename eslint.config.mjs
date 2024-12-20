@@ -6,6 +6,7 @@ import js from '@eslint/js';
 import {FlatCompat} from '@eslint/eslintrc';
 import eslintMigrationRules from './eslint-migration.rules.mjs';
 import obliqueEslintConfig from './projects/oblique/eslint.project-config.mjs';
+import cliEslintConfig from './projects/cli/eslint.project-config.mjs';
 
 const maxStatements = 15;
 const filename = fileURLToPath(import.meta.url);
@@ -342,5 +343,6 @@ export default [
 			'@angular-eslint/template/use-track-by-function': 'off'
 		}
 	},
-	...obliqueEslintConfig
+	...obliqueEslintConfig,
+	...cliEslintConfig
 ];
