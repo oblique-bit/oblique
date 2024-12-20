@@ -1,6 +1,6 @@
 {
   "name": "@oblique/sandbox",
-  "version": "12.2.0",
+  "version": "12.2.1",
   "scripts": {
     "start": "ng serve",
     "start-pams": "ng serve --configuration pams",

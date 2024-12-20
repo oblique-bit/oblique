@@ -1,3 +1,9 @@
+# [12.2.1](https://github.com/oblique-bit/oblique/compare/12.2.0...12.2.1) (2024-12-20)
+
+## Features
+
+- **material:** add an example with a card larger that its image ([9ddea5e4](https://github.com/oblique-bit/oblique/commit/9ddea5e48d6980fb13cdc43423bf53758000253f))
+
 # [12.1.0](https://github.com/oblique-bit/oblique/compare/12.0.4...12.1.0) (2024-12-09)
 
 ## Bug Fixes

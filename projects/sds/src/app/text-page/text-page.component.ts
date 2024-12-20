@@ -1,4 +1,4 @@
-import {Component, HostListener, inject} from '@angular/core';
+import {AfterViewChecked, Component, HostListener, inject} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
@@ -16,7 +16,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 	standalone: true,
 	imports: [CommonModule, IdPipe]
 })
-export class TextPageComponent {
+export class TextPageComponent implements AfterViewChecked {
 	readonly componentId = 'text-page';
 	readonly selectedContent$: Observable<SafeHtml>;
 	private readonly cmsDataService = inject(CmsDataService);
@@ -34,6 +34,10 @@ export class TextPageComponent {
 		this.selectedContent$ = this.buildSelectedContentObservable(validPageId$);
 	}
 
+	ngAfterViewChecked(): void {
+		this.handleFragments();
+	}
+
 	@HostListener('click', ['$event'])
 	onClick(event: MouseEvent): void {
 		const {target} = event;
@@ -41,7 +45,12 @@ export class TextPageComponent {
 			return;
 		}
 		event.preventDefault();
-		void this.router.navigate([target.pathname]);
+		if (target.hash) {
+			const fragment = target.hash.replace('#', '');
+			void this.router.navigate([target.pathname], {fragment});
+		} else {
+			void this.router.navigate([target.pathname]);
+		}
 	}
 
 	private buildPageIdObservables(): [Observable<number>, Observable<number>] {
@@ -61,5 +70,13 @@ export class TextPageComponent {
 			switchMap(id => this.cmsDataService.getTextPagesComplete(id)),
 			map(cmsData => this.domSanitizer.bypassSecurityTrustHtml(cmsData.data.description))
 		);
+	}
+
+	private handleFragments(): void {
+		const {fragment} = this.activatedRoute.snapshot;
+		if (fragment) {
+			const element = document.getElementById(fragment);
+			element?.scrollIntoView();
+		}
 	}
 }
