@@ -1,5 +1,5 @@
 import {Command, OptionValues} from '@commander-js/extra-typings';
-import {getVersionedDependency, projectNamePlaceholder} from '../utils/cli-utils';
+import {projectNamePlaceholder} from '../utils/cli-utils';
 
 export type ObNewOptions<ValueType> = Record<OptionKeys, ValueType>;
 
@@ -38,15 +38,15 @@ export type OptionKeys =
 	| 'eslint'
 	| 'husky';
 
-export type ImmutableOptionsType = 'no-standalone' | 'no-ssr' | 'style';
+export type ImmutableOptionsType = 'standalone' | 'ssr' | 'style';
 
-export const immutableOptions: Record<ImmutableOptionsType, {value?: string; description: string}> = {
-	// eslint-disable-next-line @typescript-eslint/naming-convention
-	'no-standalone': {
+export const immutableOptions: Record<ImmutableOptionsType, {value: string | boolean; description: string}> = {
+	standalone: {
+		value: false,
 		description: `Oblique doesn't support standalone components`
 	},
-	// eslint-disable-next-line @typescript-eslint/naming-convention
-	'no-ssr': {
+	ssr: {
+		value: false,
 		description: `Oblique doesn't support server side rendering`
 	},
 	style: {
@@ -64,7 +64,6 @@ export const obNewConfig = {
 };
 
 export const createsWorkspaceMessage = `\nCreates a new Angular workspace`;
-export const ngAddStringCommand = `npx ${getVersionedDependency('@angular/cli')} add ${getVersionedDependency('@oblique/oblique')}`;
 
 /* Generated content, do not edit */
 export const version = '12.2.3';

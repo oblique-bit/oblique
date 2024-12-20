@@ -1,3 +1,6 @@
+import {ObCommandConfig, ObOptions} from './ob-cli.model';
+import {ExecSyncOptions, execSync} from 'child_process';
+
 export const currentVersions = {
 	/* eslint-disable @typescript-eslint/naming-convention */
 	'@oblique/oblique': '12',
@@ -108,5 +111,46 @@ export function titleText(title: string, delimiterStart = '\n', delimiterEnd = '
 }
 
 export function getVersionedDependency(dependency: keyof typeof currentVersions): string {
-	return `${dependency}${currentVersions[dependency].length > 0 ? '@' : ''}${currentVersions[dependency]}`;
+	return `${dependency}@${currentVersions[dependency]}`;
+}
+
+export function buildOption(key: string, value: string | boolean): string {
+	if (typeof value === 'string') {
+		return `${key}="${value}"`;
+	}
+	return value ? key : `no-${key}`;
+}
+
+// necessary because of missing "default"
+// eslint-disable-next-line consistent-return
+export function execute(config: ObCommandConfig): void {
+	// skipping "default" allows typescript to throw an error at compile time if a case is missing
+	// eslint-disable-next-line default-case
+	switch (config.name) {
+		case 'ngNew':
+			return executeNgCommand(`new ${config.projectName}`, config.options, config.execSyncOptions);
+		case 'ngAdd':
+			return executeNgCommand(`add ${getVersionedDependency(config.dependency)}`, config.options, config.execSyncOptions);
+		case 'ngUpdate':
+			return executeNgCommand(`update ${versionDependencies(config.dependencies).join(' ')}`, {}, config.execSyncOptions);
+		case 'npmInstall':
+			return executeCommand(`npm install ${versionDependencies(config.dependencies).join(' ')}`, config.execSyncOptions);
+		case 'npmUpdate':
+			return executeCommand('npm update --save', config.execSyncOptions);
+		case 'npmOutdated':
+			return executeCommand('npm outdated', config.execSyncOptions);
+	}
+}
+
+function executeNgCommand(command: string, options: ObOptions = {}, execSyncOptions: ExecSyncOptions = {}): void {
+	const parsedOptions = Object.entries<string | boolean>(options).map(([key, value]) => `--${buildOption(key, value)}`);
+	executeCommand(['npx', getVersionedDependency('@angular/cli'), command, ...parsedOptions].join(' '), execSyncOptions);
+}
+
+function executeCommand(command: string, execSyncOptions: ExecSyncOptions = {}): void {
+	execSync(command, {stdio: 'inherit', ...execSyncOptions});
+}
+
+function versionDependencies(dependencies: (keyof typeof currentVersions)[]): string[] {
+	return dependencies.map(dependency => getVersionedDependency(dependency));
 }
