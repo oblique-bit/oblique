@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import js from '@eslint/js';
 import {FlatCompat} from '@eslint/eslintrc';
 import eslintMigrationRules from './eslint-migration.rules.mjs';
+import obliqueEslintConfig from './projects/oblique/eslint.project-config.mjs';
 
 const maxStatements = 15;
 const filename = fileURLToPath(import.meta.url);
@@ -110,6 +111,7 @@ export default [
 			'@typescript-eslint/no-dynamic-delete': 'off',
 			'@typescript-eslint/no-invalid-this': 'off',
 			'@typescript-eslint/no-parameter-properties': 'off',
+			'@typescript-eslint/no-redeclare': 'off',
 			'@typescript-eslint/no-redundant-type-constituents': 'off',
 			'@typescript-eslint/no-require-imports': 'off',
 			'@typescript-eslint/no-type-alias': 'off',
@@ -339,5 +341,6 @@ export default [
 			'@angular-eslint/template/i18n': 'off',
 			'@angular-eslint/template/use-track-by-function': 'off'
 		}
-	}
+	},
+	...obliqueEslintConfig
 ];

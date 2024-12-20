@@ -56,7 +56,6 @@ function installMissingDependencies(tree: Tree, context: SchematicContext, depen
 
 function finalize(options: ObIOptionsSchema): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		/* eslint-enable max-len */
 		if (isSuccessful) {
 			success(_context, 'Oblique has been successfully integrated. Please review the changes.');
 		} else {

@@ -1,8 +1,10 @@
 import {Inject, Injectable, InjectionToken, Optional} from '@angular/core';
 import {ObENotificationPlacement, ObINotificationConfig} from './notification.model';
 
+/* eslint-disable no-useless-assignment -- false positive because these tokens are assigned to properties that are not used outside the constructor */
 export const CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE = new InjectionToken<boolean>('CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE');
 export const GROUP_SIMILAR_NOTIFICATIONS = new InjectionToken<boolean>('GROUP_SIMILAR_NOTIFICATIONS');
+/* eslint-enable no-useless-assignment */
 
 @Injectable({providedIn: 'root'})
 export class ObNotificationConfig {

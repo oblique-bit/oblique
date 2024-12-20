@@ -17,6 +17,7 @@ export class ObNavigationLink implements ObINavigationLink {
 	sameTarget?: boolean;
 	startOfRightSideLinks?: boolean;
 
+	/* eslint-disable-next-line complexity */
 	constructor(link?: ObINavigationLink) {
 		this.id = link?.id ?? ObNavigationLink.getKebabCaseId(link?.label, link?.url);
 		this.isExternal = !!(link?.isExternal ?? /^https?:\/\//.test(link?.url ?? ''));

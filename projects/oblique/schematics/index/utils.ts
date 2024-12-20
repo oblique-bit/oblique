@@ -5,7 +5,7 @@ import {getTemplate} from './ng-add/ng-add-utils';
 
 export const packageJsonConfigPath = '/package.json';
 export const ObliquePackage = '@oblique/oblique';
-const glob = require('glob'); /* eslint-disable-line @typescript-eslint/no-var-requires */
+const glob = require('glob');
 
 const angularJsonConfigPath = './angular.json/';
 export let isSuccessful = true;

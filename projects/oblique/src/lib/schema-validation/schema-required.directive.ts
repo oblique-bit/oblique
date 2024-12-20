@@ -6,7 +6,6 @@ import {ObSchemaValidationDirective} from './schema-validation.directive';
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: '[ngModel]',
 	exportAs: 'obSchemaRequiredValidation',
-	// eslint-disable-next-line @angular-eslint/no-input-rename, @angular-eslint/no-host-metadata-property
 	host: {class: 'ob-schema-required-validation'},
 	standalone: true
 })
