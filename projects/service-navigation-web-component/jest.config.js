@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = require('../../tests/jest.config');
 module.exports.roots = ['<rootDir>/projects/service-navigation-web-component'];
 module.exports.displayName = {

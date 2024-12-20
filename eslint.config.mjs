@@ -11,6 +11,7 @@ import designSystemEslintConfig from './projects/design-system/eslint.project-co
 import sandboxEslintConfig from './projects/sandbox/eslint.project-config.mjs';
 import sandboxSsrEslintConfig from './projects/sandbox-ssr/eslint.project-config.mjs';
 import sdsEslintConfig from './projects/sds/eslint.project-config.mjs';
+import serviceNavigationWebComponentEslintConfig from './projects/service-navigation-web-component/eslint.project-config.mjs';
 
 const maxStatements = 15;
 const filename = fileURLToPath(import.meta.url);
@@ -352,5 +353,6 @@ export default [
 	...designSystemEslintConfig,
 	...sandboxEslintConfig,
 	...sandboxSsrEslintConfig,
-	...sdsEslintConfig
+	...sdsEslintConfig,
+	...serviceNavigationWebComponentEslintConfig
 ];
