@@ -26,8 +26,8 @@
     "projects/service-navigation-web-component"
   ],
   "scripts": {
-    "lint": "ts-node scripts/lint.ts && npm run lint -w @oblique/oblique -w @oblique/cli -w @oblique/design-system -w @oblique/sandbox",
-    "format": "ts-node scripts/lint.ts --fix && npm run format -w @oblique/oblique -w @oblique/cli -w @oblique/design-system -w @oblique/sandbox",
+    "lint": "ts-node scripts/lint.ts && npm run lint -w @oblique/oblique -w @oblique/cli -w @oblique/design-system -w @oblique/sandbox -w @oblique/sandbox-ssr",
+    "format": "ts-node scripts/lint.ts --fix && npm run format -w @oblique/oblique -w @oblique/cli -w @oblique/design-system -w @oblique/sandbox -w @oblique/sandbox-ssr",
     "dependencies-update": "ts-node scripts/dependencies-update.ts",
     "update-angular": "ts-node scripts/update-angular.ts",
     "postinstall": "ts-node scripts/sanitize-package-lock.ts",

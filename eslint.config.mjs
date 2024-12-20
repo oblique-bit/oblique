@@ -9,6 +9,7 @@ import obliqueEslintConfig from './projects/oblique/eslint.project-config.mjs';
 import cliEslintConfig from './projects/cli/eslint.project-config.mjs';
 import designSystemEslintConfig from './projects/design-system/eslint.project-config.mjs';
 import sandboxEslintConfig from './projects/sandbox/eslint.project-config.mjs';
+import sandboxSsrEslintConfig from './projects/sandbox-ssr/eslint.project-config.mjs';
 
 const maxStatements = 15;
 const filename = fileURLToPath(import.meta.url);
@@ -348,5 +349,6 @@ export default [
 	...obliqueEslintConfig,
 	...cliEslintConfig,
 	...designSystemEslintConfig,
-	...sandboxEslintConfig
+	...sandboxEslintConfig,
+	...sandboxSsrEslintConfig
 ];

@@ -11,7 +11,6 @@ export class App {
 
 	static run(): void {
 		// because it conflicts with noPropertyAccessFromIndexSignature
-		// eslint-disable-next-line @typescript-eslint/dot-notation
 		const port = process.env['PORT'] ?? App.defaultPort;
 		App.buildServer().listen(port, () => {
 			console.info(`Node Express server listening on http://localhost:${port}`);
