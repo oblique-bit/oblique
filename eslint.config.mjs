@@ -7,6 +7,7 @@ import {FlatCompat} from '@eslint/eslintrc';
 import eslintMigrationRules from './eslint-migration.rules.mjs';
 import obliqueEslintConfig from './projects/oblique/eslint.project-config.mjs';
 import cliEslintConfig from './projects/cli/eslint.project-config.mjs';
+import designSystemEslintConfig from './projects/design-system/eslint.project-config.mjs';
 
 const maxStatements = 15;
 const filename = fileURLToPath(import.meta.url);
@@ -344,5 +345,6 @@ export default [
 		}
 	},
 	...obliqueEslintConfig,
-	...cliEslintConfig
+	...cliEslintConfig,
+	...designSystemEslintConfig
 ];
