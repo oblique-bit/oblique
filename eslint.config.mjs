@@ -4,7 +4,6 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import js from '@eslint/js';
 import {FlatCompat} from '@eslint/eslintrc';
-import eslintMigrationRules from './eslint-migration.rules.mjs';
 import obliqueEslintConfig from './projects/oblique/eslint.project-config.mjs';
 import cliEslintConfig from './projects/cli/eslint.project-config.mjs';
 import designSystemEslintConfig from './projects/design-system/eslint.project-config.mjs';
@@ -266,8 +265,7 @@ export default [
 				{
 					ignoreDeclarationSort: true
 				}
-			],
-			...eslintMigrationRules
+			]
 		}
 	},
 	{

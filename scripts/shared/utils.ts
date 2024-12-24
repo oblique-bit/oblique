@@ -34,7 +34,7 @@ export function camelToKebabCase(key: string): string {
 
 export function updatePackageJsonVersion(version: string): void {
 	Log.info(`Update package.json version to ${version}.`);
-	const fileContent = Files.readJson<Record<'version', string>>('package.json');
+	const fileContent = Files.readJson('package.json') as Record<'version', string>;
 	fileContent.version = version;
 	Files.writeJson('package.json', fileContent);
 }

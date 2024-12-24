@@ -12,7 +12,7 @@ const config: Record<string, string[]> = {};
 Files.readDirectory(projectsPath).forEach(projectName => {
 	const projectPackagePath = getProjectPackagePath(projectName);
 	if (Files.exists(projectPackagePath)) {
-		const projectPackageInfo: {scripts: Record<string, string>} = Files.readJson(projectPackagePath);
+		const projectPackageInfo = Files.readJson(projectPackagePath) as {scripts: Record<string, string>};
 		if (projectPackageInfo.scripts) {
 			const startScripts = Object.keys(projectPackageInfo.scripts).filter(scriptName => scriptName.startsWith('start'));
 			config[projectName] = startScripts;
