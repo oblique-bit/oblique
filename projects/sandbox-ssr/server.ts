@@ -40,7 +40,7 @@ export class App {
 			commonEngine
 				.render(App.buildRenderOptions(req, indexHtml, browserDistFolder))
 				.then(html => res.send(html))
-				.catch(err => next(err));
+				.catch((err: unknown) => next(err));
 		});
 	}
 

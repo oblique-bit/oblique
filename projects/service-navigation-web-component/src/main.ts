@@ -20,4 +20,4 @@ createApplication({
 
 		customElements.define('ob-service-navigation-web-component', element);
 	})
-	.catch(error => console.error(error));
+	.catch((error: unknown) => console.error(error));
