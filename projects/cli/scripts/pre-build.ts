@@ -28,7 +28,7 @@ function addVersionNumber(): void {
 
 function addSchemaData(): void {
 	Log.info('Add schema data to "ob-new.model.ts"');
-	const schema = Files.readJson<{properties: object}>('src/new/schema.json');
+	const schema = Files.readJson('src/new/schema.json') as {properties: object};
 	Files.overwrite('./src/new/ob-new.model.ts', content =>
 		content.replace(/(?<=const schema = ).*(?= as \{properties: ObNewOptions<ObNewSchemaOption>})/, JSON.stringify(schema))
 	);

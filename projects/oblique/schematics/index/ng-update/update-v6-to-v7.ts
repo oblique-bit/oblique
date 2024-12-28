@@ -4,7 +4,6 @@ import {applyInTree, infoMigration, replaceInFile} from '../utils';
 import {removePolyFill} from './ng-update-utils';
 import {ObIMigrations} from './ng-update.model';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV7Schema {}
 
 export class UpdateV6toV7 implements ObIMigrations {

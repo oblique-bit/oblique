@@ -1,3 +1,4 @@
+import process from 'process';
 import {camelToKebabCase, executeCommandWithLog} from './utils';
 import {StaticScript} from './static-script';
 
@@ -10,12 +11,25 @@ export class Lint extends StaticScript {
 		return Lint.instance as Lint;
 	}
 
-	esLint(files: string | string[], config?: string): Lint {
+	/**
+	 * The `wd` param (that stands for `working directory`) is used to eventually change the working directory of the script execution.
+	 * This is needed in order to migrate to the current code base to the new ESLint flat config format.
+	 */
+	esLint(files: string | string[], wd?: string): Lint {
+		// Saving the current working directory in order to restore it after the execution
+		const cwd = process.cwd();
+		// Eventually change the working directory
+		if (wd) {
+			process.chdir(wd);
+		}
 		Lint.executeCommand('eslint', files, {
-			config,
 			cache: true,
 			fix: this.hasFix
 		});
+		// Eventually restore the working directory
+		if (wd) {
+			process.chdir(cwd);
+		}
 		return Lint.instance as Lint;
 	}
 

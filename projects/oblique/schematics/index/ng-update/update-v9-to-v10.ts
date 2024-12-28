@@ -3,7 +3,6 @@ import {addDependency} from '../ng-add/ng-add-utils';
 import {applyInTree, createSafeRule, infoMigration, removeImport, replaceInFile, setAngularProjectsConfig} from '../utils';
 import {ObIMigrations} from './ng-update.model';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV9Schema {}
 
 export class UpdateV9toV10 implements ObIMigrations {

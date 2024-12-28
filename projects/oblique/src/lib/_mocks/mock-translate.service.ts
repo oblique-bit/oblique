@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import {EventEmitter, Injectable} from '@angular/core';
 import {DefaultLangChangeEvent, LangChangeEvent, TranslationChangeEvent} from '@ngx-translate/core';
 import {EMPTY, Observable, of} from 'rxjs';
@@ -16,13 +15,13 @@ export class ObMockTranslateService {
 	langs = ['en'];
 	currentLang = 'en';
 
-	setTranslation(lang: string, translations: Object, shouldMerge = false): void {}
+	setTranslation(lang: string, translations: object, shouldMerge = false): void {}
 
-	getStreamOnTranslationChange(key: string | string[], interpolateParams?: Object): Observable<any> {
+	getStreamOnTranslationChange(key: string | string[], interpolateParams?: object): Observable<any> {
 		return EMPTY;
 	}
 
-	stream(key: string | string[], interpolateParams?: Object): Observable<any> {
+	stream(key: string | string[], interpolateParams?: object): Observable<any> {
 		return EMPTY;
 	}
 
@@ -36,7 +35,7 @@ export class ObMockTranslateService {
 
 	setDefaultLang(lang: string): void {}
 
-	get(key: string | string[], interpolateParams?: Object): Observable<string | any> {
+	get(key: string | string[], interpolateParams?: object): Observable<string | any> {
 		return of(typeof key === 'string' ? key : key.map(str => ({[str]: str})));
 	}
 
@@ -60,7 +59,7 @@ export class ObMockTranslateService {
 		this.langs = langs;
 	}
 
-	getParsedResult(translations: any, key: any, interpolateParams?: Object): any {
+	getParsedResult(translations: any, key: any, interpolateParams?: object): any {
 		return '';
 	}
 

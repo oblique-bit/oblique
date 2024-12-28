@@ -151,9 +151,9 @@ class HookCommitRules {
 		switch (digit + 1) {
 			case 1:
 				return '1st';
-			case 2: // eslint-disable-line no-magic-numbers
+			case 2:
 				return '2nd';
-			case 3: // eslint-disable-line no-magic-numbers
+			case 3:
 				return '3rd';
 			default:
 				return `${digit + 1}th`;

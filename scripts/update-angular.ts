@@ -26,7 +26,7 @@ class UpdateAngular extends StaticScript {
 	private static updateAngular(): void {
 		// Angular update schematics don't work well with NPM workspaces, therefore all angular dependencies must be present in the root package.json to be correctly updated
 		const projects = UpdateAngular.listProjects();
-		const rootPackageJson = Files.readJson<Dependencies>(UpdateAngular.packageJsonPath);
+		const rootPackageJson = Files.readJson(UpdateAngular.packageJsonPath) as Dependencies;
 		const ngDependencies = UpdateAngular.listNgDependencies(rootPackageJson, projects);
 		UpdateAngular.addDependenciesInRootPackageJson(rootPackageJson, ngDependencies);
 		executeCommandWithLog(
@@ -54,7 +54,7 @@ class UpdateAngular extends StaticScript {
 
 	private static listPackageDependencies(projects: string[]): Record<string, string> {
 		return projects
-			.map(path => Files.readJson<Dependencies>(path))
+			.map(path => Files.readJson(path) as Dependencies)
 			.map(packageJson => ({...(packageJson.dependencies || {}), ...(packageJson.devDependencies || {})}))
 			.reduce((allDependencies, currentDependencies) => ({...allDependencies, ...currentDependencies}), {});
 	}
@@ -66,9 +66,9 @@ class UpdateAngular extends StaticScript {
 	}
 
 	private static updatePackageDependencies(projects: string[]): void {
-		const rootDependencies = Files.readJson<Dependencies>(UpdateAngular.packageJsonPath).dependencies;
+		const rootDependencies = (Files.readJson(UpdateAngular.packageJsonPath) as Dependencies).dependencies;
 		projects
-			.map(path => ({path, content: Files.readJson<Dependencies>(path)}))
+			.map(path => ({path, content: Files.readJson(path) as Dependencies}))
 			.forEach(packageJson => {
 				Object.keys(rootDependencies).forEach(rootDependency => {
 					if (packageJson.content.dependencies?.[rootDependency]) {
@@ -83,7 +83,7 @@ class UpdateAngular extends StaticScript {
 	}
 
 	private static removeDependenciesFromRootPackageJson(ngDependencies: string[]): void {
-		const rootPackageJson = Files.readJson<Dependencies>(UpdateAngular.packageJsonPath);
+		const rootPackageJson = Files.readJson(UpdateAngular.packageJsonPath) as Dependencies;
 		ngDependencies.forEach(dependency => {
 			delete rootPackageJson.dependencies[dependency];
 		});
@@ -104,17 +104,17 @@ class UpdateAngular extends StaticScript {
 	private static updateAngularCDKVersion(): void {
 		const dependencyName = '@angular/cdk';
 		const obliquePackageJsonPath = 'projects/oblique/package.json';
-		const cdkVersion = Files.readJson<Dependencies>(UpdateAngular.packageJsonPath).dependencies[dependencyName];
-		const packageJson = Files.readJson<Dependencies>(obliquePackageJsonPath);
+		const cdkVersion = (Files.readJson(UpdateAngular.packageJsonPath) as Dependencies).dependencies[dependencyName];
+		const packageJson = Files.readJson(obliquePackageJsonPath) as Dependencies;
 		packageJson.dependencies[dependencyName] = cdkVersion;
 		Files.writeJson(obliquePackageJsonPath, packageJson);
 	}
 
 	private static updatePeerDependencies(): void {
 		Log.info('Update peer dependencies');
-		const rootDependencies = Files.readJson<Dependencies>(UpdateAngular.packageJsonPath).dependencies;
+		const rootDependencies = (Files.readJson(UpdateAngular.packageJsonPath) as Dependencies).dependencies;
 		UpdateAngular.listProjects()
-			.map(path => ({path, content: Files.readJson<Dependencies>(path)}))
+			.map(path => ({path, content: Files.readJson(path) as Dependencies}))
 			.filter(({content}) => !!content.peerDependencies)
 			.forEach(({path, content}) => {
 				Object.keys(content.peerDependencies)

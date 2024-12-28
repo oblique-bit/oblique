@@ -1,7 +1,6 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIMigrations} from './ng-update.model';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV13Schema {}
 
 export class UpdateV12toV13 implements ObIMigrations {

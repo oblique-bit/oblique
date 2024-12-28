@@ -19,7 +19,6 @@ import {
 } from '../utils';
 import {ObIDependencies, ObIMigrations} from './ng-update.model';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV8Schema {}
 
 export class UpdateV7toV8 implements ObIMigrations {

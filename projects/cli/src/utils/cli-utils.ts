@@ -122,7 +122,7 @@ export function buildOption(key: string, value: string | boolean): string {
 }
 
 // necessary because of missing "default"
-// eslint-disable-next-line consistent-return
+// eslint-disable-next-line @typescript-eslint/consistent-return
 export function execute(config: ObCommandConfig): void {
 	// skipping "default" allows typescript to throw an error at compile time if a case is missing
 	// eslint-disable-next-line default-case

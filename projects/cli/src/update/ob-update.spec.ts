@@ -29,7 +29,6 @@ describe('ObUpdateCommand Tests', () => {
 
 		describe('createObUpdateCommand', () => {
 			beforeAll(() => {
-				// eslint-disable-next-line @typescript-eslint/no-var-requires
 				const obCliUtils = require('../utils/cli-utils');
 				jest.spyOn(obCliUtils, 'commandUsageText').mockReturnValue('update');
 				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => '');
