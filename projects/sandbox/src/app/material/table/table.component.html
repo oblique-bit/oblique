@@ -46,7 +46,7 @@
 				*ngIf="(isStructureDefault$ | async) === false"
 				matSort
 				[dataSource]="tableManager.dataSource"
-				[ngClass]="obliqueStyles$ | async"
+				[ngClass]="tableStyles$ | async"
 			>
 				<ng-container [cdkColumnDef]="COLUMN_NAME_SELECT">
 					<mat-header-cell *cdkHeaderCellDef>
