@@ -4,6 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
+import {MatTooltip} from '@angular/material/tooltip';
 import {RouterModule, Routes} from '@angular/router';
 import {ObButtonModule, ObExternalLinkModule, ObNavTreeModule} from '@oblique/oblique';
 import {NavPageComponent} from './nav-page/nav-page.component';
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
 		MatCheckbox,
 		MatIconModule,
 		MatTableModule,
+		MatTooltip,
 		ObButtonModule,
 		ObExternalLinkModule,
 		ObNavTreeModule,
