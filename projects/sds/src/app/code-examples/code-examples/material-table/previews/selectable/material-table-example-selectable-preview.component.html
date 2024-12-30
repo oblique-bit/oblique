@@ -1,6 +1,9 @@
 <table mat-table class="ob-table" [dataSource]="tableManager.dataSource">
+	<caption>
+		Characteristics of periodical elements
+	</caption>
 	<ng-container matColumnDef="select">
-		<th *matHeaderCellDef mat-header-cell>
+		<th *matHeaderCellDef mat-header-cell scope="col">
 			<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{ tableManager }" />
 		</th>
 		<td *matCellDef="let row" mat-cell>
@@ -10,19 +13,25 @@
 
 	<ng-container *ngFor="let column of columns">
 		<ng-container [matColumnDef]="column.key">
-			<th *matHeaderCellDef mat-header-cell>
+			<th *matHeaderCellDef mat-header-cell scope="col">
 				<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{ column }" />
 			</th>
-			<td *matCellDef="let element" mat-cell [attr.data-title]="column.name">
-				<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element }" />
-			</td>
+			@if (column.key === "name") {
+				<th *matCellDef="let element" mat-header-cell scope="row" [attr.data-title]="column.name">
+					<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element }" />
+				</th>
+			} @else {
+				<td *matCellDef="let element" mat-cell [attr.data-title]="column.name">
+					<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element }" />
+				</td>
+			}
 		</ng-container>
 	</ng-container>
 
 	<ng-container [matColumnDef]="'actions'">
-		<td *matHeaderCellDef>
+		<th *matHeaderCellDef scope="col">
 			<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager }" />
-		</td>
+		</th>
 		<td *matCellDef="let element" mat-cell [attr.data-title]="'Actions'">
 			<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{ tableManager, element }" />
 		</td>

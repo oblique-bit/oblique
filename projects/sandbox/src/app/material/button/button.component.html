@@ -1,18 +1,21 @@
 <h2 class="page-header">Buttons</h2>
 <table class="ob-table ob-table-disable-checked-style ob-table-disable-hover-style ob-table-plain">
+	<caption>
+		Different types of buttons
+	</caption>
 	<thead>
 		<tr>
 			<th></th>
-			<th>Basic</th>
-			<th>Primary</th>
-			<th>Accent</th>
-			<th>Warn</th>
-			<th>Disabled</th>
+			<th scope="col">Basic</th>
+			<th scope="col">Primary</th>
+			<th scope="col">Accent</th>
+			<th scope="col">Warn</th>
+			<th scope="col">Disabled</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<th>Basic</th>
+			<th scope="row">Basic</th>
 			<td>
 				<button type="button" mat-button>text</button>
 			</td>
@@ -30,7 +33,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Raised</th>
+			<th scope="row">Raised</th>
 			<td>
 				<button type="button" mat-raised-button>text</button>
 			</td>
@@ -48,7 +51,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Stroked</th>
+			<th scope="row">Stroked</th>
 			<td>
 				<button type="button" mat-stroked-button>text</button>
 			</td>
@@ -66,7 +69,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Flat</th>
+			<th scope="row">Flat</th>
 			<td>
 				<button type="button" mat-flat-button>text</button>
 			</td>
@@ -84,7 +87,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Icon</th>
+			<th scope="row">Icon</th>
 			<td>
 				<button type="button" mat-icon-button>
 					<mat-icon svgIcon="pen" />
@@ -112,7 +115,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Fab</th>
+			<th scope="row">Fab</th>
 			<td>
 				<button type="button" mat-fab><mat-icon svgIcon="pen" /></button>
 			</td>
@@ -130,7 +133,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Mini fab</th>
+			<th scope="row">Mini fab</th>
 			<td>
 				<button type="button" mat-mini-fab><mat-icon svgIcon="pen" /></button>
 			</td>
@@ -150,16 +153,21 @@
 	</tbody>
 </table>
 <table class="ob-table ob-table-disable-checked-style ob-table-disable-hover-style ob-table-plain">
+	<caption>
+		Buttons with oblique icon
+	</caption>
 	<thead>
 		<tr>
-			<th></th>
+			<th>button type</th>
+			<th>text position</th>
 			<th>text</th>
 			<th>Oblique icon</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<th>Basic</th>
+			<th scope="rowgroup" rowspan="3">Basic</th>
+			<th scope="row">None</th>
 			<td>
 				<button type="button" mat-button>text</button>
 			</td>
@@ -168,7 +176,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Basic with right text</th>
+			<th scope="row">Right</th>
 			<td>
 				<button type="button" mat-button>text</button>
 			</td>
@@ -177,7 +185,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Basic with left text</th>
+			<th scope="row">Left</th>
 			<td>
 				<button type="button" mat-button>text</button>
 			</td>
@@ -185,8 +193,11 @@
 				<button type="button" mat-button color="warn">text <mat-icon svgIcon="logout" /></button>
 			</td>
 		</tr>
+	</tbody>
+	<tbody>
 		<tr>
-			<th>Raised</th>
+			<th scope="rowgroup" rowspan="3">Raised</th>
+			<th scope="row">None</th>
 			<td>
 				<button type="button" mat-raised-button>text</button>
 			</td>
@@ -195,7 +206,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Raised with right text</th>
+			<th scope="row">Right</th>
 			<td>
 				<button type="button" mat-raised-button>text</button>
 			</td>
@@ -204,7 +215,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Raised with left text</th>
+			<th scope="row">Left</th>
 			<td>
 				<button type="button" mat-raised-button>text</button>
 			</td>
@@ -212,8 +223,11 @@
 				<button type="button" mat-raised-button color="warn">text <mat-icon svgIcon="logout" /></button>
 			</td>
 		</tr>
+	</tbody>
+	<tbody>
 		<tr>
-			<th>Stroked</th>
+			<th scope="rowgroup" rowspan="3">Stroked</th>
+			<th scope="row">None</th>
 			<td>
 				<button type="button" mat-stroked-button>text</button>
 			</td>
@@ -222,7 +236,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Stroked with right text</th>
+			<th scope="row">Right</th>
 			<td>
 				<button type="button" mat-stroked-button>text</button>
 			</td>
@@ -231,7 +245,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Stroked with left text</th>
+			<th scope="row">Left</th>
 			<td>
 				<button type="button" mat-stroked-button>text</button>
 			</td>
@@ -239,8 +253,11 @@
 				<button type="button" mat-stroked-button color="warn">text <mat-icon svgIcon="logout" /></button>
 			</td>
 		</tr>
+	</tbody>
+	<tbody>
 		<tr>
-			<th>Flat</th>
+			<th scope="rowgroup" rowspan="3">Flat</th>
+			<th scope="row">None</th>
 			<td>
 				<button type="button" mat-flat-button>text</button>
 			</td>
@@ -249,7 +266,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Flat with right text</th>
+			<th scope="row">Right</th>
 			<td>
 				<button type="button" mat-flat-button>text</button>
 			</td>
@@ -258,7 +275,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Flat with left text</th>
+			<th scope="row">Left</th>
 			<td>
 				<button type="button" mat-flat-button>text</button>
 			</td>
@@ -266,8 +283,11 @@
 				<button type="button" mat-flat-button color="warn">text <mat-icon svgIcon="logout" /></button>
 			</td>
 		</tr>
+	</tbody>
+	<tbody>
 		<tr>
-			<th>Icon</th>
+			<th scope="row">Icon</th>
+			<td></td>
 			<td>
 				<button type="button" mat-icon-button>text</button>
 			</td>
@@ -276,7 +296,8 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Fab</th>
+			<th scope="row">Fab</th>
+			<td></td>
 			<td>
 				<button type="button" mat-fab>text</button>
 			</td>
@@ -285,7 +306,8 @@
 			</td>
 		</tr>
 		<tr>
-			<th>Mini fab</th>
+			<th scope="row">Mini fab</th>
+			<td></td>
 			<td>
 				<button type="button" mat-mini-fab>text</button>
 			</td>

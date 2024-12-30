@@ -2,19 +2,22 @@
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
 		<table class="ob-table ob-table-disable-checked-style ob-table-disable-hover-style">
+			<caption>
+				External Link
+			</caption>
 			<thead>
 				<tr>
 					<th></th>
-					<th>Dynamic</th>
-					<th>Auto</th>
-					<th>True</th>
-					<th>False</th>
-					<th>Default</th>
+					<th scope="col">Dynamic</th>
+					<th scope="col">Auto</th>
+					<th scope="col">True</th>
+					<th scope="col">False</th>
+					<th scope="col">Default</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<th>External link</th>
+					<th scope="row">External link</th>
 					<td><a href="http://www.google.ch" [isExternalLink]="isExternal" [icon]="iconPosition">Link</a></td>
 					<td><a href="http://www.google.ch" [isExternalLink]="'auto'" [icon]="iconPosition">Link</a></td>
 					<td><a href="http://www.google.ch" [isExternalLink]="true" [icon]="iconPosition">Link</a></td>
@@ -22,7 +25,7 @@
 					<td><a href="http://www.google.ch" [icon]="iconPosition">Link</a></td>
 				</tr>
 				<tr>
-					<th>Internal link</th>
+					<th scope="row">Internal link</th>
 					<td><a href="http://localhost:3001" [isExternalLink]="isExternal" [icon]="iconPosition">Link</a></td>
 					<td><a href="http://localhost:3001" [isExternalLink]="'auto'" [icon]="iconPosition">Link</a></td>
 					<td><a href="http://localhost:3001" [isExternalLink]="true" [icon]="iconPosition">Link</a></td>
@@ -30,7 +33,7 @@
 					<td><a href="http://localhost:3001" [icon]="iconPosition">Link</a></td>
 				</tr>
 				<tr>
-					<th>Router link</th>
+					<th scope="row">Router link</th>
 					<td><a [routerLink]="'/'" [isExternalLink]="isExternal" [icon]="iconPosition">Link</a></td>
 					<td><a [routerLink]="'/'" [isExternalLink]="'auto'" [icon]="iconPosition">Link</a></td>
 					<td><a [routerLink]="'/'" [isExternalLink]="true" [icon]="iconPosition">Link</a></td>
@@ -38,7 +41,7 @@
 					<td><a [routerLink]="'/'" [icon]="iconPosition">Link</a></td>
 				</tr>
 				<tr>
-					<th>Link without href</th>
+					<th scope="row">Link without href</th>
 					<td><a [isExternalLink]="isExternal" [icon]="iconPosition">Link</a></td>
 					<td><a [isExternalLink]="'auto'" [icon]="iconPosition">Link</a></td>
 					<td><a [isExternalLink]="true" [icon]="iconPosition">Link</a></td>

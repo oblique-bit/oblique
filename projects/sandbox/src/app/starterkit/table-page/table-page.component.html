@@ -9,14 +9,17 @@
 			>Figma</a
 		>
 		<table mat-table class="ob-table" [dataSource]="dataSource">
+			<caption>
+				Characteristics of periodical elements
+			</caption>
 			<ng-container matColumnDef="select">
-				<th mat-header-cell *matHeaderCellDef>
+				<td mat-cell *matHeaderCellDef>
 					<mat-checkbox
 						(change)="$event ? toggleAllRows() : null"
 						[checked]="selection.hasValue() && isAllSelected()"
 						[indeterminate]="selection.hasValue() && !isAllSelected()"
 					/>
-				</th>
+				</td>
 				<td mat-cell *matCellDef="let row">
 					<mat-checkbox
 						(click)="$event.stopPropagation()"
@@ -26,33 +29,33 @@
 				</td>
 			</ng-container>
 			<ng-container matColumnDef="position">
-				<th *matHeaderCellDef mat-header-cell>No.</th>
+				<th *matHeaderCellDef mat-header-cell scope="col">No.</th>
 				<td *matCellDef="let element" mat-cell>{{ element.position }}</td>
 			</ng-container>
 
 			<ng-container matColumnDef="name">
-				<th *matHeaderCellDef mat-header-cell>Name</th>
-				<td *matCellDef="let element" mat-cell>{{ element.name }}</td>
+				<th *matHeaderCellDef mat-header-cell scope="col">Name</th>
+				<th *matCellDef="let element" mat-header-cell scope="row">{{ element.name }}</th>
 			</ng-container>
 
 			<ng-container matColumnDef="weight">
-				<th *matHeaderCellDef mat-header-cell>Weight</th>
+				<th *matHeaderCellDef mat-header-cell scope="col">Weight</th>
 				<td *matCellDef="let element" mat-cell>{{ element.weight }}</td>
 			</ng-container>
 
 			<ng-container matColumnDef="symbol">
-				<th *matHeaderCellDef mat-header-cell>Symbol</th>
+				<th *matHeaderCellDef mat-header-cell scope="col">Symbol</th>
 				<td *matCellDef="let element" mat-cell>{{ element.symbol }}</td>
 			</ng-container>
 
 			<ng-container matColumnDef="actions">
-				<th *matHeaderCellDef mat-header-cell>Actions</th>
+				<th *matHeaderCellDef mat-header-cell scope="col">Actions</th>
 				<td *matCellDef="let element" mat-cell>
 					<div class="actions">
-						<button type="button" mat-icon-button obButton="secondary" matTooltip="Edit this row" (click)="editRow(element)">
+						<button type="button" mat-icon-button obButton="secondary" matTooltip="Edit this row">
 							<mat-icon svgIcon="pen" />
 						</button>
-						<button type="button" mat-icon-button obButton="secondary" matTooltip="Remove this row" (click)="deleteRow(element)">
+						<button type="button" mat-icon-button obButton="secondary" matTooltip="Remove this row">
 							<mat-icon svgIcon="trash" />
 						</button>
 					</div>
