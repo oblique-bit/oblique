@@ -169,13 +169,19 @@ export class SideNavigationComponent {
 		return +activatedRoute.snapshot.queryParamMap.get('version') || undefined;
 	}
 
+	private getCurrentSlug(): string {
+		return this.router.url
+			.replace(/[#|?].*/, '') // remove queryParams & fragment
+			.split('/')
+			.pop();
+	}
+
 	private redirectOnVersionChange(): void {
 		this.version$
 			.pipe(
 				skip(3),
-				combineLatestWith(this.selectedSlug$),
 				takeUntilDestroyed(),
-				map(([version, slug]) => this.getNewSlug(version, slug)),
+				map(version => this.getNewSlug(version, this.getCurrentSlug())),
 				filter(slug => !!slug)
 			)
 			.subscribe(slug => {
@@ -197,6 +203,7 @@ export class SideNavigationComponent {
 			case 10:
 				return 'welcome-10';
 			case 11:
+				if (slug === 'getting-started-as-a-designer') return 'welcome';
 				return ['master-layout-12', 'popover-12'].includes(slug) ? slug.replace('-12', '') : undefined;
 			case 12:
 				if (slug === 'language') return 'welcome';
