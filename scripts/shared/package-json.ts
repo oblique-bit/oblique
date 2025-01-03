@@ -56,6 +56,11 @@ export class PackageJson extends StaticScript {
 		return PackageJson.instance as PackageJson;
 	}
 
+	static readVersion(): string {
+		const rootPackage = PackageJson.readRootPackageJson();
+		return typeof rootPackage.version === 'string' ? rootPackage.version : '';
+	}
+
 	private static readRootPackageJson(): PackageJsonContent {
 		return Files.readJson<PackageJsonContent>('../../package.json');
 	}
