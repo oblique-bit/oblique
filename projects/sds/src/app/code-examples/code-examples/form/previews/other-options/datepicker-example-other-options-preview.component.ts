@@ -3,14 +3,14 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerInputEvent, MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {DatePipe, JsonPipe, NgIf} from '@angular/common';
+import {DatePipe, NgIf} from '@angular/common';
 import {ObFormFieldModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-datepicker-example-other-options-preview',
 	templateUrl: './datepicker-example-other-options-preview.component.html',
 	styleUrls: ['../../../../code-example-flex-layout.scss'],
-	imports: [DatePipe, JsonPipe, MatFormFieldModule, MatInputModule, MatDatepickerModule, NgIf, ObFormFieldModule, ReactiveFormsModule]
+	imports: [DatePipe, MatFormFieldModule, MatInputModule, MatDatepickerModule, NgIf, ObFormFieldModule, ReactiveFormsModule]
 })
 export class DatepickerExampleOtherOptionsPreviewComponent {
 	readonly august1st1891 = new Date(1891, 7, 1);
