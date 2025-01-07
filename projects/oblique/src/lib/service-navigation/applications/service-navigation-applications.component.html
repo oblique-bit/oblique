@@ -40,13 +40,13 @@
 					<img
 						*ngIf="application.status !== 'online'"
 						aria-hidden="true"
-						[src]="'data:image/png;base64,' + statusImage[application.status] | obSafeImage"
+						[src]="'data:image/png;base64,' + statusImage[application.status]"
 						class="ob-application-image ob-status-image"
 						alt=""
 					/>
 					<img
 						class="ob-application-image"
-						[src]="application.image | obSafeImage"
+						[src]="application.image"
 						[class.ob-offline]="application.status !== 'online'"
 						[alt]="application.status | ObServiceNavigationApplicationAlt | translate: { name: application.name }"
 					/>
@@ -65,13 +65,13 @@
 					<img
 						*ngIf="application.status !== 'online'"
 						aria-hidden="true"
-						[src]="'data:image/png;base64,' + statusImage[application.status] | obSafeImage"
+						[src]="'data:image/png;base64,' + statusImage[application.status]"
 						class="ob-application-image ob-status-image"
 						alt=""
 					/>
 					<img
 						class="ob-application-image"
-						[src]="application.image | obSafeImage"
+						[src]="application.image"
 						[class.ob-offline]="application.status !== 'online'"
 						[alt]="application.status | ObServiceNavigationApplicationAlt | translate: { name: application.name }"
 					/>
