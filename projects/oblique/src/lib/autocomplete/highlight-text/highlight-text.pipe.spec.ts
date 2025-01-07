@@ -1,12 +1,9 @@
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {TestBed} from '@angular/core/testing';
 import {BrowserTestingModule} from '@angular/platform-browser/testing';
-
 import {ObHighlightTextPipe} from './highlight-text.pipe';
 import {ObAutocompleteTextToFindService} from '../autocomplete-text-to-find.service';
 
 describe('ObHighlightTextPipe', () => {
-	let domSanitizer: DomSanitizer;
 	let textToFindService: ObAutocompleteTextToFindService;
 	let pipe: ObHighlightTextPipe;
 	const testString = 'This is a testString';
@@ -15,9 +12,8 @@ describe('ObHighlightTextPipe', () => {
 		TestBed.configureTestingModule({
 			imports: [BrowserTestingModule]
 		});
-		domSanitizer = TestBed.inject(DomSanitizer);
 		textToFindService = TestBed.inject(ObAutocompleteTextToFindService);
-		pipe = new ObHighlightTextPipe(domSanitizer, textToFindService);
+		pipe = new ObHighlightTextPipe(textToFindService);
 	});
 	it('should create an instance', () => {
 		expect(pipe).toBeTruthy();
@@ -26,9 +22,7 @@ describe('ObHighlightTextPipe', () => {
 	describe('transform', () => {
 		it('should return transformed value with correct span and text', () => {
 			const result = pipe.transform(testString, 'This');
-			expect(result).toEqual({
-				changingThisBreaksApplicationSecurity: '<span class="ob-highlight-text">This</span> is a testString'
-			} as SafeHtml);
+			expect(result).toEqual('<span class="ob-highlight-text">This</span> is a testString');
 		});
 
 		it('should return value if the textToFind is null', () => {
