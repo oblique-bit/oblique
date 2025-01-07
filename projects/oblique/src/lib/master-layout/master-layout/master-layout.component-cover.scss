@@ -18,9 +18,9 @@
 	.ob-cover-viewport {
 		overflow: hidden auto;
 		background-color: rgba(
-			color.red(variables.$ob-white),
-			color.green(variables.$ob-white),
-			color.blue(variables.$ob-white),
+			color.channel(variables.$ob-white, "red", $space: rgb),
+			color.channel(variables.$ob-white, "green", $space: rgb),
+			color.channel(variables.$ob-white, "blue", $space: rgb),
 			90%
 		);
 
