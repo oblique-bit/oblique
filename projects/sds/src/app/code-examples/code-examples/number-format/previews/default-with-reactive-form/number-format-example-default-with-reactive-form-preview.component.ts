@@ -9,7 +9,6 @@ import {CommonModule} from '@angular/common';
 @Component({
 	selector: 'app-number-format-example-default-with-reactive-form-preview',
 	templateUrl: './number-format-example-default-with-reactive-form-preview.component.html',
-	standalone: true,
 	imports: [CommonModule, FormsModule, MatFormFieldModule, MatInputModule, ObNumberFormatModule, ReactiveFormsModule],
 	styleUrls: ['../../../../code-example-flex-layout.scss']
 })

@@ -3,7 +3,6 @@ import {AfterViewInit, ChangeDetectorRef, Component, inject} from '@angular/core
 import {FormsModule} from '@angular/forms';
 
 @Component({
-	standalone: true,
 	imports: [ObAutocompleteModule, FormsModule],
 	selector: 'app-autocomplete-example-default',
 	templateUrl: './autocomplete-example-default.component.html'

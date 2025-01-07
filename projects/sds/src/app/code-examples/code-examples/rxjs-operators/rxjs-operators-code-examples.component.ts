@@ -9,7 +9,6 @@ import {RxjsOperatorsExampleDefaultPreviewComponent} from './previews/default/rx
 	selector: 'app-code-example-rxjs-operators',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class RxjsOperatorsCodeExamplesComponent extends CodeExamples {

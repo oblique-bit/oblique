@@ -9,7 +9,6 @@ import {BannerExampleDefaultPreviewComponent} from './previews/default/banner-ex
 	selector: 'app-code-example-banner',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class BannerCodeExamplesComponent extends CodeExamples {

@@ -7,7 +7,6 @@ import {DataService} from './nav-tree-data.service';
 @Component({
 	selector: 'app-nav-tree-example-data-from-service-preview',
 	templateUrl: './nav-tree-example-data-from-service-preview.component.html',
-	standalone: true,
 	imports: [ObNavTreeModule, AsyncPipe]
 })
 export class NavTreeExampleDataFromServicePreviewComponent implements OnInit {

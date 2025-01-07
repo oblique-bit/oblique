@@ -16,7 +16,6 @@ import {ObNavTreeItemModel} from './nav-tree-item.model';
 	templateUrl: './nav-tree.component.html',
 	styleUrls: ['./nav-tree.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	standalone: true,
 	imports: [
 		NgFor,
 		NgIf,

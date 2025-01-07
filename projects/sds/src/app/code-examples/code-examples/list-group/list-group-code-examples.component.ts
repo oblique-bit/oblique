@@ -12,7 +12,6 @@ import {ListGroupExampleImagePreviewComponent} from './previews/image/list-group
 @Component({
 	selector: 'app-list-group-code-examples',
 	templateUrl: '../../code-examples.component.html',
-	standalone: true,
 	imports: [CommonModule, CodeExampleComponent, IdPipe]
 })
 export class ListGroupCodeExamplesComponent extends CodeExamples {

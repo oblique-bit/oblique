@@ -6,7 +6,6 @@ import {ObSelectableModule} from '@oblique/oblique';
 	selector: 'app-selectable-example-checkbox-preview',
 	templateUrl: './selectable-example-checkbox-preview.component.html',
 	styleUrls: ['../selectable-example-preview.component.scss'],
-	standalone: true,
 	imports: [CommonModule, ObSelectableModule]
 })
 export class SelectableExampleCheckboxPreviewComponent {}

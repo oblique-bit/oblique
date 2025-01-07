@@ -12,7 +12,6 @@ import {NavTreeExampleExpandCollapsePreviewComponent} from './previews/expand-co
 	selector: 'app-code-example-nav-tree',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class NavTreeCodeExamplesComponent extends CodeExamples {

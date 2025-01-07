@@ -7,7 +7,8 @@ import {ObIDynamicSkipLink, ObINavigationLink, ObISkipLink} from '../master-layo
 @Component({
 	selector: 'ob-master-layout',
 	exportAs: 'obMasterLayout',
-	template: ''
+	template: '',
+	standalone: false
 })
 export class ObMockMasterLayoutComponent {
 	home = '';

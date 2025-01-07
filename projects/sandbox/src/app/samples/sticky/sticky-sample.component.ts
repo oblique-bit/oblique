@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 
 @Component({
 	selector: 'sb-sticky-sample',
-	templateUrl: './sticky-sample.component.html'
+	templateUrl: './sticky-sample.component.html',
+	standalone: false
 })
 export class StickySampleComponent {
 	stickyHeader = true;

@@ -6,7 +6,8 @@ import {Subject} from 'rxjs';
 
 @Component({
 	selector: 'sb-nav-tree-sample',
-	templateUrl: './nav-tree-sample.component.html'
+	templateUrl: './nav-tree-sample.component.html',
+	standalone: false
 })
 export class NavTreeSampleComponent implements OnInit, OnDestroy {
 	public items: ObNavTreeItemModel[];

@@ -9,7 +9,6 @@ import {UnknownRouteExampleStackblitzLinkPreviewComponent} from '../unknown-rout
 	selector: 'app-code-example-unknown-route',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class UnknownRouteCodeExamplesComponent extends CodeExamples {

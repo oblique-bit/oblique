@@ -7,8 +7,7 @@ import {ObErrorMessagesModule, ObFormFieldDirective, ObSchemaValidationModule} f
 @Component({
 	selector: 'app-schema-validation-example-template-driven-form-preview',
 	templateUrl: './schema-validation-example-template-driven-form-preview.component.html',
-	imports: [CommonModule, MatInputModule, ObSchemaValidationModule, ObErrorMessagesModule, FormsModule, ObFormFieldDirective],
-	standalone: true
+	imports: [CommonModule, MatInputModule, ObSchemaValidationModule, ObErrorMessagesModule, FormsModule, ObFormFieldDirective]
 })
 export class SchemaValidationExampleTemplateDrivenFormPreviewComponent {
 	firstName = '';

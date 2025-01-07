@@ -30,9 +30,10 @@ export default [
 				}
 			],
 
-			// rules that need some refactoring to be enabled
+			// rules that need some refactoring to be enabled,
 			'@angular-eslint/consistent-component-styles': 'off',
 			'@angular-eslint/no-duplicates-in-metadata-arrays': 'off',
+			'@angular-eslint/prefer-signals': 'off',
 			'@angular-eslint/prefer-standalone': 'off',
 			'@angular-eslint/prefer-standalone-component': 'off',
 			'@typescript-eslint/explicit-module-boundary-types': 'off',

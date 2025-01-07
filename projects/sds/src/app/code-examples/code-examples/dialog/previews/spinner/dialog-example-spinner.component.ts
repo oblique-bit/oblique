@@ -5,7 +5,6 @@ import {ObButtonModule} from '@oblique/oblique';
 import {MatButtonModule} from '@angular/material/button';
 
 @Component({
-	standalone: true,
 	imports: [MatButtonModule, MatDialogModule, ObButtonModule],
 	selector: 'app-dialog-example-spinner',
 	templateUrl: './dialog-example-spinner.component.html'

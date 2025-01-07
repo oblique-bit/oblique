@@ -28,7 +28,6 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 			multi: true
 		}
 	],
-	standalone: true,
 	imports: [
 		MatFormFieldModule,
 		MatIconModule,

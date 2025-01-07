@@ -13,7 +13,6 @@ import {NewsletterService} from './newsletter.service';
 	selector: 'app-newsletter',
 	templateUrl: './newsletter.component.html',
 	styleUrls: ['./newsletter.component.scss'],
-	standalone: true,
 	imports: [
 		CommonModule,
 		MatButtonModule,

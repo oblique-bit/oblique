@@ -10,7 +10,6 @@ import {SchemaValidationExampleTemplateDrivenFormPreviewComponent} from './previ
 	selector: 'app-code-example-schema-validation',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class SchemaValidationCodeExamplesComponent extends CodeExamples {

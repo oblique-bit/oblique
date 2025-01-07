@@ -20,7 +20,8 @@ window.ResizeObserver = ResizeObserver;
 
 @Directive({
 	selector: '[obColumnPanel]',
-	exportAs: 'obColumnPanel'
+	exportAs: 'obColumnPanel',
+	standalone: false
 })
 class ObColumnPanelDirective {
 	collapsed = false;
@@ -33,7 +34,8 @@ class ObColumnPanelDirective {
 }
 
 @Component({
-	template: `<ob-column-layout [left]="false" [right]="false" />`
+	template: `<ob-column-layout [left]="false" [right]="false" />`,
+	standalone: false
 })
 class TestComponent {}
 

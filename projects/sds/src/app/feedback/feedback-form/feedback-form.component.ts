@@ -13,7 +13,6 @@ import {ObButtonModule} from '@oblique/oblique';
 	selector: 'app-feedback',
 	templateUrl: './feedback-form.component.html',
 	styleUrls: ['./feedback-form.component.scss'],
-	standalone: true,
 	imports: [AsyncPipe, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, NgIf, ObButtonModule, ReactiveFormsModule]
 })
 export class FeedbackFormComponent {

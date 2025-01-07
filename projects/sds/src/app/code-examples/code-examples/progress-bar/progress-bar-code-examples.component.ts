@@ -10,7 +10,6 @@ import {ProgressBarExampleModesPreviewComponent} from './previews/modes/progress
 	selector: 'app-code-example-progress-bar',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class ProgressBarCodeExamplesComponent extends CodeExamples {

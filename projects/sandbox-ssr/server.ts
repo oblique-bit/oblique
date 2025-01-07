@@ -1,5 +1,5 @@
 import {APP_BASE_HREF} from '@angular/common';
-import {CommonEngine, CommonEngineRenderOptions} from '@angular/ssr';
+import {CommonEngine, CommonEngineRenderOptions} from '@angular/ssr/node';
 import express, {Express, Request} from 'express';
 import {fileURLToPath} from 'node:url';
 import {dirname, join, resolve} from 'node:path';

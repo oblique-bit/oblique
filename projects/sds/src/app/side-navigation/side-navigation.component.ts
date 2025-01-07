@@ -23,7 +23,6 @@ import {VersionService} from '../shared/version/version.service';
 	selector: 'app-side-navigation',
 	templateUrl: './side-navigation.component.html',
 	styleUrls: ['./side-navigation.component.scss'],
-	standalone: true,
 	imports: [
 		ImageComponent,
 		VersionComponent,

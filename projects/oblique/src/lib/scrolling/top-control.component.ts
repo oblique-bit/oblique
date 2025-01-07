@@ -9,7 +9,6 @@ import {MatIconModule} from '@angular/material/icon';
 	styleUrls: ['./top-control.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-top-control'},
-	standalone: true,
 	imports: [MatIconModule, TranslateModule]
 })
 export class ObTopControlComponent {

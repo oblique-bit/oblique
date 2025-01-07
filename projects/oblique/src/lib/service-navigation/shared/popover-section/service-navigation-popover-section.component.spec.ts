@@ -9,7 +9,7 @@ import {ObMockTranslatePipe} from './../../../_mocks/mock-translate.pipe';
 import {ObServiceNavigationPopOverSectionHarness} from './service-navigation-popover-section.harness';
 import {ObServiceNavigationPopoverSectionComponent} from './service-navigation-popover-section.component';
 
-@Component({template: ''})
+@Component({template: '', standalone: false})
 class TestComponent {}
 
 describe(ObServiceNavigationPopoverSectionComponent.name, () => {

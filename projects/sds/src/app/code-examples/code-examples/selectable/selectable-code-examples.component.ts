@@ -13,7 +13,6 @@ import {SelectableExampleInAFormPreviewComponent} from './previews/in-a-form/sel
 	selector: 'app-code-example-selectable',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class SelectableCodeExamplesComponent extends CodeExamples {

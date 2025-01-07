@@ -10,7 +10,6 @@ import {NestedFormExampleTemplateDrivenPreviewComponent} from './previews/templa
 	selector: 'app-code-example-nested-form',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class NestedFormCodeExamplesComponent extends CodeExamples {

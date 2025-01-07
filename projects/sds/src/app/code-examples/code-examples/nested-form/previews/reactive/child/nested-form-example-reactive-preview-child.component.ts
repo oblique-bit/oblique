@@ -10,7 +10,6 @@ import {NestedFormExampleReactivePreviewGrandchildComponent} from '../grandchild
 	exportAs: 'child',
 	templateUrl: './nested-form-example-reactive-preview-child.component.html',
 	styleUrls: ['../../nested-form-example-preview.scss'],
-	standalone: true,
 	imports: [
 		MatInputModule,
 		MatFormFieldModule,

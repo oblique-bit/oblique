@@ -5,7 +5,8 @@ import {FormControl} from '@angular/forms';
 @Component({
 	selector: 'sb-autocomplete-sample',
 	templateUrl: './autocomplete.component.html',
-	styleUrls: ['./autocomplete.component.scss']
+	styleUrls: ['./autocomplete.component.scss'],
+	standalone: false
 })
 export class AutocompleteSampleComponent implements OnInit {
 	isDisabled = false;

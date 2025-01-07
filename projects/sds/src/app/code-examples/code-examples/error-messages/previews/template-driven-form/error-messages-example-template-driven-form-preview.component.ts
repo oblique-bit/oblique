@@ -7,8 +7,7 @@ import {ObErrorMessagesModule} from '@oblique/oblique';
 @Component({
 	selector: 'app-error-messages-example-template-driven-form-preview',
 	templateUrl: './error-messages-example-template-driven-form-preview.component.html',
-	imports: [MatFormFieldModule, MatInputModule, ObErrorMessagesModule, FormsModule],
-	standalone: true
+	imports: [MatFormFieldModule, MatInputModule, ObErrorMessagesModule, FormsModule]
 })
 export class ErrorMessagesExampleTemplateDrivenFormPreviewComponent {
 	value = '';

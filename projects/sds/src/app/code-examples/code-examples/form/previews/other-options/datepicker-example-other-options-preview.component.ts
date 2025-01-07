@@ -10,7 +10,6 @@ import {ObFormFieldModule} from '@oblique/oblique';
 	selector: 'app-datepicker-example-other-options-preview',
 	templateUrl: './datepicker-example-other-options-preview.component.html',
 	styleUrls: ['../../../../code-example-flex-layout.scss'],
-	standalone: true,
 	imports: [DatePipe, JsonPipe, MatFormFieldModule, MatInputModule, MatDatepickerModule, NgIf, ObFormFieldModule, ReactiveFormsModule]
 })
 export class DatepickerExampleOtherOptionsPreviewComponent {

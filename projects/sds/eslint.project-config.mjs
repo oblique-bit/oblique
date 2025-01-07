@@ -24,6 +24,7 @@ export default [
 		rules: {
 			'@angular-eslint/consistent-component-styles': 'off',
 			'@angular-eslint/no-duplicates-in-metadata-arrays': 'off',
+			'@angular-eslint/prefer-signals': 'off',
 			'@typescript-eslint/consistent-type-imports': 'off',
 			'@typescript-eslint/max-params': 'off',
 			'@typescript-eslint/no-deprecated': 'off',

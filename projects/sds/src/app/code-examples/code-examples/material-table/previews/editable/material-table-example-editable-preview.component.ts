@@ -12,8 +12,7 @@ import {AppMaterialTableExampleEditableDialogComponent} from './material-table-e
 	selector: 'app-material-table-example-editable-preview',
 	templateUrl: './material-table-example-editable-preview.component.html',
 	styleUrls: ['./material-table-example-editable-preview.component.scss'],
-	imports: [MatTableModule, MatButtonModule, ObButtonModule, MatIconModule, MatDialogModule, MatTooltip],
-	standalone: true
+	imports: [MatTableModule, MatButtonModule, ObButtonModule, MatIconModule, MatDialogModule, MatTooltip]
 })
 export class MaterialTableExampleEditablePreviewComponent implements OnInit {
 	public displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'actions'];

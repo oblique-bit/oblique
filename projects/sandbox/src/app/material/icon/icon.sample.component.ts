@@ -4,7 +4,8 @@ import {ObEIcon} from '@oblique/oblique';
 @Component({
 	selector: 'sb-icon-sample',
 	templateUrl: './icon.sample.component.html',
-	styleUrls: ['./icon.sample.component.scss']
+	styleUrls: ['./icon.sample.component.scss'],
+	standalone: false
 })
 export class IconSampleComponent {
 	color = '#171717';

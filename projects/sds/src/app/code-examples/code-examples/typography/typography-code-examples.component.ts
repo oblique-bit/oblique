@@ -13,7 +13,6 @@ import {TypographyExampleListsPreviewComponent} from '../typography/previews/lis
 	selector: 'app-code-example-typography',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class TypographyCodeExamplesComponent extends CodeExamples {

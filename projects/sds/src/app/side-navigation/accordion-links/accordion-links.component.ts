@@ -10,7 +10,6 @@ import {IdPipe} from '../../shared/id/id.pipe';
 	templateUrl: './accordion-links.component.html',
 	styleUrls: ['./accordion-links.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, RouterLink, IdPipe]
 })
 export class AccordionLinksComponent implements OnChanges, OnInit {

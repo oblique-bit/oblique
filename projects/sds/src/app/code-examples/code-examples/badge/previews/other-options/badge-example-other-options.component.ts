@@ -8,7 +8,6 @@ import {ObButtonModule} from '@oblique/oblique';
 	templateUrl: './badge-example-other-options.component.html',
 	styleUrls: ['../../../../code-example-flex-layout.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [MatBadgeModule, MatButtonModule, ObButtonModule],
 	host: {class: 'layout-breakpoint-md'}
 })

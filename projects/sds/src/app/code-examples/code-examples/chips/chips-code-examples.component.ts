@@ -11,7 +11,6 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 	selector: 'app-chip-code-examples',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class ChipsCodeExamplesComponent extends CodeExamples {

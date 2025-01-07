@@ -9,7 +9,8 @@ import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcru
 	selector: 'ob-breadcrumb',
 	exportAs: 'obBreadcrumb',
 	templateUrl: './breadcrumb.component.html',
-	styleUrls: ['./breadcrumb.component.scss']
+	styleUrls: ['./breadcrumb.component.scss'],
+	standalone: false
 })
 export class ObBreadcrumbComponent implements OnInit {
 	/* eslint-disable @angular-eslint/no-input-rename */

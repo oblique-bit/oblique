@@ -29,7 +29,8 @@ import {ObAutocompleteTextToFindService} from './autocomplete-text-to-find.servi
 import {ObAutocompleteComponent} from './autocomplete.component';
 
 @Component({
-	template: ``
+	template: ``,
+	standalone: false
 })
 class TestParentComponent {
 	model = new FormControl('');

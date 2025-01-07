@@ -11,7 +11,6 @@ import {TabsExampleStretchedPreviewComponent} from './previews/stretched/tabs-ex
 	selector: 'app-code-example-tabs',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class TabsCodeExamplesComponent extends CodeExamples {

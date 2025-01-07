@@ -2,7 +2,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {ObServiceNavigationApplicationStatus} from '../service-navigation.model';
 
 @Pipe({
-	name: 'ObServiceNavigationApplicationAlt'
+	name: 'ObServiceNavigationApplicationAlt',
+	standalone: false
 })
 export class ObServiceNavigationApplicationAltPipe implements PipeTransform {
 	transform(status: ObServiceNavigationApplicationStatus): string {

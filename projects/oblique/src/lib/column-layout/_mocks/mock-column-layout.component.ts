@@ -6,7 +6,8 @@ import {Component, Input} from '@angular/core';
 @Component({
 	selector: 'ob-column-layout',
 	exportAs: 'obColumnLayout',
-	template: ''
+	template: '',
+	standalone: false
 })
 export class ObMockColumnLayoutComponent {
 	@Input() left = true;

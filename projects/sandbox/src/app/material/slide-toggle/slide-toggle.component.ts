@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 
 @Component({
 	selector: 'sb-slide-toggle',
-	templateUrl: './slide-toggle.component.html'
+	templateUrl: './slide-toggle.component.html',
+	standalone: false
 })
 export class SlideToggleComponent {
 	isHintChecked = false;

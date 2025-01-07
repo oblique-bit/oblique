@@ -18,7 +18,8 @@ import {ObInputClearDirective} from './input-clear.directive';
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`
+	</div>`,
+	standalone: false
 })
 class UntypedReactiveFormTestComponent {
 	testForm: FormGroup;
@@ -40,7 +41,8 @@ class UntypedReactiveFormTestComponent {
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`
+	</div>`,
+	standalone: false
 })
 class StronglyTypedReactiveFormTestComponent {
 	testForm: FormGroup<{field1: FormControl<string>}>;
@@ -62,7 +64,8 @@ class StronglyTypedReactiveFormTestComponent {
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`
+	</div>`,
+	standalone: false
 })
 class TemplateDrivenFormTestComponent {
 	testModel: string;
@@ -77,7 +80,8 @@ class TemplateDrivenFormTestComponent {
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`
+	</div>`,
+	standalone: false
 })
 class HtmlInputTestComponent {}
 
@@ -90,7 +94,8 @@ class HtmlInputTestComponent {}
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`
+	</div>`,
+	standalone: false
 })
 class WrongConfigurationTestComponent {
 	testModel: string;

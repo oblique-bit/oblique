@@ -8,7 +8,8 @@ import {ObNavigationLink} from '../navigation-link.model';
 	templateUrl: './master-layout-navigation-sub-menu-item.component.html',
 	styleUrls: ['./master-layout-navigation-sub-menu-item.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-navigation-sub-menu-item'}
+	host: {class: 'ob-master-layout-navigation-sub-menu-item'},
+	standalone: false
 })
 export class ObMasterLayoutNavigationSubMenuItemComponent implements OnChanges {
 	@HostBinding('class.column') @Input() column = false;

@@ -6,7 +6,6 @@ import {MatListModule} from '@angular/material/list';
 @Component({
 	selector: 'app-list-group-example-image-preview',
 	templateUrl: './list-group-example-image-preview.component.html',
-	standalone: true,
 	imports: [MatListModule, MatIconModule, NgFor, NgOptimizedImage],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })

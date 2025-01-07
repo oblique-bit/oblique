@@ -10,7 +10,6 @@ import {TooltipExampleBasicPreviewComponent} from './previews/basic/tooltip-exam
 	selector: 'app-code-example-tooltip',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class TooltipCodeExamplesComponent extends CodeExamples {

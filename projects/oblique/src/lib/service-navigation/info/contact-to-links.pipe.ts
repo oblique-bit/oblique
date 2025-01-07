@@ -2,7 +2,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {ObISectionLink, ObIServiceNavigationContact} from '../service-navigation.model';
 
 @Pipe({
-	name: 'obContactToLinks'
+	name: 'obContactToLinks',
+	standalone: false
 })
 export class ObContactToLinksPipe implements PipeTransform {
 	transform(values?: ObIServiceNavigationContact): ObISectionLink[] {

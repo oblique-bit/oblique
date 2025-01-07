@@ -9,7 +9,8 @@ import {map} from 'rxjs/operators';
 @Component({
 	selector: 'sb-chips',
 	templateUrl: './chips.component.html',
-	styleUrls: ['./chips.component.scss']
+	styleUrls: ['./chips.component.scss'],
+	standalone: false
 })
 export class ChipsComponent implements OnInit {
 	disabled = false;

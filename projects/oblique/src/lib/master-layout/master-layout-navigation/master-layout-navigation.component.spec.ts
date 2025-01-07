@@ -16,13 +16,13 @@ import {basicMockLinks, mockLinksWithChildren} from './master-layout-navigation.
 import {ObNavigationLink} from './navigation-link.model';
 import {ObMasterLayoutNavigationGoToChildrenComponent} from './go-to-children/master-layout-navigation-go-to-children.component';
 
-@Component({template: ''})
+@Component({template: '', standalone: false})
 class DummyFullPathComponent {}
 
-@Component({template: ''})
+@Component({template: '', standalone: false})
 class DummyPrefixPathComponent {}
 
-@Component({template: ''})
+@Component({template: '', standalone: false})
 class DummyDefaultPathComponent {}
 
 describe(ObMasterLayoutNavigationComponent.name, () => {

@@ -6,7 +6,6 @@ import {mockUrls} from '../../file-upload-simulate-interceptor';
 	selector: 'app-file-upload-map-function-and-ob-file-info-preview',
 	templateUrl: './file-upload-map-function-and-ob-file-info-preview.component.html',
 	styleUrls: ['../../../../code-example-flex-layout.scss'],
-	standalone: true,
 	imports: [ObFileUploadModule]
 })
 export class FileUploadMapFunctionAndObFileInfoPreviewComponent {

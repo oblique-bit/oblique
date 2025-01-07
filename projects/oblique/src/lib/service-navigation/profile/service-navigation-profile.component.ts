@@ -6,7 +6,8 @@ import {ObISectionLink, ObIServiceNavigationLink} from '../service-navigation.mo
 	templateUrl: './service-navigation-profile.component.html',
 	styleUrls: ['./service-navigation-profile.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-service-navigation-profile'}
+	host: {class: 'ob-service-navigation-profile'},
+	standalone: false
 })
 export class ObServiceNavigationProfileComponent {
 	@Input() userName = '';

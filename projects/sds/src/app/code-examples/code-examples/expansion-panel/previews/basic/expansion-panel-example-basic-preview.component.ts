@@ -9,8 +9,7 @@ import {ObFormFieldDirective, ObSelectDirective} from '@oblique/oblique';
 @Component({
 	selector: 'app-expansion-panel-example-basic-preview',
 	templateUrl: './expansion-panel-example-basic-preview.component.html',
-	imports: [MatExpansionModule, MatFormFieldModule, MatInputModule, FormsModule, MatSelectModule, ObFormFieldDirective, ObSelectDirective],
-	standalone: true
+	imports: [MatExpansionModule, MatFormFieldModule, MatInputModule, FormsModule, MatSelectModule, ObFormFieldDirective, ObSelectDirective]
 })
 export class ExpansionPanelExampleBasicPreviewComponent {
 	heroName = 'Super*';

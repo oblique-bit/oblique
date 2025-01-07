@@ -5,7 +5,8 @@ import {mergeWith, takeUntil} from 'rxjs/operators';
 
 @Component({
 	selector: 'sb-nav-tree-detail-sample',
-	templateUrl: './nav-tree-detail-sample.component.html'
+	templateUrl: './nav-tree-detail-sample.component.html',
+	standalone: false
 })
 export class NavTreeDetailSampleComponent implements OnInit, OnDestroy {
 	routing: string;

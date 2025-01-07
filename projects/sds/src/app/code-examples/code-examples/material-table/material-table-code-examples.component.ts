@@ -13,7 +13,6 @@ import {MaterialTableExampleSelectablePreviewComponent} from './previews/selecta
 	selector: 'app-code-example-material-table',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class MaterialTableCodeExamplesComponent extends CodeExamples {

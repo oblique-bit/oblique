@@ -9,7 +9,6 @@ import {ExternalLinkExampleStackblitzLinkPreviewComponent} from '../external-lin
 	selector: 'app-code-example-external-link',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class ExternalLinkCodeExamplesComponent extends CodeExamples {

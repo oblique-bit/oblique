@@ -10,7 +10,6 @@ import {TranslationsExampleStackblitzLinkPreviewComponent} from '../translations
 	selector: 'app-code-example-translations',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class TranslationsCodeExamplesComponent extends CodeExamples {

@@ -4,7 +4,8 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 @Component({
 	selector: 'sb-selectable-form-sample',
 	templateUrl: './selectable-form-sample.component.html',
-	styleUrls: ['./selectable-form-sample.component.scss']
+	styleUrls: ['./selectable-form-sample.component.scss'],
+	standalone: false
 })
 export class SelectableFormSampleComponent implements OnInit {
 	mode = 'checkbox';

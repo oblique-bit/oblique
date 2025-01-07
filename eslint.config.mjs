@@ -157,13 +157,6 @@ export default [
 				}
 			],
 
-			'@angular-eslint/no-host-metadata-property': [
-				'error',
-				{
-					allowStatic: true
-				}
-			],
-
 			'@typescript-eslint/no-unused-vars': [
 				'error',
 				{

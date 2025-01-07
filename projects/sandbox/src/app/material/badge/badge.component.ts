@@ -4,7 +4,8 @@ import {MatBadgePosition} from '@angular/material/badge';
 
 @Component({
 	selector: 'sb-badge',
-	templateUrl: './badge.component.html'
+	templateUrl: './badge.component.html',
+	standalone: false
 })
 export class BadgeComponent {
 	colors: ThemePalette[] = [];

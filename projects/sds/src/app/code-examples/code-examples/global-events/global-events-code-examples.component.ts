@@ -10,7 +10,6 @@ import {GlobalEventsExampleObOutsideFilterPreviewComponent} from '../global-even
 	selector: 'app-code-example-global-events',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class GlobalEventsCodeExamplesComponent extends CodeExamples {

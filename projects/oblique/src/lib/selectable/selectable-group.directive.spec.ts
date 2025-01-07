@@ -14,7 +14,8 @@ import {ObSelectableDirective} from '@oblique/oblique';
 		<div obSelectable [value]="1"></div>
 		<div obSelectable [value]="2"></div>
 		<div obSelectable [value]="3"></div>
-	</div>`
+	</div>`,
+	standalone: false
 })
 class TestComponent {
 	selectableGroup = new FormControl([1]);

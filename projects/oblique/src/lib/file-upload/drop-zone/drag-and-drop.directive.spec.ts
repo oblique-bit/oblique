@@ -4,7 +4,8 @@ import {By} from '@angular/platform-browser';
 import {ObDragDropDirective} from './drag-and-drop.directive';
 
 @Component({
-	template: `<input obDragDrop (fileDropped)="saveFiles($event)" />`
+	template: `<input obDragDrop (fileDropped)="saveFiles($event)" />`,
+	standalone: false
 })
 class TestDropDirectiveComponent {
 	files;

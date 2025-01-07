@@ -5,7 +5,6 @@ import {Component} from '@angular/core';
 @Component({
 	selector: 'app-popover-example-other-options-preview',
 	templateUrl: './popover-example-other-options-preview.component.html',
-	standalone: true,
 	imports: [ObPopoverModule, ObButtonModule, MatButtonModule],
 	styleUrls: ['../../../../code-example-flex-layout.scss', './popover-example-other-options-preview.component.scss']
 })

@@ -7,7 +7,6 @@ import {TranslateModule} from '@ngx-translate/core';
 @Component({
 	selector: 'app-notification-example-other-options-preview',
 	templateUrl: './notification-example-other-options-preview.component.html',
-	standalone: true,
 	imports: [ObNotificationModule, ObButtonModule, MatButtonModule, TranslateModule, MatSlideToggleModule],
 	styleUrls: ['../../../../code-example-flex-layout.scss', './notification-example-other-options-preview.component.scss']
 })

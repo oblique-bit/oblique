@@ -9,7 +9,6 @@ import {ColumnLayoutExampleStackblitzLinkPreviewComponent} from './previews/stac
 	selector: 'app-code-example-column-layout',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class ColumnLayoutCodeExamplesComponent extends CodeExamples {

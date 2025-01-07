@@ -20,7 +20,6 @@ import {VersionService} from '../../shared/version/version.service';
 	templateUrl: './version.component.html',
 	styleUrls: ['./version.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, ObSelectDirective, MatLabel, MatTooltip]
 })
 export class VersionComponent implements OnChanges {

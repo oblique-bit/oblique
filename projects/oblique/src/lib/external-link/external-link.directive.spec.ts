@@ -9,7 +9,8 @@ import {ObExternalLinkDirective} from './external-link.directive';
 import {EXTERNAL_LINK} from './external-link.model';
 
 @Component({
-	template: `<a href="http://www.google.ch">External Link</a>`
+	template: `<a href="http://www.google.ch">External Link</a>`,
+	standalone: false
 })
 class TestComponent {}
 

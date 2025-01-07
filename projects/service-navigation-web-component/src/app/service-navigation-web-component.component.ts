@@ -33,7 +33,6 @@ import {TranslationsService} from './translations-service';
 import {ObICustomButton, ObILink} from './service-navigation-web-component.model';
 
 @Component({
-	standalone: true,
 	selector: 'ob-service-navigation-web-component',
 	templateUrl: './service-navigation-web-component.component.html',
 	styleUrls: [

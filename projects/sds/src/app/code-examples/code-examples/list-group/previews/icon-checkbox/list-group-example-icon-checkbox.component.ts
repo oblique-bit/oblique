@@ -4,7 +4,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {CommonModule} from '@angular/common';
 
 @Component({
-	standalone: true,
 	selector: 'app-list-group-example-icon',
 	templateUrl: './list-group-example-icon-checkbox.component.html',
 	imports: [MatListModule, MatIconModule, CommonModule],

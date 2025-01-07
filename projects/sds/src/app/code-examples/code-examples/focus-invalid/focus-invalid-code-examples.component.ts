@@ -9,7 +9,6 @@ import {FocusInvalidExampleDefaultPreviewComponent} from '../focus-invalid/previ
 	selector: 'app-code-example-focus-invalid',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class FocusInvalidCodeExamplesComponent extends CodeExamples {

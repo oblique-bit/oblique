@@ -12,7 +12,6 @@ import {ObErrorMessagesModule, ObFormFieldModule} from '@oblique/oblique';
 	selector: 'app-form-example-states-preview',
 	templateUrl: './form-example-states-preview.component.html',
 	styleUrls: ['./form-example-states-preview.component.scss'],
-	standalone: true,
 	imports: [
 		FormsModule,
 		MatCheckboxModule,

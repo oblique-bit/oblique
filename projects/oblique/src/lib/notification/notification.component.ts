@@ -12,7 +12,8 @@ import {Subject, takeUntil} from 'rxjs';
 	styleUrls: ['./notification.component.scss'],
 	animations: [animations],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-notification-container'}
+	host: {class: 'ob-notification-container'},
+	standalone: false
 })
 export class ObNotificationComponent implements OnInit, OnDestroy {
 	public static REMOVE_DELAY = 350;

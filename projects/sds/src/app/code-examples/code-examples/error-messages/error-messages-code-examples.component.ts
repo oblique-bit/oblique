@@ -10,7 +10,6 @@ import {ErrorMessagesExampleReactiveFormPreviewComponent} from './previews/react
 	selector: 'app-code-example-error-messages',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class ErrorMessagesCodeExamplesComponent extends CodeExamples {

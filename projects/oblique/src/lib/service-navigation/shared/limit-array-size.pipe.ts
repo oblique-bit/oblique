@@ -1,7 +1,8 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-	name: 'obLimitArraySize'
+	name: 'obLimitArraySize',
+	standalone: false
 })
 export class ObLimitArraySizePipe implements PipeTransform {
 	transform(array: unknown[], length: number): unknown[] {

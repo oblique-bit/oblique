@@ -3,7 +3,8 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sb-number-format',
-	templateUrl: './number-format-sample.component.html'
+	templateUrl: './number-format-sample.component.html',
+	standalone: false
 })
 export class NumberFormatSampleComponent {
 	number1 = 5.236548;

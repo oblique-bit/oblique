@@ -37,7 +37,8 @@ import {ObLoginState} from '../../service-navigation/service-navigation.model';
 	templateUrl: './master-layout-header.component.html',
 	styleUrls: ['./master-layout-header.component.scss', './master-layout-header.component-controls.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-header'}
+	host: {class: 'ob-master-layout-header'},
+	standalone: false
 })
 export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	home$: Observable<string>;

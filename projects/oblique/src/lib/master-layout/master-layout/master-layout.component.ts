@@ -43,7 +43,8 @@ import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 		'./master-layout.component-accessibility.scss'
 	],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout', 'ob-version': appVersion}
+	host: {class: 'ob-master-layout', 'ob-version': appVersion},
+	standalone: false
 })
 export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy {
 	home = this.config.homePageRoute;

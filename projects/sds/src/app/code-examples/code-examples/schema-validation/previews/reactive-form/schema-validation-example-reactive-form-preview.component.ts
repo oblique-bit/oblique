@@ -7,8 +7,7 @@ import {ObButtonDirective, ObErrorMessagesModule, ObSchemaValidationModule} from
 @Component({
 	selector: 'app-schema-validation-example-reactive-form-preview',
 	templateUrl: './schema-validation-example-reactive-form-preview.component.html',
-	imports: [CommonModule, MatInputModule, ObButtonDirective, ReactiveFormsModule, ObSchemaValidationModule, ObErrorMessagesModule],
-	standalone: true
+	imports: [CommonModule, MatInputModule, ObButtonDirective, ReactiveFormsModule, ObSchemaValidationModule, ObErrorMessagesModule]
 })
 export class SchemaValidationExampleReactiveFormPreviewComponent implements OnInit {
 	schema = {

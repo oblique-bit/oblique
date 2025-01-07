@@ -4,7 +4,8 @@ import {FormControl, UntypedFormBuilder, UntypedFormGroup, Validators} from '@an
 @Component({
 	selector: 'sb-mandatory.sample',
 	templateUrl: './mandatory.sample.component.html',
-	styleUrls: ['./mandatory.sample.component.scss']
+	styleUrls: ['./mandatory.sample.component.scss'],
+	standalone: false
 })
 export class MandatorySampleComponent implements OnInit {
 	/**

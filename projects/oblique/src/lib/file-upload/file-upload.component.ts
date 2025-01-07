@@ -9,7 +9,6 @@ import {NgIf} from '@angular/common';
 	exportAs: 'obFileUpload',
 	templateUrl: './file-upload.component.html',
 	host: {class: 'ob-file-upload'},
-	standalone: true,
 	imports: [NgIf, ObDropZoneComponent, ObProgressComponent]
 })
 export class ObFileUploadComponent {

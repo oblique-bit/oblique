@@ -11,7 +11,6 @@ import {IconsExampleIconsGalleryPreviewComponent} from './previews/icons-gallery
 	selector: 'app-code-example-icons',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class IconsCodeExamplesComponent extends CodeExamples {

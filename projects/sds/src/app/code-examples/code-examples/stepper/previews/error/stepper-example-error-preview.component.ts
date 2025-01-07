@@ -11,7 +11,6 @@ import {ObButtonModule} from '@oblique/oblique';
 @Component({
 	selector: 'app-stepper-example-error-preview',
 	templateUrl: './stepper-example-error-preview.component.html',
-	standalone: true,
 	imports: [MatFormFieldModule, MatButtonModule, MatIconModule, MatInputModule, MatStepperModule, ObButtonModule, ReactiveFormsModule],
 	providers: [
 		{

@@ -21,7 +21,6 @@ import {VersionService} from '../shared/version/version.service';
 	selector: 'app-tabbed-page',
 	templateUrl: './tabbed-page.component.html',
 	styleUrls: ['./tabbed-page.component.scss'],
-	standalone: true,
 	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe, MatChipsModule]
 })
 export class TabbedPageComponent {

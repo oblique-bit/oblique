@@ -8,7 +8,6 @@ import {ObErrorMessagesModule} from '@oblique/oblique';
 @Component({
 	selector: 'sb-datepicker',
 	templateUrl: './datepicker.component.html',
-	standalone: true,
 	imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, ReactiveFormsModule, ObErrorMessagesModule]
 })
 export class DatepickerComponent implements OnInit {

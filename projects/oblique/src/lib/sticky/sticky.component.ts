@@ -24,7 +24,6 @@ import {WINDOW} from './../utilities';
 	styleUrls: ['./sticky.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-sticky'},
-	standalone: true,
 	imports: [NgIf, NgTemplateOutlet, NgClass, CdkScrollable]
 })
 export class ObStickyComponent implements OnChanges, AfterViewInit {

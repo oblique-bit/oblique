@@ -4,7 +4,8 @@ import {ExampleDialogComponent} from './example-dialog/example-dialog.component'
 
 @Component({
 	selector: 'sb-dialog',
-	templateUrl: './dialog.component.html'
+	templateUrl: './dialog.component.html',
+	standalone: false
 })
 export class DialogComponent {
 	spinner = 'none';

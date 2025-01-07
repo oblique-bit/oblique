@@ -6,7 +6,8 @@ import {ObNumberFormatDirective} from './number-format.directive';
 
 @Component({
 	template: '<input name="number" [(ngModel)]="number" obNumberFormat/>',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	standalone: false
 })
 class TestDefaultComponent {
 	number: number;
@@ -14,7 +15,8 @@ class TestDefaultComponent {
 
 @Component({
 	template: '<input name="number" [(ngModel)]="number" obNumberFormat [persistent]="false" [decimals]="3"/>',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	standalone: false
 })
 class TestNonPersistentComponent {
 	number: number;

@@ -51,10 +51,10 @@ describe('ObServiceNavigationPollingService', () => {
 
 	describe('initializeStateUpdate', () => {
 		describe.each([
-			{time: 0, number: 1},
-			{time: 999, number: 1},
-			{time: 1000, number: 2},
-			{time: 4500, number: 5}
+			{time: 0, number: 2},
+			{time: 999, number: 2},
+			{time: 1000, number: 3},
+			{time: 4500, number: 6}
 		])('with 1s interval and $time ms processing time', ({time, number}) => {
 			beforeEach(fakeAsync(() => {
 				service.initializeStateUpdate(1, 1, 'http://rootUrl/');
@@ -72,10 +72,10 @@ describe('ObServiceNavigationPollingService', () => {
 		});
 
 		describe.each([
-			{time: 0, number: 1},
-			{time: 999, number: 1},
-			{time: 1000, number: 1},
-			{time: 4500, number: 3}
+			{time: 0, number: 2},
+			{time: 999, number: 2},
+			{time: 1000, number: 2},
+			{time: 4500, number: 4}
 		])('with 2s interval and $time ms processing time', ({time, number}) => {
 			beforeEach(fakeAsync(() => {
 				service.initializeStateUpdate(1, 2, 'http://rootUrl/');

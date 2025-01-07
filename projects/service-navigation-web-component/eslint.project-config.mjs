@@ -13,6 +13,7 @@ export default [
 		},
 
 		rules: {
+			'@angular-eslint/prefer-signals': 'off',
 			'@typescript-eslint/max-params': 'off',
 			'@typescript-eslint/naming-convention': 'off',
 			'@typescript-eslint/no-explicit-any': 'off',

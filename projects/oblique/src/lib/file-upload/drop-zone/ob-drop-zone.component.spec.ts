@@ -10,7 +10,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 
 @Pipe({
-	name: 'obAcceptAll'
+	name: 'obAcceptAll',
+	standalone: false
 })
 export class ObMockAreAllTypesAllowedPipe implements PipeTransform {
 	transform(): boolean {

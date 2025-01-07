@@ -10,7 +10,8 @@ import {CommonModule} from '@angular/common';
 import {OptionLabelIconPosition} from './../autocomplete.model';
 
 @Component({
-	template: ''
+	template: '',
+	standalone: false
 })
 class OptionLabelTestComponent {
 	iconName: ObEIcon | '' = '';

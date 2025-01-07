@@ -9,7 +9,6 @@ import {ObFormFieldModule} from '@oblique/oblique';
 @Component({
 	selector: 'app-form-example-horizontal-preview',
 	templateUrl: './form-example-horizontal-preview.component.html',
-	standalone: true,
 	imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, ObFormFieldModule]
 })
 export class FormExampleHorizontalPreviewComponent {}

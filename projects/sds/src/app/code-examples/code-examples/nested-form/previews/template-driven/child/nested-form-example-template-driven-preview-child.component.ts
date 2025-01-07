@@ -9,7 +9,6 @@ import {NestedFormExampleTemplateDrivenPreviewGrandchildComponent} from '../gran
 	selector: 'app-nested-form-example-template-driven-preview-child',
 	exportAs: 'child',
 	templateUrl: './nested-form-example-template-driven-preview-child.component.html',
-	standalone: true,
 	imports: [
 		FormsModule,
 		MatInputModule,

@@ -4,8 +4,7 @@ import {MatTableModule} from '@angular/material/table';
 @Component({
 	selector: 'app-material-table-example-default-preview',
 	templateUrl: './material-table-example-default-preview.component.html',
-	imports: [MatTableModule],
-	standalone: true
+	imports: [MatTableModule]
 })
 export class MaterialTableExampleDefaultPreviewComponent {
 	displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];

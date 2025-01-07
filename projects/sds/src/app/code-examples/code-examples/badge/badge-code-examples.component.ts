@@ -9,7 +9,6 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 @Component({
 	selector: 'app-badge-code-examples',
 	templateUrl: '../../code-examples.component.html',
-	standalone: true,
 	imports: [CommonModule, CodeExampleComponent, IdPipe]
 })
 export class BadgeCodeExamplesComponent extends CodeExamples {

@@ -12,7 +12,8 @@ import {EditMode, Mode, TableManager} from './table-manager';
 @Component({
 	selector: 'sb-table',
 	templateUrl: './table.component.html',
-	styleUrls: ['./table.component.scss']
+	styleUrls: ['./table.component.scss'],
+	standalone: false
 })
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	@ViewChild(MatSort) sort: MatSort;

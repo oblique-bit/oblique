@@ -37,7 +37,8 @@ $theme-tabs: (
 	typography: typo.$custom-typography,
 );
 
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 
 @include mat.tree-theme(mat.m2-define-light-theme($theme));
 @include mat.toolbar-theme(mat.m2-define-light-theme($theme));

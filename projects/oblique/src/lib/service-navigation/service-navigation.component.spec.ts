@@ -26,7 +26,8 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 		<ng-template #customWidgetTemplate>
 			<button type="button">second button</button>
 		</ng-template>
-	</ob-service-navigation>`
+	</ob-service-navigation>`,
+	standalone: false
 })
 class CustomControlsTestComponent {}
 

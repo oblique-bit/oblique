@@ -9,7 +9,6 @@ import {ObErrorMessagesModule, ObFormFieldModule} from '@oblique/oblique';
 	selector: 'app-form-example-input-prefixes-and-suffixes-preview',
 	templateUrl: './form-example-input-prefixes-and-suffixes-preview.component.html',
 	styleUrls: ['../../../../code-example-flex-layout.scss', './form-example-input-prefixes-and-suffixes-preview.component.scss'],
-	standalone: true,
 	imports: [FormsModule, MatFormFieldModule, MatIconModule, MatInputModule, ObErrorMessagesModule, ObFormFieldModule]
 })
 export class FormExampleInputPrefixesAndSuffixesPreviewComponent implements AfterViewInit {

@@ -9,7 +9,6 @@ import {BreadcrumbExampleDefaultPreviewComponent} from '../breadcrumb/previews/d
 	selector: 'app-code-example-breadcrumb',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class BreadcrumbCodeExamplesComponent extends CodeExamples {

@@ -9,7 +9,6 @@ import {ObButtonDirective, ObFormFieldDirective, ObSelectDirective, obFocusWithO
 @Component({
 	selector: 'app-focus-with-outline-example-default-preview',
 	templateUrl: './focus-with-outline-example-default-preview.component.html',
-	standalone: true,
 	imports: [MatFormField, MatSelect, MatOption, MatLabel, MatButton, ObButtonDirective, ObFormFieldDirective, ObSelectDirective, MatInput]
 })
 export class FocusWithOutlineExampleDefaultPreviewComponent implements AfterViewInit {

@@ -24,7 +24,6 @@ import {ObSpinnerService} from './spinner.service';
 		])
 	],
 	host: {class: 'ob-spinner'},
-	standalone: true,
 	imports: [AsyncPipe, MatIconModule]
 })
 export class ObSpinnerComponent implements OnInit {

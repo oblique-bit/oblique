@@ -6,7 +6,6 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 	selector: 'app-highlighted-code',
 	templateUrl: './highlighted-code.component.html',
 	styleUrls: ['./highlighted-code.component.scss'],
-	standalone: true,
 	imports: [IdPipe]
 })
 export class HighlightedCodeComponent implements AfterViewInit {

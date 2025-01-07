@@ -19,7 +19,7 @@ import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 import {appVersion} from '../../version';
 
-@Component({template: ''})
+@Component({template: '', standalone: false})
 export class MockComponent {}
 
 describe('ObMasterLayoutComponent', () => {

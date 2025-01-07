@@ -12,7 +12,6 @@ import {HtmlTableExampleCollapsePreviewComponent} from './previews/collapse/html
 	selector: 'app-code-example-html-table',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class HtmlTableCodeExamplesComponent extends CodeExamples {

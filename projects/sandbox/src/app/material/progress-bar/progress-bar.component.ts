@@ -4,7 +4,8 @@ import {ThemePalette} from '@angular/material/core';
 @Component({
 	selector: 'sb-progress-bar',
 	templateUrl: './progress-bar.component.html',
-	styleUrls: ['./progress-bar.component.scss']
+	styleUrls: ['./progress-bar.component.scss'],
+	standalone: false
 })
 export class ProgressBarComponent {
 	color: ThemePalette;

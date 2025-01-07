@@ -8,7 +8,8 @@ import {ObNavTreeItemModel} from './nav-tree-item.model';
 import {ObNavTreeComponent} from './nav-tree.component';
 
 @Component({
-	template: ` <ob-nav-tree [items]="items" [prefix]="prefix" [filterPattern]="filterPattern" [labelFormatter]="labelFormatter" />`
+	template: ` <ob-nav-tree [items]="items" [prefix]="prefix" [filterPattern]="filterPattern" [labelFormatter]="labelFormatter" />`,
+	standalone: false
 })
 class TestComponent {
 	items = [

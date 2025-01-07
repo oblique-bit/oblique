@@ -9,7 +9,6 @@ import {MasterLayoutExampleStackblitzLinkPreviewComponent} from './previews/stac
 	selector: 'app-code-example-master-layout',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class MasterLayoutCodeExamplesComponent extends CodeExamples {

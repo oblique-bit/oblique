@@ -6,7 +6,6 @@ import {ObSelectableModule} from '@oblique/oblique';
 	selector: 'app-selectable-example-windows-preview',
 	templateUrl: './selectable-example-windows-preview.component.html',
 	styleUrls: ['../selectable-example-preview.component.scss'],
-	standalone: true,
 	imports: [CommonModule, ObSelectableModule]
 })
 export class SelectableExampleWindowsPreviewComponent {}

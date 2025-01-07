@@ -7,7 +7,6 @@ import {AsyncPipe} from '@angular/common';
 @Component({
 	selector: 'app-rxjs-operators-example-default-preview',
 	templateUrl: './rxjs-operators-example-default-preview.component.html',
-	standalone: true,
 	imports: [AsyncPipe]
 })
 export class RxjsOperatorsExampleDefaultPreviewComponent {

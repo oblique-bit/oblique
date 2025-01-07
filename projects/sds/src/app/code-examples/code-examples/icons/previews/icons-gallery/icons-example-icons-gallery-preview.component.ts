@@ -30,8 +30,7 @@ import {Observable, map, startWith} from 'rxjs';
 		ReactiveFormsModule,
 		MatFormFieldModule,
 		MatInputModule
-	],
-	standalone: true
+	]
 })
 export class IconsExampleIconsGalleryPreviewComponent {
 	iconsFilter = new FormControl('');

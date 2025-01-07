@@ -10,7 +10,6 @@ import {PaginatorExampleOtherOptionsPreviewComponent} from './previews/other-opt
 	selector: 'app-paginator-code-examples',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, CodeExampleComponent, IdPipe]
 })
 export class PaginatorCodeExamplesComponent extends CodeExamples {
