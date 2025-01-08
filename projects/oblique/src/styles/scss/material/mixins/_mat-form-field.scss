@@ -8,7 +8,7 @@
 		padding: $padding-top 0 $padding-bottom 0;
 		border-top-width: variables.$ob-form-field-label-height;
 
-		@at-root #{selector.append(".ob-form-field-textarea", &)} {
+		&:has(textarea) {
 			padding-top: 13px; // empiric value
 		}
 	}
