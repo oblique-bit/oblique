@@ -11,6 +11,7 @@
 
 	.mat-mdc-dialog-content.mdc-dialog__content {
 		@include typography.ob-body1();
+		color: variables.$ob-secondary-800;
 	}
 
 	.mat-mdc-dialog-surface {
