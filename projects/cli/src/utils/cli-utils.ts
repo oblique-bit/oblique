@@ -137,6 +137,10 @@ export function execute(config: ObCommandConfig): void {
 			return executeCommand(`npm install ${versionDependencies(config.dependencies).join(' ')}`, config.execSyncOptions);
 		case 'npmUpdate':
 			return executeCommand('npm update --save', config.execSyncOptions);
+		case 'npmDedupe':
+			return executeCommand(`npm dedupe`, config.execSyncOptions);
+		case 'npmPrune':
+			return executeCommand('npm prune', config.execSyncOptions);
 		case 'npmOutdated':
 			return executeCommand('npm outdated', config.execSyncOptions);
 	}

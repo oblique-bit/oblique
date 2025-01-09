@@ -31,6 +31,8 @@ export function handleObUpdateActions(): void {
 		checkNeededDependencies();
 		runUpdateDependencies();
 		runUpdateSave();
+		runNpmDedupe();
+		runNpmPrune();
 	} catch (error) {
 		console.error(chalk.red('Update failed: '), error);
 		process.exit(1);
@@ -63,6 +65,24 @@ function runUpdateSave(): void {
 	console.info(chalk.blue('[Info]: Runs npm update'));
 	try {
 		execute({name: 'npmUpdate'});
+	} catch (error) {
+		console.info(error);
+	}
+}
+
+function runNpmDedupe(): void {
+	console.info(chalk.blue('[Info]: Runs npm dedupe'));
+	try {
+		execute({name: 'npmDedupe'});
+	} catch (error) {
+		console.info(error);
+	}
+}
+
+function runNpmPrune(): void {
+	console.info(chalk.blue('[Info]: Runs npm prune'));
+	try {
+		execute({name: 'npmPrune'});
 	} catch (error) {
 		console.info(error);
 	}

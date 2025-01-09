@@ -12,7 +12,9 @@ export type ObCommandConfig =
 	| ObNpmInstallCommandConfig
 	| ObNpmUpdateCommandConfig
 	| ObNgUpdateCommandConfig
-	| ObNpmOutdatedCommandConfig;
+	| ObNpmOutdatedCommandConfig
+	| ObNpmDedupeCommandConfig
+	| ObNpmPruneCommandConfig;
 
 export interface ObBaseCommandConfig {
 	execSyncOptions?: ExecSyncOptions;
@@ -48,4 +50,12 @@ export interface ObNpmUpdateCommandConfig extends ObBaseCommandConfig {
 
 export interface ObNpmOutdatedCommandConfig extends ObBaseCommandConfig {
 	name: 'npmOutdated';
+}
+
+export interface ObNpmDedupeCommandConfig extends ObBaseCommandConfig {
+	name: 'npmDedupe';
+}
+
+export interface ObNpmPruneCommandConfig extends ObBaseCommandConfig {
+	name: 'npmPrune';
 }
