@@ -1,6 +1,5 @@
 import {Command, OptionValues} from '@commander-js/extra-typings';
 import {execSync} from 'child_process';
-import * as cliPackage from '../../package.json';
 import {commandUsageText, getVersionedDependency, optionDescriptions, projectNamePlaceholder, startObCommand} from '../utils/cli-utils';
 import {addObNewCommandOptions, convertOptionPropertyNames} from '../utils/ob-configure-command';
 import {
@@ -10,9 +9,10 @@ import {
 	createsWorkspaceMessage,
 	immutableOptions,
 	ngAddStringCommand,
-	obNewConfig
+	obNewConfig,
+	schema,
+	version
 } from './ob-new.model';
-import * as obCliNewSchema from './schema.json';
 
 export function createObNewCommand(): Command<[string], OptionValues> {
 	const command = new Command<[string], OptionValues>();
@@ -36,7 +36,7 @@ export function createAddObliqueCommand(
 	projectName: string
 ): string {
 	const commandOptions: string[] = [];
-	const properties = obCliNewSchema.properties as Record<string, ObNewSchemaOption>;
+	const properties = schema.properties as Record<string, ObNewSchemaOption>;
 	for (const [key, value] of Object.entries(options)) {
 		const propertyOptions: ObNewSchemaOption = properties[key];
 		if (Object.prototype.hasOwnProperty.call(propertyOptions, 'type')) {
@@ -53,7 +53,7 @@ export function createAddObliqueCommand(
 function initializeCommand(command: Command<[string], OptionValues>): Command<[string], OptionValues> {
 	command
 		.name('new')
-		.version(cliPackage.version, optionDescriptions.ob.version.flags, optionDescriptions.ob.version.description)
+		.version(version, optionDescriptions.ob.version.flags, optionDescriptions.ob.version.description)
 		.helpOption(optionDescriptions.new.help.flags, optionDescriptions.new.help.description)
 		.usage(commandUsageText('new'))
 		.summary(obNewConfig.obNewSummaryText)
@@ -70,7 +70,7 @@ export function handleAction(options: HandleObNewActionOptions): void {
 }
 
 function configureCommandOptions(newCommand: Command<[string], OptionValues>): Command<[string], OptionValues> {
-	const commandWithOptions = addObNewCommandOptions(obCliNewSchema, newCommand);
+	const commandWithOptions = addObNewCommandOptions(schema, newCommand);
 	return addImmutableOptionsText(commandWithOptions);
 }
 
