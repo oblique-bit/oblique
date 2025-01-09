@@ -59,7 +59,9 @@ describe('Ob new command', () => {
 				{index: 1, message: 'OBLIQUE CLI', type: 'info'},
 				{index: 2, message: '\nCreates a new Angular workspace', type: 'info'},
 				{index: 3, message: '[Info]: Installs Angular Material', type: 'info'},
-				{index: 4, message: '[Complete]: Oblique added', type: 'info'},
+				{index: 4, message: '[Info]: Runs npm dedupe', type: 'info'},
+				{index: 5, message: '[Info]: Runs npm prune', type: 'info'},
+				{index: 6, message: '[Complete]: Oblique added', type: 'info'},
 				{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'}
 			])('calls console ', ({index, message, type}) => {
 				test(`${type} ${message}`, () => {

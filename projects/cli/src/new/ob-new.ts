@@ -59,6 +59,8 @@ function runAddOblique(options: ObNewOptions<string | boolean>, projectName: str
 	installMaterial(dir);
 	const projectTitle = options.title === projectNamePlaceholder || options.title === '' ? projectName : options.title;
 	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: {...options, title: projectTitle}, execSyncOptions: {cwd: dir}});
+	runNpmDedupe();
+	runNpmPrune();
 	console.info(`[Complete]: Oblique added`);
 }
 
@@ -69,6 +71,24 @@ function getApplicationDirectory(projectName: string): string {
 function installMaterial(dir: string): void {
 	console.info(`[Info]: Installs Angular Material`);
 	execute({name: 'npmInstall', dependencies: ['@angular/material'], execSyncOptions: {cwd: dir}});
+}
+
+function runNpmDedupe(): void {
+	console.info('[Info]: Runs npm dedupe');
+	try {
+		execute({name: 'npmDedupe'});
+	} catch (error) {
+		console.info(error);
+	}
+}
+
+function runNpmPrune(): void {
+	console.info('[Info]: Runs npm prune');
+	try {
+		execute({name: 'npmPrune'});
+	} catch (error) {
+		console.info(error);
+	}
 }
 
 function configureCommandOptions(newCommand: Command<[string], OptionValues>): Command<[string], OptionValues> {
