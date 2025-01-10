@@ -1,3 +1,9 @@
+# [12.2.2](https://github.com/oblique-bit/oblique/compare/12.2.1...12.2.2) (2025-01-10)
+
+## Bug Fixes
+
+- **side-navigation:** make sure a navigation occurs when the version is changed ([cad5ced8](https://github.com/oblique-bit/oblique/commit/cad5ced83ae3cc438c4597308e6d0f2c6f9ba871))
+
 # [12.2.1](https://github.com/oblique-bit/oblique/compare/12.2.0...12.2.1) (2024-12-20)
 
 ## Bug Fixes

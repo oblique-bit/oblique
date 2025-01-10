@@ -1,3 +1,9 @@
+# [12.2.2](https://github.com/oblique-bit/oblique/compare/12.2.1...12.2.2) (2025-01-10)
+
+## Bug Fixes
+
+- **material:** correct color for text inside mat dialog ([3d7dc7a2](https://github.com/oblique-bit/oblique/commit/3d7dc7a268fc7f11d83836bade6025c7e896c8a6))
+
 # [12.2.1](https://github.com/oblique-bit/oblique/compare/12.2.0...12.2.1) (2024-12-20)
 
 ## Bug Fixes
