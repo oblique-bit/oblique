@@ -1,3 +1,9 @@
+# [12.2.2](https://github.com/oblique-bit/oblique/compare/12.2.1...12.2.2) (2025-01-10)
+
+## Bug Fixes
+
+- **new:** make sure there is no dependency on `tslib` ([3e83eaad](https://github.com/oblique-bit/oblique/commit/3e83eaad25229988edcff87a29001115b7095b57))
+
 # [12.1.0](https://github.com/oblique-bit/oblique/compare/12.0.4...12.1.0) (2024-12-09)
 
 ## Features
