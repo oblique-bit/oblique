@@ -1,14 +1,14 @@
-@import "projects/oblique/src/styles/scss/core/variables";
+@use "projects/oblique/src/styles/scss/core/variables";
 
 .container {
 	display: flex;
 	flex-wrap: wrap;
-	gap: $ob-spacing-sm;
+	gap: variables.$ob-spacing-sm;
 	align-items: flex-start;
 
 	> * {
 		flex: 1 1 400px;
-		max-width: calc(50% - ($ob-spacing-sm / 2));
+		max-width: calc(50% - (#{variables.$ob-spacing-sm} / 2));
 	}
 }
 

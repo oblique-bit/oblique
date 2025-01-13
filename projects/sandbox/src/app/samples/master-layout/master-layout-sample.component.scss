@@ -1,24 +1,24 @@
 @use "layout";
-@import "variables";
+@use "variables";
 
 .card-wrapper {
 	display: flex;
 	flex-wrap: wrap;
-	gap: $ob-spacing-default;
-	margin-bottom: $ob-spacing-xl;
+	gap: variables.$ob-spacing-default;
+	margin-bottom: variables.$ob-spacing-xl;
 }
 
 .mat-mdc-slide-toggle,
 .mat-mdc-card .mat-mdc-button {
 	display: block;
-	margin-bottom: $ob-spacing-default;
+	margin-bottom: variables.$ob-spacing-default;
 }
 
 .form-element {
-	margin-bottom: $ob-spacing-default;
+	margin-bottom: variables.$ob-spacing-default;
 
 	label {
-		margin-right: $ob-spacing-default;
+		margin-right: variables.$ob-spacing-default;
 	}
 }
 

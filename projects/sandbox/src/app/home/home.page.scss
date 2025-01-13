@@ -1,15 +1,15 @@
-@import "projects/oblique/src/styles/scss/core/variables";
+@use "projects/oblique/src/styles/scss/core/variables";
 
 .content {
 	text-align: center;
 }
 
 .title {
-	font-size: $ob-font-size-lg;
+	font-size: variables.$ob-font-size-lg;
 }
 
 .version {
-	font-size: $ob-font-size-xl;
+	font-size: variables.$ob-font-size-xl;
 }
 
 .svg-container {

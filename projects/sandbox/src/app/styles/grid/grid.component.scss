@@ -1,14 +1,14 @@
-@import "projects/oblique/src/styles/scss/core/variables";
+@use "projects/oblique/src/styles/scss/core/variables";
 
 .item {
-	background-color: $ob-gray-lighter;
+	background-color: variables.$ob-gray-lighter;
 	text-align: center;
 }
 
 details {
-	margin-bottom: $ob-spacing-default;
+	margin-bottom: variables.$ob-spacing-default;
 }
 
 section + section {
-	margin-top: $ob-spacing-xl;
+	margin-top: variables.$ob-spacing-xl;
 }

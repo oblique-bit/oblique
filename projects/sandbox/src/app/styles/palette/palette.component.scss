@@ -1,4 +1,4 @@
-@import "projects/oblique/src/styles/scss/core/variables";
+@use "projects/oblique/src/styles/scss/core/variables";
 
 .colors {
 	display: flex;
@@ -16,5 +16,5 @@
 }
 
 h2 {
-	margin-top: $ob-spacing-default;
+	margin-top: variables.$ob-spacing-default;
 }
