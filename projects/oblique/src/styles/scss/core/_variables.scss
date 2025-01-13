@@ -1,5 +1,5 @@
-@use "palette";
-@forward "palette";
+@use "./palette";
+@forward "./palette";
 
 $ob-gray-extra-light: palette.$ob-secondary-50 !default;
 $ob-gray-lighter: palette.$ob-secondary-100 !default;

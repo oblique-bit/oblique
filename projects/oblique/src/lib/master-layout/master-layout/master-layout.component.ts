@@ -38,9 +38,9 @@ import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 	templateUrl: './master-layout.component.html',
 	styleUrls: [
 		'./master-layout.component.scss',
-		'./master-layout.component-cover.scss',
-		'./master-layout.component-offcanvas.scss',
-		'./master-layout.component-accessibility.scss'
+		'./master-layout-cover.component.scss',
+		'./master-layout-offcanvas.component.scss',
+		'./master-layout-accessibility.component.scss'
 	],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout', 'ob-version': appVersion},

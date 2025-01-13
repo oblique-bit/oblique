@@ -34,7 +34,7 @@ import {ObNavigationLink} from './navigation-link.model';
 @Component({
 	selector: 'ob-master-layout-navigation',
 	templateUrl: './master-layout-navigation.component.html',
-	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation.component-scrollable.scss'],
+	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation-scrollable.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout-navigation'},
 	standalone: false

@@ -35,7 +35,7 @@ import {ObLoginState} from '../../service-navigation/service-navigation.model';
 @Component({
 	selector: 'ob-master-layout-header',
 	templateUrl: './master-layout-header.component.html',
-	styleUrls: ['./master-layout-header.component.scss', './master-layout-header.component-controls.scss'],
+	styleUrls: ['./master-layout-header.component.scss', './master-layout-header-controls.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout-header'},
 	standalone: false
