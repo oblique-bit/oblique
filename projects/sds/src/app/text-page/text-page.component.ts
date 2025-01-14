@@ -68,6 +68,7 @@ export class TextPageComponent implements AfterViewChecked {
 	private buildSelectedContentObservable(validPageId$: Observable<number>): Observable<SafeHtml> {
 		return validPageId$.pipe(
 			switchMap(id => this.cmsDataService.getTextPagesComplete(id)),
+			// Sanitation is bypassed because we need IDs and as the HTML comes from the Oblique Team and not anybody
 			map(cmsData => this.domSanitizer.bypassSecurityTrustHtml(cmsData.data.description))
 		);
 	}
