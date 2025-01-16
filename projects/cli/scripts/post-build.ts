@@ -27,6 +27,7 @@ export class PostBuild extends StaticScript {
 	private static adaptPackageJson(): void {
 		PackageJson.initialize(PostBuild.projectName)
 			.addFieldsFromRoot('version', 'author', 'contributors', 'license')
+			.copyDependenciesFromRoot('tslib')
 			.removeScripts()
 			.write()
 			.finalize();
