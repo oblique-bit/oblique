@@ -11,7 +11,6 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObPopoverModule} from '../../popover/popover.module';
-import {ObSafeImagePipe} from '../shared/safe-image.pipe';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObLimitArraySizePipe} from '../shared/limit-array-size.pipe';
 import {ObServiceNavigationApplicationAltPipe} from './service-navigation-application-image-alt.pipe';
@@ -31,7 +30,6 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				ObLimitArraySizePipe,
 				ObServiceNavigationApplicationsComponent,
 				ObServiceNavigationPopoverSectionComponent,
-				ObSafeImagePipe,
 				ObServiceNavigationApplicationAltPipe
 			],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]

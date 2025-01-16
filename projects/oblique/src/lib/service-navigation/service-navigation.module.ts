@@ -14,7 +14,6 @@ import {ObPopoverModule} from '../popover/popover.module';
 import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
 import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
 import {ObServiceNavigationPopoverSectionComponent} from './shared/popover-section/service-navigation-popover-section.component';
-import {ObSafeImagePipe} from './shared/safe-image.pipe';
 import {ObLimitArraySizePipe} from './shared/limit-array-size.pipe';
 import {ObServiceNavigationAuthenticationComponent} from './authentication/service-navigation-authentication.component';
 import {ObServiceNavigationProfileComponent} from './profile/service-navigation-profile.component';
@@ -58,7 +57,6 @@ import {ObDisableLinkDirective} from './shared/disable-link/disable-link.directi
 		ObContactToLinksPipe,
 		ObIsUserLoggedInPipe,
 		ObLimitArraySizePipe,
-		ObSafeImagePipe,
 		ObServiceNavigationApplicationAltPipe,
 		ObServiceNavigationApplicationsComponent,
 		ObServiceNavigationAuthenticationComponent,
