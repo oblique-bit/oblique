@@ -161,6 +161,7 @@ function addEslint(eslint: boolean): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (eslint) {
 			infoMigration(_context, 'Toolchain: Adding "eslint"');
+			['@eslint/js', '@eslint/eslintrc'].forEach(dependency => addDevDependency(tree, dependency));
 			return externalSchematic('@angular-eslint/schematics', 'ng-add', {});
 		}
 		return tree;
@@ -182,15 +183,16 @@ function addPrettier(eslint: boolean): Rule {
 function overwriteEslintRC(eslint: boolean, prefix: string): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
 		if (eslint) {
-			infoMigration(_context, 'Toolchain: overwrite ".eslintrc.json"');
-			writeFile(tree, '.eslintrc.json', formatEsLintRC(tree, prefix));
+			infoMigration(_context, 'Toolchain: overwrite "eslint.config.mjs"');
+			deleteFile(tree, 'eslint.config.js');
+			writeFile(tree, 'eslint.config.mjs', formatEsLintRC(tree, prefix));
 		}
 		return tree;
 	});
 }
 
 function formatEsLintRC(tree: Tree, prefix: string): string {
-	const eslintFile = getTemplate(tree, 'default-eslintrc.json.config');
+	const eslintFile = getTemplate(tree, 'default-eslint.config.mjs.config');
 	return prefix
 		? eslintFile.replace(/APP_PREFIX/g, prefix)
 		: eslintFile.replace(/\s*"@angular-eslint\/(?:component|directive)-selector": \[.*?],/gs, '');
