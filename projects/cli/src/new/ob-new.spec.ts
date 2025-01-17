@@ -201,7 +201,7 @@ describe('Ob new command', () => {
 				test(`should call npx ${projectName} with default parameter`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						3,
-						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --jenkins="" --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --no-static --eslint --husky`,
+						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --eslint --husky`,
 						{
 							cwd: path.join(process.cwd(), projectName),
 							stdio: 'inherit'
