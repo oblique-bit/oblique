@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
-import {ObErrorMessagesModule, ObFormFieldDirective, ObSchemaValidationModule} from '@oblique/oblique';
+import {ObErrorMessagesModule, ObSchemaValidationModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-schema-validation-example-template-driven-form-preview',
 	templateUrl: './schema-validation-example-template-driven-form-preview.component.html',
-	imports: [CommonModule, MatInputModule, ObSchemaValidationModule, ObErrorMessagesModule, FormsModule, ObFormFieldDirective]
+	imports: [CommonModule, MatInputModule, ObSchemaValidationModule, ObErrorMessagesModule, FormsModule]
 })
 export class SchemaValidationExampleTemplateDrivenFormPreviewComponent {
 	firstName = '';
