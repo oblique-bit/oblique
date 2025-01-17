@@ -49,7 +49,6 @@ export {
 	ObIFileDescription
 } from './lib/file-upload/file-upload.module';
 export {ObFocusInvalidModule, ObFocusInvalidDirective} from './lib/focus-invalid/focus-invalid.module';
-export {ObFormFieldModule, ObFormFieldDirective, ObSelectDirective} from './lib/form-field/form-field.module';
 export {
 	ObServiceNavigationComponent,
 	ObServiceNavigationModule,
@@ -166,4 +165,4 @@ export {
 	ObIAutocompleteInputOptionGroup,
 	OptionLabelIconPosition
 } from './lib/autocomplete/autocomplete.module';
-export {ObPaginatorDirective, ObPaginatorModule, ObPaginatorService} from './lib/paginator/ob-paginator.module';
+export {ObPaginatorModule, ObPaginatorService} from './lib/paginator/ob-paginator.module';

@@ -8,7 +8,6 @@ import {MatSelectModule} from '@angular/material/select';
 import {TranslateModule} from '@ngx-translate/core';
 import {obliqueExports, obliqueProviders} from '../utilities';
 import {ObButtonModule} from '../button/button.module';
-import {ObFormFieldModule} from '../form-field/form-field.module';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
 import {ObPopoverModule} from '../popover/popover.module';
 import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
@@ -48,7 +47,6 @@ import {ObDisableLinkDirective} from './shared/disable-link/disable-link.directi
 		ObButtonModule,
 		ObDisableLinkDirective,
 		ObExternalLinkModule,
-		ObFormFieldModule,
 		ObPopoverModule,
 		ObTranslateParamsModule,
 		TranslateModule
