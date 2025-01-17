@@ -1,3 +1,9 @@
+# [12.2.3](https://github.com/oblique-bit/oblique/compare/12.2.2...12.2.3) (2025-01-17)
+
+## Bug Fixes
+
+- **banner:** remove `bypassSecurityTrustHtml` ([927f6cdb](https://github.com/oblique-bit/oblique/commit/927f6cdbcf9a12d77ad1aaa09165ccd7bf164a9e))
+
 # [12.2.2](https://github.com/oblique-bit/oblique/compare/12.2.1...12.2.2) (2025-01-10)
 
 ## Bug Fixes
