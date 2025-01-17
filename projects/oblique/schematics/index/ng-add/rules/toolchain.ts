@@ -16,7 +16,6 @@ import {
 	writeFile
 } from '../../utils';
 import {addJest, addProtractor} from './tests';
-import {jenkins} from './jenkins';
 
 export function toolchain(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
@@ -32,13 +31,13 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			addJest(options.jest),
 			addProtractor(options.protractor, options.jest),
 			addSonar(options.sonar, options.jest),
-			jenkins(options.jenkins, options.static, options.jest),
 			updateEditorConfig(options.eslint),
 			addEslint(options.eslint),
 			addPrettier(options.eslint),
 			overwriteEslintRC(options.eslint, options.prefix),
 			addHusky(options.husky),
-			addEnvironmentFiles(options.environments, options.banner)
+			addEnvironmentFiles(options.environments, options.banner),
+			setEnvironments(options.environments)
 		])(tree, _context);
 }
 
@@ -234,4 +233,24 @@ function addEnvironmentFile(tree: Tree, fileName: string, fileContent: string): 
 	getAngularConfigs(tree, ['sourceRoot'])
 		.map(config => config.config as string)
 		.forEach(sourceRoot => writeFile(tree, `${sourceRoot}/environments/${fileName}`, fileContent));
+}
+
+function setEnvironments(environments: string): Rule {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	return (tree: Tree, _context: SchematicContext): Tree =>
+		setAngularProjectsConfig(tree, ['architect', 'build', 'configurations'], (config: any) => {
+			environments.split(' ').forEach(environment => {
+				config[environment] = {...config.production};
+				if (config[environment].fileReplacements) {
+					config[environment].fileReplacements[0].with = config[environment].fileReplacements[0].with.replace('prod', environment);
+				}
+
+				if (environment === 'dev') {
+					config.dev.optimization = false;
+					config.dev.sourceMap = true;
+				}
+			});
+
+			return config;
+		});
 }

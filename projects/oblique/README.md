@@ -36,7 +36,6 @@ You will find information about how to use Oblique, code samples, FAQ and many m
    - refactor your application to integrate Oblique
    - optionally replace jasmine with jest
    - optionally configure Sonar
-   - optionally configure Jenkins & Cloud Foundry
    - optionally replace `tslint` with `eslint` and `prettier`
    - optionally add a git hook to auto format files before push
 
