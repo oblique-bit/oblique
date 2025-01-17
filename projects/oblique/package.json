@@ -1,6 +1,6 @@
 {
   "name": "@oblique/oblique",
-  "version": "12.2.2",
+  "version": "12.2.3",
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
   },

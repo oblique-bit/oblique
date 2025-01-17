@@ -1,3 +1,9 @@
+# [12.2.3](https://github.com/oblique-bit/oblique/compare/12.2.2...12.2.3) (2025-01-17)
+
+## Bug Fixes
+
+- **cli:** add `tslib` as a dependency to the released artifact ([612079c3](https://github.com/oblique-bit/oblique/commit/612079c318a8d3ce00372ef57271cf14c3048415))
+
 # [12.2.2](https://github.com/oblique-bit/oblique/compare/12.2.1...12.2.2) (2025-01-10)
 
 ## Bug Fixes

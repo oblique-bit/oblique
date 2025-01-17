@@ -1,1 +1,1 @@
-export const latest = '12.2.2';
+export const latest = '12.2.3';

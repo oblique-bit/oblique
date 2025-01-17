@@ -27,6 +27,15 @@ export class PackageJson extends StaticScript {
 		return PackageJson.instance as PackageJson;
 	}
 
+	copyDependenciesFromRoot(...dependencies: string[]): PackageJson {
+		Log.info(`Add ${humanizeList(dependencies)} dependencies to the distributed package.json`);
+		const rootPackage = PackageJson.readRootPackageJson() as {dependencies: Record<string, string>};
+		Object.entries(rootPackage.dependencies)
+			.filter(([key]) => dependencies.includes(key))
+			.forEach(([key, value]) => (this.content.dependencies[key] = value));
+		return PackageJson.instance as PackageJson;
+	}
+
 	addExports(fields: ExportEntries): PackageJson {
 		Log.info(`Add export property to the distributed package.json`);
 		this.content.exports = {

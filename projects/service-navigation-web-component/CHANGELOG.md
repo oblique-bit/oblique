@@ -1,3 +1,9 @@
+# [12.2.3](https://github.com/oblique-bit/oblique/compare/12.2.2...12.2.3) (2025-01-17)
+
+## Bug Fixes
+
+- **service-navigation:** remove `bypassSecurityTrustResourceUrl` ([e51d5f4c](https://github.com/oblique-bit/oblique/commit/e51d5f4c2ca96cc6458797eb86230be262ca72e6))
+
 # [12.2.0](https://github.com/oblique-bit/oblique/compare/12.1.0...12.2.0) (2024-12-16)
 
 ## Features

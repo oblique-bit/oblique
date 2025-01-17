@@ -1,3 +1,11 @@
+# [12.2.3](https://github.com/oblique-bit/oblique/compare/12.2.2...12.2.3) (2025-01-17)
+
+## Bug Fixes
+
+- **autocomplete:** remove `bypassSecurityTrustHtml` ([e6270e9c](https://github.com/oblique-bit/oblique/commit/e6270e9cfba768c5c91fd5c05e54b3f374146dde))
+- **schematics:** update eslint config to flat format ([dfd18b35](https://github.com/oblique-bit/oblique/commit/dfd18b350fb9039de8afa2a389ecc77f2bfb907b))
+- **service-navigation:** remove `bypassSecurityTrustResourceUrl` ([e51d5f4c](https://github.com/oblique-bit/oblique/commit/e51d5f4c2ca96cc6458797eb86230be262ca72e6))
+
 # [12.2.2](https://github.com/oblique-bit/oblique/compare/12.2.1...12.2.2) (2025-01-10)
 
 ## Bug Fixes

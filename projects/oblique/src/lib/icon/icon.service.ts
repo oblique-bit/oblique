@@ -20,18 +20,22 @@ export class ObIconService {
 	}
 
 	registerIconSetsAsync(...urls: string[]): void {
+		//bypassSecurityTrustHtml is not safe. Projects are responsible to ensure the SVGs they are providing are safe.
 		urls.forEach(iconSet => this.registry.addSvgIconSet(this.domSanitizer.bypassSecurityTrustResourceUrl(iconSet)));
 	}
 
 	registerIconSets(...iconSets: string[]): void {
+		//bypassSecurityTrustHtml is not safe. Projects are responsible to ensure the SVGs they are providing are safe.
 		iconSets.forEach(iconSet => this.registry.addSvgIconSetLiteral(this.domSanitizer.bypassSecurityTrustHtml(iconSet)));
 	}
 
 	registerIconsAsync(...icons: {name: string; url: string}[]): void {
+		//bypassSecurityTrustHtml is not safe. Projects are responsible to ensure the SVGs they are providing are safe.
 		icons.forEach(icon => this.registry.addSvgIcon(icon.name, this.domSanitizer.bypassSecurityTrustResourceUrl(icon.url)));
 	}
 
 	registerIcons(...icons: {name: string; svg: string}[]): void {
+		//bypassSecurityTrustHtml is not safe. Projects are responsible to ensure the SVGs they are providing are safe.
 		icons.forEach(icon => this.registry.addSvgIconLiteral(icon.name, this.domSanitizer.bypassSecurityTrustHtml(icon.svg)));
 	}
 
@@ -45,6 +49,7 @@ export class ObIconService {
 	}
 
 	private registerSvg(iconSet: string): void {
+		//bypassSecurityTrustHtml is not safe. Projects are responsible to ensure the SVGs they are providing are safe.
 		this.registry.addSvgIconSetLiteral(this.domSanitizer.bypassSecurityTrustHtml(iconSet));
 	}
 
