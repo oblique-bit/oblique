@@ -1,12 +1,13 @@
-import {Injectable} from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {ObINavigationLink} from '@oblique/oblique';
+import {ObICollapseBreakpoints, ObINavigationLink} from '@oblique/oblique';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class DynamicNavigationService {
 	navigationLinks$: Observable<ObINavigationLink[]>;
+	collapseBreakpoint = signal<ObICollapseBreakpoints>('md');
 
 	private readonly navigationLinks = new Subject<ObINavigationLink[]>();
 	private links: ObINavigationLink[] = [];
