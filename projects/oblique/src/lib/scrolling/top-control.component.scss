@@ -1,3 +1,4 @@
+@use "sass:selector";
 @use "sass:color";
 @use "../../styles/scss/core/variables";
 @use "../../styles/scss/core/mixins/layout";
@@ -31,7 +32,7 @@
 		opacity: 0.85;
 		bottom: 15px;
 
-		@include layout.ob-media-breakpoint-up(md) {
+		@at-root #{selector.append(".ob-layout-expanded", &)} {
 			bottom: 10%; // empiric value
 		}
 
@@ -44,7 +45,7 @@
 	}
 
 	.ob-header-expanded & {
-		@include layout.ob-media-breakpoint-down(md) {
+		@at-root #{selector.append(".ob-layout-collapsed", &)} {
 			display: none;
 		}
 	}
