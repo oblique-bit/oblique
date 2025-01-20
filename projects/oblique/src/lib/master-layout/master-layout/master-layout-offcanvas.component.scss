@@ -17,7 +17,7 @@
 		@at-root #{selector.append(".ob-off-canvas-in", &)} {
 			transform: translateX(-(variables.$ob-off-canvas-sidebar-collapsed-width));
 
-			@at-root #{selector.append(".ob-layout-collapse", &)} {
+			@at-root #{selector.append(".ob-layout-collapsed", &)} {
 				width: 100% - variables.$ob-off-canvas-sidebar-width;
 				transform: translateX(0);
 			}

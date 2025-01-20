@@ -7,7 +7,7 @@
 	background-color: variables.$ob-white;
 	z-index: variables.$ob-z-index-layout;
 
-	.ob-collapsed-layout.ob-header-expanded & {
+	.ob-layout-collapsed.ob-header-expanded & {
 		height: 100vh;
 		padding-bottom: variables.$ob-spacing-lg; // to avoid the last link being covered by the link preview
 	}
