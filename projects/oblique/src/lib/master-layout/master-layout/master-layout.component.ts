@@ -10,7 +10,6 @@ import {
 	OnDestroy,
 	OnInit,
 	QueryList,
-	Renderer2,
 	TemplateRef,
 	ViewChild,
 	ViewEncapsulation,
@@ -79,7 +78,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	private readonly document = inject(DOCUMENT);
 	private readonly window = inject(WINDOW);
 	private readonly highContrastModeDetector = inject(HighContrastModeDetector);
-	private readonly renderer = inject(Renderer2);
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,

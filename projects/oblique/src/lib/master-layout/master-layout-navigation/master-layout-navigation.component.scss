@@ -38,7 +38,7 @@
 		background-color: variables.$ob-white;
 
 		@include layout.ob-media-breakpoint-up(md) {
-			.ob-master-layout:not(.ob-fixed-layout, .ob-continuous-layout) &:not(.ob-has-opened-menu) {
+			.ob-master-layout &:not(.ob-has-opened-menu) {
 				overflow: hidden; // prevents horizontal scrollbar with sticky footer and non sticky header
 			}
 		}
