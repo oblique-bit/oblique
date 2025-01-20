@@ -418,4 +418,37 @@ describe('ObMasterLayoutComponent', () => {
 			jest.clearAllMocks();
 		});
 	});
+
+	describe('collapse breakpoints', () => {
+		it.each([
+			{property: 'isLayoutExpanded', expected: true},
+			{property: 'isLayoutCollapsed', expected: false}
+		])('should have "$property" set to "$expected" per default', ({property, expected}) => {
+			expect(component[property]).toBe(expected);
+		});
+
+		it.each([
+			{property: 'isLayoutExpanded', expected: false},
+			{property: 'isLayoutCollapsed', expected: true}
+		])('should have "$property" set to "$expected" with non matching media query', ({property, expected}) => {
+			Object.defineProperty(window, 'matchMedia', {
+				value: jest.fn(() => ({
+					matches: false,
+					onchange: null,
+					addListener: jest.fn(),
+					addEventListener: jest.fn(),
+					removeEventListener: jest.fn()
+				}))
+			});
+			component.ngOnChanges({
+				collapseBreakpoint: {
+					previousValue: undefined,
+					currentValue: undefined,
+					firstChange: false,
+					isFirstChange: () => true
+				}
+			});
+			expect(component[property]).toBe(expected);
+		});
+	});
 });

@@ -1,3 +1,4 @@
+@use "sass:selector";
 @use "../../../styles/scss/core/variables";
 @use "../../../styles/scss/core/mixins/layout";
 @use "../../../styles/scss/core/mixins/nav";
@@ -9,11 +10,11 @@
 	border-bottom: variables.$ob-line-width-xs solid variables.$ob-gray-lighter;
 	flex-grow: 1;
 
-	@include layout.ob-media-breakpoint-down(md) {
+	.ob-layout-collapsed & {
 		border-top: none;
 		display: none;
 
-		.ob-header-expanded & {
+		@at-root #{selector.append(".ob-header-expanded", &)} {
 			display: block;
 		}
 
@@ -37,14 +38,14 @@
 		list-style: none;
 		background-color: variables.$ob-white;
 
-		@include layout.ob-media-breakpoint-up(md) {
-			.ob-master-layout &:not(.ob-has-opened-menu) {
+		&:not(.ob-has-opened-menu) {
+			.ob-layout-expanded & {
 				overflow: hidden; // prevents horizontal scrollbar with sticky footer and non sticky header
 			}
 		}
 
 		&:not(.ob-sub-nav) {
-			@include layout.ob-media-breakpoint-up(md) {
+			.ob-layout-expanded & {
 				flex-direction: row;
 			}
 		}
@@ -53,7 +54,7 @@
 			@include button.ob-link-btn();
 		}
 
-		@include layout.ob-media-breakpoint-down(md) {
+		.ob-layout-collapsed & {
 			.ob-main-nav-item {
 				display: flex;
 				width: 100%;
@@ -107,7 +108,7 @@
 				visibility variables.$ob-duration-default,
 				transform variables.$ob-duration-default;
 
-			@include layout.ob-media-breakpoint-up(md) {
+			.ob-layout-expanded & {
 				padding: 0 variables.$ob-spacing-md variables.$ob-spacing-md;
 				inset: 100% auto auto -1 * variables.$ob-spacing-md;
 				max-width: variables.$ob-navigation-sub-menu-max-width-md;
@@ -129,7 +130,7 @@
 				}
 			}
 
-			@include layout.ob-media-breakpoint-down(md) {
+			.ob-layout-collapsed & {
 				overflow-x: clip;
 
 				> ul > li:last-child {
@@ -178,7 +179,7 @@
 				display: flex;
 				justify-content: space-between;
 
-				@include layout.ob-media-breakpoint-up(md) {
+				.ob-layout-expanded & {
 					margin: variables.$ob-spacing-default 0;
 
 					&.ob-just-close {
@@ -193,7 +194,7 @@
 				.ob-sub-menu-close-button {
 					flex-direction: row-reverse;
 
-					@include layout.ob-media-breakpoint-down(md) {
+					.ob-layout-collapsed & {
 						display: none;
 					}
 
@@ -210,7 +211,7 @@
 					padding: variables.$ob-spacing-sm variables.$ob-spacing-md;
 					width: fit-content;
 
-					@include layout.ob-media-breakpoint-down(md) {
+					.ob-layout-collapsed & {
 						padding: variables.$ob-spacing-md;
 						height: variables.$ob-button-height + variables.$ob-spacing-sm;
 						width: 100%;
@@ -222,7 +223,7 @@
 					}
 				}
 
-				@include layout.ob-media-breakpoint-down(md) {
+				.ob-layout-collapsed & {
 					.ob-just-sub-menu-back-button-home-icon {
 						padding-right: calc(100% - 52px); // empiric value
 					}
@@ -243,7 +244,7 @@
 
 			@include nav.ob-nav-hover(-1);
 
-			@include layout.ob-media-breakpoint-up(md) {
+			.ob-layout-expanded & {
 				padding: variables.$ob-spacing-sm variables.$ob-spacing-default;
 
 				&.hide-md-up {
@@ -275,7 +276,7 @@
 
 		// First level only:
 		> .ob-main-nav-item {
-			@include layout.ob-media-breakpoint-up(md) {
+			.ob-layout-expanded & {
 				&.ob-start-of-right-side-links {
 					margin-left: auto !important;
 					padding-left: variables.$ob-spacing-xxl;
@@ -381,14 +382,15 @@
 			display: flex;
 		}
 
-		@include layout.ob-media-breakpoint-down(md) {
+		/* stylelint-disable-next-line no-duplicate-selectors */
+		.ob-layout-collapsed & {
 			.ob-toggle-collapsed,
 			.ob-toggle-expanded {
 				display: none;
 			}
 		}
 
-		@include layout.ob-media-breakpoint-up(md) {
+		.ob-layout-expanded & {
 			.ob-toggle-layout-collapsed,
 			.ob-master-layout-navigation-toggle[aria-expanded] .ob-toggle-collapsed,
 			.ob-master-layout-navigation-toggle:not([aria-expanded]) .ob-toggle-expanded {
@@ -413,7 +415,7 @@
 		& .ob-expanded > .ob-sub-menu {
 			visibility: visible;
 
-			@include layout.ob-media-breakpoint-down(md) {
+			.ob-layout-collapsed & {
 				transform: translateX(0%);
 			}
 		}
@@ -424,10 +426,12 @@
 				&.ob-master-layout-navigation-link.cdk-keyboard-focused {
 					outline: none;
 					box-shadow: none;
-					@include layout.ob-media-breakpoint-up(md) {
+
+					.ob-layout-expanded & {
 						padding: variables.$ob-spacing-default - shadow.$tab-focus-width;
 					}
-					@include layout.ob-media-breakpoint-down(md) {
+
+					.ob-layout-collapsed & {
 						padding: (variables.$ob-spacing-sm - shadow.$tab-focus-width)
 							(variables.$ob-spacing-default - shadow.$tab-focus-width);
 					}
@@ -438,7 +442,7 @@
 				& > a.ob-master-layout-navigation-link.cdk-keyboard-focused,
 				& > button.ob-master-layout-navigation-link.cdk-keyboard-focused {
 					& ~ .ob-sub-menu {
-						@include layout.ob-media-breakpoint-up(md) {
+						.ob-layout-expanded & {
 							margin-left: -(variables.$ob-spacing-xl + shadow.$tab-focus-width);
 						}
 					}
@@ -454,7 +458,8 @@
 			.ob-master-layout-navigation-sub-menu-item.ob-has-keyboard-focused-child {
 				@include shadow.ob-tab-focus-border();
 			}
-			@include layout.ob-media-breakpoint-up(md) {
+
+			.ob-layout-expanded & {
 				background-color: variables.$ob-white;
 			}
 

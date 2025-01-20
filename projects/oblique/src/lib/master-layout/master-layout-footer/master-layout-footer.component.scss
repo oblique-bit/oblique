@@ -9,7 +9,7 @@
 	font-size: variables.$ob-font-size-xs;
 	background-color: variables.$ob-secondary-600;
 
-	@include layout.ob-media-breakpoint-up(md) {
+	.ob-layout-expanded & {
 		flex-direction: column;
 	}
 
@@ -65,7 +65,8 @@
 		padding-top: 0.25rem;
 	}
 
-	@include layout.ob-media-breakpoint-up(md) {
+	/* stylelint-disable-next-line no-duplicate-selectors */
+	.ob-layout-expanded & {
 		.ob-footer-item-logo {
 			margin-right: variables.$ob-spacing-default;
 		}

@@ -39,6 +39,7 @@ export {ObMasterLayoutNavigationComponent} from './master-layout-navigation/mast
 export {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
 export {ObMasterLayoutConfig} from './master-layout.config';
 export {
+	ObICollapseBreakpoints,
 	ObINavigationLink,
 	ObEScrollMode,
 	ObIMasterLayoutEvent,
