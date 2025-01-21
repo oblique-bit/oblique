@@ -92,6 +92,11 @@
 					}
 				}
 			}
+
+			.ob-toggle-collapsed,
+			.ob-toggle-expanded {
+				display: none;
+			}
 		}
 
 		.ob-sub-menu {
@@ -380,14 +385,6 @@
 		.ob-nav-toggle {
 			margin-left: auto;
 			display: flex;
-		}
-
-		/* stylelint-disable-next-line no-duplicate-selectors */
-		.ob-layout-collapsed & {
-			.ob-toggle-collapsed,
-			.ob-toggle-expanded {
-				display: none;
-			}
 		}
 
 		.ob-layout-expanded & {
