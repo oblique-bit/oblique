@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {HttpErrorResponse} from '@angular/common/http';
-import {Component, OnInit, inject} from '@angular/core';
+import {Component, OnInit, SecurityContext, inject} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -8,6 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import {ObButtonModule, ObErrorMessagesModule, ObFormFieldModule, ObNotificationModule, ObNotificationService} from '@oblique/oblique';
 import {mergeMap, tap} from 'rxjs';
 import {NewsletterService} from './newsletter.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-newsletter',
@@ -30,6 +31,7 @@ export class NewsletterComponent implements OnInit {
 	private readonly formBuilder = inject(FormBuilder);
 	private readonly newsletterService = inject(NewsletterService);
 	private readonly obNotificationService = inject(ObNotificationService);
+	private readonly sanitizer = inject(DomSanitizer);
 
 	ngOnInit(): void {
 		this.formGroup = this.formBuilder.group({
@@ -38,13 +40,15 @@ export class NewsletterComponent implements OnInit {
 	}
 
 	handleRequest(unsubscribe: boolean): void {
-		let email: string = this.formGroup.get('email').value;
+		const email: string = this.formGroup.get('email').value;
+		let sanitizedEmail = this.sanitizer.sanitize(SecurityContext.HTML, email);
+
 		let successMessage = 'You have successfully subscribed to our newsletter!';
 		if (unsubscribe) {
-			email += 'REMOVE';
+			sanitizedEmail += 'REMOVE';
 			successMessage = 'You have successfully unsubscribed to our newsletter!';
 		}
-		this.sendRequest(email, successMessage);
+		this.sendRequest(sanitizedEmail, successMessage);
 	}
 
 	sendRequest(email: string, successMessage: string): void {
