@@ -18,6 +18,7 @@ import {
 	writeFile
 } from '../utils';
 import {ObIDependencies, ObIMigrations} from './ng-update.model';
+import {getServiceName, removeProperty} from './ng-update-utils';
 
 export interface IUpdateV8Schema {}
 
@@ -350,10 +351,10 @@ export class UpdateV7toV8 implements ObIMigrations {
 				const fileContent = readFile(tree, filePath);
 				let replacement = fileContent;
 				replacement = this.migrateMasterLayoutConfig(replacement);
-				replacement = this.removeProperty(replacement, 'header', 'isAnimated');
-				replacement = this.removeProperty(replacement, 'footer', 'isSmall');
+				replacement = removeProperty(replacement, 'header', 'isAnimated');
+				replacement = removeProperty(replacement, 'footer', 'isSmall');
 				replacement = this.migrateMasterLayoutIsFixed(replacement); // migrate the setter
-				replacement = this.removeProperty(replacement, 'layout', 'isFixed'); // remove the getter
+				replacement = removeProperty(replacement, 'layout', 'isFixed'); // remove the getter
 				replacement = this.migrateProperty(replacement, 'footer', 'hasScrollTransition', 'hasLogoOnScroll');
 				replacement = this.migrateProperty(replacement, 'header', 'hasScrollTransition', 'reduceOnScroll');
 				replacement = this.migrateProperty(replacement, 'header', 'isMedium', 'isSmall');
@@ -450,26 +451,9 @@ export class UpdateV7toV8 implements ObIMigrations {
 		return fileContent;
 	}
 
-	private removeProperty(fileContent: string, service: string, name: string): string {
-		const serviceName = this.getServiceName(fileContent, service);
-		return serviceName
-			? fileContent.replace(new RegExp(`^\\s*(?:return\\s*)?(?:this\\.)?${serviceName}\\.${name}(?:\\s*=\\s*(\\w*))?;$`, 'gm'), '')
-			: fileContent;
-	}
-
 	private migrateProperty(fileContent: string, service: string, name: string, newName: string): string {
-		const serviceName = this.getServiceName(fileContent, service);
+		const serviceName = getServiceName(fileContent, service);
 		return serviceName ? fileContent.replace(new RegExp(`(?<=${serviceName}\\.)${name}`, 'gm'), newName) : fileContent;
-	}
-
-	private getServiceName(fileContent: string, serviceName: string): string | undefined {
-		const serviceClass = serviceName.charAt(0).toUpperCase() + serviceName.slice(1);
-		let service = new RegExp(`(?<service>\\w+)\\s*:\\s*ObMasterLayout${serviceClass}Service`).exec(fileContent)?.groups?.service;
-		if (!service) {
-			service = /(?<service>\w+)\s*:\s*ObMasterLayoutService/.exec(fileContent)?.groups?.service;
-			service = service ? `${service}.${serviceName}` : undefined;
-		}
-		return service;
 	}
 
 	private updateBrowserCompatibilityMessage(): Rule {
