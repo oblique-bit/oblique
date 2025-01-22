@@ -67,14 +67,6 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.header.isSticky = value;
 	}
 
-	get reduceOnScroll(): boolean {
-		return this.masterLayout.header.reduceOnScroll;
-	}
-
-	set reduceOnScroll(value: boolean) {
-		this.masterLayout.header.reduceOnScroll = value;
-	}
-
 	get isHeaderSmall(): boolean {
 		return this.masterLayout.header.isSmall;
 	}
