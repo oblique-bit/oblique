@@ -34,7 +34,7 @@
     "@popperjs/core": "^2.0.0",
     "ajv": "^8.0.0",
     "ajv-formats": "^3.0.1",
-    "angular-oauth2-oidc": "^17.0.0",
+    "angular-oauth2-oidc": "^19.0.0",
     "jwt-decode": "^4.0.0",
     "rxjs": "^7.0.0"
   },

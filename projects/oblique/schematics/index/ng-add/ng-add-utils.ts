@@ -35,7 +35,7 @@ const versions: Record<string, string | versionFunc> = {
 	'eslint-plugin-prettier': '^5.0.0',
 	prettier: '^3.0.0',
 	husky: '^9.0.0',
-	'angular-oauth2-oidc': `^17.0.0`,
+	'angular-oauth2-oidc': `^19.0.0`,
 	'jwt-decode': '^4.0.0',
 	'@eslint/js': '9.18.0',
 	'@eslint/eslintrc': '3.2.0'
