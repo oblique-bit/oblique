@@ -15,10 +15,18 @@ export class ObAuthenticationService {
 		this.oAuthService.logOut();
 	}
 
+	/**
+	 *  @deprecated since Oblique 13. Please use an API endpoint to get the user roles (or any data stored in the token),
+	 *  see https://www.rfc-editor.org/rfc/rfc9068.html#name-privacy-considerations for more details.
+	 */
 	getIdentityClaims(): object {
 		return this.oAuthService.getIdentityClaims();
 	}
 
+	/**
+	 *  @deprecated since Oblique 13. Please use an API endpoint to get the user roles (or any data stored in the token),
+	 *  see https://www.rfc-editor.org/rfc/rfc9068.html#name-privacy-considerations for more details.
+	 */
 	getAllResourceAccessRoles(): ObIResourceAccessRoles[] {
 		const rawRoles = jwtDecode<ObIResourceAccessToken>(this.oAuthService.getAccessToken()).resource_access;
 		return Object.keys(rawRoles).map(key => ({name: key, roles: rawRoles[key].roles}));
