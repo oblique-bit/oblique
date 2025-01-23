@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Output, inject} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Output, ViewChild, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, NavigationEnd, NavigationExtras, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
-import {MatInput} from '@angular/material/input';
+import {MatInputModule} from '@angular/material/input';
 import {MatIcon} from '@angular/material/icon';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {skip} from 'rxjs/operators';
@@ -33,7 +33,7 @@ import {VersionService} from '../shared/version/version.service';
 		IdPipe,
 		MatFormField,
 		MatLabel,
-		MatInput,
+		MatInputModule,
 		MatIcon,
 		MatPrefix
 	]
@@ -43,6 +43,8 @@ export class SideNavigationComponent {
 	displayMobileNavigation = false;
 	readonly componentId = 'side-navigation';
 	readonly search = new FormControl('');
+
+	@ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
 
 	filteredAccordions$: Observable<Accordion[]>;
 	selectedSlug$: Observable<string | undefined>;
@@ -70,6 +72,16 @@ export class SideNavigationComponent {
 	toggleMobileNavigation(): void {
 		this.displayMobileNavigation = !this.displayMobileNavigation;
 		this.showMobileNavigation.emit(this.displayMobileNavigation);
+	}
+
+	@HostListener('window:keydown', ['$event'])
+	moveFocusToSearch($event: KeyboardEvent): void {
+		//  On Macintosh keyboards, the metaKey is the ⌘ Command key.
+		if (($event.ctrlKey || $event.metaKey) && $event.key === 'k') {
+			$event.stopPropagation();
+			$event.preventDefault();
+			this.searchInput.nativeElement.focus();
+		}
 	}
 
 	private prepareAccordions(): Observable<Accordion[]> {
