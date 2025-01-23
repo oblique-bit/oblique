@@ -10,6 +10,7 @@ import {
 	readFile,
 	removeAngularProjectsConfig,
 	replaceInFile,
+	setAngularConfig,
 	setAngularProjectsConfig,
 	setOrCreateAngularProjectsConfig,
 	setRootAngularConfig,
@@ -20,6 +21,7 @@ import {addJest, addProtractor} from './tests';
 export function toolchain(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
+			setBuilder(),
 			moveStyles(),
 			addNpmrc(options.npmrc),
 			removeFavicon(),
@@ -39,6 +41,40 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			addEnvironmentFiles(options.environments, options.banner),
 			setEnvironments(options.environments)
 		])(tree, _context);
+}
+
+function setBuilder(): Rule {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		infoMigration(_context, 'Toolchain: Setting angular builder');
+		getAngularConfigs(tree, []).forEach(project => {
+			const {build} = project.config.architect;
+			const buildOptions = build.options;
+			const buildConfigurations = build.configurations;
+			const buildConfigurationsDevelopment = buildConfigurations.development;
+
+			setAngularConfig(tree, ['architect', 'build'], {
+				project: project.project,
+				config: {
+					...build,
+					builder: '@angular-devkit/build-angular:browser',
+					options: {
+						...buildOptions,
+						main: buildOptions.browser
+					},
+					configurations: {
+						...buildConfigurations.config,
+						development: {
+							...buildConfigurationsDevelopment.config,
+							buildOptimizer: false,
+							vendorChunk: true
+						}
+					}
+				}
+			});
+		});
+		removeAngularProjectsConfig(tree, ['architect', 'build', 'options', 'browser']);
+		return tree;
+	});
 }
 
 function moveStyles(): Rule {
