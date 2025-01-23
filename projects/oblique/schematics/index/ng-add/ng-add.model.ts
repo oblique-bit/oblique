@@ -6,7 +6,6 @@ export interface ObIOptionsSchema {
 	externalLink: boolean;
 	httpInterceptors: boolean;
 	husky: boolean;
-	jenkins: string;
 	jest: boolean;
 	locales: string;
 	mandatory: boolean;
@@ -15,7 +14,6 @@ export interface ObIOptionsSchema {
 	protractor: boolean;
 	proxy: string;
 	sonar: boolean;
-	static: boolean;
 	title: string;
 	unknownRoute: boolean;
 }
