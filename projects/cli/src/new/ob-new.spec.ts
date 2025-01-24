@@ -30,7 +30,7 @@ describe('Ob new command', () => {
 					expect(parsedObNewCommand.name()).toBe('new');
 				});
 
-				test('should have description: "Creates a new Angular project and install Oblique"', () => {
+				test(`should have description: "${obNewConfig.obNewSummaryText}"`, () => {
 					expect(parsedObNewCommand.description()).toBe(obNewConfig.obNewSummaryText);
 				});
 
