@@ -18,7 +18,6 @@ import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {scrollEnabled} from '../master-layout.utility';
 import {OB_BANNER, OB_PAMS_CONFIGURATION, WINDOW} from '../../utilities';
 import {ObIBanner, ObIPamsConfiguration} from '../../utilities.model';
 import {
@@ -66,7 +65,6 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 		this.customChange();
 		this.smallChange();
 		this.serviceNavigationConfiguration();
-		this.reduceOnScroll();
 		this.banner = this.initializeBanner(bannerToken);
 		this.home$ = this.masterLayout.homePageRouteChange$;
 		this.serviceNavigationConfig = this.config.header.serviceNavigation;
@@ -83,12 +81,6 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 
 	emitLogoutUrl(logoutUrl: string): void {
 		this.masterLayout.header.emitLogoutUrl(logoutUrl);
-	}
-
-	private reduceOnScroll(): void {
-		this.scrollEvents.isScrolled.pipe(takeUntil(this.unsubscribe), scrollEnabled(this.masterLayout.header)).subscribe(isScrolling => {
-			this.isSmall = isScrolling;
-		});
 	}
 
 	private customChange(): void {

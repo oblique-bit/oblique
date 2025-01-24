@@ -58,7 +58,6 @@ export class ObMasterLayoutConfig {
 		isSticky: true,
 		isSmall: false,
 		isCustom: false,
-		reduceOnScroll: true,
 		serviceNavigation: {
 			profileLinks: [],
 			infoLinks: [],

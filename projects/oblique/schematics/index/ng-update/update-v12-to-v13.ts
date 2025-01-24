@@ -35,6 +35,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				const fileContent = readFile(tree, filePath);
 				let replacement = fileContent;
 				replacement = removeProperty(replacement, 'footer', 'hasLogoOnScroll');
+				replacement = removeProperty(replacement, 'header', 'reduceOnScroll');
 				if (fileContent !== replacement) {
 					tree.overwrite(filePath, replacement);
 				}

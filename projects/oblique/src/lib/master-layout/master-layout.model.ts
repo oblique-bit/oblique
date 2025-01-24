@@ -13,10 +13,6 @@ export interface ObIMasterLayoutHeader {
 	isSticky: boolean;
 	isSmall: boolean;
 	isCustom: boolean;
-	/**
-	 *  @deprecated since Oblique 12. It will be removed with Oblique 13. In an effort to reduce the size of the header and the footer, the logo will not be displayed in the footer anymore and it will be possible to use the logo without the text.
-	 */
-	reduceOnScroll: boolean;
 	readonly serviceNavigation: ObIServiceNavigationConfig;
 }
 
@@ -108,7 +104,6 @@ export enum ObEMasterLayoutEventValues {
 	HEADER_IS_CUSTOM,
 	HEADER_IS_SMALL,
 	HEADER_IS_STICKY,
-	HEADER_REDUCE_ON_SCROLL,
 	IS_MENU_OPENED,
 	LAYOUT_HAS_COVER,
 	LAYOUT_HAS_DEFAULT_LAYOUT,
