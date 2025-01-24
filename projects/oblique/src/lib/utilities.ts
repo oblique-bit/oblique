@@ -71,6 +71,9 @@ export function tabsOptionsProvider(config?: ObIMaterialConfig, materialConfig?:
 	return materialConfig?.MAT_TABS_CONFIG || config?.MAT_TABS_CONFIG || {stretchTabs: false};
 }
 
+/**
+ * Deprecated with Oblique 13.0.0, use the `materialConfig` parameter of the `obProvideObliqueProviders` function instead
+ */
 export const OB_MATERIAL_CONFIG = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
 // this token is only needed as long as OB_MATERIAL_CONFIG is supported because useFactory only accepts injection tokens
 const OB_MATERIAL_CONFIG_2 = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
