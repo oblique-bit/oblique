@@ -1,5 +1,5 @@
 import {AppComponent} from './app/app.component';
-import {TranslateModule} from '@ngx-translate/core';
+import {provideTranslateService} from '@ngx-translate/core';
 import {ObIconModule, multiTranslateLoader} from '@oblique/oblique';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
@@ -15,7 +15,7 @@ export const uploadInterceptor = new UploadInterceptor();
 
 bootstrapApplication(AppComponent, {
 	providers: [
-		importProvidersFrom(ObIconModule.forRoot(), TranslateModule.forRoot(multiTranslateLoader())),
+		importProvidersFrom(ObIconModule.forRoot()),
 		{provide: LOCALE_ID, useValue: 'en-CH'},
 		provideMomentDateAdapter({
 			parse: {
@@ -38,6 +38,7 @@ bootstrapApplication(AppComponent, {
 			useClass: HttpApiInterceptor,
 			multi: true
 		},
+		provideTranslateService(multiTranslateLoader()),
 		provideRouter(APP_ROUTES, withPreloading(PreloadAllModules)),
 		provideAnimations(),
 		provideHttpClient(withInterceptorsFromDi())
