@@ -22,6 +22,7 @@ import {ObliquePackage, addFile, createSafeRule, infoMigration, setOrCreateAngul
 export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
+			addObliqueProviders(),
 			addAjv(options.ajv),
 			addUnknownRoute(options.unknownRoute),
 			addInterceptors(options.httpInterceptors),
@@ -29,6 +30,17 @@ export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 			addDefaultHomeComponent(options.prefix),
 			addExternalLink(options.externalLink)
 		])(tree, _context);
+}
+
+function addObliqueProviders(): Rule {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		infoMigration(_context, 'Oblique feature: Adding Oblique configuration');
+		const sourceFile = createSrcFile(tree, appModulePath);
+		const changes = addProviderToModule(sourceFile, appModulePath, 'provideObliqueConfiguration()', '@oblique/oblique')
+			.filter((change: Change) => change instanceof InsertChange)
+			.map((change: InsertChange) => adaptInsertChange(tree, change, 'provideObliqueConfiguration()', 'provideObliqueConfiguration'));
+		return applyChanges(tree, appModulePath, changes);
+	});
 }
 
 function addAjv(ajv: boolean): Rule {
