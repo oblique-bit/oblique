@@ -207,6 +207,8 @@ export class SideNavigationComponent {
 			case 12:
 				if (slug === 'language') return 'welcome';
 				return ['master-layout', 'popover'].includes(slug) ? `${slug}-12` : undefined;
+			case 13:
+				return ['master-layout', 'master-layout-12'].includes(slug) ? `${slug}-13` : undefined;
 			default:
 				return undefined;
 		}
