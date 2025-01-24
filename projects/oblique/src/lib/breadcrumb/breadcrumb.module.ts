@@ -5,7 +5,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObBreadcrumbComponent} from '../breadcrumb/breadcrumb.component';
-import {obliqueProviders} from '../utilities';
 import {ObBreadcrumbConfig, ObTBreadcrumbConfig, defaultBreadcrumbConfig} from './breadcrumb.model';
 
 export {ObBreadcrumbConfig, ObTBreadcrumbConfig} from './breadcrumb.model';
@@ -14,7 +13,6 @@ export {ObBreadcrumbComponent} from './breadcrumb.component';
 @NgModule({
 	declarations: [ObBreadcrumbComponent],
 	imports: [CommonModule, MatIconModule, MatTooltipModule, RouterModule, TranslateModule],
-	providers: obliqueProviders(),
 	exports: [ObBreadcrumbComponent]
 })
 export class ObBreadcrumbModule {

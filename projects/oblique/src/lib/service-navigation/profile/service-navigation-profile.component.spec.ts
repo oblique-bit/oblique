@@ -16,6 +16,7 @@ import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationProfileHarness} from './service-navigation-profile.harness';
 import {ObServiceNavigationProfileComponent} from './service-navigation-profile.component';
+import {WINDOW} from '../../utilities';
 
 describe('ObServiceNavigationProfileComponent', () => {
 	let component: ObServiceNavigationProfileComponent;
@@ -26,7 +27,10 @@ describe('ObServiceNavigationProfileComponent', () => {
 		await TestBed.configureTestingModule({
 			imports: [ObMockTranslatePipe, ObMockExternalLinkModule, ObPopoverModule, MatIconModule, MatTooltipModule, NgOptimizedImage],
 			declarations: [ObServiceNavigationProfileComponent, ObServiceNavigationPopoverSectionComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: WINDOW, useValue: window}
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationProfileComponent);

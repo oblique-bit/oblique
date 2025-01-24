@@ -1,12 +1,11 @@
 import {TestBed} from '@angular/core/testing';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {Optional, ValueProvider} from '@angular/core';
+import {Optional} from '@angular/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
-import {MATERIAL_SANITY_CHECKS} from '@angular/material/core';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {TranslateLoader} from '@ngx-translate/core';
 import {of} from 'rxjs';
@@ -21,7 +20,6 @@ import {
 	matFormFieldDefaultOptionsProvider,
 	multiTranslateLoader,
 	obFocusWithOutline,
-	obliqueProviders,
 	provideObliqueConfiguration,
 	radioOptionsProvider,
 	slideToggleOptionsProvider,
@@ -189,25 +187,6 @@ describe('utilities', () => {
 
 		it('should return given config when provided as parameters', () => {
 			expect(tabsOptionsProvider({MAT_TABS_CONFIG: {stretchTabs: true}})).toEqual({stretchTabs: true});
-		});
-	});
-
-	describe('obliqueProviders', () => {
-		it('should return 8 configurations', () => {
-			expect(obliqueProviders().length).toBe(8);
-		});
-
-		it.each([
-			MAT_FORM_FIELD_DEFAULT_OPTIONS,
-			STEPPER_GLOBAL_OPTIONS,
-			MAT_CHECKBOX_DEFAULT_OPTIONS,
-			MAT_RADIO_DEFAULT_OPTIONS,
-			MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS,
-			MAT_TABS_CONFIG,
-			WINDOW,
-			MATERIAL_SANITY_CHECKS
-		])('should contain ½s', provide => {
-			expect(obliqueProviders().find(provider => (provider as ValueProvider).provide === provide)).toBeTruthy();
 		});
 	});
 

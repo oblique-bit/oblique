@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {EnvironmentProviders, InjectionToken, Optional, Provider, makeEnvironmentProviders} from '@angular/core';
+import {EnvironmentProviders, InjectionToken, Optional, makeEnvironmentProviders} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 import {TranslateLoader, TranslateModuleConfig} from '@ngx-translate/core';
@@ -11,7 +11,6 @@ import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioDefaultOptions} from '@angular/materi
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, MatSlideToggleDefaultOptions} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS, StepperOptions} from '@angular/cdk/stepper';
 import {ObIBanner, ObIMaterialConfig, ObIObliqueConfiguration, ObIPamsConfiguration} from './utilities.model';
-import {MATERIAL_SANITY_CHECKS} from '@angular/material/core';
 import {MAT_TABS_CONFIG, MatTabsConfig} from '@angular/material/tabs';
 
 export const WINDOW = new InjectionToken<Window>('Window');
@@ -75,19 +74,6 @@ export function tabsOptionsProvider(config?: ObIMaterialConfig, materialConfig?:
 export const OB_MATERIAL_CONFIG = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
 // this token is only needed as long as OB_MATERIAL_CONFIG is supported because useFactory only accepts injection tokens
 const OB_MATERIAL_CONFIG_2 = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
-
-export function obliqueProviders(): Provider[] {
-	return [
-		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useFactory: matFormFieldDefaultOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		{provide: STEPPER_GLOBAL_OPTIONS, useFactory: stepperOptionsOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		{provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useFactory: checkboxOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		{provide: MAT_RADIO_DEFAULT_OPTIONS, useFactory: radioOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		{provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, useFactory: slideToggleOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		{provide: MAT_TABS_CONFIG, useFactory: tabsOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
-		{provide: MATERIAL_SANITY_CHECKS, useValue: {theme: false}}
-	];
-}
 
 export function provideObliqueConfiguration(config?: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([

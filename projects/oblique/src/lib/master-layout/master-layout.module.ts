@@ -19,7 +19,6 @@ import {ObMasterLayoutNavigationComponent} from './master-layout-navigation/mast
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/master-layout-navigation-item.directive';
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 import {ObOutlineDirective} from './outline.directive';
-import {obliqueProviders} from '../utilities';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 import {ObIconModule} from '../icon/icon.module';
 import {ObButtonModule} from '../button/button.module';
@@ -82,7 +81,6 @@ export {ObOutlineDirective} from './outline.directive';
 		ObMasterLayoutNavigationToggleDirective,
 		ObOutlineDirective
 	],
-	providers: obliqueProviders(),
 	exports: [
 		ObMasterLayoutComponent,
 		ObMasterLayoutFooterComponent,

@@ -13,6 +13,7 @@ import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-sect
 import {ObServiceNavigationInfoHarness} from './service-navigation-info.harness';
 import {ObServiceNavigationInfoComponent} from './service-navigation-info.component';
 import {ObContactToLinksPipe} from './contact-to-links.pipe';
+import {WINDOW} from '../../utilities';
 
 describe(ObServiceNavigationInfoComponent.name, () => {
 	let component: ObServiceNavigationInfoComponent;
@@ -22,7 +23,8 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ObMockTranslatePipe, MatIconModule, MatTooltipModule, ObPopoverModule],
-			declarations: [ObServiceNavigationInfoComponent, ObServiceNavigationPopoverSectionComponent, ObContactToLinksPipe]
+			declarations: [ObServiceNavigationInfoComponent, ObServiceNavigationPopoverSectionComponent, ObContactToLinksPipe],
+			providers: [{provide: WINDOW, useValue: window}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationInfoComponent);
