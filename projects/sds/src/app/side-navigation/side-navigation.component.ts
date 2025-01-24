@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, HostListener, Output, ViewChild, inject} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, NavigationEnd, NavigationExtras, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
@@ -38,7 +38,7 @@ import {VersionService} from '../shared/version/version.service';
 		MatPrefix
 	]
 })
-export class SideNavigationComponent {
+export class SideNavigationComponent implements OnInit {
 	@Output() readonly showMobileNavigation = new EventEmitter<boolean>();
 	displayMobileNavigation = false;
 	readonly componentId = 'side-navigation';
@@ -62,6 +62,11 @@ export class SideNavigationComponent {
 		this.selectedSlug$ = this.prepareSelectedSlug();
 		this.filteredAccordions$ = this.prepareAccordions();
 		this.redirectOnVersionChange();
+	}
+
+	ngOnInit(): void {
+		// this ensures the validity of the page will be tested on initialization
+		this.version$.next(13);
 	}
 
 	updateVersion(version?: number): void {
@@ -183,6 +188,7 @@ export class SideNavigationComponent {
 	private getCurrentSlug(): string {
 		return this.router.url
 			.replace(/[#|?].*/, '') // remove queryParams & fragment
+			.replace(/\/(?:api|ui_ux|examples)/, '')
 			.split('/')
 			.pop();
 	}
@@ -214,12 +220,13 @@ export class SideNavigationComponent {
 			case 10:
 				return 'welcome-10';
 			case 11:
-				if (slug === 'getting-started-as-a-designer') return 'welcome';
+				if (slug === 'getting-started-as-a-designer') return 'invalid';
 				return ['master-layout-12', 'popover-12'].includes(slug) ? slug.replace('-12', '') : undefined;
 			case 12:
-				if (slug === 'language') return 'welcome';
+				if (['getting-started-as-a-designer', 'language'].includes(slug)) return 'invalid';
 				return ['master-layout', 'popover'].includes(slug) ? `${slug}-12` : undefined;
 			case 13:
+				if (['language'].includes(slug)) return 'invalid';
 				return ['master-layout', 'master-layout-12'].includes(slug) ? `${slug}-13` : undefined;
 			default:
 				return undefined;
