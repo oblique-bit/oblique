@@ -14,14 +14,14 @@
 			display: none;
 		}
 
-		@include layout.ob-media-breakpoint-down(md) {
+		.ob-layout-collapsed & {
 			.ob-navigation-scrollable-content > li {
 				// Ensure navigation scrolling is disabled on small viewports:
 				margin-left: 0 !important;
 			}
 		}
 
-		@include layout.ob-media-breakpoint-up(md) {
+		.ob-layout-expanded & {
 			.ob-navigation-scrollable-control {
 				position: absolute;
 				top: 0;

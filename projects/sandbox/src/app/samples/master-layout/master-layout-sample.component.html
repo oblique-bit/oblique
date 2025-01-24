@@ -11,6 +11,16 @@
 			<mat-slide-toggle [(ngModel)]="hasMainNavigation">has main navigation</mat-slide-toggle>
 			<mat-slide-toggle [(ngModel)]="hasOffCanvas">has off-canvas</mat-slide-toggle>
 			<mat-form-field>
+				<mat-label>Collapse breakpoint</mat-label>
+				<mat-select [(ngModel)]="breakpoint">
+					<mat-option value="xs">xs</mat-option>
+					<mat-option value="sm">sm</mat-option>
+					<mat-option value="md">md</mat-option>
+					<mat-option value="lg">lg</mat-option>
+					<mat-option value="xl">xl</mat-option>
+				</mat-select>
+			</mat-form-field>
+			<mat-form-field>
 				<mat-label>home page route</mat-label>
 				<input matInput type="text" [(ngModel)]="homePageRoute" />
 			</mat-form-field>

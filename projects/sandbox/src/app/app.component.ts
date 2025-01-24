@@ -38,7 +38,7 @@ export class AppComponent implements OnDestroy {
 	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
-		nav: DynamicNavigationService,
+		public nav: DynamicNavigationService,
 		private readonly router: Router,
 		private readonly translate: TranslateService,
 		private readonly header: ObMasterLayoutHeaderService,

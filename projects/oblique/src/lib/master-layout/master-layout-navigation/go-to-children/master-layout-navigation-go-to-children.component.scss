@@ -7,7 +7,7 @@
 	display: none;
 }
 
-@include layout.ob-media-breakpoint-down(md) {
+.ob-layout-collapsed {
 	.ob-main-nav-item {
 		display: flex;
 

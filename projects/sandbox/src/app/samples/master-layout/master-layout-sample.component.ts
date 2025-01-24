@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObEScrollMode, ObIServiceNavigationContact, ObLoginState, ObMasterLayoutService} from '@oblique/oblique';
+import {ObEScrollMode, ObICollapseBreakpoints, ObIServiceNavigationContact, ObLoginState, ObMasterLayoutService} from '@oblique/oblique';
 import {Observable, share} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {DynamicNavigationService} from './dynamic-navigation.service';
@@ -130,6 +130,14 @@ export class MasterLayoutSampleComponent {
 
 	set hasOffCanvas(value: boolean) {
 		this.masterLayout.layout.hasOffCanvas = value;
+	}
+
+	set breakpoint(breakpoint: ObICollapseBreakpoints) {
+		this.dynamicNavigationService.collapseBreakpoint.set(breakpoint);
+	}
+
+	get breakpoint(): ObICollapseBreakpoints {
+		return this.dynamicNavigationService.collapseBreakpoint();
 	}
 
 	get homePageRoute(): string {

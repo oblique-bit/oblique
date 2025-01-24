@@ -80,6 +80,7 @@ export {
 	ObMasterLayoutNavigationComponent,
 	ObMasterLayoutService,
 	ObEScrollMode,
+	ObICollapseBreakpoints,
 	ObIMasterLayoutEvent,
 	ObEMasterLayoutEventValues,
 	ObINavigationLink,

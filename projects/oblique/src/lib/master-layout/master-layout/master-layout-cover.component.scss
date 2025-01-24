@@ -1,3 +1,4 @@
+@use "sass:selector";
 @use "sass:color";
 @use "../../../styles/scss/core/variables";
 @use "../../../styles/scss/core/mixins/layout";
@@ -53,7 +54,7 @@
 	.ob-cover-header {
 		padding: 0 variables.$ob-spacing-default;
 
-		@include layout.ob-media-breakpoint-up(md) {
+		@at-root #{selector.append(".ob-layout-expanded", &)} {
 			background-color: variables.$ob-white;
 		}
 	}
