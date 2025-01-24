@@ -27,7 +27,7 @@ describe('index.ts', () => {
 
 		describe.each(['-v', '--version'])('version option with %s', flag => {
 			test(`stdout should contain the version from package.json`, () => {
-				const result = spawnSync('ts-node', [cliPath, flag]);
+				const result = spawnSync('ts-node', [cliPath, flag], options);
 				expect(cleanOutput(result.stdout)).toBe(cleanOutput(cliPackage.version));
 			});
 
