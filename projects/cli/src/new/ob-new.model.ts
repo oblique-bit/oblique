@@ -64,7 +64,7 @@ export const obNewConfig = {
 	}
 };
 
-export const createsWorkspaceMessage = `\nCreates a new Angular workspace`;
+export const createsWorkspaceMessage = `\n[Info]: Creates a new Angular workspace`;
 
 /* Generated content, do not edit */
 export const version = '12.2.3';

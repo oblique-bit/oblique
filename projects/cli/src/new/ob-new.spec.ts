@@ -56,7 +56,7 @@ describe('Ob new command', () => {
 
 			describe.each([
 				{index: 1, message: 'OBLIQUE CLI', type: 'info'},
-				{index: 2, message: '\nCreates a new Angular workspace', type: 'info'},
+				{index: 2, message: '\n[Info]: Creates a new Angular workspace', type: 'info'},
 				{index: 3, message: '[Info]: Installs Angular Material', type: 'info'},
 				{index: 4, message: '[Info]: Runs npm dedupe', type: 'info'},
 				{index: 5, message: '[Info]: Runs npm prune', type: 'info'},
@@ -246,7 +246,7 @@ describe('Ob new command', () => {
 
 		describe.each([
 			{index: 1, message: 'OBLIQUE CLI', type: 'info'},
-			{index: 2, message: '\nCreates a new Angular workspace', type: 'info'},
+			{index: 2, message: '\n[Info]: Creates a new Angular workspace', type: 'info'},
 			{
 				index: 3,
 				message: '[Info]: Interactive mode is enabled. All other options will be ignored, and you will be prompted to specify each option.',
