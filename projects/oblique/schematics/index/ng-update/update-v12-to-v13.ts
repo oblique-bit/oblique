@@ -1,6 +1,7 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIMigrations} from './ng-update.model';
-import {applyInTree, createSafeRule, infoMigration, removeImport, replaceInFile} from '../utils.js';
+import {applyInTree, createSafeRule, infoMigration, readFile, removeImport, replaceInFile} from '../utils';
+import {removeProperty} from './ng-update-utils';
 
 export interface IUpdateV13Schema {}
 
@@ -9,7 +10,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(_options: IUpdateV13Schema): Rule {
-		return (tree: Tree, _context: SchematicContext) => chain([this.removeObFormField()])(tree, _context);
+		return (tree: Tree, _context: SchematicContext) =>
+			chain([this.removeObFormField(), this.migrateMasterLayoutProperties()])(tree, _context);
 	}
 
 	private removeObFormField(): Rule {
@@ -22,6 +24,22 @@ export class UpdateV12toV13 implements ObIMigrations {
 				replaceInFile(tree, filePath, /(?:ObFormFieldModule|ObFormFieldDirective|ObSelectDirective)\s*,?\s*/g, '');
 			};
 			return applyInTree(tree, apply, '*.ts');
+		});
+		return (tree: Tree, _context: SchematicContext) => chain([this.migrateMasterLayoutProperties()])(tree, _context);
+	}
+
+	private migrateMasterLayoutProperties(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove deprecated MasterLayoutService configs.');
+			const toApply = (filePath: string): void => {
+				const fileContent = readFile(tree, filePath);
+				let replacement = fileContent;
+				replacement = removeProperty(replacement, 'footer', 'hasLogoOnScroll');
+				if (fileContent !== replacement) {
+					tree.overwrite(filePath, replacement);
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
 		});
 	}
 }

@@ -12,6 +12,5 @@ import {Component, QueryList, TemplateRef} from '@angular/core';
 export class ObMockMasterLayoutFooterComponent {
 	home = '';
 	isCustom = true;
-	hasLogoOnScroll = true;
 	readonly templates: QueryList<TemplateRef<any>>;
 }

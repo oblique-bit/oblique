@@ -68,20 +68,6 @@
 			margin-right: variables.$ob-spacing-default;
 		}
 
-		.ob-master-layout:not(.ob-master-layout-scrolling) &,
-		&:not(.ob-logo-on-scroll) {
-			.ob-footer-item-logo {
-				margin-right: 0;
-				padding: 0;
-				width: 0;
-
-				img {
-					height: 0;
-					width: 0;
-				}
-			}
-		}
-
 		.ob-footer-item-info {
 			margin-right: variables.$ob-spacing-default;
 			flex: 1; // Variable width.

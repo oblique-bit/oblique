@@ -24,7 +24,7 @@ describe('ObMasterLayoutFooterComponent', () => {
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
-				{provide: ObMasterLayoutConfig, useValue: {homePageRoute: 'home', footer: {hasLogoOnScroll: false, isCustom: false}}},
+				{provide: ObMasterLayoutConfig, useValue: {homePageRoute: 'home', footer: {isCustom: false}}},
 				{provide: WINDOW, useValue: window}
 			]
 		}).compileComponents();
@@ -56,17 +56,6 @@ describe('ObMasterLayoutFooterComponent', () => {
 		it('should be updated with the service', () => {
 			mockMasterLayoutService.footer.configEvents$.next({name: ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM, value: true});
 			expect(component.isCustom).toBe(true);
-		});
-	});
-
-	describe('hasLogoOnScroll', () => {
-		it('should be defined', () => {
-			expect(component.hasLogoOnScroll).toBe(false);
-		});
-
-		it('should be updated with the service', () => {
-			mockMasterLayoutService.footer.configEvents$.next({name: ObEMasterLayoutEventValues.FOOTER_HAS_LOGO_ON_SCROLL, value: true});
-			expect(component.hasLogoOnScroll).toBe(true);
 		});
 	});
 });

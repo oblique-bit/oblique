@@ -44,7 +44,6 @@ export class ObMockMasterLayoutConfig {
 	};
 	footer: ObIMasterLayoutFooter = {
 		isSticky: false,
-		isCustom: false,
-		hasLogoOnScroll: true
+		isCustom: false
 	};
 }
