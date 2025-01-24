@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 
+/**
+ *  @deprecated since Oblique 13. It will be removed without replacement with Oblique 14.
+ */
 @Injectable({providedIn: 'root'})
 export class ObScrollingEvents {
 	private readonly scrollingInternal = new Subject<boolean>();
