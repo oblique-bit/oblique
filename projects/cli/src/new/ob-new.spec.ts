@@ -95,6 +95,10 @@ describe('Ob new command', () => {
 						expected: 'Options: -v, --version Shows the current version of @oblique/cli '
 					},
 					{
+						description: 'Option for the interactive mode',
+						expected: `--interactive Enables interactive mode for the Oblique's "add" Schematic. When activated, this flag prompts the user for all options, bypassing default and predefined settings. It offers greater flexibility and control through a step-by-step configuration process.`
+					},
+					{
 						description: "Option to specify the application's title",
 						expected:
 							"--title <project-name> Add the specified application's title: The title will be visible in the header of your application. (default: project name.)"
@@ -182,7 +186,7 @@ describe('Ob new command', () => {
 			});
 
 			describe('handleObNewActions execSync calls', () => {
-				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --style="scss" --prefix="app"`, () => {
+				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone  --no-ssr --style="scss" --prefix="app"`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						1,
 						`npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --style="scss" --prefix="app"`,
@@ -207,6 +211,94 @@ describe('Ob new command', () => {
 						}
 					);
 				});
+			});
+		});
+
+		describe('interactive', () => {
+			beforeEach(() => {
+				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse([projectName, '--interactive'], {from: 'user'});
+			});
+			test(`should have option --interactive to be`, () => {
+				expect(parsedObNewCommand.opts().interactive).toBe(true);
+			});
+
+			afterEach(() => {
+				jest.resetAllMocks();
+			});
+		});
+
+		describe('no-interactive', () => {
+			beforeEach(() => {
+				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse([projectName], {from: 'user'});
+			});
+			test(`should have option --interactive to be`, () => {
+				expect(parsedObNewCommand.opts().interactive).toBe(false);
+			});
+
+			afterEach(() => {
+				jest.resetAllMocks();
+			});
+		});
+
+		describe.each([
+			{index: 1, message: 'OBLIQUE CLI', type: 'info'},
+			{index: 2, message: '\nCreates a new Angular workspace', type: 'info'},
+			{
+				index: 3,
+				message: '[Info]: Interactive mode is enabled. All other options will be ignored, and you will be prompted to specify each option.',
+				type: 'info'
+			},
+			{index: 4, message: '[Info]: Installs Angular Material', type: 'info'},
+			{index: 5, message: '[Info]: Runs npm dedupe', type: 'info'},
+			{index: 6, message: '[Info]: Runs npm prune', type: 'info'},
+			{index: 7, message: '[Complete]: Oblique added', type: 'info'},
+			{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'}
+		])('calls console ', ({index, message, type}) => {
+			beforeEach(() => {
+				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse([projectName, '--interactive'], {from: 'user'});
+			});
+			test(`${type} ${message}`, () => {
+				expect(console[type]).toHaveBeenNthCalledWith(index, message);
+			});
+
+			afterEach(() => {
+				jest.resetAllMocks();
+			});
+		});
+
+		describe.each(['with interactive mode', 'without interactive mode'])(`with %s`, useCase => {
+			let options: string[] = useCase === 'interactive mode' ? [projectName, '--interactive'] : [projectName];
+
+			beforeEach(() => {
+				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				options = useCase === 'interactive mode' ? [projectName, '--interactive'] : [projectName];
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse(options, {from: 'user'});
+			});
+			/* eslint-disable @typescript-eslint/restrict-template-expressions */
+			test(`should have option --interactive to be ${options.includes(`--interactive`)}`, () => {
+				const isInteractive: boolean = parsedObNewCommand.opts().interactive as boolean;
+				expect(isInteractive).toBe(options.includes(`--interactive`));
+			});
+
+			test(`should call npx ${options}`, () => {
+				const expected = options.includes('--interactive')
+					? `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']}`
+					: `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --eslint --husky`;
+				expect(execSync).toHaveBeenNthCalledWith(3, expected, {
+					cwd: path.join(process.cwd(), projectName),
+					stdio: 'inherit'
+				});
+			});
+
+			afterEach(() => {
+				jest.resetAllMocks();
 			});
 		});
 

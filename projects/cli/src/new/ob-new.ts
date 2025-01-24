@@ -37,31 +37,56 @@ function handleAction(options: HandleObNewActionOptions): void {
 }
 
 function handleObNewActions(options: HandleObNewActionOptions): void {
-	const cmdOptions: ObNewOptions<string | boolean> = convertOptionPropertyNames(options.command.opts() as ObNewOptions<string | boolean>);
+	let cmdOptions: ObNewOptions<string | boolean> = convertOptionPropertyNames(options.command.opts() as ObNewOptions<string | boolean>);
+	cmdOptions = (cmdOptions.interactive as boolean) ? ({interactive: true} as ObNewOptions<string | boolean>) : cmdOptions;
 	try {
-		runNgNewAngularWorkspace(options.projectName, cmdOptions.prefix as string);
+		runNgNewAngularWorkspace(options.projectName, cmdOptions.interactive as boolean, cmdOptions.prefix as string);
+		if (cmdOptions.interactive as boolean) {
+			console.info(
+				`[Info]: Interactive mode is enabled. All other options will be ignored, and you will be prompted to specify each option.`
+			);
+		}
 		runAddOblique(cmdOptions, options.projectName);
 	} catch (error) {
 		console.error('Installation failed: ', error);
 	}
 }
 
-function runNgNewAngularWorkspace(projectName: string, prefix: string | 'app'): void {
+function runNgNewAngularWorkspace(projectName: string, interactive: boolean, prefix: string | 'app'): void {
 	console.info(createsWorkspaceMessage);
 	const baseOptions = Object.entries(immutableOptions)
 		.map(([key, option]) => ({key, value: option.value}))
 		.reduce((options, option) => ({...options, [option.key]: option.value}), {});
-	execute({name: 'ngNew', projectName, options: {...baseOptions, prefix}});
+
+	execute({
+		name: 'ngNew',
+		projectName,
+		options: interactive ? {...filterValidOptions(baseOptions)} : {...filterValidOptions(baseOptions), prefix}
+	});
 }
 
 function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string): void {
 	const dir: string = getApplicationDirectory(projectName);
 	installMaterial(dir);
 	const projectTitle = options.title === projectNamePlaceholder || options.title === '' ? projectName : options.title;
-	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: {...options, title: projectTitle}, execSyncOptions: {cwd: dir}});
+	let commandOptions: ObNewOptions<string | boolean> = {...options, title: projectTitle};
+	if (options.interactive === true) {
+		commandOptions = {} as ObNewOptions<string | boolean>;
+	}
+	const filteredOptions = filterValidOptions(commandOptions);
+
+	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: filteredOptions, execSyncOptions: {cwd: dir}});
 	runNpmDedupe();
 	runNpmPrune();
 	console.info(`[Complete]: Oblique added`);
+}
+
+// filter out option 'interactive' or 'no-interactive'
+function filterValidOptions(commandOptions: Record<string, string | boolean>): Record<string, string | boolean> {
+	return Object.entries(commandOptions)
+		.map(([key, option]) => ({key, value: option}))
+		.filter(({key}) => !key.includes('interactive'))
+		.reduce((options, option) => ({...options, [option.key]: option.value}), {});
 }
 
 function getApplicationDirectory(projectName: string): string {
