@@ -5,12 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
-import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
-import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
-import {MAT_TABS_CONFIG} from '@angular/material/tabs';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -43,8 +38,8 @@ import {
 	ObSelectableModule,
 	ObSpinnerModule,
 	ObUnsavedChangesModule,
-	WINDOW,
-	multiTranslateLoader
+	multiTranslateLoader,
+	provideObliqueConfiguration
 } from '@oblique/oblique';
 // App:
 import {AppComponent} from './app.component';
@@ -98,20 +93,14 @@ registerLocaleData(localeDE);
 		TranslateModule.forRoot(multiTranslateLoader())
 	],
 	providers: [
-		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
-		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
-		{provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
-		{provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
-		{provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
-		{provide: MAT_TABS_CONFIG, useValue: {stretchTabs: false}},
-		{provide: WINDOW, useValue: window},
 		{provide: OB_BANNER, useValue: environment.banner},
 		{provide: OB_PAMS_CONFIGURATION, useValue: environment.pams},
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
 		{provide: OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, useValue: false},
 		provideMomentDateAdapter(),
-		provideHttpClient(withInterceptorsFromDi())
+		provideHttpClient(withInterceptorsFromDi()),
+		provideObliqueConfiguration()
 	]
 })
 export class AppModule {
