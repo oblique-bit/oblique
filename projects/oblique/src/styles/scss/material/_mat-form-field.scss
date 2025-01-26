@@ -129,12 +129,6 @@
 				core-variables.$ob-red-50
 			);
 
-			&:not(:hover) {
-				[class*="mat-form-field-outline-"] {
-					border-width: 1px;
-				}
-			}
-
 			.mat-mdc-input-element {
 				padding-right: 28px; // empiric number: icon width + $ob-spacing-xs
 			}
@@ -179,12 +173,6 @@
 					core-variables.$ob-red-800,
 					core-variables.$ob-red-50
 				);
-
-				&:not(:hover) {
-					[class*="mat-form-field-outline-"] {
-						border-width: 1px;
-					}
-				}
 			}
 
 			&.ob-form-field-required {
@@ -193,12 +181,6 @@
 						core-variables.$ob-red-800,
 						core-variables.$ob-red-50
 					);
-
-					&:not(:hover) {
-						[class*="mat-form-field-outline-"] {
-							border-width: 1px;
-						}
-					}
 				}
 			}
 		}
