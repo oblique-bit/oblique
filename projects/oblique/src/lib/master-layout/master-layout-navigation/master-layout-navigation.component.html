@@ -29,11 +29,12 @@
 			class="ob-main-nav-item"
 			obMasterLayoutNavigationItem
 			#obMasterLayoutNavigationItem="obMasterLayoutNavigationItem"
-			*ngFor="let link of initializedLinks"
+			*ngFor="let link of initializedLinks; let index = $index"
 			[class.ob-start-of-right-side-links]="link.startOfRightSideLinks"
 			[class.ob-expandable]="link.children?.length"
 			[class.ob-just-close]="currentParentLink.id === link.id"
 			[class.ob-has-grandparent]="!!currentGrandparentLink?.label"
+			[class.ob-is-removable]="link.removable"
 			[id]="'ob-main-nav-item-' + link.id"
 		>
 			<ng-container *ngIf="!link.children?.length; else expandable">
@@ -53,6 +54,15 @@
 						<span class="ob-icon-wrapper" *ngIf="link.icon"><mat-icon [svgIcon]="link.icon" /></span>
 						<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
 					</a>
+					<button
+						*ngIf="link.removable"
+						type="button"
+						class="ob-remove-menu-item"
+						[matTooltip]="'i18n.oblique.header.navigation.remove' | translate"
+						(click)="removeMenuItem(link, $event)"
+					>
+						<mat-icon svgIcon="cancel" />
+					</button>
 				</ng-container>
 				<ng-template #internalLink>
 					<a
@@ -73,6 +83,15 @@
 						<span class="ob-icon-wrapper" *ngIf="link.icon"><mat-icon [svgIcon]="link.icon" /></span>
 						<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
 					</a>
+					<button
+						*ngIf="link.removable"
+						type="button"
+						class="ob-remove-menu-item"
+						[matTooltip]="'i18n.oblique.header.navigation.remove' | translate"
+						(click)="removeMenuItem(link, $event)"
+					>
+						<mat-icon svgIcon="cancel" />
+					</button>
 				</ng-template>
 			</ng-container>
 			<ng-template #expandable>

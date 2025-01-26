@@ -12,6 +12,7 @@ export class ObNavigationLink implements ObINavigationLink {
 	fragment?: string;
 	icon?: ObEIcon | string;
 	iconOnly?: boolean;
+	removable?: boolean;
 	queryParams?: Record<string, string>;
 	routerLinkActiveOptions?: IsActiveMatchOptions;
 	sameTarget?: boolean;
@@ -28,6 +29,7 @@ export class ObNavigationLink implements ObINavigationLink {
 		this.fragment = link?.fragment;
 		this.icon = link?.icon;
 		this.iconOnly = link?.iconOnly;
+		this.removable = link?.removable;
 		this.queryParams = link?.queryParams;
 		this.routerLinkActiveOptions = link?.routerLinkActiveOptions;
 		this.sameTarget = link?.sameTarget;
