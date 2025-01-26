@@ -11,7 +11,10 @@ export class UpdateV12toV13 implements ObIMigrations {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(_options: IUpdateV13Schema): Rule {
 		return (tree: Tree, _context: SchematicContext) =>
-			chain([this.removeObFormField(), this.migrateMasterLayoutProperties()])(tree, _context);
+			chain([this.removeObFormField(), this.migrateMasterLayoutProperties(), this.removeObCheckbox(), this.migrateTableRowCheckedClass()])(
+				tree,
+				_context
+			);
 	}
 
 	private removeObFormField(): Rule {
@@ -40,6 +43,29 @@ export class UpdateV12toV13 implements ObIMigrations {
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
+		});
+	}
+
+	private removeObCheckbox(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove checkbox feature');
+			const apply = (filePath: string): void => {
+				removeImport(tree, filePath, 'ObCheckboxModule', '@oblique/oblique');
+				removeImport(tree, filePath, 'ObCheckboxDirective', '@oblique/oblique');
+				replaceInFile(tree, filePath, /(?:ObCheckboxModule|ObCheckboxDirective)\s*,?\s*/g, '');
+			};
+			return applyInTree(tree, apply, '*.ts');
+		});
+	}
+
+	private migrateTableRowCheckedClass(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Migrate ob-table-row-checked class');
+			const apply = (filePath: string): void => {
+				replaceInFile(tree, filePath, /(?<=tr|&)\.ob-table-row-checked/g, ':has([checked])');
+				replaceInFile(tree, filePath, /\.ob-table-row-checked/g, 'tr:has([checked])');
+			};
+			return applyInTree(tree, apply, '*.{scss,css}');
 		});
 	}
 }
