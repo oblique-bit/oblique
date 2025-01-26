@@ -6,7 +6,7 @@ import {NestedFormCodeExamplesComponent} from './nested-form-code-examples.compo
 import {By} from '@angular/platform-browser';
 import {NestedFormExampleReactivePreviewComponent} from './previews/reactive/nested-form-example-reactive-preview.component';
 import {NestedFormExampleTemplateDrivenPreviewComponent} from './previews/template-driven/nested-form-example-template-driven-preview.component';
-import {ObNestedFormComponent, ObParentFormDirective} from '@oblique/oblique';
+import {ObNestedFormComponent, ObParentFormDirective, WINDOW} from '@oblique/oblique';
 import {MatFormField} from '@angular/material/form-field';
 import {NestedFormExampleReactivePreviewChildComponent} from './previews/reactive/child/nested-form-example-reactive-preview-child.component';
 import {NestedFormExampleReactivePreviewGrandchildComponent} from './previews/reactive/grandchild/nested-form-example-reactive-preview-grandchild.component';
@@ -28,7 +28,8 @@ describe(NestedFormCodeExamplesComponent.name, () => {
 				NestedFormCodeExamplesComponent,
 				NoopAnimationsModule,
 				TranslateModule.forRoot()
-			]
+			],
+			providers: [{provide: WINDOW, useValue: window}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(NestedFormCodeExamplesComponent);

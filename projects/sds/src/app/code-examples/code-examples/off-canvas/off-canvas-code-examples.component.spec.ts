@@ -4,7 +4,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {OffCanvasCodeExamplesComponent} from './off-canvas-code-examples.component';
 import {By} from '@angular/platform-browser';
-import {ObButtonDirective, ObMockTranslateService} from '@oblique/oblique';
+import {ObButtonDirective, ObMockTranslateService, WINDOW} from '@oblique/oblique';
 import {TranslateService} from '@ngx-translate/core';
 
 describe(OffCanvasCodeExamplesComponent.name, () => {
@@ -14,7 +14,10 @@ describe(OffCanvasCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [OffCanvasCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: WINDOW, useValue: window}
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(OffCanvasCodeExamplesComponent);

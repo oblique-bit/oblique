@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ObButtonDirective, ObMockTranslateService} from '@oblique/oblique';
+import {ObButtonDirective, ObMockTranslateService, WINDOW} from '@oblique/oblique';
 
 import {By} from '@angular/platform-browser';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
@@ -15,7 +15,10 @@ describe(TranslationsCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [TranslationsCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: WINDOW, useValue: window}
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TranslationsCodeExamplesComponent);

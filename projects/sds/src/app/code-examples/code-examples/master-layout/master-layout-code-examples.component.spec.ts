@@ -7,6 +7,7 @@ import {MasterLayoutCodeExamplesComponent} from './master-layout-code-examples.c
 import {By} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from '@oblique/oblique-testing.module';
+import {WINDOW} from '@oblique/oblique';
 
 describe(MasterLayoutCodeExamplesComponent.name, () => {
 	let component: MasterLayoutCodeExamplesComponent;
@@ -15,7 +16,10 @@ describe(MasterLayoutCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [MasterLayoutCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: WINDOW, useValue: window}
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(MasterLayoutCodeExamplesComponent);

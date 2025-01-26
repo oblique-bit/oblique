@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CardCodeExamplesComponent} from './card-code-examples.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {ObMockTranslateService} from '@oblique/oblique';
+import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
 
 describe('CardCodeExamplesComponent', () => {
 	let component: CardCodeExamplesComponent;
@@ -11,7 +11,10 @@ describe('CardCodeExamplesComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [CardCodeExamplesComponent, RouterTestingModule],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: WINDOW, useValue: window}
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(CardCodeExamplesComponent);

@@ -5,7 +5,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {UnknownRouteCodeExamplesComponent} from './unknown-route-code-examples.component';
 import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute} from '@angular/router';
-import {ObMockTranslateService} from '@oblique/oblique';
+import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
 
 describe(UnknownRouteCodeExamplesComponent.name, () => {
 	let component: UnknownRouteCodeExamplesComponent;
@@ -21,7 +21,8 @@ describe(UnknownRouteCodeExamplesComponent.name, () => {
 			imports: [UnknownRouteCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: ActivatedRoute, useValue: staticRouteMock}
+				{provide: ActivatedRoute, useValue: staticRouteMock},
+				{provide: WINDOW, useValue: window}
 			]
 		}).compileComponents();
 
