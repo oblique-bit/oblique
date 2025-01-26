@@ -15,6 +15,7 @@ import {ObMasterLayoutNavigationSubMenuItemComponent} from './sub-menu-item/mast
 import {basicMockLinks, mockLinksWithChildren} from './master-layout-navigation.component.spec-data';
 import {ObNavigationLink} from './navigation-link.model';
 import {ObMasterLayoutNavigationGoToChildrenComponent} from './go-to-children/master-layout-navigation-go-to-children.component';
+import {ObINavigationLink} from '@oblique/oblique';
 
 @Component({template: '', standalone: false})
 class DummyFullPathComponent {}
@@ -231,6 +232,27 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			expect(
 				(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor
 			).toHaveBeenNthCalledWith(1, component.initializedLinks[linkIndex].children[childIndex]);
+		});
+	});
+
+	describe('removeItem', () => {
+		const mockMouseEvent = {preventDefault: jest.fn()} as any as MouseEvent;
+		let firstItem: ObINavigationLink;
+		beforeEach(() => {
+			firstItem = component.initializedLinks[0];
+			component.removeMenuItem(firstItem, mockMouseEvent);
+		});
+
+		test('first item is removed from initialized links', () => {
+			expect(component.initializedLinks[0].id).not.toBe(firstItem.id);
+		});
+
+		test('first item is removed from links', () => {
+			expect(component.links[0].id).not.toBe(firstItem.id);
+		});
+
+		test('preventDefault has been called', () => {
+			expect(mockMouseEvent.preventDefault).toHaveBeenCalled();
 		});
 	});
 

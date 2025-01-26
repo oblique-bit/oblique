@@ -153,6 +153,12 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		this.onSubMenuExpandedChanges(obMasterLayoutNavigationItem, link);
 	}
 
+	removeMenuItem(item: ObINavigationLink, mouseEvent: MouseEvent): void {
+		mouseEvent.preventDefault();
+		this.initializedLinks = this.initializedLinks.filter(link => link.id !== item.id);
+		this.links = this.links.filter(link => link.id !== item.id);
+	}
+
 	private addCurrentParentAncestor(link: ObNavigationLink): void {
 		const currentParentAncestors = this.currentParentAncestors.value;
 		currentParentAncestors.push(link);
