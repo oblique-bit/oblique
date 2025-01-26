@@ -59,6 +59,10 @@ export class AppComponent implements OnDestroy {
 		this.unsubscribe.complete();
 	}
 
+	updateNavigation(navigation: ObINavigationLink[]): void {
+		this.nav.setNavigation(navigation);
+	}
+
 	private initializeSearch(): void {
 		const searchItems = this.getChildNavigationLinks(this.navigation);
 		this.autocompleteItems$ = this.buildAutocompleteItemsObservable(searchItems);
