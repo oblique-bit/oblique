@@ -1,0 +1,19 @@
+@use "projects/oblique/src/styles/scss/core/variables";
+@use "projects/oblique/src/styles/scss/core/mixins/layout";
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: variables.$ob-spacing-default;
+}
+
+:host-context(.ob-layout-expanded) {
+	.wrapper {
+		align-items: flex-start;
+		flex-direction: row;
+	}
+
+	ob-nav-tree {
+		flex: 1 0 276px; // empiric value
+	}
+}

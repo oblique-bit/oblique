@@ -8,8 +8,7 @@
       },
       {
         "id": "tree-item-2",
-        "label": "i18n.routes.auth.register.title",
-        "labelParams": { "title": "Oblique" },
+        "label": "Tree item 2",
         "items": [
           {
             "id": "tree-item-2-1",
@@ -43,7 +42,7 @@
       },
       {
         "id": "tree-item-3",
-        "label": "Tree item 3  (with Router query params)",
+        "label": "Tree item 3?foo=bar",
         "queryParams": {
           "foo": "bar"
         },
@@ -62,7 +61,12 @@
               },
               {
                 "id": "tree-item-3-2-2",
-                "label": "Tree item 3.2.2"
+                "label": "Tree item 3.2.2?foo=bar&baz=qux#gamma",
+                "fragment": "gamma",
+                "queryParams": {
+                  "foo": "bar",
+                  "baz": "qux"
+                }
               }
             ]
           }
