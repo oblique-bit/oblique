@@ -5,7 +5,7 @@ import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} fr
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {ObButtonModule, ObErrorMessagesModule, ObFormFieldModule, ObNotificationModule, ObNotificationService} from '@oblique/oblique';
+import {ObButtonModule, ObErrorMessagesModule, ObNotificationModule, ObNotificationService} from '@oblique/oblique';
 import {mergeMap, tap} from 'rxjs';
 import {NewsletterService} from './newsletter.service';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -20,7 +20,6 @@ import {DomSanitizer} from '@angular/platform-browser';
 		MatFormFieldModule,
 		MatInputModule,
 		ReactiveFormsModule,
-		ObFormFieldModule,
 		ObErrorMessagesModule,
 		ObButtonModule,
 		ObNotificationModule

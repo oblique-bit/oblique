@@ -12,7 +12,6 @@ import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, MatSlideToggleDefaultOptions} from '@a
 import {STEPPER_GLOBAL_OPTIONS, StepperOptions} from '@angular/cdk/stepper';
 import {ObIBanner, ObIMaterialConfig, ObIPamsConfiguration} from './utilities.model';
 import {ObCheckboxModule} from './checkbox/checkbox.module';
-import {ObFormFieldModule} from './form-field/form-field.module';
 import {MATERIAL_SANITY_CHECKS} from '@angular/material/core';
 import {MAT_TABS_CONFIG, MatTabsConfig} from '@angular/material/tabs';
 
@@ -86,7 +85,7 @@ export function obliqueProviders(): Provider[] {
 	];
 }
 
-export const obliqueExports = [ObFormFieldModule, ObCheckboxModule];
+export const obliqueExports = [ObCheckboxModule];
 
 // as the Enter key on a button triggers both the click an keyup events, lets ensure the function is called only once
 export function isNotKeyboardEventOnButton(event: MouseEvent | KeyboardEvent): boolean {

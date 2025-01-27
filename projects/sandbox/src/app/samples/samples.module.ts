@@ -84,7 +84,6 @@ import {BreadcrumbSampleComponent} from './breadcrumb/breadcrumb.component';
 import {FileUploadSampleComponent} from './file-upload-sample/file-upload-sample.component';
 import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
 import {ServiceNavigationSampleComponent} from './service-navigation/service-navigation-sample.component';
-import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 import {RxjsOperatorsComponent} from './rxjs-operators/rxjs-operators.component';
 import {FocusSampleComponent} from './focus/focus-sample.component';
 import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.component';
@@ -119,7 +118,6 @@ import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.
 		ObExternalLinkModule,
 		ObFileUploadModule,
 		ObFocusInvalidModule,
-		ObFormFieldModule,
 		ObInputClearModule,
 		ObLanguageModule,
 		ObNavTreeModule,
