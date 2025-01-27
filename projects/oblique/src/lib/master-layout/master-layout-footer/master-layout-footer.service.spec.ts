@@ -17,8 +17,7 @@ describe('ObMasterLayoutFooterService', () => {
 					useValue: {
 						footer: {
 							isCustom: false,
-							isSticky: false,
-							hasLogoOnScroll: false
+							isSticky: false
 						}
 					}
 				}
@@ -38,7 +37,6 @@ describe('ObMasterLayoutFooterService', () => {
 	});
 	testSetter('isCustom', 'FOOTER_IS_CUSTOM');
 	testSetter('isSticky', 'FOOTER_IS_STICKY');
-	testSetter('hasLogoOnScroll', 'FOOTER_HAS_LOGO_ON_SCROLL');
 
 	function testSetter(property: string, enumValue: string): void {
 		describe(property, () => {

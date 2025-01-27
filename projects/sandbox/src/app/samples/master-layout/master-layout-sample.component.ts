@@ -42,14 +42,6 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.footer.isCustom = value;
 	}
 
-	get hasLogoOnScroll(): boolean {
-		return this.masterLayout.footer.hasLogoOnScroll;
-	}
-
-	set hasLogoOnScroll(value: boolean) {
-		this.masterLayout.footer.hasLogoOnScroll = value;
-	}
-
 	get isFooterSticky(): boolean {
 		return this.masterLayout.footer.isSticky;
 	}
@@ -73,14 +65,6 @@ export class MasterLayoutSampleComponent {
 
 	set isHeaderSticky(value: boolean) {
 		this.masterLayout.header.isSticky = value;
-	}
-
-	get reduceOnScroll(): boolean {
-		return this.masterLayout.header.reduceOnScroll;
-	}
-
-	set reduceOnScroll(value: boolean) {
-		this.masterLayout.header.reduceOnScroll = value;
 	}
 
 	get isHeaderSmall(): boolean {

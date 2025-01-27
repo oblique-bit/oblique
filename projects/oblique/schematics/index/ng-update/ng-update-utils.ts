@@ -90,3 +90,20 @@ export function removePolyFill(tree: Tree, polyfillName: string, importPattern: 
 		removePackageJsonDependency(tree, polyfillName);
 	}
 }
+
+export function removeProperty(fileContent: string, service: string, name: string): string {
+	const serviceName = getServiceName(fileContent, service);
+	return serviceName
+		? fileContent.replace(new RegExp(`^\\s*(?:return\\s*)?(?:this\\.)?${serviceName}\\.${name}(?:\\s*=\\s*(\\w*))?;$`, 'gm'), '')
+		: fileContent;
+}
+
+export function getServiceName(fileContent: string, serviceName: string): string | undefined {
+	const serviceClass = serviceName.charAt(0).toUpperCase() + serviceName.slice(1);
+	let service = new RegExp(`(?<service>\\w+)\\s*:\\s*ObMasterLayout${serviceClass}Service`).exec(fileContent)?.groups?.service;
+	if (!service) {
+		service = /(?<service>\w+)\s*:\s*ObMasterLayoutService/.exec(fileContent)?.groups?.service;
+		service = service ? `${service}.${serviceName}` : undefined;
+	}
+	return service;
+}

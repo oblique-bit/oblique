@@ -19,7 +19,6 @@ describe('ObMasterLayoutHeaderService', () => {
 							isCustom: false,
 							isSmall: false,
 							isSticky: false,
-							reduceOnScroll: false,
 							serviceNavigation: {}
 						}
 					}
@@ -74,7 +73,6 @@ describe('ObMasterLayoutHeaderService', () => {
 	testSetter('isCustom', 'HEADER_IS_CUSTOM');
 	testSetter('isSmall', 'HEADER_IS_SMALL');
 	testSetter('isSticky', 'HEADER_IS_STICKY');
-	testSetter('reduceOnScroll', 'HEADER_REDUCE_ON_SCROLL');
 
 	describe('serviceNavigationConfiguration', () => {
 		it('should return en empty object', () => {
