@@ -4,7 +4,6 @@ import * as obNewSchema from './schema.json';
 import {execSync} from 'child_process';
 import {obNewConfig} from './ob-new.model';
 import {currentVersions} from '../utils/cli-utils';
-import path from 'path';
 import {createObNewCommand} from './ob-new';
 
 const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
@@ -193,7 +192,7 @@ describe('Ob new command', () => {
 
 				test(`should call npm install @angular/material@${currentVersions['@angular/material']}`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(2, `npm install @angular/material@${currentVersions['@angular/material']}`, {
-						cwd: path.join(process.cwd(), projectName),
+						cwd: `${process.cwd()}/${projectName}`,
 						stdio: 'inherit'
 					});
 				});
@@ -203,7 +202,7 @@ describe('Ob new command', () => {
 						3,
 						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --eslint --husky`,
 						{
-							cwd: path.join(process.cwd(), projectName),
+							cwd: `${process.cwd()}/${projectName}`,
 							stdio: 'inherit'
 						}
 					);
