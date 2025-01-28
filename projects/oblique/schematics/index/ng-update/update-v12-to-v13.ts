@@ -25,7 +25,6 @@ export class UpdateV12toV13 implements ObIMigrations {
 			};
 			return applyInTree(tree, apply, '*.ts');
 		});
-		return (tree: Tree, _context: SchematicContext) => chain([this.migrateMasterLayoutProperties()])(tree, _context);
 	}
 
 	private migrateMasterLayoutProperties(): Rule {
