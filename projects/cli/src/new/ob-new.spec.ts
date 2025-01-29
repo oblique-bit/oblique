@@ -292,7 +292,7 @@ describe('Ob new command', () => {
 					? `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']}`
 					: `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --eslint --husky`;
 				expect(execSync).toHaveBeenNthCalledWith(3, expected, {
-					cwd: path.join(process.cwd(), projectName),
+					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit'
 				});
 			});
