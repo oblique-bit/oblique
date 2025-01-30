@@ -64,7 +64,7 @@ export function checkForStandalone(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Check if application is standalone ');
 		const apply = (filePath: string): void => {
-			const standalone = /standalone\s*:\s*true/.test(readFile(tree, filePath));
+			const standalone = isStandalone(tree, filePath);
 			if (standalone) {
 				error(
 					'Standalone application detected. Oblique schematics are not compatible with standalone applications. Either convert the application to non-standalone or perform the changes manually. Check the documentation for guidance.'
@@ -72,6 +72,29 @@ export function checkForStandalone(): Rule {
 			}
 		};
 		return applyInTree(tree, apply, '*.ts');
+	};
+}
+
+export function warnIfStandalone(): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		let standaloneDetected = false;
+		applyInTree(
+			tree,
+			(filePath: string): void => {
+				const standalone = isStandalone(tree, filePath);
+				if (standalone) {
+					standaloneDetected = true;
+				}
+			},
+			'*.ts'
+		);
+
+		if (standaloneDetected) {
+			warn(
+				_context,
+				'Standalone application detected, the migration has only been partially applied and the application is currently broken. Please check manually the changes applied by the schematic.'
+			);
+		}
 	};
 }
 
@@ -507,4 +530,8 @@ function extractComponentPath(componentName: string, fileContent: string): strin
 
 function extractTemplatePath(fileContent: string): string {
 	return /templateUrl\s*:\s*['"](?<templatePath>.*?)['"]/s.exec(fileContent)?.groups?.templatePath ?? '';
+}
+
+function isStandalone(tree: Tree, filePath: string): boolean {
+	return /standalone\s*:\s*true/.test(readFile(tree, filePath));
 }
