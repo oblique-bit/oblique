@@ -81,6 +81,34 @@ export function tabsOptionsProvider(config?: ObIMaterialConfig, materialConfig?:
 export const OB_MATERIAL_CONFIG = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
 // this token is only needed as long as OB_MATERIAL_CONFIG is supported because useFactory only accepts injection tokens
 const OB_MATERIAL_CONFIG_2 = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
+const materialProviders = [
+	{
+		provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+		useFactory: matFormFieldDefaultOptionsProvider,
+		deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+	},
+	{
+		provide: STEPPER_GLOBAL_OPTIONS,
+		useFactory: stepperOptionsOptionsProvider,
+		deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+	},
+	{
+		provide: MAT_CHECKBOX_DEFAULT_OPTIONS,
+		useFactory: checkboxOptionsProvider,
+		deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+	},
+	{
+		provide: MAT_RADIO_DEFAULT_OPTIONS,
+		useFactory: radioOptionsProvider,
+		deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+	},
+	{
+		provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS,
+		useFactory: slideToggleOptionsProvider,
+		deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+	},
+	{provide: MAT_TABS_CONFIG, useFactory: tabsOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]}
+];
 
 export function provideObliqueConfiguration(config?: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
@@ -89,32 +117,7 @@ export function provideObliqueConfiguration(config?: ObIObliqueConfiguration): E
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: ObTIconConfig, useValue: {...defaultIconConfig, ...config?.icon}},
 		{provide: OB_MATERIAL_CONFIG_2, useValue: config?.material},
-		{
-			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-			useFactory: matFormFieldDefaultOptionsProvider,
-			deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
-		},
-		{
-			provide: STEPPER_GLOBAL_OPTIONS,
-			useFactory: stepperOptionsOptionsProvider,
-			deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
-		},
-		{
-			provide: MAT_CHECKBOX_DEFAULT_OPTIONS,
-			useFactory: checkboxOptionsProvider,
-			deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
-		},
-		{
-			provide: MAT_RADIO_DEFAULT_OPTIONS,
-			useFactory: radioOptionsProvider,
-			deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
-		},
-		{
-			provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS,
-			useFactory: slideToggleOptionsProvider,
-			deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
-		},
-		{provide: MAT_TABS_CONFIG, useFactory: tabsOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]}
+		materialProviders
 	]);
 }
 
