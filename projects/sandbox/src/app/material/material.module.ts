@@ -32,7 +32,6 @@ import {
 	ObButtonModule,
 	ObColumnLayoutModule,
 	ObErrorMessagesModule,
-	ObIconModule,
 	ObInputClearModule,
 	ObSelectableModule,
 	ObSpinnerModule
@@ -149,7 +148,6 @@ const appRoutes: Routes = [
 		ObButtonModule,
 		ObColumnLayoutModule,
 		ObErrorMessagesModule,
-		ObIconModule,
 		ObInputClearModule,
 		ObPaginatorModule,
 		ObSelectableModule,
