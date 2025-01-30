@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {EnvironmentProviders, InjectionToken, Optional, makeEnvironmentProviders} from '@angular/core';
+import {EnvironmentProviders, InjectionToken, Optional, inject, makeEnvironmentProviders, provideAppInitializer} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 import {TranslateLoader, TranslateModuleConfig} from '@ngx-translate/core';
@@ -14,6 +14,8 @@ import {ObIBanner, ObIMaterialConfig, ObIObliqueConfiguration, ObIPamsConfigurat
 import {MAT_TABS_CONFIG, MatTabsConfig} from '@angular/material/tabs';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
+import {ObTIconConfig, defaultIconConfig} from './icon/icon.model';
+import {ObIconService} from './icon/icon.service';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
@@ -82,8 +84,10 @@ const OB_MATERIAL_CONFIG_2 = new InjectionToken<ObIMaterialConfig>('ObIMaterialC
 
 export function provideObliqueConfiguration(config?: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
+		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
+		{provide: ObTIconConfig, useValue: {...defaultIconConfig, ...config?.icon}},
 		{provide: OB_MATERIAL_CONFIG_2, useValue: config?.material},
 		{
 			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,

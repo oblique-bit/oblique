@@ -30,6 +30,8 @@ import {
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
+import {ObTIconConfig} from './icon/icon.model';
+import {ObIconService} from './icon/icon.service';
 
 describe('utilities', () => {
 	describe('windowProvider', () => {
@@ -196,7 +198,11 @@ describe('utilities', () => {
 		describe('with default configuration', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
-					providers: [provideObliqueConfiguration(), provideTranslateService()]
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						provideObliqueConfiguration(),
+						provideTranslateService()
+					]
 				});
 			});
 
@@ -207,6 +213,16 @@ describe('utilities', () => {
 			describe('Paginator configuration', () => {
 				it('should provide MatPaginatorIntl as ObPaginatorService', () => {
 					expect(TestBed.inject(MatPaginatorIntl) instanceof ObPaginatorService).toBe(true);
+				});
+			});
+
+			describe('Icon configuration', () => {
+				it('should provide the default icon configuration', () => {
+					expect(TestBed.inject(ObTIconConfig)).toEqual({registerObliqueIcons: true});
+				});
+
+				it('should call "registerOnAppInit" on "ObIconService"', () => {
+					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalled();
 				});
 			});
 
@@ -228,6 +244,7 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
 						provideObliqueConfiguration({
 							material: {
 								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
@@ -236,6 +253,9 @@ describe('utilities', () => {
 								MAT_RADIO_OPTIONS: {color: 'accent'},
 								MAT_SLIDE_TOGGLE_OPTIONS: {hideIcon: true},
 								MAT_TABS_CONFIG: {fitInkBarToContent: true}
+							},
+							icon: {
+								additionalIcons: []
 							}
 						})
 					]
@@ -244,6 +264,12 @@ describe('utilities', () => {
 
 			it('should create WINDOW injection token', () => {
 				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			describe('Icon configuration', () => {
+				it('should provide the full icon configuration', () => {
+					expect(TestBed.inject(ObTIconConfig)).toEqual({registerObliqueIcons: true, additionalIcons: []});
+				});
 			});
 
 			describe('Material configuration', () => {

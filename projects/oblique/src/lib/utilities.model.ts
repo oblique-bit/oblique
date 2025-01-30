@@ -5,6 +5,7 @@ import {StepperOptions} from '@angular/cdk/stepper';
 import {ObEPamsEnvironment} from './service-navigation/service-navigation.model';
 import {MatSlideToggleDefaultOptions} from '@angular/material/slide-toggle';
 import {MatTabsConfig} from '@angular/material/tabs';
+import {ObIconConfig} from './icon/icon.model';
 
 export interface ObIBanner {
 	text: string;
@@ -27,5 +28,6 @@ export interface ObIMaterialConfig {
 }
 
 export interface ObIObliqueConfiguration {
-	material: ObIMaterialConfig;
+	material?: ObIMaterialConfig;
+	icon?: ObIconConfig;
 }
