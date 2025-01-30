@@ -28,7 +28,6 @@ import {ObExternalLinkModule} from './external-link/external-link.module';
 import {ObAlertModule} from './alert/alert.module';
 import {ObBreadcrumbModule} from './breadcrumb/breadcrumb.module';
 import {ObServiceNavigationModule} from './service-navigation/service-navigation.module';
-import {ObCheckboxModule} from './checkbox/checkbox.module';
 
 const OBLIQUE_MODULES = [
 	ObAlertModule,
@@ -54,7 +53,6 @@ const OBLIQUE_MODULES = [
 	ObSelectableModule,
 	ObSpinnerModule,
 	ObStickyModule,
-	ObCheckboxModule,
 	ObInputClearModule,
 	ObTranslateParamsModule,
 	ObUnknownRouteModule,

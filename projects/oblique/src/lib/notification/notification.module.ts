@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {ObNotificationComponent} from './notification.component';
-import {obliqueExports, obliqueProviders} from '../utilities';
+import {obliqueProviders} from '../utilities';
 import {ObAlertModule} from '../alert/alert.module';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
@@ -17,6 +17,6 @@ export {ObINotification, ObINotificationConfig, ObENotificationType, ObENotifica
 	imports: [CommonModule, MatTooltipModule, ObAlertModule, ObTranslateParamsModule, TranslateModule],
 	declarations: [ObNotificationComponent],
 	providers: obliqueProviders(),
-	exports: [ObNotificationComponent, ...obliqueExports]
+	exports: [ObNotificationComponent]
 })
 export class ObNotificationModule {}

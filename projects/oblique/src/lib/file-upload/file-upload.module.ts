@@ -11,7 +11,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {ObAlertModule} from '../alert/alert.module';
 import {ObButtonModule} from '../button/button.module';
 import {ObNotificationModule} from '../notification/notification.module';
-import {obliqueExports, obliqueProviders} from '../utilities';
+import {obliqueProviders} from '../utilities';
 import {ObAcceptAllPipe} from './drop-zone/accept-all.pipe';
 import {ObDragDropDirective} from './drop-zone/drag-and-drop.directive';
 import {ObDropZoneComponent} from './drop-zone/ob-drop-zone.component';
@@ -46,7 +46,7 @@ export {ObFileUploadService} from './file-upload.service';
 		ObProgressComponent,
 		TranslateModule
 	],
-	exports: [ObDropZoneComponent, ObFileInfoComponent, ObFileUploadComponent, ...obliqueExports],
+	exports: [ObDropZoneComponent, ObFileInfoComponent, ObFileUploadComponent],
 	providers: obliqueProviders()
 })
 export class ObFileUploadModule {}
