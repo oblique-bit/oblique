@@ -18,7 +18,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 				this.migrateTableRowCheckedClass(),
 				this.addObliqueProviders(),
 				this.migrateCustomConfig(),
-				this.removeObMaterialConfig()
+				this.removeObMaterialConfig(),
+				this.removeIconModule()
 			])(tree, _context);
 	}
 
@@ -87,10 +88,10 @@ export class UpdateV12toV13 implements ObIMigrations {
 
 	private migrateCustomConfig(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Migrate OB_MATERIAL_CONFIG');
+			infoMigration(_context, 'Migrate OB_MATERIAL_CONFIG and ObIconModule.forRoot');
 			const apply = (filePath: string): void => {
 				const content = readFile(tree, filePath);
-				const configs = [this.getMaterialConfiguration(content)].join(',');
+				const configs = [this.getMaterialConfiguration(content), this.getIconConfiguration(content)].join(',');
 				if (configs.length) {
 					replaceInFile(tree, filePath, /(?<=provideObliqueConfiguration\()(?=\))/, `{${configs}}`);
 				}
@@ -112,7 +113,12 @@ export class UpdateV12toV13 implements ObIMigrations {
 			.filter(({result}) => !!result)
 			.map(({token, result}) => `${token}: ${result?.[0]}`)
 			.join(',');
-		return materialConfiguration.length ? `{material: {${materialConfiguration}}}` : '';
+		return materialConfiguration.length ? `material: {${materialConfiguration}}` : '';
+	}
+
+	private getIconConfiguration(content: string): string {
+		const iconConfig = /(?<=ObIconModule\.forRoot\s*\(\s*).*?(?=\))/s.exec(content) ?? [];
+		return iconConfig[0]?.length ? `icon: ${iconConfig[0]}` : '';
 	}
 
 	private removeObMaterialConfig(): Rule {
@@ -121,6 +127,17 @@ export class UpdateV12toV13 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'OB_MATERIAL_CONFIG', '@oblique/oblique');
 				replaceInFile(tree, filePath, /\s*{\s*provide\s*:\s*OB_MATERIAL_CONFIG\s*,\s*useValue\s*:\s*\{.*?}\s*}\s*}.?/s, '');
+			};
+			return applyInTree(tree, apply, 'app.module.ts');
+		});
+	}
+
+	private removeIconModule(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove ObIconModule.forRoot');
+			const apply = (filePath: string): void => {
+				removeImport(tree, filePath, 'ObIconModule', '@oblique/oblique');
+				replaceInFile(tree, filePath, /ObIconModule\.forRoot\s*\(.*?\),?\s*/s, '');
 			};
 			return applyInTree(tree, apply, 'app.module.ts');
 		});
