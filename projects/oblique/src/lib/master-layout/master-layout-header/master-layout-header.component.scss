@@ -92,7 +92,7 @@
 		overflow: hidden; // hides part of the logo in collapsed mode
 		width: variables.$ob-logo-width-collapsed;
 		height: variables.$ob-logo-height-collapsed;
-		margin-right: variables.$ob-spacing-default;
+		margin-right: variables.$ob-spacing-sm;
 		transition:
 			width variables.$ob-duration-default ease-in-out,
 			height variables.$ob-duration-default ease-in-out;
@@ -115,7 +115,7 @@
 		font-size: variables.$ob-font-size-xl;
 		line-height: variables.$ob-logo-height-collapsed;
 		font-weight: 300;
-		padding-left: variables.$ob-spacing-default;
+		padding-left: variables.$ob-spacing-sm;
 		border-left: 1px solid variables.$ob-gray-lighter;
 		overflow: hidden; // works together with text-overflow
 		text-overflow: ellipsis;
