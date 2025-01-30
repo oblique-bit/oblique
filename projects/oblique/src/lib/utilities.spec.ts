@@ -7,7 +7,8 @@ import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {TranslateLoader} from '@ngx-translate/core';
+import {MatPaginatorIntl} from '@angular/material/paginator';
+import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 import {ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {
@@ -28,6 +29,7 @@ import {
 	windowProvider
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
+import {ObPaginatorService} from './paginator/ob-paginator.service';
 
 describe('utilities', () => {
 	describe('windowProvider', () => {
@@ -194,12 +196,18 @@ describe('utilities', () => {
 		describe('with default configuration', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
-					providers: [provideObliqueConfiguration()]
+					providers: [provideObliqueConfiguration(), provideTranslateService()]
 				});
 			});
 
 			it('should create WINDOW injection token', () => {
 				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			describe('Paginator configuration', () => {
+				it('should provide MatPaginatorIntl as ObPaginatorService', () => {
+					expect(TestBed.inject(MatPaginatorIntl) instanceof ObPaginatorService).toBe(true);
+				});
 			});
 
 			describe('Material configuration', () => {

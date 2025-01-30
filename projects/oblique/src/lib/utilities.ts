@@ -12,6 +12,8 @@ import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, MatSlideToggleDefaultOptions} from '@a
 import {STEPPER_GLOBAL_OPTIONS, StepperOptions} from '@angular/cdk/stepper';
 import {ObIBanner, ObIMaterialConfig, ObIObliqueConfiguration, ObIPamsConfiguration} from './utilities.model';
 import {MAT_TABS_CONFIG, MatTabsConfig} from '@angular/material/tabs';
+import {MatPaginatorIntl} from '@angular/material/paginator';
+import {ObPaginatorService} from './paginator/ob-paginator.service';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
@@ -81,6 +83,7 @@ const OB_MATERIAL_CONFIG_2 = new InjectionToken<ObIMaterialConfig>('ObIMaterialC
 export function provideObliqueConfiguration(config?: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
+		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: OB_MATERIAL_CONFIG_2, useValue: config?.material},
 		{
 			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
