@@ -33,4 +33,8 @@
 	@include layout.ob-media-breakpoint-up(xl) {
 		max-width: 22%;
 	}
+
+	form {
+		width: 100%;
+	}
 }
