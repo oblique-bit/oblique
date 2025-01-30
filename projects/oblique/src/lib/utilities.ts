@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {InjectionToken, Optional, Provider} from '@angular/core';
+import {EnvironmentProviders, InjectionToken, Optional, makeEnvironmentProviders} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 import {TranslateLoader, TranslateModuleConfig} from '@ngx-translate/core';
@@ -10,8 +10,7 @@ import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions} from '@angular/
 import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioDefaultOptions} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, MatSlideToggleDefaultOptions} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS, StepperOptions} from '@angular/cdk/stepper';
-import {ObIBanner, ObIMaterialConfig, ObIPamsConfiguration} from './utilities.model';
-import {MATERIAL_SANITY_CHECKS} from '@angular/material/core';
+import {ObIBanner, ObIMaterialConfig, ObIObliqueConfiguration, ObIPamsConfiguration} from './utilities.model';
 import {MAT_TABS_CONFIG, MatTabsConfig} from '@angular/material/tabs';
 
 export const WINDOW = new InjectionToken<Window>('Window');
@@ -45,43 +44,71 @@ export function multiTranslateLoader(config: TranslateModuleConfig = {}): Transl
 	};
 }
 
-export function matFormFieldDefaultOptionsProvider(config?: ObIMaterialConfig): MatFormFieldDefaultOptions {
-	return config?.MAT_FORM_FIELD_DEFAULT_OPTIONS || {appearance: 'outline'};
+export function matFormFieldDefaultOptionsProvider(
+	config?: ObIMaterialConfig,
+	materialConfig?: ObIMaterialConfig
+): MatFormFieldDefaultOptions {
+	return materialConfig?.MAT_FORM_FIELD_DEFAULT_OPTIONS || config?.MAT_FORM_FIELD_DEFAULT_OPTIONS || {appearance: 'outline'};
 }
 
-export function stepperOptionsOptionsProvider(config?: ObIMaterialConfig): StepperOptions {
-	return config?.STEPPER_GLOBAL_OPTIONS || {displayDefaultIndicatorType: false};
+export function stepperOptionsOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): StepperOptions {
+	return materialConfig?.STEPPER_GLOBAL_OPTIONS || config?.STEPPER_GLOBAL_OPTIONS || {displayDefaultIndicatorType: false};
 }
 
-export function checkboxOptionsProvider(config?: ObIMaterialConfig): MatCheckboxDefaultOptions {
-	return config?.MAT_CHECKBOX_OPTIONS || {color: 'primary'};
+export function checkboxOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): MatCheckboxDefaultOptions {
+	return materialConfig?.MAT_CHECKBOX_OPTIONS || config?.MAT_CHECKBOX_OPTIONS || {color: 'primary'};
 }
 
-export function radioOptionsProvider(config?: ObIMaterialConfig): MatRadioDefaultOptions {
-	return config?.MAT_RADIO_OPTIONS || {color: 'primary'};
+export function radioOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): MatRadioDefaultOptions {
+	return materialConfig?.MAT_RADIO_OPTIONS || config?.MAT_RADIO_OPTIONS || {color: 'primary'};
 }
 
-export function slideToggleOptionsProvider(config?: ObIMaterialConfig): MatSlideToggleDefaultOptions {
-	return config?.MAT_SLIDE_TOGGLE_OPTIONS || {color: 'primary'};
+export function slideToggleOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): MatSlideToggleDefaultOptions {
+	return materialConfig?.MAT_SLIDE_TOGGLE_OPTIONS || config?.MAT_SLIDE_TOGGLE_OPTIONS || {color: 'primary'};
 }
 
-export function tabsOptionsProvider(config?: ObIMaterialConfig): MatTabsConfig {
-	return config?.MAT_TABS_CONFIG || {stretchTabs: false};
+export function tabsOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): MatTabsConfig {
+	return materialConfig?.MAT_TABS_CONFIG || config?.MAT_TABS_CONFIG || {stretchTabs: false};
 }
 
+/**
+ * Deprecated with Oblique 13.0.0, use the `materialConfig` parameter of the `obProvideObliqueProviders` function instead
+ */
 export const OB_MATERIAL_CONFIG = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
+// this token is only needed as long as OB_MATERIAL_CONFIG is supported because useFactory only accepts injection tokens
+const OB_MATERIAL_CONFIG_2 = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
 
-export function obliqueProviders(): Provider[] {
-	return [
-		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useFactory: matFormFieldDefaultOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		{provide: STEPPER_GLOBAL_OPTIONS, useFactory: stepperOptionsOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		{provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useFactory: checkboxOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		{provide: MAT_RADIO_DEFAULT_OPTIONS, useFactory: radioOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		{provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, useFactory: slideToggleOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
-		{provide: MAT_TABS_CONFIG, useFactory: tabsOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG]]},
+export function provideObliqueConfiguration(config?: ObIObliqueConfiguration): EnvironmentProviders {
+	return makeEnvironmentProviders([
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
-		{provide: MATERIAL_SANITY_CHECKS, useValue: {theme: false}}
-	];
+		{provide: OB_MATERIAL_CONFIG_2, useValue: config?.material},
+		{
+			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+			useFactory: matFormFieldDefaultOptionsProvider,
+			deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+		},
+		{
+			provide: STEPPER_GLOBAL_OPTIONS,
+			useFactory: stepperOptionsOptionsProvider,
+			deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+		},
+		{
+			provide: MAT_CHECKBOX_DEFAULT_OPTIONS,
+			useFactory: checkboxOptionsProvider,
+			deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+		},
+		{
+			provide: MAT_RADIO_DEFAULT_OPTIONS,
+			useFactory: radioOptionsProvider,
+			deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+		},
+		{
+			provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS,
+			useFactory: slideToggleOptionsProvider,
+			deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+		},
+		{provide: MAT_TABS_CONFIG, useFactory: tabsOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]}
+	]);
 }
 
 // as the Enter key on a button triggers both the click an keyup events, lets ensure the function is called only once

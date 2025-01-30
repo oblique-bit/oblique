@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {ObButtonDirective, ObMockTranslateService} from '@oblique/oblique';
+import {ObButtonDirective, ObMockTranslateService, WINDOW} from '@oblique/oblique';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {By} from '@angular/platform-browser';
@@ -14,7 +14,10 @@ describe(ExternalLinkCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ExternalLinkCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: WINDOW, useValue: window}
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ExternalLinkCodeExamplesComponent);

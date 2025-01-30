@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {ObMockTranslateService} from '@oblique/oblique';
+import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {TranslateParamsCodeExamplesComponent} from './translate-params-code-examples.component';
@@ -13,7 +13,10 @@ describe(TranslateParamsCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [TranslateParamsCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: WINDOW, useValue: window}
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TranslateParamsCodeExamplesComponent);

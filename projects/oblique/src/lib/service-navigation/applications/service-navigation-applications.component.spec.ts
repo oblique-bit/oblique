@@ -17,6 +17,7 @@ import {ObServiceNavigationApplicationAltPipe} from './service-navigation-applic
 import {ObServiceNavigationApplicationsHarness} from './service-navigation-applications.harness';
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
 import {ObDisableLinkDirective} from '../shared/disable-link/disable-link.directive';
+import {WINDOW} from '../../utilities';
 
 describe(ObServiceNavigationApplicationsComponent.name, () => {
 	let component: ObServiceNavigationApplicationsComponent;
@@ -32,7 +33,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				ObServiceNavigationPopoverSectionComponent,
 				ObServiceNavigationApplicationAltPipe
 			],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: WINDOW, useValue: window}
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationApplicationsComponent);

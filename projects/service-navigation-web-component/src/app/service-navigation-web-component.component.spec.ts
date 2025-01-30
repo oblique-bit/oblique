@@ -4,7 +4,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {SimpleChange, SimpleChanges} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {By} from '@angular/platform-browser';
-import {ObServiceNavigationComponent, multiTranslateLoader} from '@oblique/oblique';
+import {ObServiceNavigationComponent, WINDOW, multiTranslateLoader} from '@oblique/oblique';
 import {appVersion} from './version';
 
 function defaultChangesValues(): SimpleChanges {
@@ -18,7 +18,10 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [ObServiceNavigationWebComponentComponent, TranslateModule.forRoot(multiTranslateLoader())],
-			providers: [{provide: HttpClient, useValue: {}}]
+			providers: [
+				{provide: HttpClient, useValue: {}},
+				{provide: WINDOW, useValue: window}
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationWebComponentComponent);

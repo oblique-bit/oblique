@@ -4,7 +4,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {SelectableCodeExamplesComponent} from './selectable-code-examples.component';
 import {By} from '@angular/platform-browser';
-import {ObSelectableGroupDirective} from '@oblique/oblique';
+import {ObSelectableGroupDirective, WINDOW} from '@oblique/oblique';
 
 describe(SelectableCodeExamplesComponent.name, () => {
 	let component: SelectableCodeExamplesComponent;
@@ -12,7 +12,8 @@ describe(SelectableCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [SelectableCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [SelectableCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
+			providers: [{provide: WINDOW, useValue: window}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(SelectableCodeExamplesComponent);

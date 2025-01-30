@@ -38,7 +38,8 @@ import {
 	ObSelectableModule,
 	ObSpinnerModule,
 	ObUnsavedChangesModule,
-	multiTranslateLoader
+	multiTranslateLoader,
+	provideObliqueConfiguration
 } from '@oblique/oblique';
 // App:
 import {AppComponent} from './app.component';
@@ -98,7 +99,8 @@ registerLocaleData(localeDE);
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
 		{provide: OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, useValue: false},
 		provideMomentDateAdapter(),
-		provideHttpClient(withInterceptorsFromDi())
+		provideHttpClient(withInterceptorsFromDi()),
+		provideObliqueConfiguration()
 	]
 })
 export class AppModule {

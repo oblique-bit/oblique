@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {ObStickyComponent} from '@oblique/oblique';
+import {ObStickyComponent, WINDOW} from '@oblique/oblique';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {StickyCodeExamplesComponent} from './sticky-code-examples.component';
@@ -12,7 +12,8 @@ describe(StickyCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [StickyCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [StickyCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
+			providers: [{provide: WINDOW, useValue: window}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(StickyCodeExamplesComponent);

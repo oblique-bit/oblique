@@ -25,3 +25,7 @@ export interface ObIMaterialConfig {
 	MAT_SLIDE_TOGGLE_OPTIONS?: MatSlideToggleDefaultOptions;
 	MAT_TABS_CONFIG?: MatTabsConfig;
 }
+
+export interface ObIObliqueConfiguration {
+	material: ObIMaterialConfig;
+}

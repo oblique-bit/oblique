@@ -1,16 +1,17 @@
+import {TestBed} from '@angular/core/testing';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {Optional, ValueProvider} from '@angular/core';
+import {Optional} from '@angular/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
-import {MATERIAL_SANITY_CHECKS} from '@angular/material/core';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {TranslateLoader} from '@ngx-translate/core';
 import {of} from 'rxjs';
 import {ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {
+	OB_MATERIAL_CONFIG,
 	WINDOW,
 	checkboxOptionsProvider,
 	getRootRoute,
@@ -19,7 +20,7 @@ import {
 	matFormFieldDefaultOptionsProvider,
 	multiTranslateLoader,
 	obFocusWithOutline,
-	obliqueProviders,
+	provideObliqueConfiguration,
 	radioOptionsProvider,
 	slideToggleOptionsProvider,
 	stepperOptionsOptionsProvider,
@@ -189,22 +190,98 @@ describe('utilities', () => {
 		});
 	});
 
-	describe('obliqueProviders', () => {
-		it('should return 8 configurations', () => {
-			expect(obliqueProviders().length).toBe(8);
+	describe('provideObliqueConfiguration', () => {
+		describe('with default configuration', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [provideObliqueConfiguration()]
+				});
+			});
+
+			it('should create WINDOW injection token', () => {
+				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			it.each([
+				{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline'}},
+				{token: STEPPER_GLOBAL_OPTIONS, config: {displayDefaultIndicatorType: false}},
+				{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary'}},
+				{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'primary'}},
+				{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary'}},
+				{token: MAT_TABS_CONFIG, config: {stretchTabs: false}}
+			])('should create $token injection token', ({token, config}) => {
+				expect(TestBed.inject(token)).toEqual(config);
+			});
 		});
 
-		it.each([
-			MAT_FORM_FIELD_DEFAULT_OPTIONS,
-			STEPPER_GLOBAL_OPTIONS,
-			MAT_CHECKBOX_DEFAULT_OPTIONS,
-			MAT_RADIO_DEFAULT_OPTIONS,
-			MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS,
-			MAT_TABS_CONFIG,
-			WINDOW,
-			MATERIAL_SANITY_CHECKS
-		])('should contain ½s', provide => {
-			expect(obliqueProviders().find(provider => (provider as ValueProvider).provide === provide)).toBeTruthy();
+		describe('with custom configuration', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						provideObliqueConfiguration({
+							material: {
+								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
+								STEPPER_GLOBAL_OPTIONS: {showError: true},
+								MAT_CHECKBOX_OPTIONS: {clickAction: 'check'},
+								MAT_RADIO_OPTIONS: {color: 'accent'},
+								MAT_SLIDE_TOGGLE_OPTIONS: {hideIcon: true},
+								MAT_TABS_CONFIG: {fitInkBarToContent: true}
+							}
+						})
+					]
+				});
+			});
+
+			it('should create WINDOW injection token', () => {
+				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			it.each([
+				{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {floatLabel: 'always'}},
+				{token: STEPPER_GLOBAL_OPTIONS, config: {showError: true}},
+				{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {clickAction: 'check'}},
+				{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
+				{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {hideIcon: true}},
+				{token: MAT_TABS_CONFIG, config: {fitInkBarToContent: true}}
+			])('should create $token injection token', ({token, config}) => {
+				expect(TestBed.inject(token)).toEqual(config);
+			});
+		});
+
+		describe('with token configuration for Material', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						provideObliqueConfiguration(),
+						{
+							provide: OB_MATERIAL_CONFIG,
+							useValue: {
+								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
+								STEPPER_GLOBAL_OPTIONS: {showError: true},
+								MAT_CHECKBOX_OPTIONS: {clickAction: 'check'},
+								MAT_RADIO_OPTIONS: {color: 'accent'},
+								MAT_SLIDE_TOGGLE_OPTIONS: {hideIcon: true},
+								MAT_TABS_CONFIG: {fitInkBarToContent: true}
+							}
+						}
+					]
+				});
+			});
+
+			it('should create WINDOW injection token', () => {
+				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			it.each([
+				{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {floatLabel: 'always'}},
+				{token: STEPPER_GLOBAL_OPTIONS, config: {showError: true}},
+				{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {clickAction: 'check'}},
+				{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
+				{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {hideIcon: true}},
+				{token: MAT_TABS_CONFIG, config: {fitInkBarToContent: true}}
+			])('should create $token injection token', ({token, config}) => {
+				expect(TestBed.inject(token)).toEqual(config);
+			});
 		});
 	});
 

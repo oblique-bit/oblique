@@ -22,7 +22,6 @@ import {ObNumberFormatModule} from './number-format/number-format.module';
 import {ObOffCanvasModule} from './off-canvas/off-canvas.module';
 import {ObStickyModule} from './sticky/sticky.module';
 import {ObUnknownRouteModule} from './unknown-route/unknown-route.module';
-import {obliqueProviders} from './utilities';
 import {ObLanguageModule} from './language/language.module';
 import {ObExternalLinkModule} from './external-link/external-link.module';
 import {ObAlertModule} from './alert/alert.module';
@@ -62,7 +61,6 @@ const OBLIQUE_MODULES = [
 
 @NgModule({
 	imports: OBLIQUE_MODULES,
-	providers: obliqueProviders(),
 	exports: OBLIQUE_MODULES
 })
 export class ObliqueModule {}

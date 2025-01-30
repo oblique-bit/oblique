@@ -6,7 +6,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatSelectModule} from '@angular/material/select';
 import {TranslateModule} from '@ngx-translate/core';
-import {obliqueProviders} from '../utilities';
 import {ObButtonModule} from '../button/button.module';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
 import {ObPopoverModule} from '../popover/popover.module';
@@ -29,7 +28,6 @@ import {ObDisableLinkDirective} from './shared/disable-link/disable-link.directi
 
 @NgModule({
 	providers: [
-		...obliqueProviders(),
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: ObEportalCsrfInterceptor,

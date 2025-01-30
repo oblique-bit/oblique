@@ -6,6 +6,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {NotificationCodeExamplesComponent} from './notification-code-examples.component';
 import {NotificationExampleDefaultPreviewComponent} from './previews/default/notification-example-default-preview.component';
 import {NotificationExampleOtherOptionsPreviewComponent} from './previews/other-options/notification-example-other-options-preview.component';
+import {WINDOW} from '@oblique/oblique';
 
 describe(NotificationCodeExamplesComponent.name, () => {
 	let component: NotificationCodeExamplesComponent;
@@ -13,7 +14,8 @@ describe(NotificationCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [NotificationCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [NotificationCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
+			providers: [{provide: WINDOW, useValue: window}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(NotificationCodeExamplesComponent);

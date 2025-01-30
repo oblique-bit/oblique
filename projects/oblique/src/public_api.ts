@@ -144,11 +144,12 @@ export {
 	OB_MATERIAL_CONFIG,
 	OB_PAMS_CONFIGURATION,
 	getTranslateLoader,
+	provideObliqueConfiguration,
 	multiTranslateLoader,
 	obFocusWithOutline,
 	WINDOW
 } from './lib/utilities';
-export {ObIBanner, ObIMaterialConfig} from './lib/utilities.model';
+export {ObIBanner, ObIMaterialConfig, ObIObliqueConfiguration} from './lib/utilities.model';
 export {ObEColor} from './lib/style/colors.model';
 export {ObMultiTranslateLoader, TRANSLATION_FILES} from './lib/multi-translate-loader/multi-translate-loader';
 export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';
