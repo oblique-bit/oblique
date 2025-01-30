@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {ActivatedRoute} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, provideHttpClient} from '@angular/common/http';
 import {Optional} from '@angular/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
@@ -8,7 +8,7 @@ import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {MatPaginatorIntl} from '@angular/material/paginator';
-import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
+import {TranslateCompiler, TranslateFakeCompiler, TranslateLoader, TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 import {ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {
@@ -200,8 +200,8 @@ describe('utilities', () => {
 				TestBed.configureTestingModule({
 					providers: [
 						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						provideObliqueConfiguration(),
-						provideTranslateService()
+						provideHttpClient(),
+						provideObliqueConfiguration()
 					]
 				});
 			});
@@ -226,6 +226,20 @@ describe('utilities', () => {
 				});
 			});
 
+			describe('Translate configuration', () => {
+				it('should provide "TranslateService"', () => {
+					expect(TestBed.inject(TranslateService)).toBeTruthy();
+				});
+
+				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+					expect(TestBed.inject(TranslateService).currentLoader instanceof ObMultiTranslateLoader).toBe(true);
+				});
+
+				it('should provide "TRANSLATION_FILES"', () => {
+					expect(TestBed.inject(TRANSLATION_FILES)).toBeUndefined();
+				});
+			});
+
 			describe('Material configuration', () => {
 				it.each([
 					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline'}},
@@ -245,6 +259,8 @@ describe('utilities', () => {
 				TestBed.configureTestingModule({
 					providers: [
 						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
+						provideHttpClient(),
 						provideObliqueConfiguration({
 							material: {
 								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
@@ -256,6 +272,10 @@ describe('utilities', () => {
 							},
 							icon: {
 								additionalIcons: []
+							},
+							translate: {
+								config: {compiler: TranslateFakeCompiler},
+								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}]
 							}
 						})
 					]
@@ -269,6 +289,16 @@ describe('utilities', () => {
 			describe('Icon configuration', () => {
 				it('should provide the full icon configuration', () => {
 					expect(TestBed.inject(ObTIconConfig)).toEqual({registerObliqueIcons: true, additionalIcons: []});
+				});
+			});
+
+			describe('Translate configuration', () => {
+				it('should provide "TRANSLATION_FILES"', () => {
+					expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
+				});
+
+				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+					expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
 				});
 			});
 
@@ -319,6 +349,22 @@ describe('utilities', () => {
 				{token: MAT_TABS_CONFIG, config: {fitInkBarToContent: true}}
 			])('should create $token injection token', ({token, config}) => {
 				expect(TestBed.inject(token)).toEqual(config);
+			});
+		});
+
+		describe('with token configuration for Translate', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [provideObliqueConfiguration(), {provide: TRANSLATION_FILES, useValue: [{prefix: 'prefix', suffix: 'suffix'}]}]
+				});
+			});
+
+			it('should create WINDOW injection token', () => {
+				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			it('should provide "TRANSLATION_FILES"', () => {
+				expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
 			});
 		});
 	});

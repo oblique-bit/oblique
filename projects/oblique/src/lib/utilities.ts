@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {EnvironmentProviders, InjectionToken, Optional, inject, makeEnvironmentProviders, provideAppInitializer} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
-import {TranslateLoader, TranslateModuleConfig} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModuleConfig, provideTranslateService} from '@ngx-translate/core';
 import {ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions} from '@angular/material/form-field';
@@ -113,7 +113,9 @@ const materialProviders = [
 export function provideObliqueConfiguration(config?: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
+		provideTranslateService(multiTranslateLoader(config?.translate?.config)),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
+		{provide: TRANSLATION_FILES, useValue: config?.translate?.additionalFiles},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: ObTIconConfig, useValue: {...defaultIconConfig, ...config?.icon}},
 		{provide: OB_MATERIAL_CONFIG_2, useValue: config?.material},
