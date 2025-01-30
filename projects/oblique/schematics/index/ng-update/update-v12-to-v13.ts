@@ -115,7 +115,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 			'MAT_SLIDE_TOGGLE_OPTIONS',
 			'MAT_TABS_CONFIG'
 		]
-			.map(token => ({token, result: new RegExp(`(?<=${token}:\\s*).*(?=,)`).exec(content)}))
+			.map(token => ({token, result: new RegExp(`(?<=${token}:\\s*){[^}]*}`).exec(content)}))
 			.filter(({result}) => !!result)
 			.map(({token, result}) => `${token}: ${result?.[0]}`)
 			.join(',');
