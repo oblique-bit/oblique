@@ -27,6 +27,9 @@ export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);
 }
 
+/**
+ * Deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
+ */
 export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[]): ObMultiTranslateLoader {
 	return new ObMultiTranslateLoader(http, [
 		{
@@ -37,6 +40,9 @@ export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[]
 	]);
 }
 
+/**
+ * Deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
+ */
 export function multiTranslateLoader(config: TranslateModuleConfig = {}): TranslateModuleConfig {
 	return {
 		...config,
