@@ -17,7 +17,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 				this.removeObCheckbox(),
 				this.migrateTableRowCheckedClass(),
 				this.addObliqueProviders(),
-				this.migrateObMaterialConfig()
+				this.migrateCustomConfig(),
+				this.removeObMaterialConfig()
 			])(tree, _context);
 	}
 
@@ -84,14 +85,15 @@ export class UpdateV12toV13 implements ObIMigrations {
 		});
 	}
 
-	private migrateObMaterialConfig(): Rule {
+	private migrateCustomConfig(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
 			infoMigration(_context, 'Migrate OB_MATERIAL_CONFIG');
 			const apply = (filePath: string): void => {
 				const content = readFile(tree, filePath);
-				removeImport(tree, filePath, 'OB_MATERIAL_CONFIG', '@oblique/oblique');
-				replaceInFile(tree, filePath, /(?<=provideObliqueConfiguration\()(?=\))/, this.getMaterialConfiguration(content));
-				replaceInFile(tree, filePath, /\s*{\s*provide\s*:\s*OB_MATERIAL_CONFIG\s*,\s*useValue\s*:\s*\{.*?}\s*}\s*}.?/s, '');
+				const configs = [this.getMaterialConfiguration(content)].join(',');
+				if (configs.length) {
+					replaceInFile(tree, filePath, /(?<=provideObliqueConfiguration\()(?=\))/, `{${configs}}`);
+				}
 			};
 			return applyInTree(tree, apply, 'app.module.ts');
 		});
@@ -111,5 +113,16 @@ export class UpdateV12toV13 implements ObIMigrations {
 			.map(({token, result}) => `${token}: ${result?.[0]}`)
 			.join(',');
 		return materialConfiguration.length ? `{material: {${materialConfiguration}}}` : '';
+	}
+
+	private removeObMaterialConfig(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove OB_MATERIAL_CONFIG');
+			const apply = (filePath: string): void => {
+				removeImport(tree, filePath, 'OB_MATERIAL_CONFIG', '@oblique/oblique');
+				replaceInFile(tree, filePath, /\s*{\s*provide\s*:\s*OB_MATERIAL_CONFIG\s*,\s*useValue\s*:\s*\{.*?}\s*}\s*}.?/s, '');
+			};
+			return applyInTree(tree, apply, 'app.module.ts');
+		});
 	}
 }
