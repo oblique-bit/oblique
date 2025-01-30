@@ -202,15 +202,17 @@ describe('utilities', () => {
 				expect(TestBed.inject(WINDOW)).toEqual(window);
 			});
 
-			it.each([
-				{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline'}},
-				{token: STEPPER_GLOBAL_OPTIONS, config: {displayDefaultIndicatorType: false}},
-				{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary'}},
-				{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'primary'}},
-				{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary'}},
-				{token: MAT_TABS_CONFIG, config: {stretchTabs: false}}
-			])('should create $token injection token', ({token, config}) => {
-				expect(TestBed.inject(token)).toEqual(config);
+			describe('Material configuration', () => {
+				it.each([
+					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline'}},
+					{token: STEPPER_GLOBAL_OPTIONS, config: {displayDefaultIndicatorType: false}},
+					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary'}},
+					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'primary'}},
+					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary'}},
+					{token: MAT_TABS_CONFIG, config: {stretchTabs: false}}
+				])('should create $token injection token', ({token, config}) => {
+					expect(TestBed.inject(token)).toEqual(config);
+				});
 			});
 		});
 
@@ -236,15 +238,17 @@ describe('utilities', () => {
 				expect(TestBed.inject(WINDOW)).toEqual(window);
 			});
 
-			it.each([
-				{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {floatLabel: 'always'}},
-				{token: STEPPER_GLOBAL_OPTIONS, config: {showError: true}},
-				{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {clickAction: 'check'}},
-				{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
-				{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {hideIcon: true}},
-				{token: MAT_TABS_CONFIG, config: {fitInkBarToContent: true}}
-			])('should create $token injection token', ({token, config}) => {
-				expect(TestBed.inject(token)).toEqual(config);
+			describe('Material configuration', () => {
+				it.each([
+					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {floatLabel: 'always'}},
+					{token: STEPPER_GLOBAL_OPTIONS, config: {showError: true}},
+					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {clickAction: 'check'}},
+					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
+					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {hideIcon: true}},
+					{token: MAT_TABS_CONFIG, config: {fitInkBarToContent: true}}
+				])('should create $token injection token', ({token, config}) => {
+					expect(TestBed.inject(token)).toEqual(config);
+				});
 			});
 		});
 
