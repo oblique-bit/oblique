@@ -28,10 +28,11 @@
 		[idPrefix]="componentId"
 		(versionChanged)="updateVersion($event)"
 	/>
-	<mat-form-field>
+	<mat-form-field class="search-field">
 		<mat-label>Filter</mat-label>
-		<input matInput type="search" [id]="componentId | id: ['search-input']" [formControl]="search" />
+		<input #searchInput matInput type="search" [id]="componentId | id: ['search-input']" [formControl]="search" />
 		<mat-icon svgIcon="search" matIconPrefix />
+		<mat-hint>Focus with <kbd>Ctrl</kbd> + <kbd>K</kbd></mat-hint>
 	</mat-form-field>
 	<app-accordion-links
 		#accordionLinks
