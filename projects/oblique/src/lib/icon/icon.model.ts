@@ -5,6 +5,9 @@ export function iconFactory(iconService: ObIconService): () => void {
 	return () => iconService.registerOnAppInit();
 }
 
+/**
+ * Deprecated with Oblique 13.0.0, use the `iconConfig` parameter of the `obProvideObliqueProviders` function instead
+ */
 export const ObTIconConfig = new InjectionToken<ObIconConfig>('Oblique icon configuration');
 
 export interface ObIconConfig {
