@@ -178,7 +178,7 @@
 				&.mat-form-field-invalid {
 					@include mat-form-field.ob-form-field-colors(
 						core-variables.$ob-red-800,
-						core-variables.$ob-green-50
+						core-variables.$ob-red-50
 					);
 				}
 			}
