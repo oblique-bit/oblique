@@ -256,8 +256,11 @@ export function addImport(tree: Tree, fileName: string, name: string, pkg: strin
 	if (!hasImport(content, name, pkg)) {
 		tree.overwrite(
 			fileName,
-			new RegExp(`import\\s*{.*}\\s*from\\s*['"]${pkg}['"]`, 'm').test(content)
-				? content.replace(new RegExp(`import\\s*{(?<package>.*)}\\s*from\\s*['"]${pkg}['"]`), `import {$<package>, ${name}} from '${pkg}'`)
+			new RegExp(`import\\s*{.*}\\s*from\\s*['"]${pkg}['"]`, 's').test(content)
+				? content.replace(
+						new RegExp(`import\\s*{(?<package>.*)}\\s*from\\s*['"]${pkg}['"]`, 's'),
+						`import {$<package>, ${name}} from '${pkg}'`
+					)
 				: `import {${name}} from '${pkg}';\n${content}`
 		);
 	}
