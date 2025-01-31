@@ -276,6 +276,7 @@ export function removeImport(tree: Tree, fileName: string, name: string, pkg: st
 				: content
 						.replace(new RegExp(`(import\\s*{\\s*.*)${name}(?:,\\s*)?(.*\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*)`, 's'), '$1$2')
 						.replace(/,\s*}/, '}')
+						.replace(/,\s*,/, ',\n')
 		);
 	}
 }
