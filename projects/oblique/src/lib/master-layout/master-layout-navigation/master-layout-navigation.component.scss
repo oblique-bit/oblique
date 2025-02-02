@@ -9,6 +9,7 @@
 	border-top: variables.$ob-line-width-xs solid variables.$ob-gray-lighter;
 	border-bottom: variables.$ob-line-width-xs solid variables.$ob-gray-lighter;
 	flex-grow: 1;
+	overflow-x: clip;
 
 	.ob-layout-collapsed & {
 		border-top: none;
