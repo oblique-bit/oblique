@@ -8,6 +8,9 @@
 				<li *ngFor="let template of templates">
 					<ng-container [ngTemplateOutlet]="template" />
 				</li>
+				<li>
+					<a routerLink="accessibility-statement">{{ "i18n.oblique.accessibility-statement.link" | translate }}</a>
+				</li>
 			</ul>
 		</div>
 	</ng-container>
