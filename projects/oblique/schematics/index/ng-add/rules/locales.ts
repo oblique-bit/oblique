@@ -81,11 +81,10 @@ function addTranslation(locales: string[]): Rule {
 
 function addTranslationToImports(tree: Tree): Tree {
 	const translateSource = '@ngx-translate/core';
-	const translateModuleImport = 'TranslateModule.forRoot(multiTranslateLoader())';
 	const sourceFile = createSrcFile(tree, appModulePath);
-	const changes = addImportToModule(sourceFile, appModulePath, translateModuleImport, translateSource)
-		.concat(insertImport(sourceFile, appModulePath, 'multiTranslateLoader', ObliquePackage))
-		.filter((change: Change) => change instanceof InsertChange);
+	const changes = addImportToModule(sourceFile, appModulePath, 'TranslateModule', translateSource).filter(
+		(change: Change) => change instanceof InsertChange
+	);
 
 	return applyChanges(tree, appModulePath, changes);
 }

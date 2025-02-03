@@ -1,21 +1,12 @@
 import {createApplication} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideHttpClient} from '@angular/common/http';
-import {importProvidersFrom} from '@angular/core';
 import {createCustomElement} from '@angular/elements';
-import {provideTranslateService} from '@ngx-translate/core';
-import {ObIconModule} from '../../oblique/src/lib/icon/icon.module';
-import {multiTranslateLoader, provideObliqueConfiguration} from '../../oblique/src/lib/utilities';
+import {provideObliqueConfiguration} from '../../oblique/src/lib/utilities';
 import {ObServiceNavigationWebComponentComponent} from './app/service-navigation-web-component.component';
 
 createApplication({
-	providers: [
-		provideHttpClient(),
-		importProvidersFrom(ObIconModule.forRoot()),
-		provideTranslateService(multiTranslateLoader()),
-		provideAnimations(),
-		provideObliqueConfiguration()
-	]
+	providers: [provideHttpClient(), provideAnimations(), provideObliqueConfiguration()]
 })
 	.then(appRef => {
 		const element = createCustomElement(ObServiceNavigationWebComponentComponent, {injector: appRef.injector});

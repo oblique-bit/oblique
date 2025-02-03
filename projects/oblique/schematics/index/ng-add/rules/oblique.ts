@@ -76,10 +76,8 @@ function removeBrowserModule(): Rule {
 
 function addAdditionalModules(): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Add ObIconModule & ObButtonModule');
+		infoMigration(_context, 'Oblique: Add ObButtonModule');
 		importModuleInRoot(tree, 'ObButtonModule', ObliquePackage);
-		importModuleInRoot(tree, 'ObIconModule', ObliquePackage);
-		addForRootToIconModule(tree);
 		addComment(tree);
 
 		return tree;
@@ -176,11 +174,6 @@ function addMasterLayout(tree: Tree, title: string): void {
 	if (tree.exists(path)) {
 		tree.overwrite(path, getTemplate(tree, 'default-master-layout.html').replace(/_APP_TITLE_PLACEHOLDER_/, title));
 	}
-}
-
-function addForRootToIconModule(tree: Tree): void {
-	const appModuleContent = readFile(tree, appModulePath);
-	tree.overwrite(appModulePath, appModuleContent.replace(/(?<prefix>.*)ObIconModule/s, '$<prefix>ObIconModule.forRoot()'));
 }
 
 function addComment(tree: Tree): void {

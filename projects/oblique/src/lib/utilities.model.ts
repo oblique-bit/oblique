@@ -5,6 +5,9 @@ import {StepperOptions} from '@angular/cdk/stepper';
 import {ObEPamsEnvironment} from './service-navigation/service-navigation.model';
 import {MatSlideToggleDefaultOptions} from '@angular/material/slide-toggle';
 import {MatTabsConfig} from '@angular/material/tabs';
+import {TranslateModuleConfig} from '@ngx-translate/core';
+import {ObIconConfig} from './icon/icon.model';
+import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
 
 export interface ObIBanner {
 	text: string;
@@ -27,5 +30,10 @@ export interface ObIMaterialConfig {
 }
 
 export interface ObIObliqueConfiguration {
-	material: ObIMaterialConfig;
+	material?: ObIMaterialConfig;
+	icon?: ObIconConfig;
+	translate?: {
+		config?: TranslateModuleConfig;
+		additionalFiles?: ObITranslationFile[];
+	};
 }

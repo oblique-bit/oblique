@@ -26,7 +26,6 @@ import {
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,
 	ObHttpApiInterceptorModule,
-	ObIconModule,
 	ObInputClearModule,
 	ObMasterLayoutConfig,
 	ObMasterLayoutModule,
@@ -38,7 +37,6 @@ import {
 	ObSelectableModule,
 	ObSpinnerModule,
 	ObUnsavedChangesModule,
-	multiTranslateLoader,
 	provideObliqueConfiguration
 } from '@oblique/oblique';
 // App:
@@ -62,7 +60,6 @@ registerLocaleData(localeDE);
 	bootstrap: [AppComponent],
 	imports: [
 		AppRoutingModule,
-		ObIconModule.forRoot(),
 		BrowserAnimationsModule,
 		BrowserModule,
 		FormsModule,
@@ -90,7 +87,7 @@ registerLocaleData(localeDE);
 		ObSpinnerModule,
 		ObUnsavedChangesModule,
 		ReactiveFormsModule,
-		TranslateModule.forRoot(multiTranslateLoader())
+		TranslateModule
 	],
 	providers: [
 		{provide: OB_BANNER, useValue: environment.banner},

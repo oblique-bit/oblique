@@ -17,7 +17,11 @@ export class UpdateV12toV13 implements ObIMigrations {
 				this.removeObCheckbox(),
 				this.migrateTableRowCheckedClass(),
 				this.addObliqueProviders(),
-				this.migrateObMaterialConfig()
+				this.migrateCustomConfig(),
+				this.removeObMaterialConfig(),
+				this.removeIconModule(),
+				this.removeMultiTranslateLoader(),
+				this.removeTranslationFiles()
 			])(tree, _context);
 	}
 
@@ -84,14 +88,19 @@ export class UpdateV12toV13 implements ObIMigrations {
 		});
 	}
 
-	private migrateObMaterialConfig(): Rule {
+	private migrateCustomConfig(): Rule {
 		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Migrate OB_MATERIAL_CONFIG');
+			infoMigration(_context, 'Migrate OB_MATERIAL_CONFIG, ObIconModule.forRoot and multiTranslateLoader');
 			const apply = (filePath: string): void => {
 				const content = readFile(tree, filePath);
-				removeImport(tree, filePath, 'OB_MATERIAL_CONFIG', '@oblique/oblique');
-				replaceInFile(tree, filePath, /(?<=provideObliqueConfiguration\()(?=\))/, this.getMaterialConfiguration(content));
-				replaceInFile(tree, filePath, /\s*{\s*provide\s*:\s*OB_MATERIAL_CONFIG\s*,\s*useValue\s*:\s*\{.*?}\s*}\s*}.?/s, '');
+				const configs = [
+					this.getMaterialConfiguration(content),
+					this.getIconConfiguration(content),
+					this.getTranslateConfiguration(content)
+				].join(',');
+				if (configs.length) {
+					replaceInFile(tree, filePath, /(?<=provideObliqueConfiguration\()(?=\))/, `{${configs}}`);
+				}
 			};
 			return applyInTree(tree, apply, 'app.module.ts');
 		});
@@ -106,10 +115,72 @@ export class UpdateV12toV13 implements ObIMigrations {
 			'MAT_SLIDE_TOGGLE_OPTIONS',
 			'MAT_TABS_CONFIG'
 		]
-			.map(token => ({token, result: new RegExp(`(?<=${token}:\\s*).*(?=,)`).exec(content)}))
+			.map(token => ({token, result: new RegExp(`(?<=${token}:\\s*){[^}]*}`).exec(content)}))
 			.filter(({result}) => !!result)
 			.map(({token, result}) => `${token}: ${result?.[0]}`)
 			.join(',');
-		return materialConfiguration.length ? `{material: {${materialConfiguration}}}` : '';
+		return materialConfiguration.length ? `material: {${materialConfiguration}}` : '';
+	}
+
+	private getIconConfiguration(content: string): string {
+		const iconConfig = /(?<=ObIconModule\.forRoot\s*\(\s*).*?(?=\))/s.exec(content) ?? [];
+		return iconConfig[0]?.length ? `icon: ${iconConfig[0]}` : '';
+	}
+
+	private getTranslateConfiguration(content: string): string {
+		const translateConfig = /(?<=TranslateModule\.forRoot\s*\(\s*multiTranslateLoader\().*?(?=\)+)/s.exec(content) ?? [];
+		const translateFiles = /(?<={\s*provide\s*:\s*TRANSLATION_FILES\s*,\s*useValue\s*:\s*).*?(?=})/s.exec(content) ?? [];
+		const config = [];
+		if (translateConfig[0]?.length) {
+			config.push(`config: ${translateConfig[0]}`);
+		}
+		if (translateFiles[0]?.length) {
+			config.push(`additionalFiles: ${translateFiles[0]}`);
+		}
+		return config.length ? `translate: {${config.join(',')}}` : '';
+	}
+
+	private removeObMaterialConfig(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove OB_MATERIAL_CONFIG');
+			const apply = (filePath: string): void => {
+				removeImport(tree, filePath, 'OB_MATERIAL_CONFIG', '@oblique/oblique');
+				replaceInFile(tree, filePath, /\s*{\s*provide\s*:\s*OB_MATERIAL_CONFIG\s*,\s*useValue\s*:\s*\{.*?}\s*}\s*}.?/s, '');
+			};
+			return applyInTree(tree, apply, 'app.module.ts');
+		});
+	}
+
+	private removeIconModule(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove ObIconModule.forRoot');
+			const apply = (filePath: string): void => {
+				removeImport(tree, filePath, 'ObIconModule', '@oblique/oblique');
+				replaceInFile(tree, filePath, /ObIconModule\.forRoot\s*\(.*?\),?\s*/s, '');
+			};
+			return applyInTree(tree, apply, 'app.module.ts');
+		});
+	}
+
+	private removeMultiTranslateLoader(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove multiTranslateLoader');
+			const apply = (filePath: string): void => {
+				removeImport(tree, filePath, 'multiTranslateLoader', '@oblique/oblique');
+				replaceInFile(tree, filePath, /(?<=TranslateModule)\.forRoot\s*\(.*?\)+/s, '');
+			};
+			return applyInTree(tree, apply, 'app.module.ts');
+		});
+	}
+
+	private removeTranslationFiles(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove TRANSLATION_FILES');
+			const apply = (filePath: string): void => {
+				removeImport(tree, filePath, 'TRANSLATION_FILES', '@oblique/oblique');
+				replaceInFile(tree, filePath, /\s*{\s*provide\s*:\s*TRANSLATION_FILES\s*,\s*useValue\s*:.*},?/s, '');
+			};
+			return applyInTree(tree, apply, 'app.module.ts');
+		});
 	}
 }
