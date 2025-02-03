@@ -18,6 +18,8 @@
 	}
 
 	&.mat-mdc-standard-chip {
+		color: variables.$ob-white;
+		border-color: inherit;
 		@include typography.ob-caption();
 
 		@include mat-chip.ob-background-color(
@@ -27,8 +29,6 @@
 			variables.$ob-secondary-600,
 			none
 		);
-		color: variables.$ob-white;
-		border-color: inherit;
 
 		&.mat-mdc-chip-with-trailing-icon {
 			padding-right: 0;
