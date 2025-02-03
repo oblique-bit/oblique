@@ -309,7 +309,7 @@
 				> button {
 					border-bottom: variables.$ob-line-width-sm solid transparent;
 					display: inline-flex;
-					padding: variables.$ob-spacing-default;
+					padding: variables.$ob-spacing-md variables.$ob-spacing-default;
 					white-space: nowrap;
 					font-size: variables.$ob-font-size-normal;
 
