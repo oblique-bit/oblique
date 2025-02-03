@@ -362,8 +362,7 @@
                 "output": "/assets/images"
               },
               "projects/service-navigation-web-component/src/assets"
-            ],
-            "styles": ["projects/oblique/src/styles/css/frutiger.css"]
+            ]
           },
           "configurations": {
             "production": {
