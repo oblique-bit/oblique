@@ -1,9 +1,9 @@
 export const alertIcons = {
-	info: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="1.5" fill="#fff"/><rect x="10.5" y="9.16502" width="3" height="11.83997" fill="#fff"/></svg>',
+	info: '<?xml version="1.0" encoding="UTF-8"?><svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,3c.82843,0,1.5.67157,1.5,1.5s-.67157,1.5-1.5,1.5-1.5-.67157-1.5-1.5.67157-1.5,1.5-1.5ZM10.5,9.16502v11.83997h3v-11.83997h-3Z"/></svg>',
 	success:
-		'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="8.892 20.284 1.87 13.261 3.991 11.14 8.892 16.042 19.939 4.994 22.061 7.115 8.892 20.284" fill="#fff"/></svg>',
+		'<?xml version="1.0" encoding="UTF-8"?><svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.89209,20.28382L1.87012,13.26136l2.12109-2.12109,4.90088,4.90137,11.04736-11.04785,2.12109,2.12109-13.16846,13.16895Z"/></svg>',
 	warning:
-		'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="19.5" r="1.5" fill="#fff"/><line x1="12" y1="3" x2="12" y2="14.83154" fill="#fff" stroke="#fff" stroke-miterlimit="10" stroke-width="3"/></svg>',
+		'<?xml version="1.0" encoding="UTF-8"?><svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,21c-.82843,0-1.5-.67157-1.5-1.5s.67157-1.5,1.5-1.5,1.5.67157,1.5,1.5-.67157,1.5-1.5,1.5ZM13.5,2.99975h-3v11.83203h3V2.99975Z"/></svg>',
 	error:
-		'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="14.19 11.997 19.24 17.047 17.12 19.167 12.07 14.117 7.02 19.167 4.9 17.047 9.95 11.997 4.9 6.947 7.02 4.827 12.07 9.877 17.12 4.827 19.24 6.947 14.19 11.997" fill="#fff"/></svg>'
+		'<?xml version="1.0" encoding="UTF-8"?><svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.19,11.99723l5.04999,5.04999-2.12,2.12-5.04999-5.04999-5.04999,5.04999-2.12-2.12,5.04999-5.04999-5.04999-5.04999,2.12-2.12,5.04999,5.04999,5.04999-5.04999,2.12,2.12-5.04999,5.04999Z"/></svg>'
 };
