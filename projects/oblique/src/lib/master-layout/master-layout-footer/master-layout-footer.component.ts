@@ -1,4 +1,4 @@
-import {Component, ContentChildren, OnDestroy, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {Component, ContentChildren, Input, OnDestroy, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ObMasterLayoutService} from '../master-layout.service';
@@ -16,7 +16,10 @@ import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout
 export class ObMasterLayoutFooterComponent implements OnDestroy {
 	home = this.config.homePageRoute;
 	isCustom = this.config.footer.isCustom;
+
 	@ContentChildren('obFooterLink') readonly templates: QueryList<TemplateRef<HTMLLinkElement>>;
+	@Input() version?: string;
+
 	private readonly unsubscribe = new Subject<void>();
 
 	constructor(

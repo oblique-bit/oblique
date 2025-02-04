@@ -3,94 +3,46 @@
 
 .ob-master-layout-footer {
 	position: relative;
-	display: flex;
-	flex-flow: column wrap;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+
+	&:has(.ob-footer-version) {
+		grid-template-columns: 1fr auto 1fr;
+	}
+	gap: variables.$ob-spacing-lg;
+	padding: variables.$ob-spacing-sm variables.$ob-spacing-lg;
 	color: variables.$ob-white;
-	font-size: variables.$ob-font-size-xs;
-	background-color: variables.$ob-secondary-600;
-
-	.ob-footer-logo-and-info {
-		display: flex;
-		justify-content: flex-start;
-		padding: 0.5rem 0;
-		align-items: center;
-
-		@include layout.ob-media-breakpoint-down(sm) {
-			flex-direction: column;
-			row-gap: variables.$ob-spacing-default;
-			align-items: flex-start;
-		}
-	}
-
-	.ob-footer-item {
-		padding-left: 1rem;
-		padding-right: 1rem;
-
-		p {
-			margin: 0;
-
-			& + p {
-				margin-top: 2px;
-			}
-		}
-
-		a {
-			color: variables.$ob-white;
-			text-decoration: none;
-
-			&:hover {
-				color: variables.$ob-gray-lighter;
-			}
-		}
-	}
-
-	.ob-master-layout-logo {
-		display: inline-block;
-
-		img {
-			float: left;
-			width: variables.$ob-logo-width;
-			height: variables.$ob-logo-height;
-			transition:
-				width variables.$ob-duration-fast,
-				height variables.$ob-duration-fast;
-		}
-	}
-
-	.ob-footer-item-logo {
-		padding-top: 0.25rem;
-	}
-
-	.ob-layout-expanded & {
-		flex-direction: column;
-
-		.ob-footer-item-logo {
-			margin-right: variables.$ob-spacing-default;
-		}
-
-		.ob-footer-item-info {
-			margin-right: variables.$ob-spacing-default;
-			flex: 1; // Variable width.
-		}
-	}
+	background-color: variables.$ob-secondary-700;
 
 	.ob-footer-item-links {
 		display: flex;
+		flex-wrap: wrap;
+		gap: variables.$ob-spacing-lg;
 		list-style: none;
 		margin: 0;
-		padding-top: 1rem;
-		padding-bottom: 1rem;
-		background-color: variables.$ob-secondary-700;
+		padding: 0;
+	}
 
-		li + li {
-			padding-left: variables.$ob-spacing-sm;
+	.ob-footer-version,
+	.ob-footer-info {
+		font-size: variables.$ob-font-size-xs;
+
+		// Needed in order to center align the text and keep it top aligned when the content wraps
+		margin-top: 2px; // empiric value
+
+		p {
+			margin: 0;
 		}
+	}
 
+	.ob-footer-info {
+		text-align: right;
+	}
+
+	.ob-footer-item {
 		a {
 			color: variables.$ob-white;
 			text-decoration: none;
-			margin-right: 1rem;
-			font-size: variables.$ob-font-size-sm;
 
 			&:not(.ob-show-external-link-icon) {
 				.mat-icon {
@@ -101,6 +53,29 @@
 			&:hover {
 				color: variables.$ob-gray-lighter;
 			}
+		}
+	}
+}
+
+.ob-layout-collapsed {
+	.ob-master-layout-footer {
+		display: flex;
+		flex-direction: column;
+		padding: variables.$ob-spacing-lg;
+
+		.ob-footer-item-links {
+			display: flex;
+			flex-direction: column;
+			gap: variables.$ob-spacing-md;
+		}
+
+		.ob-footer-version,
+		.ob-footer-info {
+			margin-top: 0;
+		}
+
+		.ob-footer-info {
+			text-align: left;
 		}
 	}
 }
