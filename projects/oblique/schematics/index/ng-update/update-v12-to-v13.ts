@@ -1,6 +1,6 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIMigrations} from './ng-update.model';
-import {addImport, applyInTree, createSafeRule, infoMigration, readFile, removeImport, replaceInFile} from '../utils';
+import {addImport, applyInTree, createSafeRule, infoMigration, readFile, removeImport, replaceInFile, warnIfStandalone} from '../utils';
 import {removeProperty} from './ng-update-utils';
 
 export interface IUpdateV13Schema {}
@@ -21,7 +21,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 				this.removeObMaterialConfig(),
 				this.removeIconModule(),
 				this.removeMultiTranslateLoader(),
-				this.removeTranslationFiles()
+				this.removeTranslationFiles(),
+				warnIfStandalone()
 			])(tree, _context);
 	}
 
