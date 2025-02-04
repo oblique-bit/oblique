@@ -57,7 +57,7 @@ function setBuilder(): Rule {
 				project: project.project,
 				config: {
 					...build,
-					builder: '@angular-devkit/build-angular:browser',
+					builder: '@angular-devkit/build-angular:browser-esbuild',
 					options: {
 						...buildOptions,
 						main: buildOptions.browser
