@@ -1,9 +1,10 @@
 import {ObAutocompleteModule, ObEIcon, ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup} from '@oblique/oblique';
 import {AfterViewInit, ChangeDetectorRef, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {JsonPipe} from '@angular/common';
 
 @Component({
-	imports: [ObAutocompleteModule, ReactiveFormsModule],
+	imports: [ObAutocompleteModule, ReactiveFormsModule, JsonPipe],
 	selector: 'app-autocomplete-example-options-group',
 	templateUrl: './autocomplete-example-options-group.component.html'
 })

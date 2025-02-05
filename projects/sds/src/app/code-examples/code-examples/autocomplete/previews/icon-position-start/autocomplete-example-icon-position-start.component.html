@@ -6,5 +6,5 @@
 		[optionIconPosition]="'start'"
 		(selectedOptionChange)="showSelection($event)"
 	/>
-	<p>selectedOption: {{ selectedOption }}</p>
+	<p>selectedOption: {{ selectedOption | json }}</p>
 }
