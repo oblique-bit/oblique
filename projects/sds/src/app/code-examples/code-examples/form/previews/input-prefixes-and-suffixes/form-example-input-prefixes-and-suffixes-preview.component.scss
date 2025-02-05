@@ -61,8 +61,9 @@
 		@at-root #{selector.append(".edge-case", &)} {
 			:host & {
 				.mdc-floating-label:not(.mdc-floating-label--float-above) {
-					// This value is specific to the .edge-case form field and would need to be adjusted if you want to right align your own form field.
+					// These values are specific to the .edge-case form field and would need to be adjusted if you want to right align your own form field.
 					padding-left: 48px;
+					padding-right: 30px;
 					margin-left: 0;
 				}
 			}
