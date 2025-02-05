@@ -1,15 +1,15 @@
 import {ObAutocompleteModule, ObEIcon, ObIAutocompleteInputOption} from '@oblique/oblique';
 import {AfterViewInit, ChangeDetectorRef, Component, inject} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
-	imports: [ObAutocompleteModule, FormsModule],
+	imports: [ObAutocompleteModule, ReactiveFormsModule],
 	selector: 'app-autocomplete-example-icon-position-start',
 	templateUrl: './autocomplete-example-icon-position-start.component.html'
 })
 export class AutocompleteExampleIconPositionStartComponent implements AfterViewInit {
 	selectedOption: ObIAutocompleteInputOption;
-
+	formControl = new FormControl('');
 	optionList: ObIAutocompleteInputOption[] = [
 		{
 			label: ' Graceling realm',

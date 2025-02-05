@@ -2,8 +2,8 @@
 @if (show) {
 	<ob-autocomplete
 		[autocompleteOptions]="optionList"
+		[formControl]="formControl"
 		[optionIconPosition]="'start'"
-		[(ngModel)]="selectedOption"
 		(selectedOptionChange)="showSelection($event)"
 	/>
 	<p>selectedOption: {{ selectedOption }}</p>

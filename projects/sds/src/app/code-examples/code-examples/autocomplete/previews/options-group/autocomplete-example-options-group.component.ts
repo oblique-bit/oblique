@@ -1,15 +1,15 @@
 import {ObAutocompleteModule, ObEIcon, ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup} from '@oblique/oblique';
 import {AfterViewInit, ChangeDetectorRef, Component, inject} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
-	imports: [ObAutocompleteModule, FormsModule],
+	imports: [ObAutocompleteModule, ReactiveFormsModule],
 	selector: 'app-autocomplete-example-options-group',
 	templateUrl: './autocomplete-example-options-group.component.html'
 })
 export class AutocompleteExampleIconOptionsGroupComponent implements AfterViewInit {
 	selectedOption: ObIAutocompleteInputOption;
-
+	formControl = new FormControl('');
 	optionList: ObIAutocompleteInputOptionGroup[] = [
 		{
 			groupLabel: 'Group - 1',
