@@ -8,6 +8,27 @@
 	width: 100%;
 	color: core-variables.$ob-default;
 
+	&.mat-mdc-form-field-has-icon-suffix.mat-form-field-appearance-outline:has(mat-datepicker-toggle)
+		.mdc-notched-outline
+		.mdc-notched-outline__notch,
+	&:has(.ob-input-clear) .mdc-notched-outline .mdc-notched-outline__notch,
+	&.mat-form-field-invalid .mdc-notched-outline .mdc-notched-outline__notch {
+		// 60px is the width used by material itself to reserve space for the mat-select icon.
+		// For visual consistency, we reserve the same space for the datepicker toggle icon, the clear button icon, and the invalid field icon.
+		max-width: calc(100% - 60px);
+	}
+
+	&.mat-mdc-form-field-has-icon-prefix:not(
+			.mat-mdc-form-field-has-icon-suffix,
+			:has(mat-datepicker-toggle),
+			:has(.mdc-text-field--focused)
+		) {
+		.mat-mdc-floating-label {
+			// fix angular material bug where the ellipsis overlaps the right border of the field when there is a long label and an icon prefix
+			margin-left: -1px;
+		}
+	}
+
 	&:not(:has(.mat-mdc-form-field-textarea-control)) {
 		.ob-form-sm & {
 			input:not(.mat-datepicker-input) {
