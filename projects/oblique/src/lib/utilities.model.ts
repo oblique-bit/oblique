@@ -30,10 +30,23 @@ export interface ObIMaterialConfig {
 }
 
 export interface ObIObliqueConfiguration {
+	accessibilityStatement: ObIAccessibilityStatementConfiguration;
 	material?: ObIMaterialConfig;
 	icon?: ObIconConfig;
 	translate?: {
 		config?: TranslateModuleConfig;
 		additionalFiles?: ObITranslationFile[];
+	};
+}
+
+export interface ObIAccessibilityStatementConfiguration {
+	applicationName: string;
+	createdOn?: Date;
+	reviewedOn?: Date;
+	exceptions?: string[];
+	applicationOperator: string;
+	contact: {
+		emails?: string[];
+		phones?: string[];
 	};
 }
