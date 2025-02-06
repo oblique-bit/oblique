@@ -1,0 +1,74 @@
+<h1>{{ "i18n.oblique.accessibility-statement.accessibility-in-the-federal-administration" | translate }}</h1>
+<p>{{ "i18n.oblique.accessibility-statement.information-and-services" | translate }}</p>
+<p>{{ "i18n.oblique.accessibility-statement.the-federal-administration-strives" | translate }}</p>
+
+<h2>{{ "i18n.oblique.accessibility-statement.provisions.title" | translate }}</h2>
+<p class="ob-list-title">{{ "i18n.oblique.accessibility-statement.provisions.text" | translate }}</p>
+<ul [innerHtml]="'i18n.oblique.accessibility-statement.provisions.items' | translate"></ul>
+
+<h2>{{ "i18n.oblique.accessibility-statement.statement.title" | translate }}</h2>
+<p [innerHTML]="'i18n.oblique.accessibility-statement.statement.text' | obTranslateParams: statementParameters"></p>
+
+@if (parameters.exceptions?.length > 0) {
+	<h3>{{ "i18n.oblique.accessibility-statement.exceptions.title" | translate }}</h3>
+	<p class="ob-list-title">{{ "i18n.oblique.accessibility-statement.exceptions.text" | translate }}</p>
+	<ul class="ob-resource-list">
+		@for (exception of parameters.exceptions; track exception) {
+			<li>{{ exception | translate }}</li>
+		}
+	</ul>
+}
+@if (parameters.createdOn) {
+	<h3>{{ "i18n.oblique.accessibility-statement.data.title" | translate }}</h3>
+	<p>
+		{{ "i18n.oblique.accessibility-statement.data.created" | translate: { createdOn: (parameters.createdOn | obDate: "shortDate") } }}
+	</p>
+	@if (parameters.reviewedOn) {
+		<p>
+			{{ "i18n.oblique.accessibility-statement.data.reviewed" | translate: { reviewedOn: (parameters.reviewedOn | obDate: "shortDate") } }}
+		</p>
+	}
+}
+
+<h3>{{ "i18n.oblique.accessibility-statement.feedback.title" | translate }}</h3>
+<p>{{ "i18n.oblique.accessibility-statement.feedback.text" | translate }}</p>
+<h4>{{ "i18n.oblique.accessibility-statement.feedback.operator" | translate }}</h4>
+<address [innerHTML]="parameters.applicationOperator | translate"></address>
+
+<h4>{{ "i18n.oblique.accessibility-statement.feedback.contact" | translate }}</h4>
+<ul class="ob-resource-list">
+	@for (phone of contactParameters.phones; track phone) {
+		<li>
+			<a class="ob-contact-link" [href]="'tel:' + phone" [isExternalLink]="false"
+				><mat-icon class="ob-icon-text" svgIcon="phone" /> {{ phone }}</a
+			>
+		</li>
+	}
+	@for (email of contactParameters.emails; track email) {
+		<li>
+			<a class="ob-contact-link" [href]="'mailto:' + email" [isExternalLink]="false"
+				><mat-icon class="ob-icon-text" svgIcon="envelope" /> {{ email }}</a
+			>
+		</li>
+	}
+</ul>
+<h2>{{ "i18n.oblique.accessibility-statement.general-information.title" | translate }}</h2>
+<h3>{{ "i18n.oblique.accessibility-statement.general-information.links.title" | translate }}</h3>
+
+<ul class="ob-resource-list">
+	@for (link of generalLinks; track link) {
+		<li>
+			<a [href]="link.url | translate" [isExternalLink]="true">{{ link.label | translate }}</a>
+		</li>
+	}
+</ul>
+
+<h3>{{ "i18n.oblique.accessibility-statement.accessibility.links.title" | translate }}</h3>
+
+<ul class="ob-resource-list">
+	@for (link of accessibilityLinks; track link) {
+		<li>
+			<a [href]="link.url | translate" [isExternalLink]="true">{{ link.label | translate }}</a>
+		</li>
+	}
+</ul>
