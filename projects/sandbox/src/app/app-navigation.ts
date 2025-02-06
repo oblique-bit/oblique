@@ -1,6 +1,6 @@
-import {ObEIcon} from '@oblique/oblique';
+import {ObEIcon, ObINavigationLink} from '@oblique/oblique';
 
-export const appNavigation = [
+export const appNavigation: ObINavigationLink[] = [
 	{
 		url: 'home',
 		label: 'i18n.routes.home.title',
