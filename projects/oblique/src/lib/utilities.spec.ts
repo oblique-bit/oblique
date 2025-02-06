@@ -12,6 +12,7 @@ import {TranslateCompiler, TranslateFakeCompiler, TranslateLoader, TranslateServ
 import {of} from 'rxjs';
 import {ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {
+	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
 	OB_MATERIAL_CONFIG,
 	WINDOW,
 	checkboxOptionsProvider,
@@ -201,7 +202,9 @@ describe('utilities', () => {
 					providers: [
 						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
 						provideHttpClient(),
-						provideObliqueConfiguration()
+						provideObliqueConfiguration({
+							accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {}}
+						})
 					]
 				});
 			});
@@ -252,6 +255,16 @@ describe('utilities', () => {
 					expect(TestBed.inject(token)).toEqual(config);
 				});
 			});
+
+			describe('accessibility statement configuration', () => {
+				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
+					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
+						applicationName: 'appName',
+						applicationOperator: 'Operator',
+						contact: {}
+					});
+				});
+			});
 		});
 
 		describe('with custom configuration', () => {
@@ -262,6 +275,7 @@ describe('utilities', () => {
 						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
 						provideHttpClient(),
 						provideObliqueConfiguration({
+							accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {}},
 							material: {
 								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
 								STEPPER_GLOBAL_OPTIONS: {showError: true},
@@ -314,13 +328,25 @@ describe('utilities', () => {
 					expect(TestBed.inject(token)).toEqual(config);
 				});
 			});
+
+			describe('accessibility statement configuration', () => {
+				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
+					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
+						applicationName: 'appName',
+						applicationOperator: 'Operator',
+						contact: {}
+					});
+				});
+			});
 		});
 
 		describe('with token configuration for Material', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						provideObliqueConfiguration(),
+						provideObliqueConfiguration({
+							accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {}}
+						}),
 						{
 							provide: OB_MATERIAL_CONFIG,
 							useValue: {
@@ -355,7 +381,12 @@ describe('utilities', () => {
 		describe('with token configuration for Translate', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
-					providers: [provideObliqueConfiguration(), {provide: TRANSLATION_FILES, useValue: [{prefix: 'prefix', suffix: 'suffix'}]}]
+					providers: [
+						provideObliqueConfiguration({
+							accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {}}
+						}),
+						{provide: TRANSLATION_FILES, useValue: [{prefix: 'prefix', suffix: 'suffix'}]}
+					]
 				});
 			});
 

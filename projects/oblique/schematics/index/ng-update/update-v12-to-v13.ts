@@ -107,13 +107,12 @@ export class UpdateV12toV13 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				const content = readFile(tree, filePath);
 				const configs = [
+					`accessibilityStatement: {applicationName: "Replace me with the application's name", applicationOperator: 'Replace me with the name and address of the federal office that exploit this application, HTML is permitted', contact: {/* at least 1 email or phone number has to be provided */}}`,
 					this.getMaterialConfiguration(content),
 					this.getIconConfiguration(content),
 					this.getTranslateConfiguration(content)
 				].join(',');
-				if (configs.length) {
-					replaceInFile(tree, filePath, /(?<=provideObliqueConfiguration\()(?=\))/, `{${configs}}`);
-				}
+				replaceInFile(tree, filePath, /(?<=provideObliqueConfiguration\()(?=\))/, `{${configs}}`);
 			};
 			return applyInTree(tree, apply, 'app.module.ts');
 		});
