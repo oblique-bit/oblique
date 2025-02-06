@@ -254,6 +254,7 @@ export class MasterLayoutSampleComponent {
 
 	addItem(): void {
 		this.dynamicNavigationService.addLink({
+			id: `id${crypto.randomUUID()}`,
 			label: 'test',
 			url: 'urlTest'
 		});
