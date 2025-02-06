@@ -50,13 +50,14 @@ function setBuilder(): Rule {
 			const {build} = project.config.architect;
 			const buildOptions = build.options;
 			const buildConfigurations = build.configurations;
+			const buildConfigurationsProduction = buildConfigurations.production;
 			const buildConfigurationsDevelopment = buildConfigurations.development;
 
 			setAngularConfig(tree, ['architect', 'build'], {
 				project: project.project,
 				config: {
 					...build,
-					builder: '@angular-devkit/build-angular:browser',
+					builder: '@angular-devkit/build-angular:browser-esbuild',
 					options: {
 						...buildOptions,
 						main: buildOptions.browser
@@ -67,6 +68,9 @@ function setBuilder(): Rule {
 							...buildConfigurationsDevelopment.config,
 							buildOptimizer: false,
 							vendorChunk: true
+						},
+						production: {
+							...buildConfigurationsProduction
 						}
 					}
 				}
