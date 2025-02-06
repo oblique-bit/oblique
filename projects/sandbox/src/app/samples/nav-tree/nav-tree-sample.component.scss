@@ -7,6 +7,10 @@
 	gap: variables.$ob-spacing-default;
 }
 
+mat-slide-toggle + mat-slide-toggle {
+	margin-top: variables.$ob-spacing-default;
+}
+
 :host-context(.ob-layout-expanded) {
 	.wrapper {
 		align-items: flex-start;
