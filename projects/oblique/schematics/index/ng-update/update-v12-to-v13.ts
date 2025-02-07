@@ -1,6 +1,17 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIMigrations} from './ng-update.model';
-import {addImport, applyInTree, createSafeRule, infoMigration, readFile, removeImport, replaceInFile, warnIfStandalone} from '../utils';
+import {
+	addImport,
+	applyInTree,
+	createSafeRule,
+	getAngularConfigs,
+	infoMigration,
+	readFile,
+	removeImport,
+	replaceInFile,
+	setAngularConfig,
+	warnIfStandalone
+} from '../utils';
 import {removeProperty} from './ng-update-utils';
 
 export interface IUpdateV13Schema {}
@@ -22,6 +33,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				this.removeIconModule(),
 				this.removeMultiTranslateLoader(),
 				this.removeTranslationFiles(),
+				this.removeOldFontReferences(),
 				warnIfStandalone()
 			])(tree, _context);
 	}
@@ -182,6 +194,19 @@ export class UpdateV12toV13 implements ObIMigrations {
 				replaceInFile(tree, filePath, /\s*{\s*provide\s*:\s*TRANSLATION_FILES\s*,\s*useValue\s*:.*},?/s, '');
 			};
 			return applyInTree(tree, apply, 'app.module.ts');
+		});
+	}
+
+	private removeOldFontReferences(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove Roboto and Frutiger fonts references');
+			getAngularConfigs(tree, ['architect', 'build', 'options', 'styles']).forEach(project => {
+				setAngularConfig(tree, ['architect', 'build', 'options', 'styles'], {
+					project: project.project,
+					config: project.config.filter((style: string) => !(style.endsWith('roboto.css') || style.endsWith('frutiger.css')))
+				});
+			});
+			return tree;
 		});
 	}
 }

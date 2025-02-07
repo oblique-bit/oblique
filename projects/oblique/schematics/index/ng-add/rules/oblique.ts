@@ -29,7 +29,6 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addAngularMaterialDependencies(),
 			addLocalAssets(),
 			addObliqueAssets(),
-			addFontStyle(),
 			addFontFiles(),
 			addLocales(options.locales.split(' ')),
 			raiseBuildBudget(),
@@ -137,20 +136,6 @@ function addObliqueAssets(): Rule {
 			},
 			...config
 		]);
-	});
-}
-
-function addFontStyle(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Adding font');
-		const styleSheet = `node_modules/@oblique/oblique/styles/css/roboto.css`;
-		setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: string[]) => {
-			if (!config.includes(styleSheet)) {
-				config.splice(config.indexOf(obliqueCssPath) + 1, 0, styleSheet);
-			}
-			return config;
-		});
-		return tree;
 	});
 }
 
