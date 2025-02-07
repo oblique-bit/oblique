@@ -63,6 +63,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	@Input() navigation: ObINavigationLink[] = [];
 	@Input() skipLinks: ObISkipLink[] | ObIDynamicSkipLink[] = [];
 	@Input() collapseBreakpoint: ObICollapseBreakpoints;
+	@Input() version?: string;
 	@HostBinding('class.ob-layout-collapsed') isLayoutCollapsed = false;
 	@HostBinding('class.ob-layout-expanded') isLayoutExpanded = true;
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
