@@ -144,6 +144,7 @@
 	}
 
 	.mat-mdc-card-content .ob-signature {
+		@include typography.ob-caption();
 		display: flex;
 		justify-content: space-between;
 		margin: 0;
