@@ -38,9 +38,7 @@ class Icons extends StaticScript {
 		// unnecessary parts are removed to reduce the library weight
 		return Files.read(`${iconsPath}/${fileName}`)
 			.replace(/\n*/g, '')
-			.replace(/#171717/g, 'currentColor')
-			.replace('<svg ', `<svg id="${id}" `)
-			.replace(/<title>.+?<\/title>/g, '')
+			.replace(/(?<=id=")a(?=")/, id) // id is mandatory for Material to identify icons
 			.replace('<?xml version="1.0" encoding="UTF-8"?>', '')
 			.replace('xmlns="http://www.w3.org/2000/svg" ', '');
 	}
