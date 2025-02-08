@@ -14,6 +14,7 @@ class PostBuild extends StaticScript {
 		PostBuild.adaptPackageJson();
 		PostBuild.adaptSchematicsPackageJson();
 		PostBuild.updateBackgroundImagePath();
+		PostBuild.updateFontPath();
 		PostBuild.distributeObFeatures();
 		Banner.addToFilesInProject('oblique');
 		adaptReadmeLinks('oblique');
@@ -70,6 +71,11 @@ class PostBuild extends StaticScript {
 			'cover-background.jpg',
 			'@oblique/oblique/assets/images/cover-background.jpg'
 		);
+	}
+
+	private static updateFontPath(): void {
+		Log.info('Update path to Noto font.');
+		PostBuild.replaceInFiles(['../../dist/oblique/styles/css/oblique-core.css'], /(?<=url\()(?=noto-sans)/, '../fonts/');
 	}
 
 	private static distributeObFeatures(): void {
