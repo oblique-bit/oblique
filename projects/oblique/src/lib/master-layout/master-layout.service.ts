@@ -9,6 +9,7 @@ import {ObMasterLayoutNavigationService} from './master-layout-navigation/master
 import {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
 import {ObLanguageService} from '../language/language.service';
 import {ObMasterLayoutConfig} from './master-layout.config';
+import {AccessibilityStatementComponent} from '../accessibility-statement/accessibility-statement.component';
 
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutService {
@@ -27,6 +28,7 @@ export class ObMasterLayoutService {
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		language: ObLanguageService // ObLanguageService needs to be there to be instantiated
 	) {
+		this.router.config.unshift({path: 'accessibility-statement', component: AccessibilityStatementComponent});
 		this.routeChange();
 		this.homePageRouteChange$ = this.homePageRouteChange.asObservable();
 	}

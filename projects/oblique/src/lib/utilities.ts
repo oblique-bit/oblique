@@ -10,7 +10,13 @@ import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions} from '@angular/
 import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioDefaultOptions} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, MatSlideToggleDefaultOptions} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS, StepperOptions} from '@angular/cdk/stepper';
-import {ObIBanner, ObIMaterialConfig, ObIObliqueConfiguration, ObIPamsConfiguration} from './utilities.model';
+import {
+	ObIAccessibilityStatementConfiguration,
+	ObIBanner,
+	ObIMaterialConfig,
+	ObIObliqueConfiguration,
+	ObIPamsConfiguration
+} from './utilities.model';
 import {MAT_TABS_CONFIG, MatTabsConfig} from '@angular/material/tabs';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
@@ -21,6 +27,9 @@ export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
 export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
 	'Provides the mandatory PAMS environment as well as an optional root url.'
+);
+export const OB_ACCESSIBILITY_STATEMENT_CONFIGURATION = new InjectionToken<ObIAccessibilityStatementConfiguration>(
+	'AccessibilityStatementConfiguration'
 );
 
 export function windowProvider(doc: Document): Window {
@@ -91,40 +100,56 @@ const materialProviders = [
 	{
 		provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
 		useFactory: matFormFieldDefaultOptionsProvider,
-		deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+		deps: [
+			[new Optional(), OB_MATERIAL_CONFIG],
+			[new Optional(), OB_MATERIAL_CONFIG_2]
+		]
 	},
 	{
 		provide: STEPPER_GLOBAL_OPTIONS,
 		useFactory: stepperOptionsOptionsProvider,
-		deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+		deps: [
+			[new Optional(), OB_MATERIAL_CONFIG],
+			[new Optional(), OB_MATERIAL_CONFIG_2]
+		]
 	},
 	{
 		provide: MAT_CHECKBOX_DEFAULT_OPTIONS,
 		useFactory: checkboxOptionsProvider,
-		deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+		deps: [
+			[new Optional(), OB_MATERIAL_CONFIG],
+			[new Optional(), OB_MATERIAL_CONFIG_2]
+		]
 	},
 	{
 		provide: MAT_RADIO_DEFAULT_OPTIONS,
 		useFactory: radioOptionsProvider,
-		deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+		deps: [
+			[new Optional(), OB_MATERIAL_CONFIG],
+			[new Optional(), OB_MATERIAL_CONFIG_2]
+		]
 	},
 	{
 		provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS,
 		useFactory: slideToggleOptionsProvider,
-		deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]
+		deps: [
+			[new Optional(), OB_MATERIAL_CONFIG],
+			[new Optional(), OB_MATERIAL_CONFIG_2]
+		]
 	},
 	{provide: MAT_TABS_CONFIG, useFactory: tabsOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]}
 ];
 
-export function provideObliqueConfiguration(config?: ObIObliqueConfiguration): EnvironmentProviders {
+export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
-		provideTranslateService(multiTranslateLoader(config?.translate?.config)),
+		provideTranslateService(multiTranslateLoader(config.translate?.config)),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
-		{provide: TRANSLATION_FILES, useValue: config?.translate?.additionalFiles},
+		{provide: TRANSLATION_FILES, useValue: config.translate?.additionalFiles},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
-		{provide: ObTIconConfig, useValue: {...defaultIconConfig, ...config?.icon}},
-		{provide: OB_MATERIAL_CONFIG_2, useValue: config?.material},
+		{provide: ObTIconConfig, useValue: {...defaultIconConfig, ...config.icon}},
+		{provide: OB_MATERIAL_CONFIG_2, useValue: config.material},
+		{provide: OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, useValue: config.accessibilityStatement},
 		materialProviders
 	]);
 }

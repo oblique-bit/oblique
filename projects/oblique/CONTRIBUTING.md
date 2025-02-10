@@ -9,6 +9,7 @@ All commits related to the Oblique package must use the **oblique** package and 
 - **alert**
 - **authentication**
 - **autocomplete**
+- **accessibility-statement**
 - **button**
 - **breadcrumb**
 - **collapse**

@@ -1,6 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {RouterTestingModule} from '@angular/router/testing';
+import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
@@ -16,6 +17,7 @@ import {ObMockMasterLayoutNavigationService} from './_mocks/mock-master-layout-n
 import {ObMockMasterLayoutComponentService} from './_mocks/mock-master-layout.component.service';
 import {ObLanguageService} from '../language/language.service';
 import {ObMockLanguageService} from '../language/_mocks/mock-language.service';
+import {AccessibilityStatementComponent} from '../accessibility-statement/accessibility-statement.component';
 
 describe('ObMasterLayoutService', () => {
 	let masterLayoutService: ObMasterLayoutService;
@@ -43,6 +45,10 @@ describe('ObMasterLayoutService', () => {
 
 	it('should have an homePageRoute set to "home"', () => {
 		expect(masterLayoutService.homePageRoute).toBe('/home');
+	});
+
+	it('should add a route to the accessibility statement', () => {
+		expect(TestBed.inject(Router).config).toEqual([{component: AccessibilityStatementComponent, path: 'accessibility-statement'}]);
 	});
 
 	describe('homePageRouteChange$', () => {

@@ -1,0 +1,26 @@
+@use "../../styles/scss/core/variables";
+
+:host {
+	display: block;
+	max-width: 768px; // empiric value
+	margin: auto;
+}
+
+.ob-contact-link {
+	display: inline-flex;
+	gap: variables.$ob-spacing-xs;
+	align-items: baseline;
+}
+
+address {
+	line-height: variables.$ob-spacing-xl;
+}
+
+.ob-resource-list {
+	list-style: none;
+	padding: 0;
+
+	li:not(:last-child) {
+		padding-bottom: variables.$ob-spacing-sm;
+	}
+}

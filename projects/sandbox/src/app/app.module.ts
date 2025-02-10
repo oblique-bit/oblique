@@ -97,7 +97,20 @@ registerLocaleData(localeDE);
 		{provide: OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, useValue: false},
 		provideMomentDateAdapter(),
 		provideHttpClient(withInterceptorsFromDi()),
-		provideObliqueConfiguration()
+		provideObliqueConfiguration({
+			accessibilityStatement: {
+				applicationName: 'Sandbox',
+				createdOn: new Date('2025-01-31'),
+				reviewedOn: new Date('2025-01-31'),
+				exceptions: [
+					'i18n.routes.accessibility.exception.first',
+					'i18n.routes.accessibility.exception.second',
+					'i18n.routes.accessibility.exception.third'
+				],
+				applicationOperator: 'i18n.routes.accessibility.operator',
+				contact: {emails: ['oblique@bit.admin.ch'], phones: ['123']}
+			}
+		})
 	]
 })
 export class AppModule {
