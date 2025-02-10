@@ -35,12 +35,14 @@ class Icons extends StaticScript {
 	}
 
 	private static readIconFile(fileName: string, iconsPath: string, id: string): string {
+		// unnecessary parts are removed to reduce the library weight
 		return Files.read(`${iconsPath}/${fileName}`)
 			.replace(/\n*/g, '')
 			.replace(/#171717/g, 'currentColor')
 			.replace('<svg ', `<svg id="${id}" `)
 			.replace(/<title>.+?<\/title>/g, '')
-			.replace('<?xml version="1.0" encoding="UTF-8"?>', '');
+			.replace('<?xml version="1.0" encoding="UTF-8"?>', '')
+			.replace('xmlns="http://www.w3.org/2000/svg" ', '');
 	}
 
 	private static writeIconSet(filePath: string, SVGs: SVG[]): void {
