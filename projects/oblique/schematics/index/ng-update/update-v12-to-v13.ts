@@ -34,6 +34,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				this.removeMultiTranslateLoader(),
 				this.removeTranslationFiles(),
 				this.removeOldFontReferences(),
+				this.removeOBShowExternalLinkIconClass(),
 				warnIfStandalone()
 			])(tree, _context);
 	}
@@ -206,6 +207,17 @@ export class UpdateV12toV13 implements ObIMigrations {
 				});
 			});
 			return tree;
+		});
+	}
+
+	private removeOBShowExternalLinkIconClass(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove "ob-show-external-link-icon" class');
+			const apply = (filePath: string): void => {
+				replaceInFile(tree, filePath, /ob-show-external-link-icon/g, '');
+				replaceInFile(tree, filePath, /class="" ?/g, '');
+			};
+			return applyInTree(tree, apply, '*.html');
 		});
 	}
 }
