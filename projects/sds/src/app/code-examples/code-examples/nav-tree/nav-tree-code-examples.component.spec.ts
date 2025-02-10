@@ -30,8 +30,8 @@ describe(NavTreeCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	test(`that there are 3 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(4);
+	test(`that there are 5 ${CodeExampleComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(5);
 	});
 
 	test(`that there is 1 ${NavTreeExampleDefaultPreviewComponent.name}`, () => {

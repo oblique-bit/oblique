@@ -24,4 +24,8 @@ export class NavTreeSampleComponent {
 	constructor(route: ActivatedRoute) {
 		this.items = toSignal(route.data.pipe(map(data => data.sample.navTree.items.map(item => new ObNavTreeItemModel(item)))));
 	}
+
+	setDisabled(index: number): void {
+		this.items()[index].disabled = !this.items()[index].disabled;
+	}
 }
