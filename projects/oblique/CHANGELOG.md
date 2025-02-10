@@ -169,7 +169,7 @@
 
 ## Bug Fixes
 
-- **material:** ensure formfields are fully grayed when disabled ([c8f01fef](https://github.com/oblique-bit/oblique/commit/c8f01fef0fae1328b14df095ca81d2ab4d2d3405))
+- **material:** ensure form fields are fully grayed when disabled ([c8f01fef](https://github.com/oblique-bit/oblique/commit/c8f01fef0fae1328b14df095ca81d2ab4d2d3405))
 - **schematics:** only run mdc-migration if angular 17 is installed ([a152f16d](https://github.com/oblique-bit/oblique/commit/a152f16d8bfbe75127ce04be0c6ccdae61d6d6b3))
 
 # [11.2.3](https://github.com/oblique-bit/oblique/compare/11.2.2...11.2.3) (2024-06-14)
@@ -608,7 +608,7 @@
 - **material:** adjust badge to match new design ([ffe690d](https://github.com/oblique-bit/oblique/commit/ffe690de4ec7871e6ffad6b6eb5be811bb1ddead))
 - **material:** adjust color of `mat-hint` within `mat-form-field` ([6dd7733](https://github.com/oblique-bit/oblique/commit/6dd773312f55ce0703bbd3bde76b70b270bd1c09))
 - **material:** adjust tab focus color ([fd56ec9](https://github.com/oblique-bit/oblique/commit/fd56ec9de59292082573c4d0b2be106521bb2397))
-- **material:** change focus boxshadow color acording to wgl 2023 ([7396752](https://github.com/oblique-bit/oblique/commit/7396752a26eef41b4571108c552985ece7190160))
+- **material:** change focus box-shadow color according to wgl 2023 ([7396752](https://github.com/oblique-bit/oblique/commit/7396752a26eef41b4571108c552985ece7190160))
 - **material:** datepicker design according to WGL 2023 ([4334345](https://github.com/oblique-bit/oblique/commit/4334345194a710be2a1f9f17cd895c600480aea9))
 - **material:** material table legacy replacements ([a0f5bfc](https://github.com/oblique-bit/oblique/commit/a0f5bfc538ac6ba3d17d2d6b2c016eebf085d016))
 - **material:** readonly form field adjustments ([338ad38](https://github.com/oblique-bit/oblique/commit/338ad3831e6dea8b9967ec9663c127a7dca08fe1))
@@ -641,7 +641,7 @@
 - **translation:** replace key `i18n.oblique.off-canvas.close` with `i18n.common.close` ([10947e1](https://github.com/oblique-bit/oblique/commit/10947e1ec671974981a1719e1c33a0c5d8bf8c6b))
 - **oblique:** adjust standard label font size & weight ([7c48f69](https://github.com/oblique-bit/oblique/commit/7c48f69b57622b1766597194e67c425a2c41be50))
 - **paginator:** remove `MatLegacyPaginatorIntl` and `MatLegacyPaginatorModule` ([0a5bddd](https://github.com/oblique-bit/oblique/commit/0a5bddda3ff80a9185d927c117fd053a725207eb))
-- **sandbox/master-layout:** add granchildren examples to samples sub menu ([1100e30](https://github.com/oblique-bit/oblique/commit/1100e30803c69252629f3438ede055608e91de94))
+- **sandbox/master-layout:** add grandchildren examples to samples sub menu ([1100e30](https://github.com/oblique-bit/oblique/commit/1100e30803c69252629f3438ede055608e91de94))
 - **sandbox/master-layout:** add startOfRightSideLinks to samples ([fcfd161](https://github.com/oblique-bit/oblique/commit/fcfd161027657ed9c2d89b9de84536012da856ac))
 - **sandbox/master-layout:** adjust custom header control ob buttons from `secondary` to `tertiary` ([bd582c7](https://github.com/oblique-bit/oblique/commit/bd582c751df3d8fd77d1440cc952ea6ccddb8c70))
 - **sandbox/master-layout:** master-layout sub-menu nesting examples ([705c94e](https://github.com/oblique-bit/oblique/commit/705c94ea5d362088386ee0e995998fe248a55892))
@@ -684,7 +684,7 @@
 - **sds/material:** add table code examples ([0b3a49c](https://github.com/oblique-bit/oblique/commit/0b3a49c2d6f118c62162e075510428c6efcbbcba))
 - **sds/material:** add TS files to the badge's previews ([a570a90](https://github.com/oblique-bit/oblique/commit/a570a908a393ea6191b1f20006a87225adeb211b))
 - **sds/material:** add TS files to the card's previews ([f247039](https://github.com/oblique-bit/oblique/commit/f24703929e89bc37f8ffcc0d30e88292d09f700b))
-- **sds/material:** add TS files to the chips's previews ([4902f15](https://github.com/oblique-bit/oblique/commit/4902f158bf53cb5f2a96d2e264e6aa73fa42dfa3))
+- **sds/material:** add TS files to the chips' previews ([4902f15](https://github.com/oblique-bit/oblique/commit/4902f158bf53cb5f2a96d2e264e6aa73fa42dfa3))
 - **sds/material:** add TS files to the slider's previews ([72ec6a6](https://github.com/oblique-bit/oblique/commit/72ec6a6aecf2d58e951fb6c4247c0259384aa3e3))
 - **sds/material:** default datepicker demonstrating the WGL 2023 design ([04ecc78](https://github.com/oblique-bit/oblique/commit/04ecc780a1ae6fb77ece3fe840b83972cfd20630))
 - **sds/material:** renamed TS tab of the list-group's previews ([0e330d0](https://github.com/oblique-bit/oblique/commit/0e330d0f9c3f86ad8f54fe367a47e91c99b7bb44))
@@ -948,7 +948,7 @@ OUI-2219
 
 ## Bug Fixes
 
-- **master-layout:** ensure consitant button height in the main navigation ([8aeef53](https://github.com/oblique-bit/oblique/commit/8aeef5319f2047031c46b319b9384c2cd8076c78))
+- **master-layout:** ensure consistent button height in the main navigation ([8aeef53](https://github.com/oblique-bit/oblique/commit/8aeef5319f2047031c46b319b9384c2cd8076c78))
 
 # [9.3.1](https://github.com/oblique-bit/oblique/compare/9.3.0...9.3.1) (2022-11-25)
 
@@ -1054,7 +1054,7 @@ OUI-2219
 
 - **icon:** update `ObIconConfig` to use Oblique's icons by default ([9636953](https://github.com/oblique-bit/oblique/commit/96369531107c60e3544c979467fc45f515a95c29))
 - **master-layout:** improve integration of `ObExternalLinkDirective` ([4e5a67f](https://github.com/oblique-bit/oblique/commit/4e5a67f877f6ac90be2ed3746c491952bb05fde4))
-- **material:** improve icon alignement within `.mat-form-field-prefix` & `.mat-form-field-suffix` ([b64e9f4](https://github.com/oblique-bit/oblique/commit/b64e9f4108605265de8c913aac5c6bda0b0e946e))
+- **material:** improve icon alignment within `.mat-form-field-prefix` & `.mat-form-field-suffix` ([b64e9f4](https://github.com/oblique-bit/oblique/commit/b64e9f4108605265de8c913aac5c6bda0b0e946e))
 
 # [9.0.1](https://github.com/oblique-bit/oblique/compare/9.0.0...9.0.1) (2022-07-22)
 
