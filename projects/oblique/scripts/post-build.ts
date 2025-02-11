@@ -104,8 +104,8 @@ class PostBuild extends StaticScript {
 	private static getExportEntriesForSCSS(): ExportEntries {
 		const distPath = '../../dist/oblique';
 		return Files.list(`${distPath}/styles/scss`)
-			.map(filePath => filePath.replace(distPath, '.'))
 			.map(filePath => filePath.replace(/\\/g, '/'))
+			.map(filePath => filePath.replace(distPath, '.'))
 			.map(filePath => ({importPath: filePath.replace(/_|\.scss/g, ''), filePath}))
 			.reduce<ExportEntries>((exportEntries, {importPath, filePath}) => ({...exportEntries, [importPath]: {sass: filePath}}), {});
 	}
