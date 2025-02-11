@@ -11,6 +11,7 @@ All commits related to the SDS package must use the **sds** package and 1 of the
 - **autocomplete**
 - **button**
 - **breadcrumb**
+- **breakpoints**
 - **collapse**
 - **column-layout**
 - **document-meta**
