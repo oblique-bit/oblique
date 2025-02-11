@@ -169,7 +169,7 @@
 
 ## Bug Fixes
 
-- **material:** ensure formfields are fully grayed when disabled ([c8f01fef](https://github.com/oblique-bit/oblique/commit/c8f01fef0fae1328b14df095ca81d2ab4d2d3405))
+- **material:** ensure form fields are fully grayed when disabled ([c8f01fef](https://github.com/oblique-bit/oblique/commit/c8f01fef0fae1328b14df095ca81d2ab4d2d3405))
 - **schematics:** only run mdc-migration if angular 17 is installed ([a152f16d](https://github.com/oblique-bit/oblique/commit/a152f16d8bfbe75127ce04be0c6ccdae61d6d6b3))
 
 # [11.2.3](https://github.com/oblique-bit/oblique/compare/11.2.2...11.2.3) (2024-06-14)
@@ -608,7 +608,7 @@
 - **material:** adjust badge to match new design ([ffe690d](https://github.com/oblique-bit/oblique/commit/ffe690de4ec7871e6ffad6b6eb5be811bb1ddead))
 - **material:** adjust color of `mat-hint` within `mat-form-field` ([6dd7733](https://github.com/oblique-bit/oblique/commit/6dd773312f55ce0703bbd3bde76b70b270bd1c09))
 - **material:** adjust tab focus color ([fd56ec9](https://github.com/oblique-bit/oblique/commit/fd56ec9de59292082573c4d0b2be106521bb2397))
-- **material:** change focus boxshadow color acording to wgl 2023 ([7396752](https://github.com/oblique-bit/oblique/commit/7396752a26eef41b4571108c552985ece7190160))
+- **material:** change focus box-shadow color according to wgl 2023 ([7396752](https://github.com/oblique-bit/oblique/commit/7396752a26eef41b4571108c552985ece7190160))
 - **material:** datepicker design according to WGL 2023 ([4334345](https://github.com/oblique-bit/oblique/commit/4334345194a710be2a1f9f17cd895c600480aea9))
 - **material:** material table legacy replacements ([a0f5bfc](https://github.com/oblique-bit/oblique/commit/a0f5bfc538ac6ba3d17d2d6b2c016eebf085d016))
 - **material:** readonly form field adjustments ([338ad38](https://github.com/oblique-bit/oblique/commit/338ad3831e6dea8b9967ec9663c127a7dca08fe1))
@@ -641,7 +641,7 @@
 - **translation:** replace key `i18n.oblique.off-canvas.close` with `i18n.common.close` ([10947e1](https://github.com/oblique-bit/oblique/commit/10947e1ec671974981a1719e1c33a0c5d8bf8c6b))
 - **oblique:** adjust standard label font size & weight ([7c48f69](https://github.com/oblique-bit/oblique/commit/7c48f69b57622b1766597194e67c425a2c41be50))
 - **paginator:** remove `MatLegacyPaginatorIntl` and `MatLegacyPaginatorModule` ([0a5bddd](https://github.com/oblique-bit/oblique/commit/0a5bddda3ff80a9185d927c117fd053a725207eb))
-- **sandbox/master-layout:** add granchildren examples to samples sub menu ([1100e30](https://github.com/oblique-bit/oblique/commit/1100e30803c69252629f3438ede055608e91de94))
+- **sandbox/master-layout:** add grandchildren examples to samples sub menu ([1100e30](https://github.com/oblique-bit/oblique/commit/1100e30803c69252629f3438ede055608e91de94))
 - **sandbox/master-layout:** add startOfRightSideLinks to samples ([fcfd161](https://github.com/oblique-bit/oblique/commit/fcfd161027657ed9c2d89b9de84536012da856ac))
 - **sandbox/master-layout:** adjust custom header control ob buttons from `secondary` to `tertiary` ([bd582c7](https://github.com/oblique-bit/oblique/commit/bd582c751df3d8fd77d1440cc952ea6ccddb8c70))
 - **sandbox/master-layout:** master-layout sub-menu nesting examples ([705c94e](https://github.com/oblique-bit/oblique/commit/705c94ea5d362088386ee0e995998fe248a55892))
@@ -684,7 +684,7 @@
 - **sds/material:** add table code examples ([0b3a49c](https://github.com/oblique-bit/oblique/commit/0b3a49c2d6f118c62162e075510428c6efcbbcba))
 - **sds/material:** add TS files to the badge's previews ([a570a90](https://github.com/oblique-bit/oblique/commit/a570a908a393ea6191b1f20006a87225adeb211b))
 - **sds/material:** add TS files to the card's previews ([f247039](https://github.com/oblique-bit/oblique/commit/f24703929e89bc37f8ffcc0d30e88292d09f700b))
-- **sds/material:** add TS files to the chips's previews ([4902f15](https://github.com/oblique-bit/oblique/commit/4902f158bf53cb5f2a96d2e264e6aa73fa42dfa3))
+- **sds/material:** add TS files to the chips' previews ([4902f15](https://github.com/oblique-bit/oblique/commit/4902f158bf53cb5f2a96d2e264e6aa73fa42dfa3))
 - **sds/material:** add TS files to the slider's previews ([72ec6a6](https://github.com/oblique-bit/oblique/commit/72ec6a6aecf2d58e951fb6c4247c0259384aa3e3))
 - **sds/material:** default datepicker demonstrating the WGL 2023 design ([04ecc78](https://github.com/oblique-bit/oblique/commit/04ecc780a1ae6fb77ece3fe840b83972cfd20630))
 - **sds/material:** renamed TS tab of the list-group's previews ([0e330d0](https://github.com/oblique-bit/oblique/commit/0e330d0f9c3f86ad8f54fe367a47e91c99b7bb44))
@@ -702,111 +702,59 @@
 
 ## BREAKING CHANGES
 
-- **translation:** \* translation key `i18n.oblique.off-canvas.close` has been removed in favor of `i18n.common.close`
-- **oblique/material): feat(oblique/material:** `ob-table-hover` class has been removed in favor of
-  `ob-table-disable-hover-style` class and it's effect has been inverted.
-  Now a table row's background color will change by default on hover and
-  if this behavior is to be disabled, the class `ob-table-disable-hover-style` will
-  need to be applied.
-- **material:** - MatLegacyTableModule has been removed in favor of MatTableModule
-
-* MatLegacyTableDataSource has been removed in favor of TableDataSource
-* mat.legacy-table-theme has been removed in favor of mat.table-theme
-* mat.legacy-table-typography has been removed in favor of
-  mat.table-typography
-
-feat(material): replace form field related legacy modules & adjust styles
-
-OUI-2219
-
-- **material:** \* `MatLegacyAutocompleteModule` has been removed in favor of
-  `MatAutocompleteModule`
-- `mat.legacy-autocomplete-typography` has been removed in favor of
-  `mat.autocomplete-typography`
-- `mat.legacy-autocomplete-theme` has been removed in favor of
-  `mat.autocomplete-theme`
-- `MatLegacyCardModule` has been removed in favor of
-  `MatCardModule`
-- `mat.legacy-card-theme` has been removed in favor of
-  `mat.card-theme`
-- `mat.legacy-card-typography` has been removed in favor of
-  `mat.card-typography`
-- `MatLegacyCheckboxModule` has been removed in favor of
-  `MatCheckboxModule`
-- `mat.legacy-checkbox-theme` has been removed in favor of
-  `mat.checkbox-theme`
-- `mat.legacy-checkbox-typography` has been removed in favor of
-  `mat.checkbox-typography`
-- `MAT_LEGACY_CHECKBOX_DEFAULT_OPTIONS` has been
-  removed in favor of `MAT_CHECKBOX_DEFAULT_OPTIONS`
-- `MatLegacyCheckboxDefaultOptions` has been removed in favor of
-  `MatCheckboxDefaultOptions`
-- `MatLegacyFormFieldModule` has been removed in favor of
-  `MatFormFieldModule`
-- `mat.legacy-form-field-theme` has been removed in favor of
-  `mat.form-field-theme`
-- `mat.legacy-form-field-typography ` has been removed in favor of
-  `mat.form-field-typography`
-- `MAT_LEGACY_FORM_FIELD_DEFAULT_OPTIONS` has been
-  removed in favor of `MAT_FORM_FIELD_DEFAULT_OPTIONS`
-- `MatLegacyFormFieldDefaultOptions` has been removed in favor of
-  `MatFormFieldDefaultOptions`
-- `MatLegacyFormFieldHarness` has been removed in favor of
-  `MatFormFieldHarness`
-- `MatLegacyInputModule` has been removed in favor of
-  `MatInputModule`
-- `MatLegacyInputHarness` has been removed in favor of
-  `MatInputHarness`
-- `MatLegacyRadioModule` has been removed in favor of
-  `MatRadioModule`
-- `mat.legacy-radio-theme` has been removed in favor of
-  `mat.radio-theme`
-- `mat.legacy-radio-typography` has been removed in favor of
-  `mat.radio-typography`
-- `MAT_LEGACY_RADIO_DEFAULT_OPTIONS` has been
-  removed in favor of `MAT_RADIO_DEFAULT_OPTIONS`
-- `MatLegacyRadioDefaultOptions` has been removed in favor of
-  `MatRadioDefaultOptions`
-- `MatLegacySelectModule` has been removed in favor of
-  `MatSelectModule`
-- `mat.legacy-select-theme` has been removed in favor of
-  `mat.select-theme`
-- `mat.legacy-select-typography` has been removed in favor of
-  `mat.select-typography`
-- `MatLegacySlideToggleModule` has been removed in favor of
-  `MatSlideToggleModule`
-- `mat.legacy-slide-toggle-theme` has been removed in favor of
-  `mat.slide-toggle-theme`
-- `mat.legacy-slide-toggle-typography` has been removed in favor of
-  `mat.slide-toggle-typography`
-- `MAT_LEGACY_SLIDE_TOGGLE_DEFAULT_OPTIONS` has been
-  removed in favor of `MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS`
-- `MatLegacySlideToggleDefaultOptions` has been removed in favor of
-  `MatSlideToggleDefaultOptions`
-- `ObFormFieldModule` now needs to be imported for certain form
-  related styles to work correctly.
+- **translation:** translation key `i18n.oblique.off-canvas.close` has been removed in favor of `i18n.common.close`
+- **material:** `ob-table-hover` class has been removed in favor of `ob-table-disable-hover-style` class and it's effect has been inverted. Now a table row's background color will change by default on hover and if this behavior is to be disabled, the class `ob-table-disable-hover-style` will need to be applied.
+- **material:** MatLegacyTableModule has been removed in favor of MatTableModule
+- **material:** MatLegacyTableDataSource has been removed in favor of TableDataSource
+- **material:** mat.legacy-table-theme has been removed in favor of mat.table-theme
+- **material:** mat.legacy-table-typography has been removed in favor of mat.table-typography
+- **material:** `MatLegacyAutocompleteModule` has been removed in favor of `MatAutocompleteModule`
+- **material:** `mat.legacy-autocomplete-typography` has been removed in favor of `mat.autocomplete-typography`
+- **material:** `mat.legacy-autocomplete-theme` has been removed in favor of `mat.autocomplete-theme`
+- **material:** `MatLegacyCardModule` has been removed in favor of `MatCardModule`
+- **material:** `mat.legacy-card-theme` has been removed in favor of `mat.card-theme`
+- **material:** `mat.legacy-card-typography` has been removed in favor of `mat.card-typography`
+- **material:** `MatLegacyCheckboxModule` has been removed in favor of `MatCheckboxModule`
+- **material:** `mat.legacy-checkbox-theme` has been removed in favor of `mat.checkbox-theme`
+- **material:** `mat.legacy-checkbox-typography` has been removed in favor of `mat.checkbox-typography`
+- **material:** `MAT_LEGACY_CHECKBOX_DEFAULT_OPTIONS` has been removed in favor of `MAT_CHECKBOX_DEFAULT_OPTIONS`
+- **material:** `MatLegacyCheckboxDefaultOptions` has been removed in favor of `MatCheckboxDefaultOptions`
+- **material:** `MatLegacyFormFieldModule` has been removed in favor of `MatFormFieldModule`
+- **material:** `mat.legacy-form-field-theme` has been removed in favor of `mat.form-field-theme`
+- **material:** `mat.legacy-form-field-typography ` has been removed in favor of `mat.form-field-typography`
+- **material:** `MAT_LEGACY_FORM_FIELD_DEFAULT_OPTIONS` has been removed in favor of `MAT_FORM_FIELD_DEFAULT_OPTIONS`
+- **material:** `MatLegacyFormFieldDefaultOptions` has been removed in favor of `MatFormFieldDefaultOptions`
+- **material:** `MatLegacyFormFieldHarness` has been removed in favor of `MatFormFieldHarness`
+- **material:** `MatLegacyInputModule` has been removed in favor of `MatInputModule`
+- **material:** `MatLegacyInputHarness` has been removed in favor of `MatInputHarness`
+- **material:** `MatLegacyRadioModule` has been removed in favor of `MatRadioModule`
+- **material:** `mat.legacy-radio-theme` has been removed in favor of `mat.radio-theme`
+- **material:** `mat.legacy-radio-typography` has been removed in favor of `mat.radio-typography`
+- **material:** `MAT_LEGACY_RADIO_DEFAULT_OPTIONS` has been removed in favor of `MAT_RADIO_DEFAULT_OPTIONS`
+- **material:** `MatLegacyRadioDefaultOptions` has been removed in favor of `MatRadioDefaultOptions`
+- **material:** `MatLegacySelectModule` has been removed in favor of `MatSelectModule`
+- **material:** `mat.legacy-select-theme` has been removed in favor of `mat.select-theme`
+- **material:** `mat.legacy-select-typography` has been removed in favor of `mat.select-typography`
+- **material:** `MatLegacySlideToggleModule` has been removed in favor of `MatSlideToggleModule`
+- **material:** `mat.legacy-slide-toggle-theme` has been removed in favor of `mat.slide-toggle-theme`
+- **material:** `mat.legacy-slide-toggle-typography` has been removed in favor of `mat.slide-toggle-typography`
+- **material:** `MAT_LEGACY_SLIDE_TOGGLE_DEFAULT_OPTIONS` has been removed in favor of `MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS`
+- **material:** `MatLegacySlideToggleDefaultOptions` has been removed in favor of `MatSlideToggleDefaultOptions`
+- **material:** `ObFormFieldModule` now needs to be imported for certain form related styles to work correctly.
 - **master-layout:** `OB_ACTIVATE_SERVICE_NAVIGATION` have been removed with no replacement (Solved with Schematics)
-- **master-layout:** \* `obLocales` content projection option have been replaced with `#obHeaderControl` (Solved with
-  Schematics)
-- `obHeaderCustomControl` content projection option have been replaced with `#obHeaderControl`
-  (Solved with Schematics)
+- **master-layout:** `obLocales` content projection option have been replaced with `#obHeaderControl` (Solved with Schematics)
+- **master-layout:** `obHeaderCustomControl` content projection option have been replaced with `#obHeaderControl` (Solved with Schematics)
 - **nav-tree:** `ObNavTreeFakeFocusDirective` has been removed without replacement
-- **styles:** \* scss styles are no longer distributed
-- **icon:** When passing a custom configuration, settings that are not specified within it will not be
-  overridden anymore. Projects that rely on this behavior to override default settings will need to
-  specify all settings in the custom configuration.
+- **styles:** scss styles are no longer distributed
+- **icon:** When passing a custom configuration, settings that are not specified within it will not be overridden anymore. Projects that rely on this behavior to override default settings will need to specify all settings in the custom configuration.
 - **file-upload:** `MatLegacyProgressBarModule` have been removed in favor of `MatProgressBarModule`
 - **material:** `MatLegacyTooltipModule` has been removed in favor of `MatTooltipModule`
-- **master-layout:** \* Footer links (`<a>` within `#obFooterLink`) will no longer have
-  the external link icon added by default. Now, the `ob-show-external-link-icon`
-  class needs to be added for the external link icon to be shown. Example:
-
+- **master-layout:** Footer links (`<a>` within `#obFooterLink`) will no longer have the external link icon added by default. Now, the `ob-show-external-link-icon` class needs to be added for the external link icon to be shown. Example:
   `<ng-template #obFooterLink>
-	  <a class="ob-show-external-link-icon">External link shown</a>
+  <a class="ob-show-external-link-icon">External link shown</a>
 </ng-template>`
-
 - **search-box:** `ObSearchBox` feature has been removed in favor of `ObAutocomplete`
-- **material:** \* `MatLegacyButtonModule` has been removed in favor of `MatButtonModule`
+- **material:** `MatLegacyButtonModule` has been removed in favor of `MatButtonModule`
 
 # [10.1.2](https://github.com/oblique-bit/oblique/compare/10.1.1...10.1.2) (2023-06-07)
 
@@ -948,7 +896,7 @@ OUI-2219
 
 ## Bug Fixes
 
-- **master-layout:** ensure consitant button height in the main navigation ([8aeef53](https://github.com/oblique-bit/oblique/commit/8aeef5319f2047031c46b319b9384c2cd8076c78))
+- **master-layout:** ensure consistent button height in the main navigation ([8aeef53](https://github.com/oblique-bit/oblique/commit/8aeef5319f2047031c46b319b9384c2cd8076c78))
 
 # [9.3.1](https://github.com/oblique-bit/oblique/compare/9.3.0...9.3.1) (2022-11-25)
 
@@ -1054,7 +1002,7 @@ OUI-2219
 
 - **icon:** update `ObIconConfig` to use Oblique's icons by default ([9636953](https://github.com/oblique-bit/oblique/commit/96369531107c60e3544c979467fc45f515a95c29))
 - **master-layout:** improve integration of `ObExternalLinkDirective` ([4e5a67f](https://github.com/oblique-bit/oblique/commit/4e5a67f877f6ac90be2ed3746c491952bb05fde4))
-- **material:** improve icon alignement within `.mat-form-field-prefix` & `.mat-form-field-suffix` ([b64e9f4](https://github.com/oblique-bit/oblique/commit/b64e9f4108605265de8c913aac5c6bda0b0e946e))
+- **material:** improve icon alignment within `.mat-form-field-prefix` & `.mat-form-field-suffix` ([b64e9f4](https://github.com/oblique-bit/oblique/commit/b64e9f4108605265de8c913aac5c6bda0b0e946e))
 
 # [9.0.1](https://github.com/oblique-bit/oblique/compare/9.0.0...9.0.1) (2022-07-22)
 
