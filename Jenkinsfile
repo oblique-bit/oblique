@@ -39,6 +39,10 @@ nodejsPipelineTemplate {
 				['project': 'sandbox', 'space': 'patch']
 			]
 		],
+		'release/OUI-3559-release-oblique-13.0.0-rc.1': [
+			publish: ['./dist/oblique'],
+			gitTag: true
+		],
 		master: [
 			'publish': [
 				'./dist/oblique',

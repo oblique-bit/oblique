@@ -1,3 +1,15 @@
+# [13.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0-rc.1) (2025-02-12)
+
+## Bug Fixes
+
+- **new:** fix failing linting & tests ([63b4d940](https://github.com/oblique-bit/oblique/commit/63b4d94004bf6dbcfc74e7731218a86353300150))
+
+## Features
+
+- **new:** add interactive mode ([e6232529](https://github.com/oblique-bit/oblique/commit/e62325296fb78814bfba25a86e9c5ae1eabf923d))
+- **new:** call `npm dedupe` and `npm prune` after install ([8b373f12](https://github.com/oblique-bit/oblique/commit/8b373f12bb5a5d0c1d4852c7ccd378b0455f8515))
+- **update:** call `npm dedupe` and `npm prune` after update ([3426e8d5](https://github.com/oblique-bit/oblique/commit/3426e8d53597627180f3e1e28f91b12b7bfc6214))
+
 # [12.2.3](https://github.com/oblique-bit/oblique/compare/12.2.2...12.2.3) (2025-01-17)
 
 ## Bug Fixes
