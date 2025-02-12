@@ -1,3 +1,15 @@
+# [13.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0-rc.1) (2025-02-12)
+
+## Features
+
+- **service-navigation:** adapt profile avatar height ([03cad93b](https://github.com/oblique-bit/oblique/commit/03cad93b331730a314c1f61bc386065f640365e4))
+- **service-navigation:** enable all widgets per default ([46eb93b5](https://github.com/oblique-bit/oblique/commit/46eb93b58926a773325a6233d6fa9f9b665ca051))
+- **web-component:** replace Frutiger font with Noto Sans ([4418f49d](https://github.com/oblique-bit/oblique/commit/4418f49d688e54e42f0f61503095bc18f6094cd3))
+
+## BREAKING CHANGES
+
+- **service-navigation:** All widgets are now enabled per default. Before, they were disabled.
+
 # [12.2.3](https://github.com/oblique-bit/oblique/compare/12.2.2...12.2.3) (2025-01-17)
 
 ## Bug Fixes
