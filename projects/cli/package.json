@@ -19,7 +19,8 @@
     "test": "jest",
     "test-ci": "jest --config=jest.config.ci.js",
     "build": "ts-node scripts/pre-build.ts && tsc -p tsconfig.app.json && ts-node scripts/post-build.ts",
-    "release": "ts-node scripts/release.ts"
+    "release": "ts-node scripts/release.ts",
+    "npm-publish": "ts-node scripts/publish.ts"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^12.1.0",
