@@ -37,7 +37,10 @@ class Release extends StaticScript {
 			Log.info('Adding publish instruction to JenkinsFile');
 			const branchName = Git.getCurrentBranchName();
 			Files.overwrite('Jenkinsfile', content =>
-				content.replace(/(?=master)/, `'${branchName}': [\n\t\t\tpublish: ['./dist/oblique'],\n\t\t\tgitTag: true\n\t\t],\n\t\t`)
+				content.replace(
+					/(?=master)/,
+					`'${branchName}': [\n\t\t\tpublish: [\n\t\t\t\t'./dist/oblique',\n\t\t\t\t'./dist/cli',\n\t\t\t\t'./dist/service-navigation-web-component'\n\t\t\t],\n\t\t\tgitTag: true\n\t\t],\n\t\t`
+				)
 			);
 		}
 	}
