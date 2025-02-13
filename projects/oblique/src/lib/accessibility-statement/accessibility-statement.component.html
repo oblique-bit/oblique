@@ -12,11 +12,11 @@
 @if (parameters.exceptions?.length > 0) {
 	<h3>{{ "i18n.oblique.accessibility-statement.exceptions.title" | translate }}</h3>
 	<p class="ob-list-title">{{ "i18n.oblique.accessibility-statement.exceptions.text" | translate }}</p>
-	<ul class="ob-resource-list">
+	<ol>
 		@for (exception of parameters.exceptions; track exception) {
 			<li>{{ exception | translate }}</li>
 		}
-	</ul>
+	</ol>
 }
 @if (parameters.createdOn) {
 	<h3>{{ "i18n.oblique.accessibility-statement.data.title" | translate }}</h3>
