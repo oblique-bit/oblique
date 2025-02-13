@@ -96,7 +96,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 			infoMigration(_context, 'Add Oblique providers');
 			const apply = (filePath: string): void => {
 				addImport(tree, filePath, 'provideObliqueConfiguration', '@oblique/oblique');
-				replaceInFile(tree, filePath, /(?<=providers\s*:\s*\[\s+)(?=[{\w])/, 'provideObliqueConfiguration(),\n');
+				replaceInFile(tree, filePath, /(?<=providers\s*:\s*)\[/, '[provideObliqueConfiguration(),\n');
 			};
 			return applyInTree(tree, apply, 'app.module.ts');
 		});
