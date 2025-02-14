@@ -41,7 +41,9 @@ export function updatePackageJsonVersion(version: string): void {
 
 export function updateSonarPropertiesVersion(version: string): void {
 	Log.info(`Update Sonar properties' project version to ${version}.`);
-	Files.overwrite('sonar-project.properties', content => content.replace(/(?<=sonar\.projectVersion=)\d+\.\d+\.\d+/, version));
+	Files.overwrite('sonar-project.properties', content =>
+		content.replace(/(?<=sonar\.projectVersion=)\d+\.\d+\.\d+(?:-(?:alpa|beta|rc)\.\d+)?/, version)
+	);
 }
 
 export function adaptReadmeLinks(project: string): void {
