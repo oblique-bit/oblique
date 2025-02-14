@@ -11,7 +11,8 @@
     "test": "cd ../.. && ng test service-navigation-web-component",
     "test-ci": "cd ../.. && ng run service-navigation-web-component:test:ci",
     "build": "ng build && ts-node scripts/post-build",
-    "release": "ts-node scripts/release.ts"
+    "release": "ts-node scripts/release.ts",
+    "npm-publish": "ts-node scripts/publish.ts"
   },
   "keywords": [
     "service-navigation-web-component"
