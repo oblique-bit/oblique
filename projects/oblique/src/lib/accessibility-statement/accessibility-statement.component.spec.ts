@@ -19,7 +19,7 @@ describe(AccessibilityStatementComponent.name, () => {
 			providers: [
 				provideHttpClient(),
 				provideObliqueConfiguration({
-					accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {}}
+					accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {emails: ['e@mail.com']}}
 				})
 			]
 		}).compileComponents();
@@ -70,8 +70,11 @@ describe(AccessibilityStatementComponent.name, () => {
 				expect(component.contactParameters).toBeDefined();
 			});
 
-			test.each([{property: 'emails'}, {property: 'phones'}])('to have an empty array as "$property"', ({property}) => {
-				expect(component.contactParameters[property]).toEqual([]);
+			test.each([
+				{property: 'emails', value: ['e@mail.com']},
+				{property: 'phones', value: []}
+			])('to have an empty array as "$property"', ({property, value}) => {
+				expect(component.contactParameters[property]).toEqual(value);
 			});
 		});
 

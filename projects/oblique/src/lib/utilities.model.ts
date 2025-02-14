@@ -39,14 +39,20 @@ export interface ObIObliqueConfiguration {
 	};
 }
 
+export type NonEmptyArray<Type> = [Type, ...Type[]];
+
 export interface ObIAccessibilityStatementConfiguration {
 	applicationName: string;
 	createdOn?: Date;
 	reviewedOn?: Date;
 	exceptions?: string[];
 	applicationOperator: string;
-	contact: {
-		emails?: string[];
-		phones?: string[];
-	};
+	contact: ObContact;
 }
+
+interface ObContactInfo {
+	emails: NonEmptyArray<string>;
+	phones: NonEmptyArray<string>;
+}
+
+type ObContact = Required<Pick<ObContactInfo, 'emails'>> | Required<Pick<ObContactInfo, 'phones'>> | Required<ObContactInfo>;

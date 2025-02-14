@@ -21,8 +21,8 @@ export class AccessibilityStatementComponent {
 		exceptionText: this.getConformityText(this.parameters)
 	};
 	readonly contactParameters = {
-		emails: this.parameters.contact.emails ?? [],
-		phones: this.parameters.contact.phones ?? []
+		emails: (this.parameters.contact as {emails: string[]}).emails ?? [],
+		phones: (this.parameters.contact as {phones: string[]}).phones ?? []
 	};
 	readonly generalLinks = [
 		{
