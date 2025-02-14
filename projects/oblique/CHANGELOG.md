@@ -1,3 +1,18 @@
+# [13.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.1...13.0.0-rc.2) (2025-02-14)
+
+## Bug Fixes
+
+- **accessibility-statement:** use ordered list for exceptions ([e5038a96](https://github.com/oblique-bit/oblique/commit/e5038a966a7a4d1b04424d57816952b51521028a))
+- **master-layout:** fix gap in footer links ([b39b9a68](https://github.com/oblique-bit/oblique/commit/b39b9a686e7c8736ff2ff89781b9f4d809593ea3))
+- **material:** add ellipsis to long labels ([b51cefc5](https://github.com/oblique-bit/oblique/commit/b51cefc5f779dae31f9cf942a0a2120fdd3a80a3))
+- **material:** prevent labels to overlap ([34c70681](https://github.com/oblique-bit/oblique/commit/34c70681b40275541405e2c2f9aad7011e0c47e7))
+- **service-navigation:** correct typo in i18n key ([449a3a0b](https://github.com/oblique-bit/oblique/commit/449a3a0bf85ec679fe0e9072797ef1d5cdebbf6a))
+- **service-navigation:** add missing i18n key for accessibility text on phone link ([fff30121](https://github.com/oblique-bit/oblique/commit/fff301210864e5f44efa95057ff8d8c662f0cc5d))
+
+## Features
+
+- **utilities:** `accessibilityStatement.contact` cannot be empty or contains empty arrays ([4f61d61a](https://github.com/oblique-bit/oblique/commit/4f61d61afbeda17a171908da95ad955925fe118a))
+
 # [13.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0-rc.1) (2025-02-12)
 
 ## Bug Fixes

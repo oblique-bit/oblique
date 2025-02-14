@@ -1,3 +1,10 @@
+# [13.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.1...13.0.0-rc.2) (2025-02-14)
+
+## Bug Fixes
+
+- **service-navigation:** correct typo in i18n key ([449a3a0b](https://github.com/oblique-bit/oblique/commit/449a3a0bf85ec679fe0e9072797ef1d5cdebbf6a))
+- **service-navigation:** add missing i18n key for accessibility text on phone link ([fff30121](https://github.com/oblique-bit/oblique/commit/fff301210864e5f44efa95057ff8d8c662f0cc5d))
+
 # [13.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0-rc.1) (2025-02-12)
 
 ## Features
