@@ -13,7 +13,14 @@ export interface TabbedPageComplete {
 	slug: string;
 	category: number;
 	api: string;
-	ui_ux: string;
+	ui_ux_purpose: string;
+	ui_ux_general_rules: UiUxEntry[];
+	ui_ux_do: UiUxEntry[];
+	ui_ux_do_not: UiUxEntry[];
+	ui_ux_design_file_latest: string;
+	ui_ux_design_file_previous: string;
+	ui_ux_related_links: UiUxEntry[];
+	ui_ux_additional_info: string;
 	min_version: number;
 	max_version: number;
 	deprecation: string;
@@ -26,4 +33,9 @@ export interface CmsData {
 	source: Type<CodeExamples> | undefined;
 	tab: string;
 	deprecation: string;
+}
+
+export interface UiUxEntry {
+	text: string;
+	id: number;
 }

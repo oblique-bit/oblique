@@ -35,7 +35,7 @@ export class CmsDataService {
 	}
 
 	getTabbedPageComplete(id: number): Observable<TabbedPageCompleteCms> {
-		return this.httpClient.get<TabbedPageCompleteCms>(`${this.baseUrl}items/TabbedPage/${id}`);
+		return this.httpClient.get<TabbedPageCompleteCms>(`${this.baseUrl}items/TabbedPage/${id}/?fields=*.*`);
 	}
 
 	getTabbedPagesShort(): Observable<CMSPageShortList> {
