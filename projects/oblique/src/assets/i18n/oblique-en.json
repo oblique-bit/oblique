@@ -149,6 +149,7 @@
   "i18n.oblique.service-navigation.profile.my-permissions": "My permissions",
   "i18n.oblique.service-navigation.profile.my-push-notifications": "My push-notifications",
   "i18n.oblique.service-navigation.profile.my-business-partnerships": "My business partnerships",
+  "i18n.oblique.service-navigation.section.tel.aria-label": "Phone link: {{ phoneNumber }}",
   "i18n.oblique.accessibility-statement.link": "Accessibility",
   "i18n.oblique.accessibility-statement.accessibility-in-the-federal-administration": "Accessibility in the Federal Administration",
   "i18n.oblique.accessibility-statement.information-and-services": "Information and services that are available digitally make it easier for people with disabilities to communicate with public sector bodies. This enables social involvement and political participation for all.",

@@ -31,7 +31,7 @@ describe('ObContactToLinksPipe', () => {
 						label: '+4123456',
 						isInternalLink: true,
 						ariaLabel: {
-							text: 'i18n.oblique.service-navigation.section.tel.arial-label',
+							text: 'i18n.oblique.service-navigation.section.tel.aria-label',
 							parameters: {phoneNumber: '+, 4, 1, 2, 3, 4, 5, 6'}
 						}
 					}
@@ -46,7 +46,7 @@ describe('ObContactToLinksPipe', () => {
 						label: '+4123456',
 						isInternalLink: true,
 						ariaLabel: {
-							text: 'i18n.oblique.service-navigation.section.tel.arial-label',
+							text: 'i18n.oblique.service-navigation.section.tel.aria-label',
 							parameters: {phoneNumber: '+, 4, 1, 2, 3, 4, 5, 6'}
 						}
 					}
@@ -62,7 +62,7 @@ describe('ObContactToLinksPipe', () => {
 						label: '+4123456',
 						isInternalLink: true,
 						ariaLabel: {
-							text: 'i18n.oblique.service-navigation.section.tel.arial-label',
+							text: 'i18n.oblique.service-navigation.section.tel.aria-label',
 							parameters: {phoneNumber: '+, 4, 1, 2, 3, 4, 5, 6'}
 						}
 					}

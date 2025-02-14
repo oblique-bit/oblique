@@ -149,6 +149,7 @@
   "i18n.oblique.service-navigation.profile.my-permissions": "Mes autorisations",
   "i18n.oblique.service-navigation.profile.my-push-notifications": "Mes notifications push",
   "i18n.oblique.service-navigation.profile.my-business-partnerships": "Mes partenariats commerciaux",
+  "i18n.oblique.service-navigation.section.tel.aria-label": "Lien téléphonique: {{ phoneNumber }}",
   "i18n.oblique.accessibility-statement.link": "Accessibilité",
   "i18n.oblique.accessibility-statement.accessibility-in-the-federal-administration": "Accessibilité au sein de l'administration fédérale",
   "i18n.oblique.accessibility-statement.information-and-services": "Les informations et les services fournis au format numérique facilitent la communication des personnes handicapées avec les instances publiques. Chacun peut ainsi participer à la vie sociale et politique.",

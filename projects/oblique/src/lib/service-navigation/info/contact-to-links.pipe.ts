@@ -35,7 +35,7 @@ export class ObContactToLinksPipe implements PipeTransform {
 	private buildTelAriaLabel(link: {type: string; value: string}): {text: string; parameters: Record<string, unknown>} | undefined {
 		return link.type === 'tel'
 			? {
-					text: 'i18n.oblique.service-navigation.section.tel.arial-label',
+					text: 'i18n.oblique.service-navigation.section.tel.aria-label',
 					parameters: {
 						phoneNumber: link.value
 							.split('')
