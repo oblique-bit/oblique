@@ -1,3 +1,9 @@
+# [13.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.1...13.0.0-rc.2) (2025-02-14)
+
+## Features
+
+- **material:** add form example with long labels ([e8b29645](https://github.com/oblique-bit/oblique/commit/e8b29645a15179d46a1bd29f5e05c792f263f707))
+
 # [13.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0-rc.1) (2025-02-12)
 
 ## Bug Fixes

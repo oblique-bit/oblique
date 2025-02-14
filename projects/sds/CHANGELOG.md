@@ -1,3 +1,10 @@
+# [13.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.1...13.0.0-rc.2) (2025-02-14)
+
+## Bug Fixes
+
+- **material:** ensure that the floating label is left-bound on the right-aligned examples ([6299e238](https://github.com/oblique-bit/oblique/commit/6299e2383c103680c1d58b1666157f47461da103))
+- **material:** prevent overlapping on the edge case ([636408fe](https://github.com/oblique-bit/oblique/commit/636408fe1b0afac01e34e3a84212821d046efe43))
+
 # [13.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0-rc.1) (2025-02-12)
 
 ## Bug Fixes
