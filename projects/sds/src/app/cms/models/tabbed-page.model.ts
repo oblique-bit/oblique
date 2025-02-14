@@ -29,10 +29,21 @@ export interface TabbedPageComplete {
 export interface CmsData {
 	title: string;
 	api: string;
-	uiUx: string;
+	uiUx: UiUxData;
 	source: Type<CodeExamples> | undefined;
 	tab: string;
 	deprecation: string;
+}
+
+export interface UiUxData {
+	purpose?: string;
+	do?: string[];
+	doNot?: string[];
+	generalRules?: string[];
+	designFileLatest?: string;
+	designFilePrevious?: string;
+	relatedLinks?: string[];
+	additionalInfo?: string;
 }
 
 export interface UiUxEntry {
