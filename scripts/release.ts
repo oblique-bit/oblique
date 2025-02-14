@@ -39,7 +39,7 @@ class Release extends StaticScript {
 			Files.overwrite('Jenkinsfile', content =>
 				content.replace(
 					/(?=master)/,
-					`'${branchName}': [\n\t\t\tpublish: [\n\t\t\t\t'./dist/oblique',\n\t\t\t\t'./dist/cli',\n\t\t\t\t'./dist/service-navigation-web-component'\n\t\t\t],\n\t\t\tgitTag: true\n\t\t],\n\t\t`
+					`'${branchName}': [\n\t\t\tpublish: [\n\t\t\t\t'@oblique/oblique',\n\t\t\t\t'@oblique/cli',\n\t\t\t\t'@oblique/service-navigation-web-component'\n\t\t\t],\n\t\t\tgitTag: true\n\t\t],\n\t\t`
 				)
 			);
 		}
