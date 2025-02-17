@@ -9,18 +9,17 @@ export class Publish extends StaticScript {
 	static perform(packageName: string): void {
 		Log.start(`Publish ${packageName}`);
 		console.log(process.cwd());
-		console.log(Files.exists('../../dist/oblique/LICENSE'));
+		console.log(Files.readJson('../../dist/oblique/package.json'));
 		const tag = /^\d+\.\d+\.\d+$/.test(currentVersion) ? 'latest' : 'next';
-		executeCommandWithLog(`npm publish ../../dist/${packageName} --access public --tag ${tag} --dry-run`, 'Publish');
+		executeCommandWithLog(`npm publish ../../dist/${packageName} --access public --tag ${tag} --dry-run --verbose`, 'Publish');
 		Publish.deprecatePreReleaseVersions(`@oblique/${packageName}`, currentVersion);
 		Log.success();
 	}
 
 	private static deprecatePreReleaseVersions(packageName: string, version: string): void {
 		// if (Publish.getTagOnNext(packageName).startsWith(currentVersion)) {
+		console.log(Files.read('../../dist/oblique/README.md'));
 		console.log(Publish.getTagOnNext(packageName), currentVersion, Publish.getTagOnNext(packageName).startsWith(currentVersion));
-		Git.bypassOwnershipCheck();
-		executeCommandWithLog('git status', 'git test');
 		// executeCommandWithLog(
 		// 	`npm deprecate ${packageName}@">${version}-0 <${version}" "Oblique ${version} has been released on ${Git.getTagDate(version)}"`,
 		// 	`Deprecate all pre-release versions of ${version}`
