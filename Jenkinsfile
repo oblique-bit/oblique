@@ -9,18 +9,7 @@ nodejsPipelineTemplate {
 	]
 	branches = [
 		'*': [
-			'lint': 'npm run lint',
-			'test': 'npm run test-ci -ws',
-			'build': 'npm run build -ws',
-			'sonar': [
-				'./projects/design-system',
-				'./projects/cli',
-				'./projects/oblique',
-				'./projects/sandbox',
-				'./projects/sandbox-ssr',
-				'./projects/sds',
-				'./projects/service-navigation-web-component'
-			]
+			'build': 'npm run build -w @oblique/oblique'
 		],
 		'release/major_*': [
 			'cloudFoundry': [
@@ -41,9 +30,7 @@ nodejsPipelineTemplate {
 		],
 		'OUI-3603-release-oblique-13.0.0-rc.3': [
 			publish: [
-				'@oblique/oblique',
-				'@oblique/cli',
-				'@oblique/service-navigation-web-component'
+				'@oblique/oblique'
 			],
 			gitTag: true
 		],

@@ -1,5 +1,5 @@
 import {version as currentVersion} from '../../package.json';
-import {executeCommandWithLog, getResultFromCommand} from './utils';
+import {executeCommand, executeCommandWithLog, getResultFromCommand} from './utils';
 import {StaticScript} from './static-script';
 import {Log} from './log';
 import {Git} from './git';
@@ -7,9 +7,11 @@ import {Git} from './git';
 export class Publish extends StaticScript {
 	static perform(packageName: string): void {
 		Log.start(`Publish ${packageName}`);
+		console.log(process.cwd());
+		executeCommandWithLog('git status', 'git test');
 		const tag = /^\d+\.\d+\.\d+$/.test(currentVersion) ? 'latest' : 'next';
-		executeCommandWithLog(`npm publish ../../dist/${packageName} --access public --tag ${tag}`, 'Publish');
-		Publish.deprecatePreReleaseVersions(`@oblique/${packageName}`, currentVersion);
+		executeCommandWithLog(`npm publish ../../dist/${packageName} --access public --tag ${tag} --dry-run`, 'Publish');
+		// Publish.deprecatePreReleaseVersions(`@oblique/${packageName}`, currentVersion);
 		Log.success();
 	}
 
