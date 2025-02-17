@@ -15,6 +15,7 @@ export class Publish extends StaticScript {
 
 	private static deprecatePreReleaseVersions(packageName: string, version: string): void {
 		if (Publish.getTagOnNext(packageName).startsWith(currentVersion)) {
+			Git.bypassOwnershipCheck();
 			executeCommandWithLog(
 				`npm deprecate ${packageName}@">${version}-0 <${version}" "Oblique ${version} has been released on ${Git.getTagDate(version)}"`,
 				`Deprecate all pre-release versions of ${version}`
