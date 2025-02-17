@@ -1,3 +1,9 @@
+# [13.0.0-rc.3](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.2...13.0.0-rc.3) (2025-02-17)
+
+## Bug Fixes
+
+- **toolchain:** fix publish script
+
 # [13.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.1...13.0.0-rc.2) (2025-02-14)
 
 ## Bug Fixes
