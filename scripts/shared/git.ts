@@ -58,4 +58,11 @@ export class Git {
 		const fullFormat = format.map(item => Git.format[item]).join(separator);
 		return getResultFromCommand(`git log --pretty=format:"${fullFormat}${commitSeparator}" ${from}..${to}`);
 	}
+
+	static bypassOwnershipCheck(): void {
+		executeCommandWithLog(
+			`git config --global --add safe.directory /data/jenkins/workspace/${Git.getCurrentBranchName()}`,
+			'Bypass ownership check'
+		);
+	}
 }
