@@ -7,7 +7,8 @@ import {Git} from './git';
 export class Publish extends StaticScript {
 	static perform(packageName: string): void {
 		Log.start(`Publish ${packageName}`);
-		executeCommandWithLog(`npm publish ./dist/${packageName} --access public`, 'Publish');
+		const tag = /^\d+\.\d+\.\d+$/.test(currentVersion) ? 'latest' : 'next';
+		executeCommandWithLog(`npm publish ../../dist/${packageName} --access public --tag ${tag}`, 'Publish');
 		Publish.deprecatePreReleaseVersions(`@oblique/${packageName}`, currentVersion);
 		Log.success();
 	}
