@@ -3,27 +3,30 @@ import {executeCommand, executeCommandWithLog, getResultFromCommand} from './uti
 import {StaticScript} from './static-script';
 import {Log} from './log';
 import {Git} from './git';
+import {Files} from './files';
 
 export class Publish extends StaticScript {
 	static perform(packageName: string): void {
 		Log.start(`Publish ${packageName}`);
 		console.log(process.cwd());
-		executeCommandWithLog('git status', 'git test');
+		console.log(Files.exists('../../dist/oblique/LICENSE'));
 		const tag = /^\d+\.\d+\.\d+$/.test(currentVersion) ? 'latest' : 'next';
 		executeCommandWithLog(`npm publish ../../dist/${packageName} --access public --tag ${tag} --dry-run`, 'Publish');
-		// Publish.deprecatePreReleaseVersions(`@oblique/${packageName}`, currentVersion);
+		Publish.deprecatePreReleaseVersions(`@oblique/${packageName}`, currentVersion);
 		Log.success();
 	}
 
 	private static deprecatePreReleaseVersions(packageName: string, version: string): void {
-		if (Publish.getTagOnNext(packageName).startsWith(currentVersion)) {
-			Git.bypassOwnershipCheck();
-			executeCommandWithLog(
-				`npm deprecate ${packageName}@">${version}-0 <${version}" "Oblique ${version} has been released on ${Git.getTagDate(version)}"`,
-				`Deprecate all pre-release versions of ${version}`
-			);
-			executeCommandWithLog(`npm dist-tag rm ${packageName} next`, 'Remove "next" tag');
-		}
+		// if (Publish.getTagOnNext(packageName).startsWith(currentVersion)) {
+		console.log(Publish.getTagOnNext(packageName), currentVersion, Publish.getTagOnNext(packageName).startsWith(currentVersion));
+		Git.bypassOwnershipCheck();
+		executeCommandWithLog('git status', 'git test');
+		// executeCommandWithLog(
+		// 	`npm deprecate ${packageName}@">${version}-0 <${version}" "Oblique ${version} has been released on ${Git.getTagDate(version)}"`,
+		// 	`Deprecate all pre-release versions of ${version}`
+		// );
+		// executeCommandWithLog(`npm dist-tag rm ${packageName} next`, 'Remove "next" tag');
+		// }
 	}
 
 	private static getTagOnNext(packageName: string): string {
