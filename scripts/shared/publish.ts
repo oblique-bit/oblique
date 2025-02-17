@@ -15,7 +15,8 @@ export class Publish extends StaticScript {
 	}
 
 	private static deprecatePreReleaseVersions(packageName: string, distPath: string, version: string): void {
-		if (Publish.getTagOnNext(packageName).startsWith(currentVersion)) {
+		const nextTag = Publish.getTagOnNext(packageName);
+		if (nextTag.startsWith(version) && nextTag !== version) {
 			executeCommandWithLog(
 				`npm deprecate ${packageName}@">${version}-0 <${version}" "Oblique ${version} has been released on ${Publish.getTagDateFromChangelog(version, distPath)}"`,
 				`Deprecate all pre-release versions of ${version}`
