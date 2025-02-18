@@ -1,6 +1,6 @@
 {
   "name": "@oblique/sds",
-  "version": "13.0.0-rc.5",
+  "version": "13.0.0-rc.6",
   "scripts": {
     "start": "ng serve",
     "lint": "ts-node scripts/lint.ts",
