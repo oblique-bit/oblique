@@ -1,3 +1,9 @@
+# [13.0.0-rc.6](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.5...13.0.0-rc.6) (2025-02-18)
+
+## Bug Fixes
+
+- **new:** use the correct version of dependencies ([2425328a](https://github.com/oblique-bit/oblique/commit/2425328a2f40d604b2f5edc2db0e1976cacb150a))
+
 # [13.0.0-rc.5](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.1...13.0.0-rc.5) (2025-02-18)
 
 ## Bug Fixes

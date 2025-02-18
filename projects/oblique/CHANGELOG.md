@@ -1,3 +1,10 @@
+# [13.0.0-rc.6](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.5...13.0.0-rc.6) (2025-02-18)
+
+## Bug Fixes
+
+- **master-layout:** always show footer links ([9f37bda9](https://github.com/oblique-bit/oblique/commit/9f37bda94447daef2dad6c2c134cfdc71e7b9b25))
+- **schematics:** create valid accessibility contact information ([963ce71b](https://github.com/oblique-bit/oblique/commit/963ce71b0c65b6f55ce22103971c48cac639c0c3))
+
 # [13.0.0-rc.5](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.1...13.0.0-rc.5) (2025-02-18)
 
 ## Bug Fixes
