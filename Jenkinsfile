@@ -39,14 +39,6 @@ nodejsPipelineTemplate {
 				['project': 'sandbox', 'space': 'patch']
 			]
 		],
-		'release/OUI-3609-release-oblique-13.0.0-rc.5': [
-			publish: [
-				'@oblique/oblique',
-				'@oblique/cli',
-				'@oblique/service-navigation-web-component'
-			],
-			gitTag: true
-		],
 		'release/OUI-3612-release-oblique-13.0.0-rc.6': [
 			publish: [
 				'@oblique/oblique',
