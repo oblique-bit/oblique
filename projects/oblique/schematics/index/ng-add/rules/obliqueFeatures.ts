@@ -192,7 +192,7 @@ function addAccessibilityStatementConfiguration(applicationTitle: string): Rule 
 		const content = readFile(tree, appModulePath);
 		const newContent = content.replace(
 			/(?<=provideObliqueConfiguration\()(?=\))/,
-			`{accessibilityStatement: {applicationName: '${applicationTitle}', applicationOperator: 'Replace me with the name and address of the federal office that exploit this application, HTML is permitted', contact: {/* at least 1 email or phone number has to be provided */}}}`
+			`{accessibilityStatement: {applicationName: '${applicationTitle}', applicationOperator: 'Replace me with the name and address of the federal office that exploit this application, HTML is permitted', contact: {/* at least 1 email or phone number has to be provided */ emails: [''], phones: ['']}}}`
 		);
 		writeFile(tree, appModulePath, newContent);
 		return tree;
