@@ -3,13 +3,13 @@ import {ExecSyncOptions, execSync} from 'child_process';
 
 export const currentVersions = {
 	/* eslint-disable @typescript-eslint/naming-convention */
-	'@oblique/oblique': '12',
-	'@angular/cli': '18',
-	'@angular/material': '18',
-	'@angular/core': '18',
-	'@angular-eslint/schematics': '18',
+	'@oblique/oblique': 'next',
+	'@angular/cli': '19',
+	'@angular/material': '19',
+	'@angular/core': '19',
+	'@angular-eslint/schematics': '19',
 	'@types/jest': '29',
-	'@angular-builders/jest': '18',
+	'@angular-builders/jest': '19',
 	jest: '29'
 	/* eslint-enable @typescript-eslint/naming-convention */
 } as const;
