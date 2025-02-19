@@ -57,10 +57,7 @@ export class NavTreeCodeExamplesComponent extends CodeExamples {
 			component: NavTreeExampleDisabledPreviewComponent,
 			idParts: ['disabled'],
 			title: 'Disabled',
-			snippets: [
-				this.getSnippet('nav-tree', 'disabled/nav-tree-example-disabled-preview.component.html', 'HTML'),
-				this.getSnippet('nav-tree', 'disabled/nav-tree-example-disabled-preview.component.ts', 'TS')
-			]
+			snippets: []
 		}
 	];
 }
