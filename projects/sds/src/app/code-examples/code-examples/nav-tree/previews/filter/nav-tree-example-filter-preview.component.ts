@@ -1,49 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ObNavTreeItemModel, ObNavTreeModule} from '@oblique/oblique';
+import {Component} from '@angular/core';
+import {MatButtonModule} from '@angular/material/button';
+import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-nav-tree-example-filter-preview',
 	templateUrl: './nav-tree-example-filter-preview.component.html',
-	imports: [ObNavTreeModule]
+	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule]
 })
-export class NavTreeExampleFilterPreviewComponent implements OnInit {
-	public items: ObNavTreeItemModel[];
-	private readonly tree = {
-		label: 'Navigation Tree',
-		items: [
-			{
-				id: 'tree-item-1',
-				label: 'Tree item 1'
-			},
-			{
-				id: 'tree-item-2',
-				label: 'New to Oblique? Sign up!',
-				labelParams: {title: 'Oblique'},
-				items: [
-					{
-						id: 'tree-item-2-1',
-						label: 'Tree item 2.1'
-					},
-					{
-						id: 'tree-item-2-2',
-						label: 'Tree item 2.2',
-						items: [
-							{
-								id: 'tree-item-2-2-alpha',
-								label: 'Tree item 2.2#alpha'
-							},
-							{
-								id: 'tree-item-2-2-beta',
-								label: 'Tree item 2.2#beta'
-							}
-						]
-					}
-				]
-			}
-		]
-	};
-
-	ngOnInit(): void {
-		this.items = this.tree.items.map(item => new ObNavTreeItemModel(item));
-	}
-}
+export class NavTreeExampleFilterPreviewComponent {}

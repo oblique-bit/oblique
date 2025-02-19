@@ -28,10 +28,7 @@ export class NavTreeCodeExamplesComponent extends CodeExamples {
 			component: NavTreeExampleFilterPreviewComponent,
 			idParts: ['filter'],
 			title: 'Filter',
-			snippets: [
-				this.getSnippet('nav-tree', 'filter/nav-tree-example-filter-preview.component.html', 'HTML'),
-				this.getSnippet('nav-tree', 'filter/nav-tree-example-filter-preview.component.ts', 'TS')
-			]
+			snippets: []
 		},
 		{
 			component: NavTreeExampleExpandCollapsePreviewComponent,
