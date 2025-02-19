@@ -34,11 +34,7 @@ export class NavTreeCodeExamplesComponent extends CodeExamples {
 			component: NavTreeExampleExpandCollapsePreviewComponent,
 			idParts: ['expand', 'collapse'],
 			title: 'Expand / collapse',
-			snippets: [
-				this.getSnippet('nav-tree', 'expand-collapse/nav-tree-example-expand-collapse-preview.component.html', 'HTML'),
-				this.getSnippet('nav-tree', 'expand-collapse/nav-tree-example-expand-collapse-preview.component.ts', 'TS'),
-				this.getSnippet('nav-tree', 'expand-collapse/nav-tree-example-expand-collapse-preview.component.scss', 'SCSS')
-			]
+			snippets: []
 		},
 		{
 			component: NavTreeExampleDataFromServicePreviewComponent,
