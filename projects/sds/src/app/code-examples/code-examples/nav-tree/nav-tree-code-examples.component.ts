@@ -40,11 +40,7 @@ export class NavTreeCodeExamplesComponent extends CodeExamples {
 			component: NavTreeExampleDataFromServicePreviewComponent,
 			idParts: ['data', 'from', 'service'],
 			title: 'Data from a service',
-			snippets: [
-				this.getSnippet('nav-tree', 'data-from-service/nav-tree-example-data-from-service-preview.component.html', 'HTML'),
-				this.getSnippet('nav-tree', 'data-from-service/nav-tree-example-data-from-service-preview.component.ts', 'TS'),
-				this.getSnippet('nav-tree', 'data-from-service/nav-tree-data.service.ts', 'TS (Service)')
-			]
+			snippets: []
 		},
 		{
 			component: NavTreeExampleDisabledPreviewComponent,
