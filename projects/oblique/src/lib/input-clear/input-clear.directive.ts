@@ -24,15 +24,13 @@ export class ObInputClearDirective implements OnInit {
 	constructor() {
 		// ensure matInput got resolved beforehand
 		this.window.setTimeout(() => {
-			const parent = this.element.nativeElement.parentElement;
-			if (parent) {
-				parent.classList.add('ob-text-control');
-			}
+			this.addParentClass('ob-text-control');
 		});
 	}
 
 	ngOnInit(): void {
 		this.checkControlType();
+		this.subscribeToInputValueChange();
 	}
 
 	@HostListener('click', ['$event'])
@@ -57,6 +55,26 @@ export class ObInputClearDirective implements OnInit {
 	private clearDatePicker(): void {
 		if (this.datePickerRef) {
 			this.datePickerRef.select(undefined);
+		}
+	}
+
+	private subscribeToInputValueChange(): void {
+		if (this.control instanceof AbstractControl) {
+			this.control.valueChanges.subscribe(value => {
+				this.handleParentClass(value);
+			});
+		}
+
+		if (this.control instanceof NgModel) {
+			this.control.control.valueChanges.subscribe(value => {
+				this.handleParentClass(value);
+			});
+		}
+
+		if (this.control instanceof HTMLInputElement) {
+			this.control.addEventListener('keyup', () => {
+				this.handleParentClass(this.control.value);
+			});
 		}
 	}
 
@@ -93,6 +111,28 @@ export class ObInputClearDirective implements OnInit {
 	private setFocus(): void {
 		if (this.control instanceof HTMLInputElement && this.focusOnClear) {
 			this.control.focus();
+		}
+	}
+
+	private addParentClass(cssClassName: string): void {
+		const parent = this.element.nativeElement.parentElement;
+		if (parent) {
+			parent.classList.add(cssClassName);
+		}
+	}
+
+	private removeParentClass(cssClassName: string): void {
+		const parent = this.element.nativeElement.parentElement;
+		if (parent) {
+			parent.classList.remove(cssClassName);
+		}
+	}
+
+	private handleParentClass(value: string): void {
+		if (value) {
+			this.addParentClass('ob-text-control-clear-has-value');
+		} else {
+			this.removeParentClass('ob-text-control-clear-has-value');
 		}
 	}
 }

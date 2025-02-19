@@ -28,7 +28,8 @@
 	}
 
 	input[disabled] + .ob-text-control-clear,
-	input[readonly] + .ob-text-control-clear {
+	input[readonly] + .ob-text-control-clear,
+	&:not(.ob-text-control-clear-has-value) .ob-text-control-clear {
 		display: none;
 	}
 }
