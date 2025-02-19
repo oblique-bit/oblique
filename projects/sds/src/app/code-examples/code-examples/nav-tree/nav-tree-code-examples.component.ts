@@ -22,10 +22,7 @@ export class NavTreeCodeExamplesComponent extends CodeExamples {
 			component: NavTreeExampleDefaultPreviewComponent,
 			idParts: ['default'],
 			title: 'Default',
-			snippets: [
-				this.getSnippet('nav-tree', 'default/nav-tree-example-default-preview.component.html', 'HTML'),
-				this.getSnippet('nav-tree', 'default/nav-tree-example-default-preview.component.ts', 'TS')
-			]
+			snippets: []
 		},
 		{
 			component: NavTreeExampleFilterPreviewComponent,
