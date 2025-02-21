@@ -3,7 +3,9 @@
 	<mat-chip-grid #chipGrid aria-label="Fruit selection">
 		<mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
 			{{ fruit }}
-			<mat-icon svgIcon="cancel-circle" matChipRemove [attr.aria-label]="'remove ' + fruit" />
+			<button type="button" matChipRemove [attr.aria-label]="'remove ' + fruit">
+				<mat-icon svgIcon="cancel-circle" />
+			</button>
 		</mat-chip-row>
 		<input
 			#fruitInput
