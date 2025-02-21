@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import {commandUsageText, currentVersions, execute, getHelpText, ngAddOblique, startObCommand} from '../utils/cli-utils';
 import {PackageDependencies, updateDescriptions} from './ob-update.model';
 import chalk from 'chalk';
+import {execSync} from 'child_process';
 
 export function createObUpdateCommand(): Command<[string], OptionValues> {
 	const command = new Command<[string], OptionValues>();
@@ -29,6 +30,7 @@ function handleAction(): void {
 export function handleObUpdateActions(): void {
 	try {
 		checkNeededDependencies();
+		addSchematicsAngular();
 		runUpdateDependencies();
 		runUpdateSave();
 		runNpmDedupe();
@@ -47,6 +49,21 @@ export function checkNeededDependencies(): void {
 			chalk.red(`Package @oblique/oblique not found. Please install Oblique with '${ngAddOblique.command}' to ${ngAddOblique.description}.`)
 		);
 		process.exit(1);
+	}
+}
+
+export function addSchematicsAngular(): void {
+	// This is temporary until a better solution is found
+	// The problem is that @schematics/angular, which is a dependency of Oblique, needs to be updated at the same time as the other packages,
+	// otherwise @angular-devkit/core won't be installed as a root dependency, but as a nested one. This can be solved with npm dedupe,
+	// but there's no way to execute this function in the middle of the update command.
+	// The solution is then to ensure that @schematics/angular is listed as a devDependency so that the update command also updates it
+	if (!isDependencyInPackage('@schematics/angular')) {
+		const pkg = findPackage();
+		if (pkg.dependencies) {
+			const groups = /[^~](?<major>\d+)\.\d+\.\d+"/.exec(pkg.dependencies['@angular/core'])?.groups ?? {major: '18'};
+			execSync(`npm i @schematics/angular@${groups['major']} --save-dev`, {stdio: 'inherit'});
+		}
 	}
 }
 
