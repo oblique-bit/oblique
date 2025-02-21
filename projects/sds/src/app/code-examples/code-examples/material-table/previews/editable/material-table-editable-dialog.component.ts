@@ -23,6 +23,10 @@ export class AppMaterialTableExampleEditableDialogComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
+		this.clear();
+	}
+
+	clear(): void {
 		this.editForm = this.buildEditFormGroup(this.formBuilder, this.data ?? ({} as PeriodicElement));
 	}
 
