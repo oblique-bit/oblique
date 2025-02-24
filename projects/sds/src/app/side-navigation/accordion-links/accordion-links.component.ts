@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject, combineLatest, map} from 'rxjs';
@@ -17,6 +17,7 @@ export class AccordionLinksComponent implements OnChanges, OnInit {
 	@Input() idPrefix = '';
 	@Input() selectedSlug = '';
 	@Input() urlParamVersion = null;
+	@Output() readonly linkClicked = new EventEmitter();
 
 	readonly componentId = 'accordion-links';
 
@@ -53,5 +54,9 @@ export class AccordionLinksComponent implements OnChanges, OnInit {
 		}
 
 		this.collapsedAccordionIds$.next(adjustedCollapsedAccordionIds);
+	}
+
+	handleLinkClicked(): void {
+		this.linkClicked.emit();
 	}
 }
