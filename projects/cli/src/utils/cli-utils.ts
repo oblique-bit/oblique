@@ -10,6 +10,7 @@ export const currentVersions = {
 	'@angular-eslint/schematics': '19',
 	'@types/jest': '29',
 	'@angular-builders/jest': '19',
+	'@schematics/angular': '19',
 	jest: '29'
 	/* eslint-enable @typescript-eslint/naming-convention */
 } as const;
@@ -132,7 +133,11 @@ export function execute(config: ObCommandConfig): void {
 		case 'ngAdd':
 			return executeNgCommand(`add ${getVersionedDependency(config.dependency)}`, config.options, config.execSyncOptions);
 		case 'ngUpdate':
-			return executeNgCommand(`update ${versionDependencies(config.dependencies).join(' ')}`, {}, config.execSyncOptions);
+			return executeNgCommand(
+				`update ${versionDependencies(config.dependencies).join(' ')}`,
+				{'allow-dirty': true}, // eslint-disable-line @typescript-eslint/naming-convention
+				config.execSyncOptions
+			);
 		case 'npmInstall':
 			return executeCommand(`npm install ${versionDependencies(config.dependencies).join(' ')}`, config.execSyncOptions);
 		case 'npmUpdate':
