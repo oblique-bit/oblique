@@ -1,3 +1,9 @@
+# [13.0.0-rc.7](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.6...13.0.0-rc.7) (2025-02-25)
+
+## Bug Fixes
+
+- **update:** make sure `@schematics/angular` is present and updated ([a2938608](https://github.com/oblique-bit/oblique/commit/a29386082eafe3c6eb89af4ca402493274a97529))
+
 # [13.0.0-rc.6](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.5...13.0.0-rc.6) (2025-02-18)
 
 ## Bug Fixes
