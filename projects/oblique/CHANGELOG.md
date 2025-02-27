@@ -1,47 +1,26 @@
-# [13.0.0-rc.6](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.5...13.0.0-rc.6) (2025-02-18)
+# [13.0.0](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0) (2025-02-27)
 
 ## Bug Fixes
 
 - **master-layout:** always show footer links ([9f37bda9](https://github.com/oblique-bit/oblique/commit/9f37bda94447daef2dad6c2c134cfdc71e7b9b25))
-- **schematics:** create valid accessibility contact information ([963ce71b](https://github.com/oblique-bit/oblique/commit/963ce71b0c65b6f55ce22103971c48cac639c0c3))
-
-# [13.0.0-rc.5](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.1...13.0.0-rc.5) (2025-02-18)
-
-## Bug Fixes
-
-- **toolchain:** fix publish script
-
-# [13.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.1...13.0.0-rc.2) (2025-02-14)
-
-## Bug Fixes
-
-- **accessibility-statement:** use ordered list for exceptions ([e5038a96](https://github.com/oblique-bit/oblique/commit/e5038a966a7a4d1b04424d57816952b51521028a))
 - **master-layout:** fix gap in footer links ([b39b9a68](https://github.com/oblique-bit/oblique/commit/b39b9a686e7c8736ff2ff89781b9f4d809593ea3))
 - **material:** add ellipsis to long labels ([b51cefc5](https://github.com/oblique-bit/oblique/commit/b51cefc5f779dae31f9cf942a0a2120fdd3a80a3))
-- **material:** prevent labels to overlap ([34c70681](https://github.com/oblique-bit/oblique/commit/34c70681b40275541405e2c2f9aad7011e0c47e7))
+- **master-layout:** adapt footer with respect to the new design ([67664340](https://github.com/oblique-bit/oblique/commit/67664340aaf1fa55a8ef9baa97e07947483554d5))
+- **master-layout:** let off-canvas in "layout expanded" mode behave correctly ([3c1bff7a](https://github.com/oblique-bit/oblique/commit/3c1bff7a0c986ee85a162661a2e41eb7d3c79735))
+- **material:** prevent labels from overflowing ([34c70681](https://github.com/oblique-bit/oblique/commit/34c70681b40275541405e2c2f9aad7011e0c47e7))
+- **material:** use `caption` typography for signature line in cards ([61cc95df](https://github.com/oblique-bit/oblique/commit/61cc95df8c825d12e6ff59b64580be9aed3faaef))
+- **nav-tree:** make disabled links non-reactive ([dc8f1459](https://github.com/oblique-bit/oblique/commit/dc8f14590b0fc4d1e6787b44f3517040af1e8aa0))
 - **service-navigation:** correct typo in i18n key ([449a3a0b](https://github.com/oblique-bit/oblique/commit/449a3a0bf85ec679fe0e9072797ef1d5cdebbf6a))
 - **service-navigation:** add missing i18n key for accessibility text on phone link ([fff30121](https://github.com/oblique-bit/oblique/commit/fff301210864e5f44efa95057ff8d8c662f0cc5d))
-
-## Features
-
-- **utilities:** `accessibilityStatement.contact` cannot be empty or contains empty arrays ([4f61d61a](https://github.com/oblique-bit/oblique/commit/4f61d61afbeda17a171908da95ad955925fe118a))
-
-# [13.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0-rc.1) (2025-02-12)
-
-## Bug Fixes
-
-- **master-layout:** adapt footer with respect to the new design ([67664340](https://github.com/oblique-bit/oblique/commit/67664340aaf1fa55a8ef9baa97e07947483554d5))
-- **master-layout:** let off-canvas in layout expanded mode behave correctly ([3c1bff7a](https://github.com/oblique-bit/oblique/commit/3c1bff7a0c986ee85a162661a2e41eb7d3c79735))
-- **material:** use `caption` typography for signature line in cards ([61cc95df](https://github.com/oblique-bit/oblique/commit/61cc95df8c825d12e6ff59b64580be9aed3faaef))
-- **material:** use red for invalid form filed ([59e5677b](https://github.com/oblique-bit/oblique/commit/59e5677b262150b2553604969aca6249b967b84d))
-- **nav-tree:** make disabled links non reactive ([dc8f1459](https://github.com/oblique-bit/oblique/commit/dc8f14590b0fc4d1e6787b44f3517040af1e8aa0))
+- **schematics:** deactivate `@angular-eslint/prefer-standalone` for new projects ([c8ef1df0](https://github.com/oblique-bit/oblique/commit/c8ef1df0c20d7468fc184707cecf6545b7e889e2))
+- **schematics:** deactivate `@angular-eslint/prefer-signals` for new projects ([c4c84f1b](https://github.com/oblique-bit/oblique/commit/c4c84f1bbdcbab34738791423f6d867a89897147))
+- **schematics:** create valid accessibility contact information ([963ce71b](https://github.com/oblique-bit/oblique/commit/963ce71b0c65b6f55ce22103971c48cac639c0c3))
 - **schematics:** increase initial budget to 1.7mb for ng-add ([3a0f0228](https://github.com/oblique-bit/oblique/commit/3a0f0228139103b598364abb32324d18a6745e32))
 - **schematics:** don't remove the production configuration ([e15f0a20](https://github.com/oblique-bit/oblique/commit/e15f0a20ba23513dc9e388bcad23e91f1a8b11fd))
 - **schematics:** correct test configuration ([e6cf09f4](https://github.com/oblique-bit/oblique/commit/e6cf09f4fe027837d7310dbda1eecb846843b36d))
 - **schematics:** ng-add don't add `no-host-metadata-property` Eslint rule anymore ([32369304](https://github.com/oblique-bit/oblique/commit/323693042210b9486e1d56b126f43d3d8ef105f4))
 - **schematics:** let `removeImport` ensure there is no lingering comma ([96958a0b](https://github.com/oblique-bit/oblique/commit/96958a0bd23a7f1f602cba5c22741915a48bbd7d))
 - **schematics:** let `addImport` recognize imports on multiple lines ([88bd2776](https://github.com/oblique-bit/oblique/commit/88bd2776a2e7dbe22d0e3a0cb936e2d82ae2193c))
-- **schematics:** correctly migrate Material configuration ([b14214be](https://github.com/oblique-bit/oblique/commit/b14214beaaddc7a31174e0df0b04e5c0249197d5))
 - **schematics:** add missing `standalone: false` to home component ([83c72ee1](https://github.com/oblique-bit/oblique/commit/83c72ee186cf4add904a485b571eaad5b6270677))
 
 ## Features
@@ -66,9 +45,11 @@
 - **oblique:** deprecate `OB_MATERIAL_CONFIG` ([c039a8df](https://github.com/oblique-bit/oblique/commit/c039a8df1920ae574890bfb3b39bef77829b7740))
 - **oblique:** modules don't provide Material's configuration anymore ([792d6396](https://github.com/oblique-bit/oblique/commit/792d63960d6f627e9f4dae3b534d0fd60c0cbcbd))
 - **oblique:** remove directives to work around unsupported `:has` pseudo-selector ([9ff1ffc4](https://github.com/oblique-bit/oblique/commit/9ff1ffc46171e4c6f06e82d30de80b8aad6241e1))
+- **oblique:** remove directives to work around unsupported `:has` pseudo-selector ([9ff1ffc4](https://github.com/oblique-bit/oblique/commit/9ff1ffc46171e4c6f06e82d30de80b8aad6241e1))
+- **oblique:** update Angular to v19 and refactor accordingly ([e43d3296](https://github.com/oblique-bit/oblique/commit/e43d32966107eae67ba9889c62b7924aff9a43d3))
 - **paginator:** deprecate `ObPaginatorModule` ([572c7283](https://github.com/oblique-bit/oblique/commit/572c7283e04987ce90c9468d7fbe8856bff17727))
 - **paginator:** `ObPaginatorModule` don't provide `ObPaginatorService` anymore ([0f9127c0](https://github.com/oblique-bit/oblique/commit/0f9127c0364a9b872cfcc682aa7c474ffd2f315a))
-- **schematics:** warn when standalone application is detected during update ([9f0162df](https://github.com/oblique-bit/oblique/commit/9f0162df2d7929c9624ce1cdb6fe92c3a3732161))
+- **schematics:** warn instead of throwing error when standalone application is detected during update ([9f0162df](https://github.com/oblique-bit/oblique/commit/9f0162df2d7929c9624ce1cdb6fe92c3a3732161))
 - **schematics:** remove import of `TranslateModule.forRoot(multiTranslateLoader())` ([9df3d742](https://github.com/oblique-bit/oblique/commit/9df3d742a6f7aa4464aba865bdd8ef88e209d69c))
 - **schematics:** remove import of `ObIconModule.forRoot()` ([1b8235a9](https://github.com/oblique-bit/oblique/commit/1b8235a9d330d8b4d98359c33e4f2b03fcc631d8))
 - **schematics:** set oblique compatible builder for new projects ([68a547cf](https://github.com/oblique-bit/oblique/commit/68a547cf6ed1e428ef759f7b16287edecd07cf9e))
@@ -78,6 +59,7 @@
 - **styles:** replace Roboto and Frutiger fonts with Noto Sans ([b224359d](https://github.com/oblique-bit/oblique/commit/b224359d0c51282e576f4377d5596a82acebcda5))
 - **styles:** prevent main nav to spill over ([5b4287b0](https://github.com/oblique-bit/oblique/commit/5b4287b0150fd06fed4aced1bc53e528f667ac7a))
 - **utilities:** deprecate `multiTranslateLoader` and `getTranslateLoader` ([f3a852a0](https://github.com/oblique-bit/oblique/commit/f3a852a0d40262dc92010ac31eb925f2e18eb5aa))
+- **utilities:** `accessibilityStatement.contact` cannot be empty or contains empty arrays ([4f61d61a](https://github.com/oblique-bit/oblique/commit/4f61d61afbeda17a171908da95ad955925fe118a))
 - **utilities:** provide a `provideObliqueConfiguration` function to configure Oblique ([6744f4dd](https://github.com/oblique-bit/oblique/commit/6744f4dd475431e27b998a55632a2327cd7a9407))
 
 ## BREAKING CHANGES
@@ -88,14 +70,19 @@
 - **master-layout:** The logo is no longer shown in the footer.
 - **material:** `ObCheckboxModule` has been removed without replacement because it wasn't needed anymore (Solved with Schematics)
 - **material:** `ObCheckboxDirective` has been removed without replacement because it wasn't needed anymore(Solved with Schematics)
-- **material:** `ob-table-row-checked` class has been removed, use `tr:has([checked])` instead (Solved withSchematics)
-- **oblique:** No Oblique module provides its Material's configuration or `WINDOW` injection token anymore. Use `provideObliqueConfiguration` instead (solved with Schematics)
+- **material:** `ob-table-row-checked` class has been removed, use `tr:has([checked])` instead (Solved with Schematics)
+- **oblique:** No Oblique module provides its Material's configuration or `WINDOW` injection token anymore. Use `provideObliqueConfiguration` instead (Solved with Schematics)
 - **oblique:** Projects must provide `provideObliqueConfiguration` in the application's root (Solved with Schematics)
 - **oblique:** `WINDOW` injection token may be needed to be injected in tests
 - **oblique:** `ObFormFieldModule` has been removed without replacement because it wasn't needed anymore (Solved with Schematics).
-- **oblique:** `ObPaginatorDirective` has been removed without replacement because it wasn't needed anymore (Solved with Schematics
-- **paginator:** `ObPaginatorService` is not provided by `ObPaginatorModule` anymore. Use `provideObliqueConfiguration` instead (solved with Schematics)
+- **oblique:** `ObPaginatorDirective` has been removed without replacement because it wasn't needed anymore (Solved with Schematics)
+- **paginator:** `ObPaginatorService` is not provided by `ObPaginatorModule` anymore. Use `provideObliqueConfiguration` instead (Solved with Schematics)
 - **styles:** Frutiger and Roboto fonts have both been replaced with Noto Sans (Solved with Schematics)
+- **toolchain:** Angular 18 isn't supported anymore
+- **toolchain:** `@angular-eslint` 18 isn't supported anymore, the EsLint configuration needs to be migrated, see https://eslint.org/docs/latest/use/configure/migration-guide
+- **toolchain:** `@angular-eslint/no-host-metadata-property` must be removed from the EsLint configuration
+- **toolchain:** `@angular-eslint/prefer-standalone` must be deactivated in the EsLint configuration
+- **toolchain:** `@angular-eslint/prefer-signals` must be deactivated in the EsLint configuration
 - **utilities:** `accessibilityStatement` configuration is mandatory for `provideObliqueConfiguration` (Solved with Schematics)
 
 # [12.2.3](https://github.com/oblique-bit/oblique/compare/12.2.2...12.2.3) (2025-01-17)

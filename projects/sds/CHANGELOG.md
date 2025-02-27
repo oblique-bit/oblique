@@ -1,16 +1,11 @@
-# [13.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.1...13.0.0-rc.2) (2025-02-14)
-
-## Bug Fixes
-
-- **material:** ensure that the floating label is left-bound on the right-aligned examples ([6299e238](https://github.com/oblique-bit/oblique/commit/6299e2383c103680c1d58b1666157f47461da103))
-- **material:** prevent overlapping on the edge case ([636408fe](https://github.com/oblique-bit/oblique/commit/636408fe1b0afac01e34e3a84212821d046efe43))
-
-# [13.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0-rc.1) (2025-02-12)
+# [13.0.0](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0) (2025-02-27)
 
 ## Bug Fixes
 
 - **autocomplete:** use json pipe to show the result of a selection ([a989f1ca](https://github.com/oblique-bit/oblique/commit/a989f1ca976213fbbfcb1547d50341528e62be2e))
 - **autocomplete:** remove 2 way binding ([6b50dd77](https://github.com/oblique-bit/oblique/commit/6b50dd77d770da4f0dbaeaf3dc96398b2acb25da))
+- **material:** ensure that the floating label is left-bound on the right-aligned examples ([6299e238](https://github.com/oblique-bit/oblique/commit/6299e2383c103680c1d58b1666157f47461da103))
+- **material:** prevent overlapping on the edge case ([636408fe](https://github.com/oblique-bit/oblique/commit/636408fe1b0afac01e34e3a84212821d046efe43))
 - **material:** prevent fields to overlap their container ([b519e272](https://github.com/oblique-bit/oblique/commit/b519e2722c6ba0a0f465911bd3d29dc67aedc6d0))
 - **material:** add missing `MatTooltip` for editable tables ([302ab90d](https://github.com/oblique-bit/oblique/commit/302ab90d8647d4010a0e67533a39a0038c987566))
 - **sds:** make tables accessible ([c08cdbb7](https://github.com/oblique-bit/oblique/commit/c08cdbb7d4985e55be1301d420b8bc221816d7e7))
