@@ -11,7 +11,6 @@ import {Popover12ExampleEventsPreviewComponent} from './previews/events/popover1
 	selector: 'app-code-example-popover12',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class Popover12CodeExamplesComponent extends CodeExamples {

@@ -19,7 +19,6 @@ import {ObMasterLayoutNavigationComponent} from './master-layout-navigation/mast
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/master-layout-navigation-item.directive';
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 import {ObOutlineDirective} from './outline.directive';
-import {obliqueExports, obliqueProviders} from '../utilities';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 import {ObIconModule} from '../icon/icon.module';
 import {ObButtonModule} from '../button/button.module';
@@ -39,6 +38,7 @@ export {ObMasterLayoutNavigationComponent} from './master-layout-navigation/mast
 export {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
 export {ObMasterLayoutConfig} from './master-layout.config';
 export {
+	ObICollapseBreakpoints,
 	ObINavigationLink,
 	ObEScrollMode,
 	ObIMasterLayoutEvent,
@@ -81,14 +81,12 @@ export {ObOutlineDirective} from './outline.directive';
 		ObMasterLayoutNavigationToggleDirective,
 		ObOutlineDirective
 	],
-	providers: obliqueProviders(),
 	exports: [
 		ObMasterLayoutComponent,
 		ObMasterLayoutFooterComponent,
 		ObMasterLayoutHeaderComponent,
 		ObMasterLayoutNavigationComponent,
-		ObOutlineDirective,
-		...obliqueExports
+		ObOutlineDirective
 	]
 })
 export class ObMasterLayoutModule {}

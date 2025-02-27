@@ -1,3 +1,35 @@
+# [13.0.0](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0) (2025-02-27)
+
+## Bug Fixes
+
+- **autocomplete:** use json pipe to show the result of a selection ([a989f1ca](https://github.com/oblique-bit/oblique/commit/a989f1ca976213fbbfcb1547d50341528e62be2e))
+- **autocomplete:** remove 2 way binding ([6b50dd77](https://github.com/oblique-bit/oblique/commit/6b50dd77d770da4f0dbaeaf3dc96398b2acb25da))
+- **material:** ensure that the floating label is left-bound on the right-aligned examples ([6299e238](https://github.com/oblique-bit/oblique/commit/6299e2383c103680c1d58b1666157f47461da103))
+- **material:** prevent overlapping on the edge case ([636408fe](https://github.com/oblique-bit/oblique/commit/636408fe1b0afac01e34e3a84212821d046efe43))
+- **material:** prevent fields to overlap their container ([b519e272](https://github.com/oblique-bit/oblique/commit/b519e2722c6ba0a0f465911bd3d29dc67aedc6d0))
+- **material:** add missing `MatTooltip` for editable tables ([302ab90d](https://github.com/oblique-bit/oblique/commit/302ab90d8647d4010a0e67533a39a0038c987566))
+- **sds:** make tables accessible ([c08cdbb7](https://github.com/oblique-bit/oblique/commit/c08cdbb7d4985e55be1301d420b8bc221816d7e7))
+
+## Features
+
+- **code-examples:** update unsaved changes example link ([59b758a5](https://github.com/oblique-bit/oblique/commit/59b758a564ab40e805d37e291ca5619a7afa1ceb))
+- **code-examples:** update unknown route example link ([86eca778](https://github.com/oblique-bit/oblique/commit/86eca77806cc352463a6653171364a533bde4e6a))
+- **code-examples:** update translations example link ([64302988](https://github.com/oblique-bit/oblique/commit/64302988d0563aea1208012794b3635a1b9fc25e))
+- **code-examples:** update off-canvas example link ([a324a28f](https://github.com/oblique-bit/oblique/commit/a324a28f7ba71f0c79696a29011f77870e8ed9ee))
+- **code-examples:** update master-layout example link ([b4422b7a](https://github.com/oblique-bit/oblique/commit/b4422b7a923ac8881f6922b9327c624b05de654c))
+- **code-examples:** update language example link ([92476e2e](https://github.com/oblique-bit/oblique/commit/92476e2e585711410e547ab13be45566569aef2e))
+- **code-examples:** update external link example link ([452e882f](https://github.com/oblique-bit/oblique/commit/452e882f30ee1bcc4e4fa20a620c65e793d3e2c8))
+- **code-examples:** update date example link ([534be8b7](https://github.com/oblique-bit/oblique/commit/534be8b72ed6e7909799048d12523b94d0bb9e23))
+- **code-examples:** update column-layout example link ([1808918c](https://github.com/oblique-bit/oblique/commit/1808918cd6d71d15321c152aba8f110d7f25f416))
+- **code-examples:** update breadcrumb example link ([98b9ccfd](https://github.com/oblique-bit/oblique/commit/98b9ccfd967664b3bf309910c8f531ee3a5c4ffb))
+- **code-examples:** update banner example link ([ee85fa68](https://github.com/oblique-bit/oblique/commit/ee85fa68946427f3355883e9e4dce420dc09ce10))
+- **component-page:** sanitize newsletter emails ([b2cf3b9e](https://github.com/oblique-bit/oblique/commit/b2cf3b9e7211d38dce64c286ccdf4bba93e133f3))
+- **nav-tree:** add an example of a disabled nav tree item ([653dd85a](https://github.com/oblique-bit/oblique/commit/653dd85a97baa4488e87a3ab1cd349fde935d41d))
+- **side-navigation:** move focus to search input field on ctrl k ([3eb26ea7](https://github.com/oblique-bit/oblique/commit/3eb26ea7e4dd92e3209eba056d53eeca09055eee))
+- **side-navigation:** add exception for the v13 master-layout API page ([5baf087c](https://github.com/oblique-bit/oblique/commit/5baf087c589a58df769605d357da7a0b01b0caa6))
+- **styles:** remove margin, padding and border on section elements ([45cf1baa](https://github.com/oblique-bit/oblique/commit/45cf1baa3ed425a8d56ea358cd93d647ccb18416))
+- **tabbed-page:** ensure that the deprecation chip is vertically aligned with the title ([ef368957](https://github.com/oblique-bit/oblique/commit/ef368957c5aba0630186f9e35ac98b47a458b1c7))
+
 # [12.2.3](https://github.com/oblique-bit/oblique/compare/12.2.2...12.2.3) (2025-01-17)
 
 ## Bug Fixes

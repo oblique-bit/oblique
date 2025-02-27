@@ -4,6 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, WINDOW} from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatTooltip} from '@angular/material/tooltip';
 import {MockBackEndService, PeriodicElement} from './mock-backend.service';
 import {AppMaterialTableExampleEditableDialogComponent} from './material-table-editable-dialog.component';
 
@@ -11,8 +12,7 @@ import {AppMaterialTableExampleEditableDialogComponent} from './material-table-e
 	selector: 'app-material-table-example-editable-preview',
 	templateUrl: './material-table-example-editable-preview.component.html',
 	styleUrls: ['./material-table-example-editable-preview.component.scss'],
-	imports: [MatTableModule, MatButtonModule, ObButtonModule, MatIconModule, MatDialogModule],
-	standalone: true
+	imports: [MatTableModule, MatButtonModule, ObButtonModule, MatIconModule, MatDialogModule, MatTooltip]
 })
 export class MaterialTableExampleEditablePreviewComponent implements OnInit {
 	public displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'actions'];

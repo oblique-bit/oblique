@@ -30,10 +30,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {
 	ObAlertModule,
 	ObButtonModule,
-	ObCheckboxModule,
 	ObColumnLayoutModule,
 	ObErrorMessagesModule,
-	ObIconModule,
 	ObInputClearModule,
 	ObSelectableModule,
 	ObSpinnerModule
@@ -60,7 +58,6 @@ import {MandatorySampleComponent} from './mandatory/mandatory.sample.component';
 import {FormComponent} from './form/form.component';
 import {TableEditComponent} from './table/table-edit.component';
 import {ObPaginatorModule} from '@oblique/paginator/ob-paginator.module';
-import {ObFormFieldModule} from '@oblique/form-field/form-field.module';
 import {SlideToggleComponent} from './slide-toggle/slide-toggle.component';
 import {MenuComponent} from './menu/menu.component';
 import {MatMenuModule} from '@angular/material/menu';
@@ -149,11 +146,8 @@ const appRoutes: Routes = [
 		NgOptimizedImage,
 		ObAlertModule,
 		ObButtonModule,
-		ObCheckboxModule,
 		ObColumnLayoutModule,
 		ObErrorMessagesModule,
-		ObFormFieldModule,
-		ObIconModule,
 		ObInputClearModule,
 		ObPaginatorModule,
 		ObSelectableModule,

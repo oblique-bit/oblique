@@ -4,7 +4,6 @@ import {ObNavTreeItemModel, ObNavTreeModule} from '@oblique/oblique';
 @Component({
 	selector: 'app-nav-tree-example-default-preview',
 	templateUrl: './nav-tree-example-default-preview.component.html',
-	standalone: true,
 	imports: [ObNavTreeModule]
 })
 export class NavTreeExampleDefaultPreviewComponent implements OnInit {

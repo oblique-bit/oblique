@@ -1,7 +1,6 @@
 @use "sass:selector";
 @use "sass:map";
 @use "../../../styles/scss/core/variables";
-@use "../../../styles/scss/core/mixins/layout";
 @use "../../../styles/scss/core/mixins/shadow";
 
 .ob-master-layout {
@@ -58,7 +57,7 @@
 		@at-root #{selector.append(".ob-has-layout", &)} {
 			padding: variables.$ob-spacing-default;
 
-			@include layout.ob-media-breakpoint-up(md) {
+			@at-root #{selector.append(".ob-layout-expanded", &)} {
 				padding: variables.$ob-spacing-default variables.$ob-spacing-lg;
 			}
 		}
@@ -68,7 +67,7 @@
 		overflow-y: auto; // shows scrollbars as necessary in fixed layout
 	}
 
-	@include layout.ob-media-breakpoint-down(md) {
+	&.ob-layout-collapsed {
 		&.ob-header-expanded {
 			.ob-main-layout,
 			.ob-master-layout-footer {
@@ -85,7 +84,7 @@
 		}
 	}
 
-	@include layout.ob-media-breakpoint-up(lg) {
+	@at-root #{selector.append(".ob-layout-expanded", &)} {
 		&.ob-has-max-width .ob-main-layout {
 			display: flex;
 			justify-content: center;

@@ -11,6 +11,22 @@ app-image {
 	width: calc(100% - 54px);
 }
 
+.search-field {
+	/*
+	 * Increase margin bottom in order to compensate the new line height
+	 * of the mat-hint element.
+	 */
+	margin-bottom: 1rem;
+
+	& mat-hint {
+		/*
+	     * In order to compensate the visual height of the <kdb> elements.
+	     * Normal line height is 1.6, just increased by one.
+	     */
+		line-height: 2.6;
+	}
+}
+
 :host {
 	overflow-y: scroll;
 }

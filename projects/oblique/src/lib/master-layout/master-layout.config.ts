@@ -58,7 +58,6 @@ export class ObMasterLayoutConfig {
 		isSticky: true,
 		isSmall: false,
 		isCustom: false,
-		reduceOnScroll: true,
 		serviceNavigation: {
 			profileLinks: [],
 			infoLinks: [],
@@ -87,7 +86,6 @@ export class ObMasterLayoutConfig {
 	 */
 	footer: ObIMasterLayoutFooter = {
 		isSticky: false,
-		isCustom: false,
-		hasLogoOnScroll: false
+		isCustom: false
 	};
 }

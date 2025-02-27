@@ -32,7 +32,6 @@ export class ObMockMasterLayoutConfig {
 		isSticky: true,
 		isSmall: false,
 		isCustom: false,
-		reduceOnScroll: true,
 		serviceNavigation: {}
 	};
 	navigation: ObIMasterLayoutNavigation = {
@@ -44,7 +43,6 @@ export class ObMockMasterLayoutConfig {
 	};
 	footer: ObIMasterLayoutFooter = {
 		isSticky: false,
-		isCustom: false,
-		hasLogoOnScroll: true
+		isCustom: false
 	};
 }

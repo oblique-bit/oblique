@@ -1,6 +1,6 @@
 {
   "name": "@oblique/design-system",
-  "version": "12.2.3",
+  "version": "13.0.0",
   "scripts": {
     "lint": "ts-node scripts/lint.ts",
     "format": "ts-node scripts/lint.ts --fix",
@@ -10,14 +10,14 @@
     "release": "ts-node scripts/release.ts"
   },
   "peerDependencies": {
-    "@angular/cdk": "^18.0.0 || ^19.0.0",
-    "@angular/common": "^18.0.0 || ^19.0.0",
-    "@angular/core": "^18.0.0 || ^19.0.0",
-    "@angular/material": "^18.0.0 || ^19.0.0",
-    "@ngx-translate/core": "^15.0.0"
+    "@angular/cdk": "^19.0.0 || ^20.0.0",
+    "@angular/common": "^19.0.0 || ^20.0.0",
+    "@angular/core": "^19.0.0 || ^20.0.0",
+    "@angular/material": "^19.0.0 || ^20.0.0",
+    "@ngx-translate/core": "^16.0.0"
   },
   "devDependencies": {
-    "ng-packagr": "^18.2.1"
+    "ng-packagr": "^19.0.1"
   },
   "sideEffects": false
 }

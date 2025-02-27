@@ -5,7 +5,8 @@ import {Directive} from '@angular/core';
  */
 @Directive({
 	selector: '[obColumnPanel]',
-	exportAs: 'obColumnPanel'
+	exportAs: 'obColumnPanel',
+	standalone: false
 })
 export class ObMockColumnPanelDirective {
 	toggle(): void {}

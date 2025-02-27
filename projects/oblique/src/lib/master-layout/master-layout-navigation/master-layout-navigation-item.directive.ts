@@ -11,7 +11,8 @@ import {obMasterLayoutNavigationSubMenuFilter} from './masterLayoutNavigationSub
 @Directive({
 	selector: '[obMasterLayoutNavigationItem]',
 	exportAs: 'obMasterLayoutNavigationItem',
-	host: {class: 'ob-master-layout-navigation-item'}
+	host: {class: 'ob-master-layout-navigation-item'},
+	standalone: false
 })
 export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy {
 	@HostBinding('class.ob-expanded') isExpanded = false;

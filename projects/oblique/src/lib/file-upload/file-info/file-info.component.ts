@@ -23,7 +23,6 @@ import {ObFileUploadService} from '../file-upload.service';
 	styleUrls: ['./file-info.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-file-info'},
-	standalone: true,
 	imports: [
 		MatTableModule,
 		MatSortModule,

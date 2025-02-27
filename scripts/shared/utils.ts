@@ -34,14 +34,16 @@ export function camelToKebabCase(key: string): string {
 
 export function updatePackageJsonVersion(version: string): void {
 	Log.info(`Update package.json version to ${version}.`);
-	const fileContent = Files.readJson<Record<'version', string>>('package.json');
+	const fileContent = Files.readJson('package.json') as Record<'version', string>;
 	fileContent.version = version;
 	Files.writeJson('package.json', fileContent);
 }
 
 export function updateSonarPropertiesVersion(version: string): void {
 	Log.info(`Update Sonar properties' project version to ${version}.`);
-	Files.overwrite('sonar-project.properties', content => content.replace(/(?<=sonar\.projectVersion=)\d+\.\d+\.\d+/, version));
+	Files.overwrite('sonar-project.properties', content =>
+		content.replace(/(?<=sonar\.projectVersion=)\d+\.\d+\.\d+(?:-(?:alpa|beta|rc)\.\d+)?/, version)
+	);
 }
 
 export function adaptReadmeLinks(project: string): void {

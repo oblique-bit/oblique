@@ -7,7 +7,6 @@ import {mockUrls} from '../../file-upload-simulate-interceptor';
 	selector: 'app-file-upload-upload-event-preview',
 	templateUrl: './file-upload-upload-event-preview.component.html',
 	styleUrls: ['../../../../code-example-flex-layout.scss'],
-	standalone: true,
 	imports: [ObFileUploadModule, NgFor]
 })
 export class FileUploadUploadEventPreviewComponent {

@@ -5,7 +5,6 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 	selector: 'app-slide-toggle-example-second-preview',
 	templateUrl: './slide-toggle-example-second-preview.component.html',
 	styleUrls: ['../../../../code-example-flex-layout.scss'],
-	standalone: true,
 	imports: [MatSlideToggleModule],
 	host: {class: 'layout-breakpoint-lg'}
 })

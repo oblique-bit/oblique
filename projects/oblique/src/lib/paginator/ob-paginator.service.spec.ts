@@ -1,9 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslateService, provideTranslateService} from '@ngx-translate/core';
 import {ObPaginatorService} from './ob-paginator.service';
-import {ObPaginatorModule} from './ob-paginator.module';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('ObPaginatorService', () => {
 	let paginatorService: ObPaginatorService;
@@ -11,7 +9,8 @@ describe('ObPaginatorService', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [TranslateModule.forRoot(), ObPaginatorModule, NoopAnimationsModule, HttpClientTestingModule]
+			imports: [NoopAnimationsModule],
+			providers: [ObPaginatorService, provideTranslateService()]
 		}).compileComponents();
 		translateService = TestBed.inject(TranslateService);
 		paginatorService = TestBed.inject(ObPaginatorService);

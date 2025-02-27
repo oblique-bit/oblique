@@ -17,18 +17,31 @@ import {
 	routingModulePath
 } from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {ObliquePackage, addFile, createSafeRule, infoMigration, setOrCreateAngularProjectsConfig} from '../../utils';
+import {ObliquePackage, addFile, createSafeRule, infoMigration, readFile, setOrCreateAngularProjectsConfig, writeFile} from '../../utils';
 
 export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, _context: SchematicContext) =>
 		chain([
+			addObliqueProviders(),
 			addAjv(options.ajv),
 			addUnknownRoute(options.unknownRoute),
 			addInterceptors(options.httpInterceptors),
 			addBanner(options.banner, options.environments),
 			addDefaultHomeComponent(options.prefix),
-			addExternalLink(options.externalLink)
+			addExternalLink(options.externalLink),
+			addAccessibilityStatementConfiguration(options.title)
 		])(tree, _context);
+}
+
+function addObliqueProviders(): Rule {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		infoMigration(_context, 'Oblique feature: Adding Oblique configuration');
+		const sourceFile = createSrcFile(tree, appModulePath);
+		const changes = addProviderToModule(sourceFile, appModulePath, 'provideObliqueConfiguration()', '@oblique/oblique')
+			.filter((change: Change) => change instanceof InsertChange)
+			.map((change: InsertChange) => adaptInsertChange(tree, change, 'provideObliqueConfiguration()', 'provideObliqueConfiguration'));
+		return applyChanges(tree, appModulePath, changes);
+	});
 }
 
 function addAjv(ajv: boolean): Rule {
@@ -169,6 +182,19 @@ function addExternalLink(externalLink: boolean): Rule {
 			const changes: Change[] = addImportToModule(sourceFile, appModulePath, 'ObExternalLinkModule', ObliquePackage);
 			return applyChanges(tree, appModulePath, changes);
 		}
+		return tree;
+	});
+}
+
+function addAccessibilityStatementConfiguration(applicationTitle: string): Rule {
+	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		infoMigration(_context, 'Oblique feature: Adding accessibility statement configuration');
+		const content = readFile(tree, appModulePath);
+		const newContent = content.replace(
+			/(?<=provideObliqueConfiguration\()(?=\))/,
+			`{accessibilityStatement: {applicationName: '${applicationTitle}', applicationOperator: 'Replace me with the name and address of the federal office that exploit this application, HTML is permitted', contact: {/* at least 1 email or phone number has to be provided */ emails: [''], phones: ['']}}}`
+		);
+		writeFile(tree, appModulePath, newContent);
 		return tree;
 	});
 }

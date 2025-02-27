@@ -1,0 +1,99 @@
+@use "../../../styles/scss/core/variables";
+@use "../../../styles/scss/core/mixins/layout";
+@use "../../../styles/scss/core/mixins/shadow";
+
+.ob-master-layout-navigation {
+	> nav > ul {
+		transition: padding variables.$ob-duration-default; // because navigation-scrollable-* classes are dynamic
+	}
+
+	&.navigation-scrollable {
+		position: relative;
+
+		.ob-navigation-scrollable-control {
+			display: none;
+		}
+
+		.ob-layout-collapsed & {
+			.ob-navigation-scrollable-content > li {
+				// Ensure navigation scrolling is disabled on small viewports:
+				margin-left: 0 !important;
+			}
+		}
+
+		.ob-layout-expanded & {
+			.ob-navigation-scrollable-control {
+				position: absolute;
+				top: 0;
+				height: 100%;
+				padding: 0 variables.$ob-spacing-sm;
+				border: none;
+				display: inline-block;
+				background-color: variables.$ob-white;
+				z-index: variables.$ob-z-index-controls + 2;
+
+				$ob-active-focus-border: variables.$ob-line-width-sm solid variables.$ob-accent;
+				$ob-scrollable-box-shadow-left: 6px 0 4px (-4px) variables.$ob-secondary-100;
+
+				&.ob-navigation-scrollable-control-left {
+					box-shadow: $ob-scrollable-box-shadow-left;
+					left: 0;
+
+					&:not([disabled]) {
+						&:active,
+						&:focus {
+							border-right: $ob-active-focus-border;
+						}
+					}
+				}
+
+				&.ob-navigation-scrollable-control-right {
+					box-shadow: -$ob-scrollable-box-shadow-left;
+					right: 0;
+
+					&:not([disabled]) {
+						&:active,
+						&:focus {
+							border-left: $ob-active-focus-border;
+						}
+					}
+				}
+
+				.ob-icon-wrapper {
+					display: flex;
+
+					> * {
+						transition: transform variables.$ob-duration-fast ease-in-out;
+					}
+				}
+
+				&:hover,
+				&:focus,
+				&:active,
+				&[disabled] {
+					box-shadow: none;
+				}
+
+				&:not([disabled]) {
+					&:hover {
+						cursor: pointer;
+						background-color: variables.$ob-secondary-50;
+
+						.mat-icon {
+							transform: scale(1.3);
+						}
+					}
+
+					&:focus {
+						background-color: variables.$ob-secondary-100;
+					}
+				}
+			}
+
+			.ob-navigation-scrollable-content {
+				padding-right: variables.$ob-navigation-scrollable-padding;
+				padding-left: variables.$ob-navigation-scrollable-padding;
+			}
+		}
+	}
+}

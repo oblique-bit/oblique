@@ -11,7 +11,6 @@ import {StepperExampleErrorPreviewComponent} from '../stepper/previews/error/ste
 	selector: 'app-code-example-stepper',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class StepperCodeExamplesComponent extends CodeExamples {

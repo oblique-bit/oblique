@@ -11,8 +11,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 	selector: 'app-slider-code-examples',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CodeExampleComponent, CommonModule, IdPipe],
-	standalone: true
+	imports: [CodeExampleComponent, CommonModule, IdPipe]
 })
 export class SliderCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'slider-examples';

@@ -5,7 +5,8 @@ import {NgForm} from '@angular/forms';
 	selector: 'sb-nested-form-grandchild-td-sample',
 	exportAs: 'grandChildTD',
 	templateUrl: './nested-form-grandchild-td-sample.component.html',
-	styleUrls: ['./mandatory.scss']
+	styleUrls: ['./mandatory.scss'],
+	standalone: false
 })
 export class NestedFormGrandChildTDSampleComponent {
 	@ViewChild(NgForm, {static: true}) ngForm;

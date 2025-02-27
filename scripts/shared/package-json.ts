@@ -14,7 +14,7 @@ export class PackageJson extends StaticScript {
 		PackageJson.instance = new PackageJson();
 		const subPath = folder ? `${projectName}/${folder}` : projectName;
 		(PackageJson.instance as PackageJson).path = `../../dist/${subPath}/package.json`;
-		(PackageJson.instance as PackageJson).content = Files.readJson<PackageJsonContent>((PackageJson.instance as PackageJson).path);
+		(PackageJson.instance as PackageJson).content = Files.readJson((PackageJson.instance as PackageJson).path) as PackageJsonContent;
 		return PackageJson.instance as PackageJson;
 	}
 
@@ -71,6 +71,6 @@ export class PackageJson extends StaticScript {
 	}
 
 	private static readRootPackageJson(): PackageJsonContent {
-		return Files.readJson<PackageJsonContent>('../../package.json');
+		return Files.readJson('../../package.json') as PackageJsonContent;
 	}
 }

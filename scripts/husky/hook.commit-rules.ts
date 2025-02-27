@@ -84,7 +84,7 @@ class HookCommitRules {
 		const filePaths = Git.getChangedFileNames()
 			.split('\n')
 			.filter(filePath => !!filePath)
-			.filter(filePath => filePath !== 'package-lock.json')
+			.filter(filePath => !['package-lock.json', 'angular.json'].includes(filePath))
 			.filter(filePath => !new RegExp(`projects/${HookCommitRules.getFolderName(pkg)}/.*`).test(filePath));
 		if (filePaths.length && pkg !== 'toolchain') {
 			HookCommitRules.fatal(
@@ -151,9 +151,9 @@ class HookCommitRules {
 		switch (digit + 1) {
 			case 1:
 				return '1st';
-			case 2: // eslint-disable-line no-magic-numbers
+			case 2:
 				return '2nd';
-			case 3: // eslint-disable-line no-magic-numbers
+			case 3:
 				return '3rd';
 			default:
 				return `${digit + 1}th`;

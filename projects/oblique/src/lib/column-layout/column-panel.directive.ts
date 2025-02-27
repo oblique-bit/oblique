@@ -3,7 +3,8 @@ import {Directive, EventEmitter, HostBinding, Output} from '@angular/core';
 @Directive({
 	selector: '[obColumnPanel]',
 	exportAs: 'obColumnPanel',
-	host: {class: 'ob-column-panel'}
+	host: {class: 'ob-column-panel'},
+	standalone: false
 })
 export class ObColumnPanelDirective {
 	@HostBinding('class.ob-collapsed') public collapsed = false;

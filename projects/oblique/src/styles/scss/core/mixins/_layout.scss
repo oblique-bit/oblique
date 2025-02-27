@@ -2,7 +2,7 @@
 @use "../variables";
 
 @mixin ob-map-error($map, $key) {
-	@if map-has-key($map, $key) {
+	@if map.has-key($map, $key) {
 		@content;
 	} @else {
 		@warn "Unknown breakpoint name: #{$key}.";

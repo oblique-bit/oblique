@@ -13,7 +13,6 @@ import {BannerComponent} from './banner/banner.component';
 	selector: 'app-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss'],
-	standalone: true,
 	imports: [CommonModule, RouterOutlet, ObSpinnerModule, SideNavigationComponent, FeedbackButtonComponent, BannerComponent]
 })
 export class AppComponent {

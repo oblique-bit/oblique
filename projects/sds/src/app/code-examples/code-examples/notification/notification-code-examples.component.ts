@@ -10,7 +10,6 @@ import {NotificationExampleOtherOptionsPreviewComponent} from '../notification/p
 	selector: 'app-code-example-notification',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class NotificationCodeExamplesComponent extends CodeExamples {

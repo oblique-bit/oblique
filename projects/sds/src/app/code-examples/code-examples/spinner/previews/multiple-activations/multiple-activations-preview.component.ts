@@ -6,8 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 	selector: 'app-multiple-activations-preview',
 	templateUrl: './multiple-activations-preview.component.html',
 	styleUrls: ['./multiple-activations-preview.component.scss'],
-	imports: [ObSpinnerModule, ObButtonModule, MatButtonModule],
-	standalone: true
+	imports: [ObSpinnerModule, ObButtonModule, MatButtonModule]
 })
 export class MultipleActivationsPreviewComponent implements OnDestroy {
 	counter = 0;

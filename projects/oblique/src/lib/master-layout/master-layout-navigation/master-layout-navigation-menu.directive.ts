@@ -3,7 +3,8 @@ import {Directive, ElementRef, HostBinding, Renderer2, inject} from '@angular/co
 @Directive({
 	selector: '[obMasterLayoutNavigationMenu]',
 	exportAs: 'obMasterLayoutNavigationMenu',
-	host: {class: 'ob-master-layout-navigation-menu'}
+	host: {class: 'ob-master-layout-navigation-menu'},
+	standalone: false
 })
 export class ObMasterLayoutNavigationMenuDirective {
 	@HostBinding('class.ob-has-opened-menu') public hasOpenedMenu = false;

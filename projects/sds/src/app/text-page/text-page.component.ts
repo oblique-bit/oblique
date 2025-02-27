@@ -13,7 +13,6 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 	selector: 'app-text-page',
 	templateUrl: './text-page.component.html',
 	styleUrls: ['./text-page.component.scss'],
-	standalone: true,
 	imports: [CommonModule, IdPipe]
 })
 export class TextPageComponent implements AfterViewChecked {

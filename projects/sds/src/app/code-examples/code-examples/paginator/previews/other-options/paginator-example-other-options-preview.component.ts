@@ -7,7 +7,6 @@ import {JsonPipe} from '@angular/common';
 	selector: 'app-paginator-example-other-options-preview',
 	templateUrl: './paginator-example-other-options-preview.component.html',
 	styleUrls: ['../paginator-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
-	standalone: true,
 	imports: [JsonPipe, MatPaginatorModule, ObPaginatorModule],
 	host: {class: 'layout-column flex-end'}
 })

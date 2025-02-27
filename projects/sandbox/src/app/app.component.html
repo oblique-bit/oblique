@@ -1,4 +1,4 @@
-<ob-master-layout [skipLinks]="skipLinks" [navigation]="navigation">
+<ob-master-layout [skipLinks]="skipLinks" [navigation]="navigation" [collapseBreakpoint]="nav.collapseBreakpoint()" version="v12.2.3">
 	<ng-container obHeaderTitle>Oblique</ng-container>
 	<ng-template #obHeaderControl>
 		<ob-autocomplete class="ob-sm-down-width-100" [autocompleteOptions]="autocompleteItems$ | async" [formControl]="search">
@@ -56,17 +56,14 @@
 	</ng-template>
 
 	<ng-template #obFooterLink>
-		<a href="http://www.google.ch" role="button" id="link-to-google-ch" matTooltip="google.ch" target="_blank">Google</a>
+		<a href="http://www.google.ch" id="link-to-google-ch" matTooltip="google.ch">Google</a>
 	</ng-template>
 	<ng-template #obFooterLink>
-		<a class="ob-show-external-link-icon" id="link-to-blick-ch" href="http://www.blick.ch" role="button" target="_blank" placement="left"
-			>Blick</a
-		>
+		<a id="link-to-blick-ch" href="http://www.blick.ch">Blick</a>
 	</ng-template>
 
 	<ng-container obFooterInfo>
 		<p>&copy; {{ year }} {{ "i18n.application.organization.name" | translate }}</p>
-		<p><a href="http://www.google.ch">Some link</a></p>
 	</ng-container>
 	<ng-container obOffCanvasTitle>Hello world title</ng-container>
 	<ng-container obOffCanvasContent>Hello world content</ng-container>

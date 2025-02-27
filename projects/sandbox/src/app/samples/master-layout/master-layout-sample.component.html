@@ -11,6 +11,16 @@
 			<mat-slide-toggle [(ngModel)]="hasMainNavigation">has main navigation</mat-slide-toggle>
 			<mat-slide-toggle [(ngModel)]="hasOffCanvas">has off-canvas</mat-slide-toggle>
 			<mat-form-field>
+				<mat-label>Collapse breakpoint</mat-label>
+				<mat-select [(ngModel)]="breakpoint">
+					<mat-option value="xs">xs</mat-option>
+					<mat-option value="sm">sm</mat-option>
+					<mat-option value="md">md</mat-option>
+					<mat-option value="lg">lg</mat-option>
+					<mat-option value="xl">xl</mat-option>
+				</mat-select>
+			</mat-form-field>
+			<mat-form-field>
 				<mat-label>home page route</mat-label>
 				<input matInput type="text" [(ngModel)]="homePageRoute" />
 			</mat-form-field>
@@ -21,7 +31,6 @@
 		<mat-card-content>
 			<mat-slide-toggle [(ngModel)]="isHeaderSticky">is sticky</mat-slide-toggle>
 			<mat-slide-toggle [(ngModel)]="isHeaderSmall">is small</mat-slide-toggle>
-			<mat-slide-toggle [(ngModel)]="reduceOnScroll">reduce on scroll</mat-slide-toggle>
 			<mat-slide-toggle [(ngModel)]="isHeaderCustom">is custom</mat-slide-toggle>
 		</mat-card-content>
 	</mat-card>
@@ -29,7 +38,6 @@
 		<mat-card-title>Footer</mat-card-title>
 		<mat-card-content>
 			<mat-slide-toggle [(ngModel)]="isFooterSticky">is sticky</mat-slide-toggle>
-			<mat-slide-toggle [(ngModel)]="hasLogoOnScroll">has logo on scroll</mat-slide-toggle>
 			<mat-slide-toggle [(ngModel)]="isFooterCustom">is custom</mat-slide-toggle>
 		</mat-card-content>
 	</mat-card>

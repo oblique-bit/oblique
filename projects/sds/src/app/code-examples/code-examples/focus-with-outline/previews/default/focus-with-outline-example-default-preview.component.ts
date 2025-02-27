@@ -4,13 +4,12 @@ import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatButton} from '@angular/material/button';
 import {MatInput} from '@angular/material/input';
-import {ObButtonDirective, ObFormFieldDirective, ObSelectDirective, obFocusWithOutline} from '@oblique/oblique';
+import {ObButtonDirective, obFocusWithOutline} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-focus-with-outline-example-default-preview',
 	templateUrl: './focus-with-outline-example-default-preview.component.html',
-	standalone: true,
-	imports: [MatFormField, MatSelect, MatOption, MatLabel, MatButton, ObButtonDirective, ObFormFieldDirective, ObSelectDirective, MatInput]
+	imports: [MatFormField, MatSelect, MatOption, MatLabel, MatButton, ObButtonDirective, MatInput]
 })
 export class FocusWithOutlineExampleDefaultPreviewComponent implements AfterViewInit {
 	@ViewChild(MatInput, {read: ElementRef}) private readonly input!: ElementRef<HTMLElement>;

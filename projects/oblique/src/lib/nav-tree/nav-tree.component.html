@@ -5,49 +5,74 @@
 </mat-form-field>
 <ng-template #itemList let-items let-isParentCollapsed="isParentCollapsed">
 	<ng-container *ngFor="let item of items">
-		<li
-			*ngIf="visible(item)"
-			class="open"
-			role="presentation"
-			(ob.navTree.item.toggleCollapsed)="item.collapsed = !item.collapsed"
-			[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
-			[class.disabled]="item.disabled === true || null"
-		>
-			<a
-				class="ob-nav-link"
-				role="treeitem"
-				aria-selected="false"
-				[routerLink]="item.routes"
-				#rla="routerLinkActive"
-				routerLinkActive
-				[queryParams]="item.queryParams"
-				[fragment]="item.fragment"
-				(click)="item.collapsed = !item.collapsed"
-				[class.collapsed]="item.items ? isParentCollapsed || item.collapsed : undefined"
-				[class.has-child]="item.items"
-				[class.active]="isLinkActive(rla, item)"
-				[attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
-				[attr.disabled]="item.disabled === true || null"
-				[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
+		@if (item.disabled === true || null) {
+			<li
+				*ngIf="visible(item)"
+				class="open disabled"
+				role="presentation"
+				[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
 			>
-				<span class="ob-icon-wrapper"
-					><mat-icon [svgIcon]="'chevron-' + (isParentCollapsed || item.collapsed ? 'right' : 'down')" *ngIf="item.items"
-				/></span>
-				<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
-			</a>
-			<div [id]="'#' + itemKey(item)" class="collapse" *ngIf="item.items" [hidden]="isParentCollapsed || item.collapsed">
-				<ul
-					class="ob-nav-tree"
-					[class.ob-expanded]="!isParentCollapsed && !item.collapsed"
-					[class.disabled]="item.disabled === true || null"
-					role="group"
+				<a
+					class="ob-nav-link"
+					role="treeitem"
+					aria-selected="false"
+					disabled
+					[class.collapsed]="item.items ? isParentCollapsed || item.collapsed : undefined"
+					[class.has-child]="item.items"
+					[attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
+					[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
 				>
-					<ng-container
-						*ngTemplateOutlet="itemList; context: { $implicit: item.items, isParentCollapsed: isParentCollapsed || item.collapsed }"
-					/>
-				</ul>
-			</div>
-		</li>
+					<span class="ob-icon-wrapper"
+						><mat-icon [svgIcon]="'chevron-' + (isParentCollapsed || item.collapsed ? 'right' : 'down')" *ngIf="item.items"
+					/></span>
+					<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
+				</a>
+				<div [id]="'#' + itemKey(item)" class="collapse" *ngIf="item.items" [hidden]="isParentCollapsed || item.collapsed">
+					<ul class="ob-nav-tree disabled" [class.ob-expanded]="!isParentCollapsed && !item.collapsed" role="group">
+						<ng-container
+							*ngTemplateOutlet="itemList; context: { $implicit: item.items, isParentCollapsed: isParentCollapsed || item.collapsed }"
+						/>
+					</ul>
+				</div>
+			</li>
+		} @else {
+			<li
+				*ngIf="visible(item)"
+				class="open"
+				role="presentation"
+				(ob.navTree.item.toggleCollapsed)="item.collapsed = !item.collapsed"
+				[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
+			>
+				<a
+					class="ob-nav-link"
+					role="treeitem"
+					aria-selected="false"
+					[routerLink]="item.routes"
+					#rla="routerLinkActive"
+					routerLinkActive
+					[queryParams]="item.queryParams"
+					[fragment]="item.fragment"
+					(click)="item.collapsed = !item.collapsed"
+					[class.collapsed]="item.items ? isParentCollapsed || item.collapsed : undefined"
+					[class.has-child]="item.items"
+					[class.active]="isLinkActive(rla, item)"
+					[attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
+					[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
+				>
+					<span class="ob-icon-wrapper"
+						><mat-icon [svgIcon]="'chevron-' + (isParentCollapsed || item.collapsed ? 'right' : 'down')" *ngIf="item.items"
+					/></span>
+					<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
+				</a>
+				<div [id]="'#' + itemKey(item)" class="collapse" *ngIf="item.items" [hidden]="isParentCollapsed || item.collapsed">
+					<ul class="ob-nav-tree" [class.ob-expanded]="!isParentCollapsed && !item.collapsed" role="group">
+						<ng-container
+							*ngTemplateOutlet="itemList; context: { $implicit: item.items, isParentCollapsed: isParentCollapsed || item.collapsed }"
+						/>
+					</ul>
+				</div>
+			</li>
+		}
 	</ng-container>
 </ng-template>
 <ul

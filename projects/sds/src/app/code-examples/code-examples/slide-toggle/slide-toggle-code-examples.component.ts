@@ -10,7 +10,6 @@ import {SlideToggleExampleSecondPreviewComponent} from './previews/second/slide-
 	selector: 'app-code-example-slide-toggle',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class SlideToggleCodeExamplesComponent extends CodeExamples {

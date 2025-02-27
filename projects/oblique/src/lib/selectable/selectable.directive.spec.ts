@@ -6,20 +6,23 @@ import {ObSelectableDirective} from './selectable.directive';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
 
 @Component({
-	template: ` <div obSelectable value="test"></div>`
+	template: ` <div obSelectable value="test"></div>`,
+	standalone: false
 })
 class FaultyTestComponent {}
 
 @Component({
 	template: ` <div obSelectableGroup>
 		<div obSelectable value="test"></div>
-	</div>`
+	</div>`,
+	standalone: false
 })
 class TestComponent {}
 
 @Directive({
 	selector: '[obSelectableGroup]',
-	exportAs: 'obSelectableGroup'
+	exportAs: 'obSelectableGroup',
+	standalone: false
 })
 export class ObMockSelectableGroupDirective {
 	mode$ = new BehaviorSubject<string>('checkbox');
@@ -31,7 +34,8 @@ export class ObMockSelectableGroupDirective {
 
 @Directive({
 	selector: '[obSelectableGroup]',
-	exportAs: 'obSelectableGroup'
+	exportAs: 'obSelectableGroup',
+	standalone: false
 })
 export class ObMockDisabledSelectableGroupDirective {
 	mode$ = new BehaviorSubject<string>('checkbox');

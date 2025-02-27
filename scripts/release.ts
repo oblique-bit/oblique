@@ -1,4 +1,4 @@
-import {executeCommand, executeCommandWithLog} from './shared/utils';
+import {executeCommandWithLog} from './shared/utils';
 import {StaticScript} from './shared/static-script';
 import {Git} from './shared/git';
 import {Log} from './shared/log';
@@ -11,7 +11,7 @@ class Release extends StaticScript {
 		executeCommandWithLog(`npm version ${version}`, 'Bump version');
 		Release.updateJenkinsFile(version);
 		Release.updateCopyrightDate();
-		executeCommand(`npm run release -ws`);
+		executeCommandWithLog(`npm run release -ws`, 'Perform release');
 		Git.commit(`chore(toolchain): release version ${version}`, issue);
 		Log.success('Push the changes and continue the release process according to the release checklist');
 	}
@@ -37,7 +37,10 @@ class Release extends StaticScript {
 			Log.info('Adding publish instruction to JenkinsFile');
 			const branchName = Git.getCurrentBranchName();
 			Files.overwrite('Jenkinsfile', content =>
-				content.replace(/(?=master)/, `'${branchName}': [\n\t\t\tpublish: ['./dist/oblique'],\n\t\t\tgitTag: true\n\t\t],\n\t\t`)
+				content.replace(
+					/(?=master)/,
+					`'${branchName}': [\n\t\t\tpublish: [\n\t\t\t\t'@oblique/oblique',\n\t\t\t\t'@oblique/cli',\n\t\t\t\t'@oblique/service-navigation-web-component'\n\t\t\t],\n\t\t\tgitTag: true\n\t\t],\n\t\t`
+				)
 			);
 		}
 	}

@@ -9,7 +9,6 @@ import {TranslateParamsExampleDefaultPreviewComponent} from '../translate-params
 	selector: 'app-code-example-translate-params',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class TranslateParamsCodeExamplesComponent extends CodeExamples {

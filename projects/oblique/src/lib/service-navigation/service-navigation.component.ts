@@ -23,7 +23,8 @@ import {ObServiceNavigationTimeoutReturnUrlService} from './timeout/service-navi
 		ObServiceNavigationTimeoutReturnUrlService
 	],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-service-navigation'}
+	host: {class: 'ob-service-navigation'},
+	standalone: false
 })
 export class ObServiceNavigationComponent implements OnInit {
 	@Input() profileLinks: ObIServiceNavigationLink[] = [];

@@ -1,10 +1,10 @@
-@import "variables";
+@use "./variables";
 
 .ob-inline-form {
 	> label {
-		margin-top: $ob-form-field-label-height;
+		margin-top: variables.$ob-form-field-label-height;
 		line-height: 1;
-		padding-top: $ob-form-field-label-padding-top;
+		padding-top: variables.$ob-form-field-label-padding-top;
 	}
 
 	.ob-button {
@@ -13,13 +13,13 @@
 
 	&.ob-form-sm {
 		> label {
-			padding-top: $ob-form-field-label-padding-top-sm;
+			padding-top: variables.$ob-form-field-label-padding-top-sm;
 		}
 	}
 
 	&.ob-form-lg {
 		> label {
-			padding-top: $ob-form-field-label-padding-top-lg;
+			padding-top: variables.$ob-form-field-label-padding-top-lg;
 		}
 
 		.ob-button {

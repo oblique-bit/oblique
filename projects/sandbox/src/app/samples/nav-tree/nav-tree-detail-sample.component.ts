@@ -1,29 +1,29 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subject} from 'rxjs';
-import {ActivatedRoute, Router} from '@angular/router';
-import {mergeWith, takeUntil} from 'rxjs/operators';
+import {Component, Signal} from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {Observable, filter, map} from 'rxjs';
 
 @Component({
 	selector: 'sb-nav-tree-detail-sample',
-	templateUrl: './nav-tree-detail-sample.component.html'
+	templateUrl: './nav-tree-detail-sample.component.html',
+	standalone: false
 })
-export class NavTreeDetailSampleComponent implements OnInit, OnDestroy {
-	routing: string;
-	private readonly unsubscribe = new Subject<void>();
+export class NavTreeDetailSampleComponent {
+	url: Signal<{param: string; value: string}[]>;
+	queryParams: Signal<{param: string; value: string}[]>;
+	fragment: Signal<string>;
 
-	constructor(
-		private readonly route: ActivatedRoute,
-		private readonly router: Router
-	) {}
-
-	ngOnInit(): void {
-		this.route.params.pipe(mergeWith(this.route.fragment), takeUntil(this.unsubscribe)).subscribe(() => {
-			this.routing = this.router.routerState.snapshot.url;
-		});
+	constructor(route: ActivatedRoute) {
+		this.url = toSignal(route.params.pipe(this.paramsToArray()));
+		this.queryParams = toSignal(route.queryParams.pipe(this.paramsToArray()));
+		this.fragment = toSignal(route.fragment);
 	}
 
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
+	private paramsToArray(): (source$: Observable<Params>) => Observable<{param: string; value: string}[]> {
+		return source$ =>
+			source$.pipe(
+				map(params => Object.entries(params).map(([param, value]) => ({param, value}))),
+				filter(params => params.length > 0)
+			);
 	}
 }

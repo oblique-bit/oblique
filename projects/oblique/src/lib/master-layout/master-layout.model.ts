@@ -13,10 +13,6 @@ export interface ObIMasterLayoutHeader {
 	isSticky: boolean;
 	isSmall: boolean;
 	isCustom: boolean;
-	/**
-	 *  @deprecated since Oblique 12. It will be removed with Oblique 13. In an effort to reduce the size of the header and the footer, the logo will not be displayed in the footer anymore and it will be possible to use the logo without the text.
-	 */
-	reduceOnScroll: boolean;
 	readonly serviceNavigation: ObIServiceNavigationConfig;
 }
 
@@ -40,10 +36,6 @@ export interface ObIServiceNavigationConfig {
 export interface ObIMasterLayoutFooter {
 	isSticky: boolean;
 	isCustom: boolean;
-	/**
-	 *  @deprecated since Oblique 12. It will be removed with Oblique 13. In an effort to reduce the size of the header and the footer, the logo will not be displayed in the footer anymore and it will be possible to use the logo without the text.
-	 */
-	hasLogoOnScroll: boolean;
 }
 
 export interface ObIMasterLayoutNavigation {
@@ -107,13 +99,11 @@ export interface ObIMasterLayoutEvent {
 }
 
 export enum ObEMasterLayoutEventValues {
-	FOOTER_HAS_LOGO_ON_SCROLL,
 	FOOTER_IS_CUSTOM,
 	FOOTER_IS_STICKY,
 	HEADER_IS_CUSTOM,
 	HEADER_IS_SMALL,
 	HEADER_IS_STICKY,
-	HEADER_REDUCE_ON_SCROLL,
 	IS_MENU_OPENED,
 	LAYOUT_HAS_COVER,
 	LAYOUT_HAS_DEFAULT_LAYOUT,
@@ -136,3 +126,5 @@ export enum ObEEnvironment {
 export const OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION = new InjectionToken<boolean>(
 	'Are external links icons hidden in the main navigation'
 );
+
+export type ObICollapseBreakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';

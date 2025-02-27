@@ -1,4 +1,3 @@
-'use strict';
 globalThis.ngJest = {
 	skipNgcc: true
 };

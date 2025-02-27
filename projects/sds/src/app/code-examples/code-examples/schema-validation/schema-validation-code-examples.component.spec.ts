@@ -6,7 +6,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {By} from '@angular/platform-browser';
 import {SchemaValidationExampleReactiveFormPreviewComponent} from './previews/reactive-form/schema-validation-example-reactive-form-preview.component';
 import {SchemaValidationExampleTemplateDrivenFormPreviewComponent} from './previews/template-driven-form/schema-validation-example-template-driven-form-preview.component';
-import {ObMockTranslateService} from '@oblique/oblique';
+import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
 import {TranslateService} from '@ngx-translate/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -25,7 +25,10 @@ describe(SchemaValidationCodeExamplesComponent.name, () => {
 				SchemaValidationExampleReactiveFormPreviewComponent,
 				SchemaValidationExampleTemplateDrivenFormPreviewComponent
 			],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: WINDOW, useValue: window}
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(SchemaValidationCodeExamplesComponent);

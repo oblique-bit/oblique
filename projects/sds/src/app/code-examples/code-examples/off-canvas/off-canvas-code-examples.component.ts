@@ -9,7 +9,6 @@ import {OffCanvasExampleStackblitzLinkPreviewComponent} from './previews/stackbl
 	selector: 'app-code-example-off-canvas',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class OffCanvasCodeExamplesComponent extends CodeExamples {

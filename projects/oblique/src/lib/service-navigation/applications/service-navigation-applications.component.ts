@@ -7,7 +7,8 @@ import {base64StatusImages} from './service-navigation-applications-images';
 	templateUrl: './service-navigation-applications.component.html',
 	styleUrls: ['./service-navigation-applications.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-service-navigation-applications'}
+	host: {class: 'ob-service-navigation-applications'},
+	standalone: false
 })
 export class ObServiceNavigationApplicationsComponent implements OnChanges {
 	@Input() applicationsUrl = '';

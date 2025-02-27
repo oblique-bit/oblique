@@ -22,7 +22,6 @@ import {
 } from '../utils';
 import {getDepVersion, getTemplate} from '../ng-add/ng-add-utils';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV10Schema {}
 
 export class UpdateV10toV11 implements ObIMigrations {

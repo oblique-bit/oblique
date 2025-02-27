@@ -12,7 +12,6 @@ import {CollapseExampleAnimationDurationPreviewComponent} from './previews/anima
 	selector: 'app-code-example-collapse',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class CollapseCodeExamplesComponent extends CodeExamples {

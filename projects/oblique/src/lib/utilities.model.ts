@@ -5,6 +5,9 @@ import {StepperOptions} from '@angular/cdk/stepper';
 import {ObEPamsEnvironment} from './service-navigation/service-navigation.model';
 import {MatSlideToggleDefaultOptions} from '@angular/material/slide-toggle';
 import {MatTabsConfig} from '@angular/material/tabs';
+import {TranslateModuleConfig} from '@ngx-translate/core';
+import {ObIconConfig} from './icon/icon.model';
+import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
 
 export interface ObIBanner {
 	text: string;
@@ -25,3 +28,31 @@ export interface ObIMaterialConfig {
 	MAT_SLIDE_TOGGLE_OPTIONS?: MatSlideToggleDefaultOptions;
 	MAT_TABS_CONFIG?: MatTabsConfig;
 }
+
+export interface ObIObliqueConfiguration {
+	accessibilityStatement: ObIAccessibilityStatementConfiguration;
+	material?: ObIMaterialConfig;
+	icon?: ObIconConfig;
+	translate?: {
+		config?: TranslateModuleConfig;
+		additionalFiles?: ObITranslationFile[];
+	};
+}
+
+export type NonEmptyArray<Type> = [Type, ...Type[]];
+
+export interface ObIAccessibilityStatementConfiguration {
+	applicationName: string;
+	createdOn?: Date;
+	reviewedOn?: Date;
+	exceptions?: string[];
+	applicationOperator: string;
+	contact: ObContact;
+}
+
+interface ObContactInfo {
+	emails: NonEmptyArray<string>;
+	phones: NonEmptyArray<string>;
+}
+
+type ObContact = Required<Pick<ObContactInfo, 'emails'>> | Required<Pick<ObContactInfo, 'phones'>> | Required<ObContactInfo>;

@@ -15,7 +15,6 @@ export const OBLIQUE_HAS_ROLE_ALERT = new InjectionToken<boolean>(
 	styleUrls: ['./alert.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-alert ob-angular'},
-	standalone: true,
 	imports: [MatIconModule, TranslateModule]
 })
 export class ObAlertComponent implements OnInit {

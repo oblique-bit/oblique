@@ -12,7 +12,8 @@ import {ObStickyComponent} from './sticky.component';
 		<ng-template #obStickyFooter *ngIf="stickyFooter">
 			<div class="ob-sticky-actions">sdfsdfsdf</div>
 		</ng-template>
-	</ob-sticky>`
+	</ob-sticky>`,
+	standalone: false
 })
 class TestFirstCaseComponent {
 	stickyHeader = true;

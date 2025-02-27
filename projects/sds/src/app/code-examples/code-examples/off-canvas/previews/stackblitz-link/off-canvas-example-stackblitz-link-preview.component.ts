@@ -6,7 +6,6 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 	selector: 'app-off-canvas-example-stackblitz-link-preview',
 	templateUrl: './off-canvas-example-stackblitz-link-preview.component.html',
 	styleUrls: ['../../../../stackblitz-link.scss'],
-	standalone: true,
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule]
 })
 export class OffCanvasExampleStackblitzLinkPreviewComponent {}

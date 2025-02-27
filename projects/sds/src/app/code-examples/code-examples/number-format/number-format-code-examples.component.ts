@@ -11,7 +11,6 @@ import {NumberFormatExampleOtherOptionsPreviewComponent} from '../number-format/
 	selector: 'app-code-example-number-format',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class NumberFormatCodeExamplesComponent extends CodeExamples {

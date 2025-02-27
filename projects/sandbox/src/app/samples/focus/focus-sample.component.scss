@@ -1,4 +1,4 @@
-@import "projects/oblique/src/styles/scss/core/variables";
+@use "projects/oblique/src/styles/scss/core/variables";
 
 .container {
 	width: 100%;
@@ -13,5 +13,5 @@
 	line-height: 1rem;
 	padding: calc((38px - 1rem) / 2) max(16px, var(--mdc-outlined-text-field-container-shape));
 	border-radius: 4px;
-	border: 1px solid $ob-secondary-800;
+	border: 1px solid variables.$ob-secondary-800;
 }

@@ -5,7 +5,8 @@ import {Directive} from '@angular/core';
  */
 @Directive({
 	selector: '[obMasterLayoutNavigationItem]',
-	exportAs: 'obMasterLayoutNavigationItem'
+	exportAs: 'obMasterLayoutNavigationItem',
+	standalone: false
 })
 export class ObMockMasterLayoutNavigationItemDirective {
 	isExpanded = false;

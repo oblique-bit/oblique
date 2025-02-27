@@ -1,4 +1,4 @@
-@Library('jeap-pipelinelibrary@feature/oblique8') _
+@Library('jeap-pipelinelibrary@feature/oblique9') _
 nodejsPipelineTemplate {
 	nodeJsVersion = 20
 	npmRepository = [
@@ -41,9 +41,8 @@ nodejsPipelineTemplate {
 		],
 		master: [
 			'publish': [
-				'./dist/oblique',
-				'./dist/cli',
-				'./dist/service-navigation-web-component'
+				'@oblique/oblique',
+				'@oblique/cli'
 			],
 			'gitTag': true,
 			'gitPush': [

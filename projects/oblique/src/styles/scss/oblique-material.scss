@@ -1,8 +1,33 @@
 @use "@angular/material" as mat;
-@use "core/variables" as core-variables;
-@use "material/material-palette";
-@use "material/variables";
-@use "material/mat-typography" as typo;
+@use "./core/variables" as core-variables;
+@use "./material/material-palette";
+@use "./material/variables";
+@use "./material/mat-typography" as typo;
+
+// import to overwrite mat-component-specifics
+@use "./material/mat-badge";
+@use "./material/mat-button";
+@use "./material/mat-card";
+@use "./material/mat-autocomplete";
+@use "./material/mat-checkbox-radio";
+@use "./material/mat-chip";
+@use "./material/mat-datepicker";
+@use "./material/mat-dialog";
+@use "./material/mat-expansion-panel";
+@use "./material/mat-form";
+@use "./material/mat-form-field";
+@use "./material/mat-icon";
+@use "./material/mat-list";
+@use "./material/mat-menu";
+@use "./material/mat-paginator";
+@use "./material/mat-progress-bar";
+@use "./material/mat-slide-toggle";
+@use "./material/mat-slider";
+@use "./material/mat-select";
+@use "./material/mat-stepper";
+@use "./material/mat-table";
+@use "./material/mat-tab";
+@use "./material/mat-tooltip";
 
 $theme: (
 	color: (
@@ -37,7 +62,8 @@ $theme-tabs: (
 	typography: typo.$custom-typography,
 );
 
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 
 @include mat.tree-theme(mat.m2-define-light-theme($theme));
 @include mat.toolbar-theme(mat.m2-define-light-theme($theme));
@@ -73,28 +99,3 @@ $theme-tabs: (
 @include mat.tooltip-theme(mat.m2-define-light-theme($theme));
 @include mat.option-theme(mat.m2-define-light-theme($theme));
 @include mat.pseudo-checkbox-theme(mat.m2-define-light-theme($theme));
-
-// import to overwrite mat-component-specifics
-@import "material/mat-autocomplete";
-@import "material/mat-badge";
-@import "material/mat-button";
-@import "material/mat-card";
-@import "material/mat-checkbox-radio";
-@import "material/mat-chip";
-@import "material/mat-datepicker";
-@import "material/mat-dialog";
-@import "material/mat-expansion-panel";
-@import "material/mat-form";
-@import "material/mat-form-field";
-@import "material/mat-icon";
-@import "material/mat-list";
-@import "material/mat-menu";
-@import "material/mat-paginator";
-@import "material/mat-progress-bar";
-@import "material/mat-slide-toggle";
-@import "material/mat-slider";
-@import "material/mat-select";
-@import "material/mat-stepper";
-@import "material/mat-table";
-@import "material/mat-tab";
-@import "material/mat-tooltip";

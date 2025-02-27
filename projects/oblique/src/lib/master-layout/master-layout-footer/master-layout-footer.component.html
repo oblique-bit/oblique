@@ -1,23 +1,26 @@
 <h1 class="ob-screen-reader-only">{{ "i18n.oblique.footer.title" | translate }}</h1>
 <ng-content select="[obFooter]" *ngIf="isCustom" />
 <ng-container *ngIf="!isCustom">
-	<div class="ob-footer-logo-and-info">
-		<div class="ob-footer-item ob-footer-item-logo">
-			<a [routerLink]="home" class="ob-master-layout-logo" tabindex="-1">
-				<img ngSrc="./assets/images/logo-white.svg" [alt]="'i18n.oblique.header.logo' | translate" [height]="38" [width]="156" />
-			</a>
-		</div>
-		<h2 class="ob-screen-reader-only">{{ "i18n.oblique.footer.info.title" | translate }}</h2>
-		<div class="ob-footer-item ob-footer-item-info">
-			<ng-content select="[obFooterInfo]" />
-		</div>
-	</div>
-	<ng-container *ngIf="templates.length">
+	<div class="ob-footer-links">
 		<h2 class="ob-screen-reader-only">{{ "i18n.oblique.footer.links.title" | translate }}</h2>
 		<ul class="ob-footer-item ob-footer-item-links">
 			<li *ngFor="let template of templates">
 				<ng-container [ngTemplateOutlet]="template" />
 			</li>
+			<li>
+				<a routerLink="accessibility-statement">{{ "i18n.oblique.accessibility-statement.link" | translate }}</a>
+			</li>
 		</ul>
-	</ng-container>
+	</div>
+
+	<div class="ob-footer-version" *ngIf="version">
+		<p>{{ version }}</p>
+	</div>
+
+	<div class="ob-footer-info">
+		<h2 class="ob-screen-reader-only">{{ "i18n.oblique.footer.info.title" | translate }}</h2>
+		<div class="ob-footer-item ob-footer-item-info">
+			<ng-content select="[obFooterInfo]" />
+		</div>
+	</div>
 </ng-container>

@@ -26,7 +26,6 @@ import {
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,
 	ObHttpApiInterceptorModule,
-	ObIconModule,
 	ObInputClearModule,
 	ObMasterLayoutConfig,
 	ObMasterLayoutModule,
@@ -38,7 +37,7 @@ import {
 	ObSelectableModule,
 	ObSpinnerModule,
 	ObUnsavedChangesModule,
-	multiTranslateLoader
+	provideObliqueConfiguration
 } from '@oblique/oblique';
 // App:
 import {AppComponent} from './app.component';
@@ -61,7 +60,6 @@ registerLocaleData(localeDE);
 	bootstrap: [AppComponent],
 	imports: [
 		AppRoutingModule,
-		ObIconModule.forRoot(),
 		BrowserAnimationsModule,
 		BrowserModule,
 		FormsModule,
@@ -89,7 +87,7 @@ registerLocaleData(localeDE);
 		ObSpinnerModule,
 		ObUnsavedChangesModule,
 		ReactiveFormsModule,
-		TranslateModule.forRoot(multiTranslateLoader())
+		TranslateModule
 	],
 	providers: [
 		{provide: OB_BANNER, useValue: environment.banner},
@@ -98,7 +96,21 @@ registerLocaleData(localeDE);
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
 		{provide: OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, useValue: false},
 		provideMomentDateAdapter(),
-		provideHttpClient(withInterceptorsFromDi())
+		provideHttpClient(withInterceptorsFromDi()),
+		provideObliqueConfiguration({
+			accessibilityStatement: {
+				applicationName: 'Sandbox',
+				createdOn: new Date('2025-01-31'),
+				reviewedOn: new Date('2025-01-31'),
+				exceptions: [
+					'i18n.routes.accessibility.exception.first',
+					'i18n.routes.accessibility.exception.second',
+					'i18n.routes.accessibility.exception.third'
+				],
+				applicationOperator: 'i18n.routes.accessibility.operator',
+				contact: {emails: ['oblique@bit.admin.ch'], phones: ['123']}
+			}
+		})
 	]
 })
 export class AppModule {

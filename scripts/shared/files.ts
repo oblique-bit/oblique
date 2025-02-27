@@ -8,7 +8,7 @@ export class Files {
 		return readFileSync(Files.buildOSSafePath(filePath)).toString('utf8');
 	}
 
-	static readJson<T>(filePath: string): T {
+	static readJson(filePath: string): unknown {
 		return JSON.parse(Files.read(filePath));
 	}
 

@@ -6,7 +6,8 @@ import {ObISectionLink} from '../../service-navigation.model';
 	templateUrl: './service-navigation-popover-section.component.html',
 	styleUrls: ['./service-navigation-popover-section.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-service-navigation-popover-section'}
+	host: {class: 'ob-service-navigation-popover-section'},
+	standalone: false
 })
 export class ObServiceNavigationPopoverSectionComponent {
 	@Input() header = '';

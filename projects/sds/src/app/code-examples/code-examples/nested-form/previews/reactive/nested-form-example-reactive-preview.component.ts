@@ -11,7 +11,6 @@ import {MatButtonModule} from '@angular/material/button';
 	selector: 'app-nested-form-example-reactive-preview',
 	templateUrl: './nested-form-example-reactive-preview.component.html',
 	styleUrls: ['../nested-form-example-preview.scss'],
-	standalone: true,
 	imports: [
 		JsonPipe,
 		MatButtonModule,

@@ -6,7 +6,6 @@ import {Component} from '@angular/core';
 	selector: 'app-popover12-example-default-preview',
 	templateUrl: './popover12-example-default-preview.component.html',
 	styleUrls: ['../../../../code-example-flex-layout.scss', './popover12-example-default-preview.component.scss'],
-	standalone: true,
 	imports: [ObPopoverModule, ObButtonModule, MatButtonModule]
 })
 export class Popover12ExampleDefaultPreviewComponent {}

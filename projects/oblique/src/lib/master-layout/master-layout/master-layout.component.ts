@@ -1,4 +1,4 @@
-/* eslint-disable max-lines */
+/* eslint-disable @angular-eslint/no-conflicting-lifecycle, max-lines */
 import {
 	AfterViewInit,
 	Component,
@@ -8,10 +8,11 @@ import {
 	ElementRef,
 	HostBinding,
 	Input,
+	OnChanges,
 	OnDestroy,
 	OnInit,
 	QueryList,
-	Renderer2,
+	SimpleChanges,
 	TemplateRef,
 	ViewChild,
 	ViewEncapsulation,
@@ -27,9 +28,16 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
-import {ObEMasterLayoutEventValues, ObIDynamicSkipLink, ObIMasterLayoutEvent, ObINavigationLink, ObISkipLink} from '../master-layout.model';
+import {
+	ObEMasterLayoutEventValues,
+	ObICollapseBreakpoints,
+	ObIDynamicSkipLink,
+	ObIMasterLayoutEvent,
+	ObINavigationLink,
+	ObISkipLink
+} from '../master-layout.model';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
-import {Subject} from 'rxjs';
+import {Subject, fromEvent, startWith} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 
@@ -39,20 +47,25 @@ import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 	templateUrl: './master-layout.component.html',
 	styleUrls: [
 		'./master-layout.component.scss',
-		'./master-layout.component-cover.scss',
-		'./master-layout.component-offcanvas.scss',
-		'./master-layout.component-accessibility.scss'
+		'./master-layout-cover.component.scss',
+		'./master-layout-offcanvas.component.scss',
+		'./master-layout-accessibility.component.scss'
 	],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout', 'ob-version': appVersion}
+	host: {class: 'ob-master-layout', 'ob-version': appVersion},
+	standalone: false
 })
-export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy {
+export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy, OnChanges {
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
 	hasHighContrast = false;
 	readonly contentId = 'content';
 	@Input() navigation: ObINavigationLink[] = [];
 	@Input() skipLinks: ObISkipLink[] | ObIDynamicSkipLink[] = [];
+	@Input() collapseBreakpoint: ObICollapseBreakpoints;
+	@Input() version?: string;
+	@HostBinding('class.ob-layout-collapsed') isLayoutCollapsed = false;
+	@HostBinding('class.ob-layout-expanded') isLayoutExpanded = true;
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
 	@HostBinding('class.ob-has-layout') hasLayout = this.masterLayout.layout.hasLayout;
 	@HostBinding('class.ob-has-max-width') hasMaxWidth = this.masterLayout.layout.hasMaxWidth;
@@ -71,6 +84,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	@ViewChild('main') readonly main: ElementRef<HTMLElement>;
 	@ViewChild('wrapper') readonly wrapper: ElementRef<HTMLElement>;
 	private readonly unsubscribe = new Subject<void>();
+	private readonly unsubscribeMediaQuery = new Subject<void>();
 	private navigationLength: number;
 	private readonly router = inject(Router);
 	private readonly offCanvasService = inject(ObOffCanvasService);
@@ -79,7 +93,13 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	private readonly document = inject(DOCUMENT);
 	private readonly window = inject(WINDOW);
 	private readonly highContrastModeDetector = inject(HighContrastModeDetector);
-	private readonly renderer = inject(Renderer2);
+	private readonly gridBreakpoints = {
+		xs: 0,
+		sm: 600,
+		md: 905,
+		lg: 1240,
+		xl: 1440
+	} as const;
 
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
@@ -95,6 +115,23 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		this.headerIsStickyChange();
 		this.focusFragment();
 		this.focusOffCanvasClose();
+	}
+
+	ngOnChanges(changes: SimpleChanges): void {
+		if (changes.collapseBreakpoint) {
+			this.unsubscribeMediaQuery.next();
+			const mediaQuery = this.window.matchMedia(`(min-width: ${this.gridBreakpoints[this.collapseBreakpoint]}px)`);
+			fromEvent(mediaQuery, 'change')
+				.pipe(
+					map((event: MediaQueryListEvent) => event.matches),
+					startWith(mediaQuery.matches),
+					takeUntil(this.unsubscribeMediaQuery)
+				)
+				.subscribe(isLayoutExpanded => {
+					this.isLayoutExpanded = isLayoutExpanded;
+					this.isLayoutCollapsed = !isLayoutExpanded;
+				});
+		}
 	}
 
 	ngOnInit(): void {
@@ -122,6 +159,8 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+		this.unsubscribeMediaQuery.next();
+		this.unsubscribeMediaQuery.complete();
 	}
 
 	scrollTop(element?: HTMLElement): void {

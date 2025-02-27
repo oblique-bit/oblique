@@ -27,9 +27,11 @@ import {ObAutocompleteHarness} from './../autocomplete/_harness/autocomplete.har
 import {ObMockHighlightTextPipe} from './_mocks/mock-highlight-text.pipe';
 import {ObAutocompleteTextToFindService} from './autocomplete-text-to-find.service';
 import {ObAutocompleteComponent} from './autocomplete.component';
+import {WINDOW} from '../utilities';
 
 @Component({
-	template: ``
+	template: ``,
+	standalone: false
 })
 class TestParentComponent {
 	model = new FormControl('');
@@ -74,7 +76,11 @@ describe(ObAutocompleteComponent.name, () => {
 				TranslateModule
 			],
 			declarations: [TestParentComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}, {provide: ObAutocompleteTextToFindService}]
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: ObAutocompleteTextToFindService},
+				{provide: WINDOW, useValue: window}
+			]
 		}).compileComponents();
 	});
 

@@ -5,7 +5,8 @@ import {FormControl} from '@angular/forms';
 @Component({
 	selector: 'sb-autocomplete-sample',
 	templateUrl: './autocomplete.component.html',
-	styleUrls: ['./autocomplete.component.scss']
+	styleUrls: ['./autocomplete.component.scss'],
+	standalone: false
 })
 export class AutocompleteSampleComponent implements OnInit {
 	isDisabled = false;
@@ -126,7 +127,6 @@ formControl = new FormControl('');
 	}
 
 	disableOptions(disabled: boolean): void {
-		// eslint-disable-next-line no-return-assign
 		this.visibleOptionList.map(optionList =>
 			optionList?.groupOptions
 				? // eslint-disable-next-line array-callback-return

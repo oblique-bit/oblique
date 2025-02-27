@@ -9,7 +9,6 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 @Component({
 	selector: 'app-code-example-alert',
 	templateUrl: '../../code-examples.component.html',
-	standalone: true,
 	imports: [CommonModule, CodeExampleComponent, IdPipe]
 })
 export class AlertCodeExamplesComponent extends CodeExamples {

@@ -9,7 +9,6 @@ import {UnsavedChangesExampleStackblitzLinkPreviewComponent} from '../unsaved-ch
 	selector: 'app-code-example-unsaved-changes',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class UnsavedChangesCodeExamplesComponent extends CodeExamples {

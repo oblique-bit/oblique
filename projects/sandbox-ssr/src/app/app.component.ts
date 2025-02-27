@@ -7,7 +7,6 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'ssr-root',
-	standalone: true,
 	imports: [RouterOutlet, RouterLink, MatButtonToggleGroup, MatButtonToggle, ReactiveFormsModule],
 	templateUrl: './app.component.html',
 	styleUrl: 'app.component.scss'

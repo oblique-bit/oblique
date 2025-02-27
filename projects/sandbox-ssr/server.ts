@@ -1,5 +1,5 @@
 import {APP_BASE_HREF} from '@angular/common';
-import {CommonEngine, CommonEngineRenderOptions} from '@angular/ssr';
+import {CommonEngine, CommonEngineRenderOptions} from '@angular/ssr/node';
 import express, {Express, Request} from 'express';
 import {fileURLToPath} from 'node:url';
 import {dirname, join, resolve} from 'node:path';
@@ -11,7 +11,6 @@ export class App {
 
 	static run(): void {
 		// because it conflicts with noPropertyAccessFromIndexSignature
-		// eslint-disable-next-line @typescript-eslint/dot-notation
 		const port = process.env['PORT'] ?? App.defaultPort;
 		App.buildServer().listen(port, () => {
 			console.info(`Node Express server listening on http://localhost:${port}`);
@@ -41,7 +40,7 @@ export class App {
 			commonEngine
 				.render(App.buildRenderOptions(req, indexHtml, browserDistFolder))
 				.then(html => res.send(html))
-				.catch(err => next(err));
+				.catch((err: unknown) => next(err));
 		});
 	}
 

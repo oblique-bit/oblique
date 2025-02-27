@@ -2,97 +2,26 @@ import {Command, OptionValues} from '@commander-js/extra-typings';
 import * as cliPackage from '../../package.json';
 import * as obNewSchema from './schema.json';
 import {execSync} from 'child_process';
-import {addStringFlag, getTitlesCommandOption} from './ob-new';
-import {HandleObNewActionOptions, ObNewOptions, ObNewSchemaOption, obNewConfig} from './ob-new.model';
+import {obNewConfig} from './ob-new.model';
 import {currentVersions} from '../utils/cli-utils';
-import path from 'path';
+import {createObNewCommand} from './ob-new';
 
 const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
-interface ObNewModuleType {
-	createAddObliqueCommand: (command: string, options: Record<string, string | boolean | ObNewSchemaOption>, projectName: string) => string;
-	runNgNewAngularWorkspace: (projectName?: string, prefix?: string | 'app') => void;
-	handleObNewActions: (options: HandleObNewActionOptions) => void;
-	addImmutableOptionsText: (command: Command<[string], OptionValues>) => Command<[string], OptionValues>;
-	createObNewCommand: () => Command<[string], OptionValues>;
-	runAddOblique: (options: ObNewOptions<string | boolean>, projectName: string) => void;
-	addStringFlag: (option: {key: string; value: string}, projectName: string, property: ObNewSchemaOption) => string[];
-	handleAction: (options: HandleObNewActionOptions) => void;
-	getTitlesCommandOption: (option: {key: string; value: string}, projectName: string) => string;
-}
 
 describe('Ob new command', () => {
 	const projectName = 'SuperduperProject';
-	// eslint-disable-next-line @typescript-eslint/no-var-requires
-	let obNew: ObNewModuleType = require('./ob-new') as ObNewModuleType;
-	let obNewCommand: Command<[string], OptionValues>;
 	let parsedObNewCommand: Command<[string], OptionValues>;
-	describe('addStringFlag', () => {
-		test.each([
-			{
-				description: 'title command option when option key is "title" and property type is "string"',
-				option: {key: 'title', value: 'My Project'},
-				property: {type: 'string'} as ObNewSchemaOption,
-				expected: [getTitlesCommandOption({key: 'title', value: 'My Project'}, projectName)]
-			},
-			{
-				description: 'string flag command option for non-title keys when property type is "string"',
-				option: {key: 'description', value: 'This is a test'},
-				property: {type: 'string'} as ObNewSchemaOption,
-				expected: ['--description="This is a test"']
-			},
-			{
-				description: 'empty array when property type is not "string"',
-				option: {key: 'title', value: 'My Project'},
-				property: {type: 'number'} as ObNewSchemaOption,
-				expected: []
-			},
-			{
-				description: 'empty array when property does not have a "type" property',
-				option: {key: 'title', value: 'My Project'},
-				property: {type: undefined} as ObNewSchemaOption,
-				expected: []
-			}
-		])('$description', ({option, property, expected}) => {
-			const result = addStringFlag(option, projectName, property);
-			expect(result).toEqual(expected);
-		});
-	});
-
-	describe('getTitlesCommandOption', () => {
-		test.each([
-			{
-				description: 'title option when option key is "title" and value is not empty',
-				option: {key: 'title', value: 'My Custom Title'},
-				expected: '--title="My Custom Title"'
-			},
-			{
-				description: 'title option when option key is "title" and value is an empty string',
-				option: {key: 'title', value: ''},
-				expected: `--title="${projectName}"`
-			},
-			{
-				description: 'empty string when option key is not "title"',
-				option: {key: 'description', value: 'A description'},
-				expected: ''
-			}
-		])('returns $description', ({option, expected}) => {
-			const result = getTitlesCommandOption(option, projectName);
-			expect(result).toBe(expected);
-		});
+	beforeAll(() => {
+		jest.spyOn(console, 'info').mockImplementation(() => {});
+		jest.spyOn(console, 'timeEnd').mockImplementation(() => {});
+		jest.spyOn(console, 'error').mockImplementation(() => {});
 	});
 
 	describe('after createObNewCommand', () => {
 		describe('without error', () => {
 			beforeAll(() => {
-				const nodeChildProcessWithoutErrorSpy = jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
-				jest.mock('node:child_process', () => ({
-					...jest.requireActual('node:child_process'),
-					execSync: nodeChildProcessWithoutErrorSpy
-				}));
-				jest.spyOn(console, 'info');
-				jest.spyOn(console, 'timeEnd');
-				obNew = require('./ob-new');
-				obNewCommand = obNew.createObNewCommand();
+				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				const obNewCommand = createObNewCommand();
 				parsedObNewCommand = obNewCommand.parse([projectName], {from: 'user'});
 			});
 
@@ -101,7 +30,7 @@ describe('Ob new command', () => {
 					expect(parsedObNewCommand.name()).toBe('new');
 				});
 
-				test('should have description: "Creates a new Angular project and install Oblique"', () => {
+				test(`should have description: "${obNewConfig.obNewSummaryText}"`, () => {
 					expect(parsedObNewCommand.description()).toBe(obNewConfig.obNewSummaryText);
 				});
 
@@ -125,22 +54,21 @@ describe('Ob new command', () => {
 				});
 			});
 
-			/* eslint-disable no-console */
 			describe.each([
 				{index: 1, message: 'OBLIQUE CLI', type: 'info'},
-				{index: 2, message: '\nCreates a new Angular workspace', type: 'info'},
+				{index: 2, message: '\n[Info]: Creates a new Angular workspace', type: 'info'},
 				{index: 3, message: '[Info]: Installs Angular Material', type: 'info'},
-				{index: 4, message: '[Complete]: Oblique added', type: 'info'},
+				{index: 4, message: '[Info]: Runs npm dedupe', type: 'info'},
+				{index: 5, message: '[Info]: Runs npm prune', type: 'info'},
+				{index: 6, message: '[Complete]: Oblique added', type: 'info'},
 				{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'}
 			])('calls console ', ({index, message, type}) => {
 				test(`${type} ${message}`, () => {
-					// eslint
 					expect(console[type]).toHaveBeenNthCalledWith(index, message);
 				});
 			});
 
 			const optionProperties = Object.entries(obNewSchema.properties).map(property => ({key: property[0], value: property[1]}));
-			/* eslint-enable */
 
 			describe.each(optionProperties)('default option', ({key, value}) => {
 				test(`should have option for ${key} with default value "${value.defaultValue}"`, () => {
@@ -165,6 +93,10 @@ describe('Ob new command', () => {
 					{
 						description: 'Option to output the current version of the CLI',
 						expected: 'Options: -v, --version Shows the current version of @oblique/cli '
+					},
+					{
+						description: 'Option for the interactive mode',
+						expected: `--interactive Enables interactive mode for the Oblique's "add" Schematic. When activated, this flag prompts the user for all options, bypassing default and predefined settings. It offers greater flexibility and control through a step-by-step configuration process.`
 					},
 					{
 						description: "Option to specify the application's title",
@@ -254,20 +186,17 @@ describe('Ob new command', () => {
 			});
 
 			describe('handleObNewActions execSync calls', () => {
-				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone  --no-ssr  --style scss --prefix=app`, () => {
+				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone  --no-ssr --style="scss" --prefix="app"`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						1,
-						`npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone  --no-ssr  --style scss --prefix=app`,
-						{
-							cwd: process.cwd(),
-							stdio: 'inherit'
-						}
+						`npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --style="scss" --prefix="app"`,
+						{stdio: 'inherit'}
 					);
 				});
 
-				test(`should call npm installl @angular/material@${currentVersions['@angular/material']}`, () => {
+				test(`should call npm install @angular/material@${currentVersions['@angular/material']}`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(2, `npm install @angular/material@${currentVersions['@angular/material']}`, {
-						cwd: path.join(process.cwd(), projectName),
+						cwd: `${process.cwd()}/${projectName}`,
 						stdio: 'inherit'
 					});
 				});
@@ -275,9 +204,9 @@ describe('Ob new command', () => {
 				test(`should call npx ${projectName} with default parameter`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						3,
-						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --jenkins="" --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --no-static --eslint --husky`,
+						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --eslint --husky`,
 						{
-							cwd: path.join(process.cwd(), projectName),
+							cwd: `${process.cwd()}/${projectName}`,
 							stdio: 'inherit'
 						}
 					);
@@ -285,25 +214,104 @@ describe('Ob new command', () => {
 			});
 		});
 
+		describe('interactive', () => {
+			beforeEach(() => {
+				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse([projectName, '--interactive'], {from: 'user'});
+			});
+			test(`should have option --interactive to be`, () => {
+				expect(parsedObNewCommand.opts().interactive).toBe(true);
+			});
+
+			afterEach(() => {
+				jest.resetAllMocks();
+			});
+		});
+
+		describe('no-interactive', () => {
+			beforeEach(() => {
+				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse([projectName], {from: 'user'});
+			});
+			test(`should have option --interactive to be`, () => {
+				expect(parsedObNewCommand.opts().interactive).toBe(false);
+			});
+
+			afterEach(() => {
+				jest.resetAllMocks();
+			});
+		});
+
+		describe.each([
+			{index: 1, message: 'OBLIQUE CLI', type: 'info'},
+			{index: 2, message: '\n[Info]: Creates a new Angular workspace', type: 'info'},
+			{
+				index: 3,
+				message: '[Info]: Interactive mode is enabled. All other options will be ignored, and you will be prompted to specify each option.',
+				type: 'info'
+			},
+			{index: 4, message: '[Info]: Installs Angular Material', type: 'info'},
+			{index: 5, message: '[Info]: Runs npm dedupe', type: 'info'},
+			{index: 6, message: '[Info]: Runs npm prune', type: 'info'},
+			{index: 7, message: '[Complete]: Oblique added', type: 'info'},
+			{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'}
+		])('calls console ', ({index, message, type}) => {
+			beforeEach(() => {
+				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse([projectName, '--interactive'], {from: 'user'});
+			});
+			test(`${type} ${message}`, () => {
+				expect(console[type]).toHaveBeenNthCalledWith(index, message);
+			});
+
+			afterEach(() => {
+				jest.resetAllMocks();
+			});
+		});
+
+		describe.each(['with interactive mode', 'without interactive mode'])(`with %s`, useCase => {
+			let options: string[] = useCase === 'interactive mode' ? [projectName, '--interactive'] : [projectName];
+
+			beforeEach(() => {
+				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				options = useCase === 'interactive mode' ? [projectName, '--interactive'] : [projectName];
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse(options, {from: 'user'});
+			});
+			/* eslint-disable @typescript-eslint/restrict-template-expressions */
+			test(`should have option --interactive to be ${options.includes(`--interactive`)}`, () => {
+				const isInteractive: boolean = parsedObNewCommand.opts().interactive as boolean;
+				expect(isInteractive).toBe(options.includes(`--interactive`));
+			});
+
+			test(`should call npx ${options}`, () => {
+				const expected = options.includes('--interactive')
+					? `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']}`
+					: `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --eslint --husky`;
+				expect(execSync).toHaveBeenNthCalledWith(3, expected, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit'
+				});
+			});
+
+			afterEach(() => {
+				jest.resetAllMocks();
+			});
+		});
+
 		describe('with error in ', () => {
 			const errorMessage = 'bad bad error';
 			beforeAll(() => {
-				const nodeChildProcessWithErrorSpy = jest
+				jest
 					.spyOn(nodeChildProcess, 'execSync')
 					.mockImplementationOnce(() => {
 						throw new Error(errorMessage);
 					})
 					.mockImplementation(() => 'ok');
-				jest.mock('node:child_process', () => ({
-					...jest.requireActual('node:child_process'),
-					execSync: nodeChildProcessWithErrorSpy
-				}));
-				jest.spyOn(console, 'error');
-				jest.spyOn(console, 'info');
-				jest.spyOn(console, 'timeEnd');
-				obNew = require('./ob-new');
-				obNewCommand = obNew.createObNewCommand();
-				// eslint-disable @typescript-eslint/no-unsafe-call @typescript-eslint/no-unsafe-member-access
+				const obNewCommand = createObNewCommand();
 				parsedObNewCommand = obNewCommand.parse([projectName], {from: 'user'});
 			});
 

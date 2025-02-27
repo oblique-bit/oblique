@@ -30,7 +30,6 @@ import {
 import {appModulePath, createSrcFile, getTemplate, obliqueCssPath} from '../ng-add/ng-add-utils';
 import {getPackageJsonDependency, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV5Schema {}
 
 export class UpdateV5toV6 implements ObIMigrations {

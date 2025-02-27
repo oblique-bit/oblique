@@ -1,5 +1,3 @@
-'use strict';
-
 (function () {
 	const {style} = document.createElement('div');
 	if (

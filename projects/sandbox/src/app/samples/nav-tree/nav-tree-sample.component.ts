@@ -1,15 +1,17 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Signal} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {takeUntil} from 'rxjs/operators';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {ObNavTreeItemModel} from '@oblique/oblique';
-import {Subject} from 'rxjs';
+import {map} from 'rxjs';
 
 @Component({
 	selector: 'sb-nav-tree-sample',
-	templateUrl: './nav-tree-sample.component.html'
+	templateUrl: './nav-tree-sample.component.html',
+	styleUrl: './nav-tree-sample.component.scss',
+	standalone: false
 })
-export class NavTreeSampleComponent implements OnInit, OnDestroy {
-	public items: ObNavTreeItemModel[];
+export class NavTreeSampleComponent {
+	public items: Signal<ObNavTreeItemModel[]>;
 
 	public filter = {
 		pattern: null,
@@ -18,18 +20,12 @@ export class NavTreeSampleComponent implements OnInit, OnDestroy {
 		}
 	};
 	public hasEmbeddedFilter = false;
-	private readonly unsubscribe = new Subject<void>();
 
-	constructor(private readonly route: ActivatedRoute) {}
-
-	ngOnInit(): void {
-		this.route.data.pipe(takeUntil(this.unsubscribe)).subscribe((data: {sample: any}) => {
-			this.items = data.sample.navTree.items.map((item: any) => new ObNavTreeItemModel(item));
-		});
+	constructor(route: ActivatedRoute) {
+		this.items = toSignal(route.data.pipe(map(data => data.sample.navTree.items.map(item => new ObNavTreeItemModel(item)))));
 	}
 
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
+	setDisabled(index: number): void {
+		this.items()[index].disabled = !this.items()[index].disabled;
 	}
 }

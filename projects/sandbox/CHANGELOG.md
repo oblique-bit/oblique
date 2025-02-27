@@ -1,3 +1,27 @@
+# [13.0.0](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0) (2025-02-27)
+
+## Bug Fixes
+
+- **button:** apply Oblique style to the table ([a71047a3](https://github.com/oblique-bit/oblique/commit/a71047a359efd56f4fb94bf14030030feaf95d5c))
+- **button:** fix external link examples ([5676959f](https://github.com/oblique-bit/oblique/commit/5676959f1e8799f2d00f53dfb198c158bcbb05d4))
+- **master-layout:** remove unwanted attributes on the footer links ([8f66f80a](https://github.com/oblique-bit/oblique/commit/8f66f80aab2f764666d0280d20783d9b08cffb32))
+- **master-layout:** ensure that additional navigation items are focusable ([77f10c82](https://github.com/oblique-bit/oblique/commit/77f10c82af440792213536448bc278375d681208))
+- **material:** add tooltip to starter kit pages ([7fbe415f](https://github.com/oblique-bit/oblique/commit/7fbe415f4e1208b3c552399dd1c387edfa50ad1d))
+- **material:** properly size the action column for flex table ([87a3e979](https://github.com/oblique-bit/oblique/commit/87a3e979a539559b16f018d41113fbd654c86d2a))
+- **material:** applies Oblique's styles to flex table ([9dd4f7e3](https://github.com/oblique-bit/oblique/commit/9dd4f7e3bead716e9d687b9bf885930a517e2f78))
+- **sandbox:** make tables accessible ([32a66601](https://github.com/oblique-bit/oblique/commit/32a66601952cba4e78f19b9278e2fee2678773c4))
+
+## Features
+
+- **master-layout:** add version to new master layout footer design ([892cfc12](https://github.com/oblique-bit/oblique/commit/892cfc1241d2769917b7f7217d0dec6d5bdd904b))
+- **master-layout:** remove elements not matching the new footer design ([658a2d27](https://github.com/oblique-bit/oblique/commit/658a2d27c6caa368abf9e1a9669e427c12587e9a))
+- **master-layout:** remove deprecated `reduceOnScroll` ([ec4713e7](https://github.com/oblique-bit/oblique/commit/ec4713e792fab87ede76d77d9270e33c241da6a0))
+- **master-layout:** remove deprecated `hasLogoOnScroll` ([9b41c2dd](https://github.com/oblique-bit/oblique/commit/9b41c2ddce01664348f6f45d10fc4cca17b8f627))
+- **material:** add form example with long labels ([e8b29645](https://github.com/oblique-bit/oblique/commit/e8b29645a15179d46a1bd29f5e05c792f263f707))
+- **sandbox:** add accessibility statement info ([30720a19](https://github.com/oblique-bit/oblique/commit/30720a19e3c47d7c1a88c3ec17a62bca045c5a6a))
+- **sandbox:** add an example of a disabled nav tree item ([3b5c7b56](https://github.com/oblique-bit/oblique/commit/3b5c7b564388aa24c3bd7de1972579b4e4d410cd))
+- **styles:** replace Roboto font with Noto Sans ([8bec93a3](https://github.com/oblique-bit/oblique/commit/8bec93a3feec29759a51c1ff7fd5e5a5e9921e56))
+
 # [12.2.1](https://github.com/oblique-bit/oblique/compare/12.2.0...12.2.1) (2024-12-20)
 
 ## Features

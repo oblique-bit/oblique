@@ -10,7 +10,6 @@ import {GridSystemExampleFlexPreviewComponent} from './previews/flex/grid-system
 	selector: 'app-code-example-grid-system',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class GridSystemCodeExamplesComponent extends CodeExamples {

@@ -10,8 +10,7 @@ import {MultipleActivationsPreviewComponent} from './previews/multiple-activatio
 	selector: 'app-spinner-code-examples',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CodeExampleComponent, CommonModule, IdPipe],
-	standalone: true
+	imports: [CodeExampleComponent, CommonModule, IdPipe]
 })
 export class SpinnerCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'spinner-examples';

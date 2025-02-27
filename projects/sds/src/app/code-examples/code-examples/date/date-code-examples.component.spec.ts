@@ -6,7 +6,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {DateCodeExamplesComponent} from './date-code-examples.component';
 
 import {By} from '@angular/platform-browser';
-import {ObMockTranslateService} from '@oblique/oblique';
+import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
 import {TranslateService} from '@ngx-translate/core';
 
 describe(DateCodeExamplesComponent.name, () => {
@@ -16,7 +16,10 @@ describe(DateCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [DateCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [
+				{provide: TranslateService, useClass: ObMockTranslateService},
+				{provide: WINDOW, useValue: window}
+			]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(DateCodeExamplesComponent);

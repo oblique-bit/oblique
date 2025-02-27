@@ -13,7 +13,6 @@ import {FileUploadCancelUploadPreviewComponent} from './previews/cancel-upload/f
 	selector: 'app-code-example-file-upload',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class FileUploadCodeExamplesComponent extends CodeExamples {

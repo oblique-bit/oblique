@@ -73,7 +73,6 @@ describe('ob-configure-command tests', () => {
 		} as ObNewSchemaOption;
 		option = configureOption(config, 'test-option');
 
-		/*eslint-disable @typescript-eslint/no-unsafe-assignment */
 		const testCases = [
 			{description: 'option flags to contain -t', actual: option.flags, expected: '-t', matcher: 'toContain'},
 			{description: 'option flags to contain --test-option', actual: option.flags, expected: '--test-option', matcher: 'toContain'},

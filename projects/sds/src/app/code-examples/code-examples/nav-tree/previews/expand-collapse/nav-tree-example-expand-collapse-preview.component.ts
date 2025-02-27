@@ -6,7 +6,6 @@ import {ObButtonModule, ObNavTreeItemModel, ObNavTreeModule} from '@oblique/obli
 @Component({
 	selector: 'app-nav-tree-example-expand-collapse-preview',
 	templateUrl: './nav-tree-example-expand-collapse-preview.component.html',
-	standalone: true,
 	imports: [ObNavTreeModule, MatListModule, ObButtonModule, MatButtonModule],
 	styleUrls: ['./nav-tree-example-expand-collapse-preview.component.scss']
 })

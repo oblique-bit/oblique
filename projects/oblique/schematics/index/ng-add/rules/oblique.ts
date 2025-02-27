@@ -29,7 +29,6 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addAngularMaterialDependencies(),
 			addLocalAssets(),
 			addObliqueAssets(),
-			addFontStyle(),
 			addFontFiles(),
 			addLocales(options.locales.split(' ')),
 			raiseBuildBudget(),
@@ -76,10 +75,8 @@ function removeBrowserModule(): Rule {
 
 function addAdditionalModules(): Rule {
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Add ObIconModule & ObButtonModule');
+		infoMigration(_context, 'Oblique: Add ObButtonModule');
 		importModuleInRoot(tree, 'ObButtonModule', ObliquePackage);
-		importModuleInRoot(tree, 'ObIconModule', ObliquePackage);
-		addForRootToIconModule(tree);
 		addComment(tree);
 
 		return tree;
@@ -142,20 +139,6 @@ function addObliqueAssets(): Rule {
 	});
 }
 
-function addFontStyle(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Adding font');
-		const styleSheet = `node_modules/@oblique/oblique/styles/css/roboto.css`;
-		setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: string[]) => {
-			if (!config.includes(styleSheet)) {
-				config.splice(config.indexOf(obliqueCssPath) + 1, 0, styleSheet);
-			}
-			return config;
-		});
-		return tree;
-	});
-}
-
 function addFontFiles(): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return createSafeRule((tree: Tree, _context: SchematicContext) => {
@@ -178,11 +161,6 @@ function addMasterLayout(tree: Tree, title: string): void {
 	}
 }
 
-function addForRootToIconModule(tree: Tree): void {
-	const appModuleContent = readFile(tree, appModulePath);
-	tree.overwrite(appModulePath, appModuleContent.replace(/(?<prefix>.*)ObIconModule/s, '$<prefix>ObIconModule.forRoot()'));
-}
-
 function addComment(tree: Tree): void {
 	const appModuleContent = readFile(tree, appModulePath);
 	tree.overwrite(appModulePath, appModuleContent.replace(/ObButtonModule,\n/, 'ObButtonModule, // add other Oblique modules as needed\n'));
@@ -197,8 +175,8 @@ function raiseBuildBudget(): Rule {
 			[
 				{
 					type: 'initial',
-					maximumWarning: '1.3mb',
-					maximumError: '1.8mb'
+					maximumWarning: '1.7mb',
+					maximumError: '2mb'
 				},
 				{
 					type: 'anyComponentStyle',

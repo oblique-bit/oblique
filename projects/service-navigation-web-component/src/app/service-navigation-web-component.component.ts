@@ -33,7 +33,6 @@ import {TranslationsService} from './translations-service';
 import {ObICustomButton, ObILink} from './service-navigation-web-component.model';
 
 @Component({
-	standalone: true,
 	selector: 'ob-service-navigation-web-component',
 	templateUrl: './service-navigation-web-component.component.html',
 	styleUrls: [
@@ -58,11 +57,11 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	@Input({transform: numberAttribute}) maxLastUsedApplications = 3;
 	@Input({transform: numberAttribute}) maxFavoriteApplications = 3;
 	@Input({transform: booleanAttribute}) displayLanguages = true;
-	@Input({transform: booleanAttribute}) displayMessage = false;
-	@Input({transform: booleanAttribute}) displayInfo = false;
-	@Input({transform: booleanAttribute}) displayApplications = false;
-	@Input({transform: booleanAttribute}) displayProfile = false;
-	@Input({transform: booleanAttribute}) displayAuthentication = false;
+	@Input({transform: booleanAttribute}) displayMessage = true;
+	@Input({transform: booleanAttribute}) displayInfo = true;
+	@Input({transform: booleanAttribute}) displayApplications = true;
+	@Input({transform: booleanAttribute}) displayProfile = true;
+	@Input({transform: booleanAttribute}) displayAuthentication = true;
 	@Input({transform: booleanAttribute}) handleLogout: boolean;
 	@Input() pamsAppId: string;
 	@Input() rootUrl: string;

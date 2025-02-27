@@ -8,7 +8,90 @@
 	width: 100%;
 	color: core-variables.$ob-default;
 
-	&:not(.ob-form-field-textarea) {
+	& label.mat-mdc-floating-label {
+		text-overflow: ellipsis;
+	}
+
+	&:has(.mat-mdc-form-field-text-prefix),
+	&:has(.mat-mdc-form-field-text-suffix),
+	&.mat-mdc-form-field-has-icon-prefix,
+	&.mat-mdc-form-field-has-icon-suffix,
+	&.mat-mdc-form-field-has-icon-suffix.mat-form-field-appearance-outline:has(mat-datepicker-toggle),
+	&:has(.ob-input-clear),
+	&.mat-form-field-invalid {
+		.mdc-notched-outline .mdc-notched-outline__notch {
+			// 60px is the width used by material itself to reserve space for the mat-select icon.
+			// For visual consistency, we reserve the same space for the datepicker toggle icon, the clear button icon, and the invalid field icon.
+			max-width: calc(100% - 60px);
+		}
+	}
+
+	&.mat-mdc-form-field-has-icon-prefix.mat-mdc-form-field-has-icon-suffix
+		.mdc-notched-outline
+		.mdc-notched-outline__notch {
+		max-width: calc(100% - 90px);
+	}
+
+	&:has(.mat-mdc-form-field-text-prefix):has(.mat-mdc-form-field-text-suffix)
+		.mdc-notched-outline
+		.mdc-notched-outline__notch {
+		max-width: calc(100% - 80px);
+	}
+
+	&:has(.mat-mdc-form-field-text-suffix).mat-form-field-invalid
+		.mdc-notched-outline
+		.mdc-notched-outline__notch {
+		max-width: calc(100% - 80px);
+	}
+
+	&.mat-mdc-form-field-type-mat-select.mat-form-field-invalid
+		.mdc-notched-outline
+		.mdc-notched-outline__notch {
+		max-width: calc(100% - 90px);
+	}
+
+	&:has(.mat-mdc-form-field-text-prefix).mat-form-field-invalid,
+	&.mat-mdc-form-field-has-icon-prefix.mat-form-field-invalid,
+	&.mat-mdc-form-field-has-icon-suffix.mat-form-field-invalid {
+		.mdc-notched-outline .mdc-notched-outline__notch {
+			max-width: calc(100% - 90px);
+		}
+	}
+
+	&.mat-mdc-form-field-has-icon-suffix.mat-form-field-appearance-outline:has(
+			mat-datepicker-toggle
+		).mat-form-field-invalid {
+		.mdc-notched-outline .mdc-notched-outline__notch {
+			max-width: calc(100% - 90px);
+		}
+	}
+
+	&:has(.mat-mdc-form-field-text-prefix):has(
+			.mat-mdc-form-field-text-suffix
+		).mat-form-field-invalid {
+		.mdc-notched-outline .mdc-notched-outline__notch {
+			max-width: calc(100% - 110px);
+		}
+	}
+
+	&.mat-mdc-form-field-has-icon-prefix.mat-mdc-form-field-has-icon-suffix.mat-form-field-invalid {
+		.mdc-notched-outline .mdc-notched-outline__notch {
+			max-width: calc(100% - 120px);
+		}
+	}
+
+	&.mat-mdc-form-field-has-icon-prefix:not(
+			.mat-mdc-form-field-has-icon-suffix,
+			:has(mat-datepicker-toggle),
+			:has(.mdc-text-field--focused)
+		) {
+		.mat-mdc-floating-label {
+			// fix angular material bug where the ellipsis overlaps the right border of the field when there is a long label and an icon prefix
+			margin-left: -1px;
+		}
+	}
+
+	&:not(:has(.mat-mdc-form-field-textarea-control)) {
 		.ob-form-sm & {
 			input:not(.mat-datepicker-input) {
 				margin-bottom: 3px;
@@ -75,7 +158,7 @@
 		}
 	}
 
-	&.ob-form-field-textarea {
+	&:has(.mat-mdc-form-field-textarea-control) {
 		.mat-mdc-text-field-wrapper
 			.mat-mdc-form-field-flex
 			.mat-mdc-floating-label:not(.mdc-floating-label--float-above) {
@@ -108,7 +191,7 @@
 		}
 	}
 
-	&:not([readonly], .ob-form-field-readonly, .mat-form-field-disabled) {
+	&:not([readonly], :has([readonly]), .mat-form-field-disabled) {
 		&.mat-accent {
 			@include mat-form-field.ob-focused-form-field-colors(
 				core-variables.$ob-default,
@@ -129,12 +212,6 @@
 				core-variables.$ob-red-50
 			);
 
-			&:not(:hover) {
-				[class*="mat-form-field-outline-"] {
-					border-width: 1px;
-				}
-			}
-
 			.mat-mdc-input-element {
 				padding-right: 28px; // empiric number: icon width + $ob-spacing-xs
 			}
@@ -150,8 +227,7 @@
 				font-size: core-variables.$ob-font-size-smallest;
 				margin-top: core-variables.$ob-spacing-xs * 0.75;
 				z-index: core-variables.$ob-z-index-controls;
-
-				@at-root #{selector.append(".ob-form-field-has-text-suffix", &)} {
+				@at-root #{selector.append(":has(.mat-mdc-form-field-text-suffix)", &)} {
 					right: core-variables.$ob-spacing-xs;
 				}
 
@@ -159,7 +235,7 @@
 					margin-top: core-variables.$ob-spacing-sm;
 				}
 
-				@at-root #{selector.append(".ob-form-field-textarea", &)} {
+				@at-root #{selector.append(":has(.mat-mdc-form-field-textarea-control)", &)} {
 					margin-top: -(core-variables.$ob-spacing-lg) + (core-variables.$ob-spacing-xs * 0.25);
 
 					.ob-form-lg & {
@@ -168,7 +244,9 @@
 				}
 
 				@at-root #{selector.append(".mat-mdc-form-field-type-mat-select", &)} {
-					right: core-variables.$ob-spacing-default;
+					// empirical value that comes in addition to the width of the select icon,
+					// in order to keep the error icon vertically aligned with the error icon of other fields
+					right: 28px;
 				}
 			}
 		}
@@ -179,26 +257,14 @@
 					core-variables.$ob-red-800,
 					core-variables.$ob-red-50
 				);
-
-				&:not(:hover) {
-					[class*="mat-form-field-outline-"] {
-						border-width: 1px;
-					}
-				}
 			}
 
-			&.ob-form-field-required {
+			&:has([aria-required="true"]) {
 				&.mat-form-field-invalid {
 					@include mat-form-field.ob-form-field-colors(
 						core-variables.$ob-red-800,
 						core-variables.$ob-red-50
 					);
-
-					&:not(:hover) {
-						[class*="mat-form-field-outline-"] {
-							border-width: 1px;
-						}
-					}
 				}
 			}
 		}
@@ -218,7 +284,7 @@
 	}
 
 	[readonly],
-	&.ob-form-field-readonly {
+	&:has([readonly]) {
 		pointer-events: none;
 
 		.mat-mdc-floating-label.mdc-floating-label {
@@ -317,8 +383,7 @@
 
 		.mdc-notched-outline {
 			top: material-variables.$ob-form-field-margin;
-
-			@at-root #{selector.append(".ob-form-field-textarea", &)} {
+			@at-root #{selector.append(":has(.mat-mdc-form-field-textarea-control)", &)} {
 				.ob-form-sm & {
 					top: 6px; // empiric value
 				}
@@ -371,7 +436,7 @@
 				1.8em
 			);
 
-			&.ob-form-field-textarea {
+			&:has(.mat-mdc-form-field-textarea-control) {
 				padding-bottom: 0;
 
 				.mat-mdc-form-field-textarea-control {
@@ -451,8 +516,7 @@
 	&:hover,
 	&:focus-within {
 		z-index: 1; // so that multilines hints & errors are above next elements
-
-		&:not([readonly], .ob-form-field-readonly, .mat-form-field-disabled) {
+		&:not([readonly], &.mat-form-field-disabled) {
 			[class*="mdc-notched-outline__"] {
 				border-width: 2px;
 			}
@@ -507,14 +571,14 @@
 		}
 	}
 
-	&.ob-form-field-has-text-prefix {
+	&:has(.mat-mdc-form-field-text-prefix) {
 		.mat-mdc-input-element,
 		.mdc-floating-label:not(.mdc-floating-label--float-above) {
 			padding-left: core-variables.$ob-spacing-default;
 		}
 	}
 
-	&.ob-form-field-has-text-suffix {
+	&:has(.mat-mdc-form-field-text-suffix) {
 		.mat-mdc-input-element,
 		.mdc-floating-label:not(.mdc-floating-label--float-above) {
 			padding-right: core-variables.$ob-spacing-default;

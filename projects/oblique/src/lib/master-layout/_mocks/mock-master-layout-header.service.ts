@@ -10,7 +10,6 @@ export class ObMockMasterLayoutHeaderService {
 	isCustom = true;
 	isMedium = true;
 	isSticky = true;
-	reduceOnScroll = true;
 	serviceNavigationConfiguration = {};
 	loginState$ = of(false);
 

@@ -6,7 +6,6 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 	selector: 'app-highlighted-code',
 	templateUrl: './highlighted-code.component.html',
 	styleUrls: ['./highlighted-code.component.scss'],
-	standalone: true,
 	imports: [IdPipe]
 })
 export class HighlightedCodeComponent implements AfterViewInit {
@@ -18,9 +17,7 @@ export class HighlightedCodeComponent implements AfterViewInit {
 	@ViewChild('code') private readonly code!: ElementRef<HTMLElement>;
 
 	ngAfterViewInit(): void {
-		/* eslint-disable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 		hljs.configure({languages: ['html', 'scss', 'ts', 'json']});
 		hljs.highlightElement(this.code.nativeElement);
-		/* eslint-enable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 	}
 }

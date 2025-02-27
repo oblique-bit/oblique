@@ -22,14 +22,11 @@ import {ObNumberFormatModule} from './number-format/number-format.module';
 import {ObOffCanvasModule} from './off-canvas/off-canvas.module';
 import {ObStickyModule} from './sticky/sticky.module';
 import {ObUnknownRouteModule} from './unknown-route/unknown-route.module';
-import {obliqueProviders} from './utilities';
 import {ObLanguageModule} from './language/language.module';
 import {ObExternalLinkModule} from './external-link/external-link.module';
 import {ObAlertModule} from './alert/alert.module';
 import {ObBreadcrumbModule} from './breadcrumb/breadcrumb.module';
 import {ObServiceNavigationModule} from './service-navigation/service-navigation.module';
-import {ObFormFieldModule} from './form-field/form-field.module';
-import {ObCheckboxModule} from './checkbox/checkbox.module';
 
 const OBLIQUE_MODULES = [
 	ObAlertModule,
@@ -40,7 +37,6 @@ const OBLIQUE_MODULES = [
 	ObDocumentMetaModule,
 	ObErrorMessagesModule,
 	ObFileUploadModule,
-	ObFormFieldModule,
 	ObLanguageModule,
 	ObMasterLayoutModule,
 	ObNavTreeModule,
@@ -56,7 +52,6 @@ const OBLIQUE_MODULES = [
 	ObSelectableModule,
 	ObSpinnerModule,
 	ObStickyModule,
-	ObCheckboxModule,
 	ObInputClearModule,
 	ObTranslateParamsModule,
 	ObUnknownRouteModule,
@@ -66,7 +61,6 @@ const OBLIQUE_MODULES = [
 
 @NgModule({
 	imports: OBLIQUE_MODULES,
-	providers: obliqueProviders(),
 	exports: OBLIQUE_MODULES
 })
 export class ObliqueModule {}

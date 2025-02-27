@@ -10,7 +10,6 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 	selector: 'app-dialog-code-example',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CodeExampleComponent, CommonModule, IdPipe]
 })
 export class DialogCodeExamplesComponent extends CodeExamples {

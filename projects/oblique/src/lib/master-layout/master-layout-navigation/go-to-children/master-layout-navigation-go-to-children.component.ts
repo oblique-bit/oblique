@@ -12,7 +12,6 @@ import {TranslateModule} from '@ngx-translate/core';
 	styleUrls: ['./master-layout-navigation-go-to-children.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout-navigation-go-to-children'},
-	standalone: true,
 	imports: [MatButtonModule, MatIconModule, ObButtonModule, TranslateModule]
 })
 export class ObMasterLayoutNavigationGoToChildrenComponent implements OnChanges {

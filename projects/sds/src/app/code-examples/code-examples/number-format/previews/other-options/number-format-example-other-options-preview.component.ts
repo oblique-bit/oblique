@@ -7,7 +7,6 @@ import {Component} from '@angular/core';
 @Component({
 	selector: 'app-number-format-example-other-options-preview',
 	templateUrl: './number-format-example-other-options-preview.component.html',
-	standalone: true,
 	imports: [FormsModule, MatFormFieldModule, MatInputModule, ObNumberFormatModule],
 	styleUrls: ['../../../../code-example-flex-layout.scss']
 })

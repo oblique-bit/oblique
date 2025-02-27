@@ -11,7 +11,6 @@ import {
 	removeServiceMethodCall
 } from '../utils';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IUpdateV11Schema {}
 
 export class UpdateV11toV12 implements ObIMigrations {

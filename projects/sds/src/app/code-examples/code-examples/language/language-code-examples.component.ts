@@ -9,7 +9,6 @@ import {LanguageExampleDefaultPreviewComponent} from './previews/default/languag
 	selector: 'app-code-example-langugage',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class LanguageCodeExamplesComponent extends CodeExamples {

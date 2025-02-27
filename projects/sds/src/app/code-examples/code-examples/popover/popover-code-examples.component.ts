@@ -10,7 +10,6 @@ import {PopoverExampleOtherOptionsPreviewComponent} from './previews/other-optio
 	selector: 'app-code-example-popover',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class PopoverCodeExamplesComponent extends CodeExamples {

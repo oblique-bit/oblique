@@ -6,7 +6,8 @@ import {NgModelGroup, UntypedFormBuilder, UntypedFormGroup} from '@angular/forms
 	templateUrl: './unsaved-changes-sample.component.html',
 	styleUrls: ['./unsaved-changes-sample.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	standalone: false
 })
 export class UnsavedChangesSampleComponent implements OnInit {
 	standAloneReactive: UntypedFormGroup;

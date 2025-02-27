@@ -5,6 +5,7 @@
 .mat-mdc-button-base {
 	&.ob-button {
 		color: core-variables.$ob-default;
+		font-size: 1em; // to override Material's 19 default size of 24px
 		line-height: 34px; // material design height
 		border: 1px solid transparent;
 

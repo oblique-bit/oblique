@@ -11,7 +11,6 @@ import {MatIconModule} from '@angular/material/icon';
 	selector: 'app-stepper-example-default-preview',
 	templateUrl: './stepper-example-default-preview.component.html',
 	styleUrls: ['./stepper-example-default-preview.component.scss'],
-	standalone: true,
 	imports: [MatFormFieldModule, MatButtonModule, MatIconModule, MatInputModule, MatStepperModule, ObButtonModule, ReactiveFormsModule]
 })
 export class StepperExampleDefaultPreviewComponent implements OnInit {

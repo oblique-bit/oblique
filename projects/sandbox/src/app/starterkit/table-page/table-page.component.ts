@@ -5,7 +5,8 @@ import {ObNavTreeItemModel} from '@oblique/oblique';
 @Component({
 	selector: 'sb-table-page',
 	templateUrl: './table-page.component.html',
-	styleUrls: ['./table-page.component.scss']
+	styleUrls: ['./table-page.component.scss'],
+	standalone: false
 })
 export class TablePageComponent {
 	selection = new SelectionModel<any>(true, []);

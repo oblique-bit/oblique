@@ -5,7 +5,7 @@ import {getTemplate} from './ng-add/ng-add-utils';
 
 export const packageJsonConfigPath = '/package.json';
 export const ObliquePackage = '@oblique/oblique';
-const glob = require('glob'); /* eslint-disable-line @typescript-eslint/no-var-requires */
+const glob = require('glob');
 
 const angularJsonConfigPath = './angular.json/';
 export let isSuccessful = true;
@@ -64,7 +64,7 @@ export function checkForStandalone(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		infoMigration(_context, 'Check if application is standalone ');
 		const apply = (filePath: string): void => {
-			const standalone = /standalone\s*:\s*true/.test(readFile(tree, filePath));
+			const standalone = isStandalone(tree, filePath);
 			if (standalone) {
 				error(
 					'Standalone application detected. Oblique schematics are not compatible with standalone applications. Either convert the application to non-standalone or perform the changes manually. Check the documentation for guidance.'
@@ -72,6 +72,29 @@ export function checkForStandalone(): Rule {
 			}
 		};
 		return applyInTree(tree, apply, '*.ts');
+	};
+}
+
+export function warnIfStandalone(): Rule {
+	return (tree: Tree, _context: SchematicContext) => {
+		let standaloneDetected = false;
+		applyInTree(
+			tree,
+			(filePath: string): void => {
+				const standalone = isStandalone(tree, filePath);
+				if (standalone) {
+					standaloneDetected = true;
+				}
+			},
+			'*.ts'
+		);
+
+		if (standaloneDetected) {
+			warn(
+				_context,
+				'Standalone application detected, the migration has only been partially applied and the application is currently broken. Please check manually the changes applied by the schematic.'
+			);
+		}
 	};
 }
 
@@ -256,8 +279,11 @@ export function addImport(tree: Tree, fileName: string, name: string, pkg: strin
 	if (!hasImport(content, name, pkg)) {
 		tree.overwrite(
 			fileName,
-			new RegExp(`import\\s*{.*}\\s*from\\s*['"]${pkg}['"]`, 'm').test(content)
-				? content.replace(new RegExp(`import\\s*{(?<package>.*)}\\s*from\\s*['"]${pkg}['"]`), `import {$<package>, ${name}} from '${pkg}'`)
+			new RegExp(`import\\s*{.*}\\s*from\\s*['"]${pkg}['"]`, 's').test(content)
+				? content.replace(
+						new RegExp(`import\\s*{(?<package>.*)}\\s*from\\s*['"]${pkg}['"]`, 's'),
+						`import {$<package>, ${name}} from '${pkg}'`
+					)
 				: `import {${name}} from '${pkg}';\n${content}`
 		);
 	}
@@ -273,6 +299,7 @@ export function removeImport(tree: Tree, fileName: string, name: string, pkg: st
 				: content
 						.replace(new RegExp(`(import\\s*{\\s*.*)${name}(?:,\\s*)?(.*\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*)`, 's'), '$1$2')
 						.replace(/,\s*}/, '}')
+						.replace(/,\s*,/, ',\n')
 		);
 	}
 }
@@ -503,4 +530,8 @@ function extractComponentPath(componentName: string, fileContent: string): strin
 
 function extractTemplatePath(fileContent: string): string {
 	return /templateUrl\s*:\s*['"](?<templatePath>.*?)['"]/s.exec(fileContent)?.groups?.templatePath ?? '';
+}
+
+function isStandalone(tree: Tree, filePath: string): boolean {
+	return /standalone\s*:\s*true/.test(readFile(tree, filePath));
 }

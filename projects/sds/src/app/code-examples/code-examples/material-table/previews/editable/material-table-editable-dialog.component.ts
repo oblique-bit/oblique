@@ -11,8 +11,7 @@ import {PeriodicElement} from './mock-backend.service';
 @Component({
 	selector: 'app-material-table-editable-dialog',
 	templateUrl: './material-table-editable-dialog.component.html',
-	imports: [MatDialogModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatButtonModule, MatIconModule, ObButtonModule],
-	standalone: true
+	imports: [MatDialogModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatButtonModule, MatIconModule, ObButtonModule]
 })
 export class AppMaterialTableExampleEditableDialogComponent implements OnInit {
 	editForm: UntypedFormGroup;

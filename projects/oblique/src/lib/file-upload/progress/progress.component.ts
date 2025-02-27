@@ -17,7 +17,6 @@ import {ObFileUploadService} from '../file-upload.service';
 	styleUrls: ['./progress.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-progress'},
-	standalone: true,
 	imports: [NgFor, NgIf, MatProgressBarModule, MatButtonModule, ObButtonDirective, MatTooltipModule, MatIconModule, TranslateModule]
 })
 export class ObProgressComponent implements OnDestroy {

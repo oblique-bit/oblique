@@ -5,13 +5,13 @@
 	</caption>
 	<thead>
 		<tr>
-			<th>Event type</th>
-			<th>File name(s)</th>
+			<th scope="col">Event type</th>
+			<th scope="col">File name(s)</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr *ngFor="let event of last5UploadEvents">
-			<td>{{ event.eventType }}</td>
+			<th scope="row">{{ event.eventType }}</th>
 
 			<td>{{ event.fileNames }}</td>
 		</tr>

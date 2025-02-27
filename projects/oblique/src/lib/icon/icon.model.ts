@@ -5,6 +5,9 @@ export function iconFactory(iconService: ObIconService): () => void {
 	return () => iconService.registerOnAppInit();
 }
 
+/**
+ * Deprecated with Oblique 13.0.0, use the `iconConfig` parameter of the `obProvideObliqueProviders` function instead
+ */
 export const ObTIconConfig = new InjectionToken<ObIconConfig>('Oblique icon configuration');
 
 export interface ObIconConfig {
@@ -25,9 +28,13 @@ export enum ObEIcon {
 	APPS = 'apps',
 	ARCHIVE = 'archive',
 	ARROW_DOWN = 'arrow-down',
+	ARROW_DOWN_LEFT = 'arrow-down-left',
+	ARROW_DOWN_RIGHT = 'arrow-down-right',
 	ARROW_LEFT = 'arrow-left',
 	ARROW_RIGHT = 'arrow-right',
 	ARROW_UP = 'arrow-up',
+	ARROW_UP_LEFT = 'arrow-up-left',
+	ARROW_UP_RIGHT = 'arrow-up-right',
 	ART = 'art',
 	ATTACHMENT = 'attachment',
 	AUDIO = 'audio',
@@ -104,6 +111,7 @@ export enum ObEIcon {
 	DOWNLOAD = 'download',
 	DRAG_INDICATOR = 'drag-indicator',
 	DUPLICATE = 'duplicate',
+	EASY_LANGUAGE = 'easy-language',
 	ENVELOPE = 'envelope',
 	ENVELOPE_OPEN = 'envelope-open',
 	ERASER = 'eraser',
@@ -113,6 +121,7 @@ export enum ObEIcon {
 	EYE = 'eye',
 	EYEDROPPER = 'eyedropper',
 	EYE_SLASH = 'eye-slash',
+	FACEBOOK = 'facebook',
 	FAMILY = 'family',
 	FAX = 'fax',
 	FILE = 'file',
@@ -173,11 +182,13 @@ export enum ObEIcon {
 	INDUSTRY = 'industry',
 	INFO = 'info',
 	INFO_CIRCLE = 'info-circle',
+	INSTAGRAM = 'instagram',
 	KEY = 'key',
 	KEYBOARD = 'keyboard',
 	LANGUAGE = 'language',
 	LIFERING = 'lifering',
 	LINK = 'link',
+	LINKED_IN = 'linked-in',
 	LIST = 'list',
 	LIST_PARAGRAPH = 'list-paragraph',
 	LOCK = 'lock',
@@ -224,6 +235,8 @@ export enum ObEIcon {
 	TABLET = 'tablet',
 	TACHOMETER = 'tachometer',
 	TAG = 'tag',
+	TEXT_AREA_LEFT = 'text-area-left',
+	TEXT_AREA_RIGHT = 'text-area-right',
 	THUMBS_DOWN = 'thumbs-down',
 	THUMBS_UP = 'thumbs-up',
 	TICKET = 'ticket',
@@ -245,10 +258,16 @@ export enum ObEIcon {
 	VIDEO = 'video',
 	WAND = 'wand',
 	WARNING = 'warning',
+	WARNING_BOX = 'warning-box',
 	WARNING_CIRCLE = 'warning-circle',
 	WARNING_TRIANGLE = 'warning-triangle',
 	WEIGHT = 'weight',
 	WHEELCHAIR = 'wheelchair',
 	WI_FI = 'wi-fi',
-	WRENCH = 'wrench'
+	WRENCH = 'wrench',
+	XING = 'xing',
+	XTWITTER = 'xtwitter',
+	YOUTUBE = 'youtube',
+	ZOOM_IN = 'zoom-in',
+	ZOOM_OUT = 'zoom-out'
 }

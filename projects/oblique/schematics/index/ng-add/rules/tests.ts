@@ -55,11 +55,7 @@ function createJestConfigFiles() {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, _context: SchematicContext): Tree => {
 		addFile(tree, 'tests/jest.config.js', getTemplate(tree, 'default-jest.config'));
-		addFile(
-			tree,
-			'tests/setupJest.ts',
-			"import 'jest-preset-angular/setup-jest';\nimport './jestGlobalMocks'; // browser mocks globally available for every test"
-		);
+		addFile(tree, 'tests/setupJest.ts', "import './jestGlobalMocks'; // browser mocks globally available for every test");
 		addFile(tree, 'tests/jestGlobalMocks.ts', getTemplate(tree, 'default-jestGlobalMocks.config'));
 
 		return tree;

@@ -11,7 +11,6 @@ import {IdPipe} from '../../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
 import {latest} from '../../../obliqueVersion';
 import {VersionOption} from './version.model';
-import {ObSelectDirective} from '@oblique/oblique';
 import {URL_CONST} from '../../shared/url/url.const';
 import {VersionService} from '../../shared/version/version.service';
 
@@ -20,8 +19,7 @@ import {VersionService} from '../../shared/version/version.service';
 	templateUrl: './version.component.html',
 	styleUrls: ['./version.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
-	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, ObSelectDirective, MatLabel, MatTooltip]
+	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, MatLabel, MatTooltip]
 })
 export class VersionComponent implements OnChanges {
 	@Input() idPrefix = '';

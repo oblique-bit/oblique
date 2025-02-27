@@ -2,6 +2,11 @@
   "$id": "oblique-cli-ng-new-schema",
   "title": "Oblique CLI ng new schema",
   "properties": {
+    "interactive": {
+      "type": "boolean",
+      "defaultValue": false,
+      "description": "Enables interactive mode for the Oblique's \"add\" Schematic. When activated, this flag prompts the user for all options, bypassing default and predefined settings. It offers greater flexibility and control through a step-by-step configuration process."
+    },
     "title": {
       "type": "string",
       "defaultValue": "<project-name>",
@@ -35,13 +40,6 @@
       "flagValuePlaceholder": "<port>",
       "defaultValue": " ",
       "description": "Proxy configuration: Defines the port for the proxy configuration for server connection."
-    },
-    "jenkins": {
-      "type": "string",
-      "flagValuePlaceholder": "<jenkinsConfiguration...>",
-      "defaultValue": "",
-      "defaultValueDescription": "no jenkins configuration",
-      "description": "Jenkins configuration: Defines Jenkins / CF configuration. For example (ORG;APP). Leave empty for no Jenkins / CF configuration."
     },
     "ajv": {
       "type": "boolean",
@@ -104,14 +102,6 @@
       "type": "boolean",
       "defaultValue": true,
       "description": "Sonar configuration: If set to true, a Sonar configuration is added."
-    },
-    "static": {
-      "type": "boolean",
-      "defaultValue": false,
-      "description": "Cloud foundry static build pack: It adds the static build back for CF.",
-      "resources": [
-        "Cloud Foundry Documentation at https://docs.cloudfoundry.org/buildpacks/staticfile"
-      ]
     },
     "eslint": {
       "type": "boolean",

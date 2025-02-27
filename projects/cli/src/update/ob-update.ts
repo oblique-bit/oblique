@@ -1,10 +1,10 @@
 import {Command, OptionValues} from '@commander-js/extra-typings';
 import * as path from 'node:path';
 import fs from 'node:fs';
-import {execSync} from 'node:child_process';
-import {commandUsageText, currentVersions, getHelpText, getVersionedDependency, ngAddOblique, startObCommand} from '../utils/cli-utils';
+import {commandUsageText, currentVersions, execute, getHelpText, ngAddOblique, startObCommand} from '../utils/cli-utils';
 import {PackageDependencies, updateDescriptions} from './ob-update.model';
 import chalk from 'chalk';
+import {execSync} from 'child_process';
 
 export function createObUpdateCommand(): Command<[string], OptionValues> {
 	const command = new Command<[string], OptionValues>();
@@ -30,8 +30,11 @@ function handleAction(): void {
 export function handleObUpdateActions(): void {
 	try {
 		checkNeededDependencies();
+		addSchematicsAngular();
 		runUpdateDependencies();
 		runUpdateSave();
+		runNpmDedupe();
+		runNpmPrune();
 	} catch (error) {
 		console.error(chalk.red('Update failed: '), error);
 		process.exit(1);
@@ -49,38 +52,66 @@ export function checkNeededDependencies(): void {
 	}
 }
 
+export function addSchematicsAngular(): void {
+	// This is temporary until a better solution is found
+	// The problem is that @schematics/angular, which is a dependency of Oblique, needs to be updated at the same time as the other packages,
+	// otherwise @angular-devkit/core won't be installed as a root dependency, but as a nested one. This can be solved with npm dedupe,
+	// but there's no way to execute this function in the middle of the update command.
+	// The solution is then to ensure that @schematics/angular is listed as a devDependency so that the update command also updates it
+	if (!isDependencyInPackage('@schematics/angular')) {
+		const pkg = findPackage();
+		if (pkg.dependencies) {
+			const groups = /[^~](?<major>\d+)\.\d+\.\d+"/.exec(pkg.dependencies['@angular/core'])?.groups ?? {major: '18'};
+			execSync(`npm i @schematics/angular@${groups['major']} --save-dev`, {stdio: 'inherit'});
+		}
+	}
+}
+
 export function runUpdateDependencies(): void {
 	try {
-		const dependencies: string[] = [];
-		for (const dependency of Object.keys(currentVersions) as (keyof typeof currentVersions)[]) {
-			if (isDependencyInPackage(dependency)) {
-				dependencies.push(getVersionedDependency(dependency));
-			}
-		}
-		const npxCommand = `npx ${getVersionedDependency('@angular/cli')} update ${dependencies.join(' ')}`;
-		execSync(npxCommand, {stdio: 'inherit', cwd: process.cwd()});
+		const dependencies = Object.entries(currentVersions)
+			.map(([dependency]) => dependency as keyof typeof currentVersions)
+			.filter(dependency => isDependencyInPackage(dependency));
+		execute({name: 'ngUpdate', dependencies});
 	} catch (error) {
 		console.error(error);
 	}
 }
 
 function runUpdateSave(): void {
-	let result = '';
 	console.info(chalk.blue('[Info]: Runs npm update'));
 	try {
-		result = execSync(`npm update --save`, {stdio: 'inherit', cwd: process.cwd(), encoding: undefined}).toString();
-	} catch (ex) {
-		console.info(result);
+		execute({name: 'npmUpdate'});
+	} catch (error) {
+		console.info(error);
+	}
+}
+
+function runNpmDedupe(): void {
+	console.info(chalk.blue('[Info]: Runs npm dedupe'));
+	try {
+		execute({name: 'npmDedupe'});
+	} catch (error) {
+		console.info(error);
+	}
+}
+
+function runNpmPrune(): void {
+	console.info(chalk.blue('[Info]: Runs npm prune'));
+	try {
+		execute({name: 'npmPrune'});
+	} catch (error) {
+		console.info(error);
 	}
 }
 
 export function outputOutdatedDependencies(): void {
 	console.info(chalk.blue('[Info]: Following dependencies should also be manually updated.\n'));
-	let result = '';
 	try {
-		result = execSync('npm outdated', {stdio: 'inherit', cwd: process.cwd(), encoding: undefined}).toString();
-	} catch (ex) {
-		console.info(result);
+		execute({name: 'npmOutdated'});
+	} catch (error) {
+		// npm outdated always fails, but no error management is needed since the execute function will already print its output.
+		// the try..catch block only serves to avoid the error being thrown
 	}
 }
 

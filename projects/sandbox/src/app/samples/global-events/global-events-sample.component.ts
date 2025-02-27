@@ -5,7 +5,8 @@ import {Observable} from 'rxjs';
 
 @Component({
 	selector: 'sb-utilities-sample',
-	templateUrl: './global-events-sample.component.html'
+	templateUrl: './global-events-sample.component.html',
+	standalone: false
 })
 export class GlobalEventsSampleComponent implements AfterViewInit {
 	@ViewChild('outsideClick', {read: ElementRef}) button: ElementRef;

@@ -10,7 +10,6 @@ import {CommonModule} from '@angular/common';
 import {MatListModule} from '@angular/material/list';
 
 @Component({
-	standalone: true,
 	selector: 'app-chips-example-autocomplete-preview',
 	templateUrl: './chips-example-autocomplete-preview.component.html',
 	imports: [

@@ -4,7 +4,8 @@ import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
 @Component({
-	template: `<ob-master-layout />`
+	template: `<ob-master-layout />`,
+	standalone: false
 })
 class OutLineDirectiveTestComponent {}
 

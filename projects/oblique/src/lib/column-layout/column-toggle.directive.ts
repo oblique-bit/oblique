@@ -4,7 +4,8 @@ import {ObColumnPanelDirective} from './column-panel.directive';
 @Directive({
 	selector: '[obColumnToggle]',
 	exportAs: 'obColumnToggle',
-	host: {class: 'ob-column-toggle'}
+	host: {class: 'ob-column-toggle'},
+	standalone: false
 })
 export class ObColumnToggleDirective {
 	constructor(private readonly parent: ObColumnPanelDirective) {}

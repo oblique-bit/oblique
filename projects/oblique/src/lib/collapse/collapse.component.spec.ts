@@ -9,7 +9,8 @@ import {OBLIQUE_COLLAPSE_ACTIVE, ObCollapseComponent} from './collapse.component
 		<ob-collapse />
 		<ob-collapse id="my-custom-id-for-test" />
 		<ob-collapse />
-	`
+	`,
+	standalone: false
 })
 class TestCollapseComponent {}
 

@@ -11,7 +11,6 @@ import {ExpansionPanelExampleOtherOptionsPreviewComponent} from './previews/othe
 	selector: 'app-code-example-expansion-panel',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class ExpansionPanelCodeExamplesComponent extends CodeExamples {

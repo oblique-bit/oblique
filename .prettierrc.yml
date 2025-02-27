@@ -1,5 +1,5 @@
 overrides:
-  - files: "*.{ts,js}"
+  - files: "*.{ts,js,mjs}"
     options:
       semi: true
       singleQuote: true

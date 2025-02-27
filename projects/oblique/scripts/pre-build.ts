@@ -27,7 +27,7 @@ class PreBuild extends StaticScript {
 			.map(file => ({filePath: file.filePath, styleUrls: file.styleUrls.filter(url => !url.startsWith('.'))}))
 			.map(file => file.styleUrls.map(fileName => `${file.filePath}/${fileName}`))
 			.reduce<string[]>((flatArray, current) => [...flatArray, ...current], [])
-			.map(styleUrl => `@import "${styleUrl}";`)
+			.map(styleUrl => `@use "${styleUrl}";`)
 			.concat('')
 			.join('\n');
 	}

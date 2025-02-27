@@ -30,7 +30,7 @@
 	font-size: 1.25rem;
 	font-weight: 500;
 	line-height: 1.4;
-	letter-spacing: 0.2px;
+	letter-spacing: 0.1px;
 }
 
 @mixin ob-h6 {
@@ -77,9 +77,9 @@
 
 @mixin ob-caption {
 	font-size: 0.75rem;
-	font-weight: 400;
+	font-weight: 500;
 	line-height: 1.333333;
-	letter-spacing: 0.4px;
+	letter-spacing: 0.5px;
 }
 
 @mixin ob-overline {

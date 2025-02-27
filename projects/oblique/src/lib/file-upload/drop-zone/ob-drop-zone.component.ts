@@ -15,7 +15,6 @@ import {ObValidationService} from './validation.service';
 	providers: [ObValidationService],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-drop-zone'},
-	standalone: true,
 	imports: [ObDragDropDirective, MatIconModule, NgIf, NgFor, TranslateModule, ObAcceptAllPipe]
 })
 export class ObDropZoneComponent {

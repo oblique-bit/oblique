@@ -10,7 +10,8 @@ import {CommonModule} from '@angular/common';
 import {OptionLabelIconPosition} from './../autocomplete.model';
 
 @Component({
-	template: ''
+	template: '',
+	standalone: false
 })
 class OptionLabelTestComponent {
 	iconName: ObEIcon | '' = '';
@@ -52,7 +53,7 @@ describe(ObOptionLabelIconDirective.name, () => {
 				iconName: 'info',
 				iconPosition: 'end',
 				innerHtml:
-					'Text<span class="mat-icon" style="margin-left: auto;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false"><rect x="11.26535" y="7.65413" width="1.48047" height="13.3457" fill="currentColor"></rect><path d="M12.76437,3.09456a.98717.98717,0,0,0-.74609-.28808.96654.96654,0,0,0-.74023.28808.98876.98876,0,0,0-.27149.70411.94827.94827,0,0,0,1.01172.98046,1.00138,1.00138,0,0,0,.74609-.28125.95958.95958,0,0,0,.27735-.69921A.97732.97732,0,0,0,12.76437,3.09456Z" fill="currentColor"></path></svg></span>'
+					'Text<span class="mat-icon" style="margin-left: auto;"><svg viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M11.26535,7.65413h1.48047v13.3457h-1.48047V7.65413ZM12.76437,3.09456c-.18555-.19238-.43359-.28809-.74609-.28809s-.55957.0957-.74023.28809c-.18066.19141-.27148.42676-.27148.7041,0,.27832.09082.51074.27148.69922.18066.1875.42773.28125.74023.28125s.56055-.09375.74609-.28125c.18457-.18848.27734-.4209.27734-.69922,0-.27734-.09277-.5127-.27734-.7041Z"></path></svg></span>'
 			}
 		},
 		{
@@ -62,7 +63,7 @@ describe(ObOptionLabelIconDirective.name, () => {
 				iconName: 'info',
 				iconPosition: 'start',
 				innerHtml:
-					'<span class="mat-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false"><rect x="11.26535" y="7.65413" width="1.48047" height="13.3457" fill="currentColor"></rect><path d="M12.76437,3.09456a.98717.98717,0,0,0-.74609-.28808.96654.96654,0,0,0-.74023.28808.98876.98876,0,0,0-.27149.70411.94827.94827,0,0,0,1.01172.98046,1.00138,1.00138,0,0,0,.74609-.28125.95958.95958,0,0,0,.27735-.69921A.97732.97732,0,0,0,12.76437,3.09456Z" fill="currentColor"></path></svg></span>Text'
+					'<span class="mat-icon"><svg viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M11.26535,7.65413h1.48047v13.3457h-1.48047V7.65413ZM12.76437,3.09456c-.18555-.19238-.43359-.28809-.74609-.28809s-.55957.0957-.74023.28809c-.18066.19141-.27148.42676-.27148.7041,0,.27832.09082.51074.27148.69922.18066.1875.42773.28125.74023.28125s.56055-.09375.74609-.28125c.18457-.18848.27734-.4209.27734-.69922,0-.27734-.09277-.5127-.27734-.7041Z"></path></svg></span>Text'
 			}
 		}
 	])('with $caseText', ({template, expected}) => {
@@ -118,7 +119,7 @@ describe(ObOptionLabelIconDirective.name, () => {
 			component.iconName = ObEIcon.INFO;
 			fixture.detectChanges();
 			expect(directiveNode.nativeNode.innerHTML).toBe(
-				'Text<span class="mat-icon" style="margin-left: auto;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false"><rect x="11.26535" y="7.65413" width="1.48047" height="13.3457" fill="currentColor"></rect><path d="M12.76437,3.09456a.98717.98717,0,0,0-.74609-.28808.96654.96654,0,0,0-.74023.28808.98876.98876,0,0,0-.27149.70411.94827.94827,0,0,0,1.01172.98046,1.00138,1.00138,0,0,0,.74609-.28125.95958.95958,0,0,0,.27735-.69921A.97732.97732,0,0,0,12.76437,3.09456Z" fill="currentColor"></path></svg></span>'
+				'Text<span class="mat-icon" style="margin-left: auto;"><svg viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M11.26535,7.65413h1.48047v13.3457h-1.48047V7.65413ZM12.76437,3.09456c-.18555-.19238-.43359-.28809-.74609-.28809s-.55957.0957-.74023.28809c-.18066.19141-.27148.42676-.27148.7041,0,.27832.09082.51074.27148.69922.18066.1875.42773.28125.74023.28125s.56055-.09375.74609-.28125c.18457-.18848.27734-.4209.27734-.69922,0-.27734-.09277-.5127-.27734-.7041Z"></path></svg></span>'
 			);
 		});
 

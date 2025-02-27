@@ -7,7 +7,7 @@
 	display: none;
 }
 
-@include layout.ob-media-breakpoint-down(md) {
+.ob-layout-collapsed {
 	.ob-main-nav-item {
 		display: flex;
 
@@ -21,8 +21,8 @@
 			}
 
 			&.ob-button.ob-button-tertiary.mat-mdc-button-base {
-				padding-left: calc(0.3896em + variables.$ob-spacing-xs * 0.5);
-				padding-top: calc(0.3896em + variables.$ob-spacing-xs * 0.5);
+				padding-left: calc(0.3896em + #{variables.$ob-spacing-xs} * 0.5);
+				padding-top: calc(0.3896em + #{variables.$ob-spacing-xs} * 0.5);
 
 				&.mat-mdc-icon-button {
 					height: 41px;

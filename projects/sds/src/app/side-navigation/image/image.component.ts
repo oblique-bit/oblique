@@ -6,7 +6,6 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 	selector: 'app-image',
 	templateUrl: './image.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, NgOptimizedImage]
 })
 export class ImageComponent {

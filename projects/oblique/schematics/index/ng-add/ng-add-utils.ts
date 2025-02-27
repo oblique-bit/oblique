@@ -21,7 +21,7 @@ type versionFunc = (version: number) => string;
 const versions: Record<string, string | versionFunc> = {
 	ajv: '^8.0.0',
 	'ajv-formats': '^3.0.0',
-	'@ngx-translate/core': `^15.0.0`,
+	'@ngx-translate/core': `^16.0.0`,
 	'@angular/cdk': version => `^${version}.0.0`,
 	'@angular/material': version => `^${version}.0.0`,
 	'@angular/core': version => `^${version}.0.0`,
@@ -35,7 +35,7 @@ const versions: Record<string, string | versionFunc> = {
 	'eslint-plugin-prettier': '^5.0.0',
 	prettier: '^3.0.0',
 	husky: '^9.0.0',
-	'angular-oauth2-oidc': `^17.0.0`,
+	'angular-oauth2-oidc': `^19.0.0`,
 	'jwt-decode': '^4.0.0',
 	'@eslint/js': '9.18.0',
 	'@eslint/eslintrc': '3.2.0'

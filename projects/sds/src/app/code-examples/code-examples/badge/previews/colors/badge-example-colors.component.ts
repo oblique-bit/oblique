@@ -6,7 +6,6 @@ import {MatBadgeModule} from '@angular/material/badge';
 	templateUrl: './badge-example-colors.component.html',
 	styleUrls: ['../../../../code-example-flex-layout.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [MatBadgeModule],
 	host: {class: 'layout-breakpoint-md'}
 })

@@ -88,6 +88,7 @@ export class CodeExamplesMapper {
 		'list-group': ListGroupCodeExamplesComponent,
 		'master-layout': MasterLayoutCodeExamplesComponent,
 		'master-layout-12': MasterLayoutCodeExamplesComponent,
+		'master-layout-13': MasterLayoutCodeExamplesComponent,
 		'material-table': MaterialTableCodeExamplesComponent,
 		'nav-tree': NavTreeCodeExamplesComponent,
 		'nested-form': NestedFormCodeExamplesComponent,

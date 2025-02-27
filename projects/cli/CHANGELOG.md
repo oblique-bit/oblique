@@ -1,3 +1,19 @@
+# [13.0.0](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0) (2025-02-27)
+
+## Bug Fixes
+
+- **new:** use the correct version of dependencies ([2425328a](https://github.com/oblique-bit/oblique/commit/2425328a2f40d604b2f5edc2db0e1976cacb150a))
+- **new:** fix failing linting & tests ([63b4d940](https://github.com/oblique-bit/oblique/commit/63b4d94004bf6dbcfc74e7731218a86353300150))
+- **toolchain:** fix publish script
+- **update:** make sure `@schematics/angular` is present and updated ([a2938608](https://github.com/oblique-bit/oblique/commit/a29386082eafe3c6eb89af4ca402493274a97529))
+
+## Features
+
+- **new:** add interactive mode ([e6232529](https://github.com/oblique-bit/oblique/commit/e62325296fb78814bfba25a86e9c5ae1eabf923d))
+- **new:** call `npm dedupe` and `npm prune` after install ([8b373f12](https://github.com/oblique-bit/oblique/commit/8b373f12bb5a5d0c1d4852c7ccd378b0455f8515))
+- **update:** call `npm dedupe` and `npm prune` after update ([3426e8d5](https://github.com/oblique-bit/oblique/commit/3426e8d53597627180f3e1e28f91b12b7bfc6214))
+- **utils:** update the oblique version to 13 ([0aa7dc87](https://github.com/oblique-bit/oblique/commit/0aa7dc87dcc3f4fdadd4d06bea1dfdefd8144f68))
+
 # [12.2.3](https://github.com/oblique-bit/oblique/compare/12.2.2...12.2.3) (2025-01-17)
 
 ## Bug Fixes

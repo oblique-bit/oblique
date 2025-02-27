@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
 import {RouterModule} from '@angular/router';
 import {ObUnknownRouteComponent} from './unknown-route.component';
-import {obliqueProviders} from '../utilities';
 
 export {ObUnknownRouteComponent} from './unknown-route.component';
 
@@ -18,7 +17,6 @@ export {ObUnknownRouteComponent} from './unknown-route.component';
 		]),
 		TranslateModule
 	],
-	providers: obliqueProviders(),
 	exports: [ObUnknownRouteComponent]
 })
 export class ObUnknownRouteModule {}

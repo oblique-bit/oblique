@@ -13,7 +13,6 @@ import {MatTooltip} from '@angular/material/tooltip';
 	selector: 'app-table',
 	templateUrl: './material-table-example-selectable-preview.component.html',
 	styleUrl: './material-table-example-selectable-preview.component.scss',
-	standalone: true,
 	imports: [
 		AsyncPipe,
 		NgFor,

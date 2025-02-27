@@ -5,8 +5,7 @@ import {MatTableModule} from '@angular/material/table';
 	selector: 'app-material-table-example-sizes-preview',
 	templateUrl: './material-table-example-sizes-preview.component.html',
 	styleUrls: ['./material-table-example-sizes-preview.component.scss'],
-	imports: [MatTableModule],
-	standalone: true
+	imports: [MatTableModule]
 })
 export class MaterialTableExampleSizesPreviewComponent {
 	displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];

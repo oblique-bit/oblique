@@ -10,7 +10,6 @@ export {
 } from './lib/authentication/authentication.module';
 export {ObBreadcrumbModule, ObBreadcrumbComponent, ObTBreadcrumbConfig, ObBreadcrumbConfig} from './lib/breadcrumb/breadcrumb.module';
 export {ObButtonDirective, ObButtonModule} from './lib/button/button.module';
-export {ObCheckboxModule, ObCheckboxDirective} from './lib/checkbox/checkbox.module';
 export {
 	ObCollapseComponent,
 	ObCollapseModule,
@@ -49,7 +48,6 @@ export {
 	ObIFileDescription
 } from './lib/file-upload/file-upload.module';
 export {ObFocusInvalidModule, ObFocusInvalidDirective} from './lib/focus-invalid/focus-invalid.module';
-export {ObFormFieldModule, ObFormFieldDirective, ObSelectDirective} from './lib/form-field/form-field.module';
 export {
 	ObServiceNavigationComponent,
 	ObServiceNavigationModule,
@@ -80,6 +78,7 @@ export {
 	ObMasterLayoutNavigationComponent,
 	ObMasterLayoutService,
 	ObEScrollMode,
+	ObICollapseBreakpoints,
 	ObIMasterLayoutEvent,
 	ObEMasterLayoutEventValues,
 	ObINavigationLink,
@@ -145,11 +144,12 @@ export {
 	OB_MATERIAL_CONFIG,
 	OB_PAMS_CONFIGURATION,
 	getTranslateLoader,
+	provideObliqueConfiguration,
 	multiTranslateLoader,
 	obFocusWithOutline,
 	WINDOW
 } from './lib/utilities';
-export {ObIBanner, ObIMaterialConfig} from './lib/utilities.model';
+export {ObIBanner, ObIMaterialConfig, ObIObliqueConfiguration, ObIAccessibilityStatementConfiguration} from './lib/utilities.model';
 export {ObEColor} from './lib/style/colors.model';
 export {ObMultiTranslateLoader, TRANSLATION_FILES} from './lib/multi-translate-loader/multi-translate-loader';
 export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';
@@ -165,4 +165,4 @@ export {
 	ObIAutocompleteInputOptionGroup,
 	OptionLabelIconPosition
 } from './lib/autocomplete/autocomplete.module';
-export {ObPaginatorDirective, ObPaginatorModule, ObPaginatorService} from './lib/paginator/ob-paginator.module';
+export {ObPaginatorModule, ObPaginatorService} from './lib/paginator/ob-paginator.module';

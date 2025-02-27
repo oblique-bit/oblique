@@ -8,7 +8,6 @@ export interface ChipColor {
 }
 
 @Component({
-	standalone: true,
 	selector: 'app-chips-example-stack-color-preview',
 	imports: [CommonModule, MatChipsModule],
 	templateUrl: './chips-example-stack-preview.component.html',

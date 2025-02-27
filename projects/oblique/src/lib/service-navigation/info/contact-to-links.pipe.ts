@@ -2,7 +2,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {ObISectionLink, ObIServiceNavigationContact} from '../service-navigation.model';
 
 @Pipe({
-	name: 'obContactToLinks'
+	name: 'obContactToLinks',
+	standalone: false
 })
 export class ObContactToLinksPipe implements PipeTransform {
 	transform(values?: ObIServiceNavigationContact): ObISectionLink[] {
@@ -34,7 +35,7 @@ export class ObContactToLinksPipe implements PipeTransform {
 	private buildTelAriaLabel(link: {type: string; value: string}): {text: string; parameters: Record<string, unknown>} | undefined {
 		return link.type === 'tel'
 			? {
-					text: 'i18n.oblique.service-navigation.section.tel.arial-label',
+					text: 'i18n.oblique.service-navigation.section.tel.aria-label',
 					parameters: {
 						phoneNumber: link.value
 							.split('')

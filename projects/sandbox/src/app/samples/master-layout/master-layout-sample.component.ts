@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObEScrollMode, ObIServiceNavigationContact, ObLoginState, ObMasterLayoutService} from '@oblique/oblique';
+import {ObEScrollMode, ObICollapseBreakpoints, ObIServiceNavigationContact, ObLoginState, ObMasterLayoutService} from '@oblique/oblique';
 import {Observable, share} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {DynamicNavigationService} from './dynamic-navigation.service';
@@ -7,7 +7,8 @@ import {DynamicNavigationService} from './dynamic-navigation.service';
 @Component({
 	selector: 'sb-master-layout-sample',
 	templateUrl: './master-layout-sample.component.html',
-	styleUrls: ['./master-layout-sample.component.scss']
+	styleUrls: ['./master-layout-sample.component.scss'],
+	standalone: false
 })
 export class MasterLayoutSampleComponent {
 	coverLayout = false;
@@ -41,14 +42,6 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.footer.isCustom = value;
 	}
 
-	get hasLogoOnScroll(): boolean {
-		return this.masterLayout.footer.hasLogoOnScroll;
-	}
-
-	set hasLogoOnScroll(value: boolean) {
-		this.masterLayout.footer.hasLogoOnScroll = value;
-	}
-
 	get isFooterSticky(): boolean {
 		return this.masterLayout.footer.isSticky;
 	}
@@ -72,14 +65,6 @@ export class MasterLayoutSampleComponent {
 
 	set isHeaderSticky(value: boolean) {
 		this.masterLayout.header.isSticky = value;
-	}
-
-	get reduceOnScroll(): boolean {
-		return this.masterLayout.header.reduceOnScroll;
-	}
-
-	set reduceOnScroll(value: boolean) {
-		this.masterLayout.header.reduceOnScroll = value;
 	}
 
 	get isHeaderSmall(): boolean {
@@ -129,6 +114,14 @@ export class MasterLayoutSampleComponent {
 
 	set hasOffCanvas(value: boolean) {
 		this.masterLayout.layout.hasOffCanvas = value;
+	}
+
+	set breakpoint(breakpoint: ObICollapseBreakpoints) {
+		this.dynamicNavigationService.collapseBreakpoint.set(breakpoint);
+	}
+
+	get breakpoint(): ObICollapseBreakpoints {
+		return this.dynamicNavigationService.collapseBreakpoint();
 	}
 
 	get homePageRoute(): string {
@@ -261,6 +254,7 @@ export class MasterLayoutSampleComponent {
 
 	addItem(): void {
 		this.dynamicNavigationService.addLink({
+			id: `id${crypto.randomUUID()}`,
 			label: 'test',
 			url: 'urlTest'
 		});

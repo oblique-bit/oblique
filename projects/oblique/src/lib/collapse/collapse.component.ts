@@ -30,7 +30,6 @@ export const OBLIQUE_COLLAPSE_DURATION = new InjectionToken<'slow' | 'fast' | nu
 	styleUrls: ['./collapse.component.scss'],
 	animations: [animations],
 	host: {class: 'ob-collapse'},
-	standalone: true,
 	imports: [NgIf, MatIconModule]
 })
 export class ObCollapseComponent implements AfterViewInit, OnDestroy {

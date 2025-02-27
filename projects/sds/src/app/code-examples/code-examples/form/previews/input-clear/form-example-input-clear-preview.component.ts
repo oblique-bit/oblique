@@ -11,14 +11,13 @@ import {
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import {ObFormFieldModule, ObInputClearModule} from '@oblique/oblique';
+import {ObInputClearModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-form-example-input-clear-preview',
 	templateUrl: './form-example-input-clear-preview.component.html',
 	styleUrls: ['../../../../code-example-flex-layout.scss', './form-example-input-clear-preview.component.scss'],
-	standalone: true,
-	imports: [MatFormFieldModule, MatIconModule, MatInputModule, ObFormFieldModule, ObInputClearModule, ReactiveFormsModule]
+	imports: [MatFormFieldModule, MatIconModule, MatInputModule, ObInputClearModule, ReactiveFormsModule]
 })
 export class FormExampleInputClearPreviewComponent implements OnInit {
 	stronglyTypedForm: FormGroup<{stronglyTypedFormField: FormControl<string>}>;

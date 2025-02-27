@@ -1,4 +1,4 @@
-import {Component, ContentChildren, HostBinding, OnDestroy, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {Component, ContentChildren, Input, OnDestroy, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ObMasterLayoutService} from '../master-layout.service';
@@ -10,13 +10,16 @@ import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout
 	templateUrl: './master-layout-footer.component.html',
 	styleUrls: ['./master-layout-footer.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-footer'}
+	host: {class: 'ob-master-layout-footer'},
+	standalone: false
 })
 export class ObMasterLayoutFooterComponent implements OnDestroy {
 	home = this.config.homePageRoute;
 	isCustom = this.config.footer.isCustom;
+
 	@ContentChildren('obFooterLink') readonly templates: QueryList<TemplateRef<HTMLLinkElement>>;
-	@HostBinding('class.ob-logo-on-scroll') hasLogoOnScroll = this.config.footer.hasLogoOnScroll;
+	@Input() version?: string;
+
 	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
@@ -24,7 +27,6 @@ export class ObMasterLayoutFooterComponent implements OnDestroy {
 		private readonly config: ObMasterLayoutConfig
 	) {
 		this.customChange();
-		this.hasLogoChange();
 	}
 
 	ngOnDestroy(): void {
@@ -39,14 +41,5 @@ export class ObMasterLayoutFooterComponent implements OnDestroy {
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(event => (this.isCustom = event.value));
-	}
-
-	private hasLogoChange(): void {
-		this.masterLayout.footer.configEvents$
-			.pipe(
-				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.FOOTER_HAS_LOGO_ON_SCROLL),
-				takeUntil(this.unsubscribe)
-			)
-			.subscribe(event => (this.hasLogoOnScroll = event.value));
 	}
 }

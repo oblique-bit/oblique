@@ -11,7 +11,8 @@ import {appNavigation} from './app-navigation';
 @Component({
 	selector: 'sb-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss']
+	styleUrls: ['./app.component.scss'],
+	standalone: false
 })
 export class AppComponent implements OnDestroy {
 	readonly search = new FormControl();
@@ -37,7 +38,7 @@ export class AppComponent implements OnDestroy {
 	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
-		nav: DynamicNavigationService,
+		public nav: DynamicNavigationService,
 		private readonly router: Router,
 		private readonly translate: TranslateService,
 		private readonly header: ObMasterLayoutHeaderService,

@@ -5,7 +5,6 @@ import {CommonModule} from '@angular/common';
 	selector: 'app-tab',
 	templateUrl: './tab.component.html',
 	styleUrls: ['./tab.component.scss'],
-	standalone: true,
 	imports: [CommonModule]
 })
 export class TabComponent implements OnChanges {

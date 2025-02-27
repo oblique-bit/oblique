@@ -1,6 +1,5 @@
 @use "sass:selector";
 @use "../../../styles/scss/core/variables";
-@use "../../../styles/scss/core/mixins/layout";
 
 .ob-master-layout-header {
 	display: flex;
@@ -8,11 +7,9 @@
 	background-color: variables.$ob-white;
 	z-index: variables.$ob-z-index-layout;
 
-	@include layout.ob-media-breakpoint-down(md) {
-		.ob-header-expanded & {
-			height: 100vh;
-			padding-bottom: variables.$ob-spacing-lg; // to avoid the last link being covered by the link preview
-		}
+	.ob-layout-collapsed.ob-header-expanded & {
+		height: 100vh;
+		padding-bottom: variables.$ob-spacing-lg; // to avoid the last link being covered by the link preview
 	}
 
 	.ob-header {
@@ -20,7 +17,7 @@
 		width: 100%;
 		background-color: inherit;
 
-		@include layout.ob-media-breakpoint-up(md) {
+		.ob-layout-expanded & {
 			display: flex;
 		}
 
@@ -58,7 +55,7 @@
 			display: none;
 		}
 
-		@include layout.ob-media-breakpoint-down(md) {
+		.ob-layout-collapsed & {
 			float: left;
 			margin-top: 13px;
 			margin-bottom: 13px;
@@ -84,8 +81,8 @@
 		padding: 8px variables.$ob-spacing-default;
 		transition: padding variables.$ob-duration-default ease-in-out;
 
-		@include layout.ob-media-breakpoint-up(md) {
-			@at-root #{selector.append(":not(.ob-master-layout-header-small)", &)} {
+		@at-root #{selector.append(":not(.ob-master-layout-header-small)", &)} {
+			.ob-layout-expanded & {
 				padding: variables.$ob-spacing-default;
 			}
 		}
@@ -95,13 +92,12 @@
 		overflow: hidden; // hides part of the logo in collapsed mode
 		width: variables.$ob-logo-width-collapsed;
 		height: variables.$ob-logo-height-collapsed;
-		margin-right: variables.$ob-spacing-default;
+		margin-right: variables.$ob-spacing-sm;
 		transition:
 			width variables.$ob-duration-default ease-in-out,
 			height variables.$ob-duration-default ease-in-out;
-
-		@include layout.ob-media-breakpoint-up(md) {
-			@at-root #{selector.append(":not(.ob-master-layout-header-small)", &)} {
+		@at-root #{selector.append(":not(.ob-master-layout-header-small)", &)} {
+			.ob-layout-expanded & {
 				width: variables.$ob-logo-width;
 				height: variables.$ob-logo-height;
 			}
@@ -119,7 +115,7 @@
 		font-size: variables.$ob-font-size-xl;
 		line-height: variables.$ob-logo-height-collapsed;
 		font-weight: 300;
-		padding-left: variables.$ob-spacing-default;
+		padding-left: variables.$ob-spacing-sm;
 		border-left: 1px solid variables.$ob-gray-lighter;
 		overflow: hidden; // works together with text-overflow
 		text-overflow: ellipsis;
@@ -132,7 +128,7 @@
 	}
 
 	.ob-collapsed-layout {
-		@include layout.ob-media-breakpoint-up(md) {
+		.ob-layout-expanded & {
 			display: none !important;
 		}
 	}

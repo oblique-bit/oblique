@@ -13,7 +13,6 @@ import {PreviewComponent} from '../code-examples.model';
 	templateUrl: './code-example.component.html',
 	styleUrls: ['./code-example.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, HighlightedCodeComponent, IdPipe]
 })
 export class CodeExampleComponent implements OnInit {

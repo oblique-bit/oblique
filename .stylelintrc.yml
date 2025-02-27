@@ -30,7 +30,6 @@ rules:
     - lower
     - ignoreKeywords:
         - Arial
-        - Roboto
         - BlinkMacSystemFont
   scss/at-mixin-argumentless-call-parentheses: always
   # deactivate unwanted rules

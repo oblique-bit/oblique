@@ -3,7 +3,7 @@
 
 .ob-service-navigation-languages {
 	.ob-language-dropdown {
-		&.ob-form-field {
+		&.mat-mdc-form-field {
 			.mat-mdc-text-field-wrapper {
 				padding-left: variables.$ob-spacing-sm;
 			}
@@ -77,7 +77,7 @@
 			border-top: 1px solid variables.$ob-secondary-100;
 
 			[id*="cdk-overlay"] & {
-				&.ob-select-panel {
+				&.mat-mdc-select-panel {
 					margin-top: 0.75 * variables.$ob-spacing-sm;
 				}
 			}

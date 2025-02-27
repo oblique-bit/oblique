@@ -16,18 +16,26 @@ describe('ObUpdateCommand Tests', () => {
 			resolve: jest.fn().mockReturnValue('path')
 		}));
 
+		beforeAll(() => {
+			jest.spyOn(console, 'info').mockImplementation(() => {});
+			jest.spyOn(console, 'timeEnd').mockImplementation(() => {});
+			jest.spyOn(console, 'error').mockImplementation(() => {});
+		});
+
 		beforeEach(() => {
 			jest.spyOn(fs, 'readFileSync').mockReturnValue(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
 			jest.spyOn(path, 'resolve').mockReturnValue('path');
-			jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => '');
 		});
 
 		describe('createObUpdateCommand', () => {
 			beforeAll(() => {
-				// eslint-disable-next-line @typescript-eslint/no-var-requires
 				const obCliUtils = require('../utils/cli-utils');
 				jest.spyOn(obCliUtils, 'commandUsageText').mockReturnValue('update');
-				obUpdate.createObUpdateCommand();
+				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => '');
+				const cmd = obUpdate.createObUpdateCommand();
+				// @ts-expect-error this is necessary to mock exit
+				jest.spyOn(process, 'exit').mockImplementation(() => {});
+				cmd.parse();
 			});
 
 			describe('should get back the command ', () => {

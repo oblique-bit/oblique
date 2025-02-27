@@ -1,16 +1,19 @@
+import {TestBed} from '@angular/core/testing';
 import {ActivatedRoute} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
-import {Optional, ValueProvider} from '@angular/core';
+import {HttpClient, provideHttpClient} from '@angular/common/http';
+import {Optional} from '@angular/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
-import {MATERIAL_SANITY_CHECKS} from '@angular/material/core';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {TranslateLoader} from '@ngx-translate/core';
+import {MatPaginatorIntl} from '@angular/material/paginator';
+import {TranslateCompiler, TranslateFakeCompiler, TranslateLoader, TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 import {ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {
+	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
+	OB_MATERIAL_CONFIG,
 	WINDOW,
 	checkboxOptionsProvider,
 	getRootRoute,
@@ -19,7 +22,7 @@ import {
 	matFormFieldDefaultOptionsProvider,
 	multiTranslateLoader,
 	obFocusWithOutline,
-	obliqueProviders,
+	provideObliqueConfiguration,
 	radioOptionsProvider,
 	slideToggleOptionsProvider,
 	stepperOptionsOptionsProvider,
@@ -27,6 +30,9 @@ import {
 	windowProvider
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
+import {ObPaginatorService} from './paginator/ob-paginator.service';
+import {ObTIconConfig} from './icon/icon.model';
+import {ObIconService} from './icon/icon.service';
 
 describe('utilities', () => {
 	describe('windowProvider', () => {
@@ -189,22 +195,208 @@ describe('utilities', () => {
 		});
 	});
 
-	describe('obliqueProviders', () => {
-		it('should return 8 configurations', () => {
-			expect(obliqueProviders().length).toBe(8);
+	describe('provideObliqueConfiguration', () => {
+		describe('with default configuration', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						provideHttpClient(),
+						provideObliqueConfiguration({
+							accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {emails: ['e@mail.com']}}
+						})
+					]
+				});
+			});
+
+			it('should create WINDOW injection token', () => {
+				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			describe('Paginator configuration', () => {
+				it('should provide MatPaginatorIntl as ObPaginatorService', () => {
+					expect(TestBed.inject(MatPaginatorIntl) instanceof ObPaginatorService).toBe(true);
+				});
+			});
+
+			describe('Icon configuration', () => {
+				it('should provide the default icon configuration', () => {
+					expect(TestBed.inject(ObTIconConfig)).toEqual({registerObliqueIcons: true});
+				});
+
+				it('should call "registerOnAppInit" on "ObIconService"', () => {
+					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalled();
+				});
+			});
+
+			describe('Translate configuration', () => {
+				it('should provide "TranslateService"', () => {
+					expect(TestBed.inject(TranslateService)).toBeTruthy();
+				});
+
+				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+					expect(TestBed.inject(TranslateService).currentLoader instanceof ObMultiTranslateLoader).toBe(true);
+				});
+
+				it('should provide "TRANSLATION_FILES"', () => {
+					expect(TestBed.inject(TRANSLATION_FILES)).toBeUndefined();
+				});
+			});
+
+			describe('Material configuration', () => {
+				it.each([
+					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline'}},
+					{token: STEPPER_GLOBAL_OPTIONS, config: {displayDefaultIndicatorType: false}},
+					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary'}},
+					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'primary'}},
+					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary'}},
+					{token: MAT_TABS_CONFIG, config: {stretchTabs: false}}
+				])('should create $token injection token', ({token, config}) => {
+					expect(TestBed.inject(token)).toEqual(config);
+				});
+			});
+
+			describe('accessibility statement configuration', () => {
+				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
+					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
+						applicationName: 'appName',
+						applicationOperator: 'Operator',
+						contact: {emails: ['e@mail.com']}
+					});
+				});
+			});
 		});
 
-		it.each([
-			MAT_FORM_FIELD_DEFAULT_OPTIONS,
-			STEPPER_GLOBAL_OPTIONS,
-			MAT_CHECKBOX_DEFAULT_OPTIONS,
-			MAT_RADIO_DEFAULT_OPTIONS,
-			MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS,
-			MAT_TABS_CONFIG,
-			WINDOW,
-			MATERIAL_SANITY_CHECKS
-		])('should contain ½s', provide => {
-			expect(obliqueProviders().find(provider => (provider as ValueProvider).provide === provide)).toBeTruthy();
+		describe('with custom configuration', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
+						provideHttpClient(),
+						provideObliqueConfiguration({
+							accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {emails: ['e@mail.com']}},
+							material: {
+								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
+								STEPPER_GLOBAL_OPTIONS: {showError: true},
+								MAT_CHECKBOX_OPTIONS: {clickAction: 'check'},
+								MAT_RADIO_OPTIONS: {color: 'accent'},
+								MAT_SLIDE_TOGGLE_OPTIONS: {hideIcon: true},
+								MAT_TABS_CONFIG: {fitInkBarToContent: true}
+							},
+							icon: {
+								additionalIcons: []
+							},
+							translate: {
+								config: {compiler: TranslateFakeCompiler},
+								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}]
+							}
+						})
+					]
+				});
+			});
+
+			it('should create WINDOW injection token', () => {
+				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			describe('Icon configuration', () => {
+				it('should provide the full icon configuration', () => {
+					expect(TestBed.inject(ObTIconConfig)).toEqual({registerObliqueIcons: true, additionalIcons: []});
+				});
+			});
+
+			describe('Translate configuration', () => {
+				it('should provide "TRANSLATION_FILES"', () => {
+					expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
+				});
+
+				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+					expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
+				});
+			});
+
+			describe('Material configuration', () => {
+				it.each([
+					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {floatLabel: 'always'}},
+					{token: STEPPER_GLOBAL_OPTIONS, config: {showError: true}},
+					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {clickAction: 'check'}},
+					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
+					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {hideIcon: true}},
+					{token: MAT_TABS_CONFIG, config: {fitInkBarToContent: true}}
+				])('should create $token injection token', ({token, config}) => {
+					expect(TestBed.inject(token)).toEqual(config);
+				});
+			});
+
+			describe('accessibility statement configuration', () => {
+				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
+					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
+						applicationName: 'appName',
+						applicationOperator: 'Operator',
+						contact: {emails: ['e@mail.com']}
+					});
+				});
+			});
+		});
+
+		describe('with token configuration for Material', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						provideObliqueConfiguration({
+							accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {emails: ['e@mail.com']}}
+						}),
+						{
+							provide: OB_MATERIAL_CONFIG,
+							useValue: {
+								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
+								STEPPER_GLOBAL_OPTIONS: {showError: true},
+								MAT_CHECKBOX_OPTIONS: {clickAction: 'check'},
+								MAT_RADIO_OPTIONS: {color: 'accent'},
+								MAT_SLIDE_TOGGLE_OPTIONS: {hideIcon: true},
+								MAT_TABS_CONFIG: {fitInkBarToContent: true}
+							}
+						}
+					]
+				});
+			});
+
+			it('should create WINDOW injection token', () => {
+				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			it.each([
+				{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {floatLabel: 'always'}},
+				{token: STEPPER_GLOBAL_OPTIONS, config: {showError: true}},
+				{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {clickAction: 'check'}},
+				{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
+				{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {hideIcon: true}},
+				{token: MAT_TABS_CONFIG, config: {fitInkBarToContent: true}}
+			])('should create $token injection token', ({token, config}) => {
+				expect(TestBed.inject(token)).toEqual(config);
+			});
+		});
+
+		describe('with token configuration for Translate', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						provideObliqueConfiguration({
+							accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {emails: ['e@mail.com']}}
+						}),
+						{provide: TRANSLATION_FILES, useValue: [{prefix: 'prefix', suffix: 'suffix'}]}
+					]
+				});
+			});
+
+			it('should create WINDOW injection token', () => {
+				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			it('should provide "TRANSLATION_FILES"', () => {
+				expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
+			});
 		});
 	});
 

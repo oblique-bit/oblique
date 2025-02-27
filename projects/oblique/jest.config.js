@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = require('../../tests/jest.config');
 module.exports.roots = ['<rootDir>/projects/oblique'];
 module.exports.displayName = {
@@ -41,12 +39,6 @@ module.exports.coverageThreshold = {
 		branches: 76,
 		functions: 100,
 		lines: 100
-	},
-	'projects/oblique/src/lib/checkbox/*.ts': {
-		statements: 90,
-		branches: 60,
-		functions: 70,
-		lines: 90
 	},
 	'projects/oblique/src/lib/collapse/*.ts': {
 		statements: 100,
@@ -100,16 +92,10 @@ module.exports.coverageThreshold = {
 		lines: 91
 	},
 	'projects/oblique/src/lib/master-layout/master-layout/*.ts': {
-		statements: 97,
+		statements: 96,
 		branches: 92,
-		functions: 94,
-		lines: 97
-	},
-	'projects/oblique/src/lib/master-layout/master-layout-header/*.ts': {
-		statements: 82,
-		branches: 65,
-		functions: 75,
-		lines: 82
+		functions: 93,
+		lines: 96
 	},
 	'projects/oblique/src/lib/master-layout/master-layout-navigation/*.ts': {
 		statements: 65,

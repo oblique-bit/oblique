@@ -10,7 +10,6 @@ import {StickyExampleSizesPreviewComponent} from './previews/sizes/sticky-exampl
 	selector: 'app-code-example-sticky',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class StickyCodeExamplesComponent extends CodeExamples {

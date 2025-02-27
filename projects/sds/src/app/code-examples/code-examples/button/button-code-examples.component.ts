@@ -10,7 +10,6 @@ import {CommonModule} from '@angular/common';
 	selector: 'app-button-code-examples',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CodeExampleComponent, IdPipe, CommonModule]
 })
 export class ButtonCodeExamplesComponent extends CodeExamples {

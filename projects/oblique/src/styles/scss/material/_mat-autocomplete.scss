@@ -1,3 +1,13 @@
-@use "mixins/mat-panel";
+@use "../core/variables";
 
-@include mat-panel.margin-top("autocomplete", 4px);
+:not(.mat-mdc-autocomplete-panel-above) {
+	.ob-autocomplete-panel {
+		&.mat-mdc-autocomplete-panel.mdc-menu-surface {
+			margin-top: variables.$ob-spacing-xs;
+
+			&.ob-autocomplete-panel-sm {
+				margin-top: 6px;
+			}
+		}
+	}
+}

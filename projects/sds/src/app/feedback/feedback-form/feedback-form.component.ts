@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {Observable, debounceTime, map, startWith} from 'rxjs';
@@ -13,8 +13,7 @@ import {ObButtonModule} from '@oblique/oblique';
 	selector: 'app-feedback',
 	templateUrl: './feedback-form.component.html',
 	styleUrls: ['./feedback-form.component.scss'],
-	standalone: true,
-	imports: [AsyncPipe, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, NgIf, ObButtonModule, ReactiveFormsModule]
+	imports: [AsyncPipe, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, ObButtonModule, ReactiveFormsModule]
 })
 export class FeedbackFormComponent {
 	readonly formGroup = new FormGroup({});

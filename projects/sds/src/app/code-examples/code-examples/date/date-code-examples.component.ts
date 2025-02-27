@@ -9,7 +9,6 @@ import {DateExampleDefaultPreviewComponent} from '../date/previews/default/date-
 	selector: 'app-code-example-date',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class DateCodeExamplesComponent extends CodeExamples {

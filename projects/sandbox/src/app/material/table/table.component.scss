@@ -3,7 +3,7 @@
 
 // styles for the table
 @mixin table-width() {
-	.mat-column-actions {
+	td.mat-column-actions {
 		width: 1px; // "fit-content" for a table cell
 	}
 }

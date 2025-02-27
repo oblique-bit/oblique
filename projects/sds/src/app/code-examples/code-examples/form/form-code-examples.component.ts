@@ -14,7 +14,6 @@ import {DatepickerExampleOtherOptionsPreviewComponent} from './previews/other-op
 	selector: 'app-code-example-form',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class FormCodeExamplesComponent extends CodeExamples {

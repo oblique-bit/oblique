@@ -1,6 +1,6 @@
 {
   "name": "@oblique/sds",
-  "version": "12.2.3",
+  "version": "13.0.0",
   "scripts": {
     "start": "ng serve",
     "lint": "ts-node scripts/lint.ts",
@@ -19,7 +19,7 @@
     "raw-loader": "^4.0.2"
   },
   "devDependencies": {
-    "@schematics/angular": "^18.2.4",
+    "@schematics/angular": "^19.0.6",
     "jest-raw-loader": "^1.0.1"
   }
 }

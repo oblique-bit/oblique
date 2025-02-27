@@ -50,7 +50,8 @@ import {ObFocusInvalidDirective} from './focus-invalid.directive';
 
 			<button type="submit">submit</button>
 		</form>
-	`
+	`,
+	standalone: false
 })
 class UntypedReactiveFormTestComponent implements OnInit {
 	focusInvalidFormGroup: FormGroup;
@@ -110,7 +111,7 @@ describe(ObFocusInvalidDirective.name, () => {
 		{setValues: ['text', 'datepicker'], result: 'select'},
 		{setValues: ['text', 'datepicker', 'select'], result: 'checkbox', id: 'checkbox-input'},
 		{setValues: ['text', 'datepicker', 'select', 'checkbox'], result: 'textarea'},
-		{setValues: ['text', 'datepicker', 'select', 'checkbox', 'textarea'], result: 'radio', id: 'mat-radio-17-input'}
+		{setValues: ['text', 'datepicker', 'select', 'checkbox', 'textarea'], result: 'radio', id: 'mat-radio-a10-input'}
 	])('the $result field is focused when all preceding fields received a value', ({setValues, result, id}) => {
 		component.focusInvalidFormGroup.patchValue(setValues.reduce((patchValues, key) => ({...patchValues, [key]: values[key]}), {}));
 		fixture.detectChanges();

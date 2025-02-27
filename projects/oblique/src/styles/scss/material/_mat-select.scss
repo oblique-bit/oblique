@@ -1,6 +1,5 @@
 @use "../core/mixins/shadow";
 @use "../core/variables" as core-variables;
-@use "mixins/mat-panel";
 
 .mat-mdc-select {
 	.mat-mdc-select-arrow {
@@ -13,5 +12,38 @@
 	}
 }
 
-@include mat-panel.margin-top("select", 0.75 * core-variables.$ob-spacing-xs);
-@include mat-panel.active("select");
+:not(.mat-mdc-select-panel-above) {
+	.mat-mdc-select-panel {
+		&.mat-mdc-select-panel.mdc-menu-surface {
+			margin-top: 0.75 * core-variables.$ob-spacing-xs;
+
+			&.ob-select-panel-sm {
+				margin-top: 6px;
+			}
+		}
+	}
+}
+
+.mat-mdc-select-panel {
+	.mat-mdc-option {
+		&:hover:not(.mat-mdc-option-active) {
+			background-color: core-variables.$ob-secondary-50;
+		}
+
+		&.mat-mdc-option-active,
+		&:focus {
+			&.mdc-list-item {
+				background-color: core-variables.$ob-secondary-100;
+			}
+		}
+	}
+
+	.mat-mdc-option,
+	&.mat-mdc-select-panel {
+		background-color: core-variables.$ob-white;
+	}
+
+	&.mat-mdc-select-panel {
+		@include shadow.ob-default-panel-box-shadow();
+	}
+}

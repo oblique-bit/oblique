@@ -3,7 +3,6 @@ import {MatListModule} from '@angular/material/list';
 import {CommonModule} from '@angular/common';
 
 @Component({
-	standalone: true,
 	selector: 'app-list-group-example-default',
 	templateUrl: './list-group-example-default.component.html',
 	imports: [MatListModule, CommonModule],
