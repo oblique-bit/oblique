@@ -4,6 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {ObButtonModule} from '../../../button/button.module';
 import {ObNavigationLink} from '../navigation-link.model';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
@@ -12,7 +13,7 @@ import {TranslateModule} from '@ngx-translate/core';
 	styleUrls: ['./master-layout-navigation-go-to-children.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout-navigation-go-to-children'},
-	imports: [MatButtonModule, MatIconModule, ObButtonModule, TranslateModule]
+	imports: [MatButtonModule, MatIconModule, ObButtonModule, MatTooltipModule, TranslateModule]
 })
 export class ObMasterLayoutNavigationGoToChildrenComponent implements OnChanges {
 	@HostBinding('class.hide') hide = false;
