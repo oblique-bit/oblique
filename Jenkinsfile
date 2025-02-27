@@ -42,8 +42,7 @@ nodejsPipelineTemplate {
 		master: [
 			'publish': [
 				'@oblique/oblique',
-				'@oblique/cli',
-				'@oblique/service-navigation-web-component'
+				'@oblique/cli'
 			],
 			'gitTag': true,
 			'gitPush': [
