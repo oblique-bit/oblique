@@ -3,7 +3,7 @@ import {ExecSyncOptions, execSync} from 'child_process';
 
 export const currentVersions = {
 	/* eslint-disable @typescript-eslint/naming-convention */
-	'@oblique/oblique': 'next',
+	'@oblique/oblique': '13',
 	'@angular/cli': '19',
 	'@angular/material': '19',
 	'@angular/core': '19',
