@@ -12,7 +12,6 @@ import {
 	setAngularConfig,
 	warnIfStandalone
 } from '../utils';
-import {removeProperty} from './ng-update-utils';
 
 export interface IUpdateV13Schema {}
 
@@ -57,9 +56,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 			infoMigration(_context, 'Remove deprecated MasterLayoutService configs.');
 			const toApply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
-				let replacement = fileContent;
-				replacement = removeProperty(replacement, 'footer', 'hasLogoOnScroll');
-				replacement = removeProperty(replacement, 'header', 'reduceOnScroll');
+				const replacement = fileContent.replace(/^.*footer\.hasLogoOnScroll.*$/gm, '').replace(/^.*header\.reduceOnScroll.*$/gm, '');
 				if (fileContent !== replacement) {
 					tree.overwrite(filePath, replacement);
 				}
