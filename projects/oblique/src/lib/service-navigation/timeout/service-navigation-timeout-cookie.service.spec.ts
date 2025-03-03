@@ -69,7 +69,7 @@ describe('ServiceNavigationTimeoutCookieService', () => {
 
 			it('should be "error wrong url" when the current url is neither admin.ch nor localhost', () => {
 				fakeWindow.location.href = 'http://example.com';
-				expect(() => service.setCookie(fakeKey, fakeValue)).toThrowError();
+				expect(() => service.setCookie(fakeKey, fakeValue)).toThrow();
 			});
 		});
 

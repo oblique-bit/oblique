@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {BrowserModule} from '@angular/platform-browser';
 import {ObServiceNavigationTimeoutService} from './service-navigation-timeout.service';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {provideHttpClientTesting} from '@angular/common/http/testing';
 import {ObServiceNavigationService} from '../service-navigation.service';
 import {WINDOW} from '../../utilities';
 import {BehaviorSubject, of} from 'rxjs';
@@ -49,8 +49,9 @@ describe('ServiceNavigationTimeout', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [BrowserModule, HttpClientTestingModule],
+			imports: [BrowserModule],
 			providers: [
+				provideHttpClientTesting(),
 				ObServiceNavigationTimeoutService,
 				{provide: ObServiceNavigationService, useValue: fakeHeaderService},
 				{
@@ -101,7 +102,7 @@ describe('ServiceNavigationTimeout', () => {
 				Cookies.set(pamsLastRefreshCookieName, expiredCookieTime);
 				Cookies.set(eportalLastUserActivityCookieName, expiredCookieTime);
 				jest.advanceTimersByTime(5000);
-				expect(fakeRedirectorService.redirectOrEmit).not.toBeCalled();
+				expect(fakeRedirectorService.redirectOrEmit).not.toHaveBeenCalled();
 			});
 		});
 
@@ -111,7 +112,7 @@ describe('ServiceNavigationTimeout', () => {
 					Cookies.set(pamsLastRefreshCookieName, expiredCookieTime);
 					Cookies.set(eportalLastUserActivityCookieName, expiredCookieTime);
 					jest.advanceTimersByTime(5000);
-					expect(fakeRedirectorService.redirectOrEmit).toBeCalledWith(fakeLogoutUrl);
+					expect(fakeRedirectorService.redirectOrEmit).toHaveBeenCalledWith(fakeLogoutUrl);
 				});
 			});
 
@@ -120,7 +121,7 @@ describe('ServiceNavigationTimeout', () => {
 					Cookies.set(pamsLastRefreshCookieName, validCookieTime);
 					Cookies.set(eportalLastUserActivityCookieName, expiredCookieTime);
 					jest.advanceTimersByTime(5000);
-					expect(fakeApiService.refreshPamsToken).not.toBeCalled();
+					expect(fakeApiService.refreshPamsToken).not.toHaveBeenCalled();
 				});
 			});
 		});
@@ -131,7 +132,7 @@ describe('ServiceNavigationTimeout', () => {
 					Cookies.set(pamsLastRefreshCookieName, expiredCookieTime);
 					Cookies.set(eportalLastUserActivityCookieName, validCookieTime);
 					jest.advanceTimersByTime(5000);
-					expect(fakeApiService.refreshPamsToken).toBeCalledWith(fakeRootUrl);
+					expect(fakeApiService.refreshPamsToken).toHaveBeenCalledWith(fakeRootUrl);
 				});
 			});
 		});
@@ -145,7 +146,7 @@ describe('ServiceNavigationTimeout', () => {
 				});
 
 				it('should redirect only once', () => {
-					expect(fakeRedirectorService.redirectOrEmit).toBeCalledTimes(1);
+					expect(fakeRedirectorService.redirectOrEmit).toHaveBeenCalledTimes(1);
 				});
 				it('should redirect with timeout', () => {
 					expect(fakeRedirectorService.redirectOrEmit.mock.calls[0][0]).toContain('logout=true');
@@ -159,7 +160,7 @@ describe('ServiceNavigationTimeout', () => {
 					Cookies.set(logoutCookieName, '');
 					jest.advanceTimersByTime(1000);
 
-					expect(fakeRedirectorService.redirectOrEmit).toBeCalledTimes(0);
+					expect(fakeRedirectorService.redirectOrEmit).toHaveBeenCalledTimes(0);
 				});
 			});
 
@@ -171,7 +172,7 @@ describe('ServiceNavigationTimeout', () => {
 				});
 
 				it('should redirect only once', () => {
-					expect(fakeRedirectorService.redirectOrEmit).toBeCalledTimes(1);
+					expect(fakeRedirectorService.redirectOrEmit).toHaveBeenCalledTimes(1);
 				});
 				it('should redirect with timeout', () => {
 					expect(fakeRedirectorService.redirectOrEmit.mock.calls[0][0]).toContain('timeout=true');

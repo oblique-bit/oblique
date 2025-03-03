@@ -60,7 +60,7 @@ describe('ServiceNavigationTimeoutRedirectorService', () => {
 	describe('logout()', () => {
 		it('should set a cookie with the current url', () => {
 			service.logout();
-			expect(fakeSetShortCookie).toBeCalledWith('eportal-logout', fakeCurrentUrl);
+			expect(fakeSetShortCookie).toHaveBeenCalledWith('eportal-logout', fakeCurrentUrl);
 		});
 
 		describe('handleLogout', () => {
