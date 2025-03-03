@@ -35,6 +35,7 @@ describe('ServiceNavigationTimeoutRedirectorService', () => {
 		fakeServiceNavigationService.setLogoutTrigger.mockClear();
 		fakeSetCookie.mockClear();
 		fakeSetShortCookie.mockClear();
+		fakeWindow.location.href = fakeCurrentUrl;
 
 		service = TestBed.inject(ObServiceNavigationTimeoutRedirectorService);
 		service.logoutUrl = fakeLogoutUrl;
@@ -43,6 +44,17 @@ describe('ServiceNavigationTimeoutRedirectorService', () => {
 
 	it('create an instance', () => {
 		expect(service).toBeTruthy();
+	});
+
+	describe('checkCookie', () => {
+		it('should be true at initialisation', () => {
+			expect(service.shouldRedirect()).toBe(true);
+		});
+
+		it('should be false when logging out', () => {
+			service.logout();
+			expect(service.shouldRedirect()).toBe(false);
+		});
 	});
 
 	describe('logout()', () => {

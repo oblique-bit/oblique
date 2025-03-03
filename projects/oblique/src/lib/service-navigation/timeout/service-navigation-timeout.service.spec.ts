@@ -35,6 +35,7 @@ describe('ServiceNavigationTimeout', () => {
 
 	const fakeRedirectorService = {
 		redirectOrEmit: jest.fn(),
+		shouldRedirect: jest.fn(() => true),
 		logoutCookieName
 	};
 	const fakeApiService = {
@@ -148,6 +149,17 @@ describe('ServiceNavigationTimeout', () => {
 				});
 				it('should redirect with timeout', () => {
 					expect(fakeRedirectorService.redirectOrEmit.mock.calls[0][0]).toContain('logout=true');
+				});
+			});
+
+			describe('logout cookie appear but checkCookie is false', () => {
+				it('should not redirect', () => {
+					fakeRedirectorService.shouldRedirect.mockReturnValue(false);
+					jest.advanceTimersByTime(1000);
+					Cookies.set(logoutCookieName, '');
+					jest.advanceTimersByTime(1000);
+
+					expect(fakeRedirectorService.redirectOrEmit).toBeCalledTimes(0);
 				});
 			});
 

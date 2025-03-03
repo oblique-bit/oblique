@@ -63,7 +63,7 @@ export class ObServiceNavigationTimeoutService {
 			const logoutCheck = Cookies.get(this.redirectorService.logoutCookieName) !== undefined;
 			const logoutCookieAppears = !doesLogoutCookieExist && logoutCheck;
 			const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState, true);
-			if (logoutCookieAppears && isUserLoggedIn) {
+			if (logoutCookieAppears && isUserLoggedIn && this.redirectorService.shouldRedirect()) {
 				this.redirectorService.redirectOrEmit(this.returnUrlService.getRedirectUrl('logout', this.eportalUrl));
 			}
 
