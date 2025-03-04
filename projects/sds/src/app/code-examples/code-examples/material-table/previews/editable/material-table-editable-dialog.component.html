@@ -24,6 +24,10 @@
 	</mat-dialog-content>
 
 	<mat-dialog-actions>
+		<button type="button" mat-button obButton="tertiary" (click)="clear()">
+			<mat-icon svgIcon="undo" />
+			Clear
+		</button>
 		<button type="button" mat-button obButton="tertiary" (click)="close()">
 			<mat-icon svgIcon="cancel" />
 			Close
