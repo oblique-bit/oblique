@@ -6,8 +6,12 @@
 	gap: variables.$ob-spacing-xs;
 
 	span.mat-icon {
-		align-self: center;
+		overflow: visible;
 		flex-shrink: 0;
+
+		svg {
+			margin-top: 2px; // empiric value
+		}
 	}
 
 	&.mat-mdc-icon-button span.mat-icon {
