@@ -51,5 +51,6 @@
 		[selectedSlug]="(selectedSlug$ | async) ?? ''"
 		[urlParamVersion]="(urlParamVersion$ | async) ?? null"
 		[id]="componentId | id: ['accordion-links']"
+		(linkClicked)="toggleMobileNavigation()"
 	/>
 </div>
