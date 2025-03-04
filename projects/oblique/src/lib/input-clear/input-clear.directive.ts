@@ -1,7 +1,9 @@
-import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, inject} from '@angular/core';
+import {DestroyRef, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, inject} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
 import {AbstractControl, NgModel} from '@angular/forms';
 import {WINDOW} from '../utilities';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {fromEvent} from 'rxjs';
 
 @Directive({
 	selector: '[obInputClear]',
@@ -20,6 +22,7 @@ export class ObInputClearDirective implements OnInit {
 	private readonly element = inject(ElementRef);
 	private readonly validControlTypes = [AbstractControl, HTMLInputElement, NgModel];
 	private readonly window: Window = inject(WINDOW);
+	private readonly destroyRef = inject(DestroyRef);
 
 	constructor() {
 		// ensure matInput got resolved beforehand
@@ -60,21 +63,21 @@ export class ObInputClearDirective implements OnInit {
 
 	private subscribeToInputValueChange(): void {
 		if (this.control instanceof AbstractControl) {
-			this.control.valueChanges.subscribe(value => {
+			this.control.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(value => {
 				this.handleParentClass(value);
 			});
 		}
 
 		if (this.control instanceof NgModel) {
-			this.control.control.valueChanges.subscribe(value => {
+			this.control.control.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(value => {
 				this.handleParentClass(value);
 			});
 		}
 
 		if (this.control instanceof HTMLInputElement) {
-			this.control.addEventListener('keyup', () => {
-				this.handleParentClass(this.control.value);
-			});
+			fromEvent(this.control, 'keyup')
+				.pipe(takeUntilDestroyed(this.destroyRef))
+				.subscribe(() => this.handleParentClass(this.control.value));
 		}
 	}
 
