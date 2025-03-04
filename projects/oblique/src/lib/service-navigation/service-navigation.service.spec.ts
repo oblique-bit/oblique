@@ -318,7 +318,7 @@ describe('ObServiceNavigationService', () => {
 								{
 									index: 2,
 									url: `http://applications/profile/push-notifications`,
-									label: 'i18n.oblique.service-navigation.profile.my-push-notifications',
+									label: 'i18n.oblique.service-navigation.profile.my-email-sms-notifications',
 									isInternalLink: true
 								},
 								{
