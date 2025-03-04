@@ -107,6 +107,7 @@ describe('InputClear', () => {
 		let fixture: ComponentFixture<UntypedReactiveFormTestComponent>;
 		let input: HTMLInputElement;
 		let directive: ObInputClearDirective;
+		let parentElement: HTMLElement;
 
 		beforeEach(waitForAsync(() => {
 			TestBed.configureTestingModule({
@@ -152,6 +153,28 @@ describe('InputClear', () => {
 				expect(input.value).toBe('');
 			});
 		});
+		describe('handling class .ob-text-control-clear-has-value', () => {
+			beforeEach(() => {
+				input = fixture.nativeElement.querySelector('input');
+			});
+
+			test('that it added the class .ob-text-control-clear-has-value', () => {
+				input.value = 'testInput';
+				input.dispatchEvent(new Event('input'));
+				fixture.detectChanges();
+				parentElement = fixture.nativeElement.querySelector('.ob-text-control-clear-has-value');
+				console.error(parentElement);
+				expect(parentElement).toBeTruthy();
+			});
+
+			test('that it removed the class .ob-text-control-clear-has-value', () => {
+				input.value = null;
+				input.dispatchEvent(new Event('input'));
+				fixture.detectChanges();
+				parentElement = fixture.nativeElement.querySelector('.ob-text-control-clear-has-value');
+				expect(parentElement).toBeNull();
+			});
+		});
 	});
 
 	describe('with strongly typed reactive forms', () => {
@@ -159,6 +182,7 @@ describe('InputClear', () => {
 		let fixture: ComponentFixture<StronglyTypedReactiveFormTestComponent>;
 		let input: HTMLInputElement;
 		let directive: ObInputClearDirective;
+		let parentElement: HTMLElement;
 
 		beforeEach(waitForAsync(() => {
 			TestBed.configureTestingModule({
@@ -204,6 +228,27 @@ describe('InputClear', () => {
 				expect(input.value).toBe('');
 			});
 		});
+		describe('handling class .ob-text-control-clear-has-value', () => {
+			beforeEach(() => {
+				input = fixture.nativeElement.querySelector('input');
+			});
+
+			test('that it added the class .ob-text-control-clear-has-value', () => {
+				input.value = 'testInput';
+				input.dispatchEvent(new Event('input'));
+				fixture.detectChanges();
+				parentElement = fixture.nativeElement.querySelector('.ob-text-control-clear-has-value');
+				expect(parentElement).toBeTruthy();
+			});
+
+			test('that it removed the class .ob-text-control-clear-has-value', () => {
+				input.value = null;
+				input.dispatchEvent(new Event('input'));
+				fixture.detectChanges();
+				parentElement = fixture.nativeElement.querySelector('.ob-text-control-clear-has-value');
+				expect(parentElement).toBeNull();
+			});
+		});
 	});
 
 	describe('with template-driven forms', () => {
@@ -211,6 +256,7 @@ describe('InputClear', () => {
 		let fixture: ComponentFixture<TemplateDrivenFormTestComponent>;
 		let input: HTMLInputElement;
 		let directive: ObInputClearDirective;
+		let parentElement: HTMLElement;
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
@@ -227,25 +273,49 @@ describe('InputClear', () => {
 			fixture.detectChanges();
 		});
 
-		beforeEach(() => {
-			input = fixture.nativeElement.querySelector('input');
-			input.value = 'testInput';
-			fixture.detectChanges();
-			input.dispatchEvent(new Event('input'));
-			jest.spyOn(directive, 'onClick');
-			fixture.nativeElement.querySelector('button').click();
+		describe('onClick', () => {
+			beforeEach(() => {
+				input = fixture.nativeElement.querySelector('input');
+				input.value = 'testInput';
+				fixture.detectChanges();
+				input.dispatchEvent(new Event('input'));
+				jest.spyOn(directive, 'onClick');
+				fixture.nativeElement.querySelector('button').click();
+			});
+
+			test('that it calls the directive on button click', () => {
+				expect(directive.onClick).toHaveBeenCalled();
+			});
+
+			test('that it clears the input field', () => {
+				expect(input.value).toBe('');
+			});
+
+			test('that it clears the model', () => {
+				expect(component.testModel).toBeNull();
+			});
 		});
 
-		test('that it calls the directive on button click', () => {
-			expect(directive.onClick).toHaveBeenCalled();
-		});
+		describe('handling class .ob-text-control-clear-has-value', () => {
+			beforeEach(() => {
+				input = fixture.nativeElement.querySelector('input');
+			});
 
-		test('that it clears the input field', () => {
-			expect(input.value).toBe('');
-		});
+			test('that it added the class .ob-text-control-clear-has-value', () => {
+				input.value = 'testInput';
+				input.dispatchEvent(new Event('input'));
+				fixture.detectChanges();
+				parentElement = fixture.nativeElement.querySelector('.ob-text-control-clear-has-value');
+				expect(parentElement).toBeTruthy();
+			});
 
-		test('that it clears the model', () => {
-			expect(component.testModel).toBeNull();
+			test('that it removed the class .ob-text-control-clear-has-value', () => {
+				input.value = null;
+				input.dispatchEvent(new Event('input'));
+				fixture.detectChanges();
+				parentElement = fixture.nativeElement.querySelector('.ob-text-control-clear-has-value');
+				expect(parentElement).toBeNull();
+			});
 		});
 	});
 
@@ -253,6 +323,7 @@ describe('InputClear', () => {
 		let fixture: ComponentFixture<HtmlInputTestComponent>;
 		let input: HTMLInputElement;
 		let directive: ObInputClearDirective;
+		let parentElement: HTMLElement;
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
@@ -284,6 +355,28 @@ describe('InputClear', () => {
 
 			test('that it clears the input field', () => {
 				expect(input.value).toBe('');
+			});
+		});
+
+		describe('handling class .ob-text-control-clear-has-value', () => {
+			beforeEach(() => {
+				input = fixture.nativeElement.querySelector('input');
+			});
+
+			test('that it added the class .ob-text-control-clear-has-value', () => {
+				input.value = 'testInput';
+				input.dispatchEvent(new Event('keyup'));
+				fixture.detectChanges();
+				parentElement = fixture.nativeElement.querySelector('.ob-text-control-clear-has-value');
+				expect(parentElement).toBeTruthy();
+			});
+
+			test('that it removed the class .ob-text-control-clear-has-value', () => {
+				input.value = null;
+				input.dispatchEvent(new Event('keyup'));
+				fixture.detectChanges();
+				parentElement = fixture.nativeElement.querySelector('.ob-text-control-clear-has-value');
+				expect(parentElement).toBeNull();
 			});
 		});
 	});
