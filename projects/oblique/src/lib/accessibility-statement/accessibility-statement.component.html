@@ -20,13 +20,21 @@
 }
 @if (parameters.createdOn) {
 	<h3>{{ "i18n.oblique.accessibility-statement.data.title" | translate }}</h3>
-	<p>
-		{{ "i18n.oblique.accessibility-statement.data.created" | translate: { createdOn: (parameters.createdOn | obDate: "shortDate") } }}
-	</p>
+	<p
+		[innerHtml]="
+			'i18n.oblique.accessibility-statement.data.created'
+				| translate
+					: { createdOn: (parameters.createdOn | obDate: 'shortDate'), createdOnISO: (parameters.createdOn | obDate: 'yyyy-MM-dd') }
+		"
+	></p>
 	@if (parameters.reviewedOn) {
-		<p>
-			{{ "i18n.oblique.accessibility-statement.data.reviewed" | translate: { reviewedOn: (parameters.reviewedOn | obDate: "shortDate") } }}
-		</p>
+		<p
+			[innerHtml]="
+				'i18n.oblique.accessibility-statement.data.reviewed'
+					| translate
+						: { reviewedOn: (parameters.reviewedOn | obDate: 'shortDate'), reviewedOnISO: (parameters.reviewedOn | obDate: 'yyyy-MM-dd') }
+			"
+		></p>
 	}
 }
 

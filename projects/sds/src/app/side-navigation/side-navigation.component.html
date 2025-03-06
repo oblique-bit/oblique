@@ -7,7 +7,17 @@
 		[width]="259"
 		[id]="componentId | id: ['logo']"
 	/>
-	<button type="button" class="hamburger" [class.has-opened-mobile-navigation]="displayMobileNavigation" (click)="toggleMobileNavigation()">
+	<button
+		type="button"
+		class="hamburger-button"
+		[class.has-opened-mobile-navigation]="displayMobileNavigation"
+		(click)="toggleMobileNavigation()"
+	>
+		<span class="hamburger">
+			<span class="first-line"></span>
+			<span class="second-line"></span>
+			<span class="third-line"></span>
+		</span>
 		<span class="ob-screen-reader-only" aria-controls="side-navigation" [attr.aria-expanded]="displayMobileNavigation ? 'open' : 'close'"
 			>Toggle side navigation</span
 		>
@@ -41,5 +51,6 @@
 		[selectedSlug]="(selectedSlug$ | async) ?? ''"
 		[urlParamVersion]="(urlParamVersion$ | async) ?? null"
 		[id]="componentId | id: ['accordion-links']"
+		(linkClicked)="toggleMobileNavigation()"
 	/>
 </div>

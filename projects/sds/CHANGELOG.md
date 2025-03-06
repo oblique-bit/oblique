@@ -1,3 +1,10 @@
+# [13.0.1](https://github.com/oblique-bit/oblique/compare/13.0.0...13.0.1) (2025-03-06)
+
+## Bug Fixes
+
+- **side-navigation:** make side-navigation mobile navigation close when clicked ([68fd39b5](https://github.com/oblique-bit/oblique/commit/68fd39b58eeb2af2bb9adc23cbd90dd12d7494e2))
+- **side-navigation:** don't use SVG for hamburger menu ([3946d24c](https://github.com/oblique-bit/oblique/commit/3946d24ccf4b2ee39675898bff9fcc335a180445))
+
 # [13.0.0](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0) (2025-02-27)
 
 ## Bug Fixes
