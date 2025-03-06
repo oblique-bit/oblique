@@ -6,7 +6,7 @@ export const APP_ROUTES: Routes = [
 	{
 		loadChildren: () => import('./app/component-page/component-pages.routes'),
 		matcher: (url: UrlSegment[]): UrlMatchResult =>
-			['newsletter'].includes(url[1].toString()) ? {consumed: url, posParams: {[URL_CONST.urlParams.selectedSlug]: url[1]}} : null
+			['newsletter'].includes(url[1].toString()) ? {consumed: [url[0]], posParams: {[URL_CONST.urlParams.selectedSlug]: url[1]}} : null
 	},
 	{
 		path: `introductions/:${URL_CONST.urlParams.selectedSlug}`,

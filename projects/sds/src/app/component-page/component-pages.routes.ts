@@ -1,6 +1,6 @@
 import {ComponentPageComponent} from './component-page.component';
 
 export default [
-	{path: '', component: ComponentPageComponent},
+	{path: 'newsletter', component: ComponentPageComponent},
 	{path: '**', redirectTo: 'introductions/welcome'}
 ];
