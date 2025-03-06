@@ -1,3 +1,11 @@
+# [13.0.1](https://github.com/oblique-bit/oblique/compare/13.0.0...13.0.1) (2025-03-06)
+
+## Bug Fixes
+
+- **accessibility-statement:** use `time` element for dates ([9683cf37](https://github.com/oblique-bit/oblique/commit/9683cf376f0e028e47f3a47afa234bd03a68474a))
+- **external-link:** align the icon vertically ([f1185d1a](https://github.com/oblique-bit/oblique/commit/f1185d1aeec237f9c13ec3c74a74efb9f007aace))
+- **external-link:** improve external link accessibility ([bf9f6bc9](https://github.com/oblique-bit/oblique/commit/bf9f6bc9abcd4835d63166dbab9364db2089d99d))
+
 # [13.0.0](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0) (2025-02-27)
 
 ## Bug Fixes
