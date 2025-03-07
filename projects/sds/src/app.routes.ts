@@ -1,11 +1,12 @@
-import {Routes} from '@angular/router';
+import {Routes, UrlMatchResult, UrlSegment} from '@angular/router';
 import {URL_CONST} from './app/shared/url/url.const';
 
 export const APP_ROUTES: Routes = [
 	{path: '', redirectTo: 'introductions/welcome', pathMatch: 'full'},
 	{
-		path: `introductions/newsletter`,
-		loadChildren: () => import('./app/component-page/component-pages.routes')
+		loadChildren: () => import('./app/component-page/component-pages.routes'),
+		matcher: (url: UrlSegment[]): UrlMatchResult =>
+			['newsletter'].includes(url[1].toString()) ? {consumed: [url[0]], posParams: {[URL_CONST.urlParams.selectedSlug]: url[1]}} : null
 	},
 	{
 		path: `introductions/:${URL_CONST.urlParams.selectedSlug}`,
