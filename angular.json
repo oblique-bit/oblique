@@ -86,7 +86,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["ajv", "ajv-formats"],
+            "allowedCommonJsDependencies": ["ajv", "ajv-formats", "moment"],
             "outputPath": "dist/sandbox",
             "index": "projects/sandbox/src/index.html",
             "main": "projects/sandbox/src/main.ts",
