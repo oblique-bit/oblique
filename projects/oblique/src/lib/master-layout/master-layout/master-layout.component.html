@@ -84,9 +84,16 @@
 		<h2>
 			<ng-content select="[obOffCanvasTitle]" />
 		</h2>
-		<button type="button" mat-icon-button obButton="secondary" obOffCanvasToggle class="ob-close" #offCanvasClose>
+		<button
+			type="button"
+			mat-icon-button
+			obButton="secondary"
+			[matTooltip]="'i18n.common.close' | translate"
+			obOffCanvasToggle
+			class="ob-close"
+			#offCanvasClose
+		>
 			<mat-icon svgIcon="cancel" />
-			<span class="ob-screen-reader-only">{{ "i18n.common.close" | translate }}</span>
 		</button>
 	</header>
 	<div class="ob-off-canvas-content">
