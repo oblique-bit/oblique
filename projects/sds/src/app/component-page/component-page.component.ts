@@ -8,7 +8,8 @@ import {ComponentPageMapper} from './component-page.mapper';
 	selector: 'app-component-page',
 	templateUrl: './component-page.component.html',
 	styleUrls: ['./component-page.component.scss'],
-	imports: [CommonModule, NgComponentOutlet]
+	imports: [CommonModule, NgComponentOutlet],
+	host: {class: 'content-page'}
 })
 export class ComponentPageComponent implements OnInit {
 	public componentToLoad: ComponentPage;
