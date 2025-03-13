@@ -4,6 +4,11 @@
 app-text-page,
 app-tabbed-page {
 	margin-top: 10px;
+
+	@include layout.ob-media-breakpoint-down(md) {
+		margin-top: 104px; // free space for the header, with 20px padding-like space around logo
+		border-radius: 0;
+	}
 }
 
 // (case breakpoint-down + overlay is shown)
