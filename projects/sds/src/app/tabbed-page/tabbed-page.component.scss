@@ -14,12 +14,6 @@
 	justify-content: flex-start;
 	overflow-x: auto;
 }
-@include layout.ob-media-breakpoint-down(md) {
-	:host {
-		margin-top: 104px; // free space for the header, with 20px padding-like space around logo
-		border-radius: 0;
-	}
-}
 
 h1 {
 	padding-top: 0.75rem;
