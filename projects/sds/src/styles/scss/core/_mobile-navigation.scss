@@ -1,13 +1,20 @@
 @use "../../../styles/scss/core/variables";
 @use "../../../styles/scss/core/mixins/layout";
 
-app-text-page,
-app-tabbed-page {
-	margin-top: 10px;
+.main-content {
+	app-text-page,
+	app-tabbed-page {
+		margin-top: 10px;
+		transition: margin-top 0.25s;
 
-	@include layout.ob-media-breakpoint-down(md) {
-		margin-top: 104px; // free space for the header, with 20px padding-like space around logo
-		border-radius: 0;
+		@include layout.ob-media-breakpoint-down(md) {
+			margin-top: 104px; // free space for the header, with 20px padding-like space around logo
+			border-radius: 0;
+		}
+
+		@include layout.ob-media-breakpoint-down(sm) {
+			margin-top: 80px;
+		}
 	}
 }
 
@@ -40,6 +47,25 @@ app-tabbed-page {
 
 		app-side-navigation header.mobile-header app-image {
 			visibility: hidden;
+		}
+	}
+}
+
+app-side-navigation {
+	.mobile-header,
+	.side-navigation {
+		app-image {
+			width: 299px; // transition needs known start and end values
+			height: 84px; // transition needs known start and end values
+			align-items: flex-start; // app-image automatically sets center which breaks the alignment
+			overflow: hidden;
+			transition:
+				height 0.25s,
+				width 0.25s;
+			@include layout.ob-media-breakpoint-down(sm) {
+				width: 60px;
+				height: 60px;
+			}
 		}
 	}
 }
