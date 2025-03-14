@@ -22,6 +22,10 @@
 // rules written here will have higher specificity than
 // rules defined in tabbed-page.component.scss and text-page.component.scss (for the case breakpoint-down)
 @include layout.ob-media-breakpoint-down(md) {
+	app-root:not(.has-opened-mobile-navigation) .main-content {
+		grid-template-columns: 0fr 1fr;
+	}
+
 	app-side-navigation {
 		overflow-y: unset;
 	}
@@ -31,6 +35,10 @@
 	}
 
 	app-root.has-opened-mobile-navigation {
+		.main-content {
+			grid-template-columns: 1fr;
+		}
+
 		app-side-navigation {
 			overflow-y: scroll;
 		}
@@ -41,8 +49,7 @@
 
 		app-text-page,
 		app-tabbed-page {
-			filter: blur(4px);
-			margin-top: 10px;
+			display: none;
 		}
 
 		app-side-navigation header.mobile-header app-image {

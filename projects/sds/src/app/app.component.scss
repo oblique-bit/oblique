@@ -28,7 +28,4 @@ $banner-height: 50px;
 	grid-template-columns: fit-content(500px) 30fr 1fr;
 	height: 100vh;
 	width: 100vw;
-	@include layout.ob-media-breakpoint-down(md) {
-		grid-template-columns: fit-content(500px) 30fr;
-	}
 }
