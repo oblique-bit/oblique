@@ -21,7 +21,8 @@ import {VersionService} from '../shared/version/version.service';
 	selector: 'app-tabbed-page',
 	templateUrl: './tabbed-page.component.html',
 	styleUrls: ['./tabbed-page.component.scss'],
-	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe, MatChipsModule]
+	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe, MatChipsModule],
+	host: {class: 'content-page'}
 })
 export class TabbedPageComponent {
 	readonly componentId = 'tabbed-page';

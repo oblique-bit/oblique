@@ -2,8 +2,7 @@
 @use "../../../styles/scss/core/mixins/layout";
 
 .main-content {
-	app-text-page,
-	app-tabbed-page {
+	.content-page {
 		margin-top: 10px;
 		transition: margin-top 0.25s;
 
@@ -47,8 +46,7 @@
 			display: block;
 		}
 
-		app-text-page,
-		app-tabbed-page {
+		.content-page {
 			display: none;
 		}
 
