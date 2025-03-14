@@ -77,6 +77,12 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
+	test.each([null, undefined])('that "%s" is converted to an empty array', value => {
+		component.links = value;
+		component.ngOnChanges();
+		expect(component.initializedLinks).toEqual([]);
+	});
+
 	test.each<{idx: number}>([{idx: 0}, {idx: 1}, {idx: 2}])('that property isExternal of Link is set to false at index: $idx', ({idx}) => {
 		fixture.detectChanges();
 		expect(component.initializedLinks[idx].isExternal).toBe(false);

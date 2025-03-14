@@ -153,7 +153,12 @@ describe('ObMasterLayoutComponent', () => {
 					beforeEach(() => {
 						component.noNavigation = false;
 					});
-					it('should add accessKey 1 with an empty navigation', () => {
+					it.each([
+						{text: 'empty', value: []},
+						{text: 'null', value: null},
+						{text: 'undefined', value: undefined}
+					])('should add accessKey 1 with an $text navigation', ({value}) => {
+						component.navigation = value;
 						component.ngOnInit();
 						expect(component.skipLinks).toEqual([{label: 'test', url: '', accessKey: 1}]);
 					});
