@@ -119,18 +119,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes.collapseBreakpoint) {
-			this.unsubscribeMediaQuery.next();
-			const mediaQuery = this.window.matchMedia(`(min-width: ${this.gridBreakpoints[this.collapseBreakpoint]}px)`);
-			fromEvent(mediaQuery, 'change')
-				.pipe(
-					map((event: MediaQueryListEvent) => event.matches),
-					startWith(mediaQuery.matches),
-					takeUntil(this.unsubscribeMediaQuery)
-				)
-				.subscribe(isLayoutExpanded => {
-					this.isLayoutExpanded = isLayoutExpanded;
-					this.isLayoutCollapsed = !isLayoutExpanded;
-				});
+			this.handleLayoutMode();
 		}
 	}
 
@@ -194,6 +183,21 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 			element.focus({preventScroll: true});
 			console.info(`The element with the id: ${elementId} is not focusable. Oblique added a tabindex in order to make it focusable.`);
 		}
+	}
+
+	private handleLayoutMode(): void {
+		this.unsubscribeMediaQuery.next();
+		const mediaQuery = this.window.matchMedia(`(min-width: ${this.gridBreakpoints[this.collapseBreakpoint]}px)`);
+		fromEvent(mediaQuery, 'change')
+			.pipe(
+				map((event: MediaQueryListEvent) => event.matches),
+				startWith(mediaQuery.matches),
+				takeUntil(this.unsubscribeMediaQuery)
+			)
+			.subscribe(isLayoutExpanded => {
+				this.isLayoutExpanded = isLayoutExpanded;
+				this.isLayoutCollapsed = !isLayoutExpanded;
+			});
 	}
 
 	private isInHighContrastMode(): boolean {
