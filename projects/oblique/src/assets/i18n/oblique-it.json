@@ -57,6 +57,8 @@
   "i18n.oblique.master-layout.accesskey.main-content": "Salta al contenuto principale [0]",
   "i18n.oblique.master-layout.accesskey.navigation": "Salta alla navigazione [1]",
   "i18n.oblique.master-layout.navigation.link.go-to-children": "Aprire il sottomenu {{parentLabel}}",
+  "i18n.oblique.master-layout.master-layout-navigation.scroll-left": "Scorri a sinistra",
+  "i18n.oblique.master-layout.master-layout-navigation.scroll-right": "Scorri a destra",
   "i18n.oblique.header.title": "Area di intestazione",
   "i18n.oblique.header.logo": "Logo della Confederazione Svizzera, alla home page",
   "i18n.oblique.header.toggle": "Attivare/Disattivare l'intestazione dell'applicazione",
