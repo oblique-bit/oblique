@@ -93,6 +93,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	private readonly document = inject(DOCUMENT);
 	private readonly window = inject(WINDOW);
 	private readonly highContrastModeDetector = inject(HighContrastModeDetector);
+	private readonly defaultCollapseBreakpoint = 'md';
 	private readonly gridBreakpoints = {
 		xs: 0,
 		sm: 600,
@@ -130,6 +131,11 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 			.subscribe(evt => this.updateSkipLinks(evt.value));
 		this.updateSkipLinks(!this.noNavigation);
 		this.hasHighContrast = this.isInHighContrastMode();
+		// this avoids re-executing handleLayoutMode if it has already been done in ngOnChanges
+		if (!this.collapseBreakpoint) {
+			this.collapseBreakpoint = this.defaultCollapseBreakpoint;
+			this.handleLayoutMode();
+		}
 	}
 
 	ngDoCheck(): void {

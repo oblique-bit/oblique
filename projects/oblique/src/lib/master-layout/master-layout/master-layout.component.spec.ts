@@ -425,11 +425,8 @@ describe('ObMasterLayoutComponent', () => {
 	});
 
 	describe('collapse breakpoints', () => {
-		it.each([
-			{property: 'isLayoutExpanded', expected: true},
-			{property: 'isLayoutCollapsed', expected: false}
-		])('should have "$property" set to "$expected" per default', ({property, expected}) => {
-			expect(component[property]).toBe(expected);
+		it('should have "md" as default collapseBreakpoint', () => {
+			expect(component.collapseBreakpoint).toBe('md');
 		});
 
 		it.each([
