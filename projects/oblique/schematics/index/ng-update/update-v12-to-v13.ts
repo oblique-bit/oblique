@@ -23,6 +23,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 		return (tree: Tree, _context: SchematicContext) =>
 			chain([
 				this.removeObFormField(),
+				this.removeObPaginatorDirective(),
 				this.migrateMasterLayoutProperties(),
 				this.removeObCheckbox(),
 				this.migrateTableRowCheckedClass(),
@@ -46,6 +47,17 @@ export class UpdateV12toV13 implements ObIMigrations {
 				removeImport(tree, filePath, 'ObFormFieldDirective', '@oblique/oblique');
 				removeImport(tree, filePath, 'ObFormFieldModule', '@oblique/oblique');
 				replaceInFile(tree, filePath, /(?:ObFormFieldModule|ObFormFieldDirective|ObSelectDirective)\s*,?\s*/g, '');
+			};
+			return applyInTree(tree, apply, '*.ts');
+		});
+	}
+
+	private removeObPaginatorDirective(): Rule {
+		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+			infoMigration(_context, 'Remove ObPaginatorDirective');
+			const apply = (filePath: string): void => {
+				removeImport(tree, filePath, 'ObPaginatorDirective', '@oblique/oblique');
+				replaceInFile(tree, filePath, /ObPaginatorDirective\s*,?\s*/g, '');
 			};
 			return applyInTree(tree, apply, '*.ts');
 		});

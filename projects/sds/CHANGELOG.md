@@ -1,3 +1,15 @@
+# [13.0.2](https://github.com/oblique-bit/oblique/compare/13.0.1...13.0.2) (2025-03-17)
+
+## Bug Fixes
+
+- **code-examples:** correct html element names ([114b1e65](https://github.com/oblique-bit/oblique/commit/114b1e65ecaad31eab0e8ff94850b6e43c4d8f3b))
+- **component-page:** make sure component pages are treated the same as text and tabbed ones ([e464c2f5](https://github.com/oblique-bit/oblique/commit/e464c2f56bdd448d3f615e7b15026b7b7b3cb732))
+- **component-page:** make sure `param` is always defined ([7181e03b](https://github.com/oblique-bit/oblique/commit/7181e03b41a491ab9bc81aaafd1e813364b5eae0))
+- **sds:** add tooltip to buttons that have no text ([d96b4372](https://github.com/oblique-bit/oblique/commit/d96b4372d2a5c80b76047c1922e5021b65dafe91))
+- **side-navigation:** make side-navigation use full width on mobile view ([bbcb59e7](https://github.com/oblique-bit/oblique/commit/bbcb59e740ff7b2bb28ef7a6a175ff6733114626))
+- **side-navigation:** remove blur effect when side navigation is opened ([573ae213](https://github.com/oblique-bit/oblique/commit/573ae2138ebb8a0e1adccff6cabee20374ecb57b))
+- **side-navigation:** reduce logo to the coat of arms below SM viewport ([7a6f19fd](https://github.com/oblique-bit/oblique/commit/7a6f19fdf26ad7ff0a584fd1a266854751c9a41f))
+
 # [13.0.1](https://github.com/oblique-bit/oblique/compare/13.0.0...13.0.1) (2025-03-06)
 
 ## Bug Fixes

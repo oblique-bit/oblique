@@ -9,3 +9,7 @@ div .mat-mdc-tooltip {
 		background-color: variables.$ob-secondary-700;
 	}
 }
+
+.cdk-overlay-container {
+	z-index: variables.$ob-z-index-overlay-over-the-top;
+}

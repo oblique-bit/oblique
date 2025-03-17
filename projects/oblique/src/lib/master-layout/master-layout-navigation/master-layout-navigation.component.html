@@ -9,6 +9,7 @@
 	[disabled]="!currentScroll"
 	aria-hidden="true"
 	id="ob-navigation-scrollable-control-left"
+	[matTooltip]="'i18n.oblique.master-layout.master-layout-navigation.scroll-left' | translate"
 >
 	<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron-left" /></span>
 </button>
@@ -178,6 +179,7 @@
 	[disabled]="currentScroll === maxScroll"
 	aria-hidden="true"
 	id="ob-navigation-scrollable-control-right"
+	[matTooltip]="'i18n.oblique.master-layout.master-layout-navigation.scroll-right' | translate"
 >
 	<mat-icon svgIcon="chevron-right" />
 </button>
