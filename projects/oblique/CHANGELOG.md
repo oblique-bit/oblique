@@ -1,3 +1,13 @@
+# [13.0.2](https://github.com/oblique-bit/oblique/compare/13.0.1...13.0.2) (2025-03-17)
+
+## Bug Fixes
+
+- **master-layout:** add tooltip to scroll left / right buttons ([66c4a931](https://github.com/oblique-bit/oblique/commit/66c4a9311501dfb74ec8b56e05db9cc894d430af))
+- **master-layout:** replace screen reader text on go to children button with a tooltip ([215d3118](https://github.com/oblique-bit/oblique/commit/215d311845bdff0d71c0d1f61b5c1bcf7f5050df))
+- **material:** ensure matTooltips are rendered above the off-canvas panel ([7caeb276](https://github.com/oblique-bit/oblique/commit/7caeb27633ca8434d2004464d06d6274af2d4bd1))
+- **off-canvas:** replace `ob-screen-reader-only` text on close button with a tooltip ([da408d18](https://github.com/oblique-bit/oblique/commit/da408d18ccce4a3998bbbf240e3e2b01febb216e))
+- **schematics:** remove `ObPaginatorDirective` with schematics ([255d98c8](https://github.com/oblique-bit/oblique/commit/255d98c8d1f3fee809cac8462794f292e5d9715d))
+
 # [13.0.1](https://github.com/oblique-bit/oblique/compare/13.0.0...13.0.1) (2025-03-06)
 
 ## Bug Fixes

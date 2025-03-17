@@ -1,3 +1,9 @@
+# [13.0.2](https://github.com/oblique-bit/oblique/compare/13.0.1...13.0.2) (2025-03-17)
+
+## Bug Fixes
+
+- **sandbox:** add tooltip to buttons that have no text ([fb60dbb9](https://github.com/oblique-bit/oblique/commit/fb60dbb9b06dfc74833d86029ba7285ac74c34f8))
+
 # [13.0.0](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0) (2025-02-27)
 
 ## Bug Fixes
