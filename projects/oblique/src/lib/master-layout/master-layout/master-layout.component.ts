@@ -212,7 +212,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	}
 
 	private updateSkipLinks(hasNavigation: boolean): void {
-		const staticSkipLinks = hasNavigation && this.navigation.length ? 2 : 1;
+		const staticSkipLinks = hasNavigation && this.navigation?.length ? 2 : 1;
 		this.skipLinks = this.skipLinks.map((skipLink, index: number) => ({...skipLink, accessKey: index + staticSkipLinks}));
 	}
 

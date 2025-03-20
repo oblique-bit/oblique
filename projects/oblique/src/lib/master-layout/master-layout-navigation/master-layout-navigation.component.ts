@@ -84,7 +84,7 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	}
 
 	ngOnChanges(): void {
-		this.initializedLinks = this.links.map(link => new ObNavigationLink(link));
+		this.initializedLinks = this.links?.map(link => new ObNavigationLink(link)) ?? [];
 	}
 
 	ngOnInit(): void {

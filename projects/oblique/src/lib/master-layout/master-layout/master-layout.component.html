@@ -6,7 +6,7 @@
 				{{ "i18n.oblique.master-layout.accesskey.main-content" | translate }}
 			</a>
 		</li>
-		<li *ngIf="!noNavigation && navigation.length">
+		<li *ngIf="!noNavigation && navigation?.length">
 			<a class="ob-accessible" accesskey="1" [routerLink]="route.path" [queryParams]="route.params" fragment="navigation">
 				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access" /></span>
 				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}
