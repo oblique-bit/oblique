@@ -1,5 +1,6 @@
 import {Component, HostListener, inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, UrlSerializer} from '@angular/router';
+import {CdkScrollable} from '@angular/cdk/scrolling';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
@@ -22,7 +23,8 @@ import {VersionService} from '../shared/version/version.service';
 	templateUrl: './tabbed-page.component.html',
 	styleUrls: ['./tabbed-page.component.scss'],
 	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe, MatChipsModule],
-	host: {class: 'content-page'}
+	host: {class: 'content-page'},
+	hostDirectives: [CdkScrollable]
 })
 export class TabbedPageComponent {
 	readonly componentId = 'tabbed-page';
