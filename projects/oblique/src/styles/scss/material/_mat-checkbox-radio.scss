@@ -16,14 +16,15 @@ $disabled-color: core-variables.$ob-secondary-300;
 
 .mat-mdc-checkbox,
 .mat-mdc-radio-group {
-	margin-top: 5px; // empiric number
-
-	.ob-form-sm & {
-		margin-top: 2px; // empiric number
-	}
+	position: relative;
+	top: -3px; // empiric number
 
 	.ob-form-lg & {
-		margin-top: 13px; // empiric number
+		top: -2px; // empiric number
+	}
+
+	.ob-form-sm & {
+		top: 0; // empiric number
 	}
 }
 
