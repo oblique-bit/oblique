@@ -212,22 +212,60 @@ export class SideNavigationComponent implements OnInit {
 	}
 
 	private getNewSlug(version: number, slug: string): string | undefined {
-		if (slug === 'welcome-10' && version !== 10) {
-			return 'welcome';
-		}
-
 		switch (version) {
 			case 10:
 				return 'welcome-10';
 			case 11:
-				if (slug === 'getting-started-as-a-designer') return 'invalid';
-				return ['master-layout-12', 'popover-12'].includes(slug) ? slug.replace('-12', '') : undefined;
+				return this.redirectVersion11(slug);
 			case 12:
-				if (['getting-started-as-a-designer', 'language'].includes(slug)) return 'invalid';
-				return ['master-layout', 'popover'].includes(slug) ? `${slug}-12` : undefined;
+				return this.redirectVersion12(slug);
 			case 13:
-				if (['language'].includes(slug)) return 'invalid';
-				return ['master-layout', 'master-layout-12'].includes(slug) ? `${slug}-13` : undefined;
+				return this.redirectVersion13(slug);
+			default:
+				return undefined;
+		}
+	}
+
+	private redirectVersion11(slug: string): string | undefined {
+		switch (slug) {
+			case 'welcome-10':
+				return 'welcome';
+			case 'master-layout-12':
+				return 'master-layout';
+			case 'popover-12':
+				return 'popover';
+			case 'getting-started-as-a-designer':
+				return 'invalid';
+			default:
+				return undefined;
+		}
+	}
+
+	private redirectVersion12(slug: string): string | undefined {
+		switch (slug) {
+			case 'welcome-10':
+				return 'welcome';
+			case 'master-layout':
+				return 'master-layout-12';
+			case 'popover':
+				return 'popover-12';
+			case 'language':
+			case 'getting-started-as-a-designer':
+				return 'invalid';
+			default:
+				return undefined;
+		}
+	}
+
+	private redirectVersion13(slug: string): string | undefined {
+		switch (slug) {
+			case 'welcome-10':
+				return 'welcome';
+			case 'master-layout':
+			case 'master-layout-12':
+				return 'master-layout-13';
+			case 'language':
+				return 'invalid';
 			default:
 				return undefined;
 		}
