@@ -230,10 +230,15 @@ export class SideNavigationComponent implements OnInit {
 		switch (slug) {
 			case 'welcome-10':
 				return 'welcome';
+			case 'configuration-12':
+				return 'configuration';
 			case 'master-layout-12':
+			case 'master-layout-13':
 				return 'master-layout';
 			case 'popover-12':
 				return 'popover';
+			case 'shadow':
+			case 'getting-started-figma':
 			case 'getting-started-as-a-designer':
 				return 'invalid';
 			default:
@@ -245,11 +250,16 @@ export class SideNavigationComponent implements OnInit {
 		switch (slug) {
 			case 'welcome-10':
 				return 'welcome';
+			case 'configuration':
+				return 'configuration-12';
 			case 'master-layout':
+			case 'master-layout-13':
 				return 'master-layout-12';
 			case 'popover':
 				return 'popover-12';
 			case 'language':
+			case 'datepicker':
+			case 'getting-started-figma':
 			case 'getting-started-as-a-designer':
 				return 'invalid';
 			default:
@@ -261,10 +271,15 @@ export class SideNavigationComponent implements OnInit {
 		switch (slug) {
 			case 'welcome-10':
 				return 'welcome';
+			case 'configuration':
+				return 'configuration-12';
 			case 'master-layout':
 			case 'master-layout-12':
 				return 'master-layout-13';
+			case 'popover':
+				return 'popover-12';
 			case 'language':
+			case 'datepicker':
 				return 'invalid';
 			default:
 				return undefined;
