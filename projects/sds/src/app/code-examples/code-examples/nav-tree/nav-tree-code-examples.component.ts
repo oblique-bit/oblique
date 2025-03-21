@@ -22,48 +22,31 @@ export class NavTreeCodeExamplesComponent extends CodeExamples {
 			component: NavTreeExampleDefaultPreviewComponent,
 			idParts: ['default'],
 			title: 'Default',
-			snippets: [
-				this.getSnippet('nav-tree', 'default/nav-tree-example-default-preview.component.html', 'HTML'),
-				this.getSnippet('nav-tree', 'default/nav-tree-example-default-preview.component.ts', 'TS')
-			]
+			snippets: []
 		},
 		{
 			component: NavTreeExampleFilterPreviewComponent,
 			idParts: ['filter'],
 			title: 'Filter',
-			snippets: [
-				this.getSnippet('nav-tree', 'filter/nav-tree-example-filter-preview.component.html', 'HTML'),
-				this.getSnippet('nav-tree', 'filter/nav-tree-example-filter-preview.component.ts', 'TS')
-			]
+			snippets: []
 		},
 		{
 			component: NavTreeExampleExpandCollapsePreviewComponent,
 			idParts: ['expand', 'collapse'],
 			title: 'Expand / collapse',
-			snippets: [
-				this.getSnippet('nav-tree', 'expand-collapse/nav-tree-example-expand-collapse-preview.component.html', 'HTML'),
-				this.getSnippet('nav-tree', 'expand-collapse/nav-tree-example-expand-collapse-preview.component.ts', 'TS'),
-				this.getSnippet('nav-tree', 'expand-collapse/nav-tree-example-expand-collapse-preview.component.scss', 'SCSS')
-			]
+			snippets: []
 		},
 		{
 			component: NavTreeExampleDataFromServicePreviewComponent,
 			idParts: ['data', 'from', 'service'],
 			title: 'Data from a service',
-			snippets: [
-				this.getSnippet('nav-tree', 'data-from-service/nav-tree-example-data-from-service-preview.component.html', 'HTML'),
-				this.getSnippet('nav-tree', 'data-from-service/nav-tree-example-data-from-service-preview.component.ts', 'TS'),
-				this.getSnippet('nav-tree', 'data-from-service/nav-tree-data.service.ts', 'TS (Service)')
-			]
+			snippets: []
 		},
 		{
 			component: NavTreeExampleDisabledPreviewComponent,
 			idParts: ['disabled'],
 			title: 'Disabled',
-			snippets: [
-				this.getSnippet('nav-tree', 'disabled/nav-tree-example-disabled-preview.component.html', 'HTML'),
-				this.getSnippet('nav-tree', 'disabled/nav-tree-example-disabled-preview.component.ts', 'TS')
-			]
+			snippets: []
 		}
 	];
 }
