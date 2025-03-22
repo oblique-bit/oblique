@@ -55,7 +55,7 @@ describe('ServiceNavigationTimeoutCookieActivityService', () => {
 			['key down', () => fakeKeyDown]
 		])('should be triggered when there is a %s event', (__, fakeEvent) => {
 			fakeEvent().next('');
-			expect(fakeSetCookie).toBeCalledTimes(1);
+			expect(fakeSetCookie).toHaveBeenCalledTimes(1);
 		});
 
 		it('should be able to handle multiple events', () => {
@@ -67,13 +67,13 @@ describe('ServiceNavigationTimeoutCookieActivityService', () => {
 			jest.advanceTimersByTime(10000);
 			fakeKeyDown.next('');
 			jest.advanceTimersByTime(10000);
-			expect(fakeSetCookie).toBeCalledTimes(4);
+			expect(fakeSetCookie).toHaveBeenCalledTimes(4);
 		});
 
 		it('should set the cookie with the correct data', () => {
 			fakeWheel.next('');
 			const now = Date.now();
-			expect(fakeSetCookie).toBeCalledWith('eportal-last-user-activity', `${now}`);
+			expect(fakeSetCookie).toHaveBeenCalledWith('eportal-last-user-activity', `${now}`);
 		});
 	});
 });
