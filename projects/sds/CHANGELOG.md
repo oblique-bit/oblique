@@ -1,3 +1,10 @@
+# [13.0.3](https://github.com/oblique-bit/oblique/compare/13.0.2...13.0.3) (2025-03-24)
+
+## Bug Fixes
+
+- **sds:** ensure proper viewport height on mobile view ([dad69c74](https://github.com/oblique-bit/oblique/commit/dad69c743f1840f97602c6fa6ab2366d387fcb3c))
+- **tabbed-page:** make sure the page is a scrolling container ([f3afa491](https://github.com/oblique-bit/oblique/commit/f3afa4910a8f57aab51e832cff10b2b566a1d5c3))
+
 # [13.0.2](https://github.com/oblique-bit/oblique/compare/13.0.1...13.0.2) (2025-03-17)
 
 ## Bug Fixes

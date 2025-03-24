@@ -93,6 +93,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	private readonly document = inject(DOCUMENT);
 	private readonly window = inject(WINDOW);
 	private readonly highContrastModeDetector = inject(HighContrastModeDetector);
+	private readonly defaultCollapseBreakpoint = 'md';
 	private readonly gridBreakpoints = {
 		xs: 0,
 		sm: 600,
@@ -119,18 +120,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes.collapseBreakpoint) {
-			this.unsubscribeMediaQuery.next();
-			const mediaQuery = this.window.matchMedia(`(min-width: ${this.gridBreakpoints[this.collapseBreakpoint]}px)`);
-			fromEvent(mediaQuery, 'change')
-				.pipe(
-					map((event: MediaQueryListEvent) => event.matches),
-					startWith(mediaQuery.matches),
-					takeUntil(this.unsubscribeMediaQuery)
-				)
-				.subscribe(isLayoutExpanded => {
-					this.isLayoutExpanded = isLayoutExpanded;
-					this.isLayoutCollapsed = !isLayoutExpanded;
-				});
+			this.handleLayoutMode();
 		}
 	}
 
@@ -141,6 +131,11 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 			.subscribe(evt => this.updateSkipLinks(evt.value));
 		this.updateSkipLinks(!this.noNavigation);
 		this.hasHighContrast = this.isInHighContrastMode();
+		// this avoids re-executing handleLayoutMode if it has already been done in ngOnChanges
+		if (!this.collapseBreakpoint) {
+			this.collapseBreakpoint = this.defaultCollapseBreakpoint;
+			this.handleLayoutMode();
+		}
 	}
 
 	ngDoCheck(): void {
@@ -196,6 +191,21 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		}
 	}
 
+	private handleLayoutMode(): void {
+		this.unsubscribeMediaQuery.next();
+		const mediaQuery = this.window.matchMedia(`(min-width: ${this.gridBreakpoints[this.collapseBreakpoint]}px)`);
+		fromEvent(mediaQuery, 'change')
+			.pipe(
+				map((event: MediaQueryListEvent) => event.matches),
+				startWith(mediaQuery.matches),
+				takeUntil(this.unsubscribeMediaQuery)
+			)
+			.subscribe(isLayoutExpanded => {
+				this.isLayoutExpanded = isLayoutExpanded;
+				this.isLayoutCollapsed = !isLayoutExpanded;
+			});
+	}
+
 	private isInHighContrastMode(): boolean {
 		const currentHighContrastMode: HighContrastMode = this.highContrastModeDetector.getHighContrastMode();
 		return currentHighContrastMode === HighContrastMode.WHITE_ON_BLACK;
@@ -212,7 +222,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	}
 
 	private updateSkipLinks(hasNavigation: boolean): void {
-		const staticSkipLinks = hasNavigation && this.navigation.length ? 2 : 1;
+		const staticSkipLinks = hasNavigation && this.navigation?.length ? 2 : 1;
 		this.skipLinks = this.skipLinks.map((skipLink, index: number) => ({...skipLink, accessKey: index + staticSkipLinks}));
 	}
 

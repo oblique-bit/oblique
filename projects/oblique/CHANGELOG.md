@@ -1,3 +1,11 @@
+# [13.0.3](https://github.com/oblique-bit/oblique/compare/13.0.2...13.0.3) (2025-03-24)
+
+## Bug Fixes
+
+- **master-layout:** also handle breakpoint logic on initialization ([288b9033](https://github.com/oblique-bit/oblique/commit/288b903384564d404a22cee3aae3866bd74c2638))
+- **master-layout:** accept `null` and `undefined` as value for `navigation` ([35deabb6](https://github.com/oblique-bit/oblique/commit/35deabb6c1be37897575a17e1a872c8d9828fe05))
+- **material:** make sure form elements are properly vertically aligned ([83936fe0](https://github.com/oblique-bit/oblique/commit/83936fe0023bdd8ad1d1ddbd6df5c51a23fe6d14))
+
 # [13.0.2](https://github.com/oblique-bit/oblique/compare/13.0.1...13.0.2) (2025-03-17)
 
 ## Bug Fixes
