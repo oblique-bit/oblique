@@ -176,7 +176,7 @@
 				justify-content: space-between;
 
 				.ob-layout-expanded & {
-					margin: variables.$ob-spacing-default 0;
+					margin: variables.$ob-spacing-xs 0;
 
 					&.ob-just-close {
 						justify-content: flex-end;
