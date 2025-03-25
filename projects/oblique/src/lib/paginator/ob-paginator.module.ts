@@ -8,6 +8,6 @@ export {ObPaginatorService} from './ob-paginator.service';
 	exports: [MatPaginatorModule]
 })
 /**
- * Deprecated since Oblique 13.0.0. Import the `MatPaginatorModule` directly
+ * @deprecated since Oblique 13.0.0. Import the `MatPaginatorModule` directly
  */
 export class ObPaginatorModule {}
