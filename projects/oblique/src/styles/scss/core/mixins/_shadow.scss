@@ -37,6 +37,9 @@ $tab-focus-width: 3px;
 	z-index: variables.$ob-z-index-layout;
 }
 
+/*
+* @deprecated since Oblique 13.1.0, will be removed without replacement with the next major version
+*/
 @mixin ob-inner-bottom-shadow() {
 	box-shadow: inset 0 -10px 10px -10px variables.$ob-gray;
 }
