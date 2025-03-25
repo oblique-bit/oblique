@@ -115,7 +115,6 @@
 				transform variables.$ob-duration-default;
 
 			.ob-layout-expanded & {
-				padding: 0 variables.$ob-spacing-md variables.$ob-spacing-md;
 				inset: 100% auto auto -1 * variables.$ob-spacing-md;
 				max-width: variables.$ob-navigation-sub-menu-max-width-md;
 				max-height: 60vh;
