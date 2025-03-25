@@ -332,11 +332,6 @@
 						@include shadow.ob-shadow-lg();
 					}
 
-					&.active[aria-expanded],
-					&[aria-expanded] {
-						@include shadow.ob-shadow-2xl();
-					}
-
 					&::after {
 						display: none; // do not show red border on main nav 1st level
 					}
