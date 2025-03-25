@@ -329,7 +329,6 @@
 					&.active,
 					&:hover {
 						border-bottom: variables.$ob-line-width-sm solid variables.$ob-accent;
-						@include shadow.ob-shadow-lg();
 					}
 
 					&::after {
