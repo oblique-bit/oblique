@@ -116,23 +116,14 @@
 
 			.ob-layout-expanded & {
 				inset: 100% auto auto -1 * variables.$ob-spacing-md;
-				max-width: variables.$ob-navigation-sub-menu-max-width-md;
+				width: variables.$ob-navigation-sub-menu-width;
 				max-height: 60vh;
 				background-color: variables.$ob-white;
 				transform: none;
 				transition: none;
 				display: block;
-				width: max-content;
 				z-index: variables.$ob-z-index-controls + 1;
 				@include shadow.ob-default-panel-box-shadow();
-
-				@include layout.ob-media-breakpoint-up(lg) {
-					max-width: variables.$ob-navigation-sub-menu-max-width-lg;
-
-					@include layout.ob-media-breakpoint-up(xl) {
-						max-width: variables.$ob-navigation-sub-menu-max-width-xl;
-					}
-				}
 			}
 
 			.ob-layout-collapsed & {
