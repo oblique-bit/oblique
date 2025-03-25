@@ -56,6 +56,7 @@ export {
 	ObIServiceNavigationContact,
 	ObLoginState
 } from './lib/service-navigation';
+export {ObStepperIntlService} from './lib/stepper/ob-stepper.service';
 export {
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,
