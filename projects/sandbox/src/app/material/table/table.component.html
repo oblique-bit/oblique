@@ -5,7 +5,15 @@
 			<div class="actions-header">
 				<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager, isInTable: false }" />
 			</div>
-			<table *ngIf="isStructureDefault$ | async" mat-table matSort [dataSource]="tableManager.dataSource" [ngClass]="tableStyles$ | async">
+			<table
+				*ngIf="isStructureDefault$ | async"
+				mat-table
+				matSort
+				matSortActive="position"
+				matSortDirection="asc"
+				[dataSource]="tableManager.dataSource"
+				[ngClass]="tableStyles$ | async"
+			>
 				<caption *ngIf="hasCaption$ | async">
 					Characteristics of periodical elements
 				</caption>
@@ -51,6 +59,8 @@
 			<mat-table
 				*ngIf="(isStructureDefault$ | async) === false"
 				matSort
+				matSortActive="position"
+				matSortDirection="asc"
 				[dataSource]="tableManager.dataSource"
 				[ngClass]="tableStyles$ | async"
 			>
