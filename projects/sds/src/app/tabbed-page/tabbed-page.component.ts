@@ -42,7 +42,7 @@ export class TabbedPageComponent {
 	constructor() {
 		const [validPageId$, invalidPageId$] = this.buildPageIdObservables();
 		invalidPageId$.pipe(takeUntilDestroyed()).subscribe(() => {
-			void this.router.navigate(['introductions', 'welcome']);
+			void this.router.navigate(['..', 'invalid']);
 		});
 
 		this.cmsData$ = this.buildCmsDataObservable(validPageId$);
