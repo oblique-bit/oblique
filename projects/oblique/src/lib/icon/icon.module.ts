@@ -11,7 +11,7 @@ export {ObIconConfig, ObTIconConfig, ObEIcon} from './icon.model';
 	imports: [CommonModule, MatIconModule]
 })
 /**
- * Deprecated with Oblique 13.0.0. Use `provideObliqueConfiguration` instead
+ * @deprecated with Oblique 13.0.0. Use `provideObliqueConfiguration` instead
  */
 export class ObIconModule {
 	static forRoot(config: ObIconConfig = {}): ModuleWithProviders<ObIconModule> {
