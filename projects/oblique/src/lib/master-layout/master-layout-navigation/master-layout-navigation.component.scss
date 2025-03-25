@@ -65,8 +65,8 @@
 				& > button {
 					&.active,
 					&:hover {
-						border-left: variables.$ob-line-width solid variables.$ob-accent;
-						padding-left: variables.$ob-spacing-default - variables.$ob-line-width;
+						border-left: variables.$ob-line-width-sm solid variables.$ob-accent;
+						padding-left: variables.$ob-spacing-default - variables.$ob-line-width-sm;
 					}
 				}
 			}
@@ -136,7 +136,7 @@
 			}
 
 			@mixin sub-menu-active-hover-border-left() {
-				border-left: variables.$ob-line-width solid variables.$ob-accent;
+				border-left: variables.$ob-line-width-sm solid variables.$ob-accent;
 			}
 
 			li {
@@ -145,7 +145,7 @@
 					&.active,
 					&:hover {
 						@include sub-menu-active-hover-border-left();
-						padding-left: variables.$ob-spacing-default - variables.$ob-line-width;
+						padding-left: variables.$ob-spacing-default - variables.$ob-line-width-sm;
 					}
 				}
 			}
@@ -154,8 +154,8 @@
 				a {
 					font-size: variables.$ob-font-size-big;
 					font-weight: bold;
-					padding-left: variables.$ob-line-width;
-					border-left: variables.$ob-line-width solid transparent;
+					padding-left: variables.$ob-line-width-sm;
+					border-left: variables.$ob-line-width-sm solid transparent;
 
 					&:hover {
 						border-left-color: variables.$ob-accent;
