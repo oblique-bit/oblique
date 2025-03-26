@@ -62,6 +62,7 @@ import {SlideToggleComponent} from './slide-toggle/slide-toggle.component';
 import {MenuComponent} from './menu/menu.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {TranslateModule} from '@ngx-translate/core';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -153,6 +154,7 @@ const appRoutes: Routes = [
 		ObSelectableModule,
 		ObSpinnerModule,
 		ReactiveFormsModule,
+		TranslateModule,
 		RouterModule.forChild(appRoutes)
 	]
 })
