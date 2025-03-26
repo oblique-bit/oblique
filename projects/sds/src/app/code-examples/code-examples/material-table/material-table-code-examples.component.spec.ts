@@ -12,6 +12,7 @@ import {MaterialTableExampleEditablePreviewComponent} from './previews/editable/
 import {MaterialTableExampleSelectablePreviewComponent} from './previews/selectable/material-table-example-selectable-preview.component';
 import {MaterialTableExampleSizesPreviewComponent} from './previews/sizes/material-table-example-sizes-preview.component';
 import {MaterialTableExampleStylesPreviewComponent} from './previews/styles/material-table-example-styles-preview.component';
+import {MaterialTableExampleSortablePreviewComponent} from './previews/sortable/material-table-example-sortable-preview.component';
 
 describe(MaterialTableCodeExamplesComponent.name, () => {
 	let component: MaterialTableCodeExamplesComponent;
@@ -35,8 +36,8 @@ describe(MaterialTableCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	test(`that there are 5 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(5);
+	test(`that there are 6 ${CodeExampleComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(6);
 	});
 
 	test(`that there is 1 ${MaterialTableExampleDefaultPreviewComponent.name}`, () => {
@@ -57,5 +58,9 @@ describe(MaterialTableCodeExamplesComponent.name, () => {
 
 	test(`that there is 1 ${MaterialTableExampleStylesPreviewComponent.name}`, () => {
 		expect(fixture.debugElement.queryAll(By.directive(MaterialTableExampleStylesPreviewComponent)).length).toBe(1);
+	});
+
+	test(`that there is 1 ${MaterialTableExampleSortablePreviewComponent.name}`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MaterialTableExampleSortablePreviewComponent)).length).toBe(1);
 	});
 });
