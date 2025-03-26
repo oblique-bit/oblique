@@ -37,6 +37,7 @@ export {
 	ObIExternalLink,
 	ObEExternalLinkIcon
 } from './lib/external-link/external-link.module';
+export {ObDatepickerModule} from './lib/datepicker/ob-datepicker.module';
 export {
 	ObDropZoneComponent,
 	ObEUploadEventType,
