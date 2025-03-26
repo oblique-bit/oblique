@@ -8,6 +8,7 @@ import {MaterialTableExampleStylesPreviewComponent} from './previews/styles/mate
 import {MaterialTableExampleSizesPreviewComponent} from './previews/sizes/material-table-example-sizes-preview.component';
 import {MaterialTableExampleEditablePreviewComponent} from './previews/editable/material-table-example-editable-preview.component';
 import {MaterialTableExampleSelectablePreviewComponent} from './previews/selectable/material-table-example-selectable-preview.component';
+import {MaterialTableExampleSortablePreviewComponent} from './previews/sortable/material-table-example-sortable-preview.component';
 
 @Component({
 	selector: 'app-code-example-material-table',
@@ -67,6 +68,15 @@ export class MaterialTableCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('material-table', 'selectable/material-table-example-selectable-preview.component.html', 'HTML'),
 				this.getSnippet('material-table', 'selectable/material-table-example-selectable-preview.component.ts', 'TS'),
 				this.getSnippet('material-table', 'selectable/material-table-example-selectable-preview.component.scss', 'SCSS')
+			]
+		},
+		{
+			component: MaterialTableExampleSortablePreviewComponent,
+			idParts: ['sortable'],
+			title: 'Sortable',
+			snippets: [
+				this.getSnippet('material-table', 'sortable/material-table-example-sortable-preview.component.html', 'HTML'),
+				this.getSnippet('material-table', 'sortable/material-table-example-sortable-preview.component.ts', 'TS')
 			]
 		}
 	];
