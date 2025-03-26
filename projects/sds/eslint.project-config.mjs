@@ -47,7 +47,8 @@ export default [
 		files: ['projects/sds/**/*.html'],
 
 		rules: {
-			'@angular-eslint/template/prefer-control-flow': 'off'
+			'@angular-eslint/template/prefer-control-flow': 'off',
+			'@angular-eslint/template/prefer-static-string-properties': 'off'
 		}
 	}
 ];
