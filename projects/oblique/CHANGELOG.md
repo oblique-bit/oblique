@@ -1,3 +1,20 @@
+# [13.1.0](https://github.com/oblique-bit/oblique/compare/13.0.3...13.1.0) (2025-03-27)
+
+## Bug Fixes
+
+- **master-layout:** remove shadow on active main navigation item ([ed9e9f0f](https://github.com/oblique-bit/oblique/commit/ed9e9f0fb559c6534ec263108814d5c547b16401))
+- **material:** remove shadow on dialog ([344764be](https://github.com/oblique-bit/oblique/commit/344764bea8e3156e4e820e8a2cf705aec70cebd1))
+- **oblique:** properly format deprecation notices ([cddaea2c](https://github.com/oblique-bit/oblique/commit/cddaea2c62b5f97960cac7844cbdf3b812354529))
+- **service-navigation:** fix race condition ([9e5597b7](https://github.com/oblique-bit/oblique/commit/9e5597b79ee5d15fb79a773f041e84a94489ab5e))
+- **styles:** adapt shadows to match Figma ([fd5c6805](https://github.com/oblique-bit/oblique/commit/fd5c6805a041a122adc421995bbbcf27af7a090c))
+
+## Features
+
+- **input-clear:** only show input-clear if the field has a value ([585cb846](https://github.com/oblique-bit/oblique/commit/585cb84696e26119acfe98859740400f744bae4f))
+- **nav-tree:** deprecate `focusableFragments` ([7530e9cb](https://github.com/oblique-bit/oblique/commit/7530e9cbc683d9b4751ced79561e1b278b06d809))
+- **service-navigation:** rename my-push-notifications to my-email-sms-notifications ([568aa531](https://github.com/oblique-bit/oblique/commit/568aa53100147b04abccd6ea879b2c5122c00c92))
+- **styles:** deprecate `ob-inner-bottom-shadow` mixin ([0421c651](https://github.com/oblique-bit/oblique/commit/0421c651829c838d83b0bba1091fcad9bba6f3e0))
+
 # [13.0.3](https://github.com/oblique-bit/oblique/compare/13.0.2...13.0.3) (2025-03-24)
 
 ## Bug Fixes

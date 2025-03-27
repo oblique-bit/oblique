@@ -1,3 +1,27 @@
+# [13.1.0](https://github.com/oblique-bit/oblique/compare/13.0.3...13.1.0) (2025-03-27)
+
+## Bug Fixes
+
+- **side-navigation:** ensure all special cases are covered for each version ([fa3d9430](https://github.com/oblique-bit/oblique/commit/fa3d943004652362bdde4f24acb5476135ca5d97))
+
+## Features
+
+- **breakpoints:** add documentation for breakpoints ([542d199b](https://github.com/oblique-bit/oblique/commit/542d199bd8f8d3bb52238935928707d97a4db6b3))
+- **cms:** get all ui-ux data ([7a5a424b](https://github.com/oblique-bit/oblique/commit/7a5a424b31b13e778213051a9591d95225eeb9d5))
+- **component-page:** redirect urls that are not valid to the `invalid` page ([5562e214](https://github.com/oblique-bit/oblique/commit/5562e214787291f7a5796cf121a09e6fbae9c500))
+- **invalid-page:** add invalid page ([e16b5a7b](https://github.com/oblique-bit/oblique/commit/e16b5a7bbda6804bb7b95132bb5a34dbc0538208))
+- **material:** add a reset button to the editiable table dialog ([e3e051d7](https://github.com/oblique-bit/oblique/commit/e3e051d709339c133acfd6ff8f52ec2ab6e8ec0d))
+- **material:** use button for `matChipRemove` in chips autocomplete ([17dd63bb](https://github.com/oblique-bit/oblique/commit/17dd63bbd2f4663b482e8b02b3c6996b4978c328))
+- **nav-tree:** change service example to stackblitz link ([604a6339](https://github.com/oblique-bit/oblique/commit/604a6339fe920a4193c12d3beaa57caf0b7fc7a2))
+- **nav-tree:** change expand/collapse example to stackblitz link ([769d1ee3](https://github.com/oblique-bit/oblique/commit/769d1ee39271bd45195b12627696085d3edc542b))
+- **nav-tree:** change filter example to stackblitz link ([c6d28cb5](https://github.com/oblique-bit/oblique/commit/c6d28cb5eb596cf2f0aa9440ea41ca251854574b))
+- **nav-tree:** change disabled example to stackblitz link ([513bba6e](https://github.com/oblique-bit/oblique/commit/513bba6ebde9750e344e3bfe2655842f226461d1))
+- **nav-tree:** change default example to stackblitz link ([0dc50d98](https://github.com/oblique-bit/oblique/commit/0dc50d985bf4dbc14396e37a32e2e87c00a33e4d))
+- **side-navigation:** redirect urls that are not valid to the `invalid` page ([69912584](https://github.com/oblique-bit/oblique/commit/6991258418a18868974832c08aafd0499548e800))
+- **tabbed-page:** redirect urls that are not valid to the `invalid` page ([73ab1a40](https://github.com/oblique-bit/oblique/commit/73ab1a40507276a10df6131a26a9e0bfa7bb5021))
+- **tabbed-page:** create a custom component for UI/UX page ([bba42bd7](https://github.com/oblique-bit/oblique/commit/bba42bd7e089a7b7fe6c27d918b5dcf5cd6f0f80))
+- **text-page:** redirect urls that are not valid to the `invalid` page ([9f70f0e9](https://github.com/oblique-bit/oblique/commit/9f70f0e9367fcebf5b540c8e1179d097f46e04b6))
+
 # [13.0.3](https://github.com/oblique-bit/oblique/compare/13.0.2...13.0.3) (2025-03-24)
 
 ## Bug Fixes
