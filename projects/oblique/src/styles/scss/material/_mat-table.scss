@@ -24,6 +24,14 @@
 		.mat-sort-header-arrow {
 			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>ArrowUp</title><polygon points="21.035 6.351 12 1.134 2.965 6.351 3.715 7.65 11.25 3.299 11.25 22 12.75 22 12.75 3.299 20.285 7.65 21.035 6.351" fill="currentColor"/></svg>');
 		}
+
+		.cdk-keyboard-focused,
+		.cdk-program-focused,
+		&:hover {
+			.mat-sort-header-arrow {
+				opacity: 1;
+			}
+		}
 	}
 
 	.mat-sort-header-arrow svg {
