@@ -6,12 +6,12 @@ import {Observable, forkJoin, of} from 'rxjs';
 import {DeepString, ObITranslationFile} from './multi-translate-loader.model';
 
 /**
- * Deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
+ * @deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
  */
 export const TRANSLATION_FILES = new InjectionToken('TRANSLATION_FILES');
 
 /**
- * Deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
+ * @deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
  */
 export class ObMultiTranslateLoader implements TranslateLoader {
 	constructor(

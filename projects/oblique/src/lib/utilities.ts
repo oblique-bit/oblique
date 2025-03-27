@@ -37,7 +37,7 @@ export function windowProvider(doc: Document): Window {
 }
 
 /**
- * Deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
+ * @deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
  */
 export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[]): ObMultiTranslateLoader {
 	return new ObMultiTranslateLoader(http, [
@@ -91,7 +91,7 @@ export function tabsOptionsProvider(config?: ObIMaterialConfig, materialConfig?:
 }
 
 /**
- * Deprecated with Oblique 13.0.0, use the `materialConfig` parameter of the `obProvideObliqueProviders` function instead
+ * @deprecated with Oblique 13.0.0, use the `materialConfig` parameter of the `obProvideObliqueProviders` function instead
  */
 export const OB_MATERIAL_CONFIG = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
 // this token is only needed as long as OB_MATERIAL_CONFIG is supported because useFactory only accepts injection tokens

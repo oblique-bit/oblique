@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, HostListener, Output, ViewChild, inject} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, NavigationEnd, NavigationExtras, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
@@ -38,7 +38,7 @@ import {VersionService} from '../shared/version/version.service';
 		MatPrefix
 	]
 })
-export class SideNavigationComponent {
+export class SideNavigationComponent implements OnInit {
 	@Output() readonly showMobileNavigation = new EventEmitter<boolean>();
 	displayMobileNavigation = false;
 	readonly componentId = 'side-navigation';
@@ -62,6 +62,11 @@ export class SideNavigationComponent {
 		this.selectedSlug$ = this.prepareSelectedSlug();
 		this.filteredAccordions$ = this.prepareAccordions();
 		this.redirectOnVersionChange();
+	}
+
+	ngOnInit(): void {
+		// this ensures the validity of the page will be tested on initialization
+		this.version$.next(13);
 	}
 
 	updateVersion(version?: number): void {
@@ -183,6 +188,7 @@ export class SideNavigationComponent {
 	private getCurrentSlug(): string {
 		return this.router.url
 			.replace(/[#|?].*/, '') // remove queryParams & fragment
+			.replace(/\/(?:api|ui_ux|examples)/, '')
 			.split('/')
 			.pop();
 	}
@@ -206,21 +212,75 @@ export class SideNavigationComponent {
 	}
 
 	private getNewSlug(version: number, slug: string): string | undefined {
-		if (slug === 'welcome-10' && version !== 10) {
-			return 'welcome';
-		}
-
 		switch (version) {
 			case 10:
 				return 'welcome-10';
 			case 11:
-				if (slug === 'getting-started-as-a-designer') return 'welcome';
-				return ['master-layout-12', 'popover-12'].includes(slug) ? slug.replace('-12', '') : undefined;
+				return this.redirectVersion11(slug);
 			case 12:
-				if (slug === 'language') return 'welcome';
-				return ['master-layout', 'popover'].includes(slug) ? `${slug}-12` : undefined;
+				return this.redirectVersion12(slug);
 			case 13:
-				return ['master-layout', 'master-layout-12'].includes(slug) ? `${slug}-13` : undefined;
+				return this.redirectVersion13(slug);
+			default:
+				return undefined;
+		}
+	}
+
+	private redirectVersion11(slug: string): string | undefined {
+		switch (slug) {
+			case 'welcome-10':
+				return 'welcome';
+			case 'configuration-12':
+				return 'configuration';
+			case 'master-layout-12':
+			case 'master-layout-13':
+				return 'master-layout';
+			case 'popover-12':
+				return 'popover';
+			case 'shadow':
+			case 'getting-started-figma':
+			case 'getting-started-as-a-designer':
+				return 'invalid';
+			default:
+				return undefined;
+		}
+	}
+
+	private redirectVersion12(slug: string): string | undefined {
+		switch (slug) {
+			case 'welcome-10':
+				return 'welcome';
+			case 'configuration':
+				return 'configuration-12';
+			case 'master-layout':
+			case 'master-layout-13':
+				return 'master-layout-12';
+			case 'popover':
+				return 'popover-12';
+			case 'language':
+			case 'datepicker':
+			case 'getting-started-figma':
+			case 'getting-started-as-a-designer':
+				return 'invalid';
+			default:
+				return undefined;
+		}
+	}
+
+	private redirectVersion13(slug: string): string | undefined {
+		switch (slug) {
+			case 'welcome-10':
+				return 'welcome';
+			case 'configuration':
+				return 'configuration-12';
+			case 'master-layout':
+			case 'master-layout-12':
+				return 'master-layout-13';
+			case 'popover':
+				return 'popover-12';
+			case 'language':
+			case 'datepicker':
+				return 'invalid';
 			default:
 				return undefined;
 		}

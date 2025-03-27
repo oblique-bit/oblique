@@ -95,7 +95,7 @@ export class ObServiceNavigationService {
 					{url: `${base}/profile/permissions`, label: 'i18n.oblique.service-navigation.profile.my-permissions', isInternalLink: true},
 					{
 						url: `${base}/profile/push-notifications`,
-						label: 'i18n.oblique.service-navigation.profile.my-push-notifications',
+						label: 'i18n.oblique.service-navigation.profile.my-email-sms-notifications',
 						isInternalLink: true
 					},
 					{

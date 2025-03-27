@@ -10,6 +10,7 @@ export class ObServiceNavigationTimeoutRedirectorService {
 	public readonly logoutCookieName = 'eportal-logout';
 	public readonly logoutTrigger$: Observable<string>;
 	private emitOnlyOnceFlag = true;
+	private isLogoutClicked = false;
 	private readonly window: Window = inject(WINDOW);
 	private readonly cookieService = inject(ObServiceNavigationTimeoutCookieService);
 	private readonly logoutTriggeredSubject = new ReplaySubject<string>(1);
@@ -18,7 +19,12 @@ export class ObServiceNavigationTimeoutRedirectorService {
 		this.logoutTrigger$ = this.logoutTriggeredSubject.asObservable();
 	}
 
+	public shouldRedirect(): boolean {
+		return !this.isLogoutClicked;
+	}
+
 	public logout(): void {
+		this.isLogoutClicked = true;
 		this.cookieService.setShortCookie(this.logoutCookieName, this.window.location.href);
 
 		this.redirectOrEmit(this.logoutUrl);

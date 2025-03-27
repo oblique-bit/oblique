@@ -12,17 +12,18 @@ import {TabComponent} from '../shared/tabs/tab/tab.component';
 import {TabsComponent} from '../shared/tabs/tabs.component';
 import {CommonModule, Location} from '@angular/common';
 import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
-import {CmsData, TabbedPageComplete} from '../cms/models/tabbed-page.model';
+import {CmsData, TabbedPageComplete, UiUxData, UiUxEntry} from '../cms/models/tabbed-page.model';
 import {TabNameMapper} from './utils/tab-name-mapper';
 import {MatChipsModule} from '@angular/material/chips';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {VersionService} from '../shared/version/version.service';
+import {UiUxComponent} from '../ui-ux/ui-ux.component';
 
 @Component({
 	selector: 'app-tabbed-page',
 	templateUrl: './tabbed-page.component.html',
 	styleUrls: ['./tabbed-page.component.scss'],
-	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe, MatChipsModule],
+	imports: [TabsComponent, TabComponent, UiUxComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe, MatChipsModule],
 	host: {class: 'content-page'},
 	hostDirectives: [CdkScrollable]
 })
@@ -41,7 +42,7 @@ export class TabbedPageComponent {
 	constructor() {
 		const [validPageId$, invalidPageId$] = this.buildPageIdObservables();
 		invalidPageId$.pipe(takeUntilDestroyed()).subscribe(() => {
-			void this.router.navigate(['introductions', 'welcome']);
+			void this.router.navigate(['..', 'invalid']);
 		});
 
 		this.cmsData$ = this.buildCmsDataObservable(validPageId$);
@@ -99,7 +100,7 @@ export class TabbedPageComponent {
 		return {
 			title: cmsData.name,
 			api: baseUrl ? cmsData.api.replace('https://v17.material.angular.io/', baseUrl) : cmsData.api,
-			uiUx: cmsData.ui_ux,
+			uiUx: this.buildUiUxData(cmsData),
 			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug),
 			tab: this.getSelectedTab(),
 			deprecation: cmsData.deprecation
@@ -120,5 +121,40 @@ export class TabbedPageComponent {
 	private toggleBetweenNullAndUndefined(): null | undefined {
 		this.isNull = !this.isNull;
 		return this.isNull ? null : undefined;
+	}
+
+	private buildUiUxData(cmsData: TabbedPageComplete): UiUxData {
+		const data: UiUxData = {};
+		// we take every field that we need and map the value from Directus to it
+		['purpose', 'additionalInfo', 'generalRules', 'do', 'doNot', 'relatedLinks', 'designFileLatest', 'designFilePrevious']
+			.map(property => ({property, cmsProperty: this.mapCMSProperty(property)}))
+			.map(({property, cmsProperty}) => ({property, cmsUiUxData: cmsData[cmsProperty] as string | UiUxEntry[]}))
+			.filter(({cmsUiUxData}) => cmsUiUxData?.length) // Directus provides all fields, even empty ones
+			.forEach(({property, cmsUiUxData}) => {
+				// Directus provides either a String, which requires no further processing, or a UiUxEntry, where the value needs to be extracted
+				// and cleaned up. UiUxEntry will be used as list elements.
+				data[property] = Array.isArray(cmsUiUxData) ? this.processListItems(cmsUiUxData) : cmsUiUxData;
+			});
+
+		return Object.keys(data).length === 0 ? undefined : data;
+	}
+
+	private processListItems(cmsUiUxData: UiUxEntry[]): string[] {
+		// Directus wraps each entry in a paragraph tag, which needs to be removed for items that will be rendered in an HTML list.
+		// Directus includes unnecessary data that cannot be excluded in advance; only the `text` property is needed
+		return cmsUiUxData.map((item: UiUxEntry) => this.removeParagraphTags(item.text));
+	}
+
+	private mapCMSProperty(property: string): string {
+		// Directus naming convention is not compatible with Eslint, which means we need to map `ui_ux_snake_case` to `camelCase`.
+		return `ui_ux_${this.camelCaseToSnakeCase(property)}`;
+	}
+
+	private camelCaseToSnakeCase(item: string): string {
+		return item.replace(/[A-Z]/g, match => `_${match.toLowerCase()}`);
+	}
+
+	private removeParagraphTags(item: string): string {
+		return item.replace(/<\/?p>/g, '');
 	}
 }

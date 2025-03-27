@@ -28,7 +28,7 @@ export class TextPageComponent implements AfterViewChecked {
 	constructor() {
 		const [validPageId$, invalidPageId$] = this.buildPageIdObservables();
 		invalidPageId$.pipe(takeUntilDestroyed()).subscribe(() => {
-			void this.router.navigate(['introductions', 'welcome']);
+			void this.router.navigate(['..', 'invalid']);
 		});
 
 		this.selectedContent$ = this.buildSelectedContentObservable(validPageId$);

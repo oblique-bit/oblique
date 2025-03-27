@@ -1,7 +1,9 @@
-import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, inject} from '@angular/core';
+import {DestroyRef, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, inject} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
 import {AbstractControl, NgModel} from '@angular/forms';
 import {WINDOW} from '../utilities';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {fromEvent} from 'rxjs';
 
 @Directive({
 	selector: '[obInputClear]',
@@ -20,19 +22,18 @@ export class ObInputClearDirective implements OnInit {
 	private readonly element = inject(ElementRef);
 	private readonly validControlTypes = [AbstractControl, HTMLInputElement, NgModel];
 	private readonly window: Window = inject(WINDOW);
+	private readonly destroyRef = inject(DestroyRef);
 
 	constructor() {
 		// ensure matInput got resolved beforehand
 		this.window.setTimeout(() => {
-			const parent = this.element.nativeElement.parentElement;
-			if (parent) {
-				parent.classList.add('ob-text-control');
-			}
+			this.addParentClass('ob-text-control');
 		});
 	}
 
 	ngOnInit(): void {
 		this.checkControlType();
+		this.subscribeToInputValueChange();
 	}
 
 	@HostListener('click', ['$event'])
@@ -57,6 +58,26 @@ export class ObInputClearDirective implements OnInit {
 	private clearDatePicker(): void {
 		if (this.datePickerRef) {
 			this.datePickerRef.select(undefined);
+		}
+	}
+
+	private subscribeToInputValueChange(): void {
+		if (this.control instanceof AbstractControl) {
+			this.control.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(value => {
+				this.handleParentClass(value);
+			});
+		}
+
+		if (this.control instanceof NgModel) {
+			this.control.control.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(value => {
+				this.handleParentClass(value);
+			});
+		}
+
+		if (this.control instanceof HTMLInputElement) {
+			fromEvent(this.control, 'keyup')
+				.pipe(takeUntilDestroyed(this.destroyRef))
+				.subscribe(() => this.handleParentClass(this.control.value));
 		}
 	}
 
@@ -93,6 +114,28 @@ export class ObInputClearDirective implements OnInit {
 	private setFocus(): void {
 		if (this.control instanceof HTMLInputElement && this.focusOnClear) {
 			this.control.focus();
+		}
+	}
+
+	private addParentClass(cssClassName: string): void {
+		const parent = this.element.nativeElement.parentElement;
+		if (parent) {
+			parent.classList.add(cssClassName);
+		}
+	}
+
+	private removeParentClass(cssClassName: string): void {
+		const parent = this.element.nativeElement.parentElement;
+		if (parent) {
+			parent.classList.remove(cssClassName);
+		}
+	}
+
+	private handleParentClass(value: string): void {
+		if (value) {
+			this.addParentClass('ob-text-control-clear-has-value');
+		} else {
+			this.removeParentClass('ob-text-control-clear-has-value');
 		}
 	}
 }

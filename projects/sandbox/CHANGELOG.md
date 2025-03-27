@@ -1,3 +1,14 @@
+# [13.1.0](https://github.com/oblique-bit/oblique/compare/13.0.3...13.1.0) (2025-03-27)
+
+## Bug Fixes
+
+- **master-layout:** add tree items routes to the whitelist of focusable fragments ([ce6f5a69](https://github.com/oblique-bit/oblique/commit/ce6f5a69f596411067213682f323210761292343))
+- **nav-tree:** add elements meant to be focused by the nav-tree links ([27a12ee8](https://github.com/oblique-bit/oblique/commit/27a12ee87aa6e2d55713c0733ccdb10f77b52a71))
+
+## Features
+
+- **material:** use button for `matChipRemove` in chips autocomplete ([731e7915](https://github.com/oblique-bit/oblique/commit/731e7915c18e4636fcb862a20877d9467cc6a743))
+
 # [13.0.2](https://github.com/oblique-bit/oblique/compare/13.0.1...13.0.2) (2025-03-17)
 
 ## Bug Fixes

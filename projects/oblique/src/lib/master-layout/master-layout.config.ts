@@ -17,6 +17,9 @@ export class ObMasterLayoutConfig {
 	/**
 	 * Elements that will receive focus when provided as fragment
 	 */
+	/**
+	 *  @deprecated since Oblique 13. It will be removed in the next major version.
+	 */
 	focusableFragments = ['content', 'navigation'];
 
 	/**

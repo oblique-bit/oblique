@@ -1,3 +1,13 @@
+# [13.1.0](https://github.com/oblique-bit/oblique/compare/13.0.3...13.1.0) (2025-03-27)
+
+## Bug Fixes
+
+- **service-navigation:** fix race condition ([9e5597b7](https://github.com/oblique-bit/oblique/commit/9e5597b79ee5d15fb79a773f041e84a94489ab5e))
+
+## Features
+
+- **service-navigation:** rename my-push-notifications to my-email-sms-notifications ([568aa531](https://github.com/oblique-bit/oblique/commit/568aa53100147b04abccd6ea879b2c5122c00c92))
+
 # [13.0.0-rc.5](https://github.com/oblique-bit/oblique/compare/13.0.0-rc.1...13.0.0-rc.5) (2025-02-18)
 
 ## Bug Fixes

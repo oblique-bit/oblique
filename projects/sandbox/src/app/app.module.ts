@@ -127,7 +127,7 @@ export class AppModule {
 		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
 		config.locale.locales = ['en-us', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
-		config.focusableFragments = [...config.focusableFragments, 'link-to-blick-ch', 'acceptFiles'];
+		config.focusableFragments = [...config.focusableFragments, 'link-to-blick-ch', 'acceptFiles', 'alpha', 'beta', 'gamma'];
 		this.configureServiceSNavigation(config);
 	}
 

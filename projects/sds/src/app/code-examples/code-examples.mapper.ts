@@ -4,6 +4,7 @@ import {AutocompleteCodeExamplesComponent} from './code-examples/autocomplete/au
 import {BadgeCodeExamplesComponent} from './code-examples/badge/badge-code-examples.component';
 import {BannerCodeExamplesComponent} from './code-examples/banner/banner-code-examples.component';
 import {BreadcrumbCodeExamplesComponent} from './code-examples/breadcrumb/breadcrumb-code-examples.component';
+import {BreakpointsCodeExamplesComponent} from './code-examples/breakpoints/breakpoints-code-examples.component';
 import {ButtonCodeExamplesComponent} from './code-examples/button/button-code-examples.component';
 import {CardCodeExamplesComponent} from './code-examples/card/card-code-examples.component';
 import {ChipsCodeExamplesComponent} from './code-examples/chips/chips-code-examples.component';
@@ -66,6 +67,7 @@ export class CodeExamplesMapper {
 		badge: BadgeCodeExamplesComponent,
 		banner: BannerCodeExamplesComponent,
 		breadcrumb: BreadcrumbCodeExamplesComponent,
+		breakpoints: BreakpointsCodeExamplesComponent,
 		button: ButtonCodeExamplesComponent,
 		card: CardCodeExamplesComponent,
 		chips: ChipsCodeExamplesComponent,

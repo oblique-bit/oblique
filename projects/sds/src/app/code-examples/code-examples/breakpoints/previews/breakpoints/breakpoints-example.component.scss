@@ -1,0 +1,14 @@
+@use "@oblique/oblique/src/styles/scss/core/variables";
+@use "@oblique/oblique/src/styles/scss/core/mixins/layout";
+
+section {
+	padding: variables.$ob-spacing-lg;
+	border-radius: 4px;
+	width: 100%;
+	text-align: center;
+
+	p {
+		margin: 0;
+		color: white;
+	}
+}

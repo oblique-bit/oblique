@@ -7,6 +7,20 @@
 	gap: variables.$ob-spacing-default;
 }
 
+.focusable-elements {
+	margin-bottom: variables.$ob-spacing-lg;
+
+	button {
+		display: block;
+	}
+
+	h3,
+	button,
+	input {
+		margin-bottom: variables.$ob-spacing-md;
+	}
+}
+
 mat-slide-toggle + mat-slide-toggle {
 	margin-top: variables.$ob-spacing-default;
 }

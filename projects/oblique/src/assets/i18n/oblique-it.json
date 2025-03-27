@@ -149,7 +149,7 @@
   "i18n.oblique.service-navigation.profile.tooltip": "Cliccare per aprire il profilo utente",
   "i18n.oblique.service-navigation.profile.my-profile": "Il mio profilo",
   "i18n.oblique.service-navigation.profile.my-permissions": "Le mie autorizzazioni",
-  "i18n.oblique.service-navigation.profile.my-push-notifications": "Le mie notifiche push",
+  "i18n.oblique.service-navigation.profile.my-email-sms-notifications": "Le mie notifiche Email / SMS",
   "i18n.oblique.service-navigation.profile.my-business-partnerships": "Le mie collaborazioni commerciali",
   "i18n.oblique.service-navigation.section.tel.aria-label": "Collegamento telefonico: {{ phoneNumber }}",
   "i18n.oblique.accessibility-statement.link": "Accessibilità",
