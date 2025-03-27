@@ -1,14 +1,14 @@
 import {Component, OnInit, inject} from '@angular/core';
-import {MatDatepickerInputEvent, MatDatepickerModule} from '@angular/material/datepicker';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
-import {ObErrorMessagesModule} from '@oblique/oblique';
+import {ObDatepickerModule, ObErrorMessagesModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-datepicker',
 	templateUrl: './datepicker.component.html',
-	imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, ReactiveFormsModule, ObErrorMessagesModule]
+	imports: [MatFormFieldModule, MatInputModule, ObDatepickerModule, ReactiveFormsModule, ObErrorMessagesModule]
 })
 export class DatepickerComponent implements OnInit {
 	untypedForm: UntypedFormGroup;
