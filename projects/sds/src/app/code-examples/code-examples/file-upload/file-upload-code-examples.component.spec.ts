@@ -40,19 +40,19 @@ describe(FileUploadCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	it(`should have 4 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(5);
+	it(`should have 6 ${CodeExampleComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(6);
 	});
 
-	it(`should have 7 ${ObFileUploadComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(ObFileUploadComponent)).length).toBe(9);
+	it(`should have 10 ${ObFileUploadComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(ObFileUploadComponent)).length).toBe(10);
 	});
 
-	it(`should have 2 ${ObFileInfoComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(ObFileInfoComponent)).length).toBe(2);
+	it(`should have 3 ${ObFileInfoComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(ObFileInfoComponent)).length).toBe(3);
 	});
 
-	it(`should have 8 ${ObDropZoneComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(ObDropZoneComponent)).length).toBe(10);
+	it(`should have 11 ${ObDropZoneComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(ObDropZoneComponent)).length).toBe(11);
 	});
 });
