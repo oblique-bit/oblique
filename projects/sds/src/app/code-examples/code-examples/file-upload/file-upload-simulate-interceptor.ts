@@ -7,6 +7,7 @@ import {BehaviorSubject, Observable, Subject, combineLatest, interval, of} from 
 const mockUploadURL = 'mockUploadURL';
 const mockGetUploadedFilesURL = 'mockGetUploadedFilesURL';
 const mockDeleteURL = 'mockDeleteURL';
+const mockCustomDeleteURL = 'mockCustomDeleteURL';
 
 @Injectable()
 export class UploadInterceptor implements HttpInterceptor, OnDestroy {
@@ -37,6 +38,8 @@ export class UploadInterceptor implements HttpInterceptor, OnDestroy {
 				return this.mockGetUploadedFiles(idx);
 			case mockDeleteURL:
 				return this.mockDelete(JSON.parse(atob(urlParts[2])) as string[], idx);
+			case mockCustomDeleteURL:
+				return this.mockDelete(urlParts[2].split(':'), idx);
 			default:
 				return next.handle(req);
 		}
@@ -186,7 +189,8 @@ export const mockUrls: UploadGetUploadedFilesDelete[] = [...Array(4).keys()].map
 	return {
 		upload: `${mockUploadURL}/${index}`,
 		getUploadedFiles: `${mockGetUploadedFilesURL}/${index}`,
-		delete: `${mockDeleteURL}/${index}`
+		delete: `${mockDeleteURL}/${index}`,
+		customDelete: `${mockCustomDeleteURL}/${index}`
 	};
 });
 
@@ -194,6 +198,7 @@ interface UploadGetUploadedFilesDelete {
 	upload: string;
 	getUploadedFiles: string;
 	delete: string;
+	customDelete: string;
 }
 
 interface Request {
