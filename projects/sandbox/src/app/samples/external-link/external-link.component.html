@@ -19,7 +19,7 @@
 				<tr>
 					<th scope="row">External link</th>
 					<td><a href="http://www.google.ch" [isExternalLink]="isExternal" [icon]="iconPosition">Link</a></td>
-					<td><a href="http://www.google.ch" [isExternalLink]="'auto'" [icon]="iconPosition">Link</a></td>
+					<td><a href="http://www.google.ch" isExternalLink="auto" [icon]="iconPosition">Link</a></td>
 					<td><a href="http://www.google.ch" [isExternalLink]="true" [icon]="iconPosition">Link</a></td>
 					<td><a href="http://www.google.ch" [isExternalLink]="false" [icon]="iconPosition">Link</a></td>
 					<td><a href="http://www.google.ch" [icon]="iconPosition">Link</a></td>
@@ -27,23 +27,23 @@
 				<tr>
 					<th scope="row">Internal link</th>
 					<td><a href="http://localhost:3001" [isExternalLink]="isExternal" [icon]="iconPosition">Link</a></td>
-					<td><a href="http://localhost:3001" [isExternalLink]="'auto'" [icon]="iconPosition">Link</a></td>
+					<td><a href="http://localhost:3001" isExternalLink="auto" [icon]="iconPosition">Link</a></td>
 					<td><a href="http://localhost:3001" [isExternalLink]="true" [icon]="iconPosition">Link</a></td>
 					<td><a href="http://localhost:3001" [isExternalLink]="false" [icon]="iconPosition">Link</a></td>
 					<td><a href="http://localhost:3001" [icon]="iconPosition">Link</a></td>
 				</tr>
 				<tr>
 					<th scope="row">Router link</th>
-					<td><a [routerLink]="'/'" [isExternalLink]="isExternal" [icon]="iconPosition">Link</a></td>
-					<td><a [routerLink]="'/'" [isExternalLink]="'auto'" [icon]="iconPosition">Link</a></td>
-					<td><a [routerLink]="'/'" [isExternalLink]="true" [icon]="iconPosition">Link</a></td>
-					<td><a [routerLink]="'/'" [isExternalLink]="false" [icon]="iconPosition">Link</a></td>
-					<td><a [routerLink]="'/'" [icon]="iconPosition">Link</a></td>
+					<td><a routerLink="/" [isExternalLink]="isExternal" [icon]="iconPosition">Link</a></td>
+					<td><a routerLink="/" isExternalLink="auto" [icon]="iconPosition">Link</a></td>
+					<td><a routerLink="/" [isExternalLink]="true" [icon]="iconPosition">Link</a></td>
+					<td><a routerLink="/" [isExternalLink]="false" [icon]="iconPosition">Link</a></td>
+					<td><a routerLink="/" [icon]="iconPosition">Link</a></td>
 				</tr>
 				<tr>
 					<th scope="row">Link without href</th>
 					<td><a [isExternalLink]="isExternal" [icon]="iconPosition">Link</a></td>
-					<td><a [isExternalLink]="'auto'" [icon]="iconPosition">Link</a></td>
+					<td><a isExternalLink="auto" [icon]="iconPosition">Link</a></td>
 					<td><a [isExternalLink]="true" [icon]="iconPosition">Link</a></td>
 					<td><a [isExternalLink]="false" [icon]="iconPosition">Link</a></td>
 					<td><a [icon]="iconPosition">Link</a></td>

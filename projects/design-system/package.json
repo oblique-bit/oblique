@@ -17,7 +17,7 @@
     "@ngx-translate/core": "^16.0.0"
   },
   "devDependencies": {
-    "ng-packagr": "^19.0.1"
+    "ng-packagr": "^19.2.0"
   },
   "sideEffects": false
 }

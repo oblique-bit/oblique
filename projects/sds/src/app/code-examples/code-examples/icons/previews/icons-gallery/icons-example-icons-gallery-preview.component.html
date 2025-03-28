@@ -13,11 +13,11 @@
 				mat-icon-button
 				type="button"
 				obButton="tertiary"
+				placement="top"
+				matTooltipPosition="above"
 				[matTooltip]="'i18n.icons.details.tooltip' | translate: { icon }"
 				[obPopover]="iconDetails"
 				[toggleHandle]="toggleType"
-				[placement]="'top'"
-				[matTooltipPosition]="'above'"
 				[appendToBody]="true"
 			>
 				<mat-icon svgIcon="info-circle" />
@@ -26,8 +26,8 @@
 				mat-icon-button
 				type="button"
 				obButton="tertiary"
+				matTooltipPosition="above"
 				[matTooltip]="'i18n.icons.copy-icon-name' | translate"
-				[matTooltipPosition]="'above'"
 				(click)="copy(icon)"
 			>
 				<mat-icon svgIcon="duplicate" />
@@ -46,8 +46,8 @@
 				type="button"
 				mat-button
 				obButton="tertiary"
+				matTooltipPosition="right"
 				[matTooltip]="'i18n.icons.copy-icon-name' | translate"
-				[matTooltipPosition]="'right'"
 				(click)="copy(icon)"
 			>
 				{{ icon }}

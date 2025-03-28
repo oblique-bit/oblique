@@ -1,9 +1,9 @@
 <!--This if is a workaround for an Angular bug, see the TS file for more information -->
 @if (show) {
 	<ob-autocomplete
+		optionIconPosition="start"
 		[autocompleteOptions]="optionList"
 		[formControl]="formControl"
-		[optionIconPosition]="'start'"
 		(selectedOptionChange)="showSelection($event)"
 	/>
 	<p>selectedOption: {{ selectedOption | json }}</p>
