@@ -15,6 +15,7 @@ export class FileUploadSampleComponent {
 	maxFileAmount = 0;
 	multipleFile = true;
 	singleRequest = true;
+	toggleCustomMapForDelete = false;
 	cancelConfirmation = true;
 	acceptFilesOptions = [
 		['*'],
@@ -28,6 +29,8 @@ export class FileUploadSampleComponent {
 	constructor() {
 		this.setUploadURL();
 	}
+
+	customMapForDelete = (files: ObIFileDescription[]): string => files.map((file, index) => index).join(':');
 
 	setUploadURL(): void {
 		this.uploadUrl = this.singleRequest ? 'http://localhost:8080/multi-upload' : 'http://localhost:8080/upload';
