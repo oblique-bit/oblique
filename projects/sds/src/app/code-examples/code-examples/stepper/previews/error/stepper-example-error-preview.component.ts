@@ -7,11 +7,21 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatStepperModule} from '@angular/material/stepper';
 import {ObButtonModule} from '@oblique/oblique';
+import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-stepper-example-error-preview',
 	templateUrl: './stepper-example-error-preview.component.html',
-	imports: [MatFormFieldModule, MatButtonModule, MatIconModule, MatInputModule, MatStepperModule, ObButtonModule, ReactiveFormsModule],
+	imports: [
+		MatFormFieldModule,
+		MatButtonModule,
+		MatIconModule,
+		MatInputModule,
+		MatStepperModule,
+		ObButtonModule,
+		ReactiveFormsModule,
+		TranslateModule
+	],
 	providers: [
 		{
 			provide: STEPPER_GLOBAL_OPTIONS,
