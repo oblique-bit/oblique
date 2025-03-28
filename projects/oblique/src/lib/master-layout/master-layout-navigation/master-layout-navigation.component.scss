@@ -115,7 +115,7 @@
 				transform variables.$ob-duration-default;
 
 			.ob-layout-expanded & {
-				inset: 100% auto auto -1 * variables.$ob-spacing-md;
+				inset: 100% auto auto auto;
 				width: variables.$ob-navigation-sub-menu-width;
 				max-height: 60vh;
 				background-color: variables.$ob-white;
@@ -289,7 +289,7 @@
 
 				&:nth-of-type(n + 6).ob-expandable .ob-sub-menu {
 					left: unset;
-					right: -1 * variables.$ob-spacing-md;
+					right: 0;
 				}
 
 				&:last-of-type.ob-expandable .ob-sub-menu {
