@@ -2,6 +2,7 @@
 <mat-horizontal-stepper #stepper [linear]="true">
 	<ng-template matStepperIcon="edit">
 		<mat-icon svgIcon="pen" />
+		<span class="cdk-visually-hidden">{{ "i18n.stepper.editable.label" | translate }}</span>
 	</ng-template>
 
 	<ng-template matStepperIcon="error">
@@ -10,6 +11,7 @@
 
 	<ng-template matStepperIcon="done">
 		<mat-icon svgIcon="checkmark" />
+		<span class="cdk-visually-hidden">{{ "i18n.stepper.completed.label" | translate }}</span>
 	</ng-template>
 
 	<mat-step [stepControl]="firstFormGroup">
@@ -23,11 +25,11 @@
 			</div>
 		</form>
 	</mat-step>
-	<mat-step [stepControl]="secondFormGroup">
+	<mat-step optional [stepControl]="secondFormGroup">
 		<form [formGroup]="secondFormGroup">
 			<ng-template matStepLabel>Fill out your address</ng-template>
 			<mat-form-field>
-				<input matInput placeholder="Address" formControlName="secondCtrl" required />
+				<input matInput placeholder="Address" formControlName="secondCtrl" />
 			</mat-form-field>
 			<div class="actions">
 				<button type="button" mat-button obButton="primary" matStepperPrevious>Back</button>

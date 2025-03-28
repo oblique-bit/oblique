@@ -6,12 +6,22 @@ import {ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators} f
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-stepper-example-default-preview',
 	templateUrl: './stepper-example-default-preview.component.html',
 	styleUrls: ['./stepper-example-default-preview.component.scss'],
-	imports: [MatFormFieldModule, MatButtonModule, MatIconModule, MatInputModule, MatStepperModule, ObButtonModule, ReactiveFormsModule]
+	imports: [
+		MatFormFieldModule,
+		MatButtonModule,
+		MatIconModule,
+		MatInputModule,
+		MatStepperModule,
+		ObButtonModule,
+		ReactiveFormsModule,
+		TranslateModule
+	]
 })
 export class StepperExampleDefaultPreviewComponent implements OnInit {
 	firstFormGroup: UntypedFormGroup;
