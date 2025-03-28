@@ -1,4 +1,7 @@
 import {Component, OnInit, inject} from '@angular/core';
+import {NgOptimizedImage} from '@angular/common';
+import {ObButtonDirective} from '@oblique/oblique';
+import {MatButtonModule} from '@angular/material/button';
 import {CollectorService} from '../../shared/collector/collector.service';
 import {FeedbackFormComponent} from '../feedback-form/feedback-form.component';
 
@@ -6,6 +9,7 @@ import {FeedbackFormComponent} from '../feedback-form/feedback-form.component';
 	selector: 'feedback-button',
 	standalone: true,
 	providers: [CollectorService],
+	imports: [MatButtonModule, ObButtonDirective, NgOptimizedImage],
 	templateUrl: './feedback-button.component.html',
 	styleUrls: ['./feedback-button.component.scss']
 })
