@@ -31,6 +31,7 @@ import {ObEIcon} from '../../../oblique/src/lib/icon/icon.model';
 import {ObButtonModule} from '../../../oblique/src/lib/button/button.module';
 import {TranslationsService} from './translations-service';
 import {ObICustomButton, ObILink} from './service-navigation-web-component.model';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
 	selector: 'ob-service-navigation-web-component',
@@ -42,7 +43,7 @@ import {ObICustomButton, ObILink} from './service-navigation-web-component.model
 		'../../../oblique/src/styles/scss/core/components/_external-link.scss'
 	],
 	encapsulation: ViewEncapsulation.None,
-	imports: [ObServiceNavigationModule, NgIf, MatButtonModule, MatIconModule, NgFor, MatBadgeModule, ObButtonModule],
+	imports: [ObServiceNavigationModule, NgIf, MatButtonModule, MatTooltipModule, MatIconModule, NgFor, MatBadgeModule, ObButtonModule],
 	providers: [TranslationsService],
 	host: {'ob-version': appVersion}
 })

@@ -17,4 +17,5 @@ export interface ObILink {
 export interface ObICustomButton {
 	obliqueIconName: ObEIcon;
 	badge: string;
+	tooltip?: string;
 }
