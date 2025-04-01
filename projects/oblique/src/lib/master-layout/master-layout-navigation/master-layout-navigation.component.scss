@@ -118,6 +118,7 @@
 				inset: 100% auto auto auto;
 				width: variables.$ob-navigation-sub-menu-width;
 				max-height: 60vh;
+				min-height: 48px; // 48px is the height of material's touch target
 				background-color: variables.$ob-white;
 				transform: none;
 				transition: none;
