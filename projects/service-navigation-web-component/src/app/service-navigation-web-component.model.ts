@@ -18,4 +18,5 @@ export interface ObICustomButton {
 	obliqueIconName: ObEIcon;
 	badge: string;
 	tooltip?: string;
+	accessibilityText?: string;
 }
