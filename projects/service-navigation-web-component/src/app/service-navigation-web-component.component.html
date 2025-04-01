@@ -24,12 +24,14 @@
 			<button
 				type="button"
 				mat-icon-button
+				[matTooltip]="button.tooltip"
 				obButton="tertiary"
 				[matBadge]="button.badge"
 				matBadgeColor="warn"
 				(click)="buttonClickedEmitter.emit(button.obliqueIconName)"
 			>
 				<mat-icon [svgIcon]="button.obliqueIconName" />
+				<span *ngIf="button.accessibilityText" class="ob-screen-reader-only">{{ button.accessibilityText }}</span>
 			</button>
 		</ng-template>
 	</ng-container>
