@@ -3,11 +3,13 @@ import {
 	ContentChild,
 	ContentChildren,
 	ElementRef,
+	EventEmitter,
 	HostBinding,
 	Inject,
 	Input,
 	OnDestroy,
 	Optional,
+	Output,
 	QueryList,
 	TemplateRef,
 	ViewChildren,
@@ -45,6 +47,7 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	banner: ObIBanner;
 	serviceNavigationConfig: ObIServiceNavigationConfig;
 	@Input() navigation: ObINavigationLink[];
+	@Output() readonly navigationChanged = new EventEmitter<ObINavigationLink[]>();
 	@HostBinding('class.ob-master-layout-header-small') isSmall = this.masterLayout.header.isSmall;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<unknown>;
 	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<unknown>>;
@@ -81,6 +84,10 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 
 	emitLogoutUrl(logoutUrl: string): void {
 		this.masterLayout.header.emitLogoutUrl(logoutUrl);
+	}
+
+	emitNavigation(navigation: ObINavigationLink[]): void {
+		this.navigationChanged.emit(navigation);
 	}
 
 	private customChange(): void {

@@ -237,22 +237,29 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 
 	describe('removeItem', () => {
 		const mockMouseEvent = {preventDefault: jest.fn()} as any as MouseEvent;
-		let firstItem: ObINavigationLink;
-		beforeEach(() => {
-			firstItem = component.initializedLinks[0];
-			component.removeMenuItem(firstItem, mockMouseEvent);
+		let emittedValue: ObINavigationLink[];
+		beforeEach(done => {
+			component.linksChanged.subscribe(list => {
+				emittedValue = list;
+				done();
+			});
+			component.removeMenuItem(component.initializedLinks[0], mockMouseEvent);
 		});
 
 		test('first item is removed from initialized links', () => {
-			expect(component.initializedLinks[0].id).not.toBe(firstItem.id);
+			expect(component.initializedLinks.length).toBe(3);
 		});
 
 		test('first item is removed from links', () => {
-			expect(component.links[0].id).not.toBe(firstItem.id);
+			expect(component.links.length).toBe(3);
 		});
 
 		test('preventDefault has been called', () => {
 			expect(mockMouseEvent.preventDefault).toHaveBeenCalled();
+		});
+
+		test('linksChanged emits the updated links', () => {
+			expect(emittedValue).toEqual(component.links);
 		});
 	});
 
