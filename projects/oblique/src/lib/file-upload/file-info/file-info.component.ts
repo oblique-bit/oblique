@@ -119,7 +119,8 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 					map(this.mapFunction),
 					tap(files => (this.dataSource.data = files)),
 					tap(() => this.dataChange.next()),
-					tap(files => this.reselectFiles(files))
+					tap(files => this.reselectFiles(files)),
+					tap(() => this.initializeSort())
 				)
 				.subscribe({
 					next: files => this.setTableHeaders(files.length ? Object.keys(files[0]) : this.fields),
@@ -132,6 +133,12 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 		const selectedRows = files.filter(file => this.selection.selected.some(row => file.name === row.name));
 		this.selection.clear();
 		this.selection.select(...selectedRows);
+	}
+
+	private initializeSort(): void {
+		if (this.dataSource.sort && this.dataSource.data.length) {
+			this.dataSource.sort.sort({id: 'name', start: 'asc', disableClear: true});
+		}
 	}
 
 	private setTableHeaders(headers: string[]): void {
