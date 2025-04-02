@@ -1,5 +1,5 @@
 import {AppComponent} from './app/app.component';
-import {ObIconService, ObTIconConfig, WINDOW, multiTranslateLoader} from '@oblique/oblique';
+import {ObIconService, ObStepperIntlService, ObTIconConfig, WINDOW, multiTranslateLoader} from '@oblique/oblique';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
@@ -16,6 +16,7 @@ import {APP_ROUTES} from './app.routes';
 import {UploadInterceptor} from './app/code-examples/code-examples/file-upload/file-upload-simulate-interceptor';
 import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
 import {provideTranslateService} from '@ngx-translate/core';
+import {MatStepperIntl} from '@angular/material/stepper';
 
 export const uploadInterceptor = new UploadInterceptor();
 
@@ -30,6 +31,7 @@ bootstrapApplication(AppComponent, {
 		{provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
 		{provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
 		{provide: MAT_TABS_CONFIG, useValue: {stretchTabs: false}},
+		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		provideMomentDateAdapter({
 			parse: {
 				dateInput: 'DD.MM.YYYY'

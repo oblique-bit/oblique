@@ -10,7 +10,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatOptionModule} from '@angular/material/core';
-import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
@@ -31,6 +30,7 @@ import {
 	ObAlertModule,
 	ObButtonModule,
 	ObColumnLayoutModule,
+	ObDatepickerModule,
 	ObErrorMessagesModule,
 	ObInputClearModule,
 	ObSelectableModule,
@@ -62,6 +62,7 @@ import {SlideToggleComponent} from './slide-toggle/slide-toggle.component';
 import {MenuComponent} from './menu/menu.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {TranslateModule} from '@ngx-translate/core';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -123,7 +124,7 @@ const appRoutes: Routes = [
 		MatCardModule,
 		MatCheckboxModule,
 		MatChipsModule,
-		MatDatepickerModule,
+		ObDatepickerModule,
 		MatDialogModule,
 		MatExpansionModule,
 		MatFormFieldModule,
@@ -153,6 +154,7 @@ const appRoutes: Routes = [
 		ObSelectableModule,
 		ObSpinnerModule,
 		ReactiveFormsModule,
+		TranslateModule,
 		RouterModule.forChild(appRoutes)
 	]
 })

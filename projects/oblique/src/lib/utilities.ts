@@ -22,6 +22,10 @@ import {MatPaginatorIntl} from '@angular/material/paginator';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
 import {ObTIconConfig, defaultIconConfig} from './icon/icon.model';
 import {ObIconService} from './icon/icon.service';
+import {MatStepperIntl} from '@angular/material/stepper';
+import {ObStepperIntlService} from './stepper/ob-stepper.service';
+import {MatDatepickerIntl} from '@angular/material/datepicker';
+import {ObDatepickerIntlService} from './datepicker/ob-datepicker.service';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
@@ -147,6 +151,8 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
 		{provide: TRANSLATION_FILES, useValue: config.translate?.additionalFiles},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
+		{provide: MatStepperIntl, useClass: ObStepperIntlService},
+		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
 		{provide: ObTIconConfig, useValue: {...defaultIconConfig, ...config.icon}},
 		{provide: OB_MATERIAL_CONFIG_2, useValue: config.material},
 		{provide: OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, useValue: config.accessibilityStatement},
