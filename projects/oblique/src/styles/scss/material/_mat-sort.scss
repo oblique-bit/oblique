@@ -1,0 +1,10 @@
+@use "@angular/material" as mat;
+@use "../core/variables";
+
+:root {
+	@include mat.sort-overrides(
+		(
+			arrow-color: variables.$ob-default,
+		)
+	);
+}
