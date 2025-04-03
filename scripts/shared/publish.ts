@@ -5,6 +5,14 @@ import {Files} from './files';
 import {Log} from './log';
 
 export class Publish extends StaticScript {
+	private static readonly eolDates: Record<number, string> = {
+		/* eslint-disable @typescript-eslint/naming-convention */
+		11: '2025-03-31',
+		12: '2025-10-31',
+		13: '2026-02-28'
+		/* eslint-enable @typescript-eslint/naming-convention */
+	};
+
 	static perform(packageName: string): void {
 		Log.start(`Publish ${packageName}`);
 		const tag = /^\d+\.\d+\.\d+$/.test(currentVersion) ? 'latest' : 'next';
@@ -12,6 +20,7 @@ export class Publish extends StaticScript {
 		process.chdir(`../../`);
 		executeCommandWithLog(`npm publish ./dist/${packageName} --access public --tag ${tag}`, 'Publish');
 		Publish.deprecatePreReleaseVersions(packageName, currentVersion);
+		Publish.deprecateMajorVersion(packageName, parseInt(currentVersion, 10));
 		Log.success();
 	}
 
@@ -24,6 +33,17 @@ export class Publish extends StaticScript {
 				`Deprecate all pre-release versions of ${version}`
 			);
 			executeCommandWithLog(`npm dist-tag rm ${fullPackageName} next`, 'Remove "next" tag');
+		}
+	}
+
+	private static deprecateMajorVersion(packageName: string, major: number): void {
+		const fullPackageName = `@oblique/${packageName}`;
+		const endOfLifeDate = Publish.eolDates[major];
+		if (new Date(endOfLifeDate) > new Date()) {
+			executeCommandWithLog(
+				`npm deprecate ${fullPackageName}@${major} "Oblique ${major} has reached its End Of Life on ${endOfLifeDate}"`,
+				`Deprecate all versions of ${major}`
+			);
 		}
 	}
 
