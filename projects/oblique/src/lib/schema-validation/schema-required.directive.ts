@@ -1,5 +1,5 @@
 import {AfterViewInit, Directive, ElementRef, HostBinding, Input, OnInit, Optional, Renderer2, inject} from '@angular/core';
-import {NgModelGroup} from '@angular/forms';
+import {NgModel, NgModelGroup} from '@angular/forms';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
@@ -13,6 +13,7 @@ export class ObSchemaRequiredDirective implements AfterViewInit, OnInit {
 	@Input() name: string;
 	private readonly host = inject(ElementRef);
 	private readonly renderer = inject(Renderer2);
+	private readonly model = inject(NgModel, {optional: true});
 
 	constructor(
 		private readonly schemaValidation: ObSchemaValidationDirective,
@@ -20,7 +21,7 @@ export class ObSchemaRequiredDirective implements AfterViewInit, OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.required = this.schemaValidation.isRequired(this.name, this.modelGroup ? this.modelGroup.path : []);
+		this.required = this.schemaValidation.isRequired(this.model.name, this.modelGroup ? this.modelGroup.path : []);
 	}
 
 	ngAfterViewInit(): void {
