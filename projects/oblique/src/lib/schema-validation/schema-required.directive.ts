@@ -10,7 +10,7 @@ import {ObSchemaValidationDirective} from './schema-validation.directive';
 	standalone: true
 })
 export class ObSchemaRequiredDirective implements OnInit {
-	@HostBinding('attr.required') required: boolean;
+	@HostBinding('attr.aria-required') required: boolean;
 	@Input() name: string;
 
 	constructor(
