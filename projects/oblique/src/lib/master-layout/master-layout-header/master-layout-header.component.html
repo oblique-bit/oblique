@@ -64,6 +64,6 @@
 		</ob-service-navigation>
 	</ng-container>
 </div>
-<ob-master-layout-navigation [links]="navigation">
+<ob-master-layout-navigation [links]="navigation" (linksChanged)="emitNavigation($event)">
 	<ng-content select="[obNavigation]" />
 </ob-master-layout-navigation>

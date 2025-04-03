@@ -6,11 +6,13 @@ import {
 	ContentChildren,
 	DoCheck,
 	ElementRef,
+	EventEmitter,
 	HostBinding,
 	Input,
 	OnChanges,
 	OnDestroy,
 	OnInit,
+	Output,
 	QueryList,
 	SimpleChanges,
 	TemplateRef,
@@ -64,6 +66,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	@Input() skipLinks: ObISkipLink[] | ObIDynamicSkipLink[] = [];
 	@Input() collapseBreakpoint: ObICollapseBreakpoints;
 	@Input() version?: string;
+	@Output() readonly navigationChanged = new EventEmitter<ObINavigationLink[]>();
 	@HostBinding('class.ob-layout-collapsed') isLayoutCollapsed = false;
 	@HostBinding('class.ob-layout-expanded') isLayoutExpanded = true;
 	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
@@ -156,6 +159,10 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		this.unsubscribe.complete();
 		this.unsubscribeMediaQuery.next();
 		this.unsubscribeMediaQuery.complete();
+	}
+
+	emitNavigation(navigation: ObINavigationLink[]): void {
+		this.navigationChanged.emit(navigation);
 	}
 
 	scrollTop(element?: HTMLElement): void {

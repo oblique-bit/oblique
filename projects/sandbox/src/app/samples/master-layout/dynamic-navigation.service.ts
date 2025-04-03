@@ -21,6 +21,7 @@ export class DynamicNavigationService {
 	}
 
 	addLink(link: ObINavigationLink): void {
+		link.removable = true;
 		this.links = this.links.concat(link);
 		this.navigationLinks.next(this.links);
 	}
