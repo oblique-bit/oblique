@@ -49,8 +49,12 @@
 			display: none;
 		}
 
-		app-side-navigation header.mobile-header app-image {
-			visibility: hidden;
+		app-side-navigation header.mobile-header {
+			left: unset;
+
+			app-image {
+				display: none;
+			}
 		}
 	}
 }
