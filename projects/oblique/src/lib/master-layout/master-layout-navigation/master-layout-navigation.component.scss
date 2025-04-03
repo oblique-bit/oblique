@@ -55,6 +55,28 @@
 			@include button.ob-link-btn();
 		}
 
+		.ob-master-layout-navigation-item.ob-is-removable {
+			position: relative;
+			display: inline;
+
+			.ob-remove-menu-item {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: fit-content;
+				font-size: variables.$ob-font-size-smaller;
+				border: none;
+				padding: 2px; // empiric value
+				z-index: variables.$ob-z-index-layout;
+				background-color: variables.$ob-secondary-50;
+				border-radius: 50%;
+
+				&:hover {
+					background-color: variables.$ob-secondary-100;
+				}
+			}
+		}
+
 		.ob-layout-collapsed & {
 			.ob-main-nav-item {
 				display: flex;
@@ -298,7 +320,7 @@
 				}
 
 				> a,
-				> button {
+				> button:not(.ob-remove-menu-item) {
 					border-bottom: variables.$ob-line-width-sm solid transparent;
 					display: inline-flex;
 					padding: variables.$ob-spacing-md variables.$ob-spacing-default;

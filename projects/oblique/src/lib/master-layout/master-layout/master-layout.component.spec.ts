@@ -16,7 +16,7 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
-import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {appVersion} from '../../version';
 
 @Component({template: '', standalone: false})
@@ -475,6 +475,21 @@ describe('ObMasterLayoutComponent', () => {
 				}
 			});
 			expect(component[property]).toBe(expected);
+		});
+	});
+
+	describe('emitNavigation', () => {
+		let emittedValue: ObINavigationLink[];
+		beforeEach(done => {
+			component.navigationChanged.subscribe(list => {
+				emittedValue = list;
+				done();
+			});
+			component.emitNavigation([{id: 'id', url: 'url', label: 'label'}]);
+		});
+
+		test('navigationChanged emits the given parameter', () => {
+			expect(emittedValue).toEqual([{id: 'id', url: 'url', label: 'label'}]);
 		});
 	});
 });
