@@ -62,6 +62,8 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	) {}
 
 	@Input() mapFunction = (files: ObIFileDescription[]): ObIFileDescription[] => files;
+	@Input() mapFilesToDeleteUrlFunction: (files: ObIFileDescription[]) => string = files =>
+		btoa(JSON.stringify(files.map(file => file.name)));
 
 	ngOnInit(): void {
 		this.setTableHeaders(this.fields);
@@ -98,7 +100,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 		const fileNames = files.map(file => file.name);
 		if (this.deleteUrl && this.window.confirm(this.translate.instant('i18n.oblique.file-upload.selected.remove'))) {
 			this.fileUploadService
-				.delete(this.deleteUrl, fileNames)
+				.delete(this.deleteUrl, this.mapFilesToDeleteUrlFunction(files))
 				.pipe(
 					tap(() => (this.dataSource.data = this.dataSource.data.filter(file => !fileNames.includes(file.name)))),
 					tap(() => this.dataChange.next()),
