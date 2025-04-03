@@ -1,4 +1,4 @@
-import {AfterViewInit, Directive, ElementRef, HostBinding, Input, OnInit, Optional, Renderer2, inject} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, HostBinding, Input, OnInit, Renderer2, inject} from '@angular/core';
 import {FormControlName, NgModel, NgModelGroup} from '@angular/forms';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 
@@ -18,15 +18,12 @@ export class ObSchemaRequiredDirective implements AfterViewInit, OnInit {
 	private readonly renderer = inject(Renderer2);
 	private readonly model = inject(NgModel, {optional: true});
 	private readonly formControlName = inject(FormControlName, {optional: true});
-
-	constructor(
-		private readonly schemaValidation: ObSchemaValidationDirective,
-		@Optional() private readonly modelGroup: NgModelGroup
-	) {}
+	private readonly modelGroup = inject(NgModelGroup, {optional: true});
+	private readonly schemaValidation = inject(ObSchemaValidationDirective);
 
 	ngOnInit(): void {
 		const control = this.formControlName ?? this.model;
-		this.required = this.schemaValidation.isRequired(control.name as string, this.modelGroup ? this.modelGroup.path : []);
+		this.required = this.schemaValidation.isRequired(control.name as string, this.modelGroup?.path ?? []);
 	}
 
 	ngAfterViewInit(): void {
