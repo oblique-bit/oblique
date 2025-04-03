@@ -259,43 +259,72 @@ describe('ObFileInfoComponent', () => {
 				expect(component.selection.selected.includes(file)).toBe(false);
 			});
 		});
+	});
 
-		describe('delete', () => {
-			it('should ask for confirmation', () => {
+	describe('delete', () => {
+		beforeEach(() => {
+			fixture.detectChanges();
+		});
+
+		it('should start with 3 items', () => {
+			expect(component.dataSource.data.length).toBe(3);
+		});
+
+		it('should ask for confirmation', () => {
+			component.deleteUrl = 'url';
+			jest.spyOn(window, 'confirm');
+			component.delete([files[0]]);
+			expect(window.confirm).toHaveBeenCalled();
+		});
+
+		it('should do nothing if not confirmed', () => {
+			component.deleteUrl = 'url';
+			jest.spyOn(window, 'confirm').mockReturnValue(false);
+			jest.spyOn(uploadService, 'delete');
+			component.delete([files[0]]);
+			expect(uploadService.delete).not.toHaveBeenCalled();
+		});
+
+		it('should do nothing if confirmed without deleteUrl', () => {
+			component.deleteUrl = undefined;
+			jest.spyOn(window, 'confirm').mockReturnValue(true);
+			jest.spyOn(uploadService, 'delete').mockReturnValue(of());
+			component.delete([files[0]]);
+			expect(uploadService.delete).not.toHaveBeenCalled();
+		});
+
+		describe('if confirmed with deleteUrl', () => {
+			beforeEach(() => {
 				component.deleteUrl = 'url';
-				jest.spyOn(window, 'confirm');
-				component.delete([files[0]]);
-				expect(window.confirm).toHaveBeenCalled();
-			});
-
-			it('should do nothing if not confirmed', () => {
-				component.deleteUrl = 'url';
-				jest.spyOn(window, 'confirm').mockReturnValue(false);
-				jest.spyOn(uploadService, 'delete');
-				component.delete([files[0]]);
-				expect(uploadService.delete).not.toHaveBeenCalled();
-			});
-
-			it('should do nothing if confirmed without deleteUrl', () => {
-				component.deleteUrl = undefined;
 				jest.spyOn(window, 'confirm').mockReturnValue(true);
-				jest.spyOn(uploadService, 'delete').mockReturnValue(of());
-				component.delete([files[0]]);
-				expect(uploadService.delete).not.toHaveBeenCalled();
 			});
 
-			describe('with confirmed and deleteUrl', () => {
+			describe.each([
+				{case: 'default', mapper: undefined, fileId: 'WyJmaWxlLnR4dCJd'},
+				{
+					case: 'default',
+					mapper: (filesDesc: ObIFileDescription[]) => filesDesc.map(file => file.name.split('.')[0]).join('-'),
+					fileId: 'file'
+				}
+			])('with %case mapFilesToDeleteUrlFunction', ({mapper, fileId}) => {
 				beforeEach(() => {
-					component.deleteUrl = 'url';
-					jest.spyOn(window, 'confirm').mockReturnValue(true);
+					if (mapper) {
+						component.mapFilesToDeleteUrlFunction = mapper;
+					}
+					jest.spyOn(component, 'mapFilesToDeleteUrlFunction');
 					jest.spyOn(uploadService, 'delete').mockReturnValue(of({}));
 					component.selection.select(files[0]);
 					component.selection.select(files[1]);
+
 					component.delete([files[0]]);
 				});
 
-				it('should call delete ', () => {
-					expect(uploadService.delete).toHaveBeenCalledWith('url', ['file.txt']);
+				it('should call "mapFilesToDeleteUrlFunction" with param', () => {
+					expect(component.mapFilesToDeleteUrlFunction).toHaveBeenCalledWith([{name: 'file.txt'}]);
+				});
+
+				it('should call uploadService.delete with param', () => {
+					expect(uploadService.delete).toHaveBeenCalledWith('url', fileId);
 				});
 
 				it('should remove a file', () => {
@@ -317,8 +346,6 @@ describe('ObFileInfoComponent', () => {
 				const deletedFile = files[0];
 
 				beforeEach(done => {
-					component.deleteUrl = 'url';
-					jest.spyOn(window, 'confirm').mockReturnValue(true);
 					jest.spyOn(uploadService, 'delete').mockReturnValue(throwError(() => errorMessage));
 					component.uploadEvent.subscribe(evt => {
 						event = evt;

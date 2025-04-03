@@ -38,8 +38,9 @@ export class ObFileUploadService {
 		return this.httpClient.get<ObIFileDescription[]>(getUploadedFilesUrl);
 	}
 
-	public delete(deleteUrl: string, files: string[]): Observable<unknown> {
-		return this.httpClient.delete(`${deleteUrl}/${btoa(JSON.stringify(files))}`);
+	public delete(deleteUrl: string, files: string[] | string): Observable<unknown> {
+		const fileIdentifiers = Array.isArray(files) ? btoa(JSON.stringify(files)) : files;
+		return this.httpClient.delete(`${deleteUrl}/${fileIdentifiers}`);
 	}
 
 	private sendUploadRequest(formData: FormData, uploadUrl: string, files: File[]): Observable<HttpEvent<ObTEventType>> {

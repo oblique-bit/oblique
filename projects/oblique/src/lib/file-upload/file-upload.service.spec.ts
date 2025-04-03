@@ -247,18 +247,37 @@ describe('ObFilesUploadService', () => {
 	});
 
 	describe('delete', () => {
-		it('should delete data', () => {
-			jest.spyOn(httpMock, 'delete');
-			service.delete(baseServerUrl, ['test.txt']);
-			expect(httpMock.delete).toHaveBeenCalledWith(`${baseServerUrl}/${btoa(JSON.stringify(['test.txt']))}`);
+		describe('with an array of files', () => {
+			it('should delete data', () => {
+				jest.spyOn(httpMock, 'delete');
+				service.delete(baseServerUrl, ['test.txt']);
+				expect(httpMock.delete).toHaveBeenCalledWith(`${baseServerUrl}/${btoa(JSON.stringify(['test.txt']))}`);
+			});
+
+			it('should emit', done => {
+				jest.spyOn(httpMock, 'delete').mockReturnValue(of([]));
+
+				service.delete(baseServerUrl, ['test.txt']).subscribe(evt => {
+					expect(evt).toBeDefined();
+					done();
+				});
+			});
 		});
 
-		it('should emit', done => {
-			jest.spyOn(httpMock, 'delete').mockReturnValue(of([]));
+		describe('with a stringified file', () => {
+			it('should delete data', () => {
+				jest.spyOn(httpMock, 'delete');
+				service.delete(baseServerUrl, '1-2-3');
+				expect(httpMock.delete).toHaveBeenCalledWith(`${baseServerUrl}/1-2-3`);
+			});
 
-			service.delete(baseServerUrl, ['test.txt']).subscribe(evt => {
-				expect(evt).toBeDefined();
-				done();
+			it('should emit', done => {
+				jest.spyOn(httpMock, 'delete').mockReturnValue(of([]));
+
+				service.delete(baseServerUrl, '1-2-3').subscribe(evt => {
+					expect(evt).toBeDefined();
+					done();
+				});
 			});
 		});
 	});
