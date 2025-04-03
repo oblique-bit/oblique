@@ -3,8 +3,7 @@ import {NgModelGroup} from '@angular/forms';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
-	// eslint-disable-next-line @angular-eslint/directive-selector
-	selector: '[ngModel]',
+	selector: '[obSchemaValidate][ngModel]',
 	exportAs: 'obSchemaRequiredValidation',
 	host: {class: 'ob-schema-required-validation'},
 	standalone: true
@@ -16,14 +15,12 @@ export class ObSchemaRequiredDirective implements AfterViewInit, OnInit {
 	private readonly renderer = inject(Renderer2);
 
 	constructor(
-		@Optional() private readonly schemaValidation: ObSchemaValidationDirective,
+		private readonly schemaValidation: ObSchemaValidationDirective,
 		@Optional() private readonly modelGroup: NgModelGroup
 	) {}
 
 	ngOnInit(): void {
-		if (this.schemaValidation) {
-			this.required = this.schemaValidation.isRequired(this.name, this.modelGroup ? this.modelGroup.path : []);
-		}
+		this.required = this.schemaValidation.isRequired(this.name, this.modelGroup ? this.modelGroup.path : []);
 	}
 
 	ngAfterViewInit(): void {
