@@ -10,6 +10,9 @@ import {of} from 'rxjs';
 	standalone: false
 })
 export class SchemaValidationSampleComponent implements OnInit {
+	text: string;
+	number: string;
+
 	materialTestForm: UntypedFormGroup;
 
 	selectOptions = [
