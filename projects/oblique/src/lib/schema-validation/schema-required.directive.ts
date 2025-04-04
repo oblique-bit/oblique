@@ -10,6 +10,9 @@ import {ObSchemaValidationDirective} from './schema-validation.directive';
 })
 export class ObSchemaRequiredDirective implements AfterViewInit, OnInit {
 	@HostBinding('attr.aria-required') required: boolean;
+	/**
+	 * @deprecated with Oblique 13.2.0, it will be removed in the next major without replacement
+	 */
 	@Input() name: string;
 	private readonly host = inject(ElementRef);
 	private readonly renderer = inject(Renderer2);
