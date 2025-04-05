@@ -7,7 +7,6 @@ import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-
 import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
 import {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {ObMockMasterLayoutConfig} from './_mocks/mock-master-layout.config';
 import {ObMasterLayoutService} from './master-layout.service';
 import {ObMasterLayoutConfig} from './master-layout.config';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
@@ -28,7 +27,7 @@ describe('ObMasterLayoutService', () => {
 			providers: [
 				ObMasterLayoutService,
 				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
+				{provide: ObMasterLayoutConfig, useValue: {showAccessibilityTitle: true, homePageRoute: '/home'}},
 				{provide: ObMasterLayoutHeaderService, useClass: ObMockMasterLayoutHeaderService},
 				{provide: ObMasterLayoutFooterService, useClass: ObMockMasterLayoutFooterService},
 				{provide: ObMasterLayoutNavigationService, useClass: ObMockMasterLayoutNavigationService},
@@ -37,6 +36,7 @@ describe('ObMasterLayoutService', () => {
 			]
 		});
 		masterLayoutService = TestBed.inject(ObMasterLayoutService);
+		TestBed.inject(ObMasterLayoutConfig).showAccessibilityTitle = true;
 	});
 
 	it('should be created', () => {
@@ -48,7 +48,13 @@ describe('ObMasterLayoutService', () => {
 	});
 
 	it('should add a route to the accessibility statement', () => {
-		expect(TestBed.inject(Router).config).toEqual([{component: AccessibilityStatementComponent, path: 'accessibility-statement'}]);
+		expect(TestBed.inject(Router).config).toEqual([
+			{
+				component: AccessibilityStatementComponent,
+				path: 'accessibility-statement',
+				data: {title: 'i18n.oblique.accessibility-statement.statement.title'}
+			}
+		]);
 	});
 
 	describe('homePageRouteChange$', () => {

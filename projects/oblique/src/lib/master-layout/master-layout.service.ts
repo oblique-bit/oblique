@@ -1,5 +1,5 @@
 import {Injectable, inject} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Route, Router} from '@angular/router';
 import {filter, map, mergeMap} from 'rxjs/operators';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {getRootRoute} from '../utilities';
@@ -28,7 +28,7 @@ export class ObMasterLayoutService {
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		language: ObLanguageService // ObLanguageService needs to be there to be instantiated
 	) {
-		this.router.config.unshift({path: 'accessibility-statement', component: AccessibilityStatementComponent});
+		this.router.config.unshift(this.buildAccessibilityRoute());
 		this.routeChange();
 		this.homePageRouteChange$ = this.homePageRouteChange.asObservable();
 	}
@@ -59,5 +59,16 @@ export class ObMasterLayoutService {
 					}
 				});
 			});
+	}
+
+	private buildAccessibilityRoute(): Route {
+		const route: Route = {
+			path: 'accessibility-statement',
+			component: AccessibilityStatementComponent
+		};
+		if (this.config.showAccessibilityTitle) {
+			route.data = {title: 'i18n.oblique.accessibility-statement.statement.title'};
+		}
+		return route;
 	}
 }
