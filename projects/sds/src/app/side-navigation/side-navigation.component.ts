@@ -20,6 +20,7 @@ import {ImageComponent} from './image/image.component';
 import {VersionService} from '../shared/version/version.service';
 import {SlugService} from '../shared/slug/slug.service';
 import {WINDOW} from '@oblique/oblique';
+import {FeedbackButtonComponent} from '../feedback/feedback-button/feedback-button.component';
 
 @Component({
 	selector: 'app-side-navigation',
@@ -31,6 +32,7 @@ import {WINDOW} from '@oblique/oblique';
 		FormsModule,
 		ReactiveFormsModule,
 		AccordionLinksComponent,
+		FeedbackButtonComponent,
 		CommonModule,
 		IdPipe,
 		MatFormField,

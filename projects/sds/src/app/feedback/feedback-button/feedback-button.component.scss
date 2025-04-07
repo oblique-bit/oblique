@@ -2,11 +2,7 @@
 @use "../../../styles/scss/core/mixins/layout";
 
 .feedback-button {
-	position: fixed;
-	right: -75px;
-	top: 45%;
 	height: 40px;
-	transform: rotate(-90deg);
 	padding: 3px 38px;
 	border: none;
 	font-weight: 700;
