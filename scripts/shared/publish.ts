@@ -13,9 +13,9 @@ export class Publish extends StaticScript {
 		/* eslint-enable @typescript-eslint/naming-convention */
 	};
 
-	static perform(packageName: string): void {
+	static perform(packageName: string, releaseTag?: string): void {
 		Log.start(`Publish ${packageName}`);
-		const tag = /^\d+\.\d+\.\d+$/.test(currentVersion) ? 'latest' : 'next';
+		const tag = releaseTag || (/^\d+\.\d+\.\d+$/.test(currentVersion) ? 'latest' : 'next');
 		// as the `projects/oblique` folder contains a package.json with publish instructions, the directory parameter is ignored and the current working directory is published instead.
 		process.chdir(`../../`);
 		executeCommandWithLog(`npm publish ./dist/${packageName} --access public --tag ${tag}`, 'Publish');
