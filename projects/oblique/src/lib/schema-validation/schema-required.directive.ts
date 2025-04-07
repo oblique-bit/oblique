@@ -1,26 +1,48 @@
-import {Directive, HostBinding, Input, OnInit, Optional} from '@angular/core';
-import {NgModelGroup} from '@angular/forms';
+import {AfterViewInit, Directive, ElementRef, HostBinding, Input, OnInit, Renderer2, inject} from '@angular/core';
+import {FormControlName, NgModel, NgModelGroup} from '@angular/forms';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
-	// eslint-disable-next-line @angular-eslint/directive-selector
-	selector: '[ngModel]',
+	selector: '[obSchemaValidate][ngModel],[obSchemaValidate][formControlName]',
 	exportAs: 'obSchemaRequiredValidation',
 	host: {class: 'ob-schema-required-validation'},
 	standalone: true
 })
-export class ObSchemaRequiredDirective implements OnInit {
-	@HostBinding('attr.required') required: boolean;
+export class ObSchemaRequiredDirective implements AfterViewInit, OnInit {
+	@HostBinding('attr.aria-required') required: boolean;
+	/**
+	 * @deprecated with Oblique 13.2.0, it will be removed in the next major without replacement
+	 */
 	@Input() name: string;
-
-	constructor(
-		@Optional() private readonly schemaValidation: ObSchemaValidationDirective,
-		@Optional() private readonly modelGroup: NgModelGroup
-	) {}
+	private readonly host = inject(ElementRef);
+	private readonly renderer = inject(Renderer2);
+	private readonly model = inject(NgModel, {optional: true});
+	private readonly formControlName = inject(FormControlName, {optional: true});
+	private readonly modelGroup = inject(NgModelGroup, {optional: true});
+	private readonly schemaValidation = inject(ObSchemaValidationDirective);
 
 	ngOnInit(): void {
-		if (this.schemaValidation) {
-			this.required = this.schemaValidation.isRequired(this.name, this.modelGroup ? this.modelGroup.path : []) || undefined;
+		const control = this.formControlName ?? this.model;
+		this.required = this.schemaValidation.isRequired(control.name as string, this.modelGroup?.path ?? []);
+	}
+
+	ngAfterViewInit(): void {
+		if (this.required) {
+			this.insertRequiredMarkerInLabel();
+		}
+	}
+
+	// mimics the behavior of Material for required fields
+	private insertRequiredMarkerInLabel(): void {
+		const matFormField = this.host.nativeElement.closest('.mat-mdc-form-field');
+		if (matFormField) {
+			const label = matFormField.querySelector('label');
+			if (label) {
+				const span = this.renderer.createElement('span');
+				span.setAttribute('class', 'mat-mdc-form-field-required-marker mdc-floating-label--required');
+				span.setAttribute('aria-hidden', 'true');
+				this.renderer.appendChild(label, span);
+			}
 		}
 	}
 }
