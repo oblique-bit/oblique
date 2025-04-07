@@ -1,3 +1,9 @@
+# [13.1.1](https://github.com/oblique-bit/oblique/compare/13.1.0...13.1.1) (2025-04-07)
+
+## Bug Fixes
+
+- **service-navigation:** add missing part in French translation key ([fae8434c](https://github.com/oblique-bit/oblique/commit/fae8434c34a0387d4e8085643248b6a4152d0814))
+
 # [13.1.0](https://github.com/oblique-bit/oblique/compare/13.0.3...13.1.0) (2025-03-27)
 
 ## Bug Fixes

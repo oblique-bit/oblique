@@ -4,7 +4,6 @@
 
 - **new:** use the correct version of dependencies ([2425328a](https://github.com/oblique-bit/oblique/commit/2425328a2f40d604b2f5edc2db0e1976cacb150a))
 - **new:** fix failing linting & tests ([63b4d940](https://github.com/oblique-bit/oblique/commit/63b4d94004bf6dbcfc74e7731218a86353300150))
-- **toolchain:** fix publish script
 - **update:** make sure `@schematics/angular` is present and updated ([a2938608](https://github.com/oblique-bit/oblique/commit/a29386082eafe3c6eb89af4ca402493274a97529))
 
 ## Features

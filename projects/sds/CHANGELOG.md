@@ -1,3 +1,10 @@
+# [13.1.1](https://github.com/oblique-bit/oblique/compare/13.1.0...13.1.1) (2025-04-07)
+
+## Bug Fixes
+
+- **styles:** ensure that the mobile header with opened navigation has the width of its content ([260c6dd0](https://github.com/oblique-bit/oblique/commit/260c6dd0acda24f68fcabf6a535ede7e53734d3b))
+- **tabbed-page:** make sure SCSS snippets show valid paths for projects ([7aa6ee78](https://github.com/oblique-bit/oblique/commit/7aa6ee78384967621c2c50e4354bd8e96155fe06))
+
 # [13.1.0](https://github.com/oblique-bit/oblique/compare/13.0.3...13.1.0) (2025-03-27)
 
 ## Bug Fixes
