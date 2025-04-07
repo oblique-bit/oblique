@@ -1,5 +1,4 @@
-@use "../../../styles/scss/core/variables";
-@use "../../../styles/scss/core/mixins/layout";
+@use "./mixins/layout";
 
 .main-content {
 	.content-page {
@@ -50,8 +49,12 @@
 			display: none;
 		}
 
-		app-side-navigation header.mobile-header app-image {
-			visibility: hidden;
+		app-side-navigation header.mobile-header {
+			left: unset;
+
+			app-image {
+				display: none;
+			}
 		}
 	}
 }

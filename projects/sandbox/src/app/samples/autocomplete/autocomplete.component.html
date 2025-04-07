@@ -5,7 +5,7 @@
 			<ob-autocomplete
 				(selectedOptionChange)="showSelection($event)"
 				[autocompleteOptions]="visibleOptionList"
-				[filterRegexFlag]="'gi'"
+				filterRegexFlag="gi"
 				[formControl]="formControl"
 				[optionIconPosition]="optionIconPosition"
 			/>
@@ -23,7 +23,7 @@
 				(selectedOptionChange)="showSelection($event)"
 				[(ngModel)]="searchText"
 				[autocompleteOptions]="visibleOptionList"
-				[filterRegexFlag]="'gi'"
+				filterRegexFlag="gi"
 				[optionIconPosition]="optionIconPosition"
 			/>
 			<label>ngModel snippet:</label>
@@ -131,7 +131,7 @@
 			<legend>Pattern to highlight options</legend>
 			<mat-form-field>
 				<mat-label>Pattern string</mat-label>
-				<input [formControl]="patternControl" [pattern]="'.*textToFind.*'" matInput type="text" />
+				<input [formControl]="patternControl" pattern=".*textToFind.*" matInput type="text" />
 				<mat-error *ngIf="patternControl?.errors && patternControl.hasError('pattern')">Should have textToFind in pattern </mat-error>
 			</mat-form-field>
 		</fieldset>

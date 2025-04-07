@@ -120,6 +120,7 @@ export default [
 			'@typescript-eslint/no-redundant-type-constituents': 'off',
 			'@typescript-eslint/no-require-imports': 'off',
 			'@typescript-eslint/no-type-alias': 'off',
+			'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off',
 			'@typescript-eslint/no-unsafe-return': 'off',
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
 			'@typescript-eslint/non-nullable-type-assertion-style': 'off',

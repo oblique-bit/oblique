@@ -29,7 +29,10 @@ export class CodeExamples {
 				return require(`!!raw-loader!./${filePath}`);
 			}
 			default: {
-				return require(`!!raw-loader!./code-examples/${directory}/previews/${filePath}`);
+				const fileContent = require(`!!raw-loader!./code-examples/${directory}/previews/${filePath}`) as {default: string};
+				return filePath.endsWith('.scss')
+					? {default: fileContent.default?.replace(/@oblique\/oblique\/src\/styles\/scss\/core/g, '@oblique/oblique/styles/scss/core')}
+					: fileContent;
 			}
 		}
 	}

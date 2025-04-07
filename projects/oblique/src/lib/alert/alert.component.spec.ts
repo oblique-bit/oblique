@@ -19,7 +19,7 @@ import {OBLIQUE_HAS_ROLE_ALERT, ObAlertComponent} from './alert.component';
 class DefaultTestComponent {}
 
 @Component({
-	template: ` <ob-alert role="alert" [type]="'success'">
+	template: ` <ob-alert role="alert" type="success">
 		The following text should be shown as hyperlink:
 		<a href="www.google.com">www.google.com</a></ob-alert
 	>`,
@@ -28,7 +28,7 @@ class DefaultTestComponent {}
 class AlertRoleTestComponent {}
 
 @Component({
-	template: ` <ob-alert [type]="'success'">
+	template: ` <ob-alert type="success">
 		The following text should be shown as hyperlink:
 		<a href="www.google.com">www.google.com</a></ob-alert
 	>`,
