@@ -188,7 +188,7 @@ export class SideNavigationComponent implements OnInit {
 	private getCurrentSlug(): string {
 		return this.router.url
 			.replace(/[#|?].*/, '') // remove queryParams & fragment
-			.replace(/\/(?:api|ui_ux|examples)/, '')
+			.replace(/\/(?:api|ui-ux|examples)/, '')
 			.split('/')
 			.pop();
 	}
