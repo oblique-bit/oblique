@@ -8,10 +8,10 @@
 	span.mat-icon {
 		overflow: visible;
 		flex-shrink: 0;
+	}
 
-		svg {
-			margin-top: 2px; // empiric value
-		}
+	&:not(.ob-button) span.mat-icon svg {
+		margin-top: 2px; // empiric value
 	}
 
 	&.mat-mdc-icon-button span.mat-icon {
