@@ -53,4 +53,17 @@
 		[id]="componentId | id: ['accordion-links']"
 		(linkClicked)="toggleMobileNavigation()"
 	/>
+	<footer>
+		<button type="button" mat-button obButton="primary" appFeedbackTrigger>
+			<img ngSrc="./assets/images/mail.svg" width="21" height="21" alt="mail" />Feedback
+		</button>
+		<a href="https://github.com/oblique-bit/oblique" mat-button obButton="tertiary" target="_blank" rel="noopener noreferrer">
+			<img ngSrc="assets/images/github_logo.svg" width="21" height="21" alt="logo github" />GitHub
+			<span class="ob-screen-reader-only">- opens in a new tab</span>
+		</a>
+		<a href="https://www.figma.com/@bitux" mat-button obButton="tertiary" target="_blank" rel="noopener noreferrer">
+			<img ngSrc="assets/images/figma_logo.svg" width="14" height="20" alt="logo figma" />Figma
+			<span class="ob-screen-reader-only">- opens in a new tab</span>
+		</a>
+	</footer>
 </div>

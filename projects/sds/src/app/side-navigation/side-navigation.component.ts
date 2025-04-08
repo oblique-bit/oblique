@@ -13,13 +13,15 @@ import {URL_CONST} from '../shared/url/url.const';
 import {Accordion, Link} from './accordion-links/accordion-links.model';
 import {AccordionComposer} from './utils/accordion-composer';
 import {IdPipe} from '../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
+import {MatButtonModule} from '@angular/material/button';
+import {ObButtonDirective, WINDOW} from '@oblique/oblique';
 import {AccordionLinksComponent} from './accordion-links/accordion-links.component';
 import {VersionComponent} from './version/version.component';
 import {ImageComponent} from './image/image.component';
 import {VersionService} from '../shared/version/version.service';
 import {SlugService} from '../shared/slug/slug.service';
-import {WINDOW} from '@oblique/oblique';
+import {FeedbackTriggerDirective} from '../feedback/feedback-trigger.directive';
 
 @Component({
 	selector: 'app-side-navigation',
@@ -37,7 +39,11 @@ import {WINDOW} from '@oblique/oblique';
 		MatLabel,
 		MatInputModule,
 		MatIcon,
-		MatPrefix
+		MatPrefix,
+		MatButtonModule,
+		ObButtonDirective,
+		NgOptimizedImage,
+		FeedbackTriggerDirective
 	]
 })
 export class SideNavigationComponent implements OnInit {

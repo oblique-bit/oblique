@@ -1,3 +1,5 @@
+@use "../../styles/scss/core/variables";
+
 app-image {
 	padding: 20px 20px 0;
 	display: flex;
@@ -27,4 +29,18 @@ app-image {
 
 :host {
 	overflow-y: scroll;
+}
+
+footer {
+	background: variables.$main-background-color;
+	position: sticky;
+	bottom: 0;
+	padding: 8px 8px 8px 20px;
+	display: flex;
+	gap: 8px;
+
+	img {
+		margin-top: -2px;
+		margin-right: 4px;
+	}
 }
