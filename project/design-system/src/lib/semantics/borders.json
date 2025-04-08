@@ -1,0 +1,147 @@
+{
+  "ob": {
+    "s": {
+      "radii": {
+        "none": {
+          "value": "{ob.p.radii.none}",
+          "type": "borderRadius"
+        },
+        "sm": {
+          "value": "{ob.p.radii.50}",
+          "type": "borderRadius"
+        },
+        "md": {
+          "value": "{ob.p.radii.100}",
+          "type": "borderRadius"
+        },
+        "lg": {
+          "value": "{ob.p.radii.200}",
+          "type": "borderRadius"
+        },
+        "round": {
+          "value": "{ob.p.radii.round}",
+          "type": "borderRadius"
+        }
+      },
+      "border-width": {
+        "xs": {
+          "value": "{ob.p.borderWidth.100}",
+          "type": "borderWidth"
+        },
+        "sm": {
+          "value": "{ob.p.borderWidth.200}",
+          "type": "borderWidth"
+        },
+        "md": {
+          "value": "{ob.p.borderWidth.300}",
+          "type": "borderWidth"
+        },
+        "lg": {
+          "value": "{ob.p.borderWidth.400}",
+          "type": "borderWidth"
+        },
+        "xl": {
+          "value": "{ob.p.borderWidth.500}",
+          "type": "borderWidth"
+        },
+        "2xl": {
+          "value": "{ob.p.borderWidth.600}",
+          "type": "borderWidth"
+        },
+        "3xl": {
+          "value": "{ob.p.borderWidth.700}",
+          "type": "borderWidth"
+        },
+        "none": {
+          "value": "{ob.p.borderWidth.none}",
+          "type": "borderWidth"
+        }
+      },
+      "corners": {
+        "top-right": {
+          "none": {
+            "value": "{ob.s.radii.none}",
+            "type": "borderRadius"
+          },
+          "sm": {
+            "value": "{ob.s.radii.sm}",
+            "type": "borderRadius"
+          },
+          "md": {
+            "value": "{ob.s.radii.md}",
+            "type": "borderRadius"
+          },
+          "lg": {
+            "value": "{ob.s.radii.lg}",
+            "type": "borderRadius"
+          }
+        },
+        "top-left": {
+          "none": {
+            "value": "{ob.s.radii.none}",
+            "type": "borderRadius"
+          },
+          "sm": {
+            "value": "{ob.s.radii.sm}",
+            "type": "borderRadius"
+          },
+          "md": {
+            "value": "{ob.s.radii.md}",
+            "type": "borderRadius"
+          },
+          "lg": {
+            "value": "{ob.s.radii.lg}",
+            "type": "borderRadius"
+          }
+        },
+        "bottom-left": {
+          "none": {
+            "value": "{ob.s.radii.none}",
+            "type": "borderRadius"
+          },
+          "sm": {
+            "value": "{ob.s.radii.sm}",
+            "type": "borderRadius"
+          },
+          "md": {
+            "value": "{ob.s.radii.md}",
+            "type": "borderRadius"
+          },
+          "lg": {
+            "value": "{ob.s.radii.lg}",
+            "type": "borderRadius"
+          }
+        },
+        "bottom-right": {
+          "none": {
+            "value": "{ob.s.radii.none}",
+            "type": "borderRadius"
+          },
+          "sm": {
+            "value": "{ob.s.radii.sm}",
+            "type": "borderRadius"
+          },
+          "md": {
+            "value": "{ob.s.radii.md}",
+            "type": "borderRadius"
+          },
+          "lg": {
+            "value": "{ob.s.radii.lg}",
+            "type": "borderRadius"
+          }
+        }
+      },
+      "border": {
+        "focus-light": {
+          "value": {
+            "color": "{ob.s.color.border.focus-light}",
+            "width": "{ob.s.border-width.2xl}",
+            "style": "solid"
+          },
+          "type": "border",
+          "description": "focus for all clickable elements and form elements."
+        }
+      }
+    }
+  }
+}

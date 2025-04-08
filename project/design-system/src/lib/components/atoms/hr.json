@@ -1,0 +1,28 @@
+{
+  "ob": {
+    "c": {
+      "hr": {
+        "sizing": {
+          "height": {
+            "value": "1",
+            "type": "sizing"
+          }
+        },
+        "color": {
+          "subtle": {
+            "value": "{ob.s.color.border.subtle}",
+            "type": "color"
+          },
+          "default": {
+            "value": "{ob.s.color.border.default}",
+            "type": "color"
+          },
+          "strong": {
+            "value": "{ob.s.color.border.strong}",
+            "type": "color"
+          }
+        }
+      }
+    }
+  }
+}

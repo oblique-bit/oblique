@@ -1,0 +1,32 @@
+{
+  "ob": {
+    "s": {
+      "zindex": {
+        "stepperMobile": {
+          "value": "{ob.p.zindex.1000}",
+          "type": "number"
+        },
+        "header": {
+          "value": "{ob.p.zindex.1100}",
+          "type": "number"
+        },
+        "drawer": {
+          "value": "{ob.p.zindex.1200}",
+          "type": "number"
+        },
+        "modal": {
+          "value": "{ob.p.zindex.1300}",
+          "type": "number"
+        },
+        "notification": {
+          "value": "{ob.p.zindex.1400}",
+          "type": "number"
+        },
+        "tooltip": {
+          "value": "{ob.p.zindex.1500}",
+          "type": "number"
+        }
+      }
+    }
+  }
+}

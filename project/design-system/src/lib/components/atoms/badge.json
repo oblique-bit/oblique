@@ -1,0 +1,159 @@
+{
+  "ob": {
+    "c": {
+      "badge": {
+        "color": {
+          "bg": {
+            "severity-low": {
+              "enabled": {
+                "value": "{ob.s.color.status.closed.bg.contrast-medium-inverse}",
+                "type": "color"
+              },
+              "disabled": {
+                "value": "{ob.s.color.bg.contrast-low}",
+                "type": "color"
+              }
+            },
+            "severity-medium": {
+              "enabled": {
+                "value": "{ob.s.color.status.info.bg.contrast-low-inverse}",
+                "type": "color"
+              },
+              "disabled": {
+                "value": "{ob.s.color.status.info.bg.contrast-low-inverse}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "lch",
+                      "color": "{ob.c.badge.color.bg.severity-low.enabled}"
+                    }
+                  }
+                }
+              }
+            },
+            "severity-high": {
+              "enabled": {
+                "value": "{ob.s.color.status.critical-new.bg.contrast-low-inverse}",
+                "type": "color"
+              },
+              "disabled": {
+                "value": "{ob.s.color.status.critical-new.bg.contrast-high-inverse}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.3",
+                      "space": "srgb",
+                      "color": "{ob.c.badge.color.bg.severity-low.enabled}"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "fg": {
+            "severity-low": {
+              "enabled": {
+                "value": "{ob.s.color.fg.contrast-high-inverse}",
+                "type": "color"
+              },
+              "disabled": {
+                "value": "{ob.s.color.fg.contrast-medium-inverse}",
+                "type": "color"
+              }
+            },
+            "severity-medium": {
+              "enabled": {
+                "value": "{ob.s.color.fg.contrast-high-inverse}",
+                "type": "color"
+              },
+              "disabled": {
+                "value": "{ob.s.color.fg.contrast-lowest-inverse}",
+                "type": "color"
+              }
+            },
+            "severity-high": {
+              "enabled": {
+                "value": "{ob.s.color.fg.contrast-high-inverse}",
+                "type": "color"
+              },
+              "disabled": {
+                "value": "{ob.s.color.fg.contrast-lowest-inverse}",
+                "type": "color"
+              }
+            }
+          }
+        },
+        "spacing": {
+          "padding": {
+            "horizontal": {
+              "sm": {
+                "value": "{ob.p.space.100}",
+                "type": "spacing",
+                "description": "makes the badge round"
+              },
+              "lg": {
+                "value": "{ob.p.space.150}",
+                "type": "spacing",
+                "description": "makes the badge round"
+              }
+            },
+            "vertical": {
+              "sm": {
+                "value": "{ob.p.space.100}",
+                "type": "spacing",
+                "description": "makes the badge round"
+              },
+              "lg": {
+                "value": "{ob.c.badge.spacing.padding.horizontal.lg}",
+                "type": "spacing",
+                "description": "makes the badge round"
+              }
+            }
+          }
+        },
+        "sizing": {
+          "max-width": {
+            "sm": {
+              "value": "{ob.p.size.450}",
+              "type": "sizing"
+            },
+            "lg": {
+              "value": "{ob.p.size.600}",
+              "type": "sizing"
+            }
+          },
+          "min-width": {
+            "sm": {
+              "value": "{ob.p.size.200}",
+              "type": "sizing"
+            },
+            "lg": {
+              "value": "{ob.p.size.250}",
+              "type": "sizing"
+            }
+          },
+          "height": {
+            "sm": {
+              "value": "{ob.p.size.200}",
+              "type": "sizing"
+            },
+            "lg": {
+              "value": "{ob.p.size.250}",
+              "type": "sizing"
+            }
+          }
+        },
+        "border-radius": {
+          "value": "{ob.s.radii.round}",
+          "type": "borderRadius",
+          "description": "For entire rounded badges"
+        }
+      }
+    }
+  }
+}

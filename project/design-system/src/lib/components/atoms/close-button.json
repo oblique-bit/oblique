@@ -1,0 +1,48 @@
+{
+  "ob": {
+    "c": {
+      "close-button": {
+        "sizing": {
+          "sm": {
+            "value": "{ob.s.icon.size.xs}",
+            "type": "sizing"
+          },
+          "md": {
+            "value": "{ob.s.icon.size.sm}",
+            "type": "sizing"
+          },
+          "lg": {
+            "value": "{ob.s.icon.size.md}",
+            "type": "sizing"
+          }
+        },
+        "color": {
+          "enabled": {
+            "value": "{ob.s.color.fg.contrast-high}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{ob.s.color.fg.a.hover}",
+            "type": "color"
+          },
+          "focus": {
+            "value": "{ob.s.color.border.focus-dark}",
+            "type": "color"
+          },
+          "pressed": {
+            "value": "{ob.s.color.fg.contrast-highest}",
+            "type": "color"
+          },
+          "active": {
+            "value": "{ob.s.color.fg.contrast-high-inverse}",
+            "type": "color"
+          },
+          "disabled": {
+            "value": "{ob.s.color.fg.a.disabled}",
+            "type": "color"
+          }
+        }
+      }
+    }
+  }
+}

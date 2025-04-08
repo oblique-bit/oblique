@@ -1,0 +1,387 @@
+{
+  "ob": {
+    "p": {
+      "fontFamily": {
+        "corporateFont": {
+          "value": "Noto Sans",
+          "type": "fontFamilies",
+          "description": "BIT Corporate Web Font"
+        }
+      },
+      "fontSizeUnitless": {
+        "100": {
+          "value": "3 * {ob.p.fontSizeUnitless._base}",
+          "type": "fontSizes"
+        },
+        "200": {
+          "value": "3.5 * {ob.p.fontSizeUnitless._base}",
+          "type": "fontSizes"
+        },
+        "300": {
+          "value": "4.25 * {ob.p.fontSizeUnitless._base}",
+          "type": "fontSizes"
+        },
+        "400": {
+          "value": "5.75 * {ob.p.fontSizeUnitless._base}",
+          "type": "fontSizes"
+        },
+        "500": {
+          "value": "7 * {ob.p.fontSizeUnitless._base}",
+          "type": "fontSizes"
+        },
+        "600": {
+          "value": "8.5 * {ob.p.fontSizeUnitless._base}",
+          "type": "fontSizes"
+        },
+        "700": {
+          "value": "9.75 * {ob.p.fontSizeUnitless._base}",
+          "type": "fontSizes"
+        },
+        "800": {
+          "value": "11.25 * {ob.p.fontSizeUnitless._base}",
+          "type": "fontSizes"
+        },
+        "900": {
+          "value": "12.25 * {ob.p.fontSizeUnitless._base}",
+          "type": "fontSizes"
+        },
+        "1000": {
+          "value": "14 * {ob.p.fontSizeUnitless._base}",
+          "type": "fontSizes"
+        },
+        "1100": {
+          "value": "15 * {ob.p.fontSizeUnitless._base}",
+          "type": "fontSizes"
+        },
+        "_base": {
+          "value": "{ob.p.scale.mult-static}",
+          "type": "fontSizes"
+        }
+      },
+      "letterSpacing-depr": {
+        "0": {
+          "value": "auto",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "50": {
+          "value": "0.5%",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "100": {
+          "value": "1%",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "150": {
+          "value": "1.5%",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "200": {
+          "value": "2%",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "250": {
+          "value": "2.5%",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "neg-50": {
+          "value": "-0.5%",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "neg-100": {
+          "value": "-1%",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "neg-150": {
+          "value": "-1.5%",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "neg-200": {
+          "value": "-2%",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "neg-250": {
+          "value": "-2.5%",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "neg-300": {
+          "value": "-3%",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        }
+      },
+      "fontWeight": {
+        "0": {
+          "value": "Regular",
+          "type": "fontWeights"
+        },
+        "100": {
+          "value": "Medium",
+          "type": "fontWeights"
+        },
+        "200": {
+          "value": "SemiBold",
+          "type": "fontWeights"
+        },
+        "300": {
+          "value": "Bold",
+          "type": "fontWeights"
+        },
+        "400": {
+          "value": "ExtraBold",
+          "type": "fontWeights"
+        }
+      },
+      "paragraphSpacing": {
+        "50": {
+          "value": "1* {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "100": {
+          "value": "2* {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "200": {
+          "value": "3* {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "300": {
+          "value": "4* {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "400": {
+          "value": "5* {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "500": {
+          "value": "6* {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "600": {
+          "value": "7* {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "700": {
+          "value": "8* {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "xs": {
+          "value": "2* {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "sm": {
+          "value": "3* {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "md": {
+          "value": "4* {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "lg": {
+          "value": "5* {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        }
+      },
+      "text-decoration": {
+        "underline": {
+          "value": "underline",
+          "type": "textDecoration"
+        },
+        "none": {
+          "value": "none",
+          "type": "textDecoration"
+        }
+      },
+      "lineHeight": {
+        "50": {
+          "value": "1* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "100": {
+          "value": "2* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "200": {
+          "value": "3* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "300": {
+          "value": "4* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "400": {
+          "value": "5* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "500": {
+          "value": "6* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "600": {
+          "value": "7* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "700": {
+          "value": "8* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "800": {
+          "value": "9* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "900": {
+          "value": "10* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "1000": {
+          "value": "11* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "1100": {
+          "value": "12* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "1200": {
+          "value": "13* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "1300": {
+          "value": "14* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "1400": {
+          "value": "15* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "1500": {
+          "value": "16* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "1600": {
+          "value": "17* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "1700": {
+          "value": "18* {ob.p.lineHeight._base}",
+          "type": "lineHeights"
+        },
+        "_base": {
+          "value": "{ob.p.scale.mult-static}",
+          "type": "lineHeights"
+        }
+      },
+      "fontSizeRem": {
+        "100": {
+          "value": "0.75rem",
+          "type": "fontSizes",
+          "description": "12px @ 16 base font size"
+        },
+        "200": {
+          "value": "0.88rem",
+          "type": "fontSizes",
+          "description": "14px @ 16 base font size"
+        },
+        "300": {
+          "value": "1.06rem",
+          "type": "fontSizes",
+          "description": "17px @ 16 base font size"
+        },
+        "400": {
+          "value": "1.44rem",
+          "type": "fontSizes",
+          "description": "23px @ 16 base font size"
+        },
+        "500": {
+          "value": "1.75rem",
+          "type": "fontSizes",
+          "description": "28px @ 16 base font size"
+        },
+        "600": {
+          "value": "2.12rem",
+          "type": "fontSizes",
+          "description": "34px @ 16 base font size"
+        },
+        "700": {
+          "value": "2.44rem",
+          "type": "fontSizes",
+          "description": "39px @ 16 base font size"
+        },
+        "800": {
+          "value": "2.81rem",
+          "type": "fontSizes",
+          "description": "45px @ 16 base font size"
+        },
+        "900": {
+          "value": "3.06rem",
+          "type": "fontSizes",
+          "description": "49px @ 16 base font size"
+        },
+        "1000": {
+          "value": "3.50rem",
+          "type": "fontSizes",
+          "description": "56px @ 16 base font size"
+        },
+        "1100": {
+          "value": "3.75rem",
+          "type": "fontSizes",
+          "description": "60px @ 16 base font size"
+        }
+      },
+      "textcase": {
+        "none": {
+          "value": "none",
+          "type": "textCase"
+        },
+        "uppercase": {
+          "value": "uppercase",
+          "type": "textCase"
+        },
+        "lowercase": {
+          "value": "uppercase",
+          "type": "textCase"
+        },
+        "capitalize": {
+          "value": "uppercase",
+          "type": "textCase"
+        }
+      },
+      "letterSpacing-px": {
+        "0": {
+          "value": "auto",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "50": {
+          "value": "0.5",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "neg-150": {
+          "value": "-1.5",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "neg-100": {
+          "value": "-1",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "neg-50": {
+          "value": "-0.5",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        }
+      }
+    }
+  }
+}

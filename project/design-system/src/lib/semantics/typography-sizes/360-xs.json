@@ -1,0 +1,289 @@
+{
+  "ob": {
+    "s": {
+      "fontFamily": {
+        "body": {
+          "value": "Noto Sans",
+          "type": "fontFamilies",
+          "description": "BIT Corporate Web Font"
+        }
+      },
+      "fontSize": {
+        "xs": {
+          "value": "{ob.p.fontSizeUnitless.100}",
+          "type": "fontSizes",
+          "description": "They have to be based on {ob.p.space.SpaceBase} so we can scale and be fluid, responsive"
+        },
+        "sm": {
+          "value": "{ob.p.fontSizeUnitless.200}",
+          "type": "fontSizes"
+        },
+        "md": {
+          "value": "{ob.p.fontSizeUnitless.300} +1",
+          "type": "fontSizes",
+          "description": "slightly larger front size for mobile for improved readability"
+        },
+        "lg": {
+          "value": "{ob.p.fontSizeUnitless.400}",
+          "type": "fontSizes"
+        },
+        "xl": {
+          "value": "{ob.p.fontSizeUnitless.500}",
+          "type": "fontSizes"
+        },
+        "2xl": {
+          "value": "{ob.p.fontSizeUnitless.500}",
+          "type": "fontSizes"
+        },
+        "3xl": {
+          "value": "{ob.p.fontSizeUnitless.500}",
+          "type": "fontSizes"
+        },
+        "4xl": {
+          "value": "{ob.p.fontSizeUnitless.500}",
+          "type": "fontSizes"
+        },
+        "_base": {
+          "value": "{ob.p.fontSizeUnitless.300}",
+          "type": "fontSizes"
+        }
+      },
+      "letterSpacing": {
+        "superNarrow": {
+          "value": "{ob.p.letterSpacing-depr.neg-300}",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "narrower": {
+          "value": "{ob.p.letterSpacing-depr.neg-150}",
+          "type": "letterSpacing",
+          "description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
+        },
+        "narrow": {
+          "value": "{ob.p.letterSpacing-depr.neg-50}",
+          "type": "letterSpacing",
+          "description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
+        },
+        "normal": {
+          "value": "{ob.p.letterSpacing-depr.0}",
+          "type": "letterSpacing",
+          "description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
+        },
+        "wide": {
+          "value": "{ob.p.letterSpacing-depr.50}",
+          "type": "letterSpacing",
+          "description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
+        }
+      },
+      "fontWeight": {
+        "regular": {
+          "value": "{ob.p.fontWeight.0}",
+          "type": "fontWeights"
+        },
+        "medium": {
+          "value": "{ob.p.fontWeight.100}",
+          "type": "fontWeights"
+        },
+        "semiBold": {
+          "value": "{ob.p.fontWeight.200}",
+          "type": "fontWeights"
+        },
+        "bold": {
+          "value": "{ob.p.fontWeight.300}",
+          "type": "fontWeights"
+        },
+        "extraBold": {
+          "value": "{ob.p.fontWeight.400}",
+          "type": "fontWeights"
+        }
+      },
+      "lineHeight": {
+        "xs": {
+          "value": "{ob.p.lineHeight.300}",
+          "type": "lineHeights"
+        },
+        "sm": {
+          "value": "{ob.p.lineHeight.400}",
+          "type": "lineHeights"
+        },
+        "md": {
+          "value": "{ob.p.lineHeight.500}",
+          "type": "lineHeights"
+        },
+        "lg": {
+          "value": "{ob.p.lineHeight.600}",
+          "type": "lineHeights"
+        },
+        "xl": {
+          "value": "{ob.p.lineHeight.700}",
+          "type": "lineHeights"
+        },
+        "2xl": {
+          "value": "{ob.p.lineHeight.700}",
+          "type": "lineHeights"
+        },
+        "3xl": {
+          "value": "{ob.p.lineHeight.700}",
+          "type": "lineHeights"
+        },
+        "4xl": {
+          "value": "{ob.p.lineHeight.700}",
+          "type": "lineHeights"
+        }
+      },
+      "paragraphSpacing": {
+        "paragraph": {
+          "value": "3* {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing",
+          "description": "Standard spacing between two paragraphs <p> on xs screens."
+        }
+      },
+      "text-decoration": {
+        "bodyLink": {
+          "value": "{ob.p.text-decoration.underline}",
+          "type": "textDecoration"
+        },
+        "ListLink": {
+          "value": "{ob.p.text-decoration.none}",
+          "type": "textDecoration"
+        }
+      },
+      "spacing": {
+        "heading": {
+          "H1": {
+            "bottom": {
+              "value": "{ob.s.spacing.xl}",
+              "type": "spacing"
+            }
+          },
+          "H2": {
+            "bottom": {
+              "value": "{ob.s.spacing.xl}",
+              "type": "spacing"
+            }
+          },
+          "H3": {
+            "bottom": {
+              "value": "{ob.s.spacing.xl}",
+              "type": "spacing"
+            }
+          },
+          "H4": {
+            "bottom": {
+              "value": "{ob.s.spacing.xl}",
+              "type": "spacing"
+            }
+          },
+          "H5": {
+            "bottom": {
+              "value": "{ob.s.spacing.md}",
+              "type": "spacing"
+            }
+          },
+          "H6": {
+            "bottom": {
+              "value": "{ob.s.spacing.md}",
+              "type": "spacing"
+            }
+          }
+        },
+        "paragraph": {
+          "L": {
+            "bottom": {
+              "value": "{ob.s.spacing.paragraph.default}",
+              "type": "spacing"
+            }
+          },
+          "S": {
+            "bottom": {
+              "value": "{ob.s.spacing.paragraph.default}",
+              "type": "spacing"
+            }
+          },
+          "default": {
+            "value": "{ob.s.spacing.3xl}",
+            "type": "spacing"
+          }
+        },
+        "title": {
+          "L": {
+            "bottom": {
+              "value": "ob.s.spacing.title.default",
+              "type": "spacing"
+            }
+          },
+          "M": {
+            "bottom": {
+              "value": "ob.s.spacing.title.default",
+              "type": "spacing"
+            }
+          },
+          "S": {
+            "bottom": {
+              "value": "ob.s.spacing.title.default",
+              "type": "spacing"
+            }
+          },
+          "default": {
+            "value": "{ob.s.spacing.md}",
+            "type": "spacing"
+          }
+        }
+      },
+      "letterSpacingRem": {
+        "superNarrow": {
+          "value": "-0.03rem",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "narrower": {
+          "value": "-0.01rem",
+          "type": "letterSpacing",
+          "description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
+        },
+        "narrow": {
+          "value": "0.005rem",
+          "type": "letterSpacing",
+          "description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
+        },
+        "normal": {
+          "value": "{ob.p.letterSpacing-depr.0}",
+          "type": "letterSpacing",
+          "description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
+        },
+        "wide": {
+          "value": "0.5%",
+          "type": "letterSpacing",
+          "description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
+        }
+      },
+      "letterSpacing-px": {
+        "superNarrow": {
+          "value": "{ob.p.letterSpacing-px.neg-150}",
+          "type": "letterSpacing",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "narrower": {
+          "value": "{ob.p.letterSpacing-px.neg-100}",
+          "type": "letterSpacing",
+          "description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
+        },
+        "narrow": {
+          "value": "{ob.p.letterSpacing-px.neg-50}",
+          "type": "letterSpacing",
+          "description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
+        },
+        "normal": {
+          "value": "{ob.p.letterSpacing-px.0}",
+          "type": "letterSpacing",
+          "description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
+        },
+        "wide": {
+          "value": "{ob.p.letterSpacing-px.50}",
+          "type": "letterSpacing",
+          "description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
+        }
+      }
+    }
+  }
+}

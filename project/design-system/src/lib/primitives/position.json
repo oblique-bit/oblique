@@ -1,0 +1,16 @@
+{
+  "ob": {
+    "p": {
+      "position": {
+        "top": {
+          "value": "0",
+          "type": "spacing"
+        },
+        "right": {
+          "value": "0",
+          "type": "spacing"
+        }
+      }
+    }
+  }
+}

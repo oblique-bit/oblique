@@ -1,0 +1,16 @@
+{
+  "ob": {
+    "s": {
+      "color": {
+        "accent": {
+          "value": "{ob.p.colors.basic.brand}",
+          "type": "color"
+        },
+        "no-color": {
+          "value": "rgba(0,0,0,0)",
+          "type": "color"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "ob": {
+    "p": {
+      "radii": {
+        "50": {
+          "value": "{ob.p.radii._base} * .5",
+          "type": "borderRadius"
+        },
+        "75": {
+          "value": "{ob.p.radii.50} * .75",
+          "type": "borderRadius"
+        },
+        "100": {
+          "value": "{ob.p.radii._base} * 1",
+          "type": "borderRadius"
+        },
+        "150": {
+          "value": "{ob.p.radii._base} * 1.5",
+          "type": "borderRadius"
+        },
+        "200": {
+          "value": "{ob.p.radii._base} * 2",
+          "type": "borderRadius"
+        },
+        "250": {
+          "value": "{ob.p.radii._base} * 2.50",
+          "type": "borderRadius"
+        },
+        "300": {
+          "value": "{ob.p.radii._base} * 3",
+          "type": "borderRadius"
+        },
+        "400": {
+          "value": "{ob.p.radii._base} * 4",
+          "type": "borderRadius"
+        },
+        "500": {
+          "value": "{ob.p.radii._base} * 5",
+          "type": "borderRadius"
+        },
+        "600": {
+          "value": "{ob.p.radii._base} * 6",
+          "type": "borderRadius"
+        },
+        "800": {
+          "value": "{ob.p.radii._base} * 8",
+          "type": "borderRadius"
+        },
+        "none": {
+          "value": "0",
+          "type": "borderRadius"
+        },
+        "round": {
+          "value": "9999",
+          "type": "borderRadius"
+        },
+        "_base": {
+          "value": "{ob.p.scaleBase}",
+          "type": "borderRadius"
+        }
+      },
+      "borderWidth": {
+        "100": {
+          "value": "{ob.p.borderWidth._base} *0.25",
+          "type": "borderWidth"
+        },
+        "200": {
+          "value": "{ob.p.borderWidth._base} *0.5",
+          "type": "borderWidth"
+        },
+        "300": {
+          "value": "{ob.p.borderWidth._base} *0.75",
+          "type": "borderWidth"
+        },
+        "400": {
+          "value": "{ob.p.borderWidth._base} *1",
+          "type": "borderWidth"
+        },
+        "500": {
+          "value": "{ob.p.borderWidth._base} *1.25",
+          "type": "borderWidth"
+        },
+        "600": {
+          "value": "{ob.p.borderWidth._base} *1.5",
+          "type": "borderWidth"
+        },
+        "700": {
+          "value": "{ob.p.borderWidth._base} *2",
+          "type": "borderWidth",
+          "description": "Rarely used, e.g., for the Spinner component."
+        },
+        "none": {
+          "value": "0",
+          "type": "borderWidth"
+        },
+        "_base": {
+          "value": "{ob.p.scaleBase}",
+          "type": "borderWidth"
+        }
+      }
+    }
+  }
+}
