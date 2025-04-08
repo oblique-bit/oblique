@@ -1,0 +1,22 @@
+{
+  "ob": {
+    "p": {
+      "assets": {
+        "logo": {
+          "positive": {
+            "value": "logo-positive.svg",
+            "type": "asset"
+          },
+          "negative": {
+            "value": "logo-negative.svg",
+            "type": "asset"
+          },
+          "highcontrast": {
+            "value": "logo-highcontrast.svg",
+            "type": "asset"
+          }
+        }
+      }
+    }
+  }
+}

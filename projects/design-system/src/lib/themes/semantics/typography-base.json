@@ -1,0 +1,50 @@
+{
+  "ob": {
+    "s": {
+      "fontFamily": {
+        "body": {
+          "value": "Noto Sans",
+          "type": "fontFamilies",
+          "description": "BIT Corporate Web Font"
+        }
+      },
+      "fontWeight": {
+        "regular": {
+          "value": "{ob.p.fontWeight.0}",
+          "type": "fontWeights"
+        },
+        "medium": {
+          "value": "{ob.p.fontWeight.100}",
+          "type": "fontWeights"
+        },
+        "semiBold": {
+          "value": "{ob.p.fontWeight.200}",
+          "type": "fontWeights"
+        },
+        "bold": {
+          "value": "{ob.p.fontWeight.300}",
+          "type": "fontWeights"
+        },
+        "extraBold": {
+          "value": "{ob.p.fontWeight.400}",
+          "type": "fontWeights"
+        }
+      },
+      "text-decoration": {
+        "bodyLink": {
+          "value": "{ob.p.text-decoration.underline}",
+          "type": "textDecoration"
+        },
+        "bodyLink-focus": {
+          "value": "{ob.p.text-decoration.none}",
+          "type": "textDecoration",
+          "description": "no need for underline since there is the focus-border"
+        },
+        "link-group": {
+          "value": "{ob.p.text-decoration.none}",
+          "type": "textDecoration"
+        }
+      }
+    }
+  }
+}
