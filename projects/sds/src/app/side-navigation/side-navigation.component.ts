@@ -19,6 +19,7 @@ import {VersionComponent} from './version/version.component';
 import {ImageComponent} from './image/image.component';
 import {VersionService} from '../shared/version/version.service';
 import {SlugService} from '../shared/slug/slug.service';
+import {WINDOW} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-side-navigation',
@@ -58,6 +59,8 @@ export class SideNavigationComponent implements OnInit {
 	private readonly slugToIdService = inject(SlugToIdService);
 	private readonly slugService = inject(SlugService);
 	private readonly versionService = inject(VersionService);
+	private readonly window = inject(WINDOW);
+	private readonly collapseBreakpointSize = 905;
 
 	constructor() {
 		this.urlParamVersion$ = this.prepareUrlParams();
@@ -77,8 +80,10 @@ export class SideNavigationComponent implements OnInit {
 	}
 
 	toggleMobileNavigation(): void {
-		this.displayMobileNavigation = !this.displayMobileNavigation;
-		this.showMobileNavigation.emit(this.displayMobileNavigation);
+		if (this.isLayoutCollapsed()) {
+			this.displayMobileNavigation = !this.displayMobileNavigation;
+			this.showMobileNavigation.emit(this.displayMobileNavigation);
+		}
 	}
 
 	@HostListener('window:keydown', ['$event'])
@@ -203,5 +208,9 @@ export class SideNavigationComponent implements OnInit {
 					void this.router.navigate(['..', slug], {...extras, relativeTo: this.activatedRoute.children[0]});
 				}
 			});
+	}
+
+	private isLayoutCollapsed(): boolean {
+		return this.window.matchMedia(`(max-width: ${this.collapseBreakpointSize}px)`).matches;
 	}
 }

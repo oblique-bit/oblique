@@ -8,6 +8,7 @@ import {CmsDataService} from './cms/cms-data.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {delay, of} from 'rxjs';
+import {WINDOW} from '@oblique/oblique';
 
 describe('AppComponent', () => {
 	let component: AppComponent;
@@ -22,7 +23,8 @@ describe('AppComponent', () => {
 				{
 					provide: TranslateService,
 					useValue: {addLangs: jest.fn(), setDefaultLang: jest.fn(), use: jest.fn(), stream: jest.fn().mockReturnValue(of(''))}
-				}
+				},
+				{provide: WINDOW, useValue: window}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
