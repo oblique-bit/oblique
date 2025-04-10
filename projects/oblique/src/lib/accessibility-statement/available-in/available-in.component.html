@@ -1,0 +1,8 @@
+<!-- use ng-container instead of @if and @for to avoid inserting unwanted whitespaces -->
+<ng-container *ngIf="show()">
+	({{ "i18n.common.in" | translate }}
+	<ng-container *ngFor="let language of parsedLanguages(); let $count = count; let $last = last; let $index = index">
+		<ng-container *ngIf="$count > 1 && $last"> {{ "i18n.common.and" | translate }} </ng-container>{{ language | translate
+		}}<ng-container *ngIf="$count > 1 && $count > $index + 2">, </ng-container><ng-container *ngIf="$last">)</ng-container>
+	</ng-container>
+</ng-container>

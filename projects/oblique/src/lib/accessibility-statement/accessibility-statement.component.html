@@ -67,6 +67,7 @@
 	@for (link of generalLinks; track link) {
 		<li>
 			<a [href]="link.url | translate" [isExternalLink]="true">{{ link.label | translate }}</a>
+			<ob-available-in [languages]="link.availableIn" />
 		</li>
 	}
 </ul>
@@ -77,6 +78,7 @@
 	@for (link of accessibilityLinks; track link) {
 		<li>
 			<a [href]="link.url | translate" [isExternalLink]="true">{{ link.label | translate }}</a>
+			<ob-available-in [languages]="link.availableIn" />
 		</li>
 	}
 </ul>
