@@ -508,19 +508,17 @@
             }
           },
           "form": {
-            "input": {
-              "label": {
-                "value": "{ob.s.typography.content.body.regular}",
-                "type": "typography"
-              },
-              "text": {
-                "value": "{ob.s.typography.content.body.regular}",
-                "type": "typography"
-              },
-              "hint": {
-                "value": "{ob.s.typography.type-scale.xs.regular}",
-                "type": "typography"
-              }
+            "label": {
+              "value": "{ob.s.typography.content.body.regular}",
+              "type": "typography"
+            },
+            "text": {
+              "value": "{ob.s.typography.content.body.regular}",
+              "type": "typography"
+            },
+            "hint": {
+              "value": "{ob.s.typography.type-scale.xs.regular}",
+              "type": "typography"
             }
           },
           "list-group": {
