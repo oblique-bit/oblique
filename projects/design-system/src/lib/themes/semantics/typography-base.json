@@ -2,8 +2,8 @@
   "ob": {
     "s": {
       "fontFamily": {
-        "body": {
-          "value": "Noto Sans",
+        "standard": {
+          "value": "{ob.p.fontFamily.corporateFont}",
           "type": "fontFamilies",
           "description": "BIT Corporate Web Font"
         }

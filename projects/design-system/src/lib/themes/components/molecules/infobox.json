@@ -144,12 +144,12 @@
         },
         "typography": {
           "title": {
-            "value": "{ob.s.typography.body.L.strong}",
+            "value": "{ob.s.typography.content.body.strong}",
             "type": "typography",
             "description": "The message is in a bold font weight to build visual contrast and emphasize the hierarchy."
           },
           "body": {
-            "value": "{ob.s.typography.body.L.regular}",
+            "value": "{ob.s.typography.content.body.regular}",
             "type": "typography",
             "color": {
               "value": "{ob.s.color.text.surfaceLight.body.default}",
