@@ -538,25 +538,17 @@
               "value": "{ob.s.typography.size-scale.xl.regular}",
               "type": "typography"
             },
-            "submenu": {
-              "row": {
-                "label": {
-                  "value": "{ob.s.typography.size-scale.xl.regular}",
-                  "type": "typography"
-                }
-              }
+            "horizontal-nav-cell": {
+              "value": "{ob.s.typography.content.body.regular}",
+              "type": "typography"
             },
-            "horizontal-nav": {
-              "cell": {
-                "value": "{ob.s.typography.size-scale.xl.regular}",
-                "type": "typography"
-              }
+            "submenu-row-label": {
+              "value": "{ob.s.typography.size-scale.sm.regular}",
+              "type": "typography"
             },
-            "language": {
-              "label": {
-                "value": "{ob.s.typography.size-scale.xl.regular}",
-                "type": "typography"
-              }
+            "language-label": {
+              "value": "{ob.s.typography.size-scale.sm.regular}",
+              "type": "typography"
             }
           },
           "off-canvas": {
