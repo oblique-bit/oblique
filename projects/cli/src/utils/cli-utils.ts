@@ -1,5 +1,6 @@
 import {ObCommandConfig, ObOptions} from './ob-cli.model';
 import {ExecSyncOptions, execSync} from 'child_process';
+import {gte, major} from 'semver';
 
 export const currentVersions = {
 	/* eslint-disable @typescript-eslint/naming-convention */
@@ -73,12 +74,30 @@ export const runObCommand = (): void => {
 
 export const obTitle = `Oblique Cli`;
 
+export const recommendedVersion = 20;
+export const minimumSupportedVersion = '18.3.0';
+
 export function getHelpText(command: 'ob' | 'ob new' | 'ob update'): string {
 	return `Shows a help message for the "${command}" command in the console`;
 }
 
+export function checkNodeVersion(): void {
+	console.info('Checks your node version');
+	if (!isNodeVersionSupported(minimumSupportedVersion)) {
+		console.error(
+			`Error: Oblique CLI requires Node.js v${minimumSupportedVersion} or higher. You are using v${process.versions.node}. Please upgrade.`
+		);
+		process.exit(1);
+	} else if (!isNodeVersionRecommended(recommendedVersion)) {
+		console.warn(
+			`Warning: Oblique CLI was tested with Node.js v${recommendedVersion}, but you are using v${process.versions.node}. Compatibility issues may occur.`
+		);
+	}
+}
+
 export const startObCommand = <T>(callback: (options: T) => void, label: string, options: T): void => {
 	console.info(obTitle.toUpperCase());
+	checkNodeVersion();
 	console.time(label);
 	callback(options);
 	console.timeEnd(label);
@@ -149,6 +168,16 @@ export function execute(config: ObCommandConfig): void {
 		case 'npmOutdated':
 			return executeCommand('npm outdated', config.execSyncOptions);
 	}
+}
+
+function isNodeVersionRecommended(recommendedNodeMajorVersion: number): boolean {
+	const currentNodeVersion: string = process.versions.node;
+	return major(currentNodeVersion) === recommendedNodeMajorVersion;
+}
+
+function isNodeVersionSupported(minimumSupportedNodeVersion: string): boolean {
+	const currentNodeVersion: string = process.versions.node;
+	return gte(currentNodeVersion, minimumSupportedNodeVersion);
 }
 
 function executeNgCommand(command: string, options: ObOptions = {}, execSyncOptions: ExecSyncOptions = {}): void {

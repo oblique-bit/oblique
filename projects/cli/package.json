@@ -24,6 +24,10 @@
   },
   "dependencies": {
     "@commander-js/extra-typings": "^12.1.0",
-    "chalk": "^4.1.2"
+    "chalk": "^4.1.2",
+    "semver": "^7.7.1"
+  },
+  "devDependencies": {
+    "@types/semver": "^7.7.0"
   }
 }
