@@ -449,15 +449,15 @@
               "type": "typography"
             },
             "subtitle": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.size-scale.sm.regular}",
               "type": "typography"
             },
             "content": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.size-scale.sm.regular}",
               "type": "typography"
             },
             "footer": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.size-scale.xs.regular}",
               "type": "typography"
             }
           },
