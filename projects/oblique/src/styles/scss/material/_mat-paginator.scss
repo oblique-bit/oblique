@@ -81,12 +81,14 @@
 		background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><title>ChevronLineRight</title><polygon points='6.154 3.375 11.134 12 6.154 20.625 7.453 21.375 12.866 12 7.453 2.625 6.154 3.375' fill='%23171717'/><rect x='15.80078' y='3' width='1.5' height='18' fill='%23171717'/></svg>");
 	}
 
-	.mat-mdc-paginator-navigation-next[disabled],
-	.mat-mdc-paginator-navigation-last[disabled],
-	.mat-mdc-paginator-navigation-first[disabled],
-	.mat-mdc-paginator-navigation-previous[disabled] {
-		// filters to make it be close to $ob-secondary-300 / #828E9A
-		filter: invert(64%) sepia(7%) saturate(675%) hue-rotate(169deg) brightness(86%) contrast(89%);
+	.mat-mdc-button-disabled {
+		&.mat-mdc-paginator-navigation-next,
+		&.mat-mdc-paginator-navigation-last,
+		&.mat-mdc-paginator-navigation-first,
+		&.mat-mdc-paginator-navigation-previous {
+			// filters to make it be close to $ob-secondary-300 / #828E9A
+			filter: invert(64%) sepia(7%) saturate(675%) hue-rotate(169deg) brightness(86%) contrast(89%);
+		}
 	}
 
 	button {
