@@ -4,6 +4,68 @@
       "typography": {
         "content": {
           "heading": {
+            "compact-default": {
+              "H1": {
+                "value": {
+                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontSize": "{ob.s.fontSize.xl}",
+                  "fontWeight": "{ob.s.fontWeight.bold}",
+                  "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
+                  "lineHeight": "{ob.s.lineHeight.xl}"
+                },
+                "type": "typography"
+              },
+              "H2": {
+                "value": {
+                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontSize": "{ob.s.fontSize.lg}",
+                  "fontWeight": "{ob.s.fontWeight.bold}",
+                  "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
+                  "lineHeight": "{ob.s.lineHeight.lg}"
+                },
+                "type": "typography"
+              },
+              "H3": {
+                "value": {
+                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontSize": "{ob.s.fontSize.md}",
+                  "fontWeight": "{ob.p.fontWeight.300}",
+                  "lineHeight": "{ob.s.lineHeight.md}",
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
+                },
+                "type": "typography"
+              },
+              "H4": {
+                "value": {
+                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontSize": "{ob.s.fontSize.md}",
+                  "fontWeight": "{ob.p.fontWeight.300}",
+                  "lineHeight": "{ob.s.lineHeight.md}",
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
+                },
+                "type": "typography"
+              },
+              "H5": {
+                "value": {
+                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontSize": "{ob.s.fontSize.md}",
+                  "fontWeight": "{ob.s.fontWeight.bold}",
+                  "lineHeight": "{ob.s.lineHeight.md}",
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
+                },
+                "type": "typography"
+              },
+              "H6": {
+                "value": {
+                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontSize": "{ob.s.fontSize.md}",
+                  "fontWeight": "{ob.s.fontWeight.bold}",
+                  "lineHeight": "{ob.s.lineHeight.md}",
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
+                },
+                "type": "typography"
+              }
+            },
             "fullScale": {
               "H1": {
                 "value": {
@@ -52,68 +114,6 @@
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
                   "lineHeight": "{ob.s.lineHeight.lg}"
-                },
-                "type": "typography"
-              },
-              "H6": {
-                "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
-                  "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.s.fontWeight.bold}",
-                  "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
-                },
-                "type": "typography"
-              }
-            },
-            "compact": {
-              "H1": {
-                "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
-                  "fontSize": "{ob.s.fontSize.xl}",
-                  "fontWeight": "{ob.s.fontWeight.bold}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
-                  "lineHeight": "{ob.s.lineHeight.xl}"
-                },
-                "type": "typography"
-              },
-              "H2": {
-                "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
-                  "fontSize": "{ob.s.fontSize.lg}",
-                  "fontWeight": "{ob.s.fontWeight.bold}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
-                  "lineHeight": "{ob.s.lineHeight.lg}"
-                },
-                "type": "typography"
-              },
-              "H3": {
-                "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
-                  "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.p.fontWeight.300}",
-                  "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
-                },
-                "type": "typography"
-              },
-              "H4": {
-                "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
-                  "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.p.fontWeight.300}",
-                  "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
-                },
-                "type": "typography"
-              },
-              "H5": {
-                "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
-                  "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.s.fontWeight.bold}",
-                  "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
                 "type": "typography"
               },
@@ -353,7 +353,7 @@
           },
           "dialog": {
             "title": {
-              "value": "{ob.s.typography.content.heading.compact.H2}",
+              "value": "{ob.s.typography.content.heading.compact-default.H2}",
               "type": "typography"
             },
             "text": {
