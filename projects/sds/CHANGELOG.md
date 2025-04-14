@@ -1,3 +1,13 @@
+# [13.1.2](https://github.com/oblique-bit/oblique/compare/sds-13.1.1_master__622p8_2025-04-07T142046...13.1.2) (2025-04-14)
+
+## Bug Fixes
+
+- **side-navigation:** remove typo in url parsing ([88418be3](https://github.com/oblique-bit/oblique/commit/88418be39e7e506f0df6a0d61d2a564857b351b2))
+
+## Features
+
+- **side-navigation:** ensure that the side navigation is only toggled in mobile mode ([8af53860](https://github.com/oblique-bit/oblique/commit/8af5386055a109cce28322b60e48266b96344d5a))
+
 # [13.1.1](https://github.com/oblique-bit/oblique/compare/13.1.0...13.1.1) (2025-04-07)
 
 ## Bug Fixes

@@ -1,3 +1,14 @@
+# [13.1.2](https://github.com/oblique-bit/oblique/compare/sds-13.1.1_master__622p8_2025-04-07T142046...13.1.2) (2025-04-14)
+
+## Bug Fixes
+
+- **accessibility-statement:** move other languages text outside of link ([2ce0ca2c](https://github.com/oblique-bit/oblique/commit/2ce0ca2c6b0873c2c8c9036310b8eab552171ae4))
+- **accessibility-statement:** improve German translations ([ff3cdc30](https://github.com/oblique-bit/oblique/commit/ff3cdc30586da4c3a00abd54bf5a983ffe82c9e5))
+- **accessibility-statement:** update broken accessibility urls ([c26a41ed](https://github.com/oblique-bit/oblique/commit/c26a41ed6dc13c4f89e5729d3ea20360c86d7a56))
+- **external-link:** ensure top-margin to be applied only to link that are not styled buttons ([4f12021c](https://github.com/oblique-bit/oblique/commit/4f12021c040929c368cf9ba828b5309a996df6c2))
+- **paginator:** ensure that the disabled button state is displayed ([9cc96d69](https://github.com/oblique-bit/oblique/commit/9cc96d6994d8070bebadfdaf3dc245deaa55c10b))
+- **translation:** fix spaces and single quotes ([7ea684c6](https://github.com/oblique-bit/oblique/commit/7ea684c62083f8e7a71ba8839bb200d75b9c4f34))
+
 # [13.1.1](https://github.com/oblique-bit/oblique/compare/13.1.0...13.1.1) (2025-04-07)
 
 ## Bug Fixes

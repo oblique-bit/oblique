@@ -18,6 +18,8 @@ import {AccordionLinksComponent} from './accordion-links/accordion-links.compone
 import {VersionComponent} from './version/version.component';
 import {ImageComponent} from './image/image.component';
 import {VersionService} from '../shared/version/version.service';
+import {SlugService} from '../shared/slug/slug.service';
+import {WINDOW} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-side-navigation',
@@ -55,7 +57,10 @@ export class SideNavigationComponent implements OnInit {
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
 	private readonly slugToIdService = inject(SlugToIdService);
+	private readonly slugService = inject(SlugService);
 	private readonly versionService = inject(VersionService);
+	private readonly window = inject(WINDOW);
+	private readonly collapseBreakpointSize = 905;
 
 	constructor() {
 		this.urlParamVersion$ = this.prepareUrlParams();
@@ -75,8 +80,10 @@ export class SideNavigationComponent implements OnInit {
 	}
 
 	toggleMobileNavigation(): void {
-		this.displayMobileNavigation = !this.displayMobileNavigation;
-		this.showMobileNavigation.emit(this.displayMobileNavigation);
+		if (this.isLayoutCollapsed()) {
+			this.displayMobileNavigation = !this.displayMobileNavigation;
+			this.showMobileNavigation.emit(this.displayMobileNavigation);
+		}
 	}
 
 	@HostListener('window:keydown', ['$event'])
@@ -185,20 +192,12 @@ export class SideNavigationComponent implements OnInit {
 		return +activatedRoute.snapshot.queryParamMap.get('version') || undefined;
 	}
 
-	private getCurrentSlug(): string {
-		return this.router.url
-			.replace(/[#|?].*/, '') // remove queryParams & fragment
-			.replace(/\/(?:api|ui_ux|examples)/, '')
-			.split('/')
-			.pop();
-	}
-
 	private redirectOnVersionChange(): void {
 		this.version$
 			.pipe(
 				skip(3),
 				takeUntilDestroyed(),
-				map(version => this.getNewSlug(version, this.getCurrentSlug())),
+				map(version => this.slugService.getNewSlug(version)),
 				filter(slug => !!slug)
 			)
 			.subscribe(slug => {
@@ -211,78 +210,7 @@ export class SideNavigationComponent implements OnInit {
 			});
 	}
 
-	private getNewSlug(version: number, slug: string): string | undefined {
-		switch (version) {
-			case 10:
-				return 'welcome-10';
-			case 11:
-				return this.redirectVersion11(slug);
-			case 12:
-				return this.redirectVersion12(slug);
-			case 13:
-				return this.redirectVersion13(slug);
-			default:
-				return undefined;
-		}
-	}
-
-	private redirectVersion11(slug: string): string | undefined {
-		switch (slug) {
-			case 'welcome-10':
-				return 'welcome';
-			case 'configuration-12':
-				return 'configuration';
-			case 'master-layout-12':
-			case 'master-layout-13':
-				return 'master-layout';
-			case 'popover-12':
-				return 'popover';
-			case 'shadow':
-			case 'getting-started-figma':
-			case 'getting-started-as-a-designer':
-				return 'invalid';
-			default:
-				return undefined;
-		}
-	}
-
-	private redirectVersion12(slug: string): string | undefined {
-		switch (slug) {
-			case 'welcome-10':
-				return 'welcome';
-			case 'configuration':
-				return 'configuration-12';
-			case 'master-layout':
-			case 'master-layout-13':
-				return 'master-layout-12';
-			case 'popover':
-				return 'popover-12';
-			case 'language':
-			case 'datepicker':
-			case 'getting-started-figma':
-			case 'getting-started-as-a-designer':
-				return 'invalid';
-			default:
-				return undefined;
-		}
-	}
-
-	private redirectVersion13(slug: string): string | undefined {
-		switch (slug) {
-			case 'welcome-10':
-				return 'welcome';
-			case 'configuration':
-				return 'configuration-12';
-			case 'master-layout':
-			case 'master-layout-12':
-				return 'master-layout-13';
-			case 'popover':
-				return 'popover-12';
-			case 'language':
-			case 'datepicker':
-				return 'invalid';
-			default:
-				return undefined;
-		}
+	private isLayoutCollapsed(): boolean {
+		return this.window.matchMedia(`(max-width: ${this.collapseBreakpointSize}px)`).matches;
 	}
 }
