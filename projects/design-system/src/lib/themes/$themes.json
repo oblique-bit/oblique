@@ -197,7 +197,8 @@
       "components/molecules/tag": "enabled",
       "components/atoms/close-button": "enabled",
       "components/molecules/pills": "enabled",
-      "components/sections/footer": "enabled"
+      "components/sections/footer": "enabled",
+      "semantics/typography-scale": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:10:2",
     "$figmaModeId": "10:0",
@@ -541,7 +542,9 @@
     },
     "selectedTokenSets": {
       "modes/breakpoints/1440-lg": "enabled",
-      "semantics/typography-modes/1440-lg": "enabled"
+      "semantics/typography-modes/1440-lg": "enabled",
+      "semantics/typography-scale": "source",
+      "semantics/typography-styles": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "8bd366af93fb72d0f9044afb6926ac4ed40e700f",
@@ -655,7 +658,9 @@
     },
     "selectedTokenSets": {
       "modes/breakpoints/360-xs": "enabled",
-      "semantics/typography-modes/360-xs": "enabled"
+      "semantics/typography-modes/360-xs": "enabled",
+      "semantics/typography-scale": "source",
+      "semantics/typography-styles": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "8bd366af93fb72d0f9044afb6926ac4ed40e700f",
@@ -749,7 +754,8 @@
       "semantics/colors/modes/light": "enabled",
       "semantics/colors/static": "enabled",
       "components/molecules/button-modes/light-colored": "enabled",
-      "components/molecules/tags-modes/light": "enabled"
+      "components/molecules/tags-modes/light": "enabled",
+      "semantics/typography-scale": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:10:4",
     "$figmaModeId": "10:3",
@@ -959,7 +965,8 @@
       "semantics/colors/modes/dark": "enabled",
       "semantics/colors/static": "enabled",
       "components/molecules/button-modes/dark-monochrome": "enabled",
-      "components/molecules/tags-modes/dark": "enabled"
+      "components/molecules/tags-modes/dark": "enabled",
+      "semantics/typography-scale": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:10:4",
     "$figmaModeId": "10:4",

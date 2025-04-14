@@ -1,0 +1,132 @@
+{
+  "ob": {
+    "s": {
+      "typography": {
+        "type-scale": {
+          "xs": {
+            "regular": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontWeight": "{ob.s.fontWeight.medium}",
+                "fontSize": "{ob.s.fontSize.xs}",
+                "lineHeight": "{ob.s.lineHeight.xs}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.xs}"
+              },
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Used in Figma styles for components such as Footer, Badge etc."
+            },
+            "strong": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontWeight": "{ob.s.fontWeight.extraBold}",
+                "fontSize": "{ob.s.fontSize.xs}",
+                "lineHeight": "{ob.s.lineHeight.xs}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.xs}"
+              },
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Having a weight ExtraBold, not used in Figma componets, yes staying at disposal in Figma styles."
+            }
+          },
+          "sm": {
+            "regular": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontWeight": "{ob.s.fontWeight.medium}",
+                "fontSize": "{ob.s.fontSize.sm}",
+                "lineHeight": "{ob.s.lineHeight.xs}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.sm}"
+              },
+              "type": "typography"
+            },
+            "strong": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontWeight": "{ob.s.fontWeight.extraBold}",
+                "fontSize": "{ob.s.fontSize.sm}",
+                "lineHeight": "{ob.s.lineHeight.xs}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.sm}"
+              },
+              "type": "typography"
+            }
+          },
+          "md": {
+            "regular": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontWeight": "{ob.s.fontWeight.medium}",
+                "fontSize": "{ob.s.fontSize.md}",
+                "lineHeight": "{ob.s.lineHeight.xs}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.md}"
+              },
+              "type": "typography"
+            },
+            "strong": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontWeight": "{ob.s.fontWeight.extraBold}",
+                "fontSize": "{ob.s.fontSize.md}",
+                "lineHeight": "{ob.s.lineHeight.xs}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.md}"
+              },
+              "type": "typography"
+            }
+          },
+          "lg": {
+            "regular": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontWeight": "{ob.s.fontWeight.medium}",
+                "fontSize": "{ob.s.fontSize.md}",
+                "lineHeight": "{ob.s.lineHeight.lg}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
+              },
+              "type": "typography"
+            },
+            "strong": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontWeight": "{ob.s.fontWeight.extraBold}",
+                "fontSize": "{ob.s.fontSize.md}",
+                "lineHeight": "{ob.s.lineHeight.lg}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
+              },
+              "type": "typography"
+            }
+          },
+          "xl": {
+            "regular": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontWeight": "{ob.s.fontWeight.medium}",
+                "fontSize": "{ob.s.fontSize.xl}",
+                "lineHeight": "{ob.s.lineHeight.xl}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
+              },
+              "type": "typography"
+            },
+            "strong": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontWeight": "{ob.s.fontWeight.extraBold}",
+                "fontSize": "{ob.s.fontSize.xl}",
+                "lineHeight": "{ob.s.lineHeight.xl}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
+              },
+              "type": "typography"
+            }
+          }
+        }
+      }
+    }
+  }
+}

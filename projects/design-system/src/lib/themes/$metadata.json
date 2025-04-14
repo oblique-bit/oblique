@@ -20,6 +20,7 @@
     "semantics/typography-base",
     "semantics/typography-modes/1440-lg",
     "semantics/typography-modes/360-xs",
+    "semantics/typography-scale",
     "semantics/typography-styles",
     "semantics/z-Index",
     "components/atoms/badge",
