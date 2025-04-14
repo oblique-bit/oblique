@@ -507,6 +507,38 @@
               "type": "typography"
             }
           }
+        },
+        "~documentation-only": {
+          "docs-sm": {
+            "value": {
+              "fontSize": "{ob.p.fontSizeUnitless.400}",
+              "fontFamily": "{ob.s.fontFamily.standard}",
+              "fontWeight": "{ob.s.fontWeight.extraBold}",
+              "letterSpacing": "{ob.s.letterSpacing.normal}"
+            },
+            "type": "typography",
+            "description": "Small font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
+          },
+          "docs-md": {
+            "value": {
+              "fontSize": "{ob.p.fontSizeUnitless.500}",
+              "fontFamily": "{ob.s.fontFamily.standard}",
+              "fontWeight": "{ob.s.fontWeight.extraBold}",
+              "letterSpacing": "{ob.s.letterSpacing.normal}"
+            },
+            "type": "typography",
+            "description": "Medium font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
+          },
+          "docs-lg": {
+            "value": {
+              "fontSize": "{ob.p.fontSizeUnitless.1100}",
+              "fontFamily": "{ob.s.fontFamily.standard}",
+              "fontWeight": "{ob.s.fontWeight.extraBold}",
+              "letterSpacing": "{ob.s.letterSpacing.normal}"
+            },
+            "type": "typography",
+            "description": "Large font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
+          }
         }
       }
     }
