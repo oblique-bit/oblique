@@ -1,0 +1,199 @@
+{
+  "ob": {
+    "p": {
+      "scale": {
+        "mult-responsive": {
+          "value": "3.5",
+          "type": "number"
+        }
+      },
+      "viewport": {
+        "value": "360",
+        "type": "number",
+        "mult": {
+          "value": "5",
+          "type": "number"
+        }
+      }
+    },
+    "c": {
+      "infobox": {
+        "spacing": {
+          "padding-top": {
+            "value": "{ob.s.spacing.2xl}",
+            "type": "spacing",
+            "description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity."
+          },
+          "padding-right": {
+            "value": "{ob.s.spacing.2xl}",
+            "type": "spacing",
+            "description": "Top and right padding have to be the same so the position of the close button is visually apealing."
+          },
+          "padding-bottom": {
+            "value": "{ob.s.spacing.2xl}",
+            "type": "spacing",
+            "description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity."
+          },
+          "padding-left": {
+            "value": "{ob.s.spacing.lg}",
+            "type": "spacing",
+            "description": "Smaller padding to allow more space on mobile for the content."
+          },
+          "row-gap": {
+            "value": "{ob.s.spacing.2xl}",
+            "type": "spacing",
+            "description": "Sets a minimum vertical gap between container-top and container-buttons to enhance the readability."
+          },
+          "container-top": {
+            "col-gap": {
+              "value": "{ob.s.spacing.md}",
+              "type": "spacing",
+              "description": "Gap between the status icon and the text blocks for readibility and horizontal rhytm."
+            }
+          },
+          "text-blocks": {
+            "row-gap": {
+              "value": "{ob.s.spacing.lg}",
+              "type": "spacing",
+              "description": "Emphasizes the visual hierarchy between the title and the body text."
+            }
+          },
+          "title-bar": {
+            "col-gap": {
+              "value": "{ob.s.spacing.3xl}",
+              "type": "spacing",
+              "description": "Prevents the title coming to close to the Close button (X)"
+            }
+          },
+          "body": {
+            "padding-right": {
+              "value": "{ob.s.spacing.3xl}",
+              "type": "spacing",
+              "description": "Here for mobile reseting the right-padding that is larger on desktop."
+            },
+            "padding-bottom": {
+              "value": "{ob.s.spacing.2xl}",
+              "type": "spacing",
+              "description": "Adding a larger right-padding on larger screens introduces white space that allows the design to \"breathe\"."
+            }
+          },
+          "parentof-buttons-container": {
+            "padding-left": {
+              "value": "{ob.s.spacing.6xl}",
+              "type": "spacing",
+              "description": "Aligns the buttons with the text on mobile."
+            },
+            "padding-bottom": {
+              "value": "{ob.s.spacing.4xl}",
+              "type": "spacing"
+            },
+            "padding-right": {
+              "value": "{ob.s.spacing.5xl}",
+              "type": "spacing"
+            }
+          },
+          "infobox-icon-container": {
+            "padding-top": {
+              "value": "{ob.s.spacing.none}",
+              "type": "spacing"
+            }
+          },
+          "title": {
+            "padding-top": {
+              "value": "{ob.s.spacing.xs}",
+              "type": "spacing",
+              "description": "Aligns the title with the status icon and the close button on desktop."
+            }
+          }
+        },
+        "sizing": {
+          "icon-size": {
+            "value": "{ob.s.icon.size.lg}",
+            "type": "sizing",
+            "description": "Icon size is slightly larger than the title to be readable since it has less contrast than the text and communicates the status. On mobile even smaller to save space for the text."
+          },
+          "title": {
+            "min-height": {
+              "value": "{ob.p.size.350}",
+              "type": "sizing",
+              "description": "This minimum height helps the \"title\" container keeps the height regardless if there is close-button inside the infobox on mobile. "
+            }
+          }
+        },
+        "border-width": {
+          "left": {
+            "value": "{ob.s.border-width.sm}",
+            "type": "borderWidth",
+            "description": "A border width that is close to the line thickness of the icon (proximity and concistancy design principles). Slightly smaller on mobile because the icon got smaller too."
+          }
+        },
+        "buttons-container": {
+          "buttons-order": {
+            "value": "primary-first",
+            "type": "text",
+            "description": "The primary button in an Infobox on Mobile should be positioned at the Top of a button group to ensure it appears as the first element, facilitating intuitive navigation and decision-making."
+          }
+        }
+      },
+      "infoboxes-container": {
+        "spacing": {
+          "row-gap": {
+            "value": "{ob.s.spacing.lg}",
+            "type": "spacing",
+            "description": "Vertical distance / gap between infoboxes."
+          },
+          "padding-bottom": {
+            "value": "{ob.s.spacing.3xl}",
+            "type": "spacing"
+          },
+          "padding-top": {
+            "value": "{ob.s.spacing.xs}",
+            "type": "spacing"
+          },
+          "padding-left": {
+            "value": "{ob.s.spacing.none}",
+            "type": "spacing"
+          },
+          "padding-right": {
+            "value": "{ob.s.spacing.none}",
+            "type": "spacing"
+          }
+        }
+      },
+      "buttons-container": {
+        "spacing": {
+          "gap": {
+            "md": {
+              "value": "{ob.s.spacing.4xl}",
+              "type": "spacing",
+              "description": "Vertical gap between buttons for mobile devices, slightly expanded to minimize the risk of accidental tap."
+            },
+            "sm": {
+              "value": "{ob.s.spacing.xl}",
+              "type": "spacing",
+              "description": "Horizontal gap between buttons on larger screens."
+            }
+          }
+        }
+      },
+      "button": {
+        "typography": {
+          "text-label": {
+            "font-size": {
+              "md": {
+                "value": "17",
+                "type": "fontSizes",
+                "description": "Custom font size (no primitives) for button text label on mobile."
+              },
+              "sm": {
+                "value": "{ob.s.fontSize.sm}",
+                "type": "fontSizes",
+                "description": "Font size for button text label on desktop."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

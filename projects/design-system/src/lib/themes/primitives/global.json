@@ -1,0 +1,48 @@
+{
+  "ob": {
+    "p": {
+      "scaleBase": {
+        "value": "{ob.p.scale.mult-responsive} * 1",
+        "type": "number",
+        "description": "This resizes the entire design system"
+      },
+      "breakpoint": {
+        "xs": {
+          "value": "360px",
+          "type": "Breakpoint",
+          "description": "Extra small devices, phones (portrait)"
+        },
+        "sm": {
+          "value": "720px",
+          "type": "Breakpoint",
+          "description": "Small devices, phones (landscape)"
+        },
+        "md": {
+          "value": "1080px",
+          "type": "Breakpoint",
+          "description": "Medium devices, tablets"
+        },
+        "lg": {
+          "value": "1440px",
+          "type": "Breakpoint",
+          "description": "Large devices, desktops"
+        },
+        "xl": {
+          "value": "1920px",
+          "type": "Breakpoint",
+          "description": "Extra large devices, large desktops"
+        }
+      },
+      "scale": {
+        "mult-responsive": {
+          "value": "4",
+          "type": "number"
+        },
+        "mult-static": {
+          "value": "4",
+          "type": "number"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "ob": {
+    "c": {
+      "footer": {
+        "color": {
+          "bg-color": {
+            "value": "{ob.p.colors.cobalt.700}",
+            "type": "color"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "ob": {
+    "p": {
+      "space": {
+        "50": {
+          "value": "{ob.p.space._base} * .5",
+          "type": "spacing"
+        },
+        "100": {
+          "value": "{ob.p.space._base} * 1",
+          "type": "spacing"
+        },
+        "150": {
+          "value": "{ob.p.space._base} * 1.5",
+          "type": "spacing"
+        },
+        "200": {
+          "value": "{ob.p.space._base} * 2",
+          "type": "spacing"
+        },
+        "250": {
+          "value": "{ob.p.space._base} * 2.50",
+          "type": "spacing"
+        },
+        "300": {
+          "value": "{ob.p.space._base} * 3",
+          "type": "spacing"
+        },
+        "400": {
+          "value": "{ob.p.space._base} * 4",
+          "type": "spacing"
+        },
+        "500": {
+          "value": "{ob.p.space._base} * 5",
+          "type": "spacing"
+        },
+        "600": {
+          "value": "{ob.p.space._base} * 6",
+          "type": "spacing"
+        },
+        "700": {
+          "value": "{ob.p.space._base} * 7",
+          "type": "spacing"
+        },
+        "800": {
+          "value": "{ob.p.space._base} * 8",
+          "type": "spacing"
+        },
+        "900": {
+          "value": "{ob.p.space._base} * 9",
+          "type": "spacing"
+        },
+        "1000": {
+          "value": "{ob.p.space._base} * 10",
+          "type": "spacing"
+        },
+        "1200": {
+          "value": "{ob.p.space._base} * 12",
+          "type": "spacing"
+        },
+        "1600": {
+          "value": "{ob.p.space._base} * 16",
+          "type": "spacing"
+        },
+        "2000": {
+          "value": "{ob.p.space._base} * 20",
+          "type": "spacing"
+        },
+        "2200": {
+          "value": "{ob.p.space._base} * 22",
+          "type": "spacing"
+        },
+        "2600": {
+          "value": "{ob.p.space._base} * 26",
+          "type": "spacing"
+        },
+        "none": {
+          "value": "0",
+          "type": "spacing"
+        },
+        "_base": {
+          "value": "{ob.p.scaleBase}",
+          "type": "spacing"
+        }
+      }
+    }
+  }
+}
