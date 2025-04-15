@@ -198,7 +198,7 @@
             }
           },
           "body": {
-            "regular": {
+            "normal": {
               "value": {
                 "fontFamily": "{ob.s.fontFamily.standard}",
                 "fontSize": "{ob.s.fontSize.md}",
@@ -209,66 +209,6 @@
               },
               "type": "typography",
               "description": "Regular"
-            },
-            "regular-link": {
-              "value": {
-                "fontFamily": "{ob.s.fontFamily.standard}",
-                "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.fontWeight.semiBold}",
-                "lineHeight": "{ob.s.lineHeight.md}",
-                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
-                "textDecoration": "{ob.p.text-decoration.underline}"
-              },
-              "type": "typography"
-            },
-            "regular-link-hover": {
-              "value": {
-                "fontFamily": "{ob.s.fontFamily.standard}",
-                "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.fontWeight.semiBold}",
-                "lineHeight": "{ob.s.lineHeight.md}",
-                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
-                "textDecoration": "{ob.p.text-decoration.none}"
-              },
-              "type": "typography"
-            },
-            "regular-link-focus": {
-              "value": {
-                "fontFamily": "{ob.s.fontFamily.standard}",
-                "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.fontWeight.semiBold}",
-                "lineHeight": "{ob.s.lineHeight.md}",
-                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
-                "textDecoration": "{ob.p.text-decoration.none}"
-              },
-              "type": "typography"
-            },
-            "regular-link-active": {
-              "value": {
-                "fontFamily": "{ob.s.fontFamily.standard}",
-                "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.fontWeight.semiBold}",
-                "lineHeight": "{ob.s.lineHeight.md}",
-                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
-                "textDecoration": "{ob.p.text-decoration.none}"
-              },
-              "type": "typography"
-            },
-            "regular-link-visited": {
-              "value": {
-                "fontFamily": "{ob.s.fontFamily.standard}",
-                "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.fontWeight.semiBold}",
-                "lineHeight": "{ob.s.lineHeight.md}",
-                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
-                "textDecoration": "{ob.p.text-decoration.none}"
-              },
-              "type": "typography"
             },
             "strong": {
               "value": {
@@ -286,7 +226,7 @@
         "components-only": {
           "alert-default": {
             "text": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             }
           },
@@ -296,13 +236,13 @@
               "type": "typography"
             },
             "text": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             }
           },
           "autocomplete": {
             "label": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             }
           },
@@ -376,7 +316,7 @@
               "type": "typography"
             },
             "text": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             }
           },
@@ -386,17 +326,17 @@
               "type": "typography"
             },
             "desc": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             },
             "body": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             }
           },
           "file-upload": {
             "caption": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             },
             "hint": {
@@ -406,11 +346,11 @@
           },
           "form": {
             "label": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             },
             "text": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             },
             "hint": {
@@ -420,11 +360,11 @@
           },
           "list-group": {
             "text": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             },
             "subtext": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             }
           },
@@ -434,7 +374,7 @@
               "type": "typography"
             },
             "horizontal-nav-cell": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             },
             "submenu-row-label": {
@@ -454,7 +394,7 @@
           },
           "footer": {
             "link": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             },
             "legal": {
@@ -464,7 +404,7 @@
           },
           "nav-tree": {
             "label": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             }
           },
@@ -476,7 +416,7 @@
           },
           "popover": {
             "title": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             },
             "text": {
@@ -492,7 +432,7 @@
           },
           "slide-toggle": {
             "label": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             }
           },
@@ -502,7 +442,7 @@
               "type": "typography"
             },
             "step-label": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             }
           },
@@ -512,7 +452,7 @@
               "type": "typography"
             },
             "cell": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.normal}",
               "type": "typography"
             }
           },

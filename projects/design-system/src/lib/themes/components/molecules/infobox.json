@@ -149,7 +149,7 @@
             "description": "The message is in a bold font weight to build visual contrast and emphasize the hierarchy."
           },
           "body": {
-            "value": "{ob.s.typography.content.body.regular}",
+            "value": "{ob.s.typography.content.body.normal}",
             "type": "typography",
             "color": {
               "value": "{ob.s.color.text.surfaceLight.body.default}",
