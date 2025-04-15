@@ -7,7 +7,6 @@
 	obButton="secondary"
 	icon="none"
 	class="ob-widget"
-	[matTooltip]="'i18n.oblique.service-navigation.authentication.tooltip.login' | translate"
 >
 	{{ "i18n.oblique.service-navigation.authentication.login" | translate }}
 	<mat-icon svgIcon="login" />
@@ -21,8 +20,6 @@
 	class="ob-widget"
 	mat-button
 	obButton="secondary"
-	[matTooltip]="'i18n.oblique.service-navigation.authentication.tooltip.logout' | translate"
-	[attr.aria-label]="'i18n.oblique.service-navigation.authentication.tooltip.logout' | translate"
 	(click)="logoutClick()"
 >
 	{{ "i18n.oblique.service-navigation.authentication.logout" | translate }}

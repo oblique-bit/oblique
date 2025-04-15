@@ -100,12 +100,6 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 						});
 					});
 
-					describe('tooltip', () => {
-						it('should exist', async () => {
-							expect(await harness.getTooltipHarness()).toBeTruthy();
-						});
-					});
-
 					describe('icon', () => {
 						let iconHarness: MatIconHarness;
 						beforeEach(async () => {
@@ -143,15 +137,6 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 
 					it('should have "i18n.oblique.service-navigation.authentication.login" as text', async () => {
 						expect(await harness.getText()).toBe('i18n.oblique.service-navigation.authentication.login');
-					});
-
-					describe('tooltip', () => {
-						it('should have "i18n.oblique.service-navigation.authentication.tooltip.login" as text', async () => {
-							const tooltipHarness = await harness.getTooltipHarness();
-							await tooltipHarness.show();
-							const text = await tooltipHarness.getTooltipText();
-							expect(text).toBe('i18n.oblique.service-navigation.authentication.tooltip.login');
-						});
 					});
 
 					describe('icon', () => {

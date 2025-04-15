@@ -1,6 +1,6 @@
 <button
 	*ngIf="avatarImageUrl; else buttonWithImage"
-	[matTooltip]="'i18n.oblique.service-navigation.profile.tooltip' | translate"
+	[matTooltip]="'i18n.oblique.service-navigation.profile.button' | translate"
 	[obPopover]="popoverProfile"
 	placement="bottom"
 	class="ob-widget ob-image-button"
@@ -20,7 +20,7 @@
 
 <ng-template #buttonWithImage>
 	<button
-		[matTooltip]="'i18n.oblique.service-navigation.profile.tooltip' | translate"
+		[matTooltip]="'i18n.oblique.service-navigation.profile.button' | translate"
 		[obPopover]="popoverProfile"
 		mat-icon-button
 		obButton="secondary"

@@ -344,10 +344,10 @@ describe('ObServiceNavigationProfileComponent', () => {
 				expect(tooltipHarness).toBeTruthy();
 			});
 
-			it('should have "i18n.oblique.service-navigation.profile.tooltip" as text', async () => {
+			it('should have "i18n.oblique.service-navigation.profile.button" as text', async () => {
 				await tooltipHarness.show();
 				const text = await tooltipHarness.getTooltipText();
-				expect(text).toBe('i18n.oblique.service-navigation.profile.tooltip');
+				expect(text).toBe('i18n.oblique.service-navigation.profile.button');
 			});
 		});
 

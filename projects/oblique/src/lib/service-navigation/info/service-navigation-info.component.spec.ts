@@ -287,10 +287,10 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				expect(tooltip).toBeTruthy();
 			});
 
-			it('should have "i18n.oblique.service-navigation.info.tooltip" as text', async () => {
+			it('should have "i18n.oblique.service-navigation.info.button" as text', async () => {
 				await tooltip.show();
 				const text = await tooltip.getTooltipText();
-				expect(text).toBe('i18n.oblique.service-navigation.info.tooltip');
+				expect(text).toBe('i18n.oblique.service-navigation.info.button');
 			});
 		});
 

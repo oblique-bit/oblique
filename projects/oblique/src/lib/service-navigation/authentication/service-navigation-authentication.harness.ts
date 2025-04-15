@@ -1,6 +1,5 @@
 import {ContentContainerComponentHarness, TestElement} from '@angular/cdk/testing';
 import {MatIconHarness} from '@angular/material/icon/testing';
-import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 
 export class ObServiceNavigationAuthenticationHarness extends ContentContainerComponentHarness {
 	static hostSelector = 'ob-service-navigation-authentication';
@@ -23,9 +22,5 @@ export class ObServiceNavigationAuthenticationHarness extends ContentContainerCo
 
 	public async getIconHarness(): Promise<MatIconHarness> {
 		return this.getHarnessOrNull(MatIconHarness);
-	}
-
-	public getTooltipHarness(): Promise<MatTooltipHarness> {
-		return this.getHarnessOrNull(MatTooltipHarness);
 	}
 }
