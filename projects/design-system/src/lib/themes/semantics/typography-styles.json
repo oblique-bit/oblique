@@ -207,7 +207,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "Regular"
             },
             "regular-link": {
               "value": {
@@ -218,6 +219,18 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
                 "textDecoration": "{ob.p.text-decoration.underline}"
+              },
+              "type": "typography"
+            },
+            "regular-link-hover": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontSize": "{ob.s.fontSize.md}",
+                "fontWeight": "{ob.s.fontWeight.semiBold}",
+                "lineHeight": "{ob.s.lineHeight.md}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
+                "textDecoration": "{ob.p.text-decoration.none}"
               },
               "type": "typography"
             },
@@ -323,7 +336,7 @@
           },
           "card": {
             "title": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.strong}",
               "type": "typography"
             },
             "subtitle": {
@@ -363,7 +376,7 @@
           },
           "expansion-panel": {
             "title": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.strong}",
               "type": "typography"
             },
             "desc": {
@@ -381,7 +394,7 @@
               "type": "typography"
             },
             "hint": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.type-scale.sm.regular}",
               "type": "typography"
             }
           },
@@ -469,10 +482,6 @@
             "number": {
               "value": "{ob.s.typography.type-scale.sm.regular}",
               "type": "typography"
-            },
-            "toogle-label": {
-              "value": "{ob.s.typography.type-scale.sm.regular}",
-              "type": "typography"
             }
           },
           "stepper": {
@@ -487,7 +496,7 @@
           },
           "table": {
             "header": {
-              "value": "{ob.s.typography.content.body.regular}",
+              "value": "{ob.s.typography.content.body.strong}",
               "type": "typography"
             },
             "cell": {
@@ -504,6 +513,18 @@
           "tooltip": {
             "label": {
               "value": "{ob.s.typography.type-scale.xs.regular}",
+              "type": "typography"
+            }
+          },
+          "breadcrumb": {
+            "label": {
+              "value": "{ob.s.typography.type-scale.sm.regular}",
+              "type": "typography"
+            }
+          },
+          "slide-toggle": {
+            "label": {
+              "value": "{ob.s.typography.content.body.regular}",
               "type": "typography"
             }
           }
