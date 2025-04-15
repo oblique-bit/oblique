@@ -262,7 +262,6 @@
       "ob.s.spacing.7xl": "0a8cbe17e447573908c6a5028441471463864873",
       "ob.s.spacing.8xl": "2027cd7e915a18abdf8b592a2db949d929cfbeaa",
       "ob.s.spacing.9xl": "ae4828e659f608df7be1db4b5045b7963c936add",
-      "ob.s.fontFamily.standard": "44d9e7e3d2e8557c77956c6b578b00a765396419",
       "ob.s.zindex.stepperMobile": "b82c56d418eb6442e4441249a6dfd5bc10d51fff",
       "ob.s.zindex.header": "9746c6df7eb857496280a8833c546a08349ce952",
       "ob.s.zindex.drawer": "7d780c649c4353451bc4737f199d8593b4bd5fde",
@@ -508,7 +507,8 @@
       "ob.c.popover.color.fg": "762db9fc1f1dab6feea5968e9f818843c6964fef",
       "ob.c.popover.border-radius": "81b5cbdd968dcf1d15ca42f5bd8ca72a3009b5c9",
       "ob.c.popover.border-width": "1375a33606fb7a82db2ec8a9427eeb46d5c207b6",
-      "ob.c.footer.color.bg-color": "a112bf83b1c9a80e829b561502dbff82a60c8afb"
+      "ob.c.footer.color.bg-color": "a112bf83b1c9a80e829b561502dbff82a60c8afb",
+      "ob.s.fontFamily.body": "44d9e7e3d2e8557c77956c6b578b00a765396419"
     },
     "group": "core"
   },
