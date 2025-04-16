@@ -23,6 +23,7 @@
     "semantics/typography-scale",
     "semantics/typography-styles",
     "semantics/z-Index",
+    "components/typography-styles",
     "components/atoms/badge",
     "components/atoms/close-button",
     "components/atoms/hr",
@@ -68,7 +69,6 @@
     "components/templates/dashboard-A",
     "components/templates/form-onepage",
     "components/templates/form-mutlistep",
-    "components/typography-styles",
     "___________________",
     "modes/breakpoints/1440-lg",
     "modes/breakpoints/360-xs"
