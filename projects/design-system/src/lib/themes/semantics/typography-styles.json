@@ -210,6 +210,19 @@
               "type": "typography",
               "description": "Regular"
             },
+            "link": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.body}",
+                "fontSize": "{ob.s.fontSize.md}",
+                "fontWeight": "{ob.s.fontWeight.medium}",
+                "lineHeight": "{ob.s.lineHeight.md}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
+                "textDecoration": "{ob.p.text-decoration.underline}"
+              },
+              "type": "typography",
+              "description": "Regular"
+            },
             "strong": {
               "value": {
                 "fontFamily": "{ob.s.fontFamily.body}",
