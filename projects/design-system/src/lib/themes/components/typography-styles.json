@@ -143,7 +143,7 @@
               "type": "typography"
             },
             "subtext": {
-              "value": "{ob.s.typography.content.body.normal}",
+              "value": "{ob.s.typography.type-scale.sm.normal}",
               "type": "typography"
             }
           },
