@@ -68,6 +68,7 @@
     "components/templates/dashboard-A",
     "components/templates/form-onepage",
     "components/templates/form-mutlistep",
+    "components/typography-styles",
     "___________________",
     "modes/breakpoints/1440-lg",
     "modes/breakpoints/360-xs"

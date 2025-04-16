@@ -1,0 +1,254 @@
+{
+  "ob": {
+    "s": {
+      "typography": {
+        "components-only": {
+          "alert-default": {
+            "text": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "alert-notification": {
+            "title": {
+              "value": "{ob.s.typography.content.body.strong}",
+              "type": "typography"
+            },
+            "text": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "autocomplete": {
+            "label": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "badge": {
+            "label": {
+              "sm": {
+                "value": "{ob.s.typography.type-scale.xs.normal}",
+                "type": "typography"
+              },
+              "lg": {
+                "value": "{ob.s.typography.type-scale.lg.normal}",
+                "type": "typography"
+              }
+            }
+          },
+          "breadcrumb": {
+            "label": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            }
+          },
+          "button": {
+            "label": {
+              "sm": {
+                "value": "{ob.s.typography.type-scale.xs.normal}",
+                "type": "typography"
+              },
+              "md": {
+                "value": "{ob.s.typography.type-scale.md.normal}",
+                "type": "typography"
+              },
+              "lg": {
+                "value": "{ob.s.typography.type-scale.lg.normal}",
+                "type": "typography"
+              }
+            }
+          },
+          "card": {
+            "title": {
+              "value": "{ob.s.typography.content.body.strong}",
+              "type": "typography"
+            },
+            "subtitle": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            },
+            "content": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            },
+            "footer": {
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "type": "typography"
+            }
+          },
+          "chip": {
+            "label": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            }
+          },
+          "datepicker": {
+            "label": {
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "type": "typography"
+            }
+          },
+          "dialog": {
+            "title": {
+              "value": "{ob.s.typography.content.heading.compact-default.H2}",
+              "type": "typography"
+            },
+            "text": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "expansion-panel": {
+            "title": {
+              "value": "{ob.s.typography.content.body.strong}",
+              "type": "typography"
+            },
+            "desc": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            },
+            "body": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "file-upload": {
+            "caption": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            },
+            "hint": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            }
+          },
+          "form": {
+            "label": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            },
+            "text": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            },
+            "hint": {
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "type": "typography"
+            }
+          },
+          "list-group": {
+            "text": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            },
+            "subtext": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "header": {
+            "app-title": {
+              "value": "{ob.s.typography.type-scale.xl.normal}",
+              "type": "typography"
+            },
+            "horizontal-nav-cell": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            },
+            "submenu-row-label": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            },
+            "language-label": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            }
+          },
+          "off-canvas": {
+            "title": {
+              "value": "{ob.s.typography.type-scale.xl.normal}",
+              "type": "typography"
+            }
+          },
+          "footer": {
+            "link": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            },
+            "legal": {
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "type": "typography"
+            }
+          },
+          "nav-tree": {
+            "label": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "paginator": {
+            "label": {
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "type": "typography"
+            }
+          },
+          "popover": {
+            "title": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            },
+            "text": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            }
+          },
+          "slider": {
+            "number": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            }
+          },
+          "slide-toggle": {
+            "label": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "stepper": {
+            "step-number": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            },
+            "step-label": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "table": {
+            "header": {
+              "value": "{ob.s.typography.content.body.strong}",
+              "type": "typography"
+            },
+            "cell": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "tabs": {
+            "label": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            }
+          },
+          "tooltip": {
+            "label": {
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "type": "typography"
+            }
+          }
+        }
+      }
+    }
+  }
+}
