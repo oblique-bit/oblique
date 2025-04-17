@@ -12,6 +12,7 @@ export const currentVersions = {
 	'@types/jest': '29',
 	'@angular-builders/jest': '19',
 	'@schematics/angular': '19',
+	'angular-oauth2-oidc': '19',
 	jest: '29'
 	/* eslint-enable @typescript-eslint/naming-convention */
 } as const;
