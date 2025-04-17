@@ -223,33 +223,9 @@
       "primitives/global": "source",
       "primitives/sizing": "source",
       "primitives/spacing": "source",
-      "primitives/colors": "source",
-      "primitives/borders": "source",
-      "primitives/z-Index": "source",
-      "primitives/position": "source",
-      "semantics/assets": "enabled",
-      "semantics/spacing": "enabled",
-      "semantics/borders": "enabled",
-      "semantics/shadows": "enabled",
-      "semantics/z-Index": "enabled",
       "primitives/typography": "source",
-      "components/molecules/infobox": "enabled",
-      "components/molecules/containers": "enabled",
-      "components/atoms/badge": "enabled",
-      "semantics/icons": "enabled",
-      "semantics/colors/static": "enabled",
-      "components/molecules/popover": "enabled",
       "semantics/typography-styles": "enabled",
       "semantics/typography-base": "enabled",
-      "components/atoms/tooltip": "enabled",
-      "components/molecules/button": "enabled",
-      "components/atoms/hr": "enabled",
-      "components/atoms/spinner": "enabled",
-      "semantics/fx": "enabled",
-      "components/molecules/tag": "enabled",
-      "components/atoms/close-button": "enabled",
-      "components/molecules/pills": "enabled",
-      "components/sections/footer": "enabled",
       "components/typography-styles": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:10:2",
@@ -666,7 +642,6 @@
       "ob.s.typography.content.body.lead": "S:8dc68a5bbe411543f6523eba3f8bd4241aac6f0e,"
     },
     "selectedTokenSets": {
-      "modes/breakpoints/1440-lg": "enabled",
       "semantics/typography-modes/1440-lg": "enabled",
       "semantics/typography-scale": "source",
       "semantics/typography-styles": "enabled"
@@ -861,7 +836,6 @@
       "ob.s.typography.content.heading.compact-default.H6": "S:e89ea139c233105113b539142f3cb383d95be810,"
     },
     "selectedTokenSets": {
-      "modes/breakpoints/360-xs": "enabled",
       "semantics/typography-modes/360-xs": "enabled",
       "semantics/typography-scale": "source",
       "semantics/typography-styles": "enabled"
@@ -953,13 +927,7 @@
     "id": "e8cd1884456dc69cce5fbd1dc0fb23d17ee11d8d",
     "name": "light",
     "$figmaStyleReferences": {},
-    "selectedTokenSets": {
-      "primitives/colors": "source",
-      "semantics/colors/modes/light": "enabled",
-      "semantics/colors/static": "enabled",
-      "components/molecules/button-modes/light-colored": "enabled",
-      "components/molecules/tags-modes/light": "enabled"
-    },
+    "selectedTokenSets": {},
     "$figmaCollectionId": "VariableCollectionId:10:4",
     "$figmaModeId": "10:3",
     "$figmaVariableReferences": {
@@ -1163,13 +1131,7 @@
     "id": "ce28bc429f67b042f21d44ea8744f4a9409b2c77",
     "name": "dark",
     "$figmaStyleReferences": {},
-    "selectedTokenSets": {
-      "primitives/colors": "source",
-      "semantics/colors/modes/dark": "enabled",
-      "semantics/colors/static": "enabled",
-      "components/molecules/button-modes/dark-monochrome": "enabled",
-      "components/molecules/tags-modes/dark": "enabled"
-    },
+    "selectedTokenSets": {},
     "$figmaCollectionId": "VariableCollectionId:10:4",
     "$figmaModeId": "10:4",
     "$figmaVariableReferences": {
