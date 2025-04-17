@@ -100,7 +100,7 @@
                   "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.2xl}",
                   "fontWeight": "{ob.s.fontWeight.semiBold}",
-                  "letterSpacing": "{ob.s.letterSpacing.narrower}",
+                  "letterSpacing": "{ob.s.letterSpacing-px.superNarrow}",
                   "lineHeight": "{ob.s.lineHeight.2xl}"
                 },
                 "type": "typography",
