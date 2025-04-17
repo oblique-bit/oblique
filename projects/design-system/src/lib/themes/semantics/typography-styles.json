@@ -233,6 +233,17 @@
                 "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}"
               },
               "type": "typography"
+            },
+            "lead": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.body}",
+                "fontSize": "{ob.s.fontSize.md}",
+                "fontWeight": "{ob.s.fontWeight.bold}",
+                "lineHeight": "{ob.s.lineHeight.md}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}"
+              },
+              "type": "typography"
             }
           }
         },

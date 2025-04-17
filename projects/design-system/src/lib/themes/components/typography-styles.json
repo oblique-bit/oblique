@@ -124,17 +124,30 @@
             }
           },
           "form": {
-            "label": {
-              "value": "{ob.s.typography.content.body.normal}",
-              "type": "typography"
+            "input": {
+              "label": {
+                "value": "{ob.s.typography.type-scale.xs.normal}",
+                "type": "typography"
+              },
+              "user-input": {
+                "value": "{ob.s.typography.content.body.normal}",
+                "type": "typography",
+                "description": "User Input"
+              },
+              "hint": {
+                "value": "{ob.s.typography.type-scale.xs.normal}",
+                "type": "typography"
+              }
             },
-            "text": {
-              "value": "{ob.s.typography.content.body.normal}",
-              "type": "typography"
-            },
-            "hint": {
-              "value": "{ob.s.typography.type-scale.xs.normal}",
-              "type": "typography"
+            "radio-checkbox": {
+              "label": {
+                "value": "{ob.s.typography.content.body.normal}",
+                "type": "typography"
+              },
+              "hint": {
+                "value": "{ob.s.typography.type-scale.xs.normal}",
+                "type": "typography"
+              }
             }
           },
           "list-group": {
