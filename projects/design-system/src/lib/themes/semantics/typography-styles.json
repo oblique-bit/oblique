@@ -7,133 +7,167 @@
             "compact-default": {
               "H1": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.xl}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
                   "lineHeight": "{ob.s.lineHeight.xl}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Compact primary page heading. Used for the most important headline on a page."
               },
               "H2": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.lg}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
                   "lineHeight": "{ob.s.lineHeight.lg}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page."
               },
               "H3": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.p.fontWeight.300}",
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page."
               },
               "H4": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.p.fontWeight.300}",
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page."
               },
               "H5": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page."
               },
               "H6": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page."
               }
             },
             "prose": {
               "H1": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.4xl}",
                   "fontWeight": "{ob.s.fontWeight.semiBold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.superNarrow}",
                   "lineHeight": "{ob.s.lineHeight.4xl}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Primary page heading for prose based pages. Used for the most important headline on a page."
               },
               "H2": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.3xl}",
                   "fontWeight": "{ob.s.fontWeight.semiBold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.superNarrow}",
                   "lineHeight": "{ob.s.lineHeight.3xl}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               },
               "H3": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.2xl}",
                   "fontWeight": "{ob.s.fontWeight.semiBold}",
                   "letterSpacing": "{ob.s.letterSpacing.narrower}",
                   "lineHeight": "{ob.s.lineHeight.2xl}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               },
               "H4": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.xl}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.narrower}",
                   "lineHeight": "{ob.s.lineHeight.xl}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               },
               "H5": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.lg}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
                   "lineHeight": "{ob.s.lineHeight.lg}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               },
               "H6": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               }
             }
           },
-          "label": {
+          "label_depr": {
+            "S": {
+              "regular": {
+                "value": {
+                  "fontFamily": "{ob.s.fontFamily.body}",
+                  "fontSize": "{ob.s.fontSize.xs}",
+                  "fontWeight": "{ob.s.fontWeight.medium}",
+                  "lineHeight": "{ob.s.lineHeight.xs}",
+                  "letterSpacing": "{ob.s.letterSpacing-px.wide}"
+                },
+                "type": "typography"
+              },
+              "strong": {
+                "value": {
+                  "fontFamily": "{ob.s.fontFamily.body}",
+                  "fontSize": "{ob.s.fontSize.xs}",
+                  "fontWeight": "{ob.s.fontWeight.bold}",
+                  "lineHeight": "{ob.s.lineHeight.xs}",
+                  "letterSpacing": "{ob.s.letterSpacing-px.wide}"
+                },
+                "type": "typography"
+              }
+            },
             "M": {
               "regular": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontWeight": "{ob.s.fontWeight.medium}",
                   "lineHeight": "{ob.s.lineHeight.sm}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}",
@@ -143,7 +177,7 @@
               },
               "strong": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.sm}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "lineHeight": "{ob.s.lineHeight.sm}",
@@ -152,32 +186,10 @@
                 "type": "typography"
               }
             },
-            "S": {
-              "regular": {
-                "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
-                  "fontSize": "{ob.s.fontSize.xs}",
-                  "fontWeight": "{ob.s.fontWeight.medium}",
-                  "lineHeight": "{ob.s.lineHeight.xs}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.wide}"
-                },
-                "type": "typography"
-              },
-              "strong": {
-                "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
-                  "fontSize": "{ob.s.fontSize.xs}",
-                  "fontWeight": "{ob.s.fontWeight.bold}",
-                  "lineHeight": "{ob.s.lineHeight.xs}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.wide}"
-                },
-                "type": "typography"
-              }
-            },
             "L": {
               "regular": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontWeight": "{ob.s.fontWeight.medium}",
                   "lineHeight": "{ob.s.lineHeight.sm}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}",
@@ -187,7 +199,7 @@
               },
               "strong": {
                 "value": {
-                  "fontFamily": "{ob.s.fontFamily.standard}",
+                  "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "lineHeight": "{ob.s.lineHeight.sm}",
@@ -198,9 +210,9 @@
             }
           },
           "body": {
-            "regular": {
+            "normal": {
               "value": {
-                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontFamily": "{ob.s.fontFamily.body}",
                 "fontSize": "{ob.s.fontSize.md}",
                 "fontWeight": "{ob.s.fontWeight.medium}",
                 "lineHeight": "{ob.s.lineHeight.md}",
@@ -208,324 +220,44 @@
                 "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}"
               },
               "type": "typography",
-              "description": "Regular"
+              "description": "Default body text style for paragraphs and general content."
             },
-            "regular-link": {
+            "link": {
               "value": {
-                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontFamily": "{ob.s.fontFamily.body}",
                 "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.fontWeight.semiBold}",
+                "fontWeight": "{ob.s.fontWeight.medium}",
                 "lineHeight": "{ob.s.lineHeight.md}",
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
                 "textDecoration": "{ob.p.text-decoration.underline}"
               },
-              "type": "typography"
-            },
-            "regular-link-hover": {
-              "value": {
-                "fontFamily": "{ob.s.fontFamily.standard}",
-                "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.fontWeight.semiBold}",
-                "lineHeight": "{ob.s.lineHeight.md}",
-                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
-                "textDecoration": "{ob.p.text-decoration.none}"
-              },
-              "type": "typography"
-            },
-            "regular-link-focus": {
-              "value": {
-                "fontFamily": "{ob.s.fontFamily.standard}",
-                "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.fontWeight.semiBold}",
-                "lineHeight": "{ob.s.lineHeight.md}",
-                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
-                "textDecoration": "{ob.p.text-decoration.none}"
-              },
-              "type": "typography"
-            },
-            "regular-link-active": {
-              "value": {
-                "fontFamily": "{ob.s.fontFamily.standard}",
-                "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.fontWeight.semiBold}",
-                "lineHeight": "{ob.s.lineHeight.md}",
-                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
-                "textDecoration": "{ob.p.text-decoration.none}"
-              },
-              "type": "typography"
-            },
-            "regular-link-visited": {
-              "value": {
-                "fontFamily": "{ob.s.fontFamily.standard}",
-                "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.fontWeight.semiBold}",
-                "lineHeight": "{ob.s.lineHeight.md}",
-                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
-                "textDecoration": "{ob.p.text-decoration.none}"
-              },
-              "type": "typography"
+              "type": "typography",
+              "description": "Interactive text elements that navigate to other content when clicked. Adds an underline to the text."
             },
             "strong": {
               "value": {
-                "fontFamily": "{ob.s.fontFamily.standard}",
+                "fontFamily": "{ob.s.fontFamily.body}",
                 "fontSize": "{ob.s.fontSize.md}",
                 "fontWeight": "{ob.s.fontWeight.bold}",
                 "lineHeight": "{ob.s.lineHeight.md}",
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}"
               },
-              "type": "typography"
-            }
-          }
-        },
-        "components-only": {
-          "alert-default": {
-            "text": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            }
-          },
-          "alert-notification": {
-            "title": {
-              "value": "{ob.s.typography.content.body.strong}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Emphasized text to highlight important information within body content."
             },
-            "text": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            }
-          },
-          "autocomplete": {
-            "label": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            }
-          },
-          "badge": {
-            "label": {
-              "sm": {
-                "value": "{ob.s.typography.type-scale.xs.regular}",
-                "type": "typography"
+            "lead": {
+              "value": {
+                "fontFamily": "{ob.s.fontFamily.body}",
+                "fontSize": "{ob.s.fontSize.md}",
+                "fontWeight": "{ob.s.fontWeight.bold}",
+                "lineHeight": "{ob.s.lineHeight.md}",
+                "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}"
               },
-              "lg": {
-                "value": "{ob.s.typography.type-scale.lg.regular}",
-                "type": "typography"
-              }
-            }
-          },
-          "button": {
-            "label": {
-              "sm": {
-                "value": "{ob.s.typography.type-scale.xs.regular}",
-                "type": "typography"
-              },
-              "md": {
-                "value": "{ob.s.typography.type-scale.md.regular}",
-                "type": "typography"
-              },
-              "lg": {
-                "value": "{ob.s.typography.type-scale.lg.regular}",
-                "type": "typography"
-              }
-            }
-          },
-          "card": {
-            "title": {
-              "value": "{ob.s.typography.content.body.strong}",
-              "type": "typography"
-            },
-            "subtitle": {
-              "value": "{ob.s.typography.type-scale.sm.regular}",
-              "type": "typography"
-            },
-            "content": {
-              "value": "{ob.s.typography.type-scale.sm.regular}",
-              "type": "typography"
-            },
-            "footer": {
-              "value": "{ob.s.typography.type-scale.xs.regular}",
-              "type": "typography"
-            }
-          },
-          "chip": {
-            "label": {
-              "value": "{ob.s.typography.type-scale.sm.regular}",
-              "type": "typography"
-            }
-          },
-          "datepicker": {
-            "label": {
-              "value": "{ob.s.typography.type-scale.xs.regular}",
-              "type": "typography"
-            }
-          },
-          "dialog": {
-            "title": {
-              "value": "{ob.s.typography.content.heading.compact-default.H2}",
-              "type": "typography"
-            },
-            "text": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            }
-          },
-          "expansion-panel": {
-            "title": {
-              "value": "{ob.s.typography.content.body.strong}",
-              "type": "typography"
-            },
-            "desc": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            },
-            "body": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            }
-          },
-          "file-upload": {
-            "caption": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            },
-            "hint": {
-              "value": "{ob.s.typography.type-scale.sm.regular}",
-              "type": "typography"
-            }
-          },
-          "form": {
-            "label": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            },
-            "text": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            },
-            "hint": {
-              "value": "{ob.s.typography.type-scale.xs.regular}",
-              "type": "typography"
-            }
-          },
-          "list-group": {
-            "text": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            },
-            "subtext": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            }
-          },
-          "header": {
-            "app-title": {
-              "value": "{ob.s.typography.type-scale.xl.regular}",
-              "type": "typography"
-            },
-            "horizontal-nav-cell": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            },
-            "submenu-row-label": {
-              "value": "{ob.s.typography.type-scale.sm.regular}",
-              "type": "typography"
-            },
-            "language-label": {
-              "value": "{ob.s.typography.type-scale.sm.regular}",
-              "type": "typography"
-            }
-          },
-          "off-canvas": {
-            "title": {
-              "value": "{ob.s.typography.type-scale.xl.regular}",
-              "type": "typography"
-            }
-          },
-          "footer": {
-            "link": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            },
-            "legal": {
-              "value": "{ob.s.typography.type-scale.xs.regular}",
-              "type": "typography"
-            }
-          },
-          "nav-tree": {
-            "label": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            }
-          },
-          "paginator": {
-            "label": {
-              "value": "{ob.s.typography.type-scale.xs.regular}",
-              "type": "typography"
-            }
-          },
-          "popover": {
-            "title": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            },
-            "text": {
-              "value": "{ob.s.typography.type-scale.sm.regular}",
-              "type": "typography"
-            }
-          },
-          "slider": {
-            "number": {
-              "value": "{ob.s.typography.type-scale.sm.regular}",
-              "type": "typography"
-            }
-          },
-          "stepper": {
-            "step-number": {
-              "value": "{ob.s.typography.type-scale.sm.regular}",
-              "type": "typography"
-            },
-            "step-label": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            }
-          },
-          "table": {
-            "header": {
-              "value": "{ob.s.typography.content.body.strong}",
-              "type": "typography"
-            },
-            "cell": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
-            }
-          },
-          "tabs": {
-            "label": {
-              "value": "{ob.s.typography.type-scale.sm.regular}",
-              "type": "typography"
-            }
-          },
-          "tooltip": {
-            "label": {
-              "value": "{ob.s.typography.type-scale.xs.regular}",
-              "type": "typography"
-            }
-          },
-          "breadcrumb": {
-            "label": {
-              "value": "{ob.s.typography.type-scale.sm.regular}",
-              "type": "typography"
-            }
-          },
-          "slide-toggle": {
-            "label": {
-              "value": "{ob.s.typography.content.body.regular}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Introductory paragraph text, typically larger or bolder than normal body text."
             }
           }
         },
@@ -533,7 +265,7 @@
           "docs-sm": {
             "value": {
               "fontSize": "{ob.p.fontSizeUnitless.400}",
-              "fontFamily": "{ob.s.fontFamily.standard}",
+              "fontFamily": "{ob.s.fontFamily.body}",
               "fontWeight": "{ob.s.fontWeight.extraBold}",
               "letterSpacing": "{ob.s.letterSpacing.normal}"
             },
@@ -543,7 +275,7 @@
           "docs-md": {
             "value": {
               "fontSize": "{ob.p.fontSizeUnitless.500}",
-              "fontFamily": "{ob.s.fontFamily.standard}",
+              "fontFamily": "{ob.s.fontFamily.body}",
               "fontWeight": "{ob.s.fontWeight.extraBold}",
               "letterSpacing": "{ob.s.letterSpacing.normal}"
             },
@@ -553,7 +285,7 @@
           "docs-lg": {
             "value": {
               "fontSize": "{ob.p.fontSizeUnitless.1100}",
-              "fontFamily": "{ob.s.fontFamily.standard}",
+              "fontFamily": "{ob.s.fontFamily.body}",
               "fontWeight": "{ob.s.fontWeight.extraBold}",
               "letterSpacing": "{ob.s.letterSpacing.normal}"
             },

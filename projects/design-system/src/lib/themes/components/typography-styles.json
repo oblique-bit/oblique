@@ -1,0 +1,290 @@
+{
+  "ob": {
+    "c": {
+      "typography": {
+        "components-only": {
+          "alert-default": {
+            "text": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography",
+              "description": "Standard text style for basic alert messages."
+            }
+          },
+          "alert-notification": {
+            "title": {
+              "value": "{ob.s.typography.content.body.strong}",
+              "type": "typography",
+              "description": "Bolder heading text for notification alerts."
+            },
+            "text": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography",
+              "description": "Body text for notification alert content."
+            }
+          },
+          "autocomplete": {
+            "label": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography",
+              "description": "Text style for autocomplete component."
+            }
+          },
+          "badge": {
+            "label": {
+              "sm": {
+                "value": "{ob.s.typography.type-scale.xs.normal}",
+                "type": "typography",
+                "description": "Small badge label text for compact displays."
+              },
+              "lg": {
+                "value": "{ob.s.typography.type-scale.lg.normal}",
+                "type": "typography",
+                "description": "Large badge label text for more prominent displays."
+              }
+            }
+          },
+          "breadcrumb": {
+            "label": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography",
+              "description": "Text style for breadcrumb navigation items."
+            }
+          },
+          "button": {
+            "label": {
+              "sm": {
+                "value": "{ob.s.typography.type-scale.xs.normal}",
+                "type": "typography",
+                "description": "Small button text for compact buttons."
+              },
+              "md": {
+                "value": "{ob.s.typography.type-scale.md.normal}",
+                "type": "typography",
+                "description": "Medium button text for standard buttons."
+              },
+              "lg": {
+                "value": "{ob.s.typography.type-scale.lg.normal}",
+                "type": "typography",
+                "description": "Large button text for prominent buttons."
+              }
+            }
+          },
+          "card": {
+            "title": {
+              "value": "{ob.s.typography.content.body.strong}",
+              "type": "typography",
+              "description": "Body-sized text with strong weight creates clear card headers that stand out without being as dominant as page headings."
+            },
+            "subtitle": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography",
+              "description": "Smaller than the title to establish hierarchy, using normal weight to differentiate from the more prominent title while providing supporting context."
+            },
+            "content": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography",
+              "description": "Small, regular text creates readable content density within the confined card space."
+            },
+            "footer": {
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "type": "typography",
+              "description": "Extra-small text for supplementary information, creating clear visual separation from main card content and indicating its secondary importance."
+            }
+          },
+          "chip": {
+            "label": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography",
+              "description": "Compact text fitting the small footprint of chips, ensuring they remain unobtrusive interface elements while still being readable."
+            }
+          },
+          "datepicker": {
+            "label": {
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "type": "typography",
+              "description": "Text style for all the items inside of a datepicker component"
+            }
+          },
+          "dialog": {
+            "title": {
+              "value": "{ob.s.typography.content.heading.compact-default.H2}",
+              "type": "typography",
+              "description": "An H2 heading for dialog titles establishes their importance as temporary focal points that interrupt the main interface while still adhering to the structural hierarchy for accessibility purposes."
+            },
+            "text": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography",
+              "description": "Standard body text ensures dialog content is highly readable, using the same styling as main content for consistency."
+            }
+          },
+          "expansion-panel": {
+            "title": {
+              "value": "{ob.s.typography.content.body.strong}",
+              "type": "typography",
+              "description": "Heading text for collapsible panels."
+            },
+            "desc": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography",
+              "description": "Description text for additional context."
+            },
+            "body": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography",
+              "description": "Main content text for expanded panels, consistent in size with other body content"
+            }
+          },
+          "file-upload": {
+            "caption": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography",
+              "description": "Text style for file upload component labels."
+            },
+            "hint": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography",
+              "description": "Small text for supplementary information."
+            }
+          },
+          "form": {
+            "input": {
+              "label": {
+                "value": "{ob.s.typography.type-scale.xs.normal}",
+                "type": "typography"
+              },
+              "user-input": {
+                "value": "{ob.s.typography.content.body.normal}",
+                "type": "typography",
+                "description": "User Input"
+              },
+              "hint": {
+                "value": "{ob.s.typography.type-scale.xs.normal}",
+                "type": "typography"
+              }
+            },
+            "radio-checkbox": {
+              "label": {
+                "value": "{ob.s.typography.content.body.normal}",
+                "type": "typography"
+              },
+              "hint": {
+                "value": "{ob.s.typography.type-scale.xs.normal}",
+                "type": "typography"
+              }
+            }
+          },
+          "list-group": {
+            "text": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            },
+            "subtext": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            }
+          },
+          "header": {
+            "app-title": {
+              "value": "{ob.s.typography.type-scale.xl.normal}",
+              "type": "typography"
+            },
+            "horizontal-nav-cell": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            },
+            "submenu-row-label": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            },
+            "language-label": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            }
+          },
+          "off-canvas": {
+            "title": {
+              "value": "{ob.s.typography.type-scale.xl.normal}",
+              "type": "typography"
+            }
+          },
+          "footer": {
+            "link": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            },
+            "legal": {
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "type": "typography"
+            }
+          },
+          "nav-tree": {
+            "label": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "paginator": {
+            "label": {
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "type": "typography"
+            }
+          },
+          "popover": {
+            "title": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            },
+            "text": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            }
+          },
+          "slider": {
+            "number": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            }
+          },
+          "slide-toggle": {
+            "label": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "stepper": {
+            "step-number": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            },
+            "step-label": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "table": {
+            "header": {
+              "value": "{ob.s.typography.content.body.strong}",
+              "type": "typography"
+            },
+            "cell": {
+              "value": "{ob.s.typography.content.body.normal}",
+              "type": "typography"
+            }
+          },
+          "tabs": {
+            "label": {
+              "value": "{ob.s.typography.type-scale.sm.normal}",
+              "type": "typography"
+            }
+          },
+          "tooltip": {
+            "label": {
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "type": "typography"
+            }
+          }
+        }
+      }
+    }
+  }
+}

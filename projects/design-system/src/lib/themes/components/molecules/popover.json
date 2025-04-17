@@ -119,7 +119,7 @@
         "typography": {
           "custom-buttons": {
             "text": {
-              "value": "{ob.s.typography.content.label.S.regular}",
+              "value": "{ob.s.typography.content.label_depr.S.regular}",
               "type": "typography"
             }
           }

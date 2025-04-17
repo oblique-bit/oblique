@@ -2,10 +2,20 @@
   "ob": {
     "s": {
       "fontFamily": {
-        "standard": {
-          "value": "{ob.p.fontFamily.corporateFont}",
+        "body": {
+          "value": "{ob.p.fontFamily.sans}",
           "type": "fontFamilies",
-          "description": "BIT Corporate Web Font"
+          "description": "Font of the Oblique Design System"
+        },
+        "heading": {
+          "value": "{ob.p.fontFamily.sans}",
+          "type": "fontFamilies",
+          "description": "Font of the Oblique Design System"
+        },
+        "code": {
+          "value": "{ob.p.fontFamily.mono}",
+          "type": "fontFamilies",
+          "description": "For code display"
         }
       },
       "fontWeight": {

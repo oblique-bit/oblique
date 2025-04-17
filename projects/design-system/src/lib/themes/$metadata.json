@@ -23,6 +23,7 @@
     "semantics/typography-scale",
     "semantics/typography-styles",
     "semantics/z-Index",
+    "components/typography-styles",
     "components/atoms/badge",
     "components/atoms/close-button",
     "components/atoms/hr",

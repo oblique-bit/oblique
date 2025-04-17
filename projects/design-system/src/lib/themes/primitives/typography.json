@@ -2,10 +2,14 @@
   "ob": {
     "p": {
       "fontFamily": {
-        "corporateFont": {
+        "sans": {
           "value": "Noto Sans",
           "type": "fontFamilies",
           "description": "BIT Corporate Web Font"
+        },
+        "mono": {
+          "value": "Noto Sans Mono",
+          "type": "fontFamilies"
         }
       },
       "fontSizeUnitless": {
