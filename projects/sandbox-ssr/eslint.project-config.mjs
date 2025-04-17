@@ -1,17 +1,7 @@
+// @ts-check
 export default [
 	{
 		files: ['projects/sandbox-ssr/**/*.ts'],
-
-		languageOptions: {
-			parserOptions: {
-				project: [
-					'projects/sandbox-ssr/tsconfig.app.json',
-					'projects/sandbox-ssr/tsconfig.spec.json',
-					'projects/sandbox-ssr/tsconfig.scripts.json'
-				]
-			}
-		},
-
 		rules: {
 			'@angular-eslint/directive-selector': [
 				'error',
@@ -31,27 +21,27 @@ export default [
 				}
 			],
 
-			'@typescript-eslint/no-magic-numbers': [
-				'error',
-				{
-					ignoreReadonlyClassProperties: true
-				}
-			]
+			// rules that are not respected
+			'@typescript-eslint/consistent-type-imports': 'off',
+			'@typescript-eslint/no-non-null-assertion': 'off',
+			'@typescript-eslint/no-unnecessary-type-assertion': 'off',
+			'@typescript-eslint/promise-function-async': 'off'
 		}
 	},
 	{
-		files: ['projects/sandbox-ssr/**/index.html'],
-
+		files: ['projects/sandbox-ssr/src/app/shared/multi-translate-loader/**/*.ts'],
 		rules: {
-			'@angular-eslint/template/no-inline-styles': 'off',
-			'@angular-eslint/template/prefer-self-closing-tags': 'off'
+			// rules that are not respected
+			'@typescript-eslint/no-unsafe-type-assertion': 'off',
+			'@typescript-eslint/parameter-properties': 'off',
+			'require-unicode-regexp': 'off'
 		}
 	},
 	{
-		files: ['projects/sandbox-ssr/**/*.spec.ts'],
-
+		files: ['projects/sandbox-ssr/server.ts'],
 		rules: {
-			'@typescript-eslint/no-magic-numbers': 'off'
+			// rules that are not respected
+			'@typescript-eslint/no-extraneous-class': 'off'
 		}
 	}
 ];

@@ -11,7 +11,7 @@ export class FeedbackTriggerDirective implements OnInit {
 
 	ngOnInit(): void {
 		this.collectorService.initializeCollector('6dfd32b3');
-		// eslint-disable-next-line @typescript-eslint/naming-convention,camelcase
+		// eslint-disable-next-line @typescript-eslint/naming-convention
 		this.collectorService.defaultValues = {customfield_12505: () => window.location.href};
 		this.collectorService.fallbackDialog = FeedbackFormComponent;
 	}

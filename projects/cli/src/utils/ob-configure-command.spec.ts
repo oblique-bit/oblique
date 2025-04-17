@@ -6,7 +6,6 @@ import {addObNewCommandOptions, configureOption, convertOptionPropertyNames} fro
 
 jest.mock('../new/ob-new.model');
 jest.mock('./ob-cli.model');
-/* eslint-disable @typescript-eslint/strict-boolean-expressions*/
 
 describe('ob-configure-command tests', () => {
 	describe('convertOptionPropertyNames', () => {

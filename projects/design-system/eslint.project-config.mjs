@@ -1,17 +1,7 @@
+// @ts-check
 export default [
 	{
 		files: ['projects/design-system/**/*.ts'],
-
-		languageOptions: {
-			parserOptions: {
-				project: [
-					'projects/design-system/tsconfig.lib.json',
-					'projects/design-system/tsconfig.spec.json',
-					'projects/design-system/tsconfig.scripts.json'
-				]
-			}
-		},
-
 		rules: {
 			'@angular-eslint/directive-selector': [
 				'error',
@@ -30,6 +20,13 @@ export default [
 					style: 'kebab-case'
 				}
 			]
+		}
+	},
+	{
+		files: ['projects/design-system/**/*.spec.ts'],
+		rules: {
+			// rules that are not respected
+			'@typescript-eslint/consistent-type-imports': 'off'
 		}
 	}
 ];

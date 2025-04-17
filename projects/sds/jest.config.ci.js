@@ -1,3 +1,4 @@
+// @ts-check
 module.exports = require('./jest.config');
 module.exports.reporters = [
 	'default',

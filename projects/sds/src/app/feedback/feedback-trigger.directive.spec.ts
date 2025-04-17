@@ -49,7 +49,7 @@ describe(FeedbackTriggerDirective.name, () => {
 		});
 
 		test('default values of the service', () => {
-			// eslint-disable-next-line @typescript-eslint/naming-convention,camelcase
+			// eslint-disable-next-line @typescript-eslint/naming-convention
 			expect(JSON.stringify(service.defaultValues)).toEqual(JSON.stringify({customfield_12505: () => window.location.href}));
 		});
 	});

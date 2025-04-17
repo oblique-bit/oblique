@@ -1,3 +1,4 @@
+// @ts-check
 module.exports = require('../../tests/jest.config');
 module.exports.roots = ['<rootDir>/projects/sds'];
 module.exports.displayName = {
