@@ -13,7 +13,8 @@
                   "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
                   "lineHeight": "{ob.s.lineHeight.xl}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Compact primary page heading. Used for the most important headline on a page."
               },
               "H2": {
                 "value": {
@@ -23,7 +24,8 @@
                   "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
                   "lineHeight": "{ob.s.lineHeight.lg}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page."
               },
               "H3": {
                 "value": {
@@ -33,7 +35,8 @@
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page."
               },
               "H4": {
                 "value": {
@@ -43,7 +46,8 @@
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page."
               },
               "H5": {
                 "value": {
@@ -53,7 +57,8 @@
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page."
               },
               "H6": {
                 "value": {
@@ -63,7 +68,8 @@
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page."
               }
             },
             "prose": {
@@ -75,7 +81,8 @@
                   "letterSpacing": "{ob.s.letterSpacing-px.superNarrow}",
                   "lineHeight": "{ob.s.lineHeight.4xl}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Primary page heading for prose based pages. Used for the most important headline on a page."
               },
               "H2": {
                 "value": {
@@ -85,7 +92,8 @@
                   "letterSpacing": "{ob.s.letterSpacing-px.superNarrow}",
                   "lineHeight": "{ob.s.lineHeight.3xl}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               },
               "H3": {
                 "value": {
@@ -95,7 +103,8 @@
                   "letterSpacing": "{ob.s.letterSpacing.narrower}",
                   "lineHeight": "{ob.s.lineHeight.2xl}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               },
               "H4": {
                 "value": {
@@ -105,7 +114,8 @@
                   "letterSpacing": "{ob.s.letterSpacing-px.narrower}",
                   "lineHeight": "{ob.s.lineHeight.xl}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               },
               "H5": {
                 "value": {
@@ -115,7 +125,8 @@
                   "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
                   "lineHeight": "{ob.s.lineHeight.lg}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               },
               "H6": {
                 "value": {
@@ -125,7 +136,8 @@
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
-                "type": "typography"
+                "type": "typography",
+                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               }
             }
           },
@@ -208,7 +220,7 @@
                 "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}"
               },
               "type": "typography",
-              "description": "Regular"
+              "description": "Default body text style for paragraphs and general content."
             },
             "link": {
               "value": {
@@ -221,7 +233,7 @@
                 "textDecoration": "{ob.p.text-decoration.underline}"
               },
               "type": "typography",
-              "description": "Regular"
+              "description": "Interactive text elements that navigate to other content when clicked. Adds an underline to the text."
             },
             "strong": {
               "value": {
@@ -232,7 +244,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "Emphasized text to highlight important information within body content."
             },
             "lead": {
               "value": {
@@ -243,7 +256,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "Introductory paragraph text, typically larger or bolder than normal body text."
             }
           }
         },

@@ -26,7 +26,7 @@
                 "paragraphSpacing": "{ob.p.paragraphSpacing.xs}"
               },
               "type": "typography",
-              "description": "T-shirt named composite type of typography token. Having a weight ExtraBold, not used in Figma componets, yes staying at disposal in Figma styles."
+              "description": "T-shirt named composite type of typography token. Having a weight ExtraBold, not used in Figma components, yet staying at disposal in Figma styles."
             }
           },
           "sm": {
@@ -39,7 +39,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.sm}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Used in Figma styles for components such as Footer, Badge etc."
             },
             "strong": {
               "value": {
@@ -50,7 +51,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.sm}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Having a weight ExtraBold, not used in Figma components, yet staying at disposal in Figma styles."
             }
           },
           "md": {
@@ -63,7 +65,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.md}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Used as the default style for body typography."
             },
             "strong": {
               "value": {
@@ -74,7 +77,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.md}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Having a weight ExtraBold, not used in Figma components, yet staying at disposal in Figma styles."
             }
           },
           "lg": {
@@ -87,7 +91,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Used in Figma styles for components such as Footer, Badge etc."
             },
             "strong": {
               "value": {
@@ -98,7 +103,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Having a weight ExtraBold, not used in Figma components, yet staying at disposal in Figma styles."
             }
           },
           "xl": {
@@ -111,7 +117,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Used in Figma styles for components such as Footer, Badge etc."
             },
             "strong": {
               "value": {
@@ -122,7 +129,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Having a weight ExtraBold, not used in Figma components, yet staying at disposal in Figma styles."
             }
           },
           "2xl": {
@@ -135,7 +143,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Used in Figma styles for components such as Footer, Badge etc."
             },
             "strong": {
               "value": {
@@ -146,7 +155,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Having a weight ExtraBold, not used in Figma components, yet staying at disposal in Figma styles."
             }
           },
           "3xl": {
@@ -159,7 +169,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Used in Figma styles for components such as Footer, Badge etc."
             },
             "strong": {
               "value": {
@@ -170,7 +181,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Having a weight ExtraBold, not used in Figma components, yet staying at disposal in Figma styles."
             }
           },
           "4xl": {
@@ -183,7 +195,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Used in Figma styles for components such as Footer, Badge etc."
             },
             "strong": {
               "value": {
@@ -194,7 +207,8 @@
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.lg}"
               },
-              "type": "typography"
+              "type": "typography",
+              "description": "T-shirt named composite type of typography token. Having a weight ExtraBold, not used in Figma components, yet staying at disposal in Figma styles."
             }
           }
         }
