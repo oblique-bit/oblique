@@ -31,7 +31,7 @@
                 "value": {
                   "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.p.fontWeight.300}",
+                  "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
@@ -42,7 +42,7 @@
                 "value": {
                   "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.p.fontWeight.300}",
+                  "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
@@ -53,7 +53,7 @@
                 "value": {
                   "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.s.fontWeight.bold}",
+                  "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
@@ -64,7 +64,7 @@
                 "value": {
                   "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.s.fontWeight.bold}",
+                  "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
@@ -132,7 +132,7 @@
                 "value": {
                   "fontFamily": "{ob.s.fontFamily.body}",
                   "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.s.fontWeight.bold}",
+                  "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
