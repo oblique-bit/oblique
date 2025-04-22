@@ -114,19 +114,19 @@
           "type": "lineHeights"
         },
         "xl": {
-          "value": "{ob.p.lineHeight.700}",
+          "value": "{ob.p.lineHeight.800}",
           "type": "lineHeights"
         },
         "2xl": {
-          "value": "{ob.p.lineHeight.1000}",
+          "value": "{ob.p.lineHeight.1100}",
           "type": "lineHeights"
         },
         "3xl": {
-          "value": "{ob.p.lineHeight.1200}",
+          "value": "{ob.p.lineHeight.1300}",
           "type": "lineHeights"
         },
         "4xl": {
-          "value": "{ob.p.lineHeight.1300}",
+          "value": "{ob.p.lineHeight.1400}",
           "type": "lineHeights"
         }
       },
