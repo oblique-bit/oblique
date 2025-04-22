@@ -93,7 +93,7 @@
                   "lineHeight": "{ob.s.lineHeight.3xl}"
                 },
                 "type": "typography",
-                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
+                "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               },
               "H3": {
                 "value": {
@@ -104,7 +104,7 @@
                   "lineHeight": "{ob.s.lineHeight.2xl}"
                 },
                 "type": "typography",
-                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
+                "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               },
               "H4": {
                 "value": {
@@ -115,7 +115,7 @@
                   "lineHeight": "{ob.s.lineHeight.xl}"
                 },
                 "type": "typography",
-                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
+                "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               },
               "H5": {
                 "value": {
@@ -126,7 +126,7 @@
                   "lineHeight": "{ob.s.lineHeight.lg}"
                 },
                 "type": "typography",
-                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
+                "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               },
               "H6": {
                 "value": {
@@ -137,7 +137,7 @@
                   "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
                 "type": "typography",
-                "description": "Primary page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
+                "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
               }
             }
           },

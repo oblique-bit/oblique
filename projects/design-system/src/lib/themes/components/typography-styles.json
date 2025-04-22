@@ -143,144 +143,169 @@
             "hint": {
               "value": "{ob.s.typography.type-scale.sm.normal}",
               "type": "typography",
-              "description": "Small text for supplementary information."
+              "description": "Small text for short supplementary information."
             }
           },
           "form": {
             "input": {
               "label": {
                 "value": "{ob.s.typography.type-scale.xs.normal}",
-                "type": "typography"
+                "type": "typography",
+                "description": "Compact size for text-based input labels. They need to be easy to find and read but shouldn't draw attention to themselves."
               },
               "user-input": {
                 "value": "{ob.s.typography.content.body.normal}",
                 "type": "typography",
-                "description": "User Input"
+                "description": "Body-sized text for text-based user input."
               },
               "hint": {
                 "value": "{ob.s.typography.type-scale.xs.normal}",
-                "type": "typography"
+                "type": "typography",
+                "description": "Small text for short supplementary information."
               }
             },
             "radio-checkbox": {
               "label": {
                 "value": "{ob.s.typography.content.body.normal}",
-                "type": "typography"
+                "type": "typography",
+                "description": "Body text size ensures these critical selection labels are clearly readable, as they contain the actual choices users are selecting."
               },
               "hint": {
                 "value": "{ob.s.typography.type-scale.xs.normal}",
-                "type": "typography"
+                "type": "typography",
+                "description": "Small text for short supplementary information. Currently not in use."
               }
             }
           },
           "list-group": {
             "text": {
               "value": "{ob.s.typography.content.body.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Body text size ensures primary list content is clearly readable."
             },
             "subtext": {
               "value": "{ob.s.typography.type-scale.sm.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Smaller than primary text creates clear hierarchy within list items, distinguishing supporting information."
             }
           },
           "header": {
             "app-title": {
               "value": "{ob.s.typography.type-scale.xl.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Large text that establishes brand identity and creates an anchor point at the top of the interface hierarchy."
             },
             "horizontal-nav-cell": {
               "value": "{ob.s.typography.content.body.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "For text in the horizontal main navigation."
             },
             "submenu-row-label": {
               "value": "{ob.s.typography.type-scale.sm.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "For navigation items within dropdown menus."
             },
             "language-label": {
               "value": "{ob.s.typography.type-scale.sm.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Small size that should be accessible but not compete with main navigation."
             }
           },
           "off-canvas": {
             "title": {
               "value": "{ob.s.typography.type-scale.xl.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Large text that establishes the side panel's context and creates a clear entry point for this temporary interface element."
             }
           },
           "footer": {
             "link": {
               "value": "{ob.s.typography.content.body.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Text style for clickable links in footer."
             },
             "legal": {
               "value": "{ob.s.typography.type-scale.xs.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Small text style for legal text, disclaimers or information."
             }
           },
           "nav-tree": {
             "label": {
               "value": "{ob.s.typography.content.body.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Text style for hierarchical navigation items in the sidebar."
             }
           },
           "paginator": {
             "label": {
               "value": "{ob.s.typography.type-scale.xs.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Compact size for the component's helper text."
             }
           },
           "popover": {
             "title": {
               "value": "{ob.s.typography.content.body.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Body-sized text ensures contextual popup headings are immediately readable when they appear."
             },
             "text": {
               "value": "{ob.s.typography.type-scale.sm.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Slightly smaller than the title creates hierarchy within the popover while maintaining readability for this temporarily visible content."
             }
           },
           "slider": {
             "number": {
               "value": "{ob.s.typography.type-scale.sm.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Text style for numeric values on sliders"
             }
           },
           "slide-toggle": {
             "label": {
               "value": "{ob.s.typography.content.body.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Body text size ensures these critical selection labels are clearly readable, as they contain the actual choices users are making."
             }
           },
           "stepper": {
             "step-number": {
               "value": "{ob.s.typography.type-scale.sm.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Text style for the numeric step indicators in multi-step processes."
             },
             "step-label": {
               "value": "{ob.s.typography.content.body.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Text style for the step descriptions in multi-step processes."
             }
           },
           "table": {
             "header": {
               "value": "{ob.s.typography.content.body.strong}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Text style for table column headers."
             },
             "cell": {
               "value": "{ob.s.typography.content.body.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Text style for text-based table cell content."
             }
           },
           "tabs": {
             "label": {
               "value": "{ob.s.typography.type-scale.sm.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Text style for tab labels."
             }
           },
           "tooltip": {
             "label": {
               "value": "{ob.s.typography.type-scale.xs.normal}",
-              "type": "typography"
+              "type": "typography",
+              "description": "Small text fits the compact nature of tooltips, providing just-in-time guidance without overwhelming the interface."
             }
           }
         }
