@@ -1,3 +1,11 @@
+@let translatedButton =
+	"i18n.oblique.service-navigation.message.text"
+		| obTranslateParams
+			: {
+					messagePluralizationKey:
+						count > 1 ? "i18n.oblique.service-navigation.message.plural" : "i18n.oblique.service-navigation.message.singular",
+					count: count === 0 ? "i18n.oblique.service-navigation.message.count.zero" : count
+			  };
 <a
 	id="my-notifications-link"
 	[href]="linkHref"
@@ -5,17 +13,7 @@
 	mat-icon-button
 	obButton="tertiary"
 	class="ob-widget"
-	[matTooltip]="
-		'i18n.oblique.service-navigation.message.tooltip.text'
-			| obTranslateParams
-				: {
-						messagePluralizationKey:
-							count > 1
-								? 'i18n.oblique.service-navigation.message.tooltip.plural'
-								: 'i18n.oblique.service-navigation.message.tooltip.singular',
-						count: count === 0 ? 'i18n.oblique.service-navigation.message.tooltip.count.zero' : count
-				  }
-	"
+	[matTooltip]="translatedButton"
 	[class.ob-longer-badge]="tooManyCount"
 	matBadgeOverlap="true"
 	matBadgeColor="warn"
@@ -25,5 +23,5 @@
 	[matBadge]="tooManyCount ? '99+' : count"
 >
 	<mat-icon svgIcon="inbox" />
-	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.message.link" | translate }}</span>
+	<span class="ob-screen-reader-only">{{ translatedButton }}</span>
 </a>

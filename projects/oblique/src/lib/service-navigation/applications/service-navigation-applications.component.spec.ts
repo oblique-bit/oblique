@@ -651,10 +651,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 			});
 
 			describe('tooltip', () => {
-				it(`should have "i18n.oblique.service-navigation.applications.link.tooltip" as text`, async () => {
+				it(`should have "i18n.oblique.service-navigation.applications.link.label" as text`, async () => {
 					const tooltipHarness = await harness.getTooltipHarness(fixture);
 					await tooltipHarness.show();
-					expect(await tooltipHarness.getTooltipText()).toBe(`i18n.oblique.service-navigation.applications.link.tooltip`);
+					expect(await tooltipHarness.getTooltipText()).toBe(`i18n.oblique.service-navigation.applications.link.label`);
 				});
 			});
 		});
