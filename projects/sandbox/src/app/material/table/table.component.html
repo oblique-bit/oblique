@@ -102,7 +102,11 @@
 				<mat-header-row *cdkHeaderRowDef="displayedColumns" />
 				<mat-row *cdkRowDef="let row; columns: displayedColumns" [class.edit-mode]="row.editMode !== editMode.NONE" />
 			</mat-table>
-			<mat-paginator [showFirstLastButtons]="true" [pageSizeOptions]="[10, 5, 2]" />
+			<mat-paginator
+				[showFirstLastButtons]="true"
+				[pageSizeOptions]="[10, 5, 2]"
+				aria-label='Select page of "Characteristics of periodical elements"'
+			/>
 
 			<ng-template #selectHeader let-tableManager="tableManager">
 				<mat-checkbox
