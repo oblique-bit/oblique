@@ -13,13 +13,7 @@ Log.start('Finalize build');
 const source = 'src/nginx';
 const destination = 'nginx/conf/includes';
 const pathToIndexFile = '../../dist/sds/public/index.html';
-const pathToSecurityHeadersFile = '../../dist/sds/nginx/conf/includes/security_headers.conf';
-
-CopyFiles.initialize('sds')
-	.copyFile('Staticfile', source, '')
-	.copyFile('custom_headers.conf', source, destination)
-	.copyFile('security_headers.conf', source, destination)
-	.finalize();
+const pathToSecurityHeadersFile = 'src/nginx/security_headers.conf';
 
 // 1.) open index.html
 // 2.) get the scripts' sources and other attributes at the bottom of the body (don't open the scripts, just store the value of their attributes)
@@ -55,4 +49,11 @@ Files.write(
 );
 Files.write(pathToSecurityHeadersFile, Files.read(pathToSecurityHeadersFile).replace(/<hash>/g, hashValue));
 
+console.info(Files.read(pathToSecurityHeadersFile));
+
+CopyFiles.initialize('sds')
+	.copyFile('Staticfile', source, '')
+	.copyFile('custom_headers.conf', source, destination)
+	.copyFile('security_headers.conf', source, destination)
+	.finalize();
 Log.success();
