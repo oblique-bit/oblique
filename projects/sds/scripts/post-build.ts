@@ -38,7 +38,7 @@ Files.write(pathToIndexFile, Files.read(pathToIndexFile).replace(/SCRIPT_ARRAY/,
 
 // 5.) compute the sha256 hash of exactly what is in between <script> and </script>. Whitespace included, script tags excluded
 const content = /(?:<script>)(?<content>[\s\S]*)(?:<\/script>)/g.exec(Files.read(pathToIndexFile))?.groups.content ?? '';
-const hashValue = createHash('sha256').update(content).digest('hex');
+const hashValue = createHash('sha256').update(content).digest('base64');
 
 // 6.) open security_headers.conf
 // 7.) change script-src to exactly  `script-src 'sha256-<hash>' 'strict-dynamic'`
