@@ -18,7 +18,7 @@ RUN mkdir /etc/nginx/includes
 
 # Copy the nginx config
 COPY /projects/sds/src/nginx/conf/nginx.conf /etc/nginx/nginx.conf
-COPY /projects/sds/src/nginx/conf/includes/* /etc/nginx/includes/
+COPY /dist/sds/nginx/conf/includes/* /etc/nginx/includes/
 
 RUN touch /var/run/nginx.pid && \
     chgrp -R 0 /var/run/nginx.pid && chmod g=u /var/run/nginx.pid && \
