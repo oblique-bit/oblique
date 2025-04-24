@@ -1,3 +1,17 @@
+# [13.2.0](https://github.com/oblique-bit/oblique/compare/13.1.2...13.2.0) (2025-04-24)
+
+## Features
+
+- **feedback:** redraw the feedback button ([1efc7e10](https://github.com/oblique-bit/oblique/commit/1efc7e109f60c6fc69103436cdd7f7b6963d0dfe))
+- **file-upload:** add example with `mapFilesToDeleteUrlFunction` ([54ab1fc8](https://github.com/oblique-bit/oblique/commit/54ab1fc8d4c20d9480c63d2f8426df9a5fe889a0))
+- **material:** add a sortable table example ([41762554](https://github.com/oblique-bit/oblique/commit/417625547acfe363cea6cb270b02b4e0e4e67463))
+- **material:** use `ObDatepickerModule` instead of `MatDatepickerModule` ([e0e3b3e3](https://github.com/oblique-bit/oblique/commit/e0e3b3e32ed434d6ece3581dfd22f75c0c09e74b))
+- **material:** show `MatStepperIntl` labels in stepper example ([fdb9fc3d](https://github.com/oblique-bit/oblique/commit/fdb9fc3d4fe0d59d45ffd3c92cf651a9f5bb6c4a))
+- **paginator:** add a reminder that aria-label is mandatory ([3e876cd5](https://github.com/oblique-bit/oblique/commit/3e876cd56ef1f25f50e8eb45641cf935425481b6))
+- **paginator:** add an `aria-label` attribute to each paginator ([a17d428b](https://github.com/oblique-bit/oblique/commit/a17d428b0a0958b475903dc06e08c1455bc2a24f))
+- **side-navigation:** add links toward github and figma to the footer ([eca3ded0](https://github.com/oblique-bit/oblique/commit/eca3ded02aba2e60f4d97cd548863333b92dba8b))
+- **side-navigation:** move the feedback button into a side-navigation footer ([9b247535](https://github.com/oblique-bit/oblique/commit/9b2475358d489c19fa3933aa32370fac1f5f8c8a))
+
 # [13.1.2](https://github.com/oblique-bit/oblique/compare/sds-13.1.1_master__622p8_2025-04-07T142046...13.1.2) (2025-04-14)
 
 ## Bug Fixes
