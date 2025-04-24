@@ -113,6 +113,7 @@ export default [
 			'@typescript-eslint/init-declarations': 'off',
 			'@typescript-eslint/lines-between-class-members': 'off',
 			'@typescript-eslint/no-confusing-void-expression': 'off',
+			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-dynamic-delete': 'off',
 			'@typescript-eslint/no-invalid-this': 'off',
 			'@typescript-eslint/no-parameter-properties': 'off',
