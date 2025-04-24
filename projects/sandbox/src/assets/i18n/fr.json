@@ -48,6 +48,7 @@
   "i18n.oblique.chips.management": "Gestion",
   "i18n.oblique.chips.hr": "RH",
   "i18n.oblique.chips.cleaning": "Nettoyage",
+  "i18n.validation.invalidDateMin": "La date doit être postérieure à: {{value}}",
   "i18n.file-upload.name": "Nom du fichier",
   "i18n.file-upload.url": "Url du fichier",
   "i18n.file-upload.test": "Test",
