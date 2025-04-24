@@ -1,3 +1,34 @@
+# [13.2.0](https://github.com/oblique-bit/oblique/compare/13.1.2...13.2.0) (2025-04-24)
+
+## Bug Fixes
+
+- **material:** ensure that mat-error and mat-hint appear on a single line ([3c325ddd](https://github.com/oblique-bit/oblique/commit/3c325ddd3d933c9f2c2e2155a37fa95c245c98cf))
+- **material:** `MatSort` only use the Oblique arrow ([cca2723c](https://github.com/oblique-bit/oblique/commit/cca2723c5c67a22a75ea0f8dd52e5558af5c5491))
+- **schema-validation:** set `aria-required` instead of `required` for required fields ([2200cf79](https://github.com/oblique-bit/oblique/commit/2200cf79412855517a6a168f6e286d3d84b552f4))
+
+## Features
+
+- **file-upload:** add `mapFilesToDeleteUrlFunction` function ([47ea4b09](https://github.com/oblique-bit/oblique/commit/47ea4b0900b8af4a98a00fe74b18271a4f5ce614))
+- **file-upload:** ensure `ObFileInfo` sorts entries by ascending order on name per default ([81acf35a](https://github.com/oblique-bit/oblique/commit/81acf35aa2f17aef17ffd956ca90da4b535d0d99))
+- **master-layout:** add dedicated `<title>` info on accessibility page ([7304ee2a](https://github.com/oblique-bit/oblique/commit/7304ee2a2748696273afc49034d5d12ba4c22f0e))
+- **master-layout:** add `navigationChanged` output ([1773b4b7](https://github.com/oblique-bit/oblique/commit/1773b4b731454eb0ce5173845aa554252415f48f))
+- **master-layout:** add `removable` option to `ObINavigationLink` ([fd4ad35d](https://github.com/oblique-bit/oblique/commit/fd4ad35d206c86b5586b9ad2d8974eaaae4fc035))
+- **master-layout:** set min-height for flyout ([5e6918f9](https://github.com/oblique-bit/oblique/commit/5e6918f91d1346f9f3487bf940215bb9877ace1f))
+- **master-layout:** ensure flyouts are aligned with the edge of their respective toggle ([a64cb15f](https://github.com/oblique-bit/oblique/commit/a64cb15f42ff6101c6ce76ed3f0d7faebb686ee3))
+- **master-layout:** reduce red flyout hover line width ([a58a4d2c](https://github.com/oblique-bit/oblique/commit/a58a4d2c09b45ddef8981a6ae7944f885c5e49c2))
+- **master-layout:** reduce top and bottom margin on flyout button ([769a21fc](https://github.com/oblique-bit/oblique/commit/769a21fcde945abf5aa810473276aa937157ff07))
+- **master-layout:** set fixed width for flyout ([f30e1793](https://github.com/oblique-bit/oblique/commit/f30e179300199c1d01feefbcecc79e6b26189349))
+- **master-layout:** remove flyout padding ([3f89eb0f](https://github.com/oblique-bit/oblique/commit/3f89eb0fd5987294166cd3cf835b5bb7753a2c29))
+- **material:** `MatSort` arrow use `ob-default` color ([54ba12ed](https://github.com/oblique-bit/oblique/commit/54ba12edfa7859e19f5e84b90fd06a91059cfabd))
+- **material:** `MatSort` arrow is shown at full opacity on hover ([872bc23e](https://github.com/oblique-bit/oblique/commit/872bc23e09698e64f5bd65402a9c9955209ba02f))
+- **material:** provide `MatDatepickerIntl` translations ([4d6cb60b](https://github.com/oblique-bit/oblique/commit/4d6cb60b9a92698d73d2327dea87399c743fd9ec))
+- **material:** provide `MatStepperIntl` translations ([aa777d6e](https://github.com/oblique-bit/oblique/commit/aa777d6e900b511dfe42a5db44948ab3d3efae12))
+- **schema-validation:** add `formControlName` support for `ObSchemaRequiredDirective` ([6996cb3a](https://github.com/oblique-bit/oblique/commit/6996cb3aa434cff22c007d329f871c47b20d7c05))
+- **schema-validation:** deprecate `name` input from `ObSchemaRequiredDirective` ([e7622ddc](https://github.com/oblique-bit/oblique/commit/e7622ddc2c60efca677f7207fe4591cbd17db80d))
+- **schema-validation:** add marker for required fields in template driven forms ([a9d921eb](https://github.com/oblique-bit/oblique/commit/a9d921eb8947c62840571ba29e5547f3a9bbdedd))
+- **service-navigation:** unify tooltips and translations ([60be9c69](https://github.com/oblique-bit/oblique/commit/60be9c698db7d2e0ae4ffe6502042fc8a2eef0b7))
+- **service-navigation:** move alignement to the right in mobile view ([a8e9b853](https://github.com/oblique-bit/oblique/commit/a8e9b853a1e463fe8d056b2db4bf5b47e42213e8))
+
 # [13.1.2](https://github.com/oblique-bit/oblique/compare/sds-13.1.1_master__622p8_2025-04-07T142046...13.1.2) (2025-04-14)
 
 ## Bug Fixes

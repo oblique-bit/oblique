@@ -1,3 +1,9 @@
+# [13.2.0](https://github.com/oblique-bit/oblique/compare/13.1.2...13.2.0) (2025-04-24)
+
+## Features
+
+- **utils:** add check of installed node version ([97b98569](https://github.com/oblique-bit/oblique/commit/97b985699113b3b5955b48e20a9b779d449cea24))
+
 # [13.0.0](https://github.com/oblique-bit/oblique/compare/12.2.3...13.0.0) (2025-02-27)
 
 ## Bug Fixes

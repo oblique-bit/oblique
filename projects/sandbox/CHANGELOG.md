@@ -1,3 +1,20 @@
+# [13.2.0](https://github.com/oblique-bit/oblique/compare/13.1.2...13.2.0) (2025-04-24)
+
+## Bug Fixes
+
+- **language:** add missing i18n error key for the datepicker ([f7f52784](https://github.com/oblique-bit/oblique/commit/f7f5278440508e49e8c33e54c78b75113283122c))
+
+## Features
+
+- **file-upload:** add example with `mapFilesToDeleteUrlFunction` ([8cd7d8fa](https://github.com/oblique-bit/oblique/commit/8cd7d8faa4453915712521be9dca094b4073c6b5))
+- **master-layout:** activate `showAccessibilityTitle` ([7d525a68](https://github.com/oblique-bit/oblique/commit/7d525a681f08f87f884eb67786db70515a244290))
+- **master-layout:** make dynamic navigation items removable ([42c40448](https://github.com/oblique-bit/oblique/commit/42c404482673503d45f5dc773b3fb6cb1ba47f12))
+- **material:** ensure that material tables are sorted by ascending position per default ([de76a7f6](https://github.com/oblique-bit/oblique/commit/de76a7f6aff9e892b9e0a1cb9df0c40fec1bc037))
+- **material:** use `ObDatepickerModule` instead of `MatDatepickerModule` ([7344e9ce](https://github.com/oblique-bit/oblique/commit/7344e9ce525306fe013c584a21b5696cf1662357))
+- **material:** show `MatStepperIntl` labels in stepper example ([7c81b3c1](https://github.com/oblique-bit/oblique/commit/7c81b3c169c793fc15ce8b276c870b01b22523a5))
+- **paginator:** add an `aria-label` attribute to the paginator ([5c3a4b5e](https://github.com/oblique-bit/oblique/commit/5c3a4b5e3902e6625ea77ecab36469e6d633e409))
+- **schema-validation:** add reactive and template driven examples with `obSchemaValidate` ([f921c906](https://github.com/oblique-bit/oblique/commit/f921c906dc6841d1c9a68b9ae7a1746e4bca4475))
+
 # [13.1.0](https://github.com/oblique-bit/oblique/compare/13.0.3...13.1.0) (2025-03-27)
 
 ## Bug Fixes
