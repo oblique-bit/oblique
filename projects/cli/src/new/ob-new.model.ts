@@ -42,26 +42,14 @@ export type OptionKeys =
 export type ImmutableOptionsType = 'standalone' | 'ssr' | 'style';
 
 export const immutableOptions: Record<ImmutableOptionsType, {value: string | boolean; description: string}> = {
-	standalone: {
-		value: false,
-		description: `Oblique doesn't support standalone components`
-	},
-	ssr: {
-		value: false,
-		description: `Oblique doesn't support server side rendering`
-	},
-	style: {
-		value: 'scss',
-		description: 'Oblique uses SCSS'
-	}
+	standalone: {value: false, description: `Oblique doesn't support standalone components`},
+	ssr: {value: false, description: `Oblique doesn't support server side rendering`},
+	style: {value: 'scss', description: 'Oblique uses SCSS'}
 };
 
 export const obNewConfig = {
 	obNewSummaryText: `Creates an Oblique project`,
-	projectNameArgument: {
-		description: `Unique name for your new project`,
-		argumentName: projectNamePlaceholder
-	}
+	projectNameArgument: {description: `Unique name for your new project`, argumentName: projectNamePlaceholder}
 };
 
 export const createsWorkspaceMessage = `\n[Info]: Creates a new Angular workspace`;
