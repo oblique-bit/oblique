@@ -22,39 +22,12 @@ nodejsPipelineTemplate {
 				'./projects/service-navigation-web-component'
 			]
 		],
-		'release/major_*': [
-			'cloudFoundry': [
-				['project': 'sds', 'space': 'dev'],
-				['project': 'sandbox', 'space': 'dev']
-			]
-		],
-		'release/minor_*': [
-			'cloudFoundry': [
-				['project': 'sds', 'space': 'dev'],
-				['project': 'sandbox', 'space': 'dev']
-			]
-		],
-		'release/patch_*': [
-			'cloudFoundry': [
-				['project': 'sandbox', 'space': 'patch']
-			]
-		],
 		master: [
 			'publish': [
 				'@oblique/oblique',
-				'@oblique/cli'
+				'@oblique/cli',
+				'@oblique/service-navigation-web-component'
 			],
-			'gitTag': true,
-			'gitPush': [
-				'credentialId': 'githubObliqueCredentials',
-				'repository': 'https://github.com/oblique-bit/oblique.git',
-			],
-			'cloudFoundry': [
-				['project': 'sds', 'space': 'prod']
-			],
-			securityScan: [
-				apps: [[project: 'sds', space: 'prod']]
-			]
 		]
 	]
 }

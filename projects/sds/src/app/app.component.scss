@@ -24,7 +24,7 @@ $banner-height: 50px;
 	grid-column: 1 / -1;
 	grid-row: 2;
 	display: grid;
-	grid-template-columns: fit-content(500px) 30fr 1fr;
+	grid-template-columns: fit-content(500px) 30fr;
 	height: 100dvh;
 	width: 100vw;
 }

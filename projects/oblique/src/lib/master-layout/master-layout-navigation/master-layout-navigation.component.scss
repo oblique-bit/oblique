@@ -55,6 +55,28 @@
 			@include button.ob-link-btn();
 		}
 
+		.ob-master-layout-navigation-item.ob-is-removable {
+			position: relative;
+			display: inline;
+
+			.ob-remove-menu-item {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: fit-content;
+				font-size: variables.$ob-font-size-smaller;
+				border: none;
+				padding: 2px; // empiric value
+				z-index: variables.$ob-z-index-layout;
+				background-color: variables.$ob-secondary-50;
+				border-radius: 50%;
+
+				&:hover {
+					background-color: variables.$ob-secondary-100;
+				}
+			}
+		}
+
 		.ob-layout-collapsed & {
 			.ob-main-nav-item {
 				display: flex;
@@ -65,8 +87,8 @@
 				& > button {
 					&.active,
 					&:hover {
-						border-left: variables.$ob-line-width solid variables.$ob-accent;
-						padding-left: variables.$ob-spacing-default - variables.$ob-line-width;
+						border-left: variables.$ob-line-width-sm solid variables.$ob-accent;
+						padding-left: variables.$ob-spacing-default - variables.$ob-line-width-sm;
 					}
 				}
 			}
@@ -115,25 +137,16 @@
 				transform variables.$ob-duration-default;
 
 			.ob-layout-expanded & {
-				padding: 0 variables.$ob-spacing-md variables.$ob-spacing-md;
-				inset: 100% auto auto -1 * variables.$ob-spacing-md;
-				max-width: variables.$ob-navigation-sub-menu-max-width-md;
+				inset: 100% auto auto auto;
+				width: variables.$ob-navigation-sub-menu-width;
 				max-height: 60vh;
+				min-height: 48px; // 48px is the height of material's touch target
 				background-color: variables.$ob-white;
 				transform: none;
 				transition: none;
 				display: block;
-				width: max-content;
 				z-index: variables.$ob-z-index-controls + 1;
 				@include shadow.ob-default-panel-box-shadow();
-
-				@include layout.ob-media-breakpoint-up(lg) {
-					max-width: variables.$ob-navigation-sub-menu-max-width-lg;
-
-					@include layout.ob-media-breakpoint-up(xl) {
-						max-width: variables.$ob-navigation-sub-menu-max-width-xl;
-					}
-				}
 			}
 
 			.ob-layout-collapsed & {
@@ -146,7 +159,7 @@
 			}
 
 			@mixin sub-menu-active-hover-border-left() {
-				border-left: variables.$ob-line-width solid variables.$ob-accent;
+				border-left: variables.$ob-line-width-sm solid variables.$ob-accent;
 			}
 
 			li {
@@ -155,7 +168,7 @@
 					&.active,
 					&:hover {
 						@include sub-menu-active-hover-border-left();
-						padding-left: variables.$ob-spacing-default - variables.$ob-line-width;
+						padding-left: variables.$ob-spacing-default - variables.$ob-line-width-sm;
 					}
 				}
 			}
@@ -164,8 +177,8 @@
 				a {
 					font-size: variables.$ob-font-size-big;
 					font-weight: bold;
-					padding-left: variables.$ob-line-width;
-					border-left: variables.$ob-line-width solid transparent;
+					padding-left: variables.$ob-line-width-sm;
+					border-left: variables.$ob-line-width-sm solid transparent;
 
 					&:hover {
 						border-left-color: variables.$ob-accent;
@@ -186,7 +199,7 @@
 				justify-content: space-between;
 
 				.ob-layout-expanded & {
-					margin: variables.$ob-spacing-default 0;
+					margin: variables.$ob-spacing-xs 0;
 
 					&.ob-just-close {
 						justify-content: flex-end;
@@ -299,7 +312,7 @@
 
 				&:nth-of-type(n + 6).ob-expandable .ob-sub-menu {
 					left: unset;
-					right: -1 * variables.$ob-spacing-md;
+					right: 0;
 				}
 
 				&:last-of-type.ob-expandable .ob-sub-menu {
@@ -307,7 +320,7 @@
 				}
 
 				> a,
-				> button {
+				> button:not(.ob-remove-menu-item) {
 					border-bottom: variables.$ob-line-width-sm solid transparent;
 					display: inline-flex;
 					padding: variables.$ob-spacing-md variables.$ob-spacing-default;

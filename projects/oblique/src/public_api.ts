@@ -37,6 +37,7 @@ export {
 	ObIExternalLink,
 	ObEExternalLinkIcon
 } from './lib/external-link/external-link.module';
+export {ObDatepickerModule} from './lib/datepicker/ob-datepicker.module';
 export {
 	ObDropZoneComponent,
 	ObEUploadEventType,
@@ -56,6 +57,7 @@ export {
 	ObIServiceNavigationContact,
 	ObLoginState
 } from './lib/service-navigation';
+export {ObStepperIntlService} from './lib/stepper/ob-stepper.service';
 export {
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,

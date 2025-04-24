@@ -195,8 +195,8 @@ describe('ObServiceNavigationMessageComponent', () => {
 			expect(await link.hasClass('ob-widget')).toBe(true);
 		});
 
-		it('should have "i18n.oblique.service-navigation.message.link" as screen reader text', async () => {
-			expect(await harness.getLinkScreenReaderText()).toBe('i18n.oblique.service-navigation.message.link');
+		it('should have "i18n.oblique.service-navigation.message.text" as screen reader text', async () => {
+			expect(await harness.getLinkScreenReaderText()).toBe('i18n.oblique.service-navigation.message.text');
 		});
 
 		describe('tooltip', () => {
@@ -210,10 +210,10 @@ describe('ObServiceNavigationMessageComponent', () => {
 				expect(tooltip).toBeTruthy();
 			});
 
-			it('should have "i18n.oblique.service-navigation.applications.link.tooltip" as text', async () => {
+			it('should have "i18n.oblique.service-navigation.message.text" as text', async () => {
 				await tooltip.show();
 				const text = await tooltip.getTooltipText();
-				expect(text).toBe('i18n.oblique.service-navigation.message.tooltip.text');
+				expect(text).toBe('i18n.oblique.service-navigation.message.text');
 			});
 		});
 

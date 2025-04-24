@@ -21,17 +21,21 @@
 	--mat-table-row-item-outline-color: #{variables.$ob-secondary-200};
 
 	.mat-sort-header {
-		&[aria-sort="ascending"] .mat-sort-header-arrow {
+		.mat-sort-header-arrow {
 			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>ArrowUp</title><polygon points="21.035 6.351 12 1.134 2.965 6.351 3.715 7.65 11.25 3.299 11.25 22 12.75 22 12.75 3.299 20.285 7.65 21.035 6.351" fill="currentColor"/></svg>');
 		}
 
-		&[aria-sort="descending"] .mat-sort-header-arrow {
-			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>ArrowDown</title><polygon points="20.285 16.351 12.75 20.701 12.75 2 11.25 2 11.25 20.701 3.715 16.351 2.965 17.65 12 22.867 21.035 17.65 20.285 16.351" fill="currentColor"/></svg>');
+		.cdk-keyboard-focused,
+		.cdk-program-focused,
+		&:hover {
+			.mat-sort-header-arrow {
+				opacity: 1;
+			}
 		}
 	}
 
-	.mat-sort-header-arrow {
-		color: variables.$ob-default;
+	.mat-sort-header-arrow svg {
+		display: none;
 	}
 
 	.mat-sort-header-indicator,

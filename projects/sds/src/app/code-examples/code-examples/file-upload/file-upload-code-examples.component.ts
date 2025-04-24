@@ -8,6 +8,7 @@ import {FileUploadUploadEventPreviewComponent} from './previews/upload-event/fil
 import {FileUploadMapFunctionAndObFileInfoPreviewComponent} from './previews/map-function-and-ob-file-info/file-upload-map-function-and-ob-file-info-preview.component';
 import {FileUploadFullyFunctioningPreviewComponent} from './previews/fully-functioning/file-upload-fully-functioning-preview.component';
 import {FileUploadCancelUploadPreviewComponent} from './previews/cancel-upload/file-upload-cancel-upload-preview.component';
+import {FileUploadFullyFunctioningWithCustomDeletePreviewComponent} from './previews/fully-functioning-with-custom-delete/file-upload-fully-functioning-with-custom-delete-preview.component';
 
 @Component({
 	selector: 'app-code-example-file-upload',
@@ -73,6 +74,24 @@ export class FileUploadCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('file-upload', 'fully-functioning/file-upload-fully-functioning-preview.component.html', 'HTML'),
 				this.getSnippet('file-upload', 'fully-functioning/file-upload-fully-functioning-preview.component.ts', 'TS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
+			]
+		},
+		{
+			component: FileUploadFullyFunctioningWithCustomDeletePreviewComponent,
+			idParts: ['fully-functioning-with-custom-delete'],
+			title: 'Fully functioning with custom delete mock example',
+			snippets: [
+				this.getSnippet(
+					'file-upload',
+					'fully-functioning-with-custom-delete/file-upload-fully-functioning-with-custom-delete-preview.component.html',
+					'HTML'
+				),
+				this.getSnippet(
+					'file-upload',
+					'fully-functioning-with-custom-delete/file-upload-fully-functioning-with-custom-delete-preview.component.ts',
+					'TS'
+				),
 				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		}

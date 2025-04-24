@@ -1,3 +1,12 @@
+# [13.2.0](https://github.com/oblique-bit/oblique/compare/13.1.2...13.2.0) (2025-04-24)
+
+## Features
+
+- **service-navigation:** unify tooltips and translations ([60be9c69](https://github.com/oblique-bit/oblique/commit/60be9c698db7d2e0ae4ffe6502042fc8a2eef0b7))
+- **service-navigation:** move alignement to the right in mobile view ([a8e9b853](https://github.com/oblique-bit/oblique/commit/a8e9b853a1e463fe8d056b2db4bf5b47e42213e8))
+- **web-component:** add `accessibilityText` input for custom-buttons ([81a0139a](https://github.com/oblique-bit/oblique/commit/81a0139a64840957a63fba21dcc8ae0c974feee4))
+- **web-component:** add `tooltip` input for custom-buttons ([6fcddad4](https://github.com/oblique-bit/oblique/commit/6fcddad4b7bbfca3a46faeba3fef5e6140fd05ff))
+
 # [13.1.1](https://github.com/oblique-bit/oblique/compare/13.1.0...13.1.1) (2025-04-07)
 
 ## Bug Fixes

@@ -10,7 +10,7 @@ import {ObMockMasterLayoutConfig} from '../_mocks/mock-master-layout.config';
 import {ObMockScrollingEvents} from '../../scrolling/_mocks/mock-scrolling-events.service';
 import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObMasterLayoutService} from '../master-layout.service';
-import {ObEEnvironment, ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
+import {ObEEnvironment, ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {By} from '@angular/platform-browser';
 
 describe('ObMasterLayoutHeaderComponent', () => {
@@ -205,6 +205,21 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			it('should have correct color', () => {
 				expect(banner.styles.color).toBe('rgb(17, 34, 51)');
 			});
+		});
+	});
+
+	describe('emitNavigation', () => {
+		let emittedValue: ObINavigationLink[];
+		beforeEach(done => {
+			component.navigationChanged.subscribe(list => {
+				emittedValue = list;
+				done();
+			});
+			component.emitNavigation([{id: 'id', url: 'url', label: 'label'}]);
+		});
+
+		test('navigationChanged emits the given parameter', () => {
+			expect(emittedValue).toEqual([{id: 'id', url: 'url', label: 'label'}]);
 		});
 	});
 

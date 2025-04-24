@@ -30,7 +30,7 @@ describe(PaginatorCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
 	});
 
-	test(`that there are 13 ${MatPaginator.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatPaginator)).length).toBe(13);
+	test(`that there are 12 ${MatPaginator.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MatPaginator)).length).toBe(12);
 	});
 });

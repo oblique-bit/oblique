@@ -13,8 +13,7 @@ module.exports.collectCoverageFrom = [
 	'!**/index.ts',
 	// the following files have no spec files and therefore have a 0 coverage. Tests will be written later
 	'!**/http-api-interceptor.ts',
-	'!**/off-canvas-container.directive.ts',
-	'!**/schema-required.directive.ts'
+	'!**/off-canvas-container.directive.ts'
 ];
 module.exports.coverageThreshold = {
 	/*
@@ -98,10 +97,10 @@ module.exports.coverageThreshold = {
 		lines: 96
 	},
 	'projects/oblique/src/lib/master-layout/master-layout-navigation/*.ts': {
-		statements: 65,
-		branches: 53,
-		functions: 53,
-		lines: 65
+		statements: 84,
+		branches: 67,
+		functions: 79,
+		lines: 84
 	},
 	'projects/oblique/src/lib/master-layout/master-layout-navigation/sub-menu-item/*.ts': {
 		statements: 80,
@@ -146,10 +145,10 @@ module.exports.coverageThreshold = {
 		lines: 66
 	},
 	'projects/oblique/src/lib/schema-validation/*.ts': {
-		statements: 79,
-		branches: 69,
+		statements: 92,
+		branches: 80,
 		functions: 75,
-		lines: 79
+		lines: 100
 	},
 	'projects/oblique/src/lib/scrolling/*.ts': {
 		statements: 33,

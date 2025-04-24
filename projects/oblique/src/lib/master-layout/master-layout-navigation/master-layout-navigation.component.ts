@@ -3,6 +3,7 @@ import {
 	AfterViewInit,
 	Component,
 	ElementRef,
+	EventEmitter,
 	HostBinding,
 	Inject,
 	Input,
@@ -10,6 +11,7 @@ import {
 	OnDestroy,
 	OnInit,
 	Optional,
+	Output,
 	Renderer2,
 	ViewChild,
 	ViewEncapsulation
@@ -53,6 +55,7 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	hasOpenedMenu = false;
 	hideExternalLinks = true;
 	@Input() links: ObINavigationLink[] = [];
+	@Output() readonly linksChanged = new EventEmitter<ObINavigationLink[]>();
 	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable: boolean;
 	routerLinkActiveOptions: IsActiveMatchOptions = {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'};
 	private static readonly buttonWidth = 30;
@@ -151,6 +154,13 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	toggleSubMenu(obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective, link: ObNavigationLink): void {
 		obMasterLayoutNavigationItem.toggleSubMenu();
 		this.onSubMenuExpandedChanges(obMasterLayoutNavigationItem, link);
+	}
+
+	removeMenuItem(item: ObINavigationLink, mouseEvent: MouseEvent): void {
+		mouseEvent.preventDefault();
+		this.initializedLinks = this.initializedLinks.filter(initializedLink => initializedLink.id !== item.id);
+		this.links = this.links.filter(link => link.id !== item.id);
+		this.linksChanged.emit(this.links);
 	}
 
 	private addCurrentParentAncestor(link: ObNavigationLink): void {

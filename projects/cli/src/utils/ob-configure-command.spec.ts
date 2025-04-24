@@ -49,7 +49,7 @@ describe('ob-configure-command tests', () => {
 			const command = new Command<[string], OptionValues>('test-command');
 
 			const commandWithOptions = addObNewCommandOptions(schema, command);
-			expect(commandWithOptions.options.at(1).flags).toBe(`-o , --option2 `);
+			expect(commandWithOptions.options.at(1).flags).toBe(`-o, --option2`);
 		});
 
 		test('should throw an error if schema properties are not found', () => {
@@ -86,6 +86,15 @@ describe('ob-configure-command tests', () => {
 				matcher: 'toEqual'
 			}
 		];
+
+		test('should throw if both shortFlag and longFlag are missing or empty', () => {
+			const brokenConfig = {
+				description: 'No flags here',
+				flagValuePlaceholder: 'value'
+			} as ObNewSchemaOption;
+
+			expect(() => configureOption(brokenConfig, '')).toThrow(/At least one of shortFlag or longFlag must be provided./i);
+		});
 
 		test.each(testCases)('should have $description', ({actual, expected, matcher}) => {
 			if (matcher === 'toContain') {

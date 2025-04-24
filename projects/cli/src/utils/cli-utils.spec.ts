@@ -1,5 +1,7 @@
+import process from 'node:process';
 import {
 	buildOption,
+	checkNodeVersion,
 	commandUsageText,
 	createAdditionalHelpText,
 	currentVersions,
@@ -7,8 +9,10 @@ import {
 	execute,
 	getHelpText,
 	getVersionedDependency,
+	minimumSupportedVersion,
 	obExamples,
 	optionDescriptions,
+	recommendedVersion,
 	runObCommand,
 	startObCommand,
 	titleText
@@ -18,10 +22,10 @@ describe('CLI Utils', () => {
 	const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
 
 	beforeAll(() => {
-		// Mock console methods to capture their outputs
 		console.info = jest.fn();
 		console.time = jest.fn();
 		console.timeEnd = jest.fn();
+		console.warn = jest.fn();
 	});
 
 	describe('optionDescriptions', () => {
@@ -82,6 +86,10 @@ describe('CLI Utils', () => {
 	describe('startObCommand', () => {
 		test('startObCommand should start the timer', () => {
 			const mockCallback = jest.fn();
+			Object.defineProperty(process.versions, 'node', {
+				value: `${recommendedVersion}.0.0`,
+				configurable: true
+			});
 			const label = 'test label';
 			const options = {test: 'test'};
 
@@ -401,6 +409,138 @@ Examples of use:
 			test('with an overwriting execSyncOptions', () => {
 				execute({name: 'npmOutdated', execSyncOptions: {stdio: 'pipe'}});
 				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm outdated', {stdio: 'pipe'});
+			});
+		});
+	});
+
+	describe('checkNodeVersion', () => {
+		const originalNodeVersion = process.versions.node;
+
+		beforeEach(() => {
+			jest.spyOn(console, 'info').mockImplementation(() => {});
+			jest.spyOn(console, 'warn').mockImplementation(() => {});
+			jest.spyOn(console, 'error').mockImplementation(() => {});
+			jest.spyOn(process, 'exit').mockImplementation(() => {
+				throw new Error('process.exit called');
+			});
+		});
+
+		afterEach(() => {
+			Object.defineProperty(process.versions, 'node', {
+				value: originalNodeVersion,
+				configurable: true
+			});
+			jest.restoreAllMocks();
+		});
+
+		describe('with lower Node version', () => {
+			beforeEach(() => {
+				Object.defineProperty(process.versions, 'node', {
+					value: '16.13.0',
+					configurable: true
+				});
+			});
+
+			test('calls console.info', () => {
+				try {
+					checkNodeVersion();
+				} catch {
+					// expected: process.exit is mocked to throw
+				}
+				expect(console.info).toHaveBeenCalledWith('Checks your node version');
+			});
+
+			test('calls console.error with expected message', () => {
+				try {
+					checkNodeVersion();
+				} catch {
+					// expected: process.exit is mocked to throw
+				}
+				expect(console.error).toHaveBeenCalledWith(
+					`Error: Oblique CLI requires Node.js v${minimumSupportedVersion} or higher. You are using v16.13.0. Please upgrade.`
+				);
+			});
+
+			test('calls process.exit(1)', () => {
+				expect(() => checkNodeVersion()).toThrow('process.exit called');
+				expect(process.exit).toHaveBeenCalledWith(1);
+			});
+		});
+
+		describe('with exact minimum version (supported, aber nicht empfohlen)', () => {
+			beforeEach(() => {
+				Object.defineProperty(process.versions, 'node', {
+					value: minimumSupportedVersion,
+					configurable: true
+				});
+			});
+
+			test('calls console.info', () => {
+				checkNodeVersion();
+				expect(console.info).toHaveBeenCalledWith('Checks your node version');
+			});
+
+			test('calls console.warn with warning message', () => {
+				checkNodeVersion();
+				expect(console.warn).toHaveBeenCalledWith(
+					expect.stringContaining(`Warning: Oblique CLI was tested with Node.js v${recommendedVersion}`)
+				);
+			});
+
+			test('does not call console.error', () => {
+				checkNodeVersion();
+				expect(console.error).not.toHaveBeenCalled();
+			});
+
+			test('does not call process.exit', () => {
+				checkNodeVersion();
+				expect(process.exit).not.toHaveBeenCalled();
+			});
+		});
+
+		describe('with exact recommended version', () => {
+			beforeEach(() => {
+				Object.defineProperty(process.versions, 'node', {
+					value: `${recommendedVersion}.0.0`,
+					configurable: true
+				});
+			});
+
+			test('calls console.info', () => {
+				checkNodeVersion();
+				expect(console.info).toHaveBeenCalledWith('Checks your node version');
+			});
+
+			test('does not call process.exit', () => {
+				checkNodeVersion();
+				expect(process.exit).not.toHaveBeenCalled();
+			});
+		});
+
+		describe('with higher, non-recommended version', () => {
+			beforeEach(() => {
+				Object.defineProperty(process.versions, 'node', {
+					value: '21.0.0',
+					configurable: true
+				});
+			});
+
+			test('calls console.info', () => {
+				checkNodeVersion();
+				expect(console.info).toHaveBeenCalledWith('Checks your node version');
+			});
+
+			test('calls console.warn with expected message', () => {
+				checkNodeVersion();
+				expect(console.warn).toHaveBeenCalledWith(
+					expect.stringContaining(`Warning: Oblique CLI was tested with Node.js v${recommendedVersion}`)
+				);
+			});
+
+			test('does not call console.error or process.exit', () => {
+				checkNodeVersion();
+				expect(console.error).not.toHaveBeenCalled();
+				expect(process.exit).not.toHaveBeenCalled();
 			});
 		});
 	});

@@ -7,6 +7,6 @@ import {ObPaginatorModule} from '@oblique/oblique';
 	templateUrl: './paginator-example-common-options-preview.component.html',
 	styleUrls: ['../paginator-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
 	imports: [MatPaginatorModule, ObPaginatorModule],
-	host: {class: 'layout-column flex-end'}
+	host: {class: 'layout-column'}
 })
 export class PaginatorExampleCommonOptionsPreviewComponent {}
