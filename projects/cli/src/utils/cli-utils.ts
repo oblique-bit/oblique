@@ -76,7 +76,7 @@ export function checkNodeVersion(): void {
 }
 
 export const startObCommand = <T>(callback: (options: T) => void, label: string, options: T): void => {
-	console.info(obTitle.toUpperCase());
+	console.info(`${obTitle.toUpperCase()} ${printCliVersion()}`);
 	checkNodeVersion();
 	console.time(label);
 	callback(options);
@@ -167,4 +167,8 @@ function executeCommand(command: string, execSyncOptions: ExecSyncOptions = {}):
 
 function versionDependencies(dependencies: (keyof typeof currentVersions)[]): string[] {
 	return dependencies.map(dependency => getVersionedDependency(dependency));
+}
+
+function printCliVersion(): string {
+	return `v${version}`;
 }
