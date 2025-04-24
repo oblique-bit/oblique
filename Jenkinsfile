@@ -25,7 +25,8 @@ nodejsPipelineTemplate {
 		master: [
 			'publish': [
 				'@oblique/oblique',
-				'@oblique/cli'
+				'@oblique/cli',
+				'@oblique/service-navigation-web-component'
 			],
 		]
 	]
