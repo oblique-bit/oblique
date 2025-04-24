@@ -525,6 +525,7 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		margin-top: -3px;
+		height: 1.6em;
 
 		.ob-form-sm & {
 			margin-top: 0;
@@ -550,6 +551,7 @@
 			white-space: normal;
 			position: relative;
 			overflow: visible;
+			height: unset;
 
 			&::after {
 				content: "";
@@ -558,7 +560,6 @@
 				background-color: core-variables.$ob-white;
 				opacity: 0.75;
 				z-index: -1;
-				height: unset;
 			}
 		}
 	}
