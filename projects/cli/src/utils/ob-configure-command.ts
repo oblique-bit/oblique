@@ -28,17 +28,25 @@ export function addObNewCommandOptions(
 }
 
 export function configureOption(config: ObNewSchemaOption, longFlag: string): Option {
-	const shortFlag = (config.shortFlag ?? '').length > 0 ? `-${config.shortFlag}` : '';
-	const longFlagOption = longFlag && longFlag.length > 0 ? createFlagText(shortFlag, longFlag) : '';
-	const flagValuePlaceholder = config.flagValuePlaceholder ?? '';
-	const option = new Option(`${shortFlag} ${longFlagOption} ${flagValuePlaceholder}`, config.description);
+	if (isEmpty(config.shortFlag) && isEmpty(longFlag)) {
+		throw new Error('At least one of shortFlag or longFlag must be provided.');
+	}
+	const shortFlag = (config.shortFlag ?? '').trim();
+	const longFlagClean = (longFlag || '').trim();
+	const flagValuePlaceholder = config.flagValuePlaceholder?.trim() ?? '';
+
+	const flags = [shortFlag ? `-${shortFlag}` : '', longFlagClean ? `--${longFlagClean}` : ''].filter(flag => Boolean(flag)).join(', ');
+
+	const option = new Option([flags, flagValuePlaceholder].filter(Boolean).join(' ').trim(), config.description);
+
 	const optionWithMandatory = addMandatory(option, config.mandatory);
 	const optionWithDefault = addDefaultValue(optionWithMandatory, config.defaultValue, config.defaultValueDescription);
 	return addChoices(optionWithDefault, config.choices);
 }
 
-function createFlagText(shortFlag: string, optionName: string): string {
-	return `${shortFlag.length > 0 ? ',' : ''} --${optionName}`;
+function isEmpty(flag: string | undefined | null): boolean {
+	if (flag === undefined || flag === null) return true;
+	return flag.trim() === '';
 }
 
 function createOptionDescription(description: string, resources?: string[]): string {

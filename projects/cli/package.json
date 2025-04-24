@@ -23,7 +23,7 @@
     "npm-publish": "ts-node scripts/publish.ts"
   },
   "dependencies": {
-    "@commander-js/extra-typings": "^12.1.0",
+    "@commander-js/extra-typings": "13.1",
     "chalk": "^4.1.2",
     "semver": "^7.7.1"
   },
