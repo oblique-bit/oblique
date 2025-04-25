@@ -17,11 +17,7 @@ export class UnknownRouteCodeExamplesComponent extends CodeExamples {
 		{
 			component: UnknownRouteExampleStackblitzLinkPreviewComponent,
 			idParts: ['stackblitz', 'link'],
-			title: 'Link to Stackblitz Example',
-			snippets: [
-				this.getSnippet('unknown-route', 'stackblitz-link/unknown-route-example-stackblitz-link-preview.component.html', 'HTML'),
-				this.getSnippet('unknown-route', 'stackblitz-link/unknown-route-example-stackblitz-link-preview.component.ts', 'TS')
-			]
+			title: 'Link to Stackblitz Example'
 		}
 	];
 }
