@@ -30,10 +30,17 @@ export class CodeExamples {
 			}
 			default: {
 				const fileContent = require(`!!raw-loader!./code-examples/${directory}/previews/${filePath}`) as {default: string};
-				return filePath.endsWith('.scss')
-					? {default: fileContent.default?.replace(/@oblique\/oblique\/src\/styles\/scss\/core/g, '@oblique/oblique/styles/scss/core')}
-					: fileContent;
+				return {default: this.fixPath(filePath.split('.').pop(), fileContent.default ?? '')};
 			}
+		}
+	}
+
+	private fixPath(fileType: string, fileContent: string): string {
+		switch (fileType) {
+			case 'scss':
+				return fileContent.replace(/@oblique\/oblique\/src\/styles\/scss\/core/g, '@oblique/oblique/styles/scss/core');
+			default:
+				return fileContent;
 		}
 	}
 
