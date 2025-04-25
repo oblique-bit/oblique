@@ -2,6 +2,7 @@ import {Routes, UrlMatchResult, UrlSegment} from '@angular/router';
 import {URL_CONST} from './app/shared/url/url.const';
 import {InvalidComponent} from './app/invalid/invalid.component';
 
+// test nina
 export const APP_ROUTES: Routes = [
 	{path: '', redirectTo: 'introductions/welcome', pathMatch: 'full'},
 	{path: 'invalid', component: InvalidComponent},
