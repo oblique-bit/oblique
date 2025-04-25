@@ -22,7 +22,9 @@ export class Popover12CodeExamplesComponent extends CodeExamples {
 			title: 'Default',
 			snippets: [
 				this.getSnippet('popover-12', 'default/popover12-example-default-preview.component.html', 'HTML'),
-				this.getSnippet('popover-12', 'default/popover12-example-default-preview.component.ts', 'TS')
+				this.getSnippet('popover-12', 'default/popover12-example-default-preview.component.ts', 'TS'),
+				this.getSnippet('popover-12', 'default/popover12-example-default-preview.component.scss', 'SCSS'),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
 			]
 		},
 		{
