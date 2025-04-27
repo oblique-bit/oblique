@@ -1,6 +1,6 @@
 import {APP_BASE_HREF} from '@angular/common';
-import {CommonEngine, CommonEngineRenderOptions} from '@angular/ssr/node';
-import express, {Express, Request} from 'express';
+import {CommonEngine, type CommonEngineRenderOptions} from '@angular/ssr/node';
+import express, {type Express, type Request} from 'express';
 import {fileURLToPath} from 'node:url';
 import {dirname, join, resolve} from 'node:path';
 import bootstrap from './src/main.server';

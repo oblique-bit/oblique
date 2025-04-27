@@ -1,8 +1,8 @@
-import {HttpClient} from '@angular/common/http';
-import {TranslateLoader} from '@ngx-translate/core';
+import type {HttpClient} from '@angular/common/http';
+import type {TranslateLoader} from '@ngx-translate/core';
 import {catchError, map} from 'rxjs/operators';
-import {Observable, forkJoin, of} from 'rxjs';
-import {DeepString, ObITranslationFile} from './multi-translate-loader.model';
+import {type Observable, forkJoin, of} from 'rxjs';
+import type {DeepString, ObITranslationFile} from './multi-translate-loader.model';
 
 export class ObMultiTranslateLoader implements TranslateLoader {
 	constructor(
