@@ -30,12 +30,5 @@ export default [
 			'@typescript-eslint/parameter-properties': 'off',
 			'require-unicode-regexp': 'off'
 		}
-	},
-	{
-		files: ['projects/sandbox-ssr/server.ts'],
-		rules: {
-			// rules that are not respected
-			'@typescript-eslint/no-extraneous-class': 'off'
-		}
 	}
 ];
