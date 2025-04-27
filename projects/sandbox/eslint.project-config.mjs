@@ -27,7 +27,6 @@ export default [
 			'@angular-eslint/prefer-standalone': 'off',
 			'@angular-eslint/use-injectable-provided-in': 'off',
 			'@typescript-eslint/consistent-type-imports': 'off',
-			'@typescript-eslint/naming-convention': 'off',
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',

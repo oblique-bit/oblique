@@ -21,7 +21,7 @@ import {
 import {applyChanges, createSrcFile} from '../ng-add/ng-add-utils';
 
 export function serviceNavigation(): Rule {
-	return (tree: Tree, _context: SchematicContext) =>
+	return (tree: Tree, context: SchematicContext) =>
 		chain([
 			addServiceNavigationConfiguration(),
 			...removeHeaderWidgetCode(),
@@ -34,7 +34,7 @@ export function serviceNavigation(): Rule {
 			]),
 			removeEmptyLifecycleHook('ngOnInit'),
 			removeEmptyLifecycleHook('ngAfterViewInit')
-		])(tree, _context);
+		])(tree, context);
 }
 
 function addServiceNavigationConfiguration(): Rule {
@@ -195,13 +195,13 @@ export function removeHeaderWidgetCode(): Rule[] {
 
 export function removeEmptyLifecycleHook(methodName: 'ngOnInit' | 'ngAfterViewInit'): Rule {
 	const interfaceName = methodName.slice(2, methodName.length);
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		const methodRegexp = new RegExp(`\\s*(?:public)?\\s*${methodName}\\(\\)(?::\\s*void)?\\s*{\\s*}$`, 'gm');
 		const interfaceRegexp = new RegExp(`\\s*${interfaceName},?\\s*`, 'g');
 		const toApply = (filePath: string): void => {
 			const hasEmptyLifecycleHook = methodRegexp.test(readFile(tree, filePath));
 			if (hasEmptyLifecycleHook) {
-				infoMigration(_context, `Remove empty ${methodName} in ${filePath}`);
+				infoMigration(context, `Remove empty ${methodName} in ${filePath}`);
 				replaceInFile(tree, filePath, methodRegexp, '');
 				replaceInFile(tree, filePath, interfaceRegexp, '');
 				replaceInFile(tree, filePath, /(?<=implements\s*.*),(?={)/, ' ');
@@ -213,10 +213,10 @@ export function removeEmptyLifecycleHook(methodName: 'ngOnInit' | 'ngAfterViewIn
 }
 
 export function removeCode(regex: RegExp, caseDescription: string): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		const toApply = (filePath: string): void => {
 			if (readFile(tree, filePath).match(regex)) {
-				infoMigration(_context, `Remove ${caseDescription} in ${filePath}`);
+				infoMigration(context, `Remove ${caseDescription} in ${filePath}`);
 				replaceInFile(tree, filePath, regex, '');
 			}
 		};
@@ -225,7 +225,7 @@ export function removeCode(regex: RegExp, caseDescription: string): Rule {
 }
 
 export function addProvidersToRootModule(providers: {provide: string; providerName: string; additionalImports?: string[]}[]): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		const mainTsPathPerProject = getFilePathPerProject(tree, ['architect', 'build', 'options', 'main']);
 		getRootModulePathPerProject(tree, mainTsPathPerProject).forEach(({path: appModulePath}) => {
 			const providerChanges: Change[] = [];
@@ -235,10 +235,10 @@ export function addProvidersToRootModule(providers: {provide: string; providerNa
 				if (!providerAlreadyExists(provider.providerName, readFile(tree, appModulePath))) {
 					providerChanges.push(...addSymbolToNgModuleMetadata(sourceFile, appModulePath, 'providers', provider.provide));
 					providerImports.push(...setupImportArray(provider.providerName, tree, appModulePath, provider.additionalImports));
-					infoMigration(_context, `Oblique's ServiceNavigation: Adding provider  ${provider.providerName} in ${appModulePath}`);
+					infoMigration(context, `Oblique's ServiceNavigation: Adding provider  ${provider.providerName} in ${appModulePath}`);
 				}
 			});
-			const importChanges = importProviderModules(providerImports, sourceFile, appModulePath, _context);
+			const importChanges = importProviderModules(providerImports, sourceFile, appModulePath, context);
 			const changes = [...providerChanges, ...importChanges];
 			applyChanges(tree, appModulePath, changes);
 		});
@@ -269,10 +269,10 @@ export function importProviderModules(
 	importModuleNames: string[],
 	sourceFile: any,
 	appModulePath: string,
-	_context: SchematicContext
+	context: SchematicContext
 ): Change[] {
 	return importModuleNames.map(providerModule => {
-		infoMigration(_context, `Oblique's ServiceNavigation: Adding import ${providerModule} in ${appModulePath}`);
+		infoMigration(context, `Oblique's ServiceNavigation: Adding import ${providerModule} in ${appModulePath}`);
 		return insertImport(sourceFile, appModulePath, providerModule, ObliquePackage);
 	});
 }

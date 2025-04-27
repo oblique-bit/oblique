@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import {AlertCodeExamplesComponent} from './code-examples/alert/alert-code-examples.component';
 import {AutocompleteCodeExamplesComponent} from './code-examples/autocomplete/autocomplete-code-examples.component';
 import {BadgeCodeExamplesComponent} from './code-examples/badge/badge-code-examples.component';

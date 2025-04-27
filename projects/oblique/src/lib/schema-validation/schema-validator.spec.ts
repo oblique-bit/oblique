@@ -93,27 +93,27 @@ describe(ObSchemaValidateDirective.name, () => {
 			formModule: ReactiveFormsModule,
 			getControls: (fixture): Record<string, AbstractControl> => fixture.componentInstance.sampleForm.controls
 		}
-	].forEach(CONFIG => {
+	].forEach(config => {
 		// TODO: add test for more complex types and required option
-		describe(`in a ${CONFIG.formType} driven form`, () => {
+		describe(`in a ${config.formType} driven form`, () => {
 			let fixture: any;
 			let controls: Record<string, AbstractControl>;
 			let subproperties: Record<string, AbstractControl>;
 
 			beforeEach(() => {
 				TestBed.configureTestingModule({
-					declarations: [CONFIG.testComponent],
-					imports: [ObSchemaValidationDirective, ObSchemaValidateDirective, CONFIG.formModule],
+					declarations: [config.testComponent],
+					imports: [ObSchemaValidationDirective, ObSchemaValidateDirective, config.formModule],
 					providers: [{provide: WINDOW, useValue: window}]
 				}).compileComponents();
 			});
 
 			beforeEach(() => {
-				fixture = TestBed.createComponent<any>(CONFIG.testComponent);
+				fixture = TestBed.createComponent<any>(config.testComponent);
 				fixture.detectChanges();
 
 				fixture.whenStable().then(() => {
-					controls = CONFIG.getControls(fixture);
+					controls = config.getControls(fixture);
 					subproperties = (controls.object as FormGroup).controls;
 				});
 			});

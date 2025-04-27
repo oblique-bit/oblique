@@ -53,7 +53,7 @@ describe('ServiceNavigationTimeoutCookieActivityService', () => {
 			['mouse move', () => fakeMouseMove],
 			['click', () => fakeClick],
 			['key down', () => fakeKeyDown]
-		])('should be triggered when there is a %s event', (__, fakeEvent) => {
+		])('should be triggered when there is a %s event', (event, fakeEvent) => {
 			fakeEvent().next('');
 			expect(fakeSetCookie).toHaveBeenCalledTimes(1);
 		});

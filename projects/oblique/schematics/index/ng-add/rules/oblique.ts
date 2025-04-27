@@ -18,7 +18,7 @@ import {
 import {addLocales} from './locales';
 
 export function oblique(options: ObIOptionsSchema): Rule {
-	return (tree: Tree, _context: SchematicContext) =>
+	return (tree: Tree, context: SchematicContext) =>
 		chain([
 			addFavIcon(),
 			embedMasterLayout(options.title),
@@ -33,12 +33,12 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addLocales(options.locales.split(' ')),
 			raiseBuildBudget(),
 			addBrowserslistrcFile()
-		])(tree, _context);
+		])(tree, context);
 }
 
 function addFavIcon(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Embedding favicon');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Oblique: Embedding favicon');
 		getIndexPaths(tree).forEach((indexPath: string) =>
 			overwriteIndexFile(
 				indexPath,
@@ -52,8 +52,8 @@ function addFavIcon(): Rule {
 }
 
 function embedMasterLayout(title: string): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Embedding Master Layout');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Oblique: Embedding Master Layout');
 		importModuleInRoot(tree, 'ObMasterLayoutModule', ObliquePackage);
 		importModuleInRoot(tree, 'BrowserAnimationsModule', '@angular/platform-browser/animations');
 		addMasterLayout(tree, title);
@@ -63,8 +63,8 @@ function embedMasterLayout(title: string): Rule {
 }
 
 function removeBrowserModule(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Remove BrowserModule');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Oblique: Remove BrowserModule');
 		const apply = (filePath: string): void => {
 			removeImport(tree, appModulePath, 'BrowserModule', '@angular/platform-browser');
 			replaceInFile(tree, filePath, /\s*BrowserModule,?/g, '');
@@ -74,8 +74,8 @@ function removeBrowserModule(): Rule {
 }
 
 function addAdditionalModules(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Add ObButtonModule');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Oblique: Add ObButtonModule');
 		importModuleInRoot(tree, 'ObButtonModule', ObliquePackage);
 		addComment(tree);
 
@@ -84,8 +84,8 @@ function addAdditionalModules(): Rule {
 }
 
 function addFeatureDetection(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Adding browser compatibility check');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Oblique: Adding browser compatibility check');
 		getIndexPaths(tree).forEach((indexPath: string) =>
 			overwriteIndexFile(indexPath, tree, /<body>(?<lineBreak>\r?\n)/, `<body>$<lineBreak>${getTemplate(tree, 'default-index.html')}`)
 		);
@@ -94,8 +94,8 @@ function addFeatureDetection(): Rule {
 }
 
 function addMainCSS(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Adding main CSS');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Oblique: Adding main CSS');
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) => {
 			const index = config.indexOf(obliqueCssPath.replace('css/oblique-core.css', 'scss/oblique-core.scss'));
 			if (index > -1) {
@@ -110,8 +110,8 @@ function addMainCSS(): Rule {
 }
 
 function addAngularMaterialDependencies(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Adding Angular Material dependencies');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Oblique: Adding Angular Material dependencies');
 		addDependency(tree, '@angular/cdk');
 		addDependency(tree, '@angular/material');
 		return tree;
@@ -119,15 +119,15 @@ function addAngularMaterialDependencies(): Rule {
 }
 
 function addLocalAssets(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Adding local assets');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Oblique: Adding local assets');
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => ['src/assets', ...config]);
 	});
 }
 
 function addObliqueAssets(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Adding assets');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Oblique: Adding assets');
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => [
 			{
 				glob: '**/*',
@@ -141,7 +141,7 @@ function addObliqueAssets(): Rule {
 
 function addFontFiles(): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => {
 			config.splice(1, 0, {
 				glob: '*/**',
@@ -167,8 +167,8 @@ function addComment(tree: Tree): void {
 }
 
 function raiseBuildBudget(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Raise build budget in angular.json');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Raise build budget in angular.json');
 		return setAngularProjectsConfig(
 			tree,
 			['architect', 'build', 'configurations', 'production', 'budgets'],
@@ -189,8 +189,8 @@ function raiseBuildBudget(): Rule {
 }
 
 function addBrowserslistrcFile(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Adding the .browserslistrc file');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Oblique: Adding the .browserslistrc file');
 		const browserlistrcFile = getTemplate(tree, 'default-browserslistrc.config');
 		addFile(tree, '.browserslistrc', browserlistrcFile);
 		return tree;

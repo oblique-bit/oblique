@@ -19,8 +19,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 	dependencies = {};
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	applyMigrations(_options: IUpdateV13Schema): Rule {
-		return (tree: Tree, _context: SchematicContext) =>
+	applyMigrations(options: IUpdateV13Schema): Rule {
+		return (tree: Tree, context: SchematicContext) =>
 			chain([
 				this.removeObFormField(),
 				this.removeObPaginatorDirective(),
@@ -36,12 +36,12 @@ export class UpdateV12toV13 implements ObIMigrations {
 				this.removeOldFontReferences(),
 				this.removeOBShowExternalLinkIconClass(),
 				warnIfStandalone()
-			])(tree, _context);
+			])(tree, context);
 	}
 
 	private removeObFormField(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove form field feature');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove form field feature');
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'ObSelectDirective', '@oblique/oblique');
 				removeImport(tree, filePath, 'ObFormFieldDirective', '@oblique/oblique');
@@ -53,8 +53,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 	}
 
 	private removeObPaginatorDirective(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove ObPaginatorDirective');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove ObPaginatorDirective');
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'ObPaginatorDirective', '@oblique/oblique');
 				replaceInFile(tree, filePath, /ObPaginatorDirective\s*,?\s*/g, '');
@@ -64,8 +64,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 	}
 
 	private migrateMasterLayoutProperties(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove deprecated MasterLayoutService configs.');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove deprecated MasterLayoutService configs.');
 			const toApply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				const replacement = fileContent.replace(/^.*footer\.hasLogoOnScroll.*$/gm, '').replace(/^.*header\.reduceOnScroll.*$/gm, '');
@@ -78,8 +78,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 	}
 
 	private removeObCheckbox(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove checkbox feature');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove checkbox feature');
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'ObCheckboxModule', '@oblique/oblique');
 				removeImport(tree, filePath, 'ObCheckboxDirective', '@oblique/oblique');
@@ -90,8 +90,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 	}
 
 	private migrateTableRowCheckedClass(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Migrate ob-table-row-checked class');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Migrate ob-table-row-checked class');
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /(?<=tr|&)\.ob-table-row-checked/g, ':has([checked])');
 				replaceInFile(tree, filePath, /\.ob-table-row-checked/g, 'tr:has([checked])');
@@ -101,8 +101,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 	}
 
 	private addObliqueProviders(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Add Oblique providers');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Add Oblique providers');
 			const apply = (filePath: string): void => {
 				addImport(tree, filePath, 'provideObliqueConfiguration', '@oblique/oblique');
 				replaceInFile(tree, filePath, /(?<=providers\s*:\s*)\[/, '[provideObliqueConfiguration(),\n');
@@ -112,8 +112,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 	}
 
 	private migrateCustomConfig(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Migrate OB_MATERIAL_CONFIG, ObIconModule.forRoot and multiTranslateLoader');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Migrate OB_MATERIAL_CONFIG, ObIconModule.forRoot and multiTranslateLoader');
 			const apply = (filePath: string): void => {
 				const content = readFile(tree, filePath);
 				const configs = [
@@ -130,11 +130,11 @@ export class UpdateV12toV13 implements ObIMigrations {
 
 	private getMaterialConfiguration(content: string): string {
 		const materialConfiguration = [
-			'MAT_FORM_FIELD_DEFAULT_OPTIONS',
-			'STEPPER_GLOBAL_OPTIONS',
-			'MAT_CHECKBOX_OPTIONS',
-			'MAT_RADIO_OPTIONS',
-			'MAT_SLIDE_TOGGLE_OPTIONS',
+			'MAT_FORM_FIELD_DEFAULToptions',
+			'STEPPER_GLOBALoptions',
+			'MAT_CHECKBOXoptions',
+			'MAT_RADIOoptions',
+			'MAT_SLIDE_TOGGLEoptions',
 			'MAT_TABS_CONFIG'
 		]
 			.map(token => ({token, result: new RegExp(`(?<=${token}:\\s*){[^}]*}`).exec(content)}))
@@ -163,8 +163,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 	}
 
 	private removeObMaterialConfig(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove OB_MATERIAL_CONFIG');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove OB_MATERIAL_CONFIG');
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'OB_MATERIAL_CONFIG', '@oblique/oblique');
 				replaceInFile(tree, filePath, /\s*{\s*provide\s*:\s*OB_MATERIAL_CONFIG\s*,\s*useValue\s*:\s*\{.*?}\s*}\s*}.?/s, '');
@@ -174,8 +174,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 	}
 
 	private removeIconModule(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove ObIconModule.forRoot');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove ObIconModule.forRoot');
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'ObIconModule', '@oblique/oblique');
 				replaceInFile(tree, filePath, /ObIconModule\.forRoot\s*\(.*?\),?\s*/s, '');
@@ -185,8 +185,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 	}
 
 	private removeMultiTranslateLoader(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove multiTranslateLoader');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove multiTranslateLoader');
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'multiTranslateLoader', '@oblique/oblique');
 				replaceInFile(tree, filePath, /(?<=TranslateModule)\.forRoot\s*\(.*?\)+/s, '');
@@ -196,8 +196,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 	}
 
 	private removeTranslationFiles(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove TRANSLATION_FILES');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove TRANSLATION_FILES');
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'TRANSLATION_FILES', '@oblique/oblique');
 				replaceInFile(tree, filePath, /\s*{\s*provide\s*:\s*TRANSLATION_FILES\s*,\s*useValue\s*:.*},?/s, '');
@@ -207,8 +207,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 	}
 
 	private removeOldFontReferences(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove Roboto and Frutiger fonts references');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove Roboto and Frutiger fonts references');
 			getAngularConfigs(tree, ['architect', 'build', 'options', 'styles']).forEach(project => {
 				setAngularConfig(tree, ['architect', 'build', 'options', 'styles'], {
 					project: project.project,
@@ -220,8 +220,8 @@ export class UpdateV12toV13 implements ObIMigrations {
 	}
 
 	private removeOBShowExternalLinkIconClass(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove "ob-show-external-link-icon" class');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove "ob-show-external-link-icon" class');
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /ob-show-external-link-icon/g, '');
 				replaceInFile(tree, filePath, /class="" ?/g, '');

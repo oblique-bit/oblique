@@ -43,10 +43,10 @@ export class UpdateV5toV6 implements ObIMigrations {
 	};
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	applyMigrations(_options: IUpdateV5Schema): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Analyzing project');
-			minAngularVersion(tree, _context, 6, 11);
+	applyMigrations(options: IUpdateV5Schema): Rule {
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Analyzing project');
+			minAngularVersion(tree, context, 6, 11);
 
 			return chain([
 				this.migrateFont(),
@@ -60,13 +60,13 @@ export class UpdateV5toV6 implements ObIMigrations {
 				this.removeUnsubscribe(),
 				this.adaptHtmlToCss(),
 				this.adaptCssClassNaming()
-			])(tree, _context);
+			])(tree, context);
 		};
 	}
 
 	private migrateFont(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Migrating font');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Migrating font');
 			const module = readFile(tree, appModulePath);
 			const match = /(?<full>\s*{\s*provide\s*:\s*OBLIQUE_FONT\s*,\s*useValue\s*:\s*(?:FONTS\.)?['"]?(?<font>[^"'\s}]*)['"]?\s*},?)/.exec(
 				module
@@ -110,8 +110,8 @@ export class UpdateV5toV6 implements ObIMigrations {
 	}
 
 	private migrateAssets(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Migrating assets');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Migrating assets');
 			this.adaptFavIcon(tree);
 			return this.adaptAssets(tree);
 		};
@@ -138,8 +138,8 @@ export class UpdateV5toV6 implements ObIMigrations {
 	}
 
 	private addFeatureDetection(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Oblique: Adding browser compatibility check');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Oblique: Adding browser compatibility check');
 			const indexFileReplacements = [
 				{searchValue: /<!--\[if lt.*?endif]-->\s/s, replaceValue: ''},
 				{searchValue: /<!--\[if gte.*(<html.*?>).*endif]-->\s/s, replaceValue: '$1'},
@@ -155,8 +155,8 @@ export class UpdateV5toV6 implements ObIMigrations {
 	}
 
 	private changeColorPalette(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Change color palette');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Change color palette');
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, new RegExp(/\$brand-info-light/g), '$brand-light');
 				replaceInFile(tree, filePath, new RegExp(/\$brand-info/g), '$brand-primary');
@@ -167,8 +167,8 @@ export class UpdateV5toV6 implements ObIMigrations {
 	}
 
 	private renameMockCollapseComponent(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Renaming MockCollapseComponent');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Renaming MockCollapseComponent');
 			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /MockCollapseComponent/g, 'ObMockCollapseComponent');
 				replaceInFile(tree, filePath, /MockCollapseModule/g, 'ObMockCollapseModule');
@@ -178,8 +178,8 @@ export class UpdateV5toV6 implements ObIMigrations {
 	}
 
 	private renameDefaultLanguage(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Renaming locale.default into locale.defaultLanguage');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Renaming locale.default into locale.defaultLanguage');
 			const toApply = (filePath: string): void => {
 				const config = /(?<config>\w*):\s*ObMasterLayoutConfig/.exec(readFile(tree, filePath))?.groups?.config;
 				if (config) {
@@ -191,8 +191,8 @@ export class UpdateV5toV6 implements ObIMigrations {
 	}
 
 	private adaptDependencies(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Adapting dependencies');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Adapting dependencies');
 			this.adaptTranslationDependencies(tree);
 			this.adaptCoreJsDependency(tree);
 			this.adaptTestDependencies(tree);
@@ -249,8 +249,8 @@ export class UpdateV5toV6 implements ObIMigrations {
 	}
 
 	private migrateDropdown(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Migrate ObDropdownComponent');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Migrate ObDropdownComponent');
 			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /<button(.*?) dropdown-toggle[^>]*>\s*(<[^\s]*)(.*)\s*<\/button>/g, '$2 dropdown-toggle$1$3');
 				replaceInFile(tree, filePath, /<button dropdown-toggle>(\w*)<\/button>/g, '<ng-container dropdown-toggle>$1</ng-container>');
@@ -260,8 +260,8 @@ export class UpdateV5toV6 implements ObIMigrations {
 	}
 
 	private removeUnsubscribe(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Migrate Unsubscribe class');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Migrate Unsubscribe class');
 			const toApply = (filePath: string): void => {
 				const content = readFile(tree, filePath);
 				if (content.includes('extends ObUnsubscribable')) {
@@ -297,8 +297,8 @@ export class UpdateV5toV6 implements ObIMigrations {
 	}
 
 	private adaptHtmlToCss(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, "Prefix Oblique's classes in HTML");
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, "Prefix Oblique's classes in HTML");
 			const apply = (filePath: string): void => {
 				addClassesPrefix(tree, filePath, 'alert', ['info', 'success', 'warning', 'error', 'link']);
 				addClassesPrefix(tree, filePath, 'sticky', ['sm', 'lg']);
@@ -319,8 +319,8 @@ export class UpdateV5toV6 implements ObIMigrations {
 	}
 
 	private adaptCssClassNaming(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, "Prefix Oblique's classes in SCSS");
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, "Prefix Oblique's classes in SCSS");
 			const apply = (filePath: string): void => {
 				addPrefixMatchExactOrSuffix(tree, filePath, 'toggle', ['after', 'before', 'justified', 'down', 'up', 'right', 'left']);
 				addPrefixMatchExactOrSuffix(tree, filePath, 'notification', ['container', 'title']);

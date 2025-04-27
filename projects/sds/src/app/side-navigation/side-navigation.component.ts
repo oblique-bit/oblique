@@ -9,7 +9,7 @@ import {skip} from 'rxjs/operators';
 import {CmsDataService} from '../cms/cms-data.service';
 import {BehaviorSubject, Observable, combineLatestWith, debounceTime, filter, forkJoin, map, of, startWith, switchMap, tap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
-import {URL_CONST} from '../shared/url/url.const';
+import {urlConst} from '../shared/url/url.const';
 import {Accordion, Link} from './accordion-links/accordion-links.model';
 import {AccordionComposer} from './utils/accordion-composer';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -178,13 +178,13 @@ export class SideNavigationComponent implements OnInit {
 
 	private getNewestLinksForVersion(accordion: Accordion, version?: number): Link[] {
 		return this.getValidLinksForVersion(accordion, version).filter(
-			(link, _i, validLinks) => !validLinks.some(otherLink => otherLink.slug === link.slug && otherLink.minVersion > link.minVersion)
+			(link, index, validLinks) => !validLinks.some(otherLink => otherLink.slug === link.slug && otherLink.minVersion > link.minVersion)
 		);
 	}
 
 	private getSelectedSlug(activatedRoute?: ActivatedRoute): Observable<string | undefined> {
 		return activatedRoute?.root.firstChild
-			? activatedRoute?.root.firstChild.paramMap.pipe(map(paramMap => paramMap.get(URL_CONST.urlParams.selectedSlug) ?? undefined))
+			? activatedRoute?.root.firstChild.paramMap.pipe(map(paramMap => paramMap.get(urlConst.urlParams.selectedSlug) ?? undefined))
 			: of(undefined);
 	}
 

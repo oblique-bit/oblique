@@ -11,11 +11,11 @@ interface SVG {
 class Icons extends StaticScript {
 	static perform(): void {
 		Log.start('Update all files related to icons');
-		const SVGs = Icons.getSVGs('icons');
-		Icons.writeIconSet('src/assets/obliqueIcons.svg', SVGs);
-		Icons.writeIconSetTS('src/assets/oblique-icons.ts', SVGs);
-		Icons.writeIconCSS('src/styles/scss/oblique-icons.scss', SVGs);
-		Icons.writeIconEnum('src/lib/icon/icon.model.ts', SVGs);
+		const svgs = Icons.getSVGs('icons');
+		Icons.writeIconSet('src/assets/obliqueIcons.svg', svgs);
+		Icons.writeIconSetTS('src/assets/oblique-icons.ts', svgs);
+		Icons.writeIconCSS('src/styles/scss/oblique-icons.scss', svgs);
+		Icons.writeIconEnum('src/lib/icon/icon.model.ts', svgs);
 		Icons.prettify();
 		Log.success();
 	}
@@ -43,32 +43,32 @@ class Icons extends StaticScript {
 			.replace('xmlns="http://www.w3.org/2000/svg" ', '');
 	}
 
-	private static writeIconSet(filePath: string, SVGs: SVG[]): void {
+	private static writeIconSet(filePath: string, svgs: SVG[]): void {
 		Log.info('Generate icon set as SVG: obliqueIcons.svg');
-		const iconSet = ['<svg>', '\t<defs>', ...SVGs.map(({svg}) => `\t\t${svg}`), '\t</defs>', '</svg>'];
+		const iconSet = ['<svg>', '\t<defs>', ...svgs.map(({svg}) => `\t\t${svg}`), '\t</defs>', '</svg>'];
 		Files.write(filePath, iconSet.join('\n'));
 	}
 
-	private static writeIconSetTS(filePath: string, SVGs: SVG[]): void {
+	private static writeIconSetTS(filePath: string, svgs: SVG[]): void {
 		Log.info('Generate icon set as TypeScript variable: oblique-icons.ts');
-		const iconSet = ['<svg>', '<defs>', ...SVGs.map(({svg}) => svg), '</defs>', '</svg>'];
+		const iconSet = ['<svg>', '<defs>', ...svgs.map(({svg}) => svg), '</defs>', '</svg>'];
 		Files.write(filePath, `export const iconSet =\n\t'${iconSet.join('')}';\n`);
 	}
 
-	private static writeIconCSS(filePath: string, SVGs: SVG[]): void {
+	private static writeIconCSS(filePath: string, svgs: SVG[]): void {
 		Log.info('Generate icon set as CSS classes: oblique-icons.scss');
 		const iconCSS = [
 			`.ob-icon::before {\n\tdisplay: inline-block;\n\twidth: 1em;\n\theight: 1em;\n}`,
-			...SVGs.map(
+			...svgs.map(
 				({svg, id}) => `.ob-${id}::before {\n\tcontent: url("data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}");\n}`
 			)
 		];
 		Files.write(filePath, `${iconCSS.join('\n\n')}\n`);
 	}
 
-	private static writeIconEnum(filePath: string, SVGs: SVG[]): void {
+	private static writeIconEnum(filePath: string, svgs: SVG[]): void {
 		Log.info('Generate icon set as Enum: icon.model.ts');
-		const iconNames = SVGs.map(({id}) => `${id.toUpperCase().replace(/-/g, '_')} = '${id}'`);
+		const iconNames = svgs.map(({id}) => `${id.toUpperCase().replace(/-/g, '_')} = '${id}'`);
 		Files.write(
 			filePath,
 			Files.read(filePath).replace(/(?<=export enum ObEIcon {\r?\n).*(?=})/s, `${iconNames.map(name => `\t${name}`).join(',\n')}\n`)

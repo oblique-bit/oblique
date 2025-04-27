@@ -37,7 +37,6 @@ export default [
 			'@typescript-eslint/consistent-type-imports': 'off',
 			'@typescript-eslint/explicit-module-boundary-types': 'off',
 			'@typescript-eslint/max-params': 'off',
-			'@typescript-eslint/naming-convention': 'off',
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-dynamic-delete': 'off',
 			'@typescript-eslint/no-explicit-any': 'off',

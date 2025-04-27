@@ -4,12 +4,10 @@ import {VersionService} from './version.service';
 
 describe(VersionService.name, () => {
 	let service: VersionService;
-	/* eslint-disable @typescript-eslint/naming-convention */
 	const cmsData = [
 		{id: 0, base_url: 'base_url_42', version_number: 42},
 		{id: 1, base_url: 'base_url_43', version_number: 43}
 	];
-	/* eslint-enable @typescript-eslint/naming-convention */
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({});

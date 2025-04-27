@@ -290,7 +290,13 @@ export default config(
 				}
 			], // need tweaking https://typescript-eslint.io/rules/member-ordering
 			'@typescript-eslint/method-signature-style': 'error',
-			'@typescript-eslint/naming-convention': 'error',
+			'@typescript-eslint/naming-convention': [
+				'error',
+				{selector: 'default', format: ['camelCase']},
+				{selector: 'typeLike', format: ['PascalCase']},
+				{selector: 'enumMember', format: ['UPPER_CASE']},
+				{selector: 'objectLiteralProperty', format: null, modifiers: ['requiresQuotes']}
+			],
 			'@typescript-eslint/no-array-constructor': 'error',
 			'@typescript-eslint/no-array-delete': 'error',
 			'@typescript-eslint/no-base-to-string': 'error',
@@ -545,6 +551,61 @@ export default config(
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-unsafe-member-access': 'off',
 			'func-names': 'off'
+		}
+	},
+	{
+		files: ['projects/oblique/**/*.ts'],
+		rules: {
+			// these exceptions need to be in the root configuration file for IntelliJ to take them into consideration
+			'@typescript-eslint/naming-convention': [
+				'error',
+				{selector: 'default', format: ['camelCase']},
+				{selector: 'typeLike', format: ['PascalCase']},
+				{selector: 'enumMember', format: ['UPPER_CASE']},
+				{selector: 'objectLiteralProperty', format: null, modifiers: ['requiresQuotes']},
+				// rules that are not respected
+				{selector: 'variable', format: ['camelCase', 'UPPER_CASE']},
+				{selector: 'variable', format: ['PascalCase'], filter: '^(?:CookiesMock|ObTIconConfig|ObTBreadcrumbConfig|ObliquePackage)$'},
+				{selector: 'objectLiteralProperty', format: ['UPPER_CASE'], filter: '^(?:MAT|STEPPER)|^(?:ABN|TEST|DEV|REF|LOCAL)$'},
+				{selector: 'objectLiteralProperty', format: ['UPPER_CASE'], filter: '^(?:LABEL_FORMATTER|HIGHLIGHT|VARIANT)'},
+				{selector: 'objectLiteralMethod', format: null, modifiers: ['requiresQuotes']},
+				{selector: 'typeProperty', format: ['UPPER_CASE'], filter: '^(?:MAT|STEPPER)'},
+				{selector: 'typeAlias', format: ['camelCase'], filter: '^versionFunc$'},
+				{selector: 'parameter', format: ['PascalCase'], filter: '^CookiesMock$'},
+				{selector: 'classProperty', format: ['camelCase', 'UPPER_CASE']},
+				{selector: 'import', format: null}
+			]
+		}
+	},
+	{
+		files: ['projects/sds/**/*.ts'],
+		rules: {
+			// these exceptions need to be in the root configuration file for IntelliJ to take them into consideration
+			'@typescript-eslint/naming-convention': [
+				'error',
+				{selector: 'default', format: ['camelCase']},
+				{selector: 'typeLike', format: ['PascalCase']},
+				{selector: 'enumMember', format: ['UPPER_CASE']},
+				{selector: 'objectLiteralProperty', format: null, modifiers: ['requiresQuotes']},
+				// rules that are not respected
+				{selector: 'property', format: ['camelCase', 'snake_case']}
+			]
+		}
+	},
+	{
+		files: ['projects/sandbox/**/*.ts'],
+		rules: {
+			// these exceptions need to be in the root configuration file for IntelliJ to take them into consideration
+			'@typescript-eslint/naming-convention': [
+				'error',
+				{selector: 'default', format: ['camelCase']},
+				{selector: 'typeLike', format: ['PascalCase']},
+				{selector: 'enumMember', format: ['UPPER_CASE']},
+				{selector: 'objectLiteralProperty', format: null, modifiers: ['requiresQuotes']},
+				// rules that are not respected
+				{selector: 'property', format: ['camelCase', 'snake_case']},
+				{selector: 'classProperty', format: ['camelCase', 'UPPER_CASE']}
+			]
 		}
 	},
 	...obliqueEslintConfig,

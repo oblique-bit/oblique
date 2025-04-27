@@ -6,13 +6,13 @@ import {adaptInsertChange, addDependency, appModulePath, applyChanges, createSrc
 import {ObliquePackage, addFile, createSafeRule, infoMigration, readFile} from '../../utils';
 
 export function addLocales(locales: string[]): Rule {
-	return (tree: Tree, _context: SchematicContext) =>
-		chain([importLocales(locales), registerLocales(locales), configureLocales(locales), addTranslation(locales)])(tree, _context);
+	return (tree: Tree, context: SchematicContext) =>
+		chain([importLocales(locales), registerLocales(locales), configureLocales(locales), addTranslation(locales)])(tree, context);
 }
 
 function importLocales(locales: string[]): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Oblique: Adding locale management & translations');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Oblique: Adding locale management & translations');
 		const sourceFile = createSrcFile(tree, appModulePath);
 		const file = 'app.module.ts';
 		const changes = [
@@ -35,7 +35,7 @@ function importLocales(locales: string[]): Rule {
 
 function registerLocales(locales: string[]): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		const replacement = locales
 			.filter(locale => filterLocale(tree, locale))
 			.map(locale => `registerLocaleData(${getLocaleVariable(locale)});`)
@@ -49,7 +49,7 @@ function registerLocales(locales: string[]): Rule {
 
 function configureLocales(locales: string[]): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (locales.join('_') !== ['de-CH', 'fr-CH', 'it-CH'].join('_')) {
 			const appModuleContent = readFile(tree, appModulePath).replace(
 				'AppModule { }',
@@ -71,7 +71,7 @@ function configureLocales(locales: string[]): Rule {
 
 function addTranslation(locales: string[]): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		addDependency(tree, '@ngx-translate/core');
 		locales.map(locale => locale.split('-')[0]).forEach((lang: string) => addFile(tree, `src/assets/i18n/${lang}.json`, '{}'));
 		addTranslationToImports(tree);
