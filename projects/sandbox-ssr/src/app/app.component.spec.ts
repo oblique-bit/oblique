@@ -36,10 +36,10 @@ describe(AppComponent.name, () => {
 	});
 
 	describe('language selection', () => {
-		let harness: MatButtonToggleGroupHarness | null;
+		let harness: MatButtonToggleGroupHarness;
 		beforeEach(async () => {
 			const loader = TestbedHarnessEnvironment.loader(fixture);
-			harness = await loader.getHarnessOrNull(MatButtonToggleGroupHarness);
+			harness = await loader.getHarness(MatButtonToggleGroupHarness);
 		});
 
 		test('presence', () => {
@@ -47,13 +47,13 @@ describe(AppComponent.name, () => {
 		});
 
 		test('presence of 2 language toggles', async () => {
-			expect((await harness!.getToggles()).length).toBe(2);
+			expect((await harness.getToggles()).length).toBe(2);
 		});
 
 		test('language change', async () => {
 			const translateService = TestBed.inject(TranslateService);
 			jest.spyOn(translateService, 'use');
-			await (await harness!.getToggles())[1].check();
+			await (await harness.getToggles())[1].check();
 			expect(translateService.use).toHaveBeenCalledWith('fr');
 		});
 	});

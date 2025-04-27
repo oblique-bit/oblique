@@ -22,7 +22,6 @@ export default [
 			],
 
 			// rules that are not respected
-			'@typescript-eslint/no-non-null-assertion': 'off',
 			'@typescript-eslint/no-unnecessary-type-assertion': 'off',
 			'@typescript-eslint/promise-function-async': 'off'
 		}
