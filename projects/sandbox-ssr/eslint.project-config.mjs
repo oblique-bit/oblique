@@ -19,10 +19,7 @@ export default [
 					prefix: 'ssr',
 					style: 'kebab-case'
 				}
-			],
-
-			// rules that are not respected
-			'@typescript-eslint/promise-function-async': 'off'
+			]
 		}
 	},
 	{
