@@ -3,7 +3,7 @@ import * as cliPackage from '../../package.json';
 import * as obNewSchema from './schema.json';
 import {execSync} from 'child_process';
 import {obNewConfig} from './ob-new.model';
-import {currentVersions} from '../utils/cli-utils';
+import {currentVersions, version} from '../utils/cli-utils';
 import {createObNewCommand} from './ob-new';
 
 const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
@@ -55,7 +55,7 @@ describe('Ob new command', () => {
 			});
 
 			describe.each([
-				{index: 1, message: 'OBLIQUE CLI', type: 'info'},
+				{index: 1, message: `OBLIQUE CLI v${version}`, type: 'info'},
 				{index: 2, message: 'Checks your node version', type: 'info'},
 				{index: 3, message: '\n[Info]: Creates a new Angular workspace', type: 'info'},
 				{index: 4, message: '[Info]: Installs Angular Material', type: 'info'},
@@ -83,14 +83,8 @@ describe('Ob new command', () => {
 						description: 'Usage information for creating a new Angular project',
 						expected: `Usage: new <project-name> [...options] ${obNewConfig.obNewSummaryText}`
 					},
-					{
-						description: 'Argument for the project name',
-						expected: 'Arguments: project-name Unique name for your new project'
-					},
-					{
-						description: 'Section header for options',
-						expected: 'Options:'
-					},
+					{description: 'Argument for the project name', expected: 'Arguments: project-name Unique name for your new project'},
+					{description: 'Section header for options', expected: 'Options:'},
 					{
 						description: 'Option to output the current version of the CLI',
 						expected: 'Options: -v, --version Shows the current version of @oblique/cli '
@@ -206,10 +200,7 @@ describe('Ob new command', () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						3,
 						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --eslint --husky`,
-						{
-							cwd: `${process.cwd()}/${projectName}`,
-							stdio: 'inherit'
-						}
+						{cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'}
 					);
 				});
 			});
@@ -246,7 +237,7 @@ describe('Ob new command', () => {
 		});
 
 		describe.each([
-			{index: 1, message: 'OBLIQUE CLI', type: 'info'},
+			{index: 1, message: `OBLIQUE CLI v${version}`, type: 'info'},
 			{index: 2, message: 'Checks your node version', type: 'info'},
 			{index: 3, message: '\n[Info]: Creates a new Angular workspace', type: 'info'},
 			{
@@ -293,10 +284,7 @@ describe('Ob new command', () => {
 				const expected = options.includes('--interactive')
 					? `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']}`
 					: `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --eslint --husky`;
-				expect(execSync).toHaveBeenNthCalledWith(3, expected, {
-					cwd: `${process.cwd()}/${projectName}`,
-					stdio: 'inherit'
-				});
+				expect(execSync).toHaveBeenNthCalledWith(3, expected, {cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'});
 			});
 
 			afterEach(() => {

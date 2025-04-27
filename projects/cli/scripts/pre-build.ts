@@ -19,9 +19,9 @@ addSchemaData();
 Log.success();
 
 function addVersionNumber(): void {
-	Log.info('Add Oblique version to "ob-new.model.ts"');
+	Log.info('Add Oblique version to "cli-utils.ts"');
 	const version = PackageJson.readVersion();
-	Files.overwrite('./src/new/ob-new.model.ts', content =>
+	Files.overwrite('./src/utils/cli-utils.ts', content =>
 		content.replace(/(?<=const version = ')\d+\.\d+\.\d+(?:-(?:alpha|beta|RC)\.\d+)?/u, version)
 	);
 }
