@@ -21,12 +21,5 @@ export default [
 				}
 			]
 		}
-	},
-	{
-		files: ['projects/design-system/**/*.spec.ts'],
-		rules: {
-			// rules that are not respected
-			'@typescript-eslint/consistent-type-imports': 'off'
-		}
 	}
 ];
