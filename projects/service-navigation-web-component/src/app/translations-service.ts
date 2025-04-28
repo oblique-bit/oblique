@@ -87,7 +87,7 @@ export class TranslationsService {
 		this.translate.use(language);
 	}
 
-	private getObliqueTranslations(language: string): Record<any, string> {
+	private getObliqueTranslations(language: string): Record<string, string> {
 		switch (language) {
 			case 'de':
 				return translationsDE;
