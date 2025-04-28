@@ -126,15 +126,14 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	}
 
 	private parseContact(infoContact: SimpleChange | undefined): ObIServiceNavigationContact | undefined {
-		// undefined is coalesced into null because JSON.parse(null) is valid
-		return infoContact ? JSON.parse(infoContact.currentValue || null) : this.infoContactParsed;
+		return typeof infoContact?.currentValue === 'string' ? JSON.parse(infoContact.currentValue || null) : this.infoContactParsed;
 	}
 
 	private parseLinks(rawLinks: SimpleChange | undefined, type: 'info' | 'profile'): ObIServiceNavigationLink[] {
 		if (!rawLinks) {
 			return type === 'info' ? this.infoLinksParsed : this.profileLinksParsed;
 		}
-		const links: ObILink[] = JSON.parse(rawLinks.currentValue ?? '[]');
+		const links: ObILink[] = typeof rawLinks.currentValue === 'string' ? JSON.parse(rawLinks.currentValue || '[]') : [];
 		return links.map((link, index) => ({
 			url: `${type}-link.${index}.url`,
 			label: `${type}-link.${index}.label`
@@ -142,11 +141,11 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	}
 
 	private parseCustomButtons(customButtons: SimpleChange | undefined): ObICustomButton[] {
-		return customButtons ? JSON.parse(customButtons.currentValue || '[]') : this.customButtonsParsed;
+		return typeof customButtons?.currentValue === 'string' ? JSON.parse(customButtons.currentValue || '[]') : this.customButtonsParsed;
 	}
 
 	private handleNewLanguage(language: SimpleChange | undefined): void {
-		if (language) {
+		if (typeof language?.currentValue === 'string') {
 			this.translationService.setLang(language.currentValue);
 		}
 	}
