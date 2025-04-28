@@ -13,7 +13,7 @@ import {
 	input,
 	numberAttribute
 } from '@angular/core';
-import {DOCUMENT, NgFor, NgIf} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -42,7 +42,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 		'../../../oblique/src/styles/scss/core/components/_external-link.scss'
 	],
 	encapsulation: ViewEncapsulation.None,
-	imports: [ObServiceNavigationModule, NgIf, MatButtonModule, MatTooltipModule, MatIconModule, NgFor, MatBadgeModule, ObButtonModule],
+	imports: [ObServiceNavigationModule, MatButtonModule, MatTooltipModule, MatIconModule, MatBadgeModule, ObButtonModule],
 	providers: [TranslationsService],
 	host: {'ob-version': appVersion}
 })
