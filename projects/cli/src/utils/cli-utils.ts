@@ -140,11 +140,7 @@ export function buildOption(key: string, value: string | boolean): string {
 	return value ? key : `no-${key}`;
 }
 
-// necessary because of missing "default"
-// eslint-disable-next-line @typescript-eslint/consistent-return
 export function execute(config: ObCommandConfig): void {
-	// skipping "default" allows typescript to throw an error at compile time if a case is missing
-	// eslint-disable-next-line default-case
 	switch (config.name) {
 		case 'ngNew':
 			return executeNgCommand(`new ${config.projectName}`, config.options, config.execSyncOptions);
