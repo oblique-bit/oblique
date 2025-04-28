@@ -45,24 +45,10 @@ export default [
 		}
 	},
 	{
-		files: ['projects/sandbox/src/app/app.component.ts'],
-		rules: {
-			// rules that are not respected
-			'no-implicit-coercion': 'off'
-		}
-	},
-	{
 		files: ['projects/sandbox/src/app/samples/unsaved-changes/unsaved-changes-sample.component.ts'],
 		rules: {
 			// rules that are not respected
 			'@angular-eslint/use-component-view-encapsulation': 'off'
-		}
-	},
-	{
-		files: ['projects/sandbox/src/app/samples/http-interceptor/http-mock-error.interceptor.ts'],
-		rules: {
-			// rules that are not respected
-			'no-implicit-coercion': 'off'
 		}
 	},
 	{

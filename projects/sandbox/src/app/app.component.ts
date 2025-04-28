@@ -76,7 +76,7 @@ export class AppComponent implements OnDestroy {
 			.pipe(
 				takeUntil(this.unsubscribe),
 				map(value => searchItems.find(item => this.translate.instant(item.label) === value)),
-				filter(item => !!item)
+				filter(item => Boolean(item))
 			)
 			.subscribe(item => {
 				this.search.reset('');

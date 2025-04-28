@@ -31,8 +31,8 @@ export class HttpMockErrorInterceptor implements HttpInterceptor {
 				if (HttpMockErrorInterceptor.errorCodes.includes(code)) {
 					return throwError(
 						new HttpErrorResponse({
-							status: +code,
-							statusText: HttpMockErrorInterceptor.getStatusText(+code)
+							status: Number(code),
+							statusText: HttpMockErrorInterceptor.getStatusText(Number(code))
 						})
 					);
 				}
