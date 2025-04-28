@@ -33,8 +33,7 @@ export default [
 			'@typescript-eslint/no-unsafe-call': 'off',
 			'@typescript-eslint/no-unsafe-member-access': 'off',
 			'@typescript-eslint/no-unsafe-return': 'off',
-			'@typescript-eslint/no-unsafe-type-assertion': 'off',
-			'@typescript-eslint/prefer-enum-initializers': 'off'
+			'@typescript-eslint/no-unsafe-type-assertion': 'off'
 		}
 	},
 	{

@@ -16,14 +16,14 @@ interface Data {
 }
 
 export enum Mode {
-	DIALOG,
-	FORM
+	DIALOG = 0,
+	FORM = 1
 }
 
 export enum EditMode {
-	NONE,
-	EDIT,
-	ADD
+	NONE = 0,
+	EDIT = 1,
+	ADD = 2
 }
 
 export class TableManager<T> {
@@ -38,11 +38,9 @@ export class TableManager<T> {
 	private mode = Mode.DIALOG;
 
 	private readonly window = inject(WINDOW);
+	private readonly dialog = inject(MatDialog);
 
-	constructor(
-		data: (T & Data)[],
-		private readonly dialog: MatDialog
-	) {
+	constructor(data: (T & Data)[]) {
 		this.originalData = data.map(item => ({...item, isSelected: false, editMode: EditMode.NONE}));
 		this.dataSource.data = [...this.originalData];
 
