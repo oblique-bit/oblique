@@ -5,7 +5,7 @@ import {obFocusWithOutline} from '@oblique/oblique';
 @Component({
 	selector: 'sb-focus-sample',
 	templateUrl: './focus-sample.component.html',
-	styleUrls: ['./focus-sample.component.scss'],
+	styleUrl: './focus-sample.component.scss',
 	standalone: false
 })
 export class FocusSampleComponent implements AfterViewInit {

@@ -5,7 +5,7 @@ import {Placement} from '@popperjs/core';
 @Component({
 	selector: 'sb-popover',
 	templateUrl: './popover.component.html',
-	styleUrls: ['./popover.component.scss'],
+	styleUrl: './popover.component.scss',
 	standalone: false
 })
 export class PopoverComponent {

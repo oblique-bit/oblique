@@ -7,7 +7,7 @@ import {map} from 'rxjs/operators';
 @Component({
 	selector: 'sb-service-navigation',
 	templateUrl: './service-navigation-sample.component.html',
-	styleUrls: ['./service-navigation-sample.component.scss'],
+	styleUrl: './service-navigation-sample.component.scss',
 	standalone: false
 })
 export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {

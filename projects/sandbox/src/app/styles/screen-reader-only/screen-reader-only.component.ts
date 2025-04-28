@@ -5,7 +5,7 @@ import {ObMasterLayoutService} from '@oblique/oblique';
 @Component({
 	selector: 'sb-screen-reader-only',
 	templateUrl: './screen-reader-only.component.html',
-	styleUrls: ['./screen-reader-only.component.scss'],
+	styleUrl: './screen-reader-only.component.scss',
 	standalone: false
 })
 export class ScreenReaderOnlyComponent implements OnInit {

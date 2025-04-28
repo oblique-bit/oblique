@@ -5,7 +5,7 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 	selector: 'sb-nested-form-child-sample',
 	exportAs: 'child',
 	templateUrl: './nested-form-child-sample.component.html',
-	styleUrls: ['./mandatory.scss'],
+	styleUrl: './mandatory.scss',
 	standalone: false
 })
 export class NestedFormChildSampleComponent {

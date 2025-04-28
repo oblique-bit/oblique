@@ -14,7 +14,7 @@ interface IsLinkExternalState {
 @Component({
 	selector: 'sb-external-link',
 	templateUrl: './external-link.component.html',
-	styleUrls: ['./external-link.component.scss'],
+	styleUrl: './external-link.component.scss',
 	standalone: false
 })
 export class ExternalLinkComponent {

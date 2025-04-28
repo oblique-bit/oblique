@@ -4,7 +4,7 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 @Component({
 	selector: 'sb-stepper-horizontal',
 	templateUrl: './stepper-horizontal.component.html',
-	styleUrls: ['./stepper-horizontal.component.scss'],
+	styleUrl: './stepper-horizontal.component.scss',
 	standalone: false
 })
 export class StepperHorizontalComponent implements OnInit {

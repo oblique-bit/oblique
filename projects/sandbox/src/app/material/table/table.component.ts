@@ -12,7 +12,7 @@ import {EditMode, Mode, TableManager} from './table-manager';
 @Component({
 	selector: 'sb-table',
 	templateUrl: './table.component.html',
-	styleUrls: ['./table.component.scss'],
+	styleUrl: './table.component.scss',
 	standalone: false
 })
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy {

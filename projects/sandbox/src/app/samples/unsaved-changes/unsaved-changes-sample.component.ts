@@ -4,7 +4,7 @@ import {NgModelGroup, UntypedFormBuilder, UntypedFormGroup} from '@angular/forms
 @Component({
 	selector: 'sb-unsaved-changes',
 	templateUrl: './unsaved-changes-sample.component.html',
-	styleUrls: ['./unsaved-changes-sample.component.scss'],
+	styleUrl: './unsaved-changes-sample.component.scss',
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: false

@@ -22,7 +22,6 @@ export default [
 			],
 
 			// rules that are not respected
-			'@angular-eslint/consistent-component-styles': 'off',
 			'@angular-eslint/prefer-signals': 'off',
 			'@angular-eslint/prefer-standalone': 'off',
 			'@angular-eslint/use-injectable-provided-in': 'off',

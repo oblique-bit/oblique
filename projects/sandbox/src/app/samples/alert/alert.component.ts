@@ -4,7 +4,7 @@ import {ObIAlertType} from '@oblique/oblique';
 @Component({
 	selector: 'sb-alert-sample',
 	templateUrl: './alert.component.html',
-	styleUrls: ['./alert.component.scss'],
+	styleUrl: './alert.component.scss',
 	standalone: false
 })
 export class AlertSampleComponent {

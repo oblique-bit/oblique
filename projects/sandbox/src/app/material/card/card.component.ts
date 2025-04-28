@@ -4,7 +4,7 @@ import {ObSelectableGroupDirective} from '@oblique/oblique';
 @Component({
 	selector: 'sb-card',
 	templateUrl: './card.component.html',
-	styleUrls: ['./card.component.scss'],
+	styleUrl: './card.component.scss',
 	standalone: false
 })
 export class CardComponent {

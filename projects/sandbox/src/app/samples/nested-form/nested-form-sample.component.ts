@@ -5,7 +5,7 @@ import {ObNotificationService} from '@oblique/oblique';
 @Component({
 	selector: 'sb-nested-form-sample',
 	templateUrl: './nested-form-sample.component.html',
-	styleUrls: ['./mandatory.scss'],
+	styleUrl: './mandatory.scss',
 	standalone: false
 })
 export class NestedFormSampleComponent {

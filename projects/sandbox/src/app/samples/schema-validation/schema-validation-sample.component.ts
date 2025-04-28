@@ -6,7 +6,7 @@ import {of} from 'rxjs';
 @Component({
 	selector: 'sb-schema-validation',
 	templateUrl: './schema-validation-sample.component.html',
-	styleUrls: ['./schema-validation-sample.component.scss'],
+	styleUrl: './schema-validation-sample.component.scss',
 	standalone: false
 })
 export class SchemaValidationSampleComponent implements OnInit {

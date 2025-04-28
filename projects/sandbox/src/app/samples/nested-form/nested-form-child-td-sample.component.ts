@@ -5,7 +5,7 @@ import {NgForm} from '@angular/forms';
 	selector: 'sb-nested-form-child-td-sample',
 	exportAs: 'childTD',
 	templateUrl: './nested-form-child-td-sample.component.html',
-	styleUrls: ['./mandatory.scss'],
+	styleUrl: './mandatory.scss',
 	standalone: false
 })
 export class NestedFormChildTDSampleComponent {

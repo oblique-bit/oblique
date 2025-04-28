@@ -7,7 +7,7 @@ import {DynamicNavigationService} from './dynamic-navigation.service';
 @Component({
 	selector: 'sb-master-layout-sample',
 	templateUrl: './master-layout-sample.component.html',
-	styleUrls: ['./master-layout-sample.component.scss'],
+	styleUrl: './master-layout-sample.component.scss',
 	standalone: false
 })
 export class MasterLayoutSampleComponent {
