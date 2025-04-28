@@ -29,7 +29,7 @@ describe('ObUpdateCommand Tests', () => {
 
 		describe('createObUpdateCommand', () => {
 			beforeAll(() => {
-				const obCliUtils = require('../utils/cli-utils');
+				const obCliUtils: typeof import('../utils/cli-utils') = jest.requireActual('../utils/cli-utils');
 				jest.spyOn(obCliUtils, 'commandUsageText').mockReturnValue('update');
 				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => '');
 				const cmd = obUpdate.createObUpdateCommand();

@@ -19,7 +19,6 @@ export default [
 	{
 		files: ['projects/cli/src/**/*.spec.ts'],
 		rules: {
-			'@typescript-eslint/no-require-imports': 'off',
 			'@typescript-eslint/no-unsafe-assignment': 'off',
 			'no-console': 'off'
 		}
