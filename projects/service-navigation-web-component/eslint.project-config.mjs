@@ -33,7 +33,6 @@ export default [
 		files: ['projects/service-navigation-web-component/**/*.spec.ts'],
 		rules: {
 			// rules that are not respected
-			'@typescript-eslint/no-unsafe-call': 'off',
 			'@typescript-eslint/no-unsafe-member-access': 'off'
 		}
 	}

@@ -457,6 +457,7 @@ export default config(
 			'@typescript-eslint/no-empty-function': 'off', // mocks may be empty
 			'@typescript-eslint/no-floating-promises': 'off', // lots of jest function returns a promise that we don't care about
 			'@typescript-eslint/no-magic-numbers': 'off', // useful at assert the number of elements
+			'@typescript-eslint/no-unsafe-call': 'off', // because fixture.nativeElement is typed `any`
 			'@typescript-eslint/no-unsafe-type-assertion': 'off', // nativeElement is typed with any
 			'@typescript-eslint/unbound-method': 'off' // toHaveBeenCalled is used on unbound method
 		}
