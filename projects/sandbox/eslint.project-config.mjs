@@ -45,13 +45,6 @@ export default [
 		}
 	},
 	{
-		files: ['projects/sandbox/src/app/samples/samples.module.ts'],
-		rules: {
-			// rules that are not respected
-			'@angular-eslint/no-duplicates-in-metadata-arrays': 'off'
-		}
-	},
-	{
 		files: ['projects/sandbox/src/app/material/tooltip/tooltip.component.ts'],
 		rules: {
 			// rules that are not respected
