@@ -67,6 +67,6 @@ describe('index.ts', () => {
 
 	function cleanOutput(output: Buffer | string): string {
 		const outputString = output.toString();
-		return outputString.replace(/\s+/g, ' ').trim();
+		return outputString.replace(/\s+/gu, ' ').trim();
 	}
 });

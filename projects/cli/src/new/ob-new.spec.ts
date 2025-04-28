@@ -324,6 +324,6 @@ describe('Ob new command', () => {
 	});
 
 	function cleanOutput(output: string): string {
-		return output.replace(/\s+/g, ' ').trim();
+		return output.replace(/\s+/gu, ' ').trim();
 	}
 });

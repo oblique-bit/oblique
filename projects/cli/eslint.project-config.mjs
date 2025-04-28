@@ -11,8 +11,7 @@ export default [
 			],
 
 			// rules that are not respected
-			'@typescript-eslint/no-unsafe-type-assertion': 'off',
-			'require-unicode-regexp': 'off'
+			'@typescript-eslint/no-unsafe-type-assertion': 'off'
 		}
 	},
 	{

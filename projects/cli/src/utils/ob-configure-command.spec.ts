@@ -91,7 +91,7 @@ describe('ob-configure-command tests', () => {
 				flagValuePlaceholder: 'value'
 			} as ObNewSchemaOption;
 
-			expect(() => configureOption(brokenConfig, '')).toThrow(/At least one of shortFlag or longFlag must be provided./i);
+			expect(() => configureOption(brokenConfig, '')).toThrow(/At least one of shortFlag or longFlag must be provided./iu);
 		});
 
 		test.each(testCases)('should have $description', ({actual, expected, matcher}) => {
