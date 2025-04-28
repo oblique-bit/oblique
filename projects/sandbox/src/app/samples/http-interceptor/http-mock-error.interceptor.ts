@@ -24,7 +24,7 @@ export class HttpMockErrorInterceptor implements HttpInterceptor {
 		}
 	}
 
-	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+	intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 		return of(null).pipe(
 			mergeMap(() => {
 				const code = request.url.split('/').pop();

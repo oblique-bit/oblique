@@ -9,7 +9,7 @@ import {ObNavTreeItemModel} from '@oblique/oblique';
 	standalone: false
 })
 export class TablePageComponent {
-	selection = new SelectionModel<any>(true, []);
+	selection = new SelectionModel<unknown>(true, []);
 	displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol', 'actions'];
 	dataSource = [
 		{position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},

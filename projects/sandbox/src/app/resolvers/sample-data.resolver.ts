@@ -4,10 +4,10 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable()
-export class SampleDataResolver implements Resolve<any> {
+export class SampleDataResolver implements Resolve<unknown> {
 	constructor(private readonly http: HttpClient) {}
 
-	resolve(): Observable<any> {
+	resolve(): Observable<unknown> {
 		return this.http.get('./assets/sample-data.json');
 	}
 }

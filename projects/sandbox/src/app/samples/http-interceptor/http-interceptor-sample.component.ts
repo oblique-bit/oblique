@@ -45,7 +45,7 @@ export class HttpInterceptorSampleComponent {
 
 	parallelRequest(): void {
 		this.configInterceptor();
-		const arrayOfObservables: Observable<any>[] = [];
+		const arrayOfObservables: Observable<unknown>[] = [];
 		for (let index = 0; index < this.parallelRequests; index++) {
 			arrayOfObservables.push(this.createSampleRequest(200));
 		}
@@ -66,7 +66,7 @@ export class HttpInterceptorSampleComponent {
 		return `${HttpInterceptorSampleComponent.API_URL}/${code}`;
 	}
 
-	private createSampleRequest(code: number): Observable<any> {
+	private createSampleRequest(code: number): Observable<unknown> {
 		const url = HttpInterceptorSampleComponent.getUrl(code);
 		this.log(`${++requestId} - GET ${url}, expecting: ${code} ${HttpMockErrorInterceptor.getStatusText(code)}...`);
 		return this.createRequest(url, requestId);
@@ -83,7 +83,7 @@ export class HttpInterceptorSampleComponent {
 		});
 	}
 
-	private createRequest(url: string, currentId: number): Observable<any> {
+	private createRequest(url: string, currentId: number): Observable<unknown> {
 		const started = Date.now();
 		const requestDelay = Math.ceil(Math.random() * 1000);
 		return this.http.get(url).pipe(
