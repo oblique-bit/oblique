@@ -138,7 +138,10 @@ formControl = new FormControl('');
 	}
 
 	toggleDisabledState(state: boolean): void {
-		if (state) this.formControl.disable();
-		else this.formControl.enable();
+		if (state) {
+			this.formControl.disable();
+		} else {
+			this.formControl.enable();
+		}
 	}
 }

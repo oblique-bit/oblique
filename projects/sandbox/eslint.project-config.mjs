@@ -45,13 +45,6 @@ export default [
 		}
 	},
 	{
-		files: ['projects/sandbox/src/app/samples/autocomplete/autocomplete.component.ts'],
-		rules: {
-			// rules that are not respected
-			curly: 'off'
-		}
-	},
-	{
 		files: ['projects/sandbox/src/app/samples/samples.module.ts'],
 		rules: {
 			// rules that are not respected
