@@ -486,7 +486,7 @@ export default config(
 			'@angular-eslint/template/mouse-events-have-key-events': 'error',
 			'@angular-eslint/template/no-any': 'error',
 			'@angular-eslint/template/no-autofocus': 'error',
-			'@angular-eslint/template/no-call-expression': 'error',
+			'@angular-eslint/template/no-call-expression': 'off', // not compatible with @angular-eslint/prefer-signals
 			'@angular-eslint/template/no-distracting-elements': 'error',
 			'@angular-eslint/template/no-duplicate-attributes': 'error',
 			'@angular-eslint/template/no-inline-styles': 'error',
