@@ -3,7 +3,6 @@ import {
 	EventEmitter,
 	HostListener,
 	Inject,
-	Input,
 	OnChanges,
 	OnInit,
 	Output,
@@ -12,6 +11,7 @@ import {
 	ViewEncapsulation,
 	booleanAttribute,
 	inject,
+	input,
 	numberAttribute
 } from '@angular/core';
 import {DOCUMENT, NgFor, NgIf} from '@angular/common';
@@ -48,26 +48,26 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 	host: {'ob-version': appVersion}
 })
 export class ObServiceNavigationWebComponentComponent implements OnChanges, OnInit {
-	@Input() languageList: string;
-	@Input() defaultLanguage: string;
-	@Input() language: string;
-	@Input() environment: 'DEV' | 'REF' | 'TEST' | 'ABN' | 'PROD';
-	@Input() infoContact: string;
-	@Input() infoLinks: string;
-	@Input() profileLinks: string;
-	@Input({transform: numberAttribute}) maxLastUsedApplications = 3;
-	@Input({transform: numberAttribute}) maxFavoriteApplications = 3;
-	@Input({transform: booleanAttribute}) displayLanguages = true;
-	@Input({transform: booleanAttribute}) displayMessage = true;
-	@Input({transform: booleanAttribute}) displayInfo = true;
-	@Input({transform: booleanAttribute}) displayApplications = true;
-	@Input({transform: booleanAttribute}) displayProfile = true;
-	@Input({transform: booleanAttribute}) displayAuthentication = true;
-	@Input({transform: booleanAttribute}) handleLogout: boolean;
-	@Input() pamsAppId: string;
-	@Input() rootUrl: string;
-	@Input() returnUrl: string;
-	@Input() customButtons: string;
+	readonly languageList = input<string>(undefined);
+	readonly defaultLanguage = input<string>(undefined);
+	readonly language = input<string>(undefined);
+	readonly environment = input<'DEV' | 'REF' | 'TEST' | 'ABN' | 'PROD'>(undefined);
+	readonly infoContact = input<string>(undefined);
+	readonly infoLinks = input<string>(undefined);
+	readonly profileLinks = input<string>(undefined);
+	readonly maxLastUsedApplications = input(3, {transform: numberAttribute});
+	readonly maxFavoriteApplications = input(3, {transform: numberAttribute});
+	readonly displayLanguages = input(true, {transform: booleanAttribute});
+	readonly displayMessage = input(true, {transform: booleanAttribute});
+	readonly displayInfo = input(true, {transform: booleanAttribute});
+	readonly displayApplications = input(true, {transform: booleanAttribute});
+	readonly displayProfile = input(true, {transform: booleanAttribute});
+	readonly displayAuthentication = input(true, {transform: booleanAttribute});
+	readonly handleLogout = input<boolean, unknown>(undefined, {transform: booleanAttribute});
+	readonly pamsAppId = input<string>(undefined);
+	readonly rootUrl = input<string>(undefined);
+	readonly returnUrl = input<string>(undefined);
+	readonly customButtons = input<string>(undefined);
 	@Output() readonly languageChange: Observable<string>;
 	@Output() readonly loginState = new EventEmitter<ObLoginState>();
 	@Output() readonly buttonClickedEmitter = new EventEmitter<ObEIcon>();
@@ -105,14 +105,14 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 		this.infoLinksParsed = this.parseLinks(changes.infoLinks, 'info');
 		this.profileLinksParsed = this.parseLinks(changes.profileLinks, 'profile');
 		this.customButtonsParsed = this.parseCustomButtons(changes.customButtons);
-		this.translationService.handleTranslations(this.infoLinks, this.profileLinks);
+		this.translationService.handleTranslations(this.infoLinks(), this.profileLinks());
 		this.handleNewLanguage(changes.language);
 	}
 
 	ngOnInit(): void {
-		this.translationService.initializeTranslations(this.languageList, this.language, this.defaultLanguage);
-		this.translationService.handleTranslations(this.infoLinks, this.profileLinks); // necessary because ngOnChanges is called before ngOnInit
-		this.environmentParsed = this.parseEnvironment(this.environment);
+		this.translationService.initializeTranslations(this.languageList(), this.language(), this.defaultLanguage());
+		this.translationService.handleTranslations(this.infoLinks(), this.profileLinks()); // necessary because ngOnChanges is called before ngOnInit
+		this.environmentParsed = this.parseEnvironment(this.environment());
 	}
 
 	private parseEnvironment(environmentName: string): ObEPamsEnvironment {

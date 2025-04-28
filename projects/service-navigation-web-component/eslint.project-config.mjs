@@ -4,7 +4,6 @@ export default [
 		files: ['projects/service-navigation-web-component/**/*.ts'],
 		rules: {
 			// rules that are not respected
-			'@angular-eslint/prefer-signals': 'off',
 			'@angular-eslint/use-component-view-encapsulation': 'off',
 			'@angular-eslint/use-injectable-provided-in': 'off',
 			'@typescript-eslint/consistent-type-imports': 'off',
