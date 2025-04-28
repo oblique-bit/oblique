@@ -24,10 +24,10 @@
 			<button
 				type="button"
 				mat-icon-button
-				[matTooltip]="button.tooltip"
 				obButton="tertiary"
-				[matBadge]="button.badge"
 				matBadgeColor="warn"
+				[matTooltip]="button.tooltip"
+				[matBadge]="button.badge"
 				(click)="buttonClickedEmitter.emit(button.obliqueIconName)"
 			>
 				<mat-icon [svgIcon]="button.obliqueIconName" />
