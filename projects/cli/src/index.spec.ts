@@ -1,4 +1,4 @@
-import {SpawnSyncOptions, spawnSync} from 'node:child_process';
+import {type SpawnSyncOptions, spawnSync} from 'node:child_process';
 import path from 'path';
 import * as cliPackage from '../package.json';
 

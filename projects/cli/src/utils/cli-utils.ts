@@ -1,5 +1,5 @@
-import {ObCommandConfig, ObOptions} from './ob-cli.model';
-import {ExecSyncOptions, execSync} from 'child_process';
+import type {ObCommandConfig, ObOptions} from './ob-cli.model';
+import {type ExecSyncOptions, execSync} from 'child_process';
 import {gte, major} from 'semver';
 
 export const currentVersions = {

@@ -1,7 +1,7 @@
-import {Command, OptionValues} from '@commander-js/extra-typings';
+import {Command, type OptionValues} from '@commander-js/extra-typings';
 import path from 'node:path';
 import fs from 'node:fs';
-import {PackageDependencies} from './ob-update.model';
+import type {PackageDependencies} from './ob-update.model';
 import * as obUpdate from './ob-update';
 
 describe('ObUpdateCommand Tests', () => {

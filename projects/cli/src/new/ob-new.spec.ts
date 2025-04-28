@@ -1,4 +1,4 @@
-import {Command, OptionValues} from '@commander-js/extra-typings';
+import type {Command, OptionValues} from '@commander-js/extra-typings';
 import * as cliPackage from '../../package.json';
 import * as obNewSchema from './schema.json';
 import {execSync} from 'child_process';

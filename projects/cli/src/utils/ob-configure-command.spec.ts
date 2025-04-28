@@ -1,7 +1,7 @@
-import {Command, Option} from '@commander-js/extra-typings';
-import {OptionValues} from 'commander';
-import {ObNewOptions, ObNewSchemaOption} from '../new/ob-new.model';
-import {ObCliSchema} from './ob-cli.model';
+import {Command, type Option} from '@commander-js/extra-typings';
+import type {OptionValues} from 'commander';
+import type {ObNewOptions, ObNewSchemaOption} from '../new/ob-new.model';
+import type {ObCliSchema} from './ob-cli.model';
 import {addObNewCommandOptions, configureOption, convertOptionPropertyNames} from './ob-configure-command';
 
 jest.mock('../new/ob-new.model');
