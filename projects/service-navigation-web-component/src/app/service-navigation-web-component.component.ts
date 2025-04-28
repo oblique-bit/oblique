@@ -2,7 +2,6 @@ import {
 	Component,
 	EventEmitter,
 	HostListener,
-	Inject,
 	type OnChanges,
 	type OnInit,
 	Output,
@@ -79,8 +78,9 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	profileLinksParsed: ObIServiceNavigationLink[] = [];
 	customButtonsParsed: ObICustomButton[] = [];
 	private readonly translationService = inject(TranslationsService);
+	private readonly document = inject(DOCUMENT);
 
-	constructor(@Inject(DOCUMENT) private readonly document: Document) {
+	constructor() {
 		this.languageChange = this.translationService.languageChange$;
 	}
 

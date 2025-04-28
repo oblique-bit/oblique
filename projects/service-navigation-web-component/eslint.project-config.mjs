@@ -9,7 +9,6 @@ export default [
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
 			'@typescript-eslint/no-unsafe-return': 'off',
-			'@typescript-eslint/parameter-properties': 'off',
 			'require-unicode-regexp': 'off'
 		}
 	},
