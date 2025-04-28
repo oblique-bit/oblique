@@ -6,7 +6,6 @@ export default [
 			// rules that are not respected
 			'@angular-eslint/use-component-view-encapsulation': 'off',
 			'@angular-eslint/use-injectable-provided-in': 'off',
-			'@typescript-eslint/max-params': 'off',
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',

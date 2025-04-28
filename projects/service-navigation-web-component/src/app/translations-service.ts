@@ -104,8 +104,8 @@ export class TranslationsService {
 
 	private buildTranslations(languages: string[], infoLinks: string, profileLinks: string): Record<string, Record<string, string>> {
 		let translations = this.initializeTranslationsObject(languages);
-		translations = this.populateTranslations(infoLinks, 'info', languages, translations);
-		translations = this.populateTranslations(profileLinks, 'profile', languages, translations);
+		translations = this.populateTranslations({rawLinks: infoLinks, type: 'info', languages, translations});
+		translations = this.populateTranslations({rawLinks: profileLinks, type: 'profile', languages, translations});
 		return translations;
 	}
 
@@ -113,12 +113,13 @@ export class TranslationsService {
 		return languages.reduce((translations, language) => ({...translations, [language]: {}}), {});
 	}
 
-	private populateTranslations(
-		rawLinks: string | undefined,
-		type: string,
-		languages: string[],
-		translations: Record<string, Record<string, string>>
-	): Record<string, Record<string, string>> {
+	private populateTranslations(options: {
+		rawLinks: string | undefined;
+		type: string;
+		languages: string[];
+		translations: Record<string, Record<string, string>>;
+	}): Record<string, Record<string, string>> {
+		const {rawLinks, type, languages, translations} = options;
 		if (rawLinks) {
 			const links: ObILink[] = JSON.parse(rawLinks);
 			links.forEach((link, index) => {
