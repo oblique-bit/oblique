@@ -45,13 +45,6 @@ export default [
 		}
 	},
 	{
-		files: ['projects/sandbox/src/app/app-routing.module.ts'],
-		rules: {
-			// rules that are not respected
-			'@typescript-eslint/promise-function-async': 'off'
-		}
-	},
-	{
 		files: ['projects/sandbox/src/app/app.component.ts'],
 		rules: {
 			// rules that are not respected
