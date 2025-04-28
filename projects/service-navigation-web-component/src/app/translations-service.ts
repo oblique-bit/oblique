@@ -121,16 +121,25 @@ export class TranslationsService {
 	}): Record<string, Record<string, string>> {
 		const {rawLinks, type, languages, translations} = options;
 		if (rawLinks) {
-			const links: ObILink[] = JSON.parse(rawLinks);
+			const links = this.parseRawLinks(rawLinks);
 			links.forEach((link, index) => {
-				languages.forEach(language => {
-					translations[language][`${type}-link.${index}.label`] = link[language];
-					if (link.links) {
-						translations[language][`${type}-link.${index}.url`] = link.links[language];
-					}
-				});
+				languages
+					.map(language => ({language, label: link[language] as unknown}))
+					.forEach(({language, label}) => {
+						if (typeof label === 'string') {
+							translations[language][`${type}-link.${index}.label`] = label;
+							if (link.links && typeof link.links[language] === 'string') {
+								translations[language][`${type}-link.${index}.url`] = link.links[language];
+							}
+						}
+					});
 			});
 		}
 		return translations;
+	}
+
+	private parseRawLinks(links: unknown): ObILink[] {
+		const parsedLinks: unknown = typeof links === 'string' ? JSON.parse(links || '[]') : [];
+		return Array.isArray(parsedLinks) ? parsedLinks : [];
 	}
 }

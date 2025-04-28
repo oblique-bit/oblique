@@ -133,11 +133,16 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 		if (!rawLinks) {
 			return type === 'info' ? this.infoLinksParsed : this.profileLinksParsed;
 		}
-		const links: ObILink[] = typeof rawLinks.currentValue === 'string' ? JSON.parse(rawLinks.currentValue || '[]') : [];
+		const links = this.parseRawLinks(rawLinks.currentValue);
 		return links.map((link, index) => ({
 			url: `${type}-link.${index}.url`,
 			label: `${type}-link.${index}.label`
 		}));
+	}
+
+	private parseRawLinks(links: unknown): ObILink[] {
+		const parsedLinks: unknown = typeof links === 'string' ? JSON.parse(links || '[]') : [];
+		return Array.isArray(parsedLinks) ? parsedLinks : [];
 	}
 
 	private parseCustomButtons(customButtons: SimpleChange | undefined): ObICustomButton[] {
