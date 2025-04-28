@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, ViewChild, ViewEncapsulation, inject} from '@angular/core';
-import {NgModelGroup, UntypedFormBuilder} from '@angular/forms';
+import {type NgModelGroup, UntypedFormBuilder} from '@angular/forms';
 
 @Component({
 	selector: 'sb-unsaved-changes',

@@ -1,9 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, type ElementRef, type OnInit, ViewChild} from '@angular/core';
 import {COMMA, ENTER, SEMICOLON} from '@angular/cdk/keycodes';
 import {UntypedFormControl} from '@angular/forms';
-import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
+import type {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import type {MatChipInputEvent} from '@angular/material/chips';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({

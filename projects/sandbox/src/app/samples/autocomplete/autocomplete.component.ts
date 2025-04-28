@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup, OptionLabelIconPosition} from '@oblique/oblique';
+import {Component, type OnInit} from '@angular/core';
+import type {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup, OptionLabelIconPosition} from '@oblique/oblique';
 import {FormControl} from '@angular/forms';
 
 @Component({

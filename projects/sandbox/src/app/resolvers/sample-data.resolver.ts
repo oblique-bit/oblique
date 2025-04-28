@@ -1,7 +1,7 @@
 import {Injectable, inject} from '@angular/core';
-import {Resolve} from '@angular/router';
+import type {Resolve} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Injectable()
 export class SampleDataResolver implements Resolve<unknown> {

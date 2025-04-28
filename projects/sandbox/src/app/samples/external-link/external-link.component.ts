@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObEExternalLinkIcon} from '@oblique/oblique';
+import type {ObEExternalLinkIcon} from '@oblique/oblique';
 
 interface IconPosition {
 	value: string;

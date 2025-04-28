@@ -1,6 +1,12 @@
 import {Component, inject} from '@angular/core';
-import {ObEScrollMode, ObICollapseBreakpoints, ObIServiceNavigationContact, ObLoginState, ObMasterLayoutService} from '@oblique/oblique';
-import {Observable, share} from 'rxjs';
+import {
+	ObEScrollMode,
+	type ObICollapseBreakpoints,
+	type ObIServiceNavigationContact,
+	type ObLoginState,
+	ObMasterLayoutService
+} from '@oblique/oblique';
+import {type Observable, share} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {DynamicNavigationService} from './dynamic-navigation.service';
 

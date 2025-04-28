@@ -1,8 +1,8 @@
 import {Component, inject} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {ObENotificationType, ObHttpApiInterceptorEvents, ObIHttpApiRequest, ObNotificationService} from '@oblique/oblique';
+import {HttpClient, type HttpErrorResponse} from '@angular/common/http';
+import {ObENotificationType, ObHttpApiInterceptorEvents, type ObIHttpApiRequest, ObNotificationService} from '@oblique/oblique';
 import {delay, mergeMap, take, tap} from 'rxjs/operators';
-import {Observable, from} from 'rxjs';
+import {type Observable, from} from 'rxjs';
 import {HttpMockErrorInterceptor} from './http-mock-error.interceptor';
 
 let requestId = 0;

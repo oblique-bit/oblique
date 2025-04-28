@@ -1,5 +1,5 @@
-import {Component, OnInit, inject} from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {Component, type OnInit, inject} from '@angular/core';
+import {UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sb-stepper-horizontal',

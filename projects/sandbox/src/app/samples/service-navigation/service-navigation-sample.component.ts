@@ -1,7 +1,13 @@
-import {AfterViewInit, Component, OnInit, ViewChild, inject} from '@angular/core';
-import {ObIServiceNavigationContact, ObIServiceNavigationLink, ObLoginState, ObServiceNavigationComponent, WINDOW} from '@oblique/oblique';
+import {type AfterViewInit, Component, type OnInit, ViewChild, inject} from '@angular/core';
+import {
+	type ObIServiceNavigationContact,
+	type ObIServiceNavigationLink,
+	type ObLoginState,
+	ObServiceNavigationComponent,
+	WINDOW
+} from '@oblique/oblique';
 import {environment} from '../../../environments/environment';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({

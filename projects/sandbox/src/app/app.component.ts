@@ -1,9 +1,15 @@
-import {Component, OnDestroy, inject} from '@angular/core';
+import {Component, type OnDestroy, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import {ObIAutocompleteInputOption, ObINavigationLink, ObISkipLink, ObMasterLayoutHeaderService, WINDOW} from '@oblique/oblique';
-import {Observable, Subject} from 'rxjs';
+import {
+	type ObIAutocompleteInputOption,
+	type ObINavigationLink,
+	type ObISkipLink,
+	ObMasterLayoutHeaderService,
+	WINDOW
+} from '@oblique/oblique';
+import {type Observable, Subject} from 'rxjs';
 import {filter, map, startWith, takeUntil} from 'rxjs/operators';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
 import {appNavigation} from './app-navigation';

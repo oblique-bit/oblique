@@ -1,12 +1,12 @@
 import {inject} from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import {UntypedFormControl, type UntypedFormGroup} from '@angular/forms';
+import type {MatPaginator} from '@angular/material/paginator';
+import type {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import {WINDOW} from '@oblique/oblique';
-import {Connectable, ReplaySubject, connectable} from 'rxjs';
+import {type Connectable, ReplaySubject, connectable} from 'rxjs';
 import {filter, map, startWith} from 'rxjs/operators';
 import {TableEditComponent} from './table-edit.component';
 

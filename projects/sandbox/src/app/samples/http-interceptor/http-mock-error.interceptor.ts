@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable, of, throwError} from 'rxjs';
+import {HttpErrorResponse, type HttpEvent, type HttpHandler, type HttpInterceptor, type HttpRequest} from '@angular/common/http';
+import {type Observable, of, throwError} from 'rxjs';
 import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
 
 @Injectable()

@@ -1,4 +1,4 @@
-import {ObEIcon, ObINavigationLink} from '@oblique/oblique';
+import {ObEIcon, type ObINavigationLink} from '@oblique/oblique';
 
 export const appNavigation: ObINavigationLink[] = [
 	{

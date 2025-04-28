@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Colors} from './palette.model';
+import type {Colors} from './palette.model';
 import {ObEColor} from '@oblique/oblique';
 
 @Component({

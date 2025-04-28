@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule, type Routes} from '@angular/router';
 
 import {ObUnknownRouteModule} from '@oblique/oblique';
 import {HomePageComponent} from './home/home.page';

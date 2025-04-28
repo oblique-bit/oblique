@@ -1,7 +1,7 @@
-import {AfterViewInit, Component, ElementRef, ViewChild, inject} from '@angular/core';
+import {type AfterViewInit, Component, ElementRef, ViewChild, inject} from '@angular/core';
 import {ObGlobalEventsService, obOutsideFilter} from '@oblique/oblique';
 import {map, scan} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Component({
 	selector: 'sb-utilities-sample',

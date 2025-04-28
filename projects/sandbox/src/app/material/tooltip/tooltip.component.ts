@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TooltipPosition} from '@angular/material/tooltip';
+import type {TooltipPosition} from '@angular/material/tooltip';
 
 @Component({
 	selector: 'sb-tooltip',

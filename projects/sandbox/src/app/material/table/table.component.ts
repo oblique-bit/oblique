@@ -1,11 +1,11 @@
-import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild, inject} from '@angular/core';
+import {type AfterViewInit, Component, type OnDestroy, type OnInit, ViewChild, inject} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
-import {AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {type AbstractControl, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 import {MatInput} from '@angular/material/input';
-import {Observable, ReplaySubject, Subject, combineLatest, share} from 'rxjs';
+import {type Observable, ReplaySubject, Subject, combineLatest, share} from 'rxjs';
 import {delay, filter, map, startWith, takeUntil, tap} from 'rxjs/operators';
-import {ObIPeriodicElement} from './table.model';
+import type {ObIPeriodicElement} from './table.model';
 import {EditMode, Mode, TableManager} from './table-manager';
 
 @Component({

@@ -1,7 +1,7 @@
-import {AfterViewInit, Component, OnDestroy, inject} from '@angular/core';
+import {type AfterViewInit, Component, type OnDestroy, inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ObSpinnerService} from '@oblique/oblique';
-import {ObIDialogData} from '../dialog.model';
+import type {ObIDialogData} from '../dialog.model';
 
 @Component({
 	selector: 'sb-example-dialog',

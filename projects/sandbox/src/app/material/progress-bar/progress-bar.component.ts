@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ThemePalette} from '@angular/material/core';
+import type {ThemePalette} from '@angular/material/core';
 
 @Component({
 	selector: 'sb-progress-bar',

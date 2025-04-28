@@ -1,5 +1,12 @@
-import {Component, OnInit, inject} from '@angular/core';
-import {AbstractControl, NgForm, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
+import {Component, type OnInit, inject} from '@angular/core';
+import {
+	type AbstractControl,
+	type NgForm,
+	UntypedFormBuilder,
+	type UntypedFormGroup,
+	type ValidationErrors,
+	type ValidatorFn
+} from '@angular/forms';
 import {ObNotificationService, ObSchemaValidationService} from '@oblique/oblique';
 import {of} from 'rxjs';
 

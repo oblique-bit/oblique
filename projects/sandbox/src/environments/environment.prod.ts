@@ -1,5 +1,5 @@
 import {ObEPamsEnvironment} from '@oblique/oblique';
-import {Environment} from '../app/app.component.model';
+import type {Environment} from '../app/app.component.model';
 
 export const environment: Environment = {
 	production: true,

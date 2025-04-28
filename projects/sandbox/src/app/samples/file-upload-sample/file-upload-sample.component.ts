@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObIFileDescription, ObIUploadEvent} from '@oblique/oblique';
+import type {ObIFileDescription, ObIUploadEvent} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-file-upload-sample',

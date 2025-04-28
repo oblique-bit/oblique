@@ -1,5 +1,5 @@
-import {Component, OnInit, inject} from '@angular/core';
-import {FormControl, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {Component, type OnInit, inject} from '@angular/core';
+import {FormControl, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sb-mandatory.sample',

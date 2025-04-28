@@ -1,4 +1,4 @@
-import {Component, Signal, inject} from '@angular/core';
+import {Component, type Signal, inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ObNavTreeItemModel} from '@oblique/oblique';

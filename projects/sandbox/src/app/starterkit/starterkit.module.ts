@@ -5,7 +5,7 @@ import {MatCheckbox} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltip} from '@angular/material/tooltip';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule, type Routes} from '@angular/router';
 import {ObButtonModule, ObExternalLinkModule, ObNavTreeModule} from '@oblique/oblique';
 import {NavPageComponent} from './nav-page/nav-page.component';
 import {TablePageComponent} from './table-page/table-page.component';
