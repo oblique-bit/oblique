@@ -51,8 +51,8 @@
 				</ng-container>
 
 				<input
-					placeholder="New tag..."
 					#tagInput
+					placeholder="New tag..."
 					[formControl]="tagsCtrl"
 					[matAutocomplete]="auto"
 					[matChipInputFor]="matChipGrid"
@@ -95,10 +95,10 @@
 			<fieldset>
 				<legend>Toggle features</legend>
 				<mat-list-item *ngIf="!showAutocompleteForm">
-					<mat-slide-toggle (click)="stacked = !stacked" matTooltip="Toggle stacked">Stack</mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle stacked" (click)="stacked = !stacked">Stack</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle (click)="showAutocompleteForm = !showAutocompleteForm" matTooltip="Toggle autocomplete"
+					<mat-slide-toggle matTooltip="Toggle autocomplete" (click)="showAutocompleteForm = !showAutocompleteForm"
 						>Autocomplete form</mat-slide-toggle
 					>
 				</mat-list-item>

@@ -3,7 +3,7 @@
 	<div column-right-content>
 		<h3>Logs</h3>
 		<div class="notification-sample-preview">
-			<div class="smaller" *ngFor="let log of logs">{{ log }}</div>
+			<div *ngFor="let log of logs" class="smaller">{{ log }}</div>
 		</div>
 	</div>
 	<ng-container column-main-content>
@@ -31,15 +31,15 @@
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>Title</mat-label>
-				<input matInput [(ngModel)]="notification.title" type="text" placeholder="Notification title..." />
+				<input matInput type="text" placeholder="Notification title..." [(ngModel)]="notification.title" />
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>Message</mat-label>
-				<input matInput [(ngModel)]="notification.text" type="text" placeholder="Notification text..." />
+				<input matInput type="text" placeholder="Notification text..." [(ngModel)]="notification.text" />
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>Timeout</mat-label>
-				<input matInput [(ngModel)]="notification.timeout" type="text" placeholder="Notification timeout..." />
+				<input matInput type="text" placeholder="Notification timeout..." [(ngModel)]="notification.timeout" />
 			</mat-form-field>
 			<mat-slide-toggle [(ngModel)]="notification.sticky">Sticky</mat-slide-toggle>
 		</fieldset>

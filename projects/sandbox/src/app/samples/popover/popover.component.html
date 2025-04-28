@@ -3,8 +3,10 @@
 	<ng-container column-main-content>
 		<div class="large-popover">
 			<button
+				*ngIf="toggleHandle === toggleTypeClick || toggleHandle === undefined"
 				type="button"
 				mat-raised-button
+				id="poptest"
 				[ngClass]="openPopoverPosition"
 				[obPopover]="popover"
 				[placement]="placement"
@@ -12,19 +14,17 @@
 				[closeOnlyOnToggle]="closeOnlyOnToggle"
 				[appendToBody]="appendToBody"
 				(visibilityChange)="setVisibility($event)"
-				id="poptest"
-				*ngIf="toggleHandle === toggleTypeClick || toggleHandle === undefined"
 			>
 				{{ popoverVisible ? "Close" : "Open" }} Popover
 			</button>
 			<p
+				*ngIf="toggleHandle === toggleTypeHover"
 				tabindex="0"
 				[ngClass]="openPopoverPosition"
 				[obPopover]="popover"
 				[placement]="placement"
 				[toggleHandle]="toggleHandle"
 				(visibilityChange)="setVisibility($event)"
-				*ngIf="toggleHandle === toggleTypeHover"
 			>
 				{{ popoverVisible ? "Leave to close" : "Hover to open" }} the Popover
 			</p>

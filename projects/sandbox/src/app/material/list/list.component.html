@@ -1,7 +1,7 @@
 <h2 class="page-header">List</h2>
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
-		<mat-list role="list" *ngIf="listType === 'list-without-icon'">
+		<mat-list *ngIf="listType === 'list-without-icon'" role="list">
 			<mat-list-item *ngFor="let item of contentForList" role="listitem">
 				<h3 matListItemTitle>{{ item.line1 }}</h3>
 				<span matListItemLine>{{ item.line2 }}</span>
@@ -9,7 +9,7 @@
 			</mat-list-item>
 		</mat-list>
 
-		<mat-list role="list" *ngIf="listType === 'list-with-icon'">
+		<mat-list *ngIf="listType === 'list-with-icon'" role="list">
 			<mat-list-item *ngFor="let item of contentForList" role="listitem">
 				<mat-icon matListItemIcon [svgIcon]="item.icon" />
 				<h3 matListItemTitle>{{ item.line1 }}</h3>
@@ -18,7 +18,7 @@
 			</mat-list-item>
 		</mat-list>
 
-		<mat-selection-list role="list" *ngIf="listType === 'selection-list-without-icon'" [disabled]="isDisabled">
+		<mat-selection-list *ngIf="listType === 'selection-list-without-icon'" role="list" [disabled]="isDisabled">
 			<mat-list-option *ngFor="let item of contentForList" role="listitem" [checkboxPosition]="invertIconAndCheckbox ? 'before' : 'after'">
 				<h3 matListItemTitle>{{ item.line1 }}</h3>
 				<span matListItemLine>{{ item.line2 }}</span>
@@ -26,7 +26,7 @@
 			</mat-list-option>
 		</mat-selection-list>
 
-		<mat-selection-list role="list" *ngIf="listType === 'selection-list-with-icon'" [disabled]="isDisabled">
+		<mat-selection-list *ngIf="listType === 'selection-list-with-icon'" role="list" [disabled]="isDisabled">
 			<mat-list-option *ngFor="let item of contentForList" role="listitem" [checkboxPosition]="invertIconAndCheckbox ? 'before' : 'after'">
 				<mat-icon matListItemIcon [svgIcon]="item.icon" />
 				<h3 matListItemTitle>{{ item.line1 }}</h3>
@@ -40,7 +40,7 @@
 		<fieldset>
 			<legend>Type of list</legend>
 			<mat-radio-group [(ngModel)]="listType">
-				<mat-radio-button [value]="type" *ngFor="let type of listTypes">
+				<mat-radio-button *ngFor="let type of listTypes" [value]="type">
 					{{ type | titlecase }}
 				</mat-radio-button>
 			</mat-radio-group>
@@ -48,8 +48,8 @@
 		<fieldset>
 			<legend>Variants</legend>
 			<div class="form-controls">
-				<mat-slide-toggle [(ngModel)]="isDisabled" [disabled]="!listType.includes('selection')">Disabled</mat-slide-toggle>
-				<mat-slide-toggle [(ngModel)]="invertIconAndCheckbox" [disabled]="!listType.includes('selection')"
+				<mat-slide-toggle [disabled]="!listType.includes('selection')" [(ngModel)]="isDisabled">Disabled</mat-slide-toggle>
+				<mat-slide-toggle [disabled]="!listType.includes('selection')" [(ngModel)]="invertIconAndCheckbox"
 					>Invert icon and checkbox</mat-slide-toggle
 				>
 			</div>

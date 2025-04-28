@@ -31,7 +31,7 @@
 		</tr>
 		<tr>
 			<td>
-				<mat-slide-toggle (toggleChange)="onMandatoryToggleChange()" required>Mandatory</mat-slide-toggle>
+				<mat-slide-toggle required (toggleChange)="onMandatoryToggleChange()">Mandatory</mat-slide-toggle>
 				<mat-error *ngIf="!isMandatoryChecked"
 					>I am an error message that is shown when the Mandatory Slide Toggle is not checked!</mat-error
 				>

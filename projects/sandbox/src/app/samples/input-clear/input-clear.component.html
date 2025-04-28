@@ -7,7 +7,7 @@
 
 <mat-form-field>
 	<mat-label>Minlength with input clear</mat-label>
-	<input type="text" matInput placeholder="Minimum length" minlength="3" [(ngModel)]="minlengthModel" #minlengthControl="ngModel" />
+	<input #minlengthControl="ngModel" type="text" matInput placeholder="Minimum length" minlength="3" [(ngModel)]="minlengthModel" />
 	<button type="button" [obInputClear]="minlengthControl">
 		<mat-icon svgIcon="cancel-circle" />
 		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
@@ -17,12 +17,12 @@
 <mat-form-field>
 	<mat-label>Minlength with input clear and prefix / suffix</mat-label>
 	<input
+		#minlengthPrefixSuffixModelControl="ngModel"
 		type="text"
 		matInput
 		placeholder="Minimum length with prefix / suffix"
 		minlength="3"
 		[(ngModel)]="minlengthPrefixSuffixModel"
-		#minlengthPrefixSuffixModelControl="ngModel"
 	/>
 	<button type="button" [obInputClear]="minlengthPrefixSuffixModelControl">
 		<mat-icon svgIcon="cancel-circle" />
@@ -40,7 +40,7 @@
 
 	<mat-form-field>
 		<mat-label>Mandatory LG with input clear</mat-label>
-		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatoryLgModel" #mandatoryLgControl="ngModel" />
+		<input #mandatoryLgControl="ngModel" type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatoryLgModel" />
 		<button type="button" [obInputClear]="mandatoryLgControl">
 			<mat-icon svgIcon="cancel-circle" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
@@ -56,7 +56,7 @@
 
 	<mat-form-field>
 		<mat-label>Mandatory SM with input clear</mat-label>
-		<input type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatorySmModel" #mandatorySmControl="ngModel" />
+		<input #mandatorySmControl="ngModel" type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatorySmModel" />
 		<button type="button" [obInputClear]="mandatorySmControl">
 			<mat-icon svgIcon="cancel-circle" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
@@ -73,7 +73,7 @@
 
 <mat-form-field>
 	<mat-label>Datepicker with input clear</mat-label>
-	<input matInput [matDatepicker]="datepickerWithInputClear" #datepickerControl="ngModel" [(ngModel)]="datepickerModel" />
+	<input #datepickerControl="ngModel" matInput [matDatepicker]="datepickerWithInputClear" [(ngModel)]="datepickerModel" />
 	<mat-datepicker-toggle matSuffix [for]="datepickerWithInputClear" />
 	<mat-datepicker #datepickerWithInputClear />
 	<button type="button" [obInputClear]="datepickerControl" [datePickerRef]="datepickerWithInputClear">
@@ -110,7 +110,7 @@
 <div>
 	<mat-form-field>
 		<mat-label>HTML test input</mat-label>
-		<input type="text" matInput #htmlControl />
+		<input #htmlControl type="text" matInput />
 		<button type="button" [obInputClear]="htmlControl">
 			<mat-icon svgIcon="cancel-circle" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>

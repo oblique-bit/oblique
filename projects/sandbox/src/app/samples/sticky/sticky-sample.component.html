@@ -1,6 +1,6 @@
 <h2 class="page-header">{{ "i18n.routes.samples.sticky.title" | translate }}</h2>
 <ob-column-layout [left]="false" [style.height]="parentHeight + 'px'">
-	<ob-sticky [headerSize]="headerSize" [footerSize]="footerSize" [noLayout]="noLayout" column-main-content>
+	<ob-sticky column-main-content [headerSize]="headerSize" [footerSize]="footerSize" [noLayout]="noLayout">
 		<ng-template #obStickyHeader *ngIf="stickyHeader">
 			<div role="group" aria-label="Basic example">
 				<button type="button">Left</button>
@@ -37,14 +37,14 @@
 		<mat-slide-toggle [(ngModel)]="stickyHeader">Sticky header?</mat-slide-toggle>
 		<mat-form-field>
 			<mat-label>Header size</mat-label>
-			<mat-select [(ngModel)]="headerSize" [disabled]="!stickyHeader">
+			<mat-select [disabled]="!stickyHeader" [(ngModel)]="headerSize">
 				<mat-option *ngFor="let size of sizes" [value]="size.num">{{ size.name }}</mat-option>
 			</mat-select>
 		</mat-form-field>
 		<mat-slide-toggle [(ngModel)]="stickyFooter">Sticky footer?</mat-slide-toggle>
 		<mat-form-field>
 			<mat-label>Footer size</mat-label>
-			<mat-select [(ngModel)]="headerSize" [disabled]="!stickyFooter">
+			<mat-select [disabled]="!stickyFooter" [(ngModel)]="headerSize">
 				<mat-option *ngFor="let size of sizes" [value]="size.num">{{ size.name }}</mat-option>
 			</mat-select>
 		</mat-form-field>

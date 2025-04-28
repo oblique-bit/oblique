@@ -2,7 +2,7 @@
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
 		<p>
-			<span [matBadge]="badgeContent" matBadgeOverlap="false" [matBadgePosition]="position" [matBadgeColor]="color">Text with a badge</span>
+			<span matBadgeOverlap="false" [matBadge]="badgeContent" [matBadgePosition]="position" [matBadgeColor]="color">Text with a badge</span>
 		</p>
 		<p>
 			Button with a badge
@@ -19,7 +19,7 @@
 		</p>
 		<p>
 			Icon with a badge
-			<mat-icon [matBadge]="badgeContent" [matBadgePosition]="position" [matBadgeColor]="color" svgIcon="home" />
+			<mat-icon svgIcon="home" [matBadge]="badgeContent" [matBadgePosition]="position" [matBadgeColor]="color" />
 		</p>
 		<p>
 			Badge overlapping the next element

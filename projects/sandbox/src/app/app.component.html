@@ -1,9 +1,9 @@
 <ob-master-layout
+	version="v12.2.3"
 	[skipLinks]="skipLinks"
 	[navigation]="navigation"
 	[collapseBreakpoint]="nav.collapseBreakpoint()"
 	(navigationChanged)="updateNavigation($event)"
-	version="v12.2.3"
 >
 	<ng-container obHeaderTitle>Oblique</ng-container>
 	<ng-template #obHeaderControl>
@@ -27,17 +27,17 @@
 			type="button"
 			obOffCanvasToggle
 			matTooltip="Toggle Off-Canvas"
-			(click)="offCanvasOpen = !offCanvasOpen"
 			tabindex="0"
 			mat-icon-button
 			obButton="tertiary"
 			[class.rotate180]="!offCanvasOpen"
+			(click)="offCanvasOpen = !offCanvasOpen"
 		>
 			<mat-icon dropdown-toggle svgIcon="login" />
 		</button>
 	</ng-template>
 	<ng-template #obHeaderControl>
-		<button type="button" mat-icon-button obButton="tertiary" [obPopover]="languageButton" matTooltip="Open example popover">
+		<button type="button" mat-icon-button obButton="tertiary" matTooltip="Open example popover" [obPopover]="languageButton">
 			<mat-icon svgIcon="cog" />
 		</button>
 		<ng-template #languageButton>

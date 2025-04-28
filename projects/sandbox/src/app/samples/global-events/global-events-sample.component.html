@@ -20,7 +20,7 @@
 	</dl>
 
 	<h3>ObOutsideFilter</h3>
-	<button type="button" #outsideClick mat-button obButton="primary">Click on this buttons are ignored</button>
+	<button #outsideClick type="button" mat-button obButton="primary">Click on this buttons are ignored</button>
 	<ul>
 		<li *ngFor="let event of events$ | async">{{ event }}</li>
 	</ul>

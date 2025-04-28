@@ -3,11 +3,11 @@
 	<section column-main-content>
 		<ng-container *ngIf="isFromControl; else ngModelBinding">
 			<ob-autocomplete
-				(selectedOptionChange)="showSelection($event)"
-				[autocompleteOptions]="visibleOptionList"
 				filterRegexFlag="gi"
+				[autocompleteOptions]="visibleOptionList"
 				[formControl]="formControl"
 				[optionIconPosition]="optionIconPosition"
+				(selectedOptionChange)="showSelection($event)"
 			/>
 			<label>ReactiveForms</label>
 			<code>
@@ -20,11 +20,11 @@
 
 		<ng-template #ngModelBinding>
 			<ob-autocomplete
-				(selectedOptionChange)="showSelection($event)"
-				[(ngModel)]="searchText"
-				[autocompleteOptions]="visibleOptionList"
 				filterRegexFlag="gi"
+				[autocompleteOptions]="visibleOptionList"
 				[optionIconPosition]="optionIconPosition"
+				[(ngModel)]="searchText"
+				(selectedOptionChange)="showSelection($event)"
 			/>
 			<label>ngModel snippet:</label>
 			<code>
@@ -45,9 +45,9 @@
 		<fieldset>
 			<legend>Example data options</legend>
 			<mat-radio-group
-				(change)="updateVisibleOptionList()"
-				[(ngModel)]="listType"
 				aria-label="Select example data is grouped or simple options"
+				[(ngModel)]="listType"
+				(change)="updateVisibleOptionList()"
 			>
 				<mat-radio-button
 					*ngFor="
@@ -68,7 +68,7 @@
 		</fieldset>
 		<fieldset>
 			<legend>Icon position in options</legend>
-			<mat-radio-group [(ngModel)]="optionIconPosition" aria-label="Select icon position">
+			<mat-radio-group aria-label="Select icon position" [(ngModel)]="optionIconPosition">
 				<mat-radio-button
 					*ngFor="
 						let radio of [
@@ -84,7 +84,7 @@
 		</fieldset>
 		<fieldset>
 			<legend>Disable</legend>
-			<mat-radio-group (change)="toggleDisabledState($event.value)" [(ngModel)]="isDisabled" aria-label="Disable">
+			<mat-radio-group aria-label="Disable" [(ngModel)]="isDisabled" (change)="toggleDisabledState($event.value)">
 				<mat-radio-button
 					*ngFor="
 						let radio of [
@@ -99,7 +99,7 @@
 		</fieldset>
 		<fieldset>
 			<legend>Disable options in list</legend>
-			<mat-radio-group (change)="disableOptions($event.value)" [(ngModel)]="areDisabled" aria-label="Select icon position">
+			<mat-radio-group aria-label="Select icon position" [(ngModel)]="areDisabled" (change)="disableOptions($event.value)">
 				<mat-radio-button
 					*ngFor="
 						let radio of [
@@ -114,7 +114,7 @@
 		</fieldset>
 		<fieldset>
 			<legend>Forms or ReactiveForms</legend>
-			<mat-radio-group [(ngModel)]="isFromControl" aria-label="Select if Forms or ReactiveForms used in example">
+			<mat-radio-group aria-label="Select if Forms or ReactiveForms used in example" [(ngModel)]="isFromControl">
 				<mat-radio-button
 					*ngFor="
 						let radio of [
@@ -131,7 +131,7 @@
 			<legend>Pattern to highlight options</legend>
 			<mat-form-field>
 				<mat-label>Pattern string</mat-label>
-				<input [formControl]="patternControl" pattern=".*textToFind.*" matInput type="text" />
+				<input pattern=".*textToFind.*" matInput type="text" [formControl]="patternControl" />
 				<mat-error *ngIf="patternControl?.errors && patternControl.hasError('pattern')">Should have textToFind in pattern </mat-error>
 			</mat-form-field>
 		</fieldset>

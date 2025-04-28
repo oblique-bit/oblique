@@ -3,7 +3,7 @@
 <h3>Controls</h3>
 <fieldset>
 	<legend>Mandatory parameters</legend>
-	<mat-slide-toggle [(ngModel)]="messageWithParams" matTooltip="Simple key or translation key with parameters"
+	<mat-slide-toggle matTooltip="Simple key or translation key with parameters" [(ngModel)]="messageWithParams"
 		>Translation key with parameters</mat-slide-toggle
 	>
 	<mat-form-field *ngIf="!messageWithParams">
@@ -13,41 +13,41 @@
 	<div *ngIf="messageWithParams">
 		<mat-form-field>
 			<mat-label>Message key</mat-label>
-			<input matInput [(ngModel)]="messageKey" disabled type="text" />
+			<input matInput disabled type="text" [(ngModel)]="messageKey" />
 			<mat-hint ngNonBindable>This {{ message }} do accepts 2 {{ parameters }} .</mat-hint>
 		</mat-form-field>
 		<mat-form-field>
 			<mat-label>"message" parameter</mat-label>
-			<input matInput [(ngModel)]="messageParams.message" type="text" />
+			<input matInput type="text" [(ngModel)]="messageParams.message" />
 		</mat-form-field>
 		<mat-form-field>
 			<mat-label>"parameters" parameter</mat-label>
-			<input matInput [(ngModel)]="messageParams.parameters" type="text" />
+			<input matInput type="text" [(ngModel)]="messageParams.parameters" />
 		</mat-form-field>
 	</div>
 </fieldset>
 <fieldset>
 	<legend>Optional parameters</legend>
-	<mat-slide-toggle [(ngModel)]="titleWithParams" matTooltip="Simple key or translation key with parameters"
+	<mat-slide-toggle matTooltip="Simple key or translation key with parameters" [(ngModel)]="titleWithParams"
 		>Translation key with parameters</mat-slide-toggle
 	>
 	<mat-form-field *ngIf="!titleWithParams">
 		<mat-label>Title</mat-label>
-		<input matInput [(ngModel)]="title" type="text" placeholder="Notification title..." />
+		<input matInput type="text" placeholder="Notification title..." [(ngModel)]="title" />
 	</mat-form-field>
 	<div *ngIf="titleWithParams">
 		<mat-form-field>
 			<mat-label>Message key</mat-label>
-			<input matInput [(ngModel)]="titleKey" disabled type="text" placeholder="Notification title..." />
+			<input matInput disabled type="text" placeholder="Notification title..." [(ngModel)]="titleKey" />
 			<mat-hint ngNonBindable>This {{ title }} do accepts 2 {{ parameters }} .</mat-hint>
 		</mat-form-field>
 		<mat-form-field>
 			<mat-label>"title" parameter</mat-label>
-			<input matInput [(ngModel)]="titleParams.title" type="text" />
+			<input matInput type="text" [(ngModel)]="titleParams.title" />
 		</mat-form-field>
 		<mat-form-field>
 			<mat-label>"parameters" parameter</mat-label>
-			<input matInput [(ngModel)]="titleParams.parameters" type="text" />
+			<input matInput type="text" [(ngModel)]="titleParams.parameters" />
 		</mat-form-field>
 	</div>
 	<mat-form-field>
@@ -77,20 +77,20 @@
 			<mat-label>Timeout</mat-label>
 			<input
 				matInput
-				[(ngModel)]="timeout"
 				type="number"
 				placeholder="Notification timeout..."
 				matTooltip="The duration delay to wait before closing non-sticky notifications."
+				[(ngModel)]="timeout"
 			/>
 		</mat-form-field>
 	</div>
 </fieldset>
 <div class="form-actions">
-	<button obButton="tertiary" mat-button type="button" (click)="clear()" matTooltip="Clears notifications from current selected channel.">
+	<button obButton="tertiary" mat-button type="button" matTooltip="Clears notifications from current selected channel." (click)="clear()">
 		<mat-icon svgIcon="trash" />
 		<span>Clear</span>
 	</button>
-	<button obButton="tertiary" mat-button type="button" (click)="clearAllChannels()" matTooltip="Clears notifications from all channels.">
+	<button obButton="tertiary" mat-button type="button" matTooltip="Clears notifications from all channels." (click)="clearAllChannels()">
 		<mat-icon svgIcon="trash" />
 		<span>Clear all</span>
 	</button>

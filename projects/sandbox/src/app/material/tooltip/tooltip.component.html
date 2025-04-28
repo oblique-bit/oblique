@@ -2,6 +2,7 @@
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
 		<button
+			#tooltip="matTooltip"
 			type="button"
 			mat-button
 			obButton
@@ -10,7 +11,6 @@
 			[matTooltipDisabled]="disabled"
 			[matTooltipShowDelay]="showDelay"
 			[matTooltipHideDelay]="hideDelay"
-			#tooltip="matTooltip"
 		>
 			Hover to see Tooltip
 		</button>
@@ -40,19 +40,19 @@
 			<fieldset>
 				<legend>Toggle features</legend>
 				<mat-list-item>
-					<mat-slide-toggle (click)="toggleDisabled()" matTooltip="Toggle disabled state">Disabled</mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle disabled state" (click)="toggleDisabled()">Disabled</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle (click)="toggleShowDelay()" matTooltip="Toggle show delay">Show delay (1s)</mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle show delay" (click)="toggleShowDelay()">Show delay (1s)</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle (click)="toggleHideDelay()" matTooltip="Toggle hide delay">Hide delay (1s)</mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle hide delay" (click)="toggleHideDelay()">Hide delay (1s)</mat-slide-toggle>
 				</mat-list-item>
 			</fieldset>
 			<fieldset>
 				<legend>Manual controls</legend>
 				<mat-list-item>
-					<mat-slide-toggle (click)="toggleTooltip(tooltip)" matTooltip="Toggle show/hide">Show</mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle show/hide" (click)="toggleTooltip(tooltip)">Show</mat-slide-toggle>
 				</mat-list-item>
 			</fieldset>
 		</mat-list>

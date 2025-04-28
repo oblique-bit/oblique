@@ -19,7 +19,7 @@
 				</mat-card-header>
 				<mat-card-content *ngIf="contentVisible">
 					<p>The default card is only a presentational artifact, without any form of interaction except for eventual buttons inside.</p>
-					<div class="ob-signature" *ngIf="signatureVisible">
+					<div *ngIf="signatureVisible" class="ob-signature">
 						<span>OFIT</span>
 						<span>Last login 20.07.2022</span>
 					</div>
@@ -46,7 +46,7 @@
 				</mat-card-header>
 				<mat-card-content *ngIf="contentVisible">
 					<p>This card shows a small image.</p>
-					<div class="ob-signature" *ngIf="signatureVisible">
+					<div *ngIf="signatureVisible" class="ob-signature">
 						<span>OFIT</span>
 						<span>Last login 20.07.2022</span>
 					</div>
@@ -74,7 +74,7 @@
 					</mat-card-header>
 					<mat-card-content *ngIf="contentVisible">
 						<p>The Button Card is a card wrapped in a button. The Whole card is clickable</p>
-						<div class="ob-signature" *ngIf="signatureVisible">
+						<div *ngIf="signatureVisible" class="ob-signature">
 							<span>OFIT</span>
 							<span>Last login 20.07.2022</span>
 						</div>
@@ -99,14 +99,14 @@
 					</mat-card-header>
 					<mat-card-content *ngIf="contentVisible">
 						<p>Same concept as the Button Card, but wrapped in a link.</p>
-						<div class="ob-signature" *ngIf="signatureVisible">
+						<div *ngIf="signatureVisible" class="ob-signature">
 							<span>OFIT</span>
 							<span>Last login 20.07.2022</span>
 						</div>
 					</mat-card-content>
 				</mat-card>
 			</a>
-			<mat-card [attr.disabled]="disabled ? '' : undefined" obSelectable>
+			<mat-card obSelectable [attr.disabled]="disabled ? '' : undefined">
 				<img
 					*ngIf="pictureVisible"
 					mat-card-image
@@ -123,13 +123,13 @@
 				</mat-card-header>
 				<mat-card-content *ngIf="contentVisible">
 					<p>A person in a space suit holding luminous balloons</p>
-					<div class="ob-signature" *ngIf="signatureVisible">
+					<div *ngIf="signatureVisible" class="ob-signature">
 						<span>OFIT</span>
 						<span>Last login 20.07.2022</span>
 					</div>
 				</mat-card-content>
 			</mat-card>
-			<mat-card [attr.disabled]="disabled ? '' : undefined" obSelectable>
+			<mat-card obSelectable [attr.disabled]="disabled ? '' : undefined">
 				<img
 					*ngIf="pictureVisible"
 					mat-card-image
@@ -146,7 +146,7 @@
 				</mat-card-header>
 				<mat-card-content *ngIf="contentVisible">
 					<p>A person in a space suit holding luminous balloons</p>
-					<div class="ob-signature" *ngIf="signatureVisible">
+					<div *ngIf="signatureVisible" class="ob-signature">
 						<span>OFIT</span>
 						<span>Last login 20.07.2022</span>
 					</div>
@@ -160,39 +160,39 @@
 			<fieldset>
 				<legend>Toggle features</legend>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="toggleAvatarVisibility()" matTooltip="Toggle avatar"> Avatar </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle avatar" [checked]="true" (click)="toggleAvatarVisibility()"> Avatar </mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="toggleTitleVisibility()" matTooltip="Toggle title"> Title </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle title" [checked]="true" (click)="toggleTitleVisibility()"> Title </mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="toggleSubtitleVisibility()" matTooltip="Toggle subtitle">Subtitle </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle subtitle" [checked]="true" (click)="toggleSubtitleVisibility()">Subtitle </mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="toggleHeaderVisibility()" matTooltip="Toggle header"> Header </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle header" [checked]="true" (click)="toggleHeaderVisibility()"> Header </mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="togglePictureVisibility()" matTooltip="Toggle picture"> Picture </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle picture" [checked]="true" (click)="togglePictureVisibility()"> Picture </mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="toggleContentVisibility()" matTooltip="Toggle content"> Content </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle content" [checked]="true" (click)="toggleContentVisibility()"> Content </mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="toggleActionsVisibility()" matTooltip="Toggle actions"> Actions </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle actions" [checked]="true" (click)="toggleActionsVisibility()"> Actions </mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="toggleCheckboxMode()" matTooltip="Toggle checkbox mode">
+					<mat-slide-toggle matTooltip="Toggle checkbox mode" [checked]="true" (click)="toggleCheckboxMode()">
 						Checkbox Mode
 					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="toggleAlertVisibility()" matTooltip="Toggle alert"> Alert </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle alert" [checked]="true" (click)="toggleAlertVisibility()"> Alert </mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="false" (click)="toggleDisabledMode()" matTooltip="Toggle disabled mode"> Disabled </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle disabled mode" [checked]="false" (click)="toggleDisabledMode()"> Disabled </mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="toggleSignature()" matTooltip="Toggle signature"> Signature </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle signature" [checked]="true" (click)="toggleSignature()"> Signature </mat-slide-toggle>
 				</mat-list-item>
 			</fieldset>
 		</mat-list>

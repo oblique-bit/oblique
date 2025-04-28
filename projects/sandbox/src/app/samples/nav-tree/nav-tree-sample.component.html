@@ -4,8 +4,8 @@
 		<ob-nav-tree
 			#obNavTree
 			treeAriaLabelledBy="navTreeSampleTitle"
-			[items]="items()"
 			prefix="nav-tree-sample"
+			[items]="items()"
 			[filterPattern]="filter.pattern"
 			[hasFilter]="hasEmbeddedFilter"
 		/>
@@ -32,7 +32,7 @@
 			<legend>Options</legend>
 			<mat-form-field>
 				<mat-label>Filter</mat-label>
-				<input type="text" matInput [(ngModel)]="filter.pattern" #obFilterBox />
+				<input #obFilterBox type="text" matInput [(ngModel)]="filter.pattern" />
 			</mat-form-field>
 			<mat-slide-toggle [(ngModel)]="hasEmbeddedFilter">Embedded filter?</mat-slide-toggle>
 		</fieldset>

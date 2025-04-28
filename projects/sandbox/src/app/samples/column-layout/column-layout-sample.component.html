@@ -1,6 +1,6 @@
 <h2>{{ "i18n.routes.samples.column-layout.title" | translate }}</h2>
 <ob-column-layout [left]="false" [right]="true">
-	<ob-column-layout [left]="left" [right]="right" [noLayout]="noLayout" [wider]="wider" #obColumnLayout column-main-content>
+	<ob-column-layout #obColumnLayout column-main-content [left]="left" [right]="right" [noLayout]="noLayout" [wider]="wider">
 		<ng-container column-left-content>
 			<h3 class="nav-header-title">Left Column</h3>
 		</ng-container>
@@ -77,11 +77,11 @@
 		<h3>Controls</h3>
 		<div>
 			<mat-checkbox [(ngModel)]="left">Left column?</mat-checkbox>
-			<button type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()" *ngIf="left">Toggle</button>
+			<button *ngIf="left" type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()">Toggle</button>
 		</div>
 		<div>
 			<mat-checkbox [(ngModel)]="right">Right column?</mat-checkbox>
-			<button type="button" obButton mat-button (click)="obColumnLayout.toggleRight()" *ngIf="right">Toggle</button>
+			<button *ngIf="right" type="button" obButton mat-button (click)="obColumnLayout.toggleRight()">Toggle</button>
 		</div>
 		<div>
 			<mat-checkbox [(ngModel)]="overflow">Overflow</mat-checkbox>

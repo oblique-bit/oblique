@@ -2,7 +2,7 @@
 <ng-container *ngFor="let group of colorGroups">
 	<h2>{{ group.name }} colors</h2>
 	<section class="colors">
-		<div class="color" [ngStyle]="{ color: color.contrast, backgroundColor: color.color }" *ngFor="let color of group.colors">
+		<div *ngFor="let color of group.colors" class="color" [ngStyle]="{ color: color.contrast, backgroundColor: color.color }">
 			<span>{{ color.color }}</span>
 			<span>{{ color.name }}</span>
 			<span *ngIf="color.details">{{ color.details }}</span>

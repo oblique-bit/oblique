@@ -18,25 +18,25 @@
 					Characteristics of periodical elements
 				</caption>
 				<ng-container [matColumnDef]="COLUMN_NAME_SELECT">
-					<td mat-cell *matHeaderCellDef>
+					<td *matHeaderCellDef mat-cell>
 						<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{ tableManager }" />
 					</td>
-					<td mat-cell *matCellDef="let row">
+					<td *matCellDef="let row" mat-cell>
 						<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{ row, tableManager }" />
 					</td>
 				</ng-container>
 
 				<ng-container *ngFor="let column of columns">
 					<ng-container [matColumnDef]="column.key">
-						<th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>
+						<th *matHeaderCellDef scope="col" mat-header-cell mat-sort-header>
 							<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{ column }" />
 						</th>
 						@if (column.name === "Name") {
-							<th scope="row" mat-header-cell *matCellDef="let element" [attr.data-title]="column.name">
+							<th *matCellDef="let element" scope="row" mat-header-cell [attr.data-title]="column.name">
 								<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
 							</th>
 						} @else {
-							<td mat-cell *matCellDef="let element" [attr.data-title]="column.name">
+							<td *matCellDef="let element" mat-cell [attr.data-title]="column.name">
 								<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
 							</td>
 						}
@@ -44,16 +44,16 @@
 				</ng-container>
 
 				<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
-					<td mat-cell *matHeaderCellDef>
+					<td *matHeaderCellDef mat-cell>
 						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager, isInTable: true }" />
 					</td>
-					<td mat-cell *matCellDef="let element" [attr.data-title]="'Actions'">
+					<td *matCellDef="let element" mat-cell [attr.data-title]="'Actions'">
 						<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{ tableManager, element, editMode }" />
 					</td>
 				</ng-container>
 
-				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-				<tr mat-row *matRowDef="let row; columns: displayedColumns" [class.edit-mode]="row.editMode !== editMode.NONE"></tr>
+				<tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+				<tr *matRowDef="let row; columns: displayedColumns" mat-row [class.edit-mode]="row.editMode !== editMode.NONE"></tr>
 			</table>
 
 			<mat-table
@@ -75,11 +75,11 @@
 
 				<ng-container *ngFor="let column of columns">
 					<ng-container [matColumnDef]="column.key">
-						<mat-header-cell scope="col" *matHeaderCellDef mat-sort-header>
+						<mat-header-cell *matHeaderCellDef scope="col" mat-sort-header>
 							<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{ column }" />
 						</mat-header-cell>
 						@if (column.name === "Name") {
-							<mat-header-cell scope="row" *matCellDef="let element">
+							<mat-header-cell *matCellDef="let element" scope="row">
 								<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
 							</mat-header-cell>
 						} @else {
@@ -103,9 +103,9 @@
 				<mat-row *cdkRowDef="let row; columns: displayedColumns" [class.edit-mode]="row.editMode !== editMode.NONE" />
 			</mat-table>
 			<mat-paginator
+				aria-label='Select page of "Characteristics of periodical elements"'
 				[showFirstLastButtons]="true"
 				[pageSizeOptions]="[10, 5, 2]"
-				aria-label='Select page of "Characteristics of periodical elements"'
 			/>
 
 			<ng-template #selectHeader let-tableManager="tableManager">
@@ -137,7 +137,7 @@
 				<ng-template #cellEditMode>
 					<mat-form-field obErrorMessages>
 						<mat-label>{{ column.name }}</mat-label>
-						<input [type]="column.type" matInput [formControlName]="column.key" (keyup.enter)="tableManager.saveRow(element)" />
+						<input matInput [type]="column.type" [formControlName]="column.key" (keyup.enter)="tableManager.saveRow(element)" />
 						<mat-error />
 					</mat-form-field>
 				</ng-template>
@@ -226,8 +226,8 @@
 			<fieldset>
 				<legend class="mat-control">Edition mode</legend>
 				<mat-radio-group formControlName="mode" class="form-elements">
-					<mat-radio-button [value]="mode.DIALOG" matTooltip="Edit row in a nice dialog">Dialog</mat-radio-button>
-					<mat-radio-button [value]="mode.FORM" matTooltip="Edit row directly in the table">Editable</mat-radio-button>
+					<mat-radio-button matTooltip="Edit row in a nice dialog" [value]="mode.DIALOG">Dialog</mat-radio-button>
+					<mat-radio-button matTooltip="Edit row directly in the table" [value]="mode.FORM">Editable</mat-radio-button>
 				</mat-radio-group>
 			</fieldset>
 			<fieldset>
