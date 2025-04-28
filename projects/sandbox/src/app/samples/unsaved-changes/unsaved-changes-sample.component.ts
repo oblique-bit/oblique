@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, ViewChild, inject} from '@angular/core';
-import {type NgModelGroup, UntypedFormBuilder} from '@angular/forms';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {UntypedFormBuilder} from '@angular/forms';
 
 @Component({
 	selector: 'sb-unsaved-changes',
@@ -12,6 +12,4 @@ export class UnsavedChangesSampleComponent {
 	tabModels = {
 		standAloneTemplate: {number: null, text: null, integer: null}
 	};
-
-	@ViewChild('form1') form1 = {} as NgModelGroup;
 }

@@ -1,4 +1,4 @@
-import {Component, ViewChild, inject} from '@angular/core';
+import {Component, inject, viewChild} from '@angular/core';
 import {FormGroupDirective, NgForm, UntypedFormBuilder, Validators} from '@angular/forms';
 import {ObNotificationService} from '@oblique/oblique';
 
@@ -17,8 +17,8 @@ export class NestedFormSampleComponent {
 		parent: '',
 		child: undefined
 	};
-	@ViewChild(FormGroupDirective) reactiveForm: FormGroupDirective;
-	@ViewChild(NgForm) templateForm: NgForm;
+	readonly reactiveForm = viewChild(FormGroupDirective);
+	readonly templateForm = viewChild(NgForm);
 	private readonly notification = inject(ObNotificationService);
 
 	validateForm(valid: boolean): void {

@@ -1,4 +1,4 @@
-import {Component, type ElementRef, type OnInit, ViewChild} from '@angular/core';
+import {Component, type ElementRef, type OnInit, viewChild} from '@angular/core';
 import {COMMA, ENTER, SEMICOLON} from '@angular/cdk/keycodes';
 import {UntypedFormControl} from '@angular/forms';
 import type {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
@@ -27,15 +27,15 @@ export class ChipsComponent implements OnInit {
 	readonly variants: string[] = [null, 'info', 'success', 'warning', 'error'];
 	readonly types: string[] = ['mat-chip-row', 'mat-chip-option', 'mat-chip'];
 
-	@ViewChild('tagInput', {static: false}) private readonly tagInput: ElementRef<HTMLInputElement>;
-	@ViewChild('auto', {static: false}) private readonly matAutocomplete: MatAutocomplete;
+	readonly tagInput = viewChild<ElementRef<HTMLInputElement>>('tagInput');
+	readonly matAutocomplete = viewChild<MatAutocomplete>('auto');
 
 	ngOnInit(): void {
 		this.filteredTags = this.tagsCtrl.valueChanges.pipe(map((tag: string | null) => (tag ? this.filter(tag) : this.remainingTags())));
 	}
 
 	add(event: MatChipInputEvent): void {
-		if (!this.matAutocomplete.isOpen) {
+		if (!this.matAutocomplete().isOpen) {
 			const {input, value} = event;
 
 			if ((value || '').trim()) {
@@ -56,7 +56,7 @@ export class ChipsComponent implements OnInit {
 
 	select(event: MatAutocompleteSelectedEvent): void {
 		this.tags.push(event.option.viewValue);
-		this.tagInput.nativeElement.value = '';
+		this.tagInput().nativeElement.value = '';
 		this.tagsCtrl.setValue(null);
 	}
 

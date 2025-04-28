@@ -7,7 +7,7 @@ import type {ObICollapseBreakpoints, ObINavigationLink} from '@oblique/oblique';
 })
 export class DynamicNavigationService {
 	navigationLinks$: Observable<ObINavigationLink[]>;
-	collapseBreakpoint = signal<ObICollapseBreakpoints>('md');
+	readonly collapseBreakpoint = signal<ObICollapseBreakpoints>('md');
 
 	private readonly navigationLinks = new Subject<ObINavigationLink[]>();
 	private links: ObINavigationLink[] = [];

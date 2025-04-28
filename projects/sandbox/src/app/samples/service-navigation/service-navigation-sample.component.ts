@@ -1,4 +1,4 @@
-import {type AfterViewInit, Component, type OnInit, ViewChild, inject} from '@angular/core';
+import {type AfterViewInit, Component, type OnInit, inject, viewChild} from '@angular/core';
 import {
 	type ObIServiceNavigationContact,
 	type ObIServiceNavigationLink,
@@ -79,7 +79,7 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 		email: 'support@bit.admin.ch',
 		tel: '+41 58 461 61 11'
 	};
-	@ViewChild(ObServiceNavigationComponent) private readonly headerControlsComponent: ObServiceNavigationComponent;
+	private readonly headerControlsComponent = viewChild(ObServiceNavigationComponent);
 	private readonly window = inject<Window>(WINDOW);
 
 	ngOnInit(): void {
@@ -87,8 +87,8 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit(): void {
-		this.lastUsedApplicationsLength$ = this.headerControlsComponent.lastUsedApplications$.pipe(map(applications => applications.length));
-		this.favoriteApplicationsLength$ = this.headerControlsComponent.favoriteApplications$.pipe(map(applications => applications.length));
+		this.lastUsedApplicationsLength$ = this.headerControlsComponent().lastUsedApplications$.pipe(map(applications => applications.length));
+		this.favoriteApplicationsLength$ = this.headerControlsComponent().favoriteApplications$.pipe(map(applications => applications.length));
 	}
 
 	handleContactInfo(): void {

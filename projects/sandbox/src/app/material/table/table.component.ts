@@ -1,4 +1,4 @@
-import {type AfterViewInit, Component, type OnDestroy, type OnInit, ViewChild, inject} from '@angular/core';
+import {type AfterViewInit, Component, type OnDestroy, type OnInit, inject, viewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {type AbstractControl, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
@@ -15,9 +15,9 @@ import {EditMode, Mode, TableManager} from './table-manager';
 	standalone: false
 })
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
-	@ViewChild(MatSort) sort: MatSort;
-	@ViewChild(MatPaginator) paginator: MatPaginator;
-	@ViewChild(MatInput) firstInput: MatInput;
+	readonly sort = viewChild(MatSort);
+	readonly paginator = viewChild(MatPaginator);
+	readonly firstInput = viewChild(MatInput);
 	controls: UntypedFormGroup;
 	tableStyles$: Observable<Record<string, boolean>>;
 	collapsedStyles$: Observable<Record<string, boolean>>;
@@ -64,7 +64,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	ngAfterViewInit(): void {
-		this.tableManager.setExtras({sort: this.sort, paginator: this.paginator});
+		this.tableManager.setExtras({sort: this.sort(), paginator: this.paginator()});
 		this.tableManager.isEditMode$
 			.pipe(
 				filter(isEditMode => isEditMode),
@@ -72,7 +72,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(() => {
-				this.firstInput.focus();
+				this.firstInput().focus();
 			});
 	}
 

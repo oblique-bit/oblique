@@ -11,7 +11,7 @@ import {map} from 'rxjs';
 	standalone: false
 })
 export class NavTreeSampleComponent {
-	public items: Signal<ObNavTreeItemModel[]>;
+	public readonly items: Signal<ObNavTreeItemModel[]>;
 
 	public filter = {
 		pattern: null,

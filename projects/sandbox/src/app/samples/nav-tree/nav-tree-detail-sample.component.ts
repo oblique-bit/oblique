@@ -9,9 +9,9 @@ import {type Observable, filter, map} from 'rxjs';
 	standalone: false
 })
 export class NavTreeDetailSampleComponent {
-	url: Signal<{param: string; value: string}[]>;
-	queryParams: Signal<{param: string; value: string}[]>;
-	fragment: Signal<string>;
+	readonly url: Signal<{param: string; value: string}[]>;
+	readonly queryParams: Signal<{param: string; value: string}[]>;
+	readonly fragment: Signal<string>;
 
 	constructor() {
 		const route = inject(ActivatedRoute);

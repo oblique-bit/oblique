@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, viewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import {NgForm} from '@angular/forms';
 	standalone: false
 })
 export class NestedFormChildTDSampleComponent {
-	@ViewChild(NgForm, {static: true}) ngForm;
+	readonly ngForm = viewChild(NgForm);
 	field1 = '';
 	field2 = '';
 	grandchild;

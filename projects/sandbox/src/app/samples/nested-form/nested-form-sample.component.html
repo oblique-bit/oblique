@@ -19,7 +19,7 @@
 
 <form #ngForm obParentFormDirective (submit)="validateForm(ngForm.valid)">
 	<h3>Template driven form</h3>
-	<ob-nested-form name="child" [nestedForm]="childTD.ngForm.control" [(ngModel)]="model.child">
+	<ob-nested-form name="child" [nestedForm]="childTD.ngForm().control" [(ngModel)]="model.child">
 		<sb-nested-form-child-td-sample #childTD />
 	</ob-nested-form>
 	<mat-form-field obErrorMessages>
