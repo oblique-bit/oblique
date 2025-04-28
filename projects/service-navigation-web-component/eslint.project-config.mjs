@@ -28,12 +28,5 @@ export default [
 			'@typescript-eslint/no-magic-numbers': 'off',
 			'@typescript-eslint/no-unsafe-return': 'off'
 		}
-	},
-	{
-		files: ['projects/service-navigation-web-component/**/*.spec.ts'],
-		rules: {
-			// rules that are not respected
-			'@typescript-eslint/no-unsafe-member-access': 'off'
-		}
 	}
 ];
