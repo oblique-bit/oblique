@@ -203,7 +203,12 @@ describe('utilities', () => {
 						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
 						provideHttpClient(),
 						provideObliqueConfiguration({
-							accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {emails: ['e@mail.com']}}
+							accessibilityStatement: {
+								applicationName: 'appName',
+								conformity: 'none',
+								applicationOperator: 'Operator',
+								contact: {emails: ['e@mail.com']}
+							}
 						})
 					]
 				});
@@ -260,6 +265,7 @@ describe('utilities', () => {
 				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
 					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
 						applicationName: 'appName',
+						conformity: 'none',
 						applicationOperator: 'Operator',
 						contact: {emails: ['e@mail.com']}
 					});
@@ -275,7 +281,12 @@ describe('utilities', () => {
 						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
 						provideHttpClient(),
 						provideObliqueConfiguration({
-							accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {emails: ['e@mail.com']}},
+							accessibilityStatement: {
+								applicationName: 'appName',
+								conformity: 'none',
+								applicationOperator: 'Operator',
+								contact: {emails: ['e@mail.com']}
+							},
 							material: {
 								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
 								STEPPER_GLOBAL_OPTIONS: {showError: true},
@@ -333,6 +344,7 @@ describe('utilities', () => {
 				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
 					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
 						applicationName: 'appName',
+						conformity: 'none',
 						applicationOperator: 'Operator',
 						contact: {emails: ['e@mail.com']}
 					});
@@ -345,7 +357,12 @@ describe('utilities', () => {
 				TestBed.configureTestingModule({
 					providers: [
 						provideObliqueConfiguration({
-							accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {emails: ['e@mail.com']}}
+							accessibilityStatement: {
+								applicationName: 'appName',
+								conformity: 'none',
+								applicationOperator: 'Operator',
+								contact: {emails: ['e@mail.com']}
+							}
 						}),
 						{
 							provide: OB_MATERIAL_CONFIG,
@@ -383,7 +400,12 @@ describe('utilities', () => {
 				TestBed.configureTestingModule({
 					providers: [
 						provideObliqueConfiguration({
-							accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {emails: ['e@mail.com']}}
+							accessibilityStatement: {
+								applicationName: 'appName',
+								conformity: 'none',
+								applicationOperator: 'Operator',
+								contact: {emails: ['e@mail.com']}
+							}
 						}),
 						{provide: TRANSLATION_FILES, useValue: [{prefix: 'prefix', suffix: 'suffix'}]}
 					]

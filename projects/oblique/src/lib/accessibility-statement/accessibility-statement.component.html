@@ -9,11 +9,11 @@
 <h2>{{ "i18n.oblique.accessibility-statement.statement.title" | translate }}</h2>
 <p [innerHTML]="'i18n.oblique.accessibility-statement.statement.text' | obTranslateParams: statementParameters"></p>
 
-@if (parameters.exceptions?.length > 0) {
+@if (exceptions.length > 0) {
 	<h3>{{ "i18n.oblique.accessibility-statement.exceptions.title" | translate }}</h3>
 	<p class="ob-list-title">{{ "i18n.oblique.accessibility-statement.exceptions.text" | translate }}</p>
 	<ol>
-		@for (exception of parameters.exceptions; track exception) {
+		@for (exception of exceptions; track exception) {
 			<li>{{ exception | translate }}</li>
 		}
 	</ol>

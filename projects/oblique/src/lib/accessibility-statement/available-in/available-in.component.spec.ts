@@ -17,6 +17,7 @@ describe(ObAvailableInComponent.name, () => {
 				provideObliqueConfiguration({
 					accessibilityStatement: {
 						applicationName: '',
+						conformity: 'none',
 						applicationOperator: '',
 						contact: undefined
 					}
