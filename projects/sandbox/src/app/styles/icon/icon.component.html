@@ -1,2 +1,4 @@
 <h2>ObIcon</h2>
-<span *ngFor="let icon of icons" [class]="'ob-icon ob-' + icon"></span>
+@for (icon of icons; track icon) {
+	<span [class]="'ob-icon ob-' + icon"></span>
+}

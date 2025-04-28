@@ -23,7 +23,9 @@
 		</section>
 		<section>
 			<h3>Icon list</h3>
-			<mat-icon *ngFor="let icon of icons" class="icon-list" [svgIcon]="icon" [style.color]="color" [style.font-size]="fontSize + 'px'" />
+			@for (icon of icons; track icon) {
+				<mat-icon class="icon-list" [svgIcon]="icon" [style.color]="color" [style.font-size]="fontSize + 'px'" />
+			}
 		</section>
 	</ng-container>
 	<ng-container column-right-content>

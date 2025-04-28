@@ -36,7 +36,7 @@
 				convallis enim. Ut eleifend rhoncus urna, at lobortis elit maximus id. Suspendisse potenti. Phasellus elit magna, congue sed elit a,
 				dictum convallis lacus. Nulla facilisi.
 			</p>
-			<ng-container *ngIf="overflow">
+			@if (overflow) {
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla finibus obci, vitae sollicitudin massa laoreet vel. Donec
 					libero quam, dictum quis obci ac, hendrerit egestas urna. Ut cursus euismod leo ut vulputate. Vestibulum luctus sapien a finibus
@@ -67,7 +67,7 @@
 					convallis enim. Ut eleifend rhoncus urna, at lobortis elit maximus id. Suspendisse potenti. Phasellus elit magna, congue sed elit
 					a, dictum convallis lacus. Nulla facilisi.
 				</p>
-			</ng-container>
+			}
 		</ng-container>
 		<ng-container column-right-content>
 			<h3 class="nav-header-title">Right Column</h3>
@@ -77,11 +77,15 @@
 		<h3>Controls</h3>
 		<div>
 			<mat-checkbox [(ngModel)]="left">Left column?</mat-checkbox>
-			<button *ngIf="left" type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()">Toggle</button>
+			@if (left) {
+				<button type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()">Toggle</button>
+			}
 		</div>
 		<div>
 			<mat-checkbox [(ngModel)]="right">Right column?</mat-checkbox>
-			<button *ngIf="right" type="button" obButton mat-button (click)="obColumnLayout.toggleRight()">Toggle</button>
+			@if (right) {
+				<button type="button" obButton mat-button (click)="obColumnLayout.toggleRight()">Toggle</button>
+			}
 		</div>
 		<div>
 			<mat-checkbox [(ngModel)]="overflow">Overflow</mat-checkbox>

@@ -11,7 +11,9 @@
 		<br />
 		Selected values:
 		<ul>
-			<li *ngFor="let item of group.selected$ | async">{{ item.value }}</li>
+			@for (item of group.selected$ | async; track item.value) {
+				<li>{{ item.value }}</li>
+			}
 		</ul>
 	</section>
 	<section column-right-content>

@@ -5,103 +5,113 @@
 			<div class="actions-header">
 				<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager, isInTable: false }" />
 			</div>
-			<table
-				*ngIf="isStructureDefault$ | async"
-				mat-table
-				matSort
-				matSortActive="position"
-				matSortDirection="asc"
-				[dataSource]="tableManager.dataSource"
-				[ngClass]="tableStyles$ | async"
-			>
-				<caption *ngIf="hasCaption$ | async">
-					Characteristics of periodical elements
-				</caption>
-				<ng-container [matColumnDef]="COLUMN_NAME_SELECT">
-					<td *matHeaderCellDef mat-cell>
-						<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{ tableManager }" />
-					</td>
-					<td *matCellDef="let row" mat-cell>
-						<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{ row, tableManager }" />
-					</td>
-				</ng-container>
-
-				<ng-container *ngFor="let column of columns">
-					<ng-container [matColumnDef]="column.key">
-						<th *matHeaderCellDef scope="col" mat-header-cell mat-sort-header>
-							<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{ column }" />
-						</th>
-						@if (column.name === "Name") {
-							<th *matCellDef="let element" scope="row" mat-header-cell [attr.data-title]="column.name">
-								<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
+			@if (isStructureDefault$ | async) {
+				<table
+					mat-table
+					matSort
+					matSortActive="position"
+					matSortDirection="asc"
+					[dataSource]="tableManager.dataSource"
+					[ngClass]="tableStyles$ | async"
+				>
+					@if (hasCaption$ | async) {
+						<caption>
+							Characteristics of periodical elements
+						</caption>
+					}
+					<ng-container [matColumnDef]="COLUMN_NAME_SELECT">
+						<td *matHeaderCellDef mat-cell>
+							<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{ tableManager }" />
+						</td>
+						<td *matCellDef="let row" mat-cell>
+							<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{ row, tableManager }" />
+						</td>
+					</ng-container>
+					@for (column of columns; track column.key) {
+						<ng-container [matColumnDef]="column.key">
+							<th *matHeaderCellDef scope="col" mat-header-cell mat-sort-header>
+								<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{ column }" />
 							</th>
-						} @else {
-							<td *matCellDef="let element" mat-cell [attr.data-title]="column.name">
-								<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
-							</td>
-						}
+							@if (column.name === "Name") {
+								<th *matCellDef="let element" scope="row" mat-header-cell [attr.data-title]="column.name">
+									<ng-container
+										[ngTemplateOutlet]="columnContent"
+										[ngTemplateOutletContext]="{ column, element, tableManager, editMode }"
+									/>
+								</th>
+							} @else {
+								<td *matCellDef="let element" mat-cell [attr.data-title]="column.name">
+									<ng-container
+										[ngTemplateOutlet]="columnContent"
+										[ngTemplateOutletContext]="{ column, element, tableManager, editMode }"
+									/>
+								</td>
+							}
+						</ng-container>
+					}
+					<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
+						<td *matHeaderCellDef mat-cell>
+							<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager, isInTable: true }" />
+						</td>
+						<td *matCellDef="let element" mat-cell [attr.data-title]="'Actions'">
+							<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{ tableManager, element, editMode }" />
+						</td>
 					</ng-container>
-				</ng-container>
+					<tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+					<tr *matRowDef="let row; columns: displayedColumns" mat-row [class.edit-mode]="row.editMode !== editMode.NONE"></tr>
+				</table>
+			}
 
-				<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
-					<td *matHeaderCellDef mat-cell>
-						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager, isInTable: true }" />
-					</td>
-					<td *matCellDef="let element" mat-cell [attr.data-title]="'Actions'">
-						<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{ tableManager, element, editMode }" />
-					</td>
-				</ng-container>
-
-				<tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-				<tr *matRowDef="let row; columns: displayedColumns" mat-row [class.edit-mode]="row.editMode !== editMode.NONE"></tr>
-			</table>
-
-			<mat-table
-				*ngIf="(isStructureDefault$ | async) === false"
-				matSort
-				matSortActive="position"
-				matSortDirection="asc"
-				[dataSource]="tableManager.dataSource"
-				[ngClass]="tableStyles$ | async"
-			>
-				<ng-container [cdkColumnDef]="COLUMN_NAME_SELECT">
-					<mat-cell *cdkHeaderCellDef>
-						<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{ tableManager }" />
-					</mat-cell>
-					<mat-cell *cdkCellDef="let row">
-						<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{ row, tableManager }" />
-					</mat-cell>
-				</ng-container>
-
-				<ng-container *ngFor="let column of columns">
-					<ng-container [matColumnDef]="column.key">
-						<mat-header-cell *matHeaderCellDef scope="col" mat-sort-header>
-							<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{ column }" />
-						</mat-header-cell>
-						@if (column.name === "Name") {
-							<mat-header-cell *matCellDef="let element" scope="row">
-								<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
+			@if ((isStructureDefault$ | async) === false) {
+				<mat-table
+					matSort
+					matSortActive="position"
+					matSortDirection="asc"
+					[dataSource]="tableManager.dataSource"
+					[ngClass]="tableStyles$ | async"
+				>
+					<ng-container [cdkColumnDef]="COLUMN_NAME_SELECT">
+						<mat-cell *cdkHeaderCellDef>
+							<ng-container [ngTemplateOutlet]="selectHeader" [ngTemplateOutletContext]="{ tableManager }" />
+						</mat-cell>
+						<mat-cell *cdkCellDef="let row">
+							<ng-container [ngTemplateOutlet]="selectContent" [ngTemplateOutletContext]="{ row, tableManager }" />
+						</mat-cell>
+					</ng-container>
+					@for (column of columns; track column.key) {
+						<ng-container [matColumnDef]="column.key">
+							<mat-header-cell *matHeaderCellDef scope="col" mat-sort-header>
+								<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{ column }" />
 							</mat-header-cell>
-						} @else {
-							<mat-cell *matCellDef="let element">
-								<ng-container [ngTemplateOutlet]="columnContent" [ngTemplateOutletContext]="{ column, element, tableManager, editMode }" />
-							</mat-cell>
-						}
+							@if (column.name === "Name") {
+								<mat-header-cell *matCellDef="let element" scope="row">
+									<ng-container
+										[ngTemplateOutlet]="columnContent"
+										[ngTemplateOutletContext]="{ column, element, tableManager, editMode }"
+									/>
+								</mat-header-cell>
+							} @else {
+								<mat-cell *matCellDef="let element">
+									<ng-container
+										[ngTemplateOutlet]="columnContent"
+										[ngTemplateOutletContext]="{ column, element, tableManager, editMode }"
+									/>
+								</mat-cell>
+							}
+						</ng-container>
+					}
+					<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
+						<mat-cell *matHeaderCellDef>
+							<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager, isInTable: true }" />
+						</mat-cell>
+						<mat-cell *matCellDef="let element">
+							<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{ tableManager, element, editMode }" />
+						</mat-cell>
 					</ng-container>
-				</ng-container>
-
-				<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
-					<mat-cell *matHeaderCellDef>
-						<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager, isInTable: true }" />
-					</mat-cell>
-					<mat-cell *matCellDef="let element">
-						<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{ tableManager, element, editMode }" />
-					</mat-cell>
-				</ng-container>
-
-				<mat-header-row *cdkHeaderRowDef="displayedColumns" />
-				<mat-row *cdkRowDef="let row; columns: displayedColumns" [class.edit-mode]="row.editMode !== editMode.NONE" />
-			</mat-table>
+					<mat-header-row *cdkHeaderRowDef="displayedColumns" />
+					<mat-row *cdkRowDef="let row; columns: displayedColumns" [class.edit-mode]="row.editMode !== editMode.NONE" />
+				</mat-table>
+			}
 			<mat-paginator
 				aria-label='Select page of "Characteristics of periodical elements"'
 				[showFirstLastButtons]="true"
@@ -131,16 +141,15 @@
 			</ng-template>
 
 			<ng-template #columnContent let-column="column" let-element="element" let-editMode="editMode" let-tableManager="tableManager">
-				<ng-container *ngIf="element.editMode === editMode.NONE; else cellEditMode">
+				@if (element.editMode === editMode.NONE) {
 					{{ element[column.key] }}
-				</ng-container>
-				<ng-template #cellEditMode>
+				} @else {
 					<mat-form-field obErrorMessages>
 						<mat-label>{{ column.name }}</mat-label>
 						<input matInput [type]="column.type" [formControlName]="column.key" (keyup.enter)="tableManager.saveRow(element)" />
 						<mat-error />
 					</mat-form-field>
-				</ng-template>
+				}
 			</ng-template>
 
 			<ng-template #actionsHeader let-tableManager="tableManager" let-isInTable="isInTable">
@@ -170,7 +179,7 @@
 
 			<ng-template #actionsContent let-tableManager="tableManager" let-element="element">
 				<div class="actions">
-					<ng-container *ngIf="element.editMode === editMode.NONE; else actionsEditMode">
+					@if (element.editMode === editMode.NONE) {
 						<button
 							type="button"
 							mat-icon-button
@@ -191,15 +200,14 @@
 						>
 							<mat-icon svgIcon="trash" />
 						</button>
-					</ng-container>
-					<ng-template #actionsEditMode>
+					} @else {
 						<button type="submit" mat-icon-button obButton="secondary" matTooltip="Save" (click)="tableManager.saveRow(element)">
 							<mat-icon svgIcon="checkmark" />
 						</button>
 						<button type="reset" mat-icon-button obButton="secondary" matTooltip="Reset" (click)="tableManager.cancel(element)">
 							<mat-icon svgIcon="cancel" />
 						</button>
-					</ng-template>
+					}
 				</div>
 			</ng-template>
 		</form>

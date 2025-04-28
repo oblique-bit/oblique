@@ -22,6 +22,8 @@
 	<h3>ObOutsideFilter</h3>
 	<button #outsideClick type="button" mat-button obButton="primary">Click on this buttons are ignored</button>
 	<ul>
-		<li *ngFor="let event of events$ | async">{{ event }}</li>
+		@for (event of events$ | async; track event) {
+			<li>{{ event }}</li>
+		}
 	</ul>
 </section>

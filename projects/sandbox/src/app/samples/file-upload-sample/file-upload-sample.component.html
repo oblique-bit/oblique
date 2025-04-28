@@ -1,5 +1,4 @@
 <h2 class="page-header">File-upload Dropable zone</h2>
-
 <ob-column-layout [left]="false">
 	<section column-main-content>
 		<h3>Drop Zone</h3>
@@ -27,7 +26,7 @@
 
 		<h3>Uploaded files</h3>
 
-		<ng-container *ngIf="toggleCustomMapForDelete">
+		@if (toggleCustomMapForDelete) {
 			<ob-file-info
 				[getUploadedFilesUrl]="getUrl"
 				[mapFilesToDeleteUrlFunction]="customMapForDelete"
@@ -35,10 +34,10 @@
 				[mapFunction]="mapData"
 				(uploadEvent)="uploadEvent($event)"
 			/>
-		</ng-container>
-		<ng-container *ngIf="!toggleCustomMapForDelete">
+		}
+		@if (!toggleCustomMapForDelete) {
 			<ob-file-info [getUploadedFilesUrl]="getUrl" [deleteUrl]="deleteUrl" [mapFunction]="mapData" (uploadEvent)="uploadEvent($event)" />
-		</ng-container>
+		}
 		<div>
 			<ob-alert type="info">
 				The link of the style guide:
@@ -65,7 +64,9 @@
 				<mat-form-field>
 					<mat-label>accept</mat-label>
 					<mat-select id="acceptFiles" [(value)]="acceptFiles">
-						<mat-option *ngFor="let option of acceptFilesOptions" [value]="option">{{ option }}</mat-option>
+						@for (option of acceptFilesOptions; track option) {
+							<mat-option [value]="option">{{ option }}</mat-option>
+						}
 					</mat-select>
 					<mat-hint>Accepted files types</mat-hint>
 				</mat-form-field>

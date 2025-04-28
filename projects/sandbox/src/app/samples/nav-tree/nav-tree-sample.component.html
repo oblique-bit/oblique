@@ -17,13 +17,15 @@
 				<input type="text" id="gamma" placeholder="gamma" />
 			</div>
 			<router-outlet #outlet="outlet" />
-			<ob-alert *ngIf="!outlet.isActivated">
-				<strong>Empty page</strong>
-				<p>
-					No link of the <code>nav-tree</code> has been clicked, which means the <code>router-outlet</code> is empty and there's nothing to
-					see. Click on one of the navigation tree link to activate a route and see content.
-				</p>
-			</ob-alert>
+			@if (!outlet.isActivated) {
+				<ob-alert>
+					<strong>Empty page</strong>
+					<p>
+						No link of the <code>nav-tree</code> has been clicked, which means the <code>router-outlet</code> is empty and there's nothing
+						to see. Click on one of the navigation tree link to activate a route and see content.
+					</p>
+				</ob-alert>
+			}
 		</div>
 	</div>
 	<div column-right-content>

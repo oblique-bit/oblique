@@ -39,12 +39,9 @@ export default [
 		files: ['projects/sandbox/**/*.html'],
 		rules: {
 			// rules that are not respected
-			'@angular-eslint/template/cyclomatic-complexity': 'off',
 			'@angular-eslint/template/label-has-associated-control': 'off',
 			'@angular-eslint/template/no-call-expression': 'off',
-			'@angular-eslint/template/no-inline-styles': 'off',
-			'@angular-eslint/template/prefer-control-flow': 'off',
-			'@angular-eslint/template/use-track-by-function': 'off'
+			'@angular-eslint/template/no-inline-styles': 'off'
 		}
 	},
 	{

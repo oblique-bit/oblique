@@ -32,15 +32,17 @@
 		<tr>
 			<td>
 				<mat-slide-toggle required (toggleChange)="onMandatoryToggleChange()">Mandatory</mat-slide-toggle>
-				<mat-error *ngIf="!isMandatoryChecked"
-					>I am an error message that is shown when the Mandatory Slide Toggle is not checked!</mat-error
-				>
+				@if (!isMandatoryChecked) {
+					<mat-error>I am an error message that is shown when the Mandatory Slide Toggle is not checked!</mat-error>
+				}
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<mat-slide-toggle (toggleChange)="onHintToggleChange()">Hint</mat-slide-toggle>
-				<mat-hint *ngIf="isHintChecked">I am a hint message that is shown when the Hint Slide Toggle is checked!</mat-hint>
+				@if (isHintChecked) {
+					<mat-hint>I am a hint message that is shown when the Hint Slide Toggle is checked!</mat-hint>
+				}
 			</td>
 		</tr>
 	</tbody>

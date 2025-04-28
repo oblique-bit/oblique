@@ -21,7 +21,7 @@
 			(loginState)="loginState = $event"
 			(logoutTriggered)="logoutURL = $event"
 		>
-			<ng-container *ngIf="hasCustomWidgets">
+			@if (hasCustomWidgets) {
 				<ng-template #customWidgetTemplate>
 					<button type="button" class="ob-widget" mat-icon-button matTooltip="smile" obButton="secondary">
 						<mat-icon svgIcon="smile" />
@@ -32,7 +32,7 @@
 						<mat-icon svgIcon="thumbs-up" />
 					</button>
 				</ng-template>
-			</ng-container>
+			}
 		</ob-service-navigation>
 		<p>
 			Current login state: <output>{{ loginState }}</output>

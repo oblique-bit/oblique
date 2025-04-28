@@ -30,11 +30,13 @@
 			<fieldset>
 				<legend>Color</legend>
 				<mat-radio-group [(ngModel)]="color">
-					<mat-list-item *ngFor="let sliderColor of colors">
-						<mat-radio-button [value]="sliderColor">
-							{{ sliderColor | titlecase }}
-						</mat-radio-button>
-					</mat-list-item>
+					@for (sliderColor of colors; track sliderColor) {
+						<mat-list-item>
+							<mat-radio-button [value]="sliderColor">
+								{{ sliderColor | titlecase }}
+							</mat-radio-button>
+						</mat-list-item>
+					}
 				</mat-radio-group>
 			</fieldset>
 			<fieldset>

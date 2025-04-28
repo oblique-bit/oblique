@@ -30,9 +30,11 @@
 					<mat-form-field>
 						<mat-label>Position</mat-label>
 						<mat-select [(value)]="position">
-							<mat-option *ngFor="let positionOption of positionOptions" [value]="positionOption">
-								{{ positionOption }}
-							</mat-option>
+							@for (positionOption of positionOptions; track positionOption) {
+								<mat-option [value]="positionOption">
+									{{ positionOption }}
+								</mat-option>
+							}
 						</mat-select>
 					</mat-form-field>
 				</mat-list-item>

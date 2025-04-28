@@ -11,9 +11,11 @@
 			<mat-list-item>
 				<button type="button" mat-raised-button (click)="openDialog()">Open dialog</button>
 			</mat-list-item>
-			<mat-list-item *ngIf="animal">
-				Your favorite animal is: <i>{{ animal }}</i>
-			</mat-list-item>
+			@if (animal) {
+				<mat-list-item>
+					Your favorite animal is: <i>{{ animal }}</i>
+				</mat-list-item>
+			}
 		</mat-list>
 	</ng-container>
 	<ng-container column-right-content>

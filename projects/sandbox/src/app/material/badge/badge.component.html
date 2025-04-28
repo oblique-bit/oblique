@@ -57,21 +57,25 @@
 			<fieldset>
 				<legend>Color</legend>
 				<mat-radio-group [(ngModel)]="color">
-					<mat-list-item *ngFor="let badgeColor of colors">
-						<mat-radio-button [value]="badgeColor">
-							{{ badgeColor | titlecase }}
-						</mat-radio-button>
-					</mat-list-item>
+					@for (badgeColor of colors; track badgeColor) {
+						<mat-list-item>
+							<mat-radio-button [value]="badgeColor">
+								{{ badgeColor | titlecase }}
+							</mat-radio-button>
+						</mat-list-item>
+					}
 				</mat-radio-group>
 			</fieldset>
 			<fieldset>
 				<legend>Position</legend>
 				<mat-radio-group [(ngModel)]="position">
-					<mat-list-item *ngFor="let badgePosition of positions">
-						<mat-radio-button [value]="badgePosition">
-							{{ badgePosition | titlecase }}
-						</mat-radio-button>
-					</mat-list-item>
+					@for (badgePosition of positions; track badgePosition) {
+						<mat-list-item>
+							<mat-radio-button [value]="badgePosition">
+								{{ badgePosition | titlecase }}
+							</mat-radio-button>
+						</mat-list-item>
+					}
 				</mat-radio-group>
 			</fieldset>
 		</mat-list>

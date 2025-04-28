@@ -3,7 +3,9 @@
 	<div column-right-content>
 		<h3>Logs</h3>
 		<div class="notification-sample-preview">
-			<div *ngFor="let log of logs" class="smaller">{{ log }}</div>
+			@for (log of logs; track log) {
+				<div class="smaller">{{ log }}</div>
+			}
 		</div>
 	</div>
 	<ng-container column-main-content>
@@ -26,7 +28,9 @@
 			<mat-form-field>
 				<mat-label>Severity</mat-label>
 				<mat-select [(ngModel)]="notification.severity">
-					<mat-option *ngFor="let variant of variants | keyvalue" [value]="variant.value">{{ variant.key }}</mat-option>
+					@for (variant of variants | keyvalue; track variant.value) {
+						<mat-option [value]="variant.value">{{ variant.key }}</mat-option>
+					}
 				</mat-select>
 			</mat-form-field>
 			<mat-form-field>

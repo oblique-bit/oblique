@@ -1,11 +1,15 @@
 <h1>Palette</h1>
-<ng-container *ngFor="let group of colorGroups">
+@for (group of colorGroups; track group.name) {
 	<h2>{{ group.name }} colors</h2>
 	<section class="colors">
-		<div *ngFor="let color of group.colors" class="color" [ngStyle]="{ color: color.contrast, backgroundColor: color.color }">
-			<span>{{ color.color }}</span>
-			<span>{{ color.name }}</span>
-			<span *ngIf="color.details">{{ color.details }}</span>
-		</div>
+		@for (color of group.colors; track color.name) {
+			<div class="color" [ngStyle]="{ color: color.contrast, backgroundColor: color.color }">
+				<span>{{ color.color }}</span>
+				<span>{{ color.name }}</span>
+				@if (color.details) {
+					<span>{{ color.details }}</span>
+				}
+			</div>
+		}
 	</section>
-</ng-container>
+}

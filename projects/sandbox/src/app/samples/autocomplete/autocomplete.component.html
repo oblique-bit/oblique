@@ -1,7 +1,7 @@
 <h2>Autocomplete</h2>
 <ob-column-layout [left]="false" [right]="true">
 	<section column-main-content>
-		<ng-container *ngIf="isFromControl; else ngModelBinding">
+		@if (isFromControl) {
 			<ob-autocomplete
 				filterRegexFlag="gi"
 				[autocompleteOptions]="visibleOptionList"
@@ -12,13 +12,11 @@
 			<label>ReactiveForms</label>
 			<code>
 				<pre>
-				{{ reactiveFormSnippet }}
-			</pre
+          {{ reactiveFormSnippet }}
+          </pre
 				>
 			</code>
-		</ng-container>
-
-		<ng-template #ngModelBinding>
+		} @else {
 			<ob-autocomplete
 				filterRegexFlag="gi"
 				[autocompleteOptions]="visibleOptionList"
@@ -29,11 +27,11 @@
 			<label>ngModel snippet:</label>
 			<code>
 				<pre>
-				{{ ngModelSnippet }}
-			</pre
+            {{ ngModelSnippet }}
+            </pre
 				>
 			</code>
-		</ng-template>
+		}
 
 		<label>Selected Option:</label>
 		<p>({{ selectedOption | json }})</p>
@@ -49,17 +47,16 @@
 				[(ngModel)]="listType"
 				(change)="updateVisibleOptionList()"
 			>
-				<mat-radio-button
-					*ngFor="
-						let radio of [
-							{ text: 'Simple Options', value: 'onlyOptions' },
-							{ text: 'Options in groups', value: 'group' },
-							{ text: 'Empty list', value: 'empty' }
-						]
-					"
-					[value]="radio.value"
-					>{{ radio.text }}</mat-radio-button
-				>
+				@for (
+					radio of [
+						{ text: "Simple Options", value: "onlyOptions" },
+						{ text: "Options in groups", value: "group" },
+						{ text: "Empty list", value: "empty" }
+					];
+					track radio.value
+				) {
+					<mat-radio-button [value]="radio.value">{{ radio.text }}</mat-radio-button>
+				}
 			</mat-radio-group>
 		</fieldset>
 		<fieldset>
@@ -69,62 +66,58 @@
 		<fieldset>
 			<legend>Icon position in options</legend>
 			<mat-radio-group aria-label="Select icon position" [(ngModel)]="optionIconPosition">
-				<mat-radio-button
-					*ngFor="
-						let radio of [
-							{ text: 'Position end', value: 'end' },
-							{ text: 'Position start', value: 'start' },
-							{ text: 'No icons', value: 'none' }
-						]
-					"
-					[value]="radio.value"
-					>{{ radio.text }}</mat-radio-button
-				>
+				@for (
+					radio of [
+						{ text: "Position end", value: "end" },
+						{ text: "Position start", value: "start" },
+						{ text: "No icons", value: "none" }
+					];
+					track radio.value
+				) {
+					<mat-radio-button [value]="radio.value">{{ radio.text }}</mat-radio-button>
+				}
 			</mat-radio-group>
 		</fieldset>
 		<fieldset>
 			<legend>Disable</legend>
 			<mat-radio-group aria-label="Disable" [(ngModel)]="isDisabled" (change)="toggleDisabledState($event.value)">
-				<mat-radio-button
-					*ngFor="
-						let radio of [
-							{ text: 'Enabled', value: false },
-							{ text: 'Disabled', value: true }
-						]
-					"
-					[value]="radio.value"
-					>{{ radio.text }}</mat-radio-button
-				>
+				@for (
+					radio of [
+						{ text: "Enabled", value: false },
+						{ text: "Disabled", value: true }
+					];
+					track radio.value
+				) {
+					<mat-radio-button [value]="radio.value">{{ radio.text }}</mat-radio-button>
+				}
 			</mat-radio-group>
 		</fieldset>
 		<fieldset>
 			<legend>Disable options in list</legend>
 			<mat-radio-group aria-label="Select icon position" [(ngModel)]="areDisabled" (change)="disableOptions($event.value)">
-				<mat-radio-button
-					*ngFor="
-						let radio of [
-							{ text: 'Enabled', value: false },
-							{ text: 'Disabled', value: true }
-						]
-					"
-					[value]="radio.value"
-					>{{ radio.text }}</mat-radio-button
-				>
+				@for (
+					radio of [
+						{ text: "Enabled", value: false },
+						{ text: "Disabled", value: true }
+					];
+					track radio.value
+				) {
+					<mat-radio-button [value]="radio.value">{{ radio.text }}</mat-radio-button>
+				}
 			</mat-radio-group>
 		</fieldset>
 		<fieldset>
 			<legend>Forms or ReactiveForms</legend>
 			<mat-radio-group aria-label="Select if Forms or ReactiveForms used in example" [(ngModel)]="isFromControl">
-				<mat-radio-button
-					*ngFor="
-						let radio of [
-							{ text: 'ReactiveForms', value: true },
-							{ text: 'Forms', value: false }
-						]
-					"
-					[value]="radio.value"
-					>{{ radio.text }}</mat-radio-button
-				>
+				@for (
+					radio of [
+						{ text: "ReactiveForms", value: true },
+						{ text: "Forms", value: false }
+					];
+					track radio.value
+				) {
+					<mat-radio-button [value]="radio.value">{{ radio.text }}</mat-radio-button>
+				}
 			</mat-radio-group>
 		</fieldset>
 		<fieldset>
@@ -132,7 +125,9 @@
 			<mat-form-field>
 				<mat-label>Pattern string</mat-label>
 				<input pattern=".*textToFind.*" matInput type="text" [formControl]="patternControl" />
-				<mat-error *ngIf="patternControl?.errors && patternControl.hasError('pattern')">Should have textToFind in pattern </mat-error>
+				@if (patternControl?.errors && patternControl.hasError("pattern")) {
+					<mat-error>Should have textToFind in pattern </mat-error>
+				}
 			</mat-form-field>
 		</fieldset>
 	</ng-container>

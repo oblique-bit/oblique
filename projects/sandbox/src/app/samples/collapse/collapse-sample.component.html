@@ -19,18 +19,22 @@
 			<mat-form-field>
 				<mat-label>animate duration</mat-label>
 				<mat-select [(value)]="duration">
-					<mat-option *ngFor="let variant of durations" [value]="variant">
-						{{ variant.viewValue }}
-					</mat-option>
+					@for (variant of durations; track variant) {
+						<mat-option [value]="variant">
+							{{ variant.viewValue }}
+						</mat-option>
+					}
 				</mat-select>
 			</mat-form-field>
 
 			<mat-form-field>
 				<mat-label>iconPositions</mat-label>
 				<mat-select [(value)]="iconPosition">
-					<mat-option *ngFor="let variant of iconPositions" [value]="variant">
-						{{ variant.viewValue }}
-					</mat-option>
+					@for (variant of iconPositions; track variant) {
+						<mat-option [value]="variant">
+							{{ variant.viewValue }}
+						</mat-option>
+					}
 				</mat-select>
 			</mat-form-field>
 

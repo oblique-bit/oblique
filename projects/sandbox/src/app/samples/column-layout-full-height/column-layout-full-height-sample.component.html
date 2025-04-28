@@ -46,11 +46,15 @@
 		<h3>Controls</h3>
 		<div>
 			<mat-checkbox [(ngModel)]="left">Left column?</mat-checkbox>
-			<button *ngIf="left" type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()">Toggle</button>
+			@if (left) {
+				<button type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()">Toggle</button>
+			}
 		</div>
 		<div>
 			<mat-checkbox [(ngModel)]="right">Right column?</mat-checkbox>
-			<button *ngIf="right" type="button" obButton mat-button (click)="obColumnLayout.toggleRight()">Toggle</button>
+			@if (right) {
+				<button type="button" obButton mat-button (click)="obColumnLayout.toggleRight()">Toggle</button>
+			}
 		</div>
 		<mat-slide-toggle [(ngModel)]="noLayout">Remove layout</mat-slide-toggle>
 		<mat-slide-toggle [(ngModel)]="wider">Wider columns</mat-slide-toggle>

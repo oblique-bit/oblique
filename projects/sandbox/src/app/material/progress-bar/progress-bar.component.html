@@ -34,11 +34,13 @@
 			<fieldset>
 				<legend>Color</legend>
 				<mat-radio-group [(ngModel)]="color">
-					<mat-list-item *ngFor="let barColor of colors">
-						<mat-radio-button [value]="barColor">
-							{{ barColor | titlecase }}
-						</mat-radio-button>
-					</mat-list-item>
+					@for (barColor of colors; track barColor) {
+						<mat-list-item>
+							<mat-radio-button [value]="barColor">
+								{{ barColor | titlecase }}
+							</mat-radio-button>
+						</mat-list-item>
+					}
 				</mat-radio-group>
 			</fieldset>
 			<fieldset>
