@@ -1,11 +1,9 @@
-import {ChangeDetectionStrategy, Component, ViewChild, ViewEncapsulation, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild, inject} from '@angular/core';
 import {type NgModelGroup, UntypedFormBuilder} from '@angular/forms';
 
 @Component({
 	selector: 'sb-unsaved-changes',
 	templateUrl: './unsaved-changes-sample.component.html',
-	styleUrl: './unsaved-changes-sample.component.scss',
-	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: false
 })

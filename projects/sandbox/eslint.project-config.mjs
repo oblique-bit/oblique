@@ -45,13 +45,6 @@ export default [
 		}
 	},
 	{
-		files: ['projects/sandbox/src/app/samples/unsaved-changes/unsaved-changes-sample.component.ts'],
-		rules: {
-			// rules that are not respected
-			'@angular-eslint/use-component-view-encapsulation': 'off'
-		}
-	},
-	{
 		files: ['projects/sandbox/src/app/samples/autocomplete/autocomplete.component.ts'],
 		rules: {
 			// rules that are not respected
