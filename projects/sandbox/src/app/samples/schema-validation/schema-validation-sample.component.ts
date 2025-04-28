@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, inject} from '@angular/core';
 import {AbstractControl, NgForm, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {ObNotificationService, ObSchemaValidationService} from '@oblique/oblique';
 import {of} from 'rxjs';
@@ -88,12 +88,9 @@ export class SchemaValidationSampleComponent implements OnInit {
 			}
 		}
 	});
-
-	constructor(
-		private readonly schemaValidation: ObSchemaValidationService,
-		private readonly notification: ObNotificationService,
-		private readonly formBuilder: UntypedFormBuilder
-	) {}
+	private readonly schemaValidation = inject(ObSchemaValidationService);
+	private readonly notification = inject(ObNotificationService);
+	private readonly formBuilder = inject(UntypedFormBuilder);
 
 	ngOnInit(): void {
 		this.formData = this.formBuilder.group({

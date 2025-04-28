@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject, OnDestroy} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ObSpinnerService} from '@oblique/oblique';
 import {ObIDialogData} from '../dialog.model';
@@ -10,16 +10,15 @@ import {ObIDialogData} from '../dialog.model';
 })
 export class ExampleDialogComponent implements AfterViewInit, OnDestroy {
 	sampleChannel = 'demo';
+	dialogRef = inject<MatDialogRef<ExampleDialogComponent>>(MatDialogRef);
+	data = inject<ObIDialogData>(MAT_DIALOG_DATA);
+	private readonly spinner = inject(ObSpinnerService);
 	private timer: NodeJS.Timeout;
 
-	constructor(
-		public dialogRef: MatDialogRef<ExampleDialogComponent>,
-		@Inject(MAT_DIALOG_DATA) public data: ObIDialogData,
-		private readonly spinner: ObSpinnerService
-	) {
-		if (data.spinner === 'global') {
-			spinner.activate();
-			this.timer = setTimeout(() => spinner.deactivate(), 2000);
+	constructor() {
+		if (this.data.spinner === 'global') {
+			this.spinner.activate();
+			this.timer = setTimeout(() => this.spinner.deactivate(), 2000);
 		}
 	}
 

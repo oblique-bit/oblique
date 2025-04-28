@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit, inject} from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
@@ -17,12 +17,9 @@ interface Data {
 export class TableEditComponent implements OnInit {
 	editForm: UntypedFormGroup;
 	isNewRow = false;
-
-	constructor(
-		private readonly formBuilder: UntypedFormBuilder,
-		private readonly dialogRef: MatDialogRef<TableEditComponent>,
-		@Inject(MAT_DIALOG_DATA) private readonly data: Data
-	) {}
+	private readonly formBuilder = inject(UntypedFormBuilder);
+	private readonly dialogRef = inject<MatDialogRef<TableEditComponent>>(MatDialogRef);
+	private readonly data = inject<Data>(MAT_DIALOG_DATA);
 
 	ngOnInit(): void {
 		this.editForm = TableEditComponent.buildEditFormGroup(this.formBuilder, this.data ?? ({} as Data));

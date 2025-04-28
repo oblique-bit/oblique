@@ -1,9 +1,8 @@
-import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild, inject} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {MatInput} from '@angular/material/input';
-import {MatDialog} from '@angular/material/dialog';
 import {Observable, ReplaySubject, Subject, combineLatest, share} from 'rxjs';
 import {delay, filter, map, startWith, takeUntil, tap} from 'rxjs/operators';
 import {ObIPeriodicElement} from './table.model';
@@ -52,12 +51,10 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		{position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
 		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
 	];
+	private readonly formBuilder = inject(UntypedFormBuilder);
 
-	constructor(
-		private readonly formBuilder: UntypedFormBuilder,
-		dialog: MatDialog
-	) {
-		this.tableManager = new TableManager<ObIPeriodicElement>(this.ELEMENT_DATA, dialog);
+	constructor() {
+		this.tableManager = new TableManager<ObIPeriodicElement>(this.ELEMENT_DATA);
 	}
 
 	ngOnInit(): void {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, inject} from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -13,8 +13,7 @@ export class StepperVerticalComponent implements OnInit {
 	isRippleDisabled = false;
 	isSmall = false;
 	isLarge = false;
-
-	constructor(private readonly formBuilder: UntypedFormBuilder) {}
+	private readonly formBuilder = inject(UntypedFormBuilder);
 
 	ngOnInit(): void {
 		this.firstFormGroup = this.formBuilder.group({

@@ -1,4 +1,4 @@
-import {Component, Signal} from '@angular/core';
+import {Component, Signal, inject} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {Observable, filter, map} from 'rxjs';
@@ -13,7 +13,8 @@ export class NavTreeDetailSampleComponent {
 	queryParams: Signal<{param: string; value: string}[]>;
 	fragment: Signal<string>;
 
-	constructor(route: ActivatedRoute) {
+	constructor() {
+		const route = inject(ActivatedRoute);
 		this.url = toSignal(route.params.pipe(this.paramsToArray()));
 		this.queryParams = toSignal(route.queryParams.pipe(this.paramsToArray()));
 		this.fragment = toSignal(route.fragment);

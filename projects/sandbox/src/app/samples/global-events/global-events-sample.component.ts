@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild, inject} from '@angular/core';
 import {ObGlobalEventsService, obOutsideFilter} from '@oblique/oblique';
 import {map, scan} from 'rxjs/operators';
 import {Observable} from 'rxjs';
@@ -9,10 +9,10 @@ import {Observable} from 'rxjs';
 	standalone: false
 })
 export class GlobalEventsSampleComponent implements AfterViewInit {
+	readonly globalEvents = inject(ObGlobalEventsService);
+
 	@ViewChild('outsideClick', {read: ElementRef}) button: ElementRef;
 	events$: Observable<EventTarget[]>;
-
-	constructor(public readonly globalEvents: ObGlobalEventsService) {}
 
 	ngAfterViewInit(): void {
 		this.events$ = this.globalEvents.click$.pipe(

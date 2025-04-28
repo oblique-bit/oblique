@@ -1,5 +1,5 @@
-import {Component, ViewChild} from '@angular/core';
-import {FormGroupDirective, NgForm, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {Component, ViewChild, inject} from '@angular/core';
+import {FormGroupDirective, NgForm, UntypedFormBuilder, Validators} from '@angular/forms';
 import {ObNotificationService} from '@oblique/oblique';
 
 @Component({
@@ -9,23 +9,17 @@ import {ObNotificationService} from '@oblique/oblique';
 	standalone: false
 })
 export class NestedFormSampleComponent {
-	parentForm: UntypedFormGroup;
+	parentForm = inject(UntypedFormBuilder).group({
+		child: [''],
+		parent: ['', [Validators.required]]
+	});
 	model = {
 		parent: '',
 		child: undefined
 	};
 	@ViewChild(FormGroupDirective) reactiveForm: FormGroupDirective;
 	@ViewChild(NgForm) templateForm: NgForm;
-
-	constructor(
-		private readonly fb: UntypedFormBuilder,
-		private readonly notification: ObNotificationService
-	) {
-		this.parentForm = this.fb.group({
-			child: [''],
-			parent: ['', [Validators.required]]
-		});
-	}
+	private readonly notification = inject(ObNotificationService);
 
 	validateForm(valid: boolean): void {
 		if (valid) {

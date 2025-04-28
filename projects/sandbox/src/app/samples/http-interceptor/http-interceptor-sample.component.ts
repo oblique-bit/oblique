@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {ObENotificationType, ObHttpApiInterceptorEvents, ObIHttpApiRequest, ObNotificationService} from '@oblique/oblique';
 import {delay, mergeMap, take, tap} from 'rxjs/operators';
@@ -26,12 +26,11 @@ export class HttpInterceptorSampleComponent {
 	spinner = true;
 	variants = ObENotificationType;
 	parallelRequests = 5;
+	private readonly notificationService = inject(ObNotificationService);
+	private readonly http = inject(HttpClient);
+	private readonly interceptorEvents = inject(ObHttpApiInterceptorEvents);
 
-	constructor(
-		private readonly notificationService: ObNotificationService,
-		private readonly http: HttpClient,
-		private readonly interceptorEvents: ObHttpApiInterceptorEvents
-	) {
+	constructor() {
 		this.interceptorEvents.sessionExpired.subscribe(() => {
 			this.notificationService.warning('The session has expired');
 		});

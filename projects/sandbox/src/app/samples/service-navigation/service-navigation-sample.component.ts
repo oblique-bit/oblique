@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild, inject} from '@angular/core';
 import {ObIServiceNavigationContact, ObIServiceNavigationLink, ObLoginState, ObServiceNavigationComponent, WINDOW} from '@oblique/oblique';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
@@ -74,8 +74,7 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 		tel: '+41 58 461 61 11'
 	};
 	@ViewChild(ObServiceNavigationComponent) private readonly headerControlsComponent: ObServiceNavigationComponent;
-
-	constructor(@Inject(WINDOW) private readonly window: Window) {}
+	private readonly window = inject<Window>(WINDOW);
 
 	ngOnInit(): void {
 		this.returnUrl = this.window.location.href;

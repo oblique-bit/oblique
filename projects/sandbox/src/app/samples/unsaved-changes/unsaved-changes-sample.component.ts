@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {NgModelGroup, UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
+import {ChangeDetectionStrategy, Component, ViewChild, ViewEncapsulation, inject} from '@angular/core';
+import {NgModelGroup, UntypedFormBuilder} from '@angular/forms';
 
 @Component({
 	selector: 'sb-unsaved-changes',
@@ -9,17 +9,11 @@ import {NgModelGroup, UntypedFormBuilder, UntypedFormGroup} from '@angular/forms
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: false
 })
-export class UnsavedChangesSampleComponent implements OnInit {
-	standAloneReactive: UntypedFormGroup;
+export class UnsavedChangesSampleComponent {
+	standAloneReactive = inject(UntypedFormBuilder).group({text: '', number: '', integer: ''});
 	tabModels = {
 		standAloneTemplate: {number: null, text: null, integer: null}
 	};
 
 	@ViewChild('form1') form1 = {} as NgModelGroup;
-
-	constructor(private readonly formBuilder: UntypedFormBuilder) {}
-
-	ngOnInit(): void {
-		this.standAloneReactive = this.formBuilder.group({text: '', number: '', integer: ''});
-	}
 }

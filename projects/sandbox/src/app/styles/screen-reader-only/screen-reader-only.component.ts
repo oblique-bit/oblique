@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, inject} from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
 import {ObMasterLayoutService} from '@oblique/oblique';
 
@@ -10,8 +10,7 @@ import {ObMasterLayoutService} from '@oblique/oblique';
 })
 export class ScreenReaderOnlyComponent implements OnInit {
 	layout: UntypedFormControl;
-
-	constructor(private readonly masterLayout: ObMasterLayoutService) {}
+	private readonly masterLayout = inject(ObMasterLayoutService);
 
 	ngOnInit(): void {
 		this.layout = new UntypedFormControl(this.computeValue(this.masterLayout.header.isSticky, this.masterLayout.footer.isSticky));

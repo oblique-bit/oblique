@@ -1,4 +1,4 @@
-import {Component, Inject, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
@@ -35,21 +35,21 @@ export class AppComponent implements OnDestroy {
 		}
 	];
 	autocompleteItems$: Observable<ObIAutocompleteInputOption[]>;
+	readonly nav = inject(DynamicNavigationService);
 	private readonly unsubscribe = new Subject<void>();
+	private readonly router = inject(Router);
+	private readonly translate = inject(TranslateService);
 
-	constructor(
-		public nav: DynamicNavigationService,
-		private readonly router: Router,
-		private readonly translate: TranslateService,
-		private readonly header: ObMasterLayoutHeaderService,
-		@Inject(WINDOW) window: Window
-	) {
+	constructor() {
+		const header = inject(ObMasterLayoutHeaderService);
+		const window = inject<Window>(WINDOW);
+
 		this.initializeSearch();
-		nav.setNavigation(this.navigation);
-		nav.navigationLinks$.subscribe(links => {
+		this.nav.setNavigation(this.navigation);
+		this.nav.navigationLinks$.subscribe(links => {
 			this.navigation = links;
 		});
-		router.events
+		this.router.events
 			.pipe(filter(event => event instanceof NavigationEnd))
 			.subscribe(() => (header.serviceNavigationConfiguration.returnUrl = window.location.href));
 	}

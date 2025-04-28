@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {Component, inject} from '@angular/core';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sb-nested-form-child-sample',
@@ -9,13 +9,9 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 	standalone: false
 })
 export class NestedFormChildSampleComponent {
-	nestedForm: UntypedFormGroup;
-
-	constructor(private readonly fb: UntypedFormBuilder) {
-		this.nestedForm = this.fb.group({
-			field1: ['', [Validators.required]],
-			field2: [''],
-			grandchild: ''
-		});
-	}
+	nestedForm = inject(UntypedFormBuilder).group({
+		field1: ['', [Validators.required]],
+		field2: [''],
+		grandchild: ''
+	});
 }

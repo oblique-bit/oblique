@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ObEScrollMode, ObICollapseBreakpoints, ObIServiceNavigationContact, ObLoginState, ObMasterLayoutService} from '@oblique/oblique';
 import {Observable, share} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -16,14 +16,13 @@ export class MasterLayoutSampleComponent {
 	loginState$: Observable<ObLoginState>;
 	logoutUrl$: Observable<string>;
 	isLoggedOut$: Observable<boolean>;
+	private readonly masterLayout = inject(ObMasterLayoutService);
+	private readonly dynamicNavigationService = inject(DynamicNavigationService);
 	private readonly infoLinks = [...this.masterLayout.header.serviceNavigationConfiguration.infoLinks];
 	private readonly infoContact = {...this.masterLayout.header.serviceNavigationConfiguration.infoContact};
 	private readonly profileLinks = [...this.masterLayout.header.serviceNavigationConfiguration.profileLinks];
 
-	constructor(
-		private readonly masterLayout: ObMasterLayoutService,
-		private readonly dynamicNavigationService: DynamicNavigationService
-	) {
+	constructor() {
 		this.coverLayout = this.masterLayout.layout.hasCover;
 		this.loginState$ = this.masterLayout.header.loginState$;
 		this.logoutUrl$ = this.masterLayout.header.logoutUrl$;

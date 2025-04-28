@@ -34,7 +34,6 @@ export default [
 			'@typescript-eslint/no-unsafe-member-access': 'off',
 			'@typescript-eslint/no-unsafe-return': 'off',
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
-			'@typescript-eslint/parameter-properties': 'off',
 			'@typescript-eslint/prefer-enum-initializers': 'off'
 		}
 	},
@@ -62,7 +61,6 @@ export default [
 		files: ['projects/sandbox/src/app/app.component.ts'],
 		rules: {
 			// rules that are not respected
-			'@typescript-eslint/max-params': 'off',
 			'no-implicit-coercion': 'off'
 		}
 	},
