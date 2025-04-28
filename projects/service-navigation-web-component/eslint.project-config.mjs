@@ -20,13 +20,14 @@ export default [
 					style: 'kebab-case'
 				}
 			],
-
-			// rules that are not respected
+			// features that are used
 			'@angular-eslint/use-component-view-encapsulation': 'off',
 			'@angular-eslint/use-injectable-provided-in': 'off',
-			'@typescript-eslint/no-deprecated': 'off',
-			'@typescript-eslint/no-magic-numbers': 'off',
-			'@typescript-eslint/no-unsafe-return': 'off'
+
+			// rules that are not respected
+			'@typescript-eslint/no-deprecated': 'off', // need an alternative to provide icons
+			'@typescript-eslint/no-magic-numbers': 'off', // would violate member-ordering
+			'@typescript-eslint/no-unsafe-return': 'off' // need extensive type checking
 		}
 	}
 ];
