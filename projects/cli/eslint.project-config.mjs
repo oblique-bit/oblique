@@ -11,7 +11,6 @@ export default [
 			],
 
 			// rules that are not respected
-			'@typescript-eslint/no-redundant-type-constituents': 'off',
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
 			'require-unicode-regexp': 'off',
 			curly: 'off'

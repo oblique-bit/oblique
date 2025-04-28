@@ -52,7 +52,7 @@ function handleObNewActions(options: HandleObNewActionOptions): void {
 	}
 }
 
-function runNgNewAngularWorkspace(projectName: string, interactive: boolean, prefix: string | 'app'): void {
+function runNgNewAngularWorkspace(projectName: string, interactive: boolean, prefix: string): void {
 	console.info(createsWorkspaceMessage);
 	const baseOptions = Object.entries(immutableOptions)
 		.map(([key, option]) => ({key, value: option.value}))
