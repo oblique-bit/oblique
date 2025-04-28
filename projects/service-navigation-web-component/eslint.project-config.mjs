@@ -3,6 +3,24 @@ export default [
 	{
 		files: ['projects/service-navigation-web-component/**/*.ts'],
 		rules: {
+			'@angular-eslint/directive-selector': [
+				'error',
+				{
+					type: 'attribute',
+					prefix: 'ob',
+					style: 'camelCase'
+				}
+			],
+
+			'@angular-eslint/component-selector': [
+				'error',
+				{
+					type: 'element',
+					prefix: 'ob',
+					style: 'kebab-case'
+				}
+			],
+
 			// rules that are not respected
 			'@angular-eslint/use-component-view-encapsulation': 'off',
 			'@angular-eslint/use-injectable-provided-in': 'off',
