@@ -3,11 +3,11 @@ import {
 	EventEmitter,
 	HostListener,
 	Inject,
-	OnChanges,
-	OnInit,
+	type OnChanges,
+	type OnInit,
 	Output,
-	SimpleChange,
-	SimpleChanges,
+	type SimpleChange,
+	type SimpleChanges,
 	ViewEncapsulation,
 	booleanAttribute,
 	inject,
@@ -18,19 +18,19 @@ import {DOCUMENT, NgFor, NgIf} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {ObServiceNavigationModule} from '../../../oblique/src/lib/service-navigation/service-navigation.module';
 import {
 	ObEPamsEnvironment,
-	ObIServiceNavigationContact,
-	ObIServiceNavigationLink,
-	ObLoginState
+	type ObIServiceNavigationContact,
+	type ObIServiceNavigationLink,
+	type ObLoginState
 } from '../../../oblique/src/lib/service-navigation/service-navigation.model';
 import {appVersion} from './version';
-import {ObEIcon} from '../../../oblique/src/lib/icon/icon.model';
+import type {ObEIcon} from '../../../oblique/src/lib/icon/icon.model';
 import {ObButtonModule} from '../../../oblique/src/lib/button/button.module';
 import {TranslationsService} from './translations-service';
-import {ObICustomButton, ObILink} from './service-navigation-web-component.model';
+import type {ObICustomButton, ObILink} from './service-navigation-web-component.model';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({

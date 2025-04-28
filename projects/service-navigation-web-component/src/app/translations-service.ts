@@ -1,12 +1,12 @@
 import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, map} from 'rxjs';
+import {type Observable, map} from 'rxjs';
 
 import * as translationsDE from '../../../oblique/src/assets/i18n/oblique-de.json';
 import * as translationsFR from '../../../oblique/src/assets/i18n/oblique-fr.json';
 import * as translationsIT from '../../../oblique/src/assets/i18n/oblique-it.json';
 import * as translationsEN from '../../../oblique/src/assets/i18n/oblique-en.json';
-import {ObILink} from './service-navigation-web-component.model';
+import type {ObILink} from './service-navigation-web-component.model';
 
 @Injectable()
 export class TranslationsService {
