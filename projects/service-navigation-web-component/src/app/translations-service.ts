@@ -43,7 +43,7 @@ export class TranslationsService {
 	}
 
 	private parseLanguages(languageList: string): string[] {
-		if (!languageList || !/^[a-z]{2}(?:,[a-z]{2})*$/.test(languageList)) {
+		if (!languageList || !/^[a-z]{2}(?:,[a-z]{2})*$/u.test(languageList)) {
 			throw new Error(
 				`"language-list" expects a comma separated list of ISO 639-1 languages (e.g. en,fr,de) but received "${languageList}"`
 			);
@@ -73,7 +73,7 @@ export class TranslationsService {
 	}
 
 	private checkLanguageFormat(language: string | undefined, label: 'default-language' | 'language'): void {
-		if (language && !/^[a-z]{2}$/.test(language)) {
+		if (language && !/^[a-z]{2}$/u.test(language)) {
 			throw new Error(`"${label}" expects an ISO 639-1 language (e.g. en) but received "${language}"`);
 		}
 	}

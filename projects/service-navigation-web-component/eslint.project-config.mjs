@@ -8,8 +8,7 @@ export default [
 			'@angular-eslint/use-injectable-provided-in': 'off',
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
-			'@typescript-eslint/no-unsafe-return': 'off',
-			'require-unicode-regexp': 'off'
+			'@typescript-eslint/no-unsafe-return': 'off'
 		}
 	},
 	{
