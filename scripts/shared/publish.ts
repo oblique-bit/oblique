@@ -39,7 +39,7 @@ export class Publish extends StaticScript {
 	private static deprecateMajorVersion(packageName: string, major: number): void {
 		const fullPackageName = `@oblique/${packageName}`;
 		const endOfLifeDate = Publish.eolDates[major];
-		if (new Date(endOfLifeDate) > new Date()) {
+		if (new Date() > new Date(endOfLifeDate)) {
 			executeCommandWithLog(
 				`npm deprecate ${fullPackageName}@${major} "Oblique ${major} has reached its End Of Life on ${endOfLifeDate}"`,
 				`Deprecate all versions of ${major}`
