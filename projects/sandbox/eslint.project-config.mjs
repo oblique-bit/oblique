@@ -43,12 +43,5 @@ export default [
 			'@angular-eslint/template/no-call-expression': 'off',
 			'@angular-eslint/template/no-inline-styles': 'off'
 		}
-	},
-	{
-		files: ['projects/sandbox/src/app/material/tooltip/tooltip.component.ts'],
-		rules: {
-			// rules that are not respected
-			'@typescript-eslint/explicit-module-boundary-types': 'off'
-		}
 	}
 ];
