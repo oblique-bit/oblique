@@ -12,8 +12,7 @@ export default [
 
 			// rules that are not respected
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
-			'require-unicode-regexp': 'off',
-			curly: 'off'
+			'require-unicode-regexp': 'off'
 		}
 	},
 	{

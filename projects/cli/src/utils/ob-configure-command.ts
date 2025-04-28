@@ -45,7 +45,9 @@ export function configureOption(config: ObNewSchemaOption, longFlag: string): Op
 }
 
 function isEmpty(flag: string | undefined | null): boolean {
-	if (flag === undefined || flag === null) return true;
+	if (flag === undefined || flag === null) {
+		return true;
+	}
 	return flag.trim() === '';
 }
 
