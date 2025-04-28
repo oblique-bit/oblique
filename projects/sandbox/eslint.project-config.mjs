@@ -21,9 +21,9 @@ export default [
 				}
 			],
 			'@angular-eslint/use-injectable-provided-in': ['error', {ignoreClassNamePattern: '/Resolver$/'}],
+			'@angular-eslint/prefer-standalone': 'off', // Sandbox is meant to stay without standalone components
 
-			// rules that are not respected
-			'@angular-eslint/prefer-standalone': 'off',
+			// rules that are not respected because too costly to refactor
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
 			'@typescript-eslint/no-unsafe-argument': 'off',
@@ -37,7 +37,7 @@ export default [
 	{
 		files: ['projects/sandbox/**/*.html'],
 		rules: {
-			// rules that are not respected
+			// rules that are not respected because too costly to refactor
 			'@angular-eslint/template/label-has-associated-control': 'off',
 			'@angular-eslint/template/no-call-expression': 'off',
 			'@angular-eslint/template/no-inline-styles': 'off'
