@@ -6,11 +6,9 @@ import {Log} from './log';
 
 export class Publish extends StaticScript {
 	private static readonly eolDates: Record<number, string> = {
-		/* eslint-disable @typescript-eslint/naming-convention */
 		11: '2025-03-31',
 		12: '2025-10-31',
 		13: '2026-02-28'
-		/* eslint-enable @typescript-eslint/naming-convention */
 	};
 
 	static perform(packageName: string, releaseTag?: string): void {

@@ -1,4 +1,4 @@
-export const URL_CONST = {
+export const urlConst = {
 	urlParams: {
 		selectedSlug: 'selectedSlug',
 		selectedTab: 'selectedTab'

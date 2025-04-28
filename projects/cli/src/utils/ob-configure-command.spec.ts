@@ -6,14 +6,12 @@ import {addObNewCommandOptions, configureOption, convertOptionPropertyNames} fro
 
 jest.mock('../new/ob-new.model');
 jest.mock('./ob-cli.model');
-/* eslint-disable @typescript-eslint/strict-boolean-expressions*/
 
 describe('ob-configure-command tests', () => {
 	describe('convertOptionPropertyNames', () => {
 		test('should convert first letter of option names to lowercase', () => {
 			const inputOptions = {
-				/* eslint-disable @typescript-eslint/naming-convention */
-				SomeOption: 'value1',
+				SomeOption: 'value1', // eslint-disable-line @typescript-eslint/naming-convention
 				aThirdOption: true,
 				anotherOption: 'value2'
 			} as unknown as ObNewOptions<string | boolean>;

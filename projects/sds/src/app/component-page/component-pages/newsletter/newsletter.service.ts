@@ -31,7 +31,6 @@ export class NewsletterService {
 	}
 
 	createHeaderWithBearerToken(token: string): HttpHeaders {
-		// eslint-disable-next-line @typescript-eslint/naming-convention
-		return new HttpHeaders({Authorization: `Bearer ${token}`});
+		return new HttpHeaders({Authorization: `Bearer ${token}`}); // eslint-disable-line @typescript-eslint/naming-convention
 	}
 }

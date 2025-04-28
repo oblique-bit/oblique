@@ -1,5 +1,4 @@
 // This is due to the CMS naming convention.
-/* eslint-disable @typescript-eslint/naming-convention */
 import {Type} from '@angular/core';
 import {CodeExamples} from '../../code-examples/code-examples.model';
 

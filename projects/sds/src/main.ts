@@ -12,7 +12,7 @@ import {HttpApiInterceptor} from './app/shared/http-api-interceptor/http-api-int
 import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {LOCALE_ID, inject, provideAppInitializer} from '@angular/core';
 import {PreloadAllModules, provideRouter, withPreloading} from '@angular/router';
-import {APP_ROUTES} from './app.routes';
+import {appRoutes} from './app.routes';
 import {UploadInterceptor} from './app/code-examples/code-examples/file-upload/file-upload-simulate-interceptor';
 import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
 import {provideTranslateService} from '@ngx-translate/core';
@@ -53,7 +53,7 @@ bootstrapApplication(AppComponent, {
 			useClass: HttpApiInterceptor,
 			multi: true
 		},
-		provideRouter(APP_ROUTES, withPreloading(PreloadAllModules)),
+		provideRouter(appRoutes, withPreloading(PreloadAllModules)),
 		provideAnimations(),
 		provideHttpClient(withInterceptorsFromDi()),
 		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),

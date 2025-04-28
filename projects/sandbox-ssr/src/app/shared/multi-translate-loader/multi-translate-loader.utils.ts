@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {TranslateLoader, TranslateModuleConfig} from '@ngx-translate/core';
+import {TranslateLoader, type TranslateModuleConfig} from '@ngx-translate/core';
 import {ObMultiTranslateLoader} from './multi-translate-loader';
 
 function getTranslateLoader(http: HttpClient): ObMultiTranslateLoader {

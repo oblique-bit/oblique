@@ -19,7 +19,7 @@ import {
 import {addJest, addProtractor} from './tests';
 
 export function toolchain(options: ObIOptionsSchema): Rule {
-	return (tree: Tree, _context: SchematicContext) =>
+	return (tree: Tree, context: SchematicContext) =>
 		chain([
 			setBuilder(),
 			moveStyles(),
@@ -40,12 +40,12 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			addHusky(options.husky),
 			addEnvironmentFiles(options.environments, options.banner),
 			setEnvironments(options.environments)
-		])(tree, _context);
+		])(tree, context);
 }
 
 function setBuilder(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Toolchain: Setting angular builder');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Toolchain: Setting angular builder');
 		getAngularConfigs(tree, []).forEach(project => {
 			const {build} = project.config.architect;
 			const buildOptions = build.options;
@@ -82,9 +82,9 @@ function setBuilder(): Rule {
 }
 
 function moveStyles(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (!tree.exists('src/styles/styles.scss')) {
-			infoMigration(_context, 'Toolchain: Moving style sheets into "styles" directory');
+			infoMigration(context, 'Toolchain: Moving style sheets into "styles" directory');
 			const comment =
 				'// this file should contain only imports. Rules should be grouped by features and placed into the corresponding file';
 			addFile(tree, 'src/styles/styles.scss', comment);
@@ -97,9 +97,9 @@ function moveStyles(): Rule {
 }
 
 function addNpmrc(add: boolean): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (add) {
-			infoMigration(_context, 'Toolchain: Adding .npmrc');
+			infoMigration(context, 'Toolchain: Adding .npmrc');
 			addFile(tree, '.npmrc', getTemplate(tree, 'default-npmrc.config'));
 		}
 		return tree;
@@ -107,8 +107,8 @@ function addNpmrc(add: boolean): Rule {
 }
 
 function removeFavicon(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, "Toolchain: Removing Angular's favicon");
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, "Toolchain: Removing Angular's favicon");
 		deleteFile(tree, 'public/favicon.ico');
 		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: (string | Record<string, string>)[]) =>
 			(config || []).filter(item => typeof item === 'string' || JSON.stringify(item) !== '{"glob":"**/*","input":"public"}')
@@ -117,22 +117,22 @@ function removeFavicon(): Rule {
 }
 
 function removeI18nFromAngularJson(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, "Toolchain: Removing Angular's i18n");
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, "Toolchain: Removing Angular's i18n");
 		return removeAngularProjectsConfig(tree, ['architect', 'extract-i18n']);
 	});
 }
 
 function removeUnusedScripts(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Toolchain: Removing unused script');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Toolchain: Removing unused script');
 		return removeScript(tree, 'ng');
 	});
 }
 
 function addPrefix(prefix: string): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, "Toolchain: Setting application's prefix");
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, "Toolchain: Setting application's prefix");
 		tree = setRootAngularConfig(tree, ['schematics'], {
 			'@schematics/angular:component': {
 				prefix,
@@ -155,9 +155,9 @@ function updateExistingPrefixes(prefix: string): Rule {
 }
 
 function addProxy(port: string): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (/^\d+$/.test(port) && !tree.exists('proxy.conf.json')) {
-			infoMigration(_context, 'Toolchain: Adding proxy configuration');
+			infoMigration(context, 'Toolchain: Adding proxy configuration');
 			addFile(tree, 'proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port));
 			setOrCreateAngularProjectsConfig(tree, ['architect', 'serve', 'options', 'proxyConfig'], 'proxy.conf.json');
 		}
@@ -166,9 +166,9 @@ function addProxy(port: string): Rule {
 }
 
 function addSonar(sonar: boolean, jest: boolean): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (sonar) {
-			infoMigration(_context, 'Toolchain: Adding Sonar configuration');
+			infoMigration(context, 'Toolchain: Adding Sonar configuration');
 			addFile(tree, 'sonar-project.properties', getTemplate(tree, 'default-sonar-project.properties.config'));
 			if (jest) {
 				addRootProperty(tree, 'jestSonar', {
@@ -187,9 +187,9 @@ function addSonar(sonar: boolean, jest: boolean): Rule {
 }
 
 function updateEditorConfig(eslint: boolean): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (eslint) {
-			infoMigration(_context, 'Toolchain: update ".editorconfig"');
+			infoMigration(context, 'Toolchain: update ".editorconfig"');
 			writeFile(tree, '.editorconfig', getTemplate(tree, 'default-editorconfig.config'));
 		}
 		return tree;
@@ -197,9 +197,9 @@ function updateEditorConfig(eslint: boolean): Rule {
 }
 
 function addEslint(eslint: boolean): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (eslint) {
-			infoMigration(_context, 'Toolchain: Adding "eslint"');
+			infoMigration(context, 'Toolchain: Adding "eslint"');
 			['@eslint/js', '@eslint/eslintrc'].forEach(dependency => addDevDependency(tree, dependency));
 			return externalSchematic('@angular-eslint/schematics', 'ng-add', {});
 		}
@@ -208,9 +208,9 @@ function addEslint(eslint: boolean): Rule {
 }
 
 function addPrettier(eslint: boolean): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (eslint) {
-			infoMigration(_context, 'Toolchain: Adding "prettier"');
+			infoMigration(context, 'Toolchain: Adding "prettier"');
 			['prettier', 'eslint-config-prettier', 'eslint-plugin-prettier'].forEach(dependency => addDevDependency(tree, dependency));
 			addScript(tree, 'format', 'npm run lint -- --fix');
 			writeFile(tree, '.prettierrc', getTemplate(tree, 'default-prettierrc.config'));
@@ -220,9 +220,9 @@ function addPrettier(eslint: boolean): Rule {
 }
 
 function overwriteEslintRC(eslint: boolean, prefix: string): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (eslint) {
-			infoMigration(_context, 'Toolchain: overwrite "eslint.config.mjs"');
+			infoMigration(context, 'Toolchain: overwrite "eslint.config.mjs"');
 			deleteFile(tree, 'eslint.config.js');
 			writeFile(tree, 'eslint.config.mjs', formatEsLintRC(tree, prefix));
 		}
@@ -238,9 +238,9 @@ function formatEsLintRC(tree: Tree, prefix: string): string {
 }
 
 function addHusky(husky: boolean): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (husky) {
-			infoMigration(_context, 'Toolchain: Adding git hooks for code auto-formatting');
+			infoMigration(context, 'Toolchain: Adding git hooks for code auto-formatting');
 			addDevDependency(tree, 'husky');
 			addScript(tree, 'prepare', 'husky');
 			tree.create('.husky/pre-commit', 'npm run format');
@@ -250,9 +250,9 @@ function addHusky(husky: boolean): Rule {
 }
 
 function addEnvironmentFiles(environments: string, hasBanner: boolean): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (environments) {
-			infoMigration(_context, 'Toolchain: Adding environment files');
+			infoMigration(context, 'Toolchain: Adding environment files');
 			environments
 				.split(' ')
 				.map(environment => ({
@@ -277,7 +277,7 @@ function addEnvironmentFile(tree: Tree, fileName: string, fileContent: string): 
 
 function setEnvironments(environments: string): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext): Tree =>
+	return (tree: Tree, context: SchematicContext): Tree =>
 		setAngularProjectsConfig(tree, ['architect', 'build', 'configurations'], (config: any) => {
 			environments.split(' ').forEach(environment => {
 				config[environment] = {...config.production};

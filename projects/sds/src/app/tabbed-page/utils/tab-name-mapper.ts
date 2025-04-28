@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 export class TabNameMapper {
 	private static readonly tabNamesToUrlParam: Record<string, string> = {
-		API: 'api',
-		Examples: 'examples',
+		API: 'api', // eslint-disable-line @typescript-eslint/naming-convention
+		Examples: 'examples', // eslint-disable-line @typescript-eslint/naming-convention
 		'UI/UX': 'ui-ux'
 	};
 

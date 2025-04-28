@@ -1,13 +1,7 @@
+// @ts-check
 export default [
 	{
-		files: ['projects/cli/src/**/*.ts'],
-
-		languageOptions: {
-			parserOptions: {
-				project: ['projects/cli/tsconfig.app.json']
-			}
-		},
-
+		files: ['projects/cli/**/*.ts'],
 		rules: {
 			'no-console': [
 				'error',
@@ -16,36 +10,20 @@ export default [
 				}
 			],
 
-			'@typescript-eslint/no-magic-numbers': [
-				'error',
-				{
-					ignore: [-1, 0, 1]
-				}
-			]
-		}
-	},
-	{
-		files: ['projects/cli/scripts/*.ts'],
-
-		languageOptions: {
-			parserOptions: {
-				project: ['projects/cli/tsconfig.scripts.json']
-			}
+			// rules that are not respected
+			'@typescript-eslint/consistent-type-imports': 'off',
+			'@typescript-eslint/no-redundant-type-constituents': 'off',
+			'@typescript-eslint/no-unsafe-type-assertion': 'off',
+			'require-unicode-regexp': 'off',
+			curly: 'off'
 		}
 	},
 	{
 		files: ['projects/cli/src/**/*.spec.ts'],
-
-		languageOptions: {
-			parserOptions: {
-				project: ['projects/cli/tsconfig.spec.json']
-			}
-		},
-
 		rules: {
-			'no-console': 'off',
-			'@typescript-eslint/no-magic-numbers': 'off',
-			'@typescript-eslint/no-unsafe-assignment': 'off'
+			'@typescript-eslint/no-require-imports': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off',
+			'no-console': 'off'
 		}
 	}
 ];

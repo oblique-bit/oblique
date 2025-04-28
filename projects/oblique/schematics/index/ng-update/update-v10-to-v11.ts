@@ -28,8 +28,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	dependencies = {};
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	applyMigrations(_options: IUpdateV10Schema): Rule {
-		return (tree: Tree, _context: SchematicContext) =>
+	applyMigrations(options: IUpdateV10Schema): Rule {
+		return (tree: Tree, context: SchematicContext) =>
 			chain([
 				checkForStandalone(),
 				checkForSSR(),
@@ -57,12 +57,12 @@ export class UpdateV10toV11 implements ObIMigrations {
 				this.addNodeToCompilerOptions(),
 				this.addDataNoSnippet(),
 				this.addBrowserslistrcFile()
-			])(tree, _context);
+			])(tree, context);
 	}
 
 	private replaceObPopUpWithWindowInTests(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Replace ObPopUpService with Window');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Replace ObPopUpService with Window');
 			const apply = (filePath: string): void => {
 				const content = readFile(tree, filePath);
 				if (content.includes('ObPopUpService')) {
@@ -90,8 +90,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private replaceObPopUpWithWindow(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Replace ObPopUpService with Window');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Replace ObPopUpService with Window');
 			const apply = (filePath: string): void => {
 				const varName = /(?<varname>\w+)\s*:\s*ObPopUpService/.exec(readFile(tree, filePath))?.groups?.varname;
 				if (varName) {
@@ -106,8 +106,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private removeInputVariantInNavTree(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove the @Input "variant" in the nav-tree component');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove the @Input "variant" in the nav-tree component');
 			const apply = (filePath: string): void => {
 				removeHtmlTagAttribute(tree, filePath, 'ob-nav-tree', 'variant');
 			};
@@ -116,8 +116,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private removeInputActivateAncestorsInNavTree(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove the @Input "activateAncestors" in the nav-tree component');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove the @Input "activateAncestors" in the nav-tree component');
 			const apply = (filePath: string): void => {
 				removeHtmlTagAttribute(tree, filePath, 'ob-nav-tree', 'activateAncestors');
 			};
@@ -126,8 +126,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private removeObSearchBox(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove search box feature');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove search box feature');
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'ObSearchBoxModule', '@oblique/oblique');
 				removeImport(tree, filePath, 'ObSearchBoxComponent', '@oblique/oblique');
@@ -139,8 +139,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private removeFakeFocus(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove fake focus');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove fake focus');
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'ObNavTreeFakeFocusDirective', '@oblique/oblique');
 				replaceInFile(tree, filePath, /\[?obNavTreeFakeFocus]?\s*=\s*["'].*?["']\s*/g, '');
@@ -150,8 +150,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private replaceScssWithCssStylesInAngularJson(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Replace scss with css styles in angular.json');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Replace scss with css styles in angular.json');
 			return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: string[]) => {
 				const styles = ['oblique-core', 'oblique-alert', 'oblique-icons'];
 				styles.forEach(style => {
@@ -166,8 +166,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private replaceNgContainerToken(token: string): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, `Replace ${token} with #obHeaderControl`);
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, `Replace ${token} with #obHeaderControl`);
 			const apply = (filePath: string): void => {
 				replaceInFile(
 					tree,
@@ -181,8 +181,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private wrapOneLinerContentProjectionWithNgTemplate(token: string): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, `Wrap one liner ${token} with #obHeaderControl`);
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, `Wrap one liner ${token} with #obHeaderControl`);
 			const apply = (filePath: string): void => {
 				replaceInFile(
 					tree,
@@ -196,8 +196,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private wrapMultiLinerContentProjectionWithNgTemplate(token: string): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, `Wrap ${token} with #obHeaderControl`);
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, `Wrap ${token} with #obHeaderControl`);
 			const apply = (filePath: string): void => {
 				replaceInFile(
 					tree,
@@ -211,8 +211,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private removeContentProjectionMarker(token: string): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, `Remove ${token} content projection marker`);
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, `Remove ${token} content projection marker`);
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, new RegExp(`\\s*${token}`, 'g'), '');
 			};
@@ -221,8 +221,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private removeActivateServiceNavigationToken(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, `Remove OB_ACTIVATE_SERVICE_NAVIGATION token`);
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, `Remove OB_ACTIVATE_SERVICE_NAVIGATION token`);
 			const apply = (filePath: string): void => {
 				replaceInFile(
 					tree,
@@ -237,8 +237,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private removeTableCicd(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, `Remove ob-table-cicd class`);
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, `Remove ob-table-cicd class`);
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /\[class\.ob-table-cicd]=["']\w+["']/g, ''); // [class.ob-table-cicd]="true"
 				replaceInFile(tree, filePath, /['"]ob-table-cicd["']\s*:[^},]*,?/g, ''); // [ngClass]="{'ob-table-cicd': true}"
@@ -251,23 +251,23 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private runMDCMigration(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, `Check the @angular/material version before running the mdc-migration.`);
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, `Check the @angular/material version before running the mdc-migration.`);
 			const angularMaterialVersion = getDepVersion(tree, '@angular/material') || '';
 			if (angularMaterialVersion.startsWith('17')) {
-				infoMigration(_context, `Runs the mdc-migration.`);
+				infoMigration(context, `Runs the mdc-migration.`);
 				return externalSchematic('@angular/material', 'mdc-migration', {
 					components: ['all']
 				});
 			}
-			warn(_context, `No compatible @angular/material version found to run the mdc-migration. @angular/material@17 is needed.`);
+			warn(context, `No compatible @angular/material version found to run the mdc-migration. @angular/material@17 is needed.`);
 			return tree;
 		});
 	}
 
 	private removeTransformMock(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, `Remove transform mock in jest configuration`);
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, `Remove transform mock in jest configuration`);
 			const path = 'tests/jestGlobalMocks.ts';
 			tree.overwrite(
 				path,
@@ -279,8 +279,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private deactivatePreferStandalone(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, `Deactivate "@angular-eslint/prefer-standalone-component" rule`);
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, `Deactivate "@angular-eslint/prefer-standalone-component" rule`);
 			const path = '.eslintrc.json';
 			const eslintConfiguration: {overrides: {files: string[]; rules?: Record<string, string>}[]} = JSON.parse(readFile(tree, path));
 			// can't use filter or conditional chaining as we need to modify a value
@@ -301,8 +301,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private removeGlobalsFromJestConfig(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, `Remove "globals" configuration from jest configuration`);
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, `Remove "globals" configuration from jest configuration`);
 			const path = 'tests/jest.config.js';
 			tree.overwrite(path, readFile(tree, path).replace(/\s*globals.*?}(?:,|(?=\s*};))/s, ''));
 			// can't use applyInTree as the target file is outside sourceRoot
@@ -311,8 +311,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private addNodeToCompilerOptions(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, `Add "node" to compiler options for tests`);
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, `Add "node" to compiler options for tests`);
 			getAngularConfigs(tree, ['architect', 'test', 'options', 'tsConfig'])
 				.map(({config}) => config)
 				.filter(path => tree.exists(path))
@@ -329,8 +329,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private addDataNoSnippet(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, `Add data-nosnippet to browser compatibility warning in the index.html`);
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, `Add data-nosnippet to browser compatibility warning in the index.html`);
 			getIndexPaths(tree).forEach((indexPath: string) =>
 				overwriteIndexFile(indexPath, tree, 'class="ob-compatibility"', 'class="ob-compatibility" data-nosnippet')
 			);
@@ -339,8 +339,8 @@ export class UpdateV10toV11 implements ObIMigrations {
 	}
 
 	private addBrowserslistrcFile(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Add the .browserslistrc file if not already present');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Add the .browserslistrc file if not already present');
 			const browserlistrcFile = getTemplate(tree, 'default-browserslistrc.config');
 			addFile(tree, '.browserslistrc', browserlistrcFile);
 			return tree;

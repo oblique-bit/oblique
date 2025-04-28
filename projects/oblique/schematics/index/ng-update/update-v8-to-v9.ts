@@ -23,9 +23,9 @@ export class UpdateV8toV9 implements ObIMigrations {
 	dependencies = {};
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	applyMigrations(_options: IUpdateV8Schema): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Analyzing project');
+	applyMigrations(options: IUpdateV8Schema): Rule {
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Analyzing project');
 			return chain([
 				this.renameTranslationKeys(),
 				this.removeObUseObliqueIconsToken(),
@@ -35,13 +35,13 @@ export class UpdateV8toV9 implements ObIMigrations {
 				this.renameOpened(),
 				this.addTelemetryInfo(),
 				this.addIconModule()
-			])(tree, _context);
+			])(tree, context);
 		};
 	}
 
 	private renameTranslationKeys(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Renaming Oblique translation keys');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Renaming Oblique translation keys');
 			const apply = (filePath: string): void => {
 				[
 					'progressBar',
@@ -70,8 +70,8 @@ export class UpdateV8toV9 implements ObIMigrations {
 	}
 
 	private removeObUseObliqueIconsToken(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove ObUseObliqueIcons is set to true');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove ObUseObliqueIcons is set to true');
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /\s*{\s*provide\s*:\s*ObUseObliqueIcons\s*,\s*useValue\s*:\s*true\s*}\s*,+/g, '');
 				replaceInFile(tree, filePath, /,+\s*{\s*provide\s*:\s*ObUseObliqueIcons\s*,\s*useValue\s*:\s*true\s*}\s*/, '');
@@ -82,8 +82,8 @@ export class UpdateV8toV9 implements ObIMigrations {
 	}
 
 	private updateBrowserCompatibilityMessages(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Oblique: Updating browser compatibility check message');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Oblique: Updating browser compatibility check message');
 			getIndexPaths(tree).forEach((indexPath: string) =>
 				overwriteIndexFile(indexPath, tree, new RegExp(/<noscript>(?:.|\r?\n)*<\/div>/gm))
 			);
@@ -92,8 +92,8 @@ export class UpdateV8toV9 implements ObIMigrations {
 	}
 
 	private renameJumpLinks(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Rename jumpLinks into skipLinks');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Rename jumpLinks into skipLinks');
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /ObIJumpLink/g, 'ObISkipLink');
 				replaceInFile(tree, filePath, /jumpLinks/g, 'skipLinks');
@@ -103,8 +103,8 @@ export class UpdateV8toV9 implements ObIMigrations {
 	}
 
 	private useKebabCaseForMixins(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Rename some mixins to use kebab-case');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Rename some mixins to use kebab-case');
 			const apply = (filePath: string): void => {
 				['ob-gridTemplate', 'ob-gridSpan', 'ob-gridWidth', 'ob-flexBase', 'ob-flexGrow', 'ob-dropShadow', 'ob-innerBottomShadow'].forEach(
 					mixin => {
@@ -117,8 +117,8 @@ export class UpdateV8toV9 implements ObIMigrations {
 	}
 
 	private renameOpened(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Rename getOpened to opened$');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Rename getOpened to opened$');
 			const apply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				const offCanvas = /(?<offCanvas>\w*)\s*:\s*ObOffCanvasService/.exec(fileContent)?.groups?.offCanvas;
@@ -131,14 +131,14 @@ export class UpdateV8toV9 implements ObIMigrations {
 	}
 
 	private addTelemetryInfo(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Update Telemetry info');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Update Telemetry info');
 			const mainTsPathPerProject = getFilePathPerProject(tree, ['architect', 'build', 'options', 'main']);
 			const rootModulesPathPerProject = getRootModulePathPerProject(tree, mainTsPathPerProject);
-			this.addTelemetry(tree, _context, mainTsPathPerProject, rootModulesPathPerProject);
+			this.addTelemetry(tree, context, mainTsPathPerProject, rootModulesPathPerProject);
 			this.removeTelemetryDisable(
 				tree,
-				_context,
+				context,
 				rootModulesPathPerProject.map(file => file.path)
 			);
 
@@ -148,11 +148,11 @@ export class UpdateV8toV9 implements ObIMigrations {
 
 	private addTelemetry(
 		tree: Tree,
-		_context: SchematicContext,
+		context: SchematicContext,
 		mainTsPathPerProject: PathPerProject[],
 		rootModulesPathPerProject: PathPerProject[]
 	): void {
-		infoMigration(_context, "Configure Telemetry for projects that didn't disable it.");
+		infoMigration(context, "Configure Telemetry for projects that didn't disable it.");
 		const tsConfigPathsPerProject = getFilePathPerProject(tree, ['architect', 'build', 'options', 'tsConfig']);
 		rootModulesPathPerProject
 			.map(file => ({...file, content: readFile(tree, file.path)}))
@@ -180,8 +180,8 @@ export class UpdateV8toV9 implements ObIMigrations {
 		return target.find(config => config.project === project)?.path ?? '';
 	}
 
-	private removeTelemetryDisable(tree: Tree, _context: SchematicContext, rootModulePaths: string[]): void {
-		infoMigration(_context, 'Remove TELEMETRY_DISABLE injection token');
+	private removeTelemetryDisable(tree: Tree, context: SchematicContext, rootModulePaths: string[]): void {
+		infoMigration(context, 'Remove TELEMETRY_DISABLE injection token');
 		rootModulePaths.forEach(path =>
 			replaceInFile(tree, path, /{\s*provide\s*:\s*TELEMETRY_DISABLE\s*,\s*useValue\s*:\s*(?:true|false)}\s*,?/, '')
 		);
@@ -224,8 +224,8 @@ export class UpdateV8toV9 implements ObIMigrations {
 	}
 
 	private addIconModule(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Import Oblique icons in the root module');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Import Oblique icons in the root module');
 			const mainTsPathPerProject = getFilePathPerProject(tree, ['architect', 'build', 'options', 'main']);
 			getRootModulePathPerProject(tree, mainTsPathPerProject)
 				.map(item => item.path)

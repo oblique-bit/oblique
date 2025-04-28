@@ -12,69 +12,69 @@ import {UpdateV10toV11} from './update-v10-to-v11';
 import {UpdateV11toV12} from './update-v11-to-v12';
 import {UpdateV12toV13} from './update-v12-to-v13';
 
-export function upgradeToV5(_options: Record<string, any>): Rule {
+export function upgradeToV5(options: Record<string, any>): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV4toV5(), _options);
+	return (tree: Tree, context: SchematicContext) => startup(new UpdateV4toV5(), options);
 }
 
-export function upgradeToV6(_options: Record<string, any>): Rule {
+export function upgradeToV6(options: Record<string, any>): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV5toV6(), _options);
+	return (tree: Tree, context: SchematicContext) => startup(new UpdateV5toV6(), options);
 }
 
-export function upgradeToV7(_options: Record<string, any>): Rule {
+export function upgradeToV7(options: Record<string, any>): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV6toV7(), _options);
+	return (tree: Tree, context: SchematicContext) => startup(new UpdateV6toV7(), options);
 }
 
-export function upgradeToV8(_options: Record<string, any>): Rule {
+export function upgradeToV8(options: Record<string, any>): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV7toV8(), _options);
+	return (tree: Tree, context: SchematicContext) => startup(new UpdateV7toV8(), options);
 }
 
-export function upgradeToV9(_options: Record<string, any>): Rule {
+export function upgradeToV9(options: Record<string, any>): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV8toV9(), _options);
+	return (tree: Tree, context: SchematicContext) => startup(new UpdateV8toV9(), options);
 }
 
-export function upgradeToV10(_options: Record<string, any>): Rule {
+export function upgradeToV10(options: Record<string, any>): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV9toV10(), _options);
+	return (tree: Tree, context: SchematicContext) => startup(new UpdateV9toV10(), options);
 }
 
-export function upgradeToV11(_options: Record<string, any>): Rule {
+export function upgradeToV11(options: Record<string, any>): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV10toV11(), _options);
+	return (tree: Tree, context: SchematicContext) => startup(new UpdateV10toV11(), options);
 }
 
-export function upgradeToV12(_options: Record<string, any>): Rule {
+export function upgradeToV12(options: Record<string, any>): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV11toV12(), _options);
+	return (tree: Tree, context: SchematicContext) => startup(new UpdateV11toV12(), options);
 }
 
-export function upgradeToV13(_options: Record<string, any>): Rule {
+export function upgradeToV13(options: Record<string, any>): Rule {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, _context: SchematicContext) => startup(new UpdateV12toV13(), _options);
+	return (tree: Tree, context: SchematicContext) => startup(new UpdateV12toV13(), options);
 }
 
-function startup(migrations: ObIMigrations, _options: Record<string, any>): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Starting migrations');
+function startup(migrations: ObIMigrations, options: Record<string, any>): Rule {
+	return (tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Starting migrations');
 
-		return chain([migrations.applyMigrations(_options), installDependencies(), finalize(migrations.dependencies)])(tree, _context);
+		return chain([migrations.applyMigrations(options), installDependencies(), finalize(migrations.dependencies)])(tree, context);
 	};
 }
 
 export function finalize(deps: ObIDependencies): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
-		success(_context, 'Oblique has been successfully migrated. Please review the changes.');
+	return (tree: Tree, context: SchematicContext) => {
+		success(context, 'Oblique has been successfully migrated. Please review the changes.');
 		infoHighlights(
-			_context,
+			context,
 			`Let us update other dependencies to conclude.
 run %c to update the dependencies to their latest compatible versions and %c to discover other updatable packages.`,
 			'npm update',
 			'npm outdated'
 		);
-		checkDependencies(tree, _context, deps);
+		checkDependencies(tree, context, deps);
 	};
 }

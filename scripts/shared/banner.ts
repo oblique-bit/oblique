@@ -8,7 +8,7 @@ import {Files} from './files';
 export class Banner extends StaticScript {
 	// manually set for versions with prolonged support
 	private static readonly eolDates = {
-		'10.0.0': '2024-06-30' // eslint-disable-line @typescript-eslint/naming-convention
+		'10.0.0': '2024-06-30'
 	};
 
 	static addToFilesInProject(projectName: string): void {
@@ -24,8 +24,8 @@ export class Banner extends StaticScript {
 	}
 
 	private static addBannerToFileContent(content: string, banner: string): string {
-		const SHEBANG_REGEX = /(?<shebang>^#!.*)/;
-		const shebangMatch = SHEBANG_REGEX.exec(content);
+		const shebangRegex = /(?<shebang>^#!.*)/;
+		const shebangMatch = shebangRegex.exec(content);
 		return shebangMatch?.groups?.shebang
 			? Banner.insertAfterTarget(content, banner, shebangMatch.groups.shebang)
 			: `${banner}${EOL}${content}`;

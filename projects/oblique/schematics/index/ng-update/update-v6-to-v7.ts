@@ -13,9 +13,9 @@ export class UpdateV6toV7 implements ObIMigrations {
 	};
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	applyMigrations(_options: IUpdateV7Schema): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Analyzing project');
+	applyMigrations(options: IUpdateV7Schema): Rule {
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Analyzing project');
 			return chain([
 				this.adaptPolyfills(),
 				this.renameObIconsConfig(),
@@ -24,21 +24,21 @@ export class UpdateV6toV7 implements ObIMigrations {
 				this.removeDirection(),
 				this.migrateAlerts(),
 				this.migrateNavigationPathMatch()
-			])(tree, _context);
+			])(tree, context);
 		};
 	}
 
 	private adaptPolyfills(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Removing IE 11 polyfills');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Removing IE 11 polyfills');
 			removePolyFill(tree, 'web-animations-js', /^\s*import\s+['"]web-animations-js['"];.*/gm);
 			removePolyFill(tree, 'classlist.js', /^\s*import\s+['"]classlist.js['"];.*/gm);
 		};
 	}
 
 	private renameObIconsConfig(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Renaming ObIconsConfig into ObIconConfig');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Renaming ObIconsConfig into ObIconConfig');
 			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /ObIconsConfig/g, 'ObIconConfig');
 			};
@@ -47,8 +47,8 @@ export class UpdateV6toV7 implements ObIMigrations {
 	}
 
 	private renameSpacingLg(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Renaming $spacing-lg into $spacing-xl');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Renaming $spacing-lg into $spacing-xl');
 			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /\$spacing-lg/g, '$spacing-xl');
 			};
@@ -57,8 +57,8 @@ export class UpdateV6toV7 implements ObIMigrations {
 	}
 
 	private renameTableTitleAttribute(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Renaming title attribute into data-title for tables');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Renaming title attribute into data-title for tables');
 			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /(?<=<table[^>]*?class=".*?ob-table-collapse.*?".*?<td[^>]*?)(?<!data-)title="/gs, 'data-title="');
 			};
@@ -67,8 +67,8 @@ export class UpdateV6toV7 implements ObIMigrations {
 	}
 
 	private removeDirection(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Removing direction input on collapse');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Removing direction input on collapse');
 			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /(<ob-collapse\s.*?)\[?direction]?=".*?"\s?(.*?>)/g, '$1$2');
 			};
@@ -77,8 +77,8 @@ export class UpdateV6toV7 implements ObIMigrations {
 	}
 
 	private migrateAlerts(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Use ob-alert instead of alert classes');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Use ob-alert instead of alert classes');
 			const toApply = (filePath: string): void => {
 				replaceInFile(
 					tree,
@@ -92,8 +92,8 @@ export class UpdateV6toV7 implements ObIMigrations {
 	}
 
 	private migrateNavigationPathMatch(): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Migrate pathMatch to routerLinkActiveOptions');
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Migrate pathMatch to routerLinkActiveOptions');
 			const toApply = (filePath: string): void => {
 				replaceInFile(
 					tree,
