@@ -1,7 +1,7 @@
-import {Command, Option} from '@commander-js/extra-typings';
-import {OptionValues} from 'commander';
-import {ObNewOptions, ObNewSchemaOption} from '../new/ob-new.model';
-import {ObCliSchema} from './ob-cli.model';
+import {Command, type Option} from '@commander-js/extra-typings';
+import type {OptionValues} from 'commander';
+import type {ObNewOptions, ObNewSchemaOption} from '../new/ob-new.model';
+import type {ObCliSchema} from './ob-cli.model';
 import {addObNewCommandOptions, configureOption, convertOptionPropertyNames} from './ob-configure-command';
 
 jest.mock('../new/ob-new.model');
@@ -91,7 +91,7 @@ describe('ob-configure-command tests', () => {
 				flagValuePlaceholder: 'value'
 			} as ObNewSchemaOption;
 
-			expect(() => configureOption(brokenConfig, '')).toThrow(/At least one of shortFlag or longFlag must be provided./i);
+			expect(() => configureOption(brokenConfig, '')).toThrow(/At least one of shortFlag or longFlag must be provided./iu);
 		});
 
 		test.each(testCases)('should have $description', ({actual, expected, matcher}) => {

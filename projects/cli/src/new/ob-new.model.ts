@@ -1,4 +1,4 @@
-import {Command, OptionValues} from '@commander-js/extra-typings';
+import type {Command, OptionValues} from '@commander-js/extra-typings';
 import {projectNamePlaceholder} from '../utils/cli-utils';
 
 export type ObNewOptions<ValueType> = Record<OptionKeys, ValueType>;

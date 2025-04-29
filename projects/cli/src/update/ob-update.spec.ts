@@ -1,7 +1,7 @@
-import {Command, OptionValues} from '@commander-js/extra-typings';
+import {Command, type OptionValues} from '@commander-js/extra-typings';
 import path from 'node:path';
 import fs from 'node:fs';
-import {PackageDependencies} from './ob-update.model';
+import type {PackageDependencies} from './ob-update.model';
 import * as obUpdate from './ob-update';
 
 describe('ObUpdateCommand Tests', () => {
@@ -29,7 +29,7 @@ describe('ObUpdateCommand Tests', () => {
 
 		describe('createObUpdateCommand', () => {
 			beforeAll(() => {
-				const obCliUtils = require('../utils/cli-utils');
+				const obCliUtils: typeof import('../utils/cli-utils') = jest.requireActual('../utils/cli-utils');
 				jest.spyOn(obCliUtils, 'commandUsageText').mockReturnValue('update');
 				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => '');
 				const cmd = obUpdate.createObUpdateCommand();
