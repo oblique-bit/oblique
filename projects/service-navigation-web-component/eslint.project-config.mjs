@@ -3,37 +3,31 @@ export default [
 	{
 		files: ['projects/service-navigation-web-component/**/*.ts'],
 		rules: {
-			// rules that are not respected
-			'@angular-eslint/prefer-signals': 'off',
+			'@angular-eslint/directive-selector': [
+				'error',
+				{
+					type: 'attribute',
+					prefix: 'ob',
+					style: 'camelCase'
+				}
+			],
+
+			'@angular-eslint/component-selector': [
+				'error',
+				{
+					type: 'element',
+					prefix: 'ob',
+					style: 'kebab-case'
+				}
+			],
+			// features that are used
 			'@angular-eslint/use-component-view-encapsulation': 'off',
 			'@angular-eslint/use-injectable-provided-in': 'off',
-			'@typescript-eslint/consistent-type-imports': 'off',
-			'@typescript-eslint/max-params': 'off',
-			'@typescript-eslint/no-deprecated': 'off',
-			'@typescript-eslint/no-explicit-any': 'off',
-			'@typescript-eslint/no-magic-numbers': 'off',
-			'@typescript-eslint/no-unsafe-argument': 'off',
-			'@typescript-eslint/no-unsafe-assignment': 'off',
-			'@typescript-eslint/no-unsafe-return': 'off',
-			'@typescript-eslint/parameter-properties': 'off',
-			'require-unicode-regexp': 'off'
-		}
-	},
-	{
-		files: ['projects/service-navigation-web-component/**/*.html'],
-		rules: {
+
 			// rules that are not respected
-			'@angular-eslint/template/attributes-order': 'off',
-			'@angular-eslint/template/prefer-control-flow': 'off',
-			'@angular-eslint/template/use-track-by-function': 'off'
-		}
-	},
-	{
-		files: ['projects/service-navigation-web-component/**/*.spec.ts'],
-		rules: {
-			// rules that are not respected
-			'@typescript-eslint/no-unsafe-call': 'off',
-			'@typescript-eslint/no-unsafe-member-access': 'off'
+			'@typescript-eslint/no-deprecated': 'off', // need an alternative to provide icons
+			'@typescript-eslint/no-magic-numbers': 'off', // would violate member-ordering
+			'@typescript-eslint/no-unsafe-return': 'off' // need extensive type checking
 		}
 	}
 ];

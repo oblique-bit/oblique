@@ -457,6 +457,8 @@ export default config(
 			'@typescript-eslint/no-empty-function': 'off', // mocks may be empty
 			'@typescript-eslint/no-floating-promises': 'off', // lots of jest function returns a promise that we don't care about
 			'@typescript-eslint/no-magic-numbers': 'off', // useful at assert the number of elements
+			'@typescript-eslint/no-unsafe-call': 'off', // because fixture.nativeElement is typed `any`
+			'@typescript-eslint/no-unsafe-member-access': 'off', // because fixture.nativeElement is typed `any`
 			'@typescript-eslint/no-unsafe-type-assertion': 'off', // nativeElement is typed with any
 			'@typescript-eslint/unbound-method': 'off' // toHaveBeenCalled is used on unbound method
 		}
@@ -486,7 +488,7 @@ export default config(
 			'@angular-eslint/template/mouse-events-have-key-events': 'error',
 			'@angular-eslint/template/no-any': 'error',
 			'@angular-eslint/template/no-autofocus': 'error',
-			'@angular-eslint/template/no-call-expression': 'error',
+			'@angular-eslint/template/no-call-expression': 'off', // not compatible with @angular-eslint/prefer-signals
 			'@angular-eslint/template/no-distracting-elements': 'error',
 			'@angular-eslint/template/no-duplicate-attributes': 'error',
 			'@angular-eslint/template/no-inline-styles': 'error',

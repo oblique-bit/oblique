@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {ObServiceNavigationWebComponentComponent} from './service-navigation-web-component.component';
 import {TranslateModule} from '@ngx-translate/core';
-import {SimpleChange, SimpleChanges} from '@angular/core';
+import {SimpleChange, type SimpleChanges} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {By} from '@angular/platform-browser';
 import {ObServiceNavigationComponent, WINDOW, multiTranslateLoader} from '@oblique/oblique';
@@ -35,8 +35,8 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 	describe('environment', () => {
 		describe('invalid', () => {
 			it("should fail when we give a value that doesn't exist in ObEPamsEnvironment", () => {
-				component.environment = 'invalid' as 'PROD';
-				component.languageList = 'en';
+				fixture.componentRef.setInput('environment', 'invalid');
+				fixture.componentRef.setInput('languageList', 'en');
 				const func = (): void => component.ngOnInit();
 				expect(func).toThrow('An environment has to be provided');
 			});
@@ -52,8 +52,8 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 			])(
 				'should return $environmentCode according to the key $environmentName from the enum ObEPamsEnvironment',
 				({environmentName, environmentCode}) => {
-					component.environment = environmentName as 'PROD';
-					component.languageList = 'en';
+					fixture.componentRef.setInput('environment', environmentName);
+					fixture.componentRef.setInput('languageList', 'en');
 					component.ngOnInit();
 					fixture.detectChanges();
 					expect(component.environmentParsed).toBe(environmentCode);
@@ -62,8 +62,8 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 		});
 
 		it.each(['DEV', 'TEST', 'REF', 'ABN', 'PROD'])('should embed service-navigation', environment => {
-			component.environment = environment as 'DEV' | 'TEST' | 'REF' | 'ABN' | 'PROD';
-			component.languageList = 'en';
+			fixture.componentRef.setInput('environment', environment);
+			fixture.componentRef.setInput('languageList', 'en');
 			fixture.detectChanges();
 			const serviceNavigation = fixture.debugElement.query(By.directive(ObServiceNavigationComponent));
 			expect(serviceNavigation).toBeTruthy();
@@ -72,7 +72,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 
 	describe('languageList', () => {
 		it("should throw an error when it's empty", () => {
-			component.environment = 'DEV';
+			fixture.componentRef.setInput('environment', 'DEV');
 			const func = (): void => component.ngOnInit();
 			expect(func).toThrow(
 				'"language-list" expects a comma separated list of ISO 639-1 languages (e.g. en,fr,de) but received "undefined"'
@@ -80,8 +80,8 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 		});
 
 		it("should throw an error when it's empty", () => {
-			component.environment = 'DEV';
-			component.languageList = 'en, fr';
+			fixture.componentRef.setInput('environment', 'DEV');
+			fixture.componentRef.setInput('languageList', 'en, fr');
 			const func = (): void => component.ngOnInit();
 			expect(func).toThrow('"language-list" expects a comma separated list of ISO 639-1 languages (e.g. en,fr,de) but received "en, fr"');
 		});
@@ -179,8 +179,8 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 				let buttons: HTMLElement[];
 				beforeEach(() => {
 					const customButtonsObject = [{obliqueIconName: 'smile', badge: '1'}, {obliqueIconName: 'calendar'}];
-					component.environment = 'DEV';
-					component.languageList = 'en';
+					fixture.componentRef.setInput('environment', 'DEV');
+					fixture.componentRef.setInput('languageList', 'en');
 					component.ngOnChanges({
 						...defaultChangesValues(),
 						customButtons: new SimpleChange(null, JSON.stringify(customButtonsObject), true)
