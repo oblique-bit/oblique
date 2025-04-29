@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, viewChild} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
@@ -30,6 +30,7 @@ export class ChipsExampleAutocompletePreviewComponent {
 	filteredFruits$: Observable<string[]>;
 	fruits: string[] = ['Lemon'];
 	allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+	readonly fruitInput = viewChild<ElementRef<HTMLInputElement>>('fruitInput');
 
 	constructor() {
 		this.filteredFruits$ = this.fruitControl.valueChanges.pipe(
@@ -63,6 +64,7 @@ export class ChipsExampleAutocompletePreviewComponent {
 	selected(event: MatAutocompleteSelectedEvent): void {
 		this.fruits.push(event.option.viewValue);
 		this.fruitControl.setValue(null);
+		this.fruitInput().nativeElement.value = '';
 	}
 
 	private filter(value: string): string[] {
