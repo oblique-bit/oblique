@@ -1,4 +1,4 @@
-import {Component, Signal} from '@angular/core';
+import {Component, type Signal, inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ObNavTreeItemModel} from '@oblique/oblique';
@@ -11,7 +11,7 @@ import {map} from 'rxjs';
 	standalone: false
 })
 export class NavTreeSampleComponent {
-	public items: Signal<ObNavTreeItemModel[]>;
+	public readonly items: Signal<ObNavTreeItemModel[]>;
 
 	public filter = {
 		pattern: null,
@@ -21,7 +21,8 @@ export class NavTreeSampleComponent {
 	};
 	public hasEmbeddedFilter = false;
 
-	constructor(route: ActivatedRoute) {
+	constructor() {
+		const route = inject(ActivatedRoute);
 		this.items = toSignal(route.data.pipe(map(data => data.sample.navTree.items.map(item => new ObNavTreeItemModel(item)))));
 	}
 

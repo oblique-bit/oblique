@@ -2,7 +2,7 @@
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
 		<h3>Reactive form</h3>
-		<form #ngForm [formGroup]="focusInvalidFormGroup" obFocusInvalid (submit)="validateForm(ngForm.valid)">
+		<form #ngForm obFocusInvalid [formGroup]="focusInvalidFormGroup" (submit)="validateForm(ngForm.valid)">
 			<mat-form-field obErrorMessages>
 				<mat-label>Text</mat-label>
 				<input type="text" matInput formControlName="text" />
@@ -11,7 +11,7 @@
 
 			<mat-form-field obErrorMessages>
 				<mat-label>Datepicker</mat-label>
-				<input matInput [matDatepicker]="defaultDatepicker" formControlName="datepicker" />
+				<input matInput formControlName="datepicker" [matDatepicker]="defaultDatepicker" />
 				<mat-hint>DD.MM.YYYY</mat-hint>
 				<mat-datepicker-toggle matIconSuffix [for]="defaultDatepicker" />
 				<mat-datepicker #defaultDatepicker />
@@ -54,13 +54,13 @@
 		<form #templateForm="ngForm" obFocusInvalid (submit)="validateForm(templateForm.valid)">
 			<mat-form-field obErrorMessages>
 				<mat-label>Text</mat-label>
-				<input type="text" matInput [(ngModel)]="text" name="text" required />
+				<input type="text" matInput name="text" required [(ngModel)]="text" />
 				<mat-error />
 			</mat-form-field>
 
 			<mat-form-field obErrorMessages>
 				<mat-label>Datepicker</mat-label>
-				<input matInput [matDatepicker]="defaultDatepicker2" [(ngModel)]="datepicker" name="datepicker" required />
+				<input matInput name="datepicker" required [matDatepicker]="defaultDatepicker2" [(ngModel)]="datepicker" />
 				<mat-hint>DD.MM.YYYY</mat-hint>
 				<mat-datepicker-toggle matIconSuffix [for]="defaultDatepicker2" />
 				<mat-datepicker #defaultDatepicker2 />
@@ -69,7 +69,7 @@
 
 			<mat-form-field obErrorMessages>
 				<mat-label>Select</mat-label>
-				<mat-select [(ngModel)]="select" name="select" required>
+				<mat-select name="select" required [(ngModel)]="select">
 					<mat-option [value]="null" />
 					<mat-option [value]="1">One</mat-option>
 					<mat-option [value]="2">Two</mat-option>
@@ -80,15 +80,15 @@
 				<mat-error />
 			</mat-form-field>
 
-			<mat-checkbox [(ngModel)]="checkbox" name="checkbox" required>Checkbox</mat-checkbox>
+			<mat-checkbox name="checkbox" required [(ngModel)]="checkbox">Checkbox</mat-checkbox>
 
 			<mat-form-field>
 				<mat-label>Textarea</mat-label>
-				<textarea matInput [(ngModel)]="textarea" name="textarea" required></textarea>
+				<textarea matInput name="textarea" required [(ngModel)]="textarea"></textarea>
 				<mat-error />
 			</mat-form-field>
 
-			<mat-radio-group [(ngModel)]="radio" name="radio" required>
+			<mat-radio-group name="radio" required [(ngModel)]="radio">
 				<mat-radio-button value="1">one</mat-radio-button>
 				<mat-radio-button value="2">two</mat-radio-button>
 			</mat-radio-group>

@@ -1,7 +1,7 @@
-import {Component, Signal} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {Component, type Signal, inject} from '@angular/core';
+import {ActivatedRoute, type Params} from '@angular/router';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {Observable, filter, map} from 'rxjs';
+import {type Observable, filter, map} from 'rxjs';
 
 @Component({
 	selector: 'sb-nav-tree-detail-sample',
@@ -9,11 +9,12 @@ import {Observable, filter, map} from 'rxjs';
 	standalone: false
 })
 export class NavTreeDetailSampleComponent {
-	url: Signal<{param: string; value: string}[]>;
-	queryParams: Signal<{param: string; value: string}[]>;
-	fragment: Signal<string>;
+	readonly url: Signal<{param: string; value: string}[]>;
+	readonly queryParams: Signal<{param: string; value: string}[]>;
+	readonly fragment: Signal<string>;
 
-	constructor(route: ActivatedRoute) {
+	constructor() {
+		const route = inject(ActivatedRoute);
 		this.url = toSignal(route.params.pipe(this.paramsToArray()));
 		this.queryParams = toSignal(route.queryParams.pipe(this.paramsToArray()));
 		this.fragment = toSignal(route.fragment);

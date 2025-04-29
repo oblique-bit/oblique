@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {ExampleDialogComponent} from './example-dialog/example-dialog.component';
 
@@ -8,6 +8,8 @@ import {ExampleDialogComponent} from './example-dialog/example-dialog.component'
 	standalone: false
 })
 export class DialogComponent {
+	dialog = inject(MatDialog);
+
 	spinner = 'none';
 	name: string;
 	animal: string;
@@ -18,7 +20,7 @@ export class DialogComponent {
 	private readonly DIALOG_STATE_CLOSED = 'Closed';
 	private readonly DIALOG_WIDTH = '250px';
 
-	constructor(public dialog: MatDialog) {
+	constructor() {
 		this.dialogState = this.DIALOG_STATE_NEVER_OPENED;
 	}
 

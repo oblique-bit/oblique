@@ -36,44 +36,44 @@
 
 <ol>
 	<li>
-		<a [routerLink]="['/samples', 'breadcrumb', 'some-page']" routerLinkActive="router-link-active">Some Page</a>
+		<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'some-page']">Some Page</a>
 		<ol>
 			<li>
-				<a [routerLink]="['/samples', 'breadcrumb', 'some-page', 'some-sub-page']" routerLinkActive="router-link-active">Sub-Page</a>
+				<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'some-page', 'some-sub-page']">Sub-Page</a>
 			</li>
 		</ol>
 	</li>
 	<li>
-		<a [routerLink]="['/samples', 'breadcrumb', 'missing-label']" routerLinkActive="router-link-active"
+		<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'missing-label']"
 			>Route with missing breadcrumb label</a
 		>
 	</li>
 	<li>
-		<a [routerLink]="['/samples', 'breadcrumb', 'i18n-label']" routerLinkActive="router-link-active">Route with a translated label</a>
+		<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'i18n-label']">Route with a translated label</a>
 	</li>
 </ol>
 
 <h3>Dynamic routes</h3>
 
 The content of this input is used for the param value:
-<input type="text" #i value="param-value-123" />
+<input #i type="text" value="param-value-123" />
 
 <p>
-	<a [routerLink]="['/samples', 'breadcrumb', 'with-params', i.value]" routerLinkActive="router-link-active"
+	<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'with-params', i.value]"
 		>Route with path/param, no label</a
 	>
 	<br />
-	<a [routerLink]="['/samples', 'breadcrumb', 'with-params-and-label', i.value]" routerLinkActive="router-link-active"
+	<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'with-params-and-label', i.value]"
 		>Route with path/param and transalted label</a
 	>
 	<br />
-	<a [routerLink]="['/samples', 'breadcrumb', i.value, 'details']" routerLinkActive="router-link-active"
+	<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', i.value, 'details']"
 		>Route with param/path, label using the parameter placeholder</a
 	>
 	<br />
-	<a [routerLink]="['/samples', 'breadcrumb', i.value, 'details', 'missing-label']" routerLinkActive="router-link-active"
+	<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', i.value, 'details', 'missing-label']"
 		>Child of route with param/path and parameter label (used to test a link with parameter values)</a
 	>
 	<br />
-	<a [routerLink]="['/samples', 'breadcrumb', i.value]" routerLinkActive="router-link-active">Param-only route</a>
+	<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', i.value]">Param-only route</a>
 </p>

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule, type Routes} from '@angular/router';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatBadgeModule} from '@angular/material/badge';

@@ -1,28 +1,23 @@
-import {AfterViewInit, Component, ElementRef, ViewChild, inject} from '@angular/core';
+import {type AfterViewInit, Component, ElementRef, inject, viewChild} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {obFocusWithOutline} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-focus-sample',
 	templateUrl: './focus-sample.component.html',
-	styleUrls: ['./focus-sample.component.scss'],
+	styleUrl: './focus-sample.component.scss',
 	standalone: false
 })
 export class FocusSampleComponent implements AfterViewInit {
-	@ViewChild('card', {read: ElementRef})
-	public readonly card!: ElementRef;
+	readonly card = viewChild.required('card', {read: ElementRef});
 
-	@ViewChild('contentEditable')
-	public readonly contentEditable!: ElementRef;
+	readonly contentEditable = viewChild.required<ElementRef>('contentEditable');
 
-	@ViewChild('input')
-	private readonly input!: ElementRef;
+	readonly input = viewChild.required<ElementRef>('input');
 
-	@ViewChild('select', {read: ElementRef})
-	private readonly select!: ElementRef;
+	readonly select = viewChild.required('select', {read: ElementRef});
 
-	@ViewChild('textArea')
-	private readonly textArea!: ElementRef;
+	readonly textArea = viewChild.required<ElementRef>('textArea');
 
 	private readonly document = inject(DOCUMENT);
 
@@ -31,7 +26,7 @@ export class FocusSampleComponent implements AfterViewInit {
 	private index = 0;
 
 	ngAfterViewInit(): void {
-		this.focusableElements = [this.card, this.contentEditable, this.input, this.select, this.textArea];
+		this.focusableElements = [this.card(), this.contentEditable(), this.input(), this.select(), this.textArea()];
 	}
 
 	focusNext(): void {

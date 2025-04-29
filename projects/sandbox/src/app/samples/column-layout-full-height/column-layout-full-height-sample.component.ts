@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, type OnDestroy, type OnInit, inject} from '@angular/core';
 import {ObMasterLayoutService} from '@oblique/oblique';
 
 @Component({
@@ -11,8 +11,7 @@ export class ColumnLayoutFullHeightSampleComponent implements OnInit, OnDestroy 
 	right = true;
 	noLayout = false;
 	wider = false;
-
-	constructor(private readonly masterLayoutService: ObMasterLayoutService) {}
+	private readonly masterLayoutService = inject(ObMasterLayoutService);
 
 	ngOnInit(): void {
 		this.masterLayoutService.layout.hasLayout = false;

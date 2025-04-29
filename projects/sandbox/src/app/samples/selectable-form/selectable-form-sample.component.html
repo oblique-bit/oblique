@@ -2,7 +2,7 @@
 <ob-column-layout [left]="false">
 	<section column-main-content>
 		<form [formGroup]="sampleForm">
-			<div obSelectableGroup [mode]="mode" #group="obSelectableGroup" formControlName="sampleCreatures">
+			<div #group="obSelectableGroup" obSelectableGroup formControlName="sampleCreatures" [mode]="mode">
 				<div obSelectable value="cat">a preselected cat</div>
 				<div obSelectable value="bird">a selectable bird</div>
 				<div obSelectable value="dog">a selectable dog</div>

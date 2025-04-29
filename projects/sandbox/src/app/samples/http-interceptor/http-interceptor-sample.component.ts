@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {ObENotificationType, ObHttpApiInterceptorEvents, ObIHttpApiRequest, ObNotificationService} from '@oblique/oblique';
+import {Component, inject} from '@angular/core';
+import {HttpClient, type HttpErrorResponse} from '@angular/common/http';
+import {ObENotificationType, ObHttpApiInterceptorEvents, type ObIHttpApiRequest, ObNotificationService} from '@oblique/oblique';
 import {delay, mergeMap, take, tap} from 'rxjs/operators';
-import {Observable, from} from 'rxjs';
+import {type Observable, from} from 'rxjs';
 import {HttpMockErrorInterceptor} from './http-mock-error.interceptor';
 
 let requestId = 0;
@@ -26,12 +26,11 @@ export class HttpInterceptorSampleComponent {
 	spinner = true;
 	variants = ObENotificationType;
 	parallelRequests = 5;
+	private readonly notificationService = inject(ObNotificationService);
+	private readonly http = inject(HttpClient);
+	private readonly interceptorEvents = inject(ObHttpApiInterceptorEvents);
 
-	constructor(
-		private readonly notificationService: ObNotificationService,
-		private readonly http: HttpClient,
-		private readonly interceptorEvents: ObHttpApiInterceptorEvents
-	) {
+	constructor() {
 		this.interceptorEvents.sessionExpired.subscribe(() => {
 			this.notificationService.warning('The session has expired');
 		});
@@ -45,7 +44,7 @@ export class HttpInterceptorSampleComponent {
 
 	parallelRequest(): void {
 		this.configInterceptor();
-		const arrayOfObservables: Observable<any>[] = [];
+		const arrayOfObservables: Observable<unknown>[] = [];
 		for (let index = 0; index < this.parallelRequests; index++) {
 			arrayOfObservables.push(this.createSampleRequest(200));
 		}
@@ -66,7 +65,7 @@ export class HttpInterceptorSampleComponent {
 		return `${HttpInterceptorSampleComponent.API_URL}/${code}`;
 	}
 
-	private createSampleRequest(code: number): Observable<any> {
+	private createSampleRequest(code: number): Observable<unknown> {
 		const url = HttpInterceptorSampleComponent.getUrl(code);
 		this.log(`${++requestId} - GET ${url}, expecting: ${code} ${HttpMockErrorInterceptor.getStatusText(code)}...`);
 		return this.createRequest(url, requestId);
@@ -83,7 +82,7 @@ export class HttpInterceptorSampleComponent {
 		});
 	}
 
-	private createRequest(url: string, currentId: number): Observable<any> {
+	private createRequest(url: string, currentId: number): Observable<unknown> {
 		const started = Date.now();
 		const requestDelay = Math.ceil(Math.random() * 1000);
 		return this.http.get(url).pipe(

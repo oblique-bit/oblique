@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, inject} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -114,11 +114,11 @@ registerLocaleData(localeDE);
 	]
 })
 export class AppModule {
-	constructor(
-		private readonly documentMetaService: ObDocumentMetaService,
-		interceptorConfig: ObHttpApiInterceptorConfig,
-		config: ObMasterLayoutConfig
-	) {
+	constructor() {
+		const documentMetaService = inject(ObDocumentMetaService);
+		const interceptorConfig = inject(ObHttpApiInterceptorConfig);
+		const config = inject(ObMasterLayoutConfig);
+
 		// As the HEAD `title` element and the `description` meta element are outside any
 		// Angular entry component, we use a service to update these element values:
 		documentMetaService.titleSuffix = 'i18n.application.title';

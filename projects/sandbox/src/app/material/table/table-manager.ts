@@ -1,12 +1,12 @@
 import {inject} from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import {UntypedFormControl, type UntypedFormGroup} from '@angular/forms';
+import type {MatPaginator} from '@angular/material/paginator';
+import type {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import {WINDOW} from '@oblique/oblique';
-import {Connectable, ReplaySubject, connectable} from 'rxjs';
+import {type Connectable, ReplaySubject, connectable} from 'rxjs';
 import {filter, map, startWith} from 'rxjs/operators';
 import {TableEditComponent} from './table-edit.component';
 
@@ -16,14 +16,14 @@ interface Data {
 }
 
 export enum Mode {
-	DIALOG,
-	FORM
+	DIALOG = 0,
+	FORM = 1
 }
 
 export enum EditMode {
-	NONE,
-	EDIT,
-	ADD
+	NONE = 0,
+	EDIT = 1,
+	ADD = 2
 }
 
 export class TableManager<T> {
@@ -38,11 +38,9 @@ export class TableManager<T> {
 	private mode = Mode.DIALOG;
 
 	private readonly window = inject(WINDOW);
+	private readonly dialog = inject(MatDialog);
 
-	constructor(
-		data: (T & Data)[],
-		private readonly dialog: MatDialog
-	) {
+	constructor(data: (T & Data)[]) {
 		this.originalData = data.map(item => ({...item, isSelected: false, editMode: EditMode.NONE}));
 		this.dataSource.data = [...this.originalData];
 

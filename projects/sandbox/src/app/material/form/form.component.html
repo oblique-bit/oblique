@@ -8,11 +8,11 @@
 				<input
 					type="text"
 					matInput
-					[disabled]="disabled"
 					placeholder="Default"
-					[(ngModel)]="longLabelsForm.field1"
 					name="field1"
 					required
+					[disabled]="disabled"
+					[(ngModel)]="longLabelsForm.field1"
 				/>
 				<mat-hint>test</mat-hint>
 			</mat-form-field>
@@ -21,11 +21,11 @@
 				<input
 					type="text"
 					matInput
-					[disabled]="disabled"
 					placeholder="Text prefix & suffix"
-					[(ngModel)]="longLabelsForm.field2"
 					name="field2"
 					required
+					[disabled]="disabled"
+					[(ngModel)]="longLabelsForm.field2"
 				/>
 				<span matTextPrefix>abc</span>
 				<span matTextSuffix>abc</span>
@@ -36,11 +36,11 @@
 				<input
 					type="text"
 					matInput
-					[disabled]="disabled"
 					placeholder="Text prefix"
-					[(ngModel)]="longLabelsForm.field3"
 					name="text"
 					required
+					[disabled]="disabled"
+					[(ngModel)]="longLabelsForm.field3"
 				/>
 				<span matTextPrefix>abc</span>
 				<mat-hint>test</mat-hint>
@@ -50,11 +50,11 @@
 				<input
 					type="text"
 					matInput
-					[disabled]="disabled"
 					placeholder="Text suffix"
-					[(ngModel)]="longLabelsForm.field4"
 					name="field4"
 					required
+					[disabled]="disabled"
+					[(ngModel)]="longLabelsForm.field4"
 				/>
 				<span matTextSuffix>abc</span>
 				<mat-hint>test</mat-hint>
@@ -64,11 +64,11 @@
 				<input
 					type="text"
 					matInput
-					[disabled]="disabled"
 					placeholder="Icon prefix & suffix"
 					name="field5"
-					[(ngModel)]="longLabelsForm.field5"
 					required
+					[disabled]="disabled"
+					[(ngModel)]="longLabelsForm.field5"
 				/>
 				<mat-icon svgIcon="user" matIconPrefix />
 				<mat-icon svgIcon="star" matIconSuffix />
@@ -79,11 +79,11 @@
 				<input
 					type="text"
 					matInput
-					[disabled]="disabled"
 					placeholder="Icon prefix"
 					name="field6"
-					[(ngModel)]="longLabelsForm.field6"
 					required
+					[disabled]="disabled"
+					[(ngModel)]="longLabelsForm.field6"
 				/>
 				<mat-icon svgIcon="user" matIconPrefix />
 				<mat-hint>test</mat-hint>
@@ -93,18 +93,18 @@
 				<input
 					type="text"
 					matInput
-					[disabled]="disabled"
 					placeholder="Icon suffix"
-					[(ngModel)]="longLabelsForm.field7"
 					name="field7"
 					required
+					[disabled]="disabled"
+					[(ngModel)]="longLabelsForm.field7"
 				/>
 				<mat-icon svgIcon="star" matIconSuffix />
 				<mat-hint>test</mat-hint>
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label> {{ labelText.repeat(labelRepeater) }}</mat-label>
-				<mat-select [disabled]="disabled" name="field8" [(ngModel)]="longLabelsForm.field8" required>
+				<mat-select name="field8" required [disabled]="disabled" [(ngModel)]="longLabelsForm.field8">
 					<mat-option [value]="1">One</mat-option>
 					<mat-option [value]="2">Two</mat-option>
 					<mat-option [value]="3">Three</mat-option>
@@ -114,7 +114,7 @@
 			</mat-form-field>
 			<mat-form-field class="ms-fix">
 				<mat-label> {{ labelText.repeat(labelRepeater) }}</mat-label>
-				<input matInput [disabled]="disabled" [matDatepicker]="picker" name="field9" [(ngModel)]="longLabelsForm.field9" required />
+				<input matInput name="field9" required [disabled]="disabled" [matDatepicker]="picker" [(ngModel)]="longLabelsForm.field9" />
 				<mat-datepicker-toggle matSuffix [for]="picker" />
 				<mat-datepicker #picker />
 			</mat-form-field>
@@ -122,11 +122,11 @@
 				<mat-label> {{ labelText.repeat(labelRepeater) }}</mat-label>
 				<textarea
 					matInput
-					[disabled]="disabled"
 					placeholder="Default"
 					name="field10"
-					[(ngModel)]="longLabelsForm.field10"
 					required
+					[disabled]="disabled"
+					[(ngModel)]="longLabelsForm.field10"
 				></textarea>
 			</mat-form-field>
 		</form>

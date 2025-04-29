@@ -1,11 +1,11 @@
 import {ObNotificationService} from '@oblique/oblique';
-import {Component, OnInit, inject} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Component, type OnInit, inject} from '@angular/core';
+import {FormBuilder, type FormGroup, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sb-focus-invalid-sample',
 	templateUrl: './focus-invalid-sample.component.html',
-	styleUrls: ['./focus-invalid-sample.component.scss'],
+	styleUrl: './focus-invalid-sample.component.scss',
 	standalone: false
 })
 export class FocusInvalidSampleComponent implements OnInit {

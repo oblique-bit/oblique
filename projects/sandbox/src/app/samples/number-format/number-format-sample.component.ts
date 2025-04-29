@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {Component, inject} from '@angular/core';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sb-number-format',
@@ -11,15 +11,11 @@ export class NumberFormatSampleComponent {
 	number2 = 5.236548;
 	numberRequired = 5.236548;
 
-	formData: UntypedFormGroup;
-
-	constructor(fb: UntypedFormBuilder) {
-		this.formData = fb.group({
-			number5: 5.236548,
-			number6: 5.236548,
-			numberRequired: [5.236548, Validators.required]
-		});
-	}
+	formData = inject(UntypedFormBuilder).group({
+		number5: 5.236548,
+		number6: 5.236548,
+		numberRequired: [5.236548, Validators.required]
+	});
 
 	setNumber5(): void {
 		this.formData.patchValue({number5: 6.2356487});

@@ -17,9 +17,11 @@
 					<mat-label>Age</mat-label>
 					<input matInput />
 				</mat-form-field>
-				<mat-action-row *ngIf="actionRowVisible">
-					<button type="button" mat-button color="primary" (click)="selfAwarePanel.open()">Next</button>
-				</mat-action-row>
+				@if (actionRowVisible) {
+					<mat-action-row>
+						<button type="button" mat-button color="primary" (click)="selfAwarePanel.open()">Next</button>
+					</mat-action-row>
+				}
 			</mat-expansion-panel>
 			<mat-expansion-panel
 				#selfAwarePanel
@@ -33,9 +35,11 @@
 					<mat-panel-description> Currently I am {{ panelOpenState ? "open" : "closed" }} </mat-panel-description>
 				</mat-expansion-panel-header>
 				<p>I'm visible because I am open</p>
-				<mat-action-row *ngIf="actionRowVisible">
-					<button type="button" mat-button color="primary" (click)="selfAwarePanel.close()">Close</button>
-				</mat-action-row>
+				@if (actionRowVisible) {
+					<mat-action-row>
+						<button type="button" mat-button color="primary" (click)="selfAwarePanel.close()">Close</button>
+					</mat-action-row>
+				}
 			</mat-expansion-panel>
 		</mat-accordion>
 	</ng-container>
@@ -45,15 +49,15 @@
 			<fieldset>
 				<legend>Toggle features</legend>
 				<mat-list-item>
-					<mat-slide-toggle (click)="toggleAccordionMultiAttribute()" matTooltip="Toggle accordion multi-attribute">
+					<mat-slide-toggle matTooltip="Toggle accordion multi-attribute" (click)="toggleAccordionMultiAttribute()">
 						Multiple can be opened
 					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle (click)="toggleActionRowVisibility()" matTooltip="Toggle action row-visibility">Action row</mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle action row-visibility" (click)="toggleActionRowVisibility()">Action row</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="true" (click)="toggleToggleVisibility()" matTooltip="Toggle toggle-visibility"
+					<mat-slide-toggle matTooltip="Toggle toggle-visibility" [checked]="true" (click)="toggleToggleVisibility()"
 						>Show toggle</mat-slide-toggle
 					>
 				</mat-list-item>
@@ -61,21 +65,25 @@
 			<fieldset>
 				<legend>Display mode</legend>
 				<mat-radio-group [(ngModel)]="displayMode">
-					<mat-list-item *ngFor="let mode of displayModes">
-						<mat-radio-button [value]="mode">
-							{{ mode }}
-						</mat-radio-button>
-					</mat-list-item>
+					@for (mode of displayModes; track mode) {
+						<mat-list-item>
+							<mat-radio-button [value]="mode">
+								{{ mode }}
+							</mat-radio-button>
+						</mat-list-item>
+					}
 				</mat-radio-group>
 			</fieldset>
 			<fieldset>
 				<legend>Set toggle position</legend>
 				<mat-radio-group [(ngModel)]="togglePosition">
-					<mat-list-item *ngFor="let position of togglePositions">
-						<mat-radio-button [value]="position">
-							{{ position }}
-						</mat-radio-button>
-					</mat-list-item>
+					@for (position of togglePositions; track position) {
+						<mat-list-item>
+							<mat-radio-button [value]="position">
+								{{ position }}
+							</mat-radio-button>
+						</mat-list-item>
+					}
 				</mat-radio-group>
 			</fieldset>
 		</mat-list>

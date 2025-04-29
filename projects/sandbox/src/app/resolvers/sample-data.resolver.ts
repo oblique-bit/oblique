@@ -1,13 +1,13 @@
-import {Injectable} from '@angular/core';
-import {Resolve} from '@angular/router';
+import {Injectable, inject} from '@angular/core';
+import type {Resolve} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 @Injectable()
-export class SampleDataResolver implements Resolve<any> {
-	constructor(private readonly http: HttpClient) {}
+export class SampleDataResolver implements Resolve<unknown> {
+	private readonly http = inject(HttpClient);
 
-	resolve(): Observable<any> {
+	resolve(): Observable<unknown> {
 		return this.http.get('./assets/sample-data.json');
 	}
 }

@@ -1,24 +1,23 @@
-import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {type AfterViewInit, Component, type OnDestroy, type OnInit, inject, viewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
-import {AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {type AbstractControl, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 import {MatInput} from '@angular/material/input';
-import {MatDialog} from '@angular/material/dialog';
-import {Observable, ReplaySubject, Subject, combineLatest, share} from 'rxjs';
+import {type Observable, ReplaySubject, Subject, combineLatest, share} from 'rxjs';
 import {delay, filter, map, startWith, takeUntil, tap} from 'rxjs/operators';
-import {ObIPeriodicElement} from './table.model';
+import type {ObIPeriodicElement} from './table.model';
 import {EditMode, Mode, TableManager} from './table-manager';
 
 @Component({
 	selector: 'sb-table',
 	templateUrl: './table.component.html',
-	styleUrls: ['./table.component.scss'],
+	styleUrl: './table.component.scss',
 	standalone: false
 })
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
-	@ViewChild(MatSort) sort: MatSort;
-	@ViewChild(MatPaginator) paginator: MatPaginator;
-	@ViewChild(MatInput) firstInput: MatInput;
+	readonly sort = viewChild(MatSort);
+	readonly paginator = viewChild(MatPaginator);
+	readonly firstInput = viewChild(MatInput);
 	controls: UntypedFormGroup;
 	tableStyles$: Observable<Record<string, boolean>>;
 	collapsedStyles$: Observable<Record<string, boolean>>;
@@ -52,12 +51,10 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		{position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
 		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
 	];
+	private readonly formBuilder = inject(UntypedFormBuilder);
 
-	constructor(
-		private readonly formBuilder: UntypedFormBuilder,
-		dialog: MatDialog
-	) {
-		this.tableManager = new TableManager<ObIPeriodicElement>(this.ELEMENT_DATA, dialog);
+	constructor() {
+		this.tableManager = new TableManager<ObIPeriodicElement>(this.ELEMENT_DATA);
 	}
 
 	ngOnInit(): void {
@@ -67,7 +64,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	ngAfterViewInit(): void {
-		this.tableManager.setExtras({sort: this.sort, paginator: this.paginator});
+		this.tableManager.setExtras({sort: this.sort(), paginator: this.paginator()});
 		this.tableManager.isEditMode$
 			.pipe(
 				filter(isEditMode => isEditMode),
@@ -75,7 +72,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe(() => {
-				this.firstInput.focus();
+				this.firstInput().focus();
 			});
 	}
 

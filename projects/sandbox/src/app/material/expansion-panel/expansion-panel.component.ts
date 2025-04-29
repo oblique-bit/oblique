@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MatAccordionDisplayMode, MatAccordionTogglePosition} from '@angular/material/expansion';
+import type {MatAccordionDisplayMode, MatAccordionTogglePosition} from '@angular/material/expansion';
 
 @Component({
 	selector: 'sb-expansion-panel',

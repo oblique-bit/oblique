@@ -1,18 +1,19 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ObSpinnerService} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-spinner-sample',
 	templateUrl: './spinner-sample.component.html',
-	styleUrls: ['./spinner-sample.component.scss'],
+	styleUrl: './spinner-sample.component.scss',
 	standalone: false
 })
 export class SpinnerSampleComponent {
 	spinnerVisible = false;
 	channel = 'demo';
 	private readonly window: Window;
+	private readonly spinnerService = inject(ObSpinnerService);
 
-	constructor(private readonly spinnerService: ObSpinnerService) {
+	constructor() {
 		this.window = window; // because AoT don't accept interfaces as DI
 	}
 

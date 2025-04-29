@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup, OptionLabelIconPosition} from '@oblique/oblique';
+import {Component, type OnInit} from '@angular/core';
+import type {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup, OptionLabelIconPosition} from '@oblique/oblique';
 import {FormControl} from '@angular/forms';
 
 @Component({
 	selector: 'sb-autocomplete-sample',
 	templateUrl: './autocomplete.component.html',
-	styleUrls: ['./autocomplete.component.scss'],
+	styleUrl: './autocomplete.component.scss',
 	standalone: false
 })
 export class AutocompleteSampleComponent implements OnInit {
@@ -138,7 +138,10 @@ formControl = new FormControl('');
 	}
 
 	toggleDisabledState(state: boolean): void {
-		if (state) this.formControl.disable();
-		else this.formControl.enable();
+		if (state) {
+			this.formControl.disable();
+		} else {
+			this.formControl.enable();
+		}
 	}
 }

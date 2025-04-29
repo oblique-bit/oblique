@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule, type Routes} from '@angular/router';
 import {ObUnsavedChangesGuard} from '@oblique/oblique';
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {AlertSampleComponent} from './alert/alert.component';

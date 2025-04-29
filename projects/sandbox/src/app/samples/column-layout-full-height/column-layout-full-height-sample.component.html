@@ -1,4 +1,4 @@
-<ob-column-layout class="ob-full-height" [left]="left" [right]="right" [noLayout]="noLayout" [wider]="wider" #obColumnLayout>
+<ob-column-layout #obColumnLayout class="ob-full-height" [left]="left" [right]="right" [noLayout]="noLayout" [wider]="wider">
 	<ng-container column-left-content>
 		<h3 class="nav-header-title">Left Column</h3>
 		<p>
@@ -46,11 +46,15 @@
 		<h3>Controls</h3>
 		<div>
 			<mat-checkbox [(ngModel)]="left">Left column?</mat-checkbox>
-			<button type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()" *ngIf="left">Toggle</button>
+			@if (left) {
+				<button type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()">Toggle</button>
+			}
 		</div>
 		<div>
 			<mat-checkbox [(ngModel)]="right">Right column?</mat-checkbox>
-			<button type="button" obButton mat-button (click)="obColumnLayout.toggleRight()" *ngIf="right">Toggle</button>
+			@if (right) {
+				<button type="button" obButton mat-button (click)="obColumnLayout.toggleRight()">Toggle</button>
+			}
 		</div>
 		<mat-slide-toggle [(ngModel)]="noLayout">Remove layout</mat-slide-toggle>
 		<mat-slide-toggle [(ngModel)]="wider">Wider columns</mat-slide-toggle>

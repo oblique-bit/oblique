@@ -1,14 +1,14 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, viewChild} from '@angular/core';
 import {ObSelectableGroupDirective} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-card',
 	templateUrl: './card.component.html',
-	styleUrls: ['./card.component.scss'],
+	styleUrl: './card.component.scss',
 	standalone: false
 })
 export class CardComponent {
-	@ViewChild(ObSelectableGroupDirective) selectableGroup: ObSelectableGroupDirective;
+	readonly selectableGroup = viewChild(ObSelectableGroupDirective);
 	avatarVisible = true;
 	titleVisible = true;
 	subtitleVisible = true;
@@ -51,7 +51,7 @@ export class CardComponent {
 
 	toggleCheckboxMode(): void {
 		this.checkboxMode = !this.checkboxMode;
-		this.selectableGroup.mode = this.getSelectMode();
+		this.selectableGroup().mode = this.getSelectMode();
 	}
 
 	toggleAlertVisibility(): void {
