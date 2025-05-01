@@ -76,11 +76,9 @@ export class AccessibilityStatementComponent {
 		}
 
 		if (!parameters.createdOn) {
-			return 'i18n.oblique.accessibility-statement.statement.none';
+			return this.getConformityTranslationKey('none');
 		}
-		return parameters.exceptions?.length
-			? 'i18n.oblique.accessibility-statement.statement.partial'
-			: 'i18n.oblique.accessibility-statement.statement.full';
+		return parameters.exceptions?.length ? this.getConformityTranslationKey('partial') : this.getConformityTranslationKey('full');
 	}
 
 	// eslint-disable-next-line @typescript-eslint/consistent-return
