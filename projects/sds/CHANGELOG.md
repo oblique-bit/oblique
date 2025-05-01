@@ -1,3 +1,15 @@
+# [13.2.1](https://github.com/oblique-bit/oblique/compare/13.2.0...13.2.1) (2025-05-01)
+
+## Bug Fixes
+
+- **code-examples:** ensure all examples show all relevant files ([7979e51f](https://github.com/oblique-bit/oblique/commit/7979e51fae85d0bc6094363d6ab410d0cc1b3a59))
+- **code-examples:** ensure SCSS files are listed logically ([967fbe04](https://github.com/oblique-bit/oblique/commit/967fbe0401cc7d2cef2a46b845ac10d9f2b8f06e))
+- **code-examples:** ensure each example has its own stylesheet ([64cf4d56](https://github.com/oblique-bit/oblique/commit/64cf4d560f10170bda27f9064c0caac996e3df56))
+- **code-examples:** ensure SCSS files appear to be in the same directory as the component ([875e483d](https://github.com/oblique-bit/oblique/commit/875e483d3aadd085bbce245b32f6dc2994883a0c))
+- **code-examples:** remove snippets for stackblitz examples ([1ad67052](https://github.com/oblique-bit/oblique/commit/1ad67052e4fa4e1ae4e2d4675bf789b0bcc1a788))
+- **code-examples:** use scss variables from oblique ([5a28022e](https://github.com/oblique-bit/oblique/commit/5a28022efad059bd4f7f120fe287a4fdb0045df7))
+- **styles:** remove unused imports ([cf1f29cf](https://github.com/oblique-bit/oblique/commit/cf1f29cfe2a7c8eef45a9147e3d44090b564e5c3))
+
 # [13.2.0](https://github.com/oblique-bit/oblique/compare/13.1.2...13.2.0) (2025-04-24)
 
 ## Features

@@ -1,3 +1,9 @@
+# [13.2.1](https://github.com/oblique-bit/oblique/compare/13.2.0...13.2.1) (2025-05-01)
+
+## Bug Fixes
+
+- **accessibility-statement:** correctly format `createdOn` date in German ([a26343f1](https://github.com/oblique-bit/oblique/commit/a26343f1aaaa54abb0856ad9b1a37b1b9b918a4e))
+
 # [13.2.0](https://github.com/oblique-bit/oblique/compare/13.1.2...13.2.0) (2025-04-24)
 
 ## Bug Fixes
