@@ -1,10 +1,10 @@
-import {Component, OnInit, inject} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {Component, type OnInit, inject} from '@angular/core';
+import {FormBuilder, type FormControl, type FormGroup} from '@angular/forms';
 
 @Component({
 	selector: 'sb-selectable-form-sample',
 	templateUrl: './selectable-form-sample.component.html',
-	styleUrls: ['./selectable-form-sample.component.scss'],
+	styleUrl: './selectable-form-sample.component.scss',
 	standalone: false
 })
 export class SelectableFormSampleComponent implements OnInit {

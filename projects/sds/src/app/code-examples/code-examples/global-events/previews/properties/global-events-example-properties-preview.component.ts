@@ -6,7 +6,7 @@ import {Observable, Subject, map, startWith, takeUntil, tap} from 'rxjs';
 @Component({
 	selector: 'app-global-events-example-properties-preview',
 	templateUrl: './global-events-example-properties-preview.component.html',
-	styleUrls: ['../../../../code-example-flex-layout.scss', '../global-events-example-preview.component.scss'],
+	styleUrls: ['../global-events-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
 	imports: [AsyncPipe, NgIf]
 })
 export class GlobalEventsExamplePropertiesPreviewComponent implements OnInit, OnDestroy {

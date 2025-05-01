@@ -1,38 +1,41 @@
-<ob-service-navigation
-	*ngIf="environmentParsed !== undefined"
-	[environment]="environmentParsed"
-	[infoContact]="infoContactParsed"
-	[infoLinks]="infoLinksParsed"
-	[profileLinks]="profileLinksParsed"
-	[maxLastUsedApplications]="maxLastUsedApplications"
-	[maxFavoriteApplications]="maxFavoriteApplications"
-	[pamsAppId]="pamsAppId"
-	[handleLogout]="handleLogout"
-	[displayLanguages]="displayLanguages"
-	[displayMessage]="displayMessage"
-	[displayInfo]="displayInfo"
-	[displayApplications]="displayApplications"
-	[displayProfile]="displayProfile"
-	[displayAuthentication]="displayAuthentication"
-	[rootUrl]="rootUrl"
-	[returnUrl]="returnUrl"
-	(loginState)="loginState.emit($event)"
-	(logoutTriggered)="logoutTriggered.emit($event)"
->
-	<ng-container *ngFor="let button of customButtonsParsed">
-		<ng-template #customWidgetTemplate>
-			<button
-				type="button"
-				mat-icon-button
-				[matTooltip]="button.tooltip"
-				obButton="tertiary"
-				[matBadge]="button.badge"
-				matBadgeColor="warn"
-				(click)="buttonClickedEmitter.emit(button.obliqueIconName)"
-			>
-				<mat-icon [svgIcon]="button.obliqueIconName" />
-				<span *ngIf="button.accessibilityText" class="ob-screen-reader-only">{{ button.accessibilityText }}</span>
-			</button>
-		</ng-template>
-	</ng-container>
-</ob-service-navigation>
+@if (environmentParsed !== undefined) {
+	<ob-service-navigation
+		[environment]="environmentParsed"
+		[infoContact]="infoContactParsed"
+		[infoLinks]="infoLinksParsed"
+		[profileLinks]="profileLinksParsed"
+		[maxLastUsedApplications]="maxLastUsedApplications()"
+		[maxFavoriteApplications]="maxFavoriteApplications()"
+		[pamsAppId]="pamsAppId()"
+		[handleLogout]="handleLogout()"
+		[displayLanguages]="displayLanguages()"
+		[displayMessage]="displayMessage()"
+		[displayInfo]="displayInfo()"
+		[displayApplications]="displayApplications()"
+		[displayProfile]="displayProfile()"
+		[displayAuthentication]="displayAuthentication()"
+		[rootUrl]="rootUrl()"
+		[returnUrl]="returnUrl()"
+		(loginState)="loginState.emit($event)"
+		(logoutTriggered)="logoutTriggered.emit($event)"
+	>
+		@for (button of customButtonsParsed; track button.obliqueIconName) {
+			<ng-template #customWidgetTemplate>
+				<button
+					type="button"
+					mat-icon-button
+					obButton="tertiary"
+					matBadgeColor="warn"
+					[matTooltip]="button.tooltip"
+					[matBadge]="button.badge"
+					(click)="buttonClickedEmitter.emit(button.obliqueIconName)"
+				>
+					<mat-icon [svgIcon]="button.obliqueIconName" />
+					@if (button.accessibilityText) {
+						<span class="ob-screen-reader-only">{{ button.accessibilityText }}</span>
+					}
+				</button>
+			</ng-template>
+		}
+	</ob-service-navigation>
+}

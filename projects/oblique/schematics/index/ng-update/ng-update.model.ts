@@ -5,7 +5,7 @@ export type versionFunc = (version: number) => number | number[];
 export type ObIDependencies = Record<string, number | number[] | versionFunc>;
 export interface ObIMigrations {
 	dependencies: ObIDependencies;
-	applyMigrations: (_options: Record<string, any>) => Rule;
+	applyMigrations: (options: Record<string, any>) => Rule;
 }
 
 export interface ObITask {

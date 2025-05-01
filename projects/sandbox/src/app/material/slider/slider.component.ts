@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
-import {ThemePalette} from '@angular/material/core';
+import type {ThemePalette} from '@angular/material/core';
 
 @Component({
 	selector: 'sb-slider',
 	templateUrl: './slider.component.html',
-	styleUrls: ['./slider.component.scss'],
+	styleUrl: './slider.component.scss',
 	standalone: false
 })
 export class SliderComponent {

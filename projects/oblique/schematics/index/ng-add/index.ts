@@ -17,29 +17,29 @@ import {obliqueFeatures} from './rules/obliqueFeatures';
 import {toolchain} from './rules/toolchain';
 import {oblique} from './rules/oblique';
 
-export function addOblique(_options: ObIOptionsSchema): Rule {
-	return (tree: Tree, _context: SchematicContext) =>
+export function addOblique(options: ObIOptionsSchema): Rule {
+	return (tree: Tree, context: SchematicContext) =>
 		chain([
 			checkForStandalone(),
 			checkForMultiProject(),
 			checkForSSR(),
 			preconditions(),
-			oblique(_options),
-			obliqueFeatures(_options),
-			toolchain(_options),
+			oblique(options),
+			obliqueFeatures(options),
+			toolchain(options),
 			installDependencies(),
-			finalize(_options)
-		])(tree, _context);
+			finalize(options)
+		])(tree, context);
 }
 
 function preconditions(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
-		infoText(_context, 'Executing migrations of package "@oblique/oblique"');
+	return (tree: Tree, context: SchematicContext) => {
+		infoText(context, 'Executing migrations of package "@oblique/oblique"');
 
 		checkPrecondition(tree, '@angular/core');
 		checkPrecondition(tree, '@angular/router');
 
-		installMissingDependencies(tree, _context, ['@popperjs/core', 'angular-oauth2-oidc', 'jwt-decode']);
+		installMissingDependencies(tree, context, ['@popperjs/core', 'angular-oauth2-oidc', 'jwt-decode']);
 
 		return tree;
 	};
@@ -55,14 +55,14 @@ function installMissingDependencies(tree: Tree, context: SchematicContext, depen
 }
 
 function finalize(options: ObIOptionsSchema): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (isSuccessful) {
-			success(_context, 'Oblique has been successfully integrated. Please review the changes.');
+			success(context, 'Oblique has been successfully integrated. Please review the changes.');
 		} else {
-			warn(_context, 'Oblique has only been partially integrated. Please check for warnings in the console and review the changes.');
+			warn(context, 'Oblique has only been partially integrated. Please check for warnings in the console and review the changes.');
 		}
 		if (options.husky) {
-			infoText(_context, 'Please run "npm prepare" to finalize Husky installation.');
+			infoText(context, 'Please run "npm prepare" to finalize Husky installation.');
 		}
 
 		return tree;

@@ -1,8 +1,8 @@
-import {Command, OptionValues} from '@commander-js/extra-typings';
+import {Command, type OptionValues} from '@commander-js/extra-typings';
 import * as path from 'node:path';
 import fs from 'node:fs';
 import {commandUsageText, currentVersions, execute, getHelpText, ngAddOblique, startObCommand} from '../utils/cli-utils';
-import {PackageDependencies, updateDescriptions} from './ob-update.model';
+import {type PackageDependencies, updateDescriptions} from './ob-update.model';
 import chalk from 'chalk';
 import {execSync} from 'child_process';
 
@@ -61,7 +61,7 @@ export function addSchematicsAngular(): void {
 	if (!isDependencyInPackage('@schematics/angular')) {
 		const pkg = findPackage();
 		if (pkg.dependencies) {
-			const groups = /[^~](?<major>\d+)\.\d+\.\d+"/.exec(pkg.dependencies['@angular/core'])?.groups ?? {major: '18'};
+			const groups = /[^~](?<major>\d+)\.\d+\.\d+"/u.exec(pkg.dependencies['@angular/core'])?.groups ?? {major: '18'};
 			execSync(`npm i @schematics/angular@${groups['major']} --save-dev`, {stdio: 'inherit'});
 		}
 	}

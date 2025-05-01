@@ -1,9 +1,9 @@
-import {Command, OptionValues} from '@commander-js/extra-typings';
+import {Command, type OptionValues} from '@commander-js/extra-typings';
 import {buildOption, commandUsageText, execute, optionDescriptions, projectNamePlaceholder, startObCommand} from '../utils/cli-utils';
 import {addObNewCommandOptions, convertOptionPropertyNames} from '../utils/ob-configure-command';
 import {
-	HandleObNewActionOptions,
-	ObNewOptions,
+	type HandleObNewActionOptions,
+	type ObNewOptions,
 	createsWorkspaceMessage,
 	immutableOptions,
 	obNewConfig,
@@ -52,7 +52,7 @@ function handleObNewActions(options: HandleObNewActionOptions): void {
 	}
 }
 
-function runNgNewAngularWorkspace(projectName: string, interactive: boolean, prefix: string | 'app'): void {
+function runNgNewAngularWorkspace(projectName: string, interactive: boolean, prefix: string): void {
 	console.info(createsWorkspaceMessage);
 	const baseOptions = Object.entries(immutableOptions)
 		.map(([key, option]) => ({key, value: option.value}))

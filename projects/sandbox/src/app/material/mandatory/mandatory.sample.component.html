@@ -14,19 +14,19 @@
 	</mat-form-field>
 	<mat-form-field data-test="input-date-required">
 		<mat-label>Test input datepicker required</mat-label>
-		<input matInput [matDatepicker]="pickerRequired" formControlName="inputDateRequired" />
+		<input matInput formControlName="inputDateRequired" [matDatepicker]="pickerRequired" />
 		<mat-datepicker-toggle matSuffix [for]="pickerRequired" />
 		<mat-datepicker #pickerRequired />
 	</mat-form-field>
 	<mat-form-field data-test="input-date-dynamic-required">
 		<mat-label>Test input datepicker dynamic required</mat-label>
-		<input matInput [matDatepicker]="pickerDynamicRequired" formControlName="inputDateDynamicRequired" />
+		<input matInput formControlName="inputDateDynamicRequired" [matDatepicker]="pickerDynamicRequired" />
 		<mat-datepicker-toggle matSuffix [for]="pickerDynamicRequired" />
 		<mat-datepicker #pickerDynamicRequired />
 	</mat-form-field>
 	<mat-form-field data-test="input-date-optional">
 		<mat-label>Test input datepicker optional</mat-label>
-		<input matInput [matDatepicker]="pickerOptional" formControlName="inputDateNonRequired" />
+		<input matInput formControlName="inputDateNonRequired" [matDatepicker]="pickerOptional" />
 		<mat-datepicker-toggle matSuffix [for]="pickerOptional" />
 		<mat-datepicker #pickerOptional />
 	</mat-form-field>

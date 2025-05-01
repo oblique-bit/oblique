@@ -106,7 +106,6 @@ import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.
 		MatRadioModule,
 		MatSelectModule,
 		MatSlideToggleModule,
-		MatSlideToggleModule,
 		MatTooltipModule,
 		ObAlertModule,
 		ObBreadcrumbModule.forRoot({}),

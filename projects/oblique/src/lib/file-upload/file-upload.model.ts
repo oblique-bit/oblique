@@ -56,6 +56,7 @@ export type ObTEventType = HttpEventType.UploadProgress | HttpEventType.Response
 
 export type ObTSelectionStatus = 'none' | 'some' | 'all';
 
+/* eslint-disable @typescript-eslint/naming-convention */
 export enum ObEWildCardMimeTypes {
 	'application/*' = 'bin|exe|oda|pdf|ai|ps|eps|rtf|mif|fm|gtar|shar|tar|hqx',
 	'audio/*' = 'au|snd|aif|aiff|aifc|wav|',
@@ -108,3 +109,4 @@ export enum ObEMimeTypes {
 	'magnus-internal/cgi' = 'cgi',
 	'magnus-internal/jsp' = 'exe|bat'
 }
+/* eslint-enable @typescript-eslint/naming-convention */

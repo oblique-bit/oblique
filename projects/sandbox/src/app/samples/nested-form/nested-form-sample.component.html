@@ -1,5 +1,5 @@
 <h2 class="page-header">Nested form</h2>
-<form [formGroup]="parentForm" (submit)="validateForm(parentForm.valid)" (reset)="resetForm()" obParentFormDirective>
+<form obParentFormDirective [formGroup]="parentForm" (submit)="validateForm(parentForm.valid)" (reset)="resetForm()">
 	<h3>Reactive form</h3>
 	<ob-nested-form formControlName="child" [nestedForm]="child.nestedForm">
 		<sb-nested-form-child-sample #child />
@@ -17,14 +17,14 @@
 <h4>Form value</h4>
 <pre>{{ parentForm.value | json }}</pre>
 
-<form #ngForm (submit)="validateForm(ngForm.valid)" obParentFormDirective>
+<form #ngForm obParentFormDirective (submit)="validateForm(ngForm.valid)">
 	<h3>Template driven form</h3>
-	<ob-nested-form [(ngModel)]="model.child" name="child" [nestedForm]="childTD.ngForm.control">
+	<ob-nested-form name="child" [nestedForm]="childTD.ngForm().control" [(ngModel)]="model.child">
 		<sb-nested-form-child-td-sample #childTD />
 	</ob-nested-form>
 	<mat-form-field obErrorMessages>
 		<mat-label>Template Material Parent</mat-label>
-		<input matInput name="parent" [(ngModel)]="model.parent" required />
+		<input matInput name="parent" required [(ngModel)]="model.parent" />
 		<mat-error />
 	</mat-form-field>
 	<div class="form-actions">

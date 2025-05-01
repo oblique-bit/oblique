@@ -1,13 +1,19 @@
-import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {ObIServiceNavigationContact, ObIServiceNavigationLink, ObLoginState, ObServiceNavigationComponent, WINDOW} from '@oblique/oblique';
+import {type AfterViewInit, Component, type OnInit, inject, viewChild} from '@angular/core';
+import {
+	type ObIServiceNavigationContact,
+	type ObIServiceNavigationLink,
+	type ObLoginState,
+	ObServiceNavigationComponent,
+	WINDOW
+} from '@oblique/oblique';
 import {environment} from '../../../environments/environment';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
 	selector: 'sb-service-navigation',
 	templateUrl: './service-navigation-sample.component.html',
-	styleUrls: ['./service-navigation-sample.component.scss'],
+	styleUrl: './service-navigation-sample.component.scss',
 	standalone: false
 })
 export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
@@ -73,17 +79,16 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 		email: 'support@bit.admin.ch',
 		tel: '+41 58 461 61 11'
 	};
-	@ViewChild(ObServiceNavigationComponent) private readonly headerControlsComponent: ObServiceNavigationComponent;
-
-	constructor(@Inject(WINDOW) private readonly window: Window) {}
+	private readonly headerControlsComponent = viewChild(ObServiceNavigationComponent);
+	private readonly window = inject<Window>(WINDOW);
 
 	ngOnInit(): void {
 		this.returnUrl = this.window.location.href;
 	}
 
 	ngAfterViewInit(): void {
-		this.lastUsedApplicationsLength$ = this.headerControlsComponent.lastUsedApplications$.pipe(map(applications => applications.length));
-		this.favoriteApplicationsLength$ = this.headerControlsComponent.favoriteApplications$.pipe(map(applications => applications.length));
+		this.lastUsedApplicationsLength$ = this.headerControlsComponent().lastUsedApplications$.pipe(map(applications => applications.length));
+		this.favoriteApplicationsLength$ = this.headerControlsComponent().favoriteApplications$.pipe(map(applications => applications.length));
 	}
 
 	handleContactInfo(): void {

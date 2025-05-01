@@ -3,7 +3,7 @@ import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
-import {URL_CONST} from '../shared/url/url.const';
+import {urlConst} from '../shared/url/url.const';
 import {CmsDataService} from '../cms/cms-data.service';
 import {IdPipe} from '../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
@@ -58,7 +58,7 @@ export class TextPageComponent implements AfterViewChecked {
 			this.slugToIdService.readyToMap.pipe(
 				first(),
 				concatWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
-				map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
+				map(() => this.activatedRoute.snapshot.paramMap.get(urlConst.urlParams.selectedSlug) ?? ''),
 				map(slug => this.slugToIdService.getIdForSlug(slug))
 			),
 			id => id !== undefined

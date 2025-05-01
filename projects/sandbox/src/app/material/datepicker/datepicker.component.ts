@@ -1,8 +1,8 @@
-import {Component, OnInit, inject} from '@angular/core';
-import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import {Component, type OnInit, inject} from '@angular/core';
+import type {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
+import {ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup} from '@angular/forms';
 import {ObDatepickerModule, ObErrorMessagesModule} from '@oblique/oblique';
 
 @Component({

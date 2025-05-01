@@ -1,4 +1,4 @@
-import {SpawnSyncOptions, spawnSync} from 'node:child_process';
+import {type SpawnSyncOptions, spawnSync} from 'node:child_process';
 import path from 'path';
 import * as cliPackage from '../package.json';
 
@@ -67,6 +67,6 @@ describe('index.ts', () => {
 
 	function cleanOutput(output: Buffer | string): string {
 		const outputString = output.toString();
-		return outputString.replace(/\s+/g, ' ').trim();
+		return outputString.replace(/\s+/gu, ' ').trim();
 	}
 });

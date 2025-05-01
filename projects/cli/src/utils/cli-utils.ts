@@ -1,9 +1,8 @@
-import {ObCommandConfig, ObOptions} from './ob-cli.model';
-import {ExecSyncOptions, execSync} from 'child_process';
+import type {ObCommandConfig, ObOptions} from './ob-cli.model';
+import {type ExecSyncOptions, execSync} from 'child_process';
 import {gte, major} from 'semver';
 
 export const currentVersions = {
-	/* eslint-disable @typescript-eslint/naming-convention */
 	'@oblique/oblique': '13',
 	'@angular/cli': '19',
 	'@angular/material': '19',
@@ -14,7 +13,6 @@ export const currentVersions = {
 	'@schematics/angular': '19',
 	'angular-oauth2-oidc': '19',
 	jest: '29'
-	/* eslint-enable @typescript-eslint/naming-convention */
 } as const;
 
 export const optionDescriptions = {
@@ -115,7 +113,7 @@ export function exampleUsageText(examples: {command: string; description: string
 	const title = '\nExamples of use:\n';
 	return [title, examples.map(example => `${spaceUnit}${example.command}${example.description}`).join('\n')].join('');
 }
-const PADDING_SIZE = 5;
+const paddingSize = 5;
 export function createAdditionalHelpText(
 	title: string,
 	examples: {command: string; description: string}[],
@@ -123,7 +121,7 @@ export function createAdditionalHelpText(
 ): string {
 	return [
 		title,
-		examples.map(example => `${spaceUnit}${example.command.padEnd(maxCommandWidth + PADDING_SIZE, ' ')}${example.description}`).join('\n')
+		examples.map(example => `${spaceUnit}${example.command.padEnd(maxCommandWidth + paddingSize, ' ')}${example.description}`).join('\n')
 	].join('');
 }
 
@@ -142,11 +140,7 @@ export function buildOption(key: string, value: string | boolean): string {
 	return value ? key : `no-${key}`;
 }
 
-// necessary because of missing "default"
-// eslint-disable-next-line @typescript-eslint/consistent-return
 export function execute(config: ObCommandConfig): void {
-	// skipping "default" allows typescript to throw an error at compile time if a case is missing
-	// eslint-disable-next-line default-case
 	switch (config.name) {
 		case 'ngNew':
 			return executeNgCommand(`new ${config.projectName}`, config.options, config.execSyncOptions);
@@ -155,7 +149,7 @@ export function execute(config: ObCommandConfig): void {
 		case 'ngUpdate':
 			return executeNgCommand(
 				`update ${versionDependencies(config.dependencies).join(' ')}`,
-				{'allow-dirty': true}, // eslint-disable-line @typescript-eslint/naming-convention
+				{'allow-dirty': true},
 				config.execSyncOptions
 			);
 		case 'npmInstall':

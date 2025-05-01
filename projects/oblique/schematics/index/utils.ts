@@ -61,8 +61,8 @@ export function createSafeRule(callback: (tree: Tree, context: SchematicContext)
 }
 
 export function checkForStandalone(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Check if application is standalone ');
+	return (tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Check if application is standalone ');
 		const apply = (filePath: string): void => {
 			const standalone = isStandalone(tree, filePath);
 			if (standalone) {
@@ -76,7 +76,7 @@ export function checkForStandalone(): Rule {
 }
 
 export function warnIfStandalone(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
+	return (tree: Tree, context: SchematicContext) => {
 		let standaloneDetected = false;
 		applyInTree(
 			tree,
@@ -91,7 +91,7 @@ export function warnIfStandalone(): Rule {
 
 		if (standaloneDetected) {
 			warn(
-				_context,
+				context,
 				'Standalone application detected, the migration has only been partially applied and the application is currently broken. Please check manually the changes applied by the schematic.'
 			);
 		}
@@ -99,8 +99,8 @@ export function warnIfStandalone(): Rule {
 }
 
 export function checkForMultiProject(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Check if project is a multi-project angular application ');
+	return (tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Check if project is a multi-project angular application ');
 		const multiProject = !tree.exists('./src/app/app.module.ts');
 		if (multiProject) {
 			error(
@@ -111,8 +111,8 @@ export function checkForMultiProject(): Rule {
 }
 
 export function checkForSSR(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
-		infoMigration(_context, 'Check if application uses SSR');
+	return (tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Check if application uses SSR');
 		if (getAngularConfigs(tree, ['architect', 'build', 'options', 'ssr', 'entry']).length) {
 			error('SSR application detected. Oblique is not yet compatible with SSR applications. SSR needs to be deactivated.');
 		}
@@ -244,9 +244,9 @@ export function removeAngularProjectsConfig(tree: Tree, path: string[]): Tree {
 }
 
 export function installDependencies(): Rule {
-	return createSafeRule((tree: Tree, _context: SchematicContext) => {
-		_context.addTask(new NodePackageInstallTask());
-		_context.logger.debug('Dependencies installed');
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		context.addTask(new NodePackageInstallTask());
+		context.logger.debug('Dependencies installed');
 		return tree;
 	});
 }

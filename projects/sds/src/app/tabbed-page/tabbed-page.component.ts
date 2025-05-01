@@ -6,7 +6,7 @@ import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
 import {Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
-import {URL_CONST} from '../shared/url/url.const';
+import {urlConst} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
 import {TabComponent} from '../shared/tabs/tab/tab.component';
 import {TabsComponent} from '../shared/tabs/tabs.component';
@@ -81,7 +81,7 @@ export class TabbedPageComponent {
 			this.slugToIdService.readyToMap.pipe(
 				first(),
 				concatWith(this.router.events.pipe(filter(event => event instanceof NavigationEnd))),
-				map(() => this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedSlug) ?? ''),
+				map(() => this.activatedRoute.snapshot.paramMap.get(urlConst.urlParams.selectedSlug) ?? ''),
 				map(slug => this.slugToIdService.getIdForSlug(slug))
 			),
 			id => id !== undefined
@@ -113,7 +113,7 @@ export class TabbedPageComponent {
 		// to circumvent this problem, "undefined" is converted to "null" every other times so that the input has a new value each time the URL
 		// changes
 		return (
-			TabNameMapper.getTabNameFromUrlParam(this.activatedRoute.snapshot.paramMap.get(URL_CONST.urlParams.selectedTab)) ||
+			TabNameMapper.getTabNameFromUrlParam(this.activatedRoute.snapshot.paramMap.get(urlConst.urlParams.selectedTab)) ||
 			this.toggleBetweenNullAndUndefined()
 		);
 	}

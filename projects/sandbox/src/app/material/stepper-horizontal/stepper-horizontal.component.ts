@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {Component, type OnInit, inject} from '@angular/core';
+import {UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sb-stepper-horizontal',
 	templateUrl: './stepper-horizontal.component.html',
-	styleUrls: ['./stepper-horizontal.component.scss'],
+	styleUrl: './stepper-horizontal.component.scss',
 	standalone: false
 })
 export class StepperHorizontalComponent implements OnInit {
@@ -14,8 +14,7 @@ export class StepperHorizontalComponent implements OnInit {
 	isSmall = false;
 	isLarge = false;
 	labelBottom = true;
-
-	constructor(private readonly formBuilder: UntypedFormBuilder) {}
+	private readonly formBuilder = inject(UntypedFormBuilder);
 
 	ngOnInit(): void {
 		this.firstFormGroup = this.formBuilder.group({

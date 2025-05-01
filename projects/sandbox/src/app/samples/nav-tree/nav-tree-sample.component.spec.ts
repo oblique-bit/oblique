@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, inject, waitForAsync} from '@angular/core/testing';
+import {type ComponentFixture, TestBed, inject, waitForAsync} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';

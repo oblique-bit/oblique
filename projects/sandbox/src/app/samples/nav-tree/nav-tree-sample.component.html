@@ -4,8 +4,8 @@
 		<ob-nav-tree
 			#obNavTree
 			treeAriaLabelledBy="navTreeSampleTitle"
-			[items]="items()"
 			prefix="nav-tree-sample"
+			[items]="items()"
 			[filterPattern]="filter.pattern"
 			[hasFilter]="hasEmbeddedFilter"
 		/>
@@ -17,13 +17,15 @@
 				<input type="text" id="gamma" placeholder="gamma" />
 			</div>
 			<router-outlet #outlet="outlet" />
-			<ob-alert *ngIf="!outlet.isActivated">
-				<strong>Empty page</strong>
-				<p>
-					No link of the <code>nav-tree</code> has been clicked, which means the <code>router-outlet</code> is empty and there's nothing to
-					see. Click on one of the navigation tree link to activate a route and see content.
-				</p>
-			</ob-alert>
+			@if (!outlet.isActivated) {
+				<ob-alert>
+					<strong>Empty page</strong>
+					<p>
+						No link of the <code>nav-tree</code> has been clicked, which means the <code>router-outlet</code> is empty and there's nothing
+						to see. Click on one of the navigation tree link to activate a route and see content.
+					</p>
+				</ob-alert>
+			}
 		</div>
 	</div>
 	<div column-right-content>
@@ -32,7 +34,7 @@
 			<legend>Options</legend>
 			<mat-form-field>
 				<mat-label>Filter</mat-label>
-				<input type="text" matInput [(ngModel)]="filter.pattern" #obFilterBox />
+				<input #obFilterBox type="text" matInput [(ngModel)]="filter.pattern" />
 			</mat-form-field>
 			<mat-slide-toggle [(ngModel)]="hasEmbeddedFilter">Embedded filter?</mat-slide-toggle>
 		</fieldset>

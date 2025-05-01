@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
-import {Colors} from './palette.model';
+import type {Colors} from './palette.model';
 import {ObEColor} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-palette',
 	templateUrl: './palette.component.html',
-	styleUrls: ['./palette.component.scss'],
+	styleUrl: './palette.component.scss',
 	standalone: false
 })
 export class PaletteComponent {

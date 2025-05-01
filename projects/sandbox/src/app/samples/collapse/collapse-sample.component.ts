@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
-import {Duration, IconPosition} from './collapse-sample.model';
+import type {Duration, IconPosition} from './collapse-sample.model';
 
 @Component({
 	selector: 'sb-collapse-sample',

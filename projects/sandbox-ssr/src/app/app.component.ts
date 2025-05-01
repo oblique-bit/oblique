@@ -4,6 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {filter} from 'rxjs';
 
 @Component({
 	selector: 'ssr-root',
@@ -18,6 +19,6 @@ export class AppComponent {
 	constructor() {
 		this.translateService.addLangs(['en', 'fr']);
 		this.translateService.use('en');
-		this.language.valueChanges.pipe(takeUntilDestroyed()).subscribe(lang => this.translateService.use(lang as string));
+		this.language.valueChanges.pipe(takeUntilDestroyed(), filter(Boolean)).subscribe(lang => this.translateService.use(lang));
 	}
 }

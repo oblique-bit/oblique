@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {ThemePalette} from '@angular/material/core';
-import {MatBadgePosition} from '@angular/material/badge';
+import type {ThemePalette} from '@angular/material/core';
+import type {MatBadgePosition} from '@angular/material/badge';
 
 @Component({
 	selector: 'sb-badge',

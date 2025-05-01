@@ -1,13 +1,7 @@
+// @ts-check
 export default [
 	{
 		files: ['projects/sandbox/**/*.ts'],
-
-		languageOptions: {
-			parserOptions: {
-				project: ['projects/sandbox/tsconfig.app.json', 'projects/sandbox/tsconfig.env.json', 'projects/sandbox/tsconfig.spec.json']
-			}
-		},
-
 		rules: {
 			'@angular-eslint/directive-selector': [
 				'error',
@@ -26,38 +20,27 @@ export default [
 					style: 'kebab-case'
 				}
 			],
+			'@angular-eslint/use-injectable-provided-in': ['error', {ignoreClassNamePattern: '/Resolver$/'}],
+			'@angular-eslint/prefer-standalone': 'off', // Sandbox is meant to stay without standalone components
 
-			'@angular-eslint/consistent-component-styles': 'off',
-			'@angular-eslint/no-duplicates-in-metadata-arrays': 'off',
-			'@angular-eslint/prefer-signals': 'off',
-			'@angular-eslint/prefer-standalone': 'off',
-			'@angular-eslint/prefer-standalone-component': 'off',
-			'@typescript-eslint/explicit-module-boundary-types': 'off',
-			'@typescript-eslint/max-params': 'off',
-			'@typescript-eslint/naming-convention': 'off',
+			// rules that are not respected because too costly to refactor
 			'@typescript-eslint/no-deprecated': 'off',
-			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
-			'@typescript-eslint/no-unnecessary-condition': 'off',
 			'@typescript-eslint/no-unsafe-argument': 'off',
 			'@typescript-eslint/no-unsafe-assignment': 'off',
 			'@typescript-eslint/no-unsafe-call': 'off',
 			'@typescript-eslint/no-unsafe-member-access': 'off',
-			'@typescript-eslint/prefer-destructuring': 'off',
-			'@typescript-eslint/prefer-nullish-coalescing': 'off',
-			'@typescript-eslint/strict-boolean-expressions': 'off'
+			'@typescript-eslint/no-unsafe-return': 'off',
+			'@typescript-eslint/no-unsafe-type-assertion': 'off'
 		}
 	},
 	{
 		files: ['projects/sandbox/**/*.html'],
-
 		rules: {
-			'@angular-eslint/template/attributes-order': 'off',
-			'@angular-eslint/template/cyclomatic-complexity': 'off',
+			// rules that are not respected because too costly to refactor
 			'@angular-eslint/template/label-has-associated-control': 'off',
 			'@angular-eslint/template/no-call-expression': 'off',
-			'@angular-eslint/template/no-inline-styles': 'off',
-			'@angular-eslint/template/prefer-control-flow': 'off'
+			'@angular-eslint/template/no-inline-styles': 'off'
 		}
 	}
 ];

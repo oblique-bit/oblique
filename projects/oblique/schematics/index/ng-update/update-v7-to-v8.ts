@@ -26,9 +26,9 @@ export class UpdateV7toV8 implements ObIMigrations {
 	dependencies: ObIDependencies = {};
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	applyMigrations(_options: IUpdateV8Schema): Rule {
-		return (tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Analyzing project');
+	applyMigrations(options: IUpdateV8Schema): Rule {
+		return (tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Analyzing project');
 			return chain([
 				this.prefixScssVariableNames(),
 				this.prefixMixinNames(),
@@ -43,13 +43,13 @@ export class UpdateV7toV8 implements ObIMigrations {
 				this.updateBrowserCompatibilityMessage(),
 				this.migrateEditorConfig(),
 				this.migrateLinting()
-			])(tree, _context);
+			])(tree, context);
 		};
 	}
 
 	private prefixScssVariableNames(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Prefix scss variable names');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Prefix scss variable names');
 			const apply = (filePath: string): void => {
 				[
 					// Palette CI-CD colors
@@ -194,8 +194,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private prefixMixinNames(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Prefix mixin names');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Prefix mixin names');
 			const apply = (filePath: string): void => {
 				[
 					'callout-styles',
@@ -255,8 +255,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private removeLayoutCollapse(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Replacing layout-collapse mixins');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Replacing layout-collapse mixins');
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /(?:ob-)?layout-collapse-(up|down)(?:\(\))?/g, `ob-media-breakpoint-$1(md)`);
 			};
@@ -265,8 +265,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private removeObMandatory(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove ObMandatoryModule, ObMandatoryDirective and their Testing-Mocks');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove ObMandatoryModule, ObMandatoryDirective and their Testing-Mocks');
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, new RegExp(/\s?(Ob(?:Mock)?Mandatory(?:Module|Directive),?)/g), '');
 			};
@@ -275,8 +275,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private removeDlHorizontalVariants(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove .ob-horizontal-* classes');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove .ob-horizontal-* classes');
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, new RegExp(/\s?ob-horizontal-(?:large|small)/g), '');
 			};
@@ -285,8 +285,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private removeCompatCss(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Removing compat styles');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Removing compat styles');
 			return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) =>
 				(config || []).filter((style: string) => !/node_modules\/@oblique\/oblique\/styles\/css\/oblique-compat\.s?css/.test(style))
 			);
@@ -294,8 +294,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private removeThemeService(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Remove ObThemeService');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove ObThemeService');
 			const apply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				if (fileContent.includes('ObThemeService')) {
@@ -342,9 +342,9 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private migrateMasterLayoutProperties(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
 			infoMigration(
-				_context,
+				context,
 				'Replacing master Layout properties: header.isAnimated, footer.isSmall, layout.isFixed, hasScrollTransition, isMedium'
 			);
 			const toApply = (filePath: string): void => {
@@ -367,8 +367,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private migrateObEMasterLayoutEventValues(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Replacing ObEMasterLayoutEventValues values');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Replacing ObEMasterLayoutEventValues values');
 			const toApply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				const replacement = fileContent
@@ -390,8 +390,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private migrateConfigEvents(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Replacing configEvents');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Replacing configEvents');
 			const toApply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
 				const replacement = fileContent.replace(/\.configEvents(?!\$)/g, '.configEvents$');
@@ -457,8 +457,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private updateBrowserCompatibilityMessage(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Oblique: Updating browser compatibility check message');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Oblique: Updating browser compatibility check message');
 			getIndexPaths(tree).forEach((indexPath: string) =>
 				overwriteIndexFile(
 					indexPath,
@@ -471,16 +471,16 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private migrateEditorConfig(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Toolchain: update or integrate "editorconfig" to Oblique standards"');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Toolchain: update or integrate "editorconfig" to Oblique standards"');
 			writeFile(tree, '.editorconfig', getTemplate(tree, 'default-editorconfig.config'));
 			return tree;
 		});
 	}
 
 	private migrateLinting(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Toolchain: update or integrate linting to Oblique standards');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Toolchain: update or integrate linting to Oblique standards');
 			const prefix =
 				/\s*"@angular-eslint\/(?:component|directive)-selector"\s*:\s*\[.*?"prefix"\s*:\s*"(?<prefix>.*?)"/s.exec(
 					readFile(tree, '.eslintrc.json')
@@ -496,8 +496,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private removeCurrentLinter(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Toolchain: remove the current linting solution if any');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Toolchain: remove the current linting solution if any');
 			removeDevDependencies(tree, 'lint');
 			removeScript(tree, 'prettier');
 			removeScript(tree, 'lint');
@@ -515,17 +515,17 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private addEslint(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Toolchain: add "eslint"');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Toolchain: add "eslint"');
 			return externalSchematic('@angular-eslint/schematics', 'ng-add', {});
 		});
 	}
 
 	private addEslintConfiguration(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
 			// this step is only necessary because "ng add @angular-eslint" won't do it if there are more than one projects
 			// and prior to Angular 13, an e2e projects was always created.
-			infoMigration(_context, 'Toolchain: add "@angular-eslint" configuration');
+			infoMigration(context, 'Toolchain: add "@angular-eslint" configuration');
 			getAngularConfigs(tree, []).forEach(project => {
 				const rootPath: string = project.config.root || project.config.sourceRoot;
 				setAngularConfig(tree, ['architect', 'lint'], {
@@ -544,8 +544,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private addPrettier(): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Toolchain: add "prettier"');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Toolchain: add "prettier"');
 			['prettier', 'eslint-config-prettier', 'eslint-plugin-prettier'].forEach(dependency => addDevDependency(tree, dependency));
 			addScript(tree, 'format', 'npm run lint -- --fix');
 			writeFile(tree, '.prettierrc', getTemplate(tree, 'default-prettierrc.config'));
@@ -554,8 +554,8 @@ export class UpdateV7toV8 implements ObIMigrations {
 	}
 
 	private overwriteEslintRC(prefix: string): Rule {
-		return createSafeRule((tree: Tree, _context: SchematicContext) => {
-			infoMigration(_context, 'Toolchain: overwrite ".eslintrc.json"');
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Toolchain: overwrite ".eslintrc.json"');
 			writeFile(tree, '.eslintrc.json', this.formatEsLintRC(tree, prefix));
 			return tree;
 		});

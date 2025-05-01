@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ObENotificationPlacement, ObENotificationType, ObNotificationService} from '@oblique/oblique';
 
 @Component({
@@ -32,8 +32,7 @@ export class NotificationSampleComponent {
 	sticky = false;
 	timeout = 2500;
 	group = false;
-
-	constructor(private readonly notificationService: ObNotificationService) {}
+	private readonly notificationService = inject(ObNotificationService);
 
 	get clearAllOnNavigate(): boolean {
 		return this.notificationService.clearAllOnNavigate;

@@ -2,10 +2,10 @@
 <ob-column-layout [left]="false">
 	<ng-container column-main-content>
 		<mat-horizontal-stepper
+			#stepper
 			[linear]="true"
 			[disableRipple]="isRippleDisabled"
 			[labelPosition]="labelBottom ? 'bottom' : 'end'"
-			#stepper
 			[class.mat-stepper-lg]="isLarge"
 			[class.mat-stepper-sm]="isSmall"
 		>
@@ -30,7 +30,7 @@
 					</div>
 				</form>
 			</mat-step>
-			<mat-step [stepControl]="secondFormGroup" optional>
+			<mat-step optional [stepControl]="secondFormGroup">
 				<form [formGroup]="secondFormGroup">
 					<ng-template matStepLabel>Fill out your address</ng-template>
 					<mat-form-field>
@@ -47,7 +47,7 @@
 				You are now done.
 				<div class="buttons-container">
 					<button type="button" mat-flat-button matStepperPrevious color="accent">Back</button>
-					<button type="button" mat-flat-button (click)="stepper.reset()" color="warn">Reset</button>
+					<button type="button" mat-flat-button color="warn" (click)="stepper.reset()">Reset</button>
 				</div>
 			</mat-step>
 		</mat-horizontal-stepper>
@@ -58,7 +58,7 @@
 			<fieldset>
 				<legend>Stepper features</legend>
 				<mat-list-item>
-					<mat-slide-toggle [checked]="false" (change)="isRippleDisabled = !isRippleDisabled" matTooltip="Disable ripple on header click">
+					<mat-slide-toggle matTooltip="Disable ripple on header click" [checked]="false" (change)="isRippleDisabled = !isRippleDisabled">
 						Disable ripples
 					</mat-slide-toggle>
 				</mat-list-item>

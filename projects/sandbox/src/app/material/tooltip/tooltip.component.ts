@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
-import {TooltipPosition} from '@angular/material/tooltip';
+import type {MatTooltip, TooltipPosition} from '@angular/material/tooltip';
 
 @Component({
 	selector: 'sb-tooltip',
 	templateUrl: './tooltip.component.html',
-	styleUrls: ['./tooltip.component.scss'],
+	styleUrl: './tooltip.component.scss',
 	standalone: false
 })
 export class TooltipComponent {
@@ -38,7 +38,7 @@ export class TooltipComponent {
 		this.disabled = !this.disabled;
 	}
 
-	toggleTooltip(tooltip): void {
+	toggleTooltip(tooltip: MatTooltip): void {
 		tooltip.toggle();
 	}
 

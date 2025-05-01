@@ -1,31 +1,25 @@
-import {Component, ViewChild} from '@angular/core';
-import {FormGroupDirective, NgForm, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {Component, inject, viewChild} from '@angular/core';
+import {FormGroupDirective, NgForm, UntypedFormBuilder, Validators} from '@angular/forms';
 import {ObNotificationService} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-nested-form-sample',
 	templateUrl: './nested-form-sample.component.html',
-	styleUrls: ['./mandatory.scss'],
+	styleUrl: './mandatory.scss',
 	standalone: false
 })
 export class NestedFormSampleComponent {
-	parentForm: UntypedFormGroup;
+	parentForm = inject(UntypedFormBuilder).group({
+		child: [''],
+		parent: ['', [Validators.required]]
+	});
 	model = {
 		parent: '',
 		child: undefined
 	};
-	@ViewChild(FormGroupDirective) reactiveForm: FormGroupDirective;
-	@ViewChild(NgForm) templateForm: NgForm;
-
-	constructor(
-		private readonly fb: UntypedFormBuilder,
-		private readonly notification: ObNotificationService
-	) {
-		this.parentForm = this.fb.group({
-			child: [''],
-			parent: ['', [Validators.required]]
-		});
-	}
+	readonly reactiveForm = viewChild(FormGroupDirective);
+	readonly templateForm = viewChild(NgForm);
+	private readonly notification = inject(ObNotificationService);
 
 	validateForm(valid: boolean): void {
 		if (valid) {

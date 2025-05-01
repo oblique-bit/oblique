@@ -4,24 +4,24 @@ import {createSrcFile} from '../ng-add/ng-add-utils';
 import {getAngularConfigs, packageJsonConfigPath, readFile, replaceInFile, warn} from '../utils';
 import {ObIDependencies, versionFunc} from './ng-update.model';
 
-export function checkDependencies(tree: Tree, _context: SchematicContext, deps: ObIDependencies): void {
+export function checkDependencies(tree: Tree, context: SchematicContext, deps: ObIDependencies): void {
 	const angular = getDepVersion(tree, '@angular/core');
 	const warnings = Object.keys(deps)
-		.reduce<string[]>((warns, dep) => [...warns, checkDependency(tree, _context, dep, getVersions(deps[dep], angular))], [])
+		.reduce<string[]>((warns, dep) => [...warns, checkDependency(tree, context, dep, getVersions(deps[dep], angular))], [])
 		.filter(warning => !!warning)
 		.map(warning => `\n    • ${warning}`)
 		.join('');
 	if (warnings.length) {
 		warn(
-			_context,
+			context,
 			`Unmet peer dependencies.\n  Following peers are required by Oblique but were not found:${warnings}.\n  You must install peer dependencies yourself.`
 		);
 	}
 }
 
-export function minAngularVersion(tree: Tree, _context: SchematicContext, oblique: number, angular: number): void {
+export function minAngularVersion(tree: Tree, context: SchematicContext, oblique: number, angular: number): void {
 	if (getDepVersion(tree, '@angular/core') < angular) {
-		warn(_context, `Oblique ${oblique} is designed to work with Angular ${angular}. If the update fails, try to update angular first.`);
+		warn(context, `Oblique ${oblique} is designed to work with Angular ${angular}. If the update fails, try to update angular first.`);
 	}
 }
 
@@ -54,7 +54,7 @@ export function renameExactOrSuffix(tree: Tree, filePath: string, target: string
 	replaceInFile(tree, filePath, new RegExp(`\\.${target}([:\\.\\s{]|(?:-(?:${suffix.join('|')})))`, 'g'), `.${result}$1`);
 }
 
-function checkDependency(tree: Tree, _context: SchematicContext, dependency: string, versions: number[]): string {
+function checkDependency(tree: Tree, context: SchematicContext, dependency: string, versions: number[]): string {
 	const currentVersion = getDepVersion(tree, dependency);
 	return versions.includes(currentVersion)
 		? ''

@@ -51,7 +51,7 @@ export class PostDist extends StaticScript {
 	}
 
 	private static removeUnwantedFiles(directory: string, packFileName: string): void {
-		const files = Files.list(directory).filter(filePath => !new RegExp(`${packFileName}|package.json$`).test(filePath));
+		const files = Files.list(directory).filter(filePath => !new RegExp(`${packFileName}|package.json$`, 'u').test(filePath));
 		Log.info(`Remove unnecessary files`);
 		files.forEach(filePath => Files.remove(filePath));
 	}

@@ -44,8 +44,8 @@
 		<input type="checkbox" [(ngModel)]="hover" /> Hover<br />
 		<input type="checkbox" [(ngModel)]="plain" /> Plain<br />
 		<input type="checkbox" [(ngModel)]="collapse" /> Collapse<br />
-		<input type="radio" [(ngModel)]="size" name="size" value="small" /> SM
-		<input type="radio" [(ngModel)]="size" name="size" value="medium" /> MD
-		<input type="radio" [(ngModel)]="size" name="size" value="large" /> LG
+		<input type="radio" name="size" value="small" [(ngModel)]="size" /> SM
+		<input type="radio" name="size" value="medium" [(ngModel)]="size" /> MD
+		<input type="radio" name="size" value="large" [(ngModel)]="size" /> LG
 	</ng-container>
 </ob-column-layout>

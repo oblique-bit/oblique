@@ -1,9 +1,15 @@
-import {Component, Inject, OnDestroy} from '@angular/core';
+import {Component, type OnDestroy, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import {ObIAutocompleteInputOption, ObINavigationLink, ObISkipLink, ObMasterLayoutHeaderService, WINDOW} from '@oblique/oblique';
-import {Observable, Subject} from 'rxjs';
+import {
+	type ObIAutocompleteInputOption,
+	type ObINavigationLink,
+	type ObISkipLink,
+	ObMasterLayoutHeaderService,
+	WINDOW
+} from '@oblique/oblique';
+import {type Observable, Subject} from 'rxjs';
 import {filter, map, startWith, takeUntil} from 'rxjs/operators';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
 import {appNavigation} from './app-navigation';
@@ -11,7 +17,7 @@ import {appNavigation} from './app-navigation';
 @Component({
 	selector: 'sb-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss'],
+	styleUrl: './app.component.scss',
 	standalone: false
 })
 export class AppComponent implements OnDestroy {
@@ -35,21 +41,21 @@ export class AppComponent implements OnDestroy {
 		}
 	];
 	autocompleteItems$: Observable<ObIAutocompleteInputOption[]>;
+	readonly nav = inject(DynamicNavigationService);
 	private readonly unsubscribe = new Subject<void>();
+	private readonly router = inject(Router);
+	private readonly translate = inject(TranslateService);
 
-	constructor(
-		public nav: DynamicNavigationService,
-		private readonly router: Router,
-		private readonly translate: TranslateService,
-		private readonly header: ObMasterLayoutHeaderService,
-		@Inject(WINDOW) window: Window
-	) {
+	constructor() {
+		const header = inject(ObMasterLayoutHeaderService);
+		const window = inject<Window>(WINDOW);
+
 		this.initializeSearch();
-		nav.setNavigation(this.navigation);
-		nav.navigationLinks$.subscribe(links => {
+		this.nav.setNavigation(this.navigation);
+		this.nav.navigationLinks$.subscribe(links => {
 			this.navigation = links;
 		});
-		router.events
+		this.router.events
 			.pipe(filter(event => event instanceof NavigationEnd))
 			.subscribe(() => (header.serviceNavigationConfiguration.returnUrl = window.location.href));
 	}
@@ -70,7 +76,7 @@ export class AppComponent implements OnDestroy {
 			.pipe(
 				takeUntil(this.unsubscribe),
 				map(value => searchItems.find(item => this.translate.instant(item.label) === value)),
-				filter(item => !!item)
+				filter(item => Boolean(item))
 			)
 			.subscribe(item => {
 				this.search.reset('');

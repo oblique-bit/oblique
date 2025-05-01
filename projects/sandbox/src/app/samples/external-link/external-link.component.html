@@ -73,15 +73,17 @@
 		<fieldset>
 			<legend>Icon position</legend>
 			<mat-radio-group [(ngModel)]="iconPosition">
-				<mat-radio-button *ngFor="let variant of iconPositions" [value]="variant.value">{{ variant.viewValue }}</mat-radio-button>
+				@for (variant of iconPositions; track variant.value) {
+					<mat-radio-button [value]="variant.value">{{ variant.viewValue }}</mat-radio-button>
+				}
 			</mat-radio-group>
 		</fieldset>
 		<fieldset>
 			<legend>Is link presented as external link</legend>
 			<mat-radio-group [(ngModel)]="isExternal">
-				<mat-radio-button *ngFor="let variantIsExternal of isLinkExternal" [value]="variantIsExternal.value">{{
-					variantIsExternal.viewValue
-				}}</mat-radio-button>
+				@for (variantIsExternal of isLinkExternal; track variantIsExternal.value) {
+					<mat-radio-button [value]="variantIsExternal.value">{{ variantIsExternal.viewValue }}</mat-radio-button>
+				}
 			</mat-radio-group>
 		</fieldset>
 	</ng-container>

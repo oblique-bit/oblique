@@ -1,19 +1,17 @@
-import {Command, Option} from '@commander-js/extra-typings';
-import {OptionValues} from 'commander';
-import {ObNewOptions, ObNewSchemaOption} from '../new/ob-new.model';
-import {ObCliSchema} from './ob-cli.model';
+import {Command, type Option} from '@commander-js/extra-typings';
+import type {OptionValues} from 'commander';
+import type {ObNewOptions, ObNewSchemaOption} from '../new/ob-new.model';
+import type {ObCliSchema} from './ob-cli.model';
 import {addObNewCommandOptions, configureOption, convertOptionPropertyNames} from './ob-configure-command';
 
 jest.mock('../new/ob-new.model');
 jest.mock('./ob-cli.model');
-/* eslint-disable @typescript-eslint/strict-boolean-expressions*/
 
 describe('ob-configure-command tests', () => {
 	describe('convertOptionPropertyNames', () => {
 		test('should convert first letter of option names to lowercase', () => {
 			const inputOptions = {
-				/* eslint-disable @typescript-eslint/naming-convention */
-				SomeOption: 'value1',
+				SomeOption: 'value1', // eslint-disable-line @typescript-eslint/naming-convention
 				aThirdOption: true,
 				anotherOption: 'value2'
 			} as unknown as ObNewOptions<string | boolean>;
@@ -93,7 +91,7 @@ describe('ob-configure-command tests', () => {
 				flagValuePlaceholder: 'value'
 			} as ObNewSchemaOption;
 
-			expect(() => configureOption(brokenConfig, '')).toThrow(/At least one of shortFlag or longFlag must be provided./i);
+			expect(() => configureOption(brokenConfig, '')).toThrow(/At least one of shortFlag or longFlag must be provided./iu);
 		});
 
 		test.each(testCases)('should have $description', ({actual, expected, matcher}) => {

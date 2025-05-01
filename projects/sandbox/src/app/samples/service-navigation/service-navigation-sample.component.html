@@ -2,10 +2,10 @@
 <ob-column-layout [left]="false">
 	<section column-main-content>
 		<ob-service-navigation
+			pamsAppId="1"
 			[environment]="environment"
 			[rootUrl]="rootUrl"
 			[returnUrl]="returnUrl"
-			pamsAppId="1"
 			[profileLinks]="profileLinks"
 			[infoLinks]="infoLinks"
 			[infoContact]="infoContact"
@@ -21,7 +21,7 @@
 			(loginState)="loginState = $event"
 			(logoutTriggered)="logoutURL = $event"
 		>
-			<ng-container *ngIf="hasCustomWidgets">
+			@if (hasCustomWidgets) {
 				<ng-template #customWidgetTemplate>
 					<button type="button" class="ob-widget" mat-icon-button matTooltip="smile" obButton="secondary">
 						<mat-icon svgIcon="smile" />
@@ -32,7 +32,7 @@
 						<mat-icon svgIcon="thumbs-up" />
 					</button>
 				</ng-template>
-			</ng-container>
+			}
 		</ob-service-navigation>
 		<p>
 			Current login state: <output>{{ loginState }}</output>
@@ -45,24 +45,24 @@
 		<fieldset class="toggles">
 			<legend>Info widget settings</legend>
 			<mat-slide-toggle [(ngModel)]="displayInfo">toggle info</mat-slide-toggle>
-			<mat-slide-toggle [(ngModel)]="hasInfoLinks" [disabled]="!displayInfo">toggle info links</mat-slide-toggle>
-			<mat-slide-toggle [(ngModel)]="hasContactEmail" [disabled]="!displayInfo" (change)="handleContactInfo()"
+			<mat-slide-toggle [disabled]="!displayInfo" [(ngModel)]="hasInfoLinks">toggle info links</mat-slide-toggle>
+			<mat-slide-toggle [disabled]="!displayInfo" [(ngModel)]="hasContactEmail" (change)="handleContactInfo()"
 				>toggle contact email</mat-slide-toggle
 			>
-			<mat-slide-toggle [(ngModel)]="hasContactPhone" [disabled]="!displayInfo" (change)="handleContactInfo()"
+			<mat-slide-toggle [disabled]="!displayInfo" [(ngModel)]="hasContactPhone" (change)="handleContactInfo()"
 				>toggle contact phone</mat-slide-toggle
 			>
 		</fieldset>
 		<fieldset class="toggles">
 			<legend>Profile widget settings</legend>
-			<mat-slide-toggle [(ngModel)]="displayProfile" [disabled]="loginState === 'SA'">toggle profile</mat-slide-toggle>
-			<mat-slide-toggle [(ngModel)]="hasProfileLinks" [disabled]="!displayProfile || loginState === 'SA'"
+			<mat-slide-toggle [disabled]="loginState === 'SA'" [(ngModel)]="displayProfile">toggle profile</mat-slide-toggle>
+			<mat-slide-toggle [disabled]="!displayProfile || loginState === 'SA'" [(ngModel)]="hasProfileLinks"
 				>toggle profile links</mat-slide-toggle
 			>
 		</fieldset>
 		<fieldset class="toggles">
 			<legend>Messages widget settings</legend>
-			<mat-slide-toggle [(ngModel)]="displayMessage" [disabled]="loginState === 'SA'">toggle message</mat-slide-toggle>
+			<mat-slide-toggle [disabled]="loginState === 'SA'" [(ngModel)]="displayMessage">toggle message</mat-slide-toggle>
 		</fieldset>
 		<fieldset class="toggles">
 			<legend>Authentication widget settings</legend>
@@ -78,14 +78,14 @@
 			<mat-slide-toggle [(ngModel)]="displayApplications">toggle applications</mat-slide-toggle>
 			<mat-form-field>
 				<mat-label>Max last used applications</mat-label>
-				<input type="number" matInput [(ngModel)]="maxLastUsedApplications" [disabled]="!displayApplications" />
+				<input type="number" matInput [disabled]="!displayApplications" [(ngModel)]="maxLastUsedApplications" />
 				<mat-hint
 					>Display only {{ maxLastUsedApplications }} applications out of a total of {{ lastUsedApplicationsLength$ | async }}.</mat-hint
 				>
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>Max favorite applications</mat-label>
-				<input type="number" matInput [(ngModel)]="maxFavoriteApplications" [disabled]="!displayApplications" />
+				<input type="number" matInput [disabled]="!displayApplications" [(ngModel)]="maxFavoriteApplications" />
 				<mat-hint
 					>Display only {{ maxFavoriteApplications }} applications out of a total of {{ favoriteApplicationsLength$ | async }}.</mat-hint
 				>

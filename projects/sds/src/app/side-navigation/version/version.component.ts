@@ -11,7 +11,7 @@ import {IdPipe} from '../../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
 import {latest} from '../../../obliqueVersion';
 import {VersionOption} from './version.model';
-import {URL_CONST} from '../../shared/url/url.const';
+import {urlConst} from '../../shared/url/url.const';
 import {VersionService} from '../../shared/version/version.service';
 
 @Component({
@@ -71,7 +71,7 @@ export class VersionComponent implements OnChanges {
 	}
 
 	private getVersion(versions: VersionOption[]): number {
-		const currentSlug = this.activatedRoute.snapshot.children[0].paramMap.get(URL_CONST.urlParams.selectedSlug);
+		const currentSlug = this.activatedRoute.snapshot.children[0].paramMap.get(urlConst.urlParams.selectedSlug);
 		const versionFromURL = /(?<=-)\d+$/.exec(currentSlug) ?? [];
 		return parseInt(versionFromURL[0], 10) || this.getLatestVersion(versions);
 	}

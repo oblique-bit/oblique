@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {ObEToggleType} from '@oblique/oblique';
-import {Placement} from '@popperjs/core';
+import type {Placement} from '@popperjs/core';
 
 @Component({
 	selector: 'sb-popover',
 	templateUrl: './popover.component.html',
-	styleUrls: ['./popover.component.scss'],
+	styleUrl: './popover.component.scss',
 	standalone: false
 })
 export class PopoverComponent {

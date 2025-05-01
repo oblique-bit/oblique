@@ -8,7 +8,7 @@
 	</mat-form-field>
 	<mat-form-field>
 		<mat-label>Number 2</mat-label>
-		<input type="number" matInput obNumberFormat [persistent]="false" name="number2" [(ngModel)]="number2" />
+		<input type="number" matInput obNumberFormat name="number2" [persistent]="false" [(ngModel)]="number2" />
 		<mat-hint>2 decimals format without persistent change.</mat-hint>
 	</mat-form-field>
 	<dl>
@@ -27,9 +27,9 @@
 			matInput
 			type="number"
 			placeholder="numberRequired"
-			[(ngModel)]="numberRequired"
 			obNumberFormat
 			required
+			[(ngModel)]="numberRequired"
 		/>
 		<mat-error />
 	</mat-form-field>
@@ -40,12 +40,12 @@
 <form [formGroup]="formData">
 	<mat-form-field>
 		<mat-label>Number 5</mat-label>
-		<input type="number" matInput obNumberFormat [decimals]="4" formControlName="number5" />
+		<input type="number" matInput obNumberFormat formControlName="number5" [decimals]="4" />
 		<mat-hint>4 decimals and persistent changes.</mat-hint>
 	</mat-form-field>
 	<mat-form-field>
 		<mat-label>Number 6</mat-label>
-		<input type="number" matInput obNumberFormat [persistent]="false" formControlName="number6" />
+		<input type="number" matInput obNumberFormat formControlName="number6" [persistent]="false" />
 		<mat-hint>4 decimals format without persistent change.</mat-hint>
 	</mat-form-field>
 	<dl>

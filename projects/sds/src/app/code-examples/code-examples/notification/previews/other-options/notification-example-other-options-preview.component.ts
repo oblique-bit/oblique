@@ -8,7 +8,7 @@ import {TranslateModule} from '@ngx-translate/core';
 	selector: 'app-notification-example-other-options-preview',
 	templateUrl: './notification-example-other-options-preview.component.html',
 	imports: [ObNotificationModule, ObButtonModule, MatButtonModule, TranslateModule, MatSlideToggleModule],
-	styleUrls: ['../../../../code-example-flex-layout.scss', './notification-example-other-options-preview.component.scss']
+	styleUrls: ['./notification-example-other-options-preview.component.scss', '../../../../code-example-flex-layout.scss']
 })
 export class NotificationExampleOtherOptionsPreviewComponent {
 	public types = ObENotificationType;

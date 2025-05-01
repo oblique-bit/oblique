@@ -22,7 +22,7 @@ function addVersionNumber(): void {
 	Log.info('Add Oblique version to "ob-new.model.ts"');
 	const version = PackageJson.readVersion();
 	Files.overwrite('./src/new/ob-new.model.ts', content =>
-		content.replace(/(?<=const version = ')\d+\.\d+\.\d+(?:-(?:alpha|beta|RC)\.\d+)?/, version)
+		content.replace(/(?<=const version = ')\d+\.\d+\.\d+(?:-(?:alpha|beta|RC)\.\d+)?/u, version)
 	);
 }
 
@@ -30,6 +30,6 @@ function addSchemaData(): void {
 	Log.info('Add schema data to "ob-new.model.ts"');
 	const schema = Files.readJson('src/new/schema.json') as {properties: object};
 	Files.overwrite('./src/new/ob-new.model.ts', content =>
-		content.replace(/(?<=const schema = ).*(?= as \{properties: ObNewOptions<ObNewSchemaOption>})/, JSON.stringify(schema))
+		content.replace(/(?<=const schema = ).*(?= as \{properties: ObNewOptions<ObNewSchemaOption>\})/u, JSON.stringify(schema))
 	);
 }

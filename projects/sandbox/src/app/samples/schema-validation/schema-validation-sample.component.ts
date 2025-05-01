@@ -1,12 +1,19 @@
-import {Component, OnInit} from '@angular/core';
-import {AbstractControl, NgForm, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
+import {Component, type OnInit, inject} from '@angular/core';
+import {
+	type AbstractControl,
+	type NgForm,
+	UntypedFormBuilder,
+	type UntypedFormGroup,
+	type ValidationErrors,
+	type ValidatorFn
+} from '@angular/forms';
 import {ObNotificationService, ObSchemaValidationService} from '@oblique/oblique';
 import {of} from 'rxjs';
 
 @Component({
 	selector: 'sb-schema-validation',
 	templateUrl: './schema-validation-sample.component.html',
-	styleUrls: ['./schema-validation-sample.component.scss'],
+	styleUrl: './schema-validation-sample.component.scss',
 	standalone: false
 })
 export class SchemaValidationSampleComponent implements OnInit {
@@ -88,12 +95,9 @@ export class SchemaValidationSampleComponent implements OnInit {
 			}
 		}
 	});
-
-	constructor(
-		private readonly schemaValidation: ObSchemaValidationService,
-		private readonly notification: ObNotificationService,
-		private readonly formBuilder: UntypedFormBuilder
-	) {}
+	private readonly schemaValidation = inject(ObSchemaValidationService);
+	private readonly notification = inject(ObNotificationService);
+	private readonly formBuilder = inject(UntypedFormBuilder);
 
 	ngOnInit(): void {
 		this.formData = this.formBuilder.group({

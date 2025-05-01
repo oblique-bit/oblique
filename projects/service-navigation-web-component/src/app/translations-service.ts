@@ -1,12 +1,12 @@
 import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, map} from 'rxjs';
+import {type Observable, map} from 'rxjs';
 
 import * as translationsDE from '../../../oblique/src/assets/i18n/oblique-de.json';
 import * as translationsFR from '../../../oblique/src/assets/i18n/oblique-fr.json';
 import * as translationsIT from '../../../oblique/src/assets/i18n/oblique-it.json';
 import * as translationsEN from '../../../oblique/src/assets/i18n/oblique-en.json';
-import {ObILink} from './service-navigation-web-component.model';
+import type {ObILink} from './service-navigation-web-component.model';
 
 @Injectable()
 export class TranslationsService {
@@ -43,7 +43,7 @@ export class TranslationsService {
 	}
 
 	private parseLanguages(languageList: string): string[] {
-		if (!languageList || !/^[a-z]{2}(?:,[a-z]{2})*$/.test(languageList)) {
+		if (!languageList || !/^[a-z]{2}(?:,[a-z]{2})*$/u.test(languageList)) {
 			throw new Error(
 				`"language-list" expects a comma separated list of ISO 639-1 languages (e.g. en,fr,de) but received "${languageList}"`
 			);
@@ -73,7 +73,7 @@ export class TranslationsService {
 	}
 
 	private checkLanguageFormat(language: string | undefined, label: 'default-language' | 'language'): void {
-		if (language && !/^[a-z]{2}$/.test(language)) {
+		if (language && !/^[a-z]{2}$/u.test(language)) {
 			throw new Error(`"${label}" expects an ISO 639-1 language (e.g. en) but received "${language}"`);
 		}
 	}
@@ -87,7 +87,7 @@ export class TranslationsService {
 		this.translate.use(language);
 	}
 
-	private getObliqueTranslations(language: string): Record<any, string> {
+	private getObliqueTranslations(language: string): Record<string, string> {
 		switch (language) {
 			case 'de':
 				return translationsDE;
@@ -104,8 +104,8 @@ export class TranslationsService {
 
 	private buildTranslations(languages: string[], infoLinks: string, profileLinks: string): Record<string, Record<string, string>> {
 		let translations = this.initializeTranslationsObject(languages);
-		translations = this.populateTranslations(infoLinks, 'info', languages, translations);
-		translations = this.populateTranslations(profileLinks, 'profile', languages, translations);
+		translations = this.populateTranslations({rawLinks: infoLinks, type: 'info', languages, translations});
+		translations = this.populateTranslations({rawLinks: profileLinks, type: 'profile', languages, translations});
 		return translations;
 	}
 
@@ -113,23 +113,33 @@ export class TranslationsService {
 		return languages.reduce((translations, language) => ({...translations, [language]: {}}), {});
 	}
 
-	private populateTranslations(
-		rawLinks: string | undefined,
-		type: string,
-		languages: string[],
-		translations: Record<string, Record<string, string>>
-	): Record<string, Record<string, string>> {
+	private populateTranslations(options: {
+		rawLinks: string | undefined;
+		type: string;
+		languages: string[];
+		translations: Record<string, Record<string, string>>;
+	}): Record<string, Record<string, string>> {
+		const {rawLinks, type, languages, translations} = options;
 		if (rawLinks) {
-			const links: ObILink[] = JSON.parse(rawLinks);
+			const links = this.parseRawLinks(rawLinks);
 			links.forEach((link, index) => {
-				languages.forEach(language => {
-					translations[language][`${type}-link.${index}.label`] = link[language];
-					if (link.links) {
-						translations[language][`${type}-link.${index}.url`] = link.links[language];
-					}
-				});
+				languages
+					.map(language => ({language, label: link[language] as unknown}))
+					.forEach(({language, label}) => {
+						if (typeof label === 'string') {
+							translations[language][`${type}-link.${index}.label`] = label;
+							if (link.links && typeof link.links[language] === 'string') {
+								translations[language][`${type}-link.${index}.url`] = link.links[language];
+							}
+						}
+					});
 			});
 		}
 		return translations;
+	}
+
+	private parseRawLinks(links: unknown): ObILink[] {
+		const parsedLinks: unknown = typeof links === 'string' ? JSON.parse(links || '[]') : [];
+		return Array.isArray(parsedLinks) ? parsedLinks : [];
 	}
 }

@@ -4,7 +4,7 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 import {ObEPamsEnvironment} from '@oblique/service-navigation/service-navigation.model';
-import {Environment} from '../app/app.component.model';
+import type {Environment} from '../app/app.component.model';
 
 export const environment: Environment = {
 	production: false,

@@ -2,35 +2,34 @@ import {
 	Component,
 	EventEmitter,
 	HostListener,
-	Inject,
-	Input,
-	OnChanges,
-	OnInit,
+	type OnChanges,
+	type OnInit,
 	Output,
-	SimpleChange,
-	SimpleChanges,
+	type SimpleChange,
+	type SimpleChanges,
 	ViewEncapsulation,
 	booleanAttribute,
 	inject,
+	input,
 	numberAttribute
 } from '@angular/core';
-import {DOCUMENT, NgFor, NgIf} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
-import {Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 import {ObServiceNavigationModule} from '../../../oblique/src/lib/service-navigation/service-navigation.module';
 import {
 	ObEPamsEnvironment,
-	ObIServiceNavigationContact,
-	ObIServiceNavigationLink,
-	ObLoginState
+	type ObIServiceNavigationContact,
+	type ObIServiceNavigationLink,
+	type ObLoginState
 } from '../../../oblique/src/lib/service-navigation/service-navigation.model';
 import {appVersion} from './version';
-import {ObEIcon} from '../../../oblique/src/lib/icon/icon.model';
+import type {ObEIcon} from '../../../oblique/src/lib/icon/icon.model';
 import {ObButtonModule} from '../../../oblique/src/lib/button/button.module';
 import {TranslationsService} from './translations-service';
-import {ObICustomButton, ObILink} from './service-navigation-web-component.model';
+import type {ObICustomButton, ObILink} from './service-navigation-web-component.model';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
@@ -43,31 +42,31 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 		'../../../oblique/src/styles/scss/core/components/_external-link.scss'
 	],
 	encapsulation: ViewEncapsulation.None,
-	imports: [ObServiceNavigationModule, NgIf, MatButtonModule, MatTooltipModule, MatIconModule, NgFor, MatBadgeModule, ObButtonModule],
+	imports: [ObServiceNavigationModule, MatButtonModule, MatTooltipModule, MatIconModule, MatBadgeModule, ObButtonModule],
 	providers: [TranslationsService],
 	host: {'ob-version': appVersion}
 })
 export class ObServiceNavigationWebComponentComponent implements OnChanges, OnInit {
-	@Input() languageList: string;
-	@Input() defaultLanguage: string;
-	@Input() language: string;
-	@Input() environment: 'DEV' | 'REF' | 'TEST' | 'ABN' | 'PROD';
-	@Input() infoContact: string;
-	@Input() infoLinks: string;
-	@Input() profileLinks: string;
-	@Input({transform: numberAttribute}) maxLastUsedApplications = 3;
-	@Input({transform: numberAttribute}) maxFavoriteApplications = 3;
-	@Input({transform: booleanAttribute}) displayLanguages = true;
-	@Input({transform: booleanAttribute}) displayMessage = true;
-	@Input({transform: booleanAttribute}) displayInfo = true;
-	@Input({transform: booleanAttribute}) displayApplications = true;
-	@Input({transform: booleanAttribute}) displayProfile = true;
-	@Input({transform: booleanAttribute}) displayAuthentication = true;
-	@Input({transform: booleanAttribute}) handleLogout: boolean;
-	@Input() pamsAppId: string;
-	@Input() rootUrl: string;
-	@Input() returnUrl: string;
-	@Input() customButtons: string;
+	readonly languageList = input<string>(undefined);
+	readonly defaultLanguage = input<string>(undefined);
+	readonly language = input<string>(undefined);
+	readonly environment = input<'DEV' | 'REF' | 'TEST' | 'ABN' | 'PROD'>(undefined);
+	readonly infoContact = input<string>(undefined);
+	readonly infoLinks = input<string>(undefined);
+	readonly profileLinks = input<string>(undefined);
+	readonly maxLastUsedApplications = input(3, {transform: numberAttribute});
+	readonly maxFavoriteApplications = input(3, {transform: numberAttribute});
+	readonly displayLanguages = input(true, {transform: booleanAttribute});
+	readonly displayMessage = input(true, {transform: booleanAttribute});
+	readonly displayInfo = input(true, {transform: booleanAttribute});
+	readonly displayApplications = input(true, {transform: booleanAttribute});
+	readonly displayProfile = input(true, {transform: booleanAttribute});
+	readonly displayAuthentication = input(true, {transform: booleanAttribute});
+	readonly handleLogout = input<boolean, unknown>(undefined, {transform: booleanAttribute});
+	readonly pamsAppId = input<string>(undefined);
+	readonly rootUrl = input<string>(undefined);
+	readonly returnUrl = input<string>(undefined);
+	readonly customButtons = input<string>(undefined);
 	@Output() readonly languageChange: Observable<string>;
 	@Output() readonly loginState = new EventEmitter<ObLoginState>();
 	@Output() readonly buttonClickedEmitter = new EventEmitter<ObEIcon>();
@@ -79,8 +78,9 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	profileLinksParsed: ObIServiceNavigationLink[] = [];
 	customButtonsParsed: ObICustomButton[] = [];
 	private readonly translationService = inject(TranslationsService);
+	private readonly document = inject(DOCUMENT);
 
-	constructor(@Inject(DOCUMENT) private readonly document: Document) {
+	constructor() {
 		this.languageChange = this.translationService.languageChange$;
 	}
 
@@ -105,14 +105,14 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 		this.infoLinksParsed = this.parseLinks(changes.infoLinks, 'info');
 		this.profileLinksParsed = this.parseLinks(changes.profileLinks, 'profile');
 		this.customButtonsParsed = this.parseCustomButtons(changes.customButtons);
-		this.translationService.handleTranslations(this.infoLinks, this.profileLinks);
+		this.translationService.handleTranslations(this.infoLinks(), this.profileLinks());
 		this.handleNewLanguage(changes.language);
 	}
 
 	ngOnInit(): void {
-		this.translationService.initializeTranslations(this.languageList, this.language, this.defaultLanguage);
-		this.translationService.handleTranslations(this.infoLinks, this.profileLinks); // necessary because ngOnChanges is called before ngOnInit
-		this.environmentParsed = this.parseEnvironment(this.environment);
+		this.translationService.initializeTranslations(this.languageList(), this.language(), this.defaultLanguage());
+		this.translationService.handleTranslations(this.infoLinks(), this.profileLinks()); // necessary because ngOnChanges is called before ngOnInit
+		this.environmentParsed = this.parseEnvironment(this.environment());
 	}
 
 	private parseEnvironment(environmentName: string): ObEPamsEnvironment {
@@ -126,27 +126,31 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	}
 
 	private parseContact(infoContact: SimpleChange | undefined): ObIServiceNavigationContact | undefined {
-		// undefined is coalesced into null because JSON.parse(null) is valid
-		return infoContact ? JSON.parse(infoContact.currentValue || null) : this.infoContactParsed;
+		return typeof infoContact?.currentValue === 'string' ? JSON.parse(infoContact.currentValue || null) : this.infoContactParsed;
 	}
 
 	private parseLinks(rawLinks: SimpleChange | undefined, type: 'info' | 'profile'): ObIServiceNavigationLink[] {
 		if (!rawLinks) {
 			return type === 'info' ? this.infoLinksParsed : this.profileLinksParsed;
 		}
-		const links: ObILink[] = JSON.parse(rawLinks.currentValue ?? '[]');
+		const links = this.parseRawLinks(rawLinks.currentValue);
 		return links.map((link, index) => ({
 			url: `${type}-link.${index}.url`,
 			label: `${type}-link.${index}.label`
 		}));
 	}
 
+	private parseRawLinks(links: unknown): ObILink[] {
+		const parsedLinks: unknown = typeof links === 'string' ? JSON.parse(links || '[]') : [];
+		return Array.isArray(parsedLinks) ? parsedLinks : [];
+	}
+
 	private parseCustomButtons(customButtons: SimpleChange | undefined): ObICustomButton[] {
-		return customButtons ? JSON.parse(customButtons.currentValue || '[]') : this.customButtonsParsed;
+		return typeof customButtons?.currentValue === 'string' ? JSON.parse(customButtons.currentValue || '[]') : this.customButtonsParsed;
 	}
 
 	private handleNewLanguage(language: SimpleChange | undefined): void {
-		if (language) {
+		if (typeof language?.currentValue === 'string') {
 			this.translationService.setLang(language.currentValue);
 		}
 	}

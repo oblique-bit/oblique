@@ -32,7 +32,7 @@ describe(ObCollapseComponent.name, () => {
 		beforeEach(() => {
 			fixture = TestBed.createComponent(ObCollapseComponent);
 			obCollapseComponent = fixture.componentInstance;
-			debugElement = fixture.debugElement; // eslint-disable-line prefer-destructuring
+			debugElement = fixture.debugElement;
 			toggleElement = debugElement.query(By.css('.ob-collapse-toggle')).nativeElement;
 			fixture.detectChanges();
 		});
@@ -102,7 +102,7 @@ describe(ObCollapseComponent.name, () => {
 		beforeEach(() => {
 			fixture = TestBed.createComponent(ObCollapseComponent);
 			obCollapseComponent = fixture.componentInstance;
-			debugElement = fixture.debugElement; // eslint-disable-line prefer-destructuring
+			debugElement = fixture.debugElement;
 			toggleElement = debugElement.query(By.css('.ob-collapse-toggle')).nativeElement;
 			fixture.detectChanges();
 		});
@@ -229,7 +229,7 @@ describe(ObCollapseComponent.name, () => {
 		beforeEach(() => {
 			ObCollapseComponent.index = 0;
 			fixtureTestComponent = TestBed.createComponent(TestCollapseComponent);
-			debugElement = fixtureTestComponent.debugElement; // eslint-disable-line prefer-destructuring
+			debugElement = fixtureTestComponent.debugElement;
 			fixtureTestComponent.detectChanges();
 		});
 

@@ -1,6 +1,6 @@
-import {Command, Option, OptionValues} from '@commander-js/extra-typings';
-import {ObNewOptions, ObNewSchemaOption, OptionKeys} from '../new/ob-new.model';
-import {ObCliSchema} from './ob-cli.model';
+import {type Command, Option, type OptionValues} from '@commander-js/extra-typings';
+import type {ObNewOptions, ObNewSchemaOption, OptionKeys} from '../new/ob-new.model';
+import type {ObCliSchema} from './ob-cli.model';
 
 //this is needed because commander sometimes converts the option to firstUpperCase
 export function convertOptionPropertyNames(options: ObNewOptions<string | boolean>): ObNewOptions<string | boolean> {
@@ -45,7 +45,9 @@ export function configureOption(config: ObNewSchemaOption, longFlag: string): Op
 }
 
 function isEmpty(flag: string | undefined | null): boolean {
-	if (flag === undefined || flag === null) return true;
+	if (flag === undefined || flag === null) {
+		return true;
+	}
 	return flag.trim() === '';
 }
 

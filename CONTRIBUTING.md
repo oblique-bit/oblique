@@ -16,6 +16,8 @@ As a contributor, here are the guidelines we would like you to follow:
       - [Subject](#subject)
     - [Body](#body)
     - [Footer](#footer)
+      - [Ticket number](#ticket_number)
+      - [Breaking changes](#breaking_changes)
 
 ## <a name="coc"></a> Code of Conduct
 
@@ -142,7 +144,7 @@ You can include a comparison of the previous behavior with the new one in order 
 
 #### <a name="footer"></a> Footer
 
-The footer is optional must follow the following structure if present:
+The footer includes a reference to the JIRA ticket and any eventual breaking changes. It must adhere to the following structure:
 
 ```
 OUI-715
@@ -152,9 +154,23 @@ BREAKING CHANGE:
 * file `fileName` has been renamed into `myFile`
 ```
 
-The footer is the place to include a reference to a JIRA issue, if any. There must be only 1 issue, omit parent issue
-for sub-tasks. GitHub's issues are always linked to a JIRA issue as well, une only the latter.
+If there is neither a ticket nor a breaking change, the footer may be omitted.
 
-Following the issue number is the breaking changes section that must start with the phrase "BREAKING CHANGE:"
-followed by a new line. Multiple breaking changes may be broken down with bullet points. Each Breaking changes must
-contain migration instructions and a note about Schematics solving it if applicable.
+##### <a name="ticket_number"></a> Ticket number
+
+If a ticket is referenced:
+
+- it must be listed first
+- only one ticket number is allowed. Subtasks must omit the parent ticket number
+- for GitHub issues, use the corresponding JIRA ticket number if available. If no JIRA ticket exists, use the GitHub issue number.
+
+##### <a name="breaking_changes"></a> Breaking changes
+
+If there are any breaking changes, include them immediately after the ticket number:
+
+- the section must starts on a new line containing exactly "BREAKING CHANGE:"
+- list multiple breaking changes with bullet points
+- each breaking change must include:
+  - what isn't available anymore
+  - what replaces it. If there's no replacement, then state "without replacement"
+  - if the change is automated with a Schematics, then state "solved with Schematics"

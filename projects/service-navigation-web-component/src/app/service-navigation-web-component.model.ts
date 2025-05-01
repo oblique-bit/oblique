@@ -1,4 +1,4 @@
-import {ObEIcon} from '@oblique/oblique';
+import type {ObEIcon} from '@oblique/oblique';
 
 export interface ObILink {
 	de: string;

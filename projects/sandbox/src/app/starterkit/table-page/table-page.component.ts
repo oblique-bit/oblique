@@ -1,15 +1,15 @@
 import {SelectionModel} from '@angular/cdk/collections';
 import {Component} from '@angular/core';
-import {ObNavTreeItemModel} from '@oblique/oblique';
+import type {ObNavTreeItemModel} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-table-page',
 	templateUrl: './table-page.component.html',
-	styleUrls: ['./table-page.component.scss'],
+	styleUrl: './table-page.component.scss',
 	standalone: false
 })
 export class TablePageComponent {
-	selection = new SelectionModel<any>(true, []);
+	selection = new SelectionModel<unknown>(true, []);
 	displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol', 'actions'];
 	dataSource = [
 		{position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},

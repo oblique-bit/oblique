@@ -1,39 +1,33 @@
+// @ts-check
 export default [
 	{
 		files: ['projects/service-navigation-web-component/**/*.ts'],
-
-		languageOptions: {
-			parserOptions: {
-				project: [
-					'projects/service-navigation-web-component/tsconfig.app.json',
-					'projects/service-navigation-web-component/tsconfig.spec.json',
-					'projects/service-navigation-web-component/tsconfig.scripts.json'
-				]
-			}
-		},
-
 		rules: {
-			'@angular-eslint/prefer-signals': 'off',
-			'@typescript-eslint/max-params': 'off',
-			'@typescript-eslint/naming-convention': 'off',
-			'@typescript-eslint/no-explicit-any': 'off',
-			'@typescript-eslint/no-magic-numbers': 'off',
-			'@typescript-eslint/no-unnecessary-condition': 'off',
-			'@typescript-eslint/no-unsafe-argument': 'off',
-			'@typescript-eslint/no-unsafe-assignment': 'off',
-			'@typescript-eslint/no-unsafe-call': 'off',
-			'@typescript-eslint/no-unsafe-member-access': 'off',
-			'@typescript-eslint/prefer-destructuring': 'off',
-			'@typescript-eslint/prefer-nullish-coalescing': 'off',
-			'@typescript-eslint/strict-boolean-expressions': 'off'
-		}
-	},
-	{
-		files: ['projects/service-navigation-web-component/**/*.html'],
+			'@angular-eslint/directive-selector': [
+				'error',
+				{
+					type: 'attribute',
+					prefix: 'ob',
+					style: 'camelCase'
+				}
+			],
 
-		rules: {
-			'@angular-eslint/template/attributes-order': 'off',
-			'@angular-eslint/template/prefer-control-flow': 'off'
+			'@angular-eslint/component-selector': [
+				'error',
+				{
+					type: 'element',
+					prefix: 'ob',
+					style: 'kebab-case'
+				}
+			],
+			// features that are used
+			'@angular-eslint/use-component-view-encapsulation': 'off',
+			'@angular-eslint/use-injectable-provided-in': 'off',
+
+			// rules that are not respected
+			'@typescript-eslint/no-deprecated': 'off', // need an alternative to provide icons
+			'@typescript-eslint/no-magic-numbers': 'off', // would violate member-ordering
+			'@typescript-eslint/no-unsafe-return': 'off' // need extensive type checking
 		}
 	}
 ];

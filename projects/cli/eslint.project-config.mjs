@@ -1,13 +1,7 @@
+// @ts-check
 export default [
 	{
-		files: ['projects/cli/src/**/*.ts'],
-
-		languageOptions: {
-			parserOptions: {
-				project: ['projects/cli/tsconfig.app.json']
-			}
-		},
-
+		files: ['projects/cli/**/*.ts'],
 		rules: {
 			'no-console': [
 				'error',
@@ -15,37 +9,21 @@ export default [
 					allow: ['info', 'warn', 'error', 'time', 'timeEnd']
 				}
 			],
+			'@typescript-eslint/consistent-return': 'off', // covered by noImplicitReturns
+			'default-case': 'off', // covered by noImplicitReturns
 
-			'@typescript-eslint/no-magic-numbers': [
-				'error',
-				{
-					ignore: [-1, 0, 1]
-				}
-			]
-		}
-	},
-	{
-		files: ['projects/cli/scripts/*.ts'],
-
-		languageOptions: {
-			parserOptions: {
-				project: ['projects/cli/tsconfig.scripts.json']
-			}
+			// rules that are not respected
+			// this rule would need a massive refactoring as the types are not currently safe
+			'@typescript-eslint/no-unsafe-type-assertion': 'off'
 		}
 	},
 	{
 		files: ['projects/cli/src/**/*.spec.ts'],
-
-		languageOptions: {
-			parserOptions: {
-				project: ['projects/cli/tsconfig.spec.json']
-			}
-		},
-
 		rules: {
-			'no-console': 'off',
-			'@typescript-eslint/no-magic-numbers': 'off',
-			'@typescript-eslint/no-unsafe-assignment': 'off'
+			// these two rules do have valid exceptions and should be deactivated where necessary. This is not possible as the IDE
+			// doesn't see the errors and thus removes the deactivation comment
+			'@typescript-eslint/no-unsafe-assignment': 'off',
+			'no-console': 'off'
 		}
 	}
 ];

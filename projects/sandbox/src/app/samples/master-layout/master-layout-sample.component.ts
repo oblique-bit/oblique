@@ -1,13 +1,19 @@
-import {Component} from '@angular/core';
-import {ObEScrollMode, ObICollapseBreakpoints, ObIServiceNavigationContact, ObLoginState, ObMasterLayoutService} from '@oblique/oblique';
-import {Observable, share} from 'rxjs';
+import {Component, inject} from '@angular/core';
+import {
+	ObEScrollMode,
+	type ObICollapseBreakpoints,
+	type ObIServiceNavigationContact,
+	type ObLoginState,
+	ObMasterLayoutService
+} from '@oblique/oblique';
+import {type Observable, share} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {DynamicNavigationService} from './dynamic-navigation.service';
 
 @Component({
 	selector: 'sb-master-layout-sample',
 	templateUrl: './master-layout-sample.component.html',
-	styleUrls: ['./master-layout-sample.component.scss'],
+	styleUrl: './master-layout-sample.component.scss',
 	standalone: false
 })
 export class MasterLayoutSampleComponent {
@@ -16,14 +22,13 @@ export class MasterLayoutSampleComponent {
 	loginState$: Observable<ObLoginState>;
 	logoutUrl$: Observable<string>;
 	isLoggedOut$: Observable<boolean>;
+	private readonly masterLayout = inject(ObMasterLayoutService);
+	private readonly dynamicNavigationService = inject(DynamicNavigationService);
 	private readonly infoLinks = [...this.masterLayout.header.serviceNavigationConfiguration.infoLinks];
 	private readonly infoContact = {...this.masterLayout.header.serviceNavigationConfiguration.infoContact};
 	private readonly profileLinks = [...this.masterLayout.header.serviceNavigationConfiguration.profileLinks];
 
-	constructor(
-		private readonly masterLayout: ObMasterLayoutService,
-		private readonly dynamicNavigationService: DynamicNavigationService
-	) {
+	constructor() {
 		this.coverLayout = this.masterLayout.layout.hasCover;
 		this.loginState$ = this.masterLayout.header.loginState$;
 		this.logoutUrl$ = this.masterLayout.header.logoutUrl$;

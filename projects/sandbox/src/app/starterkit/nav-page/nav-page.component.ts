@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObNavTreeItemModel} from '@oblique/oblique';
+import type {ObNavTreeItemModel} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-nav-page',

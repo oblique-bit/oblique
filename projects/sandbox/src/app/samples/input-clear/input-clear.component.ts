@@ -1,5 +1,5 @@
-import {Component, OnInit, inject} from '@angular/core';
-import {FormControl, FormGroup, UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
+import {Component, type OnInit, inject} from '@angular/core';
+import {type FormControl, type FormGroup, UntypedFormBuilder, type UntypedFormGroup} from '@angular/forms';
 
 @Component({
 	selector: 'sb-input-clear',
