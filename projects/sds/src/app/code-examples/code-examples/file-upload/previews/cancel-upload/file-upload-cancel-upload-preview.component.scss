@@ -4,7 +4,7 @@
 */
 
 @use "sass:map";
-@use "../../../../../../styles/scss/core/variables";
+@use "@oblique/oblique/src/styles/scss/core/variables";
 
 :host {
 	display: flex;

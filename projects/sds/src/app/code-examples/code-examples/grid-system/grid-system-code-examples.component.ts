@@ -23,8 +23,7 @@ export class GridSystemCodeExamplesComponent extends CodeExamples {
 			title: 'Grid system',
 			snippets: [
 				this.getSnippet(this.directory, 'grid/grid-system-example-grid-preview.component.html', 'HTML'),
-				this.getSnippet(this.directory, 'grid/grid-system-example-grid-preview.component.ts', 'TS'),
-				this.getSnippet(this.directory, 'grid-system.scss', 'SCSS')
+				this.getSnippet(this.directory, 'grid/grid-system-example-grid-preview.component.scss', 'SCSS')
 			]
 		},
 		{
@@ -33,8 +32,7 @@ export class GridSystemCodeExamplesComponent extends CodeExamples {
 			title: 'Flex system',
 			snippets: [
 				this.getSnippet(this.directory, 'flex/grid-system-example-flex-preview.component.html', 'HTML'),
-				this.getSnippet(this.directory, 'flex/grid-system-example-flex-preview.component.ts', 'TS'),
-				this.getSnippet(this.directory, 'grid-system.scss', 'SCSS')
+				this.getSnippet(this.directory, 'flex/grid-system-example-flex-preview.component.scss', 'SCSS')
 			]
 		}
 	];

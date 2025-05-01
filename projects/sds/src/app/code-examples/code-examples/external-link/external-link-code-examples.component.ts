@@ -17,11 +17,7 @@ export class ExternalLinkCodeExamplesComponent extends CodeExamples {
 		{
 			component: ExternalLinkExampleStackblitzLinkPreviewComponent,
 			idParts: ['stackblitz', 'link'],
-			title: 'ExternalLink stackblitzLink',
-			snippets: [
-				this.getSnippet('external-link', 'stackblitz-link/external-link-example-stackblitz-link-preview.component.html', 'HTML'),
-				this.getSnippet('external-link', 'stackblitz-link/external-link-example-stackblitz-link-preview.component.ts', 'TS')
-			]
+			title: 'ExternalLink stackblitzLink'
 		}
 	];
 }

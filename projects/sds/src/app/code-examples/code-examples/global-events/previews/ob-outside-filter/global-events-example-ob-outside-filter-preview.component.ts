@@ -6,7 +6,7 @@ import {BehaviorSubject, Observable, Subject, map, takeUntil, withLatestFrom} fr
 @Component({
 	selector: 'app-global-events-example-ob-outside-filter-preview',
 	templateUrl: './global-events-example-ob-outside-filter-preview.component.html',
-	styleUrls: ['../../../../code-example-flex-layout.scss', '../global-events-example-preview.component.scss'],
+	styleUrls: ['../global-events-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
 	imports: [AsyncPipe],
 	host: {class: 'layout-column'}
 })

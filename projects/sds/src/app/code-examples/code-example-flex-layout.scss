@@ -3,7 +3,7 @@
     It is NOT required in order to use any Oblique features.
 */
 @use "sass:map";
-@use "../../styles/scss/core/variables";
+@use "@oblique/oblique/src/styles/scss/core/variables";
 
 :host {
 	display: flex;

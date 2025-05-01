@@ -23,7 +23,8 @@ export class HtmlTableCodeExamplesComponent extends CodeExamples {
 			title: 'Default',
 			snippets: [
 				this.getSnippet('html-table', 'default/html-table-example-default-preview.component.html', 'HTML'),
-				this.getSnippet('html-table', 'default/html-table-example-default-preview.component.ts', 'TS')
+				this.getSnippet('html-table', 'default/html-table-example-default-preview.component.ts', 'TS'),
+				this.getSnippet('html-table', 'default/html-table-example-default-preview.component.scss', 'SCSS')
 			]
 		},
 		{
@@ -32,7 +33,8 @@ export class HtmlTableCodeExamplesComponent extends CodeExamples {
 			title: 'Styles',
 			snippets: [
 				this.getSnippet('html-table', 'styles/html-table-example-styles-preview.component.html', 'HTML'),
-				this.getSnippet('html-table', 'styles/html-table-example-styles-preview.component.ts', 'TS')
+				this.getSnippet('html-table', 'styles/html-table-example-styles-preview.component.ts', 'TS'),
+				this.getSnippet('html-table', 'styles/html-table-example-styles-preview.component.scss', 'SCSS')
 			]
 		},
 		{

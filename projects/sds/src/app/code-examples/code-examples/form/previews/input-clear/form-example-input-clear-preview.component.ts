@@ -16,7 +16,7 @@ import {ObInputClearModule} from '@oblique/oblique';
 @Component({
 	selector: 'app-form-example-input-clear-preview',
 	templateUrl: './form-example-input-clear-preview.component.html',
-	styleUrls: ['../../../../code-example-flex-layout.scss', './form-example-input-clear-preview.component.scss'],
+	styleUrls: ['./form-example-input-clear-preview.component.scss', '../../../../code-example-flex-layout.scss'],
 	imports: [MatFormFieldModule, MatIconModule, MatInputModule, ObInputClearModule, ReactiveFormsModule]
 })
 export class FormExampleInputClearPreviewComponent implements OnInit {

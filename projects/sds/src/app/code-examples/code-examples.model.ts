@@ -26,14 +26,24 @@ export class CodeExamples {
 				return require(`!!raw-loader!../../../../../node_modules/@oblique/oblique/src/styles/scss/core/mixins/${filePath}`);
 			}
 			case 'code-examples': {
-				return require(`!!raw-loader!./${filePath}`);
+				const fileContent = require(`!!raw-loader!./${filePath}`) as {default: string};
+				return {default: this.fixPath(filePath.split('.').pop(), fileContent.default ?? '')};
 			}
 			default: {
 				const fileContent = require(`!!raw-loader!./code-examples/${directory}/previews/${filePath}`) as {default: string};
-				return filePath.endsWith('.scss')
-					? {default: fileContent.default?.replace(/@oblique\/oblique\/src\/styles\/scss\/core/g, '@oblique/oblique/styles/scss/core')}
-					: fileContent;
+				return {default: this.fixPath(filePath.split('.').pop(), fileContent.default ?? '')};
 			}
+		}
+	}
+
+	private fixPath(fileType: string, fileContent: string): string {
+		switch (fileType) {
+			case 'scss':
+				return fileContent.replace(/@oblique\/oblique\/src\/styles\/scss\/core/g, '@oblique/oblique/styles/scss/core');
+			case 'ts':
+				return fileContent.replace(/(?:\.\.\/)+/g, './');
+			default:
+				return fileContent;
 		}
 	}
 
