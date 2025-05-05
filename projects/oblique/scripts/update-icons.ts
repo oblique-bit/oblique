@@ -39,8 +39,7 @@ class Icons extends StaticScript {
 		return Files.read(`${iconsPath}/${fileName}`)
 			.replace(/\n*/g, '')
 			.replace(/(?<=id=")a(?=")/, id) // id is mandatory for Material to identify icons
-			.replace('<?xml version="1.0" encoding="UTF-8"?>', '')
-			.replace('xmlns="http://www.w3.org/2000/svg" ', '');
+			.replace('<?xml version="1.0" encoding="UTF-8"?>', '');
 	}
 
 	private static writeIconSet(filePath: string, svgs: SVG[]): void {
