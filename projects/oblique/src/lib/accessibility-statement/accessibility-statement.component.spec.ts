@@ -19,10 +19,174 @@ describe(AccessibilityStatementComponent.name, () => {
 			providers: [
 				provideHttpClient(),
 				provideObliqueConfiguration({
-					accessibilityStatement: {applicationName: 'appName', applicationOperator: 'Operator', contact: {emails: ['e@mail.com']}}
+					accessibilityStatement: {
+						applicationName: 'appName',
+						applicationOperator: 'Operator',
+						contact: {emails: ['e@mail.com']}
+					}
 				})
 			]
 		}).compileComponents();
+	});
+
+	describe.each([{conformity: 'none'}, {conformity: 'full'}])('With "conformity" "$conformity"', ({conformity}) => {
+		beforeEach(() => {
+			TestBed.overrideProvider(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, {
+				useValue: {applicationName: 'appName', applicationOperator: 'Operator', contact: {emails: ['e@mail.com']}, conformity}
+			});
+			fixture = TestBed.createComponent(AccessibilityStatementComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+		});
+
+		test('component creation', () => {
+			expect(component).toBeTruthy();
+		});
+
+		describe('template', () => {
+			test.each([
+				{tag: 'h1', number: 1},
+				{tag: 'h2', number: 3},
+				{tag: 'h3', number: 3},
+				{tag: 'h4', number: 2},
+				{tag: 'h5', number: 0},
+				{tag: 'ul', number: 4},
+				{tag: 'ol', number: 0},
+				{tag: 'p', number: 5}
+			])('has $number "$tag" tags', ({tag, number}) => {
+				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
+			});
+		});
+
+		describe('statementParameters', () => {
+			test('to be defined', () => {
+				expect(component.statementParameters).toBeDefined();
+			});
+
+			test.each([
+				{property: 'applicationName', value: 'appName'},
+				{property: 'conformity', value: `i18n.oblique.accessibility-statement.statement.${conformity}`},
+				{property: 'exceptionText', value: 'i18n.oblique.accessibility-statement.statement.no-exception'}
+			])('to have "$value" as "$property"', ({property, value}) => {
+				expect(component.statementParameters[property]).toBe(value);
+			});
+		});
+
+		describe('contactParameters', () => {
+			test('to be defined', () => {
+				expect(component.contactParameters).toBeDefined();
+			});
+
+			test.each([
+				{property: 'emails', value: ['e@mail.com']},
+				{property: 'phones', value: []}
+			])('to have an empty array as "$property"', ({property, value}) => {
+				expect(component.contactParameters[property]).toEqual(value);
+			});
+		});
+
+		describe('generalLinks', () => {
+			test('to be defined', () => {
+				expect(component.generalLinks).toBeDefined();
+			});
+
+			test('to have 2 items', () => {
+				expect(component.generalLinks.length).toBe(2);
+			});
+		});
+
+		describe('accessibilityLinks', () => {
+			test('to be defined', () => {
+				expect(component.accessibilityLinks).toBeDefined();
+			});
+
+			test('to have 6 items', () => {
+				expect(component.accessibilityLinks.length).toBe(6);
+			});
+		});
+	});
+
+	describe('With "conformity" "partial"', () => {
+		beforeEach(() => {
+			TestBed.overrideProvider(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, {
+				useValue: {
+					applicationName: 'appName',
+					applicationOperator: 'Operator',
+					contact: {emails: ['e@mail.com']},
+					conformity: 'partial',
+					exceptions: ['test']
+				}
+			});
+			fixture = TestBed.createComponent(AccessibilityStatementComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+		});
+
+		test('component creation', () => {
+			expect(component).toBeTruthy();
+		});
+
+		describe('template', () => {
+			test.each([
+				{tag: 'h1', number: 1},
+				{tag: 'h2', number: 3},
+				{tag: 'h3', number: 4},
+				{tag: 'h4', number: 2},
+				{tag: 'h5', number: 0},
+				{tag: 'ul', number: 4},
+				{tag: 'ol', number: 1},
+				{tag: 'p', number: 6}
+			])('has $number "$tag" tags', ({tag, number}) => {
+				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
+			});
+		});
+
+		describe('statementParameters', () => {
+			test('to be defined', () => {
+				expect(component.statementParameters).toBeDefined();
+			});
+
+			test.each([
+				{property: 'applicationName', value: 'appName'},
+				{property: 'conformity', value: 'i18n.oblique.accessibility-statement.statement.partial'},
+				{property: 'exceptionText', value: 'i18n.oblique.accessibility-statement.statement.exception'}
+			])('to have "$value" as "$property"', ({property, value}) => {
+				expect(component.statementParameters[property]).toBe(value);
+			});
+		});
+
+		describe('contactParameters', () => {
+			test('to be defined', () => {
+				expect(component.contactParameters).toBeDefined();
+			});
+
+			test.each([
+				{property: 'emails', value: ['e@mail.com']},
+				{property: 'phones', value: []}
+			])('to have an empty array as "$property"', ({property, value}) => {
+				expect(component.contactParameters[property]).toEqual(value);
+			});
+		});
+
+		describe('generalLinks', () => {
+			test('to be defined', () => {
+				expect(component.generalLinks).toBeDefined();
+			});
+
+			test('to have 2 items', () => {
+				expect(component.generalLinks.length).toBe(2);
+			});
+		});
+
+		describe('accessibilityLinks', () => {
+			test('to be defined', () => {
+				expect(component.accessibilityLinks).toBeDefined();
+			});
+
+			test('to have 6 items', () => {
+				expect(component.accessibilityLinks.length).toBe(6);
+			});
+		});
 	});
 
 	describe('With minimal configuration', () => {
