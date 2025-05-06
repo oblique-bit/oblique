@@ -102,6 +102,7 @@ registerLocaleData(localeDE);
 				applicationName: 'Sandbox',
 				createdOn: new Date('2025-01-31'),
 				reviewedOn: new Date('2025-01-31'),
+				conformity: 'partial',
 				exceptions: [
 					'i18n.routes.accessibility.exception.first',
 					'i18n.routes.accessibility.exception.second',
