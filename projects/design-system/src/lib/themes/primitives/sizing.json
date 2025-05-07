@@ -155,7 +155,7 @@
           "type": "sizing"
         },
         "6750": {
-          "value": "{ob.p.size._base}*67.5",
+          "value": "{ob.p.size._base} * 67.5",
           "type": "sizing"
         },
         "_base": {

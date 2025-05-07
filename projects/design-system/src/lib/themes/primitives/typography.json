@@ -148,51 +148,51 @@
       },
       "paragraphSpacing": {
         "50": {
-          "value": "1* {ob.p.lineHeight._base}",
+          "value": "1 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
         },
         "100": {
-          "value": "2* {ob.p.lineHeight._base}",
+          "value": "2 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
         },
         "200": {
-          "value": "3* {ob.p.lineHeight._base}",
+          "value": "3 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
         },
         "300": {
-          "value": "4* {ob.p.lineHeight._base}",
+          "value": "4 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
         },
         "400": {
-          "value": "5* {ob.p.lineHeight._base}",
+          "value": "5 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
         },
         "500": {
-          "value": "6* {ob.p.lineHeight._base}",
+          "value": "6 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
         },
         "600": {
-          "value": "7* {ob.p.lineHeight._base}",
+          "value": "7 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
         },
         "700": {
-          "value": "8* {ob.p.lineHeight._base}",
+          "value": "8 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
         },
         "xs": {
-          "value": "2* {ob.p.lineHeight._base}",
+          "value": "2 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
         },
         "sm": {
-          "value": "3* {ob.p.lineHeight._base}",
+          "value": "3 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
         },
         "md": {
-          "value": "4* {ob.p.lineHeight._base}",
+          "value": "4 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
         },
         "lg": {
-          "value": "5* {ob.p.lineHeight._base}",
+          "value": "5 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
         }
       },
@@ -208,75 +208,75 @@
       },
       "lineHeight": {
         "50": {
-          "value": "1* {ob.p.lineHeight._base}",
+          "value": "1 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "100": {
-          "value": "2* {ob.p.lineHeight._base}",
+          "value": "2 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "200": {
-          "value": "3* {ob.p.lineHeight._base}",
+          "value": "3 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "300": {
-          "value": "4* {ob.p.lineHeight._base}",
+          "value": "4 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "400": {
-          "value": "5* {ob.p.lineHeight._base}",
+          "value": "5 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "500": {
-          "value": "6* {ob.p.lineHeight._base}",
+          "value": "6 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "600": {
-          "value": "7* {ob.p.lineHeight._base}",
+          "value": "7 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "700": {
-          "value": "8* {ob.p.lineHeight._base}",
+          "value": "8 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "800": {
-          "value": "9* {ob.p.lineHeight._base}",
+          "value": "9 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "900": {
-          "value": "10* {ob.p.lineHeight._base}",
+          "value": "10 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "1000": {
-          "value": "11* {ob.p.lineHeight._base}",
+          "value": "11 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "1100": {
-          "value": "12* {ob.p.lineHeight._base}",
+          "value": "12 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "1200": {
-          "value": "13* {ob.p.lineHeight._base}",
+          "value": "13 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "1300": {
-          "value": "14* {ob.p.lineHeight._base}",
+          "value": "14 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "1400": {
-          "value": "15* {ob.p.lineHeight._base}",
+          "value": "15 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "1500": {
-          "value": "16* {ob.p.lineHeight._base}",
+          "value": "16 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "1600": {
-          "value": "17* {ob.p.lineHeight._base}",
+          "value": "17 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "1700": {
-          "value": "18* {ob.p.lineHeight._base}",
+          "value": "18 * {ob.p.lineHeight._base}",
           "type": "lineHeights"
         },
         "_base": {
