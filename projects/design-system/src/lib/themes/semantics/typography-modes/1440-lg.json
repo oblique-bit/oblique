@@ -132,7 +132,7 @@
       },
       "paragraphSpacing": {
         "paragraph": {
-          "value": "3* {ob.p.lineHeight._base}",
+          "value": "3 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing",
           "description": "Standard spacing between two paragraphs <p> on lg screens."
         }
