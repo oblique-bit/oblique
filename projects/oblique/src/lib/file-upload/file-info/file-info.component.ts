@@ -6,6 +6,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {Subject, merge} from 'rxjs';
@@ -44,7 +45,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	@ViewChild(MatSort) set sorting(sort: MatSort) {
 		this.dataSource.sort = sort;
 	}
-	dataSource = new MatTableDataSource<ObIFileDescription>([]);
+	dataSource = new MatTableDataSource<ObIFileDescription, MatPaginator>([]);
 	displayedColumns: string[];
 	fields = ['name'];
 	selectionStatus: ObTSelectionStatus = 'none';
