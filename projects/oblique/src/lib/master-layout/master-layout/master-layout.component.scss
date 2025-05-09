@@ -89,7 +89,7 @@
 			display: flex;
 			justify-content: center;
 
-			> * {
+			> :not(ob-accessibility-statement) {
 				max-width: map.get(variables.$ob-grid-breakpoints, xl);
 			}
 		}
