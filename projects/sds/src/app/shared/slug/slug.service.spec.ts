@@ -43,8 +43,6 @@ describe(SlugService.name, () => {
 
 	describe(SlugService.prototype.getNewSlug.name, () => {
 		const versionRoutes: {version: number; route: string; newSlug: string}[] = [
-			{version: 10, route: 'introductions/welcome-10', newSlug: 'welcome-10'},
-			{version: 11, route: 'introductions/welcome-10', newSlug: 'welcome'},
 			{version: 11, route: 'introductions/configuration-12', newSlug: 'configuration'},
 			{version: 11, route: 'components/master-layout-12/examples', newSlug: 'master-layout'},
 			{version: 11, route: 'components/master-layout-13/ui-ux', newSlug: 'master-layout'},
@@ -53,7 +51,6 @@ describe(SlugService.name, () => {
 			{version: 11, route: 'guidelines/getting-started-figma', newSlug: 'invalid'},
 			{version: 11, route: 'introductions/getting-started-as-a-designer', newSlug: 'invalid'},
 			{version: 11, route: 'asdfghjkl/qwertzuiop', newSlug: undefined},
-			{version: 12, route: 'introductions/welcome-10', newSlug: 'welcome'},
 			{version: 12, route: 'introductions/configuration', newSlug: 'configuration-12'},
 			{version: 12, route: 'components/master-layout/examples', newSlug: 'master-layout-12'},
 			{version: 12, route: 'components/master-layout-13/ui-ux', newSlug: 'master-layout-12'},
@@ -62,7 +59,6 @@ describe(SlugService.name, () => {
 			{version: 12, route: 'components/datepicker/examples', newSlug: 'invalid'},
 			{version: 12, route: 'guidelines/getting-started-figma', newSlug: 'invalid'},
 			{version: 12, route: 'introductions/getting-started-as-a-designer', newSlug: 'invalid'},
-			{version: 13, route: 'introductions/welcome-10', newSlug: 'welcome'},
 			{version: 13, route: 'introductions/configuration', newSlug: 'configuration-12'},
 			{version: 13, route: 'components/master-layout/examples', newSlug: 'master-layout-13'},
 			{version: 13, route: 'components/master-layout-12/examples', newSlug: 'master-layout-13'},
