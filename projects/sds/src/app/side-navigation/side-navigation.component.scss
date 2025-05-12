@@ -24,6 +24,11 @@ app-image {
 	     * Normal line height is 1.6, just increased by one.
 	     */
 		line-height: 2.6;
+		height: 2.6em;
+
+		&::after {
+			content: none;
+		}
 	}
 }
 
