@@ -2,6 +2,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {Component, EventEmitter, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
 import {ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
 
 /**
@@ -21,7 +22,7 @@ export class ObMockFileInfoComponent {
 	@Input() getUploadedFilesUrl: string;
 	@Input() deleteUrl: string;
 	@ViewChild(MatSort, {static: true}) sort: MatSort;
-	dataSource = new MatTableDataSource<ObIFileDescription>([]);
+	dataSource = new MatTableDataSource<ObIFileDescription, MatPaginator>([]);
 	displayedColumns: string[];
 	fields: string[];
 	readonly selection = new SelectionModel<ObIFileDescription>(true, []);

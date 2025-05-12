@@ -1,4 +1,5 @@
 import {Component, inject} from '@angular/core';
+import {DatePipe} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
@@ -10,7 +11,7 @@ import {ObAvailableInComponent} from './available-in/available-in.component';
 
 @Component({
 	selector: 'ob-accessibility-statement',
-	imports: [ObExternalLinkModule, TranslateModule, ObTranslateParamsPipe, ObDatePipe, MatIcon, ObAvailableInComponent],
+	imports: [ObExternalLinkModule, TranslateModule, ObTranslateParamsPipe, ObDatePipe, DatePipe, MatIcon, ObAvailableInComponent],
 	templateUrl: './accessibility-statement.component.html',
 	styleUrl: './accessibility-statement.component.scss'
 })

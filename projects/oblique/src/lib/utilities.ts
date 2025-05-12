@@ -54,7 +54,7 @@ export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[]
 }
 
 /**
- * Deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
+ * @deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
  */
 export function multiTranslateLoader(config: TranslateModuleConfig = {}): TranslateModuleConfig {
 	return {

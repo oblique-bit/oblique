@@ -47,10 +47,10 @@ describe(ObAvailableInComponent.name, () => {
 	});
 
 	test.each([
-		{languages: ['es'], result: ' (i18n.common.in i18n.common.es)'},
-		{languages: ['fr'], result: ' (i18n.common.in i18n.common.french)'},
-		{languages: ['fr', 'en'], result: ' (i18n.common.in i18n.common.french i18n.common.and i18n.common.english)'},
-		{languages: ['fr', 'en', 'de'], result: ' (i18n.common.in i18n.common.french, i18n.common.english i18n.common.and i18n.common.german)'},
+		{languages: ['es'], result: 'i18n.common.in i18n.common.es'},
+		{languages: ['fr'], result: 'i18n.common.in i18n.common.french'},
+		{languages: ['fr', 'en'], result: 'i18n.common.in i18n.common.french i18n.common.and i18n.common.english'},
+		{languages: ['fr', 'en', 'de'], result: 'i18n.common.in i18n.common.french, i18n.common.english i18n.common.and i18n.common.german'},
 		{languages: ['it'], result: ''},
 		{languages: ['it', 'en'], result: ''},
 		{languages: ['it', 'en', 'de'], result: ''}
