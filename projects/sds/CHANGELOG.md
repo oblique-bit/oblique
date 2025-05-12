@@ -1,3 +1,9 @@
+# [13.2.2](https://github.com/oblique-bit/oblique/compare/13.2.1...13.2.2) (2025-05-12)
+
+## Bug Fixes
+
+- **side-navigation:** remove the hover effect on the search field ([df6b7319](https://github.com/oblique-bit/oblique/commit/df6b731972ead76e0663553fcecd7bf6176a6e54))
+
 # [13.2.1](https://github.com/oblique-bit/oblique/compare/13.2.0...13.2.1) (2025-05-01)
 
 ## Bug Fixes
