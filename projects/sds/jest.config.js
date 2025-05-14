@@ -6,7 +6,7 @@ module.exports = {
 	roots: ['<rootDir>/projects/sds'],
 	displayName: {
 		name: 'SDS',
-		color: 'gray'
+		color: 'cyan'
 	},
 	moduleNameMapper: {
 		'^content(.*)$': '<rootDir>/src/app/content$1',

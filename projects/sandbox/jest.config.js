@@ -6,7 +6,7 @@ module.exports = {
 	roots: ['<rootDir>/projects/sandbox'],
 	displayName: {
 		name: 'Sandbox',
-		color: 'magenta'
+		color: 'cyan'
 	},
 	moduleNameMapper: {
 		'@oblique/oblique': '<rootDir>/projects/oblique/src/public_api.ts',

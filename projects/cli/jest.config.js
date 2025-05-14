@@ -3,7 +3,7 @@ const coverageConfig = require('../../tests/jest.config.coverage');
 module.exports = {
 	displayName: {
 		name: 'CLI',
-		color: 'blue'
+		color: 'cyan'
 	},
 	/*
 	 * As this is not an angular app, 'jest-preset-angular' is not used, meaning

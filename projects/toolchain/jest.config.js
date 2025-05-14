@@ -3,7 +3,7 @@ const coverageConfig = require('../../tests/jest.config.coverage');
 module.exports = {
 	displayName: {
 		name: 'Toolchain',
-		color: 'purple'
+		color: 'cyan'
 	},
 	preset: 'ts-jest',
 	testEnvironment: 'node',
