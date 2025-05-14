@@ -117,11 +117,10 @@
           }
         },
         "typography": {
-          "custom-buttons": {
-            "text": {
-              "value": "{ob.s.typography.content.label.S.regular}",
-              "type": "typography"
-            }
+          "custom-buttons-label": {
+            "value": "{ob.s.typography.type-scale.xs.normal}",
+            "type": "typography",
+            "description": "Text labels for custom buttons in Service Navigation e.g. on ePortal."
           },
           "text": {
             "value": "{ob.s.typography.type-scale.sm.normal}",
