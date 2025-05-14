@@ -240,7 +240,8 @@
       "ob.c.tag.typography.size.sm": "S:06271289aa791204029273c80cbd1b7aae98b6fd,",
       "ob.c.tag.typography.size.md": "S:dc144fe131fe4d4c096ce34817a570bd5d2afe81,",
       "ob.c.tag.typography.size.lg": "S:d081d054042340e8b5eb0d6bc368036f8545f8e2,",
-      "ob.c.tooltip.typography.label": "S:75b8f0ce4cb918f5f323b4e482768b4218e1fce6,"
+      "ob.c.tooltip.typography.label": "S:75b8f0ce4cb918f5f323b4e482768b4218e1fce6,",
+      "ob.c.popover.typography.custom-buttons-label": "S:f05943d0bc2fc3befa69e0c9a64aff2c6da6a6c7,"
     },
     "selectedTokenSets": {
       "primitives/global": "source",
