@@ -122,6 +122,10 @@
               "value": "{ob.s.typography.content.label.S.regular}",
               "type": "typography"
             }
+          },
+          "text": {
+            "value": "{ob.s.typography.type-scale.md.normal}",
+            "type": "typography"
           }
         },
         "border-radius": {
