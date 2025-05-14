@@ -97,7 +97,7 @@
           }
         },
         "typography": {
-          "style": {
+          "size": {
             "sm": {
               "value": "{ob.s.typography.content.label.S.regular}",
               "type": "typography"

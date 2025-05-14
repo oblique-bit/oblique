@@ -80,9 +80,6 @@
       "ob.c.tag.box-shadow.hover": "S:3c463d4e5d99b4cc769eb25340b2fa1cd8a0c5fc,",
       "ob.c.tag.box-shadow.focus": "S:c3deed4fe6142f970cae0c781c1567e869356438,",
       "ob.c.tag.box-shadow.pressed": "S:666f9c2fe38c0750e6c9d8b5893a47469ea27b1d,",
-      "ob.c.tag.typography.style.sm": "S:06271289aa791204029273c80cbd1b7aae98b6fd,",
-      "ob.c.tag.typography.style.md": "S:dc144fe131fe4d4c096ce34817a570bd5d2afe81,",
-      "ob.c.tag.typography.style.lg": "S:d081d054042340e8b5eb0d6bc368036f8545f8e2,",
       "ob.c.pill.typography.style.sm": "S:2b3b5e186937129b57e259ab0b89c289d0e2d488,",
       "ob.c.pill.typography.style.md": "S:1df2a1d3e307680b149221be03d5d0ae2351d98d,",
       "ob.c.pill.typography.style.lg": "S:08aadda21609aca57b25023906e945473e88669d,",
@@ -239,7 +236,10 @@
       "ob.c.badge.typography.badge-label": "S:cd331fe99568628e38fa7db873fc2e646e7b4a0c,",
       "ob.c.button.typography.text-label": "S:6bf6b8c682da344b6e19684db88bb871c2e14bd9,",
       "ob.c.popover.typography.text": "S:5b8493d040fcb9dd799b1e89d237e3c2812c9150,",
-      "ob.c.popover.typography.title": "S:1a7de6104a2a177fb7334209a370fb87f2dc85d5,"
+      "ob.c.popover.typography.title": "S:1a7de6104a2a177fb7334209a370fb87f2dc85d5,",
+      "ob.c.tag.typography.size.sm": "S:06271289aa791204029273c80cbd1b7aae98b6fd,",
+      "ob.c.tag.typography.size.md": "S:dc144fe131fe4d4c096ce34817a570bd5d2afe81,",
+      "ob.c.tag.typography.size.lg": "S:d081d054042340e8b5eb0d6bc368036f8545f8e2,"
     },
     "selectedTokenSets": {
       "primitives/global": "source",
