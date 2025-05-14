@@ -144,7 +144,7 @@
         },
         "typography": {
           "title": {
-            "value": "{ob.s.typography.content.body.strong}",
+            "value": "{ob.s.typography.type-scale.md.strong}",
             "type": "typography",
             "description": "The message is in a bold font weight to build visual contrast and emphasize the hierarchy."
           },

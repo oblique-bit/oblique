@@ -236,7 +236,8 @@
       "ob.s.typography.~documentation-only.docs-sm": "S:aad8336a7f4e79220d56a74121e1a1a9160324f5,",
       "ob.s.typography.~documentation-only.docs-md": "S:a40ecc4058de67428a80fd7b27982b139da53ec1,",
       "ob.s.typography.~documentation-only.docs-lg": "S:83812186c89867a4e19dff7439a62aacf7be03f4,",
-      "ob.c.badge.typography.badge-label": "S:cd331fe99568628e38fa7db873fc2e646e7b4a0c,"
+      "ob.c.badge.typography.badge-label": "S:cd331fe99568628e38fa7db873fc2e646e7b4a0c,",
+      "ob.c.button.typography.text-label": "S:6bf6b8c682da344b6e19684db88bb871c2e14bd9,"
     },
     "selectedTokenSets": {
       "primitives/global": "source",
