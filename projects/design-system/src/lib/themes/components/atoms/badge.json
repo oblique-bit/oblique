@@ -152,6 +152,12 @@
           "value": "{ob.s.radii.round}",
           "type": "borderRadius",
           "description": "For entire rounded badges"
+        },
+        "typography": {
+          "badge-label": {
+            "value": "{ob.s.typography.type-scale.sm.strong}",
+            "type": "typography"
+          }
         }
       }
     }
