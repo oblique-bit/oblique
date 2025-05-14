@@ -184,6 +184,12 @@
               "type": "sizing"
             }
           }
+        },
+        "typography": {
+          "text-label": {
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "type": "typography"
+          }
         }
       }
     }
