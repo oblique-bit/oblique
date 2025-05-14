@@ -37,9 +37,11 @@
           }
         },
         "typography": {
-          "value": "{ob.s.typography.content.label.M.strong}",
-          "type": "typography",
-          "description": "Bold since it is 14px to reach AAA\nhttps://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html"
+          "label": {
+            "value": "{ob.s.typography.type-scale.sm.strong}",
+            "type": "typography",
+            "description": "Bold since it is 14px to reach AAA\nhttps://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html"
+          }
         },
         "border-radius": {
           "value": "{ob.s.radii.sm}",
