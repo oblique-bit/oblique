@@ -99,15 +99,15 @@
         "typography": {
           "style": {
             "sm": {
-              "value": "{ob.s.typography.content.label.S.regular}",
+              "value": "{ob.s.typography.type-scale.xs.normal}",
               "type": "typography"
             },
             "md": {
-              "value": "{ob.s.typography.content.label.M.regular}",
+              "value": "{ob.s.typography.type-scale.md.normal}",
               "type": "typography"
             },
             "lg": {
-              "value": "{ob.s.typography.content.label.M.regular}",
+              "value": "{ob.s.typography.type-scale.md.normal}",
               "type": "typography"
             }
           }
