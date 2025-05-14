@@ -4,7 +4,7 @@
       "typography": {
         "content": {
           "heading": {
-            "compact-default": {
+            "default": {
               "H1": {
                 "value": {
                   "fontFamily": "{ob.s.fontFamily.body}",

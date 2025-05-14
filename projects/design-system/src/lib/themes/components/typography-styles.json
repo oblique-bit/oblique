@@ -107,7 +107,7 @@
           },
           "dialog": {
             "title": {
-              "value": "{ob.s.typography.content.heading.compact-default.H2}",
+              "value": "{ob.s.typography.content.heading.default.H2}",
               "type": "typography",
               "description": "An H2 heading for dialog titles establishes their importance as temporary focal points that interrupt the main interface while still adhering to the structural hierarchy for accessibility purposes."
             },
