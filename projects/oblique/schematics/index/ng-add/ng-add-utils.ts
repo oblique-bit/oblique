@@ -19,26 +19,26 @@ export const obliqueCssPath = 'node_modules/@oblique/oblique/styles/css/oblique-
 type versionFunc = (version: number) => string;
 
 const versions: Record<string, string | versionFunc> = {
+	'@angular-builders/jest': version => `^${version}.0.0`,
+	'@angular/cdk': version => `^${version}.0.0`,
+	'@angular/core': version => `^${version}.0.0`,
+	'@angular/material': version => `^${version}.0.0`,
+	'@angular/router': version => `^${version}.0.0`,
+	'@eslint/eslintrc': '3.2.0',
+	'@eslint/js': '9.18.0',
+	'@ngx-translate/core': '^16.0.0',
+	'@popperjs/core': '^2.0.0',
+	'@types/jest': '^29.0.0',
 	ajv: '^8.0.0',
 	'ajv-formats': '^3.0.0',
-	'@ngx-translate/core': `^16.0.0`,
-	'@angular/cdk': version => `^${version}.0.0`,
-	'@angular/material': version => `^${version}.0.0`,
-	'@angular/core': version => `^${version}.0.0`,
-	'@angular/router': version => `^${version}.0.0`,
-	'@popperjs/core': '^2.0.0',
-	jest: '^29.0.0',
-	'@types/jest': '^29.0.0',
-	'@angular-builders/jest': version => `^${version}.0.0`,
-	'jest-sonar-reporter': '^2.0.0',
+	'angular-oauth2-oidc': '^19.0.0',
 	'eslint-config-prettier': '^9.0.0',
 	'eslint-plugin-prettier': '^5.0.0',
-	prettier: '^3.0.0',
 	husky: '^9.0.0',
-	'angular-oauth2-oidc': `^19.0.0`,
+	jest: '^29.0.0',
+	'jest-sonar-reporter': '^2.0.0',
 	'jwt-decode': '^4.0.0',
-	'@eslint/js': '9.18.0',
-	'@eslint/eslintrc': '3.2.0'
+	prettier: '^3.0.0'
 };
 
 export function getPreconditionVersion(tree: Tree, pkg: string): string {
