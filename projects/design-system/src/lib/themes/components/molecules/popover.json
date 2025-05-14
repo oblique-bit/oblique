@@ -124,7 +124,11 @@
             }
           },
           "text": {
-            "value": "{ob.s.typography.type-scale.md.normal}",
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "type": "typography"
+          },
+          "title": {
+            "value": "{ob.s.typography.type-scale.sm.strong}",
             "type": "typography"
           }
         },
