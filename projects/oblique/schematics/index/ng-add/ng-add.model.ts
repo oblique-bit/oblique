@@ -17,6 +17,7 @@ export interface ObIOptionsSchema {
 	proxy: string;
 	title: string;
 	unknownRoute: boolean;
+	hasLanguageInUrl: boolean;
 }
 
 export interface ObIVersion {
