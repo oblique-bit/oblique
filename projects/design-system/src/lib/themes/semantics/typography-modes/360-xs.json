@@ -131,13 +131,6 @@
           "type": "lineHeights"
         }
       },
-      "paragraphSpacing": {
-        "paragraph": {
-          "value": "3* {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing",
-          "description": "Standard spacing between two paragraphs <p> on xs screens."
-        }
-      },
       "text-decoration": {
         "bodyLink": {
           "value": "{ob.p.text-decoration.underline}",
@@ -224,6 +217,40 @@
             "value": "{ob.s.spacing.2xl}",
             "type": "spacing"
           }
+        }
+      },
+      "paragraphSpacing": {
+        "xs": {
+          "value": "2 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "sm": {
+          "value": "3 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "md": {
+          "value": "4 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "lg": {
+          "value": "5 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "xl": {
+          "value": "6 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "2xl": {
+          "value": "7 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "3xl": {
+          "value": "8 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "4xl": {
+          "value": "9 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
         }
       }
     }

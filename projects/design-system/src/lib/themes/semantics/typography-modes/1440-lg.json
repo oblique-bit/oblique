@@ -131,15 +131,37 @@
         }
       },
       "paragraphSpacing": {
-        "default": {
-          "value": "3 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing",
-          "description": "Standard spacing between two paragraphs <p> on lg screens."
+        "xs": {
+          "value": "2 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
         },
-        "before-heading": {
+        "sm": {
+          "value": "3 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "md": {
+          "value": "4 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "lg": {
+          "value": "5 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "xl": {
+          "value": "6 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "2xl": {
           "value": "7 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing",
-          "description": "Spacing after a paragraphs <p> before a new heading.  Larger than the default value to improve visual hierarchy."
+          "type": "paragraphSpacing"
+        },
+        "3xl": {
+          "value": "8 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "4xl": {
+          "value": "9 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
         }
       },
       "text-decoration": {

@@ -370,26 +370,6 @@
           "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         }
       }
-    },
-    "s": {
-      "paragraphSpacing": {
-        "xs": {
-          "value": "2 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
-        },
-        "sm": {
-          "value": "3 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
-        },
-        "md": {
-          "value": "4 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
-        },
-        "lg": {
-          "value": "5 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
-        }
-      }
     }
   }
 }
