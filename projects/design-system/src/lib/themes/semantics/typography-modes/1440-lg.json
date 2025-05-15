@@ -131,10 +131,15 @@
         }
       },
       "paragraphSpacing": {
-        "paragraph": {
+        "default": {
           "value": "3 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing",
           "description": "Standard spacing between two paragraphs <p> on lg screens."
+        },
+        "before-heading": {
+          "value": "7 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing",
+          "description": "Spacing after a paragraphs <p> before a new heading.  Larger than the default value to improve visual hierarchy."
         }
       },
       "text-decoration": {
@@ -149,82 +154,24 @@
       },
       "spacing": {
         "heading": {
-          "H1": {
-            "bottom": {
-              "value": "{ob.s.spacing.xl}",
-              "type": "spacing"
-            }
+          "top": {
+            "value": "{ob.s.spacing.none}",
+            "type": "spacing",
+            "description": "Standard spacing above H1 is none to use vertical space."
           },
-          "H2": {
-            "bottom": {
-              "value": "{ob.s.spacing.xl}",
-              "type": "spacing"
-            }
+          "top-after-p": {
+            "value": "{ob.s.spacing.6xl}",
+            "type": "spacing",
+            "description": "SPecial spacing above H1 after a paragraph"
           },
-          "H3": {
-            "bottom": {
-              "value": "{ob.s.spacing.xl}",
-              "type": "spacing"
-            }
-          },
-          "H4": {
-            "bottom": {
-              "value": "{ob.s.spacing.xl}",
-              "type": "spacing"
-            }
-          },
-          "H5": {
-            "bottom": {
-              "value": "{ob.s.spacing.md}",
-              "type": "spacing"
-            }
-          },
-          "H6": {
-            "bottom": {
-              "value": "{ob.s.spacing.md}",
-              "type": "spacing"
-            }
-          }
-        },
-        "paragraph": {
-          "L": {
-            "bottom": {
-              "value": "{ob.s.spacing.paragraph.default}",
-              "type": "spacing"
-            }
-          },
-          "S": {
-            "bottom": {
-              "value": "{ob.s.spacing.paragraph.default}",
-              "type": "spacing"
-            }
-          },
-          "default": {
-            "value": "{ob.s.spacing.3xl}",
+          "bottom": {
+            "value": "{ob.s.spacing.lg}",
             "type": "spacing"
           }
         },
-        "title": {
-          "L": {
-            "bottom": {
-              "value": "ob.s.spacing.title.default",
-              "type": "spacing"
-            }
-          },
-          "M": {
-            "bottom": {
-              "value": "ob.s.spacing.title.default",
-              "type": "spacing"
-            }
-          },
-          "S": {
-            "bottom": {
-              "value": "ob.s.spacing.title.default",
-              "type": "spacing"
-            }
-          },
-          "default": {
-            "value": "{ob.s.spacing.md}",
+        "paragraph": {
+          "bottom": {
+            "value": "{ob.s.spacing.2xl}",
             "type": "spacing"
           }
         }

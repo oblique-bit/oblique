@@ -22,15 +22,15 @@
           "type": "spacing",
           "description": "Use this for minimal padding inside smaller components like form fields, list items, or dialog actions. It helps maintain clarity without adding bulk, ideal for grouping related items such as labels and input boxes closely together."
         },
-        "ml": {
-          "value": "{ob.p.space.250}",
-          "type": "spacing",
-          "description": "Use this for minimal padding inside smaller components like form fields, list items, or dialog actions. It helps maintain clarity without adding bulk, ideal for grouping related items such as labels and input boxes closely together."
-        },
         "lg": {
           "value": "{ob.p.space.200}",
           "type": "spacing",
           "description": "This spacing is effective for separating sections within cards. It’s also suitable for stacking controls that require a clear distinction without being too far apart, enhancing overall navigability."
+        },
+        "ml": {
+          "value": "{ob.p.space.250}",
+          "type": "spacing",
+          "description": "Use this for minimal padding inside smaller components like form fields, list items, or dialog actions. It helps maintain clarity without adding bulk, ideal for grouping related items such as labels and input boxes closely together."
         },
         "xl": {
           "value": "{ob.p.space.250}",

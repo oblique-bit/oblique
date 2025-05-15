@@ -149,7 +149,7 @@
                 "fontWeight": "{ob.s.fontWeight.medium}",
                 "lineHeight": "{ob.s.lineHeight.md}",
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}"
+                "paragraphSpacing": "{ob.s.paragraphSpacing.default}"
               },
               "type": "typography",
               "description": "Default body text style for paragraphs and general content."
@@ -161,7 +161,7 @@
                 "fontWeight": "{ob.s.fontWeight.medium}",
                 "lineHeight": "{ob.s.lineHeight.md}",
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}",
+                "paragraphSpacing": "{ob.s.paragraphSpacing.default}",
                 "textDecoration": "{ob.p.text-decoration.underline}"
               },
               "type": "typography",
@@ -174,7 +174,7 @@
                 "fontWeight": "{ob.s.fontWeight.bold}",
                 "lineHeight": "{ob.s.lineHeight.md}",
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}"
+                "paragraphSpacing": "{ob.s.paragraphSpacing.default}"
               },
               "type": "typography",
               "description": "Emphasized text to highlight important information within body content."
@@ -186,7 +186,7 @@
                 "fontWeight": "{ob.s.fontWeight.bold}",
                 "lineHeight": "{ob.s.lineHeight.md}",
                 "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                "paragraphSpacing": "{ob.s.paragraphSpacing.paragraph}"
+                "paragraphSpacing": "{ob.s.paragraphSpacing.default}"
               },
               "type": "typography",
               "description": "Introductory paragraph text, typically larger or bolder than normal body text."
