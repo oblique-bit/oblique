@@ -110,7 +110,8 @@ registerLocaleData(localeDE);
 				],
 				applicationOperator: 'i18n.routes.accessibility.operator',
 				contact: {emails: ['oblique@bit.admin.ch'], phones: ['123']}
-			}
+			},
+			hasLanguageInUrl: true
 		})
 	]
 })
