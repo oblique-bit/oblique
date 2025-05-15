@@ -221,35 +221,35 @@
       },
       "paragraphSpacing": {
         "xs": {
-          "value": "2 * {ob.p.lineHeight._base}",
+          "value": "{ob.s.lineHeight.xs} / 2",
           "type": "paragraphSpacing"
         },
         "sm": {
-          "value": "3 * {ob.p.lineHeight._base}",
+          "value": "{ob.s.lineHeight.sm} / 2",
           "type": "paragraphSpacing"
         },
         "md": {
-          "value": "4 * {ob.p.lineHeight._base}",
+          "value": "{ob.s.lineHeight.md} / 2",
           "type": "paragraphSpacing"
         },
         "lg": {
-          "value": "5 * {ob.p.lineHeight._base}",
+          "value": "{ob.s.lineHeight.lg} / 2",
           "type": "paragraphSpacing"
         },
         "xl": {
-          "value": "6 * {ob.p.lineHeight._base}",
+          "value": "{ob.s.lineHeight.xl} / 2",
           "type": "paragraphSpacing"
         },
         "2xl": {
-          "value": "7 * {ob.p.lineHeight._base}",
+          "value": "{ob.s.lineHeight.2xl} / 2",
           "type": "paragraphSpacing"
         },
         "3xl": {
-          "value": "8 * {ob.p.lineHeight._base}",
+          "value": "{ob.s.lineHeight.3xl} / 2",
           "type": "paragraphSpacing"
         },
         "4xl": {
-          "value": "9 * {ob.p.lineHeight._base}",
+          "value": "{ob.s.lineHeight.4xl} / 2",
           "type": "paragraphSpacing"
         }
       }
