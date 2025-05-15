@@ -9,13 +9,22 @@
         },
         "color": {
           "active": {
-            "value": "{ob.s.color.status.progress.fg}",
+            "value": "{ob.s.color.status.progress.fg.contrast-high}",
             "type": "color",
             "description": "Color indicating the active part of the loading."
           },
           "inactive": {
-            "value": "{ob.s.color.status.progress.bg}",
+            "value": "{ob.s.color.status.progress.fg.contrast-high}",
             "type": "color",
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "0.2",
+                  "space": "srgb"
+                }
+              }
+            },
             "description": "Color indicating the inactive part of the loading."
           }
         },
