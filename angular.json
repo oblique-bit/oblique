@@ -108,8 +108,7 @@
                 "glob": "**/*",
                 "input": "projects/oblique/src/styles/fonts",
                 "output": "/assets/fonts"
-              },
-              "projects/sandbox/src/Staticfile"
+              }
             ],
             "styles": [
               "projects/oblique/src/styles/scss/oblique-core.scss",
@@ -457,8 +456,7 @@
                 "glob": "**/*",
                 "input": "projects/oblique/src/styles/fonts",
                 "output": "/assets/fonts"
-              },
-              "projects/sandbox-ssr/src/Staticfile"
+              }
             ],
             "styles": ["projects/sandbox-ssr/src/styles.scss"],
             "scripts": ["projects/oblique/src/ob-features.js"],
