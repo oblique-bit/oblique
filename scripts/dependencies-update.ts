@@ -55,7 +55,7 @@ class DependenciesUpdate extends StaticScript {
 
 	private static commit(): void {
 		const issueNumber = (/OUI-\d+/.exec(Git.getCurrentBranchName()) ?? [])[0];
-		Git.commit('chore(toolchain): update dependencies and refactor accordingly', issueNumber);
+		Git.commit('build(dependencies): update dependencies and refactor accordingly', issueNumber);
 	}
 }
 

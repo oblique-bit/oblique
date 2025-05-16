@@ -13,6 +13,9 @@ As a contributor, here are the guidelines we would like you to follow:
       - [Type](#type)
       - [Package](#package)
       - [Scope](#scope)
+        - [build](#build)
+        - [ci](#ci)
+        - [others](#others)
       - [Subject](#subject)
     - [Body](#body)
     - [Footer](#footer)
@@ -92,30 +95,56 @@ The header is mandatory and follows the following structure:
 
 The type is mandatory and must be one of the following:
 
+- **build**: Changes that affect the build system or external dependencies
+- **ci**: Changes that affect the CI/CD configuration files
+- **docs**: Changes that affect only the documentation
 - **feat**: Changes that creates, improves or removes a feature
 - **fix**: Changes that fixes a bug
 - **refactor**: Changes to a feature that neither adds, removes nor fixes a behavior
-- **test**: Changes that affect tests and their configuration only
-- **format**: Changes that do not affect the meaning of the code (white-space, formatting, missing semicolons, etc.)
-- **chore**: Anything that do not fit in any previous types (e.g. release, dependencies update, ...)
+- **test**: Changes that affect tests or their configuration only
 
 ##### <a name="package"></a> Package
 
-The package is mandatory and must be one of the following:
+The package is required and must be one of the following:
 
-- **cli**: for changes in the CLI library
-- **design-system**: for change in the Design System library
-- **oblique**: for changes in the Oblique library, including the changes to the service-navigation component
-- **sandbox**: for changes in the Sandbox project
-- **sandbox-ssr**: for change in the Sandbox-SSR project
-- **sds**: for changes in the Swiss Design System project
-- **service-navigation**: for changes in the service-navigation-web-component project
-- **toolchain**: for general changes about the whole repository
+- **cli**: Changes in the CLI library
+- **design-system**: Changes in the Design System library
+- **oblique**: Changes in the Oblique library, including the changes to the service-navigation component
+- **sandbox**: Changes in the Sandbox project
+- **sandbox-ssr**: Changes in the Sandbox-SSR project
+- **sds**: Changes in the Swiss Design System project
+- **service-navigation**: Changes in the Service Navigation Web Component project
+
+Changes outside any package may omit the package name. This is the case for changes in the root folder of the repository.
+If the package is omitted, then the scope is mandatory and the separating slash (`/`) is also omitted.
 
 ##### <a name="scope"></a> Scope
 
-The scope is optional but usually present. If the scope is omitted, then the separating slash (`/`) before it is also
-omitted. The list of available scopes depends on the project involved:
+The scope is required and depends on the type of change, described below.
+If no scope fits the change then it can be omitted and the separating slash (`/`) is also omitted.
+
+###### <a name="build"></a> build
+
+The `build` type has a mandatory scope that must be one of the following:
+
+- **changelog**: Changes to anything related to the changelog
+- **contributing**: Changes to anything related to the contributing guideline
+- **dependencies**: Changes related to dependencies that are not applicable to another scope
+- **lint**: Changes to anything related to linting and formatting
+- **release**: New releases or changes to anything related to releases
+- **scripts**: Changes to the node scripts that are not applicable to another scope
+
+###### <a name="ci"></a> ci
+
+The `ci` type has a mandatory scope that must be one of the following:
+
+- **rhos**: Changes to the Red Hat Open Shift configuration files
+- **jenkins**: Changes to the Jenkins configuration files
+- **github**: for changes to the GitHub configuration files
+
+###### <a name="others"></a> others
+
+The `docs`, `feat`, `fix`, `test`, and `refactor` types must use scopes according to the project involved:
 
 - [CLI](projects/cli/CONTRIBUTING.md)
 - [Design System](projects/design-system/CONTRIBUTING.md)

@@ -8,7 +8,7 @@ class Troubleshoot extends StaticScript {
 		Log.start('Troubleshoot the release');
 		Troubleshoot.createTroubleshootBranch();
 		Troubleshoot.adaptJenkinsFile('Jenkinsfile');
-		Git.commit('chore(toolchain): troubleshoot release');
+		Git.commit('ci(jenkins): troubleshoot release');
 		Log.success(
 			'Push the changes with: `git push -u origin troubleshoot` and continue the troubleshooting process according to the troubleshoot checklist.'
 		);
