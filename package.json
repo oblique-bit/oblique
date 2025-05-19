@@ -34,7 +34,6 @@
     "hook-pre-commit": "npx lint-staged",
     "hook-commit-msg": "ts-node scripts/husky/hook.commit-rules.ts",
     "hook-post-checkout": "ts-node scripts/husky/install-dependencies.ts",
-    "prepare": "husky",
     "release": "ts-node scripts/release.ts",
     "troubleshoot": "ts-node scripts/troubleshoot.ts"
   },
