@@ -156,7 +156,8 @@
         "typography": {
           "badge-label": {
             "value": "{ob.s.typography.type-scale.sm.strong}",
-            "type": "typography"
+            "type": "typography",
+            "description": "Strong font weight for optimal scannability."
           }
         }
       }

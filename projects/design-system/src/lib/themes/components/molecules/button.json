@@ -188,7 +188,8 @@
         "typography": {
           "text-label": {
             "value": "{ob.s.typography.type-scale.sm.normal}",
-            "type": "typography"
+            "type": "typography",
+            "description": "Single font style and size for all button sizes and types for consistancy."
           }
         }
       }
