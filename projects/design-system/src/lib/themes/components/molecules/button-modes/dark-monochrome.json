@@ -309,8 +309,7 @@
                       "space": "srgb"
                     }
                   }
-                },
-                "description": "{ob.s.color.util.no-color}"
+                }
               },
               "disabled": {
                 "value": "{ob.p.colors.basic.white}",

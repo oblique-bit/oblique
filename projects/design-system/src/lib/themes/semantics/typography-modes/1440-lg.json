@@ -11,8 +11,7 @@
       "fontSize": {
         "xs": {
           "value": "{ob.p.fontSizeUnitless.100}",
-          "type": "fontSizes",
-          "description": "They have to be based on {ob.p.space.SpaceBase} so we can scale and be fluid, responsive"
+          "type": "fontSizes"
         },
         "sm": {
           "value": "{ob.p.fontSizeUnitless.200}",
