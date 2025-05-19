@@ -9,7 +9,7 @@ export function executeCommand(command: string, options?: ExecSyncOptions): void
 export function executeCommandWithLog(command: string, messagePrefix: string, options: ExecSyncOptions = {}): void {
 	Log.info(`${messagePrefix}: ${command}`);
 	try {
-		execSync(command, {...options, stdio: 'pipe'});
+		execSync(command, {...options});
 	} catch (rawError) {
 		const error = rawError as {stdout: Buffer; stderr: Buffer};
 		const errorMessage = [error.stdout, error.stderr]

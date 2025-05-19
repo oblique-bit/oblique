@@ -18,7 +18,7 @@ jobs:
           node-version: 22.x
           registry-url: "https://npm.pkg.github.com"
       - run: npm ci
-      - run: npm run build -ws
-      - run: npm run -w @oblique/${{matrix.package}} npm-publish
+      - run: npm run build -w @oblique/${{matrix.package}}
+      - run: npm run npm-publish -w @oblique/${{matrix.package}}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
