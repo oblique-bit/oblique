@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package: [oblique, sds]
+        package: [oblique, cli, service-navigation-web-component]
 
     steps:
       - uses: actions/checkout@v4
@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: 22.x
           registry-url: "https://npm.pkg.github.com"
-      - run: npm run -w @oblique/${{matrix.package}} lint
+      - run: npm ci
+      - run: npm run -w @oblique/${{matrix.package}} npm-publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

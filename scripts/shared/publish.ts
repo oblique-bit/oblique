@@ -16,7 +16,7 @@ export class Publish extends StaticScript {
 		const tag = releaseTag || (/^\d+\.\d+\.\d+$/.test(currentVersion) ? 'latest' : 'next');
 		// as the `projects/oblique` folder contains a package.json with publish instructions, the directory parameter is ignored and the current working directory is published instead.
 		process.chdir(`../../`);
-		executeCommandWithLog(`npm publish ./dist/${packageName} --access public --tag ${tag}`, 'Publish');
+		executeCommandWithLog(`npm publish ./dist/${packageName} --access public --tag ${tag} --dry-run`, 'Publish');
 		Publish.deprecatePreReleaseVersions(packageName, currentVersion);
 		Publish.deprecateMajorVersion(packageName, parseInt(currentVersion, 10));
 		Log.success();
