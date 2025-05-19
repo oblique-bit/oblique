@@ -14,6 +14,6 @@ jobs:
         with:
           node-version: 22.x
           registry-url: "https://npm.pkg.github.com"
-      - run: npm whoami
+      - run: npm publish --dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
