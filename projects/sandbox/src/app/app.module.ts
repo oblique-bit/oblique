@@ -136,6 +136,9 @@ export class AppModule {
 	private configureServiceSNavigation(config: ObMasterLayoutConfig): void {
 		config.header.serviceNavigation.displayInfo = true;
 		config.header.serviceNavigation.infoContact = infoContact;
+		config.header.serviceNavigation.infoHelpText = 'random help text';
+		config.header.serviceNavigation.infoContactText = 'random contact text';
+		config.header.serviceNavigation.infoDescription = 'random description text';
 		if (environment.pams) {
 			config.header.serviceNavigation.profileLinks = profileLinks;
 			config.header.serviceNavigation.infoLinks = infoLinks;
