@@ -65,11 +65,16 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 			label: 'i18n.service-navigation.info.link.multimedia-manual.label'
 		}
 	];
+	infoHelpText = 'help example text';
+	infoContactText = 'contact example text';
+	infoDescription = 'description example text';
 	hasContactEmail = true;
 	hasContactPhone = true;
+	hasContactFormUrl = true;
 	infoContact: ObIServiceNavigationContact = {
 		email: 'support@bit.admin.ch',
-		tel: '+41 58 461 61 11'
+		tel: '+41 58 461 61 11',
+		formUrl: 'https://example.com/'
 	};
 	hasCustomWidgets = true;
 	readonly rootUrl = environment.pams?.rootUrl;
@@ -94,5 +99,6 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	handleContactInfo(): void {
 		this.infoContact.email = this.hasContactEmail ? this.contactInfo.email : undefined;
 		this.infoContact.tel = this.hasContactPhone ? this.contactInfo.tel : undefined;
+		this.infoContact.formUrl = this.hasContactFormUrl ? this.contactInfo.formUrl : undefined;
 	}
 }
