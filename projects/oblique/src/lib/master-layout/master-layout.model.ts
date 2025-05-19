@@ -18,7 +18,10 @@ export interface ObIMasterLayoutHeader {
 
 export interface ObIServiceNavigationConfig {
 	profileLinks?: ObIServiceNavigationLink[];
+	infoHelpText?: string;
 	infoLinks?: ObIServiceNavigationLink[];
+	infoContactText?: string;
+	infoDescription?: string;
 	infoContact?: ObIServiceNavigationContact;
 	maxLastUsedApplications?: number;
 	maxFavoriteApplications?: number;
