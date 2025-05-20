@@ -35,7 +35,7 @@ class UpdateAngular extends StaticScript {
 		);
 		UpdateAngular.updatePackageDependencies(projects);
 		UpdateAngular.removeDependenciesFromRootPackageJson(Object.keys(ngDependencies));
-		Git.commit('feat(toolchain): update Angular');
+		Git.commit('build(dependencies): update Angular');
 	}
 
 	private static listProjects(): string[] {
@@ -98,7 +98,7 @@ class UpdateAngular extends StaticScript {
 		Log.info('Remove temporary tsconfig.spec.ts file');
 		Files.remove('tsconfig.spec.json');
 		UpdateAngular.updateAngularCDKVersion();
-		Git.commit('feat(toolchain): update Angular Material');
+		Git.commit('build(dependencies): update Angular Material');
 	}
 
 	private static updateAngularCDKVersion(): void {

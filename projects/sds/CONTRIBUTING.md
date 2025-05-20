@@ -56,4 +56,3 @@ All commits related to the SDS package must use the **sds** package and 1 of the
 - **text-page**
 - **component-page**
 - **invalid-page**
-- **toolchain**

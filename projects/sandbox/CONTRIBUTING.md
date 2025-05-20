@@ -45,4 +45,3 @@ All commits related to the Sandbox package must use the **sandbox** package and 
 - **unsaved-changes**
 - **material** for material design
 - **styles** for the global CSS
-- **toolchain**

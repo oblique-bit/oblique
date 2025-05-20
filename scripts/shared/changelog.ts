@@ -50,7 +50,7 @@ export class Changelog extends StaticScript {
 			.split(commitSeparator)
 			.filter(
 				commit =>
-					new RegExp(`^(?:fix|feat)\\(${projectName}(?!/toolchain)(?:/[a-z-]+)?\\)`).test(commit) ||
+					new RegExp(`^(?:fix|feat)\\(${projectName}(?:/[a-z-]+)?\\)`).test(commit) ||
 					new RegExp(`^(?:fix|feat)\\(${additionalPackageWithScope}\\)`).test(commit)
 			)
 			.map(commit => commit.replace(`${projectName}/`, ''))

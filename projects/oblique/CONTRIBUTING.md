@@ -48,4 +48,3 @@ All commits related to the Oblique package must use the **oblique** package and 
 - **styles** for the global CSS
 - **translation** for the translations not directly linked to a feature
 - **utilities** for utilities.ts
-- **toolchain** for the configuration, build, releases...

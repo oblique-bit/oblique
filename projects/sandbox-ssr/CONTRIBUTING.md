@@ -7,4 +7,3 @@ All commits related to the Sandbox-SSR package must use the **sandbox-ssr** pack
 ## <a name="scope"></a> Scope
 
 - **home**
-- **toolchain**
