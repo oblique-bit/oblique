@@ -5,3 +5,4 @@
 - [Sandbox-SSR](projects%2Fsandbox-ssr%2FCHANGELOG.md)
 - [SDS](projects%2Fsds%2FCHANGELOG.md)
 - [ServiceNavigation](projects%2Fservice-navigation-web-component%2FCHANGELOG.md)
+- [Toolchain](projects%2Ftoolchain%2FCHANGELOG.md)

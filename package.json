@@ -23,7 +23,8 @@
     "projects/sds",
     "projects/sandbox",
     "projects/sandbox-ssr",
-    "projects/service-navigation-web-component"
+    "projects/service-navigation-web-component",
+    "projects/toolchain"
   ],
   "scripts": {
     "lint": "ts-node scripts/lint.ts && npm run lint -ws",

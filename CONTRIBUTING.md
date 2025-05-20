@@ -114,6 +114,7 @@ The package is required and must be one of the following:
 - **sandbox-ssr**: Changes in the Sandbox-SSR project
 - **sds**: Changes in the Swiss Design System project
 - **service-navigation**: Changes in the Service Navigation Web Component project
+- **toolchain**: Changes in the Toolchain project
 
 Changes outside any package may omit the package name. This is the case for changes in the root folder of the repository.
 If the package is omitted, then the scope is mandatory and the separating slash (`/`) is also omitted.
@@ -153,6 +154,7 @@ The `docs`, `feat`, `fix`, `test`, and `refactor` types must use scopes accordin
 - [Sandbox-SSR](projects/sandbox-ssr/CONTRIBUTING.md)
 - [SDS](projects/sds/CONTRIBUTING.md)
 - [Service Navigation](projects/service-navigation-web-component/CONTRIBUTING.md)
+- [Toolchain](projects/toolchain/CONTRIBUTING.md)
 
 ##### <a name="subject"></a> Subject
 

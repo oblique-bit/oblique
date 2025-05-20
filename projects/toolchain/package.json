@@ -1,0 +1,21 @@
+{
+  "name": "@oblique/toolchain",
+  "version": "13.2.2",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
+  "description": "Toolchain utilities for the Oblique ecosystem, including project configuration schematics, ESLint plugins, and supporting build scripts",
+  "scripts": {
+    "lint": "ts-node scripts/lint.ts",
+    "format": "npm run lint -- --fix",
+    "test": "jest",
+    "test-ci": "jest --config=jest.config.ci.js",
+    "build": "ts-node scripts/pre-build.ts && tsc -p tsconfig.lib.json && ts-node scripts/post-build.ts",
+    "release": "ts-node scripts/release.ts",
+    "npm-publish": "ts-node scripts/publish.ts"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "schematics": "./schematics/collection.json"
+}
