@@ -1,7 +1,10 @@
 @if (environmentParsed !== undefined) {
 	<ob-service-navigation
 		[environment]="environmentParsed"
+		[infoDescription]="infoDescription()"
+		[infoContactText]="infoContactText()"
 		[infoContact]="infoContactParsed"
+		[infoHelpText]="infoHelpText()"
 		[infoLinks]="infoLinksParsed"
 		[profileLinks]="profileLinksParsed"
 		[maxLastUsedApplications]="maxLastUsedApplications()"
