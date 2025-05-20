@@ -18,7 +18,7 @@
           "type": "fontSizes"
         },
         "md": {
-          "value": "{ob.p.fontSizeUnitless.300} +1",
+          "value": "{ob.p.fontSizeUnitless.300} + 1",
           "type": "fontSizes",
           "description": "slightly larger front size for mobile for improved readability"
         },

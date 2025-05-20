@@ -61,31 +61,31 @@
       },
       "borderWidth": {
         "100": {
-          "value": "{ob.p.borderWidth._base} *0.25",
+          "value": "{ob.p.borderWidth._base} * 0.25",
           "type": "borderWidth"
         },
         "200": {
-          "value": "{ob.p.borderWidth._base} *0.5",
+          "value": "{ob.p.borderWidth._base} * 0.5",
           "type": "borderWidth"
         },
         "300": {
-          "value": "{ob.p.borderWidth._base} *0.75",
+          "value": "{ob.p.borderWidth._base} * 0.75",
           "type": "borderWidth"
         },
         "400": {
-          "value": "{ob.p.borderWidth._base} *1",
+          "value": "{ob.p.borderWidth._base} * 1",
           "type": "borderWidth"
         },
         "500": {
-          "value": "{ob.p.borderWidth._base} *1.25",
+          "value": "{ob.p.borderWidth._base} * 1.25",
           "type": "borderWidth"
         },
         "600": {
-          "value": "{ob.p.borderWidth._base} *1.5",
+          "value": "{ob.p.borderWidth._base} * 1.5",
           "type": "borderWidth"
         },
         "700": {
-          "value": "{ob.p.borderWidth._base} *2",
+          "value": "{ob.p.borderWidth._base} * 2",
           "type": "borderWidth",
           "description": "Rarely used, e.g., for the Spinner component."
         },
