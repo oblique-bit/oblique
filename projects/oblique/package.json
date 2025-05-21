@@ -41,7 +41,6 @@
     "rxjs": "^7.0.0"
   },
   "dependencies": {
-    "@angular-eslint/schematics": "^19.3.0",
     "@schematics/angular": "^19.0.6",
     "ansi-colors": "^4.1.3"
   },
