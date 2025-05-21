@@ -11,7 +11,6 @@ export const currentVersions = {
 	'@angular/cli': '19',
 	'@angular/material': '19',
 	'@angular/core': '19',
-	'@angular-eslint/schematics': '19',
 	'@types/jest': '29',
 	'@angular-builders/jest': '19',
 	'@schematics/angular': '19',
