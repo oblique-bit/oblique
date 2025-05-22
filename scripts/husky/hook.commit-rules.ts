@@ -48,11 +48,11 @@ class HookCommitRules {
 
 	private static checkHeader(header: string): void {
 		HookCommitRules.checkHeaderFormat(header);
-		const {type, pkg, scope, subject} = HookCommitRules.extractHeaderParts(header);
 		const contributing: string = Files.read('CONTRIBUTING.md');
+		const {type, pkg, scope, subject} = HookCommitRules.extractHeaderParts(header, contributing);
 		HookCommitRules.checkType(type, HookCommitRules.extractList(contributing, 'Type'));
 		HookCommitRules.checkPackage(pkg, HookCommitRules.extractList(contributing, 'Package'));
-		HookCommitRules.checkScope(scope, pkg);
+		HookCommitRules.checkScope(scope, pkg, type, contributing);
 		HookCommitRules.checkSubject(subject);
 	}
 
@@ -63,9 +63,40 @@ class HookCommitRules {
 		}
 	}
 
-	private static extractHeaderParts(header: string): Header {
-		// "as unknown as Header" is necessary because Typescript can't infer the type directly from the regex
-		return /^(?<type>[a-z-]+)\((?<pkg>[a-z-]+)(?:\/(?<scope>[a-z-]+))?\)?:\s(?<subject>.+)$/.exec(header)?.groups as unknown as Header;
+	private static extractHeaderParts(header: string, contributing: string): Header {
+		const result = /^(?<type>[a-z-]+)\((?<pkg>[a-z-]+)(?:\/(?<scope>[a-z-]+))?\)?:\s(?<subject>.+)$/.exec(header)?.groups;
+		const hasTypeScopes = HookCommitRules.hasTypeScopes(contributing, result.type);
+		return {
+			type: result.type,
+			pkg: HookCommitRules.getPackage(result.pkg, result.scope, hasTypeScopes),
+			scope: HookCommitRules.getScope(result.pkg, result.scope, hasTypeScopes),
+			subject: result.subject
+		};
+	}
+
+	/**
+	 * The part of the commit message between parenthesis contains both the package and the scope. If only one of them is
+	 * provided, we need to find out which one it is
+	 */
+	private static getPackage(pkg: string, scope: string, hasTypeScopes: boolean): string {
+		if (pkg && (scope || !hasTypeScopes)) {
+			return pkg;
+		}
+		return '';
+	}
+
+	/**
+	 * The part of the commit message between parenthesis contains both the package and the scope. If only one of them is
+	 * provided, we need to find out which one it is
+	 */
+	private static getScope(pkg: string, scope: string, hasTypeScopes: boolean): string {
+		if (pkg && scope) {
+			return scope;
+		}
+		if (!scope && hasTypeScopes) {
+			return pkg;
+		}
+		return '';
 	}
 
 	private static checkType(type: string, types: string[]): void {
@@ -77,38 +108,47 @@ class HookCommitRules {
 
 	private static checkPackage(pkg: string, packages: string[]): void {
 		Log.info('Check header package');
-		if (!packages.includes(pkg)) {
-			HookCommitRules.fatal(`1st line has an invalid type '${pkg}'. Allowed packages are: ${HookCommitRules.join(packages)}.`);
-		}
+		if (pkg) {
+			if (!packages.includes(pkg)) {
+				HookCommitRules.fatal(`1st line has an invalid package '${pkg}'. Allowed packages are: ${HookCommitRules.join(packages)}.`);
+			}
 
-		const filePaths = Git.getChangedFileNames()
-			.split('\n')
-			.filter(filePath => !!filePath)
-			.filter(filePath => !['package-lock.json', 'angular.json'].includes(filePath))
-			.filter(filePath => !new RegExp(`projects/${HookCommitRules.getFolderName(pkg)}/.*`).test(filePath));
-		if (filePaths.length && pkg !== 'toolchain') {
-			HookCommitRules.fatal(
-				`1st line has an invalid package '${pkg}' that some commited files aren't compatible with: ${HookCommitRules.join(filePaths)}.`
-			);
-		}
-	}
-
-	private static checkScope(scope: string, pkg: string): void {
-		Log.info('Check header scope');
-		if (pkg === 'toolchain' && scope) {
-			HookCommitRules.fatal(`1st line has an invalid scope '${scope}'. No scope are allowed with 'toolchain' package.`);
-		}
-
-		if (scope) {
-			const contributing: string = Files.read(`projects/${HookCommitRules.getFolderName(pkg)}/CONTRIBUTING.md`);
-			const scopes = HookCommitRules.extractList(contributing, 'Scope');
-
-			if (!scopes.includes(scope)) {
+			const filePaths = Git.getChangedFileNames()
+				.split('\n')
+				.filter(filePath => !!filePath)
+				.filter(filePath => !['package-lock.json', 'angular.json'].includes(filePath))
+				.filter(filePath => !new RegExp(`projects/${HookCommitRules.getFolderName(pkg)}/.*`).test(filePath));
+			if (filePaths.length) {
 				HookCommitRules.fatal(
-					`1st line has an invalid scope '${scope}'. Allowed scopes for '${pkg}' package are: ${HookCommitRules.join(scopes)}.`
+					`1st line has an invalid package '${pkg}' that some commited files aren't compatible with: ${HookCommitRules.join(filePaths)}.`
 				);
 			}
 		}
+	}
+
+	private static checkScope(scope: string, pkg: string, type: string, contributing: string): void {
+		Log.info('Check header scope');
+		if (scope) {
+			const scopes = HookCommitRules.getScopes(type, pkg, contributing);
+			if (!scopes.includes(scope)) {
+				const [group, groupName] = HookCommitRules.getGroupsForErrorMessage(type, pkg, contributing);
+				HookCommitRules.fatal(
+					`1st line has an invalid scope '${scope}'. Allowed scopes for the '${group}' ${groupName} are: ${HookCommitRules.join(scopes)}.`
+				);
+			}
+		}
+	}
+
+	private static getScopes(type: string, pkg: string, contributing: string): string[] {
+		if (HookCommitRules.hasTypeScopes(contributing, type)) {
+			return HookCommitRules.extractList(contributing, type);
+		}
+		const packageContributing = Files.read(`projects/${HookCommitRules.getFolderName(pkg)}/CONTRIBUTING.md`);
+		return HookCommitRules.extractList(packageContributing, 'Scope');
+	}
+
+	private static getGroupsForErrorMessage(type: string, pkg: string, contributing: string): [string, string] {
+		return HookCommitRules.hasTypeScopes(contributing, type) ? [type, 'type'] : [pkg, 'package'];
 	}
 
 	private static checkSubject(subject: string): void {
@@ -161,11 +201,17 @@ class HookCommitRules {
 	}
 
 	private static extractList(contributing: string, type: string): string[] {
-		return new RegExp(`(?<=# <a name="${type.toLowerCase()}"><\\/a> ${type}.*)(?<block>- .*?^$)`, 'sm')
-			.exec(contributing)
-			.groups.block.split('\n')
-			.filter(line => !!line)
-			.map(line => /(?<=\*\*)(?<item>[a-z-]+)(?=\*\*)/.exec(line).groups.item);
+		const result = new RegExp(`(?<=# <a name="${type.toLowerCase()}"><\\/a> ${type}.*)(?<block>- .*?^$)`, 'sm').exec(contributing);
+		return result
+			? result.groups.block
+					.split('\n')
+					.filter(line => !!line)
+					.map(line => /(?<=\*\*)(?<item>[a-z-]+)(?=\*\*)/.exec(line).groups.item)
+			: [];
+	}
+
+	private static hasTypeScopes(contributing: string, type: string): boolean {
+		return new RegExp(`# <a name="${type.toLowerCase()}"><\\/a> ${type}`, 'sm').test(contributing);
 	}
 
 	private static join(list: string[]): string {

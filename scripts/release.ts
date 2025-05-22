@@ -12,7 +12,7 @@ class Release extends StaticScript {
 		Release.updateJenkinsFile(version);
 		Release.updateCopyrightDate();
 		executeCommandWithLog(`npm run release -ws`, 'Perform release');
-		Git.commit(`chore(toolchain): release version ${version}`, issue);
+		Git.commit(`build(release): release version ${version}`, issue);
 		Log.success('Push the changes and continue the release process according to the release checklist');
 	}
 
