@@ -1,10 +1,16 @@
+# [13.2.3](https://github.com/oblique-bit/oblique/compare/13.2.2...13.2.3) (2025-05-22)
+
+## Bug Fixes
+
+- **material:** vertically align prefix, suffix and text of form inputs ([9b779f0d](https://github.com/oblique-bit/oblique/commit/9b779f0db5abf427b12dafef200e7da738339711))
+
 # [13.2.2](https://github.com/oblique-bit/oblique/compare/13.2.1...13.2.2) (2025-05-12)
 
 ## Bug Fixes
 
 - **accessibility-statement:** separate available languages from English links ([d9e2c695](https://github.com/oblique-bit/oblique/commit/d9e2c695f81059953995b678fc28d3fce42f4922))
 - **accessibility-statement:** remove duplicated available languages from English links ([4ae37240](https://github.com/oblique-bit/oblique/commit/4ae3724015862db23be38b76b298df08655b70e2))
-- **file-upload:** explicitely define the MatPaginator parameter in the MatTable constructor ([12fc5628](https://github.com/oblique-bit/oblique/commit/12fc56286ac107cd9ab9fc845371b4f0961a319a))
+- **file-upload:** explicitly define the MatPaginator parameter in the MatTable constructor ([12fc5628](https://github.com/oblique-bit/oblique/commit/12fc56286ac107cd9ab9fc845371b4f0961a319a))
 - **master-layout:** exclude accessibility-statement from `hasMaxWidth` ([7c6360de](https://github.com/oblique-bit/oblique/commit/7c6360de1242f612a1c030f5841e912060b9e8e9))
 
 # [13.2.1](https://github.com/oblique-bit/oblique/compare/13.2.0...13.2.1) (2025-05-01)
