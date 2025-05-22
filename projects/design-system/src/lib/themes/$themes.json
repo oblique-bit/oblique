@@ -1062,8 +1062,8 @@
       "ob.c.tag.color.bg.focus": "c17c2d1791a348edb9772c040c157d97af9544a5",
       "ob.c.tag.color.bg.active": "f4548e71f73ccaac68c397f65cd8d82649adb60a",
       "ob.c.tag.color.bg.disabled": "84851514d546fbfefdad3cdc91ea0afd3e931dc8",
-      "ob.s.color.accent": "b40592c061f18ecbee6516499ff846adead4a61f",
-      "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe"
+      "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe",
+      "ob.s.color.brand": "b40592c061f18ecbee6516499ff846adead4a61f"
     },
     "group": "surface"
   },
@@ -1272,8 +1272,8 @@
       "ob.c.tag.color.bg.focus": "c17c2d1791a348edb9772c040c157d97af9544a5",
       "ob.c.tag.color.bg.active": "f4548e71f73ccaac68c397f65cd8d82649adb60a",
       "ob.c.tag.color.bg.disabled": "84851514d546fbfefdad3cdc91ea0afd3e931dc8",
-      "ob.s.color.accent": "b40592c061f18ecbee6516499ff846adead4a61f",
-      "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe"
+      "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe",
+      "ob.s.color.brand": "b40592c061f18ecbee6516499ff846adead4a61f"
     },
     "group": "surface"
   }

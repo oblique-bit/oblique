@@ -2,7 +2,7 @@
   "ob": {
     "s": {
       "color": {
-        "accent": {
+        "brand": {
           "value": "{ob.p.colors.basic.brand}",
           "type": "color"
         },

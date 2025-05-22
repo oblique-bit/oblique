@@ -645,6 +645,11 @@
                 "type": "color"
               }
             }
+          },
+          "selected": {
+            "value": "{ob.s.color.brand}",
+            "type": "color",
+            "description": "Used in the navigation. Current value, brand reference, needs validation."
           }
         },
         "shadow": {

@@ -160,7 +160,8 @@
         },
         "_base": {
           "value": "{ob.p.scaleBase}",
-          "type": "sizing"
+          "type": "sizing",
+          "description": "Acts as the foundational size token used to scale all derived sizing values, enabling consistent resizing for responsive modes."
         }
       }
     }
