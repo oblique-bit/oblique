@@ -20,7 +20,7 @@
 		&.disabled,
 		&[disabled],
 		.disabled > & {
-			color: variables.$ob-primary;
+			color: variables.$ob-gray;
 			cursor: not-allowed;
 		}
 
