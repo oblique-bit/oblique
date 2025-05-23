@@ -24,15 +24,17 @@
 			cursor: not-allowed;
 		}
 
-		&.expanded,
-		&.active,
-		&:active,
-		&:hover,
-		&:focus {
-			z-index: variables.$ob-z-index-controls + 1;
+		&:not([disabled], .disabled) {
+			&.expanded,
+			&.active,
+			&:active,
+			&:hover,
+			&:focus {
+				z-index: variables.$ob-z-index-controls + 1;
 
-			&::after {
-				border-left: 3px solid variables.$ob-accent;
+				&::after {
+					border-left: 3px solid variables.$ob-accent;
+				}
 			}
 		}
 	}
