@@ -497,6 +497,10 @@
 
 		&.ob-external-link .mat-icon {
 			margin-left: auto;
+
+			svg {
+				margin-top: unset;
+			}
 		}
 	}
 
