@@ -137,7 +137,7 @@ The `build` type has a mandatory scope that must be one of the following:
 
 ###### <a name="ci"></a> ci
 
-The `ci` type has a mandatory scope that must be one of the following:
+The `ci` type, which stands for Continuous Integration, has a mandatory scope that must be one of the following:
 
 - **rhos**: Changes to the Red Hat Open Shift configuration files
 - **jenkins**: Changes to the Jenkins configuration files
