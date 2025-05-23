@@ -64,7 +64,7 @@ class HookCommitRules {
 	}
 
 	private static extractHeaderParts(header: string, contributing: string): Header {
-		const result = /^(?<type>[a-z-]+)\((?<pkg>[a-z-]+)(?:\/(?<scope>[a-z-]+))?\)?:\s(?<subject>.+)$/.exec(header)?.groups;
+		const result = /^(?<type>[a-z-]+)(?:\((?<pkg>[a-z-]+)(?:\/(?<scope>[a-z-]+))?\)?)?:\s(?<subject>.+)$/.exec(header)?.groups;
 		const hasTypeScopes = HookCommitRules.hasTypeScopes(contributing, result.type);
 		return {
 			type: result.type,
