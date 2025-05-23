@@ -1,13 +1,17 @@
 // @ts-check
-module.exports = require('../../tests/jest.config');
-module.exports.roots = ['<rootDir>/projects/sandbox'];
-module.exports.displayName = {
-	name: 'Sandbox',
-	color: 'magenta'
+const baseConfig = require('../../tests/jest.config');
+
+module.exports = {
+	...baseConfig,
+	roots: ['<rootDir>/projects/sandbox'],
+	displayName: {
+		name: 'Sandbox',
+		color: 'magenta'
+	},
+	moduleNameMapper: {
+		'@oblique/oblique': '<rootDir>/projects/oblique/src/public_api.ts',
+		'@oblique/version': '<rootDir>/projects/oblique/src/lib/version.ts'
+	},
+	coverageDirectory: '<rootDir>/coverage/sandbox',
+	coveragePathIgnorePatterns: ['<rootDir>/projects/oblique']
 };
-module.exports.moduleNameMapper = {
-	'@oblique/oblique': '<rootDir>/projects/oblique/src/public_api.ts',
-	'@oblique/version': '<rootDir>/projects/oblique/src/lib/version.ts'
-};
-module.exports.coverageDirectory = '<rootDir>/coverage/sandbox';
-module.exports.coveragePathIgnorePatterns = ['<rootDir>/projects/oblique'];
