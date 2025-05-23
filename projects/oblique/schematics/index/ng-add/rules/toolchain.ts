@@ -1,4 +1,4 @@
-import {Rule, SchematicContext, Tree, chain, externalSchematic} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIOptionsSchema} from '../ng-add.model';
 import {addDevDependency, addRootProperty, addScript, getTemplate, removeScript} from '../ng-add-utils';
 import {
@@ -200,8 +200,20 @@ function addEslint(eslint: boolean): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (eslint) {
 			infoMigration(context, 'Toolchain: Adding "eslint"');
-			['@eslint/js', '@eslint/eslintrc'].forEach(dependency => addDevDependency(tree, dependency));
-			return externalSchematic('@angular-eslint/schematics', 'ng-add', {});
+			[
+				'@angular-eslint/eslint-plugin',
+				'@angular-eslint/eslint-plugin-template',
+				'@angular-eslint/template-parser',
+				'@angular-eslint/utils',
+				'@typescript-eslint/eslint-plugin',
+				'@typescript-eslint/parser',
+				'angular-eslint',
+				'eslint'
+			].forEach(dependency => {
+				addDevDependency(tree, dependency);
+			});
+			addScript(tree, 'lint', 'ng lint');
+			addLinting(tree);
 		}
 		return tree;
 	});
@@ -217,6 +229,11 @@ function addPrettier(eslint: boolean): Rule {
 		}
 		return tree;
 	});
+}
+
+function addLinting(tree: Tree): void {
+	setOrCreateAngularProjectsConfig(tree, ['architect', 'lint', 'builder'], '@angular-eslint/builder:lint');
+	setOrCreateAngularProjectsConfig(tree, ['architect', 'lint', 'options', 'lintFilePatterns'], ['src/**/*.ts', 'src/**/.html']);
 }
 
 function overwriteEslintRC(eslint: boolean, prefix: string): Rule {

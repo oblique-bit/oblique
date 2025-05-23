@@ -30,7 +30,7 @@ class UpdateAngular extends StaticScript {
 		const ngDependencies = UpdateAngular.listNgDependencies(rootPackageJson, projects);
 		UpdateAngular.addDependenciesInRootPackageJson(rootPackageJson, ngDependencies);
 		executeCommandWithLog(
-			'ng update @angular/cli @angular/core @angular-builders/jest @angular-eslint/schematics @schematics/angular --allow-dirty',
+			'ng update @angular/cli @angular/core @angular-builders/jest @schematics/angular --allow-dirty',
 			'Update Angular'
 		);
 		UpdateAngular.updatePackageDependencies(projects);
