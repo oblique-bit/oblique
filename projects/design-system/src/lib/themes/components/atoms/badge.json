@@ -10,8 +10,18 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.bg.contrast-low}",
-                "type": "color"
+                "value": "{ob.s.color.status.disabled.bg.contrast-low}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "lch",
+                      "color": "{ob.c.badge.color.bg.severity-low.enabled}"
+                    }
+                  }
+                }
               }
             },
             "severity-medium": {
@@ -20,7 +30,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.status.info.bg.contrast-low-inverse}",
+                "value": "{ob.s.color.status.disabled.bg.contrast-low}",
                 "type": "color",
                 "$extensions": {
                   "studio.tokens": {
@@ -40,7 +50,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.status.critical-new.bg.contrast-high-inverse}",
+                "value": "{ob.s.color.status.disabled.bg.contrast-low}",
                 "type": "color",
                 "$extensions": {
                   "studio.tokens": {
