@@ -9,7 +9,7 @@ As a contributor, here are the guidelines we would like you to follow:
 - [Commit Message Guidelines](#commit)
   - [General Rules](#general)
   - [Format](#format)
-    - [Header](#header)
+    - [Header](#header_)
       - [Type](#type)
       - [Package](#package)
       - [Scope](#scope)
@@ -77,13 +77,13 @@ Each commit message consists of a **header**, a **body**, and a **footer** separ
 <footer>
 ```
 
-The `header` is mandatory and must conform to the [Header](#header) format.
+The `header` is mandatory and must conform to the [Header](#header_) format.
 
 The `body` is optional but must conform to the [Body](#body) format if present.
 
 The `footer` is optional but must conform to the [Footer](#footer) format if present.
 
-#### <a name="header"></a> Header
+#### <a name="header_"></a> Header
 
 The header is mandatory and follows the following structure:
 
