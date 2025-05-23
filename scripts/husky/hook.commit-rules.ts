@@ -116,7 +116,7 @@ class HookCommitRules {
 			const filePaths = Git.getChangedFileNames()
 				.split('\n')
 				.filter(filePath => !!filePath)
-				.filter(filePath => !['package-lock.json', 'angular.json'].includes(filePath))
+				.filter(filePath => !['package-lock.json', 'angular.json', 'CONTRIBUTING.md', 'README.md'].includes(filePath))
 				.filter(filePath => !new RegExp(`projects/${HookCommitRules.getFolderName(pkg)}/.*`).test(filePath));
 			if (filePaths.length) {
 				HookCommitRules.fatal(
