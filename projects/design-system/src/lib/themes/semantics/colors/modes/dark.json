@@ -196,16 +196,16 @@
               }
             },
             "fg": {
-              "contrast-low": {
+              "contrast-high": {
                 "value": "{ob.p.colors.steelblue.200}",
                 "type": "color"
               },
               "contrast-medium": {
-                "value": "{ob.p.colors.steelblue.100}",
+                "value": "{ob.p.colors.steelblue.300}",
                 "type": "color"
               },
-              "contrast-high": {
-                "value": "{ob.p.colors.steelblue.50}",
+              "contrast-low": {
+                "value": "{ob.p.colors.steelblue.400}",
                 "type": "color"
               }
             }
