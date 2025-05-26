@@ -28,7 +28,7 @@
             },
             "secondary": {
               "enabled": {
-                "value": "{ob.p.colors.steelblue.800}",
+                "value": "{ob.p.colors.steelblue.600}",
                 "type": "color"
               },
               "hover": {
@@ -59,7 +59,7 @@
             },
             "tertiary": {
               "enabled": {
-                "value": "{ob.p.colors.steelblue.800}",
+                "value": "{ob.p.colors.steelblue.600}",
                 "type": "color"
               },
               "hover": {
@@ -201,7 +201,7 @@
             },
             "secondary": {
               "enabled": {
-                "value": "{ob.p.colors.steelblue.800}",
+                "value": "{ob.p.colors.steelblue.600}",
                 "type": "color"
               },
               "hover": {
