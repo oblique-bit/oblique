@@ -25,6 +25,7 @@
     "semantics/z-Index",
     "components/typography-styles",
     "components/atoms/badge",
+    "components/atoms/link",
     "components/atoms/close-button",
     "components/atoms/hr",
     "components/atoms/spinner",

@@ -119,7 +119,7 @@
                 "description": "makes the badge round"
               },
               "lg": {
-                "value": "{ob.c.badge.spacing.padding.horizontal.lg}",
+                "value": "{ob.c.link.spacing.padding.horizontal.lg}",
                 "type": "spacing",
                 "description": "makes the badge round"
               }
