@@ -57,7 +57,7 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "run-in-band": ["true"]
+            "max-workers": ["2"]
           },
           "configurations": {
             "default": {
@@ -193,7 +193,7 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "run-in-band": ["true"]
+            "max-workers": ["2"]
           },
           "configurations": {
             "default": {
@@ -311,7 +311,7 @@
           "options": {
             "configPath": "jest.config.js",
             "tsConfig": "tsconfig.spec.json",
-            "run-in-band": ["true"]
+            "max-workers": ["2"]
           },
           "configurations": {
             "default": {
@@ -403,7 +403,7 @@
           "options": {
             "configPath": "jest.config.js",
             "tsConfig": "tsconfig.spec.json",
-            "run-in-band": ["true"]
+            "max-workers": ["2"]
           },
           "configurations": {
             "default": {
@@ -505,7 +505,7 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "run-in-band": ["true"]
+            "max-workers": ["2"]
           },
           "configurations": {
             "default": {
@@ -544,7 +544,7 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "run-in-band": ["true"]
+            "max-workers": ["2"]
           },
           "configurations": {
             "default": {
