@@ -46,7 +46,7 @@
             },
             "severity-high": {
               "enabled": {
-                "value": "{ob.s.color.status.critical-new.bg.contrast-low-inverse}",
+                "value": "{ob.s.color.status.critical.bg.contrast-low-inverse}",
                 "type": "color"
               },
               "disabled": {

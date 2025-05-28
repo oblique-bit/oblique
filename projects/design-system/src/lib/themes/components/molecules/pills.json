@@ -467,25 +467,25 @@
           "critical-new": {
             "fg": {
               "enabled": {
-                "value": "{ob.s.color.status.critical-new.fg.contrast-high}",
+                "value": "{ob.s.color.status.critical.fg.contrast-high}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.status.critical-new.fg.contrast-high}",
+                "value": "{ob.s.color.status.critical.fg.contrast-high}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.status.critical-new.fg.contrast-high}",
+                "value": "{ob.s.color.status.critical.fg.contrast-high}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.status.critical-new.fg.contrast-high}",
+                "value": "{ob.s.color.status.critical.fg.contrast-high}",
                 "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "value": "{ob.s.color.status.critical-new.bg.contrast-medium}",
+                "value": "{ob.s.color.status.critical.bg.contrast-medium}",
                 "type": "color"
               },
               "hover": {
@@ -493,11 +493,11 @@
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.status.critical-new.bg.contrast-high}",
+                "value": "{ob.s.color.status.critical.bg.contrast-high}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.status.critical-new.bg.contrast-low}",
+                "value": "{ob.s.color.status.critical.bg.contrast-low}",
                 "type": "color"
               }
             }

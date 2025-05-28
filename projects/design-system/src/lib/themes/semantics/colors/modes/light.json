@@ -202,20 +202,6 @@
               "type": "color"
             }
           },
-          "critical": {
-            "bg": {
-              "value": "{ob.p.colors.red.100}",
-              "type": "color"
-            },
-            "bg-inverted": {
-              "value": "{ob.p.colors.red.700}",
-              "type": "color"
-            },
-            "fg": {
-              "value": "{ob.p.colors.red.800}",
-              "type": "color"
-            }
-          },
           "resolved": {
             "bg": {
               "contrast-high": {
@@ -520,7 +506,7 @@
               }
             }
           },
-          "critical-new": {
+          "critical": {
             "bg": {
               "contrast-high": {
                 "value": "{ob.p.colors.red.50}",
