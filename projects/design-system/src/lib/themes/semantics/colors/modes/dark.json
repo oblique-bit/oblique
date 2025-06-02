@@ -89,7 +89,7 @@
             "value": "{ob.p.colors.cobalt.900}",
             "type": "color"
           },
-          "a": {
+          "cta": {
             "link": {
               "value": "{ob.p.colors.basic.white}",
               "type": "color"

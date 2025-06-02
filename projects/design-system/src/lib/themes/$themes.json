@@ -1069,12 +1069,6 @@
       "ob.s.color.fg.contrast-medium-inverse": "7b0903622863103449fc3b754ef741ec3ebc9503",
       "ob.s.color.fg.contrast-high-inverse": "8a8765e882486d825306e346237af8d20fb06997",
       "ob.s.color.fg.contrast-highest-inverse": "82aa913af4226f5229e77c8dfe9a31777e69b03a",
-      "ob.s.color.fg.a.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
-      "ob.s.color.fg.a.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
-      "ob.s.color.fg.a.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
-      "ob.s.color.fg.a.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
-      "ob.s.color.fg.a.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
-      "ob.s.color.fg.a.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9",
       "ob.s.color.border.subtle": "548d9075060478725eac9ac9a83069d7b157da28",
       "ob.s.color.border.default": "bd3a83a7a17454f9aded1550a473a1f02909cecf",
       "ob.s.color.border.strong": "97669d430c6d9cb5c7fa3d7c0288eb71c303b556",
@@ -1196,7 +1190,13 @@
       "ob.c.tag.color.bg.active": "f4548e71f73ccaac68c397f65cd8d82649adb60a",
       "ob.c.tag.color.bg.disabled": "84851514d546fbfefdad3cdc91ea0afd3e931dc8",
       "ob.s.color.brand": "cfd181ed8921954a25f1e05c46a0d10019cde9ee",
-      "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe"
+      "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe",
+      "ob.s.color.fg.cta.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
+      "ob.s.color.fg.cta.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
+      "ob.s.color.fg.cta.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
+      "ob.s.color.fg.cta.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
+      "ob.s.color.fg.cta.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
+      "ob.s.color.fg.cta.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9"
     },
     "group": "colormode"
   },
@@ -1277,12 +1277,6 @@
       "ob.s.color.fg.contrast-medium-inverse": "7b0903622863103449fc3b754ef741ec3ebc9503",
       "ob.s.color.fg.contrast-high-inverse": "8a8765e882486d825306e346237af8d20fb06997",
       "ob.s.color.fg.contrast-highest-inverse": "82aa913af4226f5229e77c8dfe9a31777e69b03a",
-      "ob.s.color.fg.a.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
-      "ob.s.color.fg.a.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
-      "ob.s.color.fg.a.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
-      "ob.s.color.fg.a.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
-      "ob.s.color.fg.a.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
-      "ob.s.color.fg.a.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9",
       "ob.s.color.border.subtle": "548d9075060478725eac9ac9a83069d7b157da28",
       "ob.s.color.border.default": "bd3a83a7a17454f9aded1550a473a1f02909cecf",
       "ob.s.color.border.strong": "97669d430c6d9cb5c7fa3d7c0288eb71c303b556",
@@ -1404,7 +1398,13 @@
       "ob.c.tag.color.bg.active": "f4548e71f73ccaac68c397f65cd8d82649adb60a",
       "ob.c.tag.color.bg.disabled": "84851514d546fbfefdad3cdc91ea0afd3e931dc8",
       "ob.s.color.brand": "cfd181ed8921954a25f1e05c46a0d10019cde9ee",
-      "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe"
+      "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe",
+      "ob.s.color.fg.cta.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
+      "ob.s.color.fg.cta.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
+      "ob.s.color.fg.cta.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
+      "ob.s.color.fg.cta.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
+      "ob.s.color.fg.cta.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
+      "ob.s.color.fg.cta.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9"
     },
     "group": "colormode"
   }
