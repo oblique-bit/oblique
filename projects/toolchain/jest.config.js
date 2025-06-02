@@ -1,8 +1,9 @@
 // @ts-check
+const coverageConfig = require('../../tests/jest.config.coverage');
 module.exports = {
 	displayName: {
 		name: 'Toolchain',
-		color: 'purple'
+		color: 'cyan'
 	},
 	preset: 'ts-jest',
 	testEnvironment: 'node',
@@ -13,19 +14,7 @@ module.exports = {
 	transform: {
 		'^.+\\.ts$': 'ts-jest'
 	},
-	collectCoverage: true,
+	...coverageConfig,
 	coverageDirectory: '../../coverage/toolchain',
-	collectCoverageFrom: ['src/**/*.ts'],
-	coverageThreshold: {
-		/*
-		 * "global" combines all files that are not covered by another rules. The thresholds do not apply per file but globally.
-		 * This means the global coverage might be sufficient even if a specific file has too weak a coverage.
-		 */
-		global: {
-			statements: 100,
-			branches: 100,
-			functions: 100,
-			lines: 100
-		}
-	}
+	collectCoverageFrom: ['src/**/*.ts']
 };

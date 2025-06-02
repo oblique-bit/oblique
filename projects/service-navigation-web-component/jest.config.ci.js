@@ -1,12 +1,16 @@
 // @ts-check
-module.exports = require('./jest.config');
-module.exports.reporters = [
-	'default',
-	[
-		'jest-sonar',
-		{
-			outputDirectory: '<rootDir>/coverage/service-navigation-web-component',
-			outputName: 'sqr.xml'
-		}
+const baseConfig = require('./jest.config');
+
+module.exports = {
+	...baseConfig,
+	reporters: [
+		'default',
+		[
+			'jest-sonar',
+			{
+				outputDirectory: '<rootDir>/coverage/service-navigation-web-component',
+				outputName: 'sqr.xml'
+			}
+		]
 	]
-];
+};
