@@ -1191,12 +1191,12 @@
       "ob.c.tag.color.bg.disabled": "84851514d546fbfefdad3cdc91ea0afd3e931dc8",
       "ob.s.color.brand": "cfd181ed8921954a25f1e05c46a0d10019cde9ee",
       "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe",
-      "ob.s.color.fg.cta.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
-      "ob.s.color.fg.cta.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
-      "ob.s.color.fg.cta.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
-      "ob.s.color.fg.cta.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
-      "ob.s.color.fg.cta.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
-      "ob.s.color.fg.cta.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9"
+      "ob.s.color.cta.emphasis-default.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
+      "ob.s.color.cta.emphasis-default.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
+      "ob.s.color.cta.emphasis-default.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
+      "ob.s.color.cta.emphasis-default.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
+      "ob.s.color.cta.emphasis-default.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
+      "ob.s.color.cta.emphasis-default.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9"
     },
     "group": "colormode"
   },
@@ -1399,12 +1399,12 @@
       "ob.c.tag.color.bg.disabled": "84851514d546fbfefdad3cdc91ea0afd3e931dc8",
       "ob.s.color.brand": "cfd181ed8921954a25f1e05c46a0d10019cde9ee",
       "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe",
-      "ob.s.color.fg.cta.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
-      "ob.s.color.fg.cta.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
-      "ob.s.color.fg.cta.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
-      "ob.s.color.fg.cta.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
-      "ob.s.color.fg.cta.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
-      "ob.s.color.fg.cta.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9"
+      "ob.s.color.cta.emphasis-default.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
+      "ob.s.color.cta.emphasis-default.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
+      "ob.s.color.cta.emphasis-default.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
+      "ob.s.color.cta.emphasis-default.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
+      "ob.s.color.cta.emphasis-default.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
+      "ob.s.color.cta.emphasis-default.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9"
     },
     "group": "colormode"
   }

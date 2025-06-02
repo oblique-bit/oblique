@@ -88,8 +88,10 @@
           "contrast-highest-inverse": {
             "value": "{ob.p.colors.cobalt.900}",
             "type": "color"
-          },
-          "cta": {
+          }
+        },
+        "cta": {
+          "emphasis-default": {
             "link": {
               "value": "{ob.p.colors.basic.white}",
               "type": "color"
@@ -113,6 +115,42 @@
             },
             "disabled": {
               "value": "{ob.p.colors.basic.white}",
+              "type": "color",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.4",
+                    "space": "srgb"
+                  }
+                }
+              }
+            }
+          },
+          "emphasis-low": {
+            "link": {
+              "value": "{ob.p.colors.steelblue.600}",
+              "type": "color"
+            },
+            "hover": {
+              "value": "{ob.p.colors.steelblue.500}",
+              "type": "color",
+              "description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
+            },
+            "focus": {
+              "value": "{ob.p.colors.steelblue.500}",
+              "type": "color"
+            },
+            "pressed": {
+              "value": "{ob.p.colors.steelblue.800}",
+              "type": "color"
+            },
+            "visited": {
+              "value": "{ob.p.colors.indigo.700}",
+              "type": "color"
+            },
+            "disabled": {
+              "value": "{ob.p.colors.cobalt.900}",
               "type": "color",
               "$extensions": {
                 "studio.tokens": {
