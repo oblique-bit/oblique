@@ -23,11 +23,11 @@
 			[text]="helpText"
 			[links]="links"
 		/>
-	<ob-service-navigation-popover-section
-		*ngIf="contact?.email || contact?.tel"
-		header="i18n.oblique.service-navigation.info.contact.header"
+		<ob-service-navigation-popover-section
+			*ngIf="contact?.email || contact?.tel || contact?.formUrl"
+			header="i18n.oblique.service-navigation.info.contact.header"
 			[text]="contactText"
-		[links]="contact | obContactToLinks"
-	/>
+			[links]="contact | obContactToLinks"
+		/>
 	</div>
 </ng-template>

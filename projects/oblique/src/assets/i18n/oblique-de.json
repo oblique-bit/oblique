@@ -151,6 +151,7 @@
   "i18n.oblique.service-navigation.authentication.login": "Anmelden",
   "i18n.oblique.service-navigation.authentication.logout": "Abmelden",
   "i18n.oblique.service-navigation.info.button": "Hilfe und Kontakt",
+  "i18n.oblique.service-navigation.info.contact.form": "Kontaktformular",
   "i18n.oblique.service-navigation.info.contact.header": "Kontakt",
   "i18n.oblique.service-navigation.info.header": "Hilfe",
   "i18n.oblique.service-navigation.message.text": "Meine Benachrichtigungen ({{count}} {{messagePluralizationKey}})",
