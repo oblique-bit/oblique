@@ -166,6 +166,7 @@
   "i18n.oblique.service-navigation.profile.my-permissions": "Mes autorisations",
   "i18n.oblique.service-navigation.profile.my-email-sms-notifications": "Mes notifications Email / SMS",
   "i18n.oblique.service-navigation.profile.my-business-partnerships": "Mes partenariats commerciaux",
+  "i18n.oblique.service-navigation.profile.redeem-code": "Utiliser un code d'invitation",
   "i18n.oblique.service-navigation.section.tel.aria-label": "Lien téléphonique: {{ phoneNumber }}",
   "i18n.oblique.accessibility-statement.link": "Accessibilité",
   "i18n.oblique.accessibility-statement.accessibility-in-the-federal-administration": "Accessibilité au sein de l’administration fédérale",
