@@ -177,6 +177,11 @@
 	&.mat-mdc-button,
 	&.mat-mdc-icon-button {
 		border-radius: core-variables.$ob-border-radius-button;
+
+		.mat-mdc-button-touch-target {
+			height: 100%;
+			width: 100%;
+		}
 	}
 
 	// the only targets svg icons, i.e. Oblique ones, no default material ones
