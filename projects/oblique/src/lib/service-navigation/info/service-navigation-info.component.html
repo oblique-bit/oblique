@@ -14,6 +14,7 @@
 
 <ng-template #popoverInfo>
 	<div id="ob-service-navigation-info-popover-content" cdkTrapFocus cdkTrapFocusAutoCapture>
+		<h3 class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.info.button" | translate }}</h3>
 	<ob-service-navigation-popover-section
 		*ngIf="contact?.email || contact?.tel"
 		header="i18n.oblique.service-navigation.info.contact.header"
