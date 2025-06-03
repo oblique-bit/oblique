@@ -38,6 +38,10 @@
 			&:not(.ob-external-link) {
 				display: inline-block;
 			}
+
+			&.active {
+				border-left: variables.$ob-line-width-sm solid variables.$ob-accent;
+			}
 		}
 	}
 }

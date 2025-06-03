@@ -14,6 +14,7 @@ import {ObServiceNavigationInfoHarness} from './service-navigation-info.harness'
 import {ObServiceNavigationInfoComponent} from './service-navigation-info.component';
 import {ObContactToLinksPipe} from './contact-to-links.pipe';
 import {WINDOW} from '../../utilities';
+import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
 
 describe(ObServiceNavigationInfoComponent.name, () => {
 	let component: ObServiceNavigationInfoComponent;
@@ -22,7 +23,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, MatIconModule, MatTooltipModule, ObPopoverModule],
+			imports: [ObMockTranslatePipe, MatIconModule, MatTooltipModule, ObPopoverModule, ObIsCurrentUrlPipe],
 			declarations: [ObServiceNavigationInfoComponent, ObServiceNavigationPopoverSectionComponent, ObContactToLinksPipe],
 			providers: [{provide: WINDOW, useValue: window}]
 		}).compileComponents();

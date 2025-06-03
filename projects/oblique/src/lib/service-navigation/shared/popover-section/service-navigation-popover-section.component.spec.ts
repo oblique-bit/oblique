@@ -8,6 +8,8 @@ import {NgOptimizedImage} from '@angular/common';
 import {ObMockTranslatePipe} from './../../../_mocks/mock-translate.pipe';
 import {ObServiceNavigationPopOverSectionHarness} from './service-navigation-popover-section.harness';
 import {ObServiceNavigationPopoverSectionComponent} from './service-navigation-popover-section.component';
+import {WINDOW} from '../../../utilities';
+import {ObIsCurrentUrlPipe} from './is-current-url.pipe';
 
 @Component({template: '', standalone: false})
 class TestComponent {}
@@ -16,11 +18,13 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 	let component: ObServiceNavigationPopoverSectionComponent;
 	let fixture: ComponentFixture<ObServiceNavigationPopoverSectionComponent>;
 	let harness: ObServiceNavigationPopOverSectionHarness;
+	const fakeWindow = {location: {href: 'link2'}};
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, MatIconModule, NgOptimizedImage],
-			declarations: [ObServiceNavigationPopoverSectionComponent, TestComponent]
+			imports: [ObMockTranslatePipe, MatIconModule, NgOptimizedImage, ObIsCurrentUrlPipe],
+			declarations: [ObServiceNavigationPopoverSectionComponent, TestComponent],
+			providers: [{provide: WINDOW, useValue: fakeWindow}]
 		}).compileComponents();
 	});
 
@@ -199,6 +203,18 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 								expect(await host.hasClass('ob-icon-text')).toBe(true);
 							});
 						});
+					});
+				});
+
+				describe('active class', () => {
+					it('should not exist when the current location doesnt match with link url', async () => {
+						const hasClass = await links[0].hasClass('active');
+						expect(hasClass).toBe(false);
+					});
+
+					it('should exist when the current location match with link url', async () => {
+						const hasClass = await links[1].hasClass('active');
+						expect(hasClass).toBe(true);
 					});
 				});
 			});

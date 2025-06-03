@@ -17,6 +17,7 @@ import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-sect
 import {ObServiceNavigationProfileHarness} from './service-navigation-profile.harness';
 import {ObServiceNavigationProfileComponent} from './service-navigation-profile.component';
 import {WINDOW} from '../../utilities';
+import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
 
 describe('ObServiceNavigationProfileComponent', () => {
 	let component: ObServiceNavigationProfileComponent;
@@ -25,7 +26,15 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, ObMockExternalLinkModule, ObPopoverModule, MatIconModule, MatTooltipModule, NgOptimizedImage],
+			imports: [
+				ObMockTranslatePipe,
+				ObMockExternalLinkModule,
+				ObPopoverModule,
+				MatIconModule,
+				MatTooltipModule,
+				NgOptimizedImage,
+				ObIsCurrentUrlPipe
+			],
 			declarations: [ObServiceNavigationProfileComponent, ObServiceNavigationPopoverSectionComponent],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
