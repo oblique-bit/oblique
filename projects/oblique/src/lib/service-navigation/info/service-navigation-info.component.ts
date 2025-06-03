@@ -9,6 +9,7 @@ import {ObIServiceNavigationContact, ObIServiceNavigationLink} from '../service-
 	standalone: false
 })
 export class ObServiceNavigationInfoComponent {
+	@Input() description: string;
 	@Input() links: ObIServiceNavigationLink[] = [];
 	@Input() contact: ObIServiceNavigationContact;
 }
