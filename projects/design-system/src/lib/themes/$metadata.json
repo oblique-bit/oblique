@@ -13,6 +13,8 @@
     "semantics/colors/static",
     "semantics/colors/modes/light",
     "semantics/colors/modes/dark",
+    "semantics/colors/modes/cta-default",
+    "semantics/colors/modes/cta-low",
     "semantics/fx",
     "semantics/icons",
     "semantics/shadows",

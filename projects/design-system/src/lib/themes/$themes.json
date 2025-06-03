@@ -275,7 +275,9 @@
       "components/molecules/pills": "enabled",
       "components/sections/footer": "enabled",
       "components/typography-styles": "enabled",
-      "components/atoms/link": "enabled"
+      "components/atoms/link": "enabled",
+      "semantics/colors/modes/cta-default": "disabled",
+      "semantics/colors/modes/cta-low": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10676",
     "$figmaModeId": "6001:15",
@@ -700,7 +702,9 @@
       "semantics/typography-modes/1440-lg": "enabled",
       "semantics/typography-scale": "source",
       "semantics/typography-styles": "enabled",
-      "components/atoms/text-1440": "enabled"
+      "components/atoms/text-1440": "enabled",
+      "semantics/colors/modes/cta-default": "disabled",
+      "semantics/colors/modes/cta-low": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "9ef1d976eb21f1d703fd6e8a07a3fc80f35fedb7",
@@ -909,7 +913,9 @@
       "semantics/typography-modes/360-xs": "enabled",
       "semantics/typography-scale": "source",
       "semantics/typography-styles": "enabled",
-      "components/atoms/text-360": "enabled"
+      "components/atoms/text-360": "enabled",
+      "semantics/colors/modes/cta-default": "disabled",
+      "semantics/colors/modes/cta-low": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "9ef1d976eb21f1d703fd6e8a07a3fc80f35fedb7",
@@ -1001,7 +1007,9 @@
       "semantics/colors/modes/light": "enabled",
       "semantics/colors/static": "enabled",
       "components/molecules/button-modes/light-colored": "enabled",
-      "components/molecules/tags-modes/light": "enabled"
+      "components/molecules/tags-modes/light": "enabled",
+      "semantics/colors/modes/cta-default": "disabled",
+      "semantics/colors/modes/cta-low": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:19",
@@ -1191,12 +1199,12 @@
       "ob.c.tag.color.bg.disabled": "84851514d546fbfefdad3cdc91ea0afd3e931dc8",
       "ob.s.color.brand": "cfd181ed8921954a25f1e05c46a0d10019cde9ee",
       "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe",
-      "ob.s.color.cta.emphasis-default.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
-      "ob.s.color.cta.emphasis-default.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
-      "ob.s.color.cta.emphasis-default.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
-      "ob.s.color.cta.emphasis-default.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
-      "ob.s.color.cta.emphasis-default.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
-      "ob.s.color.cta.emphasis-default.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9"
+      "ob.s.color.cta.emphasis.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
+      "ob.s.color.cta.emphasis.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
+      "ob.s.color.cta.emphasis.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
+      "ob.s.color.cta.emphasis.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
+      "ob.s.color.cta.emphasis.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
+      "ob.s.color.cta.emphasis.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9"
     },
     "group": "colormode"
   },
@@ -1209,7 +1217,9 @@
       "semantics/colors/modes/dark": "enabled",
       "semantics/colors/static": "enabled",
       "components/molecules/button-modes/dark-monochrome": "enabled",
-      "components/molecules/tags-modes/dark": "enabled"
+      "components/molecules/tags-modes/dark": "enabled",
+      "semantics/colors/modes/cta-default": "disabled",
+      "semantics/colors/modes/cta-low": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:20",
@@ -1399,13 +1409,37 @@
       "ob.c.tag.color.bg.disabled": "84851514d546fbfefdad3cdc91ea0afd3e931dc8",
       "ob.s.color.brand": "cfd181ed8921954a25f1e05c46a0d10019cde9ee",
       "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe",
-      "ob.s.color.cta.emphasis-default.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
-      "ob.s.color.cta.emphasis-default.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
-      "ob.s.color.cta.emphasis-default.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
-      "ob.s.color.cta.emphasis-default.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
-      "ob.s.color.cta.emphasis-default.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
-      "ob.s.color.cta.emphasis-default.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9"
+      "ob.s.color.cta.emphasis.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
+      "ob.s.color.cta.emphasis.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
+      "ob.s.color.cta.emphasis.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
+      "ob.s.color.cta.emphasis.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
+      "ob.s.color.cta.emphasis.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
+      "ob.s.color.cta.emphasis.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9"
     },
     "group": "colormode"
+  },
+  {
+    "id": "f2d909efb2ab1aae1de104db99d4e047d72ccf0f",
+    "name": "default",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitives/colors": "source",
+      "semantics/colors/modes/light": "source",
+      "semantics/colors/modes/dark": "source",
+      "semantics/colors/modes/cta-default": "enabled"
+    },
+    "group": "cta-emphasis"
+  },
+  {
+    "id": "daee0049718efa9352d42c884e67716c9ae0401e",
+    "name": "low",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitives/colors": "source",
+      "semantics/colors/modes/light": "source",
+      "semantics/colors/modes/dark": "source",
+      "semantics/colors/modes/cta-low": "enabled"
+    },
+    "group": "cta-emphasis"
   }
 ]
