@@ -277,6 +277,15 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 			expect(await harness.getTriggerButtonScreenReaderText()).toBe('i18n.oblique.service-navigation.info.button');
 		});
 
+		describe('Content div', () => {
+			it.each(['cdkTrapFocus', 'cdkTrapFocusAutoCapture'])('should have the %s attribute', async value => {
+				await harness.openPopover();
+				const contentDiv = await harness.getContentDiv();
+				const trapFocusAttribute = await contentDiv.getAttribute(value);
+				expect(trapFocusAttribute).not.toBeNull();
+			});
+		});
+
 		describe('tooltip', () => {
 			let tooltip: MatTooltipHarness;
 			beforeEach(async () => {
