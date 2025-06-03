@@ -26,7 +26,7 @@
 	<ob-service-navigation-popover-section
 		*ngIf="contact?.email || contact?.tel"
 		header="i18n.oblique.service-navigation.info.contact.header"
-		text="i18n.oblique.service-navigation.info.contact.text"
+			[text]="contactText"
 		[links]="contact | obContactToLinks"
 	/>
 	</div>

@@ -12,5 +12,6 @@ export class ObServiceNavigationInfoComponent {
 	@Input() helpText: string;
 	@Input() description: string;
 	@Input() links: ObIServiceNavigationLink[] = [];
+	@Input() contactText: string;
 	@Input() contact: ObIServiceNavigationContact;
 }

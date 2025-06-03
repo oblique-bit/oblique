@@ -152,7 +152,6 @@
   "i18n.oblique.service-navigation.authentication.logout": "Disconnettersi",
   "i18n.oblique.service-navigation.info.button": "Aiuto e contatto",
   "i18n.oblique.service-navigation.info.contact.header": "Contatto",
-  "i18n.oblique.service-navigation.info.contact.text": "In caso di domande siamo a vostra disposizione:",
   "i18n.oblique.service-navigation.info.header": "Aiuto",
   "i18n.oblique.service-navigation.message.text": "Le mie notificazioni {{count}} {{messagePluralizationKey}}",
   "i18n.oblique.service-navigation.message.singular": "nuova notifica",
