@@ -35,24 +35,26 @@
 </ng-template>
 
 <ng-template #popoverProfile>
-	<ob-service-navigation-popover-section
-		[header]="userName || 'i18n.oblique.service-navigation.profile.guest' | translate"
-		[links]="profileUrls"
-	>
-		<img
-			*ngIf="avatarImageUrl"
-			obHeaderPrefix
-			class="ob-avatar"
-			aria-hidden="true"
-			[alt]="'i18n.oblique.service-navigation.profile.alt' | translate"
-			[ngSrc]="avatarImageUrl"
-			height="32"
-			width="32"
+	<div id="ob-service-navigation-profile-popover-content" cdkTrapFocus cdkTrapFocusAutoCapture>
+		<ob-service-navigation-popover-section
+			[header]="userName || 'i18n.oblique.service-navigation.profile.guest' | translate"
+			[links]="profileUrls"
+		>
+			<img
+				*ngIf="avatarImageUrl"
+				obHeaderPrefix
+				class="ob-avatar"
+				aria-hidden="true"
+				[alt]="'i18n.oblique.service-navigation.profile.alt' | translate"
+				[ngSrc]="avatarImageUrl"
+				height="32"
+				width="32"
+			/>
+		</ob-service-navigation-popover-section>
+		<ob-service-navigation-popover-section
+			*ngIf="links?.length > 0"
+			header="i18n.oblique.service-navigation.profile.links.header"
+			[links]="links"
 		/>
-	</ob-service-navigation-popover-section>
-	<ob-service-navigation-popover-section
-		*ngIf="links?.length > 0"
-		header="i18n.oblique.service-navigation.profile.links.header"
-		[links]="links"
-	/>
+	</div>
 </ng-template>

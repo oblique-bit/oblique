@@ -10,6 +10,10 @@ export class ObServiceNavigationProfileHarness extends ContentContainerComponent
 		return this.locatorFor('button')();
 	}
 
+	public async getContentDiv(): Promise<TestElement> {
+		return this.locatorFor('#ob-service-navigation-profile-popover-content')();
+	}
+
 	public async getTriggerButtonScreenReaderText(): Promise<string> {
 		const button = await this.locatorFor('button .ob-screen-reader-only')();
 		return button.text();

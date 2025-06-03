@@ -378,6 +378,14 @@ describe('ObServiceNavigationProfileComponent', () => {
 				expect(await harness.getPopoverHarness()).toBeTruthy();
 			});
 
+			describe('Content div', () => {
+				it.each(['cdkTrapFocus', 'cdkTrapFocusAutoCapture'])('should have the %s attribute', async value => {
+					const contentDiv = await harness.getContentDiv();
+					const trapFocusAttribute = await contentDiv.getAttribute(value);
+					expect(trapFocusAttribute).not.toBeNull();
+				});
+			});
+
 			describe('sections', () => {
 				let sections: DebugElement[];
 				beforeEach(() => {
