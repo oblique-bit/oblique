@@ -35,7 +35,7 @@ export const OBLIQUE_POPOVER_APPEND_TO_BODY = new InjectionToken<boolean>('Appen
 @Directive({
 	selector: '[obPopover]',
 	exportAs: 'obPopover',
-	host: {class: 'ob-popover'},
+	host: {class: 'ob-popover', 'aria-haspopup': 'menu'},
 	standalone: true
 })
 export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
@@ -48,7 +48,8 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	@Input() closeOnlyOnToggle: boolean;
 	@Input() appendToBody = false;
 	@Output() readonly visibilityChange = new EventEmitter<boolean>();
-	@HostBinding('attr.aria-describedby') idContent: string;
+	@HostBinding('attr.aria-describedby') @HostBinding('attr.aria-controls') idContent: string;
+	@HostBinding('attr.aria-expanded') isExpanded = false;
 
 	private static idCount = 0;
 	private readonly body: HTMLElement;
@@ -124,6 +125,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		this.popover = undefined;
 		this.instance?.destroy();
 		this.instance = undefined;
+		this.isExpanded = false;
 		this.visibilityChange.emit(false);
 	}
 
@@ -142,6 +144,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		setTimeout(() => {
 			this.setPopperOptionsAndUpdate();
 		});
+		this.isExpanded = true;
 		this.visibilityChange.emit(true);
 	}
 
