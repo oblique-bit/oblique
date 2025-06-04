@@ -62,7 +62,7 @@
   "i18n.oblique.master-layout.accesskey.title": "Zugriffstasten",
   "i18n.oblique.master-layout.accesskey.main-content": "Springe zum Hauptteil [0]",
   "i18n.oblique.master-layout.accesskey.navigation": "Springe zur Navigation [1]",
-  "i18n.oblique.master-layout.navigation.link.go-to-children": "{{parentLabel}} Submenü öffnen",
+  "i18n.oblique.master-layout.navigation.link.go-to-children": "\"{{parentLabel}}\" Submenü öffnen",
   "i18n.oblique.master-layout.master-layout-navigation.scroll-left": "Links scrollen",
   "i18n.oblique.master-layout.master-layout-navigation.scroll-right": "Rechts scrollen",
   "i18n.oblique.header.title": "Kopfzeile",
