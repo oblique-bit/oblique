@@ -7,6 +7,10 @@
 	display: none;
 }
 
+.ob-master-layout-navigation-go-to-children-without-url {
+	width: 100%;
+}
+
 .ob-layout-collapsed {
 	.ob-main-nav-item {
 		display: flex;
@@ -15,10 +19,6 @@
 			display: flex;
 			align-self: flex-end;
 			margin-left: -0.25 * variables.$ob-spacing-xs;
-
-			&.ob-master-layout-navigation-go-to-children-without-url {
-				width: 100%;
-			}
 
 			&.ob-button.ob-button-tertiary.mat-mdc-button-base {
 				padding-left: calc(0.3896em + #{variables.$ob-spacing-xs} * 0.5);
