@@ -5,24 +5,24 @@
         "cta": {
           "emphasis": {
             "link": {
-              "value": "{ob.s.color.fg.contrast-highest}",
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
               "type": "color",
               "description": "References directly the text color to ensure the color consistency"
             },
             "hover": {
-              "value": "{ob.s.color.fg.contrast-high}",
+              "value": "{ob.s.color.neutral.fg.contrast-high}",
               "type": "color"
             },
             "focus": {
-              "value": "{ob.s.color.fg.contrast-high}",
+              "value": "{ob.s.color.neutral.fg.contrast-high}",
               "type": "color"
             },
             "pressed": {
-              "value": "{ob.s.color.fg.contrast-high}",
+              "value": "{ob.s.color.neutral.fg.contrast-high}",
               "type": "color"
             },
             "visited": {
-              "value": "{ob.s.color.fg.contrast-highest}",
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
               "type": "color",
               "description": "According to the use cases (navigation buttons) here we do not differentiate from the enabled on purpose."
             },

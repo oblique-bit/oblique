@@ -18,7 +18,7 @@
         },
         "color": {
           "enabled": {
-            "value": "{ob.s.color.fg.contrast-high}",
+            "value": "{ob.s.color.neutral.fg.contrast-high}",
             "type": "color"
           },
           "hover": {
@@ -26,15 +26,15 @@
             "type": "color"
           },
           "focus": {
-            "value": "{ob.s.color.border.focus-dark}",
+            "value": "{ob.s.color.neutral.border.focus-dark}",
             "type": "color"
           },
           "pressed": {
-            "value": "{ob.s.color.fg.contrast-highest}",
+            "value": "{ob.s.color.neutral.fg.contrast-highest}",
             "type": "color"
           },
           "active": {
-            "value": "{ob.s.color.fg.contrast-high-inverse}",
+            "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
             "type": "color"
           },
           "disabled": {

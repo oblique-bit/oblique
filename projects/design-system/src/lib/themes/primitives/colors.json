@@ -133,11 +133,12 @@
             "parent": "Colors/Mode 1",
             "description": ""
           },
-          "brand": {
+          "bundesrot": {
             "value": "#ff0000",
             "type": "color",
             "parent": "Primitives/Colors",
-            "oldValue": "#ff0000"
+            "oldValue": "#ff0000",
+            "description": "The color provided by Federal Chancellery."
           }
         },
         "orange": {

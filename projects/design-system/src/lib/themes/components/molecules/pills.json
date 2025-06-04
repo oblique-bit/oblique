@@ -116,37 +116,37 @@
           "closed": {
             "fg": {
               "enabled": {
-                "value": "{ob.s.color.fg.contrast-medium}",
+                "value": "{ob.s.color.neutral.fg.contrast-medium}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.fg.contrast-medium}",
+                "value": "{ob.s.color.neutral.fg.contrast-medium}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.fg.contrast-medium}",
+                "value": "{ob.s.color.neutral.fg.contrast-medium}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.fg.contrast-high}",
+                "value": "{ob.s.color.neutral.fg.contrast-high}",
                 "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "value": "{ob.s.color.bg.contrast-medium}",
+                "value": "{ob.s.color.neutral.bg.contrast-medium}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.bg.contrast-highest}",
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.bg.contrast-medium}",
+                "value": "{ob.s.color.neutral.bg.contrast-medium}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.bg.contrast-medium}",
+                "value": "{ob.s.color.neutral.bg.contrast-medium}",
                 "type": "color",
                 "$extensions": {
                   "studio.tokens": {
@@ -185,7 +185,7 @@
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.bg.contrast-highest}",
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
                 "type": "color"
               },
               "focus": {
@@ -223,7 +223,7 @@
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.bg.contrast-highest}",
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
                 "type": "color"
               },
               "focus": {
@@ -261,7 +261,7 @@
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.bg.contrast-highest}",
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
                 "type": "color"
               },
               "focus": {
@@ -299,7 +299,7 @@
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.bg.contrast-highest}",
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
                 "type": "color"
               },
               "focus": {
@@ -337,7 +337,7 @@
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.bg.contrast-highest}",
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
                 "type": "color"
               },
               "focus": {
@@ -375,7 +375,7 @@
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.bg.contrast-highest}",
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
                 "type": "color"
               },
               "focus": {
@@ -413,7 +413,7 @@
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.bg.contrast-highest}",
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
                 "type": "color"
               },
               "focus": {
@@ -451,7 +451,7 @@
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.bg.contrast-highest}",
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
                 "type": "color"
               },
               "focus": {
@@ -489,7 +489,7 @@
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.bg.contrast-highest}",
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
                 "type": "color"
               },
               "focus": {

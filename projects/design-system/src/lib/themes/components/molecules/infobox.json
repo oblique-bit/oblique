@@ -21,7 +21,7 @@
               "type": "color"
             },
             "fatal": {
-              "value": "{ob.s.color.fg.contrast-highest-inverse}",
+              "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
               "type": "color"
             }
           },
@@ -72,23 +72,23 @@
           },
           "fg": {
             "info": {
-              "value": "{ob.s.color.fg.contrast-highest}",
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
               "type": "color"
             },
             "error": {
-              "value": "{ob.s.color.fg.contrast-highest}",
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
               "type": "color"
             },
             "warning": {
-              "value": "{ob.s.color.fg.contrast-highest}",
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
               "type": "color"
             },
             "success": {
-              "value": "{ob.s.color.fg.contrast-highest}",
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
               "type": "color"
             },
             "fatal": {
-              "value": "{ob.s.color.fg.contrast-high-inverse}",
+              "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
               "type": "color"
             }
           }

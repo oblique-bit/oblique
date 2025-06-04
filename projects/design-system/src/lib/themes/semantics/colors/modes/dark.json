@@ -2,133 +2,141 @@
   "ob": {
     "s": {
       "color": {
-        "bg": {
-          "contrast-highest": {
-            "value": "{ob.p.colors.cobalt.700}",
-            "type": "color",
-            "description": "Default dark surface color"
-          },
-          "contrast-high": {
-            "value": "{ob.p.colors.cobalt.600}",
-            "type": "color",
-            "description": "Darker surface color"
-          },
-          "contrast-medium": {
-            "value": "{ob.p.colors.cobalt.500}",
-            "type": "color",
-            "description": "Darker surface color"
-          },
-          "contrast-low": {
-            "value": "{ob.p.colors.cobalt.400}",
-            "type": "color",
-            "description": "Darker surface color"
-          },
-          "contrast-highest-inverse": {
-            "value": "{ob.p.colors.basic.white}",
-            "type": "color",
-            "description": "Default dark surface color"
-          },
-          "contrast-high-inverse": {
-            "value": "{ob.p.colors.cobalt.50}",
-            "type": "color",
-            "description": "Darker surface color"
-          },
-          "contrast-medium-inverse": {
-            "value": "{ob.p.colors.cobalt.100}",
-            "type": "color",
-            "description": "Darker surface color"
-          },
-          "contrast-low-inverse": {
-            "value": "{ob.p.colors.cobalt.200}",
-            "type": "color",
-            "description": "Darker surface color"
-          }
-        },
-        "fg": {
-          "contrast-lowest": {
-            "value": "{ob.p.colors.white-alpha.400}",
-            "type": "color",
-            "description": "For disabled"
-          },
-          "contrast-low": {
-            "value": "{ob.p.colors.cobalt.200}",
-            "type": "color"
-          },
-          "contrast-medium": {
-            "value": "{ob.p.colors.cobalt.100}",
-            "type": "color",
-            "description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
-          },
-          "contrast-high": {
-            "value": "{ob.p.colors.cobalt.50}",
-            "type": "color"
-          },
-          "contrast-highest": {
-            "value": "{ob.p.colors.basic.white}",
-            "type": "color"
-          },
-          "contrast-lowest-inverse": {
-            "value": "{ob.p.colors.cobalt-alpha.400}",
-            "type": "color",
-            "description": "For disabled"
-          },
-          "contrast-low-inverse": {
-            "value": "{ob.p.colors.cobalt.600}",
-            "type": "color"
-          },
-          "contrast-medium-inverse": {
-            "value": "{ob.p.colors.cobalt.700}",
-            "type": "color",
-            "description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
-          },
-          "contrast-high-inverse": {
-            "value": "{ob.p.colors.cobalt.800}",
-            "type": "color"
-          },
-          "contrast-highest-inverse": {
-            "value": "{ob.p.colors.cobalt.900}",
-            "type": "color"
-          }
-        },
-        "border": {
-          "subtle": {
-            "value": "{ob.p.colors.basic.white}",
-            "type": "color",
-            "$extensions": {
-              "studio.tokens": {
-                "modify": {
-                  "type": "alpha",
-                  "value": "0.1",
-                  "space": "srgb"
-                }
-              }
+        "neutral": {
+          "bg": {
+            "contrast-highest": {
+              "value": "{ob.p.colors.cobalt.700}",
+              "type": "color",
+              "description": "Default dark surface color"
+            },
+            "contrast-high": {
+              "value": "{ob.p.colors.cobalt.600}",
+              "type": "color",
+              "description": "Darker surface color"
+            },
+            "contrast-medium": {
+              "value": "{ob.p.colors.cobalt.500}",
+              "type": "color",
+              "description": "Darker surface color"
+            },
+            "contrast-low": {
+              "value": "{ob.p.colors.cobalt.400}",
+              "type": "color",
+              "description": "Darker surface color"
+            },
+            "contrast-highest-inverse": {
+              "value": "{ob.p.colors.basic.white}",
+              "type": "color",
+              "description": "Default dark surface color"
+            },
+            "contrast-high-inverse": {
+              "value": "{ob.p.colors.cobalt.50}",
+              "type": "color",
+              "description": "Darker surface color"
+            },
+            "contrast-medium-inverse": {
+              "value": "{ob.p.colors.cobalt.100}",
+              "type": "color",
+              "description": "Darker surface color"
+            },
+            "contrast-low-inverse": {
+              "value": "{ob.p.colors.cobalt.200}",
+              "type": "color",
+              "description": "Darker surface color"
             }
           },
-          "default": {
-            "value": "{ob.p.colors.basic.white}",
-            "type": "color",
-            "$extensions": {
-              "studio.tokens": {
-                "modify": {
-                  "type": "alpha",
-                  "value": "0.2",
-                  "space": "srgb"
-                }
-              }
+          "fg": {
+            "contrast-lowest": {
+              "value": "{ob.p.colors.white-alpha.400}",
+              "type": "color",
+              "description": "For disabled"
+            },
+            "contrast-low": {
+              "value": "{ob.p.colors.cobalt.200}",
+              "type": "color"
+            },
+            "contrast-medium": {
+              "value": "{ob.p.colors.cobalt.100}",
+              "type": "color",
+              "description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
+            },
+            "contrast-high": {
+              "value": "{ob.p.colors.cobalt.50}",
+              "type": "color"
+            },
+            "contrast-highest": {
+              "value": "{ob.p.colors.basic.white}",
+              "type": "color"
+            },
+            "contrast-lowest-inverse": {
+              "value": "{ob.p.colors.cobalt-alpha.400}",
+              "type": "color",
+              "description": "For disabled"
+            },
+            "contrast-low-inverse": {
+              "value": "{ob.p.colors.cobalt.600}",
+              "type": "color"
+            },
+            "contrast-medium-inverse": {
+              "value": "{ob.p.colors.cobalt.700}",
+              "type": "color",
+              "description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
+            },
+            "contrast-high-inverse": {
+              "value": "{ob.p.colors.cobalt.800}",
+              "type": "color"
+            },
+            "contrast-highest-inverse": {
+              "value": "{ob.p.colors.cobalt.900}",
+              "type": "color"
             }
           },
-          "strong": {
-            "value": "{ob.p.colors.cobalt.300}",
-            "type": "color"
+          "border": {
+            "subtle": {
+              "value": "{ob.p.colors.basic.white}",
+              "type": "color",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.1",
+                    "space": "srgb"
+                  }
+                }
+              }
+            },
+            "default": {
+              "value": "{ob.p.colors.basic.white}",
+              "type": "color",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.2",
+                    "space": "srgb"
+                  }
+                }
+              }
+            },
+            "strong": {
+              "value": "{ob.p.colors.cobalt.300}",
+              "type": "color"
+            },
+            "focus-dark": {
+              "value": "{ob.p.colors.purple.400}",
+              "type": "color"
+            },
+            "focus-light": {
+              "value": "{ob.p.colors.purple.500}",
+              "type": "color",
+              "description": "When surrounding and touching dark elements such as primary button."
+            }
           },
-          "focus-dark": {
-            "value": "{ob.p.colors.purple.400}",
-            "type": "color"
-          },
-          "focus-light": {
-            "value": "{ob.p.colors.purple.500}",
-            "type": "color",
-            "description": "When surrounding and touching dark elements such as primary button."
+          "shadow": {
+            "default": {
+              "value": "{ob.p.colors.cobalt.900}",
+              "type": "color"
+            }
           }
         },
         "status": {
@@ -617,17 +625,13 @@
                 "type": "color"
               }
             }
-          },
+          }
+        },
+        "interaction": {
           "selected": {
             "value": "{ob.s.color.brand}",
             "type": "color",
             "description": "Used in the navigation. Current value, brand reference, needs validation."
-          }
-        },
-        "shadow": {
-          "default": {
-            "value": "{ob.p.colors.cobalt.900}",
-            "type": "color"
           }
         }
       }

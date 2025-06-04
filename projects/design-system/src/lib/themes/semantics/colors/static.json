@@ -3,12 +3,14 @@
     "s": {
       "color": {
         "brand": {
-          "value": "{ob.p.colors.basic.brand}",
-          "type": "color"
+          "value": "{ob.p.colors.basic.bundesrot}",
+          "type": "color",
+          "description": "Static color to be used in the brand relevant UI elements."
         },
         "no-color": {
           "value": "rgba(0,0,0,0)",
-          "type": "color"
+          "type": "color",
+          "description": "Static value when no color respectively 0% opacity is needed."
         }
       }
     }

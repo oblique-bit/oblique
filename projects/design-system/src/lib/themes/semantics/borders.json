@@ -134,7 +134,7 @@
       "border": {
         "focus-light": {
           "value": {
-            "color": "{ob.s.color.border.focus-light}",
+            "color": "{ob.s.color.neutral.border.focus-light}",
             "width": "{ob.s.border-width.2xl}",
             "style": "solid"
           },

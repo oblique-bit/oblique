@@ -103,16 +103,16 @@
         },
         "color": {
           "bg": {
-            "value": "{ob.s.color.bg.contrast-highest}",
+            "value": "{ob.s.color.neutral.bg.contrast-highest}",
             "type": "color"
           },
           "border": {
-            "value": "{ob.s.color.border.default}",
+            "value": "{ob.s.color.neutral.border.default}",
             "type": "color",
             "description": "Default border color for popovers."
           },
           "fg": {
-            "value": "{ob.s.color.fg.contrast-high}",
+            "value": "{ob.s.color.neutral.fg.contrast-high}",
             "type": "color"
           }
         },

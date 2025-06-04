@@ -6,19 +6,19 @@
           "fg": {
             "primary": {
               "enabled": {
-                "value": "{ob.s.color.fg.contrast-highest-inverse}",
+                "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.fg.contrast-highest-inverse}",
+                "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.fg.contrast-highest-inverse}",
+                "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.fg.contrast-highest-inverse}",
+                "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
                 "type": "color",
                 "$extensions": {
                   "studio.tokens": {

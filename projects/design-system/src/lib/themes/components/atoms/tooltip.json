@@ -26,12 +26,12 @@
         },
         "color": {
           "bg": {
-            "value": "{ob.s.color.bg.contrast-highest-inverse}",
+            "value": "{ob.s.color.neutral.bg.contrast-highest-inverse}",
             "type": "color",
             "description": "Inverted background color to stand out in a busy layout."
           },
           "fg": {
-            "value": "{ob.s.color.fg.contrast-highest-inverse}",
+            "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
             "type": "color",
             "description": "Text color for the inverted background color."
           }

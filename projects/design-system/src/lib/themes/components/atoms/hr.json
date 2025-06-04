@@ -10,15 +10,15 @@
         },
         "color": {
           "subtle": {
-            "value": "{ob.s.color.border.subtle}",
+            "value": "{ob.s.color.neutral.border.subtle}",
             "type": "color"
           },
           "default": {
-            "value": "{ob.s.color.border.default}",
+            "value": "{ob.s.color.neutral.border.default}",
             "type": "color"
           },
           "strong": {
-            "value": "{ob.s.color.border.strong}",
+            "value": "{ob.s.color.neutral.border.strong}",
             "type": "color"
           }
         }
