@@ -22,7 +22,7 @@
             "type": "color"
           },
           "hover": {
-            "value": "{ob.s.color.interaction.hover}",
+            "value": "{ob.s.color.interaction.fg.hover}",
             "type": "color"
           },
           "focus": {
@@ -38,7 +38,7 @@
             "type": "color"
           },
           "disabled": {
-            "value": "{ob.s.color.interaction.disabled}",
+            "value": "{ob.s.color.interaction.fg.disabled}",
             "type": "color"
           }
         }

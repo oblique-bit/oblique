@@ -316,8 +316,6 @@
       "ob.s.corners.bottom-right.sm": "ed6ed4db90f6b343a8fe171bf2d2f70633b098d3",
       "ob.s.corners.bottom-right.md": "3229d9f4d6844c98d3dcfed5ed097b261503e1d5",
       "ob.s.corners.bottom-right.lg": "214f64041fefd929f466285aca55af43d1efabeb",
-      "ob.s.color.brand": "8c70a323f251d8fd655f29e231bc0e38eb570276",
-      "ob.s.color.no-color": "1a713353ae79016b43a6bf53675e01d6eb439ce4",
       "ob.s.fx.blur.sm": "37d55d5837f27d7748027ed13f182cf3636130c3",
       "ob.s.icon.size.xs": "5c71255ccdf8208c58cafc7e92f1f34f3eb36b09",
       "ob.s.icon.size.sm": "35f83bf1c95a212c1b42f3cc0de664560602dc10",
@@ -591,7 +589,9 @@
       "ob.c.badge.color.fg.critical.enabled": "c6c5e9e932e4091f53310eb4bd7edf01a7a1237b",
       "ob.c.badge.color.fg.critical.disabled": "c42b649a0bcd3859df2b0448d6b804c000a6e9a7",
       "ob.c.badge.color.fg.attention.enabled": "e61f8d7b43c56ed182bdd3d5369e5a1c405bfe1d",
-      "ob.c.badge.color.fg.attention.disabled": "d6accc081bb8daf68677f24dcbb0890f455b67a6"
+      "ob.c.badge.color.fg.attention.disabled": "d6accc081bb8daf68677f24dcbb0890f455b67a6",
+      "ob.s.color.static.no-color": "1a713353ae79016b43a6bf53675e01d6eb439ce4",
+      "ob.s.color.static.brand": "8c70a323f251d8fd655f29e231bc0e38eb570276"
     },
     "group": "core"
   },
@@ -1000,8 +1000,8 @@
       "primitives/colors": "source",
       "semantics/colors/modes/light": "enabled",
       "semantics/colors/static": "enabled",
-      "components/molecules/button-modes/light-colored": "enabled",
-      "components/molecules/tags-modes/light": "enabled"
+      "components/molecules/tags-modes/light": "enabled",
+      "components/molecules/button-modes/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:19",
@@ -1164,8 +1164,6 @@
       "ob.c.tag.color.bg.focus": "c17c2d1791a348edb9772c040c157d97af9544a5",
       "ob.c.tag.color.bg.active": "f4548e71f73ccaac68c397f65cd8d82649adb60a",
       "ob.c.tag.color.bg.disabled": "84851514d546fbfefdad3cdc91ea0afd3e931dc8",
-      "ob.s.color.brand": "cfd181ed8921954a25f1e05c46a0d10019cde9ee",
-      "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe",
       "ob.s.color.interaction.selected": "b69e67d75489109be3e5f78941484fe9d2b3eb09",
       "ob.s.color.neutral.bg.contrast-highest": "de1f3159edc2476baebaebd390c0e4e817f9636d",
       "ob.s.color.neutral.bg.contrast-high": "86a4191a658a4fa7320103343f20f25b93d8644e",
@@ -1191,12 +1189,14 @@
       "ob.s.color.neutral.border.focus-dark": "3d6dc230e487d516e18f650b1c3e3f6f42b87bd1",
       "ob.s.color.neutral.border.focus-light": "3a6875bdb82f69ea624549512a5a5f6f639e4be2",
       "ob.s.color.neutral.shadow.default": "2af127bd71cd49d4ccdbe735194fc1e847f19291",
-      "ob.s.color.interaction.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
-      "ob.s.color.interaction.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
-      "ob.s.color.interaction.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
-      "ob.s.color.interaction.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
-      "ob.s.color.interaction.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
-      "ob.s.color.interaction.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9"
+      "ob.s.color.interaction.fg.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
+      "ob.s.color.interaction.fg.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
+      "ob.s.color.interaction.fg.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
+      "ob.s.color.interaction.fg.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
+      "ob.s.color.interaction.fg.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9",
+      "ob.s.color.interaction.fg.enabled": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
+      "ob.s.color.static.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe",
+      "ob.s.color.static.brand": "cfd181ed8921954a25f1e05c46a0d10019cde9ee"
     },
     "group": "colormode"
   },
@@ -1208,8 +1208,8 @@
       "primitives/colors": "source",
       "semantics/colors/modes/dark": "enabled",
       "semantics/colors/static": "enabled",
-      "components/molecules/button-modes/dark-monochrome": "enabled",
-      "components/molecules/tags-modes/dark": "enabled"
+      "components/molecules/tags-modes/dark": "enabled",
+      "components/molecules/button-modes/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:20",
@@ -1372,8 +1372,6 @@
       "ob.c.tag.color.bg.focus": "c17c2d1791a348edb9772c040c157d97af9544a5",
       "ob.c.tag.color.bg.active": "f4548e71f73ccaac68c397f65cd8d82649adb60a",
       "ob.c.tag.color.bg.disabled": "84851514d546fbfefdad3cdc91ea0afd3e931dc8",
-      "ob.s.color.brand": "cfd181ed8921954a25f1e05c46a0d10019cde9ee",
-      "ob.s.color.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe",
       "ob.s.color.interaction.selected": "b69e67d75489109be3e5f78941484fe9d2b3eb09",
       "ob.s.color.neutral.bg.contrast-highest": "de1f3159edc2476baebaebd390c0e4e817f9636d",
       "ob.s.color.neutral.bg.contrast-high": "86a4191a658a4fa7320103343f20f25b93d8644e",
@@ -1399,12 +1397,14 @@
       "ob.s.color.neutral.border.focus-dark": "3d6dc230e487d516e18f650b1c3e3f6f42b87bd1",
       "ob.s.color.neutral.border.focus-light": "3a6875bdb82f69ea624549512a5a5f6f639e4be2",
       "ob.s.color.neutral.shadow.default": "2af127bd71cd49d4ccdbe735194fc1e847f19291",
-      "ob.s.color.interaction.link": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
-      "ob.s.color.interaction.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
-      "ob.s.color.interaction.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
-      "ob.s.color.interaction.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
-      "ob.s.color.interaction.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
-      "ob.s.color.interaction.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9"
+      "ob.s.color.interaction.fg.hover": "5052dfca5c403035d51ec835da95051fb81f5a45",
+      "ob.s.color.interaction.fg.focus": "e40890f5862d9b174740bd19d77aa2e35cc23e30",
+      "ob.s.color.interaction.fg.pressed": "60d9b92bdd68fe9207e9b6b81ad8beeba5a40eac",
+      "ob.s.color.interaction.fg.visited": "d114f0ca56ca994c950912ece178cc72288c731e",
+      "ob.s.color.interaction.fg.disabled": "1047a96946a870a927d2a284cf64a8dd4013fcb9",
+      "ob.s.color.interaction.fg.enabled": "3cc8c54708dda9209d519f817b6ea398c2b895dc",
+      "ob.s.color.static.no-color": "f60353a1ebe9e77d600457c76bf3b43629d288fe",
+      "ob.s.color.static.brand": "cfd181ed8921954a25f1e05c46a0d10019cde9ee"
     },
     "group": "colormode"
   },
@@ -1416,20 +1416,22 @@
       "primitives/colors": "source",
       "semantics/colors/modes/light": "source",
       "semantics/colors/modes/dark": "source",
-      "semantics/colors/modes/emphasis-default": "enabled"
+      "semantics/colors/modes/interaction-default": "enabled"
     },
-    "group": "cta-emphasis"
+    "group": "interaction-emphasis",
+    "$figmaVariableReferences": {}
   },
   {
     "id": "daee0049718efa9352d42c884e67716c9ae0401e",
-    "name": "low",
+    "name": "muted",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "primitives/colors": "source",
       "semantics/colors/modes/light": "source",
       "semantics/colors/modes/dark": "source",
-      "semantics/colors/modes/emphasis-low": "enabled"
+      "semantics/colors/modes/interaction-muted": "enabled"
     },
-    "group": "cta-emphasis"
+    "$figmaVariableReferences": {},
+    "group": "interaction-emphasis"
   }
 ]

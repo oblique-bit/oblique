@@ -85,7 +85,7 @@
         "none": {
           "value": [
             {
-              "color": "{ob.s.color.no-color}",
+              "color": "{ob.s.color.static.no-color}",
               "type": "dropShadow",
               "x": "0",
               "y": "0",

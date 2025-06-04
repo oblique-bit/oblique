@@ -28,19 +28,19 @@
             },
             "secondary": {
               "enabled": {
-                "value": "{ob.p.colors.cobalt.800}",
+                "value": "{ob.p.colors.steelblue.600}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.p.colors.cobalt.800}",
+                "value": "{ob.p.colors.steelblue.900}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.p.colors.cobalt.800}",
+                "value": "{ob.p.colors.steelblue.800}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.p.colors.cobalt.800}",
+                "value": "{ob.p.colors.steelblue.900}",
                 "type": "color"
               },
               "disabled": {
@@ -59,20 +59,30 @@
             },
             "tertiary": {
               "enabled": {
-                "value": "{ob.p.colors.cobalt.800}",
+                "value": "{ob.p.colors.steelblue.600}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.p.colors.cobalt.800}",
+                "value": "{ob.p.colors.steelblue.900}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.p.colors.cobalt.800}",
+                "value": "{ob.p.colors.steelblue.800}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.p.colors.cobalt.800}",
-                "type": "color"
+                "value": "{ob.p.colors.steelblue.900}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.8",
+                      "space": "srgb"
+                    }
+                  }
+                },
+                "description": "slightly reduced opacity for pressed"
               },
               "disabled": {
                 "value": "{ob.p.colors.cobalt.400}",
@@ -92,19 +102,19 @@
           "bg": {
             "primary": {
               "enabled": {
-                "value": "{ob.p.colors.cobalt.400}",
+                "value": "{ob.p.colors.steelblue.700}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.p.colors.cobalt.600}",
+                "value": "{ob.p.colors.steelblue.600}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.p.colors.cobalt.500}",
+                "value": "{ob.p.colors.steelblue.800}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.p.colors.cobalt.600}",
+                "value": "{ob.p.colors.steelblue.800}",
                 "type": "color"
               },
               "disabled": {
@@ -114,7 +124,7 @@
             },
             "secondary": {
               "enabled": {
-                "value": "{ob.s.color.no-color}",
+                "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               },
               "hover": {
@@ -122,7 +132,7 @@
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.p.colors.cobalt.50}",
+                "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               },
               "pressed": {
@@ -130,29 +140,38 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.no-color}",
+                "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               }
             },
             "tertiary": {
               "enabled": {
-                "value": "{ob.s.color.no-color}",
+                "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.no-color}",
+                "value": "{ob.p.colors.basic.white}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.no-color}",
+                "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.no-color}",
-                "type": "color"
+                "value": "{ob.p.colors.cobalt.400}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.1",
+                      "space": "srgb"
+                    }
+                  }
+                }
               },
               "disabled": {
-                "value": "{ob.s.color.no-color}",
+                "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               }
             }
@@ -182,19 +201,19 @@
             },
             "secondary": {
               "enabled": {
-                "value": "{ob.p.colors.cobalt.600}",
+                "value": "{ob.p.colors.steelblue.600}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.p.colors.cobalt.600}",
+                "value": "{ob.p.colors.steelblue.800}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.p.colors.cobalt.600}",
+                "value": "{ob.p.colors.steelblue.800}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.p.colors.cobalt.700}",
+                "value": "{ob.p.colors.steelblue.900}",
                 "type": "color"
               },
               "disabled": {
@@ -213,23 +232,23 @@
             },
             "tertiary": {
               "enabled": {
-                "value": "{ob.s.color.no-color}",
+                "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.no-color}",
+                "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.no-color}",
+                "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.no-color}",
+                "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.no-color}",
+                "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               }
             }
