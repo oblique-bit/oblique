@@ -10,7 +10,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.status.disabled.bg.contrast-low}",
+                "value": "{ob.s.color.status.disabled.bg.contrast-medium}",
                 "type": "color"
               }
             },
@@ -20,7 +20,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.status.disabled.bg.contrast-low}",
+                "value": "{ob.s.color.status.disabled.bg.contrast-medium}",
                 "type": "color"
               }
             },
@@ -30,7 +30,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.status.disabled.bg.contrast-low}",
+                "value": "{ob.s.color.status.disabled.bg.contrast-medium}",
                 "type": "color"
               }
             },
@@ -40,7 +40,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.status.disabled.bg.contrast-low}",
+                "value": "{ob.s.color.status.disabled.bg.contrast-medium}",
                 "type": "color"
               }
             }
@@ -52,7 +52,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.neutral.fg.contrast-medium-inverse}",
+                "value": "{ob.s.color.neutral.fg.contrast-low-inverse}",
                 "type": "color"
               }
             },
@@ -62,7 +62,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.neutral.fg.contrast-lowest-inverse}",
+                "value": "{ob.s.color.neutral.fg.contrast-low-inverse}",
                 "type": "color"
               }
             },
@@ -72,7 +72,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.neutral.fg.contrast-lowest-inverse}",
+                "value": "{ob.s.color.neutral.fg.contrast-low-inverse}",
                 "type": "color"
               }
             },
@@ -82,7 +82,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.neutral.fg.contrast-lowest-inverse}",
+                "value": "{ob.s.color.neutral.fg.contrast-low-inverse}",
                 "type": "color"
               }
             }
