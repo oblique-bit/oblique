@@ -94,24 +94,24 @@
               "sm": {
                 "value": "{ob.p.space.100}",
                 "type": "spacing",
-                "description": "makes the badge round"
+                "description": "Horizontal padding of small size badge. Makes the badge round. "
               },
               "lg": {
                 "value": "{ob.p.space.150}",
                 "type": "spacing",
-                "description": "makes the badge round"
+                "description": "Horizontal padding of large size badge. Makes the badge round. "
               }
             },
             "vertical": {
               "sm": {
                 "value": "{ob.p.space.100}",
                 "type": "spacing",
-                "description": "makes the badge round"
+                "description": "Vertical padding of small size badge. Makes the badge round. "
               },
               "lg": {
                 "value": "{ob.p.space.150}",
                 "type": "spacing",
-                "description": "makes the badge round"
+                "description": "Vertical padding of large size badge. Makes the badge round. "
               }
             }
           }
@@ -120,31 +120,37 @@
           "max-width": {
             "sm": {
               "value": "{ob.p.size.200}",
-              "type": "sizing"
+              "type": "sizing",
+              "description": "Max width of small badge. "
             },
             "lg": {
               "value": "{ob.p.size.600}",
-              "type": "sizing"
+              "type": "sizing",
+              "description": "Max width of large size badge. Maybe this is obsolete if we restrict the amount of characters the other way."
             }
           },
           "min-width": {
             "sm": {
               "value": "{ob.p.size.200}",
-              "type": "sizing"
+              "type": "sizing",
+              "description": "Minimal width of small size badge. Makes the badge round."
             },
             "lg": {
               "value": "{ob.p.size.250}",
-              "type": "sizing"
+              "type": "sizing",
+              "description": "Minimal width of large size badge. Makes the badge round."
             }
           },
           "height": {
             "sm": {
               "value": "{ob.p.size.200}",
-              "type": "sizing"
+              "type": "sizing",
+              "description": "Height of small size badge. Makes the badge round."
             },
             "lg": {
               "value": "{ob.p.size.250}",
-              "type": "sizing"
+              "type": "sizing",
+              "description": "Height of small size badge. Makes the badge round."
             }
           }
         },
