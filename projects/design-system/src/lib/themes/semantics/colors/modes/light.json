@@ -164,16 +164,6 @@
               }
             }
           },
-          "warning": {
-            "bg": {
-              "value": "{ob.p.colors.orange.100}",
-              "type": "color"
-            },
-            "fg": {
-              "value": "{ob.p.colors.orange.600}",
-              "type": "color"
-            }
-          },
           "resolved": {
             "bg": {
               "contrast-high": {
