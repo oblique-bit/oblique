@@ -33,7 +33,7 @@ export class AppComponent {
 	private getBannerData(cmsDataService: CmsDataService): Observable<string> {
 		return cmsDataService.getBanner().pipe(
 			map(data => data.data.content),
-			filter(content => !!content),
+			filter(content => Boolean(content)),
 			tap(() => (this.hasBanner = true))
 		);
 	}

@@ -37,6 +37,6 @@ export class TabsComponent implements AfterViewInit {
 
 	private getDefaultTab(): TabComponent {
 		const tabs = this.tabs();
-		return tabs.find(tab => !!tab.initiallyActive() && !tab.hidden()) ?? tabs.at(0);
+		return tabs.find(tab => Boolean(tab.initiallyActive()) && !tab.hidden()) ?? tabs.at(0);
 	}
 }

@@ -195,7 +195,7 @@ export class SideNavigationComponent implements OnInit {
 	}
 
 	private getVersionFromUrlParam(activatedRoute?: ActivatedRoute): number | undefined {
-		return +activatedRoute.snapshot.queryParamMap.get('version') || undefined;
+		return Number(activatedRoute.snapshot.queryParamMap.get('version')) || undefined;
 	}
 
 	private redirectOnVersionChange(): void {
@@ -204,7 +204,7 @@ export class SideNavigationComponent implements OnInit {
 				skip(3),
 				takeUntilDestroyed(),
 				map(version => this.slugService.getNewSlug(version)),
-				filter(slug => !!slug)
+				filter(slug => Boolean(slug))
 			)
 			.subscribe(slug => {
 				const extras: NavigationExtras = {queryParamsHandling: 'preserve', preserveFragment: true};

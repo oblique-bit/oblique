@@ -20,7 +20,6 @@ export default [
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
 			'accessor-pairs': 'off',
 			'func-names': 'off',
-			'no-implicit-coercion': 'off',
 			'require-unicode-regexp': 'off'
 		}
 	},
