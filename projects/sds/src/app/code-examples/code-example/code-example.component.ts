@@ -11,7 +11,7 @@ import {PreviewComponent} from '../code-examples.model';
 @Component({
 	selector: 'app-code-example',
 	templateUrl: './code-example.component.html',
-	styleUrls: ['./code-example.component.scss'],
+	styleUrl: './code-example.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, HighlightedCodeComponent, IdPipe]
 })

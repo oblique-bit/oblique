@@ -6,7 +6,7 @@ import {JsonPipe} from '@angular/common';
 @Component({
 	selector: 'app-selectable-example-in-a-form-preview',
 	templateUrl: './selectable-example-in-a-form-preview.component.html',
-	styleUrls: ['../selectable-example-preview.component.scss'],
+	styleUrl: '../selectable-example-preview.component.scss',
 	imports: [ObSelectableModule, ReactiveFormsModule, JsonPipe]
 })
 export class SelectableExampleInAFormPreviewComponent implements OnInit {

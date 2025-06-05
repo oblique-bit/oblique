@@ -13,7 +13,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 @Component({
 	selector: 'app-newsletter',
 	templateUrl: './newsletter.component.html',
-	styleUrls: ['./newsletter.component.scss'],
+	styleUrl: './newsletter.component.scss',
 	imports: [
 		CommonModule,
 		MatButtonModule,

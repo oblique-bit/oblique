@@ -7,7 +7,7 @@ import {ComponentPageMapper} from './component-page.mapper';
 @Component({
 	selector: 'app-component-page',
 	templateUrl: './component-page.component.html',
-	styleUrls: ['./component-page.component.scss'],
+	styleUrl: './component-page.component.scss',
 	imports: [CommonModule, NgComponentOutlet],
 	host: {class: 'content-page'}
 })

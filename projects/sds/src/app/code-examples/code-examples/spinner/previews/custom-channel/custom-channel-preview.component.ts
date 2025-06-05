@@ -6,7 +6,7 @@ import {ObButtonModule, ObSpinnerModule, ObSpinnerService} from '@oblique/obliqu
 @Component({
 	selector: 'app-custom-channel-preview',
 	templateUrl: './custom-channel-preview.component.html',
-	styleUrls: ['./custom-channel-preview.component.scss'],
+	styleUrl: './custom-channel-preview.component.scss',
 	imports: [ObSpinnerModule, MatButtonModule, ObButtonModule, MatSlideToggleModule]
 })
 export class CustomChannelPreviewComponent implements OnDestroy {

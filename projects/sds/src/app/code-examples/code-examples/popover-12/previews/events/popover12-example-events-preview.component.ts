@@ -7,7 +7,7 @@ import {CommonModule} from '@angular/common';
 	selector: 'app-popover12-example-default-preview',
 	templateUrl: './popover12-example-events-preview.component.html',
 	imports: [CommonModule, ObPopoverModule, ObButtonModule, MatButtonModule],
-	styleUrls: ['./popover12-example-events-preview.component.scss']
+	styleUrl: './popover12-example-events-preview.component.scss'
 })
 export class Popover12ExampleEventsPreviewComponent {
 	popoverVisible = false;

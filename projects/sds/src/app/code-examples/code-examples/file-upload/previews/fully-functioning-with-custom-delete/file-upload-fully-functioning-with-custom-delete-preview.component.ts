@@ -7,7 +7,7 @@ import {uploadInterceptor} from '../../../../../../main';
 @Component({
 	selector: 'app-file-upload-fully-functioning-with-custom-delete-preview',
 	templateUrl: './file-upload-fully-functioning-with-custom-delete-preview.component.html',
-	styleUrls: ['../../../../code-example-flex-layout.scss'],
+	styleUrl: '../../../../code-example-flex-layout.scss',
 	standalone: true,
 	imports: [CommonModule, ObFileUploadModule]
 })

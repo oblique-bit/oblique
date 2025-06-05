@@ -11,7 +11,7 @@ import {AppMaterialTableExampleEditableDialogComponent} from './material-table-e
 @Component({
 	selector: 'app-material-table-example-editable-preview',
 	templateUrl: './material-table-example-editable-preview.component.html',
-	styleUrls: ['./material-table-example-editable-preview.component.scss'],
+	styleUrl: './material-table-example-editable-preview.component.scss',
 	imports: [MatTableModule, MatButtonModule, ObButtonModule, MatIconModule, MatDialogModule, MatTooltip]
 })
 export class MaterialTableExampleEditablePreviewComponent implements OnInit {

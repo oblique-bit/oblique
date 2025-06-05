@@ -5,7 +5,7 @@ import {mockUrls} from '../../file-upload-simulate-interceptor';
 @Component({
 	selector: 'app-file-upload-map-function-and-ob-file-info-preview',
 	templateUrl: './file-upload-map-function-and-ob-file-info-preview.component.html',
-	styleUrls: ['../../../../code-example-flex-layout.scss'],
+	styleUrl: '../../../../code-example-flex-layout.scss',
 	imports: [ObFileUploadModule]
 })
 export class FileUploadMapFunctionAndObFileInfoPreviewComponent {

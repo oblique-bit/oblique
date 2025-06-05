@@ -12,7 +12,7 @@ import {ObButtonModule} from '@oblique/oblique';
 @Component({
 	selector: 'app-feedback',
 	templateUrl: './feedback-form.component.html',
-	styleUrls: ['./feedback-form.component.scss'],
+	styleUrl: './feedback-form.component.scss',
 	imports: [AsyncPipe, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, ObButtonModule, ReactiveFormsModule]
 })
 export class FeedbackFormComponent {

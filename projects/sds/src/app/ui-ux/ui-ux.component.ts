@@ -9,7 +9,7 @@ import {RelatedLinkPipe} from './related-link.pipe';
 @Component({
 	selector: 'app-ui-ux',
 	templateUrl: './ui-ux.component.html',
-	styleUrls: ['./ui-ux.component.scss'],
+	styleUrl: './ui-ux.component.scss',
 	standalone: true,
 	imports: [CommonModule, SafeHtmlPipe, RouterLink, RelatedLinkPipe, ObExternalLinkDirective]
 })

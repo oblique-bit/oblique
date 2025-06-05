@@ -17,7 +17,7 @@ import {VersionService} from '../../shared/version/version.service';
 @Component({
 	selector: 'app-version',
 	templateUrl: './version.component.html',
-	styleUrls: ['./version.component.scss'],
+	styleUrl: './version.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, MatLabel, MatTooltip]
 })

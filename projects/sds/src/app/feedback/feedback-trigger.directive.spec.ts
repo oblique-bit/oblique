@@ -44,7 +44,6 @@ describe(FeedbackTriggerDirective.name, () => {
 		});
 
 		test('fallbackDialog is FeedbackFormComponent', () => {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 			expect(service.fallbackDialog.name).toBe('FeedbackFormComponent');
 		});
 

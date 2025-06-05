@@ -22,7 +22,7 @@ import {UiUxComponent} from '../ui-ux/ui-ux.component';
 @Component({
 	selector: 'app-tabbed-page',
 	templateUrl: './tabbed-page.component.html',
-	styleUrls: ['./tabbed-page.component.scss'],
+	styleUrl: './tabbed-page.component.scss',
 	imports: [TabsComponent, TabComponent, UiUxComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe, MatChipsModule],
 	host: {class: 'content-page'},
 	hostDirectives: [CdkScrollable]

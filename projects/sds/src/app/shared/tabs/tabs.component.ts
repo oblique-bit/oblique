@@ -8,7 +8,7 @@ import {ReplaySubject, delay} from 'rxjs';
 @Component({
 	selector: 'app-tabs',
 	templateUrl: './tabs.component.html',
-	styleUrls: ['./tabs.component.scss'],
+	styleUrl: './tabs.component.scss',
 	imports: [CommonModule, IdPipe]
 })
 export class TabsComponent implements AfterViewInit {

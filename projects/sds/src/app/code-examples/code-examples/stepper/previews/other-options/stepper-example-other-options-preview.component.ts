@@ -11,7 +11,7 @@ import {TranslateModule} from '@ngx-translate/core';
 @Component({
 	selector: 'app-stepper-example-other-options-preview',
 	templateUrl: './stepper-example-other-options-preview.component.html',
-	styleUrls: ['./stepper-example-other-options-preview.component.scss'],
+	styleUrl: './stepper-example-other-options-preview.component.scss',
 	imports: [
 		MatFormFieldModule,
 		MatButtonModule,

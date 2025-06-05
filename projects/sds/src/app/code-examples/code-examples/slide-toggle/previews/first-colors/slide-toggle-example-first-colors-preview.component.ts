@@ -4,7 +4,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 @Component({
 	selector: 'app-slide-toggle-example-first-colors-preview',
 	templateUrl: './slide-toggle-example-first-colors-preview.component.html',
-	styleUrls: ['../../../../code-example-flex-layout.scss'],
+	styleUrl: '../../../../code-example-flex-layout.scss',
 	imports: [MatSlideToggleModule],
 	host: {class: 'layout-breakpoint-sm'}
 })

@@ -9,7 +9,7 @@ import {ObDatepickerModule} from '@oblique/oblique';
 @Component({
 	selector: 'app-datepicker-example-other-options-preview',
 	templateUrl: './datepicker-example-other-options-preview.component.html',
-	styleUrls: ['../../../../code-example-flex-layout.scss'],
+	styleUrl: '../../../../code-example-flex-layout.scss',
 	imports: [DatePipe, MatFormFieldModule, MatInputModule, ObDatepickerModule, NgIf, ReactiveFormsModule]
 })
 export class DatepickerExampleOtherOptionsPreviewComponent {

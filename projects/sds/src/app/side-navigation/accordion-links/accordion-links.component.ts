@@ -8,7 +8,7 @@ import {IdPipe} from '../../shared/id/id.pipe';
 @Component({
 	selector: 'app-accordion-links',
 	templateUrl: './accordion-links.component.html',
-	styleUrls: ['./accordion-links.component.scss'],
+	styleUrl: './accordion-links.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [CommonModule, RouterLink, IdPipe]
 })

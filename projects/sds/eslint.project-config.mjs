@@ -11,7 +11,6 @@ export default [
 		files: ['projects/sds/**/*.ts'],
 		rules: {
 			// rules that are not respected
-			'@angular-eslint/consistent-component-styles': 'off',
 			'@angular-eslint/no-duplicates-in-metadata-arrays': 'off',
 			'@angular-eslint/prefer-signals': 'off',
 			'@angular-eslint/use-component-view-encapsulation': 'off',

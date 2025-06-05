@@ -10,7 +10,7 @@ import {CommonModule} from '@angular/common';
 	selector: 'app-number-format-example-default-with-reactive-form-preview',
 	templateUrl: './number-format-example-default-with-reactive-form-preview.component.html',
 	imports: [CommonModule, FormsModule, MatFormFieldModule, MatInputModule, ObNumberFormatModule, ReactiveFormsModule],
-	styleUrls: ['../../../../code-example-flex-layout.scss']
+	styleUrl: '../../../../code-example-flex-layout.scss'
 })
 export class NumberFormatExampleDefaultWithReactiveFormPreviewComponent {
 	exampleReactive$: Observable<string>;

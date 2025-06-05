@@ -12,7 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
 	selector: 'app-focus-invalid-example-default-preview',
 	templateUrl: './focus-invalid-example-default-preview.component.html',
-	styleUrls: ['./focus-invalid-example-default-preview.component.scss'],
+	styleUrl: './focus-invalid-example-default-preview.component.scss',
 	imports: [
 		MatButtonModule,
 		MatDatepickerModule,

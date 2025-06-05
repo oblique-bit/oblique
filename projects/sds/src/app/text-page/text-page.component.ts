@@ -12,7 +12,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 @Component({
 	selector: 'app-text-page',
 	templateUrl: './text-page.component.html',
-	styleUrls: ['./text-page.component.scss'],
+	styleUrl: './text-page.component.scss',
 	imports: [CommonModule, IdPipe],
 	host: {class: 'content-page'}
 })

@@ -11,7 +11,7 @@ import {BannerComponent} from './banner/banner.component';
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss'],
+	styleUrl: './app.component.scss',
 	imports: [CommonModule, RouterOutlet, ObSpinnerModule, SideNavigationComponent, BannerComponent]
 })
 export class AppComponent {

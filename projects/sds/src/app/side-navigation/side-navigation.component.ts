@@ -26,7 +26,7 @@ import {FeedbackTriggerDirective} from '../feedback/feedback-trigger.directive';
 @Component({
 	selector: 'app-side-navigation',
 	templateUrl: './side-navigation.component.html',
-	styleUrls: ['./side-navigation.component.scss'],
+	styleUrl: './side-navigation.component.scss',
 	imports: [
 		ImageComponent,
 		VersionComponent,
