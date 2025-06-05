@@ -7,7 +7,7 @@
             "contrast-highest": {
               "value": "{ob.p.colors.basic.white}",
               "type": "color",
-              "description": "Default dark surface color"
+              "description": "Default background color"
             },
             "contrast-high": {
               "value": "{ob.p.colors.cobalt.50}",
@@ -551,14 +551,57 @@
                 "type": "color"
               }
             }
+          },
+          "disabled": {
+            "bg": {
+              "contrast-high": {
+                "value": "{ob.p.colors.cobalt.50}",
+                "type": "color"
+              },
+              "contrast-medium": {
+                "value": "{ob.p.colors.cobalt.100}",
+                "type": "color"
+              },
+              "contrast-low": {
+                "value": "{ob.p.colors.cobalt.200}",
+                "type": "color"
+              },
+              "contrast-low-inverse": {
+                "value": "{ob.p.colors.cobalt.600}",
+                "type": "color"
+              },
+              "contrast-medium-inverse": {
+                "value": "{ob.p.colors.cobalt.700}",
+                "type": "color"
+              },
+              "contrast-high-inverse": {
+                "value": "{ob.p.colors.cobalt.800}",
+                "type": "color"
+              }
+            },
+            "fg": {
+              "contrast-high": {
+                "value": "{ob.p.colors.cobalt.900}",
+                "type": "color"
+              },
+              "contrast-medium": {
+                "value": "{ob.p.colors.cobalt.800}",
+                "type": "color"
+              },
+              "contrast-low": {
+                "value": "{ob.p.colors.cobalt.700}",
+                "type": "color"
+              }
+            }
           }
         },
         "interaction": {
           "default": {
             "bg": {
               "contrast-high": {
-                "value": "{ob.p.colors.steelblue.50}",
-                "type": "color"
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
+                "type": "color",
+                "description": "Used as bg in 2nd and 3d buttons"
               },
               "contrast-medium": {
                 "value": "{ob.p.colors.steelblue.100}",

@@ -119,7 +119,7 @@
         "sizing": {
           "max-width": {
             "sm": {
-              "value": "{ob.p.size.450}",
+              "value": "{ob.p.size.200}",
               "type": "sizing"
             },
             "lg": {

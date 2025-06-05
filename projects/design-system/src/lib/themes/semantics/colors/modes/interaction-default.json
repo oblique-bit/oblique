@@ -81,7 +81,7 @@
               "description": "For text-links. No use in buttons."
             },
             "disabled": {
-              "value": "{ob.p.colors.cobalt.900}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
               "type": "color",
               "$extensions": {
                 "studio.tokens": {
@@ -129,15 +129,6 @@
             "disabled": {
               "value": "{ob.s.color.static.no-color}",
               "type": "color",
-              "$extensions": {
-                "studio.tokens": {
-                  "modify": {
-                    "type": "alpha",
-                    "value": "0.4",
-                    "space": "srgb"
-                  }
-                }
-              },
               "description": "No use. For consistancy only. Disabled text-links and disabled 2nd and 3rd buttons need no bg color."
             }
           },

@@ -31,7 +31,7 @@
               "description": "For text-links."
             },
             "disabled": {
-              "value": "{ob.p.colors.cobalt.900}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
               "type": "color",
               "$extensions": {
                 "studio.tokens": {
@@ -46,33 +46,33 @@
           },
           "fg-inverse": {
             "link": {
-              "value": "{ob.s.color.neutral.fg.contrast-highest}",
+              "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
               "type": "color",
               "description": "References directly the text color to ensure the color consistency"
             },
             "hover": {
-              "value": "{ob.s.color.neutral.fg.contrast-high}",
+              "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
               "type": "color"
             },
             "focus": {
-              "value": "{ob.s.color.neutral.fg.contrast-high}",
+              "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
               "type": "color"
             },
             "pressed": {
-              "value": "{ob.s.color.neutral.fg.contrast-high}",
+              "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
               "type": "color"
             },
             "selected": {
-              "value": "{ob.s.color.neutral.fg.contrast-high}",
+              "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
               "type": "color"
             },
             "visited": {
-              "value": "{ob.s.color.neutral.fg.contrast-highest}",
+              "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
               "type": "color",
               "description": "For text-links."
             },
             "disabled": {
-              "value": "{ob.p.colors.cobalt.900}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
               "type": "color",
               "$extensions": {
                 "studio.tokens": {
@@ -87,43 +87,33 @@
           },
           "bg": {
             "link": {
-              "value": "{ob.s.color.neutral.fg.contrast-highest}",
-              "type": "color",
-              "description": "References directly the text color to ensure the color consistency"
+              "value": "{ob.s.color.static.no-color}",
+              "type": "color"
             },
             "hover": {
-              "value": "{ob.s.color.neutral.fg.contrast-high}",
+              "value": "{ob.s.color.static.no-color}",
               "type": "color"
             },
             "focus": {
-              "value": "{ob.s.color.neutral.fg.contrast-high}",
+              "value": "{ob.s.color.static.no-color}",
               "type": "color"
             },
             "pressed": {
-              "value": "{ob.s.color.neutral.fg.contrast-high}",
+              "value": "{ob.s.color.static.no-color}",
               "type": "color"
             },
             "selected": {
-              "value": "{ob.s.color.neutral.fg.contrast-high}",
+              "value": "{ob.s.color.static.no-color}",
               "type": "color"
             },
             "visited": {
-              "value": "{ob.s.color.neutral.fg.contrast-highest}",
+              "value": "{ob.s.color.static.no-color}",
               "type": "color",
               "description": "For text-links."
             },
-            "disabled": {
-              "value": "{ob.p.colors.cobalt.900}",
-              "type": "color",
-              "$extensions": {
-                "studio.tokens": {
-                  "modify": {
-                    "type": "alpha",
-                    "value": "0.4",
-                    "space": "srgb"
-                  }
-                }
-              }
+            "disableda": {
+              "value": "{ob.s.color.static.no-color}",
+              "type": "color"
             }
           },
           "bg-inverse": {
