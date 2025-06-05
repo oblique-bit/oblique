@@ -2,13 +2,22 @@ import {Component, type OnInit, inject} from '@angular/core';
 import type {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup} from '@angular/forms';
+import {MatTimepickerModule} from '@angular/material/timepicker';
+import {FormsModule, ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup} from '@angular/forms';
 import {ObDatepickerModule, ObErrorMessagesModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-datepicker',
 	templateUrl: './datepicker.component.html',
-	imports: [MatFormFieldModule, MatInputModule, ObDatepickerModule, ReactiveFormsModule, ObErrorMessagesModule]
+	imports: [
+		MatFormFieldModule,
+		MatTimepickerModule,
+		FormsModule,
+		MatInputModule,
+		ObDatepickerModule,
+		ReactiveFormsModule,
+		ObErrorMessagesModule
+	]
 })
 export class DatepickerComponent implements OnInit {
 	untypedForm: UntypedFormGroup;
@@ -17,6 +26,8 @@ export class DatepickerComponent implements OnInit {
 
 	minToDate: Date | null;
 	maxToDate: Date;
+
+	comboValue: Date;
 
 	private readonly formBuilder = inject(UntypedFormBuilder);
 

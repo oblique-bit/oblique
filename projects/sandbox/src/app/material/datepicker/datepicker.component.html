@@ -48,3 +48,18 @@
 		<mat-error />
 	</mat-form-field>
 </form>
+<h3>With a Timepicker</h3>
+<mat-form-field>
+	<mat-label>Choose a date</mat-label>
+	<input matInput [matDatepicker]="comboDatepicker" [(ngModel)]="comboValue" />
+	<mat-hint>DD.MM.YYYY</mat-hint>
+	<mat-datepicker-toggle matIconSuffix [for]="comboDatepicker" />
+	<mat-datepicker #comboDatepicker />
+</mat-form-field>
+<mat-form-field>
+	<mat-label>Choose a time</mat-label>
+	<input matInput [matTimepicker]="comboTimepicker" [ngModelOptions]="{ updateOn: 'blur' }" [(ngModel)]="comboValue" />
+	<mat-timepicker #comboTimepicker />
+	<mat-timepicker-toggle matSuffix [for]="comboTimepicker" />
+</mat-form-field>
+<p>Value: {{ comboValue }}</p>

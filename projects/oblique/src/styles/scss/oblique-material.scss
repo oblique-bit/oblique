@@ -78,6 +78,7 @@ $theme-tabs: (
 @include mat.checkbox-theme(mat.m2-define-light-theme($theme));
 @include mat.chips-theme(mat.m2-define-light-theme($theme));
 @include mat.datepicker-theme(mat.m2-define-light-theme($theme-alt-500));
+@include mat.timepicker-theme(mat.m2-define-light-theme($theme-alt-500));
 @include mat.dialog-theme(mat.m2-define-light-theme($theme));
 @include mat.expansion-theme(mat.m2-define-light-theme($theme));
 @include mat.fab-theme(mat.m2-define-light-theme($theme));
