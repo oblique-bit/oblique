@@ -57,6 +57,18 @@ describe(ObPopoverDirective.name, () => {
 				expect(toggle.classList.contains('ob-popover')).toBe(true);
 			});
 
+			it('should should have aria-expanded attribute to false', () => {
+				expect(toggle.getAttribute('aria-expanded')).toBe('false');
+			});
+
+			it('should should have aria-haspopup attribute to menu', () => {
+				expect(toggle.getAttribute('aria-haspopup')).toBe('menu');
+			});
+
+			it('should should have aria-controls attribute to popover-5-content', () => {
+				expect(toggle.getAttribute('aria-controls')).toMatch(/-content$/);
+			});
+
 			it('should not be present in the DOM on start', () => {
 				popover = document.querySelector('.ob-popover-content');
 				expect(popover).toBeNull();
@@ -155,6 +167,10 @@ describe(ObPopoverDirective.name, () => {
 				it('should notify the visbility change', () => {
 					expect(directive.visibilityChange.emit).toHaveBeenCalledWith(true);
 				});
+
+				it('should set aria-expanded to true', () => {
+					expect(toggle.getAttribute('aria-expanded')).toBe('true');
+				});
 			});
 
 			describe('close', () => {
@@ -176,6 +192,10 @@ describe(ObPopoverDirective.name, () => {
 					jest.spyOn(directive.visibilityChange, 'emit');
 					directive.close();
 					expect(directive.visibilityChange.emit).toHaveBeenCalledWith(false);
+				});
+
+				it('should set aria-expanded to false', () => {
+					expect(toggle.getAttribute('aria-expanded')).toBe('false');
 				});
 			});
 
@@ -1069,6 +1089,7 @@ describe(ObPopoverDirective.name, () => {
 	function setupAndOpen(): void {
 		directive.open();
 		jest.runOnlyPendingTimers();
+		fixture.detectChanges();
 		popover = document.querySelector('.ob-popover-content');
 	}
 

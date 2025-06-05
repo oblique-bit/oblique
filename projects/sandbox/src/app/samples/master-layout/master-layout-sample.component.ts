@@ -209,12 +209,27 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.header.serviceNavigationConfiguration.infoLinks = value ? this.infoLinks : [];
 	}
 
+	get hasContactForm(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrl?.length > 0;
+	}
+	set hasContactForm(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact = this.buildContactInfo(
+			this.hasContactPhone,
+			this.hasContactEmail,
+			value
+		);
+	}
+
 	get hasContactEmail(): boolean {
 		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.email?.length > 0;
 	}
 
 	set hasContactEmail(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact = this.buildContactInfo(this.hasContactPhone, value);
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact = this.buildContactInfo(
+			this.hasContactPhone,
+			value,
+			this.hasContactForm
+		);
 	}
 
 	get hasContactPhone(): boolean {
@@ -222,7 +237,11 @@ export class MasterLayoutSampleComponent {
 	}
 
 	set hasContactPhone(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact = this.buildContactInfo(value, this.hasContactEmail);
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact = this.buildContactInfo(
+			value,
+			this.hasContactEmail,
+			this.hasContactForm
+		);
 	}
 
 	get hasProfileLinks(): boolean {
@@ -269,10 +288,11 @@ export class MasterLayoutSampleComponent {
 		this.dynamicNavigationService.removeLastLink();
 	}
 
-	private buildContactInfo(hasTel: boolean, hasEmail: boolean): ObIServiceNavigationContact {
+	private buildContactInfo(hasTel: boolean, hasEmail: boolean, hasContactForm: boolean): ObIServiceNavigationContact {
 		return {
 			tel: hasTel ? this.infoContact.tel : undefined,
-			email: hasEmail ? this.infoContact.email : undefined
+			email: hasEmail ? this.infoContact.email : undefined,
+			formUrl: hasContactForm ? this.infoContact.formUrl : undefined
 		};
 	}
 }

@@ -8,7 +8,10 @@
 			[returnUrl]="returnUrl"
 			[profileLinks]="profileLinks"
 			[infoLinks]="infoLinks"
+			[infoContactText]="infoContactText"
 			[infoContact]="infoContact"
+			[infoHelpText]="infoHelpText"
+			[infoDescription]="infoDescription"
 			[maxLastUsedApplications]="maxLastUsedApplications"
 			[maxFavoriteApplications]="maxFavoriteApplications"
 			[displayMessage]="displayMessage"
@@ -51,6 +54,9 @@
 			>
 			<mat-slide-toggle [disabled]="!displayInfo" [(ngModel)]="hasContactPhone" (change)="handleContactInfo()"
 				>toggle contact phone</mat-slide-toggle
+			>
+			<mat-slide-toggle [disabled]="!displayInfo" [(ngModel)]="hasContactFormUrl" (change)="handleContactInfo()"
+				>toggle contact form url</mat-slide-toggle
 			>
 		</fieldset>
 		<fieldset class="toggles">

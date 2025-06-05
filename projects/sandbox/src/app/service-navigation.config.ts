@@ -1,3 +1,5 @@
+import type {ObIServiceNavigationContact} from '@oblique/oblique';
+
 export const profileLinks = [
 	{
 		url: 'i18n.service-navigation.profile.link.unicorn.url',
@@ -32,7 +34,8 @@ export const infoLinks = [
 	}
 ];
 
-export const infoContact = {
+export const infoContact: ObIServiceNavigationContact = {
 	email: 'support@bit.admin.ch',
-	tel: '+41 58 461 61 11'
+	tel: '+41 58 461 61 11',
+	formUrl: 'https://example.com/'
 };

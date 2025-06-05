@@ -28,7 +28,10 @@ import {ObServiceNavigationTimeoutReturnUrlService} from './timeout/service-navi
 })
 export class ObServiceNavigationComponent implements OnInit {
 	@Input() profileLinks: ObIServiceNavigationLink[] = [];
+	@Input() infoDescription: string;
+	@Input() infoHelpText: string;
 	@Input() infoLinks: ObIServiceNavigationLink[] = [];
+	@Input() infoContactText: string;
 	@Input() infoContact: ObIServiceNavigationContact;
 	@Input() maxLastUsedApplications = 3;
 	@Input() maxFavoriteApplications = 3;
