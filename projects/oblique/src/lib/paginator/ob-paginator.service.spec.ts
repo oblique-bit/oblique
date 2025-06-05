@@ -2,6 +2,12 @@ import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateService, provideTranslateService} from '@ngx-translate/core';
 import {ObPaginatorService} from './ob-paginator.service';
+import {provideObliqueConfiguration} from '../utilities';
+import {provideHttpClient} from '@angular/common/http';
+import obliqueEn from '../../assets/i18n/oblique-en.json';
+import obliqueIt from '../../assets/i18n/oblique-it.json';
+import obliqueDe from '../../assets/i18n/oblique-de.json';
+import obliqueFr from '../../assets/i18n/oblique-fr.json';
 
 describe('ObPaginatorService', () => {
 	let paginatorService: ObPaginatorService;
@@ -10,63 +16,95 @@ describe('ObPaginatorService', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [NoopAnimationsModule],
-			providers: [ObPaginatorService, provideTranslateService()]
+			providers: [
+				ObPaginatorService,
+				provideHttpClient(),
+				provideTranslateService(),
+				provideObliqueConfiguration({
+					accessibilityStatement: {
+						applicationName: 'appName',
+						conformity: 'none',
+						applicationOperator: 'Operator',
+						contact: {emails: ['e@mail.com']}
+					}
+				})
+			]
 		}).compileComponents();
 		translateService = TestBed.inject(TranslateService);
 		paginatorService = TestBed.inject(ObPaginatorService);
-		translateService.setTranslation('en', {
-			'i18n.pagination.items-per-page': 'Items per page',
-			'i18n.pagination.next-page': 'Go to the next page',
-			'i18n.pagination.previous-page': 'Go to the previous page',
-			'i18n.pagination.of-label': 'of',
-			'i18n.pagination.page-label': 'Page',
-			'i18n.pagination.first-page': 'Jump to first page',
-			'i18n.pagination.last-page': 'Jump to last page'
-		});
-		translateService.setTranslation('de', {
-			'i18n.pagination.items-per-page': 'Elemente pro Seite',
-			'i18n.pagination.next-page': 'Auf die nächste Seite gehen',
-			'i18n.pagination.previous-page': 'Auf die vorige Seite gehen',
-			'i18n.pagination.of-label': 'von',
-			'i18n.pagination.page-label': 'Seite',
-			'i18n.pagination.first-page': 'Auf die erste Seite springen',
-			'i18n.pagination.last-page': 'Auf die letzte Seite springen'
-		});
-		translateService.setTranslation('fr', {
-			'i18n.pagination.items-per-page': 'Éléments par page',
-			'i18n.pagination.next-page': 'Aller à la page suivante',
-			'i18n.pagination.previous-page': 'Aller à la page précédente',
-			'i18n.pagination.of-label': 'sur',
-			'i18n.pagination.page-label': 'Page',
-			'i18n.pagination.first-page': 'Sauter à la première page',
-			'i18n.pagination.last-page': 'Sauter à la dernière page'
-		});
-		translateService.setTranslation('it', {
-			'i18n.pagination.items-per-page': 'Articoli per pagina',
-			'i18n.pagination.next-page': 'Andare alla pagina successiva',
-			'i18n.pagination.previous-page': 'Andare alla pagina precedente',
-			'i18n.pagination.of-label': 'di',
-			'i18n.pagination.page-label': 'Pagina',
-			'i18n.pagination.first-page': 'Salta alla prima pagina',
-			'i18n.pagination.last-page': "Salta all'ultima pagina"
-		});
-		translateService.use('en');
+		translateService.setTranslation('en', obliqueEn, true);
+		translateService.setTranslation('it', obliqueIt, true);
+		translateService.setTranslation('de', obliqueDe, true);
+		translateService.setTranslation('fr', obliqueFr, true);
+		jest.spyOn(translateService, 'use');
+		jest.spyOn(paginatorService.changes, 'next');
 	});
 
 	it('should be created', () => {
 		expect(paginatorService).toBeTruthy();
 	});
 
-	describe('getRangeLabel', () => {
-		it.each([
-			{name: 'page 2, pageSize 5, length 25', page: 1, pageSize: 5, length: 25, expected: `Page 2 of 5`},
-			{name: 'pageSize equal as length and page 0', page: 0, pageSize: 10, length: 10, expected: `Page 1 of 1`},
-			{name: 'length 0', page: 0, pageSize: 2, length: 0, expected: `Page 0 of 0`},
-			{name: 'pageSize 0', page: 0, pageSize: 0, length: 2, expected: `Page 0 of 2`},
-			{name: 'length lower than page * pageSize', page: 2, pageSize: 3, length: 1, expected: `Page 3 of 1`}
-		])(`should get $expected if $name`, ({page, pageSize, length, expected}) => {
-			const rangeLabel = paginatorService.getRangeLabel(page, pageSize, length);
-			expect(rangeLabel).toBe(expected);
+	it('should not have called translateService.use() yet', () => {
+		expect(translateService.use).not.toHaveBeenCalled();
+	});
+
+	describe.each([
+		{
+			language: 'en',
+			labels: [
+				{name: 'page 2, pageSize 5, length 25', page: 1, pageSize: 5, length: 25, expectedTranslation: `Page 2 of 5`},
+				{name: 'pageSize equal as length and page 0', page: 0, pageSize: 10, length: 10, expectedTranslation: `Page 1 of 1`},
+				{name: 'length 0', page: 0, pageSize: 2, length: 0, expectedTranslation: `Page 0 of 0`},
+				{name: 'pageSize 0', page: 0, pageSize: 0, length: 2, expectedTranslation: `Page 0 of 2`},
+				{name: 'length lower than page * pageSize', page: 2, pageSize: 3, length: 1, expectedTranslation: `Page 3 of 1`}
+			]
+		},
+		{
+			language: 'it',
+			labels: [
+				{name: 'page 2, pageSize 5, length 25', page: 1, pageSize: 5, length: 25, expectedTranslation: `Pagina 2 di 5`},
+				{name: 'pageSize equal as length and page 0', page: 0, pageSize: 10, length: 10, expectedTranslation: `Pagina 1 di 1`},
+				{name: 'length 0', page: 0, pageSize: 2, length: 0, expectedTranslation: `Pagina 0 di 0`},
+				{name: 'pageSize 0', page: 0, pageSize: 0, length: 2, expectedTranslation: `Pagina 0 di 2`},
+				{name: 'length lower than page * pageSize', page: 2, pageSize: 3, length: 1, expectedTranslation: `Pagina 3 di 1`}
+			]
+		},
+		{
+			language: 'de',
+			labels: [
+				{name: 'page 2, pageSize 5, length 25', page: 1, pageSize: 5, length: 25, expectedTranslation: `Seite 2 von 5`},
+				{name: 'pageSize equal as length and page 0', page: 0, pageSize: 10, length: 10, expectedTranslation: `Seite 1 von 1`},
+				{name: 'length 0', page: 0, pageSize: 2, length: 0, expectedTranslation: `Seite 0 von 0`},
+				{name: 'pageSize 0', page: 0, pageSize: 0, length: 2, expectedTranslation: `Seite 0 von 2`},
+				{name: 'length lower than page * pageSize', page: 2, pageSize: 3, length: 1, expectedTranslation: `Seite 3 von 1`}
+			]
+		},
+		{
+			language: 'fr',
+			labels: [
+				{name: 'page 2, pageSize 5, length 25', page: 1, pageSize: 5, length: 25, expectedTranslation: `Page 2 sur 5`},
+				{name: 'pageSize equal as length and page 0', page: 0, pageSize: 10, length: 10, expectedTranslation: `Page 1 sur 1`},
+				{name: 'length 0', page: 0, pageSize: 2, length: 0, expectedTranslation: `Page 0 sur 0`},
+				{name: 'pageSize 0', page: 0, pageSize: 0, length: 2, expectedTranslation: `Page 0 sur 2`},
+				{name: 'length lower than page * pageSize', page: 2, pageSize: 3, length: 1, expectedTranslation: `Page 3 sur 1`}
+			]
+		}
+	])(`should get $expected if $name`, ({language, labels}) => {
+		beforeEach(() => {
+			translateService.use(language);
+		});
+
+		it('should have called translateService.use() once with the langugage param', () => {
+			expect(translateService.use).toHaveBeenNthCalledWith(1, language);
+		});
+
+		it('should have called translateService.use() once with the langugage param', () => {
+			expect(translateService.use).toHaveBeenNthCalledWith(1, language);
+		});
+
+		it.each(labels)(`should translate $name to $language`, item => {
+			const rangeLabel = paginatorService.getRangeLabel(item.page, item.pageSize, item.length);
+			expect(rangeLabel).toBe(item.expectedTranslation);
 		});
 	});
 
@@ -87,7 +125,7 @@ describe('ObPaginatorService', () => {
 			language: 'it',
 			labels: [
 				{labelName: 'itemsPerPageLabel', expectedTranslation: 'Articoli per pagina'},
-				{labelName: 'lastPageLabel', expectedTranslation: "Salta all'ultima pagina"},
+				{labelName: 'lastPageLabel', expectedTranslation: 'Salta all’ultima pagina'},
 				{labelName: 'nextPageLabel', expectedTranslation: 'Andare alla pagina successiva'},
 				{labelName: 'previousPageLabel', expectedTranslation: 'Andare alla pagina precedente'},
 				{labelName: 'firstPageLabel', expectedTranslation: 'Salta alla prima pagina'},
@@ -122,6 +160,14 @@ describe('ObPaginatorService', () => {
 	])(`labels for $language language`, ({language, labels}) => {
 		beforeEach(() => {
 			translateService.use(language);
+		});
+
+		it('should have called translateService.use() once with the language param', () => {
+			expect(translateService.use).toHaveBeenNthCalledWith(1, language);
+		});
+
+		it('should have called changes once', () => {
+			expect(paginatorService.changes.next).toHaveBeenCalledTimes(1);
 		});
 
 		it.each(labels)(`should translate $labelName`, item => {

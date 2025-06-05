@@ -2,6 +2,12 @@ import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateService, provideTranslateService} from '@ngx-translate/core';
 import {ObDatepickerIntlService} from './ob-datepicker.service';
+import {provideObliqueConfiguration} from '../utilities';
+import {provideHttpClient} from '@angular/common/http';
+import obliqueEn from '../../assets/i18n/oblique-en.json';
+import obliqueIt from '../../assets/i18n/oblique-it.json';
+import obliqueDe from '../../assets/i18n/oblique-de.json';
+import obliqueFr from '../../assets/i18n/oblique-fr.json';
 
 describe('ObDatepickerIntlService', () => {
 	let datepickerService: ObDatepickerIntlService;
@@ -10,71 +16,36 @@ describe('ObDatepickerIntlService', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [NoopAnimationsModule],
-			providers: [ObDatepickerIntlService, provideTranslateService()]
+			providers: [
+				ObDatepickerIntlService,
+				provideHttpClient(),
+				provideTranslateService(),
+				provideObliqueConfiguration({
+					accessibilityStatement: {
+						applicationName: 'appName',
+						conformity: 'none',
+						applicationOperator: 'Operator',
+						contact: {emails: ['e@mail.com']}
+					}
+				})
+			]
 		}).compileComponents();
 		translateService = TestBed.inject(TranslateService);
 		datepickerService = TestBed.inject(ObDatepickerIntlService);
-		translateService.setTranslation('en', {
-			'i18n.datepicker.calender.label': 'Calendar',
-			'i18n.datepicker.open-calender.label': 'Open calendar',
-			'i18n.datepicker.close-calender.label': 'Close calendar',
-			'i18n.datepicker.prev-month.label': 'Previous month',
-			'i18n.datepicker.next-month.label': 'Next month',
-			'i18n.datepicker.prev-year.label': 'Previous year',
-			'i18n.datepicker.next-year.label': 'Next year',
-			'i18n.datepicker.prev-multi-year.label': 'Previous 24 years',
-			'i18n.datepicker.next-multi-year.label': 'Next 24 years',
-			'i18n.datepicker.switch-to-month-view.label': 'Choose date',
-			'i18n.datepicker.switch-to-multi-year-view.label': 'Choose month and year',
-			'i18n.datepicker.comparison-date.label': 'Comparison range'
-		});
-		translateService.setTranslation('de', {
-			'i18n.datepicker.calender.label': 'Kalender',
-			'i18n.datepicker.open-calender.label': 'Kalender öffnen',
-			'i18n.datepicker.close-calender.label': 'Kalender schliessen',
-			'i18n.datepicker.prev-month.label': 'Vorheriger Monat',
-			'i18n.datepicker.next-month.label': 'Nächster Monat',
-			'i18n.datepicker.prev-year.label': 'Vorheriges Jahr',
-			'i18n.datepicker.next-year.label': 'Nächstes Jahr',
-			'i18n.datepicker.prev-multi-year.label': 'Vorherige 24 Jahre',
-			'i18n.datepicker.next-multi-year.label': 'Nächste 24 Jahre',
-			'i18n.datepicker.switch-to-month-view.label': 'Wähle ein Datum',
-			'i18n.datepicker.switch-to-multi-year-view.label': 'Wähle ein Monat und Jahr',
-			'i18n.datepicker.comparison-date.label': 'Vergleichsspanne'
-		});
-		translateService.setTranslation('fr', {
-			'i18n.datepicker.calender.label': 'Calendrier',
-			'i18n.datepicker.open-calender.label': 'Ouvrir le calendrier',
-			'i18n.datepicker.close-calender.label': 'Fermer le calendrier',
-			'i18n.datepicker.prev-month.label': 'Mois précédent',
-			'i18n.datepicker.next-month.label': 'Mois prochain',
-			'i18n.datepicker.prev-year.label': 'Année précédente',
-			'i18n.datepicker.next-year.label': 'Année prochaine',
-			'i18n.datepicker.prev-multi-year.label': '24 années précédentes',
-			'i18n.datepicker.next-multi-year.label': 'Prochaines 24 années',
-			'i18n.datepicker.switch-to-month-view.label': 'Choisir la date',
-			'i18n.datepicker.switch-to-multi-year-view.label': "Choisir le mois et l'année",
-			'i18n.datepicker.comparison-date.label': 'Plage de comparaison'
-		});
-		translateService.setTranslation('it', {
-			'i18n.datepicker.calender.label': 'Calendario',
-			'i18n.datepicker.open-calender.label': 'Aprire il calendario',
-			'i18n.datepicker.close-calender.label': 'Chiudere il calendario',
-			'i18n.datepicker.prev-month.label': 'Mese precedente',
-			'i18n.datepicker.next-month.label': 'Mese successivo',
-			'i18n.datepicker.prev-year.label': 'Anno precedente',
-			'i18n.datepicker.next-year.label': 'Anno successivo',
-			'i18n.datepicker.prev-multi-year.label': '24 anni precedenti',
-			'i18n.datepicker.next-multi-year.label': '24 anni successivi',
-			'i18n.datepicker.switch-to-month-view.label': 'Scegliere la data',
-			'i18n.datepicker.switch-to-multi-year-view.label': "Scegliere il mese e l'anno'",
-			'i18n.datepicker.comparison-date.label': 'Intervallo di confronto'
-		});
-		translateService.use('en');
+		translateService.setTranslation('en', obliqueEn, true);
+		translateService.setTranslation('it', obliqueIt, true);
+		translateService.setTranslation('de', obliqueDe, true);
+		translateService.setTranslation('fr', obliqueFr, true);
+		jest.spyOn(translateService, 'use');
+		jest.spyOn(datepickerService.changes, 'next');
 	});
 
 	it('should be created', () => {
 		expect(datepickerService).toBeTruthy();
+	});
+
+	it('should not have called translateService.use() yet', () => {
+		expect(translateService.use).not.toHaveBeenCalled();
 	});
 
 	describe.each([
@@ -108,7 +79,7 @@ describe('ObDatepickerIntlService', () => {
 				{labelName: 'prevMultiYearLabel', expectedTranslation: '24 anni precedenti'},
 				{labelName: 'nextMultiYearLabel', expectedTranslation: '24 anni successivi'},
 				{labelName: 'switchToMonthViewLabel', expectedTranslation: 'Scegliere la data'},
-				{labelName: 'switchToMultiYearViewLabel', expectedTranslation: "Scegliere il mese e l'anno'"},
+				{labelName: 'switchToMultiYearViewLabel', expectedTranslation: "Scegliere il mese e l'anno"},
 				{labelName: 'comparisonDateLabel', expectedTranslation: 'Intervallo di confronto'}
 			]
 		},
@@ -149,6 +120,14 @@ describe('ObDatepickerIntlService', () => {
 	])(`labels for $language language`, ({language, labels}) => {
 		beforeEach(() => {
 			translateService.use(language);
+		});
+
+		it('should have called translateService.use() once with the langugage param', () => {
+			expect(translateService.use).toHaveBeenNthCalledWith(1, language);
+		});
+
+		it('should have called changes once', () => {
+			expect(datepickerService.changes.next).toHaveBeenCalledTimes(1);
 		});
 
 		it.each(labels)(`should translate $labelName`, item => {
