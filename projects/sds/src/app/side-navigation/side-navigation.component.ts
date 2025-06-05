@@ -124,7 +124,7 @@ export class SideNavigationComponent implements OnInit {
 			tap(accordions => this.setUpSlugToIdServiceDataSet(accordions)),
 			combineLatestWith(this.prepareSearchText(), this.version$, this.urlParamVersion$),
 			map(([accordions, searchText, versionId, urlParamVersion]) =>
-				this.getAccordionsMatchingSearchTextAndVersion(accordions, searchText, versionId, urlParamVersion)
+				this.getAccordionsMatchingSearchTextAndVersion(accordions, searchText, urlParamVersion ?? versionId)
 			),
 			startWith([])
 		);
@@ -174,16 +174,11 @@ export class SideNavigationComponent implements OnInit {
 			: accordions;
 	}
 
-	private getAccordionsMatchingSearchTextAndVersion(
-		accordions: Accordion[],
-		searchText?: string,
-		dropDownVersion?: number,
-		urlParamVersion?: number
-	): Accordion[] {
+	private getAccordionsMatchingSearchTextAndVersion(accordions: Accordion[], searchText?: string, version?: number): Accordion[] {
 		return this.getAccordionsMatchingSearchText(accordions, searchText)
 			.map(accordion => ({
 				...accordion,
-				links: this.getNewestLinksForVersion(accordion, urlParamVersion ?? dropDownVersion)
+				links: this.getNewestLinksForVersion(accordion, version)
 			}))
 			.filter(accordion => accordion.links.length > 0);
 	}

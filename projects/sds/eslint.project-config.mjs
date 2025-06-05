@@ -46,12 +46,5 @@ export default [
 			'max-statements': 'off',
 			'no-param-reassign': 'off'
 		}
-	},
-	{
-		files: ['projects/sds/src/app/side-navigation/side-navigation.component.ts'],
-		rules: {
-			// rules that are not respected
-			'@typescript-eslint/max-params': 'off'
-		}
 	}
 ];
