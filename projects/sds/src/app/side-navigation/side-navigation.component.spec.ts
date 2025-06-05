@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterTestingModule} from '@angular/router/testing';
 import {IdPipe} from '../shared/id/id.pipe';
-import {UnitTestHelpers} from '../../test-helpers/unit-test-helpers/unit-test-helpers';
+import {getDebugElementById} from '../../test-helpers/unit-test-helpers/unit-test-helpers';
 import {AccordionLinksComponent} from './accordion-links/accordion-links.component';
 import {ImageComponent} from './image/image.component';
 import {SideNavigationComponent} from './side-navigation.component';
@@ -49,9 +49,7 @@ describe(SideNavigationComponent.name, () => {
 		it.each<{id: SideNavigationIds}>([{id: 'accordion-links'}, {id: 'logo'}, {id: 'search-input'}, {id: 'version'}])(
 			'should display $id',
 			({id}) => {
-				expect(
-					UnitTestHelpers.getDebugElementById<SideNavigationComponent>(fixture, idPipe.transform(component.componentId, [id]))
-				).toBeTruthy();
+				expect(getDebugElementById<SideNavigationComponent>(fixture, idPipe.transform(component.componentId, [id]))).toBeTruthy();
 			}
 		);
 	});

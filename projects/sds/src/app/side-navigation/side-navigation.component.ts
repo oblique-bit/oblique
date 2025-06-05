@@ -11,7 +11,7 @@ import {BehaviorSubject, Observable, combineLatestWith, debounceTime, filter, fo
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {urlConst} from '../shared/url/url.const';
 import {Accordion, Link} from './accordion-links/accordion-links.model';
-import {AccordionComposer} from './utils/accordion-composer';
+import {composeAccordions} from './utils/accordion-composer';
 import {IdPipe} from '../shared/id/id.pipe';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
@@ -108,7 +108,7 @@ export class SideNavigationComponent implements OnInit {
 			tabbedPages: this.cmsDataService.getTabbedPagesShort(),
 			textPages: this.cmsDataService.getTextPagesShort()
 		}).pipe(
-			map(value => AccordionComposer.composeAccordions(value)),
+			map(value => composeAccordions(value)),
 			tap(accordions => this.setUpSlugToIdServiceDataSet(accordions)),
 			combineLatestWith(this.prepareSearchText(), this.version$, this.urlParamVersion$),
 			map(([accordions, searchText, versionId, urlParamVersion]) =>

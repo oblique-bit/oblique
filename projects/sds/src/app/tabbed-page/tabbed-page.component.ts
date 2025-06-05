@@ -3,7 +3,7 @@ import {ActivatedRoute, NavigationEnd, Router, UrlSerializer} from '@angular/rou
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
-import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
+import {getCodeExampleComponent} from '../code-examples/code-examples.mapper';
 import {Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {urlConst} from '../shared/url/url.const';
@@ -13,7 +13,7 @@ import {TabsComponent} from '../shared/tabs/tabs.component';
 import {CommonModule, Location} from '@angular/common';
 import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
 import {CmsData, TabbedPageComplete, UiUxData, UiUxEntry} from '../cms/models/tabbed-page.model';
-import {TabNameMapper} from './utils/tab-name-mapper';
+import {getTabNameFromUrlParam, getUrlParamForTabName} from './utils/tab-name-mapper';
 import {MatChipsModule} from '@angular/material/chips';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {VersionService} from '../shared/version/version.service';
@@ -59,7 +59,7 @@ export class TabbedPageComponent {
 	}
 
 	handleTabChanged(tabName: string): void {
-		const urlParamForTab: string = TabNameMapper.getUrlParamForTabName(tabName); //newly requested tab
+		const urlParamForTab: string = getUrlParamForTabName(tabName); //newly requested tab
 		const newUrl = this.serializer.serialize(
 			this.router.createUrlTree([urlParamForTab], {
 				relativeTo: this.activatedRoute.parent,
@@ -101,7 +101,7 @@ export class TabbedPageComponent {
 			title: cmsData.name,
 			api: baseUrl ? cmsData.api.replace('https://v17.material.angular.io/', baseUrl) : cmsData.api,
 			uiUx: this.buildUiUxData(cmsData),
-			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug),
+			source: getCodeExampleComponent(cmsData.slug),
 			tab: this.getSelectedTab(),
 			deprecation: cmsData.deprecation
 		};
@@ -113,7 +113,7 @@ export class TabbedPageComponent {
 		// to circumvent this problem, "undefined" is converted to "null" every other times so that the input has a new value each time the URL
 		// changes
 		return (
-			TabNameMapper.getTabNameFromUrlParam(this.activatedRoute.snapshot.paramMap.get(urlConst.urlParams.selectedTab)) ||
+			getTabNameFromUrlParam(this.activatedRoute.snapshot.paramMap.get(urlConst.urlParams.selectedTab)) ||
 			this.toggleBetweenNullAndUndefined()
 		);
 	}

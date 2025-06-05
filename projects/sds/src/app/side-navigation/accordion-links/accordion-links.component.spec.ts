@@ -3,7 +3,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {AccordionLinksComponent} from './accordion-links.component';
 import {Accordion} from './accordion-links.model';
-import {UnitTestHelpers} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
+import {getClassForDebugElementById, getDebugElementById} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
 
 describe(AccordionLinksComponent.name, () => {
 	let component: AccordionLinksComponent;
@@ -70,7 +70,7 @@ describe(AccordionLinksComponent.name, () => {
 
 	it.each<{index: number}>([{index: 0}, {index: 1}, {index: 2}])('should display accordion at: $index', ({index}) => {
 		expect(
-			UnitTestHelpers.getDebugElementById<AccordionLinksComponent>(
+			getDebugElementById<AccordionLinksComponent>(
 				fixture,
 				idPipe.transform(component.idPrefix(), [component.componentId, 'triangle', index])
 			)
@@ -79,7 +79,7 @@ describe(AccordionLinksComponent.name, () => {
 
 	it.each<{index: number}>([{index: 3}, {index: 4}, {index: 5}])('should not display accordion at: $index', ({index}) => {
 		expect(
-			UnitTestHelpers.getDebugElementById<AccordionLinksComponent>(
+			getDebugElementById<AccordionLinksComponent>(
 				fixture,
 				idPipe.transform(component.idPrefix(), [component.componentId, 'triangle', index])
 			)
@@ -88,7 +88,7 @@ describe(AccordionLinksComponent.name, () => {
 
 	it.each<{indexes: number[]}>([{indexes: [1, 0]}, {indexes: [2, 0]}, {indexes: [2, 1]}])('should display link at: $index', ({indexes}) => {
 		expect(
-			UnitTestHelpers.getDebugElementById<AccordionLinksComponent>(
+			getDebugElementById<AccordionLinksComponent>(
 				fixture,
 				idPipe.transform(component.idPrefix(), [component.componentId, 'link', ...indexes])
 			)
@@ -99,7 +99,7 @@ describe(AccordionLinksComponent.name, () => {
 		'should not display link at: $index',
 		({indexes}) => {
 			expect(
-				UnitTestHelpers.getDebugElementById<AccordionLinksComponent>(
+				getDebugElementById<AccordionLinksComponent>(
 					fixture,
 					idPipe.transform(component.idPrefix(), [component.componentId, 'link', ...indexes])
 				)
@@ -112,7 +112,7 @@ describe(AccordionLinksComponent.name, () => {
 		{indexes: [2, 1], accordionName: 'Introduction'}
 	])(`should have accordion at: $index ($accordionName) expanded`, ({indexes}) => {
 		expect(
-			UnitTestHelpers.getClassForDebugElementById<AccordionLinksComponent>(
+			getClassForDebugElementById<AccordionLinksComponent>(
 				fixture,
 				idPipe.transform(component.idPrefix(), [component.componentId, 'link', ...indexes]),
 				'hidden'
@@ -126,7 +126,7 @@ describe(AccordionLinksComponent.name, () => {
 		{index: 2, direction: 'right'}
 	])(`should not have triangle pointing $direction for accordion at: $index`, ({index, direction}) => {
 		expect(
-			UnitTestHelpers.getClassForDebugElementById<AccordionLinksComponent>(
+			getClassForDebugElementById<AccordionLinksComponent>(
 				fixture,
 				idPipe.transform(component.idPrefix(), [component.componentId, 'triangle', index]),
 				`triangle-pointing-${direction}`
@@ -140,7 +140,7 @@ describe(AccordionLinksComponent.name, () => {
 		{index: 2, direction: 'down'}
 	])(`should have triangle pointing $direction for accordion at: $index`, ({index, direction}) => {
 		expect(
-			UnitTestHelpers.getClassForDebugElementById<AccordionLinksComponent>(
+			getClassForDebugElementById<AccordionLinksComponent>(
 				fixture,
 				idPipe.transform(component.idPrefix(), [component.componentId, 'triangle', index]),
 				`triangle-pointing-${direction}`

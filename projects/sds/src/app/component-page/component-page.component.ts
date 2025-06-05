@@ -2,7 +2,7 @@ import {CommonModule, NgComponentOutlet} from '@angular/common';
 import {Component, OnInit, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {ComponentPage} from './component-page';
-import {ComponentPageMapper} from './component-page.mapper';
+import {getComponentPageComponent} from './component-page.mapper';
 
 @Component({
 	selector: 'app-component-page',
@@ -17,6 +17,6 @@ export class ComponentPageComponent implements OnInit {
 
 	ngOnInit(): void {
 		const componentName = this.router.url.split('?')[0].split('/').pop() ?? '';
-		this.componentToLoad = ComponentPageMapper.getComponentPageComponent(componentName);
+		this.componentToLoad = getComponentPageComponent(componentName);
 	}
 }

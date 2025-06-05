@@ -6,7 +6,7 @@ import {SourceCode} from './source-code.model';
 import {TabComponent} from '../../shared/tabs/tab/tab.component';
 import {TabsComponent} from '../../shared/tabs/tabs.component';
 import {IdPipe} from '../../shared/id/id.pipe';
-import {UnitTestHelpers} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
+import {getDebugElementById} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
 import {HighlightedCodeComponent} from './highlighted-code/highlighted-code.component';
 import {CodeExampleDirective} from '../code-example.directive';
 import {PreviewComponent} from '../code-examples.model';
@@ -65,7 +65,7 @@ describe(CodeExampleComponent.name, () => {
 	it.each<{id: string}>([{id: 'tabs'}])('should display $id when only idPrefix input is truthy', async ({id}) => {
 		await setupComponent({idPrefix: 'test'});
 
-		expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeTruthy();
+		expect(getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeTruthy();
 	});
 
 	it.each<{id: string}>([{id: 'preview-tab'}, {id: 'html-tab'}, {id: 'scss-tab'}, {id: 'ts-tab'}])(
@@ -73,7 +73,7 @@ describe(CodeExampleComponent.name, () => {
 		async ({id}) => {
 			await setupComponent({idPrefix: 'test'});
 
-			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeFalsy();
+			expect(getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeFalsy();
 		}
 	);
 
@@ -85,7 +85,7 @@ describe(CodeExampleComponent.name, () => {
 				idPrefix: 'test'
 			});
 
-			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeTruthy();
+			expect(getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeTruthy();
 		}
 	);
 
@@ -94,7 +94,7 @@ describe(CodeExampleComponent.name, () => {
 		async ({id}) => {
 			await setupComponent({codeSnippets: [new SourceCode('soucecode', 'title')], idPrefix: 'test'});
 
-			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeFalsy();
+			expect(getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeFalsy();
 		}
 	);
 
@@ -106,7 +106,7 @@ describe(CodeExampleComponent.name, () => {
 				idPrefix: 'test',
 				preview: MockPreviewComponent
 			});
-			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeTruthy();
+			expect(getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeTruthy();
 		}
 	);
 
