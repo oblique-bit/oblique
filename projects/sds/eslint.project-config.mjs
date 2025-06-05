@@ -12,7 +12,7 @@ export default [
 		rules: {
 			// rules that are not respected
 			'@angular-eslint/use-component-view-encapsulation': 'off',
-			'@angular-eslint/use-injectable-provided-in': 'off',
+			'@angular-eslint/use-injectable-provided-in': ['error', {ignoreClassNamePattern: 'CollectorService'}],
 			'@typescript-eslint/consistent-type-imports': 'off',
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-explicit-any': 'off',
