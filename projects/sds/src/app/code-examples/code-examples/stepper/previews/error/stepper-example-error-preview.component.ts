@@ -1,5 +1,5 @@
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {Component, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -29,16 +29,16 @@ import {TranslateModule} from '@ngx-translate/core';
 		}
 	]
 })
-export class StepperExampleErrorPreviewComponent implements OnInit {
+export class StepperExampleErrorPreviewComponent {
 	firstFormGroup: UntypedFormGroup;
 	secondFormGroup: UntypedFormGroup;
-	constructor(private readonly formBuilder: UntypedFormBuilder) {}
 
-	ngOnInit(): void {
-		this.firstFormGroup = this.formBuilder.group({
+	constructor() {
+		const formBuilder = inject(UntypedFormBuilder);
+		this.firstFormGroup = formBuilder.group({
 			firstCtrl: ['', Validators.required]
 		});
-		this.secondFormGroup = this.formBuilder.group({
+		this.secondFormGroup = formBuilder.group({
 			secondCtrl: ['', Validators.required]
 		});
 	}

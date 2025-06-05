@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {AfterViewInit, Component, ElementRef, OnDestroy, Signal, viewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, Signal, inject, viewChild} from '@angular/core';
 import {ObGlobalEventsService, obOutsideFilter} from '@oblique/oblique';
 import {BehaviorSubject, Observable, Subject, map, takeUntil, withLatestFrom} from 'rxjs';
 
@@ -13,12 +13,12 @@ import {BehaviorSubject, Observable, Subject, map, takeUntil, withLatestFrom} fr
 export class GlobalEventsExampleObOutsideFilterPreviewComponent implements AfterViewInit, OnDestroy {
 	clicksOutsideObOutsideFilterItems$: Observable<number>;
 
+	private readonly events = inject(ObGlobalEventsService);
 	private readonly obOutsideFilterItem: Signal<ElementRef<HTMLElement>> = viewChild('obOutsideFilterItem', {read: ElementRef});
-
 	private readonly clicksOutsideObOutsideFilterItems: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 	private readonly unsubscribe = new Subject<void>();
 
-	constructor(private readonly events: ObGlobalEventsService) {
+	constructor() {
 		this.clicksOutsideObOutsideFilterItems$ = this.clicksOutsideObOutsideFilterItems.asObservable();
 	}
 

@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
@@ -13,16 +13,13 @@ import {PeriodicElement} from './mock-backend.service';
 	templateUrl: './material-table-editable-dialog.component.html',
 	imports: [MatDialogModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatButtonModule, MatIconModule, ObButtonModule]
 })
-export class AppMaterialTableExampleEditableDialogComponent implements OnInit {
+export class AppMaterialTableExampleEditableDialogComponent {
 	editForm: UntypedFormGroup;
+	private readonly formBuilder = inject(UntypedFormBuilder);
+	private readonly dialogRef = inject<MatDialogRef<AppMaterialTableExampleEditableDialogComponent>>(MatDialogRef);
+	private readonly data = inject<PeriodicElement>(MAT_DIALOG_DATA);
 
-	constructor(
-		private readonly formBuilder: UntypedFormBuilder,
-		private readonly dialogRef: MatDialogRef<AppMaterialTableExampleEditableDialogComponent>,
-		@Inject(MAT_DIALOG_DATA) private readonly data: PeriodicElement
-	) {}
-
-	ngOnInit(): void {
+	constructor() {
 		this.clear();
 	}
 

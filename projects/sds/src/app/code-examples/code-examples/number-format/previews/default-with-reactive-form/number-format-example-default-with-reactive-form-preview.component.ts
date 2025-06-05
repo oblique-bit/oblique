@@ -2,7 +2,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms'; // UntypedFormBuilder, UntypedFormGroup,
 import {ObNumberFormatModule} from '@oblique/oblique';
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {Observable} from 'rxjs';
 import {CommonModule} from '@angular/common';
 
@@ -16,11 +16,11 @@ export class NumberFormatExampleDefaultWithReactiveFormPreviewComponent {
 	exampleReactive$: Observable<string>;
 	formData: FormGroup;
 
-	constructor(formBuilder: FormBuilder) {
+	constructor() {
+		const formBuilder = inject(FormBuilder);
 		this.formData = formBuilder.group({
 			exampleReactive: 5.236548
 		});
-
 		this.showValue();
 	}
 

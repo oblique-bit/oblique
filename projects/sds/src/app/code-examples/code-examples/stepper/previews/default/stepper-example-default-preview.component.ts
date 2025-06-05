@@ -1,6 +1,6 @@
 import {ObButtonModule} from '@oblique/oblique';
 import {MatInputModule} from '@angular/material/input';
-import {Component, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {MatStepperModule} from '@angular/material/stepper';
 import {ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -23,16 +23,16 @@ import {TranslateModule} from '@ngx-translate/core';
 		TranslateModule
 	]
 })
-export class StepperExampleDefaultPreviewComponent implements OnInit {
+export class StepperExampleDefaultPreviewComponent {
 	firstFormGroup: UntypedFormGroup;
 	secondFormGroup: UntypedFormGroup;
-	constructor(private readonly formBuilder: UntypedFormBuilder) {}
 
-	ngOnInit(): void {
-		this.firstFormGroup = this.formBuilder.group({
+	constructor() {
+		const formBuilder = inject(UntypedFormBuilder);
+		this.firstFormGroup = formBuilder.group({
 			firstCtrl: ['', Validators.required]
 		});
-		this.secondFormGroup = this.formBuilder.group({
+		this.secondFormGroup = formBuilder.group({
 			secondCtrl: ['', Validators.required]
 		});
 	}

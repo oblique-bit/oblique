@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {Observable} from 'rxjs';
 import {CategoryCms} from './models/category.model';
 import {TabbedPageCompleteCms} from './models/tabbed-page.model';
@@ -13,8 +13,7 @@ import {BannerCms} from './models/banner.model';
 })
 export class CmsDataService {
 	readonly baseUrl = 'https://oblique.directus.app/';
-
-	constructor(private readonly httpClient: HttpClient) {}
+	private readonly httpClient = inject(HttpClient);
 
 	getVersions(): Observable<VersionCms> {
 		return this.httpClient.get<VersionCms>(`${this.baseUrl}items/Version`);
