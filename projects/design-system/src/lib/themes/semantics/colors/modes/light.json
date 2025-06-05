@@ -103,15 +103,6 @@
             "strong": {
               "value": "{ob.p.colors.cobalt.300}",
               "type": "color"
-            },
-            "focus-dark": {
-              "value": "{ob.p.colors.purple.500}",
-              "type": "color"
-            },
-            "focus-light": {
-              "value": "{ob.p.colors.purple.400}",
-              "type": "color",
-              "description": "When surrounding and touching dark elements such as primary button."
             }
           },
           "shadow": {
