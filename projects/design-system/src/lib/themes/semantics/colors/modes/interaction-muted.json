@@ -28,7 +28,7 @@
             "visited": {
               "value": "{ob.s.color.neutral.fg.contrast-highest}",
               "type": "color",
-              "description": "According to the use cases (navigation buttons) here we do not differentiate from the enabled on purpose."
+              "description": "For text-links."
             },
             "disabled": {
               "value": "{ob.p.colors.cobalt.900}",
@@ -69,7 +69,7 @@
             "visited": {
               "value": "{ob.s.color.neutral.fg.contrast-highest}",
               "type": "color",
-              "description": "According to the use cases (navigation buttons) here we do not differentiate from the enabled on purpose."
+              "description": "For text-links."
             },
             "disabled": {
               "value": "{ob.p.colors.cobalt.900}",
@@ -110,7 +110,7 @@
             "visited": {
               "value": "{ob.s.color.neutral.fg.contrast-highest}",
               "type": "color",
-              "description": "According to the use cases (navigation buttons) here we do not differentiate from the enabled on purpose."
+              "description": "For text-links."
             },
             "disabled": {
               "value": "{ob.p.colors.cobalt.900}",
@@ -151,7 +151,7 @@
             "visited": {
               "value": "{ob.s.color.neutral.fg.contrast-highest}",
               "type": "color",
-              "description": "According to the use cases (navigation buttons) here we do not differentiate from the enabled on purpose."
+              "description": "For text-links."
             },
             "disabled": {
               "value": "{ob.p.colors.cobalt.900}",

@@ -1414,12 +1414,10 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "primitives/colors": "source",
-      "semantics/colors/modes/light": "source",
-      "semantics/colors/modes/dark": "source",
       "semantics/colors/modes/interaction-default": "enabled"
     },
-    "group": "interaction-emphasis",
-    "$figmaVariableReferences": {}
+    "$figmaVariableReferences": {},
+    "group": "interaction-emphasis"
   },
   {
     "id": "daee0049718efa9352d42c884e67716c9ae0401e",
@@ -1427,8 +1425,6 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "primitives/colors": "source",
-      "semantics/colors/modes/light": "source",
-      "semantics/colors/modes/dark": "source",
       "semantics/colors/modes/interaction-muted": "enabled"
     },
     "$figmaVariableReferences": {},

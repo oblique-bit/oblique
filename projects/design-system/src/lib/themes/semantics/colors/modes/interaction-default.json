@@ -5,29 +5,30 @@
         "interaction": {
           "fg": {
             "enabled": {
-              "value": "{ob.p.colors.steelblue.600}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-low}",
               "type": "color"
             },
             "hover": {
-              "value": "{ob.p.colors.steelblue.500}",
-              "type": "color",
-              "description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
+              "value": "{ob.s.color.interaction.default.fg.contrast-medium}",
+              "type": "color"
             },
             "focus": {
-              "value": "{ob.p.colors.steelblue.500}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-medium}",
               "type": "color"
             },
             "pressed": {
-              "value": "{ob.p.colors.steelblue.800}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-high}",
               "type": "color"
             },
             "selected": {
-              "value": "{ob.p.colors.steelblue.800}",
-              "type": "color"
+              "value": "{ob.s.color.interaction.default.fg.contrast-low}",
+              "type": "color",
+              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons."
             },
             "visited": {
               "value": "{ob.p.colors.indigo.700}",
-              "type": "color"
+              "type": "color",
+              "description": "For text-links."
             },
             "disabled": {
               "value": "{ob.p.colors.cobalt.900}",
@@ -45,29 +46,30 @@
           },
           "fg-inverse": {
             "enabled": {
-              "value": "{ob.p.colors.steelblue.600}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
               "type": "color"
             },
             "hover": {
-              "value": "{ob.p.colors.steelblue.500}",
-              "type": "color",
-              "description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
+              "value": "{ob.s.color.interaction.default.fg.contrast-medium-inverse}",
+              "type": "color"
             },
             "focus": {
-              "value": "{ob.p.colors.steelblue.500}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
               "type": "color"
             },
             "pressed": {
-              "value": "{ob.p.colors.steelblue.800}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-medium-inverse}",
               "type": "color"
             },
             "selected": {
               "value": "{ob.p.colors.steelblue.800}",
-              "type": "color"
+              "type": "color",
+              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons."
             },
             "visited": {
               "value": "{ob.p.colors.indigo.700}",
-              "type": "color"
+              "type": "color",
+              "description": "For text-links."
             },
             "disabled": {
               "value": "{ob.p.colors.cobalt.900}",
@@ -90,8 +92,7 @@
             },
             "hover": {
               "value": "{ob.p.colors.steelblue.500}",
-              "type": "color",
-              "description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
+              "type": "color"
             },
             "focus": {
               "value": "{ob.p.colors.steelblue.500}",
@@ -103,11 +104,13 @@
             },
             "selected": {
               "value": "{ob.p.colors.steelblue.800}",
-              "type": "color"
+              "type": "color",
+              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons."
             },
             "visited": {
               "value": "{ob.p.colors.indigo.700}",
-              "type": "color"
+              "type": "color",
+              "description": "For text-links."
             },
             "disabled": {
               "value": "{ob.p.colors.cobalt.900}",
@@ -130,8 +133,7 @@
             },
             "hover": {
               "value": "{ob.p.colors.steelblue.500}",
-              "type": "color",
-              "description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
+              "type": "color"
             },
             "focus": {
               "value": "{ob.p.colors.steelblue.500}",
@@ -143,11 +145,13 @@
             },
             "selected": {
               "value": "{ob.p.colors.steelblue.800}",
-              "type": "color"
+              "type": "color",
+              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons."
             },
             "visited": {
               "value": "{ob.p.colors.indigo.700}",
-              "type": "color"
+              "type": "color",
+              "description": "For text-links."
             },
             "disabled": {
               "value": "{ob.p.colors.cobalt.900}",
