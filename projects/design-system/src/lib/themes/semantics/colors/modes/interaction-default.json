@@ -23,12 +23,12 @@
             "selected": {
               "value": "{ob.s.color.interaction.default.fg.contrast-low}",
               "type": "color",
-              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons."
+              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
             },
             "visited": {
               "value": "{ob.p.colors.indigo.700}",
               "type": "color",
-              "description": "For text-links."
+              "description": "For text-links. No use in buttons."
             },
             "disabled": {
               "value": "{ob.p.colors.cobalt.900}",
@@ -47,29 +47,33 @@
           "fg-inverse": {
             "enabled": {
               "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-              "type": "color"
+              "type": "color",
+              "description": "Used in filled buttons."
             },
             "hover": {
               "value": "{ob.s.color.interaction.default.fg.contrast-medium-inverse}",
-              "type": "color"
+              "type": "color",
+              "description": "Used in filled buttons."
             },
             "focus": {
               "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-              "type": "color"
+              "type": "color",
+              "description": "Used in filled buttons."
             },
             "pressed": {
               "value": "{ob.s.color.interaction.default.fg.contrast-medium-inverse}",
-              "type": "color"
+              "type": "color",
+              "description": "Used in filled buttons."
             },
             "selected": {
-              "value": "{ob.p.colors.steelblue.800}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
               "type": "color",
-              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons."
+              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
             },
             "visited": {
               "value": "{ob.p.colors.indigo.700}",
               "type": "color",
-              "description": "For text-links."
+              "description": "For text-links. No use in buttons."
             },
             "disabled": {
               "value": "{ob.p.colors.cobalt.900}",
@@ -82,7 +86,8 @@
                     "space": "srgb"
                   }
                 }
-              }
+              },
+              "description": "Used in filled buttons."
             }
           },
           "bg": {
@@ -105,12 +110,12 @@
             "selected": {
               "value": "{ob.p.colors.steelblue.800}",
               "type": "color",
-              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons."
+              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
             },
             "visited": {
-              "value": "{ob.p.colors.indigo.700}",
+              "value": "{ob.s.color.static.no-color}",
               "type": "color",
-              "description": "For text-links."
+              "description": "For text-links. No use in buttons. "
             },
             "disabled": {
               "value": "{ob.p.colors.cobalt.900}",
@@ -129,29 +134,33 @@
           "bg-inverse": {
             "enabled": {
               "value": "{ob.p.colors.steelblue.600}",
-              "type": "color"
+              "type": "color",
+              "description": "Used in filled buttons."
             },
             "hover": {
               "value": "{ob.p.colors.steelblue.500}",
-              "type": "color"
+              "type": "color",
+              "description": "Used in filled buttons."
             },
             "focus": {
               "value": "{ob.p.colors.steelblue.500}",
-              "type": "color"
+              "type": "color",
+              "description": "Used in filled buttons."
             },
             "pressed": {
               "value": "{ob.p.colors.steelblue.800}",
-              "type": "color"
+              "type": "color",
+              "description": "Used in filled buttons."
             },
             "selected": {
               "value": "{ob.p.colors.steelblue.800}",
               "type": "color",
-              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons."
+              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
             },
             "visited": {
-              "value": "{ob.p.colors.indigo.700}",
+              "value": "{ob.s.color.static.no-color}",
               "type": "color",
-              "description": "For text-links."
+              "description": "For text-links. No use in buttons."
             },
             "disabled": {
               "value": "{ob.p.colors.cobalt.900}",
@@ -164,7 +173,8 @@
                     "space": "srgb"
                   }
                 }
-              }
+              },
+              "description": "Used in filled buttons."
             }
           }
         }

@@ -699,6 +699,34 @@
               "value": "{ob.p.colors.purple.400}",
               "type": "color"
             }
+          },
+          "visited": {
+            "fg": {
+              "contrast-high": {
+                "value": "{ob.p.colors.indigo.50}",
+                "type": "color"
+              },
+              "contrast-medium": {
+                "value": "{ob.p.colors.indigo.100}",
+                "type": "color"
+              },
+              "contrast-low": {
+                "value": "{ob.p.colors.indigo.200}",
+                "type": "color"
+              },
+              "contrast-low-inverse": {
+                "value": "{ob.p.colors.indigo.700}",
+                "type": "color"
+              },
+              "contrast-medium-inverse": {
+                "value": "{ob.p.colors.indigo.800}",
+                "type": "color"
+              },
+              "contrast-high-inverse": {
+                "value": "{ob.p.colors.indigo.900}",
+                "type": "color"
+              }
+            }
           }
         }
       }
