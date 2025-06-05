@@ -1,14 +1,13 @@
 import {Component} from '@angular/core';
 import {ObEUploadEventType, ObFileUploadModule, type ObIUploadEvent} from '@oblique/oblique';
 import {mockUrls} from '../../file-upload-simulate-interceptor';
-import {CommonModule} from '@angular/common';
 import {uploadInterceptor} from '../../../../../../main';
 
 @Component({
 	selector: 'app-file-upload-fully-functioning-preview',
 	templateUrl: './file-upload-fully-functioning-preview.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
-	imports: [CommonModule, ObFileUploadModule]
+	imports: [ObFileUploadModule]
 })
 export class FileUploadFullyFunctioningPreviewComponent {
 	mockUrls = mockUrls;

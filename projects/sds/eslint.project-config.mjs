@@ -30,14 +30,6 @@ export default [
 		}
 	},
 	{
-		files: ['projects/sds/**/*.html'],
-		rules: {
-			// rules that are not respected
-			'@angular-eslint/template/prefer-control-flow': 'off',
-			'@angular-eslint/template/use-track-by-function': 'off'
-		}
-	},
-	{
 		files: ['projects/sds/schematics/**/*.ts'],
 		rules: {
 			// rules that are not respected

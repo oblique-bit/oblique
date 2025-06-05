@@ -1,4 +1,4 @@
-<ng-container *ngFor="let accordion of accordions(); let i = index">
+@for (accordion of accordions(); track accordion; let i = $index) {
 	<div class="button-container" [id]="idPrefix() | id: [componentId, 'button-container', i]">
 		<button
 			type="button"
@@ -13,17 +13,18 @@
 			{{ accordion.title }}
 		</button>
 	</div>
-	<ng-container *ngFor="let link of accordion.links; let j = index">
-		<a
-			*ngIf="!(collapsedAccordionsRecord$ | async)[accordion.id]"
-			class="link"
-			[attr.data-selected]="link.slug === selectedSlug() ? true : null"
-			[id]="idPrefix() | id: [componentId, 'link', i, j]"
-			[routerLink]="['/' + accordion.title, link.slug]"
-			[queryParams]="urlParamVersion() ? { version: urlParamVersion() } : null"
-			(click)="handleLinkClicked()"
-		>
-			{{ link.title }}
-		</a>
-	</ng-container>
-</ng-container>
+	@for (link of accordion.links; track link) {
+		@if (!(collapsedAccordionsRecord$ | async)[accordion.id]) {
+			<a
+				class="link"
+				[attr.data-selected]="link.slug === selectedSlug() ? true : null"
+				[id]="idPrefix() | id: [componentId, 'link', i, $index]"
+				[routerLink]="['/' + accordion.title, link.slug]"
+				[queryParams]="urlParamVersion() ? { version: urlParamVersion() } : null"
+				(click)="handleLinkClicked()"
+			>
+				{{ link.title }}
+			</a>
+		}
+	}
+}

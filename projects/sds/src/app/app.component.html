@@ -1,4 +1,6 @@
-<app-banner *ngIf="bannerData$ | async as bannerData" class="app-banner" role="banner" [content]="bannerData" />
+@if (bannerData$ | async; as bannerData) {
+	<app-banner class="app-banner" role="banner" [content]="bannerData" />
+}
 <main class="main-content">
 	<app-side-navigation (showMobileNavigation)="doShowMobileNavigation($event)" />
 	<router-outlet />

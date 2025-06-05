@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import type {HttpErrorResponse} from '@angular/common/http';
 import {Component, type OnInit, SecurityContext, inject} from '@angular/core';
 import {FormBuilder, type FormControl, type FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -15,7 +14,6 @@ import {DomSanitizer} from '@angular/platform-browser';
 	templateUrl: './newsletter.component.html',
 	styleUrl: './newsletter.component.scss',
 	imports: [
-		CommonModule,
 		MatButtonModule,
 		MatFormFieldModule,
 		MatInputModule,

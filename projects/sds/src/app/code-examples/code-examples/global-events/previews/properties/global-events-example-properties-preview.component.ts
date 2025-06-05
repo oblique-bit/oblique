@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, type OnDestroy, type OnInit, inject} from '@angular/core';
 import {ObGlobalEventsService, WINDOW} from '@oblique/oblique';
 import {type Observable, Subject, map, startWith, takeUntil, tap} from 'rxjs';
@@ -7,7 +7,7 @@ import {type Observable, Subject, map, startWith, takeUntil, tap} from 'rxjs';
 	selector: 'app-global-events-example-properties-preview',
 	templateUrl: './global-events-example-properties-preview.component.html',
 	styleUrls: ['../global-events-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
-	imports: [AsyncPipe, NgIf]
+	imports: [AsyncPipe]
 })
 export class GlobalEventsExamplePropertiesPreviewComponent implements OnInit, OnDestroy {
 	click$: Observable<number>;

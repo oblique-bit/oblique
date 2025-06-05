@@ -1,11 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatListModule} from '@angular/material/list';
-import {CommonModule} from '@angular/common';
 
 @Component({
 	selector: 'app-list-group-example-default',
 	templateUrl: './list-group-example-default.component.html',
-	imports: [MatListModule, CommonModule],
+	imports: [MatListModule],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListGroupExampleDefaultComponent {

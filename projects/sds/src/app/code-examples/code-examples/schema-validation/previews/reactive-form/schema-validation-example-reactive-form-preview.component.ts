@@ -1,5 +1,4 @@
 import {Component, type OnInit, inject} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {FormBuilder, FormControl, type FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {ObErrorMessagesModule, ObSchemaValidationModule} from '@oblique/oblique';
@@ -7,7 +6,7 @@ import {ObErrorMessagesModule, ObSchemaValidationModule} from '@oblique/oblique'
 @Component({
 	selector: 'app-schema-validation-example-reactive-form-preview',
 	templateUrl: './schema-validation-example-reactive-form-preview.component.html',
-	imports: [CommonModule, MatInputModule, ReactiveFormsModule, ObSchemaValidationModule, ObErrorMessagesModule]
+	imports: [MatInputModule, ReactiveFormsModule, ObSchemaValidationModule, ObErrorMessagesModule]
 })
 export class SchemaValidationExampleReactiveFormPreviewComponent implements OnInit {
 	schema = {

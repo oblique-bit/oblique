@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {AlertExampleTypePreviewComponent} from './previews/type/alert-example-type-preview.component';
 import {AlertExampleHasRoleAlertPreviewComponent} from './previews/has-role-alert/alert-example-has-role-alert-preview.component';
@@ -9,7 +8,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 @Component({
 	selector: 'app-code-example-alert',
 	templateUrl: '../../code-examples.component.html',
-	imports: [CommonModule, CodeExampleComponent, IdPipe]
+	imports: [CodeExampleComponent, IdPipe]
 })
 export class AlertCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'alert-examples';

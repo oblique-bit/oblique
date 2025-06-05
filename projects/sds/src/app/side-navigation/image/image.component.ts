@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {IdPipe} from '../../shared/id/id.pipe';
-import {CommonModule, NgOptimizedImage} from '@angular/common';
+import {NgOptimizedImage} from '@angular/common';
 
 @Component({
 	selector: 'app-image',
 	templateUrl: './image.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, NgOptimizedImage]
+	imports: [IdPipe, NgOptimizedImage]
 })
 export class ImageComponent {
 	readonly height = input.required<number>();

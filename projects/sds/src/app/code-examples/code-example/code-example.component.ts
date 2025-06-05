@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, type OnInit, input} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {CodeExampleDirective} from '../code-example.directive';
 import type {SourceCode} from './source-code.model';
 import {IdPipe} from '../../shared/id/id.pipe';
@@ -13,7 +12,7 @@ import type {PreviewComponent} from '../code-examples.model';
 	templateUrl: './code-example.component.html',
 	styleUrl: './code-example.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, HighlightedCodeComponent, IdPipe]
+	imports: [TabsComponent, TabComponent, CodeExampleDirective, HighlightedCodeComponent, IdPipe]
 })
 export class CodeExampleComponent implements OnInit {
 	readonly codeSnippets = input<SourceCode[]>([]);

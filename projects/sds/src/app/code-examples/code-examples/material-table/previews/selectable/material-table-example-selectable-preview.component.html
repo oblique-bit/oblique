@@ -11,7 +11,7 @@
 		</td>
 	</ng-container>
 
-	<ng-container *ngFor="let column of columns">
+	@for (column of columns; track column) {
 		<ng-container [matColumnDef]="column.key">
 			<th *matHeaderCellDef mat-header-cell scope="col">
 				<ng-container [ngTemplateOutlet]="columnHeader" [ngTemplateOutletContext]="{ column }" />
@@ -26,7 +26,7 @@
 				</td>
 			}
 		</ng-container>
-	</ng-container>
+	}
 
 	<ng-container matColumnDef="actions">
 		<th *matHeaderCellDef scope="col">

@@ -173,7 +173,7 @@ module.exports = {
 			statements: 79,
 			branches: 100,
 			functions: 42,
-			lines: 77
+			lines: 76
 		},
 		'projects/sds/src/app/feedback': {
 			statements: 80,

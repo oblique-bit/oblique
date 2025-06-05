@@ -10,10 +10,11 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let event of last5UploadEvents">
-			<th scope="row">{{ event.eventType }}</th>
-
-			<td>{{ event.fileNames }}</td>
-		</tr>
+		@for (event of last5UploadEvents; track event) {
+			<tr>
+				<th scope="row">{{ event.eventType }}</th>
+				<td>{{ event.fileNames }}</td>
+			</tr>
+		}
 	</tbody>
 </table>

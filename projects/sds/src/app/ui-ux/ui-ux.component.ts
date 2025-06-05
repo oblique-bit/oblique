@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {Component, input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {ObExternalLinkDirective} from '@oblique/oblique';
@@ -11,7 +10,7 @@ import {RelatedLinkPipe} from './related-link.pipe';
 	templateUrl: './ui-ux.component.html',
 	styleUrl: './ui-ux.component.scss',
 	standalone: true,
-	imports: [CommonModule, SafeHtmlPipe, RouterLink, RelatedLinkPipe, ObExternalLinkDirective]
+	imports: [SafeHtmlPipe, RouterLink, RelatedLinkPipe, ObExternalLinkDirective]
 })
 export class UiUxComponent {
 	readonly uiUx = input<UiUxData>(undefined);
