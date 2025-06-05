@@ -1,13 +1,13 @@
 <div class="columns-2">
 	<section class="info">
-		@if (uiUx.purpose) {
-			<div [innerHTML]="uiUx.purpose | safeHtml"></div>
+		@if (uiUx().purpose) {
+			<div [innerHTML]="uiUx().purpose | safeHtml"></div>
 		}
-		@if (uiUx.generalRules?.length) {
+		@if (uiUx().generalRules?.length) {
 			<section>
 				<h2>General rules</h2>
 				<ul>
-					@for (item of uiUx.generalRules; track item) {
+					@for (item of uiUx().generalRules; track item) {
 						<li [innerHtml]="item | safeHtml"></li>
 					}
 				</ul>
@@ -15,42 +15,42 @@
 		}
 
 		<div class="columns-2">
-			@if (uiUx.do?.length) {
+			@if (uiUx().do?.length) {
 				<section class="dos">
 					<h2>Dos</h2>
 					<ul>
-						@for (item of uiUx.do; track item) {
+						@for (item of uiUx().do; track item) {
 							<li [innerHtml]="item | safeHtml"></li>
 						}
 					</ul>
 				</section>
 			}
-			@if (uiUx.doNot?.length) {
+			@if (uiUx().doNot?.length) {
 				<section class="do-nots">
 					<h2>Don'ts</h2>
 					<ul>
-						@for (item of uiUx.doNot; track item) {
+						@for (item of uiUx().doNot; track item) {
 							<li [innerHtml]="item | safeHtml"></li>
 						}
 					</ul>
 				</section>
 			}
 		</div>
-		@if (uiUx.additionalInfo) {
-			<p [innerHtml]="uiUx.additionalInfo | safeHtml"></p>
+		@if (uiUx().additionalInfo) {
+			<p [innerHtml]="uiUx().additionalInfo | safeHtml"></p>
 		}
 	</section>
-	@if (uiUx.designFileLatest || uiUx.relatedLinks?.length) {
+	@if (uiUx().designFileLatest || uiUx().relatedLinks?.length) {
 		<aside>
-			@if (uiUx.designFileLatest) {
+			@if (uiUx().designFileLatest) {
 				<section class="design-files">
 					<h2>Design Figma Files</h2>
-					<a class="figma" [href]="uiUx.designFileLatest"><span>Community Lib 13</span></a>
+					<a class="figma" [href]="uiUx().designFileLatest"><span>Community Lib 13</span></a>
 					<div class="designer">
 						<div class="title" id="older-libraries">Looking for previous version?</div>
 						<ul class="link-list" aria-labelledby="older-libraries">
 							<li>
-								<a [href]="uiUx.designFilePrevious"><span>Community Lib 12</span></a>
+								<a [href]="uiUx().designFilePrevious"><span>Community Lib 12</span></a>
 							</li>
 						</ul>
 						<div class="title" id="intern">Are you part of BIT?</div>
@@ -61,11 +61,11 @@
 					</div>
 				</section>
 			}
-			@if (uiUx.relatedLinks?.length) {
+			@if (uiUx().relatedLinks?.length) {
 				<section class="related-links">
 					<h2>Related</h2>
 					<ul class="link-list">
-						@for (item of uiUx.relatedLinks; track item) {
+						@for (item of uiUx().relatedLinks; track item) {
 							<li>
 								<a class="related" [routerLink]="item">{{ item | relatedLink }}</a>
 							</li>

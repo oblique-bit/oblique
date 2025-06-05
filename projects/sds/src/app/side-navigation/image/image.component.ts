@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 
@@ -9,12 +9,12 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 	imports: [CommonModule, IdPipe, NgOptimizedImage]
 })
 export class ImageComponent {
-	@Input({required: true}) height!: number;
-	@Input({required: true}) ngSrc!: string;
-	@Input({required: true}) width!: number;
+	readonly height = input.required<number>();
+	readonly ngSrc = input.required<string>();
+	readonly width = input.required<number>();
 
-	@Input() alt = '';
-	@Input() idPrefix = '';
+	readonly alt = input('');
+	readonly idPrefix = input('');
 
 	readonly componentId = 'image';
 }

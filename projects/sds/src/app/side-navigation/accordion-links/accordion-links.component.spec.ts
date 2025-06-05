@@ -16,8 +16,8 @@ describe(AccordionLinksComponent.name, () => {
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(AccordionLinksComponent);
+		fixture.componentRef.setInput('accordions', accordions);
 		component = fixture.componentInstance;
-		component.accordions = accordions;
 		component.ngOnInit();
 		component.ngOnChanges({accordions: {previousValue: {}, currentValue: {}, firstChange: false, isFirstChange: () => false}});
 		fixture.autoDetectChanges();
@@ -72,7 +72,7 @@ describe(AccordionLinksComponent.name, () => {
 		expect(
 			UnitTestHelpers.getDebugElementById<AccordionLinksComponent>(
 				fixture,
-				idPipe.transform(component.idPrefix, [component.componentId, 'triangle', index])
+				idPipe.transform(component.idPrefix(), [component.componentId, 'triangle', index])
 			)
 		).toBeTruthy();
 	});
@@ -81,7 +81,7 @@ describe(AccordionLinksComponent.name, () => {
 		expect(
 			UnitTestHelpers.getDebugElementById<AccordionLinksComponent>(
 				fixture,
-				idPipe.transform(component.idPrefix, [component.componentId, 'triangle', index])
+				idPipe.transform(component.idPrefix(), [component.componentId, 'triangle', index])
 			)
 		).toBeFalsy();
 	});
@@ -90,7 +90,7 @@ describe(AccordionLinksComponent.name, () => {
 		expect(
 			UnitTestHelpers.getDebugElementById<AccordionLinksComponent>(
 				fixture,
-				idPipe.transform(component.idPrefix, [component.componentId, 'link', ...indexes])
+				idPipe.transform(component.idPrefix(), [component.componentId, 'link', ...indexes])
 			)
 		).toBeTruthy();
 	});
@@ -101,7 +101,7 @@ describe(AccordionLinksComponent.name, () => {
 			expect(
 				UnitTestHelpers.getDebugElementById<AccordionLinksComponent>(
 					fixture,
-					idPipe.transform(component.idPrefix, [component.componentId, 'link', ...indexes])
+					idPipe.transform(component.idPrefix(), [component.componentId, 'link', ...indexes])
 				)
 			).toBeFalsy();
 		}
@@ -114,7 +114,7 @@ describe(AccordionLinksComponent.name, () => {
 		expect(
 			UnitTestHelpers.getClassForDebugElementById<AccordionLinksComponent>(
 				fixture,
-				idPipe.transform(component.idPrefix, [component.componentId, 'link', ...indexes]),
+				idPipe.transform(component.idPrefix(), [component.componentId, 'link', ...indexes]),
 				'hidden'
 			)
 		).toBeFalsy();
@@ -128,7 +128,7 @@ describe(AccordionLinksComponent.name, () => {
 		expect(
 			UnitTestHelpers.getClassForDebugElementById<AccordionLinksComponent>(
 				fixture,
-				idPipe.transform(component.idPrefix, [component.componentId, 'triangle', index]),
+				idPipe.transform(component.idPrefix(), [component.componentId, 'triangle', index]),
 				`triangle-pointing-${direction}`
 			)
 		).toBeFalsy();
@@ -142,7 +142,7 @@ describe(AccordionLinksComponent.name, () => {
 		expect(
 			UnitTestHelpers.getClassForDebugElementById<AccordionLinksComponent>(
 				fixture,
-				idPipe.transform(component.idPrefix, [component.componentId, 'triangle', index]),
+				idPipe.transform(component.idPrefix(), [component.componentId, 'triangle', index]),
 				`triangle-pointing-${direction}`
 			)
 		).toBeTruthy();

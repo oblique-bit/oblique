@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, Output, SimpleChanges, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnChanges, Output, SimpleChanges, inject, input} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
@@ -22,8 +22,8 @@ import {VersionService} from '../../shared/version/version.service';
 	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, MatLabel, MatTooltip]
 })
 export class VersionComponent implements OnChanges {
-	@Input() idPrefix = '';
-	@Input() isDisabled = false;
+	readonly idPrefix = input('');
+	readonly isDisabled = input(false);
 	@Output() readonly versionChanged: Observable<number>;
 
 	readonly componentId = 'version';
@@ -41,7 +41,7 @@ export class VersionComponent implements OnChanges {
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes.isDisabled) {
-			if (this.isDisabled) {
+			if (this.isDisabled()) {
 				this.selectedVersion.disable();
 			} else {
 				this.selectedVersion.enable();

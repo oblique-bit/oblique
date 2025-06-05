@@ -1,4 +1,4 @@
-import {Directive, Input, OnChanges, Type, ViewContainerRef, inject} from '@angular/core';
+import {Directive, OnChanges, Type, ViewContainerRef, inject, input} from '@angular/core';
 import {CodeExamples, PreviewComponent} from './code-examples.model';
 
 @Directive({
@@ -6,14 +6,15 @@ import {CodeExamples, PreviewComponent} from './code-examples.model';
 	standalone: true
 })
 export class CodeExampleDirective implements OnChanges {
-	@Input() codeExampleComponent: PreviewComponent | Type<CodeExamples>;
+	readonly codeExampleComponent = input<PreviewComponent | Type<CodeExamples>>(undefined);
 	private readonly viewContainerRef = inject(ViewContainerRef);
 
 	ngOnChanges(): void {
 		this.viewContainerRef.clear();
 
-		if (this.codeExampleComponent) {
-			this.viewContainerRef.createComponent(this.codeExampleComponent);
+		const codeExampleComponent = this.codeExampleComponent();
+		if (codeExampleComponent) {
+			this.viewContainerRef.createComponent(codeExampleComponent);
 		}
 	}
 }

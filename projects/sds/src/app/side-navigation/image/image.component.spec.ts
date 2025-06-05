@@ -40,11 +40,11 @@ describe(ImageComponent.name, () => {
 
 		fixture = TestBed.createComponent(ImageComponent);
 		component = fixture.componentInstance;
-		component.alt = alt;
-		component.height = height;
-		component.width = width;
-		component.idPrefix = idPrefix;
-		component.ngSrc = src;
+		fixture.componentRef.setInput('alt', alt);
+		fixture.componentRef.setInput('height', height);
+		fixture.componentRef.setInput('width', width);
+		fixture.componentRef.setInput('idPrefix', idPrefix);
+		fixture.componentRef.setInput('ngSrc', src);
 		fixture.autoDetectChanges();
 		return fixture.whenStable();
 	};
@@ -66,7 +66,7 @@ describe(ImageComponent.name, () => {
 
 		it('should display image with attributes set correctly', () => {
 			expect(
-				UnitTestHelpers.getDebugElementById<ImageComponent>(fixture, idPipe.transform(component.idPrefix, [component.componentId, imgId]))
+				UnitTestHelpers.getDebugElementById<ImageComponent>(fixture, idPipe.transform(component.idPrefix(), [component.componentId, imgId]))
 					.attributes
 			).toEqual(
 				expect.objectContaining({
@@ -89,7 +89,7 @@ describe(ImageComponent.name, () => {
 
 		it('should display image when just alt is falsy', () => {
 			expect(
-				UnitTestHelpers.getDebugElementById<ImageComponent>(fixture, idPipe.transform(component.idPrefix, [component.componentId, imgId]))
+				UnitTestHelpers.getDebugElementById<ImageComponent>(fixture, idPipe.transform(component.idPrefix(), [component.componentId, imgId]))
 			).toBeTruthy();
 		});
 	});

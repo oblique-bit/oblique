@@ -49,9 +49,9 @@ describe(CodeExampleComponent.name, () => {
 
 		fixture = TestBed.createComponent(CodeExampleComponent);
 		component = fixture.componentInstance;
-		component.codeSnippets = inputs?.codeSnippets ?? [];
-		component.idPrefix = inputs?.idPrefix ?? '';
-		component.preview = inputs?.preview;
+		fixture.componentRef.setInput('codeSnippets', inputs?.codeSnippets ?? []);
+		fixture.componentRef.setInput('idPrefix', inputs?.idPrefix ?? '');
+		fixture.componentRef.setInput('preview', inputs?.preview);
 
 		await fixture.whenStable().then(() => {
 			fixture.detectChanges();
@@ -65,7 +65,7 @@ describe(CodeExampleComponent.name, () => {
 	it.each<{id: string}>([{id: 'tabs'}])('should display $id when only idPrefix input is truthy', async ({id}) => {
 		await setupComponent({idPrefix: 'test'});
 
-		expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix, getIdParts(id)))).toBeTruthy();
+		expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeTruthy();
 	});
 
 	it.each<{id: string}>([{id: 'preview-tab'}, {id: 'html-tab'}, {id: 'scss-tab'}, {id: 'ts-tab'}])(
@@ -73,7 +73,7 @@ describe(CodeExampleComponent.name, () => {
 		async ({id}) => {
 			await setupComponent({idPrefix: 'test'});
 
-			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix, getIdParts(id)))).toBeFalsy();
+			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeFalsy();
 		}
 	);
 
@@ -85,7 +85,7 @@ describe(CodeExampleComponent.name, () => {
 				idPrefix: 'test'
 			});
 
-			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix, getIdParts(id)))).toBeTruthy();
+			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeTruthy();
 		}
 	);
 
@@ -94,7 +94,7 @@ describe(CodeExampleComponent.name, () => {
 		async ({id}) => {
 			await setupComponent({codeSnippets: [new SourceCode('soucecode', 'title')], idPrefix: 'test'});
 
-			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix, getIdParts(id)))).toBeFalsy();
+			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeFalsy();
 		}
 	);
 
@@ -106,8 +106,7 @@ describe(CodeExampleComponent.name, () => {
 				idPrefix: 'test',
 				preview: MockPreviewComponent
 			});
-
-			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix, getIdParts(id)))).toBeTruthy();
+			expect(UnitTestHelpers.getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeTruthy();
 		}
 	);
 
@@ -131,22 +130,22 @@ describe(CodeExampleComponent.name, () => {
 		});
 
 		it('should exists', () => {
-			expect(component.title).toBeDefined();
+			expect(component.title()).toBeDefined();
 		});
 
 		it('should be an empty string by default', () => {
-			expect(component.title).toBe('');
+			expect(component.title()).toBe('');
 		});
 
 		it('should not display a h2 when falsy', () => {
-			component.title = '';
+			fixture.componentRef.setInput('title', '');
 			fixture.detectChanges();
 			const titleElement = fixture.debugElement.query(By.css('h2'));
 			expect(titleElement).toBeFalsy();
 		});
 
 		it('should display a h2 when truthy', () => {
-			component.title = 'Title';
+			fixture.componentRef.setInput('title', 'Title');
 			fixture.detectChanges();
 			const titleElement = fixture.debugElement.query(By.css('h2'));
 			expect(titleElement).toBeTruthy();

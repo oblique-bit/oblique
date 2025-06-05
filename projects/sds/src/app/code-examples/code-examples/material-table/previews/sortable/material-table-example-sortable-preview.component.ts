@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, viewChild} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -25,8 +25,8 @@ export class MaterialTableExampleSortablePreviewComponent implements AfterViewIn
 		{position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
 		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
 	]);
-	@ViewChild(MatSort) sort: MatSort;
+	readonly sort = viewChild(MatSort);
 	ngAfterViewInit(): void {
-		this.dataSource.sort = this.sort;
+		this.dataSource.sort = this.sort();
 	}
 }

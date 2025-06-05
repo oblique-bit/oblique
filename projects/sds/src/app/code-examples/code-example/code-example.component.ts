@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CodeExampleDirective} from '../code-example.directive';
 import {SourceCode} from './source-code.model';
@@ -16,15 +16,15 @@ import {PreviewComponent} from '../code-examples.model';
 	imports: [TabsComponent, TabComponent, CodeExampleDirective, CommonModule, HighlightedCodeComponent, IdPipe]
 })
 export class CodeExampleComponent implements OnInit {
-	@Input() codeSnippets: SourceCode[] = [];
-	@Input() idPrefix = '';
-	@Input() title = '';
-	@Input() preview: PreviewComponent;
+	readonly codeSnippets = input<SourceCode[]>([]);
+	readonly idPrefix = input('');
+	readonly title = input('');
+	readonly preview = input<PreviewComponent>(undefined);
 
 	componentId = 'code-example';
 	hasCodeInTitle = false;
 
 	ngOnInit(): void {
-		this.hasCodeInTitle = this.title?.includes('<code>');
+		this.hasCodeInTitle = this.title()?.includes('<code>');
 	}
 }

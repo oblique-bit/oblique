@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnChanges, OnInit, input, output} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject, combineLatest, map} from 'rxjs';
@@ -13,11 +13,11 @@ import {IdPipe} from '../../shared/id/id.pipe';
 	imports: [CommonModule, RouterLink, IdPipe]
 })
 export class AccordionLinksComponent implements OnChanges, OnInit {
-	@Input() accordions: Accordion[] = [];
-	@Input() idPrefix = '';
-	@Input() selectedSlug = '';
-	@Input() urlParamVersion = null;
-	@Output() readonly linkClicked = new EventEmitter();
+	readonly accordions = input<Accordion[]>([]);
+	readonly idPrefix = input('');
+	readonly selectedSlug = input('');
+	readonly urlParamVersion = input(null);
+	readonly linkClicked = output();
 
 	readonly componentId = 'accordion-links';
 
@@ -27,7 +27,7 @@ export class AccordionLinksComponent implements OnChanges, OnInit {
 
 	ngOnChanges(changes: AccordionLinksChanges): void {
 		if (changes.accordions) {
-			this.accordionIds$.next(this.accordions.map(accordion => accordion.id));
+			this.accordionIds$.next(this.accordions().map(accordion => accordion.id));
 		}
 	}
 

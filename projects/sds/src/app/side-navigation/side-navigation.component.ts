@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild, inject} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, inject, output, viewChild} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, NavigationEnd, NavigationExtras, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
@@ -47,12 +47,12 @@ import {FeedbackTriggerDirective} from '../feedback/feedback-trigger.directive';
 	]
 })
 export class SideNavigationComponent implements OnInit {
-	@Output() readonly showMobileNavigation = new EventEmitter<boolean>();
+	readonly showMobileNavigation = output<boolean>();
 	displayMobileNavigation = false;
 	readonly componentId = 'side-navigation';
 	readonly search = new FormControl('');
 
-	@ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
+	readonly searchInput = viewChild<ElementRef<HTMLInputElement>>('searchInput');
 
 	filteredAccordions$: Observable<Accordion[]>;
 	selectedSlug$: Observable<string | undefined>;
@@ -98,7 +98,7 @@ export class SideNavigationComponent implements OnInit {
 		if (($event.ctrlKey || $event.metaKey) && $event.key === 'k') {
 			$event.stopPropagation();
 			$event.preventDefault();
-			this.searchInput.nativeElement.focus();
+			this.searchInput().nativeElement.focus();
 		}
 	}
 

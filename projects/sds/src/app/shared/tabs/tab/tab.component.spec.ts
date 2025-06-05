@@ -34,7 +34,7 @@ describe(TabComponent.name, () => {
 
 	describe('initiallyActive = true', () => {
 		beforeEach(() => {
-			component.initiallyActive = true;
+			fixture.componentRef.setInput('initiallyActive', true);
 			component.ngOnChanges({initiallyActive: {previousValue: false, currentValue: true, firstChange: true, isFirstChange: () => true}});
 		});
 

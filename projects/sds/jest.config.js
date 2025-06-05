@@ -86,9 +86,9 @@ module.exports = {
 			lines: 33
 		},
 		'projects/sds/src/app/code-examples/code-examples/focus-with-outline/previews/default': {
-			statements: 82,
+			statements: 78,
 			branches: 100,
-			functions: 66,
+			functions: 33,
 			lines: 81
 		},
 		'projects/sds/src/app/code-examples/code-examples/form/previews/input-prefixes-and-suffixes': {

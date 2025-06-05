@@ -1,5 +1,5 @@
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {Component, ViewChild} from '@angular/core';
+import {Component, viewChild} from '@angular/core';
 import {FormsModule, NgForm, NgModel} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {ObErrorMessagesModule, ObNestedFormModule} from '@oblique/oblique';
@@ -19,7 +19,7 @@ import {NestedFormExampleTemplateDrivenPreviewGrandchildComponent} from '../gran
 	]
 })
 export class NestedFormExampleTemplateDrivenPreviewChildComponent {
-	@ViewChild(NgForm, {static: true}) ngForm: NgForm;
+	readonly ngForm = viewChild(NgForm);
 	field1 = '';
 	field2 = '';
 	grandchildModel: NgModel;

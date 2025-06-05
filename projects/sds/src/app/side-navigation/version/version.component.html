@@ -1,4 +1,4 @@
-<mat-form-field [id]="idPrefix | id: [componentId, 'select']">
+<mat-form-field [id]="idPrefix() | id: [componentId, 'select']">
 	<mat-label>Version</mat-label>
 	<mat-select matTooltip="Select an Oblique version" [formControl]="selectedVersion">
 		<mat-option *ngFor="let version of versions$ | async; let i = index" [value]="version.number">{{ version.label }}</mat-option>

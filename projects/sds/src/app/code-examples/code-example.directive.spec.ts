@@ -12,12 +12,13 @@ class DummyComponent {}
 @Component({
 	standalone: true,
 	imports: [CodeExampleDirective],
-	template: '<div appCodeExample></div>'
+	template: '<div appCodeExample [codeExampleComponent]="component"></div>'
 })
-class CodeExampleDirectiveTestComponent {}
+class CodeExampleDirectiveTestComponent {
+	component = DummyComponent;
+}
 
 describe(CodeExampleDirective.name, () => {
-	let directive: CodeExampleDirective;
 	let fixture: ComponentFixture<CodeExampleDirectiveTestComponent>;
 
 	beforeEach(async () => {
@@ -28,28 +29,18 @@ describe(CodeExampleDirective.name, () => {
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(CodeExampleDirectiveTestComponent);
-		const element = fixture.debugElement.query(By.directive(CodeExampleDirective));
-		directive = element.injector.get(CodeExampleDirective);
-	});
-
-	it('should create an instance', () => {
-		expect(directive).toBeTruthy();
+		fixture.detectChanges();
 	});
 
 	describe('codeExampleComponent', () => {
-		beforeEach(() => {
-			directive.codeExampleComponent = DummyComponent;
-			directive.ngOnChanges();
-		});
-
 		it('should inject the component passed as a parameter', () => {
 			const element = fixture.debugElement.query(By.directive(DummyComponent));
 			expect(element).toBeTruthy();
 		});
 
 		it('should remove the component when no ', () => {
-			directive.codeExampleComponent = null;
-			directive.ngOnChanges();
+			fixture.componentInstance.component = null;
+			fixture.detectChanges();
 			const element = fixture.debugElement.query(By.directive(DummyComponent));
 
 			expect(element).toBeFalsy();

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, ViewChild, inject} from '@angular/core';
+import {Component, ElementRef, Signal, computed, inject, viewChild} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
@@ -11,20 +11,16 @@ import {ObButtonDirective, obFocusWithOutline} from '@oblique/oblique';
 	templateUrl: './focus-with-outline-example-default-preview.component.html',
 	imports: [MatFormField, MatSelect, MatOption, MatLabel, MatButton, ObButtonDirective, MatInput]
 })
-export class FocusWithOutlineExampleDefaultPreviewComponent implements AfterViewInit {
-	@ViewChild(MatInput, {read: ElementRef}) private readonly input!: ElementRef<HTMLElement>;
-	@ViewChild(MatSelect, {read: ElementRef}) private readonly select!: ElementRef<HTMLElement>;
+export class FocusWithOutlineExampleDefaultPreviewComponent {
+	private readonly input: Signal<ElementRef<HTMLElement>> = viewChild.required(MatInput, {read: ElementRef});
+	private readonly select: Signal<ElementRef<HTMLElement>> = viewChild.required(MatSelect, {read: ElementRef});
 	private readonly document = inject(DOCUMENT);
-	private readonly focusableElements: ElementRef<HTMLElement>[] = [];
+	private readonly focusableElements = computed(() => [this.input(), this.select()]);
 	private index = 0;
 
-	ngAfterViewInit(): void {
-		this.focusableElements.push(this.input, this.select);
-	}
-
 	focusNext(): void {
-		const activeElement = this.focusableElements[this.index];
+		const activeElement = this.focusableElements()[this.index];
 		obFocusWithOutline(this.document, activeElement.nativeElement);
-		this.index = (this.index + 1) % this.focusableElements.length;
+		this.index = (this.index + 1) % this.focusableElements().length;
 	}
 }

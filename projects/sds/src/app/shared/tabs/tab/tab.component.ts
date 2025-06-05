@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Input, OnChanges, SimpleChange, SimpleChanges, inject} from '@angular/core';
+import {ChangeDetectorRef, Component, OnChanges, SimpleChange, SimpleChanges, inject, input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 @Component({
@@ -8,9 +8,9 @@ import {CommonModule} from '@angular/common';
 	imports: [CommonModule]
 })
 export class TabComponent implements OnChanges {
-	@Input() hidden = false;
-	@Input() initiallyActive = true;
-	@Input() name = '';
+	readonly hidden = input(false);
+	readonly initiallyActive = input(true);
+	readonly name = input('');
 
 	active = false;
 
@@ -18,7 +18,7 @@ export class TabComponent implements OnChanges {
 
 	ngOnChanges(changes: TabChanges): void {
 		if (changes.initiallyActive) {
-			this.active = this.initiallyActive;
+			this.active = this.initiallyActive();
 		}
 	}
 
