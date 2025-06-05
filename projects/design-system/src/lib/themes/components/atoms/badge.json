@@ -46,7 +46,7 @@
             }
           },
           "fg": {
-            "severity-low": {
+            "info": {
               "enabled": {
                 "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
                 "type": "color"
