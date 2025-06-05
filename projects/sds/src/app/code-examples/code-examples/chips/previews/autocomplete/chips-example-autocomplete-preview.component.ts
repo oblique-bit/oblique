@@ -12,16 +12,7 @@ import {MatListModule} from '@angular/material/list';
 @Component({
 	selector: 'app-chips-example-autocomplete-preview',
 	templateUrl: './chips-example-autocomplete-preview.component.html',
-	imports: [
-		CommonModule,
-		MatChipsModule,
-		MatAutocompleteModule,
-		MatIconModule,
-		MatChipsModule,
-		MatFormFieldModule,
-		ReactiveFormsModule,
-		MatListModule
-	],
+	imports: [CommonModule, MatChipsModule, MatAutocompleteModule, MatIconModule, MatFormFieldModule, ReactiveFormsModule, MatListModule],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChipsExampleAutocompletePreviewComponent {

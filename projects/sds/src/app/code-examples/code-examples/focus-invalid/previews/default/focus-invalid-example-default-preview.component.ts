@@ -25,9 +25,6 @@ import {MatButtonModule} from '@angular/material/button';
 		ReactiveFormsModule,
 		ObErrorMessagesDirective,
 		ObFocusInvalidDirective,
-		ObMatErrorDirective,
-		ObErrorMessagesDirective,
-		ObFocusInvalidDirective,
 		ObMatErrorDirective
 	]
 })

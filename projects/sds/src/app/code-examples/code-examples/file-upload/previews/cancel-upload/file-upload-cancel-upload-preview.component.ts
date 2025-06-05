@@ -7,7 +7,7 @@ import {CommonModule} from '@angular/common';
 	selector: 'app-file-upload-cancel-upload-preview',
 	templateUrl: './file-upload-cancel-upload-preview.component.html',
 	styleUrl: './file-upload-cancel-upload-preview.component.scss',
-	imports: [CommonModule, ObFileUploadModule, ObAlertComponent, ObAlertComponent]
+	imports: [CommonModule, ObFileUploadModule, ObAlertComponent]
 })
 export class FileUploadCancelUploadPreviewComponent {
 	mockUrls = mockUrls;
