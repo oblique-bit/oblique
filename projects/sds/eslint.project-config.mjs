@@ -18,7 +18,6 @@ export default [
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
-			'@typescript-eslint/promise-function-async': 'off',
 			'accessor-pairs': 'off',
 			'func-names': 'off',
 			'no-implicit-coercion': 'off',
