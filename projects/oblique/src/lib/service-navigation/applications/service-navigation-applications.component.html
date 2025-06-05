@@ -30,6 +30,7 @@
 </ng-template>
 
 <ng-template #popoverContent>
+	<h3 class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.button.label" | translate }}</h3>
 	<ob-service-navigation-popover-section
 		*ngIf="lastUsedApplications?.length > 0"
 		header="i18n.oblique.service-navigation.applications.last-used.header"

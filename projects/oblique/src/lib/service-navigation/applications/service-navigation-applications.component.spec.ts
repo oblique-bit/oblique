@@ -18,6 +18,7 @@ import {ObServiceNavigationApplicationsHarness} from './service-navigation-appli
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
 import {ObDisableLinkDirective} from '../shared/disable-link/disable-link.directive';
 import {WINDOW} from '../../utilities';
+import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
 
 describe(ObServiceNavigationApplicationsComponent.name, () => {
 	let component: ObServiceNavigationApplicationsComponent;
@@ -26,7 +27,15 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, MatButtonModule, MatIconModule, MatTooltipModule, ObPopoverModule, ObDisableLinkDirective],
+			imports: [
+				ObMockTranslatePipe,
+				MatButtonModule,
+				MatIconModule,
+				MatTooltipModule,
+				ObPopoverModule,
+				ObDisableLinkDirective,
+				ObIsCurrentUrlPipe
+			],
 			declarations: [
 				ObLimitArraySizePipe,
 				ObServiceNavigationApplicationsComponent,

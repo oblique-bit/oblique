@@ -11,6 +11,8 @@
 			<a
 				[id]="link.label + '-ob-popover-link'"
 				class="ob-popover-link"
+				[class.active]="link.url | obIsCurrentUrl"
+				[attr.aria-current]="(link.url | obIsCurrentUrl) ? 'page' : undefined"
 				[href]="link.url | translate"
 				[isExternalLink]="!link.isInternalLink"
 				[attr.aria-label]="link.ariaLabel?.text | translate: link.ariaLabel?.parameters"
