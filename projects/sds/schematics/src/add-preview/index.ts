@@ -1,4 +1,4 @@
-import {Rule, SchematicContext, SchematicsException, Tree, chain, noop, schematic} from '@angular-devkit/schematics';
+import {type Rule, type SchematicContext, SchematicsException, type Tree, chain, noop, schematic} from '@angular-devkit/schematics';
 import {
 	addPreviewToPreviewsInCodeExample,
 	areOptionsValid,
@@ -8,8 +8,8 @@ import {
 	getPreviewSymbolName
 } from './add-preview.utils';
 import {dasherize} from '@angular-devkit/core/src/utils/strings';
-import {AddPreviewOptions} from './add-preview.model';
-import {AddCodeExampleOptions} from '../add-code-example/add-code-example.model';
+import type {AddPreviewOptions} from './add-preview.model';
+import type {AddCodeExampleOptions} from '../add-code-example/add-code-example.model';
 import {getExampleDirectoryOrFalse, getExampleSymbolName} from '../sds.utils';
 import * as colors from 'ansi-colors';
 

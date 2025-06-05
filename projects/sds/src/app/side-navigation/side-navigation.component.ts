@@ -1,16 +1,28 @@
-import {Component, ElementRef, HostListener, OnInit, inject, output, viewChild} from '@angular/core';
+import {Component, type ElementRef, HostListener, type OnInit, inject, output, viewChild} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ActivatedRoute, NavigationEnd, NavigationExtras, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, type NavigationExtras, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatIcon} from '@angular/material/icon';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {skip} from 'rxjs/operators';
 import {CmsDataService} from '../cms/cms-data.service';
-import {BehaviorSubject, Observable, combineLatestWith, debounceTime, filter, forkJoin, map, of, startWith, switchMap, tap} from 'rxjs';
+import {
+	BehaviorSubject,
+	type Observable,
+	combineLatestWith,
+	debounceTime,
+	filter,
+	forkJoin,
+	map,
+	of,
+	startWith,
+	switchMap,
+	tap
+} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {urlConst} from '../shared/url/url.const';
-import {Accordion, Link} from './accordion-links/accordion-links.model';
+import type {Accordion, Link} from './accordion-links/accordion-links.model';
 import {composeAccordions} from './utils/accordion-composer';
 import {IdPipe} from '../shared/id/id.pipe';
 import {CommonModule, NgOptimizedImage} from '@angular/common';

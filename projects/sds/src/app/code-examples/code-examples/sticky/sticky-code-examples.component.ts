@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
-import {CodeExample, CodeExamples} from '../../code-examples.model';
+import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {StickyExampleDefaultPreviewComponent} from './previews/default/sticky-example-default-preview.component';
 import {StickyExampleSizesPreviewComponent} from './previews/sizes/sticky-example-sizes-preview.component';
 

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObEUploadEventType, ObFileUploadModule, ObIFileDescription, ObIUploadEvent} from '@oblique/oblique';
+import {ObEUploadEventType, ObFileUploadModule, type ObIFileDescription, type ObIUploadEvent} from '@oblique/oblique';
 import {mockUrls} from '../../file-upload-simulate-interceptor';
 import {CommonModule} from '@angular/common';
 import {uploadInterceptor} from '../../../../../../main';

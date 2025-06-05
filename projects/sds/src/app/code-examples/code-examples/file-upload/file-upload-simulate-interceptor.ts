@@ -1,8 +1,8 @@
-import {Injectable, OnDestroy} from '@angular/core';
-import {HttpEvent, HttpEventType, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
-import {ObIFileDescription} from '@oblique/oblique';
+import {Injectable, type OnDestroy} from '@angular/core';
+import {type HttpEvent, HttpEventType, type HttpHandler, type HttpInterceptor, type HttpRequest, HttpResponse} from '@angular/common/http';
+import type {ObIFileDescription} from '@oblique/oblique';
 import {map, take, takeUntil} from 'rxjs/operators';
-import {BehaviorSubject, Observable, Subject, combineLatest, interval, of} from 'rxjs';
+import {BehaviorSubject, type Observable, Subject, combineLatest, interval, of} from 'rxjs';
 
 const mockUploadURL = 'mockUploadURL';
 const mockGetUploadedFilesURL = 'mockGetUploadedFilesURL';

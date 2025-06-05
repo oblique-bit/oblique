@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog, type MatDialogRef} from '@angular/material/dialog';
 import {of} from 'rxjs';
 import {CollectorService} from './collector.service';
 

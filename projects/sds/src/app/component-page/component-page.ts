@@ -1,4 +1,4 @@
-import {Type} from '@angular/core';
+import type {Type} from '@angular/core';
 
 export interface ComponentPage {
 	title: string;

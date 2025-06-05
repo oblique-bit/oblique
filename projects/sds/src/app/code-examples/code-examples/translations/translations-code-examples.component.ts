@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CodeExample, CodeExamples} from '../../code-examples.model';
+import {type CodeExample, CodeExamples} from '../../code-examples.model';
 
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {CommonModule} from '@angular/common';

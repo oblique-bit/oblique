@@ -1,7 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
-import {Component, OnDestroy, OnInit, inject} from '@angular/core';
+import {Component, type OnDestroy, type OnInit, inject} from '@angular/core';
 import {ObGlobalEventsService, WINDOW} from '@oblique/oblique';
-import {Observable, Subject, map, startWith, takeUntil, tap} from 'rxjs';
+import {type Observable, Subject, map, startWith, takeUntil, tap} from 'rxjs';
 
 @Component({
 	selector: 'app-global-events-example-properties-preview',

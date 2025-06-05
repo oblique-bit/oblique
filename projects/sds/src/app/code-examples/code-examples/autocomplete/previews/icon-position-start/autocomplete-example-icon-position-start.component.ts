@@ -1,5 +1,5 @@
-import {ObAutocompleteModule, ObEIcon, ObIAutocompleteInputOption} from '@oblique/oblique';
-import {AfterViewInit, ChangeDetectorRef, Component, inject} from '@angular/core';
+import {ObAutocompleteModule, ObEIcon, type ObIAutocompleteInputOption} from '@oblique/oblique';
+import {type AfterViewInit, ChangeDetectorRef, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {JsonPipe} from '@angular/common';
 

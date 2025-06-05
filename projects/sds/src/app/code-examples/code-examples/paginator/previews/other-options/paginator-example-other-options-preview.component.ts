@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, viewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
+import {type AfterViewInit, Component, viewChild} from '@angular/core';
+import {type MatPaginator, MatPaginatorModule, type PageEvent} from '@angular/material/paginator';
 import {ObPaginatorModule} from '@oblique/oblique';
 import {JsonPipe} from '@angular/common';
 

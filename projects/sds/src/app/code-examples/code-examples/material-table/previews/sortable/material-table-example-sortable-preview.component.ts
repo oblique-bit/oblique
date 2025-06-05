@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, viewChild} from '@angular/core';
+import {type AfterViewInit, Component, viewChild} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';

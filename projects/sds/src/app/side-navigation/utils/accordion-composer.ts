@@ -1,6 +1,6 @@
-import {CategoryCms} from '../../cms/models/category.model';
-import {CMSPage, CMSPageShortList} from '../../cms/models/cms-page.model';
-import {Accordion} from '../accordion-links/accordion-links.model';
+import type {CategoryCms} from '../../cms/models/category.model';
+import type {CMSPage, CMSPageShortList} from '../../cms/models/cms-page.model';
+import type {Accordion} from '../accordion-links/accordion-links.model';
 import {mapCMSPageShortToAccordion} from './accordion-mapper';
 
 export function composeAccordions(value: {

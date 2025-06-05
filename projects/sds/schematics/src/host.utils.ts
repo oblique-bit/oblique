@@ -1,5 +1,5 @@
-import {SchematicsException, Tree} from '@angular-devkit/schematics';
-import {virtualFs, workspaces} from '@angular-devkit/core';
+import {SchematicsException, type Tree} from '@angular-devkit/schematics';
+import {virtualFs, type workspaces} from '@angular-devkit/core';
 
 /* eslint-disable @typescript-eslint/require-await*/
 

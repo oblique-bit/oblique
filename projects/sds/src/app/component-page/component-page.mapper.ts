@@ -1,4 +1,4 @@
-import {ComponentPage} from './component-page';
+import type {ComponentPage} from './component-page';
 import {NewsletterComponent} from './component-pages/newsletter/newsletter.component';
 
 const components: Record<string, ComponentPage> = {

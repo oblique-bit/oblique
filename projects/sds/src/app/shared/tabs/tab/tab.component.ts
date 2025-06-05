@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnChanges, SimpleChange, SimpleChanges, inject, input} from '@angular/core';
+import {ChangeDetectorRef, Component, type OnChanges, type SimpleChange, type SimpleChanges, inject, input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 @Component({

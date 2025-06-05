@@ -3,7 +3,7 @@ import {Component, input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {ObExternalLinkDirective} from '@oblique/oblique';
 import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
-import {UiUxData} from '../cms/models/tabbed-page.model';
+import type {UiUxData} from '../cms/models/tabbed-page.model';
 import {RelatedLinkPipe} from './related-link.pipe';
 
 @Component({

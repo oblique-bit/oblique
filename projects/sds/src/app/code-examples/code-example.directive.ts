@@ -1,5 +1,5 @@
-import {Directive, OnChanges, Type, ViewContainerRef, inject, input} from '@angular/core';
-import {CodeExamples, PreviewComponent} from './code-examples.model';
+import {Directive, type OnChanges, type Type, ViewContainerRef, inject, input} from '@angular/core';
+import type {CodeExamples, PreviewComponent} from './code-examples.model';
 
 @Directive({
 	selector: '[appCodeExample]',

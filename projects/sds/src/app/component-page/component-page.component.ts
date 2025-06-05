@@ -1,7 +1,7 @@
 import {CommonModule, NgComponentOutlet} from '@angular/common';
-import {Component, OnInit, inject} from '@angular/core';
+import {Component, type OnInit, inject} from '@angular/core';
 import {Router} from '@angular/router';
-import {ComponentPage} from './component-page';
+import type {ComponentPage} from './component-page';
 import {getComponentPageComponent} from './component-page.mapper';
 
 @Component({

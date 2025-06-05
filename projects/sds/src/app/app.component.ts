@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ObSpinnerModule} from '@oblique/oblique';
 import {RouterOutlet} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, filter, map, tap} from 'rxjs';
+import {type Observable, filter, map, tap} from 'rxjs';
 import {CmsDataService} from './cms/cms-data.service';
 import {SideNavigationComponent} from './side-navigation/side-navigation.component';
 import {BannerComponent} from './banner/banner.component';

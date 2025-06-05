@@ -1,4 +1,4 @@
-import {Routes, UrlMatchResult, UrlSegment} from '@angular/router';
+import type {Routes, UrlMatchResult, UrlSegment} from '@angular/router';
 import {urlConst} from './app/shared/url/url.const';
 import {InvalidComponent} from './app/invalid/invalid.component';
 

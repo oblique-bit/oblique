@@ -1,11 +1,11 @@
-import {Component, OnInit, inject} from '@angular/core';
+import {Component, type OnInit, inject} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, WINDOW} from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatTooltip} from '@angular/material/tooltip';
-import {MockBackEndService, PeriodicElement} from './mock-backend.service';
+import {MockBackEndService, type PeriodicElement} from './mock-backend.service';
 import {AppMaterialTableExampleEditableDialogComponent} from './material-table-editable-dialog.component';
 
 @Component({

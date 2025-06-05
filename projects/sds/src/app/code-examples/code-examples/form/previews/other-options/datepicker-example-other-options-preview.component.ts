@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import type {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {DatePipe, NgIf} from '@angular/common';

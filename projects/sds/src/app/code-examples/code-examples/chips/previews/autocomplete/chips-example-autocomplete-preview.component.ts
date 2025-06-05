@@ -1,9 +1,9 @@
-import {ChangeDetectionStrategy, Component, ElementRef, viewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type ElementRef, viewChild} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
-import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import {type MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule, type MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {Observable, map, startWith} from 'rxjs';
+import {type Observable, map, startWith} from 'rxjs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {CommonModule} from '@angular/common';

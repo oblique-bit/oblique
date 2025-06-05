@@ -1,8 +1,8 @@
-import {ChangeDetectionStrategy, Component, OnChanges, OnInit, input, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnChanges, type OnInit, input, output} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject, combineLatest, map} from 'rxjs';
-import {Accordion, AccordionLinksChanges} from './accordion-links.model';
+import type {Accordion, AccordionLinksChanges} from './accordion-links.model';
 import {IdPipe} from '../../shared/id/id.pipe';
 
 @Component({

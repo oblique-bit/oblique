@@ -1,5 +1,5 @@
-import {DebugElement} from '@angular/core';
-import {ComponentFixture} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 
 export function clickDebugElementById<T>(fixture: ComponentFixture<T>, id: string): void {

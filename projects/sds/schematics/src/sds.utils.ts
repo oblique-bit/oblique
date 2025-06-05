@@ -1,12 +1,12 @@
-import {Rule, SchematicContext, SchematicsException, Tree, noop} from '@angular-devkit/schematics';
+import {type Rule, type SchematicContext, SchematicsException, type Tree, noop} from '@angular-devkit/schematics';
 import {
 	ScriptKind,
 	ScriptTarget,
-	SourceFile,
+	type SourceFile,
 	createSourceFile
 } from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {isImported} from '@schematics/angular/utility/ast-utils';
-import {InsertChange, ReplaceChange} from '@schematics/angular/utility/change';
+import type {InsertChange, ReplaceChange} from '@schematics/angular/utility/change';
 import {createHost} from './host.utils';
 import {getSdsSourceRootPath} from './workspace.utils';
 import {classify, dasherize} from '@angular-devkit/core/src/utils/strings';
@@ -125,5 +125,5 @@ export function showAlreadyExistsMessage(
 }
 
 export function isNameValid(name: string): boolean {
-	return !/^-|[^\w-]|-(?![^-])/.test(name);
+	return !/^-|[^\w-]|-(?![^-])/u.test(name);
 }

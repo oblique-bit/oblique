@@ -1,12 +1,12 @@
-import {ChangeDetectionStrategy, Component, OnInit, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CodeExampleDirective} from '../code-example.directive';
-import {SourceCode} from './source-code.model';
+import type {SourceCode} from './source-code.model';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {HighlightedCodeComponent} from './highlighted-code/highlighted-code.component';
 import {TabComponent} from '../../shared/tabs/tab/tab.component';
 import {TabsComponent} from '../../shared/tabs/tabs.component';
-import {PreviewComponent} from '../code-examples.model';
+import type {PreviewComponent} from '../code-examples.model';
 
 @Component({
 	selector: 'app-code-example',

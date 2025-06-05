@@ -1,6 +1,6 @@
-import {Category} from '../../cms/models/category.model';
-import {Accordion, Link} from '../accordion-links/accordion-links.model';
-import {CMSPage} from '../../cms/models/cms-page.model';
+import type {Category} from '../../cms/models/category.model';
+import type {Accordion, Link} from '../accordion-links/accordion-links.model';
+import type {CMSPage} from '../../cms/models/cms-page.model';
 
 export function mapCMSPageShortToAccordion(data: CMSPage[], category: Category): Accordion {
 	return {

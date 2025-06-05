@@ -4,7 +4,7 @@ import {CdkScrollable} from '@angular/cdk/scrolling';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {getCodeExampleComponent} from '../code-examples/code-examples.mapper';
-import {Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
+import {type Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {urlConst} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -12,7 +12,7 @@ import {TabComponent} from '../shared/tabs/tab/tab.component';
 import {TabsComponent} from '../shared/tabs/tabs.component';
 import {CommonModule, Location} from '@angular/common';
 import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
-import {CmsData, TabbedPageComplete, UiUxData, UiUxEntry} from '../cms/models/tabbed-page.model';
+import type {CmsData, TabbedPageComplete, UiUxData, UiUxEntry} from '../cms/models/tabbed-page.model';
 import {getTabNameFromUrlParam, getUrlParamForTabName} from './utils/tab-name-mapper';
 import {MatChipsModule} from '@angular/material/chips';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -151,10 +151,10 @@ export class TabbedPageComponent {
 	}
 
 	private camelCaseToSnakeCase(item: string): string {
-		return item.replace(/[A-Z]/g, match => `_${match.toLowerCase()}`);
+		return item.replace(/[A-Z]/gu, match => `_${match.toLowerCase()}`);
 	}
 
 	private removeParagraphTags(item: string): string {
-		return item.replace(/<\/?p>/g, '');
+		return item.replace(/<\/?p>/gu, '');
 	}
 }

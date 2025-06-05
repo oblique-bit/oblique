@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CodeExample, CodeExamples} from '../../code-examples.model';
+import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {AlertExampleTypePreviewComponent} from './previews/type/alert-example-type-preview.component';
 import {AlertExampleHasRoleAlertPreviewComponent} from './previews/has-role-alert/alert-example-has-role-alert-preview.component';
 import {IdPipe} from '../../../shared/id/id.pipe';

@@ -1,7 +1,7 @@
 import {WINDOW} from '@oblique/oblique';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {NumberFormatExampleOtherOptionsPreviewComponent} from './previews/other-options/number-format-example-other-options-preview.component';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {IdPipe} from '../../../shared/id/id.pipe';

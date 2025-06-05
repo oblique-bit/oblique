@@ -1,6 +1,6 @@
-import {Component, OnDestroy, inject} from '@angular/core';
+import {Component, type OnDestroy, inject} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
-import {MatSlideToggleChange, MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {type MatSlideToggleChange, MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {ObButtonModule, ObSpinnerModule, ObSpinnerService} from '@oblique/oblique';
 
 @Component({

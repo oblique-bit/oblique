@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
-import {CodeExample, CodeExamples} from '../../code-examples.model';
+import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {UnsavedChangesExampleStackblitzLinkPreviewComponent} from '../unsaved-changes/previews/stackblitz-link/unsaved-changes-example-stackblitz-link-preview.component';
 
 @Component({

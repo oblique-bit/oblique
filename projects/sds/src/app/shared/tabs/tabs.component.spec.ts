@@ -1,5 +1,5 @@
 import {Component, NO_ERRORS_SCHEMA} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TabComponent} from './tab/tab.component';
 import {TabsComponent} from './tabs.component';
 import {IdPipe} from '../id/id.pipe';

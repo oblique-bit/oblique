@@ -1,5 +1,5 @@
 import {ObFileInfoComponent} from '../../../../../../oblique/src/lib/file-upload/file-info/file-info.component';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';

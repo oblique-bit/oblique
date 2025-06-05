@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
-import {HttpErrorResponse} from '@angular/common/http';
-import {Component, OnInit, SecurityContext, inject} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import type {HttpErrorResponse} from '@angular/common/http';
+import {Component, type OnInit, SecurityContext, inject} from '@angular/core';
+import {FormBuilder, type FormControl, type FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';

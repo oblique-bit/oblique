@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 import {ObButtonModule, ObErrorMessagesModule, ObNestedFormModule, ObNotificationModule, ObNotificationService} from '@oblique/oblique';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {JsonPipe} from '@angular/common';

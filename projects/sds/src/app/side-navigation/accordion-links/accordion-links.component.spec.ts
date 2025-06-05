@@ -1,8 +1,8 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {AccordionLinksComponent} from './accordion-links.component';
-import {Accordion} from './accordion-links.model';
+import type {Accordion} from './accordion-links.model';
 import {getClassForDebugElementById, getDebugElementById} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
 
 describe(AccordionLinksComponent.name, () => {

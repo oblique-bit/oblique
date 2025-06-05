@@ -1,16 +1,16 @@
-import {ChangeDetectionStrategy, Component, OnChanges, Output, SimpleChanges, inject, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnChanges, Output, type SimpleChanges, inject, input} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatTooltip} from '@angular/material/tooltip';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CmsDataService} from '../../cms/cms-data.service';
-import {Version} from '../../cms/models/version.model';
-import {Observable, filter, first, map, switchMap, tap} from 'rxjs';
+import type {Version} from '../../cms/models/version.model';
+import {type Observable, filter, first, map, switchMap, tap} from 'rxjs';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
 import {latest} from '../../../obliqueVersion';
-import {VersionOption} from './version.model';
+import type {VersionOption} from './version.model';
 import {urlConst} from '../../shared/url/url.const';
 import {VersionService} from '../../shared/version/version.service';
 
@@ -72,7 +72,7 @@ export class VersionComponent implements OnChanges {
 
 	private getVersion(versions: VersionOption[]): number {
 		const currentSlug = this.activatedRoute.snapshot.children[0].paramMap.get(urlConst.urlParams.selectedSlug);
-		const versionFromURL = /(?<=-)\d+$/.exec(currentSlug) ?? [];
+		const versionFromURL = /(?<=-)\d+$/u.exec(currentSlug) ?? [];
 		return parseInt(versionFromURL[0], 10) || this.getLatestVersion(versions);
 	}
 

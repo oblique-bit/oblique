@@ -1,6 +1,6 @@
-import {Component, OnInit, inject} from '@angular/core';
+import {Component, type OnInit, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormControl, type FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {ObErrorMessagesModule, ObSchemaValidationModule} from '@oblique/oblique';
 

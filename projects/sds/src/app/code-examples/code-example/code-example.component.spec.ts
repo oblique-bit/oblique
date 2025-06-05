@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {CodeExampleComponent} from './code-example.component';
 import {SourceCode} from './source-code.model';
@@ -9,7 +9,7 @@ import {IdPipe} from '../../shared/id/id.pipe';
 import {getDebugElementById} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
 import {HighlightedCodeComponent} from './highlighted-code/highlighted-code.component';
 import {CodeExampleDirective} from '../code-example.directive';
-import {PreviewComponent} from '../code-examples.model';
+import type {PreviewComponent} from '../code-examples.model';
 
 @Component({
 	selector: 'app-preview',

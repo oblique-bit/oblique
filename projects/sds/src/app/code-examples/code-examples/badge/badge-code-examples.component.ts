@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CodeExample, CodeExamples} from '../../code-examples.model';
+import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {BadgeExampleColorsComponent} from './previews/colors/badge-example-colors.component';
 import {BadgeExampleOtherOptionsComponent} from './previews/other-options/badge-example-other-options.component';
 import {IdPipe} from '../../../shared/id/id.pipe';

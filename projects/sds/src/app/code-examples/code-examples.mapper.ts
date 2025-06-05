@@ -7,7 +7,7 @@ import {BreakpointsCodeExamplesComponent} from './code-examples/breakpoints/brea
 import {ButtonCodeExamplesComponent} from './code-examples/button/button-code-examples.component';
 import {CardCodeExamplesComponent} from './code-examples/card/card-code-examples.component';
 import {ChipsCodeExamplesComponent} from './code-examples/chips/chips-code-examples.component';
-import {CodeExamples} from './code-examples.model';
+import type {CodeExamples} from './code-examples.model';
 import {ColumnLayoutCodeExamplesComponent} from './code-examples/column-layout/column-layout-code-examples.component';
 import {DialogCodeExamplesComponent} from './code-examples/dialog/dialog-code-examples.component';
 import {ExpansionPanelCodeExamplesComponent} from './code-examples/expansion-panel/expansion-panel-code-examples.component';
@@ -43,7 +43,7 @@ import {TabsCodeExamplesComponent} from './code-examples/tabs/tabs-code-examples
 import {TooltipCodeExamplesComponent} from './code-examples/tooltip/tooltip-code-examples.component';
 import {TranslateParamsCodeExamplesComponent} from './code-examples/translate-params/translate-params-code-examples.component';
 import {TranslationsCodeExamplesComponent} from './code-examples/translations/translations-code-examples.component';
-import {Type} from '@angular/core';
+import type {Type} from '@angular/core';
 import {TypographyCodeExamplesComponent} from './code-examples/typography/typography-code-examples.component';
 import {UnknownRouteCodeExamplesComponent} from './code-examples/unknown-route/unknown-route-code-examples.component';
 import {UnsavedChangesCodeExamplesComponent} from './code-examples/unsaved-changes/unsaved-changes-code-examples.component';

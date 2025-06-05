@@ -1,7 +1,7 @@
 import {AsyncPipe} from '@angular/common';
-import {AfterViewInit, Component, ElementRef, OnDestroy, Signal, inject, viewChild} from '@angular/core';
+import {type AfterViewInit, Component, ElementRef, type OnDestroy, type Signal, inject, viewChild} from '@angular/core';
 import {ObGlobalEventsService, obOutsideFilter} from '@oblique/oblique';
-import {BehaviorSubject, Observable, Subject, map, takeUntil, withLatestFrom} from 'rxjs';
+import {BehaviorSubject, type Observable, Subject, map, takeUntil, withLatestFrom} from 'rxjs';
 
 @Component({
 	selector: 'app-global-events-example-ob-outside-filter-preview',

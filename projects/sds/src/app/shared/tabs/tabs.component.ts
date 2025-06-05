@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, contentChildren, input, output} from '@angular/core';
+import {type AfterViewInit, Component, contentChildren, input, output} from '@angular/core';
 import {TabComponent} from './tab/tab.component';
 import {IdPipe} from '../id/id.pipe';
 import {CommonModule} from '@angular/common';

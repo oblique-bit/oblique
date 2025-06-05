@@ -1,6 +1,6 @@
-import {Rule, SchematicContext, SchematicsException, chain, noop} from '@angular-devkit/schematics';
+import {type Rule, type SchematicContext, SchematicsException, chain, noop} from '@angular-devkit/schematics';
 import {findNodes, getSourceNodes} from '@schematics/angular/utility/ast-utils';
-import {Node, SourceFile, SyntaxKind} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {type Node, type SourceFile, SyntaxKind} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {changeInsertLeft, changeInsertRight, replaceUpdate, showAlreadyExistsMessage} from './sds.utils';
 import {InsertChange, ReplaceChange} from '@schematics/angular/utility/change';
 

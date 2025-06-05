@@ -1,7 +1,7 @@
 import {ObButtonModule, ObErrorMessagesDirective, ObFocusInvalidDirective, ObMatErrorDirective} from '@oblique/oblique';
 import {MatSelectModule} from '@angular/material/select';
-import {Component, OnInit, inject} from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Component, type OnInit, inject} from '@angular/core';
+import {FormBuilder, type FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';

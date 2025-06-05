@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {ImageComponent} from './image.component';
 import {getDebugElementById} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';

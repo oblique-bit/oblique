@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ObIPeriodicElement} from './table.model';
+import type {ObIPeriodicElement} from './table.model';
 import {TableManager} from './table-manager';
 import {AsyncPipe, NgFor, NgTemplateOutlet} from '@angular/common';
 import {MatTableModule} from '@angular/material/table';
