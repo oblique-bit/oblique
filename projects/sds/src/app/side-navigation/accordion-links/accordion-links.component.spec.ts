@@ -96,7 +96,7 @@ describe(AccordionLinksComponent.name, () => {
 	});
 
 	it.each<{indexes: number[]}>([{indexes: [0, 0]}, {indexes: [2, 2]}, {indexes: [3, 0]}])(
-		'should not display link at: $index',
+		'should not display link at: $indexes',
 		({indexes}) => {
 			expect(
 				getDebugElementById<AccordionLinksComponent>(
@@ -110,7 +110,7 @@ describe(AccordionLinksComponent.name, () => {
 	it.each<{indexes: number[]; accordionName: string}>([
 		{indexes: [2, 0], accordionName: 'Introduction'},
 		{indexes: [2, 1], accordionName: 'Introduction'}
-	])(`should have accordion at: $index ($accordionName) expanded`, ({indexes}) => {
+	])(`should have accordion at: $indexes ($accordionName) expanded`, ({indexes}) => {
 		expect(
 			getClassForDebugElementById<AccordionLinksComponent>(
 				fixture,
