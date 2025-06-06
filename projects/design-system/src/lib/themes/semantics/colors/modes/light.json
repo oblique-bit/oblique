@@ -694,6 +694,34 @@
                   }
                 }
               }
+            },
+            "bg-disabled": {
+              "default": {
+                "value": "{ob.p.colors.cobalt-alpha.900}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.4",
+                      "space": "srgb"
+                    }
+                  }
+                }
+              },
+              "inverse": {
+                "value": "{ob.p.colors.cobalt.50}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.4",
+                      "space": "srgb"
+                    }
+                  }
+                }
+              }
             }
           },
           "muted": {
