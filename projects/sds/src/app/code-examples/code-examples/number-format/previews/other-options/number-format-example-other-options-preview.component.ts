@@ -8,7 +8,7 @@ import {Component} from '@angular/core';
 	selector: 'app-number-format-example-other-options-preview',
 	templateUrl: './number-format-example-other-options-preview.component.html',
 	imports: [FormsModule, MatFormFieldModule, MatInputModule, ObNumberFormatModule],
-	styleUrls: ['../../../../code-example-flex-layout.scss']
+	styleUrl: '../../../../code-example-flex-layout.scss'
 })
 export class NumberFormatExampleOtherOptionsPreviewComponent {
 	example4decimals = 5.236548;

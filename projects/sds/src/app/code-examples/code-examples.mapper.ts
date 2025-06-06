@@ -7,7 +7,7 @@ import {BreakpointsCodeExamplesComponent} from './code-examples/breakpoints/brea
 import {ButtonCodeExamplesComponent} from './code-examples/button/button-code-examples.component';
 import {CardCodeExamplesComponent} from './code-examples/card/card-code-examples.component';
 import {ChipsCodeExamplesComponent} from './code-examples/chips/chips-code-examples.component';
-import {CodeExamples} from './code-examples.model';
+import type {CodeExamples} from './code-examples.model';
 import {ColumnLayoutCodeExamplesComponent} from './code-examples/column-layout/column-layout-code-examples.component';
 import {DialogCodeExamplesComponent} from './code-examples/dialog/dialog-code-examples.component';
 import {ExpansionPanelCodeExamplesComponent} from './code-examples/expansion-panel/expansion-panel-code-examples.component';
@@ -43,7 +43,7 @@ import {TabsCodeExamplesComponent} from './code-examples/tabs/tabs-code-examples
 import {TooltipCodeExamplesComponent} from './code-examples/tooltip/tooltip-code-examples.component';
 import {TranslateParamsCodeExamplesComponent} from './code-examples/translate-params/translate-params-code-examples.component';
 import {TranslationsCodeExamplesComponent} from './code-examples/translations/translations-code-examples.component';
-import {Type} from '@angular/core';
+import type {Type} from '@angular/core';
 import {TypographyCodeExamplesComponent} from './code-examples/typography/typography-code-examples.component';
 import {UnknownRouteCodeExamplesComponent} from './code-examples/unknown-route/unknown-route-code-examples.component';
 import {UnsavedChangesCodeExamplesComponent} from './code-examples/unsaved-changes/unsaved-changes-code-examples.component';
@@ -59,67 +59,65 @@ import {FocusWithOutlineExamplesComponent} from './code-examples/focus-with-outl
    If you add a new import above, please make sure it is sorted
    correctly as well to do your part in preventing merge conflicts. */
 
-export class CodeExamplesMapper {
-	private static readonly codeExamples: Record<string, Type<CodeExamples>> = {
-		alert: AlertCodeExamplesComponent,
-		autocomplete: AutocompleteCodeExamplesComponent,
-		badge: BadgeCodeExamplesComponent,
-		banner: BannerCodeExamplesComponent,
-		breadcrumb: BreadcrumbCodeExamplesComponent,
-		breakpoints: BreakpointsCodeExamplesComponent,
-		button: ButtonCodeExamplesComponent,
-		card: CardCodeExamplesComponent,
-		chips: ChipsCodeExamplesComponent,
-		collapse: CollapseCodeExamplesComponent,
-		'column-layout': ColumnLayoutCodeExamplesComponent,
-		date: DateCodeExamplesComponent,
-		dialog: DialogCodeExamplesComponent,
-		'error-messages': ErrorMessagesCodeExamplesComponent,
-		'expansion-panel': ExpansionPanelCodeExamplesComponent,
-		'external-link': ExternalLinkCodeExamplesComponent,
-		'file-upload': FileUploadCodeExamplesComponent,
-		'focus-invalid': FocusInvalidCodeExamplesComponent,
-		'focus-with-outline': FocusWithOutlineExamplesComponent,
-		form: FormCodeExamplesComponent,
-		'global-events': GlobalEventsCodeExamplesComponent,
-		'grid-system': GridSystemCodeExamplesComponent,
-		'html-table': HtmlTableCodeExamplesComponent,
-		icons: IconsCodeExamplesComponent,
-		language: LanguageCodeExamplesComponent,
-		'list-group': ListGroupCodeExamplesComponent,
-		'master-layout': MasterLayoutCodeExamplesComponent,
-		'master-layout-12': MasterLayoutCodeExamplesComponent,
-		'master-layout-13': MasterLayoutCodeExamplesComponent,
-		'material-table': MaterialTableCodeExamplesComponent,
-		'nav-tree': NavTreeCodeExamplesComponent,
-		'nested-form': NestedFormCodeExamplesComponent,
-		notification: NotificationCodeExamplesComponent,
-		'number-format': NumberFormatCodeExamplesComponent,
-		'off-canvas': OffCanvasCodeExamplesComponent,
-		paginator: PaginatorCodeExamplesComponent,
-		popover: PopoverCodeExamplesComponent,
-		'popover-12': Popover12CodeExamplesComponent,
-		'progress-bar': ProgressBarCodeExamplesComponent,
-		'rxjs-operators': RxjsOperatorsCodeExamplesComponent,
-		'schema-validation': SchemaValidationCodeExamplesComponent,
-		selectable: SelectableCodeExamplesComponent,
-		shadow: ShadowCodeExamplesComponent,
-		'slide-toggle': SlideToggleCodeExamplesComponent,
-		slider: SliderCodeExamplesComponent,
-		spacing: SpacingCodeExamplesComponent,
-		spinner: SpinnerCodeExamplesComponent,
-		stepper: StepperCodeExamplesComponent,
-		sticky: StickyCodeExamplesComponent,
-		tabs: TabsCodeExamplesComponent,
-		tooltip: TooltipCodeExamplesComponent,
-		'translate-params': TranslateParamsCodeExamplesComponent,
-		translations: TranslationsCodeExamplesComponent,
-		typography: TypographyCodeExamplesComponent,
-		'unknown-route': UnknownRouteCodeExamplesComponent,
-		'unsaved-changes': UnsavedChangesCodeExamplesComponent
-	};
+const codeExamples: Record<string, Type<CodeExamples>> = {
+	alert: AlertCodeExamplesComponent,
+	autocomplete: AutocompleteCodeExamplesComponent,
+	badge: BadgeCodeExamplesComponent,
+	banner: BannerCodeExamplesComponent,
+	breadcrumb: BreadcrumbCodeExamplesComponent,
+	breakpoints: BreakpointsCodeExamplesComponent,
+	button: ButtonCodeExamplesComponent,
+	card: CardCodeExamplesComponent,
+	chips: ChipsCodeExamplesComponent,
+	collapse: CollapseCodeExamplesComponent,
+	'column-layout': ColumnLayoutCodeExamplesComponent,
+	date: DateCodeExamplesComponent,
+	dialog: DialogCodeExamplesComponent,
+	'error-messages': ErrorMessagesCodeExamplesComponent,
+	'expansion-panel': ExpansionPanelCodeExamplesComponent,
+	'external-link': ExternalLinkCodeExamplesComponent,
+	'file-upload': FileUploadCodeExamplesComponent,
+	'focus-invalid': FocusInvalidCodeExamplesComponent,
+	'focus-with-outline': FocusWithOutlineExamplesComponent,
+	form: FormCodeExamplesComponent,
+	'global-events': GlobalEventsCodeExamplesComponent,
+	'grid-system': GridSystemCodeExamplesComponent,
+	'html-table': HtmlTableCodeExamplesComponent,
+	icons: IconsCodeExamplesComponent,
+	language: LanguageCodeExamplesComponent,
+	'list-group': ListGroupCodeExamplesComponent,
+	'master-layout': MasterLayoutCodeExamplesComponent,
+	'master-layout-12': MasterLayoutCodeExamplesComponent,
+	'master-layout-13': MasterLayoutCodeExamplesComponent,
+	'material-table': MaterialTableCodeExamplesComponent,
+	'nav-tree': NavTreeCodeExamplesComponent,
+	'nested-form': NestedFormCodeExamplesComponent,
+	notification: NotificationCodeExamplesComponent,
+	'number-format': NumberFormatCodeExamplesComponent,
+	'off-canvas': OffCanvasCodeExamplesComponent,
+	paginator: PaginatorCodeExamplesComponent,
+	popover: PopoverCodeExamplesComponent,
+	'popover-12': Popover12CodeExamplesComponent,
+	'progress-bar': ProgressBarCodeExamplesComponent,
+	'rxjs-operators': RxjsOperatorsCodeExamplesComponent,
+	'schema-validation': SchemaValidationCodeExamplesComponent,
+	selectable: SelectableCodeExamplesComponent,
+	shadow: ShadowCodeExamplesComponent,
+	'slide-toggle': SlideToggleCodeExamplesComponent,
+	slider: SliderCodeExamplesComponent,
+	spacing: SpacingCodeExamplesComponent,
+	spinner: SpinnerCodeExamplesComponent,
+	stepper: StepperCodeExamplesComponent,
+	sticky: StickyCodeExamplesComponent,
+	tabs: TabsCodeExamplesComponent,
+	tooltip: TooltipCodeExamplesComponent,
+	'translate-params': TranslateParamsCodeExamplesComponent,
+	translations: TranslationsCodeExamplesComponent,
+	typography: TypographyCodeExamplesComponent,
+	'unknown-route': UnknownRouteCodeExamplesComponent,
+	'unsaved-changes': UnsavedChangesCodeExamplesComponent
+};
 
-	static getCodeExampleComponent(slug: string): Type<CodeExamples> | undefined {
-		return this.codeExamples[slug];
-	}
+export function getCodeExampleComponent(slug: string): Type<CodeExamples> | undefined {
+	return codeExamples[slug];
 }

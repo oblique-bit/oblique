@@ -14,10 +14,10 @@
 <div class="container">
 	<h3><code>mouseMove$</code></h3>
 	<p>Actual coordinates of the mouse:</p>
-	<ng-container *ngIf="mouseMove$ | async as loc">
+	@if (mouseMove$ | async; as loc) {
 		<small>X: {{ loc.xCoordinate }}</small>
 		<small>Y: {{ loc.yCoordinate }}</small>
-	</ng-container>
+	}
 </div>
 <div class="container">
 	<h3><code>keyDown$</code></h3>
@@ -34,8 +34,8 @@
 <div class="container">
 	<h3><code>resize$</code></h3>
 	<p>Actual size of the window:</p>
-	<ng-container *ngIf="resize$ | async as box">
+	@if (resize$ | async; as box) {
 		<small>Width: {{ box.width }}</small>
 		<small>Height: {{ box.height }}</small>
-	</ng-container>
+	}
 </div>

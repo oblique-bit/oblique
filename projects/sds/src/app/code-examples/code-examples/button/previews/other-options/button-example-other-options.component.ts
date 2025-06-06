@@ -7,7 +7,7 @@ import {ObButtonModule} from '@oblique/oblique';
 @Component({
 	selector: 'app-button-example-other-options',
 	templateUrl: './button-example-other-options.component.html',
-	styleUrls: ['../../../../code-example-flex-layout.scss'],
+	styleUrl: '../../../../code-example-flex-layout.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [ObButtonModule, MatButtonModule, MatTooltipModule, MatIconModule],
 	host: {class: 'layout-breakpoint-sm'}

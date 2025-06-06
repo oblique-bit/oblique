@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TabComponent} from './tab.component';
 import {IdPipe} from '../../id/id.pipe';
 
@@ -34,7 +34,7 @@ describe(TabComponent.name, () => {
 
 	describe('initiallyActive = true', () => {
 		beforeEach(() => {
-			component.initiallyActive = true;
+			fixture.componentRef.setInput('initiallyActive', true);
 			component.ngOnChanges({initiallyActive: {previousValue: false, currentValue: true, firstChange: true, isFirstChange: () => true}});
 		});
 

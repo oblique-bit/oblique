@@ -4,7 +4,7 @@ import {MatTableModule} from '@angular/material/table';
 @Component({
 	selector: 'app-material-table-example-sizes-preview',
 	templateUrl: './material-table-example-sizes-preview.component.html',
-	styleUrls: ['./material-table-example-sizes-preview.component.scss'],
+	styleUrl: './material-table-example-sizes-preview.component.scss',
 	imports: [MatTableModule]
 })
 export class MaterialTableExampleSizesPreviewComponent {

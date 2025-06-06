@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {ObStickyComponent, WINDOW} from '@oblique/oblique';
 import {IdPipe} from '../../../shared/id/id.pipe';

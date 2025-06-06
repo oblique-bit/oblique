@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {HighlightedCodeComponent} from './highlighted-code.component';
 import {IdPipe} from '../../../shared/id/id.pipe';

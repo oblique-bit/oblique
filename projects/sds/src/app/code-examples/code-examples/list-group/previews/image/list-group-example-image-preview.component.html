@@ -1,5 +1,5 @@
 <mat-list role="list">
-	<ng-container *ngFor="let item of contentForList">
+	@for (item of contentForList; track item) {
 		<mat-list-item role="listitem">
 			<img
 				matListItemAvatar
@@ -13,5 +13,5 @@
 			<p matListItemLine>{{ item.line2 }}</p>
 			<p matListItemLine>{{ item.line3 }}</p>
 		</mat-list-item>
-	</ng-container>
+	}
 </mat-list>

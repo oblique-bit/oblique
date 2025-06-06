@@ -1,4 +1,4 @@
-import {Observable, of} from 'rxjs';
+import {type Observable, of} from 'rxjs';
 
 export interface PeriodicElement {
 	id: number;

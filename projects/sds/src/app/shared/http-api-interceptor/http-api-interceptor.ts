@@ -1,14 +1,13 @@
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import type {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Injectable, inject} from '@angular/core';
 import {ObSpinnerService} from '@oblique/oblique';
-import {Observable, throwError} from 'rxjs';
+import {type Observable, throwError} from 'rxjs';
 import {catchError, finalize} from 'rxjs/operators';
 
 @Injectable()
 export class HttpApiInterceptor implements HttpInterceptor {
+	private readonly spinner = inject(ObSpinnerService);
 	private readonly activeRequestUrls: string[] = [];
-
-	constructor(private readonly spinner: ObSpinnerService) {}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		this.activateSpinner(request.url);

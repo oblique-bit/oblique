@@ -11,7 +11,7 @@ export interface ChipColor {
 	selector: 'app-chips-example-stack-color-preview',
 	imports: [CommonModule, MatChipsModule],
 	templateUrl: './chips-example-stack-preview.component.html',
-	styleUrls: ['./chips-example-stack-preview.component.scss']
+	styleUrl: './chips-example-stack-preview.component.scss'
 })
 export class ChipsExampleStackPreviewComponent {
 	availableColors: ChipColor[] = [

@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable, inject} from '@angular/core';
-import {Observable} from 'rxjs';
-import {NewsletterTokenComplete} from './newsletter-token.model';
+import type {Observable} from 'rxjs';
+import type {NewsletterTokenComplete} from './newsletter-token.model';
 
 @Injectable({
 	providedIn: 'root'

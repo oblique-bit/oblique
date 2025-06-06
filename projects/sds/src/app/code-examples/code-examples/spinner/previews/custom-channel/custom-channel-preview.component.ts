@@ -1,12 +1,12 @@
-import {Component, OnDestroy, inject} from '@angular/core';
+import {Component, type OnDestroy, inject} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
-import {MatSlideToggleChange, MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {type MatSlideToggleChange, MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {ObButtonModule, ObSpinnerModule, ObSpinnerService} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-custom-channel-preview',
 	templateUrl: './custom-channel-preview.component.html',
-	styleUrls: ['./custom-channel-preview.component.scss'],
+	styleUrl: './custom-channel-preview.component.scss',
 	imports: [ObSpinnerModule, MatButtonModule, ObButtonModule, MatSlideToggleModule]
 })
 export class CustomChannelPreviewComponent implements OnDestroy {

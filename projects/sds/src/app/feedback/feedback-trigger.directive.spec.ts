@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {CollectorService} from '../shared/collector/collector.service';
@@ -44,7 +44,6 @@ describe(FeedbackTriggerDirective.name, () => {
 		});
 
 		test('fallbackDialog is FeedbackFormComponent', () => {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 			expect(service.fallbackDialog.name).toBe('FeedbackFormComponent');
 		});
 

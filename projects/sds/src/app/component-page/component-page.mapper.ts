@@ -1,15 +1,13 @@
-import {ComponentPage} from './component-page';
+import type {ComponentPage} from './component-page';
 import {NewsletterComponent} from './component-pages/newsletter/newsletter.component';
 
-export class ComponentPageMapper {
-	private static readonly components: Record<string, ComponentPage> = {
-		newsletter: {
-			title: 'Newsletter',
-			component: NewsletterComponent
-		}
-	};
-
-	static getComponentPageComponent(name: string): ComponentPage | undefined {
-		return this.components[name];
+const components: Record<string, ComponentPage> = {
+	newsletter: {
+		title: 'Newsletter',
+		component: NewsletterComponent
 	}
+};
+
+export function getComponentPageComponent(name: string): ComponentPage | undefined {
+	return components[name];
 }

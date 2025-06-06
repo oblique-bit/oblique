@@ -10,7 +10,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {Observable, map, startWith} from 'rxjs';
+import {type Observable, map, startWith} from 'rxjs';
 
 @Component({
 	selector: 'app-icons-example-icons-gallery-preview',

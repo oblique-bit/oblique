@@ -1,4 +1,4 @@
-import {Directive, HostListener, OnInit, inject} from '@angular/core';
+import {Directive, HostListener, type OnInit, inject} from '@angular/core';
 import {CollectorService} from '../shared/collector/collector.service';
 import {FeedbackFormComponent} from './feedback-form/feedback-form.component';
 

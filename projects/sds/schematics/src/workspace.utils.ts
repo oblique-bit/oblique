@@ -1,9 +1,9 @@
 import {workspaces} from '@angular-devkit/core';
-import {Tree} from '@angular-devkit/schematics';
-import {WorkspaceDefinition} from '@schematics/angular/utility';
+import type {Tree} from '@angular-devkit/schematics';
+import type {WorkspaceDefinition} from '@schematics/angular/utility';
 import {WorkspaceFormat} from '@angular-devkit/core/src/workspace/index';
 import {createHost} from './host.utils';
-import {ProjectDefinition} from '@angular-devkit/core/src/workspace/definitions';
+import type {ProjectDefinition} from '@angular-devkit/core/src/workspace/definitions';
 
 export async function getSdsSourceRootPath(tree: Tree): Promise<string> {
 	const workspaceDefinition: WorkspaceDefinition = await getWorkspaceDefinition(tree);

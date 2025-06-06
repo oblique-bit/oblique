@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CodeExample, CodeExamples} from '../../code-examples.model';
+import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {DialogExampleDefaultComponent} from './previews/default/dialog-example-default.component';
 import {DialogExampleSpinnerComponent} from './previews/spinner/dialog-example-spinner.component';
 import {CodeExampleComponent} from '../../code-example/code-example.component';

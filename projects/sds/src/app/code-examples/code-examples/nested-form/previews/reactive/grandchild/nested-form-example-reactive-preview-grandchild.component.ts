@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {ObErrorMessagesModule} from '@oblique/oblique';
@@ -8,7 +8,7 @@ import {ObErrorMessagesModule} from '@oblique/oblique';
 	selector: 'app-nested-form-example-reactive-preview-grandchild',
 	exportAs: 'grandchild',
 	templateUrl: './nested-form-example-reactive-preview-grandchild.component.html',
-	styleUrls: ['../../nested-form-example-preview.scss'],
+	styleUrl: '../../nested-form-example-preview.scss',
 	imports: [MatInputModule, MatFormFieldModule, ObErrorMessagesModule, ReactiveFormsModule]
 })
 export class NestedFormExampleReactivePreviewGrandchildComponent {

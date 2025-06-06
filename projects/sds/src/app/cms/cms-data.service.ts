@@ -1,20 +1,19 @@
 import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {CategoryCms} from './models/category.model';
-import {TabbedPageCompleteCms} from './models/tabbed-page.model';
-import {TextPageCompleteCms} from './models/text-page.model';
-import {VersionCms} from './models/version.model';
-import {CMSPageShortList} from './models/cms-page.model';
-import {BannerCms} from './models/banner.model';
+import {Injectable, inject} from '@angular/core';
+import type {Observable} from 'rxjs';
+import type {CategoryCms} from './models/category.model';
+import type {TabbedPageCompleteCms} from './models/tabbed-page.model';
+import type {TextPageCompleteCms} from './models/text-page.model';
+import type {VersionCms} from './models/version.model';
+import type {CMSPageShortList} from './models/cms-page.model';
+import type {BannerCms} from './models/banner.model';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class CmsDataService {
 	readonly baseUrl = 'https://oblique.directus.app/';
-
-	constructor(private readonly httpClient: HttpClient) {}
+	private readonly httpClient = inject(HttpClient);
 
 	getVersions(): Observable<VersionCms> {
 		return this.httpClient.get<VersionCms>(`${this.baseUrl}items/Version`);

@@ -1,13 +1,13 @@
-import {AsyncPipe, NgIf} from '@angular/common';
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {AsyncPipe} from '@angular/common';
+import {Component, type OnDestroy, type OnInit, inject} from '@angular/core';
 import {ObGlobalEventsService, WINDOW} from '@oblique/oblique';
-import {Observable, Subject, map, startWith, takeUntil, tap} from 'rxjs';
+import {type Observable, Subject, map, startWith, takeUntil, tap} from 'rxjs';
 
 @Component({
 	selector: 'app-global-events-example-properties-preview',
 	templateUrl: './global-events-example-properties-preview.component.html',
 	styleUrls: ['../global-events-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
-	imports: [AsyncPipe, NgIf]
+	imports: [AsyncPipe]
 })
 export class GlobalEventsExamplePropertiesPreviewComponent implements OnInit, OnDestroy {
 	click$: Observable<number>;
@@ -18,18 +18,14 @@ export class GlobalEventsExamplePropertiesPreviewComponent implements OnInit, On
 	scroll$: Observable<number>;
 	resize$: Observable<{height: number; width: number}>;
 	beforeUnload$: Observable<number>;
-
+	private readonly events = inject(ObGlobalEventsService);
+	private readonly window = inject<Window>(WINDOW);
 	private readonly unsubscribe = new Subject<void>();
 	private readonly counter = {
 		beforeUnload: 0,
 		click: 0,
 		mouseDown: 0
 	};
-
-	constructor(
-		private readonly events: ObGlobalEventsService,
-		@Inject(WINDOW) private readonly window: Window
-	) {}
 
 	ngOnInit(): void {
 		this.setupClick();

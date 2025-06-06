@@ -2,7 +2,7 @@ import {inject} from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
 import {WINDOW} from '@oblique/oblique';
-import {Connectable, ReplaySubject, connectable} from 'rxjs';
+import {type Connectable, ReplaySubject, connectable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 interface Data {

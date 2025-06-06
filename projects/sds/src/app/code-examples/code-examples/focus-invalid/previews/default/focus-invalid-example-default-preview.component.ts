@@ -1,7 +1,7 @@
 import {ObButtonModule, ObErrorMessagesDirective, ObFocusInvalidDirective, ObMatErrorDirective} from '@oblique/oblique';
 import {MatSelectModule} from '@angular/material/select';
-import {Component, OnInit, inject} from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Component, type OnInit, inject} from '@angular/core';
+import {FormBuilder, type FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -12,7 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
 	selector: 'app-focus-invalid-example-default-preview',
 	templateUrl: './focus-invalid-example-default-preview.component.html',
-	styleUrls: ['./focus-invalid-example-default-preview.component.scss'],
+	styleUrl: './focus-invalid-example-default-preview.component.scss',
 	imports: [
 		MatButtonModule,
 		MatDatepickerModule,
@@ -23,9 +23,6 @@ import {MatButtonModule} from '@angular/material/button';
 		MatSelectModule,
 		ObButtonModule,
 		ReactiveFormsModule,
-		ObErrorMessagesDirective,
-		ObFocusInvalidDirective,
-		ObMatErrorDirective,
 		ObErrorMessagesDirective,
 		ObFocusInvalidDirective,
 		ObMatErrorDirective

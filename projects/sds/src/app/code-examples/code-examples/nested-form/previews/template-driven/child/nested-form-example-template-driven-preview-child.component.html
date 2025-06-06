@@ -9,7 +9,7 @@
 		<input matInput name="field2" required [(ngModel)]="field2" />
 		<mat-error />
 	</mat-form-field>
-	<ob-nested-form name="grandchild" [nestedForm]="grandchild.ngForm.control" [(ngModel)]="grandchildModel">
+	<ob-nested-form name="grandchild" [nestedForm]="grandchild.ngForm().control" [(ngModel)]="grandchildModel">
 		<app-nested-form-example-template-driven-preview-grandchild #grandchild />
 	</ob-nested-form>
 </div>

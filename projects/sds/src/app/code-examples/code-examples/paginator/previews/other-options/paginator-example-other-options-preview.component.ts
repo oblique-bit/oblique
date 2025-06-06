@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
+import {type AfterViewInit, Component, viewChild} from '@angular/core';
+import {type MatPaginator, MatPaginatorModule, type PageEvent} from '@angular/material/paginator';
 import {ObPaginatorModule} from '@oblique/oblique';
 import {JsonPipe} from '@angular/common';
 
@@ -13,9 +13,9 @@ import {JsonPipe} from '@angular/common';
 export class PaginatorExampleOtherOptionsPreviewComponent implements AfterViewInit {
 	initializedText = 'Paginator has not yet been initialized';
 	lastPageEvent: PageEvent;
-	@ViewChild('initialized') private readonly initializedPaginator!: MatPaginator;
+	private readonly initializedPaginator = viewChild.required<MatPaginator>('initialized');
 
 	ngAfterViewInit(): void {
-		this.initializedPaginator.initialized.subscribe(() => (this.initializedText = 'Paginator has now been initialized'));
+		this.initializedPaginator().initialized.subscribe(() => (this.initializedText = 'Paginator has now been initialized'));
 	}
 }

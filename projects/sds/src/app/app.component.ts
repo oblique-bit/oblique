@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ObSpinnerModule} from '@oblique/oblique';
 import {RouterOutlet} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, filter, map, tap} from 'rxjs';
+import {type Observable, filter, map, tap} from 'rxjs';
 import {CmsDataService} from './cms/cms-data.service';
 import {SideNavigationComponent} from './side-navigation/side-navigation.component';
 import {BannerComponent} from './banner/banner.component';
@@ -11,7 +11,7 @@ import {BannerComponent} from './banner/banner.component';
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss'],
+	styleUrl: './app.component.scss',
 	imports: [CommonModule, RouterOutlet, ObSpinnerModule, SideNavigationComponent, BannerComponent]
 })
 export class AppComponent {
@@ -33,7 +33,7 @@ export class AppComponent {
 	private getBannerData(cmsDataService: CmsDataService): Observable<string> {
 		return cmsDataService.getBanner().pipe(
 			map(data => data.data.content),
-			filter(content => !!content),
+			filter(content => Boolean(content)),
 			tap(() => (this.hasBanner = true))
 		);
 	}

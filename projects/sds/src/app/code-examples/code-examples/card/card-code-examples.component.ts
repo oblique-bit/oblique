@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CodeExample, CodeExamples} from '../../code-examples.model';
+import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {BasicCardComponent} from './previews/basic-card/basic-card.component';
 import {CardWithMultipleSectionsComponent} from './previews/card-with-multiple-sections/card-with-multiple-sections.component';
 import {ClickableCardsComponent} from './previews/clickable-cards/clickable-cards.component';

@@ -5,7 +5,7 @@
 		<input matInput name="parent" required [(ngModel)]="model.parent" />
 		<mat-error />
 	</mat-form-field>
-	<ob-nested-form name="child" [nestedForm]="child.ngForm.control" [(ngModel)]="model.child">
+	<ob-nested-form name="child" [nestedForm]="child.ngForm().control" [(ngModel)]="model.child">
 		<app-nested-form-example-template-driven-preview-child #child />
 	</ob-nested-form>
 	<div class="actions">

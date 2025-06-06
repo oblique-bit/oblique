@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, inject} from '@angular/core';
+import {type AfterViewInit, Component, type OnDestroy, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ObButtonModule, ObSpinnerModule, ObSpinnerService} from '@oblique/oblique';

@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {ImageComponent} from './image.component';
-import {UnitTestHelpers} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
+import {getDebugElementById} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
 
 interface ImageInputsOptional {
 	alt?: string;
@@ -40,11 +40,11 @@ describe(ImageComponent.name, () => {
 
 		fixture = TestBed.createComponent(ImageComponent);
 		component = fixture.componentInstance;
-		component.alt = alt;
-		component.height = height;
-		component.width = width;
-		component.idPrefix = idPrefix;
-		component.ngSrc = src;
+		fixture.componentRef.setInput('alt', alt);
+		fixture.componentRef.setInput('height', height);
+		fixture.componentRef.setInput('width', width);
+		fixture.componentRef.setInput('idPrefix', idPrefix);
+		fixture.componentRef.setInput('ngSrc', src);
 		fixture.autoDetectChanges();
 		return fixture.whenStable();
 	};
@@ -66,8 +66,7 @@ describe(ImageComponent.name, () => {
 
 		it('should display image with attributes set correctly', () => {
 			expect(
-				UnitTestHelpers.getDebugElementById<ImageComponent>(fixture, idPipe.transform(component.idPrefix, [component.componentId, imgId]))
-					.attributes
+				getDebugElementById<ImageComponent>(fixture, idPipe.transform(component.idPrefix(), [component.componentId, imgId])).attributes
 			).toEqual(
 				expect.objectContaining({
 					src: 'http://www.image-src.com'
@@ -89,7 +88,7 @@ describe(ImageComponent.name, () => {
 
 		it('should display image when just alt is falsy', () => {
 			expect(
-				UnitTestHelpers.getDebugElementById<ImageComponent>(fixture, idPipe.transform(component.idPrefix, [component.componentId, imgId]))
+				getDebugElementById<ImageComponent>(fixture, idPipe.transform(component.idPrefix(), [component.componentId, imgId]))
 			).toBeTruthy();
 		});
 	});

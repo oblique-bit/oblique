@@ -1,7 +1,7 @@
-import {AfterViewChecked, Component, HostListener, inject} from '@angular/core';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {type AfterViewChecked, Component, HostListener, inject} from '@angular/core';
+import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
+import {type Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {urlConst} from '../shared/url/url.const';
 import {CmsDataService} from '../cms/cms-data.service';
@@ -12,7 +12,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 @Component({
 	selector: 'app-text-page',
 	templateUrl: './text-page.component.html',
-	styleUrls: ['./text-page.component.scss'],
+	styleUrl: './text-page.component.scss',
 	imports: [CommonModule, IdPipe],
 	host: {class: 'content-page'}
 })

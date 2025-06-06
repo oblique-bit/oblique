@@ -3,7 +3,10 @@
 </button>
 <p class="label">
 	The Popover is <span class="visibility">{{ popoverVisible ? "visible" : "hidden" }}</span>
-	<span *ngIf="lastVisibilityEventTimestamp"> (last event emitted at {{ lastVisibilityEventTimestamp | date: "HH:mm:ss.SSS" }})</span>.
+	@if (lastVisibilityEventTimestamp) {
+		<span> (last event emitted at {{ lastVisibilityEventTimestamp | date: "HH:mm:ss.SSS" }})</span>
+	}
+	.
 </p>
 
 <ng-template #popover>

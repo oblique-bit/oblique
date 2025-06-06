@@ -1,7 +1,7 @@
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {StepperExampleOtherOptionsPreviewComponent} from './previews/other-options/stepper-example-other-options-preview.component';
 import {StepperExampleDefaultPreviewComponent} from './previews/default/stepper-example-default-preview.component';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';

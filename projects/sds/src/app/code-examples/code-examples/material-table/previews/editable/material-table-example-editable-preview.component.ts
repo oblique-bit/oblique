@@ -1,17 +1,17 @@
-import {Component, OnInit, inject} from '@angular/core';
+import {Component, type OnInit, inject} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, WINDOW} from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatTooltip} from '@angular/material/tooltip';
-import {MockBackEndService, PeriodicElement} from './mock-backend.service';
+import {MockBackEndService, type PeriodicElement} from './mock-backend.service';
 import {AppMaterialTableExampleEditableDialogComponent} from './material-table-editable-dialog.component';
 
 @Component({
 	selector: 'app-material-table-example-editable-preview',
 	templateUrl: './material-table-example-editable-preview.component.html',
-	styleUrls: ['./material-table-example-editable-preview.component.scss'],
+	styleUrl: './material-table-example-editable-preview.component.scss',
 	imports: [MatTableModule, MatButtonModule, ObButtonModule, MatIconModule, MatDialogModule, MatTooltip]
 })
 export class MaterialTableExampleEditablePreviewComponent implements OnInit {

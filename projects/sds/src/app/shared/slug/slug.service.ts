@@ -23,8 +23,8 @@ export class SlugService {
 
 	private getCurrentSlug(): string {
 		return this.router.url
-			.replace(/[#|?].*/, '') // remove queryParams & fragment
-			.replace(/\/(?:api|ui-ux|examples)/, '')
+			.replace(/[#|?].*/u, '') // remove queryParams & fragment
+			.replace(/\/(?:api|ui-ux|examples)/u, '')
 			.split('/')
 			.pop();
 	}

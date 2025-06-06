@@ -1,10 +1,10 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FeedbackFormComponent} from './feedback-form.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {Fields} from './feedback-form.model';
+import type {Fields} from './feedback-form.model';
 
 describe(FeedbackFormComponent.name, () => {
 	let component: FeedbackFormComponent;

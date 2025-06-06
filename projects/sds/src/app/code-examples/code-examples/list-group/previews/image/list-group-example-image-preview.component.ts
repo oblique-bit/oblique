@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {NgFor, NgOptimizedImage} from '@angular/common';
+import {NgOptimizedImage} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 
 @Component({
 	selector: 'app-list-group-example-image-preview',
 	templateUrl: './list-group-example-image-preview.component.html',
-	imports: [MatListModule, MatIconModule, NgFor, NgOptimizedImage],
+	imports: [MatListModule, MatIconModule, NgOptimizedImage],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListGroupExampleImagePreviewComponent {

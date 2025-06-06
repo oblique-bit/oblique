@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CodeExample, CodeExamples} from '../../code-examples.model';
+import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {ButtonExampleColorsComponent} from './previews/colors/button-example-colors.component';
 import {ButtonExampleOtherOptionsComponent} from './previews/other-options/button-example-other-options.component';
 import {IdPipe} from '../../../shared/id/id.pipe';

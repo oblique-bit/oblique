@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CodeExample, CodeExamples} from '../../code-examples.model';
+import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {ListGroupExampleDefaultComponent} from './previews/default/list-group-example-default.component';
 import {ListGroupExampleCheckBoxComponent} from './previews/checkbox/list-group-example-checkbox.component';
 import {ListGroupExampleAvatarSubheaderComponent} from './previews/avatar-subheader/list-group-example-avatar-subheader.component';

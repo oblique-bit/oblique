@@ -1,5 +1,5 @@
 import {SourceCode} from './code-example/source-code.model';
-import {Type} from '@angular/core';
+import type {Type} from '@angular/core';
 
 /**
  * Each *CodeExamplesComponent extends this class so that they all have the same type.
@@ -39,9 +39,9 @@ export class CodeExamples {
 	private fixPath(fileType: string, fileContent: string): string {
 		switch (fileType) {
 			case 'scss':
-				return fileContent.replace(/@oblique\/oblique\/src\/styles\/scss\/core/g, '@oblique/oblique/styles/scss/core');
+				return fileContent.replace(/@oblique\/oblique\/src\/styles\/scss\/core/gu, '@oblique/oblique/styles/scss/core');
 			case 'ts':
-				return fileContent.replace(/(?:\.\.\/)+/g, './');
+				return fileContent.replace(/(?:\.\.\/)+/gu, './');
 			default:
 				return fileContent;
 		}
