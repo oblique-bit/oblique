@@ -102,53 +102,46 @@
             "secondary": {
               "enabled": {
                 "value": "{ob.s.color.static.no-color}",
-                "type": "color"
+                "type": "color",
+                "description": "Secondary needs a transparent background color on Enabled state."
               },
               "hover": {
-                "value": "{ob.p.colors.cobalt.50}",
+                "value": "{ob.s.color.interaction.state.bg.hover}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.static.no-color}",
+                "value": "{ob.s.color.interaction.state.bg.focus}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.p.colors.cobalt.50}",
+                "value": "{ob.s.color.interaction.state.bg.pressed}",
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.static.no-color}",
+                "value": "{ob.s.color.interaction.state.bg.disabled}",
                 "type": "color"
               }
             },
             "tertiary": {
               "enabled": {
                 "value": "{ob.s.color.static.no-color}",
-                "type": "color"
+                "type": "color",
+                "description": "Tertiary needs a transparent background color on Enabled state."
               },
               "hover": {
-                "value": "{ob.p.colors.basic.white}",
+                "value": "{ob.s.color.interaction.state.bg.hover}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.static.no-color}",
+                "value": "{ob.s.color.interaction.state.bg.focus}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.p.colors.cobalt.400}",
-                "type": "color",
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "alpha",
-                      "value": "0.1",
-                      "space": "srgb"
-                    }
-                  }
-                }
+                "value": "{ob.s.color.interaction.state.bg.pressed}",
+                "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.static.no-color}",
+                "value": "{ob.s.color.interaction.state.bg.disabled}",
                 "type": "color"
               }
             }
@@ -187,11 +180,11 @@
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.p.colors.steelblue.800}",
+                "value": "{ob.s.color.interaction.state.fg.focus}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.p.colors.steelblue.900}",
+                "value": "{ob.s.color.interaction.state.fg.focus}",
                 "type": "color"
               },
               "disabled": {

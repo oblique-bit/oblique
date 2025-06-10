@@ -5,7 +5,7 @@
         "interaction": {
           "state": {
             "fg": {
-              "link": {
+              "enabled": {
                 "value": "{ob.s.color.neutral.fg.contrast-highest}",
                 "type": "color",
                 "description": "References directly the text color to ensure the color consistency"
@@ -46,7 +46,7 @@
               }
             },
             "fg-inverse": {
-              "link": {
+              "enabled": {
                 "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
                 "type": "color",
                 "description": "References directly the text color to ensure the color consistency"
@@ -87,7 +87,7 @@
               }
             },
             "bg": {
-              "link": {
+              "enabled": {
                 "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               },
@@ -112,13 +112,13 @@
                 "type": "color",
                 "description": "For text-links."
               },
-              "disableda": {
+              "disabled": {
                 "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               }
             },
             "bg-inverse": {
-              "link": {
+              "enabled": {
                 "value": "{ob.s.color.neutral.fg.contrast-highest}",
                 "type": "color",
                 "description": "References directly the text color to ensure the color consistency"

@@ -275,7 +275,10 @@
       "components/molecules/pills": "enabled",
       "components/sections/footer": "enabled",
       "components/typography-styles": "enabled",
-      "components/atoms/link": "enabled"
+      "components/atoms/link": "enabled",
+      "components/molecules/button-colors": "disabled",
+      "components/molecules/button-modes-depr/dark": "disabled",
+      "components/molecules/button-modes-depr/emph-low-temp": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10676",
     "$figmaModeId": "6001:15",
@@ -704,7 +707,10 @@
       "semantics/typography-modes/1440-lg": "enabled",
       "semantics/typography-scale": "source",
       "semantics/typography-styles": "enabled",
-      "components/atoms/text-1440": "enabled"
+      "components/atoms/text-1440": "enabled",
+      "components/molecules/button-colors": "disabled",
+      "components/molecules/button-modes-depr/dark": "disabled",
+      "components/molecules/button-modes-depr/emph-low-temp": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "babf8d28d9066ddebee3e321ab2f2ed3bf3779a6",
@@ -913,7 +919,10 @@
       "semantics/typography-modes/360-xs": "enabled",
       "semantics/typography-scale": "source",
       "semantics/typography-styles": "enabled",
-      "components/atoms/text-360": "enabled"
+      "components/atoms/text-360": "enabled",
+      "components/molecules/button-colors": "disabled",
+      "components/molecules/button-modes-depr/dark": "disabled",
+      "components/molecules/button-modes-depr/emph-low-temp": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "babf8d28d9066ddebee3e321ab2f2ed3bf3779a6",
@@ -1005,7 +1014,9 @@
       "semantics/colors/modes/light": "enabled",
       "semantics/colors/static": "enabled",
       "components/molecules/tags-modes/light": "enabled",
-      "components/molecules/button-modes/light": "enabled"
+      "components/molecules/button-colors": "enabled",
+      "components/molecules/button-modes-depr/dark": "disabled",
+      "components/molecules/button-modes-depr/emph-low-temp": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:19",
@@ -1244,8 +1255,10 @@
       "primitives/colors": "source",
       "semantics/colors/modes/dark": "enabled",
       "semantics/colors/static": "enabled",
-      "components/molecules/button-modes/light": "enabled",
-      "components/molecules/tags-modes/light": "enabled"
+      "components/molecules/tags-modes/light": "enabled",
+      "components/molecules/button-colors": "enabled",
+      "components/molecules/button-modes-depr/dark": "disabled",
+      "components/molecules/button-modes-depr/emph-low-temp": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:20",
@@ -1481,8 +1494,10 @@
     "name": "default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "primitives/colors": "source",
-      "semantics/colors/modes/interaction-default": "enabled"
+      "semantics/colors/modes/interaction-default": "enabled",
+      "components/molecules/button-colors": "disabled",
+      "components/molecules/button-modes-depr/dark": "disabled",
+      "components/molecules/button-modes-depr/emph-low-temp": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.hover": "4190df50014575810e8db3e11f4a6c74c9c83179",
@@ -1502,29 +1517,31 @@
       "ob.s.color.interaction.state.bg.pressed": "e421bee38d486e61189c1f62c22b5c4444f400a4",
       "ob.s.color.interaction.state.bg.selected": "9a5c7fd7f898be068181b1ba27928fc09fdbc9e7",
       "ob.s.color.interaction.state.bg.visited": "22bddb40b4e0adafd44483f3ef99edc615621625",
+      "ob.s.color.interaction.state.bg.disabled": "2b70ec2cafb67482384f5059fb248d48eb0b6bf8",
       "ob.s.color.interaction.state.bg-inverse.hover": "a69f1bc5d68ac9b6b5357c6a4c94d481042ad9d2",
       "ob.s.color.interaction.state.bg-inverse.focus": "b7972fb93bc7d6c86db2d3d99f065e9a7d7d74b8",
       "ob.s.color.interaction.state.bg-inverse.pressed": "3376d945417078fd15f9ea540f9c8cf55fa59e53",
       "ob.s.color.interaction.state.bg-inverse.selected": "3106b959ff36d8a2f8ac420856ec71e63c21325f",
       "ob.s.color.interaction.state.bg-inverse.visited": "055ce7717d3e8019423b54dd4517f854a3ff94d5",
       "ob.s.color.interaction.state.bg-inverse.disabled": "b95c6117eb4189483579bd812c2087a76b20da1d",
-      "ob.s.color.interaction.state.fg.enabled": "9798d1078107fa9e680856c3cf3937570aeb6a9f",
-      "ob.s.color.interaction.state.fg-inverse.enabled": "09af3659bbefc62b23127ae5847f247ed0231097",
-      "ob.s.color.interaction.state.bg.enabled": "746f41955469e4b6635a252fb539cd788fb6d41a",
-      "ob.s.color.interaction.state.bg.disabled": "21dd121bbb452953578632003a5154e1638cc69a",
-      "ob.s.color.interaction.state.bg-inverse.enabled": "e2fba61e3581e4426e26ec82e3b5dab75fc6ddbe"
+      "ob.s.color.interaction.state.fg.enabled": "274e392b62f63f913f688adcc4743ebbb05c1797",
+      "ob.s.color.interaction.state.fg-inverse.enabled": "d7b923116741edfe2132525b91f6439767d91367",
+      "ob.s.color.interaction.state.bg.enabled": "85abf0965475b105ec4585796670bf1a2592e339",
+      "ob.s.color.interaction.state.bg-inverse.enabled": "4dc2c8994bb1e92af7bbbf127b141302a828e76c"
     },
-    "group": "interaction-emphasis",
     "$figmaCollectionId": "VariableCollectionId:12027:26626",
-    "$figmaModeId": "12027:0"
+    "$figmaModeId": "12027:0",
+    "group": "interaction-emphasis"
   },
   {
     "id": "daee0049718efa9352d42c884e67716c9ae0401e",
     "name": "muted",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "primitives/colors": "source",
-      "semantics/colors/modes/interaction-muted": "enabled"
+      "semantics/colors/modes/interaction-muted": "enabled",
+      "components/molecules/button-colors": "disabled",
+      "components/molecules/button-modes-depr/dark": "disabled",
+      "components/molecules/button-modes-depr/emph-low-temp": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.hover": "4190df50014575810e8db3e11f4a6c74c9c83179",
@@ -1544,20 +1561,20 @@
       "ob.s.color.interaction.state.bg.pressed": "e421bee38d486e61189c1f62c22b5c4444f400a4",
       "ob.s.color.interaction.state.bg.selected": "9a5c7fd7f898be068181b1ba27928fc09fdbc9e7",
       "ob.s.color.interaction.state.bg.visited": "22bddb40b4e0adafd44483f3ef99edc615621625",
+      "ob.s.color.interaction.state.bg.disabled": "2b70ec2cafb67482384f5059fb248d48eb0b6bf8",
       "ob.s.color.interaction.state.bg-inverse.hover": "a69f1bc5d68ac9b6b5357c6a4c94d481042ad9d2",
       "ob.s.color.interaction.state.bg-inverse.focus": "b7972fb93bc7d6c86db2d3d99f065e9a7d7d74b8",
       "ob.s.color.interaction.state.bg-inverse.pressed": "3376d945417078fd15f9ea540f9c8cf55fa59e53",
       "ob.s.color.interaction.state.bg-inverse.selected": "3106b959ff36d8a2f8ac420856ec71e63c21325f",
       "ob.s.color.interaction.state.bg-inverse.visited": "055ce7717d3e8019423b54dd4517f854a3ff94d5",
       "ob.s.color.interaction.state.bg-inverse.disabled": "b95c6117eb4189483579bd812c2087a76b20da1d",
-      "ob.s.color.interaction.state.fg.link": "f40d3668d3c866d3c5fc3d2201c7acf30abb5a90",
-      "ob.s.color.interaction.state.fg-inverse.link": "8d060100cbeca6686eb7bc510f8d2997af2155d5",
-      "ob.s.color.interaction.state.bg.link": "9218f55ca4be26153144858cf419d294b2d0e461",
-      "ob.s.color.interaction.state.bg.disableda": "3d230c8556bfe9b02a70bfaf21da557897d7c915",
-      "ob.s.color.interaction.state.bg-inverse.link": "53f54fec7513048f65390137198c075bf3c5ddef"
+      "ob.s.color.interaction.state.fg.enabled": "b59b00caeafd88bc8718325cb2a576395a63fb49",
+      "ob.s.color.interaction.state.fg-inverse.enabled": "e754f596aa2554f6fb90476f7343150f47fd9725",
+      "ob.s.color.interaction.state.bg.enabled": "1101752187e8cfb1a11fa2cd9d7a362c67a5c70b",
+      "ob.s.color.interaction.state.bg-inverse.enabled": "718117d9666e6d2ba3764cdb778a20add2fbf548"
     },
-    "group": "interaction-emphasis",
     "$figmaCollectionId": "VariableCollectionId:12027:26626",
-    "$figmaModeId": "12027:1"
+    "$figmaModeId": "12027:1",
+    "group": "interaction-emphasis"
   }
 ]
