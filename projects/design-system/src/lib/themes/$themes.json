@@ -1508,11 +1508,11 @@
       "ob.s.color.interaction.bg-inverse.selected": "3106b959ff36d8a2f8ac420856ec71e63c21325f",
       "ob.s.color.interaction.bg-inverse.visited": "055ce7717d3e8019423b54dd4517f854a3ff94d5",
       "ob.s.color.interaction.bg-inverse.disabled": "b95c6117eb4189483579bd812c2087a76b20da1d",
-      "ob.s.color.interaction.fg.enabled": "cd995f85706c779843293a7c980a5932774aa620",
-      "ob.s.color.interaction.fg-inverse.enabled": "1a14eb13f55266ba9296677eab0a967ef7b89f32",
-      "ob.s.color.interaction.bg.enabled": "f2f8084ff90d43247b16a092703a9ad587efda81",
-      "ob.s.color.interaction.bg.disabled": "8456f79e2511517a91692c72392bad6718500043",
-      "ob.s.color.interaction.bg-inverse.enabled": "9193f4784f77c6d7d386de21651530c522c07a5b"
+      "ob.s.color.interaction.fg.enabled": "8e18b6451fe545d2939093cf391bd647ffd8c2c5",
+      "ob.s.color.interaction.fg-inverse.enabled": "55d119b6d5289bc227ec5ba05d42b8311cc2b93e",
+      "ob.s.color.interaction.bg.enabled": "a17edc9cf48d27b19d7b97bf0104293587f15daf",
+      "ob.s.color.interaction.bg.disabled": "186d51a9a5bcf6370526f0297df6a8fee2c4e224",
+      "ob.s.color.interaction.bg-inverse.enabled": "8a13b199f38377d2308bbc45d786c2ab7f83dc82"
     },
     "group": "interaction-emphasis",
     "$figmaCollectionId": "VariableCollectionId:12027:26626",
@@ -1550,11 +1550,11 @@
       "ob.s.color.interaction.bg-inverse.selected": "3106b959ff36d8a2f8ac420856ec71e63c21325f",
       "ob.s.color.interaction.bg-inverse.visited": "055ce7717d3e8019423b54dd4517f854a3ff94d5",
       "ob.s.color.interaction.bg-inverse.disabled": "b95c6117eb4189483579bd812c2087a76b20da1d",
-      "ob.s.color.interaction.fg.link": "28667f6cd2401a2a05007ebf5dcb3a308d136b84",
-      "ob.s.color.interaction.fg-inverse.link": "28baff5304f3759ef3b02b1e27116184c9dde642",
-      "ob.s.color.interaction.bg.link": "7f561f43095402edd0ae16b8e0bbb0805ca74e7f",
-      "ob.s.color.interaction.bg.disableda": "60689aa9d8cfe63cfb7d249185b9a6c766965ef9",
-      "ob.s.color.interaction.bg-inverse.link": "a2db3e9001f36e5253e3caced3aed8e90c58482a"
+      "ob.s.color.interaction.fg.link": "f7a263b84f284979b8a050ae194334f2006caa30",
+      "ob.s.color.interaction.fg-inverse.link": "369e3e5e410b0f6b47a42edfcfc4c7685b6747ae",
+      "ob.s.color.interaction.bg.link": "fbdb8ecf0d6648f4a25ae690dd413d165ae8659e",
+      "ob.s.color.interaction.bg.disableda": "a821952788ca5b80e3aa9f7a2cd73a1fa0c80371",
+      "ob.s.color.interaction.bg-inverse.link": "ed74e90ee17d1ea043457276496cbed181628d22"
     },
     "group": "interaction-emphasis",
     "$figmaCollectionId": "VariableCollectionId:12027:26626",

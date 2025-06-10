@@ -88,27 +88,25 @@
           },
           "bg": {
             "enabled": {
-              "value": "{ob.s.color.static.no-color}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
               "type": "color",
-              "description": "No use. For consistancy only. Text-links, 2nd, 3rd buttons need no bg color."
+              "description": "Background for secondary and tertiary buttons."
             },
             "hover": {
-              "value": "{ob.s.color.static.no-color}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
               "type": "color",
-              "description": "No use. For consistancy only. Text-links, 2nd, 3rd buttons need no bg color."
+              "description": "Background for secondary and tertiary buttons."
             },
             "focus": {
-              "value": "{ob.s.color.static.no-color}",
-              "type": "color",
-              "description": "No use. For consistancy only. Text-links, 2nd, 3rd buttons need no bg color."
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
+              "type": "color"
             },
             "pressed": {
-              "value": "{ob.s.color.static.no-color}",
-              "type": "color",
-              "description": "No use. For consistancy only. Text-links, 2nd, 3rd buttons need no bg color."
+              "value": "{ob.s.color.interaction.default.fg.contrast-medium-inverse}",
+              "type": "color"
             },
             "selected": {
-              "value": "{ob.s.color.static.no-color}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
               "type": "color",
               "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
             },
@@ -118,9 +116,8 @@
               "description": "No use. For consistancy only. Text-links need no bg color."
             },
             "disabled": {
-              "value": "{ob.s.color.static.no-color}",
-              "type": "color",
-              "description": "No use. For consistancy only. Disabled text-links and disabled 2nd and 3rd buttons need no bg color."
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
+              "type": "color"
             }
           },
           "bg-inverse": {
