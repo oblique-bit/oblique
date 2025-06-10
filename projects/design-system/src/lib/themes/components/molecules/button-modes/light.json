@@ -6,41 +6,42 @@
           "fg": {
             "primary": {
               "enabled": {
-                "value": "{ob.p.colors.basic.white}",
+                "value": "{ob.s.color.interaction.fg-inverse.enabled}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.p.colors.basic.white}",
+                "value": "{ob.s.color.interaction.fg-inverse.hover}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.p.colors.basic.white}",
+                "value": "{ob.s.color.interaction.fg-inverse.focus}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.p.colors.basic.white}",
+                "value": "{ob.s.color.interaction.fg-inverse.pressed}",
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.p.colors.basic.white}",
+                "value": "{ob.s.color.interaction.fg-inverse.disabled}",
                 "type": "color"
               }
             },
             "secondary": {
               "enabled": {
-                "value": "{ob.p.colors.steelblue.600}",
-                "type": "color"
+                "value": "{ob.s.color.interaction.fg.enabled}",
+                "type": "color",
+                "description": "Text and icon color of secondary button or text-link, Enabled state."
               },
               "hover": {
-                "value": "{ob.p.colors.steelblue.900}",
+                "value": "{ob.s.color.interaction.fg.hover}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.p.colors.steelblue.800}",
+                "value": "{ob.s.color.interaction.fg.focus}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.p.colors.steelblue.900}",
+                "value": "{ob.s.color.interaction.fg.pressed}",
                 "type": "color"
               },
               "disabled": {
@@ -102,24 +103,27 @@
           "bg": {
             "primary": {
               "enabled": {
-                "value": "{ob.p.colors.steelblue.700}",
-                "type": "color"
+                "value": "{ob.s.color.interaction.bg-inverse.enabled}",
+                "type": "color",
+                "description": "Background color of Primary button Enabled state."
               },
               "hover": {
-                "value": "{ob.p.colors.steelblue.600}",
-                "type": "color"
+                "value": "{ob.s.color.interaction.bg-inverse.hover}",
+                "type": "color",
+                "description": "Background color of Primary button Hover state."
               },
               "focus": {
-                "value": "{ob.p.colors.steelblue.800}",
+                "value": "{ob.s.color.interaction.bg-inverse.focus}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.p.colors.steelblue.800}",
+                "value": "{ob.s.color.interaction.bg-inverse.pressed}",
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.status.disabled.bg.contrast-medium-inverse}",
-                "type": "color"
+                "value": "{ob.s.color.interaction.bg-inverse.disabled}",
+                "type": "color",
+                "description": "Background color of the Disabled Primary button. Referenes the semantic interaction disabled."
               }
             },
             "secondary": {
@@ -196,16 +200,17 @@
               },
               "disabled": {
                 "value": "transparent",
-                "type": "color"
+                "type": "color",
+                "description": "Border color of the Disabled Primary button: no border."
               }
             },
             "secondary": {
               "enabled": {
-                "value": "{ob.p.colors.steelblue.600}",
+                "value": "{ob.s.color.interaction.fg.enabled}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.p.colors.steelblue.800}",
+                "value": "{ob.s.color.interaction.fg.hover}",
                 "type": "color"
               },
               "focus": {

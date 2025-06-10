@@ -56,9 +56,9 @@
               "description": "Used for text and icon color in primary buttons."
             },
             "hover": {
-              "value": "{ob.s.color.interaction.default.fg.contrast-medium-inverse}",
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
               "type": "color",
-              "description": "Used for text and icon color in filled buttons."
+              "description": "Used for text and icon color in filled buttons, badges."
             },
             "focus": {
               "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
@@ -83,15 +83,6 @@
             "disabled": {
               "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
               "type": "color",
-              "$extensions": {
-                "studio.tokens": {
-                  "modify": {
-                    "type": "alpha",
-                    "value": "0.4",
-                    "space": "srgb"
-                  }
-                }
-              },
               "description": "Used for text and icon color in primary buttons."
             }
           },
@@ -170,12 +161,12 @@
                 "studio.tokens": {
                   "modify": {
                     "type": "alpha",
-                    "value": "0.4",
+                    "value": "0.2",
                     "space": "srgb"
                   }
                 }
               },
-              "description": "Used for fill in primary buttons."
+              "description": "Used for fill in primary buttons, badges etc."
             }
           }
         }

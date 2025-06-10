@@ -637,8 +637,9 @@
                 "type": "color"
               },
               "contrast-high-inverse": {
-                "value": "{ob.p.colors.steelblue.50}",
-                "type": "color"
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "description": "Text and icon color has to be white on inversion (primary buttons, badge etc.)"
               }
             },
             "fg-visited": {
@@ -679,7 +680,8 @@
                       "space": "srgb"
                     }
                   }
-                }
+                },
+                "description": "Foreground color for disabled state of Text links, secondary and teriarxy buttons etc. on standard backrgound."
               },
               "inverse": {
                 "value": "{ob.p.colors.cobalt.50}",
@@ -692,25 +694,18 @@
                       "space": "srgb"
                     }
                   }
-                }
+                },
+                "description": "Foreground color on an inverted backgrounds of disabled state of Primary button, badge.."
               }
             },
             "bg-disabled": {
               "default": {
-                "value": "{ob.p.colors.cobalt-alpha.900}",
+                "value": "{ob.p.colors.cobalt-alpha.100}",
                 "type": "color",
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "alpha",
-                      "value": "0.4",
-                      "space": "srgb"
-                    }
-                  }
-                }
+                "description": "For background if disabled elements (inverse or not?)"
               },
               "inverse": {
-                "value": "{ob.p.colors.cobalt.50}",
+                "value": "{ob.p.colors.cobalt-alpha.200}",
                 "type": "color",
                 "$extensions": {
                   "studio.tokens": {
@@ -720,7 +715,8 @@
                       "space": "srgb"
                     }
                   }
-                }
+                },
+                "description": "For background if disabled elements (inverse or not?)"
               }
             }
           },

@@ -10,7 +10,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.status.disabled.bg.contrast-medium}",
+                "value": "{ob.s.color.interaction.bg-inverse.disabled}",
                 "type": "color"
               }
             },
@@ -20,7 +20,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.status.disabled.bg.contrast-medium}",
+                "value": "{ob.s.color.interaction.bg-inverse.disabled}",
                 "type": "color"
               }
             },
@@ -30,7 +30,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.status.disabled.bg.contrast-medium}",
+                "value": "{ob.s.color.interaction.bg-inverse.disabled}",
                 "type": "color"
               }
             },
@@ -40,7 +40,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.status.disabled.bg.contrast-medium}",
+                "value": "{ob.s.color.interaction.bg-inverse.disabled}",
                 "type": "color"
               }
             }
@@ -52,8 +52,9 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.neutral.fg.contrast-low-inverse}",
-                "type": "color"
+                "value": "{ob.s.color.interaction.fg-inverse.disabled}",
+                "type": "color",
+                "description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             },
             "attention": {
@@ -62,8 +63,9 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.neutral.fg.contrast-low-inverse}",
-                "type": "color"
+                "value": "{ob.s.color.interaction.fg-inverse.disabled}",
+                "type": "color",
+                "description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             },
             "critical": {
@@ -72,8 +74,9 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.neutral.fg.contrast-low-inverse}",
-                "type": "color"
+                "value": "{ob.s.color.interaction.fg-inverse.disabled}",
+                "type": "color",
+                "description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             },
             "resolved": {
@@ -82,8 +85,9 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.neutral.fg.contrast-low-inverse}",
-                "type": "color"
+                "value": "{ob.s.color.interaction.fg-inverse.disabled}",
+                "type": "color",
+                "description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             }
           }
