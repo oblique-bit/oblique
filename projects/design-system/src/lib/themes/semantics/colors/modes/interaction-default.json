@@ -152,17 +152,8 @@
               "description": "No use. For consistancy only. Text-links need no bg color."
             },
             "disabled": {
-              "value": "{ob.p.colors.cobalt.900}",
+              "value": "{ob.s.color.interaction.default.bg-disabled.inverse}",
               "type": "color",
-              "$extensions": {
-                "studio.tokens": {
-                  "modify": {
-                    "type": "alpha",
-                    "value": "0.2",
-                    "space": "srgb"
-                  }
-                }
-              },
               "description": "Used for fill in primary buttons, badges etc."
             }
           }

@@ -48,7 +48,7 @@
           "fg": {
             "info": {
               "enabled": {
-                "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
+                "value": "{ob.s.color.interaction.fg-inverse.enabled}",
                 "type": "color"
               },
               "disabled": {
@@ -59,7 +59,7 @@
             },
             "attention": {
               "enabled": {
-                "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
+                "value": "{ob.s.color.interaction.fg-inverse.enabled}",
                 "type": "color"
               },
               "disabled": {
@@ -70,7 +70,7 @@
             },
             "critical": {
               "enabled": {
-                "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
+                "value": "{ob.s.color.interaction.fg-inverse.enabled}",
                 "type": "color"
               },
               "disabled": {
@@ -81,7 +81,7 @@
             },
             "resolved": {
               "enabled": {
-                "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
+                "value": "{ob.s.color.interaction.fg-inverse.enabled}",
                 "type": "color"
               },
               "disabled": {
