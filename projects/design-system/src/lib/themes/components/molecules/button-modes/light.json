@@ -6,42 +6,42 @@
           "fg": {
             "primary": {
               "enabled": {
-                "value": "{ob.s.color.interaction.fg-inverse.enabled}",
+                "value": "{ob.s.color.interaction.state.fg-inverse.enabled}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.interaction.fg-inverse.hover}",
+                "value": "{ob.s.color.interaction.state.fg-inverse.hover}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.interaction.fg-inverse.focus}",
+                "value": "{ob.s.color.interaction.state.fg-inverse.focus}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.interaction.fg-inverse.pressed}",
+                "value": "{ob.s.color.interaction.state.fg-inverse.pressed}",
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.fg-inverse.disabled}",
+                "value": "{ob.s.color.interaction.state.fg-inverse.disabled}",
                 "type": "color"
               }
             },
             "secondary": {
               "enabled": {
-                "value": "{ob.s.color.interaction.fg.enabled}",
+                "value": "{ob.s.color.interaction.state.fg.enabled}",
                 "type": "color",
                 "description": "Text and icon color of secondary button or text-link, Enabled state."
               },
               "hover": {
-                "value": "{ob.s.color.interaction.fg.hover}",
+                "value": "{ob.s.color.interaction.state.fg.hover}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.interaction.fg.focus}",
+                "value": "{ob.s.color.interaction.state.fg.focus}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.interaction.fg.pressed}",
+                "value": "{ob.s.color.interaction.state.fg.pressed}",
                 "type": "color"
               },
               "disabled": {
@@ -51,19 +51,19 @@
             },
             "tertiary": {
               "enabled": {
-                "value": "{ob.s.color.interaction.fg.enabled}",
+                "value": "{ob.s.color.interaction.state.fg.enabled}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.interaction.fg.hover}",
+                "value": "{ob.s.color.interaction.state.fg.hover}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.interaction.fg.focus}",
+                "value": "{ob.s.color.interaction.state.fg.focus}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.interaction.fg.pressed}",
+                "value": "{ob.s.color.interaction.state.fg.pressed}",
                 "type": "color",
                 "description": "slightly reduced opacity for pressed"
               },
@@ -76,25 +76,25 @@
           "bg": {
             "primary": {
               "enabled": {
-                "value": "{ob.s.color.interaction.bg-inverse.enabled}",
+                "value": "{ob.s.color.interaction.state.bg-inverse.enabled}",
                 "type": "color",
                 "description": "Background color of Primary button Enabled state."
               },
               "hover": {
-                "value": "{ob.s.color.interaction.bg-inverse.hover}",
+                "value": "{ob.s.color.interaction.state.bg-inverse.hover}",
                 "type": "color",
                 "description": "Background color of Primary button Hover state."
               },
               "focus": {
-                "value": "{ob.s.color.interaction.bg-inverse.focus}",
+                "value": "{ob.s.color.interaction.state.bg-inverse.focus}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.interaction.bg-inverse.pressed}",
+                "value": "{ob.s.color.interaction.state.bg-inverse.pressed}",
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.bg-inverse.disabled}",
+                "value": "{ob.s.color.interaction.state.bg-inverse.disabled}",
                 "type": "color",
                 "description": "Background color of the Disabled Primary button. Referenes the semantic interaction disabled."
               }
@@ -179,11 +179,11 @@
             },
             "secondary": {
               "enabled": {
-                "value": "{ob.s.color.interaction.fg.enabled}",
+                "value": "{ob.s.color.interaction.state.fg.enabled}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.interaction.fg.hover}",
+                "value": "{ob.s.color.interaction.state.fg.hover}",
                 "type": "color"
               },
               "focus": {

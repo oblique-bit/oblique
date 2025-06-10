@@ -693,12 +693,12 @@
               "default": {
                 "value": "{ob.p.colors.cobalt-alpha.100}",
                 "type": "color",
-                "description": "For background if disabled elements (inverse or not?)"
+                "description": "For background of disabled elements "
               },
               "inverse": {
                 "value": "{ob.p.colors.cobalt-alpha.300}",
                 "type": "color",
-                "description": "For background of disabled elements (inverse or not?)"
+                "description": "For background of disabled elements, inverse"
               }
             }
           },
