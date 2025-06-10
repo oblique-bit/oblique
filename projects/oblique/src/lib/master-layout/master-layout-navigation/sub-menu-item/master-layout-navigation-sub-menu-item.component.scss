@@ -23,7 +23,7 @@
 				padding-top: calc(0.3896em + variables.$ob-spacing-xs * 0.5);
 
 				&:hover {
-					padding-left: calc(0.3896em - variables.$ob-spacing-xs * 0.75);
+					padding-left: calc(0.3896em - 2px); // empiric value
 				}
 			}
 		}
@@ -42,7 +42,7 @@
 				}
 
 				&:hover {
-					padding-left: 0.7857em;
+					padding-left: calc(variables.$ob-spacing-default - variables.$ob-line-width-sm);
 				}
 			}
 		}
