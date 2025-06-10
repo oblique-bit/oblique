@@ -33,8 +33,12 @@
 			justify-content: space-between;
 
 			&.ob-button {
-				padding-left: 1.1428em;
-				padding-right: 0.7142em;
+				padding-left: variables.$ob-spacing-default;
+				padding-right: 13px; // empiric value
+
+				.ob-layout-collapsed & {
+					padding-right: 10px; // empiric value
+				}
 
 				svg {
 					height: 14px;
