@@ -4,7 +4,7 @@
       "link": {
         "spacing": {
           "gap": {
-            "value": "{ob.s.spacing.sm}",
+            "value": "{ob.s.spacing.md}",
             "type": "spacing",
             "description": "Gap between icon and text in the text link."
           }
