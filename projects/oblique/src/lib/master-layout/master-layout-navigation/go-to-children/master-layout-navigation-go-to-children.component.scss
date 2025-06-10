@@ -39,14 +39,5 @@
 			height: variables.$ob-button-height + variables.$ob-spacing-xs;
 			width: variables.$ob-button-height + variables.$ob-spacing-xs;
 		}
-
-		button,
-		&
-			> .ob-master-layout-navigation-go-to-children
-			.ob-master-layout-navigation-go-to-children-button {
-			&:hover {
-				background-color: transparent;
-			}
-		}
 	}
 }
