@@ -55,7 +55,7 @@
   "i18n.oblique.http.error.status.502.title": "Gateway difettoso",
   "i18n.oblique.http.error.status.502": "Agendo come server proxy o gateway, il server ha ricevuto una risposta non valida dal server remoto.",
   "i18n.oblique.http.error.status.503.title": "Servizio non disponibile",
-  "i18n.oblique.http.error.status.503": "Siamo spiacenti, il server è al momento indosponibile. Si prega di riprovare più tardi.",
+  "i18n.oblique.http.error.status.503": "Siamo spiacenti, il server è al momento indisponibile. Si prega di riprovare più tardi.",
   "i18n.oblique.http.error.status.504.title": "Timeout del gateway",
   "i18n.oblique.http.error.status.504": "Per elaborare la tua richiesta, il server ha agito come gateway o proxy e non ha ricevuto una risposta tempestiva.",
   "i18n.oblique.http.error.timeout": "Il server non risponde da troppo tempo. Riprovare più tardi o contattare il servizio di supporto.",
