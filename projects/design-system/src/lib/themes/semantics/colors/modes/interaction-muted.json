@@ -74,16 +74,7 @@
               },
               "disabled": {
                 "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-                "type": "color",
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "alpha",
-                      "value": "0.4",
-                      "space": "srgb"
-                    }
-                  }
-                }
+                "type": "color"
               }
             },
             "bg": {
@@ -145,17 +136,8 @@
                 "description": "For text-links."
               },
               "disabled": {
-                "value": "{ob.p.colors.cobalt.900}",
-                "type": "color",
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "alpha",
-                      "value": "0.4",
-                      "space": "srgb"
-                    }
-                  }
-                }
+                "value": "{ob.s.color.interaction.default.bg-disabled.inverse}",
+                "type": "color"
               }
             }
           }
