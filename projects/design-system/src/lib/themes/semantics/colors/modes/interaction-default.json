@@ -6,12 +6,12 @@
           "state": {
             "fg": {
               "enabled": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-medium}",
+                "value": "{ob.s.color.interaction.default.fg.contrast-low}",
                 "type": "color",
                 "description": "Used in text-links, secondary and tertiary buttons."
               },
               "hover": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-medium}",
+                "value": "{ob.s.color.interaction.default.fg.contrast-low}",
                 "type": "color",
                 "description": "Used in text-links, secondary and tertiary buttons."
               },
@@ -36,17 +36,8 @@
                 "description": "For text-links. No use in buttons."
               },
               "disabled": {
-                "value": "{ob.p.colors.cobalt.900}",
+                "value": "{ob.s.color.interaction.default.fg-disabled.default}",
                 "type": "color",
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "alpha",
-                      "value": "0.4",
-                      "space": "srgb"
-                    }
-                  }
-                },
                 "description": "Used in text-links, secondary and tertiary buttons."
               }
             },
@@ -103,7 +94,7 @@
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-medium-inverse}",
+                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
                 "type": "color"
               },
               "selected": {
