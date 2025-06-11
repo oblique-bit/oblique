@@ -6,7 +6,7 @@
           "state": {
             "fg": {
               "enabled": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-low}",
+                "value": "{ob.s.color.interaction.default.fg.contrast-medium}",
                 "type": "color",
                 "description": "Used in text-links, secondary and tertiary buttons."
               },
@@ -16,7 +16,7 @@
                 "description": "Used in text-links, secondary and tertiary buttons."
               },
               "focus": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-medium}",
+                "value": "{ob.s.color.interaction.default.fg.contrast-low}",
                 "type": "color",
                 "description": "Used in text-links, secondary and tertiary buttons."
               },

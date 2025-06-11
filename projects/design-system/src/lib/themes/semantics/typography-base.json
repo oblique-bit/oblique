@@ -43,16 +43,18 @@
       "text-decoration": {
         "bodyLink": {
           "value": "{ob.p.text-decoration.underline}",
-          "type": "textDecoration"
+          "type": "textDecoration",
+          "description": "Standard text-link has an underline."
         },
         "bodyLink-focus": {
           "value": "{ob.p.text-decoration.none}",
           "type": "textDecoration",
-          "description": "no need for underline since there is the focus-border"
+          "description": "No need for underline in the focus-state, since there is the focus-border. "
         },
         "link-group": {
           "value": "{ob.p.text-decoration.none}",
-          "type": "textDecoration"
+          "type": "textDecoration",
+          "description": "Not yet in in use. Planned for the sidebar group of links that does not need underline."
         }
       }
     }

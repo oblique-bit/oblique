@@ -178,6 +178,10 @@
         "700": {
           "value": "8 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
+        },
+        "800": {
+          "value": "9 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
         }
       },
       "text-decoration": {

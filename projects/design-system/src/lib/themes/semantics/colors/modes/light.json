@@ -617,15 +617,15 @@
             },
             "fg": {
               "contrast-high": {
-                "value": "{ob.p.colors.steelblue.900}",
+                "value": "{ob.p.colors.steelblue.700}",
                 "type": "color"
               },
               "contrast-medium": {
-                "value": "{ob.p.colors.steelblue.800}",
+                "value": "{ob.p.colors.steelblue.600}",
                 "type": "color"
               },
               "contrast-low": {
-                "value": "{ob.p.colors.steelblue.700}",
+                "value": "{ob.p.colors.steelblue.500}",
                 "type": "color"
               },
               "contrast-low-inverse": {
@@ -785,8 +785,16 @@
           "border": {
             "focus": {
               "value": "{ob.p.colors.purple.500}",
-              "type": "color"
+              "type": "color",
+              "description": "Used for text-links as a border color of the focus state."
             }
+          }
+        },
+        "~documentation-only": {
+          "fg-moded": {
+            "value": "{ob.p.colors.purple.700}",
+            "type": "color",
+            "description": "Documentation only. Changes on user preference color modes Light, Dark etc."
           }
         }
       }

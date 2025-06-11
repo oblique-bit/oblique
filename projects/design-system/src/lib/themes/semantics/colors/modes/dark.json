@@ -637,15 +637,15 @@
             },
             "fg": {
               "contrast-high": {
-                "value": "{ob.s.color.neutral.fg.contrast-highest}",
-                "type": "color"
-              },
-              "contrast-medium": {
                 "value": "{ob.p.colors.steelblue.100}",
                 "type": "color"
               },
-              "contrast-low": {
+              "contrast-medium": {
                 "value": "{ob.p.colors.steelblue.200}",
+                "type": "color"
+              },
+              "contrast-low": {
+                "value": "{ob.p.colors.steelblue.300}",
                 "type": "color"
               },
               "contrast-low-inverse": {
@@ -820,6 +820,13 @@
               "value": "{ob.p.colors.purple.400}",
               "type": "color"
             }
+          }
+        },
+        "~documentation-only": {
+          "fg": {
+            "value": "{ob.p.colors.purple.400}",
+            "type": "color",
+            "description": "Documentation only. Changes on user preference color modes Light, Dark etc."
           }
         }
       }

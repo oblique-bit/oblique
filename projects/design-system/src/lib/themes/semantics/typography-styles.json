@@ -11,7 +11,8 @@
                   "fontSize": "{ob.s.fontSize.xl}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
-                  "lineHeight": "{ob.s.lineHeight.xl}"
+                  "lineHeight": "{ob.s.lineHeight.xl}",
+                  "paragraphSpacing": "{ob.p.paragraphSpacing.800}"
                 },
                 "type": "typography",
                 "description": "Compact primary page heading. Used for the most important headline on a page."
@@ -22,7 +23,8 @@
                   "fontSize": "{ob.s.fontSize.lg}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
-                  "lineHeight": "{ob.s.lineHeight.lg}"
+                  "lineHeight": "{ob.s.lineHeight.lg}",
+                  "paragraphSpacing": "{ob.p.paragraphSpacing.600}"
                 },
                 "type": "typography",
                 "description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -33,7 +35,8 @@
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                  "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
                 "type": "typography",
                 "description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -44,7 +47,8 @@
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                  "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
                 "type": "typography",
                 "description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -55,7 +59,8 @@
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                  "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
                 "type": "typography",
                 "description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -66,7 +71,8 @@
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                  "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
                 "type": "typography",
                 "description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -165,7 +171,7 @@
                 "textDecoration": "{ob.p.text-decoration.underline}"
               },
               "type": "typography",
-              "description": "Interactive text elements that navigate to other content when clicked. Adds an underline to the text."
+              "description": "Interactive text elements that navigate to other content when clicked. Adds an underline to the text. Generates a Figma typography style."
             },
             "strong": {
               "value": {
