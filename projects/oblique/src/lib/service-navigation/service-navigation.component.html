@@ -6,12 +6,13 @@
 		<ob-service-navigation-message [linkHref]="inboxMailUrl$ | async" [count]="messageCount$ | async" />
 	</li>
 	<li *ngIf="displayInfo">
+		@let infoBackend = useInfoBackend ? (infoBackend$ | async) : {};
 		<ob-service-navigation-info
-			[links]="infoLinks"
-			[contact]="infoContact"
-			[helpText]="infoHelpText"
-			[contactText]="infoContactText"
-			[description]="infoDescription"
+			[links]="infoBackend.links ? infoBackend.links : infoLinks"
+			[contact]="infoBackend.contact ? infoBackend.contact : infoContact"
+			[helpText]="infoBackend.helpText ? infoBackend.helpText : infoHelpText"
+			[contactText]="infoBackend.contactText ? infoBackend.contactText : infoContactText"
+			[description]="infoBackend.description ? infoBackend.description : infoDescription"
 		/>
 	</li>
 	<li *ngIf="displayApplications">

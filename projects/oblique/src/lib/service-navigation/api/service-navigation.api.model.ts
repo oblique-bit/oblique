@@ -1,4 +1,9 @@
-import {ObLoginState, ObServiceNavigationApplicationStatus} from '../service-navigation.model';
+import {
+	ObIServiceNavigationContact,
+	ObIServiceNavigationLink,
+	ObLoginState,
+	ObServiceNavigationApplicationStatus
+} from '../service-navigation.model';
 
 export interface ObIServiceNavigationResponse<T> {
 	statusCode: number;
@@ -19,6 +24,52 @@ export interface ObIServiceNavigationConfig {
 	profile: ObIPamsRequestUrl;
 	rights: ObIPamsRequestUrl;
 	settings: ObIPamsRequestUrl;
+}
+
+export interface ObISeriviceNavigationHelpResponse {
+	title: {
+		application: {
+			applicationName: string;
+			applicationDescription: string;
+		};
+		tenant: {
+			tenantName: string;
+			tenantAbbreviation: string;
+		};
+		optionalInformation: string;
+	};
+	help: {
+		links: {
+			title: string;
+			link: string;
+			optionalInformation: string;
+		}[];
+		optionalInformation: string;
+	};
+	contact: {
+		links: {
+			title: string;
+			link: string;
+			optionalInformation: string;
+		}[];
+		email: {
+			emailAddress: string;
+			optionalInformation: string;
+		};
+		phone: {
+			phoneNumber: string;
+			optionalInformation: string;
+		};
+		optionalInformation: string;
+	};
+}
+
+export interface ObIServiceNavigationBackendInfo {
+	description?: string;
+	helpText?: string;
+	links?: ObIServiceNavigationLink[];
+	contactText?: string;
+	contact?: ObIServiceNavigationContact;
 }
 
 interface ObIPamsRequestUrl {

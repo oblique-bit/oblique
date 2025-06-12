@@ -14,4 +14,8 @@ export class ObServiceNavigationHarness extends ContentContainerComponentHarness
 	getCustomWidgets(): Promise<TestElement[]> {
 		return this.locatorForAll('ul > li.ob-service-navigation-custom-control > *')();
 	}
+
+	getInfoElement(): Promise<TestElement> {
+		return this.locatorFor('ob-service-navigation-info')();
+	}
 }
