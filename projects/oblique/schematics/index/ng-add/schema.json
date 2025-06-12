@@ -38,13 +38,13 @@
       "type": "boolean",
       "default": true,
       "description": "Http interceptor",
-      "x-prompt": "[5 / 16] Add the ObHttpApiInterceptor? It will show a spinner and handles errors on API calls"
+      "x-prompt": "[5 / 16] Add the ObHttpApiInterceptor? It will show a spinner and handle errors on API calls"
     },
     "banner": {
       "type": "boolean",
       "default": false,
       "description": "Banner to show current environment",
-      "x-prompt": "[6 / 16] Add the ObBanner? It will show the current environment in the header.\n           This feature is only available if at least 1 environment will be defined at the next step."
+      "x-prompt": "[6 / 16] Add the ObBanner? It will show the current environment in the header.\n           This feature is only available if at least one environment will be defined at the next step."
     },
     "environments": {
       "type": "string",
@@ -62,7 +62,7 @@
       "type": "string",
       "default": "app",
       "description": "Prefix configuration",
-      "x-prompt": "[9 / 16] Choose a prefix for components and directives's selectors? Leave empty for no prefix)"
+      "x-prompt": "[9 / 16] Choose a prefix for components and directives' selectors. Leave empty for no prefix."
     },
     "jest": {
       "type": "boolean",
@@ -73,7 +73,7 @@
     "protractor": {
       "type": "boolean",
       "default": false,
-      "description": "Protractor for end to end tests",
+      "description": "Protractor for end-to-end tests",
       "x-prompt": "[11 / 16] Would you like to keep Protractor for e2e tests? Warning: If not, whole e2e folder will be removed!"
     },
     "npmrc": {
@@ -86,7 +86,7 @@
       "type": "string",
       "default": "",
       "description": "Proxy configuration",
-      "x-prompt": "[13 / 16] Choose a port for the proxy configuration for server connection? Leave empty for no proxy configuration."
+      "x-prompt": "[13 / 16] Choose a port for the proxy configuration for server connection. Leave empty for no proxy configuration."
     },
     "sonar": {
       "type": "boolean",
@@ -98,7 +98,7 @@
       "type": "boolean",
       "default": true,
       "description": "ESLint & Prettier",
-      "x-prompt": "[15 / 16] Add eslint & prettier and configure them like the Oblique team?"
+      "x-prompt": "[15 / 16] Add ESLint & Prettier and configure them like the Oblique team?"
     },
     "husky": {
       "type": "boolean",
