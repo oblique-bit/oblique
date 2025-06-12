@@ -1,3 +1,17 @@
+# [13.3.0](https://github.com/oblique-bit/oblique/compare/13.2.3...13.3.0) (2025-06-12)
+
+## Bug Fixes
+
+- **code-examples:** empty chips autocomplete after selection ([191e5322](https://github.com/oblique-bit/oblique/commit/191e5322d3b431c6f6262c0d83e9e4d6eb53ac58))
+
+## Features
+
+- **code-examples:** remove `ob-icon` class from tab ([f4923db8](https://github.com/oblique-bit/oblique/commit/f4923db84506b0e8ffae18c11cf5caa973d09622))
+- **code-examples:** remove `ob-icon` class from list-group ([bd1c61f4](https://github.com/oblique-bit/oblique/commit/bd1c61f4a3f4ed426cf826a612c67741e322f09b))
+- **code-examples:** remove `ob-icon` class from icons ([9816fcbf](https://github.com/oblique-bit/oblique/commit/9816fcbf96f8213178a2567e1f1bffa6034ddf9e))
+- **icon:** add example for `ob-icon-text` ([1a61f2d3](https://github.com/oblique-bit/oblique/commit/1a61f2d3ee08407acee1d24006f5eacff1510793))
+- **side-navigation:** remove version 10 ([d30ca189](https://github.com/oblique-bit/oblique/commit/d30ca18950780529c477a63e24876aa5eccf37cb))
+
 # [13.2.2](https://github.com/oblique-bit/oblique/compare/13.2.1...13.2.2) (2025-05-12)
 
 ## Bug Fixes
