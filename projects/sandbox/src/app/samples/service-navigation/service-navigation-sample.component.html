@@ -12,6 +12,7 @@
 			[infoContact]="infoContact"
 			[infoHelpText]="infoHelpText"
 			[infoDescription]="infoDescription"
+			[useInfoBackend]="hasInfoBackend"
 			[maxLastUsedApplications]="maxLastUsedApplications"
 			[maxFavoriteApplications]="maxFavoriteApplications"
 			[displayMessage]="displayMessage"
@@ -57,6 +58,9 @@
 			>
 			<mat-slide-toggle [disabled]="!displayInfo" [(ngModel)]="hasContactFormUrl" (change)="handleContactInfo()"
 				>toggle contact form url</mat-slide-toggle
+			>
+			<mat-slide-toggle [disabled]="!displayInfo" [(ngModel)]="hasInfoBackend" (change)="handleContactInfo()"
+				>toggle backend</mat-slide-toggle
 			>
 		</fieldset>
 		<fieldset class="toggles">

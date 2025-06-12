@@ -71,6 +71,7 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	hasContactEmail = true;
 	hasContactPhone = true;
 	hasContactFormUrl = true;
+	hasInfoBackend = true;
 	infoContact: ObIServiceNavigationContact = {
 		email: 'support@bit.admin.ch',
 		tel: '+41 58 461 61 11',
