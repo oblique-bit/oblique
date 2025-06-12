@@ -988,7 +988,6 @@
       "semantics/colors/modes/light": "enabled",
       "semantics/colors/static": "enabled",
       "components/molecules/tags-modes/light": "enabled",
-      "components/molecules/button-colors": "enabled",
       "components/molecules/infobox-modes/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
@@ -1252,7 +1251,6 @@
       "semantics/colors/modes/dark": "enabled",
       "semantics/colors/static": "enabled",
       "components/molecules/tags-modes/light": "enabled",
-      "components/molecules/button-colors": "enabled",
       "components/molecules/infobox-modes/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
