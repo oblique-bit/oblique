@@ -1,9 +1,9 @@
 import {classify, dasherize} from '@angular-devkit/core/src/utils/strings';
-import {Rule, SchematicContext, Tree, chain, noop} from '@angular-devkit/schematics';
+import {type Rule, type SchematicContext, type Tree, chain, noop} from '@angular-devkit/schematics';
 import {areCodeExampleOptionsValid, createCodeExampleFile, updateMapper} from './add-code-example.utils';
 import {createExampleDirectoryPath, getExampleDirectoryOrFalse, getExampleSymbolName} from '../sds.utils';
 import * as colors from 'ansi-colors';
-import {AddCodeExampleOptions} from './add-code-example.model';
+import type {AddCodeExampleOptions} from './add-code-example.model';
 
 export function addCodeExamples(options: AddCodeExampleOptions): Rule {
 	return () => chain([addExampleComponent(options)]);

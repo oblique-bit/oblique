@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
 import {IdPipe} from '../../../shared/id/id.pipe';

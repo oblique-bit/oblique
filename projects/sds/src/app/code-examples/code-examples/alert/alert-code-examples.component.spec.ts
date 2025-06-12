@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {AlertCodeExamplesComponent} from './alert-code-examples.component';
 import {TranslateService} from '@ngx-translate/core';
 import {ObAlertComponent, ObMockTranslateService} from '@oblique/oblique';

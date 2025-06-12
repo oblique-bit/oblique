@@ -7,7 +7,7 @@ import {ObAlertModule, ObButtonModule} from '@oblique/oblique';
 @Component({
 	selector: 'app-card-with-multiple-sections',
 	templateUrl: './card-with-multiple-sections.component.html',
-	styleUrls: ['./card-with-multiple-sections.component.scss'],
+	styleUrl: './card-with-multiple-sections.component.scss',
 	imports: [MatButtonModule, MatCardModule, NgOptimizedImage, ObAlertModule, ObButtonModule]
 })
 export class CardWithMultipleSectionsComponent {}

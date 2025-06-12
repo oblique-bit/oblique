@@ -102,6 +102,7 @@ registerLocaleData(localeDE);
 				applicationName: 'Sandbox',
 				createdOn: new Date('2025-01-31'),
 				reviewedOn: new Date('2025-01-31'),
+				conformity: 'partial',
 				exceptions: [
 					'i18n.routes.accessibility.exception.first',
 					'i18n.routes.accessibility.exception.second',
@@ -135,6 +136,9 @@ export class AppModule {
 	private configureServiceSNavigation(config: ObMasterLayoutConfig): void {
 		config.header.serviceNavigation.displayInfo = true;
 		config.header.serviceNavigation.infoContact = infoContact;
+		config.header.serviceNavigation.infoHelpText = 'random help text';
+		config.header.serviceNavigation.infoContactText = 'random contact text';
+		config.header.serviceNavigation.infoDescription = 'random description text';
 		if (environment.pams) {
 			config.header.serviceNavigation.profileLinks = profileLinks;
 			config.header.serviceNavigation.infoLinks = infoLinks;

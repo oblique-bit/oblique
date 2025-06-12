@@ -2,12 +2,15 @@ import type {ObCommandConfig, ObOptions} from './ob-cli.model';
 import {type ExecSyncOptions, execSync} from 'child_process';
 import {gte, major} from 'semver';
 
+/* Generated content, do not edit */
+export const version = '13.3.0';
+/* End of generated content */
+
 export const currentVersions = {
 	'@oblique/oblique': '13',
 	'@angular/cli': '19',
 	'@angular/material': '19',
 	'@angular/core': '19',
-	'@angular-eslint/schematics': '19',
 	'@types/jest': '29',
 	'@angular-builders/jest': '19',
 	'@schematics/angular': '19',
@@ -17,40 +20,17 @@ export const currentVersions = {
 
 export const optionDescriptions = {
 	ob: {
-		version: {
-			flags: '-v, --version',
-			description: 'Shows the current version of @oblique/cli',
-			command: 'ob -v'
-		},
-		help: {
-			flags: '-h, --help',
-			description: getHelpText('ob'),
-			command: 'ob -h'
-		}
+		version: {flags: '-v, --version', description: 'Shows the current version of @oblique/cli', command: 'ob -v'},
+		help: {flags: '-h, --help', description: getHelpText('ob'), command: 'ob -h'}
 	},
 	new: {
-		obNewCommand: {
-			command: 'ob new <project-name> [...options]',
-			description: 'Create a new Oblique project'
-		},
-		help: {
-			flags: '-h, --help',
-			description: getHelpText('ob new'),
-			command: 'ob new -h'
-		}
+		obNewCommand: {command: 'ob new <project-name> [...options]', description: 'Create a new Oblique project'},
+		help: {flags: '-h, --help', description: getHelpText('ob new'), command: 'ob new -h'}
 	},
-	update: {
-		obUpdateCommand: {
-			command: 'ob update',
-			description: 'Update an Oblique project'
-		}
-	}
+	update: {obUpdateCommand: {command: 'ob update', description: 'Update an Oblique project'}}
 };
 
-export const ngAddOblique = {
-	command: 'ng add @oblique/oblique',
-	description: 'add Oblique to the project'
-};
+export const ngAddOblique = {command: 'ng add @oblique/oblique', description: 'add Oblique to the project'};
 
 export const obExamples = [
 	{command: optionDescriptions.ob.version.command, description: optionDescriptions.ob.version.description},
@@ -95,7 +75,7 @@ export function checkNodeVersion(): void {
 }
 
 export const startObCommand = <T>(callback: (options: T) => void, label: string, options: T): void => {
-	console.info(obTitle.toUpperCase());
+	console.info(`${obTitle.toUpperCase()} ${printCliVersion()}`);
 	checkNodeVersion();
 	console.time(label);
 	callback(options);
@@ -186,4 +166,8 @@ function executeCommand(command: string, execSyncOptions: ExecSyncOptions = {}):
 
 function versionDependencies(dependencies: (keyof typeof currentVersions)[]): string[] {
 	return dependencies.map(dependency => getVersionedDependency(dependency));
+}
+
+function printCliVersion(): string {
+	return `v${version}`;
 }

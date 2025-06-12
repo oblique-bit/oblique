@@ -9,7 +9,7 @@ As a contributor, here are the guidelines we would like you to follow:
 - [Commit Message Guidelines](#commit)
   - [General Rules](#general)
   - [Format](#format)
-    - [Header](#header)
+    - [Header](#header_)
       - [Type](#type)
       - [Package](#package)
       - [Scope](#scope)
@@ -77,13 +77,13 @@ Each commit message consists of a **header**, a **body**, and a **footer** separ
 <footer>
 ```
 
-The `header` is mandatory and must conform to the [Header](#header) format.
+The `header` is mandatory and must conform to the [Header](#header_) format.
 
 The `body` is optional but must conform to the [Body](#body) format if present.
 
 The `footer` is optional but must conform to the [Footer](#footer) format if present.
 
-#### <a name="header"></a> Header
+#### <a name="header_"></a> Header
 
 The header is mandatory and follows the following structure:
 
@@ -114,6 +114,7 @@ The package is required and must be one of the following:
 - **sandbox-ssr**: Changes in the Sandbox-SSR project
 - **sds**: Changes in the Swiss Design System project
 - **service-navigation**: Changes in the Service Navigation Web Component project
+- **toolchain**: Changes in the Toolchain project
 
 Changes outside any package may omit the package name. This is the case for changes in the root folder of the repository.
 If the package is omitted, then the scope is mandatory and the separating slash (`/`) is also omitted.
@@ -136,7 +137,7 @@ The `build` type has a mandatory scope that must be one of the following:
 
 ###### <a name="ci"></a> ci
 
-The `ci` type has a mandatory scope that must be one of the following:
+The `ci` type, which stands for Continuous Integration, has a mandatory scope that must be one of the following:
 
 - **rhos**: Changes to the Red Hat Open Shift configuration files
 - **jenkins**: Changes to the Jenkins configuration files
@@ -153,6 +154,7 @@ The `docs`, `feat`, `fix`, `test`, and `refactor` types must use scopes accordin
 - [Sandbox-SSR](projects/sandbox-ssr/CONTRIBUTING.md)
 - [SDS](projects/sds/CONTRIBUTING.md)
 - [Service Navigation](projects/service-navigation-web-component/CONTRIBUTING.md)
+- [Toolchain](projects/toolchain/CONTRIBUTING.md)
 
 ##### <a name="subject"></a> Subject
 

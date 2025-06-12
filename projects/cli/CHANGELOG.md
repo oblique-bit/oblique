@@ -1,3 +1,10 @@
+# [13.3.0](https://github.com/oblique-bit/oblique/compare/13.2.3...13.3.0) (2025-06-12)
+
+## Features
+
+- **utils:** remove `@angular-eslint/schematics` dependency ([5bb72337](https://github.com/oblique-bit/oblique/commit/5bb723374155ef95c7424d4d07b6f2d5e1afbdf2))
+- **utils:** print cli version before each ob command ([f4573baa](https://github.com/oblique-bit/oblique/commit/f4573baaa3353ad4be7e5cb692b65357c0b6f40f))
+
 # [13.2.0](https://github.com/oblique-bit/oblique/compare/13.1.2...13.2.0) (2025-04-24)
 
 ## Features

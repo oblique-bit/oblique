@@ -1,11 +1,11 @@
-import {Component, OnDestroy, inject} from '@angular/core';
+import {Component, type OnDestroy, inject} from '@angular/core';
 import {ObButtonModule, ObSpinnerModule, ObSpinnerService} from '@oblique/oblique';
 import {MatButtonModule} from '@angular/material/button';
 
 @Component({
 	selector: 'app-multiple-activations-preview',
 	templateUrl: './multiple-activations-preview.component.html',
-	styleUrls: ['./multiple-activations-preview.component.scss'],
+	styleUrl: './multiple-activations-preview.component.scss',
 	imports: [ObSpinnerModule, ObButtonModule, MatButtonModule]
 })
 export class MultipleActivationsPreviewComponent implements OnDestroy {

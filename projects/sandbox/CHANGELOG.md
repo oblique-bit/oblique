@@ -1,3 +1,13 @@
+# [13.3.0](https://github.com/oblique-bit/oblique/compare/13.2.3...13.3.0) (2025-06-12)
+
+## Features
+
+- **language:** add ´ObDateComponent´ example ([955d1697](https://github.com/oblique-bit/oblique/commit/955d16971d478b1474a03fa3a0db3b8d90ba3ee8))
+- **master-layout:** add new description in info panel ([38e628bc](https://github.com/oblique-bit/oblique/commit/38e628bcc4bfd1aa0aabaedc3fc3d95cf19d9552))
+- **material:** add timepicker example ([ead0ba3b](https://github.com/oblique-bit/oblique/commit/ead0ba3b98f9f0072b16d104f453cae6eddf6620))
+- **sandbox:** use the conformity property for accessibility statement ([e3aee833](https://github.com/oblique-bit/oblique/commit/e3aee8336c32742c85cc948acb94348e8ecf26e5))
+- **service-navigation:** add examples values for new info panel ([9ed663f7](https://github.com/oblique-bit/oblique/commit/9ed663f7dca12f2642ef5a9d7a9c3b1c28ccc1ca))
+
 # [13.2.0](https://github.com/oblique-bit/oblique/compare/13.1.2...13.2.0) (2025-04-24)
 
 ## Bug Fixes

@@ -1,7 +1,9 @@
 <section>
 	<header class="ob-popover-header">
 		<ng-content select="[obHeaderPrefix]" />
-		{{ header | translate }}
+		<h4>
+			{{ header | translate }}
+		</h4>
 	</header>
 	<p *ngIf="text">{{ text | translate }}</p>
 	<ul class="ob-popover-list" *ngIf="links?.length > 0">
@@ -9,6 +11,8 @@
 			<a
 				[id]="link.label + '-ob-popover-link'"
 				class="ob-popover-link"
+				[class.active]="link.url | obIsCurrentUrl"
+				[attr.aria-current]="(link.url | obIsCurrentUrl) ? 'page' : undefined"
 				[href]="link.url | translate"
 				[isExternalLink]="!link.isInternalLink"
 				[attr.aria-label]="link.ariaLabel?.text | translate: link.ariaLabel?.parameters"

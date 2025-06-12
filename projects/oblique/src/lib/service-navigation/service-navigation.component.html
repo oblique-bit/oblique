@@ -6,7 +6,13 @@
 		<ob-service-navigation-message [linkHref]="inboxMailUrl$ | async" [count]="messageCount$ | async" />
 	</li>
 	<li *ngIf="displayInfo">
-		<ob-service-navigation-info [links]="infoLinks" [contact]="infoContact" />
+		<ob-service-navigation-info
+			[links]="infoLinks"
+			[contact]="infoContact"
+			[helpText]="infoHelpText"
+			[contactText]="infoContactText"
+			[description]="infoDescription"
+		/>
 	</li>
 	<li *ngIf="displayApplications">
 		<ob-service-navigation-applications

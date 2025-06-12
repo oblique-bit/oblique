@@ -1,3 +1,46 @@
+# [13.3.0](https://github.com/oblique-bit/oblique/compare/13.2.3...13.3.0) (2025-06-12)
+
+## Bug Fixes
+
+- **accessibility-statement:** replace broken links ([72a2c4cd](https://github.com/oblique-bit/oblique/commit/72a2c4cd3a81c65255a92a6ed6a7d1fe11e59607))
+- **master-layout:** ensure hovered sub-menu item have the correct background when collapsed ([09aad375](https://github.com/oblique-bit/oblique/commit/09aad3750bb16d82614d7949d992300e16c08522))
+- **master-layout:** ensure sub-menu item arrow horizontal alignment ([ac7d0c4d](https://github.com/oblique-bit/oblique/commit/ac7d0c4dda11a4b421b07641408608cf34cfb708))
+- **master-layout:** ensure sub-menu item don't move when hovered ([d273f138](https://github.com/oblique-bit/oblique/commit/d273f13877ade0bc91836cb3621a8c648c0a7c88))
+- **master-layout:** ensure sub-menu item also use the whole flyout width in expanded layout ([8d0a7f26](https://github.com/oblique-bit/oblique/commit/8d0a7f26412ddbcf804fed2ec49158b283633045))
+- **master-layout:** remove `margin-top` for external link icons in the main navigation ([d16c575f](https://github.com/oblique-bit/oblique/commit/d16c575f7d0a5f22a4d51778837763fbc04e8e10))
+- **master-layout:** remove `padding-left` & `border-left` from close buttons ([c9864173](https://github.com/oblique-bit/oblique/commit/c98641738b2c7c0ebc2b602d3edebe8a695fb1fb))
+- **material:** preserve the width of the sorting arrow ([15bdfd22](https://github.com/oblique-bit/oblique/commit/15bdfd225bb67b8caca2916665832cbdabbc0dcc))
+- **nav-tree:** change the disabled item's color to be lighter ([1c83f8a6](https://github.com/oblique-bit/oblique/commit/1c83f8a65548ce3e8ebe7455e747a042a713102e))
+- **nav-tree:** remove hover effect on disabled items ([13a48261](https://github.com/oblique-bit/oblique/commit/13a48261efa68bf9f48e9e045b323fcbb90d37a9))
+- **oblique:** ensure the change detection script don't fail ([4562cf99](https://github.com/oblique-bit/oblique/commit/4562cf99488972cee60fb9cbb058c1db98c1490c))
+- **translation:** correct spelling mistakes in the translation files ([6a6de5dd](https://github.com/oblique-bit/oblique/commit/6a6de5dd7f712d80e6127403660320a0b23bf2bd))
+
+## Features
+
+- **accessibility-statement:** add an optional conformity property ([b8ed1b9b](https://github.com/oblique-bit/oblique/commit/b8ed1b9b8227238645931ae68009d6aa74a11b10))
+- **language:** add ´ObDateComponent´ ([3c355148](https://github.com/oblique-bit/oblique/commit/3c355148e89a7f5206481d8d37d45ab74e9057e5))
+- **master-layout:** remove text around sub-menu label ([80b8171d](https://github.com/oblique-bit/oblique/commit/80b8171dbb1482e63d9f3cbd97c6934f2b735c49))
+- **master-layout:** add double quotes around submenu name in the tooltip ([35db489a](https://github.com/oblique-bit/oblique/commit/35db489a4a911c3093b8ee1e5b0c2da3b5d7a556))
+- **master-layout:** sync master-layout with info panel new descriptions ([7e162850](https://github.com/oblique-bit/oblique/commit/7e1628500cdfef0ac396327050ed2b65ae145e93))
+- **material:** ensure that the button's touch target is the same size as the button ([c3a0de24](https://github.com/oblique-bit/oblique/commit/c3a0de2496bb69cc4ffb7667761dff3aaf6d7db1))
+- **material:** support material design for the timepicker component ([b64a31fe](https://github.com/oblique-bit/oblique/commit/b64a31feee39df2fc2d3da72ddb41a0f6dd3dd31))
+- **popover:** add aria: expanded, controls, haspopup ([b96505cf](https://github.com/oblique-bit/oblique/commit/b96505cfbf921a39e3e19caf63bab862b4e4be12))
+- **schematics:** add `max-workers: ["2"]` to test config ([783be68c](https://github.com/oblique-bit/oblique/commit/783be68c709af036cfd131107c64578d17a9e514))
+- **schematics:** remove `@angular-eslint/schematics` dependency ([e607411c](https://github.com/oblique-bit/oblique/commit/e607411c6d46fed980dacf04194373b72aa8f5df))
+- **schematics:** add the conformity property ([0de80bc5](https://github.com/oblique-bit/oblique/commit/0de80bc511ce2eadb111a49ac9622a595c0fc6ec))
+- **service-navigation:** add AX title in services panel ([b5c7be98](https://github.com/oblique-bit/oblique/commit/b5c7be98edbaec46da7238d1361a29bc7d1cb0fc))
+- **service-navigation:** add AX title in profile panel ([3ee0b12d](https://github.com/oblique-bit/oblique/commit/3ee0b12d688254c2a7c7700275b14507002eaa69))
+- **service-navigation:** add focus trap in profile popover ([f1cb6062](https://github.com/oblique-bit/oblique/commit/f1cb60625d68e7783f0bca53a9421da95b38bf10))
+- **service-navigation:** add redeem page in profile popover ([b0ab3520](https://github.com/oblique-bit/oblique/commit/b0ab3520eaab5597127688bc1ed3aa9b3519c5f8))
+- **service-navigation:** add active style to links in a popover ([3acd847b](https://github.com/oblique-bit/oblique/commit/3acd847bac28dce0cc89cd8af4bb0a7d5dfd6515))
+- **service-navigation:** add h4 for popover-section ([27d91365](https://github.com/oblique-bit/oblique/commit/27d91365b97047d5f4cc99008f0453571d097a69))
+- **service-navigation:** add contact form possibility in info panel ([7ff34c2c](https://github.com/oblique-bit/oblique/commit/7ff34c2cae3f3cca48337361d92417bc1b6a4273))
+- **service-navigation:** add contact text in info panel ([ed34a24e](https://github.com/oblique-bit/oblique/commit/ed34a24eadaad3d2c9259a09f88500abd79c9397))
+- **service-navigation:** add help text in info panel ([5d9ad563](https://github.com/oblique-bit/oblique/commit/5d9ad563d975e51a7b0e7f377f16a1931d632414))
+- **service-navigation:** add description in info panel ([0c6b044f](https://github.com/oblique-bit/oblique/commit/0c6b044fb430d61983f6b8a6c24232a2b7e0a890))
+- **service-navigation:** add AX title in info panel ([ab26bad7](https://github.com/oblique-bit/oblique/commit/ab26bad79ddf065cb6ef5707009f6314324cfb4f))
+- **service-navigation:** add focus trap in info panel ([b63280ef](https://github.com/oblique-bit/oblique/commit/b63280ef2358f1b76cacc244e8780b9a52a256b0))
+
 # [13.2.3](https://github.com/oblique-bit/oblique/compare/13.2.2...13.2.3) (2025-05-22)
 
 ## Bug Fixes

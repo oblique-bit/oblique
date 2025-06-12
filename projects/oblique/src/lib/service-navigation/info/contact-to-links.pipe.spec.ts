@@ -23,6 +23,11 @@ describe('ObContactToLinksPipe', () => {
 				result: [{url: 'mailto:test@test.com', label: 'test@test.com', isInternalLink: true}]
 			},
 			{
+				description: 'a contact URL only',
+				values: {formUrl: 'http://example.com'},
+				result: [{url: 'http://example.com', label: 'i18n.oblique.service-navigation.info.contact.form', isInternalLink: false}]
+			},
+			{
 				description: 'a phone number only',
 				values: {tel: '+4123456'},
 				result: [
@@ -53,8 +58,8 @@ describe('ObContactToLinksPipe', () => {
 				]
 			},
 			{
-				description: 'both an email and a phone number',
-				values: {email: 'test@test.com', tel: '+4123456'},
+				description: 'all options',
+				values: {email: 'test@test.com', tel: '+4123456', formUrl: 'http://example.com'},
 				result: [
 					{url: 'mailto:test@test.com', label: 'test@test.com', isInternalLink: true},
 					{
@@ -65,6 +70,11 @@ describe('ObContactToLinksPipe', () => {
 							text: 'i18n.oblique.service-navigation.section.tel.aria-label',
 							parameters: {phoneNumber: '+, 4, 1, 2, 3, 4, 5, 6'}
 						}
+					},
+					{
+						isInternalLink: false,
+						label: 'i18n.oblique.service-navigation.info.contact.form',
+						url: 'http://example.com'
 					}
 				]
 			}

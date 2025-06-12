@@ -1,12 +1,12 @@
-import {Component, OnInit, inject} from '@angular/core';
+import {Component, type OnInit, inject} from '@angular/core';
 import {
-	AbstractControl,
+	type AbstractControl,
 	FormBuilder,
 	FormControl,
-	FormGroup,
+	type FormGroup,
 	ReactiveFormsModule,
 	UntypedFormBuilder,
-	UntypedFormGroup
+	type UntypedFormGroup
 } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';

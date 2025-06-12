@@ -64,8 +64,12 @@
 		<input matInput [matDatepicker]="dateChangeDatepicker" (dateChange)="onDateChange($event)" />
 		<mat-datepicker-toggle matIconSuffix [for]="dateChangeDatepicker" />
 		<mat-datepicker #dateChangeDatepicker />
-		<mat-hint *ngIf="lastDateChange">Last date change: {{ lastDateChange.value | date }}</mat-hint>
-		<mat-hint *ngIf="!lastDateChange">This date picker reacts to the "change" event</mat-hint>
+		@if (lastDateChange) {
+			<mat-hint>Last date change: {{ lastDateChange.value | date }}</mat-hint>
+		}
+		@if (!lastDateChange) {
+			<mat-hint>This date picker reacts to the "change" event</mat-hint>
+		}
 	</mat-form-field>
 </div>
 <div>
@@ -74,7 +78,11 @@
 		<input matInput [matDatepicker]="inputChangeDatepicker" (dateInput)="onDateInput($event)" />
 		<mat-datepicker-toggle matIconSuffix [for]="inputChangeDatepicker" />
 		<mat-datepicker #inputChangeDatepicker />
-		<mat-hint *ngIf="lastDateInput">Last date input: {{ lastDateInput.value | date }}</mat-hint>
-		<mat-hint *ngIf="!lastDateInput">This date picker reacts to the "input" event</mat-hint>
+		@if (lastDateInput) {
+			<mat-hint>Last date input: {{ lastDateInput.value | date }}</mat-hint>
+		}
+		@if (!lastDateInput) {
+			<mat-hint>This date picker reacts to the "input" event</mat-hint>
+		}
 	</mat-form-field>
 </div>

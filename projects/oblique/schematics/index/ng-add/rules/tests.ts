@@ -69,7 +69,8 @@ function referToJest() {
 			builder: '@angular-builders/jest:run',
 			options: {
 				configPath: 'tests/jest.config.js',
-				tsConfig: 'tsconfig.spec.json'
+				tsConfig: 'tsconfig.spec.json',
+				'max-workers': ['2']
 			}
 		});
 }

@@ -25,6 +25,8 @@ import {ObServiceNavigationComponent} from './service-navigation.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ObEportalCsrfInterceptor} from './eportal-csrf-interceptor/eportal-csrf-interceptor';
 import {ObDisableLinkDirective} from './shared/disable-link/disable-link.directive';
+import {A11yModule} from '@angular/cdk/a11y';
+import {ObIsCurrentUrlPipe} from './shared/popover-section/is-current-url.pipe';
 
 @NgModule({
 	providers: [
@@ -41,12 +43,14 @@ import {ObDisableLinkDirective} from './shared/disable-link/disable-link.directi
 		MatIconModule,
 		MatSelectModule,
 		MatTooltipModule,
+		A11yModule,
 		NgOptimizedImage,
 		ObButtonModule,
 		ObDisableLinkDirective,
 		ObExternalLinkModule,
 		ObPopoverModule,
 		ObTranslateParamsModule,
+		ObIsCurrentUrlPipe,
 		TranslateModule
 	],
 	declarations: [

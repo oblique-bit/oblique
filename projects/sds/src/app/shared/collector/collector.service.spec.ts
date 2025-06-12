@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog, type MatDialogRef} from '@angular/material/dialog';
 import {of} from 'rxjs';
 import {CollectorService} from './collector.service';
 
@@ -100,7 +100,6 @@ describe(CollectorService.name, () => {
 				});
 
 				test.each(keys)('that the fieldValues has the correct value for %s property', key => {
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 					expect(window.ATL_JQ_PAGE_PROPS.fieldValues[key]).toBe(configuration[key]());
 				});
 			});

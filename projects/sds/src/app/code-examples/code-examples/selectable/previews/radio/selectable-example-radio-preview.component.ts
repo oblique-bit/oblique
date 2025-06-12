@@ -5,7 +5,7 @@ import {ObSelectableModule} from '@oblique/oblique';
 @Component({
 	selector: 'app-selectable-example-radio-preview',
 	templateUrl: './selectable-example-radio-preview.component.html',
-	styleUrls: ['../selectable-example-preview.component.scss'],
+	styleUrl: '../selectable-example-preview.component.scss',
 	imports: [CommonModule, ObSelectableModule]
 })
 export class SelectableExampleRadioPreviewComponent {}

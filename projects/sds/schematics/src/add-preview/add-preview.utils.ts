@@ -1,6 +1,6 @@
-import {AddPreviewOptions} from './add-preview.model';
+import type {AddPreviewOptions} from './add-preview.model';
 import {createHost} from '../host.utils';
-import {Rule, SchematicContext, Tree, apply, chain, mergeWith, move, noop, template, url} from '@angular-devkit/schematics';
+import {type Rule, type SchematicContext, type Tree, apply, chain, mergeWith, move, noop, template, url} from '@angular-devkit/schematics';
 import {camelize, classify, dasherize} from '@angular-devkit/core/src/utils/strings';
 import {
 	addImportToFile,
@@ -13,7 +13,7 @@ import {
 } from '../sds.utils';
 import {isImported} from '@schematics/angular/utility/ast-utils';
 import {addNodeToSyntaxList} from '../nodes.utils';
-import {SourceFile, SyntaxKind} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {type SourceFile, SyntaxKind} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import * as colors from 'ansi-colors';
 
 export function createPreviewFiles(variables: Record<string, string>, pathToFeature: string): Rule {

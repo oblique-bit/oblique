@@ -1,13 +1,12 @@
 import {Component} from '@angular/core';
-import {NgFor} from '@angular/common';
-import {ObEUploadEventType, ObFileUploadModule, ObIUploadEvent} from '@oblique/oblique';
+import {type ObEUploadEventType, ObFileUploadModule, type ObIUploadEvent} from '@oblique/oblique';
 import {mockUrls} from '../../file-upload-simulate-interceptor';
 
 @Component({
 	selector: 'app-file-upload-upload-event-preview',
 	templateUrl: './file-upload-upload-event-preview.component.html',
-	styleUrls: ['../../../../code-example-flex-layout.scss'],
-	imports: [ObFileUploadModule, NgFor]
+	styleUrl: '../../../../code-example-flex-layout.scss',
+	imports: [ObFileUploadModule]
 })
 export class FileUploadUploadEventPreviewComponent {
 	readonly mockUrls = mockUrls;

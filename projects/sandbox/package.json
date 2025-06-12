@@ -1,6 +1,6 @@
 {
   "name": "@oblique/sandbox",
-  "version": "13.2.3",
+  "version": "13.3.0",
   "scripts": {
     "start": "ng serve",
     "start-pams": "ng serve --configuration pams",
@@ -8,7 +8,7 @@
     "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test sandbox",
     "test-ci": "cd ../.. && ng run sandbox:test:ci",
-    "build": "ng build",
+    "build": "ng build && ts-node scripts/post-build.ts",
     "release": "ts-node scripts/release.ts"
   },
   "dependencies": {

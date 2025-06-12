@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CodeExample, CodeExamples} from '../../code-examples.model';
+import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {BasicSliderComponent} from './previews/basic-slider/basic-slider.component';
 import {RangeSliderComponent} from './previews/range-slider/range-slider.component';
 import {SliderOptionsComponent} from './previews/slider-options/slider-options.component';

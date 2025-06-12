@@ -64,7 +64,7 @@ class HookCommitRules {
 	}
 
 	private static extractHeaderParts(header: string, contributing: string): Header {
-		const result = /^(?<type>[a-z-]+)\((?<pkg>[a-z-]+)(?:\/(?<scope>[a-z-]+))?\)?:\s(?<subject>.+)$/.exec(header)?.groups;
+		const result = /^(?<type>[a-z-]+)(?:\((?<pkg>[a-z-]+)(?:\/(?<scope>[a-z-]+))?\)?)?:\s(?<subject>.+)$/.exec(header)?.groups;
 		const hasTypeScopes = HookCommitRules.hasTypeScopes(contributing, result.type);
 		return {
 			type: result.type,
@@ -116,7 +116,7 @@ class HookCommitRules {
 			const filePaths = Git.getChangedFileNames()
 				.split('\n')
 				.filter(filePath => !!filePath)
-				.filter(filePath => !['package-lock.json', 'angular.json'].includes(filePath))
+				.filter(filePath => !['package-lock.json', 'angular.json', 'CONTRIBUTING.md', 'README.md'].includes(filePath))
 				.filter(filePath => !new RegExp(`projects/${HookCommitRules.getFolderName(pkg)}/.*`).test(filePath));
 			if (filePaths.length) {
 				HookCommitRules.fatal(

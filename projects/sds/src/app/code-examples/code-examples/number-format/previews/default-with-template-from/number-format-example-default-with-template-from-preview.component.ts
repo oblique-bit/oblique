@@ -8,7 +8,7 @@ import {Component} from '@angular/core';
 	selector: 'app-number-format-example-default-with-template-from-preview',
 	templateUrl: './number-format-example-default-with-template-from-preview.component.html',
 	imports: [FormsModule, MatFormFieldModule, MatInputModule, ObNumberFormatModule],
-	styleUrls: ['../../../../code-example-flex-layout.scss']
+	styleUrl: '../../../../code-example-flex-layout.scss'
 })
 export class NumberFormatExampleDefaultWithTemplateFromPreviewComponent {
 	exampleTemplateForm = 5.236548;

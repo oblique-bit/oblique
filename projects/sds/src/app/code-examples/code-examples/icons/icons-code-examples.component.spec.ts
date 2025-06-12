@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
@@ -35,7 +35,7 @@ describe(IconsCodeExamplesComponent.name, () => {
 	});
 
 	test(`that there are 3 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(3);
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(4);
 	});
 
 	test(`that there is 1 ${IconsExampleIconsGalleryPreviewComponent.name}s`, () => {
@@ -51,6 +51,6 @@ describe(IconsCodeExamplesComponent.name, () => {
 	});
 
 	test(`that there are 750 ${MatIcon.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatIcon)).length).toBe(750);
+		expect(fixture.debugElement.queryAll(By.directive(MatIcon)).length).toBe(751);
 	});
 });

@@ -10,8 +10,6 @@ export class SlugService {
 	getNewSlug(version: number): string | undefined {
 		const slug = this.getCurrentSlug();
 		switch (version) {
-			case 10:
-				return 'welcome-10';
 			case 11:
 				return this.redirectVersion11(slug);
 			case 12:
@@ -25,16 +23,14 @@ export class SlugService {
 
 	private getCurrentSlug(): string {
 		return this.router.url
-			.replace(/[#|?].*/, '') // remove queryParams & fragment
-			.replace(/\/(?:api|ui-ux|examples)/, '')
+			.replace(/[#|?].*/u, '') // remove queryParams & fragment
+			.replace(/\/(?:api|ui-ux|examples)/u, '')
 			.split('/')
 			.pop();
 	}
 
 	private redirectVersion11(slug: string): string | undefined {
 		switch (slug) {
-			case 'welcome-10':
-				return 'welcome';
 			case 'configuration-12':
 				return 'configuration';
 			case 'master-layout-12':
@@ -53,8 +49,6 @@ export class SlugService {
 
 	private redirectVersion12(slug: string): string | undefined {
 		switch (slug) {
-			case 'welcome-10':
-				return 'welcome';
 			case 'configuration':
 				return 'configuration-12';
 			case 'master-layout':
@@ -74,8 +68,6 @@ export class SlugService {
 
 	private redirectVersion13(slug: string): string | undefined {
 		switch (slug) {
-			case 'welcome-10':
-				return 'welcome';
 			case 'configuration':
 				return 'configuration-12';
 			case 'master-layout':

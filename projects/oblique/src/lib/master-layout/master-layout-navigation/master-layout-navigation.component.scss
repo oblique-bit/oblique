@@ -84,7 +84,7 @@
 				height: variables.$ob-button-height + variables.$ob-spacing-sm;
 
 				& > a,
-				& > button {
+				& > button:not(.ob-remove-menu-item) {
 					&.active,
 					&:hover {
 						border-left: variables.$ob-line-width-sm solid variables.$ob-accent;
@@ -497,6 +497,10 @@
 
 		&.ob-external-link .mat-icon {
 			margin-left: auto;
+
+			svg {
+				margin-top: unset;
+			}
 		}
 	}
 

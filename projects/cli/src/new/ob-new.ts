@@ -1,5 +1,13 @@
 import {Command, type OptionValues} from '@commander-js/extra-typings';
-import {buildOption, commandUsageText, execute, optionDescriptions, projectNamePlaceholder, startObCommand} from '../utils/cli-utils';
+import {
+	buildOption,
+	commandUsageText,
+	execute,
+	optionDescriptions,
+	projectNamePlaceholder,
+	startObCommand,
+	version
+} from '../utils/cli-utils';
 import {addObNewCommandOptions, convertOptionPropertyNames} from '../utils/ob-configure-command';
 import {
 	type HandleObNewActionOptions,
@@ -7,8 +15,7 @@ import {
 	createsWorkspaceMessage,
 	immutableOptions,
 	obNewConfig,
-	schema,
-	version
+	schema
 } from './ob-new.model';
 
 export function createObNewCommand(): Command<[string], OptionValues> {

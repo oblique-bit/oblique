@@ -13,11 +13,21 @@
 </button>
 
 <ng-template #popoverInfo>
-	<ob-service-navigation-popover-section *ngIf="links?.length > 0" header="i18n.oblique.service-navigation.info.header" [links]="links" />
-	<ob-service-navigation-popover-section
-		*ngIf="contact?.email || contact?.tel"
-		header="i18n.oblique.service-navigation.info.contact.header"
-		text="i18n.oblique.service-navigation.info.contact.text"
-		[links]="contact | obContactToLinks"
-	/>
+	<div id="ob-service-navigation-info-popover-content" cdkTrapFocus cdkTrapFocusAutoCapture>
+		<h3 class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.info.button" | translate }}</h3>
+		<p *ngIf="description">{{ description | translate }}</p>
+
+		<ob-service-navigation-popover-section
+			*ngIf="links?.length > 0"
+			header="i18n.oblique.service-navigation.info.header"
+			[text]="helpText"
+			[links]="links"
+		/>
+		<ob-service-navigation-popover-section
+			*ngIf="contact?.email || contact?.tel || contact?.formUrl"
+			header="i18n.oblique.service-navigation.info.contact.header"
+			[text]="contactText"
+			[links]="contact | obContactToLinks"
+		/>
+	</div>
 </ng-template>

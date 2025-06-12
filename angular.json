@@ -57,8 +57,7 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "no-cache": ["true"],
-            "run-in-band": ["true"]
+            "max-workers": ["2"]
           },
           "configurations": {
             "default": {
@@ -108,8 +107,7 @@
                 "glob": "**/*",
                 "input": "projects/oblique/src/styles/fonts",
                 "output": "/assets/fonts"
-              },
-              "projects/sandbox/src/Staticfile"
+              }
             ],
             "styles": [
               "projects/oblique/src/styles/scss/oblique-core.scss",
@@ -195,8 +193,7 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "no-cache": ["true"],
-            "run-in-band": ["true"]
+            "max-workers": ["2"]
           },
           "configurations": {
             "default": {
@@ -314,8 +311,7 @@
           "options": {
             "configPath": "jest.config.js",
             "tsConfig": "tsconfig.spec.json",
-            "no-cache": ["true"],
-            "run-in-band": ["true"]
+            "max-workers": ["2"]
           },
           "configurations": {
             "default": {
@@ -407,8 +403,7 @@
           "options": {
             "configPath": "jest.config.js",
             "tsConfig": "tsconfig.spec.json",
-            "no-cache": ["true"],
-            "run-in-band": ["true"]
+            "max-workers": ["2"]
           },
           "configurations": {
             "default": {
@@ -457,8 +452,7 @@
                 "glob": "**/*",
                 "input": "projects/oblique/src/styles/fonts",
                 "output": "/assets/fonts"
-              },
-              "projects/sandbox-ssr/src/Staticfile"
+              }
             ],
             "styles": ["projects/sandbox-ssr/src/styles.scss"],
             "scripts": ["projects/oblique/src/ob-features.js"],
@@ -511,8 +505,7 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "no-cache": ["true"],
-            "run-in-band": ["true"]
+            "max-workers": ["2"]
           },
           "configurations": {
             "default": {
@@ -551,8 +544,7 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "no-cache": ["true"],
-            "run-in-band": ["true"]
+            "max-workers": ["2"]
           },
           "configurations": {
             "default": {
@@ -581,12 +573,6 @@
     },
     "@schematics/angular:pipe": {
       "standalone": true
-    },
-    "@angular-eslint/schematics:application": {
-      "setParserOptionsProject": true
-    },
-    "@angular-eslint/schematics:library": {
-      "setParserOptionsProject": true
     }
   }
 }

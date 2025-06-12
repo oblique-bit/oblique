@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation, input} from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {ObExternalLinkModule} from '@oblique/oblique';
 
@@ -11,5 +11,5 @@ import {ObExternalLinkModule} from '@oblique/oblique';
 	encapsulation: ViewEncapsulation.None
 })
 export class BannerComponent {
-	@Input() content: string;
+	readonly content = input<string>(undefined);
 }

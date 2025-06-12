@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {SafeHtmlPipe} from './safeHtml.pipe';
-import {BrowserModule, SafeHtml} from '@angular/platform-browser';
+import {BrowserModule, type SafeHtml} from '@angular/platform-browser';
 
 describe(SafeHtmlPipe.name, () => {
 	describe(SafeHtmlPipe.prototype.transform.name, () => {

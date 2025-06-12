@@ -10,7 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
 	selector: 'app-nested-form-example-template-driven-preview',
 	templateUrl: './nested-form-example-template-driven-preview.component.html',
-	styleUrls: ['../nested-form-example-preview.scss'],
+	styleUrl: '../nested-form-example-preview.scss',
 	imports: [
 		FormsModule,
 		JsonPipe,

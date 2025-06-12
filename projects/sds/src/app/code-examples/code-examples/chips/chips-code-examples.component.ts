@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CodeExample, CodeExamples} from '../../code-examples.model';
+import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {ChipsExampleColorPreviewComponent} from './previews/color/chips-example-color-preview.component';
 import {ChipsExampleAutocompletePreviewComponent} from './previews/autocomplete/chips-example-autocomplete-preview.component';
 import {ChipsExampleStackPreviewComponent} from './previews/stack/chips-example-stack-preview.component';

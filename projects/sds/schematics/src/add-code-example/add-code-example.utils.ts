@@ -1,11 +1,22 @@
 import {classify, dasherize} from '@angular-devkit/core/src/utils/strings';
 import {getSourceNodes} from '@schematics/angular/utility/ast-utils';
-import {Rule, SchematicContext, SchematicsException, Tree, apply, chain, mergeWith, move, template, url} from '@angular-devkit/schematics';
+import {
+	type Rule,
+	type SchematicContext,
+	SchematicsException,
+	type Tree,
+	apply,
+	chain,
+	mergeWith,
+	move,
+	template,
+	url
+} from '@angular-devkit/schematics';
 import {getSdsSourceRootPath} from '../workspace.utils';
 import {addNodeToSyntaxList, checkPropertyLiteralExists} from '../nodes.utils';
-import {SourceFile, SyntaxKind} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {type SourceFile, SyntaxKind} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import * as colors from 'ansi-colors';
-import {AddCodeExampleOptions} from './add-code-example.model';
+import type {AddCodeExampleOptions} from './add-code-example.model';
 import {
 	addImportToFile,
 	codeExampleMapperFilePath,

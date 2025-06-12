@@ -1,6 +1,6 @@
 // This is due to the CMS naming convention.
-import {Type} from '@angular/core';
-import {CodeExamples} from '../../code-examples/code-examples.model';
+import type {Type} from '@angular/core';
+import type {CodeExamples} from '../../code-examples/code-examples.model';
 
 export interface TabbedPageCompleteCms {
 	data: TabbedPageComplete;

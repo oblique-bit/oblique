@@ -51,7 +51,10 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	readonly defaultLanguage = input<string>(undefined);
 	readonly language = input<string>(undefined);
 	readonly environment = input<'DEV' | 'REF' | 'TEST' | 'ABN' | 'PROD'>(undefined);
+	readonly infoDescription = input<string>(undefined);
+	readonly infoContactText = input<string>(undefined);
 	readonly infoContact = input<string>(undefined);
+	readonly infoHelpText = input<string>(undefined);
 	readonly infoLinks = input<string>(undefined);
 	readonly profileLinks = input<string>(undefined);
 	readonly maxLastUsedApplications = input(3, {transform: numberAttribute});

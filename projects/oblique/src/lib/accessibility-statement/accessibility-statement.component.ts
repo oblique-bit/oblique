@@ -4,7 +4,7 @@ import {MatIcon} from '@angular/material/icon';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
-import {ObIAccessibilityStatementConfiguration} from '../utilities.model';
+import {ObConformity, ObIAccessibilityStatementConfiguration} from '../utilities.model';
 import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION} from '../utilities';
 import {ObDatePipe} from '../language/date.pipe';
 import {ObAvailableInComponent} from './available-in/available-in.component';
@@ -17,10 +17,11 @@ import {ObAvailableInComponent} from './available-in/available-in.component';
 })
 export class AccessibilityStatementComponent {
 	readonly parameters = inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION);
+	readonly exceptions = 'exceptions' in this.parameters && this.parameters.exceptions.length > 0 ? this.parameters.exceptions : [];
 	readonly statementParameters = {
 		applicationName: this.parameters.applicationName,
 		conformity: this.getConformity(this.parameters),
-		exceptionText: this.getConformityText(this.parameters)
+		exceptionText: this.getConformityText(this.exceptions.length > 0)
 	};
 	readonly contactParameters = {
 		emails: (this.parameters.contact as {emails: string[]}).emails ?? [],
@@ -70,16 +71,31 @@ export class AccessibilityStatementComponent {
 	];
 
 	private getConformity(parameters: ObIAccessibilityStatementConfiguration): string {
-		if (!parameters.createdOn) {
-			return 'i18n.oblique.accessibility-statement.statement.none';
+		if ('conformity' in parameters) {
+			return this.getConformityTranslationKey(parameters.conformity);
 		}
-		return parameters.exceptions?.length
-			? 'i18n.oblique.accessibility-statement.statement.partial'
-			: 'i18n.oblique.accessibility-statement.statement.full';
+
+		if (!parameters.createdOn) {
+			return this.getConformityTranslationKey('none');
+		}
+		return parameters.exceptions?.length ? this.getConformityTranslationKey('partial') : this.getConformityTranslationKey('full');
 	}
 
-	private getConformityText(parameters: ObIAccessibilityStatementConfiguration): string {
-		return parameters.exceptions?.length > 0
+	// eslint-disable-next-line @typescript-eslint/consistent-return
+	private getConformityTranslationKey(conformity: ObConformity): string {
+		// eslint-disable-next-line default-case
+		switch (conformity) {
+			case 'none':
+				return 'i18n.oblique.accessibility-statement.statement.none';
+			case 'full':
+				return 'i18n.oblique.accessibility-statement.statement.full';
+			case 'partial':
+				return 'i18n.oblique.accessibility-statement.statement.partial';
+		}
+	}
+
+	private getConformityText(hasExceptions: boolean): string {
+		return hasExceptions
 			? 'i18n.oblique.accessibility-statement.statement.exception'
 			: 'i18n.oblique.accessibility-statement.statement.no-exception';
 	}

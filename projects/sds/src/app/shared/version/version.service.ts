@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Version} from '../../cms/models/version.model';
+import type {Version} from '../../cms/models/version.model';
 
 @Injectable({
 	providedIn: 'root'

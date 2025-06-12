@@ -1,17 +1,29 @@
-import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild, inject} from '@angular/core';
+import {Component, type ElementRef, HostListener, type OnInit, inject, output, viewChild} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ActivatedRoute, NavigationEnd, NavigationExtras, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, type NavigationExtras, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatIcon} from '@angular/material/icon';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {skip} from 'rxjs/operators';
 import {CmsDataService} from '../cms/cms-data.service';
-import {BehaviorSubject, Observable, combineLatestWith, debounceTime, filter, forkJoin, map, of, startWith, switchMap, tap} from 'rxjs';
+import {
+	BehaviorSubject,
+	type Observable,
+	combineLatestWith,
+	debounceTime,
+	filter,
+	forkJoin,
+	map,
+	of,
+	startWith,
+	switchMap,
+	tap
+} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {urlConst} from '../shared/url/url.const';
-import {Accordion, Link} from './accordion-links/accordion-links.model';
-import {AccordionComposer} from './utils/accordion-composer';
+import type {Accordion, Link} from './accordion-links/accordion-links.model';
+import {composeAccordions} from './utils/accordion-composer';
 import {IdPipe} from '../shared/id/id.pipe';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
@@ -26,7 +38,7 @@ import {FeedbackTriggerDirective} from '../feedback/feedback-trigger.directive';
 @Component({
 	selector: 'app-side-navigation',
 	templateUrl: './side-navigation.component.html',
-	styleUrls: ['./side-navigation.component.scss'],
+	styleUrl: './side-navigation.component.scss',
 	imports: [
 		ImageComponent,
 		VersionComponent,
@@ -47,12 +59,12 @@ import {FeedbackTriggerDirective} from '../feedback/feedback-trigger.directive';
 	]
 })
 export class SideNavigationComponent implements OnInit {
-	@Output() readonly showMobileNavigation = new EventEmitter<boolean>();
+	readonly showMobileNavigation = output<boolean>();
 	displayMobileNavigation = false;
 	readonly componentId = 'side-navigation';
 	readonly search = new FormControl('');
 
-	@ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
+	readonly searchInput = viewChild<ElementRef<HTMLInputElement>>('searchInput');
 
 	filteredAccordions$: Observable<Accordion[]>;
 	selectedSlug$: Observable<string | undefined>;
@@ -98,7 +110,7 @@ export class SideNavigationComponent implements OnInit {
 		if (($event.ctrlKey || $event.metaKey) && $event.key === 'k') {
 			$event.stopPropagation();
 			$event.preventDefault();
-			this.searchInput.nativeElement.focus();
+			this.searchInput().nativeElement.focus();
 		}
 	}
 
@@ -108,11 +120,11 @@ export class SideNavigationComponent implements OnInit {
 			tabbedPages: this.cmsDataService.getTabbedPagesShort(),
 			textPages: this.cmsDataService.getTextPagesShort()
 		}).pipe(
-			map(value => AccordionComposer.composeAccordions(value)),
+			map(value => composeAccordions(value)),
 			tap(accordions => this.setUpSlugToIdServiceDataSet(accordions)),
 			combineLatestWith(this.prepareSearchText(), this.version$, this.urlParamVersion$),
 			map(([accordions, searchText, versionId, urlParamVersion]) =>
-				this.getAccordionsMatchingSearchTextAndVersion(accordions, searchText, versionId, urlParamVersion)
+				this.getAccordionsMatchingSearchTextAndVersion(accordions, searchText, urlParamVersion ?? versionId)
 			),
 			startWith([])
 		);
@@ -162,16 +174,11 @@ export class SideNavigationComponent implements OnInit {
 			: accordions;
 	}
 
-	private getAccordionsMatchingSearchTextAndVersion(
-		accordions: Accordion[],
-		searchText?: string,
-		dropDownVersion?: number,
-		urlParamVersion?: number
-	): Accordion[] {
+	private getAccordionsMatchingSearchTextAndVersion(accordions: Accordion[], searchText?: string, version?: number): Accordion[] {
 		return this.getAccordionsMatchingSearchText(accordions, searchText)
 			.map(accordion => ({
 				...accordion,
-				links: this.getNewestLinksForVersion(accordion, urlParamVersion ?? dropDownVersion)
+				links: this.getNewestLinksForVersion(accordion, version)
 			}))
 			.filter(accordion => accordion.links.length > 0);
 	}
@@ -195,7 +202,7 @@ export class SideNavigationComponent implements OnInit {
 	}
 
 	private getVersionFromUrlParam(activatedRoute?: ActivatedRoute): number | undefined {
-		return +activatedRoute.snapshot.queryParamMap.get('version') || undefined;
+		return Number(activatedRoute.snapshot.queryParamMap.get('version')) || undefined;
 	}
 
 	private redirectOnVersionChange(): void {
@@ -204,7 +211,7 @@ export class SideNavigationComponent implements OnInit {
 				skip(3),
 				takeUntilDestroyed(),
 				map(version => this.slugService.getNewSlug(version)),
-				filter(slug => !!slug)
+				filter(slug => Boolean(slug))
 			)
 			.subscribe(slug => {
 				const extras: NavigationExtras = {queryParamsHandling: 'preserve', preserveFragment: true};

@@ -3,8 +3,8 @@ import {ActivatedRoute, NavigationEnd, Router, UrlSerializer} from '@angular/rou
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
-import {CodeExamplesMapper} from '../code-examples/code-examples.mapper';
-import {Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
+import {getCodeExampleComponent} from '../code-examples/code-examples.mapper';
+import {type Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {urlConst} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -12,8 +12,8 @@ import {TabComponent} from '../shared/tabs/tab/tab.component';
 import {TabsComponent} from '../shared/tabs/tabs.component';
 import {CommonModule, Location} from '@angular/common';
 import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
-import {CmsData, TabbedPageComplete, UiUxData, UiUxEntry} from '../cms/models/tabbed-page.model';
-import {TabNameMapper} from './utils/tab-name-mapper';
+import type {CmsData, TabbedPageComplete, UiUxData, UiUxEntry} from '../cms/models/tabbed-page.model';
+import {getTabNameFromUrlParam, getUrlParamForTabName} from './utils/tab-name-mapper';
 import {MatChipsModule} from '@angular/material/chips';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {VersionService} from '../shared/version/version.service';
@@ -22,7 +22,7 @@ import {UiUxComponent} from '../ui-ux/ui-ux.component';
 @Component({
 	selector: 'app-tabbed-page',
 	templateUrl: './tabbed-page.component.html',
-	styleUrls: ['./tabbed-page.component.scss'],
+	styleUrl: './tabbed-page.component.scss',
 	imports: [TabsComponent, TabComponent, UiUxComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe, MatChipsModule],
 	host: {class: 'content-page'},
 	hostDirectives: [CdkScrollable]
@@ -59,7 +59,7 @@ export class TabbedPageComponent {
 	}
 
 	handleTabChanged(tabName: string): void {
-		const urlParamForTab: string = TabNameMapper.getUrlParamForTabName(tabName); //newly requested tab
+		const urlParamForTab: string = getUrlParamForTabName(tabName); //newly requested tab
 		const newUrl = this.serializer.serialize(
 			this.router.createUrlTree([urlParamForTab], {
 				relativeTo: this.activatedRoute.parent,
@@ -101,7 +101,7 @@ export class TabbedPageComponent {
 			title: cmsData.name,
 			api: baseUrl ? cmsData.api.replace('https://v17.material.angular.io/', baseUrl) : cmsData.api,
 			uiUx: this.buildUiUxData(cmsData),
-			source: CodeExamplesMapper.getCodeExampleComponent(cmsData.slug),
+			source: getCodeExampleComponent(cmsData.slug),
 			tab: this.getSelectedTab(),
 			deprecation: cmsData.deprecation
 		};
@@ -113,7 +113,7 @@ export class TabbedPageComponent {
 		// to circumvent this problem, "undefined" is converted to "null" every other times so that the input has a new value each time the URL
 		// changes
 		return (
-			TabNameMapper.getTabNameFromUrlParam(this.activatedRoute.snapshot.paramMap.get(urlConst.urlParams.selectedTab)) ||
+			getTabNameFromUrlParam(this.activatedRoute.snapshot.paramMap.get(urlConst.urlParams.selectedTab)) ||
 			this.toggleBetweenNullAndUndefined()
 		);
 	}
@@ -151,10 +151,10 @@ export class TabbedPageComponent {
 	}
 
 	private camelCaseToSnakeCase(item: string): string {
-		return item.replace(/[A-Z]/g, match => `_${match.toLowerCase()}`);
+		return item.replace(/[A-Z]/gu, match => `_${match.toLowerCase()}`);
 	}
 
 	private removeParagraphTags(item: string): string {
-		return item.replace(/<\/?p>/g, '');
+		return item.replace(/<\/?p>/gu, '');
 	}
 }

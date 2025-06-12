@@ -1,18 +1,18 @@
 import {Component, inject} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {type AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {AsyncPipe} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import {Observable, debounceTime, map, startWith} from 'rxjs';
-import {Fields, RequiredLength} from './feedback-form.model';
+import {type Observable, debounceTime, map, startWith} from 'rxjs';
+import type {Fields, RequiredLength} from './feedback-form.model';
 import {ObButtonModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-feedback',
 	templateUrl: './feedback-form.component.html',
-	styleUrls: ['./feedback-form.component.scss'],
+	styleUrl: './feedback-form.component.scss',
 	imports: [AsyncPipe, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, ObButtonModule, ReactiveFormsModule]
 })
 export class FeedbackFormComponent {

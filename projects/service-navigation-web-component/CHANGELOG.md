@@ -1,3 +1,21 @@
+# [13.3.0](https://github.com/oblique-bit/oblique/compare/13.2.3...13.3.0) (2025-06-12)
+
+## Features
+
+- **service-navigation:** add AX title in services panel ([b5c7be98](https://github.com/oblique-bit/oblique/commit/b5c7be98edbaec46da7238d1361a29bc7d1cb0fc))
+- **service-navigation:** add AX title in profile panel ([3ee0b12d](https://github.com/oblique-bit/oblique/commit/3ee0b12d688254c2a7c7700275b14507002eaa69))
+- **service-navigation:** add focus trap in profile popover ([f1cb6062](https://github.com/oblique-bit/oblique/commit/f1cb60625d68e7783f0bca53a9421da95b38bf10))
+- **service-navigation:** add redeem page in profile popover ([b0ab3520](https://github.com/oblique-bit/oblique/commit/b0ab3520eaab5597127688bc1ed3aa9b3519c5f8))
+- **service-navigation:** add active style to links in a popover ([3acd847b](https://github.com/oblique-bit/oblique/commit/3acd847bac28dce0cc89cd8af4bb0a7d5dfd6515))
+- **service-navigation:** add h4 for popover-section ([27d91365](https://github.com/oblique-bit/oblique/commit/27d91365b97047d5f4cc99008f0453571d097a69))
+- **service-navigation:** add contact form possibility in info panel ([7ff34c2c](https://github.com/oblique-bit/oblique/commit/7ff34c2cae3f3cca48337361d92417bc1b6a4273))
+- **service-navigation:** add contact text in info panel ([ed34a24e](https://github.com/oblique-bit/oblique/commit/ed34a24eadaad3d2c9259a09f88500abd79c9397))
+- **service-navigation:** add help text in info panel ([5d9ad563](https://github.com/oblique-bit/oblique/commit/5d9ad563d975e51a7b0e7f377f16a1931d632414))
+- **service-navigation:** add description in info panel ([0c6b044f](https://github.com/oblique-bit/oblique/commit/0c6b044fb430d61983f6b8a6c24232a2b7e0a890))
+- **service-navigation:** add AX title in info panel ([ab26bad7](https://github.com/oblique-bit/oblique/commit/ab26bad79ddf065cb6ef5707009f6314324cfb4f))
+- **service-navigation:** add focus trap in info panel ([b63280ef](https://github.com/oblique-bit/oblique/commit/b63280ef2358f1b76cacc244e8780b9a52a256b0))
+- **web-component:** add inputs in info panel ([1636fcb5](https://github.com/oblique-bit/oblique/commit/1636fcb51e6a29abbe4a17b9b6622866503254e8))
+
 # [13.2.0](https://github.com/oblique-bit/oblique/compare/13.1.2...13.2.0) (2025-04-24)
 
 ## Features

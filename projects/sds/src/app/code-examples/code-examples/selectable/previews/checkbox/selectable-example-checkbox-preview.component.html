@@ -8,5 +8,7 @@
 <hr />
 Selected values:
 <ul>
-	<li *ngFor="let item of group.selected$ | async">{{ item.value }}</li>
+	@for (item of group.selected$ | async; track item) {
+		<li>{{ item.value }}</li>
+	}
 </ul>

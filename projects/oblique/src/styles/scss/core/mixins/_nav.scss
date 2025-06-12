@@ -19,7 +19,7 @@
 		}
 	}
 
-	&:hover {
+	&:not([disabled], .disabled):hover {
 		background-color: variables.$ob-secondary-50;
 	}
 

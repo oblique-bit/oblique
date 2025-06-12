@@ -9,6 +9,7 @@ The Oblique repository consists of multiple packages:
 - [Sandbox SSR](projects/sandbox-ssr/README.md)
 - [SDS](projects/sds/README.md)
 - [Service Navigation Web Component](projects/service-navigation-web-component/README.md)
+- [Toolchain](projects/toolchain/README.md)
 
 ## Contribute to Oblique
 

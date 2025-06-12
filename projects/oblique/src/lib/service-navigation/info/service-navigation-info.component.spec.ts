@@ -14,6 +14,7 @@ import {ObServiceNavigationInfoHarness} from './service-navigation-info.harness'
 import {ObServiceNavigationInfoComponent} from './service-navigation-info.component';
 import {ObContactToLinksPipe} from './contact-to-links.pipe';
 import {WINDOW} from '../../utilities';
+import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
 
 describe(ObServiceNavigationInfoComponent.name, () => {
 	let component: ObServiceNavigationInfoComponent;
@@ -22,7 +23,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, MatIconModule, MatTooltipModule, ObPopoverModule],
+			imports: [ObMockTranslatePipe, MatIconModule, MatTooltipModule, ObPopoverModule, ObIsCurrentUrlPipe],
 			declarations: [ObServiceNavigationInfoComponent, ObServiceNavigationPopoverSectionComponent, ObContactToLinksPipe],
 			providers: [{provide: WINDOW, useValue: window}]
 		}).compileComponents();
@@ -124,6 +125,45 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 			}));
 		});
 
+		describe('with contact property only', () => {
+			let sections: DebugElement[];
+			beforeEach(fakeAsync(async () => {
+				component.contact = {formUrl: 'https://example.com/'};
+				await harness.openPopover();
+				fixture.detectChanges();
+				tick();
+				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
+			}));
+
+			it('should have 1 section', () => {
+				expect(sections.length).toBe(1);
+			});
+
+			describe('first section', () => {
+				let section: ObServiceNavigationPopoverSectionComponent;
+				beforeEach(() => {
+					section = sections[0].componentInstance;
+				});
+
+				it('should have "i18n.oblique.service-navigation.info.contact.header" as header', () => {
+					expect(section.header).toBe('i18n.oblique.service-navigation.info.contact.header');
+				});
+
+				describe('links', () => {
+					it('should have 1', () => {
+						expect(section.links.length).toBe(1);
+					});
+
+					it.each([
+						{property: 'url', value: 'https://example.com/'},
+						{property: 'label', value: 'i18n.oblique.service-navigation.info.contact.form'}
+					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
+						expect(section.links[0][property]).toBe(value);
+					});
+				});
+			});
+		});
+
 		describe('with tel property only', () => {
 			let sections: DebugElement[];
 			beforeEach(fakeAsync(async () => {
@@ -202,10 +242,10 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 			});
 		});
 
-		describe('with email and tel properties', () => {
+		describe('with email, tel and contact properties', () => {
 			let sections: DebugElement[];
 			beforeEach(fakeAsync(async () => {
-				component.contact = {email: 'text@test.com', tel: '123'};
+				component.contact = {email: 'text@test.com', tel: '123', formUrl: 'https://example.com/'};
 				await harness.openPopover();
 				fixture.detectChanges();
 				tick();
@@ -227,8 +267,8 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				describe('links', () => {
-					it('should have 2', () => {
-						expect(section.links.length).toBe(2);
+					it('should have 3', () => {
+						expect(section.links.length).toBe(3);
 					});
 
 					it.each([
@@ -243,6 +283,13 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 						{property: 'label', value: '123'}
 					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
 						expect(section.links[1][property]).toBe(value);
+					});
+
+					it.each([
+						{property: 'url', value: 'https://example.com/'},
+						{property: 'label', value: 'i18n.oblique.service-navigation.info.contact.form'}
+					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
+						expect(section.links[2][property]).toBe(value);
 					});
 				});
 			});
@@ -275,6 +322,15 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 
 		it('should have "i18n.oblique.service-navigation.info.button" as screen reader text', async () => {
 			expect(await harness.getTriggerButtonScreenReaderText()).toBe('i18n.oblique.service-navigation.info.button');
+		});
+
+		describe('Content div', () => {
+			it.each(['cdkTrapFocus', 'cdkTrapFocusAutoCapture'])('should have the %s attribute', async value => {
+				await harness.openPopover();
+				const contentDiv = await harness.getContentDiv();
+				const trapFocusAttribute = await contentDiv.getAttribute(value);
+				expect(trapFocusAttribute).not.toBeNull();
+			});
 		});
 
 		describe('tooltip', () => {

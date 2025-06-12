@@ -1,7 +1,7 @@
 import {AsyncPipe} from '@angular/common';
-import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
+import {type AfterViewInit, Component, ElementRef, type OnDestroy, type Signal, inject, viewChild} from '@angular/core';
 import {ObGlobalEventsService, obOutsideFilter} from '@oblique/oblique';
-import {BehaviorSubject, Observable, Subject, map, takeUntil, withLatestFrom} from 'rxjs';
+import {BehaviorSubject, type Observable, Subject, map, takeUntil, withLatestFrom} from 'rxjs';
 
 @Component({
 	selector: 'app-global-events-example-ob-outside-filter-preview',
@@ -13,19 +13,19 @@ import {BehaviorSubject, Observable, Subject, map, takeUntil, withLatestFrom} fr
 export class GlobalEventsExampleObOutsideFilterPreviewComponent implements AfterViewInit, OnDestroy {
 	clicksOutsideObOutsideFilterItems$: Observable<number>;
 
-	@ViewChild('obOutsideFilterItem', {read: ElementRef}) private readonly obOutsideFilterItem: ElementRef<HTMLElement>;
-
+	private readonly events = inject(ObGlobalEventsService);
+	private readonly obOutsideFilterItem: Signal<ElementRef<HTMLElement>> = viewChild('obOutsideFilterItem', {read: ElementRef});
 	private readonly clicksOutsideObOutsideFilterItems: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 	private readonly unsubscribe = new Subject<void>();
 
-	constructor(private readonly events: ObGlobalEventsService) {
+	constructor() {
 		this.clicksOutsideObOutsideFilterItems$ = this.clicksOutsideObOutsideFilterItems.asObservable();
 	}
 
 	ngAfterViewInit(): void {
 		this.events.click$
 			.pipe(
-				obOutsideFilter(this.obOutsideFilterItem.nativeElement),
+				obOutsideFilter(this.obOutsideFilterItem().nativeElement),
 				withLatestFrom(this.clicksOutsideObOutsideFilterItems),
 				map(val => val[1]),
 				takeUntil(this.unsubscribe)

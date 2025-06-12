@@ -5,9 +5,14 @@ import {ObServiceNavigationPopOverHarness} from '../shared/popover-section/servi
 
 export class ObServiceNavigationInfoHarness extends ContentContainerComponentHarness {
 	static hostSelector = 'ob-service-navigation-info';
+	static contentSelector = '#ob-service-navigation-info-popover-content';
 
 	public async getTriggerButton(): Promise<TestElement> {
 		return this.locatorFor('button')();
+	}
+
+	public async getContentDiv(): Promise<TestElement> {
+		return this.locatorFor(ObServiceNavigationInfoHarness.contentSelector)();
 	}
 
 	public async getTriggerButtonScreenReaderText(): Promise<string> {
