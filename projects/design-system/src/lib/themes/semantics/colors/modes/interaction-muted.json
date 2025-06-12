@@ -106,16 +106,16 @@
             },
             "bg-inverse": {
               "enabled": {
-                "value": "{ob.s.color.neutral.bg.contrast-highest-inverse}",
+                "value": "{ob.s.color.neutral.bg.contrast-medium-inverse}",
                 "type": "color",
                 "description": "References directly the text color to ensure the color consistency"
               },
               "hover": {
-                "value": "{ob.s.color.neutral.bg.contrast-high-inverse}",
+                "value": "{ob.s.color.neutral.bg.contrast-highest-inverse}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.neutral.bg.contrast-highest-inverse}",
+                "value": "{ob.s.color.neutral.bg.contrast-high-inverse}",
                 "type": "color"
               },
               "pressed": {

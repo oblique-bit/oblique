@@ -1,0 +1,99 @@
+{
+  "ob": {
+    "c": {
+      "infobox": {
+        "color": {
+          "icon": {
+            "info": {
+              "value": "{ob.s.color.status.info.fg.contrast-medium}",
+              "type": "color"
+            },
+            "error": {
+              "value": "{ob.s.color.status.critical.fg.contrast-high}",
+              "type": "color"
+            },
+            "warning": {
+              "value": "{ob.s.color.status.attention.fg.contrast-high}",
+              "type": "color"
+            },
+            "resolved": {
+              "value": "{ob.s.color.status.resolved.fg.contrast-medium}",
+              "type": "color"
+            },
+            "fatal": {
+              "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
+              "type": "color"
+            }
+          },
+          "border": {
+            "info": {
+              "value": "{ob.s.color.status.info.fg.contrast-medium}",
+              "type": "color"
+            },
+            "error": {
+              "value": "{ob.s.color.status.critical.fg.contrast-high}",
+              "type": "color"
+            },
+            "warning": {
+              "value": "{ob.s.color.status.attention.fg.contrast-high}",
+              "type": "color"
+            },
+            "success": {
+              "value": "{ob.c.infobox.color.icon.resolved}",
+              "type": "color"
+            },
+            "fatal": {
+              "value": "{ob.s.color.status.fatal.bg}",
+              "type": "color"
+            }
+          },
+          "surface": {
+            "info": {
+              "value": "{ob.s.color.status.info.bg.contrast-medium}",
+              "type": "color"
+            },
+            "error": {
+              "value": "{ob.s.color.status.critical.bg.contrast-high}",
+              "type": "color"
+            },
+            "warning": {
+              "value": "{ob.s.color.status.attention.bg.contrast-medium}",
+              "type": "color"
+            },
+            "success": {
+              "value": "{ob.s.color.status.resolved.bg.contrast-medium}",
+              "type": "color"
+            },
+            "fatal": {
+              "value": "{ob.s.color.status.fatal.bg}",
+              "type": "color",
+              "description": "A darker background because of the requirement from F.Gabsa to make a special variant that is consistant with the Bundeskanzlei Alertbanner:\nhttps://swiss.github.io/designsystem/?path=/docs/components-alertbanner--example"
+            }
+          },
+          "fg": {
+            "info": {
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
+              "type": "color"
+            },
+            "error": {
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
+              "type": "color"
+            },
+            "warning": {
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
+              "type": "color"
+            },
+            "success": {
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
+              "type": "color"
+            },
+            "fatal": {
+              "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
+              "type": "color"
+            }
+          }
+        }
+      }
+    }
+  }
+}

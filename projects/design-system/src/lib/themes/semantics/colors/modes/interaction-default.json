@@ -124,7 +124,7 @@
                 "description": "Used for fill in primary buttons."
               },
               "focus": {
-                "value": "{ob.s.color.interaction.default.bg.contrast-low-inverse}",
+                "value": "{ob.s.color.interaction.state.bg-inverse.hover}",
                 "type": "color",
                 "description": "Used for fill in primary buttons."
               },

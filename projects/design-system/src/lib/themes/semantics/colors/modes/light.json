@@ -717,15 +717,15 @@
                 "type": "color"
               },
               "contrast-low-inverse": {
-                "value": "{ob.p.colors.cobalt.600}",
+                "value": "{ob.p.colors.cobalt.500}",
                 "type": "color"
               },
               "contrast-medium-inverse": {
-                "value": "{ob.p.colors.cobalt.700}",
+                "value": "{ob.p.colors.cobalt.600}",
                 "type": "color"
               },
               "contrast-high-inverse": {
-                "value": "{ob.p.colors.cobalt.800}",
+                "value": "{ob.p.colors.cobalt.700}",
                 "type": "color"
               }
             },

@@ -5,17 +5,17 @@
         "neutral": {
           "bg": {
             "contrast-highest": {
-              "value": "{ob.p.colors.cobalt.700}",
+              "value": "{ob.p.colors.cobalt.800}",
               "type": "color",
               "description": "Default dark surface color"
             },
             "contrast-high": {
-              "value": "{ob.p.colors.cobalt.600}",
+              "value": "{ob.p.colors.cobalt.700}",
               "type": "color",
               "description": "Darker surface color"
             },
             "contrast-medium": {
-              "value": "{ob.p.colors.cobalt.500}",
+              "value": "{ob.p.colors.cobalt.600}",
               "type": "color",
               "description": "Darker surface color"
             },
@@ -823,7 +823,7 @@
           }
         },
         "~documentation-only": {
-          "fg": {
+          "fg-moded": {
             "value": "{ob.p.colors.purple.400}",
             "type": "color",
             "description": "Documentation only. Changes on user preference color modes Light, Dark etc."

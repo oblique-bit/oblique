@@ -53,6 +53,8 @@
     "components/molecules/form",
     "components/molecules/file-upload",
     "components/molecules/infobox",
+    "components/molecules/infobox-modes/light",
+    "components/molecules/infobox-modes/dark",
     "components/molecules/list-group",
     "components/molecules/nav-tree",
     "components/molecules/paginator",

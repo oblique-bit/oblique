@@ -85,7 +85,8 @@
                   "fontSize": "{ob.s.fontSize.4xl}",
                   "fontWeight": "{ob.s.fontWeight.semiBold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.superNarrow}",
-                  "lineHeight": "{ob.s.lineHeight.4xl}"
+                  "lineHeight": "{ob.s.lineHeight.4xl}",
+                  "paragraphSpacing": "{ob.p.paragraphSpacing.1400}"
                 },
                 "type": "typography",
                 "description": "Primary page heading for prose based pages. Used for the most important headline on a page."
@@ -96,7 +97,8 @@
                   "fontSize": "{ob.s.fontSize.3xl}",
                   "fontWeight": "{ob.s.fontWeight.semiBold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.superNarrow}",
-                  "lineHeight": "{ob.s.lineHeight.3xl}"
+                  "lineHeight": "{ob.s.lineHeight.3xl}",
+                  "paragraphSpacing": "{ob.p.paragraphSpacing.1300}"
                 },
                 "type": "typography",
                 "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
@@ -107,7 +109,8 @@
                   "fontSize": "{ob.s.fontSize.2xl}",
                   "fontWeight": "{ob.s.fontWeight.semiBold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.superNarrow}",
-                  "lineHeight": "{ob.s.lineHeight.2xl}"
+                  "lineHeight": "{ob.s.lineHeight.2xl}",
+                  "paragraphSpacing": "{ob.p.paragraphSpacing.1100}"
                 },
                 "type": "typography",
                 "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
@@ -118,7 +121,8 @@
                   "fontSize": "{ob.s.fontSize.xl}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.narrower}",
-                  "lineHeight": "{ob.s.lineHeight.xl}"
+                  "lineHeight": "{ob.s.lineHeight.xl}",
+                  "paragraphSpacing": "{ob.p.paragraphSpacing.800}"
                 },
                 "type": "typography",
                 "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
@@ -129,7 +133,8 @@
                   "fontSize": "{ob.s.fontSize.lg}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
-                  "lineHeight": "{ob.s.lineHeight.lg}"
+                  "lineHeight": "{ob.s.lineHeight.lg}",
+                  "paragraphSpacing": "{ob.p.paragraphSpacing.600}"
                 },
                 "type": "typography",
                 "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
@@ -140,7 +145,8 @@
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}",
+                  "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
                 "type": "typography",
                 "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."

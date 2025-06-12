@@ -182,6 +182,30 @@
         "800": {
           "value": "9 * {ob.p.lineHeight._base}",
           "type": "paragraphSpacing"
+        },
+        "900": {
+          "value": "10 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "1000": {
+          "value": "11 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "1100": {
+          "value": "12 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "1200": {
+          "value": "13 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "1300": {
+          "value": "14 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
+        },
+        "1400": {
+          "value": "15 * {ob.p.lineHeight._base}",
+          "type": "paragraphSpacing"
         }
       },
       "text-decoration": {
