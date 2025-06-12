@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {Component, inject} from '@angular/core';
 import {
 	ObEScrollMode,
@@ -207,6 +208,13 @@ export class MasterLayoutSampleComponent {
 
 	set hasInfoLinks(value: boolean) {
 		this.masterLayout.header.serviceNavigationConfiguration.infoLinks = value ? this.infoLinks : [];
+	}
+
+	get hasInfoBackend(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.useInfoBackend ?? false;
+	}
+	set hasInfoBackend(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.useInfoBackend = value;
 	}
 
 	get hasContactForm(): boolean {
