@@ -10,7 +10,7 @@
 			(click)="goToChildren()"
 		>
 			<mat-icon iconPositionEnd matSuffix svgIcon="arrow-right" />
-			<span>{{ "i18n.oblique.master-layout.navigation.link.go-to-children" | translate: { parentLabel: (link.label | translate) } }}</span>
+			<span>{{ link.label | translate }}</span>
 		</button>
 	} @else {
 		<button

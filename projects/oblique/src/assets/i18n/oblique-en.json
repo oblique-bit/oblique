@@ -62,7 +62,7 @@
   "i18n.oblique.master-layout.accesskey.title": "Access keys",
   "i18n.oblique.master-layout.accesskey.main-content": "Skip to main content [0]",
   "i18n.oblique.master-layout.accesskey.navigation": "Skip to navigation [1]",
-  "i18n.oblique.master-layout.navigation.link.go-to-children": "Open {{parentLabel}} sub-menu",
+  "i18n.oblique.master-layout.navigation.link.go-to-children": "Open \"{{parentLabel}}\" sub-menu",
   "i18n.oblique.master-layout.master-layout-navigation.scroll-left": "Scroll left",
   "i18n.oblique.master-layout.master-layout-navigation.scroll-right": "Scroll right",
   "i18n.oblique.header.title": "Header area",
