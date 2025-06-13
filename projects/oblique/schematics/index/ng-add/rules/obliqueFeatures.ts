@@ -20,8 +20,8 @@ import {ObIOptionsSchema} from '../ng-add.model';
 import {ObliquePackage, addFile, createSafeRule, infoMigration, readFile, setOrCreateAngularProjectsConfig, writeFile} from '../../utils';
 
 export function obliqueFeatures(options: ObIOptionsSchema): Rule {
-	return (tree: Tree, context: SchematicContext) =>
-		chain([
+	return (tree: Tree, context: SchematicContext) => {
+		return chain([
 			addObliqueProviders(),
 			addAjv(options.ajv),
 			addUnknownRoute(options.unknownRoute),
@@ -30,8 +30,9 @@ export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 			addBanner(options.banner, options.environments),
 			addDefaultHomeComponent(options.prefix),
 			addExternalLink(options.externalLink),
-			addAccessibilityStatementConfiguration(options.title)
+			addAccessibilityStatementConfiguration(options.title, options.applicationOperator, options.contact)
 		])(tree, context);
+	};
 }
 
 function addObliqueProviders(): Rule {
@@ -197,15 +198,68 @@ function addExternalLink(externalLink: boolean): Rule {
 	});
 }
 
-function addAccessibilityStatementConfiguration(applicationTitle: string): Rule {
+function parseContact(contacts: string): {emails: string[]; phones: string[]} {
+	return {
+		emails:
+			contacts
+				?.trim()
+				.split(/\s*,\s*/)
+				.filter((element: string) => element.includes('@')) ?? [],
+
+		phones:
+			contacts
+				?.trim()
+				.split(/\s*,\s*/)
+				.filter((element: string) => !element.includes('@')) ?? []
+	};
+}
+
+function validateContact(emails?: string[], phones?: string[]): void {
+	if (isEmpty(emails) && isEmpty(phones)) {
+		throw new Error('You must provide at least one contact method: email or phone.');
+	}
+}
+
+function isEmpty(array?: string[]): boolean {
+	return !array || array.length === 0;
+}
+
+function addAccessibilityStatementConfiguration(title: string, applicationOperator: string, contact: string): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique feature: Adding accessibility statement configuration');
+		const {emails, phones} = parseContact(contact);
+		validateContact(emails, phones);
+
 		const content = readFile(tree, appModulePath);
-		const newContent = content.replace(
-			/(?<=provideObliqueConfiguration\()(?=\))/,
-			`{accessibilityStatement: {applicationName: '${applicationTitle}', conformity: 'none', applicationOperator: 'Replace me with the name and address of the federal office that exploit this application, HTML is permitted', contact: {/* at least 1 email or phone number has to be provided */ emails: [''], phones: ['']}}}`
-		);
-		writeFile(tree, appModulePath, newContent);
+		const accessibilityConfig = buildAccessibilityConfig(title, applicationOperator, emails, phones);
+		const updated = content.replace(/(?<=provideObliqueConfiguration\()(?=\))/, accessibilityConfig);
+
+		writeFile(tree, appModulePath, updated);
 		return tree;
 	});
+}
+
+function buildAccessibilityConfig(title: string, applicationOperator: string, emails?: string[], phones?: string[]): string {
+	const contactFields = [
+		emails?.length ? `\t\t\temails: ${formatArray(emails)}` : '',
+		phones?.length ? `\n\t\t\tphones: ${formatArray(phones)}` : ''
+	]
+		.filter(field => Boolean(field))
+		.join(', ');
+
+	const createdOn = new Date().toISOString().split('T')[0];
+
+	return `{
+		accessibilityStatement: {
+			applicationName: '${title}',
+			conformity: 'none',
+			createdOn: new Date('${createdOn}'),
+			applicationOperator: '${applicationOperator}',
+			${contactFields ? `contact: { \n${contactFields} \n}` : ''}
+		}
+	}`;
+}
+
+function formatArray(arr: string[]): string {
+	return `[${arr.map(element => `'${element}'`).join(', ')}]`;
 }

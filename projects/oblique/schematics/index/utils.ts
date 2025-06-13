@@ -48,16 +48,30 @@ export function createSafeRule(callback: (tree: Tree, context: SchematicContext)
 			return callback(tree, context);
 		} catch (thrownError) {
 			isSuccessful = false;
-			const groups =
-				/@oblique[/\\]oblique[/\\]schematics[/\\].*[/\\](?<file>\w*\.js):(?<line>\d*)/.exec(thrownError.stack || '')?.groups || {};
-			const errorMessage: string = thrownError.message || thrownError;
+			const {message, file, line} = getErrorInfo(thrownError);
 			warn(
 				context,
-				`The previous task failed and the change needs to be done manually.\nPlease inform the Oblique team (oblique@bit.admin.ch) of the following error:\n\t${errorMessage}, in "${groups.file}" on line ${groups.line}`
+				`The previous task failed and the change needs to be done manually.\nPlease inform the Oblique team (oblique@bit.admin.ch) of the following error:\n\t${message}, in "${file}" on line ${line}`
 			);
 			return tree;
 		}
 	};
+}
+
+function getErrorInfo(thrownError: unknown): {message: string; file: string; line: string} {
+	if (thrownError instanceof Error) {
+		const {file, line} =
+			/@oblique[/\\]oblique[/\\]schematics[/\\].*[/\\](?<file>\w*\.js):(?<line>\d*)/.exec(thrownError.stack || '')?.groups || {};
+		return {
+			message: thrownError.message,
+			file,
+			line
+		};
+	}
+	if (typeof thrownError === 'string') {
+		return {message: thrownError, file: '', line: ''};
+	}
+	return {message: 'Unknown error', file: '', line: ''};
 }
 
 export function checkForStandalone(): Rule {
