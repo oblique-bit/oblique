@@ -9,6 +9,7 @@ import {
 	ObMasterLayoutHeaderService,
 	WINDOW
 } from '@oblique/oblique';
+import {appVersion} from '@oblique/version';
 import {type Observable, Subject} from 'rxjs';
 import {filter, map, startWith, takeUntil} from 'rxjs/operators';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
@@ -21,6 +22,7 @@ import {appNavigation} from './app-navigation';
 	standalone: false
 })
 export class AppComponent implements OnDestroy {
+	version = appVersion;
 	readonly search = new FormControl();
 	offCanvasOpen = false;
 	readonly year = new Date().getFullYear();
