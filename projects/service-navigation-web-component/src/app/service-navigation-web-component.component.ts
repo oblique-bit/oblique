@@ -56,6 +56,7 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	readonly infoContact = input<string>(undefined);
 	readonly infoHelpText = input<string>(undefined);
 	readonly infoLinks = input<string>(undefined);
+	readonly useInfoBackend = input(false, {transform: booleanAttribute});
 	readonly profileLinks = input<string>(undefined);
 	readonly maxLastUsedApplications = input(3, {transform: numberAttribute});
 	readonly maxFavoriteApplications = input(3, {transform: numberAttribute});
