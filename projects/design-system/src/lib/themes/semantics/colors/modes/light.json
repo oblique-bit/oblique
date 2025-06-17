@@ -791,8 +791,8 @@
           }
         },
         "~documentation-only": {
-          "fg-moded": {
-            "value": "{ob.p.colors.purple.700}",
+          "fg": {
+            "value": "{ob.p.colors.~documentation-only.figma-doc-only-700}",
             "type": "color",
             "description": "Documentation only. Changes on user preference color modes Light, Dark etc."
           }

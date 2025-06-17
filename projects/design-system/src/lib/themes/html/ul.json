@@ -1,0 +1,68 @@
+{
+  "ob": {
+    "html": {
+      "list": {
+        "spacing": {
+          "outer": {
+            "value": "16px",
+            "type": "spacing"
+          },
+          "item": {
+            "short": {
+              "value": "8px",
+              "type": "spacing",
+              "description": "For for shorter content. Default."
+            },
+            "long": {
+              "value": "8px",
+              "type": "spacing",
+              "description": "For long legal content where a bullet point requires multiple text lines on desktop."
+            }
+          }
+        },
+        "indent": {
+          "value": "24px",
+          "type": "spacing"
+        },
+        "marker": {
+          "offset": {
+            "value": "8px",
+            "type": "spacing"
+          },
+          "type": {
+            "value": "disc",
+            "type": "string"
+          }
+        },
+        "counter": {
+          "style": {
+            "value": "decimal",
+            "type": "string"
+          }
+        },
+        "text": {
+          "font": {
+            "value": "{ob.s.typography.content.body.normal}",
+            "type": "typography"
+          }
+        },
+        "unordered": {
+          "spacing": {
+            "item": {
+              "value": "8px",
+              "type": "spacing"
+            }
+          }
+        },
+        "ordered": {
+          "spacing": {
+            "item": {
+              "value": "6px",
+              "type": "spacing"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -29,14 +29,22 @@
         },
         "~documentation-only": {
           "fg-static": {
-            "value": "#9747FF",
+            "value": "{ob.p.colors.~documentation-only.figma-doc-only-700}",
             "type": "color",
             "description": "Documentation only! Coming from Figma UI. Doesn't react to user preference color modes Light, Dark etc."
           },
-          "canvas-bg": {
+          "figma-canvas-bg": {
             "value": "#DFE4E9",
             "type": "color",
             "description": "Figma Canvas Background. Documentation only!"
+          },
+          "figma-section-bg": {
+            "value": "{ob.p.colors.~documentation-only.white-30}",
+            "type": "color"
+          },
+          "figma-section-border": {
+            "value": "{ob.p.colors.~documentation-only.white-30}",
+            "type": "color"
           }
         }
       }

@@ -139,6 +139,11 @@
             "parent": "Primitives/Colors",
             "oldValue": "#ff0000",
             "description": "The color provided by Federal Chancellery."
+          },
+          "no-color": {
+            "value": "none",
+            "type": "color",
+            "description": "Use this if the background color changes from a color to none, e.g. depending on interaction states."
           }
         },
         "orange": {
@@ -627,10 +632,45 @@
             "description": ""
           }
         },
-        "no-color": {
-          "value": "none",
-          "type": "color",
-          "description": "Use this if the background color changes from a color to none, e.g. depending on interaction states"
+        "~documentation-only": {
+          "figma-doc-only-700": {
+            "value": "#9747FF",
+            "type": "color",
+            "description": "This color comes from figma as a default component outline. We reuse it for notes in Figma. Do not use it in the UI of BIT projects!"
+          },
+          "figma-doc-only-300": {
+            "value": "#d8bbff",
+            "type": "color",
+            "description": "This is derivate of the color that comes from figma as a default component outline. We reuse it for notes in Figma (Dark mode case). Do not use it in the UI of BIT projects!"
+          },
+          "black-10": {
+            "value": "#000000",
+            "type": "color",
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "0.1",
+                  "space": "lch"
+                }
+              }
+            },
+            "description": "Figma color. Do not use it in the UI of BIT projects!"
+          },
+          "white-30": {
+            "value": "#FFFFFF",
+            "type": "color",
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "0.3",
+                  "space": "lch"
+                }
+              }
+            },
+            "description": "Figma color. Do not use it in the UI of BIT projects!"
+          }
         },
         "cobalt-alpha": {
           "50": {
