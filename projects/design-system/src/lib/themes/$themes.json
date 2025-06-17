@@ -241,7 +241,10 @@
       "ob.s.shadow.focus": "S:0a41d26d732d0cc7e21b7a7fc0cc4be11be51ab3,",
       "ob.s.typography.~documentation-only.standard.docs-sm": "S:c2c704e0cd4edc2aab771c6e38f7409a24555327,",
       "ob.s.typography.~documentation-only.standard.docs-md": "S:6449a2cc00fc1540016361515455e793b825c7f5,",
-      "ob.s.typography.~documentation-only.standard.docs-lg": "S:0614b92fc5dec2a241f9a30d8d660a1f02d95ccc,"
+      "ob.s.typography.~documentation-only.standard.docs-lg": "S:0614b92fc5dec2a241f9a30d8d660a1f02d95ccc,",
+      "ob.s.typography.~documentation-only.strong.docs-sm": "S:a09b3af6e5e47bb5a2903a978476497a2e8a437b,",
+      "ob.s.typography.~documentation-only.strong.docs-md": "S:5e8840755cf497e35d6110be4dee62f8d84800a2,",
+      "ob.s.typography.~documentation-only.strong.docs-lg": "S:051c767089d4e7e627075e1013dc661929c0f0ca,"
     },
     "selectedTokenSets": {
       "primitives/global": "source",
@@ -271,10 +274,10 @@
       "components/molecules/tag": "enabled",
       "components/molecules/pills": "enabled",
       "components/sections/footer": "enabled",
-      "components/typography-styles": "enabled",
       "html/link": "enabled",
       "html/hr": "enabled",
-      "primitives/z-index": "source"
+      "primitives/z-index": "source",
+      "_ignore-in-ds/typography-styles": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10676",
     "$figmaModeId": "6001:15",
@@ -320,6 +323,9 @@
       "ob.s.color.interaction.indicator.selected": "6062815ed4f3d9a4a0d68eaafb5d701f635aa3be",
       "ob.s.color.interaction.indicator.unselected": "67e9fb5307ab4cc78208e8e1a4f7de0f7daca2ad",
       "ob.s.color.~documentation-only.fg-static": "e54b2813e19f055b75c5ab1d3953ae04d6ac1571",
+      "ob.s.color.~documentation-only.figma-canvas-bg": "2f39321dff4a62e6ecca7c77477dce8f901f738d",
+      "ob.s.color.~documentation-only.figma-section-bg": "e48861928a697300ab105e0b12635ba68b3c8d8c",
+      "ob.s.color.~documentation-only.figma-section-border": "0b7e8fc11f821f3a2a692250aeec38c45a9b6741",
       "ob.s.fx.blur.sm": "302f138a94d41d41983b95847088ce91f5881fcf",
       "ob.s.icon.size.xs": "066ddf76cee093dbe696d875e510696212955997",
       "ob.s.icon.size.sm": "d528ffa7bdb234afd35a81ff1c74fc2b734fdbd9",
@@ -612,8 +618,7 @@
       "ob.c.hr.color.subtle": "b995776e2b27a847c564ca61df086937d0f6613e",
       "ob.c.hr.color.default": "76a54cea3670cac4ae1e7a86ee7973f254f348cd",
       "ob.c.hr.color.strong": "4e3e046a566a52b5134b4f8fd6bb4609baf7896f",
-      "ob.c.link.spacing.gap": "3f026a7d5cdf7680bb9038b104ef2f01b56b14bc",
-      "ob.s.color.~documentation-only.figma-canvas-bg": "2f39321dff4a62e6ecca7c77477dce8f901f738d"
+      "ob.c.link.spacing.gap": "3f026a7d5cdf7680bb9038b104ef2f01b56b14bc"
     },
     "group": "core"
   },
@@ -722,7 +727,8 @@
       "semantics/typography-modes/1440-lg": "enabled",
       "semantics/typography-scale": "source",
       "semantics/typography-styles": "enabled",
-      "html/paragraph": "enabled"
+      "html/paragraph": "enabled",
+      "_ignore-in-ds/typography-styles": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "babf8d28d9066ddebee3e321ab2f2ed3bf3779a6",
@@ -933,7 +939,8 @@
       "modes/breakpoints/360-xs": "enabled",
       "semantics/typography-modes/360-xs": "enabled",
       "semantics/typography-scale": "source",
-      "semantics/typography-styles": "enabled"
+      "semantics/typography-styles": "enabled",
+      "_ignore-in-ds/typography-styles": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "babf8d28d9066ddebee3e321ab2f2ed3bf3779a6",
@@ -1025,7 +1032,8 @@
       "semantics/colors/modes/light": "enabled",
       "semantics/colors/static": "enabled",
       "components/molecules/tags-modes/light": "enabled",
-      "components/molecules/infobox-modes/light": "enabled"
+      "components/molecules/infobox-modes/light": "enabled",
+      "_ignore-in-ds/typography-styles": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:19",
@@ -1230,7 +1238,9 @@
       "ob.s.color.interaction.indicator.selected": "1e42c56ca47d9c61a183edcefcd813fb8b2a8e53",
       "ob.s.color.interaction.indicator.unselected": "98d445ed90822c8b5d8c16f8cf452ed736582114",
       "ob.s.color.~documentation-only.fg-static": "04855223797120496d40b2d95b614a56ee5496a3",
-      "ob.s.color.~documentation-only.figma-canvas-bg": "263326171d369bf087fb3dbec088159725661c68"
+      "ob.s.color.~documentation-only.figma-canvas-bg": "263326171d369bf087fb3dbec088159725661c68",
+      "ob.s.color.~documentation-only.figma-section-bg": "043933fe484b40769881765db67a551a63105fdf",
+      "ob.s.color.~documentation-only.figma-section-border": "ff7853b7ab836e125a5151bd98be0c5700eaa863"
     },
     "group": "colormode"
   },
@@ -1243,7 +1253,8 @@
       "semantics/colors/modes/dark": "enabled",
       "semantics/colors/static": "enabled",
       "components/molecules/tags-modes/light": "enabled",
-      "components/molecules/infobox-modes/dark": "enabled"
+      "components/molecules/infobox-modes/dark": "enabled",
+      "_ignore-in-ds/typography-styles": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:20",
@@ -1448,7 +1459,9 @@
       "ob.s.color.interaction.indicator.selected": "1e42c56ca47d9c61a183edcefcd813fb8b2a8e53",
       "ob.s.color.interaction.indicator.unselected": "98d445ed90822c8b5d8c16f8cf452ed736582114",
       "ob.s.color.~documentation-only.fg-static": "04855223797120496d40b2d95b614a56ee5496a3",
-      "ob.s.color.~documentation-only.figma-canvas-bg": "263326171d369bf087fb3dbec088159725661c68"
+      "ob.s.color.~documentation-only.figma-canvas-bg": "263326171d369bf087fb3dbec088159725661c68",
+      "ob.s.color.~documentation-only.figma-section-bg": "043933fe484b40769881765db67a551a63105fdf",
+      "ob.s.color.~documentation-only.figma-section-border": "ff7853b7ab836e125a5151bd98be0c5700eaa863"
     },
     "group": "colormode"
   },
@@ -1457,7 +1470,8 @@
     "name": "default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantics/colors/modes/interaction-default": "enabled"
+      "semantics/colors/modes/interaction-default": "enabled",
+      "_ignore-in-ds/typography-styles": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.enabled": "a30f42e8f0122ab9ed4b37788e004876eaee4616",
@@ -1498,7 +1512,8 @@
     "name": "muted",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantics/colors/modes/interaction-muted": "enabled"
+      "semantics/colors/modes/interaction-muted": "enabled",
+      "_ignore-in-ds/typography-styles": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.enabled": "a30f42e8f0122ab9ed4b37788e004876eaee4616",

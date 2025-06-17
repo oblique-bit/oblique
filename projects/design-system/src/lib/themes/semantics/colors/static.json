@@ -43,7 +43,7 @@
             "type": "color"
           },
           "figma-section-border": {
-            "value": "{ob.p.colors.~documentation-only.white-30}",
+            "value": "{ob.p.colors.~documentation-only.black-10}",
             "type": "color"
           }
         }

@@ -25,7 +25,6 @@
     "semantics/typography-scale",
     "semantics/typography-styles",
     "semantics/z-Index",
-    "components/typography-styles",
     "components/atoms/badge",
     "components/atoms/spinner",
     "components/atoms/tooltip",
@@ -70,6 +69,7 @@
     "html/paragraph",
     "html/ul",
     "modes/breakpoints/1440-lg",
-    "modes/breakpoints/360-xs"
+    "modes/breakpoints/360-xs",
+    "_ignore-in-ds/typography-styles"
   ]
 }
