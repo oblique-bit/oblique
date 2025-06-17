@@ -4,6 +4,8 @@ export interface ObIServiceNavigationResponse<T> {
 	statusCode: number;
 	success: boolean;
 	data: T;
+	errorCode?: number;
+	message?: string;
 }
 
 export interface ObIServiceNavigationConfig {
