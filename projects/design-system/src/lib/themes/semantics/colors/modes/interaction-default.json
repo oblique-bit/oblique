@@ -3,151 +3,179 @@
     "s": {
       "color": {
         "interaction": {
-          "state": {
-            "fg": {
-              "enabled": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-low}",
-                "type": "color",
-                "description": "Used in text-links, secondary and tertiary buttons."
-              },
-              "hover": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-low}",
-                "type": "color",
-                "description": "Used in text-links, secondary and tertiary buttons."
-              },
-              "focus": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-low}",
-                "type": "color",
-                "description": "Used in text-links, secondary and tertiary buttons."
-              },
-              "pressed": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high}",
-                "type": "color",
-                "description": "Used in text-links, secondary and tertiary buttons."
-              },
-              "selected": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-low}",
-                "type": "color",
-                "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
-              },
-              "visited": {
-                "value": "{ob.s.color.interaction.default.fg-visited.contrast-low}",
-                "type": "color",
-                "description": "For text-links. No use in buttons."
-              },
-              "disabled": {
-                "value": "{ob.s.color.interaction.default.fg-disabled.default}",
-                "type": "color",
-                "description": "Used in text-links, secondary and tertiary buttons."
-              }
+          "fg": {
+            "enabled": {
+              "value": "{ob.s.color.interaction.default.fg.contrast-low}",
+              "type": "color",
+              "description": "Used in text-links, secondary and tertiary buttons."
             },
-            "fg-inverse": {
-              "enabled": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-                "type": "color",
-                "description": "Used for text and icon color in primary buttons."
-              },
-              "hover": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-                "type": "color",
-                "description": "Used for text and icon color in filled buttons, badges."
-              },
-              "focus": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-                "type": "color",
-                "description": "Used for text and icon color in filled buttons."
-              },
-              "pressed": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-medium-inverse}",
-                "type": "color",
-                "description": "Used for text and icon color in filled buttons."
-              },
-              "selected": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-                "type": "color",
-                "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
-              },
-              "visited": {
-                "value": "{ob.s.color.interaction.default.fg-visited.contrast-low-inverse}",
-                "type": "color",
-                "description": "For text-links. No use in buttons."
-              },
-              "disabled": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-                "type": "color",
-                "description": "Used for text and icon color in primary buttons."
-              }
+            "hover": {
+              "value": "{ob.s.color.interaction.default.fg.contrast-medium}",
+              "type": "color",
+              "description": "Used in text-links, secondary and tertiary buttons."
             },
-            "bg": {
-              "enabled": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-                "type": "color",
-                "description": "Background for secondary and tertiary buttons."
-              },
-              "hover": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-                "type": "color",
-                "description": "Background for secondary and tertiary buttons."
-              },
-              "focus": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-                "type": "color"
-              },
-              "pressed": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-                "type": "color"
-              },
-              "selected": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-                "type": "color",
-                "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
-              },
-              "visited": {
-                "value": "{ob.s.color.static.no-color}",
-                "type": "color",
-                "description": "No use. For consistancy only. Text-links need no bg color."
-              },
-              "disabled": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
-                "type": "color"
-              }
+            "focus": {
+              "value": "{ob.s.color.interaction.default.fg.contrast-medium}",
+              "type": "color",
+              "description": "Used in text-links, secondary and tertiary buttons."
             },
-            "bg-inverse": {
-              "enabled": {
-                "value": "{ob.s.color.interaction.default.bg.contrast-low-inverse}",
-                "type": "color",
-                "description": "Used for fill in primary buttons."
+            "pressed": {
+              "value": "{ob.s.color.interaction.default.fg.contrast-high}",
+              "type": "color",
+              "description": "Used in text-links, secondary and tertiary buttons."
+            },
+            "selected": {
+              "value": "{ob.s.color.interaction.default.fg.contrast-low}",
+              "type": "color",
+              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
+            },
+            "visited": {
+              "value": "{ob.s.color.interaction.default.fg-visited.contrast-low}",
+              "type": "color",
+              "description": "For text-links. No use in buttons."
+            },
+            "disabled": {
+              "value": "{ob.p.colors.cobalt.900}",
+              "type": "color",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.4",
+                    "space": "srgb"
+                  }
+                }
               },
-              "hover": {
-                "value": "{ob.s.color.interaction.default.bg.contrast-medium-inverse}",
-                "type": "color",
-                "description": "Used for fill in primary buttons."
+              "description": "Used in text-links, secondary and tertiary buttons."
+            }
+          },
+          "fg-inverse": {
+            "enabled": {
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
+              "type": "color",
+              "description": "Used for text and icon color in primary buttons."
+            },
+            "hover": {
+              "value": "{ob.s.color.interaction.default.fg.contrast-medium-inverse}",
+              "type": "color",
+              "description": "Used for text and icon color in filled buttons."
+            },
+            "focus": {
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
+              "type": "color",
+              "description": "Used for text and icon color in filled buttons."
+            },
+            "pressed": {
+              "value": "{ob.s.color.interaction.default.fg.contrast-medium-inverse}",
+              "type": "color",
+              "description": "Used for text and icon color in filled buttons."
+            },
+            "selected": {
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
+              "type": "color",
+              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
+            },
+            "visited": {
+              "value": "{ob.s.color.interaction.default.fg-visited.contrast-low-inverse}",
+              "type": "color",
+              "description": "For text-links. No use in buttons."
+            },
+            "disabled": {
+              "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
+              "type": "color",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.4",
+                    "space": "srgb"
+                  }
+                }
               },
-              "focus": {
-                "value": "{ob.s.color.interaction.state.bg-inverse.hover}",
-                "type": "color",
-                "description": "Used for fill in primary buttons."
+              "description": "Used for text and icon color in primary buttons."
+            }
+          },
+          "bg": {
+            "enabled": {
+              "value": "{ob.s.color.static.no-color}",
+              "type": "color",
+              "description": "No use. For consistancy only. Text-links, 2nd, 3rd buttons need no bg color."
+            },
+            "hover": {
+              "value": "{ob.s.color.static.no-color}",
+              "type": "color",
+              "description": "No use. For consistancy only. Text-links, 2nd, 3rd buttons need no bg color."
+            },
+            "focus": {
+              "value": "{ob.s.color.static.no-color}",
+              "type": "color",
+              "description": "No use. For consistancy only. Text-links, 2nd, 3rd buttons need no bg color."
+            },
+            "pressed": {
+              "value": "{ob.s.color.static.no-color}",
+              "type": "color",
+              "description": "No use. For consistancy only. Text-links, 2nd, 3rd buttons need no bg color."
+            },
+            "selected": {
+              "value": "{ob.s.color.static.no-color}",
+              "type": "color",
+              "description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
+            },
+            "visited": {
+              "value": "{ob.s.color.static.no-color}",
+              "type": "color",
+              "description": "No use. For consistancy only. Text-links need no bg color."
+            },
+            "disabled": {
+              "value": "{ob.s.color.static.no-color}",
+              "type": "color",
+              "description": "No use. For consistancy only. Disabled text-links and disabled 2nd and 3rd buttons need no bg color."
+            }
+          },
+          "bg-inverse": {
+            "enabled": {
+              "value": "{ob.s.color.interaction.default.bg.contrast-low-inverse}",
+              "type": "color",
+              "description": "Used for fill in primary buttons."
+            },
+            "hover": {
+              "value": "{ob.s.color.interaction.default.bg.contrast-medium-inverse}",
+              "type": "color",
+              "description": "Used for fill in primary buttons."
+            },
+            "focus": {
+              "value": "{ob.s.color.interaction.default.bg.contrast-low-inverse}",
+              "type": "color",
+              "description": "Used for fill in primary buttons."
+            },
+            "pressed": {
+              "value": "{ob.s.color.interaction.default.bg.contrast-high-inverse}",
+              "type": "color",
+              "description": "Used for fill in primary buttons."
+            },
+            "selected": {
+              "value": "{ob.s.color.static.no-color}",
+              "type": "color",
+              "description": "No use. Navigation items have no inverted variants like buttons do (primary)."
+            },
+            "visited": {
+              "value": "{ob.s.color.static.no-color}",
+              "type": "color",
+              "description": "No use. For consistancy only. Text-links need no bg color."
+            },
+            "disabled": {
+              "value": "{ob.p.colors.cobalt.900}",
+              "type": "color",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.4",
+                    "space": "srgb"
+                  }
+                }
               },
-              "pressed": {
-                "value": "{ob.s.color.interaction.default.bg.contrast-high-inverse}",
-                "type": "color",
-                "description": "Used for fill in primary buttons."
-              },
-              "selected": {
-                "value": "{ob.s.color.static.no-color}",
-                "type": "color",
-                "description": "No use. Navigation items have no inverted variants like buttons do (primary)."
-              },
-              "visited": {
-                "value": "{ob.s.color.static.no-color}",
-                "type": "color",
-                "description": "No use. For consistancy only. Text-links need no bg color."
-              },
-              "disabled": {
-                "value": "{ob.s.color.interaction.default.bg-disabled.inverse}",
-                "type": "color",
-                "description": "Used for fill in primary buttons, badges etc."
-              }
+              "description": "Used for fill in primary buttons."
             }
           }
         }

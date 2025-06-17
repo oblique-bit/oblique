@@ -11,8 +11,7 @@
                   "fontSize": "{ob.s.fontSize.xl}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
-                  "lineHeight": "{ob.s.lineHeight.xl}",
-                  "paragraphSpacing": "{ob.p.paragraphSpacing.800}"
+                  "lineHeight": "{ob.s.lineHeight.xl}"
                 },
                 "type": "typography",
                 "description": "Compact primary page heading. Used for the most important headline on a page."
@@ -23,8 +22,7 @@
                   "fontSize": "{ob.s.fontSize.lg}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
-                  "lineHeight": "{ob.s.lineHeight.lg}",
-                  "paragraphSpacing": "{ob.p.paragraphSpacing.600}"
+                  "lineHeight": "{ob.s.lineHeight.lg}"
                 },
                 "type": "typography",
                 "description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -35,8 +33,7 @@
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                  "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
                 "type": "typography",
                 "description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -47,8 +44,7 @@
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                  "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
                 "type": "typography",
                 "description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -59,8 +55,7 @@
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                  "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
                 "type": "typography",
                 "description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -71,8 +66,7 @@
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                  "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
                 "type": "typography",
                 "description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -85,8 +79,7 @@
                   "fontSize": "{ob.s.fontSize.4xl}",
                   "fontWeight": "{ob.s.fontWeight.semiBold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.superNarrow}",
-                  "lineHeight": "{ob.s.lineHeight.4xl}",
-                  "paragraphSpacing": "{ob.p.paragraphSpacing.1400}"
+                  "lineHeight": "{ob.s.lineHeight.4xl}"
                 },
                 "type": "typography",
                 "description": "Primary page heading for prose based pages. Used for the most important headline on a page."
@@ -97,8 +90,7 @@
                   "fontSize": "{ob.s.fontSize.3xl}",
                   "fontWeight": "{ob.s.fontWeight.semiBold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.superNarrow}",
-                  "lineHeight": "{ob.s.lineHeight.3xl}",
-                  "paragraphSpacing": "{ob.p.paragraphSpacing.1300}"
+                  "lineHeight": "{ob.s.lineHeight.3xl}"
                 },
                 "type": "typography",
                 "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
@@ -109,8 +101,7 @@
                   "fontSize": "{ob.s.fontSize.2xl}",
                   "fontWeight": "{ob.s.fontWeight.semiBold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.superNarrow}",
-                  "lineHeight": "{ob.s.lineHeight.2xl}",
-                  "paragraphSpacing": "{ob.p.paragraphSpacing.1100}"
+                  "lineHeight": "{ob.s.lineHeight.2xl}"
                 },
                 "type": "typography",
                 "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
@@ -121,8 +112,7 @@
                   "fontSize": "{ob.s.fontSize.xl}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.narrower}",
-                  "lineHeight": "{ob.s.lineHeight.xl}",
-                  "paragraphSpacing": "{ob.p.paragraphSpacing.800}"
+                  "lineHeight": "{ob.s.lineHeight.xl}"
                 },
                 "type": "typography",
                 "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
@@ -133,8 +123,7 @@
                   "fontSize": "{ob.s.fontSize.lg}",
                   "fontWeight": "{ob.s.fontWeight.bold}",
                   "letterSpacing": "{ob.s.letterSpacing-px.narrow}",
-                  "lineHeight": "{ob.s.lineHeight.lg}",
-                  "paragraphSpacing": "{ob.p.paragraphSpacing.600}"
+                  "lineHeight": "{ob.s.lineHeight.lg}"
                 },
                 "type": "typography",
                 "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
@@ -145,8 +134,7 @@
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.fontWeight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letterSpacing-px.normal}",
-                  "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
+                  "letterSpacing": "{ob.s.letterSpacing-px.normal}"
                 },
                 "type": "typography",
                 "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
@@ -177,7 +165,7 @@
                 "textDecoration": "{ob.p.text-decoration.underline}"
               },
               "type": "typography",
-              "description": "Interactive text elements that navigate to other content when clicked. Adds an underline to the text. Generates a Figma typography style."
+              "description": "Interactive text elements that navigate to other content when clicked. Adds an underline to the text."
             },
             "strong": {
               "value": {

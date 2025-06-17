@@ -147,7 +147,16 @@
               },
               "pressed": {
                 "value": "{ob.s.color.neutral.bg.contrast-medium}",
-                "type": "color"
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "darken",
+                      "value": "20",
+                      "space": "srgb"
+                    }
+                  }
+                }
               }
             }
           },
@@ -455,7 +464,7 @@
               }
             }
           },
-          "critical": {
+          "critical-new": {
             "fg": {
               "enabled": {
                 "value": "{ob.s.color.status.critical.fg.contrast-high}",

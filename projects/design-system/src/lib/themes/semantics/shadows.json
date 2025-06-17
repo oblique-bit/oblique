@@ -2,13 +2,25 @@
   "ob": {
     "s": {
       "shadow": {
-        "focus": {
+        "focus-light": {
           "value": {
             "x": "0",
             "y": "0",
             "blur": "0",
             "spread": "{ob.p.size.75}",
-            "color": "{ob.s.color.interaction.border.focus}",
+            "color": "{ob.s.color.neutral.border.focus-light}",
+            "type": "dropShadow"
+          },
+          "type": "boxShadow",
+          "description": "When using the TAB key to navigate web elements, visually highlighting the focus with an outline (made with CSS box-shadow in our case) is key for accessibility and UX."
+        },
+        "focus-dark": {
+          "value": {
+            "x": "0",
+            "y": "0",
+            "blur": "0",
+            "spread": "{ob.p.size.75}",
+            "color": "{ob.s.color.neutral.border.focus-dark}",
             "type": "dropShadow"
           },
           "type": "boxShadow",

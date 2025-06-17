@@ -1,0 +1,356 @@
+{
+  "ob": {
+    "c": {
+      "button": {
+        "color": {
+          "fg": {
+            "primary": {
+              "enabled": {
+                "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
+                "type": "color"
+              },
+              "hover": {
+                "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
+                "type": "color"
+              },
+              "focus": {
+                "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
+                "type": "color"
+              },
+              "pressed": {
+                "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.8",
+                      "space": "srgb"
+                    }
+                  }
+                },
+                "description": "Adds 80% opacity to clicked state"
+              },
+              "disabled": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.3",
+                      "space": "srgb"
+                    }
+                  }
+                },
+                "description": "Reduced opacity for inactive"
+              }
+            },
+            "secondary": {
+              "enabled": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color"
+              },
+              "hover": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color"
+              },
+              "focus": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color"
+              },
+              "pressed": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.7",
+                      "space": "srgb"
+                    }
+                  }
+                },
+                "description": "slightly reduced opacity for pressed"
+              },
+              "disabled": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.25",
+                      "space": "srgb"
+                    }
+                  }
+                }
+              }
+            },
+            "tertiary": {
+              "enabled": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color"
+              },
+              "hover": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color"
+              },
+              "focus": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color"
+              },
+              "pressed": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.7",
+                      "space": "srgb"
+                    }
+                  }
+                }
+              },
+              "disabled": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.25",
+                      "space": "srgb"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "bg": {
+            "primary": {
+              "enabled": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color"
+              },
+              "hover": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.8",
+                      "space": "srgb"
+                    }
+                  }
+                },
+                "description": "Adds 80% transparency on hover"
+              },
+              "focus": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color"
+              },
+              "pressed": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.8",
+                      "space": "srgb"
+                    }
+                  }
+                },
+                "description": "Adds 80% opacity to clicked state"
+              },
+              "disabled": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.05",
+                      "space": "srgb"
+                    }
+                  }
+                },
+                "description": "reduced opacity for inactive"
+              }
+            },
+            "secondary": {
+              "enabled": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "hover": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.04",
+                      "space": "srgb"
+                    }
+                  }
+                }
+              },
+              "focus": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "pressed": {
+                "value": "{ob.p.colors.cobalt.900}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.2",
+                      "space": "srgb"
+                    }
+                  }
+                }
+              },
+              "disabled": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              }
+            },
+            "tertiary": {
+              "enabled": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "hover": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.05",
+                      "space": "srgb"
+                    }
+                  }
+                }
+              },
+              "focus": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "pressed": {
+                "value": "{ob.p.colors.cobalt.900}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.2",
+                      "space": "srgb"
+                    }
+                  }
+                }
+              },
+              "disabled": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              }
+            }
+          },
+          "border": {
+            "primary": {
+              "enabled": {
+                "value": "transparent",
+                "type": "color"
+              },
+              "hover": {
+                "value": "transparent",
+                "type": "color"
+              },
+              "focus": {
+                "value": "transparent",
+                "type": "color"
+              },
+              "pressed": {
+                "value": "transparent",
+                "type": "color"
+              },
+              "disabled": {
+                "value": "transparent",
+                "type": "color"
+              }
+            },
+            "secondary": {
+              "enabled": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color"
+              },
+              "hover": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color"
+              },
+              "focus": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color"
+              },
+              "pressed": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.8",
+                      "space": "srgb"
+                    }
+                  }
+                }
+              },
+              "disabled": {
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.3",
+                      "space": "srgb"
+                    }
+                  }
+                }
+              }
+            },
+            "tertiary": {
+              "enabled": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "hover": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color",
+                "description": "divides the shadow from the background color of the button. needed only in this case since the shadow and the bg-color have a similar luminosity"
+              },
+              "focus": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "pressed": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "disabled": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
