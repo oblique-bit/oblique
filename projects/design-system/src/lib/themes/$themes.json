@@ -277,7 +277,12 @@
       "html/link": "enabled",
       "html/hr": "enabled",
       "primitives/z-index": "source",
-      "_ignore-in-ds/typography-styles": "enabled"
+      "_ignore-in-ds/typography-styles": "enabled",
+      "templates/login": "disabled",
+      "templates/dashboard-A": "disabled",
+      "templates/form-onepage": "disabled",
+      "templates/form-mutlistep": "disabled",
+      "semantics/sizing": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10676",
     "$figmaModeId": "6001:15",
@@ -728,7 +733,11 @@
       "semantics/typography-scale": "source",
       "semantics/typography-styles": "enabled",
       "html/paragraph": "enabled",
-      "_ignore-in-ds/typography-styles": "disabled"
+      "templates/login": "disabled",
+      "templates/dashboard-A": "disabled",
+      "templates/form-onepage": "disabled",
+      "templates/form-mutlistep": "disabled",
+      "semantics/sizing": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "babf8d28d9066ddebee3e321ab2f2ed3bf3779a6",
@@ -940,7 +949,11 @@
       "semantics/typography-modes/360-xs": "enabled",
       "semantics/typography-scale": "source",
       "semantics/typography-styles": "enabled",
-      "_ignore-in-ds/typography-styles": "disabled"
+      "templates/login": "disabled",
+      "templates/dashboard-A": "disabled",
+      "templates/form-onepage": "disabled",
+      "templates/form-mutlistep": "disabled",
+      "semantics/sizing": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "babf8d28d9066ddebee3e321ab2f2ed3bf3779a6",
@@ -1033,7 +1046,11 @@
       "semantics/colors/static": "enabled",
       "components/molecules/tags-modes/light": "enabled",
       "components/molecules/infobox-modes/light": "enabled",
-      "_ignore-in-ds/typography-styles": "disabled"
+      "templates/login": "disabled",
+      "templates/dashboard-A": "disabled",
+      "templates/form-onepage": "disabled",
+      "templates/form-mutlistep": "disabled",
+      "semantics/sizing": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:19",
@@ -1254,7 +1271,11 @@
       "semantics/colors/static": "enabled",
       "components/molecules/tags-modes/light": "enabled",
       "components/molecules/infobox-modes/dark": "enabled",
-      "_ignore-in-ds/typography-styles": "disabled"
+      "templates/login": "disabled",
+      "templates/dashboard-A": "disabled",
+      "templates/form-onepage": "disabled",
+      "templates/form-mutlistep": "disabled",
+      "semantics/sizing": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:20",
@@ -1471,7 +1492,11 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "semantics/colors/modes/interaction-default": "enabled",
-      "_ignore-in-ds/typography-styles": "disabled"
+      "templates/login": "disabled",
+      "templates/dashboard-A": "disabled",
+      "templates/form-onepage": "disabled",
+      "templates/form-mutlistep": "disabled",
+      "semantics/sizing": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.enabled": "a30f42e8f0122ab9ed4b37788e004876eaee4616",
@@ -1513,7 +1538,11 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "semantics/colors/modes/interaction-muted": "enabled",
-      "_ignore-in-ds/typography-styles": "disabled"
+      "templates/login": "disabled",
+      "templates/dashboard-A": "disabled",
+      "templates/form-onepage": "disabled",
+      "templates/form-mutlistep": "disabled",
+      "semantics/sizing": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.enabled": "a30f42e8f0122ab9ed4b37788e004876eaee4616",
