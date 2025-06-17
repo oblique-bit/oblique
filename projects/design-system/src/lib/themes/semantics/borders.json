@@ -132,9 +132,9 @@
         }
       },
       "border": {
-        "focus-light": {
+        "focus": {
           "value": {
-            "color": "{ob.s.color.neutral.border.focus-light}",
+            "color": "{ob.s.color.interaction.border.focus}",
             "width": "{ob.s.border-width.2xl}",
             "style": "solid"
           },

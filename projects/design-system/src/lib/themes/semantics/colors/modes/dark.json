@@ -5,17 +5,17 @@
         "neutral": {
           "bg": {
             "contrast-highest": {
-              "value": "{ob.p.colors.cobalt.700}",
+              "value": "{ob.p.colors.cobalt.800}",
               "type": "color",
               "description": "Default dark surface color"
             },
             "contrast-high": {
-              "value": "{ob.p.colors.cobalt.600}",
+              "value": "{ob.p.colors.cobalt.700}",
               "type": "color",
               "description": "Darker surface color"
             },
             "contrast-medium": {
-              "value": "{ob.p.colors.cobalt.500}",
+              "value": "{ob.p.colors.cobalt.600}",
               "type": "color",
               "description": "Darker surface color"
             },
@@ -611,7 +611,7 @@
           "default": {
             "bg": {
               "contrast-high": {
-                "value": "{ob.p.colors.steelblue.700}",
+                "value": "{ob.p.colors.steelblue.900}",
                 "type": "color"
               },
               "contrast-medium": {
@@ -619,33 +619,33 @@
                 "type": "color"
               },
               "contrast-low": {
-                "value": "{ob.p.colors.steelblue.900}",
+                "value": "{ob.p.colors.steelblue.700}",
                 "type": "color"
               },
               "contrast-low-inverse": {
-                "value": "{ob.p.colors.steelblue.400}",
-                "type": "color"
-              },
-              "contrast-medium-inverse": {
                 "value": "{ob.p.colors.steelblue.300}",
                 "type": "color"
               },
-              "contrast-high-inverse": {
+              "contrast-medium-inverse": {
                 "value": "{ob.p.colors.steelblue.200}",
+                "type": "color"
+              },
+              "contrast-high-inverse": {
+                "value": "{ob.p.colors.steelblue.100}",
                 "type": "color"
               }
             },
             "fg": {
               "contrast-high": {
-                "value": "{ob.s.color.neutral.fg.contrast-highest}",
-                "type": "color"
-              },
-              "contrast-medium": {
                 "value": "{ob.p.colors.steelblue.100}",
                 "type": "color"
               },
-              "contrast-low": {
+              "contrast-medium": {
                 "value": "{ob.p.colors.steelblue.200}",
+                "type": "color"
+              },
+              "contrast-low": {
+                "value": "{ob.p.colors.steelblue.300}",
                 "type": "color"
               },
               "contrast-low-inverse": {
@@ -703,6 +703,25 @@
               },
               "inverse": {
                 "value": "{ob.p.colors.cobalt-alpha.900}",
+                "type": "color",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.4",
+                      "space": "srgb"
+                    }
+                  }
+                }
+              }
+            },
+            "bg-disabled": {
+              "default": {
+                "value": "{ob.p.colors.white-alpha.300}",
+                "type": "color"
+              },
+              "inverse": {
+                "value": "{ob.p.colors.cobalt.50}",
                 "type": "color",
                 "$extensions": {
                   "studio.tokens": {
@@ -801,6 +820,13 @@
               "value": "{ob.p.colors.purple.400}",
               "type": "color"
             }
+          }
+        },
+        "~documentation-only": {
+          "fg-moded": {
+            "value": "{ob.p.colors.purple.400}",
+            "type": "color",
+            "description": "Documentation only. Changes on user preference color modes Light, Dark etc."
           }
         }
       }

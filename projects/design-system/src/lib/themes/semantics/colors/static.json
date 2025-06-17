@@ -26,6 +26,18 @@
               "description": "Semantic Interaction color for not selected items. Used in Main Navigation, Navigation Tree, Tabs."
             }
           }
+        },
+        "~documentation-only": {
+          "fg-static": {
+            "value": "#9747FF",
+            "type": "color",
+            "description": "Documentation only! Coming from Figma UI. Doesn't react to user preference color modes Light, Dark etc."
+          },
+          "canvas-bg": {
+            "value": "#DFE4E9",
+            "type": "color",
+            "description": "Figma Canvas Background. Documentation only!"
+          }
         }
       }
     }

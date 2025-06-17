@@ -617,15 +617,15 @@
             },
             "fg": {
               "contrast-high": {
-                "value": "{ob.p.colors.steelblue.900}",
+                "value": "{ob.p.colors.steelblue.700}",
                 "type": "color"
               },
               "contrast-medium": {
-                "value": "{ob.p.colors.steelblue.800}",
+                "value": "{ob.p.colors.steelblue.600}",
                 "type": "color"
               },
               "contrast-low": {
-                "value": "{ob.p.colors.steelblue.700}",
+                "value": "{ob.p.colors.steelblue.500}",
                 "type": "color"
               },
               "contrast-low-inverse": {
@@ -637,8 +637,9 @@
                 "type": "color"
               },
               "contrast-high-inverse": {
-                "value": "{ob.p.colors.steelblue.50}",
-                "type": "color"
+                "value": "{ob.p.colors.basic.white}",
+                "type": "color",
+                "description": "Text and icon color has to be white on inversion (primary buttons, badge etc.)"
               }
             },
             "fg-visited": {
@@ -679,20 +680,25 @@
                       "space": "srgb"
                     }
                   }
-                }
+                },
+                "description": "Foreground color for disabled state of Text links, secondary and teriarxy buttons etc. on standard backrgound."
               },
               "inverse": {
                 "value": "{ob.p.colors.cobalt.50}",
                 "type": "color",
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "alpha",
-                      "value": "0.4",
-                      "space": "srgb"
-                    }
-                  }
-                }
+                "description": "Foreground color on an inverted backgrounds of disabled state of Primary button, badge.."
+              }
+            },
+            "bg-disabled": {
+              "default": {
+                "value": "{ob.p.colors.cobalt-alpha.100}",
+                "type": "color",
+                "description": "For background of disabled elements "
+              },
+              "inverse": {
+                "value": "{ob.p.colors.cobalt-alpha.300}",
+                "type": "color",
+                "description": "For background of disabled elements, inverse"
               }
             }
           },
@@ -711,15 +717,15 @@
                 "type": "color"
               },
               "contrast-low-inverse": {
-                "value": "{ob.p.colors.cobalt.600}",
+                "value": "{ob.p.colors.cobalt.500}",
                 "type": "color"
               },
               "contrast-medium-inverse": {
-                "value": "{ob.p.colors.cobalt.700}",
+                "value": "{ob.p.colors.cobalt.600}",
                 "type": "color"
               },
               "contrast-high-inverse": {
-                "value": "{ob.p.colors.cobalt.800}",
+                "value": "{ob.p.colors.cobalt.700}",
                 "type": "color"
               }
             },
@@ -779,8 +785,16 @@
           "border": {
             "focus": {
               "value": "{ob.p.colors.purple.500}",
-              "type": "color"
+              "type": "color",
+              "description": "Used for text-links as a border color of the focus state."
             }
+          }
+        },
+        "~documentation-only": {
+          "fg-moded": {
+            "value": "{ob.p.colors.purple.700}",
+            "type": "color",
+            "description": "Documentation only. Changes on user preference color modes Light, Dark etc."
           }
         }
       }
