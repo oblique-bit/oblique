@@ -4,6 +4,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {DateExampleDefaultPreviewComponent} from '../date/previews/default/date-example-default-preview.component';
+import {DateComponentExampleComponent} from './previews/date-component/date-component-example-preview.component';
 
 @Component({
 	selector: 'app-code-example-date',
@@ -21,6 +22,15 @@ export class DateCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('date', 'default/date-example-default-preview.component.html', 'HTML'),
 				this.getSnippet('date', 'default/date-example-default-preview.component.ts', 'TS')
+			]
+		},
+		{
+			component: DateComponentExampleComponent,
+			idParts: ['default'],
+			title: 'Link to Stackblitz ObDateComponent Example',
+			snippets: [
+				this.getSnippet('date', 'date-component/date-component-example-preview.component.html', 'HTML'),
+				this.getSnippet('date', 'date-component/date-component-example-preview.component.ts', 'TS')
 			]
 		}
 	];
