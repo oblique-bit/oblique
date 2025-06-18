@@ -608,7 +608,7 @@
           }
         },
         "interaction": {
-          "default": {
+          "emph-default": {
             "bg": {
               "contrast-high": {
                 "value": "{ob.p.colors.steelblue.900}",
@@ -749,7 +749,7 @@
               }
             }
           },
-          "muted": {
+          "emph-muted": {
             "bg": {
               "contrast-high": {
                 "value": "{ob.p.colors.cobalt.800}",

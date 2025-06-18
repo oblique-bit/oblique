@@ -249,7 +249,7 @@
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.fg-disabled.default}",
+                "value": "{ob.s.color.interaction.emph-default.fg-disabled.default}",
                 "type": "color"
               }
             },
@@ -272,7 +272,7 @@
                 "description": "slightly reduced opacity for pressed"
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.fg-disabled.default}",
+                "value": "{ob.s.color.interaction.emph-default.fg-disabled.default}",
                 "type": "color"
               }
             },
@@ -295,7 +295,7 @@
                 "description": "slightly reduced opacity for pressed"
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.fg-disabled.default}",
+                "value": "{ob.s.color.interaction.emph-default.fg-disabled.default}",
                 "type": "color"
               }
             }
@@ -434,11 +434,11 @@
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.interaction.state.fg.focus}",
+                "value": "{ob.s.color.interaction.state.fg.pressed}",
                 "type": "color"
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.fg-disabled.default}",
+                "value": "{ob.s.color.interaction.emph-default.fg-disabled.default}",
                 "type": "color"
               }
             },

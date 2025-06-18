@@ -11,7 +11,7 @@
                 "description": "References semantic inverse attention status background color, Enabled state."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.bg-disabled.bg-inverse.solid}",
+                "value": "{ob.s.color.interaction.emph-default.bg-disabled.bg-inverse.solid}",
                 "type": "color",
                 "description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
@@ -23,7 +23,7 @@
                 "description": "References semantic inverse info status background color, Enabled state."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.bg-disabled.bg-inverse.solid}",
+                "value": "{ob.s.color.interaction.emph-default.bg-disabled.bg-inverse.solid}",
                 "type": "color",
                 "description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
@@ -35,7 +35,7 @@
                 "description": "References semantic inverse critical status background color, Enabled state."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.bg-disabled.bg-inverse.solid}",
+                "value": "{ob.s.color.interaction.emph-default.bg-disabled.bg-inverse.solid}",
                 "type": "color",
                 "description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
@@ -47,7 +47,7 @@
                 "description": "References semantic inverse resolved status background color, Enabled state."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.bg-disabled.bg-inverse.solid}",
+                "value": "{ob.s.color.interaction.emph-default.bg-disabled.bg-inverse.solid}",
                 "type": "color",
                 "description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }

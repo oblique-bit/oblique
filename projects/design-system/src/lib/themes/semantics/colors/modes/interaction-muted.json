@@ -11,7 +11,7 @@
                 "description": "References the neutral semantic color to ensure the color consistency."
               },
               "hover": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-medium}",
+                "value": "{ob.s.color.interaction.emph-default.fg.contrast-medium}",
                 "type": "color",
                 "description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
               },
@@ -36,7 +36,7 @@
                 "description": "For text-links.References the neutral semantic color to ensure the color consistency."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.fg-disabled.default}",
+                "value": "{ob.s.color.interaction.emph-default.fg-disabled.default}",
                 "type": "color",
                 "description": "Used in text-links, secondary and tertiary buttons."
               }
@@ -48,7 +48,7 @@
                 "description": "References directly the text color to ensure the color consistency"
               },
               "hover": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-low-inverse}",
+                "value": "{ob.s.color.interaction.emph-default.fg.contrast-low-inverse}",
                 "type": "color",
                 "description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
               },
@@ -70,29 +70,29 @@
                 "description": "For text-links."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
+                "value": "{ob.s.color.interaction.emph-default.fg.contrast-high-inverse}",
                 "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
+                "value": "{ob.s.color.interaction.emph-default.fg.contrast-high-inverse}",
                 "type": "color"
               },
               "hover": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
+                "value": "{ob.s.color.interaction.emph-default.fg.contrast-high-inverse}",
                 "type": "color"
               },
               "focus": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
+                "value": "{ob.s.color.interaction.emph-default.fg.contrast-high-inverse}",
                 "type": "color"
               },
               "pressed": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-medium-inverse}",
+                "value": "{ob.s.color.interaction.emph-default.fg.contrast-medium-inverse}",
                 "type": "color"
               },
               "selected": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
+                "value": "{ob.s.color.interaction.emph-default.fg.contrast-high-inverse}",
                 "type": "color"
               },
               "visited": {
@@ -101,7 +101,7 @@
                 "description": "For text-links."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.fg.contrast-high-inverse}",
+                "value": "{ob.s.color.static.no-color}",
                 "type": "color"
               }
             },
@@ -133,7 +133,7 @@
                 "description": "For text-links."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.bg-disabled.bg-inverse.opacity}",
+                "value": "{ob.s.color.interaction.emph-default.bg-disabled.bg-inverse.opacity}",
                 "type": "color"
               }
             }
