@@ -280,11 +280,7 @@
       "_ignore-in-ds/typography-styles": "enabled",
       "semantics/sizing": "enabled",
       "html/paragraph": "enabled",
-      "html/ul": "enabled",
-      "modes/breakpoints/1440": "disabled",
-      "modes/breakpoints/360": "disabled",
-      "semantics/typography-modes/360": "disabled",
-      "semantics/typography-modes/1440": "disabled"
+      "html/ul": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10676",
     "$figmaModeId": "6001:15",
@@ -465,11 +461,9 @@
       "ob.c.button.spacing.with-text.gap.sm": "c051969244241bc532f7436ab8772929e47dd197",
       "ob.c.button.spacing.with-text.gap.md": "624be88b5a589636f5588e68f76c9db0ade9e970",
       "ob.c.button.spacing.with-text.gap.lg": "feeff4308f9a58492b085dbe3a88d1eda0438653",
-      "ob.c.button.spacing.icon-only.padding.vertical.close": "ea406e440ba0137055e1e31aa12316b22e350e6e",
       "ob.c.button.spacing.icon-only.padding.vertical.sm": "c35572ecac19df2e13d2b74796b8e03485b20cfd",
       "ob.c.button.spacing.icon-only.padding.vertical.md": "5b28010c44cf8d9fa609969331f8affa88e4a39c",
       "ob.c.button.spacing.icon-only.padding.vertical.lg": "262e3b3d17a6ed5138066dbe12d39502b80479a5",
-      "ob.c.button.spacing.icon-only.padding.horizontal.close": "6c5391fdcd9a03989033126945ac249e823993c8",
       "ob.c.button.spacing.icon-only.padding.horizontal.sm": "3efdde812cfc22b66bdba8f46b029a3595bd0a2c",
       "ob.c.button.spacing.icon-only.padding.horizontal.md": "9959857faba52839fb0bf76b95a596ebf2eac70c",
       "ob.c.button.spacing.icon-only.padding.horizontal.lg": "1bdc038017b71403d959369ec02a71374a27418b",
@@ -481,7 +475,6 @@
       "ob.c.button.icon.size.sm": "81aabb49958bdb1a1898af0596c52e21bd3cb714",
       "ob.c.button.icon.size.md": "8227d531c37580a6b1fd3cfd17a2694fdeed5ef4",
       "ob.c.button.icon.size.lg": "0892a9ef1f29ae9b4810496dfe697f81af8b8d20",
-      "ob.c.button.surface.size.close": "5c9f65882851b759a71f50c13967d292c46ced81",
       "ob.c.button.surface.size.sm": "e12fd085e99a2e5f58cf6736736941299901ecf1",
       "ob.c.button.surface.size.md": "5e740dccb0123367bc862df0796e7a0fc0c89295",
       "ob.c.button.surface.size.lg": "e1988a7bbabf7e166e64225bc7d2d5b84a3865bc",
@@ -640,7 +633,10 @@
       "ob.html.list.indent": "d69f63890a74969b7f059ae3fb380a1996f67814",
       "ob.html.list.marker.offset": "8bcc27eacd7292648c4fa72a66e74fbc37d73a6d",
       "ob.html.list.unordered.spacing.item": "1c5e3f1b84077a2a2847795640ce65c195313a1e",
-      "ob.html.list.ordered.spacing.item": "afef2a139ab03b8be74ae0021e7d1cd9f73d316b"
+      "ob.html.list.ordered.spacing.item": "afef2a139ab03b8be74ae0021e7d1cd9f73d316b",
+      "ob.c.button.surface.size.mini-close": "5c9f65882851b759a71f50c13967d292c46ced81",
+      "ob.c.button.spacing.icon-only.padding.vertical.mini-close": "ea406e440ba0137055e1e31aa12316b22e350e6e",
+      "ob.c.button.spacing.icon-only.padding.horizontal.mini-close": "6c5391fdcd9a03989033126945ac249e823993c8"
     },
     "group": "core"
   },
@@ -1051,11 +1047,7 @@
       "primitives/colors": "source",
       "semantics/colors/modes/light": "enabled",
       "semantics/colors/static": "enabled",
-      "components/molecules/infobox-modes/light": "enabled",
-      "modes/breakpoints/1440": "disabled",
-      "modes/breakpoints/360": "disabled",
-      "semantics/typography-modes/360": "disabled",
-      "semantics/typography-modes/1440": "disabled"
+      "components/molecules/infobox-modes/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:19",
@@ -1266,11 +1258,7 @@
       "primitives/colors": "source",
       "semantics/colors/modes/dark": "enabled",
       "semantics/colors/static": "enabled",
-      "components/molecules/infobox-modes/dark": "enabled",
-      "modes/breakpoints/1440": "disabled",
-      "modes/breakpoints/360": "disabled",
-      "semantics/typography-modes/360": "disabled",
-      "semantics/typography-modes/1440": "disabled"
+      "components/molecules/infobox-modes/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:20",
@@ -1478,11 +1466,7 @@
     "name": "default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantics/colors/modes/interaction-default": "enabled",
-      "modes/breakpoints/1440": "disabled",
-      "modes/breakpoints/360": "disabled",
-      "semantics/typography-modes/360": "disabled",
-      "semantics/typography-modes/1440": "disabled"
+      "semantics/colors/modes/interaction-default": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.enabled": "a30f42e8f0122ab9ed4b37788e004876eaee4616",
@@ -1523,11 +1507,7 @@
     "name": "muted",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantics/colors/modes/interaction-muted": "enabled",
-      "modes/breakpoints/1440": "disabled",
-      "modes/breakpoints/360": "disabled",
-      "semantics/typography-modes/360": "disabled",
-      "semantics/typography-modes/1440": "disabled"
+      "semantics/colors/modes/interaction-muted": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.enabled": "a30f42e8f0122ab9ed4b37788e004876eaee4616",
@@ -1568,11 +1548,7 @@
     "name": "default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "components/molecules/button-color/default": "enabled",
-      "modes/breakpoints/1440": "disabled",
-      "modes/breakpoints/360": "disabled",
-      "semantics/typography-modes/360": "disabled",
-      "semantics/typography-modes/1440": "disabled"
+      "components/molecules/button-color/default": "enabled"
     },
     "group": "button-color-mode",
     "$figmaCollectionId": "VariableCollectionId:12155:192573",
@@ -1645,11 +1621,7 @@
     "name": "inverse",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "components/molecules/button-color/inverse": "enabled",
-      "modes/breakpoints/1440": "disabled",
-      "modes/breakpoints/360": "disabled",
-      "semantics/typography-modes/360": "disabled",
-      "semantics/typography-modes/1440": "disabled"
+      "components/molecules/button-color/inverse": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:12155:192573",
     "$figmaModeId": "12155:0",

@@ -61,10 +61,10 @@
           "icon-only": {
             "padding": {
               "vertical": {
-                "close": {
+                "mini-close": {
                   "value": "{ob.s.spacing.none}",
                   "type": "spacing",
-                  "description": "No spacing needed inside the close button."
+                  "description": "No spacing needed inside the mini close button. Use case: inside tag component."
                 },
                 "sm": {
                   "value": "{ob.s.spacing.md}",
@@ -83,7 +83,7 @@
                 }
               },
               "horizontal": {
-                "close": {
+                "mini-close": {
                   "value": "{ob.s.spacing.none}",
                   "type": "spacing",
                   "description": "No spacing needed inside the close button."
@@ -181,7 +181,7 @@
         },
         "surface": {
           "size": {
-            "close": {
+            "mini-close": {
               "value": "{ob.s.size.none}",
               "type": "sizing"
             },
