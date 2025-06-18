@@ -120,7 +120,7 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 					{index: 1, id: 'ob-language-fr-option', label: 'Français', active: language === 'fr', text: 'FR', lang: 'fr'},
 					{index: 2, id: 'ob-language-it-option', label: 'Italiano', active: language === 'it', text: 'IT', lang: 'it'},
 					{index: 3, id: 'ob-language-en-option', label: 'English', active: language === 'en', text: 'EN', lang: 'en'}
-				])('select option index: $index', ({index, id, label, active, text}) => {
+				])('select option index: $index', ({index, id, label, active, text, lang}) => {
 					let selectOption: MatOptionHarness;
 					let selectOptionTestElement: TestElement;
 					beforeEach(async () => {
@@ -138,7 +138,8 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 					test.each([
 						{attribute: 'id', value: id},
 						{attribute: 'aria-label', value: label},
-						{attribute: 'aria-current', value: active ? 'true' : null}
+						{attribute: 'aria-current', value: active ? 'true' : null},
+						{attribute: 'lang', value: lang}
 					])('that it has "$value" as "$attribute" attribute', async ({attribute, value}) => {
 						expect(await selectOptionTestElement.getAttribute(attribute)).toBe(value);
 					});
