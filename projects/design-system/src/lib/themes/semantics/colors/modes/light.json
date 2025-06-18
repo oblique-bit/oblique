@@ -681,7 +681,7 @@
                     }
                   }
                 },
-                "description": "Foreground color for disabled state of Text links, secondary and teriarxy buttons etc. on standard backrgound."
+                "description": "Foreground color for disabled state of Text links, secondary and tertiary buttons etc. on standard backrgound."
               },
               "inverse": {
                 "value": "{ob.p.colors.cobalt.50}",
@@ -690,15 +690,29 @@
               }
             },
             "bg-disabled": {
-              "default": {
-                "value": "{ob.p.colors.cobalt-alpha.100}",
-                "type": "color",
-                "description": "For background of disabled elements "
+              "bg-default": {
+                "opacity": {
+                  "value": "{ob.p.colors.cobalt-alpha.100}",
+                  "type": "color",
+                  "description": "For background of disabled elements. Default, non-inverse. Opacity version."
+                },
+                "solid": {
+                  "value": "{ob.p.colors.cobalt-alpha.100}",
+                  "type": "color",
+                  "description": "For background of disabled elements. Default background (non inverted).Solid version."
+                }
               },
-              "inverse": {
-                "value": "{ob.p.colors.cobalt-alpha.300}",
-                "type": "color",
-                "description": "For background of disabled elements, inverse"
+              "bg-inverse": {
+                "opacity": {
+                  "value": "{ob.p.colors.cobalt-alpha.300}",
+                  "type": "color",
+                  "description": "For background of disabled elements, inverse. Opacity version."
+                },
+                "solid": {
+                  "value": "{ob.p.colors.cobalt.200}",
+                  "type": "color",
+                  "description": "For background of disabled elements, inverse. Solid version."
+                }
               }
             }
           },

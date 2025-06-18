@@ -716,21 +716,35 @@
               }
             },
             "bg-disabled": {
-              "default": {
-                "value": "{ob.p.colors.white-alpha.300}",
-                "type": "color"
+              "bg-default": {
+                "opacity": {
+                  "value": "{ob.p.colors.white-alpha.300}",
+                  "type": "color"
+                },
+                "solid": {
+                  "value": "{ob.p.colors.white-alpha.300}",
+                  "type": "color",
+                  "description": "For background of disabled elements. Solid version."
+                }
               },
-              "inverse": {
-                "value": "{ob.p.colors.cobalt.50}",
-                "type": "color",
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "alpha",
-                      "value": "0.4",
-                      "space": "srgb"
+              "bg-inverse": {
+                "opacity": {
+                  "value": "{ob.p.colors.cobalt.50}",
+                  "type": "color",
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "alpha",
+                        "value": "0.4",
+                        "space": "srgb"
+                      }
                     }
                   }
+                },
+                "solid": {
+                  "value": "{ob.p.colors.cobalt.500}",
+                  "type": "color",
+                  "description": "For background of disabled elements, inverse. Solid version."
                 }
               }
             }

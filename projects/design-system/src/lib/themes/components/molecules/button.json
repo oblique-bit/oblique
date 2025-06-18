@@ -172,15 +172,15 @@
         "surface": {
           "size": {
             "sm": {
-              "value": "{ob.p.size.300}",
+              "value": "{ob.s.size.spacious}",
               "type": "sizing"
             },
             "md": {
-              "value": "{ob.p.size.450}",
+              "value": "{ob.s.size.hefty}",
               "type": "sizing"
             },
             "lg": {
-              "value": "44",
+              "value": "{ob.s.size.ultra}",
               "type": "sizing"
             }
           }

@@ -11,9 +11,9 @@
                 "description": "References semantic inverse attention status background color, Enabled state."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.state.bg-inverse.disabled}",
+                "value": "{ob.s.color.interaction.default.bg-disabled.bg-inverse.solid}",
                 "type": "color",
-                "description": "References semantic inverse attention status background color, Disabled state."
+                "description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             },
             "info": {
@@ -23,9 +23,9 @@
                 "description": "References semantic inverse info status background color, Enabled state."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.state.bg-inverse.disabled}",
+                "value": "{ob.s.color.interaction.default.bg-disabled.bg-inverse.solid}",
                 "type": "color",
-                "description": "References semantic inverse info status background color, Disabled state."
+                "description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             },
             "critical": {
@@ -35,9 +35,9 @@
                 "description": "References semantic inverse critical status background color, Enabled state."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.state.bg-inverse.disabled}",
+                "value": "{ob.s.color.interaction.default.bg-disabled.bg-inverse.solid}",
                 "type": "color",
-                "description": "References semantic inverse critical status background color, Disabled state."
+                "description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             },
             "resolved": {
@@ -47,9 +47,9 @@
                 "description": "References semantic inverse resolved status background color, Enabled state."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.state.bg-inverse.disabled}",
+                "value": "{ob.s.color.interaction.default.bg-disabled.bg-inverse.solid}",
                 "type": "color",
-                "description": "References semantic inverse resolved status background color, Disabled state."
+                "description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             }
           },

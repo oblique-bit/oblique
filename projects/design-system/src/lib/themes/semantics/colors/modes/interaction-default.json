@@ -144,9 +144,9 @@
                 "description": "No use. For consistancy only. Text-links need no bg color."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.bg-disabled.inverse}",
+                "value": "{ob.s.color.interaction.default.bg-disabled.bg-inverse.opacity}",
                 "type": "color",
-                "description": "Used for fill in primary buttons, badges etc."
+                "description": "Used for fill in e.g., primary buttons."
               }
             }
           }

@@ -132,7 +132,7 @@
                 "description": "For text-links."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.default.bg-disabled.inverse}",
+                "value": "{ob.s.color.interaction.default.bg-disabled.bg-inverse.opacity}",
                 "type": "color"
               }
             }
