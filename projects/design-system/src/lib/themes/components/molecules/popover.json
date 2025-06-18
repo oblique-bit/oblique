@@ -43,34 +43,6 @@
               "type": "spacing",
               "description": "Aligns the title with the status icon and the close button on desktop."
             }
-          },
-          "custom-buttons-container": {
-            "padding-left": {
-              "value": "{ob.s.spacing.lg}",
-              "type": "spacing"
-            },
-            "padding-right": {
-              "value": "{ob.s.spacing.lg}",
-              "type": "spacing"
-            },
-            "padding-bottom": {
-              "value": "{ob.s.spacing.3xl}",
-              "type": "spacing"
-            },
-            "padding-top": {
-              "value": "{ob.s.spacing.none}",
-              "type": "spacing"
-            },
-            "row-gap": {
-              "value": "{ob.s.spacing.2xl}",
-              "type": "spacing",
-              "description": "Vertical gap between the custom buttons."
-            },
-            "gap": {
-              "value": "{ob.s.spacing.sm}",
-              "type": "spacing",
-              "description": "Horizontal gap between the custom buttons."
-            }
           }
         },
         "sizing": {
