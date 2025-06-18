@@ -21,8 +21,8 @@
     "semantics/sizing",
     "semantics/spacing",
     "semantics/typography-base",
-    "semantics/typography-modes/1440-lg",
-    "semantics/typography-modes/360-xs",
+    "semantics/typography-modes/1440",
+    "semantics/typography-modes/360",
     "semantics/typography-scale",
     "semantics/typography-styles",
     "semantics/z-Index",
@@ -71,8 +71,8 @@
     "html/link",
     "html/paragraph",
     "html/ul",
-    "modes/breakpoints/1440-lg",
-    "modes/breakpoints/360-xs",
+    "modes/breakpoints/1440",
+    "modes/breakpoints/360",
     "_ignore-in-ds/typography-styles"
   ]
 }

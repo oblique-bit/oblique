@@ -280,7 +280,11 @@
       "_ignore-in-ds/typography-styles": "enabled",
       "semantics/sizing": "enabled",
       "html/paragraph": "enabled",
-      "html/ul": "enabled"
+      "html/ul": "enabled",
+      "modes/breakpoints/1440": "disabled",
+      "modes/breakpoints/360": "disabled",
+      "semantics/typography-modes/360": "disabled",
+      "semantics/typography-modes/1440": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10676",
     "$figmaModeId": "6001:15",
@@ -642,7 +646,7 @@
   },
   {
     "id": "2b7ce42a1e3303f4e10fcce7381390723233a864",
-    "name": "1440-lg",
+    "name": "1440",
     "$figmaStyleReferences": {
       "ob.s.typography.heading.fullScale.H1": "S:cbc0cea05cd103f6fdc80fbd66061d2325df73e5,",
       "ob.s.typography.heading.fullScale.H2": "S:0176d87712ac3a13a0441bf7ec93669ec17d537c,",
@@ -741,11 +745,11 @@
       "ob.s.typography.content.body.lead": "S:8dc68a5bbe411543f6523eba3f8bd4241aac6f0e,"
     },
     "selectedTokenSets": {
-      "modes/breakpoints/1440-lg": "enabled",
-      "semantics/typography-modes/1440-lg": "enabled",
       "semantics/typography-scale": "source",
       "semantics/typography-styles": "enabled",
-      "html/paragraph": "enabled"
+      "html/paragraph": "enabled",
+      "modes/breakpoints/1440": "enabled",
+      "semantics/typography-modes/1440": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "babf8d28d9066ddebee3e321ab2f2ed3bf3779a6",
@@ -830,7 +834,7 @@
   },
   {
     "id": "057ec9956979e8c3196f18bf4796e9d15761db5f",
-    "name": "360-xs",
+    "name": "360",
     "$figmaStyleReferences": {
       "ob.s.typography.heading.fullScale.H1": "S:f979056b6f81ade1db3ceb6ecc403e0a89c83a98,",
       "ob.s.typography.heading.fullScale.H2": "S:71741d9fee13c39fc56b39f82116964d7da18c11,",
@@ -953,10 +957,10 @@
       "ob.s.typography.~documentation-only.strong.docs-lg": "S:051c767089d4e7e627075e1013dc661929c0f0ca,"
     },
     "selectedTokenSets": {
-      "modes/breakpoints/360-xs": "enabled",
-      "semantics/typography-modes/360-xs": "enabled",
       "semantics/typography-scale": "source",
-      "semantics/typography-styles": "enabled"
+      "semantics/typography-styles": "enabled",
+      "modes/breakpoints/360": "enabled",
+      "semantics/typography-modes/360": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "babf8d28d9066ddebee3e321ab2f2ed3bf3779a6",
@@ -1047,7 +1051,11 @@
       "primitives/colors": "source",
       "semantics/colors/modes/light": "enabled",
       "semantics/colors/static": "enabled",
-      "components/molecules/infobox-modes/light": "enabled"
+      "components/molecules/infobox-modes/light": "enabled",
+      "modes/breakpoints/1440": "disabled",
+      "modes/breakpoints/360": "disabled",
+      "semantics/typography-modes/360": "disabled",
+      "semantics/typography-modes/1440": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:19",
@@ -1258,7 +1266,11 @@
       "primitives/colors": "source",
       "semantics/colors/modes/dark": "enabled",
       "semantics/colors/static": "enabled",
-      "components/molecules/infobox-modes/dark": "enabled"
+      "components/molecules/infobox-modes/dark": "enabled",
+      "modes/breakpoints/1440": "disabled",
+      "modes/breakpoints/360": "disabled",
+      "semantics/typography-modes/360": "disabled",
+      "semantics/typography-modes/1440": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:20",
@@ -1466,7 +1478,11 @@
     "name": "default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantics/colors/modes/interaction-default": "enabled"
+      "semantics/colors/modes/interaction-default": "enabled",
+      "modes/breakpoints/1440": "disabled",
+      "modes/breakpoints/360": "disabled",
+      "semantics/typography-modes/360": "disabled",
+      "semantics/typography-modes/1440": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.enabled": "a30f42e8f0122ab9ed4b37788e004876eaee4616",
@@ -1507,7 +1523,11 @@
     "name": "muted",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantics/colors/modes/interaction-muted": "enabled"
+      "semantics/colors/modes/interaction-muted": "enabled",
+      "modes/breakpoints/1440": "disabled",
+      "modes/breakpoints/360": "disabled",
+      "semantics/typography-modes/360": "disabled",
+      "semantics/typography-modes/1440": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.enabled": "a30f42e8f0122ab9ed4b37788e004876eaee4616",
@@ -1548,7 +1568,11 @@
     "name": "default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "components/molecules/button-color/default": "enabled"
+      "components/molecules/button-color/default": "enabled",
+      "modes/breakpoints/1440": "disabled",
+      "modes/breakpoints/360": "disabled",
+      "semantics/typography-modes/360": "disabled",
+      "semantics/typography-modes/1440": "disabled"
     },
     "group": "button-color-mode",
     "$figmaCollectionId": "VariableCollectionId:12155:192573",
@@ -1621,7 +1645,11 @@
     "name": "inverse",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "components/molecules/button-color/inverse": "enabled"
+      "components/molecules/button-color/inverse": "enabled",
+      "modes/breakpoints/1440": "disabled",
+      "modes/breakpoints/360": "disabled",
+      "semantics/typography-modes/360": "disabled",
+      "semantics/typography-modes/1440": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:12155:192573",
     "$figmaModeId": "12155:0",
