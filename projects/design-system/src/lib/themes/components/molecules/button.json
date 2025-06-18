@@ -275,6 +275,29 @@
                 "value": "{ob.s.color.interaction.default.fg-disabled.default}",
                 "type": "color"
               }
+            },
+            "close": {
+              "enabled": {
+                "value": "{ob.s.color.interaction.state.fg.enabled}",
+                "type": "color"
+              },
+              "hover": {
+                "value": "{ob.s.color.interaction.state.fg.hover}",
+                "type": "color"
+              },
+              "focus": {
+                "value": "{ob.s.color.interaction.state.fg.focus}",
+                "type": "color"
+              },
+              "pressed": {
+                "value": "{ob.s.color.interaction.state.fg.pressed}",
+                "type": "color",
+                "description": "slightly reduced opacity for pressed"
+              },
+              "disabled": {
+                "value": "{ob.s.color.interaction.default.fg-disabled.default}",
+                "type": "color"
+              }
             }
           },
           "bg": {
@@ -348,6 +371,29 @@
                 "value": "{ob.s.color.interaction.state.bg.disabled}",
                 "type": "color"
               }
+            },
+            "close": {
+              "enabled": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color",
+                "description": "Tertiary needs a transparent background color on Enabled state."
+              },
+              "hover": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "focus": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "pressed": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "disabled": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              }
             }
           },
           "border": {
@@ -397,6 +443,28 @@
               }
             },
             "tertiary": {
+              "enabled": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "hover": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "focus": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "pressed": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              },
+              "disabled": {
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
+              }
+            },
+            "close": {
               "enabled": {
                 "value": "{ob.s.color.static.no-color}",
                 "type": "color"
