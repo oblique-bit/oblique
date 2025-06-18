@@ -11,9 +11,9 @@
                 "description": "References the neutral semantic color to ensure the color consistency."
               },
               "hover": {
-                "value": "{ob.s.color.neutral.fg.contrast-high}",
+                "value": "{ob.s.color.interaction.default.fg.contrast-medium}",
                 "type": "color",
-                "description": "References the neutral semantic color to ensure the color consistency."
+                "description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
               },
               "focus": {
                 "value": "{ob.s.color.neutral.fg.contrast-high}",
@@ -48,8 +48,9 @@
                 "description": "References directly the text color to ensure the color consistency"
               },
               "hover": {
-                "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
-                "type": "color"
+                "value": "{ob.s.color.interaction.default.fg.contrast-low-inverse}",
+                "type": "color",
+                "description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
               },
               "focus": {
                 "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
