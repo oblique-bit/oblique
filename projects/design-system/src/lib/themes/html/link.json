@@ -14,27 +14,27 @@
             "internal": {
               "value": "none",
               "type": "asset",
-              "description": "No icon on internal links (except in lists - defined in another token)"
+              "description": "No icon on internal links (except in lists - defined in another token). Devselopers do not use this in the code."
             },
             "internal-list": {
               "value": "arrow-right",
               "type": "asset",
-              "description": "Icon displayed for internal links (list only)."
+              "description": "Icon displayed for internal links (list only). Devselopers do not use this in the code."
             },
             "external": {
               "value": "external",
               "type": "asset",
-              "description": "Icon displayed for all external links."
+              "description": "Icon displayed for all external links. Devselopers do not use this in the code."
             },
             "phone": {
               "value": "phone",
               "type": "asset",
-              "description": "Icon displayed for all phone number links."
+              "description": "Icon displayed for all phone number links. Devselopers do not use this in the code."
             },
             "mail": {
               "value": "envelope",
               "type": "asset",
-              "description": "Icon displayed for email links."
+              "description": "Icon displayed for email links. Devselopers do not use this in the code."
             }
           }
         }

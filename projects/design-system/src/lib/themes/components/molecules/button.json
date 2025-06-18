@@ -61,6 +61,11 @@
           "icon-only": {
             "padding": {
               "vertical": {
+                "close": {
+                  "value": "{ob.s.spacing.none}",
+                  "type": "spacing",
+                  "description": "No spacing needed inside the close button."
+                },
                 "sm": {
                   "value": "{ob.s.spacing.md}",
                   "type": "spacing",
@@ -78,6 +83,11 @@
                 }
               },
               "horizontal": {
+                "close": {
+                  "value": "{ob.s.spacing.none}",
+                  "type": "spacing",
+                  "description": "No spacing needed inside the close button."
+                },
                 "sm": {
                   "value": "{ob.s.spacing.md}",
                   "type": "spacing",
@@ -171,6 +181,10 @@
         },
         "surface": {
           "size": {
+            "close": {
+              "value": "{ob.s.size.none}",
+              "type": "sizing"
+            },
             "sm": {
               "value": "{ob.s.size.spacious}",
               "type": "sizing"
@@ -404,6 +418,12 @@
                 "type": "color"
               }
             }
+          }
+        },
+        "badge": {
+          "defaultsize": {
+            "value": "lg",
+            "type": "text"
           }
         }
       }

@@ -111,6 +111,52 @@
               "type": "typography"
             }
           }
+        },
+        "color": {
+          "fg": {
+            "enabled": {
+              "value": "{ob.s.color.neutral.fg.contrast-medium}",
+              "type": "color"
+            },
+            "hover": {
+              "value": "{ob.s.color.neutral.fg.contrast-medium}",
+              "type": "color"
+            },
+            "focus": {
+              "value": "{ob.s.color.neutral.fg.contrast-medium}",
+              "type": "color"
+            },
+            "active": {
+              "value": "{ob.s.color.neutral.fg.contrast-medium-inverse}",
+              "type": "color"
+            },
+            "disabled": {
+              "value": "{ob.s.color.interaction.state.fg.disabled}",
+              "type": "color"
+            }
+          },
+          "bg": {
+            "enabled": {
+              "value": "{ob.s.color.neutral.bg.contrast-medium}",
+              "type": "color"
+            },
+            "hover": {
+              "value": "{ob.s.color.neutral.bg.contrast-high}",
+              "type": "color"
+            },
+            "focus": {
+              "value": "{ob.s.color.neutral.bg.contrast-medium}",
+              "type": "color"
+            },
+            "active": {
+              "value": "{ob.s.color.neutral.bg.contrast-medium-inverse}",
+              "type": "color"
+            },
+            "disabled": {
+              "value": "{ob.s.color.neutral.bg.contrast-medium}",
+              "type": "color"
+            }
+          }
         }
       }
     }
