@@ -31,6 +31,8 @@
     "components/atoms/tooltip",
     "components/molecules/autocomplete",
     "components/molecules/button",
+    "components/molecules/button-color/inverse",
+    "components/molecules/button-color/default",
     "components/molecules/tag",
     "components/molecules/tags-modes/light",
     "components/molecules/tags-modes/dark",
