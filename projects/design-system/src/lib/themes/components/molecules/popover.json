@@ -43,6 +43,13 @@
               "type": "spacing",
               "description": "Aligns the title with the status icon and the close button on desktop."
             }
+          },
+          "buttons-container": {
+            "margin-top": {
+              "value": "{ob.p.space.300}",
+              "type": "spacing",
+              "description": "Proper proximity from the buttons to text above. We were not able to use gap property in the padded container since it increases the gap between the title and the body as well."
+            }
           }
         },
         "sizing": {
