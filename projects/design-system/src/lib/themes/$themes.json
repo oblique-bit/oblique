@@ -281,9 +281,7 @@
       "html/ul": "enabled",
       "html/ol": "enabled",
       "html/dl": "enabled",
-      "components/molecules/button/button": "enabled",
-      "components/molecules/button/color-inverse": "disabled",
-      "components/molecules/button/color-default": "disabled"
+      "components/molecules/button/button": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10676",
     "$figmaModeId": "6001:15",
@@ -743,12 +741,7 @@
       "semantics/typography-styles": "enabled",
       "html/paragraph": "enabled",
       "modes/breakpoints/1440": "enabled",
-      "semantics/typography-modes/1440": "enabled",
-      "html/ol": "disabled",
-      "html/dl": "disabled",
-      "components/molecules/button/button": "disabled",
-      "components/molecules/button/color-inverse": "disabled",
-      "components/molecules/button/color-default": "disabled"
+      "semantics/typography-modes/1440": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "babf8d28d9066ddebee3e321ab2f2ed3bf3779a6",
@@ -959,12 +952,7 @@
       "semantics/typography-scale": "source",
       "semantics/typography-styles": "enabled",
       "modes/breakpoints/360": "enabled",
-      "semantics/typography-modes/360": "enabled",
-      "html/ol": "disabled",
-      "html/dl": "disabled",
-      "components/molecules/button/button": "disabled",
-      "components/molecules/button/color-inverse": "disabled",
-      "components/molecules/button/color-default": "disabled"
+      "semantics/typography-modes/360": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.p.scale.mult-responsive": "babf8d28d9066ddebee3e321ab2f2ed3bf3779a6",
@@ -1055,12 +1043,7 @@
       "primitives/colors": "source",
       "semantics/colors/modes/light": "enabled",
       "semantics/colors/static": "enabled",
-      "components/molecules/infobox-modes/light": "enabled",
-      "html/ol": "disabled",
-      "html/dl": "disabled",
-      "components/molecules/button/button": "disabled",
-      "components/molecules/button/color-inverse": "disabled",
-      "components/molecules/button/color-default": "disabled"
+      "components/molecules/infobox-modes/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:19",
@@ -1271,12 +1254,7 @@
       "primitives/colors": "source",
       "semantics/colors/modes/dark": "enabled",
       "semantics/colors/static": "enabled",
-      "components/molecules/infobox-modes/dark": "enabled",
-      "html/ol": "disabled",
-      "html/dl": "disabled",
-      "components/molecules/button/button": "disabled",
-      "components/molecules/button/color-inverse": "disabled",
-      "components/molecules/button/color-default": "disabled"
+      "components/molecules/infobox-modes/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10678",
     "$figmaModeId": "6001:20",
@@ -1484,12 +1462,7 @@
     "name": "default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantics/colors/modes/interaction-default": "enabled",
-      "html/ol": "disabled",
-      "html/dl": "disabled",
-      "components/molecules/button/button": "disabled",
-      "components/molecules/button/color-inverse": "disabled",
-      "components/molecules/button/color-default": "disabled"
+      "semantics/colors/modes/interaction-default": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.enabled": "a30f42e8f0122ab9ed4b37788e004876eaee4616",
@@ -1530,12 +1503,7 @@
     "name": "muted",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantics/colors/modes/interaction-muted": "enabled",
-      "html/ol": "disabled",
-      "html/dl": "disabled",
-      "components/molecules/button/button": "disabled",
-      "components/molecules/button/color-inverse": "disabled",
-      "components/molecules/button/color-default": "disabled"
+      "semantics/colors/modes/interaction-muted": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.enabled": "a30f42e8f0122ab9ed4b37788e004876eaee4616",
@@ -1576,10 +1544,6 @@
     "name": "default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/ol": "disabled",
-      "html/dl": "disabled",
-      "components/molecules/button/button": "disabled",
-      "components/molecules/button/color-inverse": "disabled",
       "components/molecules/button/color-default": "enabled"
     },
     "group": "button-color-mode",
@@ -1653,11 +1617,7 @@
     "name": "inverse",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/ol": "disabled",
-      "html/dl": "disabled",
-      "components/molecules/button/button": "disabled",
-      "components/molecules/button/color-inverse": "enabled",
-      "components/molecules/button/color-default": "disabled"
+      "components/molecules/button/color-inverse": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:12155:192573",
     "$figmaModeId": "12155:0",
