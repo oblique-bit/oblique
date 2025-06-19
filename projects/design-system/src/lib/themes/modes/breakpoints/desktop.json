@@ -6,14 +6,6 @@
           "value": "4",
           "type": "number"
         }
-      },
-      "viewport": {
-        "value": "1440",
-        "type": "number",
-        "mult": {
-          "value": "5",
-          "type": "number"
-        }
       }
     },
     "c": {
@@ -193,6 +185,12 @@
             }
           }
         }
+      }
+    },
+    "s": {
+      "viewport": {
+        "value": "desktop",
+        "type": "text"
       }
     }
   }

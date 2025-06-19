@@ -21,8 +21,8 @@
     "semantics/sizing",
     "semantics/spacing",
     "semantics/typography-base",
-    "semantics/typography-modes/1440",
-    "semantics/typography-modes/360",
+    "semantics/typography-modes/desktop",
+    "semantics/typography-modes/mobile",
     "semantics/typography-scale",
     "semantics/typography-styles",
     "semantics/z-Index",
@@ -64,8 +64,9 @@
     "html/ul",
     "html/dl",
     "html/ol",
-    "modes/breakpoints/1440",
-    "modes/breakpoints/360",
-    "_ignore-in-ds/typography-styles"
+    "modes/breakpoints/desktop",
+    "modes/breakpoints/mobile",
+    "_ignore-in-ds/typography-styles-R13",
+    "_ignore-in-ds/figma-doc"
   ]
 }

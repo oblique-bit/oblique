@@ -6,14 +6,6 @@
           "value": "3.5",
           "type": "number"
         }
-      },
-      "viewport": {
-        "value": "360",
-        "type": "number",
-        "mult": {
-          "value": "5",
-          "type": "number"
-        }
       }
     },
     "c": {
@@ -193,6 +185,12 @@
             }
           }
         }
+      }
+    },
+    "s": {
+      "viewport": {
+        "value": "mobile",
+        "type": "text"
       }
     }
   }
