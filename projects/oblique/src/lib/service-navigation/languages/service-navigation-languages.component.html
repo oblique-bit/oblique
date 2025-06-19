@@ -14,6 +14,7 @@
 			[class.ob-active]="language === languageObject.code"
 			[attr.aria-label]="languageObject.label"
 			[value]="languageObject.code"
+			[attr.lang]="languageObject.code"
 			>{{ languageObject.code.toUpperCase() }}</mat-option
 		>
 	</mat-select>
