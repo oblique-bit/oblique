@@ -200,7 +200,8 @@
           "fatal": {
             "bg": {
               "value": "{ob.p.colors.red.900}",
-              "type": "color"
+              "type": "color",
+              "description": "Based on requirement for a special variant that is consistant with the Bundeskanzlei Alert banner."
             },
             "fg": {
               "value": "{ob.p.colors.red.100}",

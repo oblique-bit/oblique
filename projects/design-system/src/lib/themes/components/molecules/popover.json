@@ -83,7 +83,8 @@
         "color": {
           "bg": {
             "value": "{ob.s.color.neutral.bg.contrast-highest}",
-            "type": "color"
+            "type": "color",
+            "description": "Default background color for popovers."
           },
           "border": {
             "value": "{ob.s.color.neutral.border.default}",
@@ -92,7 +93,8 @@
           },
           "fg": {
             "value": "{ob.s.color.neutral.fg.contrast-high}",
-            "type": "color"
+            "type": "color",
+            "description": "Default foreground color for popovers."
           }
         },
         "typography": {

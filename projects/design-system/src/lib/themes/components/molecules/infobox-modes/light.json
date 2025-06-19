@@ -66,8 +66,7 @@
             },
             "fatal": {
               "value": "{ob.s.color.status.fatal.bg}",
-              "type": "color",
-              "description": "A darker background because of the requirement from F.Gabsa to make a special variant that is consistant with the Bundeskanzlei Alertbanner:\nhttps://swiss.github.io/designsystem/?path=/docs/components-alertbanner--example"
+              "type": "color"
             }
           },
           "fg": {
