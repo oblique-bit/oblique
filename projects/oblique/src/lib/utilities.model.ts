@@ -45,8 +45,7 @@ export type ObConformity = ObConformityPartial | ObConformityNonPartial;
 
 export type ObIAccessibilityStatementConfiguration =
 	| ObIAccessibilityStatementConfigurationPartial
-	| ObIAccessibilityStatementConfigurationNonPartial
-	| ObIAccessibilityStatementConfigurationPartialTemp;
+	| ObIAccessibilityStatementConfigurationNonPartial;
 
 type ObConformityPartial = 'partial';
 type ObConformityNonPartial = 'none' | 'full';
@@ -66,11 +65,6 @@ interface ObIAccessibilityStatementConfigurationPartial extends ObIAccessibility
 
 interface ObIAccessibilityStatementConfigurationNonPartial extends ObIAccessibilityStatementConfigurationBase {
 	conformity: ObConformityNonPartial;
-}
-
-interface ObIAccessibilityStatementConfigurationPartialTemp extends ObIAccessibilityStatementConfigurationBase {
-	conformity?: never;
-	exceptions?: string[];
 }
 
 interface ObContactInfo {
