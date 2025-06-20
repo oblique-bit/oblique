@@ -1,12 +1,14 @@
 {
   "ob": {
     "c": {
-      "container-button": {
-        "infobox": {
-          "padding-bottom": {
-            "value": "{ob.s.spacing.md}",
-            "type": "spacing",
-            "description": "Needed to extend the padding in the Infobox component, ensuring consistent and visually appealing spacing to the right and below the button."
+      "button": {
+        "container": {
+          "infobox": {
+            "padding-bottom": {
+              "value": "{ob.s.spacing.md}",
+              "type": "spacing",
+              "description": "Needed to extend the padding in the Infobox component, ensuring consistent and visually appealing spacing to the right and below the button."
+            }
           }
         }
       }

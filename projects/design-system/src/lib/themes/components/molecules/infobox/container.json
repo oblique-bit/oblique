@@ -1,8 +1,8 @@
 {
   "ob": {
     "c": {
-      "container-infobox": {
-        "infobox": {
+      "infobox": {
+        "container": {
           "padding-bottom": {
             "value": "{ob.s.spacing.md}",
             "type": "spacing",
