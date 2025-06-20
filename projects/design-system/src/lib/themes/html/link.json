@@ -37,6 +37,68 @@
               "description": "Icon displayed for email links. Devselopers do not use this in the code."
             }
           }
+        },
+        "color": {
+          "link": {
+            "value": "{ob.s.color.interaction.state.fg.enabled}",
+            "type": "color",
+            "description": "Default color of unvisited links."
+          },
+          "visited": {
+            "value": "{ob.s.color.interaction.state.fg.visited}",
+            "type": "color",
+            "description": "Color of links the user has already visited."
+          },
+          "hover": {
+            "value": "{ob.s.color.interaction.state.fg.hover}",
+            "type": "color",
+            "description": "Color of link when hovered with the mouse."
+          },
+          "active": {
+            "value": "{ob.s.color.interaction.state.fg.pressed}",
+            "type": "color",
+            "description": "Color of link during click interaction."
+          },
+          "disabled": {
+            "value": "{ob.s.color.interaction.state.fg.disabled}",
+            "type": "color",
+            "description": "Color of a visually disabled, non-clickable link."
+          }
+        },
+        "enabled": {
+          "value": {
+            "textDecoration": "{ob.s.text-decoration.link.emphasis-default}"
+          },
+          "type": "typography",
+          "description": "a:link"
+        },
+        "hover": {
+          "value": {
+            "textDecoration": "{ob.s.text-decoration.link.emphasis-default}"
+          },
+          "type": "typography",
+          "description": "a:hover"
+        },
+        "focus": {
+          "value": {
+            "textDecoration": "{ob.s.text-decoration.link.emphasis-low}"
+          },
+          "type": "typography",
+          "description": "a:focus. Displays already a border. No need for additional visual emphasis."
+        },
+        "active": {
+          "value": {
+            "textDecoration": "{ob.s.text-decoration.link.emphasis-default}"
+          },
+          "type": "typography",
+          "description": "a:active"
+        },
+        "disabled": {
+          "value": {
+            "textDecoration": "{ob.s.text-decoration.link.emphasis-low}"
+          },
+          "type": "typography",
+          "description": "non css standard but required.No need for underline when disabled."
         }
       }
     }

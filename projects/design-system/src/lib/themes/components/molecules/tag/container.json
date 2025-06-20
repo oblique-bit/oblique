@@ -1,0 +1,15 @@
+{
+  "ob": {
+    "c": {
+      "container-tag": {
+        "spacing": {
+          "gap": {
+            "value": "{ob.s.spacing.md}",
+            "type": "spacing",
+            "description": "Spacing between single tags "
+          }
+        }
+      }
+    }
+  }
+}

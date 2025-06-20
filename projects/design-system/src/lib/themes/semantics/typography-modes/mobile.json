@@ -131,9 +131,11 @@
         }
       },
       "text-decoration": {
-        "bodyLink": {
-          "value": "{ob.p.text-decoration.underline}",
-          "type": "textDecoration"
+        "link": {
+          "emphasis-default": {
+            "value": "{ob.p.text-decoration.underline}",
+            "type": "textDecoration"
+          }
         },
         "ListLink": {
           "value": "{ob.p.text-decoration.none}",
