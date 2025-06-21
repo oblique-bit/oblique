@@ -835,13 +835,6 @@
               "type": "color"
             }
           }
-        },
-        "~documentation-only": {
-          "fg": {
-            "value": "{ob.p.colors.~documentation-only.figma-doc-only-300}",
-            "type": "color",
-            "description": "Documentation only. Changes on user preference color modes Light, Dark etc."
-          }
         }
       }
     }

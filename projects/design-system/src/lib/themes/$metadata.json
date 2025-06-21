@@ -68,7 +68,8 @@
     "html/ol",
     "modes/breakpoints/desktop",
     "modes/breakpoints/mobile",
-    "_ignore-in-ds/figma-doc/static",
+    "_ignore-in-ds/figma-doc/typography",
+    "_ignore-in-ds/figma-doc/colors-static",
     "_ignore-in-ds/figma-doc/light",
     "_ignore-in-ds/figma-doc/dark",
     "_ignore-in-ds/typography-styles-R13"
