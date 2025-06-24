@@ -9,7 +9,7 @@ export class ObMockMasterLayoutConfig {
 	homePageRoute = '/home';
 	focusableFragments = ['content', 'navigation'];
 	scrollToTopDuration = 200;
-	showAccessibilityTitle = false;
+	showAccessibilityTitle = true;
 	locale: ObILocale = {
 		locales: ['de-CH', 'fr-CH', 'it-CH'],
 		defaultLanguage: 'de',
