@@ -141,6 +141,8 @@
   "i18n.stepper.editable.label": "Editierbar",
   "i18n.oblique.service-navigation.applications.button.label": "Meine Services",
   "i18n.oblique.service-navigation.applications.favorite.header": "Favoriten",
+  "i18n.oblique.service-navigation.applications.status.inaccessible": "Unzureichendes Login-Level",
+  "i18n.oblique.service-navigation.applications.status.offline": "Offline",
   "i18n.oblique.service-navigation.applications.image.inaccessible.alt": "Schloss im roten Kreis über dem Icon der {{name}}-Anwendung",
   "i18n.oblique.service-navigation.applications.image.offline.alt": "Kreuz im roten Kreis über dem Icon der {{name}}-Anwendung",
   "i18n.oblique.service-navigation.applications.image.online.alt": "Icon der {{name}}-Anwendung",

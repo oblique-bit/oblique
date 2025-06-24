@@ -27,6 +27,7 @@ import {ObEportalCsrfInterceptor} from './eportal-csrf-interceptor/eportal-csrf-
 import {ObDisableLinkDirective} from './shared/disable-link/disable-link.directive';
 import {A11yModule} from '@angular/cdk/a11y';
 import {ObIsCurrentUrlPipe} from './shared/popover-section/is-current-url.pipe';
+import {ObServiceNavigationApplicationNameStatusPipe} from './applications/service-navigation-application-name-status.pipe';
 
 @NgModule({
 	providers: [
@@ -56,6 +57,7 @@ import {ObIsCurrentUrlPipe} from './shared/popover-section/is-current-url.pipe';
 	declarations: [
 		ObContactToLinksPipe,
 		ObIsUserLoggedInPipe,
+		ObServiceNavigationApplicationNameStatusPipe,
 		ObLimitArraySizePipe,
 		ObServiceNavigationApplicationAltPipe,
 		ObServiceNavigationApplicationsComponent,

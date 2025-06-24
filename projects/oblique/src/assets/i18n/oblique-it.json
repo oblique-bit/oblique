@@ -141,6 +141,8 @@
   "i18n.stepper.editable.label": "Modificabile",
   "i18n.oblique.service-navigation.applications.button.label": "I miei servizi",
   "i18n.oblique.service-navigation.applications.favorite.header": "Preferiti",
+  "i18n.oblique.service-navigation.applications.status.inaccessible": "Livello di login insufficiente",
+  "i18n.oblique.service-navigation.applications.status.offline": "Offline",
   "i18n.oblique.service-navigation.applications.image.inaccessible.alt": "Blocco nel cerchio rosso sopra l’icona dell’applicazione {{name}}",
   "i18n.oblique.service-navigation.applications.image.offline.alt": "Croce nel cerchio rosso sopra l’icona dell’applicazione {{name}}",
   "i18n.oblique.service-navigation.applications.image.online.alt": "Icona dell’applicazione {{name}}",

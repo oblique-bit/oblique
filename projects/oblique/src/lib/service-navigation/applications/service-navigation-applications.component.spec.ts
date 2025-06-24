@@ -19,6 +19,7 @@ import {ObServiceNavigationApplicationsComponent} from './service-navigation-app
 import {ObDisableLinkDirective} from '../shared/disable-link/disable-link.directive';
 import {WINDOW} from '../../utilities';
 import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
+import {ObServiceNavigationApplicationNameStatusPipe} from './service-navigation-application-name-status.pipe';
 
 describe(ObServiceNavigationApplicationsComponent.name, () => {
 	let component: ObServiceNavigationApplicationsComponent;
@@ -40,6 +41,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				ObLimitArraySizePipe,
 				ObServiceNavigationApplicationsComponent,
 				ObServiceNavigationPopoverSectionComponent,
+				ObServiceNavigationApplicationNameStatusPipe,
 				ObServiceNavigationApplicationAltPipe
 			],
 			providers: [
@@ -318,8 +320,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(span.classes['ob-application-title']).toBe(true);
 								});
 
-								it('should have "applicationName2" as content', () => {
-									expect(span.nativeElement.textContent).toBe('applicationName2');
+								it('should have "applicationName2 - i18n.oblique.service-navigation.applications.status.offline" as content', () => {
+									expect(span.nativeElement.textContent).toBe(
+										'applicationName2 - i18n.oblique.service-navigation.applications.status.offline'
+									);
 								});
 							});
 						});
@@ -562,8 +566,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(span.classes['ob-application-title']).toBe(true);
 								});
 
-								it('should have "applicationName2" as content', () => {
-									expect(span.nativeElement.textContent).toBe('applicationName2');
+								it('should have "applicationName2 - i18n.oblique.service-navigation.applications.status.offline" as content', () => {
+									expect(span.nativeElement.textContent).toBe(
+										'applicationName2 - i18n.oblique.service-navigation.applications.status.offline'
+									);
 								});
 							});
 						});
