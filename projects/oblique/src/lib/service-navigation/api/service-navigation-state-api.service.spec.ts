@@ -46,7 +46,10 @@ describe('ObServiceNavigationStateApiService', () => {
 			});
 
 			it('should be called with proper parameters', () => {
-				expect(httpClient.get).toHaveBeenCalledWith('http://rootUrl/api/widget/state', {withCredentials: true});
+				expect(httpClient.get).toHaveBeenCalledWith('http://rootUrl/api/widget/state', {
+					withCredentials: true,
+					params: {lastUsedLimit: '4'}
+				});
 			});
 		});
 	});

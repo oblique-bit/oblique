@@ -11,7 +11,9 @@ export class ObServiceNavigationStateApiService {
 
 	get(environmentUrl: string): Observable<ObIServiceNavigationState> {
 		return this.httpClient
-			.get<ObIServiceNavigationResponse<ObIServiceNavigationState>>(environmentUrl + this.resourceUrl, {withCredentials: true})
+			.get<
+				ObIServiceNavigationResponse<ObIServiceNavigationState>
+			>(environmentUrl + this.resourceUrl, {withCredentials: true, params: {lastUsedLimit: '4'}})
 			.pipe(map(res => res.data));
 	}
 }

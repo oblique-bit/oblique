@@ -73,17 +73,6 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 		expect(await host.hasClass('ob-service-navigation-applications')).toBe(true);
 	});
 
-	describe('maxLastUsedApplications', () => {
-		it('should be initialized to "3"', () => {
-			expect(component.maxLastUsedApplications).toBe(3);
-		});
-
-		it('should throw an error when negative', () => {
-			const change = {maxLastUsedApplications: {currentValue: -1, previousValue: 3, firstChange: true, isFirstChange: () => true}};
-			expect(() => component.ngOnChanges(change)).toThrowError('maxLastUsedApplications cannot be negative.');
-		});
-	});
-
 	describe('maxFavoriteApplications', () => {
 		it('should be initialized to "3"', () => {
 			expect(component.maxFavoriteApplications).toBe(3);

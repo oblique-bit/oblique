@@ -36,7 +36,7 @@
 		header="i18n.oblique.service-navigation.applications.last-used.header"
 	>
 		<ul class="ob-applications" obContent>
-			<li *ngFor="let application of lastUsedApplications | obLimitArraySize: maxLastUsedApplications">
+			<li *ngFor="let application of lastUsedApplications">
 				<a
 					class="ob-application"
 					[href]="application.url"

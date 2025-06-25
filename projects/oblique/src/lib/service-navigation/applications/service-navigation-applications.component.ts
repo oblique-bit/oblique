@@ -14,13 +14,12 @@ export class ObServiceNavigationApplicationsComponent implements OnChanges {
 	@Input() applicationsUrl = '';
 	@Input() isLoggedIn = false;
 	@Input() lastUsedApplications: ObIServiceNavigationApplication[] = [];
-	@Input() maxLastUsedApplications = 3;
 	@Input() favoriteApplications: ObIServiceNavigationApplication[] = [];
 	@Input() maxFavoriteApplications = 3;
 	statusImage = base64StatusImages;
 
 	ngOnChanges(changes: SimpleChanges): void {
-		['maxLastUsedApplications', 'maxFavoriteApplications']
+		['maxFavoriteApplications']
 			.filter(property => changes[property]?.currentValue < 0)
 			.forEach(property => {
 				throw new Error(`${property} cannot be negative.`);

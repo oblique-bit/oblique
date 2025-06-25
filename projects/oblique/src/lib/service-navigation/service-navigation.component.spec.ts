@@ -201,12 +201,6 @@ describe('ObServiceNavigationComponent', () => {
 			});
 		});
 
-		describe('maxLastUsedApplications', () => {
-			it('should be initialized to 3', () => {
-				expect(component.maxLastUsedApplications).toBe(3);
-			});
-		});
-
 		describe('handleLogout setter', () => {
 			it('should set the value correctly ', () => {
 				const expectedResult = false;
