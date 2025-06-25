@@ -21,6 +21,15 @@ import {WINDOW} from '../../utilities';
 import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
 import {ObServiceNavigationApplicationNameStatusPipe} from './service-navigation-application-name-status.pipe';
 
+// Workaround for tooltip tests https://github.com/telerik/kendo-angular/issues/1505
+Object.defineProperty(window, 'getComputedStyle', {
+	value: () => ({
+		getPropertyValue: () => {
+			return '';
+		}
+	})
+});
+
 describe(ObServiceNavigationApplicationsComponent.name, () => {
 	let component: ObServiceNavigationApplicationsComponent;
 	let fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>;
@@ -35,6 +44,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				MatTooltipModule,
 				ObPopoverModule,
 				ObDisableLinkDirective,
+				MatTooltipModule,
 				ObIsCurrentUrlPipe
 			],
 			declarations: [
@@ -151,6 +161,12 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								link = links[0];
 							});
 
+							it('should have "matTooltip" property set to "applicationName1"', async () => {
+								const tooltipHarness = (await harness.getAllTooltipHarness(fixture))[1];
+								await tooltipHarness.show();
+								expect(await tooltipHarness.getTooltipText()).toBe('applicationName1');
+							});
+
 							it('should be an anchor', () => {
 								expect(link.name).toBe('a');
 							});
@@ -222,6 +238,14 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 							let link: DebugElement;
 							beforeEach(() => {
 								link = links[1];
+							});
+
+							it('should have "matTooltip" property set to "applicationName2 - i18n.oblique.service-navigation.applications.status.offline"', async () => {
+								const tooltipHarness = (await harness.getAllTooltipHarness(fixture))[2];
+								await tooltipHarness.show();
+								expect(await tooltipHarness.getTooltipText()).toBe(
+									'applicationName2 - i18n.oblique.service-navigation.applications.status.offline'
+								);
 							});
 
 							it('should be an anchor', () => {
@@ -397,6 +421,12 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								link = links[0];
 							});
 
+							it('should have "matTooltip" property set to "applicationName1"', async () => {
+								const tooltipHarness = (await harness.getAllTooltipHarness(fixture))[1];
+								await tooltipHarness.show();
+								expect(await tooltipHarness.getTooltipText()).toBe('applicationName1');
+							});
+
 							it('should be an anchor', () => {
 								expect(link.name).toBe('a');
 							});
@@ -468,6 +498,14 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 							let link: DebugElement;
 							beforeEach(() => {
 								link = links[1];
+							});
+
+							it('should have "matTooltip" property set to "applicationName2 - i18n.oblique.service-navigation.applications.status.offline"', async () => {
+								const tooltipHarness = (await harness.getAllTooltipHarness(fixture))[2];
+								await tooltipHarness.show();
+								expect(await tooltipHarness.getTooltipText()).toBe(
+									'applicationName2 - i18n.oblique.service-navigation.applications.status.offline'
+								);
 							});
 
 							it('should be an anchor', () => {

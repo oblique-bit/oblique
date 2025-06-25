@@ -37,7 +37,13 @@
 	>
 		<ul class="ob-applications" obContent>
 			<li *ngFor="let application of lastUsedApplications | obLimitArraySize: maxLastUsedApplications">
-				<a class="ob-application" [href]="application.url" [obDisableLink]="application.status !== 'online'" [isExternalLink]="false">
+				<a
+					class="ob-application"
+					[href]="application.url"
+					[obDisableLink]="application.status !== 'online'"
+					[isExternalLink]="false"
+					[matTooltip]="application | ObServiceNavigationApplicationNameStatus"
+				>
 					<img
 						*ngIf="application.status !== 'online'"
 						aria-hidden="true"
@@ -62,7 +68,13 @@
 	>
 		<ul class="ob-applications" obContent>
 			<li *ngFor="let application of favoriteApplications | obLimitArraySize: maxFavoriteApplications">
-				<a class="ob-application" [href]="application.url" [obDisableLink]="application.status !== 'online'" [isExternalLink]="false">
+				<a
+					class="ob-application"
+					[href]="application.url"
+					[obDisableLink]="application.status !== 'online'"
+					[isExternalLink]="false"
+					[matTooltip]="application | ObServiceNavigationApplicationNameStatus"
+				>
 					<img
 						*ngIf="application.status !== 'online'"
 						aria-hidden="true"

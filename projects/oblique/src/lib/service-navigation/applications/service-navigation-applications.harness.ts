@@ -22,6 +22,10 @@ export class ObServiceNavigationApplicationsHarness extends ContentContainerComp
 		return TestbedHarnessEnvironment.documentRootLoader(fixture).getHarnessOrNull(MatTooltipHarness);
 	}
 
+	public getAllTooltipHarness(fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>): Promise<MatTooltipHarness[]> {
+		return TestbedHarnessEnvironment.documentRootLoader(fixture).getAllHarnesses(MatTooltipHarness);
+	}
+
 	public getIconHarness(fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>): Promise<MatIconHarness> {
 		return TestbedHarnessEnvironment.documentRootLoader(fixture).getHarnessOrNull(MatIconHarness);
 	}
