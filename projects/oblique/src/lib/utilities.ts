@@ -73,81 +73,59 @@ export function multiTranslateLoader(config: TranslateModuleConfig = {}): Transl
 	};
 }
 
-export function matFormFieldDefaultOptionsProvider(
-	config?: ObIMaterialConfig,
-	materialConfig?: ObIMaterialConfig
-): MatFormFieldDefaultOptions {
-	return materialConfig?.MAT_FORM_FIELD_DEFAULT_OPTIONS || config?.MAT_FORM_FIELD_DEFAULT_OPTIONS || {appearance: 'outline'};
+export function matFormFieldDefaultOptionsProvider(materialConfig?: ObIMaterialConfig): MatFormFieldDefaultOptions {
+	return materialConfig?.MAT_FORM_FIELD_DEFAULT_OPTIONS || {appearance: 'outline'};
 }
 
-export function stepperOptionsOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): StepperOptions {
-	return materialConfig?.STEPPER_GLOBAL_OPTIONS || config?.STEPPER_GLOBAL_OPTIONS || {displayDefaultIndicatorType: false};
+export function stepperOptionsOptionsProvider(materialConfig?: ObIMaterialConfig): StepperOptions {
+	return materialConfig?.STEPPER_GLOBAL_OPTIONS || {displayDefaultIndicatorType: false};
 }
 
 export function checkboxOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): MatCheckboxDefaultOptions {
 	return materialConfig?.MAT_CHECKBOX_OPTIONS || config?.MAT_CHECKBOX_OPTIONS || {color: 'primary'};
 }
 
-export function radioOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): MatRadioDefaultOptions {
-	return materialConfig?.MAT_RADIO_OPTIONS || config?.MAT_RADIO_OPTIONS || {color: 'primary'};
+export function radioOptionsProvider(materialConfig?: ObIMaterialConfig): MatRadioDefaultOptions {
+	return materialConfig?.MAT_RADIO_OPTIONS || {color: 'primary'};
 }
 
-export function slideToggleOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): MatSlideToggleDefaultOptions {
-	return materialConfig?.MAT_SLIDE_TOGGLE_OPTIONS || config?.MAT_SLIDE_TOGGLE_OPTIONS || {color: 'primary'};
+export function slideToggleOptionsProvider(materialConfig?: ObIMaterialConfig): MatSlideToggleDefaultOptions {
+	return materialConfig?.MAT_SLIDE_TOGGLE_OPTIONS || {color: 'primary'};
 }
 
-export function tabsOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): MatTabsConfig {
-	return materialConfig?.MAT_TABS_CONFIG || config?.MAT_TABS_CONFIG || {stretchTabs: false};
+export function tabsOptionsProvider(materialConfig?: ObIMaterialConfig): MatTabsConfig {
+	return materialConfig?.MAT_TABS_CONFIG || {stretchTabs: false};
 }
 
-/**
- * @deprecated with Oblique 13.0.0, use the `materialConfig` parameter of the `obProvideObliqueProviders` function instead
- */
-export const OB_MATERIAL_CONFIG = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
 // this token is only needed as long as OB_MATERIAL_CONFIG is supported because useFactory only accepts injection tokens
 const OB_MATERIAL_CONFIG_2 = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
 const materialProviders = [
 	{
 		provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
 		useFactory: matFormFieldDefaultOptionsProvider,
-		deps: [
-			[new Optional(), OB_MATERIAL_CONFIG],
-			[new Optional(), OB_MATERIAL_CONFIG_2]
-		]
+		deps: [[new Optional(), OB_MATERIAL_CONFIG_2]]
 	},
 	{
 		provide: STEPPER_GLOBAL_OPTIONS,
 		useFactory: stepperOptionsOptionsProvider,
-		deps: [
-			[new Optional(), OB_MATERIAL_CONFIG],
-			[new Optional(), OB_MATERIAL_CONFIG_2]
-		]
+		deps: [[new Optional(), OB_MATERIAL_CONFIG_2]]
 	},
 	{
 		provide: MAT_CHECKBOX_DEFAULT_OPTIONS,
 		useFactory: checkboxOptionsProvider,
-		deps: [
-			[new Optional(), OB_MATERIAL_CONFIG],
-			[new Optional(), OB_MATERIAL_CONFIG_2]
-		]
+		deps: [[new Optional(), OB_MATERIAL_CONFIG_2]]
 	},
 	{
 		provide: MAT_RADIO_DEFAULT_OPTIONS,
 		useFactory: radioOptionsProvider,
-		deps: [
-			[new Optional(), OB_MATERIAL_CONFIG],
-			[new Optional(), OB_MATERIAL_CONFIG_2]
-		]
+		deps: [[new Optional(), OB_MATERIAL_CONFIG_2]]
 	},
 	{
 		provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS,
 		useFactory: slideToggleOptionsProvider,
-		deps: [
-			[new Optional(), OB_MATERIAL_CONFIG],
-			[new Optional(), OB_MATERIAL_CONFIG_2]
-		]
+		deps: [[new Optional(), OB_MATERIAL_CONFIG_2]]
 	},
-	{provide: MAT_TABS_CONFIG, useFactory: tabsOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]}
+	{provide: MAT_TABS_CONFIG, useFactory: tabsOptionsProvider, deps: [OB_MATERIAL_CONFIG_2]}
 ];
 
 export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
