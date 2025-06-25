@@ -260,14 +260,6 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.header.serviceNavigationConfiguration.profileLinks = value ? this.profileLinks : [];
 	}
 
-	get maxLastUsedApplications(): number {
-		return this.masterLayout.header.serviceNavigationConfiguration.maxLastUsedApplications;
-	}
-
-	set maxLastUsedApplications(value: number) {
-		this.masterLayout.header.serviceNavigationConfiguration.maxLastUsedApplications = value;
-	}
-
 	get maxFavoriteApplications(): number {
 		return this.masterLayout.header.serviceNavigationConfiguration.maxFavoriteApplications;
 	}

@@ -124,16 +124,6 @@
 			<fieldset class="toggles">
 				<legend>Applications settings</legend>
 				<mat-form-field>
-					<mat-label>Max last used applications</mat-label>
-					<input
-						type="number"
-						matInput
-						[disabled]="isLoggedOut$ | async"
-						[matTooltip]="(isLoggedOut$ | async) ? 'You need to be logged in to activate this setting.' : undefined"
-						[(ngModel)]="maxLastUsedApplications"
-					/>
-				</mat-form-field>
-				<mat-form-field>
 					<mat-label>Max favorite applications</mat-label>
 					<input
 						type="number"
