@@ -10,6 +10,7 @@ export const currentVersions = {
 	'@oblique/oblique': '13',
 	'@angular/cli': '19',
 	'@angular/material': '19',
+	'@oblique/toolchain': '13',
 	'@angular/core': '19',
 	'@angular/cdk': '19',
 	'@angular/animations': '19',
