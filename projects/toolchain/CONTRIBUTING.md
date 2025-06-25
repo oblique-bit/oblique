@@ -7,3 +7,4 @@ All commits related to the Toolchain package must use the **toolchain** package 
 ## <a name="scope"></a> Scope
 
 - **utils**
+- **schematics**
