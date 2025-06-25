@@ -37,7 +37,7 @@ export class ObServiceNavigationComponent implements OnInit {
 	 * @deprecated since Oblique 13.3.2. It will be removed in the next major version.
 	 */
 	@Input() maxLastUsedApplications = 3;
-	@Input() maxFavoriteApplications = 3;
+	@Input() maxFavoriteApplications = 8;
 	@Input() environment: ObEPamsEnvironment;
 	@Input() rootUrl: string;
 	@Input()

@@ -15,7 +15,7 @@ export class ObServiceNavigationApplicationsComponent implements OnChanges {
 	@Input() isLoggedIn = false;
 	@Input() lastUsedApplications: ObIServiceNavigationApplication[] = [];
 	@Input() favoriteApplications: ObIServiceNavigationApplication[] = [];
-	@Input() maxFavoriteApplications = 3;
+	@Input() maxFavoriteApplications = 8;
 	statusImage = base64StatusImages;
 
 	ngOnChanges(changes: SimpleChanges): void {

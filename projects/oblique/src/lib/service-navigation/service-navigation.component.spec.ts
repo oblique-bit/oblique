@@ -219,8 +219,8 @@ describe('ObServiceNavigationComponent', () => {
 		});
 
 		describe('maxFavoriteApplications', () => {
-			it('should be initialized to 3', () => {
-				expect(component.maxFavoriteApplications).toBe(3);
+			it('should be initialized to 8', () => {
+				expect(component.maxFavoriteApplications).toBe(8);
 			});
 		});
 

@@ -74,12 +74,12 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 	});
 
 	describe('maxFavoriteApplications', () => {
-		it('should be initialized to "3"', () => {
-			expect(component.maxFavoriteApplications).toBe(3);
+		it('should be initialized to "8"', () => {
+			expect(component.maxFavoriteApplications).toBe(8);
 		});
 
 		it('should throw an error when negative', () => {
-			const change = {maxFavoriteApplications: {currentValue: -1, previousValue: 3, firstChange: true, isFirstChange: () => true}};
+			const change = {maxFavoriteApplications: {currentValue: -1, previousValue: 8, firstChange: true, isFirstChange: () => true}};
 			expect(() => component.ngOnChanges(change)).toThrowError('maxFavoriteApplications cannot be negative.');
 		});
 	});
