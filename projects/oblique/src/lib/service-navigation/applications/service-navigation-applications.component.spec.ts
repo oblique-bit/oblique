@@ -13,7 +13,6 @@ import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObLimitArraySizePipe} from '../shared/limit-array-size.pipe';
-import {ObServiceNavigationApplicationAltPipe} from './service-navigation-application-image-alt.pipe';
 import {ObServiceNavigationApplicationsHarness} from './service-navigation-applications.harness';
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
 import {ObDisableLinkDirective} from '../shared/disable-link/disable-link.directive';
@@ -51,8 +50,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				ObLimitArraySizePipe,
 				ObServiceNavigationApplicationsComponent,
 				ObServiceNavigationPopoverSectionComponent,
-				ObServiceNavigationApplicationNameStatusPipe,
-				ObServiceNavigationApplicationAltPipe
+				ObServiceNavigationApplicationNameStatusPipe
 			],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
@@ -205,8 +203,8 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(image.classes['ob-offline']).toBeUndefined();
 								});
 
-								it('should have "i18n.oblique.service-navigation.applications.image.online.alt" as "alt" attribute', () => {
-									expect(image.attributes.alt).toBe('i18n.oblique.service-navigation.applications.image.online.alt');
+								it('should have an empty "alt" attribute', () => {
+									expect(image.attributes.alt).toBe('');
 								});
 
 								it('should have "applicationImage" as "src" attribute', () => {
@@ -321,8 +319,8 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(image.classes['ob-offline']).toBe(true);
 								});
 
-								it('should have "i18n.oblique.service-navigation.applications.image.offline.alt" as "alt" attribute', () => {
-									expect(image.attributes.alt).toBe('i18n.oblique.service-navigation.applications.image.offline.alt');
+								it('should have an empty "alt" attribute', () => {
+									expect(image.attributes.alt).toBe('');
 								});
 
 								it('should have "applicationImage" as "src" attribute', () => {
@@ -465,8 +463,8 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(image.classes['ob-offline']).toBeUndefined();
 								});
 
-								it('should have "i18n.oblique.service-navigation.applications.image.online.alt" as "alt" attribute', () => {
-									expect(image.attributes.alt).toBe('i18n.oblique.service-navigation.applications.image.online.alt');
+								it('should have an empty "alt" attribute', () => {
+									expect(image.attributes.alt).toBe('');
 								});
 
 								it('should have "applicationImage" as "src" attribute', () => {
@@ -581,8 +579,8 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(image.classes['ob-offline']).toBe(true);
 								});
 
-								it('should have "i18n.oblique.service-navigation.applications.image.offline.alt" as "alt" attribute', () => {
-									expect(image.attributes.alt).toBe('i18n.oblique.service-navigation.applications.image.offline.alt');
+								it('should have an empty "alt" attribute', () => {
+									expect(image.attributes.alt).toBe('');
 								});
 
 								it('should have "applicationImage" as "src" attribute', () => {

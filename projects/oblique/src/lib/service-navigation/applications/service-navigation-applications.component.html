@@ -51,12 +51,7 @@
 						class="ob-application-image ob-status-image"
 						alt=""
 					/>
-					<img
-						class="ob-application-image"
-						[src]="application.image"
-						[class.ob-offline]="application.status !== 'online'"
-						[alt]="application.status | ObServiceNavigationApplicationAlt | translate: { name: application.name }"
-					/>
+					<img class="ob-application-image" [src]="application.image" [class.ob-offline]="application.status !== 'online'" alt="" />
 					<span class="ob-application-title">{{ application | ObServiceNavigationApplicationNameStatus }}</span>
 				</a>
 			</li>
@@ -82,12 +77,7 @@
 						class="ob-application-image ob-status-image"
 						alt=""
 					/>
-					<img
-						class="ob-application-image"
-						[src]="application.image"
-						[class.ob-offline]="application.status !== 'online'"
-						[alt]="application.status | ObServiceNavigationApplicationAlt | translate: { name: application.name }"
-					/>
+					<img class="ob-application-image" [src]="application.image" [class.ob-offline]="application.status !== 'online'" alt="" />
 					<span class="ob-application-title">{{ application | ObServiceNavigationApplicationNameStatus }}</span>
 				</a>
 			</li>

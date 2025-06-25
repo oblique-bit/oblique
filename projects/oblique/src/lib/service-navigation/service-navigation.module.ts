@@ -18,7 +18,6 @@ import {ObServiceNavigationProfileComponent} from './profile/service-navigation-
 import {ObServiceNavigationMessageComponent} from './message/service-navigation-message.component';
 import {ObServiceNavigationInfoComponent} from './info/service-navigation-info.component';
 import {ObServiceNavigationApplicationsComponent} from './applications/service-navigation-applications.component';
-import {ObServiceNavigationApplicationAltPipe} from './applications/service-navigation-application-image-alt.pipe';
 import {ObServiceNavigationLanguagesComponent} from './languages/service-navigation-languages.component';
 import {ObContactToLinksPipe} from './info/contact-to-links.pipe';
 import {ObServiceNavigationComponent} from './service-navigation.component';
@@ -59,7 +58,6 @@ import {ObServiceNavigationApplicationNameStatusPipe} from './applications/servi
 		ObIsUserLoggedInPipe,
 		ObServiceNavigationApplicationNameStatusPipe,
 		ObLimitArraySizePipe,
-		ObServiceNavigationApplicationAltPipe,
 		ObServiceNavigationApplicationsComponent,
 		ObServiceNavigationAuthenticationComponent,
 		ObServiceNavigationComponent,
