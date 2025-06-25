@@ -13,7 +13,6 @@
 			[infoHelpText]="infoHelpText"
 			[infoDescription]="infoDescription"
 			[useInfoBackend]="hasInfoBackend"
-			[maxLastUsedApplications]="maxLastUsedApplications"
 			[maxFavoriteApplications]="maxFavoriteApplications"
 			[displayMessage]="displayMessage"
 			[displayInfo]="displayInfo"
@@ -86,13 +85,6 @@
 		<fieldset class="toggles">
 			<legend>Applications widget settings</legend>
 			<mat-slide-toggle [(ngModel)]="displayApplications">toggle applications</mat-slide-toggle>
-			<mat-form-field>
-				<mat-label>Max last used applications</mat-label>
-				<input type="number" matInput [disabled]="!displayApplications" [(ngModel)]="maxLastUsedApplications" />
-				<mat-hint
-					>Display only {{ maxLastUsedApplications }} applications out of a total of {{ lastUsedApplicationsLength$ | async }}.</mat-hint
-				>
-			</mat-form-field>
 			<mat-form-field>
 				<mat-label>Max favorite applications</mat-label>
 				<input type="number" matInput [disabled]="!displayApplications" [(ngModel)]="maxFavoriteApplications" />

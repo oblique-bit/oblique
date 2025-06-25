@@ -19,7 +19,6 @@ import {environment} from '../../../environments/environment';
 export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	returnUrl: string;
 	readonly eportalAppId = '48';
-	maxLastUsedApplications = 3;
 	maxFavoriteApplications = 3;
 	lastUsedApplicationsLength$: Observable<number>;
 	favoriteApplicationsLength$: Observable<number>;
