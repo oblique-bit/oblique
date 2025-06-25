@@ -144,7 +144,6 @@ export {
 export {
 	OB_BANNER,
 	OB_PAMS_CONFIGURATION,
-	getTranslateLoader,
 	provideObliqueConfiguration,
 	provideObliqueTranslations,
 	obFocusWithOutline,

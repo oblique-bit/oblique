@@ -8,14 +8,12 @@ import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {TranslateCompiler, TranslateFakeCompiler, TranslateFakeLoader, TranslateLoader, TranslateService} from '@ngx-translate/core';
-import {of} from 'rxjs';
 import {OB_FLATTEN_TRANSLATION_FILES, ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {
 	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
 	OB_HAS_LANGUAGE_IN_URL,
 	WINDOW,
 	getRootRoute,
-	getTranslateLoader,
 	isNotKeyboardEventOnButton,
 	obFocusWithOutline,
 	provideObliqueConfiguration,
@@ -35,61 +33,6 @@ describe('utilities', () => {
 
 		it('should return en empty object if not provided document', () => {
 			expect(windowProvider({} as Document)).toEqual({});
-		});
-	});
-
-	describe('getTranslateLoader', () => {
-		const httpClient = {get: () => of({})} as unknown as HttpClient;
-
-		describe.each([
-			[
-				undefined,
-				[
-					['Oblique', 1, './assets/i18n/oblique-en.json'],
-					['Project', 2, './assets/i18n/en.json']
-				]
-			],
-			[[], [['Oblique', 1, './assets/i18n/oblique-en.json']]],
-			[
-				[
-					{prefix: './module1-', suffix: '.json'},
-					{prefix: './module2-', suffix: '.json'}
-				],
-				[
-					['Oblique', 1, './assets/i18n/oblique-en.json'],
-					['Module 1', 2, './module1-en.json'],
-					['Module 2', 3, './module2-en.json']
-				]
-			]
-		])('with %s as additional files', (files, httpCalls) => {
-			const object = getTranslateLoader(httpClient, files, true);
-
-			it('should create an object', () => {
-				expect(object).toBeTruthy();
-			});
-
-			it('should create an ObMultiTranslateLoader object', () => {
-				expect(object instanceof ObMultiTranslateLoader).toBe(true);
-			});
-
-			describe('getTranslation', () => {
-				beforeEach(() => {
-					jest.spyOn(httpClient, 'get');
-					object.getTranslation('en');
-				});
-
-				afterEach(() => {
-					jest.clearAllMocks();
-				});
-
-				it(`should do ${httpCalls.length} http calls`, () => {
-					expect(httpClient.get).toHaveBeenCalledTimes(httpCalls.length);
-				});
-
-				it.each(httpCalls)('should request %s translations', (name, index, httpCall) => {
-					expect(httpClient.get).toHaveBeenNthCalledWith(index as number, httpCall);
-				});
-			});
 		});
 	});
 
@@ -339,6 +282,30 @@ describe('utilities', () => {
 					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
 				});
 			});
+
+			describe('getTranslation', () => {
+				let httpClient: HttpClient;
+				beforeEach(() => {
+					httpClient = TestBed.inject(HttpClient);
+					jest.spyOn(httpClient, 'get');
+					TestBed.inject(TranslateLoader).getTranslation('en');
+				});
+
+				afterEach(() => {
+					jest.clearAllMocks();
+				});
+
+				it(`should do 2 http calls`, () => {
+					expect(httpClient.get).toHaveBeenCalledTimes(2);
+				});
+
+				it.each([
+					{index: 1, url: './assets/i18n/oblique-en.json'},
+					{index: 2, url: './assets/i18n/en.json'}
+				])('should request $url on $index call', ({index, url}) => {
+					expect(httpClient.get).toHaveBeenNthCalledWith(index, url);
+				});
+			});
 		});
 
 		describe('with custom configuration', () => {
@@ -350,14 +317,20 @@ describe('utilities', () => {
 						provideObliqueTranslations({
 							flatten: false,
 							config: {loader: TranslateFakeLoader},
-							additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}]
+							additionalFiles: [
+								{prefix: './path1/', suffix: '.json'},
+								{prefix: './path2/', suffix: '.js'}
+							]
 						})
 					]
 				});
 			});
 
 			it('should provide "TRANSLATION_FILES"', () => {
-				expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
+				expect(TestBed.inject(TRANSLATION_FILES)).toEqual([
+					{prefix: './path1/', suffix: '.json'},
+					{prefix: './path2/', suffix: '.js'}
+				]);
 			});
 
 			it('should provide "OB_FLATTEN_TRANSLATION_FILES"', () => {
@@ -371,6 +344,31 @@ describe('utilities', () => {
 			describe('loader', () => {
 				it('should be an instance of ObMultiTranslateLoader', () => {
 					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
+				});
+			});
+
+			describe('getTranslation', () => {
+				let httpClient: HttpClient;
+				beforeEach(() => {
+					httpClient = TestBed.inject(HttpClient);
+					jest.spyOn(httpClient, 'get');
+					TestBed.inject(TranslateLoader).getTranslation('en');
+				});
+
+				afterEach(() => {
+					jest.clearAllMocks();
+				});
+
+				it(`should do 3 http calls`, () => {
+					expect(httpClient.get).toHaveBeenCalledTimes(3);
+				});
+
+				it.each([
+					{index: 1, url: './assets/i18n/oblique-en.json'},
+					{index: 2, url: './path1/en.json'},
+					{index: 3, url: './path2/en.js'}
+				])('should request $url on $index call', ({index, url}) => {
+					expect(httpClient.get).toHaveBeenNthCalledWith(index, url);
 				});
 			});
 		});

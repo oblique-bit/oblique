@@ -47,10 +47,7 @@ export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);
 }
 
-/**
- * @deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
- */
-export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[], flatten: boolean): ObMultiTranslateLoader {
+function getTranslateLoader(http: HttpClient, files: ObITranslationFile[], flatten: boolean): ObMultiTranslateLoader {
 	return new ObMultiTranslateLoader(
 		http,
 		[
