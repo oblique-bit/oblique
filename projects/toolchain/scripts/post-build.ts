@@ -22,7 +22,6 @@ export class PostBuild extends StaticScript {
 			.copyRootFiles('LICENSE')
 			.copyProjectRootFiles('README.md', 'CHANGELOG.md', 'package.json')
 			.copyFile('collection.json', 'src/schematics', 'schematics')
-			.copyFile('schema.json', 'src/schematics/hello-world', 'schematics/hello-world')
 			.finalize();
 	}
 

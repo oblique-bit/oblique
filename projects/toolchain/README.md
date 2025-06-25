@@ -29,21 +29,6 @@ If you'd like to contribute, please follow our [contributing guidelines](../../C
 
 1. Install the tarball of the oblique-toolchain into a test-project
 2. Run npm i oblique-toolchain-13.2.2.tgz
-3. Run `ng -g @oblique/toolchain:hello-world --name=hello-world.txt`
-
-```bash
-  npm run build -w @oblique/toolchain && npx @angular-devkit/schematics-cli ./dist/toolchain/:hello-world --name=hello-world.txt
-```
-
-```bash
-  npm run build -w @oblique/toolchain && npx @angular-devkit/schematics-cli ./dist/toolchain/:hello-world --name=hello-world.txt
-```
-
-or run :
-
-```bash
-  cd projects/toolchain/ && npm run build && cd ../../ && npx @angular-devkit/schematics-cli ./dist/toolchain/:hello-world --name=hello-world.txt
-```
 
 ## License
 
