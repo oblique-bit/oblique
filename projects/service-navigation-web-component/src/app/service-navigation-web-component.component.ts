@@ -62,7 +62,7 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	 * @deprecated since Oblique 13.3.2. It will be removed in the next major version.
 	 */
 	readonly maxLastUsedApplications = input(3, {transform: numberAttribute});
-	readonly maxFavoriteApplications = input(3, {transform: numberAttribute});
+	readonly maxFavoriteApplications = input(8, {transform: numberAttribute});
 	readonly displayLanguages = input(true, {transform: booleanAttribute});
 	readonly displayMessage = input(true, {transform: booleanAttribute});
 	readonly displayInfo = input(true, {transform: booleanAttribute});
