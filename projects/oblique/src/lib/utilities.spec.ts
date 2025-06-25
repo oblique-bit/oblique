@@ -14,7 +14,6 @@ import {OB_FLATTEN_TRANSLATION_FILES, ObMultiTranslateLoader, TRANSLATION_FILES}
 import {
 	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
 	OB_HAS_LANGUAGE_IN_URL,
-	OB_MATERIAL_CONFIG,
 	WINDOW,
 	checkboxOptionsProvider,
 	getRootRoute,
@@ -376,51 +375,6 @@ describe('utilities', () => {
 				it('should provide OB_HAS_LANGUAGE_IN_URL as true', () => {
 					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(true);
 				});
-			});
-		});
-
-		describe('with token configuration for Material', () => {
-			beforeEach(() => {
-				TestBed.configureTestingModule({
-					providers: [
-						provideHttpClient(),
-						provideObliqueConfiguration({
-							accessibilityStatement: {
-								applicationName: 'appName',
-								createdOn: new Date('2025-01-31'),
-								conformity: 'none',
-								applicationOperator: 'Operator',
-								contact: {emails: ['e@mail.com']}
-							}
-						}),
-						{
-							provide: OB_MATERIAL_CONFIG,
-							useValue: {
-								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
-								STEPPER_GLOBAL_OPTIONS: {showError: true},
-								MAT_CHECKBOX_OPTIONS: {clickAction: 'check'},
-								MAT_RADIO_OPTIONS: {color: 'accent'},
-								MAT_SLIDE_TOGGLE_OPTIONS: {hideIcon: true},
-								MAT_TABS_CONFIG: {fitInkBarToContent: true}
-							}
-						}
-					]
-				});
-			});
-
-			it('should create WINDOW injection token', () => {
-				expect(TestBed.inject(WINDOW)).toEqual(window);
-			});
-
-			it.each([
-				{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {floatLabel: 'always'}},
-				{token: STEPPER_GLOBAL_OPTIONS, config: {showError: true}},
-				{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {clickAction: 'check'}},
-				{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
-				{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {hideIcon: true}},
-				{token: MAT_TABS_CONFIG, config: {fitInkBarToContent: true}}
-			])('should create $token injection token', ({token, config}) => {
-				expect(TestBed.inject(token)).toEqual(config);
 			});
 		});
 
