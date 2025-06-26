@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, type OnChanges, type OnInit, input, output} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject, combineLatest, map} from 'rxjs';
 import type {Accordion, AccordionLinksChanges} from './accordion-links.model';
@@ -10,7 +10,7 @@ import {IdPipe} from '../../shared/id/id.pipe';
 	templateUrl: './accordion-links.component.html',
 	styleUrl: './accordion-links.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, RouterLink, IdPipe]
+	imports: [CommonModule, RouterLink, RouterLinkActive, IdPipe]
 })
 export class AccordionLinksComponent implements OnChanges, OnInit {
 	readonly accordions = input<Accordion[]>([]);

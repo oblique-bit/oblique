@@ -17,7 +17,8 @@
 		@if (!(collapsedAccordionsRecord$ | async)[accordion.id]) {
 			<a
 				class="link"
-				[attr.data-selected]="link.slug === selectedSlug() ? true : null"
+				routerLinkActive="active"
+				ariaCurrentWhenActive="page"
 				[id]="idPrefix() | id: [componentId, 'link', i, $index]"
 				[routerLink]="['/' + accordion.title, link.slug]"
 				[queryParams]="urlParamVersion() ? { version: urlParamVersion() } : null"
