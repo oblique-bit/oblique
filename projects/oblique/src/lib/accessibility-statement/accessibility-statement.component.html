@@ -18,32 +18,29 @@
 		}
 	</ol>
 }
-@if (parameters.createdOn) {
-	<h3>{{ "i18n.oblique.accessibility-statement.data.title" | translate }}</h3>
+<h3>{{ "i18n.oblique.accessibility-statement.data.title" | translate }}</h3>
+<p
+	[innerHtml]="
+		'i18n.oblique.accessibility-statement.data.created'
+			| translate
+				: {
+						createdOn: (parameters.createdOn | obDate: 'shortDate'),
+						createdOnISO: (parameters.createdOn | date: 'yyyy-MM-dd')
+				  }
+	"
+></p>
+@if (parameters.reviewedOn) {
 	<p
 		[innerHtml]="
-			'i18n.oblique.accessibility-statement.data.created'
+			'i18n.oblique.accessibility-statement.data.reviewed'
 				| translate
 					: {
-							createdOn: (parameters.createdOn | obDate: 'shortDate'),
-							createdOnISO: (parameters.createdOn | date: 'yyyy-MM-dd')
+							reviewedOn: (parameters.reviewedOn | obDate: 'shortDate'),
+							reviewedOnISO: (parameters.reviewedOn | date: 'yyyy-MM-dd')
 					  }
 		"
 	></p>
-	@if (parameters.reviewedOn) {
-		<p
-			[innerHtml]="
-				'i18n.oblique.accessibility-statement.data.reviewed'
-					| translate
-						: {
-								reviewedOn: (parameters.reviewedOn | obDate: 'shortDate'),
-								reviewedOnISO: (parameters.reviewedOn | date: 'yyyy-MM-dd')
-						  }
-			"
-		></p>
-	}
 }
-
 <h3>{{ "i18n.oblique.accessibility-statement.feedback.title" | translate }}</h3>
 <p>{{ "i18n.oblique.accessibility-statement.feedback.text" | translate }}</p>
 <h4>{{ "i18n.oblique.accessibility-statement.feedback.operator" | translate }}</h4>

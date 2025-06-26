@@ -22,6 +22,7 @@ describe(AccessibilityStatementComponent.name, () => {
 					accessibilityStatement: {
 						applicationName: 'appName',
 						conformity: 'none',
+						createdOn: new Date('2025-01-31'),
 						applicationOperator: 'Operator',
 						contact: {emails: ['e@mail.com']}
 					}
@@ -37,6 +38,7 @@ describe(AccessibilityStatementComponent.name, () => {
 					applicationName: 'appName',
 					applicationOperator: 'Operator',
 					contact: {emails: ['e@mail.com']},
+					createdOn: new Date('2025-01-31'),
 					conformity
 				}
 			});
@@ -53,12 +55,12 @@ describe(AccessibilityStatementComponent.name, () => {
 			test.each([
 				{tag: 'h1', number: 1},
 				{tag: 'h2', number: 3},
-				{tag: 'h3', number: 3},
+				{tag: 'h3', number: 4},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},
 				{tag: 'ul', number: 4},
 				{tag: 'ol', number: 0},
-				{tag: 'p', number: 5}
+				{tag: 'p', number: 6}
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
@@ -120,6 +122,7 @@ describe(AccessibilityStatementComponent.name, () => {
 					applicationOperator: 'Operator',
 					contact: {emails: ['e@mail.com']},
 					conformity: 'partial',
+					createdOn: new Date('2025-01-31'),
 					exceptions: ['test']
 				}
 			});
@@ -136,12 +139,12 @@ describe(AccessibilityStatementComponent.name, () => {
 			test.each([
 				{tag: 'h1', number: 1},
 				{tag: 'h2', number: 3},
-				{tag: 'h3', number: 4},
+				{tag: 'h3', number: 5},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},
 				{tag: 'ul', number: 4},
 				{tag: 'ol', number: 1},
-				{tag: 'p', number: 6}
+				{tag: 'p', number: 7}
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
@@ -282,6 +285,7 @@ describe(AccessibilityStatementComponent.name, () => {
 					applicationName: 'applicationName',
 					applicationOperator: 'Operator',
 					conformity: 'partial',
+					createdOn: new Date('2025-01-31'),
 					contact: {emails: ['email'], phones: ['phone']},
 					exceptions: ['exception']
 				}
