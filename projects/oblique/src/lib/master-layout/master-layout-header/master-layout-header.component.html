@@ -1,6 +1,5 @@
-<div class="ob-header">
+<header class="ob-header">
 	<ng-content select="[obHeader]" *ngIf="isCustom" />
-	<h1 class="ob-screen-reader-only">{{ "i18n.oblique.header.title" | translate }}</h1>
 	<ng-container *ngIf="!isCustom">
 		<div class="ob-master-layout-header-action">
 			<ng-content select="[obHeaderAction]" />
@@ -66,7 +65,7 @@
 			</ng-template>
 		</ob-service-navigation>
 	</ng-container>
-</div>
+</header>
 <ob-master-layout-navigation [links]="navigation" (linksChanged)="emitNavigation($event)">
 	<ng-content select="[obNavigation]" />
 </ob-master-layout-navigation>
