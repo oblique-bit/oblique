@@ -1,6 +1,6 @@
 import {TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, Subject, count, firstValueFrom, of} from 'rxjs';
+import {Observable, Subject, firstValueFrom, of} from 'rxjs';
 import {map, skip} from 'rxjs/operators';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
@@ -84,6 +84,7 @@ describe('ObServiceNavigationService', () => {
 			configService = TestBed.inject(ObServiceNavigationConfigApiService);
 			applicationsService = TestBed.inject(ObServiceNavigationApplicationsService);
 			redirectorService = TestBed.inject(ObServiceNavigationTimeoutRedirectorService);
+			service.setFavoriteApplicationsCount(1);
 		});
 
 		afterEach(() => {
@@ -568,12 +569,17 @@ describe('ObServiceNavigationService', () => {
 				service = TestBed.inject(ObServiceNavigationService);
 			});
 
-			it(`should emit ${emitTimes} times`, async () => {
+			it(`should emit ${emitTimes} times`, () => {
 				service.setUpRootUrls(ObEPamsEnvironment.TEST);
-				const promise = firstValueFrom(service.getLoginState$().pipe(count()));
+				service.setFavoriteApplicationsCount(1);
+				const emittedStates = [];
+
+				service.getLoginState$().subscribe(state => {
+					emittedStates.push(state);
+				});
 				inputs.forEach(input => mockStateChangeDuplicate.next({loginState: input}));
-				mockStateChangeDuplicate.complete();
-				await expect(promise).resolves.toBe(emitTimes);
+
+				expect(emittedStates).toHaveLength(emitTimes);
 			});
 		});
 	});

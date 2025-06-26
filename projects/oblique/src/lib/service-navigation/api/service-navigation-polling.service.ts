@@ -20,10 +20,10 @@ export class ObServiceNavigationPollingService {
 		this.state$ = this.pollingDataState.asObservable();
 	}
 
-	initializeStateUpdate(stateInterval: number, countInterval: number, environmentUrl: string): void {
+	initializeStateUpdate(stateInterval: number, countInterval: number, environmentUrl: string, favoriteApplicationCount: number): void {
 		const secondsMultiplier = 1000;
 		combineLatest([
-			timer(0, stateInterval * secondsMultiplier).pipe(switchMap(() => this.stateApiService.get(environmentUrl))),
+			timer(0, stateInterval * secondsMultiplier).pipe(switchMap(() => this.stateApiService.get(environmentUrl, favoriteApplicationCount))),
 			timer(0, countInterval * secondsMultiplier).pipe(switchMap(() => this.countApiService.get(environmentUrl)))
 		])
 			.pipe(

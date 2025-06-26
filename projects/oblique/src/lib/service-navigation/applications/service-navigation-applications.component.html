@@ -72,7 +72,7 @@
 		header="i18n.oblique.service-navigation.applications.favorite.header"
 	>
 		<ul class="ob-applications" obContent>
-			<li *ngFor="let application of favoriteApplications | obLimitArraySize: maxFavoriteApplications">
+			<li *ngFor="let application of favoriteApplications">
 				<a
 					class="ob-application"
 					[href]="application.url"

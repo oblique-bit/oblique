@@ -78,6 +78,7 @@ export class ObServiceNavigationComponent implements OnInit {
 	ngOnInit(): void {
 		this.headerControlsService.setUpRootUrls(this.environment, this.rootUrl);
 		this.headerControlsService.setPamsAppId(this.pamsAppId);
+		this.headerControlsService.setFavoriteApplicationsCount(this.maxFavoriteApplications);
 	}
 
 	changeLanguage(language: string): void {

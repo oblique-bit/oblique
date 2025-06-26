@@ -57,7 +57,7 @@ describe('ObServiceNavigationPollingService', () => {
 			{time: 4500, number: 6}
 		])('with 1s interval and $time ms processing time', ({time, number}) => {
 			beforeEach(fakeAsync(() => {
-				service.initializeStateUpdate(1, 1, 'http://rootUrl/');
+				service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
 				tick(time);
 				discardPeriodicTasks();
 			}));
@@ -67,7 +67,7 @@ describe('ObServiceNavigationPollingService', () => {
 			});
 
 			it('should call "stateApiService.get" with "http://rootUrl/"', () => {
-				expect(stateApiService.get).toHaveBeenCalledWith('http://rootUrl/');
+				expect(stateApiService.get).toHaveBeenCalledWith('http://rootUrl/', 1);
 			});
 		});
 
@@ -78,7 +78,7 @@ describe('ObServiceNavigationPollingService', () => {
 			{time: 4500, number: 4}
 		])('with 2s interval and $time ms processing time', ({time, number}) => {
 			beforeEach(fakeAsync(() => {
-				service.initializeStateUpdate(1, 2, 'http://rootUrl/');
+				service.initializeStateUpdate(1, 2, 'http://rootUrl/', 1);
 				tick(time);
 				discardPeriodicTasks();
 			}));

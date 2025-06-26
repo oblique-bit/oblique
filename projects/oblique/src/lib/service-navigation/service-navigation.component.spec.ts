@@ -63,6 +63,7 @@ describe('ObServiceNavigationComponent', () => {
 		getLanguages: jest.fn().mockReturnValue([{code: 'en', label: 'English'}]),
 		setLanguage: jest.fn(),
 		setPamsAppId: jest.fn(),
+		setFavoriteApplicationsCount: jest.fn(),
 		logout: jest.fn(),
 		getLogoutTrigger$: jest.fn(),
 		setHandleLogout: jest.fn()
@@ -215,6 +216,15 @@ describe('ObServiceNavigationComponent', () => {
 				component.pamsAppId = expectedResult;
 				component.ngOnInit();
 				expect(mockServiceNavigationService.setPamsAppId).toBeCalledWith(expectedResult);
+			});
+		});
+
+		describe('setFavoriteApplicationsCount setter', () => {
+			it('should set the value correctly ', () => {
+				const expectedResult = 7;
+				component.maxFavoriteApplications = expectedResult;
+				component.ngOnInit();
+				expect(mockServiceNavigationService.setFavoriteApplicationsCount).toHaveBeenCalledWith(expectedResult);
 			});
 		});
 

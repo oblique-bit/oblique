@@ -21,7 +21,6 @@
 			[isLoggedIn]="loginState$ | async | obIsUserLoggedIn: false"
 			[lastUsedApplications]="lastUsedApplications$ | async"
 			[favoriteApplications]="favoriteApplications$ | async"
-			[maxFavoriteApplications]="maxFavoriteApplications"
 		/>
 	</li>
 	<li *ngIf="(loginState$ | async | obIsUserLoggedIn: true) && displayProfile">

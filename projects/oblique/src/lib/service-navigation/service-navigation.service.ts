@@ -27,10 +27,20 @@ export class ObServiceNavigationService {
 	private readonly avatarRootUrl$ = new ReplaySubject<string>(1);
 	private readonly returnUrl$ = new ReplaySubject<string>(1);
 	private readonly pamsAppId$ = new ReplaySubject<string>(1);
+	private readonly favoriteApplicationsCount$ = new ReplaySubject<number>(1);
+
 	private readonly config$ = this.rootUrl$.pipe(
-		switchMap(rootUrl =>
+		combineLatestWith(this.favoriteApplicationsCount$),
+		switchMap(([rootUrl, favoriteApplicationsCount]) =>
 			this.configService.fetchUrls(rootUrl).pipe(
-				tap(data => this.pollingService.initializeStateUpdate(data.pollingInterval, data.pollingNotificationsInterval, rootUrl)),
+				tap(data =>
+					this.pollingService.initializeStateUpdate(
+						data.pollingInterval,
+						data.pollingNotificationsInterval,
+						rootUrl,
+						favoriteApplicationsCount
+					)
+				),
 				tap(() => (this.timeoutService.rootUrl = rootUrl)),
 				tap(data => (this.timeoutService.logoutUrl = data.logout.url)),
 				tap(data => (this.redirectorService.logoutUrl = data.logout.url))
@@ -64,6 +74,10 @@ export class ObServiceNavigationService {
 
 	setPamsAppId(appId: string): void {
 		this.pamsAppId$.next(appId);
+	}
+
+	setFavoriteApplicationsCount(count: number): void {
+		this.favoriteApplicationsCount$.next(count);
 	}
 
 	setHandleLogout(handleLogout: boolean): void {

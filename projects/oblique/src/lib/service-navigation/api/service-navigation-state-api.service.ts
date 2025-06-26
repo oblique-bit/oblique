@@ -9,11 +9,11 @@ export class ObServiceNavigationStateApiService {
 
 	constructor(private readonly httpClient: HttpClient) {}
 
-	get(environmentUrl: string): Observable<ObIServiceNavigationState> {
+	get(environmentUrl: string, favoriteLimit: number): Observable<ObIServiceNavigationState> {
 		return this.httpClient
 			.get<
 				ObIServiceNavigationResponse<ObIServiceNavigationState>
-			>(environmentUrl + this.resourceUrl, {withCredentials: true, params: {lastUsedLimit: '4'}})
+			>(environmentUrl + this.resourceUrl, {withCredentials: true, params: {lastUsedLimit: 4, favoriteLimit}})
 			.pipe(map(res => res.data));
 	}
 }

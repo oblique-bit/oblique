@@ -12,7 +12,6 @@ import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
-import {ObLimitArraySizePipe} from '../shared/limit-array-size.pipe';
 import {ObServiceNavigationApplicationsHarness} from './service-navigation-applications.harness';
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
 import {ObDisableLinkDirective} from '../shared/disable-link/disable-link.directive';
@@ -47,7 +46,6 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				ObIsCurrentUrlPipe
 			],
 			declarations: [
-				ObLimitArraySizePipe,
 				ObServiceNavigationApplicationsComponent,
 				ObServiceNavigationPopoverSectionComponent,
 				ObServiceNavigationApplicationNameStatusPipe
@@ -71,17 +69,6 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 	it('should have "ob-service-navigation-applications" class', async () => {
 		const host = await harness.host();
 		expect(await host.hasClass('ob-service-navigation-applications')).toBe(true);
-	});
-
-	describe('maxFavoriteApplications', () => {
-		it('should be initialized to "8"', () => {
-			expect(component.maxFavoriteApplications).toBe(8);
-		});
-
-		it('should throw an error when negative', () => {
-			const change = {maxFavoriteApplications: {currentValue: -1, previousValue: 8, firstChange: true, isFirstChange: () => true}};
-			expect(() => component.ngOnChanges(change)).toThrowError('maxFavoriteApplications cannot be negative.');
-		});
 	});
 
 	describe('lastUsedApplications', () => {

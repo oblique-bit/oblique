@@ -29,16 +29,17 @@ describe('ObServiceNavigationStateApiService', () => {
 
 	describe('get', () => {
 		it('should return an Observable', () => {
-			expect(service.get('http:/rootUrl/') instanceof Observable).toBe(true);
+			expect(service.get('http:/rootUrl/', 1) instanceof Observable).toBe(true);
 		});
 
 		it('should receive that "data" part of the mockUrls', async () => {
-			await expect(firstValueFrom(service.get('http://rootUrl/'))).resolves.toEqual(mockData.data);
+			await expect(firstValueFrom(service.get('http://rootUrl/', 1))).resolves.toEqual(mockData.data);
 		});
 
 		describe('http.get', () => {
+			const favoriteLimit = 4;
 			beforeEach(() => {
-				service.get('http://rootUrl/').subscribe();
+				service.get('http://rootUrl/', favoriteLimit).subscribe();
 			});
 
 			it('should be called once', () => {
@@ -48,7 +49,7 @@ describe('ObServiceNavigationStateApiService', () => {
 			it('should be called with proper parameters', () => {
 				expect(httpClient.get).toHaveBeenCalledWith('http://rootUrl/api/widget/state', {
 					withCredentials: true,
-					params: {lastUsedLimit: '4'}
+					params: {lastUsedLimit: 4, favoriteLimit}
 				});
 			});
 		});
