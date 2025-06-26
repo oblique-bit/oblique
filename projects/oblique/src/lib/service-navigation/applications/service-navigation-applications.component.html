@@ -42,15 +42,10 @@
 					[href]="application.url"
 					[obDisableLink]="application.status !== 'online'"
 					[isExternalLink]="false"
+					[class.ob-offline]="application.status !== 'online'"
 					[matTooltip]="application | ObServiceNavigationApplicationNameStatus"
 				>
-					<img
-						*ngIf="application.status !== 'online'"
-						[src]="'data:image/png;base64,' + statusImage[application.status]"
-						class="ob-application-image ob-status-image"
-						alt=""
-					/>
-					<img class="ob-application-image" [src]="application.image" [class.ob-offline]="application.status !== 'online'" alt="" />
+					<img class="ob-application-image" [src]="application.image" alt="" />
 					<span class="ob-application-title">{{ application | ObServiceNavigationApplicationNameStatus }}</span>
 				</a>
 			</li>
@@ -78,29 +73,24 @@
 					[href]="application.url"
 					[obDisableLink]="application.status !== 'online'"
 					[isExternalLink]="false"
-					[matTooltip]="application | ObServiceNavigationApplicationNameStatus"
-				>
-					<img
-						*ngIf="application.status !== 'online'"
-						[src]="'data:image/png;base64,' + statusImage[application.status]"
-						class="ob-application-image ob-status-image"
-						alt=""
-					/>
-					<img class="ob-application-image" [src]="application.image" [class.ob-offline]="application.status !== 'online'" alt="" />
-					<span class="ob-application-title">{{ application | ObServiceNavigationApplicationNameStatus }}</span>
-				</a>
-			</li>
-		</ul>
-		<a
-			id="service-navigation-all-favorite-services"
-			mat-button
-			obButton="secondary"
-			class="ob-all-services"
-			obContent
-			[href]="applicationsUrl + '?favoritesOnly=true'"
-			[isExternalLink]="false"
-		>
-			{{ "i18n.oblique.service-navigation.applications.favorite.button" | translate }}
-		</a>
-	</ob-service-navigation-popover-section>
+					[class.ob-offline]="application.status !== 'online'"
+						[matTooltip]="application | ObServiceNavigationApplicationNameStatus"
+					>
+					<img class="ob-application-image" [src]="application.image" alt="" />
+						<span class="ob-application-title">{{ application | ObServiceNavigationApplicationNameStatus }}</span>
+					</a>
+				</li>
+			</ul>
+			<a
+				id="service-navigation-all-favorite-services"
+				mat-button
+				obButton="secondary"
+				class="ob-all-services"
+				obContent
+				[href]="applicationsUrl + '?favoritesOnly=true'"
+				[isExternalLink]="false"
+			>
+				{{ "i18n.oblique.service-navigation.applications.favorite.button" | translate }}
+			</a>
+		</ob-service-navigation-popover-section>
 </ng-template>

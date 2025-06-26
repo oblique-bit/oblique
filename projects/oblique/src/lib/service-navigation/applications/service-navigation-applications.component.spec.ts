@@ -158,6 +158,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.attributes.href).toBe('http://app-url1');
 							});
 
+							it('should not have "ob-offline" class', () => {
+								expect(link.classes['ob-offline']).toBe(undefined);
+							});
+
 							it('should have "isExternalLink" property set to "false"', () => {
 								expect(link.properties.isExternalLink).toBe(false);
 							});
@@ -243,12 +247,16 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.attributes['aria-disabled']).toBe('true');
 							});
 
+							it('should have "ob-offline" class', () => {
+								expect(link.classes['ob-offline']).toBe(true);
+							});
+
 							it('should have "isExternalLink" property set to "false"', () => {
 								expect(link.properties.isExternalLink).toBe(false);
 							});
 
-							it('should have 3 children', () => {
-								expect(link.children.length).toBe(3);
+							it('should have 2 children', () => {
+								expect(link.children.length).toBe(2);
 							});
 
 							describe('first child', () => {
@@ -265,37 +273,6 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(image.classes['ob-application-image']).toBe(true);
 								});
 
-								it('should have "ob-status-image" class', () => {
-									expect(image.classes['ob-status-image']).toBe(true);
-								});
-
-								it('should have "" as "alt" attribute', () => {
-									expect(image.attributes.alt).toBe('');
-								});
-
-								it('should have "applicationImage" as "src" attribute', () => {
-									expect(image.attributes.src.startsWith('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA')).toBe(true);
-								});
-							});
-
-							describe('second child', () => {
-								let image: DebugElement;
-								beforeEach(() => {
-									image = link.children[1];
-								});
-
-								it('should be a "img"', () => {
-									expect(image.name).toBe('img');
-								});
-
-								it('should have "ob-application-image" class', () => {
-									expect(image.classes['ob-application-image']).toBe(true);
-								});
-
-								it('should have "ob-offline" class', () => {
-									expect(image.classes['ob-offline']).toBe(true);
-								});
-
 								it('should have an empty "alt" attribute', () => {
 									expect(image.attributes.alt).toBe('');
 								});
@@ -305,10 +282,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								});
 							});
 
-							describe('third child', () => {
+							describe('second child', () => {
 								let span: DebugElement;
 								beforeEach(() => {
-									span = link.children[2];
+									span = link.children[1];
 								});
 
 								it('should be a "span"', () => {
@@ -456,6 +433,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.attributes.href).toBe('http://app-url1');
 							});
 
+							it('should not have "ob-offline" class', () => {
+								expect(link.classes['ob-offline']).toBe(undefined);
+							});
+
 							it('should have "isExternalLink" property set to "false"', () => {
 								expect(link.properties.isExternalLink).toBe(false);
 							});
@@ -541,12 +522,16 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.attributes['aria-disabled']).toBe('true');
 							});
 
+							it('should have "ob-offline" class', () => {
+								expect(link.classes['ob-offline']).toBe(true);
+							});
+
 							it('should have "isExternalLink" property set to "false"', () => {
 								expect(link.properties.isExternalLink).toBe(false);
 							});
 
-							it('should have 3 children', () => {
-								expect(link.children.length).toBe(3);
+							it('should have 2 children', () => {
+								expect(link.children.length).toBe(2);
 							});
 
 							describe('first child', () => {
@@ -563,50 +548,15 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(image.classes['ob-application-image']).toBe(true);
 								});
 
-								it('should have "ob-status-image" class', () => {
-									expect(image.classes['ob-status-image']).toBe(true);
-								});
-
 								it('should have "" as "alt" attribute', () => {
 									expect(image.attributes.alt).toBe('');
-								});
-
-								it('should have "applicationImage" as "src" attribute', () => {
-									expect(image.attributes.src.startsWith('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA')).toBe(true);
 								});
 							});
 
 							describe('second child', () => {
-								let image: DebugElement;
-								beforeEach(() => {
-									image = link.children[1];
-								});
-
-								it('should be a "img"', () => {
-									expect(image.name).toBe('img');
-								});
-
-								it('should have "ob-application-image" class', () => {
-									expect(image.classes['ob-application-image']).toBe(true);
-								});
-
-								it('should have "ob-offline" class', () => {
-									expect(image.classes['ob-offline']).toBe(true);
-								});
-
-								it('should have an empty "alt" attribute', () => {
-									expect(image.attributes.alt).toBe('');
-								});
-
-								it('should have "applicationImage" as "src" attribute', () => {
-									expect(image.attributes.src.startsWith('applicationImage2')).toBe(true);
-								});
-							});
-
-							describe('third child', () => {
 								let span: DebugElement;
 								beforeEach(() => {
-									span = link.children[2];
+									span = link.children[1];
 								});
 
 								it('should be a "span"', () => {
