@@ -65,7 +65,6 @@
   "i18n.oblique.master-layout.navigation.link.go-to-children": "Open \"{{parentLabel}}\" sub-menu",
   "i18n.oblique.master-layout.master-layout-navigation.scroll-left": "Scroll left",
   "i18n.oblique.master-layout.master-layout-navigation.scroll-right": "Scroll right",
-  "i18n.oblique.header.title": "Header area",
   "i18n.oblique.header.logo": "Logo Swiss Confederation, to home page",
   "i18n.oblique.header.toggle": "Toggle application header",
   "i18n.oblique.header.languages.title": "Language change",
