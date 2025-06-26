@@ -1,31 +1,41 @@
-@for (accordion of accordions(); track accordion; let i = $index) {
-	<div class="button-container" [id]="idPrefix() | id: [componentId, 'button-container', i]">
-		<button
-			type="button"
-			class="button"
-			[id]="idPrefix() | id: [componentId, 'button', i]"
-			(click)="updateCollapsedAccordionIds(accordion.id)"
-		>
-			<span
-				[id]="idPrefix() | id: [componentId, 'triangle', i]"
-				[ngClass]="'triangle-pointing-' + ((collapsedAccordionsRecord$ | async)![accordion.id] ? 'right' : 'down')"
-			></span>
-			{{ accordion.title }}
-		</button>
-	</div>
-	@for (link of accordion.links; track link) {
-		@if (!(collapsedAccordionsRecord$ | async)[accordion.id]) {
-			<a
-				class="link"
-				routerLinkActive="active"
-				ariaCurrentWhenActive="page"
-				[id]="idPrefix() | id: [componentId, 'link', i, $index]"
-				[routerLink]="['/' + accordion.title, link.slug]"
-				[queryParams]="urlParamVersion() ? { version: urlParamVersion() } : null"
-				(click)="handleLinkClicked()"
-			>
-				{{ link.title }}
-			</a>
+<nav>
+	<ul>
+		@for (accordion of accordions(); track accordion; let i = $index) {
+			<li>
+				<div class="button-container" [id]="idPrefix() | id: [componentId, 'button-container', i]">
+					<button
+						type="button"
+						class="button"
+						[id]="idPrefix() | id: [componentId, 'button', i]"
+						(click)="updateCollapsedAccordionIds(accordion.id)"
+					>
+						<span
+							[id]="idPrefix() | id: [componentId, 'triangle', i]"
+							[ngClass]="'triangle-pointing-' + ((collapsedAccordionsRecord$ | async)![accordion.id] ? 'right' : 'down')"
+						></span>
+						{{ accordion.title }}
+					</button>
+				</div>
+				@if (!(collapsedAccordionsRecord$ | async)[accordion.id]) {
+					<ul>
+						@for (link of accordion.links; track link) {
+							<li>
+								<a
+									class="link"
+									routerLinkActive="active"
+									ariaCurrentWhenActive="page"
+									[id]="idPrefix() | id: [componentId, 'link', i, $index]"
+									[routerLink]="['/' + accordion.title, link.slug]"
+									[queryParams]="urlParamVersion() ? { version: urlParamVersion() } : null"
+									(click)="handleLinkClicked()"
+								>
+									{{ link.title }}
+								</a>
+							</li>
+						}
+					</ul>
+				}
+			</li>
 		}
-	}
-}
+	</ul>
+</nav>
