@@ -89,6 +89,15 @@ button {
 		box-shadow 150ms ease 0s;
 }
 
+ul {
+	padding: 0;
+	margin: 0;
+
+	li {
+		list-style: none;
+	}
+}
+
 .link {
 	cursor: pointer;
 	display: flex;
