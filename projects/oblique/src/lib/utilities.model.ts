@@ -52,7 +52,7 @@ type ObConformityNonPartial = 'none' | 'full';
 
 interface ObIAccessibilityStatementConfigurationBase {
 	applicationName: string;
-	createdOn?: Date;
+	createdOn: Date;
 	reviewedOn?: Date;
 	applicationOperator: string;
 	contact: ObContact;
