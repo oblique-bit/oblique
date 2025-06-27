@@ -27,7 +27,7 @@ export class ObMasterLayoutConfig {
 	 */
 	scrollToTopDuration = 200;
 
-	showAccessibilityTitle = false;
+	showAccessibilityTitle = true;
 
 	/**
 	 * Locales of the application
