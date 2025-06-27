@@ -1,11 +1,6 @@
 {
   "ob": {
-    "p": {
-      "scaleBase": {
-        "$type": "number",
-        "$value": "{ob.s.scale.mult-responsive} * 1",
-        "$description": "This resizes the entire design system"
-      },
+    "g": {
       "scale": {
         "mult-static": {
           "$type": "number",
@@ -42,20 +37,6 @@
           "$type": "sizing",
           "$value": "1536",
           "$description": "Used for ultra-wide viewports (1536px and larger)."
-        }
-      }
-    },
-    "s": {
-      "scale": {
-        "mult-responsive": {
-          "value": {
-            "$type": "other",
-            "$value": "4"
-          },
-          "type": {
-            "$type": "other",
-            "$value": "number"
-          }
         }
       }
     }

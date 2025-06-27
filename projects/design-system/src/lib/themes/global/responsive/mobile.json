@@ -1,6 +1,6 @@
 {
   "ob": {
-    "s": {
+    "g": {
       "scale": {
         "mult-responsive": {
           "$type": "number",
@@ -9,7 +9,7 @@
       },
       "breakpoint": {
         "$type": "Sizing",
-        "$value": "{ob.p.breakpoint.0}",
+        "$value": "{ob.g.breakpoint.0}",
         "$description": "No media query condition; applies to all screen sizes."
       },
       "viewport": {

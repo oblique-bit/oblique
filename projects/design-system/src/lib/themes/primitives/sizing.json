@@ -160,7 +160,7 @@
         },
         "_base": {
           "$type": "sizing",
-          "$value": "{ob.p.scaleBase}",
+          "$value": "{ob.g.scale.mult-responsive}",
           "$description": "Acts as the foundational size token used to scale all derived sizing values, enabling consistent resizing for responsive modes."
         }
       }

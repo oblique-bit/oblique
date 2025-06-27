@@ -59,7 +59,7 @@
         },
         "_base": {
           "$type": "fontSizes",
-          "$value": "{ob.p.scale.mult-static}"
+          "$value": "{ob.g.scale.mult-static}"
         }
       },
       "letterSpacing-depr": {
@@ -293,7 +293,7 @@
         },
         "_base": {
           "$type": "lineHeights",
-          "$value": "{ob.p.scale.mult-static}"
+          "$value": "{ob.g.scale.mult-static}"
         }
       },
       "fontSizeRem": {

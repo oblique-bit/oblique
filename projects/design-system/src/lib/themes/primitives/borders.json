@@ -56,7 +56,7 @@
         },
         "_base": {
           "$type": "borderRadius",
-          "$value": "{ob.p.scaleBase}"
+          "$value": "{ob.g.scale.mult-responsive}"
         }
       },
       "borderWidth": {
@@ -95,7 +95,7 @@
         },
         "_base": {
           "$type": "borderWidth",
-          "$value": "{ob.p.scaleBase}"
+          "$value": "{ob.g.scale.mult-responsive}"
         }
       }
     }

@@ -1,6 +1,8 @@
 {
   "tokenSetOrder": [
-    "primitives/global",
+    "global/static",
+    "global/responsive/mobile",
+    "global/responsive/desktop",
     "primitives/colors",
     "primitives/borders",
     "primitives/position",
@@ -8,8 +10,6 @@
     "primitives/spacing",
     "primitives/typography",
     "primitives/z-index",
-    "semantics/responsive/desktop",
-    "semantics/responsive/mobile",
     "semantics/assets/themes/lightness/light",
     "semantics/assets/themes/lightness/dark",
     "semantics/borders",
