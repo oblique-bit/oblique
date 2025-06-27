@@ -1,0 +1,98 @@
+{
+  "ob": {
+    "c": {
+      "infobox": {
+        "color": {
+          "icon": {
+            "info": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.info.fg.contrast-medium}"
+            },
+            "error": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+            },
+            "warning": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+            },
+            "resolved": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.resolved.fg.contrast-medium}"
+            },
+            "fatal": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}"
+            }
+          },
+          "border": {
+            "info": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.info.fg.contrast-medium}"
+            },
+            "error": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+            },
+            "warning": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+            },
+            "success": {
+              "$type": "color",
+              "$value": "{ob.c.infobox.color.icon.resolved}"
+            },
+            "fatal": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.fatal.bg}"
+            }
+          },
+          "surface": {
+            "info": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.info.bg.contrast-medium}"
+            },
+            "error": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.critical.bg.contrast-high}"
+            },
+            "warning": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.attention.bg.contrast-medium}"
+            },
+            "success": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.resolved.bg.contrast-medium}"
+            },
+            "fatal": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.fatal.bg}"
+            }
+          },
+          "fg": {
+            "info": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast-highest}"
+            },
+            "error": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast-highest}"
+            },
+            "warning": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast-highest}"
+            },
+            "success": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast-highest}"
+            },
+            "fatal": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

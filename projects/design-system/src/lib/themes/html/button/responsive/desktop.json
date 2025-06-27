@@ -1,0 +1,40 @@
+{
+  "ob": {
+    "c": {
+      "button": {
+        "container": {
+          "spacing": {
+            "gap": {
+              "md": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.3xl}",
+                "$description": "Horizontal gap between buttons on larger screens."
+              },
+              "sm": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.xl}",
+                "$description": "Horizontal gap between buttons on larger screens."
+              }
+            }
+          }
+        },
+        "typography": {
+          "text-label": {
+            "font-size": {
+              "md": {
+                "$type": "fontSizes",
+                "$value": "{ob.s.fontSize.sm}",
+                "$description": "Font size for button text label on desktop."
+              },
+              "sm": {
+                "$type": "fontSizes",
+                "$value": "{ob.s.fontSize.xs}",
+                "$description": "Font size for small button text label on desktop."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

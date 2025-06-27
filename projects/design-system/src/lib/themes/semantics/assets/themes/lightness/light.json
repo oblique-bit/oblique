@@ -1,0 +1,12 @@
+{
+  "ob": {
+    "p": {
+      "assets": {
+        "logo": {
+          "$type": "asset",
+          "$value": "logo-on-light.svg"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "ob": {
+    "s": {
+      "scale": {
+        "mult-responsive": {
+          "$type": "number",
+          "$value": "3.5"
+        }
+      },
+      "breakpoint": {
+        "$type": "Sizing",
+        "$value": "{ob.p.breakpoint.0}",
+        "$description": "No media query condition; applies to all screen sizes."
+      },
+      "viewport": {
+        "$type": "text",
+        "$value": "mobile"
+      }
+    }
+  }
+}

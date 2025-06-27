@@ -1,0 +1,66 @@
+{
+  "ob": {
+    "c": {
+      "tooltip": {
+        "spacing": {
+          "padding-top": {
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.md}",
+            "$description": "Increased paddings around text boost its readability."
+          },
+          "padding-right": {
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.xl}",
+            "$description": "Increased paddings around text boost its readability."
+          },
+          "padding-bottom": {
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.md}",
+            "$description": "Increased paddings around text boost its readability."
+          },
+          "padding-left": {
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.xl}",
+            "$description": "Increased paddings around text boost its readability."
+          }
+        },
+        "color": {
+          "bg": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.bg.contrast-highest-inverse}",
+            "$description": "Inverted background color to stand out in a busy layout."
+          },
+          "fg": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
+            "$description": "Text color for the inverted background color."
+          }
+        },
+        "typography": {
+          "label": {
+            "$type": "typography",
+            "$value": "{ob.s.typography.type-scale.sm.strong}",
+            "$description": "Bold since it is 14px to reach AAA"
+          }
+        },
+        "border-radius": {
+          "$type": "borderRadius",
+          "$value": "{ob.s.radii.sm}",
+          "$description": "Applied radius SM for subtle aesthetics, distinct from buttons to avoid looking clickable."
+        },
+        "shadow": {
+          "$type": "boxShadow",
+          "$value": "{ob.s.shadow.2xl}",
+          "$description": "Default shadow for tooltips."
+        },
+        "animation": {
+          "speed": {
+            "$type": "number",
+            "$value": "200",
+            "$description": "Animation of the tooltip: 200ms on hover with ease-out effect from 0% to 100%opacity and back."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "ob": {
+    "s": {
+      "scale": {
+        "mult-responsive": {
+          "$type": "number",
+          "$value": "4"
+        }
+      },
+      "breakpoint": {
+        "$type": "Sizing",
+        "$value": "{ob.p.breakpoint.768}",
+        "$description": "Applies when the viewport is 768px and larger (desktop theme active). For media query."
+      },
+      "viewport": {
+        "$type": "text",
+        "$value": "desktop"
+      }
+    }
+  }
+}

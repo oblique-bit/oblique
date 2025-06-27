@@ -1,0 +1,179 @@
+{
+  "ob": {
+    "s": {
+      "shadow": {
+        "focus": {
+          "$type": "boxShadow",
+          "$value": {
+            "x": "0",
+            "y": "0",
+            "blur": "0",
+            "spread": "{ob.p.size.75}",
+            "color": "{ob.s.color.interaction.border.focus}",
+            "type": "dropShadow"
+          },
+          "$description": "When using the TAB key to navigate web elements, visually highlighting the focus with an outline (made with CSS box-shadow in our case) is key for accessibility and UX."
+        },
+        "sm": {
+          "$type": "boxShadow",
+          "$value": {
+            "x": "0",
+            "y": "1",
+            "blur": "2",
+            "spread": "0",
+            "color": "{ob.s.color.neutral.shadow.first}",
+            "type": "dropShadow"
+          },
+          "$description": "Potentially unused. Validation required with foreground."
+        },
+        "md": {
+          "$type": "boxShadow",
+          "$value": [
+            {
+              "color": "{ob.s.color.neutral.shadow.first}",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "1",
+              "blur": "2",
+              "spread": "0"
+            },
+            {
+              "color": "{ob.s.color.neutral.shadow.first}",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "1",
+              "blur": "5",
+              "spread": "0"
+            }
+          ],
+          "$description": "Potentially unused. Validation required with FG."
+        },
+        "default": {
+          "$type": "boxShadow",
+          "$value": [
+            {
+              "color": "{ob.s.color.neutral.shadow.first}",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "2",
+              "blur": "4",
+              "spread": "-1"
+            },
+            {
+              "color": "{ob.s.color.neutral.shadow.first}",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "4",
+              "blur": "10",
+              "spread": "-1"
+            }
+          ],
+          "$description": "Used for buttons, the overlay panel of the Select form element, and the components Notification and Popover."
+        },
+        "none": {
+          "$type": "boxShadow",
+          "$value": [
+            {
+              "color": "{ob.s.color.static.no-color}",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "0",
+              "blur": "0",
+              "spread": "0"
+            }
+          ],
+          "$description": "Used to disabled a shadow for example on button state that need no shadow."
+        },
+        "lg": {
+          "$type": "boxShadow",
+          "$value": [
+            {
+              "color": "{ob.s.color.neutral.shadow.first}",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "2",
+              "blur": "6",
+              "spread": "-1"
+            },
+            {
+              "color": "{ob.s.color.neutral.shadow.first}",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "5",
+              "blur": "20",
+              "spread": "-2"
+            }
+          ],
+          "$description": "Employ for modal windows (component Dialog) and the enabled state of the component Card."
+        },
+        "xl": {
+          "$type": "boxShadow",
+          "$value": [
+            {
+              "color": "{ob.s.color.neutral.shadow.first}",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "6",
+              "blur": "10",
+              "spread": "-5"
+            },
+            {
+              "color": "{ob.s.color.neutral.shadow.first}",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "15",
+              "blur": "25",
+              "spread": "-3"
+            }
+          ],
+          "$description": "User for the hover state of the component Card and the sub-navihation panel of the main navigation (desktop only)."
+        },
+        "2xl": {
+          "$type": "boxShadow",
+          "$value": [
+            {
+              "color": "{ob.s.color.neutral.shadow.first}",
+              "type": "dropShadow",
+              "x": "1",
+              "y": "10",
+              "blur": "70",
+              "spread": "-8"
+            },
+            {
+              "color": "{ob.s.color.neutral.shadow.first}",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "10",
+              "blur": "20",
+              "spread": "0"
+            }
+          ]
+        },
+        "main-nav": {
+          "active": {
+            "$type": "boxShadow",
+            "$value": [
+              {
+                "color": "{ob.s.color.neutral.shadow.first}21",
+                "type": "dropShadow",
+                "x": "1",
+                "y": "10",
+                "blur": "70",
+                "spread": "-8"
+              },
+              {
+                "color": "{ob.s.color.neutral.shadow.first}0f",
+                "type": "dropShadow",
+                "x": "0",
+                "y": "10",
+                "blur": "20",
+                "spread": "0"
+              }
+            ],
+            "$description": "Use for the active item of the main navigation. This token has probabl to be moved to components tokens later, since it is used only in the main nav active. Validate w FG"
+          }
+        }
+      }
+    }
+  }
+}

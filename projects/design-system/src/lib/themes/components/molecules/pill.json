@@ -1,0 +1,500 @@
+{
+  "ob": {
+    "c": {
+      "pill": {
+        "spacing": {
+          "padding": {
+            "vertical": {
+              "sm": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.xs}",
+                "$description": "Top and bottom padding – for small size pills."
+              },
+              "md": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.sm}",
+                "$description": "Top and bottom padding  – for medium size pills."
+              },
+              "lg": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.lg}",
+                "$description": "Top and bottom padding  – for large size pills."
+              }
+            },
+            "horizontal": {
+              "sm": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.lg}",
+                "$description": "Left and right padding – for small size pills."
+              },
+              "md": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.xl}",
+                "$description": "Left and right padding  – for medium size pills."
+              },
+              "lg": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.3xl}",
+                "$description": "Left and right padding – for large size pills."
+              }
+            }
+          },
+          "gap": {
+            "sm": {
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.sm}",
+              "$description": "Horizontal gap between icon and text label – for small size pills."
+            },
+            "md": {
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.md}",
+              "$description": "Horizontal gap between icon and text label  – for medium size pills."
+            },
+            "lg": {
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.lg}",
+              "$description": "Horizontal gap between icon and text label – for large size pills"
+            }
+          }
+        },
+        "border-radius": {
+          "default": {
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.round}",
+            "$description": "Standard pills in Oblique."
+          }
+        },
+        "icon": {
+          "size": {
+            "sm": {
+              "$type": "sizing",
+              "$value": "{ob.s.icon.size.xs}"
+            },
+            "md": {
+              "$type": "sizing",
+              "$value": "{ob.s.icon.size.xs}"
+            },
+            "lg": {
+              "$type": "sizing",
+              "$value": "{ob.s.icon.size.sm}"
+            }
+          }
+        },
+        "surface": {
+          "min-height": {
+            "sm": {
+              "$type": "sizing",
+              "$value": "{ob.p.size.250}"
+            },
+            "md": {
+              "$type": "sizing",
+              "$value": "{ob.p.size.300}"
+            },
+            "lg": {
+              "$type": "sizing",
+              "$value": "36"
+            }
+          }
+        },
+        "typography": {
+          "style": {
+            "sm": {
+              "$type": "typography",
+              "$value": "{ob.s.typography.type-scale.xs.normal}"
+            },
+            "md": {
+              "$type": "typography",
+              "$value": "{ob.s.typography.type-scale.md.normal}"
+            },
+            "lg": {
+              "$type": "typography",
+              "$value": "{ob.s.typography.type-scale.md.normal}"
+            }
+          }
+        },
+        "color": {
+          "closed": {
+            "fg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.fg.contrast-medium}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.fg.contrast-medium}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.fg.contrast-medium}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.fg.contrast-high}"
+              }
+            },
+            "bg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast-medium}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast-medium}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast-medium}"
+              }
+            }
+          },
+          "resolved": {
+            "fg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.resolved.fg.contrast-high}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.resolved.fg.contrast-high}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.resolved.fg.contrast-high}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.resolved.fg.contrast-high}"
+              }
+            },
+            "bg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.resolved.bg.contrast-medium}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.resolved.bg.contrast-medium}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.resolved.bg.contrast-low}"
+              }
+            }
+          },
+          "attention": {
+            "fg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+              }
+            },
+            "bg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.attention.bg.contrast-medium}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.attention.bg.contrast-medium}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.attention.bg.contrast-low}"
+              }
+            }
+          },
+          "pending": {
+            "fg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.pending.fg.contrast-high}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.pending.fg.contrast-high}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.pending.fg.contrast-high}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.pending.fg.contrast-high}"
+              }
+            },
+            "bg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.pending.bg.contrast-medium}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.pending.bg.contrast-medium}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.pending.bg.contrast-low}"
+              }
+            }
+          },
+          "confirmed": {
+            "fg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.confirmed.fg.contrast-high}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.confirmed.fg.contrast-high}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.confirmed.fg.contrast-high}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.confirmed.fg.contrast-high}"
+              }
+            },
+            "bg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.confirmed.bg.contrast-medium}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.confirmed.bg.contrast-medium}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.confirmed.bg.contrast-low}"
+              }
+            }
+          },
+          "progress": {
+            "fg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.progress.fg.contrast-high}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.progress.fg.contrast-high}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.progress.fg.contrast-high}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.progress.fg.contrast-high}"
+              }
+            },
+            "bg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.progress.bg.contrast-medium}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.progress.bg.contrast-medium}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.progress.bg.contrast-low}"
+              }
+            }
+          },
+          "scheduled": {
+            "fg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.scheduled.fg.contrast-high}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.scheduled.fg.contrast-high}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.scheduled.fg.contrast-high}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.scheduled.fg.contrast-high}"
+              }
+            },
+            "bg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.scheduled.bg.contrast-medium}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.scheduled.bg.contrast-medium}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.scheduled.bg.contrast-low}"
+              }
+            }
+          },
+          "info": {
+            "fg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.info.fg.contrast-high}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.info.fg.contrast-high}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.info.fg.contrast-high}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.info.fg.contrast-high}"
+              }
+            },
+            "bg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.info.bg.contrast-medium}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.info.bg.contrast-medium}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.info.bg.contrast-low}"
+              }
+            }
+          },
+          "waiting": {
+            "fg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.waiting.fg.contrast-high}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.waiting.fg.contrast-high}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.waiting.fg.contrast-high}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.waiting.fg.contrast-high}"
+              }
+            },
+            "bg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.waiting.bg.contrast-medium}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.waiting.bg.contrast-high}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.waiting.bg.contrast-low}"
+              }
+            }
+          },
+          "critical": {
+            "fg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+              }
+            },
+            "bg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.critical.bg.contrast-medium}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.critical.bg.contrast-high}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.status.critical.bg.contrast-low}"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
