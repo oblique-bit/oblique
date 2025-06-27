@@ -80,7 +80,7 @@
         },
         "_base": {
           "$type": "spacing",
-          "$value": "{ob.p.scaleBase}"
+          "$value": "{ob.s.scale.mult-responsive}"
         }
       }
     }

@@ -44,6 +44,20 @@
           "$description": "Used for ultra-wide viewports (1536px and larger)."
         }
       }
+    },
+    "s": {
+      "scale": {
+        "mult-responsive": {
+          "value": {
+            "$type": "other",
+            "$value": "4"
+          },
+          "type": {
+            "$type": "other",
+            "$value": "number"
+          }
+        }
+      }
     }
   }
 }

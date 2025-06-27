@@ -108,20 +108,6 @@
             }
           }
         },
-        "string": {
-          "close-button-size-figma": {
-            "$type": "String",
-            "$value": "lg",
-            "$description": "Ignore this in code. Requireed for Figma only to map the default size in Infobox. For code use the sizing token type."
-          },
-          "buttons-container": {
-            "buttons-order-figma": {
-              "$type": "String",
-              "$value": "primary-last",
-              "$description": "The primary button in an Infobox on Desktop should be positioned on the right side of a right-aligned button group to ensure it appears as the last element, facilitating intuitive navigation and decision-making."
-            }
-          }
-        },
         "border-width": {
           "left": {
             "$type": "borderWidth",
@@ -153,6 +139,11 @@
               "$value": "{ob.s.spacing.none}"
             }
           }
+        },
+        "buttons-order-figma": {
+          "$type": "text",
+          "$value": "primary-last",
+          "$description": "The primary button in an Infobox on Desktop should be positioned on the right side of a right-aligned button group to ensure it appears as the last element, facilitating intuitive navigation and decision-making."
         }
       }
     }
