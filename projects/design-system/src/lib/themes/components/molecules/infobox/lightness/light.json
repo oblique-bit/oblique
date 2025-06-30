@@ -23,6 +23,10 @@
             "fatal": {
               "$type": "color",
               "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}"
+            },
+            "fatal-test": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.critical.fg.contrast-high}"
             }
           },
           "border": {
@@ -43,6 +47,10 @@
               "$value": "{ob.c.infobox.color.icon.resolved}"
             },
             "fatal": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.fatal.bg}"
+            },
+            "fatal-test": {
               "$type": "color",
               "$value": "{ob.s.color.status.fatal.bg}"
             }
@@ -67,6 +75,10 @@
             "fatal": {
               "$type": "color",
               "$value": "{ob.s.color.status.fatal.bg}"
+            },
+            "fatal-test": {
+              "$type": "color",
+              "$value": "{ob.s.color.status.critical.bg.contrast-high}"
             }
           },
           "fg": {
@@ -89,6 +101,10 @@
             "fatal": {
               "$type": "color",
               "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}"
+            },
+            "fatal-test": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast-highest}"
             }
           }
         }
