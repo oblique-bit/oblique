@@ -7,7 +7,7 @@
           "$value": "4"
         }
       },
-      "breakpoints": {
+      "breakpoint": {
         "$type": "Sizing",
         "$value": "{ob.g.breakpoints.768}",
         "$description": "Applies when the viewport is 768px and larger (desktop theme active). For media query."

@@ -7,7 +7,7 @@
           "$value": "3.5"
         }
       },
-      "breakpoints": {
+      "breakpoint": {
         "$type": "Sizing",
         "$value": "{ob.g.breakpoints.0}",
         "$description": "No media query condition; applies to all screen sizes."
