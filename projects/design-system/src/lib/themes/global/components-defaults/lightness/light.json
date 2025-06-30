@@ -39,6 +39,14 @@
             "value": "{ob.g.color.theme.lightness.light}",
             "type": "other"
           }
+        },
+        "fatal": {
+          "default-theme": {
+            "lightness": {
+              "value": "{ob.g.color.theme.lightness.dark}",
+              "type": "other"
+            }
+          }
         }
       },
       "pill": {
