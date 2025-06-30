@@ -127,23 +127,28 @@
       "font-weight": {
         "0": {
           "$type": "fontWeights",
-          "$value": "Regular"
+          "$value": "400",
+          "$description": "Regular 400\n"
         },
         "100": {
           "$type": "fontWeights",
-          "$value": "Medium"
+          "$value": "500",
+          "$description": "Medium 500\n"
         },
         "200": {
           "$type": "fontWeights",
-          "$value": "SemiBold"
+          "$value": "600",
+          "$description": "SemiBold 600\n"
         },
         "300": {
           "$type": "fontWeights",
-          "$value": "Bold"
+          "$value": "700",
+          "$description": "Bold 700\n"
         },
         "400": {
           "$type": "fontWeights",
-          "$value": "ExtraBold"
+          "$value": "800",
+          "$description": "ExtraBold 800\n"
         }
       },
       "paragraphSpacing": {
