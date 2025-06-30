@@ -9,6 +9,7 @@ import {ObServiceNavigationApplicationsComponent} from './service-navigation-app
 export class ObServiceNavigationApplicationsHarness extends ContentContainerComponentHarness {
 	static hostSelector = 'ob-service-navigation-applications';
 	static allFavoriteLinkSelector = '#service-navigation-all-favorite-services';
+	private static readonly popoverSelector = '#ob-service-navigation-applications-popover-content';
 
 	public async getTrigger(): Promise<TestElement> {
 		return this.locatorForOptional('button', 'a')();
@@ -17,6 +18,10 @@ export class ObServiceNavigationApplicationsHarness extends ContentContainerComp
 	public async getTriggerScreenReaderText(): Promise<string> {
 		const element = await this.locatorForOptional('button .ob-screen-reader-only', 'a .ob-screen-reader-only')();
 		return element.text();
+	}
+
+	public async getPopover(): Promise<TestElement> {
+		return this.locatorForOptional(ObServiceNavigationApplicationsHarness.popoverSelector)();
 	}
 
 	public getTooltipHarness(fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>): Promise<MatTooltipHarness> {

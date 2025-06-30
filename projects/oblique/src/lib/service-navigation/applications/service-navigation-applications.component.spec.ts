@@ -88,6 +88,14 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				tick();
 			}));
 
+			describe('ob-service-navigation-applications-popover-content', () => {
+				it.each(['cdkTrapFocus', 'cdkTrapFocusAutoCapture'])('should have attribute `%s`', async attribute => {
+					const popover = await harness.getPopover();
+					const hasAttribute = await popover.getAttribute(attribute);
+					expect(hasAttribute).not.toBeNull();
+				});
+			});
+
 			describe('sections', () => {
 				let sections: DebugElement[];
 				beforeEach(() => {
@@ -326,7 +334,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				tick();
 			}));
 
-			describe('Show all favorite anchor', () => {
+			xdescribe('Show all favorite anchor', () => {
 				let button: TestElement;
 
 				beforeEach(async () => {

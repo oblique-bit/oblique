@@ -30,53 +30,54 @@
 </ng-template>
 
 <ng-template #popoverContent>
-	<h3 class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.button.label" | translate }}</h3>
-	<ob-service-navigation-popover-section
-		*ngIf="lastUsedApplications?.length > 0"
-		header="i18n.oblique.service-navigation.applications.last-used.header"
-	>
-		<ul class="ob-applications" obContent>
-			<li *ngFor="let application of lastUsedApplications">
-				<a
-					class="ob-application"
-					[href]="application.url"
-					[obDisableLink]="application.status !== 'online'"
-					[isExternalLink]="false"
-					[class.ob-offline]="application.status !== 'online'"
-					[matTooltip]="application | ObServiceNavigationApplicationNameStatus"
-				>
-					<img class="ob-application-image" [src]="application.image" alt="" />
-					<span class="ob-application-title">{{ application | ObServiceNavigationApplicationNameStatus }}</span>
-				</a>
-			</li>
-		</ul>
-		<a
-			id="service-navigation-all-services"
-			mat-button
-			obButton="secondary"
-			class="ob-all-services"
-			obContent
-			[href]="applicationsUrl"
-			[isExternalLink]="false"
+	<div id="ob-service-navigation-applications-popover-content" cdkTrapFocus cdkTrapFocusAutoCapture="true">
+		<h3 class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.button.label" | translate }}</h3>
+		<ob-service-navigation-popover-section
+			*ngIf="lastUsedApplications?.length > 0"
+			header="i18n.oblique.service-navigation.applications.last-used.header"
 		>
-			{{ "i18n.oblique.service-navigation.applications.link.label" | translate }}
-		</a>
-	</ob-service-navigation-popover-section>
-	<ob-service-navigation-popover-section
-		*ngIf="favoriteApplications?.length > 0"
-		header="i18n.oblique.service-navigation.applications.favorite.header"
-	>
-		<ul class="ob-applications" obContent>
-			<li *ngFor="let application of favoriteApplications">
-				<a
-					class="ob-application"
-					[href]="application.url"
-					[obDisableLink]="application.status !== 'online'"
-					[isExternalLink]="false"
-					[class.ob-offline]="application.status !== 'online'"
+			<ul class="ob-applications" obContent>
+				<li *ngFor="let application of lastUsedApplications">
+					<a
+						class="ob-application"
+						[href]="application.url"
+						[obDisableLink]="application.status !== 'online'"
+						[isExternalLink]="false"
+						[class.ob-offline]="application.status !== 'online'"
 						[matTooltip]="application | ObServiceNavigationApplicationNameStatus"
 					>
-					<img class="ob-application-image" [src]="application.image" alt="" />
+						<img class="ob-application-image" [src]="application.image" alt="" />
+						<span class="ob-application-title">{{ application | ObServiceNavigationApplicationNameStatus }}</span>
+					</a>
+				</li>
+			</ul>
+			<a
+				id="service-navigation-all-services"
+				mat-button
+				obButton="secondary"
+				class="ob-all-services"
+				obContent
+				[href]="applicationsUrl"
+				[isExternalLink]="false"
+				>{{ "i18n.oblique.service-navigation.applications.link.label" | translate }}
+			</a>
+		</ob-service-navigation-popover-section>
+
+		<ob-service-navigation-popover-section
+			*ngIf="favoriteApplications?.length > 0"
+			header="i18n.oblique.service-navigation.applications.favorite.header"
+		>
+			<ul class="ob-applications" obContent>
+				<li *ngFor="let application of favoriteApplications">
+					<a
+						class="ob-application"
+						[href]="application.url"
+						[obDisableLink]="application.status !== 'online'"
+						[isExternalLink]="false"
+						[class.ob-offline]="application.status !== 'online'"
+						[matTooltip]="application | ObServiceNavigationApplicationNameStatus"
+					>
+						<img class="ob-application-image" [src]="application.image" alt="" />
 						<span class="ob-application-title">{{ application | ObServiceNavigationApplicationNameStatus }}</span>
 					</a>
 				</li>
@@ -93,4 +94,5 @@
 				{{ "i18n.oblique.service-navigation.applications.favorite.button" | translate }}
 			</a>
 		</ob-service-navigation-popover-section>
+	</div>
 </ng-template>
