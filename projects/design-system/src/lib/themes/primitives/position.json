@@ -3,12 +3,12 @@
     "p": {
       "position": {
         "top": {
-          "$type": "spacing",
-          "$value": "0"
+          "value": "0",
+          "type": "spacing"
         },
         "right": {
-          "$type": "spacing",
-          "$value": "0"
+          "value": "0",
+          "type": "spacing"
         }
       }
     }

@@ -3,8 +3,8 @@
     "p": {
       "assets": {
         "logo": {
-          "$type": "asset",
-          "$value": "logo-on-dark.svg"
+          "value": "logo-on-dark.svg",
+          "type": "asset"
         }
       }
     }

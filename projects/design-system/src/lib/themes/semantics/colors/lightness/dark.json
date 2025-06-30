@@ -5,90 +5,90 @@
         "neutral": {
           "bg": {
             "contrast-highest": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.800}",
-              "$description": "Default dark surface color"
+              "value": "{ob.p.colors.cobalt.800}",
+              "description": "Default dark surface color",
+              "type": "color"
             },
             "contrast-high": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.700}",
-              "$description": "Darker surface color"
+              "value": "{ob.p.colors.cobalt.700}",
+              "description": "Darker surface color",
+              "type": "color"
             },
             "contrast-medium": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.600}",
-              "$description": "Darker surface color"
+              "value": "{ob.p.colors.cobalt.600}",
+              "description": "Darker surface color",
+              "type": "color"
             },
             "contrast-low": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.400}",
-              "$description": "Darker surface color"
+              "value": "{ob.p.colors.cobalt.400}",
+              "description": "Darker surface color",
+              "type": "color"
             },
             "contrast-highest-inverse": {
-              "$type": "color",
-              "$value": "{ob.p.colors.basic.white}",
-              "$description": "Default dark surface color"
+              "value": "{ob.p.colors.basic.white}",
+              "description": "Default dark surface color",
+              "type": "color"
             },
             "contrast-high-inverse": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.50}",
-              "$description": "Darker surface color"
+              "value": "{ob.p.colors.cobalt.50}",
+              "description": "Darker surface color",
+              "type": "color"
             },
             "contrast-medium-inverse": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.100}",
-              "$description": "Darker surface color"
+              "value": "{ob.p.colors.cobalt.100}",
+              "description": "Darker surface color",
+              "type": "color"
             },
             "contrast-low-inverse": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.200}",
-              "$description": "Darker surface color"
+              "value": "{ob.p.colors.cobalt.200}",
+              "description": "Darker surface color",
+              "type": "color"
             }
           },
           "fg": {
             "contrast-lowest": {
-              "$type": "color",
-              "$value": "{ob.p.colors.white-alpha.400}",
-              "$description": "For disabled"
+              "value": "{ob.p.colors.white-alpha.400}",
+              "description": "For disabled",
+              "type": "color"
             },
             "contrast-low": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.200}"
+              "value": "{ob.p.colors.cobalt.200}",
+              "type": "color"
             },
             "contrast-medium": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.100}",
-              "$description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
+              "value": "{ob.p.colors.cobalt.100}",
+              "description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text.",
+              "type": "color"
             },
             "contrast-high": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.50}"
+              "value": "{ob.p.colors.cobalt.50}",
+              "type": "color"
             },
             "contrast-highest": {
-              "$type": "color",
-              "$value": "{ob.p.colors.basic.white}"
+              "value": "{ob.p.colors.basic.white}",
+              "type": "color"
             },
             "contrast-lowest-inverse": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt-alpha.400}",
-              "$description": "For disabled"
+              "value": "{ob.p.colors.cobalt-alpha.400}",
+              "description": "For disabled",
+              "type": "color"
             },
             "contrast-low-inverse": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.600}"
+              "value": "{ob.p.colors.cobalt.600}",
+              "type": "color"
             },
             "contrast-medium-inverse": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.700}",
-              "$description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
+              "value": "{ob.p.colors.cobalt.700}",
+              "description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text.",
+              "type": "color"
             },
             "contrast-high-inverse": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.800}"
+              "value": "{ob.p.colors.cobalt.800}",
+              "type": "color"
             },
             "contrast-highest-inverse": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.900}"
+              "value": "{ob.p.colors.cobalt.900}",
+              "type": "color"
             }
           },
           "border": {
@@ -102,8 +102,8 @@
                   }
                 }
               },
-              "$type": "color",
-              "$value": "{ob.p.colors.basic.white}"
+              "value": "{ob.p.colors.basic.white}",
+              "type": "color"
             },
             "default": {
               "$extensions": {
@@ -115,22 +115,22 @@
                   }
                 }
               },
-              "$type": "color",
-              "$value": "{ob.p.colors.basic.white}"
+              "value": "{ob.p.colors.basic.white}",
+              "type": "color"
             },
             "strong": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt.300}"
+              "value": "{ob.p.colors.cobalt.300}",
+              "type": "color"
             }
           },
           "shadow": {
             "first": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt-alpha.50}"
+              "value": "{ob.p.colors.cobalt-alpha.50}",
+              "type": "color"
             },
             "second": {
-              "$type": "color",
-              "$value": "{ob.p.colors.cobalt-alpha.100}"
+              "value": "{ob.p.colors.cobalt-alpha.100}",
+              "type": "color"
             }
           }
         },
@@ -138,475 +138,475 @@
           "info": {
             "bg": {
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.blue.900}"
+                "value": "{ob.p.colors.blue.900}",
+                "type": "color"
               },
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.blue.800}"
+                "value": "{ob.p.colors.blue.800}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.blue.700}"
+                "value": "{ob.p.colors.blue.700}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.blue.200}"
+                "value": "{ob.p.colors.blue.200}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.blue.300}"
+                "value": "{ob.p.colors.blue.300}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.blue.400}"
+                "value": "{ob.p.colors.blue.400}",
+                "type": "color"
               }
             },
             "fg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.blue.200}"
+                "value": "{ob.p.colors.blue.200}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.blue.300}"
+                "value": "{ob.p.colors.blue.300}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.blue.400}"
+                "value": "{ob.p.colors.blue.400}",
+                "type": "color"
               }
             }
           },
           "resolved": {
             "bg": {
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.green.700}",
-                "$description": "Paring for icon only (e.g. Alert) or a larger bold font weight. Otherwise AX critical."
+                "value": "{ob.p.colors.green.700}",
+                "description": "Paring for icon only (e.g. Alert) or a larger bold font weight. Otherwise AX critical.",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.green.800}",
-                "$description": "Paring for icon only (e.g. Alert) or a larger bold font weight. Otherwise AX critical."
+                "value": "{ob.p.colors.green.800}",
+                "description": "Paring for icon only (e.g. Alert) or a larger bold font weight. Otherwise AX critical.",
+                "type": "color"
               },
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.green.900}",
-                "$description": "Paring for icon only (e.g. Alert) or a larger bold font weight. Otherwise AX critical."
+                "value": "{ob.p.colors.green.900}",
+                "description": "Paring for icon only (e.g. Alert) or a larger bold font weight. Otherwise AX critical.",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.green.200}"
+                "value": "{ob.p.colors.green.200}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.green.300}"
+                "value": "{ob.p.colors.green.300}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.green.400}"
+                "value": "{ob.p.colors.green.400}",
+                "type": "color"
               }
             },
             "fg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.green.200}"
+                "value": "{ob.p.colors.green.200}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.green.300}"
+                "value": "{ob.p.colors.green.300}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.green.400}"
+                "value": "{ob.p.colors.green.400}",
+                "type": "color"
               }
             }
           },
           "fatal": {
             "bg": {
-              "$type": "color",
-              "$value": "{ob.p.colors.red.100}"
+              "value": "{ob.p.colors.red.100}",
+              "type": "color"
             },
             "fg": {
-              "$type": "color",
-              "$value": "{ob.p.colors.red.900}"
+              "value": "{ob.p.colors.red.900}",
+              "type": "color"
             }
           },
           "attention": {
             "bg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.orange.700}"
+                "value": "{ob.p.colors.orange.700}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.orange.800}"
+                "value": "{ob.p.colors.orange.800}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.orange.900}"
+                "value": "{ob.p.colors.orange.900}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.orange.200}"
+                "value": "{ob.p.colors.orange.200}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.orange.300}"
+                "value": "{ob.p.colors.orange.300}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.orange.400}"
+                "value": "{ob.p.colors.orange.400}",
+                "type": "color"
               }
             },
             "fg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.orange.200}"
+                "value": "{ob.p.colors.orange.200}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.orange.300}"
+                "value": "{ob.p.colors.orange.300}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.orange.400}"
+                "value": "{ob.p.colors.orange.400}",
+                "type": "color"
               }
             }
           },
           "pending": {
             "bg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.yellow.700}"
+                "value": "{ob.p.colors.yellow.700}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.yellow.800}"
+                "value": "{ob.p.colors.yellow.800}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.yellow.900}"
+                "value": "{ob.p.colors.yellow.900}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.yellow.200}"
+                "value": "{ob.p.colors.yellow.200}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.yellow.300}"
+                "value": "{ob.p.colors.yellow.300}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.yellow.400}"
+                "value": "{ob.p.colors.yellow.400}",
+                "type": "color"
               }
             },
             "fg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.orange.200}"
+                "value": "{ob.p.colors.orange.200}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.yellow.300}"
+                "value": "{ob.p.colors.yellow.300}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.yellow.400}"
+                "value": "{ob.p.colors.yellow.400}",
+                "type": "color"
               }
             }
           },
           "confirmed": {
             "bg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.teal.700}"
+                "value": "{ob.p.colors.teal.700}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.teal.800}"
+                "value": "{ob.p.colors.teal.800}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.teal.900}"
+                "value": "{ob.p.colors.teal.900}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.teal.200}"
+                "value": "{ob.p.colors.teal.200}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.teal.300}"
+                "value": "{ob.p.colors.teal.300}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.teal.400}"
+                "value": "{ob.p.colors.teal.400}",
+                "type": "color"
               }
             },
             "fg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.teal.200}"
+                "value": "{ob.p.colors.teal.200}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.teal.300}"
+                "value": "{ob.p.colors.teal.300}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.teal.400}"
+                "value": "{ob.p.colors.teal.400}",
+                "type": "color"
               }
             }
           },
           "progress": {
             "bg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.700}"
+                "value": "{ob.p.colors.indigo.700}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.800}"
+                "value": "{ob.p.colors.indigo.800}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.900}"
+                "value": "{ob.p.colors.indigo.900}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.200}"
+                "value": "{ob.p.colors.indigo.200}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.300}"
+                "value": "{ob.p.colors.indigo.300}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.400}"
+                "value": "{ob.p.colors.indigo.400}",
+                "type": "color"
               }
             },
             "fg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.200}"
+                "value": "{ob.p.colors.indigo.200}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.300}"
+                "value": "{ob.p.colors.indigo.300}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.400}"
+                "value": "{ob.p.colors.indigo.400}",
+                "type": "color"
               }
             }
           },
           "scheduled": {
             "bg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.pink.700}"
+                "value": "{ob.p.colors.pink.700}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.pink.800}"
+                "value": "{ob.p.colors.pink.800}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.pink.900}"
+                "value": "{ob.p.colors.pink.900}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.pink.200}"
+                "value": "{ob.p.colors.pink.200}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.pink.300}"
+                "value": "{ob.p.colors.pink.300}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.pink.400}"
+                "value": "{ob.p.colors.pink.400}",
+                "type": "color"
               }
             },
             "fg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.pink.200}"
+                "value": "{ob.p.colors.pink.200}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.pink.300}"
+                "value": "{ob.p.colors.pink.300}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.pink.400}"
+                "value": "{ob.p.colors.pink.400}",
+                "type": "color"
               }
             }
           },
           "waiting": {
             "bg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.purple.700}"
+                "value": "{ob.p.colors.purple.700}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.purple.800}"
+                "value": "{ob.p.colors.purple.800}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.purple.900}"
+                "value": "{ob.p.colors.purple.900}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.purple.200}"
+                "value": "{ob.p.colors.purple.200}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.purple.300}"
+                "value": "{ob.p.colors.purple.300}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.purple.400}"
+                "value": "{ob.p.colors.purple.400}",
+                "type": "color"
               }
             },
             "fg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.purple.200}"
+                "value": "{ob.p.colors.purple.200}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.purple.300}"
+                "value": "{ob.p.colors.purple.300}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.purple.400}"
+                "value": "{ob.p.colors.purple.400}",
+                "type": "color"
               }
             }
           },
           "critical": {
             "bg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.red.700}"
+                "value": "{ob.p.colors.red.700}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.red.800}"
+                "value": "{ob.p.colors.red.800}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.red.900}"
+                "value": "{ob.p.colors.red.900}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.red.200}"
+                "value": "{ob.p.colors.red.200}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.red.300}"
+                "value": "{ob.p.colors.red.300}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.red.400}"
+                "value": "{ob.p.colors.red.400}",
+                "type": "color"
               }
             },
             "fg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.red.200}"
+                "value": "{ob.p.colors.red.200}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.red.300}"
+                "value": "{ob.p.colors.red.300}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.red.400}"
+                "value": "{ob.p.colors.red.400}",
+                "type": "color"
               }
             }
           },
           "closed": {
             "bg": {
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.900}"
+                "value": "{ob.p.colors.cobalt.900}",
+                "type": "color"
               },
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.800}"
+                "value": "{ob.p.colors.cobalt.800}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.700}"
+                "value": "{ob.p.colors.cobalt.700}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.200}"
+                "value": "{ob.p.colors.cobalt.200}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.300}"
+                "value": "{ob.p.colors.cobalt.300}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.400}"
+                "value": "{ob.p.colors.cobalt.400}",
+                "type": "color"
               }
             },
             "fg": {
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.200}"
+                "value": "{ob.p.colors.cobalt.200}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.100}"
+                "value": "{ob.p.colors.cobalt.100}",
+                "type": "color"
               },
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.50}"
+                "value": "{ob.p.colors.cobalt.50}",
+                "type": "color"
               }
             }
           },
           "disabled": {
             "bg": {
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.900}"
+                "value": "{ob.p.colors.cobalt.900}",
+                "type": "color"
               },
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.800}"
+                "value": "{ob.p.colors.cobalt.800}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.700}"
+                "value": "{ob.p.colors.cobalt.700}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.200}"
+                "value": "{ob.p.colors.cobalt.200}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.300}"
+                "value": "{ob.p.colors.cobalt.300}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.400}"
+                "value": "{ob.p.colors.cobalt.400}",
+                "type": "color"
               }
             },
             "fg": {
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.200}"
+                "value": "{ob.p.colors.cobalt.200}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.100}"
+                "value": "{ob.p.colors.cobalt.100}",
+                "type": "color"
               },
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.50}"
+                "value": "{ob.p.colors.cobalt.50}",
+                "type": "color"
               }
             }
           }
@@ -615,80 +615,80 @@
           "emphasis-default": {
             "bg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.900}"
+                "value": "{ob.p.colors.steelblue.900}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.800}"
+                "value": "{ob.p.colors.steelblue.800}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.700}"
+                "value": "{ob.p.colors.steelblue.700}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.300}"
+                "value": "{ob.p.colors.steelblue.300}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.200}"
+                "value": "{ob.p.colors.steelblue.200}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.100}"
+                "value": "{ob.p.colors.steelblue.100}",
+                "type": "color"
               }
             },
             "fg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.100}"
+                "value": "{ob.p.colors.steelblue.100}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.200}"
+                "value": "{ob.p.colors.steelblue.200}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.300}"
+                "value": "{ob.p.colors.steelblue.300}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.700}"
+                "value": "{ob.p.colors.steelblue.700}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.800}"
+                "value": "{ob.p.colors.steelblue.800}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.900}"
+                "value": "{ob.p.colors.steelblue.900}",
+                "type": "color"
               }
             },
             "fg-visited": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.50}"
+                "value": "{ob.p.colors.indigo.50}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.100}"
+                "value": "{ob.p.colors.indigo.100}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.200}"
+                "value": "{ob.p.colors.indigo.200}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.700}"
+                "value": "{ob.p.colors.indigo.700}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.800}"
+                "value": "{ob.p.colors.indigo.800}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.900}"
+                "value": "{ob.p.colors.indigo.900}",
+                "type": "color"
               }
             },
             "fg-disabled": {
@@ -702,8 +702,8 @@
                     }
                   }
                 },
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.50}"
+                "value": "{ob.p.colors.cobalt.50}",
+                "type": "color"
               },
               "inverse": {
                 "$extensions": {
@@ -715,20 +715,20 @@
                     }
                   }
                 },
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt-alpha.900}"
+                "value": "{ob.p.colors.cobalt-alpha.900}",
+                "type": "color"
               }
             },
             "bg-disabled": {
               "bg-default": {
                 "opacity": {
-                  "$type": "color",
-                  "$value": "{ob.p.colors.white-alpha.300}"
+                  "value": "{ob.p.colors.white-alpha.300}",
+                  "type": "color"
                 },
                 "solid": {
-                  "$type": "color",
-                  "$value": "{ob.p.colors.white-alpha.300}",
-                  "$description": "For background of disabled elements. Solid version."
+                  "value": "{ob.p.colors.white-alpha.300}",
+                  "description": "For background of disabled elements. Solid version.",
+                  "type": "color"
                 }
               },
               "bg-inverse": {
@@ -742,13 +742,13 @@
                       }
                     }
                   },
-                  "$type": "color",
-                  "$value": "{ob.p.colors.cobalt.50}"
+                  "value": "{ob.p.colors.cobalt.50}",
+                  "type": "color"
                 },
                 "solid": {
-                  "$type": "color",
-                  "$value": "{ob.p.colors.cobalt.500}",
-                  "$description": "For background of disabled elements, inverse. Solid version."
+                  "value": "{ob.p.colors.cobalt.500}",
+                  "description": "For background of disabled elements, inverse. Solid version.",
+                  "type": "color"
                 }
               }
             }
@@ -756,87 +756,87 @@
           "emphasis-muted": {
             "bg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.800}"
+                "value": "{ob.p.colors.cobalt.800}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.700}"
+                "value": "{ob.p.colors.cobalt.700}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.600}"
+                "value": "{ob.p.colors.cobalt.600}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.200}"
+                "value": "{ob.p.colors.cobalt.200}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.100}"
+                "value": "{ob.p.colors.cobalt.100}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.50}"
+                "value": "{ob.p.colors.cobalt.50}",
+                "type": "color"
               }
             },
             "fg": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.50}"
+                "value": "{ob.p.colors.cobalt.50}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.100}"
+                "value": "{ob.p.colors.cobalt.100}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.200}"
+                "value": "{ob.p.colors.cobalt.200}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.700}"
+                "value": "{ob.p.colors.cobalt.700}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.800}"
+                "value": "{ob.p.colors.cobalt.800}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.900}"
+                "value": "{ob.p.colors.cobalt.900}",
+                "type": "color"
               }
             },
             "fg-visited": {
               "contrast-high": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.50}"
+                "value": "{ob.p.colors.cobalt.50}",
+                "type": "color"
               },
               "contrast-medium": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.100}"
+                "value": "{ob.p.colors.cobalt.100}",
+                "type": "color"
               },
               "contrast-low": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.100}"
+                "value": "{ob.p.colors.cobalt.100}",
+                "type": "color"
               },
               "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.700}"
+                "value": "{ob.p.colors.cobalt.700}",
+                "type": "color"
               },
               "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.800}"
+                "value": "{ob.p.colors.cobalt.800}",
+                "type": "color"
               },
               "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.900}"
+                "value": "{ob.p.colors.cobalt.900}",
+                "type": "color"
               }
             }
           },
           "border": {
             "focus": {
-              "$type": "color",
-              "$value": "{ob.p.colors.purple.400}"
+              "value": "{ob.p.colors.purple.400}",
+              "type": "color"
             }
           }
         }

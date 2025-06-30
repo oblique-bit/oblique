@@ -2,8 +2,8 @@
   "figma-doc": {
     "color": {
       "fg": {
-        "$type": "color",
-        "$value": "#9747FF"
+        "value": "#9747FF",
+        "type": "color"
       }
     }
   }

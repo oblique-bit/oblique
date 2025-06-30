@@ -1,0 +1,86 @@
+{
+  "ob": {
+    "g": {
+      "badge": {
+        "default-theme": {
+          "interaction-emphasis": {
+            "value": "{ob.g.color.theme.interaction-emphasis.default}",
+            "type": "other"
+          }
+        }
+      },
+      "button": {
+        "default-theme": {
+          "interaction-emphasis": {
+            "value": "{ob.g.color.theme.interaction-emphasis.default}",
+            "type": "other"
+          }
+        }
+      },
+      "footer": {
+        "default-theme": {
+          "interaction-emphasis": {
+            "value": "{ob.g.color.theme.interaction-emphasis.muted}",
+            "type": "other"
+          }
+        }
+      },
+      "link": {
+        "default-theme": {
+          "interaction-emphasis": {
+            "value": "{ob.g.color.theme.interaction-emphasis.default}",
+            "type": "other"
+          }
+        }
+      },
+      "infobox": {
+        "default-theme": {
+          "interaction-emphasis": {
+            "value": "{ob.g.color.theme.interaction-emphasis.muted}",
+            "type": "other"
+          }
+        }
+      },
+      "pill": {
+        "default-theme": {
+          "interaction-emphasis": {
+            "value": "{ob.g.color.theme.interaction-emphasis.default}",
+            "type": "other"
+          }
+        }
+      },
+      "popover": {
+        "default-theme": {
+          "interaction-emphasis": {
+            "value": "{ob.g.color.theme.interaction-emphasis.muted}",
+            "type": "other"
+          }
+        }
+      },
+      "spinner": {
+        "default-theme": {
+          "interaction-emphasis": {
+            "value": "{ob.g.color.theme.interaction-emphasis.default}",
+            "type": "other"
+          }
+        }
+      },
+      "tag": {
+        "default-theme": {
+          "interaction-emphasis": {
+            "value": "{ob.g.color.theme.interaction-emphasis.default}",
+            "type": "other"
+          }
+        }
+      },
+      "tooltip": {
+        "default-theme": {
+          "interaction-emphasis": {
+            "value": "{ob.g.color.theme.interaction-emphasis.default}",
+            "type": "other"
+          }
+        }
+      }
+    }
+  }
+}

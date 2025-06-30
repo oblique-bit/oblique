@@ -6,109 +6,109 @@
           "padding": {
             "vertical": {
               "sm": {
-                "$type": "spacing",
-                "$value": "{ob.s.spacing.xs}",
-                "$description": "Top and bottom padding – for small size pills."
+                "value": "{ob.s.spacing.xs}",
+                "description": "Top and bottom padding – for small size pills.",
+                "type": "spacing"
               },
               "md": {
-                "$type": "spacing",
-                "$value": "{ob.s.spacing.sm}",
-                "$description": "Top and bottom padding  – for medium size pills."
+                "value": "{ob.s.spacing.sm}",
+                "description": "Top and bottom padding  – for medium size pills.",
+                "type": "spacing"
               },
               "lg": {
-                "$type": "spacing",
-                "$value": "{ob.s.spacing.lg}",
-                "$description": "Top and bottom padding  – for large size pills."
+                "value": "{ob.s.spacing.lg}",
+                "description": "Top and bottom padding  – for large size pills.",
+                "type": "spacing"
               }
             },
             "horizontal": {
               "sm": {
-                "$type": "spacing",
-                "$value": "{ob.s.spacing.lg}",
-                "$description": "Left and right padding – for small size pills."
+                "value": "{ob.s.spacing.lg}",
+                "description": "Left and right padding – for small size pills.",
+                "type": "spacing"
               },
               "md": {
-                "$type": "spacing",
-                "$value": "{ob.s.spacing.xl}",
-                "$description": "Left and right padding  – for medium size pills."
+                "value": "{ob.s.spacing.xl}",
+                "description": "Left and right padding  – for medium size pills.",
+                "type": "spacing"
               },
               "lg": {
-                "$type": "spacing",
-                "$value": "{ob.s.spacing.3xl}",
-                "$description": "Left and right padding – for large size pills."
+                "value": "{ob.s.spacing.3xl}",
+                "description": "Left and right padding – for large size pills.",
+                "type": "spacing"
               }
             }
           },
           "gap": {
             "sm": {
-              "$type": "spacing",
-              "$value": "{ob.s.spacing.sm}",
-              "$description": "Horizontal gap between icon and text label – for small size pills."
+              "value": "{ob.s.spacing.sm}",
+              "description": "Horizontal gap between icon and text label – for small size pills.",
+              "type": "spacing"
             },
             "md": {
-              "$type": "spacing",
-              "$value": "{ob.s.spacing.md}",
-              "$description": "Horizontal gap between icon and text label  – for medium size pills."
+              "value": "{ob.s.spacing.md}",
+              "description": "Horizontal gap between icon and text label  – for medium size pills.",
+              "type": "spacing"
             },
             "lg": {
-              "$type": "spacing",
-              "$value": "{ob.s.spacing.lg}",
-              "$description": "Horizontal gap between icon and text label – for large size pills"
+              "value": "{ob.s.spacing.lg}",
+              "description": "Horizontal gap between icon and text label – for large size pills",
+              "type": "spacing"
             }
           }
         },
         "border-radius": {
           "default": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.round}",
-            "$description": "Standard pills in Oblique."
+            "value": "{ob.s.radii.round}",
+            "description": "Standard pills in Oblique.",
+            "type": "borderRadius"
           }
         },
         "icon": {
           "size": {
             "sm": {
-              "$type": "sizing",
-              "$value": "{ob.s.icon.size.xs}"
+              "value": "{ob.s.icon.size.xs}",
+              "type": "sizing"
             },
             "md": {
-              "$type": "sizing",
-              "$value": "{ob.s.icon.size.xs}"
+              "value": "{ob.s.icon.size.xs}",
+              "type": "sizing"
             },
             "lg": {
-              "$type": "sizing",
-              "$value": "{ob.s.icon.size.sm}"
+              "value": "{ob.s.icon.size.sm}",
+              "type": "sizing"
             }
           }
         },
         "surface": {
           "min-height": {
             "sm": {
-              "$type": "sizing",
-              "$value": "{ob.p.size.250}"
+              "value": "{ob.p.size.250}",
+              "type": "sizing"
             },
             "md": {
-              "$type": "sizing",
-              "$value": "{ob.p.size.300}"
+              "value": "{ob.p.size.300}",
+              "type": "sizing"
             },
             "lg": {
-              "$type": "sizing",
-              "$value": "36"
+              "value": "36",
+              "type": "sizing"
             }
           }
         },
         "typography": {
           "style": {
             "sm": {
-              "$type": "typography",
-              "$value": "{ob.s.typography.type-scale.xs.normal}"
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "type": "typography"
             },
             "md": {
-              "$type": "typography",
-              "$value": "{ob.s.typography.type-scale.md.normal}"
+              "value": "{ob.s.typography.type-scale.md.normal}",
+              "type": "typography"
             },
             "lg": {
-              "$type": "typography",
-              "$value": "{ob.s.typography.type-scale.md.normal}"
+              "value": "{ob.s.typography.type-scale.md.normal}",
+              "type": "typography"
             }
           }
         },
@@ -116,380 +116,380 @@
           "closed": {
             "fg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-medium}"
+                "value": "{ob.s.color.neutral.fg.contrast-medium}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-medium}"
+                "value": "{ob.s.color.neutral.fg.contrast-medium}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-medium}"
+                "value": "{ob.s.color.neutral.fg.contrast-medium}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-high}"
+                "value": "{ob.s.color.neutral.fg.contrast-high}",
+                "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-medium}"
+                "value": "{ob.s.color.neutral.bg.contrast-medium}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-medium}"
+                "value": "{ob.s.color.neutral.bg.contrast-medium}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-medium}"
+                "value": "{ob.s.color.neutral.bg.contrast-medium}",
+                "type": "color"
               }
             }
           },
           "resolved": {
             "fg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.resolved.fg.contrast-high}"
+                "value": "{ob.s.color.status.resolved.fg.contrast-high}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.resolved.fg.contrast-high}"
+                "value": "{ob.s.color.status.resolved.fg.contrast-high}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.resolved.fg.contrast-high}"
+                "value": "{ob.s.color.status.resolved.fg.contrast-high}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.resolved.fg.contrast-high}"
+                "value": "{ob.s.color.status.resolved.fg.contrast-high}",
+                "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.resolved.bg.contrast-medium}"
+                "value": "{ob.s.color.status.resolved.bg.contrast-medium}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.resolved.bg.contrast-medium}"
+                "value": "{ob.s.color.status.resolved.bg.contrast-medium}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.resolved.bg.contrast-low}"
+                "value": "{ob.s.color.status.resolved.bg.contrast-low}",
+                "type": "color"
               }
             }
           },
           "attention": {
             "fg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+                "value": "{ob.s.color.status.attention.fg.contrast-high}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+                "value": "{ob.s.color.status.attention.fg.contrast-high}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+                "value": "{ob.s.color.status.attention.fg.contrast-high}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+                "value": "{ob.s.color.status.attention.fg.contrast-high}",
+                "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.attention.bg.contrast-medium}"
+                "value": "{ob.s.color.status.attention.bg.contrast-medium}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.attention.bg.contrast-medium}"
+                "value": "{ob.s.color.status.attention.bg.contrast-medium}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.attention.bg.contrast-low}"
+                "value": "{ob.s.color.status.attention.bg.contrast-low}",
+                "type": "color"
               }
             }
           },
           "pending": {
             "fg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.pending.fg.contrast-high}"
+                "value": "{ob.s.color.status.pending.fg.contrast-high}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.pending.fg.contrast-high}"
+                "value": "{ob.s.color.status.pending.fg.contrast-high}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.pending.fg.contrast-high}"
+                "value": "{ob.s.color.status.pending.fg.contrast-high}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.pending.fg.contrast-high}"
+                "value": "{ob.s.color.status.pending.fg.contrast-high}",
+                "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.pending.bg.contrast-medium}"
+                "value": "{ob.s.color.status.pending.bg.contrast-medium}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.pending.bg.contrast-medium}"
+                "value": "{ob.s.color.status.pending.bg.contrast-medium}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.pending.bg.contrast-low}"
+                "value": "{ob.s.color.status.pending.bg.contrast-low}",
+                "type": "color"
               }
             }
           },
           "confirmed": {
             "fg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.confirmed.fg.contrast-high}"
+                "value": "{ob.s.color.status.confirmed.fg.contrast-high}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.confirmed.fg.contrast-high}"
+                "value": "{ob.s.color.status.confirmed.fg.contrast-high}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.confirmed.fg.contrast-high}"
+                "value": "{ob.s.color.status.confirmed.fg.contrast-high}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.confirmed.fg.contrast-high}"
+                "value": "{ob.s.color.status.confirmed.fg.contrast-high}",
+                "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.confirmed.bg.contrast-medium}"
+                "value": "{ob.s.color.status.confirmed.bg.contrast-medium}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.confirmed.bg.contrast-medium}"
+                "value": "{ob.s.color.status.confirmed.bg.contrast-medium}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.confirmed.bg.contrast-low}"
+                "value": "{ob.s.color.status.confirmed.bg.contrast-low}",
+                "type": "color"
               }
             }
           },
           "progress": {
             "fg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.progress.fg.contrast-high}"
+                "value": "{ob.s.color.status.progress.fg.contrast-high}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.progress.fg.contrast-high}"
+                "value": "{ob.s.color.status.progress.fg.contrast-high}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.progress.fg.contrast-high}"
+                "value": "{ob.s.color.status.progress.fg.contrast-high}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.progress.fg.contrast-high}"
+                "value": "{ob.s.color.status.progress.fg.contrast-high}",
+                "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.progress.bg.contrast-medium}"
+                "value": "{ob.s.color.status.progress.bg.contrast-medium}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.progress.bg.contrast-medium}"
+                "value": "{ob.s.color.status.progress.bg.contrast-medium}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.progress.bg.contrast-low}"
+                "value": "{ob.s.color.status.progress.bg.contrast-low}",
+                "type": "color"
               }
             }
           },
           "scheduled": {
             "fg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.scheduled.fg.contrast-high}"
+                "value": "{ob.s.color.status.scheduled.fg.contrast-high}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.scheduled.fg.contrast-high}"
+                "value": "{ob.s.color.status.scheduled.fg.contrast-high}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.scheduled.fg.contrast-high}"
+                "value": "{ob.s.color.status.scheduled.fg.contrast-high}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.scheduled.fg.contrast-high}"
+                "value": "{ob.s.color.status.scheduled.fg.contrast-high}",
+                "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.scheduled.bg.contrast-medium}"
+                "value": "{ob.s.color.status.scheduled.bg.contrast-medium}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.scheduled.bg.contrast-medium}"
+                "value": "{ob.s.color.status.scheduled.bg.contrast-medium}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.scheduled.bg.contrast-low}"
+                "value": "{ob.s.color.status.scheduled.bg.contrast-low}",
+                "type": "color"
               }
             }
           },
           "info": {
             "fg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.info.fg.contrast-high}"
+                "value": "{ob.s.color.status.info.fg.contrast-high}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.info.fg.contrast-high}"
+                "value": "{ob.s.color.status.info.fg.contrast-high}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.info.fg.contrast-high}"
+                "value": "{ob.s.color.status.info.fg.contrast-high}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.info.fg.contrast-high}"
+                "value": "{ob.s.color.status.info.fg.contrast-high}",
+                "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.info.bg.contrast-medium}"
+                "value": "{ob.s.color.status.info.bg.contrast-medium}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.info.bg.contrast-medium}"
+                "value": "{ob.s.color.status.info.bg.contrast-medium}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.info.bg.contrast-low}"
+                "value": "{ob.s.color.status.info.bg.contrast-low}",
+                "type": "color"
               }
             }
           },
           "waiting": {
             "fg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.waiting.fg.contrast-high}"
+                "value": "{ob.s.color.status.waiting.fg.contrast-high}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.waiting.fg.contrast-high}"
+                "value": "{ob.s.color.status.waiting.fg.contrast-high}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.waiting.fg.contrast-high}"
+                "value": "{ob.s.color.status.waiting.fg.contrast-high}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.waiting.fg.contrast-high}"
+                "value": "{ob.s.color.status.waiting.fg.contrast-high}",
+                "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.waiting.bg.contrast-medium}"
+                "value": "{ob.s.color.status.waiting.bg.contrast-medium}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.waiting.bg.contrast-high}"
+                "value": "{ob.s.color.status.waiting.bg.contrast-high}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.waiting.bg.contrast-low}"
+                "value": "{ob.s.color.status.waiting.bg.contrast-low}",
+                "type": "color"
               }
             }
           },
           "critical": {
             "fg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+                "value": "{ob.s.color.status.critical.fg.contrast-high}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+                "value": "{ob.s.color.status.critical.fg.contrast-high}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+                "value": "{ob.s.color.status.critical.fg.contrast-high}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+                "value": "{ob.s.color.status.critical.fg.contrast-high}",
+                "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.critical.bg.contrast-medium}"
+                "value": "{ob.s.color.status.critical.bg.contrast-medium}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest}"
+                "value": "{ob.s.color.neutral.bg.contrast-highest}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.critical.bg.contrast-high}"
+                "value": "{ob.s.color.status.critical.bg.contrast-high}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.status.critical.bg.contrast-low}"
+                "value": "{ob.s.color.status.critical.bg.contrast-low}",
+                "type": "color"
               }
             }
           }

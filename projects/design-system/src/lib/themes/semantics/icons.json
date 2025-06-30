@@ -4,32 +4,32 @@
       "icon": {
         "size": {
           "xs": {
-            "$type": "sizing",
-            "$value": "{ob.p.size.200}"
+            "value": "{ob.p.size.200}",
+            "type": "sizing"
           },
           "sm": {
-            "$type": "sizing",
-            "$value": "{ob.p.size.250}"
+            "value": "{ob.p.size.250}",
+            "type": "sizing"
           },
           "md": {
-            "$type": "sizing",
-            "$value": "{ob.p.size.300}"
+            "value": "{ob.p.size.300}",
+            "type": "sizing"
           },
           "lg": {
-            "$type": "sizing",
-            "$value": "{ob.p.size.350}"
+            "value": "{ob.p.size.350}",
+            "type": "sizing"
           },
           "xl": {
-            "$type": "sizing",
-            "$value": "{ob.p.size.400}"
+            "value": "{ob.p.size.400}",
+            "type": "sizing"
           },
           "2xl": {
-            "$type": "sizing",
-            "$value": "{ob.p.size.450}"
+            "value": "{ob.p.size.450}",
+            "type": "sizing"
           },
           "3xl": {
-            "$type": "sizing",
-            "$value": "{ob.p.size.600}"
+            "value": "{ob.p.size.600}",
+            "type": "sizing"
           }
         }
       }

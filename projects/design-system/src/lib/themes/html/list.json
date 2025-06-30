@@ -5,14 +5,14 @@
         "single-item": {
           "spacing": {
             "marker-gap": {
-              "$type": "spacing",
-              "$value": "12",
-              "$description": "Gap between icon and text."
+              "value": "12",
+              "description": "Gap between icon and text.",
+              "type": "spacing"
             },
             "margin-bottom": {
-              "$type": "spacing",
-              "$value": "12",
-              "$description": "margin bottom of single elements"
+              "value": "12",
+              "description": "margin bottom of single elements",
+              "type": "spacing"
             }
           }
         },
@@ -20,16 +20,16 @@
           "spacing": {
             "high": {
               "margin-top": {
-                "$type": "spacing",
-                "$value": "12",
-                "$description": "margin bottom of single elements"
+                "value": "12",
+                "description": "margin bottom of single elements",
+                "type": "spacing"
               }
             },
             "low": {
               "margin-top": {
-                "$type": "spacing",
-                "$value": "0",
-                "$description": "margin bottom of single elements"
+                "value": "0",
+                "description": "margin bottom of single elements",
+                "type": "spacing"
               }
             }
           }

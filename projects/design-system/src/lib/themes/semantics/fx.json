@@ -4,8 +4,8 @@
       "fx": {
         "blur": {
           "sm": {
-            "$type": "number",
-            "$value": "12"
+            "value": "12",
+            "type": "number"
           }
         }
       }

@@ -2,14 +2,14 @@
   "figma-doc": {
     "color": {
       "fg-static": {
-        "$type": "color",
-        "$value": "#9747FF",
-        "$description": "Documentation only! Coming from Figma UI. Doesn't react to user preference color modes Light, Dark etc."
+        "value": "#9747FF",
+        "description": "Documentation only! Coming from Figma UI. Doesn't react to user preference color modes Light, Dark etc.",
+        "type": "color"
       },
       "figma-canvas-bg": {
-        "$type": "color",
-        "$value": "#DFE4E9",
-        "$description": "Figma Canvas Background. Documentation only! Doesn't react to user preference color modes Light, Dark etc."
+        "value": "#DFE4E9",
+        "description": "Figma Canvas Background. Documentation only! Doesn't react to user preference color modes Light, Dark etc.",
+        "type": "color"
       },
       "figma-section-bg": {
         "$extensions": {
@@ -21,9 +21,9 @@
             }
           }
         },
-        "$type": "color",
-        "$value": "#ffffff",
-        "$description": "Figma Section Background. Documentation only! Doesn't react to user preference color modes Light, Dark etc."
+        "value": "#ffffff",
+        "description": "Figma Section Background. Documentation only! Doesn't react to user preference color modes Light, Dark etc.",
+        "type": "color"
       },
       "figma-section-border": {
         "$extensions": {
@@ -35,9 +35,9 @@
             }
           }
         },
-        "$type": "color",
-        "$value": "#000000",
-        "$description": "Figma Section Border. Documentation only! Doesn't react to user preference color modes Light, Dark etc."
+        "value": "#000000",
+        "description": "Figma Section Border. Documentation only! Doesn't react to user preference color modes Light, Dark etc.",
+        "type": "color"
       }
     }
   }

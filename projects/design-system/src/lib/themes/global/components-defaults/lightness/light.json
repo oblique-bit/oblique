@@ -1,0 +1,86 @@
+{
+  "ob": {
+    "g": {
+      "badge": {
+        "default-theme": {
+          "lightness": {
+            "value": "{ob.g.color.theme.lightness.light}",
+            "type": "other"
+          }
+        }
+      },
+      "button": {
+        "default-theme": {
+          "lightness": {
+            "value": "{ob.g.color.theme.lightness.light}",
+            "type": "other"
+          }
+        }
+      },
+      "footer": {
+        "default-theme": {
+          "lightness": {
+            "value": "{ob.g.color.theme.lightness.dark}",
+            "type": "other"
+          }
+        }
+      },
+      "link": {
+        "default-theme": {
+          "lightness": {
+            "value": "{ob.g.color.theme.lightness.light}",
+            "type": "other"
+          }
+        }
+      },
+      "infobox": {
+        "default-theme": {
+          "lightness": {
+            "value": "{ob.g.color.theme.lightness.light}",
+            "type": "other"
+          }
+        }
+      },
+      "pill": {
+        "default-theme": {
+          "lightness": {
+            "value": "{ob.g.color.theme.lightness.light}",
+            "type": "other"
+          }
+        }
+      },
+      "popover": {
+        "default-theme": {
+          "lightness": {
+            "value": "{ob.g.color.theme.lightness.light}",
+            "type": "other"
+          }
+        }
+      },
+      "spinner": {
+        "default-theme": {
+          "lightness": {
+            "value": "{ob.g.color.theme.lightness.light}",
+            "type": "other"
+          }
+        }
+      },
+      "tag": {
+        "default-theme": {
+          "lightness": {
+            "value": "{ob.g.color.theme.lightness.light}",
+            "type": "other"
+          }
+        }
+      },
+      "tooltip": {
+        "default-theme": {
+          "lightness": {
+            "value": "{ob.g.color.theme.lightness.light}",
+            "type": "other"
+          }
+        }
+      }
+    }
+  }
+}

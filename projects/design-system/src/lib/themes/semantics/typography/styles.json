@@ -6,8 +6,7 @@
           "heading": {
             "default": {
               "H1": {
-                "$type": "typography",
-                "$value": {
+                "value": {
                   "fontFamily": "{ob.s.font-family.body}",
                   "fontSize": "{ob.s.fontSize.xl}",
                   "fontWeight": "{ob.s.font-weight.bold}",
@@ -15,11 +14,11 @@
                   "lineHeight": "{ob.s.lineHeight.xl}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.800}"
                 },
-                "$description": "Compact primary page heading. Used for the most important headline on a page."
+                "description": "Compact primary page heading. Used for the most important headline on a page.",
+                "type": "typography"
               },
               "H2": {
-                "$type": "typography",
-                "$value": {
+                "value": {
                   "fontFamily": "{ob.s.font-family.body}",
                   "fontSize": "{ob.s.fontSize.lg}",
                   "fontWeight": "{ob.s.font-weight.bold}",
@@ -27,11 +26,11 @@
                   "lineHeight": "{ob.s.lineHeight.lg}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.600}"
                 },
-                "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page.",
+                "type": "typography"
               },
               "H3": {
-                "$type": "typography",
-                "$value": {
+                "value": {
                   "fontFamily": "{ob.s.font-family.body}",
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.font-weight.extraBold}",
@@ -39,11 +38,11 @@
                   "letterSpacing": "{ob.s.letter-spacing-px.normal}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
-                "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page.",
+                "type": "typography"
               },
               "H4": {
-                "$type": "typography",
-                "$value": {
+                "value": {
                   "fontFamily": "{ob.s.font-family.body}",
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.font-weight.extraBold}",
@@ -51,11 +50,11 @@
                   "letterSpacing": "{ob.s.letter-spacing-px.normal}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
-                "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page.",
+                "type": "typography"
               },
               "H5": {
-                "$type": "typography",
-                "$value": {
+                "value": {
                   "fontFamily": "{ob.s.font-family.body}",
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.font-weight.extraBold}",
@@ -63,11 +62,11 @@
                   "letterSpacing": "{ob.s.letter-spacing-px.normal}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
-                "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page.",
+                "type": "typography"
               },
               "H6": {
-                "$type": "typography",
-                "$value": {
+                "value": {
                   "fontFamily": "{ob.s.font-family.body}",
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.font-weight.extraBold}",
@@ -75,13 +74,13 @@
                   "letterSpacing": "{ob.s.letter-spacing-px.normal}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
-                "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
+                "description": "Compact page heading. Divides content hierarchically into major sections within a page.",
+                "type": "typography"
               }
             },
             "prose": {
               "H1": {
-                "$type": "typography",
-                "$value": {
+                "value": {
                   "fontFamily": "{ob.s.font-family.body}",
                   "fontSize": "{ob.s.fontSize.4xl}",
                   "fontWeight": "{ob.s.font-weight.semiBold}",
@@ -89,11 +88,11 @@
                   "lineHeight": "{ob.s.lineHeight.4xl}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.1400}"
                 },
-                "$description": "Primary page heading for prose based pages. Used for the most important headline on a page."
+                "description": "Primary page heading for prose based pages. Used for the most important headline on a page.",
+                "type": "typography"
               },
               "H2": {
-                "$type": "typography",
-                "$value": {
+                "value": {
                   "fontFamily": "{ob.s.font-family.body}",
                   "fontSize": "{ob.s.fontSize.3xl}",
                   "fontWeight": "{ob.s.font-weight.semiBold}",
@@ -101,11 +100,11 @@
                   "lineHeight": "{ob.s.lineHeight.3xl}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.1300}"
                 },
-                "$description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
+                "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page.",
+                "type": "typography"
               },
               "H3": {
-                "$type": "typography",
-                "$value": {
+                "value": {
                   "fontFamily": "{ob.s.font-family.body}",
                   "fontSize": "{ob.s.fontSize.2xl}",
                   "fontWeight": "{ob.s.font-weight.semiBold}",
@@ -113,11 +112,11 @@
                   "lineHeight": "{ob.s.lineHeight.2xl}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.1100}"
                 },
-                "$description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
+                "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page.",
+                "type": "typography"
               },
               "H4": {
-                "$type": "typography",
-                "$value": {
+                "value": {
                   "fontFamily": "{ob.s.font-family.body}",
                   "fontSize": "{ob.s.fontSize.xl}",
                   "fontWeight": "{ob.s.font-weight.bold}",
@@ -125,11 +124,11 @@
                   "lineHeight": "{ob.s.lineHeight.xl}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.800}"
                 },
-                "$description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
+                "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page.",
+                "type": "typography"
               },
               "H5": {
-                "$type": "typography",
-                "$value": {
+                "value": {
                   "fontFamily": "{ob.s.font-family.body}",
                   "fontSize": "{ob.s.fontSize.lg}",
                   "fontWeight": "{ob.s.font-weight.bold}",
@@ -137,11 +136,11 @@
                   "lineHeight": "{ob.s.lineHeight.lg}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.600}"
                 },
-                "$description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
+                "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page.",
+                "type": "typography"
               },
               "H6": {
-                "$type": "typography",
-                "$value": {
+                "value": {
                   "fontFamily": "{ob.s.font-family.body}",
                   "fontSize": "{ob.s.fontSize.md}",
                   "fontWeight": "{ob.s.font-weight.extraBold}",
@@ -149,14 +148,14 @@
                   "letterSpacing": "{ob.s.letter-spacing-px.normal}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
-                "$description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
+                "description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page.",
+                "type": "typography"
               }
             }
           },
           "body": {
             "normal": {
-              "$type": "typography",
-              "$value": {
+              "value": {
                 "fontFamily": "{ob.s.font-family.body}",
                 "fontSize": "{ob.s.fontSize.md}",
                 "fontWeight": "{ob.s.font-weight.medium}",
@@ -164,11 +163,11 @@
                 "letterSpacing": "{ob.s.letter-spacing-px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.md}"
               },
-              "$description": "Default body text style for paragraphs and general content."
+              "description": "Default body text style for paragraphs and general content.",
+              "type": "typography"
             },
             "link": {
-              "$type": "typography",
-              "$value": {
+              "value": {
                 "fontFamily": "{ob.s.font-family.body}",
                 "fontSize": "{ob.s.fontSize.md}",
                 "fontWeight": "{ob.s.font-weight.medium}",
@@ -177,11 +176,11 @@
                 "paragraphSpacing": "{ob.s.paragraphSpacing.md}",
                 "textDecoration": "{ob.s.text-decoration.link.emphasis-default}"
               },
-              "$description": "Interactive text elements that navigate to other content when clicked. Adds an underline to the text. Generates a Figma typography style."
+              "description": "Interactive text elements that navigate to other content when clicked. Adds an underline to the text. Generates a Figma typography style.",
+              "type": "typography"
             },
             "strong": {
-              "$type": "typography",
-              "$value": {
+              "value": {
                 "fontFamily": "{ob.s.font-family.body}",
                 "fontSize": "{ob.s.fontSize.md}",
                 "fontWeight": "{ob.s.font-weight.bold}",
@@ -189,11 +188,11 @@
                 "letterSpacing": "{ob.s.letter-spacing-px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.md}"
               },
-              "$description": "Emphasized text to highlight important information within body content."
+              "description": "Emphasized text to highlight important information within body content.",
+              "type": "typography"
             },
             "lead": {
-              "$type": "typography",
-              "$value": {
+              "value": {
                 "fontFamily": "{ob.s.font-family.body}",
                 "fontSize": "{ob.s.fontSize.md}",
                 "fontWeight": "{ob.s.font-weight.bold}",
@@ -201,7 +200,8 @@
                 "letterSpacing": "{ob.s.letter-spacing-px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.md}"
               },
-              "$description": "Introductory paragraph text, typically larger or bolder than normal body text."
+              "description": "Introductory paragraph text, typically larger or bolder than normal body text.",
+              "type": "typography"
             }
           }
         }

@@ -4,101 +4,101 @@
       "link": {
         "spacing": {
           "gap": {
-            "$type": "spacing",
-            "$value": "{ob.s.spacing.md}",
-            "$description": "Gap between icon and text in the text link."
+            "value": "{ob.s.spacing.md}",
+            "description": "Gap between icon and text in the text link.",
+            "type": "spacing"
           }
         },
         "asset": {
           "type": {
             "internal": {
-              "$type": "asset",
-              "$value": "none",
-              "$description": "No icon on internal links (except in lists - defined in another token). Devselopers do not use this in the code."
+              "value": "none",
+              "description": "No icon on internal links (except in lists - defined in another token). Devselopers do not use this in the code.",
+              "type": "asset"
             },
             "internal-list": {
-              "$type": "asset",
-              "$value": "arrow-right",
-              "$description": "Icon displayed for internal links (list only). Devselopers do not use this in the code."
+              "value": "arrow-right",
+              "description": "Icon displayed for internal links (list only). Devselopers do not use this in the code.",
+              "type": "asset"
             },
             "external": {
-              "$type": "asset",
-              "$value": "external",
-              "$description": "Icon displayed for all external links. Devselopers do not use this in the code."
+              "value": "external",
+              "description": "Icon displayed for all external links. Devselopers do not use this in the code.",
+              "type": "asset"
             },
             "phone": {
-              "$type": "asset",
-              "$value": "phone",
-              "$description": "Icon displayed for all phone number links. Devselopers do not use this in the code."
+              "value": "phone",
+              "description": "Icon displayed for all phone number links. Devselopers do not use this in the code.",
+              "type": "asset"
             },
             "mail": {
-              "$type": "asset",
-              "$value": "envelope",
-              "$description": "Icon displayed for email links. Devselopers do not use this in the code."
+              "value": "envelope",
+              "description": "Icon displayed for email links. Devselopers do not use this in the code.",
+              "type": "asset"
             }
           }
         },
         "color": {
           "link": {
-            "$type": "color",
-            "$value": "{ob.s.color.interaction.state.fg.enabled}",
-            "$description": "Default color of unvisited links."
+            "value": "{ob.s.color.interaction.state.fg.enabled}",
+            "description": "Default color of unvisited links.",
+            "type": "color"
           },
           "visited": {
-            "$type": "color",
-            "$value": "{ob.s.color.interaction.state.fg.visited}",
-            "$description": "Color of links the user has already visited."
+            "value": "{ob.s.color.interaction.state.fg.visited}",
+            "description": "Color of links the user has already visited.",
+            "type": "color"
           },
           "hover": {
-            "$type": "color",
-            "$value": "{ob.s.color.interaction.state.fg.hover}",
-            "$description": "Color of link when hovered with the mouse."
+            "value": "{ob.s.color.interaction.state.fg.hover}",
+            "description": "Color of link when hovered with the mouse.",
+            "type": "color"
           },
           "active": {
-            "$type": "color",
-            "$value": "{ob.s.color.interaction.state.fg.pressed}",
-            "$description": "Color of link during click interaction."
+            "value": "{ob.s.color.interaction.state.fg.pressed}",
+            "description": "Color of link during click interaction.",
+            "type": "color"
           },
           "disabled": {
-            "$type": "color",
-            "$value": "{ob.s.color.interaction.state.fg.disabled}",
-            "$description": "Color of a visually disabled, non-clickable link."
+            "value": "{ob.s.color.interaction.state.fg.disabled}",
+            "description": "Color of a visually disabled, non-clickable link.",
+            "type": "color"
           }
         },
         "enabled": {
-          "$type": "typography",
-          "$value": {
+          "value": {
             "textDecoration": "{ob.s.text-decoration.link.emphasis-default}"
           },
-          "$description": "a:link"
+          "description": "a:link",
+          "type": "typography"
         },
         "hover": {
-          "$type": "typography",
-          "$value": {
+          "value": {
             "textDecoration": "{ob.s.text-decoration.link.emphasis-default}"
           },
-          "$description": "a:hover"
+          "description": "a:hover",
+          "type": "typography"
         },
         "focus": {
-          "$type": "typography",
-          "$value": {
+          "value": {
             "textDecoration": "{ob.s.text-decoration.link.emphasis-low}"
           },
-          "$description": "a:focus. Displays already a border. No need for additional visual emphasis."
+          "description": "a:focus. Displays already a border. No need for additional visual emphasis.",
+          "type": "typography"
         },
         "active": {
-          "$type": "typography",
-          "$value": {
+          "value": {
             "textDecoration": "{ob.s.text-decoration.link.emphasis-default}"
           },
-          "$description": "a:active"
+          "description": "a:active",
+          "type": "typography"
         },
         "disabled": {
-          "$type": "typography",
-          "$value": {
+          "value": {
             "textDecoration": "{ob.s.text-decoration.link.emphasis-low}"
           },
-          "$description": "non css standard but required.No need for underline when disabled."
+          "description": "non css standard but required.No need for underline when disabled.",
+          "type": "typography"
         }
       }
     }

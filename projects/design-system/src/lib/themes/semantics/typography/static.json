@@ -3,136 +3,136 @@
     "s": {
       "font-family": {
         "body": {
-          "$type": "fontFamilies",
-          "$value": "{ob.p.fontFamily.sans}",
-          "$description": "Font of the Oblique Design System"
+          "value": "{ob.p.fontFamily.sans}",
+          "description": "Font of the Oblique Design System",
+          "type": "fontFamilies"
         },
         "heading": {
-          "$type": "fontFamilies",
-          "$value": "{ob.p.fontFamily.sans}",
-          "$description": "Font of the Oblique Design System"
+          "value": "{ob.p.fontFamily.sans}",
+          "description": "Font of the Oblique Design System",
+          "type": "fontFamilies"
         },
         "code": {
-          "$type": "fontFamilies",
-          "$value": "{ob.p.fontFamily.mono}",
-          "$description": "For code and design system figma documentation."
+          "value": "{ob.p.fontFamily.mono}",
+          "description": "For code and design system figma documentation.",
+          "type": "fontFamilies"
         }
       },
       "font-weight": {
         "regular": {
-          "$type": "fontWeights",
-          "$value": "{ob.p.font-weight.0}"
+          "value": "{ob.p.font-weight.0}",
+          "type": "fontWeights"
         },
         "medium": {
-          "$type": "fontWeights",
-          "$value": "{ob.p.font-weight.100}"
+          "value": "{ob.p.font-weight.100}",
+          "type": "fontWeights"
         },
         "semiBold": {
-          "$type": "fontWeights",
-          "$value": "{ob.p.font-weight.200}"
+          "value": "{ob.p.font-weight.200}",
+          "type": "fontWeights"
         },
         "bold": {
-          "$type": "fontWeights",
-          "$value": "{ob.p.font-weight.300}"
+          "value": "{ob.p.font-weight.300}",
+          "type": "fontWeights"
         },
         "extraBold": {
-          "$type": "fontWeights",
-          "$value": "{ob.p.font-weight.400}"
+          "value": "{ob.p.font-weight.400}",
+          "type": "fontWeights"
         }
       },
       "text-decoration": {
         "link": {
           "emphasis-default": {
-            "$type": "textDecoration",
-            "$value": "{ob.p.text-decoration.underline}",
-            "$description": "Standard text-link has an underline."
+            "value": "{ob.p.text-decoration.underline}",
+            "description": "Standard text-link has an underline.",
+            "type": "textDecoration"
           },
           "emphasis-low": {
-            "$type": "textDecoration",
-            "$value": "{ob.p.text-decoration.none}",
-            "$description": "Use where it is obvious that it is link and no need for additional typographical emphasis such as underline."
+            "value": "{ob.p.text-decoration.none}",
+            "description": "Use where it is obvious that it is link and no need for additional typographical emphasis such as underline.",
+            "type": "textDecoration"
           }
         }
       },
       "letter-spacing": {
         "superNarrow": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing-depr.neg-300}",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+          "value": "{ob.p.letterSpacing-depr.neg-300}",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
+          "type": "letterSpacing"
         },
         "narrower": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing-depr.neg-150}",
-          "$description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
+          "value": "{ob.p.letterSpacing-depr.neg-150}",
+          "description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!",
+          "type": "letterSpacing"
         },
         "narrow": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing-depr.neg-50}",
-          "$description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
+          "value": "{ob.p.letterSpacing-depr.neg-50}",
+          "description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n",
+          "type": "letterSpacing"
         },
         "normal": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing-depr.0}",
-          "$description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
+          "value": "{ob.p.letterSpacing-depr.0}",
+          "description": "Default letter spacing for body and labels.\nHas to be convertered to em!",
+          "type": "letterSpacing"
         },
         "wide": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing-depr.50}",
-          "$description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
+          "value": "{ob.p.letterSpacing-depr.50}",
+          "description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!",
+          "type": "letterSpacing"
         }
       },
       "letter-spacing-rem": {
         "superNarrow": {
-          "$type": "letterSpacing",
-          "$value": "-0.03rem",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+          "value": "-0.03rem",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
+          "type": "letterSpacing"
         },
         "narrower": {
-          "$type": "letterSpacing",
-          "$value": "-0.01rem",
-          "$description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
+          "value": "-0.01rem",
+          "description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!",
+          "type": "letterSpacing"
         },
         "narrow": {
-          "$type": "letterSpacing",
-          "$value": "0.005rem",
-          "$description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
+          "value": "0.005rem",
+          "description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n",
+          "type": "letterSpacing"
         },
         "normal": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing-depr.0}",
-          "$description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
+          "value": "{ob.p.letterSpacing-depr.0}",
+          "description": "Default letter spacing for body and labels.\nHas to be convertered to em!",
+          "type": "letterSpacing"
         },
         "wide": {
-          "$type": "letterSpacing",
-          "$value": "0.5%",
-          "$description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
+          "value": "0.5%",
+          "description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!",
+          "type": "letterSpacing"
         }
       },
       "letter-spacing-px": {
         "superNarrow": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing-px.neg-150}",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+          "value": "{ob.p.letterSpacing-px.neg-150}",
+          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
+          "type": "letterSpacing"
         },
         "narrower": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing-px.neg-100}",
-          "$description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
+          "value": "{ob.p.letterSpacing-px.neg-100}",
+          "description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!",
+          "type": "letterSpacing"
         },
         "narrow": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing-px.neg-50}",
-          "$description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
+          "value": "{ob.p.letterSpacing-px.neg-50}",
+          "description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n",
+          "type": "letterSpacing"
         },
         "normal": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing-px.0}",
-          "$description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
+          "value": "{ob.p.letterSpacing-px.0}",
+          "description": "Default letter spacing for body and labels.\nHas to be convertered to em!",
+          "type": "letterSpacing"
         },
         "wide": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing-px.50}",
-          "$description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
+          "value": "{ob.p.letterSpacing-px.50}",
+          "description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!",
+          "type": "letterSpacing"
         }
       }
     }

@@ -3,84 +3,84 @@
     "p": {
       "space": {
         "50": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * .5"
+          "value": "{ob.p.space._base} * .5",
+          "type": "spacing"
         },
         "100": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 1"
+          "value": "{ob.p.space._base} * 1",
+          "type": "spacing"
         },
         "150": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 1.5"
+          "value": "{ob.p.space._base} * 1.5",
+          "type": "spacing"
         },
         "200": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 2"
+          "value": "{ob.p.space._base} * 2",
+          "type": "spacing"
         },
         "250": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 2.50"
+          "value": "{ob.p.space._base} * 2.50",
+          "type": "spacing"
         },
         "300": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 3"
+          "value": "{ob.p.space._base} * 3",
+          "type": "spacing"
         },
         "400": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 4"
+          "value": "{ob.p.space._base} * 4",
+          "type": "spacing"
         },
         "500": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 5"
+          "value": "{ob.p.space._base} * 5",
+          "type": "spacing"
         },
         "600": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 6"
+          "value": "{ob.p.space._base} * 6",
+          "type": "spacing"
         },
         "700": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 7"
+          "value": "{ob.p.space._base} * 7",
+          "type": "spacing"
         },
         "800": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 8"
+          "value": "{ob.p.space._base} * 8",
+          "type": "spacing"
         },
         "900": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 9"
+          "value": "{ob.p.space._base} * 9",
+          "type": "spacing"
         },
         "1000": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 10"
+          "value": "{ob.p.space._base} * 10",
+          "type": "spacing"
         },
         "1200": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 12"
+          "value": "{ob.p.space._base} * 12",
+          "type": "spacing"
         },
         "1600": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 16"
+          "value": "{ob.p.space._base} * 16",
+          "type": "spacing"
         },
         "2000": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 20"
+          "value": "{ob.p.space._base} * 20",
+          "type": "spacing"
         },
         "2200": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 22"
+          "value": "{ob.p.space._base} * 22",
+          "type": "spacing"
         },
         "2600": {
-          "$type": "spacing",
-          "$value": "{ob.p.space._base} * 26"
+          "value": "{ob.p.space._base} * 26",
+          "type": "spacing"
         },
         "none": {
-          "$type": "spacing",
-          "$value": "0"
+          "value": "0",
+          "type": "spacing"
         },
         "_base": {
-          "$type": "spacing",
-          "$value": "{ob.g.scale.mult-responsive}"
+          "value": "{ob.g.scale.mult-responsive}",
+          "type": "spacing"
         }
       }
     }

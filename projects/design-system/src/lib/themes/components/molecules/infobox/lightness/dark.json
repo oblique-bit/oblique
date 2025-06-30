@@ -5,107 +5,107 @@
         "color": {
           "icon": {
             "info": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.info.fg.contrast-medium}"
+              "value": "{ob.s.color.status.info.fg.contrast-medium}",
+              "type": "color"
             },
             "error": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+              "value": "{ob.s.color.status.critical.fg.contrast-high}",
+              "type": "color"
             },
             "warning": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+              "value": "{ob.s.color.status.attention.fg.contrast-high}",
+              "type": "color"
             },
             "resolved": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.resolved.fg.contrast-medium}"
+              "value": "{ob.s.color.status.resolved.fg.contrast-medium}",
+              "type": "color"
             },
             "fatal": {
-              "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}"
+              "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
+              "type": "color"
             },
             "fatal-test": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+              "value": "{ob.s.color.status.critical.fg.contrast-high}",
+              "type": "color"
             }
           },
           "border": {
             "info": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.info.fg.contrast-medium}"
+              "value": "{ob.s.color.status.info.fg.contrast-medium}",
+              "type": "color"
             },
             "error": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+              "value": "{ob.s.color.status.critical.fg.contrast-high}",
+              "type": "color"
             },
             "warning": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+              "value": "{ob.s.color.status.attention.fg.contrast-high}",
+              "type": "color"
             },
             "success": {
-              "$type": "color",
-              "$value": "{ob.c.infobox.color.icon.resolved}"
+              "value": "{ob.c.infobox.color.icon.resolved}",
+              "type": "color"
             },
             "fatal": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.fatal.bg}"
+              "value": "{ob.s.color.status.fatal.bg}",
+              "type": "color"
             },
             "fatal-test": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.fatal.bg}"
+              "value": "{ob.s.color.status.fatal.bg}",
+              "type": "color"
             }
           },
           "surface": {
             "info": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.info.bg.contrast-medium}"
+              "value": "{ob.s.color.status.info.bg.contrast-medium}",
+              "type": "color"
             },
             "error": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.critical.bg.contrast-low}"
+              "value": "{ob.s.color.status.critical.bg.contrast-low}",
+              "type": "color"
             },
             "warning": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.attention.bg.contrast-medium}"
+              "value": "{ob.s.color.status.attention.bg.contrast-medium}",
+              "type": "color"
             },
             "success": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.resolved.bg.contrast-medium}"
+              "value": "{ob.s.color.status.resolved.bg.contrast-medium}",
+              "type": "color"
             },
             "fatal": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.fatal.bg}",
-              "$description": "A darker background because of the requirement from F.Gabsa to make a special variant that is consistant with the Bundeskanzlei Alertbanner:\nhttps://swiss.github.io/designsystem/?path=/docs/components-alertbanner--example"
+              "value": "{ob.s.color.status.fatal.bg}",
+              "description": "A darker background because of the requirement from F.Gabsa to make a special variant that is consistant with the Bundeskanzlei Alertbanner:\nhttps://swiss.github.io/designsystem/?path=/docs/components-alertbanner--example",
+              "type": "color"
             },
             "fatal-test": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.critical.bg.contrast-low}"
+              "value": "{ob.s.color.status.critical.bg.contrast-low}",
+              "type": "color"
             }
           },
           "fg": {
             "info": {
-              "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest}"
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
+              "type": "color"
             },
             "error": {
-              "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest}"
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
+              "type": "color"
             },
             "warning": {
-              "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest}"
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
+              "type": "color"
             },
             "success": {
-              "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest}"
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
+              "type": "color"
             },
             "fatal": {
-              "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}"
+              "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
+              "type": "color"
             },
             "fatal-test": {
-              "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest}"
+              "value": "{ob.s.color.neutral.fg.contrast-highest}",
+              "type": "color"
             }
           }
         }

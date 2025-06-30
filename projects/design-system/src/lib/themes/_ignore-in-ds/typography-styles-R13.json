@@ -4,307 +4,307 @@
       "components-only": {
         "alert-default": {
           "text": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Standard text style for basic alert messages. R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Standard text style for basic alert messages. R13 token.",
+            "type": "typography"
           }
         },
         "alert-notification": {
           "title": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.strong}",
-            "$description": "Bolder heading text for notification alerts. R13 token."
+            "value": "{ob.s.typography.content.body.strong}",
+            "description": "Bolder heading text for notification alerts. R13 token.",
+            "type": "typography"
           },
           "text": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Body text for notification alert content. R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Body text for notification alert content. R13 token.",
+            "type": "typography"
           }
         },
         "autocomplete": {
           "label": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Text style for autocomplete component. R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Text style for autocomplete component. R13 token.",
+            "type": "typography"
           }
         },
         "badge": {
           "label": {
             "sm": {
-              "$type": "typography",
-              "$value": "{ob.s.typography.type-scale.xs.normal}",
-              "$description": "Small badge label text for compact displays. R13 token."
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "description": "Small badge label text for compact displays. R13 token.",
+              "type": "typography"
             },
             "lg": {
-              "$type": "typography",
-              "$value": "{ob.s.typography.type-scale.lg.normal}",
-              "$description": "Large badge label text for more prominent displays. R13 token."
+              "value": "{ob.s.typography.type-scale.lg.normal}",
+              "description": "Large badge label text for more prominent displays. R13 token.",
+              "type": "typography"
             }
           }
         },
         "breadcrumb": {
           "label": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.normal}",
-            "$description": "Text style for breadcrumb navigation items. R13 token."
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "description": "Text style for breadcrumb navigation items. R13 token.",
+            "type": "typography"
           }
         },
         "button": {
           "label": {
             "sm": {
-              "$type": "typography",
-              "$value": "{ob.s.typography.type-scale.xs.normal}",
-              "$description": "Small button text for compact buttons. R13 token."
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "description": "Small button text for compact buttons. R13 token.",
+              "type": "typography"
             },
             "md": {
-              "$type": "typography",
-              "$value": "{ob.s.typography.type-scale.md.normal}",
-              "$description": "Medium button text for standard buttons. R13 token."
+              "value": "{ob.s.typography.type-scale.md.normal}",
+              "description": "Medium button text for standard buttons. R13 token.",
+              "type": "typography"
             },
             "lg": {
-              "$type": "typography",
-              "$value": "{ob.s.typography.type-scale.lg.normal}",
-              "$description": "Large button text for prominent buttons. R13 token."
+              "value": "{ob.s.typography.type-scale.lg.normal}",
+              "description": "Large button text for prominent buttons. R13 token.",
+              "type": "typography"
             }
           }
         },
         "card": {
           "title": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.strong}",
-            "$description": "Body-sized text with strong weight creates clear card headers that stand out without being as dominant as page headings. R13 token."
+            "value": "{ob.s.typography.content.body.strong}",
+            "description": "Body-sized text with strong weight creates clear card headers that stand out without being as dominant as page headings. R13 token.",
+            "type": "typography"
           },
           "subtitle": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.normal}",
-            "$description": "Smaller than the title to establish hierarchy, using normal weight to differentiate from the more prominent title while providing supporting context. R13 token."
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "description": "Smaller than the title to establish hierarchy, using normal weight to differentiate from the more prominent title while providing supporting context. R13 token.",
+            "type": "typography"
           },
           "content": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.normal}",
-            "$description": "Small, regular text creates readable content density within the confined card space. R13 token."
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "description": "Small, regular text creates readable content density within the confined card space. R13 token.",
+            "type": "typography"
           },
           "footer": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.xs.normal}",
-            "$description": "Extra-small text for supplementary information, creating clear visual separation from main card content and indicating its secondary importance. R13 token."
+            "value": "{ob.s.typography.type-scale.xs.normal}",
+            "description": "Extra-small text for supplementary information, creating clear visual separation from main card content and indicating its secondary importance. R13 token.",
+            "type": "typography"
           }
         },
         "chip": {
           "label": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.normal}",
-            "$description": "Compact text fitting the small footprint of chips, ensuring they remain unobtrusive interface elements while still being readable. R13 token."
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "description": "Compact text fitting the small footprint of chips, ensuring they remain unobtrusive interface elements while still being readable. R13 token.",
+            "type": "typography"
           }
         },
         "datepicker": {
           "label": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.xs.normal}",
-            "$description": "Text style for all the items inside of a datepicker component. R13 token."
+            "value": "{ob.s.typography.type-scale.xs.normal}",
+            "description": "Text style for all the items inside of a datepicker component. R13 token.",
+            "type": "typography"
           }
         },
         "dialog": {
           "title": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.heading.default.H2}",
-            "$description": "An H2 heading for dialog titles establishes their importance as temporary focal points that interrupt the main interface while still adhering to the structural hierarchy for accessibility purposes. R13 token."
+            "value": "{ob.s.typography.content.heading.default.H2}",
+            "description": "An H2 heading for dialog titles establishes their importance as temporary focal points that interrupt the main interface while still adhering to the structural hierarchy for accessibility purposes. R13 token.",
+            "type": "typography"
           },
           "text": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Standard body text ensures dialog content is highly readable, using the same styling as main content for consistency. R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Standard body text ensures dialog content is highly readable, using the same styling as main content for consistency. R13 token.",
+            "type": "typography"
           }
         },
         "expansion-panel": {
           "title": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.strong}",
-            "$description": "Heading text for collapsible panels. R13 token."
+            "value": "{ob.s.typography.content.body.strong}",
+            "description": "Heading text for collapsible panels. R13 token.",
+            "type": "typography"
           },
           "desc": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Description text for additional context. R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Description text for additional context. R13 token.",
+            "type": "typography"
           },
           "body": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Main content text for expanded panels, consistent in size with other body content.  R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Main content text for expanded panels, consistent in size with other body content.  R13 token.",
+            "type": "typography"
           }
         },
         "file-upload": {
           "caption": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Text style for file upload component labels."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Text style for file upload component labels.",
+            "type": "typography"
           },
           "hint": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.normal}",
-            "$description": "Small text for short supplementary information."
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "description": "Small text for short supplementary information.",
+            "type": "typography"
           }
         },
         "form": {
           "input": {
             "label": {
-              "$type": "typography",
-              "$value": "{ob.s.typography.type-scale.xs.normal}",
-              "$description": "Compact size for text-based input labels. They need to be easy to find and read but shouldn't draw attention to themselves. R13 token."
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "description": "Compact size for text-based input labels. They need to be easy to find and read but shouldn't draw attention to themselves. R13 token.",
+              "type": "typography"
             },
             "user-input": {
-              "$type": "typography",
-              "$value": "{ob.s.typography.content.body.normal}",
-              "$description": "Body-sized text for text-based user input. R13 token."
+              "value": "{ob.s.typography.content.body.normal}",
+              "description": "Body-sized text for text-based user input. R13 token.",
+              "type": "typography"
             },
             "hint": {
-              "$type": "typography",
-              "$value": "{ob.s.typography.type-scale.xs.normal}",
-              "$description": "Small text for short supplementary information. R13 token."
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "description": "Small text for short supplementary information. R13 token.",
+              "type": "typography"
             }
           },
           "radio-checkbox": {
             "label": {
-              "$type": "typography",
-              "$value": "{ob.s.typography.content.body.normal}",
-              "$description": "Body text size ensures these critical selection labels are clearly readable, as they contain the actual choices users are selecting. R13 token."
+              "value": "{ob.s.typography.content.body.normal}",
+              "description": "Body text size ensures these critical selection labels are clearly readable, as they contain the actual choices users are selecting. R13 token.",
+              "type": "typography"
             },
             "hint": {
-              "$type": "typography",
-              "$value": "{ob.s.typography.type-scale.xs.normal}",
-              "$description": "Small text for short supplementary information. Currently not in use. R13 token."
+              "value": "{ob.s.typography.type-scale.xs.normal}",
+              "description": "Small text for short supplementary information. Currently not in use. R13 token.",
+              "type": "typography"
             }
           }
         },
         "list-group": {
           "text": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Body text size ensures primary list content is clearly readable. R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Body text size ensures primary list content is clearly readable. R13 token.",
+            "type": "typography"
           },
           "subtext": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.normal}",
-            "$description": "Smaller than primary text creates clear hierarchy within list items, distinguishing supporting information. R13 token."
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "description": "Smaller than primary text creates clear hierarchy within list items, distinguishing supporting information. R13 token.",
+            "type": "typography"
           }
         },
         "header": {
           "app-title": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.xl.normal}",
-            "$description": "Large text that establishes brand identity and creates an anchor point at the top of the interface hierarchy. R13 token."
+            "value": "{ob.s.typography.type-scale.xl.normal}",
+            "description": "Large text that establishes brand identity and creates an anchor point at the top of the interface hierarchy. R13 token.",
+            "type": "typography"
           },
           "horizontal-nav-cell": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "For text in the horizontal main navigation. R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "For text in the horizontal main navigation. R13 token.",
+            "type": "typography"
           },
           "submenu-row-label": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.normal}",
-            "$description": "For navigation items within dropdown menus. R13 token."
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "description": "For navigation items within dropdown menus. R13 token.",
+            "type": "typography"
           },
           "language-label": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.normal}",
-            "$description": "Small size that should be accessible but not compete with main navigation. R13 token."
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "description": "Small size that should be accessible but not compete with main navigation. R13 token.",
+            "type": "typography"
           }
         },
         "off-canvas": {
           "title": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.xl.normal}",
-            "$description": "Large text that establishes the side panel's context and creates a clear entry point for this temporary interface element. R13 token."
+            "value": "{ob.s.typography.type-scale.xl.normal}",
+            "description": "Large text that establishes the side panel's context and creates a clear entry point for this temporary interface element. R13 token.",
+            "type": "typography"
           }
         },
         "footer": {
           "link": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Text style for clickable links in footer. R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Text style for clickable links in footer. R13 token.",
+            "type": "typography"
           },
           "legal": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.xs.normal}",
-            "$description": "Small text style for legal text, disclaimers or information. R13 token."
+            "value": "{ob.s.typography.type-scale.xs.normal}",
+            "description": "Small text style for legal text, disclaimers or information. R13 token.",
+            "type": "typography"
           }
         },
         "nav-tree": {
           "label": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Text style for hierarchical navigation items in the sidebar. R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Text style for hierarchical navigation items in the sidebar. R13 token.",
+            "type": "typography"
           }
         },
         "paginator": {
           "label": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.xs.normal}",
-            "$description": "Compact size for the component's helper text. R13 token."
+            "value": "{ob.s.typography.type-scale.xs.normal}",
+            "description": "Compact size for the component's helper text. R13 token.",
+            "type": "typography"
           }
         },
         "popover": {
           "title": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Body-sized text ensures contextual popup headings are immediately readable when they appear. R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Body-sized text ensures contextual popup headings are immediately readable when they appear. R13 token.",
+            "type": "typography"
           },
           "text": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.normal}",
-            "$description": "Slightly smaller than the title creates hierarchy within the popover while maintaining readability for this temporarily visible content. R13 token."
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "description": "Slightly smaller than the title creates hierarchy within the popover while maintaining readability for this temporarily visible content. R13 token.",
+            "type": "typography"
           }
         },
         "slider": {
           "number": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.normal}",
-            "$description": "Text style for numeric values on sliders. R13 token."
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "description": "Text style for numeric values on sliders. R13 token.",
+            "type": "typography"
           }
         },
         "slide-toggle": {
           "label": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Body text size ensures these critical selection labels are clearly readable, as they contain the actual choices users are making. R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Body text size ensures these critical selection labels are clearly readable, as they contain the actual choices users are making. R13 token.",
+            "type": "typography"
           }
         },
         "stepper": {
           "step-number": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.normal}",
-            "$description": "Text style for the numeric step indicators in multi-step processes. R13 token."
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "description": "Text style for the numeric step indicators in multi-step processes. R13 token.",
+            "type": "typography"
           },
           "step-label": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Text style for the step descriptions in multi-step processes. R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Text style for the step descriptions in multi-step processes. R13 token.",
+            "type": "typography"
           }
         },
         "table": {
           "header": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.strong}",
-            "$description": "Text style for table column headers. R13 token."
+            "value": "{ob.s.typography.content.body.strong}",
+            "description": "Text style for table column headers. R13 token.",
+            "type": "typography"
           },
           "cell": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.content.body.normal}",
-            "$description": "Text style for text-based table cell content. R13 token."
+            "value": "{ob.s.typography.content.body.normal}",
+            "description": "Text style for text-based table cell content. R13 token.",
+            "type": "typography"
           }
         },
         "tabs": {
           "label": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.normal}",
-            "$description": "Text style for tab labels. R13 token."
+            "value": "{ob.s.typography.type-scale.sm.normal}",
+            "description": "Text style for tab labels. R13 token.",
+            "type": "typography"
           }
         },
         "tooltip": {
           "label": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.xs.normal}",
-            "$description": "Small text fits the compact nature of tooltips, providing just-in-time guidance without overwhelming the interface. R13 token."
+            "value": "{ob.s.typography.type-scale.xs.normal}",
+            "description": "Small text fits the compact nature of tooltips, providing just-in-time guidance without overwhelming the interface. R13 token.",
+            "type": "typography"
           }
         }
       }

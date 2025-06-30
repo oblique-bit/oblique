@@ -6,135 +6,135 @@
           "state": {
             "fg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-highest}",
-                "$description": "References the neutral semantic color to ensure the color consistency."
+                "value": "{ob.s.color.neutral.fg.contrast-highest}",
+                "description": "References the neutral semantic color to ensure the color consistency.",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg.contrast-medium}",
-                "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
+                "value": "{ob.s.color.interaction.emphasis-default.fg.contrast-medium}",
+                "description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect.",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-high}",
-                "$description": "References the neutral semantic color to ensure the color consistency."
+                "value": "{ob.s.color.neutral.fg.contrast-high}",
+                "description": "References the neutral semantic color to ensure the color consistency.",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-high}",
-                "$description": "References the neutral semantic color to ensure the color consistency."
+                "value": "{ob.s.color.neutral.fg.contrast-high}",
+                "description": "References the neutral semantic color to ensure the color consistency.",
+                "type": "color"
               },
               "selected": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-high}",
-                "$description": "References the neutral semantic color to ensure the color consistency."
+                "value": "{ob.s.color.neutral.fg.contrast-high}",
+                "description": "References the neutral semantic color to ensure the color consistency.",
+                "type": "color"
               },
               "visited": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-highest}",
-                "$description": "For text-links.References the neutral semantic color to ensure the color consistency."
+                "value": "{ob.s.color.neutral.fg.contrast-highest}",
+                "description": "For text-links.References the neutral semantic color to ensure the color consistency.",
+                "type": "color"
               },
               "disabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.default}",
-                "$description": "Used in text-links, secondary and tertiary buttons."
+                "value": "{ob.s.color.interaction.emphasis-default.fg-disabled.default}",
+                "description": "Used in text-links, secondary and tertiary buttons.",
+                "type": "color"
               }
             },
             "fg-inverse": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
-                "$description": "References directly the text color to ensure the color consistency"
+                "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
+                "description": "References directly the text color to ensure the color consistency",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg.contrast-low-inverse}",
-                "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
+                "value": "{ob.s.color.interaction.emphasis-default.fg.contrast-low-inverse}",
+                "description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect.",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-high-inverse}"
+                "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-high-inverse}"
+                "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
+                "type": "color"
               },
               "selected": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-high-inverse}"
+                "value": "{ob.s.color.neutral.fg.contrast-high-inverse}",
+                "type": "color"
               },
               "visited": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
-                "$description": "For text-links."
+                "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
+                "description": "For text-links.",
+                "type": "color"
               },
               "disabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg.contrast-high-inverse}"
+                "value": "{ob.s.color.interaction.emphasis-default.fg.contrast-high-inverse}",
+                "type": "color"
               }
             },
             "bg": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg.contrast-high-inverse}"
+                "value": "{ob.s.color.interaction.emphasis-default.fg.contrast-high-inverse}",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg.contrast-high-inverse}"
+                "value": "{ob.s.color.interaction.emphasis-default.fg.contrast-high-inverse}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg.contrast-high-inverse}"
+                "value": "{ob.s.color.interaction.emphasis-default.fg.contrast-high-inverse}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg.contrast-medium-inverse}"
+                "value": "{ob.s.color.interaction.emphasis-default.fg.contrast-medium-inverse}",
+                "type": "color"
               },
               "selected": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg.contrast-high-inverse}"
+                "value": "{ob.s.color.interaction.emphasis-default.fg.contrast-high-inverse}",
+                "type": "color"
               },
               "visited": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}",
-                "$description": "For text-links."
+                "value": "{ob.s.color.static.no-color}",
+                "description": "For text-links.",
+                "type": "color"
               },
               "disabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}"
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
               }
             },
             "bg-inverse": {
               "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-medium-inverse}",
-                "$description": "References directly the text color to ensure the color consistency"
+                "value": "{ob.s.color.neutral.bg.contrast-medium-inverse}",
+                "description": "References directly the text color to ensure the color consistency",
+                "type": "color"
               },
               "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inverse}"
+                "value": "{ob.s.color.neutral.bg.contrast-highest-inverse}",
+                "type": "color"
               },
               "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-high-inverse}"
+                "value": "{ob.s.color.neutral.bg.contrast-high-inverse}",
+                "type": "color"
               },
               "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inverse}"
+                "value": "{ob.s.color.neutral.bg.contrast-highest-inverse}",
+                "type": "color"
               },
               "selected": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}"
+                "value": "{ob.s.color.static.no-color}",
+                "type": "color"
               },
               "visited": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}",
-                "$description": "For text-links."
+                "value": "{ob.s.color.static.no-color}",
+                "description": "For text-links.",
+                "type": "color"
               },
               "disabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.opacity}"
+                "value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.opacity}",
+                "type": "color"
               }
             }
           }

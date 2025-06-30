@@ -3,15 +3,15 @@
     "c": {
       "spinner": {
         "sizing": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.600}",
-          "$description": "Optimized spinner size suitable for both 1) smaller components like Card and 2) full-page displays, ensuring it is neither too small nor too large."
+          "value": "{ob.p.size.600}",
+          "description": "Optimized spinner size suitable for both 1) smaller components like Card and 2) full-page displays, ensuring it is neither too small nor too large.",
+          "type": "sizing"
         },
         "color": {
           "active": {
-            "$type": "color",
-            "$value": "{ob.s.color.status.progress.fg.contrast-high}",
-            "$description": "Color indicating the active part of the loading."
+            "value": "{ob.s.color.status.progress.fg.contrast-high}",
+            "description": "Color indicating the active part of the loading.",
+            "type": "color"
           },
           "inactive": {
             "$extensions": {
@@ -23,38 +23,38 @@
                 }
               }
             },
-            "$type": "color",
-            "$value": "{ob.s.color.status.progress.fg.contrast-high}",
-            "$description": "Color indicating the inactive part of the loading."
+            "value": "{ob.s.color.status.progress.fg.contrast-high}",
+            "description": "Color indicating the inactive part of the loading.",
+            "type": "color"
           }
         },
         "border-radius": {
-          "$type": "borderRadius",
-          "$value": "{ob.s.radii.sm}",
-          "$description": "Radius SM applied to give the spinner a more organic appearance."
+          "value": "{ob.s.radii.sm}",
+          "description": "Radius SM applied to give the spinner a more organic appearance.",
+          "type": "borderRadius"
         },
         "border-width": {
-          "$type": "borderWidth",
-          "$value": "{ob.s.border-width.3xl}",
-          "$description": "The spinner border is thick enough to stand out against the busy visual environment surrounding it."
+          "value": "{ob.s.border-width.3xl}",
+          "description": "The spinner border is thick enough to stand out against the busy visual environment surrounding it.",
+          "type": "borderWidth"
         },
         "animation": {
           "speed": {
-            "$type": "number",
-            "$value": "0",
-            "$description": "Some number. check with R.Giller"
+            "value": "0",
+            "description": "Some number. check with R.Giller",
+            "type": "number"
           },
           "pause": {
-            "$type": "number",
-            "$value": "0",
-            "$description": "Some number. check with R.Giller"
+            "value": "0",
+            "description": "Some number. check with R.Giller",
+            "type": "number"
           }
         },
         "fx": {
           "blur": {
-            "$type": "number",
-            "$value": "{ob.s.fx.blur.sm}",
-            "$description": "Background blur on the parent element behind the spinner. Has to be validated."
+            "value": "{ob.s.fx.blur.sm}",
+            "description": "Background blur on the parent element behind the spinner. Has to be validated.",
+            "type": "number"
           }
         }
       }

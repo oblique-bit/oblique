@@ -3,143 +3,143 @@
     "s": {
       "radii": {
         "none": {
-          "$type": "borderRadius",
-          "$value": "{ob.p.radii.none}"
+          "value": "{ob.p.radii.none}",
+          "type": "borderRadius"
         },
         "sm": {
-          "$type": "borderRadius",
-          "$value": "{ob.p.radii.50}"
+          "value": "{ob.p.radii.50}",
+          "type": "borderRadius"
         },
         "md": {
-          "$type": "borderRadius",
-          "$value": "{ob.p.radii.100}"
+          "value": "{ob.p.radii.100}",
+          "type": "borderRadius"
         },
         "lg": {
-          "$type": "borderRadius",
-          "$value": "{ob.p.radii.200}"
+          "value": "{ob.p.radii.200}",
+          "type": "borderRadius"
         },
         "round": {
-          "$type": "borderRadius",
-          "$value": "{ob.p.radii.round}"
+          "value": "{ob.p.radii.round}",
+          "type": "borderRadius"
         }
       },
       "border-width": {
         "xs": {
-          "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.100}"
+          "value": "{ob.p.borderWidth.100}",
+          "type": "borderWidth"
         },
         "sm": {
-          "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.200}"
+          "value": "{ob.p.borderWidth.200}",
+          "type": "borderWidth"
         },
         "md": {
-          "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.300}"
+          "value": "{ob.p.borderWidth.300}",
+          "type": "borderWidth"
         },
         "lg": {
-          "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.400}"
+          "value": "{ob.p.borderWidth.400}",
+          "type": "borderWidth"
         },
         "xl": {
-          "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.500}"
+          "value": "{ob.p.borderWidth.500}",
+          "type": "borderWidth"
         },
         "2xl": {
-          "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.600}"
+          "value": "{ob.p.borderWidth.600}",
+          "type": "borderWidth"
         },
         "3xl": {
-          "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.700}"
+          "value": "{ob.p.borderWidth.700}",
+          "type": "borderWidth"
         },
         "none": {
-          "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.none}"
+          "value": "{ob.p.borderWidth.none}",
+          "type": "borderWidth"
         }
       },
       "corners": {
         "top-right": {
           "none": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.none}"
+            "value": "{ob.s.radii.none}",
+            "type": "borderRadius"
           },
           "sm": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.sm}"
+            "value": "{ob.s.radii.sm}",
+            "type": "borderRadius"
           },
           "md": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.md}"
+            "value": "{ob.s.radii.md}",
+            "type": "borderRadius"
           },
           "lg": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.lg}"
+            "value": "{ob.s.radii.lg}",
+            "type": "borderRadius"
           }
         },
         "top-left": {
           "none": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.none}"
+            "value": "{ob.s.radii.none}",
+            "type": "borderRadius"
           },
           "sm": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.sm}"
+            "value": "{ob.s.radii.sm}",
+            "type": "borderRadius"
           },
           "md": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.md}"
+            "value": "{ob.s.radii.md}",
+            "type": "borderRadius"
           },
           "lg": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.lg}"
+            "value": "{ob.s.radii.lg}",
+            "type": "borderRadius"
           }
         },
         "bottom-left": {
           "none": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.none}"
+            "value": "{ob.s.radii.none}",
+            "type": "borderRadius"
           },
           "sm": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.sm}"
+            "value": "{ob.s.radii.sm}",
+            "type": "borderRadius"
           },
           "md": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.md}"
+            "value": "{ob.s.radii.md}",
+            "type": "borderRadius"
           },
           "lg": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.lg}"
+            "value": "{ob.s.radii.lg}",
+            "type": "borderRadius"
           }
         },
         "bottom-right": {
           "none": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.none}"
+            "value": "{ob.s.radii.none}",
+            "type": "borderRadius"
           },
           "sm": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.sm}"
+            "value": "{ob.s.radii.sm}",
+            "type": "borderRadius"
           },
           "md": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.md}"
+            "value": "{ob.s.radii.md}",
+            "type": "borderRadius"
           },
           "lg": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.lg}"
+            "value": "{ob.s.radii.lg}",
+            "type": "borderRadius"
           }
         }
       },
       "border": {
         "focus": {
-          "$type": "border",
-          "$value": {
+          "value": {
             "color": "{ob.s.color.interaction.border.focus}",
             "width": "{ob.s.border-width.2xl}",
             "style": "solid"
           },
-          "$description": "focus for all clickable elements and form elements."
+          "description": "focus for all clickable elements and form elements.",
+          "type": "border"
         }
       }
     }

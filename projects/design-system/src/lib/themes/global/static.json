@@ -3,40 +3,64 @@
     "g": {
       "scale": {
         "mult-static": {
-          "$type": "number",
-          "$value": "4"
+          "value": "4",
+          "type": "number"
         }
       },
       "breakpoints": {
         "0": {
-          "$type": "sizing",
-          "$value": "0",
-          "$description": "Base value for smallest viewports (0px and larger)."
+          "value": "0",
+          "description": "Base value for smallest viewports (0px and larger).",
+          "type": "sizing"
         },
         "640": {
-          "$type": "sizing",
-          "$value": "640",
-          "$description": "Used for small viewports (640px and larger)."
+          "value": "640",
+          "description": "Used for small viewports (640px and larger).",
+          "type": "sizing"
         },
         "768": {
-          "$type": "sizing",
-          "$value": "768",
-          "$description": "Used for medium viewports (768px and larger)."
+          "value": "768",
+          "description": "Used for medium viewports (768px and larger).",
+          "type": "sizing"
         },
         "1024": {
-          "$type": "sizing",
-          "$value": "1024",
-          "$description": "Used for large viewports (1024px and larger)."
+          "value": "1024",
+          "description": "Used for large viewports (1024px and larger).",
+          "type": "sizing"
         },
         "1280": {
-          "$type": "sizing",
-          "$value": "1280",
-          "$description": "Used for extra large viewports (1280px and larger)."
+          "value": "1280",
+          "description": "Used for extra large viewports (1280px and larger).",
+          "type": "sizing"
         },
         "1536": {
-          "$type": "sizing",
-          "$value": "1536",
-          "$description": "Used for ultra-wide viewports (1536px and larger)."
+          "value": "1536",
+          "description": "Used for ultra-wide viewports (1536px and larger).",
+          "type": "sizing"
+        }
+      },
+      "color": {
+        "theme": {
+          "lightness": {
+            "light": {
+              "value": "light",
+              "type": "text"
+            },
+            "dark": {
+              "value": "dark",
+              "type": "text"
+            }
+          },
+          "interaction-emphasis": {
+            "default": {
+              "value": "default",
+              "type": "text"
+            },
+            "muted": {
+              "value": "muted",
+              "type": "text"
+            }
+          }
         }
       }
     }
