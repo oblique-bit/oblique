@@ -295,12 +295,6 @@
     "$figmaVariableReferences": {
       "ob.c.infobox.spacing.row-gap": "b1dfc26f746bb82e4b495bc6bd83af223653b787",
       "ob.g.scale.mult-static": "fe4fd37edff7c6cad4647b2e1ab04243bd63c05d",
-      "ob.g.breakpoint.0": "2e2d27f8b1a437fa00ac54a095a6f50cef0b4710",
-      "ob.g.breakpoint.640": "51ab159889cd11a8407351130ed84e9c369bed6d",
-      "ob.g.breakpoint.768": "e24c2b8efe600c9fdd38147086d1cdf3bd642b4e",
-      "ob.g.breakpoint.1024": "9e5132de233ab83c024955c7075d1d9cf6872077",
-      "ob.g.breakpoint.1280": "10e712348d1f1e38fb40c556124d0a848b9eede8",
-      "ob.g.breakpoint.1536": "f03fcd11071dc72ff1bcdd742505ccdf32703f21",
       "ob.s.radii.none": "72fc92c3126e3b0da668b769658d5dc0d02f0705",
       "ob.s.radii.sm": "9cd75a0b4d01a13107ea00ca850cf6d79e682a8a",
       "ob.s.radii.md": "f3daec18129daf8d30fa5aa82ac29afc9e326e63",
@@ -658,7 +652,13 @@
       "figma-doc.color.fg-static": "9599d70138fdc71192bcdd0f5d33d0ef1cd04357",
       "figma-doc.color.figma-canvas-bg": "c6221461e476628d52758769b4b3566a74aeeec4",
       "figma-doc.color.figma-section-bg": "18aacd22d1935c693a1ab7049c12f07d85a7b7d0",
-      "figma-doc.color.figma-section-border": "738bd1a2d13ba16c757daa60ecb5a3aebc715a08"
+      "figma-doc.color.figma-section-border": "738bd1a2d13ba16c757daa60ecb5a3aebc715a08",
+      "ob.g.breakpoints.0": "2e2d27f8b1a437fa00ac54a095a6f50cef0b4710",
+      "ob.g.breakpoints.640": "51ab159889cd11a8407351130ed84e9c369bed6d",
+      "ob.g.breakpoints.768": "e24c2b8efe600c9fdd38147086d1cdf3bd642b4e",
+      "ob.g.breakpoints.1024": "9e5132de233ab83c024955c7075d1d9cf6872077",
+      "ob.g.breakpoints.1280": "10e712348d1f1e38fb40c556124d0a848b9eede8",
+      "ob.g.breakpoints.1536": "f03fcd11071dc72ff1bcdd742505ccdf32703f21"
     },
     "group": "core"
   },

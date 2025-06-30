@@ -124,7 +124,7 @@
           "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         }
       },
-      "fontWeight": {
+      "font-weight": {
         "0": {
           "$type": "fontWeights",
           "$value": "Regular"

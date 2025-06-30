@@ -7,7 +7,7 @@
           "$value": "4"
         }
       },
-      "breakpoint": {
+      "breakpoints": {
         "0": {
           "$type": "sizing",
           "$value": "0",

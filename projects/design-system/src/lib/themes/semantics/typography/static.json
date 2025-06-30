@@ -21,23 +21,23 @@
       "font-weight": {
         "regular": {
           "$type": "fontWeights",
-          "$value": "{ob.p.fontWeight.0}"
+          "$value": "{ob.p.font-weight.0}"
         },
         "medium": {
           "$type": "fontWeights",
-          "$value": "{ob.p.fontWeight.100}"
+          "$value": "{ob.p.font-weight.100}"
         },
         "semiBold": {
           "$type": "fontWeights",
-          "$value": "{ob.p.fontWeight.200}"
+          "$value": "{ob.p.font-weight.200}"
         },
         "bold": {
           "$type": "fontWeights",
-          "$value": "{ob.p.fontWeight.300}"
+          "$value": "{ob.p.font-weight.300}"
         },
         "extraBold": {
           "$type": "fontWeights",
-          "$value": "{ob.p.fontWeight.400}"
+          "$value": "{ob.p.font-weight.400}"
         }
       },
       "text-decoration": {

@@ -7,7 +7,7 @@
           "$value": {
             "fontSize": "{ob.p.fontSizeUnitless.400}",
             "fontFamily": "{ob.s.font-family.code}",
-            "fontWeight": "{ob.p.fontWeight.100}",
+            "fontWeight": "{ob.p.font-weight.100}",
             "letterSpacing": "{ob.s.letter-spacing.normal}"
           },
           "$description": "Small font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
