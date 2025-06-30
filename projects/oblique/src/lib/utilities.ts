@@ -1,6 +1,13 @@
 import {HttpClient} from '@angular/common/http';
-import {EnvironmentProviders, InjectionToken, Optional, inject, makeEnvironmentProviders, provideAppInitializer} from '@angular/core';
-import {DOCUMENT} from '@angular/common';
+import {
+	DOCUMENT,
+	EnvironmentProviders,
+	InjectionToken,
+	Optional,
+	inject,
+	makeEnvironmentProviders,
+	provideAppInitializer
+} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {TranslateLoader, TranslateModuleConfig, provideTranslateService} from '@ngx-translate/core';
 import {OB_FLATTEN_TRANSLATION_FILES, ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';

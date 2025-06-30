@@ -11,8 +11,8 @@
 
 	.ob-master-layout-navigation .ob-main-nav .ob-sub-menu & {
 		.ob-master-layout-navigation-go-to-children-button:not(
-				.ob-master-layout-navigation-go-to-children-button-without-url
-			) {
+			.ob-master-layout-navigation-go-to-children-button-without-url
+		) {
 			align-self: flex-end;
 			margin-left: -0.25 * variables.$ob-spacing-xs;
 

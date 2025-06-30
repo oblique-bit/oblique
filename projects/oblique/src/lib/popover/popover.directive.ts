@@ -1,4 +1,5 @@
 import {
+	DOCUMENT,
 	Directive,
 	ElementRef,
 	EventEmitter,
@@ -17,7 +18,6 @@ import {
 	ViewContainerRef,
 	inject
 } from '@angular/core';
-import {DOCUMENT} from '@angular/common';
 import {Instance, Options, Placement, createPopper} from '@popperjs/core';
 import {race} from 'rxjs';
 import {filter, first} from 'rxjs/operators';

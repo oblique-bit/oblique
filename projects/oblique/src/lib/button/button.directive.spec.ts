@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonDirective} from './button.directive';
 
@@ -30,7 +31,7 @@ describe(ObButtonDirective.name, () => {
 		TestBed.resetTestingModule();
 		await TestBed.configureTestingModule({
 			declarations: [ButtonDirectiveTestComponent],
-			imports: [MatButtonModule, ObButtonDirective]
+			imports: [MatButtonModule, ObButtonDirective, NoopAnimationsModule]
 		}).compileComponents();
 	});
 

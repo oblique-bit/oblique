@@ -1,5 +1,4 @@
-import {Component, ElementRef, type Signal, computed, inject, viewChild} from '@angular/core';
-import {DOCUMENT} from '@angular/common';
+import {Component, DOCUMENT, ElementRef, type Signal, computed, inject, viewChild} from '@angular/core';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatButton} from '@angular/material/button';

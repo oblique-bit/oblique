@@ -1,5 +1,6 @@
 import {
 	Component,
+	DOCUMENT,
 	EventEmitter,
 	HostListener,
 	type OnChanges,
@@ -13,7 +14,6 @@ import {
 	input,
 	numberAttribute
 } from '@angular/core';
-import {DOCUMENT} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
