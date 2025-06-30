@@ -565,14 +565,32 @@
       "inlineTemplate": false,
       "prefix": "ob",
       "style": "scss",
-      "standalone": true
+      "standalone": true,
+      "type": "component"
     },
     "@schematics/angular:directive": {
       "prefix": "ob",
-      "standalone": true
+      "standalone": true,
+      "type": "directive"
     },
     "@schematics/angular:pipe": {
-      "standalone": true
+      "standalone": true,
+      "typeSeparator": "."
+    },
+    "@schematics/angular:service": {
+      "type": "service"
+    },
+    "@schematics/angular:guard": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:interceptor": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:module": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:resolver": {
+      "typeSeparator": "."
     }
   }
 }

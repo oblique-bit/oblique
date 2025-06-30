@@ -40,7 +40,8 @@ export default [
 			// rules that are not respected because too costly to refactor
 			'@angular-eslint/template/label-has-associated-control': 'off',
 			'@angular-eslint/template/no-call-expression': 'off',
-			'@angular-eslint/template/no-inline-styles': 'off'
+			'@angular-eslint/template/no-inline-styles': 'off',
+			'@angular-eslint/template/cyclomatic-complexity': 'off'
 		}
 	}
 ];

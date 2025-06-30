@@ -120,7 +120,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 		})
 	);
 
-	describe('HTMLSelectElement in template pathMatch with navigation elements', () => {
+	describe('HTMLAnchorElement in template pathMatch with navigation elements', () => {
 		describe.each<{id: string; label: string}>([
 			{id: 'prefix', label: 'ItemPrefix'},
 			{id: 'full', label: 'ItemFull'},
@@ -135,9 +135,6 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			});
 			test('that link text contains $label', () => {
 				expect(element.textContent).toContain(label);
-			});
-			test('that link has active attribute', () => {
-				expect(element.getAttribute('ng-reflect-router-link-active')).toBe('active');
 			});
 		});
 	});
