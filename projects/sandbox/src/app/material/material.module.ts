@@ -57,12 +57,12 @@ import {IconSampleComponent} from './icon/icon.sample.component';
 import {MandatorySampleComponent} from './mandatory/mandatory.sample.component';
 import {FormComponent} from './form/form.component';
 import {TableEditComponent} from './table/table-edit.component';
-import {ObPaginatorModule} from '@oblique/paginator/ob-paginator.module';
 import {SlideToggleComponent} from './slide-toggle/slide-toggle.component';
 import {MenuComponent} from './menu/menu.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {TranslateModule} from '@ngx-translate/core';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 const appRoutes: Routes = [
 	{path: 'badge', component: BadgeComponent},
@@ -133,6 +133,7 @@ const appRoutes: Routes = [
 		MatListModule,
 		MatMenuModule,
 		MatOptionModule,
+		MatPaginatorModule,
 		MatProgressBarModule,
 		MatProgressSpinnerModule,
 		MatRadioModule,
@@ -150,7 +151,6 @@ const appRoutes: Routes = [
 		ObColumnLayoutModule,
 		ObErrorMessagesModule,
 		ObInputClearModule,
-		ObPaginatorModule,
 		ObSelectableModule,
 		ObSpinnerModule,
 		ReactiveFormsModule,
