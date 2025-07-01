@@ -158,6 +158,21 @@
               "contrast-low": {
                 "$type": "color",
                 "$value": "{ob.p.colors.blue.700}"
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.blue.200}",
+                "$description": "Auto-generated: matches bg.contrast-low"
+              },
+              "contrast-medium-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.blue.100}",
+                "$description": "Auto-generated: matches bg.contrast-medium"
+              },
+              "contrast-high-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.blue.50}",
+                "$description": "Auto-generated: matches bg.contrast-high"
               }
             }
           },
@@ -200,6 +215,21 @@
               "contrast-low": {
                 "$type": "color",
                 "$value": "{ob.p.colors.green.600}"
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.green.200}",
+                "$description": "Auto-generated: matches bg.contrast-low"
+              },
+              "contrast-medium-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.green.100}",
+                "$description": "Auto-generated: matches bg.contrast-medium"
+              },
+              "contrast-high-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.green.50}",
+                "$description": "Auto-generated: matches bg.contrast-high"
               }
             }
           },
@@ -253,6 +283,21 @@
               "contrast-low": {
                 "$type": "color",
                 "$value": "{ob.p.colors.orange.600}"
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.orange.200}",
+                "$description": "Auto-generated: matches bg.contrast-low"
+              },
+              "contrast-medium-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.orange.100}",
+                "$description": "Auto-generated: matches bg.contrast-medium"
+              },
+              "contrast-high-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.orange.50}",
+                "$description": "Auto-generated: matches bg.contrast-high"
               }
             }
           },
@@ -295,6 +340,21 @@
               "contrast-low": {
                 "$type": "color",
                 "$value": "{ob.p.colors.yellow.600}"
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.yellow.200}",
+                "$description": "Auto-generated: matches bg.contrast-low"
+              },
+              "contrast-medium-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.yellow.100}",
+                "$description": "Auto-generated: matches bg.contrast-medium"
+              },
+              "contrast-high-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.yellow.50}",
+                "$description": "Auto-generated: matches bg.contrast-high"
               }
             }
           },
@@ -337,6 +397,21 @@
               "contrast-low": {
                 "$type": "color",
                 "$value": "{ob.p.colors.teal.600}"
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.teal.200}",
+                "$description": "Auto-generated: matches bg.contrast-low"
+              },
+              "contrast-medium-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.teal.100}",
+                "$description": "Auto-generated: matches bg.contrast-medium"
+              },
+              "contrast-high-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.teal.50}",
+                "$description": "Auto-generated: matches bg.contrast-high"
               }
             }
           },
@@ -379,6 +454,21 @@
               "contrast-low": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.600}"
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.indigo.200}",
+                "$description": "Auto-generated: matches bg.contrast-low"
+              },
+              "contrast-medium-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.indigo.100}",
+                "$description": "Auto-generated: matches bg.contrast-medium"
+              },
+              "contrast-high-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.indigo.50}",
+                "$description": "Auto-generated: matches bg.contrast-high"
               }
             }
           },
@@ -421,6 +511,21 @@
               "contrast-low": {
                 "$type": "color",
                 "$value": "{ob.p.colors.pink.600}"
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.pink.200}",
+                "$description": "Auto-generated: matches bg.contrast-low"
+              },
+              "contrast-medium-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.pink.100}",
+                "$description": "Auto-generated: matches bg.contrast-medium"
+              },
+              "contrast-high-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.pink.50}",
+                "$description": "Auto-generated: matches bg.contrast-high"
               }
             }
           },
@@ -463,6 +568,21 @@
               "contrast-low": {
                 "$type": "color",
                 "$value": "{ob.p.colors.purple.600}"
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.purple.200}",
+                "$description": "Auto-generated: matches bg.contrast-low"
+              },
+              "contrast-medium-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.purple.100}",
+                "$description": "Auto-generated: matches bg.contrast-medium"
+              },
+              "contrast-high-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.purple.50}",
+                "$description": "Auto-generated: matches bg.contrast-high"
               }
             }
           },
@@ -505,6 +625,21 @@
               "contrast-low": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.600}"
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.200}",
+                "$description": "Auto-generated: matches bg.contrast-low"
+              },
+              "contrast-medium-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.100}",
+                "$description": "Auto-generated: matches bg.contrast-medium"
+              },
+              "contrast-high-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.50}",
+                "$description": "Auto-generated: matches bg.contrast-high"
               }
             }
           },
@@ -547,6 +682,21 @@
               "contrast-low": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.700}"
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt.200}",
+                "$description": "Auto-generated: matches bg.contrast-low"
+              },
+              "contrast-medium-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt.100}",
+                "$description": "Auto-generated: matches bg.contrast-medium"
+              },
+              "contrast-high-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt.50}",
+                "$description": "Auto-generated: matches bg.contrast-high"
               }
             }
           },
@@ -589,6 +739,21 @@
               "contrast-low": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.700}"
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt.200}",
+                "$description": "Auto-generated: matches bg.contrast-low"
+              },
+              "contrast-medium-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt.100}",
+                "$description": "Auto-generated: matches bg.contrast-medium"
+              },
+              "contrast-high-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt.50}",
+                "$description": "Auto-generated: matches bg.contrast-high"
               }
             }
           }
@@ -765,15 +930,18 @@
               },
               "contrast-low-inverse": {
                 "$type": "color",
-                "$value": "{ob.p.colors.cobalt.200}"
+                "$value": "{ob.p.colors.cobalt.200}",
+                "$description": "Auto-generated: matches bg.contrast-low"
               },
               "contrast-medium-inverse": {
                 "$type": "color",
-                "$value": "{ob.p.colors.cobalt.100}"
+                "$value": "{ob.p.colors.cobalt.100}",
+                "$description": "Auto-generated: matches bg.contrast-medium"
               },
               "contrast-high-inverse": {
                 "$type": "color",
-                "$value": "{ob.p.colors.cobalt.50}"
+                "$value": "{ob.p.colors.cobalt.50}",
+                "$description": "Auto-generated: matches bg.contrast-high"
               }
             },
             "fg-visited": {
