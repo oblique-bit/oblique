@@ -98,11 +98,6 @@
       "defaultValue": true,
       "description": "Create .npmrc: If you use this flag, it adds an .npmrc file, suitable for projects located within confederation/federal network."
     },
-    "sonar": {
-      "type": "boolean",
-      "defaultValue": true,
-      "description": "Sonar configuration: If set to true, a Sonar configuration is added."
-    },
     "eslint": {
       "type": "boolean",
       "defaultValue": true,
