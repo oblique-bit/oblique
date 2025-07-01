@@ -1,4 +1,4 @@
-import {AfterViewInit, Directive, ElementRef, HostBinding, Input, OnInit, Renderer2, inject} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, HostBinding, OnInit, Renderer2, inject} from '@angular/core';
 import {FormControlName, NgModel, NgModelGroup} from '@angular/forms';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 
@@ -10,10 +10,7 @@ import {ObSchemaValidationDirective} from './schema-validation.directive';
 })
 export class ObSchemaRequiredDirective implements AfterViewInit, OnInit {
 	@HostBinding('attr.aria-required') required: boolean;
-	/**
-	 * @deprecated with Oblique 13.2.0, it will be removed in the next major without replacement
-	 */
-	@Input() name: string;
+
 	private readonly host = inject(ElementRef);
 	private readonly renderer = inject(Renderer2);
 	private readonly model = inject(NgModel, {optional: true});
