@@ -235,13 +235,62 @@
           },
           "fatal": {
             "bg": {
-              "$type": "color",
-              "$value": "{ob.p.colors.red.900}",
-              "$description": "Based on requirement for a special variant that is consistant with the Bundeskanzlei Alert banner."
+              "contrast-high": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.800}"
+              },
+              "contrast-medium": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.700}"
+              },
+              "contrast-low": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.600}"
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.200}",
+                "$description": "Auto-generated: matches fg.contrast-low"
+              },
+              "contrast-medium-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.100}",
+                "$description": "Auto-generated: matches fg.contrast-medium"
+              },
+              "contrast-high-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.50}",
+                "$description": "Auto-generated: matches fg.contrast-high"
+              }
             },
             "fg": {
-              "$type": "color",
-              "$value": "{ob.p.colors.red.100}"
+              "contrast-high": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.50}"
+              },
+              "contrast-medium": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.100}"
+              },
+              "contrast-low": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.200}"
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.600}",
+                "$description": "Auto-generated: matches bg.contrast-low"
+              },
+              "contrast-medium-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.700}",
+                "$description": "Auto-generated: matches bg.contrast-medium"
+              },
+              "contrast-high-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.red.800}",
+                "$description": "Auto-generated: matches bg.contrast-high"
+              }
             }
           },
           "attention": {
