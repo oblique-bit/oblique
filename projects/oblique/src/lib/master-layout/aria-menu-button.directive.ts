@@ -10,9 +10,8 @@ import {isNotKeyboardEventOnButton} from '../utilities';
 	standalone: false
 })
 export class ObAriaMenuButtonDirective implements OnInit {
-	@Input('obAriaMenuButton') @HostBinding('attr.aria-owns') @HostBinding('attr.aria-controls') target: string;
-	@HostBinding('attr.aria-expanded') active = undefined;
-	@HostBinding('attr.aria-haspopup') popup = true;
+	@Input('obAriaMenuButton') @HostBinding('attr.aria-controls') target: string;
+	@HostBinding('attr.aria-expanded') active = false;
 
 	constructor(
 		private readonly globalEvents: ObGlobalEventsService,
@@ -27,7 +26,7 @@ export class ObAriaMenuButtonDirective implements OnInit {
 	@HostListener('keyup.enter', ['$event'])
 	onClick(event?: KeyboardEvent | MouseEvent): void {
 		if (isNotKeyboardEventOnButton(event)) {
-			this.active = this.active ? undefined : true;
+			this.active = !this.active;
 		}
 	}
 
@@ -39,6 +38,6 @@ export class ObAriaMenuButtonDirective implements OnInit {
 	private monitorForClickOutside(): void {
 		this.globalEvents.click$
 			.pipe(obOutsideFilter(this.element.nativeElement), obMasterLayoutNavigationSubMenuFilter())
-			.subscribe(() => (this.active = undefined));
+			.subscribe(() => (this.active = false));
 	}
 }
