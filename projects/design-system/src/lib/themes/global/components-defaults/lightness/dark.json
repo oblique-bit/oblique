@@ -4,47 +4,47 @@
       "badge": {
         "default-theme": {
           "lightness": {
-            "value": "{ob.g.color.theme.lightness.dark}",
-            "type": "other"
+            "$type": "other",
+            "$value": "{ob.g.color.theme.lightness.dark}"
           }
         }
       },
       "button": {
         "default-theme": {
           "lightness": {
-            "value": "{ob.g.color.theme.lightness.dark}",
-            "type": "other"
+            "$type": "other",
+            "$value": "{ob.g.color.theme.lightness.dark}"
           }
         }
       },
       "footer": {
         "default-theme": {
           "lightness": {
-            "value": "{ob.g.color.theme.lightness.dark}",
-            "type": "other"
+            "$type": "other",
+            "$value": "{ob.g.color.theme.lightness.dark}"
           }
         }
       },
       "link": {
         "default-theme": {
           "lightness": {
-            "value": "{ob.g.color.theme.lightness.dark}",
-            "type": "other"
+            "$type": "other",
+            "$value": "{ob.g.color.theme.lightness.dark}"
           }
         }
       },
       "infobox": {
         "default-theme": {
           "lightness": {
-            "value": "{ob.g.color.theme.lightness.dark}",
-            "type": "other"
+            "$type": "other",
+            "$value": "{ob.g.color.theme.lightness.dark}"
           }
         },
         "fatal": {
           "default-theme": {
             "lightness": {
-              "value": "{ob.g.color.theme.lightness.light}",
-              "type": "other"
+              "$type": "other",
+              "$value": "{ob.g.color.theme.lightness.light}"
             }
           }
         }
@@ -52,40 +52,40 @@
       "pill": {
         "default-theme": {
           "lightness": {
-            "value": "{ob.g.color.theme.lightness.dark}",
-            "type": "other"
+            "$type": "other",
+            "$value": "{ob.g.color.theme.lightness.dark}"
           }
         }
       },
       "popover": {
         "default-theme": {
           "lightness": {
-            "value": "{ob.g.color.theme.lightness.dark}",
-            "type": "other"
+            "$type": "other",
+            "$value": "{ob.g.color.theme.lightness.dark}"
           }
         }
       },
       "spinner": {
         "default-theme": {
           "lightness": {
-            "value": "{ob.g.color.theme.lightness.dark}",
-            "type": "other"
+            "$type": "other",
+            "$value": "{ob.g.color.theme.lightness.dark}"
           }
         }
       },
       "tag": {
         "default-theme": {
           "lightness": {
-            "value": "{ob.g.color.theme.lightness.dark}",
-            "type": "other"
+            "$type": "other",
+            "$value": "{ob.g.color.theme.lightness.dark}"
           }
         }
       },
       "tooltip": {
         "default-theme": {
           "lightness": {
-            "value": "{ob.g.color.theme.lightness.dark}",
-            "type": "other"
+            "$type": "other",
+            "$value": "{ob.g.color.theme.lightness.dark}"
           }
         }
       }

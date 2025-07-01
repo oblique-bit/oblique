@@ -4,26 +4,26 @@
       "color": {
         "static": {
           "brand": {
-            "value": "{ob.p.colors.basic.bundesrot}",
-            "description": "Static color to be used in the brand relevant UI elements.",
-            "type": "color"
+            "$type": "color",
+            "$value": "{ob.p.colors.basic.bundesrot}",
+            "$description": "Static color to be used in the brand relevant UI elements."
           },
           "no-color": {
-            "value": "rgba(0,0,0,0)",
-            "description": "Static value when no color respectively 0% opacity is needed. Temp token. Requires a primitive reference (ToDo)",
-            "type": "color"
+            "$type": "color",
+            "$value": "rgba(0,0,0,0)",
+            "$description": "Static value when no color respectively 0% opacity is needed. Temp token. Requires a primitive reference (ToDo)"
           }
         },
         "interaction": {
           "indicator": {
             "selected": {
-              "value": "{ob.s.color.static.brand}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{ob.s.color.static.brand}"
             },
             "unselected": {
-              "value": "{ob.s.color.static.no-color}",
-              "description": "Semantic Interaction color for not selected items. Used in Main Navigation, Navigation Tree, Tabs.",
-              "type": "color"
+              "$type": "color",
+              "$value": "{ob.s.color.static.no-color}",
+              "$description": "Semantic Interaction color for not selected items. Used in Main Navigation, Navigation Tree, Tabs."
             }
           }
         }

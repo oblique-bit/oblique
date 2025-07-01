@@ -4,84 +4,84 @@
       "infobox": {
         "container": {
           "padding-bottom": {
-            "value": "{ob.s.spacing.md}",
-            "description": "Needed to extend the padding in the Infobox component, ensuring consistent and visually appealing spacing to the right and below the button.",
-            "type": "spacing"
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.md}",
+            "$description": "Needed to extend the padding in the Infobox component, ensuring consistent and visually appealing spacing to the right and below the button."
           }
         },
         "icon": {
           "asset": {
             "status": {
               "info": {
-                "value": "InfoCircle",
-                "type": "asset"
+                "$type": "asset",
+                "$value": "InfoCircle"
               },
               "warning": {
-                "value": "WarningTriangle",
-                "type": "asset"
+                "$type": "asset",
+                "$value": "WarningTriangle"
               },
               "error": {
-                "value": "WarningCircle",
-                "type": "asset"
+                "$type": "asset",
+                "$value": "WarningCircle"
               },
               "success": {
-                "value": "CheckmarkCircle",
-                "type": "asset"
+                "$type": "asset",
+                "$value": "CheckmarkCircle"
               },
               "fatal": {
-                "value": "Error-new",
-                "description": "This icon is not yet part of the official icon set. It has to be drawn by F.Gabsa team in Illustrator.",
-                "type": "asset"
+                "$type": "asset",
+                "$value": "Error-new",
+                "$description": "This icon is not yet part of the official icon set. It has to be drawn by F.Gabsa team in Illustrator."
               }
             }
           }
         },
         "border-radius": {
           "top-left": {
-            "value": "{ob.s.radii.none}",
-            "description": "Sets the left upper corner radius to zero because there we have a left colored border and no need for rounded corners.",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.none}",
+            "$description": "Sets the left upper corner radius to zero because there we have a left colored border and no need for rounded corners."
           },
           "top-right": {
-            "value": "{ob.s.radii.md}",
-            "description": "Rounds the right upper corner to enhance visual appeal of the component.",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.md}",
+            "$description": "Rounds the right upper corner to enhance visual appeal of the component."
           },
           "bottom-left": {
-            "value": "{ob.s.radii.none}",
-            "description": "Sets the left upper corner radius to zero because there we have a left colored border and no need for rounded corners.",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.none}",
+            "$description": "Sets the left upper corner radius to zero because there we have a left colored border and no need for rounded corners."
           },
           "bottom-right": {
-            "value": "{ob.s.radii.md}",
-            "description": "Rounds the right bottom corner to enhance visual appeal of the component.",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.md}",
+            "$description": "Rounds the right bottom corner to enhance visual appeal of the component."
           }
         },
         "typography": {
           "title": {
-            "value": "{ob.s.typography.type-scale.md.strong}",
-            "description": "The message is in a bold font weight to build visual contrast and emphasize the hierarchy.",
-            "type": "typography"
+            "$type": "typography",
+            "$value": "{ob.s.typography.type-scale.md.strong}",
+            "$description": "The message is in a bold font weight to build visual contrast and emphasize the hierarchy."
           },
           "body": {
-            "value": "{ob.s.typography.content.body.normal}",
-            "description": "The message is in a medium font weight to build visual contrast and emphasize the hierarchy in case the title is present.",
-            "type": "typography"
+            "$type": "typography",
+            "$value": "{ob.s.typography.content.body.normal}",
+            "$description": "The message is in a medium font weight to build visual contrast and emphasize the hierarchy in case the title is present."
           }
         },
         "spacing": {
           "row-gap": {
-            "value": "{ob.s.spacing.4xl}",
-            "description": "This is the gap between the main content of the component and the optional button container if visible.",
-            "type": "spacing"
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.4xl}",
+            "$description": "This is the gap between the main content of the component and the optional button container if visible."
           }
         },
         "themes": {
           "interaction-emphasis": {
-            "value": "muted",
-            "description": "We on purpose lower the interaction emphasis of all buttons inside Infobox and use the muted colors defined in semantics/colors/interaction-emphasis/muted. This token can not be used in Figma due to Figma restrictions. In this case, the token is static and does not react to dark/light mode.",
-            "type": "text"
+            "$type": "text",
+            "$value": "muted",
+            "$description": "We on purpose lower the interaction emphasis of all buttons inside Infobox and use the muted colors defined in semantics/colors/interaction-emphasis/muted. This token can not be used in Figma due to Figma restrictions. In this case, the token is static and does not react to dark/light mode."
           }
         }
       }

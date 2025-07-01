@@ -3,404 +3,404 @@
     "p": {
       "fontFamily": {
         "sans": {
-          "value": "Noto Sans",
-          "description": "BIT Corporate Web Font",
-          "type": "fontFamilies"
+          "$type": "fontFamilies",
+          "$value": "Noto Sans",
+          "$description": "BIT Corporate Web Font"
         },
         "mono": {
-          "value": "Noto Sans Mono",
-          "type": "fontFamilies"
+          "$type": "fontFamilies",
+          "$value": "Noto Sans Mono"
         }
       },
       "fontSizeUnitless": {
         "100": {
-          "value": "3 * {ob.p.fontSizeUnitless._base}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "3 * {ob.p.fontSizeUnitless._base}"
         },
         "200": {
-          "value": "3.5 * {ob.p.fontSizeUnitless._base}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "3.5 * {ob.p.fontSizeUnitless._base}"
         },
         "300": {
-          "value": "4.25 * {ob.p.fontSizeUnitless._base}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "4.25 * {ob.p.fontSizeUnitless._base}"
         },
         "400": {
-          "value": "5.75 * {ob.p.fontSizeUnitless._base}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "5.75 * {ob.p.fontSizeUnitless._base}"
         },
         "500": {
-          "value": "7 * {ob.p.fontSizeUnitless._base}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "7 * {ob.p.fontSizeUnitless._base}"
         },
         "600": {
-          "value": "8.5 * {ob.p.fontSizeUnitless._base}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "8.5 * {ob.p.fontSizeUnitless._base}"
         },
         "700": {
-          "value": "9.75 * {ob.p.fontSizeUnitless._base}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "9.75 * {ob.p.fontSizeUnitless._base}"
         },
         "800": {
-          "value": "11.25 * {ob.p.fontSizeUnitless._base}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "11.25 * {ob.p.fontSizeUnitless._base}"
         },
         "900": {
-          "value": "12.25 * {ob.p.fontSizeUnitless._base}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "12.25 * {ob.p.fontSizeUnitless._base}"
         },
         "1000": {
-          "value": "14 * {ob.p.fontSizeUnitless._base}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "14 * {ob.p.fontSizeUnitless._base}"
         },
         "1100": {
-          "value": "15 * {ob.p.fontSizeUnitless._base}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "15 * {ob.p.fontSizeUnitless._base}"
         },
         "_base": {
-          "value": "{ob.g.scale.mult-static}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "{ob.g.scale.mult-static}"
         }
       },
       "letterSpacing-depr": {
         "0": {
-          "value": "auto",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "auto",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "50": {
-          "value": "0.5%",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "0.5%",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "100": {
-          "value": "1%",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "1%",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "150": {
-          "value": "1.5%",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "1.5%",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "200": {
-          "value": "2%",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "2%",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "250": {
-          "value": "2.5%",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "2.5%",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "neg-50": {
-          "value": "-0.5%",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "-0.5%",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "neg-100": {
-          "value": "-1%",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "-1%",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "neg-150": {
-          "value": "-1.5%",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "-1.5%",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "neg-200": {
-          "value": "-2%",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "-2%",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "neg-250": {
-          "value": "-2.5%",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "-2.5%",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "neg-300": {
-          "value": "-3%",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "-3%",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         }
       },
       "font-weight": {
         "0": {
-          "value": "400",
-          "type": "fontWeights",
-          "description": "Regular 400\n"
+          "$type": "fontWeights",
+          "$value": "400",
+          "$description": "Regular 400\n"
         },
         "100": {
-          "value": "500",
-          "type": "fontWeights",
-          "description": "Medium 500\n"
+          "$type": "fontWeights",
+          "$value": "500",
+          "$description": "Medium 500\n"
         },
         "200": {
-          "value": "600",
-          "type": "fontWeights",
-          "description": "SemiBold 600\n"
+          "$type": "fontWeights",
+          "$value": "600",
+          "$description": "SemiBold 600\n"
         },
         "300": {
-          "value": "700",
-          "type": "fontWeights",
-          "description": "Bold 700\n"
+          "$type": "fontWeights",
+          "$value": "700",
+          "$description": "Bold 700\n"
         },
         "400": {
-          "value": "800",
-          "type": "fontWeights",
-          "description": "ExtraBold 800\n"
+          "$type": "fontWeights",
+          "$value": "800",
+          "$description": "ExtraBold 800\n"
         }
       },
       "paragraphSpacing": {
         "50": {
-          "value": "1 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "1 * {ob.p.lineHeight._base}"
         },
         "100": {
-          "value": "2 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "2 * {ob.p.lineHeight._base}"
         },
         "200": {
-          "value": "3 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "3 * {ob.p.lineHeight._base}"
         },
         "300": {
-          "value": "4 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "4 * {ob.p.lineHeight._base}"
         },
         "400": {
-          "value": "5 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "5 * {ob.p.lineHeight._base}"
         },
         "500": {
-          "value": "6 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "6 * {ob.p.lineHeight._base}"
         },
         "600": {
-          "value": "7 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "7 * {ob.p.lineHeight._base}"
         },
         "700": {
-          "value": "8 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "8 * {ob.p.lineHeight._base}"
         },
         "800": {
-          "value": "9 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "9 * {ob.p.lineHeight._base}"
         },
         "900": {
-          "value": "10 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "10 * {ob.p.lineHeight._base}"
         },
         "1000": {
-          "value": "11 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "11 * {ob.p.lineHeight._base}"
         },
         "1100": {
-          "value": "12 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "12 * {ob.p.lineHeight._base}"
         },
         "1200": {
-          "value": "13 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "13 * {ob.p.lineHeight._base}"
         },
         "1300": {
-          "value": "14 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "14 * {ob.p.lineHeight._base}"
         },
         "1400": {
-          "value": "15 * {ob.p.lineHeight._base}",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "15 * {ob.p.lineHeight._base}"
         }
       },
       "text-decoration": {
         "underline": {
-          "value": "underline",
-          "type": "textDecoration"
+          "$type": "textDecoration",
+          "$value": "underline"
         },
         "none": {
-          "value": "none",
-          "type": "textDecoration"
+          "$type": "textDecoration",
+          "$value": "none"
         }
       },
       "lineHeight": {
         "50": {
-          "value": "1 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "1 * {ob.p.lineHeight._base}"
         },
         "100": {
-          "value": "2 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "2 * {ob.p.lineHeight._base}"
         },
         "200": {
-          "value": "3 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "3 * {ob.p.lineHeight._base}"
         },
         "300": {
-          "value": "4 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "4 * {ob.p.lineHeight._base}"
         },
         "400": {
-          "value": "5 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "5 * {ob.p.lineHeight._base}"
         },
         "500": {
-          "value": "6 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "6 * {ob.p.lineHeight._base}"
         },
         "600": {
-          "value": "7 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "7 * {ob.p.lineHeight._base}"
         },
         "700": {
-          "value": "8 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "8 * {ob.p.lineHeight._base}"
         },
         "800": {
-          "value": "9 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "9 * {ob.p.lineHeight._base}"
         },
         "900": {
-          "value": "10 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "10 * {ob.p.lineHeight._base}"
         },
         "1000": {
-          "value": "11 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "11 * {ob.p.lineHeight._base}"
         },
         "1100": {
-          "value": "12 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "12 * {ob.p.lineHeight._base}"
         },
         "1200": {
-          "value": "13 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "13 * {ob.p.lineHeight._base}"
         },
         "1300": {
-          "value": "14 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "14 * {ob.p.lineHeight._base}"
         },
         "1400": {
-          "value": "15 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "15 * {ob.p.lineHeight._base}"
         },
         "1500": {
-          "value": "16 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "16 * {ob.p.lineHeight._base}"
         },
         "1600": {
-          "value": "17 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "17 * {ob.p.lineHeight._base}"
         },
         "1700": {
-          "value": "18 * {ob.p.lineHeight._base}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "18 * {ob.p.lineHeight._base}"
         },
         "_base": {
-          "value": "{ob.g.scale.mult-static}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "{ob.g.scale.mult-static}"
         }
       },
       "fontSizeRem": {
         "100": {
-          "value": "0.75rem",
-          "description": "12px @ 16 base font size",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "0.75rem",
+          "$description": "12px @ 16 base font size"
         },
         "200": {
-          "value": "0.88rem",
-          "description": "14px @ 16 base font size",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "0.88rem",
+          "$description": "14px @ 16 base font size"
         },
         "300": {
-          "value": "1.06rem",
-          "description": "17px @ 16 base font size",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "1.06rem",
+          "$description": "17px @ 16 base font size"
         },
         "400": {
-          "value": "1.44rem",
-          "description": "23px @ 16 base font size",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "1.44rem",
+          "$description": "23px @ 16 base font size"
         },
         "500": {
-          "value": "1.75rem",
-          "description": "28px @ 16 base font size",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "1.75rem",
+          "$description": "28px @ 16 base font size"
         },
         "600": {
-          "value": "2.12rem",
-          "description": "34px @ 16 base font size",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "2.12rem",
+          "$description": "34px @ 16 base font size"
         },
         "700": {
-          "value": "2.44rem",
-          "description": "39px @ 16 base font size",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "2.44rem",
+          "$description": "39px @ 16 base font size"
         },
         "800": {
-          "value": "2.81rem",
-          "description": "45px @ 16 base font size",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "2.81rem",
+          "$description": "45px @ 16 base font size"
         },
         "900": {
-          "value": "3.06rem",
-          "description": "49px @ 16 base font size",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "3.06rem",
+          "$description": "49px @ 16 base font size"
         },
         "1000": {
-          "value": "3.50rem",
-          "description": "56px @ 16 base font size",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "3.50rem",
+          "$description": "56px @ 16 base font size"
         },
         "1100": {
-          "value": "3.75rem",
-          "description": "60px @ 16 base font size",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "3.75rem",
+          "$description": "60px @ 16 base font size"
         }
       },
       "textcase": {
         "none": {
-          "value": "none",
-          "type": "textCase"
+          "$type": "textCase",
+          "$value": "none"
         },
         "uppercase": {
-          "value": "uppercase",
-          "type": "textCase"
+          "$type": "textCase",
+          "$value": "uppercase"
         },
         "lowercase": {
-          "value": "uppercase",
-          "type": "textCase"
+          "$type": "textCase",
+          "$value": "uppercase"
         },
         "capitalize": {
-          "value": "uppercase",
-          "type": "textCase"
+          "$type": "textCase",
+          "$value": "uppercase"
         }
       },
       "letterSpacing-px": {
         "0": {
-          "value": "auto",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "auto",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "50": {
-          "value": "0.5",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "0.5",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "neg-150": {
-          "value": "-1.5",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "-1.5",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "neg-100": {
-          "value": "-1",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "-1",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
         "neg-50": {
-          "value": "-0.5",
-          "description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!",
-          "type": "letterSpacing"
+          "$type": "letterSpacing",
+          "$value": "-0.5",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         }
       }
     }

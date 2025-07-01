@@ -7,54 +7,54 @@
             "padding": {
               "vertical": {
                 "sm": {
-                  "value": "{ob.s.spacing.sm}",
-                  "description": "Top and bottom padding – for small size buttons.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.sm}",
+                  "$description": "Top and bottom padding – for small size buttons."
                 },
                 "md": {
-                  "value": "{ob.s.spacing.lg}",
-                  "description": "Top and bottom padding  – for medium size buttons.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.lg}",
+                  "$description": "Top and bottom padding  – for medium size buttons."
                 },
                 "lg": {
-                  "value": "{ob.s.spacing.2xl}",
-                  "description": "Top and bottom padding  – for large size buttons.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.2xl}",
+                  "$description": "Top and bottom padding  – for large size buttons."
                 }
               },
               "horizontal": {
                 "sm": {
-                  "value": "{ob.s.spacing.xl}",
-                  "description": "Left and right padding – for small size buttons.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.xl}",
+                  "$description": "Left and right padding – for small size buttons."
                 },
                 "md": {
-                  "value": "{ob.s.spacing.3xl}",
-                  "description": "Left and right padding  – for medium size buttons.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.3xl}",
+                  "$description": "Left and right padding  – for medium size buttons."
                 },
                 "lg": {
-                  "value": "{ob.s.spacing.4xl}",
-                  "description": "Left and right padding – for large size buttons.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.4xl}",
+                  "$description": "Left and right padding – for large size buttons."
                 }
               }
             },
             "gap": {
               "sm": {
-                "value": "{ob.s.spacing.sm}",
-                "description": "Horizontal gap between icon and text label – for small size buttons.",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.sm}",
+                "$description": "Horizontal gap between icon and text label – for small size buttons."
               },
               "md": {
-                "value": "{ob.s.spacing.md}",
-                "description": "Horizontal gap between icon and text label  – for medium size buttons.",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.md}",
+                "$description": "Horizontal gap between icon and text label  – for medium size buttons."
               },
               "lg": {
-                "value": "{ob.s.spacing.lg}",
-                "description": "Horizontal gap between icon and text label – for large size buttons",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.lg}",
+                "$description": "Horizontal gap between icon and text label – for large size buttons"
               }
             }
           },
@@ -62,120 +62,120 @@
             "padding": {
               "vertical": {
                 "xs": {
-                  "value": "{ob.s.spacing.none}",
-                  "description": "No spacing needed inside the mini close button. Use case: inside tag component.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.none}",
+                  "$description": "No spacing needed inside the mini close button. Use case: inside tag component."
                 },
                 "sm": {
-                  "value": "{ob.s.spacing.md}",
-                  "description": "Forces the icon-only button to be round and the same height as a small with-text button.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.md}",
+                  "$description": "Forces the icon-only button to be round and the same height as a small with-text button."
                 },
                 "md": {
-                  "value": "{ob.s.spacing.lg}",
-                  "description": "Forces the icon-only button to be round and the same height as a medium with-text button.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.lg}",
+                  "$description": "Forces the icon-only button to be round and the same height as a medium with-text button."
                 },
                 "lg": {
-                  "value": "{ob.s.spacing.2xl}",
-                  "description": "Forces the icon-only button to be round and the same height as a large with-text button.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.2xl}",
+                  "$description": "Forces the icon-only button to be round and the same height as a large with-text button."
                 }
               },
               "horizontal": {
                 "xs": {
-                  "value": "{ob.s.spacing.none}",
-                  "description": "No spacing needed inside the close button.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.none}",
+                  "$description": "No spacing needed inside the close button."
                 },
                 "sm": {
-                  "value": "{ob.s.spacing.md}",
-                  "description": "Forces the icon-only button to be a circle.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.md}",
+                  "$description": "Forces the icon-only button to be a circle."
                 },
                 "md": {
-                  "value": "{ob.s.spacing.lg}",
-                  "description": "Forces the icon-only button to be a circle.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.lg}",
+                  "$description": "Forces the icon-only button to be a circle."
                 },
                 "lg": {
-                  "value": "{ob.s.spacing.2xl}",
-                  "description": "Forces the icon-only button to be a circle.",
-                  "type": "spacing"
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.2xl}",
+                  "$description": "Forces the icon-only button to be a circle."
                 }
               }
             },
             "gap": {
               "sm": {
-                "value": "{ob.s.spacing.sm}",
-                "description": "Not required in the code. Used only for simpler maintaining reasons in Figma.",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.sm}",
+                "$description": "Not required in the code. Used only for simpler maintaining reasons in Figma."
               },
               "md": {
-                "value": "{ob.s.spacing.md}",
-                "description": "Not required in the code. Used only for simpler maintaining reasons in Figma.",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.md}",
+                "$description": "Not required in the code. Used only for simpler maintaining reasons in Figma."
               },
               "lg": {
-                "value": "{ob.s.spacing.lg}",
-                "description": "Not required in the code. Used only for simpler maintaining reasons in Figma.",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.lg}",
+                "$description": "Not required in the code. Used only for simpler maintaining reasons in Figma."
               }
             }
           }
         },
         "border-radius": {
           "default": {
-            "value": "{ob.s.radii.sm}",
-            "description": "Standard buttons in Oblique.",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.sm}",
+            "$description": "Standard buttons in Oblique."
           }
         },
         "border-width": {
-          "value": "{ob.s.border-width.xs}",
-          "description": "Default border width for buttons (additional hover border not included)",
-          "type": "borderWidth"
+          "$type": "borderWidth",
+          "$value": "{ob.s.border-width.xs}",
+          "$description": "Default border width for buttons (additional hover border not included)"
         },
         "box-shadow": {
           "enabled": {
-            "value": "{ob.s.shadow.none}",
-            "description": "No shadow needed on enabled state of button.",
-            "type": "boxShadow"
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.none}",
+            "$description": "No shadow needed on enabled state of button."
           },
           "hover": {
-            "value": "{ob.s.shadow.xl}",
-            "description": "A shadow needed for elevation effect on hover state of button.",
-            "type": "boxShadow"
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.xl}",
+            "$description": "A shadow needed for elevation effect on hover state of button."
           },
           "focus": {
-            "value": "{ob.s.shadow.none}",
-            "description": "No shadow needed on focus state of button.",
-            "type": "boxShadow"
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.none}",
+            "$description": "No shadow needed on focus state of button."
           },
           "pressed": {
-            "value": "{ob.s.shadow.none}",
-            "description": "No shadow needed on pressed state of button.",
-            "type": "boxShadow"
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.none}",
+            "$description": "No shadow needed on pressed state of button."
           },
           "disabled": {
-            "value": "{ob.s.shadow.none}",
-            "description": "No shadow needed on disabled state of button.",
-            "type": "boxShadow"
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.none}",
+            "$description": "No shadow needed on disabled state of button."
           }
         },
         "icon": {
           "size": {
             "sm": {
-              "value": "{ob.s.icon.size.xs}",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.s.icon.size.xs}"
             },
             "md": {
-              "value": "{ob.s.icon.size.sm}",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.s.icon.size.sm}"
             },
             "lg": {
-              "value": "{ob.s.icon.size.sm}",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.s.icon.size.sm}"
             }
           }
         },
@@ -183,36 +183,36 @@
           "surface": {
             "size": {
               "xs": {
-                "value": "{ob.s.size.none}",
-                "description": "Used as close button in ds tag component. Tertiary only, never has badge, emphasis muted only.",
-                "type": "sizing"
+                "$type": "sizing",
+                "$value": "{ob.s.size.none}",
+                "$description": "Used as close button in ds tag component. Tertiary only, never has badge, emphasis muted only."
               },
               "sm": {
-                "value": "{ob.s.size.spacious}",
-                "type": "sizing"
+                "$type": "sizing",
+                "$value": "{ob.s.size.spacious}"
               },
               "md": {
-                "value": "{ob.s.size.hefty}",
-                "type": "sizing"
+                "$type": "sizing",
+                "$value": "{ob.s.size.hefty}"
               },
               "lg": {
-                "value": "{ob.s.size.ultra}",
-                "type": "sizing"
+                "$type": "sizing",
+                "$value": "{ob.s.size.ultra}"
               }
             }
           }
         },
         "typography": {
           "text-label": {
-            "value": "{ob.s.typography.type-scale.sm.normal}",
-            "description": "Single font style and size for all button sizes and types for consistancy.",
-            "type": "typography"
+            "$type": "typography",
+            "$value": "{ob.s.typography.type-scale.sm.normal}",
+            "$description": "Single font style and size for all button sizes and types for consistancy."
           }
         },
         "badge": {
           "defaultsize": {
-            "value": "lg",
-            "type": "text"
+            "$type": "text",
+            "$value": "lg"
           }
         }
       }

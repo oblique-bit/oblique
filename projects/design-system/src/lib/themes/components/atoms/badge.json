@@ -6,96 +6,96 @@
           "bg": {
             "attention": {
               "enabled": {
-                "value": "{ob.s.color.status.attention.bg.contrast-low-inverse}",
-                "description": "References semantic inverse attention status background color, Enabled state.",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.status.attention.bg.contrast-low-inverse}",
+                "$description": "References semantic inverse attention status background color, Enabled state."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.solid}",
-                "description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge.",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.solid}",
+                "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             },
             "info": {
               "enabled": {
-                "value": "{ob.s.color.status.info.bg.contrast-low-inverse}",
-                "description": "References semantic inverse info status background color, Enabled state.",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.status.info.bg.contrast-low-inverse}",
+                "$description": "References semantic inverse info status background color, Enabled state."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.solid}",
-                "description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge.",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.solid}",
+                "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             },
             "critical": {
               "enabled": {
-                "value": "{ob.s.color.status.critical.bg.contrast-low-inverse}",
-                "description": "References semantic inverse critical status background color, Enabled state.",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.status.critical.bg.contrast-low-inverse}",
+                "$description": "References semantic inverse critical status background color, Enabled state."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.solid}",
-                "description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge.",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.solid}",
+                "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             },
             "resolved": {
               "enabled": {
-                "value": "{ob.s.color.status.resolved.bg.contrast-low-inverse}",
-                "description": "References semantic inverse resolved status background color, Enabled state.",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.status.resolved.bg.contrast-low-inverse}",
+                "$description": "References semantic inverse resolved status background color, Enabled state."
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.solid}",
-                "description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge.",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.solid}",
+                "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             }
           },
           "fg": {
             "info": {
               "enabled": {
-                "value": "{ob.s.color.interaction.state.fg-inverse.enabled}",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.interaction.state.fg-inverse.enabled}"
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.state.fg-inverse.disabled}",
-                "description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background.",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.interaction.state.fg-inverse.disabled}",
+                "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             },
             "attention": {
               "enabled": {
-                "value": "{ob.s.color.interaction.state.fg-inverse.enabled}",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.interaction.state.fg-inverse.enabled}"
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.state.fg-inverse.disabled}",
-                "description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background.",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.interaction.state.fg-inverse.disabled}",
+                "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             },
             "critical": {
               "enabled": {
-                "value": "{ob.s.color.interaction.state.fg-inverse.enabled}",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.interaction.state.fg-inverse.enabled}"
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.state.fg-inverse.disabled}",
-                "description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background.",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.interaction.state.fg-inverse.disabled}",
+                "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             },
             "resolved": {
               "enabled": {
-                "value": "{ob.s.color.interaction.state.fg-inverse.enabled}",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.interaction.state.fg-inverse.enabled}"
               },
               "disabled": {
-                "value": "{ob.s.color.interaction.state.fg-inverse.disabled}",
-                "description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background.",
-                "type": "color"
+                "$type": "color",
+                "$value": "{ob.s.color.interaction.state.fg-inverse.disabled}",
+                "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             }
           }
@@ -104,26 +104,26 @@
           "padding": {
             "horizontal": {
               "sm": {
-                "value": "{ob.p.space.100}",
-                "description": "Horizontal padding of small size badge. Makes the badge round. ",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.p.space.100}",
+                "$description": "Horizontal padding of small size badge. Makes the badge round. "
               },
               "lg": {
-                "value": "{ob.p.space.150}",
-                "description": "Horizontal padding of large size badge. Makes the badge round. ",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.p.space.150}",
+                "$description": "Horizontal padding of large size badge. Makes the badge round. "
               }
             },
             "vertical": {
               "sm": {
-                "value": "{ob.p.space.100}",
-                "description": "Vertical padding of small size badge. Makes the badge round. ",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.p.space.100}",
+                "$description": "Vertical padding of small size badge. Makes the badge round. "
               },
               "lg": {
-                "value": "{ob.p.space.150}",
-                "description": "Vertical padding of large size badge. Makes the badge round. ",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.p.space.150}",
+                "$description": "Vertical padding of large size badge. Makes the badge round. "
               }
             }
           }
@@ -131,51 +131,51 @@
         "sizing": {
           "max-width": {
             "sm": {
-              "value": "{ob.p.size.200}",
-              "description": "Max width of small badge. ",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.p.size.200}",
+              "$description": "Max width of small badge. "
             },
             "lg": {
-              "value": "{ob.p.size.600}",
-              "description": "Max width of large size badge. Maybe this is obsolete if we restrict the amount of characters the other way.",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.p.size.600}",
+              "$description": "Max width of large size badge. Maybe this is obsolete if we restrict the amount of characters the other way."
             }
           },
           "min-width": {
             "sm": {
-              "value": "{ob.p.size.200}",
-              "description": "Minimal width of small size badge. Makes the badge round.",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.p.size.200}",
+              "$description": "Minimal width of small size badge. Makes the badge round."
             },
             "lg": {
-              "value": "{ob.p.size.250}",
-              "description": "Minimal width of large size badge. Makes the badge round.",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.p.size.250}",
+              "$description": "Minimal width of large size badge. Makes the badge round."
             }
           },
           "height": {
             "sm": {
-              "value": "{ob.p.size.200}",
-              "description": "Height of small size badge. Makes the badge round.",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.p.size.200}",
+              "$description": "Height of small size badge. Makes the badge round."
             },
             "lg": {
-              "value": "{ob.p.size.250}",
-              "description": "Height of small size badge. Makes the badge round.",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.p.size.250}",
+              "$description": "Height of small size badge. Makes the badge round."
             }
           }
         },
         "border-radius": {
-          "value": "{ob.s.radii.round}",
-          "description": "For entire rounded badges",
-          "type": "borderRadius"
+          "$type": "borderRadius",
+          "$value": "{ob.s.radii.round}",
+          "$description": "For entire rounded badges"
         },
         "typography": {
           "badge-label": {
-            "value": "{ob.s.typography.type-scale.sm.strong}",
-            "description": "Strong font weight for optimal scannability.",
-            "type": "typography"
+            "$type": "typography",
+            "$value": "{ob.s.typography.type-scale.sm.strong}",
+            "$description": "Strong font weight for optimal scannability."
           }
         }
       }

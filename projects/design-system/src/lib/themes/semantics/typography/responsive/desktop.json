@@ -3,131 +3,131 @@
     "s": {
       "fontSize": {
         "xs": {
-          "value": "{ob.p.fontSizeUnitless.100}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.100}"
         },
         "sm": {
-          "value": "{ob.p.fontSizeUnitless.200}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.200}"
         },
         "md": {
-          "value": "{ob.p.fontSizeUnitless.300}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.300}"
         },
         "lg": {
-          "value": "{ob.p.fontSizeUnitless.400}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.400}"
         },
         "xl": {
-          "value": "{ob.p.fontSizeUnitless.500}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.500}"
         },
         "2xl": {
-          "value": "{ob.p.fontSizeUnitless.700}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.700}"
         },
         "3xl": {
-          "value": "{ob.p.fontSizeUnitless.800}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.800}"
         },
         "4xl": {
-          "value": "{ob.p.fontSizeUnitless.900}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.900}"
         },
         "_base": {
-          "value": "{ob.p.fontSizeUnitless.300}",
-          "type": "fontSizes"
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.300}"
         }
       },
       "lineHeight": {
         "xs": {
-          "value": "{ob.p.lineHeight.300}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.300}"
         },
         "sm": {
-          "value": "{ob.p.lineHeight.400}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.400}"
         },
         "md": {
-          "value": "{ob.p.lineHeight.500}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.500}"
         },
         "lg": {
-          "value": "{ob.p.lineHeight.600}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.600}"
         },
         "xl": {
-          "value": "{ob.p.lineHeight.800}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.800}"
         },
         "2xl": {
-          "value": "{ob.p.lineHeight.1100}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.1100}"
         },
         "3xl": {
-          "value": "{ob.p.lineHeight.1300}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.1300}"
         },
         "4xl": {
-          "value": "{ob.p.lineHeight.1400}",
-          "type": "lineHeights"
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.1400}"
         }
       },
       "paragraphSpacing": {
         "xs": {
-          "value": "{ob.s.lineHeight.xs} / 2",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.xs} / 2"
         },
         "sm": {
-          "value": "{ob.s.lineHeight.sm} / 2",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.sm} / 2"
         },
         "md": {
-          "value": "{ob.s.lineHeight.md} / 2",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.md} / 2"
         },
         "lg": {
-          "value": "{ob.s.lineHeight.lg} / 2",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.lg} / 2"
         },
         "xl": {
-          "value": "{ob.s.lineHeight.xl} / 2",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.xl} / 2"
         },
         "2xl": {
-          "value": "{ob.s.lineHeight.2xl} / 2",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.2xl} / 2"
         },
         "3xl": {
-          "value": "{ob.s.lineHeight.3xl} / 2",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.3xl} / 2"
         },
         "4xl": {
-          "value": "{ob.s.lineHeight.4xl} / 2",
-          "type": "paragraphSpacing"
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.4xl} / 2"
         }
       },
       "spacing": {
         "heading": {
           "top": {
-            "value": "{ob.s.spacing.none}",
-            "description": "Standard spacing above H1 is none to use vertical space.",
-            "type": "spacing"
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.none}",
+            "$description": "Standard spacing above H1 is none to use vertical space."
           },
           "top-after-p": {
-            "value": "{ob.s.spacing.6xl}",
-            "description": "SPecial spacing above H1 after a paragraph",
-            "type": "spacing"
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.6xl}",
+            "$description": "SPecial spacing above H1 after a paragraph"
           },
           "bottom": {
-            "value": "{ob.s.spacing.lg}",
-            "type": "spacing"
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.lg}"
           }
         },
         "paragraph": {
           "bottom": {
-            "value": "{ob.s.spacing.2xl}",
-            "type": "spacing"
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.2xl}"
           }
         }
       }

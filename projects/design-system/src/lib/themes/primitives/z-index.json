@@ -3,32 +3,32 @@
     "p": {
       "zindex": {
         "0": {
-          "value": "auto",
-          "type": "number"
+          "$type": "number",
+          "$value": "auto"
         },
         "1000": {
-          "value": "1000",
-          "type": "number"
+          "$type": "number",
+          "$value": "1000"
         },
         "1100": {
-          "value": "1100",
-          "type": "number"
+          "$type": "number",
+          "$value": "1100"
         },
         "1200": {
-          "value": "1200",
-          "type": "number"
+          "$type": "number",
+          "$value": "1200"
         },
         "1300": {
-          "value": "1300",
-          "type": "number"
+          "$type": "number",
+          "$value": "1300"
         },
         "1400": {
-          "value": "1400",
-          "type": "number"
+          "$type": "number",
+          "$value": "1400"
         },
         "1500": {
-          "value": "1500",
-          "type": "number"
+          "$type": "number",
+          "$value": "1500"
         }
       }
     }

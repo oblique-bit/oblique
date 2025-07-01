@@ -4,22 +4,22 @@
       "hr": {
         "sizing": {
           "height": {
-            "value": "1",
-            "type": "sizing"
+            "$type": "sizing",
+            "$value": "1"
           }
         },
         "color": {
           "subtle": {
-            "value": "{ob.s.color.neutral.border.subtle}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.subtle}"
           },
           "default": {
-            "value": "{ob.s.color.neutral.border.default}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.default}"
           },
           "strong": {
-            "value": "{ob.s.color.neutral.border.strong}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.strong}"
           }
         }
       }

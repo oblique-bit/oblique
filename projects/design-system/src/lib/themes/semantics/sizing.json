@@ -3,160 +3,160 @@
     "s": {
       "size": {
         "none": {
-          "value": "{ob.p.size.0}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.0}"
         },
         "nano": {
-          "value": "{ob.p.size.12}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.12}"
         },
         "micro": {
-          "value": "{ob.p.size.25}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.25}"
         },
         "tiny": {
-          "value": "{ob.p.size.37}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.37}"
         },
         "teensy": {
-          "value": "{ob.p.size.50}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.50}"
         },
         "smol": {
-          "value": "{ob.p.size.75}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.75}"
         },
         "compact": {
-          "value": "{ob.p.size.100}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.100}"
         },
         "neat": {
-          "value": "{ob.p.size.125}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.125}"
         },
         "cozy": {
-          "value": "{ob.p.size.150}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.150}"
         },
         "snug": {
-          "value": "{ob.p.size.175}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.175}"
         },
         "normal": {
-          "value": "{ob.p.size.200}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.200}"
         },
         "roomy": {
-          "value": "{ob.p.size.225}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.225}"
         },
         "stretchy": {
-          "value": "{ob.p.size.250}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.250}"
         },
         "generous": {
-          "value": "{ob.p.size.275}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.275}"
         },
         "spacious": {
-          "value": "{ob.p.size.300}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.300}"
         },
         "chubby": {
-          "value": "{ob.p.size.350}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.350}"
         },
         "bulky": {
-          "value": "{ob.p.size.400}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.400}"
         },
         "hefty": {
-          "value": "{ob.p.size.450}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.450}"
         },
         "max": {
-          "value": "{ob.p.size.500}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.500}"
         },
         "ultra": {
-          "value": "{ob.p.size.600}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.600}"
         },
         "mega": {
-          "value": "{ob.p.size.700}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.700}"
         },
         "giga": {
-          "value": "{ob.p.size.800}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.800}"
         },
         "hyper": {
-          "value": "{ob.p.size.900}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.900}"
         },
         "supernova": {
-          "value": "{ob.p.size.1000}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.1000}"
         },
         "whoa": {
-          "value": "{ob.p.size.1200}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.1200}"
         },
         "chonky": {
-          "value": "{ob.p.size.1400}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.1400}"
         },
         "epic": {
-          "value": "{ob.p.size.1600}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.1600}"
         },
         "ludicrous": {
-          "value": "{ob.p.size.1800}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.1800}"
         },
         "galactic": {
-          "value": "{ob.p.size.2000}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.2000}"
         },
         "astronomic": {
-          "value": "{ob.p.size.2200}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.2200}"
         },
         "planetary": {
-          "value": "{ob.p.size.2400}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.2400}"
         },
         "terraform": {
-          "value": "{ob.p.size.2600}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.2600}"
         },
         "moonshot": {
-          "value": "{ob.p.size.2800}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.2800}"
         },
         "blackhole": {
-          "value": "{ob.p.size.3000}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.3000}"
         },
         "event-horizon": {
-          "value": "{ob.p.size.3200}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.3200}"
         },
         "singularity": {
-          "value": "{ob.p.size.3400}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.3400}"
         },
         "multiverse": {
-          "value": "{ob.p.size.3600}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.3600}"
         },
         "timewarp": {
-          "value": "{ob.p.size.3800}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.3800}"
         },
         "endgame": {
-          "value": "{ob.p.size.6750}",
-          "type": "sizing"
+          "$type": "sizing",
+          "$value": "{ob.p.size.6750}"
         }
       }
     }

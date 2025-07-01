@@ -5,9 +5,9 @@
         "container": {
           "spacing": {
             "gap": {
-              "value": "{ob.s.spacing.md}",
-              "description": "Spacing between single tags ",
-              "type": "spacing"
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.md}",
+              "$description": "Spacing between single tags "
             }
           }
         },
@@ -15,155 +15,155 @@
           "padding": {
             "vertical": {
               "sm": {
-                "value": "{ob.s.spacing.none}",
-                "description": "Top and bottom padding – for small size tags.",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.none}",
+                "$description": "Top and bottom padding – for small size tags."
               },
               "md": {
-                "value": "{ob.s.spacing.xs}",
-                "description": "Top and bottom padding  – for medium size tags.",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.xs}",
+                "$description": "Top and bottom padding  – for medium size tags."
               },
               "lg": {
-                "value": "{ob.s.spacing.lg}",
-                "description": "Top and bottom padding  – for large size tags.",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.lg}",
+                "$description": "Top and bottom padding  – for large size tags."
               }
             },
             "horizontal": {
               "sm": {
-                "value": "{ob.s.spacing.md}",
-                "description": "Left and right padding – for small size tags.",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.md}",
+                "$description": "Left and right padding – for small size tags."
               },
               "md": {
-                "value": "{ob.s.spacing.lg}",
-                "description": "Left and right padding  – for medium size tags.",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.lg}",
+                "$description": "Left and right padding  – for medium size tags."
               },
               "lg": {
-                "value": "{ob.s.spacing.2xl}",
-                "description": "Left and right padding – for large size tags.",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.2xl}",
+                "$description": "Left and right padding – for large size tags."
               }
             }
           },
           "gap": {
             "sm": {
-              "value": "{ob.s.spacing.sm}",
-              "description": "Horizontal gap between icon and text label – for small size tags.",
-              "type": "spacing"
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.sm}",
+              "$description": "Horizontal gap between icon and text label – for small size tags."
             },
             "md": {
-              "value": "{ob.s.spacing.md}",
-              "description": "Horizontal gap between icon and text label  – for medium size tags.",
-              "type": "spacing"
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.md}",
+              "$description": "Horizontal gap between icon and text label  – for medium size tags."
             },
             "lg": {
-              "value": "{ob.s.spacing.lg}",
-              "description": "Horizontal gap between icon and text label – for large size tags",
-              "type": "spacing"
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.lg}",
+              "$description": "Horizontal gap between icon and text label – for large size tags"
             }
           }
         },
         "border-radius": {
           "default": {
-            "value": "{ob.s.radii.round}",
-            "description": "Standard tags in Oblique.",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.round}",
+            "$description": "Standard tags in Oblique."
           }
         },
         "icon": {
           "size": {
             "sm": {
-              "value": "{ob.s.icon.size.xs}",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.s.icon.size.xs}"
             },
             "md": {
-              "value": "{ob.s.icon.size.xs}",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.s.icon.size.xs}"
             },
             "lg": {
-              "value": "{ob.s.icon.size.sm}",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.s.icon.size.sm}"
             }
           }
         },
         "surface": {
           "min-height": {
             "sm": {
-              "value": "{ob.p.size.250}",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.p.size.250}"
             },
             "md": {
-              "value": "{ob.p.size.300}",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.p.size.300}"
             },
             "lg": {
-              "value": "36",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "36"
             }
           }
         },
         "typography": {
           "size": {
             "sm": {
-              "value": "{ob.s.typography.type-scale.xs.normal}",
-              "type": "typography"
+              "$type": "typography",
+              "$value": "{ob.s.typography.type-scale.xs.normal}"
             },
             "md": {
-              "value": "{ob.s.typography.type-scale.sm.normal}",
-              "type": "typography"
+              "$type": "typography",
+              "$value": "{ob.s.typography.type-scale.sm.normal}"
             },
             "lg": {
-              "value": "{ob.s.typography.type-scale.md.normal}",
-              "type": "typography"
+              "$type": "typography",
+              "$value": "{ob.s.typography.type-scale.md.normal}"
             }
           }
         },
         "color": {
           "fg": {
             "enabled": {
-              "value": "{ob.s.color.neutral.fg.contrast-medium}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast-medium}"
             },
             "hover": {
-              "value": "{ob.s.color.neutral.fg.contrast-medium}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast-medium}"
             },
             "focus": {
-              "value": "{ob.s.color.neutral.fg.contrast-medium}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast-medium}"
             },
             "active": {
-              "value": "{ob.s.color.neutral.fg.contrast-medium-inverse}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast-medium-inverse}"
             },
             "disabled": {
-              "value": "{ob.s.color.interaction.state.fg.disabled}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{ob.s.color.interaction.state.fg.disabled}"
             }
           },
           "bg": {
             "enabled": {
-              "value": "{ob.s.color.neutral.bg.contrast-medium}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.bg.contrast-medium}"
             },
             "hover": {
-              "value": "{ob.s.color.neutral.bg.contrast-high}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.bg.contrast-high}"
             },
             "focus": {
-              "value": "{ob.s.color.neutral.bg.contrast-medium}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.bg.contrast-medium}"
             },
             "active": {
-              "value": "{ob.s.color.neutral.bg.contrast-medium-inverse}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.bg.contrast-medium-inverse}"
             },
             "disabled": {
-              "value": "{ob.s.color.neutral.bg.contrast-medium}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.bg.contrast-medium}"
             }
           }
         }

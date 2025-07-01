@@ -6,14 +6,14 @@
           "spacing": {
             "gap": {
               "md": {
-                "value": "{ob.s.spacing.3xl}",
-                "description": "Horizontal gap between buttons on larger screens.",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.3xl}",
+                "$description": "Horizontal gap between buttons on larger screens."
               },
               "sm": {
-                "value": "{ob.s.spacing.xl}",
-                "description": "Horizontal gap between buttons on larger screens.",
-                "type": "spacing"
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.xl}",
+                "$description": "Horizontal gap between buttons on larger screens."
               }
             }
           }
@@ -22,14 +22,14 @@
           "text-label": {
             "font-size": {
               "md": {
-                "value": "{ob.s.fontSize.sm}",
-                "description": "Font size for button text label on desktop.",
-                "type": "fontSizes"
+                "$type": "fontSizes",
+                "$value": "{ob.s.fontSize.sm}",
+                "$description": "Font size for button text label on desktop."
               },
               "sm": {
-                "value": "{ob.s.fontSize.xs}",
-                "description": "Font size for small button text label on desktop.",
-                "type": "fontSizes"
+                "$type": "fontSizes",
+                "$value": "{ob.s.fontSize.xs}",
+                "$description": "Font size for small button text label on desktop."
               }
             }
           }

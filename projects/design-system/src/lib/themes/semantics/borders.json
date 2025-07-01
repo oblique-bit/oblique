@@ -3,143 +3,143 @@
     "s": {
       "radii": {
         "none": {
-          "value": "{ob.p.radii.none}",
-          "type": "borderRadius"
+          "$type": "borderRadius",
+          "$value": "{ob.p.radii.none}"
         },
         "sm": {
-          "value": "{ob.p.radii.50}",
-          "type": "borderRadius"
+          "$type": "borderRadius",
+          "$value": "{ob.p.radii.50}"
         },
         "md": {
-          "value": "{ob.p.radii.100}",
-          "type": "borderRadius"
+          "$type": "borderRadius",
+          "$value": "{ob.p.radii.100}"
         },
         "lg": {
-          "value": "{ob.p.radii.200}",
-          "type": "borderRadius"
+          "$type": "borderRadius",
+          "$value": "{ob.p.radii.200}"
         },
         "round": {
-          "value": "{ob.p.radii.round}",
-          "type": "borderRadius"
+          "$type": "borderRadius",
+          "$value": "{ob.p.radii.round}"
         }
       },
       "border-width": {
         "xs": {
-          "value": "{ob.p.borderWidth.100}",
-          "type": "borderWidth"
+          "$type": "borderWidth",
+          "$value": "{ob.p.borderWidth.100}"
         },
         "sm": {
-          "value": "{ob.p.borderWidth.200}",
-          "type": "borderWidth"
+          "$type": "borderWidth",
+          "$value": "{ob.p.borderWidth.200}"
         },
         "md": {
-          "value": "{ob.p.borderWidth.300}",
-          "type": "borderWidth"
+          "$type": "borderWidth",
+          "$value": "{ob.p.borderWidth.300}"
         },
         "lg": {
-          "value": "{ob.p.borderWidth.400}",
-          "type": "borderWidth"
+          "$type": "borderWidth",
+          "$value": "{ob.p.borderWidth.400}"
         },
         "xl": {
-          "value": "{ob.p.borderWidth.500}",
-          "type": "borderWidth"
+          "$type": "borderWidth",
+          "$value": "{ob.p.borderWidth.500}"
         },
         "2xl": {
-          "value": "{ob.p.borderWidth.600}",
-          "type": "borderWidth"
+          "$type": "borderWidth",
+          "$value": "{ob.p.borderWidth.600}"
         },
         "3xl": {
-          "value": "{ob.p.borderWidth.700}",
-          "type": "borderWidth"
+          "$type": "borderWidth",
+          "$value": "{ob.p.borderWidth.700}"
         },
         "none": {
-          "value": "{ob.p.borderWidth.none}",
-          "type": "borderWidth"
+          "$type": "borderWidth",
+          "$value": "{ob.p.borderWidth.none}"
         }
       },
       "corners": {
         "top-right": {
           "none": {
-            "value": "{ob.s.radii.none}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.none}"
           },
           "sm": {
-            "value": "{ob.s.radii.sm}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.sm}"
           },
           "md": {
-            "value": "{ob.s.radii.md}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.md}"
           },
           "lg": {
-            "value": "{ob.s.radii.lg}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.lg}"
           }
         },
         "top-left": {
           "none": {
-            "value": "{ob.s.radii.none}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.none}"
           },
           "sm": {
-            "value": "{ob.s.radii.sm}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.sm}"
           },
           "md": {
-            "value": "{ob.s.radii.md}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.md}"
           },
           "lg": {
-            "value": "{ob.s.radii.lg}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.lg}"
           }
         },
         "bottom-left": {
           "none": {
-            "value": "{ob.s.radii.none}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.none}"
           },
           "sm": {
-            "value": "{ob.s.radii.sm}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.sm}"
           },
           "md": {
-            "value": "{ob.s.radii.md}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.md}"
           },
           "lg": {
-            "value": "{ob.s.radii.lg}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.lg}"
           }
         },
         "bottom-right": {
           "none": {
-            "value": "{ob.s.radii.none}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.none}"
           },
           "sm": {
-            "value": "{ob.s.radii.sm}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.sm}"
           },
           "md": {
-            "value": "{ob.s.radii.md}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.md}"
           },
           "lg": {
-            "value": "{ob.s.radii.lg}",
-            "type": "borderRadius"
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.lg}"
           }
         }
       },
       "border": {
         "focus": {
-          "value": {
+          "$type": "border",
+          "$value": {
             "color": "{ob.s.color.interaction.border.focus}",
             "width": "{ob.s.border-width.2xl}",
             "style": "solid"
           },
-          "description": "focus for all clickable elements and form elements.",
-          "type": "border"
+          "$description": "focus for all clickable elements and form elements."
         }
       }
     }

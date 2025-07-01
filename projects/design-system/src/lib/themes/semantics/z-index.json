@@ -3,28 +3,28 @@
     "s": {
       "z-index": {
         "stepperMobile": {
-          "value": "{ob.p.zindex.1000}",
-          "type": "number"
+          "$type": "number",
+          "$value": "{ob.p.zindex.1000}"
         },
         "header": {
-          "value": "{ob.p.zindex.1100}",
-          "type": "number"
+          "$type": "number",
+          "$value": "{ob.p.zindex.1100}"
         },
         "drawer": {
-          "value": "{ob.p.zindex.1200}",
-          "type": "number"
+          "$type": "number",
+          "$value": "{ob.p.zindex.1200}"
         },
         "modal": {
-          "value": "{ob.p.zindex.1300}",
-          "type": "number"
+          "$type": "number",
+          "$value": "{ob.p.zindex.1300}"
         },
         "notification": {
-          "value": "{ob.p.zindex.1400}",
-          "type": "number"
+          "$type": "number",
+          "$value": "{ob.p.zindex.1400}"
         },
         "tooltip": {
-          "value": "{ob.p.zindex.1500}",
-          "type": "number"
+          "$type": "number",
+          "$value": "{ob.p.zindex.1500}"
         }
       }
     }

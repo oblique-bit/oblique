@@ -3,18 +3,18 @@
     "g": {
       "scale": {
         "mult-responsive": {
-          "value": "3.5",
-          "type": "number"
+          "$type": "number",
+          "$value": "3.5"
         }
       },
       "breakpoint": {
-        "value": "{ob.g.breakpoints.0}",
-        "type": "Sizing",
-        "description": "No media query condition; applies to all screen sizes."
+        "$type": "Sizing",
+        "$value": "{ob.g.breakpoints.0}",
+        "$description": "No media query condition; applies to all screen sizes."
       },
       "viewport": {
-        "value": "mobile",
-        "type": "text"
+        "$type": "text",
+        "$value": "mobile"
       }
     }
   }

@@ -4,60 +4,60 @@
       "tooltip": {
         "spacing": {
           "padding-top": {
-            "value": "{ob.s.spacing.md}",
-            "description": "Increased paddings around text boost its readability.",
-            "type": "spacing"
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.md}",
+            "$description": "Increased paddings around text boost its readability."
           },
           "padding-right": {
-            "value": "{ob.s.spacing.xl}",
-            "description": "Increased paddings around text boost its readability.",
-            "type": "spacing"
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.xl}",
+            "$description": "Increased paddings around text boost its readability."
           },
           "padding-bottom": {
-            "value": "{ob.s.spacing.md}",
-            "description": "Increased paddings around text boost its readability.",
-            "type": "spacing"
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.md}",
+            "$description": "Increased paddings around text boost its readability."
           },
           "padding-left": {
-            "value": "{ob.s.spacing.xl}",
-            "description": "Increased paddings around text boost its readability.",
-            "type": "spacing"
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.xl}",
+            "$description": "Increased paddings around text boost its readability."
           }
         },
         "color": {
           "bg": {
-            "value": "{ob.s.color.neutral.bg.contrast-highest-inverse}",
-            "description": "Inverted background color to stand out in a busy layout.",
-            "type": "color"
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.bg.contrast-highest-inverse}",
+            "$description": "Inverted background color to stand out in a busy layout."
           },
           "fg": {
-            "value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
-            "description": "Text color for the inverted background color.",
-            "type": "color"
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
+            "$description": "Text color for the inverted background color."
           }
         },
         "typography": {
           "label": {
-            "value": "{ob.s.typography.type-scale.sm.strong}",
-            "description": "Bold since it is 14px to reach AAA",
-            "type": "typography"
+            "$type": "typography",
+            "$value": "{ob.s.typography.type-scale.sm.strong}",
+            "$description": "Bold since it is 14px to reach AAA"
           }
         },
         "border-radius": {
-          "value": "{ob.s.radii.sm}",
-          "description": "Applied radius SM for subtle aesthetics, distinct from buttons to avoid looking clickable.",
-          "type": "borderRadius"
+          "$type": "borderRadius",
+          "$value": "{ob.s.radii.sm}",
+          "$description": "Applied radius SM for subtle aesthetics, distinct from buttons to avoid looking clickable."
         },
         "shadow": {
-          "value": "{ob.s.shadow.2xl}",
-          "description": "Default shadow for tooltips.",
-          "type": "boxShadow"
+          "$type": "boxShadow",
+          "$value": "{ob.s.shadow.2xl}",
+          "$description": "Default shadow for tooltips."
         },
         "animation": {
           "speed": {
-            "value": "200",
-            "description": "Animation of the tooltip: 200ms on hover with ease-out effect from 0% to 100%opacity and back.",
-            "type": "number"
+            "$type": "number",
+            "$value": "200",
+            "$description": "Animation of the tooltip: 200ms on hover with ease-out effect from 0% to 100%opacity and back."
           }
         }
       }

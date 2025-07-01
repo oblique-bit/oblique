@@ -5,127 +5,127 @@
         "spacing": {
           "padded-container": {
             "padding-top": {
-              "value": "{ob.s.spacing.3xl}",
-              "description": "Top and right padding have to be the same so the position of the close button is visually apealing.",
-              "type": "spacing"
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.3xl}",
+              "$description": "Top and right padding have to be the same so the position of the close button is visually apealing."
             },
             "padding-right": {
-              "value": "{ob.s.spacing.3xl}",
-              "description": "Top and right padding have to be the same so the position of the close button is visually apealing.",
-              "type": "spacing"
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.3xl}",
+              "$description": "Top and right padding have to be the same so the position of the close button is visually apealing."
             },
             "padding-bottom": {
-              "value": "{ob.s.spacing.3xl}",
-              "description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity.",
-              "type": "spacing"
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.3xl}",
+              "$description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity."
             },
             "padding-left": {
-              "value": "{ob.s.spacing.3xl}",
-              "description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity.",
-              "type": "spacing"
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.3xl}",
+              "$description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity."
             },
             "row-gap": {
-              "value": "{ob.s.spacing.sm}",
-              "description": "Sets a minimum vertical gap between container-top and container-buttons to enhance the readability.",
-              "type": "spacing"
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.sm}",
+              "$description": "Sets a minimum vertical gap between container-top and container-buttons to enhance the readability."
             }
           },
           "text-bar": {
             "col-gap": {
-              "value": "{ob.s.spacing.2xl}",
-              "description": "Prevents the title coming to close to the Close button (X)",
-              "type": "spacing"
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.2xl}",
+              "$description": "Prevents the title coming to close to the Close button (X)"
             }
           },
           "text-variant-container": {
             "padding-top": {
-              "value": "{ob.s.spacing.xs}",
-              "description": "Aligns the title with the status icon and the close button on desktop.",
-              "type": "spacing"
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.xs}",
+              "$description": "Aligns the title with the status icon and the close button on desktop."
             }
           },
           "buttons-container": {
             "margin-top": {
-              "value": "{ob.p.space.300}",
-              "description": "Proper proximity from the buttons to text above. We were not able to use gap property in the padded container since it increases the gap between the title and the body as well.",
-              "type": "spacing"
+              "$type": "spacing",
+              "$value": "{ob.p.space.300}",
+              "$description": "Proper proximity from the buttons to text above. We were not able to use gap property in the padded container since it increases the gap between the title and the body as well."
             }
           }
         },
         "sizing": {
           "custom-icon": {
             "size": {
-              "value": "{ob.s.icon.size.2xl}",
-              "description": "For App Launcher Widget in ePortal and similar use cases.",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "{ob.s.icon.size.2xl}",
+              "$description": "For App Launcher Widget in ePortal and similar use cases."
             }
           },
           "custom-buttons-container": {
             "width": {
-              "value": "300",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "300"
             }
           },
           "custom-buttons": {
             "min-width": {
-              "value": "90",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "90"
             }
           },
           "padded-container": {
             "width": {
-              "value": "300",
-              "description": "Sets a fix default width for popover for consistency reasons.  In the project this can be overridden to meet the specifics requiremens.",
-              "type": "sizing"
+              "$type": "sizing",
+              "$value": "300",
+              "$description": "Sets a fix default width for popover for consistency reasons.  In the project this can be overridden to meet the specifics requiremens."
             }
           }
         },
         "color": {
           "bg": {
-            "value": "{ob.s.color.neutral.bg.contrast-highest}",
-            "description": "Default background color for popovers.",
-            "type": "color"
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.bg.contrast-highest}",
+            "$description": "Default background color for popovers."
           },
           "border": {
-            "value": "{ob.s.color.neutral.border.default}",
-            "description": "Default border color for popovers.",
-            "type": "color"
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.default}",
+            "$description": "Default border color for popovers."
           },
           "fg": {
-            "value": "{ob.s.color.neutral.fg.contrast-high}",
-            "description": "Default foreground color for popovers.",
-            "type": "color"
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.fg.contrast-high}",
+            "$description": "Default foreground color for popovers."
           }
         },
         "typography": {
           "custom-buttons-label": {
-            "value": "{ob.s.typography.type-scale.xs.normal}",
-            "description": "Text labels for custom buttons in Service Navigation e.g. on ePortal.",
-            "type": "typography"
+            "$type": "typography",
+            "$value": "{ob.s.typography.type-scale.xs.normal}",
+            "$description": "Text labels for custom buttons in Service Navigation e.g. on ePortal."
           },
           "text": {
-            "value": "{ob.s.typography.type-scale.sm.normal}",
-            "type": "typography"
+            "$type": "typography",
+            "$value": "{ob.s.typography.type-scale.sm.normal}"
           },
           "title": {
-            "value": "{ob.s.typography.type-scale.sm.strong}",
-            "type": "typography"
+            "$type": "typography",
+            "$value": "{ob.s.typography.type-scale.sm.strong}"
           }
         },
         "border-radius": {
-          "value": "{ob.s.radii.md}",
-          "description": "Sets default border radius for Popover.",
-          "type": "borderRadius"
+          "$type": "borderRadius",
+          "$value": "{ob.s.radii.md}",
+          "$description": "Sets default border radius for Popover."
         },
         "border-width": {
-          "value": "{ob.s.border-width.xs}",
-          "description": "Sets the border width of the popover's surface.",
-          "type": "borderWidth"
+          "$type": "borderWidth",
+          "$value": "{ob.s.border-width.xs}",
+          "$description": "Sets the border width of the popover's surface."
         },
         "themes": {
           "interaction-emphasis": {
-            "value": "muted",
-            "type": "text"
+            "$type": "text",
+            "$value": "muted"
           }
         }
       }
