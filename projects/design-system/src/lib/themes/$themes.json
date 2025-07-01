@@ -2443,26 +2443,5 @@
     },
     "$figmaVariableReferences": {},
     "group": "R13"
-  },
-  {
-    "id": "lightness-l2",
-    "name": "Lightness L2",
-    "description": "Light and dark themes for L2 surfaces.",
-    "themes": [
-      {
-        "id": "default-l2",
-        "name": "Default L2",
-        "description": "Default light theme for L2 surfaces.",
-        "extends": "light",
-        "figma": null
-      },
-      {
-        "id": "inverted-l2",
-        "name": "Inverted L2",
-        "description": "Inverted dark theme for L2 surfaces.",
-        "extends": "dark",
-        "figma": null
-      }
-    ]
   }
 ]
