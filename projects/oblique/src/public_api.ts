@@ -164,4 +164,4 @@ export {
 	ObIAutocompleteInputOptionGroup,
 	OptionLabelIconPosition
 } from './lib/autocomplete/autocomplete.module';
-export {ObPaginatorModule, ObPaginatorService} from './lib/paginator/ob-paginator.module';
+export {ObPaginatorService} from './lib/paginator/ob-paginator.service';
