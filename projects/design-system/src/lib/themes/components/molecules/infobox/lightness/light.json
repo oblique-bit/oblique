@@ -44,15 +44,15 @@
             },
             "success": {
               "$type": "color",
-              "$value": "{ob.c.infobox.color.icon.resolved}"
+              "$value": "{ob.s.color.status.resolved.fg.contrast-medium}"
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s.color.status.fatal.bg}"
+              "$value": "{ob.s.color.status.fatal.fg.contrast-medium}"
             },
             "fatal-test": {
               "$type": "color",
-              "$value": "{ob.s.color.status.fatal.bg}"
+              "$value": "{ob.s.color.status.critical.fg.contrast-high}"
             }
           },
           "surface": {
@@ -74,7 +74,7 @@
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s.color.status.fatal.bg}"
+              "$value": "{ob.s.color.status.fatal.bg.contrast-medium}"
             },
             "fatal-test": {
               "$type": "color",
