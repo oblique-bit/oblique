@@ -1,7 +1,7 @@
 @use "../../../styles/scss/core/variables";
 @use "../../../styles/scss/core/mixins/layout";
 
-.ob-master-layout-footer {
+.ob-master-layout-footer > footer {
 	position: relative;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -52,7 +52,7 @@
 }
 
 .ob-layout-collapsed {
-	.ob-master-layout-footer {
+	.ob-master-layout-footer > footer {
 		display: flex;
 		flex-direction: column;
 		padding: variables.$ob-spacing-lg;

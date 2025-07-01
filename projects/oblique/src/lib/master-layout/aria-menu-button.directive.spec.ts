@@ -39,20 +39,12 @@ describe(ObAriaMenuButtonDirective.name, () => {
 			expect(component).toBeTruthy();
 		});
 
-		it('should have an aria-popup property', () => {
-			expect(element.getAttribute('aria-haspopup')).toBe('true');
-		});
-
 		it('should have an aria-expanded property', () => {
-			expect(element.getAttribute('aria-expanded')).toBe(null);
+			expect(element.getAttribute('aria-expanded')).toBe('false');
 		});
 
 		it('should have an aria-controls property', () => {
 			expect(element.getAttribute('aria-controls')).toBe('test');
-		});
-
-		it('should have an aria-owns property', () => {
-			expect(element.getAttribute('aria-owns')).toBe('test');
 		});
 
 		it('should expand on click', () => {
@@ -64,7 +56,7 @@ describe(ObAriaMenuButtonDirective.name, () => {
 		it('should close on escape', () => {
 			element.dispatchEvent(new KeyboardEvent('Escape'));
 			fixture.detectChanges();
-			expect(element.getAttribute('aria-expanded')).toBe(null);
+			expect(element.getAttribute('aria-expanded')).toBe('false');
 		});
 	});
 
@@ -73,21 +65,17 @@ describe(ObAriaMenuButtonDirective.name, () => {
 			expect(directive).toBeTruthy();
 		});
 
-		it('should have a popup property', () => {
-			expect(directive.popup).toBe(true);
-		});
-
 		it('should have a target property', () => {
 			expect(directive.target).toBe('test');
 		});
 
 		it('should have an active property', () => {
-			expect(directive.active).toBe(undefined);
+			expect(directive.active).toBe(false);
 		});
 
 		describe('should toggle active on click', () => {
 			beforeEach(() => {
-				directive.active = undefined;
+				directive.active = false;
 				directive.onClick();
 			});
 
@@ -97,13 +85,13 @@ describe(ObAriaMenuButtonDirective.name, () => {
 
 			it('should set active to undefined with another click', () => {
 				directive.onClick();
-				expect(directive.active).toBe(undefined);
+				expect(directive.active).toBe(false);
 			});
 
 			it('should set active to undefined with an outside click', () => {
 				mock.click$.next({});
 				fixture.detectChanges();
-				expect(directive.active).toBe(undefined);
+				expect(directive.active).toBe(false);
 			});
 		});
 	});
