@@ -131,7 +131,6 @@ export {
 export {ObScrollingModule, ObTopControlComponent} from './lib/scrolling/scrolling.module';
 export {ObSelectableDirective, ObSelectableModule, ObSelectableGroupDirective} from './lib/selectable/selectable.module';
 export {ObISpinnerEvent, ObSpinnerComponent, ObSpinnerModule, ObSpinnerService} from './lib/spinner/spinner.module';
-export {ObStickyComponent, ObStickyModule} from './lib/sticky/sticky.module';
 export {ObInputClearDirective, ObInputClearModule} from './lib/input-clear/input-clear.module';
 export {ObTranslateParamsModule, ObTranslateParamsPipe} from './lib/translate-params/translate-params.module';
 export {ObUnknownRouteModule, ObUnknownRouteComponent} from './lib/unknown-route/unknown-route.module';

@@ -24,7 +24,6 @@ import {ObMockSchemaValidationModule} from './schema-validation/_mocks/mock-sche
 import {ObMockObSelectableModule} from './selectable/_mocks/mock-selectable.module';
 import {ObMockScrollingModule} from './scrolling/_mocks/mock-scrolling.module';
 import {ObMockSpinnerModule} from './spinner/_mocks/mock-spinner.module';
-import {ObMockStickyModule} from './sticky/_mocks/mock-sticky.module';
 import {ObMockInputClearModule} from './input-clear/_mocks/mock-input-clear.module';
 import {ObMockTranslateParamsModule} from './translate-params/_mocks/mock-translate-params.module';
 import {ObMockUnknownRouteModule} from './unknown-route/_mocks/mock-unknown-route.module';
@@ -117,7 +116,6 @@ export {
 } from './selectable/_mocks/mock-selectable.module';
 export {ObMockScrollingModule, ObMockTopControlComponent} from './scrolling/_mocks/mock-scrolling.module';
 export {ObMockSpinnerModule, ObMockSpinnerComponent, ObMockSpinnerService} from './spinner/_mocks/mock-spinner.module';
-export {ObMockStickyModule, ObMockStickyComponent} from './sticky/_mocks/mock-sticky.module';
 export {ObMockTranslateParamsModule, ObMockTranslateParamsPipe} from './translate-params/_mocks/mock-translate-params.module';
 export {ObMockUnknownRouteModule, ObMockUnknownRouteComponent} from './unknown-route/_mocks/mock-unknown-route.module';
 export {
@@ -155,7 +153,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockScrollingModule,
 	ObMockObSelectableModule,
 	ObMockSpinnerModule,
-	ObMockStickyModule,
 	ObMockInputClearModule,
 	ObMockTranslateParamsModule,
 	ObMockUnknownRouteModule,

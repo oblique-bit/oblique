@@ -149,12 +149,6 @@ module.exports = {
 			branches: 83,
 			functions: 0,
 			lines: 27
-		},
-		'projects/oblique/src/lib/sticky/*.ts': {
-			statements: 93,
-			branches: 85,
-			functions: 100,
-			lines: 95
 		}
 	}
 };
