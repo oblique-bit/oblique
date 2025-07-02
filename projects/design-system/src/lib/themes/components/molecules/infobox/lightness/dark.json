@@ -8,11 +8,11 @@
               "$type": "color",
               "$value": "{ob.s.color.status.info.fg.contrast-medium}"
             },
-            "error": {
+            "critical": {
               "$type": "color",
               "$value": "{ob.s.color.status.critical.fg.contrast-high}"
             },
-            "warning": {
+            "attention": {
               "$type": "color",
               "$value": "{ob.s.color.status.attention.fg.contrast-high}"
             },
@@ -34,15 +34,15 @@
               "$type": "color",
               "$value": "{ob.s.color.status.info.fg.contrast-medium}"
             },
-            "error": {
+            "critical": {
               "$type": "color",
               "$value": "{ob.s.color.status.critical.fg.contrast-high}"
             },
-            "warning": {
+            "attention": {
               "$type": "color",
               "$value": "{ob.s.color.status.attention.fg.contrast-high}"
             },
-            "success": {
+            "resolved": {
               "$type": "color",
               "$value": "{ob.s.color.status.resolved.fg.contrast-medium}"
             },
@@ -60,15 +60,15 @@
               "$type": "color",
               "$value": "{ob.s.color.status.info.bg.contrast-medium}"
             },
-            "error": {
+            "critical": {
               "$type": "color",
               "$value": "{ob.s.color.status.critical.bg.contrast-low}"
             },
-            "warning": {
+            "attention": {
               "$type": "color",
               "$value": "{ob.s.color.status.attention.bg.contrast-medium}"
             },
-            "success": {
+            "resolved": {
               "$type": "color",
               "$value": "{ob.s.color.status.resolved.bg.contrast-medium}"
             },
@@ -87,15 +87,15 @@
               "$type": "color",
               "$value": "{ob.s.color.neutral.fg.contrast-highest}"
             },
-            "error": {
+            "critical": {
               "$type": "color",
               "$value": "{ob.s.color.neutral.fg.contrast-highest}"
             },
-            "warning": {
+            "attention": {
               "$type": "color",
               "$value": "{ob.s.color.neutral.fg.contrast-highest}"
             },
-            "success": {
+            "resolved": {
               "$type": "color",
               "$value": "{ob.s.color.neutral.fg.contrast-highest}"
             },
