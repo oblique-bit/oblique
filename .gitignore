@@ -13,6 +13,7 @@ __ngcc_entry_points__.json
 
 # IDEs and editors
 /.idea
+/.github
 .project
 .classpath
 .c9/
