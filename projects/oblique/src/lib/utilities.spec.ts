@@ -205,6 +205,7 @@ describe('utilities', () => {
 						provideObliqueConfiguration({
 							accessibilityStatement: {
 								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
 								conformity: 'none',
 								applicationOperator: 'Operator',
 								contact: {emails: ['e@mail.com']}
@@ -265,6 +266,7 @@ describe('utilities', () => {
 				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
 					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
 						applicationName: 'appName',
+						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
 						applicationOperator: 'Operator',
 						contact: {emails: ['e@mail.com']}
@@ -283,6 +285,7 @@ describe('utilities', () => {
 						provideObliqueConfiguration({
 							accessibilityStatement: {
 								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
 								conformity: 'none',
 								applicationOperator: 'Operator',
 								contact: {emails: ['e@mail.com']}
@@ -344,6 +347,7 @@ describe('utilities', () => {
 				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
 					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
 						applicationName: 'appName',
+						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
 						applicationOperator: 'Operator',
 						contact: {emails: ['e@mail.com']}
@@ -359,6 +363,7 @@ describe('utilities', () => {
 						provideObliqueConfiguration({
 							accessibilityStatement: {
 								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
 								conformity: 'none',
 								applicationOperator: 'Operator',
 								contact: {emails: ['e@mail.com']}
@@ -402,6 +407,7 @@ describe('utilities', () => {
 						provideObliqueConfiguration({
 							accessibilityStatement: {
 								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
 								conformity: 'none',
 								applicationOperator: 'Operator',
 								contact: {emails: ['e@mail.com']}

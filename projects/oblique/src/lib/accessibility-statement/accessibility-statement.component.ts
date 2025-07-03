@@ -4,7 +4,7 @@ import {MatIcon} from '@angular/material/icon';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
-import {ObConformity, ObIAccessibilityStatementConfiguration} from '../utilities.model';
+import {ObConformity} from '../utilities.model';
 import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION} from '../utilities';
 import {ObDatePipe} from '../language/date.pipe';
 import {ObAvailableInComponent} from './available-in/available-in.component';
@@ -20,7 +20,7 @@ export class AccessibilityStatementComponent {
 	readonly exceptions = 'exceptions' in this.parameters && this.parameters.exceptions.length > 0 ? this.parameters.exceptions : [];
 	readonly statementParameters = {
 		applicationName: this.parameters.applicationName,
-		conformity: this.getConformity(this.parameters),
+		conformity: this.getConformity(this.parameters.conformity),
 		exceptionText: this.getConformityText(this.exceptions.length > 0)
 	};
 	readonly contactParameters = {
@@ -70,27 +70,16 @@ export class AccessibilityStatementComponent {
 		}
 	];
 
-	private getConformity(parameters: ObIAccessibilityStatementConfiguration): string {
-		if ('conformity' in parameters) {
-			return this.getConformityTranslationKey(parameters.conformity);
-		}
-
-		if (!parameters.createdOn) {
-			return this.getConformityTranslationKey('none');
-		}
-		return parameters.exceptions?.length ? this.getConformityTranslationKey('partial') : this.getConformityTranslationKey('full');
-	}
-
 	// eslint-disable-next-line @typescript-eslint/consistent-return
-	private getConformityTranslationKey(conformity: ObConformity): string {
+	private getConformity(conformity: ObConformity): string {
 		// eslint-disable-next-line default-case
 		switch (conformity) {
-			case 'none':
-				return 'i18n.oblique.accessibility-statement.statement.none';
 			case 'full':
 				return 'i18n.oblique.accessibility-statement.statement.full';
 			case 'partial':
 				return 'i18n.oblique.accessibility-statement.statement.partial';
+			case 'none':
+				return 'i18n.oblique.accessibility-statement.statement.none';
 		}
 	}
 
