@@ -121,6 +121,18 @@
             "strong": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.300}"
+            },
+            "subtle-inverse": {
+              "$type": "color",
+              "$value": "{ob.p.colors.cobalt.100}"
+            },
+            "default-inverse": {
+              "$type": "color",
+              "$value": "{ob.p.colors.cobalt.200}"
+            },
+            "strong-inverse": {
+              "$type": "color",
+              "$value": "{ob.p.colors.cobalt.300}"
             }
           },
           "shadow": {

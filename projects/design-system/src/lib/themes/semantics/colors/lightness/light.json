@@ -103,6 +103,36 @@
             "strong": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.300}"
+            },
+            "subtle-inverse": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.1",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$type": "color",
+              "$value": "{ob.p.colors.basic.white}"
+            },
+            "default-inverse": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.2",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$type": "color",
+              "$value": "{ob.p.colors.basic.white}"
+            },
+            "strong-inverse": {
+              "$type": "color",
+              "$value": "{ob.p.colors.cobalt.300}"
             }
           },
           "shadow": {
