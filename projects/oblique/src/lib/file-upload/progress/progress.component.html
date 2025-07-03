@@ -16,7 +16,7 @@
 			[matTooltip]="'i18n.oblique.file-upload.retry' | translate"
 			(click)="retryUpload(file)"
 		>
-			<mat-icon svgIcon="repeat" />
+			<mat-icon svgIcon="arrow_clockwise" />
 			<span class="ob-screen-reader-only">{{ "i18n.oblique.file-upload.retry" | translate }}</span>
 		</button>
 		<button
@@ -27,7 +27,7 @@
 			obButton="secondary"
 			(click)="cancelUpload(file)"
 		>
-			<mat-icon svgIcon="cancel" />
+			<mat-icon svgIcon="xmark" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.cancel" | translate }}</span>
 		</button>
 	</div>

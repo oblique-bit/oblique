@@ -2,13 +2,13 @@
 	<ul>
 		<li>
 			<a class="ob-accessible" accesskey="0" [routerLink]="route.path" [queryParams]="route.params" [fragment]="contentId">
-				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access" /></span>
+				<span class="ob-icon-wrapper"><mat-icon svgIcon="accessibility" /></span>
 				{{ "i18n.oblique.master-layout.accesskey.main-content" | translate }}
 			</a>
 		</li>
 		<li *ngIf="!noNavigation && navigation?.length">
 			<a class="ob-accessible" accesskey="1" [routerLink]="route.path" [queryParams]="route.params" fragment="navigation">
-				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access" /></span>
+				<span class="ob-icon-wrapper"><mat-icon svgIcon="accessibility" /></span>
 				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}
 			</a>
 		</li>
@@ -20,7 +20,7 @@
 				[queryParams]="route.params"
 				[fragment]="skipLink.fragment"
 			>
-				<span class="ob-icon-wrapper"><mat-icon svgIcon="universal-access" /></span>
+				<span class="ob-icon-wrapper"><mat-icon svgIcon="accessibility" /></span>
 				{{ skipLink.label | translate }} [{{ skipLink.accessKey }}]
 			</a>
 		</li>
@@ -93,7 +93,7 @@
 			class="ob-close"
 			#offCanvasClose
 		>
-			<mat-icon svgIcon="cancel" />
+			<mat-icon svgIcon="xmark" />
 		</button>
 	</header>
 	<div class="ob-off-canvas-content">

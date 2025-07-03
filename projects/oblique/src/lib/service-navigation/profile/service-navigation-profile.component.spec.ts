@@ -130,8 +130,8 @@ describe('ObServiceNavigationProfileComponent', () => {
 				expect(iconHarness).toBeTruthy();
 			});
 
-			it('should be "user"', async () => {
-				expect(await iconHarness.getName()).toBe('user');
+			it('should be "person"', async () => {
+				expect(await iconHarness.getName()).toBe('person');
 			});
 		});
 	});
