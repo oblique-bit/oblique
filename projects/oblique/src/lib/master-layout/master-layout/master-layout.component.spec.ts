@@ -303,34 +303,6 @@ describe('ObMasterLayoutComponent', () => {
 			});
 		});
 
-		describe('targeting an id is not in the whitelist of ids of fragments that are allowed to be focused. (in ObMasterLayoutConfig.focusableFragments)', () => {
-			beforeEach(() => {
-				content = document.getElementById('content');
-				const config = TestBed.inject(ObMasterLayoutConfig);
-				config.focusableFragments = ['foo', 'bar'];
-				content.innerHTML = '<div id="not_whitelisted"></div>';
-				element = document.getElementById('content');
-				jest.spyOn(element, 'scrollIntoView');
-				jest.spyOn(element, 'focus');
-				jest.spyOn(global.console, 'warn');
-				component.focusElement('not_whitelisted');
-			});
-			it('should not scroll to the element', () => {
-				expect(element.scrollIntoView).not.toHaveBeenCalled();
-			});
-			it('should not focus the element', () => {
-				expect(element.focus).not.toHaveBeenCalled();
-			});
-			it('should console.warn that the targetted id is not in the list of focusable elements', () => {
-				expect(console.warn).toHaveBeenCalledWith(
-					'not_whitelisted is not in the whitelist of ids of fragments that are allowed to be focused:\n foo, bar\n The whitelist of fragments that are allowed to be focused is defined in ObMasterLayoutConfig.focusableFragments'
-				);
-			});
-			afterEach(() => {
-				jest.clearAllMocks();
-			});
-		});
-
 		describe('targeting an id that is corresponding to an non-existing dom element', () => {
 			beforeEach(() => {
 				content = document.getElementById('content');
@@ -339,8 +311,6 @@ describe('ObMasterLayoutComponent', () => {
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
 				jest.spyOn(global.console, 'error');
-				const config = TestBed.inject(ObMasterLayoutConfig);
-				config.focusableFragments = ['not_existing_element'];
 				component.focusElement('not_existing_element');
 			});
 			it('should not scroll to the element', () => {
@@ -356,7 +326,7 @@ describe('ObMasterLayoutComponent', () => {
 				jest.clearAllMocks();
 			});
 		});
-		describe('targeting an id that is corresponding to an existing dom element that is not focusable', () => {
+		describe('targeting an id that is corresponding to an existing dom element', () => {
 			beforeEach(() => {
 				content = document.getElementById('content');
 				content.innerHTML = '<input id="not_focusable_element" disabled />';
@@ -364,8 +334,6 @@ describe('ObMasterLayoutComponent', () => {
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
 				jest.spyOn(global.console, 'info');
-				const config = TestBed.inject(ObMasterLayoutConfig);
-				config.focusableFragments = ['not_focusable_element'];
 				content.focus();
 			});
 			it('should be first focused on the content element', () => {

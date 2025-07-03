@@ -15,7 +15,8 @@ export class UpdateV13toV14 implements ObIMigrations {
 				this.renameIcons(),
 				this.migrateAccessibilityStatementContactInfo(),
 				this.migrateServiceNavigationContactInfo(),
-				this.removeObPaginator()
+				this.removeObPaginator(),
+				this.removeFocusableFragments()
 			])(tree, context);
 	}
 
@@ -322,6 +323,20 @@ export class UpdateV13toV14 implements ObIMigrations {
 					removeImport(tree, filePath, 'ObPaginatorModule', '@oblique/oblique');
 					addImport(tree, filePath, 'MatPaginatorModule', '@angular/material');
 					replaceInFile(tree, filePath, /ObPaginatorModule/g, 'MatPaginatorModule');
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		});
+	}
+
+	private removeFocusableFragments(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Replace focusableFragments property');
+			const toApply = (filePath: string): void => {
+				const content = readFile(tree, filePath);
+				const regexp = /^\s*\w+\.focusableFragment\s*=\s*\[.*?\];/msu;
+				if (regexp.test(content)) {
+					replaceInFile(tree, filePath, regexp, '');
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');

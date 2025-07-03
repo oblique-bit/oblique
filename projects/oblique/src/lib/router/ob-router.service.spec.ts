@@ -20,7 +20,6 @@ describe(ObRouterService.name, () => {
 	let translate: TranslateService;
 	const mockMasterLayoutConfig = {
 		homePageRoute: '/home',
-		focusableFragments: ['content', 'navigation'],
 		scrollToTopDuration: 200,
 		showAccessibilityTitle: true,
 		locale: {
