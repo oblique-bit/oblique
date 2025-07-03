@@ -360,8 +360,8 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				expect(icon).toBeTruthy();
 			});
 
-			it('should show "apps" icon', async () => {
-				expect(await icon.getName()).toBe('help');
+			it('should show "question" icon', async () => {
+				expect(await icon.getName()).toBe('question');
 			});
 		});
 
