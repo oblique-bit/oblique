@@ -17,6 +17,7 @@ describe(ObAvailableInComponent.name, () => {
 				provideObliqueConfiguration({
 					accessibilityStatement: {
 						applicationName: '',
+						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
 						applicationOperator: '',
 						contact: undefined
