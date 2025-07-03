@@ -35,7 +35,6 @@ export type OptionKeys =
 	| 'protractor'
 	| 'npmrc'
 	| 'proxy'
-	| 'sonar'
 	| 'eslint'
 	| 'husky';
 

@@ -15,7 +15,6 @@ export interface ObIOptionsSchema {
 	prefix: string;
 	protractor: boolean;
 	proxy: string;
-	sonar: boolean;
 	title: string;
 	unknownRoute: boolean;
 }
