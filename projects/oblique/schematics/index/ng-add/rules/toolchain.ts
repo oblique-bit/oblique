@@ -1,6 +1,6 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {addDevDependency, addRootProperty, addScript, getTemplate, removeScript} from '../ng-add-utils';
+import {addDevDependency, addScript, getTemplate, removeScript} from '../ng-add-utils';
 import {
 	addFile,
 	createSafeRule,
@@ -32,7 +32,6 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			addProxy(options.proxy),
 			addJest(options.jest),
 			addProtractor(options.protractor, options.jest),
-			addSonar(options.sonar, options.jest),
 			updateEditorConfig(options.eslint),
 			addEslint(options.eslint),
 			addPrettier(options.eslint),
@@ -160,27 +159,6 @@ function addProxy(port: string): Rule {
 			infoMigration(context, 'Toolchain: Adding proxy configuration');
 			addFile(tree, 'proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port));
 			setOrCreateAngularProjectsConfig(tree, ['architect', 'serve', 'options', 'proxyConfig'], 'proxy.conf.json');
-		}
-		return tree;
-	});
-}
-
-function addSonar(sonar: boolean, jest: boolean): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		if (sonar) {
-			infoMigration(context, 'Toolchain: Adding Sonar configuration');
-			addFile(tree, 'sonar-project.properties', getTemplate(tree, 'default-sonar-project.properties.config'));
-			if (jest) {
-				addRootProperty(tree, 'jestSonar', {
-					reportPath: './coverage/sonarQube',
-					reportFile: 'sqr.xml',
-					indent: 4,
-					sonar56x: true
-				});
-			}
-		} else if (jest) {
-			const lines = readFile(tree, './tests/jest.config.js').split('\n');
-			tree.overwrite('./tests/jest.config.js', lines.filter((line: string) => !line.includes('sonar')).join('\n'));
 		}
 		return tree;
 	});
