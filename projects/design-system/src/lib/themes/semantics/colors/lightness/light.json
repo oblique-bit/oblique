@@ -24,6 +24,11 @@
               "$value": "{ob.p.colors.cobalt.200}",
               "$description": "Darker surface color"
             },
+            "contrast-lowest": {
+              "$type": "color",
+              "$value": "{ob.p.colors.cobalt.300}",
+              "$description": "Very subtle background color for disabled states or extremely low contrast surfaces"
+            },
             "contrast-medium-inverse": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.500}",
@@ -43,6 +48,11 @@
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.700}",
               "$description": "Default dark surface color"
+            },
+            "contrast-lowest-inverse": {
+              "$type": "color",
+              "$value": "{ob.p.colors.cobalt.300}",
+              "$description": "Very subtle dark background color for disabled states on inverse backgrounds"
             }
           },
           "fg": {
