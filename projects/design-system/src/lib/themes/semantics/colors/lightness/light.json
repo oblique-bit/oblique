@@ -849,7 +849,7 @@
         },
         "interaction": {
           "emphasis-default": {
-            "bg": {
+            "bg-base": {
               "contrast-high": {
                 "$type": "color",
                 "$value": "{ob.s.color.neutral.bg.contrast-highest}",
@@ -876,7 +876,7 @@
                 "$value": "{ob.p.colors.steelblue.800}"
               }
             },
-            "fg": {
+            "fg-base": {
               "contrast-high": {
                 "$type": "color",
                 "$value": "{ob.p.colors.steelblue.700}"
@@ -978,7 +978,7 @@
             }
           },
           "emphasis-muted": {
-            "bg": {
+            "bg-base": {
               "contrast-high": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.50}"
@@ -1004,7 +1004,7 @@
                 "$value": "{ob.p.colors.cobalt.700}"
               }
             },
-            "fg": {
+            "fg-base": {
               "contrast-high": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.900}"
