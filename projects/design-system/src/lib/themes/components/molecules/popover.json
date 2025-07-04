@@ -47,7 +47,7 @@
           "buttons-container": {
             "margin-top": {
               "$type": "spacing",
-              "$value": "{ob.p.space.300}",
+              "$value": "{ob.s.spacing.2xl}",
               "$description": "Proper proximity from the buttons to text above. We were not able to use gap property in the padded container since it increases the gap between the title and the body as well."
             }
           }

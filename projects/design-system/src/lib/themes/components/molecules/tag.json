@@ -93,11 +93,11 @@
           "min-height": {
             "sm": {
               "$type": "sizing",
-              "$value": "{ob.p.size.250}"
+              "$value": "{ob.s.size.stretchy}"
             },
             "md": {
               "$type": "sizing",
-              "$value": "{ob.p.size.300}"
+              "$value": "{ob.s.size.spacious}"
             },
             "lg": {
               "$type": "sizing",
