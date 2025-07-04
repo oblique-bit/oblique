@@ -509,6 +509,11 @@
               "contrast-high-inverse": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.400}"
+              },
+              "contrast-high-inverse-alpha": {
+                "$type": "color",
+                "$value": "{ob.p.colors.indigo-alpha.900}",
+                "$description": "Used for spinner background alpha overlay"
               }
             },
             "fg": {

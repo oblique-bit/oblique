@@ -921,6 +921,23 @@
             "$value": "{ob.p.colors.basic.white}"
           }
         },
+        "indigo-alpha": {
+          "900": {
+            "parent": "Colors/Mode 1",
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "0.9",
+                  "space": "srgb"
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "{ob.p.colors.indigo.900}",
+            "$description": "90% opacity indigo for background elements like spinner inactive state"
+          }
+        },
         "blue": {
           "50": {
             "parent": "Colors/Mode 1",

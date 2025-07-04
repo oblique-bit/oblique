@@ -14,17 +14,8 @@
             "$description": "Color indicating the active part of the loading."
           },
           "inactive": {
-            "$extensions": {
-              "studio.tokens": {
-                "modify": {
-                  "type": "alpha",
-                  "value": "0.2",
-                  "space": "srgb"
-                }
-              }
-            },
             "$type": "color",
-            "$value": "{ob.s.color.status.progress.fg.contrast-high}",
+            "$value": "{ob.s.color.status.progress.bg.contrast-high-inverse-alpha}",
             "$description": "Color indicating the inactive part of the loading."
           }
         },
