@@ -5,9 +5,9 @@
         "red": {
           "50": {
             "parent": "Colors/Mode 1",
-            "description": "",
             "$type": "color",
-            "$value": "#ffedee"
+            "$value": "#ffedee",
+            "$description": ""
           },
           "100": {
             "parent": "Colors/Mode 1",
@@ -341,52 +341,62 @@
           "50": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#F3F4F5"
+            "$value": "#F3F4F5",
+            "$description": ""
           },
           "100": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#D3DEE9"
+            "$value": "#D3DEE9",
+            "$description": ""
           },
           "200": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#AACAE6"
+            "$value": "#AACAE6",
+            "$description": ""
           },
           "300": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#6EB8E9"
+            "$value": "#6EB8E9",
+            "$description": ""
           },
           "400": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#48A4D7"
+            "$value": "#48A4D7",
+            "$description": ""
           },
           "500": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#2E8FBF"
+            "$value": "#2E8FBF",
+            "$description": ""
           },
           "600": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#2379A4"
+            "$value": "#2379A4",
+            "$description": ""
           },
           "700": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#236487"
+            "$value": "#236487",
+            "$description": ""
           },
           "800": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#255069"
+            "$value": "#255069",
+            "$description": ""
           },
           "900": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#233C4D"
+            "$value": "#233C4D",
+            "$description": ""
           }
         },
         "teal": {
@@ -928,66 +938,76 @@
               "studio.tokens": {
                 "modify": {
                   "type": "alpha",
-                  "value": "0.9",
-                  "space": "srgb"
+                  "value": "0.2",
+                  "space": "lch"
                 }
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.indigo.900}",
-            "$description": "90% opacity indigo for background elements like spinner inactive state"
+            "$value": "#312e81",
+            "$description": "For Spinner"
           }
         },
         "blue": {
           "50": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#EFF6FF"
+            "$value": "#EFF6FF",
+            "$description": ""
           },
           "100": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#DBEAFE"
+            "$value": "#DBEAFE",
+            "$description": ""
           },
           "200": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#bfdbfe"
+            "$value": "#bfdbfe",
+            "$description": ""
           },
           "300": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#93c5fd"
+            "$value": "#93c5fd",
+            "$description": ""
           },
           "400": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#60a5fa"
+            "$value": "#60a5fa",
+            "$description": ""
           },
           "500": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#3b82f6"
+            "$value": "#3b82f6",
+            "$description": ""
           },
           "600": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#2563EB"
+            "$value": "#2563EB",
+            "$description": ""
           },
           "700": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#1D4ED8"
+            "$value": "#1D4ED8",
+            "$description": ""
           },
           "800": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#1E40AF"
+            "$value": "#1E40AF",
+            "$description": ""
           },
           "900": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#1E3A8A"
+            "$value": "#1E3A8A",
+            "$description": ""
           }
         }
       }
