@@ -92,7 +92,7 @@
             },
             "lg": {
               "$type": "sizing",
-              "$value": "36"
+              "$value": "{ob.s.size.hefty}"
             }
           }
         },
