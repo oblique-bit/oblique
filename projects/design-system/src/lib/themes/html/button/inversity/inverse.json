@@ -196,23 +196,23 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "transparent"
+                "$value": "{ob.s.color.static.no-color}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "transparent"
+                "$value": "{ob.s.color.static.no-color}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "transparent"
+                "$value": "{ob.s.color.static.no-color}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "transparent"
+                "$value": "{ob.s.color.static.no-color}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "transparent",
+                "$value": "{ob.s.color.static.no-color}",
                 "$description": "Border color of the Disabled Primary button: no border."
               }
             },

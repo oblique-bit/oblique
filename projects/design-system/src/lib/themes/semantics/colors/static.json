@@ -10,8 +10,8 @@
           },
           "no-color": {
             "$type": "color",
-            "$value": "rgba(0,0,0,0)",
-            "$description": "Static value when no color respectively 0% opacity is needed. Temp token. Requires a primitive reference (ToDo)"
+            "$value": "{ob.p.colors.basic.transparent}",
+            "$description": "Static value when no color respectively 0% opacity is needed. References primitive transparent token."
           }
         },
         "interaction": {

@@ -144,6 +144,11 @@
             "$type": "color",
             "$value": "none",
             "$description": "Use this if the background color changes from a color to none, e.g. depending on interaction states."
+          },
+          "transparent": {
+            "$type": "color",
+            "$value": "rgba(0,0,0,0)",
+            "$description": "Fully transparent color (0% opacity) for UI elements that need to be invisible."
           }
         },
         "orange": {
