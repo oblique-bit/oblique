@@ -63,20 +63,20 @@
           "custom-buttons-container": {
             "width": {
               "$type": "sizing",
-              "$value": "300"
+              "$value": "{ob.s.size.multiverse}"
             }
           },
           "custom-buttons": {
             "min-width": {
               "$type": "sizing",
-              "$value": "90"
+              "$value": "{ob.s.size.whoa}"
             }
           },
           "padded-container": {
             "width": {
               "$type": "sizing",
-              "$value": "300",
-              "$description": "Sets a fix default width for popover for consistency reasons.  In the project this can be overridden to meet the specifics requiremens."
+              "$value": "{ob.s.size.multiverse}",
+              "$description": "Sets a fix default width for popover for consistency reasons. In the project this can be overridden to meet the specifics requirements."
             }
           }
         },

@@ -40,14 +40,14 @@
         },
         "animation": {
           "speed": {
-            "$type": "number",
-            "$value": "0",
-            "$description": "Some number. check with R.Giller"
+            "$type": "duration",
+            "$value": "{ob.s.motion.duration.instant}",
+            "$description": "Spinner has continuous rotation with no delay"
           },
           "pause": {
-            "$type": "number",
-            "$value": "0",
-            "$description": "Some number. check with R.Giller"
+            "$type": "duration",
+            "$value": "{ob.s.motion.duration.instant}",
+            "$description": "No pause between spinner rotations"
           }
         },
         "fx": {

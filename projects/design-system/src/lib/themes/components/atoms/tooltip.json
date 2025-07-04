@@ -55,9 +55,9 @@
         },
         "animation": {
           "speed": {
-            "$type": "number",
-            "$value": "200",
-            "$description": "Animation of the tooltip: 200ms on hover with ease-out effect from 0% to 100%opacity and back."
+            "$type": "duration",
+            "$value": "{ob.s.motion.duration.smooth}",
+            "$description": "Animation of the tooltip: 200ms on hover with ease-out effect from 0% to 100% opacity and back."
           }
         }
       }

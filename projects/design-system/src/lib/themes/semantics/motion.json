@@ -1,0 +1,57 @@
+{
+  "ob": {
+    "s": {
+      "motion": {
+        "duration": {
+          "instant": {
+            "$type": "duration",
+            "$value": "{ob.p.motion.duration.instant}",
+            "$description": "No animation - immediate state changes"
+          },
+          "micro": {
+            "$type": "duration", 
+            "$value": "{ob.p.motion.duration.fast}",
+            "$description": "For hover states, focus rings, and micro-interactions"
+          },
+          "smooth": {
+            "$type": "duration",
+            "$value": "{ob.p.motion.duration.medium}",
+            "$description": "For tooltips, dropdowns, and smooth transitions"
+          },
+          "comfortable": {
+            "$type": "duration",
+            "$value": "{ob.p.motion.duration.slow}",
+            "$description": "For modals, sidebars, and prominent UI changes"
+          },
+          "relaxed": {
+            "$type": "duration",
+            "$value": "{ob.p.motion.duration.slower}",
+            "$description": "For page transitions and major layout shifts"
+          }
+        },
+        "easing": {
+          "standard": {
+            "$type": "cubicBezier",
+            "$value": "{ob.p.motion.easing.ease-out}",
+            "$description": "Default easing for most UI animations"
+          },
+          "entrance": {
+            "$type": "cubicBezier",
+            "$value": "{ob.p.motion.easing.ease-out}",
+            "$description": "For elements entering the screen"
+          },
+          "exit": {
+            "$type": "cubicBezier", 
+            "$value": "{ob.p.motion.easing.ease-in}",
+            "$description": "For elements leaving the screen"
+          },
+          "emphasis": {
+            "$type": "cubicBezier",
+            "$value": "{ob.p.motion.easing.ease-in-out}",
+            "$description": "For attention-drawing animations"
+          }
+        }
+      }
+    }
+  }
+}
