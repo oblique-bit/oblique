@@ -105,24 +105,24 @@
             "horizontal": {
               "sm": {
                 "$type": "spacing",
-                "$value": "{ob.p.space.100}",
+                "$value": "{ob.s.spacing.sm}",
                 "$description": "Horizontal padding of small size badge. Makes the badge round. "
               },
               "lg": {
                 "$type": "spacing",
-                "$value": "{ob.p.space.150}",
+                "$value": "{ob.s.spacing.md}",
                 "$description": "Horizontal padding of large size badge. Makes the badge round. "
               }
             },
             "vertical": {
               "sm": {
                 "$type": "spacing",
-                "$value": "{ob.p.space.100}",
+                "$value": "{ob.s.spacing.sm}",
                 "$description": "Vertical padding of small size badge. Makes the badge round. "
               },
               "lg": {
                 "$type": "spacing",
-                "$value": "{ob.p.space.150}",
+                "$value": "{ob.s.spacing.md}",
                 "$description": "Vertical padding of large size badge. Makes the badge round. "
               }
             }
@@ -132,36 +132,36 @@
           "max-width": {
             "sm": {
               "$type": "sizing",
-              "$value": "{ob.p.size.200}",
+              "$value": "{ob.s.size.normal}",
               "$description": "Max width of small badge. "
             },
             "lg": {
               "$type": "sizing",
-              "$value": "{ob.p.size.600}",
+              "$value": "{ob.s.size.ultra}",
               "$description": "Max width of large size badge. Maybe this is obsolete if we restrict the amount of characters the other way."
             }
           },
           "min-width": {
             "sm": {
               "$type": "sizing",
-              "$value": "{ob.p.size.200}",
+              "$value": "{ob.s.size.normal}",
               "$description": "Minimal width of small size badge. Makes the badge round."
             },
             "lg": {
               "$type": "sizing",
-              "$value": "{ob.p.size.250}",
+              "$value": "{ob.s.size.stretchy}",
               "$description": "Minimal width of large size badge. Makes the badge round."
             }
           },
           "height": {
             "sm": {
               "$type": "sizing",
-              "$value": "{ob.p.size.200}",
+              "$value": "{ob.s.size.normal}",
               "$description": "Height of small size badge. Makes the badge round."
             },
             "lg": {
               "$type": "sizing",
-              "$value": "{ob.p.size.250}",
+              "$value": "{ob.s.size.stretchy}",
               "$description": "Height of small size badge. Makes the badge round."
             }
           }
