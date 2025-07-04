@@ -9,7 +9,7 @@
             "$description": "No animation - immediate state changes"
           },
           "micro": {
-            "$type": "duration", 
+            "$type": "duration",
             "$value": "{ob.p.motion.duration.fast}",
             "$description": "For hover states, focus rings, and micro-interactions"
           },
@@ -41,7 +41,7 @@
             "$description": "For elements entering the screen"
           },
           "exit": {
-            "$type": "cubicBezier", 
+            "$type": "cubicBezier",
             "$value": "{ob.p.motion.easing.ease-in}",
             "$description": "For elements leaving the screen"
           },

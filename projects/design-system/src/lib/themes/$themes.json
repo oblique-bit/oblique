@@ -414,7 +414,9 @@
       "components/molecules/pill": "enabled",
       "html/list": "enabled",
       "global/static": "enabled",
-      "global/components-defaults/interaction-emphasis": "enabled"
+      "global/components-defaults/interaction-emphasis": "enabled",
+      "primitives/motion": "source",
+      "semantics/motion": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:6001:10676",
     "$figmaModeId": "6001:15",
