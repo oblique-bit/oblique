@@ -70,13 +70,6 @@
             "$description": "The message is in a medium font weight to build visual contrast and emphasize the hierarchy in case the title is present."
           }
         },
-        "spacing": {
-          "row-gap": {
-            "$type": "spacing",
-            "$value": "{ob.s.spacing.4xl}",
-            "$description": "This is the gap between the main content of the component and the optional button container if visible."
-          }
-        },
         "themes": {
           "interaction-emphasis": {
             "$type": "text",
