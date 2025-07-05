@@ -38,6 +38,18 @@
           "interaction-emphasis": {
             "$type": "other",
             "$value": "{ob.g.color.theme.interaction-emphasis.muted}"
+          },
+          "inversity": {
+            "$type": "other",
+            "$value": "default"
+          }
+        },
+        "fatal": {
+          "default-theme": {
+            "inversity": {
+              "$type": "other",
+              "$value": "inverse"
+            }
           }
         }
       },

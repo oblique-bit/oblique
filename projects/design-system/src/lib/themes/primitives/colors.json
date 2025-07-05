@@ -6,8 +6,7 @@
           "50": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#ffedee",
-            "$description": ""
+            "$value": "#ffedee"
           },
           "100": {
             "parent": "Colors/Mode 1",
@@ -147,7 +146,7 @@
           },
           "transparent": {
             "$type": "color",
-            "$value": "rgba(0,0,0,0)",
+            "$value": "rgb(0 0 0 / 0)",
             "$description": "Fully transparent color (0% opacity) for UI elements that need to be invisible."
           }
         },
@@ -341,62 +340,52 @@
           "50": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#F3F4F5",
-            "$description": ""
+            "$value": "#F3F4F5"
           },
           "100": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#D3DEE9",
-            "$description": ""
+            "$value": "#D3DEE9"
           },
           "200": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#AACAE6",
-            "$description": ""
+            "$value": "#AACAE6"
           },
           "300": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#6EB8E9",
-            "$description": ""
+            "$value": "#6EB8E9"
           },
           "400": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#48A4D7",
-            "$description": ""
+            "$value": "#48A4D7"
           },
           "500": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#2E8FBF",
-            "$description": ""
+            "$value": "#2E8FBF"
           },
           "600": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#2379A4",
-            "$description": ""
+            "$value": "#2379A4"
           },
           "700": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#236487",
-            "$description": ""
+            "$value": "#236487"
           },
           "800": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#255069",
-            "$description": ""
+            "$value": "#255069"
           },
           "900": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#233C4D",
-            "$description": ""
+            "$value": "#233C4D"
           }
         },
         "teal": {
@@ -939,7 +928,7 @@
                 "modify": {
                   "type": "alpha",
                   "value": "0.2",
-                  "space": "lch"
+                  "space": "srgb"
                 }
               }
             },
@@ -952,62 +941,52 @@
           "50": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#EFF6FF",
-            "$description": ""
+            "$value": "#EFF6FF"
           },
           "100": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#DBEAFE",
-            "$description": ""
+            "$value": "#DBEAFE"
           },
           "200": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#bfdbfe",
-            "$description": ""
+            "$value": "#bfdbfe"
           },
           "300": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#93c5fd",
-            "$description": ""
+            "$value": "#93c5fd"
           },
           "400": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#60a5fa",
-            "$description": ""
+            "$value": "#60a5fa"
           },
           "500": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#3b82f6",
-            "$description": ""
+            "$value": "#3b82f6"
           },
           "600": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#2563EB",
-            "$description": ""
+            "$value": "#2563EB"
           },
           "700": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#1D4ED8",
-            "$description": ""
+            "$value": "#1D4ED8"
           },
           "800": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#1E40AF",
-            "$description": ""
+            "$value": "#1E40AF"
           },
           "900": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#1E3A8A",
-            "$description": ""
+            "$value": "#1E3A8A"
           }
         }
       }
