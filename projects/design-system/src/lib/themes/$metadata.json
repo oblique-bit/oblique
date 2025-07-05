@@ -1,11 +1,10 @@
 {
   "tokenSetOrder": [
-    "global/static",
     "global/responsive/mobile",
     "global/responsive/desktop",
-    "global/components-defaults/lightness/light",
-    "global/components-defaults/lightness/dark",
-    "global/components-defaults/interaction-emphasis",
+    "global/components-themes/lightness/light",
+    "global/components-themes/lightness/dark",
+    "global/components-themes/static",
     "primitives/colors",
     "primitives/borders",
     "primitives/position",
