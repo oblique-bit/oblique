@@ -63,35 +63,12 @@
           }
         }
       },
-      "badge": {
-        "theme": {
-          "interaction-emphasis": {
-            "$type": "other",
-            "$value": "{ob.g.color.theme.interaction-emphasis.default}"
-          }
-        }
-      },
-      "button": {
-        "theme": {
-          "interaction-emphasis": {
-            "$type": "other",
-            "$value": "{ob.g.color.theme.interaction-emphasis.default}"
-          }
-        }
-      },
       "footer": {
         "theme": {
           "interaction-emphasis": {
             "$type": "other",
-            "$value": "{ob.g.color.theme.interaction-emphasis.muted}"
-          }
-        }
-      },
-      "link": {
-        "theme": {
-          "interaction-emphasis": {
-            "$type": "other",
-            "$value": "{ob.g.color.theme.interaction-emphasis.default}"
+            "$value": "{ob.g.color.theme.interaction-emphasis.muted}",
+            "$description": "Footer uses muted interaction emphasis theme override"
           }
         }
       },
@@ -104,43 +81,12 @@
           }
         }
       },
-      "pill": {
-        "theme": {
-          "interaction-emphasis": {
-            "$type": "other",
-            "$value": "{ob.g.color.theme.interaction-emphasis.default}"
-          }
-        }
-      },
       "popover": {
         "theme": {
           "interaction-emphasis": {
             "$type": "other",
-            "$value": "{ob.g.color.theme.interaction-emphasis.muted}"
-          }
-        }
-      },
-      "spinner": {
-        "theme": {
-          "interaction-emphasis": {
-            "$type": "other",
-            "$value": "{ob.g.color.theme.interaction-emphasis.default}"
-          }
-        }
-      },
-      "tag": {
-        "theme": {
-          "interaction-emphasis": {
-            "$type": "other",
-            "$value": "{ob.g.color.theme.interaction-emphasis.default}"
-          }
-        }
-      },
-      "tooltip": {
-        "theme": {
-          "interaction-emphasis": {
-            "$type": "other",
-            "$value": "{ob.g.color.theme.interaction-emphasis.default}"
+            "$value": "{ob.g.color.theme.interaction-emphasis.muted}",
+            "$description": "Popover uses muted interaction emphasis theme override"
           }
         }
       }
