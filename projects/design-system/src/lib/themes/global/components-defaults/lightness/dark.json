@@ -2,7 +2,7 @@
   "ob": {
     "g": {
       "badge": {
-        "default-theme": {
+        "theme": {
           "lightness": {
             "$type": "other",
             "$value": "{ob.g.color.theme.lightness.dark}"
@@ -10,7 +10,7 @@
         }
       },
       "button": {
-        "default-theme": {
+        "theme": {
           "lightness": {
             "$type": "other",
             "$value": "{ob.g.color.theme.lightness.dark}"
@@ -18,7 +18,7 @@
         }
       },
       "footer": {
-        "default-theme": {
+        "theme": {
           "lightness": {
             "$type": "other",
             "$value": "{ob.g.color.theme.lightness.dark}"
@@ -26,7 +26,7 @@
         }
       },
       "link": {
-        "default-theme": {
+        "theme": {
           "lightness": {
             "$type": "other",
             "$value": "{ob.g.color.theme.lightness.dark}"
@@ -34,23 +34,31 @@
         }
       },
       "infobox": {
-        "default-theme": {
+        "theme": {
           "lightness": {
             "$type": "other",
             "$value": "{ob.g.color.theme.lightness.dark}"
+          },
+          "inversity": {
+            "$type": "other",
+            "$value": "default"
           }
         },
         "fatal": {
-          "default-theme": {
+          "theme": {
             "lightness": {
               "$type": "other",
               "$value": "{ob.g.color.theme.lightness.light}"
+            },
+            "inversity": {
+              "$type": "other",
+              "$value": "inverse"
             }
           }
         }
       },
       "pill": {
-        "default-theme": {
+        "theme": {
           "lightness": {
             "$type": "other",
             "$value": "{ob.g.color.theme.lightness.dark}"
@@ -58,7 +66,7 @@
         }
       },
       "popover": {
-        "default-theme": {
+        "theme": {
           "lightness": {
             "$type": "other",
             "$value": "{ob.g.color.theme.lightness.dark}"
@@ -66,7 +74,7 @@
         }
       },
       "spinner": {
-        "default-theme": {
+        "theme": {
           "lightness": {
             "$type": "other",
             "$value": "{ob.g.color.theme.lightness.dark}"
@@ -74,7 +82,7 @@
         }
       },
       "tag": {
-        "default-theme": {
+        "theme": {
           "lightness": {
             "$type": "other",
             "$value": "{ob.g.color.theme.lightness.dark}"
@@ -82,7 +90,7 @@
         }
       },
       "tooltip": {
-        "default-theme": {
+        "theme": {
           "lightness": {
             "$type": "other",
             "$value": "{ob.g.color.theme.lightness.dark}"

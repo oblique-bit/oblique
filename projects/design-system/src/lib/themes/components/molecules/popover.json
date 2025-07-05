@@ -121,12 +121,6 @@
           "$type": "borderWidth",
           "$value": "{ob.s.border-width.xs}",
           "$description": "Sets the border width of the popover's surface."
-        },
-        "themes": {
-          "interaction-emphasis": {
-            "$type": "text",
-            "$value": "muted"
-          }
         }
       }
     }
