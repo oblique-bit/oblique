@@ -7,23 +7,23 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled-default}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.hover}"
+                "$value": "{ob.s.color.interaction.state.fg.hover-default}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.focus}"
+                "$value": "{ob.s.color.interaction.state.fg.focus-default}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.pressed}"
+                "$value": "{ob.s.color.interaction.state.fg.pressed-default}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.disabled}"
+                "$value": "{ob.s.color.interaction.state.fg.disabled-default}"
               }
             },
             "secondary": {
@@ -100,25 +100,25 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.enabled}",
+                "$value": "{ob.s.color.interaction.state.bg.enabled-default}",
                 "$description": "Background color of Primary button Enabled state."
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.hover}",
+                "$value": "{ob.s.color.interaction.state.bg.hover-default}",
                 "$description": "Background color of Primary button Hover state."
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.focus}"
+                "$value": "{ob.s.color.interaction.state.bg.focus-default}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.pressed}"
+                "$value": "{ob.s.color.interaction.state.bg.pressed-default}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.disabled}",
+                "$value": "{ob.s.color.interaction.state.bg.disabled-default}",
                 "$description": "Background color of the Disabled Primary button. Referenes the semantic interaction disabled."
               }
             },

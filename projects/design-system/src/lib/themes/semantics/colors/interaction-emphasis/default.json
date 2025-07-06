@@ -5,37 +5,37 @@
         "interaction": {
           "state": {
             "fg": {
-              "enabled": {
+              "enabled-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
-              "hover": {
+              "hover-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
-              "focus": {
+              "focus-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
-              "pressed": {
+              "pressed-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
-              "selected": {
+              "selected-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
                 "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
               },
-              "visited": {
+              "visited-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-low}",
                 "$description": "For text-links. No use in buttons."
               },
-              "disabled": {
+              "disabled-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.default}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
@@ -77,35 +77,35 @@
               }
             },
             "bg": {
-              "enabled": {
+              "enabled-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}",
                 "$description": "Background for secondary and tertiary buttons."
               },
-              "hover": {
+              "hover-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}",
                 "$description": "Background for secondary and tertiary buttons."
               },
-              "focus": {
+              "focus-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}"
               },
-              "pressed": {
+              "pressed-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}"
               },
-              "selected": {
+              "selected-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}",
                 "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
               },
-              "visited": {
+              "visited-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.static.no-color}",
                 "$description": "No use. For consistancy only. Text-links need no bg color."
               },
-              "disabled": {
+              "disabled-default": {
                 "$type": "color",
                 "$value": "{ob.s.color.static.no-color}",
                 "$description": "Disabled tertiary bg must be transparent."

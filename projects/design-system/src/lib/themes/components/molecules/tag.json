@@ -125,15 +125,15 @@
           "fg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-medium}"
+              "$value": "{ob.s.color.neutral.fg.contrast-medium-default}"
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-medium}"
+              "$value": "{ob.s.color.neutral.fg.contrast-medium-default}"
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-medium}"
+              "$value": "{ob.s.color.neutral.fg.contrast-medium-default}"
             },
             "active": {
               "$type": "color",
@@ -141,21 +141,21 @@
             },
             "disabled": {
               "$type": "color",
-              "$value": "{ob.s.color.interaction.state.fg.disabled}"
+              "$value": "{ob.s.color.interaction.state.fg.disabled-default}"
             }
           },
           "bg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-medium}"
+              "$value": "{ob.s.color.neutral.bg.contrast-medium-default}"
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-high}"
+              "$value": "{ob.s.color.neutral.bg.contrast-high-default}"
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-medium}"
+              "$value": "{ob.s.color.neutral.bg.contrast-medium-default}"
             },
             "active": {
               "$type": "color",
@@ -163,7 +163,7 @@
             },
             "disabled": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-medium}"
+              "$value": "{ob.s.color.neutral.bg.contrast-medium-default}"
             }
           }
         }

@@ -83,7 +83,7 @@
         "color": {
           "bg": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.bg.contrast-highest}",
+            "$value": "{ob.s.color.neutral.bg.contrast-highest-default}",
             "$description": "Default background color for popovers."
           },
           "border": {
@@ -93,7 +93,7 @@
           },
           "fg": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.fg.contrast-high}",
+            "$value": "{ob.s.color.neutral.fg.contrast-high-default}",
             "$description": "Default foreground color for popovers."
           }
         },
