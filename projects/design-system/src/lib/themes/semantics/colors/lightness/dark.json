@@ -923,36 +923,32 @@
               }
             },
             "bg-disabled": {
-              "bg-default": {
-                "opacity": {
-                  "$type": "color",
-                  "$value": "{ob.p.colors.white-alpha.300}"
-                },
-                "solid": {
-                  "$type": "color",
-                  "$value": "{ob.p.colors.white-alpha.300}",
-                  "$description": "For background of disabled elements. Solid version."
-                }
+              "solid": {
+                "$type": "color",
+                "$value": "{ob.p.colors.white-alpha.300}"
               },
-              "bg-inverse": {
-                "opacity": {
-                  "$extensions": {
-                    "studio.tokens": {
-                      "modify": {
-                        "type": "alpha",
-                        "value": "0.4",
-                        "space": "srgb"
-                      }
+              "opacity": {
+                "$type": "color",
+                "$value": "{ob.p.colors.white-alpha.300}",
+                "$description": "For background of disabled elements. Solid version."
+              },
+              "opacity-inverse": {
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.4",
+                      "space": "srgb"
                     }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.colors.cobalt.50}"
+                  }
                 },
-                "solid": {
-                  "$type": "color",
-                  "$value": "{ob.p.colors.cobalt.500}",
-                  "$description": "For background of disabled elements, inverse. Solid version."
-                }
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt.50}"
+              },
+              "solid-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt.500}",
+                "$description": "For background of disabled elements, inverse. Solid version."
               }
             }
           },

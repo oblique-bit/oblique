@@ -12,7 +12,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.solid}",
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.solid-inverse}",
                 "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             },
@@ -24,7 +24,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.solid}",
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.solid-inverse}",
                 "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             },
@@ -36,7 +36,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.solid}",
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.solid-inverse}",
                 "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             },
@@ -48,7 +48,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.solid}",
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.solid-inverse}",
                 "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             }

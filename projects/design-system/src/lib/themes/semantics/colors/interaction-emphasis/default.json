@@ -146,7 +146,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.bg-inverse.opacity}",
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.opacity-inverse}",
                 "$description": "Used for fill in e.g., primary buttons."
               }
             }
