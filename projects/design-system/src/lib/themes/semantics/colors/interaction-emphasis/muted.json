@@ -39,37 +39,35 @@
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.default}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
-              }
-            },
-            "fg-inverse": {
-              "enabled": {
+              },
+              "enabled-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
                 "$description": "References directly the text color to ensure the color consistency"
               },
-              "hover": {
+              "hover-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low-inverse}",
                 "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
               },
-              "focus": {
+              "focus-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.neutral.fg.contrast-high-inverse}"
               },
-              "pressed": {
+              "pressed-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.neutral.fg.contrast-high-inverse}"
               },
-              "selected": {
+              "selected-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.neutral.fg.contrast-high-inverse}"
               },
-              "visited": {
+              "visited-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}",
                 "$description": "For text-links."
               },
-              "disabled": {
+              "disabled-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}"
               }
@@ -103,36 +101,34 @@
               "disabled": {
                 "$type": "color",
                 "$value": "{ob.s.color.static.no-color}"
-              }
-            },
-            "bg-inverse": {
-              "enabled": {
+              },
+              "enabled-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.neutral.bg.contrast-medium-inverse}",
                 "$description": "References directly the text color to ensure the color consistency"
               },
-              "hover": {
+              "hover-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.neutral.bg.contrast-highest-inverse}"
               },
-              "focus": {
+              "focus-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.neutral.bg.contrast-high-inverse}"
               },
-              "pressed": {
+              "pressed-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.neutral.bg.contrast-highest-inverse}"
               },
-              "selected": {
+              "selected-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.static.no-color}"
               },
-              "visited": {
+              "visited-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.static.no-color}",
                 "$description": "For text-links."
               },
-              "disabled": {
+              "disabled-inverse": {
                 "$type": "color",
                 "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.opacity-inverse}"
               }

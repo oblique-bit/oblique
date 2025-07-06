@@ -57,44 +57,44 @@
             "info": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg-inverse.enabled}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled-inverse}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg-inverse.disabled}",
+                "$value": "{ob.s.color.interaction.state.fg.disabled-inverse}",
                 "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             },
             "attention": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg-inverse.enabled}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled-inverse}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg-inverse.disabled}",
+                "$value": "{ob.s.color.interaction.state.fg.disabled-inverse}",
                 "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             },
             "critical": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg-inverse.enabled}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled-inverse}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg-inverse.disabled}",
+                "$value": "{ob.s.color.interaction.state.fg.disabled-inverse}",
                 "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             },
             "resolved": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg-inverse.enabled}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled-inverse}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg-inverse.disabled}",
+                "$value": "{ob.s.color.interaction.state.fg.disabled-inverse}",
                 "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             }
