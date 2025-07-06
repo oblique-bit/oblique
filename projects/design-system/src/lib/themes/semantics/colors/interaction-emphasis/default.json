@@ -7,37 +7,37 @@
             "fg": {
               "enabled-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low-default}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "hover-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low-default}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "focus-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low-default}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "pressed-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-default}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "selected-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low-default}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
                 "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
               },
               "visited-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-low-default}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-low}",
                 "$description": "For text-links. No use in buttons."
               },
               "disabled-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.default}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "enabled-inverse": {

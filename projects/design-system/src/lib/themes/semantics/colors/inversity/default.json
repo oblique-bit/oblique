@@ -855,87 +855,50 @@
         "interaction": {
           "emphasis-default": {
             "bg-base": {
-              "contrast-high-default": {
+              "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-default}",
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-base.contrast-high-default}",
                 "$description": "Used as bg in 2nd and 3d buttons"
               },
-              "contrast-medium-default": {
+              "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.p.colors.steelblue.100}"
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-base.contrast-medium-default}"
               },
-              "contrast-low-default": {
+              "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.p.colors.steelblue.200}"
-              },
-              "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.600}"
-              },
-              "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.700}"
-              },
-              "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.800}"
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-base.contrast-low-default}"
               }
             },
             "fg-base": {
-              "contrast-high-default": {
+              "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.p.colors.steelblue.700}"
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-default}"
               },
-              "contrast-medium-default": {
+              "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.p.colors.steelblue.600}"
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-medium-default}"
               },
-              "contrast-low-default": {
+              "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.p.colors.steelblue.500}"
-              },
-              "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.200}"
-              },
-              "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.steelblue.100}"
-              },
-              "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.basic.white}",
-                "$description": "Text and icon color has to be white on inversion (primary buttons, badge etc.)"
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low-default}"
               }
             },
             "fg-visited": {
-              "contrast-high-default": {
+              "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.p.colors.indigo.900}"
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-high-default}"
               },
-              "contrast-medium-default": {
+              "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.p.colors.indigo.800}"
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-medium-default}"
               },
-              "contrast-low-default": {
+              "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.p.colors.indigo.700}"
-              },
-              "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.200}"
-              },
-              "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.100}"
-              },
-              "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.50}"
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-low-default}"
               }
             },
             "fg-disabled": {
-              "contrast-low-default": {
+              "contrast-low": {
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
@@ -946,118 +909,64 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.colors.cobalt-alpha.900}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.contrast-low-default}",
                 "$description": "Foreground color for disabled state of Text links, secondary and tertiary buttons etc. on standard backrgound."
-              },
-              "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.50}",
-                "$description": "Foreground color on an inverted backgrounds of disabled state of Primary button, badge.."
               }
             },
             "bg-disabled": {
-              "solid-default": {
+              "solid": {
                 "$type": "color",
-                "$value": "{ob.p.colors.cobalt-alpha.100}",
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.solid-default}",
                 "$description": "For background of disabled elements. Default, non-inverse. Opacity version."
               },
-              "opacity-default": {
+              "opacity": {
                 "$type": "color",
-                "$value": "{ob.p.colors.cobalt-alpha.100}",
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.opacity-default}",
                 "$description": "For background of disabled elements. Default background (non inverted).Solid version."
-              },
-              "opacity-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt-alpha.300}",
-                "$description": "For background of disabled elements, inverse. Opacity version."
-              },
-              "solid-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.200}",
-                "$description": "For background of disabled elements, inverse. Solid version."
               }
             }
           },
           "emphasis-muted": {
             "bg-base": {
-              "contrast-high-default": {
+              "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.p.colors.cobalt.50}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.bg-base.contrast-high-default}"
               },
-              "contrast-medium-default": {
+              "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.p.colors.cobalt.100}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.bg-base.contrast-medium-default}"
               },
-              "contrast-low-default": {
+              "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.p.colors.cobalt.200}"
-              },
-              "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.500}"
-              },
-              "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.600}"
-              },
-              "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.700}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.bg-base.contrast-low-default}"
               }
             },
             "fg-base": {
-              "contrast-high-default": {
+              "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.p.colors.cobalt.900}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.fg-base.contrast-high-default}"
               },
-              "contrast-medium-default": {
+              "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.p.colors.cobalt.800}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.fg-base.contrast-medium-default}"
               },
-              "contrast-low-default": {
+              "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.p.colors.cobalt.700}"
-              },
-              "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.200}",
-                "$description": "Auto-generated: matches bg.contrast-low"
-              },
-              "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.100}",
-                "$description": "Auto-generated: matches bg.contrast-medium"
-              },
-              "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.cobalt.50}",
-                "$description": "Auto-generated: matches bg.contrast-high"
+                "$value": "{ob.s.color.interaction.emphasis-muted.fg-base.contrast-low-default}"
               }
             },
             "fg-visited": {
-              "contrast-high-default": {
+              "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.p.colors.indigo.900}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.fg-visited.contrast-high-default}"
               },
-              "contrast-medium-default": {
+              "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.p.colors.indigo.800}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.fg-visited.contrast-medium-default}"
               },
-              "contrast-low-default": {
+              "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.p.colors.indigo.700}"
-              },
-              "contrast-low-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.200}"
-              },
-              "contrast-medium-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.100}"
-              },
-              "contrast-high-inverse": {
-                "$type": "color",
-                "$value": "{ob.p.colors.indigo.50}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.fg-visited.contrast-low-default}"
               }
             }
           },

@@ -12,7 +12,7 @@
               },
               "hover-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-medium-default}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-medium}",
                 "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
               },
               "focus-default": {
@@ -37,7 +37,7 @@
               },
               "disabled-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.default}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "enabled-inverse": {

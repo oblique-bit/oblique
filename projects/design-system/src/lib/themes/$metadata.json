@@ -19,6 +19,7 @@
     "semantics/colors/static",
     "semantics/colors/lightness/light",
     "semantics/colors/lightness/dark",
+    "semantics/colors/inversity/default",
     "semantics/colors/interaction-emphasis/default",
     "semantics/colors/interaction-emphasis/muted",
     "semantics/fx",

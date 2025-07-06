@@ -895,7 +895,7 @@
               }
             },
             "fg-disabled": {
-              "default": {
+              "contrast-low-default": {
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
@@ -908,7 +908,7 @@
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.50}"
               },
-              "inverse": {
+              "contrast-low-inverse": {
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
@@ -923,11 +923,11 @@
               }
             },
             "bg-disabled": {
-              "solid": {
+              "solid-default": {
                 "$type": "color",
                 "$value": "{ob.p.colors.white-alpha.300}"
               },
-              "opacity": {
+              "opacity-default": {
                 "$type": "color",
                 "$value": "{ob.p.colors.white-alpha.300}",
                 "$description": "For background of disabled elements. Solid version."
