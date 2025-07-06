@@ -7,22 +7,22 @@
             "fg": {
               "enabled-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low-default}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "hover-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low-default}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "focus-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low-default}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "pressed-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-default}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "selected-default": {
