@@ -7,32 +7,32 @@
             "fg": {
               "enabled-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-highest}",
+                "$value": "{ob.s.color.neutral.fg.contrast-highest-default}",
                 "$description": "References the neutral semantic color to ensure the color consistency."
               },
               "hover-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-medium}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-medium-default}",
                 "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
               },
               "focus-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-high}",
+                "$value": "{ob.s.color.neutral.fg.contrast-high-default}",
                 "$description": "References the neutral semantic color to ensure the color consistency."
               },
               "pressed-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-high}",
+                "$value": "{ob.s.color.neutral.fg.contrast-high-default}",
                 "$description": "References the neutral semantic color to ensure the color consistency."
               },
               "selected-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-high}",
+                "$value": "{ob.s.color.neutral.fg.contrast-high-default}",
                 "$description": "References the neutral semantic color to ensure the color consistency."
               },
               "visited-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-highest}",
+                "$value": "{ob.s.color.neutral.fg.contrast-highest-default}",
                 "$description": "For text-links.References the neutral semantic color to ensure the color consistency."
               },
               "disabled-default": {

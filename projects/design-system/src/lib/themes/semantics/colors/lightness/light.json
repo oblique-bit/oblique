@@ -857,7 +857,7 @@
             "bg-base": {
               "contrast-high-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest}",
+                "$value": "{ob.s.color.neutral.bg.contrast-highest-default}",
                 "$description": "Used as bg in 2nd and 3d buttons"
               },
               "contrast-medium-default": {

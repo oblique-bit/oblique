@@ -27,12 +27,12 @@
               },
               "selected-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low-default}",
                 "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
               },
               "visited-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-low-default}",
                 "$description": "For text-links. No use in buttons."
               },
               "disabled-default": {
