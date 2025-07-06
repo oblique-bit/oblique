@@ -53,5 +53,8 @@ Thumbs.db
 /nvm.env
 /before.env
 
+# Context notes (personal development notes)
+CONTEXT_NOTES.md
+
 #nx
 .nx/cache/*
