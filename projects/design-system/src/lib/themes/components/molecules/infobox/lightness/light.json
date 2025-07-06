@@ -74,7 +74,7 @@
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s.color.status.fatal.bg.contrast-medium}"
+              "$value": "{ob.s.color.status.fatal.bg.contrast-high}"
             },
             "fatal-test": {
               "$type": "color",
