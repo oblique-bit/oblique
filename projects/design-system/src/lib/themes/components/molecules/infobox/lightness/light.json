@@ -23,10 +23,6 @@
             "fatal": {
               "$type": "color",
               "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}"
-            },
-            "fatal-test": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.critical.fg.contrast-high}"
             }
           },
           "border": {
@@ -49,10 +45,6 @@
             "fatal": {
               "$type": "color",
               "$value": "{ob.s.color.status.fatal.fg.contrast-medium}"
-            },
-            "fatal-test": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.critical.fg.contrast-high}"
             }
           },
           "surface": {
@@ -75,10 +67,6 @@
             "fatal": {
               "$type": "color",
               "$value": "{ob.s.color.status.fatal.bg.contrast-high}"
-            },
-            "fatal-test": {
-              "$type": "color",
-              "$value": "{ob.s.color.status.critical.bg.contrast-high}"
             }
           },
           "fg": {
@@ -101,10 +89,6 @@
             "fatal": {
               "$type": "color",
               "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}"
-            },
-            "fatal-test": {
-              "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest-default}"
             }
           }
         }
