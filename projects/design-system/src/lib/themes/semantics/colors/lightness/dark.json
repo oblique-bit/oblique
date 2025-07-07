@@ -102,7 +102,7 @@
             }
           },
           "border": {
-            "subtle": {
+            "subtle-default": {
               "$extensions": {
                 "studio.tokens": {
                   "modify": {
@@ -115,7 +115,7 @@
               "$type": "color",
               "$value": "{ob.p.colors.basic.white}"
             },
-            "default": {
+            "medium-default": {
               "$extensions": {
                 "studio.tokens": {
                   "modify": {
@@ -128,7 +128,7 @@
               "$type": "color",
               "$value": "{ob.p.colors.basic.white}"
             },
-            "strong": {
+            "strong-default": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.300}"
             },
@@ -136,7 +136,7 @@
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.100}"
             },
-            "default-inverse": {
+            "medium-inverse": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.200}"
             },
@@ -146,13 +146,23 @@
             }
           },
           "shadow": {
-            "first": {
+            "first-default": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt-alpha.50}"
             },
-            "second": {
+            "second-default": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt-alpha.100}"
+            },
+            "first-inverse": {
+              "$type": "color",
+              "$value": "{ob.p.colors.cobalt-alpha.50}",
+              "$description": "1st of 2 effects"
+            },
+            "second-inverse": {
+              "$type": "color",
+              "$value": "{ob.p.colors.cobalt-alpha.100}",
+              "$description": "2nd of 2 effects"
             }
           }
         },

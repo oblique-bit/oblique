@@ -59,9 +59,9 @@
               "$type": "color",
               "$value": "{ob.s.color.neutral.border.subtle-inverse}"
             },
-            "default": {
+            "medium": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.border.default-inverse}"
+              "$value": "{ob.s.color.neutral.border.medium-inverse}"
             },
             "strong": {
               "$type": "color",
@@ -69,12 +69,12 @@
             }
           },
           "shadow": {
-            "first": {
+            "first-default": {
               "$type": "color",
               "$value": "{ob.s.color.neutral.shadow.first-inverse}",
               "$description": "1st of 2 effects"
             },
-            "second": {
+            "second-default": {
               "$type": "color",
               "$value": "{ob.s.color.neutral.shadow.second-inverse}",
               "$description": "2nd of 2 effects"

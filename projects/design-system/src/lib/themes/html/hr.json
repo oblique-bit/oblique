@@ -15,7 +15,7 @@
           },
           "default": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.border.default}"
+            "$value": "{ob.s.color.neutral.border.medium}"
           },
           "strong": {
             "$type": "color",

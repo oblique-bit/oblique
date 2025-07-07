@@ -59,9 +59,9 @@
               "$type": "color",
               "$value": "{ob.s.color.neutral.border.subtle-default}"
             },
-            "default": {
+            "medium": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.border.default-default}"
+              "$value": "{ob.s.color.neutral.border.medium-default}"
             },
             "strong": {
               "$type": "color",
