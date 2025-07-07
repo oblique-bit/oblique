@@ -5,4 +5,7 @@ CONTEXT_NOTES.md
 backup-context.sh
 backup-context-cron.sh
 
+# Temporary/utility scripts and files
+temp-scripts/
+
 
