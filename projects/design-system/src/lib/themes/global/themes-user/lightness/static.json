@@ -5,11 +5,13 @@
         "lightness": {
           "light": {
             "$type": "other",
-            "$value": "light"
+            "$value": "light",
+            "$description": "Light theme identifier. Used by components to determine light mode appearance and color scheme selection."
           },
           "dark": {
             "$type": "other",
-            "$value": "dark"
+            "$value": "dark",
+            "$description": "Dark theme identifier. Used by components to determine dark mode appearance and color scheme selection."
           }
         }
       }

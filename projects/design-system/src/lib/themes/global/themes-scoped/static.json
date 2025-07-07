@@ -5,11 +5,13 @@
         "interaction-emphasis": {
           "default": {
             "$type": "other",
-            "$value": "default"
+            "$value": "default",
+            "$description": "Default interaction emphasis theme identifier. Referenced by components to apply standard interaction emphasis colors for buttons and interactive elements."
           },
           "muted": {
             "$type": "other",
-            "$value": "muted"
+            "$value": "muted",
+            "$description": "Muted interaction emphasis theme identifier. Referenced by components to apply subdued interaction emphasis colors for secondary or contextual interactive elements."
           }
         }
       },
