@@ -2126,10 +2126,10 @@
       "ob.s.color.static.no-color": "9cdab3410b7185822f86c187555b024e0cfda9c1",
       "ob.s.color.interaction.indicator.selected": "d01d73eaa6c4ea0b0d6d3e5d85dcc47d69a88402",
       "ob.s.color.interaction.indicator.unselected": "96e0095c1de4edef1fe05516a8c13883131e593d",
-      "ob.c.infobox.color.icon.fatal-test": "81362c91afd5cf9ccdc57162dc4f0db90cfb7920",
-      "ob.c.infobox.color.border.fatal-test": "8f0c312ca6cf6ed329f1ca25c49fde3bc7eeb0d8",
-      "ob.c.infobox.color.surface.fatal-test": "f0b512de8b867e10841438c428ce7061563b5c11",
-      "ob.c.infobox.color.fg.fatal-test": "411e9fad9c495829082e22feeb734301fc35afcc"
+      "ob.c.infobox.color.icon.fatal-test": "62483c53426787afe9844142be14e8646000c2c7",
+      "ob.c.infobox.color.border.fatal-test": "edacf8d65b8a6a7747087f9f07f560c4b2051c94",
+      "ob.c.infobox.color.surface.fatal-test": "028e25eaa35ce2e6948a2b13b7822bc9f3ce91ac",
+      "ob.c.infobox.color.fg.fatal-test": "820d03114b249af07d8fee536ca784c80b6eb167"
     },
     "group": "lightness"
   },

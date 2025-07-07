@@ -1040,6 +1040,49 @@
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.900}"
               }
+            },
+            "fg-disabled": {
+              "contrast-low-default": {
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.4",
+                      "space": "srgb"
+                    }
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt-alpha.900}",
+                "$description": "Foreground color for disabled state of Text links, secondary and tertiary buttons etc. on standard backrgound."
+              },
+              "contrast-low-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt.50}",
+                "$description": "Foreground color on an inverted backgrounds of disabled state of Primary button, badge.."
+              }
+            },
+            "bg-disabled": {
+              "solid-default": {
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt-alpha.100}",
+                "$description": "For background of disabled elements. Default, non-inverse. Opacity version."
+              },
+              "opacity-default": {
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt-alpha.100}",
+                "$description": "For background of disabled elements. Default background (non inverted).Solid version."
+              },
+              "opacity-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt-alpha.300}",
+                "$description": "For background of disabled elements, inverse. Opacity version."
+              },
+              "solid-inverse": {
+                "$type": "color",
+                "$value": "{ob.p.colors.cobalt.200}",
+                "$description": "For background of disabled elements, inverse. Solid version."
+              }
             }
           },
           "border": {
