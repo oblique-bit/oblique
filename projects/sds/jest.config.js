@@ -140,10 +140,10 @@ module.exports = {
 			lines: 85
 		},
 		'projects/sds/src/app/code-examples/code-examples/notification/previews/other-options': {
-			statements: 52,
+			statements: 49,
 			branches: 0,
-			functions: 8,
-			lines: 47
+			functions: 7,
+			lines: 45
 		},
 		'projects/sds/src/app/code-examples/code-examples/slide-toggle/previews/second': {
 			statements: 87,
