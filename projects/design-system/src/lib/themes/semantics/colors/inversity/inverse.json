@@ -69,12 +69,12 @@
             }
           },
           "shadow": {
-            "first-default": {
+            "first": {
               "$type": "color",
               "$value": "{ob.s.color.neutral.shadow.first-inverse}",
               "$description": "1st of 2 effects"
             },
-            "second-default": {
+            "second": {
               "$type": "color",
               "$value": "{ob.s.color.neutral.shadow.second-inverse}",
               "$description": "2nd of 2 effects"
