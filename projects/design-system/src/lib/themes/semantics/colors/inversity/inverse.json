@@ -6,77 +6,77 @@
           "bg": {
             "contrast-highest": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-highest-default}",
+              "$value": "{ob.s.color.neutral.bg.contrast-highest-inverse}",
               "$description": "Default background color"
             },
             "contrast-high": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-high-default}",
+              "$value": "{ob.s.color.neutral.bg.contrast-high-inverse}",
               "$description": "Darker surface color"
             },
             "contrast-medium": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-medium-default}",
+              "$value": "{ob.s.color.neutral.bg.contrast-medium-inverse}",
               "$description": "Darker surface color"
             },
             "contrast-low": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-low-default}",
+              "$value": "{ob.s.color.neutral.bg.contrast-low-inverse}",
               "$description": "Darker surface color"
             },
             "contrast-lowest": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-lowest-default}",
+              "$value": "{ob.s.color.neutral.bg.contrast-lowest-inverse}",
               "$description": "Very subtle background color for disabled states or extremely low contrast surfaces"
             }
           },
           "fg": {
             "contrast-lowest": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-lowest-default}",
+              "$value": "{ob.s.color.neutral.fg.contrast-lowest-inverse}",
               "$description": "for diabled text"
             },
             "contrast-low": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-low-default}"
+              "$value": "{ob.s.color.neutral.fg.contrast-low-inverse}"
             },
             "contrast-medium": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-medium-default}",
+              "$value": "{ob.s.color.neutral.fg.contrast-medium-inverse}",
               "$description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
             },
             "contrast-high": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-high-default}"
+              "$value": "{ob.s.color.neutral.fg.contrast-high-inverse}"
             },
             "contrast-highest": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest-default}"
+              "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}"
             }
           },
           "border": {
             "subtle": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.border.subtle-default}"
+              "$value": "{ob.s.color.neutral.border.subtle-inverse}"
             },
             "default": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.border.default-default}"
+              "$value": "{ob.s.color.neutral.border.default-inverse}"
             },
             "strong": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.border.strong-default}"
+              "$value": "{ob.s.color.neutral.border.strong-inverse}"
             }
           },
           "shadow": {
             "first": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.shadow.first-default}",
+              "$value": "{ob.s.color.neutral.shadow.first-inverse}",
               "$description": "1st of 2 effects"
             },
             "second": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.shadow.second-default}",
+              "$value": "{ob.s.color.neutral.shadow.second-inverse}",
               "$description": "2nd of 2 effects"
             }
           }
@@ -86,29 +86,29 @@
             "bg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.info.bg.contrast-high-default}"
+                "$value": "{ob.s.color.status.info.bg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.info.bg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.info.bg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.info.bg.contrast-low-default}"
+                "$value": "{ob.s.color.status.info.bg.contrast-low-inverse}"
               }
             },
             "fg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.info.fg.contrast-high-default}"
+                "$value": "{ob.s.color.status.info.fg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.info.fg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.info.fg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.info.fg.contrast-low-default}"
+                "$value": "{ob.s.color.status.info.fg.contrast-low-inverse}"
               }
             }
           },
@@ -116,29 +116,29 @@
             "bg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.resolved.bg.contrast-high-default}"
+                "$value": "{ob.s.color.status.resolved.bg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.resolved.bg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.resolved.bg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.resolved.bg.contrast-low-default}"
+                "$value": "{ob.s.color.status.resolved.bg.contrast-low-inverse}"
               }
             },
             "fg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.resolved.fg.contrast-high-default}"
+                "$value": "{ob.s.color.status.resolved.fg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.resolved.fg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.resolved.fg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.resolved.fg.contrast-low-default}"
+                "$value": "{ob.s.color.status.resolved.fg.contrast-low-inverse}"
               }
             }
           },
@@ -146,29 +146,29 @@
             "bg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.fatal.bg.contrast-high-default}"
+                "$value": "{ob.s.color.status.fatal.bg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.fatal.bg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.fatal.bg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.fatal.bg.contrast-low-default}"
+                "$value": "{ob.s.color.status.fatal.bg.contrast-low-inverse}"
               }
             },
             "fg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.fatal.fg.contrast-high-default}"
+                "$value": "{ob.s.color.status.fatal.fg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.fatal.fg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.fatal.fg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.fatal.fg.contrast-low-default}"
+                "$value": "{ob.s.color.status.fatal.fg.contrast-low-inverse}"
               }
             }
           },
@@ -176,29 +176,29 @@
             "bg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.attention.bg.contrast-high-default}"
+                "$value": "{ob.s.color.status.attention.bg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.attention.bg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.attention.bg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.attention.bg.contrast-low-default}"
+                "$value": "{ob.s.color.status.attention.bg.contrast-low-inverse}"
               }
             },
             "fg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.attention.fg.contrast-high-default}"
+                "$value": "{ob.s.color.status.attention.fg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.attention.fg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.attention.fg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.attention.fg.contrast-low-default}"
+                "$value": "{ob.s.color.status.attention.fg.contrast-low-inverse}"
               }
             }
           },
@@ -206,29 +206,29 @@
             "bg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.pending.bg.contrast-high-default}"
+                "$value": "{ob.s.color.status.pending.bg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.pending.bg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.pending.bg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.pending.bg.contrast-low-default}"
+                "$value": "{ob.s.color.status.pending.bg.contrast-low-inverse}"
               }
             },
             "fg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.pending.fg.contrast-high-default}"
+                "$value": "{ob.s.color.status.pending.fg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.pending.fg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.pending.fg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.pending.fg.contrast-low-default}"
+                "$value": "{ob.s.color.status.pending.fg.contrast-low-inverse}"
               }
             }
           },
@@ -236,29 +236,29 @@
             "bg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.confirmed.bg.contrast-high-default}"
+                "$value": "{ob.s.color.status.confirmed.bg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.confirmed.bg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.confirmed.bg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.confirmed.bg.contrast-low-default}"
+                "$value": "{ob.s.color.status.confirmed.bg.contrast-low-inverse}"
               }
             },
             "fg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.confirmed.fg.contrast-high-default}"
+                "$value": "{ob.s.color.status.confirmed.fg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.confirmed.fg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.confirmed.fg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.confirmed.fg.contrast-low-default}"
+                "$value": "{ob.s.color.status.confirmed.fg.contrast-low-inverse}"
               }
             }
           },
@@ -266,34 +266,34 @@
             "bg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.progress.bg.contrast-high-default}"
+                "$value": "{ob.s.color.status.progress.bg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.progress.bg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.progress.bg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.progress.bg.contrast-low-default}"
+                "$value": "{ob.s.color.status.progress.bg.contrast-low-inverse}"
               },
               "contrast-high-alpha": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.progress.bg.contrast-high-alpha-default}",
+                "$value": "{ob.s.color.status.progress.bg.contrast-high-alpha-inverse}",
                 "$description": "Used for spinner background alpha overlay"
               }
             },
             "fg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.progress.fg.contrast-high-default}"
+                "$value": "{ob.s.color.status.progress.fg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.progress.fg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.progress.fg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.progress.fg.contrast-low-default}"
+                "$value": "{ob.s.color.status.progress.fg.contrast-low-inverse}"
               }
             }
           },
@@ -301,29 +301,29 @@
             "bg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.scheduled.bg.contrast-high-default}"
+                "$value": "{ob.s.color.status.scheduled.bg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.scheduled.bg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.scheduled.bg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.scheduled.bg.contrast-low-default}"
+                "$value": "{ob.s.color.status.scheduled.bg.contrast-low-inverse}"
               }
             },
             "fg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.scheduled.fg.contrast-high-default}"
+                "$value": "{ob.s.color.status.scheduled.fg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.scheduled.fg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.scheduled.fg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.scheduled.fg.contrast-low-default}"
+                "$value": "{ob.s.color.status.scheduled.fg.contrast-low-inverse}"
               }
             }
           },
@@ -331,29 +331,29 @@
             "bg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.waiting.bg.contrast-high-default}"
+                "$value": "{ob.s.color.status.waiting.bg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.waiting.bg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.waiting.bg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.waiting.bg.contrast-low-default}"
+                "$value": "{ob.s.color.status.waiting.bg.contrast-low-inverse}"
               }
             },
             "fg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.waiting.fg.contrast-high-default}"
+                "$value": "{ob.s.color.status.waiting.fg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.waiting.fg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.waiting.fg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.waiting.fg.contrast-low-default}"
+                "$value": "{ob.s.color.status.waiting.fg.contrast-low-inverse}"
               }
             }
           },
@@ -361,29 +361,29 @@
             "bg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.critical.bg.contrast-high-default}"
+                "$value": "{ob.s.color.status.critical.bg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.critical.bg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.critical.bg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.critical.bg.contrast-low-default}"
+                "$value": "{ob.s.color.status.critical.bg.contrast-low-inverse}"
               }
             },
             "fg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.critical.fg.contrast-high-default}"
+                "$value": "{ob.s.color.status.critical.fg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.critical.fg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.critical.fg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.critical.fg.contrast-low-default}"
+                "$value": "{ob.s.color.status.critical.fg.contrast-low-inverse}"
               }
             }
           },
@@ -391,29 +391,29 @@
             "bg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.closed.bg.contrast-high-default}"
+                "$value": "{ob.s.color.status.closed.bg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.closed.bg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.closed.bg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.closed.bg.contrast-low-default}"
+                "$value": "{ob.s.color.status.closed.bg.contrast-low-inverse}"
               }
             },
             "fg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.closed.fg.contrast-high-default}"
+                "$value": "{ob.s.color.status.closed.fg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.closed.fg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.closed.fg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.closed.fg.contrast-low-default}"
+                "$value": "{ob.s.color.status.closed.fg.contrast-low-inverse}"
               }
             }
           },
@@ -421,29 +421,29 @@
             "bg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.bg.contrast-high-default}"
+                "$value": "{ob.s.color.status.disabled.bg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.bg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.disabled.bg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.bg.contrast-low-default}"
+                "$value": "{ob.s.color.status.disabled.bg.contrast-low-inverse}"
               }
             },
             "fg": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.fg.contrast-high-default}"
+                "$value": "{ob.s.color.status.disabled.fg.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.fg.contrast-medium-default}"
+                "$value": "{ob.s.color.status.disabled.fg.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.fg.contrast-low-default}"
+                "$value": "{ob.s.color.status.disabled.fg.contrast-low-inverse}"
               }
             }
           }
@@ -453,44 +453,44 @@
             "bg-base": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-base.contrast-high-default}",
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-base.contrast-high-inverse}",
                 "$description": "Used as bg in 2nd and 3d buttons"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-base.contrast-medium-default}"
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-base.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-base.contrast-low-default}"
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-base.contrast-low-inverse}"
               }
             },
             "fg-base": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-default}"
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-medium-default}"
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low-default}"
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low-inverse}"
               }
             },
             "fg-visited": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-high-default}"
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-medium-default}"
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-low-default}"
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-low-inverse}"
               }
             },
             "fg-disabled": {
@@ -505,20 +505,20 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.contrast-low-default}",
-                "$description": "Foreground color for disabled state of Text links, secondary and tertiary buttons etc. on standard backrgound."
+                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.contrast-low-inverse}",
+                "$description": "Foreground color for disabled state of Text links, secondary and tertiary buttons etc. on inverse background."
               }
             },
             "bg-disabled": {
               "solid": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.solid-default}",
-                "$description": "For background of disabled elements. Default, non-inverse. Opacity version."
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.solid-inverse}",
+                "$description": "For background of disabled elements. Inverse background. Opacity version."
               },
               "opacity": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.opacity-default}",
-                "$description": "For background of disabled elements. Default background (non inverted).Solid version."
+                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.opacity-inverse}",
+                "$description": "For background of disabled elements. Inverse background. Solid version."
               }
             }
           },
@@ -526,43 +526,43 @@
             "bg-base": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-muted.bg-base.contrast-high-default}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.bg-base.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-muted.bg-base.contrast-medium-default}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.bg-base.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-muted.bg-base.contrast-low-default}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.bg-base.contrast-low-inverse}"
               }
             },
             "fg-base": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-muted.fg-base.contrast-high-default}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.fg-base.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-muted.fg-base.contrast-medium-default}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.fg-base.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-muted.fg-base.contrast-low-default}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.fg-base.contrast-low-inverse}"
               }
             },
             "fg-visited": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-muted.fg-visited.contrast-high-default}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.fg-visited.contrast-high-inverse}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-muted.fg-visited.contrast-medium-default}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.fg-visited.contrast-medium-inverse}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-muted.fg-visited.contrast-low-default}"
+                "$value": "{ob.s.color.interaction.emphasis-muted.fg-visited.contrast-low-inverse}"
               }
             }
           },
