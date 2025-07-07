@@ -13,6 +13,18 @@
             "$value": "muted",
             "$description": "Muted interaction emphasis theme identifier. Referenced by components to apply subdued interaction emphasis colors for secondary or contextual interactive elements."
           }
+        },
+        "inversity": {
+          "default": {
+            "$type": "other",
+            "$value": "default",
+            "$description": "default inversity desc tbd"
+          },
+          "inverse": {
+            "$type": "other",
+            "$value": "inverse",
+            "$description": "Inverse desc tbd"
+          }
         }
       },
       "footer": {
@@ -39,6 +51,17 @@
             "$type": "other",
             "$value": "{ob.g.theme.interaction-emphasis.muted}",
             "$description": "Popover uses muted interaction emphasis theme override"
+          }
+        }
+      },
+      "button": {
+        "primary": {
+          "theme": {
+            "inversity": {
+              "$type": "other",
+              "$value": "{ob.g.theme.inversity.inverse}",
+              "$description": "Primary button consumes inversed colors."
+            }
           }
         }
       }
