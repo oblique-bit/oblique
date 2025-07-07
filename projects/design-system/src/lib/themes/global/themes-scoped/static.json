@@ -12,33 +12,34 @@
             "$value": "muted"
           }
         }
-      },        "footer": {
-          "theme": {
-            "interaction-emphasis": {
-              "$type": "other",
-              "$value": "{ob.g.theme.interaction-emphasis.muted}",
-              "$description": "Footer uses muted interaction emphasis theme override"
-            }
-          }
-        },
-        "infobox": {
-          "theme": {
-            "interaction-emphasis": {
-              "$type": "other",
-              "$value": "{ob.g.theme.interaction-emphasis.muted}",
-              "$description": "We on purpose lower the interaction emphasis of all buttons inside Infobox and use the muted colors defined in semantics/colors/interaction-emphasis/muted. This token can not be used in Figma due to Figma restrictions. In this case, the token is static and does not react to dark/light mode."
-            }
-          }
-        },
-        "popover": {
-          "theme": {
-            "interaction-emphasis": {
-              "$type": "other",
-              "$value": "{ob.g.theme.interaction-emphasis.muted}",
-              "$description": "Popover uses muted interaction emphasis theme override"
-            }
+      },
+      "footer": {
+        "theme": {
+          "interaction-emphasis": {
+            "$type": "other",
+            "$value": "{ob.g.theme.interaction-emphasis.muted}",
+            "$description": "Footer uses muted interaction emphasis theme override"
           }
         }
+      },
+      "infobox": {
+        "theme": {
+          "interaction-emphasis": {
+            "$type": "other",
+            "$value": "{ob.g.theme.interaction-emphasis.muted}",
+            "$description": "We on purpose lower the interaction emphasis of all buttons inside Infobox and use the muted colors defined in semantics/colors/interaction-emphasis/muted. This token can not be used in Figma due to Figma restrictions. In this case, the token is static and does not react to dark/light mode."
+          }
+        }
+      },
+      "popover": {
+        "theme": {
+          "interaction-emphasis": {
+            "$type": "other",
+            "$value": "{ob.g.theme.interaction-emphasis.muted}",
+            "$description": "Popover uses muted interaction emphasis theme override"
+          }
+        }
+      }
     }
   }
 }
