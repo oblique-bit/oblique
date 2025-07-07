@@ -14,7 +14,7 @@
       },
       "viewport": {
         "$type": "text",
-        "$value": "desktop"
+        "$value": "{ob.g.theme.viewport.desktop}"
       }
     }
   }

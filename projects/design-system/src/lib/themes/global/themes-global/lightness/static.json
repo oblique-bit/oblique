@@ -1,0 +1,18 @@
+{
+  "ob": {
+    "g": {
+      "theme": {
+        "lightness": {
+          "light": {
+            "$type": "other",
+            "$value": "light"
+          },
+          "dark": {
+            "$type": "other",
+            "$value": "dark"
+          }
+        }
+      }
+    }
+  }
+}

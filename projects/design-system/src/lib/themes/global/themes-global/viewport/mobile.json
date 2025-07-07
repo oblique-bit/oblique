@@ -5,7 +5,7 @@
         "mult-responsive": {
           "$type": "number",
           "$value": "4",
-          "$description": "Mobile scaling multiplier - 1.25x larger than desktop (5 vs 4) for better touch accessibility. For some reason this is buggy, being resolved in desktop viewport. Thats why i temp set to 4 as desktop"
+          "$description": "Mobile scaling multiplier should be 1.25x larger than desktop (5 vs 4) for better touch accessibility. For some reason this is buggy, being resolved in desktop viewport. Thats why i temp set to 4 as desktop"
         }
       },
       "breakpoint": {
@@ -15,7 +15,7 @@
       },
       "viewport": {
         "$type": "text",
-        "$value": "mobile"
+        "$value": "{ob.g.theme.viewport.mobile}"
       }
     }
   }
