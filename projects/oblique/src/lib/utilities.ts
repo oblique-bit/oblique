@@ -36,6 +36,7 @@ export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
 export const OB_ACCESSIBILITY_STATEMENT_CONFIGURATION = new InjectionToken<ObIAccessibilityStatementConfiguration>(
 	'AccessibilityStatementConfiguration'
 );
+export const OB_HAS_LANGUAGE_IN_URL = new InjectionToken<boolean>('Add current language in URL');
 
 export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);
@@ -165,6 +166,7 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 		{provide: ObTIconConfig, useValue: {...defaultIconConfig, ...config.icon}},
 		{provide: OB_MATERIAL_CONFIG_2, useValue: config.material},
 		{provide: OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, useValue: config.accessibilityStatement},
+		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: config.hasLanguageInUrl || false},
 		materialProviders
 	]);
 }

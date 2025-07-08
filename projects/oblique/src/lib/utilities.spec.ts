@@ -13,6 +13,7 @@ import {of} from 'rxjs';
 import {OB_FLATTEN_TRANSLATION_FILES, ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {
 	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
+	OB_HAS_LANGUAGE_IN_URL,
 	OB_MATERIAL_CONFIG,
 	WINDOW,
 	checkboxOptionsProvider,
@@ -277,6 +278,12 @@ describe('utilities', () => {
 					});
 				});
 			});
+
+			describe('has language in URL', () => {
+				it('should provide OB_HAS_LANGUAGE_IN_URL as false', () => {
+					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(false);
+				});
+			});
 		});
 
 		describe('with custom configuration', () => {
@@ -309,7 +316,8 @@ describe('utilities', () => {
 								flatten: false,
 								config: {compiler: TranslateFakeCompiler},
 								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}]
-							}
+							},
+							hasLanguageInUrl: true
 						})
 					]
 				});
@@ -361,6 +369,12 @@ describe('utilities', () => {
 						applicationOperator: 'Operator',
 						contact: {emails: ['e@mail.com']}
 					});
+				});
+			});
+
+			describe('has language in URL', () => {
+				it('should provide OB_HAS_LANGUAGE_IN_URL as true', () => {
+					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(true);
 				});
 			});
 		});
