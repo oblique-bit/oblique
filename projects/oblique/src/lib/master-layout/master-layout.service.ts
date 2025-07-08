@@ -7,7 +7,6 @@ import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-
 import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
 import {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
-import {ObLanguageService} from '../language/language.service';
 import {ObMasterLayoutConfig} from './master-layout.config';
 
 @Injectable({providedIn: 'root'})
@@ -23,10 +22,7 @@ export class ObMasterLayoutService {
 	private homePageRouteInternal = this.config.homePageRoute;
 	private readonly homePageRouteChange = new BehaviorSubject<string>(this.config.homePageRoute);
 
-	constructor(
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		language: ObLanguageService // ObLanguageService needs to be there to be instantiated
-	) {
+	constructor() {
 		this.routeChange();
 		this.homePageRouteChange$ = this.homePageRouteChange.asObservable();
 	}

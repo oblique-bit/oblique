@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslateService, provideTranslateService} from '@ngx-translate/core';
+import {TranslateLoader, TranslateService, provideTranslateService} from '@ngx-translate/core';
 import {ObDatepickerIntlService} from './ob-datepicker.service';
 import {provideObliqueConfiguration} from '../utilities';
 import {provideHttpClient} from '@angular/common/http';
@@ -8,6 +8,7 @@ import obliqueEn from '../../assets/i18n/oblique-en.json';
 import obliqueIt from '../../assets/i18n/oblique-it.json';
 import obliqueDe from '../../assets/i18n/oblique-de.json';
 import obliqueFr from '../../assets/i18n/oblique-fr.json';
+import {of} from 'rxjs';
 
 describe('ObDatepickerIntlService', () => {
 	let datepickerService: ObDatepickerIntlService;
@@ -28,7 +29,8 @@ describe('ObDatepickerIntlService', () => {
 						applicationOperator: 'Operator',
 						contact: {emails: ['e@mail.com']}
 					}
-				})
+				}),
+				{provide: TranslateLoader, useValue: {getTranslation: () => of({})}}
 			]
 		}).compileComponents();
 		translateService = TestBed.inject(TranslateService);
@@ -37,6 +39,7 @@ describe('ObDatepickerIntlService', () => {
 		translateService.setTranslation('it', obliqueIt, true);
 		translateService.setTranslation('de', obliqueDe, true);
 		translateService.setTranslation('fr', obliqueFr, true);
+		translateService.use('anything'); // this triggers loading of translations
 		jest.spyOn(translateService, 'use');
 		jest.spyOn(datepickerService.changes, 'next');
 	});

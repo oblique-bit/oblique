@@ -6,6 +6,7 @@ import {AccessibilityStatementComponent} from '../accessibility-statement/access
 import {provideObliqueConfiguration} from '../utilities';
 import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 import {ObEScrollMode} from '../master-layout/master-layout.model';
+import {ObLanguageService} from '../language/language.service';
 
 describe(ObRouterService.name, () => {
 	let service: ObRouterService;
@@ -98,6 +99,10 @@ describe(ObRouterService.name, () => {
 
 		test('service creation', () => {
 			expect(service).toBeTruthy();
+		});
+
+		test('ObLanguageService instantiation', () => {
+			expect(TestBed.inject(ObLanguageService)).toBeTruthy();
 		});
 
 		test('accessibility statement route is added', () => {
