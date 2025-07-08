@@ -992,7 +992,7 @@
             "bg-base": {
               "contrast-high-default": {
                 "$type": "color",
-                "$value": "{ob.p.colors.cobalt.50}"
+                "$value": "{ob.s.color.neutral.bg.contrast-highest-default}"
               },
               "contrast-medium-default": {
                 "$type": "color",

@@ -7,7 +7,7 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled-default}"
               },
               "hover": {
                 "$type": "color",
@@ -100,7 +100,7 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.state.bg.enabled-default}",
                 "$description": "Background color of Primary button Enabled state."
               },
               "hover": {
