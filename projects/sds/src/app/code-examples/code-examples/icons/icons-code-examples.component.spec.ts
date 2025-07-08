@@ -50,7 +50,7 @@ describe(IconsCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.directive(IconsExampleDefaultPreviewComponent)).length).toBe(1);
 	});
 
-	test(`that there are 750 ${MatIcon.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatIcon)).length).toBe(751);
+	test(`that there are 752 ${MatIcon.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(MatIcon)).length).toBe(752);
 	});
 });
