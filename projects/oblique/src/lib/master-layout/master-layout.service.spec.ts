@@ -13,8 +13,6 @@ import {ObMockMasterLayoutHeaderService} from './_mocks/mock-master-layout-heade
 import {ObMockMasterLayoutFooterService} from './_mocks/mock-master-layout-footer.service';
 import {ObMockMasterLayoutNavigationService} from './_mocks/mock-master-layout-navigation.service';
 import {ObMockMasterLayoutComponentService} from './_mocks/mock-master-layout.component.service';
-import {ObLanguageService} from '../language/language.service';
-import {ObMockLanguageService} from '../language/_mocks/mock-language.service';
 
 describe('ObMasterLayoutService', () => {
 	let masterLayoutService: ObMasterLayoutService;
@@ -29,8 +27,7 @@ describe('ObMasterLayoutService', () => {
 				{provide: ObMasterLayoutHeaderService, useClass: ObMockMasterLayoutHeaderService},
 				{provide: ObMasterLayoutFooterService, useClass: ObMockMasterLayoutFooterService},
 				{provide: ObMasterLayoutNavigationService, useClass: ObMockMasterLayoutNavigationService},
-				{provide: ObMasterLayoutComponentService, useClass: ObMockMasterLayoutComponentService},
-				{provide: ObLanguageService, useClass: ObMockLanguageService}
+				{provide: ObMasterLayoutComponentService, useClass: ObMockMasterLayoutComponentService}
 			]
 		});
 		masterLayoutService = TestBed.inject(ObMasterLayoutService);
