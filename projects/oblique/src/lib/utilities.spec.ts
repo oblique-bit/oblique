@@ -10,7 +10,7 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {TranslateCompiler, TranslateFakeCompiler, TranslateLoader, TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
-import {ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
+import {OB_FLATTEN_TRANSLATION_FILES, ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {
 	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
 	OB_MATERIAL_CONFIG,
@@ -69,7 +69,7 @@ describe('utilities', () => {
 				]
 			]
 		])('with %s as additional files', (files, httpCalls) => {
-			const object = getTranslateLoader(httpClient, files);
+			const object = getTranslateLoader(httpClient, files, true);
 
 			it('should create an object', () => {
 				expect(object).toBeTruthy();
@@ -106,7 +106,7 @@ describe('utilities', () => {
 				loader: {
 					provide: TranslateLoader,
 					useFactory: getTranslateLoader,
-					deps: [HttpClient, [new Optional(), TRANSLATION_FILES]]
+					deps: [HttpClient, [new Optional(), TRANSLATION_FILES], [new Optional(), OB_FLATTEN_TRANSLATION_FILES]]
 				}
 			});
 		});
@@ -116,7 +116,7 @@ describe('utilities', () => {
 				loader: {
 					provide: TranslateLoader,
 					useFactory: getTranslateLoader,
-					deps: [HttpClient, [new Optional(), TRANSLATION_FILES]]
+					deps: [HttpClient, [new Optional(), TRANSLATION_FILES], [new Optional(), OB_FLATTEN_TRANSLATION_FILES]]
 				}
 			});
 		});
@@ -127,7 +127,7 @@ describe('utilities', () => {
 				loader: {
 					provide: TranslateLoader,
 					useFactory: getTranslateLoader,
-					deps: [HttpClient, [new Optional(), TRANSLATION_FILES]]
+					deps: [HttpClient, [new Optional(), TRANSLATION_FILES], [new Optional(), OB_FLATTEN_TRANSLATION_FILES]]
 				}
 			});
 		});
@@ -247,6 +247,10 @@ describe('utilities', () => {
 				it('should provide "TRANSLATION_FILES"', () => {
 					expect(TestBed.inject(TRANSLATION_FILES)).toBeUndefined();
 				});
+
+				it('should provide "OB_FLATTEN_TRANSLATION_FILES"', () => {
+					expect(TestBed.inject(OB_FLATTEN_TRANSLATION_FILES)).toBe(true);
+				});
 			});
 
 			describe('Material configuration', () => {
@@ -302,6 +306,7 @@ describe('utilities', () => {
 								additionalIcons: []
 							},
 							translate: {
+								flatten: false,
 								config: {compiler: TranslateFakeCompiler},
 								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}]
 							}
@@ -323,6 +328,10 @@ describe('utilities', () => {
 			describe('Translate configuration', () => {
 				it('should provide "TRANSLATION_FILES"', () => {
 					expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
+				});
+
+				it('should provide "OB_FLATTEN_TRANSLATION_FILES"', () => {
+					expect(TestBed.inject(OB_FLATTEN_TRANSLATION_FILES)).toEqual(false);
 				});
 
 				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
@@ -413,7 +422,8 @@ describe('utilities', () => {
 								contact: {emails: ['e@mail.com']}
 							}
 						}),
-						{provide: TRANSLATION_FILES, useValue: [{prefix: 'prefix', suffix: 'suffix'}]}
+						{provide: TRANSLATION_FILES, useValue: [{prefix: 'prefix', suffix: 'suffix'}]},
+						{provide: OB_FLATTEN_TRANSLATION_FILES, useValue: true}
 					]
 				});
 			});
@@ -424,6 +434,10 @@ describe('utilities', () => {
 
 			it('should provide "TRANSLATION_FILES"', () => {
 				expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
+			});
+
+			it('should provide "OB_FLATTEN_TRANSLATION_FILES"', () => {
+				expect(TestBed.inject(OB_FLATTEN_TRANSLATION_FILES)).toEqual(true);
 			});
 		});
 	});
