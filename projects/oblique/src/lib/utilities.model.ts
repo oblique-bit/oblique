@@ -34,6 +34,7 @@ export interface ObIObliqueConfiguration {
 	material?: ObIMaterialConfig;
 	icon?: ObIconConfig;
 	translate?: {
+		flatten?: boolean;
 		config?: TranslateModuleConfig;
 		additionalFiles?: ObITranslationFile[];
 	};
