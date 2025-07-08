@@ -26,6 +26,7 @@ import {MatStepperIntl} from '@angular/material/stepper';
 import {ObStepperIntlService} from './stepper/ob-stepper.service';
 import {MatDatepickerIntl} from '@angular/material/datepicker';
 import {ObDatepickerIntlService} from './datepicker/ob-datepicker.service';
+import {ObRouterService} from '../lib/router/ob-router.service';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
@@ -150,7 +151,10 @@ const materialProviders = [
 
 export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
-		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
+		provideAppInitializer(() => {
+			inject(ObIconService).registerOnAppInit();
+			inject(ObRouterService).initialize();
+		}),
 		provideTranslateService(multiTranslateLoader(config.translate?.config)),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
 		{provide: OB_FLATTEN_TRANSLATION_FILES, useValue: config.translate?.flatten ?? true},
