@@ -75,6 +75,7 @@ function runNgNewAngularWorkspace(projectName: string, interactive: boolean, pre
 function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string): void {
 	const dir: string = getApplicationDirectory(projectName);
 	installMaterial(dir);
+	installCdkAndAnimations(dir);
 	const projectTitle = options.title === projectNamePlaceholder || options.title === '' ? projectName : options.title;
 	let commandOptions: ObNewOptions<string | boolean> = {...options, title: projectTitle};
 	if (options.interactive === true) {
@@ -103,6 +104,11 @@ function getApplicationDirectory(projectName: string): string {
 function installMaterial(dir: string): void {
 	console.info(`[Info]: Installs Angular Material`);
 	execute({name: 'npmInstall', dependencies: ['@angular/material'], execSyncOptions: {cwd: dir}});
+}
+
+function installCdkAndAnimations(dir: string): void {
+	console.info(`[Info]: Installs @angular/cdk and @angular/animations`);
+	execute({name: 'npmInstall', dependencies: ['@angular/cdk', '@angular/animations'], execSyncOptions: {cwd: dir}});
 }
 
 function runNpmDedupe(): void {
