@@ -10,27 +10,30 @@ import {DeepString, ObITranslationFile} from './multi-translate-loader.model';
  */
 export const TRANSLATION_FILES = new InjectionToken('TRANSLATION_FILES');
 
+export const OB_FLATTEN_TRANSLATION_FILES = new InjectionToken<boolean>('Flatten translation files');
+
 /**
  * @deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
  */
 export class ObMultiTranslateLoader implements TranslateLoader {
 	constructor(
 		private readonly http: HttpClient,
-		private readonly resources: ObITranslationFile[]
+		private readonly resources: ObITranslationFile[],
+		private readonly shouldFlattenFiles: boolean
 	) {}
 
 	public getTranslation(language: string): Observable<Record<string, string>> {
 		const requests = this.resources
 			.map(resource => `${resource.prefix}${language}${resource.suffix}`)
-			.map(url =>
-				this.http.get<DeepString>(url).pipe(
-					map(translations => this.flatten(translations)),
-					catchError(() => ObMultiTranslateLoader.handleError(url))
-				)
-			);
+			.map(url => this.getTranslationFile(url, this.shouldFlattenFiles).pipe(catchError(() => ObMultiTranslateLoader.handleError(url))));
 		return forkJoin(requests).pipe(
 			map(response => response.reduce<Record<string, string>>((total, current) => ({...total, ...current}), {}))
 		);
+	}
+	private getTranslationFile(url: string, shouldFlattenFiles: boolean): Observable<Record<string, string>> {
+		return shouldFlattenFiles
+			? this.http.get<DeepString>(url).pipe(map(translations => this.flatten(translations)))
+			: this.http.get<Record<string, string>>(url);
 	}
 
 	// if some files are flat while others are expanded, the flatten properties will be ignored. Therefore, all files are flatten to avoid conflicts
