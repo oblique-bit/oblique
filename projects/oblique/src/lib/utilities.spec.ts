@@ -369,6 +369,7 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
+						provideHttpClient(),
 						provideObliqueConfiguration({
 							accessibilityStatement: {
 								applicationName: 'appName',
@@ -413,6 +414,7 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
+						provideHttpClient(),
 						provideObliqueConfiguration({
 							accessibilityStatement: {
 								applicationName: 'appName',

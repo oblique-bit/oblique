@@ -1,7 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {RouterTestingModule} from '@angular/router/testing';
-import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
@@ -16,7 +15,6 @@ import {ObMockMasterLayoutNavigationService} from './_mocks/mock-master-layout-n
 import {ObMockMasterLayoutComponentService} from './_mocks/mock-master-layout.component.service';
 import {ObLanguageService} from '../language/language.service';
 import {ObMockLanguageService} from '../language/_mocks/mock-language.service';
-import {AccessibilityStatementComponent} from '../accessibility-statement/accessibility-statement.component';
 
 describe('ObMasterLayoutService', () => {
 	let masterLayoutService: ObMasterLayoutService;
@@ -27,7 +25,7 @@ describe('ObMasterLayoutService', () => {
 			providers: [
 				ObMasterLayoutService,
 				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: ObMasterLayoutConfig, useValue: {showAccessibilityTitle: true, homePageRoute: '/home'}},
+				{provide: ObMasterLayoutConfig, useValue: {homePageRoute: '/home'}},
 				{provide: ObMasterLayoutHeaderService, useClass: ObMockMasterLayoutHeaderService},
 				{provide: ObMasterLayoutFooterService, useClass: ObMockMasterLayoutFooterService},
 				{provide: ObMasterLayoutNavigationService, useClass: ObMockMasterLayoutNavigationService},
@@ -36,7 +34,6 @@ describe('ObMasterLayoutService', () => {
 			]
 		});
 		masterLayoutService = TestBed.inject(ObMasterLayoutService);
-		TestBed.inject(ObMasterLayoutConfig).showAccessibilityTitle = true;
 	});
 
 	it('should be created', () => {
@@ -45,16 +42,6 @@ describe('ObMasterLayoutService', () => {
 
 	it('should have an homePageRoute set to "home"', () => {
 		expect(masterLayoutService.homePageRoute).toBe('/home');
-	});
-
-	it('should add a route to the accessibility statement', () => {
-		expect(TestBed.inject(Router).config).toEqual([
-			{
-				component: AccessibilityStatementComponent,
-				path: 'accessibility-statement',
-				data: {title: 'i18n.oblique.accessibility-statement.statement.title'}
-			}
-		]);
 	});
 
 	describe('homePageRouteChange$', () => {
