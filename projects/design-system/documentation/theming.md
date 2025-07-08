@@ -35,7 +35,7 @@ The semantic level supports complex theming through multiple dimensions that can
 **Example:** A button can simultaneously use:
 - `lightness: dark` (inheriting dark theme values)
 - `inversity: inverse` (switching to inverted background/foreground for visual emphasis)
-- `interaction-emphasis: muted` (lowering visual emphasis within headers/footers)
+- `emphasis: muted` (lowering visual emphasis within headers/footers)
 
 ### Level 1: Primitives
 
@@ -138,7 +138,7 @@ src/lib/themes/semantics/colors/inversity/
 #### Level 2.3: Interaction Emphasis Theming
 
 ```
-src/lib/themes/semantics/colors/interaction-emphasis/
+src/lib/themes/semantics/colors/emphasis/
 ├── default.json  # Full saturation (standard blue)
 └── muted.json    # Desaturated (monochromatic)
 ```
@@ -146,8 +146,8 @@ src/lib/themes/semantics/colors/interaction-emphasis/
 **Purpose:** Component-scoped theming for interaction emphasis. Used when design system maintainers set interaction emphasis to "muted" in host components (header, footer, infobox) where text links and buttons must be visually less aggressive.
 
 **Use Cases:**
-- **Standard Context:** Buttons in forms use `interaction-emphasis: default` with high-saturated blue for background fill
-- **Muted Context:** Same components in headers/footers use `interaction-emphasis: muted` appearing monochromatic to avoid drawing excessive attention
+- **Standard Context:** Buttons in forms use `emphasis: default` with high-saturated blue for background fill
+- **Muted Context:** Same components in headers/footers use `emphasis: muted` appearing monochromatic to avoid drawing excessive attention
 
 **Scope:** Only for interactive elements (buttons, text links, tabs). Non-interactive components can skip this level.
 
@@ -204,7 +204,7 @@ src/lib/themes/html/button/color-static.json
 
 The correct reference chain ensures proper theme inheritance:
 
-1. **Components** → **Interaction-emphasis** → **Inversity** → **Lightness** → **Primitives**
+1. **Components** → **Emphasis** → **Inversity** → **Lightness** → **Primitives**
 2. **Components** → **Inversity** → **Lightness** → **Primitives** (for non-interactive elements)
 
 **Validation Rules:**

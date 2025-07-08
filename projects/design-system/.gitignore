@@ -1,9 +1,5 @@
-# Context and personal notes
-CONTEXT_NOTES.md
-
-# Backup scripts
-backup-context.sh
-backup-context-cron.sh
+# AI workflow and personal notes (includes reports)
+ai/
 
 # Temporary/utility scripts and files
 temp-scripts/
