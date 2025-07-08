@@ -1,7 +1,7 @@
 {
   "ob": {
     "g": {
-      "theme": {
+      "theme-configuration": {
         "interaction-emphasis": {
           "default": {
             "$type": "other",
@@ -18,49 +18,51 @@
           "default": {
             "$type": "other",
             "$value": "default",
-            "$description": "default inversity desc tbd"
+            "$description": "Default inversity theme identifier. Referenced by components to apply normal contrast polarity."
           },
           "inverse": {
             "$type": "other",
             "$value": "inverse",
-            "$description": "Inverse desc tbd"
+            "$description": "Inverse inversity theme identifier. Referenced by components to apply inverted contrast polarity for emphasis."
           }
         }
       },
-      "footer": {
-        "theme": {
-          "interaction-emphasis": {
-            "$type": "other",
-            "$value": "{ob.g.theme.interaction-emphasis.muted}",
-            "$description": "Footer uses muted interaction emphasis theme override"
-          }
-        }
-      },
-      "infobox": {
-        "theme": {
-          "interaction-emphasis": {
-            "$type": "other",
-            "$value": "{ob.g.theme.interaction-emphasis.muted}",
-            "$description": "We on purpose lower the interaction emphasis of all buttons inside Infobox and use the muted colors defined in semantics/colors/interaction-emphasis/muted. This token can not be used in Figma due to Figma restrictions. In this case, the token is static and does not react to dark/light mode."
-          }
-        }
-      },
-      "popover": {
-        "theme": {
-          "interaction-emphasis": {
-            "$type": "other",
-            "$value": "{ob.g.theme.interaction-emphasis.muted}",
-            "$description": "Popover uses muted interaction emphasis theme override"
-          }
-        }
-      },
-      "button": {
-        "primary": {
+      "component-configuration": {
+        "footer": {
           "theme": {
-            "inversity": {
+            "interaction-emphasis": {
               "$type": "other",
-              "$value": "{ob.g.theme.inversity.inverse}",
-              "$description": "Primary button consumes inversed colors."
+              "$value": "{ob.g.theme-configuration.interaction-emphasis.muted}",
+              "$description": "Footer uses muted interaction emphasis theme override"
+            }
+          }
+        },
+        "infobox": {
+          "theme": {
+            "interaction-emphasis": {
+              "$type": "other",
+              "$value": "{ob.g.theme-configuration.interaction-emphasis.muted}",
+              "$description": "We on purpose lower the interaction emphasis of all buttons inside Infobox and use the muted colors defined in semantics/colors/interaction-emphasis/muted. This token can not be used in Figma due to Figma restrictions. In this case, the token is static and does not react to dark/light mode."
+            }
+          }
+        },
+        "popover": {
+          "theme": {
+            "interaction-emphasis": {
+              "$type": "other",
+              "$value": "{ob.g.theme-configuration.interaction-emphasis.muted}",
+              "$description": "Popover uses muted interaction emphasis theme override"
+            }
+          }
+        },
+        "button": {
+          "primary": {
+            "theme": {
+              "inversity": {
+                "$type": "other",
+                "$value": "{ob.g.theme-configuration.inversity.inverse}",
+                "$description": "Primary button consumes inversed colors."
+              }
             }
           }
         }

@@ -15,7 +15,7 @@
       },
       "viewport": {
         "$type": "text",
-        "$value": "{ob.g.theme.viewport.mobile}"
+        "$value": "{ob.g.theme-configuration.viewport.mobile}"
       }
     }
   }

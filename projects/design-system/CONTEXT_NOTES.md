@@ -511,7 +511,7 @@ src/lib/themes/global/scoped-themes/
 - **Validation**: Strict type checking and format validation required
 - **Extensions**: Support for vendor-specific extensions using reverse domain notation
 - **Naming Conventions**: Shortened names, rgb(R G B / A) color format, dot-to-dash translation awareness
-- **Responsiveness**: Two-breakpoint system (0-767px mobile, 768px+ desktop), components must work from 320px width
+- **Responsiveness**: Two-breakpoint system (0-767px mobile, 768px+ desktop), ensure 320px minimum viewport support
 - **Accessibility**: WCAG 2.1 AA compliance mandatory for all components
 - **Color Tokens**: Must include contrast ratio validation and testing
 - **Token Architecture**: Four-level structure (primitive → semantic → global → component)
@@ -748,3 +748,145 @@ npm run format
 - **Design Decisions** → Document deviations from Swiss Design System with clear justification
 - **Accessibility** → Validate WCAG 2.1 AA compliance for all components
 - **Token Impact** → Consider both HTML (ob.h.*) and Angular (ob.c.*) components during changes
+
+### 🎨 Design Token Architecture (Detailed)
+
+#### Token Hierarchy & Reference Chain
+
+The Oblique Design System uses a three-level hierarchical token architecture:
+
+**Reference Chain:** `Components → Semantics → Primitives`
+
+| Level | Purpose | File Location | References | Contains |
+|-------|---------|---------------|------------|----------|
+| **Level 1: Primitives** | Base color values | `primitives/colors.json` | None (hardcoded) | Hex values, color groups |
+| **Level 2: Semantics** | Contextual meanings + theming | `semantics/colors/*/` | Primitives | Themed token variants |
+| **Level 3: Components** | Component-specific tokens | `html/*/color-static.json` | Semantics | Component token references |
+
+#### Level 2: Semantic Layers (Detailed)
+
+**Multi-dimensional theming** enables complex theme combinations through specialized semantic layers:
+
+##### Level 2.1: Lightness Theming
+```
+semantics/colors/lightness/
+├── light.json    # Default theme (references primitives with -default suffix)
+└── dark.json     # Dark theme override (references primitives with -inverse suffix)
+```
+
+**Purpose:** System-wide light/dark theme switching (Figma variable mode)
+
+**Token Examples:**
+- `bg-base` - Generic backgrounds across interaction states
+- `fg-visited` - Visited text link foreground
+- `contrast-high/medium/low` - Contrast level variations
+
+**Token Structure:**
+```json
+// light.json
+"neutral": {
+  "bg": {
+    "contrast-highest-default": "{ob.p.colors.basic.white}",
+    "contrast-highest-inverse": "{ob.p.colors.cobalt.700}"
+  }
+}
+
+// Inversity layer references without suffix
+"neutral": {
+  "bg": {
+    "contrast-highest": "{ob.s.color.neutral.bg.contrast-highest-default}"
+  }
+}
+```
+
+##### Level 2.2: Inversity Theming
+```
+semantics/colors/inversity/
+├── default.json  # Normal contrast (references lightness -default)
+└── inverse.json  # Inverted contrast (references lightness -inverse)
+```
+
+**Purpose:** Component-scoped inversity override
+- **Component-wide:** Badge with inverted appearance (dark bg, light fg)
+- **Variant-specific:** `button.primary`, `infobox.fatal`, `tag.active` for UX emphasis
+
+**Reference Pattern:** Clean token names without suffixes, references lightness tokens
+
+##### Level 2.3: Interaction Emphasis Theming
+```
+semantics/colors/interaction-emphasis/
+├── default.json  # Full saturation (standard blue)
+└── muted.json    # Desaturated (monochromatic)
+```
+
+**Purpose:** Visual emphasis control for interactive elements
+- **Standard Context:** High-saturated blue for buttons in forms
+- **Muted Context:** Monochromatic appearance in headers/footers to reduce attention
+
+**Scope:** Only for interactive elements (buttons, text links, tabs)
+**Reference Pattern:** References inversity tokens
+
+#### Token Reference Chain Examples
+
+**Complete Chain for Button Primary:**
+```
+html/button/color-static.json
+→ ob.s.color.interaction.state.bg.enabled-inverse
+  → (interaction-emphasis/default.json)
+    → ob.s.color.status.fatal.bg.contrast-low
+      → (inversity/default.json)
+        → ob.s.color.status.fatal.bg.contrast-low-default
+          → (lightness/light.json)
+            → ob.p.colors.red.600
+```
+
+**Multi-dimensional Theme Example:**
+A button can simultaneously use:
+- `lightness: dark` (inheriting dark theme values)
+- `inversity: inverse` (light text on dark background for emphasis)
+- `interaction-emphasis: muted` (reduced visual emphasis in headers/footers)
+
+---
+
+## Project Completion Status - January 2025
+
+### ✅ Design Token Architecture Refactoring - COMPLETED
+
+**Status:** All tasks completed successfully.
+
+**Completed Work:**
+- ✅ Analyzed and documented the correct reference chain for color tokens
+- ✅ Migrated global tokens to new organization (`theme-configuration` and `component-configuration`)
+- ✅ Updated `documentation/Theming.md` with comprehensive theming system documentation
+- ✅ Restructured global token files to follow new organization pattern
+- ✅ Validated all token references for broken links after restructuring
+- ✅ Fixed broken references in viewport configuration files
+- ✅ Created `bugs.md` file documenting the Figma theme resolution issue
+- ✅ Added clarification about folder structure changes vs. token reference resolution
+- ✅ Documented "last wins" behavior for theme resolution and token overrides
+
+**Key Deliverables:**
+- Complete refactored global token structure
+- Updated documentation with best practices and examples
+- Bug documentation for known issues
+- Validated token reference integrity
+- Clear guidelines for future token organization
+
+**Files Modified:**
+- `/documentation/Theming.md` - Major documentation updates
+- `/src/lib/themes/global/themes-scoped/static.json` - Restructured organization
+- `/src/lib/themes/global/themes-user/viewport/static.json` - Updated references
+- `/src/lib/themes/global/themes-user/viewport/desktop.json` - Fixed broken references
+- `/src/lib/themes/global/themes-user/viewport/mobile.json` - Fixed broken references  
+- `/src/lib/themes/global/themes-user/lightness/static.json` - Updated organization
+- `/bugs.md` - New file documenting known issues
+
+**Architecture Impact:**
+- Token structure is now clear, maintainable, and follows best practices
+- Global themes properly organized into logical configuration groups
+- All references validated and working correctly
+- Documentation provides clear guidance for future development
+- Known issues documented for future resolution
+
+**Next Steps:**
+Ready for commit with appropriate ticket number in commit message.

@@ -10,220 +10,230 @@
 
 ---
 
-## Core Concepts
+## Design Token Architecture
 
-### Theme Types
+### Token Hierarchy Overview
 
-The design system organizes themes into distinct categories, each controlling a specific dimension of styling:
+Design tokens reference each other through a hierarchical structure with three main levels:
 
-| Theme Type | Description | Values | Use Case |
-|------------|-------------|---------|----------|
-| **Lightness** | Controls overall light or dark appearance | `light`, `dark` | System-wide theme switching (dark mode) |
-| **Inversity** | Determines normal vs inverted contrast | `default`, `inverse` | Components on contrasting backgrounds |
-| **Interaction Emphasis** | Controls tone of interactive elements | `default`, `muted` | Button hierarchy and interaction strength |
+1. **Primitives** (Level 1) - Base color values
+2. **Semantics** (Level 2) - Contextual color meanings with theming support
+3. **Components** (Level 3) - Component-specific token references
 
-### Theme Architecture
+**Reference Chain:** `Components → Semantics → Primitives`
+
+The component level references the semantic level, which references the primitive level. Only the primitive level contains hardcoded values. Code and Figma consume semantic and component levels, but we don't expose the component level to design system consumers in the published libraries.
+
+### Multi-Dimensional Theming
+
+The semantic level supports complex theming through multiple dimensions that can be combined:
+
+- **Lightness:** `light` (default) / `dark`
+- **Inversity:** `default` / `inverse` 
+- **Interaction Emphasis:** `default` / `muted`
+
+**Example:** A button can simultaneously use:
+- `lightness: dark` (inheriting dark theme values)
+- `inversity: inverse` (switching to inverted background/foreground for visual emphasis)
+- `interaction-emphasis: muted` (lowering visual emphasis within headers/footers)
+
+### Level 1: Primitives
 
 ```
-src/lib/themes/
-├── semantics/colors/
-│   ├── lightness/
-│   │   ├── light.json      # Light theme semantic colors
-│   │   └── dark.json       # Dark theme semantic colors
-│   ├── inversity/
-│   │   ├── default.json    # Default contrast semantic colors
-│   │   └── inverse.json    # Inverse contrast semantic colors
-│   └── interaction-emphasis/
-│       ├── default.json    # Default interaction colors
-│       └── muted.json      # Muted interaction colors
-└── global/scoped-themes/
-    ├── lightness/
-    │   ├── light.json      # Component theme overrides for light
-    │   └── dark.json       # Component theme overrides for dark
-    └── static.json         # Global theme configuration
+src/lib/themes/primitives/colors.json
 ```
 
----
+Contains only hardcoded hex values organized by color groups without semantic meaning:
 
-## Token Structure
-
-### Semantic Color Tokens
-
-All semantic color tokens follow a consistent pattern:
-
-#### Naming Convention
-- **Token Names:** Clean names without theme suffixes
-  - ✅ `contrast-high`, `contrast-medium`, `contrast-low`
-  - ❌ `contrast-high-default`, `contrast-medium-inverse`
-
-#### Reference Pattern
-- **Default Theme:** References `-default` tokens
-  - `"contrast-high": { "$value": "{ob.s.color.neutral.bg.contrast-high-default}" }`
-- **Inverse Theme:** References `-inverse` tokens
-  - `"contrast-high": { "$value": "{ob.s.color.neutral.bg.contrast-high-inverse}" }`
-
-### Token Categories
-
-#### Neutral Colors
 ```json
-"neutral": {
-  "bg": {
-    "contrast-highest": "Default background color",
-    "contrast-high": "Darker surface color", 
-    "contrast-medium": "Medium surface color",
-    "contrast-low": "Subtle surface color",
-    "contrast-lowest": "Very subtle background for disabled states"
-  },
-  "fg": {
-    "contrast-highest": "Primary text color",
-    "contrast-high": "Secondary text color",
-    "contrast-medium": "Tertiary text color", 
-    "contrast-low": "Subtle text color",
-    "contrast-lowest": "Disabled text color"
-  },
-  "border": {
-    "subtle": "Subtle border color",
-    "default": "Default border color", 
-    "strong": "Strong border color"
+{
+  "ob": {
+    "p": {
+      "colors": {
+        "red": { "50": "#fff5f5", "600": "#dc2626", "900": "#7f1d1d" },
+        "blue": { "50": "#eff6ff", "600": "#2563eb", "900": "#1e3a8a" },
+        "cobalt": { "50": "#f8fafc", "600": "#475569", "900": "#0f172a" }
+      }
+    }
   }
 }
 ```
 
-#### Status Colors
-```json
-"status": {
-  "info": { "bg": {...}, "fg": {...} },
-  "resolved": { "bg": {...}, "fg": {...} },
-  "fatal": { "bg": {...}, "fg": {...} },
-  "attention": { "bg": {...}, "fg": {...} },
-  "pending": { "bg": {...}, "fg": {...} },
-  "confirmed": { "bg": {...}, "fg": {...} },
-  "progress": { "bg": {...}, "fg": {...} },
-  "critical": { "bg": {...}, "fg": {...} },
-  "closed": { "bg": {...}, "fg": {...} },
-  "disabled": { "bg": {...}, "fg": {...} }
-}
+### Level 2: Semantics
+
+The semantic level introduces theming folders that enable theme switching. Each folder contains tokens with identical names but different values, allowing one to override the other when activated.
+
+#### Level 2.1: Lightness Theming
+
+```
+src/lib/themes/semantics/colors/lightness/
+├── light.json    # Default theme
+└── dark.json     # Dark theme override
 ```
 
-#### Interaction Colors
+**Purpose:** System-wide light/dark theme switching. Users set the variable mode in Figma from `lightness: light` (default) or `lightness: dark`.
+
+**Token Structure:** Generic-purpose tokens with contrast levels:
+- `bg-base` - For various backgrounds across different interaction states
+- `fg-visited` - Reserved for foreground color of visited text links
+- `contrast-high`, `contrast-medium`, `contrast-low` - Various contrast levels within semantic subgroups
+
+**Token Format:**
 ```json
-"interaction": {
-  "emphasis-default": {
-    "bg-base": { "contrast-high", "contrast-medium", "contrast-low" },
-    "fg-base": { "contrast-high", "contrast-medium", "contrast-low" },
-    "fg-visited": { "contrast-high", "contrast-medium", "contrast-low" },
-    "fg-disabled": { "contrast-low" },
-    "bg-disabled": { "solid", "opacity" }
-  },
-  "emphasis-muted": {
-    "bg-base": {...},
-    "fg-base": {...},
-    "fg-visited": {...}
+{
+  "ob": {
+    "s": {
+      "color": {
+        "neutral": {
+          "bg": {
+            "contrast-highest-default": "{ob.p.colors.basic.white}",
+            "contrast-highest-inverse": "{ob.p.colors.cobalt.700}"
+          }
+        },
+        "interaction": {
+          "emphasis-default": {
+            "bg-base": {
+              "contrast-high-default": "{ob.p.colors.steelblue.800}",
+              "contrast-high-inverse": "{ob.p.colors.basic.white}"
+            }
+          }
+        }
+      }
+    }
   }
 }
 ```
 
----
+#### Level 2.2: Inversity Theming
 
-## Implementation
-
-### File Organization
-
-#### Semantic Colors (src/lib/themes/semantics/colors/)
-- **lightness/**: Theme files for light/dark variants
-- **inversity/**: Theme files for default/inverse contrast
-- **interaction-emphasis/**: Theme files for interaction emphasis
-
-#### Scoped Themes (src/lib/themes/global/scoped-themes/)
-- **Overrides Only:** Contains only actual theme overrides, not default values
-- **Centralized:** Single source of truth for component theme customizations
-- **Implicit Defaults:** Default behavior is handled by the system
-
-### Theme Application
-
-#### CSS Custom Properties
-Themes are applied through CSS custom properties that map to semantic tokens:
-
-```css
-:root {
-  --ob-color-bg-default: var(--ob-s-color-neutral-bg-contrast-highest);
-  --ob-color-text-default: var(--ob-s-color-neutral-fg-contrast-highest);
-}
-
-[data-theme="dark"] {
-  --ob-color-bg-default: var(--ob-s-color-neutral-bg-contrast-highest);
-  --ob-color-text-default: var(--ob-s-color-neutral-fg-contrast-highest);
-}
+```
+src/lib/themes/semantics/colors/inversity/
+├── default.json  # Default contrast
+└── inverse.json  # Inverted contrast
 ```
 
-#### Component Usage
-Components reference semantic tokens through the design system:
+**Purpose:** Component-scoped theming for inversity override. Available in Figma variable mode but should not be altered by designers in projects.
 
-```scss
-.button {
-  background-color: var(--ob-s-color-interaction-emphasis-default-bg-base-contrast-high);
-  color: var(--ob-s-color-interaction-emphasis-default-fg-base-contrast-high);
-  
-  &:hover {
-    background-color: var(--ob-s-color-interaction-emphasis-default-bg-base-contrast-medium);
+**Use Cases:**
+- Setting complete inversity on components: Badge needs inverted appearance (dark bg, light fg)
+- One-time inversity on component variants: `button.primary`, `infobox.fatal`, `tag.active` to make them stick out for UX reasons
+
+**Token Structure:** References lightness tokens without theme suffixes:
+```json
+{
+  "ob": {
+    "s": {
+      "color": {
+        "neutral": {
+          "bg": {
+            "contrast-highest": "{ob.s.color.neutral.bg.contrast-highest-default}"
+          }
+        }
+      }
+    }
   }
 }
 ```
 
----
+#### Level 2.3: Interaction Emphasis Theming
 
-## Best Practices
-
-### Token References
-1. **Semantic Layer:** Always reference semantic tokens, never primitives
-2. **Clean Naming:** Use clean token names without theme suffixes
-3. **Consistent Pattern:** Follow established reference patterns for theme variants
-
-### Theme Design
-1. **Contrast Preservation:** Ensure sufficient contrast across all theme combinations
-2. **Semantic Consistency:** Maintain semantic meaning across theme variants
-3. **Accessibility:** Test all theme combinations for WCAG compliance
-
-### File Management
-1. **Overrides Only:** Scoped theme files should contain only actual overrides
-2. **Centralized:** Keep all theme overrides in the global/scoped-themes directory
-3. **Documentation:** Document any custom theme behavior or special cases
-
----
-
-## Migration Guide
-
-### From Legacy Tokens
-When migrating from legacy `-inverse` suffix tokens:
-
-1. **Remove Suffixes:** Clean up token names by removing `-default` and `-inverse` suffixes
-2. **Update References:** Change token references to point to appropriate theme variants
-3. **File Structure:** Move tokens to appropriate theme files (lightness/, inversity/, etc.)
-
-### Token Validation
-Ensure all tokens follow the correct patterns:
-
-```bash
-# Check for broken references
-grep -r "\.p\." src/lib/themes/semantics/  # Should only appear in interaction.border.focus
-
-# Validate naming consistency  
-grep -r "\-default\":" src/lib/themes/semantics/  # Should not appear in token names
-
-# Verify theme structure
-ls src/lib/themes/semantics/colors/inversity/  # Should contain default.json and inverse.json
+```
+src/lib/themes/semantics/colors/interaction-emphasis/
+├── default.json  # Full saturation (standard blue)
+└── muted.json    # Desaturated (monochromatic)
 ```
 
----
+**Purpose:** Component-scoped theming for interaction emphasis. Used when design system maintainers set interaction emphasis to "muted" in host components (header, footer, infobox) where text links and buttons must be visually less aggressive.
 
-## Future Considerations
+**Use Cases:**
+- **Standard Context:** Buttons in forms use `interaction-emphasis: default` with high-saturated blue for background fill
+- **Muted Context:** Same components in headers/footers use `interaction-emphasis: muted` appearing monochromatic to avoid drawing excessive attention
 
-### Planned Enhancements
-- **Additional Theme Types:** Potential support for brand variants or seasonal themes
-- **Component Themes:** Enhanced component-specific theming capabilities
-- **Dynamic Theming:** Runtime theme switching and customization
+**Scope:** Only for interactive elements (buttons, text links, tabs). Non-interactive components can skip this level.
 
-### Design System Integration
-- **Figma Sync:** Automated synchronization with Figma variable modes
-- **Token Studio:** Continued integration with Token Studio workflow
-- **Build Tools:** Enhanced build-time theme optimization and validation
+**Token Structure:** References inversity tokens:
+```json
+{
+  "ob": {
+    "s": {
+      "color": {
+        "interaction": {
+          "state": {
+            "fg": {
+              "enabled-default": "{ob.s.color.status.fatal.fg.contrast-low}",
+              "hover-default": "{ob.s.color.status.fatal.fg.contrast-medium}"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Level 3: Components
+
+```
+src/lib/themes/html/button/color-static.json
+```
+
+**Purpose:** Component-specific token references. No theming subfolders should exist at this level when possible.
+
+**Reference Strategy:** Components reference inversity tokens and remain agnostic to whether they're inverse, muted, or on dark theme - all theming happens at the semantic level.
+
+**Token Structure:** References semantic tokens pre-defined for specific use cases:
+```json
+{
+  "ob": {
+    "h": {
+      "button": {
+        "color": {
+          "bg": {
+            "primary": {
+              "enabled": "{ob.s.color.interaction.state.bg.enabled-inverse}"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Reference Chain Validation
+
+The correct reference chain ensures proper theme inheritance:
+
+1. **Components** → **Interaction-emphasis** → **Inversity** → **Lightness** → **Primitives**
+2. **Components** → **Inversity** → **Lightness** → **Primitives** (for non-interactive elements)
+
+**Validation Rules:**
+- Semantic layers should never directly reference primitives (except for lightness layer)
+- Component layers should never reference lightness or primitive layers directly
+- Each layer should only reference the layer immediately below it in the hierarchy
+
+### Folder Structure vs. Token References
+
+**Important:** Changing folder structures does not necessarily break token references. Token resolution depends on the token paths and names, not the folder organization.
+
+**What Breaks References:**
+- Changing token paths (e.g., `{ob.s.color.bg.default}` → `{ob.s.color.background.default}`)
+- Renaming tokens (e.g., `primary` → `accent`)
+- Removing tokens that are referenced elsewhere
+
+**What Doesn't Break References:**
+- Moving files between folders (as long as token paths remain the same)
+- Reorganizing folder structure for better organization
+- Renaming folders (token paths are independent of folder names)
+
+**Theme Resolution ("Last Wins"):**
+When multiple themes define the same token path, the last loaded theme takes precedence. This allows for theme overrides and layering without breaking references.
+
+**Example:**
+```json
+// Theme A defines: ob.s.color.bg.primary = "blue"
+// Theme B defines: ob.s.color.bg.primary = "red"
+// Result: Theme B wins, token resolves to "red"
+```
+
+This behavior enables flexible theme switching and customization without requiring reference updates.
