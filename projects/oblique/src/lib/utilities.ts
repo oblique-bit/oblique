@@ -3,7 +3,7 @@ import {EnvironmentProviders, InjectionToken, Optional, inject, makeEnvironmentP
 import {DOCUMENT} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 import {TranslateLoader, TranslateModuleConfig, provideTranslateService} from '@ngx-translate/core';
-import {ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
+import {OB_FLATTEN_TRANSLATION_FILES, ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions} from '@angular/material/form-field';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions} from '@angular/material/checkbox';
@@ -43,14 +43,18 @@ export function windowProvider(doc: Document): Window {
 /**
  * @deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
  */
-export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[]): ObMultiTranslateLoader {
-	return new ObMultiTranslateLoader(http, [
-		{
-			prefix: './assets/i18n/oblique-',
-			suffix: '.json'
-		},
-		...(files || [{prefix: './assets/i18n/', suffix: '.json'}])
-	]);
+export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[], flatten: boolean): ObMultiTranslateLoader {
+	return new ObMultiTranslateLoader(
+		http,
+		[
+			{
+				prefix: './assets/i18n/oblique-',
+				suffix: '.json'
+			},
+			...(files || [{prefix: './assets/i18n/', suffix: '.json'}])
+		],
+		flatten
+	);
 }
 
 /**
@@ -62,7 +66,7 @@ export function multiTranslateLoader(config: TranslateModuleConfig = {}): Transl
 		loader: {
 			provide: TranslateLoader,
 			useFactory: getTranslateLoader,
-			deps: [HttpClient, [new Optional(), TRANSLATION_FILES]]
+			deps: [HttpClient, [new Optional(), TRANSLATION_FILES], [new Optional(), OB_FLATTEN_TRANSLATION_FILES]]
 		}
 	};
 }
@@ -149,6 +153,7 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
 		provideTranslateService(multiTranslateLoader(config.translate?.config)),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
+		{provide: OB_FLATTEN_TRANSLATION_FILES, useValue: config.translate?.flatten ?? true},
 		{provide: TRANSLATION_FILES, useValue: config.translate?.additionalFiles},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
