@@ -1,0 +1,88 @@
+{
+  "ob": {
+    "p": {
+      "space": {
+        "50": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * .5"
+        },
+        "100": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 1"
+        },
+        "150": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 1.5"
+        },
+        "200": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 2"
+        },
+        "250": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 2.50"
+        },
+        "300": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 3"
+        },
+        "400": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 4"
+        },
+        "500": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 5"
+        },
+        "600": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 6"
+        },
+        "700": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 7"
+        },
+        "800": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 8"
+        },
+        "900": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 9"
+        },
+        "1000": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 10"
+        },
+        "1200": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 12"
+        },
+        "1600": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 16"
+        },
+        "2000": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 20"
+        },
+        "2200": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 22"
+        },
+        "2600": {
+          "$type": "spacing",
+          "$value": "{ob.p.space._base} * 26"
+        },
+        "none": {
+          "$type": "spacing",
+          "$value": "0"
+        },
+        "_base": {
+          "$type": "spacing",
+          "$value": "{ob.g.scale.mult-responsive}"
+        }
+      }
+    }
+  }
+}

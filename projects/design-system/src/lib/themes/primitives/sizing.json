@@ -1,0 +1,169 @@
+{
+  "ob": {
+    "p": {
+      "size": {
+        "0": {
+          "$type": "sizing",
+          "$value": "0"
+        },
+        "12": {
+          "$type": "sizing",
+          "$value": "1"
+        },
+        "25": {
+          "$type": "sizing",
+          "$value": "2"
+        },
+        "37": {
+          "$type": "sizing",
+          "$value": "3"
+        },
+        "50": {
+          "$type": "sizing",
+          "$value": "4"
+        },
+        "75": {
+          "$type": "sizing",
+          "$value": "6"
+        },
+        "100": {
+          "$type": "sizing",
+          "$value": "8"
+        },
+        "125": {
+          "$type": "sizing",
+          "$value": "10"
+        },
+        "150": {
+          "$type": "sizing",
+          "$value": "12"
+        },
+        "175": {
+          "$type": "sizing",
+          "$value": "14"
+        },
+        "200": {
+          "$type": "sizing",
+          "$value": "16"
+        },
+        "225": {
+          "$type": "sizing",
+          "$value": "18"
+        },
+        "250": {
+          "$type": "sizing",
+          "$value": "20"
+        },
+        "275": {
+          "$type": "sizing",
+          "$value": "22"
+        },
+        "300": {
+          "$type": "sizing",
+          "$value": "24"
+        },
+        "350": {
+          "$type": "sizing",
+          "$value": "28"
+        },
+        "400": {
+          "$type": "sizing",
+          "$value": "32"
+        },
+        "450": {
+          "$type": "sizing",
+          "$value": "36"
+        },
+        "500": {
+          "$type": "sizing",
+          "$value": "40"
+        },
+        "600": {
+          "$type": "sizing",
+          "$value": "48"
+        },
+        "700": {
+          "$type": "sizing",
+          "$value": "56"
+        },
+        "800": {
+          "$type": "sizing",
+          "$value": "64"
+        },
+        "900": {
+          "$type": "sizing",
+          "$value": "72"
+        },
+        "1000": {
+          "$type": "sizing",
+          "$value": "80"
+        },
+        "1200": {
+          "$type": "sizing",
+          "$value": "96"
+        },
+        "1400": {
+          "$type": "sizing",
+          "$value": "112"
+        },
+        "1600": {
+          "$type": "sizing",
+          "$value": "128"
+        },
+        "1800": {
+          "$type": "sizing",
+          "$value": "144"
+        },
+        "2000": {
+          "$type": "sizing",
+          "$value": "160"
+        },
+        "2200": {
+          "$type": "sizing",
+          "$value": "176"
+        },
+        "2400": {
+          "$type": "sizing",
+          "$value": "192"
+        },
+        "2600": {
+          "$type": "sizing",
+          "$value": "208"
+        },
+        "2800": {
+          "$type": "sizing",
+          "$value": "224"
+        },
+        "3000": {
+          "$type": "sizing",
+          "$value": "240"
+        },
+        "3200": {
+          "$type": "sizing",
+          "$value": "256"
+        },
+        "3400": {
+          "$type": "sizing",
+          "$value": "288"
+        },
+        "3600": {
+          "$type": "sizing",
+          "$value": "320"
+        },
+        "3800": {
+          "$type": "sizing",
+          "$value": "384"
+        },
+        "6750": {
+          "$type": "sizing",
+          "$value": "{ob.p.size._base} * 67.5"
+        },
+        "_base": {
+          "$type": "sizing",
+          "$value": "{ob.g.scale.mult-responsive}",
+          "$description": "Acts as the foundational size token used to scale all derived sizing values, enabling consistent resizing for responsive modes."
+        }
+      }
+    }
+  }
+}
