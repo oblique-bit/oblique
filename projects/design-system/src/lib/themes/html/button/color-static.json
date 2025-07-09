@@ -7,92 +7,69 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled.inversity-normal}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}"
+                "$value": "{ob.s.color.interaction.state.fg.hover}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}"
+                "$value": "{ob.s.color.interaction.state.fg.focus}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium}"
+                "$value": "{ob.s.color.interaction.state.fg.pressed}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}"
+                "$value": "{ob.s.color.interaction.state.fg.disabled}"
               }
             },
             "secondary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.state.fg.enabled}",
                 "$description": "Text and icon color of secondary button or text-link, Enabled state."
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}"
+                "$value": "{ob.s.color.interaction.state.fg.hover}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}"
+                "$value": "{ob.s.color.interaction.state.fg.focus}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}"
+                "$value": "{ob.s.color.interaction.state.fg.pressed}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}"
+                "$value": "{ob.s.color.interaction.state.fg.disabled}"
               }
             },
             "tertiary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}"
+                "$value": "{ob.s.color.interaction.state.fg.hover}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}"
+                "$value": "{ob.s.color.interaction.state.fg.focus}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}",
+                "$value": "{ob.s.color.interaction.state.fg.pressed}",
                 "$description": "slightly reduced opacity for pressed"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}"
-              }
-            },
-            "close": {
-              "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}"
-              },
-              "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}"
-              },
-              "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}"
-              },
-              "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}",
-                "$description": "slightly reduced opacity for pressed"
-              },
-              "disabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}"
+                "$value": "{ob.s.color.interaction.state.fg.disabled}"
               }
             }
           },
@@ -100,7 +77,7 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.enabled.inversity-normal}",
+                "$value": "{ob.s.color.static.no-color}",
                 "$description": "Background color of Primary button Enabled state."
               },
               "hover": {
@@ -130,15 +107,15 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-high}"
+                "$value": "{ob.s.color.interaction.state.bg.hover}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-high}"
+                "$value": "{ob.s.color.interaction.state.bg.focus}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-high}"
+                "$value": "{ob.s.color.interaction.state.bg.pressed}"
               },
               "disabled": {
                 "$type": "color",
@@ -153,38 +130,15 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-high}"
+                "$value": "{ob.s.color.interaction.state.bg.hover}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-high}"
+                "$value": "{ob.s.color.interaction.state.bg.focus}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-high}"
-              },
-              "disabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}"
-              }
-            },
-            "close": {
-              "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}",
-                "$description": "Tertiary needs a transparent background color on Enabled state."
-              },
-              "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}"
-              },
-              "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}"
-              },
-              "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}"
+                "$value": "{ob.s.color.interaction.state.bg.pressed}"
               },
               "disabled": {
                 "$type": "color",
@@ -219,48 +173,26 @@
             "secondary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}"
+                "$value": "{ob.s.color.interaction.state.fg.hover}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}"
+                "$value": "{ob.s.color.interaction.state.fg.focus}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}"
+                "$value": "{ob.s.color.interaction.state.fg.pressed}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}"
+                "$value": "{ob.s.color.interaction.state.fg.disabled}"
               }
             },
             "tertiary": {
-              "enabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}"
-              },
-              "hover": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}"
-              },
-              "focus": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}"
-              },
-              "pressed": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}"
-              },
-              "disabled": {
-                "$type": "color",
-                "$value": "{ob.s.color.static.no-color}"
-              }
-            },
-            "close": {
               "enabled": {
                 "$type": "color",
                 "$value": "{ob.s.color.static.no-color}"
