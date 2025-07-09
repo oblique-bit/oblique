@@ -169,10 +169,10 @@ export const appNavigation: ObINavigationLink[] = [
 		icon: ObEIcon.APPS,
 		iconOnly: true,
 		children: [
-			{url: 'home', icon: ObEIcon.ALD, label: 'Icon with label'},
+			{url: 'home', icon: ObEIcon.HARD_OF_HEARING, label: 'Icon with label'},
 			{url: 'home', label: 'Label only'},
 			{url: 'home', label: 'icon only', icon: ObEIcon.ANCHOR, iconOnly: true},
-			{url: 'http://www.google.ch', icon: ObEIcon.ALD, label: 'External, icon with label'},
+			{url: 'http://www.google.ch', icon: ObEIcon.HARD_OF_HEARING, label: 'External, icon with label'},
 			{url: 'http://www.google.ch', label: 'External, label only'},
 			{url: 'http://www.google.ch', label: 'External, icon only', icon: ObEIcon.ANCHOR, iconOnly: true}
 		]

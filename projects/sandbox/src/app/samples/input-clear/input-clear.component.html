@@ -9,7 +9,7 @@
 	<mat-label>Minlength with input clear</mat-label>
 	<input #minlengthControl="ngModel" type="text" matInput placeholder="Minimum length" minlength="3" [(ngModel)]="minlengthModel" />
 	<button type="button" [obInputClear]="minlengthControl">
-		<mat-icon svgIcon="cancel-circle" />
+		<mat-icon svgIcon="xmark_circle" />
 		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 	</button>
 </mat-form-field>
@@ -25,7 +25,7 @@
 		[(ngModel)]="minlengthPrefixSuffixModel"
 	/>
 	<button type="button" [obInputClear]="minlengthPrefixSuffixModelControl">
-		<mat-icon svgIcon="cancel-circle" />
+		<mat-icon svgIcon="xmark_circle" />
 		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 	</button>
 	<span matTextPrefix>Text Prefix</span>
@@ -42,7 +42,7 @@
 		<mat-label>Mandatory LG with input clear</mat-label>
 		<input #mandatoryLgControl="ngModel" type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatoryLgModel" />
 		<button type="button" [obInputClear]="mandatoryLgControl">
-			<mat-icon svgIcon="cancel-circle" />
+			<mat-icon svgIcon="xmark_circle" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
@@ -58,7 +58,7 @@
 		<mat-label>Mandatory SM with input clear</mat-label>
 		<input #mandatorySmControl="ngModel" type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatorySmModel" />
 		<button type="button" [obInputClear]="mandatorySmControl">
-			<mat-icon svgIcon="cancel-circle" />
+			<mat-icon svgIcon="xmark_circle" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
@@ -77,7 +77,7 @@
 	<mat-datepicker-toggle matSuffix [for]="datepickerWithInputClear" />
 	<mat-datepicker #datepickerWithInputClear />
 	<button type="button" [obInputClear]="datepickerControl" [datePickerRef]="datepickerWithInputClear">
-		<mat-icon svgIcon="cancel-circle" />
+		<mat-icon svgIcon="xmark_circle" />
 		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 	</button>
 </mat-form-field>
@@ -88,7 +88,7 @@
 		<mat-label>Untyped test input</mat-label>
 		<input type="text" matInput formControlName="untypedFormField" />
 		<button type="button" [obInputClear]="untypedForm.get('untypedFormField')">
-			<mat-icon svgIcon="cancel-circle" />
+			<mat-icon svgIcon="xmark_circle" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
@@ -100,7 +100,7 @@
 		<mat-label>Strongly typed test input</mat-label>
 		<input type="text" matInput formControlName="stronglyTypedFormField" />
 		<button type="button" [obInputClear]="stronglyTypedForm.get('stronglyTypedFormField')">
-			<mat-icon svgIcon="cancel-circle" />
+			<mat-icon svgIcon="xmark_circle" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
@@ -112,7 +112,7 @@
 		<mat-label>HTML test input</mat-label>
 		<input #htmlControl type="text" matInput />
 		<button type="button" [obInputClear]="htmlControl">
-			<mat-icon svgIcon="cancel-circle" />
+			<mat-icon svgIcon="xmark_circle" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
 		</button>
 	</mat-form-field>
