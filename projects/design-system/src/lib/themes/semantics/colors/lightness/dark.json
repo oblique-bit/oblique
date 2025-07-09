@@ -520,6 +520,16 @@
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.400}"
               },
+              "contrast-high-alpha.inversity-normal": {
+                "$type": "color",
+                "$value": "{ob.p.colors.indigo-alpha.900}",
+                "$description": "Used for spinner background alpha overlay"
+              },
+              "contrast-high-alpha.inversity-flipped": {
+                "$type": "color",
+                "$value": "{ob.p.colors.indigo-alpha.900}",
+                "$description": "Used for spinner background alpha overlay"
+              },
               "contrast-high.inversity-flipped-alpha": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo-alpha.900}",
