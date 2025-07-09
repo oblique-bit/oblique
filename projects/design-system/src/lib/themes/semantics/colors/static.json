@@ -26,6 +26,12 @@
               "$description": "Semantic Interaction color for not selected items. Used in Main Navigation, Navigation Tree, Tabs."
             }
           }
+        },
+        "status": {
+          "test": {
+            "$type": "color",
+            "$value": "{ob.s.color.status.fatal.bg.contrast-high}"
+          }
         }
       }
     }

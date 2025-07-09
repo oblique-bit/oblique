@@ -337,31 +337,31 @@
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.200}"
+                  "$value": "{ob.p.colors.red.900}"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.700}"
+                  "$value": "{ob.p.colors.red.100}"
                 }
               },
               "contrast-medium": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.300}"
+                  "$value": "{ob.p.colors.red.800}"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.800}"
+                  "$value": "{ob.p.colors.red.200}"
                 }
               },
               "contrast-low": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.400}"
+                  "$value": "{ob.p.colors.red.700}"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.900}"
+                  "$value": "{ob.p.colors.red.300}"
                 }
               }
             },
@@ -369,31 +369,31 @@
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.700}"
+                  "$value": "{ob.p.colors.red.100}"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.400}"
+                  "$value": "{ob.p.colors.red.900}"
                 }
               },
               "contrast-medium": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.800}"
+                  "$value": "{ob.p.colors.red.200}"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.300}"
+                  "$value": "{ob.p.colors.red.800}"
                 }
               },
               "contrast-low": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.900}"
+                  "$value": "{ob.p.colors.red.300}"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.200}"
+                  "$value": "{ob.p.colors.red.700}"
                 }
               }
             }
