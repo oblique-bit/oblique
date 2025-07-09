@@ -342,34 +342,34 @@
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.800}"
+                  "$value": "{ob.p.colors.red.50}",
+                  "$description": "Auto-generated: matches fg.contrast-high"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.50}",
-                  "$description": "Auto-generated: matches fg.contrast-high"
+                  "$value": "{ob.p.colors.red.800}"
                 }
               },
               "contrast-medium": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.700}"
+                  "$value": "{ob.p.colors.red.100}",
+                  "$description": "Auto-generated: matches fg.contrast-medium"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.100}",
-                  "$description": "Auto-generated: matches fg.contrast-medium"
+                  "$value": "{ob.p.colors.red.700}"
                 }
               },
               "contrast-low": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.600}"
+                  "$value": "{ob.p.colors.red.200}",
+                  "$description": "Auto-generated: matches fg.contrast-low"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.200}",
-                  "$description": "Auto-generated: matches fg.contrast-low"
+                  "$value": "{ob.p.colors.red.600}"
                 }
               }
             },
@@ -377,34 +377,34 @@
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.50}"
+                  "$value": "{ob.p.colors.red.800}",
+                  "$description": "Auto-generated: matches bg.contrast-high"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.800}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$value": "{ob.p.colors.red.50}"
                 }
               },
               "contrast-medium": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.100}"
+                  "$value": "{ob.p.colors.red.700}",
+                  "$description": "Auto-generated: matches bg.contrast-medium"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.700}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$value": "{ob.p.colors.red.100}"
                 }
               },
               "contrast-low": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.200}"
+                  "$value": "{ob.p.colors.red.600}",
+                  "$description": "Auto-generated: matches bg.contrast-low"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.600}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$value": "{ob.p.colors.red.200}"
                 }
               }
             }

@@ -424,9 +424,7 @@
       "global/themes-scoped/static": "enabled",
       "global/themes-user/lightness/static": "enabled",
       "global/themes-user/viewport/static": "enabled",
-      "html/button/color-static": "enabled",
-      "semantics/spacing/desktop": "enabled",
-      "semantics/spacing/mobile": "disabled"
+      "html/button/color-static": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:30",
     "$figmaModeId": "3:0",
@@ -563,21 +561,6 @@
       "ob.s.size.multiverse": "d069f3b6a3c8ea5fb722fb1b32fb6befbdacf33c",
       "ob.s.size.timewarp": "e2f7d13d8a4130f5f348a00efa106c1ae5966dfe",
       "ob.s.size.endgame": "e0ceada5031724f626cddd57d8879cc6a821a09d",
-      "ob.s.spacing.none": "ab8f9f2ce2a30e52d0b3a53bcc34a8aa0c38e060",
-      "ob.s.spacing.xs": "c0d17b1c0d95d9895f1e689bacbde3ffa201399c",
-      "ob.s.spacing.sm": "25bd13d8533b411de0822d7868583ef3ade59b99",
-      "ob.s.spacing.md": "f438700d89e2a45048672c864d14f9726f8fa48e",
-      "ob.s.spacing.lg": "854ec2ebfc39f105eaa19c0c86273e5a501fe49e",
-      "ob.s.spacing.ml": "f29a647b87b9f173af7c41c157ab1f98ac773158",
-      "ob.s.spacing.xl": "3a4f0b3c04df63f9523d4d4b7949c22a1c931b93",
-      "ob.s.spacing.2xl": "dcc57f7d130b938c7549266dee8b338af415c3d3",
-      "ob.s.spacing.3xl": "f2234128a45ce288ccbcb479dad03b5bc71e1f7e",
-      "ob.s.spacing.4xl": "9664a6129ead429f0fec6f0ac02c75db3abe3f36",
-      "ob.s.spacing.5xl": "d89f5281d7d126bb0e69c5e9a057cb2170f17bb9",
-      "ob.s.spacing.6xl": "1fdae3f5073643742d32a83dbe00fa2fc2c111ec",
-      "ob.s.spacing.7xl": "1b54334d08d1c1f3b60c8f14ac0457f12659aa75",
-      "ob.s.spacing.8xl": "c7250a0f6d52e27bb1e61bac3a666f8b4416481e",
-      "ob.s.spacing.9xl": "3440cdfec48fd44d30d7a4ec4d7d5cfbcd48deb3",
       "ob.s.font-family.body": "f18f42e8fdebde088cedf2d76d6c4bcb49574967",
       "ob.s.font-family.heading": "473d6405760aea7580ba47890fe1417e474db7b2",
       "ob.s.font-family.code": "cf3eee85b5c4b69fc30c12171dd67ba50c311b77",
@@ -949,6 +932,22 @@
     "$figmaVariableReferences": {
       "ob.g.scale.mult-responsive": "0164fbe646e5297ce9697cf4e841a17e0f10337d",
       "ob.g.viewport": "779efae5ce3cfaee3546f758a6081e67e803457c",
+      "ob.s.spacing.none": "bba48f2613cd1427dc75371f48a6e6061c784d27",
+      "ob.s.spacing.xs": "0551f981822efad16e9c5a76978d0336380df925",
+      "ob.s.spacing.sm": "b962a26cc8816febd65a293a9efa367e4f4341f5",
+      "ob.s.spacing.md": "717da8496c1abeeec01b0a20b2f97198f37c5ee8",
+      "ob.s.spacing.lg": "e1867a1d00ffacf332b52defbea653120ab29952",
+      "ob.s.spacing.ml": "b3dbb7930700395e5c86f4ff1ff9c473693aedb4",
+      "ob.s.spacing.xl": "01e1d6a1c8ab5df77083d3c37206404049344358",
+      "ob.s.spacing.2xl": "0ac7bdaaa6495f9ff17e164dfa89d0b798e1e972",
+      "ob.s.spacing.3xl": "833f50f1f60010f908dfe9dee8561358343bad0e",
+      "ob.s.spacing.4xl": "6f23c84b5ce3d04ee65c8378a2839b450ee3805f",
+      "ob.s.spacing.5xl": "584d3d182a3a167764575804a1060355a57ee8ea",
+      "ob.s.spacing.6xl": "b0ede13d39f36ca062e280ff7e166f924428473c",
+      "ob.s.spacing.7xl": "93b16ed81b7a23271101a7aa0feac947928dd9b1",
+      "ob.s.spacing.8xl": "d1289d13584fdf84697f677308cd9ff1154e9d72",
+      "ob.s.spacing.9xl": "27377e9040f7f7b07b0ef6f2114f25d5acc4e6da",
+      "ob.s.space._base": "5bb29e878635c5839ec26f079d80626a9daad14f",
       "ob.s.fontSize.xs": "8e2f7972d65cfa87cf35c4adc7835f5d5d951f39",
       "ob.s.fontSize.sm": "3e44bcf5e1fb455fb5f3ebc853ea2c328e7595ff",
       "ob.s.fontSize.md": "6d8f7f20182a0adc8bfebf659a859bfb9df4ae0d",
@@ -1146,6 +1145,22 @@
     "$figmaVariableReferences": {
       "ob.g.scale.mult-responsive": "0164fbe646e5297ce9697cf4e841a17e0f10337d",
       "ob.g.viewport": "779efae5ce3cfaee3546f758a6081e67e803457c",
+      "ob.s.spacing.none": "bba48f2613cd1427dc75371f48a6e6061c784d27",
+      "ob.s.spacing.xs": "0551f981822efad16e9c5a76978d0336380df925",
+      "ob.s.spacing.sm": "b962a26cc8816febd65a293a9efa367e4f4341f5",
+      "ob.s.spacing.md": "717da8496c1abeeec01b0a20b2f97198f37c5ee8",
+      "ob.s.spacing.lg": "e1867a1d00ffacf332b52defbea653120ab29952",
+      "ob.s.spacing.ml": "b3dbb7930700395e5c86f4ff1ff9c473693aedb4",
+      "ob.s.spacing.xl": "01e1d6a1c8ab5df77083d3c37206404049344358",
+      "ob.s.spacing.2xl": "0ac7bdaaa6495f9ff17e164dfa89d0b798e1e972",
+      "ob.s.spacing.3xl": "833f50f1f60010f908dfe9dee8561358343bad0e",
+      "ob.s.spacing.4xl": "6f23c84b5ce3d04ee65c8378a2839b450ee3805f",
+      "ob.s.spacing.5xl": "584d3d182a3a167764575804a1060355a57ee8ea",
+      "ob.s.spacing.6xl": "b0ede13d39f36ca062e280ff7e166f924428473c",
+      "ob.s.spacing.7xl": "93b16ed81b7a23271101a7aa0feac947928dd9b1",
+      "ob.s.spacing.8xl": "d1289d13584fdf84697f677308cd9ff1154e9d72",
+      "ob.s.spacing.9xl": "27377e9040f7f7b07b0ef6f2114f25d5acc4e6da",
+      "ob.s.space._base": "5bb29e878635c5839ec26f079d80626a9daad14f",
       "ob.s.fontSize.xs": "8e2f7972d65cfa87cf35c4adc7835f5d5d951f39",
       "ob.s.fontSize.sm": "3e44bcf5e1fb455fb5f3ebc853ea2c328e7595ff",
       "ob.s.fontSize.md": "6d8f7f20182a0adc8bfebf659a859bfb9df4ae0d",
@@ -1413,9 +1428,7 @@
       "_ignore-in-ds/figma-doc/themes/lightness/light": "enabled",
       "semantics/colors/lightness/light": "enabled",
       "components/molecules/infobox/lightness/light": "enabled",
-      "global/themes-scoped/light": "enabled",
-      "semantics/spacing/desktop": "disabled",
-      "semantics/spacing/mobile": "disabled"
+      "global/themes-scoped/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:32",
     "$figmaModeId": "3:3",
@@ -1475,17 +1488,17 @@
       "ob.s.color.status.resolved.fg.contrast-low.inversity-normal": "0db51af818c9a0f1098b3922d6d15201def4d546",
       "ob.s.color.status.resolved.fg.contrast-low.inversity-flipped": "c6442baf5ca652e4547eb3390f237f204d6e92ba",
       "ob.s.color.status.fatal.bg.contrast-high.inversity-normal": "ce18712d13f0899709ffd8302ac98d5aebc40fa2",
-      "ob.s.color.status.fatal.bg.contrast-high.inversity-flipped": "2274f42abf6e95f9c3bfa3337f19dcadea0abeab",
+      "ob.s.color.status.fatal.bg.contrast-high.inversity-flipped": "8b5a2c5dcfcfae7205a24e2dcd998ecdd8f102aa",
       "ob.s.color.status.fatal.bg.contrast-medium.inversity-normal": "b7cd380009683959f1fc072512feb9cfddd937d5",
-      "ob.s.color.status.fatal.bg.contrast-medium.inversity-flipped": "fade977e5b9caa20863f976c51afd954f23abfe2",
+      "ob.s.color.status.fatal.bg.contrast-medium.inversity-flipped": "634e95496246e0fe448400e050324cf039390b5c",
       "ob.s.color.status.fatal.bg.contrast-low.inversity-normal": "7400ef5051b56729034a9ed5589c28f74b51d06b",
-      "ob.s.color.status.fatal.bg.contrast-low.inversity-flipped": "d936c0190f20775331b417ac5329b9751a51076c",
+      "ob.s.color.status.fatal.bg.contrast-low.inversity-flipped": "61dc654d9362e0fce9f8853ca322c9d1328ec102",
       "ob.s.color.status.fatal.fg.contrast-high.inversity-normal": "54801b1927a7c5ce60715f230022f9eb5806fa7c",
-      "ob.s.color.status.fatal.fg.contrast-high.inversity-flipped": "c6f9b7aa58838c79b8a67ceb33cba6a25778482d",
+      "ob.s.color.status.fatal.fg.contrast-high.inversity-flipped": "41b0672723bb6b7555e1d54485db089eb4dbe67e",
       "ob.s.color.status.fatal.fg.contrast-medium.inversity-normal": "dfcfa727832427497d31db4ac3478bbb6f590110",
-      "ob.s.color.status.fatal.fg.contrast-medium.inversity-flipped": "77b9c5a015b8246923b57bde544221f1040a46cf",
+      "ob.s.color.status.fatal.fg.contrast-medium.inversity-flipped": "20b1308d39403f7413accc237cba9c2cdd52ca81",
       "ob.s.color.status.fatal.fg.contrast-low.inversity-normal": "0ce9ac274d16f2223e516ca53a6412ef38ee664d",
-      "ob.s.color.status.fatal.fg.contrast-low.inversity-flipped": "7b86a31b3026bc159869b1bcfd8419f6612e7264",
+      "ob.s.color.status.fatal.fg.contrast-low.inversity-flipped": "251e301708ac3a89fc1699bc979de742810ffe48",
       "ob.s.color.status.attention.bg.contrast-high.inversity-normal": "a0d4301e8e514673321b203d669d8483a7d73b16",
       "ob.s.color.status.attention.bg.contrast-high.inversity-flipped": "95cda7e26d481009b1953108083696102f65aeb1",
       "ob.s.color.status.attention.bg.contrast-medium.inversity-normal": "2796865ed3c7a6b69280d1b80d5579fd4c31e855",
@@ -1882,9 +1895,7 @@
       "_ignore-in-ds/figma-doc/themes/lightness/dark": "enabled",
       "semantics/colors/lightness/dark": "enabled",
       "components/molecules/infobox/lightness/dark": "enabled",
-      "global/themes-scoped/dark": "enabled",
-      "semantics/spacing/desktop": "disabled",
-      "semantics/spacing/mobile": "disabled"
+      "global/themes-scoped/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:32",
     "$figmaModeId": "3:4",
@@ -1942,19 +1953,19 @@
       "ob.s.color.status.resolved.fg.contrast-medium.inversity-normal": "4a489c7e65c0b7c991b931d7af83af4409f845da",
       "ob.s.color.status.resolved.fg.contrast-medium.inversity-flipped": "92ec5277a6dbdea2f79d78ec0cdf1d6318f70953",
       "ob.s.color.status.resolved.fg.contrast-low.inversity-normal": "0db51af818c9a0f1098b3922d6d15201def4d546",
-      "ob.s.color.status.resolved.fg.contrast-low.inversity-flipped": "c6442baf5ca652e4547eb3390f237f204d6e92ba",
       "ob.s.color.status.fatal.bg.contrast-high.inversity-normal": "ce18712d13f0899709ffd8302ac98d5aebc40fa2",
-      "ob.s.color.status.fatal.bg.contrast-high.inversity-flipped": "2274f42abf6e95f9c3bfa3337f19dcadea0abeab",
+      "ob.s.color.status.fatal.bg.contrast-high.inversity-flipped": "8b5a2c5dcfcfae7205a24e2dcd998ecdd8f102aa",
+      "ob.s.color.status.resolved.fg.contrast-low.inversity-flipped": "c6442baf5ca652e4547eb3390f237f204d6e92ba",
       "ob.s.color.status.fatal.bg.contrast-medium.inversity-normal": "b7cd380009683959f1fc072512feb9cfddd937d5",
-      "ob.s.color.status.fatal.bg.contrast-medium.inversity-flipped": "fade977e5b9caa20863f976c51afd954f23abfe2",
+      "ob.s.color.status.fatal.bg.contrast-medium.inversity-flipped": "634e95496246e0fe448400e050324cf039390b5c",
       "ob.s.color.status.fatal.bg.contrast-low.inversity-normal": "7400ef5051b56729034a9ed5589c28f74b51d06b",
-      "ob.s.color.status.fatal.bg.contrast-low.inversity-flipped": "d936c0190f20775331b417ac5329b9751a51076c",
+      "ob.s.color.status.fatal.bg.contrast-low.inversity-flipped": "61dc654d9362e0fce9f8853ca322c9d1328ec102",
       "ob.s.color.status.fatal.fg.contrast-high.inversity-normal": "54801b1927a7c5ce60715f230022f9eb5806fa7c",
-      "ob.s.color.status.fatal.fg.contrast-high.inversity-flipped": "c6f9b7aa58838c79b8a67ceb33cba6a25778482d",
+      "ob.s.color.status.fatal.fg.contrast-high.inversity-flipped": "41b0672723bb6b7555e1d54485db089eb4dbe67e",
       "ob.s.color.status.fatal.fg.contrast-medium.inversity-normal": "dfcfa727832427497d31db4ac3478bbb6f590110",
-      "ob.s.color.status.fatal.fg.contrast-medium.inversity-flipped": "77b9c5a015b8246923b57bde544221f1040a46cf",
+      "ob.s.color.status.fatal.fg.contrast-medium.inversity-flipped": "20b1308d39403f7413accc237cba9c2cdd52ca81",
       "ob.s.color.status.fatal.fg.contrast-low.inversity-normal": "0ce9ac274d16f2223e516ca53a6412ef38ee664d",
-      "ob.s.color.status.fatal.fg.contrast-low.inversity-flipped": "7b86a31b3026bc159869b1bcfd8419f6612e7264",
+      "ob.s.color.status.fatal.fg.contrast-low.inversity-flipped": "251e301708ac3a89fc1699bc979de742810ffe48",
       "ob.s.color.status.attention.bg.contrast-high.inversity-normal": "a0d4301e8e514673321b203d669d8483a7d73b16",
       "ob.s.color.status.attention.bg.contrast-high.inversity-flipped": "95cda7e26d481009b1953108083696102f65aeb1",
       "ob.s.color.status.attention.bg.contrast-medium.inversity-normal": "2796865ed3c7a6b69280d1b80d5579fd4c31e855",
@@ -2140,10 +2151,10 @@
       "ob.s.color.static.no-color": "2693a8763cd0f3c515baabb4dc22ebcb71afd9e9",
       "ob.s.color.interaction.indicator.selected": "e2e19d52128080f4e2548bb50dfc41cead281553",
       "ob.s.color.interaction.indicator.unselected": "b3d373d599feaf5bd2cf7a8e5a5759607a7707e7",
-      "ob.c.infobox.color.icon.fatal-test": "fa8c50c106eb5ed2687a7adf66af73211e3ee183",
-      "ob.c.infobox.color.border.fatal-test": "4deffa95cc60f43838f075b759a5fa07962d1d33",
-      "ob.c.infobox.color.surface.fatal-test": "553be514779d8c843ce3046ce4a34ec50cce4058",
-      "ob.c.infobox.color.fg.fatal-test": "407fcbee146fb83f63b8fe1f71576f263b45196c"
+      "ob.c.infobox.color.icon.fatal-test": "f1a4d945867b108e85638dd2d2d63eeed704273e",
+      "ob.c.infobox.color.border.fatal-test": "5f7d58fece2a4387e0a6095814534675fc04937a",
+      "ob.c.infobox.color.surface.fatal-test": "ab9248c4ac08ff72275858591cc877fb8aac36d8",
+      "ob.c.infobox.color.fg.fatal-test": "7497902c5d81a13c15943307628a40793bab4dbd"
     },
     "group": "lightness"
   },
@@ -2213,9 +2224,7 @@
       "ob.c.button.color.border.close.disabled": "S:a28283aa223d007d9604375a2f92654e081c7f7a,"
     },
     "selectedTokenSets": {
-      "semantics/colors/inversity/normal": "enabled",
-      "semantics/spacing/desktop": "disabled",
-      "semantics/spacing/mobile": "disabled"
+      "semantics/colors/inversity/normal": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:33",
     "$figmaModeId": "3:5",
@@ -2399,9 +2408,7 @@
       "ob.c.button.color.border.close.disabled": "S:a28283aa223d007d9604375a2f92654e081c7f7a,"
     },
     "selectedTokenSets": {
-      "semantics/colors/inversity/flipped": "enabled",
-      "semantics/spacing/desktop": "disabled",
-      "semantics/spacing/mobile": "disabled"
+      "semantics/colors/inversity/flipped": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:33",
     "$figmaModeId": "3:6",
@@ -2553,9 +2560,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity-flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantics/colors/emphasis/medium": "enabled",
-      "semantics/spacing/desktop": "disabled",
-      "semantics/spacing/mobile": "disabled"
+      "semantics/colors/emphasis/medium": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.enabled": "aa6e3ad8178230b0225fee578a41772d35602007",
@@ -2611,9 +2616,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity-flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantics/colors/emphasis/low": "enabled",
-      "semantics/spacing/desktop": "disabled",
-      "semantics/spacing/mobile": "disabled"
+      "semantics/colors/emphasis/low": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.enabled": "aa6e3ad8178230b0225fee578a41772d35602007",
@@ -2690,9 +2693,7 @@
       "r13.typography.components-only.tooltip.label": "S:01a80ff405036b8a204f742fa49f200230ff826c,"
     },
     "selectedTokenSets": {
-      "_ignore-in-ds/typography-styles-R13": "enabled",
-      "semantics/spacing/desktop": "disabled",
-      "semantics/spacing/mobile": "disabled"
+      "_ignore-in-ds/typography-styles-R13": "enabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"
