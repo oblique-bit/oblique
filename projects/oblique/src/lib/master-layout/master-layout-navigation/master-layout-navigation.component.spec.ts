@@ -9,13 +9,14 @@ import {ObMasterLayoutNavigationComponent} from '../master-layout-navigation/mas
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
-import {WINDOW} from '../../utilities';
+import {OB_HAS_LANGUAGE_IN_URL, WINDOW} from '../../utilities';
 import {ObMockMasterLayoutNavigationItemDirective} from '../_mocks/mock-master-layout-navigation-item.directive';
 import {ObMasterLayoutNavigationSubMenuItemComponent} from './sub-menu-item/master-layout-navigation-sub-menu-item.component';
 import {basicMockLinks, mockLinksWithChildren} from './master-layout-navigation.component.spec-data';
 import {ObNavigationLink} from './navigation-link.model';
 import {ObMasterLayoutNavigationGoToChildrenComponent} from './go-to-children/master-layout-navigation-go-to-children.component';
 import {ObINavigationLink} from '@oblique/oblique';
+import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 
 @Component({template: '', standalone: false})
 class DummyFullPathComponent {}
@@ -51,12 +52,14 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 					{path: 'full/2/users', component: DummyFullPathComponent},
 					{path: 'full/:id', component: DummyFullPathComponent},
 					{path: '**', redirectTo: 'defaultPathMatch'}
-				])
+				]),
+				ObLocalizePipe
 			],
 			schemas: [NO_ERRORS_SCHEMA],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
+				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: false},
 				{provide: WINDOW, useValue: window}
 			]
 		}).compileComponents();

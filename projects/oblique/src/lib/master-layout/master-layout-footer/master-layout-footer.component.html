@@ -7,7 +7,7 @@
 					<ng-container [ngTemplateOutlet]="template" />
 				</li>
 				<li>
-					<a routerLink="accessibility-statement">{{ "i18n.oblique.accessibility-statement.link" | translate }}</a>
+					<a [routerLink]="'accessibility-statement' | obLocalize">{{ "i18n.oblique.accessibility-statement.link" | translate }}</a>
 				</li>
 			</ul>
 		</div>
