@@ -65,8 +65,6 @@
     "components/molecules/tag",
     "html/button/static",
     "html/button/color-static",
-    "html/button/inversity/default",
-    "html/button/inversity/inverse",
     "html/button/responsive/desktop",
     "html/button/responsive/mobile",
     "html/button/container",
