@@ -12,7 +12,7 @@
               },
               "hover.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium.inversity-normal}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium}",
                 "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
               },
               "focus.inversity-normal": {
@@ -37,7 +37,7 @@
               },
               "disabled.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low.inversity-normal}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "enabled.inversity-flipped": {
@@ -47,7 +47,7 @@
               },
               "hover.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
                 "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
               },
               "focus.inversity-flipped": {
@@ -69,29 +69,29 @@
               },
               "disabled.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}"
               }
             },
             "bg": {
               "enabled.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}"
               },
               "hover.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}"
               },
               "focus.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}"
               },
               "pressed.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium}"
               },
               "selected.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}"
               },
               "visited.inversity-normal": {
                 "$type": "color",
@@ -130,7 +130,7 @@
               },
               "disabled.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.opacity.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.opacity}"
               }
             }
           }

@@ -7,97 +7,97 @@
             "fg": {
               "enabled.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low.inversity-normal}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "hover.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low.inversity-normal}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "focus.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low.inversity-normal}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "pressed.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-normal}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "selected.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low.inversity-normal}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
                 "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
               },
               "visited.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-visited.contrast-low.inversity-normal}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-visited.contrast-low}",
                 "$description": "For text-links. No use in buttons."
               },
               "disabled.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low.inversity-normal}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "enabled.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}",
                 "$description": "Used for text and icon color in primary buttons."
               },
               "hover.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}",
                 "$description": "Used for text and icon color in filled buttons, badges."
               },
               "focus.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}",
                 "$description": "Used for text and icon color in filled buttons."
               },
               "pressed.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium}",
                 "$description": "Used for text and icon color in filled buttons."
               },
               "selected.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}",
                 "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
               },
               "visited.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-visited.contrast-low.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-visited.contrast-low}",
                 "$description": "For text-links. No use in buttons."
               },
               "disabled.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}",
                 "$description": "Used for text and icon color in primary buttons."
               }
             },
             "bg": {
               "enabled.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}",
                 "$description": "Background for secondary and tertiary buttons."
               },
               "hover.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}",
                 "$description": "Background for secondary and tertiary buttons."
               },
               "focus.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}"
               },
               "pressed.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}"
               },
               "selected.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}",
                 "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
               },
               "visited.inversity-normal": {
@@ -112,12 +112,12 @@
               },
               "enabled.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-low.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-low}",
                 "$description": "Used for fill in primary buttons."
               },
               "hover.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-medium.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-medium}",
                 "$description": "Used for fill in primary buttons."
               },
               "focus.inversity-flipped": {
@@ -127,7 +127,7 @@
               },
               "pressed.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-high.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-high}",
                 "$description": "Used for fill in primary buttons."
               },
               "selected.inversity-flipped": {
@@ -142,7 +142,7 @@
               },
               "disabled.inversity-flipped": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.opacity.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.opacity}",
                 "$description": "Used for fill in e.g., primary buttons."
               }
             }
