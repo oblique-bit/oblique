@@ -9,72 +9,78 @@
         },
         "xs": {
           "$type": "spacing",
-          "$value": "{ob.p.space.50}",
+          "$value": "{ob.s.space._base} * {ob.p.space.50}",
           "$description": "The smallest spacing in Oblique. Use it to create distance between icons and text within buttons, chips, and similar elements, where the icon and the text build a semantic entity but need a slight spacing between them for better readability."
         },
         "sm": {
           "$type": "spacing",
-          "$value": "{ob.p.space.100}",
+          "$value": "{ob.s.space._base} * {ob.p.space.100}",
           "$description": "The smallest spacing in Oblique. Use it to create distance between icons and text within buttons, chips, and similar elements, where the icon and the text build a semantic entity but need a slight spacing between them for better readability."
         },
         "md": {
           "$type": "spacing",
-          "$value": "{ob.p.space.150}",
+          "$value": "{ob.s.space._base} * {ob.p.space.150}",
           "$description": "Use this for minimal padding inside smaller components like form fields, list items, or dialog actions. It helps maintain clarity without adding bulk, ideal for grouping related items such as labels and input boxes closely together."
         },
         "lg": {
           "$type": "spacing",
-          "$value": "{ob.p.space.200}",
+          "$value": "{ob.s.space._base} * {ob.p.space.200}",
           "$description": "This spacing is effective for separating sections within cards. It’s also suitable for stacking controls that require a clear distinction without being too far apart, enhancing overall navigability."
         },
         "ml": {
           "$type": "spacing",
-          "$value": "{ob.p.space.250}",
+          "$value": "{ob.s.space._base} * {ob.p.space.250}",
           "$description": "Use this for minimal padding inside smaller components like form fields, list items, or dialog actions. It helps maintain clarity without adding bulk, ideal for grouping related items such as labels and input boxes closely together."
         },
         "xl": {
           "$type": "spacing",
-          "$value": "{ob.p.space.250}",
+          "$value": "{ob.s.space._base} * {ob.p.space.250}",
           "$description": "A standard spacing for broader padding around modal windows, card content, and larger form elements. It provides sufficient breathing room around content blocks, improving readability and focus on individual content elements without overcrowding."
         },
         "2xl": {
           "$type": "spacing",
-          "$value": "{ob.p.space.300}"
+          "$value": "{ob.s.space._base} * {ob.p.space.300}"
         },
         "3xl": {
           "$type": "spacing",
-          "$value": "{ob.p.space.400}",
+          "$value": "{ob.s.space._base} * {ob.p.space.400}",
           "$description": "Great for creating more expansive gaps between larger components such as different panels in a layout or between a toolbar and the content below. This spacing can be used to enhance focus on sections of the interface that require user attention."
         },
         "4xl": {
           "$type": "spacing",
-          "$value": "{ob.p.space.500}",
+          "$value": "{ob.s.space._base} * {ob.p.space.500}",
           "$description": "The largest spacing, ideal for the most significant separations in your UI, such as between distinct content sections on a page or large screen-wide elements. It creates a strong visual hierarchy, making it easier for users to distinguish between grouped or related content at a glance."
         },
         "5xl": {
           "$type": "spacing",
-          "$value": "{ob.p.space.600}",
+          "$value": "{ob.s.space._base} * {ob.p.space.600}",
           "$description": "The largest spacing, ideal for the most significant separations in your UI, such as between distinct content sections on a page or large screen-wide elements. It creates a strong visual hierarchy, making it easier for users to distinguish between grouped or related content at a glance."
         },
         "6xl": {
           "$type": "spacing",
-          "$value": "{ob.p.space.700}",
+          "$value": "{ob.s.space._base} * {ob.p.space.700}",
           "$description": "The largest spacing, ideal for the most significant separations in your UI, such as between distinct content sections on a page or large screen-wide elements. It creates a strong visual hierarchy, making it easier for users to distinguish between grouped or related content at a glance."
         },
         "7xl": {
           "$type": "spacing",
-          "$value": "{ob.p.space.800}",
+          "$value": "{ob.s.space._base} * {ob.p.space.800}",
           "$description": "The largest spacing, ideal for the most significant separations in your UI, such as between distinct content sections on a page or large screen-wide elements. It creates a strong visual hierarchy, making it easier for users to distinguish between grouped or related content at a glance."
         },
         "8xl": {
           "$type": "spacing",
-          "$value": "{ob.p.space.900}",
+          "$value": "{ob.s.space._base} * {ob.p.space.900}",
           "$description": "The largest spacing, ideal for the most significant separations in your UI, such as between distinct content sections on a page or large screen-wide elements. It creates a strong visual hierarchy, making it easier for users to distinguish between grouped or related content at a glance."
         },
         "9xl": {
           "$type": "spacing",
-          "$value": "{ob.p.space.1000}",
+          "$value": "{ob.s.space._base} * {ob.p.space.1000}",
           "$description": "The largest spacing, ideal for the most significant separations in your UI, such as between distinct content sections on a page or large screen-wide elements. It creates a strong visual hierarchy, making it easier for users to distinguish between grouped or related content at a glance."
+        }
+      },
+      "space": {
+        "_base": {
+          "$type": "spacing",
+          "$value": "{ob.g.scale.mult-responsive}"
         }
       }
     }

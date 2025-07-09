@@ -4,83 +4,79 @@
       "space": {
         "50": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * .5"
+          "$value": ".5"
         },
         "100": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 1"
+          "$value": "1"
         },
         "150": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 1.5"
+          "$value": "1.5"
         },
         "200": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 2"
+          "$value": "2"
         },
         "250": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 2.50"
+          "$value": "2.50"
         },
         "300": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 3"
+          "$value": "3"
         },
         "400": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 4"
+          "$value": "4"
         },
         "500": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 5"
+          "$value": "5"
         },
         "600": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 6"
+          "$value": "6"
         },
         "700": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 7"
+          "$value": "7"
         },
         "800": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 8"
+          "$value": "8"
         },
         "900": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 9"
+          "$value": "9"
         },
         "1000": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 10"
+          "$value": "10"
         },
         "1200": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 12"
+          "$value": "12"
         },
         "1600": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 16"
+          "$value": "16"
         },
         "2000": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 20"
+          "$value": "20"
         },
         "2200": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 22"
+          "$value": "22"
         },
         "2600": {
           "$type": "spacing",
-          "$value": "{ob.p.space._base} * 26"
+          "$value": "26"
         },
         "none": {
           "$type": "spacing",
           "$value": "0"
-        },
-        "_base": {
-          "$type": "spacing",
-          "$value": "{ob.g.scale.mult-responsive}"
         }
       }
     }
