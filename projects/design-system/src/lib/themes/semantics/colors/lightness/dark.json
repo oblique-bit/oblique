@@ -825,7 +825,7 @@
           }
         },
         "interaction": {
-          "emphasis-default": {
+          "emphasis-medium": {
             "bg-base": {
               "contrast-high-default": {
                 "$type": "color",
@@ -962,7 +962,7 @@
               }
             }
           },
-          "emphasis-muted": {
+          "emphasis-low": {
             "bg-base": {
               "contrast-high-default": {
                 "$type": "color",

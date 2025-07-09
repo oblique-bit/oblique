@@ -46,7 +46,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.contrast-low}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}"
               }
             },
             "tertiary": {
@@ -69,7 +69,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.contrast-low}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}"
               }
             },
             "close": {
@@ -92,7 +92,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.contrast-low}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}"
               }
             }
           },
@@ -235,7 +235,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.contrast-low}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}"
               }
             },
             "tertiary": {

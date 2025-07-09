@@ -7,97 +7,97 @@
             "fg": {
               "enabled-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "hover-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "focus-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "pressed-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "selected-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
                 "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
               },
               "visited-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-visited.contrast-low}",
                 "$description": "For text-links. No use in buttons."
               },
               "disabled-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "enabled-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}",
                 "$description": "Used for text and icon color in primary buttons."
               },
               "hover-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}",
                 "$description": "Used for text and icon color in filled buttons, badges."
               },
               "focus-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}",
                 "$description": "Used for text and icon color in filled buttons."
               },
               "pressed-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-medium-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium-inverse}",
                 "$description": "Used for text and icon color in filled buttons."
               },
               "selected-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}",
                 "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
               },
               "visited-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-visited.contrast-low-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-visited.contrast-low-inverse}",
                 "$description": "For text-links. No use in buttons."
               },
               "disabled-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}",
                 "$description": "Used for text and icon color in primary buttons."
               }
             },
             "bg": {
               "enabled-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}",
                 "$description": "Background for secondary and tertiary buttons."
               },
               "hover-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}",
                 "$description": "Background for secondary and tertiary buttons."
               },
               "focus-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}"
               },
               "pressed-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}"
               },
               "selected-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}",
                 "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
               },
               "visited-default": {
@@ -112,12 +112,12 @@
               },
               "enabled-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-base.contrast-low-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-low-inverse}",
                 "$description": "Used for fill in primary buttons."
               },
               "hover-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-base.contrast-medium-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-medium-inverse}",
                 "$description": "Used for fill in primary buttons."
               },
               "focus-inverse": {
@@ -127,7 +127,7 @@
               },
               "pressed-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-base.contrast-high-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-high-inverse}",
                 "$description": "Used for fill in primary buttons."
               },
               "selected-inverse": {
@@ -142,7 +142,7 @@
               },
               "disabled-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.opacity-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.opacity-inverse}",
                 "$description": "Used for fill in e.g., primary buttons."
               }
             }

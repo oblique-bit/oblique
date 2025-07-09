@@ -12,12 +12,12 @@ semantic.color.category.variation.property.contrast-level
 ```
 
 ### Categories
-- **Status Colors** - Communicating state and feedback
-- **Emphasis Colors** - Highlighting and de-emphasizing content
 - **Neutral Colors** - Base colors for backgrounds, text, and borders
+- **Status Colors** - Communicating state and feedback
 - **Interaction Colors** - Hover, focus, active, and disabled states
+- **Emphasis Colors** - Highlighting and de-emphasizing interactive components such as buttons and links. 
 - **Inversity Colors** - Light/dark theme adaptations
-- **Lightness Colors** - Theme-specific color variations
+
 
 ---
 
@@ -83,17 +83,24 @@ ob.s.color.status.{status-name}.{property}.{contrast-level}
 
 ## Emphasis Colors
 
-Emphasis colors control visual hierarchy and content importance.
+Emphasis colors control visual hierarchy and content importance for interactive components such as buttons and links. They provide different levels of visual emphasis to guide user attention and establish clear interaction patterns.
 
 ### Emphasis Levels
-- `emphasis-default` - Standard emphasis
-- `emphasis-low` - Reduced emphasis
-- `emphasis-muted` - Minimal emphasis
+- `emphasis-medium` - Standard emphasis for primary interactive elements
+- `emphasis-low` - Reduced emphasis for secondary interactive elements
 
 ### Token Structure
 ```
 ob.s.color.emphasis.{level}.{property}.{contrast-level}
 ```
+
+### Primary Use Cases
+- **Buttons**: Different emphasis levels for primary, secondary, and tertiary button types
+- **Links**: Emphasis variations for different link importance and context
+- **Interactive Elements**: Call-to-action elements, navigation items, and actionable components
+
+### Implementation Notes
+Emphasis colors primarily reference `neutral` and `interaction` color tokens to ensure consistency with the overall color system while providing clear visual hierarchy for interactive elements.
 
 ---
 
@@ -293,38 +300,44 @@ ob.s.color.interaction.* → Direct primitive color references
 - **Closed**: Use for closed/archived items
 - **Disabled**: Use for disabled/inactive states
 
-### 2. Neutral Color Usage
+### 2. Emphasis Color Usage
+- **Primary Interactions**: Use `emphasis-medium` for main calls-to-action (primary buttons, important links)
+- **Secondary Interactions**: Use `emphasis-low` for secondary actions (secondary buttons, supporting links)
+- **Interactive Components**: Apply emphasis colors to buttons, links, and other actionable elements
+- **Visual Hierarchy**: Use different emphasis levels to establish clear interaction priorities
+
+### 3. Neutral Color Usage
 - **Backgrounds**: Use highest contrast for primary surfaces, progressively lower contrast for nested elements
 - **Text**: Use highest contrast for primary text, lower contrast for secondary/helper text
 - **Borders**: Use medium contrast for visible borders, low contrast for subtle dividers
 - **Shadows**: Use neutral shadow colors for consistent depth
 
-### 3. Interaction Color Usage
+### 4. Interaction Color Usage
 - **Primary Actions**: Use `emphasis-default` with high contrast
 - **Secondary Actions**: Use `emphasis-default` with medium contrast
 - **Subtle Actions**: Use `emphasis-default` with low contrast
 - **Links**: Always use `fg-base` for default, `fg-visited` for visited states
 - **Disabled**: Always use `fg-disabled` for inactive interactive elements
 
-### 4. Contrast Requirements
+### 5. Contrast Requirements
 - Always use appropriate contrast levels for accessibility
 - High contrast for critical information and primary actions
 - Medium contrast for standard content and secondary actions
 - Low contrast for subtle/secondary information
 
-### 5. Theme Consistency
+### 6. Theme Consistency
 - Use `-default` for standard themes
 - Use `-inverse` for dark themes or inverted contexts
 - Use `-inverse-alpha` for semi-transparent overlays
 
-### 6. Component Mapping
-- **Infobox**: critical, attention, info, fatal
-- **Badge**: critical, resolved, attention, info, pending
-- **Pill**: critical, resolved, attention, info, pending
-- **Spinner**: progress
-- **Buttons**: interaction colors with appropriate emphasis levels
-- **Links**: interaction colors with base and visited states
-- **Form Controls**: neutral backgrounds with interaction states
+### 7. Component Mapping
+- **Infobox**: critical, attention, info, fatal (status colors)
+- **Badge**: critical, resolved, attention, info, pending (status colors)
+- **Pill**: critical, resolved, attention, info, pending (status colors)
+- **Spinner**: progress (status colors)
+- **Buttons**: emphasis colors (medium, low) with interaction states
+- **Links**: emphasis colors combined with interaction colors for base and visited states
+- **Form Controls**: neutral backgrounds with interaction states and emphasis for labels/actions
 
 ---
 

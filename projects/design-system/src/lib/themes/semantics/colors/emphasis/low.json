@@ -12,7 +12,7 @@
               },
               "hover-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-medium}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium}",
                 "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
               },
               "focus-default": {
@@ -37,7 +37,7 @@
               },
               "disabled-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-disabled.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "enabled-inverse": {
@@ -47,7 +47,7 @@
               },
               "hover-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-low-inverse}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low-inverse}",
                 "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
               },
               "focus-inverse": {
@@ -69,29 +69,29 @@
               },
               "disabled-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}"
               }
             },
             "bg": {
               "enabled-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}"
               },
               "hover-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}"
               },
               "focus-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}"
               },
               "pressed-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-medium-inverse}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium-inverse}"
               },
               "selected-default": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.fg-base.contrast-high-inverse}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high-inverse}"
               },
               "visited-default": {
                 "$type": "color",
@@ -130,7 +130,7 @@
               },
               "disabled-inverse": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-default.bg-disabled.opacity-inverse}"
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.opacity-inverse}"
               }
             }
           }
