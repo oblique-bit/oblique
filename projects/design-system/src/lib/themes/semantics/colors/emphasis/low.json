@@ -12,7 +12,7 @@
               },
               "hover.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium.inversity-normal}",
                 "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
               },
               "focus.inversity-normal": {
@@ -37,7 +37,7 @@
               },
               "disabled.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low.inversity-normal}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "enabled.inversity-flipped": {
