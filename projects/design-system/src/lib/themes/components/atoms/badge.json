@@ -7,48 +7,48 @@
             "attention": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.attention.bg.contrast-low-inversity-flipped}",
+                "$value": "{ob.s.color.status.attention.bg.contrast-low.inversity-flipped}",
                 "$description": "References semantic inverse attention status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.solid-inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.solid.inversity-flipped}",
                 "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             },
             "info": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.info.bg.contrast-low-inversity-flipped}",
+                "$value": "{ob.s.color.status.info.bg.contrast-low.inversity-flipped}",
                 "$description": "References semantic inverse info status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.solid-inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.solid.inversity-flipped}",
                 "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             },
             "critical": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.critical.bg.contrast-low-inversity-flipped}",
+                "$value": "{ob.s.color.status.critical.bg.contrast-low.inversity-flipped}",
                 "$description": "References semantic inverse critical status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.solid-inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.solid.inversity-flipped}",
                 "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             },
             "resolved": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.resolved.bg.contrast-low-inversity-flipped}",
+                "$value": "{ob.s.color.status.resolved.bg.contrast-low.inversity-flipped}",
                 "$description": "References semantic inverse resolved status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.solid-inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.solid.inversity-flipped}",
                 "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
               }
             }
@@ -57,44 +57,44 @@
             "info": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled-inversity-flipped}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled.inversity-flipped}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.disabled-inversity-flipped}",
+                "$value": "{ob.s.color.interaction.state.fg.disabled.inversity-flipped}",
                 "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             },
             "attention": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled-inversity-flipped}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled.inversity-flipped}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.disabled-inversity-flipped}",
+                "$value": "{ob.s.color.interaction.state.fg.disabled.inversity-flipped}",
                 "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             },
             "critical": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled-inversity-flipped}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled.inversity-flipped}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.disabled-inversity-flipped}",
+                "$value": "{ob.s.color.interaction.state.fg.disabled.inversity-flipped}",
                 "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             },
             "resolved": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled-inversity-flipped}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled.inversity-flipped}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.disabled-inversity-flipped}",
+                "$value": "{ob.s.color.interaction.state.fg.disabled.inversity-flipped}",
                 "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
               }
             }

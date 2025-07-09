@@ -117,37 +117,37 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-medium-inversity-normal}"
+                "$value": "{ob.s.color.neutral.fg.contrast-medium.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-medium-inversity-normal}"
+                "$value": "{ob.s.color.neutral.fg.contrast-medium.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-medium-inversity-normal}"
+                "$value": "{ob.s.color.neutral.fg.contrast-medium.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast-high-inversity-normal}"
+                "$value": "{ob.s.color.neutral.fg.contrast-high.inversity-normal}"
               }
             },
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-medium-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-medium.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-medium-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-medium.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-medium-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-medium.inversity-normal}"
               }
             }
           },
@@ -177,7 +177,7 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
@@ -215,7 +215,7 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
@@ -253,7 +253,7 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
@@ -291,7 +291,7 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
@@ -329,7 +329,7 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
@@ -367,7 +367,7 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
@@ -405,7 +405,7 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
@@ -443,7 +443,7 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
@@ -481,7 +481,7 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",

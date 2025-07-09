@@ -4,117 +4,117 @@
       "color": {
         "neutral": {
           "bg": {
-            "contrast-highest-inversity-normal": {
+            "contrast-highest.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.basic.white}",
               "$description": "Default background color"
             },
-            "contrast-high-inversity-normal": {
+            "contrast-high.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.50}",
               "$description": "Darker surface color"
             },
-            "contrast-medium-inversity-normal": {
+            "contrast-medium.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.100}",
               "$description": "Darker surface color"
             },
-            "contrast-low-inversity-normal": {
+            "contrast-low.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.200}",
               "$description": "Darker surface color"
             },
-            "contrast-lowest-inversity-normal": {
+            "contrast-lowest.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.300}",
               "$description": "Very subtle background color for disabled states or extremely low contrast surfaces"
             },
-            "contrast-medium-inversity-flipped": {
+            "contrast-medium.inversity-flipped": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.500}",
               "$description": "Darker surface color"
             },
-            "contrast-low-inversity-flipped": {
+            "contrast-low.inversity-flipped": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.400}",
               "$description": "Darker surface color"
             },
-            "contrast-high-inversity-flipped": {
+            "contrast-high.inversity-flipped": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.600}",
               "$description": "Darker surface color"
             },
-            "contrast-highest-inversity-flipped": {
+            "contrast-highest.inversity-flipped": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.700}",
               "$description": "Default dark surface color"
             },
-            "contrast-lowest-inversity-flipped": {
+            "contrast-lowest.inversity-flipped": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.300}",
               "$description": "Very subtle dark background color for disabled states on inverse backgrounds"
             }
           },
           "fg": {
-            "contrast-lowest-inversity-normal": {
+            "contrast-lowest.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt-alpha.400}",
               "$description": "for diabled text"
             },
-            "contrast-low-inversity-normal": {
+            "contrast-low.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.600}"
             },
-            "contrast-medium-inversity-normal": {
+            "contrast-medium.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.700}",
               "$description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
             },
-            "contrast-high-inversity-normal": {
+            "contrast-high.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.800}"
             },
-            "contrast-highest-inversity-normal": {
+            "contrast-highest.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.900}"
             },
-            "contrast-lowest-inversity-flipped": {
+            "contrast-lowest.inversity-flipped": {
               "$type": "color",
               "$value": "{ob.p.colors.white-alpha.400}",
               "$description": "For disabled"
             },
-            "contrast-low-inversity-flipped": {
+            "contrast-low.inversity-flipped": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.200}"
             },
-            "contrast-medium-inversity-flipped": {
+            "contrast-medium.inversity-flipped": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.100}",
               "$description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
             },
-            "contrast-high-inversity-flipped": {
+            "contrast-high.inversity-flipped": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.50}"
             },
-            "contrast-highest-inversity-flipped": {
+            "contrast-highest.inversity-flipped": {
               "$type": "color",
               "$value": "{ob.p.colors.basic.white}"
             }
           },
           "border": {
-            "subtle-inversity-normal": {
+            "subtle.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.100}"
             },
-            "medium-inversity-normal": {
+            "medium.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.200}"
             },
-            "strong-inversity-normal": {
+            "strong.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.300}"
             },
-            "subtle-inversity-flipped": {
+            "subtle.inversity-flipped": {
               "$extensions": {
                 "studio.tokens": {
                   "modify": {
@@ -127,7 +127,7 @@
               "$type": "color",
               "$value": "{ob.p.colors.basic.white}"
             },
-            "medium-inversity-flipped": {
+            "medium.inversity-flipped": {
               "$extensions": {
                 "studio.tokens": {
                   "modify": {
@@ -140,28 +140,28 @@
               "$type": "color",
               "$value": "{ob.p.colors.basic.white}"
             },
-            "strong-inversity-flipped": {
+            "strong.inversity-flipped": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt.300}"
             }
           },
           "shadow": {
-            "first-inversity-normal": {
+            "first.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt-alpha.50}",
               "$description": "1st of 2 effects"
             },
-            "second-inversity-normal": {
+            "second.inversity-normal": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt-alpha.100}",
               "$description": "2nd of 2 effects"
             },
-            "second-inversity-flipped": {
+            "second.inversity-flipped": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt-alpha.100}",
               "$description": "2nd of 2 effects"
             },
-            "first-inversity-flipped": {
+            "first.inversity-flipped": {
               "$type": "color",
               "$value": "{ob.p.colors.cobalt-alpha.50}",
               "$description": "1st of 2 effects"
@@ -171,55 +171,55 @@
         "status": {
           "info": {
             "bg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.blue.50}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.blue.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.blue.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.blue.600}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.blue.700}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.blue.800}"
               }
             },
             "fg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.blue.900}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.blue.800}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.blue.700}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.blue.200}",
                 "$description": "Auto-generated: matches bg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.blue.100}",
                 "$description": "Auto-generated: matches bg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.blue.50}",
                 "$description": "Auto-generated: matches bg.contrast-high"
@@ -228,55 +228,55 @@
           },
           "resolved": {
             "bg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.green.50}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.green.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.green.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.green.600}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.green.700}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.green.800}"
               }
             },
             "fg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.green.800}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.green.700}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.green.600}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.green.200}",
                 "$description": "Auto-generated: matches bg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.green.100}",
                 "$description": "Auto-generated: matches bg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.green.50}",
                 "$description": "Auto-generated: matches bg.contrast-high"
@@ -285,58 +285,58 @@
           },
           "fatal": {
             "bg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.800}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.700}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.600}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.200}",
                 "$description": "Auto-generated: matches fg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.100}",
                 "$description": "Auto-generated: matches fg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.50}",
                 "$description": "Auto-generated: matches fg.contrast-high"
               }
             },
             "fg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.50}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.600}",
                 "$description": "Auto-generated: matches bg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.700}",
                 "$description": "Auto-generated: matches bg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.800}",
                 "$description": "Auto-generated: matches bg.contrast-high"
@@ -345,55 +345,55 @@
           },
           "attention": {
             "bg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.orange.50}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.orange.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.orange.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.orange.600}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.orange.700}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.orange.800}"
               }
             },
             "fg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.orange.800}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.orange.700}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.orange.600}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.orange.200}",
                 "$description": "Auto-generated: matches bg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.orange.100}",
                 "$description": "Auto-generated: matches bg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.orange.50}",
                 "$description": "Auto-generated: matches bg.contrast-high"
@@ -402,55 +402,55 @@
           },
           "pending": {
             "bg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.yellow.50}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.yellow.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.yellow.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.yellow.600}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.yellow.700}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.yellow.800}"
               }
             },
             "fg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.yellow.800}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.yellow.700}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.yellow.600}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.yellow.200}",
                 "$description": "Auto-generated: matches bg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.yellow.100}",
                 "$description": "Auto-generated: matches bg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.yellow.50}",
                 "$description": "Auto-generated: matches bg.contrast-high"
@@ -459,55 +459,55 @@
           },
           "confirmed": {
             "bg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.teal.50}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.teal.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.teal.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.teal.600}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.teal.700}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.teal.800}"
               }
             },
             "fg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.teal.800}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.teal.700}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.teal.600}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.teal.200}",
                 "$description": "Auto-generated: matches bg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.teal.100}",
                 "$description": "Auto-generated: matches bg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.teal.50}",
                 "$description": "Auto-generated: matches bg.contrast-high"
@@ -516,60 +516,60 @@
           },
           "progress": {
             "bg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.50}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.600}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.700}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.800}"
               },
-              "contrast-high-inversity-flipped-alpha": {
+              "contrast-high.inversity-flipped-alpha": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo-alpha.900}",
                 "$description": "Used for spinner background alpha overlay"
               }
             },
             "fg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.800}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.700}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.600}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.200}",
                 "$description": "Auto-generated: matches bg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.100}",
                 "$description": "Auto-generated: matches bg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.50}",
                 "$description": "Auto-generated: matches bg.contrast-high"
@@ -578,55 +578,55 @@
           },
           "scheduled": {
             "bg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.pink.50}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.pink.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.pink.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.pink.600}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.pink.700}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.pink.800}"
               }
             },
             "fg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.pink.800}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.pink.700}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.pink.600}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.pink.200}",
                 "$description": "Auto-generated: matches bg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.pink.100}",
                 "$description": "Auto-generated: matches bg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.pink.50}",
                 "$description": "Auto-generated: matches bg.contrast-high"
@@ -635,55 +635,55 @@
           },
           "waiting": {
             "bg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.purple.50}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.purple.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.purple.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.purple.600}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.purple.700}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.purple.800}"
               }
             },
             "fg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.purple.800}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.purple.700}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.purple.600}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.purple.200}",
                 "$description": "Auto-generated: matches bg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.purple.100}",
                 "$description": "Auto-generated: matches bg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.purple.50}",
                 "$description": "Auto-generated: matches bg.contrast-high"
@@ -692,55 +692,55 @@
           },
           "critical": {
             "bg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.50}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.600}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.700}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.800}"
               }
             },
             "fg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.800}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.700}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.600}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.200}",
                 "$description": "Auto-generated: matches bg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.100}",
                 "$description": "Auto-generated: matches bg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.red.50}",
                 "$description": "Auto-generated: matches bg.contrast-high"
@@ -749,55 +749,55 @@
           },
           "closed": {
             "bg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.50}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.600}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.700}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.800}"
               }
             },
             "fg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.900}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.800}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.700}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.200}",
                 "$description": "Auto-generated: matches bg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.100}",
                 "$description": "Auto-generated: matches bg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.50}",
                 "$description": "Auto-generated: matches bg.contrast-high"
@@ -806,55 +806,55 @@
           },
           "disabled": {
             "bg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.50}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.600}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.700}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.800}"
               }
             },
             "fg": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.900}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.800}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.700}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.200}",
                 "$description": "Auto-generated: matches bg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.100}",
                 "$description": "Auto-generated: matches bg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.50}",
                 "$description": "Auto-generated: matches bg.contrast-high"
@@ -865,87 +865,87 @@
         "interaction": {
           "emphasis-medium": {
             "bg-base": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inversity-normal}",
+                "$value": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}",
                 "$description": "Used as bg in 2nd and 3d buttons"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.steelblue.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.steelblue.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.steelblue.600}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.steelblue.700}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.steelblue.800}"
               }
             },
             "fg-base": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.steelblue.700}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.steelblue.600}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.steelblue.500}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.steelblue.200}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.steelblue.100}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.basic.white}",
                 "$description": "Text and icon color has to be white on inversion (primary buttons, badge etc.)"
               }
             },
             "fg-visited": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.900}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.800}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.700}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.200}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.100}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.50}"
               }
             },
             "fg-disabled": {
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
@@ -959,29 +959,29 @@
                 "$value": "{ob.p.colors.cobalt-alpha.900}",
                 "$description": "Foreground color for disabled state of Text links, secondary and tertiary buttons etc. on standard backrgound."
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.50}",
                 "$description": "Foreground color on an inverted backgrounds of disabled state of Primary button, badge.."
               }
             },
             "bg-disabled": {
-              "solid-inversity-normal": {
+              "solid.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt-alpha.100}",
-                "$description": "For background of disabled elements. Default, non-inversity-flipped. Opacity version."
+                "$description": "For background of disabled elements. Default, non.inversity-flipped. Opacity version."
               },
-              "opacity-inversity-normal": {
+              "opacity.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt-alpha.100}",
                 "$description": "For background of disabled elements. Default background (non inverted).Solid version."
               },
-              "opacity-inversity-flipped": {
+              "opacity.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt-alpha.300}",
                 "$description": "For background of disabled elements, inverse. Opacity version."
               },
-              "solid-inversity-flipped": {
+              "solid.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.200}",
                 "$description": "For background of disabled elements, inverse. Solid version."
@@ -990,88 +990,88 @@
           },
           "emphasis-low": {
             "bg-base": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast-highest-inversity-normal}"
+                "$value": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.100}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.200}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.500}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.600}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.700}"
               }
             },
             "fg-base": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.900}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.800}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.700}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.200}",
                 "$description": "Auto-generated: matches bg.contrast-low"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.100}",
                 "$description": "Auto-generated: matches bg.contrast-medium"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.50}",
                 "$description": "Auto-generated: matches bg.contrast-high"
               }
             },
             "fg-visited": {
-              "contrast-high-inversity-normal": {
+              "contrast-high.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.900}"
               },
-              "contrast-medium-inversity-normal": {
+              "contrast-medium.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.800}"
               },
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.700}"
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.200}"
               },
-              "contrast-medium-inversity-flipped": {
+              "contrast-medium.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.100}"
               },
-              "contrast-high-inversity-flipped": {
+              "contrast-high.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.indigo.50}"
               }
             },
             "fg-disabled": {
-              "contrast-low-inversity-normal": {
+              "contrast-low.inversity-normal": {
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
@@ -1085,29 +1085,29 @@
                 "$value": "{ob.p.colors.cobalt-alpha.900}",
                 "$description": "Foreground color for disabled state of Text links, secondary and tertiary buttons etc. on standard backrgound."
               },
-              "contrast-low-inversity-flipped": {
+              "contrast-low.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.50}",
                 "$description": "Foreground color on an inverted backgrounds of disabled state of Primary button, badge.."
               }
             },
             "bg-disabled": {
-              "solid-inversity-normal": {
+              "solid.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt-alpha.100}",
-                "$description": "For background of disabled elements. Default, non-inversity-flipped. Opacity version."
+                "$description": "For background of disabled elements. Default, non.inversity-flipped. Opacity version."
               },
-              "opacity-inversity-normal": {
+              "opacity.inversity-normal": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt-alpha.100}",
                 "$description": "For background of disabled elements. Default background (non inverted).Solid version."
               },
-              "opacity-inversity-flipped": {
+              "opacity.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt-alpha.300}",
                 "$description": "For background of disabled elements, inverse. Opacity version."
               },
-              "solid-inversity-flipped": {
+              "solid.inversity-flipped": {
                 "$type": "color",
                 "$value": "{ob.p.colors.cobalt.200}",
                 "$description": "For background of disabled elements, inverse. Solid version."

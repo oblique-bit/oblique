@@ -7,7 +7,7 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled-inversity-normal}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
@@ -100,7 +100,7 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.enabled-inversity-normal}",
+                "$value": "{ob.s.color.interaction.state.bg.enabled.inversity-normal}",
                 "$description": "Background color of Primary button Enabled state."
               },
               "hover": {
