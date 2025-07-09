@@ -485,7 +485,6 @@
       "ob.s.color.static.no-color": "edbbd429b1f7bf5a0d7cea689c32f8c17fb1a3a7",
       "ob.s.color.interaction.indicator.selected": "8fb7ce3b1745691b6c27fb30d7e596afb255917e",
       "ob.s.color.interaction.indicator.unselected": "5c41042448e00b26272bd316725164737a397ae3",
-      "ob.s.color.status.test": "549e982f57f46527b81d0caf37071b78c354c041",
       "ob.s.radii.none": "3f7855f0f29919cdb0a55b4ad35642aad423c984",
       "ob.s.radii.sm": "77c0909283156e27d5f0bcd7add228337f9e9393",
       "ob.s.radii.md": "df3058480f420a90fb025494afaedf815090b243",
@@ -1684,8 +1683,7 @@
       "ob.s.color.static.brand": "861eee3df5f17596aa04ad566d439f7a5b5944ff",
       "ob.s.color.static.no-color": "2693a8763cd0f3c515baabb4dc22ebcb71afd9e9",
       "ob.s.color.interaction.indicator.selected": "e2e19d52128080f4e2548bb50dfc41cead281553",
-      "ob.s.color.interaction.indicator.unselected": "b3d373d599feaf5bd2cf7a8e5a5759607a7707e7",
-      "ob.s.color.status.test": "459a013bf10743abe37cf79e32c95cf41fa0ec96"
+      "ob.s.color.interaction.indicator.unselected": "b3d373d599feaf5bd2cf7a8e5a5759607a7707e7"
     },
     "group": "lightness"
   },
@@ -2153,7 +2151,6 @@
       "ob.s.color.static.no-color": "2693a8763cd0f3c515baabb4dc22ebcb71afd9e9",
       "ob.s.color.interaction.indicator.selected": "e2e19d52128080f4e2548bb50dfc41cead281553",
       "ob.s.color.interaction.indicator.unselected": "b3d373d599feaf5bd2cf7a8e5a5759607a7707e7",
-      "ob.s.color.status.test": "459a013bf10743abe37cf79e32c95cf41fa0ec96",
       "ob.c.infobox.color.icon.fatal-test": "aab1a7bd71b06f2b5e78a4f73228ec1945ed50d9",
       "ob.c.infobox.color.border.fatal-test": "f0abcac422128ac2ffb9735f4ca2aecc0293c57b",
       "ob.c.infobox.color.surface.fatal-test": "4fe482b4f5afabb91e59dab3a71196ad2fe649cb",
