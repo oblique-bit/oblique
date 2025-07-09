@@ -7,42 +7,42 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled-default}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled-inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.hover-default}"
+                "$value": "{ob.s.color.interaction.state.fg.hover-inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.focus-default}"
+                "$value": "{ob.s.color.interaction.state.fg.focus-inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.pressed-default}"
+                "$value": "{ob.s.color.interaction.state.fg.pressed-inversity-normal}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.disabled-default}"
+                "$value": "{ob.s.color.interaction.state.fg.disabled-inversity-normal}"
               }
             },
             "secondary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled-inverse}",
+                "$value": "{ob.s.color.interaction.state.fg.enabled-inversity-flipped}",
                 "$description": "Text and icon color of secondary button or text-link, Enabled state."
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.hover-inverse}"
+                "$value": "{ob.s.color.interaction.state.fg.hover-inversity-flipped}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.focus-inverse}"
+                "$value": "{ob.s.color.interaction.state.fg.focus-inversity-flipped}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.pressed-inverse}"
+                "$value": "{ob.s.color.interaction.state.fg.pressed-inversity-flipped}"
               },
               "disabled": {
                 "$type": "color",
@@ -52,19 +52,19 @@
             "tertiary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled-inverse}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled-inversity-flipped}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.hover-inverse}"
+                "$value": "{ob.s.color.interaction.state.fg.hover-inversity-flipped}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.focus-inverse}"
+                "$value": "{ob.s.color.interaction.state.fg.focus-inversity-flipped}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.pressed-inverse}",
+                "$value": "{ob.s.color.interaction.state.fg.pressed-inversity-flipped}",
                 "$description": "slightly reduced opacity for pressed"
               },
               "disabled": {
@@ -75,19 +75,19 @@
             "close": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled-inverse}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled-inversity-flipped}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.hover-inverse}"
+                "$value": "{ob.s.color.interaction.state.fg.hover-inversity-flipped}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.focus-inverse}"
+                "$value": "{ob.s.color.interaction.state.fg.focus-inversity-flipped}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.pressed-inverse}",
+                "$value": "{ob.s.color.interaction.state.fg.pressed-inversity-flipped}",
                 "$description": "slightly reduced opacity for pressed"
               },
               "disabled": {
@@ -100,25 +100,25 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.enabled-default}",
+                "$value": "{ob.s.color.interaction.state.bg.enabled-inversity-normal}",
                 "$description": "Background color of Primary button Enabled state."
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.hover-default}",
+                "$value": "{ob.s.color.interaction.state.bg.hover-inversity-normal}",
                 "$description": "Background color of Primary button Hover state."
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.focus-default}"
+                "$value": "{ob.s.color.interaction.state.bg.focus-inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.pressed-default}"
+                "$value": "{ob.s.color.interaction.state.bg.pressed-inversity-normal}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.disabled-default}",
+                "$value": "{ob.s.color.interaction.state.bg.disabled-inversity-normal}",
                 "$description": "Background color of the Disabled Primary button. Referenes the semantic interaction disabled."
               }
             },
@@ -130,19 +130,19 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.hover-inverse}"
+                "$value": "{ob.s.color.interaction.state.bg.hover-inversity-flipped}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.focus-inverse}"
+                "$value": "{ob.s.color.interaction.state.bg.focus-inversity-flipped}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.pressed-inverse}"
+                "$value": "{ob.s.color.interaction.state.bg.pressed-inversity-flipped}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.disabled-inverse}"
+                "$value": "{ob.s.color.interaction.state.bg.disabled-inversity-flipped}"
               }
             },
             "tertiary": {
@@ -153,19 +153,19 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.hover-inverse}"
+                "$value": "{ob.s.color.interaction.state.bg.hover-inversity-flipped}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.focus-inverse}"
+                "$value": "{ob.s.color.interaction.state.bg.focus-inversity-flipped}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.pressed-inverse}"
+                "$value": "{ob.s.color.interaction.state.bg.pressed-inversity-flipped}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.bg.disabled-inverse}"
+                "$value": "{ob.s.color.interaction.state.bg.disabled-inversity-flipped}"
               }
             },
             "close": {
@@ -219,19 +219,19 @@
             "secondary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled-inverse}"
+                "$value": "{ob.s.color.interaction.state.fg.enabled-inversity-flipped}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.hover-inverse}"
+                "$value": "{ob.s.color.interaction.state.fg.hover-inversity-flipped}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.focus-inverse}"
+                "$value": "{ob.s.color.interaction.state.fg.focus-inversity-flipped}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.pressed-inverse}"
+                "$value": "{ob.s.color.interaction.state.fg.pressed-inversity-flipped}"
               },
               "disabled": {
                 "$type": "color",

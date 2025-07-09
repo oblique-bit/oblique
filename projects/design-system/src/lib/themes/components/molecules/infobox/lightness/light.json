@@ -22,7 +22,7 @@
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}"
+              "$value": "{ob.s.color.neutral.fg.contrast-highest-inversity-flipped}"
             }
           },
           "border": {
@@ -72,23 +72,23 @@
           "fg": {
             "info": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest-default}"
+              "$value": "{ob.s.color.neutral.fg.contrast-highest-inversity-normal}"
             },
             "critical": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest-default}"
+              "$value": "{ob.s.color.neutral.fg.contrast-highest-inversity-normal}"
             },
             "attention": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest-default}"
+              "$value": "{ob.s.color.neutral.fg.contrast-highest-inversity-normal}"
             },
             "resolved": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest-default}"
+              "$value": "{ob.s.color.neutral.fg.contrast-highest-inversity-normal}"
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest-inverse}"
+              "$value": "{ob.s.color.neutral.fg.contrast-highest-inversity-flipped}"
             }
           }
         }

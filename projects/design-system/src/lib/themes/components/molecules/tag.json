@@ -125,45 +125,45 @@
           "fg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-medium-default}"
+              "$value": "{ob.s.color.neutral.fg.contrast-medium-inversity-normal}"
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-medium-default}"
+              "$value": "{ob.s.color.neutral.fg.contrast-medium-inversity-normal}"
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-medium-default}"
+              "$value": "{ob.s.color.neutral.fg.contrast-medium-inversity-normal}"
             },
             "active": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-medium-inverse}"
+              "$value": "{ob.s.color.neutral.fg.contrast-medium-inversity-flipped}"
             },
             "disabled": {
               "$type": "color",
-              "$value": "{ob.s.color.interaction.state.fg.disabled-default}"
+              "$value": "{ob.s.color.interaction.state.fg.disabled-inversity-normal}"
             }
           },
           "bg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-medium-default}"
+              "$value": "{ob.s.color.neutral.bg.contrast-medium-inversity-normal}"
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-high-default}"
+              "$value": "{ob.s.color.neutral.bg.contrast-high-inversity-normal}"
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-medium-default}"
+              "$value": "{ob.s.color.neutral.bg.contrast-medium-inversity-normal}"
             },
             "active": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-medium-inverse}"
+              "$value": "{ob.s.color.neutral.bg.contrast-medium-inversity-flipped}"
             },
             "disabled": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast-medium-default}"
+              "$value": "{ob.s.color.neutral.bg.contrast-medium-inversity-normal}"
             }
           }
         }

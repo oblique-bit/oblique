@@ -2,7 +2,7 @@
   "r13": {
     "typography": {
       "components-only": {
-        "alert-default": {
+        "alert-inversity-normal": {
           "text": {
             "$type": "typography",
             "$value": "{ob.s.typography.content.body.normal}",
