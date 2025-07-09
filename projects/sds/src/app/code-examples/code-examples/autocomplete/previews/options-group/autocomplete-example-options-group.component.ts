@@ -24,12 +24,12 @@ export class AutocompleteExampleIconOptionsGroupComponent implements AfterViewIn
 				{
 					label: 'Group - 1 Dr. Who',
 					disabled: false,
-					iconName: ObEIcon.ARCHIVE
+					iconName: ObEIcon.ARCHIVE_BOX
 				},
 				{
 					label: 'Group - 1 Octopus',
 					disabled: false,
-					iconName: ObEIcon.BELL
+					iconName: ObEIcon.NOTIFICATION
 				}
 			]
 		},
@@ -50,7 +50,7 @@ export class AutocompleteExampleIconOptionsGroupComponent implements AfterViewIn
 				{
 					label: 'Group - 2 Five',
 					disabled: false,
-					iconName: ObEIcon.WARNING_TRIANGLE
+					iconName: ObEIcon.EXCLAMATION_TRIANGLE
 				}
 			]
 		},
@@ -61,12 +61,12 @@ export class AutocompleteExampleIconOptionsGroupComponent implements AfterViewIn
 				{
 					label: 'Group - 3 Five',
 					disabled: false,
-					iconName: ObEIcon.ENVELOPE
+					iconName: ObEIcon.MAIL_OPEN
 				},
 				{
 					label: 'Group - 3 Ice-cream',
 					disabled: false,
-					iconName: ObEIcon.EYEDROPPER
+					iconName: ObEIcon.COLOR_PICKER
 				},
 				{
 					label: 'Group - 3 Octopus',
