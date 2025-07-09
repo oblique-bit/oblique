@@ -13,7 +13,7 @@
                 },
                 "md": {
                   "$type": "spacing",
-                  "$value": "{ob.s.spacing.lg}",
+                  "$value": "{ob.s.spacing.md}",
                   "$description": "Top and bottom padding  – for medium size buttons."
                 },
                 "lg": {
@@ -175,7 +175,7 @@
             },
             "lg": {
               "$type": "sizing",
-              "$value": "{ob.s.icon.size.sm}"
+              "$value": "{ob.s.icon.size.md}"
             }
           }
         },
