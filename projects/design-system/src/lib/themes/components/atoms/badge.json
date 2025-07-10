@@ -57,49 +57,49 @@
             "info": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.info.fg.contrast-low}",
-                "$description": "Text color for info badge in enabled state. Uses status color tokens for semantic consistency."
+                "$value": "{ob.s.color.status.info.fg.contrast-highest}",
+                "$description": "Maximum contrast text color for info badge in enabled state. Uses highest contrast for optimal accessibility."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.fg.contrast-low}",
-                "$description": "Disabled info badge text color using status disabled tokens for semantic consistency."
+                "$value": "{ob.s.color.status.disabled.fg.contrast-highest}",
+                "$description": "Maximum contrast disabled info badge text color using status disabled tokens for semantic consistency."
               }
             },
             "attention": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.attention.fg.contrast-low}",
-                "$description": "Text color for attention badge in enabled state. Uses status color tokens for semantic consistency."
+                "$value": "{ob.s.color.status.attention.fg.contrast-highest}",
+                "$description": "Maximum contrast text color for attention badge in enabled state. Uses highest contrast for optimal accessibility."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.fg.contrast-low}",
-                "$description": "Disabled attention badge text color using status disabled tokens for semantic consistency."
+                "$value": "{ob.s.color.status.disabled.fg.contrast-highest}",
+                "$description": "Maximum contrast disabled attention badge text color using status disabled tokens for semantic consistency."
               }
             },
             "critical": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.critical.fg.contrast-low}",
-                "$description": "Text color for critical badge in enabled state. Uses status color tokens for semantic consistency."
+                "$value": "{ob.s.color.status.critical.fg.contrast-highest}",
+                "$description": "Maximum contrast text color for critical badge in enabled state. Uses highest contrast for optimal accessibility."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.fg.contrast-low}",
-                "$description": "Disabled critical badge text color using status disabled tokens for semantic consistency."
+                "$value": "{ob.s.color.status.disabled.fg.contrast-highest}",
+                "$description": "Maximum contrast disabled critical badge text color using status disabled tokens for semantic consistency."
               }
             },
             "resolved": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.resolved.fg.contrast-low}",
-                "$description": "Text color for resolved badge in enabled state. Uses status color tokens for semantic consistency."
+                "$value": "{ob.s.color.status.resolved.fg.contrast-highest}",
+                "$description": "Maximum contrast text color for resolved badge in enabled state. Uses highest contrast for optimal accessibility."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.fg.contrast-low}",
-                "$description": "Disabled resolved badge text color using status disabled tokens for semantic consistency."
+                "$value": "{ob.s.color.status.disabled.fg.contrast-highest}",
+                "$description": "Maximum contrast disabled resolved badge text color using status disabled tokens for semantic consistency."
               }
             }
           }
