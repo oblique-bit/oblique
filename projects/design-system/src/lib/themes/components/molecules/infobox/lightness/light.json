@@ -6,89 +6,89 @@
           "icon": {
             "info": {
               "$type": "color",
-              "$value": "{ob.s.color.status.info.fg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.info.fg.contrast-medium}"
             },
             "critical": {
               "$type": "color",
-              "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+              "$value": "{ob.s.color.l2.status.critical.fg.contrast-high}"
             },
             "attention": {
               "$type": "color",
-              "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+              "$value": "{ob.s.color.l2.status.attention.fg.contrast-high}"
             },
             "resolved": {
               "$type": "color",
-              "$value": "{ob.s.color.status.resolved.fg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.resolved.fg.contrast-medium}"
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest.inversity-flipped}"
+              "$value": "{ob.s.color.l1.neutral.fg.contrast-highest.inversity-flipped}"
             }
           },
           "border": {
             "info": {
               "$type": "color",
-              "$value": "{ob.s.color.status.info.fg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.info.fg.contrast-medium}"
             },
             "critical": {
               "$type": "color",
-              "$value": "{ob.s.color.status.critical.fg.contrast-high}"
+              "$value": "{ob.s.color.l2.status.critical.fg.contrast-high}"
             },
             "attention": {
               "$type": "color",
-              "$value": "{ob.s.color.status.attention.fg.contrast-high}"
+              "$value": "{ob.s.color.l2.status.attention.fg.contrast-high}"
             },
             "resolved": {
               "$type": "color",
-              "$value": "{ob.s.color.status.resolved.fg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.resolved.fg.contrast-medium}"
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s.color.status.fatal.fg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.fatal.fg.contrast-medium}"
             }
           },
           "surface": {
             "info": {
               "$type": "color",
-              "$value": "{ob.s.color.status.info.bg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.info.bg.contrast-medium}"
             },
             "critical": {
               "$type": "color",
-              "$value": "{ob.s.color.status.critical.bg.contrast-high}"
+              "$value": "{ob.s.color.l2.status.critical.bg.contrast-high}"
             },
             "attention": {
               "$type": "color",
-              "$value": "{ob.s.color.status.attention.bg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.attention.bg.contrast-medium}"
             },
             "resolved": {
               "$type": "color",
-              "$value": "{ob.s.color.status.resolved.bg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.resolved.bg.contrast-medium}"
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s.color.status.fatal.bg.contrast-high}"
+              "$value": "{ob.s.color.l2.status.fatal.bg.contrast-high}"
             }
           },
           "fg": {
             "info": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest.inversity-normal}"
+              "$value": "{ob.s.color.l1.neutral.fg.contrast-highest.inversity-normal}"
             },
             "critical": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest.inversity-normal}"
+              "$value": "{ob.s.color.l1.neutral.fg.contrast-highest.inversity-normal}"
             },
             "attention": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest.inversity-normal}"
+              "$value": "{ob.s.color.l1.neutral.fg.contrast-highest.inversity-normal}"
             },
             "resolved": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest.inversity-normal}"
+              "$value": "{ob.s.color.l1.neutral.fg.contrast-highest.inversity-normal}"
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast-highest.inversity-flipped}"
+              "$value": "{ob.s.color.l1.neutral.fg.contrast-highest.inversity-flipped}"
             }
           }
         }

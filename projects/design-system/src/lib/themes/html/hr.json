@@ -11,15 +11,15 @@
         "color": {
           "subtle": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.border.subtle}"
+            "$value": "{ob.s.color.l2.neutral.border.subtle}"
           },
           "default": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.border.medium}"
+            "$value": "{ob.s.color.l2.neutral.border.medium}"
           },
           "strong": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.border.strong}"
+            "$value": "{ob.s.color.l2.neutral.border.strong}"
           }
         }
       }

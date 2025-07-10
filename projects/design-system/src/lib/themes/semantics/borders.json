@@ -135,7 +135,7 @@
         "focus": {
           "$type": "border",
           "$value": {
-            "color": "{ob.s.color.interaction.border.focus}",
+            "color": "{ob.s.color.l1.interaction.border.focus}",
             "width": "{ob.s.border-width.2xl}",
             "style": "solid"
           },
