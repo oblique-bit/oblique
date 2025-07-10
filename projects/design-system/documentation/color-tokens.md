@@ -351,33 +351,33 @@ These guidelines define which semantic color token types specific component cate
 
 | Component | Token Type | Rationale | Example Tokens |
 |-----------|------------|-----------|----------------|
-| **Badge** | `status.*` | Represents semantic status states | `ob.s.color.status.info.bg.contrast-low` |
-| **Infobox** | `status.*` | Communicates status information | `ob.s.color.status.critical.fg.contrast-high` |
-| **Pill** | `status.*` | Status indicators and tags | `ob.s.color.status.resolved.fg.contrast-medium` |
-| **Tooltip** | `status.*` | Contextual status information | `ob.s.color.status.info.bg.contrast-high` |
+| **Badge** | `status.*` | Represents semantic status states | `ob.s.color.status.info.fg.contrast-highest.inversity-flipped` |
+| **Infobox** | `status.*` | Communicates status information | `ob.s.color.status.critical.fg.contrast-high.inversity-normal` |
+| **Pill** | `status.*` | Status indicators and tags | `ob.s.color.status.resolved.fg.contrast-medium.inversity-normal` |
+| **Tooltip** | `status.*` | Contextual status information | `ob.s.color.status.info.bg.contrast-high.inversity-normal` |
 
 #### Interactive Components
 **Components that respond to user interaction**
 
 | Component | Token Type | Rationale | Example Tokens |
 |-----------|------------|-----------|----------------|
-| **Button** | `interaction.*` | Interactive elements with states | `ob.s.color.interaction.state.bg.enabled` |
-| **Link** | `interaction.*` | Interactive navigation elements | `ob.s.color.interaction.state.fg.hover` |
-| **Tag** | `interaction.*` | Interactive filter/selection elements | `ob.s.color.interaction.state.bg.selected` |
-| **Stepper** | `interaction.*` | Interactive navigation progress | `ob.s.color.interaction.state.fg.focus` |
-| **Slider** | `interaction.*` | Interactive form controls | `ob.s.color.interaction.state.bg.pressed` |
+| **Button** | `interaction.*` | Interactive elements with states | `ob.s.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal` |
+| **Link** | `interaction.*` | Interactive navigation elements | `ob.s.color.interaction.emphasis-high.fg-hover.contrast-high.inversity-normal` |
+| **Tag** | `interaction.*` | Interactive filter/selection elements | `ob.s.color.interaction.emphasis-low.bg-base.contrast-medium.inversity-normal` |
+| **Stepper** | `interaction.*` | Interactive navigation progress | `ob.s.color.interaction.emphasis-high.fg-focus.contrast-high.inversity-normal` |
+| **Slider** | `interaction.*` | Interactive form controls | `ob.s.color.interaction.emphasis-high.bg-base.contrast-medium.inversity-normal` |
 
 #### Neutral Components  
 **Components that provide structure, content, and typography**
 
 | Component | Token Type | Rationale | Example Tokens |
 |-----------|------------|-----------|----------------|
-| **Typography** | `neutral.*` | Text content and headings | `ob.s.color.neutral.fg.contrast-high` |
-| **List** | `neutral.*` | Content structure | `ob.s.color.neutral.fg.contrast-medium` |
-| **HR (Divider)** | `neutral.*` | Structural separators | `ob.s.color.neutral.border.contrast-medium` |
-| **Popover** | `neutral.*` | Neutral floating containers | `ob.s.color.neutral.bg.contrast-highest` |
-| **Dialog** | `neutral.*` | Modal content containers | `ob.s.color.neutral.bg.contrast-high` |
-| **Progress Bar** | `neutral.*` | Neutral progress indicators | `ob.s.color.neutral.bg.contrast-low` |
+| **Typography** | `neutral.*` | Text content and headings | `ob.s.color.neutral.fg.contrast-highest.inversity-normal` |
+| **List** | `neutral.*` | Content structure | `ob.s.color.neutral.fg.contrast-medium.inversity-normal` |
+| **HR (Divider)** | `neutral.*` | Structural separators | `ob.s.color.neutral.border.contrast-medium.inversity-normal` |
+| **Popover** | `neutral.*` | Neutral floating containers | `ob.s.color.neutral.bg.contrast-highest.inversity-normal` |
+| **Dialog** | `neutral.*` | Modal content containers | `ob.s.color.neutral.bg.contrast-high.inversity-normal` |
+| **Progress Bar** | `neutral.*` | Neutral progress indicators | `ob.s.color.neutral.bg.contrast-low.inversity-normal` |
 
 **Note**: Card and Layout components exist but have not been analyzed for token consumption patterns yet.
 
