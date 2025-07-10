@@ -82,20 +82,20 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-medium}",
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-base.contrast-medium}",
                 "$description": "Background color of Primary button Hover state."
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-medium}"
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-base.contrast-medium}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-high}"
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-base.contrast-high}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.opacity}",
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-disabled.opacity}",
                 "$description": "Background color of the Disabled Primary button. Referenes the semantic interaction disabled."
               }
             },

@@ -489,7 +489,7 @@
           }
         },
         "interaction": {
-          "emphasis-medium": {
+          "emphasis-high": {
             "bg-base": {
               "contrast-high": {
                 "$type": "color",

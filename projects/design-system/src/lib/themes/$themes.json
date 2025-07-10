@@ -424,8 +424,7 @@
       "global/themes-scoped/static": "enabled",
       "global/themes-user/lightness/static": "enabled",
       "global/themes-user/viewport/static": "enabled",
-      "html/button/color-static": "enabled",
-      "semantics/colors/emphasis/high": "disabled"
+      "html/button/color-static": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:30",
     "$figmaModeId": "3:0",
@@ -928,8 +927,7 @@
       "html/button/responsive/desktop": "enabled",
       "components/molecules/infobox/responsive/desktop": "enabled",
       "global/themes-user/viewport/desktop": "enabled",
-      "semantics/spacing/desktop": "enabled",
-      "semantics/colors/emphasis/high": "disabled"
+      "semantics/spacing/desktop": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult-responsive": "0164fbe646e5297ce9697cf4e841a17e0f10337d",
@@ -1142,8 +1140,7 @@
       "html/button/responsive/mobile": "enabled",
       "components/molecules/infobox/responsive/mobile": "enabled",
       "global/themes-user/viewport/mobile": "enabled",
-      "semantics/spacing/mobile": "enabled",
-      "semantics/colors/emphasis/high": "disabled"
+      "semantics/spacing/mobile": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult-responsive": "0164fbe646e5297ce9697cf4e841a17e0f10337d",
@@ -1431,8 +1428,7 @@
       "_ignore-in-ds/figma-doc/themes/lightness/light": "enabled",
       "semantics/colors/lightness/light": "enabled",
       "components/molecules/infobox/lightness/light": "enabled",
-      "global/themes-scoped/light": "enabled",
-      "semantics/colors/emphasis/high": "disabled"
+      "global/themes-scoped/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:32",
     "$figmaModeId": "3:3",
@@ -1680,34 +1676,34 @@
       "ob.c.infobox.color.fg.resolved": "40a6ef68a06677268f9da17ac943bc3623439463",
       "ob.c.infobox.color.fg.fatal": "e86bca382071009f656bee5937c96f479ee6e7be",
       "figma-doc.color.fg": "dbf0dec550fd15691f2f540df3d08c5f04fde1b3",
-      "ob.s.color.interaction.emphasis-medium.bg-base.contrast-high.inversity-normal": "c4f11d4d13263ffdc02e99b19c54067aa3d1f41c",
-      "ob.s.color.interaction.emphasis-medium.bg-base.contrast-high.inversity-flipped": "7d85311399c7c71596c17d3b90e860e345ae3880",
-      "ob.s.color.interaction.emphasis-medium.bg-base.contrast-medium.inversity-normal": "bbab6e62e4bbc0d7cb248fb7defa1d44f3ea6e46",
-      "ob.s.color.interaction.emphasis-medium.bg-base.contrast-medium.inversity-flipped": "c28098f383a1aa95c267434641b3565cd4941582",
-      "ob.s.color.interaction.emphasis-medium.bg-base.contrast-low.inversity-normal": "ed1f74f1b799e16811bbfb2b16391a41f694db7d",
-      "ob.s.color.interaction.emphasis-medium.bg-base.contrast-low.inversity-flipped": "9cb7c5c13aa95b0345f7971776f8419851490486",
-      "ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-normal": "1faab3ceafc486f58877446b58f54f04dc90c2aa",
-      "ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped": "a3d8ad7a3b1e87472f55fa88e526f1933aa3bca3",
-      "ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium.inversity-normal": "b6824bf361366b97a0e9a2e7067a2295f0e42d9f",
-      "ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium.inversity-flipped": "3daea9693531d5c4cffe27a447b457163e522dbb",
-      "ob.s.color.interaction.emphasis-medium.fg-base.contrast-low.inversity-normal": "a7af327cdb447c12b13ddcab460eeac07856d0f8",
-      "ob.s.color.interaction.emphasis-medium.fg-base.contrast-low.inversity-flipped": "6d089f2aa79a5d2c71ed04c7dfbe9ec736206773",
-      "ob.s.color.interaction.emphasis-medium.fg-visited.contrast-high.inversity-normal": "9e208e1564500ce7225ef8ffc78bf2c370f65812",
-      "ob.s.color.interaction.emphasis-medium.fg-visited.contrast-high.inversity-flipped": "50eabe03c6af3da7175e5b8d686ac0a63d6be531",
-      "ob.s.color.interaction.emphasis-medium.fg-visited.contrast-medium.inversity-normal": "f155fef9e90bb6e214b10f2b330a55cd594823d0",
-      "ob.s.color.interaction.emphasis-medium.fg-visited.contrast-medium.inversity-flipped": "c7050df9065acd830967d2e500aa705d6d711ced",
-      "ob.s.color.interaction.emphasis-medium.fg-visited.contrast-low.inversity-normal": "67ef64a6f7f1ce4272bb98327a5e5480b945f7bb",
-      "ob.s.color.interaction.emphasis-medium.fg-visited.contrast-low.inversity-flipped": "4574186247feae8023fa1c57e1779ef52308eded",
-      "ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low.inversity-normal": "62aa90a48990abb5a1731b3e88eff2c270c98208",
-      "ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low.inversity-flipped": "75b65b1c2792c00e0379304b41f595d308b5f246",
-      "ob.s.color.interaction.emphasis-medium.bg-disabled.solid.inversity-normal": "3388afd2621f1929e1bf8391ff400ab4e9c5e939",
-      "ob.s.color.interaction.emphasis-medium.bg-disabled.solid.inversity-flipped": "4e98d40edd2ec2495d2e0c6841242b5628ae9205",
-      "ob.s.color.interaction.emphasis-medium.bg-disabled.opacity.inversity-normal": "09dedcf72e1cf7008c5e676b35b97975f5fdf2da",
-      "ob.s.color.interaction.emphasis-medium.bg-disabled.opacity.inversity-flipped": "4ab93a4964a42487cd5ea235595df1f97ac7302f",
       "ob.s.color.static.brand": "861eee3df5f17596aa04ad566d439f7a5b5944ff",
       "ob.s.color.static.no-color": "2693a8763cd0f3c515baabb4dc22ebcb71afd9e9",
       "ob.s.color.interaction.indicator.selected": "e2e19d52128080f4e2548bb50dfc41cead281553",
-      "ob.s.color.interaction.indicator.unselected": "b3d373d599feaf5bd2cf7a8e5a5759607a7707e7"
+      "ob.s.color.interaction.indicator.unselected": "b3d373d599feaf5bd2cf7a8e5a5759607a7707e7",
+      "ob.s.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal": "c4f11d4d13263ffdc02e99b19c54067aa3d1f41c",
+      "ob.s.color.interaction.emphasis-high.bg-base.contrast-high.inversity-flipped": "7d85311399c7c71596c17d3b90e860e345ae3880",
+      "ob.s.color.interaction.emphasis-high.bg-base.contrast-medium.inversity-normal": "bbab6e62e4bbc0d7cb248fb7defa1d44f3ea6e46",
+      "ob.s.color.interaction.emphasis-high.bg-base.contrast-medium.inversity-flipped": "c28098f383a1aa95c267434641b3565cd4941582",
+      "ob.s.color.interaction.emphasis-high.bg-base.contrast-low.inversity-normal": "ed1f74f1b799e16811bbfb2b16391a41f694db7d",
+      "ob.s.color.interaction.emphasis-high.bg-base.contrast-low.inversity-flipped": "9cb7c5c13aa95b0345f7971776f8419851490486",
+      "ob.s.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal": "1faab3ceafc486f58877446b58f54f04dc90c2aa",
+      "ob.s.color.interaction.emphasis-high.fg-base.contrast-high.inversity-flipped": "a3d8ad7a3b1e87472f55fa88e526f1933aa3bca3",
+      "ob.s.color.interaction.emphasis-high.fg-base.contrast-medium.inversity-normal": "b6824bf361366b97a0e9a2e7067a2295f0e42d9f",
+      "ob.s.color.interaction.emphasis-high.fg-base.contrast-medium.inversity-flipped": "3daea9693531d5c4cffe27a447b457163e522dbb",
+      "ob.s.color.interaction.emphasis-high.fg-base.contrast-low.inversity-normal": "a7af327cdb447c12b13ddcab460eeac07856d0f8",
+      "ob.s.color.interaction.emphasis-high.fg-base.contrast-low.inversity-flipped": "6d089f2aa79a5d2c71ed04c7dfbe9ec736206773",
+      "ob.s.color.interaction.emphasis-high.fg-visited.contrast-high.inversity-normal": "9e208e1564500ce7225ef8ffc78bf2c370f65812",
+      "ob.s.color.interaction.emphasis-high.fg-visited.contrast-high.inversity-flipped": "50eabe03c6af3da7175e5b8d686ac0a63d6be531",
+      "ob.s.color.interaction.emphasis-high.fg-visited.contrast-medium.inversity-normal": "f155fef9e90bb6e214b10f2b330a55cd594823d0",
+      "ob.s.color.interaction.emphasis-high.fg-visited.contrast-medium.inversity-flipped": "c7050df9065acd830967d2e500aa705d6d711ced",
+      "ob.s.color.interaction.emphasis-high.fg-visited.contrast-low.inversity-normal": "67ef64a6f7f1ce4272bb98327a5e5480b945f7bb",
+      "ob.s.color.interaction.emphasis-high.fg-visited.contrast-low.inversity-flipped": "4574186247feae8023fa1c57e1779ef52308eded",
+      "ob.s.color.interaction.emphasis-high.fg-disabled.contrast-low.inversity-normal": "62aa90a48990abb5a1731b3e88eff2c270c98208",
+      "ob.s.color.interaction.emphasis-high.fg-disabled.contrast-low.inversity-flipped": "75b65b1c2792c00e0379304b41f595d308b5f246",
+      "ob.s.color.interaction.emphasis-high.bg-disabled.solid.inversity-normal": "3388afd2621f1929e1bf8391ff400ab4e9c5e939",
+      "ob.s.color.interaction.emphasis-high.bg-disabled.solid.inversity-flipped": "4e98d40edd2ec2495d2e0c6841242b5628ae9205",
+      "ob.s.color.interaction.emphasis-high.bg-disabled.opacity.inversity-normal": "09dedcf72e1cf7008c5e676b35b97975f5fdf2da",
+      "ob.s.color.interaction.emphasis-high.bg-disabled.opacity.inversity-flipped": "4ab93a4964a42487cd5ea235595df1f97ac7302f"
     },
     "group": "lightness"
   },
@@ -1919,8 +1915,7 @@
       "_ignore-in-ds/figma-doc/themes/lightness/dark": "enabled",
       "semantics/colors/lightness/dark": "enabled",
       "components/molecules/infobox/lightness/dark": "enabled",
-      "global/themes-scoped/dark": "enabled",
-      "semantics/colors/emphasis/high": "disabled"
+      "global/themes-scoped/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:32",
     "$figmaModeId": "3:4",
@@ -2273,8 +2268,7 @@
       "ob.c.button.color.border.close.disabled": "S:a28283aa223d007d9604375a2f92654e081c7f7a,"
     },
     "selectedTokenSets": {
-      "semantics/colors/inversity/normal": "enabled",
-      "semantics/colors/emphasis/high": "disabled"
+      "semantics/colors/inversity/normal": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:33",
     "$figmaModeId": "3:5",
@@ -2378,18 +2372,6 @@
       "ob.s.color.status.disabled.fg.contrast-high": "d1d886d563ffe3dd05cc92eb8a5d64277789e050",
       "ob.s.color.status.disabled.fg.contrast-medium": "170a1b17561f47a126064904cb61c3b121a43675",
       "ob.s.color.status.disabled.fg.contrast-low": "c16b1483756fcf2b2dae8b5ba2bc2e9f39353ecb",
-      "ob.s.color.interaction.emphasis-medium.bg-base.contrast-high": "6a8de9d92bb32b88d6407f16b4efbaf94d2138c6",
-      "ob.s.color.interaction.emphasis-medium.bg-base.contrast-medium": "0c9ed6751395dcadefef473433e484c5727335d5",
-      "ob.s.color.interaction.emphasis-medium.bg-base.contrast-low": "b309b7aacb4c7b44cd07fffdf02e74ad30d514c3",
-      "ob.s.color.interaction.emphasis-medium.fg-base.contrast-high": "9b44aaf11ea3d6be19e2b74bc5ce9a92709a97d5",
-      "ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium": "c7b0eb3db654b4e2c1cf451e7b89d76087e4b363",
-      "ob.s.color.interaction.emphasis-medium.fg-base.contrast-low": "3f425991e909e40dec42fc7cb5052e8c9e908b64",
-      "ob.s.color.interaction.emphasis-medium.fg-visited.contrast-high": "47a5a07359429c6875991b50c2d2ce060ab198ec",
-      "ob.s.color.interaction.emphasis-medium.fg-visited.contrast-medium": "7b4aebb53de6e6410c93ea17f635a0c2b05cbb94",
-      "ob.s.color.interaction.emphasis-medium.fg-visited.contrast-low": "9c2c15faa58aa9c201cf6a5df353dda9ee7740ea",
-      "ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low": "7d6ac8c19f88c4710ce014d0cd740b2acdd75213",
-      "ob.s.color.interaction.emphasis-medium.bg-disabled.solid": "168d759f487e2283f4c72e1d238bca98aabea156",
-      "ob.s.color.interaction.emphasis-medium.bg-disabled.opacity": "1da2737ff4ca876f02cd5de5891abb2c0a9ed8be",
       "ob.s.color.interaction.emphasis-low.bg-base.contrast-high": "ec09b28ad969fc5009892e8a540aa9e86ee5bd32",
       "ob.s.color.interaction.emphasis-low.bg-base.contrast-medium": "8dfdde36599d154667b1ac4a765a040d8a2f07a1",
       "ob.s.color.interaction.emphasis-low.bg-base.contrast-low": "de33bf3150cc920e92ac5e6581a3f752ea50dad0",
@@ -2398,7 +2380,19 @@
       "ob.s.color.interaction.emphasis-low.fg-base.contrast-low": "ccf88d1ab96be8fc7fb4a20005e1698fcd3e9cb3",
       "ob.s.color.interaction.emphasis-low.fg-visited.contrast-high": "7d0b69668320570134632870d7b4c2693e851049",
       "ob.s.color.interaction.emphasis-low.fg-visited.contrast-medium": "287b00b52326cfb5c70edd53cf91c01e8cdf7ed6",
-      "ob.s.color.interaction.emphasis-low.fg-visited.contrast-low": "d23f11275b955c327823fbb54915e997043c3090"
+      "ob.s.color.interaction.emphasis-low.fg-visited.contrast-low": "d23f11275b955c327823fbb54915e997043c3090",
+      "ob.s.color.interaction.emphasis-high.bg-base.contrast-high": "6a8de9d92bb32b88d6407f16b4efbaf94d2138c6",
+      "ob.s.color.interaction.emphasis-high.bg-base.contrast-medium": "0c9ed6751395dcadefef473433e484c5727335d5",
+      "ob.s.color.interaction.emphasis-high.bg-base.contrast-low": "b309b7aacb4c7b44cd07fffdf02e74ad30d514c3",
+      "ob.s.color.interaction.emphasis-high.fg-base.contrast-high": "9b44aaf11ea3d6be19e2b74bc5ce9a92709a97d5",
+      "ob.s.color.interaction.emphasis-high.fg-base.contrast-medium": "c7b0eb3db654b4e2c1cf451e7b89d76087e4b363",
+      "ob.s.color.interaction.emphasis-high.fg-base.contrast-low": "3f425991e909e40dec42fc7cb5052e8c9e908b64",
+      "ob.s.color.interaction.emphasis-high.fg-visited.contrast-high": "47a5a07359429c6875991b50c2d2ce060ab198ec",
+      "ob.s.color.interaction.emphasis-high.fg-visited.contrast-medium": "7b4aebb53de6e6410c93ea17f635a0c2b05cbb94",
+      "ob.s.color.interaction.emphasis-high.fg-visited.contrast-low": "9c2c15faa58aa9c201cf6a5df353dda9ee7740ea",
+      "ob.s.color.interaction.emphasis-high.fg-disabled.contrast-low": "7d6ac8c19f88c4710ce014d0cd740b2acdd75213",
+      "ob.s.color.interaction.emphasis-high.bg-disabled.solid": "168d759f487e2283f4c72e1d238bca98aabea156",
+      "ob.s.color.interaction.emphasis-high.bg-disabled.opacity": "1da2737ff4ca876f02cd5de5891abb2c0a9ed8be"
     },
     "group": "inversity"
   },
@@ -2468,8 +2462,7 @@
       "ob.c.button.color.border.close.disabled": "S:a28283aa223d007d9604375a2f92654e081c7f7a,"
     },
     "selectedTokenSets": {
-      "semantics/colors/inversity/flipped": "enabled",
-      "semantics/colors/emphasis/high": "disabled"
+      "semantics/colors/inversity/flipped": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:33",
     "$figmaModeId": "3:6",
@@ -2573,18 +2566,6 @@
       "ob.s.color.status.disabled.fg.contrast-high": "d1d886d563ffe3dd05cc92eb8a5d64277789e050",
       "ob.s.color.status.disabled.fg.contrast-medium": "170a1b17561f47a126064904cb61c3b121a43675",
       "ob.s.color.status.disabled.fg.contrast-low": "c16b1483756fcf2b2dae8b5ba2bc2e9f39353ecb",
-      "ob.s.color.interaction.emphasis-medium.bg-base.contrast-high": "6a8de9d92bb32b88d6407f16b4efbaf94d2138c6",
-      "ob.s.color.interaction.emphasis-medium.bg-base.contrast-medium": "0c9ed6751395dcadefef473433e484c5727335d5",
-      "ob.s.color.interaction.emphasis-medium.bg-base.contrast-low": "b309b7aacb4c7b44cd07fffdf02e74ad30d514c3",
-      "ob.s.color.interaction.emphasis-medium.fg-base.contrast-high": "9b44aaf11ea3d6be19e2b74bc5ce9a92709a97d5",
-      "ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium": "c7b0eb3db654b4e2c1cf451e7b89d76087e4b363",
-      "ob.s.color.interaction.emphasis-medium.fg-base.contrast-low": "3f425991e909e40dec42fc7cb5052e8c9e908b64",
-      "ob.s.color.interaction.emphasis-medium.fg-visited.contrast-high": "47a5a07359429c6875991b50c2d2ce060ab198ec",
-      "ob.s.color.interaction.emphasis-medium.fg-visited.contrast-medium": "7b4aebb53de6e6410c93ea17f635a0c2b05cbb94",
-      "ob.s.color.interaction.emphasis-medium.fg-visited.contrast-low": "9c2c15faa58aa9c201cf6a5df353dda9ee7740ea",
-      "ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low": "7d6ac8c19f88c4710ce014d0cd740b2acdd75213",
-      "ob.s.color.interaction.emphasis-medium.bg-disabled.solid": "168d759f487e2283f4c72e1d238bca98aabea156",
-      "ob.s.color.interaction.emphasis-medium.bg-disabled.opacity": "1da2737ff4ca876f02cd5de5891abb2c0a9ed8be",
       "ob.s.color.interaction.emphasis-low.bg-base.contrast-high": "ec09b28ad969fc5009892e8a540aa9e86ee5bd32",
       "ob.s.color.interaction.emphasis-low.bg-base.contrast-medium": "8dfdde36599d154667b1ac4a765a040d8a2f07a1",
       "ob.s.color.interaction.emphasis-low.bg-base.contrast-low": "de33bf3150cc920e92ac5e6581a3f752ea50dad0",
@@ -2593,7 +2574,19 @@
       "ob.s.color.interaction.emphasis-low.fg-base.contrast-low": "ccf88d1ab96be8fc7fb4a20005e1698fcd3e9cb3",
       "ob.s.color.interaction.emphasis-low.fg-visited.contrast-high": "7d0b69668320570134632870d7b4c2693e851049",
       "ob.s.color.interaction.emphasis-low.fg-visited.contrast-medium": "287b00b52326cfb5c70edd53cf91c01e8cdf7ed6",
-      "ob.s.color.interaction.emphasis-low.fg-visited.contrast-low": "d23f11275b955c327823fbb54915e997043c3090"
+      "ob.s.color.interaction.emphasis-low.fg-visited.contrast-low": "d23f11275b955c327823fbb54915e997043c3090",
+      "ob.s.color.interaction.emphasis-high.bg-base.contrast-high": "6a8de9d92bb32b88d6407f16b4efbaf94d2138c6",
+      "ob.s.color.interaction.emphasis-high.bg-base.contrast-medium": "0c9ed6751395dcadefef473433e484c5727335d5",
+      "ob.s.color.interaction.emphasis-high.bg-base.contrast-low": "b309b7aacb4c7b44cd07fffdf02e74ad30d514c3",
+      "ob.s.color.interaction.emphasis-high.fg-base.contrast-high": "9b44aaf11ea3d6be19e2b74bc5ce9a92709a97d5",
+      "ob.s.color.interaction.emphasis-high.fg-base.contrast-medium": "c7b0eb3db654b4e2c1cf451e7b89d76087e4b363",
+      "ob.s.color.interaction.emphasis-high.fg-base.contrast-low": "3f425991e909e40dec42fc7cb5052e8c9e908b64",
+      "ob.s.color.interaction.emphasis-high.fg-visited.contrast-high": "47a5a07359429c6875991b50c2d2ce060ab198ec",
+      "ob.s.color.interaction.emphasis-high.fg-visited.contrast-medium": "7b4aebb53de6e6410c93ea17f635a0c2b05cbb94",
+      "ob.s.color.interaction.emphasis-high.fg-visited.contrast-low": "9c2c15faa58aa9c201cf6a5df353dda9ee7740ea",
+      "ob.s.color.interaction.emphasis-high.fg-disabled.contrast-low": "7d6ac8c19f88c4710ce014d0cd740b2acdd75213",
+      "ob.s.color.interaction.emphasis-high.bg-disabled.solid": "168d759f487e2283f4c72e1d238bca98aabea156",
+      "ob.s.color.interaction.emphasis-high.bg-disabled.opacity": "1da2737ff4ca876f02cd5de5891abb2c0a9ed8be"
     },
     "group": "inversity"
   },
@@ -2687,8 +2680,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity-flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantics/colors/emphasis/low": "enabled",
-      "semantics/colors/emphasis/high": "disabled"
+      "semantics/colors/emphasis/low": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.color.interaction.state.fg.enabled": "aa6e3ad8178230b0225fee578a41772d35602007",
@@ -2765,8 +2757,7 @@
       "r13.typography.components-only.tooltip.label": "S:01a80ff405036b8a204f742fa49f200230ff826c,"
     },
     "selectedTokenSets": {
-      "_ignore-in-ds/typography-styles-R13": "enabled",
-      "semantics/colors/emphasis/high": "disabled"
+      "_ignore-in-ds/typography-styles-R13": "enabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"

@@ -7,64 +7,64 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-base.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high}",
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-base.contrast-high}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               },
               "selected": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-base.contrast-low}",
                 "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
               },
               "visited": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-visited.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-visited.contrast-low}",
                 "$description": "For text-links. No use in buttons."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-disabled.contrast-low}",
                 "$description": "Used in text-links, secondary and tertiary buttons."
               }
             },
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-base.contrast-low}",
                 "$description": "Background for primary buttons."
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-medium}",
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-base.contrast-medium}",
                 "$description": "Background for primary buttons."
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-medium}",
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-base.contrast-medium}",
                 "$description": "Background for primary buttons."
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-high}",
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-base.contrast-high}",
                 "$description": "Background for primary buttons."
               },
               "selected": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-low}",
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-base.contrast-low}",
                 "$description": "For navigation."
               },
               "visited": {
@@ -74,7 +74,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.opacity}",
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-disabled.opacity}",
                 "$description": "Used for fill in primary buttons."
               }
             }
