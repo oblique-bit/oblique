@@ -1,3 +1,9 @@
+# [13.3.1](https://github.com/oblique-bit/oblique/compare/13.3.0...13.3.1) (2025-07-10)
+
+## Bug Fixes
+
+- **service-navigation:** add `lang` attribute to language options ([56a3aed3](https://github.com/oblique-bit/oblique/commit/56a3aed3a2b4464b187b5541b016215082c1c489))
+
 # [13.3.0](https://github.com/oblique-bit/oblique/compare/13.2.3...13.3.0) (2025-06-12)
 
 ## Features

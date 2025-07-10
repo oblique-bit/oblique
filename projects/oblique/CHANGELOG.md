@@ -1,3 +1,11 @@
+# [13.3.1](https://github.com/oblique-bit/oblique/compare/13.3.0...13.3.1) (2025-07-10)
+
+## Bug Fixes
+
+- **accessibility-statement:** fix the url to the eCH-0059 standards ([e15a51c8](https://github.com/oblique-bit/oblique/commit/e15a51c8d171911387c7f4e8dd21d4f5a2593c65))
+- **schematics:** fix skip links by enabling anchor scrolling in app routing module ([f258d67c](https://github.com/oblique-bit/oblique/commit/f258d67c1ae485f0615eab8659e4d493b6ea6392))
+- **service-navigation:** add `lang` attribute to language options ([56a3aed3](https://github.com/oblique-bit/oblique/commit/56a3aed3a2b4464b187b5541b016215082c1c489))
+
 # [13.3.0](https://github.com/oblique-bit/oblique/compare/13.2.3...13.3.0) (2025-06-12)
 
 ## Bug Fixes

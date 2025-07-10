@@ -1,3 +1,9 @@
+# [13.3.1](https://github.com/oblique-bit/oblique/compare/13.3.0...13.3.1) (2025-07-10)
+
+## Bug Fixes
+
+- **new:** add `@angular/animations` and `@angular/cdk` dependencies ([b0fa730a](https://github.com/oblique-bit/oblique/commit/b0fa730a3fed977c869627e29cbcb6ee75a0f34e))
+
 # [13.3.0](https://github.com/oblique-bit/oblique/compare/13.2.3...13.3.0) (2025-06-12)
 
 ## Features

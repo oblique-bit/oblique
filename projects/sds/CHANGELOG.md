@@ -1,3 +1,13 @@
+# [13.3.1](https://github.com/oblique-bit/oblique/compare/13.3.0...13.3.1) (2025-07-10)
+
+## Features
+
+- **code-examples:** add ObDateComponent Stackblitz example ([77929d0c](https://github.com/oblique-bit/oblique/commit/77929d0cbf0fedc77b75de490a7bc2adba725ed5))
+- **icon:** use ob-icon-text class in icon font size example ([7061fb21](https://github.com/oblique-bit/oblique/commit/7061fb21d94cd64aba13301130d1df5717df3480))
+- **icon:** move icon text example in the second place ([e81f52d0](https://github.com/oblique-bit/oblique/commit/e81f52d055d7da66d69ff02ec7d89c2191bb6556))
+- **icon:** expand icon text example to include a link with an icon within it ([fb970124](https://github.com/oblique-bit/oblique/commit/fb970124f8c9a6bef730d17ad399c68c90927eca))
+- **notification:** add a `send with HTML button` ([750b05f6](https://github.com/oblique-bit/oblique/commit/750b05f61f9fa0e770d0b898bee88fcf53b722bb))
+
 # [13.3.0](https://github.com/oblique-bit/oblique/compare/13.2.3...13.3.0) (2025-06-12)
 
 ## Bug Fixes
