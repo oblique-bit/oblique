@@ -341,6 +341,138 @@ ob.s.color.interaction.* → Direct primitive color references
 
 ---
 
+## Component Token Consumption Guidelines
+
+These guidelines define which semantic color token types specific component categories should consume. Following these rules ensures semantic consistency and maintains proper token architecture.
+
+> **Documentation Rule**: Only document components that actually exist in our design system. Do not add hypothetical or planned components to these guidelines.
+
+### Component Classification by Token Consumption
+
+#### Status-Based Components
+**Components that display status, state, or semantic meaning**
+
+| Component | Token Type | Rationale | Example Tokens |
+|-----------|------------|-----------|----------------|
+| **Badge** | `status.*` | Represents semantic status states | `ob.s.color.status.info.bg.contrast-low` |
+| **Infobox** | `status.*` | Communicates status information | `ob.s.color.status.critical.fg.contrast-high` |
+| **Pill** | `status.*` | Status indicators and tags | `ob.s.color.status.resolved.fg.contrast-medium` |
+| **Tooltip** | `status.*` | Contextual status information | `ob.s.color.status.info.bg.contrast-high` |
+
+#### Interactive Components
+**Components that respond to user interaction**
+
+| Component | Token Type | Rationale | Example Tokens |
+|-----------|------------|-----------|----------------|
+| **Button** | `interaction.*` | Interactive elements with states | `ob.s.color.interaction.state.bg.enabled` |
+| **Link** | `interaction.*` | Interactive navigation elements | `ob.s.color.interaction.state.fg.hover` |
+| **Tag** | `interaction.*` | Interactive filter/selection elements | `ob.s.color.interaction.state.bg.selected` |
+| **Stepper** | `interaction.*` | Interactive navigation progress | `ob.s.color.interaction.state.fg.focus` |
+| **Slider** | `interaction.*` | Interactive form controls | `ob.s.color.interaction.state.bg.pressed` |
+
+#### Neutral Components  
+**Components that provide structure, content, and typography**
+
+| Component | Token Type | Rationale | Example Tokens |
+|-----------|------------|-----------|----------------|
+| **Typography** | `neutral.*` | Text content and headings | `ob.s.color.neutral.fg.contrast-high` |
+| **List** | `neutral.*` | Content structure | `ob.s.color.neutral.fg.contrast-medium` |
+| **HR (Divider)** | `neutral.*` | Structural separators | `ob.s.color.neutral.border.contrast-medium` |
+| **Popover** | `neutral.*` | Neutral floating containers | `ob.s.color.neutral.bg.contrast-highest` |
+| **Dialog** | `neutral.*` | Modal content containers | `ob.s.color.neutral.bg.contrast-high` |
+| **Progress Bar** | `neutral.*` | Neutral progress indicators | `ob.s.color.neutral.bg.contrast-low` |
+
+**Note**: Card and Layout components exist but have not been analyzed for token consumption patterns yet.
+
+### Implementation Rules
+
+#### ✅ Correct Token Usage
+
+```json
+// Badge (Status-based)
+"ob.c.badge.color.bg.info.enabled": {
+  "$value": "{ob.s.color.status.info.bg.contrast-low.inversity-flipped}"
+}
+
+// Button (Interactive)  
+"ob.h.button.color.fg.primary.hover": {
+  "$value": "{ob.s.color.interaction.state.fg.hover}"
+}
+
+// Typography (Neutral)
+"ob.s.typography.color.text.default": {
+  "$value": "{ob.s.color.neutral.fg.contrast-high}"
+}
+```
+
+#### ❌ Incorrect Token Usage
+
+```json
+// Badge consuming interaction tokens (WRONG)
+"ob.c.badge.color.fg.info.enabled": {
+  "$value": "{ob.s.color.interaction.state.fg.enabled}"
+}
+
+// Button consuming status tokens (WRONG)
+"ob.h.button.color.bg.primary.enabled": {
+  "$value": "{ob.s.color.status.info.bg.contrast-low}"
+}
+
+// Typography consuming status tokens (WRONG)
+"ob.s.typography.color.text.default": {
+  "$value": "{ob.s.color.status.info.fg.contrast-high}"
+}
+```
+
+### Special Cases
+
+#### Disabled States
+- **Status components**: Use `status.disabled.*` tokens exclusively
+- **Interactive components**: Use `interaction.*-disabled.*` tokens  
+- **Neutral components**: Use `neutral.*` tokens with appropriate contrast levels
+
+#### Inverse/Theme Variations
+- All component types can consume their respective token types with theme suffixes
+- Example: `status.info.bg.contrast-low.inversity-flipped`
+
+### Token Reference Hierarchy
+
+```
+Component Tokens → Semantic Tokens → Theme Layer → Primitives
+     ↓                   ↓              ↓            ↓
+ob.c.badge.*  →  ob.s.color.status.*    →  inversity/*  →  ob.p.color.*
+ob.h.button.* →  ob.s.color.interaction.* → emphasis/*   →  ob.p.color.*
+ob.s.typography.* →  ob.s.color.neutral.*  →  lightness/*  →  ob.p.color.*
+```
+
+### Documentation Guidelines
+
+1. **Only Document Existing Components**: Do not add hypothetical or planned components
+2. **Verify Token Existence**: Ensure all referenced tokens actually exist in the semantic layer
+3. **Test Token References**: Validate that token chains resolve correctly
+4. **Update When Components Change**: Keep guidelines current with actual implementation
+
+### Validation Checklist
+
+When creating or reviewing component tokens:
+
+- [ ] **Semantic Alignment**: Does the component's purpose match the token type?
+- [ ] **Consistency**: Do similar components use the same token type?
+- [ ] **States**: Are all states (enabled, disabled, hover, etc.) handled correctly?
+- [ ] **Themes**: Do theme variations work across all token references?
+- [ ] **Hierarchy**: Does the reference chain follow the proper token hierarchy?
+
+### Migration Notes
+
+When refactoring existing components:
+1. **Identify component purpose** (status-based, interactive, or neutral)
+2. **Map current tokens** to appropriate semantic types
+3. **Test theme switching** to ensure proper inversity support
+4. **Validate contrast ratios** meet accessibility requirements
+5. **Update documentation** to reflect new token usage
+
+---
+
 ## Color Token Files
 
 ### Status Colors
@@ -404,3 +536,7 @@ While this document focuses on color tokens, status colors are often paired with
 - **Fatal**: Emergency/alert icons
 
 Icon definitions are maintained separately in the icon system but should align with status color usage.
+
+---
+
+*Last updated: July 10, 2025 - Added component consumption guidelines based on badge token architecture fixes*
