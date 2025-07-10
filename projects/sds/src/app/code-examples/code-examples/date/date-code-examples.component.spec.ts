@@ -32,7 +32,7 @@ describe(DateCodeExamplesComponent.name, () => {
 	});
 
 	test(`that there are 1 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(1);
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
 	});
 
 	test(`that there is 1 ${DateExampleDefaultPreviewComponent.name}`, () => {

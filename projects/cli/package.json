@@ -1,6 +1,6 @@
 {
   "name": "@oblique/cli",
-  "version": "13.3.0",
+  "version": "13.3.1",
   "description": "Command Line Interface to manage Oblique projects",
   "keywords": [
     "ob",

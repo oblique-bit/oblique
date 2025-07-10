@@ -25,6 +25,7 @@ export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 			addObliqueProviders(),
 			addAjv(options.ajv),
 			addUnknownRoute(options.unknownRoute),
+			enableAnchorScrolling(),
 			addInterceptors(options.httpInterceptors),
 			addBanner(options.banner, options.environments),
 			addDefaultHomeComponent(options.prefix),
@@ -69,6 +70,16 @@ function addUnknownRoute(unknownRoute: boolean): Rule {
 			}
 			tree = applyChanges(tree, routingModule, changes);
 		}
+		return tree;
+	});
+}
+
+function enableAnchorScrolling(): Rule {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Oblique feature: enabling anchor scrolling');
+		const content = readFile(tree, routingModulePath);
+		const newContent = content.replace('RouterModule.forRoot(routes)', 'RouterModule.forRoot(routes, { anchorScrolling: "enabled" })');
+		writeFile(tree, routingModulePath, newContent);
 		return tree;
 	});
 }

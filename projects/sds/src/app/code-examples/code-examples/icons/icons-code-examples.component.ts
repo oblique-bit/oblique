@@ -27,6 +27,15 @@ export class IconsCodeExamplesComponent extends CodeExamples {
 			]
 		},
 		{
+			component: IconsExampleTextPreviewComponent,
+			idParts: ['text'],
+			title: 'Icon text',
+			snippets: [
+				this.getSnippet('icons', 'text/icons-example-text-preview.component.html', 'HTML'),
+				this.getSnippet('icons', 'text/icons-example-text-preview.component.ts', 'TS')
+			]
+		},
+		{
 			component: IconsExampleFontSizePreviewComponent,
 			idParts: ['font', 'size'],
 			title: 'Icon Font Size',
@@ -34,15 +43,6 @@ export class IconsCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('icons', 'font-size/icons-example-font-size-preview.component.html', 'HTML'),
 				this.getSnippet('icons', 'font-size/icons-example-font-size-preview.component.ts', 'TS'),
 				this.getSnippet('icons', 'font-size/icons-example-font-size-preview.component.scss', 'SCSS')
-			]
-		},
-		{
-			component: IconsExampleTextPreviewComponent,
-			idParts: ['text'],
-			title: 'Icon text',
-			snippets: [
-				this.getSnippet('icons', 'text/icons-example-text-preview.component.html', 'HTML'),
-				this.getSnippet('icons', 'text/icons-example-text-preview.component.ts', 'TS')
 			]
 		},
 		{

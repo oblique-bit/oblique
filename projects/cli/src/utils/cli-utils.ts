@@ -3,7 +3,7 @@ import {type ExecSyncOptions, execSync} from 'child_process';
 import {gte, major} from 'semver';
 
 /* Generated content, do not edit */
-export const version = '13.3.0';
+export const version = '13.3.1';
 /* End of generated content */
 
 export const currentVersions = {
@@ -11,6 +11,8 @@ export const currentVersions = {
 	'@angular/cli': '19',
 	'@angular/material': '19',
 	'@angular/core': '19',
+	'@angular/cdk': '19',
+	'@angular/animations': '19',
 	'@types/jest': '29',
 	'@angular-builders/jest': '19',
 	'@schematics/angular': '19',
