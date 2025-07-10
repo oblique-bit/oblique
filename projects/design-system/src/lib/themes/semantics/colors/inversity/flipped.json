@@ -10,12 +10,22 @@
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.bg.contrast-highest.inversity-flipped}",
                   "$description": "Default background color"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.bg.contrast-highest.inversity-normal}",
+                  "$description": "Default background color"
                 }
               },
               "contrast-high": {
                 "inversity-flipped": {
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.bg.contrast-high.inversity-flipped}",
+                  "$description": "Darker surface color"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.bg.contrast-high.inversity-normal}",
                   "$description": "Darker surface color"
                 }
               },
@@ -24,6 +34,11 @@
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.bg.contrast-medium.inversity-flipped}",
                   "$description": "Darker surface color"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.bg.contrast-medium.inversity-normal}",
+                  "$description": "Darker surface color"
                 }
               },
               "contrast-low": {
@@ -31,12 +46,22 @@
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.bg.contrast-low.inversity-flipped}",
                   "$description": "Darker surface color"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.bg.contrast-low.inversity-normal}",
+                  "$description": "Darker surface color"
                 }
               },
               "contrast-lowest": {
                 "inversity-flipped": {
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.bg.contrast-lowest.inversity-flipped}",
+                  "$description": "Very subtle background color for disabled states or extremely low contrast surfaces"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.bg.contrast-lowest.inversity-normal}",
                   "$description": "Very subtle background color for disabled states or extremely low contrast surfaces"
                 }
               }
@@ -47,12 +72,21 @@
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.fg.contrast-lowest.inversity-flipped}",
                   "$description": "for diabled text"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.fg.contrast-lowest.inversity-normal}",
+                  "$description": "for diabled text"
                 }
               },
               "contrast-low": {
                 "inversity-flipped": {
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.fg.contrast-low.inversity-flipped}"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.fg.contrast-low.inversity-normal}"
                 }
               },
               "contrast-medium": {
@@ -60,18 +94,31 @@
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.fg.contrast-medium.inversity-flipped}",
                   "$description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.fg.contrast-medium.inversity-normal}",
+                  "$description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
                 }
               },
               "contrast-high": {
                 "inversity-flipped": {
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.fg.contrast-high.inversity-flipped}"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.fg.contrast-high.inversity-normal}"
                 }
               },
               "contrast-highest": {
                 "inversity-flipped": {
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.fg.contrast-highest.inversity-flipped}"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.fg.contrast-highest.inversity-normal}"
                 }
               }
             },
@@ -80,18 +127,30 @@
                 "inversity-flipped": {
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.border.subtle.inversity-flipped}"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.border.subtle.inversity-normal}"
                 }
               },
               "medium": {
                 "inversity-flipped": {
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.border.medium.inversity-flipped}"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.border.medium.inversity-normal}"
                 }
               },
               "strong": {
                 "inversity-flipped": {
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.border.strong.inversity-flipped}"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.border.strong.inversity-normal}"
                 }
               }
             },
@@ -101,12 +160,22 @@
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.shadow.first.inversity-flipped}",
                   "$description": "1st of 2 effects"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.shadow.first.inversity-normal}",
+                  "$description": "1st of 2 effects"
                 }
               },
               "second": {
                 "inversity-flipped": {
                   "$type": "color",
                   "$value": "{ob.s.color.l1.neutral.shadow.second.inversity-flipped}",
+                  "$description": "2nd of 2 effects"
+                },
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.l1.neutral.shadow.second.inversity-normal}",
                   "$description": "2nd of 2 effects"
                 }
               }
@@ -119,24 +188,40 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.info.bg.contrast-highest.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.info.bg.contrast-highest.inversity-normal}"
                   }
                 },
                 "contrast-high": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.info.bg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.info.bg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.info.bg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.info.bg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.info.bg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.info.bg.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -145,24 +230,40 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.info.fg.contrast-highest.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.info.fg.contrast-highest.inversity-normal}"
                   }
                 },
                 "contrast-high": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.info.fg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.info.fg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.info.fg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.info.fg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.info.fg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.info.fg.contrast-low.inversity-normal}"
                   }
                 }
               }
@@ -173,24 +274,40 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.resolved.bg.contrast-highest.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.resolved.bg.contrast-highest.inversity-normal}"
                   }
                 },
                 "contrast-high": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.resolved.bg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.resolved.bg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.resolved.bg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.resolved.bg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.resolved.bg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.resolved.bg.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -199,24 +316,40 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.resolved.fg.contrast-highest.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.resolved.fg.contrast-highest.inversity-normal}"
                   }
                 },
                 "contrast-high": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.resolved.fg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.resolved.fg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.resolved.fg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.resolved.fg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.resolved.fg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.resolved.fg.contrast-low.inversity-normal}"
                   }
                 }
               }
@@ -227,18 +360,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.fatal.bg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.fatal.bg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.fatal.bg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.fatal.bg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.fatal.bg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.fatal.bg.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -247,18 +392,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.fatal.fg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.fatal.fg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.fatal.fg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.fatal.fg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.fatal.fg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.fatal.fg.contrast-low.inversity-normal}"
                   }
                 }
               }
@@ -269,24 +426,40 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.attention.bg.contrast-highest.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.attention.bg.contrast-highest.inversity-normal}"
                   }
                 },
                 "contrast-high": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.attention.bg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.attention.bg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.attention.bg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.attention.bg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.attention.bg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.attention.bg.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -295,24 +468,40 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.attention.fg.contrast-highest.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.attention.fg.contrast-highest.inversity-normal}"
                   }
                 },
                 "contrast-high": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.attention.fg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.attention.fg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.attention.fg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.attention.fg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.attention.fg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.attention.fg.contrast-low.inversity-normal}"
                   }
                 }
               }
@@ -323,18 +512,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.pending.bg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.pending.bg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.pending.bg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.pending.bg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.pending.bg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.pending.bg.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -343,18 +544,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.pending.fg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.pending.fg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.pending.fg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.pending.fg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.pending.fg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.pending.fg.contrast-low.inversity-normal}"
                   }
                 }
               }
@@ -365,18 +578,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.confirmed.bg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.confirmed.bg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.confirmed.bg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.confirmed.bg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.confirmed.bg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.confirmed.bg.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -385,18 +610,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.confirmed.fg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.confirmed.fg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.confirmed.fg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.confirmed.fg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.confirmed.fg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.confirmed.fg.contrast-low.inversity-normal}"
                   }
                 }
               }
@@ -407,24 +644,41 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.progress.bg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.progress.bg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.progress.bg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.progress.bg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.progress.bg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.progress.bg.contrast-low.inversity-normal}"
                   }
                 },
                 "contrast-high-alpha": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.progress.bg.contrast-high-alpha.inversity-flipped}",
+                    "$description": "Used for spinner background alpha overlay"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.progress.bg.contrast-high-alpha.inversity-normal}",
                     "$description": "Used for spinner background alpha overlay"
                   }
                 }
@@ -434,18 +688,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.progress.fg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.progress.fg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.progress.fg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.progress.fg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.progress.fg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.progress.fg.contrast-low.inversity-normal}"
                   }
                 }
               }
@@ -456,18 +722,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.scheduled.bg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.scheduled.bg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.scheduled.bg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.scheduled.bg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.scheduled.bg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.scheduled.bg.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -476,18 +754,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.scheduled.fg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.scheduled.fg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.scheduled.fg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.scheduled.fg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.scheduled.fg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.scheduled.fg.contrast-low.inversity-normal}"
                   }
                 }
               }
@@ -498,18 +788,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.waiting.bg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.waiting.bg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.waiting.bg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.waiting.bg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.waiting.bg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.waiting.bg.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -518,18 +820,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.waiting.fg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.waiting.fg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.waiting.fg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.waiting.fg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.waiting.fg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.waiting.fg.contrast-low.inversity-normal}"
                   }
                 }
               }
@@ -540,24 +854,40 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.critical.bg.contrast-highest.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.critical.bg.contrast-highest.inversity-normal}"
                   }
                 },
                 "contrast-high": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.critical.bg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.critical.bg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.critical.bg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.critical.bg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.critical.bg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.critical.bg.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -566,24 +896,40 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.critical.fg.contrast-highest.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.critical.fg.contrast-highest.inversity-normal}"
                   }
                 },
                 "contrast-high": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.critical.fg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.critical.fg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.critical.fg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.critical.fg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.critical.fg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.critical.fg.contrast-low.inversity-normal}"
                   }
                 }
               }
@@ -594,18 +940,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.closed.bg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.closed.bg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.closed.bg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.closed.bg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.closed.bg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.closed.bg.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -614,18 +972,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.closed.fg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.closed.fg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.closed.fg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.closed.fg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.closed.fg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.closed.fg.contrast-low.inversity-normal}"
                   }
                 }
               }
@@ -636,24 +1006,40 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.disabled.bg.contrast-highest.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.disabled.bg.contrast-highest.inversity-normal}"
                   }
                 },
                 "contrast-high": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.disabled.bg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.disabled.bg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.disabled.bg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.disabled.bg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.disabled.bg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.disabled.bg.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -662,24 +1048,40 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.disabled.fg.contrast-highest.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.disabled.fg.contrast-highest.inversity-normal}"
                   }
                 },
                 "contrast-high": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.disabled.fg.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.disabled.fg.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.disabled.fg.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.disabled.fg.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.status.disabled.fg.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.status.disabled.fg.contrast-low.inversity-normal}"
                   }
                 }
               }
@@ -693,18 +1095,31 @@
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-high.bg-base.contrast-high.inversity-flipped}",
                     "$description": "Used as bg in 2nd and 3d buttons"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-high.bg-base.contrast-high.inversity-normal}",
+                    "$description": "Used as bg in 2nd and 3d buttons"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-high.bg-base.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-high.bg-base.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-high.bg-base.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-high.bg-base.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -713,18 +1128,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-base.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-base.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-base.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-base.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-base.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-base.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -733,18 +1160,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-visited.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-visited.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-visited.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-visited.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-visited.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-visited.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -763,6 +1202,20 @@
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-disabled.contrast-low.inversity-flipped}",
                     "$description": "Foreground color for disabled state of Text links, secondary and tertiary buttons etc. on inverse background."
+                  },
+                  "inversity-normal": {
+                    "$extensions": {
+                      "studio.tokens": {
+                        "modify": {
+                          "type": "alpha",
+                          "value": "0.4",
+                          "space": "srgb"
+                        }
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-high.fg-disabled.contrast-low.inversity-normal}",
+                    "$description": "Foreground color for disabled state of Text links, secondary and tertiary buttons etc. on inverse background."
                   }
                 }
               },
@@ -772,12 +1225,22 @@
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-high.bg-disabled.solid.inversity-flipped}",
                     "$description": "For background of disabled elements. Inverse background. Opacity version."
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-high.bg-disabled.solid.inversity-normal}",
+                    "$description": "For background of disabled elements. Inverse background. Opacity version."
                   }
                 },
                 "opacity": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-high.bg-disabled.opacity.inversity-flipped}",
+                    "$description": "For background of disabled elements. Inverse background. Solid version."
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-high.bg-disabled.opacity.inversity-normal}",
                     "$description": "For background of disabled elements. Inverse background. Solid version."
                   }
                 }
@@ -789,18 +1252,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-low.bg-base.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-low.bg-base.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-low.bg-base.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-low.bg-base.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-low.bg-base.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-low.bg-base.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -809,18 +1284,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-low.fg-base.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-low.fg-base.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-low.fg-base.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-low.fg-base.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-low.fg-base.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-low.fg-base.contrast-low.inversity-normal}"
                   }
                 }
               },
@@ -829,18 +1316,30 @@
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-low.fg-visited.contrast-high.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-low.fg-visited.contrast-high.inversity-normal}"
                   }
                 },
                 "contrast-medium": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-low.fg-visited.contrast-medium.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-low.fg-visited.contrast-medium.inversity-normal}"
                   }
                 },
                 "contrast-low": {
                   "inversity-flipped": {
                     "$type": "color",
                     "$value": "{ob.s.color.l1.interaction.emphasis-low.fg-visited.contrast-low.inversity-flipped}"
+                  },
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l1.interaction.emphasis-low.fg-visited.contrast-low.inversity-normal}"
                   }
                 }
               }
@@ -848,6 +1347,11 @@
             "border": {
               "focus": {
                 "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.purple.500}",
+                  "$description": "Used for text-links as a border color of the focus state."
+                },
+                "inversity-normal": {
                   "$type": "color",
                   "$value": "{ob.p.colors.purple.500}",
                   "$description": "Used for text-links as a border color of the focus state."
