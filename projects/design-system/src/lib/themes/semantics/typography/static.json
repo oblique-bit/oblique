@@ -42,7 +42,7 @@
       },
       "text-decoration": {
         "link": {
-          "emphasis-medium": {
+          "emphasis-high": {
             "$type": "textDecoration",
             "$value": "{ob.p.text-decoration.underline}",
             "$description": "Standard text-link has an underline."

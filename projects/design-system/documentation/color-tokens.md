@@ -14,9 +14,7 @@ semantic.color.category.variation.property.contrast-level
 ### Categories
 - **Neutral Colors** - Base colors for backgrounds, text, and borders
 - **Status Colors** - Communicating state and feedback
-- **Interaction Colors** - Hover, focus, active, and disabled states
-- **Emphasis Colors** - Highlighting and de-emphasizing interactive components such as buttons and links. 
-- **Inversity Colors** - Light/dark theme adaptations
+- **Interaction Colors** - Interactive elements with emphasis levels (high/low) and states (hover, focus, active, disabled)
 
 
 ---
@@ -179,7 +177,6 @@ ob.s.color.interaction.{emphasis-level}.{element-type}.{contrast-level}-{theme}
 ```
 
 ### Emphasis Levels
-- `emphasis-default` - Standard interaction emphasis
 - `emphasis-high` - High emphasis interactions (primary actions)
 - `emphasis-low` - Low emphasis interactions (secondary actions)
 
@@ -198,8 +195,8 @@ ob.s.color.interaction.{emphasis-level}.{element-type}.{contrast-level}-{theme}
 - `contrast-low` - Low contrast for subtle interactions
 
 ### Theme Variations
-- `-default` - Standard light theme
-- `-inverse` - Dark theme or inverted contexts
+- `inversity-normal` - Standard theme
+- `inversity-flipped` - Inverted theme contexts
 
 ### Usage Examples
 ```json
@@ -393,6 +390,9 @@ These guidelines define which semantic color token types specific component cate
 "ob.c.badge.color.bg.info.enabled": {
   "$value": "{ob.s.color.status.info.bg.contrast-low.inversity-flipped}"
 }
+"ob.c.badge.color.fg.info.enabled": {
+  "$value": "{ob.s.color.status.info.fg.contrast-highest.inversity-flipped}"
+}
 
 // Button (Interactive)  
 "ob.h.button.color.fg.primary.hover": {
@@ -564,3 +564,27 @@ The `contrast-highest` contrast level provides maximum accessibility and readabi
 - In dark theme: `inversity-flipped` references `{ob.p.colors.basic.white}` (white primitive) for backgrounds and `{ob.p.colors.cobalt.900}` (darkest cobalt) for text
 
 This ensures maximum contrast between foreground and background elements for optimal accessibility.
+
+---
+
+## Interaction Color Rationale
+
+### Emphasis High (`ob.s.color.interaction.emphasis-high`)
+
+These are the standard colors for buttons and text links. It is primarily a saturated color. Since the beginning of the internet and also as standard of HTML, there are high saturated colors for hyperlinks, established to be easily identified in paragraph text that is mostly monochromatic.
+
+The design system of federal chancellery ([swiss.github.io/designsystem](https://swiss.github.io/designsystem/)) is used for federal websites, marketing and documentation material. In Oblique, the design system for federal applications, we have - as business and corporate design requirement - to align visually with the federal design system, as long as this is not conflicting with accessibility (AX) and user experience (UX) standards, that are crucial for the success of web applications. Meeting UX and especially AX requirements has higher priority in the requirements than corporate design consistency. 
+
+For this reason we do not follow the red color of the swiss.github.io/designsystem for interaction but use rather an expected blue color. We don't use blue primitive for this but we created a special steelblue and extended the set of primitives for this reason. One of the reasons is `primitives.steelblue` is consumed by `semantic.interaction` token layer, whereas the `primitives.blue` is used for `semantics.status.info` color. Another reason is that in the tests we made, the `primitive.blue` has not provided an expected aesthetics to be anticipated as a color that plays such a significant role in this major design system. The color, when used for buttons and links - looked simply too saturated, less serious and evoked connotations more on the lifestyle, music etc. than corporate design for federal applications.
+
+### Emphasis Low (`ob.s.color.interaction.emphasis-low`)
+
+There are two main reasons to set emphasis to low in components or use emphasis-low instead of emphasis-high:
+
+**1. Well-Established Interaction Patterns**
+When the interaction elements are expected as such in well-established patterns such as header and footer, the color would only drive too much attention to something that is already understood so we would unnecessarily waste cognitive energy of the user by providing strong saturated colors. So we keep there the menu buttons, links and tabs not saturated respectively monochromatic that are stored in the `interaction.emphasis-low` path/group.
+
+**2. Preventing Color Competition**
+The other reason or use case is preventing collision of saturated colors that can damage the visual appearance and make two color groups - status and interactive - competing for users attention, especially in the Infobox component that always have a status color. In some cases infobox can contain also buttons. So, we do not want these buttons to overplay the status colors with their color, so we put them on emphasis-low, where they go a step back in terms of signalization and priority. That way we can have on the screen a minimal amount of saturated colors that drive users attention and consume cognitive energy.
+
+---

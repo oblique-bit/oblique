@@ -175,7 +175,7 @@
                 "lineHeight": "{ob.s.lineHeight.md}",
                 "letterSpacing": "{ob.s.letter-spacing-px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.md}",
-                "textDecoration": "{ob.s.text-decoration.link.emphasis-medium}"
+                "textDecoration": "{ob.s.text-decoration.link.emphasis-high}"
               },
               "$description": "Interactive text elements that navigate to other content when clicked. Adds an underline to the text. Generates a Figma typography style."
             },

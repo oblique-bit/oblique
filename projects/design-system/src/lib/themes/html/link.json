@@ -68,14 +68,14 @@
         "enabled": {
           "$type": "typography",
           "$value": {
-            "textDecoration": "{ob.s.text-decoration.link.emphasis-medium}"
+            "textDecoration": "{ob.s.text-decoration.link.emphasis-high}"
           },
           "$description": "a:link"
         },
         "hover": {
           "$type": "typography",
           "$value": {
-            "textDecoration": "{ob.s.text-decoration.link.emphasis-medium}"
+            "textDecoration": "{ob.s.text-decoration.link.emphasis-high}"
           },
           "$description": "a:hover"
         },
@@ -89,7 +89,7 @@
         "active": {
           "$type": "typography",
           "$value": {
-            "textDecoration": "{ob.s.text-decoration.link.emphasis-medium}"
+            "textDecoration": "{ob.s.text-decoration.link.emphasis-high}"
           },
           "$description": "a:active"
         },
