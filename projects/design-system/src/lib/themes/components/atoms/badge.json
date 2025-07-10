@@ -12,8 +12,8 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.solid.inversity-flipped}",
-                "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
+                "$value": "{ob.s.color.status.disabled.bg.contrast-low}",
+                "$description": "Disabled attention badge background color using status disabled tokens for semantic consistency."
               }
             },
             "info": {
@@ -24,8 +24,8 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.solid.inversity-flipped}",
-                "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
+                "$value": "{ob.s.color.status.disabled.bg.contrast-low}",
+                "$description": "Disabled info badge background color using status disabled tokens for semantic consistency."
               }
             },
             "critical": {
@@ -36,8 +36,8 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.solid.inversity-flipped}",
-                "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
+                "$value": "{ob.s.color.status.disabled.bg.contrast-low}",
+                "$description": "Disabled critical badge background color using status disabled tokens for semantic consistency."
               }
             },
             "resolved": {
@@ -48,8 +48,8 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.solid.inversity-flipped}",
-                "$description": "Solid inverse background for disabled state to prevent bleed-through under transparent badge."
+                "$value": "{ob.s.color.status.disabled.bg.contrast-low}",
+                "$description": "Disabled resolved badge background color using status disabled tokens for semantic consistency."
               }
             }
           },
@@ -57,45 +57,49 @@
             "info": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled.inversity-flipped}"
+                "$value": "{ob.s.color.status.info.fg.contrast-low}",
+                "$description": "Text color for info badge in enabled state. Uses status color tokens for semantic consistency."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.disabled.inversity-flipped}",
-                "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
+                "$value": "{ob.s.color.status.disabled.fg.contrast-low}",
+                "$description": "Disabled info badge text color using status disabled tokens for semantic consistency."
               }
             },
             "attention": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled.inversity-flipped}"
+                "$value": "{ob.s.color.status.attention.fg.contrast-low}",
+                "$description": "Text color for attention badge in enabled state. Uses status color tokens for semantic consistency."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.disabled.inversity-flipped}",
-                "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
+                "$value": "{ob.s.color.status.disabled.fg.contrast-low}",
+                "$description": "Disabled attention badge text color using status disabled tokens for semantic consistency."
               }
             },
             "critical": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled.inversity-flipped}"
+                "$value": "{ob.s.color.status.critical.fg.contrast-low}",
+                "$description": "Text color for critical badge in enabled state. Uses status color tokens for semantic consistency."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.disabled.inversity-flipped}",
-                "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
+                "$value": "{ob.s.color.status.disabled.fg.contrast-low}",
+                "$description": "Disabled critical badge text color using status disabled tokens for semantic consistency."
               }
             },
             "resolved": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.enabled.inversity-flipped}"
+                "$value": "{ob.s.color.status.resolved.fg.contrast-low}",
+                "$description": "Text color for resolved badge in enabled state. Uses status color tokens for semantic consistency."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.state.fg.disabled.inversity-flipped}",
-                "$description": "References interaction disabled while badge is in disabled state. Uses inverse colors since badge displays bright content on dark background."
+                "$value": "{ob.s.color.status.disabled.fg.contrast-low}",
+                "$description": "Disabled resolved badge text color using status disabled tokens for semantic consistency."
               }
             }
           }
