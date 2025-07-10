@@ -7,8 +7,8 @@
             "attention": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.attention.bg.contrast-low.inversity-flipped}",
-                "$description": "References semantic inverse attention status background color, Enabled state."
+                "$value": "{ob.s.color.status.attention.bg.contrast-low}",
+                "$description": "References semantic attention status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
@@ -19,8 +19,8 @@
             "info": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.info.bg.contrast-low.inversity-flipped}",
-                "$description": "References semantic inverse info status background color, Enabled state."
+                "$value": "{ob.s.color.status.info.bg.contrast-low}",
+                "$description": "References semantic info status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
@@ -31,8 +31,8 @@
             "critical": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.critical.bg.contrast-low.inversity-flipped}",
-                "$description": "References semantic inverse critical status background color, Enabled state."
+                "$value": "{ob.s.color.status.critical.bg.contrast-low}",
+                "$description": "References semantic critical status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
@@ -43,8 +43,8 @@
             "resolved": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.resolved.bg.contrast-low.inversity-flipped}",
-                "$description": "References semantic inverse resolved status background color, Enabled state."
+                "$value": "{ob.s.color.status.resolved.bg.contrast-low}",
+                "$description": "References semantic resolved status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
@@ -57,49 +57,49 @@
             "info": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.info.fg.contrast-highest.inversity-flipped}",
-                "$description": "Maximum contrast text color for info badge in enabled state. Uses inversity-flipped for white text on colored backgrounds."
+                "$value": "{ob.s.color.status.info.fg.contrast-highest}",
+                "$description": "Maximum contrast text color for info badge in enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.fg.contrast-highest.inversity-flipped}",
-                "$description": "Maximum contrast disabled info badge text color using inversity-flipped for consistency with badge design pattern."
+                "$value": "{ob.s.color.status.disabled.fg.contrast-highest}",
+                "$description": "Maximum contrast disabled info badge text color for consistency with badge design pattern."
               }
             },
             "attention": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.attention.fg.contrast-highest.inversity-flipped}",
-                "$description": "Maximum contrast text color for attention badge in enabled state. Uses inversity-flipped for white text on colored backgrounds."
+                "$value": "{ob.s.color.status.attention.fg.contrast-highest}",
+                "$description": "Maximum contrast text color for attention badge in enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.fg.contrast-highest.inversity-flipped}",
-                "$description": "Maximum contrast disabled attention badge text color using inversity-flipped for consistency with badge design pattern."
+                "$value": "{ob.s.color.status.disabled.fg.contrast-highest}",
+                "$description": "Maximum contrast disabled attention badge text color for consistency with badge design pattern."
               }
             },
             "critical": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.critical.fg.contrast-highest.inversity-flipped}",
-                "$description": "Maximum contrast text color for critical badge in enabled state. Uses inversity-flipped for white text on colored backgrounds."
+                "$value": "{ob.s.color.status.critical.fg.contrast-highest}",
+                "$description": "Maximum contrast text color for critical badge in enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.fg.contrast-highest.inversity-flipped}",
-                "$description": "Maximum contrast disabled critical badge text color using inversity-flipped for consistency with badge design pattern."
+                "$value": "{ob.s.color.status.disabled.fg.contrast-highest}",
+                "$description": "Maximum contrast disabled critical badge text color for consistency with badge design pattern."
               }
             },
             "resolved": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.resolved.fg.contrast-highest.inversity-flipped}",
-                "$description": "Maximum contrast text color for resolved badge in enabled state. Uses inversity-flipped for white text on colored backgrounds."
+                "$value": "{ob.s.color.status.resolved.fg.contrast-highest}",
+                "$description": "Maximum contrast text color for resolved badge in enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.status.disabled.fg.contrast-highest.inversity-flipped}",
-                "$description": "Maximum contrast disabled resolved badge text color using inversity-flipped for consistency with badge design pattern."
+                "$value": "{ob.s.color.status.disabled.fg.contrast-highest}",
+                "$description": "Maximum contrast disabled resolved badge text color for consistency with badge design pattern."
               }
             }
           }
