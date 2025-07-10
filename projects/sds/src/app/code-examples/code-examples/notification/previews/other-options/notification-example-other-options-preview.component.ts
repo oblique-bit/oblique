@@ -93,6 +93,15 @@ export class NotificationExampleOtherOptionsPreviewComponent {
 		});
 	}
 
+	sendWithHTML(): void {
+		this.obNotificationService.info({
+			channel: this.channel,
+			title: `Notification with HTML`,
+			message: `<p>A subset of HTML tags, as allowed by <strong>Angular sanitization</strong>, are supported.</p><p class="ob-list-title">For instance:</p><ul><li><code>&lt;code&gt;</code></li><li><code>&lt;br/&gt;</code></li><li><code>&lt;em&gt;</code></li><li>...</li></li></ul>`,
+			sticky: true
+		});
+	}
+
 	clear(): void {
 		this.obNotificationService.clear(this.channel);
 	}
