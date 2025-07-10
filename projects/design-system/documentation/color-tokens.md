@@ -540,3 +540,27 @@ Icon definitions are maintained separately in the icon system but should align w
 ---
 
 *Last updated: July 10, 2025 - Added component consumption guidelines based on badge token architecture fixes*
+
+### contrast-highest Usage
+
+The `contrast-highest` contrast level provides maximum accessibility and readability for text and UI elements. This contrast level should be used for:
+
+**Backgrounds (`bg`):**
+- Critical UI elements that need maximum visibility
+- Text containers requiring highest contrast
+- Accessible overlays and modals
+- Emergency or alert backgrounds
+
+**Foregrounds (`fg`):**
+- Text that must meet the highest accessibility standards (AAA level)
+- Text on complex or image backgrounds
+- Small text that needs maximum legibility
+- Error, warning, or critical status text
+
+**Reference Pattern:**
+- In light theme: `inversity-normal` references `{ob.p.colors.basic.white}` (white primitive) for backgrounds and `{ob.p.colors.cobalt.900}` (darkest cobalt) for text
+- In light theme: `inversity-flipped` references `{ob.p.colors.cobalt.900}` (darkest cobalt) for backgrounds and `{ob.p.colors.basic.white}` (white primitive) for text
+- In dark theme: `inversity-normal` references `{ob.p.colors.cobalt.900}` (darkest cobalt) for backgrounds and `{ob.p.colors.basic.white}` (white primitive) for text  
+- In dark theme: `inversity-flipped` references `{ob.p.colors.basic.white}` (white primitive) for backgrounds and `{ob.p.colors.cobalt.900}` (darkest cobalt) for text
+
+This ensures maximum contrast between foreground and background elements for optimal accessibility.

@@ -201,6 +201,18 @@
         "status": {
           "info": {
             "bg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast background for info status - references white primitive for highest contrast"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast background for info status - references darkest cobalt for highest contrast"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -233,6 +245,18 @@
               }
             },
             "fg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast foreground for info status - references darkest cobalt for highest contrast"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast foreground for info status - references white primitive for highest contrast"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -299,6 +323,18 @@
                   "$type": "color",
                   "$value": "{ob.p.colors.green.600}"
                 }
+              },
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast background for resolved status - references white primitive for highest contrast"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast background for resolved status - references darkest cobalt for highest contrast"
+                }
               }
             },
             "fg": {
@@ -333,6 +369,18 @@
                   "$type": "color",
                   "$value": "{ob.p.colors.green.200}",
                   "$description": "Auto-generated: matches bg.contrast-low"
+                }
+              },
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast foreground for resolved status - references darkest cobalt for highest contrast"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast foreground for resolved status - references white primitive for highest contrast"
                 }
               }
             }
@@ -440,6 +488,18 @@
                   "$type": "color",
                   "$value": "{ob.p.colors.orange.600}"
                 }
+              },
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast background for attention status - references white primitive for highest contrast"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast background for attention status - references darkest cobalt for highest contrast"
+                }
               }
             },
             "fg": {
@@ -474,6 +534,18 @@
                   "$type": "color",
                   "$value": "{ob.p.colors.orange.200}",
                   "$description": "Auto-generated: matches bg.contrast-low"
+                }
+              },
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast foreground for attention status - references darkest cobalt for highest contrast"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast foreground for attention status - references white primitive for highest contrast"
                 }
               }
             }
@@ -871,6 +943,18 @@
                   "$type": "color",
                   "$value": "{ob.p.colors.red.600}"
                 }
+              },
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast background for critical status - references white primitive for highest contrast"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast background for critical status - references darkest cobalt for highest contrast"
+                }
               }
             },
             "fg": {
@@ -905,6 +989,18 @@
                   "$type": "color",
                   "$value": "{ob.p.colors.red.200}",
                   "$description": "Auto-generated: matches bg.contrast-low"
+                }
+              },
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast foreground for critical status - references darkest cobalt for highest contrast"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast foreground for critical status - references white primitive for highest contrast"
                 }
               }
             }
@@ -1009,6 +1105,18 @@
                   "$type": "color",
                   "$value": "{ob.p.colors.cobalt.600}"
                 }
+              },
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast background for disabled status - references white primitive for highest contrast"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast background for disabled status - references darkest cobalt for highest contrast"
+                }
               }
             },
             "fg": {
@@ -1043,6 +1151,18 @@
                   "$type": "color",
                   "$value": "{ob.p.colors.cobalt.200}",
                   "$description": "Auto-generated: matches bg.contrast-low"
+                }
+              },
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast foreground for disabled status - references darkest cobalt for highest contrast"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast foreground for disabled status - references white primitive for highest contrast"
                 }
               }
             }

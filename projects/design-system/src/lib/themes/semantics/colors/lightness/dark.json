@@ -199,6 +199,18 @@
         "status": {
           "info": {
             "bg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast background for info status in dark theme - references darkest cobalt"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast background for info status on inverted dark theme - references white"
+                }
+              },
               "contrast-medium": {
                 "inversity-normal": {
                   "$type": "color",
@@ -231,6 +243,18 @@
               }
             },
             "fg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast foreground for info status in dark theme - references white for maximum readability"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast foreground for info status on inverted dark theme - references darkest cobalt"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -265,6 +289,18 @@
           },
           "resolved": {
             "bg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast background for resolved status in dark theme - references darkest cobalt"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast background for resolved status on inverted dark theme - references white"
+                }
+              },
               "contrast-low": {
                 "inversity-normal": {
                   "$type": "color",
@@ -300,6 +336,18 @@
               }
             },
             "fg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast foreground for resolved status in dark theme - references white for maximum readability"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast foreground for resolved status on inverted dark theme - references darkest cobalt"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -334,7 +382,7 @@
           },
           "fatal": {
             "bg": {
-              "contrast-high": {
+              "contrast-highest": {
                 "inversity-normal": {
                   "$type": "color",
                   "$value": "{ob.p.colors.red.900}"
@@ -344,7 +392,7 @@
                   "$value": "{ob.p.colors.red.100}"
                 }
               },
-              "contrast-medium": {
+              "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
                   "$value": "{ob.p.colors.red.800}"
@@ -354,7 +402,7 @@
                   "$value": "{ob.p.colors.red.200}"
                 }
               },
-              "contrast-low": {
+              "contrast-medium": {
                 "inversity-normal": {
                   "$type": "color",
                   "$value": "{ob.p.colors.red.700}"
@@ -363,9 +411,31 @@
                   "$type": "color",
                   "$value": "{ob.p.colors.red.300}"
                 }
+              },
+              "contrast-low": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.red.600}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.red.400}"
+                }
               }
             },
             "fg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast foreground for fatal status in dark theme - references white for maximum readability"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast foreground for fatal status on inverted dark theme - references darkest cobalt"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -400,6 +470,18 @@
           },
           "attention": {
             "bg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast background for attention status in dark theme - references darkest cobalt"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast background for attention status on inverted dark theme - references white"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -432,6 +514,18 @@
               }
             },
             "fg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast foreground for attention status in dark theme - references white for maximum readability"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast foreground for attention status on inverted dark theme - references darkest cobalt"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -813,6 +907,18 @@
           },
           "critical": {
             "bg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast background for critical status in dark theme - references darkest cobalt"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast background for critical status on inverted dark theme - references white"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -845,20 +951,32 @@
               }
             },
             "fg": {
-              "contrast-high": {
+              "contrast-highest": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.200}"
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast foreground for critical status in dark theme - references white for maximum readability"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.700}"
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast foreground for critical status on inverted dark theme - references darkest cobalt"
+                }
+              },
+              "contrast-high": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.red.100}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.red.900}"
                 }
               },
               "contrast-medium": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.300}"
+                  "$value": "{ob.p.colors.red.200}"
                 },
                 "inversity-flipped": {
                   "$type": "color",
@@ -868,11 +986,11 @@
               "contrast-low": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.400}"
+                  "$value": "{ob.p.colors.red.300}"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.red.900}"
+                  "$value": "{ob.p.colors.red.700}"
                 }
               }
             }
@@ -945,6 +1063,18 @@
           },
           "disabled": {
             "bg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast background for disabled status in dark theme - references darkest cobalt"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast background for disabled status on inverted dark theme - references white"
+                }
+              },
               "contrast-medium": {
                 "inversity-normal": {
                   "$type": "color",
@@ -977,24 +1107,40 @@
               }
             },
             "fg": {
-              "contrast-low": {
+              "contrast-highest": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.cobalt.200}"
+                  "$value": "{ob.p.colors.basic.white}",
+                  "$description": "Maximum contrast foreground for disabled status in dark theme - references white for maximum readability"
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.cobalt.700}"
+                  "$value": "{ob.p.colors.cobalt.900}",
+                  "$description": "Maximum contrast foreground for disabled status on inverted dark theme - references darkest cobalt"
+                }
+              },
+              "contrast-low": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.white-alpha.400}",
+                  "$description": "For disabled"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.colors.cobalt-alpha.400}",
+                  "$description": "For disabled"
                 }
               },
               "contrast-medium": {
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.cobalt.100}"
+                  "$value": "{ob.p.colors.cobalt.100}",
+                  "$description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
                 },
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.cobalt.900}"
+                  "$value": "{ob.p.colors.cobalt.700}",
+                  "$description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
                 }
               },
               "contrast-high": {
