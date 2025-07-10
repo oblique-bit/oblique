@@ -1157,7 +1157,7 @@
           }
         },
         "interaction": {
-          "emphasis-medium": {
+          "emphasis-high": {
             "bg-base": {
               "contrast-high": {
                 "inversity-normal": {

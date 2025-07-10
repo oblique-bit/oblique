@@ -493,44 +493,44 @@
             "bg-base": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-high.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-base.contrast-high.inversity-flipped}",
                 "$description": "Used as bg in 2nd and 3d buttons"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-medium.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-base.contrast-medium.inversity-flipped}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-base.contrast-low.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-base.contrast-low.inversity-flipped}"
               }
             },
             "fg-base": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-high.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-base.contrast-high.inversity-flipped}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-medium.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-base.contrast-medium.inversity-flipped}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-base.contrast-low.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-base.contrast-low.inversity-flipped}"
               }
             },
             "fg-visited": {
               "contrast-high": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-visited.contrast-high.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-visited.contrast-high.inversity-flipped}"
               },
               "contrast-medium": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-visited.contrast-medium.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-visited.contrast-medium.inversity-flipped}"
               },
               "contrast-low": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-visited.contrast-low.inversity-flipped}"
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-visited.contrast-low.inversity-flipped}"
               }
             },
             "fg-disabled": {
@@ -545,19 +545,19 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.fg-disabled.contrast-low.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-high.fg-disabled.contrast-low.inversity-flipped}",
                 "$description": "Foreground color for disabled state of Text links, secondary and tertiary buttons etc. on inverse background."
               }
             },
             "bg-disabled": {
               "solid": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.solid.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-disabled.solid.inversity-flipped}",
                 "$description": "For background of disabled elements. Inverse background. Opacity version."
               },
               "opacity": {
                 "$type": "color",
-                "$value": "{ob.s.color.interaction.emphasis-medium.bg-disabled.opacity.inversity-flipped}",
+                "$value": "{ob.s.color.interaction.emphasis-high.bg-disabled.opacity.inversity-flipped}",
                 "$description": "For background of disabled elements. Inverse background. Solid version."
               }
             }
