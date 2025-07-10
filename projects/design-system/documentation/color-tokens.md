@@ -579,7 +579,7 @@ For this reason we do not follow the red color of the swiss.github.io/designsyst
 
 ### Emphasis Low (`ob.s.color.interaction.emphasis-low`)
 
-There are two main reasons to set emphasis to low in components or use emphasis-low instead of emphasis-high:
+There are two main reasons to set emphasis-low instead of emphasis-high:
 
 **1. Well-Established Interaction Patterns**
 When the interaction elements are expected as such in well-established patterns such as header and footer, the color would only drive too much attention to something that is already understood so we would unnecessarily waste cognitive energy of the user by providing strong saturated colors. So we keep there the menu buttons, links and tabs not saturated respectively monochromatic that are stored in the `interaction.emphasis-low` path/group.
