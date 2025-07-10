@@ -178,7 +178,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 			describe('stringify object', () => {
 				let buttons: HTMLElement[];
 				beforeEach(() => {
-					const customButtonsObject = [{obliqueIconName: 'smile', badge: '1'}, {obliqueIconName: 'calendar'}];
+					const customButtonsObject = [{obliqueIconName: 'happy', badge: '1'}, {obliqueIconName: 'calendar'}];
 					fixture.componentRef.setInput('environment', 'DEV');
 					fixture.componentRef.setInput('languageList', 'en');
 					component.ngOnChanges({
@@ -194,8 +194,8 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 				});
 
 				describe('first button', () => {
-					it('should have smile icon', () => {
-						expect(buttons[0].innerHTML).toContain('smile');
+					it('should have happy icon', () => {
+						expect(buttons[0].innerHTML).toContain('happy');
 					});
 
 					it('should have badge set to 1', () => {
@@ -204,13 +204,13 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 					});
 
 					describe('clicked event', () => {
-						it('should emit smile with the buttonClickedEmitter', () => {
+						it('should emit happy with the buttonClickedEmitter', () => {
 							let clickEvent: string;
 							component.buttonClickedEmitter.subscribe(event => {
 								clickEvent = event;
 							});
 							buttons[0].click();
-							expect(clickEvent).toBe('smile');
+							expect(clickEvent).toBe('happy');
 						});
 					});
 				});
