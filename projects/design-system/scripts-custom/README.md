@@ -16,7 +16,8 @@ These scripts help maintain the quality and consistency of the Oblique Design Sy
 - **`validate-consumption-hierarchy.py`** - Validates proper token consumption patterns (primitive → semantic → component)
   - *Example: Ensures buttons don't reference primitive colors directly, but use semantic tokens instead → maintains design flexibility and consistency*
 - **`validate-token-chain-resolution.js`** - Deep validation of token reference chains and circular references
-  - *Example: Detects color.primary → color.accent → color.primary circular loop → prevents infinite recursion that crashes the build*
+- **`validate-l1-l2-redundancy.py`** - Analyzes redundancy between L1 and L2 token levels
+  - *Example: Confirms L2 tokens are 99.2% redundant with L1 → enables build script optimization to reduce CSS variables*
 
 ### Analysis & Inspection Scripts
 - **`analyze-emphasis-structure.js`** - Analyzes emphasis token structure and relationships
@@ -32,7 +33,7 @@ These scripts help maintain the quality and consistency of the Oblique Design Sy
 - **`remove-obsolete-files.js`** - Removes untracked obsolete/deprecated files
   - *Example: Removes old token files like "legacy-colors.json" that are no longer referenced → prevents accidental usage of outdated tokens*
 - **`generate-word-docs.py`** - Converts all markdown documentation to Word (.docx) format for offline reading
-  - *Example: Generates printable Word documents from all .md files in documentation/ → enables offline validation and team review*
+  - *Example: Generates printable Word documents from all .md files in documentation/ with professional footers (filename, generation date/time, page X of Y) → enables offline validation and team review*
 
 ## 🚀 Usage
 
@@ -59,6 +60,7 @@ chmod +x scripts-custom/*.sh
 python3 scripts-custom/find-plural-references.py
 python3 scripts-custom/quick-validate-token-syntax.py
 python3 scripts-custom/validate-consumption-hierarchy.py
+python3 scripts-custom/validate-l1-l2-redundancy.py
 node scripts-custom/validate-token-chain-resolution.js
 
 # Run analysis and inspection scripts

@@ -210,6 +210,36 @@ The correct reference chain ensures proper theme inheritance:
 - Component layers should never reference lightness or primitive layers directly
 - Each layer should only reference the layer immediately below it in the hierarchy
 
+### L1/L2 Redundancy Analysis
+
+**Finding:** Analysis of the token architecture reveals 99.2% redundancy between L1 (lightness) and L2 (inversity) token layers.
+
+**Current State:**
+- **L1 lightness/light.json:** 273 tokens
+- **L2 inversity/normal.json:** 271 tokens  
+- **Redundant tokens:** 269 (99.2% overlap)
+- **L2-unique tokens:** Only 2 tokens exist exclusively in L2
+
+**Architectural Assessment:**
+
+The L2 inversity layer was designed to provide component-scoped theming for contrast inversion (e.g., badges with dark backgrounds, light text). However, the current implementation shows that L2 tokens are nearly identical copies of L1 tokens, indicating potential over-engineering.
+
+**Impact Analysis:**
+- **Maintenance Overhead:** Dual maintenance of nearly identical token sets
+- **Consistency Risk:** Manual synchronization between L1 and L2 creates drift potential
+- **Reference Complexity:** Additional layer without meaningful semantic differentiation
+
+**Recommendation:**
+
+Consider generating L2 tokens programmatically from L1 during the build process rather than maintaining separate files. This would:
+
+1. **Eliminate redundancy** - Single source of truth for base semantic tokens
+2. **Reduce maintenance** - Automatic synchronization between layers  
+3. **Preserve architecture** - Maintain the semantic hierarchy and reference chain
+4. **Enable customization** - Allow selective overrides for true inversity cases
+
+**Validation:** Run `python scripts-custom/validate-l1-l2-redundancy.py` to verify current redundancy levels and identify the specific tokens that require manual definition in L2.
+
 ### Folder Structure vs. Token References
 
 **Important:** Changing folder structures does not necessarily break token references. Token resolution depends on the token paths and names, not the folder organization.

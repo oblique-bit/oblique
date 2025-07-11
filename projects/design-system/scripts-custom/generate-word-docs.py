@@ -6,6 +6,11 @@ Generate Word Documents from Markdown Documentation
 Converts all markdown files in the documentation/ folder to Word (.docx) format
 for offline reading and validation. Places output in documentation/wordfiles-temp/
 
+Features:
+- Professional footer with filename, generation date/time, and page numbers (Page X of Y)
+- Proper formatting for headers, lists, code blocks, and basic markdown elements
+- Clean, readable layout optimized for printing and sharing
+
 Requirements:
 - python-docx (install with: pip3 install python-docx markdown2)
 
@@ -19,20 +24,97 @@ from pathlib import Path
 
 try:
     from docx import Document
-    from docx.shared import Inches
+    from docx.shared import Inches, Pt
     from docx.enum.style import WD_STYLE_TYPE
+    from docx.enum.text import WD_ALIGN_PARAGRAPH
+    from docx.oxml.shared import OxmlElement, qn
     import markdown2
+    from datetime import datetime
 except ImportError:
     print("❌ Missing required packages. Install with:")
     print("   pip3 install python-docx markdown2")
     sys.exit(1)
 
-def create_word_doc_from_markdown(md_content, title):
+def add_footer_with_page_numbers(doc, filename):
+    """Add footer with filename, date/time, and page numbers."""
+    section = doc.sections[0]
+    footer = section.footer
+    
+    # Get current date and time
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Create footer paragraph with proper formatting
+    footer_para = footer.paragraphs[0]
+    footer_para.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    
+    # Add filename
+    filename_run = footer_para.add_run(filename)
+    filename_run.font.size = Pt(8)
+    filename_run.font.name = 'Calibri'
+    
+    # Add separator and generation time
+    separator_run = footer_para.add_run(f" | Generated: {current_time}")
+    separator_run.font.size = Pt(8)
+    separator_run.font.name = 'Calibri'
+    
+    # Add line break for page numbers
+    footer_para.add_run("\n")
+    
+    # Add page numbers - center aligned
+    page_para = footer.add_paragraph()
+    page_para.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    
+    # Add "Page" text
+    page_run = page_para.add_run("Page ")
+    page_run.font.size = Pt(8)
+    page_run.font.name = 'Calibri'
+    
+    # Add current page number field
+    fldChar1 = OxmlElement('w:fldChar')
+    fldChar1.set(qn('w:fldCharType'), 'begin')
+    instrText = OxmlElement('w:instrText')
+    instrText.set(qn('xml:space'), 'preserve')
+    instrText.text = 'PAGE'
+    fldChar2 = OxmlElement('w:fldChar')
+    fldChar2.set(qn('w:fldCharType'), 'end')
+    
+    page_num_run = page_para.add_run("")
+    page_num_run.font.size = Pt(8)
+    page_num_run.font.name = 'Calibri'
+    page_num_run._r.append(fldChar1)
+    page_num_run._r.append(instrText)
+    page_num_run._r.append(fldChar2)
+    
+    # Add " of " text
+    of_run = page_para.add_run(" of ")
+    of_run.font.size = Pt(8)
+    of_run.font.name = 'Calibri'
+    
+    # Add total pages field
+    fldChar3 = OxmlElement('w:fldChar')
+    fldChar3.set(qn('w:fldCharType'), 'begin')
+    instrText2 = OxmlElement('w:instrText')
+    instrText2.set(qn('xml:space'), 'preserve')
+    instrText2.text = 'NUMPAGES'
+    fldChar4 = OxmlElement('w:fldChar')
+    fldChar4.set(qn('w:fldCharType'), 'end')
+    
+    total_run = page_para.add_run("")
+    total_run.font.size = Pt(8)
+    total_run.font.name = 'Calibri'
+    total_run._r.append(fldChar3)
+    total_run._r.append(instrText2)
+    total_run._r.append(fldChar4)
+
+def create_word_doc_from_markdown(md_content, title, filename):
     """Create a Word document from markdown content."""
     doc = Document()
     
     # Add title
     title_para = doc.add_heading(title, 0)
+    
+    # Add footer with filename, date/time, and page numbers
+    add_footer_with_page_numbers(doc, filename)
     
     # Convert markdown to HTML then parse
     html_content = markdown2.markdown(md_content, extras=['fenced-code-blocks', 'tables'])
@@ -97,7 +179,7 @@ def convert_md_to_docx(md_file, output_dir):
             md_content = f.read()
         
         # Create Word document
-        doc = create_word_doc_from_markdown(md_content, md_path.stem.replace('-', ' ').title())
+        doc = create_word_doc_from_markdown(md_content, md_path.stem.replace('-', ' ').title(), md_path.name)
         
         # Save document
         doc.save(str(docx_path))

@@ -23,14 +23,15 @@ You will find information about how to use Oblique, code samples, FAQ and many m
 - **build**: build the library; Automatically run on the CI pipeline
 - **release**: create a new release, i.e. bump version number and updates the changelog
 - **check:plural-references**: validates singular naming conventions across all token names, file names, and documentation (scripts-custom/)
+- **check:token-syntax**: quick validation of token reference syntax and common issues (scripts-custom/)
 
 ## Custom Scripts
 
 The `scripts-custom/` folder contains reusable design system maintenance and validation scripts useful for the entire team:
 
-- **Validation**: `find-plural-references.py`, `quick-check.py`, `validate-token-consumption.py`
-- **Analysis**: `analyze-emphasis-structure.js`, `debug-tokens.js`, `trace-button-tokens.js`  
-- **Maintenance**: `kill-vampires.js`, `auto-cleanup-empty-files.sh`, `reorder-themes.js`
+- **Validation**: `find-plural-references.py`, `quick-validate-token-syntax.py`, `validate-consumption-hierarchy.py`
+- **Analysis**: `analyze-emphasis-structure.js`, `inspect-token-structure.js`, `detect-circular-token-references.js`  
+- **Maintenance**: `remove-obsolete-files.js`, `remove-empty-files.sh`
 
 See [scripts-custom/README.md](./scripts-custom/README.md) for detailed documentation and usage instructions.
 
