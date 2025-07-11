@@ -94,7 +94,7 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: config.hasLanguageInUrl || false},
 		Object.entries(materialProviders).map(([provider, token]) => ({
 			provide: token.provide,
-			useValue: config.material?.[provider] ?? token.useValue
+			useValue: {...token.useValue, ...config.material?.[provider]}
 		}))
 	]);
 }
