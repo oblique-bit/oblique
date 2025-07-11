@@ -172,7 +172,6 @@ describe('ObServiceNavigationService', () => {
 					'getLoginUrl$',
 					'getUserName$',
 					'getProfileUrls$',
-					'getAvatarUrl$',
 					'getInboxMailUrl$',
 					'getMessageCount$',
 					'getApplicationsUrl$',
@@ -292,7 +291,6 @@ describe('ObServiceNavigationService', () => {
 							'getLoginState$',
 							'getUserName$',
 							'getProfileUrls$',
-							'getAvatarUrl$',
 							'getInboxMailUrl$',
 							'getMessageCount$',
 							'getApplicationsUrl$',
@@ -418,19 +416,6 @@ describe('ObServiceNavigationService', () => {
 									const urls = await profileUrls;
 									expect(urls).toHaveLength(0);
 								});
-							});
-						});
-
-						describe('getAvatarUrl$', () => {
-							it.each([
-								{avatarId: 1, url: ''},
-								{avatarId: 2, url: `https://eportal${environment}.admin.ch/assets/avatars/avatar_2.svg`},
-								{avatarId: 13, url: `https://eportal${environment}.admin.ch/assets/avatars/avatar_13.svg`},
-								{avatarId: 14, url: ''}
-							])('should emit "$url" with "$avatarId" as "avatarId"', async ({avatarId, url}) => {
-								const promise = firstValueFrom(service.getAvatarUrl$());
-								mockStateChange.next({profile: {avatarID: avatarId}} as ObIServiceNavigationState);
-								await expect(promise).resolves.toBe(url);
 							});
 						});
 
