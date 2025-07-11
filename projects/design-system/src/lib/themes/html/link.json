@@ -41,27 +41,27 @@
         "color": {
           "link": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.state.fg.enabled.inversity-normal}",
+            "$value": "{ob.s.color.l3.interaction.state.fg.enabled.inversity-normal}",
             "$description": "Default color of unvisited links."
           },
           "visited": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.state.fg.visited.inversity-normal}",
+            "$value": "{ob.s.color.l3.interaction.state.fg.visited.inversity-normal}",
             "$description": "Color of links the user has already visited."
           },
           "hover": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.state.fg.hover.inversity-normal}",
+            "$value": "{ob.s.color.l3.interaction.state.fg.hover.inversity-normal}",
             "$description": "Color of link when hovered with the mouse."
           },
           "active": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.state.fg.pressed.inversity-normal}",
+            "$value": "{ob.s.color.l3.interaction.state.fg.pressed.inversity-normal}",
             "$description": "Color of link during click interaction."
           },
           "disabled": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.state.fg.disabled.inversity-normal}",
+            "$value": "{ob.s.color.l3.interaction.state.fg.disabled.inversity-normal}",
             "$description": "Color of a visually disabled, non-clickable link."
           }
         },
