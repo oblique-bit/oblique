@@ -38,6 +38,7 @@ export interface ObIObliqueConfiguration {
 		config?: TranslateModuleConfig;
 		additionalFiles?: ObITranslationFile[];
 	};
+	hasLanguageInUrl?: boolean;
 }
 
 export type NonEmptyArray<Type> = [Type, ...Type[]];

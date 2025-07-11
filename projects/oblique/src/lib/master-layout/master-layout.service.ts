@@ -1,5 +1,5 @@
 import {Injectable, inject} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Route, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap} from 'rxjs/operators';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {getRootRoute} from '../utilities';
@@ -7,9 +7,7 @@ import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-
 import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation/master-layout-navigation.service';
 import {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
-import {ObLanguageService} from '../language/language.service';
 import {ObMasterLayoutConfig} from './master-layout.config';
-import {AccessibilityStatementComponent} from '../accessibility-statement/accessibility-statement.component';
 
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutService {
@@ -24,11 +22,7 @@ export class ObMasterLayoutService {
 	private homePageRouteInternal = this.config.homePageRoute;
 	private readonly homePageRouteChange = new BehaviorSubject<string>(this.config.homePageRoute);
 
-	constructor(
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		language: ObLanguageService // ObLanguageService needs to be there to be instantiated
-	) {
-		this.router.config.unshift(this.buildAccessibilityRoute());
+	constructor() {
 		this.routeChange();
 		this.homePageRouteChange$ = this.homePageRouteChange.asObservable();
 	}
@@ -59,16 +53,5 @@ export class ObMasterLayoutService {
 					}
 				});
 			});
-	}
-
-	private buildAccessibilityRoute(): Route {
-		const route: Route = {
-			path: 'accessibility-statement',
-			component: AccessibilityStatementComponent
-		};
-		if (this.config.showAccessibilityTitle) {
-			route.data = {title: 'i18n.oblique.accessibility-statement.statement.title'};
-		}
-		return route;
 	}
 }

@@ -5,10 +5,11 @@ import {Subject} from 'rxjs';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMasterLayoutFooterComponent} from './master-layout-footer.component';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
-import {WINDOW} from '../../utilities';
+import {OB_HAS_LANGUAGE_IN_URL, WINDOW} from '../../utilities';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
+import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 
 describe('ObMasterLayoutFooterComponent', () => {
 	let component: ObMasterLayoutFooterComponent;
@@ -19,12 +20,13 @@ describe('ObMasterLayoutFooterComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, RouterTestingModule],
+			imports: [ObMockTranslatePipe, RouterTestingModule, ObLocalizePipe],
 			declarations: [ObMasterLayoutFooterComponent],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
-				{provide: ObMasterLayoutConfig, useValue: {homePageRoute: 'home', footer: {isCustom: false}}},
+				{provide: ObMasterLayoutConfig, useValue: {homePageRoute: 'home', footer: {isCustom: false}, locale: {locales: ['en']}}},
+				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: true},
 				{provide: WINDOW, useValue: window}
 			]
 		}).compileComponents();

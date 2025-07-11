@@ -26,6 +26,7 @@ import {MatStepperIntl} from '@angular/material/stepper';
 import {ObStepperIntlService} from './stepper/ob-stepper.service';
 import {MatDatepickerIntl} from '@angular/material/datepicker';
 import {ObDatepickerIntlService} from './datepicker/ob-datepicker.service';
+import {ObRouterService} from '../lib/router/ob-router.service';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
@@ -35,6 +36,7 @@ export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
 export const OB_ACCESSIBILITY_STATEMENT_CONFIGURATION = new InjectionToken<ObIAccessibilityStatementConfiguration>(
 	'AccessibilityStatementConfiguration'
 );
+export const OB_HAS_LANGUAGE_IN_URL = new InjectionToken<boolean>('Add current language in URL');
 
 export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);
@@ -150,7 +152,10 @@ const materialProviders = [
 
 export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
-		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
+		provideAppInitializer(() => {
+			inject(ObIconService).registerOnAppInit();
+			inject(ObRouterService).initialize();
+		}),
 		provideTranslateService(multiTranslateLoader(config.translate?.config)),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
 		{provide: OB_FLATTEN_TRANSLATION_FILES, useValue: config.translate?.flatten ?? true},
@@ -161,6 +166,7 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 		{provide: ObTIconConfig, useValue: {...defaultIconConfig, ...config.icon}},
 		{provide: OB_MATERIAL_CONFIG_2, useValue: config.material},
 		{provide: OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, useValue: config.accessibilityStatement},
+		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: config.hasLanguageInUrl || false},
 		materialProviders
 	]);
 }

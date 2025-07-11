@@ -2,8 +2,8 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ObAvailableInComponent} from './available-in.component';
 import {provideObliqueConfiguration} from '../../utilities';
 import {provideHttpClient} from '@angular/common/http';
-import {TranslateService} from '@ngx-translate/core';
-import {firstValueFrom} from 'rxjs';
+import {TranslateLoader, TranslateService} from '@ngx-translate/core';
+import {firstValueFrom, of} from 'rxjs';
 
 describe(ObAvailableInComponent.name, () => {
 	let component: ObAvailableInComponent;
@@ -22,10 +22,12 @@ describe(ObAvailableInComponent.name, () => {
 						applicationOperator: '',
 						contact: undefined
 					}
-				})
+				}),
+				{provide: TranslateLoader, useValue: {getTranslation: () => of({})}}
 			]
 		}).compileComponents();
 
+		TestBed.inject(TranslateService).use('anything'); // this triggers loading of translations
 		fixture = TestBed.createComponent(ObAvailableInComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();

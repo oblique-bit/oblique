@@ -7,11 +7,11 @@
 		<div class="ob-master-layout-header-title">
 			<div class="ob-master-layout-brand">
 				<aside *ngIf="banner.text" [style.color]="banner.color" [style.backgroundColor]="banner.bgColor">{{ banner.text }}</aside>
-				<a class="ob-master-layout-logo" [routerLink]="home$ | async" tabindex="-1">
+				<a class="ob-master-layout-logo" [routerLink]="home$ | async | obLocalize" tabindex="-1">
 					<ng-container [ngTemplateOutlet]="obLogo" />
 				</a>
 				<span class="ob-master-layout-brand-app-title">
-					<a [routerLink]="home$ | async" class="ob-master-layout-brand-link"><ng-content select="[obHeaderTitle]" /></a>
+					<a [routerLink]="home$ | async | obLocalize" class="ob-master-layout-brand-link"><ng-content select="[obHeaderTitle]" /></a>
 				</span>
 			</div>
 			<ul class="ob-collapsed-layout">

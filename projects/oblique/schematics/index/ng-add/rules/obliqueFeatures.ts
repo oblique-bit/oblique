@@ -30,7 +30,7 @@ export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 			addBanner(options.banner, options.environments),
 			addDefaultHomeComponent(options.prefix),
 			addExternalLink(options.externalLink),
-			addAccessibilityStatementConfiguration(options.title, options.applicationOperator, options.contact)
+			setObliqueConfiguration(options.title, options.applicationOperator, options.contact, options.hasLanguageInUrl)
 		])(tree, context);
 	};
 }
@@ -224,17 +224,18 @@ function isEmpty(array?: string[]): boolean {
 	return !array || array.length === 0;
 }
 
-function addAccessibilityStatementConfiguration(title: string, applicationOperator: string, contact: string): Rule {
+function setObliqueConfiguration(applicationTitle: string, applicationOperator: string, contact: string, hasLanguageInUrl: boolean): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique feature: Adding accessibility statement configuration');
 		const {emails, phones} = parseContact(contact);
 		validateContact(emails, phones);
 
 		const content = readFile(tree, appModulePath);
-		const accessibilityConfig = buildAccessibilityConfig(title, applicationOperator, emails, phones);
-		const updated = content.replace(/(?<=provideObliqueConfiguration\()(?=\))/, accessibilityConfig);
+		const accessibilityConfig = buildAccessibilityConfig(applicationTitle, applicationOperator, emails, phones);
+		const hasLanguageInUrlConfig = buildHasLanguageInUrlConfig(hasLanguageInUrl);
 
-		writeFile(tree, appModulePath, updated);
+		const newContent = content.replace(/(?<=provideObliqueConfiguration\()(?=\))/, `{${accessibilityConfig}, ${hasLanguageInUrlConfig}}`);
+		writeFile(tree, appModulePath, newContent);
 		return tree;
 	});
 }
@@ -249,15 +250,17 @@ function buildAccessibilityConfig(title: string, applicationOperator: string, em
 
 	const createdOn = new Date().toISOString().split('T')[0];
 
-	return `{
-		accessibilityStatement: {
+	return `accessibilityStatement: {
 			applicationName: '${title}',
 			conformity: 'none',
 			createdOn: new Date('${createdOn}'),
 			applicationOperator: '${applicationOperator}',
 			${contactFields ? `contact: { \n${contactFields} \n}` : ''}
-		}
-	}`;
+		}`;
+}
+
+function buildHasLanguageInUrlConfig(hasLanguageInUrl: boolean): string {
+	return `hasLanguageInUrl: ${hasLanguageInUrl}`;
 }
 
 function formatArray(arr: string[]): string {
