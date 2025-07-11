@@ -9,7 +9,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(options: IUpdateV14Schema): Rule {
-		return (tree: Tree, context: SchematicContext) => chain([this.renameIcons(), warnIfStandalone()])(tree, context);
+		return (tree: Tree, context: SchematicContext) => chain([warnIfStandalone(), this.renameIcons()])(tree, context);
 	}
 
 	private renameIcons(): Rule {
