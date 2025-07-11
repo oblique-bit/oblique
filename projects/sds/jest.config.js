@@ -193,12 +193,6 @@ module.exports = {
 			functions: 75,
 			lines: 89
 		},
-		'projects/sds/src/app/shared/slug': {
-			statements: 92,
-			branches: 90,
-			functions: 100,
-			lines: 91
-		},
 		'projects/sds/src/app/shared/tabs': {
 			statements: 73,
 			branches: 0,
