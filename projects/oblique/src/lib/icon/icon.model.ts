@@ -1,10 +1,3 @@
-import {InjectionToken} from '@angular/core';
-
-/**
- * @deprecated with Oblique 13.0.0, use the `iconConfig` parameter of the `obProvideObliqueProviders` function instead
- */
-export const ObTIconConfig = new InjectionToken<ObIconConfig>('Oblique icon configuration');
-
 export interface ObIconConfig {
 	registerObliqueIcons?: boolean;
 	additionalIcons?: string[];

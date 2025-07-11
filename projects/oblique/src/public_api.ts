@@ -65,7 +65,7 @@ export {
 	ObHttpApiInterceptorModule,
 	ObIHttpApiRequest
 } from './lib/http-api-interceptor/http-api-interceptor.module';
-export {ObTIconConfig, ObIconModule, ObIconService, ObIconConfig, ObEIcon} from './lib/icon/icon.module';
+export {ObIconModule, ObIconService, ObIconConfig, ObEIcon} from './lib/icon/icon.module';
 export {ObLanguageModule, ObDatePipe, ObDateComponent, ObEDateFormats} from './lib/language/language.module';
 export {
 	ObMasterLayoutComponent,

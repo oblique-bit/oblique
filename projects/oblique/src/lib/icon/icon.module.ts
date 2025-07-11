@@ -3,7 +3,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {CommonModule} from '@angular/common';
 
 export {ObIconService} from './icon.service';
-export {ObIconConfig, ObTIconConfig, ObEIcon} from './icon.model';
+export {ObIconConfig, ObEIcon} from './icon.model';
 
 @NgModule({
 	imports: [CommonModule, MatIconModule]
