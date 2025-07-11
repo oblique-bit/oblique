@@ -7,76 +7,104 @@
             "state": {
               "fg": {
                 "enabled": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.l2.neutral.fg.contrast-highest.inversity-normal}",
-                  "$description": "References the neutral semantic color to ensure the color consistency."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l2.neutral.fg.contrast-highest.inversity-normal}",
+                    "$description": "References the neutral semantic color to ensure the color consistency."
+                  }
                 },
                 "hover": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.l2.interaction.emphasis-high.fg-base.contrast-medium.inversity-normal}",
-                  "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-high.fg-base.contrast-medium.inversity-normal}",
+                    "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
+                  }
                 },
                 "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.l2.neutral.fg.contrast-high.inversity-normal}",
-                  "$description": "References the neutral semantic color to ensure the color consistency."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l2.neutral.fg.contrast-high.inversity-normal}",
+                    "$description": "References the neutral semantic color to ensure the color consistency."
+                  }
                 },
                 "pressed": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.l2.neutral.fg.contrast-high.inversity-normal}",
-                  "$description": "References the neutral semantic color to ensure the color consistency."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l2.neutral.fg.contrast-high.inversity-normal}",
+                    "$description": "References the neutral semantic color to ensure the color consistency."
+                  }
                 },
                 "selected": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.l2.neutral.fg.contrast-high.inversity-normal}",
-                  "$description": "References the neutral semantic color to ensure the color consistency."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l2.neutral.fg.contrast-high.inversity-normal}",
+                    "$description": "References the neutral semantic color to ensure the color consistency."
+                  }
                 },
                 "visited": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.l2.neutral.fg.contrast-highest.inversity-normal}",
-                  "$description": "For text-links.References the neutral semantic color to ensure the color consistency."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l2.neutral.fg.contrast-highest.inversity-normal}",
+                    "$description": "For text-links.References the neutral semantic color to ensure the color consistency."
+                  }
                 },
                 "disabled": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.l2.interaction.emphasis-high.fg-disabled.contrast-low.inversity-normal}",
-                  "$description": "Used in text-links, secondary and tertiary buttons."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-high.fg-disabled.contrast-low.inversity-normal}",
+                    "$description": "Used in text-links, secondary and tertiary buttons."
+                  }
                 }
               },
               "bg": {
                 "enabled": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-low.inversity-normal}",
-                  "$description": "Background for primary buttons."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-low.inversity-normal}",
+                    "$description": "Background for primary buttons."
+                  }
                 },
                 "hover": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-medium.inversity-normal}",
-                  "$description": "Background for primary buttons."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-medium.inversity-normal}",
+                    "$description": "Background for primary buttons."
+                  }
                 },
                 "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-medium.inversity-normal}",
-                  "$description": "Background for primary buttons."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-medium.inversity-normal}",
+                    "$description": "Background for primary buttons."
+                  }
                 },
                 "pressed": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-high.inversity-normal}",
-                  "$description": "Background for primary buttons."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-high.inversity-normal}",
+                    "$description": "Background for primary buttons."
+                  }
                 },
                 "selected": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-low.inversity-normal}",
-                  "$description": "For navigation."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-low.inversity-normal}",
+                    "$description": "For navigation."
+                  }
                 },
                 "visited": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.static.no-color}",
-                  "$description": "No use. For consistency only. Text-links need no bg color."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.static.no-color}",
+                    "$description": "No use. For consistency only. Text-links need no bg color."
+                  }
                 },
                 "disabled": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-disabled.opacity.inversity-normal}",
-                  "$description": "Used for fill in primary buttons."
+                  "inversity-normal": {
+                    "$type": "color",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-disabled.opacity.inversity-normal}",
+                    "$description": "Used for fill in primary buttons."
+                  }
                 }
               }
             }
