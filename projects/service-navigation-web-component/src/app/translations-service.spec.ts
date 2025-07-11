@@ -1,9 +1,9 @@
 import {TestBed} from '@angular/core/testing';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
-import {multiTranslateLoader} from '../../../oblique/src/lib/utilities';
+import {TranslateService} from '@ngx-translate/core';
 import {TranslationsService} from './translations-service';
 import {HttpClient} from '@angular/common/http';
 import {of} from 'rxjs';
+import {provideObliqueTranslations} from '@oblique/oblique';
 
 describe(TranslationsService.name, () => {
 	let service: TranslationsService;
@@ -11,8 +11,7 @@ describe(TranslationsService.name, () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [TranslateModule.forRoot(multiTranslateLoader())],
-			providers: [TranslationsService, {provide: HttpClient, useValue: {get: jest.fn(() => of({}))}}]
+			providers: [TranslationsService, provideObliqueTranslations(), {provide: HttpClient, useValue: {get: jest.fn(() => of({}))}}]
 		}).compileComponents();
 
 		service = TestBed.inject(TranslationsService);
