@@ -1,7 +1,7 @@
 {
   "ob": {
     "p": {
-      "colors": {
+      "color": {
         "red": {
           "50": {
             "parent": "Colors/Mode 1",
@@ -649,7 +649,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.cobalt.900}"
+            "$value": "{ob.p.color.cobalt.900}"
           },
           "100": {
             "parent": "Colors/Mode 1",
@@ -663,7 +663,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.cobalt.900}"
+            "$value": "{ob.p.color.cobalt.900}"
           },
           "200": {
             "parent": "Colors/Mode 1",
@@ -677,7 +677,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.cobalt.900}"
+            "$value": "{ob.p.color.cobalt.900}"
           },
           "300": {
             "parent": "Colors/Mode 1",
@@ -691,7 +691,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.cobalt.900}"
+            "$value": "{ob.p.color.cobalt.900}"
           },
           "400": {
             "parent": "Colors/Mode 1",
@@ -705,7 +705,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.cobalt.900}"
+            "$value": "{ob.p.color.cobalt.900}"
           },
           "500": {
             "parent": "Colors/Mode 1",
@@ -719,7 +719,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.cobalt.900}"
+            "$value": "{ob.p.color.cobalt.900}"
           },
           "600": {
             "parent": "Colors/Mode 1",
@@ -733,7 +733,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.cobalt.900}"
+            "$value": "{ob.p.color.cobalt.900}"
           },
           "700": {
             "parent": "Colors/Mode 1",
@@ -747,7 +747,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.cobalt.900}"
+            "$value": "{ob.p.color.cobalt.900}"
           },
           "800": {
             "parent": "Colors/Mode 1",
@@ -761,7 +761,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.cobalt.900}"
+            "$value": "{ob.p.color.cobalt.900}"
           },
           "900": {
             "parent": "Colors/Mode 1",
@@ -775,7 +775,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.cobalt.900}"
+            "$value": "{ob.p.color.cobalt.900}"
           }
         },
         "white-alpha": {
@@ -791,7 +791,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.basic.white}"
+            "$value": "{ob.p.color.basic.white}"
           },
           "100": {
             "parent": "Colors/Mode 1",
@@ -805,7 +805,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.basic.white}"
+            "$value": "{ob.p.color.basic.white}"
           },
           "200": {
             "parent": "Colors/Mode 1",
@@ -819,7 +819,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.basic.white}"
+            "$value": "{ob.p.color.basic.white}"
           },
           "300": {
             "parent": "Colors/Mode 1",
@@ -833,7 +833,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.basic.white}"
+            "$value": "{ob.p.color.basic.white}"
           },
           "400": {
             "parent": "Colors/Mode 1",
@@ -847,7 +847,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.basic.white}"
+            "$value": "{ob.p.color.basic.white}"
           },
           "500": {
             "parent": "Colors/Mode 1",
@@ -861,7 +861,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.basic.white}"
+            "$value": "{ob.p.color.basic.white}"
           },
           "600": {
             "parent": "Colors/Mode 1",
@@ -875,7 +875,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.basic.white}"
+            "$value": "{ob.p.color.basic.white}"
           },
           "700": {
             "parent": "Colors/Mode 1",
@@ -889,7 +889,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.basic.white}"
+            "$value": "{ob.p.color.basic.white}"
           },
           "800": {
             "parent": "Colors/Mode 1",
@@ -903,7 +903,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.basic.white}"
+            "$value": "{ob.p.color.basic.white}"
           },
           "900": {
             "parent": "Colors/Mode 1",
@@ -917,7 +917,7 @@
               }
             },
             "$type": "color",
-            "$value": "{ob.p.colors.basic.white}"
+            "$value": "{ob.p.color.basic.white}"
           }
         },
         "indigo-alpha": {

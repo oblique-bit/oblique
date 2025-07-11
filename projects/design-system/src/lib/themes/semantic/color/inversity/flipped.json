@@ -1348,12 +1348,12 @@
               "focus": {
                 "inversity-flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.purple.500}",
+                  "$value": "{ob.p.color.purple.500}",
                   "$description": "Used for text-links as a border color of the focus state."
                 },
                 "inversity-normal": {
                   "$type": "color",
-                  "$value": "{ob.p.colors.purple.500}",
+                  "$value": "{ob.p.color.purple.500}",
                   "$description": "Used for text-links as a border color of the focus state."
                 }
               }

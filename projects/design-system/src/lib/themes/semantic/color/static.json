@@ -5,12 +5,12 @@
         "static": {
           "brand": {
             "$type": "color",
-            "$value": "{ob.p.colors.basic.bundesrot}",
+            "$value": "{ob.p.color.basic.bundesrot}",
             "$description": "Static color to be used in the brand relevant UI elements."
           },
           "no-color": {
             "$type": "color",
-            "$value": "{ob.p.colors.basic.transparent}",
+            "$value": "{ob.p.color.basic.transparent}",
             "$description": "Static value when no color respectively 0% opacity is needed. References primitive transparent token."
           }
         },
