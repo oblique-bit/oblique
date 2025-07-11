@@ -146,6 +146,7 @@ export {
 	OB_PAMS_CONFIGURATION,
 	getTranslateLoader,
 	provideObliqueConfiguration,
+	provideObliqueTranslations,
 	multiTranslateLoader,
 	obFocusWithOutline,
 	WINDOW

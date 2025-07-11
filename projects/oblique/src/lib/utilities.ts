@@ -17,7 +17,11 @@ import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {ObIAccessibilityStatementConfiguration, ObIBanner, ObIObliqueConfiguration, ObIPamsConfiguration} from './utilities.model';
+import {ObIAccessibilityStatementConfiguration, ObIBanner,
+	ObIObliqueConfiguration,
+	ObIPamsConfiguration,
+	ObITranslateConfig
+} from './utilities.model';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
@@ -89,10 +93,8 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 			inject(ObIconService).registerOnAppInit();
 			inject(ObRouterService).initialize();
 		}),
-		provideTranslateService(multiTranslateLoader(config.translate?.config)),
+		provideObliqueTranslations(config.translate),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
-		{provide: OB_FLATTEN_TRANSLATION_FILES, useValue: config.translate?.flatten ?? true},
-		{provide: TRANSLATION_FILES, useValue: config.translate?.additionalFiles},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
@@ -103,6 +105,22 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 			provide: token.provide,
 			useValue: {...token.useValue, ...config.material?.[provider]}
 		}))
+	]);
+}
+
+export function provideObliqueTranslations(configuration: ObITranslateConfig = {}): EnvironmentProviders {
+	const {config, flatten, additionalFiles} = configuration;
+	return makeEnvironmentProviders([
+		provideTranslateService({
+			...config,
+			loader: {
+				provide: TranslateLoader,
+				useFactory: getTranslateLoader,
+				deps: [HttpClient, [new Optional(), TRANSLATION_FILES], [new Optional(), OB_FLATTEN_TRANSLATION_FILES]]
+			}
+		}),
+		{provide: OB_FLATTEN_TRANSLATION_FILES, useValue: flatten ?? true},
+		{provide: TRANSLATION_FILES, useValue: additionalFiles}
 	]);
 }
 

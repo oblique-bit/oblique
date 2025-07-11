@@ -8,7 +8,7 @@ import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {MatPaginatorIntl} from '@angular/material/paginator';
-import {TranslateCompiler, TranslateFakeCompiler, TranslateLoader, TranslateService} from '@ngx-translate/core';
+import {TranslateCompiler, TranslateFakeCompiler, TranslateFakeLoader, TranslateLoader, TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 import {OB_FLATTEN_TRANSLATION_FILES, ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {
@@ -21,6 +21,7 @@ import {
 	multiTranslateLoader,
 	obFocusWithOutline,
 	provideObliqueConfiguration,
+	provideObliqueTranslations,
 	windowProvider
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
@@ -332,6 +333,92 @@ describe('utilities', () => {
 
 			it('should create WINDOW injection token', () => {
 				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			it('should provide "TRANSLATION_FILES"', () => {
+				expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
+			});
+
+			it('should provide "OB_FLATTEN_TRANSLATION_FILES"', () => {
+				expect(TestBed.inject(OB_FLATTEN_TRANSLATION_FILES)).toEqual(true);
+			});
+		});
+	});
+
+	describe('provideObliqueTranslations', () => {
+		describe('with default configuration', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [provideHttpClient(), provideObliqueTranslations()]
+				});
+			});
+
+			it('should provide "TranslateService"', () => {
+				expect(TestBed.inject(TranslateService)).toBeTruthy();
+			});
+
+			it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+				expect(TestBed.inject(TranslateService).currentLoader instanceof ObMultiTranslateLoader).toBe(true);
+			});
+
+			it('should provide "TRANSLATION_FILES"', () => {
+				expect(TestBed.inject(TRANSLATION_FILES)).toBeUndefined();
+			});
+
+			it('should provide "OB_FLATTEN_TRANSLATION_FILES"', () => {
+				expect(TestBed.inject(OB_FLATTEN_TRANSLATION_FILES)).toBe(true);
+			});
+
+			describe('loader', () => {
+				it('should be an instance of ObMultiTranslateLoader', () => {
+					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
+				});
+			});
+		});
+
+		describe('with custom configuration', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
+						provideHttpClient(),
+						provideObliqueTranslations({
+							flatten: false,
+							config: {loader: TranslateFakeLoader},
+							additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}]
+						})
+					]
+				});
+			});
+
+			it('should provide "TRANSLATION_FILES"', () => {
+				expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
+			});
+
+			it('should provide "OB_FLATTEN_TRANSLATION_FILES"', () => {
+				expect(TestBed.inject(OB_FLATTEN_TRANSLATION_FILES)).toEqual(false);
+			});
+
+			it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+				expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
+			});
+
+			describe('loader', () => {
+				it('should be an instance of ObMultiTranslateLoader', () => {
+					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
+				});
+			});
+		});
+
+		describe('with token configuration for Translate', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						provideObliqueTranslations(),
+						{provide: TRANSLATION_FILES, useValue: [{prefix: 'prefix', suffix: 'suffix'}]},
+						{provide: OB_FLATTEN_TRANSLATION_FILES, useValue: true}
+					]
+				});
 			});
 
 			it('should provide "TRANSLATION_FILES"', () => {
