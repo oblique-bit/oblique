@@ -12,7 +12,7 @@ createApplication({
 	providers: [
 		provideHttpClient(),
 		provideAnimations(),
-		provideAppInitializer(() => inject(ObIconService).registerOnAppInit({registerObliqueIcons: true})),
+		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
 		provideObliqueTranslations(),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
