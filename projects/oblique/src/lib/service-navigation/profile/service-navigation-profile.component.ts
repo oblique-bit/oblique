@@ -12,6 +12,5 @@ import {ObISectionLink, ObIServiceNavigationLink} from '../service-navigation.mo
 export class ObServiceNavigationProfileComponent {
 	@Input() userName = '';
 	@Input() profileUrls: ObISectionLink[] = [];
-	@Input() avatarImageUrl = '';
 	@Input() links: ObIServiceNavigationLink[] = [];
 }

@@ -19,7 +19,6 @@ export class ObServiceNavigationService {
 		en: 'English'
 	};
 	private readonly rootUrl$ = new ReplaySubject<string>(1);
-	private readonly avatarRootUrl$ = new ReplaySubject<string>(1);
 	private readonly returnUrl$ = new ReplaySubject<string>(1);
 	private readonly pamsAppId$ = new ReplaySubject<string>(1);
 	private readonly config$ = this.rootUrl$.pipe(
@@ -46,9 +45,7 @@ export class ObServiceNavigationService {
 		if (environment !== null && environment !== undefined) {
 			this.timeoutService.initialize(environment);
 			this.rootUrl$.next(rootUrl ?? `https://pams-api.eportal${environment}.admin.ch/`);
-			this.avatarRootUrl$.next(`https://eportal${environment}.admin.ch/assets/avatars/avatar_`);
 			this.rootUrl$.complete();
-			this.avatarRootUrl$.complete();
 		}
 	}
 
@@ -110,16 +107,6 @@ export class ObServiceNavigationService {
 					}
 				];
 			})
-		);
-	}
-
-	getAvatarUrl$(): Observable<string> {
-		return this.getState$().pipe(
-			map(state => state.profile?.avatarID),
-			map(imageId => (imageId > 1 && imageId < 14 ? imageId.toString() : '')),
-			combineLatestWith(this.avatarRootUrl$),
-			map(([imageId, avatarRootUrl]) => (imageId ? `${avatarRootUrl + imageId}.svg` : imageId)),
-			distinctUntilChanged((previousState, newState) => previousState === newState)
 		);
 	}
 

@@ -1,38 +1,16 @@
 <button
-	*ngIf="avatarImageUrl; else buttonWithImage"
 	[matTooltip]="'i18n.oblique.service-navigation.profile.button' | translate"
 	[obPopover]="popoverProfile"
+	mat-icon-button
+	obButton="secondary"
 	placement="bottom"
-	class="ob-widget ob-image-button"
-	id="service-navigation-toggle-profile-image-button"
+	id="service-navigation-toggle-profile-icon-button"
+	class="ob-widget ob-user"
 	type="button"
 >
-	<img
-		[alt]="'i18n.oblique.service-navigation.profile.alt' | translate"
-		[ngSrc]="avatarImageUrl"
-		aria-hidden="true"
-		height="51"
-		width="51"
-		class="ob-profile-avatar"
-	/>
+	<mat-icon svgIcon="user" />
 	<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.profile.button" | translate }}</span>
 </button>
-
-<ng-template #buttonWithImage>
-	<button
-		[matTooltip]="'i18n.oblique.service-navigation.profile.button' | translate"
-		[obPopover]="popoverProfile"
-		mat-icon-button
-		obButton="secondary"
-		placement="bottom"
-		id="service-navigation-toggle-profile-icon-button"
-		class="ob-widget ob-user"
-		type="button"
-	>
-		<mat-icon svgIcon="user" />
-		<span class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.profile.button" | translate }}</span>
-	</button>
-</ng-template>
 
 <ng-template #popoverProfile>
 	<div id="ob-service-navigation-profile-popover-content" cdkTrapFocus cdkTrapFocusAutoCapture>
@@ -40,18 +18,7 @@
 		<ob-service-navigation-popover-section
 			[header]="userName || 'i18n.oblique.service-navigation.profile.guest' | translate"
 			[links]="profileUrls"
-		>
-			<img
-				*ngIf="avatarImageUrl"
-				obHeaderPrefix
-				class="ob-avatar"
-				aria-hidden="true"
-				[alt]="'i18n.oblique.service-navigation.profile.alt' | translate"
-				[ngSrc]="avatarImageUrl"
-				height="32"
-				width="32"
-			/>
-		</ob-service-navigation-popover-section>
+		/>
 		<ob-service-navigation-popover-section
 			*ngIf="links?.length > 0"
 			header="i18n.oblique.service-navigation.profile.links.header"
