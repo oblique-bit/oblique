@@ -1,6 +1,6 @@
 # Token Consumption Guidelines
 
-This document defines comprehensive rules for token consumption across all token types in the Oblique Design System. Following these guidelines ensures proper token architecture, theming capabilities, and semantic consistency.
+This document defines rules for token consumption across all token types in the Oblique Design System. Following these guidelines ensures proper token architecture, theming capabilities, and semantic consistency.
 
 ---
 
@@ -440,4 +440,4 @@ Keep this document updated when:
 
 ---
 
-*Last updated: July 11, 2025 - Initial creation of comprehensive token consumption guidelines*
+*Last updated: July 11, 2025 - Initial creation of token consumption guidelines*

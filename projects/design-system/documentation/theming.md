@@ -85,14 +85,20 @@ src/lib/themes/semantics/colors/lightness/
     "s": {
       "color": {
         "neutral": {
-          "bg": {        "contrast-highest-default": "{ob.p.color.basic.white}",
-        "contrast-highest-inverse": "{ob.p.color.cobalt.700}"
+          "bg": {
+            "contrast-highest": {
+              "inversity-normal": "{ob.p.color.basic.white}",
+              "inversity-flipped": "{ob.p.color.cobalt.700}"
+            }
           }
         },
         "interaction": {
-          "emphasis-default": {
-            "bg-base": {        "contrast-high-default": "{ob.p.color.steelblue.800}",
-        "contrast-high-inverse": "{ob.p.color.basic.white}"
+          "emphasis-high": {
+            "bg-base": {
+              "contrast-high": {
+                "inversity-normal": "{ob.p.color.steelblue.800}",
+                "inversity-flipped": "{ob.p.color.basic.white}"
+              }
             }
           }
         }
@@ -124,7 +130,7 @@ src/lib/themes/semantics/colors/inversity/
       "color": {
         "neutral": {
           "bg": {
-            "contrast-highest": "{ob.s.color.neutral.bg.contrast-highest-default}"
+            "contrast-highest": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}"
           }
         }
       }
@@ -158,8 +164,14 @@ src/lib/themes/semantics/colors/emphasis/
         "interaction": {
           "state": {
             "fg": {
-              "enabled-default": "{ob.s.color.status.fatal.fg.contrast-low}",
-              "hover-default": "{ob.s.color.status.fatal.fg.contrast-medium}"
+              "enabled": {
+                "inversity-normal": "{ob.s.color.status.fatal.fg.contrast-low}",
+                "inversity-flipped": "{ob.s.color.status.fatal.fg.contrast-low}"
+              },
+              "hover": {
+                "inversity-normal": "{ob.s.color.status.fatal.fg.contrast-medium}",
+                "inversity-flipped": "{ob.s.color.status.fatal.fg.contrast-medium}"
+              }
             }
           }
         }
@@ -188,7 +200,7 @@ src/lib/themes/html/button/color-static.json
         "color": {
           "bg": {
             "primary": {
-              "enabled": "{ob.s.color.interaction.state.bg.enabled-inverse}"
+              "enabled": "{ob.s.color.interaction.state.bg.enabled.inversity-flipped}"
             }
           }
         }

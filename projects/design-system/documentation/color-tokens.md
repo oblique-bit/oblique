@@ -1,6 +1,6 @@
 # Color Tokens Documentation
 
-This document provides comprehensive information about all color tokens in the Oblique Design System, with a focus on semantic colors including status colors.
+This document covers all color tokens in the Oblique Design System, with a focus on semantic colors including status colors.
 
 ---
 
@@ -11,10 +11,18 @@ This document provides comprehensive information about all color tokens in the O
 semantic.color.category.variation.property.contrast-level
 ```
 
-### Categories
+### Main Categories
 - **Neutral Colors** - Base colors for backgrounds, text, and borders
 - **Status Colors** - Communicating state and feedback
 - **Interaction Colors** - Interactive elements with emphasis levels (high/low) and states (hover, focus, active, disabled)
+
+### Theme Levels
+Inversity is a theme-level concept that applies across all semantic color categories. The compound inversity suffixes `inversity-normal` and `inversity-flipped` at the end of token names should not be confused with the semantic color themes stored under `src/lib/themes/semantic/color/l2-inversity/`, although they share the same concept and naming.
+
+Components can have baked-in inversity set via global tokens. For example, the `fatal` variant of the `infobox` component is set to flipped inversity:
+```
+ob.g.component-configuration.infobox.button.fatal.theme.inversity: {ob.g.theme-configuration.inversity.flipped}
+```
 
 
 ---
@@ -50,14 +58,14 @@ ob.s.color.status.{status-name}.{property}.{contrast-level}
 - `bg` - Background color
 
 #### Contrast Levels
-- `contrast-high` - Maximum contrast for critical information
-- `contrast-medium` - Standard contrast for regular content
-- `contrast-low` - Subtle contrast for secondary information
+- `contrast-high` - Maximum contrast 
+- `contrast-medium` - Standard contrast 
+- `contrast-low` - Subtle contrast 
 
 #### Theme Variations
-- `contrast-{level}-default` - Standard theme
-- `contrast-{level}-inverse` - Inverse theme
-- `contrast-{level}-inverse-alpha` - Inverse with transparency
+- `contrast-{level}.inversity-normal` - Standard theme
+- `contrast-{level}.inversity-flipped` - Inverse theme
+
 
 ### Examples
 ```json
@@ -84,7 +92,7 @@ ob.s.color.status.{status-name}.{property}.{contrast-level}
 Emphasis colors control visual hierarchy and content importance for interactive components such as buttons and links. They provide different levels of visual emphasis to guide user attention and establish clear interaction patterns.
 
 ### Emphasis Levels
-- `emphasis-medium` - Standard emphasis for primary interactive elements
+- `emphasis-high` - Default emphasis for primary interactive elements
 - `emphasis-low` - Reduced emphasis for secondary interactive elements
 
 ### Token Structure
@@ -95,20 +103,20 @@ ob.s.color.emphasis.{level}.{property}.{contrast-level}
 ### Primary Use Cases
 - **Buttons**: Different emphasis levels for primary, secondary, and tertiary button types
 - **Links**: Emphasis variations for different link importance and context
-- **Interactive Elements**: Call-to-action elements, navigation items, and actionable components
+- **Navigation tabs**: Navigation items in Header
 
 ### Implementation Notes
-Emphasis colors primarily reference `neutral` and `interaction` color tokens to ensure consistency with the overall color system while providing clear visual hierarchy for interactive elements.
+Emphasis colors primarily reference `neutral` and `interaction` color tokens from l2
 
 ---
 
 ## Neutral Colors
 
-Neutral colors provide the foundational color palette for backgrounds, text, borders, and surfaces throughout the design system. They ensure consistent visual hierarchy and readability across all components.
+Neutral colors provide the foundational color palette for backgrounds, text, borders, and surfaces throughout the design system. The live on different semantic levels l1 and l2 and always come in pair inversity-normal (default) and inversity-flipped (e.g. in Footer)
 
 ### Token Structure
 ```
-ob.s.color.neutral.{property}.{contrast-level}-{theme}
+ob.s.color.neutral.{property}.{contrast-level}-{invesity-variation}
 ```
 
 ### Properties
@@ -131,39 +139,65 @@ ob.s.color.neutral.{property}.{contrast-level}-{theme}
 - `contrast-low` - Subtle text color
 - `contrast-lowest` - Very subtle text for disabled states
 
-### Theme Variations
-- `-default` - Standard light theme
-- `-inverse` - Dark theme or inverted contexts
+### Inversity Variations
+- `inversity-normal` - Standard theme inheriting the host's theme
+- `inversity-flipped` - Flipped/inverted theme
+
+**Note**: These compound suffixes appear at the end of token names and represent theme-level variations. They are distinct from but related to the semantic color themes stored under `src/lib/themes/semantic/color/l2-inversity/`.
 
 ### Usage Examples
 ```json
 {
   "neutral": {
     "bg": {
-      "contrast-highest-default": "#ffffff",
-      "contrast-high-default": "#f1f5f9",
-      "contrast-medium-default": "#e2e8f0",
-      "contrast-low-default": "#cbd5e1"
+      "contrast-highest": {
+        "inversity-normal": "#ffffff",
+        "inversity-flipped": "#0f172a"
+      },
+      "contrast-high": {
+        "inversity-normal": "#f1f5f9",
+        "inversity-flipped": "#1e293b"
+      },
+      "contrast-medium": {
+        "inversity-normal": "#e2e8f0",
+        "inversity-flipped": "#475569"
+      },
+      "contrast-low": {
+        "inversity-normal": "#cbd5e1",
+        "inversity-flipped": "#64748b"
+      }
     },
     "fg": {
-      "contrast-highest-default": "#0f172a",
-      "contrast-high-default": "#1e293b",
-      "contrast-medium-default": "#475569",
-      "contrast-low-default": "#64748b"
+      "contrast-highest": {
+        "inversity-normal": "#0f172a",
+        "inversity-flipped": "#ffffff"
+      },
+      "contrast-high": {
+        "inversity-normal": "#1e293b",
+        "inversity-flipped": "#f1f5f9"
+      },
+      "contrast-medium": {
+        "inversity-normal": "#475569",
+        "inversity-flipped": "#e2e8f0"
+      },
+      "contrast-low": {
+        "inversity-normal": "#64748b",
+        "inversity-flipped": "#cbd5e1"
+      }
     }
   }
 }
 ```
 
 ### Use Cases
-- **Page backgrounds**: `contrast-highest-default`
-- **Card/panel backgrounds**: `contrast-high-default`
-- **Form field backgrounds**: `contrast-medium-default`
-- **Disabled backgrounds**: `contrast-lowest-default`
-- **Primary text**: `contrast-highest-default`
-- **Secondary text**: `contrast-high-default`
-- **Placeholder text**: `contrast-low-default`
-- **Disabled text**: `contrast-lowest-default`
+- **Page backgrounds**: `contrast-highest.inversity-normal`
+- **Card/panel backgrounds**: `contrast-high.inversity-normal`
+- **Form field backgrounds**: `contrast-medium.inversity-normal`
+- **Disabled backgrounds**: `contrast-low.inversity-normal`
+- **Primary text**: `contrast-highest.inversity-normal`
+- **Secondary text**: `contrast-high.inversity-normal`
+- **Placeholder text**: `contrast-low.inversity-normal`
+- **Disabled text**: `contrast-low.inversity-normal`
 
 ---
 
@@ -194,7 +228,7 @@ ob.s.color.interaction.{emphasis-level}.{element-type}.{contrast-level}-{theme}
 - `contrast-medium` - Medium contrast for secondary interactions
 - `contrast-low` - Low contrast for subtle interactions
 
-### Theme Variations
+### Inversity Variations
 - `inversity-normal` - Standard theme
 - `inversity-flipped` - Inverted theme contexts
 
@@ -202,24 +236,54 @@ ob.s.color.interaction.{emphasis-level}.{element-type}.{contrast-level}-{theme}
 ```json
 {
   "interaction": {
-    "emphasis-default": {
+    "emphasis-high": {
       "bg-base": {
-        "contrast-high-default": "#ffffff",
-        "contrast-medium-default": "#e2e8f0",
-        "contrast-low-default": "#cbd5e1"
+        "contrast-high": {
+          "inversity-normal": "#ffffff",
+          "inversity-flipped": "#0f172a"
+        },
+        "contrast-medium": {
+          "inversity-normal": "#e2e8f0",
+          "inversity-flipped": "#475569"
+        },
+        "contrast-low": {
+          "inversity-normal": "#cbd5e1",
+          "inversity-flipped": "#64748b"
+        }
       },
       "fg-base": {
-        "contrast-high-default": "#1e40af",
-        "contrast-medium-default": "#3b82f6",
-        "contrast-low-default": "#60a5fa"
+        "contrast-high": {
+          "inversity-normal": "#1e40af",
+          "inversity-flipped": "#60a5fa"
+        },
+        "contrast-medium": {
+          "inversity-normal": "#3b82f6",
+          "inversity-flipped": "#93c5fd"
+        },
+        "contrast-low": {
+          "inversity-normal": "#60a5fa",
+          "inversity-flipped": "#dbeafe"
+        }
       },
       "fg-visited": {
-        "contrast-high-default": "#581c87",
-        "contrast-medium-default": "#7c3aed",
-        "contrast-low-default": "#a855f7"
+        "contrast-high": {
+          "inversity-normal": "#581c87",
+          "inversity-flipped": "#a855f7"
+        },
+        "contrast-medium": {
+          "inversity-normal": "#7c3aed",
+          "inversity-flipped": "#c084fc"
+        },
+        "contrast-low": {
+          "inversity-normal": "#a855f7",
+          "inversity-flipped": "#e9d5ff"
+        }
       },
       "fg-disabled": {
-        "contrast-low-default": "#9ca3af"
+        "contrast-low": {
+          "inversity-normal": "#9ca3af",
+          "inversity-flipped": "#6b7280"
+        }
       }
     }
   }
@@ -227,7 +291,7 @@ ob.s.color.interaction.{emphasis-level}.{element-type}.{contrast-level}-{theme}
 ```
 
 ### Component Applications
-- **Buttons**: `bg-base`, `fg-base` for different button types
+- **Buttons**: `bg-base`, `fg-base` for different button  and their interaction states.
 - **Links**: `fg-base` for default, `fg-visited` for visited, `fg-hover` for hover
 - **Form controls**: `bg-base` for input backgrounds, `fg-base` for text
 - **Navigation**: `fg-base` for nav items, `bg-base` for active states
@@ -259,14 +323,14 @@ Implementation
 ```
 
 ### Cross-References
-- **Emphasis tokens** reference `neutral` and `interaction` colors
+- **Emphasis tokens** reference `interaction` colors
 - **Status tokens** use dedicated color values but may reference neutrals for backgrounds
 - **Component tokens** combine status, emphasis, neutral, and interaction colors
 
 ### Color Dependencies
 ```
-ob.s.color.emphasis.muted → ob.s.color.neutral.fg.contrast-*
-ob.s.color.emphasis.default → ob.s.color.interaction.emphasis-default.*
+ob.s.color.emphasis.low → ob.s.color.neutral.fg.contrast-*
+ob.s.color.emphasis.high → ob.s.color.interaction.emphasis-high.*
 ob.s.color.status.* → Direct primitive color references
 ob.s.color.neutral.* → Direct primitive color references
 ob.s.color.interaction.* → Direct primitive color references
@@ -284,21 +348,26 @@ ob.s.color.interaction.* → Direct primitive color references
 ## Implementation Guidelines
 
 ### 1. Status Color Usage
+## 1.1 Reserved
 - **Critical**: Use for urgent alerts and system failures
 - **Resolved**: Use for completed and closed states
 - **Attention**: Use for items needing review or caution
 - **Info**: Use for informational content
+
+## 1.2 Optional
 - **Pending**: Use for items awaiting action
 - **Confirmed**: Use for verified/approved states
 - **Progress**: Use for in-progress and loading states
 - **Scheduled**: Use for scheduled/future items
 - **Waiting**: Use for waiting/queued states
-- **Fatal**: Reserved for natural disasters and emergencies
 - **Closed**: Use for closed/archived items
 - **Disabled**: Use for disabled/inactive states
 
+## 1.3 Special
+- **Fatal**: Reserved for very important notifications, for example when the population is facing a danger. More https://swiss.github.io/designsystem/?path=/docs/components-alertbanner--docs
+
 ### 2. Emphasis Color Usage
-- **Primary Interactions**: Use `emphasis-medium` for main calls-to-action (primary buttons, important links)
+- **Primary Interactions**: Use `emphasis-high` for main calls-to-action (primary buttons, important links)
 - **Secondary Interactions**: Use `emphasis-low` for secondary actions (secondary buttons, supporting links)
 - **Interactive Components**: Apply emphasis colors to buttons, links, and other actionable elements
 - **Visual Hierarchy**: Use different emphasis levels to establish clear interaction priorities
@@ -310,30 +379,27 @@ ob.s.color.interaction.* → Direct primitive color references
 - **Shadows**: Use neutral shadow colors for consistent depth
 
 ### 4. Interaction Color Usage
-- **Primary Actions**: Use `emphasis-default` with high contrast
-- **Secondary Actions**: Use `emphasis-default` with medium contrast
-- **Subtle Actions**: Use `emphasis-default` with low contrast
-- **Links**: Always use `fg-base` for default, `fg-visited` for visited states
-- **Disabled**: Always use `fg-disabled` for inactive interactive elements
+- **Mandatory level l3**: Always use token from ob.s.color.l3.interaction.state with predefined interaction states for buttons and links.
+- **Foreground**: Tokens from ob.s.color.l3.interaction.state.fg will cover most of use-cases, buttons and link.
+- **Background**: Tokens from ob.s.color.l3.interaction.state.bg mostly use for buttons background.
 
 ### 5. Contrast Requirements
 - Always meet WCAG 2.1 AA contrast requirements for accessibility
-- High contrast for critical information and primary actions
-- Medium contrast for standard content and secondary actions
-- Low contrast for subtle/secondary information
-- Avoid excessive contrast that may compromise usability or color identity
+- High contrast for parargraph text.
+- Low contrast for disabled
+- Avoid maximum contrast that may compromise usability or destroys color saturation in status colors
 
 ### 6. Theme Consistency
-- Use `-default` for standard themes
-- Use `-inverse` for dark themes or inverted contexts
-- Use `-inverse-alpha` for semi-transparent overlays
+- Use `-normal` for standard themes
+- Use `-flipped` for dark themes or inverted contexts
+
 
 ### 7. Component Mapping
-- **Infobox**: critical, attention, info, fatal (status colors)
-- **Badge**: critical, resolved, attention, info, pending (status colors)
-- **Pill**: critical, resolved, attention, info, pending (status colors)
-- **Spinner**: progress (status colors)
-- **Buttons**: emphasis colors (medium, low) with interaction states
+- **Infobox**: reserved status colors: critical, attention, info, resolved + fatal (special requirement), level l2
+- **Badge**: reserved status colors: critical, resolved, attention, info, level l2
+- **Pill**: reserved status colors (critical, resolved, attention, info) + optional status colors (pending, confirmed, progress, scjeduled, waiting)
+- **Spinner**: progress from status colors level l2.
+- **Buttons**: interaction colors from the emphasis level l3. 
 - **Links**: emphasis colors combined with interaction colors for base and visited states
 - **Form Controls**: neutral backgrounds with interaction states and emphasis for labels/actions
 
@@ -341,7 +407,7 @@ ob.s.color.interaction.* → Direct primitive color references
 
 ## Component Token Consumption Guidelines
 
-> **📋 For comprehensive token consumption rules across ALL token types (color, typography, spacing), see: [Token Consumption Guidelines](./token-consumption-guidelines.md)**
+> **📋 For token consumption rules across ALL token types (color, typography, spacing), see: [Token Consumption Guidelines](./token-consumption-guidelines.md)**
 
 These guidelines define which semantic color token types specific component categories should consume. Following these rules ensures semantic consistency and maintains proper token architecture.
 
@@ -391,20 +457,20 @@ These guidelines define which semantic color token types specific component cate
 ```json
 // Badge (Status-based)
 "ob.c.badge.color.bg.info.enabled": {
-  "$value": "{ob.s.color.status.info.bg.contrast-low.inversity-flipped}"
+  "$value": "{ob.s.color.l2.status.info.bg.contrast-low.inversity-flipped}"
 }
 "ob.c.badge.color.fg.info.enabled": {
-  "$value": "{ob.s.color.status.info.fg.contrast-highest.inversity-flipped}"
+  "$value": "{ob.s.color.l2.status.info.fg.contrast-highest.inversity-flipped}"
 }
 
 // Button (Interactive)  
 "ob.h.button.color.fg.primary.hover": {
-  "$value": "{ob.s.color.interaction.state.fg.hover}"
+  "$value": "{ob.s.color.l3.interaction.state.fg.hover.inversity-normal}"
 }
 
 // Typography (Neutral)
 "ob.s.typography.color.text.default": {
-  "$value": "{ob.s.color.neutral.fg.contrast-high}"
+  "$value": "{ob.s.color.l2.neutral.fg.contrast-high.inversity-normal}"
 }
 ```
 
@@ -413,7 +479,7 @@ These guidelines define which semantic color token types specific component cate
 ```json
 // Badge consuming interaction tokens (WRONG)
 "ob.c.badge.color.fg.info.enabled": {
-  "$value": "{ob.s.color.interaction.state.fg.enabled}"
+  "$value": "{ob.s.color.l3.interaction.state.fg.enabled.inversity-normal}"
 }
 
 // Button consuming status tokens (WRONG)
@@ -421,10 +487,7 @@ These guidelines define which semantic color token types specific component cate
   "$value": "{ob.s.color.status.info.bg.contrast-low}"
 }
 
-// Typography consuming status tokens (WRONG)
-"ob.s.typography.color.text.default": {
-  "$value": "{ob.s.color.status.info.fg.contrast-high}"
-}
+
 ```
 
 ### Special Cases
@@ -478,23 +541,24 @@ When refactoring existing components:
 
 ## Color Token Files
 
-### Status Colors
-- `src/lib/themes/semantics/colors/static.json` - Base status color definitions
-- `src/lib/themes/semantics/colors/lightness/` - Theme-specific variations
-- `src/lib/themes/semantics/colors/inversity/` - Inverse theme colors
-
-### Emphasis Colors
-- `src/lib/themes/semantics/colors/emphasis/` - Emphasis level definitions
-
 ### Neutral Colors
 - `src/lib/themes/semantics/colors/lightness/light.json` - Light theme neutral colors
 - `src/lib/themes/semantics/colors/lightness/dark.json` - Dark theme neutral colors
 - `src/lib/themes/semantics/colors/inversity/` - Inverse theme neutrals
 
+### Status Colors
+- `src/lib/themes/semantics/colors/static.json` - Base status color definitions
+- `src/lib/themes/semantics/colors/lightness/` - Theme-specific variations
+- `src/lib/themes/semantics/colors/inversity/` - Inverse theme colors
+
+
 ### Interaction Colors
 - `src/lib/themes/semantics/colors/lightness/light.json` - Light theme interaction colors
 - `src/lib/themes/semantics/colors/lightness/dark.json` - Dark theme interaction colors
 - `src/lib/themes/semantics/colors/static.json` - Static interaction indicators
+
+### Interaction / Emphasis Colors
+- `src/lib/themes/semantics/colors/emphasis/` - Emphasis level definitions
 
 ### Theme Colors
 - `src/lib/themes/global/themes-scoped/` - Theme-scoped color applications
