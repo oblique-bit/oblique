@@ -38,19 +38,21 @@
           }
         },
         "infobox": {
-          "theme": {
-            "emphasis": {
-              "$type": "other",
-              "$value": "{ob.g.theme-configuration.emphasis.low}",
-              "$description": "We on purpose lower the interaction emphasis of all buttons inside Infobox and use the muted colors defined in semantic/color/emphasis/muted. This token can not be used in Figma due to Figma restrictions. In this case, the token is static and does not react to dark/light mode."
-            }
-          },
-          "fatal": {
+          "button": {
             "theme": {
-              "inversity": {
+              "emphasis": {
                 "$type": "other",
-                "$value": "{ob.g.theme-configuration.inversity.flipped}",
-                "$description": "Fatal variant of the Infobox is flipped in both lighntess modes - dark and light."
+                "$value": "{ob.g.theme-configuration.emphasis.low}",
+                "$description": "We on purpose lower the interaction emphasis of all buttons inside Infobox and use the muted colors defined in semantic/color/emphasis/muted. This token can not be used in Figma due to Figma restrictions. In this case, the token is static and does not react to dark/light mode."
+              }
+            },
+            "fatal": {
+              "theme": {
+                "inversity": {
+                  "$type": "other",
+                  "$value": "{ob.g.theme-configuration.inversity.flipped}",
+                  "$description": "Fatal variant of the Infobox is flipped in both lighntess modes - dark and light."
+                }
               }
             }
           }
