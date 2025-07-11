@@ -1,7 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient, provideHttpClient} from '@angular/common/http';
-import {Optional} from '@angular/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
@@ -18,7 +17,6 @@ import {
 	getRootRoute,
 	getTranslateLoader,
 	isNotKeyboardEventOnButton,
-	multiTranslateLoader,
 	obFocusWithOutline,
 	provideObliqueConfiguration,
 	provideObliqueTranslations,
@@ -91,39 +89,6 @@ describe('utilities', () => {
 				it.each(httpCalls)('should request %s translations', (name, index, httpCall) => {
 					expect(httpClient.get).toHaveBeenNthCalledWith(index as number, httpCall);
 				});
-			});
-		});
-	});
-
-	describe('multiTranslateLoader', () => {
-		it('should return default config without additional config', () => {
-			expect(multiTranslateLoader()).toEqual({
-				loader: {
-					provide: TranslateLoader,
-					useFactory: getTranslateLoader,
-					deps: [HttpClient, [new Optional(), TRANSLATION_FILES], [new Optional(), OB_FLATTEN_TRANSLATION_FILES]]
-				}
-			});
-		});
-
-		it('should ignore the loader configuration if provided', () => {
-			expect(multiTranslateLoader({loader: {provide: TranslateLoader, useValue: {}}})).toEqual({
-				loader: {
-					provide: TranslateLoader,
-					useFactory: getTranslateLoader,
-					deps: [HttpClient, [new Optional(), TRANSLATION_FILES], [new Optional(), OB_FLATTEN_TRANSLATION_FILES]]
-				}
-			});
-		});
-
-		it('should prepend any additional configuration', () => {
-			expect(multiTranslateLoader({isolate: true})).toEqual({
-				isolate: true,
-				loader: {
-					provide: TranslateLoader,
-					useFactory: getTranslateLoader,
-					deps: [HttpClient, [new Optional(), TRANSLATION_FILES], [new Optional(), OB_FLATTEN_TRANSLATION_FILES]]
-				}
 			});
 		});
 	});

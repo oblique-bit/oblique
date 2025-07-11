@@ -9,7 +9,7 @@ import {
 	provideAppInitializer
 } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {TranslateLoader, TranslateModuleConfig, provideTranslateService} from '@ngx-translate/core';
+import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
 import {OB_FLATTEN_TRANSLATION_FILES, ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
@@ -62,20 +62,6 @@ export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[]
 		],
 		flatten
 	);
-}
-
-/**
- * @deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
- */
-export function multiTranslateLoader(config: TranslateModuleConfig = {}): TranslateModuleConfig {
-	return {
-		...config,
-		loader: {
-			provide: TranslateLoader,
-			useFactory: getTranslateLoader,
-			deps: [HttpClient, [new Optional(), TRANSLATION_FILES], [new Optional(), OB_FLATTEN_TRANSLATION_FILES]]
-		}
-	};
 }
 
 const materialProviders = {

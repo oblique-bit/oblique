@@ -147,7 +147,6 @@ export {
 	getTranslateLoader,
 	provideObliqueConfiguration,
 	provideObliqueTranslations,
-	multiTranslateLoader,
 	obFocusWithOutline,
 	WINDOW
 } from './lib/utilities';
