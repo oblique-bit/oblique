@@ -7,23 +7,23 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l3.interaction.state.fg.enabled.inversity-normal}"
+                "$value": "{ob.s.color.l3.interaction.state.fg.enabled.inversity-flipped}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l3.interaction.state.fg.hover.inversity-normal}"
+                "$value": "{ob.s.color.l3.interaction.state.fg.hover.inversity-flipped}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l3.interaction.state.fg.focus.inversity-normal}"
+                "$value": "{ob.s.color.l3.interaction.state.fg.focus.inversity-flipped}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l3.interaction.state.fg.pressed.inversity-normal}"
+                "$value": "{ob.s.color.l3.interaction.state.fg.pressed.inversity-flipped}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l3.interaction.state.fg.disabled.inversity-normal}"
+                "$value": "{ob.s.color.l3.interaction.state.fg.disabled.inversity-flipped}"
               }
             },
             "secondary": {
@@ -77,25 +77,25 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.static.no-color}",
+                "$value": "{ob.s.color.l3.interaction.state.bg.enabled.inversity-flipped}",
                 "$description": "Background color of Primary button Enabled state."
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-medium}",
+                "$value": "{ob.s.color.l3.interaction.state.bg.hover.inversity-flipped}",
                 "$description": "Background color of Primary button Hover state."
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-medium}"
+                "$value": "{ob.s.color.l3.interaction.state.bg.focus.inversity-flipped}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-high}"
+                "$value": "{ob.s.color.l3.interaction.state.bg.pressed.inversity-flipped}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-disabled.opacity}",
+                "$value": "{ob.s.color.l3.interaction.state.bg.disabled.inversity-flipped}",
                 "$description": "Background color of the Disabled Primary button. Referenes the semantic interaction disabled."
               }
             },

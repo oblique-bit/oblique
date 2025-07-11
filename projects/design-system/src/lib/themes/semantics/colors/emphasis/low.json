@@ -95,24 +95,24 @@
                 "enabled": {
                   "inversity-normal": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-low.inversity-normal}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-low.bg-base.contrast-low.inversity-normal}",
                     "$description": "Background for primary buttons."
                   },
                   "inversity-flipped": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-low.inversity-flipped}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-low.bg-base.contrast-low.inversity-flipped}",
                     "$description": "Background for primary buttons."
                   }
                 },
                 "hover": {
                   "inversity-normal": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-medium.inversity-normal}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-low.bg-base.contrast-medium.inversity-normal}",
                     "$description": "Background for primary buttons."
                   },
                   "inversity-flipped": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-medium.inversity-flipped}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-low.bg-base.contrast-medium.inversity-flipped}",
                     "$description": "Background for primary buttons."
                   }
                 },
@@ -124,31 +124,31 @@
                   },
                   "inversity-flipped": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-medium.inversity-flipped}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-low.bg-base.contrast-medium.inversity-flipped}",
                     "$description": "Background for primary buttons."
                   }
                 },
                 "pressed": {
                   "inversity-normal": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-high.inversity-normal}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-low.bg-base.contrast-high.inversity-normal}",
                     "$description": "Background for primary buttons."
                   },
                   "inversity-flipped": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-high.inversity-flipped}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-low.bg-base.contrast-high.inversity-flipped}",
                     "$description": "Background for primary buttons."
                   }
                 },
                 "selected": {
                   "inversity-normal": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-low.inversity-normal}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-low.bg-base.contrast-high.inversity-flipped}",
                     "$description": "For navigation."
                   },
                   "inversity-flipped": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-low.inversity-flipped}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-low.bg-base.contrast-low.inversity-flipped}",
                     "$description": "For navigation."
                   }
                 },

@@ -14,7 +14,7 @@
                   },
                   "inversity-flipped": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-high.fg-base.contrast-low.inversity-flipped}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-high.fg-base.contrast-high.inversity-flipped}",
                     "$description": "Used in text-links, secondary and tertiary buttons."
                   }
                 },
@@ -26,7 +26,7 @@
                   },
                   "inversity-flipped": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-high.fg-base.contrast-low.inversity-flipped}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-high.fg-base.contrast-high.inversity-flipped}",
                     "$description": "Used in text-links, secondary and tertiary buttons."
                   }
                 },
@@ -38,7 +38,7 @@
                   },
                   "inversity-flipped": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-high.fg-base.contrast-low.inversity-flipped}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-high.fg-base.contrast-high.inversity-flipped}",
                     "$description": "Used in text-links, secondary and tertiary buttons."
                   }
                 },
