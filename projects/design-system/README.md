@@ -22,7 +22,17 @@ You will find information about how to use Oblique, code samples, FAQ and many m
 - **test-ci**: same as test, but an additional Sonar report is generated; Automatically run on the CI pipeline
 - **build**: build the library; Automatically run on the CI pipeline
 - **release**: create a new release, i.e. bump version number and updates the changelog
-- **check:plural-references**: validates singular naming conventions across all token names, file names, and documentation (ai/scripts/)
+- **check:plural-references**: validates singular naming conventions across all token names, file names, and documentation (scripts-custom/)
+
+## Custom Scripts
+
+The `scripts-custom/` folder contains reusable design system maintenance and validation scripts useful for the entire team:
+
+- **Validation**: `find-plural-references.py`, `quick-check.py`, `validate-token-consumption.py`
+- **Analysis**: `analyze-emphasis-structure.js`, `debug-tokens.js`, `trace-button-tokens.js`  
+- **Maintenance**: `kill-vampires.js`, `auto-cleanup-empty-files.sh`, `reorder-themes.js`
+
+See [scripts-custom/README.md](./scripts-custom/README.md) for detailed documentation and usage instructions.
 
 ## Design System Documentation
 

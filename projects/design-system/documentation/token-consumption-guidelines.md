@@ -427,7 +427,7 @@ npm run check:plural-references
 
 # TODO: Add token consumption validation script
 npm run check:token-consumption
-# OR directly: python3 ai/scripts/validate-token-consumption.py
+# OR directly: python3 scripts-custom/validate-token-consumption.py
 ```
 
 ### Documentation Updates
