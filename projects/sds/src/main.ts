@@ -54,7 +54,7 @@ bootstrapApplication(AppComponent, {
 		provideRouter(appRoutes, withPreloading(PreloadAllModules)),
 		provideAnimations(),
 		provideHttpClient(withInterceptorsFromDi()),
-		provideAppInitializer(() => inject(ObIconService).registerOnAppInit({registerObliqueIcons: true})),
+		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
 		provideObliqueTranslations()
 	]
 }).catch((err: unknown) => console.error(err));
