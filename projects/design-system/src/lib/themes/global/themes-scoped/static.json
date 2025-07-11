@@ -3,27 +3,27 @@
     "g": {
       "theme-configuration": {
         "emphasis": {
-          "default": {
+          "high": {
             "$type": "other",
-            "$value": "default",
-            "$description": "Default interaction emphasis theme identifier. Referenced by components to apply standard interaction emphasis colors for buttons and interactive elements."
+            "$value": "high",
+            "$description": "interaction emphasis theme identifier. Referenced by components to apply standard interaction emphasis colors for buttons and interactive elements."
           },
-          "muted": {
+          "low": {
             "$type": "other",
-            "$value": "muted",
-            "$description": "Muted interaction emphasis theme identifier. Referenced by components to apply subdued interaction emphasis colors for secondary or contextual interactive elements."
+            "$value": "low",
+            "$description": "interaction emphasis theme identifier. Referenced by components to apply subdued interaction emphasis colors for secondary or contextual interactive elements."
           }
         },
         "inversity": {
-          "default": {
+          "normal": {
             "$type": "other",
-            "$value": "default",
-            "$description": "Default inversity theme identifier. Referenced by components to apply normal contrast polarity."
+            "$value": "normal",
+            "$description": "Normal inversity theme identifier. Referenced by components to apply normal contrast polarity."
           },
-          "inverse": {
+          "flipped": {
             "$type": "other",
-            "$value": "inverse",
-            "$description": "Inverse inversity theme identifier. Referenced by components to apply inverted contrast polarity for emphasis."
+            "$value": "flipped",
+            "$description": "Flipped inversity theme identifier. Referenced by components to apply inverted contrast polarity for emphasis."
           }
         }
       },
@@ -32,7 +32,7 @@
           "theme": {
             "emphasis": {
               "$type": "other",
-              "$value": "{ob.g.theme-configuration.emphasis.muted}",
+              "$value": "{ob.g.theme-configuration.emphasis.low}",
               "$description": "Footer uses muted interaction emphasis theme override"
             }
           }
@@ -41,8 +41,17 @@
           "theme": {
             "emphasis": {
               "$type": "other",
-              "$value": "{ob.g.theme-configuration.emphasis.muted}",
+              "$value": "{ob.g.theme-configuration.emphasis.low}",
               "$description": "We on purpose lower the interaction emphasis of all buttons inside Infobox and use the muted colors defined in semantic/color/emphasis/muted. This token can not be used in Figma due to Figma restrictions. In this case, the token is static and does not react to dark/light mode."
+            }
+          },
+          "fatal": {
+            "theme": {
+              "inversity": {
+                "$type": "other",
+                "$value": "{ob.g.theme-configuration.inversity.flipped}",
+                "$description": "Fatal variant of the Infobox is flipped in both lighntess modes - dark and light."
+              }
             }
           }
         },
@@ -50,7 +59,7 @@
           "theme": {
             "emphasis": {
               "$type": "other",
-              "$value": "{ob.g.theme-configuration.emphasis.muted}",
+              "$value": "{ob.g.theme-configuration.emphasis.low}",
               "$description": "Popover uses muted interaction emphasis theme override"
             }
           }
@@ -60,7 +69,7 @@
             "theme": {
               "inversity": {
                 "$type": "other",
-                "$value": "{ob.g.theme-configuration.inversity.inverse}",
+                "$value": "{ob.g.theme-configuration.inversity.flipped}",
                 "$description": "Primary button consumes inversed colors."
               }
             }
