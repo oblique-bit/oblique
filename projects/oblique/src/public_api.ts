@@ -151,7 +151,7 @@ export {
 } from './lib/utilities';
 export {ObIBanner, ObIMaterialConfig, ObIObliqueConfiguration, ObIAccessibilityStatementConfiguration} from './lib/utilities.model';
 export {ObEColor} from './lib/style/colors.model';
-export {ObMultiTranslateLoader, TRANSLATION_FILES} from './lib/multi-translate-loader/multi-translate-loader';
+export {TRANSLATION_FILES} from './lib/multi-translate-loader/multi-translate-loader';
 export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';
 export {ObGlobalEventsService} from './lib/global-events/global-events.service';
 export {obOutsideFilter} from './lib/global-events/outsideFilter';
