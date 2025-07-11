@@ -68,7 +68,7 @@ describe('utilities', () => {
 
 			describe('Icon configuration', () => {
 				it('should call "registerOnAppInit" on "ObIconService"', () => {
-					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith({registerObliqueIcons: true});
+					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith(undefined);
 				});
 			});
 
@@ -161,7 +161,7 @@ describe('utilities', () => {
 
 			describe('Icon configuration', () => {
 				it('should call "registerOnAppInit" on "ObIconService"', () => {
-					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith({registerObliqueIcons: true, additionalIcons: []});
+					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith({additionalIcons: []});
 				});
 			});
 

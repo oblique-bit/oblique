@@ -4,10 +4,6 @@ export interface ObIconConfig {
 	fontClass?: string;
 }
 
-export const defaultIconConfig: ObIconConfig = {
-	registerObliqueIcons: true
-};
-
 export enum ObEIcon {
 	ACCESSIBILITY = 'accessibility',
 	ACCOMMODATION = 'accommodation',

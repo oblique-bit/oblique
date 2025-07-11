@@ -13,7 +13,7 @@ export class ObIconService {
 		private readonly domSanitizer: DomSanitizer
 	) {}
 
-	registerOnAppInit(iconConfig?: ObIconConfig): void {
+	registerOnAppInit(iconConfig: ObIconConfig = {registerObliqueIcons: true}): void {
 		this.getIconSets(iconConfig).forEach(config => this.registerSvg(config));
 		this.registerFontClass(iconConfig?.fontClass);
 	}

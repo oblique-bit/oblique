@@ -19,7 +19,6 @@ import {
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
-import {defaultIconConfig} from './icon/icon.model';
 import {ObIconService} from './icon/icon.service';
 import {MatStepperIntl} from '@angular/material/stepper';
 import {ObStepperIntlService} from './stepper/ob-stepper.service';
@@ -54,7 +53,7 @@ const materialProviders = {
 export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => {
-			inject(ObIconService).registerOnAppInit({...defaultIconConfig, ...config.icon});
+			inject(ObIconService).registerOnAppInit(config.icon);
 			inject(ObRouterService).initialize();
 		}),
 		provideObliqueTranslations(config.translate),
