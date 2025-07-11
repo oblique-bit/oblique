@@ -95,12 +95,12 @@
                 "enabled": {
                   "inversity-normal": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-low.bg-base.contrast-low.inversity-normal}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-low.bg-base.contrast-high.inversity-normal}",
                     "$description": "Background for primary buttons."
                   },
                   "inversity-flipped": {
                     "$type": "color",
-                    "$value": "{ob.s.color.l2.interaction.emphasis-low.bg-base.contrast-low.inversity-flipped}",
+                    "$value": "{ob.s.color.l2.interaction.emphasis-low.bg-base.contrast-high.inversity-flipped}",
                     "$description": "Background for primary buttons."
                   }
                 },
