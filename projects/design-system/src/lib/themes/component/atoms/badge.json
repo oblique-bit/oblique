@@ -7,48 +7,48 @@
             "attention": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.attention.bg.contrast-low}",
+                "$value": "{ob.s.color.l2.status.attention.bg.contrast-low.inversity-normal}",
                 "$description": "References semantic attention status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.disabled.bg.contrast-low}",
+                "$value": "{ob.s.color.l2.status.disabled.bg.contrast-low.inversity-normal}",
                 "$description": "Disabled attention badge background color using status disabled tokens for semantic consistency."
               }
             },
             "info": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.info.bg.contrast-low}",
+                "$value": "{ob.s.color.l2.status.info.bg.contrast-low.inversity-normal}",
                 "$description": "References semantic info status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.disabled.bg.contrast-low}",
+                "$value": "{ob.s.color.l2.status.disabled.bg.contrast-low.inversity-normal}",
                 "$description": "Disabled info badge background color using status disabled tokens for semantic consistency."
               }
             },
             "critical": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.critical.bg.contrast-low}",
+                "$value": "{ob.s.color.l2.status.critical.bg.contrast-low.inversity-normal}",
                 "$description": "References semantic critical status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.disabled.bg.contrast-low}",
+                "$value": "{ob.s.color.l2.status.disabled.bg.contrast-low.inversity-normal}",
                 "$description": "Disabled critical badge background color using status disabled tokens for semantic consistency."
               }
             },
             "resolved": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.resolved.bg.contrast-low}",
+                "$value": "{ob.s.color.l2.status.resolved.bg.contrast-low.inversity-normal}",
                 "$description": "References semantic resolved status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.disabled.bg.contrast-low}",
+                "$value": "{ob.s.color.l2.status.disabled.bg.contrast-low.inversity-normal}",
                 "$description": "Disabled resolved badge background color using status disabled tokens for semantic consistency."
               }
             }
@@ -57,48 +57,48 @@
             "info": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.info.fg.contrast-highest}",
+                "$value": "{ob.s.color.l2.status.info.fg.contrast-highest.inversity-normal}",
                 "$description": "Maximum contrast text color for info badge in enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.disabled.fg.contrast-highest}",
+                "$value": "{ob.s.color.l2.status.disabled.fg.contrast-highest.inversity-normal}",
                 "$description": "Maximum contrast disabled info badge text color for consistency with badge design pattern."
               }
             },
             "attention": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.attention.fg.contrast-highest}",
+                "$value": "{ob.s.color.l2.status.attention.fg.contrast-highest.inversity-normal}",
                 "$description": "Maximum contrast text color for attention badge in enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.disabled.fg.contrast-highest}",
+                "$value": "{ob.s.color.l2.status.disabled.fg.contrast-highest.inversity-normal}",
                 "$description": "Maximum contrast disabled attention badge text color for consistency with badge design pattern."
               }
             },
             "critical": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.critical.fg.contrast-highest}",
+                "$value": "{ob.s.color.l2.status.critical.fg.contrast-highest.inversity-normal}",
                 "$description": "Maximum contrast text color for critical badge in enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.disabled.fg.contrast-highest}",
+                "$value": "{ob.s.color.l2.status.disabled.fg.contrast-highest.inversity-normal}",
                 "$description": "Maximum contrast disabled critical badge text color for consistency with badge design pattern."
               }
             },
             "resolved": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.resolved.fg.contrast-highest}",
+                "$value": "{ob.s.color.l2.status.resolved.fg.contrast-highest.inversity-normal}",
                 "$description": "Maximum contrast text color for resolved badge in enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.disabled.fg.contrast-highest}",
+                "$value": "{ob.s.color.l2.status.disabled.fg.contrast-highest.inversity-normal}",
                 "$description": "Maximum contrast disabled resolved badge text color for consistency with badge design pattern."
               }
             }

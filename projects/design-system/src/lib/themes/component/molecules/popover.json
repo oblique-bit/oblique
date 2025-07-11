@@ -88,7 +88,7 @@
           },
           "border": {
             "$type": "color",
-            "$value": "{ob.s.color.l2.neutral.border.medium}",
+            "$value": "{ob.s.color.l2.neutral.border.medium.inversity-normal}",
             "$description": "Default border color for popovers."
           },
           "fg": {

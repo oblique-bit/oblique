@@ -6,19 +6,19 @@
           "icon": {
             "info": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.info.fg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.info.fg.contrast-medium.inversity-normal}"
             },
             "critical": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.critical.fg.contrast-high}"
+              "$value": "{ob.s.color.l2.status.critical.fg.contrast-high.inversity-normal}"
             },
             "attention": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.attention.fg.contrast-high}"
+              "$value": "{ob.s.color.l2.status.attention.fg.contrast-high.inversity-normal}"
             },
             "resolved": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.resolved.fg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.resolved.fg.contrast-medium.inversity-normal}"
             },
             "fatal": {
               "$type": "color",
@@ -28,45 +28,45 @@
           "border": {
             "info": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.info.fg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.info.fg.contrast-medium.inversity-normal}"
             },
             "critical": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.critical.fg.contrast-high}"
+              "$value": "{ob.s.color.l2.status.critical.fg.contrast-high.inversity-normal}"
             },
             "attention": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.attention.fg.contrast-high}"
+              "$value": "{ob.s.color.l2.status.attention.fg.contrast-high.inversity-normal}"
             },
             "resolved": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.resolved.fg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.resolved.fg.contrast-medium.inversity-normal}"
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.fatal.fg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.fatal.fg.contrast-medium.inversity-normal}"
             }
           },
           "surface": {
             "info": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.info.bg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.info.bg.contrast-medium.inversity-normal}"
             },
             "critical": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.critical.bg.contrast-high}"
+              "$value": "{ob.s.color.l2.status.critical.bg.contrast-high.inversity-normal}"
             },
             "attention": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.attention.bg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.attention.bg.contrast-medium.inversity-normal}"
             },
             "resolved": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.resolved.bg.contrast-medium}"
+              "$value": "{ob.s.color.l2.status.resolved.bg.contrast-medium.inversity-normal}"
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s.color.l2.status.fatal.bg.contrast-high}"
+              "$value": "{ob.s.color.l2.status.fatal.bg.contrast-high.inversity-normal}"
             }
           },
           "fg": {

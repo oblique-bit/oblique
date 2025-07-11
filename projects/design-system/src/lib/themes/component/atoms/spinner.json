@@ -10,7 +10,7 @@
         "color": {
           "active": {
             "$type": "color",
-            "$value": "{ob.s.color.l2.status.progress.fg.contrast-high.inversity-flipped}",
+            "$value": "{ob.s.color.l2.status.progress.fg.contrast-high.inversity-normal.inversity-flipped}",
             "$description": "Color indicating the active part of the loading."
           },
           "inactive": {
