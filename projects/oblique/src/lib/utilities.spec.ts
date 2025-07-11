@@ -15,18 +15,12 @@ import {
 	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
 	OB_HAS_LANGUAGE_IN_URL,
 	WINDOW,
-	checkboxOptionsProvider,
 	getRootRoute,
 	getTranslateLoader,
 	isNotKeyboardEventOnButton,
-	matFormFieldDefaultOptionsProvider,
 	multiTranslateLoader,
 	obFocusWithOutline,
 	provideObliqueConfiguration,
-	radioOptionsProvider,
-	slideToggleOptionsProvider,
-	stepperOptionsOptionsProvider,
-	tabsOptionsProvider,
 	windowProvider
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
@@ -130,68 +124,6 @@ describe('utilities', () => {
 					deps: [HttpClient, [new Optional(), TRANSLATION_FILES], [new Optional(), OB_FLATTEN_TRANSLATION_FILES]]
 				}
 			});
-		});
-	});
-
-	describe('matFormFieldDefaultOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(matFormFieldDefaultOptionsProvider()).toEqual({appearance: 'outline'});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(matFormFieldDefaultOptionsProvider({MAT_FORM_FIELD_DEFAULT_OPTIONS: {appearance: 'fill'}})).toEqual({appearance: 'fill'});
-		});
-	});
-
-	describe('stepperOptionsOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(stepperOptionsOptionsProvider()).toEqual({displayDefaultIndicatorType: false});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(stepperOptionsOptionsProvider({STEPPER_GLOBAL_OPTIONS: {displayDefaultIndicatorType: true}})).toEqual({
-				displayDefaultIndicatorType: true
-			});
-		});
-	});
-
-	describe('checkboxOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(checkboxOptionsProvider()).toEqual({color: 'primary'});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(checkboxOptionsProvider({MAT_CHECKBOX_OPTIONS: {color: 'accent'}})).toEqual({color: 'accent'});
-		});
-	});
-
-	describe('radioOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(radioOptionsProvider()).toEqual({color: 'primary'});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(radioOptionsProvider({MAT_RADIO_OPTIONS: {color: 'accent'}})).toEqual({color: 'accent'});
-		});
-	});
-
-	describe('slideToggleOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(slideToggleOptionsProvider()).toEqual({color: 'primary'});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(slideToggleOptionsProvider({MAT_SLIDE_TOGGLE_OPTIONS: {color: 'accent'}})).toEqual({color: 'accent'});
-		});
-	});
-
-	describe('tabsOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(tabsOptionsProvider()).toEqual({stretchTabs: false});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(tabsOptionsProvider({MAT_TABS_CONFIG: {stretchTabs: true}})).toEqual({stretchTabs: true});
 		});
 	});
 
