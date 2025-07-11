@@ -1,4 +1,4 @@
-FROM bit-base-images-docker-hosted.nexus.bit.admin.ch/bit/nginx-120:latest
+FROM bit-base-images-docker-hosted.nexus.bit.admin.ch/bit/ubi9/nginx-126:latest
 
 MAINTAINER BIT-Oblique TEAM <oblique@bit.admin.ch>
 
