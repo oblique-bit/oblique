@@ -54,7 +54,7 @@ const materialProviders = {
 export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => {
-			inject(ObIconService).registerOnAppInit();
+			inject(ObIconService).registerOnAppInit({...defaultIconConfig, ...config.icon});
 			inject(ObRouterService).initialize();
 		}),
 		provideObliqueTranslations(config.translate),

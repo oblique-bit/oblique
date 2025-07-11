@@ -14,9 +14,9 @@ export class ObIconService {
 		@Optional() @Inject(ObTIconConfig) private readonly config: ObIconConfig
 	) {}
 
-	registerOnAppInit(): void {
-		this.getIconSets(this.config).forEach(config => this.registerSvg(config));
-		this.registerFontClass(this.config?.fontClass);
+	registerOnAppInit(iconConfig?: ObIconConfig): void {
+		this.getIconSets(iconConfig ?? this.config).forEach(config => this.registerSvg(config));
+		this.registerFontClass(iconConfig?.fontClass ?? this.config?.fontClass);
 	}
 
 	registerIconSetsAsync(...urls: string[]): void {
