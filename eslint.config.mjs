@@ -567,7 +567,7 @@ export default config(
 				{selector: 'objectLiteralProperty', format: null, modifiers: ['requiresQuotes']},
 				// rules that are not respected
 				{selector: 'variable', format: ['camelCase', 'UPPER_CASE']},
-				{selector: 'variable', format: ['PascalCase'], filter: '^(?:CookiesMock|ObTIconConfig|ObTBreadcrumbConfig|ObliquePackage)$'},
+				{selector: 'variable', format: ['PascalCase'], filter: '^(?:CookiesMock|ObTBreadcrumbConfig|ObliquePackage)$'},
 				{selector: 'objectLiteralProperty', format: ['UPPER_CASE'], filter: '^(?:MAT|STEPPER)|^(?:ABN|TEST|DEV|REF|LOCAL)$'},
 				{selector: 'objectLiteralProperty', format: ['UPPER_CASE'], filter: '^(?:LABEL_FORMATTER|HIGHLIGHT|VARIANT)'},
 				{selector: 'objectLiteralMethod', format: null, modifiers: ['requiresQuotes']},
