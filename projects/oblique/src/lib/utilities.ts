@@ -42,21 +42,6 @@ export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);
 }
 
-function getTranslateLoader(http: HttpClient, config: ObITranslateConfigInternal): ObMultiTranslateLoader {
-	const {additionalFiles, flatten} = config;
-	return new ObMultiTranslateLoader(
-		http,
-		[
-			{
-				prefix: './assets/i18n/oblique-',
-				suffix: '.json'
-			},
-			...(additionalFiles || [{prefix: './assets/i18n/', suffix: '.json'}])
-		],
-		flatten
-	);
-}
-
 const materialProviders = {
 	MAT_FORM_FIELD_DEFAULT_OPTIONS: {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 	STEPPER_GLOBAL_OPTIONS: {provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
@@ -100,6 +85,21 @@ export function provideObliqueTranslations(configuration: ObITranslateConfig = {
 		}),
 		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {flatten: flatten ?? true, additionalFiles}}
 	]);
+}
+
+function getTranslateLoader(http: HttpClient, config: ObITranslateConfigInternal): ObMultiTranslateLoader {
+	const {additionalFiles, flatten} = config;
+	return new ObMultiTranslateLoader(
+		http,
+		[
+			{
+				prefix: './assets/i18n/oblique-',
+				suffix: '.json'
+			},
+			...(additionalFiles || [{prefix: './assets/i18n/', suffix: '.json'}])
+		],
+		flatten
+	);
 }
 
 // as the Enter key on a button triggers both the click an keyup events, lets ensure the function is called only once
