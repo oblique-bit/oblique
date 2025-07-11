@@ -172,7 +172,7 @@
 						[disabled]="(tableManager.isEditMode$ | async) || (tableManager.isMasterRemoveDisabled$ | async)"
 						(click)="tableManager.removeRows()"
 					>
-						<mat-icon svgIcon="trash" />
+						<mat-icon svgIcon="delete" />
 					</button>
 				</div>
 			</ng-template>
@@ -188,7 +188,7 @@
 							[disabled]="tableManager.isEditMode$ | async"
 							(click)="tableManager.editRow(element)"
 						>
-							<mat-icon svgIcon="pen" />
+							<mat-icon svgIcon="pencil" />
 						</button>
 						<button
 							type="button"
@@ -198,14 +198,14 @@
 							[disabled]="tableManager.isEditMode$ | async"
 							(click)="tableManager.removeRows(element)"
 						>
-							<mat-icon svgIcon="trash" />
+							<mat-icon svgIcon="delete" />
 						</button>
 					} @else {
 						<button type="submit" mat-icon-button obButton="secondary" matTooltip="Save" (click)="tableManager.saveRow(element)">
 							<mat-icon svgIcon="checkmark" />
 						</button>
 						<button type="reset" mat-icon-button obButton="secondary" matTooltip="Reset" (click)="tableManager.cancel(element)">
-							<mat-icon svgIcon="cancel" />
+							<mat-icon svgIcon="xmark" />
 						</button>
 					}
 				</div>

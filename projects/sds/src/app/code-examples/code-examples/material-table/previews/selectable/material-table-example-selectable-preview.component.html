@@ -76,7 +76,7 @@
 			[disabled]="tableManager.isMasterRemoveDisabled$ | async"
 			(click)="tableManager.removeRows()"
 		>
-			<mat-icon svgIcon="trash" />
+			<mat-icon svgIcon="delete" />
 		</button>
 	</div>
 </ng-template>
@@ -84,7 +84,7 @@
 <ng-template #actionsContent let-tableManager="tableManager" let-element="element">
 	<div class="actions">
 		<button type="button" mat-icon-button obButton="secondary" matTooltip="Remove this row" (click)="tableManager.removeRows(element)">
-			<mat-icon svgIcon="trash" />
+			<mat-icon svgIcon="delete" />
 		</button>
 	</div>
 </ng-template>

@@ -34,9 +34,9 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 		expect(component).toBeTruthy();
 	});
 
-	test.each<{chevronBefore: 'chevron-down' | 'chevron-up'; chevronAfter: 'chevron-down' | 'chevron-up'}>([
-		{chevronBefore: 'chevron-down', chevronAfter: 'chevron-up'},
-		{chevronBefore: 'chevron-up', chevronAfter: 'chevron-down'}
+	test.each<{chevronBefore: 'chevron_down' | 'chevron_up'; chevronAfter: 'chevron_down' | 'chevron_up'}>([
+		{chevronBefore: 'chevron_down', chevronAfter: 'chevron_up'},
+		{chevronBefore: 'chevron_up', chevronAfter: 'chevron_down'}
 	])(
 		`that chevron is changed from: $chevronBefore, to: $chevronAfter after calling ${ObServiceNavigationLanguagesComponent.prototype.changeChevron.name}`,
 		({chevronBefore, chevronAfter}) => {
