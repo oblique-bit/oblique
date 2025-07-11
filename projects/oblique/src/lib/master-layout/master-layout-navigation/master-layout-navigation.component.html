@@ -68,7 +68,7 @@
 					<a
 						class="ob-master-layout-navigation-link ob-main-nav-link"
 						[id]="link.id"
-						[routerLink]="link.url"
+						[routerLink]="link.url | obLocalize"
 						[routerLinkActive]="activeClass"
 						[isExternalLink]="link.isExternal"
 						[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
@@ -165,7 +165,7 @@
 						[link]="currentParentLink"
 						[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
 						[routerLinkActiveOptions]="routerLinkActiveOptions"
-						[routerLinkBase]="currentParentRouterLinkBase$ | async"
+						[routerLinkBase]="currentParentRouterLinkBase$ | async | obLocalize"
 						[showChildren]="false"
 						class="ob-sub-menu-parent-link"
 						[class.is-exact-match]="isCurrentParentLinkExactMatch"
@@ -180,7 +180,7 @@
 								[link]="link"
 								[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
 								[routerLinkActiveOptions]="routerLinkActiveOptions"
-								[routerLinkBase]="link.url"
+								[routerLinkBase]="link.url | obLocalize"
 								(changeCurrentParent)="changeCurrentParentLink($event)"
 							/>
 						</li>

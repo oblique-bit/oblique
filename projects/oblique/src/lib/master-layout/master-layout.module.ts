@@ -26,6 +26,7 @@ import {ObServiceNavigationModule} from '../service-navigation/service-navigatio
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
 import {ObMasterLayoutNavigationSubMenuItemComponent} from './master-layout-navigation/sub-menu-item/master-layout-navigation-sub-menu-item.component';
 import {ObMasterLayoutNavigationGoToChildrenComponent} from './master-layout-navigation/go-to-children/master-layout-navigation-go-to-children.component';
+import {ObLocalizePipe} from '../router/ob-localize.pipe';
 
 export {ObMasterLayoutComponent} from './master-layout/master-layout.component';
 export {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
@@ -66,7 +67,8 @@ export {ObOutlineDirective} from './outline.directive';
 		ObSpinnerModule,
 		RouterModule,
 		ScrollingModule,
-		TranslateModule
+		TranslateModule,
+		ObLocalizePipe
 	],
 	declarations: [
 		ObAriaMenuButtonDirective,
