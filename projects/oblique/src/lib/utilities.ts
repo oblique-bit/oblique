@@ -1,26 +1,20 @@
 import {HttpClient} from '@angular/common/http';
-import {
-	DOCUMENT,
-	EnvironmentProviders,
-	InjectionToken,
-	Optional,
-	inject,
-	makeEnvironmentProviders,
-	provideAppInitializer
-} from '@angular/core';
+import {DOCUMENT, EnvironmentProviders, InjectionToken, inject, makeEnvironmentProviders, provideAppInitializer} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
-import {OB_FLATTEN_TRANSLATION_FILES, ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
-import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
+import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {ObIAccessibilityStatementConfiguration, ObIBanner,
+import {
+	ObIAccessibilityStatementConfiguration,
+	ObIBanner,
 	ObIObliqueConfiguration,
 	ObIPamsConfiguration,
-	ObITranslateConfig
+	ObITranslateConfig,
+	ObITranslateConfigInternal
 } from './utilities.model';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {MatPaginatorIntl} from '@angular/material/paginator';
@@ -35,6 +29,7 @@ import {ObRouterService} from '../lib/router/ob-router.service';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
+export const OB_TRANSLATION_CONFIGURATION = new InjectionToken<ObITranslateConfigInternal>('Translation configuration');
 export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
 	'Provides the mandatory PAMS environment as well as an optional root url.'
 );
@@ -47,7 +42,8 @@ export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);
 }
 
-function getTranslateLoader(http: HttpClient, files: ObITranslationFile[], flatten: boolean): ObMultiTranslateLoader {
+function getTranslateLoader(http: HttpClient, config: ObITranslateConfigInternal): ObMultiTranslateLoader {
+	const {additionalFiles, flatten} = config;
 	return new ObMultiTranslateLoader(
 		http,
 		[
@@ -55,7 +51,7 @@ function getTranslateLoader(http: HttpClient, files: ObITranslationFile[], flatt
 				prefix: './assets/i18n/oblique-',
 				suffix: '.json'
 			},
-			...(files || [{prefix: './assets/i18n/', suffix: '.json'}])
+			...(additionalFiles || [{prefix: './assets/i18n/', suffix: '.json'}])
 		],
 		flatten
 	);
@@ -99,11 +95,10 @@ export function provideObliqueTranslations(configuration: ObITranslateConfig = {
 			loader: {
 				provide: TranslateLoader,
 				useFactory: getTranslateLoader,
-				deps: [HttpClient, [new Optional(), TRANSLATION_FILES], [new Optional(), OB_FLATTEN_TRANSLATION_FILES]]
+				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION]
 			}
 		}),
-		{provide: OB_FLATTEN_TRANSLATION_FILES, useValue: flatten ?? true},
-		{provide: TRANSLATION_FILES, useValue: additionalFiles}
+		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {flatten: flatten ?? true, additionalFiles}}
 	]);
 }
 

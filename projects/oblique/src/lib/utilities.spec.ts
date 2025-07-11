@@ -8,10 +8,11 @@ import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {TranslateCompiler, TranslateFakeCompiler, TranslateFakeLoader, TranslateLoader, TranslateService} from '@ngx-translate/core';
-import {OB_FLATTEN_TRANSLATION_FILES, ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
+import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
 import {
 	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
 	OB_HAS_LANGUAGE_IN_URL,
+	OB_TRANSLATION_CONFIGURATION,
 	WINDOW,
 	getRootRoute,
 	isNotKeyboardEventOnButton,
@@ -85,12 +86,8 @@ describe('utilities', () => {
 					expect(TestBed.inject(TranslateService).currentLoader instanceof ObMultiTranslateLoader).toBe(true);
 				});
 
-				it('should provide "TRANSLATION_FILES"', () => {
-					expect(TestBed.inject(TRANSLATION_FILES)).toBeUndefined();
-				});
-
-				it('should provide "OB_FLATTEN_TRANSLATION_FILES"', () => {
-					expect(TestBed.inject(OB_FLATTEN_TRANSLATION_FILES)).toBe(true);
+				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
+					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({flatten: true});
 				});
 			});
 
@@ -174,12 +171,11 @@ describe('utilities', () => {
 			});
 
 			describe('Translate configuration', () => {
-				it('should provide "TRANSLATION_FILES"', () => {
-					expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
-				});
-
-				it('should provide "OB_FLATTEN_TRANSLATION_FILES"', () => {
-					expect(TestBed.inject(OB_FLATTEN_TRANSLATION_FILES)).toEqual(false);
+				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
+					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
+						additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
+						flatten: false
+					});
 				});
 
 				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
@@ -218,39 +214,6 @@ describe('utilities', () => {
 				});
 			});
 		});
-
-		describe('with token configuration for Translate', () => {
-			beforeEach(() => {
-				TestBed.configureTestingModule({
-					providers: [
-						provideHttpClient(),
-						provideObliqueConfiguration({
-							accessibilityStatement: {
-								applicationName: 'appName',
-								createdOn: new Date('2025-01-31'),
-								conformity: 'none',
-								applicationOperator: 'Operator',
-								contact: {emails: ['e@mail.com']}
-							}
-						}),
-						{provide: TRANSLATION_FILES, useValue: [{prefix: 'prefix', suffix: 'suffix'}]},
-						{provide: OB_FLATTEN_TRANSLATION_FILES, useValue: true}
-					]
-				});
-			});
-
-			it('should create WINDOW injection token', () => {
-				expect(TestBed.inject(WINDOW)).toEqual(window);
-			});
-
-			it('should provide "TRANSLATION_FILES"', () => {
-				expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
-			});
-
-			it('should provide "OB_FLATTEN_TRANSLATION_FILES"', () => {
-				expect(TestBed.inject(OB_FLATTEN_TRANSLATION_FILES)).toEqual(true);
-			});
-		});
 	});
 
 	describe('provideObliqueTranslations', () => {
@@ -270,11 +233,7 @@ describe('utilities', () => {
 			});
 
 			it('should provide "TRANSLATION_FILES"', () => {
-				expect(TestBed.inject(TRANSLATION_FILES)).toBeUndefined();
-			});
-
-			it('should provide "OB_FLATTEN_TRANSLATION_FILES"', () => {
-				expect(TestBed.inject(OB_FLATTEN_TRANSLATION_FILES)).toBe(true);
+				expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({additionalFiles: undefined, flatten: true});
 			});
 
 			describe('loader', () => {
@@ -326,15 +285,14 @@ describe('utilities', () => {
 				});
 			});
 
-			it('should provide "TRANSLATION_FILES"', () => {
-				expect(TestBed.inject(TRANSLATION_FILES)).toEqual([
-					{prefix: './path1/', suffix: '.json'},
-					{prefix: './path2/', suffix: '.js'}
-				]);
-			});
-
-			it('should provide "OB_FLATTEN_TRANSLATION_FILES"', () => {
-				expect(TestBed.inject(OB_FLATTEN_TRANSLATION_FILES)).toEqual(false);
+			it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
+				expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
+					additionalFiles: [
+						{prefix: './path1/', suffix: '.json'},
+						{prefix: './path2/', suffix: '.js'}
+					],
+					flatten: false
+				});
 			});
 
 			it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
@@ -370,26 +328,6 @@ describe('utilities', () => {
 				])('should request $url on $index call', ({index, url}) => {
 					expect(httpClient.get).toHaveBeenNthCalledWith(index, url);
 				});
-			});
-		});
-
-		describe('with token configuration for Translate', () => {
-			beforeEach(() => {
-				TestBed.configureTestingModule({
-					providers: [
-						provideObliqueTranslations(),
-						{provide: TRANSLATION_FILES, useValue: [{prefix: 'prefix', suffix: 'suffix'}]},
-						{provide: OB_FLATTEN_TRANSLATION_FILES, useValue: true}
-					]
-				});
-			});
-
-			it('should provide "TRANSLATION_FILES"', () => {
-				expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
-			});
-
-			it('should provide "OB_FLATTEN_TRANSLATION_FILES"', () => {
-				expect(TestBed.inject(OB_FLATTEN_TRANSLATION_FILES)).toEqual(true);
 			});
 		});
 	});

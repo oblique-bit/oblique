@@ -43,6 +43,11 @@ export interface ObITranslateConfig {
 	additionalFiles?: ObITranslationFile[];
 }
 
+export interface ObITranslateConfigInternal {
+	flatten: boolean;
+	additionalFiles?: ObITranslationFile[];
+}
+
 export type NonEmptyArray<Type> = [Type, ...Type[]];
 
 export type ObConformity = ObConformityPartial | ObConformityNonPartial;

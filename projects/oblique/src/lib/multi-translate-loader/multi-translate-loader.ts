@@ -1,13 +1,8 @@
 import {HttpClient} from '@angular/common/http';
 import {TranslateLoader} from '@ngx-translate/core';
-import {InjectionToken} from '@angular/core';
 import {catchError, map} from 'rxjs/operators';
 import {Observable, forkJoin, of} from 'rxjs';
 import {DeepString, ObITranslationFile} from './multi-translate-loader.model';
-
-export const TRANSLATION_FILES = new InjectionToken('TRANSLATION_FILES');
-
-export const OB_FLATTEN_TRANSLATION_FILES = new InjectionToken<boolean>('Flatten translation files');
 
 export class ObMultiTranslateLoader implements TranslateLoader {
 	constructor(
