@@ -15,22 +15,22 @@ describe(SlugService.name, () => {
 		TestBed.configureTestingModule({
 			imports: [
 				RouterModule.forRoot([
+					{path: 'inexistent/route', component: DummyComponent},
 					{path: 'introductions/welcome-10', component: DummyComponent},
+					{path: 'introductions/configuration', component: DummyComponent},
 					{path: 'introductions/configuration-12', component: DummyComponent},
+					{path: 'introductions/configuration-14', component: DummyComponent},
+					{path: 'introductions/getting-started-as-a-designer', component: DummyComponent},
+					{path: 'components/master-layout/examples', component: DummyComponent},
 					{path: 'components/master-layout-12/examples', component: DummyComponent},
 					{path: 'components/master-layout-13/ui-ux', component: DummyComponent},
-					{path: 'components/popover-12/examples', component: DummyComponent},
-					{path: 'introductions/configuration-14', component: DummyComponent},
-					{path: 'foundations/shadow/examples', component: DummyComponent},
-					{path: 'guidelines/getting-started-figma', component: DummyComponent},
-					{path: 'introductions/getting-started-as-a-designer', component: DummyComponent},
-					{path: 'asdfghjkl/qwertzuiop', component: DummyComponent},
-					{path: 'introductions/configuration', component: DummyComponent},
-					{path: 'components/master-layout/examples', component: DummyComponent},
 					{path: 'components/popover/examples', component: DummyComponent},
+					{path: 'components/popover-12/examples', component: DummyComponent},
 					{path: 'components/language/examples', component: DummyComponent},
 					{path: 'components/datepicker/api', component: DummyComponent},
-					{path: 'components/datepicker/examples', component: DummyComponent}
+					{path: 'components/datepicker/examples', component: DummyComponent},
+					{path: 'foundations/shadow/examples', component: DummyComponent},
+					{path: 'guidelines/getting-started-figma', component: DummyComponent}
 				])
 			]
 		});
@@ -42,49 +42,105 @@ describe(SlugService.name, () => {
 		expect(service).toBeTruthy();
 	});
 
-	describe(SlugService.prototype.getNewSlug.name, () => {
-		const versionRoutes: {version: number; route: string; newSlug: string}[] = [
-			{version: 11, route: 'introductions/configuration-12', newSlug: 'configuration'},
-			{version: 11, route: 'introductions/configuration-14', newSlug: 'configuration'},
-			{version: 11, route: 'components/master-layout-12/examples', newSlug: 'master-layout'},
-			{version: 11, route: 'components/master-layout-13/ui-ux', newSlug: 'master-layout'},
-			{version: 11, route: 'components/popover-12/examples', newSlug: 'popover'},
-			{version: 11, route: 'foundations/shadow/examples', newSlug: 'invalid'},
-			{version: 11, route: 'guidelines/getting-started-figma', newSlug: 'invalid'},
-			{version: 11, route: 'introductions/getting-started-as-a-designer', newSlug: 'invalid'},
-			{version: 11, route: 'asdfghjkl/qwertzuiop', newSlug: undefined},
-			{version: 12, route: 'introductions/configuration', newSlug: 'configuration-12'},
-			{version: 12, route: 'introductions/configuration-14', newSlug: 'configuration-12'},
-			{version: 12, route: 'components/master-layout/examples', newSlug: 'master-layout-12'},
-			{version: 12, route: 'components/master-layout-13/ui-ux', newSlug: 'master-layout-12'},
-			{version: 12, route: 'components/popover/examples', newSlug: 'popover-12'},
-			{version: 12, route: 'components/language/examples', newSlug: 'invalid'},
-			{version: 12, route: 'components/datepicker/examples', newSlug: 'invalid'},
-			{version: 12, route: 'guidelines/getting-started-figma', newSlug: 'invalid'},
-			{version: 12, route: 'introductions/getting-started-as-a-designer', newSlug: 'invalid'},
-			{version: 13, route: 'introductions/configuration', newSlug: 'configuration-12'},
-			{version: 13, route: 'introductions/configuration-14', newSlug: 'configuration-12'},
-			{version: 13, route: 'components/master-layout/examples', newSlug: 'master-layout-13'},
-			{version: 13, route: 'components/master-layout-12/examples', newSlug: 'master-layout-13'},
-			{version: 13, route: 'components/popover/examples', newSlug: 'popover-12'},
-			{version: 13, route: 'components/language/examples', newSlug: 'invalid'},
-			{version: 13, route: 'components/datepicker/api', newSlug: 'invalid'},
-			{version: 14, route: 'introductions/configuration', newSlug: 'configuration-14'},
-			{version: 14, route: 'introductions/configuration-12', newSlug: 'configuration-14'},
-			{version: 14, route: 'components/master-layout-12/examples', newSlug: 'master-layout-13'},
-			{version: 14, route: 'components/master-layout/examples', newSlug: 'master-layout-13'},
-			{version: 14, route: 'components/popover/examples', newSlug: 'popover-12'},
-			{version: 14, route: 'components/language/examples', newSlug: 'invalid'},
-			{version: 14, route: 'components/datepicker/examples', newSlug: 'invalid'},
-			{version: 14, route: 'asdfghjkl/qwertzuiop', newSlug: undefined}
-		];
-
-		it.each(versionRoutes)(
-			'should return slug $newSlug when the version is $version and the route is $route',
-			fakeAsync(({version, route, newSlug}) => {
+	const versionRoutes = {
+		10: [
+			{route: 'inexistent/route', newSlug: undefined},
+			{route: 'introductions/welcome-10', newSlug: undefined},
+			{route: 'introductions/configuration', newSlug: undefined},
+			{route: 'introductions/configuration-12', newSlug: undefined},
+			{route: 'introductions/configuration-14', newSlug: undefined},
+			{route: 'introductions/getting-started-as-a-designer', newSlug: undefined},
+			{route: 'components/master-layout/examples', newSlug: undefined},
+			{route: 'components/master-layout-12/examples', newSlug: undefined},
+			{route: 'components/master-layout-13/ui-ux', newSlug: undefined},
+			{route: 'components/popover/examples', newSlug: undefined},
+			{route: 'components/popover-12/examples', newSlug: undefined},
+			{route: 'components/language/examples', newSlug: undefined},
+			{route: 'components/datepicker/api', newSlug: undefined},
+			{route: 'components/datepicker/examples', newSlug: undefined},
+			{route: 'foundations/shadow/examples', newSlug: undefined},
+			{route: 'guidelines/getting-started-figma', newSlug: undefined}
+		],
+		11: [
+			{route: 'inexistent/route', newSlug: undefined},
+			{route: 'introductions/welcome-10', newSlug: undefined},
+			{route: 'introductions/configuration', newSlug: undefined},
+			{route: 'introductions/configuration-12', newSlug: 'configuration'},
+			{route: 'introductions/configuration-14', newSlug: 'configuration'},
+			{route: 'introductions/getting-started-as-a-designer', newSlug: 'invalid'},
+			{route: 'components/master-layout/examples', newSlug: undefined},
+			{route: 'components/master-layout-12/examples', newSlug: 'master-layout'},
+			{route: 'components/master-layout-13/ui-ux', newSlug: 'master-layout'},
+			{route: 'components/popover/examples', newSlug: undefined},
+			{route: 'components/popover-12/examples', newSlug: 'popover'},
+			{route: 'components/language/examples', newSlug: undefined},
+			{route: 'components/datepicker/api', newSlug: undefined},
+			{route: 'components/datepicker/examples', newSlug: undefined},
+			{route: 'foundations/shadow/examples', newSlug: 'invalid'},
+			{route: 'guidelines/getting-started-figma', newSlug: 'invalid'}
+		],
+		12: [
+			{route: 'inexistent/route', newSlug: undefined},
+			{route: 'introductions/welcome-10', newSlug: undefined},
+			{route: 'introductions/configuration', newSlug: 'configuration-12'},
+			{route: 'introductions/configuration-12', newSlug: undefined},
+			{route: 'introductions/configuration-14', newSlug: 'configuration-12'},
+			{route: 'introductions/getting-started-as-a-designer', newSlug: 'invalid'},
+			{route: 'components/master-layout/examples', newSlug: 'master-layout-12'},
+			{route: 'components/master-layout-12/examples', newSlug: undefined},
+			{route: 'components/master-layout-13/ui-ux', newSlug: 'master-layout-12'},
+			{route: 'components/popover/examples', newSlug: 'popover-12'},
+			{route: 'components/popover-12/examples', newSlug: undefined},
+			{route: 'components/language/examples', newSlug: 'invalid'},
+			{route: 'components/datepicker/api', newSlug: 'invalid'},
+			{route: 'components/datepicker/examples', newSlug: 'invalid'},
+			{route: 'foundations/shadow/examples', newSlug: undefined},
+			{route: 'guidelines/getting-started-figma', newSlug: 'invalid'}
+		],
+		13: [
+			{route: 'inexistent/route', newSlug: undefined},
+			{route: 'introductions/welcome-10', newSlug: undefined},
+			{route: 'introductions/configuration', newSlug: 'configuration-12'},
+			{route: 'introductions/configuration-12', newSlug: undefined},
+			{route: 'introductions/configuration-14', newSlug: 'configuration-12'},
+			{route: 'introductions/getting-started-as-a-designer', newSlug: undefined},
+			{route: 'components/master-layout/examples', newSlug: 'master-layout-13'},
+			{route: 'components/master-layout-12/examples', newSlug: 'master-layout-13'},
+			{route: 'components/master-layout-13/ui-ux', newSlug: undefined},
+			{route: 'components/popover/examples', newSlug: 'popover-12'},
+			{route: 'components/popover-12/examples', newSlug: undefined},
+			{route: 'components/language/examples', newSlug: 'invalid'},
+			{route: 'components/datepicker/api', newSlug: 'invalid'},
+			{route: 'components/datepicker/examples', newSlug: 'invalid'},
+			{route: 'foundations/shadow/examples', newSlug: undefined},
+			{route: 'guidelines/getting-started-figma', newSlug: undefined}
+		],
+		14: [
+			{route: 'inexistent/route', newSlug: undefined},
+			{route: 'introductions/welcome-10', newSlug: undefined},
+			{route: 'introductions/configuration', newSlug: 'configuration-14'},
+			{route: 'introductions/configuration-12', newSlug: 'configuration-14'},
+			{route: 'introductions/configuration-14', newSlug: undefined},
+			{route: 'introductions/getting-started-as-a-designer', newSlug: undefined},
+			{route: 'components/master-layout/examples', newSlug: 'master-layout-13'},
+			{route: 'components/master-layout-12/examples', newSlug: 'master-layout-13'},
+			{route: 'components/master-layout-13/ui-ux', newSlug: undefined},
+			{route: 'components/popover/examples', newSlug: 'popover-12'},
+			{route: 'components/popover-12/examples', newSlug: undefined},
+			{route: 'components/language/examples', newSlug: 'invalid'},
+			{route: 'components/datepicker/api', newSlug: 'invalid'},
+			{route: 'components/datepicker/examples', newSlug: 'invalid'},
+			{route: 'foundations/shadow/examples', newSlug: undefined},
+			{route: 'guidelines/getting-started-figma', newSlug: undefined}
+		]
+	};
+	describe.each([10, 11, 12, 13, 14])(`${SlugService.prototype.getNewSlug.name} version %s`, version => {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+		it.each(versionRoutes[version])(
+			'should return "$newSlug" with "$route"',
+			fakeAsync(({route, newSlug}) => {
 				router.navigate([route]);
 				tick();
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 				expect(service.getNewSlug(version)).toBe(newSlug);
 			})
 		);
