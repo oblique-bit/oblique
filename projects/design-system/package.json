@@ -7,7 +7,8 @@
     "test": "cd ../.. && ng test design-system",
     "test-ci": "cd ../.. && ng run design-system:test:ci",
     "build": "ng build design-system && ts-node scripts/post-build.ts",
-    "release": "ts-node scripts/release.ts"
+    "release": "ts-node scripts/release.ts",
+    "check:plural-references": "python3 ai/scripts/find-plural-references.py"
   },
   "peerDependencies": {
     "@angular/cdk": "^19.0.0 || ^20.0.0",

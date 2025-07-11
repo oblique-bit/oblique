@@ -40,7 +40,7 @@ The semantic level supports complex theming through multiple dimensions that can
 ### Level 1: Primitives
 
 ```
-src/lib/themes/primitives/colors.json
+src/lib/themes/primitive/color.json
 ```
 
 Contains only hardcoded hex values organized by color groups without semantic meaning:
@@ -85,16 +85,14 @@ src/lib/themes/semantics/colors/lightness/
     "s": {
       "color": {
         "neutral": {
-          "bg": {
-            "contrast-highest-default": "{ob.p.colors.basic.white}",
-            "contrast-highest-inverse": "{ob.p.colors.cobalt.700}"
+          "bg": {        "contrast-highest-default": "{ob.p.color.basic.white}",
+        "contrast-highest-inverse": "{ob.p.color.cobalt.700}"
           }
         },
         "interaction": {
           "emphasis-default": {
-            "bg-base": {
-              "contrast-high-default": "{ob.p.colors.steelblue.800}",
-              "contrast-high-inverse": "{ob.p.colors.basic.white}"
+            "bg-base": {        "contrast-high-default": "{ob.p.color.steelblue.800}",
+        "contrast-high-inverse": "{ob.p.color.basic.white}"
             }
           }
         }

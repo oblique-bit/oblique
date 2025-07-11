@@ -317,10 +317,11 @@ ob.s.color.interaction.* → Direct primitive color references
 - **Disabled**: Always use `fg-disabled` for inactive interactive elements
 
 ### 5. Contrast Requirements
-- Always use appropriate contrast levels for accessibility
+- Always meet WCAG 2.1 AA contrast requirements for accessibility
 - High contrast for critical information and primary actions
 - Medium contrast for standard content and secondary actions
 - Low contrast for subtle/secondary information
+- Avoid excessive contrast that may compromise usability or color identity
 
 ### 6. Theme Consistency
 - Use `-default` for standard themes
@@ -339,6 +340,8 @@ ob.s.color.interaction.* → Direct primitive color references
 ---
 
 ## Component Token Consumption Guidelines
+
+> **📋 For comprehensive token consumption rules across ALL token types (color, typography, spacing), see: [Token Consumption Guidelines](./token-consumption-guidelines.md)**
 
 These guidelines define which semantic color token types specific component categories should consume. Following these rules ensures semantic consistency and maintains proper token architecture.
 
@@ -468,7 +471,7 @@ When refactoring existing components:
 1. **Identify component purpose** (status-based, interactive, or neutral)
 2. **Map current tokens** to appropriate semantic types
 3. **Test theme switching** to ensure proper inversity support
-4. **Validate contrast ratios** meet accessibility requirements
+4. **Validate contrast ratios** meet WCAG 2.1 AA accessibility requirements
 5. **Update documentation** to reflect new token usage
 
 ---
@@ -539,7 +542,7 @@ Icon definitions are maintained separately in the icon system but should align w
 
 ---
 
-*Last updated: July 10, 2025 - Added component consumption guidelines based on badge token architecture fixes*
+*Last updated: July 11, 2025 - Corrected accessibility standards from AAA to WCAG 2.1 AA with proper context about usability considerations*
 
 ### contrast-highest Usage
 
@@ -552,16 +555,24 @@ The `contrast-highest` contrast level provides maximum accessibility and readabi
 - Emergency or alert backgrounds
 
 **Foregrounds (`fg`):**
-- Text that must meet the highest accessibility standards (AAA level)
+- Text that must meet WCAG 2.1 AA accessibility standards
 - Text on complex or image backgrounds
 - Small text that needs maximum legibility
 - Error, warning, or critical status text
 
+**Note on Accessibility Standards:**
+This design system targets WCAG 2.1 AA contrast requirements. While AAA contrast is numerically higher, it may compromise usability in certain contexts:
+- Excessive contrast can appear too sharp and strain users' eyes
+- Status colors at extreme contrast levels (900 or 50) may lose saturation and fail to be properly identified
+- Loss of color identity can increase cognitive load for users
+
+AAA contrast should only be used when it enhances rather than compromises usability.
+
 **Reference Pattern:**
-- In light theme: `inversity-normal` references `{ob.p.colors.basic.white}` (white primitive) for backgrounds and `{ob.p.colors.cobalt.900}` (darkest cobalt) for text
-- In light theme: `inversity-flipped` references `{ob.p.colors.cobalt.900}` (darkest cobalt) for backgrounds and `{ob.p.colors.basic.white}` (white primitive) for text
-- In dark theme: `inversity-normal` references `{ob.p.colors.cobalt.900}` (darkest cobalt) for backgrounds and `{ob.p.colors.basic.white}` (white primitive) for text  
-- In dark theme: `inversity-flipped` references `{ob.p.colors.basic.white}` (white primitive) for backgrounds and `{ob.p.colors.cobalt.900}` (darkest cobalt) for text
+- In light theme: `inversity-normal` references `{ob.p.color.basic.white}` (white primitive) for backgrounds and `{ob.p.color.cobalt.900}` (darkest cobalt) for text
+- In light theme: `inversity-flipped` references `{ob.p.color.cobalt.900}` (darkest cobalt) for backgrounds and `{ob.p.color.basic.white}` (white primitive) for text
+- In dark theme: `inversity-normal` references `{ob.p.color.cobalt.900}` (darkest cobalt) for backgrounds and `{ob.p.color.basic.white}` (white primitive) for text  
+- In dark theme: `inversity-flipped` references `{ob.p.color.basic.white}` (white primitive) for backgrounds and `{ob.p.color.cobalt.900}` (darkest cobalt) for text
 
 This ensures maximum contrast between foreground and background elements for optimal accessibility.
 

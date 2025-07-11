@@ -36,11 +36,11 @@ None currently available. Designers should be aware of this limitation when work
 **Issue**: `ob.s.color.neutral.fg.contrast-lowest.inversity-normal` references an alpha color primitive in light theme.
 
 **Description**: 
-The neutral foreground token for the lowest contrast level uses `{ob.p.colors.cobalt-alpha.400}` which includes transparency. This may be intentional for achieving very subtle text (like disabled states), but should be verified.
+The neutral foreground token for the lowest contrast level uses `{ob.p.color.cobalt-alpha.400}` which includes transparency. This may be intentional for achieving very subtle text (like disabled states), but should be verified.
 
 **Details**:
 - Token: `ob.s.color.neutral.fg.contrast-lowest.inversity-normal`
-- Light theme value: `{ob.p.colors.cobalt-alpha.400}` (alpha/transparent)
+- Light theme value: `{ob.p.color.cobalt-alpha.400}` (alpha/transparent)
 - Use case: Very subtle text for disabled states
 
 **Considerations**:
