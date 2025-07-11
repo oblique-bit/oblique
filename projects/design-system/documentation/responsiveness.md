@@ -14,7 +14,7 @@
 
 ### `ob.g.breakpoints.*`
 
-A full set of primitive breakpoint tokens is defined in `src/lib/themes/global/scoped-themes/static.json`:
+A full set of primitive breakpoint tokens is defined in `src/lib/themes/global/themes-scoped/static.json`:
 
 - `ob.g.breakpoints.0` - 0px (base for smallest viewports)
 - `ob.g.breakpoints.640` - 640px (small viewports)
@@ -29,7 +29,7 @@ A full set of primitive breakpoint tokens is defined in `src/lib/themes/global/s
 
 ### `ob.g.breakpoint`
 
-The primary token for media queries, defined in `src/lib/themes/global/responsiveness/`:
+The primary token for media queries, defined in `src/lib/themes/global/themes-user/viewport/`:
 
 | Theme | Token | References | Resolved Value | Description |
 |-------|-------|------------|----------------|-------------|
@@ -53,7 +53,7 @@ Used primarily as a variable in Figma. Enables component variants to respond to 
 Responsive scaling multiplier that adjusts based on viewport:
 
 - **Desktop theme:** `4` (standard scale)
-- **Mobile theme:** `4` (same as desktop for consistent experience)
+- **Mobile theme:** `5` (1.25x larger for touch accessibility)
 
 ## Token File Structure
 
@@ -61,11 +61,12 @@ The responsive tokens are organized in the following files:
 
 ```
 src/lib/themes/global/
-├── scoped-themes/
+├── themes-scoped/
 │   └── static.json              # Contains ob.g.breakpoints.* primitives
-└── responsiveness/
-    ├── desktop.json             # Desktop-specific responsive tokens
-    └── mobile.json              # Mobile-specific responsive tokens
+└── themes-user/
+    └── viewport/
+        ├── desktop.json         # Desktop-specific responsive tokens
+        └── mobile.json          # Mobile-specific responsive tokens
 ```
 
 ## Usage Guidelines
@@ -111,4 +112,4 @@ For reference, here's how common devices map to our viewport strategy:
 ---
 
 **Last Updated:** January 2025  
-**Related Documentation:** [Scoped Themes](../CONTEXT_NOTES.md#scoped-themes-consolidation)
+**Related Documentation:** [Token Consumption Guidelines](./token-consumption-guidelines.md), [Theming](./theming.md)

@@ -313,7 +313,7 @@ ob.s.color.interaction.{emphasis-level}.{element-type}.{contrast-level}-{theme}
 The color token system follows a hierarchical structure where semantic tokens reference neutral and interaction colors for consistency:
 
 ```
-Primitive Colors (ob.p.colors.*)
+Primitive Colors (ob.p.color.*)
     ↓
 Semantic Colors (ob.s.color.*)
     ↓
