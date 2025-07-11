@@ -280,12 +280,12 @@ describe('utilities', () => {
 
 			describe('Material configuration', () => {
 				it.each([
-					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {floatLabel: 'always'}},
-					{token: STEPPER_GLOBAL_OPTIONS, config: {showError: true}},
-					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {clickAction: 'check'}},
+					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline', floatLabel: 'always'}},
+					{token: STEPPER_GLOBAL_OPTIONS, config: {displayDefaultIndicatorType: false, showError: true}},
+					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary', clickAction: 'check'}},
 					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
-					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {hideIcon: true}},
-					{token: MAT_TABS_CONFIG, config: {fitInkBarToContent: true}}
+					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary', hideIcon: true}},
+					{token: MAT_TABS_CONFIG, config: {stretchTabs: false, fitInkBarToContent: true}}
 				])('should create $token injection token', ({token, config}) => {
 					expect(TestBed.inject(token)).toEqual(config);
 				});
