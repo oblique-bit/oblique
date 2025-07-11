@@ -5,9 +5,6 @@ import {catchError, map} from 'rxjs/operators';
 import {Observable, forkJoin, of} from 'rxjs';
 import {DeepString, ObITranslationFile} from './multi-translate-loader.model';
 
-/**
- * @deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
- */
 export const TRANSLATION_FILES = new InjectionToken('TRANSLATION_FILES');
 
 export const OB_FLATTEN_TRANSLATION_FILES = new InjectionToken<boolean>('Flatten translation files');
