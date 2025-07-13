@@ -6,13 +6,23 @@
 PROJECT_DIR="$(dirname "$0")/.."
 cd "$PROJECT_DIR" || exit 1
 
-echo "🔍 Searching for empty untracked files..."
+echo "🔍 Searching for empty files in documentation directory..."
 
-# Get list of untracked files
+# Find all empty files in documentation directory
+DOCUMENTATION_DIR="$PROJECT_DIR/documentation"
+# Use relative paths for better readability
+cd "$PROJECT_DIR" || exit 1
+EMPTY_FILES_LIST=$(find "documentation" -type f -empty 2>/dev/null)
+
+# Also check untracked files via git (original functionality)
 UNTRACKED_FILES=$(git status --porcelain | grep "^??" | cut -c4-)
 
-if [ -z "$UNTRACKED_FILES" ]; then
-    echo "✅ No untracked files found"
+# Combine the lists (untracked + empty docs files)
+ALL_FILES="$EMPTY_FILES_LIST
+$UNTRACKED_FILES"
+
+if [ -z "$ALL_FILES" ]; then
+    echo "✅ No empty files found"
     exit 0
 fi
 
@@ -32,7 +42,18 @@ while IFS= read -r file; do
                    [[ "$file" == *"clean-inverse-tokens"* ]] || \
                    [[ "$file" == *"AI_COMMANDS"* ]] || \
                    [[ "$file" == *"TOKEN_"* ]] || \
-                   [[ "$file" == *"static.json" && "$file" == *"global"* ]]; then
+                   [[ "$file" == *"static.json" && "$file" == *"global"* ]] || \
+                   # Always remove files directly in documentation folder (only subfolders allowed)
+                   [[ "$file" == "documentation/"*.md ]] || \
+                   [[ "$file" == "documentation/"*.json ]] || \
+                   [[ "$file" == "documentation/"*.js ]] || \
+                   [[ "$file" == "documentation/"*.ts ]] || \
+                   # Original patterns
+                   [[ "$file" == *"documentation/semantic-colors-"* ]] || \
+                   [[ "$file" == *"documentation/design-tokens/colors/colors-semantic-"* ]] || \
+                   [[ "$file" == *"documentation/status-token-classification.md"* ]] || \
+                   [[ "$file" == *"documentation/competitive-analysis.md"* ]] || \
+                   [[ "$file" == *"documentation/naming-conventions.md"* ]]; then
                     echo "🗑️  Removing empty file: $file"
                     rm "$file"
                     REMOVED_FILES+=("$file")
@@ -45,7 +66,7 @@ while IFS= read -r file; do
                 ;;
         esac
     fi
-done <<< "$UNTRACKED_FILES"
+done <<< "$ALL_FILES"
 
 # Log the cleanup if any files were removed
 if [ ${#REMOVED_FILES[@]} -gt 0 ]; then

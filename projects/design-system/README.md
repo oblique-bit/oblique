@@ -22,26 +22,6 @@ You will find information about how to use Oblique, code samples, FAQ and many m
 - **test-ci**: same as test, but an additional Sonar report is generated; Automatically run on the CI pipeline
 - **build**: build the library; Automatically run on the CI pipeline
 - **release**: create a new release, i.e. bump version number and updates the changelog
-- **check:plural-references**: validates singular naming conventions across all token names, file names, and documentation (scripts-custom/)
-- **check:token-syntax**: quick validation of token reference syntax and common issues (scripts-custom/)
-
-## Custom Scripts
-
-The `scripts-custom/` folder contains reusable design system maintenance and validation scripts useful for the entire team:
-
-- **Validation**: `find-plural-references.py`, `quick-validate-token-syntax.py`, `validate-consumption-hierarchy.py`
-- **Analysis**: `analyze-emphasis-structure.js`, `inspect-token-structure.js`, `detect-circular-token-references.js`  
-- **Maintenance**: `remove-obsolete-files.js`, `remove-empty-files.sh`
-
-See [scripts-custom/README.md](./scripts-custom/README.md) for detailed documentation and usage instructions.
-
-## Design System Documentation
-
-- **[Token Consumption Guidelines](./documentation/token-consumption-guidelines.md)** - Comprehensive rules for consuming tokens across all types
-- **[Color Tokens](./documentation/color-tokens.md)** - Complete color token system documentation  
-- **[Theming](./documentation/theming.md)** - Theme architecture and implementation
-- **[Design Token Naming](./documentation/design-token-naming.md)** - Naming conventions and strategy
-- **[Bugs & Issues](./documentation/bugs.md)** - Known issues and their solutions
 
 ## Usage
 
