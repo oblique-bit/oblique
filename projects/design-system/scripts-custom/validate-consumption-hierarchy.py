@@ -25,7 +25,7 @@ def main():
     print("🔍 TOKEN CONSUMPTION HIERARCHY VALIDATOR")
     print("=" * 55)
     print("TODO: Implement comprehensive validation of token consumption hierarchy")
-    print("See: documentation/token-consumption-guidelines.md")
+    print("See: documentation/design-tokens/guidelines-token-consumption.md")
     print()
     print("Current validation available:")
     print("- Plural reference validation: npm run check:plural-references")

@@ -83,12 +83,14 @@ python3 scripts-custom/generate-word-docs.py
 - Token debugging and tracing
 - Quality assurance scripts
 
-### ai/scripts/
-✅ **AI workflow and context management**
+### Private Scripts Directory
+✅ **Private automation and internal workflow** (Mirrors this directory)
 - Personal AI memory backups
 - Context automation
 - Historical refactoring scripts
-- AI-specific tooling
+- Browser automation and scraping
+- Competitive analysis tools
+- Internal process automation
 
 ### scripts/
 ✅ **Development and build scripts**
@@ -106,10 +108,13 @@ When adding new design system maintenance scripts:
    - Analyzes token structure
    - Maintains codebase consistency
 
-2. **Place in ai/scripts/** if the script is:
+2. **Place in private scripts directory** if the script is:
    - Personal AI workflow automation
    - Context or memory management
    - Specific to AI-driven development
+   - Browser automation or scraping
+   - Competitive analysis automation
+   - Internal process automation
 
 3. **Place in scripts/** if the script is:
    - Build or development tooling
@@ -118,10 +123,10 @@ When adding new design system maintenance scripts:
 
 ## 📖 Related Documentation
 
-- **Token Guidelines**: `documentation/token-consumption-guidelines.md`
-- **Color Tokens**: `documentation/color-tokens.md`
-- **Naming Strategy**: `ai/TOKEN_NAMING_STRATEGY.md`
-- **Bug Tracking**: `documentation/bugs.md`
+- **Token Guidelines**: `documentation/design-tokens/guidelines-token-consumption.md`
+- **Color Tokens**: `documentation/design-tokens/colors.md`
+- **Naming Strategy**: Internal documentation available
+- **Bug Tracking**: Internal issue tracking system
 
 ## ⚠️ Important Notes
 

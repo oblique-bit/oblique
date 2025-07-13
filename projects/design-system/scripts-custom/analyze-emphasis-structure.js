@@ -40,15 +40,15 @@ function flattenTokens(obj, prefix = '') {
 
 // Main analysis function
 function analyzeEmphasisStructure() {
-    const basePath = '/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantics/colors';
+    const basePath = '/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/color';
     
     // Read emphasis layer files
-    const emphasisMedium = readJsonFile(path.join(basePath, 'emphasis/medium.json'));
-    const emphasisLow = readJsonFile(path.join(basePath, 'emphasis/low.json'));
+    const emphasisHigh = readJsonFile(path.join(basePath, 'l3-emphasis/high.json'));
+    const emphasisLow = readJsonFile(path.join(basePath, 'l3-emphasis/low.json'));
     
     // Read inversity layer files
-    const inversityNormal = readJsonFile(path.join(basePath, 'inversity/normal.json'));
-    const inversityFlipped = readJsonFile(path.join(basePath, 'inversity/flipped.json'));
+    const inversityNormal = readJsonFile(path.join(basePath, 'l2-inversity/normal.json'));
+    const inversityFlipped = readJsonFile(path.join(basePath, 'l2-inversity/flipped.json'));
     
     // Read button component
     const buttonComponent = readJsonFile('/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/html/button/color-static.json');
@@ -56,13 +56,13 @@ function analyzeEmphasisStructure() {
     console.log('=== EMPHASIS LAYER ANALYSIS ===\n');
     
     // Analyze emphasis layer
-    if (emphasisMedium) {
-        console.log('EMPHASIS MEDIUM TOKENS:');
-        const emphasisMediumTokens = flattenTokens(emphasisMedium);
-        emphasisMediumTokens.forEach(token => {
+    if (emphasisHigh) {
+        console.log('EMPHASIS HIGH TOKENS:');
+        const emphasisHighTokens = flattenTokens(emphasisHigh);
+        emphasisHighTokens.forEach(token => {
             console.log(`  ${token.name} -> ${token.value}`);
         });
-        console.log(`Total: ${emphasisMediumTokens.length} tokens\n`);
+        console.log(`Total: ${emphasisHighTokens.length} tokens\n`);
     }
     
     if (emphasisLow) {
@@ -76,15 +76,15 @@ function analyzeEmphasisStructure() {
     
     // Analyze inversity layer tokens that reference emphasis
     if (inversityNormal) {
-        console.log('INVERSITY NORMAL TOKENS (interaction.emphasis-medium):');
+        console.log('INVERSITY NORMAL TOKENS (interaction.emphasis-high):');
         const inversityTokens = flattenTokens(inversityNormal);
         const emphasisTokens = inversityTokens.filter(token => 
-            token.name.includes('interaction.emphasis-medium')
+            token.name.includes('interaction.emphasis-high')
         );
         emphasisTokens.forEach(token => {
             console.log(`  ${token.name} -> ${token.value}`);
         });
-        console.log(`Total emphasis-medium tokens: ${emphasisTokens.length}\n`);
+        console.log(`Total emphasis-high tokens: ${emphasisTokens.length}\n`);
     }
     
     // Analyze button component references
@@ -92,7 +92,7 @@ function analyzeEmphasisStructure() {
         console.log('BUTTON COMPONENT REFERENCES:');
         const buttonTokens = flattenTokens(buttonComponent);
         buttonTokens.forEach(token => {
-            if (token.value.includes('interaction.state') || token.value.includes('interaction.emphasis-medium')) {
+            if (token.value.includes('interaction.state') || token.value.includes('interaction.emphasis-high')) {
                 console.log(`  ${token.name} -> ${token.value}`);
             }
         });
@@ -107,8 +107,8 @@ function analyzeEmphasisStructure() {
     console.log('   - etc.');
     
     console.log('\n2. The inversity layer should contain tokens like:');
-    console.log('   - ob.s.color.interaction.emphasis-medium.fg-base.contrast-low');
-    console.log('   - ob.s.color.interaction.emphasis-medium.bg-base.contrast-low');
+    console.log('   - ob.s.color.interaction.emphasis-high.fg-base.contrast-low');
+    console.log('   - ob.s.color.interaction.emphasis-high.bg-base.contrast-low');
     console.log('   - etc.');
     
     console.log('\n3. The button component should reference emphasis layer tokens:');

@@ -8,9 +8,10 @@ const themesDir = path.join(__dirname, '../../src/lib/themes');
 
 console.log('🔍 Debug: Available tokens in emphasis layer...\n');
 
-// Load emphasis medium file
-const emphasisMediumPath = path.join(themesDir, 'semantics/colors/emphasis/medium.json');
-const staticPath = path.join(themesDir, 'semantics/colors/static.json');
+// Load emphasis files from current structure
+const emphasisHighPath = path.join(themesDir, 'semantic/color/l3-emphasis/high.json');
+const emphasisLowPath = path.join(themesDir, 'semantic/color/l3-emphasis/low.json');
+const staticPath = path.join(themesDir, 'semantic/color/static.json');
 
 function loadAndPrintTokens(filePath, name) {
     if (!fs.existsSync(filePath)) {
@@ -75,14 +76,15 @@ function loadAndPrintTokens(filePath, name) {
 const testTokens = [
     'ob.s.color.interaction.state.fg.enabled',
     'ob.s.color.static.no-color',
-    'ob.s.color.interaction.emphasis-medium.bg-base.contrast-medium'
+    'ob.s.color.interaction.emphasis-high.bg-base.contrast-medium'
 ];
 
 console.log('🧪 Testing specific token lookup...\n');
 
 testTokens.forEach(tokenPath => {
     const filesToCheck = [
-        { path: emphasisMediumPath, name: 'emphasis-medium' },
+        { path: emphasisHighPath, name: 'emphasis-high' },
+        { path: emphasisLowPath, name: 'emphasis-low' },
         { path: staticPath, name: 'static' }
     ];
     
@@ -123,5 +125,6 @@ testTokens.forEach(tokenPath => {
 });
 
 // Load and show all available tokens
-loadAndPrintTokens(emphasisMediumPath, 'Emphasis Medium');
+loadAndPrintTokens(emphasisHighPath, 'Emphasis High');
+loadAndPrintTokens(emphasisLowPath, 'Emphasis Low');
 loadAndPrintTokens(staticPath, 'Static');

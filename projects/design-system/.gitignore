@@ -1,7 +1,33 @@
-# AI workflow and personal notes (includes reports)
-ai/
+# Private/internal content (includes all sensitive and automation data)
+_private/
+
+# VS Code workspace settings (personal preferences)
+.vscode/
+
+# GitHub workflows (contains JIRA automation)
+.github/
+
+# MCP configuration files (should be in global VS Code settings)
+mcp-config*.json
+MCP-*.md
+
+# Node.js dependencies
+node_modules/
+
+# JIRA CSV imports (contains personal data)
+_private/issues/jira/_import/
+_private/issues/jira/processed/
 
 # Temporary/utility scripts and files
 temp-scripts/
+
+# Competitive analysis scraping data (large files)
+documentation/reports/competitive-analysis/scraped-html/
+documentation/reports/competitive-analysis/raw-data/
+documentation/reports/competitive-analysis/scrape-logs/
+documentation/reports/competitive-analysis/figma-files-catalog/
+documentation/reports/competitive-analysis/downloaded-fig-files/
+documentation/reports/competitive-analysis/figma-screenshots/
+documentation/reports/competitive-analysis/figma-download-logs/
 
 

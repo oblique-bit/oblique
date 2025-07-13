@@ -30,12 +30,15 @@ try {
   // Define obsolete file patterns - files that are known to be deprecated
   const obsoletePatterns = [
     // Obsolete emphasis files
-    /src\/lib\/themes\/semantics\/colors\/emphasis\/neutral\.json$/,
-    /src\/lib\/themes\/semantics\/colors\/emphasis\/status\.json$/,
+    /src\/lib\/themes\/semantic\/color\/emphasis\/neutral\.json$/,
+    /src\/lib\/themes\/semantic\/color\/emphasis\/status\.json$/,
     
     // Obsolete inversity files (renamed from default/inverse to normal/flipped)
-    /src\/lib\/themes\/semantics\/colors\/inversity\/default\.json$/,
-    /src\/lib\/themes\/semantics\/colors\/inversity\/inverse\.json$/,
+    /src\/lib\/themes\/semantic\/color\/inversity\/default\.json$/,
+    /src\/lib\/themes\/semantic\/color\/inversity\/inverse\.json$/,
+    
+    // Legacy path structure (semantics vs semantic)
+    /src\/lib\/themes\/semantics\/colors\/.*\.json$/,
     
     // Obsolete component inversity folders
     /src\/lib\/themes\/html\/.*\/inversity\/.*\.json$/,
