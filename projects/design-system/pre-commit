@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Set colors for output
+RED='\033[0;31m'
+BOLD='\033[1m'
+NC='\033[0m' # No Color
+
+# List of protected files that shouldn't be modified
+PROTECTED_FILES=(
+  "projects/design-system/package.json"
+  "projects/design-system/ng-package.json"
+  "projects/design-system/tsconfig.lib.json"
+  "projects/design-system/tsconfig.lib.prod.json"
+  "projects/design-system/tsconfig.spec.json"
+)
+
+# Special emphasis for package.json
+if git diff --cached --name-only | grep -q "projects/design-system/package.json"; then
+  echo -e "${RED}${BOLD}ERROR: YOU ARE NOT ALLOWED TO MODIFY package.json!${NC}"
+  echo -e "${RED}${BOLD}This file should only be modified by authorized team members.${NC}"
+  echo -e "${RED}Please restore package.json to its original state before committing.${NC}"
+  exit 1
+fi
+
+# Check if any other protected files have been modified
+for file in "${PROTECTED_FILES[@]}"; do
+  if git diff --cached --name-only | grep -q "$file"; then
+    echo "Error: You're trying to commit changes to '$file'"
+    echo "This file is protected and should not be modified directly."
+    echo "Please revert your changes to this file before committing."
+    exit 1
+  fi
+done
+
+# Continue with the commit if no protected files were modified
+exit 0

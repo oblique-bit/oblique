@@ -1,0 +1,6 @@
+# Mark files that shouldn't be modified by the team
+package.json lockdown
+ng-package.json lockdown
+tsconfig.lib.json lockdown
+tsconfig.lib.prod.json lockdown
+tsconfig.spec.json lockdown
