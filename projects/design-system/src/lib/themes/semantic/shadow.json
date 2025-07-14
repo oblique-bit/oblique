@@ -74,7 +74,7 @@
           "$type": "boxShadow",
           "$value": [
             {
-              "color": "{ob.s.color.static.no-color}",
+              "color": "{ob.s0.color.static.no-color}",
               "type": "dropShadow",
               "x": "0",
               "y": "0",

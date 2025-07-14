@@ -424,12 +424,6 @@
       "semantic/icon": "enabled",
       "semantic/shadow": "enabled",
       "semantic/typography/style": "enabled",
-      "semantic/color/s1-lightness/dark": "disabled",
-      "semantic/color/s1-lightness/light": "disabled",
-      "semantic/color/s2-inversity/flipped": "disabled",
-      "semantic/color/s2-inversity/normal": "disabled",
-      "semantic/color/s3-emphasis/low": "disabled",
-      "semantic/color/s3-emphasis/high": "disabled",
       "semantic/color/s0-static": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:30",
@@ -442,10 +436,6 @@
       "ob.g.breakpoints.1024": "04a96019a8657ad1fbaaefcf9f2fdd4be37cab58",
       "ob.g.breakpoints.1280": "d5347058c46a76c59f31dba45fdce68d89c1d967",
       "ob.g.breakpoints.1536": "c6a24637dd485f00c3d1bcdb337909d07821eeaa",
-      "ob.s.color.static.brand": "e1080f9089c3e27e2d959dfca32ada2bb095cb0d",
-      "ob.s.color.static.no-color": "90f6a9461430790efa2b8fdfd74b403b2a204995",
-      "ob.s.color.interaction.indicator.selected": "ccc210d8f8a88aebbd9aab63ca9743bb804e7c44",
-      "ob.s.color.interaction.indicator.unselected": "5c88d80571cb3248f192c919356e7f3c033baf01",
       "ob.s.radii.none": "52e0fdabbed4dd3ec4e0d458cd808b6f5f7bae30",
       "ob.s.radii.sm": "050197a94758191515efb55083a9b9c4089bcfac",
       "ob.s.radii.md": "3c4b8a8e1072248ae44a4b6be3cb55501c61c0c3",
@@ -824,7 +814,11 @@
       "figma-doc.color.fg-static": "b862869c0e6454f4c7fb071d9a9212f458aa5c81",
       "figma-doc.color.figma-canvas-bg": "9d30798003714e1caf39978a9ae5e77b22b06a78",
       "figma-doc.color.figma-section-bg": "d3fba795186b216107e6624f9f2dad438eb817cf",
-      "figma-doc.color.figma-section-border": "f15277aeef1971d84401f7aca0540c30e657ab95"
+      "figma-doc.color.figma-section-border": "f15277aeef1971d84401f7aca0540c30e657ab95",
+      "ob.s0.color.static.brand": "e1080f9089c3e27e2d959dfca32ada2bb095cb0d",
+      "ob.s0.color.static.no-color": "90f6a9461430790efa2b8fdfd74b403b2a204995",
+      "ob.s0.color.interaction.indicator.selected": "ccc210d8f8a88aebbd9aab63ca9743bb804e7c44",
+      "ob.s0.color.interaction.indicator.unselected": "5c88d80571cb3248f192c919356e7f3c033baf01"
     },
     "group": "core"
   },
@@ -933,14 +927,7 @@
       "global/themes-user/viewport/desktop": "enabled",
       "semantic/spacing/desktop": "enabled",
       "semantic/typography/responsive/desktop": "enabled",
-      "component/molecules/infobox/responsive/desktop": "enabled",
-      "semantic/color/s1-lightness/dark": "disabled",
-      "semantic/color/s1-lightness/light": "disabled",
-      "semantic/color/s2-inversity/flipped": "disabled",
-      "semantic/color/s2-inversity/normal": "disabled",
-      "semantic/color/s3-emphasis/low": "disabled",
-      "semantic/color/s3-emphasis/high": "disabled",
-      "semantic/color/s0-static": "disabled"
+      "component/molecules/infobox/responsive/desktop": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult-responsive": "21fd4fadb4c1d3422098c4115fd6d396a6aba0ea",
@@ -1153,14 +1140,7 @@
       "global/themes-user/viewport/mobile": "enabled",
       "semantic/spacing/mobile": "enabled",
       "semantic/typography/responsive/mobile": "enabled",
-      "component/molecules/infobox/responsive/mobile": "enabled",
-      "semantic/color/s1-lightness/dark": "disabled",
-      "semantic/color/s1-lightness/light": "disabled",
-      "semantic/color/s2-inversity/flipped": "disabled",
-      "semantic/color/s2-inversity/normal": "disabled",
-      "semantic/color/s3-emphasis/low": "disabled",
-      "semantic/color/s3-emphasis/high": "disabled",
-      "semantic/color/s0-static": "disabled"
+      "component/molecules/infobox/responsive/mobile": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult-responsive": "21fd4fadb4c1d3422098c4115fd6d396a6aba0ea",
@@ -1447,12 +1427,7 @@
       "primitive/color": "source",
       "semantic/asset/theme/lightness/light": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/light": "enabled",
-      "semantic/color/s1-lightness/dark": "disabled",
       "semantic/color/s1-lightness/light": "enabled",
-      "semantic/color/s2-inversity/flipped": "disabled",
-      "semantic/color/s2-inversity/normal": "disabled",
-      "semantic/color/s3-emphasis/low": "disabled",
-      "semantic/color/s3-emphasis/high": "disabled",
       "semantic/color/s0-static": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:32",
@@ -1725,10 +1700,10 @@
       "ob.c.infobox.color.fg.resolved": "b6e5e67eab4c2759ba989eba69ba3b061913aebf",
       "ob.c.infobox.color.fg.fatal": "1501c4ee91e42b36e174151bef2d9ec1b7de871e",
       "figma-doc.color.fg": "532579886e39e4675b3a67db350a76052ab32f22",
-      "ob.s.color.static.brand": "0328e5e4588d88a3685adf41fa5464a58719cef9",
-      "ob.s.color.static.no-color": "261a890701cc7f44c5883fbcf484a80dd9be17e6",
-      "ob.s.color.interaction.indicator.selected": "d7eddc0f303e29d31e2d7701a08ae6be586a5b51",
-      "ob.s.color.interaction.indicator.unselected": "3a6eecd4071e5abe616d742aa3dc29b29813d057"
+      "ob.s0.color.static.brand": "0328e5e4588d88a3685adf41fa5464a58719cef9",
+      "ob.s0.color.static.no-color": "261a890701cc7f44c5883fbcf484a80dd9be17e6",
+      "ob.s0.color.interaction.indicator.selected": "d7eddc0f303e29d31e2d7701a08ae6be586a5b51",
+      "ob.s0.color.interaction.indicator.unselected": "3a6eecd4071e5abe616d742aa3dc29b29813d057"
     },
     "group": "s1-lightness"
   },
@@ -1940,11 +1915,6 @@
       "semantic/asset/theme/lightness/dark": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/dark": "enabled",
       "semantic/color/s1-lightness/dark": "enabled",
-      "semantic/color/s1-lightness/light": "disabled",
-      "semantic/color/s2-inversity/flipped": "disabled",
-      "semantic/color/s2-inversity/normal": "disabled",
-      "semantic/color/s3-emphasis/low": "disabled",
-      "semantic/color/s3-emphasis/high": "disabled",
       "semantic/color/s0-static": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:32",
@@ -2217,10 +2187,6 @@
       "ob.c.infobox.color.fg.resolved": "b6e5e67eab4c2759ba989eba69ba3b061913aebf",
       "ob.c.infobox.color.fg.fatal": "1501c4ee91e42b36e174151bef2d9ec1b7de871e",
       "figma-doc.color.fg": "532579886e39e4675b3a67db350a76052ab32f22",
-      "ob.s.color.static.brand": "0328e5e4588d88a3685adf41fa5464a58719cef9",
-      "ob.s.color.static.no-color": "261a890701cc7f44c5883fbcf484a80dd9be17e6",
-      "ob.s.color.interaction.indicator.selected": "d7eddc0f303e29d31e2d7701a08ae6be586a5b51",
-      "ob.s.color.interaction.indicator.unselected": "3a6eecd4071e5abe616d742aa3dc29b29813d057",
       "ob.s1.color.status.fatal.bg.contrast-highest.inversity-normal": "93d1ac811e49870c76690e667f08bf357ffe7787",
       "ob.s1.color.status.fatal.bg.contrast-highest.inversity-flipped": "7dd26502433b94f59e50879fe080a498aa838bef",
       "ob.s1.color.status.fatal.fg.contrast-highest.inversity-normal": "10af784454706f26ad80e59c95b894ac0f130463",
@@ -2228,7 +2194,11 @@
       "ob.c.infobox.color.icon.fatal-test": "b84970e6917dc9972d58988144ae1f91def9aa73",
       "ob.c.infobox.color.border.fatal-test": "3bfd6d6ef12ddc767730503f94131a2cae7aef9d",
       "ob.c.infobox.color.surface.fatal-test": "b873b6de0316c419b2036a6267072165803a806e",
-      "ob.c.infobox.color.fg.fatal-test": "86f5ff42868e67e728a1e0984de8ac2e5425d475"
+      "ob.c.infobox.color.fg.fatal-test": "86f5ff42868e67e728a1e0984de8ac2e5425d475",
+      "ob.s0.color.static.brand": "0328e5e4588d88a3685adf41fa5464a58719cef9",
+      "ob.s0.color.static.no-color": "261a890701cc7f44c5883fbcf484a80dd9be17e6",
+      "ob.s0.color.interaction.indicator.selected": "d7eddc0f303e29d31e2d7701a08ae6be586a5b51",
+      "ob.s0.color.interaction.indicator.unselected": "3a6eecd4071e5abe616d742aa3dc29b29813d057"
     },
     "group": "s1-lightness"
   },
@@ -2298,13 +2268,7 @@
       "ob.c.button.color.border.close.disabled": "S:a28283aa223d007d9604375a2f92654e081c7f7a,"
     },
     "selectedTokenSets": {
-      "semantic/color/s1-lightness/dark": "disabled",
-      "semantic/color/s1-lightness/light": "disabled",
-      "semantic/color/s2-inversity/flipped": "disabled",
-      "semantic/color/s2-inversity/normal": "enabled",
-      "semantic/color/s3-emphasis/low": "disabled",
-      "semantic/color/s3-emphasis/high": "disabled",
-      "semantic/color/s0-static": "disabled"
+      "semantic/color/s2-inversity/normal": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:33",
     "$figmaModeId": "3:5",
@@ -2618,13 +2582,7 @@
       "ob.c.button.color.border.close.disabled": "S:a28283aa223d007d9604375a2f92654e081c7f7a,"
     },
     "selectedTokenSets": {
-      "semantic/color/s1-lightness/dark": "disabled",
-      "semantic/color/s1-lightness/light": "disabled",
-      "semantic/color/s2-inversity/flipped": "enabled",
-      "semantic/color/s2-inversity/normal": "disabled",
-      "semantic/color/s3-emphasis/low": "disabled",
-      "semantic/color/s3-emphasis/high": "disabled",
-      "semantic/color/s0-static": "disabled"
+      "semantic/color/s2-inversity/flipped": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:3:33",
     "$figmaModeId": "3:6",
@@ -2906,13 +2864,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity-flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s1-lightness/dark": "disabled",
-      "semantic/color/s1-lightness/light": "disabled",
-      "semantic/color/s2-inversity/flipped": "disabled",
-      "semantic/color/s2-inversity/normal": "disabled",
-      "semantic/color/s3-emphasis/low": "disabled",
-      "semantic/color/s3-emphasis/high": "enabled",
-      "semantic/color/s0-static": "disabled"
+      "semantic/color/s3-emphasis/high": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s3.color.interaction.state.fg.enabled.inversity-normal": "e58c3c209a00a091282c2d16626cdcbfcfed09b0",
@@ -2982,13 +2934,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity-flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s1-lightness/dark": "disabled",
-      "semantic/color/s1-lightness/light": "disabled",
-      "semantic/color/s2-inversity/flipped": "disabled",
-      "semantic/color/s2-inversity/normal": "disabled",
-      "semantic/color/s3-emphasis/low": "enabled",
-      "semantic/color/s3-emphasis/high": "disabled",
-      "semantic/color/s0-static": "disabled"
+      "semantic/color/s3-emphasis/low": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s3.color.interaction.state.fg.enabled.inversity-normal": "e58c3c209a00a091282c2d16626cdcbfcfed09b0",
@@ -3079,14 +3025,7 @@
       "r13.typography.components-only.tooltip.label": "S:01a80ff405036b8a204f742fa49f200230ff826c,"
     },
     "selectedTokenSets": {
-      "_ignore-in-ds/typography-styles-R13": "enabled",
-      "semantic/color/s1-lightness/dark": "disabled",
-      "semantic/color/s1-lightness/light": "disabled",
-      "semantic/color/s2-inversity/flipped": "disabled",
-      "semantic/color/s2-inversity/normal": "disabled",
-      "semantic/color/s3-emphasis/low": "disabled",
-      "semantic/color/s3-emphasis/high": "disabled",
-      "semantic/color/s0-static": "disabled"
+      "_ignore-in-ds/typography-styles-R13": "enabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"
