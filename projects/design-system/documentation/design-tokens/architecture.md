@@ -20,6 +20,13 @@ Tokens follow a hierarchical structure with dot-separated segments:
 {namespace.layer.component.category.property.variant.state}
 ```
 
+**Global Token Pattern:**
+```
+{namespace.layer.category.property}
+```
+
+**Note:** Global tokens (`ob.g.*`) are an exception to the standard reference hierarchy and can be referenced from any level. See [global-tokens.md](./global-tokens.md) for details.
+
 ---
 
 ## 🔧 **Core Segments**
@@ -106,6 +113,7 @@ Key compound patterns used in tokens:
 3. **Hyphen separation** - Connect compound words with hyphens
 4. **Two words max** - Keep compound terms concise
 5. **Hierarchical order** - Follow established segment order
+6. **Reference hierarchy** - Follow proper reference chain (`Component → Semantic → Primitive`), with global tokens being the exception
 
 ---
 

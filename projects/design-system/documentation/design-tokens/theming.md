@@ -19,8 +19,11 @@ Design tokens reference each other through a hierarchical structure with three m
 1. **Primitives** (Level 1) - Base color values
 2. **Semantics** (Level 2) - Contextual color meanings with theming support
 3. **Components** (Level 3) - Component-specific token references
+4. **Global** - System-wide configuration tokens (exception to hierarchy rules)
 
 **Reference Chain:** `Components → Semantics → Primitives`
+
+**Note:** Global tokens (`ob.g.*`) are an exception to this hierarchy and can be referenced from any level. See [global-tokens.md](./global-tokens.md) for more details.
 
 The component level references the semantic level, which references the primitive level. Only the primitive level contains hardcoded values. Code and Figma consume semantic and component levels, but we don't expose the component level to design system consumers in the published libraries.
 
@@ -217,6 +220,8 @@ src/lib/themes/html/button/color-static.json
 The correct reference chain ensures proper theme inheritance:
 
 1. **Components** → **Emphasis** → **Inversity** → **Lightness** → **Primitives**
+
+**Exception:** Global tokens (`ob.g.*`) can be referenced from any level in the hierarchy and are exempt from these chain rules. See [global-tokens.md](./global-tokens.md) for details.
 2. **Components** → **Inversity** → **Lightness** → **Primitives** (for non-interactive elements)
 
 **Validation Rules:**
