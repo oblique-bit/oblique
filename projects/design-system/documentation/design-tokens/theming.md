@@ -257,7 +257,7 @@ Consider generating L2 tokens programmatically from L1 during the build process 
 3. **Preserve architecture** - Maintain the semantic hierarchy and reference chain
 4. **Enable customization** - Allow selective overrides for true inversity cases
 
-**Validation:** Run `python scripts-custom/validate-l1-l2-redundancy.py` to verify current redundancy levels and identify the specific tokens that require manual definition in L2.
+**Validation:** Run `python scripts-custom/validate-s1-s2-redundancy.py` to verify current redundancy levels and identify the specific tokens that require manual definition in S2.
 
 ### Folder Structure vs. Token References
 

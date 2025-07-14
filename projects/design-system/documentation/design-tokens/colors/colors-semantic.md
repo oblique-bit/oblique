@@ -14,37 +14,37 @@ The semantic color system is organized into **dimensional layers** and **static 
 
 ```
 src/lib/themes/semantic/color/
-├── l1-lightness/          # Layer 1: Light/Dark theme variations
+├── s1-lightness/          # Layer 1: Light/Dark theme variations
 │   ├── light.json         # Light theme colors
 │   └── dark.json          # Dark theme colors
-├── l2-inversity/          # Layer 2: Normal/Flipped contrast variations  
+├── s2-inversity/          # Layer 2: Normal/Flipped contrast variations  
 │   ├── normal.json        # Normal contrast colors
 │   └── flipped.json       # Flipped contrast colors
-├── l3-emphasis/           # Layer 3: High/Low emphasis variations
+├── s3-emphasis/           # Layer 3: High/Low emphasis variations
 │   ├── high.json          # High emphasis colors
 │   └── low.json           # Low emphasis colors
-└── static.json            # Static colors (non-themeable)
+└── s0-static.json       # Static colors (non-themeable)
 ```
 
 ### **🎯 Layer System Logic**
 
-#### **L1 - Lightness Layer** (`l1-lightness/`)
+#### **L1 - Lightness Layer** (`s1-lightness/`)
 - **Purpose**: Light/dark theme adaptation
 - **Contains**: `neutral` and `interaction` categories
 - **Files**: `light.json`, `dark.json`
-- **Example token**: `ob.s.color.l1.neutral.bg.contrast-high.inversity-normal`
+- **Example token**: `ob.s1.color.neutral.bg.contrast-high.inversity-normal`
 
-#### **L2 - Inversity Layer** (`l2-inversity/`)
+#### **L2 - Inversity Layer** (`s2-inversity/`)
 - **Purpose**: Normal/flipped contrast contexts
 - **Contains**: Theme variations for different contrast scenarios
 - **Files**: `normal.json`, `flipped.json`
-- **Example token**: `ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-high.inversity-normal`
+- **Example token**: `ob.s2.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal`
 
-#### **L3 - Emphasis Layer** (`l3-emphasis/`)
+#### **L3 - Emphasis Layer** (`s3-emphasis/`)
 - **Purpose**: High/low emphasis variations
 - **Contains**: Emphasis level adaptations
 - **Files**: `high.json`, `low.json`
-- **Example token**: `ob.s.color.l3.interaction.emphasis-high.fg-base`
+- **Example token**: `ob.s3.color.interaction.emphasis-high.fg-base`
 
 ---
 
@@ -108,7 +108,7 @@ Static colors are **non-themeable** values that remain constant across all theme
 ## 📊 **Category Organization**
 
 ### **Neutral Category**
-- **Location**: L1 layer files (`l1-lightness/`)
+- **Location**: L1 layer files (`s1-lightness/`)
 - **Purpose**: Non-interactive UI elements
 - **Includes**: 
   - Background colors (`bg`)
@@ -117,7 +117,7 @@ Static colors are **non-themeable** values that remain constant across all theme
   - Surface colors
 
 ### **Interaction Category**
-- **Location**: L1 layer files (`l1-lightness/`)
+- **Location**: L1 layer files (`s1-lightness/`)
 - **Purpose**: Interactive UI elements
 - **Includes**:
   - Button colors
@@ -127,7 +127,7 @@ Static colors are **non-themeable** values that remain constant across all theme
   - Active states
 
 ### **Static Category**
-- **Location**: `static.json` file
+- **Location**: `s0-static.json` file
 - **Purpose**: Non-themeable constants
 - **Includes**:
   - Brand colors
@@ -140,7 +140,7 @@ Static colors are **non-themeable** values that remain constant across all theme
 
 ### **Layered Token Example**
 ```
-ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-high.inversity-normal
+ob.s2.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal
 │
 ├─ L1 (Lightness): Resolves based on light/dark theme
 ├─ L2 (Inversity): Applies normal/flipped contrast
