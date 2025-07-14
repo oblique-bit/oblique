@@ -46,9 +46,9 @@ Tokens follow a hierarchical structure with dot-separated segments:
 - `border` - Border properties
 
 ### **Levels (Semantic Layer)**
-- `l1` - Level 1 semantic tokens (lightness)
-- `l2` - Level 2 semantic tokens (inversity)
-- `l3` - Level 3 semantic tokens (emphasis)
+- `s1` - Level 1 semantic tokens (lightness)
+- `s2` - Level 2 semantic tokens (inversity)
+- `s3` - Level 3 semantic tokens (emphasis)
 
 ---
 
@@ -56,7 +56,7 @@ Tokens follow a hierarchical structure with dot-separated segments:
 
 ### **Semantic Token**
 ```
-ob.s.color.l2.interaction.emphasis-high.bg-base.contrast-high.inversity-normal
+ob.s2.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal
 │  │  │     │   │           │            │       │              │
 │  │  │     │   │           │            │       │              └─ Theme
 │  │  │     │   │           │            │       └─ Contrast level

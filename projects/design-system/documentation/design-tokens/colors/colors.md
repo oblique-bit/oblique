@@ -17,7 +17,7 @@ semantic.color.category.variation.property.contrast-level
 - **Interaction Colors** - Interactive elements with emphasis levels (high/low) and states (hover, focus, active, disabled)
 
 ### Theme Levels
-Inversity is a theme-level concept that applies across all semantic color categories. The compound inversity suffixes `inversity-normal` and `inversity-flipped` at the end of token names should not be confused with the semantic color themes stored under `src/lib/themes/semantic/color/l2-inversity/`, although they share the same concept and naming.
+Inversity is a theme-level concept that applies across all semantic color categories. The compound inversity suffixes `inversity-normal` and `inversity-flipped` at the end of token names should not be confused with the semantic color themes stored under `src/lib/themes/semantic/color/s2-inversity/`, although they share the same concept and naming.
 
 Components can have baked-in inversity set via global tokens. For example, the `fatal` variant of the `infobox` component is set to flipped inversity:
 ```
@@ -119,7 +119,7 @@ Emphasis colors primarily reference `neutral` and `interaction` color tokens fro
 
 ## Neutral Colors
 
-Neutral colors provide the foundational color palette for backgrounds, text, borders, and surfaces throughout the design system. The live on different semantic levels l1 and l2 and always come in pair inversity-normal (default) and inversity-flipped (e.g. in Footer)
+Neutral colors provide the foundational color palette for backgrounds, text, borders, and surfaces throughout the design system. They live on different semantic levels s1 and s2 and always come in pair inversity-normal (default) and inversity-flipped (e.g. in Footer)
 
 ### Token Structure
 ```
@@ -150,7 +150,7 @@ ob.s.color.neutral.{property}.{contrast-level}-{invesity-variation}
 - `inversity-normal` - Standard theme inheriting the host's theme
 - `inversity-flipped` - Flipped/inverted theme
 
-**Note**: These compound suffixes appear at the end of token names and represent theme-level variations. They are distinct from but related to the semantic color themes stored under `src/lib/themes/semantic/color/l2-inversity/`.
+**Note**: These compound suffixes appear at the end of token names and represent theme-level variations. They are distinct from but related to the semantic color themes stored under `src/lib/themes/semantic/color/s2-inversity/`.
 
 ### Usage Examples
 ```json
@@ -388,9 +388,9 @@ ob.s.color.interaction.* → Direct primitive color references
 - **Shadows**: Use neutral shadow colors for consistent depth
 
 ### 4. Interaction Color Usage
-- **Mandatory level l3**: Always use token from ob.s.color.l3.interaction.state with predefined interaction states for buttons and links.
-- **Foreground**: Tokens from ob.s.color.l3.interaction.state.fg will cover most of use-cases, buttons and link.
-- **Background**: Tokens from ob.s.color.l3.interaction.state.bg mostly use for buttons background.
+- **Mandatory level s3**: Always use token from ob.s3.color.interaction.state with predefined interaction states for buttons and links.
+- **Foreground**: Tokens from ob.s3.color.interaction.state.fg will cover most of use-cases, buttons and link.
+- **Background**: Tokens from ob.s3.color.interaction.state.bg mostly use for buttons background.
 
 ### 5. Contrast Requirements
 - Always meet WCAG 2.1 AA contrast requirements for accessibility
@@ -404,11 +404,11 @@ ob.s.color.interaction.* → Direct primitive color references
 
 
 ### 7. Component Mapping
-- **Infobox**: reserved status colors: critical, attention, info, resolved + fatal (special requirement), level l2
-- **Badge**: reserved status colors: critical, resolved, attention, info, level l2
+- **Infobox**: reserved status colors: critical, attention, info, resolved + fatal (special requirement), level s2
+- **Badge**: reserved status colors: critical, resolved, attention, info, level s2
 - **Pill**: reserved status colors (critical, resolved, attention, info) + optional status colors (pending, confirmed, progress, scjeduled, waiting)
-- **Spinner**: progress from status colors level l2.
-- **Buttons**: interaction colors from the emphasis level l3. 
+- **Spinner**: progress from status colors level s2.
+- **Buttons**: interaction colors from the emphasis level s3. 
 - **Links**: emphasis colors combined with interaction colors for base and visited states
 - **Form Controls**: neutral backgrounds with interaction states and emphasis for labels/actions
 
@@ -466,20 +466,20 @@ These guidelines define which semantic color token types specific component cate
 ```json
 // Badge (Status-based)
 "ob.c.badge.color.bg.info.enabled": {
-  "$value": "{ob.s.color.l2.status.info.bg.contrast-low.inversity-flipped}"
+  "$value": "{ob.s2.color.status.info.bg.contrast-low.inversity-flipped}"
 }
 "ob.c.badge.color.fg.info.enabled": {
-  "$value": "{ob.s.color.l2.status.info.fg.contrast-highest.inversity-flipped}"
+  "$value": "{ob.s2.color.status.info.fg.contrast-highest.inversity-flipped}"
 }
 
 // Button (Interactive)  
 "ob.h.button.color.fg.primary.hover": {
-  "$value": "{ob.s.color.l3.interaction.state.fg.hover.inversity-normal}"
+  "$value": "{ob.s3.color.interaction.state.fg.hover.inversity-normal}"
 }
 
 // Typography (Neutral)
 "ob.s.typography.color.text.default": {
-  "$value": "{ob.s.color.l2.neutral.fg.contrast-high.inversity-normal}"
+  "$value": "{ob.s2.color.neutral.fg.contrast-high.inversity-normal}"
 }
 ```
 
@@ -488,7 +488,7 @@ These guidelines define which semantic color token types specific component cate
 ```json
 // Badge consuming interaction tokens (WRONG)
 "ob.c.badge.color.fg.info.enabled": {
-  "$value": "{ob.s.color.l3.interaction.state.fg.enabled.inversity-normal}"
+  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity-normal}"
 }
 
 // Button consuming status tokens (WRONG)
@@ -556,7 +556,7 @@ When refactoring existing components:
 - `src/lib/themes/semantics/colors/inversity/` - Inverse theme neutrals
 
 ### Status Colors
-- `src/lib/themes/semantics/colors/static.json` - Base status color definitions
+- `src/lib/themes/semantic/color/s0-static.json` - Base status color definitions
 - `src/lib/themes/semantics/colors/lightness/` - Theme-specific variations
 - `src/lib/themes/semantics/colors/inversity/` - Inverse theme colors
 
@@ -564,7 +564,7 @@ When refactoring existing components:
 ### Interaction Colors
 - `src/lib/themes/semantics/colors/lightness/light.json` - Light theme interaction colors
 - `src/lib/themes/semantics/colors/lightness/dark.json` - Dark theme interaction colors
-- `src/lib/themes/semantics/colors/static.json` - Static interaction indicators
+- `src/lib/themes/semantic/color/s0-static.json` - Static interaction indicators
 
 ### Interaction / Emphasis Colors
 - `src/lib/themes/semantics/colors/emphasis/` - Emphasis level definitions

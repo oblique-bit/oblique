@@ -11,7 +11,7 @@
 
 ### Valid Tokens (Confirmed in Tokens Studio)
 These tokens exist in `$themes.json` and resolve properly in Tokens Studio:
-- `{ob.s.color.l1.interaction.border.focus}` ✅
+- `{ob.s1.color.interaction.border.focus}` ✅
 - `{ob.s.color.static.brand}` ✅  
 - `{ob.s.color.static.no-color}` ✅
 
