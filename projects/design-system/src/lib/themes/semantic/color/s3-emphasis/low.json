@@ -1,0 +1,184 @@
+{
+  "ob": {
+    "s3": {
+      "color": {
+        "interaction": {
+          "state": {
+            "fg": {
+              "enabled": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.neutral.fg.contrast-highest.inversity-normal}",
+                  "$description": "References the neutral semantic color to ensure the color consistency."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.neutral.fg.contrast-highest.inversity-flipped}",
+                  "$description": "References the neutral semantic color to ensure the color consistency."
+                }
+              },
+              "hover": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-high.fg-base.contrast-medium.inversity-normal}",
+                  "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-high.fg-base.contrast-medium.inversity-flipped}",
+                  "$description": "overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
+                }
+              },
+              "focus": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.neutral.fg.contrast-high.inversity-normal}",
+                  "$description": "References the neutral semantic color to ensure the color consistency."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.neutral.fg.contrast-high.inversity-flipped}",
+                  "$description": "References the neutral semantic color to ensure the color consistency."
+                }
+              },
+              "pressed": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.neutral.fg.contrast-high.inversity-normal}",
+                  "$description": "References the neutral semantic color to ensure the color consistency."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.neutral.fg.contrast-high.inversity-flipped}",
+                  "$description": "References the neutral semantic color to ensure the color consistency."
+                }
+              },
+              "selected": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.neutral.fg.contrast-high.inversity-normal}",
+                  "$description": "References the neutral semantic color to ensure the color consistency."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.neutral.fg.contrast-high.inversity-flipped}",
+                  "$description": "References the neutral semantic color to ensure the color consistency."
+                }
+              },
+              "visited": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.neutral.fg.contrast-highest.inversity-normal}",
+                  "$description": "For text-links.References the neutral semantic color to ensure the color consistency."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.neutral.fg.contrast-highest.inversity-flipped}",
+                  "$description": "For text-links.References the neutral semantic color to ensure the color consistency."
+                }
+              },
+              "disabled": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-high.fg-disabled.contrast-low.inversity-normal}",
+                  "$description": "Used in text-links, secondary and tertiary buttons."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-high.fg-disabled.contrast-low.inversity-flipped}",
+                  "$description": "Used in text-links, secondary and tertiary buttons."
+                }
+              }
+            },
+            "bg": {
+              "enabled": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-low.bg-base.contrast-high.inversity-normal}",
+                  "$description": "Background for primary buttons."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-low.bg-base.contrast-high.inversity-flipped}",
+                  "$description": "Background for primary buttons."
+                }
+              },
+              "hover": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-low.bg-base.contrast-medium.inversity-normal}",
+                  "$description": "Background for primary buttons."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-low.bg-base.contrast-medium.inversity-flipped}",
+                  "$description": "Background for primary buttons."
+                }
+              },
+              "focus": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-high.bg-base.contrast-medium.inversity-normal}",
+                  "$description": "Background for primary buttons."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-low.bg-base.contrast-medium.inversity-flipped}",
+                  "$description": "Background for primary buttons."
+                }
+              },
+              "pressed": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-low.bg-base.contrast-high.inversity-normal}",
+                  "$description": "Background for primary buttons."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-low.bg-base.contrast-high.inversity-flipped}",
+                  "$description": "Background for primary buttons."
+                }
+              },
+              "selected": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-low.bg-base.contrast-high.inversity-flipped}",
+                  "$description": "For navigation."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-low.bg-base.contrast-low.inversity-flipped}",
+                  "$description": "For navigation."
+                }
+              },
+              "visited": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.static.no-color}",
+                  "$description": "No use. For consistency only. Text-links need no bg color."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.static.no-color}",
+                  "$description": "No use. For consistency only. Text-links need no bg color."
+                }
+              },
+              "disabled": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-high.bg-disabled.opacity.inversity-normal}",
+                  "$description": "Used for fill in primary buttons."
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.emphasis-high.bg-disabled.opacity.inversity-flipped}",
+                  "$description": "Used for fill in primary buttons."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

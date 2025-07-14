@@ -83,17 +83,17 @@
         "color": {
           "bg": {
             "$type": "color",
-            "$value": "{ob.s.color.l1.neutral.bg.contrast-highest.inversity-normal}",
+            "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-normal}",
             "$description": "Default background color for popovers."
           },
           "border": {
             "$type": "color",
-            "$value": "{ob.s.color.l2.neutral.border.medium.inversity-normal}",
+            "$value": "{ob.s2.color.neutral.border.medium.inversity-normal}",
             "$description": "Default border color for popovers."
           },
           "fg": {
             "$type": "color",
-            "$value": "{ob.s.color.l1.neutral.fg.contrast-high.inversity-normal}",
+            "$value": "{ob.s1.color.neutral.fg.contrast-high.inversity-normal}",
             "$description": "Default foreground color for popovers."
           }
         },

@@ -117,37 +117,37 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.fg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.fg.contrast-medium.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.fg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.fg.contrast-medium.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.fg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.fg.contrast-medium.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.fg.contrast-high.inversity-normal}"
               }
             },
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.bg.contrast-medium.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.bg.contrast-highest.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.bg.contrast-medium.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.bg.contrast-medium.inversity-normal}"
               }
             }
           },
@@ -155,37 +155,37 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.resolved.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.resolved.fg.contrast-high.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.resolved.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.resolved.fg.contrast-high.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.resolved.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.resolved.fg.contrast-high.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.resolved.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.resolved.fg.contrast-high.inversity-normal}"
               }
             },
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.resolved.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.resolved.bg.contrast-medium.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.bg.contrast-highest.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.resolved.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.resolved.bg.contrast-medium.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.resolved.bg.contrast-low.inversity-normal}"
+                "$value": "{ob.s2.color.status.resolved.bg.contrast-low.inversity-normal}"
               }
             }
           },
@@ -193,37 +193,37 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.attention.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.attention.fg.contrast-high.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.attention.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.attention.fg.contrast-high.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.attention.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.attention.fg.contrast-high.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.attention.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.attention.fg.contrast-high.inversity-normal}"
               }
             },
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.attention.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.attention.bg.contrast-medium.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.bg.contrast-highest.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.attention.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.attention.bg.contrast-medium.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.attention.bg.contrast-low.inversity-normal}"
+                "$value": "{ob.s2.color.status.attention.bg.contrast-low.inversity-normal}"
               }
             }
           },
@@ -231,37 +231,37 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.pending.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.pending.fg.contrast-high.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.pending.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.pending.fg.contrast-high.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.pending.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.pending.fg.contrast-high.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.pending.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.pending.fg.contrast-high.inversity-normal}"
               }
             },
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.pending.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.pending.bg.contrast-medium.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.bg.contrast-highest.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.pending.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.pending.bg.contrast-medium.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.pending.bg.contrast-low.inversity-normal}"
+                "$value": "{ob.s2.color.status.pending.bg.contrast-low.inversity-normal}"
               }
             }
           },
@@ -269,37 +269,37 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.confirmed.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.confirmed.fg.contrast-high.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.confirmed.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.confirmed.fg.contrast-high.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.confirmed.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.confirmed.fg.contrast-high.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.confirmed.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.confirmed.fg.contrast-high.inversity-normal}"
               }
             },
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.confirmed.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.confirmed.bg.contrast-medium.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.bg.contrast-highest.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.confirmed.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.confirmed.bg.contrast-medium.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.confirmed.bg.contrast-low.inversity-normal}"
+                "$value": "{ob.s2.color.status.confirmed.bg.contrast-low.inversity-normal}"
               }
             }
           },
@@ -307,37 +307,37 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.progress.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.progress.fg.contrast-high.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.progress.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.progress.fg.contrast-high.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.progress.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.progress.fg.contrast-high.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.progress.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.progress.fg.contrast-high.inversity-normal}"
               }
             },
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.progress.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.progress.bg.contrast-medium.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.bg.contrast-highest.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.progress.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.progress.bg.contrast-medium.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.progress.bg.contrast-low.inversity-normal}"
+                "$value": "{ob.s2.color.status.progress.bg.contrast-low.inversity-normal}"
               }
             }
           },
@@ -345,37 +345,37 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.scheduled.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.scheduled.fg.contrast-high.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.scheduled.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.scheduled.fg.contrast-high.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.scheduled.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.scheduled.fg.contrast-high.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.scheduled.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.scheduled.fg.contrast-high.inversity-normal}"
               }
             },
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.scheduled.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.scheduled.bg.contrast-medium.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.bg.contrast-highest.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.scheduled.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.scheduled.bg.contrast-medium.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.scheduled.bg.contrast-low.inversity-normal}"
+                "$value": "{ob.s2.color.status.scheduled.bg.contrast-low.inversity-normal}"
               }
             }
           },
@@ -383,37 +383,37 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.info.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.info.fg.contrast-high.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.info.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.info.fg.contrast-high.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.info.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.info.fg.contrast-high.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.info.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.info.fg.contrast-high.inversity-normal}"
               }
             },
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.info.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.info.bg.contrast-medium.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.bg.contrast-highest.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.info.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.info.bg.contrast-medium.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.info.bg.contrast-low.inversity-normal}"
+                "$value": "{ob.s2.color.status.info.bg.contrast-low.inversity-normal}"
               }
             }
           },
@@ -421,37 +421,37 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.waiting.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.waiting.fg.contrast-high.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.waiting.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.waiting.fg.contrast-high.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.waiting.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.waiting.fg.contrast-high.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.waiting.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.waiting.fg.contrast-high.inversity-normal}"
               }
             },
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.waiting.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.waiting.bg.contrast-medium.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.bg.contrast-highest.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.waiting.bg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.waiting.bg.contrast-high.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.waiting.bg.contrast-low.inversity-normal}"
+                "$value": "{ob.s2.color.status.waiting.bg.contrast-low.inversity-normal}"
               }
             }
           },
@@ -459,37 +459,37 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.critical.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.critical.fg.contrast-high.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.critical.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.critical.fg.contrast-high.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.critical.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.critical.fg.contrast-high.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.critical.fg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.critical.fg.contrast-high.inversity-normal}"
               }
             },
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.critical.bg.contrast-medium.inversity-normal}"
+                "$value": "{ob.s2.color.status.critical.bg.contrast-medium.inversity-normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s.color.l1.neutral.bg.contrast-highest.inversity-normal}"
+                "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.critical.bg.contrast-high.inversity-normal}"
+                "$value": "{ob.s2.color.status.critical.bg.contrast-high.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s.color.l2.status.critical.bg.contrast-low.inversity-normal}"
+                "$value": "{ob.s2.color.status.critical.bg.contrast-low.inversity-normal}"
               }
             }
           }
