@@ -27,4 +27,4 @@ You can manually check for modifications to protected files anytime by running:
 ./scripts-custom/check-protected-files.sh
 ```
 
-For more information, read PROTECTED_FILES.md
+For more information, read [PROTECTED_FILES.md](./PROTECTED_FILES.md)
