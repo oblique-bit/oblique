@@ -30,13 +30,13 @@ The key distinction: Generic descriptions about colors/elements are OK,
 but explicit token names and file references must always be singular.
 
 USAGE:
-    python3 scripts-custom/find-plural-references.py
+    python3 scripts-custom/detect-plural-references.py
     
 RECOMMENDED WORKFLOW:
     # Run after any changes to validate singular naming conventions
     npm run check:plural-references  # (if added to package.json)
     # OR
-    python3 scripts-custom/find-plural-references.py
+    python3 scripts-custom/detect-plural-references.py
 
 SUCCESS CRITERIA:
 When this script reports "NO PLURAL REFERENCES FOUND", the design system 

@@ -2,6 +2,26 @@
 
 This folder contains reusable scripts for design system validation, analysis, and maintenance that are useful for the entire team.
 
+## 🤖 **EASIEST WAY: Get AI Recommendations**
+
+**Don't know which scripts to run?** Let AI recommend the right scripts for your work:
+
+```bash
+# 🎯 SUPER SIMPLE - Just describe what you're doing:
+npm run recommend:plan "I want to add new color tokens"
+npm run recommend:done "I just renamed some files"
+
+# 🔍 AUTO-DETECT what changed:
+npm run recommend:auto
+
+# 💬 INTERACTIVE questions (easiest):
+npm run recommend
+```
+
+**See [EASY-RECOMMENDATIONS.md](./EASY-RECOMMENDATIONS.md) for more examples!**
+
+---
+
 ## 🎯 Purpose
 
 These scripts help maintain the quality and consistency of the Oblique Design System by providing automated validation and analysis tools.
@@ -9,12 +29,14 @@ These scripts help maintain the quality and consistency of the Oblique Design Sy
 ## 📋 Script Categories
 
 ### Validation Scripts
-- **`find-plural-references.py`** - Validates singular naming conventions across tokens, files, and documentation
+- **`detect-plural-references.py`** - Validates singular naming conventions across tokens, files, and documentation
   - *Example: Finds "colors.primary.blues" instead of "color.primary.blue" → prevents inconsistent naming that breaks token lookups*
-- **`quick-validate-token-syntax.py`** - Quick validation of token reference syntax and common issues
+- **`validate-token-syntax.py`** - Quick validation of token reference syntax and common issues
   - *Example: Catches broken references like "{color.primary.undefined}" or missing closing braces → prevents build failures and visual bugs*
 - **`validate-consumption-hierarchy.py`** - Validates proper token consumption patterns (primitive → semantic → component)
   - *Example: Ensures buttons don't reference primitive colors directly, but use semantic tokens instead → maintains design flexibility and consistency*
+- **`validate-documentation-references.sh`** - Validates token references in documentation files after naming convention changes
+  - *Example: Ensures all documentation uses new s1/s2/s3 naming instead of old l1/l2/l3 patterns → prevents confusion and outdated examples*
 - **`validate-token-chain-resolution.js`** - Deep validation of token reference chains and circular references
 - **`validate-l1-l2-redundancy.py`** - Analyzes redundancy between L1 and L2 token levels
   - *Example: Confirms L2 tokens are 99.2% redundant with L1 → enables build script optimization to reduce CSS variables*
@@ -22,15 +44,15 @@ These scripts help maintain the quality and consistency of the Oblique Design Sy
 ### Analysis & Inspection Scripts
 - **`analyze-emphasis-structure.js`** - Analyzes emphasis token structure and relationships
   - *Example: Shows how emphasis.high relates to emphasis.medium and identifies missing emphasis levels → ensures complete design coverage*
-- **`inspect-token-structure.js`** - Inspects and displays token structure for debugging
+- **`analyze-token-structure.js`** - Inspects and displays token structure for debugging
   - *Example: Displays the full token tree when debugging why a button color isn't applying correctly → speeds up troubleshooting*
 - **`detect-circular-token-references.js`** - Detects circular token references in the system
   - *Example: Finds spacing.large → spacing.xl → spacing.large infinite loop → prevents build crashes and undefined values*
 
 ### Maintenance Scripts
-- **`remove-empty-files.sh`** - Automatically removes empty untracked files
+- **`cleanup-empty-files.sh`** - Automatically removes empty untracked files
   - *Example: Cleans up empty .scss files left behind after refactoring token structures → keeps repository clean and reduces confusion*
-- **`remove-obsolete-files.js`** - Removes untracked obsolete/deprecated files
+- **`cleanup-obsolete-files.js`** - Removes untracked obsolete/deprecated files
   - *Example: Removes old token files like "legacy-colors.json" that are no longer referenced → prevents accidental usage of outdated tokens*
 - **`generate-word-docs.py`** - Converts all markdown documentation to Word (.docx) format for offline reading
   - *Example: Generates printable Word documents from all .md files in documentation/ with professional footers (filename, generation date/time, page X of Y) → enables offline validation and team review*
@@ -47,7 +69,7 @@ npm run docs:generate-word
 # Run analysis and debugging scripts manually
 node scripts-custom/validate-token-chain-resolution.js
 node scripts-custom/analyze-emphasis-structure.js
-node scripts-custom/inspect-token-structure.js
+node scripts-custom/analyze-token-structure.js
 node scripts-custom/detect-circular-token-references.js
 ```
 
@@ -57,20 +79,20 @@ node scripts-custom/detect-circular-token-references.js
 chmod +x scripts-custom/*.sh
 
 # Run validation scripts
-python3 scripts-custom/find-plural-references.py
-python3 scripts-custom/quick-validate-token-syntax.py
+python3 scripts-custom/detect-plural-references.py
+python3 scripts-custom/validate-token-syntax.py
 python3 scripts-custom/validate-consumption-hierarchy.py
 python3 scripts-custom/validate-l1-l2-redundancy.py
 node scripts-custom/validate-token-chain-resolution.js
 
 # Run analysis and inspection scripts
 node scripts-custom/analyze-emphasis-structure.js
-node scripts-custom/inspect-token-structure.js
+node scripts-custom/analyze-token-structure.js
 node scripts-custom/detect-circular-token-references.js
 
 # Run maintenance scripts
-./scripts-custom/remove-empty-files.sh
-node scripts-custom/remove-obsolete-files.js
+./scripts-custom/cleanup-empty-files.sh
+node scripts-custom/cleanup-obsolete-files.js
 python3 scripts-custom/generate-word-docs.py
 ```
 

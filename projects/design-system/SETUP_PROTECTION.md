@@ -24,7 +24,7 @@ After installing, the hook will prevent commits that modify:
 You can manually check for modifications to protected files anytime by running:
 
 ```bash
-./scripts-custom/check-protected-files.sh
+./scripts-custom/validate-protected-files.sh
 ```
 
 For more information, read PROTECTED_FILES.md

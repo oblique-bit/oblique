@@ -36,7 +36,7 @@ You can manually check for modifications to protected files:
 
 ```bash
 # Run the check script directly
-./scripts-custom/check-protected-files.sh
+./scripts-custom/validate-protected-files.sh
 ```
 
 This will show warnings if any protected files have been modified.
