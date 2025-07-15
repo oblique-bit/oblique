@@ -8,7 +8,7 @@ This script performs fast validation of token reference syntax:
 - Identifies common syntax issues after refactoring
 
 USAGE:
-    python3 scripts-custom/quick-validate-token-syntax.py
+    python3 scripts-custom/validate-token-syntax.py
 
 Run from project root for quick validation after changes.
 """

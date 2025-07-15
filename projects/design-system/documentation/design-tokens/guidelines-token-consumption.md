@@ -270,6 +270,49 @@ Components (ob.c.*) → Semantics (ob.s.*) → Primitives (ob.p.*)
 
 ---
 
+## Static Token Exceptions
+
+### S0 Static Token Consumption
+
+**Exception Rule:** Static tokens (`ob.s.color.static.*`) may be consumed at higher levels for specific use cases.
+
+#### Allowed Static Tokens
+
+| Token | Purpose | Allowed Contexts |
+|-------|---------|------------------|
+| `ob.s.color.static.no-color` | Transparent/invisible elements | borders, backgrounds, shadows, interaction indicators |
+| `ob.s.color.static.brand` | Brand identity consistency | interaction indicators, brand elements |
+
+#### Legitimate S0 Static Consumption Examples
+
+```json
+// ✅ ALLOWED: Transparent button backgrounds
+"ob.h.button.color.bg.secondary.enabled": {
+  "$value": "{ob.s.color.static.no-color}"
+}
+
+// ✅ ALLOWED: Interaction indicators
+"ob.s.color.interaction.indicator.unselected": {
+  "$value": "{ob.s.color.static.no-color}"
+}
+
+// ✅ ALLOWED: Brand interaction states
+"ob.s.color.interaction.indicator.selected": {
+  "$value": "{ob.s.color.static.brand}"
+}
+
+// ✅ ALLOWED: S3 emphasis transparent backgrounds
+"ob.s3.color.emphasis.low.bg": {
+  "$value": "{ob.s.color.static.no-color}"
+}
+```
+
+#### Validation Behavior
+
+The validation script will generate **warnings** (not errors) for S0 static token consumption to allow manual verification of legitimate use cases.
+
+---
+
 ## Validation Rules
 
 ### Component Token Validation
@@ -425,10 +468,16 @@ Run validation checks:
 # Check for plural references and token compliance
 npm run check:plural-references
 
-# TODO: Add token consumption validation script
+# Validate token consumption hierarchy (s0/s1/s2/s3)
 npm run check:token-consumption
-# OR directly: python3 scripts-custom/validate-token-consumption.py
+# OR directly: python3 scripts-custom/validate-consumption-hierarchy.py
 ```
+
+The consumption hierarchy validator includes:
+- **s0/s1/s2/s3 semantic color validation**: Ensures proper hierarchical token consumption
+- **S0 static token exceptions**: Allows legitimate use of `ob.s.color.static.no-color` and `ob.s.color.static.brand`
+- **Component L1 violation detection**: Catches components consuming `ob.s1.color.*` tokens
+- **Cross-domain validation**: Validates typography, spacing, and other token consumption patterns
 
 ### Documentation Updates
 
@@ -440,4 +489,4 @@ Keep this document updated when:
 
 ---
 
-*Last updated: July 11, 2025 - Initial creation of token consumption guidelines*
+*Last updated: July 15, 2025 - Added S0 static token exceptions and implemented consumption hierarchy validation*

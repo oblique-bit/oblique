@@ -1,0 +1,117 @@
+{
+  "description": "Configuration for tracking hardcoded token paths in style dictionary",
+  "version": "1.0.0",
+  "lastUpdated": "2025-07-15",
+  "trackedTokens": {
+    "color": {
+      "description": "Color tokens that are hardcoded in style dictionary",
+      "paths": [
+        "ob.s.color.static.no-color",
+        "ob.s.color.static.brand",
+        "ob.s1.color.primary.default",
+        "ob.s1.color.primary.hover", 
+        "ob.s1.color.secondary.default",
+        "ob.s1.color.accent.default",
+        "ob.s1.color.success.default",
+        "ob.s1.color.warning.default",
+        "ob.s1.color.error.default"
+      ]
+    },
+    "typography": {
+      "description": "Typography tokens hardcoded in style dictionary",
+      "paths": [
+        "ob.s.font.family.base",
+        "ob.s.font.family.monospace",
+        "ob.s.font.size.small",
+        "ob.s.font.size.medium",
+        "ob.s.font.size.large",
+        "ob.s.font.weight.light",
+        "ob.s.font.weight.normal",
+        "ob.s.font.weight.bold"
+      ]
+    },
+    "spacing": {
+      "description": "Spacing tokens hardcoded in style dictionary", 
+      "paths": [
+        "ob.s.spacing.xs",
+        "ob.s.spacing.sm",
+        "ob.s.spacing.md",
+        "ob.s.spacing.lg",
+        "ob.s.spacing.xl",
+        "ob.s.spacing.xxl"
+      ]
+    },
+    "borders": {
+      "description": "Border tokens hardcoded in style dictionary",
+      "paths": [
+        "ob.s.border.width.thin",
+        "ob.s.border.width.medium", 
+        "ob.s.border.width.thick",
+        "ob.s.border.radius.small",
+        "ob.s.border.radius.medium",
+        "ob.s.border.radius.large"
+      ]
+    },
+    "elevation": {
+      "description": "Elevation/shadow tokens hardcoded in style dictionary",
+      "paths": [
+        "ob.s.elevation.low",
+        "ob.s.elevation.medium",
+        "ob.s.elevation.high",
+        "ob.s.shadow.small",
+        "ob.s.shadow.medium"
+      ]
+    },
+    "layout": {
+      "description": "Layout tokens hardcoded in style dictionary",
+      "paths": [
+        "ob.s.layout.breakpoint.mobile",
+        "ob.s.layout.breakpoint.tablet", 
+        "ob.s.layout.breakpoint.desktop",
+        "ob.s.layout.container.width",
+        "ob.s.layout.grid.columns"
+      ]
+    },
+    "animation": {
+      "description": "Animation tokens hardcoded in style dictionary",
+      "paths": [
+        "ob.s.animation.duration.fast",
+        "ob.s.animation.duration.normal",
+        "ob.s.animation.duration.slow",
+        "ob.s.animation.easing.ease-in",
+        "ob.s.animation.easing.ease-out"
+      ]
+    }
+  },
+  "watchPatterns": {
+    "description": "File patterns to scan for token usage",
+    "includes": [
+      "src/lib/themes/**/*.json",
+      "src/lib/themes/**/*.js",
+      "src/lib/themes/**/*.ts"
+    ],
+    "excludes": [
+      "**/*.spec.*",
+      "**/*.test.*",
+      "**/node_modules/**"
+    ]
+  },
+  "breakingChangeRules": {
+    "description": "Rules for determining what constitutes a breaking change",
+    "tokenDeletion": true,
+    "tokenRename": true,
+    "valueChange": false,
+    "pathChange": true
+  },
+  "reportSettings": {
+    "generateMarkdown": true,
+    "generateJson": true,
+    "includeLineNumbers": true,
+    "includeContext": true
+  },
+  "instructions": {
+    "howToAddTokens": "Add new token paths to the appropriate category in 'trackedTokens'",
+    "howToUpdate": "Update 'lastUpdated' field when making changes",
+    "maintenance": "Review tracked tokens monthly and remove obsolete entries"
+  }
+}
