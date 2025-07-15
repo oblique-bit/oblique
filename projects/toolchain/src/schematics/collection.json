@@ -1,4 +1,10 @@
 {
   "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
-  "schematics": {}
+  "schematics": {
+    "ng-add": {
+      "description": "Adds @oblique/toolchain dependency to the project",
+      "factory": "./ng-add/index#toolchain",
+      "schema": "./ng-add/schema.json"
+    }
+  }
 }
