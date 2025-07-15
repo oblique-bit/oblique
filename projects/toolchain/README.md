@@ -30,6 +30,10 @@ If you'd like to contribute, please follow our [contributing guidelines](../../C
 1. Install the tarball of the oblique-toolchain into a test-project
 2. Run npm i oblique-toolchain-13.2.2.tgz
 
+```bash
+npm run build -w @oblique/toolchain && npx @angular-devkit/schematics-cli ./dist/toolchain/:ng-add
+```
+
 ## License
 
 Copyright (c) The Swiss Confederation,

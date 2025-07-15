@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "ng-add-schematic",
+  "title": "ng add Schema",
+  "type": "object",
+  "properties": {}
+}
