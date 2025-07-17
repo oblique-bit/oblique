@@ -16,6 +16,8 @@ export class SlugService {
 				return this.redirectVersion12(slug);
 			case 13:
 				return this.redirectVersion13(slug);
+			case 14:
+				return this.redirectVersion14(slug);
 			default:
 				return undefined;
 		}
@@ -32,6 +34,7 @@ export class SlugService {
 	private redirectVersion11(slug: string): string | undefined {
 		switch (slug) {
 			case 'configuration-12':
+			case 'configuration-14':
 				return 'configuration';
 			case 'master-layout-12':
 			case 'master-layout-13':
@@ -50,6 +53,7 @@ export class SlugService {
 	private redirectVersion12(slug: string): string | undefined {
 		switch (slug) {
 			case 'configuration':
+			case 'configuration-14':
 				return 'configuration-12';
 			case 'master-layout':
 			case 'master-layout-13':
@@ -69,7 +73,26 @@ export class SlugService {
 	private redirectVersion13(slug: string): string | undefined {
 		switch (slug) {
 			case 'configuration':
+			case 'configuration-14':
 				return 'configuration-12';
+			case 'master-layout':
+			case 'master-layout-12':
+				return 'master-layout-13';
+			case 'popover':
+				return 'popover-12';
+			case 'language':
+			case 'datepicker':
+				return 'invalid';
+			default:
+				return undefined;
+		}
+	}
+
+	private redirectVersion14(slug: string): string | undefined {
+		switch (slug) {
+			case 'configuration':
+			case 'configuration-12':
+				return 'configuration-14';
 			case 'master-layout':
 			case 'master-layout-12':
 				return 'master-layout-13';
