@@ -14,20 +14,13 @@ import {OB_FLATTEN_TRANSLATION_FILES, ObMultiTranslateLoader, TRANSLATION_FILES}
 import {
 	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
 	OB_HAS_LANGUAGE_IN_URL,
-	OB_MATERIAL_CONFIG,
 	WINDOW,
-	checkboxOptionsProvider,
 	getRootRoute,
 	getTranslateLoader,
 	isNotKeyboardEventOnButton,
-	matFormFieldDefaultOptionsProvider,
 	multiTranslateLoader,
 	obFocusWithOutline,
 	provideObliqueConfiguration,
-	radioOptionsProvider,
-	slideToggleOptionsProvider,
-	stepperOptionsOptionsProvider,
-	tabsOptionsProvider,
 	windowProvider
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
@@ -131,68 +124,6 @@ describe('utilities', () => {
 					deps: [HttpClient, [new Optional(), TRANSLATION_FILES], [new Optional(), OB_FLATTEN_TRANSLATION_FILES]]
 				}
 			});
-		});
-	});
-
-	describe('matFormFieldDefaultOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(matFormFieldDefaultOptionsProvider()).toEqual({appearance: 'outline'});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(matFormFieldDefaultOptionsProvider({MAT_FORM_FIELD_DEFAULT_OPTIONS: {appearance: 'fill'}})).toEqual({appearance: 'fill'});
-		});
-	});
-
-	describe('stepperOptionsOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(stepperOptionsOptionsProvider()).toEqual({displayDefaultIndicatorType: false});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(stepperOptionsOptionsProvider({STEPPER_GLOBAL_OPTIONS: {displayDefaultIndicatorType: true}})).toEqual({
-				displayDefaultIndicatorType: true
-			});
-		});
-	});
-
-	describe('checkboxOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(checkboxOptionsProvider()).toEqual({color: 'primary'});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(checkboxOptionsProvider({MAT_CHECKBOX_OPTIONS: {color: 'accent'}})).toEqual({color: 'accent'});
-		});
-	});
-
-	describe('radioOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(radioOptionsProvider()).toEqual({color: 'primary'});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(radioOptionsProvider({MAT_RADIO_OPTIONS: {color: 'accent'}})).toEqual({color: 'accent'});
-		});
-	});
-
-	describe('slideToggleOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(slideToggleOptionsProvider()).toEqual({color: 'primary'});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(slideToggleOptionsProvider({MAT_SLIDE_TOGGLE_OPTIONS: {color: 'accent'}})).toEqual({color: 'accent'});
-		});
-	});
-
-	describe('tabsOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(tabsOptionsProvider()).toEqual({stretchTabs: false});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(tabsOptionsProvider({MAT_TABS_CONFIG: {stretchTabs: true}})).toEqual({stretchTabs: true});
 		});
 	});
 
@@ -349,12 +280,12 @@ describe('utilities', () => {
 
 			describe('Material configuration', () => {
 				it.each([
-					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {floatLabel: 'always'}},
-					{token: STEPPER_GLOBAL_OPTIONS, config: {showError: true}},
-					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {clickAction: 'check'}},
+					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline', floatLabel: 'always'}},
+					{token: STEPPER_GLOBAL_OPTIONS, config: {displayDefaultIndicatorType: false, showError: true}},
+					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary', clickAction: 'check'}},
 					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
-					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {hideIcon: true}},
-					{token: MAT_TABS_CONFIG, config: {fitInkBarToContent: true}}
+					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary', hideIcon: true}},
+					{token: MAT_TABS_CONFIG, config: {stretchTabs: false, fitInkBarToContent: true}}
 				])('should create $token injection token', ({token, config}) => {
 					expect(TestBed.inject(token)).toEqual(config);
 				});
@@ -376,51 +307,6 @@ describe('utilities', () => {
 				it('should provide OB_HAS_LANGUAGE_IN_URL as true', () => {
 					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(true);
 				});
-			});
-		});
-
-		describe('with token configuration for Material', () => {
-			beforeEach(() => {
-				TestBed.configureTestingModule({
-					providers: [
-						provideHttpClient(),
-						provideObliqueConfiguration({
-							accessibilityStatement: {
-								applicationName: 'appName',
-								createdOn: new Date('2025-01-31'),
-								conformity: 'none',
-								applicationOperator: 'Operator',
-								contact: {emails: ['e@mail.com']}
-							}
-						}),
-						{
-							provide: OB_MATERIAL_CONFIG,
-							useValue: {
-								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
-								STEPPER_GLOBAL_OPTIONS: {showError: true},
-								MAT_CHECKBOX_OPTIONS: {clickAction: 'check'},
-								MAT_RADIO_OPTIONS: {color: 'accent'},
-								MAT_SLIDE_TOGGLE_OPTIONS: {hideIcon: true},
-								MAT_TABS_CONFIG: {fitInkBarToContent: true}
-							}
-						}
-					]
-				});
-			});
-
-			it('should create WINDOW injection token', () => {
-				expect(TestBed.inject(WINDOW)).toEqual(window);
-			});
-
-			it.each([
-				{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {floatLabel: 'always'}},
-				{token: STEPPER_GLOBAL_OPTIONS, config: {showError: true}},
-				{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {clickAction: 'check'}},
-				{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
-				{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {hideIcon: true}},
-				{token: MAT_TABS_CONFIG, config: {fitInkBarToContent: true}}
-			])('should create $token injection token', ({token, config}) => {
-				expect(TestBed.inject(token)).toEqual(config);
 			});
 		});
 

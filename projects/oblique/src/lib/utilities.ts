@@ -5,19 +5,13 @@ import {ActivatedRoute} from '@angular/router';
 import {TranslateLoader, TranslateModuleConfig, provideTranslateService} from '@ngx-translate/core';
 import {OB_FLATTEN_TRANSLATION_FILES, ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
 import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions} from '@angular/material/form-field';
-import {MAT_CHECKBOX_DEFAULT_OPTIONS, MatCheckboxDefaultOptions} from '@angular/material/checkbox';
-import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioDefaultOptions} from '@angular/material/radio';
-import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, MatSlideToggleDefaultOptions} from '@angular/material/slide-toggle';
-import {STEPPER_GLOBAL_OPTIONS, StepperOptions} from '@angular/cdk/stepper';
-import {
-	ObIAccessibilityStatementConfiguration,
-	ObIBanner,
-	ObIMaterialConfig,
-	ObIObliqueConfiguration,
-	ObIPamsConfiguration
-} from './utilities.model';
-import {MAT_TABS_CONFIG, MatTabsConfig} from '@angular/material/tabs';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
+import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
+import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import {ObIAccessibilityStatementConfiguration, ObIBanner, ObIObliqueConfiguration, ObIPamsConfiguration} from './utilities.model';
+import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
 import {ObTIconConfig, defaultIconConfig} from './icon/icon.model';
@@ -73,82 +67,14 @@ export function multiTranslateLoader(config: TranslateModuleConfig = {}): Transl
 	};
 }
 
-export function matFormFieldDefaultOptionsProvider(
-	config?: ObIMaterialConfig,
-	materialConfig?: ObIMaterialConfig
-): MatFormFieldDefaultOptions {
-	return materialConfig?.MAT_FORM_FIELD_DEFAULT_OPTIONS || config?.MAT_FORM_FIELD_DEFAULT_OPTIONS || {appearance: 'outline'};
-}
-
-export function stepperOptionsOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): StepperOptions {
-	return materialConfig?.STEPPER_GLOBAL_OPTIONS || config?.STEPPER_GLOBAL_OPTIONS || {displayDefaultIndicatorType: false};
-}
-
-export function checkboxOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): MatCheckboxDefaultOptions {
-	return materialConfig?.MAT_CHECKBOX_OPTIONS || config?.MAT_CHECKBOX_OPTIONS || {color: 'primary'};
-}
-
-export function radioOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): MatRadioDefaultOptions {
-	return materialConfig?.MAT_RADIO_OPTIONS || config?.MAT_RADIO_OPTIONS || {color: 'primary'};
-}
-
-export function slideToggleOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): MatSlideToggleDefaultOptions {
-	return materialConfig?.MAT_SLIDE_TOGGLE_OPTIONS || config?.MAT_SLIDE_TOGGLE_OPTIONS || {color: 'primary'};
-}
-
-export function tabsOptionsProvider(config?: ObIMaterialConfig, materialConfig?: ObIMaterialConfig): MatTabsConfig {
-	return materialConfig?.MAT_TABS_CONFIG || config?.MAT_TABS_CONFIG || {stretchTabs: false};
-}
-
-/**
- * @deprecated with Oblique 13.0.0, use the `materialConfig` parameter of the `obProvideObliqueProviders` function instead
- */
-export const OB_MATERIAL_CONFIG = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
-// this token is only needed as long as OB_MATERIAL_CONFIG is supported because useFactory only accepts injection tokens
-const OB_MATERIAL_CONFIG_2 = new InjectionToken<ObIMaterialConfig>('ObIMaterialConfig');
-const materialProviders = [
-	{
-		provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-		useFactory: matFormFieldDefaultOptionsProvider,
-		deps: [
-			[new Optional(), OB_MATERIAL_CONFIG],
-			[new Optional(), OB_MATERIAL_CONFIG_2]
-		]
-	},
-	{
-		provide: STEPPER_GLOBAL_OPTIONS,
-		useFactory: stepperOptionsOptionsProvider,
-		deps: [
-			[new Optional(), OB_MATERIAL_CONFIG],
-			[new Optional(), OB_MATERIAL_CONFIG_2]
-		]
-	},
-	{
-		provide: MAT_CHECKBOX_DEFAULT_OPTIONS,
-		useFactory: checkboxOptionsProvider,
-		deps: [
-			[new Optional(), OB_MATERIAL_CONFIG],
-			[new Optional(), OB_MATERIAL_CONFIG_2]
-		]
-	},
-	{
-		provide: MAT_RADIO_DEFAULT_OPTIONS,
-		useFactory: radioOptionsProvider,
-		deps: [
-			[new Optional(), OB_MATERIAL_CONFIG],
-			[new Optional(), OB_MATERIAL_CONFIG_2]
-		]
-	},
-	{
-		provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS,
-		useFactory: slideToggleOptionsProvider,
-		deps: [
-			[new Optional(), OB_MATERIAL_CONFIG],
-			[new Optional(), OB_MATERIAL_CONFIG_2]
-		]
-	},
-	{provide: MAT_TABS_CONFIG, useFactory: tabsOptionsProvider, deps: [[new Optional(), OB_MATERIAL_CONFIG], OB_MATERIAL_CONFIG_2]}
-];
+const materialProviders = {
+	MAT_FORM_FIELD_DEFAULT_OPTIONS: {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+	STEPPER_GLOBAL_OPTIONS: {provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
+	MAT_CHECKBOX_OPTIONS: {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
+	MAT_RADIO_OPTIONS: {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
+	MAT_SLIDE_TOGGLE_OPTIONS: {provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
+	MAT_TABS_CONFIG: {provide: MAT_TABS_CONFIG, useValue: {stretchTabs: false}}
+};
 
 export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
@@ -164,10 +90,12 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
 		{provide: ObTIconConfig, useValue: {...defaultIconConfig, ...config.icon}},
-		{provide: OB_MATERIAL_CONFIG_2, useValue: config.material},
 		{provide: OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, useValue: config.accessibilityStatement},
 		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: config.hasLanguageInUrl || false},
-		materialProviders
+		Object.entries(materialProviders).map(([provider, token]) => ({
+			provide: token.provide,
+			useValue: {...token.useValue, ...config.material?.[provider]}
+		}))
 	]);
 }
 

@@ -143,7 +143,6 @@ export {
 } from './lib/unsaved-changes/unsaved-changes.module';
 export {
 	OB_BANNER,
-	OB_MATERIAL_CONFIG,
 	OB_PAMS_CONFIGURATION,
 	getTranslateLoader,
 	provideObliqueConfiguration,
