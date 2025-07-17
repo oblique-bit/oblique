@@ -6,6 +6,7 @@
   },
   "description": "Toolchain utilities for the Oblique ecosystem, including project configuration schematics, ESLint plugins, and supporting build scripts",
   "scripts": {
+    "link": "npm run build && cd ../../dist/toolchain && npm link",
     "lint": "ts-node scripts/lint.ts",
     "format": "npm run lint -- --fix",
     "test": "jest",

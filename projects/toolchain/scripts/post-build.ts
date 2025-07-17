@@ -4,6 +4,7 @@ import {CopyFiles} from '../../../scripts/shared/copy-files';
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {adaptReadmeLinks} from '../../../scripts/shared/utils';
 import {Log} from '../../../scripts/shared/log';
+import {Files} from '../../../scripts/shared/files';
 
 export class PostBuild extends StaticScript {
 	private static readonly projectName = 'toolchain';
@@ -22,7 +23,8 @@ export class PostBuild extends StaticScript {
 			.copyRootFiles('LICENSE')
 			.copyProjectRootFiles('README.md', 'CHANGELOG.md', 'package.json')
 			.copyFile('collection.json', 'src/schematics', 'schematics')
-			.copyFile('schema.json', 'src/schematics/hello-world', 'schematics/hello-world')
+			.copyFile('schema.json', 'src/schematics/ng-add', 'schematics/ng-add')
+			.copyProjectFiles('src', ...Files.list('src/schematics/ng-add/templates'))
 			.finalize();
 	}
 
