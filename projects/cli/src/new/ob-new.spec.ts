@@ -158,10 +158,6 @@ describe('Ob new command', () => {
 							'--npmrc Create .npmrc: If you use this flag, it adds an .npmrc file, suitable for projects located within confederation/federal network. (default: true)'
 					},
 					{
-						description: 'Option to add Sonar configuration',
-						expected: '--sonar Sonar configuration: If set to true, a Sonar configuration is added. (default: true)'
-					},
-					{
 						description: 'Option to add ESLint and Prettier',
 						expected:
 							' --eslint ESLint & Prettier: If true, it adds eslint & prettier configuration as used by the Oblique team. See more information at ESLint Documentation: https://eslint.org/docs/latest/use/getting-started (default: true)'
@@ -211,7 +207,7 @@ describe('Ob new command', () => {
 				test(`should call npx ${projectName} with default parameter`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						4,
-						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --eslint --husky`,
+						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --eslint --husky`,
 						{cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'}
 					);
 				});
@@ -296,7 +292,7 @@ describe('Ob new command', () => {
 			test(`should call npx ${options}`, () => {
 				const expected = options.includes('--interactive')
 					? `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']}`
-					: `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --eslint --husky`;
+					: `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --eslint --husky`;
 				expect(execSync).toHaveBeenNthCalledWith(4, expected, {cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'});
 			});
 
