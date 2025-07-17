@@ -11,7 +11,7 @@ export class ObContactToLinksPipe implements PipeTransform {
 	}
 
 	private getMail(value: string | undefined): ObISectionLink | undefined {
-		if (value === undefined) {
+		if (value === undefined || value === '') {
 			return undefined;
 		}
 
@@ -23,7 +23,7 @@ export class ObContactToLinksPipe implements PipeTransform {
 	}
 
 	private getTel(value: string | undefined): ObISectionLink | undefined {
-		if (value === undefined) {
+		if (value === undefined || value === '') {
 			return undefined;
 		}
 
@@ -44,7 +44,7 @@ export class ObContactToLinksPipe implements PipeTransform {
 	}
 
 	private getContact(value: string | undefined): ObISectionLink | undefined {
-		if (value === undefined) {
+		if (value === undefined || value === '') {
 			return undefined;
 		}
 
