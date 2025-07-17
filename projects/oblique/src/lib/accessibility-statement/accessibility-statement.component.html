@@ -53,6 +53,9 @@
 			<a class="ob-contact-link" [href]="contact.url" [isExternalLink]="false"
 				><mat-icon class="ob-icon-text" [svgIcon]="contact.icon" />{{ contact.label }}</a
 			>
+			@if (contact.context) {
+				{{ contact.context }}
+			}
 		</li>
 	}
 </ul>

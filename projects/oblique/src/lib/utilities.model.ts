@@ -76,12 +76,16 @@ interface ObIAccessibilityStatementConfigurationNonPartial extends ObIAccessibil
 	conformity: ObConformityNonPartial;
 }
 
-interface ObContactEmail {
+interface ObContactInfoBase {
+	context?: string;
+}
+
+interface ObContactEmail extends ObContactInfoBase {
 	email: string;
 	phone?: never;
 }
 
-interface ObContactPhone {
+interface ObContactPhone extends ObContactInfoBase {
 	email?: never;
 	phone: string;
 }

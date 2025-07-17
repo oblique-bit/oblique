@@ -329,8 +329,8 @@ describe(AccessibilityStatementComponent.name, () => {
 
 			test('to be an array with correct properties', () => {
 				expect(component.contacts).toEqual([
-					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail'},
-					{label: 'phone', url: `tel:phone`, icon: 'phone'}
+					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined},
+					{label: 'phone', url: `tel:phone`, icon: 'phone', context: 'context'}
 				]);
 			});
 		});

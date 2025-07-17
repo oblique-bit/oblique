@@ -87,19 +87,21 @@ export class AccessibilityStatementComponent {
 			: 'i18n.oblique.accessibility-statement.statement.no-exception';
 	}
 
-	private parseContact(contact: ObContactData): {label: string; url: string; icon: ObEIcon} {
+	private parseContact(contact: ObContactData): {label: string; url: string; icon: ObEIcon; context?: string} {
 		if (contact.phone) {
 			return {
 				label: contact.phone,
 				url: `tel:${contact.phone}`,
-				icon: ObEIcon.PHONE
+				icon: ObEIcon.PHONE,
+				context: contact.context
 			};
 		}
 
 		return {
 			label: contact.email,
 			url: `mailto:${contact.email}`,
-			icon: ObEIcon.MAIL
+			icon: ObEIcon.MAIL,
+			context: contact.context
 		};
 	}
 }
