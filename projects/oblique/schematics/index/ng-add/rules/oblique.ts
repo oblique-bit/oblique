@@ -4,7 +4,6 @@ import {ObIOptionsSchema} from '../ng-add.model';
 import {
 	ObliquePackage,
 	addAngularConfigInList,
-	addFile,
 	applyInTree,
 	createSafeRule,
 	getIndexPaths,
@@ -31,8 +30,7 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addObliqueAssets(),
 			addFontFiles(),
 			addLocales(options.locales.split(' ')),
-			raiseBuildBudget(),
-			addBrowserslistrcFile()
+			raiseBuildBudget()
 		])(tree, context);
 }
 
@@ -194,14 +192,5 @@ function raiseBuildBudget(): Rule {
 				}
 			]
 		);
-	});
-}
-
-function addBrowserslistrcFile(): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		infoMigration(context, 'Oblique: Adding the .browserslistrc file');
-		const browserlistrcFile = getTemplate(tree, 'default-browserslistrc.config');
-		addFile(tree, '.browserslistrc', browserlistrcFile);
-		return tree;
 	});
 }
