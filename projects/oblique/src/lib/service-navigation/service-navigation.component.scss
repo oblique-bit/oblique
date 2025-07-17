@@ -5,7 +5,7 @@
 	.ob-service-navigation-list {
 		display: flex;
 		align-items: center;
-		column-gap: variables.$ob-spacing-sm;
+		gap: variables.$ob-spacing-sm;
 		margin: 0;
 		padding: 0;
 		list-style: none;
