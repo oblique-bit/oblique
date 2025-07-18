@@ -48,17 +48,10 @@
 
 <h4>{{ "i18n.oblique.accessibility-statement.feedback.contact" | translate }}</h4>
 <ul class="ob-resource-list">
-	@for (phone of contactParameters.phones; track phone) {
+	@for (contact of contacts; track contact) {
 		<li>
-			<a class="ob-contact-link" [href]="'tel:' + phone" [isExternalLink]="false"
-				><mat-icon class="ob-icon-text" svgIcon="phone" /> {{ phone }}</a
-			>
-		</li>
-	}
-	@for (email of contactParameters.emails; track email) {
-		<li>
-			<a class="ob-contact-link" [href]="'mailto:' + email" [isExternalLink]="false"
-				><mat-icon class="ob-icon-text" svgIcon="envelope" /> {{ email }}</a
+			<a class="ob-contact-link" [href]="contact.url" [isExternalLink]="false"
+				><mat-icon class="ob-icon-text" [svgIcon]="contact.icon" />{{ contact.label }}</a
 			>
 		</li>
 	}
