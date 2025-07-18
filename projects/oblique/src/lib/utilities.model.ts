@@ -64,7 +64,7 @@ interface ObIAccessibilityStatementConfigurationBase {
 	createdOn: Date;
 	reviewedOn?: Date;
 	applicationOperator: string;
-	contact: ObContact | NonEmptyArray<ObContactData>;
+	contact: NonEmptyArray<ObContactData>;
 }
 
 interface ObIAccessibilityStatementConfigurationPartial extends ObIAccessibilityStatementConfigurationBase {
@@ -85,12 +85,5 @@ interface ObContactPhone {
 	email?: never;
 	phone: string;
 }
-
-interface ObContactInfo {
-	emails: NonEmptyArray<string>;
-	phones: NonEmptyArray<string>;
-}
-
-type ObContact = Required<Pick<ObContactInfo, 'emails'>> | Required<Pick<ObContactInfo, 'phones'>> | Required<ObContactInfo>;
 
 export type ObContactData = ObContactPhone | ObContactEmail;

@@ -24,7 +24,7 @@ export class AccessibilityStatementComponent {
 		conformity: this.getConformity(this.parameters.conformity),
 		exceptionText: this.getConformityText(this.exceptions.length > 0)
 	};
-	readonly contacts = (this.parameters.contact as ObContactData[]).map(contact => this.parseContact(contact));
+	readonly contacts = this.parameters.contact.map(contact => this.parseContact(contact));
 	readonly generalLinks = [
 		{
 			label: 'i18n.oblique.accessibility-statement.general-information.links.e-accessibility.label',
