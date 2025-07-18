@@ -89,7 +89,7 @@ describe(ObRouterService.name, () => {
 							conformity: 'none',
 							applicationOperator: '',
 							createdOn: new Date(),
-							contact: {emails: ['']}
+							contact: [{email: ''}]
 						},
 						hasLanguageInUrl: false
 					}),
@@ -150,7 +150,7 @@ describe(ObRouterService.name, () => {
 							conformity: 'none',
 							applicationOperator: '',
 							createdOn: new Date(),
-							contact: {emails: ['']}
+							contact: [{email: ''}]
 						},
 						hasLanguageInUrl: true
 					}),
