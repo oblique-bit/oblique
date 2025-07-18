@@ -4,6 +4,7 @@ import {
 	Component,
 	ContentChild,
 	ContentChildren,
+	DOCUMENT,
 	DoCheck,
 	ElementRef,
 	EventEmitter,
@@ -22,7 +23,6 @@ import {
 	isDevMode
 } from '@angular/core';
 import {NavigationEnd, Params, Router} from '@angular/router';
-import {DOCUMENT} from '@angular/common';
 import {delay, filter, map, takeUntil, tap} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';

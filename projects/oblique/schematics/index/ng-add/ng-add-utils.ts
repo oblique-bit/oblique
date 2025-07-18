@@ -36,7 +36,7 @@ const versions: Record<string, string | versionFunc> = {
 	ajv: '^8.0.0',
 	'ajv-formats': '^3.0.0',
 	'angular-eslint': '^19.0.0',
-	'angular-oauth2-oidc': '^19.0.0',
+	'angular-oauth2-oidc': '^20.0.0',
 	eslint: '^9.0.0',
 	'eslint-config-prettier': '^9.0.0',
 	'eslint-plugin-prettier': '^5.0.0',

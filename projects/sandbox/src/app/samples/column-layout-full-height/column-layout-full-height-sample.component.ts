@@ -14,8 +14,13 @@ export class ColumnLayoutFullHeightSampleComponent implements OnInit, OnDestroy 
 	private readonly masterLayoutService = inject(ObMasterLayoutService);
 
 	ngOnInit(): void {
-		this.masterLayoutService.layout.hasLayout = false;
-		this.masterLayoutService.footer.isSticky = true;
+		// Update the value in the next change detection cycle in order to
+		// avoid a ExpressionChangedAfterItHasBeenCheckedError.
+		// More information: https://angular.dev/errors/NG0100
+		setTimeout(() => {
+			this.masterLayoutService.layout.hasLayout = false;
+			this.masterLayoutService.footer.isSticky = true;
+		}, 0);
 	}
 
 	ngOnDestroy(): void {

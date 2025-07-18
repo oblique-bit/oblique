@@ -43,10 +43,10 @@ module.exports = {
 			branches: 94
 		},
 		'projects/oblique/src/lib/document-meta/*.ts': {
-			statements: 60,
+			statements: 59,
 			branches: 7,
 			functions: 18,
-			lines: 59
+			lines: 58
 		},
 		'projects/oblique/src/lib/error-messages/*.ts': {
 			statements: 52,

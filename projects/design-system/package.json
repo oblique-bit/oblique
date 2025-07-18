@@ -10,14 +10,14 @@
     "release": "ts-node scripts/release.ts"
   },
   "peerDependencies": {
-    "@angular/cdk": "^19.0.0 || ^20.0.0",
-    "@angular/common": "^19.0.0 || ^20.0.0",
-    "@angular/core": "^19.0.0 || ^20.0.0",
-    "@angular/material": "^19.0.0 || ^20.0.0",
+    "@angular/cdk": "^20.0.0 || ^21.0.0",
+    "@angular/common": "^20.0.0 || ^21.0.0",
+    "@angular/core": "^20.0.0 || ^21.0.0",
+    "@angular/material": "^20.0.0 || ^21.0.0",
     "@ngx-translate/core": "^16.0.0"
   },
   "devDependencies": {
-    "ng-packagr": "^19.2.2"
+    "ng-packagr": "^20.0.1"
   },
   "sideEffects": false
 }

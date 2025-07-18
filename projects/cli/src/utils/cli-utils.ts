@@ -8,16 +8,16 @@ export const version = '13.3.1';
 
 export const currentVersions = {
 	'@oblique/oblique': '13',
-	'@angular/cli': '19',
-	'@angular/material': '19',
+	'@angular/cli': '20',
+	'@angular/material': '20',
 	'@oblique/toolchain': '13',
-	'@angular/core': '19',
-	'@angular/cdk': '19',
-	'@angular/animations': '19',
+	'@angular/core': '20',
+	'@angular/cdk': '20',
+	'@angular/animations': '20',
 	'@types/jest': '29',
 	'@angular-builders/jest': '19',
-	'@schematics/angular': '19',
-	'angular-oauth2-oidc': '19',
+	'@schematics/angular': '20',
+	'angular-oauth2-oidc': '20',
 	jest: '29'
 } as const;
 

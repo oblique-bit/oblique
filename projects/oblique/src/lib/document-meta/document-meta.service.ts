@@ -1,7 +1,6 @@
-import {Inject, Injectable, OnDestroy} from '@angular/core';
+import {DOCUMENT, Inject, Injectable, OnDestroy} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
-import {DOCUMENT} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {filter, map, mergeMap, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
