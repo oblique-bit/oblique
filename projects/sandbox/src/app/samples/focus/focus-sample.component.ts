@@ -1,5 +1,4 @@
-import {type AfterViewInit, Component, ElementRef, inject, viewChild} from '@angular/core';
-import {DOCUMENT} from '@angular/common';
+import {type AfterViewInit, Component, DOCUMENT, ElementRef, inject, viewChild} from '@angular/core';
 import {obFocusWithOutline} from '@oblique/oblique';
 
 @Component({

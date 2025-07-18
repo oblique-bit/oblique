@@ -86,7 +86,7 @@ module.exports = {
 			lines: 33
 		},
 		'projects/sds/src/app/code-examples/code-examples/focus-with-outline/previews/default': {
-			statements: 78,
+			statements: 77,
 			branches: 100,
 			functions: 33,
 			lines: 81

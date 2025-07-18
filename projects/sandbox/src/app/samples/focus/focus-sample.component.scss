@@ -11,7 +11,7 @@
 
 .content-editable {
 	line-height: 1rem;
-	padding: calc((38px - 1rem) / 2) max(16px, var(--mdc-outlined-text-field-container-shape));
+	padding: calc((38px - 1rem) / 2) max(16px, var(--mat-form-field-outlined-container-shape));
 	border-radius: 4px;
 	border: 1px solid variables.$ob-secondary-800;
 }
