@@ -27,7 +27,7 @@ describe('ObStepperIntlService', () => {
 						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
 						applicationOperator: 'Operator',
-						contact: {emails: ['e@mail.com']}
+						contact: [{email: 'e@mail.com'}]
 					}
 				}),
 				{provide: TranslateLoader, useValue: {getTranslation: () => of({})}}
