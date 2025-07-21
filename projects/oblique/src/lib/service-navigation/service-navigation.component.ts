@@ -43,6 +43,7 @@ export class ObServiceNavigationComponent implements OnInit {
 	}
 	@Input() pamsAppId: string | undefined = undefined;
 	@Input() displayMessage = false;
+	@Input() useInfoBackend = false;
 	@Input() displayInfo = false;
 	@Input() displayApplications = false;
 	@Input() displayProfile = false;
@@ -68,7 +69,7 @@ export class ObServiceNavigationComponent implements OnInit {
 	readonly favoriteApplications$ = this.headerControlsService.getFavoriteApplications$();
 	readonly language$ = this.headerControlsService.getLanguage$();
 	readonly languages = this.headerControlsService.getLanguages();
-
+	readonly infoBackend$ = this.headerControlsService.getInfoBackend$();
 	constructor(private readonly headerControlsService: ObServiceNavigationService) {}
 
 	ngOnInit(): void {

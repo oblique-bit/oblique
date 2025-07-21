@@ -23,6 +23,7 @@ export interface ObIServiceNavigationConfig {
 	infoContactText?: string;
 	infoDescription?: string;
 	infoContact?: ObIServiceNavigationContact;
+	useInfoBackend?: boolean;
 	maxLastUsedApplications?: number;
 	maxFavoriteApplications?: number;
 	returnUrl?: string;

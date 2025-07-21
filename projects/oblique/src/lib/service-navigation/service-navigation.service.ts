@@ -1,12 +1,17 @@
 import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, ReplaySubject, share, switchMap} from 'rxjs';
+import {Observable, ReplaySubject, combineLatest, share, switchMap} from 'rxjs';
 import {combineLatestWith, distinctUntilChanged, map, startWith, tap} from 'rxjs/operators';
-import {ObEPamsEnvironment, ObILanguage, ObISectionLink, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
+import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
-import {ObIServiceNavigationApplicationParsedInfo, ObIServiceNavigationState} from './api/service-navigation.api.model';
+import {
+	ObIServiceNavigationApplicationParsedInfo,
+	ObIServiceNavigationBackendInfo,
+	ObIServiceNavigationState
+} from './api/service-navigation.api.model';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
+import {ObEPamsEnvironment, ObILanguage, ObISectionLink, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
 import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
 import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
 
@@ -35,6 +40,7 @@ export class ObServiceNavigationService {
 		share({connector: () => new ReplaySubject(1), resetOnComplete: false, resetOnRefCountZero: false})
 	);
 	private readonly configService = inject(ObServiceNavigationConfigApiService);
+	private readonly infoService = inject(ObServiceNavigationInfoApiService);
 	private readonly pollingService = inject(ObServiceNavigationPollingService);
 	private readonly applicationsService = inject(ObServiceNavigationApplicationsService);
 	private readonly translateService = inject(TranslateService);
@@ -158,6 +164,16 @@ export class ObServiceNavigationService {
 
 	getFavoriteApplications$(): Observable<ObIServiceNavigationApplication[]> {
 		return this.getApplications$('favoriteApps');
+	}
+
+	getInfoBackend$(): Observable<ObIServiceNavigationBackendInfo> {
+		const onLanguageChange$ = this.translateService.onLangChange.pipe(startWith({lang: this.translateService.currentLang}));
+		return combineLatest([this.rootUrl$, this.pamsAppId$, onLanguageChange$]).pipe(
+			switchMap(([rootUrl, pamsId, onLangChange]) => {
+				return this.infoService.get(rootUrl, pamsId, onLangChange.lang);
+			}),
+			startWith({} as ObIServiceNavigationBackendInfo)
+		);
 	}
 
 	getLanguage$(): Observable<string> {
