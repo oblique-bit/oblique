@@ -33,8 +33,11 @@ export class ObServiceNavigationComponent implements OnInit {
 	@Input() infoLinks: ObIServiceNavigationLink[] = [];
 	@Input() infoContactText: string;
 	@Input() infoContact: ObIServiceNavigationContact;
+	/**
+	 * @deprecated since Oblique 13.3.2. It will be removed in the next major version.
+	 */
 	@Input() maxLastUsedApplications = 3;
-	@Input() maxFavoriteApplications = 3;
+	@Input() maxFavoriteApplications = 8;
 	@Input() environment: ObEPamsEnvironment;
 	@Input() rootUrl: string;
 	@Input()
@@ -75,6 +78,7 @@ export class ObServiceNavigationComponent implements OnInit {
 	ngOnInit(): void {
 		this.headerControlsService.setUpRootUrls(this.environment, this.rootUrl);
 		this.headerControlsService.setPamsAppId(this.pamsAppId);
+		this.headerControlsService.setFavoriteApplicationsCount(this.maxFavoriteApplications);
 	}
 
 	changeLanguage(language: string): void {

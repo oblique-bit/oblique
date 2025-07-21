@@ -63,6 +63,7 @@ describe('ObServiceNavigationComponent', () => {
 		getLanguages: jest.fn().mockReturnValue([{code: 'en', label: 'English'}]),
 		setLanguage: jest.fn(),
 		setPamsAppId: jest.fn(),
+		setFavoriteApplicationsCount: jest.fn(),
 		logout: jest.fn(),
 		getLogoutTrigger$: jest.fn(),
 		setHandleLogout: jest.fn()
@@ -201,12 +202,6 @@ describe('ObServiceNavigationComponent', () => {
 			});
 		});
 
-		describe('maxLastUsedApplications', () => {
-			it('should be initialized to 3', () => {
-				expect(component.maxLastUsedApplications).toBe(3);
-			});
-		});
-
 		describe('handleLogout setter', () => {
 			it('should set the value correctly ', () => {
 				const expectedResult = false;
@@ -224,9 +219,18 @@ describe('ObServiceNavigationComponent', () => {
 			});
 		});
 
+		describe('setFavoriteApplicationsCount setter', () => {
+			it('should set the value correctly ', () => {
+				const expectedResult = 7;
+				component.maxFavoriteApplications = expectedResult;
+				component.ngOnInit();
+				expect(mockServiceNavigationService.setFavoriteApplicationsCount).toHaveBeenCalledWith(expectedResult);
+			});
+		});
+
 		describe('maxFavoriteApplications', () => {
-			it('should be initialized to 3', () => {
-				expect(component.maxFavoriteApplications).toBe(3);
+			it('should be initialized to 8', () => {
+				expect(component.maxFavoriteApplications).toBe(8);
 			});
 		});
 

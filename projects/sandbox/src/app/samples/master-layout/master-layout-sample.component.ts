@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import {Component, inject} from '@angular/core';
 import {
 	ObEScrollMode,
@@ -258,22 +257,6 @@ export class MasterLayoutSampleComponent {
 
 	set hasProfileLinks(value: boolean) {
 		this.masterLayout.header.serviceNavigationConfiguration.profileLinks = value ? this.profileLinks : [];
-	}
-
-	get maxLastUsedApplications(): number {
-		return this.masterLayout.header.serviceNavigationConfiguration.maxLastUsedApplications;
-	}
-
-	set maxLastUsedApplications(value: number) {
-		this.masterLayout.header.serviceNavigationConfiguration.maxLastUsedApplications = value;
-	}
-
-	get maxFavoriteApplications(): number {
-		return this.masterLayout.header.serviceNavigationConfiguration.maxFavoriteApplications;
-	}
-
-	set maxFavoriteApplications(value: number) {
-		this.masterLayout.header.serviceNavigationConfiguration.maxFavoriteApplications = value;
 	}
 
 	get handleLogout(): boolean {

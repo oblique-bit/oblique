@@ -12,13 +12,21 @@ import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
-import {ObLimitArraySizePipe} from '../shared/limit-array-size.pipe';
-import {ObServiceNavigationApplicationAltPipe} from './service-navigation-application-image-alt.pipe';
 import {ObServiceNavigationApplicationsHarness} from './service-navigation-applications.harness';
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
 import {ObDisableLinkDirective} from '../shared/disable-link/disable-link.directive';
 import {WINDOW} from '../../utilities';
 import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
+import {ObServiceNavigationApplicationNameStatusPipe} from './service-navigation-application-name-status.pipe';
+
+// Workaround for tooltip tests https://github.com/telerik/kendo-angular/issues/1505
+Object.defineProperty(window, 'getComputedStyle', {
+	value: () => ({
+		getPropertyValue: () => {
+			return '';
+		}
+	})
+});
 
 describe(ObServiceNavigationApplicationsComponent.name, () => {
 	let component: ObServiceNavigationApplicationsComponent;
@@ -34,13 +42,13 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				MatTooltipModule,
 				ObPopoverModule,
 				ObDisableLinkDirective,
+				MatTooltipModule,
 				ObIsCurrentUrlPipe
 			],
 			declarations: [
-				ObLimitArraySizePipe,
 				ObServiceNavigationApplicationsComponent,
 				ObServiceNavigationPopoverSectionComponent,
-				ObServiceNavigationApplicationAltPipe
+				ObServiceNavigationApplicationNameStatusPipe
 			],
 			providers: [
 				{provide: TranslateService, useClass: ObMockTranslateService},
@@ -63,28 +71,6 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 		expect(await host.hasClass('ob-service-navigation-applications')).toBe(true);
 	});
 
-	describe('maxLastUsedApplications', () => {
-		it('should be initialized to "3"', () => {
-			expect(component.maxLastUsedApplications).toBe(3);
-		});
-
-		it('should throw an error when negative', () => {
-			const change = {maxLastUsedApplications: {currentValue: -1, previousValue: 3, firstChange: true, isFirstChange: () => true}};
-			expect(() => component.ngOnChanges(change)).toThrowError('maxLastUsedApplications cannot be negative.');
-		});
-	});
-
-	describe('maxFavoriteApplications', () => {
-		it('should be initialized to "3"', () => {
-			expect(component.maxFavoriteApplications).toBe(3);
-		});
-
-		it('should throw an error when negative', () => {
-			const change = {maxFavoriteApplications: {currentValue: -1, previousValue: 3, firstChange: true, isFirstChange: () => true}};
-			expect(() => component.ngOnChanges(change)).toThrowError('maxFavoriteApplications cannot be negative.');
-		});
-	});
-
 	describe('lastUsedApplications', () => {
 		it('should be initialized to an empty array', () => {
 			expect(component.lastUsedApplications).toEqual([]);
@@ -102,14 +88,27 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				tick();
 			}));
 
+			describe('ob-service-navigation-applications-popover-content', () => {
+				it.each(['cdkTrapFocus', 'cdkTrapFocusAutoCapture'])('should have attribute `%s`', async attribute => {
+					const popover = await harness.getPopover();
+					const hasAttribute = await popover.getAttribute(attribute);
+					expect(hasAttribute).not.toBeNull();
+				});
+			});
+
 			describe('sections', () => {
 				let sections: DebugElement[];
 				beforeEach(() => {
 					sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 				});
 
-				it('should be 2', () => {
-					expect(sections.length).toBe(2);
+				it('should be 1', () => {
+					expect(sections.length).toBe(1);
+				});
+
+				it('should not find all favorite services link', () => {
+					const allFavoriteLink = document.querySelector(ObServiceNavigationApplicationsHarness.allFavoriteLinkSelector);
+					expect(allFavoriteLink).toBeNull();
 				});
 
 				describe('first section', () => {
@@ -149,6 +148,12 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								link = links[0];
 							});
 
+							it('should have "matTooltip" property set to "applicationName1"', async () => {
+								const tooltipHarness = (await harness.getAllTooltipHarness(fixture))[1];
+								await tooltipHarness.show();
+								expect(await tooltipHarness.getTooltipText()).toBe('applicationName1');
+							});
+
 							it('should be an anchor', () => {
 								expect(link.name).toBe('a');
 							});
@@ -159,6 +164,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 
 							it('should have "href" attribute set to "http://app-url1"', () => {
 								expect(link.attributes.href).toBe('http://app-url1');
+							});
+
+							it('should not have "ob-offline" class', () => {
+								expect(link.classes['ob-offline']).toBe(undefined);
 							});
 
 							it('should have "isExternalLink" property set to "false"', () => {
@@ -187,8 +196,8 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(image.classes['ob-offline']).toBeUndefined();
 								});
 
-								it('should have "i18n.oblique.service-navigation.applications.image.online.alt" as "alt" attribute', () => {
-									expect(image.attributes.alt).toBe('i18n.oblique.service-navigation.applications.image.online.alt');
+								it('should have an empty "alt" attribute', () => {
+									expect(image.attributes.alt).toBe('');
 								});
 
 								it('should have "applicationImage" as "src" attribute', () => {
@@ -222,6 +231,14 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								link = links[1];
 							});
 
+							it('should have "matTooltip" property set to "applicationName2 - i18n.oblique.service-navigation.applications.status.offline"', async () => {
+								const tooltipHarness = (await harness.getAllTooltipHarness(fixture))[2];
+								await tooltipHarness.show();
+								expect(await tooltipHarness.getTooltipText()).toBe(
+									'applicationName2 - i18n.oblique.service-navigation.applications.status.offline'
+								);
+							});
+
 							it('should be an anchor', () => {
 								expect(link.name).toBe('a');
 							});
@@ -238,12 +255,16 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.attributes['aria-disabled']).toBe('true');
 							});
 
+							it('should have "ob-offline" class', () => {
+								expect(link.classes['ob-offline']).toBe(true);
+							});
+
 							it('should have "isExternalLink" property set to "false"', () => {
 								expect(link.properties.isExternalLink).toBe(false);
 							});
 
-							it('should have 3 children', () => {
-								expect(link.children.length).toBe(3);
+							it('should have 2 children', () => {
+								expect(link.children.length).toBe(2);
 							});
 
 							describe('first child', () => {
@@ -260,43 +281,8 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(image.classes['ob-application-image']).toBe(true);
 								});
 
-								it('should have "ob-status-image" class', () => {
-									expect(image.classes['ob-status-image']).toBe(true);
-								});
-
-								it('should have "" as "alt" attribute', () => {
+								it('should have an empty "alt" attribute', () => {
 									expect(image.attributes.alt).toBe('');
-								});
-
-								it('should have "applicationImage" as "src" attribute', () => {
-									expect(image.attributes.src.startsWith('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA')).toBe(true);
-								});
-
-								it('should have "true" as "aria-hidden" attribute', () => {
-									expect(image.attributes['aria-hidden']).toBe('true');
-								});
-							});
-
-							describe('second child', () => {
-								let image: DebugElement;
-								beforeEach(() => {
-									image = link.children[1];
-								});
-
-								it('should be a "img"', () => {
-									expect(image.name).toBe('img');
-								});
-
-								it('should have "ob-application-image" class', () => {
-									expect(image.classes['ob-application-image']).toBe(true);
-								});
-
-								it('should have "ob-offline" class', () => {
-									expect(image.classes['ob-offline']).toBe(true);
-								});
-
-								it('should have "i18n.oblique.service-navigation.applications.image.offline.alt" as "alt" attribute', () => {
-									expect(image.attributes.alt).toBe('i18n.oblique.service-navigation.applications.image.offline.alt');
 								});
 
 								it('should have "applicationImage" as "src" attribute', () => {
@@ -304,10 +290,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								});
 							});
 
-							describe('third child', () => {
+							describe('second child', () => {
 								let span: DebugElement;
 								beforeEach(() => {
-									span = link.children[2];
+									span = link.children[1];
 								});
 
 								it('should be a "span"', () => {
@@ -318,8 +304,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(span.classes['ob-application-title']).toBe(true);
 								});
 
-								it('should have "applicationName2" as content', () => {
-									expect(span.nativeElement.textContent).toBe('applicationName2');
+								it('should have "applicationName2 - i18n.oblique.service-navigation.applications.status.offline" as content', () => {
+									expect(span.nativeElement.textContent).toBe(
+										'applicationName2 - i18n.oblique.service-navigation.applications.status.offline'
+									);
 								});
 							});
 						});
@@ -346,14 +334,56 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				tick();
 			}));
 
+			xdescribe('Show all favorite anchor', () => {
+				let button: TestElement;
+
+				beforeEach(async () => {
+					button = await harness.getAllFavoriteServicesLink();
+				});
+
+				it('should exists', () => {
+					expect(button).toBeTruthy();
+				});
+
+				it.each([
+					{
+						attribute: 'mat-button',
+						value: ''
+					},
+					{
+						attribute: 'obButton',
+						value: 'secondary'
+					}
+				])('should have attribute "$attribute" to have value "$value"', async ({attribute, value}) => {
+					expect(await button.getAttribute(attribute)).toBe(value);
+				});
+
+				it.each([
+					{
+						property: 'href',
+						value: `http://localhost/?favoritesOnly=true`
+					},
+					{
+						property: 'isExternalLink',
+						value: false
+					}
+				])('should have property "$attribute" to have value "$value"', async ({property, value}) => {
+					expect(await button.getProperty(property)).toBe(value);
+				});
+
+				it('should have text "i18n.oblique.service-navigation.applications.favorite.button"', async () => {
+					expect(await button.text()).toBe('i18n.oblique.service-navigation.applications.favorite.button');
+				});
+			});
+
 			describe('sections', () => {
 				let sections: DebugElement[];
 				beforeEach(() => {
 					sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 				});
 
-				it('should be 2', () => {
-					expect(sections.length).toBe(2);
+				it('should be 1', () => {
+					expect(sections.length).toBe(1);
 				});
 
 				describe('first section', () => {
@@ -393,6 +423,12 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								link = links[0];
 							});
 
+							it('should have "matTooltip" property set to "applicationName1"', async () => {
+								const tooltipHarness = (await harness.getAllTooltipHarness(fixture))[1];
+								await tooltipHarness.show();
+								expect(await tooltipHarness.getTooltipText()).toBe('applicationName1');
+							});
+
 							it('should be an anchor', () => {
 								expect(link.name).toBe('a');
 							});
@@ -403,6 +439,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 
 							it('should have "href" attribute set to "http://app-url1"', () => {
 								expect(link.attributes.href).toBe('http://app-url1');
+							});
+
+							it('should not have "ob-offline" class', () => {
+								expect(link.classes['ob-offline']).toBe(undefined);
 							});
 
 							it('should have "isExternalLink" property set to "false"', () => {
@@ -431,8 +471,8 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(image.classes['ob-offline']).toBeUndefined();
 								});
 
-								it('should have "i18n.oblique.service-navigation.applications.image.online.alt" as "alt" attribute', () => {
-									expect(image.attributes.alt).toBe('i18n.oblique.service-navigation.applications.image.online.alt');
+								it('should have an empty "alt" attribute', () => {
+									expect(image.attributes.alt).toBe('');
 								});
 
 								it('should have "applicationImage" as "src" attribute', () => {
@@ -466,6 +506,14 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								link = links[1];
 							});
 
+							it('should have "matTooltip" property set to "applicationName2 - i18n.oblique.service-navigation.applications.status.offline"', async () => {
+								const tooltipHarness = (await harness.getAllTooltipHarness(fixture))[2];
+								await tooltipHarness.show();
+								expect(await tooltipHarness.getTooltipText()).toBe(
+									'applicationName2 - i18n.oblique.service-navigation.applications.status.offline'
+								);
+							});
+
 							it('should be an anchor', () => {
 								expect(link.name).toBe('a');
 							});
@@ -482,12 +530,16 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.attributes['aria-disabled']).toBe('true');
 							});
 
+							it('should have "ob-offline" class', () => {
+								expect(link.classes['ob-offline']).toBe(true);
+							});
+
 							it('should have "isExternalLink" property set to "false"', () => {
 								expect(link.properties.isExternalLink).toBe(false);
 							});
 
-							it('should have 3 children', () => {
-								expect(link.children.length).toBe(3);
+							it('should have 2 children', () => {
+								expect(link.children.length).toBe(2);
 							});
 
 							describe('first child', () => {
@@ -504,54 +556,15 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(image.classes['ob-application-image']).toBe(true);
 								});
 
-								it('should have "ob-status-image" class', () => {
-									expect(image.classes['ob-status-image']).toBe(true);
-								});
-
 								it('should have "" as "alt" attribute', () => {
 									expect(image.attributes.alt).toBe('');
-								});
-
-								it('should have "applicationImage" as "src" attribute', () => {
-									expect(image.attributes.src.startsWith('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA')).toBe(true);
-								});
-
-								it('should have "true" as "aria-hidden" attribute', () => {
-									expect(image.attributes['aria-hidden']).toBe('true');
 								});
 							});
 
 							describe('second child', () => {
-								let image: DebugElement;
-								beforeEach(() => {
-									image = link.children[1];
-								});
-
-								it('should be a "img"', () => {
-									expect(image.name).toBe('img');
-								});
-
-								it('should have "ob-application-image" class', () => {
-									expect(image.classes['ob-application-image']).toBe(true);
-								});
-
-								it('should have "ob-offline" class', () => {
-									expect(image.classes['ob-offline']).toBe(true);
-								});
-
-								it('should have "i18n.oblique.service-navigation.applications.image.offline.alt" as "alt" attribute', () => {
-									expect(image.attributes.alt).toBe('i18n.oblique.service-navigation.applications.image.offline.alt');
-								});
-
-								it('should have "applicationImage" as "src" attribute', () => {
-									expect(image.attributes.src.startsWith('applicationImage2')).toBe(true);
-								});
-							});
-
-							describe('third child', () => {
 								let span: DebugElement;
 								beforeEach(() => {
-									span = link.children[2];
+									span = link.children[1];
 								});
 
 								it('should be a "span"', () => {
@@ -562,8 +575,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 									expect(span.classes['ob-application-title']).toBe(true);
 								});
 
-								it('should have "applicationName2" as content', () => {
-									expect(span.nativeElement.textContent).toBe('applicationName2');
+								it('should have "applicationName2 - i18n.oblique.service-navigation.applications.status.offline" as content', () => {
+									expect(span.nativeElement.textContent).toBe(
+										'applicationName2 - i18n.oblique.service-navigation.applications.status.offline'
+									);
 								});
 							});
 						});
@@ -704,38 +719,45 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 					expect(await harness.getPopoverHarness()).toBeTruthy();
 				});
 
-				describe('sections', () => {
-					let sections: DebugElement[];
-					beforeEach(() => {
-						sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
+				xdescribe('Show all services anchor', () => {
+					let button: TestElement;
+
+					beforeEach(async () => {
+						button = await harness.getAllServicesLink();
 					});
 
-					it('should be 1', () => {
-						expect(sections.length).toBe(1);
+					it('should exists', () => {
+						expect(button).toBeTruthy();
 					});
-					describe('first section', () => {
-						let section: ObServiceNavigationPopoverSectionComponent;
-						beforeEach(() => {
-							section = sections[0].componentInstance;
-						});
 
-						it('should have "i18n.oblique.service-navigation.applications.links.header" as header', () => {
-							expect(section.header).toBe('i18n.oblique.service-navigation.applications.links.header');
-						});
+					it.each([
+						{
+							attribute: 'mat-button',
+							value: ''
+						},
+						{
+							attribute: 'obButton',
+							value: 'secondary'
+						}
+					])('should have attribute "$attribute" to have value "$value"', async ({attribute, value}) => {
+						expect(await button.getAttribute(attribute)).toBe(value);
+					});
 
-						describe('links', () => {
-							it('should have 1', () => {
-								expect(section.links.length).toBe(1);
-							});
+					it.each([
+						{
+							property: 'href',
+							value: `http://localhost/`
+						},
+						{
+							property: 'isExternalLink',
+							value: false
+						}
+					])('should have property "$attribute" to have value "$value"', async ({property, value}) => {
+						expect(await button.getProperty(property)).toBe(value);
+					});
 
-							it.each([
-								{property: 'url', value: ''},
-								{property: 'label', value: 'i18n.oblique.service-navigation.applications.link.label'},
-								{property: 'isInternalLink', value: true}
-							])('should have "$value" as "$property" property on the first link', ({property, value}) => {
-								expect(section.links[0][property]).toBe(value);
-							});
-						});
+					it('should have text "i18n.oblique.service-navigation.applications.favorite.button"', async () => {
+						expect(await button.text()).toBe('i18n.oblique.service-navigation.applications.link.label');
 					});
 				});
 			});

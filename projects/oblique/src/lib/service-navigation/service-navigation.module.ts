@@ -12,13 +12,11 @@ import {ObPopoverModule} from '../popover/popover.module';
 import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
 import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
 import {ObServiceNavigationPopoverSectionComponent} from './shared/popover-section/service-navigation-popover-section.component';
-import {ObLimitArraySizePipe} from './shared/limit-array-size.pipe';
 import {ObServiceNavigationAuthenticationComponent} from './authentication/service-navigation-authentication.component';
 import {ObServiceNavigationProfileComponent} from './profile/service-navigation-profile.component';
 import {ObServiceNavigationMessageComponent} from './message/service-navigation-message.component';
 import {ObServiceNavigationInfoComponent} from './info/service-navigation-info.component';
 import {ObServiceNavigationApplicationsComponent} from './applications/service-navigation-applications.component';
-import {ObServiceNavigationApplicationAltPipe} from './applications/service-navigation-application-image-alt.pipe';
 import {ObServiceNavigationLanguagesComponent} from './languages/service-navigation-languages.component';
 import {ObContactToLinksPipe} from './info/contact-to-links.pipe';
 import {ObServiceNavigationComponent} from './service-navigation.component';
@@ -27,6 +25,7 @@ import {ObEportalCsrfInterceptor} from './eportal-csrf-interceptor/eportal-csrf-
 import {ObDisableLinkDirective} from './shared/disable-link/disable-link.directive';
 import {A11yModule} from '@angular/cdk/a11y';
 import {ObIsCurrentUrlPipe} from './shared/popover-section/is-current-url.pipe';
+import {ObServiceNavigationApplicationNameStatusPipe} from './applications/service-navigation-application-name-status.pipe';
 
 @NgModule({
 	providers: [
@@ -56,8 +55,7 @@ import {ObIsCurrentUrlPipe} from './shared/popover-section/is-current-url.pipe';
 	declarations: [
 		ObContactToLinksPipe,
 		ObIsUserLoggedInPipe,
-		ObLimitArraySizePipe,
-		ObServiceNavigationApplicationAltPipe,
+		ObServiceNavigationApplicationNameStatusPipe,
 		ObServiceNavigationApplicationsComponent,
 		ObServiceNavigationAuthenticationComponent,
 		ObServiceNavigationComponent,

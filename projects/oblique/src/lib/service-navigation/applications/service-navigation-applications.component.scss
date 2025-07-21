@@ -19,7 +19,7 @@ $ob-application-icon-size: 2.5em; // empiric value
 		text-decoration: none;
 		color: variables.$ob-default;
 
-		&:hover {
+		&:not(.ob-offline):hover {
 			background-color: variables.$ob-gray-lighter;
 		}
 	}
@@ -30,16 +30,11 @@ $ob-application-icon-size: 2.5em; // empiric value
 		.ob-application-image {
 			height: $ob-application-icon-size;
 			width: $ob-application-icon-size;
-
-			&.ob-status-image {
-				position: absolute;
-				z-index: 2;
-			}
-
-			&.ob-offline {
-				filter: grayscale(1);
-			}
 		}
+	}
+
+	.ob-offline {
+		opacity: 0.63;
 	}
 
 	.ob-application-title {
@@ -49,4 +44,8 @@ $ob-application-icon-size: 2.5em; // empiric value
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+}
+
+.ob-all-services {
+	width: 100%;
 }
