@@ -121,19 +121,6 @@
 				<mat-slide-toggle [(ngModel)]="hasContactForm">has contact form url</mat-slide-toggle>
 				<mat-slide-toggle [(ngModel)]="hasInfoBackend">has backend</mat-slide-toggle>
 			</fieldset>
-			<fieldset class="toggles">
-				<legend>Applications settings</legend>
-				<mat-form-field>
-					<mat-label>Max favorite applications</mat-label>
-					<input
-						type="number"
-						matInput
-						[disabled]="isLoggedOut$ | async"
-						[matTooltip]="(isLoggedOut$ | async) ? 'You need to be logged in to activate this setting.' : undefined"
-						[(ngModel)]="maxFavoriteApplications"
-					/>
-				</mat-form-field>
-			</fieldset>
 		</mat-card-content>
 	</mat-card>
 </div>
