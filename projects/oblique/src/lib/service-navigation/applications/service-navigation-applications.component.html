@@ -55,6 +55,17 @@
 				</a>
 			</li>
 		</ul>
+		<a
+			id="service-navigation-all-services"
+			mat-button
+			obButton="secondary"
+			class="ob-all-services"
+			obContent
+			[href]="applicationsUrl"
+			[isExternalLink]="false"
+		>
+			{{ "i18n.oblique.service-navigation.applications.link.label" | translate }}
+		</a>
 	</ob-service-navigation-popover-section>
 	<ob-service-navigation-popover-section
 		*ngIf="favoriteApplications?.length > 0"
@@ -80,9 +91,16 @@
 				</a>
 			</li>
 		</ul>
+		<a
+			id="service-navigation-all-favorite-services"
+			mat-button
+			obButton="secondary"
+			class="ob-all-services"
+			obContent
+			[href]="applicationsUrl + '?favoritesOnly=true'"
+			[isExternalLink]="false"
+		>
+			{{ "i18n.oblique.service-navigation.applications.favorite.button" | translate }}
+		</a>
 	</ob-service-navigation-popover-section>
-	<ob-service-navigation-popover-section
-		header="i18n.oblique.service-navigation.applications.links.header"
-		[links]="[{ url: applicationsUrl, label: 'i18n.oblique.service-navigation.applications.link.label', isInternalLink: true }]"
-	/>
 </ng-template>

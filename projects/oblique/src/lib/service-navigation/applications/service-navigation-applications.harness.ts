@@ -8,6 +8,7 @@ import {ObServiceNavigationApplicationsComponent} from './service-navigation-app
 
 export class ObServiceNavigationApplicationsHarness extends ContentContainerComponentHarness {
 	static hostSelector = 'ob-service-navigation-applications';
+	static allFavoriteLinkSelector = '#service-navigation-all-favorite-services';
 
 	public async getTrigger(): Promise<TestElement> {
 		return this.locatorForOptional('button', 'a')();
@@ -37,5 +38,13 @@ export class ObServiceNavigationApplicationsHarness extends ContentContainerComp
 
 	public async getPopoverHarness(): Promise<ObServiceNavigationPopOverHarness> {
 		return this.getHarnessOrNull(ObServiceNavigationPopOverHarness);
+	}
+
+	public getAllServicesLink(): Promise<TestElement> {
+		return this.locatorFor('#service-navigation-all-services')();
+	}
+
+	public getAllFavoriteServicesLink(): Promise<TestElement> {
+		return this.locatorFor(ObServiceNavigationApplicationsHarness.allFavoriteLinkSelector)();
 	}
 }

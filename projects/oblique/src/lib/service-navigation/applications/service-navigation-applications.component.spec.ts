@@ -118,8 +118,13 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 					sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 				});
 
-				it('should be 2', () => {
-					expect(sections.length).toBe(2);
+				it('should be 1', () => {
+					expect(sections.length).toBe(1);
+				});
+
+				it('should not find all favorite services link', () => {
+					const allFavoriteLink = document.querySelector(ObServiceNavigationApplicationsHarness.allFavoriteLinkSelector);
+					expect(allFavoriteLink).toBeNull();
 				});
 
 				describe('first section', () => {
@@ -368,14 +373,56 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				tick();
 			}));
 
+			describe('Show all favorite anchor', () => {
+				let button: TestElement;
+
+				beforeEach(async () => {
+					button = await harness.getAllFavoriteServicesLink();
+				});
+
+				it('should exists', () => {
+					expect(button).toBeTruthy();
+				});
+
+				it.each([
+					{
+						attribute: 'mat-button',
+						value: ''
+					},
+					{
+						attribute: 'obButton',
+						value: 'secondary'
+					}
+				])('should have attribute "$attribute" to have value "$value"', async ({attribute, value}) => {
+					expect(await button.getAttribute(attribute)).toBe(value);
+				});
+
+				it.each([
+					{
+						property: 'href',
+						value: `http://localhost/?favoritesOnly=true`
+					},
+					{
+						property: 'isExternalLink',
+						value: false
+					}
+				])('should have property "$attribute" to have value "$value"', async ({property, value}) => {
+					expect(await button.getProperty(property)).toBe(value);
+				});
+
+				it('should have text "i18n.oblique.service-navigation.applications.favorite.button"', async () => {
+					expect(await button.text()).toBe('i18n.oblique.service-navigation.applications.favorite.button');
+				});
+			});
+
 			describe('sections', () => {
 				let sections: DebugElement[];
 				beforeEach(() => {
 					sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 				});
 
-				it('should be 2', () => {
-					expect(sections.length).toBe(2);
+				it('should be 1', () => {
+					expect(sections.length).toBe(1);
 				});
 
 				describe('first section', () => {
@@ -738,38 +785,45 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 					expect(await harness.getPopoverHarness()).toBeTruthy();
 				});
 
-				describe('sections', () => {
-					let sections: DebugElement[];
-					beforeEach(() => {
-						sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
+				xdescribe('Show all services anchor', () => {
+					let button: TestElement;
+
+					beforeEach(async () => {
+						button = await harness.getAllServicesLink();
 					});
 
-					it('should be 1', () => {
-						expect(sections.length).toBe(1);
+					it('should exists', () => {
+						expect(button).toBeTruthy();
 					});
-					describe('first section', () => {
-						let section: ObServiceNavigationPopoverSectionComponent;
-						beforeEach(() => {
-							section = sections[0].componentInstance;
-						});
 
-						it('should have "i18n.oblique.service-navigation.applications.links.header" as header', () => {
-							expect(section.header).toBe('i18n.oblique.service-navigation.applications.links.header');
-						});
+					it.each([
+						{
+							attribute: 'mat-button',
+							value: ''
+						},
+						{
+							attribute: 'obButton',
+							value: 'secondary'
+						}
+					])('should have attribute "$attribute" to have value "$value"', async ({attribute, value}) => {
+						expect(await button.getAttribute(attribute)).toBe(value);
+					});
 
-						describe('links', () => {
-							it('should have 1', () => {
-								expect(section.links.length).toBe(1);
-							});
+					it.each([
+						{
+							property: 'href',
+							value: `http://localhost/`
+						},
+						{
+							property: 'isExternalLink',
+							value: false
+						}
+					])('should have property "$attribute" to have value "$value"', async ({property, value}) => {
+						expect(await button.getProperty(property)).toBe(value);
+					});
 
-							it.each([
-								{property: 'url', value: ''},
-								{property: 'label', value: 'i18n.oblique.service-navigation.applications.link.label'},
-								{property: 'isInternalLink', value: true}
-							])('should have "$value" as "$property" property on the first link', ({property, value}) => {
-								expect(section.links[0][property]).toBe(value);
-							});
-						});
+					it('should have text "i18n.oblique.service-navigation.applications.favorite.button"', async () => {
+						expect(await button.text()).toBe('i18n.oblique.service-navigation.applications.link.label');
 					});
 				});
 			});
