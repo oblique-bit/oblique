@@ -1,3 +1,21 @@
+# [14.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/sds-13.3.1_release-major_14.0.0__bxzrj_2025-07-11T135102...14.0.0-alpha.1) (2025-07-21)
+
+## Features
+
+- **router:** add language in url if `hasLanguageInUrl` is activated ([18f6cd18](https://github.com/oblique-bit/oblique/commit/18f6cd18d7718d427415f0d54452bc4679c03d79))
+- **router:** add `obLocalizePipe` ([ea6a6583](https://github.com/oblique-bit/oblique/commit/ea6a6583398e8c972ec0b527cd39c7d5082805bc))
+- **schematics:** don't add `.browserslistrc` to the project ([00406930](https://github.com/oblique-bit/oblique/commit/0040693049148f25fad3c6484bd13d6196e40231))
+- **schematics:** ng add ask if language should be added in the URL ([d1670499](https://github.com/oblique-bit/oblique/commit/d1670499ae044b77388865d3931b07853f003421))
+- **utilities:** merge custom material config with the Oblique one ([d2051f63](https://github.com/oblique-bit/oblique/commit/d2051f63a6ff8edc2c824e8d40d8956adfa228e2))
+- **utilities:** remove deprecated `OB_MATERIAL_CONFIG` token ([037c8864](https://github.com/oblique-bit/oblique/commit/037c8864f7f101cc95fd05fb24b9244886d5739e))
+- **utilities:** add `hasLanguageInUrl` property to `ObIObliqueConfiguration` ([6b25f6e2](https://github.com/oblique-bit/oblique/commit/6b25f6e2c1c29a946b5e9142f223c7a8c24ae254))
+
+## BREAKING CHANGES
+
+- **schematics:** `.browserslistrc` is not added anymore. Use `@oblique/toolchain` to correctly configure Oblique
+- **utilities:** custom Material configuration are now merged with Oblique's configuration of Material
+- **utilities:** `OB_MATERIAL_CONFIG` has been removed, use `provideObliqueConfiguration` instead
+
 # [13.3.1](https://github.com/oblique-bit/oblique/compare/13.3.0...13.3.1) (2025-07-10)
 
 ## Bug Fixes

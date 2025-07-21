@@ -1,3 +1,9 @@
+# [14.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/sds-13.3.1_release-major_14.0.0__bxzrj_2025-07-11T135102...14.0.0-alpha.1) (2025-07-21)
+
+## Features
+
+- **cms:** cover redirections for version 14 ([f97c4d42](https://github.com/oblique-bit/oblique/commit/f97c4d42020c1c433fc1f119e146e7db3e007858))
+
 # [13.3.1](https://github.com/oblique-bit/oblique/compare/13.3.0...13.3.1) (2025-07-10)
 
 ## Features
