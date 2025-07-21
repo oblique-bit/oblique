@@ -85,13 +85,6 @@
 		<fieldset class="toggles">
 			<legend>Applications widget settings</legend>
 			<mat-slide-toggle [(ngModel)]="displayApplications">toggle applications</mat-slide-toggle>
-			<mat-form-field>
-				<mat-label>Max favorite applications</mat-label>
-				<input type="number" matInput [disabled]="!displayApplications" [(ngModel)]="maxFavoriteApplications" />
-				<mat-hint
-					>Display only {{ maxFavoriteApplications }} applications out of a total of {{ favoriteApplicationsLength$ | async }}.</mat-hint
-				>
-			</mat-form-field>
 		</fieldset>
 		<fieldset class="toggles">
 			<legend>Custom widgets settings</legend>
