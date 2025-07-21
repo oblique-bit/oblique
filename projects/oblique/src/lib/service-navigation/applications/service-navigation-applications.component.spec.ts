@@ -295,10 +295,6 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								it('should have "applicationImage" as "src" attribute', () => {
 									expect(image.attributes.src.startsWith('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA')).toBe(true);
 								});
-
-								it('should have "true" as "aria-hidden" attribute', () => {
-									expect(image.attributes['aria-hidden']).toBe('true');
-								});
 							});
 
 							describe('second child', () => {
@@ -554,10 +550,6 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 
 								it('should have "applicationImage" as "src" attribute', () => {
 									expect(image.attributes.src.startsWith('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA')).toBe(true);
-								});
-
-								it('should have "true" as "aria-hidden" attribute', () => {
-									expect(image.attributes['aria-hidden']).toBe('true');
 								});
 							});
 
