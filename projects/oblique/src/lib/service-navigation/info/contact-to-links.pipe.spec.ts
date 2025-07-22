@@ -13,6 +13,11 @@ describe('ObContactToLinksPipe', () => {
 
 		it.each([
 			{
+				description: 'an empty array when all elements are empty strings',
+				values: {email: '', formUrl: '', tel: ''},
+				result: []
+			},
+			{
 				description: 'an email only',
 				values: {email: 'test@test.com'},
 				result: [{url: 'mailto:test@test.com', label: 'test@test.com', isInternalLink: true}]

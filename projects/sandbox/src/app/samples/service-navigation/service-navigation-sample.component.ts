@@ -6,9 +6,9 @@ import {
 	ObServiceNavigationComponent,
 	WINDOW
 } from '@oblique/oblique';
-import {environment} from '../../../environments/environment';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {environment} from '../../../environments/environment';
 
 @Component({
 	selector: 'sb-service-navigation',
@@ -18,8 +18,8 @@ import {map} from 'rxjs/operators';
 })
 export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	returnUrl: string;
-	maxLastUsedApplications = 3;
-	maxFavoriteApplications = 3;
+	readonly eportalAppId = '48';
+	maxFavoriteApplications = 8;
 	lastUsedApplicationsLength$: Observable<number>;
 	favoriteApplicationsLength$: Observable<number>;
 	displayMessage = true;
@@ -71,6 +71,7 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	hasContactEmail = true;
 	hasContactPhone = true;
 	hasContactFormUrl = true;
+	hasInfoBackend = true;
 	infoContact: ObIServiceNavigationContact = {
 		email: 'support@bit.admin.ch',
 		tel: '+41 58 461 61 11',

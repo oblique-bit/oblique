@@ -57,7 +57,10 @@ function embedMasterLayout(title: string): Rule {
 		importModuleInRoot(tree, 'ObMasterLayoutModule', ObliquePackage);
 		importModuleInRoot(tree, 'BrowserAnimationsModule', '@angular/platform-browser/animations');
 		addMasterLayout(tree, title);
-
+		infoMigration(
+			context,
+			"MasterLayout integrated. Please don’t forget to update the 'application operator' placeholder in the footer with your actual operator."
+		);
 		return tree;
 	});
 }
@@ -157,7 +160,13 @@ function addFontFiles(): Rule {
 function addMasterLayout(tree: Tree, title: string): void {
 	const path = 'src/app/app.component.html';
 	if (tree.exists(path)) {
-		tree.overwrite(path, getTemplate(tree, 'default-master-layout.html').replace(/_APP_TITLE_PLACEHOLDER_/, title));
+		tree.overwrite(
+			path,
+			getTemplate(tree, 'default-master-layout.html')
+				.replace(/_APP_TITLE_PLACEHOLDER_/, title)
+				.replace(/_APP_CURRENT_YEAR_/, new Date().getFullYear().toString())
+				.replace(/_APPLICATION_OPERATOR_/, 'application operator')
+		);
 	}
 }
 

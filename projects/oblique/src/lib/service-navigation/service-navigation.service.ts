@@ -1,12 +1,17 @@
 import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, ReplaySubject, share, switchMap} from 'rxjs';
+import {Observable, ReplaySubject, combineLatest, share, switchMap} from 'rxjs';
 import {combineLatestWith, distinctUntilChanged, map, startWith, tap} from 'rxjs/operators';
-import {ObEPamsEnvironment, ObILanguage, ObISectionLink, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
+import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
-import {ObIServiceNavigationApplicationParsedInfo, ObIServiceNavigationState} from './api/service-navigation.api.model';
+import {
+	ObIServiceNavigationApplicationParsedInfo,
+	ObIServiceNavigationBackendInfo,
+	ObIServiceNavigationState
+} from './api/service-navigation.api.model';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
+import {ObEPamsEnvironment, ObILanguage, ObISectionLink, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
 import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
 import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
 
@@ -22,10 +27,20 @@ export class ObServiceNavigationService {
 	private readonly avatarRootUrl$ = new ReplaySubject<string>(1);
 	private readonly returnUrl$ = new ReplaySubject<string>(1);
 	private readonly pamsAppId$ = new ReplaySubject<string>(1);
+	private readonly favoriteApplicationsCount$ = new ReplaySubject<number>(1);
+
 	private readonly config$ = this.rootUrl$.pipe(
-		switchMap(rootUrl =>
+		combineLatestWith(this.favoriteApplicationsCount$),
+		switchMap(([rootUrl, favoriteApplicationsCount]) =>
 			this.configService.fetchUrls(rootUrl).pipe(
-				tap(data => this.pollingService.initializeStateUpdate(data.pollingInterval, data.pollingNotificationsInterval, rootUrl)),
+				tap(data =>
+					this.pollingService.initializeStateUpdate(
+						data.pollingInterval,
+						data.pollingNotificationsInterval,
+						rootUrl,
+						favoriteApplicationsCount
+					)
+				),
 				tap(() => (this.timeoutService.rootUrl = rootUrl)),
 				tap(data => (this.timeoutService.logoutUrl = data.logout.url)),
 				tap(data => (this.redirectorService.logoutUrl = data.logout.url))
@@ -35,6 +50,7 @@ export class ObServiceNavigationService {
 		share({connector: () => new ReplaySubject(1), resetOnComplete: false, resetOnRefCountZero: false})
 	);
 	private readonly configService = inject(ObServiceNavigationConfigApiService);
+	private readonly infoService = inject(ObServiceNavigationInfoApiService);
 	private readonly pollingService = inject(ObServiceNavigationPollingService);
 	private readonly applicationsService = inject(ObServiceNavigationApplicationsService);
 	private readonly translateService = inject(TranslateService);
@@ -58,6 +74,10 @@ export class ObServiceNavigationService {
 
 	setPamsAppId(appId: string): void {
 		this.pamsAppId$.next(appId);
+	}
+
+	setFavoriteApplicationsCount(count: number): void {
+		this.favoriteApplicationsCount$.next(count);
 	}
 
 	setHandleLogout(handleLogout: boolean): void {
@@ -158,6 +178,16 @@ export class ObServiceNavigationService {
 
 	getFavoriteApplications$(): Observable<ObIServiceNavigationApplication[]> {
 		return this.getApplications$('favoriteApps');
+	}
+
+	getInfoBackend$(): Observable<ObIServiceNavigationBackendInfo> {
+		const onLanguageChange$ = this.translateService.onLangChange.pipe(startWith({lang: this.translateService.currentLang}));
+		return combineLatest([this.rootUrl$, this.pamsAppId$, onLanguageChange$]).pipe(
+			switchMap(([rootUrl, pamsId, onLangChange]) => {
+				return this.infoService.get(rootUrl, pamsId, onLangChange.lang);
+			}),
+			startWith({} as ObIServiceNavigationBackendInfo)
+		);
 	}
 
 	getLanguage$(): Observable<string> {

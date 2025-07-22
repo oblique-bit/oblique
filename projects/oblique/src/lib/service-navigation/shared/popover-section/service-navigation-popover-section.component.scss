@@ -44,4 +44,8 @@
 			}
 		}
 	}
+
+	.ob-content > *:not(:first-child) {
+		margin-top: variables.$ob-spacing-default;
+	}
 }

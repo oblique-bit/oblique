@@ -209,6 +209,13 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.header.serviceNavigationConfiguration.infoLinks = value ? this.infoLinks : [];
 	}
 
+	get hasInfoBackend(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.useInfoBackend ?? false;
+	}
+	set hasInfoBackend(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.useInfoBackend = value;
+	}
+
 	get hasContactForm(): boolean {
 		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrl?.length > 0;
 	}
@@ -250,22 +257,6 @@ export class MasterLayoutSampleComponent {
 
 	set hasProfileLinks(value: boolean) {
 		this.masterLayout.header.serviceNavigationConfiguration.profileLinks = value ? this.profileLinks : [];
-	}
-
-	get maxLastUsedApplications(): number {
-		return this.masterLayout.header.serviceNavigationConfiguration.maxLastUsedApplications;
-	}
-
-	set maxLastUsedApplications(value: number) {
-		this.masterLayout.header.serviceNavigationConfiguration.maxLastUsedApplications = value;
-	}
-
-	get maxFavoriteApplications(): number {
-		return this.masterLayout.header.serviceNavigationConfiguration.maxFavoriteApplications;
-	}
-
-	set maxFavoriteApplications(value: number) {
-		this.masterLayout.header.serviceNavigationConfiguration.maxFavoriteApplications = value;
 	}
 
 	get handleLogout(): boolean {

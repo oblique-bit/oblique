@@ -8,6 +8,8 @@ import {ObServiceNavigationApplicationsComponent} from './service-navigation-app
 
 export class ObServiceNavigationApplicationsHarness extends ContentContainerComponentHarness {
 	static hostSelector = 'ob-service-navigation-applications';
+	static allFavoriteLinkSelector = '#service-navigation-all-favorite-services';
+	private static readonly popoverSelector = '#ob-service-navigation-applications-popover-content';
 
 	public async getTrigger(): Promise<TestElement> {
 		return this.locatorForOptional('button', 'a')();
@@ -18,8 +20,16 @@ export class ObServiceNavigationApplicationsHarness extends ContentContainerComp
 		return element.text();
 	}
 
+	public async getPopover(): Promise<TestElement> {
+		return this.locatorForOptional(ObServiceNavigationApplicationsHarness.popoverSelector)();
+	}
+
 	public getTooltipHarness(fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>): Promise<MatTooltipHarness> {
 		return TestbedHarnessEnvironment.documentRootLoader(fixture).getHarnessOrNull(MatTooltipHarness);
+	}
+
+	public getAllTooltipHarness(fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>): Promise<MatTooltipHarness[]> {
+		return TestbedHarnessEnvironment.documentRootLoader(fixture).getAllHarnesses(MatTooltipHarness);
 	}
 
 	public getIconHarness(fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>): Promise<MatIconHarness> {
@@ -33,5 +43,13 @@ export class ObServiceNavigationApplicationsHarness extends ContentContainerComp
 
 	public async getPopoverHarness(): Promise<ObServiceNavigationPopOverHarness> {
 		return this.getHarnessOrNull(ObServiceNavigationPopOverHarness);
+	}
+
+	public getAllServicesLink(): Promise<TestElement> {
+		return this.locatorFor('#service-navigation-all-services')();
+	}
+
+	public getAllFavoriteServicesLink(): Promise<TestElement> {
+		return this.locatorFor(ObServiceNavigationApplicationsHarness.allFavoriteLinkSelector)();
 	}
 }

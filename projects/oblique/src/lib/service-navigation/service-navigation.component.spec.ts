@@ -51,9 +51,19 @@ describe('ObServiceNavigationComponent', () => {
 		getLastUsedApplications$: jest.fn().mockReturnValue(of([{test: true}])),
 		getFavoriteApplications$: jest.fn().mockReturnValue(of([{test: true}])),
 		getLanguage$: jest.fn().mockReturnValue(of('en')),
+		getInfoBackend$: jest.fn().mockReturnValue(
+			of({
+				description: 'backend description text',
+				helpText: 'backend help text',
+				links: [{url: 'backend url link1', label: 'backend label link1'}],
+				contactText: 'backend contact text',
+				contact: {tel: 'backend phone', email: 'backend email', contactUrl: 'backend contactUrl'}
+			})
+		),
 		getLanguages: jest.fn().mockReturnValue([{code: 'en', label: 'English'}]),
 		setLanguage: jest.fn(),
 		setPamsAppId: jest.fn(),
+		setFavoriteApplicationsCount: jest.fn(),
 		logout: jest.fn(),
 		getLogoutTrigger$: jest.fn(),
 		setHandleLogout: jest.fn()
@@ -180,15 +190,15 @@ describe('ObServiceNavigationComponent', () => {
 			});
 		});
 
-		describe('infoContact', () => {
-			it('should be initialized to undefined', () => {
-				expect(component.infoContact).toBeUndefined();
+		describe('useInfoBackend', () => {
+			it('should be initialized to false', () => {
+				expect(component.useInfoBackend).toEqual(false);
 			});
 		});
 
-		describe('maxLastUsedApplications', () => {
-			it('should be initialized to 3', () => {
-				expect(component.maxLastUsedApplications).toBe(3);
+		describe('infoContact', () => {
+			it('should be initialized to undefined', () => {
+				expect(component.infoContact).toBeUndefined();
 			});
 		});
 
@@ -209,9 +219,18 @@ describe('ObServiceNavigationComponent', () => {
 			});
 		});
 
+		describe('setFavoriteApplicationsCount setter', () => {
+			it('should set the value correctly ', () => {
+				const expectedResult = 7;
+				component.maxFavoriteApplications = expectedResult;
+				component.ngOnInit();
+				expect(mockServiceNavigationService.setFavoriteApplicationsCount).toHaveBeenCalledWith(expectedResult);
+			});
+		});
+
 		describe('maxFavoriteApplications', () => {
-			it('should be initialized to 3', () => {
-				expect(component.maxFavoriteApplications).toBe(3);
+			it('should be initialized to 8', () => {
+				expect(component.maxFavoriteApplications).toBe(8);
 			});
 		});
 
@@ -436,6 +455,73 @@ describe('ObServiceNavigationComponent', () => {
 
 			it('should have "ob-service-navigation-list" class', async () => {
 				expect(await list.hasClass('ob-service-navigation-list')).toBe(true);
+			});
+		});
+
+		describe('useInfoBackend', () => {
+			describe('when is true', () => {
+				let infoElement: TestElement;
+
+				beforeEach(async () => {
+					component.useInfoBackend = true;
+					component.displayInfo = true;
+					fixture.detectChanges();
+					infoElement = await harness.getInfoElement();
+				});
+
+				it.each([
+					{inputExpectedResult: 'backend description text', input: 'description'},
+					{inputExpectedResult: 'backend contact text', input: 'contactText'},
+					{inputExpectedResult: 'backend help text', input: 'helpText'},
+					{
+						inputExpectedResult: [{url: 'backend url link1', label: 'backend label link1'}],
+						input: 'links'
+					},
+					{
+						inputExpectedResult: {contactUrl: 'backend contactUrl', email: 'backend email', tel: 'backend phone'},
+						input: 'contact'
+					}
+				])('should add infoBackend$.$input to ob-service-navigation-info $input input', async ({input, inputExpectedResult}) => {
+					const expectedResult = inputExpectedResult;
+					const property = await infoElement.getProperty(input);
+
+					expect(property).toEqual(expectedResult);
+				});
+			});
+
+			describe('when is false', () => {
+				let infoElement: TestElement;
+
+				beforeEach(async () => {
+					component.useInfoBackend = false;
+					component.displayInfo = true;
+					component.infoDescription = 'input description text';
+					component.infoContactText = 'input contact text';
+					component.infoHelpText = 'input help text';
+					component.infoLinks = [{url: 'input url link1', label: 'input label link1'}];
+					component.infoContact = {formUrl: 'input contactUrl', email: 'input email', tel: 'input phone'};
+					fixture.detectChanges();
+					infoElement = await harness.getInfoElement();
+				});
+
+				it.each([
+					{inputExpectedResult: 'input description text', input: 'description'},
+					{inputExpectedResult: 'input contact text', input: 'contactText'},
+					{inputExpectedResult: 'input help text', input: 'helpText'},
+					{
+						inputExpectedResult: [{url: 'input url link1', label: 'input label link1'}],
+						input: 'links'
+					},
+					{
+						inputExpectedResult: {formUrl: 'input contactUrl', email: 'input email', tel: 'input phone'},
+						input: 'contact'
+					}
+				])('should add infoBackend$.$input to ob-service-navigation-info $input input', async ({input, inputExpectedResult}) => {
+					const expectedResult = inputExpectedResult;
+					const property = await infoElement.getProperty(input);
+
+					expect(property).toEqual(expectedResult);
+				});
 			});
 		});
 	});

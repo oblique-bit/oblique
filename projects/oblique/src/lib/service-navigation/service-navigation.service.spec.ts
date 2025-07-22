@@ -1,15 +1,17 @@
 import {TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, Subject, count, firstValueFrom, of} from 'rxjs';
+import {Observable, Subject, firstValueFrom, of} from 'rxjs';
 import {map, skip} from 'rxjs/operators';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
 import {ObEPamsEnvironment, ObISectionLink} from './service-navigation.model';
-import {ObIServiceNavigationState} from './api/service-navigation.api.model';
+import {ObIServiceNavigationBackendInfo, ObIServiceNavigationState} from './api/service-navigation.api.model';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
 import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
+import {provideHttpClient} from '@angular/common/http';
+import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
 
 describe('ObServiceNavigationService', () => {
 	let service: ObServiceNavigationService;
@@ -34,10 +36,13 @@ describe('ObServiceNavigationService', () => {
 	const mockApplications = [{name: {en: 'name', fr: 'nom', de: 'Name', it: 'nome'}}];
 	const mockGetLogoutTrigger$ = jest.fn();
 	const mockRedirectorLogout = jest.fn();
+	const fakeInfoBackend = {fakeInfoBackend: true};
+	const mockGetInfoBackend$ = jest.fn(() => of(fakeInfoBackend));
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
+				provideHttpClient(),
 				ObServiceNavigationService,
 				{provide: ObServiceNavigationTimeoutService, useValue: {initialize: jest.fn(), logout: jest.fn()}},
 				{
@@ -55,6 +60,10 @@ describe('ObServiceNavigationService', () => {
 				{
 					provide: ObServiceNavigationApplicationsService,
 					useValue: {getApplications: jest.fn().mockReturnValue(source$ => source$.pipe(map(() => mockApplications)))}
+				},
+				{
+					provide: ObServiceNavigationInfoApiService,
+					useValue: {get: mockGetInfoBackend$}
 				},
 				{
 					provide: TranslateService,
@@ -75,10 +84,58 @@ describe('ObServiceNavigationService', () => {
 			configService = TestBed.inject(ObServiceNavigationConfigApiService);
 			applicationsService = TestBed.inject(ObServiceNavigationApplicationsService);
 			redirectorService = TestBed.inject(ObServiceNavigationTimeoutRedirectorService);
+			service.setFavoriteApplicationsCount(1);
 		});
 
 		afterEach(() => {
 			jest.resetAllMocks();
+		});
+
+		describe('getInfoBackend$', () => {
+			describe('With root url and app id', () => {
+				const fakeAppId = 'appId';
+				beforeEach(() => {
+					service.setUpRootUrls(ObEPamsEnvironment.TEST);
+					service.setPamsAppId(fakeAppId);
+				});
+
+				it('should return fakeInfoBackend', () => {
+					let result: ObIServiceNavigationBackendInfo;
+					service.getInfoBackend$().subscribe(infoBackend => {
+						result = infoBackend;
+					});
+
+					expect(result).toBe(fakeInfoBackend);
+				});
+
+				it('should use fakeAppId has second parameter', () => {
+					service.getInfoBackend$().subscribe();
+					expect((mockGetInfoBackend$.mock.calls[0] as string[])[1]).toBe(fakeAppId);
+				});
+
+				it('should use "en" has third parameter', () => {
+					service.getInfoBackend$().subscribe();
+					expect((mockGetInfoBackend$.mock.calls[0] as string[])[2]).toBe('en');
+				});
+
+				it('should retrigger when language change', () => {
+					const newLanguage = 'fr';
+					service.getInfoBackend$().subscribe();
+					mockLangChange.next({lang: newLanguage});
+					expect((mockGetInfoBackend$.mock.calls[1] as string[])[2]).toBe(newLanguage);
+				});
+			});
+
+			describe('Without root url and without app id', () => {
+				it("should return an empty object when root url and app id didn't fired", () => {
+					let result: ObIServiceNavigationBackendInfo;
+					service.getInfoBackend$().subscribe(infoBackend => {
+						result = infoBackend;
+					});
+
+					expect(result).toEqual({});
+				});
+			});
 		});
 
 		it('should be created', () => {
@@ -512,12 +569,17 @@ describe('ObServiceNavigationService', () => {
 				service = TestBed.inject(ObServiceNavigationService);
 			});
 
-			it(`should emit ${emitTimes} times`, async () => {
+			it(`should emit ${emitTimes} times`, () => {
 				service.setUpRootUrls(ObEPamsEnvironment.TEST);
-				const promise = firstValueFrom(service.getLoginState$().pipe(count()));
+				service.setFavoriteApplicationsCount(1);
+				const emittedStates = [];
+
+				service.getLoginState$().subscribe(state => {
+					emittedStates.push(state);
+				});
 				inputs.forEach(input => mockStateChangeDuplicate.next({loginState: input}));
-				mockStateChangeDuplicate.complete();
-				await expect(promise).resolves.toBe(emitTimes);
+
+				expect(emittedStates).toHaveLength(emitTimes);
 			});
 		});
 	});
