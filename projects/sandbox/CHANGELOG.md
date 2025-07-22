@@ -1,3 +1,13 @@
+# [13.3.2](https://github.com/oblique-bit/oblique/compare/sds-13.3.1_release-patch_13.3.2__plbk6_2025-07-21T073817...13.3.2) (2025-07-22)
+
+## Features
+
+- **master-layout:** remove `maxFavoriteApplications` settings ([6e4b4d84](https://github.com/oblique-bit/oblique/commit/6e4b4d8464866f416ad156dbc1316a2cd88b852b))
+- **master-layout:** remove `maxLastUsedApplications` ([e3c18f5b](https://github.com/oblique-bit/oblique/commit/e3c18f5bebc571c9d3b1ee7138e0a63fe1042539))
+- **service-navigation:** remove `maxFavoriteApplications` settings ([116d1cdb](https://github.com/oblique-bit/oblique/commit/116d1cdbdf87c45b24917d99a2ea23e6ee33ca30))
+- **service-navigation:** change default value `maxFavoriteApplications` to 8 ([3939debc](https://github.com/oblique-bit/oblique/commit/3939debc1b1cc295bfa6240c941b7a773e7eecb6))
+- **service-navigation:** remove `maxLastUsedApplications` ([6fb92f3e](https://github.com/oblique-bit/oblique/commit/6fb92f3efbc7fa1282a74647611d5d1257416312))
+
 # [13.3.0](https://github.com/oblique-bit/oblique/compare/13.2.3...13.3.0) (2025-06-12)
 
 ## Features

@@ -1,3 +1,22 @@
+# [13.3.2](https://github.com/oblique-bit/oblique/compare/sds-13.3.1_release-patch_13.3.2__plbk6_2025-07-21T073817...13.3.2) (2025-07-22)
+
+## Bug Fixes
+
+- **service-navigation:** correct french last-used translation ([7dac1350](https://github.com/oblique-bit/oblique/commit/7dac13501798cbbcbd0ae1c5803a37e8ee58796f))
+
+## Features
+
+- **master-layout:** change default value `maxFavoriteApplications` to 8 ([4b73018a](https://github.com/oblique-bit/oblique/commit/4b73018a58a6de9d00375e75770e992e5632a5db))
+- **master-layout:** deprecate `maxLastUsedApplications` ([c81a72aa](https://github.com/oblique-bit/oblique/commit/c81a72aa763b06cad4ea43cc89ae7316d99c772a))
+- **service-navigation:** add `cdkTrapFocus` on applications popover ([6ed499d3](https://github.com/oblique-bit/oblique/commit/6ed499d3f3e9699661295075ae02e9575e1440e8))
+- **service-navigation:** change application disabled look ([62d07609](https://github.com/oblique-bit/oblique/commit/62d076097bc114ac47644d25d73b9024624426ba))
+- **service-navigation:** change default value `maxFavoriteApplications` to 8 ([97bf7e4c](https://github.com/oblique-bit/oblique/commit/97bf7e4c896c43cf326386d8440f11d4e6480b3a))
+- **service-navigation:** deprecate input `maxLastUsedApplications` ([ce205abf](https://github.com/oblique-bit/oblique/commit/ce205abf7fdbd2b2b35cb5ac60bf536224530438))
+- **service-navigation:** update UI to allow 4 applications on the same row ([6370b2c3](https://github.com/oblique-bit/oblique/commit/6370b2c3f2c788a6e656fa5b8671cfb8ac81376b))
+- **service-navigation:** use 1 "all services" button per application section ([226db628](https://github.com/oblique-bit/oblique/commit/226db628ce74e8eeaec95b12cd345bb345f2897e))
+- **service-navigation:** add `MatTooltip` on applications icon ([5b9b46d1](https://github.com/oblique-bit/oblique/commit/5b9b46d1283019fc6c2a26281e1aefa771014408))
+- **service-navigation:** add `service-navigation-appliations-name-status` pipe ([00c5aacc](https://github.com/oblique-bit/oblique/commit/00c5aacc780e88503272bdf6987ff62b58469dde))
+
 # [13.3.1](https://github.com/oblique-bit/oblique/compare/13.3.0...13.3.1) (2025-07-10)
 
 ## Bug Fixes
