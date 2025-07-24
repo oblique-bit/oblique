@@ -1,7 +1,6 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
-import {addDevDependency, getTemplate, removeDevDependencies, removeScript} from '../ng-add-utils';
-import {addFile, deleteFile, infoMigration, readFile, removeAngularProjectsConfig, setAngularProjectsConfig} from '../../utils';
+import {addDevDependency, getTemplate, removeDevDependencies} from '../ng-add-utils';
+import {addFile, deleteFile, infoMigration, readFile, setAngularProjectsConfig} from '../../utils';
 
 export function addJest(jest: boolean): Rule {
 	return (tree: Tree, context: SchematicContext) => {
@@ -11,16 +10,6 @@ export function addJest(jest: boolean): Rule {
 
 		infoMigration(context, 'Toolchain: Replacing karma/jasmine with jest');
 		return chain([removeJasmine(), addJestDependencies(), createJestConfigFiles(), referToJest(), adaptTsConfigSpec()])(tree, context);
-	};
-}
-
-export function addProtractor(protractor: boolean, jest: boolean): Rule {
-	return (tree: Tree, context: SchematicContext) => {
-		if (protractor) {
-			return tree;
-		}
-		infoMigration(context, 'Toolchain: Remove protractor and everything related to e2e tests');
-		return chain([removeE2eFolder(), removeE2eFromAngularJson(), removeE2eFromPackage(jest)])(tree, context);
 	};
 }
 
@@ -73,34 +62,6 @@ function referToJest() {
 				'max-workers': ['2']
 			}
 		});
-}
-
-function removeE2eFolder(): Rule {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, context: SchematicContext): Tree => deleteFile(tree, 'e2e');
-}
-
-function removeE2eFromAngularJson() {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, context: SchematicContext): Tree => {
-		removeAngularProjectsConfig(tree, ['architect', 'e2e']);
-
-		return setAngularProjectsConfig(tree, ['architect', 'lint', 'options', 'tsConfig'], (config: any) =>
-			(config || []).filter((conf: string) => !conf.includes('e2e'))
-		);
-	};
-}
-
-function removeE2eFromPackage(jest: boolean) {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, context: SchematicContext) => {
-		removePackageJsonDependency(tree, 'protractor');
-		if (jest) {
-			removeDevDependencies(tree, 'jasmine');
-		}
-
-		return removeScript(tree, 'e2e');
-	};
 }
 
 function adaptTsConfigSpec() {
