@@ -98,6 +98,8 @@ export class UpdateV13toV14 implements ObIMigrations {
 				replaceInFile(tree, filePath, /ObEIcon\.LIFERING/g, 'ObEIcon.SUPPORT');
 				replaceInFile(tree, filePath, /svgIcon="language"/g, 'svgIcon="translate"');
 				replaceInFile(tree, filePath, /ObEIcon\.LANGUAGE/g, 'ObEIcon.TRANSLATE');
+				replaceInFile(tree, filePath, /svgIcon="envelope"/g, 'svgIcon="mail"');
+				replaceInFile(tree, filePath, /ObEIcon\.ENVELOPE/g, 'ObEIcon.MAIL');
 				replaceInFile(tree, filePath, /svgIcon="envelope-open"/g, 'svgIcon="mail_open"');
 				replaceInFile(tree, filePath, /ObEIcon\.ENVELOPE_OPEN/g, 'ObEIcon.MAIL_OPEN');
 				replaceInFile(tree, filePath, /svgIcon="mail-attachment"/g, 'svgIcon="mail_attachment"');
