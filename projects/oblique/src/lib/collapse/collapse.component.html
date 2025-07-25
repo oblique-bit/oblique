@@ -9,9 +9,21 @@
 	[attr.aria-controls]="id + '-content'"
 	[id]="id + '-toggle'"
 >
-	<mat-icon [svgIcon]="'chevron_' + (active ? 'up' : 'down')" *ngIf="iconPosition === 'left'" />
+	@if (iconPosition === "left") {
+		@if (active) {
+			<mat-icon svgIcon="chevron_up" />
+		} @else {
+			<mat-icon svgIcon="chevron_down" />
+		}
+	}
 	<ng-content select="[obCollapseHeader]" />
-	<mat-icon [svgIcon]="'chevron_' + (active ? 'up' : 'down')" *ngIf="iconPosition === 'right' || iconPosition === 'justified'" />
+	@if (iconPosition === "right" || iconPosition === "justified") {
+		@if (active) {
+			<mat-icon svgIcon="chevron_up" />
+		} @else {
+			<mat-icon svgIcon="chevron_down" />
+		}
+	}
 </div>
 <div
 	[id]="id + '-content'"
