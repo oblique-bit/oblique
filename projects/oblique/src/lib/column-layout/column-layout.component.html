@@ -17,7 +17,7 @@
 		#columnToggle
 		*ngIf="toggleLeftIcon$ | async as direction"
 	>
-		<mat-icon [svgIcon]="'chevron-' + direction" />
+		<mat-icon [svgIcon]="'chevron_' + direction" />
 		<span class="ob-screen-reader-only">{{ "i18n.oblique.column.left.toggle" | translate }}</span>
 	</button>
 	<div class="ob-column-content" cdkScrollable>
@@ -48,7 +48,7 @@
 		#columnToggle
 		*ngIf="toggleRightIcon$ | async as direction"
 	>
-		<mat-icon [svgIcon]="'chevron-' + direction" />
+		<mat-icon [svgIcon]="'chevron_' + direction" />
 		<span class="ob-screen-reader-only">{{ "i18n.oblique.column.right.toggle" | translate }}</span>
 	</button>
 	<div class="ob-column-content" cdkScrollable>

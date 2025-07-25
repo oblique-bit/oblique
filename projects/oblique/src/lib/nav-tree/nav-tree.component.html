@@ -23,7 +23,7 @@
 					[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
 				>
 					<span class="ob-icon-wrapper"
-						><mat-icon [svgIcon]="'chevron-' + (isParentCollapsed || item.collapsed ? 'right' : 'down')" *ngIf="item.items"
+						><mat-icon [svgIcon]="'chevron_' + (isParentCollapsed || item.collapsed ? 'right' : 'down')" *ngIf="item.items"
 					/></span>
 					<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
 				</a>
@@ -60,7 +60,7 @@
 					[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
 				>
 					<span class="ob-icon-wrapper"
-						><mat-icon [svgIcon]="'chevron-' + (isParentCollapsed || item.collapsed ? 'right' : 'down')" *ngIf="item.items"
+						><mat-icon [svgIcon]="'chevron_' + (isParentCollapsed || item.collapsed ? 'right' : 'down')" *ngIf="item.items"
 					/></span>
 					<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
 				</a>
