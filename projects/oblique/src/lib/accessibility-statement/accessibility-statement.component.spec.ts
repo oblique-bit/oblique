@@ -60,7 +60,8 @@ describe(AccessibilityStatementComponent.name, () => {
 				{tag: 'h5', number: 0},
 				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 0},
-				{tag: 'p', number: 6}
+				{tag: 'p', number: 6},
+				{tag: 'p > a', number: 1}
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
@@ -121,7 +122,8 @@ describe(AccessibilityStatementComponent.name, () => {
 				{tag: 'h5', number: 0},
 				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 1},
-				{tag: 'p', number: 7}
+				{tag: 'p', number: 7},
+				{tag: 'p > a', number: 1}
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
@@ -181,7 +183,8 @@ describe(AccessibilityStatementComponent.name, () => {
 				{tag: 'h5', number: 0},
 				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 0},
-				{tag: 'p', number: 6}
+				{tag: 'p', number: 6},
+				{tag: 'p > a', number: 1}
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
@@ -242,7 +245,8 @@ describe(AccessibilityStatementComponent.name, () => {
 				{tag: 'h5', number: 0},
 				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 1},
-				{tag: 'p', number: 7}
+				{tag: 'p', number: 7},
+				{tag: 'p > a', number: 1}
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
