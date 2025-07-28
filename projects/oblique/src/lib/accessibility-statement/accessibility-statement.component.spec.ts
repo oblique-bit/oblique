@@ -54,11 +54,11 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('template', () => {
 			test.each([
 				{tag: 'h1', number: 1},
-				{tag: 'h2', number: 3},
-				{tag: 'h3', number: 4},
+				{tag: 'h2', number: 2},
+				{tag: 'h3', number: 2},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},
-				{tag: 'ul', number: 4},
+				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 0},
 				{tag: 'p', number: 6}
 			])('has $number "$tag" tags', ({tag, number}) => {
@@ -89,26 +89,6 @@ describe(AccessibilityStatementComponent.name, () => {
 				expect(component.contacts).toEqual([{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined}]);
 			});
 		});
-
-		describe('generalLinks', () => {
-			test('to be defined', () => {
-				expect(component.generalLinks).toBeDefined();
-			});
-
-			test('to have 2 items', () => {
-				expect(component.generalLinks.length).toBe(2);
-			});
-		});
-
-		describe('accessibilityLinks', () => {
-			test('to be defined', () => {
-				expect(component.accessibilityLinks).toBeDefined();
-			});
-
-			test('to have 6 items', () => {
-				expect(component.accessibilityLinks.length).toBe(6);
-			});
-		});
 	});
 
 	describe('With "conformity" "partial"', () => {
@@ -135,11 +115,11 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('template', () => {
 			test.each([
 				{tag: 'h1', number: 1},
-				{tag: 'h2', number: 3},
-				{tag: 'h3', number: 5},
+				{tag: 'h2', number: 2},
+				{tag: 'h3', number: 3},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},
-				{tag: 'ul', number: 4},
+				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 1},
 				{tag: 'p', number: 7}
 			])('has $number "$tag" tags', ({tag, number}) => {
@@ -170,26 +150,6 @@ describe(AccessibilityStatementComponent.name, () => {
 				expect(component.contacts).toEqual([{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined}]);
 			});
 		});
-
-		describe('generalLinks', () => {
-			test('to be defined', () => {
-				expect(component.generalLinks).toBeDefined();
-			});
-
-			test('to have 2 items', () => {
-				expect(component.generalLinks.length).toBe(2);
-			});
-		});
-
-		describe('accessibilityLinks', () => {
-			test('to be defined', () => {
-				expect(component.accessibilityLinks).toBeDefined();
-			});
-
-			test('to have 6 items', () => {
-				expect(component.accessibilityLinks.length).toBe(6);
-			});
-		});
 	});
 
 	describe('With "createdOn" info', () => {
@@ -215,11 +175,11 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('template', () => {
 			test.each([
 				{tag: 'h1', number: 1},
-				{tag: 'h2', number: 3},
-				{tag: 'h3', number: 4},
+				{tag: 'h2', number: 2},
+				{tag: 'h3', number: 2},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},
-				{tag: 'ul', number: 4},
+				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 0},
 				{tag: 'p', number: 6}
 			])('has $number "$tag" tags', ({tag, number}) => {
@@ -250,26 +210,6 @@ describe(AccessibilityStatementComponent.name, () => {
 				expect(component.contacts).toEqual([{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined}]);
 			});
 		});
-
-		describe('generalLinks', () => {
-			test('to be defined', () => {
-				expect(component.generalLinks).toBeDefined();
-			});
-
-			test('to have 2 items', () => {
-				expect(component.generalLinks.length).toBe(2);
-			});
-		});
-
-		describe('accessibilityLinks', () => {
-			test('to be defined', () => {
-				expect(component.accessibilityLinks).toBeDefined();
-			});
-
-			test('to have 6 items', () => {
-				expect(component.accessibilityLinks.length).toBe(6);
-			});
-		});
 	});
 
 	describe('With "createdOn", "exceptions" and "contact" info', () => {
@@ -296,11 +236,11 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('template', () => {
 			test.each([
 				{tag: 'h1', number: 1},
-				{tag: 'h2', number: 3},
-				{tag: 'h3', number: 5},
+				{tag: 'h2', number: 2},
+				{tag: 'h3', number: 3},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},
-				{tag: 'ul', number: 4},
+				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 1},
 				{tag: 'p', number: 7}
 			])('has $number "$tag" tags', ({tag, number}) => {
@@ -332,26 +272,6 @@ describe(AccessibilityStatementComponent.name, () => {
 					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined},
 					{label: 'phone', url: `tel:phone`, icon: 'phone', context: 'context'}
 				]);
-			});
-		});
-
-		describe('generalLinks', () => {
-			test('to be defined', () => {
-				expect(component.generalLinks).toBeDefined();
-			});
-
-			test('to have 2 items', () => {
-				expect(component.generalLinks.length).toBe(2);
-			});
-		});
-
-		describe('accessibilityLinks', () => {
-			test('to be defined', () => {
-				expect(component.accessibilityLinks).toBeDefined();
-			});
-
-			test('to have 6 items', () => {
-				expect(component.accessibilityLinks.length).toBe(6);
 			});
 		});
 	});
