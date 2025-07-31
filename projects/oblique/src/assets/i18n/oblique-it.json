@@ -163,7 +163,7 @@
   "i18n.oblique.service-navigation.profile.my-email-sms-notifications": "Le mie notifiche Email / SMS",
   "i18n.oblique.service-navigation.profile.my-business-partnerships": "Le mie collaborazioni commerciali",
   "i18n.oblique.service-navigation.profile.redeem-code": "Attivare un codice di invito",
-  "i18n.oblique.service-navigation.section.tel.aria-label": "Collegamento telefonico: {{ phoneNumber }}",
+  "i18n.oblique.service-navigation.section.phone.aria-label": "Collegamento telefonico: {{ phoneNumber }}",
   "i18n.oblique.accessibility-statement.link": "Accessibilità",
   "i18n.oblique.accessibility-statement.accessibility-in-the-federal-administration": "Accessibilità nell’Amministrazione federale",
   "i18n.oblique.accessibility-statement.information-and-services": "Le informazioni e i servizi disponibili in forma digitale semplificano la comunicazione con i servizi pubblici alle persone con disabilità. Questo permette a tutti di partecipare alla vita sociale e politica.",

@@ -70,7 +70,7 @@ describe('ObServiceNavigationInfoApiService', () => {
 				});
 
 				it('should have a "contact.tel" property with the phone number', () => {
-					expect(result.contact.tel).toEqual(fixtureApplicationHelp().data.contact.phone.phoneNumber);
+					expect(result.contact.phone).toEqual(fixtureApplicationHelp().data.contact.phone.phoneNumber);
 				});
 
 				it('should have a "contact.formUrl" property with the first contact link', () => {

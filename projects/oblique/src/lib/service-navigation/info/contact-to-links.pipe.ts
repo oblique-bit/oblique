@@ -7,7 +7,7 @@ import {ObISectionLink, ObIServiceNavigationContact} from '../service-navigation
 })
 export class ObContactToLinksPipe implements PipeTransform {
 	transform(values?: ObIServiceNavigationContact): ObISectionLink[] {
-		return [this.getMail(values?.email), this.getTel(values?.tel), this.getContact(values?.formUrl)].filter(Boolean);
+		return [this.getMail(values?.email), this.getPhone(values?.phone), this.getContact(values?.formUrl)].filter(Boolean);
 	}
 
 	private getMail(value: string | undefined): ObISectionLink | undefined {
@@ -22,7 +22,7 @@ export class ObContactToLinksPipe implements PipeTransform {
 		};
 	}
 
-	private getTel(value: string | undefined): ObISectionLink | undefined {
+	private getPhone(value: string | undefined): ObISectionLink | undefined {
 		if (value === undefined || value === '') {
 			return undefined;
 		}
@@ -32,7 +32,7 @@ export class ObContactToLinksPipe implements PipeTransform {
 			label: value,
 			isInternalLink: true,
 			ariaLabel: {
-				text: 'i18n.oblique.service-navigation.section.tel.aria-label',
+				text: 'i18n.oblique.service-navigation.section.phone.aria-label',
 				parameters: {
 					phoneNumber: value
 						.split('')

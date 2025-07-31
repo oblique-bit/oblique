@@ -13,7 +13,7 @@ export interface ObIServiceNavigationLink {
 
 export interface ObIServiceNavigationContact {
 	email?: string;
-	tel?: string;
+	phone?: string;
 	formUrl?: string;
 }
 

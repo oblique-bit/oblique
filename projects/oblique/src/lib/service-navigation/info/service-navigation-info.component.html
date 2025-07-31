@@ -24,7 +24,7 @@
 			[links]="links"
 		/>
 		<ob-service-navigation-popover-section
-			*ngIf="contact?.email || contact?.tel || contact?.formUrl"
+			*ngIf="contact?.email || contact?.phone || contact?.formUrl"
 			header="i18n.oblique.service-navigation.info.contact.header"
 			[text]="contactText"
 			[links]="contact | obContactToLinks"
