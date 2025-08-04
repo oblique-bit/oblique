@@ -202,8 +202,8 @@ def main():
     # Ensure output directory exists
     output_dir.mkdir(exist_ok=True)
     
-    # Find all markdown files in documentation
-    md_files = list(docs_dir.glob('*.md'))
+    # Find all markdown files in documentation (recursive)
+    md_files = list(docs_dir.glob('**/*.md'))
     
     if not md_files:
         print("❌ No markdown files found in documentation/")
