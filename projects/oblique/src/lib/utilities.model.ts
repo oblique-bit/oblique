@@ -33,12 +33,19 @@ export interface ObIObliqueConfiguration {
 	accessibilityStatement: ObIAccessibilityStatementConfiguration;
 	material?: ObIMaterialConfig;
 	icon?: ObIconConfig;
-	translate?: {
-		flatten?: boolean;
-		config?: TranslateModuleConfig;
-		additionalFiles?: ObITranslationFile[];
-	};
+	translate?: ObITranslateConfig;
 	hasLanguageInUrl?: boolean;
+}
+
+export interface ObITranslateConfig {
+	flatten?: boolean;
+	config?: TranslateModuleConfig;
+	additionalFiles?: ObITranslationFile[];
+}
+
+export interface ObITranslateConfigInternal {
+	flatten: boolean;
+	additionalFiles?: ObITranslationFile[];
 }
 
 export type NonEmptyArray<Type> = [Type, ...Type[]];

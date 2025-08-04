@@ -1,23 +1,21 @@
 import {HttpClient} from '@angular/common/http';
-import {
-	DOCUMENT,
-	EnvironmentProviders,
-	InjectionToken,
-	Optional,
-	inject,
-	makeEnvironmentProviders,
-	provideAppInitializer
-} from '@angular/core';
+import {DOCUMENT, EnvironmentProviders, InjectionToken, inject, makeEnvironmentProviders, provideAppInitializer} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {TranslateLoader, TranslateModuleConfig, provideTranslateService} from '@ngx-translate/core';
-import {OB_FLATTEN_TRANSLATION_FILES, ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
-import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
+import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
+import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {ObIAccessibilityStatementConfiguration, ObIBanner, ObIObliqueConfiguration, ObIPamsConfiguration} from './utilities.model';
+import {
+	ObIAccessibilityStatementConfiguration,
+	ObIBanner,
+	ObIObliqueConfiguration,
+	ObIPamsConfiguration,
+	ObITranslateConfig,
+	ObITranslateConfigInternal
+} from './utilities.model';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
@@ -31,6 +29,7 @@ import {ObRouterService} from '../lib/router/ob-router.service';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
+export const OB_TRANSLATION_CONFIGURATION = new InjectionToken<ObITranslateConfigInternal>('Translation configuration');
 export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
 	'Provides the mandatory PAMS environment as well as an optional root url.'
 );
@@ -41,37 +40,6 @@ export const OB_HAS_LANGUAGE_IN_URL = new InjectionToken<boolean>('Add current l
 
 export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);
-}
-
-/**
- * @deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
- */
-export function getTranslateLoader(http: HttpClient, files: ObITranslationFile[], flatten: boolean): ObMultiTranslateLoader {
-	return new ObMultiTranslateLoader(
-		http,
-		[
-			{
-				prefix: './assets/i18n/oblique-',
-				suffix: '.json'
-			},
-			...(files || [{prefix: './assets/i18n/', suffix: '.json'}])
-		],
-		flatten
-	);
-}
-
-/**
- * @deprecated since Oblique 13.0.0. Use `provideObliqueConfiguration` instead
- */
-export function multiTranslateLoader(config: TranslateModuleConfig = {}): TranslateModuleConfig {
-	return {
-		...config,
-		loader: {
-			provide: TranslateLoader,
-			useFactory: getTranslateLoader,
-			deps: [HttpClient, [new Optional(), TRANSLATION_FILES], [new Optional(), OB_FLATTEN_TRANSLATION_FILES]]
-		}
-	};
 }
 
 const materialProviders = {
@@ -89,10 +57,8 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 			inject(ObIconService).registerOnAppInit();
 			inject(ObRouterService).initialize();
 		}),
-		provideTranslateService(multiTranslateLoader(config.translate?.config)),
+		provideObliqueTranslations(config.translate),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
-		{provide: OB_FLATTEN_TRANSLATION_FILES, useValue: config.translate?.flatten ?? true},
-		{provide: TRANSLATION_FILES, useValue: config.translate?.additionalFiles},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
@@ -104,6 +70,36 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 			useValue: {...token.useValue, ...config.material?.[provider]}
 		}))
 	]);
+}
+
+export function provideObliqueTranslations(configuration: ObITranslateConfig = {}): EnvironmentProviders {
+	const {config, flatten, additionalFiles} = configuration;
+	return makeEnvironmentProviders([
+		provideTranslateService({
+			...config,
+			loader: {
+				provide: TranslateLoader,
+				useFactory: getTranslateLoader,
+				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION]
+			}
+		}),
+		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {flatten: flatten ?? true, additionalFiles}}
+	]);
+}
+
+function getTranslateLoader(http: HttpClient, config: ObITranslateConfigInternal): ObMultiTranslateLoader {
+	const {additionalFiles, flatten} = config;
+	return new ObMultiTranslateLoader(
+		http,
+		[
+			{
+				prefix: './assets/i18n/oblique-',
+				suffix: '.json'
+			},
+			...(additionalFiles || [{prefix: './assets/i18n/', suffix: '.json'}])
+		],
+		flatten
+	);
 }
 
 // as the Enter key on a button triggers both the click an keyup events, lets ensure the function is called only once
