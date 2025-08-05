@@ -145,10 +145,36 @@ ob.c.button.spacing.padding.horizontal.md
 ## Token Creation Guidelines
 
 ### When to Create New Tokens
-✅ **Create new tokens when:**
-- Pattern is used across multiple components
-- Value needs to be themeable
-- Semantic meaning is clear and distinct
+
+#### Global Tokens (`ob.g.*`)
+✅ **Create global tokens when:**
+- System-wide foundation values need to be established
+- Cross-theme consistency is required
+- *[Work in Progress - detailed guidelines coming soon]*
+
+#### Primitive Tokens (`ob.p.*`)
+✅ **Create primitive tokens when:**
+- Raw values need to be stored (colors, measurements, fonts)
+- Base system values require centralization
+- *[Work in Progress - detailed guidelines coming soon]*
+
+#### Semantic Tokens (`ob.s.*`)
+✅ **Create semantic tokens when:**
+- Contextual meaning needs to be applied to primitives
+- Theme-specific interpretations are required
+- *[Work in Progress - detailed guidelines coming soon]*
+
+#### Component Tokens (`ob.c.*`)
+✅ **Create component tokens when:**
+- Component-specific styling patterns emerge
+- Variants within a component need systematization
+- *[Work in Progress - detailed guidelines coming soon]*
+
+#### HTML Tokens (`ob.h.*`)
+✅ **Create HTML tokens when:**
+- Element-specific styling needs standardization
+- HTML semantic elements require consistent treatment
+- *[Work in Progress - detailed guidelines coming soon]*
 
 ❌ **Don't create tokens for:**
 - One-off design decisions
