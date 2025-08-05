@@ -1,6 +1,6 @@
-# Design System Glossary
+# Design Tokens Glossary
 
-This glossary defines key terminology used throughout the Oblique design system documentation and codebase.
+This glossary defines key terminology used throughout the Oblique design token documentation and codebase.
 
 ## Token Hierarchy
 
@@ -104,6 +104,21 @@ The tertiary theming dimension that controls visual priority and interaction fee
 **Values:** Low, Medium, High  
 **Token Pattern:** `s3-emphasis-{variant}`
 
+### User Preference
+System-level theme application based on user settings or operating system preferences. User preferences automatically apply themes without manual intervention, typically respecting OS-level dark/light mode settings.
+
+**Examples:** OS dark mode triggers design system dark theme, accessibility preferences for high contrast, reduced motion settings
+
+### Scoped Themes
+Theme application that is limited to specific components or page sections rather than global system-wide theming. Scoped themes allow localized theme overrides while maintaining the broader theme context.
+
+**Use Cases:** Dark header on light page, inverted sections for visual emphasis, component-specific theme variants
+
+### Theme Switching
+The process of manually changing between different theme variations at runtime. Theme switching involves updating active Token Sets and Variable Modes to reflect user-selected preferences.
+
+**Implementation:** Figma Variable Mode selection, Tokens Studio Token Set activation, runtime CSS custom property updates
+
 ## Development Terms
 
 ### Style Dictionary Integration
@@ -112,10 +127,28 @@ The process of connecting design tokens with build tools and development workflo
 **Configuration:** `tracked-tokens-config.json`  
 **Monitoring:** Custom scripts detect hardcoded token usage
 
-### Token Chain Resolution
-The process by which token references are resolved through the semantic hierarchy. Token chains trace from component tokens back to primitive values.
+### Token Resolution
+How the system follows references through the s0→s1→s2→s3 hierarchy. The resolution process ensures that token references are properly traced from component level down to primitive values.
+
+**Process:** Component tokens reference s3 tokens → s3 tokens reference s2 tokens → s2 tokens reference s1 tokens → s1 tokens reference s0 tokens → s0 tokens contain final values
+
+### Reference Chain
+The path a token follows from component to primitive. Reference chains show the complete dependency trail and ensure proper abstraction levels are maintained.
 
 **Example Chain:** `button.primary` → `s3.interactive.primary` → `s2.brand.primary` → `s1.blue.600` → `s0.blue.600`
+
+### Token Inheritance
+How tokens inherit values from parent tokens in the hierarchy. Inheritance allows child tokens to automatically receive updates when parent values change, maintaining consistency across the system.
+
+**Inheritance Flow:** s0 (parent) → s1 → s2 → s3 → Component tokens (children)
+
+### Build-time Resolution
+When token references are resolved during compilation. Build-time resolution transforms token references into final CSS values, ensuring runtime performance and eliminating dependency tracking overhead.
+
+**Tools:** Style Dictionary, custom build scripts, `$themes.json` processing
+
+### Token Chain Resolution
+**Deprecated:** Use "Token Resolution" instead. The process by which token references are resolved through the semantic hierarchy.
 
 ### s1-s2 Redundancy
 A validation concern where s1 and s2 tokens contain duplicate or nearly identical values. High redundancy (99.2% in this system) indicates potential optimization opportunities.

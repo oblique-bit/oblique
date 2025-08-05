@@ -10,24 +10,7 @@
 
 ---
 
-## Design Token Architecture
-
-### Token Hierarchy Overview
-
-Design tokens reference each other through a hierarchical structure with three main levels:
-
-1. **Primitives** (Level 1) - Base color values
-2. **Semantics** (Level 2) - Contextual color meanings with theming support
-3. **Components** (Level 3) - Component-specific token references
-4. **Global** - System-wide configuration tokens (exception to hierarchy rules)
-
-**Reference Chain:** `Components → Semantics → Primitives`
-
-**Note:** Global tokens (`ob.g.*`) are an exception to this hierarchy and can be referenced from any level. See [global-tokens.md](./global-tokens.md) for more details.
-
-The component level references the semantic level, which references the primitive level. Only the primitive level contains hardcoded values. Code and Figma consume semantic and component levels, but we don't expose the component level to design system consumers in the published libraries.
-
-### Multi-Dimensional Theming
+## Multi-Dimensional Theming
 
 The semantic level supports complex theming through multiple dimensions that can be combined:
 
@@ -35,38 +18,22 @@ The semantic level supports complex theming through multiple dimensions that can
 - **Inversity:** `default` / `inverse` 
 - **Interaction Emphasis:** `default` / `muted`
 
-**Note:** Responsive theming (desktop/mobile) operates differently and is documented separately in [Responsive Tokens](./responsiveness.md).
+**Note:** Responsive theming (desktop/mobile) follows similar principles but is documented separately in [Responsive Tokens](./responsiveness.md) due to its extensive scope.
 
 **Example:** A button can simultaneously use:
 - `lightness: dark` (inheriting dark theme values)
 - `inversity: inverse` (switching to inverted background/foreground for visual emphasis)
 - `emphasis: muted` (lowering visual emphasis within headers/footers)
 
-### Level 1: Primitives
+### Level 2: Semantic Colors
 
-```
-src/lib/themes/primitive/color.json
-```
+The semantic level introduces theming through organized folders containing JSON files. In the codebase, these appear as directories with JSON files, but in Tokens Studio they are managed as Token Sets organized in folders.
 
-Contains only hardcoded hex values organized by color groups without semantic meaning:
+**For Developers:** Each theming folder (e.g., `lightness/`, `inversity/`) contains multiple JSON files. Files within the same folder contain tokens with identical names but different values. When the design system build process runs, one JSON file can override tokens from another based on the active theme configuration.
 
-```json
-{
-  "ob": {
-    "p": {
-      "colors": {
-        "red": { "50": "#fff5f5", "600": "#dc2626", "900": "#7f1d1d" },
-        "blue": { "50": "#eff6ff", "600": "#2563eb", "900": "#1e3a8a" },
-        "cobalt": { "50": "#f8fafc", "600": "#475569", "900": "#0f172a" }
-      }
-    }
-  }
-}
-```
+**For Designers:** These folders correspond to Token Sets in Tokens Studio, where theme switching is managed through the plugin interface or via variable modes in Figma. See [Figma Help - Modes for Variables](https://help.figma.com/hc/en-us/articles/15343816063383-Modes-for-variables).
 
-### Level 2: Semantics
-
-The semantic level introduces theming folders that enable theme switching. Each folder contains tokens with identical names but different values, allowing one to override the other when activated.
+**Reference:** For detailed information about Token Sets, see [Tokens Studio Documentation - Token Sets](https://docs.tokens.studio/manage-tokens/token-sets).
 
 #### Level 2.1: Lightness Theming
 
@@ -186,35 +153,6 @@ src/lib/themes/semantics/colors/emphasis/
 }
 ```
 
-### Level 3: Components
-
-```
-src/lib/themes/html/button/color-static.json
-```
-
-**Purpose:** Component-specific token references. No theming subfolders should exist at this level when possible.
-
-**Reference Strategy:** Components reference inversity tokens and remain agnostic to whether they're inverse, muted, or on dark theme - all theming happens at the semantic level.
-
-**Token Structure:** References semantic tokens pre-defined for specific use cases:
-```json
-{
-  "ob": {
-    "h": {
-      "button": {
-        "color": {
-          "bg": {
-            "primary": {
-              "enabled": "{ob.s.color.interaction.state.bg.enabled.inversity-flipped}"
-            }
-          }
-        }
-      }
-    }
-  }
-}
-```
-
 ### Reference Chain Validation
 
 The correct reference chain ensures proper theme inheritance:
@@ -274,13 +212,16 @@ Consider generating L2 tokens programmatically from L1 during the build process 
 - Renaming folders (token paths are independent of folder names)
 
 **Theme Resolution ("Last Wins"):**
-When multiple themes define the same token path, the last loaded theme takes precedence. This allows for theme overrides and layering without breaking references.
+
+**For Developers:** When multiple JSON files define the same token path, the build process applies a "last wins" strategy. The file loaded last in the build order takes precedence. This allows for a cascading system similar to CSS specificity.
+
+**For Designers:** In Tokens Studio, when multiple Token Sets are enabled and contain tokens with identical names, the Token Set positioned lowest in the list overrides the values from sets higher in the list.
 
 **Example:**
 ```json
-// Theme A defines: ob.s.color.bg.primary = "blue"
-// Theme B defines: ob.s.color.bg.primary = "red"
-// Result: Theme B wins, token resolves to "red"
+// File A (light.json): ob.s.color.bg.primary = "blue"
+// File B (dark.json): ob.s.color.bg.primary = "red"  
+// Result: If dark theme is active, token resolves to "red"
 ```
 
 This behavior enables flexible theme switching and customization without requiring reference updates.
