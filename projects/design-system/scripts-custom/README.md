@@ -54,8 +54,38 @@ These scripts help maintain the quality and consistency of the Oblique Design Sy
   - *Example: Cleans up empty .scss files left behind after refactoring token structures → keeps repository clean and reduces confusion*
 - **`cleanup-obsolete-files.js`** - Removes untracked obsolete/deprecated files
   - *Example: Removes old token files like "legacy-colors.json" that are no longer referenced → prevents accidental usage of outdated tokens*
+- **`auto-cleanup-empty-files.sh`** - Automated empty file detection and cleanup with logging
+  - *Example: Runs periodically to prevent empty file accumulation → saves developer time and maintains clean workspace*
+- **`prevent-empty-files.py`** - Real-time empty file monitoring and prevention system
+  - *Example: Monitors filesystem for empty file creation and auto-removes them → prevents the empty file problem entirely*
+- **`analyze-script-redundancy.py`** - Analyzes script overlap and consolidation opportunities
+  - *Example: Identifies validation scripts that could be unified → reduces maintenance overhead and code duplication*
+
+### Documentation Generation
 - **`generate-word-docs.py`** - Converts all markdown documentation to Word (.docx) format for offline reading
   - *Example: Generates printable Word documents from all .md files in documentation/ with professional footers (filename, generation date/time, page X of Y) → enables offline validation and team review*
+
+## 🛡️ Empty File Prevention System
+
+**Problem Solved**: Automatically prevents accumulation of empty files that waste development time.
+
+### Multi-Layer Protection:
+1. **Pre-commit Hook** - Blocks commits containing empty files
+2. **GitHub Actions** - Prevents empty files in pull requests  
+3. **LaunchAgent** - Auto-cleanup every 5 minutes (macOS)
+4. **Manual Tools** - On-demand cleanup and monitoring
+
+### Quick Setup:
+```bash
+# Install complete prevention system
+./scripts-custom/setup-empty-file-prevention.sh
+
+# Manual cleanup when needed
+npm run clean:empty-files
+
+# Start continuous monitoring during development
+npm run monitor:empty-files
+```
 
 ## 🚀 Usage
 

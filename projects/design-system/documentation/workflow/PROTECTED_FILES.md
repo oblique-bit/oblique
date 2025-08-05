@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Protected Files Guide
 
 This guide explains the mechanisms in place to protect files that should not be modified by individual team members without proper approval.
@@ -37,7 +36,7 @@ You can manually check for modifications to protected files:
 
 ```bash
 # Run the check script directly
-./scripts-custom/validate-protected-files.sh
+./scripts-custom/check-protected-files.sh
 ```
 
 This will show warnings if any protected files have been modified.
@@ -60,5 +59,3 @@ Protected files impact the entire project and all team members:
 - TypeScript configuration changes can affect type checking across the project
 
 Centralizing these changes helps maintain stability and consistency across the project.
-=======
->>>>>>> ts-develop-02.03

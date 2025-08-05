@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Setting Up File Protection
 
 To enable the pre-commit hook that prevents accidental modification of protected files:
@@ -25,9 +24,7 @@ After installing, the hook will prevent commits that modify:
 You can manually check for modifications to protected files anytime by running:
 
 ```bash
-./scripts-custom/validate-protected-files.sh
+./scripts-custom/check-protected-files.sh
 ```
 
-For more information, read PROTECTED_FILES.md
-=======
->>>>>>> ts-develop-02.03
+For more information, read [PROTECTED_FILES.md](./PROTECTED_FILES.md)

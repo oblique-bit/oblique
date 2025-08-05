@@ -7,11 +7,13 @@ This document defines rules for token consumption across all token types in the 
 ## Core Principles
 
 ### Token Hierarchy
-All tokens follow a strict hierarchical reference chain:
+Most tokens follow a strict hierarchical reference chain:
 
 ```
 Components (L3) → Semantics (L2) → Primitives (L1)
 ```
+
+**Exception:** Global tokens (`ob.g.*`) can be referenced by any level. See [global-tokens.md](./global-tokens.md) for more details.
 
 **Fundamental Rules:**
 1. **Components must never consume primitives directly**
@@ -323,7 +325,7 @@ When creating or reviewing component tokens, ensure:
 - [ ] **No L1 consumption**: Components don't reference `ob.s1.color.*`
 - [ ] **Semantic alignment**: Component purpose matches token type (status/interaction/neutral)
 - [ ] **Theming support**: Required theming capabilities are available through token choice
-- [ ] **Reference chain**: Token references follow proper hierarchy
+- [ ] **Reference chain**: Token references follow proper hierarchy (except global tokens which can be referenced from any level)
 
 ### Interactive Component Checklist
 

@@ -1,0 +1,26 @@
+{
+  "name": "@oblique/design-system",
+  "version": "13.3.0",
+  "scripts": {
+    "lint": "ts-node scripts/lint.ts",
+    "format": "ts-node scripts/lint.ts --fix",
+    "test": "cd ../.. && ng test design-system",
+    "test-ci": "cd ../.. && ng run design-system:test:ci",
+    "build": "ng build design-system && ts-node scripts/post-build.ts",
+    "release": "ts-node scripts/release.ts",
+    "check:plural-references": "python3 scripts-custom/find-plural-references.py",
+    "check:token-syntax": "python3 scripts-custom/quick-validate-token-syntax.py",
+    "docs:generate-word": "python3 scripts-custom/generate-word-docs.py"
+  },
+  "peerDependencies": {
+    "@angular/cdk": "^19.0.0 || ^20.0.0",
+    "@angular/common": "^19.0.0 || ^20.0.0",
+    "@angular/core": "^19.0.0 || ^20.0.0",
+    "@angular/material": "^19.0.0 || ^20.0.0",
+    "@ngx-translate/core": "^16.0.0"
+  },
+  "devDependencies": {
+    "ng-packagr": "^19.2.2"
+  },
+  "sideEffects": false
+}
