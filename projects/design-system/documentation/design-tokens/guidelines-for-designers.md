@@ -7,11 +7,11 @@ This document provides practical guidance for designers working with design toke
 ## Token Hierarchy Overview
 
 ### Layer Structure
+- **`ob.g.*`** - Global tokens (system-wide foundation)
 - **`ob.p.*`** - Primitive tokens (raw values)
-- **`ob.s.*`** - Semantic tokens (contextual meaning)
-- **`ob.c.*`** - Component tokens (component-specific)
-- **`ob.h.*`** - HTML element tokens
-- **`ob.g.*`** - Global tokens (system-wide)
+- **`ob.s.*`** - Semantic tokens (inherit from primitives)
+- **`ob.c.*`** - Component tokens (inherit from semantic)
+- **`ob.h.*`** - HTML element tokens (inherit from semantic/component)
 
 ### Design Workflow
 
@@ -99,7 +99,7 @@ ob.s.typography.type-scale.lg.strong
 
 ### 1. **Token Validation**
 - **Always verify** tokens exist in the actual JSON files
-- **Use semantic search** to find similar tokens
+- **Search existing components** for similar token patterns
 - **Check component structure** before creating new designs
 
 ### 2. **Naming Patterns**
