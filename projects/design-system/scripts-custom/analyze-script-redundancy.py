@@ -3,21 +3,8 @@
 Script Redundancy Analyzer
 ==========================
 
-<<<<<<< HEAD
 Analyzes all custom scripts to identify potential redundancies, overlapping functionality,
 and opportunities for consolidation.
-=======
-Analyzes redundancy and overlap across design system scripts in scripts-custom/.
-Identifies potential consolidation opportunities, duplicated functionality,
-and recommends optimization strategies.
-
-Features:
-- Function/method analysis across JavaScript and Python scripts
-- Import/dependency overlap detection
-- Token validation redundancy identification
-- Similar purpose script grouping
-- Consolidation recommendations
->>>>>>> ts-develop-02.03
 
 Usage:
     python3 scripts-custom/analyze-script-redundancy.py
@@ -25,6 +12,9 @@ Usage:
 
 import os
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c8793e298936b5c3eb625f01d0d7b5eb7461b5a4
 import sys
 import re
 import json
@@ -51,6 +41,7 @@ class ScriptRedundancyAnalyzer:
         
         # Check for redundancies
         self._check_redundancies()
+<<<<<<< HEAD
 =======
 import re
 import ast
@@ -84,11 +75,16 @@ class ScriptAnalyzer:
         self._detect_redundancy()
         self._identify_consolidation_opportunities()
 >>>>>>> ts-develop-02.03
+=======
+>>>>>>> c8793e298936b5c3eb625f01d0d7b5eb7461b5a4
         
         # Generate report
         self._generate_report()
         
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c8793e298936b5c3eb625f01d0d7b5eb7461b5a4
     def _load_all_scripts(self):
         """Load all script files for analysis."""
         script_files = list(self.scripts_dir.glob("*.py")) + \
@@ -356,6 +352,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+<<<<<<< HEAD
 =======
     def _analyze_python_scripts(self):
         """Analyze Python scripts for functions, imports, and patterns."""
@@ -851,3 +848,5 @@ def main():
 if __name__ == "__main__":
     main()
 >>>>>>> ts-develop-02.03
+=======
+>>>>>>> c8793e298936b5c3eb625f01d0d7b5eb7461b5a4

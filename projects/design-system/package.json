@@ -8,7 +8,6 @@
     "test-ci": "cd ../.. && ng run design-system:test:ci",
     "build": "ng build design-system && ts-node scripts/post-build.ts",
     "release": "ts-node scripts/release.ts",
-<<<<<<< HEAD
     "check:plural-references": "python3 scripts-custom/detect-plural-references.py",
     "check:token-syntax": "python3 scripts-custom/validate-token-syntax.py",
     "check:token-consumption": "python3 scripts-custom/validate-consumption-hierarchy.py",
@@ -22,14 +21,6 @@
     "track:setup": "python3 scripts-custom/setup-token-tracking.py",
     "cleanup:scripts": "python3 scripts-custom/cleanup-scripts.py",
     "docs:generate-word": "python3 scripts-custom/generate-word-docs.py"
-=======
-    "check:plural-references": "python3 scripts-custom/find-plural-references.py",
-    "check:token-syntax": "python3 scripts-custom/quick-validate-token-syntax.py",
-    "docs:generate-word": "python3 scripts-custom/generate-word-docs.py",
-    "clean:empty-files": "python3 scripts-custom/prevent-empty-files.py --cleanup-now",
-    "monitor:empty-files": "python3 scripts-custom/prevent-empty-files.py --watch",
-    "analyze:scripts": "python3 scripts-custom/analyze-script-redundancy.py"
->>>>>>> ts-develop-02.03
   },
   "peerDependencies": {
     "@angular/cdk": "^19.0.0 || ^20.0.0",
