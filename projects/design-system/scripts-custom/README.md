@@ -2,6 +2,32 @@
 
 This folder contains reusable scripts for design system validation, analysis, and maintenance that are useful for the entire team.
 
+## 🔗 **FASTEST: Token Reference Analysis**
+
+**Need to understand token relationships?** Use the super-fast token tracer:
+
+```bash
+# 🚀 INSTANT token chain analysis:
+npm run trace-token "ob.h.button.color.fg.primary.disabled"
+
+# 🔍 SEARCH for tokens:
+npm run search-tokens "button disabled"
+
+# 🎨 FIGMA INTEGRATION - Analyze your current Figma selection:
+npm run trace-figma
+
+# 💫 CONVENIENCE alias (add to your shell):
+alias "reference chain of"="./scripts-custom/reference-chain-of.sh"
+# Then use: reference chain of "ob.h.button.color.fg.primary.disabled"
+```
+
+**Figma Integration Features:**
+- 🎯 Automatically detects tokens in your current Figma selection
+- 🎨 Identifies fill, border, and text color tokens
+- 📝 Traces complete reference chains for all found tokens
+- ⚡ Shows property types (fill/background, text/foreground, border, etc.)
+- 🔗 Works with your existing Figma Dev Mode MCP setup
+
 ## 🤖 **EASIEST WAY: Get AI Recommendations**
 
 **Don't know which scripts to run?** Let AI recommend the right scripts for your work:

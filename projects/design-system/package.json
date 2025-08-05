@@ -20,7 +20,10 @@
     "track:token-changes-auto": "python3 scripts-custom/track-token-changes.py",
     "track:setup": "python3 scripts-custom/setup-token-tracking.py",
     "cleanup:scripts": "python3 scripts-custom/cleanup-scripts.py",
-    "docs:generate-word": "python3 scripts-custom/generate-word-docs.py"
+    "docs:generate-word": "python3 scripts-custom/generate-word-docs.py",
+    "trace-token": "node scripts-custom/trace-token-chain.js",
+    "search-tokens": "node scripts-custom/trace-token-chain.js --search",
+    "trace-figma": "node scripts-custom/trace-token-chain.js --figma"
   },
   "peerDependencies": {
     "@angular/cdk": "^19.0.0 || ^20.0.0",
