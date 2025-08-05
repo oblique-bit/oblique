@@ -18,7 +18,7 @@
 | Question | Details |
 |----------|---------|
 | ☐ **Is the name clear and aligned with industry naming conventions?** | Ensure the name is widely understandable and not misleading. |
-| ☐ **Is the name consistent with the other Oblique components?** | Similar length, writing style |
+| ☐ **Is the name consistent with the other Oblique components?** | Similar length, writing style. |
 | **List component synonyms for easier identification and research** | |
 
 ---
@@ -31,16 +31,16 @@
 
 | Type | Example |
 |------|---------|
-| ☐ **Atom** | Smallest unit (e.g., button, input, checkbox) |
-| ☐ **Molecule** | Group of atoms forming an interaction (e.g., input + label + validation) |
-| ☐ **Organism** | A complex UI block with multiple molecules (e.g., card, navigation bar) |
+| ☐ **Atom** | Smallest unit (e.g., button, input, checkbox). |
+| ☐ **Molecule** | Group of atoms forming an interaction (e.g., input + label + validation). |
+| ☐ **Organism** | A complex UI block with multiple molecules (e.g., card, navigation bar). |
 
 #### ☐ **No. It is beyond core components; out of scope for redesign project**
 
 | Type | Example |
 |------|---------|
-| ☐ **Template** | A reusable structure/layout for a common use case |
-| ☐ **User flow** | A sequence of screens forming a complete task (e.g., search + results) |
+| ☐ **Template** | A reusable structure/layout for a common use case. |
+| ☐ **User flow** | A sequence of screens forming a complete task (e.g., search + results). |
 
 ---
 
