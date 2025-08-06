@@ -6,7 +6,7 @@
 
 **Scope:** Tokenized Design System only. Pre-Design System releases like Oblique R13 are not affected.
 
-**Theme Strategy:** The system supports multiple theme dimensions that can be combined: Lightness (light/dark), Inversity (default/inverse), and Interaction Emphasis (default/muted). Responsive theming is handled separately (see [Responsive Tokens](./responsiveness.md)).
+**Theme Strategy:** The system supports multiple theme dimensions that can be combined: Lightness (light/dark), Inversity (normal/flipped), and Interaction Emphasis (normal/muted). Responsive theming is handled separately (see [Responsive Tokens](./responsiveness.md)).
 
 ---
 
@@ -15,14 +15,14 @@
 The semantic level supports complex theming through multiple dimensions that can be combined:
 
 - **Lightness:** `light` (default) / `dark`
-- **Inversity:** `default` / `inverse` 
-- **Interaction Emphasis:** `default` / `muted`
+- **Inversity:** `normal` / `flipped` 
+- **Interaction Emphasis:** `normal` / `muted`
 
 **Note:** Responsive theming (desktop/mobile) follows similar principles but is documented separately in [Responsive Tokens](./responsiveness.md) due to its extensive scope.
 
 **Example:** A button can simultaneously use:
 - `lightness: dark` (inheriting dark theme values)
-- `inversity: inverse` (switching to inverted background/foreground for visual emphasis)
+- `inversity: flipped` (switching to inverted background/foreground for visual emphasis)
 - `emphasis: muted` (lowering visual emphasis within headers/footers)
 
 ### Level 2: Semantic Colors
@@ -122,7 +122,7 @@ src/lib/themes/semantic/color/s3-emphasis/
 **Purpose:** Component-scoped theming for interaction emphasis. Used when design system maintainers set interaction emphasis to "muted" in host components (header, footer, infobox) where text links and buttons must be visually less aggressive.
 
 **Use Cases:**
-- **Standard Context:** Buttons in forms use `emphasis: default` with high-saturated blue for background fill
+- **Standard Context:** Buttons in forms use `emphasis: normal` with high-saturated blue for background fill
 - **Muted Context:** Same components in headers/footers use `emphasis: muted` appearing monochromatic to avoid drawing excessive attention
 
 **Scope:** Only for interactive elements (buttons, text links, tabs). Non-interactive components can skip this level.
