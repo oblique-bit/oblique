@@ -1,6 +1,6 @@
 # Responsive Tokens Documentation
 
-**Status:** ✅ Updated for current token architecture
+**Status:** Updated for current token architecture
 
 ## Introduction
 
@@ -61,12 +61,12 @@ The responsive tokens are organized in the following files:
 
 ```
 src/lib/themes/global/
-├── themes-scoped/
-│   └── static.json              # Contains ob.g.breakpoints.* primitives
-└── themes-user/
-    └── viewport/
-        ├── desktop.json         # Desktop-specific responsive tokens
-        └── mobile.json          # Mobile-specific responsive tokens
+|-- themes-scoped/
+|   +-- static.json              # Contains ob.g.breakpoints.* primitives
++-- themes-user/
+    +-- viewport/
+        |-- desktop.json         # Desktop-specific responsive tokens
+        +-- mobile.json          # Mobile-specific responsive tokens
 ```
 
 ## Usage Guidelines

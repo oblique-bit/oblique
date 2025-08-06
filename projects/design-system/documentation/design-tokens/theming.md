@@ -39,8 +39,8 @@ The semantic level introduces theming through organized folders containing JSON 
 
 ```
 src/lib/themes/semantics/colors/lightness/
-├── light.json    # Default theme
-└── dark.json     # Dark theme override
+|-- light.json    # Default theme
++-- dark.json     # Dark theme override
 ```
 
 **Purpose:** System-wide light/dark theme switching. Users set the variable mode in Figma from `lightness: light` (default) or `lightness: dark`.
@@ -84,8 +84,8 @@ src/lib/themes/semantics/colors/lightness/
 
 ```
 src/lib/themes/semantics/colors/inversity/
-├── default.json  # Default contrast
-└── inverse.json  # Inverted contrast
+|-- default.json  # Default contrast
++-- inverse.json  # Inverted contrast
 ```
 
 **Purpose:** Component-scoped theming for inversity override. Available in Figma variable mode but should not be altered by designers in projects.
@@ -115,8 +115,8 @@ src/lib/themes/semantics/colors/inversity/
 
 ```
 src/lib/themes/semantics/colors/emphasis/
-├── default.json  # Full saturation (standard blue)
-└── muted.json    # Desaturated (monochromatic)
+|-- default.json  # Full saturation (standard blue)
++-- muted.json    # Desaturated (monochromatic)
 ```
 
 **Purpose:** Component-scoped theming for interaction emphasis. Used when design system maintainers set interaction emphasis to "muted" in host components (header, footer, infobox) where text links and buttons must be visually less aggressive.

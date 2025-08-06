@@ -79,6 +79,15 @@ The structured approach to organizing design tokens from primitive to component-
 3. **Components** - Component-specific tokens
 4. **Global** - System-level exceptions
 
+### Design System Consumers
+The primary users of the Oblique design system who implement design tokens and components in their projects.
+
+**Types:**
+- **Figma Users** - Designers using Oblique tokens and components in Figma for creating mockups, prototypes, and design specifications
+- **Developers** - Frontend and backend developers implementing Oblique design tokens, components, and patterns in their applications
+
+**Consumption Methods:** Token references, component libraries, style imports, design system documentation
+
 ### Component Consumption Rules
 Guidelines that govern how components should consume tokens from the semantic hierarchy. These rules ensure proper abstraction and maintainability.
 

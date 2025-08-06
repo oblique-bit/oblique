@@ -67,13 +67,13 @@ Commands:
 
 ```
 documentation/reports/token-changes/
-├── scripts/
-│   ├── track-token-changes.py      # Main tracking script
-│   └── setup-token-tracking.py    # Setup & maintenance utility
-├── tracked-tokens-config.json     # Configuration for tracked tokens
-└── YYYY/
-    └── MM/
-        └── YYYYMMDD-HHMM-token-changes-report.md  # Generated reports
+|-- scripts/
+|   |-- track-token-changes.py      # Main tracking script
+|   +-- setup-token-tracking.py    # Setup & maintenance utility
+|-- tracked-tokens-config.json     # Configuration for tracked tokens
++-- YYYY/
+    +-- MM/
+        +-- YYYYMMDD-HHMM-token-changes-report.md  # Generated reports
 ```
 
 ## ⚙️ Configuration
