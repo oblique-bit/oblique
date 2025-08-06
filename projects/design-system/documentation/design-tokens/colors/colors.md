@@ -551,23 +551,23 @@ When refactoring existing components:
 ## Color Token Files
 
 ### Neutral Colors
-- `src/lib/themes/semantics/colors/lightness/light.json` - Light theme neutral colors
-- `src/lib/themes/semantics/colors/lightness/dark.json` - Dark theme neutral colors
-- `src/lib/themes/semantics/colors/inversity/` - Inverse theme neutrals
+- `src/lib/themes/semantic/color/s1-lightness/light.json` - Light theme neutral colors
+- `src/lib/themes/semantic/color/s1-lightness/dark.json` - Dark theme neutral colors
+- `src/lib/themes/semantic/color/s2-inversity/` - Inverse theme neutrals
 
 ### Status Colors
 - `src/lib/themes/semantic/color/s0-static.json` - Base status color definitions
-- `src/lib/themes/semantics/colors/lightness/` - Theme-specific variations
-- `src/lib/themes/semantics/colors/inversity/` - Inverse theme colors
+- `src/lib/themes/semantic/color/s1-lightness/` - Theme-specific variations
+- `src/lib/themes/semantic/color/s2-inversity/` - Inverse theme colors
 
 
 ### Interaction Colors
-- `src/lib/themes/semantics/colors/lightness/light.json` - Light theme interaction colors
-- `src/lib/themes/semantics/colors/lightness/dark.json` - Dark theme interaction colors
+- `src/lib/themes/semantic/color/s1-lightness/light.json` - Light theme interaction colors
+- `src/lib/themes/semantic/color/s1-lightness/dark.json` - Dark theme interaction colors
 - `src/lib/themes/semantic/color/s0-static.json` - Static interaction indicators
 
 ### Interaction / Emphasis Colors
-- `src/lib/themes/semantics/colors/emphasis/` - Emphasis level definitions
+- `src/lib/themes/semantic/color/s3-emphasis/` - Emphasis level definitions
 
 ### Theme Colors
 - `src/lib/themes/global/themes-scoped/` - Theme-scoped color applications

@@ -38,7 +38,7 @@ The semantic level introduces theming through organized folders containing JSON 
 #### Level 2.1: Lightness Theming
 
 ```
-src/lib/themes/semantics/colors/lightness/
+src/lib/themes/semantic/color/s1-lightness/
 |-- light.json    # Default theme
 +-- dark.json     # Dark theme override
 ```
@@ -83,9 +83,9 @@ src/lib/themes/semantics/colors/lightness/
 #### Level 2.2: Inversity Theming
 
 ```
-src/lib/themes/semantics/colors/inversity/
-|-- default.json  # Default contrast
-+-- inverse.json  # Inverted contrast
+src/lib/themes/semantic/color/s2-inversity/
+|-- normal.json  # Normal contrast
++-- flipped.json  # Inverted contrast
 ```
 
 **Purpose:** Component-scoped theming for inversity override. Available in Figma variable mode but should not be altered by designers in projects.
@@ -114,8 +114,8 @@ src/lib/themes/semantics/colors/inversity/
 #### Level 2.3: Interaction Emphasis Theming
 
 ```
-src/lib/themes/semantics/colors/emphasis/
-|-- default.json  # Full saturation (standard blue)
+src/lib/themes/semantic/color/s3-emphasis/
+|-- normal.json  # Full saturation (standard blue)
 +-- muted.json    # Desaturated (monochromatic)
 ```
 
