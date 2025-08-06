@@ -113,7 +113,7 @@ Key compound patterns used in tokens:
 3. **Hyphen separation** - Connect compound words with hyphens
 4. **Two words max** - Keep compound terms concise
 5. **Hierarchical order** - Follow established segment order
-6. **Reference hierarchy** - Follow proper reference chain (`Component → Semantic → Primitive`), with global tokens being the exception
+6. **Reference hierarchy** - Follow proper reference chain (`Component -> Semantic -> Primitive`), with global tokens being the exception
 
 ---
 

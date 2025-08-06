@@ -137,19 +137,19 @@ The process of connecting design tokens with build tools and development workflo
 **Monitoring:** Custom scripts detect hardcoded token usage
 
 ### Token Resolution
-How the system follows references through the s0→s1→s2→s3 hierarchy. The resolution process ensures that token references are properly traced from component level down to primitive values.
+How the system follows references through the s0->s1->s2->s3 hierarchy. The resolution process ensures that token references are properly traced from component level down to primitive values.
 
-**Process:** Component tokens reference s3 tokens → s3 tokens reference s2 tokens → s2 tokens reference s1 tokens → s1 tokens reference s0 tokens → s0 tokens contain final values
+**Process:** Component tokens reference s3 tokens -> s3 tokens reference s2 tokens -> s2 tokens reference s1 tokens -> s1 tokens reference s0 tokens -> s0 tokens contain final values
 
 ### Reference Chain
 The path a token follows from component to primitive. Reference chains show the complete dependency trail and ensure proper abstraction levels are maintained.
 
-**Example Chain:** `button.primary` → `s3.interactive.primary` → `s2.brand.primary` → `s1.blue.600` → `s0.blue.600`
+**Example Chain:** `button.primary` -> `s3.interactive.primary` -> `s2.brand.primary` -> `s1.blue.600` -> `s0.blue.600`
 
 ### Token Inheritance
 How tokens inherit values from parent tokens in the hierarchy. Inheritance allows child tokens to automatically receive updates when parent values change, maintaining consistency across the system.
 
-**Inheritance Flow:** s0 (parent) → s1 → s2 → s3 → Component tokens (children)
+**Inheritance Flow:** s0 (parent) -> s1 -> s2 -> s3 -> Component tokens (children)
 
 ### Build-time Resolution
 When token references are resolved during compilation. Build-time resolution transforms token references into final CSS values, ensuring runtime performance and eliminating dependency tracking overhead.
@@ -192,9 +192,9 @@ Visual priority levels for interactive elements that prevent color competition a
 **Deprecated:** Former naming convention for semantic token levels, replaced by s1/s2/s3 in July 2025.
 
 **Migration:**
-- l1 → s1 (lightness)
-- l2 → s2 (inversity)  
-- l3 → s3 (emphasis)
+- l1 -> s1 (lightness)
+- l2 -> s2 (inversity)  
+- l3 -> s3 (emphasis)
 
 ### static.json
 **Deprecated:** Former filename for static tokens, renamed to `s0-static.json` for consistency with semantic level naming.

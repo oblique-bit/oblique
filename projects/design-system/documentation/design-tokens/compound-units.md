@@ -169,16 +169,16 @@ color: var(--ob-s-color-status-critical-fg-contrastHigh-inversityNormal);
 ### Compound Units with CSS Transformations
 These compound units need camelCase transformation when used in CSS:
 
-- `contrast-high` → `contrastHigh`
-- `contrast-medium` → `contrastMedium`
-- `contrast-low` → `contrastLow`
-- `inversity-normal` → `inversityNormal`
-- `inversity-flipped` → `inversityFlipped`
-- `border-radius` → `borderRadius`
-- `font-family` → `fontFamily`
-- `font-size` → `fontSize`
-- `font-weight` → `fontWeight`
-- `letter-spacing` → `letterSpacing`
+- `contrast-high` -> `contrastHigh`
+- `contrast-medium` -> `contrastMedium`
+- `contrast-low` -> `contrastLow`
+- `inversity-normal` -> `inversityNormal`
+- `inversity-flipped` -> `inversityFlipped`
+- `border-radius` -> `borderRadius`
+- `font-family` -> `fontFamily`
+- `font-size` -> `fontSize`
+- `font-weight` -> `fontWeight`
+- `letter-spacing` -> `letterSpacing`
 
 ## Implementation Guidelines
 

@@ -10,7 +10,7 @@ This document defines rules for token consumption across all token types in the 
 Most tokens follow a strict hierarchical reference chain:
 
 ```
-Components (L3) → Semantics (L2) → Primitives (L1)
+Components (L3) -> Semantics (L2) -> Primitives (L1)
 ```
 
 **Exception:** Global tokens (`ob.g.*`) can be referenced by any level. See [global-tokens.md](./global-tokens.md) for more details.
@@ -158,7 +158,7 @@ Components (L3) → Semantics (L2) → Primitives (L1)
 
 ### Hierarchy Rules
 ```
-Components (ob.c.*) → Semantics (ob.s.*) → Primitives (ob.p.*)
+Components (ob.c.*) -> Semantics (ob.s.*) -> Primitives (ob.p.*)
 ```
 
 #### ✅ Correct Typography Consumption

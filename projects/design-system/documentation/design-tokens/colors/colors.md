@@ -336,11 +336,11 @@ Implementation
 
 ### Color Dependencies
 ```
-ob.s.color.emphasis.low → ob.s.color.neutral.fg.contrast-*
-ob.s.color.emphasis.high → ob.s.color.interaction.emphasis-high.*
-ob.s.color.status.* → Direct primitive color references
-ob.s.color.neutral.* → Direct primitive color references
-ob.s.color.interaction.* → Direct primitive color references
+ob.s.color.emphasis.low -> ob.s.color.neutral.fg.contrast-*
+ob.s.color.emphasis.high -> ob.s.color.interaction.emphasis-high.*
+ob.s.color.status.* -> Direct primitive color references
+ob.s.color.neutral.* -> Direct primitive color references
+ob.s.color.interaction.* -> Direct primitive color references
 ```
 
 ### Consistency Rules
@@ -513,11 +513,11 @@ These guidelines define which semantic color token types specific component cate
 ### Token Reference Hierarchy
 
 ```
-Component Tokens → Semantic Tokens → Theme Layer → Primitives
+Component Tokens -> Semantic Tokens -> Theme Layer -> Primitives
      ↓                   ↓              ↓            ↓
-ob.c.badge.*  →  ob.s.color.status.*    →  inversity/*  →  ob.p.color.*
-ob.h.button.* →  ob.s.color.interaction.* → emphasis/*   →  ob.p.color.*
-ob.s.typography.* →  ob.s.color.neutral.*  →  lightness/*  →  ob.p.color.*
+ob.c.badge.*  ->  ob.s.color.status.*    ->  inversity/*  ->  ob.p.color.*
+ob.h.button.* ->  ob.s.color.interaction.* -> emphasis/*   ->  ob.p.color.*
+ob.s.typography.* ->  ob.s.color.neutral.*  ->  lightness/*  ->  ob.p.color.*
 ```
 
 ### Documentation Guidelines
@@ -578,9 +578,9 @@ When refactoring existing components:
 
 ### Legacy Status Names
 The following status names have been updated for clarity:
-- `error` → `critical`
-- `success` → `resolved`  
-- `warning` → `attention`
+- `error` -> `critical`
+- `success` -> `resolved`  
+- `warning` -> `attention`
 
 ### New Status Types
 - `pending` - Added for workflow systems

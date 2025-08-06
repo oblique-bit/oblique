@@ -155,10 +155,10 @@ src/lib/themes/semantic/color/s3-emphasis/
 
 The correct reference chain ensures proper theme inheritance:
 
-1. **Components** → **Emphasis** → **Inversity** → **Lightness** → **Primitives**
+1. **Components** -> **Emphasis** -> **Inversity** -> **Lightness** -> **Primitives**
 
 **Exception:** Global tokens (`ob.g.*`) can be referenced from any level in the hierarchy and are exempt from these chain rules. See [global-tokens.md](./global-tokens.md) for details.
-2. **Components** → **Inversity** → **Lightness** → **Primitives** (for non-interactive elements)
+2. **Components** -> **Inversity** -> **Lightness** -> **Primitives** (for non-interactive elements)
 
 **Validation Rules:**
 - Semantic layers should never directly reference primitives (except for lightness layer)
@@ -200,8 +200,8 @@ Consider generating L2 tokens programmatically from L1 during the build process 
 **Important:** Changing folder structures does not necessarily break token references. Token resolution depends on the token paths and names, not the folder organization.
 
 **What Breaks References:**
-- Changing token paths (e.g., `{ob.s.color.bg.default}` → `{ob.s.color.background.default}`)
-- Renaming tokens (e.g., `primary` → `accent`)
+- Changing token paths (e.g., `{ob.s.color.bg.default}` -> `{ob.s.color.background.default}`)
+- Renaming tokens (e.g., `primary` -> `accent`)
 - Removing tokens that are referenced elsewhere
 
 **What Doesn't Break References:**

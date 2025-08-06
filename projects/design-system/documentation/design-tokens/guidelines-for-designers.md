@@ -104,7 +104,7 @@ ob.s.typography.type-scale.lg.strong
 
 ### 2. **Naming Patterns**
 - Use **descriptive names** that reflect function, not appearance
-- Follow **hierarchical structure**: category → property → variant → state
+- Follow **hierarchical structure**: category -> property -> variant -> state
 - Use **semantic values** like `sm`, `md`, `lg` rather than pixel values
 
 ### 3. **Component Design**

@@ -3,7 +3,7 @@
 ### 🧭 **The Role of Global Tokens Across Levels**
 
 **Context:**
-We are refining the explanation of token levels within our design system, especially regarding how reference chains work. The assumption that each level strictly references the one directly below (e.g., Component → Semantic → Primitive) does **not fully apply** to Global tokens.
+We are refining the explanation of token levels within our design system, especially regarding how reference chains work. The assumption that each level strictly references the one directly below (e.g., Component -> Semantic -> Primitive) does **not fully apply** to Global tokens.
 
 ---
 
@@ -27,7 +27,7 @@ This cross-level referencing is **intentional** and reflects the **foundational 
 * Therefore, the typical reference chain:
 
   ```
-  Primitive → Semantic → Component
+  Primitive -> Semantic -> Component
   ```
 
   **does not constrain** Global token usage. Globals can "jump" levels.
