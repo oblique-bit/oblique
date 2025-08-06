@@ -18,8 +18,6 @@ The semantic level supports complex theming through multiple dimensions that can
 - **Inversity:** `normal` / `flipped` 
 - **Interaction Emphasis:** `normal` / `muted`
 
-**Note:** Responsive theming (desktop/mobile) follows similar principles but is documented separately in [Responsive Tokens](./responsiveness.md) due to its extensive scope.
-
 **Example:** A button can simultaneously use:
 - `lightness: dark` (inheriting dark theme values)
 - `inversity: flipped` (switching to inverted background/foreground for visual emphasis)
