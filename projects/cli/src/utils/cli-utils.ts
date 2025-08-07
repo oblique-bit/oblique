@@ -143,6 +143,8 @@ export function execute(config: ObCommandConfig): void {
 			return executeCommand(`npm dedupe`, config.execSyncOptions);
 		case 'npmPrune':
 			return executeCommand('npm prune', config.execSyncOptions);
+		case 'npmFormat':
+			return executeCommand('npm run lint -- --fix', config.execSyncOptions);
 		case 'npmOutdated':
 			return executeCommand('npm outdated', config.execSyncOptions);
 	}

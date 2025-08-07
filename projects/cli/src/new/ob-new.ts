@@ -92,6 +92,7 @@ function runAddOblique(options: ObNewOptions<string | boolean>, projectName: str
 	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: filteredOptions, execSyncOptions: {cwd: dir}});
 	runNpmDedupe();
 	runNpmPrune();
+	runNpmFormat();
 	console.info(`[Complete]: Oblique added`);
 }
 
@@ -130,6 +131,15 @@ function runNpmPrune(): void {
 	console.info('[Info]: Runs npm prune');
 	try {
 		execute({name: 'npmPrune'});
+	} catch (error) {
+		console.info(error);
+	}
+}
+
+function runNpmFormat(): void {
+	console.info('[Info]: Runs npm format');
+	try {
+		execute({name: 'npmFormat'});
 	} catch (error) {
 		console.info(error);
 	}

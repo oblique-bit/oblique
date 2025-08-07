@@ -63,7 +63,8 @@ describe('Ob new command', () => {
 				{index: 6, message: '[Info]: Installs @angular/cdk and @angular/animations', type: 'info'},
 				{index: 7, message: '[Info]: Runs npm dedupe', type: 'info'},
 				{index: 8, message: '[Info]: Runs npm prune', type: 'info'},
-				{index: 9, message: '[Complete]: Oblique added', type: 'info'},
+				{index: 9, message: '[Info]: Runs npm format', type: 'info'},
+				{index: 10, message: '[Complete]: Oblique added', type: 'info'},
 				{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'}
 			])('calls console ', ({index, message, type}) => {
 				test(`${type} ${message}`, () => {
@@ -263,7 +264,8 @@ describe('Ob new command', () => {
 			{index: 7, message: '[Info]: Installs @angular/cdk and @angular/animations', type: 'info'},
 			{index: 8, message: '[Info]: Runs npm dedupe', type: 'info'},
 			{index: 9, message: '[Info]: Runs npm prune', type: 'info'},
-			{index: 10, message: '[Complete]: Oblique added', type: 'info'},
+			{index: 10, message: '[Info]: Runs npm format', type: 'info'},
+			{index: 11, message: '[Complete]: Oblique added', type: 'info'},
 			{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'}
 		])('calls console ', ({index, message, type}) => {
 			beforeEach(() => {
