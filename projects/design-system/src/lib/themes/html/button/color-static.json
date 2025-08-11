@@ -102,7 +102,7 @@
             "secondary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}",
+                "$value": "{ob.s0.color.neutral.no-color}",
                 "$description": "Secondary needs a transparent background color on Enabled state."
               },
               "hover": {
@@ -119,13 +119,13 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               }
             },
             "tertiary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}",
+                "$value": "{ob.s0.color.neutral.no-color}",
                 "$description": "Tertiary needs a transparent background color on Enabled state."
               },
               "hover": {
@@ -142,7 +142,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               }
             }
           },
@@ -150,23 +150,23 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}",
+                "$value": "{ob.s0.color.neutral.no-color}",
                 "$description": "Border color of the Disabled Primary button: no border."
               }
             },
@@ -195,23 +195,23 @@
             "tertiary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.static.no-color}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               }
             }
           }

@@ -2,12 +2,12 @@
   "ob": {
     "s0": {
       "color": {
-        "static": {
-          "brand": {
-            "$type": "color",
-            "$value": "{ob.p.color.basic.bundesrot}",
-            "$description": "Static color to be used in the brand relevant UI elements."
-          },
+        "brand": {
+          "$type": "color",
+          "$value": "{ob.p.color.basic.bundesrot}",
+          "$description": "Static color to be used in the brand relevant UI elements."
+        },
+        "neutral": {
           "no-color": {
             "$type": "color",
             "$value": "{ob.p.color.basic.transparent}",
@@ -18,11 +18,11 @@
           "indicator": {
             "selected": {
               "$type": "color",
-              "$value": "{ob.s0.color.static.brand}"
+              "$value": "{ob.s0.color.brand}"
             },
             "unselected": {
               "$type": "color",
-              "$value": "{ob.s0.color.static.no-color}",
+              "$value": "{ob.s0.color.neutral.no-color}",
               "$description": "Semantic Interaction color for not selected items. Used in Main Navigation, Navigation Tree, Tabs."
             }
           }
