@@ -115,6 +115,32 @@ Key compound patterns used in tokens:
 5. **Hierarchical order** - Follow established segment order
 6. **Reference hierarchy** - Follow proper reference chain (`Component -> Semantic -> Primitive`), with global tokens being the exception
 
+### **Primitive vs Semantic Naming Philosophy**
+
+**Primitive = Appearance** → Describe *what it looks like*
+**Semantic = Intent** → Describe *why it's used*
+
+This separation ensures clean abstraction layers and future-proof naming:
+
+```
+✅ CORRECT PATTERN:
+ob.p.color.basic.transparent     → "transparent" = visual appearance (alpha 0)
+ob.s0.color.neutral.no-color     → "no-color" = semantic intent (absence of fill)
+ob.c.button.color.bg.secondary   → references semantic token
+
+✅ BENEFITS:
+- Primitive describes visual appearance ("transparent", "blue", "large")
+- Semantic describes usage intent ("no-color", "primary", "emphasis-high")  
+- Component tokens reference semantic meaning, not appearance
+- Future changes (replacing "no-color" with faint tints) won't break components
+- Naming remains timeless regardless of visual changes
+```
+
+**Example Application:**
+- **Primitive**: `transparent` → rgba(0, 0, 0, 0) *(what it looks like)*
+- **Semantic**: `no-color` → references transparent *(why it's transparent)*
+- **Component**: `button.bg.secondary` → references no-color *(semantic usage)*
+
 ---
 
 *Last updated: July 13, 2025*

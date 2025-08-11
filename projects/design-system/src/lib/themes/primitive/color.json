@@ -139,15 +139,10 @@
             "$value": "#ff0000",
             "$description": "The color provided by Federal Chancellery."
           },
-          "no-color": {
-            "$type": "color",
-            "$value": "none",
-            "$description": "Use this if the background color changes from a color to none, e.g. depending on interaction states."
-          },
           "transparent": {
             "$type": "color",
             "$value": "rgba(0, 0, 0, 0)",
-            "$description": "Fully transparent color (0% opacity) for UI elements that need to be invisible."
+            "$description": "Fully transparent color (0% opacity). Used for invisible backgrounds, clearing colors in interaction states, and smooth color transitions."
           }
         },
         "orange": {

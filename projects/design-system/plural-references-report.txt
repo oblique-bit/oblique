@@ -1,7 +1,7 @@
 PLURAL REFERENCE FINDER REPORT
 ==================================================
 
-Found 304 plural references:
+Found 286 plural references:
 
 Type: json_structure
 File: _private/scripts-custom/automation/jira/templates/story-template.json
@@ -1845,7 +1845,7 @@ Content: - `semantics/colors/` → `semantics/color/` (folder paths)
 
 Type: documentation
 File: scripts-custom/README.md
-Line: 56
+Line: 82
 Issue: Plural reference in documentation: colors.json
 Content: - *Example: Removes old token files like "legacy-colors.json" that are no longer referenced → prevents accidental usage of outdated tokens*
 ----------------------------------------
@@ -1957,96 +1957,6 @@ Issue: Plural in file/folder name: atoms
 
 Type: file_name
 File: _private/stable-points/20250713_0046-multi-dimensional-tokens/tokens-snapshot/components/atoms/badge.json
-Issue: Plural in file/folder name: badge.json
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/colors
-Issue: Plural in file/folder name: colors
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/typography
-Issue: Plural in file/folder name: typography
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/colors/lightness
-Issue: Plural in file/folder name: lightness
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/colors/lightness
-Issue: Plural in file/folder name: lightness
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/colors/inversity
-Issue: Plural in file/folder name: inversity
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/colors/inversity
-Issue: Plural in file/folder name: inversity
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/colors/lightness/light.json
-Issue: Plural in file/folder name: light.json
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/colors/lightness/light.json
-Issue: Plural in file/folder name: light.json
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/colors/lightness/dark.json
-Issue: Plural in file/folder name: dark.json
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/colors/lightness/dark.json
-Issue: Plural in file/folder name: dark.json
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/colors/inversity/normal.json
-Issue: Plural in file/folder name: normal.json
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/colors/inversity/normal.json
-Issue: Plural in file/folder name: normal.json
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/colors/inversity/flipped.json
-Issue: Plural in file/folder name: flipped.json
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/colors/inversity/flipped.json
-Issue: Plural in file/folder name: flipped.json
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/typography/static.json
-Issue: Plural in file/folder name: static.json
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/semantics/typography/styles.json
-Issue: Plural in file/folder name: styles.json
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/components/atoms
-Issue: Plural in file/folder name: atoms
-----------------------------------------
-
-Type: file_name
-File: src/lib/themes/components/atoms/badge.json
 Issue: Plural in file/folder name: badge.json
 ----------------------------------------
 
