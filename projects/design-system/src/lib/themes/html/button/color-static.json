@@ -158,7 +158,7 @@
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no-color}"
+                "$value": "{ob.s3.color.interaction.state.bg.focus.inversity-normal}"
               },
               "pressed": {
                 "$type": "color",
