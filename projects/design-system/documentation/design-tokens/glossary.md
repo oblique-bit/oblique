@@ -139,6 +139,20 @@ The process of connecting design tokens with build tools and development workflo
 ### Token Resolution
 How the system follows references through the s0->s1->s2->s3 hierarchy. The resolution process ensures that token references are properly traced from component level down to primitive values.
 
+### Symmetry
+**Critical Rule:** When expanding or reducing tokens in the theming system, all changes must preserve symmetry across theming counterparts. If a token structure is added/removed in one theme file, the exact same structure must be added/removed in ALL corresponding theme files.
+
+**Example:** Adding `contrast-highest` to `s1-lightness/light.json` requires adding the same structure to `s1-lightness/dark.json`, `s2-inversity/normal.json`, and `s2-inversity/flipped.json`.
+
+### Theming Counterparts
+The set of theme files that must maintain structural symmetry with each other. Changes to one counterpart file requires identical changes to all other counterpart files to maintain system consistency.
+
+**Counterpart Pairs:**
+- `s1-lightness/light.json` ↔ `s1-lightness/dark.json`
+- `s2-inversity/normal.json` ↔ `s2-inversity/flipped.json`
+
+**Rule:** Token architecture must remain identical across all counterparts, only primitive value references may differ.
+
 **Process:** Component tokens reference s3 tokens -> s3 tokens reference s2 tokens -> s2 tokens reference s1 tokens -> s1 tokens reference s0 tokens -> s0 tokens contain final values
 
 ### Reference Chain

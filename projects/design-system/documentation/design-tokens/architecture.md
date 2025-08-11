@@ -115,7 +115,7 @@ Key compound patterns used in tokens:
 5. **Hierarchical order** - Follow established segment order
 6. **Reference hierarchy** - Follow proper reference chain (`Component -> Semantic -> Primitive`), with global tokens being the exception
 
-### **Primitive vs Semantic Naming Philosophy**
+### **Primitive vs Semantic Naming Guidelines**
 
 **Primitive = Appearance** → Describe *what it looks like*
 **Semantic = Intent** → Describe *why it's used*

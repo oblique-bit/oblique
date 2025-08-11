@@ -355,6 +355,16 @@
           },
           "fatal": {
             "bg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.fatal.bg.contrast-highest.inversity-normal}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.fatal.bg.contrast-highest.inversity-flipped}"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -387,6 +397,16 @@
               }
             },
             "fg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.fatal.fg.contrast-highest.inversity-normal}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.fatal.fg.contrast-highest.inversity-flipped}"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -507,6 +527,16 @@
           },
           "pending": {
             "bg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast-highest.inversity-normal}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast-highest.inversity-flipped}"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -573,6 +603,16 @@
           },
           "confirmed": {
             "bg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.bg.contrast-highest.inversity-normal}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.bg.contrast-highest.inversity-flipped}"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -605,6 +645,16 @@
               }
             },
             "fg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.fg.contrast-highest.inversity-normal}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.fg.contrast-highest.inversity-flipped}"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -639,6 +689,16 @@
           },
           "progress": {
             "bg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.bg.contrast-highest.inversity-normal}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.bg.contrast-highest.inversity-flipped}"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -683,6 +743,16 @@
               }
             },
             "fg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.fg.contrast-highest.inversity-normal}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.fg.contrast-highest.inversity-flipped}"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -717,6 +787,16 @@
           },
           "scheduled": {
             "bg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.bg.contrast-highest.inversity-normal}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.bg.contrast-highest.inversity-flipped}"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -749,6 +829,16 @@
               }
             },
             "fg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.fg.contrast-highest.inversity-normal}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.fg.contrast-highest.inversity-flipped}"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -783,6 +873,16 @@
           },
           "waiting": {
             "bg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.bg.contrast-highest.inversity-normal}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.bg.contrast-highest.inversity-flipped}"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -815,6 +915,16 @@
               }
             },
             "fg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.fg.contrast-highest.inversity-normal}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.fg.contrast-highest.inversity-flipped}"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -935,6 +1045,16 @@
           },
           "closed": {
             "bg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.bg.contrast-highest.inversity-normal}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.bg.contrast-highest.inversity-flipped}"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
@@ -967,6 +1087,16 @@
               }
             },
             "fg": {
+              "contrast-highest": {
+                "inversity-normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.fg.contrast-highest.inversity-normal}"
+                },
+                "inversity-flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.fg.contrast-highest.inversity-flipped}"
+                }
+              },
               "contrast-high": {
                 "inversity-normal": {
                   "$type": "color",
