@@ -22,7 +22,7 @@
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast-highest.inversity-flipped}"
+              "$value": "{ob.s2.color.status.fatal.bg.contrast-high.inversity-flipped}"
             }
           },
           "border": {
@@ -88,7 +88,7 @@
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast-highest.inversity-flipped}"
+              "$value": "{ob.s1.color.neutral.fg.contrast-highest.inversity-normal}"
             }
           }
         }

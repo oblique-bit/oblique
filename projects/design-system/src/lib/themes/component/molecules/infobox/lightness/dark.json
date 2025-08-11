@@ -22,11 +22,7 @@
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast-highest.inversity-flipped}"
-            },
-            "fatal-test": {
-              "$type": "color",
-              "$value": "{ob.s2.color.status.critical.fg.contrast-high.inversity-normal}"
+              "$value": "{ob.s2.color.status.fatal.fg.contrast-medium.inversity-normal}"
             }
           },
           "border": {
@@ -49,10 +45,6 @@
             "fatal": {
               "$type": "color",
               "$value": "{ob.s2.color.status.fatal.fg.contrast-medium.inversity-normal}"
-            },
-            "fatal-test": {
-              "$type": "color",
-              "$value": "{ob.s2.color.status.critical.fg.contrast-high.inversity-normal}"
             }
           },
           "surface": {
@@ -76,10 +68,6 @@
               "$type": "color",
               "$value": "{ob.s2.color.status.fatal.bg.contrast-medium.inversity-normal}",
               "$description": "A darker background because of the requirement from F.Gabsa to make a special variant that is consistant with the Bundeskanzlei Alertbanner:\nhttps://swiss.github.io/designsystem/?path=/docs/components-alertbanner--example"
-            },
-            "fatal-test": {
-              "$type": "color",
-              "$value": "{ob.s2.color.status.critical.bg.contrast-low.inversity-normal}"
             }
           },
           "fg": {
@@ -100,10 +88,6 @@
               "$value": "{ob.s1.color.neutral.fg.contrast-highest.inversity-normal}"
             },
             "fatal": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast-highest.inversity-flipped}"
-            },
-            "fatal-test": {
               "$type": "color",
               "$value": "{ob.s1.color.neutral.fg.contrast-highest.inversity-normal}"
             }

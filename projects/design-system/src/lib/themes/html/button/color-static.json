@@ -107,15 +107,15 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.state.bg.hover.inversity-normal}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.state.bg.focus.inversity-normal}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.state.bg.pressed.inversity-normal}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "disabled": {
                 "$type": "color",
@@ -130,15 +130,15 @@
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.state.bg.hover.inversity-normal}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.state.bg.focus.inversity-normal}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.state.bg.pressed.inversity-normal}"
+                "$value": "{ob.s0.color.neutral.no-color}"
               },
               "disabled": {
                 "$type": "color",

@@ -2191,14 +2191,10 @@
       "ob.s0.color.neutral.no-color": "261a890701cc7f44c5883fbcf484a80dd9be17e6",
       "ob.s0.color.interaction.indicator.selected": "d7eddc0f303e29d31e2d7701a08ae6be586a5b51",
       "ob.s0.color.interaction.indicator.unselected": "3a6eecd4071e5abe616d742aa3dc29b29813d057",
-      "ob.s1.color.status.fatal.bg.contrast-highest.inversity-normal": "8fffa97a363fe25e800ec26a453aba88011ea915",
-      "ob.s1.color.status.fatal.bg.contrast-highest.inversity-flipped": "dc488ee5419bfb59d477255033fc0813314c83f7",
-      "ob.s1.color.status.fatal.fg.contrast-highest.inversity-normal": "84e0191e1ba37a5081e1e8ce8fff15b20f2b16c9",
-      "ob.s1.color.status.fatal.fg.contrast-highest.inversity-flipped": "63e29d12358edf9810d6591439850b82014e7f5c",
-      "ob.c.infobox.color.icon.fatal-test": "d6c392b751ed9dd6cb7904c9bdb21e70c7abe89a",
-      "ob.c.infobox.color.border.fatal-test": "0e80c483ed5c2cec8dd0e4dff1271fb820139178",
-      "ob.c.infobox.color.surface.fatal-test": "09cbcfa9deb18604ae19244cbcc548f88be603e8",
-      "ob.c.infobox.color.fg.fatal-test": "57cc72136c4537b42a189f71f5c254bed5b23ab8"
+      "ob.s1.color.status.fatal.bg.contrast-highest.inversity-normal": "d74a7adb686a9eb232d5ad06f87cb57e9a678179",
+      "ob.s1.color.status.fatal.bg.contrast-highest.inversity-flipped": "f54aa8f7849348f6ebab8084fd9b23ce3651b373",
+      "ob.s1.color.status.fatal.fg.contrast-highest.inversity-normal": "a3502644a5f37c29db52c4d12e54fab2e9292883",
+      "ob.s1.color.status.fatal.fg.contrast-highest.inversity-flipped": "e47b0847ad4db56626577a2b15d3eeae907a8204"
     },
     "group": "s1-lightness"
   },
