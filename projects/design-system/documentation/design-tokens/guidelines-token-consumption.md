@@ -282,30 +282,30 @@ Components (ob.c.*) -> Semantics (ob.s.*) -> Primitives (ob.p.*)
 
 | Token | Purpose | Allowed Contexts |
 |-------|---------|------------------|
-| `ob.s.color.static.no-color` | Transparent/invisible elements | borders, backgrounds, shadows, interaction indicators |
-| `ob.s.color.static.brand` | Brand identity consistency | interaction indicators, brand elements |
+| `ob.s.color.neutral.no-color` | Transparent/invisible elements | borders, backgrounds, shadows, interaction indicators |
+| `ob.s.color.brand` | Brand identity consistency | interaction indicators, brand elements |
 
 #### Legitimate S0 Static Consumption Examples
 
 ```json
 // ✅ ALLOWED: Transparent button backgrounds
 "ob.h.button.color.bg.secondary.enabled": {
-  "$value": "{ob.s.color.static.no-color}"
+  "$value": "{ob.s.color.neutral.no-color}"
 }
 
 // ✅ ALLOWED: Interaction indicators
 "ob.s.color.interaction.indicator.unselected": {
-  "$value": "{ob.s.color.static.no-color}"
+  "$value": "{ob.s.color.neutral.no-color}"
 }
 
 // ✅ ALLOWED: Brand interaction states
 "ob.s.color.interaction.indicator.selected": {
-  "$value": "{ob.s.color.static.brand}"
+  "$value": "{ob.s.color.brand}"
 }
 
 // ✅ ALLOWED: S3 emphasis transparent backgrounds
 "ob.s3.color.emphasis.low.bg": {
-  "$value": "{ob.s.color.static.no-color}"
+  "$value": "{ob.s.color.neutral.no-color}"
 }
 ```
 
@@ -477,7 +477,7 @@ npm run check:token-consumption
 
 The consumption hierarchy validator includes:
 - **s0/s1/s2/s3 semantic color validation**: Ensures proper hierarchical token consumption
-- **S0 static token exceptions**: Allows legitimate use of `ob.s.color.static.no-color` and `ob.s.color.static.brand`
+- **S0 static token exceptions**: Allows legitimate use of `ob.s.color.neutral.no-color` and `ob.s.color.brand`
 - **Component L1 violation detection**: Catches components consuming `ob.s1.color.*` tokens
 - **Cross-domain validation**: Validates typography, spacing, and other token consumption patterns
 

@@ -30,21 +30,23 @@ src/lib/themes/semantic/color/
 
 #### **L1 - Lightness Layer** (`s1-lightness/`)
 - **Purpose**: Light/dark theme adaptation
-- **Contains**: `neutral` and `interaction` categories
+- **Contains**: `neutral`, `interaction`, and `status` categories
 - **Files**: `light.json`, `dark.json`
 - **Example token**: `ob.s1.color.neutral.bg.contrast-high.inversity-normal`
 
 #### **L2 - Inversity Layer** (`s2-inversity/`)
 - **Purpose**: Normal/flipped contrast contexts
-- **Contains**: Theme variations for different contrast scenarios
+- **Contains**: Theme variations for `neutral`, `interaction`, and `status` categories
 - **Files**: `normal.json`, `flipped.json`
 - **Example token**: `ob.s2.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal`
 
 #### **L3 - Emphasis Layer** (`s3-emphasis/`)
-- **Purpose**: High/low emphasis variations
-- **Contains**: Emphasis level adaptations
+- **Purpose**: High/low emphasis variations for interaction components only
+- **Contains**: Interaction emphasis adaptations for buttons, text-links, and tabs
 - **Files**: `high.json`, `low.json`
-- **Example token**: `ob.s3.color.interaction.emphasis-high.fg-base`
+- **Scope**: Limited to interactive components requiring emphasis variations
+- **Example token**: `ob.s3.color.interaction.state.fg.enabled.inversity-normal`
+- **Note**: Originally named "interaction-emphasis" but shortened for brevity
 
 ---
 
@@ -57,7 +59,7 @@ Static colors are **non-themeable** values that remain constant across all theme
 #### **Static Brand**
 ```json
 {
-  "ob.s.color.static.brand": {
+  "ob.s.color.brand": {
     "value": "{ob.p.color.basic.bundesrot}",
     "description": "Static color to be used in the brand relevant UI elements."
   }
@@ -68,12 +70,12 @@ Static colors are **non-themeable** values that remain constant across all theme
 - **Usage**: Brand elements, logos, primary brand touches
 - **Behavior**: Never changes with theme modes
 
-### **Utility Colors**
+### **Neutral Utilities**
 
 #### **No Color / Transparent**
 ```json
 {
-  "ob.s.color.static.no-color": {
+  "ob.s.color.neutral.no-color": {
     "value": "{ob.p.color.basic.transparent}",
     "description": "Static value when no color respectively 0% opacity is needed."
   }
@@ -90,10 +92,10 @@ Static colors are **non-themeable** values that remain constant across all theme
 ```json
 {
   "ob.s.color.interaction.indicator.selected": {
-    "value": "{ob.s.color.static.brand}"
+    "value": "{ob.s.color.brand}"
   },
   "ob.s.color.interaction.indicator.unselected": {
-    "value": "{ob.s.color.static.no-color}",
+    "value": "{ob.s.color.neutral.no-color}",
     "description": "Semantic Interaction color for not selected items. Used in Main Navigation, Navigation Tree, Tabs."
   }
 }
@@ -107,17 +109,25 @@ Static colors are **non-themeable** values that remain constant across all theme
 
 ## 📊 **Category Organization**
 
+The semantic color system is organized into **four main categories**:
+
+### **Brand Category**
+- **Location**: `s0-static.json` file (static)
+- **Purpose**: Brand identity elements
+- **Includes**: Single brand color for consistent identity
+
 ### **Neutral Category**
-- **Location**: L1 layer files (`s1-lightness/`)
+- **Location**: L1 layer files (`s1-lightness/`) + `s0-static.json` for utilities
 - **Purpose**: Non-interactive UI elements
 - **Includes**: 
   - Background colors (`bg`)
   - Text colors (`fg`)
   - Border colors (`border`)
   - Surface colors
+  - Utility colors (transparent/no-color)
 
 ### **Interaction Category**
-- **Location**: L1 layer files (`s1-lightness/`)
+- **Location**: L1 layer files (`s1-lightness/`) + `s0-static.json` for indicators
 - **Purpose**: Interactive UI elements
 - **Includes**:
   - Button colors
@@ -125,13 +135,22 @@ Static colors are **non-themeable** values that remain constant across all theme
   - Focus states
   - Hover states
   - Active states
+  - Fixed interaction indicators
+
+### **Status Category**
+- **Location**: L1 layer files (`s1-lightness/`)
+- **Purpose**: System state communication
+- **Includes**:
+  - Reserved statuses (info, resolved, critical, attention)
+  - Flexible statuses (pending, confirmed, progress, etc.)
+  - Foreground and background variations
 
 ### **Static Category**
 - **Location**: `s0-static.json` file
 - **Purpose**: Non-themeable constants
 - **Includes**:
   - Brand colors
-  - Utility colors (transparent)
+  - Neutral utilities (transparent/no-color)
   - Fixed interaction indicators
 
 ---
@@ -149,7 +168,7 @@ ob.s2.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal
 
 ### **Static Token Example**
 ```
-ob.s.color.static.brand
+ob.s.color.brand
 │
 └─ Static: Always resolves to the same value (bundesrot)
 ```
@@ -203,4 +222,4 @@ ob.s.color.static.brand
 
 ---
 
-*Last updated: July 13, 2025 - Documented semantic color architecture and static color consolidation*
+*Last updated: August 11, 2025 - Updated token structure: removed static wrapper, moved no-color to neutral category, established four main semantic color groups*

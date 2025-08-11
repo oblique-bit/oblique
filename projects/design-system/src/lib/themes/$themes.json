@@ -1711,8 +1711,8 @@
     "id": "ce28bc429f67b042f21d44ea8744f4a9409b2c77",
     "name": "dark",
     "$figmaStyleReferences": {
-      "ob.s.color.static.brand": "S:de663a4666c632d60cb9975f993f325e57c61db2,",
-      "ob.s.color.static.no-color": "S:40884a6f9d18a3cf8bf2e52f8589056e25b9734e,",
+      "ob.s.color.brand": "S:de663a4666c632d60cb9975f993f325e57c61db2,",
+      "ob.s.color.neutral.no-color": "S:40884a6f9d18a3cf8bf2e52f8589056e25b9734e,",
       "ob.s.color.interaction.indicator.selected": "S:8be7eefc8563e0b7a69a4bc74c474561f1a63d39,",
       "ob.s.color.interaction.indicator.unselected": "S:4a257623d3118c2ee7e8f6a9184bebac08a4486c,",
       "ob.s.color.neutral.bg.contrast-highest.inversity-normal": "S:6b00a617f10984dde4d83ad640cd3a340e720c06,",

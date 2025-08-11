@@ -26,8 +26,8 @@ class TokenConsumptionValidator:
         
         # S0 static token exceptions - these are allowed to be consumed at higher levels
         self.s0_static_exceptions = {
-            'ob.s.color.static.no-color',    # Transparent/no-color use cases
-            'ob.s.color.static.brand',       # Brand identity use cases
+            'ob.s.color.neutral.no-color',    # Transparent/no-color use cases
+            'ob.s.color.brand',       # Brand identity use cases
         }
         
         # Allowed consumption contexts for s0 static tokens

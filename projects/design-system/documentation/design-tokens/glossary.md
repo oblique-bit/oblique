@@ -144,7 +144,7 @@ How the system follows references through the s0->s1->s2->s3 hierarchy. The reso
 ### Reference Chain
 The path a token follows from component to primitive. Reference chains show the complete dependency trail and ensure proper abstraction levels are maintained.
 
-**Example Chain:** `button.primary` -> `s3.interactive.primary` -> `s2.brand.primary` -> `s1.blue.600` -> `s0.blue.600`
+**Example Chain:** `button.primary` -> `s3.interaction.state.fg.enabled` -> `s2.interaction.emphasis-high.fg-base` -> `s1.interaction.emphasis-high.fg-base` -> `ob.p.color.steelblue.600`
 
 ### Token Inheritance
 How tokens inherit values from parent tokens in the hierarchy. Inheritance allows child tokens to automatically receive updates when parent values change, maintaining consistency across the system.

@@ -8,8 +8,8 @@
     "color": {
       "description": "Color tokens that are hardcoded in style dictionary",
       "paths": [
-        "ob.s.color.static.no-color",
-        "ob.s.color.static.brand",
+        "ob.s.color.neutral.no-color",
+        "ob.s.color.brand",
         "ob.s2.color.neutral.fg.contrast-highest.inversity-normal",
         "ob.s2.color.neutral.bg.contrast-highest.inversity-normal",
         "ob.s3.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal",
@@ -125,7 +125,7 @@
       "📝 DEVELOPER INSTRUCTIONS:",
       "",
       "1. When you hardcode a token path in style dictionary, ADD IT to the appropriate section above",
-      "2. Include the EXACT path as used in your code (e.g., 'ob.s.color.static.no-color')",
+      "2. Include the EXACT path as used in your code (e.g., 'ob.s.color.neutral.no-color')",
       "3. Group tokens by type (color, typography, spacing, etc.)",
       "4. Add a descriptive comment about where/how the token is used",
       "",

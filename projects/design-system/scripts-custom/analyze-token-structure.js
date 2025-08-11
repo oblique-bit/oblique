@@ -75,7 +75,7 @@ function loadAndPrintTokens(filePath, name) {
 // Test specific tokens
 const testTokens = [
     'ob.s.color.interaction.state.fg.enabled',
-    'ob.s.color.static.no-color',
+    'ob.s.color.neutral.no-color',
     'ob.s.color.interaction.emphasis-high.bg-base.contrast-medium'
 ];
 

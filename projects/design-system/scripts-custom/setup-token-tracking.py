@@ -116,7 +116,7 @@ class StyleDictionaryIntegrationSetup:
         print(f"\nCurrent categories: {', '.join(categories)}")
         
         # Get input
-        token_path = input("\n🏷️  Enter token path (e.g., ob.s.color.static.no-color): ").strip()
+        token_path = input("\n🏷️  Enter token path (e.g., ob.s.color.neutral.no-color): ").strip()
         if not token_path:
             print("❌ Token path cannot be empty")
             return
