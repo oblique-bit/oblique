@@ -7,7 +7,7 @@
 }
 
 .ob-contact-link {
-	display: inline-flex;
+	display: flex;
 	gap: variables.$ob-spacing-xs;
 	align-items: baseline;
 }

@@ -28,7 +28,7 @@ describe('DateComponent', () => {
 						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
 						applicationOperator: 'Operator',
-						contact: {emails: ['e@mail.com']}
+						contact: [{email: 'e@mail.com'}]
 					}
 				}),
 				{provide: ObLanguageService}

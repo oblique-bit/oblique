@@ -24,7 +24,7 @@ describe(AccessibilityStatementComponent.name, () => {
 						conformity: 'none',
 						createdOn: new Date('2025-01-31'),
 						applicationOperator: 'Operator',
-						contact: {emails: ['e@mail.com']}
+						contact: [{email: 'e@mail.com'}]
 					}
 				})
 			]
@@ -37,7 +37,7 @@ describe(AccessibilityStatementComponent.name, () => {
 				useValue: {
 					applicationName: 'appName',
 					applicationOperator: 'Operator',
-					contact: {emails: ['e@mail.com']},
+					contact: [{email: 'e@mail.com'}],
 					createdOn: new Date('2025-01-31'),
 					conformity
 				}
@@ -80,16 +80,13 @@ describe(AccessibilityStatementComponent.name, () => {
 			});
 		});
 
-		describe('contactParameters', () => {
+		describe('contacts', () => {
 			test('to be defined', () => {
-				expect(component.contactParameters).toBeDefined();
+				expect(component.contacts).toBeDefined();
 			});
 
-			test.each([
-				{property: 'emails', value: ['e@mail.com']},
-				{property: 'phones', value: []}
-			])('to have an empty array as "$property"', ({property, value}) => {
-				expect(component.contactParameters[property]).toEqual(value);
+			test('to be an array with correct properties', () => {
+				expect(component.contacts).toEqual([{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined}]);
 			});
 		});
 
@@ -120,7 +117,7 @@ describe(AccessibilityStatementComponent.name, () => {
 				useValue: {
 					applicationName: 'appName',
 					applicationOperator: 'Operator',
-					contact: {emails: ['e@mail.com']},
+					contact: [{email: 'e@mail.com'}],
 					conformity: 'partial',
 					createdOn: new Date('2025-01-31'),
 					exceptions: ['test']
@@ -164,16 +161,13 @@ describe(AccessibilityStatementComponent.name, () => {
 			});
 		});
 
-		describe('contactParameters', () => {
+		describe('contacts', () => {
 			test('to be defined', () => {
-				expect(component.contactParameters).toBeDefined();
+				expect(component.contacts).toBeDefined();
 			});
 
-			test.each([
-				{property: 'emails', value: ['e@mail.com']},
-				{property: 'phones', value: []}
-			])('to have an empty array as "$property"', ({property, value}) => {
-				expect(component.contactParameters[property]).toEqual(value);
+			test('to be an array with correct properties', () => {
+				expect(component.contacts).toEqual([{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined}]);
 			});
 		});
 
@@ -205,7 +199,7 @@ describe(AccessibilityStatementComponent.name, () => {
 					applicationName: 'applicationName',
 					applicationOperator: 'Operator',
 					conformity: 'none',
-					contact: {},
+					contact: [{email: 'e@mail.com'}],
 					createdOn: new Date()
 				}
 			});
@@ -247,13 +241,13 @@ describe(AccessibilityStatementComponent.name, () => {
 			});
 		});
 
-		describe('contactParameters', () => {
+		describe('contacts', () => {
 			test('to be defined', () => {
-				expect(component.contactParameters).toBeDefined();
+				expect(component.contacts).toBeDefined();
 			});
 
-			test.each([{property: 'emails'}, {property: 'phones'}])('to have an empty array as "$property"', ({property}) => {
-				expect(component.contactParameters[property]).toEqual([]);
+			test('to be an array with correct properties', () => {
+				expect(component.contacts).toEqual([{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined}]);
 			});
 		});
 
@@ -286,7 +280,7 @@ describe(AccessibilityStatementComponent.name, () => {
 					applicationOperator: 'Operator',
 					conformity: 'partial',
 					createdOn: new Date('2025-01-31'),
-					contact: {emails: ['email'], phones: ['phone']},
+					contact: [{email: 'e@mail.com'}, {phone: 'phone', context: 'context'}],
 					exceptions: ['exception']
 				}
 			});
@@ -328,16 +322,16 @@ describe(AccessibilityStatementComponent.name, () => {
 			});
 		});
 
-		describe('contactParameters', () => {
+		describe('contacts', () => {
 			test('to be defined', () => {
-				expect(component.contactParameters).toBeDefined();
+				expect(component.contacts).toBeDefined();
 			});
 
-			test.each([
-				{property: 'emails', value: ['email']},
-				{property: 'phones', value: ['phone']}
-			])('to have "$value" as "$property"', ({property, value}) => {
-				expect(component.contactParameters[property]).toEqual(value);
+			test('to be an array with correct properties', () => {
+				expect(component.contacts).toEqual([
+					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined},
+					{label: 'phone', url: `tel:phone`, icon: 'phone', context: 'context'}
+				]);
 			});
 		});
 

@@ -1,5 +1,5 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {applyInTree, createSafeRule, infoMigration, replaceInFile, warnIfStandalone} from '../utils';
+import {applyInTree, createSafeRule, infoMigration, readFile, replaceInFile, warnIfStandalone} from '../utils';
 import {ObIMigrations} from './ng-update.model';
 
 export interface IUpdateV14Schema {}
@@ -9,7 +9,8 @@ export class UpdateV13toV14 implements ObIMigrations {
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(options: IUpdateV14Schema): Rule {
-		return (tree: Tree, context: SchematicContext) => chain([warnIfStandalone(), this.renameIcons()])(tree, context);
+		return (tree: Tree, context: SchematicContext) =>
+			chain([warnIfStandalone(), this.renameIcons(), this.migrateContactInfo()])(tree, context);
 	}
 
 	private renameIcons(): Rule {
@@ -263,6 +264,28 @@ export class UpdateV13toV14 implements ObIMigrations {
 				replaceInFile(tree, filePath, /ObEIcon\.RANDOM/g, 'ObEIcon.SHUFFLE');
 			};
 			return applyInTree(tree, toApply, '*.{ts,html}');
+		});
+	}
+
+	private migrateContactInfo(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Migrate contact info');
+			const toApply = (filePath: string): void => {
+				const content = readFile(tree, filePath);
+				if (content.includes('provideObliqueConfiguration(')) {
+					const contacts: string[] = [];
+					const emails = (/(?<=emails\s*:\s*\[).*?(?=\])/u.exec(content) ?? [])[0];
+					if (emails?.length) {
+						contacts.push(...emails.split(',').map(email => `{email: '${email.trim()}'}`));
+					}
+					const phones = (/(?<=phones\s*:\s*\[).*?(?=\])/u.exec(content) ?? [])[0];
+					if (phones?.length) {
+						contacts.push(...phones.split(',').map(phone => `{phone: '${phone.trim()}'}`));
+					}
+					replaceInFile(tree, filePath, /(?<=contact\s*:\s*)\{.*?}/, `[${contacts.join(', ')}]`);
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
 		});
 	}
 }

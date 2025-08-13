@@ -50,7 +50,7 @@ describe('utilities', () => {
 								createdOn: new Date('2025-01-31'),
 								conformity: 'none',
 								applicationOperator: 'Operator',
-								contact: {emails: ['e@mail.com']}
+								contact: [{email: 'e@mail.com'}]
 							}
 						})
 					]
@@ -111,7 +111,7 @@ describe('utilities', () => {
 						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
 						applicationOperator: 'Operator',
-						contact: {emails: ['e@mail.com']}
+						contact: [{email: 'e@mail.com'}]
 					});
 				});
 			});
@@ -136,7 +136,7 @@ describe('utilities', () => {
 								createdOn: new Date('2025-01-31'),
 								conformity: 'none',
 								applicationOperator: 'Operator',
-								contact: {emails: ['e@mail.com']}
+								contact: [{email: 'e@mail.com'}]
 							},
 							material: {
 								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
@@ -203,7 +203,7 @@ describe('utilities', () => {
 						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
 						applicationOperator: 'Operator',
-						contact: {emails: ['e@mail.com']}
+						contact: [{email: 'e@mail.com'}]
 					});
 				});
 			});

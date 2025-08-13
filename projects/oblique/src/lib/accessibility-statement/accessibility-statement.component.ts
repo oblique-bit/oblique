@@ -4,9 +4,10 @@ import {MatIcon} from '@angular/material/icon';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
-import {ObConformity} from '../utilities.model';
+import {ObConformity, ObContactData} from '../utilities.model';
 import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION} from '../utilities';
 import {ObDatePipe} from '../language/date.pipe';
+import {ObEIcon} from '../icon/icon.model';
 import {ObAvailableInComponent} from './available-in/available-in.component';
 
 @Component({
@@ -23,10 +24,7 @@ export class AccessibilityStatementComponent {
 		conformity: this.getConformity(this.parameters.conformity),
 		exceptionText: this.getConformityText(this.exceptions.length > 0)
 	};
-	readonly contactParameters = {
-		emails: (this.parameters.contact as {emails: string[]}).emails ?? [],
-		phones: (this.parameters.contact as {phones: string[]}).phones ?? []
-	};
+	readonly contacts = this.parameters.contact.map(contact => this.parseContact(contact));
 	readonly generalLinks = [
 		{
 			label: 'i18n.oblique.accessibility-statement.general-information.links.e-accessibility.label',
@@ -87,5 +85,23 @@ export class AccessibilityStatementComponent {
 		return hasExceptions
 			? 'i18n.oblique.accessibility-statement.statement.exception'
 			: 'i18n.oblique.accessibility-statement.statement.no-exception';
+	}
+
+	private parseContact(contact: ObContactData): {label: string; url: string; icon: ObEIcon; context?: string} {
+		if (contact.phone) {
+			return {
+				label: contact.phone,
+				url: `tel:${contact.phone}`,
+				icon: ObEIcon.PHONE,
+				context: contact.context
+			};
+		}
+
+		return {
+			label: contact.email,
+			url: `mailto:${contact.email}`,
+			icon: ObEIcon.MAIL,
+			context: contact.context
+		};
 	}
 }

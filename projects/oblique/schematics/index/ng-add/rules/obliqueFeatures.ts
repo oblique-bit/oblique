@@ -240,13 +240,8 @@ function setObliqueConfiguration(applicationTitle: string, applicationOperator: 
 	});
 }
 
-function buildAccessibilityConfig(title: string, applicationOperator: string, emails?: string[], phones?: string[]): string {
-	const contactFields = [
-		emails?.length ? `\t\t\temails: ${formatArray(emails)}` : '',
-		phones?.length ? `\n\t\t\tphones: ${formatArray(phones)}` : ''
-	]
-		.filter(field => Boolean(field))
-		.join(', ');
+function buildAccessibilityConfig(title: string, applicationOperator: string, emails: string[] = [], phones: string[] = []): string {
+	const contactFields = [...emails.map(email => `{email: '${email}'}`), ...phones.map(phone => `{phone: '${phone}'}`)].join(', ');
 
 	const createdOn = new Date().toISOString().split('T')[0];
 
@@ -255,14 +250,10 @@ function buildAccessibilityConfig(title: string, applicationOperator: string, em
 			conformity: 'none',
 			createdOn: new Date('${createdOn}'),
 			applicationOperator: '${applicationOperator}',
-			${contactFields ? `contact: { \n${contactFields} \n}` : ''}
+			contact: [${contactFields}]
 		}`;
 }
 
 function buildHasLanguageInUrlConfig(hasLanguageInUrl: boolean): string {
 	return `hasLanguageInUrl: ${hasLanguageInUrl}`;
-}
-
-function formatArray(arr: string[]): string {
-	return `[${arr.map(element => `'${element}'`).join(', ')}]`;
 }

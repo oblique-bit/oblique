@@ -19,7 +19,7 @@ describe(ObLocalizePipe.name, () => {
 						applicationName: '',
 						applicationOperator: '',
 						conformity: 'none',
-						contact: {emails: ['']}
+						contact: [{email: ''}]
 					}
 				}),
 				{provide: TranslateLoader, useValue: {getTranslation: () => of({})}}
