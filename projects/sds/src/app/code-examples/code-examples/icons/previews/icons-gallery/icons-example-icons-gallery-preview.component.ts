@@ -1,5 +1,13 @@
 import {Component, inject} from '@angular/core';
-import {ObButtonModule, ObEIcon, ObEToggleType, ObNotificationModule, ObNotificationService, ObPopoverModule} from '@oblique/oblique';
+import {
+	ObButtonModule,
+	ObEIcon,
+	ObEToggleType,
+	ObInputClearModule,
+	ObNotificationModule,
+	ObNotificationService,
+	ObPopoverModule
+} from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {CommonModule} from '@angular/common';
@@ -29,7 +37,8 @@ import {type Observable, map, startWith} from 'rxjs';
 		ObNotificationModule,
 		ReactiveFormsModule,
 		MatFormFieldModule,
-		MatInputModule
+		MatInputModule,
+		ObInputClearModule
 	]
 })
 export class IconsExampleIconsGalleryPreviewComponent {
@@ -71,6 +80,6 @@ export class IconsExampleIconsGalleryPreviewComponent {
 	}
 
 	private filterIcons(text: string): ObEIcon[] {
-		return this.icons.filter(iconName => iconName.toLowerCase().includes(text.toLowerCase()));
+		return this.icons.filter(iconName => iconName.toLowerCase().includes(text?.toLowerCase()));
 	}
 }

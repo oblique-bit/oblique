@@ -1,11 +1,13 @@
 <ob-notification />
-<fieldset>
-	<legend>Search</legend>
-	<mat-form-field>
-		<mat-label>Icon name</mat-label>
-		<input matInput [formControl]="iconsFilter" />
-	</mat-form-field>
-</fieldset>
+<mat-form-field>
+	<mat-label>Search icons</mat-label>
+	<input matInput [formControl]="iconsFilter" />
+	<button type="button" [obInputClear]="iconsFilter">
+		<mat-icon svgIcon="xmark_circle" />
+		<span class="ob-screen-reader-only">Clear search</span>
+	</button>
+	<mat-hint>Search by name</mat-hint>
+</mat-form-field>
 <div class="container">
 	@for (icon of filteredIcons$ | async; track icon) {
 		<mat-card class="icon-card">
