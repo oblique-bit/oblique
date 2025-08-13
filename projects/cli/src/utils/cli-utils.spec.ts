@@ -17,6 +17,15 @@ import {
 	startObCommand,
 	titleText
 } from './cli-utils';
+import {lt} from 'semver';
+
+function getMinimumRecommendedVersion(): string {
+	let value = `${recommendedVersion}.0.0`;
+	if (lt(value, minimumSupportedVersion)) {
+		value = minimumSupportedVersion;
+	}
+	return value;
+}
 
 describe('CLI Utils', () => {
 	const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
@@ -87,7 +96,7 @@ describe('CLI Utils', () => {
 		test('startObCommand should start the timer', () => {
 			const mockCallback = jest.fn();
 			Object.defineProperty(process.versions, 'node', {
-				value: `${recommendedVersion}.0.0`,
+				value: getMinimumRecommendedVersion(),
 				configurable: true
 			});
 			const label = 'test label';
@@ -480,13 +489,6 @@ Examples of use:
 				expect(console.info).toHaveBeenCalledWith('Checks your node version');
 			});
 
-			test('calls console.warn with warning message', () => {
-				checkNodeVersion();
-				expect(console.warn).toHaveBeenCalledWith(
-					expect.stringContaining(`Warning: Oblique CLI was tested with Node.js v${recommendedVersion}`)
-				);
-			});
-
 			test('does not call console.error', () => {
 				checkNodeVersion();
 				expect(console.error).not.toHaveBeenCalled();
@@ -498,10 +500,10 @@ Examples of use:
 			});
 		});
 
-		describe('with exact recommended version', () => {
+		describe('with the recommended version', () => {
 			beforeEach(() => {
 				Object.defineProperty(process.versions, 'node', {
-					value: `${recommendedVersion}.0.0`,
+					value: getMinimumRecommendedVersion(),
 					configurable: true
 				});
 			});
@@ -520,7 +522,7 @@ Examples of use:
 		describe('with higher, non-recommended version', () => {
 			beforeEach(() => {
 				Object.defineProperty(process.versions, 'node', {
-					value: '21.0.0',
+					value: '23.0.0',
 					configurable: true
 				});
 			});
