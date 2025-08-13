@@ -66,7 +66,6 @@ describe('ObContactToLinksPipe', () => {
 				description: 'all options',
 				values: {email: 'test@test.com', phone: '+4123456', formUrl: 'http://example.com'},
 				result: [
-					{url: 'mailto:test@test.com', label: 'test@test.com', isInternalLink: true},
 					{
 						url: 'tel:+4123456',
 						label: '+4123456',
@@ -76,6 +75,7 @@ describe('ObContactToLinksPipe', () => {
 							parameters: {phoneNumber: '+, 4, 1, 2, 3, 4, 5, 6'}
 						}
 					},
+					{url: 'mailto:test@test.com', label: 'test@test.com', isInternalLink: true},
 					{
 						isInternalLink: false,
 						label: 'i18n.oblique.service-navigation.info.contact.form',

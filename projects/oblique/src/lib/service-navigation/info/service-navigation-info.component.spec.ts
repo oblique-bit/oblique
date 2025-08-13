@@ -1,12 +1,12 @@
 import {TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
+import {DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {MatIconModule} from '@angular/material/icon';
 import {MatIconHarness} from '@angular/material/icon/testing';
-import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {By} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationInfoHarness} from './service-navigation-info.harness';
@@ -272,15 +272,15 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 					});
 
 					it.each([
-						{property: 'url', value: 'mailto:text@test.com'},
-						{property: 'label', value: 'text@test.com'}
+						{property: 'url', value: 'tel:123'},
+						{property: 'label', value: '123'}
 					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
 						expect(section.links[0][property]).toBe(value);
 					});
 
 					it.each([
-						{property: 'url', value: 'tel:123'},
-						{property: 'label', value: '123'}
+						{property: 'url', value: 'mailto:text@test.com'},
+						{property: 'label', value: 'text@test.com'}
 					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
 						expect(section.links[1][property]).toBe(value);
 					});

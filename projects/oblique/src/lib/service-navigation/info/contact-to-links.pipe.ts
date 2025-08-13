@@ -7,7 +7,7 @@ import {ObISectionLink, ObIServiceNavigationContact} from '../service-navigation
 })
 export class ObContactToLinksPipe implements PipeTransform {
 	transform(values?: ObIServiceNavigationContact): ObISectionLink[] {
-		return [this.getMail(values?.email), this.getPhone(values?.phone), this.getContact(values?.formUrl)].filter(Boolean);
+		return [this.getPhone(values?.phone), this.getMail(values?.email), this.getContact(values?.formUrl)].filter(Boolean);
 	}
 
 	private getMail(value: string | undefined): ObISectionLink | undefined {
