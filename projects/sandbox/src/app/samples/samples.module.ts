@@ -1,6 +1,6 @@
 import {A11yModule} from '@angular/cdk/a11y';
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
@@ -134,7 +134,8 @@ import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.
 		ReactiveFormsModule,
 		RouterModule,
 		SamplesRoutingModule,
-		TranslateModule
+		TranslateModule,
+		DatePipe
 	],
 	declarations: [
 		AlertSampleComponent,

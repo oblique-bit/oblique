@@ -37,6 +37,8 @@ import {ServiceNavigationSampleComponent} from './service-navigation/service-nav
 import {RxjsOperatorsComponent} from './rxjs-operators/rxjs-operators.component';
 import {FocusSampleComponent} from './focus/focus-sample.component';
 import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.component';
+import {DatepickerLuxonComponent} from './datepickeradapter/luxon.component';
+import {DatepickerDateFnsComponent} from './datepickeradapter/date-fns.component';
 
 const samplesRoutes: Routes = [
 	{path: 'alert', component: AlertSampleComponent},
@@ -136,6 +138,8 @@ const samplesRoutes: Routes = [
 	{path: 'collapse/20', component: CollapseSampleComponent},
 	{path: 'column-layout', component: ColumnLayoutSampleComponent},
 	{path: 'column-layout-full-height', component: ColumnLayoutFullHeightSampleComponent},
+	{path: 'datepicker-luxon', component: DatepickerLuxonComponent},
+	{path: 'datepicker-nfs', component: DatepickerDateFnsComponent},
 	{path: 'error-messages', component: ErrorMessagesSampleComponent},
 	{path: 'external-link', component: ExternalLinkComponent},
 	{path: 'file-upload', component: FileUploadSampleComponent},
