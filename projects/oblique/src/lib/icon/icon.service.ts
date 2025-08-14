@@ -1,7 +1,7 @@
-import {Inject, Injectable, Optional} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {DomSanitizer} from '@angular/platform-browser';
-import {ObIconConfig, ObTIconConfig} from './icon.model';
+import {ObIconConfig} from './icon.model';
 import {iconSet as obliqueIconSet} from '../../assets/oblique-icons';
 
 @Injectable({
@@ -10,13 +10,12 @@ import {iconSet as obliqueIconSet} from '../../assets/oblique-icons';
 export class ObIconService {
 	constructor(
 		private readonly registry: MatIconRegistry,
-		private readonly domSanitizer: DomSanitizer,
-		@Optional() @Inject(ObTIconConfig) private readonly config: ObIconConfig
+		private readonly domSanitizer: DomSanitizer
 	) {}
 
-	registerOnAppInit(): void {
-		this.getIconSets(this.config).forEach(config => this.registerSvg(config));
-		this.registerFontClass(this.config?.fontClass);
+	registerOnAppInit(iconConfig: ObIconConfig = {registerObliqueIcons: true}): void {
+		this.getIconSets(iconConfig).forEach(config => this.registerSvg(config));
+		this.registerFontClass(iconConfig?.fontClass);
 	}
 
 	registerIconSetsAsync(...urls: string[]): void {

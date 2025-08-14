@@ -19,7 +19,6 @@ import {
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
-import {ObTIconConfig, defaultIconConfig} from './icon/icon.model';
 import {ObIconService} from './icon/icon.service';
 import {MatStepperIntl} from '@angular/material/stepper';
 import {ObStepperIntlService} from './stepper/ob-stepper.service';
@@ -54,7 +53,7 @@ const materialProviders = {
 export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => {
-			inject(ObIconService).registerOnAppInit();
+			inject(ObIconService).registerOnAppInit(config.icon);
 			inject(ObRouterService).initialize();
 		}),
 		provideObliqueTranslations(config.translate),
@@ -62,7 +61,6 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
-		{provide: ObTIconConfig, useValue: {...defaultIconConfig, ...config.icon}},
 		{provide: OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, useValue: config.accessibilityStatement},
 		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: config.hasLanguageInUrl || false},
 		Object.entries(materialProviders).map(([provider, token]) => ({

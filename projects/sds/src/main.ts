@@ -1,5 +1,5 @@
 import {AppComponent} from './app/app.component';
-import {ObIconService, ObStepperIntlService, ObTIconConfig, WINDOW, provideObliqueTranslations} from '@oblique/oblique';
+import {ObIconService, ObStepperIntlService, WINDOW, provideObliqueTranslations} from '@oblique/oblique';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
@@ -23,7 +23,6 @@ bootstrapApplication(AppComponent, {
 	providers: [
 		{provide: LOCALE_ID, useValue: 'en-CH'},
 		{provide: WINDOW, useValue: window},
-		{provide: ObTIconConfig, useValue: {registerObliqueIcons: true}},
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
 		{provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: {color: 'primary'}},

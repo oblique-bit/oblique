@@ -23,7 +23,6 @@ import {
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
-import {ObTIconConfig} from './icon/icon.model';
 import {ObIconService} from './icon/icon.service';
 
 describe('utilities', () => {
@@ -68,12 +67,8 @@ describe('utilities', () => {
 			});
 
 			describe('Icon configuration', () => {
-				it('should provide the default icon configuration', () => {
-					expect(TestBed.inject(ObTIconConfig)).toEqual({registerObliqueIcons: true});
-				});
-
 				it('should call "registerOnAppInit" on "ObIconService"', () => {
-					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalled();
+					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith(undefined);
 				});
 			});
 
@@ -165,8 +160,8 @@ describe('utilities', () => {
 			});
 
 			describe('Icon configuration', () => {
-				it('should provide the full icon configuration', () => {
-					expect(TestBed.inject(ObTIconConfig)).toEqual({registerObliqueIcons: true, additionalIcons: []});
+				it('should call "registerOnAppInit" on "ObIconService"', () => {
+					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith({additionalIcons: []});
 				});
 			});
 
