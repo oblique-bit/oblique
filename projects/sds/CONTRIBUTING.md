@@ -40,7 +40,6 @@ All commits related to the SDS package must use the **sds** package and 1 of the
 - **selectable**
 - **service-navigation**
 - **spinner**
-- **sticky**
 - **translate-params**
 - **unknown-route**
 - **unsaved-changes**
