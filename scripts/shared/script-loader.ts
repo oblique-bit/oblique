@@ -66,7 +66,7 @@ export class AddScriptloader extends StaticScript {
 		const securityFileFileContent = Files.read(pathToSecurityHeadersFile);
 		const scriptSrcTemplate = AddScriptloader.getScriptSrcTemplate(indexFileContent);
 
-		Files.write(pathToSecurityHeadersFile, securityFileFileContent.replace(/script-src[^;]*/g, scriptSrcTemplate));
+		Files.write(pathToSecurityHeadersFile, securityFileFileContent.replace("'script-src-hash-placeholder'", scriptSrcTemplate));
 
 		return AddScriptloader.instance as AddScriptloader;
 	}
@@ -77,9 +77,9 @@ export class AddScriptloader extends StaticScript {
 		if (onLoadScriptRegex.test(indexFileContent)) {
 			const onLoadScriptContent = onLoadScriptRegex.exec(indexFileContent)[0];
 			const onLoadHashValue = createHash('sha256').update(onLoadScriptContent).digest('base64');
-			return `script-src 'sha256-${scriptHash}' 'sha256-${onLoadHashValue}' 'strict-dynamic';`;
+			return `'sha256-${scriptHash}' 'sha256-${onLoadHashValue}' 'strict-dynamic'`;
 		}
-		return `script-src 'sha256-${scriptHash}' 'strict-dynamic';`;
+		return `'sha256-${scriptHash}' 'strict-dynamic'`;
 	}
 
 	private static getScriptHash(indexFileContent: string): string {
