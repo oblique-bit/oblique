@@ -10,7 +10,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(options: IUpdateV14Schema): Rule {
 		return (tree: Tree, context: SchematicContext) =>
-			chain([warnIfStandalone(), this.renameIcons(), this.migrateContactInfo()])(tree, context);
+			chain([warnIfStandalone(), this.renameIcons(), this.migrateAccessibilityStatementContactInfo()])(tree, context);
 	}
 
 	private renameIcons(): Rule {
@@ -269,9 +269,9 @@ export class UpdateV13toV14 implements ObIMigrations {
 		});
 	}
 
-	private migrateContactInfo(): Rule {
+	private migrateAccessibilityStatementContactInfo(): Rule {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
-			infoMigration(context, 'Migrate contact info');
+			infoMigration(context, 'Migrate accessibility statement contact info');
 			const toApply = (filePath: string): void => {
 				const content = readFile(tree, filePath);
 				if (content.includes('provideObliqueConfiguration(')) {
