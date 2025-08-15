@@ -33,14 +33,7 @@ export class AppComponent implements OnDestroy {
 		{url: '../samples', fragment: 'fragment', label: 'Skip to samples with fragment'},
 		{url: '../samples', label: 'Skip to samples without fragment'},
 		{url: 'current', fragment: 'link-to-blick-ch', label: 'Skip to "Blick" link in the footer'},
-		{url: '../samples/file-upload', fragment: 'fantasy', label: 'Example to demo console message for a non existing element.'},
-		{url: '../samples/file-upload', fragment: 'acceptFiles', label: 'Example to demo console message for a non focusable element.'},
-		{
-			url: 'current',
-			fragment: 'link-to-google-ch',
-			label:
-				'Example to demo console message for an element existing and focusable (footer link to google), but not whitelisted in ObMasterLayoutConfig.focusableFragments.'
-		}
+		{url: '../samples/file-upload', fragment: 'fantasy', label: 'Example to demo console message for a non existing element.'}
 	];
 	autocompleteItems$: Observable<ObIAutocompleteInputOption[]>;
 	readonly nav = inject(DynamicNavigationService);
