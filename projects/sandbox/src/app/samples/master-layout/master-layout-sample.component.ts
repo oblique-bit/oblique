@@ -240,7 +240,7 @@ export class MasterLayoutSampleComponent {
 	}
 
 	get hasContactPhone(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.tel?.length > 0;
+		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.phone?.length > 0;
 	}
 
 	set hasContactPhone(value: boolean) {
@@ -279,9 +279,9 @@ export class MasterLayoutSampleComponent {
 		this.dynamicNavigationService.removeLastLink();
 	}
 
-	private buildContactInfo(hasTel: boolean, hasEmail: boolean, hasContactForm: boolean): ObIServiceNavigationContact {
+	private buildContactInfo(hasPhone: boolean, hasEmail: boolean, hasContactForm: boolean): ObIServiceNavigationContact {
 		return {
-			tel: hasTel ? this.infoContact.tel : undefined,
+			phone: hasPhone ? this.infoContact.phone : undefined,
 			email: hasEmail ? this.infoContact.email : undefined,
 			formUrl: hasContactForm ? this.infoContact.formUrl : undefined
 		};
