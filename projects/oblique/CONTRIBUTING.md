@@ -40,7 +40,6 @@ All commits related to the Oblique package must use the **oblique** package and 
 - **selectable**
 - **service-navigation**
 - **spinner**
-- **sticky**
 - **translate-params**
 - **unknown-route**
 - **unsaved-changes**
