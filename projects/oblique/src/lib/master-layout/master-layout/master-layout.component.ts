@@ -27,7 +27,6 @@ import {delay, filter, map, takeUntil, tap} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
 import {
@@ -91,7 +90,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	private navigationLength: number;
 	private readonly router = inject(Router);
 	private readonly offCanvasService = inject(ObOffCanvasService);
-	private readonly scrollEvents = inject(ObScrollingEvents);
 	private readonly globalEventsService = inject(ObGlobalEventsService);
 	private readonly document = inject(DOCUMENT);
 	private readonly window = inject(WINDOW);
@@ -168,10 +166,8 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	scrollTop(element?: HTMLElement): void {
 		const scrollTop =
 			element?.scrollTop ?? (this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
-		this.scrollEvents.hasScrolled(scrollTop);
 		if (this.isScrolling !== scrollTop > 0) {
 			this.isScrolling = scrollTop > 0;
-			this.scrollEvents.scrolling(this.isScrolling);
 		}
 	}
 

@@ -115,7 +115,7 @@ export {
 	ObMockSelectableGroupDirective,
 	ObMockObSelectableModule
 } from './selectable/_mocks/mock-selectable.module';
-export {ObMockScrollingModule, ObMockScrollingEvents, ObMockTopControlComponent} from './scrolling/_mocks/mock-scrolling.module';
+export {ObMockScrollingModule, ObMockTopControlComponent} from './scrolling/_mocks/mock-scrolling.module';
 export {ObMockSpinnerModule, ObMockSpinnerComponent, ObMockSpinnerService} from './spinner/_mocks/mock-spinner.module';
 export {ObMockStickyModule, ObMockStickyComponent} from './sticky/_mocks/mock-sticky.module';
 export {ObMockTranslateParamsModule, ObMockTranslateParamsPipe} from './translate-params/_mocks/mock-translate-params.module';

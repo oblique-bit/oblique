@@ -10,11 +10,9 @@ import {ObMasterLayoutComponent} from './master-layout.component';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObMockMasterLayoutConfig} from '../_mocks/mock-master-layout.config';
 import {ObMockOffCanvasService} from '../../off-canvas/_mocks/mock-off-canvas.service';
-import {ObMockScrollingEvents} from '../../scrolling/_mocks/mock-scrolling-events.service';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
-import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {appVersion} from '../../version';
@@ -49,7 +47,6 @@ describe('ObMasterLayoutComponent', () => {
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
 				{provide: ObOffCanvasService, useClass: ObMockOffCanvasService},
-				{provide: ObScrollingEvents, useClass: ObMockScrollingEvents},
 				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
 				{provide: WINDOW, useValue: window}
 			],
@@ -238,61 +235,33 @@ describe('ObMasterLayoutComponent', () => {
 	});
 
 	describe('scrollTop', () => {
-		it('should call hasScrolled function', () => {
-			const scrollEvent = TestBed.inject(ObScrollingEvents);
-			jest.spyOn(scrollEvent, 'hasScrolled');
-			component.scrollTop();
-			expect(scrollEvent.hasScrolled).toHaveBeenCalledWith(0);
-		});
-
 		describe('with a scrolled element', () => {
-			let scrollEvent: ObScrollingEvents;
 			beforeEach(() => {
-				scrollEvent = TestBed.inject(ObScrollingEvents);
-				jest.spyOn(scrollEvent, 'scrolling');
 				component.scrollTop({scrollTop: 15} as unknown as HTMLElement);
 			});
 
 			it('should set isScrolling', () => {
 				expect(component.isScrolling).toBe(true);
 			});
-
-			it('should call scrolling', () => {
-				expect(scrollEvent.scrolling).toHaveBeenCalledWith(true);
-			});
 		});
 
 		describe('with an unscrolled element', () => {
-			let scrollEvent: ObScrollingEvents;
 			beforeEach(() => {
-				scrollEvent = TestBed.inject(ObScrollingEvents);
-				jest.spyOn(scrollEvent, 'scrolling');
 				component.scrollTop({scrollTop: 0} as unknown as HTMLElement);
 			});
 
 			it('should not set isScrolling', () => {
 				expect(component.isScrolling).toBe(false);
 			});
-
-			it('should not call scrolling', () => {
-				expect(scrollEvent.scrolling).not.toHaveBeenCalled();
-			});
 		});
 
 		describe('with no element', () => {
-			let scrollEvent: ObScrollingEvents;
 			beforeEach(() => {
-				scrollEvent = TestBed.inject(ObScrollingEvents);
-				jest.spyOn(scrollEvent, 'scrolling');
 				component.scrollTop();
 			});
 
 			it('should not set isScrolling', () => {
 				expect(component.isScrolling).toBe(false);
-			});
-
-			it('should not call scrolling', () => {
-				expect(scrollEvent.scrolling).not.toHaveBeenCalled();
 			});
 		});
 	});

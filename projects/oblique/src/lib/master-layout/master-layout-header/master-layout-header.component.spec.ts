@@ -7,8 +7,6 @@ import {OB_BANNER, OB_HAS_LANGUAGE_IN_URL, WINDOW} from '../../utilities';
 import {ObMasterLayoutHeaderComponent} from './master-layout-header.component';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObMockMasterLayoutConfig} from '../_mocks/mock-master-layout.config';
-import {ObMockScrollingEvents} from '../../scrolling/_mocks/mock-scrolling-events.service';
-import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObEEnvironment, ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {By} from '@angular/platform-browser';
@@ -39,7 +37,6 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			providers: [
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
-				{provide: ObScrollingEvents, useClass: ObMockScrollingEvents},
 				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: true},
 				{provide: WINDOW, useValue: window}

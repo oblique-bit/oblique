@@ -128,7 +128,7 @@ export {
 	ObSchemaValidationService,
 	ObSchemaValidatorInstance
 } from './lib/schema-validation/schema-validation.module';
-export {ObScrollingEvents, ObScrollingModule, ObTopControlComponent} from './lib/scrolling/scrolling.module';
+export {ObScrollingModule, ObTopControlComponent} from './lib/scrolling/scrolling.module';
 export {ObSelectableDirective, ObSelectableModule, ObSelectableGroupDirective} from './lib/selectable/selectable.module';
 export {ObISpinnerEvent, ObSpinnerComponent, ObSpinnerModule, ObSpinnerService} from './lib/spinner/spinner.module';
 export {ObStickyComponent, ObStickyModule} from './lib/sticky/sticky.module';
