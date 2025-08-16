@@ -1,7 +1,7 @@
 {
   "ob": {
     "s": {
-      "z-index": {
+      "z_index": {
         "stepperMobile": {
           "$type": "number",
           "$value": "{ob.p.zindex.1000}"

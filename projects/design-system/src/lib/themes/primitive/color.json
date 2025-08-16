@@ -631,7 +631,7 @@
             "$value": "#831843"
           }
         },
-        "cobalt-alpha": {
+        "cobalt_alpha": {
           "50": {
             "parent": "Colors/Mode 1",
             "$extensions": {
@@ -773,7 +773,7 @@
             "$value": "{ob.p.color.cobalt.900}"
           }
         },
-        "white-alpha": {
+        "white_alpha": {
           "50": {
             "parent": "Colors/Mode 1",
             "$extensions": {
@@ -915,7 +915,7 @@
             "$value": "{ob.p.color.basic.white}"
           }
         },
-        "indigo-alpha": {
+        "indigo_alpha": {
           "900": {
             "parent": "Colors/Mode 1",
             "$extensions": {

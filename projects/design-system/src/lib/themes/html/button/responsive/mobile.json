@@ -19,8 +19,8 @@
           }
         },
         "typography": {
-          "text-label": {
-            "font-size": {
+          "text_label": {
+            "font_size": {
               "md": {
                 "$type": "fontSizes",
                 "$value": "{ob.s.fontSize.sm}",

@@ -4,61 +4,61 @@
       "color": {
         "neutral": {
           "bg": {
-            "contrast-highest": {
-              "inversity-normal": {
+            "contrast_highest": {
+              "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.p.color.basic.white}",
                 "$description": "Default background color"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.700}",
                 "$description": "Default dark surface color"
               }
             },
-            "contrast-high": {
-              "inversity-normal": {
+            "contrast_high": {
+              "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.50}",
                 "$description": "Darker surface color"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.600}",
                 "$description": "Darker surface color"
               }
             },
-            "contrast-medium": {
-              "inversity-normal": {
+            "contrast_medium": {
+              "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.100}",
                 "$description": "Darker surface color"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.500}",
                 "$description": "Darker surface color"
               }
             },
-            "contrast-low": {
-              "inversity-normal": {
+            "contrast_low": {
+              "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.200}",
                 "$description": "Darker surface color"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.400}",
                 "$description": "Darker surface color"
               }
             },
-            "contrast-lowest": {
-              "inversity-normal": {
+            "contrast_lowest": {
+              "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.300}",
                 "$description": "Very subtle background color for disabled states or extremely low contrast surfaces"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.300}",
                 "$description": "Very subtle dark background color for disabled states on inverse backgrounds"
@@ -66,56 +66,56 @@
             }
           },
           "fg": {
-            "contrast-lowest": {
-              "inversity-normal": {
+            "contrast_lowest": {
+              "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt-alpha.400}",
+                "$value": "{ob.p.color.cobalt_alpha.400}",
                 "$description": "for diabled text"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.p.color.white-alpha.400}",
+                "$value": "{ob.p.color.white_alpha.400}",
                 "$description": "For disabled"
               }
             },
-            "contrast-low": {
-              "inversity-normal": {
+            "contrast_low": {
+              "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.600}"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.200}"
               }
             },
-            "contrast-medium": {
-              "inversity-normal": {
+            "contrast_medium": {
+              "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.700}",
                 "$description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.100}",
                 "$description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
               }
             },
-            "contrast-high": {
-              "inversity-normal": {
+            "contrast_high": {
+              "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.800}"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.50}"
               }
             },
-            "contrast-highest": {
-              "inversity-normal": {
+            "contrast_highest": {
+              "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.900}"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.basic.white}"
               }
@@ -123,11 +123,11 @@
           },
           "border": {
             "subtle": {
-              "inversity-normal": {
+              "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.100}"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
@@ -142,11 +142,11 @@
               }
             },
             "medium": {
-              "inversity-normal": {
+              "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.200}"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
@@ -161,11 +161,11 @@
               }
             },
             "strong": {
-              "inversity-normal": {
+              "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.300}"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.300}"
               }
@@ -173,26 +173,26 @@
           },
           "shadow": {
             "first": {
-              "inversity-normal": {
+              "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt-alpha.50}",
+                "$value": "{ob.p.color.cobalt_alpha.50}",
                 "$description": "1st of 2 effects"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt-alpha.50}",
+                "$value": "{ob.p.color.cobalt_alpha.50}",
                 "$description": "1st of 2 effects"
               }
             },
             "second": {
-              "inversity-normal": {
+              "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt-alpha.100}",
+                "$value": "{ob.p.color.cobalt_alpha.100}",
                 "$description": "2nd of 2 effects"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt-alpha.100}",
+                "$value": "{ob.p.color.cobalt_alpha.100}",
                 "$description": "2nd of 2 effects"
               }
             }
@@ -201,136 +201,136 @@
         "status": {
           "info": {
             "bg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast background for info status - references white primitive for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast background for info status - references darkest cobalt for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.blue.50}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.blue.800}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.blue.100}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.blue.700}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.blue.200}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.blue.600}"
                 }
               }
             },
             "fg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast foreground for info status - references darkest cobalt for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast foreground for info status - references white primitive for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.blue.900}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.blue.50}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$description": "Auto-generated: matches bg.contrast_high"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.blue.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.blue.100}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$description": "Auto-generated: matches bg.contrast_medium"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.blue.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.blue.200}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               }
             }
           },
           "resolved": {
             "bg": {
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.green.50}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.green.800}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.green.100}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.green.700}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.green.200}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.green.600}"
                 }
               },
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast background for resolved status - references white primitive for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast background for resolved status - references darkest cobalt for highest contrast"
@@ -338,46 +338,46 @@
               }
             },
             "fg": {
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.green.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.green.50}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$description": "Auto-generated: matches bg.contrast_high"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.green.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.green.100}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$description": "Auto-generated: matches bg.contrast_medium"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.green.600}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.green.200}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               },
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast foreground for resolved status - references darkest cobalt for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast foreground for resolved status - references white primitive for highest contrast"
@@ -387,94 +387,94 @@
           },
           "fatal": {
             "bg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast background for fatal status - references white primitive for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast background for fatal status - references darkest cobalt for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.50}",
-                  "$description": "Auto-generated: matches fg.contrast-high"
+                  "$description": "Auto-generated: matches fg.contrast_high"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.800}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.100}",
-                  "$description": "Auto-generated: matches fg.contrast-medium"
+                  "$description": "Auto-generated: matches fg.contrast_medium"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.700}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.200}",
-                  "$description": "Auto-generated: matches fg.contrast-low"
+                  "$description": "Auto-generated: matches fg.contrast_low"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.600}"
                 }
               }
             },
             "fg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast foreground for fatal status - references darkest cobalt for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast foreground for fatal status - references white primitive for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.800}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$description": "Auto-generated: matches bg.contrast_high"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.50}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.700}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$description": "Auto-generated: matches bg.contrast_medium"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.100}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.600}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$description": "Auto-generated: matches bg.contrast_low"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.200}"
                 }
@@ -483,43 +483,43 @@
           },
           "attention": {
             "bg": {
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.orange.50}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.orange.800}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.orange.100}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.orange.700}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.orange.200}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.orange.600}"
                 }
               },
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast background for attention status - references white primitive for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast background for attention status - references darkest cobalt for highest contrast"
@@ -527,46 +527,46 @@
               }
             },
             "fg": {
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.orange.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.orange.50}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$description": "Auto-generated: matches bg.contrast_high"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.orange.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.orange.100}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$description": "Auto-generated: matches bg.contrast_medium"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.orange.600}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.orange.200}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               },
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast foreground for attention status - references darkest cobalt for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast foreground for attention status - references white primitive for highest contrast"
@@ -576,525 +576,525 @@
           },
           "pending": {
             "bg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast background for pending status - references white primitive for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast background for pending status - references darkest cobalt for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.yellow.50}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.yellow.800}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.yellow.100}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.yellow.700}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.yellow.200}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.yellow.600}"
                 }
               }
             },
             "fg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast foreground for pending status - references darkest cobalt for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast foreground for pending status - references white primitive for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.yellow.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.yellow.50}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$description": "Auto-generated: matches bg.contrast_high"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.yellow.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.yellow.100}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$description": "Auto-generated: matches bg.contrast_medium"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.yellow.600}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.yellow.200}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               }
             }
           },
           "confirmed": {
             "bg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast background for confirmed status - references white primitive for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast background for confirmed status - references darkest cobalt for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.teal.50}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.teal.800}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.teal.100}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.teal.700}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.teal.200}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.teal.600}"
                 }
               }
             },
             "fg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast foreground for confirmed status - references darkest cobalt for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast foreground for confirmed status - references white primitive for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.teal.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.teal.50}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$description": "Auto-generated: matches bg.contrast_high"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.teal.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.teal.100}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$description": "Auto-generated: matches bg.contrast_medium"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.teal.600}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.teal.200}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               }
             }
           },
           "progress": {
             "bg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast background for progress status - references white primitive for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast background for progress status - references darkest cobalt for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.50}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.800}"
                 },
-                "inversity-flipped-alpha": {
+                "inversity_flipped_alpha": {
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo-alpha.900}",
+                  "$value": "{ob.p.color.indigo_alpha.900}",
                   "$description": "Used for spinner background alpha overlay"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.100}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.700}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.200}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.600}"
                 }
               },
-              "contrast-high-alpha": {
-                "inversity-normal": {
+              "contrast_high_alpha": {
+                "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo-alpha.900}",
+                  "$value": "{ob.p.color.indigo_alpha.900}",
                   "$description": "Used for spinner background alpha overlay"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo-alpha.900}",
+                  "$value": "{ob.p.color.indigo_alpha.900}",
                   "$description": "Used for spinner background alpha overlay"
                 }
               }
             },
             "fg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast foreground for progress status - references darkest cobalt for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast foreground for progress status - references white primitive for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.50}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$description": "Auto-generated: matches bg.contrast_high"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.100}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$description": "Auto-generated: matches bg.contrast_medium"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.600}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.200}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               }
             }
           },
           "scheduled": {
             "bg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast background for scheduled status - references white primitive for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast background for scheduled status - references darkest cobalt for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.pink.50}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.pink.800}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.pink.100}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.pink.700}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.pink.200}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.pink.600}"
                 }
               }
             },
             "fg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast foreground for scheduled status - references darkest cobalt for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast foreground for scheduled status - references white primitive for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.pink.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.pink.50}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$description": "Auto-generated: matches bg.contrast_high"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.pink.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.pink.100}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$description": "Auto-generated: matches bg.contrast_medium"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.pink.600}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.pink.200}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               }
             }
           },
           "waiting": {
             "bg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast background for waiting status - references white primitive for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast background for waiting status - references darkest cobalt for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.purple.50}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.purple.800}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.purple.100}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.purple.700}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.purple.200}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.purple.600}"
                 }
               }
             },
             "fg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast foreground for waiting status - references darkest cobalt for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast foreground for waiting status - references white primitive for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.purple.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.purple.50}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$description": "Auto-generated: matches bg.contrast_high"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.purple.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.purple.100}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$description": "Auto-generated: matches bg.contrast_medium"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.purple.600}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.purple.200}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               }
             }
           },
           "critical": {
             "bg": {
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.50}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.800}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.100}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.700}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.200}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.600}"
                 }
               },
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast background for critical status - references white primitive for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast background for critical status - references darkest cobalt for highest contrast"
@@ -1102,46 +1102,46 @@
               }
             },
             "fg": {
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.50}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$description": "Auto-generated: matches bg.contrast_high"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.100}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$description": "Auto-generated: matches bg.contrast_medium"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.600}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.red.200}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               },
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast foreground for critical status - references darkest cobalt for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast foreground for critical status - references white primitive for highest contrast"
@@ -1151,136 +1151,136 @@
           },
           "closed": {
             "bg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast background for closed status - references white primitive for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast background for closed status - references darkest cobalt for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.50}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.800}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.100}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.700}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.200}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.600}"
                 }
               }
             },
             "fg": {
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast foreground for closed status - references darkest cobalt for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast foreground for closed status - references white primitive for highest contrast"
                 }
               },
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.50}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$description": "Auto-generated: matches bg.contrast_high"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.100}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$description": "Auto-generated: matches bg.contrast_medium"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.200}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               }
             }
           },
           "disabled": {
             "bg": {
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.50}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.800}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.100}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.700}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.200}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.600}"
                 }
               },
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast background for disabled status - references white primitive for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast background for disabled status - references darkest cobalt for highest contrast"
@@ -1288,46 +1288,46 @@
               }
             },
             "fg": {
-              "contrast-high": {
-                "inversity-normal": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.50}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$description": "Auto-generated: matches bg.contrast_high"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.100}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$description": "Auto-generated: matches bg.contrast_medium"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.200}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               },
-              "contrast-highest": {
-                "inversity-normal": {
+              "contrast_highest": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
                   "$description": "Maximum contrast foreground for disabled status - references darkest cobalt for highest contrast"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Maximum contrast foreground for disabled status - references white primitive for highest contrast"
@@ -1337,108 +1337,108 @@
           }
         },
         "interaction": {
-          "emphasis-high": {
-            "bg-base": {
-              "contrast-high": {
-                "inversity-normal": {
+          "emphasis_high": {
+            "bg_base": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-normal}",
+                  "$value": "{ob.s1.color.neutral.bg.contrast_highest.inversity_normal}",
                   "$description": "Used as bg in 2nd and 3d buttons"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.800}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.100}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.700}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.200}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.600}"
                 }
               }
             },
-            "fg-base": {
-              "contrast-high": {
-                "inversity-normal": {
+            "fg_base": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
                   "$description": "Text and icon color has to be white on inversion (primary buttons, badge etc.)"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.600}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.100}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.500}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.200}"
                 }
               }
             },
-            "fg-visited": {
-              "contrast-high": {
-                "inversity-normal": {
+            "fg_visited": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.900}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.50}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.100}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.200}"
                 }
               }
             },
-            "fg-disabled": {
-              "contrast-low": {
-                "inversity-normal": {
+            "fg_disabled": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$extensions": {
                     "studio.tokens": {
                       "modify": {
@@ -1449,146 +1449,146 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt-alpha.900}",
+                  "$value": "{ob.p.color.cobalt_alpha.900}",
                   "$description": "Foreground color for disabled state of Text links, secondary and tertiary buttons etc. on standard backrgound."
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.50}",
                   "$description": "Foreground color on an inverted backgrounds of disabled state of Primary button, badge.."
                 }
               }
             },
-            "bg-disabled": {
+            "bg_disabled": {
               "solid": {
-                "inversity-normal": {
+                "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt-alpha.100}",
-                  "$description": "For background of disabled elements. Default, non.inversity-flipped. Opacity version."
+                  "$value": "{ob.p.color.cobalt_alpha.100}",
+                  "$description": "For background of disabled elements. Default, non.inversity_flipped. Opacity version."
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.200}",
                   "$description": "For background of disabled elements, inverse. Solid version."
                 }
               },
               "opacity": {
-                "inversity-normal": {
+                "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt-alpha.100}",
+                  "$value": "{ob.p.color.cobalt_alpha.100}",
                   "$description": "For background of disabled elements. Default background (non inverted).Solid version."
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt-alpha.300}",
+                  "$value": "{ob.p.color.cobalt_alpha.300}",
                   "$description": "For background of disabled elements, inverse. Opacity version."
                 }
               }
             }
           },
-          "emphasis-low": {
-            "bg-base": {
-              "contrast-high": {
-                "inversity-normal": {
+          "emphasis_low": {
+            "bg_base": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-normal}"
+                  "$value": "{ob.s1.color.neutral.bg.contrast_highest.inversity_normal}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.700}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.100}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.600}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.200}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.500}"
                 }
               }
             },
-            "fg-base": {
-              "contrast-high": {
-                "inversity-normal": {
+            "fg_base": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.50}",
-                  "$description": "Auto-generated: matches bg.contrast-high"
+                  "$description": "Auto-generated: matches bg.contrast_high"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.100}",
-                  "$description": "Auto-generated: matches bg.contrast-medium"
+                  "$description": "Auto-generated: matches bg.contrast_medium"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.200}",
-                  "$description": "Auto-generated: matches bg.contrast-low"
+                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               }
             },
-            "fg-visited": {
-              "contrast-high": {
-                "inversity-normal": {
+            "fg_visited": {
+              "contrast_high": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.900}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.50}"
                 }
               },
-              "contrast-medium": {
-                "inversity-normal": {
+              "contrast_medium": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.100}"
                 }
               },
-              "contrast-low": {
-                "inversity-normal": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.700}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.200}"
                 }
               }
             },
-            "fg-disabled": {
-              "contrast-low": {
-                "inversity-normal": {
+            "fg_disabled": {
+              "contrast_low": {
+                "inversity_normal": {
                   "$extensions": {
                     "studio.tokens": {
                       "modify": {
@@ -1599,38 +1599,38 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt-alpha.900}",
+                  "$value": "{ob.p.color.cobalt_alpha.900}",
                   "$description": "Foreground color for disabled state of Text links, secondary and tertiary buttons etc. on standard backrgound."
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.50}",
                   "$description": "Foreground color on an inverted backgrounds of disabled state of Primary button, badge.."
                 }
               }
             },
-            "bg-disabled": {
+            "bg_disabled": {
               "solid": {
-                "inversity-normal": {
+                "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt-alpha.100}",
-                  "$description": "For background of disabled elements. Default, non.inversity-flipped. Opacity version."
+                  "$value": "{ob.p.color.cobalt_alpha.100}",
+                  "$description": "For background of disabled elements. Default, non.inversity_flipped. Opacity version."
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.200}",
                   "$description": "For background of disabled elements, inverse. Solid version."
                 }
               },
               "opacity": {
-                "inversity-normal": {
+                "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt-alpha.100}",
+                  "$value": "{ob.p.color.cobalt_alpha.100}",
                   "$description": "For background of disabled elements. Default background (non inverted).Solid version."
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt-alpha.300}",
+                  "$value": "{ob.p.color.cobalt_alpha.300}",
                   "$description": "For background of disabled elements, inverse. Opacity version."
                 }
               }

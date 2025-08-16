@@ -8,10 +8,10 @@
               "H1": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.font-family.body}",
+                  "fontFamily": "{ob.s.font_family.body}",
                   "fontSize": "{ob.s.fontSize.xl}",
-                  "fontWeight": "{ob.s.font-weight.bold}",
-                  "letterSpacing": "{ob.s.letter-spacing-px.narrow}",
+                  "fontWeight": "{ob.s.font_weight.bold}",
+                  "letterSpacing": "{ob.s.letter_spacing_px.narrow}",
                   "lineHeight": "{ob.s.lineHeight.xl}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.800}"
                 },
@@ -20,10 +20,10 @@
               "H2": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.font-family.body}",
+                  "fontFamily": "{ob.s.font_family.body}",
                   "fontSize": "{ob.s.fontSize.lg}",
-                  "fontWeight": "{ob.s.font-weight.bold}",
-                  "letterSpacing": "{ob.s.letter-spacing-px.narrow}",
+                  "fontWeight": "{ob.s.font_weight.bold}",
+                  "letterSpacing": "{ob.s.letter_spacing_px.narrow}",
                   "lineHeight": "{ob.s.lineHeight.lg}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.600}"
                 },
@@ -32,11 +32,11 @@
               "H3": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.font-family.body}",
+                  "fontFamily": "{ob.s.font_family.body}",
                   "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.s.font-weight.extraBold}",
+                  "fontWeight": "{ob.s.font_weight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letter-spacing-px.normal}",
+                  "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
                 "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -44,11 +44,11 @@
               "H4": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.font-family.body}",
+                  "fontFamily": "{ob.s.font_family.body}",
                   "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.s.font-weight.extraBold}",
+                  "fontWeight": "{ob.s.font_weight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letter-spacing-px.normal}",
+                  "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
                 "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -56,11 +56,11 @@
               "H5": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.font-family.body}",
+                  "fontFamily": "{ob.s.font_family.body}",
                   "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.s.font-weight.extraBold}",
+                  "fontWeight": "{ob.s.font_weight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letter-spacing-px.normal}",
+                  "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
                 "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -68,11 +68,11 @@
               "H6": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.font-family.body}",
+                  "fontFamily": "{ob.s.font_family.body}",
                   "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.s.font-weight.extraBold}",
+                  "fontWeight": "{ob.s.font_weight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letter-spacing-px.normal}",
+                  "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
                 "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
@@ -82,10 +82,10 @@
               "H1": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.font-family.body}",
+                  "fontFamily": "{ob.s.font_family.body}",
                   "fontSize": "{ob.s.fontSize.4xl}",
-                  "fontWeight": "{ob.s.font-weight.semiBold}",
-                  "letterSpacing": "{ob.s.letter-spacing-px.superNarrow}",
+                  "fontWeight": "{ob.s.font_weight.semiBold}",
+                  "letterSpacing": "{ob.s.letter_spacing_px.superNarrow}",
                   "lineHeight": "{ob.s.lineHeight.4xl}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.1400}"
                 },
@@ -94,10 +94,10 @@
               "H2": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.font-family.body}",
+                  "fontFamily": "{ob.s.font_family.body}",
                   "fontSize": "{ob.s.fontSize.3xl}",
-                  "fontWeight": "{ob.s.font-weight.semiBold}",
-                  "letterSpacing": "{ob.s.letter-spacing-px.superNarrow}",
+                  "fontWeight": "{ob.s.font_weight.semiBold}",
+                  "letterSpacing": "{ob.s.letter_spacing_px.superNarrow}",
                   "lineHeight": "{ob.s.lineHeight.3xl}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.1300}"
                 },
@@ -106,10 +106,10 @@
               "H3": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.font-family.body}",
+                  "fontFamily": "{ob.s.font_family.body}",
                   "fontSize": "{ob.s.fontSize.2xl}",
-                  "fontWeight": "{ob.s.font-weight.semiBold}",
-                  "letterSpacing": "{ob.s.letter-spacing-px.superNarrow}",
+                  "fontWeight": "{ob.s.font_weight.semiBold}",
+                  "letterSpacing": "{ob.s.letter_spacing_px.superNarrow}",
                   "lineHeight": "{ob.s.lineHeight.2xl}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.1100}"
                 },
@@ -118,10 +118,10 @@
               "H4": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.font-family.body}",
+                  "fontFamily": "{ob.s.font_family.body}",
                   "fontSize": "{ob.s.fontSize.xl}",
-                  "fontWeight": "{ob.s.font-weight.bold}",
-                  "letterSpacing": "{ob.s.letter-spacing-px.narrower}",
+                  "fontWeight": "{ob.s.font_weight.bold}",
+                  "letterSpacing": "{ob.s.letter_spacing_px.narrower}",
                   "lineHeight": "{ob.s.lineHeight.xl}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.800}"
                 },
@@ -130,10 +130,10 @@
               "H5": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.font-family.body}",
+                  "fontFamily": "{ob.s.font_family.body}",
                   "fontSize": "{ob.s.fontSize.lg}",
-                  "fontWeight": "{ob.s.font-weight.bold}",
-                  "letterSpacing": "{ob.s.letter-spacing-px.narrow}",
+                  "fontWeight": "{ob.s.font_weight.bold}",
+                  "letterSpacing": "{ob.s.letter_spacing_px.narrow}",
                   "lineHeight": "{ob.s.lineHeight.lg}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.600}"
                 },
@@ -142,11 +142,11 @@
               "H6": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.font-family.body}",
+                  "fontFamily": "{ob.s.font_family.body}",
                   "fontSize": "{ob.s.fontSize.md}",
-                  "fontWeight": "{ob.s.font-weight.extraBold}",
+                  "fontWeight": "{ob.s.font_weight.extraBold}",
                   "lineHeight": "{ob.s.lineHeight.md}",
-                  "letterSpacing": "{ob.s.letter-spacing-px.normal}",
+                  "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
                 },
                 "$description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
@@ -157,11 +157,11 @@
             "normal": {
               "$type": "typography",
               "$value": {
-                "fontFamily": "{ob.s.font-family.body}",
+                "fontFamily": "{ob.s.font_family.body}",
                 "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.font-weight.medium}",
+                "fontWeight": "{ob.s.font_weight.medium}",
                 "lineHeight": "{ob.s.lineHeight.md}",
-                "letterSpacing": "{ob.s.letter-spacing-px.normal}",
+                "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.md}"
               },
               "$description": "Default body text style for paragraphs and general content."
@@ -169,24 +169,24 @@
             "link": {
               "$type": "typography",
               "$value": {
-                "fontFamily": "{ob.s.font-family.body}",
+                "fontFamily": "{ob.s.font_family.body}",
                 "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.font-weight.medium}",
+                "fontWeight": "{ob.s.font_weight.medium}",
                 "lineHeight": "{ob.s.lineHeight.md}",
-                "letterSpacing": "{ob.s.letter-spacing-px.normal}",
+                "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.md}",
-                "textDecoration": "{ob.s.text-decoration.link.emphasis-high}"
+                "textDecoration": "{ob.s.text_decoration.link.emphasis_high}"
               },
               "$description": "Interactive text elements that navigate to other content when clicked. Adds an underline to the text. Generates a Figma typography style."
             },
             "strong": {
               "$type": "typography",
               "$value": {
-                "fontFamily": "{ob.s.font-family.body}",
+                "fontFamily": "{ob.s.font_family.body}",
                 "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.font-weight.bold}",
+                "fontWeight": "{ob.s.font_weight.bold}",
                 "lineHeight": "{ob.s.lineHeight.md}",
-                "letterSpacing": "{ob.s.letter-spacing-px.normal}",
+                "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.md}"
               },
               "$description": "Emphasized text to highlight important information within body content."
@@ -194,11 +194,11 @@
             "lead": {
               "$type": "typography",
               "$value": {
-                "fontFamily": "{ob.s.font-family.body}",
+                "fontFamily": "{ob.s.font_family.body}",
                 "fontSize": "{ob.s.fontSize.md}",
-                "fontWeight": "{ob.s.font-weight.bold}",
+                "fontWeight": "{ob.s.font_weight.bold}",
                 "lineHeight": "{ob.s.lineHeight.md}",
-                "letterSpacing": "{ob.s.letter-spacing-px.normal}",
+                "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.md}"
               },
               "$description": "Introductory paragraph text, typically larger or bolder than normal body text."

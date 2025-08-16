@@ -5,7 +5,7 @@
         "theme": {
           "inversity": {
             "$type": "other",
-            "$value": "{ob.g.theme-configuration.inversity.flipped}",
+            "$value": "{ob.g.theme_configuration.inversity.flipped}",
             "$description": "Footer is flipped in light theme. gets dark."
           }
         }

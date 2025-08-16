@@ -1,17 +1,17 @@
 {
   "figma-doc": {
     "color": {
-      "fg-static": {
+      "fg_static": {
         "$type": "color",
         "$value": "#9747FF",
         "$description": "Documentation only! Coming from Figma UI. Doesn't react to user preference color modes Light, Dark etc."
       },
-      "figma-canvas-bg": {
+      "figma_canvas_bg": {
         "$type": "color",
         "$value": "#DFE4E9",
         "$description": "Figma Canvas Background. Documentation only! Doesn't react to user preference color modes Light, Dark etc."
       },
-      "figma-section-bg": {
+      "figma_section_bg": {
         "$extensions": {
           "studio.tokens": {
             "modify": {
@@ -25,7 +25,7 @@
         "$value": "#ffffff",
         "$description": "Figma Section Background. Documentation only! Doesn't react to user preference color modes Light, Dark etc."
       },
-      "figma-section-border": {
+      "figma_section_border": {
         "$extensions": {
           "studio.tokens": {
             "modify": {

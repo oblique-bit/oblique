@@ -138,7 +138,7 @@
           "$type": "sizing",
           "$value": "{ob.p.size.3000}"
         },
-        "event-horizon": {
+        "event_horizon": {
           "$type": "sizing",
           "$value": "{ob.p.size.3200}"
         },

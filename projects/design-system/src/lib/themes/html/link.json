@@ -16,7 +16,7 @@
               "$value": "none",
               "$description": "No icon on internal links (except in lists - defined in another token). Devselopers do not use this in the code."
             },
-            "internal-list": {
+            "internal_list": {
               "$type": "asset",
               "$value": "arrow-right",
               "$description": "Icon displayed for internal links (list only). Devselopers do not use this in the code."
@@ -41,62 +41,62 @@
         "color": {
           "link": {
             "$type": "color",
-            "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity-normal}",
+            "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}",
             "$description": "Default color of unvisited links."
           },
           "visited": {
             "$type": "color",
-            "$value": "{ob.s3.color.interaction.state.fg.visited.inversity-normal}",
+            "$value": "{ob.s3.color.interaction.state.fg.visited.inversity_normal}",
             "$description": "Color of links the user has already visited."
           },
           "hover": {
             "$type": "color",
-            "$value": "{ob.s3.color.interaction.state.fg.hover.inversity-normal}",
+            "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}",
             "$description": "Color of link when hovered with the mouse."
           },
           "active": {
             "$type": "color",
-            "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity-normal}",
+            "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}",
             "$description": "Color of link during click interaction."
           },
           "disabled": {
             "$type": "color",
-            "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity-normal}",
+            "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_normal}",
             "$description": "Color of a visually disabled, non-clickable link."
           }
         },
         "enabled": {
           "$type": "typography",
           "$value": {
-            "textDecoration": "{ob.s.text-decoration.link.emphasis-high}"
+            "textDecoration": "{ob.s.text_decoration.link.emphasis_high}"
           },
           "$description": "a:link"
         },
         "hover": {
           "$type": "typography",
           "$value": {
-            "textDecoration": "{ob.s.text-decoration.link.emphasis-high}"
+            "textDecoration": "{ob.s.text_decoration.link.emphasis_high}"
           },
           "$description": "a:hover"
         },
         "focus": {
           "$type": "typography",
           "$value": {
-            "textDecoration": "{ob.s.text-decoration.link.emphasis-low}"
+            "textDecoration": "{ob.s.text_decoration.link.emphasis_low}"
           },
           "$description": "a:focus. Displays already a border. No need for additional visual emphasis."
         },
         "active": {
           "$type": "typography",
           "$value": {
-            "textDecoration": "{ob.s.text-decoration.link.emphasis-high}"
+            "textDecoration": "{ob.s.text_decoration.link.emphasis_high}"
           },
           "$description": "a:active"
         },
         "disabled": {
           "$type": "typography",
           "$value": {
-            "textDecoration": "{ob.s.text-decoration.link.emphasis-low}"
+            "textDecoration": "{ob.s.text_decoration.link.emphasis_low}"
           },
           "$description": "non css standard but required.No need for underline when disabled."
         }

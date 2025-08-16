@@ -13,7 +13,7 @@
     "check:token-consumption": "python3 scripts-custom/validate-consumption-hierarchy.py",
     "recommend": "python3 scripts-custom/recommend-scripts.py --interactive",
     "recommend:plan": "python3 scripts-custom/recommend-scripts.py --plan",
-    "recommend:done": "python3 scripts-custom/recommend-scripts.py --done", 
+    "recommend:done": "python3 scripts-custom/recommend-scripts.py --done",
     "recommend:auto": "python3 scripts-custom/recommend-scripts.py --auto",
     "validate:quick": "python3 scripts-custom/quick-validate.py",
     "track:token-changes": "python3 scripts-custom/track-token-changes.py --manual",
@@ -35,5 +35,8 @@
   "devDependencies": {
     "ng-packagr": "^19.2.2"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "glob": "^11.0.3"
+  }
 }

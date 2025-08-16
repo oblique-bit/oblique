@@ -23,7 +23,7 @@
           "$value": "{ob.p.radii.round}"
         }
       },
-      "border-width": {
+      "border_width": {
         "xs": {
           "$type": "borderWidth",
           "$value": "{ob.p.borderWidth.100}"
@@ -58,7 +58,7 @@
         }
       },
       "corners": {
-        "top-right": {
+        "top_right": {
           "none": {
             "$type": "borderRadius",
             "$value": "{ob.s.radii.none}"
@@ -76,7 +76,7 @@
             "$value": "{ob.s.radii.lg}"
           }
         },
-        "top-left": {
+        "top_left": {
           "none": {
             "$type": "borderRadius",
             "$value": "{ob.s.radii.none}"
@@ -94,7 +94,7 @@
             "$value": "{ob.s.radii.lg}"
           }
         },
-        "bottom-left": {
+        "bottom_left": {
           "none": {
             "$type": "borderRadius",
             "$value": "{ob.s.radii.none}"
@@ -112,7 +112,7 @@
             "$value": "{ob.s.radii.lg}"
           }
         },
-        "bottom-right": {
+        "bottom_right": {
           "none": {
             "$type": "borderRadius",
             "$value": "{ob.s.radii.none}"
@@ -136,7 +136,7 @@
           "$type": "border",
           "$value": {
             "color": "{ob.s1.color.interaction.border.focus}",
-            "width": "{ob.s.border-width.2xl}",
+            "width": "{ob.s.border_width.2xl}",
             "style": "solid"
           },
           "$description": "focus for all clickable elements and form elements."

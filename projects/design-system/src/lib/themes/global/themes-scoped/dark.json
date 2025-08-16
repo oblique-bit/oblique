@@ -5,7 +5,7 @@
         "theme": {
           "inversity": {
             "$type": "other",
-            "$value": "{ob.g.theme-configuration.inversity.normal}",
+            "$value": "{ob.g.theme_configuration.inversity.normal}",
             "$description": "Footer is not flipped in dark theme. stays dark."
           }
         }

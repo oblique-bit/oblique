@@ -59,10 +59,10 @@
         },
         "_base": {
           "$type": "fontSizes",
-          "$value": "{ob.g.scale.mult-static}"
+          "$value": "{ob.g.scale.mult_static}"
         }
       },
-      "letterSpacing-depr": {
+      "letterSpacing_depr": {
         "0": {
           "$type": "letterSpacing",
           "$value": "auto",
@@ -93,38 +93,38 @@
           "$value": "2.5%",
           "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
-        "neg-50": {
+        "neg_50": {
           "$type": "letterSpacing",
           "$value": "-0.5%",
           "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
-        "neg-100": {
+        "neg_100": {
           "$type": "letterSpacing",
           "$value": "-1%",
           "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
-        "neg-150": {
+        "neg_150": {
           "$type": "letterSpacing",
           "$value": "-1.5%",
           "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
-        "neg-200": {
+        "neg_200": {
           "$type": "letterSpacing",
           "$value": "-2%",
           "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
-        "neg-250": {
+        "neg_250": {
           "$type": "letterSpacing",
           "$value": "-2.5%",
           "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
-        "neg-300": {
+        "neg_300": {
           "$type": "letterSpacing",
           "$value": "-3%",
           "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         }
       },
-      "font-weight": {
+      "font_weight": {
         "0": {
           "$type": "fontWeights",
           "$value": "400",
@@ -213,7 +213,7 @@
           "$value": "15 * {ob.p.lineHeight._base}"
         }
       },
-      "text-decoration": {
+      "text_decoration": {
         "underline": {
           "$type": "textDecoration",
           "$value": "underline"
@@ -298,7 +298,7 @@
         },
         "_base": {
           "$type": "lineHeights",
-          "$value": "{ob.g.scale.mult-static}"
+          "$value": "{ob.g.scale.mult_static}"
         }
       },
       "fontSizeRem": {
@@ -376,7 +376,7 @@
           "$value": "uppercase"
         }
       },
-      "letterSpacing-px": {
+      "letterSpacing_px": {
         "0": {
           "$type": "letterSpacing",
           "$value": "auto",
@@ -387,17 +387,17 @@
           "$value": "0.5",
           "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
-        "neg-150": {
+        "neg_150": {
           "$type": "letterSpacing",
           "$value": "-1.5",
           "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
-        "neg-100": {
+        "neg_100": {
           "$type": "letterSpacing",
           "$value": "-1",
           "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         },
-        "neg-50": {
+        "neg_50": {
           "$type": "letterSpacing",
           "$value": "-0.5",
           "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"

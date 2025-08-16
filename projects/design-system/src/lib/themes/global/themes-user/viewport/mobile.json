@@ -2,7 +2,7 @@
   "ob": {
     "g": {
       "scale": {
-        "mult-responsive": {
+        "mult_responsive": {
           "$type": "number",
           "$value": "5",
           "$description": "Mobile scaling multiplier should be 1.25x larger than desktop (5 vs 4) for better touch accessibility. For some reason this is buggy, being resolved in desktop viewport. Thats why i temp set to 4 as desktop"
@@ -15,7 +15,7 @@
       },
       "viewport": {
         "$type": "text",
-        "$value": "{ob.g.theme-configuration.viewport.mobile}"
+        "$value": "{ob.g.theme_configuration.viewport.mobile}"
       }
     }
   }

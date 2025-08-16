@@ -3,7 +3,7 @@
     "h": {
       "button": {
         "spacing": {
-          "with-text": {
+          "with_text": {
             "padding": {
               "vertical": {
                 "sm": {
@@ -58,7 +58,7 @@
               }
             }
           },
-          "icon-only": {
+          "icon_only": {
             "padding": {
               "vertical": {
                 "xs": {
@@ -69,17 +69,17 @@
                 "sm": {
                   "$type": "spacing",
                   "$value": "{ob.s.spacing.md}",
-                  "$description": "Forces the icon-only button to be round and the same height as a small with-text button."
+                  "$description": "Forces the icon_only button to be round and the same height as a small with_text button."
                 },
                 "md": {
                   "$type": "spacing",
                   "$value": "{ob.s.spacing.lg}",
-                  "$description": "Forces the icon-only button to be round and the same height as a medium with-text button."
+                  "$description": "Forces the icon_only button to be round and the same height as a medium with_text button."
                 },
                 "lg": {
                   "$type": "spacing",
                   "$value": "{ob.s.spacing.2xl}",
-                  "$description": "Forces the icon-only button to be round and the same height as a large with-text button."
+                  "$description": "Forces the icon_only button to be round and the same height as a large with_text button."
                 }
               },
               "horizontal": {
@@ -91,17 +91,17 @@
                 "sm": {
                   "$type": "spacing",
                   "$value": "{ob.s.spacing.md}",
-                  "$description": "Forces the icon-only button to be a circle."
+                  "$description": "Forces the icon_only button to be a circle."
                 },
                 "md": {
                   "$type": "spacing",
                   "$value": "{ob.s.spacing.lg}",
-                  "$description": "Forces the icon-only button to be a circle."
+                  "$description": "Forces the icon_only button to be a circle."
                 },
                 "lg": {
                   "$type": "spacing",
                   "$value": "{ob.s.spacing.2xl}",
-                  "$description": "Forces the icon-only button to be a circle."
+                  "$description": "Forces the icon_only button to be a circle."
                 }
               }
             },
@@ -124,19 +124,19 @@
             }
           }
         },
-        "border-radius": {
+        "border_radius": {
           "default": {
             "$type": "borderRadius",
             "$value": "{ob.s.radii.sm}",
             "$description": "Standard buttons in Oblique."
           }
         },
-        "border-width": {
+        "border_width": {
           "$type": "borderWidth",
-          "$value": "{ob.s.border-width.xs}",
+          "$value": "{ob.s.border_width.xs}",
           "$description": "Default border width for buttons (additional hover border not included)"
         },
-        "box-shadow": {
+        "box_shadow": {
           "enabled": {
             "$type": "boxShadow",
             "$value": "{ob.s.shadow.none}",
@@ -179,7 +179,7 @@
             }
           }
         },
-        "icon-only": {
+        "icon_only": {
           "surface": {
             "size": {
               "xs": {
@@ -203,9 +203,9 @@
           }
         },
         "typography": {
-          "text-label": {
+          "text_label": {
             "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.normal}",
+            "$value": "{ob.s.typography.type_scale.sm.normal}",
             "$description": "Single font style and size for all button sizes and types for consistancy."
           }
         },

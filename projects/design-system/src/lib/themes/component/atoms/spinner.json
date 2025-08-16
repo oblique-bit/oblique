@@ -10,23 +10,23 @@
         "color": {
           "active": {
             "$type": "color",
-            "$value": "{ob.s.color.l2.status.progress.fg.contrast-high.inversity-normal.inversity-flipped}",
+            "$value": "{ob.s.color.l2.status.progress.fg.contrast_high.inversity_normal.inversity_flipped}",
             "$description": "Color indicating the active part of the loading."
           },
           "inactive": {
             "$type": "color",
-            "$value": "{ob.s1.color.status.progress.bg.contrast-high.inversity-flipped-alpha}",
+            "$value": "{ob.s1.color.status.progress.bg.contrast_high.inversity_flipped_alpha}",
             "$description": "Color indicating the inactive part of the loading."
           }
         },
-        "border-radius": {
+        "border_radius": {
           "$type": "borderRadius",
           "$value": "{ob.s.radii.sm}",
           "$description": "Radius SM applied to give the spinner a more organic appearance."
         },
-        "border-width": {
+        "border_width": {
           "$type": "borderWidth",
-          "$value": "{ob.s.border-width.3xl}",
+          "$value": "{ob.s.border_width.3xl}",
           "$description": "The spinner border is thick enough to stand out against the busy visual environment surrounding it."
         },
         "animation": {

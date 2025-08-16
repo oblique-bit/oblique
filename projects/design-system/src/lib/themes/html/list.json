@@ -2,14 +2,14 @@
   "ob": {
     "h": {
       "list": {
-        "single-item": {
+        "single_item": {
           "spacing": {
-            "marker-gap": {
+            "marker_gap": {
               "$type": "spacing",
               "$value": "12",
               "$description": "Gap between icon and text."
             },
-            "margin-bottom": {
+            "margin_bottom": {
               "$type": "spacing",
               "$value": "12",
               "$description": "margin bottom of single elements"
@@ -19,14 +19,14 @@
         "group": {
           "spacing": {
             "high": {
-              "margin-top": {
+              "margin_top": {
                 "$type": "spacing",
                 "$value": "12",
                 "$description": "margin bottom of single elements"
               }
             },
             "low": {
-              "margin-top": {
+              "margin_top": {
                 "$type": "spacing",
                 "$value": "0",
                 "$description": "margin bottom of single elements"

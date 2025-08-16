@@ -35,17 +35,17 @@
             "$value": "cubic-bezier(0, 0, 1, 1)",
             "$description": "Linear motion with no acceleration"
           },
-          "ease-out": {
+          "ease_out": {
             "$type": "cubicBezier",
             "$value": "cubic-bezier(0, 0, 0.2, 1)",
             "$description": "Starts fast, ends slow - good for entrances"
           },
-          "ease-in": {
+          "ease_in": {
             "$type": "cubicBezier",
             "$value": "cubic-bezier(0.4, 0, 1, 1)",
             "$description": "Starts slow, ends fast - good for exits"
           },
-          "ease-in-out": {
+          "ease_in_out": {
             "$type": "cubicBezier",
             "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
             "$description": "Slow start and end - good for emphasis"

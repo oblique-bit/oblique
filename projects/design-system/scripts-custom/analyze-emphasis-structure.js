@@ -1,5 +1,17 @@
 #!/usr/bin/env node
 
+/**
+ * Emphasis Structure Analysis Script
+ * 
+ * Analyzes the emphasis layer structure in the design token system by examining:
+ * - L3 emphasis layer tokens (high/low emphasis)  
+ * - L2 inversity layer tokens that reference emphasis
+ * - Button component usage of emphasis tokens
+ * 
+ * This helps understand how emphasis tokens flow through the semantic layers
+ * and are consumed by components like buttons.
+ */
+
 const fs = require('fs');
 const path = require('path');
 

@@ -3,22 +3,22 @@
     "c": {
       "tooltip": {
         "spacing": {
-          "padding-top": {
+          "padding_top": {
             "$type": "spacing",
             "$value": "{ob.s.spacing.md}",
             "$description": "Increased paddings around text boost its readability."
           },
-          "padding-right": {
+          "padding_right": {
             "$type": "spacing",
             "$value": "{ob.s.spacing.xl}",
             "$description": "Increased paddings around text boost its readability."
           },
-          "padding-bottom": {
+          "padding_bottom": {
             "$type": "spacing",
             "$value": "{ob.s.spacing.md}",
             "$description": "Increased paddings around text boost its readability."
           },
-          "padding-left": {
+          "padding_left": {
             "$type": "spacing",
             "$value": "{ob.s.spacing.xl}",
             "$description": "Increased paddings around text boost its readability."
@@ -27,23 +27,23 @@
         "color": {
           "bg": {
             "$type": "color",
-            "$value": "{ob.s1.color.neutral.bg.contrast-highest.inversity-flipped}",
+            "$value": "{ob.s1.color.neutral.bg.contrast_highest.inversity_flipped}",
             "$description": "Inverted background color to stand out in a busy layout."
           },
           "fg": {
             "$type": "color",
-            "$value": "{ob.s1.color.neutral.fg.contrast-highest.inversity-flipped}",
+            "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
             "$description": "Text color for the inverted background color."
           }
         },
         "typography": {
           "label": {
             "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.strong}",
+            "$value": "{ob.s.typography.type_scale.sm.strong}",
             "$description": "Bold since it is 14px to reach AAA"
           }
         },
-        "border-radius": {
+        "border_radius": {
           "$type": "borderRadius",
           "$value": "{ob.s.radii.sm}",
           "$description": "Applied radius SM for subtle aesthetics, distinct from buttons to avoid looking clickable."
@@ -57,7 +57,7 @@
           "speed": {
             "$type": "duration",
             "$value": "{ob.s.motion.duration.smooth}",
-            "$description": "Animation of the tooltip: 200ms on hover with ease-out effect from 0% to 100% opacity and back."
+            "$description": "Animation of the tooltip: 200ms on hover with ease_out effect from 0% to 100% opacity and back."
           }
         }
       }

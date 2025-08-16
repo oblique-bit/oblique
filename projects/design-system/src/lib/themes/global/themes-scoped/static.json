@@ -1,7 +1,7 @@
 {
   "ob": {
     "g": {
-      "theme-configuration": {
+      "theme_configuration": {
         "emphasis": {
           "high": {
             "$type": "other",
@@ -27,12 +27,12 @@
           }
         }
       },
-      "component-configuration": {
+      "component_configuration": {
         "footer": {
           "theme": {
             "emphasis": {
               "$type": "other",
-              "$value": "{ob.g.theme-configuration.emphasis.low}",
+              "$value": "{ob.g.theme_configuration.emphasis.low}",
               "$description": "Footer uses muted interaction emphasis theme override"
             }
           }
@@ -42,7 +42,7 @@
             "theme": {
               "emphasis": {
                 "$type": "other",
-                "$value": "{ob.g.theme-configuration.emphasis.low}",
+                "$value": "{ob.g.theme_configuration.emphasis.low}",
                 "$description": "We on purpose lower the interaction emphasis of all buttons inside Infobox and use the muted colors defined in semantic/color/emphasis/muted. This token can not be used in Figma due to Figma restrictions. In this case, the token is static and does not react to dark/light mode."
               }
             },
@@ -50,7 +50,7 @@
               "theme": {
                 "inversity": {
                   "$type": "other",
-                  "$value": "{ob.g.theme-configuration.inversity.flipped}",
+                  "$value": "{ob.g.theme_configuration.inversity.flipped}",
                   "$description": "Fatal variant of the Infobox is flipped in both lighntess modes - dark and light."
                 }
               }
@@ -61,7 +61,7 @@
           "theme": {
             "emphasis": {
               "$type": "other",
-              "$value": "{ob.g.theme-configuration.emphasis.low}",
+              "$value": "{ob.g.theme_configuration.emphasis.low}",
               "$description": "Popover uses muted interaction emphasis theme override"
             }
           }
@@ -71,7 +71,7 @@
             "theme": {
               "inversity": {
                 "$type": "other",
-                "$value": "{ob.g.theme-configuration.inversity.flipped}",
+                "$value": "{ob.g.theme_configuration.inversity.flipped}",
                 "$description": "Primary button consumes inversed colors."
               }
             }

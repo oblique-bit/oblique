@@ -7,48 +7,48 @@
             "attention": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.attention.bg.contrast-low.inversity-normal}",
+                "$value": "{ob.s2.color.status.attention.bg.contrast_low.inversity_normal}",
                 "$description": "References semantic attention status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.disabled.bg.contrast-low.inversity-normal}",
+                "$value": "{ob.s2.color.status.disabled.bg.contrast_low.inversity_normal}",
                 "$description": "Disabled attention badge background color using status disabled tokens for semantic consistency."
               }
             },
             "info": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.info.bg.contrast-low.inversity-normal}",
+                "$value": "{ob.s2.color.status.info.bg.contrast_low.inversity_normal}",
                 "$description": "References semantic info status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.disabled.bg.contrast-low.inversity-normal}",
+                "$value": "{ob.s2.color.status.disabled.bg.contrast_low.inversity_normal}",
                 "$description": "Disabled info badge background color using status disabled tokens for semantic consistency."
               }
             },
             "critical": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.critical.bg.contrast-low.inversity-normal}",
+                "$value": "{ob.s2.color.status.critical.bg.contrast_low.inversity_normal}",
                 "$description": "References semantic critical status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.disabled.bg.contrast-low.inversity-normal}",
+                "$value": "{ob.s2.color.status.disabled.bg.contrast_low.inversity_normal}",
                 "$description": "Disabled critical badge background color using status disabled tokens for semantic consistency."
               }
             },
             "resolved": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.resolved.bg.contrast-low.inversity-normal}",
+                "$value": "{ob.s2.color.status.resolved.bg.contrast_low.inversity_normal}",
                 "$description": "References semantic resolved status background color, Enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.disabled.bg.contrast-low.inversity-normal}",
+                "$value": "{ob.s2.color.status.disabled.bg.contrast_low.inversity_normal}",
                 "$description": "Disabled resolved badge background color using status disabled tokens for semantic consistency."
               }
             }
@@ -57,48 +57,48 @@
             "info": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.info.fg.contrast-highest.inversity-normal}",
+                "$value": "{ob.s2.color.status.info.fg.contrast_highest.inversity_normal}",
                 "$description": "Maximum contrast text color for info badge in enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.disabled.fg.contrast-highest.inversity-normal}",
+                "$value": "{ob.s2.color.status.disabled.fg.contrast_highest.inversity_normal}",
                 "$description": "Maximum contrast disabled info badge text color for consistency with badge design pattern."
               }
             },
             "attention": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.attention.fg.contrast-highest.inversity-normal}",
+                "$value": "{ob.s2.color.status.attention.fg.contrast_highest.inversity_normal}",
                 "$description": "Maximum contrast text color for attention badge in enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.disabled.fg.contrast-highest.inversity-normal}",
+                "$value": "{ob.s2.color.status.disabled.fg.contrast_highest.inversity_normal}",
                 "$description": "Maximum contrast disabled attention badge text color for consistency with badge design pattern."
               }
             },
             "critical": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.critical.fg.contrast-highest.inversity-normal}",
+                "$value": "{ob.s2.color.status.critical.fg.contrast_highest.inversity_normal}",
                 "$description": "Maximum contrast text color for critical badge in enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.disabled.fg.contrast-highest.inversity-normal}",
+                "$value": "{ob.s2.color.status.disabled.fg.contrast_highest.inversity_normal}",
                 "$description": "Maximum contrast disabled critical badge text color for consistency with badge design pattern."
               }
             },
             "resolved": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.resolved.fg.contrast-highest.inversity-normal}",
+                "$value": "{ob.s2.color.status.resolved.fg.contrast_highest.inversity_normal}",
                 "$description": "Maximum contrast text color for resolved badge in enabled state."
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s2.color.status.disabled.fg.contrast-highest.inversity-normal}",
+                "$value": "{ob.s2.color.status.disabled.fg.contrast_highest.inversity_normal}",
                 "$description": "Maximum contrast disabled resolved badge text color for consistency with badge design pattern."
               }
             }
@@ -133,7 +133,7 @@
           }
         },
         "sizing": {
-          "max-width": {
+          "max_width": {
             "sm": {
               "$type": "sizing",
               "$value": "{ob.s.size.normal}",
@@ -145,7 +145,7 @@
               "$description": "Max width of large size badge. Maybe this is obsolete if we restrict the amount of characters the other way."
             }
           },
-          "min-width": {
+          "min_width": {
             "sm": {
               "$type": "sizing",
               "$value": "{ob.s.size.normal}",
@@ -170,15 +170,15 @@
             }
           }
         },
-        "border-radius": {
+        "border_radius": {
           "$type": "borderRadius",
           "$value": "{ob.s.radii.round}",
           "$description": "For entire rounded badges"
         },
         "typography": {
-          "badge-label": {
+          "badge_label": {
             "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.sm.strong}",
+            "$value": "{ob.s.typography.type_scale.sm.strong}",
             "$description": "Strong font weight for optimal scannability."
           }
         }

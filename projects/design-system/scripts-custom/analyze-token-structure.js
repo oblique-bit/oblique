@@ -1,5 +1,16 @@
 #!/usr/bin/env node
 
+/**
+ * Token Structure Analysis Script
+ * 
+ * Debug utility that analyzes the structure of design tokens in the emphasis layer
+ * and other semantic token files. Shows available tokens, their values, and file locations
+ * to help understand the current token organization.
+ * 
+ * This is useful for debugging token structures and verifying token existence
+ * during development and refactoring.
+ */
+
 const fs = require('fs');
 const path = require('path');
 

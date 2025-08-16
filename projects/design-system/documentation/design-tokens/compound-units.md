@@ -1,184 +1,186 @@
 # Design Token Compound Units Reference
 
-This document lists all compound units used in the Oblique Design System documentation and their camelCase transformations for CSS implementations.
+This document lists all compound units used in the Oblique Design System. Compound units now use underscores instead of hyphens, creating consistency between token sources and CSS variables without requiring transformations.
 
 ## Overview
 
-Design tokens use compound units (multi-word identifiers) that need to be transformed when used in CSS variables to maintain consistency and readability. The transformation follows camelCase conventions where subsequent words are capitalized.
+Design tokens use compound units (multi-word identifiers) with underscores for consistency across Token Studio, Figma Variables, and CSS output. This eliminates the need for camelCase transformations and provides predictable naming.
 
 ### Style Dictionary Integration
 
-This document provides the reference for Style Dictionary transformations. [Style Dictionary](https://amzn.github.io/style-dictionary/#/) is the tool used to transform our design tokens from their documentation format (hyphenated) to their implementation format (camelCase) for CSS variables. 
+This document provides the reference for Style Dictionary processing. [Style Dictionary](https://amzn.github.io/style-dictionary/#/) now preserves the underscore format in CSS variables, eliminating transformation complexity. 
 
 When implementing new compound units in the design system:
-1. Add them to the list in this document
-2. Ensure they have appropriate transformations defined in Style Dictionary
-3. Verify the CSS output follows the camelCase convention
+1. Add them to the list in this document using underscore format
+2. Ensure Style Dictionary preserves the underscore naming
+3. Verify the CSS output maintains the underscore convention
 
-## Compound Unit Transformations
+## Compound Unit Format
 
-### Contrast Levels
+### Current Format (Underscore)
 
-| Documentation Format | CSS Format |
-|---------------------|------------|
-| `contrast-high` | `contrastHigh` |
-| `contrast-medium` | `contrastMedium` |
-| `contrast-low` | `contrastLow` |
+| Token Format | CSS Format |
+|-------------|------------|
+| `contrast_high` | `contrast_high` |
+| `contrast_medium` | `contrast_medium` |
+| `contrast_low` | `contrast_low` |
+| `inversity_normal` | `inversity_normal` |
+| `inversity_flipped` | `inversity_flipped` |
 
-### Inversity Variations
-
-| Documentation Format | CSS Format |
-|---------------------|------------|
-| `inversity-normal` | `inversityNormal` |
-| `inversity-flipped` | `inversityFlipped` |
+All compound units now use underscores and remain unchanged in CSS output.
 
 ## Usage Examples
 
-### Documentation Token Structure
+### Token Structure
 ```
-ob.s.color.status.{status-name}.{property}.{contrast-level}.{inversity-variation}
+ob.s.color.status.{status_name}.{property}.{contrast_level}.{inversity_variation}
 ```
 
 ### CSS Implementation
 ```scss
-/* ❌ Incorrect - using documentation format */
+/* ❌ Old format - using hyphens */
 color: var(--ob-s-color-status-critical-fg-contrast-high-inversity-normal);
 
-/* ✅ Correct - using camelCase format */
-color: var(--ob-s-color-status-critical-fg-contrastHigh-inversityNormal);
+/* ✅ New format - using underscores */
+color: var(--ob-s-color-status-critical-fg-contrast_high-inversity_normal);
 ```
+
+**Benefits:**
+- ✅ Consistent naming across Token Studio, Figma, and CSS
+- ✅ No transformation complexity
+- ✅ Predictable token names for developers
 
 ## Complete Compound Unit List
 
 > This list was generated using the `scripts-custom/extract-compound-units.js` script, which analyzes all JSON files in the design system to identify and extract compound units from token keys.
 
 ### All Compound Units
-- `alert-notification`
-- `app-title`
-- `badge-label`
-- `bg-base`
-- `bg-disabled`
-- `border-radius`
-- `border-width`
-- `bottom-left`
-- `bottom-right`
-- `box-shadow`
-- `buttons-container`
-- `buttons-order-figma`
-- `close-button-size`
-- `cobalt-alpha`
-- `col-gap`
-- `component-configuration`
-- `components-only`
-- `container-top`
-- `contrast-high`
-- `contrast-high-alpha`
-- `contrast-highest`
-- `contrast-low`
-- `contrast-lowest`
-- `contrast-medium`
-- `custom-buttons`
-- `custom-buttons-container`
-- `custom-buttons-label`
-- `custom-icon`
-- `docs-lg`
-- `docs-md`
-- `docs-sm`
-- `ease-in`
-- `ease-in-out`
-- `ease-out`
-- `emphasis-high`
-- `emphasis-low`
-- `event-horizon`
-- `expansion-panel`
-- `fatal-test`
-- `fg-base`
-- `fg-disabled`
-- `fg-static`
-- `fg-visited`
-- `figma-canvas-bg`
-- `figma-section-bg`
-- `figma-section-border`
-- `file-upload`
-- `font-family`
-- `font-size`
-- `font-weight`
-- `horizontal-nav-cell`
-- `icon-only`
-- `icon-size`
-- `indigo-alpha`
-- `infobox-icon-container`
-- `internal-list`
-- `inversity-flipped`
-- `inversity-flipped-alpha`
-- `inversity-normal`
-- `language-label`
-- `letter-spacing`
-- `letter-spacing-px`
-- `letter-spacing-rem`
-- `letterSpacing-depr`
-- `letterSpacing-px`
-- `list-group`
-- `main-nav`
-- `margin-bottom`
-- `margin-top`
-- `marker-gap`
-- `max-width`
-- `min-height`
-- `min-width`
-- `mult-responsive`
-- `mult-static`
-- `nav-tree`
-- `neg-100`
-- `neg-150`
-- `neg-200`
-- `neg-250`
-- `neg-300`
-- `neg-50`
-- `no-color`
-- `off-canvas`
-- `padded-container`
-- `padding-bottom`
-- `padding-left`
-- `padding-right`
-- `padding-top`
-- `parentof-buttons-container`
-- `radio-checkbox`
-- `row-gap`
-- `single-item`
-- `slide-toggle`
-- `step-label`
-- `step-number`
-- `submenu-row-label`
-- `text-bar`
-- `text-blocks`
-- `text-decoration`
-- `text-label`
-- `text-variant-container`
-- `theme-configuration`
-- `title-bar`
-- `top-after-p`
-- `top-left`
-- `top-right`
-- `type-scale`
-- `user-input`
-- `white-alpha`
-- `with-text`
-- `z-index`
+- `alert_notification`
+- `app_title`
+- `badge_label`
+- `bg_base`
+- `bg_disabled`
+- `border_radius`
+- `border_width`
+- `bottom_left`
+- `bottom_right`
+- `box_shadow`
+- `buttons_container`
+- `buttons_order_figma`
+- `close_button_size`
+- `cobalt_alpha`
+- `col_gap`
+- `component_configuration`
+- `components_only`
+- `container_top`
+- `contrast_high`
+- `contrast_high_alpha`
+- `contrast_highest`
+- `contrast_low`
+- `contrast_lowest`
+- `contrast_medium`
+- `custom_buttons`
+- `custom_buttons_container`
+- `custom_buttons_label`
+- `custom_icon`
+- `docs_lg`
+- `docs_md`
+- `docs_sm`
+- `ease_in`
+- `ease_in_out`
+- `ease_out`
+- `emphasis_high`
+- `emphasis_low`
+- `event_horizon`
+- `expansion_panel`
+- `fatal_test`
+- `fg_base`
+- `fg_disabled`
+- `fg_static`
+- `fg_visited`
+- `figma_canvas_bg`
+- `figma_section_bg`
+- `figma_section_border`
+- `file_upload`
+- `font_family`
+- `font_size`
+- `font_weight`
+- `horizontal_nav_cell`
+- `icon_only`
+- `icon_size`
+- `indigo_alpha`
+- `infobox_icon_container`
+- `internal_list`
+- `inversity_flipped`
+- `inversity_flipped_alpha`
+- `inversity_normal`
+- `language_label`
+- `letter_spacing`
+- `letter_spacing_px`
+- `letter_spacing_rem`
+- `letterSpacing_depr`
+- `letterSpacing_px`
+- `list_group`
+- `main_nav`
+- `margin_bottom`
+- `margin_top`
+- `marker_gap`
+- `max_width`
+- `min_height`
+- `min_width`
+- `mult_responsive`
+- `mult_static`
+- `nav_tree`
+- `neg_100`
+- `neg_150`
+- `neg_200`
+- `neg_250`
+- `neg_300`
+- `neg_50`
+- `no_color`
+- `off_canvas`
+- `padded_container`
+- `padding_bottom`
+- `padding_left`
+- `padding_right`
+- `padding_top`
+- `parentof_buttons_container`
+- `radio_checkbox`
+- `row_gap`
+- `single_item`
+- `slide_toggle`
+- `step_label`
+- `step_number`
+- `submenu_row_label`
+- `text_bar`
+- `text_blocks`
+- `text_decoration`
+- `text_label`
+- `text_variant_container`
+- `theme_configuration`
+- `title_bar`
+- `top_after_p`
+- `top_left`
+- `top_right`
+- `type_scale`
+- `user_input`
+- `white_alpha`
+- `with_text`
+- `z_index`
 
 ### Compound Units with CSS Transformations
 These compound units need camelCase transformation when used in CSS:
 
-- `contrast-high` -> `contrastHigh`
-- `contrast-medium` -> `contrastMedium`
-- `contrast-low` -> `contrastLow`
-- `inversity-normal` -> `inversityNormal`
-- `inversity-flipped` -> `inversityFlipped`
-- `border-radius` -> `borderRadius`
-- `font-family` -> `fontFamily`
-- `font-size` -> `fontSize`
-- `font-weight` -> `fontWeight`
-- `letter-spacing` -> `letterSpacing`
+- `contrast_high` -> `contrastHigh`
+- `contrast_medium` -> `contrastMedium`
+- `contrast_low` -> `contrastLow`
+- `inversity_normal` -> `inversityNormal`
+- `inversity_flipped` -> `inversityFlipped`
+- `border_radius` -> `borderRadius`
+- `font_family` -> `fontFamily`
+- `font_size` -> `fontSize`
+- `font_weight` -> `fontWeight`
+- `letter_spacing` -> `letterSpacing`
 
 ## Implementation Guidelines
 

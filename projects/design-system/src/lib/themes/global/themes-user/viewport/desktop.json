@@ -2,7 +2,7 @@
   "ob": {
     "g": {
       "scale": {
-        "mult-responsive": {
+        "mult_responsive": {
           "$type": "number",
           "$value": "4"
         }
@@ -14,7 +14,7 @@
       },
       "viewport": {
         "$type": "text",
-        "$value": "{ob.g.theme-configuration.viewport.desktop}"
+        "$value": "{ob.g.theme_configuration.viewport.desktop}"
       }
     }
   }

@@ -3,87 +3,87 @@
     "c": {
       "infobox": {
         "spacing": {
-          "padding-top": {
+          "padding_top": {
             "$type": "spacing",
             "$value": "{ob.s.spacing.3xl}",
             "$description": "Top and right padding have to be the same so the position of the close button is visually apealing."
           },
-          "padding-right": {
+          "padding_right": {
             "$type": "spacing",
             "$value": "{ob.s.spacing.3xl}",
             "$description": "Top and right padding have to be the same so the position of the close button is visually apealing."
           },
-          "padding-bottom": {
+          "padding_bottom": {
             "$type": "spacing",
             "$value": "{ob.s.spacing.3xl}",
             "$description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity."
           },
-          "padding-left": {
+          "padding_left": {
             "$type": "spacing",
             "$value": "{ob.s.spacing.3xl}",
             "$description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity."
           },
-          "row-gap": {
+          "row_gap": {
             "$type": "spacing",
             "$value": "{ob.s.spacing.4xl}",
-            "$description": "Sets a minimum vertical gap between container-top and container-buttons to enhance the readability."
+            "$description": "Sets a minimum vertical gap between container_top and container-buttons to enhance the readability."
           },
-          "container-top": {
-            "col-gap": {
+          "container_top": {
+            "col_gap": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.2xl}",
               "$description": "Gap between the status icon and the text blocks for readibility and horizontal rhytm."
             }
           },
-          "text-blocks": {
-            "row-gap": {
+          "text_blocks": {
+            "row_gap": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.xl}",
               "$description": "Emphasizes the visual hierarchy between the title and the body text."
             }
           },
-          "title-bar": {
-            "col-gap": {
+          "title_bar": {
+            "col_gap": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.3xl}",
               "$description": "Prevents the title coming to close to the Close button (X)"
             }
           },
           "body": {
-            "padding-right": {
+            "padding_right": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.9xl}",
               "$description": "Adding a larger right-padding on larger screens introduces white space that allows the design to \"breathe\"."
             },
-            "padding-bottom": {
+            "padding_bottom": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.2xl}",
               "$description": "Adding a larger right-padding on larger screens introduces white space that allows the design to \"breathe\"."
             }
           },
-          "parentof-buttons-container": {
-            "padding-left": {
+          "parentof-buttons_container": {
+            "padding_left": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.8xl}"
             },
-            "padding-bottom": {
+            "padding_bottom": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.sm}",
               "$description": "sets right and bottom spacing from the last button to the border of the surface visually identical on desktop"
             },
-            "padding-right": {
+            "padding_right": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.sm}"
             }
           },
-          "infobox-icon-container": {
-            "padding-top": {
+          "infobox_icon_container": {
+            "padding_top": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.none}"
             }
           },
           "title": {
-            "padding-top": {
+            "padding_top": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.xs}",
               "$description": "Aligns the title with the status icon and the close button on desktop."
@@ -91,56 +91,56 @@
           }
         },
         "sizing": {
-          "icon-size": {
+          "icon_size": {
             "$type": "sizing",
             "$value": "{ob.s.icon.size.lg}",
             "$description": "Icon size is slightly larger than the title in order to be readable since it has less contrast than the text and communicates the status."
           },
-          "close-button-size": {
+          "close_button_size": {
             "$type": "sizing",
             "$value": "{ob.s.icon.size.lg}"
           },
           "title": {
-            "min-height": {
+            "min_height": {
               "$type": "sizing",
               "$value": "{ob.s.size.chubby}",
               "$description": "This minimum height helps the \"title\" container keeps the height regardless if there is close-button inside the infobox on mobile. "
             }
           }
         },
-        "border-width": {
+        "border_width": {
           "left": {
             "$type": "borderWidth",
-            "$value": "{ob.s.border-width.md}",
+            "$value": "{ob.s.border_width.md}",
             "$description": "A border width that is close to the line thickness of the icon (proximity and concistancy design principles)."
           }
         },
         "container": {
           "spacing": {
-            "row-gap": {
+            "row_gap": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.lg}",
               "$description": "Vertical distance / gap between infoboxes."
             },
-            "padding-bottom": {
+            "padding_bottom": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.3xl}"
             },
-            "padding-top": {
+            "padding_top": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.3xl}"
             },
-            "padding-left": {
+            "padding_left": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.none}"
             },
-            "padding-right": {
+            "padding_right": {
               "$type": "spacing",
               "$value": "{ob.s.spacing.none}"
             }
           }
         },
-        "buttons-order-figma": {
+        "buttons_order_figma": {
           "$type": "text",
           "$value": "primary-last",
           "$description": "The primary button in an Infobox on Desktop should be positioned on the right side of a right-aligned button group to ensure it appears as the last element, facilitating intuitive navigation and decision-making."

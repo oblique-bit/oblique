@@ -1,7 +1,7 @@
 {
   "ob": {
     "g": {
-      "theme-configuration": {
+      "theme_configuration": {
         "viewport": {
           "mobile": {
             "$type": "other",
@@ -16,7 +16,7 @@
         }
       },
       "scale": {
-        "mult-static": {
+        "mult_static": {
           "$type": "number",
           "$value": "4",
           "$description": "Base scaling multiplier for consistent sizing across the design system. Used as foundation for spacing, sizing, and responsive calculations."

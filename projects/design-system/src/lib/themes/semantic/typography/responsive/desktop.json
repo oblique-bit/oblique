@@ -114,7 +114,7 @@
             "$value": "{ob.s.spacing.none}",
             "$description": "Standard spacing above H1 is none to use vertical space."
           },
-          "top-after-p": {
+          "top_after_p": {
             "$type": "spacing",
             "$value": "{ob.s.spacing.6xl}",
             "$description": "SPecial spacing above H1 after a paragraph"

@@ -5,30 +5,30 @@ This glossary defines key terminology used throughout the Oblique design token d
 ## Token Hierarchy
 
 ### s0 (Static Tokens)
-Base-level tokens that define the foundational values in the design system. These tokens are stored in `s0-static.json` files and represent the most primitive design decisions (colors, spacing, typography scales). Static tokens do not change across themes or contexts.
+Base-level tokens that define the foundational values in the design system. These tokens are stored in primitive files and represent the most primitive design decisions (colors, spacing, typography scales). Static tokens do not change across themes or contexts.
 
-**File Location:** `src/lib/themes/semantic/color/s0-static.json`  
-**Example:** `ob.s0.color.blue.500`
+**File Location:** `src/lib/themes/primitive/color.json`  
+**Example:** `ob.p.color.blue.500`
 
 ### s1 (Semantic Level 1 - Lightness)
 First semantic layer that handles lightness variations across themes. S1 tokens reference s0 static tokens and provide the foundation for light/dark theme switching.
 
 **File Structure:** `src/lib/themes/semantic/color/s1-lightness/`  
-**Example:** `ob.s1.color.surface.primary`  
+**Example:** `ob.s1.color.neutral.bg.contrast-highest.inversity-normal`  
 **Formerly:** l1 tokens (legacy naming)
 
 ### s2 (Semantic Level 2 - Inversity)
 Second semantic layer that manages inversity relationships. S2 tokens define how colors behave when inverted or contrasted, ensuring proper accessibility and visual hierarchy.
 
 **File Structure:** `src/lib/themes/semantic/color/s2-inversity/`  
-**Example:** `ob.s2.color.text.primary`  
+**Example:** `ob.s2.color.neutral.bg.contrast-highest.inversity-normal`  
 **Formerly:** l2 tokens (legacy naming)
 
 ### s3 (Semantic Level 3 - Emphasis)
 Third semantic layer that controls emphasis and interaction states. S3 tokens define visual priority levels and interactive feedback (hover, focus, disabled states).
 
 **File Structure:** `src/lib/themes/semantic/color/s3-emphasis/`  
-**Example:** `ob.s3.color.button.primary`  
+**Example:** `ob.s3.color.interaction.state.fg.enabled.inversity-normal`  
 **Formerly:** l3 tokens (legacy naming)
 
 ## Tokens Studio Terminology
@@ -158,7 +158,7 @@ The set of theme files that must maintain structural symmetry with each other. C
 ### Reference Chain
 The path a token follows from component to primitive. Reference chains show the complete dependency trail and ensure proper abstraction levels are maintained.
 
-**Example Chain:** `button.primary` -> `s3.interaction.state.fg.enabled` -> `s2.interaction.emphasis-high.fg-base` -> `s1.interaction.emphasis-high.fg-base` -> `ob.p.color.steelblue.600`
+**Example Chain:** `interaction.state.fg.enabled` -> `ob.s3.color.interaction.state.fg.enabled.inversity-normal` -> `ob.s2.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal` -> `ob.s1.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal` -> `ob.p.color.steelblue.600`
 
 ### Token Inheritance
 How tokens inherit values from parent tokens in the hierarchy. Inheritance allows child tokens to automatically receive updates when parent values change, maintaining consistency across the system.

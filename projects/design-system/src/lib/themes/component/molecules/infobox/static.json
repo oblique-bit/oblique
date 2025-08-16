@@ -3,7 +3,7 @@
     "c": {
       "infobox": {
         "container": {
-          "padding-bottom": {
+          "padding_bottom": {
             "$type": "spacing",
             "$value": "{ob.s.spacing.md}",
             "$description": "Needed to extend the padding in the Infobox component, ensuring consistent and visually appealing spacing to the right and below the button."
@@ -36,23 +36,23 @@
             }
           }
         },
-        "border-radius": {
-          "top-left": {
+        "border_radius": {
+          "top_left": {
             "$type": "borderRadius",
             "$value": "{ob.s.radii.none}",
             "$description": "Sets the left upper corner radius to zero because there we have a left colored border and no need for rounded corners."
           },
-          "top-right": {
+          "top_right": {
             "$type": "borderRadius",
             "$value": "{ob.s.radii.md}",
             "$description": "Rounds the right upper corner to enhance visual appeal of the component."
           },
-          "bottom-left": {
+          "bottom_left": {
             "$type": "borderRadius",
             "$value": "{ob.s.radii.none}",
             "$description": "Sets the left upper corner radius to zero because there we have a left colored border and no need for rounded corners."
           },
-          "bottom-right": {
+          "bottom_right": {
             "$type": "borderRadius",
             "$value": "{ob.s.radii.md}",
             "$description": "Rounds the right bottom corner to enhance visual appeal of the component."
@@ -61,7 +61,7 @@
         "typography": {
           "title": {
             "$type": "typography",
-            "$value": "{ob.s.typography.type-scale.md.strong}",
+            "$value": "{ob.s.typography.type_scale.md.strong}",
             "$description": "The message is in a bold font weight to build visual contrast and emphasize the hierarchy."
           },
           "body": {

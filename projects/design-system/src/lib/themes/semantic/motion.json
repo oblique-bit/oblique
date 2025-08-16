@@ -32,22 +32,22 @@
         "easing": {
           "standard": {
             "$type": "cubicBezier",
-            "$value": "{ob.p.motion.easing.ease-out}",
+            "$value": "{ob.p.motion.easing.ease_out}",
             "$description": "Default easing for most UI animations"
           },
           "entrance": {
             "$type": "cubicBezier",
-            "$value": "{ob.p.motion.easing.ease-out}",
+            "$value": "{ob.p.motion.easing.ease_out}",
             "$description": "For elements entering the screen"
           },
           "exit": {
             "$type": "cubicBezier",
-            "$value": "{ob.p.motion.easing.ease-in}",
+            "$value": "{ob.p.motion.easing.ease_in}",
             "$description": "For elements leaving the screen"
           },
           "emphasis": {
             "$type": "cubicBezier",
-            "$value": "{ob.p.motion.easing.ease-in-out}",
+            "$value": "{ob.p.motion.easing.ease_in_out}",
             "$description": "For attention-drawing animations"
           }
         }

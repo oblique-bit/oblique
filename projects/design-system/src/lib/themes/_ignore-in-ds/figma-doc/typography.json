@@ -2,65 +2,65 @@
   "figma-doc": {
     "typography": {
       "standard": {
-        "docs-sm": {
+        "docs_sm": {
           "$type": "typography",
           "$value": {
             "fontSize": "{ob.p.fontSizeUnitless.400}",
-            "fontFamily": "{ob.s.font-family.code}",
-            "fontWeight": "{ob.p.font-weight.100}",
-            "letterSpacing": "{ob.s.letter-spacing.normal}"
+            "fontFamily": "{ob.s.font_family.code}",
+            "fontWeight": "{ob.p.font_weight.100}",
+            "letterSpacing": "{ob.s.letter_spacing.normal}"
           },
           "$description": "Small font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         },
-        "docs-md": {
+        "docs_md": {
           "$type": "typography",
           "$value": {
             "fontSize": "{ob.p.fontSizeUnitless.500}",
-            "fontFamily": "{ob.s.font-family.body}",
-            "fontWeight": "{ob.s.font-weight.extraBold}",
-            "letterSpacing": "{ob.s.letter-spacing.normal}"
+            "fontFamily": "{ob.s.font_family.body}",
+            "fontWeight": "{ob.s.font_weight.extraBold}",
+            "letterSpacing": "{ob.s.letter_spacing.normal}"
           },
           "$description": "Medium font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         },
-        "docs-lg": {
+        "docs_lg": {
           "$type": "typography",
           "$value": {
             "fontSize": "{ob.p.fontSizeUnitless.1100}",
-            "fontFamily": "{ob.s.font-family.body}",
-            "fontWeight": "{ob.s.font-weight.extraBold}",
-            "letterSpacing": "{ob.s.letter-spacing.normal}"
+            "fontFamily": "{ob.s.font_family.body}",
+            "fontWeight": "{ob.s.font_weight.extraBold}",
+            "letterSpacing": "{ob.s.letter_spacing.normal}"
           },
           "$description": "Large font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         }
       },
       "strong": {
-        "docs-sm": {
+        "docs_sm": {
           "$type": "typography",
           "$value": {
             "fontSize": "{ob.p.fontSizeUnitless.400}",
-            "fontFamily": "{ob.s.font-family.code}",
-            "fontWeight": "{ob.s.font-weight.extraBold}",
-            "letterSpacing": "{ob.s.letter-spacing.normal}"
+            "fontFamily": "{ob.s.font_family.code}",
+            "fontWeight": "{ob.s.font_weight.extraBold}",
+            "letterSpacing": "{ob.s.letter_spacing.normal}"
           },
           "$description": "Small font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         },
-        "docs-md": {
+        "docs_md": {
           "$type": "typography",
           "$value": {
             "fontSize": "{ob.p.fontSizeUnitless.500}",
-            "fontFamily": "{ob.s.font-family.body}",
-            "fontWeight": "{ob.s.font-weight.extraBold}",
-            "letterSpacing": "{ob.s.letter-spacing.normal}"
+            "fontFamily": "{ob.s.font_family.body}",
+            "fontWeight": "{ob.s.font_weight.extraBold}",
+            "letterSpacing": "{ob.s.letter_spacing.normal}"
           },
           "$description": "Medium font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         },
-        "docs-lg": {
+        "docs_lg": {
           "$type": "typography",
           "$value": {
             "fontSize": "{ob.p.fontSizeUnitless.1100}",
-            "fontFamily": "{ob.s.font-family.body}",
-            "fontWeight": "{ob.s.font-weight.extraBold}",
-            "letterSpacing": "{ob.s.letter-spacing.normal}"
+            "fontFamily": "{ob.s.font_family.body}",
+            "fontWeight": "{ob.s.font_weight.extraBold}",
+            "letterSpacing": "{ob.s.letter_spacing.normal}"
           },
           "$description": "Large font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         }

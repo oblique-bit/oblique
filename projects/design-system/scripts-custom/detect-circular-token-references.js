@@ -1,5 +1,16 @@
 #!/usr/bin/env node
 
+/**
+ * Circular Token Reference Detection Script
+ * 
+ * Analyzes all design token JSON files to detect circular references where
+ * tokens reference each other in a loop (e.g., A → B → C → A).
+ * 
+ * Circular references can cause infinite loops in token resolution and
+ * compilation failures in style dictionary. This script helps identify
+ * and debug such issues in the design token system.
+ */
+
 const fs = require('fs');
 const path = require('path');
 
