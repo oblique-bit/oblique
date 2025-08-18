@@ -109,7 +109,12 @@ registerLocaleData(localeDE);
 					'i18n.routes.accessibility.exception.third'
 				],
 				applicationOperator: 'i18n.routes.accessibility.operator',
-				contact: [{email: 'oblique@bit.admin.ch', context: 'Oblique Team'}, {phone: '123'}]
+				contact: [
+					{email: 'oblique@bit.admin.ch', context: 'Oblique Team'},
+					{phone: '123'},
+					{url: 'http://example-contact-page.bit.admin.ch', context: 'Some random, inexistent, external link to demonstrate the feature'},
+					{url: '/samples/button', context: 'Some random internal link to demonstrate the feature'}
+				]
 			},
 			hasLanguageInUrl: true
 		})
