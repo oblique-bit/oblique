@@ -70,7 +70,7 @@ documentation/reports/token-changes/
 ├── scripts/
 │   ├── track-token-changes.py      # Main tracking script
 │   └── setup-token-tracking.py    # Setup & maintenance utility
-├── _private/data/
+├── data/
 │   └── tracked-tokens-config.json  # Configuration for tracked tokens
 └── YYYY/
     └── MM/
@@ -79,7 +79,7 @@ documentation/reports/token-changes/
 
 ## ⚙️ Configuration
 
-Edit `_private/data/tracked-tokens-config.json` to:
+Edit `data/tracked-tokens-config.json` to:
 - Add new token categories
 - Specify which token paths to track
 - Configure watch patterns for file scanning
