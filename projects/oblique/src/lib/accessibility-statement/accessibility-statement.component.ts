@@ -43,21 +43,38 @@ export class AccessibilityStatementComponent {
 			: 'i18n.oblique.accessibility-statement.statement.no-exception';
 	}
 
-	private parseContact(contact: ObContactData): {label: string; url: string; icon: ObEIcon; context?: string} {
+	private parseContact(contact: ObContactData): {
+		label: string;
+		url: string;
+		icon: ObEIcon;
+		context?: string;
+		isExternal: boolean;
+	} {
 		if (contact.phone) {
 			return {
 				label: contact.phone,
 				url: `tel:${contact.phone}`,
 				icon: ObEIcon.PHONE,
-				context: contact.context
+				context: contact.context,
+				isExternal: false
 			};
 		}
-
+		if (contact.email) {
+			return {
+				label: contact.email,
+				url: `mailto:${contact.email}`,
+				icon: ObEIcon.MAIL,
+				context: contact.context,
+				isExternal: false
+			};
+		}
+		const isExternal = contact.url.startsWith('http');
 		return {
-			label: contact.email,
-			url: `mailto:${contact.email}`,
-			icon: ObEIcon.MAIL,
-			context: contact.context
+			label: contact.url,
+			url: contact.url,
+			icon: isExternal ? ObEIcon.LINK_EXTERNAL : ObEIcon.LINK,
+			context: contact.context,
+			isExternal
 		};
 	}
 }

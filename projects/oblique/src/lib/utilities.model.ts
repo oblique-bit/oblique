@@ -83,11 +83,19 @@ interface ObContactInfoBase {
 interface ObContactEmail extends ObContactInfoBase {
 	email: string;
 	phone?: never;
+	url?: string;
 }
 
 interface ObContactPhone extends ObContactInfoBase {
 	email?: never;
 	phone: string;
+	url?: string;
 }
 
-export type ObContactData = ObContactPhone | ObContactEmail;
+interface ObContactUrl extends ObContactInfoBase {
+	email?: never;
+	phone?: string;
+	url: string;
+}
+
+export type ObContactData = ObContactPhone | ObContactEmail | ObContactUrl;
