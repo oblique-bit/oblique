@@ -1,4 +1,4 @@
-# [14.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/sds-13.3.1_release-major_14.0.0__bxzrj_2025-07-11T135102...14.0.0-alpha.1) (2025-07-21)
+# [14.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/13.3.2...14.0.0-alpha.1) (2025-07-21)
 
 ## Features
 

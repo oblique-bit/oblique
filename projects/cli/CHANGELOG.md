@@ -1,4 +1,4 @@
-# [14.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/sds-13.3.1_release-major_14.0.0__bxzrj_2025-07-11T135102...14.0.0-alpha.1) (2025-07-21)
+# [14.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/13.3.2...14.0.0-alpha.1) (2025-07-21)
 
 ## Bug Fixes
 
@@ -7,6 +7,7 @@
 ## Features
 
 - **new:** add `@oblique/toolchain` dependency ([bb9e73c5](https://github.com/oblique-bit/oblique/commit/bb9e73c5b2d521bfd38a6a1971c30bd7bdddace6))
+- **new:** remove sonar step ([0dc0a5fb](https://github.com/oblique-bit/oblique/commit/0dc0a5fb3d33d33c2284758c42633808310afeb3))
 
 # [13.3.1](https://github.com/oblique-bit/oblique/compare/13.3.0...13.3.1) (2025-07-10)
 

@@ -4,6 +4,12 @@
 
 - **service-navigation:** sanitize url redirection ([ed86dfbc](https://github.com/oblique-bit/oblique/commit/ed86dfbc132b180ef9d8b5e612c3462254756ea5))
 
+# [14.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/13.3.2...14.0.0-alpha.1) (2025-07-21)
+
+## Features
+
+- **service-navigation:** remove avatar images ([70368d99](https://github.com/oblique-bit/oblique/commit/70368d997af7c5834cd437213367ef1084fb3638))
+
 # [13.3.2](https://github.com/oblique-bit/oblique/compare/sds-13.3.1_release-patch_13.3.2__plbk6_2025-07-21T073817...13.3.2) (2025-07-22)
 
 ## Bug Fixes

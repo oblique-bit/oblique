@@ -5,11 +5,14 @@
 - **tabbed-page:** fix "Getting started as a designer" link on Ui/Ux tab ([0c3b7b4e](https://github.com/oblique-bit/oblique/commit/0c3b7b4ee9affdaa1639c4cabb016d6f23f06941))
 - **tabbed-page:** fix typo in "Getting started as a designer" link on Ui/Ux tab ([8dc08492](https://github.com/oblique-bit/oblique/commit/8dc08492179941e1f5e0721be7bc55117dca0cc0))
 
-# [14.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/sds-13.3.1_release-major_14.0.0__bxzrj_2025-07-11T135102...14.0.0-alpha.1) (2025-07-21)
+# [14.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/13.3.2...14.0.0-alpha.1) (2025-07-21)
 
 ## Features
 
 - **cms:** cover redirections for version 14 ([f97c4d42](https://github.com/oblique-bit/oblique/commit/f97c4d42020c1c433fc1f119e146e7db3e007858))
+- **code-examples:** add icon metadata array ([35d9705d](https://github.com/oblique-bit/oblique/commit/35d9705d933738de25753c62a49807b3231a86ac))
+- **side-navigation:** wrap navigation items into lists and a navigation landmark ([111afb6e](https://github.com/oblique-bit/oblique/commit/111afb6e53e3deab2ae6c9fe3b1b13e65b066b33))
+- **side-navigation:** use aria-current for better accessibility ([7e77cfb5](https://github.com/oblique-bit/oblique/commit/7e77cfb5a4fb78e4cd7609822bf48d688e64d0a0))
 
 # [13.3.1](https://github.com/oblique-bit/oblique/compare/13.3.0...13.3.1) (2025-07-10)
 
