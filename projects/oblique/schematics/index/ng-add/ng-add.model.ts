@@ -13,7 +13,6 @@ export interface ObIOptionsSchema {
 	mandatory: boolean;
 	npmrc: boolean;
 	prefix: string;
-	protractor: boolean;
 	proxy: string;
 	title: string;
 	unknownRoute: boolean;

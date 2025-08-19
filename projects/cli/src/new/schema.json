@@ -88,11 +88,6 @@
         "Jest's documentation: https://jestjs.io/docs/getting-started"
       ]
     },
-    "protractor": {
-      "type": "boolean",
-      "defaultValue": false,
-      "description": "Protractor for end to end tests: If you use this flag, you keep Protractor for e2e tests."
-    },
     "npmrc": {
       "type": "boolean",
       "defaultValue": true,

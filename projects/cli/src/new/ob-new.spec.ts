@@ -150,10 +150,6 @@ describe('Ob new command', () => {
 							"--jest Jest for unit tests: If true, Karma/Jasmine will be replaced with Jest as your application's testing framework. See more information at Jest at npm https://www.npmjs.com/package/jest and Jest's documentation: https://jestjs.io/docs/getting-started (default: true)"
 					},
 					{
-						description: 'Option to keep Protractor for end-to-end tests',
-						expected: '--protractor Protractor for end to end tests: If you use this flag, you keep Protractor for e2e tests.'
-					},
-					{
 						description: 'Option to create an .npmrc file',
 						expected:
 							'--npmrc Create .npmrc: If you use this flag, it adds an .npmrc file, suitable for projects located within confederation/federal network. (default: true)'
@@ -216,7 +212,7 @@ describe('Ob new command', () => {
 				test(`should call npx ${projectName} with default parameter`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						5,
-						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --eslint --husky`,
+						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --npmrc --eslint --husky`,
 						{cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'}
 					);
 				});
@@ -302,7 +298,7 @@ describe('Ob new command', () => {
 			test(`should call npx ${options}`, () => {
 				const expected = options.includes('--interactive')
 					? `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']}`
-					: `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --eslint --husky`;
+					: `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --npmrc --eslint --husky`;
 				expect(execSync).toHaveBeenNthCalledWith(5, expected, {cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'});
 			});
 
