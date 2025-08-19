@@ -10,7 +10,12 @@ export class UpdateV13toV14 implements ObIMigrations {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(options: IUpdateV14Schema): Rule {
 		return (tree: Tree, context: SchematicContext) =>
-			chain([warnIfStandalone(), this.renameIcons(), this.migrateContactInfo()])(tree, context);
+			chain([
+				warnIfStandalone(),
+				this.renameIcons(),
+				this.migrateAccessibilityStatementContactInfo(),
+				this.migrateServiceNavigationContactInfo()
+			])(tree, context);
 	}
 
 	private renameIcons(): Rule {
@@ -269,9 +274,9 @@ export class UpdateV13toV14 implements ObIMigrations {
 		});
 	}
 
-	private migrateContactInfo(): Rule {
+	private migrateAccessibilityStatementContactInfo(): Rule {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
-			infoMigration(context, 'Migrate contact info');
+			infoMigration(context, 'Migrate accessibility statement contact info');
 			const toApply = (filePath: string): void => {
 				const content = readFile(tree, filePath);
 				if (content.includes('provideObliqueConfiguration(')) {
@@ -285,6 +290,22 @@ export class UpdateV13toV14 implements ObIMigrations {
 						contacts.push(...phones.split(',').map(phone => `{phone: '${phone.trim()}'}`));
 					}
 					replaceInFile(tree, filePath, /(?<=contact\s*:\s*)\{.*?}/, `[${contacts.join(', ')}]`);
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		});
+	}
+
+	private migrateServiceNavigationContactInfo(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Migrate service navigation contact info');
+			const toApply = (filePath: string): void => {
+				const content = readFile(tree, filePath);
+				if (content.includes('header.serviceNavigation.infoContact')) {
+					tree.overwrite(
+						filePath,
+						content.replace(/(?<prefix>header\.serviceNavigation\.infoContact\s*=\s*{.*)tel(?<suffix>.*})/s, '$<prefix>phone$<suffix>')
+					);
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');

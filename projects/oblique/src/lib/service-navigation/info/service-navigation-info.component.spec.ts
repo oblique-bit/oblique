@@ -164,10 +164,10 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 			});
 		});
 
-		describe('with tel property only', () => {
+		describe('with phone property only', () => {
 			let sections: DebugElement[];
 			beforeEach(fakeAsync(async () => {
-				component.contact = {tel: '123'};
+				component.contact = {phone: '123'};
 				await harness.openPopover();
 				fixture.detectChanges();
 				tick();
@@ -242,10 +242,10 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 			});
 		});
 
-		describe('with email, tel and contact properties', () => {
+		describe('with email, phone and contact properties', () => {
 			let sections: DebugElement[];
 			beforeEach(fakeAsync(async () => {
-				component.contact = {email: 'text@test.com', tel: '123', formUrl: 'https://example.com/'};
+				component.contact = {email: 'text@test.com', phone: '123', formUrl: 'https://example.com/'};
 				await harness.openPopover();
 				fixture.detectChanges();
 				tick();

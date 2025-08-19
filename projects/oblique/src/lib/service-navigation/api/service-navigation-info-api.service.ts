@@ -36,7 +36,7 @@ export class ObServiceNavigationInfoApiService {
 			contactText: info.data.contact.optionalInformation,
 			contact: {
 				email: info.data.contact.email.emailAddress,
-				tel: info.data.contact.phone.phoneNumber,
+				phone: info.data.contact.phone.phoneNumber,
 				formUrl: info.data.contact.links[0]?.link ?? undefined
 			}
 		};

@@ -497,7 +497,7 @@ describe('ObServiceNavigationComponent', () => {
 					component.infoContactText = 'input contact text';
 					component.infoHelpText = 'input help text';
 					component.infoLinks = [{url: 'input url link1', label: 'input label link1'}];
-					component.infoContact = {formUrl: 'input contactUrl', email: 'input email', tel: 'input phone'};
+					component.infoContact = {formUrl: 'input contactUrl', email: 'input email', phone: 'input phone'};
 					fixture.detectChanges();
 					infoElement = await harness.getInfoElement();
 				});
@@ -511,7 +511,7 @@ describe('ObServiceNavigationComponent', () => {
 						input: 'links'
 					},
 					{
-						inputExpectedResult: {formUrl: 'input contactUrl', email: 'input email', tel: 'input phone'},
+						inputExpectedResult: {formUrl: 'input contactUrl', email: 'input email', phone: 'input phone'},
 						input: 'contact'
 					}
 				])('should add infoBackend$.$input to ob-service-navigation-info $input input', async ({input, inputExpectedResult}) => {

@@ -86,7 +86,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 	describe('contact parsing', () => {
 		describe('stringify object', () => {
 			it('should return the object as a real object', () => {
-				const contact = {tel: '+41 99 999 99 99'};
+				const contact = {phone: '+41 99 999 99 99'};
 				component.ngOnChanges({
 					...defaultChangesValues(),
 					infoContact: new SimpleChange(null, JSON.stringify(contact), true)
