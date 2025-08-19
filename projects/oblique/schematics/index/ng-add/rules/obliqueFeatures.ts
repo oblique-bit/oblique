@@ -144,19 +144,15 @@ function addDefaultHomeComponent(prefix: string): Rule {
 }
 
 function addDefaultComponent(tree: Tree, prefix: string): void {
-	addFile(tree, 'src/app/home/home.component.html', getTemplate(tree, `home.component.html`));
-	addFile(tree, 'src/app/home/home.component.scss', getTemplate(tree, `home.component.scss.config`));
-	addFile(
-		tree,
-		'src/app/home/home.component.ts',
-		getTemplate(tree, 'home.component.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix)
-	);
+	addFile(tree, 'src/app/home/home.html', getTemplate(tree, `home.html`));
+	addFile(tree, 'src/app/home/home.scss', getTemplate(tree, `home.scss.config`));
+	addFile(tree, 'src/app/home/home.ts', getTemplate(tree, 'home.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix));
 }
 
 function addDefaultComponentToAppModule(tree: Tree): void {
 	if (tree.exists(appModulePath)) {
 		const sourceFile = createSrcFile(tree, appModulePath);
-		const changes: Change[] = addDeclarationToModule(sourceFile, appModulePath, 'HomeComponent', './home/home.component');
+		const changes: Change[] = addDeclarationToModule(sourceFile, appModulePath, 'Home', './home/home');
 
 		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatButtonModule', '@angular/material/button'));
 		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatCardModule', '@angular/material/card'));
@@ -173,12 +169,12 @@ function addDefaultComponentRouteToAppRoutingModule(tree: Tree): void {
 		const changes: Change[] = [];
 		const fileName = routingModule.split('/').pop();
 		if (fileName) {
-			changes.push(insertImport(sourceFile, routingModule, 'HomeComponent', './home/home.component'));
+			changes.push(insertImport(sourceFile, routingModule, 'Home', './home/home'));
 			changes.push(
 				addRouteDeclarationToModule(
 					sourceFile,
 					fileName,
-					"{path: '', redirectTo: 'home', pathMatch: 'full'},{path: 'home', component: HomeComponent}"
+					"{path: '', redirectTo: 'home', pathMatch: 'full'},{path: 'home', component: Home}"
 				)
 			);
 		}

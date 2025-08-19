@@ -1,8 +1,7 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {addDependency, checkPrecondition, getPreconditionVersion} from './ng-add-utils';
+import {addDependency, checkForMultiProject, checkPrecondition, getPreconditionVersion} from './ng-add-utils';
 import {ObIOptionsSchema} from './ng-add.model';
 import {
-	checkForMultiProject,
 	checkForSSR,
 	checkForStandalone,
 	createSafeRule,
