@@ -11,10 +11,10 @@ const angularJsonConfigPath = './angular.json/';
 export let isSuccessful = true;
 
 export const angularAppFilesNames = {
-	appTemplate: 'app.component.html',
-	appModule: 'app.module.ts',
-	appRoutingModule: 'app-routing.module.ts',
-	appComponent: 'app.component.ts'
+	appTemplate: 'app.html',
+	appModule: 'app-module.ts',
+	appRoutingModule: 'app-routing-module.ts',
+	appComponent: 'app.ts'
 };
 
 export interface PathPerProject {
