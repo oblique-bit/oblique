@@ -58,7 +58,9 @@ function setBuilder(): Rule {
 					builder: '@angular-devkit/build-angular:browser',
 					options: {
 						...buildOptions,
-						main: buildOptions.browser
+						main: buildOptions.browser,
+						outputPath: 'dist',
+						index: 'src/index.html'
 					},
 					configurations: {
 						...buildConfigurations.config,
