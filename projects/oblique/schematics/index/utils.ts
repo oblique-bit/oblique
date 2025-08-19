@@ -10,13 +10,6 @@ const glob = require('glob');
 const angularJsonConfigPath = './angular.json/';
 export let isSuccessful = true;
 
-export const angularAppFilesNames = {
-	appTemplate: 'app.html',
-	appModule: 'app-module.ts',
-	appRoutingModule: 'app-routing-module.ts',
-	appComponent: 'app.ts'
-};
-
 export interface PathPerProject {
 	project: string;
 	path: string;
@@ -114,18 +107,6 @@ export function warnIfStandalone(): Rule {
 			warn(
 				context,
 				'Standalone application detected, the migration has only been partially applied and the application is currently broken. Please check manually the changes applied by the schematic.'
-			);
-		}
-	};
-}
-
-export function checkForMultiProject(): Rule {
-	return (tree: Tree, context: SchematicContext) => {
-		infoMigration(context, 'Check if project is a multi-project angular application ');
-		const multiProject = !tree.exists(`./src/app/${angularAppFilesNames.appModule}`);
-		if (multiProject) {
-			error(
-				'Multi-project application detected. Oblique schematics are not compatible with multi-project applications. Either convert the application to non multi-project or perform the changes manually. Check the documentation for guidance.'
 			);
 		}
 	};

@@ -1,10 +1,9 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {addDependency, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
+import {addDependency, angularAppFilesNames, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
 import {
 	ObliquePackage,
 	addAngularConfigInList,
-	angularAppFilesNames,
 	applyInTree,
 	createSafeRule,
 	getIndexPaths,
