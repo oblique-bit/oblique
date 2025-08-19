@@ -10,7 +10,7 @@
                 "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}"
               },
               "enabled-flipped": {
-                "$type": "color", 
+                "$type": "color",
                 "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}"
               },
               "hover": {

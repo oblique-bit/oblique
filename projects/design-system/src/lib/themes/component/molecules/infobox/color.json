@@ -22,7 +22,7 @@
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s2.color.status.fatal.bg.contrast_high.inversity_flipped}"
+              "$value": "{ob.s2.color.status.fatal.bg.contrast_high.inversity_normal}"
             }
           },
           "border": {
@@ -44,7 +44,7 @@
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s2.color.status.fatal.fg.contrast_medium.inversity_normal}"
+              "$value": "{ob.s2.color.status.fatal.fg.contrast_medium.inversity_flipped}"
             }
           },
           "surface": {
@@ -66,7 +66,7 @@
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s2.color.status.fatal.bg.contrast_high.inversity_normal}"
+              "$value": "{ob.s2.color.status.fatal.bg.contrast_high.inversity_flipped}"
             }
           },
           "fg": {
@@ -88,7 +88,7 @@
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s2.color.neutral.fg.contrast_highest.inversity_normal}"
+              "$value": "{ob.s2.color.neutral.fg.contrast_highest.inversity_flipped}"
             }
           }
         }
