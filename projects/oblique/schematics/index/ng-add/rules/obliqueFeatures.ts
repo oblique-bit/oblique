@@ -10,6 +10,7 @@ import {
 import {
 	adaptInsertChange,
 	addDevDependency,
+	angularAppFilesNames,
 	appModulePath,
 	applyChanges,
 	createSrcFile,
@@ -17,7 +18,16 @@ import {
 	routingModulePath
 } from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {ObliquePackage, addFile, createSafeRule, infoMigration, readFile, setOrCreateAngularProjectsConfig, writeFile} from '../../utils';
+import {
+	ObliquePackage,
+	addFile,
+	createSafeRule,
+	infoMigration,
+	readFile,
+	replaceInFile,
+	setOrCreateAngularProjectsConfig,
+	writeFile
+} from '../../utils';
 
 export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, context: SchematicContext) => {
@@ -138,6 +148,7 @@ function addDefaultHomeComponent(prefix: string): Rule {
 		addDefaultComponent(tree, prefix);
 		addDefaultComponentToAppModule(tree);
 		addDefaultComponentRouteToAppRoutingModule(tree);
+		removeTitleTest(tree);
 
 		return tree;
 	});
@@ -180,6 +191,11 @@ function addDefaultComponentRouteToAppRoutingModule(tree: Tree): void {
 		}
 		applyChanges(tree, routingModule, changes);
 	}
+}
+
+function removeTitleTest(tree: Tree): void {
+	const appSpecFile = `src/app/${angularAppFilesNames.appComponentSpec}`;
+	replaceInFile(tree, appSpecFile, /import\s+{[^}]*}.*from\s+['"]@angular\/core['"];/, '');
 }
 
 function addExternalLink(externalLink: boolean): Rule {

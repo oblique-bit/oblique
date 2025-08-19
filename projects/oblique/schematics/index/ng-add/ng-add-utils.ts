@@ -15,7 +15,8 @@ export const angularAppFilesNames = {
 	appTemplate: 'app.html',
 	appModule: 'app-module.ts',
 	appRoutingModule: 'app-routing-module.ts',
-	appComponent: 'app.ts'
+	appComponent: 'app.ts',
+	appComponentSpec: 'app.spec.ts'
 };
 export const appModulePath = `src/app/${angularAppFilesNames.appModule}`;
 export const routingModulePath = `src/app/${angularAppFilesNames.appRoutingModule}`;
