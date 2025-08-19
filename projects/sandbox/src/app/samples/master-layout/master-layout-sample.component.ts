@@ -1,11 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {
-	ObEScrollMode,
-	type ObICollapseBreakpoints,
-	type ObIServiceNavigationContact,
-	type ObLoginState,
-	ObMasterLayoutService
-} from '@oblique/oblique';
+import {ObEScrollMode, type ObICollapseBreakpoints, type ObLoginState, ObMasterLayoutService} from '@oblique/oblique';
 import {type Observable, share} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {DynamicNavigationService} from './dynamic-navigation.service';
@@ -220,11 +214,7 @@ export class MasterLayoutSampleComponent {
 		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrl?.length > 0;
 	}
 	set hasContactForm(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact = this.buildContactInfo(
-			this.hasContactPhone,
-			this.hasContactEmail,
-			value
-		);
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrl = value ? this.infoContact.formUrl : undefined;
 	}
 
 	get hasContactEmail(): boolean {
@@ -232,11 +222,7 @@ export class MasterLayoutSampleComponent {
 	}
 
 	set hasContactEmail(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact = this.buildContactInfo(
-			this.hasContactPhone,
-			value,
-			this.hasContactForm
-		);
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact.email = value ? this.infoContact.email : undefined;
 	}
 
 	get hasContactPhone(): boolean {
@@ -244,11 +230,7 @@ export class MasterLayoutSampleComponent {
 	}
 
 	set hasContactPhone(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact = this.buildContactInfo(
-			value,
-			this.hasContactEmail,
-			this.hasContactForm
-		);
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact.phone = value ? this.infoContact.phone : undefined;
 	}
 
 	get hasProfileLinks(): boolean {
@@ -277,13 +259,5 @@ export class MasterLayoutSampleComponent {
 
 	removeItem(): void {
 		this.dynamicNavigationService.removeLastLink();
-	}
-
-	private buildContactInfo(hasPhone: boolean, hasEmail: boolean, hasContactForm: boolean): ObIServiceNavigationContact {
-		return {
-			phone: hasPhone ? this.infoContact.phone : undefined,
-			email: hasEmail ? this.infoContact.email : undefined,
-			formUrl: hasContactForm ? this.infoContact.formUrl : undefined
-		};
 	}
 }
