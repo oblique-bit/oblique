@@ -3,6 +3,7 @@ import {ObIOptionsSchema} from '../ng-add.model';
 import {addDevDependency, addScript, getTemplate, removeScript} from '../ng-add-utils';
 import {
 	addFile,
+	angularAppFilesNames,
 	createSafeRule,
 	deleteFile,
 	getAngularConfigs,
@@ -147,7 +148,7 @@ function addPrefix(prefix: string): Rule {
 function updateExistingPrefixes(prefix: string): Rule {
 	return createSafeRule((tree: Tree) => {
 		replaceInFile(tree, 'src/index.html', /<app-root><\/app-root>/g, `<${prefix}-root></${prefix}-root>`);
-		replaceInFile(tree, 'src/app/app.component.ts', /app-root/g, `${prefix}-root`);
+		replaceInFile(tree, `src/app/${angularAppFilesNames.appComponent}`, /app-root/g, `${prefix}-root`);
 		return tree;
 	});
 }

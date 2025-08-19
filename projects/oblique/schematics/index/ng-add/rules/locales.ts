@@ -3,7 +3,7 @@ import {insertImport} from '@angular/cdk/schematics';
 import {addImportToModule, addProviderToModule} from '@schematics/angular/utility/ast-utils';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {adaptInsertChange, addDependency, appModulePath, applyChanges, createSrcFile} from '../ng-add-utils';
-import {ObliquePackage, addFile, createSafeRule, infoMigration, readFile} from '../../utils';
+import {ObliquePackage, addFile, angularAppFilesNames, createSafeRule, infoMigration, readFile} from '../../utils';
 
 export function addLocales(locales: string[]): Rule {
 	return (tree: Tree, context: SchematicContext) =>
@@ -14,7 +14,7 @@ function importLocales(locales: string[]): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique: Adding locale management & translations');
 		const sourceFile = createSrcFile(tree, appModulePath);
-		const file = 'app.module.ts';
+		const file = angularAppFilesNames.appModule;
 		const changes = [
 			...addProviderToModule(sourceFile, appModulePath, `{provide: LOCALE_ID, useValue: '${locales[0]}'}`, 'TEMP'),
 			insertImport(sourceFile, file, 'registerLocaleData', '@angular/common'),
@@ -62,7 +62,7 @@ function configureLocales(locales: string[]): Rule {
 			tree.overwrite(appModulePath, appModuleContent);
 
 			const sourceFile = createSrcFile(tree, appModulePath);
-			const changes = [insertImport(sourceFile, 'app.module.ts', 'ObMasterLayoutConfig', ObliquePackage)];
+			const changes = [insertImport(sourceFile, angularAppFilesNames.appModule, 'ObMasterLayoutConfig', ObliquePackage)];
 			tree = applyChanges(tree, appModulePath, changes);
 		}
 		return tree;
