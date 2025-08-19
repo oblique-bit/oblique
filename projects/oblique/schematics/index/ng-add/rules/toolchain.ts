@@ -212,7 +212,8 @@ function addPrettier(eslint: boolean): Rule {
 
 function addLinting(tree: Tree): void {
 	setOrCreateAngularProjectsConfig(tree, ['architect', 'lint', 'builder'], '@angular-eslint/builder:lint');
-	setOrCreateAngularProjectsConfig(tree, ['architect', 'lint', 'options', 'lintFilePatterns'], ['src/**/*.ts', 'src/**/.html']);
+	setOrCreateAngularProjectsConfig(tree, ['architect', 'lint', 'options', 'lintFilePatterns'], ['src/**/*.ts', 'src/**/*.html']);
+	addFile(tree, 'tsconfig.lint.json', getTemplate(tree, 'default-tsconfig.lint.json'));
 }
 
 function overwriteEslintRC(eslint: boolean, prefix: string): Rule {
