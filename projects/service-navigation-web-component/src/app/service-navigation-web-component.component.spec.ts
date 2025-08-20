@@ -2,7 +2,7 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {ObServiceNavigationWebComponentComponent} from './service-navigation-web-component.component';
 import {SimpleChange, type SimpleChanges} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ObServiceNavigationComponent, provideObliqueTestingConfiguration} from '@oblique/oblique';
+import {type ObIServiceNavigationContact, ObServiceNavigationComponent, provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {appVersion} from './version';
 import {HttpClient} from '@angular/common/http';
 
@@ -86,7 +86,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 	describe('contact parsing', () => {
 		describe('stringify object', () => {
 			it('should return the object as a real object', () => {
-				const contact = {phone: '+41 99 999 99 99'};
+				const contact = {phone: '+41 99 999 99 99', phoneText: 'some text'} as ObIServiceNavigationContact;
 				component.ngOnChanges({
 					...defaultChangesValues(),
 					infoContact: new SimpleChange(null, JSON.stringify(contact), true)
