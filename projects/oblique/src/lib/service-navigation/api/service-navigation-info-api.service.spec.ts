@@ -69,12 +69,24 @@ describe('ObServiceNavigationInfoApiService', () => {
 					expect(result.contact.email).toEqual(fixtureApplicationHelp().data.contact.email.emailAddress);
 				});
 
-				it('should have a "contact.tel" property with the phone number', () => {
+				it('should have a "contact.emailText" property with email optionalInformation', () => {
+					expect(result.contact.emailText).toEqual(fixtureApplicationHelp().data.contact.email.optionalInformation);
+				});
+
+				it('should have a "contact.phone" property with the phone number', () => {
 					expect(result.contact.phone).toEqual(fixtureApplicationHelp().data.contact.phone.phoneNumber);
+				});
+
+				it('should have a "contact.phoneText" property with tel optionalInformation', () => {
+					expect(result.contact.phoneText).toEqual(fixtureApplicationHelp().data.contact.phone.optionalInformation);
 				});
 
 				it('should have a "contact.formUrl" property with the first contact link', () => {
 					expect(result.contact.formUrl).toEqual(fixtureApplicationHelp().data.contact.links[0].link);
+				});
+
+				it('should have a "contact.formUrlText" property with links[0] optionalInformation', () => {
+					expect(result.contact.formUrlText).toEqual(fixtureApplicationHelp().data.contact.links[0].optionalInformation);
 				});
 			});
 
@@ -168,16 +180,16 @@ function fixtureApplicationHelp(): ObIServiceNavigationResponse<ObISeriviceNavig
 					{
 						title: '',
 						link: 'https://example.com/contact',
-						optionalInformation: ''
+						optionalInformation: 'form url text'
 					}
 				],
 				email: {
 					emailAddress: 'example@example.com',
-					optionalInformation: ''
+					optionalInformation: 'email text'
 				},
 				phone: {
 					phoneNumber: '+411234567',
-					optionalInformation: ''
+					optionalInformation: 'tel text'
 				},
 				optionalInformation: 'contact text'
 			}

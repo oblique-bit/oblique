@@ -1,0 +1,16 @@
+@use "../../../styles/scss/core/variables";
+
+.ob-service-navigation-info {
+	.ob-service-navigation-info-links {
+		padding-left: 0;
+		list-style-type: none;
+
+		li:not(:last-child) {
+			margin-bottom: variables.$ob-spacing-default;
+		}
+	}
+
+	.mat-icon {
+		margin-right: variables.$ob-spacing-xs;
+	}
+}
