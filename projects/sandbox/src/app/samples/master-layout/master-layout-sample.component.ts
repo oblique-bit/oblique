@@ -217,20 +217,39 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrl = value ? this.infoContact.formUrl : undefined;
 	}
 
+	get hasContactFormText(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrlText?.length > 0;
+	}
+	set hasContactFormText(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrlText = value ? this.infoContact.formUrlText : undefined;
+	}
+
 	get hasContactEmail(): boolean {
 		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.email?.length > 0;
 	}
-
 	set hasContactEmail(value: boolean) {
 		this.masterLayout.header.serviceNavigationConfiguration.infoContact.email = value ? this.infoContact.email : undefined;
+	}
+
+	get hasContactEmailText(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.emailText?.length > 0;
+	}
+	set hasContactEmailText(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact.emailText = value ? this.infoContact.emailText : undefined;
 	}
 
 	get hasContactPhone(): boolean {
 		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.phone?.length > 0;
 	}
-
 	set hasContactPhone(value: boolean) {
 		this.masterLayout.header.serviceNavigationConfiguration.infoContact.phone = value ? this.infoContact.phone : undefined;
+	}
+
+	get hasContactPhoneText(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.phoneText?.length > 0;
+	}
+	set hasContactPhoneText(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact.phoneText = value ? this.infoContact.phoneText : undefined;
 	}
 
 	get hasProfileLinks(): boolean {

@@ -36,6 +36,9 @@ export const infoLinks = [
 
 export const infoContact: ObIServiceNavigationContact = {
 	email: 'support@bit.admin.ch',
+	emailText: 'email detailed text',
 	phone: '+41 58 461 61 11',
-	formUrl: 'https://example.com/'
+	phoneText: 'tel detailed text',
+	formUrl: 'https://example.com/',
+	formUrlText: 'form detailed text'
 };
