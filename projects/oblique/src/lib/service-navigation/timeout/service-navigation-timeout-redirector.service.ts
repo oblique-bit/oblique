@@ -1,7 +1,8 @@
-import {Injectable, inject} from '@angular/core';
+import {Injectable, SecurityContext, inject} from '@angular/core';
 import {WINDOW} from '../../utilities';
 import {ObServiceNavigationTimeoutCookieService} from './service-navigation-timeout-cookie.service';
 import {Observable, ReplaySubject} from 'rxjs';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Injectable()
 export class ObServiceNavigationTimeoutRedirectorService {
@@ -13,6 +14,7 @@ export class ObServiceNavigationTimeoutRedirectorService {
 	private isLogoutClicked = false;
 	private readonly window: Window = inject(WINDOW);
 	private readonly cookieService = inject(ObServiceNavigationTimeoutCookieService);
+	private readonly domSanitizer = inject(DomSanitizer);
 	private readonly logoutTriggeredSubject = new ReplaySubject<string>(1);
 
 	constructor() {
@@ -39,7 +41,7 @@ export class ObServiceNavigationTimeoutRedirectorService {
 
 	public redirectOrEmit(href: string): void {
 		if (this.handleLogout) {
-			this.window.location.href = href;
+			this.window.location.href = this.domSanitizer.sanitize(SecurityContext.URL, href);
 		} else {
 			this.emitLogoutUrl(href);
 		}

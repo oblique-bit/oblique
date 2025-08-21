@@ -111,6 +111,15 @@ describe('ServiceNavigationTimeoutRedirectorService', () => {
 			expect(fakeWindow.location.href).toBe(fakeLogoutUrl);
 		});
 
+		it('should redirect to an empty string when there is no logoutUrl', () => {
+			service.handleLogout = true;
+			// eslint-disable-next-line no-script-url
+			const badCode = 'javascript:alert()';
+			service.logoutUrl = badCode;
+			service.logout();
+			expect(fakeWindow.location.href).toBe(`unsafe:${badCode}`);
+		});
+
 		it('should emit logoutUrl when handleLogout is false', async () => {
 			service.handleLogout = false;
 			service.logout();
