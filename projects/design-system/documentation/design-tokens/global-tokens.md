@@ -34,7 +34,7 @@ This cross-level referencing is **intentional** and reflects the **foundational 
 
 ---
 
-## ✅ **Rule to Document**
+## **Rule to Document**
 
 > Global tokens (`ob.g.*`) can be consumed by any level (Primitive, Semantic, or Component) and are exempt from strict level-to-level reference rules. They act as system-level constants and may appear in token references where broader configuration is needed.
 

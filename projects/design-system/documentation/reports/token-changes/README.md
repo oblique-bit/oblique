@@ -2,7 +2,7 @@
 
 This system monitors changes to tokens that are hardcoded in your style dictionary, providing automated detection and reporting when these critical references are modified or removed.
 
-## 🎯 Purpose
+## Purpose
 
 Protects developers who have hardcoded token paths in their style dictionary by:
 - Tracking specific tokens that should not change without notice
@@ -36,7 +36,7 @@ python3 documentation/reports/token-changes/scripts/setup-token-tracking.py cron
 python3 documentation/reports/token-changes/scripts/setup-token-tracking.py git-hook
 ```
 
-## 📋 Available Commands
+## Available Commands
 
 ### NPM Scripts
 ```bash
@@ -115,7 +115,7 @@ Edit `tracked-tokens-config.json` to:
 - Manual runs: `documentation/reports/token-changes/YYYY/MM/`
 - Timestamped format: `YYYYMMDD-HHMM-token-changes-report.md`
 
-## 🔄 Automation Options
+## Automation Options
 
 ### Daily Cron Job
 ```bash
@@ -136,7 +136,7 @@ python3 documentation/reports/token-changes/scripts/setup-token-tracking.py git-
   run: npm run track:token-changes-auto
 ```
 
-## 🚨 Breaking Change Detection
+## Breaking Change Detection
 
 The system identifies breaking changes as:
 - **Token Deletion**: Tracked token completely removed
@@ -175,7 +175,7 @@ npm run check:token-consumption    # Validate s0/s1/s2/s3 hierarchy
 npm run track:token-changes       # Track hardcoded token changes
 ```
 
-## 💡 Best Practices
+## Best Practices
 
 1. **Start Small**: Begin with critical tokens only
 2. **Regular Updates**: Add new tokens as they're hardcoded

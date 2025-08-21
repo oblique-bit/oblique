@@ -24,7 +24,7 @@ This document provides practical guidance for designers working with design toke
 
 ## Real Token Examples
 
-### ✅ **Spacing Tokens (Always Available)**
+### **Spacing Tokens (Always Available)**
 ```
 ob.s.spacing.none      (0)
 ob.s.spacing.xs        (0.5 units)
@@ -39,7 +39,7 @@ ob.s.spacing.5xl       (6 units)
 ob.s.spacing.6xl       (7 units)
 ```
 
-### ✅ **Button Tokens (HTML Layer)**
+### **Button Tokens (HTML Layer)**
 ```
 ob.h.button.spacing.with-text.padding.horizontal.md
 ob.h.button.spacing.with-text.padding.vertical.md
@@ -47,7 +47,7 @@ ob.h.button.spacing.with-text.gap.md
 ob.h.button.typography.text-label.font-size.md
 ```
 
-### ✅ **Component Tokens**
+### **Component Tokens**
 ```
 ob.c.badge.color.bg.info.enabled
 ob.c.badge.color.fg.info.enabled
@@ -57,7 +57,7 @@ ob.c.infobox.spacing.padding-left
 ob.c.tag.spacing.padding.horizontal.md
 ```
 
-### ✅ **Sizing Tokens**
+### **Sizing Tokens**
 ```
 ob.s.size.none
 ob.s.size.nano
@@ -70,7 +70,7 @@ ob.s.size.hefty
 ob.s.size.ultra
 ```
 
-### ✅ **Border & Radius Tokens**
+### **Border & Radius Tokens**
 ```
 ob.s.radii.none
 ob.s.radii.sm
@@ -82,7 +82,7 @@ ob.s.border-width.sm
 ob.s.border-width.md
 ```
 
-### ✅ **Typography Tokens**
+### **Typography Tokens**
 ```
 ob.s.fontSize.xs
 ob.s.fontSize.sm
@@ -117,10 +117,10 @@ When designing components:
   - Neutral components: `ob.s2.color.neutral.*`
 
 ### 4. **Common Mistakes to Avoid**
-- ❌ **Creating non-existent tokens** in design specifications
-- ❌ **Using primitive tokens** directly in component designs
-- ❌ **Inconsistent naming** that doesn't follow established patterns
-- ❌ **Missing token validation** before finalizing designs
+- **Creating non-existent tokens** in design specifications
+- **Using primitive tokens** directly in component designs
+- **Inconsistent naming** that doesn't follow established patterns
+- **Missing token validation** before finalizing designs
 
 ---
 
@@ -147,36 +147,36 @@ ob.c.button.spacing.padding.horizontal.md
 ### When to Create New Tokens
 
 #### Global Tokens (`ob.g.*`)
-✅ **Create global tokens when:**
+**Create global tokens when:**
 - System-wide foundation values need to be established
 - Cross-theme consistency is required
 - *[Work in Progress - detailed guidelines coming soon]*
 
 #### Primitive Tokens (`ob.p.*`)
-✅ **Create primitive tokens when:**
+**Create primitive tokens when:**
 - Raw values need to be stored (colors, measurements, fonts)
 - Base system values require centralization
 - *[Work in Progress - detailed guidelines coming soon]*
 
 #### Semantic Tokens (`ob.s.*`)
-✅ **Create semantic tokens when:**
+**Create semantic tokens when:**
 - Contextual meaning needs to be applied to primitives
 - Theme-specific interpretations are required
 - *[Work in Progress - detailed guidelines coming soon]*
 
 #### Component Tokens (`ob.c.*`)
-✅ **Create component tokens when:**
+**Create component tokens when:**
 - Component-specific styling patterns emerge
 - Variants within a component need systematization
 - *[Work in Progress - detailed guidelines coming soon]*
 
 #### HTML Tokens (`ob.h.*`)
-✅ **Create HTML tokens when:**
+**Create HTML tokens when:**
 - Element-specific styling needs standardization
 - HTML semantic elements require consistent treatment
 - *[Work in Progress - detailed guidelines coming soon]*
 
-❌ **Don't create tokens for:**
+**Don't create tokens for:**
 - One-off design decisions
 - Values that should use existing tokens
 - Unclear or ambiguous use cases
