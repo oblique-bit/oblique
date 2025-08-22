@@ -17,7 +17,6 @@
 			(click)="retryUpload(file)"
 		>
 			<mat-icon svgIcon="arrow_clockwise" />
-			<span class="ob-screen-reader-only">{{ "i18n.oblique.file-upload.retry" | translate }}</span>
 		</button>
 		<button
 			*ngIf="!file.completed"
@@ -28,7 +27,6 @@
 			(click)="cancelUpload(file)"
 		>
 			<mat-icon svgIcon="xmark" />
-			<span class="ob-screen-reader-only">{{ "i18n.common.cancel" | translate }}</span>
 		</button>
 	</div>
 </div>
