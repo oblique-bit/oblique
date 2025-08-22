@@ -10,6 +10,7 @@ import {
 import {
 	adaptInsertChange,
 	addDevDependency,
+	angularAppFilesNames,
 	appModulePath,
 	applyChanges,
 	createSrcFile,
@@ -17,7 +18,16 @@ import {
 	routingModulePath
 } from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {ObliquePackage, addFile, createSafeRule, infoMigration, readFile, setOrCreateAngularProjectsConfig, writeFile} from '../../utils';
+import {
+	ObliquePackage,
+	addFile,
+	createSafeRule,
+	infoMigration,
+	readFile,
+	replaceInFile,
+	setOrCreateAngularProjectsConfig,
+	writeFile
+} from '../../utils';
 
 export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, context: SchematicContext) => {
@@ -138,25 +148,22 @@ function addDefaultHomeComponent(prefix: string): Rule {
 		addDefaultComponent(tree, prefix);
 		addDefaultComponentToAppModule(tree);
 		addDefaultComponentRouteToAppRoutingModule(tree);
+		removeTitleTest(tree);
 
 		return tree;
 	});
 }
 
 function addDefaultComponent(tree: Tree, prefix: string): void {
-	addFile(tree, 'src/app/home/home.component.html', getTemplate(tree, `home.component.html`));
-	addFile(tree, 'src/app/home/home.component.scss', getTemplate(tree, `home.component.scss.config`));
-	addFile(
-		tree,
-		'src/app/home/home.component.ts',
-		getTemplate(tree, 'home.component.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix)
-	);
+	addFile(tree, 'src/app/home/home.html', getTemplate(tree, `home.html`));
+	addFile(tree, 'src/app/home/home.scss', getTemplate(tree, `home.scss.config`));
+	addFile(tree, 'src/app/home/home.ts', getTemplate(tree, 'home.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix));
 }
 
 function addDefaultComponentToAppModule(tree: Tree): void {
 	if (tree.exists(appModulePath)) {
 		const sourceFile = createSrcFile(tree, appModulePath);
-		const changes: Change[] = addDeclarationToModule(sourceFile, appModulePath, 'HomeComponent', './home/home.component');
+		const changes: Change[] = addDeclarationToModule(sourceFile, appModulePath, 'Home', './home/home');
 
 		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatButtonModule', '@angular/material/button'));
 		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatCardModule', '@angular/material/card'));
@@ -173,17 +180,22 @@ function addDefaultComponentRouteToAppRoutingModule(tree: Tree): void {
 		const changes: Change[] = [];
 		const fileName = routingModule.split('/').pop();
 		if (fileName) {
-			changes.push(insertImport(sourceFile, routingModule, 'HomeComponent', './home/home.component'));
+			changes.push(insertImport(sourceFile, routingModule, 'Home', './home/home'));
 			changes.push(
 				addRouteDeclarationToModule(
 					sourceFile,
 					fileName,
-					"{path: '', redirectTo: 'home', pathMatch: 'full'},{path: 'home', component: HomeComponent}"
+					"{path: '', redirectTo: 'home', pathMatch: 'full'},{path: 'home', component: Home}"
 				)
 			);
 		}
 		applyChanges(tree, routingModule, changes);
 	}
+}
+
+function removeTitleTest(tree: Tree): void {
+	const appSpecFile = `src/app/${angularAppFilesNames.appComponentSpec}`;
+	replaceInFile(tree, appSpecFile, /import\s+{[^}]*}.*from\s+['"]@angular\/core['"];/, '');
 }
 
 function addExternalLink(externalLink: boolean): Rule {

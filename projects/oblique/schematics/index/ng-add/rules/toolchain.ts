@@ -1,6 +1,6 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {addDevDependency, addScript, getTemplate, removeScript} from '../ng-add-utils';
+import {addDevDependency, addScript, angularAppFilesNames, getTemplate, removeScript} from '../ng-add-utils';
 import {
 	addFile,
 	createSafeRule,
@@ -58,7 +58,9 @@ function setBuilder(): Rule {
 					builder: '@angular-devkit/build-angular:browser',
 					options: {
 						...buildOptions,
-						main: buildOptions.browser
+						main: buildOptions.browser,
+						outputPath: 'dist',
+						index: 'src/index.html'
 					},
 					configurations: {
 						...buildConfigurations.config,
@@ -147,7 +149,7 @@ function addPrefix(prefix: string): Rule {
 function updateExistingPrefixes(prefix: string): Rule {
 	return createSafeRule((tree: Tree) => {
 		replaceInFile(tree, 'src/index.html', /<app-root><\/app-root>/g, `<${prefix}-root></${prefix}-root>`);
-		replaceInFile(tree, 'src/app/app.component.ts', /app-root/g, `${prefix}-root`);
+		replaceInFile(tree, `src/app/${angularAppFilesNames.appComponent}`, /app-root/g, `${prefix}-root`);
 		return tree;
 	});
 }
@@ -210,7 +212,8 @@ function addPrettier(eslint: boolean): Rule {
 
 function addLinting(tree: Tree): void {
 	setOrCreateAngularProjectsConfig(tree, ['architect', 'lint', 'builder'], '@angular-eslint/builder:lint');
-	setOrCreateAngularProjectsConfig(tree, ['architect', 'lint', 'options', 'lintFilePatterns'], ['src/**/*.ts', 'src/**/.html']);
+	setOrCreateAngularProjectsConfig(tree, ['architect', 'lint', 'options', 'lintFilePatterns'], ['src/**/*.ts', 'src/**/*.html']);
+	addFile(tree, 'tsconfig.lint.json', getTemplate(tree, 'default-tsconfig.lint.json'));
 }
 
 function overwriteEslintRC(eslint: boolean, prefix: string): Rule {

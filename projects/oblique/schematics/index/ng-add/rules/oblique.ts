@@ -1,5 +1,5 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {addDependency, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
+import {addDependency, angularAppFilesNames, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
 import {
 	ObliquePackage,
@@ -70,7 +70,7 @@ function removeBrowserModule(): Rule {
 			removeImport(tree, appModulePath, 'BrowserModule', '@angular/platform-browser');
 			replaceInFile(tree, filePath, /\s*BrowserModule,?/g, '');
 		};
-		return applyInTree(tree, apply, 'app.module.ts');
+		return applyInTree(tree, apply, angularAppFilesNames.appModule);
 	});
 }
 
@@ -156,7 +156,7 @@ function addFontFiles(): Rule {
 }
 
 function addMasterLayout(tree: Tree, title: string): void {
-	const path = 'src/app/app.component.html';
+	const path = `src/app/${angularAppFilesNames.appTemplate}`;
 	if (tree.exists(path)) {
 		tree.overwrite(
 			path,

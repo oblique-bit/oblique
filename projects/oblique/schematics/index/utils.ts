@@ -112,18 +112,6 @@ export function warnIfStandalone(): Rule {
 	};
 }
 
-export function checkForMultiProject(): Rule {
-	return (tree: Tree, context: SchematicContext) => {
-		infoMigration(context, 'Check if project is a multi-project angular application ');
-		const multiProject = !tree.exists('./src/app/app.module.ts');
-		if (multiProject) {
-			error(
-				'Multi-project application detected. Oblique schematics are not compatible with multi-project applications. Either convert the application to non multi-project or perform the changes manually. Check the documentation for guidance.'
-			);
-		}
-	};
-}
-
 export function checkForSSR(): Rule {
 	return (tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Check if application uses SSR');
