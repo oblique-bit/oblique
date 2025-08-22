@@ -1,6 +1,10 @@
 @use "@oblique/oblique/src/styles/scss/core/variables";
 @use "@oblique/oblique/src/styles/scss/core/palette";
 
+.ob-notification-container.ob-top-right {
+	top: 0;
+}
+
 .container {
 	display: grid;
 	grid-template-columns: 1fr 365px;
