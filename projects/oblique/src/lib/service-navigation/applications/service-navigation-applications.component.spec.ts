@@ -659,10 +659,6 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				expect(await trigger.matchesSelector('a')).toBe(true);
 			});
 
-			it('should have "i18n.oblique.service-navigation.applications.link.label" as text', async () => {
-				expect(await harness.getTriggerScreenReaderText()).toBe('i18n.oblique.service-navigation.applications.link.label');
-			});
-
 			it.each([
 				{attribute: 'id', val: 'service-navigation-applications-link'},
 				{attribute: 'href', val: ''}
@@ -693,10 +689,6 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 
 			it('should be a button', async () => {
 				expect(await trigger.matchesSelector('button')).toBe(true);
-			});
-
-			it('should have "i18n.oblique.service-navigation.applications.button.label" as text', async () => {
-				expect(await harness.getTriggerScreenReaderText()).toBe('i18n.oblique.service-navigation.applications.button.label');
 			});
 
 			it.each([

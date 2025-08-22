@@ -15,11 +15,6 @@ export class ObServiceNavigationInfoHarness extends ContentContainerComponentHar
 		return this.locatorFor(ObServiceNavigationInfoHarness.contentSelector)();
 	}
 
-	public async getTriggerButtonScreenReaderText(): Promise<string> {
-		const button = await this.locatorFor('button .ob-screen-reader-only')();
-		return button.text();
-	}
-
 	public async getIconHarness(): Promise<MatIconHarness> {
 		return this.getHarnessOrNull(MatIconHarness);
 	}

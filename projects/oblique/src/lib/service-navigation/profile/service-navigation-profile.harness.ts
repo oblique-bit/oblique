@@ -14,11 +14,6 @@ export class ObServiceNavigationProfileHarness extends ContentContainerComponent
 		return this.locatorFor('#ob-service-navigation-profile-popover-content')();
 	}
 
-	public async getTriggerButtonScreenReaderText(): Promise<string> {
-		const button = await this.locatorFor('button .ob-screen-reader-only')();
-		return button.text();
-	}
-
 	public getTooltipHarness(): Promise<MatTooltipHarness> {
 		return this.getHarnessOrNull(MatTooltipHarness);
 	}

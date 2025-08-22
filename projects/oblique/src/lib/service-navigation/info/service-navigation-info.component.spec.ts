@@ -320,10 +320,6 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 			expect(await element.hasClass('ob-widget')).toBe(true);
 		});
 
-		it('should have "i18n.oblique.service-navigation.info.button" as screen reader text', async () => {
-			expect(await harness.getTriggerButtonScreenReaderText()).toBe('i18n.oblique.service-navigation.info.button');
-		});
-
 		describe('Content div', () => {
 			it.each(['cdkTrapFocus', 'cdkTrapFocusAutoCapture'])('should have the %s attribute', async value => {
 				await harness.openPopover();
