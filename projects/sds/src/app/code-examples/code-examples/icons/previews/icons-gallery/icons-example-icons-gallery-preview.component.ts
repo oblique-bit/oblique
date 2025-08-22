@@ -1,5 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {
+	ObAlertModule,
 	ObButtonModule,
 	ObEIcon,
 	ObEToggleType,
@@ -19,6 +20,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {type Observable, map, startWith} from 'rxjs';
+import {iconMetadata} from './icons';
 
 @Component({
 	selector: 'app-icons-example-icons-gallery-preview',
@@ -38,12 +40,15 @@ import {type Observable, map, startWith} from 'rxjs';
 		ReactiveFormsModule,
 		MatFormFieldModule,
 		MatInputModule,
-		ObInputClearModule
+		ObInputClearModule,
+		ObAlertModule
 	]
 })
 export class IconsExampleIconsGalleryPreviewComponent {
 	iconsFilter = new FormControl('');
 	filteredIcons$: Observable<ObEIcon[]>;
+	isInfoCardVisible = false;
+	selectedIconName: string;
 
 	protected readonly toggleType = ObEToggleType.CLICK;
 	private readonly icons = Object.values(ObEIcon);
@@ -72,6 +77,23 @@ export class IconsExampleIconsGalleryPreviewComponent {
 		);
 	}
 
+	public isButtonActive(iconName: string): string {
+		return iconName === this.selectedIconName && this.isInfoCardVisible ? 'secondary' : 'tertiary';
+	}
+
+	public showIconMetaData(iconName: string): void {
+		this.toggleSelectedIcon(iconName);
+	}
+
+	public getMetaDataOfIcon(iconName: string): object {
+		return iconMetadata.find(icon => icon.name === iconName);
+	}
+
+	private toggleSelectedIcon(iconName: string): void {
+		this.isInfoCardVisible = iconName === this.selectedIconName ? !this.isInfoCardVisible : true;
+		this.selectedIconName = iconName;
+	}
+
 	private setUpIconsFilter(): Observable<ObEIcon[]> {
 		return this.iconsFilter.valueChanges.pipe(
 			map(txt => this.filterIcons(txt)),
@@ -80,6 +102,6 @@ export class IconsExampleIconsGalleryPreviewComponent {
 	}
 
 	private filterIcons(text: string): ObEIcon[] {
-		return this.icons.filter(iconName => iconName.toLowerCase().includes(text?.toLowerCase()));
+		return text === null ? this.icons : this.icons.filter(iconName => iconName.toLowerCase().includes(text.toLowerCase()));
 	}
 }
