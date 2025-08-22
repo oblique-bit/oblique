@@ -8,6 +8,7 @@ import {ObConformity, ObContactData} from '../utilities.model';
 import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION} from '../utilities';
 import {ObDatePipe} from '../language/date.pipe';
 import {ObEIcon} from '../icon/icon.model';
+import {ObIAccessibilityStatementContactInfo} from './accessibility-statement.model';
 
 @Component({
 	selector: 'ob-accessibility-statement',
@@ -43,21 +44,44 @@ export class AccessibilityStatementComponent {
 			: 'i18n.oblique.accessibility-statement.statement.no-exception';
 	}
 
-	private parseContact(contact: ObContactData): {label: string; url: string; icon: ObEIcon; context?: string} {
+	private parseContact(contact: ObContactData): ObIAccessibilityStatementContactInfo {
 		if (contact.phone) {
-			return {
-				label: contact.phone,
-				url: `tel:${contact.phone}`,
-				icon: ObEIcon.PHONE,
-				context: contact.context
-			};
+			return this.buildPhoneContact(contact.phone, contact.context);
 		}
+		if (contact.email) {
+			return this.buildMailContact(contact.email, contact.context);
+		}
+		return this.buildUrlContact(contact.url, contact.context);
+	}
 
+	private buildPhoneContact(phone: string, context: string): ObIAccessibilityStatementContactInfo {
 		return {
-			label: contact.email,
-			url: `mailto:${contact.email}`,
+			label: phone,
+			url: `tel:${phone}`,
+			icon: ObEIcon.PHONE,
+			context,
+			isExternal: false
+		};
+	}
+
+	private buildMailContact(email: string, context: string): ObIAccessibilityStatementContactInfo {
+		return {
+			label: email,
+			url: `mailto:${email}`,
 			icon: ObEIcon.MAIL,
-			context: contact.context
+			context,
+			isExternal: false
+		};
+	}
+
+	private buildUrlContact(url: string, context: string): ObIAccessibilityStatementContactInfo {
+		const isExternal = url.startsWith('http');
+		return {
+			label: url,
+			url,
+			icon: isExternal ? ObEIcon.LINK_EXTERNAL : ObEIcon.LINK,
+			context,
+			isExternal
 		};
 	}
 }

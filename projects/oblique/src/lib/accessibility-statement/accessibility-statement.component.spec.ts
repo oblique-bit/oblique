@@ -87,7 +87,9 @@ describe(AccessibilityStatementComponent.name, () => {
 			});
 
 			test('to be an array with correct properties', () => {
-				expect(component.contacts).toEqual([{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined}]);
+				expect(component.contacts).toEqual([
+					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined, isExternal: false}
+				]);
 			});
 		});
 	});
@@ -149,19 +151,21 @@ describe(AccessibilityStatementComponent.name, () => {
 			});
 
 			test('to be an array with correct properties', () => {
-				expect(component.contacts).toEqual([{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined}]);
+				expect(component.contacts).toEqual([
+					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined, isExternal: false}
+				]);
 			});
 		});
 	});
 
-	describe('With "createdOn" info', () => {
+	describe('With "createdOn" info and an external contact', () => {
 		beforeEach(() => {
 			TestBed.overrideProvider(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, {
 				useValue: {
 					applicationName: 'applicationName',
 					applicationOperator: 'Operator',
 					conformity: 'none',
-					contact: [{email: 'e@mail.com'}],
+					contact: [{email: 'e@mail.com'}, {url: 'http://my-external-url.admin.ch'}],
 					createdOn: new Date()
 				}
 			});
@@ -210,12 +214,21 @@ describe(AccessibilityStatementComponent.name, () => {
 			});
 
 			test('to be an array with correct properties', () => {
-				expect(component.contacts).toEqual([{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined}]);
+				expect(component.contacts).toEqual([
+					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined, isExternal: false},
+					{
+						label: 'http://my-external-url.admin.ch',
+						url: 'http://my-external-url.admin.ch',
+						icon: 'link_external',
+						context: undefined,
+						isExternal: true
+					}
+				]);
 			});
 		});
 	});
 
-	describe('With "createdOn", "exceptions" and "contact" info', () => {
+	describe('With "createdOn", "exceptions" and phone & internal url "contact" info', () => {
 		beforeEach(() => {
 			TestBed.overrideProvider(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, {
 				useValue: {
@@ -223,7 +236,7 @@ describe(AccessibilityStatementComponent.name, () => {
 					applicationOperator: 'Operator',
 					conformity: 'partial',
 					createdOn: new Date('2025-01-31'),
-					contact: [{email: 'e@mail.com'}, {phone: 'phone', context: 'context'}],
+					contact: [{email: 'e@mail.com'}, {phone: 'phone', context: 'context'}, {url: 'my/internal/url', context: 'context'}],
 					exceptions: ['exception']
 				}
 			});
@@ -273,8 +286,9 @@ describe(AccessibilityStatementComponent.name, () => {
 
 			test('to be an array with correct properties', () => {
 				expect(component.contacts).toEqual([
-					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined},
-					{label: 'phone', url: `tel:phone`, icon: 'phone', context: 'context'}
+					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined, isExternal: false},
+					{label: 'phone', url: `tel:phone`, icon: 'phone', context: 'context', isExternal: false},
+					{label: 'my/internal/url', url: `my/internal/url`, icon: 'link', context: 'context', isExternal: false}
 				]);
 			});
 		});

@@ -56,7 +56,7 @@
 <ul class="ob-resource-list">
 	@for (contact of contacts; track contact) {
 		<li>
-			<a class="ob-contact-link" [href]="contact.url" [isExternalLink]="false"
+			<a class="ob-contact-link" [href]="contact.url" [isExternalLink]="contact.isExternal" icon="none"
 				><mat-icon class="ob-icon-text" [svgIcon]="contact.icon" />{{ contact.label }}</a
 			>
 			@if (contact.context) {
