@@ -6,6 +6,7 @@
   "i18n.icons.copy.notification.error.title": "Copy error",
   "i18n.icons.copy.notification.success.message": "Name of icon \"{{iconName}}\" has been successfully copied to the clipboard.",
   "i18n.icons.copy.notification.success.title": "{{element}} successfully copied",
+  "i18n.icons.alternative-text": "<h5>Alt text usage</h5><p>No alt text is needed for decorative or purely supportive icons. However, if an icon conveys meaningful information, it must include alt text, especially for screen reader users.</p><p>Icons in the Oblique icon library include descriptive alt text, optimized for gallery use.</p><p>For other projects, adjust the alt text to reflect the icons' specific usage.</p>",
   "i18n.icons.screen-reader-title-description": "Details about the \"{{selectedIconName}}\" icon",
   "i18n.notification.sampleMessage": "This is a sample message {{message}} and {{parameters}}",
   "i18n.translate-params.key": "Example text with a translated {{ param }}.",

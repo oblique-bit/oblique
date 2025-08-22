@@ -21,6 +21,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {type Observable, map, startWith} from 'rxjs';
 import {iconMetadata} from './icons';
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
 	selector: 'app-icons-example-icons-gallery-preview',
@@ -36,6 +37,7 @@ import {iconMetadata} from './icons';
 		ObPopoverModule,
 		TranslateModule,
 		MatTooltipModule,
+		MatChipsModule,
 		ObNotificationModule,
 		ReactiveFormsModule,
 		MatFormFieldModule,
@@ -49,6 +51,7 @@ export class IconsExampleIconsGalleryPreviewComponent {
 	filteredIcons$: Observable<ObEIcon[]>;
 	isInfoCardVisible = false;
 	selectedIconName: string;
+	selectedIconMetaData: object;
 
 	protected readonly toggleType = ObEToggleType.CLICK;
 	private readonly icons = Object.values(ObEIcon);
@@ -83,6 +86,7 @@ export class IconsExampleIconsGalleryPreviewComponent {
 
 	public showIconMetaData(iconName: string): void {
 		this.toggleSelectedIcon(iconName);
+		this.selectedIconMetaData = this.getMetaDataOfIcon(this.selectedIconName);
 	}
 
 	public getMetaDataOfIcon(iconName: string): object {

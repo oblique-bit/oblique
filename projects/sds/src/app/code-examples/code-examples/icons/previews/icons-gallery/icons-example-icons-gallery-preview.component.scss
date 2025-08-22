@@ -1,9 +1,41 @@
 @use "@oblique/oblique/src/styles/scss/core/variables";
+@use "@oblique/oblique/src/styles/scss/core/palette";
 
 .container {
 	display: grid;
 	grid-template-columns: 1fr 365px;
 	gap: variables.$ob-spacing-default;
+}
+
+.info-card {
+	.image-container {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		background-color: palette.$ob-secondary-100;
+
+		.mat-icon.icon {
+			margin: variables.$ob-spacing-lg 0;
+			font-size: 56px;
+		}
+	}
+
+	.card-title {
+		display: flex;
+		justify-content: space-between;
+		height: 64px;
+		padding: variables.$ob-spacing-default;
+		margin: variables.$ob-spacing-default 0;
+	}
+
+	.info-card-usage-title {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	section:not(:last-child) {
+		margin-bottom: variables.$ob-spacing-md;
+	}
 }
 
 .gallery {

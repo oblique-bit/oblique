@@ -22,7 +22,55 @@
 			</button>
 		}
 	</div>
-	@if (isInfoCardVisible) {
-		<div class="card">Card preview</div>
-	}
+	<div class="info-card">
+		@if (isInfoCardVisible) {
+			<mat-card>
+				<div mat-card-image class="image-container">
+					<mat-icon class="icon" [svgIcon]="selectedIconName" />
+				</div>
+
+				<button
+					class="card-title"
+					mat-button
+					obButton="tertiary"
+					type="button"
+					matTooltipPosition="above"
+					[matTooltip]="'i18n.icons.copy-icon-name' | translate"
+					(click)="copy(selectedIconName)"
+				>
+					<h3 [attr.aria-label]="'i18n.icons.screen-reader-title-description' | translate: { selectedIconName }">
+						{{ selectedIconName }}
+					</h3>
+					<mat-icon iconPositionEnd svgIcon="copy" />
+				</button>
+
+				<mat-card-content class="card-content">
+					<section>
+						<div class="info-card-usage-title">
+							<h4>Usage</h4>
+							@if (selectedIconMetaData?.purpose === "single") {
+								<mat-chip class="info">Single purpose</mat-chip>
+							} @else {
+								<mat-chip class="success">Multi purpose</mat-chip>
+							}
+						</div>
+						{{ selectedIconMetaData?.usage }}
+					</section>
+					<section>
+						<h4>Alternative text <mat-icon svgIcon="info_circle" [obPopover]="alternativeText" [appendToBody]="true" /></h4>
+						{{ selectedIconMetaData?.description }}
+						<ng-template #alternativeText>
+							<div [innerHTML]="'i18n.icons.alternative-text' | translate"></div>
+						</ng-template>
+					</section>
+					@if (selectedIconMetaData?.oldName && selectedIconMetaData?.name !== selectedIconMetaData?.oldName) {
+						<section>
+							<h4>Deprecated name</h4>
+							{{ selectedIconMetaData.oldName }}
+						</section>
+					}
+				</mat-card-content>
+			</mat-card>
+		}
+	</div>
 </div>
