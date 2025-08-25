@@ -2,9 +2,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {TestBed, waitForAsync} from '@angular/core/testing';
 import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatIconRegistry} from '@angular/material/icon';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ObIconModule, ObIconService} from './icon.module';
-import {provideObliqueConfiguration} from '../utilities';
+import {provideObliqueTestingConfiguration} from '../utilities';
 
 describe('IconService', () => {
 	let registry: MatIconRegistry;
@@ -104,16 +103,9 @@ describe('IconService', () => {
 		beforeEach(waitForAsync(() => {
 			jest.resetModules();
 			TestBed.configureTestingModule({
-				imports: [HttpClientTestingModule, MatIconTestingModule],
+				imports: [MatIconTestingModule],
 				providers: [
-					provideObliqueConfiguration({
-						accessibilityStatement: {
-							applicationName: '',
-							applicationOperator: '',
-							conformity: 'full',
-							createdOn: new Date(),
-							contact: [{email: 'e@mail.com'}]
-						},
+					provideObliqueTestingConfiguration({
 						icon: {registerObliqueIcons: false}
 					}),
 					{provide: ObIconService, useClass: ObIconService},
@@ -137,16 +129,9 @@ describe('IconService', () => {
 		beforeEach(waitForAsync(() => {
 			jest.resetModules();
 			TestBed.configureTestingModule({
-				imports: [HttpClientTestingModule, MatIconTestingModule],
+				imports: [MatIconTestingModule],
 				providers: [
-					provideObliqueConfiguration({
-						accessibilityStatement: {
-							applicationName: '',
-							applicationOperator: '',
-							conformity: 'full',
-							createdOn: new Date(),
-							contact: [{email: 'e@mail.com'}]
-						},
+					provideObliqueTestingConfiguration({
 						icon: {registerObliqueIcons: false, fontClass: 'fa'}
 					}),
 					{provide: ObIconService, useClass: ObIconService},
@@ -170,16 +155,9 @@ describe('IconService', () => {
 		beforeEach(waitForAsync(() => {
 			jest.resetModules();
 			TestBed.configureTestingModule({
-				imports: [HttpClientTestingModule, MatIconTestingModule],
+				imports: [MatIconTestingModule],
 				providers: [
-					provideObliqueConfiguration({
-						accessibilityStatement: {
-							applicationName: '',
-							applicationOperator: '',
-							conformity: 'full',
-							createdOn: new Date(),
-							contact: [{email: 'e@mail.com'}]
-						},
+					provideObliqueTestingConfiguration({
 						icon: {registerObliqueIcons: false, additionalIcons: [iconSet1]}
 					}),
 					{provide: ObIconService, useClass: ObIconService},

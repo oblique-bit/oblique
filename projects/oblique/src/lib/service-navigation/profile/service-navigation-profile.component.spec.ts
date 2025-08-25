@@ -8,15 +8,13 @@ import {By} from '@angular/platform-browser';
 import {MatIconModule} from '@angular/material/icon';
 import {DebugElement} from '@angular/core';
 import {NgOptimizedImage} from '@angular/common';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslateModule} from '@ngx-translate/core';
 import {ObMockExternalLinkModule} from '../../external-link/_mocks/mock-external-link.module';
-import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationProfileHarness} from './service-navigation-profile.harness';
 import {ObServiceNavigationProfileComponent} from './service-navigation-profile.component';
-import {WINDOW} from '../../utilities';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
 
 describe('ObServiceNavigationProfileComponent', () => {
@@ -27,19 +25,16 @@ describe('ObServiceNavigationProfileComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [
-				ObMockTranslatePipe,
 				ObMockExternalLinkModule,
 				ObPopoverModule,
 				MatIconModule,
 				MatTooltipModule,
 				NgOptimizedImage,
-				ObIsCurrentUrlPipe
+				ObIsCurrentUrlPipe,
+				TranslateModule
 			],
 			declarations: [ObServiceNavigationProfileComponent, ObServiceNavigationPopoverSectionComponent],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationProfileComponent);

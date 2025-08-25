@@ -1,15 +1,14 @@
 import {TestBed} from '@angular/core/testing';
 import {Router, Routes, provideRouter} from '@angular/router';
-import {provideHttpClient} from '@angular/common/http';
 import {Component} from '@angular/core';
-import {TranslateLoader, TranslateService} from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 import {ObRouterService} from './ob-router.service';
 import {AccessibilityStatementComponent} from '../accessibility-statement/accessibility-statement.component';
-import {provideObliqueConfiguration} from '../utilities';
+import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 import {ObEScrollMode} from '../master-layout/master-layout.model';
 import {ObLanguageService} from '../language/language.service';
-import {firstValueFrom, of} from 'rxjs';
+import {firstValueFrom} from 'rxjs';
 
 @Component({template: '', standalone: false})
 export class MockComponent {}
@@ -80,16 +79,8 @@ describe(ObRouterService.name, () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				providers: [
-					provideHttpClient(),
 					provideRouter(routes),
-					provideObliqueConfiguration({
-						accessibilityStatement: {
-							applicationName: '',
-							conformity: 'none',
-							applicationOperator: '',
-							createdOn: new Date(),
-							contact: [{email: ''}]
-						},
+					provideObliqueTestingConfiguration({
 						hasLanguageInUrl: false
 					}),
 					{provide: ObMasterLayoutConfig, useValue: mockMasterLayoutConfig}
@@ -141,20 +132,11 @@ describe(ObRouterService.name, () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
 				providers: [
-					provideHttpClient(),
 					provideRouter(routes),
-					provideObliqueConfiguration({
-						accessibilityStatement: {
-							applicationName: '',
-							conformity: 'none',
-							applicationOperator: '',
-							createdOn: new Date(),
-							contact: [{email: ''}]
-						},
+					provideObliqueTestingConfiguration({
 						hasLanguageInUrl: true
 					}),
-					{provide: ObMasterLayoutConfig, useValue: mockMasterLayoutConfig},
-					{provide: TranslateLoader, useValue: {getTranslation: () => of({})}}
+					{provide: ObMasterLayoutConfig, useValue: mockMasterLayoutConfig}
 				]
 			});
 		});

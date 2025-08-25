@@ -1,11 +1,9 @@
 import {TestBed, inject} from '@angular/core/testing';
 import {ControlContainer} from '@angular/forms';
-import {TranslateService} from '@ngx-translate/core';
-import {WINDOW} from '../utilities';
-import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {Subject} from 'rxjs';
+import {provideObliqueTestingConfiguration} from '../utilities';
 
 describe('UnsavedChangesService', () => {
 	let unsavedChangesService: ObUnsavedChangesService;
@@ -15,10 +13,9 @@ describe('UnsavedChangesService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
+				provideObliqueTestingConfiguration(),
 				ObUnsavedChangesService,
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: ObGlobalEventsService, useValue: {beforeUnload$: unload.asObservable()}},
-				{provide: WINDOW, useValue: window}
+				{provide: ObGlobalEventsService, useValue: {beforeUnload$: unload.asObservable()}}
 			]
 		});
 		globalEventsService = TestBed.inject(ObGlobalEventsService);

@@ -1,9 +1,6 @@
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {TranslateService} from '@ngx-translate/core';
-import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
-import {ObMockTranslateService} from '../_mocks/mock-translate.service';
-import {WINDOW} from '../utilities';
+import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObTopControlComponent} from './top-control.component';
 import {Observable} from 'rxjs';
 
@@ -13,12 +10,9 @@ describe('ObTopControlComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			imports: [ObTopControlComponent, ObMockTranslatePipe],
+			imports: [ObTopControlComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 	}));
 

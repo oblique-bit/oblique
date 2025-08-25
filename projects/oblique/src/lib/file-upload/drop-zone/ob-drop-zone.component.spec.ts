@@ -1,13 +1,11 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Pipe, PipeTransform} from '@angular/core';
 import {first, skip} from 'rxjs/operators';
-import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObIUploadEvent} from '../file-upload.model';
 import {ObDropZoneComponent} from './ob-drop-zone.component';
 import {ObValidationService} from './validation.service';
 import {By} from '@angular/platform-browser';
-import {TranslateService} from '@ngx-translate/core';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 
 @Pipe({
 	name: 'obAcceptAll',
@@ -31,10 +29,10 @@ describe('DropZoneComponent', () => {
 	beforeEach(async () => {
 		TestBed.overrideProvider(ObValidationService, {useValue: service});
 		await TestBed.configureTestingModule({
-			imports: [ObDropZoneComponent, ObMockTranslatePipe],
+			imports: [ObDropZoneComponent],
 			declarations: [ObMockAreAllTypesAllowedPipe],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 	});
 

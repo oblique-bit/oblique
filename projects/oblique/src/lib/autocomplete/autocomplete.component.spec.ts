@@ -1,7 +1,6 @@
 import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {CommonModule} from '@angular/common';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {ControlValueAccessor, FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
@@ -16,9 +15,6 @@ import {MatInputHarness} from '@angular/material/input/testing';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
-import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
-import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup} from '../autocomplete/autocomplete.model';
 import {ObOptionLabelIconModule} from '../autocomplete/option-label-icon/option-label-icon.module';
 import {ObInputClearModule} from '../input-clear/input-clear.module';
@@ -27,7 +23,7 @@ import {ObAutocompleteHarness} from './../autocomplete/_harness/autocomplete.har
 import {ObMockHighlightTextPipe} from './_mocks/mock-highlight-text.pipe';
 import {ObAutocompleteTextToFindService} from './autocomplete-text-to-find.service';
 import {ObAutocompleteComponent} from './autocomplete.component';
-import {WINDOW} from '../utilities';
+import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
 	template: ``,
@@ -58,7 +54,6 @@ describe(ObAutocompleteComponent.name, () => {
 		await TestBed.configureTestingModule({
 			imports: [
 				ObAutocompleteComponent,
-				ObMockTranslatePipe,
 				ObMockHighlightTextPipe,
 				FormsModule,
 				MatAutocompleteModule,
@@ -67,20 +62,14 @@ describe(ObAutocompleteComponent.name, () => {
 				MatInputModule,
 				ObInputClearModule,
 				ReactiveFormsModule,
-				HttpClientTestingModule,
 				ObMockTranslateParamsModule,
 				ObOptionLabelIconModule,
 				NoopAnimationsModule,
 				CommonModule,
-				MatIconTestingModule,
-				TranslateModule
+				MatIconTestingModule
 			],
 			declarations: [TestParentComponent],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: ObAutocompleteTextToFindService},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideObliqueTestingConfiguration(), {provide: ObAutocompleteTextToFindService}]
 		}).compileComponents();
 	});
 

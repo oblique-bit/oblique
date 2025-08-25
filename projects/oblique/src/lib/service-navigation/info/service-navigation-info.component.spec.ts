@@ -7,14 +7,14 @@ import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
-import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationInfoHarness} from './service-navigation-info.harness';
 import {ObServiceNavigationInfoComponent} from './service-navigation-info.component';
 import {ObContactToLinksPipe} from './contact-to-links.pipe';
-import {WINDOW} from '../../utilities';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe(ObServiceNavigationInfoComponent.name, () => {
 	let component: ObServiceNavigationInfoComponent;
@@ -23,9 +23,9 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, MatIconModule, MatTooltipModule, ObPopoverModule, ObIsCurrentUrlPipe],
+			imports: [MatIconModule, MatTooltipModule, ObPopoverModule, ObIsCurrentUrlPipe, TranslateModule],
 			declarations: [ObServiceNavigationInfoComponent, ObServiceNavigationPopoverSectionComponent, ObContactToLinksPipe],
-			providers: [{provide: WINDOW, useValue: window}]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationInfoComponent);

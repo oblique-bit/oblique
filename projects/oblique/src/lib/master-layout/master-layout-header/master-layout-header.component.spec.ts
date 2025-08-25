@@ -3,16 +3,15 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {OB_BANNER, OB_HAS_LANGUAGE_IN_URL, WINDOW} from '../../utilities';
+import {OB_BANNER, OB_HAS_LANGUAGE_IN_URL, provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMasterLayoutHeaderComponent} from './master-layout-header.component';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObMockMasterLayoutConfig} from '../_mocks/mock-master-layout.config';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObEEnvironment, ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {By} from '@angular/platform-browser';
-import {TranslateService} from '@ngx-translate/core';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe('ObMasterLayoutHeaderComponent', () => {
 	let component: ObMasterLayoutHeaderComponent;
@@ -32,14 +31,13 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, RouterTestingModule, ObLocalizePipe],
+			imports: [ObMockTranslatePipe, RouterTestingModule, ObLocalizePipe, TranslateModule],
 			declarations: [ObMasterLayoutHeaderComponent],
 			providers: [
+				provideObliqueTestingConfiguration(),
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: true},
-				{provide: WINDOW, useValue: window}
+				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: true}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();

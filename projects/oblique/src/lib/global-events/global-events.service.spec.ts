@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {WINDOW} from '../utilities';
+import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObGlobalEventsService} from './global-events.service';
 
 describe('ObGlobalEventsService', () => {
@@ -7,7 +7,7 @@ describe('ObGlobalEventsService', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [{provide: WINDOW, useValue: window}]
+			providers: [provideObliqueTestingConfiguration()]
 		});
 		service = TestBed.inject(ObGlobalEventsService);
 	});
