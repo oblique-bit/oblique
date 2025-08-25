@@ -18,12 +18,14 @@ import {
 	isNotKeyboardEventOnButton,
 	obFocusWithOutline,
 	provideObliqueConfiguration,
+	provideObliqueTestingConfiguration,
 	provideObliqueTranslations,
 	windowProvider
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
 import {ObIconService} from './icon/icon.service';
+import {Observable, firstValueFrom} from 'rxjs';
 
 describe('utilities', () => {
 	describe('windowProvider', () => {
@@ -126,6 +128,191 @@ describe('utilities', () => {
 						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
 						provideHttpClient(),
 						provideObliqueConfiguration({
+							accessibilityStatement: {
+								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
+								conformity: 'none',
+								applicationOperator: 'Operator',
+								contact: [{email: 'e@mail.com'}]
+							},
+							material: {
+								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
+								STEPPER_GLOBAL_OPTIONS: {showError: true},
+								MAT_CHECKBOX_OPTIONS: {clickAction: 'check'},
+								MAT_RADIO_OPTIONS: {color: 'accent'},
+								MAT_SLIDE_TOGGLE_OPTIONS: {hideIcon: true},
+								MAT_TABS_CONFIG: {fitInkBarToContent: true}
+							},
+							icon: {
+								additionalIcons: []
+							},
+							translate: {
+								flatten: false,
+								config: {compiler: TranslateFakeCompiler},
+								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}]
+							},
+							hasLanguageInUrl: true
+						})
+					]
+				});
+			});
+
+			it('should create WINDOW injection token', () => {
+				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			describe('Icon configuration', () => {
+				it('should call "registerOnAppInit" on "ObIconService"', () => {
+					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith({additionalIcons: []});
+				});
+			});
+
+			describe('Translate configuration', () => {
+				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
+					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
+						additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
+						flatten: false
+					});
+				});
+
+				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+					expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
+				});
+			});
+
+			describe('Material configuration', () => {
+				it.each([
+					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline', floatLabel: 'always'}},
+					{token: STEPPER_GLOBAL_OPTIONS, config: {displayDefaultIndicatorType: false, showError: true}},
+					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary', clickAction: 'check'}},
+					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
+					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary', hideIcon: true}},
+					{token: MAT_TABS_CONFIG, config: {stretchTabs: false, fitInkBarToContent: true}}
+				])('should create $token injection token', ({token, config}) => {
+					expect(TestBed.inject(token)).toEqual(config);
+				});
+			});
+
+			describe('accessibility statement configuration', () => {
+				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
+					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
+						applicationName: 'appName',
+						createdOn: new Date('2025-01-31'),
+						conformity: 'none',
+						applicationOperator: 'Operator',
+						contact: [{email: 'e@mail.com'}]
+					});
+				});
+			});
+
+			describe('has language in URL', () => {
+				it('should provide OB_HAS_LANGUAGE_IN_URL as true', () => {
+					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(true);
+				});
+			});
+		});
+	});
+
+	describe('provideObliqueTestingConfiguration', () => {
+		describe('with default configuration', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						provideHttpClient(),
+						provideObliqueTestingConfiguration({
+							accessibilityStatement: {
+								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
+								conformity: 'none',
+								applicationOperator: 'Operator',
+								contact: [{email: 'e@mail.com'}]
+							}
+						})
+					]
+				});
+			});
+
+			it('should create WINDOW injection token', () => {
+				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			describe('Paginator configuration', () => {
+				it('should provide MatPaginatorIntl as ObPaginatorService', () => {
+					expect(TestBed.inject(MatPaginatorIntl) instanceof ObPaginatorService).toBe(true);
+				});
+			});
+
+			describe('Icon configuration', () => {
+				it('should call "registerOnAppInit" on "ObIconService"', () => {
+					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith(undefined);
+				});
+			});
+
+			describe('Translate configuration', () => {
+				it('should provide "TranslateService"', () => {
+					expect(TestBed.inject(TranslateService)).toBeTruthy();
+				});
+
+				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
+					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({flatten: true});
+				});
+
+				describe('TranslateLoader', () => {
+					it('should not be an instance of "TranslateLoader"', () => {
+						expect(TestBed.inject(TranslateService).currentLoader).not.toBeInstanceOf(TranslateLoader);
+					});
+
+					it('should have a "getTranslation" function that returns an observable', () => {
+						expect(TestBed.inject(TranslateService).currentLoader.getTranslation('en')).toBeInstanceOf(Observable);
+					});
+
+					it('should have a "getTranslation" function that emits an empty object', async () => {
+						expect(await firstValueFrom(TestBed.inject(TranslateService).currentLoader.getTranslation('en'))).toEqual({});
+					});
+				});
+			});
+
+			describe('Material configuration', () => {
+				it.each([
+					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline'}},
+					{token: STEPPER_GLOBAL_OPTIONS, config: {displayDefaultIndicatorType: false}},
+					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary'}},
+					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'primary'}},
+					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary'}},
+					{token: MAT_TABS_CONFIG, config: {stretchTabs: false}}
+				])('should create $token injection token', ({token, config}) => {
+					expect(TestBed.inject(token)).toEqual(config);
+				});
+			});
+
+			describe('accessibility statement configuration', () => {
+				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
+					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
+						applicationName: 'appName',
+						createdOn: new Date('2025-01-31'),
+						conformity: 'none',
+						applicationOperator: 'Operator',
+						contact: [{email: 'e@mail.com'}]
+					});
+				});
+			});
+
+			describe('has language in URL', () => {
+				it('should provide OB_HAS_LANGUAGE_IN_URL as false', () => {
+					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(false);
+				});
+			});
+		});
+
+		describe('with custom configuration', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
+						provideHttpClient(),
+						provideObliqueTestingConfiguration({
 							accessibilityStatement: {
 								applicationName: 'appName',
 								createdOn: new Date('2025-01-31'),

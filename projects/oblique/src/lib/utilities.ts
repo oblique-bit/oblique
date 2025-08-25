@@ -25,6 +25,7 @@ import {ObStepperIntlService} from './stepper/ob-stepper.service';
 import {MatDatepickerIntl} from '@angular/material/datepicker';
 import {ObDatepickerIntlService} from './datepicker/ob-datepicker.service';
 import {ObRouterService} from '../lib/router/ob-router.service';
+import {of} from 'rxjs';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
@@ -58,6 +59,37 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 		}),
 		provideObliqueTranslations(config.translate),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
+		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
+		{provide: MatStepperIntl, useClass: ObStepperIntlService},
+		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
+		{provide: OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, useValue: config.accessibilityStatement},
+		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: config.hasLanguageInUrl || false},
+		Object.entries(materialProviders).map(([provider, token]) => ({
+			provide: token.provide,
+			useValue: {...token.useValue, ...config.material?.[provider]}
+		}))
+	]);
+}
+export function provideObliqueTestingConfiguration(
+	config: Omit<ObIObliqueConfiguration, 'accessibilityStatement'> & Partial<Pick<ObIObliqueConfiguration, 'accessibilityStatement'>> = {}
+): EnvironmentProviders {
+	return makeEnvironmentProviders([
+		provideAppInitializer(() => {
+			inject(ObIconService).registerOnAppInit(config.icon);
+			inject(ObRouterService).initialize();
+		}),
+		provideTranslateService({
+			...config.translate,
+			loader: {
+				provide: TranslateLoader,
+				useValue: {getTranslation: () => of({})}
+			}
+		}),
+		{
+			provide: OB_TRANSLATION_CONFIGURATION,
+			useValue: {flatten: config.translate?.flatten ?? true, additionalFiles: config.translate?.additionalFiles}
+		},
+		{provide: WINDOW, useValue: window},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
