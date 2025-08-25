@@ -282,14 +282,13 @@ export const iconMetadata = [
 		description: 'A clockwise open circle arrow.'
 	},
 	{
-		oldName: 'arrow_counterclockwise',
-		name: 'multi',
-		purpose:
+		name: 'arrow_counterclockwise',
+		purpose: 'multi',
+		usage:
 			'Used for actions like revert or rotation.\nUse the history icon to access a history of previous actions, changes, or versions. Use the undo icon to reverse the most recent user activity.',
-		usage: 'Navigation',
-		category: 'wiederholen, repeat, cycle, loop, erneut, again, rotation, iterate, reset, update, rotate, left, turn',
-		aliases: ['A counterclockwise open circle arrow.'],
-		description: 'Added icon'
+		category: 'Navigation',
+		aliases: 'wiederholen, repeat, cycle, loop, erneut, again, rotation, iterate, reset, update, rotate, left, turn',
+		description: ['A counterclockwise open circle arrow.']
 	},
 	{
 		oldName: 'arrow-up',
@@ -967,13 +966,12 @@ export const iconMetadata = [
 		description: 'A minus sign.'
 	},
 	{
-		oldName: 'minus_circle',
-		name: 'multi',
-		purpose: 'Alternative for the minus icon.',
-		usage: 'Interface',
-		category: 'kreis, circle, remove button, delete item, entfernen, subtract, decrease, negative, reduce',
-		aliases: ['A minus sign inside a circle.'],
-		description: 'Added icon'
+		name: 'minus_circle',
+		purpose: 'multi',
+		usage: 'Alternative for the minus icon.',
+		category: 'Interface',
+		aliases: 'kreis, circle, remove button, delete item, entfernen, subtract, decrease, negative, reduce',
+		description: ['A minus sign inside a circle.']
 	},
 	{
 		oldName: 'cards',
@@ -1093,14 +1091,13 @@ export const iconMetadata = [
 		description: 'A round, segmented ring buoy, symbolizing support or help.'
 	},
 	{
-		oldName: 'headset',
-		name: 'multi',
-		purpose:
+		name: 'headset',
+		purpose: 'multi',
+		usage:
 			'Used for call centers or direct support phone lines.\nFor general support or help content use the support icon. For FAQ use the question icon.',
-		usage: 'Communication',
-		category: 'kopfhörer, audio, sound, listen, microphone, hören, headset, earphones, headphones, live, call center',
-		aliases: ['An over-ear headset with microphone.'],
-		description: 'Added icon'
+		category: 'Communication',
+		aliases: 'kopfhörer, audio, sound, listen, microphone, hören, headset, earphones, headphones, live, call center',
+		description: ['An over-ear headset with microphone.']
 	},
 	{
 		oldName: 'language',
@@ -1416,13 +1413,12 @@ export const iconMetadata = [
 		description: 'A calculator with buttons and display.'
 	},
 	{
-		oldName: 'graduation-cap',
-		name: 'multi',
-		purpose: 'Used to represent education, learning, academic content in an international context, or for academic graduation.',
-		usage: 'Physical items and infrastructure',
-		category: 'education, graduation, academic, university, learning, student, cas, bachelor, master',
-		aliases: ['A graduation cap', 'worn on the head of students graduating from college or university.'],
-		description: 'Added icon'
+		name: 'graduation-cap',
+		purpose: 'multi',
+		usage: 'Used to represent education, learning, academic content in an international context, or for academic graduation.',
+		category: 'Physical items and infrastructure',
+		aliases: 'education, graduation, academic, university, learning, student, cas, bachelor, master',
+		description: ['A graduation cap', 'worn on the head of students graduating from college or university.']
 	},
 	{
 		name: 'book',
@@ -1674,24 +1670,22 @@ export const iconMetadata = [
 		description: 'A dumbbell with weight plates on both sides.'
 	},
 	{
-		oldName: 'artificial-intelligence',
-		name: 'multi',
-		purpose: 'Used to represent artificial intelligence or AI-powered features.',
-		usage: 'Devices and tech',
-		category:
+		name: 'artificial-intelligence',
+		purpose: 'multi',
+		usage: 'Used to represent artificial intelligence or AI-powered features.',
+		category: 'Devices and tech',
+		aliases:
 			'artificial, intelligence, ai, künstliche intelligenz, ki, machine learning, deep learning, neural network, neural, smart technology, intelligente systeme, cyber intelligenz, digital brain, intelligent, intelligence, data, daten, algorithm, automation, technology, zukunftstechnologie, bot, virtueller assistent, tech',
-		aliases: ['The abbreviation AI for Artificial Intelligence inside a square', 'with a sparkle in the bottom-right corner.'],
-		description: 'Added icon'
+		description: ['The abbreviation AI for Artificial Intelligence inside a square', 'with a sparkle in the bottom-right corner.']
 	},
 	{
-		oldName: 'bot',
-		name: 'multi',
-		purpose: 'Used for automated chats, or AI-powered assistance.',
-		usage: 'Devices and tech',
-		category:
+		name: 'bot',
+		purpose: 'multi',
+		usage: 'Used for automated chats, or AI-powered assistance.',
+		category: 'Devices and tech',
+		aliases:
 			'bot, chatbot, ai, ai bot, service bot,, digital assistant, virtual assistant, assistant, dialogue system, speech assistant, sprachassistent, digital, tech, automation, automatisierung, robot, roboter, roboterkopf, neural bot, intelligence, künstliche intelligenz, ki, virtueller assistent',
-		aliases: ['A robot figure with a rectangular head and an antenna.'],
-		description: 'Added icon'
+		description: ['A robot figure with a rectangular head and an antenna.']
 	},
 	{
 		name: 'cloud',
@@ -1736,13 +1730,12 @@ export const iconMetadata = [
 		description: 'The symbol for a wireless or Wi-Fi connection: curved lines radiating upward from a central point.'
 	},
 	{
-		oldName: 'antenna',
-		name: 'multi',
-		purpose: 'Used to represent signal transmission, broadcast, or wireless communication.',
-		usage: 'Devices and tech',
-		category: 'radio transmission, radio tower, funk antenna, antenna',
-		aliases: ['A radio tower with circular waves', 'symbolizing a wireless signal or broadcast'],
-		description: 'Added icon'
+		name: 'antenna',
+		purpose: 'multi',
+		usage: 'Used to represent signal transmission, broadcast, or wireless communication.',
+		category: 'Devices and tech',
+		aliases: 'radio transmission, radio tower, funk antenna, antenna',
+		description: ['A radio tower with circular waves', 'symbolizing a wireless signal or broadcast']
 	},
 	{
 		name: 'database',
@@ -2050,24 +2043,22 @@ export const iconMetadata = [
 		description: 'An opened padlock.'
 	},
 	{
-		oldName: 'shield_checkmark',
-		name: 'multi',
-		purpose: 'Used to represent verified security, trust, or successful protection.',
-		usage: 'Status and feedback',
-		category:
+		name: 'shield_checkmark',
+		purpose: 'multi',
+		usage: 'Used to represent verified security, trust, or successful protection.',
+		category: 'Status and feedback',
+		aliases:
 			'shield, checkmark, verified, secure, protection, trusted, shield icon, security icon, verified shield, success shield, trusted badge, safe icon, shield with tick, verified security, access',
-		aliases: ['A shield containing a checkmark symbol.'],
-		description: 'Added icon'
+		description: ['A shield containing a checkmark symbol.']
 	},
 	{
-		oldName: 'shield_lock',
-		name: 'multi',
-		purpose: 'Used to represent restricted access, confidentiality, or secured environments.',
-		usage: 'Status and feedback',
-		category:
+		name: 'shield_lock',
+		purpose: 'multi',
+		usage: 'Used to represent restricted access, confidentiality, or secured environments.',
+		category: 'Status and feedback',
+		aliases:
 			'shield, lock, shield lock, secure, restricted access, confidential, protected, privacy, secure zone, encrypted, padlock shield, secure environment, locked icon, shield with lock, access',
-		aliases: ['A shield containing a padlock symbol.'],
-		description: 'Added icon'
+		description: ['A shield containing a padlock symbol.']
 	},
 	{
 		name: 'eye',
@@ -2532,13 +2523,12 @@ export const iconMetadata = [
 		description: 'A bold checkmark.'
 	},
 	{
-		oldName: 'checkmark_star',
-		name: 'multi',
-		purpose: 'Used for checkout confirmation by web-shop order process.\nNot intended for common system feedback messages.',
-		usage: 'Status and feedback',
-		category: 'shop check out, order, shopping, erfolgreich gekauft, purchase completed',
-		aliases: ['An eight-pointed star with rounded corners and a checkmark inside.'],
-		description: 'Added icon'
+		name: 'checkmark_star',
+		purpose: 'multi',
+		usage: 'Used for checkout confirmation by web-shop order process.\nNot intended for common system feedback messages.',
+		category: 'Status and feedback',
+		aliases: 'shop check out, order, shopping, erfolgreich gekauft, purchase completed',
+		description: ['An eight-pointed star with rounded corners and a checkmark inside.']
 	},
 	{
 		oldName: 'cancel',
@@ -2755,13 +2745,12 @@ export const iconMetadata = [
 			'A simplified human figure wearing a medical hat, with a medical cross on the chest, representing a healthcare worker or doctor.'
 	},
 	{
-		oldName: 'badge',
-		name: 'multi',
-		purpose: 'Used to represent ID badges or access passes.',
-		usage: 'People and identity',
-		category: 'abzeichen, credentials, identification, ausweis, badge card, security pass, permit',
-		aliases: ['A personal badge with a chip', 'a person icon', 'and two horizontal lines representing text.'],
-		description: 'Added icon'
+		name: 'badge',
+		purpose: 'multi',
+		usage: 'Used to represent ID badges or access passes.',
+		category: 'People and identity',
+		aliases: 'abzeichen, credentials, identification, ausweis, badge card, security pass, permit',
+		description: ['A personal badge with a chip', 'a person icon', 'and two horizontal lines representing text.']
 	},
 	{
 		name: 'id-card',

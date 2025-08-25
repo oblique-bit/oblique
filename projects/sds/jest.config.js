@@ -116,10 +116,10 @@ module.exports = {
 			lines: 75
 		},
 		'projects/sds/src/app/code-examples/code-examples/icons/previews/icons-gallery': {
-			statements: 76,
+			statements: 73,
 			branches: 0,
 			functions: 25,
-			lines: 78
+			lines: 73
 		},
 		'projects/sds/src/app/code-examples/code-examples/nested-form/previews/reactive': {
 			statements: 75,

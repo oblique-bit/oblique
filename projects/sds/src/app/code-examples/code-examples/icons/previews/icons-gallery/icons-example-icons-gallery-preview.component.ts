@@ -1,5 +1,14 @@
 import {Component, inject} from '@angular/core';
-import {ObButtonModule, ObEIcon, ObEToggleType, ObNotificationModule, ObNotificationService, ObPopoverModule} from '@oblique/oblique';
+import {
+	ObAlertModule,
+	ObButtonModule,
+	ObEIcon,
+	ObEToggleType,
+	ObInputClearModule,
+	ObNotificationModule,
+	ObNotificationService,
+	ObPopoverModule
+} from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {CommonModule} from '@angular/common';
@@ -11,6 +20,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {type Observable, map, startWith} from 'rxjs';
+import {iconMetadata} from './icons';
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
 	selector: 'app-icons-example-icons-gallery-preview',
@@ -26,15 +37,21 @@ import {type Observable, map, startWith} from 'rxjs';
 		ObPopoverModule,
 		TranslateModule,
 		MatTooltipModule,
+		MatChipsModule,
 		ObNotificationModule,
 		ReactiveFormsModule,
 		MatFormFieldModule,
-		MatInputModule
+		MatInputModule,
+		ObInputClearModule,
+		ObAlertModule
 	]
 })
 export class IconsExampleIconsGalleryPreviewComponent {
 	iconsFilter = new FormControl('');
 	filteredIcons$: Observable<ObEIcon[]>;
+	isInfoCardVisible = false;
+	selectedIconName: string;
+	selectedIconMetaData: object;
 
 	protected readonly toggleType = ObEToggleType.CLICK;
 	private readonly icons = Object.values(ObEIcon);
@@ -63,6 +80,24 @@ export class IconsExampleIconsGalleryPreviewComponent {
 		);
 	}
 
+	public isButtonActive(iconName: string): string {
+		return iconName === this.selectedIconName && this.isInfoCardVisible ? 'secondary' : 'tertiary';
+	}
+
+	public showIconMetaData(iconName: string): void {
+		this.toggleSelectedIcon(iconName);
+		this.selectedIconMetaData = this.getMetaDataOfIcon(this.selectedIconName);
+	}
+
+	public getMetaDataOfIcon(iconName: string): object {
+		return iconMetadata.find(icon => icon.name === iconName);
+	}
+
+	private toggleSelectedIcon(iconName: string): void {
+		this.isInfoCardVisible = iconName === this.selectedIconName ? !this.isInfoCardVisible : true;
+		this.selectedIconName = iconName;
+	}
+
 	private setUpIconsFilter(): Observable<ObEIcon[]> {
 		return this.iconsFilter.valueChanges.pipe(
 			map(txt => this.filterIcons(txt)),
@@ -71,6 +106,6 @@ export class IconsExampleIconsGalleryPreviewComponent {
 	}
 
 	private filterIcons(text: string): ObEIcon[] {
-		return this.icons.filter(iconName => iconName.toLowerCase().includes(text.toLowerCase()));
+		return text === null ? this.icons : this.icons.filter(iconName => iconName.toLowerCase().includes(text.toLowerCase()));
 	}
 }
