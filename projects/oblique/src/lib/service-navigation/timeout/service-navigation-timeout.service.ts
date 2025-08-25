@@ -1,4 +1,4 @@
-import {Injectable, inject} from '@angular/core';
+import {Injectable, SecurityContext, inject} from '@angular/core';
 import Cookies from 'js-cookie';
 import {ObIsUserLoggedInPipe} from '../shared/is-user-logged-in.pipe';
 import {ObEPamsEnvironment, ObLoginState} from '../service-navigation.model';
@@ -8,6 +8,7 @@ import {ObServiceNavigationTimeoutCookieService} from './service-navigation-time
 import {ObServiceNavigationTimeoutCookieActivityService} from './service-navigation-timeout-cookie-activity.service';
 import {ObServiceNavigationTimeoutRedirectorService} from './service-navigation-timeout-redirector.service';
 import {ObServiceNavigationTimeoutReturnUrlService} from './service-navigation-timeout-return-url.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Injectable()
 export class ObServiceNavigationTimeoutService {
@@ -26,6 +27,7 @@ export class ObServiceNavigationTimeoutService {
 	private readonly redirectorService = inject(ObServiceNavigationTimeoutRedirectorService);
 	private readonly cookieService = inject(ObServiceNavigationTimeoutCookieService);
 	private readonly returnUrlService = inject(ObServiceNavigationTimeoutReturnUrlService);
+	private readonly domSanitizer = inject(DomSanitizer);
 
 	public initialize(environment: ObEPamsEnvironment): void {
 		this.eportalUrl = `https://eportal${environment}.admin.ch`;
@@ -49,7 +51,7 @@ export class ObServiceNavigationTimeoutService {
 		const noTimeoutInTheUrl = !this.window.location.href.includes('timeout=true');
 		if (logoutReminderUrl && noTimeoutInTheUrl) {
 			this.cookieService.deleteCookie(this.logoutReminderCookieName);
-			this.window.location.href = logoutReminderUrl;
+			this.window.location.href = this.domSanitizer.sanitize(SecurityContext.URL, logoutReminderUrl);
 		}
 	}
 
