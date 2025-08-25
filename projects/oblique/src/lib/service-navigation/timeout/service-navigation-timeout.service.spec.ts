@@ -200,4 +200,20 @@ describe('ServiceNavigationTimeout', () => {
 			expect(fakeCookieService.deleteCookie).toHaveBeenCalledTimes(1);
 		});
 	});
+
+	describe('redirectAfterLogout with unsafe url', () => {
+		// eslint-disable-next-line no-script-url
+		const unsafeUrl = 'javascript:alert("XSS")';
+		beforeEach(() => {
+			Cookies.set(logoutReminderCookieName, unsafeUrl);
+			service = TestBed.inject(ObServiceNavigationTimeoutService);
+			service.initialize(ObEPamsEnvironment.DEV);
+			service.loginState = 'S3OK';
+			jest.advanceTimersByTime(10000);
+		});
+
+		it('should sanitize the url', () => {
+			expect(fakeWindow.location.href).toBe(`unsafe:${unsafeUrl}`);
+		});
+	});
 });
