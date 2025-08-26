@@ -150,6 +150,134 @@
                 }
               }
             }
+          },
+          "emphasis": {
+            "state": {
+              "fg": {
+                "enabled": {
+                  "inversity_normal": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.fg.enabled.inversity_normal}",
+                    "$description": "High emphasis interactive element foreground - enabled state, normal theme"
+                  },
+                  "inversity_flipped": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.fg.enabled.inversity_flipped}",
+                    "$description": "High emphasis interactive element foreground - enabled state, flipped theme"
+                  }
+                },
+                "hover": {
+                  "inversity_normal": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.fg.hover.inversity_normal}",
+                    "$description": "High emphasis interactive element foreground - hover state, normal theme"
+                  },
+                  "inversity_flipped": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.fg.hover.inversity_flipped}",
+                    "$description": "High emphasis interactive element foreground - hover state, flipped theme"
+                  }
+                },
+                "focus": {
+                  "inversity_normal": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.fg.focus.inversity_normal}",
+                    "$description": "High emphasis interactive element foreground - focus state, normal theme"
+                  },
+                  "inversity_flipped": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.fg.focus.inversity_flipped}",
+                    "$description": "High emphasis interactive element foreground - focus state, flipped theme"
+                  }
+                },
+                "pressed": {
+                  "inversity_normal": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.fg.pressed.inversity_normal}",
+                    "$description": "High emphasis interactive element foreground - pressed state, normal theme"
+                  },
+                  "inversity_flipped": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.fg.pressed.inversity_flipped}",
+                    "$description": "High emphasis interactive element foreground - pressed state, flipped theme"
+                  }
+                },
+                "disabled": {
+                  "inversity_normal": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.fg.disabled.inversity_normal}",
+                    "$description": "High emphasis interactive element foreground - disabled state, normal theme"
+                  },
+                  "inversity_flipped": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.fg.disabled.inversity_flipped}",
+                    "$description": "High emphasis interactive element foreground - disabled state, flipped theme"
+                  }
+                }
+              },
+              "bg": {
+                "enabled": {
+                  "inversity_normal": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.bg.enabled.inversity_normal}",
+                    "$description": "High emphasis interactive element background - enabled state, normal theme"
+                  },
+                  "inversity_flipped": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.bg.enabled.inversity_flipped}",
+                    "$description": "High emphasis interactive element background - enabled state, flipped theme"
+                  }
+                },
+                "hover": {
+                  "inversity_normal": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.bg.hover.inversity_normal}",
+                    "$description": "High emphasis interactive element background - hover state, normal theme"
+                  },
+                  "inversity_flipped": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.bg.hover.inversity_flipped}",
+                    "$description": "High emphasis interactive element background - hover state, flipped theme"
+                  }
+                },
+                "focus": {
+                  "inversity_normal": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.bg.focus.inversity_normal}",
+                    "$description": "High emphasis interactive element background - focus state, normal theme"
+                  },
+                  "inversity_flipped": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.bg.focus.inversity_flipped}",
+                    "$description": "High emphasis interactive element background - focus state, flipped theme"
+                  }
+                },
+                "pressed": {
+                  "inversity_normal": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.bg.pressed.inversity_normal}",
+                    "$description": "High emphasis interactive element background - pressed state, normal theme"
+                  },
+                  "inversity_flipped": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.bg.pressed.inversity_flipped}",
+                    "$description": "High emphasis interactive element background - pressed state, flipped theme"
+                  }
+                },
+                "disabled": {
+                  "inversity_normal": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.bg.disabled.inversity_normal}",
+                    "$description": "High emphasis interactive element background - disabled state, normal theme"
+                  },
+                  "inversity_flipped": {
+                    "$type": "color",
+                    "$value": "{ob.s2.color.interaction.state.bg.disabled.inversity_flipped}",
+                    "$description": "High emphasis interactive element background - disabled state, flipped theme"
+                  }
+                }
+              }
+            }
           }
         },
         "shadow": {
