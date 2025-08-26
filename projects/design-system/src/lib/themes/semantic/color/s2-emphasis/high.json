@@ -8,84 +8,84 @@
               "enabled": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
                   "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
                   "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
                 }
               },
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
                   "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
                   "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
                 }
               },
               "focus": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
                   "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
                   "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
                 }
               },
               "pressed": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_base.contrast_high.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_normal}",
                   "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
                   "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
                 }
               },
               "selected": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
                   "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_base.contrast_low.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_flipped}",
                   "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
                 }
               },
               "visited": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_visited.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_visited.contrast_low.inversity_normal}",
                   "$description": "For text-links. No use in buttons."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_visited.contrast_low.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_visited.contrast_low.inversity_flipped}",
                   "$description": "For text-links. No use in buttons."
                 }
               },
               "disabled": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_normal}",
                   "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_flipped}",
                   "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
                 }
               }
@@ -94,60 +94,60 @@
               "enabled": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.bg_base.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_low.inversity_normal}",
                   "$description": "Background for primary buttons."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.bg_base.contrast_low.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_low.inversity_flipped}",
                   "$description": "Background for primary buttons."
                 }
               },
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_normal}",
                   "$description": "Background for primary buttons."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_flipped}",
                   "$description": "Background for primary buttons."
                 }
               },
               "focus": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_normal}",
                   "$description": "Background for primary buttons."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_flipped}",
                   "$description": "Background for primary buttons."
                 }
               },
               "pressed": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}",
                   "$description": "Background for primary buttons."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.bg_base.contrast_high.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_high.inversity_flipped}",
                   "$description": "Background for primary buttons."
                 }
               },
               "selected": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.bg_base.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_low.inversity_normal}",
                   "$description": "For navigation."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.bg_base.contrast_low.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_low.inversity_flipped}",
                   "$description": "For navigation."
                 }
               },
@@ -166,12 +166,12 @@
               "disabled": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.bg_disabled.opacity.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_normal}",
                   "$description": "Used for fill in primary buttons."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.emphasis_high.bg_disabled.opacity.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_flipped}",
                   "$description": "Used for fill in primary buttons."
                 }
               }
