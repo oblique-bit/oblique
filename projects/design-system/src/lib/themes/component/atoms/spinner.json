@@ -15,7 +15,7 @@
           },
           "inactive": {
             "$type": "color",
-            "$value": "{ob.s1.color.status.progress.bg.contrast_high.inversity_flipped_alpha}",
+            "$value": "{ob.s3.color.status.progress}",
             "$description": "Color indicating the inactive part of the loading."
           }
         },
