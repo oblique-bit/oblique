@@ -137,7 +137,7 @@
             },
             "active": {
               "$type": "color",
-              "$value": "{ob.s3-semantic.color.neutral.fg.medium.inversity_flipped}"
+              "$value": "{ob.s3.color.neutral.fg.medium.inversity_flipped}"
             },
             "disabled": {
               "$type": "color",
@@ -147,23 +147,23 @@
           "bg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s3-semantic.color.neutral.bg.medium.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.bg.medium.inversity_normal}"
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s3-semantic.color.neutral.bg.high.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.bg.high.inversity_normal}"
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s3-semantic.color.neutral.bg.medium.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.bg.medium.inversity_normal}"
             },
             "active": {
               "$type": "color",
-              "$value": "{ob.s3-semantic.color.neutral.bg.medium.inversity_flipped}"
+              "$value": "{ob.s3.color.neutral.bg.medium.inversity_flipped}"
             },
             "disabled": {
               "$type": "color",
-              "$value": "{ob.s3-semantic.color.neutral.bg.medium.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.bg.medium.inversity_normal}"
             }
           }
         }
