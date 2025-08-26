@@ -154,12 +154,12 @@
               "visited": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s0.color.neutral.no_color}",
+                  "$value": "{ob.s3.color.neutral.no_color}",
                   "$description": "No use. For consistency only. Text-links need no bg color."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s0.color.neutral.no_color}",
+                  "$value": "{ob.s3.color.neutral.no_color}",
                   "$description": "No use. For consistency only. Text-links need no bg color."
                 }
               },

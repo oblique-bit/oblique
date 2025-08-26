@@ -182,87 +182,87 @@
             "secondary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}",
+                "$value": "{ob.s3.color.neutral.no_color}",
                 "$description": "Secondary needs a transparent background color on Enabled state."
               },
               "enabled-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "hover-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "focus-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "pressed-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "disabled-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               }
             },
             "tertiary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}",
+                "$value": "{ob.s3.color.neutral.no_color}",
                 "$description": "Tertiary needs a transparent background color on Enabled state."
               },
               "enabled-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "hover-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "focus-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "pressed-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "disabled-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               }
             }
           },
@@ -270,19 +270,19 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "enabled-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "hover-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "focus": {
                 "$type": "color",
@@ -294,20 +294,20 @@
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "pressed-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}",
+                "$value": "{ob.s3.color.neutral.no_color}",
                 "$description": "Border color of the Disabled Primary button: no border."
               },
               "disabled-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               }
             },
             "secondary": {
@@ -355,43 +355,43 @@
             "tertiary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "enabled-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "hover-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "focus-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "pressed-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               },
               "disabled-flipped": {
                 "$type": "color",
-                "$value": "{ob.s0.color.neutral.no_color}"
+                "$value": "{ob.s3.color.neutral.no_color}"
               }
             }
           }
