@@ -44,6 +44,9 @@ class PreBuild extends StaticScript {
 				.split(',')
 				.filter(url => !url.startsWith('.'));
 		}
+		if (fileContent.includes('styleUrl')) {
+			return [/styleUrl:\s*'(?<styleUrls>[^']*)'/m.exec(fileContent)?.groups?.styleUrls.replace(/\.\/|\s|\.scss/g, '')];
+		}
 		return undefined;
 	}
 }
