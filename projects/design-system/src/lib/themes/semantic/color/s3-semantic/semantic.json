@@ -1156,11 +1156,6 @@
                   "$value": "{ob.s1.color.status.pending.fg.contrast_low.inversity_flipped}",
                   "$description": "S3 semantic pending foreground - contrast low, inversity flipped"
                 }
-              },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_normal}",
-                "$description": "Pending status foreground - medium contrast"
               }
             }
           },
