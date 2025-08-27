@@ -7,43 +7,43 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.fg.enabled.inversity_flipped}"
+                "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}"
               },
               "enabled-flipped": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.fg.enabled.inversity_normal}"
+                "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.fg.hover.inversity_flipped}"
+                "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_flipped}"
               },
               "hover-flipped": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.fg.hover.inversity_normal}"
+                "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.fg.focus.inversity_flipped}"
+                "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_flipped}"
               },
               "focus-flipped": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.fg.focus.inversity_normal}"
+                "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.fg.pressed.inversity_flipped}"
+                "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_flipped}"
               },
               "pressed-flipped": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.fg.pressed.inversity_normal}"
+                "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.fg.disabled.inversity_flipped}"
+                "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_flipped}"
               },
               "disabled-flipped": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.fg.disabled.inversity_normal}"
+                "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_normal}"
               }
             },
             "secondary": {
@@ -137,46 +137,46 @@
             "primary": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.bg.enabled.inversity_flipped}",
+                "$value": "{ob.s3.color.interaction.state.bg.enabled.inversity_flipped}",
                 "$description": "Background color of Primary button Enabled state."
               },
               "enabled-flipped": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.bg.enabled.inversity_normal}"
+                "$value": "{ob.s3.color.interaction.state.bg.enabled.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.bg.hover.inversity_flipped}",
+                "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_flipped}",
                 "$description": "Background color of Primary button Hover state."
               },
               "hover-flipped": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.bg.hover.inversity_normal}"
+                "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.bg.focus.inversity_flipped}"
+                "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_flipped}"
               },
               "focus-flipped": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.bg.focus.inversity_normal}"
+                "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.bg.pressed.inversity_flipped}"
+                "$value": "{ob.s3.color.interaction.state.bg.pressed.inversity_flipped}"
               },
               "pressed-flipped": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.bg.pressed.inversity_normal}"
+                "$value": "{ob.s3.color.interaction.state.bg.pressed.inversity_normal}"
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.bg.disabled.inversity_flipped}",
+                "$value": "{ob.s3.color.interaction.state.bg.disabled.inversity_flipped}",
                 "$description": "Background color of the Disabled Primary button. Referenes the semantic interaction disabled."
               },
               "disabled-flipped": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.emphasis.state.bg.disabled.inversity_normal}"
+                "$value": "{ob.s3.color.interaction.state.bg.disabled.inversity_normal}"
               }
             },
             "secondary": {
@@ -286,11 +286,11 @@
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s3.color.neutral.border.contrast_highest.inversity_normal}"
+                "$value": "{ob.s3.color.interaction.border.focus}"
               },
               "focus-flipped": {
                 "$type": "color",
-                "$value": "{ob.s3.color.neutral.border.contrast_highest.inversity_flipped}"
+                "$value": "{ob.s3.color.interaction.border.focus}"
               },
               "pressed": {
                 "$type": "color",

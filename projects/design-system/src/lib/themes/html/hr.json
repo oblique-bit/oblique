@@ -11,15 +11,15 @@
         "color": {
           "subtle": {
             "$type": "color",
-            "$value": "{ob.s3.color.neutral.border.subtle}"
+            "$value": "{ob.s3.color.neutral.border.subtle.inversity_normal}"
           },
           "default": {
             "$type": "color",
-            "$value": "{ob.s3.color.neutral.border.medium}"
+            "$value": "{ob.s3.color.neutral.border.medium.inversity_normal}"
           },
           "strong": {
             "$type": "color",
-            "$value": "{ob.s3.color.neutral.border.strong}"
+            "$value": "{ob.s3.color.neutral.border.strong.inversity_normal}"
           }
         }
       }

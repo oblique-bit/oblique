@@ -72,19 +72,19 @@
           "fg": {
             "info": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_high}"
+              "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
             },
             "critical": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_high}"
+              "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
             },
             "attention": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_high}"
+              "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
             },
             "resolved": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_high}"
+              "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
             },
             "fatal": {
               "$type": "color",

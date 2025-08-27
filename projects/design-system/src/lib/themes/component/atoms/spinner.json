@@ -10,12 +10,12 @@
         "color": {
           "active": {
             "$type": "color",
-            "$value": "{ob.s3.color.status.progress.fg.medium}",
+            "$value": "{ob.s3.color.status.progress.fg.contrast_medium.inversity_normal}",
             "$description": "Color indicating the active part of the loading."
           },
           "inactive": {
             "$type": "color",
-            "$value": "{ob.s3.color.status.progress.fg.medium}",
+            "$value": "{ob.s3.color.status.progress.fg.contrast_low.inversity_normal}",
             "$description": "Color indicating the inactive part of the loading."
           }
         },
