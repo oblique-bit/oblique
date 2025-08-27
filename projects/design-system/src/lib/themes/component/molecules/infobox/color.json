@@ -22,7 +22,7 @@
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s3.color.status.fatal.bg.contrast_high.inversity_normal}"
+              "$value": "{ob.s3.color.status.fatal.fg.contrast_highest.inversity_normal}"
             }
           },
           "border": {
