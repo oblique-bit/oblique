@@ -286,11 +286,11 @@
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_normal}"
+                "$value": "{ob.s3.color.neutral.border.contrast_highest.inversity_normal}"
               },
               "focus-flipped": {
                 "$type": "color",
-                "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_flipped}"
+                "$value": "{ob.s3.color.neutral.border.contrast_highest.inversity_flipped}"
               },
               "pressed": {
                 "$type": "color",
