@@ -4,14 +4,7 @@
       "infobox": {
         "color": {
           "icon": {
-               "critical": {
-              "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_high}"
-            },
-            "fatal": {
-              "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_flipped}"
-            } "info": {
+            "info": {
               "$type": "color",
               "$value": "{ob.s3.color.status.info.fg.contrast_medium.inversity_normal}"
             },
