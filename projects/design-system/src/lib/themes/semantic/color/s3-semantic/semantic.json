@@ -14,36 +14,6 @@
             "$description": "Static value when no color respectively 0% opacity is needed. References primitive transparent token."
           },
           "fg": {
-            "high": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
-              "$description": "Neutral foreground - high contrast"
-            },
-            "high_flipped": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
-              "$description": "Neutral foreground - high contrast flipped"
-            },
-            "medium": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_medium.inversity_normal}",
-              "$description": "Neutral foreground - medium contrast"
-            },
-            "medium_flipped": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_medium.inversity_flipped}",
-              "$description": "Neutral foreground - medium contrast flipped"
-            },
-            "contrast_highest": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
-              "$description": "Neutral foreground - contrast highest"
-            },
-            "contrast_high": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
-              "$description": "Neutral foreground - contrast high"
-            },
             "contrast_medium": {
               "inversity_normal": {
                 "$type": "color",
@@ -70,31 +40,6 @@
             }
           },
           "bg": {
-            "highest": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.bg.contrast_highest.inversity_normal}",
-              "$description": "Neutral background - highest contrast"
-            },
-            "highest_flipped": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.bg.contrast_highest.inversity_flipped}",
-              "$description": "Neutral background - highest contrast flipped"
-            },
-            "high": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.bg.contrast_high.inversity_normal}",
-              "$description": "Neutral background - high contrast"
-            },
-            "medium": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.bg.contrast_medium.inversity_normal}",
-              "$description": "Neutral background - medium contrast"
-            },
-            "medium_flipped": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.bg.contrast_medium.inversity_flipped}",
-              "$description": "Neutral background - medium contrast flipped"
-            },
             "contrast_highest": {
               "inversity_normal": {
                 "$type": "color",
@@ -146,94 +91,70 @@
           },
           "shadow": {
             "first": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.shadow.first.inversity_normal}",
-              "$description": "Primary shadow color for UI elements. 1st of 2 shadow effects."
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.shadow.first.inversity_normal}",
+                "$description": "Primary shadow color for UI elements. 1st of 2 shadow effects."
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.shadow.first.inversity_flipped}",
+                "$description": "Primary shadow color for UI elements. 1st of 2 shadow effects."
+              }
             },
             "second": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.shadow.second.inversity_normal}",
-              "$description": "Secondary shadow color for UI elements. 2nd of 2 shadow effects."
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.shadow.second.inversity_normal}",
+                "$description": "Secondary shadow color for UI elements. 2nd of 2 shadow effects."
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.shadow.second.inversity_flipped}",
+                "$description": "Secondary shadow color for UI elements. 2nd of 2 shadow effects."
+              }
             }
           },
           "border": {
             "subtle": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.border.subtle.inversity_normal}",
-              "$description": "Subtle border color for UI elements."
-            },
-            "medium": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.border.medium.inversity_normal}",
-              "$description": "Medium border color for UI elements."
-            },
-            "strong": {
-              "$type": "color",
-              "$value": "{ob.s1.color.neutral.border.strong.inversity_normal}",
-              "$description": "Strong border color for UI elements."
-            },
-            "contrast_highest": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.border.strong.inversity_normal}",
-                "$description": "Neutral border - contrast highest normal"
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.border.strong.inversity_flipped}",
-                "$description": "Neutral border - contrast highest flipped"
-              }
-            },
-            "contrast_high": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.border.medium.inversity_normal}",
-                "$description": "Neutral border - contrast high normal"
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.border.medium.inversity_flipped}",
-                "$description": "Neutral border - contrast high flipped"
-              }
-            },
-            "contrast_medium": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.border.medium.inversity_normal}",
-                "$description": "Neutral border - contrast medium normal"
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.border.medium.inversity_flipped}",
-                "$description": "Neutral border - contrast medium flipped"
-              }
-            },
-            "contrast_low": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.border.subtle.inversity_normal}",
-                "$description": "Neutral border - contrast low normal"
+                "$description": "Neutral border - subtle normal"
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.border.subtle.inversity_flipped}",
-                "$description": "Neutral border - contrast low flipped"
+                "$description": "Neutral border - subtle flipped"
+              }
+            },
+            "medium": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.border.medium.inversity_normal}",
+                "$description": "Neutral border - medium normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.border.medium.inversity_flipped}",
+                "$description": "Neutral border - medium flipped"
+              }
+            },
+            "strong": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.border.strong.inversity_normal}",
+                "$description": "Neutral border - strong normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.border.strong.inversity_flipped}",
+                "$description": "Neutral border - strong flipped"
               }
             }
           }
         },
         "interaction": {
-          "indicator": {
-            "selected": {
-              "$type": "color",
-              "$value": "{ob.s3.color.brand}"
-            },
-            "unselected": {
-              "$type": "color",
-              "$value": "{ob.s3.color.neutral.no_color}",
-              "$description": "Semantic Interaction color for not selected items. Used in Main Navigation, Navigation Tree, Tabs."
-            }
-          },
           "state": {
             "fg": {
               "enabled": {
@@ -301,134 +222,6 @@
                   "$type": "color",
                   "$value": "{ob.s2.color.interaction.state.fg.visited.inversity_normal}",
                   "$description": "Interactive element foreground - visited state, normal theme"
-                }
-              }
-            }
-          },
-          "emphasis": {
-            "state": {
-              "fg": {
-                "enabled": {
-                  "inversity_normal": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.fg.enabled.inversity_normal}",
-                    "$description": "High emphasis interactive element foreground - enabled state, normal theme"
-                  },
-                  "inversity_flipped": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.fg.enabled.inversity_flipped}",
-                    "$description": "High emphasis interactive element foreground - enabled state, flipped theme"
-                  }
-                },
-                "hover": {
-                  "inversity_normal": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.fg.hover.inversity_normal}",
-                    "$description": "High emphasis interactive element foreground - hover state, normal theme"
-                  },
-                  "inversity_flipped": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.fg.hover.inversity_flipped}",
-                    "$description": "High emphasis interactive element foreground - hover state, flipped theme"
-                  }
-                },
-                "focus": {
-                  "inversity_normal": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.fg.focus.inversity_normal}",
-                    "$description": "High emphasis interactive element foreground - focus state, normal theme"
-                  },
-                  "inversity_flipped": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.fg.focus.inversity_flipped}",
-                    "$description": "High emphasis interactive element foreground - focus state, flipped theme"
-                  }
-                },
-                "pressed": {
-                  "inversity_normal": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.fg.pressed.inversity_normal}",
-                    "$description": "High emphasis interactive element foreground - pressed state, normal theme"
-                  },
-                  "inversity_flipped": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.fg.pressed.inversity_flipped}",
-                    "$description": "High emphasis interactive element foreground - pressed state, flipped theme"
-                  }
-                },
-                "disabled": {
-                  "inversity_normal": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.fg.disabled.inversity_normal}",
-                    "$description": "High emphasis interactive element foreground - disabled state, normal theme"
-                  },
-                  "inversity_flipped": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.fg.disabled.inversity_flipped}",
-                    "$description": "High emphasis interactive element foreground - disabled state, flipped theme"
-                  }
-                }
-              },
-              "bg": {
-                "enabled": {
-                  "inversity_normal": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.bg.enabled.inversity_normal}",
-                    "$description": "High emphasis interactive element background - enabled state, normal theme"
-                  },
-                  "inversity_flipped": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.bg.enabled.inversity_flipped}",
-                    "$description": "High emphasis interactive element background - enabled state, flipped theme"
-                  }
-                },
-                "hover": {
-                  "inversity_normal": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.bg.hover.inversity_normal}",
-                    "$description": "High emphasis interactive element background - hover state, normal theme"
-                  },
-                  "inversity_flipped": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.bg.hover.inversity_flipped}",
-                    "$description": "High emphasis interactive element background - hover state, flipped theme"
-                  }
-                },
-                "focus": {
-                  "inversity_normal": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.bg.focus.inversity_normal}",
-                    "$description": "High emphasis interactive element background - focus state, normal theme"
-                  },
-                  "inversity_flipped": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.bg.focus.inversity_flipped}",
-                    "$description": "High emphasis interactive element background - focus state, flipped theme"
-                  }
-                },
-                "pressed": {
-                  "inversity_normal": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.bg.pressed.inversity_normal}",
-                    "$description": "High emphasis interactive element background - pressed state, normal theme"
-                  },
-                  "inversity_flipped": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.bg.pressed.inversity_flipped}",
-                    "$description": "High emphasis interactive element background - pressed state, flipped theme"
-                  }
-                },
-                "disabled": {
-                  "inversity_normal": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.bg.disabled.inversity_normal}",
-                    "$description": "High emphasis interactive element background - disabled state, normal theme"
-                  },
-                  "inversity_flipped": {
-                    "$type": "color",
-                    "$value": "{ob.s2.color.interaction.state.bg.disabled.inversity_flipped}",
-                    "$description": "High emphasis interactive element background - disabled state, flipped theme"
-                  }
                 }
               }
             }
@@ -1402,16 +1195,6 @@
                   "$value": "{ob.s1.color.status.scheduled.bg.contrast_low.inversity_flipped}",
                   "$description": "S3 semantic scheduled background - contrast low, inversity flipped"
                 }
-              },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.scheduled.bg.contrast_medium.inversity_normal}",
-                "$description": "Scheduled status background - medium contrast"
-              },
-              "low": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.scheduled.bg.contrast_low.inversity_normal}",
-                "$description": "Scheduled status background - low contrast"
               }
             },
             "fg": {
@@ -1462,11 +1245,6 @@
                   "$value": "{ob.s1.color.status.scheduled.fg.contrast_low.inversity_flipped}",
                   "$description": "S3 semantic scheduled foreground - contrast low, inversity flipped"
                 }
-              },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.scheduled.fg.contrast_high.inversity_normal}",
-                "$description": "Scheduled status foreground - medium contrast"
               }
             }
           },
@@ -1519,21 +1297,6 @@
                   "$value": "{ob.s1.color.status.waiting.bg.contrast_low.inversity_flipped}",
                   "$description": "S3 semantic waiting background - contrast low, inversity flipped"
                 }
-              },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.waiting.bg.contrast_medium.inversity_normal}",
-                "$description": "Waiting status background - medium contrast"
-              },
-              "high": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.waiting.bg.contrast_high.inversity_normal}",
-                "$description": "Waiting status background - high contrast"
-              },
-              "low": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.waiting.bg.contrast_low.inversity_normal}",
-                "$description": "Waiting status background - low contrast"
               }
             },
             "fg": {
@@ -1584,11 +1347,6 @@
                   "$value": "{ob.s1.color.status.waiting.fg.contrast_low.inversity_flipped}",
                   "$description": "S3 semantic waiting foreground - contrast low, inversity flipped"
                 }
-              },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.waiting.fg.contrast_high.inversity_normal}",
-                "$description": "Waiting status foreground - medium contrast"
               }
             }
           }
