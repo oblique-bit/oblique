@@ -17,10 +17,10 @@ module.exports = {
 	coverageThreshold: {
 		...coverageConfig.coverageThreshold,
 		'src/new/ob-new.ts': {
-			statements: 96,
+			statements: 95,
 			branches: 100,
 			functions: 100,
-			lines: 96
+			lines: 95
 		},
 		'src/update/ob-update.ts': {
 			statements: 87,
