@@ -34,10 +34,39 @@
               "$value": "{ob.s1.color.neutral.fg.contrast_medium.inversity_flipped}",
               "$description": "Neutral foreground - medium contrast flipped"
             },
+            "contrast_highest": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
+              "$description": "Neutral foreground - contrast highest"
+            },
             "contrast_high": {
               "$type": "color",
               "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
               "$description": "Neutral foreground - contrast high"
+            },
+            "contrast_medium": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_medium.inversity_normal}",
+                "$description": "Neutral foreground - contrast medium normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_medium.inversity_flipped}",
+                "$description": "Neutral foreground - contrast medium flipped"
+              }
+            },
+            "contrast_low": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_low.inversity_normal}",
+                "$description": "Neutral foreground - contrast low normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_low.inversity_flipped}",
+                "$description": "Neutral foreground - contrast low flipped"
+              }
             }
           },
           "bg": {
@@ -65,6 +94,54 @@
               "$type": "color",
               "$value": "{ob.s1.color.neutral.bg.contrast_medium.inversity_flipped}",
               "$description": "Neutral background - medium contrast flipped"
+            },
+            "contrast_highest": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.bg.contrast_highest.inversity_normal}",
+                "$description": "Neutral background - contrast highest normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.bg.contrast_highest.inversity_flipped}",
+                "$description": "Neutral background - contrast highest flipped"
+              }
+            },
+            "contrast_high": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.bg.contrast_high.inversity_normal}",
+                "$description": "Neutral background - contrast high normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.bg.contrast_high.inversity_flipped}",
+                "$description": "Neutral background - contrast high flipped"
+              }
+            },
+            "contrast_medium": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.bg.contrast_medium.inversity_normal}",
+                "$description": "Neutral background - contrast medium normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.bg.contrast_medium.inversity_flipped}",
+                "$description": "Neutral background - contrast medium flipped"
+              }
+            },
+            "contrast_low": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.bg.contrast_low.inversity_normal}",
+                "$description": "Neutral background - contrast low normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.bg.contrast_low.inversity_flipped}",
+                "$description": "Neutral background - contrast low flipped"
+              }
             }
           },
           "shadow": {
@@ -94,6 +171,54 @@
               "$type": "color",
               "$value": "{ob.s1.color.neutral.border.strong.inversity_normal}",
               "$description": "Strong border color for UI elements."
+            },
+            "contrast_highest": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.border.strong.inversity_normal}",
+                "$description": "Neutral border - contrast highest normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.border.strong.inversity_flipped}",
+                "$description": "Neutral border - contrast highest flipped"
+              }
+            },
+            "contrast_high": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.border.medium.inversity_normal}",
+                "$description": "Neutral border - contrast high normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.border.medium.inversity_flipped}",
+                "$description": "Neutral border - contrast high flipped"
+              }
+            },
+            "contrast_medium": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.border.medium.inversity_normal}",
+                "$description": "Neutral border - contrast medium normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.border.medium.inversity_flipped}",
+                "$description": "Neutral border - contrast medium flipped"
+              }
+            },
+            "contrast_low": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.border.subtle.inversity_normal}",
+                "$description": "Neutral border - contrast low normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.border.subtle.inversity_flipped}",
+                "$description": "Neutral border - contrast low flipped"
+              }
             }
           }
         },

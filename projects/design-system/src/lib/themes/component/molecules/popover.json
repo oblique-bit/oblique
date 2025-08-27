@@ -83,7 +83,7 @@
         "color": {
           "bg": {
             "$type": "color",
-            "$value": "{ob.s3.color.neutral.bg.contrast_highest.inversity_normal}",
+            "$value": "{ob.s3.color.neutral.bg.highest}",
             "$description": "Default background color for popovers."
           },
           "border": {
