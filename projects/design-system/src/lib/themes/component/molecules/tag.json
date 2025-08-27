@@ -125,15 +125,15 @@
           "fg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.fg.contrast_high}"
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.fg.contrast_high}"
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.fg.contrast_high}"
             },
             "active": {
               "$type": "color",
@@ -147,7 +147,7 @@
           "bg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.bg.contrast_medium.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.bg.contrast_low.inversity_normal}"
             },
             "hover": {
               "$type": "color",
@@ -155,7 +155,7 @@
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.bg.contrast_medium.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.bg.contrast_low.inversity_normal}"
             },
             "active": {
               "$type": "color",
@@ -163,7 +163,7 @@
             },
             "disabled": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.bg.contrast_medium.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.bg.contrast_low.inversity_normal}"
             }
           }
         }

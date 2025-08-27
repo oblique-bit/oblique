@@ -32,7 +32,7 @@
           },
           "fg": {
             "$type": "color",
-            "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_flipped}",
+            "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_flipped}",
             "$description": "Text color for the inverted background color."
           }
         },

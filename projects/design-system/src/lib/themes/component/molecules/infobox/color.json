@@ -4,7 +4,14 @@
       "infobox": {
         "color": {
           "icon": {
-            "info": {
+               "critical": {
+              "$type": "color",
+              "$value": "{ob.s3.color.neutral.fg.contrast_high}"
+            },
+            "fatal": {
+              "$type": "color",
+              "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_flipped}"
+            } "info": {
               "$type": "color",
               "$value": "{ob.s3.color.status.info.fg.contrast_medium.inversity_normal}"
             },
@@ -72,23 +79,23 @@
           "fg": {
             "info": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.fg.contrast_high}"
             },
             "critical": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.fg.contrast_high}"
             },
             "attention": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.fg.contrast_high}"
             },
             "resolved": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.fg.contrast_high}"
             },
             "fatal": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_flipped}"
+              "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_flipped}"
             }
           }
         }
