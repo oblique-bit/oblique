@@ -1,7 +1,7 @@
 import {Component, computed, inject, input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ObLanguageService} from '../language.service';
-import {ObEDateFormats} from './date.model';
+import {ObDateFormat} from './date.model';
 import {formatDate} from '@angular/common';
 
 @Component({
@@ -10,13 +10,17 @@ import {formatDate} from '@angular/common';
 })
 export class ObDateComponent {
 	readonly date = input.required<string | Date>();
-	readonly format = input<ObEDateFormats>(ObEDateFormats.LONG_DATE);
-	readonly formattedDate = computed(() => formatDate(this.validatedDate(), this.format(), this.locale()));
+	readonly format = input<ObDateFormat>('longDate');
+	readonly formattedDate = computed(() => formatDate(this.validatedDate(), this.validateFormat(), this.locale()));
 	readonly isoDate = computed(() => formatDate(this.validatedDate(), 'yyyy-MM-dd', this.locale()));
 	private readonly locale = toSignal(inject(ObLanguageService).locale$);
 	private readonly validatedDate = computed(() =>
 		typeof this.date() === 'string' ? this.validateDate(this.date() as string) : this.date()
 	);
+
+	private validateFormat(): string {
+		return this.format() === 'isoDate' ? 'yyyy-MM-dd' : this.format();
+	}
 
 	private validateDate(date: string): Date {
 		const swissDateFormat = /\d\d\.\d\d\.\d\d\d\d/;

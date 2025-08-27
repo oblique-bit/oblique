@@ -56,6 +56,7 @@ describe('DateComponent', () => {
 		{input: '2025-12-31', format: `longDate`, expectedFormat: 'December 31, 2025'},
 		{input: '2025-12-31', format: `fullDate`, expectedFormat: 'Wednesday, December 31, 2025'},
 		{input: '2025-12-31', format: `yyyy-MM-dd`, expectedFormat: '2025-12-31'},
+		{input: '2025-12-31', format: `isoDate`, expectedFormat: '2025-12-31'},
 		{input: '31.12.2025', format: `longDate`, expectedFormat: 'December 31, 2025'}
 	])('correctly format date strings ', ({input, format, expectedFormat}) => {
 		beforeEach(() => {
@@ -72,7 +73,8 @@ describe('DateComponent', () => {
 		{input: new Date('2025-12-31'), format: `mediumDate`, expectedFormat: 'Dec 31, 2025'},
 		{input: new Date('2025-12-31'), format: `longDate`, expectedFormat: 'December 31, 2025'},
 		{input: new Date('2025-12-31'), format: `fullDate`, expectedFormat: 'Wednesday, December 31, 2025'},
-		{input: new Date('2025-12-31'), format: `yyyy-MM-dd`, expectedFormat: '2025-12-31'}
+		{input: new Date('2025-12-31'), format: `yyyy-MM-dd`, expectedFormat: '2025-12-31'},
+		{input: new Date('2025-12-31'), format: `isoDate`, expectedFormat: '2025-12-31'}
 	])('correctly format date objects ', ({input, format, expectedFormat}) => {
 		beforeEach(() => {
 			fixture.componentRef.setInput('date', input);
