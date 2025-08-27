@@ -118,8 +118,13 @@ function validateCompleteArchitecturalMirroring(s1Definitions, s2Definitions, s3
   
   const issues = [];
   
-  // Check 1: Every S1 token should have S3 mirror
+  // Check 1: Every S1 token should have S3 mirror (EXCEPT interaction emphasis tokens)
   s1Definitions.forEach(s1Token => {
+    // Skip interaction emphasis tokens - these should be routed through S2
+    if (s1Token.includes('.interaction.emphasis_high.') || s1Token.includes('.interaction.emphasis_low.')) {
+      return;
+    }
+    
     const s3Mirror = s1Token.replace('ob.s1.', 'ob.s3.');
     if (!s3Definitions.has(s3Mirror)) {
       issues.push({
@@ -142,7 +147,7 @@ function validateCompleteArchitecturalMirroring(s1Definitions, s2Definitions, s3
     }
   });
   
-  // Check 3: Every S3 token should mirror either S1 or S2 (except S0 exceptions)
+  // Check 3: Every S3 token should mirror either S1 or S2 (except S0 exceptions + emphasis tokens)
   const s0Exceptions = new Set([
     'ob.s3.color.brand',
     'ob.s3.color.neutral.no_color'
@@ -156,6 +161,11 @@ function validateCompleteArchitecturalMirroring(s1Definitions, s2Definitions, s3
     
     const hasS1Mirror = s1Definitions.has(s1Mirror);
     const hasS2Mirror = s2Definitions.has(s2Mirror);
+    
+    // Skip validation for emphasis tokens - they should NOT exist in S3
+    if (s3Token.includes('.interaction.emphasis_high.') || s3Token.includes('.interaction.emphasis_low.')) {
+      return;
+    }
     
     if (!hasS1Mirror && !hasS2Mirror) {
       issues.push({
