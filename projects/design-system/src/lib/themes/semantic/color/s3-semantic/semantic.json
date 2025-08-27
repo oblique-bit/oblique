@@ -1096,16 +1096,6 @@
                   "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_flipped}",
                   "$description": "S3 semantic pending background - contrast low, inversity flipped"
                 }
-              },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_normal}",
-                "$description": "Pending status background - medium contrast"
-              },
-              "low": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_normal}",
-                "$description": "Pending status background - low contrast"
               }
             },
             "fg": {
@@ -1208,16 +1198,6 @@
                   "$value": "{ob.s1.color.status.confirmed.bg.contrast_low.inversity_flipped}",
                   "$description": "S3 semantic confirmed background - contrast low, inversity flipped"
                 }
-              },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.confirmed.bg.contrast_medium.inversity_normal}",
-                "$description": "Confirmed status background - medium contrast"
-              },
-              "low": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.confirmed.bg.contrast_low.inversity_normal}",
-                "$description": "Confirmed status background - low contrast"
               }
             },
             "fg": {
@@ -1268,11 +1248,6 @@
                   "$value": "{ob.s1.color.status.confirmed.fg.contrast_low.inversity_flipped}",
                   "$description": "S3 semantic confirmed foreground - contrast low, inversity flipped"
                 }
-              },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.confirmed.fg.contrast_high.inversity_normal}",
-                "$description": "Confirmed status foreground - medium contrast"
               }
             }
           },
@@ -1325,16 +1300,6 @@
                   "$value": "{ob.s1.color.status.progress.bg.contrast_low.inversity_flipped}",
                   "$description": "S3 semantic progress background - contrast low, inversity flipped"
                 }
-              },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.progress.bg.contrast_medium.inversity_normal}",
-                "$description": "Progress status background - medium contrast"
-              },
-              "low": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.progress.bg.contrast_low.inversity_normal}",
-                "$description": "Progress status background - low contrast"
               }
             },
             "fg": {
@@ -1385,11 +1350,6 @@
                   "$value": "{ob.s1.color.status.progress.fg.contrast_low.inversity_flipped}",
                   "$description": "S3 semantic progress foreground - contrast low, inversity flipped"
                 }
-              },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.progress.fg.contrast_high.inversity_normal}",
-                "$description": "Progress status foreground - medium contrast"
               }
             }
           },

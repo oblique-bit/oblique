@@ -59,6 +59,87 @@ function extractTokenDefinitions(semanticData, prefix = '') {
 }
 
 /**
+ * Extract S3 token definitions (what S3 declares it has)
+ */
+function extractS3Definitions(s3Data) {
+  const definitions = new Set();
+  
+  function traverse(obj, path = '') {
+    if (typeof obj === 'object' && obj !== null) {
+      Object.entries(obj).forEach(([key, value]) => {
+        const fullPath = path ? `${path}.${key}` : key;
+        
+        if (value && typeof value === 'object' && value.$value !== undefined) {
+          // This is a token definition in S3
+          definitions.add(fullPath);
+        } else if (typeof value === 'object') {
+          traverse(value, fullPath);
+        }
+      });
+    }
+  }
+  
+  traverse(s3Data);
+  return definitions;
+}
+
+/**
+ * Extract S3 token definitions (what S3 declares it has)
+ */
+function extractS3Definitions(s3Data) {
+  const definitions = new Set();
+  
+  function traverse(obj, path = '') {
+    if (typeof obj === 'object' && obj !== null) {
+      Object.entries(obj).forEach(([key, value]) => {
+        const fullPath = path ? `${path}.${key}` : key;
+        
+        if (value && typeof value === 'object' && value.$value !== undefined) {
+          // This is a token definition in S3
+          definitions.add(fullPath);
+        } else if (typeof value === 'object') {
+          traverse(value, fullPath);
+        }
+      });
+    }
+  }
+  
+  traverse(s3Data);
+  return definitions;
+}
+
+/**
+ * Check for architectural violations - S3 tokens that don't mirror S1/S2
+ */
+function findArchitecturalViolations(s3Definitions, s1Definitions, s2Definitions) {
+  const violations = [];
+  
+  s3Definitions.forEach(s3Token => {
+    // Skip if it starts with ob. prefix (this is the full token path)
+    if (!s3Token.startsWith('ob.s3.')) return;
+    
+    // Convert S3 token to expected S1/S2 equivalent
+    const s1Equivalent = s3Token.replace('ob.s3.', 'ob.s1.');
+    const s2Equivalent = s3Token.replace('ob.s3.', 'ob.s2.');
+    
+    // Check if S3 token should mirror S1 or S2
+    const shouldMirrorS1 = s1Definitions.has(s1Equivalent);
+    const shouldMirrorS2 = s2Definitions.has(s2Equivalent);
+    
+    if (!shouldMirrorS1 && !shouldMirrorS2) {
+      violations.push({
+        s3Token,
+        expectedS1: s1Equivalent,
+        expectedS2: s2Equivalent,
+        type: 'orphan'
+      });
+    }
+  });
+  
+  return violations;
+}
+
+/**
  * Load and extract definitions from a semantic layer
  */
 function loadSemanticLayer(layerName, filePaths) {
@@ -142,6 +223,22 @@ function validateSemanticMirroring() {
     // Load S2 semantic layer (emphasis)  
     const s2Definitions = loadSemanticLayer('S2', [S2_HIGH_PATH, S2_LOW_PATH]);
     
+    // Extract S3 definitions (what S3 declares it has)
+    const s3Definitions = extractS3Definitions(s3Data);
+    console.log(`✅ Found ${s3Definitions.size} S3 token definitions`);
+    
+    // Check for architectural violations - S3 tokens that don't mirror S1/S2
+    const violations = findArchitecturalViolations(s3Definitions, s1Definitions, s2Definitions);
+    
+    if (violations.length > 0) {
+      console.log(`\n❌ ARCHITECTURAL VIOLATIONS (${violations.length}):`);
+      violations.forEach(violation => {
+        console.log(`   - ${violation.s3Token}`);
+        console.log(`     Missing S1: ${violation.expectedS1}`);
+        console.log(`     Missing S2: ${violation.expectedS2}`);
+      });
+    }
+    
     // Validate S1↔S3 mirroring
     const s1Valid = validateLayerMirroring('S1', s1References, s1Definitions);
     
@@ -197,18 +294,21 @@ function validateSemanticMirroring() {
     console.log('\n📋 Mirroring Summary:');
     console.log(`   • S1↔S3 references: ${s1References.size} (${s1Valid ? '✅ VALID' : '❌ INVALID'})`);
     console.log(`   • S2↔S3 references: ${s2References.size} (${s2Valid ? '✅ VALID' : '❌ INVALID'})`);
+    console.log(`   • S3 definitions: ${s3Definitions.size}`);
+    console.log(`   • Architectural violations: ${violations.length} (${violations.length === 0 ? '✅ NONE' : '❌ CONTAMINATED'})`);
     console.log(`   • Total S3 semantic references: ${s1References.size + s2References.size}`);
     
-    const allValid = s1Valid && s2Valid;
+    const allValid = s1Valid && s2Valid && violations.length === 0;
     
     if (allValid) {
-      console.log('\n🎉 Perfect S1↔S3 & S2↔S3 mirroring achieved!');
-      console.log('   🏗️  S3 semantic layer perfectly mirrors both S1 (lightness) and S2 (emphasis)');
+      console.log('\n🎉 Perfect architectural mirroring achieved!');
+      console.log('   🏗️  S3 semantic layer perfectly mirrors S1 & S2 with no violations');
       return true;
     } else {
-      console.log('\n⚠️  Semantic mirroring needs attention');
+      console.log('\n❌ Architectural integrity compromised');
       if (!s1Valid) console.log('   • Fix S1↔S3 mirroring issues');
       if (!s2Valid) console.log('   • Fix S2↔S3 mirroring issues');
+      if (violations.length > 0) console.log(`   • Remove ${violations.length} orphaned S3 tokens`);
       return false;
     }
     
