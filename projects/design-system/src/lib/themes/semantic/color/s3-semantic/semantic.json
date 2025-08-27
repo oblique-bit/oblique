@@ -85,67 +85,67 @@
               "enabled": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.state.fg.enabled.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.state.fg.enabled.inversity_normal}",
                   "$description": "Interactive element foreground - enabled state, normal theme"
                 },
                 "inversity_flipped": {
                   "$type": "color", 
-                  "$value": "{ob.s1.color.interaction.state.fg.enabled.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.state.fg.enabled.inversity_flipped}",
                   "$description": "Interactive element foreground - enabled state, flipped theme"
                 }
               },
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.state.fg.hover.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.state.fg.hover.inversity_normal}",
                   "$description": "Interactive element foreground - hover state, normal theme"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.state.fg.hover.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.state.fg.hover.inversity_flipped}",
                   "$description": "Interactive element foreground - hover state, flipped theme"
                 }
               },
               "focus": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.state.fg.focus.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.state.fg.focus.inversity_normal}",
                   "$description": "Interactive element foreground - focus state, normal theme"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.state.fg.focus.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.state.fg.focus.inversity_flipped}",
                   "$description": "Interactive element foreground - focus state, flipped theme"
                 }
               },
               "pressed": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.state.fg.pressed.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.state.fg.pressed.inversity_normal}",
                   "$description": "Interactive element foreground - pressed state, normal theme"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.state.fg.pressed.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.state.fg.pressed.inversity_flipped}",
                   "$description": "Interactive element foreground - pressed state, flipped theme"
                 }
               },
               "disabled": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.state.fg.disabled.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.state.fg.disabled.inversity_normal}",
                   "$description": "Interactive element foreground - disabled state, normal theme"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.state.fg.disabled.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.state.fg.disabled.inversity_flipped}",
                   "$description": "Interactive element foreground - disabled state, flipped theme"
                 }
               },
               "visited": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.state.fg.visited.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.state.fg.visited.inversity_normal}",
                   "$description": "Interactive element foreground - visited state, normal theme"
                 }
               }
