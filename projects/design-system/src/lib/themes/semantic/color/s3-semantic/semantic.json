@@ -311,174 +311,512 @@
         },
         "status": {
           "info": {
-            "fg": {
-              "high": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.info.fg.contrast_highest.inversity_normal}",
-                "$description": "Info status foreground - high contrast"
+            "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.bg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic info background - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.bg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic info background - contrast highest, inversity flipped"
+                }
               },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.info.fg.contrast_medium.inversity_normal}",
-                "$description": "Info status foreground - medium contrast"
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.bg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic info background - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.bg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic info background - contrast high, inversity flipped"
+                }
               },
-              "med_alt": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.info.fg.contrast_high.inversity_normal}",
-                "$description": "Info status foreground - alternative medium contrast"
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.bg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic info background - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.bg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic info background - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.bg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic info background - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.bg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic info background - contrast low, inversity flipped"
+                }
               }
             },
-            "bg": {
-              "high": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.info.bg.contrast_high.inversity_normal}",
-                "$description": "Info status background - high contrast"
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.fg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic info foreground - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.fg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic info foreground - contrast highest, inversity flipped"
+                }
               },
-              "low": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.info.bg.contrast_low.inversity_normal}",
-                "$description": "Info status background - low contrast"
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.fg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic info foreground - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.fg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic info foreground - contrast high, inversity flipped"
+                }
               },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.info.bg.contrast_medium.inversity_normal}",
-                "$description": "Info status background - medium contrast"
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.fg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic info foreground - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.fg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic info foreground - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.fg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic info foreground - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.info.fg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic info foreground - contrast low, inversity flipped"
+                }
               }
             }
           },
           "critical": {
-            "fg": {
-              "high": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.critical.fg.contrast_highest.inversity_normal}",
-                "$description": "Critical status foreground - high contrast"
+            "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic critical background - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic critical background - contrast highest, inversity flipped"
+                }
               },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.critical.fg.contrast_high.inversity_normal}",
-                "$description": "Critical status foreground - medium contrast"
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic critical background - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic critical background - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic critical background - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic critical background - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic critical background - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic critical background - contrast low, inversity flipped"
+                }
               }
             },
-            "bg": {
-              "high": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.critical.bg.contrast_high.inversity_normal}",
-                "$description": "Critical status background - high contrast"
-              },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.critical.bg.contrast_medium.inversity_normal}",
-                "$description": "Critical status background - medium contrast"
-              },
-              "low": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.critical.bg.contrast_low.inversity_normal}",
-                "$description": "Critical status background - low contrast"
-              }
-            }
-          },
-          "success": {
             "fg": {
-              "high": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.success.fg.contrast_highest.inversity_normal}",
-                "$description": "Success status foreground - high contrast"
-              }
-            },
-            "bg": {
-              "high": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.success.bg.contrast_high.inversity_normal}",
-                "$description": "Success status background - high contrast"
-              }
-            }
-          },
-          "warning": {
-            "fg": {
-              "high": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.warning.fg.contrast_highest.inversity_normal}",
-                "$description": "Warning status foreground - high contrast"
-              }
-            },
-            "bg": {
-              "high": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.warning.bg.contrast_high.inversity_normal}",
-                "$description": "Warning status background - high contrast"
-              }
-            }
-          },
-          "attention": {
-            "fg": {
-              "high": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.attention.fg.contrast_highest.inversity_normal}",
-                "$description": "Attention status foreground - high contrast"
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic critical foreground - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic critical foreground - contrast highest, inversity flipped"
+                }
               },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.attention.fg.contrast_high.inversity_normal}",
-                "$description": "Attention status foreground - medium contrast"
-              }
-            },
-            "bg": {
-              "low": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.attention.bg.contrast_low.inversity_normal}",
-                "$description": "Attention status background - low contrast"
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic critical foreground - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic critical foreground - contrast high, inversity flipped"
+                }
               },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.attention.bg.contrast_medium.inversity_normal}",
-                "$description": "Attention status background - medium contrast"
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic critical foreground - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic critical foreground - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic critical foreground - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic critical foreground - contrast low, inversity flipped"
+                }
               }
             }
           },
           "resolved": {
-            "fg": {
-              "high": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.resolved.fg.contrast_highest.inversity_normal}",
-                "$description": "Resolved status foreground - high contrast"
+            "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.bg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic resolved background - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.bg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic resolved background - contrast highest, inversity flipped"
+                }
               },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.resolved.fg.contrast_high.inversity_normal}",
-                "$description": "Resolved status foreground - medium contrast"
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.bg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic resolved background - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.bg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic resolved background - contrast high, inversity flipped"
+                }
               },
-              "med_alt": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.resolved.fg.contrast_medium.inversity_normal}",
-                "$description": "Resolved status foreground - alternative medium contrast"
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.bg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic resolved background - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.bg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic resolved background - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.bg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic resolved background - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.bg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic resolved background - contrast low, inversity flipped"
+                }
               }
             },
-            "bg": {
-              "low": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.resolved.bg.contrast_low.inversity_normal}",
-                "$description": "Resolved status background - low contrast"
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.fg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic resolved foreground - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.fg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic resolved foreground - contrast highest, inversity flipped"
+                }
               },
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.resolved.bg.contrast_medium.inversity_normal}",
-                "$description": "Resolved status background - medium contrast"
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.fg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic resolved foreground - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.fg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic resolved foreground - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.fg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic resolved foreground - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.fg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic resolved foreground - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.fg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic resolved foreground - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.resolved.fg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic resolved foreground - contrast low, inversity flipped"
+                }
+              }
+            }
+          },
+          "attention": {
+            "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.bg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic attention background - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.bg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic attention background - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.bg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic attention background - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.bg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic attention background - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.bg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic attention background - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.bg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic attention background - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.bg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic attention background - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.bg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic attention background - contrast low, inversity flipped"
+                }
+              }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.fg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic attention foreground - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.fg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic attention foreground - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.fg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic attention foreground - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.fg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic attention foreground - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.fg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic attention foreground - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.fg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic attention foreground - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.fg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic attention foreground - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.attention.fg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic attention foreground - contrast low, inversity flipped"
+                }
               }
             }
           },
           "disabled": {
-            "fg": {
-              "high": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.disabled.fg.contrast_highest.inversity_normal}",
-                "$description": "Disabled status foreground - high contrast"
+            "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.bg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic disabled background - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.bg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic disabled background - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.bg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic disabled background - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.bg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic disabled background - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.bg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic disabled background - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.bg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic disabled background - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.bg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic disabled background - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.bg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic disabled background - contrast low, inversity flipped"
+                }
               }
             },
-            "bg": {
-              "low": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.disabled.bg.contrast_low.inversity_normal}",
-                "$description": "Disabled status background - low contrast"
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.fg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic disabled foreground - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.fg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic disabled foreground - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.fg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic disabled foreground - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.fg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic disabled foreground - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.fg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic disabled foreground - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.fg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic disabled foreground - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.fg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic disabled foreground - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.disabled.fg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic disabled foreground - contrast low, inversity flipped"
+                }
               }
             }
           },
