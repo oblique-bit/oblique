@@ -27,12 +27,12 @@
         "color": {
           "bg": {
             "$type": "color",
-            "$value": "{ob.s3.color.neutral.bg.high.inversity_flipped}",
+            "$value": "{ob.s3.color.neutral.bg.contrast_high.inversity_flipped}",
             "$description": "Inverted background color to stand out in a busy layout."
           },
           "fg": {
             "$type": "color",
-            "$value": "{ob.s3.color.neutral.fg.high.inversity_flipped}",
+            "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_flipped}",
             "$description": "Text color for the inverted background color."
           }
         },
