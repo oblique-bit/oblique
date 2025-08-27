@@ -109,43 +109,98 @@ function extractS3Definitions(s3Data) {
 }
 
 /**
- * Check for architectural violations - S3 tokens that don't mirror S1/S2
+ * Comprehensive validation - checks that ALL S1 and S2 tokens are mirrored in S3
+ * AND that S3 has no orphaned tokens
  */
-function findArchitecturalViolations(s3Definitions, s1Definitions, s2Definitions) {
-  const violations = [];
+function validateCompleteArchitecturalMirroring(s1Definitions, s2Definitions, s3Definitions) {
+  console.log('\n🔍 Complete Architectural Mirroring Validation');
+  console.log('='.repeat(50));
   
-  // S0 exceptions - tokens that don't need S1/S2 equivalents
-  const s0Exceptions = [
-    'ob.s3.color.brand',
-    'ob.s3.color.neutral.no_color'
-  ];
+  const issues = [];
   
-  s3Definitions.forEach(s3Token => {
-    // Skip if it starts with ob. prefix (this is the full token path)
-    if (!s3Token.startsWith('ob.s3.')) return;
-    
-    // Skip S0 exceptions
-    if (s0Exceptions.includes(s3Token)) return;
-    
-    // Convert S3 token to expected S1/S2 equivalent
-    const s1Equivalent = s3Token.replace('ob.s3.', 'ob.s1.');
-    const s2Equivalent = s3Token.replace('ob.s3.', 'ob.s2.');
-    
-    // Check if S3 token should mirror S1 or S2
-    const shouldMirrorS1 = s1Definitions.has(s1Equivalent);
-    const shouldMirrorS2 = s2Definitions.has(s2Equivalent);
-    
-    if (!shouldMirrorS1 && !shouldMirrorS2) {
-      violations.push({
-        s3Token,
-        expectedS1: s1Equivalent,
-        expectedS2: s2Equivalent,
-        type: 'orphan'
+  // Check 1: Every S1 token should have S3 mirror
+  s1Definitions.forEach(s1Token => {
+    const s3Mirror = s1Token.replace('ob.s1.', 'ob.s3.');
+    if (!s3Definitions.has(s3Mirror)) {
+      issues.push({
+        type: 'missing_s3_for_s1',
+        s1Token,
+        expectedS3: s3Mirror
       });
     }
   });
   
-  return violations;
+  // Check 2: Every S2 token should have S3 mirror
+  s2Definitions.forEach(s2Token => {
+    const s3Mirror = s2Token.replace('ob.s2.', 'ob.s3.');
+    if (!s3Definitions.has(s3Mirror)) {
+      issues.push({
+        type: 'missing_s3_for_s2',
+        s2Token,
+        expectedS3: s3Mirror
+      });
+    }
+  });
+  
+  // Check 3: Every S3 token should mirror either S1 or S2 (except S0 exceptions)
+  const s0Exceptions = new Set([
+    'ob.s3.color.brand',
+    'ob.s3.color.neutral.no_color'
+  ]);
+  
+  s3Definitions.forEach(s3Token => {
+    if (s0Exceptions.has(s3Token)) return;
+    
+    const s1Mirror = s3Token.replace('ob.s3.', 'ob.s1.');
+    const s2Mirror = s3Token.replace('ob.s3.', 'ob.s2.');
+    
+    const hasS1Mirror = s1Definitions.has(s1Mirror);
+    const hasS2Mirror = s2Definitions.has(s2Mirror);
+    
+    if (!hasS1Mirror && !hasS2Mirror) {
+      issues.push({
+        type: 'orphaned_s3',
+        s3Token,
+        expectedS1: s1Mirror,
+        expectedS2: s2Mirror
+      });
+    }
+  });
+  
+  // Report results
+  if (issues.length === 0) {
+    console.log('✅ Perfect complete architectural mirroring!');
+    return true;
+  } else {
+    console.log(`❌ Found ${issues.length} architectural issues:`);
+    
+    const missingS3ForS1 = issues.filter(i => i.type === 'missing_s3_for_s1');
+    const missingS3ForS2 = issues.filter(i => i.type === 'missing_s3_for_s2');
+    const orphanedS3 = issues.filter(i => i.type === 'orphaned_s3');
+    
+    if (missingS3ForS1.length > 0) {
+      console.log(`\n❌ Missing S3 mirrors for S1 tokens (${missingS3ForS1.length}):`);
+      missingS3ForS1.forEach(issue => {
+        console.log(`   - ${issue.s1Token} → missing ${issue.expectedS3}`);
+      });
+    }
+    
+    if (missingS3ForS2.length > 0) {
+      console.log(`\n❌ Missing S3 mirrors for S2 tokens (${missingS3ForS2.length}):`);
+      missingS3ForS2.forEach(issue => {
+        console.log(`   - ${issue.s2Token} → missing ${issue.expectedS3}`);
+      });
+    }
+    
+    if (orphanedS3.length > 0) {
+      console.log(`\n❌ Orphaned S3 tokens (${orphanedS3.length}):`);
+      orphanedS3.forEach(issue => {
+        console.log(`   - ${issue.s3Token} (no S1/S2 equivalent)`);
+      });
+    }
+    
+    return false;
+  }
 }
 
 /**
@@ -237,16 +292,7 @@ function validateSemanticMirroring() {
     console.log(`✅ Found ${s3Definitions.size} S3 token definitions`);
     
     // Check for architectural violations - S3 tokens that don't mirror S1/S2
-    const violations = findArchitecturalViolations(s3Definitions, s1Definitions, s2Definitions);
-    
-    if (violations.length > 0) {
-      console.log(`\n❌ ARCHITECTURAL VIOLATIONS (${violations.length}):`);
-      violations.forEach(violation => {
-        console.log(`   - ${violation.s3Token}`);
-        console.log(`     Missing S1: ${violation.expectedS1}`);
-        console.log(`     Missing S2: ${violation.expectedS2}`);
-      });
-    }
+    const isArchitecturallySound = validateCompleteArchitecturalMirroring(s1Definitions, s2Definitions, s3Definitions);
     
     // Validate S1↔S3 mirroring
     const s1Valid = validateLayerMirroring('S1', s1References, s1Definitions);
@@ -280,15 +326,18 @@ function validateSemanticMirroring() {
     // Interaction token analysis (for S2 references)
     if (s2References.size > 0) {
       console.log('\n🎯 Interaction Token Analysis (S2↔S3):');
-      const interactionStates = ['enabled', 'hover', 'focus', 'pressed', 'disabled', 'visited'];
+      const interactionStates = ['enabled', 'hover', 'focus', 'pressed', 'disabled', 'visited', 'selected'];
       
       interactionStates.forEach(state => {
-        const stateRefs = Array.from(s2References).filter(ref => ref.includes(`.interaction.state.fg.${state}.`));
+        const stateRefs = Array.from(s2References).filter(ref => 
+          ref.includes(`.interaction.state.fg.${state}.`) || 
+          ref.includes(`.interaction.state.bg.${state}.`)
+        );
         if (stateRefs.length > 0) {
           console.log(`   ${state}: ${stateRefs.length} tokens`);
           
           const inversityLevels = ['inversity_normal', 'inversity_flipped'];
-          const expectedTokens = inversityLevels.length;
+          const expectedTokens = inversityLevels.length * 2; // fg + bg
           
           if (stateRefs.length >= expectedTokens) {
             console.log(`     ✅ Complete structure (${stateRefs.length} tokens)`);
@@ -304,10 +353,10 @@ function validateSemanticMirroring() {
     console.log(`   • S1↔S3 references: ${s1References.size} (${s1Valid ? '✅ VALID' : '❌ INVALID'})`);
     console.log(`   • S2↔S3 references: ${s2References.size} (${s2Valid ? '✅ VALID' : '❌ INVALID'})`);
     console.log(`   • S3 definitions: ${s3Definitions.size}`);
-    console.log(`   • Architectural violations: ${violations.length} (${violations.length === 0 ? '✅ NONE' : '❌ CONTAMINATED'})`);
+    console.log(`   • Architectural violations: ${isArchitecturallySound ? '0 (✅ NONE)' : 'DETECTED (❌ CONTAMINATED)'}`);
     console.log(`   • Total S3 semantic references: ${s1References.size + s2References.size}`);
     
-    const allValid = s1Valid && s2Valid && violations.length === 0;
+    const allValid = s1Valid && s2Valid && isArchitecturallySound;
     
     if (allValid) {
       console.log('\n🎉 Perfect architectural mirroring achieved!');
@@ -317,7 +366,7 @@ function validateSemanticMirroring() {
       console.log('\n❌ Architectural integrity compromised');
       if (!s1Valid) console.log('   • Fix S1↔S3 mirroring issues');
       if (!s2Valid) console.log('   • Fix S2↔S3 mirroring issues');
-      if (violations.length > 0) console.log(`   • Remove ${violations.length} orphaned S3 tokens`);
+      if (!isArchitecturallySound) console.log('   • Fix architectural violations detected above');
       return false;
     }
     

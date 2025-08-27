@@ -14,6 +14,18 @@
             "$description": "Static value when no color respectively 0% opacity is needed. References primitive transparent token."
           },
           "fg": {
+            "contrast_lowest": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_lowest.inversity_normal}",
+                "$description": "Neutral foreground - contrast lowest normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_lowest.inversity_flipped}",
+                "$description": "Neutral foreground - contrast lowest flipped"
+              }
+            },
             "contrast_medium": {
               "inversity_normal": {
                 "$type": "color",
@@ -37,9 +49,45 @@
                 "$value": "{ob.s1.color.neutral.fg.contrast_low.inversity_flipped}",
                 "$description": "Neutral foreground - contrast low flipped"
               }
+            },
+            "contrast_high": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
+                "$description": "Neutral foreground - contrast high normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
+                "$description": "Neutral foreground - contrast high flipped"
+              }
+            },
+            "contrast_highest": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
+                "$description": "Neutral foreground - contrast highest normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
+                "$description": "Neutral foreground - contrast highest flipped"
+              }
             }
           },
           "bg": {
+            "contrast_lowest": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.bg.contrast_lowest.inversity_normal}",
+                "$description": "Neutral background - contrast lowest normal"
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.bg.contrast_lowest.inversity_flipped}",
+                "$description": "Neutral background - contrast lowest flipped"
+              }
+            },
             "contrast_highest": {
               "inversity_normal": {
                 "$type": "color",
@@ -205,6 +253,18 @@
                   "$description": "Interactive element foreground - pressed state, flipped theme"
                 }
               },
+              "selected": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.fg.selected.inversity_normal}",
+                  "$description": "Interactive element foreground - selected state, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.fg.selected.inversity_flipped}",
+                  "$description": "Interactive element foreground - selected state, flipped theme"
+                }
+              },
               "disabled": {
                 "inversity_normal": {
                   "$type": "color",
@@ -222,8 +282,418 @@
                   "$type": "color",
                   "$value": "{ob.s2.color.interaction.state.fg.visited.inversity_normal}",
                   "$description": "Interactive element foreground - visited state, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.fg.visited.inversity_flipped}",
+                  "$description": "Interactive element foreground - visited state, flipped theme"
                 }
               }
+            },
+            "bg": {
+              "enabled": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.enabled.inversity_normal}",
+                  "$description": "Interactive element background - enabled state, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.enabled.inversity_flipped}",
+                  "$description": "Interactive element background - enabled state, flipped theme"
+                }
+              },
+              "hover": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.hover.inversity_normal}",
+                  "$description": "Interactive element background - hover state, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.hover.inversity_flipped}",
+                  "$description": "Interactive element background - hover state, flipped theme"
+                }
+              },
+              "focus": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.focus.inversity_normal}",
+                  "$description": "Interactive element background - focus state, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.focus.inversity_flipped}",
+                  "$description": "Interactive element background - focus state, flipped theme"
+                }
+              },
+              "pressed": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.pressed.inversity_normal}",
+                  "$description": "Interactive element background - pressed state, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.pressed.inversity_flipped}",
+                  "$description": "Interactive element background - pressed state, flipped theme"
+                }
+              },
+              "selected": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.selected.inversity_normal}",
+                  "$description": "Interactive element background - selected state, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.selected.inversity_flipped}",
+                  "$description": "Interactive element background - selected state, flipped theme"
+                }
+              },
+              "visited": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.visited.inversity_normal}",
+                  "$description": "Interactive element background - visited state, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.visited.inversity_flipped}",
+                  "$description": "Interactive element background - visited state, flipped theme"
+                }
+              },
+              "disabled": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.disabled.inversity_normal}",
+                  "$description": "Interactive element background - disabled state, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.state.bg.disabled.inversity_flipped}",
+                  "$description": "Interactive element background - disabled state, flipped theme"
+                }
+              }
+            }
+          },
+          "emphasis_high": {
+            "bg_base": {
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}",
+                  "$description": "High emphasis interaction background - contrast high, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_high.inversity_flipped}",
+                  "$description": "High emphasis interaction background - contrast high, flipped theme"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_normal}",
+                  "$description": "High emphasis interaction background - contrast medium, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_flipped}",
+                  "$description": "High emphasis interaction background - contrast medium, flipped theme"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_low.inversity_normal}",
+                  "$description": "High emphasis interaction background - contrast low, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_low.inversity_flipped}",
+                  "$description": "High emphasis interaction background - contrast low, flipped theme"
+                }
+              }
+            },
+            "fg_base": {
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_normal}",
+                  "$description": "High emphasis interaction foreground - contrast high, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
+                  "$description": "High emphasis interaction foreground - contrast high, flipped theme"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_medium.inversity_normal}",
+                  "$description": "High emphasis interaction foreground - contrast medium, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_medium.inversity_flipped}",
+                  "$description": "High emphasis interaction foreground - contrast medium, flipped theme"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
+                  "$description": "High emphasis interaction foreground - contrast low, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_flipped}",
+                  "$description": "High emphasis interaction foreground - contrast low, flipped theme"
+                }
+              }
+            },
+            "fg_visited": {
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_visited.contrast_high.inversity_normal}",
+                  "$description": "High emphasis interaction visited foreground - contrast high, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_visited.contrast_high.inversity_flipped}",
+                  "$description": "High emphasis interaction visited foreground - contrast high, flipped theme"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_visited.contrast_medium.inversity_normal}",
+                  "$description": "High emphasis interaction visited foreground - contrast medium, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_visited.contrast_medium.inversity_flipped}",
+                  "$description": "High emphasis interaction visited foreground - contrast medium, flipped theme"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_visited.contrast_low.inversity_normal}",
+                  "$description": "High emphasis interaction visited foreground - contrast low, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_visited.contrast_low.inversity_flipped}",
+                  "$description": "High emphasis interaction visited foreground - contrast low, flipped theme"
+                }
+              }
+            },
+            "fg_disabled": {
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_normal}",
+                  "$description": "High emphasis interaction disabled foreground - contrast low, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_flipped}",
+                  "$description": "High emphasis interaction disabled foreground - contrast low, flipped theme"
+                }
+              }
+            },
+            "bg_disabled": {
+              "solid": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.solid.inversity_normal}",
+                  "$description": "High emphasis interaction disabled background solid - normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.solid.inversity_flipped}",
+                  "$description": "High emphasis interaction disabled background solid - flipped theme"
+                }
+              },
+              "opacity": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_normal}",
+                  "$description": "High emphasis interaction disabled background opacity - normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_flipped}",
+                  "$description": "High emphasis interaction disabled background opacity - flipped theme"
+                }
+              }
+            }
+          },
+          "emphasis_low": {
+            "bg_base": {
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
+                  "$description": "Low emphasis interaction background - contrast high, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
+                  "$description": "Low emphasis interaction background - contrast high, flipped theme"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_normal}",
+                  "$description": "Low emphasis interaction background - contrast medium, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_flipped}",
+                  "$description": "Low emphasis interaction background - contrast medium, flipped theme"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_low.inversity_normal}",
+                  "$description": "Low emphasis interaction background - contrast low, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_low.inversity_flipped}",
+                  "$description": "Low emphasis interaction background - contrast low, flipped theme"
+                }
+              }
+            },
+            "fg_base": {
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_high.inversity_normal}",
+                  "$description": "Low emphasis interaction foreground - contrast high, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_high.inversity_flipped}",
+                  "$description": "Low emphasis interaction foreground - contrast high, flipped theme"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_medium.inversity_normal}",
+                  "$description": "Low emphasis interaction foreground - contrast medium, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_medium.inversity_flipped}",
+                  "$description": "Low emphasis interaction foreground - contrast medium, flipped theme"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal}",
+                  "$description": "Low emphasis interaction foreground - contrast low, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_flipped}",
+                  "$description": "Low emphasis interaction foreground - contrast low, flipped theme"
+                }
+              }
+            },
+            "fg_visited": {
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_visited.contrast_high.inversity_normal}",
+                  "$description": "Low emphasis interaction visited foreground - contrast high, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_visited.contrast_high.inversity_flipped}",
+                  "$description": "Low emphasis interaction visited foreground - contrast high, flipped theme"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_visited.contrast_medium.inversity_normal}",
+                  "$description": "Low emphasis interaction visited foreground - contrast medium, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_visited.contrast_medium.inversity_flipped}",
+                  "$description": "Low emphasis interaction visited foreground - contrast medium, flipped theme"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_visited.contrast_low.inversity_normal}",
+                  "$description": "Low emphasis interaction visited foreground - contrast low, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_visited.contrast_low.inversity_flipped}",
+                  "$description": "Low emphasis interaction visited foreground - contrast low, flipped theme"
+                }
+              }
+            },
+            "fg_disabled": {
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_disabled.contrast_low.inversity_normal}",
+                  "$description": "Low emphasis interaction disabled foreground - contrast low, normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_disabled.contrast_low.inversity_flipped}",
+                  "$description": "Low emphasis interaction disabled foreground - contrast low, flipped theme"
+                }
+              }
+            },
+            "bg_disabled": {
+              "solid": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_disabled.solid.inversity_normal}",
+                  "$description": "Low emphasis interaction disabled background solid - normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_disabled.solid.inversity_flipped}",
+                  "$description": "Low emphasis interaction disabled background solid - flipped theme"
+                }
+              },
+              "opacity": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_disabled.opacity.inversity_normal}",
+                  "$description": "Low emphasis interaction disabled background opacity - normal theme"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_disabled.opacity.inversity_flipped}",
+                  "$description": "Low emphasis interaction disabled background opacity - flipped theme"
+                }
+              }
+            }
+          },
+          "border": {
+            "focus": {
+              "$type": "color",
+              "$value": "{ob.s1.color.interaction.border.focus}",
+              "$description": "Interaction border focus color"
             }
           }
         },
@@ -632,6 +1102,108 @@
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.fg.contrast_low.inversity_flipped}",
                   "$description": "S3 semantic attention foreground - contrast low, inversity flipped"
+                }
+              }
+            }
+          },
+          "closed": {
+            "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic closed background - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic closed background - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic closed background - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic closed background - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic closed background - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic closed background - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic closed background - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic closed background - contrast low, inversity flipped"
+                }
+              }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic closed foreground - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic closed foreground - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic closed foreground - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic closed foreground - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic closed foreground - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic closed foreground - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic closed foreground - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic closed foreground - contrast low, inversity flipped"
                 }
               }
             }
@@ -1068,6 +1640,23 @@
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.bg.contrast_high.inversity_flipped}",
                   "$description": "S3 semantic progress background - contrast high, inversity flipped"
+                },
+                "inversity_flipped_alpha": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.bg.contrast_high.inversity_flipped_alpha}",
+                  "$description": "S3 semantic progress background - contrast high, inversity flipped alpha"
+                }
+              },
+              "contrast_high_alpha": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.bg.contrast_high_alpha.inversity_normal}",
+                  "$description": "S3 semantic progress background - contrast high alpha, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.bg.contrast_high_alpha.inversity_flipped}",
+                  "$description": "S3 semantic progress background - contrast high alpha, inversity flipped"
                 }
               },
               "contrast_medium": {
