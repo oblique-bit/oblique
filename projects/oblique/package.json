@@ -45,7 +45,7 @@
     "ansi-colors": "^4.1.3"
   },
   "devDependencies": {
-    "ng-packagr": "^20.0.1",
+    "ng-packagr": "^20.2.0",
     "uglify-js": "^3.19.3"
   },
   "schematics": "./schematics/collection.json",
