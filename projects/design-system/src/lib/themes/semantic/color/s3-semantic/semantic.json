@@ -1048,14 +1048,55 @@
             }
           },
           "pending": {
-            "fg": {
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_normal}",
-                "$description": "Pending status foreground - medium contrast"
-              }
-            },
             "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic pending background - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic pending background - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic pending background - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic pending background - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic pending background - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic pending background - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic pending background - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic pending background - contrast low, inversity flipped"
+                }
+              },
               "medium": {
                 "$type": "color",
                 "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_normal}",
@@ -1066,17 +1107,113 @@
                 "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_normal}",
                 "$description": "Pending status background - low contrast"
               }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic pending foreground - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic pending foreground - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic pending foreground - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic pending foreground - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic pending foreground - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic pending foreground - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic pending foreground - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic pending foreground - contrast low, inversity flipped"
+                }
+              },
+              "medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_normal}",
+                "$description": "Pending status foreground - medium contrast"
+              }
             }
           },
           "confirmed": {
-            "fg": {
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.confirmed.fg.contrast_high.inversity_normal}",
-                "$description": "Confirmed status foreground - medium contrast"
-              }
-            },
             "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.bg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic confirmed background - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.bg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic confirmed background - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.bg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic confirmed background - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.bg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic confirmed background - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.bg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic confirmed background - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.bg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic confirmed background - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.bg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic confirmed background - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.bg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic confirmed background - contrast low, inversity flipped"
+                }
+              },
               "medium": {
                 "$type": "color",
                 "$value": "{ob.s1.color.status.confirmed.bg.contrast_medium.inversity_normal}",
@@ -1087,17 +1224,113 @@
                 "$value": "{ob.s1.color.status.confirmed.bg.contrast_low.inversity_normal}",
                 "$description": "Confirmed status background - low contrast"
               }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.fg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic confirmed foreground - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.fg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic confirmed foreground - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.fg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic confirmed foreground - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.fg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic confirmed foreground - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.fg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic confirmed foreground - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.fg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic confirmed foreground - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.fg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic confirmed foreground - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.confirmed.fg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic confirmed foreground - contrast low, inversity flipped"
+                }
+              },
+              "medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.confirmed.fg.contrast_high.inversity_normal}",
+                "$description": "Confirmed status foreground - medium contrast"
+              }
             }
           },
           "progress": {
-            "fg": {
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.progress.fg.contrast_high.inversity_normal}",
-                "$description": "Progress status foreground - medium contrast"
-              }
-            },
             "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.bg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic progress background - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.bg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic progress background - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.bg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic progress background - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.bg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic progress background - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.bg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic progress background - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.bg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic progress background - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.bg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic progress background - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.bg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic progress background - contrast low, inversity flipped"
+                }
+              },
               "medium": {
                 "$type": "color",
                 "$value": "{ob.s1.color.status.progress.bg.contrast_medium.inversity_normal}",
@@ -1108,17 +1341,113 @@
                 "$value": "{ob.s1.color.status.progress.bg.contrast_low.inversity_normal}",
                 "$description": "Progress status background - low contrast"
               }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.fg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic progress foreground - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.fg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic progress foreground - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.fg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic progress foreground - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.fg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic progress foreground - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.fg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic progress foreground - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.fg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic progress foreground - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.fg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic progress foreground - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.progress.fg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic progress foreground - contrast low, inversity flipped"
+                }
+              },
+              "medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.progress.fg.contrast_high.inversity_normal}",
+                "$description": "Progress status foreground - medium contrast"
+              }
             }
           },
           "scheduled": {
-            "fg": {
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.scheduled.fg.contrast_high.inversity_normal}",
-                "$description": "Scheduled status foreground - medium contrast"
-              }
-            },
             "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.bg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic scheduled background - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.bg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic scheduled background - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.bg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic scheduled background - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.bg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic scheduled background - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.bg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic scheduled background - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.bg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic scheduled background - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.bg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic scheduled background - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.bg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic scheduled background - contrast low, inversity flipped"
+                }
+              },
               "medium": {
                 "$type": "color",
                 "$value": "{ob.s1.color.status.scheduled.bg.contrast_medium.inversity_normal}",
@@ -1129,17 +1458,113 @@
                 "$value": "{ob.s1.color.status.scheduled.bg.contrast_low.inversity_normal}",
                 "$description": "Scheduled status background - low contrast"
               }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.fg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic scheduled foreground - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.fg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic scheduled foreground - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.fg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic scheduled foreground - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.fg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic scheduled foreground - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.fg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic scheduled foreground - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.fg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic scheduled foreground - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.fg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic scheduled foreground - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.scheduled.fg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic scheduled foreground - contrast low, inversity flipped"
+                }
+              },
+              "medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.scheduled.fg.contrast_high.inversity_normal}",
+                "$description": "Scheduled status foreground - medium contrast"
+              }
             }
           },
           "waiting": {
-            "fg": {
-              "medium": {
-                "$type": "color",
-                "$value": "{ob.s1.color.status.waiting.fg.contrast_high.inversity_normal}",
-                "$description": "Waiting status foreground - medium contrast"
-              }
-            },
             "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.bg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic waiting background - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.bg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic waiting background - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.bg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic waiting background - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.bg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic waiting background - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.bg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic waiting background - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.bg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic waiting background - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.bg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic waiting background - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.bg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic waiting background - contrast low, inversity flipped"
+                }
+              },
               "medium": {
                 "$type": "color",
                 "$value": "{ob.s1.color.status.waiting.bg.contrast_medium.inversity_normal}",
@@ -1154,6 +1579,61 @@
                 "$type": "color",
                 "$value": "{ob.s1.color.status.waiting.bg.contrast_low.inversity_normal}",
                 "$description": "Waiting status background - low contrast"
+              }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.fg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic waiting foreground - contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.fg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic waiting foreground - contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.fg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic waiting foreground - contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.fg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic waiting foreground - contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.fg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic waiting foreground - contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.fg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic waiting foreground - contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.fg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic waiting foreground - contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.waiting.fg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic waiting foreground - contrast low, inversity flipped"
+                }
+              },
+              "medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.waiting.fg.contrast_high.inversity_normal}",
+                "$description": "Waiting status foreground - medium contrast"
               }
             }
           }
