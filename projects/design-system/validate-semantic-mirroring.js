@@ -114,9 +114,18 @@ function extractS3Definitions(s3Data) {
 function findArchitecturalViolations(s3Definitions, s1Definitions, s2Definitions) {
   const violations = [];
   
+  // S0 exceptions - tokens that don't need S1/S2 equivalents
+  const s0Exceptions = [
+    'ob.s3.color.brand',
+    'ob.s3.color.neutral.no_color'
+  ];
+  
   s3Definitions.forEach(s3Token => {
     // Skip if it starts with ob. prefix (this is the full token path)
     if (!s3Token.startsWith('ob.s3.')) return;
+    
+    // Skip S0 exceptions
+    if (s0Exceptions.includes(s3Token)) return;
     
     // Convert S3 token to expected S1/S2 equivalent
     const s1Equivalent = s3Token.replace('ob.s3.', 'ob.s1.');
