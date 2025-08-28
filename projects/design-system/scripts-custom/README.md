@@ -2,7 +2,27 @@
 
 This folder contains reusable scripts for design system validation, analysis, and maintenance that are useful for the entire team.
 
-## 🔗 **FASTEST: Token Reference Analysis**
+## � **VALIDATION SCRIPTS - Component & Architecture**
+
+**Essential validation scripts for maintaining design system integrity:**
+
+```bash
+# 🎯 COMPREHENSIVE: Check all component token references
+node scripts-custom/validate-all-components.js
+# Validates all 24 component files for broken S3 token references
+
+# 🏗️ ARCHITECTURE: Validate S1↔S3 & S2↔S3 mirroring
+node scripts-custom/validate-semantic-mirroring.js  
+# Ensures perfect semantic layer mirroring (226 S1↔S3, 28 S2↔S3 refs)
+
+# 🎪 SPECIFIC: Validate spinner component tokens
+node scripts-custom/validate-spinner.js
+# Focused validation for spinner component S3 references
+```
+
+**Key Achievement**: All component S3 token references are now 100% valid (59 total references across 7 components) ✅
+
+## �🔗 **FASTEST: Token Reference Analysis**
 
 **Need to understand token relationships?** Use the super-fast token tracer:
 
