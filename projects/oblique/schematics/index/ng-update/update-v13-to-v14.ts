@@ -1,5 +1,5 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {applyInTree, createSafeRule, infoMigration, readFile, replaceInFile, warnIfStandalone} from '../utils';
+import {addImport, applyInTree, createSafeRule, infoMigration, readFile, removeImport, replaceInFile, warnIfStandalone} from '../utils';
 import {ObIMigrations} from './ng-update.model';
 
 export interface IUpdateV14Schema {}
@@ -14,7 +14,9 @@ export class UpdateV13toV14 implements ObIMigrations {
 				warnIfStandalone(),
 				this.renameIcons(),
 				this.migrateAccessibilityStatementContactInfo(),
-				this.migrateServiceNavigationContactInfo()
+				this.migrateServiceNavigationContactInfo(),
+				this.removeObPaginator(),
+				this.removeFocusableFragments()
 			])(tree, context);
 	}
 
@@ -306,6 +308,35 @@ export class UpdateV13toV14 implements ObIMigrations {
 						filePath,
 						content.replace(/(?<prefix>header\.serviceNavigation\.infoContact\s*=\s*{.*)tel(?<suffix>.*})/s, '$<prefix>phone$<suffix>')
 					);
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		});
+	}
+
+	private removeObPaginator(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Replace ObPaginatorModule with MatPaginatorModule');
+			const toApply = (filePath: string): void => {
+				const content = readFile(tree, filePath);
+				if (content.includes('ObPaginatorModule')) {
+					removeImport(tree, filePath, 'ObPaginatorModule', '@oblique/oblique');
+					addImport(tree, filePath, 'MatPaginatorModule', '@angular/material');
+					replaceInFile(tree, filePath, /ObPaginatorModule/g, 'MatPaginatorModule');
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		});
+	}
+
+	private removeFocusableFragments(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Replace focusableFragments property');
+			const toApply = (filePath: string): void => {
+				const content = readFile(tree, filePath);
+				const regexp = /^\s*\w+\.focusableFragment\s*=\s*\[.*?\];/msu;
+				if (regexp.test(content)) {
+					replaceInFile(tree, filePath, regexp, '');
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');

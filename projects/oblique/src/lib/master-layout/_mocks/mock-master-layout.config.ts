@@ -7,7 +7,6 @@ import {ObEScrollMode, ObILocale, ObIMasterLayoutFooter, ObIMasterLayoutHeader, 
 @Injectable({providedIn: 'root'})
 export class ObMockMasterLayoutConfig {
 	homePageRoute = '/home';
-	focusableFragments = ['content', 'navigation'];
 	scrollToTopDuration = 200;
 	showAccessibilityTitle = true;
 	locale: ObILocale = {

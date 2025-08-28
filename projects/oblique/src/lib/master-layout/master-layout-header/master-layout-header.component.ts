@@ -29,7 +29,6 @@ import {
 	ObINavigationLink,
 	ObIServiceNavigationConfig
 } from '../master-layout.model';
-import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObEColor} from '../../style/colors.model';
 import {ObLoginState} from '../../service-navigation/service-navigation.model';
 
@@ -59,7 +58,6 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
 		private readonly config: ObMasterLayoutConfig,
-		private readonly scrollEvents: ObScrollingEvents,
 		private readonly el: ElementRef,
 		@Inject(WINDOW) private readonly window: Window,
 		@Inject(OB_BANNER) @Optional() bannerToken: ObIBanner,

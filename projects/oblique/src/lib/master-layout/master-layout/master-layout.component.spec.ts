@@ -10,11 +10,9 @@ import {ObMasterLayoutComponent} from './master-layout.component';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObMockMasterLayoutConfig} from '../_mocks/mock-master-layout.config';
 import {ObMockOffCanvasService} from '../../off-canvas/_mocks/mock-off-canvas.service';
-import {ObMockScrollingEvents} from '../../scrolling/_mocks/mock-scrolling-events.service';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
-import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {appVersion} from '../../version';
@@ -49,7 +47,6 @@ describe('ObMasterLayoutComponent', () => {
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
 				{provide: ObOffCanvasService, useClass: ObMockOffCanvasService},
-				{provide: ObScrollingEvents, useClass: ObMockScrollingEvents},
 				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
 				{provide: WINDOW, useValue: window}
 			],
@@ -238,61 +235,33 @@ describe('ObMasterLayoutComponent', () => {
 	});
 
 	describe('scrollTop', () => {
-		it('should call hasScrolled function', () => {
-			const scrollEvent = TestBed.inject(ObScrollingEvents);
-			jest.spyOn(scrollEvent, 'hasScrolled');
-			component.scrollTop();
-			expect(scrollEvent.hasScrolled).toHaveBeenCalledWith(0);
-		});
-
 		describe('with a scrolled element', () => {
-			let scrollEvent: ObScrollingEvents;
 			beforeEach(() => {
-				scrollEvent = TestBed.inject(ObScrollingEvents);
-				jest.spyOn(scrollEvent, 'scrolling');
 				component.scrollTop({scrollTop: 15} as unknown as HTMLElement);
 			});
 
 			it('should set isScrolling', () => {
 				expect(component.isScrolling).toBe(true);
 			});
-
-			it('should call scrolling', () => {
-				expect(scrollEvent.scrolling).toHaveBeenCalledWith(true);
-			});
 		});
 
 		describe('with an unscrolled element', () => {
-			let scrollEvent: ObScrollingEvents;
 			beforeEach(() => {
-				scrollEvent = TestBed.inject(ObScrollingEvents);
-				jest.spyOn(scrollEvent, 'scrolling');
 				component.scrollTop({scrollTop: 0} as unknown as HTMLElement);
 			});
 
 			it('should not set isScrolling', () => {
 				expect(component.isScrolling).toBe(false);
 			});
-
-			it('should not call scrolling', () => {
-				expect(scrollEvent.scrolling).not.toHaveBeenCalled();
-			});
 		});
 
 		describe('with no element', () => {
-			let scrollEvent: ObScrollingEvents;
 			beforeEach(() => {
-				scrollEvent = TestBed.inject(ObScrollingEvents);
-				jest.spyOn(scrollEvent, 'scrolling');
 				component.scrollTop();
 			});
 
 			it('should not set isScrolling', () => {
 				expect(component.isScrolling).toBe(false);
-			});
-
-			it('should not call scrolling', () => {
-				expect(scrollEvent.scrolling).not.toHaveBeenCalled();
 			});
 		});
 	});
@@ -334,34 +303,6 @@ describe('ObMasterLayoutComponent', () => {
 			});
 		});
 
-		describe('targeting an id is not in the whitelist of ids of fragments that are allowed to be focused. (in ObMasterLayoutConfig.focusableFragments)', () => {
-			beforeEach(() => {
-				content = document.getElementById('content');
-				const config = TestBed.inject(ObMasterLayoutConfig);
-				config.focusableFragments = ['foo', 'bar'];
-				content.innerHTML = '<div id="not_whitelisted"></div>';
-				element = document.getElementById('content');
-				jest.spyOn(element, 'scrollIntoView');
-				jest.spyOn(element, 'focus');
-				jest.spyOn(global.console, 'warn');
-				component.focusElement('not_whitelisted');
-			});
-			it('should not scroll to the element', () => {
-				expect(element.scrollIntoView).not.toHaveBeenCalled();
-			});
-			it('should not focus the element', () => {
-				expect(element.focus).not.toHaveBeenCalled();
-			});
-			it('should console.warn that the targetted id is not in the list of focusable elements', () => {
-				expect(console.warn).toHaveBeenCalledWith(
-					'not_whitelisted is not in the whitelist of ids of fragments that are allowed to be focused:\n foo, bar\n The whitelist of fragments that are allowed to be focused is defined in ObMasterLayoutConfig.focusableFragments'
-				);
-			});
-			afterEach(() => {
-				jest.clearAllMocks();
-			});
-		});
-
 		describe('targeting an id that is corresponding to an non-existing dom element', () => {
 			beforeEach(() => {
 				content = document.getElementById('content');
@@ -370,8 +311,6 @@ describe('ObMasterLayoutComponent', () => {
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
 				jest.spyOn(global.console, 'error');
-				const config = TestBed.inject(ObMasterLayoutConfig);
-				config.focusableFragments = ['not_existing_element'];
 				component.focusElement('not_existing_element');
 			});
 			it('should not scroll to the element', () => {
@@ -387,7 +326,7 @@ describe('ObMasterLayoutComponent', () => {
 				jest.clearAllMocks();
 			});
 		});
-		describe('targeting an id that is corresponding to an existing dom element that is not focusable', () => {
+		describe('targeting an id that is corresponding to an existing dom element', () => {
 			beforeEach(() => {
 				content = document.getElementById('content');
 				content.innerHTML = '<input id="not_focusable_element" disabled />';
@@ -395,8 +334,6 @@ describe('ObMasterLayoutComponent', () => {
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
 				jest.spyOn(global.console, 'info');
-				const config = TestBed.inject(ObMasterLayoutConfig);
-				config.focusableFragments = ['not_focusable_element'];
 				content.focus();
 			});
 			it('should be first focused on the content element', () => {

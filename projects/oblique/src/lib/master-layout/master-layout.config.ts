@@ -15,14 +15,6 @@ export class ObMasterLayoutConfig {
 	homePageRoute = '/home';
 
 	/**
-	 * Elements that will receive focus when provided as fragment
-	 */
-	/**
-	 *  @deprecated since Oblique 13. It will be removed in the next major version.
-	 */
-	focusableFragments = ['content', 'navigation'];
-
-	/**
 	 * Duration of the scroll to top functionality
 	 */
 	scrollToTopDuration = 200;

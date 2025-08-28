@@ -1,6 +1,5 @@
 /* eslint-disable @angular-eslint/no-conflicting-lifecycle, max-lines */
 import {
-	AfterViewInit,
 	Component,
 	ContentChild,
 	ContentChildren,
@@ -27,7 +26,6 @@ import {delay, filter, map, takeUntil, tap} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObScrollingEvents} from '../../scrolling/scrolling-events';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
 import {
@@ -57,7 +55,7 @@ import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 	host: {class: 'ob-master-layout', 'ob-version': appVersion},
 	standalone: false
 })
-export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, OnDestroy, OnChanges {
+export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnChanges {
 	home = this.config.homePageRoute;
 	route = {path: '', params: undefined};
 	hasHighContrast = false;
@@ -78,7 +76,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	@HostBinding('class.ob-master-layout-scrolling') isScrolling = false;
 	isHeaderSticky = this.masterLayout.header.isSticky;
 	isFooterSticky = this.masterLayout.footer.isSticky;
-	scrollTarget: HTMLElement | Window;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<unknown>;
 	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<unknown>>;
 	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<unknown>>;
@@ -91,7 +88,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	private navigationLength: number;
 	private readonly router = inject(Router);
 	private readonly offCanvasService = inject(ObOffCanvasService);
-	private readonly scrollEvents = inject(ObScrollingEvents);
 	private readonly globalEventsService = inject(ObGlobalEventsService);
 	private readonly document = inject(DOCUMENT);
 	private readonly window = inject(WINDOW);
@@ -149,11 +145,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 		}
 	}
 
-	ngAfterViewInit(): void {
-		// to avoid a ExpressionHasBeenChangedAfterItHasBeenCheckedError
-		setTimeout(() => (this.scrollTarget = this.getScrollTarget()));
-	}
-
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
@@ -168,21 +159,12 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	scrollTop(element?: HTMLElement): void {
 		const scrollTop =
 			element?.scrollTop ?? (this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
-		this.scrollEvents.hasScrolled(scrollTop);
 		if (this.isScrolling !== scrollTop > 0) {
 			this.isScrolling = scrollTop > 0;
-			this.scrollEvents.scrolling(this.isScrolling);
 		}
 	}
 
 	focusElement(elementId: string): void {
-		if (!this.config.focusableFragments.includes(elementId)) {
-			console.warn(
-				`${elementId} is not in the whitelist of ids of fragments that are allowed to be focused:\n ${this.config.focusableFragments.join(', ')}\n The whitelist of fragments that are allowed to be focused is defined in ObMasterLayoutConfig.focusableFragments`
-			);
-			return;
-		}
-
 		const element = this.getElementToFocus(elementId);
 		if (!(element instanceof Element) && isDevMode()) {
 			console.error(`${elementId} does not correspond to an existing DOM element.`);
@@ -216,16 +198,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 	private isInHighContrastMode(): boolean {
 		const currentHighContrastMode: HighContrastMode = this.highContrastModeDetector.getHighContrastMode();
 		return currentHighContrastMode === HighContrastMode.WHITE_ON_BLACK;
-	}
-
-	private getScrollTarget(): HTMLElement | Window {
-		if (this.isHeaderSticky && this.isFooterSticky) {
-			return this.main.nativeElement;
-		}
-		if (this.isHeaderSticky !== this.isFooterSticky) {
-			return this.wrapper.nativeElement;
-		}
-		return this.window;
 	}
 
 	private updateSkipLinks(hasNavigation: boolean): void {
@@ -292,7 +264,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_STICKY),
 				tap((evt: ObIMasterLayoutEvent) => (this.isHeaderSticky = evt.value)),
-				tap(() => (this.scrollTarget = this.getScrollTarget())),
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe();
@@ -303,7 +274,6 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, AfterViewInit, 
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.FOOTER_IS_STICKY),
 				tap((evt: ObIMasterLayoutEvent) => (this.isFooterSticky = evt.value)),
-				tap(() => (this.scrollTarget = this.getScrollTarget())),
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe();

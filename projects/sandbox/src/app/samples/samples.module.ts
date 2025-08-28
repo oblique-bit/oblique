@@ -40,7 +40,6 @@ import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {GlobalEventsSampleComponent} from './global-events/global-events-sample.component';
 import {HttpInterceptorSampleComponent} from './http-interceptor/http-interceptor-sample.component';
-import {StickySampleComponent} from './sticky/sticky-sample.component';
 import {FormSampleComponent} from './form/form.component';
 import {ButtonSampleComponent} from './button/button.component';
 import {
@@ -66,7 +65,6 @@ import {
 	ObSelectableModule,
 	ObServiceNavigationModule,
 	ObSpinnerModule,
-	ObStickyModule,
 	ObUnknownRouteModule,
 	ObUnsavedChangesModule
 } from '@oblique/oblique';
@@ -128,7 +126,6 @@ import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.
 		ObSelectableModule,
 		ObServiceNavigationModule,
 		ObSpinnerModule,
-		ObStickyModule,
 		ObUnknownRouteModule,
 		ObUnsavedChangesModule,
 		ReactiveFormsModule,
@@ -173,7 +170,6 @@ import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.
 		SelectableSampleComponent,
 		ServiceNavigationSampleComponent,
 		SpinnerSampleComponent,
-		StickySampleComponent,
 		UnknownRouteSampleComponent,
 		UnsavedChangesSampleComponent
 	],

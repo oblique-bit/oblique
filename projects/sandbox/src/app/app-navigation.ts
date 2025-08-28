@@ -115,7 +115,6 @@ export const appNavigation: ObINavigationLink[] = [
 					{url: '5', label: 'Spinner 5'}
 				]
 			},
-			{url: 'sticky', label: 'Sticky'},
 			{url: 'unknown-route-sample', label: 'Unknown route'},
 			{url: 'unsaved-changes', label: 'Unsaved changes'}
 		]

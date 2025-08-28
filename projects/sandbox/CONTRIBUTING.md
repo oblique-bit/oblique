@@ -39,7 +39,6 @@ All commits related to the Sandbox package must use the **sandbox** package and 
 - **selectable**
 - **service-navigation**
 - **spinner**
-- **sticky**
 - **translate-params**
 - **unknown-route**
 - **unsaved-changes**
