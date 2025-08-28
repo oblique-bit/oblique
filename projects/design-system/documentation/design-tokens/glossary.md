@@ -139,6 +139,19 @@ The process of connecting design tokens with build tools and development workflo
 ### Token Resolution
 How the system follows references through the s0->s1->s2->s3 hierarchy. The resolution process ensures that token references are properly traced from component level down to primitive values.
 
+### Vampire Scripts
+**Development Antipattern:** Unnecessary script files that accumulate during iterative development, consuming workspace resources without providing value. Vampire scripts typically include empty files (0 bytes), duplicate iterations, and abandoned experimental scripts.
+
+**Characteristics:**
+- Empty files from failed iterations
+- Near-duplicate scripts with minor variations
+- Scripts superseded by better implementations
+- Files that "drain" clarity from the codebase
+
+**Examples:** `debug-semantic.js` (empty), `validate-tokens-v2.js` (iteration), `temp-fix.js` (abandoned)
+
+**Solution:** Regular cleanup by moving essential scripts to `scripts-custom/` and removing vampires
+
 ### Symmetry
 **Critical Rule:** When expanding or reducing tokens in the theming system, all changes must preserve symmetry across theming counterparts. If a token structure is added/removed in one theme file, the exact same structure must be added/removed in ALL corresponding theme files.
 
