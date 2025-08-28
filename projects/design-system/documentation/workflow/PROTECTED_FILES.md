@@ -16,21 +16,25 @@ The following files are protected and should not be modified directly:
 
 ### 1. Documentation Structure Rule
 
-The `documentation/` folder must contain **only subdirectories, no files**. This ensures proper organization and prevents root-level documentation clutter.
+The `documentation/` folder must contain **only subdirectories, no files**. Additionally, all markdown files must have **lowercase extensions** (.MD → .md).
 
 **Automated enforcement:**
 ```bash
-# Check documentation structure compliance
+# Check documentation structure compliance and normalize case
 node scripts-custom/validate-documentation-structure.js
 
-# This script automatically removes files from documentation/ root
+# This script automatically:
+# 1. Normalizes .MD files to .md across the entire project  
+# 2. Removes files from documentation/ root
 # Files should be organized in proper subdirectories:
 # - documentation/design-tokens/ - Technical token documentation
 # - documentation/workflow/ - Process and workflow guidance  
 # - documentation/reports/ - Development reports
 ```
 
-**Rule:** All `.md` files must be in appropriate subfolders, never in `documentation/` root.
+**Rules:** 
+- All `.md` files must be in appropriate subfolders, never in `documentation/` root
+- All markdown files must have lowercase `.md` extensions (not `.MD`)
 
 ### 2. Pre-commit Hook
 
