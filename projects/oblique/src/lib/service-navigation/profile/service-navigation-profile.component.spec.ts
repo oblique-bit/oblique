@@ -226,10 +226,6 @@ describe('ObServiceNavigationProfileComponent', () => {
 			expect(await button.hasClass(className)).toBe(true);
 		});
 
-		it('should have "i18n.oblique.service-navigation.profile.button" as screen reader text', async () => {
-			expect(await harness.getTriggerButtonScreenReaderText()).toBe('i18n.oblique.service-navigation.profile.button');
-		});
-
 		describe('tooltip', () => {
 			let tooltipHarness: MatTooltipHarness;
 

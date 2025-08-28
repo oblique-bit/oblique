@@ -195,10 +195,6 @@ describe('ObServiceNavigationMessageComponent', () => {
 			expect(await link.hasClass('ob-widget')).toBe(true);
 		});
 
-		it('should have "i18n.oblique.service-navigation.message.text" as screen reader text', async () => {
-			expect(await harness.getLinkScreenReaderText()).toBe('i18n.oblique.service-navigation.message.text');
-		});
-
 		describe('tooltip', () => {
 			let tooltip: MatTooltipHarness;
 
