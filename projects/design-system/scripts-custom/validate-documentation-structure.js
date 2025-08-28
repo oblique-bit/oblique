@@ -49,30 +49,46 @@ function getFilesInDocumentationRoot() {
  */
 function normalizeMarkdownCases() {
     try {
-        const result = execSync(
+        // Find both .MD extensions and uppercase-named .md files
+        const mdExtensions = execSync(
             'find . -name "*.MD" | grep -v node_modules | sort',
             { cwd: PROJECT_DIR, encoding: 'utf-8' }
         );
-        const mdFiles = result.trim().split('\n').filter(line => line.length > 0);
+        const uppercaseNames = execSync(
+            'find . -name "*README*" -o -name "*CHANGELOG*" -o -name "*CONTRIBUTING*" | grep -v node_modules | grep "\\.md$" | sort',
+            { cwd: PROJECT_DIR, encoding: 'utf-8' }
+        );
         
-        if (mdFiles.length === 0) {
-            console.log('✅ All .md files already have correct lowercase extensions');
+        const mdFiles = mdExtensions.trim().split('\n').filter(line => line.length > 0);
+        const uppercaseFiles = uppercaseNames.trim().split('\n').filter(line => line.length > 0);
+        const allFiles = [...mdFiles, ...uppercaseFiles];
+        
+        if (allFiles.length === 0) {
+            console.log('✅ All .md files already have correct lowercase extensions and names');
             return 0;
         }
         
-        console.log(`🔤 Found ${mdFiles.length} .MD files to normalize to .md`);
+        console.log(`🔤 Found ${allFiles.length} files to normalize (.MD extensions + uppercase names)`);
         let normalizedCount = 0;
         
-        for (const filePath of mdFiles) {
+        for (const filePath of allFiles) {
             const fullPath = path.join(PROJECT_DIR, filePath);
             const dir = path.dirname(fullPath);
             const fileName = path.basename(fullPath);
-            const normalizedFileName = fileName.replace(/\.MD$/, '.md');
+            
+            // Normalize both extension and filename
+            let normalizedFileName = fileName.replace(/\.MD$/, '.md');
+            normalizedFileName = normalizedFileName.toLowerCase();
+            
+            if (fileName === normalizedFileName) {
+                continue; // Already correct
+            }
+            
             const normalizedPath = path.join(dir, normalizedFileName);
             
             try {
                 fs.renameSync(fullPath, normalizedPath);
-                console.log(`✅ Normalized: ${filePath} → ${filePath.replace(/\.MD$/, '.md')}`);
+                console.log(`✅ Normalized: ${filePath} → ${filePath.replace(fileName, normalizedFileName)}`);
                 normalizedCount++;
             } catch (error) {
                 console.log(`❌ Error normalizing ${filePath}: ${error.message}`);
