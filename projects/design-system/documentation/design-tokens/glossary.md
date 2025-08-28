@@ -50,8 +50,34 @@ Figma's native theming system that allows switching between different token valu
 
 **Common Modes:**
 - Light/Dark (lightness dimension)
-- Normal/Inverse (inversity dimension)
-- Low/Medium/High (emphasis dimension)
+- Desktop/Mobile (responsiveness dimension)
+- High/Low (emphasis dimension)
+
+### Mode Types
+
+The design system distinguishes between different types of modes based on who controls the mode selection:
+
+#### User Preference Modes (User Modes)
+Modes that are controlled by user settings or system preferences, automatically applied based on external factors:
+
+- **Lightness Mode** (`light`/`dark`) - Controlled by OS dark mode preference or user toggle
+- **Responsiveness Mode** (`desktop`/`mobile`) - Controlled by viewport size and device type
+
+**Characteristics:**
+- Automatically switch based on user environment
+- Users typically control through OS settings or app preferences
+- Examples: `prefers-color-scheme: dark`, viewport media queries
+
+#### Design System Controlled Modes (System Modes)
+Modes that are set by designers and developers during design and implementation, not by end users:
+
+- **Emphasis Mode** (`high`/`low`) - Set by designers based on context and hierarchy needs
+- **Component Variants** - Chosen during design process for specific use cases
+
+**Characteristics:**
+- Set at design time, not runtime
+- Controlled by design system implementers
+- Examples: Using high-emphasis buttons for primary actions, low-emphasis for secondary actions
 
 ## Design System Architecture
 
@@ -103,17 +129,17 @@ The primary theming dimension that controls light and dark appearances. Lightnes
 **Values:** Light, Dark  
 **Token Pattern:** `s1-lightness-{variant}`
 
-### Inversity (s2)
-The secondary theming dimension that manages color relationships and contrast ratios. Inversity ensures proper text-background combinations and accessibility.
+### Emphasis (s2)
+The secondary theming dimension that manages emphasis variations for interaction states. Emphasis provides high and low visual priority levels for different contexts.
 
-**Values:** Normal, Inverse  
-**Token Pattern:** `s2-inversity-{variant}`
+**Values:** High, Low  
+**Token Pattern:** `s2-emphasis-{variant}`
 
-### Emphasis (s3)
-The tertiary theming dimension that controls visual priority and interaction feedback. Emphasis manages how prominently elements appear and behave.
+### Semantic Compilation (s3)
+The tertiary theming dimension that provides complete semantic color compilation for component consumption. This layer contains all semantic colors resolved for direct component usage.
 
-**Values:** Low, Medium, High  
-**Token Pattern:** `s3-emphasis-{variant}`
+**Values:** Semantic compilation  
+**Token Pattern:** `s3-semantic`
 
 ### User Preference
 System-level theme application based on user settings or operating system preferences. User preferences automatically apply themes without manual intervention, typically respecting OS-level dark/light mode settings.
@@ -157,18 +183,18 @@ How the system follows references through the s0->s1->s2->s3 hierarchy. The reso
 ### Symmetry
 **Critical Rule:** When expanding or reducing tokens in the theming system, all changes must preserve symmetry across theming counterparts. If a token structure is added/removed in one theme file, the exact same structure must be added/removed in ALL corresponding theme files.
 
-**Example:** Adding `contrast-highest` to `s1-lightness/light.json` requires adding the same structure to `s1-lightness/dark.json`, `s2-inversity/normal.json`, and `s2-inversity/flipped.json`.
+**Example:** Adding `contrast-highest` to `s1-lightness/light.json` requires adding the same structure to `s1-lightness/dark.json`, `s2-emphasis/high.json`, and `s2-emphasis/low.json`.
 
 ### Theming Counterparts
 The set of theme files that must maintain structural symmetry with each other. Changes to one counterpart file requires identical changes to all other counterpart files to maintain system consistency.
 
 **Counterpart Pairs:**
 - `s1-lightness/light.json` ↔ `s1-lightness/dark.json`
-- `s2-inversity/normal.json` ↔ `s2-inversity/flipped.json`
+- `s2-emphasis/high.json` ↔ `s2-emphasis/low.json`
 
 **Rule:** Token architecture must remain identical across all counterparts, only primitive value references may differ.
 
-**Process (Post-OUI-4001):** Component tokens reference s3 tokens -> s3 tokens reference s1 tokens -> s1 tokens reference s0 tokens -> s0 tokens contain final values. Note: S2 also references s1 directly.
+**Process:** Component tokens reference s3 tokens -> s3 tokens reference s1 tokens -> s1 tokens reference s0 tokens -> s0 tokens contain final values. Note: S2 also references s1 directly.
 
 ### Reference Chain
 The path a token follows from component to primitive. In the current system, both S3 and S2 reference S1 directly, simplifying the dependency chain.
@@ -226,7 +252,7 @@ Visual priority levels for interactive elements that prevent color competition a
 
 **Migration:**
 - l1 -> s1 (lightness)
-- l2 -> s2 (inversity)  
+- l2 -> s2 (emphasis)  
 - l3 -> s3 (emphasis)
 
 ### static.json

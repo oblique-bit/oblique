@@ -6,7 +6,7 @@
 
 **Scope:** Tokenized Design System only. Pre-Design System releases like Oblique R13 are not affected.
 
-**Theme Strategy (Post-OUI-4001):** The system supports theme switching primarily through the S1 lightness layer (light/dark themes), with S2 providing emphasis variations and S3 serving as a complete semantic color compilation for component consumption.
+**Theme Strategy:** The system supports theme switching primarily through the S1 lightness layer (light/dark themes), with S2 providing emphasis variations and S3 serving as a complete semantic color compilation for component consumption.
 
 ---
 
@@ -14,12 +14,12 @@
 
 The semantic system is organized into three distinct layers with specific responsibilities:
 
-### S1: Lightness Layer (Theme Switching)
-- **Purpose:** Handles light/dark theme switching
+### S1: Lightness Layer (User Mode)
+- **Purpose:** Handles light/dark user preference mode switching
 - **Files:** `light.json` / `dark.json`
-- **Function:** Primary theme switching mechanism for the entire system
+- **Function:** Primary user mode switching mechanism for the entire system
 
-### S2: Emphasis Layer (Interaction States)
+### S2: Emphasis Layer (System Mode)
 - **Purpose:** Manages high/low emphasis variations for interaction states
 - **Files:** `high.json` / `low.json`  
 - **Function:** Provides emphasis-based variations that reference S1 directly
@@ -33,20 +33,40 @@ The semantic system is organized into three distinct layers with specific respon
 
 ## Important: Inversity in Token Names vs. Architecture
 
-**Post-OUI-4001 Clarification:** 
-- **❌ S2 Inversity Layer:** No longer exists as an architectural layer, Figma mode, or separate folder
-- **✅ Inversity in Token Names:** Still exists within individual token names (`inversity_normal`, `inversity_flipped`)
+**Clarification:** 
+- **Inversity in Token Names:** Exists within individual token names (`inversity_normal`, `inversity_flipped`)
 
 **What this means:**
-- Figma users can **no longer switch** between inversity modes
-- Design system designers can still **choose** between `inversity_normal` and `inversity_flipped` token variants when tokenizing components
-- Each semantic token provides both variants, but the selection is manual, not mode-based
+- Design system designers can **choose** between `inversity_normal` and `inversity_flipped` token variants when tokenizing components
+- Each semantic token provides both variants, and the selection is manual during component design
+
+---
+
+## Mode Types in Theming
+
+The theming system works with two distinct types of modes:
+
+### User Modes (User Preference Modes)
+Modes controlled by user settings or system preferences that switch automatically:
+
+- **Lightness Mode** (`light`/`dark`) - Responds to OS dark mode preference or user toggle
+- **Viewport Mode** (`desktop`/`mobile`) - Switches based on viewport size and device capabilities
+
+**Implementation:** These modes switch automatically at runtime based on external factors like `prefers-color-scheme: dark` or viewport media queries.
+
+### System Modes (Design System Controlled Modes)  
+Modes set by designers and developers during design and implementation phases:
+
+- **Emphasis Variations** (`high`/`low`) - Chosen by designers based on context and visual hierarchy needs
+- **Token Variants** (`inversity_normal`/`inversity_flipped`) - Selected during component tokenization process
+
+**Implementation:** These are design-time decisions embedded in component definitions, not runtime switches.
 
 ---
 
 ## How Theme Switching Works
 
-**Primary Mechanism:** Theme switching occurs at the S1 layer through file selection:
+**Primary Mechanism:** User mode switching occurs at the S1 layer through file selection:
 - **Light Theme:** Uses `s1-lightness/light.json` 
 - **Dark Theme:** Uses `s1-lightness/dark.json`
 
@@ -54,11 +74,11 @@ The semantic system is organized into three distinct layers with specific respon
 - Components consume `ob.s3.color.*` tokens
 - S3 tokens reference `ob.s1.color.*` tokens  
 - S1 light/dark files provide different primitive references
-- Result: Theme switching propagates through entire system
+- Result: User mode switching (light/dark) propagates through entire system
 
-**For Designers:** Theme switching is managed through Token Studio's Token Sets or Figma's variable modes. The S1 layer files (light.json/dark.json) contain the actual theme variations.
+**For Designers:** User mode switching is managed through Token Studio's Token Sets or Figma's variable modes. The S1 layer files (light.json/dark.json) contain the actual theme variations.
 
-**For Developers:** Build systems select appropriate S1 files based on theme configuration, automatically propagating changes through S3 to components.
+**For Developers:** Build systems select appropriate S1 files based on user preference detection (e.g., `prefers-color-scheme`), automatically propagating changes through S3 to components.
 
 #### S1 Lightness Layer
 
@@ -192,7 +212,7 @@ src/lib/themes/semantic/color/s3-semantic/
 
 The current reference pattern ensures proper theme inheritance:
 
-**Current Reference Chains (Post-OUI-4001):**
+**Current Reference Chains:**
 1. **Components** → **S3 Semantic** → **S1 Lightness** → **S0 Primitives**
 2. **S2 Emphasis** → **S1 Lightness** → **S0 Primitives**
 
@@ -211,7 +231,7 @@ The current reference pattern ensures proper theme inheritance:
 
 ### S1/S2/S3 Architecture Analysis
 
-**Current Architecture:** The design token system now uses a simplified S1/S2/S3 structure post-OUI-4001 refactoring.
+**Current Architecture:** The design token system uses a simplified S1/S2/S3 structure.
 
 **Layer Distribution:**
 - **S1 Lightness:** Theme-switching layer (light.json, dark.json)
@@ -223,24 +243,24 @@ The current reference pattern ensures proper theme inheritance:
 The current S1/S2/S3 architecture provides:
 
 1. **Clear Separation of Concerns**
-   - S1: Theme switching (light/dark modes)
-   - S2: Emphasis handling (high/low contrast contexts)
+   - S1: User mode (light/dark user preferences)
+   - S2: System mode (high/low emphasis contexts set by designers)
    - S3: Semantic compilation (final component-ready tokens)
 
 2. **Simplified Reference Chain**
    - Direct references: S2→S1, S3→S1
    - No cascading hierarchy complexity
-   - Single theme switching point at S1 level
+   - Single user mode switching point at S1 level
 
 3. **Maintenance Efficiency**
-   - Theme variants managed in dedicated S1 files
-   - Emphasis contexts isolated in S2 layer
+   - User preference variants managed in dedicated S1 files
+   - Designer-controlled emphasis contexts isolated in S2 layer
    - Complete semantic definitions in S3 compilation
 
 **Reference Optimization:**
 - Components primarily consume S3 semantic tokens
-- S1 provides efficient theme switching without cascading updates
-- S2 handles emphasis variations without duplicating base values
+- S1 provides efficient user mode switching without cascading updates
+- S2 handles designer-controlled emphasis variations without duplicating base values
 
 **Validation:** Use `node scripts-custom/validate-semantic-mirroring.js` to verify S1↔S2 structural consistency and identify redundant definitions.
 
