@@ -4,6 +4,7 @@ import {
 	NodeDependency,
 	NodeDependencyType,
 	addPackageJsonDependency,
+	getPackageJsonDependency,
 	removePackageJsonDependency
 } from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
@@ -90,6 +91,11 @@ export function addDevDependency(tree: Tree, name: string): void {
 
 export function addDependency(tree: Tree, name: string): void {
 	addPackageJsonDependency(tree, createDep(tree, NodeDependencyType.Default, name));
+}
+
+export function hasDependency(tree: Tree, dependency: {name: string; type: NodeDependencyType}): boolean {
+	const dep = getPackageJsonDependency(tree, dependency.name);
+	return dep?.type === dependency.type;
 }
 
 export function importModuleInRoot(tree: Tree, moduleName: string, src: string): void {
