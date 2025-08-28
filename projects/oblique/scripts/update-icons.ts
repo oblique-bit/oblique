@@ -57,10 +57,11 @@ class Icons extends StaticScript {
 	private static writeIconCSS(filePath: string, svgs: SVG[]): void {
 		Log.info('Generate icon set as CSS classes: oblique-icons.scss');
 		const iconCSS = [
-			`.ob-icon::before {\n\tdisplay: inline-block;\n\twidth: 1em;\n\theight: 1em;\n}`,
+			`.ob-icon {\n\t&::before {\n\tdisplay: inline-block;\n\twidth: 1em;\n\theight: 1em;\n}`,
 			...svgs.map(
-				({svg, id}) => `.ob-${id}::before {\n\tcontent: url("data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}");\n}`
-			)
+				({svg, id}) => `&.ob-${id}::before {\n\tcontent: url("data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}");\n}`
+			),
+			`\n}`
 		];
 		Files.write(filePath, `${iconCSS.join('\n\n')}\n`);
 	}
