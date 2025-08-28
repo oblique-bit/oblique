@@ -14,7 +14,25 @@ The following files are protected and should not be modified directly:
 
 ## Protection Mechanisms
 
-### 1. Pre-commit Hook
+### 1. Documentation Structure Rule
+
+The `documentation/` folder must contain **only subdirectories, no files**. This ensures proper organization and prevents root-level documentation clutter.
+
+**Automated enforcement:**
+```bash
+# Check documentation structure compliance
+node scripts-custom/validate-documentation-structure.js
+
+# This script automatically removes files from documentation/ root
+# Files should be organized in proper subdirectories:
+# - documentation/design-tokens/ - Technical token documentation
+# - documentation/workflow/ - Process and workflow guidance  
+# - documentation/reports/ - Development reports
+```
+
+**Rule:** All `.md` files must be in appropriate subfolders, never in `documentation/` root.
+
+### 2. Pre-commit Hook
 
 A Git pre-commit hook is provided to prevent accidental commits of protected files. To install it:
 
@@ -35,11 +53,14 @@ The `.gitattributes` file marks protected files with a `lockdown` attribute. Whi
 You can manually check for modifications to protected files:
 
 ```bash
-# Run the check script directly
+# Run the protected files check script directly
 ./scripts-custom/check-protected-files.sh
+
+# Run documentation structure validation
+node scripts-custom/validate-documentation-structure.js
 ```
 
-This will show warnings if any protected files have been modified.
+These scripts will show warnings if any protected files have been modified or if documentation structure violates the organization rules.
 
 ## What to Do When You Need Changes to Protected Files
 
@@ -52,10 +73,17 @@ If you need to make changes to any of these protected files:
 
 ## Why Protection is Needed
 
-Protected files impact the entire project and all team members:
+Protected files and structure rules impact the entire project and all team members:
 
-- Dependency changes affect everyone's development environment
-- Build configuration changes can break the CI/CD pipeline
-- TypeScript configuration changes can affect type checking across the project
+- **Configuration files** affect everyone's development environment
+- **Build configuration changes** can break the CI/CD pipeline  
+- **TypeScript configuration changes** can affect type checking across the project
+- **Documentation structure** ensures consistency and prevents organizational drift
+
+**Documentation Structure Benefits:**
+- Prevents root-level clutter that makes navigation difficult
+- Ensures consistent organization across team members
+- Makes it easier to find relevant documentation
+- Maintains clean workspace structure
 
 Centralizing these changes helps maintain stability and consistency across the project.
