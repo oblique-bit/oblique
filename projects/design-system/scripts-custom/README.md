@@ -71,15 +71,11 @@ These scripts help maintain the quality and consistency of the Oblique Design Sy
   - *Example: Ensures all documentation uses new s1/s2/s3 naming instead of old l1/l2/l3 patterns → prevents confusion and outdated examples*
 - **`validate-documentation-structure.js`** - Validates structure and consistency of documentation files
 - **`validate-token-chain-resolution.js`** - Deep validation of token reference chains and circular references
-- **`validate-l1-l2-redundancy.js`** - Analyzes redundancy between L1 and L2 token levels
-  - *Example: Confirms L2 tokens are 99.2% redundant with L1 → enables build script optimization to reduce CSS variables*
 - **`validate-protected-files.js`** - Validates that protected files haven't been accidentally modified
 - **`validate-doc-tokens.js`** - Validates token references within documentation files
 - **`validate-orchestrator.js`** - Runs multiple validation scripts in sequence for comprehensive checking
 
 ### Analysis & Inspection Scripts
-- **`analyze-emphasis-structure.js`** - Analyzes emphasis token structure and relationships
-  - *Example: Shows how emphasis.high relates to emphasis.medium and identifies missing emphasis levels → ensures complete design coverage*
 - **`analyze-token-structure.js`** - Inspects and displays token structure for debugging
   - *Example: Displays the full token tree when debugging why a button color isn't applying correctly → speeds up troubleshooting*
 - **`analyze-s1-s2-redundancy.js`** - Analyzes redundancy patterns between S1 and S2 token layers
@@ -89,10 +85,6 @@ These scripts help maintain the quality and consistency of the Oblique Design Sy
 - **`reference-chain-of.js`** - Helper script for quick token reference chain analysis
 - **`find-missing-s1-tokens.js`** - Identifies missing tokens in the S1 semantic layer
 - **`show-exact-missing-tokens.js`** - Shows exactly which tokens are missing from specific layers
-
-### Migration & Transformation Scripts
-- **`migrate-compound-units-to-underscores.js`** - Migrates compound unit tokens to underscore naming convention
-- **`extract-compound-units.js`** - Extracts compound unit patterns from token structure
 
 ### Utility & Setup Scripts
 - **`setup-token-tracking.js`** - Sets up token change tracking and monitoring system
@@ -142,20 +134,16 @@ node scripts-custom/trace-token-chain.js
 node scripts-custom/detect-plural-references.js
 node scripts-custom/validate-token-syntax.js
 node scripts-custom/validate-consumption-hierarchy.js
-node scripts-custom/validate-l1-l2-redundancy.js
 node scripts-custom/validate-token-chain-resolution.js
 node scripts-custom/validate-orchestrator.js
 
 # Analysis and inspection scripts
-node scripts-custom/analyze-emphasis-structure.js
 node scripts-custom/analyze-token-structure.js
 node scripts-custom/analyze-s1-s2-redundancy.js
 node scripts-custom/detect-circular-token-references.js
 node scripts-custom/trace-token-chain.js
 
-# Migration and utility scripts
-node scripts-custom/migrate-compound-units-to-underscores.js
-node scripts-custom/recommend-scripts.js
+# Utility scripts
 node scripts-custom/setup-token-tracking.js
 ```
 
