@@ -59,14 +59,11 @@ These scripts help maintain the quality and consistency of the Oblique Design Sy
 ### Validation Scripts
 - **`detect-plural-references.js`** - Validates singular naming conventions across tokens, files, and documentation
   - *Example: Finds "colors.primary.blues" instead of "color.primary.blue" → prevents inconsistent naming that breaks token lookups*
-- **`validate-token-syntax.js`** - Quick validation of token reference syntax and common issues
-  - *Example: Catches broken references like "{color.primary.undefined}" or missing closing braces → prevents build failures and visual bugs*
 - **`validate-consumption-hierarchy.js`** - Validates proper token consumption patterns (primitive → semantic → component)
   - *Example: Ensures buttons don't reference primitive colors directly, but use semantic tokens instead → maintains design flexibility and consistency*
 - **`validate-documentation-references.js`** - Validates token references in documentation files after naming convention changes
   - *Example: Ensures all documentation uses new s1/s2/s3 naming instead of old l1/l2/l3 patterns → prevents confusion and outdated examples*
 - **`validate-documentation-structure.js`** - Validates structure and consistency of documentation files
-- **`validate-token-chain-resolution.js`** - Deep validation of token reference chains and circular references
 - **`validate-protected-files.js`** - Validates that protected files haven't been accidentally modified
 - **`validate-doc-tokens.js`** - Validates token references within documentation files
 - **`validate-orchestrator.js`** - Runs multiple validation scripts in sequence for comprehensive checking
@@ -74,13 +71,10 @@ These scripts help maintain the quality and consistency of the Oblique Design Sy
 ### Analysis & Inspection Scripts
 - **`analyze-token-structure.js`** - Inspects and displays token structure for debugging
   - *Example: Displays the full token tree when debugging why a button color isn't applying correctly → speeds up troubleshooting*
-- **`analyze-s1-s2-redundancy.js`** - Analyzes redundancy patterns between S1 and S2 token layers
 - **`detect-circular-token-references.js`** - Detects circular token references in the system
   - *Example: Finds spacing.large → spacing.xl → spacing.large infinite loop → prevents build crashes and undefined values*
 - **`trace-token-chain.js`** - Traces complete reference chains for tokens to understand dependencies
 - **`reference-chain-of.js`** - Helper script for quick token reference chain analysis
-- **`find-missing-s1-tokens.js`** - Identifies missing tokens in the S1 semantic layer
-- **`show-exact-missing-tokens.js`** - Shows exactly which tokens are missing from specific layers
 
 ### Utility & Setup Scripts
 - **`setup-token-tracking.js`** - Sets up token change tracking and monitoring system
@@ -128,14 +122,11 @@ node scripts-custom/trace-token-chain.js
 ```bash
 # Validation scripts
 node scripts-custom/detect-plural-references.js
-node scripts-custom/validate-token-syntax.js
 node scripts-custom/validate-consumption-hierarchy.js
-node scripts-custom/validate-token-chain-resolution.js
 node scripts-custom/validate-orchestrator.js
 
 # Analysis and inspection scripts
 node scripts-custom/analyze-token-structure.js
-node scripts-custom/analyze-s1-s2-redundancy.js
 node scripts-custom/detect-circular-token-references.js
 node scripts-custom/trace-token-chain.js
 
