@@ -6,47 +6,74 @@
 
 **Scope:** Tokenized Design System only. Pre-Design System releases like Oblique R13 are not affected.
 
-**Theme Strategy:** The system supports multiple theme dimensions that can be combined: Lightness (light/dark), Inversity (normal/flipped), and Interaction Emphasis (normal/muted). Responsive theming is handled separately (see [Responsive Tokens](./responsiveness.md)).
+**Theme Strategy (Post-OUI-4001):** The system supports theme switching primarily through the S1 lightness layer (light/dark themes), with S2 providing emphasis variations and S3 serving as a complete semantic color compilation for component consumption.
 
 ---
 
-## Multi-Dimensional Theming
+## Current Theming Architecture
 
-The semantic level supports complex theming through multiple dimensions that can be combined:
+The semantic system is organized into three distinct layers with specific responsibilities:
 
-- **Lightness:** `light` (default) / `dark`
-- **Inversity:** `normal` / `flipped` 
-- **Interaction Emphasis:** `normal` / `muted`
+### S1: Lightness Layer (Theme Switching)
+- **Purpose:** Handles light/dark theme switching
+- **Files:** `light.json` / `dark.json`
+- **Function:** Primary theme switching mechanism for the entire system
 
-**Example:** A button can simultaneously use:
-- `lightness: dark` (inheriting dark theme values)
-- `inversity: flipped` (switching to inverted background/foreground for visual emphasis)
-- `emphasis: muted` (lowering visual emphasis within headers/footers)
+### S2: Emphasis Layer (Interaction States)
+- **Purpose:** Manages high/low emphasis variations for interaction states
+- **Files:** `high.json` / `low.json`  
+- **Function:** Provides emphasis-based variations that reference S1 directly
 
-### Level 2: Semantic Colors
+### S3: Semantic Compilation (Component Layer)
+- **Purpose:** Complete collection of all semantic colors for component consumption
+- **Files:** `semantic.json`
+- **Function:** Clean, comprehensive semantic color compilation that references S1 directly
 
-The semantic level introduces theming through organized folders containing JSON files. In the codebase, these appear as directories with JSON files, but in Tokens Studio they are managed as Token Sets organized in folders.
+---
 
-**For Developers:** Each theming folder (e.g., `lightness/`, `inversity/`) contains multiple JSON files. Files within the same folder contain tokens with identical names but different values. When the design system build process runs, one JSON file can override tokens from another based on the active theme configuration.
+## Important: Inversity in Token Names vs. Architecture
 
-**For Designers:** These folders correspond to Token Sets in Tokens Studio, where theme switching is managed through the plugin interface or via variable modes in Figma. See [Figma Help - Modes for Variables](https://help.figma.com/hc/en-us/articles/15343816063383-Modes-for-variables).
+**Post-OUI-4001 Clarification:** 
+- **❌ S2 Inversity Layer:** No longer exists as an architectural layer, Figma mode, or separate folder
+- **✅ Inversity in Token Names:** Still exists within individual token names (`inversity_normal`, `inversity_flipped`)
 
-**Reference:** For detailed information about Token Sets, see [Tokens Studio Documentation - Token Sets](https://docs.tokens.studio/manage-tokens/token-sets).
+**What this means:**
+- Figma users can **no longer switch** between inversity modes
+- Design system designers can still **choose** between `inversity_normal` and `inversity_flipped` token variants when tokenizing components
+- Each semantic token provides both variants, but the selection is manual, not mode-based
 
-#### Level 2.1: Lightness Theming
+---
+
+## How Theme Switching Works
+
+**Primary Mechanism:** Theme switching occurs at the S1 layer through file selection:
+- **Light Theme:** Uses `s1-lightness/light.json` 
+- **Dark Theme:** Uses `s1-lightness/dark.json`
+
+**Reference Pattern:**
+- Components consume `ob.s3.color.*` tokens
+- S3 tokens reference `ob.s1.color.*` tokens  
+- S1 light/dark files provide different primitive references
+- Result: Theme switching propagates through entire system
+
+**For Designers:** Theme switching is managed through Token Studio's Token Sets or Figma's variable modes. The S1 layer files (light.json/dark.json) contain the actual theme variations.
+
+**For Developers:** Build systems select appropriate S1 files based on theme configuration, automatically propagating changes through S3 to components.
+
+#### S1 Lightness Layer
 
 ```
 src/lib/themes/semantic/color/s1-lightness/
-|-- light.json    # Default theme
-+-- dark.json     # Dark theme override
+|-- light.json    # Light theme tokens
++-- dark.json     # Dark theme tokens
 ```
 
-**Purpose:** System-wide light/dark theme switching. Users set the variable mode in Figma from `lightness: light` (default) or `lightness: dark`.
+**Purpose:** System-wide light/dark theme switching. Theme switching occurs at this layer through file selection (light.json vs dark.json).
 
-**Token Structure:** Generic-purpose tokens with contrast levels:
-- `bg-base` - For various backgrounds across different interaction states
-- `fg-visited` - Reserved for foreground color of visited text links
-- `contrast-high`, `contrast-medium`, `contrast-low` - Various contrast levels within semantic subgroups
+**Token Structure:** Semantic color tokens optimized for theme switching:
+- `bg-base` - Base background colors for different contexts
+- `fg-default` - Default foreground colors
+- `contrast-high`, `contrast-medium`, `contrast-low` - Various contrast levels for different semantic contexts
 
 **Token Format:**
 ```json
@@ -57,8 +84,12 @@ src/lib/themes/semantic/color/s1-lightness/
         "neutral": {
           "bg": {
             "contrast-highest": {
-              "inversity-normal": "{ob.p.color.basic.white}",
-              "inversity-flipped": "{ob.p.color.cobalt.700}"
+              "inversity-normal": {
+                "value": "{ob.p.color.basic.white}"
+              },
+              "inversity-flipped": {
+                "value": "{ob.p.color.cobalt.700}"
+              }
             }
           }
         },
@@ -66,8 +97,12 @@ src/lib/themes/semantic/color/s1-lightness/
           "emphasis-high": {
             "bg-base": {
               "contrast-high": {
-                "inversity-normal": "{ob.p.color.steelblue.800}",
-                "inversity-flipped": "{ob.p.color.basic.white}"
+                "inversity-normal": {
+                  "value": "{ob.p.color.steelblue.800}"
+                },
+                "inversity-flipped": {
+                  "value": "{ob.p.color.basic.white}"
+                }
               }
             }
           }
@@ -78,54 +113,22 @@ src/lib/themes/semantic/color/s1-lightness/
 }
 ```
 
-#### Level 2.2: Inversity Theming
+
+#### S2 Emphasis Layer
 
 ```
-src/lib/themes/semantic/color/s2-inversity/
-|-- normal.json  # Normal contrast
-+-- flipped.json  # Inverted contrast
+src/lib/themes/semantic/color/s2-emphasis/
+|-- high.json    # High emphasis states
++-- low.json     # Low emphasis states
 ```
 
-**Purpose:** Component-scoped theming for inversity override. Available in Figma variable mode but should not be altered by designers in projects.
+**Purpose:** Provides emphasis variations for different visual contexts. This layer handles the contrast and intensity variations needed for different component states.
 
 **Use Cases:**
-- Setting complete inversity on components: Badge needs inverted appearance (dark bg, light fg)
-- One-time inversity on component variants: `button.primary`, `infobox.fatal`, `tag.active` to make them stick out for UX reasons
+- **High Emphasis:** Primary actions, important interactive elements
+- **Low Emphasis:** Secondary actions, subtle interactive elements
 
-**Token Structure:** References lightness tokens without theme suffixes:
-```json
-{
-  "ob": {
-    "s": {
-      "color": {
-        "neutral": {
-          "bg": {
-            "contrast-highest": "{ob.s.color.neutral.bg.contrast-highest.inversity-normal}"
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-#### Level 2.3: Interaction Emphasis Theming
-
-```
-src/lib/themes/semantic/color/s3-emphasis/
-|-- normal.json  # Full saturation (standard blue)
-+-- muted.json    # Desaturated (monochromatic)
-```
-
-**Purpose:** Component-scoped theming for interaction emphasis. Used when design system maintainers set interaction emphasis to "muted" in host components (header, footer, infobox) where text links and buttons must be visually less aggressive.
-
-**Use Cases:**
-- **Standard Context:** Buttons in forms use `emphasis: normal` with high-saturated blue for background fill
-- **Muted Context:** Same components in headers/footers use `emphasis: muted` appearing monochromatic to avoid drawing excessive attention
-
-**Scope:** Only for interactive elements (buttons, text links, tabs). Non-interactive components can skip this level.
-
-**Token Structure:** References inversity tokens:
+**Token Structure:** References S1 lightness tokens directly:
 ```json
 {
   "ob": {
@@ -135,13 +138,47 @@ src/lib/themes/semantic/color/s3-emphasis/
           "state": {
             "fg": {
               "enabled": {
-                "inversity-normal": "{ob.s.color.status.fatal.fg.contrast-low}",
-                "inversity-flipped": "{ob.s.color.status.fatal.fg.contrast-low}"
+                "value": "{ob.s.color.lightness.interaction.fg.enabled.value}"
               },
               "hover": {
-                "inversity-normal": "{ob.s.color.status.fatal.fg.contrast-medium}",
-                "inversity-flipped": "{ob.s.color.status.fatal.fg.contrast-medium}"
+                "value": "{ob.s.color.lightness.interaction.fg.hover.value}"
               }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### S3 Semantic Layer
+
+```
+src/lib/themes/semantic/color/s3-semantic/
++-- semantic.json  # Complete semantic color compilation
+```
+
+**Purpose:** Final compilation layer providing all semantic colors for component consumption. This is where all color meanings are resolved into their final contextual values.
+
+**Use Cases:**
+- Primary consumption point for components
+- Complete semantic color definitions (status colors, interaction colors, etc.)
+- Context-aware color resolution
+
+**Token Structure:** Clean semantic compilation referencing S1 directly:
+```json
+{
+  "ob": {
+    "s": {
+      "color": {
+        "status": {
+          "success": {
+            "fg": {
+              "value": "{ob.s.color.lightness.success.fg.value}"
+            },
+            "bg": {
+              "value": "{ob.s.color.lightness.success.bg.value}"
             }
           }
         }
@@ -153,47 +190,59 @@ src/lib/themes/semantic/color/s3-emphasis/
 
 ### Reference Chain Validation
 
-The correct reference chain ensures proper theme inheritance:
+The current reference pattern ensures proper theme inheritance:
 
-1. **Components** -> **Emphasis** -> **Inversity** -> **Lightness** -> **Primitives**
+**Current Reference Chains (Post-OUI-4001):**
+1. **Components** → **S3 Semantic** → **S1 Lightness** → **S0 Primitives**
+2. **S2 Emphasis** → **S1 Lightness** → **S0 Primitives**
 
-**Exception:** Global tokens (`ob.g.*`) can be referenced from any level in the hierarchy and are exempt from these chain rules. See [global-tokens.md](./global-tokens.md) for details.
-2. **Components** -> **Inversity** -> **Lightness** -> **Primitives** (for non-interactive elements)
+**Key Changes:**
+- Both S2 and S3 reference S1 **directly** (no cascading through layers)
+- S3 provides complete semantic compilation for component consumption
+- S1 handles all theme switching through light.json/dark.json files
 
 **Validation Rules:**
-- Semantic layers should never directly reference primitives (except for lightness layer)
-- Component layers should never reference lightness or primitive layers directly
-- Each layer should only reference the layer immediately below it in the hierarchy
+- Components should primarily consume S3 semantic tokens
+- S2 and S3 layers reference S1 lightness layer directly  
+- S1 layer references primitives for actual color values
+- Theme switching occurs at S1 layer file selection
 
-### L1/L2 Redundancy Analysis
+**Exception:** Global tokens (`ob.g.*`) can be referenced from any level in the hierarchy and are exempt from these chain rules. See [global-tokens.md](./global-tokens.md) for details.
 
-**Finding:** Analysis of the token architecture reveals 99.2% redundancy between L1 (lightness) and L2 (inversity) token layers.
+### S1/S2/S3 Architecture Analysis
 
-**Current State:**
-- **L1 lightness/light.json:** 273 tokens
-- **L2 inversity/normal.json:** 271 tokens  
-- **Redundant tokens:** 269 (99.2% overlap)
-- **L2-unique tokens:** Only 2 tokens exist exclusively in L2
+**Current Architecture:** The design token system now uses a simplified S1/S2/S3 structure post-OUI-4001 refactoring.
 
-**Architectural Assessment:**
+**Layer Distribution:**
+- **S1 Lightness:** Theme-switching layer (light.json, dark.json)
+- **S2 Emphasis:** Contextual emphasis variations (high.json, low.json)  
+- **S3 Semantic:** Complete semantic compilation (semantic.json)
 
-The L2 inversity layer was designed to provide component-scoped theming for contrast inversion (e.g., badges with dark backgrounds, light text). However, the current implementation shows that L2 tokens are nearly identical copies of L1 tokens, indicating potential over-engineering.
+**Architectural Benefits:**
 
-**Impact Analysis:**
-- **Maintenance Overhead:** Dual maintenance of nearly identical token sets
-- **Consistency Risk:** Manual synchronization between L1 and L2 creates drift potential
-- **Reference Complexity:** Additional layer without meaningful semantic differentiation
+The current S1/S2/S3 architecture provides:
 
-**Recommendation:**
+1. **Clear Separation of Concerns**
+   - S1: Theme switching (light/dark modes)
+   - S2: Emphasis handling (high/low contrast contexts)
+   - S3: Semantic compilation (final component-ready tokens)
 
-Consider generating L2 tokens programmatically from L1 during the build process rather than maintaining separate files. This would:
+2. **Simplified Reference Chain**
+   - Direct references: S2→S1, S3→S1
+   - No cascading hierarchy complexity
+   - Single theme switching point at S1 level
 
-1. **Eliminate redundancy** - Single source of truth for base semantic tokens
-2. **Reduce maintenance** - Automatic synchronization between layers  
-3. **Preserve architecture** - Maintain the semantic hierarchy and reference chain
-4. **Enable customization** - Allow selective overrides for true inversity cases
+3. **Maintenance Efficiency**
+   - Theme variants managed in dedicated S1 files
+   - Emphasis contexts isolated in S2 layer
+   - Complete semantic definitions in S3 compilation
 
-**Validation:** Run `python scripts-custom/validate-s1-s2-redundancy.py` to verify current redundancy levels and identify the specific tokens that require manual definition in S2.
+**Reference Optimization:**
+- Components primarily consume S3 semantic tokens
+- S1 provides efficient theme switching without cascading updates
+- S2 handles emphasis variations without duplicating base values
+
+**Validation:** Use `node scripts-custom/validate-semantic-mirroring.js` to verify S1↔S2 structural consistency and identify redundant definitions.
 
 ### Folder Structure vs. Token References
 

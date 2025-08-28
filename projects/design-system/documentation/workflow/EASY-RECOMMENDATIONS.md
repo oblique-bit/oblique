@@ -69,14 +69,14 @@ npm run validate:quick
 
 ```
 🚨 CRITICAL SCRIPTS (Run these first):
-   ▶️  detect-plural-references.py
-      💡 After naming changes, file renames, or new token creation
-      🔧 python3 scripts-custom/detect-plural-references.py
+   ▶️  validate-all.js
+      💡 Comprehensive validation covering circular references, semantic mirroring, and consumption hierarchy
+      🔧 node scripts-custom/validate-all.js
 
 ✅ RECOMMENDED SCRIPTS:
-   ▶️  validate-token-syntax.py
-      💡 After editing token files or adding new token references
-      🔧 python3 scripts-custom/validate-token-syntax.py
+   ▶️  validate-all-components.js
+      💡 After editing token files or adding new component token references
+      🔧 node scripts-custom/validate-all-components.js
 ```
 
 Just copy-paste the commands! 🎯

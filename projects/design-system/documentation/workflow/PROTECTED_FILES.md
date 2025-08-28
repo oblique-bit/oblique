@@ -57,11 +57,11 @@ The `.gitattributes` file marks protected files with a `lockdown` attribute. Whi
 You can manually check for modifications to protected files:
 
 ```bash
-# Run the protected files check script directly
-./scripts-custom/check-protected-files.sh
-
 # Run documentation structure validation
 node scripts-custom/validate-documentation-structure.js
+
+# Check git status for protected file modifications
+git status --porcelain
 ```
 
 These scripts will show warnings if any protected files have been modified or if documentation structure violates the organization rules.

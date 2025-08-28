@@ -6,20 +6,26 @@ This document defines rules for token consumption across all token types in the 
 
 ## Core Principles
 
-### Token Hierarchy
-Most tokens follow a strict hierarchical reference chain:
+### Token Reference Pattern (Post-OUI-4001)
+The current token system uses a simplified reference structure:
 
 ```
-Components (L3) -> Semantics (L2) -> Primitives (L1)
+Components -> S3 Semantic Compilation -> S1 Lightness -> S0 Primitives
+           -> S2 Emphasis -> S1 Lightness -> S0 Primitives
 ```
 
-**Exception:** Global tokens (`ob.g.*`) can be referenced by any level. See [global-tokens.md](./global-tokens.md) for more details.
+**Key Changes:**
+- **S3** provides complete semantic color compilation for component consumption
+- **S2 and S3** both reference **S1 directly** (no cascading hierarchy)
+- **S1** handles light/dark theme switching through direct primitive references
 
 **Fundamental Rules:**
-1. **Components must never consume primitives directly**
-2. **Components must never consume L1 semantic tokens (ob.s1.color.*)**
-3. **Each layer should only reference the layer immediately below it**
-4. **Maintain semantic meaning through the reference chain**
+1. **Components should primarily consume S3 semantic tokens**
+2. **Components must never consume primitives directly**
+3. **S2 and S3 layers reference S1 directly for simplified maintenance**
+4. **S1 layer handles all theme switching (light.json/dark.json files)**
+
+**Exception:** Global tokens (`ob.g.*`) can be referenced by any level. See [global-tokens.md](./global-tokens.md) for more details.
 
 ---
 
@@ -472,7 +478,7 @@ npm run check:plural-references
 
 # Validate token consumption hierarchy (s0/s1/s2/s3)
 npm run check:token-consumption
-# OR directly: python3 scripts-custom/validate-consumption-hierarchy.py
+# OR directly: node scripts-custom/validate-consumption-hierarchy.js
 ```
 
 The consumption hierarchy validator includes:

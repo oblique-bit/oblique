@@ -16,9 +16,9 @@ These tokens exist in `$themes.json` and resolve properly in Tokens Studio:
 - `{ob.s.color.neutral.no-color}` ✅
 
 ### Reference Checking
-- The Python reference checker (`check-references.py`) has been updated to exclude false positives
-- Only tokens that truly don't exist in the design system are flagged as broken
-- Token validation should always be verified against Tokens Studio, not TypeScript
+- The JavaScript validation scripts provide comprehensive token reference checking
+- Use `node scripts-custom/validate-all-components.js` to verify component token references
+- Token validation should always be verified against the current token structure, not outdated references
 
 ## Important Notes
 - Tokens Studio manages the complete token architecture

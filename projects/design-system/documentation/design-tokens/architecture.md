@@ -36,7 +36,9 @@ Tokens follow a hierarchical structure with dot-separated segments:
 
 ### **Layers**
 - `p` - Primitive layer (base values)
-- `s` - Semantic layer (contextual meaning)
+- `s1` - Semantic Level 1 (lightness - light/dark theme handling)
+- `s2` - Semantic Level 2 (emphasis - high/low emphasis variations)
+- `s3` - Semantic Level 3 (clean compilation of all semantic colors)
 - `c` - Component layer (component-specific)
 - `g` - Global layer (system-wide settings)
 - `h` - HTML layer (HTML element tokens)
@@ -52,10 +54,10 @@ Tokens follow a hierarchical structure with dot-separated segments:
 - `fg` - Foreground/text
 - `border` - Border properties
 
-### **Levels (Semantic Layer)**
-- `s1` - Level 1 semantic tokens (lightness)
-- `s2` - Level 2 semantic tokens (inversity)
-- `s3` - Level 3 semantic tokens (emphasis)
+### **Semantic Layer Structure (Post-OUI-4001)**
+- `s1` - Lightness layer: Handles light/dark theme switching (light.json, dark.json)
+- `s2` - Emphasis layer: Manages high/low emphasis levels (high.json, low.json)
+- `s3` - Semantic compilation: Complete collection of all semantic colors (semantic.json)
 
 ---
 

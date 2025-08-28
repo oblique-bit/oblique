@@ -14,21 +14,21 @@ Base-level tokens that define the foundational values in the design system. Thes
 First semantic layer that handles lightness variations across themes. S1 tokens reference s0 static tokens and provide the foundation for light/dark theme switching.
 
 **File Structure:** `src/lib/themes/semantic/color/s1-lightness/`  
-**Example:** `ob.s1.color.neutral.bg.contrast-highest.inversity-normal`  
+**Example:** `ob.s1.color.neutral.bg.contrast_highest.inversity_normal`  
 **Formerly:** l1 tokens (legacy naming)
 
-### s2 (Semantic Level 2 - Inversity)
-Second semantic layer that manages inversity relationships. S2 tokens define how colors behave when inverted or contrasted, ensuring proper accessibility and visual hierarchy.
+### s2 (Semantic Level 2 - Emphasis)
+Second semantic layer that manages emphasis variations. S2 tokens define high and low emphasis levels for interaction states, referencing S1 tokens directly.
 
-**File Structure:** `src/lib/themes/semantic/color/s2-inversity/`  
-**Example:** `ob.s2.color.neutral.bg.contrast-highest.inversity-normal`  
+**File Structure:** `src/lib/themes/semantic/color/s2-emphasis/`  
+**Example:** `ob.s2.color.interaction.state.fg.enabled.inversity_normal`  
 **Formerly:** l2 tokens (legacy naming)
 
-### s3 (Semantic Level 3 - Emphasis)
-Third semantic layer that controls emphasis and interaction states. S3 tokens define visual priority levels and interactive feedback (hover, focus, disabled states).
+### s3 (Semantic Level 3 - Semantic Compilation)
+Third semantic layer that provides a clean, comprehensive compilation of all semantic colors. S3 serves as the primary reference point for component tokens, containing the complete semantic color collection with direct references to S1.
 
-**File Structure:** `src/lib/themes/semantic/color/s3-emphasis/`  
-**Example:** `ob.s3.color.interaction.state.fg.enabled.inversity-normal`  
+**File Structure:** `src/lib/themes/semantic/color/s3-semantic/`  
+**Example:** `ob.s3.color.interaction.state.fg.enabled.inversity_normal`  
 **Formerly:** l3 tokens (legacy naming)
 
 ## Tokens Studio Terminology
@@ -38,8 +38,10 @@ Organizational units in Tokens Studio that correspond to folder structures in th
 
 **Examples:**
 - `s1-lightness-light` (Token Set for light theme)
-- `s2-inversity-normal` (Token Set for standard inversity)
-- `s3-emphasis-high` (Token Set for high emphasis states)
+- `s1-lightness-dark` (Token Set for dark theme)
+- `s2-emphasis-high` (Token Set for high emphasis states)
+- `s2-emphasis-low` (Token Set for low emphasis states)
+- `s3-semantic` (Token Set for complete semantic compilation)
 
 ### Variable Modes
 Figma's native theming system that allows switching between different token values. Each Token Set can have multiple modes representing different theme states.
@@ -166,17 +168,21 @@ The set of theme files that must maintain structural symmetry with each other. C
 
 **Rule:** Token architecture must remain identical across all counterparts, only primitive value references may differ.
 
-**Process:** Component tokens reference s3 tokens -> s3 tokens reference s2 tokens -> s2 tokens reference s1 tokens -> s1 tokens reference s0 tokens -> s0 tokens contain final values
+**Process (Post-OUI-4001):** Component tokens reference s3 tokens -> s3 tokens reference s1 tokens -> s1 tokens reference s0 tokens -> s0 tokens contain final values. Note: S2 also references s1 directly.
 
 ### Reference Chain
-The path a token follows from component to primitive. Reference chains show the complete dependency trail and ensure proper abstraction levels are maintained.
+The path a token follows from component to primitive. In the current system, both S3 and S2 reference S1 directly, simplifying the dependency chain.
 
-**Example Chain:** `interaction.state.fg.enabled` -> `ob.s3.color.interaction.state.fg.enabled.inversity-normal` -> `ob.s2.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal` -> `ob.s1.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal` -> `ob.p.color.steelblue.600`
+**Current Reference Pattern:** 
+- Components → `ob.s3.color.*` → `ob.s1.color.*` → `ob.p.color.*`
+- S2 Emphasis → `ob.s2.color.*` → `ob.s1.color.*` → `ob.p.color.*`
+
+**Example Chain:** `interaction.state.fg.enabled` → `ob.s3.color.interaction.state.fg.enabled.inversity_normal` → `ob.s1.color.interaction.fg_base.contrast_low.inversity_normal` → `ob.p.color.steelblue.600`
 
 ### Token Inheritance
-How tokens inherit values from parent tokens in the hierarchy. Inheritance allows child tokens to automatically receive updates when parent values change, maintaining consistency across the system.
+How tokens inherit values from parent tokens. The current architecture uses direct references to S1 layer, bypassing intermediate layers for simpler maintenance.
 
-**Inheritance Flow:** s0 (parent) -> s1 -> s2 -> s3 -> Component tokens (children)
+**Current Flow:** s0 (primitives) → s1 (lightness) → s2 (emphasis) & s3 (semantic compilation) → Component tokens
 
 ### Build-time Resolution
 When token references are resolved during compilation. Build-time resolution transforms token references into final CSS values, ensuring runtime performance and eliminating dependency tracking overhead.
@@ -189,7 +195,7 @@ When token references are resolved during compilation. Build-time resolution tra
 ### s1-s2 Redundancy
 A validation concern where s1 and s2 tokens contain duplicate or nearly identical values. High redundancy (99.2% in this system) indicates potential optimization opportunities.
 
-**Validation Script:** `validate-l1-l2-redundancy.py` (legacy), now `validate-s1-s2-redundancy.py`
+**Validation Script:** Use `node scripts-custom/validate-semantic-mirroring.js` to analyze S1↔S2 structural relationships.
 
 ### $themes.json
 The compiled output file from Tokens Studio that contains all token definitions in a format consumable by the design system build process.

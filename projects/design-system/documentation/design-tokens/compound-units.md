@@ -52,7 +52,7 @@ color: var(--ob-s-color-status-critical-fg-contrast_high-inversity_normal);
 
 ## Complete Compound Unit List
 
-> This list was generated using the `scripts-custom/extract-compound-units.js` script, which analyzes all JSON files in the design system to identify and extract compound units from token keys.
+> This list represents the compound units currently used in the design system token structure. These units maintain their underscore format to preserve semantic meaning and avoid CSS transformation complexity.
 
 ### All Compound Units
 - `alert_notification`
@@ -248,14 +248,11 @@ When reviewing code or documentation:
 
 To update the compound units list when new tokens are added:
 
-1. Run the extraction script:
-   ```bash
-   node scripts-custom/extract-compound-units.js
-   ```
+1. **Manual Review**: Examine the current token structure in `src/lib/themes/` to identify compound units
 
-2. Copy the output to update the "All Compound Units" section of this document
+2. **Update Documentation**: Add any new compound units to the "All Compound Units" section of this document
 
-3. Add any new compound units that require CSS transformation to the "Compound Units with CSS Transformations" section
+3. **CSS Transformations**: Add any new compound units that require CSS transformation to the "Compound Units with CSS Transformations" section
 
 4. Update Style Dictionary transformations:
    - Ensure all new compound units are properly handled by Style Dictionary's transformation configuration

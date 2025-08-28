@@ -111,27 +111,26 @@ npm run check:plural-references
 npm run check:token-syntax
 
 # Run analysis and debugging scripts manually
-node scripts-custom/validate-token-chain-resolution.js
-node scripts-custom/analyze-emphasis-structure.js
-node scripts-custom/analyze-token-structure.js
+node scripts-custom/validate-all.js
 node scripts-custom/detect-circular-token-references.js
-node scripts-custom/trace-token-chain.js
+node scripts-custom/trace-token-references.js
+node scripts-custom/validate-semantic-mirroring.js
 ```
 
 ### Direct Execution
 ```bash
 # Validation scripts
-node scripts-custom/detect-plural-references.js
+node scripts-custom/validate-all-components.js
 node scripts-custom/validate-consumption-hierarchy.js
 node scripts-custom/validate-all.js
 
 # Analysis and inspection scripts
-node scripts-custom/analyze-token-structure.js
 node scripts-custom/detect-circular-token-references.js
-node scripts-custom/trace-token-chain.js
+node scripts-custom/trace-token-references.js
+node scripts-custom/validate-semantic-mirroring.js
 
 # Utility scripts
-node scripts-custom/setup-token-tracking.js
+node scripts-custom/setup-style-dictionary.js
 ```
 
 ## 📁 Script Organization
