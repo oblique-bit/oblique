@@ -11,6 +11,26 @@
  * - Status components should use status tokens
  * 
  * Validates s0/s1/s2/s3 semantic color hierarchy consumption patterns.
+ * 
+ * COMMANDS:
+ *     node validate-consumption-hierarchy.js  - Validate token consumption patterns across all components
+ *     (no command line arguments - runs automatically)
+ * 
+ * USAGE CONTEXT:
+ * After establishing the S0/S1/S2/S3 token hierarchy in OUI-4001, the team needed to
+ * enforce proper consumption patterns to maintain architectural integrity. Components
+ * were incorrectly consuming primitive tokens directly or skipping semantic layers,
+ * breaking the abstraction that enables theming and maintenance. Manual review of
+ * consumption patterns across dozens of component files was impractical and error-prone.
+ * This script automates the validation of proper token layer consumption, preventing
+ * architectural violations that could make theming impossible or create maintenance
+ * nightmares. Essential for maintaining the multi-layer token system integrity.
+ * 
+ * AUTHORS: Design System Team
+ * VERSION: 1.0.0
+ * CREATED: 2025-08-12
+ * LAST_EDITED: 2025-08-28
+ * LAST_RUN: Not executed yet
  */
 
 const fs = require('fs');

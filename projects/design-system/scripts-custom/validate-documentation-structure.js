@@ -7,6 +7,26 @@
  * 2. All .md files have lowercase extensions (.MD → .md)
  * Per requirements: "in documentation folder there must be no file, but only folders" 
  *                   "i wanna have lowercase for all .md"
+ * 
+ * COMMANDS:
+ *     node validate-documentation-structure.js  - Enforce documentation structure and normalize .md files
+ *     (no command line arguments - runs automatically)
+ * 
+ * USAGE CONTEXT:
+ * During workspace organization cleanup, inconsistent file placement and naming conventions
+ * were causing confusion and breaking team standards. Files were being added directly to
+ * documentation root instead of proper subfolders, and mixed case .md/.MD extensions
+ * created inconsistency. Manual enforcement across 100+ documentation files was impractical
+ * and team members kept accidentally violating the structure rules. This script automates
+ * both validation and correction, ensuring clean documentation organization without constant
+ * manual review. Essential for maintaining professional documentation standards and preventing
+ * structural drift over time. Ticket: OUI-4001 (workspace cleanup phase).
+ * 
+ * AUTHORS: Design System Team
+ * VERSION: 1.0.0
+ * CREATED: 2025-08-28
+ * LAST_EDITED: 2025-08-28
+ * LAST_RUN: 2025-08-28 at 15:42 (normalized 1550 files)
  */
 
 const fs = require('fs');
@@ -55,7 +75,7 @@ function normalizeMarkdownCases() {
             { cwd: PROJECT_DIR, encoding: 'utf-8' }
         );
         const uppercaseNames = execSync(
-            'find . -name "*README*" -o -name "*CHANGELOG*" -o -name "*CONTRIBUTING*" | grep -v node_modules | grep "\\.md$" | sort',
+            'find . -name "*.md" | grep -v node_modules | grep -E "[A-Z]" | sort',
             { cwd: PROJECT_DIR, encoding: 'utf-8' }
         );
         

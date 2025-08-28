@@ -66,20 +66,20 @@ These scripts help maintain the quality and consistency of the Oblique Design Sy
 - **`validate-documentation-structure.js`** - Validates structure and consistency of documentation files
 - **`validate-protected-files.js`** - Validates that protected files haven't been accidentally modified
 - **`validate-doc-tokens.js`** - Validates token references within documentation files
-- **`validate-orchestrator.js`** - Runs multiple validation scripts in sequence for comprehensive checking
+- **`validate-all.js`** - Runs multiple validation scripts in sequence for comprehensive checking
 
 ### Analysis & Inspection Scripts
 - **`analyze-token-structure.js`** - Inspects and displays token structure for debugging
   - *Example: Displays the full token tree when debugging why a button color isn't applying correctly → speeds up troubleshooting*
 - **`detect-circular-token-references.js`** - Detects circular token references in the system
   - *Example: Finds spacing.large → spacing.xl → spacing.large infinite loop → prevents build crashes and undefined values*
-- **`trace-token-chain.js`** - Traces complete reference chains for tokens to understand dependencies
-- **`reference-chain-of.js`** - Helper script for quick token reference chain analysis
+- **`trace-token-references.js`** - Traces complete reference chains for tokens to understand dependencies
+- **`trace-token-references.js`** - Helper script for quick token reference chain analysis
 
 ### Utility & Setup Scripts
 - **`setup-token-tracking.js`** - Sets up token change tracking and monitoring system
 - **`track-token-changes.js`** - Tracks and reports on token changes over time
-- **`style-dictionary-setup-helper.js`** - Helper script for Style Dictionary integration setup
+- **`setup-style-dictionary.js`** - Helper script for Style Dictionary integration setup
 
 ## 🛡️ Validation System
 
@@ -95,7 +95,7 @@ These scripts help maintain the quality and consistency of the Oblique Design Sy
 ### Quick Validation:
 ```bash
 # Run all validations with the orchestrator
-node scripts-custom/validate-orchestrator.js
+node scripts-custom/validate-all.js
 
 # Individual validations
 npm run check:plural-references
@@ -123,7 +123,7 @@ node scripts-custom/trace-token-chain.js
 # Validation scripts
 node scripts-custom/detect-plural-references.js
 node scripts-custom/validate-consumption-hierarchy.js
-node scripts-custom/validate-orchestrator.js
+node scripts-custom/validate-all.js
 
 # Analysis and inspection scripts
 node scripts-custom/analyze-token-structure.js
@@ -179,7 +179,7 @@ When adding new design system maintenance scripts:
 - Scripts require Node.js 14+ (all scripts are now JavaScript/Node.js based)
 - Some scripts modify files - always commit your work before running migration scripts
 - The validation system is integrated into the development workflow via npm scripts
-- Use `validate-orchestrator.js` to run multiple validation scripts efficiently
+- Use `validate-all.js` to run multiple validation scripts efficiently
 
 ## 🤝 Contributing
 

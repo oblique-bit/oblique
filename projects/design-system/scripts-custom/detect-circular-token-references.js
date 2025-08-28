@@ -9,12 +9,32 @@
  * Circular references can cause infinite loops in token resolution and
  * compilation failures in style dictionary. This script helps identify
  * and debug such issues in the design token system.
+ * 
+ * COMMANDS:
+ *     node detect-circular-token-references.js  - Scan all token files for circular references
+ *     (no command line arguments - runs automatically)
+ * 
+ * USAGE CONTEXT:
+ * During token refactoring and complex reference chain creation, circular references
+ * began appearing that caused Style Dictionary compilation failures and infinite
+ * loops during build processes. These issues were difficult to debug manually because
+ * circular chains could span multiple files and layers (S1 → S2 → S3 → S1). The team
+ * needed automated detection before these issues reached CI/CD pipelines. This script
+ * prevents build failures by detecting circular reference patterns early in development,
+ * saving hours of debugging time and preventing broken builds. Critical for maintaining
+ * a healthy token architecture with complex inter-token dependencies.
+ * 
+ * AUTHORS: Design System Team
+ * VERSION: 1.0.0
+ * CREATED: 2025-08-12
+ * LAST_EDITED: 2025-08-28
+ * LAST_RUN: Not executed yet
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const themesDir = path.join(__dirname, '../../src/lib/themes');
+const themesDir = path.join(__dirname, '../src/lib/themes');
 
 // Helper function to recursively find all JSON files
 function findJsonFiles(dir) {

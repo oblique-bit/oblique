@@ -1,5 +1,32 @@
 #!/usr/bin/env node
 
+/**
+ * Component Token Validation Script
+ * 
+ * Validates that all component token references point to existing S3 semantic tokens.
+ * Ensures component layer integration with semantic layer is complete and correct.
+ * 
+ * COMMANDS:
+ *     node validate-all-components.js  - Validate all component token references
+ *     (no command line arguments - runs automatically)
+ * 
+ * USAGE CONTEXT:
+ * After OUI-4001 token refactoring from L1/L2/L3 to S1/S2/S3 structure, many component
+ * files contained broken token references causing build failures. The team discovered
+ * 19 broken references across 4 components (tag, popover, pill, infobox) that were
+ * causing production issues. Manual validation of 50+ component files was time-consuming
+ * and error-prone. This script automates the validation process by cross-referencing
+ * all component token paths against actual S3 semantic token definitions, preventing
+ * broken references from reaching production. Essential for post-refactoring validation
+ * workflow and ongoing component-semantic layer integrity. Ticket: OUI-4001.
+ * 
+ * AUTHORS: Design System Team
+ * VERSION: 1.0.0
+ * CREATED: 2025-08-27
+ * LAST_EDITED: 2025-08-28
+ * LAST_RUN: Not executed yet
+ */
+
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');

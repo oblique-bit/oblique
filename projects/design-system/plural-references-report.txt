@@ -1,7 +1,7 @@
 PLURAL REFERENCE FINDER REPORT
 ==================================================
 
-Found 541 plural references:
+Found 544 plural references:
 
 Type: json_structure
 File: _private/knowledge/competitive-analysis/raw-data/scraping-progress.json
@@ -2379,14 +2379,14 @@ Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Dele
 ----------------------------------------
 
 Type: documentation
-File: _private/reports/commits/2025/07-Jul/commits/20250714_cf28288_Convert_to_W3C_DTCG_format,_read_more_at.md
+File: _private/reports/commits/2025/07-Jul/commits/20250714_cf28288_convert_to_w3c_dtcg_format,_read_more_at.md
 Line: 47
 Issue: Plural reference in documentation: primitives/colors.json
 Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Modified
 ----------------------------------------
 
 Type: documentation
-File: _private/reports/commits/2025/07-Jul/commits/20250714_cf28288_Convert_to_W3C_DTCG_format,_read_more_at.md
+File: _private/reports/commits/2025/07-Jul/commits/20250714_cf28288_convert_to_w3c_dtcg_format,_read_more_at.md
 Line: 47
 Issue: Plural reference in documentation: colors.json
 Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Modified
@@ -2407,14 +2407,14 @@ Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Modi
 ----------------------------------------
 
 Type: documentation
-File: _private/reports/commits/2025/07-Jul/commits/20250714_16db6cf_Convert_to_W3C_DTCG_format,_read_more_at.md
+File: _private/reports/commits/2025/07-Jul/commits/20250714_16db6cf_convert_to_w3c_dtcg_format,_read_more_at.md
 Line: 62
 Issue: Plural reference in documentation: primitives/colors.json
 Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Added
 ----------------------------------------
 
 Type: documentation
-File: _private/reports/commits/2025/07-Jul/commits/20250714_16db6cf_Convert_to_W3C_DTCG_format,_read_more_at.md
+File: _private/reports/commits/2025/07-Jul/commits/20250714_16db6cf_convert_to_w3c_dtcg_format,_read_more_at.md
 Line: 62
 Issue: Plural reference in documentation: colors.json
 Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Added
@@ -2435,14 +2435,14 @@ Content: - `projects/design-system/src/lib/themes/primitives/colors.json	project
 ----------------------------------------
 
 Type: documentation
-File: _private/reports/commits/2025/07-Jul/commits/20250713_cf28288_Convert_to_W3C_DTCG_format,_read_more_at.md
+File: _private/reports/commits/2025/07-Jul/commits/20250713_cf28288_convert_to_w3c_dtcg_format,_read_more_at.md
 Line: 47
 Issue: Plural reference in documentation: primitives/colors.json
 Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Modified
 ----------------------------------------
 
 Type: documentation
-File: _private/reports/commits/2025/07-Jul/commits/20250713_cf28288_Convert_to_W3C_DTCG_format,_read_more_at.md
+File: _private/reports/commits/2025/07-Jul/commits/20250713_cf28288_convert_to_w3c_dtcg_format,_read_more_at.md
 Line: 47
 Issue: Plural reference in documentation: colors.json
 Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Modified
@@ -2463,21 +2463,21 @@ Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Modi
 ----------------------------------------
 
 Type: documentation
-File: _private/reports/commits/2025/07-Jul/commits/20250713_a2ea64c_fix(design-systemcolors)_replace_RGBA_va.md
+File: _private/reports/commits/2025/07-Jul/commits/20250713_a2ea64c_fix(design-systemcolors)_replace_rgba_va.md
 Line: 13
 Issue: Plural reference in documentation: colors.json
 Content: - Add transparent primitive token to colors.json
 ----------------------------------------
 
 Type: documentation
-File: _private/reports/commits/2025/07-Jul/commits/20250713_a2ea64c_fix(design-systemcolors)_replace_RGBA_va.md
+File: _private/reports/commits/2025/07-Jul/commits/20250713_a2ea64c_fix(design-systemcolors)_replace_rgba_va.md
 Line: 24
 Issue: Plural reference in documentation: primitives/colors.json
 Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Modified
 ----------------------------------------
 
 Type: documentation
-File: _private/reports/commits/2025/07-Jul/commits/20250713_a2ea64c_fix(design-systemcolors)_replace_RGBA_va.md
+File: _private/reports/commits/2025/07-Jul/commits/20250713_a2ea64c_fix(design-systemcolors)_replace_rgba_va.md
 Line: 24
 Issue: Plural reference in documentation: colors.json
 Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Modified
@@ -2561,14 +2561,14 @@ Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Modi
 ----------------------------------------
 
 Type: documentation
-File: _private/reports/commits/2025/07-Jul/commits/20250713_16db6cf_Convert_to_W3C_DTCG_format,_read_more_at.md
+File: _private/reports/commits/2025/07-Jul/commits/20250713_16db6cf_convert_to_w3c_dtcg_format,_read_more_at.md
 Line: 62
 Issue: Plural reference in documentation: primitives/colors.json
 Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Added
 ----------------------------------------
 
 Type: documentation
-File: _private/reports/commits/2025/07-Jul/commits/20250713_16db6cf_Convert_to_W3C_DTCG_format,_read_more_at.md
+File: _private/reports/commits/2025/07-Jul/commits/20250713_16db6cf_convert_to_w3c_dtcg_format,_read_more_at.md
 Line: 62
 Issue: Plural reference in documentation: colors.json
 Content: - `projects/design-system/src/lib/themes/primitives/colors.json` - Added
@@ -3395,8 +3395,23 @@ Issue: Plural in file/folder name: colors-semantic-status.md
 ----------------------------------------
 
 Type: file_name
+File: documentation/design-tokens/colors/colors-semantic-neutral.md
+Issue: Plural in file/folder name: colors-semantic-neutral.md
+----------------------------------------
+
+Type: file_name
 File: documentation/design-tokens/colors/colors-semantic-interaction.md
 Issue: Plural in file/folder name: colors-semantic-interaction.md
+----------------------------------------
+
+Type: file_name
+File: documentation/design-tokens/colors/colors-semantic-brand.md
+Issue: Plural in file/folder name: colors-semantic-brand.md
+----------------------------------------
+
+Type: file_name
+File: documentation/design-tokens/colors/colors-backup.md
+Issue: Plural in file/folder name: colors-backup.md
 ----------------------------------------
 
 Type: file_name

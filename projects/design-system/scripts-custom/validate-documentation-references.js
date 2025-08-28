@@ -5,6 +5,27 @@
  * Script to validate token references in documentation files after naming convention changes
  * Created: July 15, 2025
  * Context: Post Token Studio l1/l2/l3 → s1/s2/s3 naming convention update
+ * 
+ * COMMANDS:
+ *     node validate-documentation-references.js           - Run validation on all documentation
+ *     node validate-documentation-references.js --verbose - Show detailed validation output
+ *     node validate-documentation-references.js --help    - Show help message
+ * 
+ * USAGE CONTEXT:
+ * After OUI-4001 refactoring changed token naming from L1/L2/L3 to S1/S2/S3 structure,
+ * extensive documentation contained outdated token references that would confuse developers
+ * and designers using the system. Manual review of 100+ documentation files for token
+ * reference accuracy was impractical and error-prone. The team needed automated validation
+ * to ensure all documentation examples matched current token structures and paths. This
+ * script prevents documentation drift by validating that all token examples in docs
+ * correspond to actual existing tokens, maintaining documentation accuracy and developer trust.
+ * Essential for post-refactoring documentation consistency. Ticket: OUI-4001.
+ * 
+ * AUTHORS: Design System Team
+ * VERSION: 1.0.0
+ * CREATED: 2025-07-15
+ * LAST_EDITED: 2025-08-28
+ * LAST_RUN: Not executed yet
  */
 
 const fs = require('fs');

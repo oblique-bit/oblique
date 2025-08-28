@@ -1,5 +1,32 @@
 #!/usr/bin/env node
 
+/**
+ * Semantic Token Mirroring Validator
+ * 
+ * Validates that semantic token structures mirror correctly across layers (S1/S2/S3).
+ * Ensures proper token reference patterns and structural consistency.
+ * 
+ * COMMANDS:
+ *     node validate-semantic-mirroring.js  - Validate structural mirroring across semantic layers
+ *     (no command line arguments - runs automatically)
+ * 
+ * USAGE CONTEXT:
+ * In the S1/S2/S3 semantic layer architecture, each layer must mirror the structure
+ * of the layers below it to maintain theming consistency. Missing tokens in higher
+ * layers or structural mismatches can break theme switching and cause component
+ * failures. Manual verification of structural mirroring across dozens of token files
+ * was impractical and error-prone. This script automates the validation of semantic
+ * layer structural consistency, ensuring that dark/light variations and emphasis
+ * levels are properly mirrored across all semantic layers. Critical for maintaining
+ * theming system integrity and preventing theme-switching failures. Ticket: OUI-4001.
+ * 
+ * AUTHORS: Design System Team
+ * VERSION: 1.0.0
+ * CREATED: 2025-08-12
+ * LAST_EDITED: 2025-08-28
+ * LAST_RUN: Not executed yet
+ */
+
 const fs = require('fs');
 const path = require('path');
 

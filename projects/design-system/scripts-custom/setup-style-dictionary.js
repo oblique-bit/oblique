@@ -8,6 +8,27 @@
  * 
  * If you don't have Style Dictionary set up yet, this script provides the configuration
  * needed to preserve underscore naming.
+ * 
+ * COMMANDS:
+ *     node style-dictionary-setup-helper.js  - Setup Style Dictionary with underscore preservation
+ *     (no command line arguments - runs automatically)
+ * 
+ * USAGE CONTEXT:
+ * During Style Dictionary integration, the default transformations were converting
+ * underscore-based compound units (like "contrast_high") to camelCase ("contrastHigh"),
+ * breaking the design system's established naming conventions and token references.
+ * Manual configuration of Style Dictionary to preserve underscore naming was complex
+ * and required deep understanding of the transformation system. The team needed a
+ * helper to automate the configuration setup and ensure consistent underscore
+ * preservation across all build outputs. This script eliminates Style Dictionary
+ * configuration errors and maintains naming consistency between token definitions
+ * and build outputs. Essential for proper Style Dictionary integration setup.
+ * 
+ * AUTHORS: Design System Team
+ * VERSION: 1.0.0
+ * CREATED: 2025-08-12
+ * LAST_EDITED: 2025-08-28
+ * LAST_RUN: Not executed yet
  */
 
 const fs = require('fs');
