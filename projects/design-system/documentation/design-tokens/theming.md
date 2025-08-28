@@ -24,7 +24,7 @@ The semantic system is organized into three distinct layers with specific respon
 - **Files:** `high.json` / `low.json`  
 - **Function:** Provides emphasis-based variations that reference S1 directly
 
-### S3: Semantic Compilation (Component Layer)
+### S3: Semantic Compilation
 - **Purpose:** Complete collection of all semantic colors for component consumption
 - **Files:** `semantic.json`
 - **Function:** Clean, comprehensive semantic color compilation that references S1 directly
