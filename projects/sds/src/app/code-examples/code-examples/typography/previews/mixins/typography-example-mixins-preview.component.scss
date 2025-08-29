@@ -1,26 +1,26 @@
 @use "@oblique/oblique/src/styles/scss/core/mixins/typography";
 
-.ob-h1 {
+.h1 {
 	@include typography.ob-h1();
 }
 
-.ob-h2 {
+.h2 {
 	@include typography.ob-h2();
 }
 
-.ob-h3 {
+.h3 {
 	@include typography.ob-h3();
 }
 
-.ob-h4 {
+.h4 {
 	@include typography.ob-h4();
 }
 
-.ob-h5 {
+.h5 {
 	@include typography.ob-h5();
 }
 
-.ob-h6 {
+.h6 {
 	@include typography.ob-h6();
 }
 
@@ -48,31 +48,31 @@
 	@include typography.ob-h6-prose();
 }
 
-.ob-subtitle1 {
+.subtitle1 {
 	@include typography.ob-subtitle1();
 }
 
-.ob-subtitle2 {
+.subtitle2 {
 	@include typography.ob-subtitle2();
 }
 
-.ob-body1 {
+.body1 {
 	@include typography.ob-body1();
 }
 
-.ob-body2 {
+.body2 {
 	@include typography.ob-body2();
 }
 
-.ob-button {
+.button {
 	@include typography.ob-button();
 }
 
-.ob-caption {
+.caption {
 	@include typography.ob-caption();
 }
 
-.ob-overline {
+.overline {
 	@include typography.ob-overline();
 }
 
