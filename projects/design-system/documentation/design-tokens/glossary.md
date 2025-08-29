@@ -11,21 +11,21 @@ Base-level tokens that define the foundational values in the design system. Thes
 **Example:** `ob.p.color.blue.500`
 
 ### s1 (Semantic Level 1 - Lightness)
-First semantic layer that handles lightness variations across themes. S1 tokens reference s0 static tokens and provide the foundation for light/dark theme switching.
+First semantic level that handles lightness variations across themes. S1 tokens reference s0 static tokens and provide the foundation for light/dark theme switching.
 
 **File Structure:** `src/lib/themes/semantic/color/s1-lightness/`  
 **Example:** `ob.s1.color.neutral.bg.contrast_highest.inversity_normal`  
 **Formerly:** l1 tokens (legacy naming)
 
 ### s2 (Semantic Level 2 - Emphasis)
-Second semantic layer that manages emphasis variations. S2 tokens define high and low emphasis levels for interaction states, referencing S1 tokens directly.
+Second semantic level that manages emphasis variations. S2 tokens define high and low emphasis levels for interaction states, referencing S1 tokens directly.
 
 **File Structure:** `src/lib/themes/semantic/color/s2-emphasis/`  
 **Example:** `ob.s2.color.interaction.state.fg.enabled.inversity_normal`  
 **Formerly:** l2 tokens (legacy naming)
 
 ### s3 (Semantic Level 3 - Semantic Compilation)
-Third semantic layer that provides a clean, comprehensive compilation of all semantic colors. S3 serves as the primary reference point for component tokens, containing the complete semantic color collection with direct references to S1.
+Third semantic level that provides a clean, comprehensive compilation of all semantic colors. S3 serves as the primary reference point for component tokens, containing the complete semantic color collection with direct references to S1.
 
 **File Structure:** `src/lib/themes/semantic/color/s3-semantic/`  
 **Example:** `ob.s3.color.interaction.state.fg.enabled.inversity_normal`  
@@ -81,6 +81,28 @@ Modes that are set by designers and developers during design and implementation,
 
 ## Design System Architecture
 
+### Layers vs Levels
+**Important Distinction:** In the Oblique Design System, "layers" are reserved for Figma layer terminology to avoid confusion with the design system's token architecture.
+
+- **Levels** (`s1`, `s2`, `s3`, `c`, `g`, `p`) - Token architecture hierarchy levels
+  - **Semantic Levels** (`s1`, `s2`, `s3`) - Lightness, emphasis, compilation
+  - **Component Level** (`c`) - Component-specific tokens
+  - **Global Level** (`g`) - System-wide settings
+  - **Primitive Level** (`p`) - Base values
+- **Layers** - Reserved for Figma layer structure and visual hierarchy
+
+### Inversity Variants
+Theme variants that handle the inversity dimension in tokens, controlling normal and flipped visual treatments.
+
+**Values:** `inversity_normal`, `inversity_flipped`  
+**Usage:** Essential for components that need to adapt to different background contexts (e.g., footer inversions)
+
+### Design System Namespace
+The `ob` prefix that identifies all tokens as belonging to the Oblique Design System, distinguishing them from other token systems or external dependencies.
+
+**Format:** `ob.{level}.{category}.{...}`  
+**Example:** `ob.s3.color.neutral.fg.contrast_high.inversity_normal`
+
 ### Global Tokens
 Special tokens that bypass the standard s1/s2/s3 hierarchy rules. Global tokens are used for exceptional cases where the semantic hierarchy doesn't apply.
 
@@ -130,13 +152,13 @@ The primary theming dimension that controls light and dark appearances. Lightnes
 **Token Pattern:** `s1-lightness-{variant}`
 
 ### Emphasis (s2)
-The secondary theming dimension that manages emphasis variations for interaction states. Emphasis provides high and low visual priority levels for different contexts.
+The secondary theming dimension that manages emphasis variations for interaction states. Emphasis provides high and low visual priority semantic levels for different contexts.
 
 **Values:** High, Low  
 **Token Pattern:** `s2-emphasis-{variant}`
 
 ### Semantic Compilation (s3)
-The tertiary theming dimension that provides complete semantic color compilation for component consumption. This layer contains all semantic colors resolved for direct component usage.
+The tertiary theming dimension that provides complete semantic color compilation for component consumption. This semantic level contains all semantic colors resolved for direct component usage.
 
 **Values:** Semantic compilation  
 **Token Pattern:** `s3-semantic`
@@ -165,7 +187,7 @@ The process of connecting design tokens with build tools and development workflo
 **Monitoring:** Custom scripts detect hardcoded token usage
 
 ### Token Resolution
-How the system follows references through the s0->s1->s2->s3 hierarchy. The resolution process ensures that token references are properly traced from component level down to primitive values.
+How the system follows references through the s0->s1->s2->s3 hierarchy. The resolution process ensures that token references are properly traced from component semantic level down to primitive values.
 
 ### Vampire Scripts
 **Development Antipattern:** Unnecessary script files that accumulate during iterative development, consuming workspace resources without providing value. Vampire scripts typically include empty files (0 bytes), duplicate iterations, and abandoned experimental scripts.

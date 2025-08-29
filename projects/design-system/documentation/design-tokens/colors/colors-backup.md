@@ -14,7 +14,7 @@ This is the main introduction to the color token system. For specific topics, re
 ### Quick Navigation
 - **Status Colors**: info, resolved, critical, attention, pending, confirmed, progress, scheduled, waiting, fatal, closed, disabled → [Status Colors Guide](colors-semantic-status.md)
 - **Interaction States**: hover, focus, active, visited, disabled with emphasis levels → [Interaction Colors Guide](colors-semantic-interaction.md) 
-- **Semantic Layer Architecture**: s0-static, s1-lightness, s2-inversity, s3-emphasis → [Semantic Colors Guide](colors-semantic.md)
+- **Semantic Compilation Architecture**: s0-static, s1-lightness, s2-inversity, s3-emphasis → [Semantic Colors Guide](colors-semantic.md)
 - **Token Consumption Rules**: Component-to-token-type mappings and implementation guidelines → See sections below
 
 ---

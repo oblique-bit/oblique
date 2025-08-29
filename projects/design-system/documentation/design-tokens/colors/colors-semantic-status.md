@@ -11,7 +11,7 @@ Status colors communicate system state, user feedback, and contextual informatio
 
 **Foundation:** Primitive color values are inherited from the [BK Design System](https://swiss.github.io/designsystem/?path=/docs/components-badge--docs) for consistency across Swiss government applications and websites. We have enhanced these base primitive colors with semantic meaning and grouped them into two distinct classifications to provide clearer guidance for designers and developers.
 
-## 📊 **Status Reference Table**
+## **Status Reference Table**
 
 | Status | Type | Description | Components | Legacy Name | Inspiration | Change Status | Classification |
 |--------|------|-------------|-------------|-------------|-------------|---------------|----------------|
@@ -28,17 +28,17 @@ Status colors communicate system state, user feedback, and contextual informatio
 | **disabled** | Inactive | Disabled, unavailable | All ob.c components | — | Material | Added | **Flexible** |
 | **fatal** | Emergency | Population danger, critical alerts | ob.c.infobox | — | BK Design System | Added | **Flexible** |
 
-## 🎯 **Status Token Classification System**
+## **Status Token Classification System**
 
 Status tokens are classified as either **Reserved** or **Flexible** to provide clear governance:
 
 ### 🔒 **Reserved Statuses**
 
 **Rules:**
-- ✅ **Fixed across all projects** - Cannot be renamed or remapped
+- **Fixed across all projects** - Cannot be renamed or remapped
 - 🚦 **Follow universal signal semantics** - Based on traffic light patterns
 - 🌍 **Cross-system consistency** - Used across government applications
-- 🎨 **Color mapping locked** - Primitive color references must not change
+- **Color mapping locked** - Primitive color references must not change
 
 **Usage:** Fundamental system communication across all applications
 - **Info**: General information and announcements
@@ -46,17 +46,17 @@ Status tokens are classified as either **Reserved** or **Flexible** to provide c
 - **Critical**: System failures and urgent alerts
 - **Attention**: Warnings and caution messages
 
-### 🔄 **Flexible Statuses**
+### **Flexible Statuses**
 
 **Rules:**
-- 🎯 **Project-adaptable** - May be renamed or remapped by designers
+- **Project-adaptable** - May be renamed or remapped by designers
 - 🎫 **Workflow-oriented** - Designed for ticketing and task management
-- 🔧 **Extensible** - Projects can add new flexible statuses
-- ⚠️ **Reserved protection** - Must not alter reserved statuses
+- **Extensible** - Projects can add new flexible statuses
+- **Reserved protection** - Must not alter reserved statuses
 
 **Usage:** Application-specific workflows and customizable processes
 
-## 💡 **Reserved Status Naming Rationale**
+## **Reserved Status Naming Rationale**
 
 The Reserved status tokens (`info`, `resolved`, `critical`, `attention`) were specifically redesigned for government web applications with enhanced semantic clarity. The renaming decisions from legacy terms follow established patterns in modern web application design:
 
@@ -104,7 +104,7 @@ These naming choices provide:
 
 ---
 
-## 🔧 **Technical Implementation**
+## **Technical Implementation**
 
 ## Token Structure
 
@@ -363,7 +363,7 @@ Status colors automatically adapt to theme changes through inversity variations:
 }
 ```
 
-## 🛠️ **Implementation Guidelines**
+## **Implementation Guidelines**
 
 ### For Design System Maintainers:
 1. **Never modify reserved statuses** - Color mappings and names are locked
@@ -384,7 +384,7 @@ Status colors automatically adapt to theme changes through inversity variations:
 
 > **Note:** All status colors automatically meet WCAG 2.1 AA contrast requirements. Accessibility validation is built into the design system tokens, so developers don't need to manually check contrast ratios.
 
-## 🔧 **Tools**
+## **Tools**
 
 ### Status Token Classifier Script
 ```bash

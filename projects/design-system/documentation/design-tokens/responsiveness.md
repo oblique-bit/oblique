@@ -10,11 +10,11 @@
 
 **Viewport Strategy:** The tokenized system currently supports two viewports: desktop and mobile.
 
-## Primitive Responsive Tokens
+## Global Breakpoint Primitives
 
 ### `ob.g.breakpoints.*`
 
-A full set of primitive breakpoint tokens is defined in `src/lib/themes/global/themes-scoped/static.json`:
+A full set of breakpoint primitive values defined in `src/lib/themes/global/themes-scoped/static.json`:
 
 - `ob.g.breakpoints.0` - 0px (base for smallest viewports)
 - `ob.g.breakpoints.640` - 640px (small viewports)
@@ -23,7 +23,7 @@ A full set of primitive breakpoint tokens is defined in `src/lib/themes/global/t
 - `ob.g.breakpoints.1280` - 1280px (extra large viewports)
 - `ob.g.breakpoints.1536` - 1536px (ultra-wide viewports)
 
-**Note:** These are primitive tokens. Use the semantic tokens below for actual development.
+**Note:** These are raw breakpoint values. Use the global responsive tokens below for actual development.
 
 ## Global Responsive Tokens
 

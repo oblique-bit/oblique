@@ -41,14 +41,14 @@ ob.s.color.status.{status_name}.{property}.{contrast_level}.{inversity_variation
 /* ❌ Old format - using hyphens */
 color: var(--ob-s-color-status-critical-fg-contrast-high-inversity-normal);
 
-/* ✅ New format - using underscores */
+/* - New format - using underscores */
 color: var(--ob-s-color-status-critical-fg-contrast_high-inversity_normal);
 ```
 
 **Benefits:**
-- ✅ Consistent naming across Token Studio, Figma, and CSS
-- ✅ No transformation complexity
-- ✅ Predictable token names for developers
+- - Consistent naming across Token Studio, Figma, and CSS
+- - No transformation complexity
+- - Predictable token names for developers
 
 ## Complete Compound Unit List
 
@@ -236,9 +236,9 @@ Style Dictionary can be configured with validation plugins to ensure:
 
 ### Manual Review
 When reviewing code or documentation:
-- ✅ Verify CSS examples use camelCase
-- ✅ Check documentation descriptions use hyphenated format
-- ✅ Ensure consistency across similar examples
+- - Verify CSS examples use camelCase
+- - Check documentation descriptions use hyphenated format
+- - Ensure consistency across similar examples
 
 ---
 

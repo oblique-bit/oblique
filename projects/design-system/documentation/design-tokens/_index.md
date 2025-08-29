@@ -4,7 +4,7 @@
 
 ---
 
-## 🚀 **Getting Started**
+## **Getting Started**
 
 | **New to Design Tokens?** | **Need Quick Reference?** | **Implementation Guide?** |
 |---|---|---|
@@ -12,14 +12,14 @@
 
 ---
 
-## 📚 **Documentation Structure**
+## **Documentation Structure**
 
-### **🏗️ Core Architecture**
+### **Core Architecture**
 - [**Architecture**](./architecture.md) - Token structure, layers, and naming patterns
 - [**Glossary**](./glossary.md) - Complete terminology and definitions reference
-- [**Theming**](./theming.md) - S1/S2/S3 semantic layers and theme implementation
+- [**Theming**](./theming.md) - S1/S2/S3 semantic levels and theme implementation
 
-### **🎨 Color System**
+### **Color System**
 - [**Colors Overview**](./colors/colors.md) - Color token structure and usage
 - [**Semantic Colors**](./colors/colors-semantic.md) - S1/S2/S3 color hierarchy
 - [**Brand Colors**](./colors/colors-semantic-brand.md) - Brand-specific color tokens
@@ -33,7 +33,7 @@
 - [**Component Identification**](./component-identification.md) - Component token patterns
 - [**Responsiveness**](./responsiveness.md) - Responsive token implementation
 
-### **🔧 Technical References**
+### **Technical References**
 - [**Compound Units**](./compound-units.md) - Underscore naming patterns (e.g., `contrast_high`)
 - [**Global Tokens**](./global-tokens.md) - System-wide token reference
 - [**Style Dictionary Setup**](./style-dictionary-underscore-setup.md) - Build configuration
@@ -41,7 +41,7 @@
 
 ---
 
-## 🎯 **Quick References**
+## **Quick References**
 
 ### **Current Token Structure** (Post-OUI-4001)
 ```
@@ -69,15 +69,15 @@ src/lib/themes/
 ```
 
 ### **Key Concepts**
-- **S1/S2/S3 System** - Three-layer semantic system with direct S1 references
+- **S1/S2/S3 System** - Three-level semantic system with direct S1 references
 - **S3 Semantic Compilation** - Complete, clean collection of all semantic colors
 - **Simplified Reference Chain** - S3→S1 and S2→S1 (direct references, no hierarchy)
-- **Theme Switching** - Achieved through S1 lightness layer (light.json/dark.json)
-- **Emphasis Control** - S2 layer handles high/low emphasis variations
+- **Theme Switching** - Achieved through S1 lightness semantic level (light.json/dark.json)
+- **Emphasis Control** - S2 semantic level handles high/low emphasis variations
 
 ---
 
-## ⚡ **Most Common Tasks**
+## **Most Common Tasks**
 
 | **Task** | **Documentation** | **Quick Action** |
 |---|---|---|
@@ -85,11 +85,11 @@ src/lib/themes/
 | Understand color hierarchy | [Colors Overview](./colors/colors.md) | Check S1→S2→S3 chain |
 | Fix broken token references | [Architecture](./architecture.md) | Verify layer structure |
 | Style Dictionary integration | [Style Dictionary Setup](./style-dictionary-underscore-setup.md) | Preserve underscore units |
-| Theme customization | [Theming](./theming.md) | Modify S1 layer files |
+| Theme customization | [Theming](./theming.md) | Modify S1 semantic level files |
 
 ---
 
-## 🛡️ **Validation & Quality**
+## **Validation & Quality**
 
 Use these validation scripts to ensure token integrity:
 
@@ -106,12 +106,12 @@ node scripts-custom/validate-semantic-mirroring.js
 
 ---
 
-## 📊 **Current Status**
+## **Current Status**
 
-✅ **Token Structure**: Post-OUI-4001 S1/S2/S3 hierarchy implemented  
-✅ **Documentation**: Updated to reflect current architecture  
-✅ **Validation**: Automated scripts ensure reference integrity  
-✅ **Migration**: Legacy L1/L2/L3 references removed  
+**Token Structure**: Post-OUI-4001 S1/S2/S3 hierarchy implemented  
+**Documentation**: Updated to reflect current architecture  
+**Validation**: Automated scripts ensure reference integrity  
+**Migration**: Legacy L1/L2/L3 references removed  
 
 **Last Updated**: August 28, 2025  
 **Architecture Version**: Post-OUI-4001  

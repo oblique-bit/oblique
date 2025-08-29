@@ -12,7 +12,7 @@
 ### Valid Tokens (Confirmed in Tokens Studio)
 These tokens exist in `$themes.json` and resolve properly in Tokens Studio:
 - `{ob.s1.color.interaction.border.focus}` ✅
-- `{ob.s.color.brand}` ✅  
+- `{ob.s.color.brand}` -  
 - `{ob.s.color.neutral.no-color}` ✅
 
 ### Reference Checking

@@ -20,7 +20,7 @@ This cross-level referencing is **intentional** and reflects the **foundational 
 
 ---
 
-## 🧩 **Why This is an Exception**
+## **Why This is an Exception**
 
 * Global tokens represent **layout, viewport, and environment settings** — such as breakpoints, device types, or scaling factors — which **do not belong to any specific visual level**.
 * Unlike Primitive, Semantic, and Component levels (which build visual abstraction hierarchies), Global tokens are **external inputs or configuration anchors** that influence all levels.
@@ -40,7 +40,7 @@ This cross-level referencing is **intentional** and reflects the **foundational 
 
 ---
 
-## 📊 **Visualization**
+## **Visualization**
 
 ```
 ┌─────────────────┐

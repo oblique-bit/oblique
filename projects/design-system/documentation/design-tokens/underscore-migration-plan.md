@@ -78,31 +78,31 @@ Result:       Names match perfectly!
 ## Benefits
 
 ### For Developers
-- ✅ Consistent naming across all platforms
-- ✅ No more camelCase confusion
-- ✅ Predictable token names
-- ✅ Easier debugging and maintenance
+- - Consistent naming across all platforms
+- - No more camelCase confusion
+- - Predictable token names
+- - Easier debugging and maintenance
 
 ### For Design System
-- ✅ Simplified build process (no transformation)
-- ✅ Better tool compatibility
-- ✅ Reduced cognitive load
-- ✅ Future-proof architecture
+- - Simplified build process (no transformation)
+- - Better tool compatibility
+- - Reduced cognitive load
+- - Future-proof architecture
 
 ### For Token Studio/Figma
-- ✅ Works seamlessly with underscores
-- ✅ Maintains existing functionality
-- ✅ No sync issues
+- - Works seamlessly with underscores
+- - Maintains existing functionality
+- - No sync issues
 
 ## Compatibility Matrix
 
 | Platform | Hyphens | Underscores | CamelCase |
 |----------|---------|-------------|-----------|
-| Token Studio | ✅ | ✅ | ❌ |
-| Figma Variables | ✅ | ✅ | ❌ |
-| CSS Variables | ❌* | ✅ | ✅ |
-| JavaScript | ❌ | ✅ | ✅ |
-| SCSS | ❌* | ✅ | ✅ |
+| Token Studio | - | - | ❌ |
+| Figma Variables | - | - | ❌ |
+| CSS Variables | ❌* | - | - |
+| JavaScript | ❌ | - | - |
+| SCSS | ❌* | - | - |
 
 *Requires transformation
 

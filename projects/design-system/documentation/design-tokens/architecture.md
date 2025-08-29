@@ -6,42 +6,42 @@
 
 ---
 
-## 🏗️ **Token Structure**
+## Token Structure
 
 Tokens follow a hierarchical structure with dot-separated segments:
 
 **Semantic Token Pattern:**
 ```
-{namespace.layer.category.level.subcategory.property.contrast.theme}
+{namespace.semantic_level.category.subcategory.property.contrast.theme}
 ```
 
 **Component Token Pattern:**
 ```
-{namespace.layer.component.category.property.variant.state}
+{namespace.semantic_level.component.category.property.variant.state}
 ```
 
 **Global Token Pattern:**
 ```
-{namespace.layer.category.property}
+{namespace.semantic_level.category.property}
 ```
 
-**Note:** Global tokens (`ob.g.*`) are an exception to the standard reference hierarchy and can be referenced from any level. See [global-tokens.md](./global-tokens.md) for details.
+**Note:** Global tokens (`ob.g.*`) are an exception to the standard reference hierarchy and can be referenced from any semantic level. See [global-tokens.md](./global-tokens.md) for details.
 
 ---
 
-## 🔧 **Core Segments**
+## Core Segments
 
 ### **Namespace**
 - `ob` - Oblique namespace (all tokens start with this)
 
-### **Layers**
-- `p` - Primitive layer (base values)
+### **Levels**
+- `p` - Primitive Level (base values)
 - `s1` - Semantic Level 1 (lightness - light/dark theme handling)
 - `s2` - Semantic Level 2 (emphasis - high/low emphasis variations)
-- `s3` - Semantic Level 3 (clean compilation of all semantic colors)
-- `c` - Component layer (component-specific)
-- `g` - Global layer (system-wide settings)
-- `h` - HTML layer (HTML element tokens)
+- `s3` - Semantic Level 3 (compilation of all semantic colors - no modes)
+- `c` - Component Level (Oblique custom components)
+- `g` - Global Level (system-wide settings)
+- `h` - HTML Level (HTML components)
 
 ### **Categories**
 - `color` - Color-related tokens
@@ -54,28 +54,26 @@ Tokens follow a hierarchical structure with dot-separated segments:
 - `fg` - Foreground/text
 - `border` - Border properties
 
-### **Semantic Layer Structure (Post-OUI-4001)**
-- `s1` - Lightness layer: Handles light/dark theme switching (light.json, dark.json)
-- `s2` - Emphasis layer: Manages high/low emphasis levels (high.json, low.json)
-- `s3` - Semantic compilation: Complete collection of all semantic colors (semantic.json)
+### **Semantic Level Structure**
+- `s1` - Lightness Semantic Level: Handles light/dark theme switching (light.json, dark.json)
+- `s2` - Emphasis Semantic Level: Manages high/low emphasis levels (high.json, low.json)
+- `s3` - Semantic Compilation: Complete collection of all semantic colors (semantic.json)
 
 ---
 
-## 📋 **Token Examples**
+## Token Examples
 
 ### **Semantic Token**
 ```
-ob.s2.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal
-│  │  │     │   │           │            │       │              │
-│  │  │     │   │           │            │       │              └─ Theme
-│  │  │     │   │           │            │       └─ Contrast level
-│  │  │     │   │           │            └─ Property
-│  │  │     │   │           └─ Compound term
-│  │  │     │   └─ Category
-│  │  │     └─ Level
+ob.s3.color.neutral.fg.contrast_high.inversity_normal
+│  │  │     │       │   │            │
+│  │  │     │       │   │            └─ Inversity variant
+│  │  │     │       │   └─ Contrast level
+│  │  │     │       └─ Property
+│  │  │     └─ Subcategory
 │  │  └─ Category
-│  └─ Layer
-└─ Namespace
+│  └─ Level
+└─ Design System
 ```
 
 ### **Component Token**
@@ -87,13 +85,13 @@ ob.c.button.color.bg.primary.enabled
 │  │  │      │     └─ Property
 │  │  │      └─ Category
 │  │  └─ Component
-│  └─ Layer
-└─ Namespace
+│  └─ Level
+└─ Design System
 ```
 
 ---
 
-## 🔗 **Compound Terms**
+## Compound Terms
 
 Key compound patterns used in tokens:
 
@@ -108,7 +106,7 @@ Key compound patterns used in tokens:
 
 ---
 
-## 📋 **Guidelines**
+## Guidelines
 
 1. **Singular naming** - Use `color` not `colors`
 2. **Lowercase only** - All segments lowercase
@@ -122,18 +120,18 @@ Key compound patterns used in tokens:
 **Primitive = Appearance** → Describe *what it looks like*
 **Semantic = Intent** → Describe *why it's used*
 
-This separation ensures clean abstraction layers and future-proof naming:
+This separation ensures clean abstraction levels and future-proof naming:
 
 ```
-✅ CORRECT PATTERN:
+CORRECT PATTERN:
 ob.p.color.basic.transparent     → "transparent" = visual appearance (alpha 0)
 ob.s0.color.neutral.no-color     → "no-color" = semantic intent (absence of fill)
 ob.c.button.color.bg.secondary   → references semantic token
 
-✅ BENEFITS:
+BENEFITS:
 - Primitive describes visual appearance ("transparent", "blue", "large")
 - Semantic describes usage intent ("no-color", "primary", "emphasis-high")  
-- Component tokens reference semantic meaning, not appearance
+- Component tokens describe component-specific styling, not visual appearance
 - Future changes (replacing "no-color" with faint tints) won't break components
 - Naming remains timeless regardless of visual changes
 ```

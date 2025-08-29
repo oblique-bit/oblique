@@ -10,7 +10,7 @@ Protects developers who have hardcoded token paths in their style dictionary by:
 - Generating professional reports for impact analysis
 - Supporting both manual and automated workflows
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Setup & Validation
 ```bash
@@ -63,7 +63,7 @@ Commands:
   help       - Show help message
 ```
 
-## 📂 File Structure
+## File Structure
 
 ```
 documentation/reports/token-changes/
@@ -76,7 +76,7 @@ documentation/reports/token-changes/
         +-- YYYYMMDD-HHMM-token-changes-report.md  # Generated reports
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 Edit `tracked-tokens-config.json` to:
 - Add new token categories
@@ -103,7 +103,7 @@ Edit `tracked-tokens-config.json` to:
 }
 ```
 
-## 📊 Reports
+## Reports
 
 ### Generated Reports Include:
 - **Change Detection**: Token renames, deletions, modifications
@@ -148,7 +148,7 @@ When breaking changes are detected:
 - Detailed impact analysis in reports
 - Migration suggestions provided
 
-## 🛠️ Maintenance
+## Maintenance
 
 ### Regular Tasks:
 1. **Review tracked tokens** - Remove obsolete, add new ones
@@ -165,7 +165,7 @@ python3 documentation/reports/token-changes/scripts/setup-token-tracking.py vali
 ls -la documentation/reports/token-changes/$(date +%Y)/$(date +%m)/
 ```
 
-## 🔍 Integration with Consumption Hierarchy
+## Integration with Consumption Hierarchy
 
 This tracking system works alongside the consumption hierarchy validation:
 
@@ -183,7 +183,7 @@ npm run track:token-changes       # Track hardcoded token changes
 4. **Report Review**: Check generated reports before releases
 5. **Automation**: Use cron jobs for continuous monitoring
 
-## 🚀 Getting Help
+## Getting Help
 
 Run the setup utility for guidance:
 ```bash

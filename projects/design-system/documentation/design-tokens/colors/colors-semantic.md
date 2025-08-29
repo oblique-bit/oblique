@@ -6,7 +6,7 @@
 
 ---
 
-## 🏗️ **Semantic Color Architecture**
+## **Semantic Color Architecture**
 
 The semantic color system is organized into **dimensional layers** and **static values**:
 
@@ -14,52 +14,58 @@ The semantic color system is organized into **dimensional layers** and **static 
 
 ```
 src/lib/themes/semantic/color/
-├── s1-lightness/          # Layer 1: Light/Dark theme variations
+├── s1-lightness/          # Semantic Level 1: Light/Dark theme variations
 │   ├── light.json         # Light theme colors
 │   └── dark.json          # Dark theme colors
-├── s2-inversity/          # Layer 2: Normal/Flipped contrast variations  
-│   ├── normal.json        # Normal contrast colors
-│   └── flipped.json       # Flipped contrast colors
-├── s3-emphasis/           # Layer 3: High/Low emphasis variations
+├── s2-emphasis/           # Semantic Level 2: High/Low emphasis variations
 │   ├── high.json          # High emphasis colors
 │   └── low.json           # Low emphasis colors
-└── s0-static.json       # Static colors (non-themeable)
+└── s3-semantic/           # Semantic Level 3: Complete semantic color collection
+    └── semantic.json      # Final semantic color compilation
 ```
 
-### **🎯 Layer System Logic**
+### **Semantic Level System Logic**
 
-#### **L1 - Lightness Layer** (`s1-lightness/`)
+#### **S1 - Lightness Semantic Level** (`s1-lightness/`)
 - **Purpose**: Light/dark theme adaptation
 - **Contains**: `neutral`, `interaction`, and `status` categories
 - **Files**: `light.json`, `dark.json`
-- **Example token**: `ob.s1.color.neutral.bg.contrast-high.inversity-normal`
+- **Inversity**: Each token has flat `inversity_normal` and `inversity_flipped` variants (not a separate semantic level)
+- **Example token**: `ob.s1.color.neutral.bg.contrast_high.inversity_normal`
 
-#### **L2 - Inversity Layer** (`s2-inversity/`)
-- **Purpose**: Normal/flipped contrast contexts
-- **Contains**: Theme variations for `neutral`, `interaction`, and `status` categories
-- **Files**: `normal.json`, `flipped.json`
-- **Example token**: `ob.s2.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal`
-
-#### **L3 - Emphasis Layer** (`s3-emphasis/`)
-- **Purpose**: High/low emphasis variations for interaction components only
-- **Contains**: Interaction emphasis adaptations for buttons, text-links, and tabs
+#### **S2 - Emphasis Semantic Level** (`s2-emphasis/`)
+- **Purpose**: High/low emphasis variations for interaction elements  
+- **Contains**: `interaction` category only (buttons, links, form controls)
 - **Files**: `high.json`, `low.json`
-- **Scope**: Limited to interactive components requiring emphasis variations
-- **Example token**: `ob.s3.color.interaction.state.fg.enabled.inversity-normal`
-- **Note**: Originally named "interaction-emphasis" but shortened for brevity
+- **Reference**: All S2 tokens reference S1 tokens directly
+- **Example token**: `ob.s2.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal`
+
+#### **S3 - Semantic Compilation** (`s3-semantic/`)
+- **Purpose**: Complete, clean collection of all semantic colors
+- **Contains**: All categories (neutral, interaction, status, static brand colors)  
+- **File**: `semantic.json`
+- **Reference**: Compiles tokens from S1, S2, and static sources
+- **Usage**: Primary consumption point for component tokens
+
+#### **L3 - Semantic Compilation** (`s3-semantic/`)
+- **Purpose**: Complete semantic color compilation and final token definitions
+- **Contains**: Final compiled semantic colors combining all layer variations plus static colors
+- **Files**: `semantic.json`
+- **Inversity**: Flat inversity variants preserved in final compilation (not dimensional)
+- **Example token**: `ob.s3.color.interaction.state.fg.enabled.inversity_normal`
 
 ---
 
-## 🎨 **Static Colors**
+## **Static Colors**
 
-Static colors are **non-themeable** values that remain constant across all theme modes and variations.
+Static colors are **non-themeable** values that remain constant across all theme modes and variations. These are now integrated into the **s3-semantic semantic level**.
 
 ### **Brand Colors**
 
 #### **Static Brand**
 ```json
 {
-  "ob.s.color.brand": {
+  "ob.s3.color.brand": {
     "value": "{ob.p.color.basic.bundesrot}",
     "description": "Static color to be used in the brand relevant UI elements."
   }
@@ -67,15 +73,16 @@ Static colors are **non-themeable** values that remain constant across all theme
 ```
 
 - **Purpose**: Consistent brand identity
-- **Usage**: Brand elements, logos, primary brand touches
+- **Usage**: Brand elements, logos, primary brand touches  
 - **Behavior**: Never changes with theme modes
+- **Location**: `s3-semantic/semantic.json`
 
 ### **Neutral Utilities**
 
 #### **No Color / Transparent**
 ```json
 {
-  "ob.s.color.neutral.no-color": {
+  "ob.s3.color.neutral.no_color": {
     "value": "{ob.p.color.basic.transparent}",
     "description": "Static value when no color respectively 0% opacity is needed."
   }
@@ -85,17 +92,18 @@ Static colors are **non-themeable** values that remain constant across all theme
 - **Purpose**: Transparent/invisible elements
 - **Usage**: Hidden borders, transparent backgrounds
 - **Behavior**: Always transparent (0% opacity)
+- **Location**: `s3-semantic/semantic.json`
 
 ### **Static Interaction Indicators**
 
 #### **Selection States**
 ```json
 {
-  "ob.s.color.interaction.indicator.selected": {
-    "value": "{ob.s.color.brand}"
+  "ob.s3.color.interaction.indicator.selected": {
+    "value": "{ob.s3.color.brand}"
   },
-  "ob.s.color.interaction.indicator.unselected": {
-    "value": "{ob.s.color.neutral.no-color}",
+  "ob.s3.color.interaction.indicator.unselected": {
+    "value": "{ob.s3.color.neutral.no_color}",
     "description": "Semantic Interaction color for not selected items. Used in Main Navigation, Navigation Tree, Tabs."
   }
 }
@@ -107,27 +115,27 @@ Static colors are **non-themeable** values that remain constant across all theme
 
 ---
 
-## 📊 **Category Organization**
+## **Category Organization**
 
 The semantic color system is organized into **four main categories**:
 
 ### **Brand Category**
-- **Location**: `s0-static.json` file (static)
+- **Location**: `s3-semantic/semantic.json` (integrated with final compilation)
 - **Purpose**: Brand identity elements
 - **Includes**: Single brand color for consistent identity
 
 ### **Neutral Category**
-- **Location**: L1 layer files (`s1-lightness/`) + `s0-static.json` for utilities
+- **Location**: L1 semantic level files (`s1-lightness/`) + S3 compilation (`s3-semantic/`)
 - **Purpose**: Non-interactive UI elements
 - **Includes**: 
   - Background colors (`bg`)
   - Text colors (`fg`)
   - Border colors (`border`)
   - Surface colors
-  - Utility colors (transparent/no-color)
+  - Utility colors (transparent/no_color)
 
 ### **Interaction Category**
-- **Location**: L1 layer files (`s1-lightness/`) + `s0-static.json` for indicators
+- **Location**: L1 semantic level files (`s1-lightness/`) + S2 emphasis (`s2-emphasis/`) + S3 compilation (`s3-semantic/`)
 - **Purpose**: Interactive UI elements
 - **Includes**:
   - Button colors
@@ -135,59 +143,58 @@ The semantic color system is organized into **four main categories**:
   - Focus states
   - Hover states
   - Active states
-  - Fixed interaction indicators
+  - Emphasis variations
 
 ### **Status Category**
-- **Location**: L1 layer files (`s1-lightness/`)
+- **Location**: L1 semantic level files (`s1-lightness/`) + S3 compilation (`s3-semantic/`)
 - **Purpose**: System state communication
 - **Includes**:
   - Reserved statuses (info, resolved, critical, attention)
   - Flexible statuses (pending, confirmed, progress, etc.)
   - Foreground and background variations
 
-### **Static Category**
-- **Location**: `s0-static.json` file
-- **Purpose**: Non-themeable constants
-- **Includes**:
-  - Brand colors
-  - Neutral utilities (transparent/no-color)
-  - Fixed interaction indicators
-
 ---
 
-## 🔄 **Token Resolution Flow**
+## **Token Resolution Flow**
 
 ### **Layered Token Example**
 ```
-ob.s2.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal
+ob.s3.color.neutral.fg.contrast_high.inversity_normal
 │
 ├─ L1 (Lightness): Resolves based on light/dark theme
-├─ L2 (Inversity): Applies normal/flipped contrast
-└─ L3 (Emphasis): Applies high/low emphasis level
+├─ L2 (Emphasis): Applies high/low emphasis variations (for interaction colors)
+├─ L3 (Semantic): Final compilation with all variations
+└─ Inversity: Flat property (normal/flipped) - not a dimensional layer
 ```
 
 ### **Static Token Example**
 ```
-ob.s.color.brand
+ob.s3.color.brand
 │
-└─ Static: Always resolves to the same value (bundesrot)
+└─ L3 (Semantic): Direct static value (bundesrot) - no theme, emphasis, or inversity variations
 ```
+
+### **Inversity as Flat Property**
+- **Not a layer or mode** - inversity is simply a token variant
+- **Available everywhere** - most tokens have both `inversity_normal` and `inversity_flipped`
+- **Component-level choice** - developers choose which inversity variant to use
+- **Simple implementation** - no complex mode switching, just token selection
 
 ---
 
-## 🎯 **Usage Guidelines**
+## **Usage Guidelines**
 
 ### **When to Use Layered Colors (L1/L2/L3)**
-- ✅ **UI backgrounds** that should adapt to themes
-- ✅ **Interactive elements** that need emphasis variations
-- ✅ **Text colors** that should maintain contrast in all modes
-- ✅ **Component colors** that should be themeable
+- **UI backgrounds** that should adapt to themes
+- **Interactive elements** that need emphasis variations
+- **Text colors** that should maintain contrast in all modes
+- **Component colors** that should be themeable
 
 ### **When to Use Static Colors**
-- ✅ **Brand elements** that must maintain visual identity
-- ✅ **Logo colors** that should never change
-- ✅ **Transparent/utility** values that are always the same
-- ✅ **Fixed indicators** that need consistent meaning
+- **Brand elements** that must maintain visual identity
+- **Logo colors** that should never change
+- **Transparent/utility** values that are always the same
+- **Fixed indicators** that need consistent meaning
 
 ### **Anti-Patterns**
 - ❌ **Don't use static colors** for general UI backgrounds
@@ -197,7 +204,7 @@ ob.s.color.brand
 
 ---
 
-## 🔍 **File Organization Rationale**
+## **File Organization Rationale**
 
 ### **Why Separate Files by Layer?**
 1. **Dimensional separation** - Each layer represents a different axis of variation
@@ -213,7 +220,7 @@ ob.s.color.brand
 
 ---
 
-## 📚 **Related Documentation**
+## **Related Documentation**
 
 - [Color Tokens Overview](./colors.md) - Complete color system documentation
 - [Theming Guide](../theming.md) - How themes work with semantic colors

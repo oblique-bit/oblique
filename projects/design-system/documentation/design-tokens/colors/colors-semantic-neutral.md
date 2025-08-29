@@ -128,7 +128,7 @@ Neutral components that provide structure, content, and typography:
 
 ## Theme Integration
 
-### Lightness Layer (s1)
+### Lightness Semantic Level (s1)
 - **Light theme**: Higher contrast values are darker, lower contrast values are lighter
 - **Dark theme**: Higher contrast values are lighter, lower contrast values are darker
 - **Semantic consistency**: Contrast relationships maintain across themes

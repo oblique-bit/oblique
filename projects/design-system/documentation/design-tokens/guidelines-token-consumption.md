@@ -51,7 +51,7 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> S0 Primitives
 
 ### Required Consumption Patterns
 
-#### ✅ Proper L2/L3 Consumption
+#### - Proper L2/L3 Consumption
 ```json
 // CORRECT: Non-interactive component consuming L2 semantic token
 "ob.c.card.color.bg.surface": {
@@ -111,7 +111,7 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> S0 Primitives
 }
 ```
 
-#### ✅ Correct Approach
+#### - Correct Approach
 ```json
 // CORRECT: Interactive component with neutral appearance via emphasis:low
 "ob.c.header-nav.color.fg.link": {
@@ -167,7 +167,7 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> S0 Primitives
 Components (ob.c.*) -> Semantics (ob.s.*) -> Primitives (ob.p.*)
 ```
 
-#### ✅ Correct Typography Consumption
+#### - Correct Typography Consumption
 ```json
 // Component consuming semantic typography
 "ob.c.button.typography.font-weight": {
@@ -215,7 +215,7 @@ Components (ob.c.*) -> Semantics (ob.s.*) -> Primitives (ob.p.*)
 
 **Rule:** Typography components may consume color tokens for text styling, but must follow color consumption rules.
 
-#### ✅ Correct Cross-Domain Usage
+#### - Correct Cross-Domain Usage
 ```json
 // Typography component consuming appropriate color tokens
 "ob.s.typography.color.text.default": {
@@ -294,22 +294,22 @@ Components (ob.c.*) -> Semantics (ob.s.*) -> Primitives (ob.p.*)
 #### Legitimate S0 Static Consumption Examples
 
 ```json
-// ✅ ALLOWED: Transparent button backgrounds
+// - ALLOWED: Transparent button backgrounds
 "ob.h.button.color.bg.secondary.enabled": {
   "$value": "{ob.s.color.neutral.no-color}"
 }
 
-// ✅ ALLOWED: Interaction indicators
+// - ALLOWED: Interaction indicators
 "ob.s.color.interaction.indicator.unselected": {
   "$value": "{ob.s.color.neutral.no-color}"
 }
 
-// ✅ ALLOWED: Brand interaction states
+// - ALLOWED: Brand interaction states
 "ob.s.color.interaction.indicator.selected": {
   "$value": "{ob.s.color.brand}"
 }
 
-// ✅ ALLOWED: S3 emphasis transparent backgrounds
+// - ALLOWED: S3 emphasis transparent backgrounds
 "ob.s3.color.emphasis.low.bg": {
   "$value": "{ob.s.color.neutral.no-color}"
 }

@@ -14,12 +14,12 @@
 
 The semantic system is organized into three distinct layers with specific responsibilities:
 
-### S1: Lightness Layer (User Mode)
+### S1: Lightness Semantic Level (User Mode)
 - **Purpose:** Handles light/dark user preference mode switching
 - **Files:** `light.json` / `dark.json`
 - **Function:** Primary user mode switching mechanism for the entire system
 
-### S2: Emphasis Layer (System Mode)
+### S2: Emphasis Semantic Level (System Mode)
 - **Purpose:** Manages high/low emphasis variations for interaction states
 - **Files:** `high.json` / `low.json`  
 - **Function:** Provides emphasis-based variations that reference S1 directly
@@ -76,11 +76,11 @@ Modes set by designers and developers during design and implementation phases:
 - S1 light/dark files provide different primitive references
 - Result: User mode switching (light/dark) propagates through entire system
 
-**For Designers:** User mode switching is managed through Token Studio's Token Sets or Figma's variable modes. The S1 layer files (light.json/dark.json) contain the actual theme variations.
+**For Designers:** User mode switching is managed through Token Studio's Token Sets or Figma's variable modes. The S1 semantic level files (light.json/dark.json) contain the actual theme variations.
 
 **For Developers:** Build systems select appropriate S1 files based on user preference detection (e.g., `prefers-color-scheme`), automatically propagating changes through S3 to components.
 
-#### S1 Lightness Layer
+#### S1 Lightness Semantic Level
 
 ```
 src/lib/themes/semantic/color/s1-lightness/
@@ -134,7 +134,7 @@ src/lib/themes/semantic/color/s1-lightness/
 ```
 
 
-#### S2 Emphasis Layer
+#### S2 Emphasis Semantic Level
 
 ```
 src/lib/themes/semantic/color/s2-emphasis/
@@ -172,7 +172,7 @@ src/lib/themes/semantic/color/s2-emphasis/
 }
 ```
 
-#### S3 Semantic Layer
+#### S3 Semantic Compilation
 
 ```
 src/lib/themes/semantic/color/s3-semantic/

@@ -9,16 +9,22 @@ This document provides practical guidance for designers working with design toke
 ### Layer Structure
 - **`ob.g.*`** - Global tokens (system-wide foundation)
 - **`ob.p.*`** - Primitive tokens (raw values)
-- **`ob.s.*`** - Semantic tokens (inherit from primitives)
+- **`ob.s1.*`** - Semantic layer 1 (lightness variations)
+- **`ob.s2.*`** - Semantic layer 2 (emphasis variations) 
+- **`ob.s3.*`** - Semantic layer 3 (final compiled tokens - **USE THIS LAYER**)
 - **`ob.c.*`** - Component tokens (inherit from semantic)
 - **`ob.h.*`** - HTML element tokens (inherit from semantic/component)
 
+**For Component Design**: Always use **`ob.s3.*`** tokens as they contain the final compiled semantic values with all variations resolved.
+
 ### Design Workflow
 
-1. **Start with Semantic Tokens**: Use `ob.s.*` tokens for most design decisions
+1. **Start with S3 Semantic Tokens**: Use `ob.s3.*` tokens for all color decisions in components
 2. **Reference Component Tokens**: Use `ob.c.*` when working with specific components
-3. **Avoid Primitives**: Don't use `ob.p.*` tokens directly in designs
-4. **Check Token Existence**: Always verify tokens exist in the actual system
+3. **Use Other Semantic Tokens**: Use `ob.s.*` for spacing, typography, sizing (non-color tokens)
+4. **Avoid Lower Layers**: Don't use `ob.s1.*` or `ob.s2.*` directly in component designs
+5. **Avoid Primitives**: Don't use `ob.p.*` tokens directly in designs
+6. **Check Token Existence**: Always verify tokens exist in the actual system
 
 ---
 
@@ -112,9 +118,12 @@ When designing components:
 - **Reference existing patterns** from component tokens
 - **Use consistent spacing** from the spacing scale
 - **Apply proper color tokens** based on component type:
-  - Status components: `ob.s2.color.status.*`
+  - Status components: `ob.s3.color.status.*`
   - Interactive components: `ob.s3.color.interaction.*`
-  - Neutral components: `ob.s2.color.neutral.*`
+  - Neutral components: `ob.s3.color.neutral.*`
+  - Brand components: `ob.s3.color.brand`
+
+**Important**: Always use **S3 semantic tokens** in component design. S3 contains the final compiled tokens with all variations (lightness, emphasis, inversity) resolved. Never reference S1 or S2 layers directly in components.
 
 ### 4. **Common Mistakes to Avoid**
 - **Creating non-existent tokens** in design specifications
@@ -136,9 +145,13 @@ When designing components:
 When creating Figma variables, use the exact token structure:
 ```
 ob.s.spacing.md
-ob.s.color.interaction.emphasis-high.bg-base
+ob.s3.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal
+ob.s3.color.neutral.fg.contrast_high.inversity_normal
+ob.s3.color.brand
 ob.c.button.spacing.padding.horizontal.md
 ```
+
+**Note**: For color tokens, always reference the **S3 semantic layer** which contains all compiled variations. This ensures you get the complete token with all theme, emphasis, and inversity variations properly resolved.
 
 ---
 

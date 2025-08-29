@@ -12,11 +12,11 @@ Brand colors maintain consistent visual identity across all themes and contexts.
 
 ### Brand Token Structure
 ```
-ob.s.color.brand
+ob.s3.color.brand
 ```
 
 ### Brand Color Implementation
-- **Single Brand Color**: `ob.s.color.brand` references `{ob.p.color.basic.bundesrot}` (Swiss federal red)
+- **Single Brand Color**: `ob.s3.color.brand` references `{ob.p.color.basic.bundesrot}` (Swiss federal red)
 - **Static Behavior**: Never changes with light/dark themes or other variations  
 - **Usage**: Brand elements, logos, primary brand touches, selected states
 
@@ -41,8 +41,8 @@ ob.s.color.brand
 ### Selection Indicators
 ```json
 {
-  "ob.s.color.interaction.indicator.selected": {
-    "$value": "{ob.s.color.brand}"
+  "ob.s3.color.interaction.indicator.selected": {
+    "$value": "{ob.s3.color.brand}"
   }
 }
 ```
@@ -77,15 +77,15 @@ The brand color system uses Swiss federal red (bundesrot) to maintain visual con
 ## Technical Implementation
 
 ### File Location
-- **Path**: `src/lib/themes/semantic/color/s0-static.json`
-- **Layer**: Static (s0) - never changes with themes
+- **Path**: `src/lib/themes/semantic/color/s3-semantic/semantic.json`
+- **Layer**: Semantic (s3) - static brand color integrated in final compilation
 - **References**: `{ob.p.color.basic.bundesrot}` primitive
 
 ### Integration Pattern
 ```json
 {
   "ob": {
-    "s0": {
+    "s3": {
       "color": {
         "brand": {
           "$type": "color",

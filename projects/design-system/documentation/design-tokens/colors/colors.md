@@ -69,25 +69,25 @@ Foundational colors for backgrounds, text, borders, and surfaces:
 
 ### Semantic Naming Convention
 ```
-ob.s.color.{category}.{property}.{contrast-level}.{inversity-variation}
+ob.s3.color.{category}.{property}.{contrast-level}.{inversity-variation}
 ```
 
 #### Structure Components
 - **`category`**: Color's semantic purpose (neutral, status, interaction, brand)
 - **`property`**: Visual property (bg, fg, border, shadow)
-- **`contrast-level`**: Relationship to surrounding elements (contrast-highest to contrast-lowest)  
-- **`inversity-variation`**: Component-level theming (inversity-normal, inversity-flipped)
+- **`contrast-level`**: Relationship to surrounding elements (contrast_highest to contrast_lowest)
+- **`inversity-variation`**: Component-level theming (inversity_normal, inversity_flipped)
 
 ### Layer Architecture
 
 The color system operates through multiple semantic layers. For detailed architectural information, see [Semantic Color Architecture](colors-semantic.md).
 
 #### Key Layers Overview
-- **Static Layer (s0)**: Theme-independent colors that never change
-- **Lightness Layer (s1)**: Theme adaptation based on user preferences  
-- **Inversity Layer (s2)**: Component-level theming for design emphasis
+- **Lightness Semantic Level (s1)**: Theme adaptation (light/dark themes)
+- **Emphasis Semantic Level (s2)**: High/low emphasis variations for interactive components
+- **Semantic Compilation (s3)**: Complete semantic color compilation including static colors
 
-**Note**: For complete inversity behavior documentation and technical implementation details, refer to [Semantic Color Architecture](colors-semantic.md).
+**Note**: Inversity (normal/flipped) is a **flat property** available on most tokens, not a separate layer or mode. Components simply choose between `inversity_normal` and `inversity_flipped` variants as needed. For complete documentation, refer to [Semantic Color Architecture](colors-semantic.md).
 
 ## Usage Guidelines
 
@@ -136,9 +136,9 @@ When combining categories, maintain:
 
 ### File Organization
 - `src/lib/themes/semantic/color/` - Semantic color definitions by layer
-  - `s0-static.json` - Static colors (transparent, brand utilities)
   - `s1-lightness/` - Light and dark theme definitions
-  - `s2-inversity/` - Inversity layer definitions
+  - `s2-emphasis/` - High and low emphasis variations
+  - `s3-semantic/` - Complete semantic color compilation
 - `documentation/design-tokens/colors/` - Color system documentation
   - Specialized files for each color category and architectural topics
 
