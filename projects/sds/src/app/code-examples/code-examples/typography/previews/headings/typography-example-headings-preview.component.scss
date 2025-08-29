@@ -1,0 +1,12 @@
+/*
+This file is used to enhance the appearance of one or more of the Oblique code examples.
+It is NOT required in order to use any Oblique features.
+*/
+@use "@oblique/oblique/src/styles/scss/core/variables";
+
+.overline {
+	margin-bottom: variables.$ob-spacing-default;
+	border-bottom: 1px solid variables.$ob-gray;
+	font-size: variables.$ob-font-size-bigger;
+	font-weight: variables.$ob-label-font-weight;
+}

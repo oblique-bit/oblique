@@ -24,6 +24,30 @@
 	@include typography.ob-h6();
 }
 
+.h1-prose {
+	@include typography.ob-h1-prose();
+}
+
+.h2-prose {
+	@include typography.ob-h2-prose();
+}
+
+.h3-prose {
+	@include typography.ob-h3-prose();
+}
+
+.h4-prose {
+	@include typography.ob-h4-prose();
+}
+
+.h5-prose {
+	@include typography.ob-h5-prose();
+}
+
+.h6-prose {
+	@include typography.ob-h6-prose();
+}
+
 .ob-subtitle1 {
 	@include typography.ob-subtitle1();
 }
