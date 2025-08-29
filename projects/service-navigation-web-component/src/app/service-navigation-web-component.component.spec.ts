@@ -1,10 +1,10 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {ObServiceNavigationWebComponentComponent} from './service-navigation-web-component.component';
 import {SimpleChange, type SimpleChanges} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {By} from '@angular/platform-browser';
-import {ObServiceNavigationComponent, WINDOW, provideObliqueTranslations} from '@oblique/oblique';
+import {ObServiceNavigationComponent, provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {appVersion} from './version';
+import {HttpClient} from '@angular/common/http';
 
 function defaultChangesValues(): SimpleChanges {
 	return {environment: new SimpleChange(undefined, 'DEV', undefined)};
@@ -17,7 +17,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [ObServiceNavigationWebComponentComponent],
-			providers: [provideObliqueTranslations(), {provide: HttpClient, useValue: {}}, {provide: WINDOW, useValue: window}]
+			providers: [provideObliqueTestingConfiguration(), {provide: HttpClient, useValue: {}}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationWebComponentComponent);
