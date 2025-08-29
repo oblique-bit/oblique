@@ -52,6 +52,10 @@
 			&.mdc-switch--selected {
 				.mdc-switch__handle {
 					margin-left: -(variables.$ob-slide-toggle-handle-margin);
+
+					&::after {
+						background: variables.$ob-white;
+					}
 				}
 			}
 
