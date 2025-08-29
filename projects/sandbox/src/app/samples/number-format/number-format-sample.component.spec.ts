@@ -1,8 +1,9 @@
 import {type ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {ObliqueTestingModule} from '@oblique/oblique';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {NumberFormatSampleComponent} from './number-format-sample.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe(NumberFormatSampleComponent.name, () => {
 	let component: NumberFormatSampleComponent;
@@ -10,8 +11,9 @@ describe(NumberFormatSampleComponent.name, () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			imports: [FormsModule, ReactiveFormsModule, ObliqueTestingModule],
+			imports: [FormsModule, ReactiveFormsModule, TranslateModule],
 			declarations: [NumberFormatSampleComponent],
+			providers: [provideObliqueTestingConfiguration()],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	}));
