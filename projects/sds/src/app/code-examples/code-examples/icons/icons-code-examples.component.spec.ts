@@ -9,8 +9,7 @@ import {IconsExampleIconsGalleryPreviewComponent} from './previews/icons-gallery
 import {IconsExampleFontSizePreviewComponent} from './previews/font-size/icons-example-font-size-preview.component';
 import {IconsExampleDefaultPreviewComponent} from './previews/default/icons-example-default-preview.component';
 import {MatIcon} from '@angular/material/icon';
-import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
-import {TranslateService} from '@ngx-translate/core';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
 describe(IconsCodeExamplesComponent.name, () => {
 	let component: IconsCodeExamplesComponent;
@@ -19,10 +18,7 @@ describe(IconsCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [CodeExampleComponent, CommonModule, IconsCodeExamplesComponent, IdPipe, NoopAnimationsModule],
-			providers: [
-				{provide: WINDOW, useValue: window},
-				{provide: TranslateService, useClass: ObMockTranslateService}
-			]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(IconsCodeExamplesComponent);

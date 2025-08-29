@@ -2,8 +2,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslateService} from '@ngx-translate/core';
-import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {NavTreeExampleDataFromServicePreviewComponent} from './previews/data-from-service/nav-tree-example-data-from-service-preview.component';
 import {NavTreeExampleFilterPreviewComponent} from './previews/filter/nav-tree-example-filter-preview.component';
@@ -18,10 +17,7 @@ describe(NavTreeCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [NavTreeCodeExamplesComponent, RouterTestingModule, NoopAnimationsModule],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(NavTreeCodeExamplesComponent);

@@ -2,8 +2,7 @@ import {CommonModule} from '@angular/common';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslateService} from '@ngx-translate/core';
-import {ObButtonDirective, ObMockTranslateService, WINDOW} from '@oblique/oblique';
+import {ObButtonDirective, provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {UnsavedChangesCodeExamplesComponent} from './unsaved-changes-code-examples.component';
@@ -15,10 +14,7 @@ describe(UnsavedChangesCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [UnsavedChangesCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent, NoopAnimationsModule],
-			providers: [
-				{provide: WINDOW, useValue: window},
-				{provide: TranslateService, useClass: ObMockTranslateService}
-			]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(UnsavedChangesCodeExamplesComponent);

@@ -5,9 +5,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {MasterLayoutCodeExamplesComponent} from './master-layout-code-examples.component';
 import {By} from '@angular/platform-browser';
-import {TranslateService} from '@ngx-translate/core';
-import {ObMockTranslateService} from '@oblique/oblique-testing.module';
-import {WINDOW} from '@oblique/oblique';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
 describe(MasterLayoutCodeExamplesComponent.name, () => {
 	let component: MasterLayoutCodeExamplesComponent;
@@ -16,10 +14,7 @@ describe(MasterLayoutCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [MasterLayoutCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(MasterLayoutCodeExamplesComponent);
