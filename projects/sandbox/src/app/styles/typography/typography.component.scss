@@ -1,4 +1,15 @@
 @use "projects/oblique/src/styles/scss/core/mixins/typography";
+@use "projects/oblique/src/styles/scss/core/mixins/layout";
+@use "projects/oblique/src/styles/scss/core/variables";
+
+.wrapper {
+	display: flex;
+	gap: variables.$ob-spacing-default;
+
+	@include layout.ob-media-breakpoint-down(sm) {
+		flex-direction: column;
+	}
+}
 
 .subtitle1 {
 	@include typography.ob-subtitle1();
