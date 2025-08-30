@@ -28,6 +28,6 @@ You can manually check for modifications to protected files anytime by running:
 ./scripts-custom/validate-protected-files.sh
 ```
 
-For more information, read PROTECTED_FILES.md
+For more information, read protected-files.md
 =======
 >>>>>>> ts-develop-02.03

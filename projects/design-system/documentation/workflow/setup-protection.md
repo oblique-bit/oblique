@@ -31,4 +31,4 @@ node scripts-custom/validate-documentation-structure.js
 git status --porcelain
 ```
 
-For more information, read [PROTECTED_FILES.md](./PROTECTED_FILES.md)
+For more information, read [protected-files.md](./protected-files.md)

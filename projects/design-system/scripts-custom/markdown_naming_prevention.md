@@ -8,13 +8,19 @@
 - `readme.md`
 - `script_template_guidelines.md` 
 - `email-to-developer.md`
-- `setup_protection.md`
+**Correct:**
+- `setup-protection.md`
+- `token-validation.md`
+- `component-analysis.md`
+
+**Incorrect:**
+- `setup-protection.md`
 
 ## ❌ INCORRECT Examples (NEVER CREATE):
 - `README.md`
 - `SCRIPT_TEMPLATE_GUIDELINES.md`
 - `EMAIL-TO-DEVELOPER.md`  
-- `SETUP_PROTECTION.md`
+- `setup-protection.md`
 
 ## 🔧 Enforcement Mechanisms
 

@@ -95,7 +95,7 @@ ob.c.button.color.bg.primary.enabled
 
 Key compound patterns used in tokens:
 
-### **Theme Compounds**
+### **Semantic Compounds**
 - `inversity-normal` / `inversity-flipped`
 - `emphasis-high` / `emphasis-low`
 - `contrast-highest` / `contrast-high` / `contrast-medium` / `contrast-low`

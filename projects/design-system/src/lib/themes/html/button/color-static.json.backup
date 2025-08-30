@@ -1,0 +1,402 @@
+{
+  "ob": {
+    "h": {
+      "button": {
+        "color": {
+          "fg": {
+            "primary": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}"
+              },
+              "enabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_flipped}"
+              },
+              "hover-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_flipped}"
+              },
+              "focus-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_normal}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_flipped}"
+              },
+              "pressed-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_flipped}"
+              },
+              "disabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_normal}"
+              }
+            },
+            "secondary": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}",
+                "$description": "Text and icon color of secondary button or text-link, Enabled state."
+              },
+              "enabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}"
+              },
+              "hover-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_flipped}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_normal}"
+              },
+              "focus-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_flipped}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}"
+              },
+              "pressed-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_flipped}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_normal}"
+              },
+              "disabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_flipped}"
+              }
+            },
+            "tertiary": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}"
+              },
+              "enabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}"
+              },
+              "hover-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_flipped}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_normal}"
+              },
+              "focus-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_flipped}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}",
+                "$description": "slightly reduced opacity for pressed"
+              },
+              "pressed-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_flipped}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_normal}"
+              },
+              "disabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_flipped}"
+              }
+            }
+          },
+          "bg": {
+            "primary": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.bg.enabled.inversity_flipped}",
+                "$description": "Background color of Primary button Enabled state."
+              },
+              "enabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.bg.enabled.inversity_normal}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_flipped}",
+                "$description": "Background color of Primary button Hover state."
+              },
+              "hover-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_normal}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_flipped}"
+              },
+              "focus-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_normal}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.bg.pressed.inversity_flipped}"
+              },
+              "pressed-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.bg.pressed.inversity_normal}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.bg.disabled.inversity_flipped}",
+                "$description": "Background color of the Disabled Primary button. Referenes the semantic interaction disabled."
+              },
+              "disabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.bg.disabled.inversity_normal}"
+              }
+            },
+            "secondary": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}",
+                "$description": "Secondary needs a transparent background color on Enabled state."
+              },
+              "enabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "hover-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "focus-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "pressed-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "disabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              }
+            },
+            "tertiary": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}",
+                "$description": "Tertiary needs a transparent background color on Enabled state."
+              },
+              "enabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "hover-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "focus-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "pressed-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "disabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              }
+            }
+          },
+          "border": {
+            "primary": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "enabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "hover-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.border.focus}"
+              },
+              "focus-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.border.focus}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "pressed-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}",
+                "$description": "Border color of the Disabled Primary button: no border."
+              },
+              "disabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              }
+            },
+            "secondary": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}"
+              },
+              "enabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}"
+              },
+              "hover-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_flipped}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_normal}"
+              },
+              "focus-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_flipped}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}"
+              },
+              "pressed-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_flipped}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_normal}"
+              },
+              "disabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_flipped}"
+              }
+            },
+            "tertiary": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "enabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "hover-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "focus-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "pressed-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              },
+              "disabled-flipped": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.no_color}"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

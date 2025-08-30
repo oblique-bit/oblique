@@ -28,7 +28,7 @@ npm run validate:quick
 - **Copy-paste commands** - no guesswork needed
 
 All documentation is in `scripts-custom/` folder:
-- `EASY-RECOMMENDATIONS.md` - Quick start guide
+- `easy-recommendations.md` - Quick start guide
 - `README.md` - Full script documentation
 - `REDUNDANCY-ANALYSIS-REPORT.md` - System analysis
 
