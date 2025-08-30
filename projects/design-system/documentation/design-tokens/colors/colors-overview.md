@@ -9,12 +9,12 @@
 ---
 
 **Navigation to Color Topics:**
-- [Primitive Colors](colors-primitive.md) - Foundation color values and token architecture
-- [Semantic Color Architecture](colors-semantic.md) - Layer system, token resolution, and consumption patterns
-- [Status Colors](colors-semantic-status.md) - Success, warning, error, info states
-- [Interaction Colors](colors-semantic-interaction.md) - Hover, active, visited, disabled states  
-- [Brand Colors](colors-semantic-brand.md) - Federal identity and brand implementation
-- [Neutral Colors](colors-semantic-neutral.md) - Backgrounds, text, borders, surfaces
+- [**Primitive Colors**](colors-primitive.md) - Foundation color values and token architecture
+- [**Semantic Colors**](colors-semantic.md) - Layer system, token resolution, and consumption patterns
+  - [**Status Colors**](colors-semantic-status.md) - Success, warning, error, info states
+  - [**Interaction Colors**](colors-semantic-interaction.md) - Hover, active, visited, disabled states  
+  - [**Brand Colors**](colors-semantic-brand.md) - Federal identity and brand implementation
+  - [**Neutral Colors**](colors-semantic-neutral.md) - Backgrounds, text, borders, surfaces
 
 ---
 

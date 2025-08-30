@@ -15,17 +15,20 @@
 ## **Documentation Structure**
 
 ### **Core Architecture**
-- [**Architecture**](./architecture.md) - Token structure, layers, and naming patterns
+- [**Architecture**](./architecture.md) - Token structure, levels, and naming patterns
 - [**Glossary**](./glossary.md) - Complete terminology and definitions reference
 - [**Theming**](./theming.md) - S1/S2/S3 semantic levels and theme implementation
 
 ### **Color System**
-- [**Colors Overview**](./colors/colors.md) - Color token structure and usage
-- [**Semantic Colors**](./colors/colors-semantic.md) - S1/S2/S3 color hierarchy
-- [**Brand Colors**](./colors/colors-semantic-brand.md) - Brand-specific color tokens
-- [**Interaction Colors**](./colors/colors-semantic-interaction.md) - Interactive state colors
-- [**Status Colors**](./colors/colors-semantic-status.md) - Status and feedback colors
-- [**Neutral Colors**](./colors/colors-semantic-neutral.md) - Neutral color palette
+- [**Colors Overview**](./colors/colors-overview.md) - Color token structure and usage
+- [**Primitive Colors**](./colors/colors-primitive.md) - Foundation color values and token architecture
+- [**Semantic Colors**](./colors/colors-semantic.md) - Layer system, token resolution, and consumption patterns
+  - [**Status Colors**](./colors/colors-semantic-status.md) - Success, warning, error, info states
+  - [**Interaction Colors**](./colors/colors-semantic-interaction.md) - Hover, active, visited, disabled states  
+  - [**Brand Colors**](./colors/colors-semantic-brand.md) - Federal identity and brand implementation
+  - [**Neutral Colors**](./colors/colors-semantic-neutral.md) - Backgrounds, text, borders, surfaces
+
+---
 
 ### **📐 Implementation Guides**
 - [**Token Consumption Guidelines**](./guidelines-token-consumption.md) - How to use tokens correctly
@@ -34,7 +37,6 @@
 - [**Responsiveness**](./responsiveness.md) - Responsive token implementation
 
 ### **Technical References**
-- [**Compound Units**](./compound-units.md) - Underscore naming patterns (e.g., `contrast_high`)
 - [**Global Tokens**](./global-tokens.md) - System-wide token reference
 - [**Style Dictionary Setup**](./style-dictionary-underscore-setup.md) - Build configuration
 - [**Migration Guide**](./underscore-migration-plan.md) - Legacy system migration
@@ -48,13 +50,13 @@
 ob.{layer}.{category}.{...path}
 
 Layers:
+  g  → Global tokens
   p  → Primitive (s0 static tokens)
   s1 → Semantic Level 1 (lightness - light/dark themes)
   s2 → Semantic Level 2 (emphasis - high/low emphasis)
   s3 → Semantic Level 3 (clean compilation of all semantic colors)
   c  → Component tokens
   h  → HTML element tokens
-  g  → Global tokens
 ```
 
 ### **File Structure**
@@ -69,9 +71,9 @@ src/lib/themes/
 ```
 
 ### **Key Concepts**
-- **S1/S2/S3 System** - Three-level semantic system with direct S1 references
+- **S1/S2/S3 System** - Three-level semantic system built on primitive foundations
 - **S3 Semantic Compilation** - Complete, clean collection of all semantic colors
-- **Simplified Reference Chain** - S3→S1 and S2→S1 (direct references, no hierarchy)
+- **Simplified Reference Chain** - S1→Primitive, S2→Primitive, S3→Primitive (direct primitive references)
 - **Theme Switching** - Achieved through S1 lightness semantic level (light.json/dark.json)
 - **Emphasis Control** - S2 semantic level handles high/low emphasis variations
 
@@ -82,7 +84,7 @@ src/lib/themes/
 | **Task** | **Documentation** | **Quick Action** |
 |---|---|---|
 | Add new component tokens | [Token Consumption Guidelines](./guidelines-token-consumption.md) | Use S3 semantic tokens only |
-| Understand color hierarchy | [Colors Overview](./colors/colors.md) | Check S1→S2→S3 chain |
+| Understand color hierarchy | [Colors Overview](./colors/colors-overview.md) | Check S1→S2→S3 chain |
 | Fix broken token references | [Architecture](./architecture.md) | Verify layer structure |
 | Style Dictionary integration | [Style Dictionary Setup](./style-dictionary-underscore-setup.md) | Preserve underscore units |
 | Theme customization | [Theming](./theming.md) | Modify S1 semantic level files |
