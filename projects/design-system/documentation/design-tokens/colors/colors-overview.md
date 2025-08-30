@@ -76,7 +76,7 @@ ob.s3.color.{category}.{property}.{contrast_level}.{inversity_variation}
 #### Structure Components
 - **`category`**: Color's semantic purpose (neutral, status, interaction, brand)
 - **`property`**: Visual property (bg, fg, border, shadow)
-- **`contrast-level`**: Relationship to surrounding elements (contrast_highest to contrast_lowest)
+- **`contrast_level`**: Relationship to surrounding elements (contrast_highest to contrast_lowest)
 - **`inversity-variation`**: Component-level theming (inversity_normal, inversity_flipped)
 
 ### Layer Architecture
