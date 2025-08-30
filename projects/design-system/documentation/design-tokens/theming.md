@@ -91,9 +91,9 @@ src/lib/themes/semantic/color/s1-lightness/
 **Purpose:** System-wide light/dark theme switching. Theme switching occurs at this layer through file selection (light.json vs dark.json).
 
 **Token Structure:** Semantic color tokens optimized for theme switching:
-- `bg-base` - Base background colors for different contexts
+- `bg_base` - Base background colors for different contexts
 - `fg-default` - Default foreground colors
-- `contrast-high`, `contrast-medium`, `contrast-low` - Various contrast levels for different semantic contexts
+- `contrast_high`, `contrast_medium`, `contrast_low` - Various contrast levels for different semantic contexts
 
 **Token Format:**
 ```json
@@ -103,24 +103,24 @@ src/lib/themes/semantic/color/s1-lightness/
       "color": {
         "neutral": {
           "bg": {
-            "contrast-highest": {
-              "inversity-normal": {
+            "contrast_highest": {
+              "inversity_normal": {
                 "value": "{ob.p.color.basic.white}"
               },
-              "inversity-flipped": {
+              "inversity_flipped": {
                 "value": "{ob.p.color.cobalt.700}"
               }
             }
           }
         },
         "interaction": {
-          "emphasis-high": {
-            "bg-base": {
-              "contrast-high": {
-                "inversity-normal": {
+          "emphasis_high": {
+            "bg_base": {
+              "contrast_high": {
+                "inversity_normal": {
                   "value": "{ob.p.color.steelblue.800}"
                 },
-                "inversity-flipped": {
+                "inversity_flipped": {
                   "value": "{ob.p.color.basic.white}"
                 }
               }
@@ -158,10 +158,10 @@ src/lib/themes/semantic/color/s2-emphasis/
           "state": {
             "fg": {
               "enabled": {
-                "value": "{ob.s.color.lightness.interaction.fg.enabled.value}"
+                "value": "{ob.s2.color.lightness.interaction.fg.enabled.value}"
               },
               "hover": {
-                "value": "{ob.s.color.lightness.interaction.fg.hover.value}"
+                "value": "{ob.s2.color.lightness.interaction.fg.hover.value}"
               }
             }
           }
@@ -195,10 +195,10 @@ src/lib/themes/semantic/color/s3-semantic/
         "status": {
           "success": {
             "fg": {
-              "value": "{ob.s.color.lightness.success.fg.value}"
+              "value": "{ob.s2.color.lightness.success.fg.value}"
             },
             "bg": {
-              "value": "{ob.s.color.lightness.success.bg.value}"
+              "value": "{ob.s2.color.lightness.success.bg.value}"
             }
           }
         }
@@ -213,8 +213,8 @@ src/lib/themes/semantic/color/s3-semantic/
 The current reference pattern ensures proper theme inheritance:
 
 **Current Reference Chains:**
-1. **Components** → **S3 Semantic** → **S1 Lightness** → **S0 Primitives**
-2. **S2 Emphasis** → **S1 Lightness** → **S0 Primitives**
+1. **Components** → **S3 Semantic** → **S1 Lightness** → **Primitives**
+2. **S2 Emphasis** → **S1 Lightness** → **Primitives**
 
 **Key Changes:**
 - Both S2 and S3 reference S1 **directly** (no cascading through layers)
@@ -269,7 +269,7 @@ The current S1/S2/S3 architecture provides:
 **Important:** Changing folder structures does not necessarily break token references. Token resolution depends on the token paths and names, not the folder organization.
 
 **What Breaks References:**
-- Changing token paths (e.g., `{ob.s.color.bg.default}` -> `{ob.s.color.background.default}`)
+- Changing token paths (e.g., `{ob.s2.color.bg.default}` -> `{ob.s2.color.background.default}`)
 - Renaming tokens (e.g., `primary` -> `accent`)
 - Removing tokens that are referenced elsewhere
 
@@ -286,8 +286,8 @@ The current S1/S2/S3 architecture provides:
 
 **Example:**
 ```json
-// File A (light.json): ob.s.color.bg.primary = "blue"
-// File B (dark.json): ob.s.color.bg.primary = "red"  
+// File A (light.json): ob.s2.color.bg.primary = "blue"
+// File B (dark.json): ob.s2.color.bg.primary = "red"  
 // Result: If dark theme is active, token resolves to "red"
 ```
 

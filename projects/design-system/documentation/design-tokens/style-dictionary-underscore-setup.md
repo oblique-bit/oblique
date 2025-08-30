@@ -70,8 +70,8 @@ npm run tokens:build
 This will generate CSS variables like:
 ```css
 :root {
-  --ob-s-color-alert_notification-fg-contrast_high: #ffffff;
-  --ob-s-color-button-bg-inversity_normal: #0066cc;
+  --ob-s2-color-alert_notification-fg-contrast_high: #ffffff;
+  --ob-s2-color-button-bg-inversity_normal: #0066cc;
 }
 ```
 

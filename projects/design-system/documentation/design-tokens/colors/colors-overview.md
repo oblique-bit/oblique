@@ -11,10 +11,10 @@
 **Navigation to Color Topics:**
 - [**Primitive Colors**](colors-primitive.md) - Foundation color values and token architecture
 - [**Semantic Colors**](colors-semantic.md) - Layer system, token resolution, and consumption patterns
-  - [**Status Colors**](colors-semantic-status.md) - Success, warning, error, info states
-  - [**Interaction Colors**](colors-semantic-interaction.md) - Hover, active, visited, disabled states  
   - [**Brand Colors**](colors-semantic-brand.md) - Federal identity and brand implementation
   - [**Neutral Colors**](colors-semantic-neutral.md) - Backgrounds, text, borders, surfaces
+  - [**Interaction Colors**](colors-semantic-interaction.md) - Hover, active, visited, disabled states  
+  - [**Status Colors**](colors-semantic-status.md) - Success, warning, error, info states
 
 ---
 
@@ -32,24 +32,6 @@ The Oblique Design System provides a structured color system that ensures consis
 
 The color system includes these main categories:
 
-#### Status Colors
-Colors that communicate state and system feedback:
-- **Success**: Positive actions, completed states, confirmations
-- **Warning**: Cautionary states, important notices, attention-required
-- **Error**: Failed states, validation errors, critical issues
-- **Info**: Neutral information, tips, additional context
-
-[View Status Colors Documentation →](colors-semantic-status.md)
-
-#### Interaction Colors  
-Colors that indicate interactive states and user feedback:
-- **Hover**: Element interaction feedback
-- **Active**: Currently pressed or selected elements
-- **Visited**: Previously accessed links and navigational elements
-- **Disabled**: Non-interactive or temporarily unavailable elements
-
-[View Interaction Colors Documentation →](colors-semantic-interaction.md)
-
 #### Brand Colors
 Federal identity colors for government compliance and brand recognition:
 - **Brand**: Primary federal identity color (Bundesrot)
@@ -66,11 +48,29 @@ Foundational colors for backgrounds, text, borders, and surfaces:
 
 [View Neutral Colors Documentation →](colors-semantic-neutral.md)
 
+#### Interaction Colors  
+Colors that indicate interactive states and user feedback:
+- **Hover**: Element interaction feedback
+- **Active**: Currently pressed or selected elements
+- **Visited**: Previously accessed links and navigational elements
+- **Disabled**: Non-interactive or temporarily unavailable elements
+
+[View Interaction Colors Documentation →](colors-semantic-interaction.md)
+
+#### Status Colors
+Colors that communicate state and system feedback:
+- **Success**: Positive actions, completed states, confirmations
+- **Warning**: Cautionary states, important notices, attention-required
+- **Error**: Failed states, validation errors, critical issues
+- **Info**: Neutral information, tips, additional context
+
+[View Status Colors Documentation →](colors-semantic-status.md)
+
 ## Token Structure
 
 ### Semantic Naming Convention
 ```
-ob.s3.color.{category}.{property}.{contrast-level}.{inversity-variation}
+ob.s3.color.{category}.{property}.{contrast_level}.{inversity_variation}
 ```
 
 #### Structure Components
@@ -121,11 +121,11 @@ Components consume color tokens based on their semantic role. For detailed compo
 
 | Component Type | Primary Category | Documentation Reference |
 |---------------|------------------|-------------------------|
+| **Branding elements** | brand | [Brand Colors](colors-semantic-brand.md) |
+| **Typography** | neutral | [Neutral Colors](colors-semantic-neutral.md) |
 | **Buttons** | interaction | [Interaction Colors](colors-semantic-interaction.md) |
 | **Form inputs** | interaction | [Interaction Colors](colors-semantic-interaction.md) |
-| **Typography** | neutral | [Neutral Colors](colors-semantic-neutral.md) |
 | **Status indicators** | status | [Status Colors](colors-semantic-status.md) |
-| **Branding elements** | brand | [Brand Colors](colors-semantic-brand.md) |
 
 #### Design Consistency
 When combining categories, maintain:
@@ -156,10 +156,10 @@ Each layer adds semantic meaning while maintaining flexibility for theme adaptat
 
 ### Specialized Color Topics
 - [Semantic Color Architecture](colors-semantic.md) - Technical architecture and layer system
-- [Status Colors](colors-semantic-status.md) - Success, warning, error, info implementation
-- [Interaction Colors](colors-semantic-interaction.md) - Hover, active, visited, disabled states
 - [Brand Colors](colors-semantic-brand.md) - Federal identity and brand guidelines
 - [Neutral Colors](colors-semantic-neutral.md) - Backgrounds, text, borders, surfaces
+- [Interaction Colors](colors-semantic-interaction.md) - Hover, active, visited, disabled states
+- [Status Colors](colors-semantic-status.md) - Success, warning, error, info implementation
 
 ### Token System Documentation
 - [Token Consumption Guidelines](../guidelines-token-consumption.md) - Implementation patterns

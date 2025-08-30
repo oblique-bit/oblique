@@ -96,13 +96,15 @@ ob.c.button.color.bg.primary.enabled
 Key compound patterns used in tokens:
 
 ### **Semantic Compounds**
-- `inversity-normal` / `inversity-flipped`
-- `emphasis-high` / `emphasis-low`
-- `contrast-highest` / `contrast-high` / `contrast-medium` / `contrast-low`
+- `inversity_normal` / `inversity_flipped`
+- `emphasis_high` / `emphasis_low`
+## Lightness Categorization Levels
+
+- `contrast_highest` / `contrast_high` / `contrast_medium` / `contrast_low`
 
 ### **State Compounds**
-- `bg-base` / `bg-hover` / `bg-focus` / `bg-active`
-- `fg-base` / `fg-hover` / `fg-focus` / `fg-disabled`
+- `bg_base` / `bg_hover` / `bg_focus` / `bg_active`
+- `fg_base` / `fg_hover` / `fg_focus` / `fg-disabled`
 
 ---
 
@@ -125,21 +127,21 @@ This separation ensures clean abstraction levels and future-proof naming:
 ```
 CORRECT PATTERN:
 ob.p.color.basic.transparent     → "transparent" = visual appearance (alpha 0)
-ob.s0.color.neutral.no-color     → "no-color" = semantic intent (absence of fill)
+ob.s3.color.neutral.no_color     → "no_color" = semantic intent (absence of fill)
 ob.c.button.color.bg.secondary   → references semantic token
 
 BENEFITS:
 - Primitive describes visual appearance ("transparent", "blue", "large")
-- Semantic describes usage intent ("no-color", "primary", "emphasis-high")  
+- Semantic describes usage intent ("no_color", "primary", "emphasis_high")  
 - Component tokens describe component-specific styling, not visual appearance
-- Future changes (replacing "no-color" with faint tints) won't break components
+- Future changes (replacing "no_color" with faint tints) won't break components
 - Naming remains timeless regardless of visual changes
 ```
 
 **Example Application:**
 - **Primitive**: `transparent` → rgba(0, 0, 0, 0) *(what it looks like)*
-- **Semantic**: `no-color` → references transparent *(why it's transparent)*
-- **Component**: `button.bg.secondary` → references no-color *(semantic usage)*
+- **Semantic**: `no_color` → references transparent *(why it's transparent)*
+- **Component**: `button.bg.secondary` → references no_color *(semantic usage)*
 
 ---
 

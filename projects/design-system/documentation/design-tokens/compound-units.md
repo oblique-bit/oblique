@@ -33,16 +33,16 @@ All compound units now use underscores and remain unchanged in CSS output.
 
 ### Token Structure
 ```
-ob.s.color.status.{status_name}.{property}.{contrast_level}.{inversity_variation}
+ob.s2.color.status.{status_name}.{property}.{contrast_level}.{inversity_variation}
 ```
 
 ### CSS Implementation
 ```scss
 /* ❌ Old format - using hyphens */
-color: var(--ob-s-color-status-critical-fg-contrast-high-inversity-normal);
+color: var(--ob-s2-color-status-critical-fg-contrast_high-inversity_normal);
 
 /* - New format - using underscores */
-color: var(--ob-s-color-status-critical-fg-contrast_high-inversity_normal);
+color: var(--ob-s2-color-status-critical-fg-contrast_high-inversity_normal);
 ```
 
 **Benefits:**

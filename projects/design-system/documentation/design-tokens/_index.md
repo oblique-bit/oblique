@@ -23,10 +23,10 @@
 - [**Colors Overview**](./colors/colors-overview.md) - Color token structure and usage
 - [**Primitive Colors**](./colors/colors-primitive.md) - Foundation color values and token architecture
 - [**Semantic Colors**](./colors/colors-semantic.md) - Layer system, token resolution, and consumption patterns
-  - [**Status Colors**](./colors/colors-semantic-status.md) - Success, warning, error, info states
-  - [**Interaction Colors**](./colors/colors-semantic-interaction.md) - Hover, active, visited, disabled states  
   - [**Brand Colors**](./colors/colors-semantic-brand.md) - Federal identity and brand implementation
   - [**Neutral Colors**](./colors/colors-semantic-neutral.md) - Backgrounds, text, borders, surfaces
+  - [**Interaction Colors**](./colors/colors-semantic-interaction.md) - Hover, active, visited, disabled states  
+  - [**Status Colors**](./colors/colors-semantic-status.md) - Success, warning, error, info states
 
 ---
 
@@ -51,7 +51,7 @@ ob.{layer}.{category}.{...path}
 
 Layers:
   g  → Global tokens
-  p  → Primitive (s0 static tokens)
+  p  → Primitive (foundation tokens)
   s1 → Semantic Level 1 (lightness - light/dark themes)
   s2 → Semantic Level 2 (emphasis - high/low emphasis)
   s3 → Semantic Level 3 (clean compilation of all semantic colors)
@@ -62,7 +62,7 @@ Layers:
 ### **File Structure**
 ```
 src/lib/themes/
-├── primitive/           # s0 - Static base values
+├── primitive/           # Foundation values
 ├── semantic/color/
 │   ├── s1-lightness/   # Light/dark theme files
 │   ├── s2-emphasis/    # High/low emphasis files

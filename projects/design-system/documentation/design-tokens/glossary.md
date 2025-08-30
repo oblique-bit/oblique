@@ -4,14 +4,14 @@ This glossary defines key terminology used throughout the Oblique design token d
 
 ## Token Hierarchy
 
-### s0 (Static Tokens)
-Base-level tokens that define the foundational values in the design system. These tokens are stored in primitive files and represent the most primitive design decisions (colors, spacing, typography scales). Static tokens do not change across themes or contexts.
+### p (Primitive Level)
+Base-level tokens that define the foundational values in the design system. These tokens are stored in primitive files and represent the most primitive design decisions (colors, spacing, typography scales). Primitive tokens do not change across themes or contexts.
 
 **File Location:** `src/lib/themes/primitive/color.json`  
 **Example:** `ob.p.color.blue.500`
 
 ### s1 (Semantic Level 1 - Lightness)
-First semantic level that handles lightness variations across themes. S1 tokens reference s0 static tokens and provide the foundation for light/dark theme switching.
+First semantic level that handles lightness variations across themes. S1 tokens reference primitive tokens and provide the foundation for light/dark theme switching.
 
 **File Structure:** `src/lib/themes/semantic/color/s1-lightness/`  
 **Example:** `ob.s1.color.neutral.bg.contrast_highest.inversity_normal`  
@@ -39,8 +39,8 @@ Organizational units in Tokens Studio that correspond to folder structures in th
 **Examples:**
 - `s1-lightness-light` (Token Set for light theme)
 - `s1-lightness-dark` (Token Set for dark theme)
-- `s2-emphasis-high` (Token Set for high emphasis states)
-- `s2-emphasis-low` (Token Set for low emphasis states)
+- `s2-emphasis_high` (Token Set for high emphasis states)
+- `s2-emphasis_low` (Token Set for low emphasis states)
 - `s3-semantic` (Token Set for complete semantic compilation)
 
 ### Variable Modes
@@ -124,7 +124,7 @@ Multi-word token names that represent complex design concepts. Compound units fo
 The structured approach to organizing design tokens from primitive to component-specific values. The hierarchy ensures consistency and maintainability.
 
 **Levels:**
-1. **Primitives (s0)** - Raw values
+1. **Primitives (p)** - Raw values
 2. **Semantics (s1-s3)** - Contextual meanings
 3. **Components** - Component-specific tokens
 4. **Global** - System-level exceptions
@@ -141,7 +141,7 @@ The primary users of the Oblique design system who implement design tokens and c
 ### Component Consumption Rules
 Guidelines that govern how components should consume tokens from the semantic hierarchy. These rules ensure proper abstraction and maintainability.
 
-**Key Principle:** Components should primarily consume s2 and s3 tokens, avoiding direct reference to s0 or s1 when possible.
+**Key Principle:** Components should primarily consume s2 and s3 tokens, avoiding direct reference to primitive or s1 when possible.
 
 ## Theming Dimensions
 
@@ -187,25 +187,12 @@ The process of connecting design tokens with build tools and development workflo
 **Monitoring:** Custom scripts detect hardcoded token usage
 
 ### Token Resolution
-How the system follows references through the s0->s1->s2->s3 hierarchy. The resolution process ensures that token references are properly traced from component semantic level down to primitive values.
-
-### Vampire Scripts
-**Development Antipattern:** Unnecessary script files that accumulate during iterative development, consuming workspace resources without providing value. Vampire scripts typically include empty files (0 bytes), duplicate iterations, and abandoned experimental scripts.
-
-**Characteristics:**
-- Empty files from failed iterations
-- Near-duplicate scripts with minor variations
-- Scripts superseded by better implementations
-- Files that "drain" clarity from the codebase
-
-**Examples:** `debug-semantic.js` (empty), `validate-tokens-v2.js` (iteration), `temp-fix.js` (abandoned)
-
-**Solution:** Regular cleanup by moving essential scripts to `scripts-custom/` and removing vampires
+How the system follows references through the p→s1→s2→s3 hierarchy. The resolution process ensures that token references are properly traced from component semantic level down to primitive values.
 
 ### Symmetry
 **Critical Rule:** When expanding or reducing tokens in the theming system, all changes must preserve symmetry across theming counterparts. If a token structure is added/removed in one theme file, the exact same structure must be added/removed in ALL corresponding theme files.
 
-**Example:** Adding `contrast-highest` to `s1-lightness/light.json` requires adding the same structure to `s1-lightness/dark.json`, `s2-emphasis/high.json`, and `s2-emphasis/low.json`.
+**Example:** Adding `contrast_highest` to `s1-lightness/light.json` requires adding the same structure to `s1-lightness/dark.json`, `s2-emphasis/high.json`, and `s2-emphasis/low.json`.
 
 ### Theming Counterparts
 The set of theme files that must maintain structural symmetry with each other. Changes to one counterpart file requires identical changes to all other counterpart files to maintain system consistency.
@@ -216,7 +203,7 @@ The set of theme files that must maintain structural symmetry with each other. C
 
 **Rule:** Token architecture must remain identical across all counterparts, only primitive value references may differ.
 
-**Process:** Component tokens reference s3 tokens -> s3 tokens reference s1 tokens -> s1 tokens reference s0 tokens -> s0 tokens contain final values. Note: S2 also references s1 directly.
+**Process:** Component tokens reference s3 tokens -> s3 tokens reference s1 tokens -> s1 tokens reference primitive tokens -> primitive tokens contain final values. Note: S2 also references s1 directly.
 
 ### Reference Chain
 The path a token follows from component to primitive. In the current system, both S3 and S2 reference S1 directly, simplifying the dependency chain.
@@ -230,7 +217,7 @@ The path a token follows from component to primitive. In the current system, bot
 ### Token Inheritance
 How tokens inherit values from parent tokens. The current architecture uses direct references to S1 layer, bypassing intermediate layers for simpler maintenance.
 
-**Current Flow:** s0 (primitives) → s1 (lightness) → s2 (emphasis) & s3 (semantic compilation) → Component tokens
+**Current Flow:** p (primitives) → s1 (lightness) → s2 (emphasis) & s3 (semantic compilation) → Component tokens
 
 ### Build-time Resolution
 When token references are resolved during compilation. Build-time resolution transforms token references into final CSS values, ensuring runtime performance and eliminating dependency tracking overhead.
@@ -265,7 +252,7 @@ Specific semantic tokens designed for government web applications with enhanced 
 ### Interaction Emphasis
 Visual priority levels for interactive elements that prevent color competition and maintain clear visual hierarchy.
 
-**Strategy:** Use emphasis-low for interactive elements within status-colored containers (like Infoboxes) to prevent oversaturation and maintain focus on status communication.
+**Strategy:** Use emphasis_low for interactive elements within status-colored containers (like Infoboxes) to prevent oversaturation and maintain focus on status communication.
 
 ## Legacy Terms
 
@@ -278,7 +265,7 @@ Visual priority levels for interactive elements that prevent color competition a
 - l3 -> s3 (emphasis)
 
 ### static.json
-**Deprecated:** Former filename for static tokens, renamed to `s0-static.json` for consistency with semantic level naming.
+Files containing static token definitions that don't vary across themes or contexts. Found in various theme levels (global, semantic, component) for tokens that remain constant.
 
 ---
 

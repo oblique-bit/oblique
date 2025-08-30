@@ -8,11 +8,11 @@
 
 ## Neutral Color Architecture
 
-Neutral colors provide the foundational color palette for backgrounds, text, borders, and surfaces throughout the design system. They live on different semantic levels s1 and s2 and always come in pair inversity-normal (default) and inversity-flipped (e.g. in Footer).
+Neutral colors provide the foundational color palette for backgrounds, text, borders, and surfaces throughout the design system. They live on different semantic levels s1 and s2 and always come in pair inversity_normal (default) and inversity_flipped (e.g. in Footer).
 
 ### Token Structure
 ```
-ob.s.color.neutral.{property}.{contrast-level}.{inversity-variation}
+ob.s2.color.neutral.{property}.{contrast_level}.{inversity_variation}
 ```
 
 ### Properties
@@ -24,24 +24,24 @@ ob.s.color.neutral.{property}.{contrast-level}.{inversity-variation}
 ## Contrast Level System
 
 ### Background Contrast Levels
-- `contrast-highest` - Primary background color (white/dark)
-- `contrast-high` - Secondary surface color
-- `contrast-medium` - Tertiary surface color
-- `contrast-low` - Subtle surface color
-- `contrast-lowest` - Very subtle background for disabled states
+- `contrast_highest` - Primary background color (white/dark)
+- `contrast_high` - Secondary surface color
+- `contrast_medium` - Tertiary surface color
+- `contrast_low` - Subtle surface color
+- `contrast_lowest` - Very subtle background for disabled states
 
 ### Foreground Contrast Levels
-- `contrast-highest` - Primary text color (maximum contrast)
-- `contrast-high` - Secondary text color
-- `contrast-medium` - Tertiary text color
-- `contrast-low` - Subtle text color
-- `contrast-lowest` - Very subtle text for disabled states
+- `contrast_highest` - Primary text color (maximum contrast)
+- `contrast_high` - Secondary text color
+- `contrast_medium` - Tertiary text color
+- `contrast_low` - Subtle text color
+- `contrast_lowest` - Very subtle text for disabled states
 
 ## Inversity Variations
 
 ### Inversity Behavior
-- `inversity-normal` - Standard component appearance inheriting the host's theme
-- `inversity-flipped` - Component-level inversion for specific variants or entire components
+- `inversity_normal` - Standard component appearance inheriting the host's theme
+- `inversity_flipped` - Component-level inversion for specific variants or entire components
 
 **Implementation Note**: For complete technical details on inversity behavior, theme switching, and semantic layer architecture, see [Semantic Color Architecture](colors-semantic.md).
 
@@ -52,39 +52,39 @@ ob.s.color.neutral.{property}.{contrast-level}.{inversity-variation}
 {
   "neutral": {
     "bg": {
-      "contrast-highest": {
-        "inversity-normal": "#ffffff",
-        "inversity-flipped": "#0f172a"
+      "contrast_highest": {
+        "inversity_normal": "#ffffff",
+        "inversity_flipped": "#0f172a"
       },
-      "contrast-high": {
-        "inversity-normal": "#f1f5f9",
-        "inversity-flipped": "#1e293b"
+      "contrast_high": {
+        "inversity_normal": "#f1f5f9",
+        "inversity_flipped": "#1e293b"
       },
-      "contrast-medium": {
-        "inversity-normal": "#e2e8f0",
-        "inversity-flipped": "#475569"
+      "contrast_medium": {
+        "inversity_normal": "#e2e8f0",
+        "inversity_flipped": "#475569"
       },
-      "contrast-low": {
-        "inversity-normal": "#cbd5e1",
-        "inversity-flipped": "#64748b"
+      "contrast_low": {
+        "inversity_normal": "#cbd5e1",
+        "inversity_flipped": "#64748b"
       }
     },
     "fg": {
-      "contrast-highest": {
-        "inversity-normal": "#0f172a",
-        "inversity-flipped": "#ffffff"
+      "contrast_highest": {
+        "inversity_normal": "#0f172a",
+        "inversity_flipped": "#ffffff"
       },
-      "contrast-high": {
-        "inversity-normal": "#1e293b",
-        "inversity-flipped": "#f1f5f9"
+      "contrast_high": {
+        "inversity_normal": "#1e293b",
+        "inversity_flipped": "#f1f5f9"
       },
-      "contrast-medium": {
-        "inversity-normal": "#475569",
-        "inversity-flipped": "#e2e8f0"
+      "contrast_medium": {
+        "inversity_normal": "#475569",
+        "inversity_flipped": "#e2e8f0"
       },
-      "contrast-low": {
-        "inversity-normal": "#64748b",
-        "inversity-flipped": "#cbd5e1"
+      "contrast_low": {
+        "inversity_normal": "#64748b",
+        "inversity_flipped": "#cbd5e1"
       }
     }
   }
@@ -96,22 +96,22 @@ ob.s.color.neutral.{property}.{contrast-level}.{inversity-variation}
 ### Use Cases by Contrast Level
 
 #### Page Structure
-- **Page backgrounds**: `bg.contrast-highest.inversity-normal`
-- **Card/panel backgrounds**: `bg.contrast-high.inversity-normal`
-- **Form field backgrounds**: `bg.contrast-medium.inversity-normal`
-- **Disabled backgrounds**: `bg.contrast-low.inversity-normal`
+- **Page backgrounds**: `bg.contrast_highest.inversity_normal`
+- **Card/panel backgrounds**: `bg.contrast_high.inversity_normal`
+- **Form field backgrounds**: `bg.contrast_medium.inversity_normal`
+- **Disabled backgrounds**: `bg.contrast_low.inversity_normal`
 
 #### Typography Hierarchy
-- **Primary text**: `fg.contrast-highest.inversity-normal`
-- **Secondary text**: `fg.contrast-high.inversity-normal`
-- **Supporting text**: `fg.contrast-medium.inversity-normal`
-- **Placeholder text**: `fg.contrast-low.inversity-normal`
-- **Disabled text**: `fg.contrast-lowest.inversity-normal`
+- **Primary text**: `fg.contrast_highest.inversity_normal`
+- **Secondary text**: `fg.contrast_high.inversity_normal`
+- **Supporting text**: `fg.contrast_medium.inversity_normal`
+- **Placeholder text**: `fg.contrast_low.inversity_normal`
+- **Disabled text**: `fg.contrast_lowest.inversity_normal`
 
 #### Structural Elements
-- **Visible borders**: `border.contrast-medium.inversity-normal`
-- **Subtle dividers**: `border.contrast-low.inversity-normal`
-- **Depth shadows**: `shadow.contrast-low.inversity-normal`
+- **Visible borders**: `border.contrast_medium.inversity_normal`
+- **Subtle dividers**: `border.contrast_low.inversity_normal`
+- **Depth shadows**: `shadow.contrast_low.inversity_normal`
 
 ### Component Token Consumption
 
@@ -119,12 +119,12 @@ Neutral components that provide structure, content, and typography:
 
 | Component | Token Type | Rationale | Example Tokens |
 |-----------|------------|-----------|----------------|
-| **Typography** | `neutral.*` | Text content and headings | `ob.s.color.neutral.fg.contrast-highest.inversity-normal` |
-| **List** | `neutral.*` | Content structure | `ob.s.color.neutral.fg.contrast-medium.inversity-normal` |
-| **HR (Divider)** | `neutral.*` | Structural separators | `ob.s.color.neutral.border.contrast-medium.inversity-normal` |
-| **Popover** | `neutral.*` | Neutral floating containers | `ob.s.color.neutral.bg.contrast-highest.inversity-normal` |
-| **Dialog** | `neutral.*` | Modal content containers | `ob.s.color.neutral.bg.contrast-high.inversity-normal` |
-| **Progress Bar** | `neutral.*` | Neutral progress indicators | `ob.s.color.neutral.bg.contrast-low.inversity-normal` |
+| **Typography** | `neutral.*` | Text content and headings | `ob.s2.color.neutral.fg.contrast_highest.inversity_normal` |
+| **List** | `neutral.*` | Content structure | `ob.s2.color.neutral.fg.contrast_medium.inversity_normal` |
+| **HR (Divider)** | `neutral.*` | Structural separators | `ob.s2.color.neutral.border.contrast_medium.inversity_normal` |
+| **Popover** | `neutral.*` | Neutral floating containers | `ob.s2.color.neutral.bg.contrast_highest.inversity_normal` |
+| **Dialog** | `neutral.*` | Modal content containers | `ob.s2.color.neutral.bg.contrast_high.inversity_normal` |
+| **Progress Bar** | `neutral.*` | Neutral progress indicators | `ob.s2.color.neutral.bg.contrast_low.inversity_normal` |
 
 ## Theme Integration
 
@@ -141,7 +141,7 @@ Neutral components that provide structure, content, and typography:
 ### Static Utilities
 ```json
 {
-  "ob.s.color.neutral.no-color": {
+  "ob.s2.color.neutral.no_color": {
     "$value": "{ob.p.color.basic.transparent}",
     "$description": "Static value when no color respectively 0% opacity is needed."
   }
@@ -172,12 +172,13 @@ Neutral components that provide structure, content, and typography:
 ### File Structure
 - `src/lib/themes/semantic/color/s1-lightness/light.json` - Light theme neutral colors
 - `src/lib/themes/semantic/color/s1-lightness/dark.json` - Dark theme neutral colors
-- `src/lib/themes/semantic/color/s2-inversity/` - Inverse theme neutrals
-- `src/lib/themes/semantic/color/s0-static.json` - Static neutral utilities (no-color)
+- `src/lib/themes/semantic/color/s2-emphasis/high.json` - High emphasis neutral colors
+- `src/lib/themes/semantic/color/s2-emphasis/low.json` - Low emphasis neutral colors
+- `src/lib/themes/semantic/color/s3-semantic/semantic.json` - Complete neutral compilation
 
 ### Token Resolution Flow
 ```
-ob.s2.color.neutral.fg.contrast-high.inversity-normal
+ob.s2.color.neutral.fg.contrast_high.inversity_normal
 │
 ├─ L1 (Lightness): Resolves based on light/dark theme
 ├─ L2 (Inversity): Applies normal/flipped contrast
@@ -193,15 +194,16 @@ ob.s2.color.neutral.fg.contrast-high.inversity-normal
 - Low contrast for disabled states and subtle indicators
 
 ### Usage Recommendations
-1. **Text on backgrounds**: Use `fg.contrast-highest` for primary text readability
+1. **Text on backgrounds**: Use `fg.contrast_highest` for primary text readability
 2. **Subtle elements**: Use lower contrast levels for supporting information
-3. **Disabled states**: Use `contrast-lowest` to indicate non-interactive elements
+3. **Disabled states**: Use `contrast_lowest` to indicate non-interactive elements
 4. **Borders and dividers**: Use appropriate contrast levels for visual separation
 
 ## Related Documentation
 
 - [Color Tokens Overview](colors.md) - Complete color system introduction
 - [Semantic Colors Architecture](colors-semantic.md) - Layer system and organization
+- [Brand Colors](colors-semantic-brand.md) - Brand colors that complement neutral foundations
 - [Interaction Colors](colors-semantic-interaction.md) - How neutrals support interactive elements
 - [Status Colors](colors-semantic-status.md) - Status colors that build on neutral foundations
 - [Token Consumption Guidelines](../guidelines-token-consumption.md) - Implementation rules

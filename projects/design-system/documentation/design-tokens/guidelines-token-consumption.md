@@ -10,8 +10,8 @@ This document defines rules for token consumption across all token types in the 
 The current token system uses a simplified reference structure:
 
 ```
-Components -> S3 Semantic Compilation -> S1 Lightness -> S0 Primitives
-           -> S2 Emphasis -> S1 Lightness -> S0 Primitives
+Components -> S3 Semantic Compilation -> S1 Lightness -> Primitive
+           -> S2 Emphasis -> S1 Lightness -> Primitive
 ```
 
 **Key Changes:**
@@ -55,12 +55,12 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> S0 Primitives
 ```json
 // CORRECT: Non-interactive component consuming L2 semantic token
 "ob.c.card.color.bg.surface": {
-  "$value": "{ob.s2.color.neutral.bg.contrast-highest.inversity-normal}"
+  "$value": "{ob.s2.color.neutral.bg.contrast_highest.inversity_normal}"
 }
 
 // CORRECT: Interactive component consuming L3 semantic token (REQUIRED for interactive components)
 "ob.c.button.color.bg.primary": {
-  "$value": "{ob.s3.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal}"
+  "$value": "{ob.s3.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}"
 }
 ```
 
@@ -75,12 +75,12 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> S0 Primitives
 ```json
 // CORRECT: Interactive button
 "ob.c.button.color.fg.primary.enabled": {
-  "$value": "{ob.s3.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal}"
+  "$value": "{ob.s3.color.interaction.emphasis_high.fg_base.contrast_high.inversity_normal}"
 }
 
 // CORRECT: Interactive part of a popover
 "ob.c.popover.color.fg.action-link": {
-  "$value": "{ob.s3.color.interaction.emphasis-high.fg-base.contrast-medium.inversity-normal}"
+  "$value": "{ob.s3.color.interaction.emphasis_high.fg_base.contrast_medium.inversity_normal}"
 }
 ```
 
@@ -91,7 +91,7 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> S0 Primitives
 ```json
 // LIMITED: No emphasis theming available
 "ob.c.some-component.color.fg.action": {
-  "$value": "{ob.s2.color.interaction.fg-base.contrast-high.inversity-normal}"
+  "$value": "{ob.s2.color.interaction.fg_base.contrast_high.inversity_normal}"
 }
 ```
 
@@ -107,7 +107,7 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> S0 Primitives
 ```json
 // WRONG: Interactive component consuming neutral tokens
 "ob.c.header-nav.color.fg.link": {
-  "$value": "{ob.s2.color.neutral.fg.contrast-high.inversity-normal}"
+  "$value": "{ob.s2.color.neutral.fg.contrast_high.inversity_normal}"
 }
 ```
 
@@ -115,7 +115,7 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> S0 Primitives
 ```json
 // CORRECT: Interactive component with neutral appearance via emphasis:low
 "ob.c.header-nav.color.fg.link": {
-  "$value": "{ob.s3.color.interaction.emphasis-low.fg-base.contrast-high.inversity-normal}"
+  "$value": "{ob.s3.color.interaction.emphasis_low.fg_base.contrast_high.inversity_normal}"
 }
 ```
 
@@ -133,30 +133,30 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> S0 Primitives
 
 | Component | Token Type | Example |
 |-----------|------------|---------|
-| **Badge** | `status.*` | `ob.s2.color.status.info.fg.contrast-highest.inversity-flipped` |
-| **Infobox** | `status.*` | `ob.s2.color.status.critical.fg.contrast-high.inversity-normal` |
-| **Pill** | `status.*` | `ob.s3.color.status.resolved.fg.contrast-medium.inversity-normal` |
-| **Tooltip** | `status.*` | `ob.s2.color.status.info.bg.contrast-high.inversity-normal` |
+| **Badge** | `status.*` | `ob.s2.color.status.info.fg.contrast_highest.inversity_flipped` |
+| **Infobox** | `status.*` | `ob.s2.color.status.critical.fg.contrast_high.inversity_normal` |
+| **Pill** | `status.*` | `ob.s3.color.status.resolved.fg.contrast_medium.inversity_normal` |
+| **Tooltip** | `status.*` | `ob.s2.color.status.info.bg.contrast_high.inversity_normal` |
 
 #### Interactive Components
 **Must consume:** `ob.s3.color.interaction.*` (preferred) or `ob.s2.color.interaction.*` (limited)
 
 | Component | Token Type | Example |
 |-----------|------------|---------|
-| **Button** | `s3.interaction.*` | `ob.s3.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal` |
-| **Link** | `s3.interaction.*` | `ob.s3.color.interaction.emphasis-high.fg-hover.contrast-high.inversity-normal` |
-| **Tag** (interactive) | `s3.interaction.*` | `ob.s3.color.interaction.emphasis-low.bg-base.contrast-medium.inversity-normal` |
-| **Stepper** | `s3.interaction.*` | `ob.s3.color.interaction.emphasis-high.fg-focus.contrast-high.inversity-normal` |
+| **Button** | `s3.interaction.*` | `ob.s3.color.interaction.emphasis_high.fg_base.contrast_high.inversity_normal` |
+| **Link** | `s3.interaction.*` | `ob.s3.color.interaction.emphasis_high.fg_hover.contrast_high.inversity_normal` |
+| **Tag** (interactive) | `s3.interaction.*` | `ob.s3.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_normal` |
+| **Stepper** | `s3.interaction.*` | `ob.s3.color.interaction.emphasis_high.fg_focus.contrast_high.inversity_normal` |
 
 #### Neutral/Structural Components  
 **Must consume:** `ob.s2.color.neutral.*` or `ob.s3.color.neutral.*`
 
 | Component | Token Type | Example |
 |-----------|------------|---------|
-| **Typography** | `s2.neutral.*` | `ob.s2.color.neutral.fg.contrast-highest.inversity-normal` |
-| **List** | `s2.neutral.*` | `ob.s2.color.neutral.fg.contrast-medium.inversity-normal` |
-| **HR (Divider)** | `s2.neutral.*` | `ob.s2.color.neutral.border.contrast-medium.inversity-normal` |
-| **Popover** (container) | `s2.neutral.*` | `ob.s2.color.neutral.bg.contrast-highest.inversity-normal` |
+| **Typography** | `s2.neutral.*` | `ob.s2.color.neutral.fg.contrast_highest.inversity_normal` |
+| **List** | `s2.neutral.*` | `ob.s2.color.neutral.fg.contrast_medium.inversity_normal` |
+| **HR (Divider)** | `s2.neutral.*` | `ob.s2.color.neutral.border.contrast_medium.inversity_normal` |
+| **Popover** (container) | `s2.neutral.*` | `ob.s2.color.neutral.bg.contrast_highest.inversity_normal` |
 
 ---
 
@@ -198,12 +198,12 @@ Components (ob.c.*) -> Semantics (ob.s.*) -> Primitives (ob.p.*)
 ```json
 // High emphasis links (standard underlined links)
 "ob.c.content-link.text-decoration": {
-  "$value": "{ob.s.text-decoration.link.emphasis-high}"
+  "$value": "{ob.s.text-decoration.link.emphasis_high}"
 }
 
 // Low emphasis links (navigation, obvious link context)
 "ob.c.nav-link.text-decoration": {
-  "$value": "{ob.s.text-decoration.link.emphasis-low}"
+  "$value": "{ob.s.text-decoration.link.emphasis_low}"
 }
 ```
 
@@ -219,11 +219,11 @@ Components (ob.c.*) -> Semantics (ob.s.*) -> Primitives (ob.p.*)
 ```json
 // Typography component consuming appropriate color tokens
 "ob.s.typography.color.text.default": {
-  "$value": "{ob.s2.color.neutral.fg.contrast-highest.inversity-normal}"
+  "$value": "{ob.s2.color.neutral.fg.contrast_highest.inversity_normal}"
 }
 
 "ob.s.typography.color.link.default": {
-  "$value": "{ob.s3.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal}"
+  "$value": "{ob.s3.color.interaction.emphasis_high.fg_base.contrast_high.inversity_normal}"
 }
 ```
 
@@ -251,7 +251,7 @@ Components (ob.c.*) -> Semantics (ob.s.*) -> Primitives (ob.p.*)
 ```json
 // Supports emphasis theming
 "ob.c.button.color.fg.primary": {
-  "$value": "{ob.s3.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal}"
+  "$value": "{ob.s3.color.interaction.emphasis_high.fg_base.contrast_high.inversity_normal}"
 }
 
 // Theme application in CSS
@@ -262,12 +262,12 @@ Components (ob.c.*) -> Semantics (ob.s.*) -> Primitives (ob.p.*)
 
 ### Inversity Theming
 
-**All L2/L3 Tokens:** Support inversity theming (`inversity-normal`, `inversity-flipped`).
+**All L2/L3 Tokens:** Support inversity theming (`inversity_normal`, `inversity_flipped`).
 
 ```json
 // Supports inversity theming
 "ob.c.card.color.bg": {
-  "$value": "{ob.s2.color.neutral.bg.contrast-highest.inversity-normal}"
+  "$value": "{ob.s2.color.neutral.bg.contrast_highest.inversity_normal}"
 }
 
 // Theme application in CSS
@@ -280,44 +280,44 @@ Components (ob.c.*) -> Semantics (ob.s.*) -> Primitives (ob.p.*)
 
 ## Static Token Exceptions
 
-### S0 Static Token Consumption
+### Static Token Consumption
 
-**Exception Rule:** Static tokens (`ob.s.color.static.*`) may be consumed at higher levels for specific use cases.
+**Exception Rule:** Static tokens (`ob.s2.color.static.*`) may be consumed at higher levels for specific use cases.
 
 #### Allowed Static Tokens
 
 | Token | Purpose | Allowed Contexts |
 |-------|---------|------------------|
-| `ob.s.color.neutral.no-color` | Transparent/invisible elements | borders, backgrounds, shadows, interaction indicators |
-| `ob.s.color.brand` | Brand identity consistency | interaction indicators, brand elements |
+| `ob.s2.color.neutral.no_color` | Transparent/invisible elements | borders, backgrounds, shadows, interaction indicators |
+| `ob.s2.color.brand` | Brand identity consistency | interaction indicators, brand elements |
 
-#### Legitimate S0 Static Consumption Examples
+#### Legitimate Static Consumption Examples
 
 ```json
 // - ALLOWED: Transparent button backgrounds
 "ob.h.button.color.bg.secondary.enabled": {
-  "$value": "{ob.s.color.neutral.no-color}"
+  "$value": "{ob.s2.color.neutral.no_color}"
 }
 
 // - ALLOWED: Interaction indicators
-"ob.s.color.interaction.indicator.unselected": {
-  "$value": "{ob.s.color.neutral.no-color}"
+"ob.s2.color.interaction.indicator.unselected": {
+  "$value": "{ob.s2.color.neutral.no_color}"
 }
 
 // - ALLOWED: Brand interaction states
-"ob.s.color.interaction.indicator.selected": {
-  "$value": "{ob.s.color.brand}"
+"ob.s2.color.interaction.indicator.selected": {
+  "$value": "{ob.s2.color.brand}"
 }
 
 // - ALLOWED: S3 emphasis transparent backgrounds
 "ob.s3.color.emphasis.low.bg": {
-  "$value": "{ob.s.color.neutral.no-color}"
+  "$value": "{ob.s2.color.neutral.no_color}"
 }
 ```
 
 #### Validation Behavior
 
-The validation script will generate **warnings** (not errors) for S0 static token consumption to allow manual verification of legitimate use cases.
+The validation script will generate **warnings** (not errors) for static token consumption to allow manual verification of legitimate use cases.
 
 ---
 
@@ -356,13 +356,13 @@ For interactive components specifically:
           "fg": {
             "primary": {
               "enabled": {
-                "$value": "{ob.s3.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal}"
+                "$value": "{ob.s3.color.interaction.emphasis_high.fg_base.contrast_high.inversity_normal}"
               },
               "hover": {
-                "$value": "{ob.s3.color.interaction.emphasis-high.fg-hover.contrast-high.inversity-normal}"
+                "$value": "{ob.s3.color.interaction.emphasis_high.fg_hover.contrast_high.inversity_normal}"
               },
               "disabled": {
-                "$value": "{ob.s3.color.interaction.emphasis-high.fg-disabled.contrast-low.inversity-normal}"
+                "$value": "{ob.s3.color.interaction.emphasis_high.fg-disabled.contrast_low.inversity_normal}"
               }
             }
           }
@@ -383,7 +383,7 @@ For interactive components specifically:
           "fg": {
             "info": {
               "enabled": {
-                "$value": "{ob.s2.color.status.info.fg.contrast-highest.inversity-flipped}"
+                "$value": "{ob.s2.color.status.info.fg.contrast_highest.inversity_flipped}"
               }
             }
           }
@@ -404,10 +404,10 @@ For interactive components specifically:
           "fg": {
             "link": {
               "enabled": {
-                "$value": "{ob.s3.color.interaction.emphasis-low.fg-base.contrast-high.inversity-normal}"
+                "$value": "{ob.s3.color.interaction.emphasis_low.fg_base.contrast_high.inversity_normal}"
               },
               "hover": {
-                "$value": "{ob.s3.color.interaction.emphasis-low.fg-hover.contrast-high.inversity-normal}"
+                "$value": "{ob.s3.color.interaction.emphasis_low.fg_hover.contrast_high.inversity_normal}"
               }
             }
           }
@@ -476,14 +476,14 @@ Run validation checks:
 # Check for plural references and token compliance
 npm run check:plural-references
 
-# Validate token consumption hierarchy (s0/s1/s2/s3)
+# Validate token consumption hierarchy (p/s1/s2/s3)
 npm run check:token-consumption
 # OR directly: node scripts-custom/validate-consumption-hierarchy.js
 ```
 
 The consumption hierarchy validator includes:
-- **s0/s1/s2/s3 semantic color validation**: Ensures proper hierarchical token consumption
-- **S0 static token exceptions**: Allows legitimate use of `ob.s.color.neutral.no-color` and `ob.s.color.brand`
+- **p/s1/s2/s3 semantic color validation**: Ensures proper hierarchical token consumption
+- **Static token exceptions**: Allows legitimate use of `ob.s2.color.neutral.no_color` and `ob.s2.color.brand`
 - **Component L1 violation detection**: Catches components consuming `ob.s1.color.*` tokens
 - **Cross-domain validation**: Validates typography, spacing, and other token consumption patterns
 
@@ -497,4 +497,4 @@ Keep this document updated when:
 
 ---
 
-*Last updated: July 15, 2025 - Added S0 static token exceptions and implemented consumption hierarchy validation*
+*Last updated: July 15, 2025 - Added static token exceptions and implemented consumption hierarchy validation*

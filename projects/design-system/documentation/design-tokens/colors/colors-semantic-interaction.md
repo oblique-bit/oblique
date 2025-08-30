@@ -5,55 +5,55 @@ Interaction colors provide visual feedback for user interactions and establish c
 ## Token Structure
 
 ```
-ob.s.color.interaction.{emphasis-level}.{element-type}.{contrast-level}.{inversity-variation}
+ob.s2.color.interaction.{emphasis_level}.{element_type}.{contrast_level}.{inversity_variation}
 ```
 
 ### Emphasis Levels
-- `emphasis-high` - High emphasis interactions (primary actions, main CTAs)
-- `emphasis-low` - Low emphasis interactions (secondary actions, supporting elements)
+- `emphasis_high` - High emphasis interactions (primary actions, main CTAs)
+- `emphasis_low` - Low emphasis interactions (secondary actions, supporting elements)
 
 ### Element Types
-- `bg-base` - Background colors for interactive elements
-- `fg-base` - Foreground colors for interactive text/icons  
+- `bg_base` - Background colors for interactive elements
+- `fg_base` - Foreground colors for interactive text/icons  
 - `fg-visited` - Colors for visited links
 - `fg-disabled` - Colors for disabled interactive elements
-- `fg-hover` - Colors for hover states
-- `fg-focus` - Colors for focus states
-- `fg-active` - Colors for active/pressed states
+- `fg_hover` - Colors for hover states
+- `fg_focus` - Colors for focus states
+- `fg_active` - Colors for active/pressed states
 
 ### Contrast Levels
-- `contrast-high` - High contrast for primary interactions
-- `contrast-medium` - Medium contrast for secondary interactions
-- `contrast-low` - Low contrast for subtle interactions
+- `contrast_high` - High contrast for primary interactions
+- `contrast_medium` - Medium contrast for secondary interactions
+- `contrast_low` - Low contrast for subtle interactions
 
 ### Inversity Variations
-- `inversity-normal` - Standard light theme
-- `inversity-flipped` - Dark theme / inverted contexts
+- `inversity_normal` - Standard light theme
+- `inversity_flipped` - Dark theme / inverted contexts
 
 ## High Emphasis Interactions
 
 High emphasis interactions are used for primary actions, main call-to-action buttons, and the most important interactive elements that should draw user attention.
 
-### Background Colors (`bg-base`)
+### Background Colors (`bg_base`)
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#ffffff` | `#0f172a` | Primary button backgrounds |
-| `contrast-medium` | `#e2e8f0` | `#475569` | Secondary button backgrounds |
-| `contrast-low` | `#cbd5e1` | `#64748b` | Subtle interactive backgrounds |
+| `contrast_high` | `#ffffff` | `#0f172a` | Primary button backgrounds |
+| `contrast_medium` | `#e2e8f0` | `#475569` | Secondary button backgrounds |
+| `contrast_low` | `#cbd5e1` | `#64748b` | Subtle interactive backgrounds |
 
-### Foreground Colors (`fg-base`)
+### Foreground Colors (`fg_base`)
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#1e40af` | `#60a5fa` | Primary link text, main CTAs |
-| `contrast-medium` | `#3b82f6` | `#93c5fd` | Secondary link text |
-| `contrast-low` | `#60a5fa` | `#dbeafe` | Subtle interactive text |
+| `contrast_high` | `#1e40af` | `#60a5fa` | Primary link text, main CTAs |
+| `contrast_medium` | `#3b82f6` | `#93c5fd` | Secondary link text |
+| `contrast_low` | `#60a5fa` | `#dbeafe` | Subtle interactive text |
 
 ### Interaction States
 | State | Light Theme | Dark Theme | Usage |
 |-------|-------------|------------|-------|
-| `fg-hover` | `#1d4ed8` | `#3b82f6` | Hover state for links/buttons |
-| `fg-focus` | `#2563eb` | `#1d4ed8` | Focus state indicators |
-| `fg-active` | `#1e3a8a` | `#1e40af` | Active/pressed state |
+| `fg_hover` | `#1d4ed8` | `#3b82f6` | Hover state for links/buttons |
+| `fg_focus` | `#2563eb` | `#1d4ed8` | Focus state indicators |
+| `fg_active` | `#1e3a8a` | `#1e40af` | Active/pressed state |
 | `fg-visited` | `#581c87` | `#a855f7` | Visited link indicator |
 | `fg-disabled` | `#9ca3af` | `#6b7280` | Disabled state |
 
@@ -61,26 +61,26 @@ High emphasis interactions are used for primary actions, main call-to-action but
 
 Low emphasis interactions are used for secondary actions, supporting links, and interactive elements that should be present but not compete with primary actions.
 
-### Background Colors (`bg-base`)
+### Background Colors (`bg_base`)
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#f8fafc` | `#1e293b` | Secondary button backgrounds |
-| `contrast-medium` | `#f1f5f9` | `#334155` | Tertiary button backgrounds |
-| `contrast-low` | `#e2e8f0` | `#475569` | Subtle interactive surfaces |
+| `contrast_high` | `#f8fafc` | `#1e293b` | Secondary button backgrounds |
+| `contrast_medium` | `#f1f5f9` | `#334155` | Tertiary button backgrounds |
+| `contrast_low` | `#e2e8f0` | `#475569` | Subtle interactive surfaces |
 
-### Foreground Colors (`fg-base`)
+### Foreground Colors (`fg_base`)
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#475569` | `#cbd5e1` | Secondary text links |
-| `contrast-medium` | `#64748b` | `#94a3b8` | Supporting interactive text |
-| `contrast-low` | `#94a3b8` | `#64748b` | Subtle interactive elements |
+| `contrast_high` | `#475569` | `#cbd5e1` | Secondary text links |
+| `contrast_medium` | `#64748b` | `#94a3b8` | Supporting interactive text |
+| `contrast_low` | `#94a3b8` | `#64748b` | Subtle interactive elements |
 
 ### Interaction States
 | State | Light Theme | Dark Theme | Usage |
 |-------|-------------|------------|-------|
-| `fg-hover` | `#334155` | `#e2e8f0` | Hover state for secondary links |
-| `fg-focus` | `#1e293b` | `#f1f5f9` | Focus state for secondary elements |
-| `fg-active` | `#0f172a` | `#f8fafc` | Active state for secondary elements |
+| `fg_hover` | `#334155` | `#e2e8f0` | Hover state for secondary links |
+| `fg_focus` | `#1e293b` | `#f1f5f9` | Focus state for secondary elements |
+| `fg_active` | `#0f172a` | `#f8fafc` | Active state for secondary elements |
 | `fg-visited` | `#4c1d95` | `#c4b5fd` | Visited secondary links |
 | `fg-disabled` | `#cbd5e1` | `#475569` | Disabled secondary elements |
 
@@ -90,31 +90,31 @@ Low emphasis interactions are used for secondary actions, supporting links, and 
 ```scss
 .btn-primary {
   // Default state
-  background-color: var(--ob-s-color-interaction-emphasis-high-bg-base-contrast-high-inversity-normal);
-  color: var(--ob-s-color-interaction-emphasis-high-fg-base-contrast-high-inversity-normal);
+  background-color: var(--ob-s2-color-interaction-emphasis_high-bg_base-contrast_high-inversity_normal);
+  color: var(--ob-s2-color-interaction-emphasis_high-fg_base-contrast_high-inversity_normal);
   
   // Hover state
   &:hover {
-    background-color: var(--ob-s-color-interaction-emphasis-high-bg-base-contrast-medium-inversity-normal);
-    color: var(--ob-s-color-interaction-emphasis-high-fg-hover-contrast-high-inversity-normal);
+    background-color: var(--ob-s2-color-interaction-emphasis_high-bg_base-contrast_medium-inversity_normal);
+    color: var(--ob-s2-color-interaction-emphasis_high-fg_hover-contrast_high-inversity_normal);
   }
   
   // Focus state
   &:focus {
-    outline: 2px solid var(--ob-s-color-interaction-emphasis-high-fg-focus-contrast-high-inversity-normal);
+    outline: 2px solid var(--ob-s2-color-interaction-emphasis_high-fg_focus-contrast_high-inversity_normal);
     outline-offset: 2px;
   }
   
   // Active state
   &:active {
-    background-color: var(--ob-s-color-interaction-emphasis-high-bg-base-contrast-low-inversity-normal);
-    color: var(--ob-s-color-interaction-emphasis-high-fg-active-contrast-high-inversity-normal);
+    background-color: var(--ob-s2-color-interaction-emphasis_high-bg_base-contrast_low-inversity_normal);
+    color: var(--ob-s2-color-interaction-emphasis_high-fg_active-contrast_high-inversity_normal);
   }
   
   // Disabled state
   &:disabled {
-    background-color: var(--ob-s-color-interaction-emphasis-high-bg-base-contrast-low-inversity-normal);
-    color: var(--ob-s-color-interaction-emphasis-high-fg-disabled-contrast-low-inversity-normal);
+    background-color: var(--ob-s2-color-interaction-emphasis_high-bg_base-contrast_low-inversity_normal);
+    color: var(--ob-s2-color-interaction-emphasis_high-fg-disabled-contrast_low-inversity_normal);
     cursor: not-allowed;
   }
 }
@@ -124,33 +124,33 @@ Low emphasis interactions are used for secondary actions, supporting links, and 
 ```scss
 .btn-secondary {
   // Default state
-  background-color: var(--ob-s-color-interaction-emphasis-low-bg-base-contrast-high-inversity-normal);
-  color: var(--ob-s-color-interaction-emphasis-low-fg-base-contrast-high-inversity-normal);
-  border: 1px solid var(--ob-s-color-interaction-emphasis-low-fg-base-contrast-medium-inversity-normal);
+  background-color: var(--ob-s2-color-interaction-emphasis_low-bg_base-contrast_high-inversity_normal);
+  color: var(--ob-s2-color-interaction-emphasis_low-fg_base-contrast_high-inversity_normal);
+  border: 1px solid var(--ob-s2-color-interaction-emphasis_low-fg_base-contrast_medium-inversity_normal);
   
   // Hover state
   &:hover {
-    background-color: var(--ob-s-color-interaction-emphasis-low-bg-base-contrast-medium-inversity-normal);
-    color: var(--ob-s-color-interaction-emphasis-low-fg-hover-contrast-high-inversity-normal);
+    background-color: var(--ob-s2-color-interaction-emphasis_low-bg_base-contrast_medium-inversity_normal);
+    color: var(--ob-s2-color-interaction-emphasis_low-fg_hover-contrast_high-inversity_normal);
   }
   
   // Focus state
   &:focus {
-    outline: 2px solid var(--ob-s-color-interaction-emphasis-low-fg-focus-contrast-high-inversity-normal);
+    outline: 2px solid var(--ob-s2-color-interaction-emphasis_low-fg_focus-contrast_high-inversity_normal);
     outline-offset: 2px;
   }
   
   // Active state  
   &:active {
-    background-color: var(--ob-s-color-interaction-emphasis-low-bg-base-contrast-low-inversity-normal);
-    color: var(--ob-s-color-interaction-emphasis-low-fg-active-contrast-high-inversity-normal);
+    background-color: var(--ob-s2-color-interaction-emphasis_low-bg_base-contrast_low-inversity_normal);
+    color: var(--ob-s2-color-interaction-emphasis_low-fg_active-contrast_high-inversity_normal);
   }
   
   // Disabled state
   &:disabled {
-    background-color: var(--ob-s-color-interaction-emphasis-low-bg-base-contrast-high-inversity-normal);
-    color: var(--ob-s-color-interaction-emphasis-low-fg-disabled-contrast-low-inversity-normal);
-    border-color: var(--ob-s-color-interaction-emphasis-low-fg-disabled-contrast-low-inversity-normal);
+    background-color: var(--ob-s2-color-interaction-emphasis_low-bg_base-contrast_high-inversity_normal);
+    color: var(--ob-s2-color-interaction-emphasis_low-fg-disabled-contrast_low-inversity_normal);
+    border-color: var(--ob-s2-color-interaction-emphasis_low-fg-disabled-contrast_low-inversity_normal);
   }
 }
 ```
@@ -159,32 +159,32 @@ Low emphasis interactions are used for secondary actions, supporting links, and 
 ```scss
 .link-primary {
   // Default state
-  color: var(--ob-s-color-interaction-emphasis-high-fg-base-contrast-high-inversity-normal);
+  color: var(--ob-s2-color-interaction-emphasis_high-fg_base-contrast_high-inversity_normal);
   text-decoration: underline;
-  text-decoration-color: var(--ob-s-color-interaction-emphasis-high-fg-base-contrast-medium-inversity-normal);
+  text_decoration_color: var(--ob-s2-color-interaction-emphasis_high-fg_base-contrast_medium-inversity_normal);
   
   // Hover state
   &:hover {
-    color: var(--ob-s-color-interaction-emphasis-high-fg-hover-contrast-high-inversity-normal);
-    text-decoration-color: var(--ob-s-color-interaction-emphasis-high-fg-hover-contrast-high-inversity-normal);
+    color: var(--ob-s2-color-interaction-emphasis_high-fg_hover-contrast_high-inversity_normal);
+    text_decoration_color: var(--ob-s2-color-interaction-emphasis_high-fg_hover-contrast_high-inversity_normal);
   }
   
   // Focus state
   &:focus {
-    color: var(--ob-s-color-interaction-emphasis-high-fg-focus-contrast-high-inversity-normal);
-    outline: 2px solid var(--ob-s-color-interaction-emphasis-high-fg-focus-contrast-high-inversity-normal);
+    color: var(--ob-s2-color-interaction-emphasis_high-fg_focus-contrast_high-inversity_normal);
+    outline: 2px solid var(--ob-s2-color-interaction-emphasis_high-fg_focus-contrast_high-inversity_normal);
     outline-offset: 2px;
   }
   
   // Active state
   &:active {
-    color: var(--ob-s-color-interaction-emphasis-high-fg-active-contrast-high-inversity-normal);
+    color: var(--ob-s2-color-interaction-emphasis_high-fg_active-contrast_high-inversity_normal);
   }
   
   // Visited state
   &:visited {
-    color: var(--ob-s-color-interaction-emphasis-high-fg-visited-contrast-high-inversity-normal);
-    text-decoration-color: var(--ob-s-color-interaction-emphasis-high-fg-visited-contrast-medium-inversity-normal);
+    color: var(--ob-s2-color-interaction-emphasis_high-fg-visited-contrast_high-inversity_normal);
+    text_decoration_color: var(--ob-s2-color-interaction-emphasis_high-fg-visited-contrast_medium-inversity_normal);
   }
 }
 ```
@@ -193,31 +193,31 @@ Low emphasis interactions are used for secondary actions, supporting links, and 
 ```scss
 .link-secondary {
   // Default state
-  color: var(--ob-s-color-interaction-emphasis-low-fg-base-contrast-high-inversity-normal);
+  color: var(--ob-s2-color-interaction-emphasis_low-fg_base-contrast_high-inversity_normal);
   text-decoration: underline;
-  text-decoration-color: var(--ob-s-color-interaction-emphasis-low-fg-base-contrast-medium-inversity-normal);
+  text_decoration_color: var(--ob-s2-color-interaction-emphasis_low-fg_base-contrast_medium-inversity_normal);
   
   // Hover state
   &:hover {
-    color: var(--ob-s-color-interaction-emphasis-low-fg-hover-contrast-high-inversity-normal);
-    text-decoration-color: var(--ob-s-color-interaction-emphasis-low-fg-hover-contrast-high-inversity-normal);
+    color: var(--ob-s2-color-interaction-emphasis_low-fg_hover-contrast_high-inversity_normal);
+    text_decoration_color: var(--ob-s2-color-interaction-emphasis_low-fg_hover-contrast_high-inversity_normal);
   }
   
   // Focus state
   &:focus {
-    color: var(--ob-s-color-interaction-emphasis-low-fg-focus-contrast-high-inversity-normal);
-    outline: 2px solid var(--ob-s-color-interaction-emphasis-low-fg-focus-contrast-high-inversity-normal);
+    color: var(--ob-s2-color-interaction-emphasis_low-fg_focus-contrast_high-inversity_normal);
+    outline: 2px solid var(--ob-s2-color-interaction-emphasis_low-fg_focus-contrast_high-inversity_normal);
     outline-offset: 2px;
   }
   
   // Active state
   &:active {
-    color: var(--ob-s-color-interaction-emphasis-low-fg-active-contrast-high-inversity-normal);
+    color: var(--ob-s2-color-interaction-emphasis_low-fg_active-contrast_high-inversity_normal);
   }
   
   // Visited state
   &:visited {
-    color: var(--ob-s-color-interaction-emphasis-low-fg-visited-contrast-high-inversity-normal);
+    color: var(--ob-s2-color-interaction-emphasis_low-fg-visited-contrast_high-inversity_normal);
   }
 }
 ```
@@ -226,22 +226,22 @@ Low emphasis interactions are used for secondary actions, supporting links, and 
 ```scss
 .form-input {
   // Default state
-  background-color: var(--ob-s-color-interaction-emphasis-low-bg-base-contrast-high-inversity-normal);
-  color: var(--ob-s-color-interaction-emphasis-low-fg-base-contrast-high-inversity-normal);
-  border: 1px solid var(--ob-s-color-interaction-emphasis-low-fg-base-contrast-medium-inversity-normal);
+  background-color: var(--ob-s2-color-interaction-emphasis_low-bg_base-contrast_high-inversity_normal);
+  color: var(--ob-s2-color-interaction-emphasis_low-fg_base-contrast_high-inversity_normal);
+  border: 1px solid var(--ob-s2-color-interaction-emphasis_low-fg_base-contrast_medium-inversity_normal);
   
   // Focus state
   &:focus {
-    border-color: var(--ob-s-color-interaction-emphasis-high-fg-focus-contrast-high-inversity-normal);
-    outline: 2px solid var(--ob-s-color-interaction-emphasis-high-fg-focus-contrast-high-inversity-normal);
+    border-color: var(--ob-s2-color-interaction-emphasis_high-fg_focus-contrast_high-inversity_normal);
+    outline: 2px solid var(--ob-s2-color-interaction-emphasis_high-fg_focus-contrast_high-inversity_normal);
     outline-offset: 1px;
   }
   
   // Disabled state
   &:disabled {
-    background-color: var(--ob-s-color-interaction-emphasis-low-bg-base-contrast-low-inversity-normal);
-    color: var(--ob-s-color-interaction-emphasis-low-fg-disabled-contrast-low-inversity-normal);
-    border-color: var(--ob-s-color-interaction-emphasis-low-fg-disabled-contrast-low-inversity-normal);
+    background-color: var(--ob-s2-color-interaction-emphasis_low-bg_base-contrast_low-inversity_normal);
+    color: var(--ob-s2-color-interaction-emphasis_low-fg-disabled-contrast_low-inversity_normal);
+    border-color: var(--ob-s2-color-interaction-emphasis_low-fg-disabled-contrast_low-inversity_normal);
   }
 }
 ```
@@ -250,23 +250,23 @@ Low emphasis interactions are used for secondary actions, supporting links, and 
 ```scss
 .nav-item {
   // Default state
-  color: var(--ob-s-color-interaction-emphasis-low-fg-base-contrast-high-inversity-normal);
+  color: var(--ob-s2-color-interaction-emphasis_low-fg_base-contrast_high-inversity_normal);
   
   // Hover state
   &:hover {
-    color: var(--ob-s-color-interaction-emphasis-high-fg-hover-contrast-high-inversity-normal);
-    background-color: var(--ob-s-color-interaction-emphasis-low-bg-base-contrast-low-inversity-normal);
+    color: var(--ob-s2-color-interaction-emphasis_high-fg_hover-contrast_high-inversity_normal);
+    background-color: var(--ob-s2-color-interaction-emphasis_low-bg_base-contrast_low-inversity_normal);
   }
   
   // Active/Current state
   &.active {
-    color: var(--ob-s-color-interaction-emphasis-high-fg-base-contrast-high-inversity-normal);
-    background-color: var(--ob-s-color-interaction-emphasis-high-bg-base-contrast-low-inversity-normal);
+    color: var(--ob-s2-color-interaction-emphasis_high-fg_base-contrast_high-inversity_normal);
+    background-color: var(--ob-s2-color-interaction-emphasis_high-bg_base-contrast_low-inversity_normal);
   }
   
   // Focus state
   &:focus {
-    outline: 2px solid var(--ob-s-color-interaction-emphasis-high-fg-focus-contrast-high-inversity-normal);
+    outline: 2px solid var(--ob-s2-color-interaction-emphasis_high-fg_focus-contrast_high-inversity_normal);
     outline-offset: 2px;
   }
 }
@@ -357,14 +357,14 @@ Interaction colors automatically adapt to theme changes through inversity variat
 ```scss
 /* Light theme context */
 .theme-light .btn-primary {
-  background-color: var(--ob-s-color-interaction-emphasis-high-bg-base-contrast-high-inversity-normal);
-  color: var(--ob-s-color-interaction-emphasis-high-fg-base-contrast-high-inversity-normal);
+  background-color: var(--ob-s2-color-interaction-emphasis_high-bg_base-contrast_high-inversity_normal);
+  color: var(--ob-s2-color-interaction-emphasis_high-fg_base-contrast_high-inversity_normal);
 }
 
 /* Dark theme context */
 .theme-dark .btn-primary {
-  background-color: var(--ob-s-color-interaction-emphasis-high-bg-base-contrast-high-inversity-flipped);
-  color: var(--ob-s-color-interaction-emphasis-high-fg-base-contrast-high-inversity-flipped);
+  background-color: var(--ob-s2-color-interaction-emphasis_high-bg_base-contrast_high-inversity_flipped);
+  color: var(--ob-s2-color-interaction-emphasis_high-fg_base-contrast_high-inversity_flipped);
 }
 ```
 
@@ -372,16 +372,16 @@ Interaction colors automatically adapt to theme changes through inversity variat
 ```scss
 .interactive-element {
   /* Base styles that work in any context */
-  --interaction-fg: var(--ob-s-color-interaction-emphasis-high-fg-base-contrast-high-inversity-normal);
-  --interaction-bg: var(--ob-s-color-interaction-emphasis-high-bg-base-contrast-high-inversity-normal);
+  --interaction-fg: var(--ob-s2-color-interaction-emphasis_high-fg_base-contrast_high-inversity_normal);
+  --interaction-bg: var(--ob-s2-color-interaction-emphasis_high-bg_base-contrast_high-inversity_normal);
   
   color: var(--interaction-fg);
   background-color: var(--interaction-bg);
   
   /* Automatically adapts when inversity context changes */
-  .inversity-flipped & {
-    --interaction-fg: var(--ob-s-color-interaction-emphasis-high-fg-base-contrast-high-inversity-flipped);
-    --interaction-bg: var(--ob-s-color-interaction-emphasis-high-bg-base-contrast-high-inversity-flipped);
+  .inversity_flipped & {
+    --interaction-fg: var(--ob-s2-color-interaction-emphasis_high-fg_base-contrast_high-inversity_flipped);
+    --interaction-bg: var(--ob-s2-color-interaction-emphasis_high-bg_base-contrast_high-inversity_flipped);
   }
 }
 ```
@@ -413,4 +413,4 @@ Interaction colors automatically adapt to theme changes through inversity variat
 
 ---
 
-*For related documentation, see [Neutral Colors](./colors-semantic-neutral.md) and [Status Colors](./colors-semantic-status.md)*
+*For related documentation, see [Brand Colors](./colors-semantic-brand.md), [Neutral Colors](./colors-semantic-neutral.md), and [Status Colors](./colors-semantic-status.md)*

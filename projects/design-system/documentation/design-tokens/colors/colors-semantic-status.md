@@ -119,7 +119,7 @@ These naming choices provide:
 ## Token Structure
 
 ```
-ob.s.color.status.{status-name}.{property}.{contrast-level}.{inversity-variation}
+ob.s2.color.status.{status_name}.{property}.{contrast_level}.{inversity_variation}
 ```
 
 ### Properties
@@ -127,13 +127,13 @@ ob.s.color.status.{status-name}.{property}.{contrast-level}.{inversity-variation
 - `bg` - Background color for status containers
 
 ### Contrast Levels
-- `contrast-high` - Maximum contrast for critical visibility
-- `contrast-medium` - Standard contrast for normal usage
-- `contrast-low` - Subtle contrast for secondary contexts
+- `contrast_high` - Maximum contrast for critical visibility
+- `contrast_medium` - Standard contrast for normal usage
+- `contrast_low` - Subtle contrast for secondary contexts
 
 ### Inversity Variations
-- `inversity-normal` - Standard light theme
-- `inversity-flipped` - Dark theme / inverted contexts
+- `inversity_normal` - Standard light theme
+- `inversity_flipped` - Dark theme / inverted contexts
 
 ## Reserved Status Colors
 
@@ -143,16 +143,16 @@ Communicates informational content without urgency.
 #### Foreground Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#1e40af` | `#60a5fa` | All pill states (enabled/hover/focus/pressed) |
-| `contrast-medium` | `#3b82f6` | `#93c5fd` | *Not used in current components* |
-| `contrast-low` | `#60a5fa` | `#dbeafe` | *Not used in current components* |
+| `contrast_high` | `#1e40af` | `#60a5fa` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#3b82f6` | `#93c5fd` | *Not used in current components* |
+| `contrast_low` | `#60a5fa` | `#dbeafe` | *Not used in current components* |
 
 #### Background Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#1e3a8a` | `#1e40af` | Badge enabled/disabled states |
-| `contrast-medium` | `#3b82f6` | `#2563eb` | Pill enabled/focus states |
-| `contrast-low` | `#dbeafe` | `#1e3a8a` | Pill pressed state |
+| `contrast_high` | `#1e3a8a` | `#1e40af` | Badge enabled/disabled states |
+| `contrast_medium` | `#3b82f6` | `#2563eb` | Pill enabled/focus states |
+| `contrast_low` | `#dbeafe` | `#1e3a8a` | Pill pressed state |
 
 ### Resolved (Green)
 Indicates successful completion, approval, or positive outcomes.
@@ -160,16 +160,16 @@ Indicates successful completion, approval, or positive outcomes.
 #### Foreground Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#166534` | `#4ade80` | All pill states (enabled/hover/focus/pressed) |
-| `contrast-medium` | `#22c55e` | `#86efac` | *Not used in current components* |
-| `contrast-low` | `#4ade80` | `#dcfce7` | *Not used in current components* |
+| `contrast_high` | `#166534` | `#4ade80` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#22c55e` | `#86efac` | *Not used in current components* |
+| `contrast_low` | `#4ade80` | `#dcfce7` | *Not used in current components* |
 
 #### Background Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#14532d` | `#166534` | Badge enabled/disabled states |
-| `contrast-medium` | `#22c55e` | `#16a34a` | Pill enabled/focus states |
-| `contrast-low` | `#dcfce7` | `#14532d` | Pill pressed state |
+| `contrast_high` | `#14532d` | `#166534` | Badge enabled/disabled states |
+| `contrast_medium` | `#22c55e` | `#16a34a` | Pill enabled/focus states |
+| `contrast_low` | `#dcfce7` | `#14532d` | Pill pressed state |
 
 ### Critical (Red)
 Communicates urgent alerts, system failures, or critical errors requiring immediate attention.
@@ -177,16 +177,16 @@ Communicates urgent alerts, system failures, or critical errors requiring immedi
 #### Foreground Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#dc2626` | `#f87171` | All pill states (enabled/hover/focus/pressed) |
-| `contrast-medium` | `#ef4444` | `#fca5a5` | *Not used in current components* |
-| `contrast-low` | `#f87171` | `#fee2e2` | *Not used in current components* |
+| `contrast_high` | `#dc2626` | `#f87171` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#ef4444` | `#fca5a5` | *Not used in current components* |
+| `contrast_low` | `#f87171` | `#fee2e2` | *Not used in current components* |
 
 #### Background Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#7f1d1d` | `#dc2626` | Badge enabled/disabled states |
-| `contrast-medium` | `#dc2626` | `#b91c1c` | Pill enabled/focus states |
-| `contrast-low` | `#fee2e2` | `#7f1d1d` | Pill pressed state |
+| `contrast_high` | `#7f1d1d` | `#dc2626` | Badge enabled/disabled states |
+| `contrast_medium` | `#dc2626` | `#b91c1c` | Pill enabled/focus states |
+| `contrast_low` | `#fee2e2` | `#7f1d1d` | Pill pressed state |
 
 ### Attention (Amber/Orange)
 Indicates caution, warnings, or items that need review but aren't critical.
@@ -194,16 +194,16 @@ Indicates caution, warnings, or items that need review but aren't critical.
 #### Foreground Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#d97706` | `#fbbf24` | All pill states (enabled/hover/focus/pressed) |
-| `contrast-medium` | `#f59e0b` | `#fcd34d` | *Not used in current components* |
-| `contrast-low` | `#fbbf24` | `#fef3c7` | *Not used in current components* |
+| `contrast_high` | `#d97706` | `#fbbf24` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#f59e0b` | `#fcd34d` | *Not used in current components* |
+| `contrast_low` | `#fbbf24` | `#fef3c7` | *Not used in current components* |
 
 #### Background Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#92400e` | `#d97706` | Badge enabled/disabled states |
-| `contrast-medium` | `#d97706` | `#b45309` | Pill enabled/focus states |
-| `contrast-low` | `#fef3c7` | `#92400e` | Pill pressed state |
+| `contrast_high` | `#92400e` | `#d97706` | Badge enabled/disabled states |
+| `contrast_medium` | `#d97706` | `#b45309` | Pill enabled/focus states |
+| `contrast_low` | `#fef3c7` | `#92400e` | Pill pressed state |
 
 ## Flexible Status Colors
 
@@ -213,16 +213,16 @@ Indicates items awaiting action or processing.
 #### Foreground Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#7c3aed` | `#a855f7` | All pill states (enabled/hover/focus/pressed) |
-| `contrast-medium` | `#8b5cf6` | `#c084fc` | *Not used in current components* |
-| `contrast-low` | `#a855f7` | `#f3e8ff` | *Not used in current components* |
+| `contrast_high` | `#7c3aed` | `#a855f7` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#8b5cf6` | `#c084fc` | *Not used in current components* |
+| `contrast_low` | `#a855f7` | `#f3e8ff` | *Not used in current components* |
 
 #### Background Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#581c87` | `#7c3aed` | *Not used in current components* |
-| `contrast-medium` | `#7c3aed` | `#6d28d9` | Pill enabled/focus states |
-| `contrast-low` | `#f3e8ff` | `#581c87` | Pill pressed state |
+| `contrast_high` | `#581c87` | `#7c3aed` | *Not used in current components* |
+| `contrast_medium` | `#7c3aed` | `#6d28d9` | Pill enabled/focus states |
+| `contrast_low` | `#f3e8ff` | `#581c87` | Pill pressed state |
 
 ### Confirmed (Teal)
 Indicates verified, approved, or confirmed items.
@@ -230,16 +230,16 @@ Indicates verified, approved, or confirmed items.
 #### Foreground Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#0f766e` | `#2dd4bf` | All pill states (enabled/hover/focus/pressed) |
-| `contrast-medium` | `#14b8a6` | `#5eead4` | *Not used in current components* |
-| `contrast-low` | `#2dd4bf` | `#ccfbf1` | *Not used in current components* |
+| `contrast_high` | `#0f766e` | `#2dd4bf` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#14b8a6` | `#5eead4` | *Not used in current components* |
+| `contrast_low` | `#2dd4bf` | `#ccfbf1` | *Not used in current components* |
 
 #### Background Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#134e4a` | `#0f766e` | *Not used in current components* |
-| `contrast-medium` | `#0f766e` | `#0d9488` | Pill enabled/focus states |
-| `contrast-low` | `#ccfbf1` | `#134e4a` | Pill pressed state |
+| `contrast_high` | `#134e4a` | `#0f766e` | *Not used in current components* |
+| `contrast_medium` | `#0f766e` | `#0d9488` | Pill enabled/focus states |
+| `contrast_low` | `#ccfbf1` | `#134e4a` | Pill pressed state |
 
 ### Progress (Indigo)
 Indicates work in progress, loading states, or active processes.
@@ -247,16 +247,16 @@ Indicates work in progress, loading states, or active processes.
 #### Foreground Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#4338ca` | `#6366f1` | All pill states (enabled/hover/focus/pressed) |
-| `contrast-medium` | `#6366f1` | `#818cf8` | *Not used in current components* |
-| `contrast-low` | `#818cf8` | `#e0e7ff` | *Not used in current components* |
+| `contrast_high` | `#4338ca` | `#6366f1` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#6366f1` | `#818cf8` | *Not used in current components* |
+| `contrast_low` | `#818cf8` | `#e0e7ff` | *Not used in current components* |
 
 #### Background Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast-high` | `#312e81` | `#4338ca` | *Not used in current components* |
-| `contrast-medium` | `#4338ca` | `#3730a3` | Pill enabled/focus states |
-| `contrast-low` | `#e0e7ff` | `#312e81` | Pill pressed state |
+| `contrast_high` | `#312e81` | `#4338ca` | *Not used in current components* |
+| `contrast_medium` | `#4338ca` | `#3730a3` | Pill enabled/focus states |
+| `contrast_low` | `#e0e7ff` | `#312e81` | Pill pressed state |
 
 ### Additional Flexible Statuses
 - **Scheduled**: Future or planned items (typically cyan/sky colors)
@@ -276,15 +276,15 @@ These examples show recommended token usage patterns. Developers may adapt these
 ```scss
 .infobox {
   &.info {
-    background-color: var(--ob-s-color-status-info-bg-contrastLow-inversityNormal);
-    border-left: 4px solid var(--ob-s-color-status-info-fg-contrastHigh-inversityNormal);
-    color: var(--ob-s-color-status-info-fg-contrastHigh-inversityNormal);
+    background-color: var(--ob-s2-color-status-info-bg-contrastLow-inversityNormal);
+    border-left: 4px solid var(--ob-s2-color-status-info-fg-contrastHigh-inversityNormal);
+    color: var(--ob-s2-color-status-info-fg-contrastHigh-inversityNormal);
   }
   
   &.critical {
-    background-color: var(--ob-s-color-status-critical-bg-contrastLow-inversityNormal);
-    border-left: 4px solid var(--ob-s-color-status-critical-fg-contrastHigh-inversityNormal);
-    color: var(--ob-s-color-status-critical-fg-contrastHigh-inversityNormal);
+    background-color: var(--ob-s2-color-status-critical-bg-contrastLow-inversityNormal);
+    border-left: 4px solid var(--ob-s2-color-status-critical-fg-contrastHigh-inversityNormal);
+    color: var(--ob-s2-color-status-critical-fg-contrastHigh-inversityNormal);
   }
 }
 ```
@@ -293,13 +293,13 @@ These examples show recommended token usage patterns. Developers may adapt these
 ```scss
 .badge {
   &.resolved {
-    background-color: var(--ob-s-color-status-resolved-bg-contrastMedium-inversityNormal);
-    color: var(--ob-s-color-status-resolved-fg-contrastHigh-inversityNormal);
+    background-color: var(--ob-s2-color-status-resolved-bg-contrastMedium-inversityNormal);
+    color: var(--ob-s2-color-status-resolved-fg-contrastHigh-inversityNormal);
   }
   
   &.pending {
-    background-color: var(--ob-s-color-status-pending-bg-contrastMedium-inversityNormal);
-    color: var(--ob-s-color-status-pending-fg-contrastHigh-inversityNormal);
+    background-color: var(--ob-s2-color-status-pending-bg-contrastMedium-inversityNormal);
+    color: var(--ob-s2-color-status-pending-fg-contrastHigh-inversityNormal);
   }
 }
 ```
@@ -308,9 +308,9 @@ These examples show recommended token usage patterns. Developers may adapt these
 ```scss
 .pill {
   &.progress {
-    background-color: var(--ob-s-color-status-progress-bg-contrastLow-inversityNormal);
-    color: var(--ob-s-color-status-progress-fg-contrastHigh-inversityNormal);
-    border: 1px solid var(--ob-s-color-status-progress-fg-contrastMedium-inversityNormal);
+    background-color: var(--ob-s2-color-status-progress-bg-contrastLow-inversityNormal);
+    color: var(--ob-s2-color-status-progress-fg-contrastHigh-inversityNormal);
+    border: 1px solid var(--ob-s2-color-status-progress-fg-contrastMedium-inversityNormal);
   }
 }
 ```
@@ -343,14 +343,14 @@ Status colors automatically adapt to theme changes through inversity variations:
 ```scss
 /* Light theme context */
 .theme-light .badge.critical {
-  background-color: var(--ob-s-color-status-critical-bg-contrastMedium-inversityNormal);
-  color: var(--ob-s-color-status-critical-fg-contrastHigh-inversityNormal);
+  background-color: var(--ob-s2-color-status-critical-bg-contrastMedium-inversityNormal);
+  color: var(--ob-s2-color-status-critical-fg-contrastHigh-inversityNormal);
 }
 
 /* Dark theme context */
 .theme-dark .badge.critical {
-  background-color: var(--ob-s-color-status-critical-bg-contrastMedium-inversityFlipped);
-  color: var(--ob-s-color-status-critical-fg-contrastHigh-inversityFlipped);
+  background-color: var(--ob-s2-color-status-critical-bg-contrastMedium-inversityFlipped);
+  color: var(--ob-s2-color-status-critical-fg-contrastHigh-inversityFlipped);
 }
 ```
 
@@ -358,16 +358,16 @@ Status colors automatically adapt to theme changes through inversity variations:
 ```scss
 .status-indicator {
   /* Base styles that work in any context */
-  --status-bg: var(--ob-s-color-status-info-bg-contrastLow-inversityNormal);
-  --status-fg: var(--ob-s-color-status-info-fg-contrastHigh-inversityNormal);
+  --status-bg: var(--ob-s2-color-status-info-bg-contrastLow-inversityNormal);
+  --status-fg: var(--ob-s2-color-status-info-fg-contrastHigh-inversityNormal);
   
   background-color: var(--status-bg);
   color: var(--status-fg);
   
   /* Automatically adapts when inversity context changes */
-  .inversity-flipped & {
-    --status-bg: var(--ob-s-color-status-info-bg-contrastLow-inversityFlipped);
-    --status-fg: var(--ob-s-color-status-info-fg-contrastHigh-inversityFlipped);
+  .inversity_flipped & {
+    --status-bg: var(--ob-s2-color-status-info-bg-contrastLow-inversityFlipped);
+    --status-fg: var(--ob-s2-color-status-info-fg-contrastHigh-inversityFlipped);
   }
 }
 ```

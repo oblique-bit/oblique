@@ -310,9 +310,9 @@ Based on analysis of 40+ design systems including Material Design, Carbon, Fluen
 
 | **Pattern** | **Material Design** | **Carbon** | **Fluent** | **Oblique** |
 |-------------|-------------------|-----------|-----------|-------------|
-| **Container Tokens** | `primary-container` | `container-01` | `control-background` | `bg-base` |
-| **On-Surface Pattern** | `on-surface` | `text-primary` | `foreground-on-accent` | `fg-base` |
-| **Inverse Tokens** | `inverse-surface` | `inverse-01` | `accent-text-inverted` | `inversity-flipped` |
+| **Container Tokens** | `primary-container` | `container-01` | `control-background` | `bg_base` |
+| **On-Surface Pattern** | `on-surface` | `text-primary` | `foreground-on-accent` | `fg_base` |
+| **Inverse Tokens** | `inverse-surface` | `inverse-01` | `accent-text-inverted` | `inversity_flipped` |
 | **State Tokens** | `state-hover` | `hover` | `control-hover` | `hover` |
 | **Semantic Hierarchy** | primary/secondary/tertiary | primary/secondary | accent/neutral | primary/secondary/tertiary |
 
@@ -342,13 +342,13 @@ ob.h.{element}.color.{property}.{variant}.{state}    # HTML elements
 ```json
 {
   "ob.h.button.color.bg.primary.enabled": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}"
   },
   "ob.h.button.color.bg.primary.hover": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.bg-hover.contrast-high.inversity-normal}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.bg_hover.contrast_high.inversity_normal}"
   },
   "ob.c.stepper.color.fg.active.enabled": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.fg_base.contrast_high.inversity_normal}"
   }
 }
 ```
@@ -374,13 +374,13 @@ ob.h.{element}.color.{property}.{status}.{state}    # HTML elements
 ```json
 {
   "ob.c.alert.color.bg.error.default": {
-    "$value": "{ob.s3.color.status.error.bg-base.contrast-medium.inversity-normal}"
+    "$value": "{ob.s3.color.status.error.bg_base.contrast_medium.inversity_normal}"
   },
   "ob.c.badge.color.fg.success.default": {
-    "$value": "{ob.s3.color.status.success.fg-base.contrast-highest.inversity-normal}"
+    "$value": "{ob.s3.color.status.success.fg_base.contrast_highest.inversity_normal}"
   },
   "ob.h.input.color.border.error.enabled": {
-    "$value": "{ob.s3.color.status.error.border-base.contrast-high.inversity-normal}"
+    "$value": "{ob.s3.color.status.error.border_base.contrast_high.inversity_normal}"
   }
 }
 ```
@@ -405,13 +405,13 @@ ob.h.{element}.color.{property}.{variant}.{state}    # HTML elements
 ```json
 {
   "ob.c.card.color.bg.default.default": {
-    "$value": "{ob.s3.color.neutral.bg-base.contrast-low.inversity-normal}"
+    "$value": "{ob.s3.color.neutral.bg_base.contrast_low.inversity_normal}"
   },
   "ob.c.divider.color.border.default.default": {
-    "$value": "{ob.s3.color.neutral.border-base.contrast-medium.inversity-normal}"
+    "$value": "{ob.s3.color.neutral.border_base.contrast_medium.inversity_normal}"
   },
   "ob.h.table.color.bg.header.default": {
-    "$value": "{ob.s3.color.neutral.bg-surface.contrast-low.inversity-normal}"
+    "$value": "{ob.s3.color.neutral.bg-surface.contrast_low.inversity_normal}"
   }
 }
 ```
@@ -445,16 +445,16 @@ ob.h.{element}.color.{property}.{variant}.{state}    # HTML elements
 ```json
 {
   "ob.h.button.color.bg.primary.enabled": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}"
   },
   "ob.c.stepper.color.fg.active.enabled": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.fg-base.contrast-high.inversity-normal}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.fg_base.contrast_high.inversity_normal}"
   },
   "ob.c.header.color.bg.default.default": {
-    "$value": "{ob.s3.color.neutral.bg-base.contrast-low.inversity-normal}"
+    "$value": "{ob.s3.color.neutral.bg_base.contrast_low.inversity_normal}"
   },
   "ob.h.form.color.border.default.focus": {
-    "$value": "{ob.s3.color.interaction.border-base.contrast-medium.inversity-normal}"
+    "$value": "{ob.s3.color.interaction.border_base.contrast_medium.inversity_normal}"
   }
 }
 ```
@@ -471,14 +471,14 @@ ob.h.{element}.color.{property}.{variant}.{state}    # HTML elements
 // DON'T: Direct S1 consumption  
 {
   "ob.c.stepper.color.bg.active.enabled": {
-    "$value": "{ob.s1.color.neutral.bg-base.contrast-high.inversity-normal}"
+    "$value": "{ob.s1.color.neutral.bg_base.contrast_high.inversity_normal}"
   }
 }
 
 // DON'T: Direct S2 consumption
 {
   "ob.c.header.color.bg.default.default": {
-    "$value": "{ob.s2.color.neutral.bg-base.contrast-low.inversity-normal}"
+    "$value": "{ob.s2.color.neutral.bg_base.contrast_low.inversity_normal}"
   }
 }
 ```
@@ -510,7 +510,7 @@ Component tokens should support theming through semantic token selection:
 ```scss
 // High emphasis (default)
 .ob-button-primary {
-  // Uses emphasis-high semantic tokens
+  // Uses emphasis_high semantic tokens
 }
 
 // Low emphasis (monochromatic)
@@ -518,7 +518,7 @@ Component tokens should support theming through semantic token selection:
   --ob-theme-emphasis: low;
   
   .ob-button-primary {
-    // Automatically uses emphasis-low semantic tokens
+    // Automatically uses emphasis_low semantic tokens
   }
 }
 ```
@@ -527,14 +527,14 @@ Component tokens should support theming through semantic token selection:
 ```scss
 // Normal inversity (default)
 .ob-card {
-  // Uses inversity-normal semantic tokens
+  // Uses inversity_normal semantic tokens
 }
 
 // Flipped inversity (inverted)
 .ob-modal {
   --ob-theme-inversity: flipped;
   
-  // All nested components use inversity-flipped semantic tokens
+  // All nested components use inversity_flipped semantic tokens
 }
 ```
 
@@ -578,10 +578,10 @@ Components that can use either `inversity_normal` or `inversity_flipped` dependi
 ```json
 {
   "ob.h.button.color.bg.primary.enabled": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.bg-base.contrast-high.inversity-flipped}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.bg_base.contrast_high.inversity_flipped}"
   },
   "ob.h.button.color.fg.primary.enabled": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.fg-base.contrast-highest.inversity-flipped}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.fg_base.contrast_highest.inversity_flipped}"
   }
 }
 ```
@@ -590,10 +590,10 @@ Components that can use either `inversity_normal` or `inversity_flipped` dependi
 ```json
 {
   "ob.c.badge.color.bg.default.default": {
-    "$value": "{ob.s3.color.neutral.bg-base.contrast-high.inversity-flipped}"
+    "$value": "{ob.s3.color.neutral.bg_base.contrast_high.inversity_flipped}"
   },
   "ob.c.badge.color.fg.default.default": {
-    "$value": "{ob.s3.color.neutral.fg-base.contrast-highest.inversity-flipped}"
+    "$value": "{ob.s3.color.neutral.fg_base.contrast_highest.inversity_flipped}"
   }
 }
 ```
@@ -602,10 +602,10 @@ Components that can use either `inversity_normal` or `inversity_flipped` dependi
 ```json
 {
   "ob.c.infobox.color.bg.fatal.default": {
-    "$value": "{ob.s3.color.status.error.bg-base.contrast-high.inversity-flipped}"
+    "$value": "{ob.s3.color.status.error.bg_base.contrast_high.inversity_flipped}"
   },
   "ob.c.infobox.color.fg.fatal.default": {
-    "$value": "{ob.s3.color.status.error.fg-base.contrast-highest.inversity-flipped}"
+    "$value": "{ob.s3.color.status.error.fg_base.contrast_highest.inversity_flipped}"
   }
 }
 ```
@@ -615,7 +615,7 @@ Components that can use either `inversity_normal` or `inversity_flipped` dependi
 | **Concept** | **Oblique Inversity** | **Material onSurface** |
 |-------------|----------------------|------------------------|
 | **Purpose** | Component-level contrast inversion | Foreground colors for specific backgrounds |
-| **Implementation** | `inversity-normal` / `inversity-flipped` suffixes | `on-primary` / `on-surface` prefixes |
+| **Implementation** | `inversity_normal` / `inversity_flipped` suffixes | `on-primary` / `on-surface` prefixes |
 | **Usage** | Designer's component-level decision | Automatic foreground/background pairing |
 | **Examples** | Badge needs flipping to stand out | Text color on primary button background |
 
@@ -626,18 +626,18 @@ Components that can use either `inversity_normal` or `inversity_flipped` dependi
 {
   // Standard component (normal inversity)
   "ob.c.card.color.bg.default.default": {
-    "$value": "{ob.s3.color.neutral.bg-base.contrast-low.inversity-normal}"
+    "$value": "{ob.s3.color.neutral.bg_base.contrast_low.inversity_normal}"
   },
   "ob.c.card.color.fg.default.default": {
-    "$value": "{ob.s3.color.neutral.fg-base.contrast-high.inversity-normal}"
+    "$value": "{ob.s3.color.neutral.fg_base.contrast_high.inversity_normal}"
   },
   
   // Emphasis component (flipped inversity)
   "ob.c.badge.color.bg.active.default": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.bg-base.contrast-high.inversity-flipped}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.bg_base.contrast_high.inversity_flipped}"
   },
   "ob.c.badge.color.fg.active.default": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.fg-base.contrast-highest.inversity-flipped}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.fg_base.contrast_highest.inversity_flipped}"
   }
 }
 ```
@@ -659,12 +659,12 @@ Components that can use either `inversity_normal` or `inversity_flipped` dependi
 #### **Visual Behavior**
 
 **In Light Theme:**
-- `inversity-normal`: Light background with dark text (standard)
-- `inversity-flipped`: Dark background with light text (inverted for emphasis)
+- `inversity_normal`: Light background with dark text (standard)
+- `inversity_flipped`: Dark background with light text (inverted for emphasis)
 
 **In Dark Theme:**
-- `inversity-normal`: Dark background with light text (standard)  
-- `inversity-flipped`: Light background with dark text (inverted for emphasis)
+- `inversity_normal`: Dark background with light text (standard)  
+- `inversity_flipped`: Light background with dark text (inverted for emphasis)
 
 **Key Insight:** Inversity flipping occurs before theme switching and is color-neutral. A flipped component maintains its emphasis role across both light and dark themes by always inverting relative to its context.
 
@@ -710,16 +710,16 @@ infobox.fatal (flipped context) + button.primary (flipped nature) → button.pri
 {
   // Infobox.fatal uses flipped inversity (dark background)
   "ob.c.infobox.color.bg.fatal.default": {
-    "$value": "{ob.s3.color.status.error.bg-base.contrast-high.inversity-flipped}"
+    "$value": "{ob.s3.color.status.error.bg_base.contrast_high.inversity_flipped}"
   },
   
   // Primary button inside fatal infobox uses normal inversity
   // This creates: flipped context + flipped component = normal inversity
   "ob.h.button.color.bg.primary.enabled": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}"
   },
   "ob.h.button.color.fg.primary.enabled": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.fg-base.contrast-highest.inversity-normal}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.fg_base.contrast_highest.inversity_normal}"
   }
 }
 ```
@@ -737,12 +737,12 @@ infobox.fatal (flipped context) + button.primary (flipped nature) → button.pri
 {
   // Standard primary button (flipped in nature)
   "ob.h.button.color.bg.primary.enabled": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.bg-base.contrast-high.inversity-flipped}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.bg_base.contrast_high.inversity_flipped}"
   },
   
   // Primary button flipped variant (double inversion = normal)
   "ob.h.button.color.bg.primary-flipped.enabled": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}"
   }
 }
 ```
@@ -771,7 +771,7 @@ Flipped Components:
   
   // Context-aware resolution in flipped containers
   "ob.h.button.color.bg.primary.enabled.context-flipped": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal}",
+    "$value": "{ob.s3.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}",
     "$description": "Primary button in flipped context uses normal inversity"
   }
 }
@@ -885,10 +885,10 @@ When migrating from legacy systems:
 ```json
 {
   "ob.h.button.color.bg.primary.enabled": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.bg-base.contrast-high.inversity-normal}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}"
   },
   "ob.h.button.color.fg.primary.enabled": {
-    "$value": "{ob.s3.color.interaction.emphasis-high.fg-base.contrast-highest.inversity-flipped}"
+    "$value": "{ob.s3.color.interaction.emphasis_high.fg_base.contrast_highest.inversity_flipped}"
   }
 }
 ```
@@ -897,10 +897,10 @@ When migrating from legacy systems:
 ```json
 {
   "ob.c.alert.color.bg.error.default": {
-    "$value": "{ob.s3.color.status.error.bg-base.contrast-medium.inversity-normal}"
+    "$value": "{ob.s3.color.status.error.bg_base.contrast_medium.inversity_normal}"
   },
   "ob.c.alert.color.fg.error.default": {
-    "$value": "{ob.s3.color.status.error.fg-base.contrast-highest.inversity-normal}"
+    "$value": "{ob.s3.color.status.error.fg_base.contrast_highest.inversity_normal}"
   }
 }
 ```
@@ -909,10 +909,10 @@ When migrating from legacy systems:
 ```json
 {
   "ob.h.input.color.bg.default.enabled": {
-    "$value": "{ob.s3.color.neutral.bg-surface.contrast-low.inversity-normal}"
+    "$value": "{ob.s3.color.neutral.bg-surface.contrast_low.inversity_normal}"
   },
   "ob.h.input.color.border.default.focus": {
-    "$value": "{ob.s3.color.interaction.border-base.contrast-high.inversity-normal}"
+    "$value": "{ob.s3.color.interaction.border_base.contrast_high.inversity_normal}"
   }
 }
 ```

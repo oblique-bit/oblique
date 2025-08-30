@@ -229,4 +229,4 @@ ob.s3.color.brand
 
 ---
 
-*Last updated: August 11, 2025 - Updated token structure: removed static wrapper, moved no-color to neutral category, established four main semantic color groups*
+*Last updated: August 11, 2025 - Updated token structure: removed static wrapper, moved no_color to neutral category, established four main semantic color groups*
