@@ -9,6 +9,7 @@
 ---
 
 **Navigation to Color Topics:**
+- [Primitive Colors](colors-primitive.md) - Foundation color values and token architecture
 - [Semantic Color Architecture](colors-semantic.md) - Layer system, token resolution, and consumption patterns
 - [Status Colors](colors-semantic-status.md) - Success, warning, error, info states
 - [Interaction Colors](colors-semantic-interaction.md) - Hover, active, visited, disabled states  

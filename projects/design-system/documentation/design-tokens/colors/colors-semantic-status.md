@@ -11,22 +11,30 @@ Status colors communicate system state, user feedback, and contextual informatio
 
 **Foundation:** Primitive color values are inherited from the [BK Design System](https://swiss.github.io/designsystem/?path=/docs/components-badge--docs) for consistency across Swiss government applications and websites. We have enhanced these base primitive colors with semantic meaning and grouped them into two distinct classifications to provide clearer guidance for designers and developers.
 
-## **Status Reference Table**
+## **Status Reference Tables**
 
-| Status | Type | Description | Components | Legacy Name | Inspiration | Change Status | Classification |
-|--------|------|-------------|-------------|-------------|-------------|---------------|----------------|
-| **info** | Informational | General information, tips, announcements | ob.c.infobox, ob.c.badge | — | GOV.UK, USWDS | Unchanged | **Reserved** |
-| **resolved** | Success/Completion | Completed tasks, success messages | ob.c.badge, ob.c.pill | success | GitHub, Jira | Renamed | **Reserved** |
-| **critical** | Error/Urgent | System failures, urgent alerts | ob.c.badge, ob.c.infobox | error | Material, Atlassian | Renamed | **Reserved** |
-| **attention** | Warning/Caution | Warnings, review needed | ob.c.infobox, ob.c.badge | warning | USWDS, Atlassian | Renamed | **Reserved** |
-| **pending** | Workflow | Awaiting action, in queue | ob.c.pill, ob.c.badge | — | Jira, GitHub | Added | **Flexible** |
-| **confirmed** | Approval | Verified, approved, confirmed | ob.c.pill, ob.c.badge | — | GitHub, Atlassian | Added | **Flexible** |
-| **progress** | Processing | In progress, loading states | ob.c.pill, ob.c.badge | — | Jira, GitHub | Added | **Flexible** |
-| **scheduled** | Planning | Scheduled, future items | ob.c.pill, ob.c.badge | — | Jira, GitHub | Added | **Flexible** |
-| **waiting** | Queue | Waiting, queued, on hold | ob.c.pill, ob.c.badge | — | Jira, GitHub | Added | **Flexible** |
-| **closed** | Archive | Closed, archived, ended | ob.c.pill, ob.c.badge | — | GitHub | Added | **Flexible** |
-| **disabled** | Inactive | Disabled, unavailable | All ob.c components | — | Material | Added | **Flexible** |
-| **fatal** | Emergency | Population danger, critical alerts | ob.c.infobox | — | BK Design System | Added | **Flexible** |
+### 🔒 **Reserved Statuses**
+Status tokens with **mandatory settings** that cannot be changed due to brand consistency, universal signal semantics, or cross-system requirements.
+
+| Status | Type | Description | Components | Legacy Name | Inspiration | Change Status |
+|--------|------|-------------|-------------|-------------|-------------|---------------|
+| **info** | Informational | General information, tips, announcements | ob.c.infobox, ob.c.badge | — | GOV.UK, USWDS | Unchanged |
+| **resolved** | Success/Completion | Completed tasks, success messages | ob.c.badge, ob.c.pill | success | GitHub, Jira | Renamed |
+| **critical** | Error/Urgent | System failures, urgent alerts | ob.c.badge, ob.c.infobox | error | Material, Atlassian | Renamed |
+| **attention** | Warning/Caution | Warnings, review needed | ob.c.infobox, ob.c.badge | warning | USWDS, Atlassian | Renamed |
+| **fatal** | Emergency | Population danger, critical alerts requiring brand consistency | ob.c.infobox | — | BK Design System | Added |
+
+### 🔧 **Flexible Statuses**
+Status tokens that can be **adapted, renamed, or remapped** by projects based on workflow requirements.
+
+| Status | Type | Description | Components | Legacy Name | Inspiration | Change Status |
+|--------|------|-------------|-------------|-------------|-------------|---------------|
+| **pending** | Workflow | Awaiting action, in queue | ob.c.pill, ob.c.badge | — | Jira, GitHub | Added |
+| **confirmed** | Approval | Verified, approved, confirmed | ob.c.pill, ob.c.badge | — | GitHub, Atlassian | Added |
+| **progress** | Processing | In progress, loading states | ob.c.pill, ob.c.badge | — | Jira, GitHub | Added |
+| **scheduled** | Planning | Scheduled, future items | ob.c.pill, ob.c.badge | — | Jira, GitHub | Added |
+| **waiting** | Queue | Waiting, queued, on hold | ob.c.pill, ob.c.badge | — | Jira, GitHub | Added |
+| **closed** | Archive | Closed, archived, ended | ob.c.pill, ob.c.badge | — | GitHub | Added |
 
 ## **Status Token Classification System**
 
@@ -39,14 +47,16 @@ Status tokens are classified as either **Reserved** or **Flexible** to provide c
 - 🚦 **Follow universal signal semantics** - Based on traffic light patterns
 - 🌍 **Cross-system consistency** - Used across government applications
 - **Color mapping locked** - Primitive color references must not change
+- **Brand consistency required** - Critical for maintaining design system integrity
 
 **Usage:** Fundamental system communication across all applications
 - **Info**: General information and announcements
 - **Resolved**: Completed tasks and positive outcomes  
 - **Critical**: System failures and urgent alerts
 - **Attention**: Warnings and caution messages
+- **Fatal**: Emergency situations requiring consistent brand treatment for population safety
 
-### **Flexible Statuses**
+### 🔧 **Flexible Statuses**
 
 **Rules:**
 - **Project-adaptable** - May be renamed or remapped by designers
@@ -253,7 +263,6 @@ Indicates work in progress, loading states, or active processes.
 - **Waiting**: Queued or blocked items (typically gray/neutral colors)
 - **Fatal**: Emergency disasters (inspired by BK Design System https://swiss.github.io/designsystem/?path=/docs/components-alertbanner--docs)
 - **Closed**: Archived or completed items (typically muted colors)
-- **Disabled**: Inactive or unavailable items (typically grayed out)
 
 ## Usage Guidelines
 

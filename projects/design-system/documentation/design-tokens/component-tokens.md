@@ -547,17 +547,30 @@ Inversity is a designer's decision made at the component level, not a user prefe
 
 #### **When to Use Each Inversity Type**
 
-**inversity_normal (Standard Appearance):**
-- Default component appearance that inherits the host theme
-- Most components use normal inversity by default
-- Maintains standard foreground/background contrast relationships
-- Used for: cards, forms, navigation, tables, most interactive elements
+Components are categorized into two groups based on their inversity requirements:
 
-**inversity_flipped (Emphasis Through Inversion):**
-- Component-level inversion for visual emphasis and distinction
-- Used when components need to "stand out" from their surrounding context
-- Designer's intentional choice for specific components or component variants
-- Used for: primary buttons, badges, active states, fatal alerts, call-to-action elements
+#### **Reserved Components (Fixed Inversity)**
+Components with **mandatory inversity settings** that cannot be changed due to brand consistency, UX scannability, or design system requirements.
+
+| **Component** | **Required Inversity** | **Reasoning** | **Examples** |
+|---------------|----------------------|---------------|--------------|
+| **Primary Buttons** | `inversity_flipped` | **UX Scannability**: Must stand out as primary call-to-action | `ob.h.button.primary` |
+| **Badges** | `inversity_flipped` | **Visual Distinction**: Need to stand out from surrounding content | `ob.c.badge.default` |
+| **Fatal Alerts** | `inversity_flipped` | **Brand Consistency**: Critical error states require consistent high-contrast appearance | `ob.c.infobox.fatal` |
+| **Active States** | `inversity_flipped` | **UX Scannability**: Selected/active items must be immediately identifiable | `ob.c.stepper.active` |
+
+#### **Flexible Components (Contextual Inversity)**
+Components that can use either `inversity_normal` or `inversity_flipped` depending on their context and surrounding components.
+
+| **Component** | **Default Inversity** | **Alternative Use** | **Examples** |
+|---------------|---------------------|-------------------|--------------|
+| **Secondary Buttons** | `inversity_normal` | `inversity_flipped` in dark containers | `ob.h.button.secondary` |
+| **Tertiary Buttons** | `inversity_normal` | `inversity_flipped` for emphasis in specific contexts | `ob.h.button.tertiary` |
+| **Cards** | `inversity_normal` | `inversity_flipped` for featured/highlighted cards | `ob.c.card.default` |
+| **Forms** | `inversity_normal` | `inversity_flipped` in dark themes or special contexts | `ob.h.form.input` |
+| **Navigation** | `inversity_normal` | `inversity_flipped` for active/current page indicators | `ob.c.navigation.item` |
+| **Tables** | `inversity_normal` | `inversity_flipped` for header emphasis | `ob.h.table.header` |
+| **Info/Warning Alerts** | `inversity_normal` | `inversity_flipped` for higher urgency | `ob.c.infobox.info`, `ob.c.infobox.warning` |
 
 #### **Design Decision Examples**
 
