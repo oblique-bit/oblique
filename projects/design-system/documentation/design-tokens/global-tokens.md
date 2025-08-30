@@ -1,13 +1,13 @@
 # Global Tokens and Reference Hierarchy
 
-### 🧭 **The Role of Global Tokens Across Levels**
+### **The Role of Global Tokens Across Levels**
 
 **Context:**
 We are refining the explanation of token levels within our design system, especially regarding how reference chains work. The assumption that each level strictly references the one directly below (e.g., Component -> Semantic -> Primitive) does **not fully apply** to Global tokens.
 
 ---
 
-## 📌 **Clarification to Level Documentation**
+## **Clarification to Level Documentation**
 
 Global tokens (`ob.g.*`) **do not follow the strict reference hierarchy** like other levels. Instead, they can be **referenced directly by any other token level**, including:
 

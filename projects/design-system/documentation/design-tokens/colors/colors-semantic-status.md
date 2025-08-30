@@ -24,7 +24,7 @@ Status tokens with **mandatory settings** that cannot be changed due to brand co
 | **attention** | Warning/Caution | Warnings, review needed | ob.c.infobox, ob.c.badge | warning | USWDS, Atlassian | Renamed |
 | **fatal** | Emergency | Population danger, critical alerts requiring brand consistency | ob.c.infobox | — | BK Design System | Added |
 
-### 🔧 **Flexible Statuses**
+### **Flexible Statuses**
 Status tokens that can be **adapted, renamed, or remapped** by projects based on workflow requirements.
 
 | Status | Type | Description | Components | Legacy Name | Inspiration | Change Status |
@@ -56,11 +56,11 @@ Status tokens are classified as either **Reserved** or **Flexible** to provide c
 - **Attention**: Warnings and caution messages
 - **Fatal**: Emergency situations requiring consistent brand treatment for population safety
 
-### 🔧 **Flexible Statuses**
+### **Flexible Statuses**
 
 **Rules:**
 - **Project-adaptable** - May be renamed or remapped by designers
-- 🎫 **Workflow-oriented** - Designed for ticketing and task management
+- **Workflow-oriented** - Designed for ticketing and task management
 - **Extensible** - Projects can add new flexible statuses
 - **Reserved protection** - Must not alter reserved statuses
 

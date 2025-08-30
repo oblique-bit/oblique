@@ -33,7 +33,7 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> Primitive
 
 ### Prohibited Consumption Patterns
 
-#### ❌ Direct Primitive Consumption
+#### INVALID: Direct Primitive Consumption
 ```json
 // WRONG: Component consuming primitive directly
 "ob.c.button.color.bg.primary": {
@@ -41,7 +41,7 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> Primitive
 }
 ```
 
-#### ❌ L1 Semantic Consumption
+#### INVALID: L1 Semantic Consumption
 ```json
 // WRONG: Component consuming L1 semantic token
 "ob.c.button.color.bg.primary": {
@@ -103,7 +103,7 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> Primitive
 
 **Rationale:** This preserves the correct reference chain while achieving the neutral appearance.
 
-#### ❌ Wrong Approach
+#### INVALID: Wrong Approach
 ```json
 // WRONG: Interactive component consuming neutral tokens
 "ob.c.header-nav.color.fg.link": {
@@ -179,7 +179,7 @@ Components (ob.c.*) -> Semantics (ob.s.*) -> Primitives (ob.p.*)
 }
 ```
 
-#### ❌ Prohibited Typography Consumption
+#### INVALID: Prohibited Typography Consumption
 ```json
 // WRONG: Component consuming primitive directly
 "ob.c.button.typography.font-weight": {
@@ -227,7 +227,7 @@ Components (ob.c.*) -> Semantics (ob.s.*) -> Primitives (ob.p.*)
 }
 ```
 
-#### ❌ Prohibited Cross-Domain Usage
+#### INVALID: Prohibited Cross-Domain Usage
 ```json
 // WRONG: Typography consuming primitive color
 "ob.s.typography.color.text.default": {

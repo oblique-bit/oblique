@@ -197,10 +197,10 @@ ob.s3.color.brand
 - **Fixed indicators** that need consistent meaning
 
 ### **Anti-Patterns**
-- ❌ **Don't use static colors** for general UI backgrounds
-- ❌ **Don't use layered colors** for brand elements
-- ❌ **Don't mix static and layered** unnecessarily
-- ❌ **Don't create static colors** that could be themed
+- - **Don't use static colors** for general UI backgrounds
+- - **Don't use layered colors** for brand elements
+- - **Don't mix static and layered** unnecessarily
+- - **Don't create static colors** that could be themed
 
 ---
 
