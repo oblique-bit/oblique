@@ -1,11 +1,10 @@
 import {registerLocaleData} from '@angular/common';
-import {provideHttpClient} from '@angular/common/http';
 import localeFr from '@angular/common/locales/fr';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TranslateService, provideTranslateService} from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 import obliqueEn from '../../../assets/i18n/oblique-en.json';
 import obliqueFr from '../../../assets/i18n/oblique-fr.json';
-import {provideObliqueConfiguration} from '../../utilities';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObLanguageService} from '../language.service';
 import {ObDateComponent} from './date.component';
 
@@ -19,20 +18,7 @@ describe('DateComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ObDateComponent],
-			providers: [
-				provideHttpClient(),
-				provideTranslateService(),
-				provideObliqueConfiguration({
-					accessibilityStatement: {
-						applicationName: 'appName',
-						createdOn: new Date('2025-01-31'),
-						conformity: 'none',
-						applicationOperator: 'Operator',
-						contact: [{email: 'e@mail.com'}]
-					}
-				}),
-				{provide: ObLanguageService}
-			]
+			providers: [provideObliqueTestingConfiguration(), {provide: ObLanguageService}]
 		}).compileComponents();
 		translateService = TestBed.inject(TranslateService);
 		fixture = TestBed.createComponent(ObDateComponent);

@@ -1,10 +1,9 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, Component} from '@angular/core';
 import {Router, provideRouter} from '@angular/router';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslateModule} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
-import {WINDOW} from '../../utilities';
-import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
 import {ObMasterLayoutComponent} from './master-layout.component';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
@@ -13,7 +12,6 @@ import {ObMockOffCanvasService} from '../../off-canvas/_mocks/mock-off-canvas.se
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {appVersion} from '../../version';
 
@@ -39,16 +37,15 @@ describe('ObMasterLayoutComponent', () => {
 
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe],
+			imports: [TranslateModule],
 			declarations: [ObMasterLayoutComponent],
 			providers: [
+				provideObliqueTestingConfiguration(),
 				provideRouter([{path: 'some/path', component: MockComponent}]),
-				{provide: TranslateService, useClass: ObMockTranslateService},
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
 				{provide: ObOffCanvasService, useClass: ObMockOffCanvasService},
-				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
-				{provide: WINDOW, useValue: window}
+				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();

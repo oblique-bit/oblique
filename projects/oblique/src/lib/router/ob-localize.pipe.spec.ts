@@ -1,29 +1,14 @@
 import {ObLocalizePipe} from './ob-localize.pipe';
 import {TestBed} from '@angular/core/testing';
-import {OB_HAS_LANGUAGE_IN_URL, provideObliqueConfiguration} from '../utilities';
-import {TranslateLoader, TranslateService} from '@ngx-translate/core';
-import {of} from 'rxjs';
-import {provideHttpClient} from '@angular/common/http';
+import {OB_HAS_LANGUAGE_IN_URL, provideObliqueTestingConfiguration} from '../utilities';
+import {TranslateService} from '@ngx-translate/core';
 
 describe(ObLocalizePipe.name, () => {
 	let pipe: ObLocalizePipe;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [
-				ObLocalizePipe,
-				provideHttpClient(),
-				provideObliqueConfiguration({
-					accessibilityStatement: {
-						createdOn: new Date(),
-						applicationName: '',
-						applicationOperator: '',
-						conformity: 'none',
-						contact: [{email: ''}]
-					}
-				}),
-				{provide: TranslateLoader, useValue: {getTranslation: () => of({})}}
-			]
+			providers: [ObLocalizePipe, provideObliqueTestingConfiguration()]
 		});
 	});
 

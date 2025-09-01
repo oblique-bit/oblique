@@ -4,10 +4,8 @@ import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {DateCodeExamplesComponent} from './date-code-examples.component';
-
 import {By} from '@angular/platform-browser';
-import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
-import {TranslateService} from '@ngx-translate/core';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
 describe(DateCodeExamplesComponent.name, () => {
 	let component: DateCodeExamplesComponent;
@@ -16,10 +14,7 @@ describe(DateCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [DateCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(DateCodeExamplesComponent);

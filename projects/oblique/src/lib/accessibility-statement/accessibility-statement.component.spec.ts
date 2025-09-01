@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {provideHttpClient} from '@angular/common/http';
 import {TranslateModule} from '@ngx-translate/core';
-import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, provideObliqueConfiguration} from '../utilities';
+import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, provideObliqueTestingConfiguration} from '../utilities';
 import {AccessibilityStatementComponent} from './accessibility-statement.component';
 import {registerLocaleData} from '@angular/common';
 import localeDE from '@angular/common/locales/de-CH';
@@ -18,7 +18,7 @@ describe(AccessibilityStatementComponent.name, () => {
 			imports: [AccessibilityStatementComponent, TranslateModule],
 			providers: [
 				provideHttpClient(),
-				provideObliqueConfiguration({
+				provideObliqueTestingConfiguration({
 					accessibilityStatement: {
 						applicationName: 'appName',
 						conformity: 'none',

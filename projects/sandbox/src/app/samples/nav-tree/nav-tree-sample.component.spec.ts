@@ -7,9 +7,10 @@ import {ActivatedRoute} from '@angular/router';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {of} from 'rxjs';
-import {ObliqueTestingModule} from '@oblique/oblique';
 import {NavTreeSampleComponent} from './nav-tree-sample.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe(NavTreeSampleComponent.name, () => {
 	let component: NavTreeSampleComponent;
@@ -18,15 +19,8 @@ describe(NavTreeSampleComponent.name, () => {
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
 			declarations: [NavTreeSampleComponent],
-			imports: [
-				CommonModule,
-				FormsModule,
-				RouterTestingModule,
-				ObliqueTestingModule,
-				MatRadioModule,
-				MatCheckboxModule,
-				MatSlideToggleModule
-			],
+			imports: [CommonModule, FormsModule, RouterTestingModule, MatRadioModule, MatCheckboxModule, MatSlideToggleModule, TranslateModule],
+			providers: [provideObliqueTestingConfiguration()],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
 	}));

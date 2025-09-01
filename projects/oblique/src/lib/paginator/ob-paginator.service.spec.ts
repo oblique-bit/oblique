@@ -1,14 +1,12 @@
 import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslateLoader, TranslateService, provideTranslateService} from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 import {ObPaginatorService} from './ob-paginator.service';
-import {provideObliqueConfiguration} from '../utilities';
-import {provideHttpClient} from '@angular/common/http';
+import {provideObliqueTestingConfiguration} from '../utilities';
 import obliqueEn from '../../assets/i18n/oblique-en.json';
 import obliqueIt from '../../assets/i18n/oblique-it.json';
 import obliqueDe from '../../assets/i18n/oblique-de.json';
 import obliqueFr from '../../assets/i18n/oblique-fr.json';
-import {of} from 'rxjs';
 
 describe('ObPaginatorService', () => {
 	let paginatorService: ObPaginatorService;
@@ -17,21 +15,7 @@ describe('ObPaginatorService', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [NoopAnimationsModule],
-			providers: [
-				ObPaginatorService,
-				provideHttpClient(),
-				provideTranslateService(),
-				provideObliqueConfiguration({
-					accessibilityStatement: {
-						applicationName: 'appName',
-						createdOn: new Date('2025-01-31'),
-						conformity: 'none',
-						applicationOperator: 'Operator',
-						contact: [{email: 'e@mail.com'}]
-					}
-				}),
-				{provide: TranslateLoader, useValue: {getTranslation: () => of({})}}
-			]
+			providers: [ObPaginatorService, provideObliqueTestingConfiguration()]
 		}).compileComponents();
 		translateService = TestBed.inject(TranslateService);
 		paginatorService = TestBed.inject(ObPaginatorService);

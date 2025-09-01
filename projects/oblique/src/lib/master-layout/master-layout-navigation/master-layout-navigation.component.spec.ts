@@ -3,13 +3,11 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {Router} from '@angular/router';
-import {TranslateService} from '@ngx-translate/core';
-import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
+import {TranslateModule} from '@ngx-translate/core';
 import {ObMasterLayoutNavigationComponent} from '../master-layout-navigation/master-layout-navigation.component';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
-import {OB_HAS_LANGUAGE_IN_URL, WINDOW} from '../../utilities';
+import {OB_HAS_LANGUAGE_IN_URL, provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMockMasterLayoutNavigationItemDirective} from '../_mocks/mock-master-layout-navigation-item.directive';
 import {ObMasterLayoutNavigationSubMenuItemComponent} from './sub-menu-item/master-layout-navigation-sub-menu-item.component';
 import {basicMockLinks, mockLinksWithChildren} from './master-layout-navigation.component.spec-data';
@@ -44,7 +42,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			],
 			imports: [
 				ObMasterLayoutNavigationGoToChildrenComponent,
-				ObMockTranslatePipe,
+				TranslateModule,
 				RouterTestingModule.withRoutes([
 					{path: 'defaultPathMatch', component: DummyDefaultPathComponent},
 					{path: 'prefix/1/users', component: DummyPrefixPathComponent},
@@ -57,10 +55,9 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			],
 			schemas: [NO_ERRORS_SCHEMA],
 			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
+				provideObliqueTestingConfiguration(),
 				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
-				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: false},
-				{provide: WINDOW, useValue: window}
+				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: false}
 			]
 		}).compileComponents();
 	}));

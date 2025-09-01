@@ -5,9 +5,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {By} from '@angular/platform-browser';
-import {WINDOW} from '../utilities';
+import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObInputClearDirective} from './input-clear.directive';
+import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
 	template: ` <div [formGroup]="testForm">
@@ -112,15 +113,8 @@ describe('InputClear', () => {
 		beforeEach(waitForAsync(() => {
 			TestBed.configureTestingModule({
 				declarations: [UntypedReactiveFormTestComponent],
-				imports: [
-					ObInputClearDirective,
-					ObMockTranslatePipe,
-					ReactiveFormsModule,
-					MatFormFieldModule,
-					MatInputModule,
-					NoopAnimationsModule
-				],
-				providers: [{provide: WINDOW, useValue: window}]
+				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule, TranslateModule],
+				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
 		}));
 
@@ -187,15 +181,8 @@ describe('InputClear', () => {
 		beforeEach(waitForAsync(() => {
 			TestBed.configureTestingModule({
 				declarations: [StronglyTypedReactiveFormTestComponent],
-				imports: [
-					ObInputClearDirective,
-					ObMockTranslatePipe,
-					ReactiveFormsModule,
-					MatFormFieldModule,
-					MatInputModule,
-					NoopAnimationsModule
-				],
-				providers: [{provide: WINDOW, useValue: window}]
+				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule, TranslateModule],
+				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
 		}));
 
@@ -261,8 +248,8 @@ describe('InputClear', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [TemplateDrivenFormTestComponent],
-				imports: [ObMockTranslatePipe, ObInputClearDirective, FormsModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule],
-				providers: [{provide: WINDOW, useValue: window}]
+				imports: [ObInputClearDirective, FormsModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule, TranslateModule],
+				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
 		});
 
@@ -328,8 +315,16 @@ describe('InputClear', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [HtmlInputTestComponent],
-				imports: [ObMockTranslatePipe, ObInputClearDirective, FormsModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule],
-				providers: [{provide: WINDOW, useValue: window}]
+				imports: [
+					ObMockTranslatePipe,
+					ObInputClearDirective,
+					FormsModule,
+					MatFormFieldModule,
+					MatInputModule,
+					NoopAnimationsModule,
+					TranslateModule
+				],
+				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
 		});
 
@@ -388,8 +383,16 @@ describe('InputClear', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [WrongConfigurationTestComponent],
-				imports: [ObMockTranslatePipe, ObInputClearDirective, FormsModule, MatFormFieldModule, MatInputModule, NoopAnimationsModule],
-				providers: [{provide: WINDOW, useValue: window}]
+				imports: [
+					ObMockTranslatePipe,
+					ObInputClearDirective,
+					FormsModule,
+					MatFormFieldModule,
+					MatInputModule,
+					NoopAnimationsModule,
+					TranslateModule
+				],
+				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
 		});
 

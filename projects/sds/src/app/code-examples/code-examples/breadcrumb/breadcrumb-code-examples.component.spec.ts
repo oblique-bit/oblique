@@ -4,8 +4,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {By} from '@angular/platform-browser';
 import {BreadcrumbCodeExamplesComponent} from './breadcrumb-code-examples.component';
-import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
-import {TranslateService} from '@ngx-translate/core';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {BreadcrumbExampleDefaultPreviewComponent} from './previews/default/breadcrumb-example-default-preview.component';
 
 describe(BreadcrumbCodeExamplesComponent.name, () => {
@@ -15,10 +14,7 @@ describe(BreadcrumbCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [BreadcrumbCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(BreadcrumbCodeExamplesComponent);

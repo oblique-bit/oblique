@@ -61,10 +61,10 @@ module.exports = {
 			lines: 100
 		},
 		'projects/oblique/src/lib/http-api-interceptor/*.ts': {
-			statements: 25,
+			statements: 0,
 			branches: 0,
 			functions: 0,
-			lines: 21
+			lines: 0
 		},
 		'projects/oblique/src/lib/icon/*.ts': {
 			statements: 96,

@@ -3,9 +3,9 @@ import {Component, DebugElement, Directive, EventEmitter, Output} from '@angular
 import {By} from '@angular/platform-browser';
 import {Observable} from 'rxjs';
 import {skip} from 'rxjs/operators';
-import {WINDOW} from '../utilities';
-import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObColumnLayoutComponent} from './column-layout.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 let resizerCallback;
 class ResizeObserver {
@@ -48,9 +48,9 @@ describe(ObColumnLayoutComponent.name, () => {
 
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				imports: [ObMockTranslatePipe],
+				imports: [TranslateModule],
 				declarations: [ObColumnLayoutComponent, ObColumnPanelDirective],
-				providers: [{provide: WINDOW, useValue: window}]
+				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
 		});
 
@@ -188,9 +188,9 @@ describe(ObColumnLayoutComponent.name, () => {
 
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				imports: [ObMockTranslatePipe],
+				imports: [TranslateModule],
 				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective],
-				providers: [{provide: WINDOW, useValue: window}]
+				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
 		});
 
@@ -262,9 +262,9 @@ describe(ObColumnLayoutComponent.name, () => {
 
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				imports: [ObMockTranslatePipe],
+				imports: [TranslateModule],
 				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective],
-				providers: [{provide: WINDOW, useValue: window}]
+				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
 		});
 

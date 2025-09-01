@@ -3,8 +3,7 @@ import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {MaterialTableCodeExamplesComponent} from './material-table-code-examples.component';
-import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
-import {TranslateService} from '@ngx-translate/core';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {By} from '@angular/platform-browser';
 import {MaterialTableExampleDefaultPreviewComponent} from './previews/default/material-table-example-default-preview.component';
@@ -21,10 +20,7 @@ describe(MaterialTableCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [MaterialTableCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent, NoopAnimationsModule],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(MaterialTableCodeExamplesComponent);

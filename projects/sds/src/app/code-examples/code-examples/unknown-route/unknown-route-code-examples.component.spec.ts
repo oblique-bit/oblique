@@ -3,9 +3,8 @@ import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {UnknownRouteCodeExamplesComponent} from './unknown-route-code-examples.component';
-import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute} from '@angular/router';
-import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
 describe(UnknownRouteCodeExamplesComponent.name, () => {
 	let component: UnknownRouteCodeExamplesComponent;
@@ -19,11 +18,7 @@ describe(UnknownRouteCodeExamplesComponent.name, () => {
 		};
 		await TestBed.configureTestingModule({
 			imports: [UnknownRouteCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: ActivatedRoute, useValue: staticRouteMock},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideObliqueTestingConfiguration(), {provide: ActivatedRoute, useValue: staticRouteMock}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(UnknownRouteCodeExamplesComponent);
