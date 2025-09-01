@@ -3,8 +3,8 @@
 $ob-application-icon-size: 2.5em; // empiric value
 .ob-service-navigation-applications {
 	.ob-applications {
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
 		gap: variables.$ob-spacing-default;
 		padding: 0;
 		list-style: none;
