@@ -9,6 +9,7 @@
 				!window.localStorage ||
 				!CSS.supports('display: flex') ||
 				!CSS.supports('display: grid') ||
+				!CSS.supports('height', '100dvh') ||
 				!''.startsWith ||
 				![].includes ||
 				!Object.values ||
