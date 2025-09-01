@@ -5,11 +5,10 @@
 
 	function hasMissingFeatures() {
 		try {
-			const {style} = document.createElement('div');
 			return (
 				!window.localStorage ||
-				style.flex === undefined ||
-				style.grid === undefined ||
+				!CSS.supports('display: flex') ||
+				!CSS.supports('display: grid') ||
 				!''.startsWith ||
 				![].includes ||
 				!Object.values ||
