@@ -1,10 +1,12 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {addDependency, checkForMultiProject, checkPrecondition, getPreconditionVersion} from './ng-add-utils';
+import {NodeDependencyType} from '@schematics/angular/utility/dependencies';
+import {addDependency, checkForMultiProject, checkPrecondition, getPreconditionVersion, hasDependency} from './ng-add-utils';
 import {ObIOptionsSchema} from './ng-add.model';
 import {
 	checkForSSR,
 	checkForStandalone,
 	createSafeRule,
+	error,
 	infoMigration,
 	infoText,
 	installDependencies,
@@ -38,10 +40,41 @@ function preconditions(): Rule {
 		checkPrecondition(tree, '@angular/core');
 		checkPrecondition(tree, '@angular/router');
 
+		checkRequiredDependencies(tree, context);
+
 		installMissingDependencies(tree, context, ['@popperjs/core', 'angular-oauth2-oidc', 'jwt-decode']);
 
 		return tree;
 	};
+}
+
+function checkRequiredDependencies(tree: Tree, context: SchematicContext): void {
+	infoText(context, 'Oblique: check required dependencies');
+	const errors = [
+		{
+			name: '@angular/material',
+			type: NodeDependencyType.Default
+		},
+		{
+			name: '@angular/cdk',
+			type: NodeDependencyType.Default
+		},
+		{
+			name: '@oblique/toolchain',
+			type: NodeDependencyType.Dev
+		}
+	]
+		.map(dep => {
+			if (!hasDependency(tree, dep)) {
+				return `\tDependency "${dep.name}" of type "${dep.type}" is required. Please install it and execute the schematics again.`;
+			}
+			return null;
+		})
+		.filter(errorMessage => errorMessage);
+
+	if (errors.length > 0) {
+		error(['\n', ...errors].join('\n'));
+	}
 }
 
 function installMissingDependencies(tree: Tree, context: SchematicContext, dependencies: string[]): void {

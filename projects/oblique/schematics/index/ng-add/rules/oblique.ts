@@ -1,5 +1,5 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {addDependency, angularAppFilesNames, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
+import {angularAppFilesNames, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
 import {
 	ObliquePackage,
@@ -25,7 +25,6 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addAdditionalModules(),
 			addFeatureDetection(),
 			addMainCSS(),
-			addAngularMaterialDependencies(),
 			addLocalAssets(),
 			addObliqueAssets(),
 			addFontFiles(),
@@ -107,15 +106,6 @@ function addMainCSS(): Rule {
 			}
 			return config;
 		});
-	});
-}
-
-function addAngularMaterialDependencies(): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		infoMigration(context, 'Oblique: Adding Angular Material dependencies');
-		addDependency(tree, '@angular/cdk');
-		addDependency(tree, '@angular/material');
-		return tree;
 	});
 }
 
