@@ -37,6 +37,30 @@ export interface ObIServiceNavigationConfig {
 	handleLogout?: boolean;
 }
 
+export interface ObIServiceNavigationConfigWithNotice {
+	profileLinks?: ObIServiceNavigationLink[];
+	infoHelpText?: string;
+	infoLinks?: ObIServiceNavigationLink[];
+	infoContactText?: string;
+	infoDescription?: string;
+	infoContact?: ObIServiceNavigationContact;
+	useInfoBackend?: boolean;
+	maxLastUsedApplications?: number;
+	/**
+	 *  @deprecated since Oblique 14. It will be removed without replacement in the next major.
+	 */
+	maxFavoriteApplications?: number;
+	returnUrl?: string;
+	pamsAppId?: string;
+	displayApplications?: boolean;
+	displayAuthentication?: boolean;
+	displayInfo?: boolean;
+	displayLanguages?: boolean;
+	displayMessage?: boolean;
+	displayProfile?: boolean;
+	handleLogout?: boolean;
+}
+
 export interface ObIMasterLayoutFooter {
 	isSticky: boolean;
 	isCustom: boolean;
