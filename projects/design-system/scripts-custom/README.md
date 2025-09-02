@@ -24,7 +24,7 @@ node scripts-custom/validate-semantic-mirroring.js
 
 ```bash
 # 🚀 INSTANT token chain analysis:
-npm run trace-token "ob.h.button.color.fg.primary.disabled"
+npm run trace-token "ob.h.link.color.link.fg.primary.inversity_normal.disabled"
 
 # 🔍 SEARCH for tokens:
 npm run search-tokens "button disabled"
@@ -34,7 +34,7 @@ npm run trace-figma
 
 # 💫 CONVENIENCE alias (add to your shell):
 alias "reference chain of"="./scripts-custom/reference-chain-of.sh"
-# Then use: reference chain of "ob.h.button.color.fg.primary.disabled"
+# Then use: reference chain of "ob.h.link.color.link.fg.primary.inversity_normal.disabled"
 ```
 
 **Figma Integration Features:**

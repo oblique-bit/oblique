@@ -92,9 +92,8 @@ Edit `data/tracked-tokens-config.json` to:
     "color": {
       "description": "Color tokens hardcoded in style dictionary",
       "paths": [
-        "ob.s.color.neutral.no-color",
-        "ob.s.color.brand",
-        "ob.s1.color.primary.default"
+        "ob.s3.color.brand",
+        "ob.s1.color.neutral.bg.contrast_highest.inversity_normal.contrast_highest.inversity_normal"
       ]
     }
   },

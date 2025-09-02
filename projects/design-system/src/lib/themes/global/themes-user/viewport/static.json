@@ -26,32 +26,12 @@
         "0": {
           "$type": "sizing",
           "$value": "0",
-          "$description": "Base value for smallest viewports (0px and larger)."
-        },
-        "640": {
-          "$type": "sizing",
-          "$value": "640",
-          "$description": "Used for small viewports (640px and larger)."
+          "$description": "Base value for mobile viewports (0px and larger)."
         },
         "768": {
           "$type": "sizing",
           "$value": "768",
-          "$description": "Used for medium viewports (768px and larger)."
-        },
-        "1024": {
-          "$type": "sizing",
-          "$value": "1024",
-          "$description": "Used for large viewports (1024px and larger)."
-        },
-        "1280": {
-          "$type": "sizing",
-          "$value": "1280",
-          "$description": "Used for extra large viewports (1280px and larger)."
-        },
-        "1536": {
-          "$type": "sizing",
-          "$value": "1536",
-          "$description": "Used for ultra-wide viewports (1536px and larger)."
+          "$description": "Used for desktop viewports (768px and larger)."
         }
       }
     }
