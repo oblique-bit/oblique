@@ -1,8 +1,6 @@
 {
   "tokenSetOrder": [
     "global/themes-scoped/static",
-    "global/themes-scoped/dark",
-    "global/themes-scoped/light",
     "global/themes-user/lightness/static",
     "global/themes-user/viewport/mobile",
     "global/themes-user/viewport/desktop",

@@ -13,18 +13,6 @@
             "$value": "low",
             "$description": "interaction emphasis theme identifier. Referenced by components to apply subdued interaction emphasis colors for secondary or contextual interactive elements."
           }
-        },
-        "inversity": {
-          "normal": {
-            "$type": "other",
-            "$value": "normal",
-            "$description": "Normal inversity theme identifier. Referenced by components to apply normal contrast polarity."
-          },
-          "flipped": {
-            "$type": "other",
-            "$value": "flipped",
-            "$description": "Flipped inversity theme identifier. Referenced by components to apply inverted contrast polarity for emphasis."
-          }
         }
       },
       "component_configuration": {
@@ -45,15 +33,6 @@
                 "$value": "{ob.g.theme_configuration.emphasis.low}",
                 "$description": "We on purpose lower the interaction emphasis of all buttons inside Infobox and use the muted colors defined in semantic/color/emphasis/muted. This token can not be used in Figma due to Figma restrictions. In this case, the token is static and does not react to dark/light mode."
               }
-            },
-            "fatal": {
-              "theme": {
-                "inversity": {
-                  "$type": "other",
-                  "$value": "{ob.g.theme_configuration.inversity.flipped}",
-                  "$description": "Fatal variant of the Infobox is flipped in both lighntess modes - dark and light."
-                }
-              }
             }
           }
         },
@@ -63,17 +42,6 @@
               "$type": "other",
               "$value": "{ob.g.theme_configuration.emphasis.low}",
               "$description": "Popover uses muted interaction emphasis theme override"
-            }
-          }
-        },
-        "button": {
-          "primary": {
-            "theme": {
-              "inversity": {
-                "$type": "other",
-                "$value": "{ob.g.theme_configuration.inversity.flipped}",
-                "$description": "Primary button consumes inversed colors."
-              }
             }
           }
         }
