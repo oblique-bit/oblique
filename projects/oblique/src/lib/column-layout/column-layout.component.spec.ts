@@ -34,7 +34,7 @@ class ObColumnPanelDirective {
 }
 
 @Component({
-	template: `<ob-column-layout [left]="false" [right]="false" />`,
+	template: `<ob-column-layout [left]="NONE" [right]="NONE" />`,
 	standalone: false
 })
 class TestComponent {}
@@ -127,7 +127,7 @@ describe(ObColumnLayoutComponent.name, () => {
 			});
 
 			test('that it does not toggle the panel when panel is removed', () => {
-				component[panel] = false;
+				component[panel] = 'NONE';
 				fixture.detectChanges();
 				jest.spyOn(panels[index], 'toggle');
 				component[method]();
@@ -198,8 +198,8 @@ describe(ObColumnLayoutComponent.name, () => {
 			fixture = TestBed.createComponent(TestComponent);
 			testComponent = fixture.componentInstance;
 			component = fixture.debugElement.query(By.directive(ObColumnLayoutComponent)).injector.get(ObColumnLayoutComponent);
-			component.left = false;
-			component.right = false;
+			component.left = 'NONE';
+			component.right = 'NONE';
 			fixture.detectChanges();
 		});
 
@@ -224,8 +224,8 @@ describe(ObColumnLayoutComponent.name, () => {
 			let panels: ObColumnPanelDirective[];
 
 			beforeEach(fakeAsync(() => {
-				component.left = true;
-				component.right = true;
+				component.left = 'OPENED';
+				component.right = 'OPENED';
 				component.ngOnChanges();
 				fixture.detectChanges();
 				tick();

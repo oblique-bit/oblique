@@ -13,6 +13,7 @@ describe('ObColumnPanelDirective', () => {
 
 	describe('Property collapsed', () => {
 		it('should be false per default', () => {
+			directive.ngOnInit();
 			expect(directive.collapsed).toBe(false);
 		});
 	});
