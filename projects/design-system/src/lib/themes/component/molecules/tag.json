@@ -147,7 +147,7 @@
           "bg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s3.color.neutral.bg.contrast_low.inversity_normal}"
+              "$value": "{ob.s3.color.neutral.bg.contrast_medium.inversity_normal}"
             },
             "hover": {
               "$type": "color",

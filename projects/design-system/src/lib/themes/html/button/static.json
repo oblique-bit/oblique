@@ -214,6 +214,40 @@
             "$type": "text",
             "$value": "lg"
           }
+        },
+        "close": {
+          "assets": {
+            "xmark_circle": {
+              "icon": {
+                "$type": "asset",
+                "$value": "xmark_circle.svg",
+                "$description": "Close button icon for molucules such as Pills, Tags."
+              }
+            },
+            "xmark": {
+              "icon": {
+                "$type": "asset",
+                "$value": "xmark.svg",
+                "$description": "Close button icon for molucules such as Pills, Tags."
+              }
+            }
+          },
+          "icon": {
+            "xmark_circle": {
+              "icon": {
+                "$type": "text",
+                "$value": "xmark_circle.svg",
+                "$description": "Close button icon for molucules such as Pills, Tags."
+              }
+            },
+            "xmark": {
+              "icon": {
+                "$type": "text",
+                "$value": "xmark.svg",
+                "$description": "Close button icon for molucules such as Pills, Tags."
+              }
+            }
+          }
         }
       }
     }
