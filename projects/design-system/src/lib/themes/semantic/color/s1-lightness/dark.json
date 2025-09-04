@@ -7,7 +7,7 @@
             "contrast_highest": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.800}",
+                "$value": "{ob.p.color.cobalt.900}",
                 "$description": "Default dark surface color"
               },
               "inversity_flipped": {
@@ -19,7 +19,7 @@
             "contrast_high": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.700}",
+                "$value": "{ob.p.color.cobalt.800}",
                 "$description": "Darker surface color"
               },
               "inversity_flipped": {
@@ -31,7 +31,7 @@
             "contrast_medium": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.600}",
+                "$value": "{ob.p.color.cobalt.700}",
                 "$description": "Darker surface color"
               },
               "inversity_flipped": {
@@ -43,7 +43,7 @@
             "contrast_low": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.400}",
+                "$value": "{ob.p.color.cobalt.600}",
                 "$description": "Darker surface color"
               },
               "inversity_flipped": {

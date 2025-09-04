@@ -118,8 +118,12 @@ These naming choices provide:
 ## Token Structure
 
 ```
-ob.s2.color.interaction.state.fg.enabled.inversity_normal.{status_name}.{property}.{contrast_level}.{inversity_variation}
+ob.s3.color.status.{status_name}.{property}.{contrast_level}.{inversity_variation}
 ```
+
+**Primitive Token Reference:** Each color value in the tables below corresponds to a primitive token from the base color palette (`ob.p.color.{color_family}.{scale}`). These primitive tokens are organized by color family (red, blue, green, orange, purple, indigo, etc.) with numbered scales from 50 (lightest) to 900 (darkest).
+
+> **Note**: Some status colors marked as *Custom/Computed* may not have direct primitive token mappings and could be using computed values, custom colors, or tokens from a different color system. These should be verified against the actual token implementation files.
 
 ### Properties
 - `fg` - Foreground/text color for status content
@@ -140,52 +144,52 @@ ob.s2.color.interaction.state.fg.enabled.inversity_normal.{status_name}.{propert
 Communicates informational content without urgency.
 
 #### Foreground Colors
-| Contrast Level | Light Theme | Dark Theme | Usage |
-|----------------|-------------|------------|-------|
-| `contrast_high` | `#1e40af` | `#60a5fa` | All pill states (enabled/hover/focus/pressed) |
-| `contrast_medium` | `#3b82f6` | `#93c5fd` | *Not used in current components* |
-| `contrast_low` | `#60a5fa` | `#dbeafe` | *Not used in current components* |
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#1E3A8A` | `#EFF6FF` | `ob.p.color.blue.900` | `ob.p.color.blue.50` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#1E40AF` | `#93c5fd` | `ob.p.color.blue.800` | `ob.p.color.blue.300` | *Not used in current components* |
+| `contrast_low` | `#2563EB` | `#DBEAFE` | `ob.p.color.blue.600` | `ob.p.color.blue.100` | *Not used in current components* |
 
 #### Background Colors
-| Contrast Level | Light Theme | Dark Theme | Usage |
-|----------------|-------------|------------|-------|
-| `contrast_high` | `#1e3a8a` | `#1e40af` | Badge enabled/disabled states |
-| `contrast_medium` | `#3b82f6` | `#2563eb` | Pill enabled/focus states |
-| `contrast_low` | `#dbeafe` | `#1e3a8a` | Pill pressed state |
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#1e3a8a` | `#1e40af` | `ob.p.color.blue.900` | `ob.p.color.blue.800` | Badge enabled/disabled states |
+| `contrast_medium` | `#3b82f6` | `#2563eb` | `ob.p.color.blue.500` | `ob.p.color.blue.600` | Pill enabled/focus states |
+| `contrast_low` | `#bfdbfe` | `#2563EB` | `ob.p.color.blue.200` | `ob.p.color.blue.600` | Pill enabled/focus/pressed states |
 
 ### Resolved (Green)
 Indicates successful completion, approval, or positive outcomes.
 
 #### Foreground Colors
-| Contrast Level | Light Theme | Dark Theme | Usage |
-|----------------|-------------|------------|-------|
-| `contrast_high` | `#166534` | `#4ade80` | All pill states (enabled/hover/focus/pressed) |
-| `contrast_medium` | `#22c55e` | `#86efac` | *Not used in current components* |
-| `contrast_low` | `#4ade80` | `#dcfce7` | *Not used in current components* |
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#065f46` | `#ecfdf5` | `ob.p.color.green.800` | `ob.p.color.green.50` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#047857` | `#a7f3d0` | `ob.p.color.green.700` | `ob.p.color.green.200` | *Not used in current components* |
+| `contrast_low` | `#059669` | `#d1fae5` | `ob.p.color.green.600` | `ob.p.color.green.100` | *Not used in current components* |
 
 #### Background Colors
-| Contrast Level | Light Theme | Dark Theme | Usage |
-|----------------|-------------|------------|-------|
-| `contrast_high` | `#14532d` | `#166534` | Badge enabled/disabled states |
-| `contrast_medium` | `#22c55e` | `#16a34a` | Pill enabled/focus states |
-| `contrast_low` | `#dcfce7` | `#14532d` | Pill pressed state |
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#064e3b` | `#065f46` | `ob.p.color.green.900` | `ob.p.color.green.800` | Badge enabled/disabled states |
+| `contrast_medium` | `#047857` | `#059669` | `ob.p.color.green.700` | `ob.p.color.green.600` | Pill enabled/focus states |
+| `contrast_low` | `#a7f3d0` | `#059669` | `ob.p.color.green.200` | `ob.p.color.green.600` | Pill enabled/focus/pressed states |
 
 ### Critical (Red)
 Communicates urgent alerts, system failures, or critical errors requiring immediate attention.
 
 #### Foreground Colors
-| Contrast Level | Light Theme | Dark Theme | Usage |
-|----------------|-------------|------------|-------|
-| `contrast_high` | `#dc2626` | `#f87171` | All pill states (enabled/hover/focus/pressed) |
-| `contrast_medium` | `#ef4444` | `#fca5a5` | *Not used in current components* |
-| `contrast_low` | `#f87171` | `#fee2e2` | *Not used in current components* |
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#99191e` | `#ffedee` | `ob.p.color.red.800` | `ob.p.color.red.50` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#bf1f25` | `#fa9da1` | `ob.p.color.red.700` | `ob.p.color.red.300` | *Not used in current components* |
+| `contrast_low` | `#d8232a` | `#ffccce` | `ob.p.color.red.600` | `ob.p.color.red.200` | *Not used in current components* |
 
 #### Background Colors
-| Contrast Level | Light Theme | Dark Theme | Usage |
-|----------------|-------------|------------|-------|
-| `contrast_high` | `#7f1d1d` | `#dc2626` | Badge enabled/disabled states |
-| `contrast_medium` | `#dc2626` | `#b91c1c` | Pill enabled/focus states |
-| `contrast_low` | `#fee2e2` | `#7f1d1d` | Pill pressed state |
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#801519` | `#99191e` | `ob.p.color.red.900` | `ob.p.color.red.800` | Badge enabled/disabled states, Pill focus state |
+| `contrast_medium` | `#bf1f25` | `#d8232a` | `ob.p.color.red.700` | `ob.p.color.red.600` | Pill enabled/focus states |
+| `contrast_low` | `#ffccce` | `#d8232a` | `ob.p.color.red.200` | `ob.p.color.red.600` | Pill enabled/pressed states |
 
 ### Attention (Amber/Orange)
 Indicates caution, warnings, or items that need review but aren't critical.
@@ -193,16 +197,23 @@ Indicates caution, warnings, or items that need review but aren't critical.
 #### Foreground Colors
 | Contrast Level | Light Theme | Dark Theme | Usage |
 |----------------|-------------|------------|-------|
-| `contrast_high` | `#d97706` | `#fbbf24` | All pill states (enabled/hover/focus/pressed) |
-| `contrast_medium` | `#f59e0b` | `#fcd34d` | *Not used in current components* |
-| `contrast_low` | `#fbbf24` | `#fef3c7` | *Not used in current components* |
+| `contrast_high` | `#9a3412` | `#fff7ed` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#c2410c` | `#fdba74` | *Not used in current components* |
+| `contrast_low` | `#ea580c` | `#ffedd5` | *Not used in current components* |
+
+#### Foreground Colors
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#9a3412` | `#fff7ed` | `ob.p.color.orange.800` | `ob.p.color.orange.50` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#c2410c` | `#fdba74` | `ob.p.color.orange.700` | `ob.p.color.orange.300` | *Not used in current components* |
+| `contrast_low` | `#ea580c` | `#ffedd5` | `ob.p.color.orange.600` | `ob.p.color.orange.100` | *Not used in current components* |
 
 #### Background Colors
-| Contrast Level | Light Theme | Dark Theme | Usage |
-|----------------|-------------|------------|-------|
-| `contrast_high` | `#92400e` | `#d97706` | Badge enabled/disabled states |
-| `contrast_medium` | `#d97706` | `#b45309` | Pill enabled/focus states |
-| `contrast_low` | `#fef3c7` | `#92400e` | Pill pressed state |
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#7c2d12` | `#9a3412` | `ob.p.color.orange.900` | `ob.p.color.orange.800` | Badge enabled/disabled states |
+| `contrast_medium` | `#c2410c` | `#ea580c` | `ob.p.color.orange.700` | `ob.p.color.orange.600` | Pill enabled/focus states |
+| `contrast_low` | `#fed7aa` | `#ea580c` | `ob.p.color.orange.200` | `ob.p.color.orange.600` | Pill enabled/focus/pressed states |
 
 ## Flexible Status Colors
 
@@ -210,59 +221,102 @@ Indicates caution, warnings, or items that need review but aren't critical.
 Indicates items awaiting action or processing.
 
 #### Foreground Colors
-| Contrast Level | Light Theme | Dark Theme | Usage |
-|----------------|-------------|------------|-------|
-| `contrast_high` | `#7c3aed` | `#a855f7` | All pill states (enabled/hover/focus/pressed) |
-| `contrast_medium` | `#8b5cf6` | `#c084fc` | *Not used in current components* |
-| `contrast_low` | `#a855f7` | `#f3e8ff` | *Not used in current components* |
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#7c3aed` | `#a855f7` | `ob.p.color.purple.600` | `ob.p.color.purple.400` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#8b5cf6` | `#c084fc` | `ob.p.color.purple.500` | `ob.p.color.purple.300` | *Not used in current components* |
+| `contrast_low` | `#a855f7` | `#f3e8ff` | `ob.p.color.purple.400` | `ob.p.color.purple.100` | *Not used in current components* |
 
 #### Background Colors
-| Contrast Level | Light Theme | Dark Theme | Usage |
-|----------------|-------------|------------|-------|
-| `contrast_high` | `#581c87` | `#7c3aed` | *Not used in current components* |
-| `contrast_medium` | `#7c3aed` | `#6d28d9` | Pill enabled/focus states |
-| `contrast_low` | `#f3e8ff` | `#581c87` | Pill pressed state |
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#581c87` | `#7c3aed` | `ob.p.color.purple.900` | `ob.p.color.purple.600` | *Not used in current components* |
+| `contrast_medium` | `#7c3aed` | `#6d28d9` | `ob.p.color.purple.600` | `ob.p.color.purple.700` | Pill enabled/focus states |
+| `contrast_low` | `#f3e8ff` | `#581c87` | `ob.p.color.purple.100` | `ob.p.color.purple.900` | Pill pressed state |
 
 ### Confirmed (Teal)
 Indicates verified, approved, or confirmed items.
 
 #### Foreground Colors
-| Contrast Level | Light Theme | Dark Theme | Usage |
-|----------------|-------------|------------|-------|
-| `contrast_high` | `#0f766e` | `#2dd4bf` | All pill states (enabled/hover/focus/pressed) |
-| `contrast_medium` | `#14b8a6` | `#5eead4` | *Not used in current components* |
-| `contrast_low` | `#2dd4bf` | `#ccfbf1` | *Not used in current components* |
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#0f766e` | `#2dd4bf` | *Custom/Computed* | *Custom/Computed* | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#14b8a6` | `#5eead4` | *Custom/Computed* | *Custom/Computed* | *Not used in current components* |
+| `contrast_low` | `#2dd4bf` | `#ccfbf1` | *Custom/Computed* | *Custom/Computed* | *Not used in current components* |
 
 #### Background Colors
-| Contrast Level | Light Theme | Dark Theme | Usage |
-|----------------|-------------|------------|-------|
-| `contrast_high` | `#134e4a` | `#0f766e` | *Not used in current components* |
-| `contrast_medium` | `#0f766e` | `#0d9488` | Pill enabled/focus states |
-| `contrast_low` | `#ccfbf1` | `#134e4a` | Pill pressed state |
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#134e4a` | `#0f766e` | *Custom/Computed* | *Custom/Computed* | *Not used in current components* |
+| `contrast_medium` | `#0f766e` | `#0d9488` | *Custom/Computed* | *Custom/Computed* | Pill enabled/focus states |
+| `contrast_low` | `#ccfbf1` | `#134e4a` | *Custom/Computed* | *Custom/Computed* | Pill pressed state |
 
 ### Progress (Indigo)
 Indicates work in progress, loading states, or active processes.
 
 #### Foreground Colors
-| Contrast Level | Light Theme | Dark Theme | Usage |
-|----------------|-------------|------------|-------|
-| `contrast_high` | `#4338ca` | `#6366f1` | All pill states (enabled/hover/focus/pressed) |
-| `contrast_medium` | `#6366f1` | `#818cf8` | *Not used in current components* |
-| `contrast_low` | `#818cf8` | `#e0e7ff` | *Not used in current components* |
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#4338ca` | `#6366f1` | `ob.p.color.indigo.700` | `ob.p.color.indigo.500` | All pill states (enabled/hover/focus/pressed) |
+| `contrast_medium` | `#6366f1` | `#818cf8` | `ob.p.color.indigo.500` | `ob.p.color.indigo.400` | *Not used in current components* |
+| `contrast_low` | `#818cf8` | `#e0e7ff` | `ob.p.color.indigo.400` | `ob.p.color.indigo.100` | *Not used in current components* |
 
 #### Background Colors
-| Contrast Level | Light Theme | Dark Theme | Usage |
-|----------------|-------------|------------|-------|
-| `contrast_high` | `#312e81` | `#4338ca` | *Not used in current components* |
-| `contrast_medium` | `#4338ca` | `#3730a3` | Pill enabled/focus states |
-| `contrast_low` | `#e0e7ff` | `#312e81` | Pill pressed state |
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#312e81` | `#4338ca` | `ob.p.color.indigo.900` | `ob.p.color.indigo.700` | *Not used in current components* |
+| `contrast_medium` | `#4338ca` | `#3730a3` | `ob.p.color.indigo.700` | `ob.p.color.indigo.800` | Pill enabled/focus states |
+| `contrast_low` | `#e0e7ff` | `#312e81` | `ob.p.color.indigo.100` | `ob.p.color.indigo.900` | Pill pressed state |
 
 ### Additional Flexible Status Notes
 All flexible statuses listed in the table above are available in the design system. Additional considerations:
-- **Scheduled**: Future or planned items (typically cyan/sky colors)
-- **Waiting**: Queued or blocked items (typically gray/neutral colors)  
-- **Fatal**: Emergency disasters (inspired by BK Design System - https://swiss.github.io/designsystem/?path=/docs/components-alertbanner--docs)
-- **Closed**: Archived or completed items (typically muted colors)
+
+#### Scheduled (Pink)
+Future or planned items - typically uses pink/rose color family.
+
+**Foreground Colors**
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#be185d` | `#f9a8d4` | `ob.p.color.pink.700` | `ob.p.color.pink.300` | All pill states (enabled/hover/focus/pressed) |
+
+**Background Colors**
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_medium` | `#be185d` | `#9d174d` | `ob.p.color.pink.700` | `ob.p.color.pink.800` | Pill enabled/focus states |
+| `contrast_low` | `#fce7f3` | `#831843` | `ob.p.color.pink.100` | `ob.p.color.pink.900` | Pill pressed state |
+
+#### Waiting (Cobalt/Gray)
+Queued or blocked items - typically uses neutral gray colors.
+
+**Foreground Colors**
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#263645` | `#acb4bd` | `ob.p.color.cobalt.700` | `ob.p.color.cobalt.200` | All pill states (enabled/hover/focus/pressed) |
+
+**Background Colors**
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_medium` | `#263645` | `#1c2834` | `ob.p.color.cobalt.700` | `ob.p.color.cobalt.800` | Pill enabled/focus states |
+| `contrast_low` | `#dfe4e9` | `#131b22` | `ob.p.color.cobalt.100` | `ob.p.color.cobalt.900` | Pill pressed state |
+
+#### Closed (Cobalt/Gray)
+Archived or completed items - typically uses muted gray colors.
+
+**Foreground Colors**
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_high` | `#1c2834` | `#828e9a` | `ob.p.color.cobalt.800` | `ob.p.color.cobalt.300` | All pill states (enabled/hover/focus/pressed) |
+
+**Background Colors**
+| Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
+|----------------|-------------|------------|-------------------------|------------------------|-------|
+| `contrast_medium` | `#596978` | `#2f4356` | `ob.p.color.cobalt.400` | `ob.p.color.cobalt.600` | Pill enabled/focus states |
+| `contrast_low` | `#f0f4f7` | `#131b22` | `ob.p.color.cobalt.50` | `ob.p.color.cobalt.900` | Pill pressed state |
+
+#### Fatal (Red - Emergency)
+Emergency disasters - used only in infobox components, not in pills or badges.
+
+**Note**: Fatal status uses the same red color family as Critical status but with maximum contrast requirements for emergency situations requiring consistent brand treatment for population safety. Refer to Critical (Red) color table above for primitive token mappings.
 
 > **Note**: Projects may extend flexible statuses by adding new status types as needed, following the same token structure and classification rules.
 
