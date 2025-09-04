@@ -12,26 +12,56 @@ h6 {
 
 h1 {
 	@include typography.ob-h1();
+
+	.ob-prose &,
+	&.ob-prose {
+		@include typography.ob-h1-prose();
+	}
 }
 
 h2 {
 	@include typography.ob-h2();
+
+	.ob-prose &,
+	&.ob-prose {
+		@include typography.ob-h2-prose();
+	}
 }
 
 h3 {
 	@include typography.ob-h3();
+
+	.ob-prose &,
+	&.ob-prose {
+		@include typography.ob-h3-prose();
+	}
 }
 
 h4 {
 	@include typography.ob-h4();
+
+	.ob-prose &,
+	&.ob-prose {
+		@include typography.ob-h4-prose();
+	}
 }
 
 h5 {
 	@include typography.ob-h5();
+
+	.ob-prose &,
+	&.ob-prose {
+		@include typography.ob-h5-prose();
+	}
 }
 
 h6 {
 	@include typography.ob-h6();
+
+	.ob-prose &,
+	&.ob-prose {
+		@include typography.ob-h6-prose();
+	}
 }
 
 // inline elements
