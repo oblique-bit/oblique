@@ -18,17 +18,22 @@ Status tokens with **mandatory settings** that cannot be changed due to brand co
 
 | Status | Type | Description | Components | Legacy Name | Inspiration | Change Status |
 |--------|------|-------------|-------------|-------------|-------------|---------------|
-| **info** | Informational | General information, tips, announcements | ob.c.tag.container.spacing.gap ob.c.tag.container.spacing.gap USWDS | Unchanged |
-| **resolved** | Success/Completion | Completed tasks, success messages | ob.c.tag.container.spacing.gap.container.spacing.gap.pill | success | GitHub, Jira | Renamed |
-| **critical** | Error/Urgent | System failures, urgent alerts | ob.c.tag.container.spacing.gap.container.spacing.gap.infobox | error | Material, Atlassian | Renamed |
-| **attention** | Warning/Caution | Warnings, review needed | ob.c.tag.container.spacing.gap ob.c.tag.container.spacing.gap.container.spacing.gap.infobox | — | BK Design System | Added |
+| **info** | Informational | General information, tips, announcements | badge, pill, infobox, alert | — | USWDS | Unchanged |
+| **resolved** | Success/Completion | Completed tasks, success messages | badge, pill, status-indicator | success | GitHub, Jira | Renamed |
+| **critical** | Error/Urgent | System failures, urgent alerts | badge, pill, infobox, alert | error | Material, Atlassian | Renamed |
+| **attention** | Warning/Caution | Warnings, review needed | badge, pill, infobox, alert | — | BK Design System | Added |
 
 ### **Flexible Statuses**
 Status tokens that can be **adapted, renamed, or remapped** by projects based on workflow requirements.
 
 | Status | Type | Description | Components | Legacy Name | Inspiration | Change Status |
 |--------|------|-------------|-------------|-------------|-------------|---------------|
-| **pending** | Workflow | Awaiting action, in queue | ob.c.tag.container.spacing.gap ob.c.tag.container.spacing.gap.container.spacing.gap.pill, ob.c.tag.container.spacing.gap.container.spacing.gap.pill, ob.c.tag.container.spacing.gap.container.spacing.gap.pill, ob.c.tag.container.spacing.gap.container.spacing.gap.pill, ob.c.tag.container.spacing.gap.container.spacing.gap.pill, ob.c.tag.container.spacing.gap | — | GitHub | Added |
+| **pending** | Workflow | Awaiting action, in queue | badge, pill, status-indicator | — | GitHub | Added |
+| **confirmed** | Verification | Verified, approved, confirmed items | badge, pill, status-indicator | — | Custom | Added |
+| **progress** | Active Work | Work in progress, loading states | badge, pill, status-indicator | — | Custom | Added |
+| **scheduled** | Future | Future or planned items | badge, pill, status-indicator | — | Custom | Added |
+| **waiting** | Queued | Queued or blocked items | badge, pill, status-indicator | — | Custom | Added |
+| **closed** | Archive | Archived or completed items | badge, pill, status-indicator | — | Custom | Added |
 
 ## **Status Token Classification System**
 
@@ -252,11 +257,14 @@ Indicates work in progress, loading states, or active processes.
 | `contrast_medium` | `#4338ca` | `#3730a3` | Pill enabled/focus states |
 | `contrast_low` | `#e0e7ff` | `#312e81` | Pill pressed state |
 
-### Additional Flexible Statuses
+### Additional Flexible Status Notes
+All flexible statuses listed in the table above are available in the design system. Additional considerations:
 - **Scheduled**: Future or planned items (typically cyan/sky colors)
-- **Waiting**: Queued or blocked items (typically gray/neutral colors)
-- **Fatal**: Emergency disasters (inspired by BK Design System https://swiss.github.io/designsystem/?path=/docs/components-alertbanner--docs)
+- **Waiting**: Queued or blocked items (typically gray/neutral colors)  
+- **Fatal**: Emergency disasters (inspired by BK Design System - https://swiss.github.io/designsystem/?path=/docs/components-alertbanner--docs)
 - **Closed**: Archived or completed items (typically muted colors)
+
+> **Note**: Projects may extend flexible statuses by adding new status types as needed, following the same token structure and classification rules.
 
 ## Usage Guidelines
 
