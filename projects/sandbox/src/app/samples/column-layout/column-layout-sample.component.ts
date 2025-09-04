@@ -6,8 +6,8 @@ import {Component} from '@angular/core';
 	standalone: false
 })
 export class ColumnLayoutSampleComponent {
-	left = true;
-	right = true;
+	left = 'OPENED';
+	right = 'OPENED';
 	noLayout = false;
 	wider = false;
 	overflow = false;

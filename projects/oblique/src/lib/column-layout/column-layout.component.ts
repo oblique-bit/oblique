@@ -19,7 +19,7 @@ import {combineLatestWith, delay, distinctUntilChanged, map, startWith, takeUnti
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
 import {WINDOW} from '../utilities';
-import {ObIDimension, ObIToggleDirection} from './column-layout.model';
+import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.model';
 
 @Component({
 	selector: 'ob-column-layout',
@@ -34,8 +34,8 @@ import {ObIDimension, ObIToggleDirection} from './column-layout.model';
 	As long as the OnChanges lifecycle exclusively deals with @Input changes this warning isn't necessary. */
 /* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestroy, OnChanges {
-	@Input() left = true;
-	@Input() right = true;
+	@Input() left: ObTColumnState = 'OPENED';
+	@Input() right: ObTColumnState = 'OPENED';
 	@Input() @HostBinding('class.ob-wider-columns') wider = false;
 	@Input() @HostBinding('class.ob-no-layout') noLayout = false;
 	toggleLeftIcon$: Observable<ObIToggleDirection>;
@@ -115,7 +115,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 		collapsedDirection: ObIToggleDirection
 	): Observable<ObIToggleDirection> {
 		return column?.toggled.pipe(
-			startWith(false),
+			startWith(column.collapsed),
 			delay(0),
 			map(collapsed => (collapsed ? collapsedDirection : expandedDirection))
 		);

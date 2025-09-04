@@ -16,7 +16,8 @@ export class UpdateV13toV14 implements ObIMigrations {
 				this.migrateAccessibilityStatementContactInfo(),
 				this.migrateServiceNavigationContactInfo(),
 				this.removeObPaginator(),
-				this.removeFocusableFragments()
+				this.removeFocusableFragments(),
+				this.migrateColumnLayoutColumnsState()
 			])(tree, context);
 	}
 
@@ -340,6 +341,23 @@ export class UpdateV13toV14 implements ObIMigrations {
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
+		});
+	}
+
+	private migrateColumnLayoutColumnsState(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Migrate column layout columns state');
+			const toApply = (filePath: string): void => {
+				const content = readFile(tree, filePath);
+				if (content.includes('<ob-column-layout')) {
+					replaceInFile(tree, filePath, /(?<=\[left\]=")true(?=")/gu, "'OPENED'");
+					replaceInFile(tree, filePath, /(?<=\[left\]=")false(?=)"/gu, "'NONE'");
+
+					replaceInFile(tree, filePath, /(?<=\[right\]=")true(?=")/gu, "'OPENED'");
+					replaceInFile(tree, filePath, /(?<=\[right\]=")false(?=)"/gu, "'NONE'");
+				}
+			};
+			return applyInTree(tree, toApply, '*.html');
 		});
 	}
 }

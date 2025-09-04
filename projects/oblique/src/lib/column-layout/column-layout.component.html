@@ -1,5 +1,6 @@
 <div
-	*ngIf="left"
+	*ngIf="left === 'OPENED' || left === 'CLOSED'"
+	[initialState]="left"
 	class="ob-column-left"
 	role="complementary"
 	[attr.aria-label]="'i18n.oblique.column.left.title' | translate"
@@ -34,7 +35,8 @@
 	</div>
 </div>
 <div
-	*ngIf="right"
+	*ngIf="right === 'OPENED' || right === 'CLOSED'"
+	[initialState]="right"
 	class="ob-column-right"
 	role="complementary"
 	[attr.aria-label]="'i18n.oblique.column.right.title' | translate"
