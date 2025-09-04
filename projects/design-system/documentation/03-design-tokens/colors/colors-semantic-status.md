@@ -2,9 +2,9 @@
 
 Status colors communicate system state, user feedback, and contextual information in the Oblique Design System. They have been redesigned for government web applications with clearer, more accessible naming that follows established signal color semantics.
 
-**Semantic Status System:** Semantic statuses act as an overarching term and contain more than colors. Status meaning should never rely solely on color. For full accessibility and clear communication, we combine multiple elements:
+**Semantic Status System:** Semantic statuses act as an overarching term and contain more than colors. Status meaning must not rely solely on color. For full accessibility and clear communication, we combine multiple elements:
 - **Status color** - Visual color coding for quick recognition
-- **Status label** - Clear text descriptions (e.g., "Resolved", "Critical")  
+- **Status label** - Clear text descriptions (such as "Resolved", "Critical")  
 - **Status icon** - Visual symbols for enhanced recognition (out of scope in this doc, has to be created as doc and linked)
 - **Contextual information** - Additional descriptive text when needed
 - **Appropriate ARIA labels** - Screen reader support for accessibility compliance
@@ -24,7 +24,7 @@ Status tokens with **mandatory settings** that cannot be changed due to brand co
 | **attention** | Warning/Caution | Warnings, review needed | badge, pill, infobox, alert | — | BK Design System | Added |
 
 ### **Flexible Statuses**
-Status tokens that can be **adapted, renamed, or remapped** by projects based on workflow requirements.
+Status tokens that **projects can adapt, rename, or remap** based on workflow requirements.
 
 | Status | Type | Description | Components | Legacy Name | Inspiration | Change Status |
 |--------|------|-------------|-------------|-------------|-------------|---------------|
@@ -74,8 +74,8 @@ The Reserved status tokens (`info`, `resolved`, `critical`, `attention`) were sp
 **Why "critical" is superior for web applications:**
 
 - **Broader semantic scope**: "Critical" encompasses system failures, urgent alerts, and high-priority issues beyond simple form errors
-- **Government context alignment**: Government applications often deal with critical situations requiring immediate attention (emergency services, public safety, urgent notifications)
-- **Badge/pill appropriateness**: In status indicators, "critical" better describes the urgency level rather than just error states
+- **Government context alignment**: Government applications frequently deal with critical situations requiring immediate attention (emergency services, public safety, urgent notifications)
+- **Badge/pill appropriateness**: In status indicators, "critical" better describes the urgency level beyond simple error states
 - **Professional tone**: "Critical" sounds more measured and professional for government communications
 - **Industry standard**: Major enterprise tools (Jira, Atlassian, ServiceNow) use "critical" for highest-priority issues
 
@@ -89,10 +89,10 @@ The Reserved status tokens (`info`, `resolved`, `critical`, `attention`) were sp
 
 **Why "resolved" is more application-focused:**
 
-- **Process-oriented language**: "Resolved" indicates completion of a workflow or task, not just a successful action
-- **Task management semantics**: Government applications often involve case management, ticket resolution, and workflow completion
+- **Process-oriented language**: "Resolved" indicates completion of a workflow or task, not a successful action
+- **Task management semantics**: Government applications frequently involve case management, ticket resolution, and workflow completion
 - **Less celebratory tone**: "Success" implies achievement; "resolved" implies professional completion appropriate for government contexts
-- **Status indicator clarity**: In badges and pills, "resolved" clearly indicates a completed state rather than just a positive outcome
+- **Status indicator clarity**: In badges and pills, "resolved" clearly indicates a completed state beyond a positive outcome
 - **Industry adoption**: GitHub, Jira, and other enterprise platforms use "resolved" for completed items
 
 **Examples in government web applications:**
