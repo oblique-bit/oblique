@@ -4,6 +4,12 @@
 **Status:** Work in Progress - Not Yet Approved by Product Owner  
 **Purpose:** Document Tokens Studio workflow and token management processes
 
+## **Target Audience**
+**Primary:** DS/Oblique Developers  
+**Secondary:** DS/Oblique Designers  
+**Prerequisites:** Basic understanding of design tokens and Token Studio  
+**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md#12-dsobl)
+
 ## Design System Token Management
 
 **Tool Used:** Tokens Studio (not TypeScript)
@@ -30,9 +36,9 @@ These tokens exist in `$themes.json` and resolve properly in Tokens Studio:
 - Any "broken reference" reports should be cross-checked with Tokens Studio availability
 
 ## Current Architecture
-- **L1 Layer:** Inversity tokens (normal/flipped)
-- **L2 Layer:** Emphasis tokens (high/low) with inversity suffixes  
-- **L3 Layer:** Component tokens referencing L2 with `.inversity-normal` by default
+- **S1 Semantic Level:** Lightness variables (light/dark theme handling)
+- **S2 Semantic Level:** Emphasis variables (high/low emphasis variations)  
+- **S3 Semantic Level:** Semantic compilation (complete semantic color collection)
 - **Static Tokens:** Brand colors and utilities (managed in Tokens Studio)
 
 ---

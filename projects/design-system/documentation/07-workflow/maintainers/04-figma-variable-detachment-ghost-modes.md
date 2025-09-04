@@ -4,6 +4,12 @@
 **Status:** Work in Progress - Not Yet Approved by Product Owner  
 **Purpose:** Methods for detaching variables and eliminating persistent ghost variable modes in Figma
 
+## **Target Audience**
+**Primary:** DS/Oblique Designers  
+**Secondary:** DS/Oblique Developers (for MCP tools)  
+**Prerequisites:** Advanced Figma knowledge, MCP tools, understanding of variable modes  
+**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md#11-dsobl)
+
 This document provides comprehensive methods for detaching variables from Figma components and eliminating persistent ghost variable modes that remain after variable deletion.
 
 ---

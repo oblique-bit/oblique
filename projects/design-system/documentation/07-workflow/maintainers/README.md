@@ -4,6 +4,12 @@
 **Status:** Work in Progress - Not Yet Approved by Product Owner  
 **Purpose:** Workflows and processes for design system maintainers and core team members
 
+## **Target Audience**
+**Primary:** DS/Oblique Developers, DS/Oblique Designers  
+**Secondary:** Product/Project Developers (for reference)  
+**Prerequisites:** Design system knowledge, token architecture understanding  
+**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
+
 ---
 
 ## About Maintainer Workflows
@@ -19,39 +25,36 @@ This folder contains workflows, guides, and processes specifically designed for 
 
 ### Current Maintainer Workflows
 
-#### System Management
-- **01-bugs.md** - Bug tracking and resolution processes
-- **02-component-identification.md** - Component validation and naming workflows
-- **03-easy-recommendations.md** - Script usage recommendations for development
-- **04-protected-files.md** - Critical file protection mechanisms
-- **05-setup-protection.md** - File protection setup procedures
-- **06-stable-versions.md** - Version management and stability tracking
+#### Foundation Workflows
+- **00-index.md** - Index and navigation for all maintainer workflows
+- **01-tokens-studio-context.md** - Token Studio fundamentals and S1/S2/S3 architecture
+- **02-figma-and-tokens-for-developers.md** - Figma Dev Mode MCP integration and token workflows
 
-#### Specialized Workflows
-- **design-tokens/** - Token-specific maintainer processes
-  - Token Studio workflows
-  - Figma variable debugging
-  - Variable detachment procedures
+#### Figma Integration Workflows
+- **03-figma-token-debugging.md** - Debugging Figma variables with MCP tools
+- **04-figma-variable-detachment-ghost-modes.md** - Advanced Figma cleanup and ghost mode elimination
+
+#### Token Development Workflows
+- **05-issues.md** - Figma variables and variable modes restrictions
+- **06-easy-recommendations.md** - Script usage recommendations for token development
 
 ### Workflow Categories
 
-#### Development Workflows
-- Component development lifecycle
-- Token architecture management
-- Build system maintenance
-- Quality assurance processes
+#### Foundation & Integration (00-04)
+- Index navigation and token architecture fundamentals
+- Token Studio and Figma integration workflows
+- MCP-powered debugging and cleanup procedures
 
-#### Governance Workflows  
-- File protection and access control
-- Version management and releases
-- Documentation standards enforcement
-- Breaking change procedures
+#### Token Development (05-06)
+- Figma variable limitations and workarounds
+- Development tools and script automation for token workflows
 
-#### Debugging Workflows
-- Design token troubleshooting
-- Figma integration issue resolution
-- Component integration debugging
-- Cross-platform compatibility testing
+### System Administration Workflows (Moved to _private)
+
+For general system workflows not specific to tokens:
+- **Component workflows**: `/_private/automation/component-workflows/`
+- **File protection**: `/_private/automation/file-protection/`
+- **Version tracking**: `/_private/stable-points/`
 
 ---
 

@@ -4,6 +4,12 @@
 **Status:** Work in Progress - Not Yet Approved by Product Owner  
 **Purpose:** Diagnostic methods for troubleshooting design variables in Figma with Token Studio
 
+## **Target Audience**
+**Primary:** DS/Oblique Designers  
+**Secondary:** DS/Oblique Developers  
+**Prerequisites:** Figma desktop app, MCP tools access, Token Studio knowledge  
+**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md#11-dsobl)
+
 This document provides diagnostic methods for troubleshooting design variables in Figma, particularly when working with Token Studio and variable detachment.
 
 ---

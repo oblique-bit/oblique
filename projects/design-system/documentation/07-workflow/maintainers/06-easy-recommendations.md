@@ -4,6 +4,12 @@
 **Status:** Work in Progress - Not Yet Approved by Product Owner  
 **Purpose:** Simple recommendations for script usage in design system workflows
 
+## **Target Audience**
+**Primary:** DS/Oblique Developers  
+**Secondary:** DS/Oblique Designers (for validation scripts)  
+**Prerequisites:** Node.js, npm, basic command line knowledge  
+**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md#12-dsobl)
+
 # EASY SCRIPT RECOMMENDATIONS
 
 The **EASIEST** ways to know which scripts to run:
@@ -89,7 +95,7 @@ Just copy-paste the commands!
 
 ---
 
-## 🏆 **WORKFLOW RECOMMENDATIONS**
+## **WORKFLOW RECOMMENDATIONS**
 
 **Best practice:** Use this flow for any changes:
 
