@@ -5,8 +5,8 @@
 **Purpose:** Simple recommendations for script usage in design system workflows
 
 ## **Target Audience**
-**Primary:** DS/Oblique Developers  
-**Secondary:** DS/Oblique Designers (for validation scripts)  
+**Primary:** DS/Oblique Designers  
+**Secondary:** DS/Oblique Developers (for validation scripts)  
 **Prerequisites:** Node.js, npm, basic command line knowledge  
 **Related Personas:** [Design System Personas](../../02-foundation/02-personas.md#12-dsobl)
 

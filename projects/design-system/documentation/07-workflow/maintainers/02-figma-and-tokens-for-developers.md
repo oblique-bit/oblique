@@ -8,22 +8,22 @@
 
 ## Overview
 
-This document outlines the comprehensive workflow for developers working with the tokenized Design System project. Developers have multiple integrated tools and resources at their disposal:
+This document outlines the workflow for developers working with the tokenized Design System project. Developers have multiple integrated tools and resources:
 
 ### Available Developer Resources
 
 **1. Token Analysis & Documentation**
 - **JSON Token Files**: Direct analysis of token structures, values, and relationships
-- **Comprehensive Documentation**: Access to `/documentation` folder containing foundation principles, component guidelines, and workflow processes
+- **Documentation**: Access to `/documentation` folder containing foundation principles, component guidelines, and workflow processes
 - **Design System Context**: Complete understanding of S1/S2/S3 semantic architecture and token hierarchy
 
 **2. Design Integration**
 - **Figma Dev Mode**: Direct access to design files with token inspection capabilities
-- **MCP Integration**: Figma Dev Mode MCP Server seamlessly integrated into development environment
-- **Visual Studio Code + GitHub Copilot** (Recommended): Familiar IDE environment with AI assistance for enhanced productivity
+- **MCP Integration**: Figma Dev Mode MCP Server integrated into development environment
+- **Visual Studio Code + GitHub Copilot** (Recommended): Familiar IDE environment with AI assistance for improved productivity
 
 **3. Unified Workflow**
-The integration of these tools creates a powerful development environment where you can seamlessly move between analyzing token files, reading documentation for context, inspecting designs in Figma, and implementing solutions in your preferred IDE with AI assistance.
+The integration of these tools creates a development environment where you can move between analyzing token files, reading documentation for context, inspecting designs in Figma, and implementing solutions in your preferred IDE with AI assistance.
 
 ## Scope
 
@@ -33,17 +33,18 @@ The integration of these tools creates a powerful development environment where 
 
 ## Current State and Workflow Improvements
 
-We utilize the **Figma Dev Mode MCP Server** as a bridge between design files and development environments. This integration enables developers to:
+We use the **Figma Dev Mode MCP Server** as a bridge between design files and development environments. This integration enables developers to:
 
 - Query design metadata directly from their IDE
 - Access component information, variants, and token values
-- Leverage AI-powered workflows for enhanced productivity
+- Use AI-powered workflows for improved productivity
 
 ### MCP Server Details
 
 **Server:** Figma Dev Mode MCP Server (Official)  
 **Endpoint:** `http://127.0.0.1:3845/mcp`  
 **Protocol:** Model Context Protocol (MCP)  
+**Current Figma File:** [DesignSystem-Tokens-V9](https://www.figma.com/design/uPBStwI7fwQ8np2aMSrMdF/DesignSystem-Tokens-V9?node-id=118-139&m=dev) - Active file for exploring MCP capabilities  
 **Documentation:** 
 - [Figma for Developers MCP Server](https://github.com/figma/figma-for-developers-mcp-server) - Official GitHub repository
 - [Model Context Protocol](https://modelcontextprotocol.io/) - MCP specification and documentation
@@ -63,7 +64,7 @@ We utilize the **Figma Dev Mode MCP Server** as a bridge between design files an
 
 **Requirements:**
 - Figma Desktop App (latest version)
-- Dev Mode enabled in Figma Preferences
+- **Dev Mode Access** (paid feature - not included in free plan)
 - MCP client configured in VS Code
 
 ## Workflow Architecture
@@ -72,15 +73,17 @@ We utilize the **Figma Dev Mode MCP Server** as a bridge between design files an
 
 **Prerequisites:**
 - **Figma desktop app (latest version)** - browser version not supported
+- **Dev Mode access** (paid feature - contact admin to activate)
 - App must be running during development
 
 **Configuration Steps:**
 1. Install and launch Figma desktop app
-2. Enable Dev Mode MCP server in Figma Preferences
-3. Configure MCP client in VS Code:
+2. **Request Dev Mode access** from admin if not already activated
+3. Enable Dev Mode MCP server in Figma Preferences
+4. Configure MCP client in VS Code:
    - Add Figma server endpoint: `http://127.0.0.1:3845/mcp`
    - Update `mcp.json` or configure via IDE settings
-4. Verify successful VS Code connection
+5. Verify successful VS Code connection
 
 ### 2. Component Architecture & Inspection
 
@@ -106,9 +109,9 @@ Figma → Tokens Studio → Style Dictionary → Code
 ### 4. Standalone vs. Integrated Use
 
 **Requirements:**
-- MCP requires standalone Figma desktop app
+- MCP requires standalone Figma desktop app with **Dev Mode access**
 - Team infrastructure supports standalone app installation
-- Superior to browser-based workflows due to deeper MCP access
+- Better than browser-based workflows due to deeper MCP access
 
 ## Developer Prompts
 
@@ -125,7 +128,7 @@ Use these prompts when working with components:
 
 ### Extended Prompts (MCP-powered)
 
-Advanced workflows enabled by MCP integration:
+Additional workflows enabled by MCP integration:
 
 - **Variable Definitions**: "Get variable definitions for this selection"
 - **React + Tailwind**: "Generate React + Tailwind code using existing component mappings via Code Connect"
@@ -147,19 +150,19 @@ Some token types are not natively supported in Figma and cannot be directly insp
 
 2. **Documentation & Communication**
    - Mark unsupported tokens clearly as *not available in Figma*
-   - Provide comprehensive documentation for developers
+   - Provide documentation for developers
    - Include clear implementation references
 
 3. **Developer Guidance**
    - Implement unsupported tokens directly in code based on documentation
-   - Follow documented specifications precisely
+   - Follow documented specifications exactly
    - Maintain consistency with supported token patterns
 
 ### Example Implementation Note
 
 ```markdown
 **Figma Limitation Notice**
-These tokens (e.g., responsive typography scales or advanced state tokens) are not supported in Figma and cannot be inspected via MCP. They remain part of the design system and must be implemented as documented.
+These tokens (e.g., responsive typography scales or complex state tokens) are not supported in Figma and cannot be inspected via MCP. They remain part of the design system and must be implemented as documented.
 ```
 
 ## Best Practices
@@ -170,7 +173,7 @@ These tokens (e.g., responsive typography scales or advanced state tokens) are n
 2. **Use semantic tokens** whenever possible, avoid component-level tokens
 3. **Test across viewport modes** to ensure responsive behavior
 4. **Document any workarounds** for unsupported token types
-5. **Leverage automation** for token validation and updates
+5. **Use automation** for token validation and updates
 
 ### For Maintainers
 
@@ -179,12 +182,14 @@ These tokens (e.g., responsive typography scales or advanced state tokens) are n
 3. **Document new token types** and their Figma support status
 4. **Maintain Code Connect mappings** for accurate code generation
 5. **Review and update workflows** based on team feedback
+6. **Manage Dev Mode access** for team members as needed
 
 ## Troubleshooting
 
 ### Common Issues
 
 - **MCP Connection Failed**: Ensure Figma desktop app is running and Dev Mode is enabled
+- **Dev Mode Not Available**: Request access from admin to activate Dev Mode
 - **Token Not Found**: Check if token type is supported in Figma or requires manual implementation
 - **Variant Mismatch**: Verify component variants match between Figma and code implementation
 - **Browser vs Desktop**: Confirm using Figma desktop app, not browser version
