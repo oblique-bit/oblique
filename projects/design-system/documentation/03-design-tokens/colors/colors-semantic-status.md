@@ -13,7 +13,7 @@ Status colors communicate system state, user feedback, and contextual informatio
 
 ## **Status Reference Tables**
 
-### 🔒 **Reserved Statuses**
+### **Reserved Statuses**
 Status tokens with **mandatory settings** that cannot be changed due to brand consistency, universal signal semantics, or cross-system requirements.
 
 | Status | Type | Description | Components | Legacy Name | Inspiration | Change Status |
@@ -39,12 +39,12 @@ Status tokens that **projects can adapt, rename, or remap** based on workflow re
 
 Status tokens are classified as either **Reserved** or **Flexible** to provide clear governance:
 
-### 🔒 **Reserved Statuses**
+### **Reserved Statuses**
 
 **Rules:**
 - **Fixed across all projects** - Cannot be renamed or remapped
-- 🚦 **Follow universal signal semantics** - Based on traffic light patterns
-- 🌍 **Cross-system consistency** - Used across government applications
+- **Follow universal signal semantics** - Based on traffic light patterns
+- **Cross-system consistency** - Used across government applications
 - **Color mapping locked** - Primitive color references must not change
 - **Brand consistency required** - Critical for maintaining design system integrity
 
