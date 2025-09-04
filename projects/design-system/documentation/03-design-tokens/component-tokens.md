@@ -19,6 +19,7 @@ Component tokens are the top level of the token hierarchy, providing component-s
 - Establish variant systems within components  
 - Provide component-level abstraction over semantic tokens
 - Enable component-specific theming and customization
+- Act as a shield to protect developers from changes when refactoring happens only on config, primitive or semantic token level
 
 ## Component Token Levels
 
