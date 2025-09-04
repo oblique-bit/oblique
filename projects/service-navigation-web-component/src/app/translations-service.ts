@@ -6,7 +6,7 @@ import * as translationsDE from '../../../oblique/src/assets/i18n/oblique-de.jso
 import * as translationsFR from '../../../oblique/src/assets/i18n/oblique-fr.json';
 import * as translationsIT from '../../../oblique/src/assets/i18n/oblique-it.json';
 import * as translationsEN from '../../../oblique/src/assets/i18n/oblique-en.json';
-import type {ObILink} from './service-navigation-web-component.model';
+import type {ObILink, ObITranslateObject} from './service-navigation-web-component.model';
 
 @Injectable()
 export class TranslationsService {
@@ -40,6 +40,12 @@ export class TranslationsService {
 			const newLang = this.parseLanguage(lang, this.parsedDefaultLanguage, this.parsedLanguages);
 			this.translate.use(newLang);
 		}
+	}
+
+	addOneTranslation(key: string, value: ObITranslateObject): void {
+		Object.entries(value).forEach(([language, translation]) => {
+			this.translate.setTranslation(language, {[key]: String(translation)}, true);
+		});
 	}
 
 	private parseLanguages(languageList: string): string[] {

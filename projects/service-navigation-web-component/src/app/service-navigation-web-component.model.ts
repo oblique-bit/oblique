@@ -14,6 +14,22 @@ export interface ObILink {
 	};
 }
 
+export interface ObIContactWithExtraTextMultipleLanguages {
+	emailText?: ObITranslateObject;
+	email?: string;
+	telText?: ObITranslateObject;
+	tel?: string;
+	formUrlText?: ObITranslateObject;
+	formUrl?: string;
+}
+
+export interface ObITranslateObject {
+	de: string;
+	fr: string;
+	it: string;
+	en: string;
+}
+
 export interface ObICustomButton {
 	obliqueIconName: ObEIcon;
 	badge: string;

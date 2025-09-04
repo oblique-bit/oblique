@@ -26,7 +26,29 @@
 			*ngIf="contact?.email || contact?.phone || contact?.formUrl"
 			header="i18n.oblique.service-navigation.info.contact.header"
 			[text]="contactText"
-			[links]="contact | obContactToLinks"
-		/>
+		>
+			<ul class="ob-service-navigation-info-links" obContent>
+				@for (link of contact | obContactToLinks; track $index) {
+					<li>
+						<a
+							[id]="link.label + '-ob-contact-link'"
+							[href]="link.url"
+							[isExternalLink]="!link.isInternalLink"
+							[attr.aria-label]="
+								typeof link.ariaLabel === 'string'
+									? (link.ariaLabel | translate)
+									: (link.ariaLabel?.text | translate: link.ariaLabel?.parameters)
+							"
+						>
+							<mat-icon *ngIf="link.icon" [svgIcon]="link.icon" class="ob-icon-text" />{{ link.label | translate }}
+						</a>
+						@if (link.extraText) {
+							<br />
+							{{ link.extraText | translate }}
+						}
+					</li>
+				}
+			</ul>
+		</ob-service-navigation-popover-section>
 	</div>
 </ng-template>

@@ -1,12 +1,12 @@
 import {TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
+import {DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {MatIconModule} from '@angular/material/icon';
 import {MatIconHarness} from '@angular/material/icon/testing';
-import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {By} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationInfoHarness} from './service-navigation-info.harness';
@@ -150,15 +150,28 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				describe('links', () => {
-					it('should have 1', () => {
-						expect(section.links.length).toBe(1);
+					let links: DebugElement[];
+					let extraTexts: DebugElement[];
+
+					beforeEach(() => {
+						links = fixture.debugElement.queryAll(By.css('a'));
+						extraTexts = fixture.debugElement.queryAll(By.css('.ob-extra-text'));
 					});
 
-					it.each([
-						{property: 'url', value: 'https://example.com/'},
-						{property: 'label', value: 'i18n.oblique.service-navigation.info.contact.form'}
-					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
-						expect(section.links[0][property]).toBe(value);
+					it('should have 1', () => {
+						expect(links.length).toBe(1);
+					});
+
+					it('should have "https://example.com/" as "href" property on the first link', () => {
+						expect(links[0].attributes['href']).toBe('https://example.com/');
+					});
+
+					it('should have "i18n.oblique.service-navigation.info.contact.form" as innerHTML property on the first link', () => {
+						expect(links[0].nativeElement.innerHTML).toContain('i18n.oblique.service-navigation.info.contact.form');
+					});
+
+					it('should have no extra text section', () => {
+						expect(extraTexts.length).toBe(0);
 					});
 				});
 			});
@@ -189,15 +202,28 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				describe('links', () => {
-					it('should have 1', () => {
-						expect(section.links.length).toBe(1);
+					let links: DebugElement[];
+					let extraTexts: DebugElement[];
+
+					beforeEach(() => {
+						links = fixture.debugElement.queryAll(By.css('a'));
+						extraTexts = fixture.debugElement.queryAll(By.css('.ob-extra-text'));
 					});
 
-					it.each([
-						{property: 'url', value: 'tel:123'},
-						{property: 'label', value: '123'}
-					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
-						expect(section.links[0][property]).toBe(value);
+					it('should have 1', () => {
+						expect(links.length).toBe(1);
+					});
+
+					it('should have "tel:123" as "href" property on the first link', () => {
+						expect(links[0].attributes['href']).toBe('tel:123');
+					});
+
+					it('should have "123" as innerHTML property on the first link', () => {
+						expect(links[0].nativeElement.innerHTML).toContain('123');
+					});
+
+					it('should have no extra text section', () => {
+						expect(extraTexts.length).toBe(0);
 					});
 				});
 			});
@@ -228,15 +254,28 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				describe('links', () => {
-					it('should have 1', () => {
-						expect(section.links.length).toBe(1);
+					let links: DebugElement[];
+					let extraTexts: DebugElement[];
+
+					beforeEach(() => {
+						links = fixture.debugElement.queryAll(By.css('a'));
+						extraTexts = fixture.debugElement.queryAll(By.css('.ob-extra-text'));
 					});
 
-					it.each([
-						{property: 'url', value: 'mailto:text@test.com'},
-						{property: 'label', value: 'text@test.com'}
-					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
-						expect(section.links[0][property]).toBe(value);
+					it('should have 1', () => {
+						expect(links.length).toBe(1);
+					});
+
+					it('should have "mailto:text@test.com" as "href" property on the first link', () => {
+						expect(links[0].attributes['href']).toBe('mailto:text@test.com');
+					});
+
+					it('should have "text@test.com" as innerHTML property on the first link', () => {
+						expect(links[0].nativeElement.innerHTML).toContain('text@test.com');
+					});
+
+					it('should have no extra text section', () => {
+						expect(extraTexts.length).toBe(0);
 					});
 				});
 			});
@@ -245,7 +284,14 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 		describe('with email, phone and contact properties', () => {
 			let sections: DebugElement[];
 			beforeEach(fakeAsync(async () => {
-				component.contact = {email: 'text@test.com', phone: '123', formUrl: 'https://example.com/'};
+				component.contact = {
+					email: 'text@test.com',
+					emailText: 'email text',
+					phone: '123',
+					phoneText: 'tel text',
+					formUrl: 'https://example.com/',
+					formUrlText: 'form url text'
+				};
 				await harness.openPopover();
 				fixture.detectChanges();
 				tick();
@@ -267,29 +313,57 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				describe('links', () => {
+					let links: DebugElement[];
+					let bullets: DebugElement[];
+					beforeEach(() => {
+						links = fixture.debugElement.queryAll(By.css('a'));
+						bullets = fixture.debugElement.queryAll(By.css('li'));
+					});
+
 					it('should have 3', () => {
-						expect(section.links.length).toBe(3);
+						expect(links.length).toBe(3);
 					});
 
-					it.each([
-						{property: 'url', value: 'mailto:text@test.com'},
-						{property: 'label', value: 'text@test.com'}
-					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
-						expect(section.links[0][property]).toBe(value);
+					describe('first link', () => {
+						it('should have "tel:123" as "href" property', () => {
+							expect(links[0].attributes['href']).toBe('tel:123');
+						});
+
+						it('should have "123" as innerHTML property', () => {
+							expect(links[0].nativeElement.innerHTML).toContain('123');
+						});
+
+						it('should have "tel text" in extra text section', () => {
+							expect(bullets[0].nativeElement.innerHTML).toContain('tel text');
+						});
 					});
 
-					it.each([
-						{property: 'url', value: 'tel:123'},
-						{property: 'label', value: '123'}
-					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
-						expect(section.links[1][property]).toBe(value);
+					describe('second link', () => {
+						it('should have "mailto:text@test.com" as "href" property', () => {
+							expect(links[1].attributes['href']).toBe('mailto:text@test.com');
+						});
+
+						it('should have "text@test.com" as innerHTML property', () => {
+							expect(links[1].nativeElement.innerHTML).toContain('text@test.com');
+						});
+
+						it('should have "mail text" in extra text section', () => {
+							expect(bullets[1].nativeElement.innerHTML).toContain('mail text');
+						});
 					});
 
-					it.each([
-						{property: 'url', value: 'https://example.com/'},
-						{property: 'label', value: 'i18n.oblique.service-navigation.info.contact.form'}
-					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
-						expect(section.links[2][property]).toBe(value);
+					describe('third link', () => {
+						it('should have "https://example.com/" as "href" property ', () => {
+							expect(links[2].attributes['href']).toBe('https://example.com/');
+						});
+
+						it('should have "text@test.com" as innerHTML property ', () => {
+							expect(links[2].nativeElement.innerHTML).toContain('i18n.oblique.service-navigation.info.contact.form');
+						});
+
+						it('should have "form url text" in extra text section', () => {
+							expect(bullets[2].nativeElement.innerHTML).toContain('form url text');
+						});
 					});
 				});
 			});
