@@ -86,8 +86,6 @@ const codeExamples: Record<string, Type<CodeExamples>> = {
 	language: LanguageCodeExamplesComponent,
 	'list-group': ListGroupCodeExamplesComponent,
 	'master-layout': MasterLayoutCodeExamplesComponent,
-	'master-layout-12': MasterLayoutCodeExamplesComponent,
-	'master-layout-13': MasterLayoutCodeExamplesComponent,
 	'material-table': MaterialTableCodeExamplesComponent,
 	'nav-tree': NavTreeCodeExamplesComponent,
 	'nested-form': NestedFormCodeExamplesComponent,
@@ -117,5 +115,5 @@ const codeExamples: Record<string, Type<CodeExamples>> = {
 };
 
 export function getCodeExampleComponent(slug: string): Type<CodeExamples> | undefined {
-	return codeExamples[slug];
+	return codeExamples[slug] ?? codeExamples[slug.replace(/-\d+$/u, '')];
 }

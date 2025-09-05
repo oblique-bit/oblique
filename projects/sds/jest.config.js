@@ -43,12 +43,6 @@ module.exports = {
 			functions: 50,
 			lines: 66
 		},
-		'projects/sds/src/app/code-examples/code-examples.mapper.ts': {
-			statements: 98,
-			branches: 100,
-			functions: 0,
-			lines: 98
-		},
 		'projects/sds/src/app/code-examples/code-examples.model.ts': {
 			statements: 80,
 			branches: 73,
