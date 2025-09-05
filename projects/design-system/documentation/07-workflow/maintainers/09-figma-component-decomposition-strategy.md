@@ -1,4 +1,6 @@
-# Figma Component Decomposition Strategy: Breaking Down Large Components
+# Figma Component Decomposition Strategy: Breaking Down Large Componen- **Total Components**: 2 components  
+- **Total Variants**: 140 variants (108 + 32)  
+- **Reduction**: 340 variants fewer (480 - 140)s
 
 ## Overview
 
@@ -32,11 +34,11 @@ Button component with 480 variants causes performance issues in Figma across mul
 
 #### 1. Button_Aug/Text
 
-**Variants**: Size (4) × State (4) × Icon Position (3: none, left, right) × Button Type (3: primary, secondary, tertiary) = **144 variants**
+**Variants**: Size (3) × State (4) × Icon Position (3: none, left, right) × Button Type (3: primary, secondary, tertiary) = **108 variants**
 
 ```
 Properties:
-- Size: xs | sm | md | lg
+- Size: sm | md | lg
 - State: default | hover | pressed | disabled  
 - Icon: none | left | right
 - Button Type: primary | secondary | tertiary
