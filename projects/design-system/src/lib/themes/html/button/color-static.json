@@ -310,7 +310,7 @@
                 },
                 "focus": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.border.focus}",
+                  "$value": "{ob.s3.color.interaction.focus_ring.inversity_normal}",
                   "$description": "Primary button focus border (same for both inversity types)"
                 },
                 "pressed": {
@@ -334,7 +334,7 @@
                 },
                 "focus": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.border.focus}",
+                  "$value": "{ob.s3.color.interaction.focus_ring.inversity_normal}",
                   "$description": "Primary button focus border (same for both inversity types)"
                 },
                 "pressed": {

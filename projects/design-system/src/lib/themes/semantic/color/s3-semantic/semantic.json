@@ -377,11 +377,16 @@
               }
             }
           },
-          "border": {
-            "focus": {
+          "focus_ring": {
+            "inversity_normal": {
               "$type": "color",
-              "$value": "{ob.s1.color.interaction.border.focus}",
-              "$description": "Interaction border focus color"
+              "$value": "{ob.s1.color.interaction.focus_ring.inversity_normal}",
+              "$description": "Focus ring color for interaction elements - normal inversity"
+            },
+            "inversity_flipped": {
+              "$type": "color",
+              "$value": "{ob.s1.color.interaction.focus_ring.inversity_flipped}",
+              "$description": "Focus ring color for interaction elements - flipped inversity"
             }
           }
         },

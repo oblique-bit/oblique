@@ -1636,11 +1636,16 @@
               }
             }
           },
-          "border": {
-            "focus": {
+          "focus_ring": {
+            "inversity_normal": {
               "$type": "color",
               "$value": "{ob.p.color.purple.500}",
-              "$description": "Used for text-links as a border color of the focus state."
+              "$description": "Focus ring color for interaction elements in normal inversity"
+            },
+            "inversity_flipped": {
+              "$type": "color",
+              "$value": "{ob.p.color.purple.500}",
+              "$description": "Focus ring color for interaction elements in flipped inversity"
             }
           }
         }
