@@ -8,15 +8,19 @@ Strategic approach to decomposing complex, variant-heavy components into smaller
 
 ## The Problem: Variant Explosion
 
-### Design System Consumer Context
-
-**Primary Users**: Business analysts (requirements engineers) and internal designers primarily use Figma in browser, not desktop app.
-
-**Browser Performance Impact**: Large variant sets create significant performance degradation in browser-based Figma, affecting the majority of design system consumers who rely on lightweight, responsive components for their workflow.
-
 ### Performance Impact of Large Components
 
 Button component with 480 variants causes performance issues in Figma across multiple pages.
+
+**User Impact**: Affects [internal designers and business analysts](../../02-foundation/02-personas.md) who primarily use browser-based Figma. Large variant sets create significant performance degradation in browser environments.
+
+### Maintenance Complexity
+
+**480-variant maintenance nightmare**: Current button architecture creates significant maintenance overhead:
+- Component updates require touching hundreds of variants simultaneously
+- Property changes cascade across entire variant set
+- Quality assurance requires testing 480 different combinations
+- Design system updates become time-intensive and error-prone
 
 **Community Confirmation**: Figma community has documented similar performance issues with large variant sets, requesting optimization for components with hundreds of variants. [Source: Figma Forum - Optimize performance in large variant sets](https://forum.figma.com/suggest-a-feature-11/optimize-performance-in-large-variant-sets-28624)
 
@@ -63,11 +67,8 @@ Children:
 - **Icon-only**: Secondary and tertiary only (no primary)
 - **Children**: Badge and tooltip as children with show=off default
 - **Temporary naming**: Button_Aug to avoid disrupting existing button
-- **Performance priority**: Optimized for browser-based Figma users (business analysts, requirements engineers, internal designers)
 
 **Total**: 176 variants across 2 grouped components vs. 480 variants in single component
-
-**Design System Consumer Benefit**: Lightweight components support browser-based workflow for majority of users (business analysts/requirements engineers and internal designers)
 
 **Figma Organization**: Components grouped under `Button_Aug/` maintaining appearance of single component while enabling technical decomposition.
 
