@@ -3,14 +3,14 @@ import {type ExecSyncOptions, execSync} from 'child_process';
 import {gte, major} from 'semver';
 
 /* Generated content, do not edit */
-export const version = '14.0.0-alpha.1';
+export const version = '14.0.0-rc.1';
 /* End of generated content */
 
 export const currentVersions = {
 	'@oblique/oblique': '13',
 	'@angular/cli': '20',
 	'@angular/material': '20',
-	'@oblique/toolchain': '13',
+	'@oblique/toolchain': version,
 	'@angular/core': '20',
 	'@angular/cdk': '20',
 	'@angular/animations': '20',

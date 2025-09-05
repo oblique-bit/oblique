@@ -1,3 +1,24 @@
+# [14.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0-rc.1) (2025-09-05)
+
+## Bug Fixes
+
+- **language:** pass a valid format to `ob-date` ([762b4b4e](https://github.com/oblique-bit/oblique/commit/762b4b4eec4f9dcf0484f7625a79f43eb52bae57))
+
+## Features
+
+- **column-layout:** update example with initially closed columns ([82840dfc](https://github.com/oblique-bit/oblique/commit/82840dfcadc01571d14db72e39d52fc343c6cb5e))
+- **language:** add demo for `isoDate` validation ([495e7ae9](https://github.com/oblique-bit/oblique/commit/495e7ae919d1b63c89d9633f3d22fda0f9325a36))
+- **master-layout:** add extra text for contacts ([64a71eef](https://github.com/oblique-bit/oblique/commit/64a71eefc829d5a87d1bba91401a1dbe2a1afffb))
+- **master-layout:** remove `ObMasterLayoutConfig.focusableFragments` ([5d966a14](https://github.com/oblique-bit/oblique/commit/5d966a14ebf075039a231cd1e0147e74bbe2f508))
+- **master-layout:** remove `showAccessibilityTitle` setting ([6b0dee2b](https://github.com/oblique-bit/oblique/commit/6b0dee2b897aa0214043480ce66fc918fa23d00c))
+- **master-layout:** ensure that the version number in dynamically updated ([b14767d4](https://github.com/oblique-bit/oblique/commit/b14767d4bc48734536d89448348da8ea1febda38))
+- **sandbox:** remove demo skip links for focusable fragment ([94d5f344](https://github.com/oblique-bit/oblique/commit/94d5f34475f47267449829f9baaa98622888559c))
+- **sandbox:** add urls to the accessibility statement contact information ([ed442cf1](https://github.com/oblique-bit/oblique/commit/ed442cf129cd5a58b7a37de2c8c064a6a0a5adbd))
+- **service-navigation:** add extra text for contacts ([95919fe1](https://github.com/oblique-bit/oblique/commit/95919fe169561158a2d8620f833833a08441133a))
+- **sticky:** remove deprecated `ObStickyComponent` documentation ([4af3f28e](https://github.com/oblique-bit/oblique/commit/4af3f28ee11584d725273454f39341716f554876))
+- **styles:** document `prose` headings ([466d7243](https://github.com/oblique-bit/oblique/commit/466d724396c618e5a356cdaa5f7acf943da5a5da))
+- **toolchain:** enable language path parameter ([62705feb](https://github.com/oblique-bit/oblique/commit/62705febf430947d887c0933bf9f63483621279e))
+
 # [14.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/13.3.2...14.0.0-alpha.1) (2025-07-21)
 
 ## Bug Fixes
