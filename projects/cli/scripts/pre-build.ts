@@ -22,7 +22,7 @@ function addVersionNumber(): void {
 	Log.info('Add Oblique version to "cli-utils.ts"');
 	const version = PackageJson.readVersion();
 	Files.overwrite('./src/utils/cli-utils.ts', content =>
-		content.replace(/(?<=const version = ')\d+\.\d+\.\d+(?:-(?:alpha|beta|RC)\.\d+)?/u, version)
+		content.replace(/(?<=const version = ')\d+\.\d+\.\d+(?:-(?:alpha|beta|rc)\.\d+)?/u, version)
 	);
 }
 
