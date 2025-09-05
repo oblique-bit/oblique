@@ -1,3 +1,18 @@
+# [14.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0-rc.1) (2025-09-05)
+
+## Bug Fixes
+
+- **new:** run lint format to avoid formatting issues ([50c975ea](https://github.com/oblique-bit/oblique/commit/50c975ea5921a8c17e66daf8b4319e812d93460b))
+- **new:** remove sonar option from tests ([0fa094ed](https://github.com/oblique-bit/oblique/commit/0fa094edbcf5e9b5e8457ed4547d2c43c7352a82))
+- **utils:** make sure the `@oblique/toolchain` version matches the CLI one during installing ([3c8195d1](https://github.com/oblique-bit/oblique/commit/3c8195d1d4e687da4ff1670f4479cd811f6c4833))
+- **utils:** update recommended and minimum supported Node versions ([55f78ec3](https://github.com/oblique-bit/oblique/commit/55f78ec3637224f75066d2e9fdc26bd678ee8989))
+
+## Features
+
+- **cli:** remove protractor option ([77ac01af](https://github.com/oblique-bit/oblique/commit/77ac01afd5bc4a53362557125edc63646c0b8be6))
+- **new:** add `@oblique/toolchain` dependency ([c9940142](https://github.com/oblique-bit/oblique/commit/c99401427c32a9b738faa1bc8be5024fc9c6e597))
+- **new:** remove sonar step ([01e0b53d](https://github.com/oblique-bit/oblique/commit/01e0b53dba73becab8dcd6448a9ccf12871c3f5d))
+
 # [14.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/13.3.2...14.0.0-alpha.1) (2025-07-21)
 
 ## Bug Fixes

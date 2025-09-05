@@ -13,6 +13,15 @@ nodejsPipelineTemplate {
 			'test': 'npm run test-ci -ws',
 			'build': 'npm run build -ws'
 		],
+		'release/OUI-4017-release-oblique-14.0.0-rc.1': [
+			publish: [
+				'@oblique/oblique',
+				'@oblique/cli',
+				'@oblique/service-navigation-web-component',
+				'@oblique/toolchain'
+			],
+			gitTag: true
+		],
 		master: [
 			'publish': [
 				'@oblique/oblique',
