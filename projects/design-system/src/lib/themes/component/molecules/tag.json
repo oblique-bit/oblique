@@ -166,6 +166,22 @@
               "$value": "{ob.s3.color.neutral.bg.contrast_low.inversity_normal}"
             }
           }
+        },
+        "remove_button": {
+          "size": {
+            "sm": {
+              "$type": "sizing",
+              "$value": "{ob.s.icon.size.xs}"
+            },
+            "md": {
+              "$type": "sizing",
+              "$value": "{ob.s.icon.size.xs}"
+            },
+            "lg": {
+              "$type": "sizing",
+              "$value": "{ob.s.icon.size.sm}"
+            }
+          }
         }
       }
     }

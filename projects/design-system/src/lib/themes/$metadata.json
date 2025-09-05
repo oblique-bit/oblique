@@ -49,6 +49,7 @@
     "html/button/responsive/desktop",
     "html/button/responsive/mobile",
     "html/button/container",
+    "html/button/composite",
     "html/hr",
     "html/link",
     "html/list",
