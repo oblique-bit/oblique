@@ -97,18 +97,21 @@ This document establishes primary personas for the Oblique Design System, catego
 - Figma proficiency with component library usage (not creation)
 - Understanding of user experience principles and accessibility guidelines
 - Collaborative work with product developers and business stakeholders
+- **Majority use Figma in browser** rather than desktop application
 
 **Daily Activities:**
 - Design user interfaces using Oblique Figma component library
 - Create prototypes and user flows with design system components
 - Validate designs against federal requirements and user needs
 - Communicate design specifications to development teams
+- **Work primarily in browser-based Figma** for design creation and collaboration
 
 **Pain Points:**
 - Component limitations when business requirements exceed system capabilities
 - Learning curve for design system token structure and usage patterns
 - Uncertainty about when to request new components vs. customize existing ones
 - Keeping pace with design system updates and new component releases
+- **Browser Figma performance degradation** with large component variant sets affecting design workflow
 
 **Success Metrics:**
 - Design delivery speed with design system components
@@ -120,7 +123,7 @@ This document establishes primary personas for the Oblique Design System, catego
 
 ### **2.2. Business Requirements**
 
-**Role:** Business Analyst/Product Owner  
+**Role:** Business Analyst/Product Owner (Requirements Engineer)  
 **Primary Responsibility:** Define functional requirements and business logic  
 **Team Context:** Product teams with federal application business needs  
 
@@ -129,18 +132,21 @@ This document establishes primary personas for the Oblique Design System, catego
 - Experience translating business needs into technical specifications
 - Stakeholder management across government departments and citizen groups
 - Focus on compliance, efficiency, and user satisfaction
+- **Uses Figma in browser** for design review and requirements validation
 
 **Daily Activities:**
 - Define functional requirements for federal application features
 - Validate component behavior against business process requirements
 - Coordinate with legal and compliance teams for regulatory adherence
 - Prioritize feature development based on citizen and department needs
+- **Review designs in browser-based Figma** during requirements definition
 
 **Pain Points:**
 - Limited understanding of design system capabilities and constraints
 - Balancing unique business requirements with standardized component behavior
 - Ensuring compliance requirements are met within system limitations
 - Managing stakeholder expectations when system customization is required
+- **Browser Figma performance issues** with large component variant sets affecting design review workflow
 
 **Success Metrics:**
 - Requirements fulfillment using standard design system components
