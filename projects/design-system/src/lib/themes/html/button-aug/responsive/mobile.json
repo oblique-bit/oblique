@@ -1,0 +1,42 @@
+{
+  "ob": {
+    "h": {
+      "button-aug": {
+        "container": {
+          "spacing": {
+            "gap": {
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.lg}",
+              "$description": "Button gap for mobile viewport - tighter spacing for touch interaction"
+            }
+          }
+        },
+        "typography": {
+          "text_label": {
+            "font_size": {
+              "$type": "fontSizes",
+              "$value": "{ob.s.fontSize.sm}",
+              "$description": "Mobile font size for button-aug text labels",
+              "$extensions": {
+                "com.tokens-studio": {
+                  "mode": {
+                    "size-sm": "{ob.s.fontSize.xs}",
+                    "size-md": "{ob.s.fontSize.sm}",
+                    "size-lg": "{ob.s.fontSize.md}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "touch_target": {
+          "min_size": {
+            "$type": "dimension",
+            "$value": "48px",
+            "$description": "Enhanced mobile touch target minimum size for better accessibility"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "ob": {
+    "h": {
+      "button-aug": {
+        "container": {
+          "$description": "Container-responsive tokens for button-aug based on 02-button.md documentation patterns",
+          "responsive": {
+            "wide": {
+              "$description": "Wide container behavior (> 480px width) - horizontal layout patterns",
+              "layout": {
+                "direction": {
+                  "$type": "text",
+                  "$value": "row",
+                  "$description": "Horizontal layout for wide containers"
+                },
+                "flex_wrap": {
+                  "$type": "text", 
+                  "$value": "wrap",
+                  "$description": "Allow wrapping when space insufficient"
+                },
+                "align_items": {
+                  "$type": "text",
+                  "$value": "center",
+                  "$description": "Center alignment for horizontal layout"
+                }
+              },
+              "spacing": {
+                "gap": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.xl}",
+                  "$description": "20px gap between buttons in wide containers"
+                }
+              },
+              "button_order": {
+                "$type": "text",
+                "$value": "primary-last",
+                "$description": "Primary button positioned last (right-aligned) for intuitive navigation"
+              }
+            },
+            "narrow": {
+              "$description": "Narrow container behavior (≤ 480px width) - vertical stacking patterns",
+              "layout": {
+                "direction": {
+                  "$type": "text",
+                  "$value": "column",
+                  "$description": "Vertical layout for narrow containers"
+                },
+                "align_items": {
+                  "$type": "text",
+                  "$value": "stretch", 
+                  "$description": "Full-width buttons for better touch targets"
+                }
+              },
+              "spacing": {
+                "gap": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.spacing.lg}",
+                  "$description": "16px gap between stacked buttons"
+                }
+              },
+              "button_order": {
+                "$type": "text",
+                "$value": "primary-first",
+                "$description": "Primary button positioned first for thumb-friendly interaction"
+              },
+              "button_width": {
+                "$type": "text",
+                "$value": "100%",
+                "$description": "Full-width buttons in narrow containers"
+              }
+            }
+          },
+          "threshold": {
+            "container_width": {
+              "$type": "dimension",
+              "$value": "480px",
+              "$description": "Container width threshold: ≤480px = narrow, >480px = wide"
+            }
+          },
+          "viewport": {
+            "mobile_portrait": {
+              "$description": "Mobile portrait (390x844) - auto narrow container behavior",
+              "auto_behavior": {
+                "$type": "text",
+                "$value": "narrow",
+                "$description": "Automatically uses narrow container patterns"
+              }
+            },
+            "mobile_landscape": {
+              "$description": "Mobile landscape (844x390) - wide container behavior",
+              "auto_behavior": {
+                "$type": "text",
+                "$value": "wide", 
+                "$description": "Uses wide container patterns due to 844px width"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

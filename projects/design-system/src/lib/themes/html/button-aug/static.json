@@ -1,0 +1,170 @@
+{
+  "ob": {
+    "h": {
+      "button-aug": {
+        "$description": "Button-aug tokens with size-mode architecture - sizes are handled via modes rather than token variants",
+        "spacing": {
+          "with_text": {
+            "padding": {
+              "vertical": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.md}",
+                "$description": "Top and bottom padding - responsive via size modes (sm: 8px, md: 12px, lg: 20px)",
+                "$extensions": {
+                  "com.tokens-studio": {
+                    "mode": {
+                      "size-sm": "{ob.s.spacing.sm}",
+                      "size-md": "{ob.s.spacing.md}",
+                      "size-lg": "{ob.s.spacing.2xl}"
+                    }
+                  }
+                }
+              },
+              "horizontal": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.3xl}",
+                "$description": "Left and right padding - responsive via size modes (sm: 20px, md: 24px, lg: 32px)",
+                "$extensions": {
+                  "com.tokens-studio": {
+                    "mode": {
+                      "size-sm": "{ob.s.spacing.xl}",
+                      "size-md": "{ob.s.spacing.3xl}",
+                      "size-lg": "{ob.s.spacing.4xl}"
+                    }
+                  }
+                }
+              }
+            },
+            "gap": {
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.md}",
+              "$description": "Horizontal gap between icon and text label - responsive via size modes",
+              "$extensions": {
+                "com.tokens-studio": {
+                  "mode": {
+                    "size-sm": "{ob.s.spacing.sm}",
+                    "size-md": "{ob.s.spacing.md}",
+                    "size-lg": "{ob.s.spacing.lg}"
+                  }
+                }
+              }
+            }
+          },
+          "icon_only": {
+            "padding": {
+              "vertical": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.lg}",
+                "$description": "Icon-only vertical padding - ensures circular buttons match text button heights via size modes",
+                "$extensions": {
+                  "com.tokens-studio": {
+                    "mode": {
+                      "size-xs": "{ob.s.spacing.none}",
+                      "size-sm": "{ob.s.spacing.md}",
+                      "size-md": "{ob.s.spacing.lg}",
+                      "size-lg": "{ob.s.spacing.2xl}"
+                    }
+                  }
+                }
+              },
+              "horizontal": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.lg}",
+                "$description": "Icon-only horizontal padding - creates circular appearance via size modes",
+                "$extensions": {
+                  "com.tokens-studio": {
+                    "mode": {
+                      "size-xs": "{ob.s.spacing.none}",
+                      "size-sm": "{ob.s.spacing.md}",
+                      "size-md": "{ob.s.spacing.lg}",
+                      "size-lg": "{ob.s.spacing.2xl}"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "container": {
+          "spacing": {
+            "gap": {
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.3xl}",
+              "$description": "Gap between buttons in container - adapts to container=wide|narrow context",
+              "$extensions": {
+                "com.tokens-studio": {
+                  "mode": {
+                    "container-wide": "{ob.s.spacing.3xl}",
+                    "container-narrow": "{ob.s.spacing.lg}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "border_radius": {
+          "default": {
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.sm}",
+            "$description": "Standard border radius for button-aug components"
+          }
+        },
+        "border_width": {
+          "$type": "borderWidth",
+          "$value": "{ob.s.border_width.xs}",
+          "$description": "Default border width for button-aug"
+        },
+        "box_shadow": {
+          "enabled": {
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.none}",
+            "$description": "No shadow on enabled state"
+          },
+          "hover": {
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.xl}",
+            "$description": "Elevation effect on hover"
+          },
+          "focus": {
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.none}",
+            "$description": "No shadow on focus state"
+          },
+          "pressed": {
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.none}",
+            "$description": "No shadow on pressed state"
+          },
+          "disabled": {
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.none}",
+            "$description": "No shadow on disabled state"
+          }
+        },
+        "icon": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{ob.s.icon.size.sm}",
+            "$description": "Icon size - responsive via size modes",
+            "$extensions": {
+              "com.tokens-studio": {
+                "mode": {
+                  "size-sm": "{ob.s.icon.size.xs}",
+                  "size-md": "{ob.s.icon.size.sm}",
+                  "size-lg": "{ob.s.icon.size.md}"
+                }
+              }
+            }
+          }
+        },
+        "typography": {
+          "text_label": {
+            "$type": "typography",
+            "$value": "{ob.s.typography.type_scale.sm.normal}",
+            "$description": "Typography for button-aug text labels - consistent across size modes"
+          }
+        }
+      }
+    }
+  }
+}

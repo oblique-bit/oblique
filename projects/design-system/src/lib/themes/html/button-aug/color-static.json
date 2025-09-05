@@ -1,0 +1,451 @@
+{
+  "ob": {
+    "h": {
+      "button-aug": {
+        "color": {
+          "fg": {
+            "primary": {
+              "inversity_normal": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}",
+                  "$description": "Primary button-aug foreground - normal inversity (for use in flipped contexts like fatal infobox)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_normal}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_normal}"
+                }
+              },
+              "inversity_flipped": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}",
+                  "$description": "Primary button-aug foreground - flipped inversity (standard primary appearance - flipped by nature)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_flipped}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_flipped}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_flipped}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_flipped}"
+                }
+              }
+            },
+            "secondary": {
+              "inversity_normal": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}",
+                  "$description": "Secondary button-aug foreground - normal inversity (standard secondary appearance - normal by nature)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_normal}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_normal}"
+                }
+              },
+              "inversity_flipped": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}",
+                  "$description": "Secondary button-aug foreground - flipped inversity (for use in flipped contexts)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_flipped}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_flipped}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_flipped}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_flipped}"
+                }
+              }
+            },
+            "tertiary": {
+              "inversity_normal": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}",
+                  "$description": "Tertiary button-aug foreground - normal inversity (standard tertiary appearance - normal by nature)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_normal}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}",
+                  "$description": "slightly reduced opacity for pressed"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_normal}"
+                }
+              },
+              "inversity_flipped": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}",
+                  "$description": "Tertiary button-aug foreground - flipped inversity (for use in flipped contexts)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_flipped}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_flipped}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_flipped}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_flipped}"
+                }
+              }
+            }
+          },
+          "bg": {
+            "primary": {
+              "inversity_normal": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.bg.enabled.inversity_normal}",
+                  "$description": "Primary button-aug background - normal inversity (for use in flipped contexts like fatal infobox)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_normal}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_normal}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.bg.pressed.inversity_normal}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.bg.disabled.inversity_normal}"
+                }
+              },
+              "inversity_flipped": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.bg.enabled.inversity_flipped}",
+                  "$description": "Primary button-aug background - flipped inversity (standard primary appearance - flipped by nature)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_flipped}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_flipped}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.bg.pressed.inversity_flipped}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.bg.disabled.inversity_flipped}"
+                }
+              }
+            },
+            "secondary": {
+              "inversity_normal": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}",
+                  "$description": "Secondary button-aug background - normal inversity (transparent - normal by nature)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                }
+              },
+              "inversity_flipped": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}",
+                  "$description": "Secondary button-aug background - flipped inversity (transparent - for use in flipped contexts)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                }
+              }
+            },
+            "tertiary": {
+              "inversity_normal": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}",
+                  "$description": "Tertiary button-aug background - normal inversity (transparent - normal by nature)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                }
+              },
+              "inversity_flipped": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}",
+                  "$description": "Tertiary button-aug background - flipped inversity (transparent - for use in flipped contexts)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                }
+              }
+            }
+          },
+          "border": {
+            "primary": {
+              "inversity_normal": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}",
+                  "$description": "Primary button-aug border - normal inversity (no border - for use in flipped contexts)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.border.focus}",
+                  "$description": "Primary button-aug focus border (same for both inversity types)"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                }
+              },
+              "inversity_flipped": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}",
+                  "$description": "Primary button-aug border - flipped inversity (no border - standard primary appearance)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.border.focus}",
+                  "$description": "Primary button-aug focus border (same for both inversity types)"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                }
+              }
+            },
+            "secondary": {
+              "inversity_normal": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}",
+                  "$description": "Secondary button-aug border - normal inversity (uses same color as foreground - normal by nature)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_normal}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_normal}"
+                }
+              },
+              "inversity_flipped": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}",
+                  "$description": "Secondary button-aug border - flipped inversity (for use in flipped contexts)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_flipped}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_flipped}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_flipped}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_flipped}"
+                }
+              }
+            },
+            "tertiary": {
+              "inversity_normal": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}",
+                  "$description": "Tertiary button-aug border - normal inversity (no border - normal by nature)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                }
+              },
+              "inversity_flipped": {
+                "enabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}",
+                  "$description": "Tertiary button-aug border - flipped inversity (no border - for use in flipped contexts)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                },
+                "disabled": {
+                  "$type": "color",
+                  "$value": "{ob.s3.color.neutral.no_color}"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

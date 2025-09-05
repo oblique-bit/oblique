@@ -40,10 +40,10 @@
 │                                                                  │
 │  PAGE LEVEL: Variable Modes (Media Query Simulation)            │
 │  ┌──────────────────────────────────────────────────────────┐   │
-│  │  viewport=mobile │ viewport=desktop                      │   │
-│  │  • Touch targets │ • Standard sizing                     │   │
-│  │  • Global spacing│ • Desktop spacing                     │   │
-│  │  • Typography   │ • Typography scale                    │   │
+│  │  viewport=mobile         │ viewport=desktop               │   │
+│  │  • Larger touch targets  │ • Standard touch targets       │   │
+│  │  • Mobile spacing scale  │ • Desktop spacing scale        │   │
+│  │  • Mobile typography     │ • Desktop typography           │   │
 │  └──────────────────────────────────────────────────────────┘   │
 │                             │                                    │
 │                             ▼                                    │
@@ -134,6 +134,12 @@ When horizontal direction buttons don't fit in available container width:
 - **Narrow containers**: ≤ 480px width → Auto-stack vertically (narrow behavior)
 - **Wide containers**: > 480px width → Allow horizontal layout (wide behavior)
 - **Rationale**: Based on mobile landscape (844px) vs portrait (390px) UX patterns
+
+### Special Size Considerations
+- **button.xs**: Zero padding (padding=0) designed for constrained spaces
+- **Use case**: Embedded within other components like tags or tight layout containers
+- **Behavior**: Minimal footprint for constrained contexts where space is unavailable
+- **Note**: Buttons are standalone components - badges and tooltips are separate elements, not button children
 
 ---
 
