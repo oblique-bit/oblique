@@ -6,7 +6,7 @@
 
 **About this document:** This document defines component token patterns, naming conventions, and consumption guidelines for the Oblique Design System.
 
-**Scope:** Component-specific token creation, naming patterns, hierarchical relationships, and best practices.
+**Scope:** Component-specific token creation, naming patterns, hierarchical relationships, and standard practices.
 
 ---
 
@@ -25,11 +25,11 @@ Component tokens are the top level of the token hierarchy, providing component-s
 
 The Oblique Design System uses **two distinct component token levels**:
 
-### **ob.c.tag.container.spacing.gap - Custom Oblique Components**
+### **ob.c.tag.container.spacing.gap.spacing.gap - Custom Oblique Components**
 Custom components built specifically for the Oblique Design System with unique styling patterns and behaviors.
 
 ```
-ob.c.tag.container.spacing.gap.active.enabled
+ob.c.tag.container.spacing.gap.spacing.gap
 │   │  │       │     │   │      │
 │   │  │       │     │   │      └─ Modifier
 │   │  │       │     │   └─ Component variant
@@ -40,13 +40,13 @@ ob.c.tag.container.spacing.gap.active.enabled
 └─ Oblique namespace
 ```
 
-**Examples:** `ob.c.tag.container.spacing.gap.container.spacing.gap`, `ob.c.tag.container.spacing.gap.container.spacing.gap.banner`
+**Examples:** `ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap `ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap
 
-### **ob.h.list.single_item.spacing.marker_gap.* - HTML Components and Elements**
+### **ob.h.list.single_item.spacing.marker_gap.list.* - HTML Components and Elements**
 Native HTML elements and components that require consistent styling across the design system.
 
 ```
-ob.h.link.color.link
+ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list
 │   │  │      │     │   │       │
 │   │  │      │     │   │       └─ Modifier
 │   │  │      │     │   └─ Component variant
@@ -57,7 +57,7 @@ ob.h.link.color.link
 └─ Oblique namespace
 ```
 
-**Examples:** `ob.h.list.single_item.spacing.marker_gap`, `ob.h.list.single_item.spacing.marker_gap.form`, `ob.h.list.single_item.spacing.marker_gap`, `ob.h.list.single_item.spacing.marker_gap.table`, `ob.h.list.single_item.spacing.marker_gap`
+**Examples:** `ob.h.list.single_item.spacing.marker_gap.list`, `ob.h.list.single_item.spacing.marker_gap.list.list`, `ob.h.list.single_item.spacing.marker_gap.list`, `ob.h.list.single_item.spacing.marker_gap.list.list`, `ob.h.list.single_item.spacing.marker_gap.list`
 
 ---
 
@@ -78,16 +78,16 @@ Many components support multiple variant values for properties like size, spacin
 **Size Variants Example:**
 ```json
 {
-  "ob.h.link.spacing.gap.vertical.lg": {
-    "$value": "{ob.g.theme_configuration.viewport.mobile.size.control.lg}",
+  "ob.h.list.single_item.spacing.marker_gap.list.list": {
+    "$value": "{ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport}",
     "$description": "Large button height variant"
   },
-  "ob.h.link.spacing.gap": {
-    "$value": "{ob.g.theme_configuration.viewport.mobile.size.control.md}",
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
+    "$value": "{ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport}",
     "$description": "Medium button height variant (default)"
   },
-  "ob.h.link.spacing.gap.vertical.sm": {
-    "$value": "{ob.g.theme_configuration.viewport.mobile.size.control.sm}",
+  "ob.h.list.single_item.spacing.marker_gap.list.list": {
+    "$value": "{ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport}",
     "$description": "Small button height variant"
   }
 }
@@ -96,12 +96,12 @@ Many components support multiple variant values for properties like size, spacin
 **Typography Variables Example:**
 ```json
 {
-  "ob.c.tag.container.spacing.gap.heading": {
-    "$value": "{ob.g.theme_configuration.viewport.mobile.typography.heading.md}",
+  "ob.c.tag.container.spacing.gap.spacing.gap {
+    "$value": "{ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport}",
     "$description": "Card title using heading typography"
   },
-  "ob.c.tag.container.spacing.gap.body": {
-    "$value": "{ob.g.theme_configuration.viewport.mobile.typography.body.lg}",
+  "ob.c.tag.container.spacing.gap.spacing.gap {
+    "$value": "{ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport}",
     "$description": "Card title using body typography (default)"
   }
 }
@@ -133,8 +133,8 @@ Component tokens establish **default values** to ensure visual consistency, inte
 **In Token Descriptions:**
 ```json
 {
-  "ob.h.link.spacing.gap": {
-    "$value": "{ob.g.theme_configuration.viewport.mobile.size.control.md}",
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
+    "$value": "{ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport}",
     "$description": "Medium button height variant (default)"
   }
 }
@@ -177,31 +177,31 @@ Use the default configuration for most use cases. Override only when specific de
 **Button Size Variables:**
 ```json
 {
-  "ob.h.link.spacing.gap.vertical.lg": {
+  "ob.h.list.single_item.spacing.marker_gap.list.list": {
     "$value": "48px",
     "$description": "Large button height for prominent actions"
   },
-  "ob.h.link.spacing.gap": {
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
     "$value": "40px", 
     "$description": "Medium button height - standard default size"
   },
-  "ob.h.link.spacing.gap.vertical.sm": {
+  "ob.h.list.single_item.spacing.marker_gap.list.list": {
     "$value": "32px",
     "$description": "Small button height for compact layouts"
   },
-  "ob.h.link.color.link.button.spacing.with_text.padding.vertical-x.md": {
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-x.md": {
     "$value": "16px",
     "$description": "Medium button horizontal padding (default)"
   },
-  "ob.h.link.color.link.tag.container.spacing.gap.spacing.padding.comfortable": {
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
     "$value": "24px",
     "$description": "Comfortable card padding for most content"
   },
-  "ob.c.tag.container.spacing.gap.tight": {
+  "ob.c.tag.container.spacing.gap.spacing.gap {
     "$value": "16px",
     "$description": "Tight card padding for dense layouts (default)"
   },
-  "ob.c.tag.container.spacing.gap.spacious": {
+  "ob.c.tag.container.spacing.gap.spacing.gap {
     "$value": "32px",
     "$description": "Spacious card padding for important content"
   }
@@ -230,7 +230,7 @@ Each variable value should include:
 
 ```json
 {
-  "ob.h.list.single_item.spacing.marker_gap.size.height.md": {
+  "ob.h.list.single_item.spacing.marker_gap.list.list.list.list": {
     "$value": "40px",
     "$description": "Medium input height - default size providing optimal touch targets and visual balance",
     "$extensions": {
@@ -253,13 +253,13 @@ Each variable value should include:
 ### **Hierarchical Position**
 
 ```
-Component Tokens (ob.c.tag.container.spacing.gap / ob.h.list.single_item.spacing.marker_gap.*) → Semantic Tokens (ob.s3.color.brand.theme_configuration.viewport.mobile.*) can be consumed by any level**
+Component Tokens (ob.c.tag.container.spacing.gap.spacing.gap / ob.h.list.single_item.spacing.marker_gap.list.*) → Semantic Tokens (ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*) can be consumed by any level**
 
 ### **Token Structure Pattern**
 
-**Custom Components (ob.c.tag.container.spacing.gap
+**Custom Components (ob.c.tag.container.spacing.gap.spacing.gap
 ```
-ob.c.tag.container.spacing.gap.{category}.{property}.{variant}.{state}
+ob.c.tag.container.spacing.gap.spacing.gap.{category}.{property}.{variant}.{state}
 │   │  │           │          │          │         │
 │   │  │           │          │          │         └─ Modifier
 │   │  │           │          │          └─ Component variant
@@ -270,9 +270,9 @@ ob.c.tag.container.spacing.gap.{category}.{property}.{variant}.{state}
 └─ Oblique namespace
 ```
 
-**HTML Components (ob.h.list.single_item.spacing.marker_gap.*):**
+**HTML Components (ob.h.list.single_item.spacing.marker_gap.list.*):**
 ```
-ob.h.list.single_item.spacing.marker_gap.{element}.{category}.{property}.{variant}.{state}
+ob.h.list.single_item.spacing.marker_gap.list.{element}.{category}.{property}.{variant}.{state}
 │   │  │         │          │          │         │
 │   │  │         │          │          │         └─ Modifier
 │   │  │         │          │          └─ Element variant
@@ -299,7 +299,7 @@ Based on analysis of 40+ design systems including Material Design, Carbon, Fluen
 | **State Tokens** | `state-hover` | `hover` | `control-hover` | `hover` |
 | **Semantic Hierarchy** | primary/secondary/tertiary | primary/secondary | accent/neutral | primary/secondary/tertiary |
 
-### **Industry Best Practices**
+### **Industry standard practices**
 
 1. **Container Concept**: Most systems use container/background/surface abstraction
 2. **On-Surface Pattern**: Contextual foreground tokens for specific backgrounds
@@ -317,21 +317,21 @@ Components that respond to user interaction and require complete state systems.
 
 **Token Pattern:**
 ```
-ob.c.tag.container.spacing.gap.{property}.{variant}.{state}  # Custom components
-ob.h.list.single_item.spacing.marker_gap.{element}.color.{property}.{variant}.{state}    # HTML elements
+ob.c.tag.container.spacing.gap.spacing.gap.{property}.{variant}.{state}  # Custom components
+ob.h.list.single_item.spacing.marker_gap.list.{element}.color.{property}.{variant}.{state}    # HTML elements
 ```
 
 **Examples:**
 ```json
 {
-  "ob.h.link.color.link": {
-    "$value": "{ob.s3.color.brand
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
-  "ob.h.link.color.link.inversity_normal.hover": {
-    "$value": "{ob.s3.color.brand
+  "ob.h.list.single_item.spacing.marker_gap.list.list": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
-  "ob.c.tag.container.spacing.gap.active.enabled": {
-    "$value": "{ob.s3.color.brand
+  "ob.c.tag.container.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   }
 }
 ```
@@ -349,21 +349,21 @@ Components that communicate system or user feedback.
 
 **Token Pattern:**
 ```
-ob.c.tag.container.spacing.gap.{property}.{status}.{state}  # Custom components
-ob.h.list.single_item.spacing.marker_gap.{element}.color.{property}.{status}.{state}    # HTML elements
+ob.c.tag.container.spacing.gap.spacing.gap.{property}.{status}.{state}  # Custom components
+ob.h.list.single_item.spacing.marker_gap.list.{element}.color.{property}.{status}.{state}    # HTML elements
 ```
 
 **Examples:**
 ```json
 {
-  "ob.c.tag.container.spacing.gap.bg.error.default": {
-    "$value": "{ob.s3.color.brand
+  "ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
-  "ob.c.tag.container.spacing.gap.success.default": {
-    "$value": "{ob.s3.color.brand
+  "ob.c.tag.container.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
-  "ob.h.list.single_item.spacing.marker_gap.color.border.error.enabled": {
-    "$value": "{ob.s3.color.brand
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   }
 }
 ```
@@ -380,30 +380,30 @@ Components that provide structure, layout, or neutral information display.
 
 **Token Pattern:**
 ```
-ob.c.tag.container.spacing.gap.{property}.{variant}.{state}  # Custom components
-ob.h.list.single_item.spacing.marker_gap.{element}.color.{property}.{variant}.{state}    # HTML elements
+ob.c.tag.container.spacing.gap.spacing.gap.{property}.{variant}.{state}  # Custom components
+ob.h.list.single_item.spacing.marker_gap.list.{element}.color.{property}.{variant}.{state}    # HTML elements
 ```
 
 **Examples:**
 ```json
 {
-  "ob.c.tag.container.spacing.gap.default.default": {
-    "$value": "{ob.s3.color.brand.tag.container.spacing.gap.divider.color.border.default.default": {
-    "$value": "{ob.s3.color.brand.list.single_item.spacing.marker_gap.table.color.bg.header.default": {
-    "$value": "{ob.s3.color.brand.color.neutral.bg-surface.contrast_low.inversity_normal}"
+  "ob.c.tag.container.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index-surface.contrast_low.inversity_normal}"
   }
 }
 ```
 
 ---
 
-## Component Token Best Practices
+## Component Token standard practices
 
 ### **1. Naming Conventions**
 
 **Component Names:**
-- **Custom Components (ob.c.tag.container.spacing.gap Use lowercase with hyphens for complex Oblique components: `ob.c.tag.container.spacing.gap `ob.c.tag.container.spacing.gap.container.spacing.gapigation`
-- **HTML Elements (ob.h.list.single_item.spacing.marker_gap.*)**: Use standard HTML element names: `ob.h.list.single_item.spacing.marker_gap`, `ob.h.list.single_item.spacing.marker_gap`, `ob.h.list.single_item.spacing.marker_gap.form`, `ob.h.list.single_item.spacing.marker_gap.table`
+- **Custom Components (ob.c.tag.container.spacing.gap.spacing.gap Use lowercase with hyphens for complex Oblique components: `ob.c.tag.container.spacing.gap.spacing.gap `ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap
+- **HTML Elements (ob.h.list.single_item.spacing.marker_gap.list.*)**: Use standard HTML element names: `ob.h.list.single_item.spacing.marker_gap.list`, `ob.h.list.single_item.spacing.marker_gap.list`, `ob.h.list.single_item.spacing.marker_gap.list.list`, `ob.h.list.single_item.spacing.marker_gap.list.list`
 - Use singular form: `button` not `buttons`  
 - Be specific: `search-input` not `input` for custom variants
 - Follow atomic design: `button` (atom), `card-header` (molecule)
@@ -423,30 +423,30 @@ ob.h.list.single_item.spacing.marker_gap.{element}.color.{property}.{variant}.{s
 **Component Token Pattern (S3 Consumption Only):**
 ```json
 {
-  "ob.h.link.color.link": {
-    "$value": "{ob.s3.color.brand
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
-  "ob.c.tag.container.spacing.gap.active.enabled": {
-    "$value": "{ob.s3.color.brand
+  "ob.c.tag.container.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
-  "ob.c.tag.container.spacing.gap.bg.default.default": {
-    "$value": "{ob.s3.color.brand.list.single_item.spacing.marker_gap.form.color.border.default.focus": {
-    "$value": "{ob.s3.color.brand.link.color.link.inversity_normal.enabled": {
-    "$value": "{ob.p.color.red.50.500}"
+  "ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index": {
+    "$value": "{ob.p.color.red.50.red.50.red.50.50}"
   }
 }
 
 // DON'T: Direct S1 consumption  
 {
-  "ob.c.tag.container.spacing.gap.active.enabled": {
-    "$value": "{ob.s1.color.neutral.bg.contrast_highest.inversity_normal.contrast_high.inversity_normal}"
+  "ob.c.tag.container.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}"
   }
 }
 
 // DON'T: Direct S2 consumption
 {
-  "ob.c.tag.container.spacing.gap.bg.default.default": {
-    "$value": "{ob.s2.color.interaction.state.fg.enabled.inversity_normal.bg_base.contrast_low.inversity_normal}"
+  "ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
   }
 }
 ```
@@ -456,11 +456,11 @@ ob.h.list.single_item.spacing.marker_gap.{element}.color.{property}.{variant}.{s
 **Complete State Coverage:**
 ```json
 {
-  "ob.h.link.color.link": "{semantic-reference}",
-  "ob.h.link.color.link.inversity_normal.hover": "{semantic-reference}",
-  "ob.h.link.color.link.inversity_normal.focus": "{semantic-reference}",
-  "ob.h.link.color.link.active": "{semantic-reference}",
-  "ob.h.link.color.link.inversity_normal.disabled": "{semantic-reference}"
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": "{semantic-reference}",
+  "ob.h.list.single_item.spacing.marker_gap.list.list": "{semantic-reference}",
+  "ob.h.list.single_item.spacing.marker_gap.list.list": "{semantic-reference}",
+  "ob.h.list.single_item.spacing.marker_gap.list": "{semantic-reference}",
+  "ob.h.list.single_item.spacing.marker_gap.list.list": "{semantic-reference}"
 }
 ```
 
@@ -522,34 +522,34 @@ Components with **mandatory inversity settings** that cannot be changed due to b
 
 | **Component** | **Required Inversity** | **Reasoning** | **Examples** |
 |---------------|----------------------|---------------|--------------|
-| **Primary Buttons** | `inversity_flipped` | **UX Scannability**: Must stand out as primary call-to-action | `ob.h.link.color.link |
-| **Badges** | `inversity_flipped` | **Visual Distinction**: Need to stand out from surrounding content | `ob.c.tag.container.spacing.gap |
-| **Fatal Alerts** | `inversity_flipped` | **Brand Consistency**: Critical error states require consistent high-contrast appearance | `ob.c.tag.container.spacing.gap` |
-| **Active States** | `inversity_flipped` | **UX Scannability**: Selected/active items must be immediately identifiable | `ob.c.tag.container.spacing.gap |
+| **Primary Buttons** | `inversity_flipped` | **UX Scannability**: Must stand out as primary call-to-action | `ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list |
+| **Badges** | `inversity_flipped` | **Visual Distinction**: Need to stand out from surrounding content | `ob.c.tag.container.spacing.gap.spacing.gap |
+| **Fatal Alerts** | `inversity_flipped` | **Brand Consistency**: Critical error states require consistent high-contrast appearance | `ob.c.tag.container.spacing.gap.spacing.gap |
+| **Active States** | `inversity_flipped` | **UX Scannability**: Selected/active items must be immediately identifiable | `ob.c.tag.container.spacing.gap.spacing.gap |
 
 #### **Flexible Components (Contextual Inversity)**
 Components that can use either `inversity_normal` or `inversity_flipped` depending on their context and surrounding components.
 
 | **Component** | **Default Inversity** | **Alternative Use** | **Examples** |
 |---------------|---------------------|-------------------|--------------|
-| **Secondary Buttons** | `inversity_normal` | `inversity_flipped` in dark containers | `ob.h.link.color.link |
-| **Tertiary Buttons** | `inversity_normal` | `inversity_flipped` for emphasis in specific contexts | `ob.h.link.color.link |
-| **Cards** | `inversity_normal` | `inversity_flipped` for featured/highlighted cards | `ob.c.tag.container.spacing.gap |
-| **Forms** | `inversity_normal` | `inversity_flipped` in dark themes or special contexts | `ob.h.list.single_item.spacing.marker_gap.form.input` |
-| **Navigation** | `inversity_normal` | `inversity_flipped` for active/current page indicators | `ob.c.tag.container.spacing.gap |
-| **Tables** | `inversity_normal` | `inversity_flipped` for header emphasis | `ob.h.list.single_item.spacing.marker_gap.table.header` |
-| **Info/Warning Alerts** | `inversity_normal` | `inversity_flipped` for higher urgency | `ob.c.tag.container.spacing.gap`, `ob.c.tag.container.spacing.gap` |
+| **Secondary Buttons** | `inversity_normal` | `inversity_flipped` in dark containers | `ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list |
+| **Tertiary Buttons** | `inversity_normal` | `inversity_flipped` for emphasis in specific contexts | `ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list |
+| **Cards** | `inversity_normal` | `inversity_flipped` for featured/highlighted cards | `ob.c.tag.container.spacing.gap.spacing.gap |
+| **Forms** | `inversity_normal` | `inversity_flipped` in dark themes or special contexts | `ob.h.list.single_item.spacing.marker_gap.list.list.list` |
+| **Navigation** | `inversity_normal` | `inversity_flipped` for active/current page indicators | `ob.c.tag.container.spacing.gap.spacing.gap |
+| **Tables** | `inversity_normal` | `inversity_flipped` for header emphasis | `ob.h.list.single_item.spacing.marker_gap.list.list.list` |
+| **Info/Warning Alerts** | `inversity_normal` | `inversity_flipped` for higher urgency | `ob.c.tag.container.spacing.gap.spacing.gap `ob.c.tag.container.spacing.gap.spacing.gap |
 
 #### **Design Decision Examples**
 
 **Primary Button (inversity_flipped):**
 ```json
 {
-  "ob.h.link.color.link": {
-    "$value": "{ob.s3.color.brand
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
-  "ob.h.link.color.link": {
-    "$value": "{ob.s3.color.brand
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   }
 }
 ```
@@ -557,13 +557,13 @@ Components that can use either `inversity_normal` or `inversity_flipped` dependi
 **Badge Component (inversity_flipped):**
 ```json
 {
-  "ob.c.tag.container.spacing.gap.default.default": {
-    "$value": "{ob.s3.color.brand.tag.container.spacing.gap.color.fg.default.default": {
-    "$value": "{ob.s3.color.brand.tag.container.spacing.gap.infobox.color.bg.fatal.default": {
-    "$value": "{ob.s3.color.brand
+  "ob.c.tag.container.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
-  "ob.c.tag.container.spacing.gap.fg.fatal.default": {
-    "$value": "{ob.s3.color.brand
+  "ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   }
 }
 ```
@@ -583,13 +583,13 @@ Components that can use either `inversity_normal` or `inversity_flipped` dependi
 ```json
 {
   // Standard component (normal inversity)
-  "ob.c.tag.container.spacing.gap.default.default": {
-    "$value": "{ob.s3.color.brand.tag.container.spacing.gap.color.fg.default.default": {
-    "$value": "{ob.s3.color.brand.tag.container.spacing.gap.color.bg.active.default": {
-    "$value": "{ob.s3.color.brand
+  "ob.c.tag.container.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
-  "ob.c.tag.container.spacing.gap.active.default": {
-    "$value": "{ob.s3.color.brand
+  "ob.c.tag.container.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   }
 }
 ```
@@ -597,12 +597,12 @@ Components that can use either `inversity_normal` or `inversity_flipped` dependi
 **Theme Configuration:**
 ```json
 {
-  "ob.g.theme_configuration.viewport.mobile.component-configuration.infobox.fatal.theme.inversity": {
-    "$value": "{ob.g.theme_configuration.viewport.mobile.theme-configuration.inversity.flipped}",
+  "ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.theme_configuration.viewport-configuration.infobox.fatal.theme.inversity": {
+    "$value": "{ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.theme_configuration.viewport-configuration.inversity.flipped}",
     "$description": "Fatal variant of infobox uses flipped inversity for emphasis"
   },
-  "ob.g.theme_configuration.viewport.mobile.component-configuration.badge.default.theme.inversity": {
-    "$value": "{ob.g.theme_configuration.viewport.mobile.theme-configuration.inversity.flipped}",
+  "ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.theme_configuration.viewport-configuration.badge.default.theme.inversity": {
+    "$value": "{ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.theme_configuration.viewport-configuration.inversity.flipped}",
     "$description": "Badge component uses flipped inversity to stand out"
   }
 }
@@ -622,7 +622,7 @@ Components that can use either `inversity_normal` or `inversity_flipped` dependi
 
 #### **Advanced Pattern: Double Inversion**
 
-A sophisticated edge case occurs when **components that are inherently flipped by nature** are placed on **flipped backgrounds** or when creating **flipped variants** of already-flipped components.
+A advanced edge case occurs when **components that are inherently flipped by nature** are placed on **flipped backgrounds** or when creating **flipped variants** of already-flipped components.
 
 **The Double Inversion Rule:** 
 When a flipped component is placed in a flipped context, it uses `inversity_normal` to cancel out the double inversion effect.
@@ -661,17 +661,17 @@ infobox.fatal (flipped context) + button.primary (flipped nature) → button.pri
 ```json
 {
   // Infobox.fatal uses flipped inversity (dark background)
-  "ob.c.tag.container.spacing.gap.bg.fatal.default": {
-    "$value": "{ob.s3.color.brand
+  "ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
   
   // Primary button inside fatal infobox uses normal inversity
   // This creates: flipped context + flipped component = normal inversity
-  "ob.h.link.color.link": {
-    "$value": "{ob.s3.color.brand
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
-  "ob.h.link.color.link": {
-    "$value": "{ob.s3.color.brand
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   }
 }
 ```
@@ -688,13 +688,13 @@ infobox.fatal (flipped context) + button.primary (flipped nature) → button.pri
 ```json
 {
   // Standard primary button (flipped in nature)
-  "ob.h.link.color.link": {
-    "$value": "{ob.s3.color.brand
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
   
   // Primary button flipped variant (double inversion = normal)
-  "ob.h.link.color.link-flipped.enabled": {
-    "$value": "{ob.s3.color.brand
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list-flipped.enabled": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   }
 }
 ```
@@ -716,14 +716,14 @@ Flipped Components:
 ```json
 {
   // Component defines its base inversity nature
-  "ob.g.theme_configuration.viewport.mobile.component-configuration.button.primary.theme.inversity": {
-    "$value": "{ob.g.theme_configuration.viewport.mobile.theme-configuration.inversity.flipped}",
+  "ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.theme_configuration.viewport-configuration.button.primary.theme.inversity": {
+    "$value": "{ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.theme_configuration.viewport-configuration.inversity.flipped}",
     "$description": "Primary button is flipped by nature"
   },
   
   // Context-aware resolution in flipped containers
-  "ob.h.link.color.link.context-flipped": {
-    "$value": "{ob.s3.color.brand
+  "ob.h.list.single_item.spacing.marker_gap.list-flipped": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
     "$description": "Primary button in flipped context uses normal inversity"
   }
 }
@@ -738,7 +738,7 @@ Flipped Components:
 | Secondary button in fatal infobox | Normal | Flipped | `inversity_flipped` | Dark bg, light text |
 | **Primary button in fatal infobox** | **Flipped** | **Flipped** | **`inversity_normal`** | **Light bg, dark text** |
 
-#### **Best Practices**
+#### **standard practices**
 
 1. **Use inversity_flipped sparingly** - Only for components that need to stand out
 2. **Be consistent within component families** - All badges should use the same inversity
@@ -750,13 +750,13 @@ Flipped Components:
 
 ### **Component Level Usage Guidelines**
 
-**When to use ob.c.tag.container.spacing.gap (Custom Components):**
+**When to use ob.c.tag.container.spacing.gap.spacing.gap (Custom Components):**
 - Complex, multi-part components unique to Oblique
 - Components with custom behavior or styling patterns
 - Composite components built from multiple HTML elements
 - Components requiring specific design system integration
 
-**When to use ob.h.list.single_item.spacing.marker_gap.* (HTML Elements):**
+**When to use ob.h.list.single_item.spacing.marker_gap.list.* (HTML Elements):**
 - Standard HTML elements requiring consistent styling
 - Form elements, buttons, inputs, tables
 - Basic interactive elements with standard behavior
@@ -792,8 +792,8 @@ Flipped Components:
 
 ### **Validation Checklist**
 
-- [ ] **No primitive consumption**: Component doesn't reference `ob.p.assets.logo.*` directly
-- [ ] **No S1 consumption**: Component doesn't reference `ob.s1.color.neutral.bg.contrast_highest.inversity_normal.*` directly  
+- [ ] **No primitive consumption**: Component doesn't reference `ob.p.assets.logo.assets.logo.assets.assets.*` directly
+- [ ] **No S1 consumption**: Component doesn't reference `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*` directly  
 - [ ] **Semantic alignment**: Component purpose matches semantic token type
 - [ ] **Complete state coverage**: All necessary interaction states defined
 - [ ] **Consistent naming**: Follows established component token conventions
@@ -833,38 +833,38 @@ When migrating from legacy systems:
 
 ## Examples from Current System
 
-### **HTML Button Component (ob.h.list.single_item.spacing.marker_gap.*)**
+### **HTML Button Component (ob.h.list.single_item.spacing.marker_gap.list.*)**
 ```json
 {
-  "ob.h.link.color.link": {
-    "$value": "{ob.s3.color.brand
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
-  "ob.h.link.color.link": {
-    "$value": "{ob.s3.color.brand
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   }
 }
 ```
 
-### **Custom Alert Component (ob.c.tag.container.spacing.gap  
+### **Custom Alert Component (ob.c.tag.container.spacing.gap.spacing.gap  
 ```json
 {
-  "ob.c.tag.container.spacing.gap.bg.error.default": {
-    "$value": "{ob.s3.color.brand
+  "ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   },
-  "ob.c.tag.container.spacing.gap.fg.error.default": {
-    "$value": "{ob.s3.color.brand
+  "ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
   }
 }
 ```
 
-### **HTML Form Elements (ob.h.list.single_item.spacing.marker_gap.*)**
+### **HTML Form Elements (ob.h.list.single_item.spacing.marker_gap.list.*)**
 ```json
 {
-  "ob.h.list.single_item.spacing.marker_gap.color.bg.default.enabled": {
-    "$value": "{ob.s3.color.brand.list.single_item.spacing.marker_gap.color.border.default.focus": {
-    "$value": "{ob.s3.color.brand.md) - Overall token hierarchy and patterns
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index": {
+    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index) - Overall token hierarchy and patterns
 - [Token Consumption Guidelines](./guidelines-token-consumption.md) - How to consume tokens correctly
-- [Component Identification](../07-workflow/maintainers/02-component-identification.md) - Component classification and naming
+- [Component Identification](../07-workflow/maintainers/readme.md) - Component classification and naming
 - [Semantic Color Architecture](./colors/colors-semantic.md) - Semantic token structure and usage
 
 ---

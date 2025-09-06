@@ -27,7 +27,7 @@ The semantic system is organized into three distinct layers with specific respon
 ### S3: Semantic Compilation
 - **Purpose:** Complete collection of all semantic colors for component consumption
 - **Files:** `semantic.json`
-- **Function:** Clean, comprehensive semantic color compilation that references S1 directly
+- **Function:** Clean, complete semantic color compilation that references S1 directly
 
 ---
 
@@ -71,7 +71,7 @@ Modes set by designers and developers during design and implementation phases:
 - **Dark Theme:** Uses `s1-lightness/dark.json`
 
 **Reference Pattern:**
-- Components consume `ob.s3.color.brand.bg.contrast_highest.inversity_normal.color.neutral.bg.contrast_highest.inversity_normal.*` tokens  
+- Components consume `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*` tokens  
 - S1 light/dark files provide different primitive references
 - Result: User mode switching (light/dark) propagates through entire system
 
@@ -89,7 +89,7 @@ src/lib/themes/semantic/color/s1-lightness/
 
 **Purpose:** System-wide light/dark theme switching. Theme switching occurs at this layer through file selection (light.json vs dark.json).
 
-**Token Structure:** Semantic color tokens optimized for theme switching:
+**Token Structure:** Semantic color tokens improved for theme switching:
 - `bg_base` - Base background colors for different contexts
 - `fg-default` - Default foreground colors
 - `contrast_high`, `contrast_medium`, `contrast_low` - Various contrast levels for different semantic contexts
@@ -104,10 +104,10 @@ src/lib/themes/semantic/color/s1-lightness/
           "bg": {
             "contrast_highest": {
               "inversity_normal": {
-                "value": "{ob.p.color.red.50}"
+                "value": "{ob.p.color.red.50.red.50.red.50}"
               },
               "inversity_flipped": {
-                "value": "{ob.p.color.red.50.cobalt.700}"
+                "value": "{ob.p.color.red.50.red.50.red.50.red.50}"
               }
             }
           }
@@ -117,10 +117,10 @@ src/lib/themes/semantic/color/s1-lightness/
             "bg_base": {
               "contrast_high": {
                 "inversity_normal": {
-                  "value": "{ob.p.color.red.50.800}"
+                  "value": "{ob.p.color.red.50.red.50.red.50.50}"
                 },
                 "inversity_flipped": {
-                  "value": "{ob.p.color.red.50}"
+                  "value": "{ob.p.color.red.50.red.50.red.50}"
                 }
               }
             }
@@ -157,10 +157,10 @@ src/lib/themes/semantic/color/s2-emphasis/
           "state": {
             "fg": {
               "enabled": {
-                "value": "{ob.s2.color.interaction.state.fg.enabled.inversity_normal.interaction.fg.enabled.value}"
+                "value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
               },
               "hover": {
-                "value": "{ob.s2.color.interaction.state.fg.enabled.inversity_normal.interaction.fg.hover.value}"
+                "value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
               }
             }
           }
@@ -194,10 +194,10 @@ src/lib/themes/semantic/color/s3-semantic/
         "status": {
           "success": {
             "fg": {
-              "value": "{ob.s2.color.interaction.state.fg.enabled.inversity_normal.success.fg.value}"
+              "value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
             },
             "bg": {
-              "value": "{ob.s2.color.interaction.state.fg.enabled.inversity_normal.success.bg.value}"
+              "value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
             }
           }
         }
@@ -226,7 +226,7 @@ The current reference pattern ensures proper theme inheritance:
 - S1 layer references primitives for actual color values
 - Theme switching occurs at S1 layer file selection
 
-**Exception:** Global tokens (`ob.g.theme_configuration.viewport.mobile.*`) can be referenced from any level in the hierarchy and are exempt from these chain rules. See [global-tokens.md](./global-tokens.md) for details.
+**Exception:** Global tokens (`ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.*`) can be referenced from any level in the hierarchy and are exempt from these chain rules. See [global-tokens.md](./global-tokens.md) for details.
 
 ### S1/S2/S3 Architecture Analysis
 
@@ -256,7 +256,7 @@ The current S1/S2/S3 architecture provides:
    - Designer-controlled emphasis contexts isolated in S2 layer
    - Complete semantic definitions in S3 compilation
 
-**Reference Optimization:**
+**Reference improvement:**
 - Components primarily consume S3 semantic tokens
 - S1 provides efficient user mode switching without cascading updates
 - S2 handles designer-controlled emphasis variations without duplicating base values
@@ -268,7 +268,7 @@ The current S1/S2/S3 architecture provides:
 **Important:** Changing folder structures does not necessarily break token references. Token resolution depends on the token paths and names, not the folder organization.
 
 **What Breaks References:**
-- Changing token paths (e.g., `{ob.s2.color.interaction.state.fg.enabled.inversity_normal.default}` -> `{ob.s2.color.interaction.state.fg.enabled.inversity_normal.default}`)
+- Changing token paths (e.g., `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}` -> `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}`)
 - Renaming tokens (e.g., `primary` -> `accent`)
 - Removing tokens that are referenced elsewhere
 
@@ -285,8 +285,8 @@ The current S1/S2/S3 architecture provides:
 
 **Example:**
 ```json
-// File A (light.json): ob.s2.color.interaction.state.fg.enabled.inversity_normal.primary = "blue"
-// File B (dark.json): ob.s2.color.interaction.state.fg.enabled.inversity_normal.primary = "red"  
+// File A (light.json): ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index = "blue"
+// File B (dark.json): ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index = "red"  
 // Result: If dark theme is active, token resolves to "red"
 ```
 

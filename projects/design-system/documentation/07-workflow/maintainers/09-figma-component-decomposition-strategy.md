@@ -8,7 +8,7 @@
 ## **Target Audience**
 **Primary:** DS/Oblique Designers, DS/Oblique Developers  
 **Secondary:** Component Architects, Figma Library Maintainers  
-**Prerequisites:** Advanced Figma component knowledge, performance optimization understanding  
+**Prerequisites:** Advanced Figma component knowledge, performance improvement understanding  
 **Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
 
 ## Overview
@@ -33,7 +33,7 @@ Button component with 480 variants causes performance issues in Figma across mul
 - Quality assurance requires testing 480 different combinations
 - Design system updates become time-intensive and error-prone
 
-**Community Confirmation**: Figma community has documented similar performance issues with large variant sets, requesting optimization for components with hundreds of variants. [Source: Figma Forum - Optimize performance in large variant sets](https://forum.figma.com/suggest-a-feature-11/optimize-performance-in-large-variant-sets-28624)
+**Community Confirmation**: Figma community has documented similar performance issues with large variant sets, requesting improvement for components with hundreds of variants. [Source: Figma Forum - improve performance in large variant sets](https://forum.figma.com/suggest-a-feature-11/improve-performance-in-large-variant-sets-28624)
 
 ---
 

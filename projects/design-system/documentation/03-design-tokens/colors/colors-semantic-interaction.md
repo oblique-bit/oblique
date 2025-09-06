@@ -5,7 +5,7 @@ Interaction colors provide visual feedback for user interactions and establish c
 ## Token Structure
 
 ```
-ob.s2.color.interaction.state.fg.enabled.inversity_normal.{emphasis_level}.{element_type}.{contrast_level}.{inversity_variation}
+ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.{emphasis_level}.{element_type}.{contrast_level}.{inversity_variation}
 ```
 
 ### Emphasis Levels
@@ -386,7 +386,7 @@ Interaction colors automatically adapt to theme changes through inversity variat
 }
 ```
 
-## Best Practices
+## standard practices
 
 ### Emphasis Hierarchy
 - Use high emphasis for primary actions (main CTAs, submit buttons)

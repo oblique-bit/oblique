@@ -2,7 +2,7 @@
 **Version:** 1.0  
 **Date:** September 2, 2025  
 **Status:** Work in Progress - Not Yet Approved by Product Owner  
-**Purpose:** Best practices for using design system components and patterns
+**Purpose:** standard practices for using design system components and patterns
 
 ---
 
@@ -38,7 +38,7 @@ To be written - Mobile-first approach, container queries, breakpoint usage
 
 ## **Performance Guidelines**
 
-To be written - Component loading, bundle optimization, accessibility performance
+To be written - Component loading, bundle improvement, accessibility performance
 
 ---
 

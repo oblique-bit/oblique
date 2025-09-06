@@ -36,7 +36,7 @@ Consumer workflow documentation will include:
 - Package installation and updates
 - Build system integration
 - Testing with design system components
-- Performance optimization guides
+- Performance improvement guides
 
 #### Collaboration Workflows
 - Design-to-development handoffs

@@ -19,7 +19,7 @@ Strategic analysis of Figma Variables vs. Variants for modern design systems, ex
 
 ## Executive Summary
 
-This analysis provides an exhaustive examination of the strategic roles that Figma variables and variants play in modern component design. It concludes that a purely variant-based system, while initially intuitive, is ultimately unsustainable at scale due to "variant monster" syndrome characterized by unmanageable component proliferation, significant maintenance overhead, and file performance degradation.
+This analysis provides an complete examination of the strategic roles that Figma variables and variants play in modern component design. It concludes that a purely variant-based system, while initially intuitive, is ultimately unsustainable at scale due to "variant monster" syndrome characterized by unmanageable component proliferation, significant maintenance overhead, and file performance degradation.
 
 Conversely, a purely variable-based system is not a complete solution, as variables cannot replace the nuanced, component-specific logic that variants provide.
 
@@ -268,7 +268,7 @@ The most effective, scalable, and future-proof design system uses both tools com
 - **Governance policies** for ownership and regular audits
 - **Prevention** of hardcoded values creeping into system
 
-### Performance Optimization
+### Performance improvement
 
 **Primary recommendations:**
 - **Flatten component hierarchies** where possible
@@ -280,7 +280,7 @@ The most effective, scalable, and future-proof design system uses both tools com
 
 **Phased approach for transitioning from variant-heavy to hybrid model:**
 
-1. **Audit Phase**: Comprehensive review of existing library to identify redundant variants and properties
+1. **Audit Phase**: complete review of existing library to identify redundant variants and properties
 2. **Architecture Phase**: Define new variable token structure based on hybrid model
 3. **Migration Phase**: Gradually map existing component properties to new variables
 4. **Validation Phase**: Systematic testing to ensure smooth transition
@@ -294,7 +294,7 @@ This approach allows strategic adoption without complete overhaul, ensuring futu
 1. **Neither approach alone is sufficient** for modern design systems at scale
 2. **Hybrid model is the definitive solution** combining strengths of both approaches
 3. **Variables provide foundational consistency**, variants manage component specificity
-4. **Performance considerations** require careful architecture and optimization
+4. **Performance considerations** require careful architecture and improvement
 5. **Migration requires strategic planning** but delivers significant long-term benefits
 6. **Future-proofing** demands understanding both tools' roles in design system evolution
 
@@ -303,8 +303,8 @@ This approach allows strategic adoption without complete overhaul, ensuring futu
 ## Related Resources
 
 - [Figma Variables Documentation](https://help.figma.com/hc/en-us/articles/14506821864087-Overview-of-variables-collections-and-modes)
-- [Design Tokens Best Practices](https://bordercrossingux.com/structuring-figma-variables/)
-- [Performance Optimization Guide](https://help.figma.com/hc/en-us/articles/360040528173-Reduce-memory-usage-in-files)
+- [Design Tokens standard practices](https://bordercrossingux.com/structuring-figma-variables/)
+- [Performance improvement Guide](https://help.figma.com/hc/en-us/articles/360040528173-Reduce-memory-usage-in-files)
 
 ---
 

@@ -92,8 +92,8 @@ Edit `data/tracked-tokens-config.json` to:
     "color": {
       "description": "Color tokens hardcoded in style dictionary",
       "paths": [
-        "ob.s3.color.brand",
-        "ob.s1.color.neutral.bg.contrast_highest.inversity_normal.contrast_highest.inversity_normal"
+        "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index",
+        "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index"
       ]
     }
   },

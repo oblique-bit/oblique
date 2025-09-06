@@ -33,7 +33,7 @@ All compound units now use underscores and remain unchanged in CSS output.
 
 ### Token Structure
 ```
-ob.s2.color.interaction.state.fg.enabled.inversity_normal.{status_name}.{property}.{contrast_level}.{inversity_variation}
+ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.{status_name}.{property}.{contrast_level}.{inversity_variation}
 ```
 
 ### CSS Implementation

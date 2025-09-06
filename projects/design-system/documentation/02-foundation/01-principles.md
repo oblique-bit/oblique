@@ -5,7 +5,7 @@
 
 ---
 
-## �️ **Introduction**
+##  **Introduction**
 
 The Oblique Design System provides two primary deliverables for federal application development:
 
@@ -25,7 +25,7 @@ The Oblique Design System provides two primary deliverables for federal applicat
 **Design Tokens (Variables in Figma):** We maintain **100% consistency** between code and design environments.
 
 **Implementation:**
-- **Same Token Names:** `ob.p.color.red.50.600` exists identically in both code and Figma
+- **Same Token Names:** `ob.p.color.red.50.red.50.red.50.50` exists identically in both code and Figma
 - **Same Token Values:** `#2379A4` appears exactly the same in both environments  
 - **Same Token Structure:** Hierarchical organization (`primitive → semantic → component`) mirrors across platforms
 - **Synchronized Updates:** Token changes propagate simultaneously to both code and Figma
@@ -228,7 +228,7 @@ Figma: Auto-layout with spacing tokens
 ## **Platform-Specific Roles**
 
 ### **Code Platform (Primary Reference):**
-- **Owns:** User experience behavior, accessibility implementation, performance optimization
+- **Owns:** User experience behavior, accessibility implementation, performance improvement
 - **Provides:** Technical constraints, interaction capabilities, responsive behavior patterns
 - **Validates:** User interaction flows, cross-browser compatibility, performance metrics
 

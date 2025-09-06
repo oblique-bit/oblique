@@ -10,7 +10,7 @@
 
 The semantic color system is organized into **dimensional layers** and **static values**:
 
-### **📁 File Structure**
+### ****Structure:** File Structure**
 
 ```
 src/lib/themes/semantic/color/
@@ -31,14 +31,14 @@ src/lib/themes/semantic/color/
 - **Contains**: `neutral`, `interaction`, and `status` categories
 - **Files**: `light.json`, `dark.json`
 - **Inversity**: Each token has flat `inversity_normal` and `inversity_flipped` variants (not a separate semantic level)
-- **Example token**: `ob.s1.color.neutral.bg.contrast_highest.inversity_normal.contrast_high.inversity_normal`
+- **Example token**: `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index`
 
 #### **S2 - Emphasis Semantic Level** (`s2-emphasis/`)
 - **Purpose**: High/low emphasis variations for interaction elements  
 - **Contains**: `interaction` category only (buttons, links, form controls)
 - **Files**: `high.json`, `low.json`
 - **Reference**: All S2 tokens reference S1 tokens directly
-- **Example token**: `ob.s2.color.interaction.state.fg.enabled.inversity_normal.emphasis_high.bg_base.contrast_high.inversity_normal`
+- **Example token**: `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index`
 
 #### **S3 - Semantic Compilation** (`s3-semantic/`)
 - **Purpose**: Complete, clean collection of all semantic colors
@@ -52,7 +52,7 @@ src/lib/themes/semantic/color/
 - **Contains**: Final compiled semantic colors combining all layer variations plus static colors
 - **Files**: `semantic.json`
 - **Inversity**: Flat inversity variants preserved in final compilation (not dimensional)
-- **Example token**: `ob.s3.color.brand
+- **Example token**: `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
 
 ---
 
@@ -65,7 +65,7 @@ Static colors are **non-themeable** values that remain constant across all theme
 #### **Static Brand**
 ```json
 {
-  "ob.s3.color.brand
+  "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
     "description": "Static color to be used in the brand relevant UI elements."
   }
 }
@@ -81,7 +81,7 @@ Static colors are **non-themeable** values that remain constant across all theme
 #### **No Color / Transparent**
 ```json
 {
-  "ob.s3.color.brand}",
+  "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}",
     "description": "Static value when no color respectively 0% opacity is needed."
   }
 }
@@ -97,9 +97,9 @@ Static colors are **non-themeable** values that remain constant across all theme
 #### **Selection States**
 ```json
 {
-  "ob.s3.color.brand}"
+  "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
   },
-  "ob.s3.color.neutral.no_color_color}",
+  "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}",
     "description": "Semantic Interaction color for not selected items. Used in Main Navigation, Navigation Tree, Tabs."
   }
 }
@@ -155,7 +155,7 @@ The semantic color system is organized into **four main categories**:
 
 ### **Layered Token Example**
 ```
-ob.s3.color.brand.color.brand
+ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
 │
 └─ L3 (Semantic): Direct static value (bundesrot) - no theme, emphasis, or inversity variations
 ```

@@ -70,7 +70,7 @@ npm run validate:quick
 
 **Prioritizes scripts** by importance:
 - **Critical** - Run these first (quality/safety)
-- **Recommended** - Run these for best practices
+- **Recommended** - Run these for standard practices
 - **Optional** - Run if you have specific needs
 
 **Gives you the exact commands** to copy-paste
@@ -82,7 +82,7 @@ npm run validate:quick
 ```
 CRITICAL SCRIPTS (Run these first):
    validate-all.js
-      Comprehensive validation covering circular references, semantic mirroring, and consumption hierarchy
+      complete validation covering circular references, semantic mirroring, and consumption hierarchy
       Command: node scripts-custom/validate-all.js
 
 RECOMMENDED SCRIPTS:
@@ -97,7 +97,7 @@ Just copy-paste the commands!
 
 ## **WORKFLOW RECOMMENDATIONS**
 
-**Best practice:** Use this flow for any changes:
+**standard practice:** Use this flow for any changes:
 
 1. **Before starting:** `npm run recommend:plan "what I want to do"`
 2. **After finishing:** `npm run recommend:auto` or `npm run validate:quick`

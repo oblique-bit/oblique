@@ -14,19 +14,19 @@ Primitive colors are the foundational color values that remain constant across a
 
 ### Primitive Token Structure
 ```
-ob.p.color.red.50.category.scale
+ob.p.color.red.50.red.50.red.50.red.50
 ```
 
 **Examples:**
-- `ob.p.color.red.50.red.500` (spectrum colors with numbered scales)
-- `ob.p.color.red.50` (basic colors with named values)
+- `ob.p.color.red.50.red.50.red.50.red.50` (spectrum colors with numbered scales)
+- `ob.p.color.red.50.red.50.red.50` (basic colors with named values)
 
 ### File Organization
 ```
 src/lib/themes/primitive/color.json
 ```
 
-The primitive color system is organized within a single comprehensive file containing all base color categories.
+The primitive color system is organized within a single complete file containing all base color categories.
 
 ---
 

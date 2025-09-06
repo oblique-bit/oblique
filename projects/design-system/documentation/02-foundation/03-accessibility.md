@@ -81,9 +81,9 @@ Oblique is developing a design system library that supports accessibility aspect
 - **[axe-core](https://github.com/dequelabs/axe-core)**: Accessibility engine for automated testing
 
 ### Reference Resources
-- **[Web Content Accessibility Guidelines (WCAG) 2.1](https://www.w3.org/TR/WCAG21/)**: Comprehensive accessibility recommendations
+- **[Web Content Accessibility Guidelines (WCAG) 2.1](https://www.w3.org/TR/WCAG21/)**: complete accessibility recommendations
 - **[Web Accessibility Initiative (WAI) by W3C](https://www.w3.org/WAI/)**: Strategies, standards, and supporting resources
-- **[Accessibility in Angular](https://angular.io/guide/accessibility)**: Best practices for Angular applications
+- **[Accessibility in Angular](https://angular.io/guide/accessibility)**: standard practices for Angular applications
 - **[Accessibility Developer Guide (ADG)](https://www.accessibility-developer-guide.com/)**: Hands-on introduction for developers
 - **[ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/)**: Examples for accessible semantics and keyboard recommendations
 

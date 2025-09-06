@@ -49,12 +49,12 @@ This folder contains workflows, guides, and processes specifically designed for 
 - Figma variable limitations and workarounds
 - Development tools and script automation for token workflows
 
-### System Administration Workflows (Moved to _private)
+### System Administration Workflows (Internal Only)
 
 For general system workflows not specific to tokens:
-- **Component workflows**: `/_private/automation/component-workflows/`
-- **File protection**: `/_private/automation/file-protection/`
-- **Version tracking**: `/_private/stable-points/`
+- **Component workflows**: Automated component validation and testing workflows
+- **File protection**: Automated file protection and validation systems
+- **Version tracking**: Design system version tracking and stable points
 
 ---
 

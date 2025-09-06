@@ -70,7 +70,7 @@ Colors that communicate state and system feedback:
 
 ### Semantic Naming Convention
 ```
-ob.s3.color.brand
+ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
 ```
 
 #### Structure Components
@@ -100,7 +100,7 @@ The color system operates through multiple semantic layers. For detailed archite
 
 For detailed token resolution examples and technical implementation, see [Semantic Color Architecture](colors-semantic.md).
 
-### Best Practices
+### standard practices
 - **Use semantic tokens exclusively** - Never reference primitive color values directly in components
 - **Respect contrast hierarchies** - Higher contrast levels for more important content
 - **Maintain theme neutrality** - Let the system handle light/dark adaptation

@@ -29,7 +29,7 @@ Tokens follow a hierarchical structure with dot-separated segments:
 {namespace.semantic_level.category.property}
 ```
 
-**Note:** Global tokens (`ob.g.theme_configuration.viewport.mobile.*`) are an exception to the standard reference hierarchy and can be referenced from any semantic level. See [global-tokens.md](./global-tokens.md) for details.
+**Note:** Global tokens (`ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.*`) are an exception to the standard reference hierarchy and can be referenced from any semantic level. See [global-tokens.md](./global-tokens.md) for details.
 
 ---
 
@@ -69,7 +69,7 @@ Tokens follow a hierarchical structure with dot-separated segments:
 
 ### **Semantic Token**
 ```
-ob.s3.color.brand.link.color.link.inversity_normal.enabled
+ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index
 │  │  │      │     │   │       │
 │  │  │      │     │   │       └─ State
 │  │  │      │     │   └─ Variant
@@ -117,8 +117,8 @@ This separation ensures clean abstraction levels and future-proof naming:
 
 ```
 CORRECT PATTERN:
-ob.p.color.red.50     → "transparent" = visual appearance (alpha 0)
-ob.s3.color.brand.link.inversity_normal.enabled.secondary   → references semantic token
+ob.p.color.red.50.red.50.red.50     → "transparent" = visual appearance (alpha 0)
+ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index   → references semantic token
 
 BENEFITS:
 - Primitive describes visual appearance ("transparent", "blue", "large")

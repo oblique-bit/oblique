@@ -24,7 +24,7 @@ node scripts-custom/validate-semantic-mirroring.js
 
 ```bash
 # 🚀 INSTANT token chain analysis:
-npm run trace-token "ob.h.link.color.link.fg.primary.inversity_normal.disabled"
+npm run trace-token "ob.h.list.single_item.spacing.marker_gap.list.list.list.list"
 
 # 🔍 SEARCH for tokens:
 npm run search-tokens "button disabled"
@@ -34,7 +34,7 @@ npm run trace-figma
 
 # 💫 CONVENIENCE alias (add to your shell):
 alias "reference chain of"="./scripts-custom/reference-chain-of.sh"
-# Then use: reference chain of "ob.h.link.color.link.fg.primary.inversity_normal.disabled"
+# Then use: reference chain of "ob.h.list.single_item.spacing.marker_gap.list.list.list.list"
 ```
 
 **Figma Integration Features:**
@@ -153,6 +153,24 @@ node scripts-custom/setup-style-dictionary.js
 
 When adding new design system maintenance scripts:
 
+### Naming Convention
+**All script files MUST start with imperative verbs:**
+
+✅ **Correct Examples:**
+- `validate-token-references.js` (imperative: validate)
+- `fix-documentation-links.js` (imperative: fix)
+- `detect-circular-token-references.js` (imperative: detect)
+- `setup-style-dictionary.js` (imperative: setup)
+- `cleanup-malformed-tokens.js` (imperative: cleanup)
+- `trace-token-references.js` (imperative: trace)
+
+❌ **Incorrect Examples:**
+- `comprehensive-token-fixer.js` (adjective first)
+- `quick-link-check.js` (adjective first)
+- `final-token-cleanup.js` (adjective first)
+
+### Placement Guidelines
+
 1. **Place in scripts-custom/** if the script is:
    - Useful for team members
    - Validates design system quality
@@ -183,8 +201,23 @@ When adding new design system maintenance scripts:
 ## 🤝 Contributing
 
 When contributing new scripts:
-1. Follow the naming convention (kebab-case)
-2. Include proper documentation in script headers
-3. Add usage examples to this README
-4. Test scripts thoroughly before committing
-5. Update package.json if adding npm scripts
+
+### Mandatory Requirements:
+1. **Follow imperative naming convention** (verb-first: `validate-`, `fix-`, `detect-`, `setup-`, `cleanup-`, `trace-`, etc.)
+2. **Use kebab-case** for file names (lowercase with hyphens)
+3. **Include proper documentation** in script headers
+4. **Add usage examples** to this README
+5. **Test scripts thoroughly** before committing
+6. **Update package.json** if adding npm scripts
+
+### Naming Pattern:
+```
+[imperative-verb]-[object]-[modifier?].js
+```
+
+**Examples:**
+- `validate-token-references.js` - validates token references
+- `fix-documentation-links.js` - fixes documentation links
+- `detect-circular-references.js` - detects circular references
+- `cleanup-malformed-tokens.js` - cleans up malformed tokens
+- `trace-token-dependencies.js` - traces token dependencies

@@ -149,13 +149,13 @@ function checkNewPatterns(filePath) {
  */
 function checkCriticalFiles() {
     const criticalFiles = [
-        'design-tokens/architecture.md',
-        'design-tokens/colors/colors-semantic.md',
-        'design-tokens/colors/colors.md',
-        'design-tokens/guidelines-token-consumption.md',
-        'design-tokens/theming.md',
-        'workflow/tokens-studio-context.md',
-        'design-tokens/global-tokens.md'
+        '03-design-tokens/architecture.md',
+        '03-design-tokens/colors/colors-semantic.md',
+        '03-design-tokens/colors/colors-overview.md',
+        '03-design-tokens/guidelines-token-consumption.md',
+        '03-design-tokens/theming.md',
+        '07-workflow/maintainers/01-tokens-studio-context.md',
+        '03-design-tokens/global-tokens.md'
     ];
     
     console.log(`\n${colors.BLUE}🎯 Critical Files Validation${colors.NC}`);

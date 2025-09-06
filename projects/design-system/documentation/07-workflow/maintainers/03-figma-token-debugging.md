@@ -197,7 +197,7 @@ Shows component-to-code relationships if configured.
 
 ### **The Nuclear Option: Component Copy-Paste Method**
 
-When MCP diagnostics and manual cleanup aren't sufficient, use this comprehensive workflow to completely eliminate ghost variables and modes:
+When MCP diagnostics and manual cleanup aren't sufficient, use this complete workflow to completely eliminate ghost variables and modes:
 
 #### **Required Tools**
 1. **Native Figma**: "Detach deleted variables" action
@@ -279,7 +279,7 @@ This method integrates with the overall OUI-3966 component migration:
 
 ---
 
-## Best Practices
+## standard practices
 
 1. **Always run diagnostics** before declaring a component "clean"
 2. **Document findings** for future reference

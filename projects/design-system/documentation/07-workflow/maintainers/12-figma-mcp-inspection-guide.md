@@ -6,15 +6,32 @@
 **Purpose:** Centralized collection of Figma MCP prompts and workflows for design system inspection
 
 ## **Target Audience**
-**Primary:** DS/Oblique Developers, DS/Oblique Designers  
+**Primary:** D**For manual MCP command execution, drag and drop this file:**
+**Structure:** [`prompts/06-manual-mcp-commands.md`](./prompts/figma-mcp-06-manual-mcp-commands.md)Oblique Developers, DS/Oblique Designers  
 **Secondary:** Design System Implementers, MCP Tool Users  
 **Prerequisites:** Figma desktop app, MCP tools knowledge, VS Code with GitHub Copilot  
 **Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
 
 ---
 
+## **Quick Start:** Quick Start
+
+**For immediate use: Drag and drop prompt files from the [`prompts/`](./prompts/) folder directly into VS Code Copilot Chat.**
+
+**Structure:** **Most Popular Prompts:**
+- [`01-inspect-layer-structure_simple.md`](./prompts/figma-mcp-01-inspect-layer-structure_simple.md) - Basic component analysis
+- [`05-update-component-docs.md`](./prompts/figma-mcp-05-update-component-docs.md) - Update component docs
+- [`03-analyze-semantic-tokens.md`](./prompts/figma-mcp-03-analyze-semantic-tokens.md) - Focus on design tokens
+- [`02-compare-component-variants.md`](./prompts/figma-mcp-02-compare-component-variants.md) - Compare variants
+
+**Note:** **See all prompts:** [`prompts/README.md`](./prompts/README.md)  
+**Summary:** **Validation Reports:** [`prompts/_validation-reports/README.md`](./prompts/_validation-reports/README.md)
+
+---
+
 ## Table of Contents
 
+- [**Quick Start:** Quick Start](#-quick-start)
 - [12.1 Layer Structure Inspection](#121-layer-structure-inspection)
   - [12.1.1 Basic Layer Structure Inspection](#1211-basic-layer-structure-inspection)
   - [12.1.2 Direct Component Documentation Update](#1212-direct-component-documentation-update)
@@ -35,36 +52,8 @@
 
 ### 12.1.1 Basic Layer Structure Inspection
 
-**Copy this exact prompt to request Figma layer structure analysis:**
-
-```
-🎯 FIGMA LAYER STRUCTURE INSPECTION
-
-I need to inspect the Figma component layer structure using MCP tools. Follow this exact workflow:
-
-1. **Get Metadata First**: Use mcp_figma_dev_mod_get_metadata to see component/frame names
-2. **Extract Code Structure**: Use mcp_figma_dev_mod_get_code to get internal layer hierarchy  
-3. **Get Visual Context**: Use mcp_figma_dev_mod_get_image for visual reference
-4. **Use Exact Names**: Never invent or modify component names - use exactly as shown in Figma
-5. **Document Structure**: Create hierarchical tree using exact Figma layer names
-
-CRITICAL: Use get_code tool to extract internal layer structure. Metadata alone shows only top-level containers.
-
-CHAT OUTPUT FORMAT: Provide clean, focused analysis:
-
-## 🔍 Figma Layer Analysis: [component_name]
-
-### Simple Structure
-[Clean tree hierarchy without technical details]
-
-### Figma File Information
-- **File**: [figma_file_name]
-- **Last Modified**: [last_modified_date]
-- **Selection**: [selected_component_path]
-
-FOLLOW-UP ACTION: After analysis, offer:
-"Would you like me to create/update the component documentation file at `documentation/04-components/[component].md` with this layer structure?"
-```
+**For immediate use, drag and drop this file into VS Code Copilot Chat:**
+**Structure:** [`prompts/01-inspect-layer-structure_simple.md`](./prompts/figma-mcp-01-inspect-layer-structure_simple.md)
 
 **Purpose:**
 - **Chat Output**: Clean, scannable analysis for immediate inspection
@@ -80,28 +69,8 @@ FOLLOW-UP ACTION: After analysis, offer:
 
 ### 12.1.2 Direct Component Documentation Update
 
-**Copy this exact prompt for power users who want to directly update component documentation:**
-
-```
-📝 DIRECT COMPONENT DOCUMENTATION UPDATE
-
-I need to create/update the component documentation file with the latest Figma layer structure. Follow this exact workflow:
-
-1. **Get Metadata First**: Use mcp_figma_dev_mod_get_metadata to see component/frame names
-2. **Extract Code Structure**: Use mcp_figma_dev_mod_get_code to get internal layer hierarchy  
-3. **Get Visual Context**: Use mcp_figma_dev_mod_get_image for visual reference
-4. **Identify Component**: Determine component name from metadata
-5. **Create/Update File**: Update `documentation/04-components/[component].md` with detailed layer structure
-
-CRITICAL: Always include Figma file information and last modified date for version tracking.
-
-OUTPUT ACTION: Skip chat analysis - directly create/update the component MD file with:
-- Detailed layer structure tree with properties and dimensions
-- Complete analysis table with all layer details
-- Design token mapping
-- Component properties
-- Figma file information and version tracking
-```
+**For immediate use, drag and drop this file into VS Code Copilot Chat:**
+**Structure:** [`prompts/05-update-component-docs.md`](./prompts/figma-mcp-05-update-component-docs.md)
 
 **Purpose:**
 - **Direct Documentation**: Skip chat output, go straight to file update
@@ -121,38 +90,18 @@ OUTPUT ACTION: Skip chat analysis - directly create/update the component MD file
 
 ### 12.2.1 Component Structure Analysis
 
-```
-🔍 COMPONENT STRUCTURE ANALYSIS
-
-Show the full layer structure of this component using MCP tools:
-1. Get metadata for component frame and symbol names
-2. Extract internal layer hierarchy with get_code
-3. Document both simple and detailed layer structures
-```
+**For immediate use, drag and drop this file into VS Code Copilot Chat:**
+**Structure:** [`prompts/01-inspect-layer-structure_detailed.md`](./prompts/figma-mcp-01-inspect-layer-structure_detailed.md)
 
 ### 12.2.2 Component Variant Comparison
 
-```
-🔀 COMPONENT VARIANT COMPARISON
-
-Show all component variants and highlight their main differences:
-1. Use get_metadata to identify all variants
-2. Use get_code for each variant to extract structure
-3. Compare layer structures and properties
-4. Highlight differences between variants
-```
+**For immediate use, drag and drop this file into VS Code Copilot Chat:**
+**Structure:** [`prompts/02-compare-component-variants.md`](./prompts/figma-mcp-02-compare-component-variants.md)
 
 ### 12.2.3 Legacy Detection
 
-```
-🚨 LEGACY COMPONENT DETECTION
-
-List legacy (deprecated) variables used in this component:
-1. Extract variable definitions with get_variable_defs
-2. Identify deprecated patterns or naming conventions
-3. List components using legacy tokens
-4. Provide migration recommendations
-```
+**For immediate use, drag and drop this file into VS Code Copilot Chat:**
+**Structure:** [`prompts/02-detect-legacy-components.md`](./prompts/figma-mcp-02-detect-legacy-components.md)
 
 ---
 
@@ -160,39 +109,18 @@ List legacy (deprecated) variables used in this component:
 
 ### 12.3.1 Variable Definitions Extraction
 
-```
-🎨 VARIABLE DEFINITIONS EXTRACTION
-
-Get variable definitions for this selection:
-1. Use mcp_figma_dev_mod_get_variable_defs to extract all variables
-2. List variable names, values, and scopes
-3. Identify variable modes (light/dark, mobile/desktop)
-4. Document variable relationships and references
-```
+**For immediate use, drag and drop this file into VS Code Copilot Chat:**
+**Structure:** [`prompts/03-extract-variable-definitions.md`](./prompts/figma-mcp-03-extract-variable-definitions.md)
 
 ### 12.3.2 Semantic Focus Analysis
 
-```
-🎯 SEMANTIC TOKEN FOCUS
-
-Focus only on semantic components; exclude component-level variables:
-1. Filter out component-level variables (e.g., `ob.c`, `ob.h`)
-2. Show only semantic tokens (`ob.s`) and primitive tokens (`ob.p`)
-3. Document semantic token usage patterns
-4. Identify token hierarchy relationships
-```
+**For immediate use, drag and drop this file into VS Code Copilot Chat:**
+**Structure:** [`prompts/03-analyze-semantic-tokens.md`](./prompts/figma-mcp-03-analyze-semantic-tokens.md)
 
 ### 12.3.3 Viewport Analysis
 
-```
-📱 VIEWPORT MODE ANALYSIS
-
-Identify which variables change based on viewport mode:
-1. Extract variable definitions for mobile and desktop modes
-2. Compare values across viewport modes
-3. List variables that change vs. those that remain stable
-4. Document responsive behavior patterns
-```
+**For immediate use, drag and drop this file into VS Code Copilot Chat:**
+**Structure:** [`prompts/03-analyze-viewport-modes.md`](./prompts/figma-mcp-03-analyze-viewport-modes.md)
 
 ---
 
@@ -200,39 +128,18 @@ Identify which variables change based on viewport mode:
 
 ### 12.4.1 HTML & CSS Generation
 
-```
-💻 HTML & CSS CODE GENERATION
-
-Generate HTML and CSS for all component variants:
-1. Use get_code to generate component code
-2. Include all variant states and properties
-3. Generate clean, semantic HTML structure
-4. Provide corresponding CSS with exact token values
-```
+**For immediate use, drag and drop this file into VS Code Copilot Chat:**
+**Structure:** [`prompts/04-generate-html-css.md`](./prompts/figma-mcp-04-generate-html-css.md)
 
 ### 12.4.2 React + Tailwind Generation
 
-```
-⚛️ REACT + TAILWIND GENERATION
-
-Generate React + Tailwind code using existing component mappings:
-1. Use get_code_connect_map to identify existing mappings
-2. Generate React component with TypeScript props
-3. Use Tailwind classes that match token values
-4. Include variant handling and prop validation
-```
+**For immediate use, drag and drop this file into VS Code Copilot Chat:**
+**Structure:** [`prompts/04-generate-react-tailwind.md`](./prompts/figma-mcp-04-generate-react-tailwind.md)
 
 ### 12.4.3 Context-Aware Generation
 
-```
-🖼️ CONTEXT-AWARE CODE GENERATION
-
-Provide screenshot plus design metadata for context-aware code generation:
-1. Use get_image for visual reference
-2. Use get_metadata for component specifications
-3. Use get_code for implementation structure
-4. Generate code that matches exact visual appearance
-```
+**For immediate use, drag and drop this file into VS Code Copilot Chat:**
+**Structure:** [`prompts/04-generate-with-context.md`](./prompts/figma-mcp-04-generate-with-context.md)
 
 ---
 
@@ -240,15 +147,8 @@ Provide screenshot plus design metadata for context-aware code generation:
 
 ### 12.5.1 Create Design System Rules
 
-```
-📋 DESIGN SYSTEM RULES CREATION
-
-Create a Design System rule file for this component to guide AI-based code generation:
-1. Use mcp_figma_dev_mod_create_design_system_rules
-2. Define component patterns and constraints
-3. Specify token usage rules
-4. Document naming conventions and structure patterns
-```
+**For immediate use, drag and drop this file into VS Code Copilot Chat:**
+**Structure:** [`prompts/05-create-design-rules.md`](./prompts/figma-mcp-05-create-design-rules.md)
 
 ---
 
@@ -290,7 +190,7 @@ Expected Output: PNG/SVG image of the component
 
 **Chat Format (Primary)**: Clean, focused analysis for immediate inspection
 ```markdown
-## 🔍 Figma Layer Analysis: [component_name]
+## **Analysis:** Figma Layer Analysis: [component_name]
 
 ### Simple Structure
 ```
@@ -321,7 +221,7 @@ Expected Output: PNG/SVG image of the component
 - **Inspection Date**: [current_date]
 - **Selected Component**: [component_path]
 
-> ⚠️ **Version Note**: This analysis reflects the Figma file state as of [last_modified_date]. If the file has been updated since then, re-run the MCP inspection to ensure accuracy.
+> **Warning:** **Version Note**: This analysis reflects the Figma file state as of [last_modified_date]. If the file has been updated since then, re-run the MCP inspection to ensure accuracy.
 
 Based on Figma MCP inspection of `[component_name]` component:
 
@@ -404,18 +304,8 @@ Based on Figma MCP inspection of `[component_name]` component:
 
 ### 12.9.1 Copy-Paste Commands
 
-**Use these exact MCP commands in sequence:**
-
-```
-🔧 COMMAND 1: Get metadata
-mcp_figma_dev_mod_get_metadata
-
-🔧 COMMAND 2: Extract code structure  
-mcp_figma_dev_mod_get_code
-
-🔧 COMMAND 3: Get visual reference
-mcp_figma_dev_mod_get_image
-```
+**For manual MCP command execution, drag and drop this file:**
+ [`prompts/manual-mcp-commands.md`](./prompts/figma-mcp-06-manual-mcp-commands.md)
 
 ### 12.9.2 Expected Metadata Output:
 ```xml
@@ -438,7 +328,7 @@ data-name="button_aug" data-node-id="36:2"
 
 **Chat Analysis Example (Clean & Focused):**
 ```markdown
-## 🔍 Figma Layer Analysis: button_aug
+## **Analysis:** Figma Layer Analysis: button_aug
 
 ### Simple Structure
 ```
@@ -449,11 +339,6 @@ button_aug
         ├── text-label
         └── icon-holder (right)
 ```
-
-### Figma File Information
-- **File**: Design System Components v2.4
-- **Last Modified**: September 5, 2025, 3:42 PM
-- **Selection**: button_aug → Primary variant
 
 Would you like me to create/update the component documentation file at `documentation/04-components/button.md` with this layer structure?
 ```
@@ -468,7 +353,7 @@ Would you like me to create/update the component documentation file at `document
 - **Inspection Date**: September 6, 2025
 - **Selected Component**: button_aug → type=primary, size=md, show icon=right, state=enabled,inversity=normal
 
-> ⚠️ **Version Note**: This analysis reflects the Figma file state as of September 5, 2025, 3:42 PM. If the file has been updated since then, re-run the MCP inspection to ensure accuracy.
+> **Warning:** **Version Note**: This analysis reflects the Figma file state as of September 5, 2025, 3:42 PM. If the file has been updated since then, re-run the MCP inspection to ensure accuracy.
 
 Based on Figma MCP inspection of `button_aug` component:
 
@@ -487,16 +372,16 @@ button_aug (Frame: 452×319px)
 
 | Layer | Purpose | Figma Variables | HTML Suggestion | Design Tokens | Notes |
 |-------|---------|-----------------|-----------------|---------------|-------|
-| **button-surface** | Container with Auto Layout | `bg-color: primary`, `padding: md` | `<button class="ob-button">` | `ob.h.button-aug.color.bg.primary` | 139×36px, horizontal gap 6px |
-| ├─ **icon-holder** | Left icon wrapper | `size: md` | `<span class="icon-slot">` | `ob.s.icon.size.md` | 24×24px, conditional render |
-| ├─ **text-label** | Button text content | `typography: button-md` | `<span class="button-text">` | `ob.s.typography.button.md` | "Button", center-aligned |
-| └─ **icon-holder** | Right icon wrapper | `size: md` | `<span class="icon-slot">` | `ob.s.icon.size.md` | 24×24px, conditional render |
+| **button-surface** | Container with Auto Layout | `bg-color: primary`, `padding: md` | `<button class="ob-button">` | `ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.color.bg.primary` | 139×36px, horizontal gap 6px |
+| ├─ **icon-holder** | Left icon wrapper | `size: md` | `<span class="icon-slot">` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` | 24×24px, conditional render |
+| ├─ **text-label** | Button text content | `typography: button-md` | `<span class="button-text">` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` | "Button", center-aligned |
+| └─ **icon-holder** | Right icon wrapper | `size: md` | `<span class="icon-slot">` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` | 24×24px, conditional render |
 
 ### Design Token Mapping
-- **Background**: `{ob.h.button-aug.color.bg.primary.inversity_normal.enabled}` → #2379a4
-- **Text Color**: `{ob.h.button-aug.color.fg.primary.inversity_normal.enabled}` → #ffffff  
-- **Icon Size**: `{ob.s.icon.size.md}` → 24px
-- **Line Height**: `{ob.s.lineHeight.sm}` → 20px
+- **Background**: `{ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.color.bg.primary.inversity_normal.enabled}` → #2379a4
+- **Text Color**: `{ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.color.fg.primary.inversity_normal.enabled}` → #ffffff  
+- **Icon Size**: `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}` → 24px
+- **Line Height**: `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_indexHeight.sm}` → 20px
 
 ### Component Properties
 - **Main Component**: `button_aug` with variants (primary, md, right, enabled, normal)
@@ -537,7 +422,7 @@ Before completing inspection, verify:
 2. **Documentation Phase**: Offer to create/update component files
    - User chooses whether to proceed with documentation
    - AI creates/updates component MD files in `documentation/04-components/[component].md`
-   - Comprehensive format suitable for component documentation
+   - complete format suitable for component documentation
    - Include version tracking information and currency warnings
 
 **Alternative: Direct Documentation Update**
@@ -564,22 +449,28 @@ When preparing design handoff:
 3. **Generate implementation code** using appropriate code generation prompts
 4. **Provide visual context** with screenshots and metadata
 
-### 12.11.3 Best Practices
+### 12.11.3 standard practices
 
-**For Developers:**
+**For DS/Oblique Developers (Design System Maintainers):**
 1. **Always verify MCP connection** before starting development sessions
 2. **Use semantic tokens** whenever possible, avoid component-level tokens
 3. **Test across viewport modes** to ensure responsive behavior
 4. **Document any workarounds** for unsupported token types
 5. **Use automation** for token validation and updates
+6. **Keep Figma desktop app updated** to latest version
+7. **Monitor MCP server connectivity** across team
+8. **Document new token types** and their Figma support status
+9. **Maintain Code Connect mappings** for accurate code generation
+10. **Review and update workflows** based on team feedback
+11. **Manage Dev Mode access** for team members as needed
 
-**For Maintainers:**
-1. **Keep Figma desktop app updated** to latest version
-2. **Monitor MCP server connectivity** across team
-3. **Document new token types** and their Figma support status
-4. **Maintain Code Connect mappings** for accurate code generation
-5. **Review and update workflows** based on team feedback
-6. **Manage Dev Mode access** for team members as needed
+**For DS/Oblique Designers (Design System Maintainers):**
+1. **Use Figma desktop app** for full MCP tool access (browser version has limitations)
+2. **Verify component changes** with MCP inspection before publishing
+3. **Document design decisions** with layer structure analysis
+4. **Collaborate with developers** using shared MCP inspection results
+5. **Test component variants** across different viewport modes
+6. **Maintain design-code alignment** through regular MCP verification
 
 ---
 

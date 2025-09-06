@@ -21,11 +21,11 @@
 
 ### Valid Tokens (Confirmed in Tokens Studio)
 These tokens exist in `$themes.json` and resolve properly in Tokens Studio:
-- `{ob.s1.color.neutral.bg.contrast_highest.inversity_normal.focus}` (VALID)
-- `{ob.s3.color.neutral.no_color-color}` (VALID)
+- `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}` (VALID)
+- `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index-color}` (VALID)
 
 ### Reference Checking
-- The JavaScript validation scripts provide comprehensive token reference checking
+- The JavaScript validation scripts provide complete token reference checking
 - Use `node scripts-custom/validate-all-components.js` to verify component token references
 - Token validation should always be verified against the current token structure, not outdated references
 

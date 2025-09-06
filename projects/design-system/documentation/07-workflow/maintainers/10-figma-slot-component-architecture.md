@@ -185,14 +185,14 @@ Examples:
 - **Content flexibility**: Slots provide dynamic content areas
 - **Nested support**: Slot architecture supports nesting naturally
 
-**3. [Button Component Behavior](../../04-components/02-button.md)**
+**3. [Button Component Behavior](../../04-components/button/button-overview.md)**
 - **Badge/Tooltip children**: Already slot-like with Boolean properties
 - **Container variants**: Can be enhanced with slot architecture
 
 ### **Enhances Existing Patterns:**
 
 **1. Component Token Architecture**
-- Slots work with existing `ob.c.tag.container.spacing.gap` tokens
+- Slots work with existing `ob.c.tag.container.spacing.gap.spacing.gap tokens
 - Maintain semantic token relationships
 - Support responsive behavior patterns
 
@@ -203,7 +203,7 @@ Examples:
 
 ---
 
-## Best Practices
+## standard practices
 
 ### **Design Guidelines**
 
@@ -285,7 +285,7 @@ Examples:
 
 - [Component Decomposition Strategy](./09-figma-component-decomposition-strategy.md) - Addresses variant explosion problem
 - [Container Component Concept](../../03-design-tokens/container-component-concept.md) - Flexible container architecture
-- [Button Component Behavior](../../04-components/02-button.md) - Current slot-like implementations
+- [Button Component Behavior](../../04-components/button/button-overview.md) - Current slot-like implementations
 - [Component Token Architecture](../../03-design-tokens/component-tokens.md) - Token integration patterns
 
 ---

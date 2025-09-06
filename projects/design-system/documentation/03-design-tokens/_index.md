@@ -8,7 +8,7 @@
 
 | **New to Design Tokens?** | **Need Quick Reference?** | **Implementation Guide?** |
 |---|---|---|
-| Start with [**Architecture**](./architecture.md) | Check [**Glossary**](../glossary.md) | Read [**Guidelines**](./guidelines-token-consumption.md) |
+| Start with [**Architecture**](./architecture.md) | Check [**Foundation Overview**](../02-foundation/01-principles.md) | Read [**Guidelines**](./guidelines-token-consumption.md) |
 
 ---
 
@@ -16,7 +16,7 @@
 
 ### **Core Architecture**
 - [**Architecture**](./architecture.md) - Token structure, levels, and naming patterns
-- [**Glossary**](../glossary.md) - Complete terminology and definitions reference
+- [**Foundation Overview**](../02-foundation/01-principles.md) - Complete terminology and definitions reference
 - [**Theming**](./theming.md) - S1/S2/S3 semantic levels and theme implementation
 
 ### **Color System**
@@ -33,7 +33,8 @@
 ### ** Implementation Guides**
 - [**Token Consumption Guidelines**](./guidelines-token-consumption.md) - How to use tokens correctly
 - [**Designer Guidelines**](./guidelines-for-designers.md) - Design system usage for designers
-- [**Component Identification**](../07-workflow/maintainers/02-component-identification.md) - Component token patterns
+- [**Tokenization Checklist**](./tokenization-checklist.md) - Quick reference for complete tokenization workflow
+- [**Component Identification**](../07-workflow/maintainers/readme.md) - Component token patterns
 - [**Responsiveness**](./responsiveness.md) - Responsive token implementation
 
 ### **Technical References**
@@ -96,7 +97,7 @@ src/lib/themes/
 Use these validation scripts to ensure token integrity:
 
 ```bash
-# Comprehensive validation (recommended)
+# complete validation (recommended)
 node scripts-custom/validate-all.js
 
 # Component token validation
@@ -121,4 +122,4 @@ node scripts-custom/validate-semantic-mirroring.js
 
 ---
 
-*Need help? Check the [Glossary](../glossary.md) for terminology or [Guidelines](./guidelines-token-consumption.md) for implementation patterns.*
+*Need help? Check the [Foundation Overview](../02-foundation/01-principles.md) for terminology or [Guidelines](./guidelines-token-consumption.md) for implementation patterns.*

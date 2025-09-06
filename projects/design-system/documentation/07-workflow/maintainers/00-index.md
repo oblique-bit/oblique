@@ -14,7 +14,7 @@
 
 ## Workflow Organization
 
-This folder contains comprehensive workflows for **Oblique Design System maintainers** and core team members. All workflows are organized in logical sequence for efficient navigation and learning.
+This folder contains complete workflows for **Oblique Design System maintainers** and core team members. All workflows are organized in logical sequence for efficient navigation and learning.
 
 ### **Audience Targeting Legend**
 
@@ -43,6 +43,25 @@ Each document includes audience targeting to help you quickly identify relevance
 - **05-figma-variables-limitations-and-restrictions.md** - Figma variables and variable modes restrictions
 - **06-design-system-script-recommendations.md** - Development tools and script recommendations
 
+### Figma Component Workflows
+- **09-figma-component-decomposition-strategy.md** - Component decomposition and slot architecture
+- **10-figma-slot-component-architecture.md** - Advanced slot component patterns
+- **11-button-aug-slot-implementation.md** - Practical slot implementation example
+- **12-figma-mcp-inspection-guide.md** - Complete MCP inspection workflows and prompts
+
+### Tokenization & Quality Workflows
+- **13-tokenization-workflow-complete.md** - Complete tokenization workflow for designers and maintainers
+- **14-designer-developer-handoff.md** - Quality gates and handoff protocols for component validation
+
+### **Quick Start:** Ready-to-Use Prompts
+- **[`prompts/`](./prompts/)** - Drag-and-drop prompt files for VS Code Copilot Chat
+  - Figma layer structure inspection
+  - Component analysis and documentation
+  - **complete tokenization validation**
+  - Token and variable analysis
+  - Code generation workflows
+  - Design system rules creation
+
 ---
 
 ## Workflow Categories
@@ -53,27 +72,31 @@ Files 01-04 cover the complete token architecture from Token Studio fundamentals
 ### Token Development Support
 Files 05-06 provide token-specific development workflows including Figma limitations and tooling recommendations.
 
-### System Administration (Moved to _private)
-General system workflows have been moved to appropriate private locations:
-- **Component workflows**: `/_private/automation/component-workflows/`
-- **File protection**: `/_private/automation/file-protection/`  
-- **Version tracking**: `/_private/stable-points/`
+### Component Development & Quality
+Files 09-14 cover component development, tokenization workflows, and quality assurance processes.
 
----
+### System Administration (Internal Only)
+General system workflows have been moved to appropriate private locations:
+- **Component workflows**: Automated component validation and testing workflows
+- **File protection**: Automated file protection and validation systems
+- **Version tracking**: Design system version tracking and stable points---
 
 ## Quick Navigation
 
 ### For New Maintainers
-Start with: **01 → 02 → 05**
+Start with: **01 → 02 → 05 → 13**
 
 ### For Token Architecture Work  
 Focus on: **01 → 02 → 03 → 04**
 
-### For Token Development
-Focus on: **05 → 06**
+### For Component Development
+Focus on: **09 → 10 → 13 → 14**
+
+### For Quality Assurance
+Focus on: **12 → 13 → 14**
 
 ### For System Administration
-See: **`/_private/automation/`** and **`/_private/stable-points/`**
+See: **Automation Systems** and **Stable Version Tracking**
 
 ---
 

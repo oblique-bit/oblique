@@ -12,7 +12,7 @@ Brand colors maintain consistent visual identity across all themes and contexts.
 
 ### Brand Token Structure
 ```
-ob.s3.color.brand` references `{ob.p.color.red.50}` (Swiss federal red)
+ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` references `{ob.p.color.red.50.red.50.red.50}` (Swiss federal red)
 - **Static Behavior**: Never changes with light/dark themes or other variations  
 - **Usage**: Brand elements, logos, primary brand touches, selected states
 
@@ -21,7 +21,7 @@ ob.s3.color.brand` references `{ob.p.color.red.50}` (Swiss federal red)
 {
   "brand": {
     "$type": "color",
-    "$value": "{ob.p.color.red.50}",
+    "$value": "{ob.p.color.red.50.red.50.red.50}",
     "$description": "Static color to be used in the brand relevant UI elements."
   }
 }
@@ -37,7 +37,7 @@ ob.s3.color.brand` references `{ob.p.color.red.50}` (Swiss federal red)
 ### Selection Indicators
 ```json
 {
-  "ob.s3.color.brand}"
+  "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
   }
 }
 ```
@@ -74,7 +74,7 @@ The brand color system uses Swiss federal red (bundesrot) to maintain visual con
 ### File Location
 - **Path**: `src/lib/themes/semantic/color/s3-semantic/semantic.json`
 - **Layer**: Semantic (s3) - static brand color integrated in final compilation
-- **References**: `{ob.p.color.red.50}` primitive
+- **References**: `{ob.p.color.red.50.red.50.red.50}` primitive
 
 ### Integration Pattern
 ```json
@@ -84,7 +84,7 @@ The brand color system uses Swiss federal red (bundesrot) to maintain visual con
       "color": {
         "brand": {
           "$type": "color",
-          "$value": "{ob.p.color.red.50}",
+          "$value": "{ob.p.color.red.50.red.50.red.50}",
           "$description": "Static color to be used in the brand relevant UI elements."
         }
       }

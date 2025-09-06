@@ -176,14 +176,14 @@ Tooltip.bottom.dark
 
 **11.2.5.2 Testing Checklist**
 ```
-✓ Icon slot swaps correctly
-✓ Badge slot swaps correctly  
-✓ Tooltip slot swaps correctly
-✓ Empty states work (invisible slots)
-✓ Auto Layout responds to size changes
-✓ Constraints work in different containers
-✓ Responsive behavior maintained
-✓ Token values applied correctly
+**Note:** Icon slot swaps correctly
+**Note:** Badge slot swaps correctly  
+**Note:** Tooltip slot swaps correctly
+**Note:** Empty states work (invisible slots)
+**Note:** Auto Layout responds to size changes
+**Note:** Constraints work in different containers
+**Note:** Responsive behavior maintained
+**Note:** Token values applied correctly
 ```
 
 ---
@@ -248,7 +248,7 @@ Tooltip.bottom.dark
 ### **Token Integration**
 ```
 Button Container Spacing:
-- Icon gap: {ob.s.spacing.heading.top.2xl}
+- Icon gap: {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
 - Padding: {button-aug token values}
 
 Slot Positioning:

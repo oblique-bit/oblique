@@ -70,7 +70,7 @@
 - **Variable Count Impact**: Performance degrades with high variable counts
 - **Mode Switching Speed**: Slow mode switching in files with many variables
 - **Rendering Performance**: Variable-heavy components render slowly
-- **Memory Usage**: High memory consumption with extensive variable usage
+- **Memory Usage**: High memory consumption with wide variable usage
 
 #### Collaboration Restrictions
 - **Concurrent Editing**: Limited support for multiple editors working on variables

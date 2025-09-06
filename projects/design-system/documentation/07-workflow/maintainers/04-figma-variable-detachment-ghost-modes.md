@@ -10,7 +10,7 @@
 **Prerequisites:** Advanced Figma knowledge, MCP tools, understanding of variable modes  
 **Related Personas:** [Design System Personas](../../02-foundation/02-personas.md#11-dsobl)
 
-This document provides comprehensive methods for detaching variables from Figma components and eliminating persistent ghost variable modes that remain after variable deletion.
+This document provides complete methods for detaching variables from Figma components and eliminating persistent ghost variable modes that remain after variable deletion.
 
 ---
 
@@ -131,7 +131,7 @@ This document provides comprehensive methods for detaching variables from Figma 
 
 ### Phase 4: Plugin-Based Deep Clean
 
-**Objective**: Use specialized plugins for comprehensive variable removal
+**Objective**: Use specialized plugins for complete variable removal
 
 **Recommended Plugins**:
 - **Variable Visualizer Plugin**: [Variable Visualizer - Design System Token Variables Management](https://www.figma.com/community/plugin/1457362132545070106/variable-visualizer-design-system-token-variables-management) - **Alternative to MCP for variable inspection**
@@ -227,7 +227,7 @@ This document provides comprehensive methods for detaching variables from Figma 
 
 ---
 
-## Best Practices
+## standard practices
 
 ### Pre-Cleanup Preparation
 1. **Document Current State**: Screenshot component before cleanup
@@ -264,9 +264,9 @@ After successful ghost variable elimination, components are ready for fresh vari
 ---
 
 ## Related Documentation
-- [Figma Token Debugging Guide](./02-figma-token-debugging.md)
-- [S1/S2/S3 Architecture Documentation](../../../03-design-tokens/theming.md)
-- [Token Consumption Guidelines](../../../03-design-tokens/guidelines-token-consumption.md)
+- [Figma Token Debugging Guide](./03-figma-token-debugging.md)
+- [S1/S2/S3 Architecture Documentation](../../03-design-tokens/theming.md)
+- [Token Consumption Guidelines](../../03-design-tokens/guidelines-token-consumption.md)
 
 ---
 

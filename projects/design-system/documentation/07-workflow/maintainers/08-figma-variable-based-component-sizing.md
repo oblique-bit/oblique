@@ -112,7 +112,7 @@ Size Properties:
 ### 1. Semantic Flexibility
 - **Button sm ≠ Badge sm**: Different components can have semantically appropriate sizing
 - **Consistent Experience**: Size selection (sm/md/lg) remains consistent across components
-- **Context-Aware**: Each component optimized for its specific use cases
+- **Context-Aware**: Each component improved for its specific use cases
 
 ### 2. Token Reuse
 - **100% Existing Tokens**: All size values use existing semantic sizing/spacing tokens
@@ -130,17 +130,17 @@ Size Properties:
 ```
 Collection: Button-Sizes
 ├── Mode: sm
-│   ├── button/min-height → {ob.s.size.compact}
-│   ├── button/padding-h → {ob.s.spacing.lg}
-│   └── button/padding-v → {ob.s.spacing.xs}
+│   ├── button/min-height → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
+│   ├── button/padding-h → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
+│   └── button/padding-v → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
 ├── Mode: md  
-│   ├── button/min-height → {ob.s.size.spacious}
-│   ├── button/padding-h → {ob.s.spacing.xl}
-│   └── button/padding-v → {ob.s.spacing.sm}
+│   ├── button/min-height → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
+│   ├── button/padding-h → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
+│   └── button/padding-v → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
 └── Mode: lg
-    ├── button/min-height → {ob.s.size.hefty}
-    ├── button/padding-h → {ob.s.spacing.2xl}
-    └── button/padding-v → {ob.s.spacing.md}
+    ├── button/min-height → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
+    ├── button/padding-h → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
+    └── button/padding-v → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
 ```
 
 ### Token Mapping Strategy
@@ -175,7 +175,7 @@ Collection: Button-Sizes
 ## Related Documentation
 - [Variables vs Variants Strategic Analysis](./07-figma-variables-vs-variants-strategic-analysis.md)
 - [Component Token Architecture](../../03-design-tokens/)
-- [Sizing System Guidelines](../../02-foundation/sizing.md)
+- [Sizing System Guidelines](../../03-design-tokens/responsiveness.md)
 
 ---
 *This variable-based sizing system enables semantic flexibility while building on Oblique's existing token architecture and reducing system complexity.*

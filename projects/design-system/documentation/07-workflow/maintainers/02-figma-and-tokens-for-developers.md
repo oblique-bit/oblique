@@ -46,7 +46,7 @@ This document covers the developer workflow for working with design tokens throu
 **Flow:** `Figma → Tokens Studio → Style Dictionary → Code`
 
 **Your Responsibilities:**
-- Use semantic tokens (`ob.s`) when available
+- Use semantic tokens (`ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index`) when available
 - Support theme variations and viewport modes
 - Check JSON files for Figma-unsupported tokens
 
@@ -57,13 +57,13 @@ For detailed Figma MCP prompts and workflows, see the **[Figma MCP Inspection Gu
 ### Quick Start Commands
 
 ```
-🔧 COMMAND 1: Get metadata
+**Setup:** COMMAND 1: Get metadata
 mcp_figma_dev_mod_get_metadata
 
-🔧 COMMAND 2: Extract code structure  
+**Setup:** COMMAND 2: Extract code structure  
 mcp_figma_dev_mod_get_code
 
-🔧 COMMAND 3: Get visual reference
+**Setup:** COMMAND 3: Get visual reference
 mcp_figma_dev_mod_get_image
 ```
 
@@ -89,7 +89,7 @@ When MCP tools can't find certain tokens in Figma:
 These tokens (e.g., responsive typography scales or complex state tokens) are not supported in Figma and cannot be inspected via MCP. They remain part of the design system and must be implemented as documented.
 ```
 
-## Best Practices
+## standard practices
 
 1. **Always verify MCP connection** before starting development sessions
 2. **Use semantic tokens** whenever possible, avoid component-level tokens
@@ -118,6 +118,6 @@ These tokens (e.g., responsive typography scales or complex state tokens) are no
 **Last Updated**: September 2025  
 **Related Documents**: 
 - [Figma MCP Inspection Guide](./12-figma-mcp-inspection-guide.md) - Complete collection of Figma MCP prompts and workflows
-- [Component Identification](./02-component-identification.md)
+- [Component Identification](./readme.md)
 - [Design Tokens](./design-tokens/)
-- [Protected Files](./04-protected-files.md)
+- [Protected Files](./readme.md)

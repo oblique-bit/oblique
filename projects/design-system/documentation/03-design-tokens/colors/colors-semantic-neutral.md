@@ -12,7 +12,7 @@ Neutral colors provide the foundational color palette for backgrounds, text, bor
 
 ### Token Structure
 ```
-ob.s2.color.interaction.state.fg.enabled.inversity_normal.{property}.{contrast_level}.{inversity_variation}
+ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.{property}.{contrast_level}.{inversity_variation}
 ```
 
 ### Properties
@@ -28,14 +28,14 @@ ob.s2.color.interaction.state.fg.enabled.inversity_normal.{property}.{contrast_l
 - `contrast_high` - Secondary surface color
 - `contrast_medium` - Tertiary surface color
 - `contrast_low` - Subtle surface color
-- `contrast_lowest` - Very subtle background for disabled states
+- `contrast_lowest` -  subtle background for disabled states
 
 ### Foreground Contrast Levels
 - `contrast_highest` - Primary text color (maximum contrast)
 - `contrast_high` - Secondary text color
 - `contrast_medium` - Tertiary text color
 - `contrast_low` - Subtle text color
-- `contrast_lowest` - Very subtle text for disabled states
+- `contrast_lowest` -  subtle text for disabled states
 
 ## Inversity Variations
 
@@ -119,12 +119,12 @@ Neutral components that provide structure, content, and typography:
 
 | Component | Token Type | Rationale | Example Tokens |
 |-----------|------------|-----------|----------------|
-| **Typography** | `neutral.*` | Text content and headings | `ob.s2.color.interaction.state.fg.enabled.inversity_normal.fg.contrast_highest.inversity_normal` |
-| **List** | `neutral.*` | Content structure | `ob.s2.color.interaction.state.fg.enabled.inversity_normal.fg.contrast_medium.inversity_normal` |
-| **HR (Divider)** | `neutral.*` | Structural separators | `ob.s2.color.interaction.state.fg.enabled.inversity_normal.border.contrast_medium.inversity_normal` |
-| **Popover** | `neutral.*` | Neutral floating containers | `ob.s2.color.interaction.state.fg.enabled.inversity_normal.bg.contrast_highest.inversity_normal` |
-| **Dialog** | `neutral.*` | Modal content containers | `ob.s2.color.interaction.state.fg.enabled.inversity_normal.bg.contrast_high.inversity_normal` |
-| **Progress Bar** | `neutral.*` | Neutral progress indicators | `ob.s2.color.interaction.state.fg.enabled.inversity_normal.bg.contrast_low.inversity_normal` |
+| **Typography** | `neutral.*` | Text content and headings | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` |
+| **List** | `neutral.*` | Content structure | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` |
+| **HR (Divider)** | `neutral.*` | Structural separators | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` |
+| **Popover** | `neutral.*` | Neutral floating containers | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` |
+| **Dialog** | `neutral.*` | Modal content containers | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` |
+| **Progress Bar** | `neutral.*` | Neutral progress indicators | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` |
 
 ## Theme Integration
 
@@ -141,8 +141,8 @@ Neutral components that provide structure, content, and typography:
 ### Static Utilities
 ```json
 {
-  "ob.s2.color.interaction.state.fg.enabled.inversity_normal.no_color": {
-    "$value": "{ob.p.color.red.50}",
+  "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index": {
+    "$value": "{ob.p.color.red.50.red.50.red.50}",
     "$description": "Static value when no color respectively 0% opacity is needed."
   }
 }
@@ -178,7 +178,7 @@ Neutral components that provide structure, content, and typography:
 
 ### Token Resolution Flow
 ```
-ob.s2.color.interaction.state.fg.enabled.inversity_normal.fg.contrast_high.inversity_normal
+ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
 │
 ├─ L1 (Lightness): Resolves based on light/dark theme
 ├─ L2 (Inversity): Applies normal/flipped contrast
