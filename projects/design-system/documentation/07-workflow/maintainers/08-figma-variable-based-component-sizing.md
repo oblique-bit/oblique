@@ -1,5 +1,16 @@
 # Variable-Based Sizing System for Oblique Components
 
+**Version:** 1.0  
+**Date:** September 2, 2025  
+**Status:** Work in Progress - Not Yet Approved by Product Owner  
+**Purpose:** Implementation of variable-based sizing for Oblique components to replace size variants
+
+## **Target Audience**
+**Primary:** DS/Oblique Developers, DS/Oblique Designers  
+**Secondary:** Component Architects, Token System Maintainers  
+**Prerequisites:** Understanding of Figma variables, component architecture, design token systems  
+**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
+
 ## Overview
 This document outlines the implementation of variable-based sizing for Oblique's 4 core components (Button, Badge, Tag, Pill) to replace size variants and enable semantic flexibility while reducing variant explosion.
 

@@ -115,26 +115,34 @@ Figma → Tokens Studio → Style Dictionary → Code
 
 ## Developer Prompts
 
-### Core Prompts
+### Quick Reference
 
-Use these prompts when working with components:
+For detailed Figma MCP prompts and workflows, see the dedicated **[Figma MCP Inspection Guide](./12-figma-mcp-inspection-guide.md)**.
 
-- **Legacy Detection**: "List legacy (deprecated) variables used in this component"
-- **Semantic Focus**: "Focus only on semantic components; exclude component-level variables (e.g., `ob.c`, `ob.h`)"
-- **Structure Analysis**: "Show the full layer structure of this component"
-- **Variant Comparison**: "Show all component variants and highlight their main differences"
-- **Viewport Analysis**: "Identify which variables in this component change based on viewport mode (mobile vs. desktop), and which ones remain stable"
-- **Code Generation**: "Generate HTML and CSS for all component variants"
+### Core Workflow Categories
 
-### Extended Prompts (MCP-powered)
+- **[Layer Structure Inspection](./12-figma-mcp-inspection-guide.md#121-layer-structure-inspection)**: Extract component layer hierarchies and structures
+- **[Component Analysis](./12-figma-mcp-inspection-guide.md#122-component-analysis)**: Analyze component variants, legacy detection, and structure comparison
+- **[Token & Variable Analysis](./12-figma-mcp-inspection-guide.md#123-token--variable-analysis)**: Extract variable definitions, semantic focus, and viewport analysis
+- **[Code Generation](./12-figma-mcp-inspection-guide.md#124-code-generation)**: Generate HTML/CSS, React+Tailwind, and context-aware code
+- **[Design System Rules](./12-figma-mcp-inspection-guide.md#125-design-system-rules)**: Create design system rules for AI-guided development
 
-Additional workflows enabled by MCP integration:
+### Quick Copy-Paste Commands
 
-- **Variable Definitions**: "Get variable definitions for this selection"
-- **React + Tailwind**: "Generate React + Tailwind code using existing component mappings via Code Connect"
-- **Context-Aware Generation**: "Provide a screenshot plus design metadata for context-aware code generation"
-- **Variable Listing**: "List variables and their values in this component"
-- **Design System Rules**: "Create a Design System rule file for this component to guide AI-based code generation"
+For immediate use, the most common command sequence:
+
+```
+🔧 COMMAND 1: Get metadata
+mcp_figma_dev_mod_get_metadata
+
+🔧 COMMAND 2: Extract code structure  
+mcp_figma_dev_mod_get_code
+
+🔧 COMMAND 3: Get visual reference
+mcp_figma_dev_mod_get_image
+```
+
+For complete prompt collection and detailed instructions, refer to the **[Figma MCP Inspection Guide](./12-figma-mcp-inspection-guide.md)**.
 
 ## Handling Unsupported Tokens in Figma
 
@@ -204,6 +212,7 @@ These tokens (e.g., responsive typography scales or complex state tokens) are no
 
 **Last Updated**: September 2025  
 **Related Documents**: 
+- [Figma MCP Inspection Guide](./12-figma-mcp-inspection-guide.md) - Complete collection of Figma MCP prompts and workflows
 - [Component Identification](./02-component-identification.md)
 - [Design Tokens](./design-tokens/)
 - [Protected Files](./04-protected-files.md)

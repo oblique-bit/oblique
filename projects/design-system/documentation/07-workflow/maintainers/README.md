@@ -35,8 +35,8 @@ This folder contains workflows, guides, and processes specifically designed for 
 - **04-figma-variable-detachment-ghost-modes.md** - Advanced Figma cleanup and ghost mode elimination
 
 #### Token Development Workflows
-- **05-issues.md** - Figma variables and variable modes restrictions
-- **06-easy-recommendations.md** - Script usage recommendations for token development
+- **05-figma-variables-limitations-and-restrictions.md** - Figma variables and variable modes restrictions
+- **06-design-system-script-recommendations.md** - Script usage recommendations for token development
 
 ### Workflow Categories
 

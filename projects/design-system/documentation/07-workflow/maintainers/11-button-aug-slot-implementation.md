@@ -1,12 +1,19 @@
-# Button_Aug Slot Implementation Guide
+# 11. Button_Aug Slot Implementation Guide
 
-**Implementation Plan:** Converting Button_Aug to Slot Architecture  
+**Version:** 1.0  
 **Date:** September 5, 2025  
-**Target:** Proof of concept for slot component pattern
+**Status:** Work in Progress - Not Yet Approved by Product Owner  
+**Purpose:** Converting Button_Aug to Slot Architecture - Proof of concept for slot component pattern
+
+## **Target Audience**
+**Primary:** DS/Oblique Designers, DS/Oblique Developers  
+**Secondary:** Component Implementation Specialists, Figma Advanced Users  
+**Prerequisites:** Understanding of slot component architecture, advanced Figma component knowledge  
+**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
 
 ---
 
-## Current State Analysis
+## 11.1 Current State Analysis
 
 **Button_Aug Components:**
 - `Button_Aug/Text`: 108 variants
@@ -25,11 +32,11 @@ Button_Aug/Text
 
 ---
 
-## Step-by-Step Implementation
+## 11.2 Step-by-Step Implementation
 
-### **Step 1: Create Slot Placeholder Components**
+### 11.2.1 Create Slot Placeholder Components
 
-**1.1 Create Badge Slot Placeholder**
+**11.2.1.1 Create Badge Slot Placeholder**
 ```
 Component: "Badge_Slot_Placeholder"
 Design:
@@ -40,7 +47,7 @@ Design:
 - Constraints: Top-left
 ```
 
-**1.2 Create Tooltip Slot Placeholder**
+**11.2.1.2 Create Tooltip Slot Placeholder**
 ```
 Component: "Tooltip_Slot_Placeholder"  
 Design:
@@ -51,7 +58,7 @@ Design:
 - Constraints: Top-left
 ```
 
-**1.3 Create Icon Slot Placeholder**
+**11.2.1.3 Create Icon Slot Placeholder**
 ```
 Component: "Icon_Slot_Placeholder"
 Design:
@@ -62,9 +69,9 @@ Design:
 - Constraints: Center
 ```
 
-### **Step 2: Rebuild Button_Aug with Slot Architecture**
+### 11.2.2 Rebuild Button_Aug with Slot Architecture
 
-**2.1 Enhanced Button_Aug/Text Structure**
+**11.2.2.1 Button_Aug/Text Structure**
 ```
 Button_Aug/Text (Main Component)
 ├── Button Container (Auto Layout: Horizontal, Hug contents)
@@ -77,7 +84,7 @@ Button_Aug/Text (Main Component)
     └── Tooltip_Slot_Placeholder (default)
 ```
 
-**2.2 Auto Layout Configuration**
+**11.2.2.2 Auto Layout Configuration**
 ```
 Main Container:
 - Direction: Vertical
@@ -94,9 +101,9 @@ Button Container:
 - Alignment: Center
 ```
 
-### **Step 3: Configure Instance Swap Properties**
+### 11.2.3 Configure Instance Swap Properties
 
-**3.1 Icon Slot Configuration**
+**11.2.3.1 Icon Slot Configuration**
 ```
 Property Name: "Icon_Content"
 Default Value: Icon_Slot_Placeholder
@@ -106,7 +113,7 @@ Preferred Instances:
 - Custom icon components
 ```
 
-**3.2 Badge Slot Configuration**
+**11.2.3.2 Badge Slot Configuration**
 ```
 Property Name: "Badge_Content"  
 Default Value: Badge_Slot_Placeholder
@@ -117,7 +124,7 @@ Preferred Instances:
 - Custom badge variants
 ```
 
-**3.3 Tooltip Slot Configuration**
+**11.2.3.3 Tooltip Slot Configuration**
 ```
 Property Name: "Tooltip_Content"
 Default Value: Tooltip_Slot_Placeholder  
@@ -128,9 +135,9 @@ Preferred Instances:
 - Custom tooltip variants
 ```
 
-### **Step 4: Create Slot Content Library**
+### 11.2.4 Create Slot Content Library
 
-**4.1 Badge Slot Components**
+**11.2.4.1 Badge Slot Components**
 ```
 Badge.Empty (transparent, 0x0 size)
 Badge.sm.primary
@@ -140,7 +147,7 @@ Badge.lg.secondary
 Badge.notification (red dot)
 ```
 
-**4.2 Icon Slot Components**
+**11.2.4.2 Icon Slot Components**
 ```
 Icon.Empty (transparent, 0x0 size)
 Icon.16.outlined (from icon library)
@@ -148,7 +155,7 @@ Icon.16.filled (from icon library)
 Icon.custom (placeholder for custom icons)
 ```
 
-**4.3 Tooltip Slot Components**
+**11.2.4.3 Tooltip Slot Components**
 ```
 Tooltip.Empty (transparent, 0x0 size)
 Tooltip.top.light
@@ -157,9 +164,9 @@ Tooltip.bottom.light
 Tooltip.bottom.dark
 ```
 
-### **Step 5: Implementation in Figma**
+### 11.2.5 Implementation in Figma
 
-**5.1 Component Creation Workflow**
+**11.2.5.1 Component Creation Workflow**
 1. Create all placeholder components first
 2. Build main Button_Aug component with placeholders
 3. Set up Auto Layout on all containers
@@ -167,7 +174,7 @@ Tooltip.bottom.dark
 5. Create slot content library
 6. Test with various combinations
 
-**5.2 Testing Checklist**
+**11.2.5.2 Testing Checklist**
 ```
 ✓ Icon slot swaps correctly
 ✓ Badge slot swaps correctly  
@@ -181,27 +188,27 @@ Tooltip.bottom.dark
 
 ---
 
-## Migration Strategy
+## 11.3 Migration Strategy
 
-### **Phase 1: Proof of Concept (Week 1)**
+### 11.3.1 Phase 1: Proof of Concept (Week 1)
 - Create placeholder components
 - Build single Button_Aug/Text with slots
 - Test basic slot swapping functionality
 - Document learnings and adjustments
 
-### **Phase 2: Complete Implementation (Week 2)**
+### 11.3.2 Phase 2: Implementation (Week 2)
 - Create full slot content library
 - Build Button_Aug/Icon-Only with slots
 - Set up all instance swap properties
 - Create usage documentation
 
-### **Phase 3: Integration (Week 3)**
+### 11.3.3 Phase 3: Integration (Week 3)
 - Update existing button instances
 - Test in real design contexts
 - Gather designer feedback
 - Refine slot architecture based on usage
 
-### **Phase 4: Rollout (Week 4)**
+### 11.3.4 Phase 4: Rollout (Week 4)
 - Publish to V9 library
 - Create migration guide for designers
 - Update component documentation
@@ -209,9 +216,9 @@ Tooltip.bottom.dark
 
 ---
 
-## Expected Outcomes
+## 11.4 Expected Outcomes
 
-### **Variant Reduction**
+### 11.4.1 Variant Reduction
 **Before:**
 - Button_Aug/Text: 108 variants
 - Button_Aug/Icon-Only: 32 variants

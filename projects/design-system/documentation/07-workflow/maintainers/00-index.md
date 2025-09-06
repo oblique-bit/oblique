@@ -40,8 +40,8 @@ Each document includes audience targeting to help you quickly identify relevance
 - **04-figma-variable-detachment-ghost-modes.md** - Advanced Figma cleanup and ghost mode elimination
 
 ### Token Development Workflows
-- **05-issues.md** - Figma variables and variable modes restrictions
-- **06-easy-recommendations.md** - Development tools and script recommendations
+- **05-figma-variables-limitations-and-restrictions.md** - Figma variables and variable modes restrictions
+- **06-design-system-script-recommendations.md** - Development tools and script recommendations
 
 ---
 
