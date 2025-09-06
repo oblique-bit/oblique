@@ -1,12 +1,18 @@
 {
   "ob": {
     "h": {
-      "button-aug": {
+      "button_aug": {
         "container": {
-          "$description": "Container-responsive tokens for button-aug based on 02-button.md documentation patterns",
+          "$description": {
+            "$type": "other",
+            "$value": "Container-responsive tokens for button-aug based on 02-button.md documentation patterns"
+          },
           "responsive": {
             "wide": {
-              "$description": "Wide container behavior (> 480px width) - horizontal layout patterns",
+              "$description": {
+                "$type": "other",
+                "$value": "Wide container behavior (> 480px width) - horizontal layout patterns"
+              },
               "layout": {
                 "direction": {
                   "$type": "text",
@@ -14,7 +20,7 @@
                   "$description": "Horizontal layout for wide containers"
                 },
                 "flex_wrap": {
-                  "$type": "text", 
+                  "$type": "text",
                   "$value": "wrap",
                   "$description": "Allow wrapping when space insufficient"
                 },
@@ -38,7 +44,10 @@
               }
             },
             "narrow": {
-              "$description": "Narrow container behavior (≤ 480px width) - vertical stacking patterns",
+              "$description": {
+                "$type": "other",
+                "$value": "Narrow container behavior (≤ 480px width) - vertical stacking patterns"
+              },
               "layout": {
                 "direction": {
                   "$type": "text",
@@ -47,7 +56,7 @@
                 },
                 "align_items": {
                   "$type": "text",
-                  "$value": "stretch", 
+                  "$value": "stretch",
                   "$description": "Full-width buttons for better touch targets"
                 }
               },
@@ -79,7 +88,10 @@
           },
           "viewport": {
             "mobile_portrait": {
-              "$description": "Mobile portrait (390x844) - auto narrow container behavior",
+              "$description": {
+                "$type": "other",
+                "$value": "Mobile portrait (390x844) - auto narrow container behavior"
+              },
               "auto_behavior": {
                 "$type": "text",
                 "$value": "narrow",
@@ -87,10 +99,13 @@
               }
             },
             "mobile_landscape": {
-              "$description": "Mobile landscape (844x390) - wide container behavior",
+              "$description": {
+                "$type": "other",
+                "$value": "Mobile landscape (844x390) - wide container behavior"
+              },
               "auto_behavior": {
                 "$type": "text",
-                "$value": "wide", 
+                "$value": "wide",
                 "$description": "Uses wide container patterns due to 844px width"
               }
             }

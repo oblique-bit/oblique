@@ -1,15 +1,15 @@
 {
   "ob": {
     "h": {
-      "button-aug": {
-        "$description": "Button-aug tokens with size-mode architecture - sizes are handled via modes rather than token variants",
-        "spacing": {
-          "with_text": {
+      "button_aug": {
+        "$description": {
+          "$type": "other",
+          "$value": "Button-aug tokens with size-mode architecture - sizes are handled via modes rather than token variants"
+        },
+        "text_icons": {
+          "spacing": {
             "padding": {
               "vertical": {
-                "$type": "spacing",
-                "$value": "{ob.s.spacing.md}",
-                "$description": "Top and bottom padding - responsive via size modes (sm: 8px, md: 12px, lg: 20px)",
                 "$extensions": {
                   "com.tokens-studio": {
                     "mode": {
@@ -18,12 +18,12 @@
                       "size-lg": "{ob.s.spacing.2xl}"
                     }
                   }
-                }
+                },
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.md}",
+                "$description": "Top and bottom padding - responsive via size modes (sm: 8px, md: 12px, lg: 20px)"
               },
               "horizontal": {
-                "$type": "spacing",
-                "$value": "{ob.s.spacing.3xl}",
-                "$description": "Left and right padding - responsive via size modes (sm: 20px, md: 24px, lg: 32px)",
                 "$extensions": {
                   "com.tokens-studio": {
                     "mode": {
@@ -32,13 +32,13 @@
                       "size-lg": "{ob.s.spacing.4xl}"
                     }
                   }
-                }
+                },
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.3xl}",
+                "$description": "Left and right padding - responsive via size modes (sm: 20px, md: 24px, lg: 32px)"
               }
             },
             "gap": {
-              "$type": "spacing",
-              "$value": "{ob.s.spacing.md}",
-              "$description": "Horizontal gap between icon and text label - responsive via size modes",
               "$extensions": {
                 "com.tokens-studio": {
                   "mode": {
@@ -47,15 +47,24 @@
                     "size-lg": "{ob.s.spacing.lg}"
                   }
                 }
-              }
+              },
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.md}",
+              "$description": "Horizontal gap between icon and text label - responsive via size modes"
             }
           },
-          "icon_only": {
+          "typography": {
+            "text_label": {
+              "$type": "typography",
+              "$value": "{ob.s.typography.type_scale.sm.normal}",
+              "$description": "Typography for button-aug text labels - consistent across size modes"
+            }
+          }
+        },
+        "icon_only": {
+          "spacing": {
             "padding": {
               "vertical": {
-                "$type": "spacing",
-                "$value": "{ob.s.spacing.lg}",
-                "$description": "Icon-only vertical padding - ensures circular buttons match text button heights via size modes",
                 "$extensions": {
                   "com.tokens-studio": {
                     "mode": {
@@ -65,12 +74,12 @@
                       "size-lg": "{ob.s.spacing.2xl}"
                     }
                   }
-                }
+                },
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.lg}",
+                "$description": "Icon-only vertical padding - ensures circular buttons match text button heights via size modes"
               },
               "horizontal": {
-                "$type": "spacing",
-                "$value": "{ob.s.spacing.lg}",
-                "$description": "Icon-only horizontal padding - creates circular appearance via size modes",
                 "$extensions": {
                   "com.tokens-studio": {
                     "mode": {
@@ -80,7 +89,10 @@
                       "size-lg": "{ob.s.spacing.2xl}"
                     }
                   }
-                }
+                },
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.lg}",
+                "$description": "Icon-only horizontal padding - creates circular appearance via size modes"
               }
             }
           }
@@ -88,9 +100,6 @@
         "container": {
           "spacing": {
             "gap": {
-              "$type": "spacing",
-              "$value": "{ob.s.spacing.3xl}",
-              "$description": "Gap between buttons in container - adapts to container=wide|narrow context",
               "$extensions": {
                 "com.tokens-studio": {
                   "mode": {
@@ -98,7 +107,10 @@
                     "container-narrow": "{ob.s.spacing.lg}"
                   }
                 }
-              }
+              },
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.3xl}",
+              "$description": "Gap between buttons in container - adapts to container=wide|narrow context"
             }
           }
         },
@@ -108,11 +120,6 @@
             "$value": "{ob.s.radii.sm}",
             "$description": "Standard border radius for button-aug components"
           }
-        },
-        "border_width": {
-          "$type": "borderWidth",
-          "$value": "{ob.s.border_width.xs}",
-          "$description": "Default border width for button-aug"
         },
         "box_shadow": {
           "enabled": {
@@ -143,9 +150,6 @@
         },
         "icon": {
           "size": {
-            "$type": "sizing",
-            "$value": "{ob.s.icon.size.sm}",
-            "$description": "Icon size - responsive via size modes",
             "$extensions": {
               "com.tokens-studio": {
                 "mode": {
@@ -154,15 +158,18 @@
                   "size-lg": "{ob.s.icon.size.md}"
                 }
               }
-            }
+            },
+            "$type": "sizing",
+            "$value": "{ob.s.icon.size.sm}",
+            "$description": "Icon size - responsive via size modes"
           }
-        },
-        "typography": {
-          "text_label": {
-            "$type": "typography",
-            "$value": "{ob.s.typography.type_scale.sm.normal}",
-            "$description": "Typography for button-aug text labels - consistent across size modes"
-          }
+        }
+      },
+      "button-aug": {
+        "border_width": {
+          "$type": "borderWidth",
+          "$value": "{ob.s.border_width.xs}",
+          "$description": "Default border width for button-aug"
         }
       }
     }

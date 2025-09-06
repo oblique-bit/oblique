@@ -1,14 +1,14 @@
 {
   "ob": {
     "h": {
-      "button-aug": {
+      "button_aug": {
         "color": {
           "fg": {
             "primary": {
               "inversity_normal": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}",
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}",
                   "$description": "Primary button-aug foreground - normal inversity (for use in flipped contexts like fatal infobox)"
                 },
                 "hover": {
@@ -31,7 +31,7 @@
               "inversity_flipped": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}",
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}",
                   "$description": "Primary button-aug foreground - flipped inversity (standard primary appearance - flipped by nature)"
                 },
                 "hover": {
@@ -155,7 +155,7 @@
               "inversity_normal": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.bg.enabled.inversity_normal}",
+                  "$value": "{ob.s3.color.interaction.state.bg.enabled.inversity_flipped}",
                   "$description": "Primary button-aug background - normal inversity (for use in flipped contexts like fatal infobox)"
                 },
                 "hover": {
@@ -178,7 +178,7 @@
               "inversity_flipped": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.bg.enabled.inversity_flipped}",
+                  "$value": "{ob.s3.color.interaction.state.bg.enabled.inversity_normal}",
                   "$description": "Primary button-aug background - flipped inversity (standard primary appearance - flipped by nature)"
                 },
                 "hover": {

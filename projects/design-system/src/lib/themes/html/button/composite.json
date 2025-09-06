@@ -2,1089 +2,510 @@
   "ob": {
     "c": {
       "button": {
-        "$description": "Composite button tokens for all component variants - optimized for Token Studio mapping to Figma layers. Each composite token contains all styling properties for a complete button variant.",
-        
+        "$description": {
+          "$type": "other",
+          "$value": "Composite button tokens for all component variants - optimized for Token Studio mapping to Figma layers. Each composite token contains all styling properties for a complete button variant."
+        },
         "primary": {
-          "$description": "Primary button variants with all styling properties encapsulated per state and configuration",
-          
+          "$description": {
+            "$type": "other",
+            "$value": "Primary button variants with all styling properties encapsulated per state and configuration"
+          },
           "md": {
-            "$description": "Medium size primary buttons",
-            
+            "$description": {
+              "$type": "other",
+              "$value": "Medium size primary buttons"
+            },
             "icon_right": {
-              "$description": "Primary medium button with icon on the right side",
-              
+              "$description": {
+                "$type": "other",
+                "$value": "Primary medium button with icon on the right side"
+              },
               "enabled": {
-                "$description": "Primary medium button with right icon in enabled state - complete styling package",
+                "$description": {
+                  "$type": "other",
+                  "$value": "Primary medium button with right icon in enabled state - complete styling package"
+                },
                 "normal": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography", 
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary}"
-                    },
-                    "textColor": {
-                      "$type": "color", 
-                      "$value": "{ob.s.color.text.on_primary}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension", 
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"  
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.c.button.box_shadow.enabled}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension", 
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension", 
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=primary, size=md, show icon=right, state=enabled, inversity=normal"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 },
                 "flipped": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography",
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.inversity.flipped}"
-                    },
-                    "textColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.text.on_primary.inversity.flipped}"
-                    },
-                    "borderColor": {
-                      "$type": "color", 
-                      "$value": "{ob.s.color.brand.primary.inversity.flipped}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.c.button.box_shadow.enabled}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=primary, size=md, show icon=right, state=enabled, inversity=flipped"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 }
               },
-              
               "hover": {
-                "$description": "Primary medium button with right icon in hover state",
+                "$description": {
+                  "$type": "other",
+                  "$value": "Primary medium button with right icon in hover state"
+                },
                 "normal": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography",
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.hover}"
-                    },
-                    "textColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.text.on_primary}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.hover}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.c.button.box_shadow.hover}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=primary, size=md, show icon=right, state=hover, inversity=normal"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 },
                 "flipped": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography",
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.hover.inversity.flipped}"
-                    },
-                    "textColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.text.on_primary.inversity.flipped}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.hover.inversity.flipped}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.c.button.box_shadow.hover}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=primary, size=md, show icon=right, state=hover, inversity=flipped"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 }
               },
-              
               "focus": {
-                "$description": "Primary medium button with right icon in focus state",
+                "$description": {
+                  "$type": "other",
+                  "$value": "Primary medium button with right icon in focus state"
+                },
                 "normal": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography",
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary}"
-                    },
-                    "textColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.text.on_primary}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.c.button.box_shadow.focus}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=primary, size=md, show icon=right, state=focus, inversity=normal"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 },
                 "flipped": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography",
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.inversity.flipped}"
-                    },
-                    "textColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.text.on_primary.inversity.flipped}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.inversity.flipped}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.c.button.box_shadow.focus}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=primary, size=md, show icon=right, state=focus, inversity=flipped"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 }
               },
-              
               "pressed": {
-                "$description": "Primary medium button with right icon in pressed state",
+                "$description": {
+                  "$type": "other",
+                  "$value": "Primary medium button with right icon in pressed state"
+                },
                 "normal": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography",
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.pressed}"
-                    },
-                    "textColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.text.on_primary}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.pressed}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.c.button.box_shadow.pressed}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=primary, size=md, show icon=right, state=pressed, inversity=normal"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 },
                 "flipped": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography",
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.pressed.inversity.flipped}"
-                    },
-                    "textColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.text.on_primary.inversity.flipped}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.pressed.inversity.flipped}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.c.button.box_shadow.pressed}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=primary, size=md, show icon=right, state=pressed, inversity=flipped"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 }
               },
-              
               "disabled": {
-                "$description": "Primary medium button with right icon in disabled state",
+                "$description": {
+                  "$type": "other",
+                  "$value": "Primary medium button with right icon in disabled state"
+                },
                 "normal": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography",
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.disabled}"
-                    },
-                    "textColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.text.on_primary.disabled}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.disabled}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.c.button.box_shadow.disabled}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=primary, size=md, show icon=right, state=disabled, inversity=normal"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 },
                 "flipped": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography",
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.disabled.inversity.flipped}"
-                    },
-                    "textColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.text.on_primary.disabled.inversity.flipped}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.disabled.inversity.flipped}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.c.button.box_shadow.disabled}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=primary, size=md, show icon=right, state=disabled, inversity=flipped"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 }
               }
             },
-            
             "icon_only": {
-              "$description": "Primary medium button with icon only (no text)",
-              
+              "$description": {
+                "$type": "other",
+                "$value": "Primary medium button with icon only (no text)"
+              },
               "enabled": {
-                "$description": "Primary medium icon-only button in enabled state",
+                "$description": {
+                  "$type": "other",
+                  "$value": "Primary medium icon-only button in enabled state"
+                },
                 "normal": {
-                  "$type": "composite",
-                  "$value": {
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "padding": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.c.button.box_shadow.enabled}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.text.on_primary}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=primary, size=md, show icon=only, state=enabled, inversity=normal"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "backgroundColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "padding": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconColor": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 },
                 "flipped": {
-                  "$type": "composite",
-                  "$value": {
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.inversity.flipped}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.inversity.flipped}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "padding": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.c.button.box_shadow.enabled}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.text.on_primary.inversity.flipped}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=primary, size=md, show icon=only, state=enabled, inversity=flipped"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "backgroundColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "padding": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconColor": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 }
               }
             }
           }
         },
-        
         "secondary": {
-          "$description": "Secondary button variants with all styling properties encapsulated per state and configuration",
-          
+          "$description": {
+            "$type": "other",
+            "$value": "Secondary button variants with all styling properties encapsulated per state and configuration"
+          },
           "md": {
-            "$description": "Medium size secondary buttons",
-            
+            "$description": {
+              "$type": "other",
+              "$value": "Medium size secondary buttons"
+            },
             "icon_right": {
-              "$description": "Secondary medium button with icon on the right side",
-              
+              "$description": {
+                "$type": "other",
+                "$value": "Secondary medium button with icon on the right side"
+              },
               "enabled": {
-                "$description": "Secondary medium button with right icon in enabled state - complete styling package",
+                "$description": {
+                  "$type": "other",
+                  "$value": "Secondary medium button with right icon in enabled state - complete styling package"
+                },
                 "normal": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography",
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.background.primary}"
-                    },
-                    "textColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.s.shadow.none}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "iconColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=secondary, size=md, show icon=right, state=enabled, inversity=normal"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "iconColor": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 },
                 "flipped": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography",
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.background.primary.inversity.flipped}"
-                    },
-                    "textColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.inversity.flipped}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.inversity.flipped}"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.s.shadow.none}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "iconColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.inversity.flipped}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=secondary, size=md, show icon=right, state=enabled, inversity=flipped"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "iconColor": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 }
               }
             }
           }
         },
-
         "tertiary": {
-          "$description": "Tertiary button variants with all styling properties encapsulated per state and configuration",
-          
+          "$description": {
+            "$type": "other",
+            "$value": "Tertiary button variants with all styling properties encapsulated per state and configuration"
+          },
           "md": {
-            "$description": "Medium size tertiary buttons",
-            
+            "$description": {
+              "$type": "other",
+              "$value": "Medium size tertiary buttons"
+            },
             "icon_right": {
-              "$description": "Tertiary medium button with icon on the right side",
-              
+              "$description": {
+                "$type": "other",
+                "$value": "Tertiary medium button with icon on the right side"
+              },
               "enabled": {
-                "$description": "Tertiary medium button with right icon in enabled state - complete styling package",
+                "$description": {
+                  "$type": "other",
+                  "$value": "Tertiary medium button with right icon in enabled state - complete styling package"
+                },
                 "normal": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography",
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "transparent"
-                    },
-                    "textColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "transparent"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.s.shadow.none}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "iconColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=tertiary, size=md, show icon=right, state=enabled, inversity=normal"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "iconColor": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 },
                 "flipped": {
-                  "$type": "composite",
-                  "$value": {
-                    "typography": {
-                      "$type": "typography",
-                      "$value": "{ob.s.typography.components_only.button.label.md}"
-                    },
-                    "backgroundColor": {
-                      "$type": "color",
-                      "$value": "transparent"
-                    },
-                    "textColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.inversity.flipped}"
-                    },
-                    "borderColor": {
-                      "$type": "color",
-                      "$value": "transparent"
-                    },
-                    "borderWidth": {
-                      "$type": "dimension",
-                      "$value": "1px"
-                    },
-                    "borderRadius": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.border_radius.sm}"
-                    },
-                    "paddingHorizontal": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.400}"
-                    },
-                    "paddingVertical": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.300}"
-                    },
-                    "boxShadow": {
-                      "$type": "shadow",
-                      "$value": "{ob.s.shadow.none}"
-                    },
-                    "iconSize": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.icon.size.sm}"
-                    },
-                    "iconSpacing": {
-                      "$type": "dimension",
-                      "$value": "{ob.s.spacing.200}"
-                    },
-                    "iconColor": {
-                      "$type": "color",
-                      "$value": "{ob.s.color.brand.primary.inversity.flipped}"
-                    },
-                    "minHeight": {
-                      "$type": "dimension",
-                      "$value": "36px"
-                    },
-                    "minWidth": {
-                      "$type": "dimension",
-                      "$value": "109px"
-                    }
-                  },
                   "$extensions": {
                     "com.tokens-studio": {
                       "figma": {
                         "variant": "type=tertiary, size=md, show icon=right, state=enabled, inversity=flipped"
                       }
                     }
+                  },
+                  "$type": "composite",
+                  "$value": {
+                    "typography": "[object Object]",
+                    "backgroundColor": "[object Object]",
+                    "textColor": "[object Object]",
+                    "borderColor": "[object Object]",
+                    "borderWidth": "[object Object]",
+                    "borderRadius": "[object Object]",
+                    "paddingHorizontal": "[object Object]",
+                    "paddingVertical": "[object Object]",
+                    "boxShadow": "[object Object]",
+                    "iconSize": "[object Object]",
+                    "iconSpacing": "[object Object]",
+                    "iconColor": "[object Object]",
+                    "minHeight": "[object Object]",
+                    "minWidth": "[object Object]"
                   }
                 }
               }

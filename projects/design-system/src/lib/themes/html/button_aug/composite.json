@@ -1,0 +1,40 @@
+{
+  "ob": {
+    "h": {
+      "button_aug": {
+        "text_icons": {
+          "composite": {
+            "primary": {
+              "inversity_normal": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.enabled}",
+                    "borderRadius": "{ob.h.button_aug.border_radius.default}",
+                    "verticalPadding": "{ob.h.button_aug.text_icons.spacing.padding.vertical}",
+                    "horizontalPadding": "{ob.h.button_aug.text_icons.spacing.padding.horizontal}"
+                  }
+                },
+                "text_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "typography": "{ob.h.button_aug.text_icons.typography.text_label}",
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.enabled}"
+                  }
+                },
+                "icon": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.enabled}",
+                    "sizing": "{ob.h.button_aug.icon.size}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
