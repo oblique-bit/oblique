@@ -1,0 +1,18 @@
+{
+  "ob": {
+    "h": {
+      "button_aug": {
+        "text_icons": {
+          "spacing": {
+            "padding": {
+              "vertical": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.none}"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

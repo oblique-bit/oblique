@@ -56,6 +56,7 @@
     "html/button_aug/responsive/mobile",
     "html/button_aug/static",
     "html/button_aug/composite",
+    "html/button_aug/size/xs",
     "html/hr",
     "html/link",
     "html/list",

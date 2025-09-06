@@ -388,17 +388,12 @@
       "ob.h.link.active": "S:7dfd63f4345ba64ab645914d3265e975e5071de6,",
       "ob.h.link.disabled": "S:3d9014252ae8db274e191428c8133795d76dc71e,",
       "ob.h.button_aug.typography.text_label": "S:490c7c4335ad57e0caa9a50c2cd04e55733c3d13,",
-      "ob.h.button_aug.box_shadow.enabled": "S:74652edc1837a29a1c72172abfef3fb9bcf87848,",
-      "ob.h.button_aug.box_shadow.hover": "S:1343a7cca8e7fcd1fff3b8b983c5ffcb785c86c2,",
-      "ob.h.button_aug.box_shadow.focus": "S:3f1db4be9bad1011b46b1802dc2ca4ff24ca230a,",
-      "ob.h.button_aug.box_shadow.pressed": "S:7c1f370a4a1205816a8bb15a4c29c7aa7549b6c8,",
-      "ob.h.button_aug.box_shadow.disabled": "S:ac8f5fb9b845ad6f85c2f0ed65ca9fd644b5760a,",
-      "ob.h.button_aug.text_icons.typography.text_label": "S:c137448aadd70a41209cdd9cd39307b9d249c427,",
       "ob.h.button_aug.box_shadow.enabled": "S:c3efd59d5ca814725d4aa5a7903949cbac6d8ddd,",
       "ob.h.button_aug.box_shadow.hover": "S:60ea18dbf5443aa8cabdf6e1893a3a3313fbc93e,",
       "ob.h.button_aug.box_shadow.focus": "S:223f4296c633f334de93ff26bc120b56804a693a,",
       "ob.h.button_aug.box_shadow.pressed": "S:18ea67dd3eff6c86965705d3126eb53944b4244b,",
-      "ob.h.button_aug.box_shadow.disabled": "S:7bddda55d4c61b253cf44056e44474d302430067,"
+      "ob.h.button_aug.box_shadow.disabled": "S:7bddda55d4c61b253cf44056e44474d302430067,",
+      "ob.h.button_aug.text_icons.typography.text_label": "S:c137448aadd70a41209cdd9cd39307b9d249c427,"
     },
     "selectedTokenSets": {
       "html/link": "enabled",
@@ -437,7 +432,8 @@
       "html/button_aug/color": "enabled",
       "html/button_aug/container": "enabled",
       "html/button_aug/static": "enabled",
-      "html/button_aug/composite": "enabled"
+      "html/button_aug/composite": "enabled",
+      "html/button_aug/size/xs": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -1089,12 +1085,8 @@
       "semantic/spacing/desktop": "enabled",
       "semantic/typography/responsive/desktop": "enabled",
       "component/molecules/infobox/responsive/desktop": "enabled",
-      "html/button_aug/color": "disabled",
-      "html/button_aug/composite": "disabled",
-      "html/button_aug/container": "disabled",
       "html/button_aug/responsive/desktop": "enabled",
-      "html/button_aug/responsive/mobile": "disabled",
-      "html/button_aug/static": "disabled"
+      "html/button_aug/size/xs": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult_responsive": "a0218fef21f82d9c8e08419c5244a3c2f6b2dbcb",
@@ -1311,12 +1303,8 @@
       "semantic/spacing/mobile": "enabled",
       "semantic/typography/responsive/mobile": "enabled",
       "component/molecules/infobox/responsive/mobile": "enabled",
-      "html/button_aug/color": "disabled",
-      "html/button_aug/composite": "disabled",
-      "html/button_aug/container": "disabled",
-      "html/button_aug/responsive/desktop": "disabled",
       "html/button_aug/responsive/mobile": "enabled",
-      "html/button_aug/static": "disabled"
+      "html/button_aug/size/xs": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult_responsive": "a0218fef21f82d9c8e08419c5244a3c2f6b2dbcb",
@@ -1606,12 +1594,7 @@
       "_ignore-in-ds/figma-doc/theme/lightness/light": "enabled",
       "semantic/color/s1-lightness/light": "enabled",
       "component/molecules/infobox/color": "enabled",
-      "html/button_aug/color": "disabled",
-      "html/button_aug/composite": "disabled",
-      "html/button_aug/container": "disabled",
-      "html/button_aug/responsive/desktop": "disabled",
-      "html/button_aug/responsive/mobile": "disabled",
-      "html/button_aug/static": "disabled"
+      "html/button_aug/size/xs": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -2122,12 +2105,7 @@
       "_ignore-in-ds/figma-doc/theme/lightness/dark": "enabled",
       "semantic/color/s1-lightness/dark": "enabled",
       "component/molecules/infobox/color": "enabled",
-      "html/button_aug/color": "disabled",
-      "html/button_aug/composite": "disabled",
-      "html/button_aug/container": "disabled",
-      "html/button_aug/responsive/desktop": "disabled",
-      "html/button_aug/responsive/mobile": "disabled",
-      "html/button_aug/static": "disabled"
+      "html/button_aug/size/xs": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",
@@ -2466,12 +2444,7 @@
     },
     "selectedTokenSets": {
       "semantic/color/s2-emphasis/high": "enabled",
-      "html/button_aug/color": "disabled",
-      "html/button_aug/composite": "disabled",
-      "html/button_aug/container": "disabled",
-      "html/button_aug/responsive/desktop": "disabled",
-      "html/button_aug/responsive/mobile": "disabled",
-      "html/button_aug/static": "disabled"
+      "html/button_aug/size/xs": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "8cf79f15cedc26fdffa5cf06d71f58374e5dae06",
@@ -2542,12 +2515,7 @@
     },
     "selectedTokenSets": {
       "semantic/color/s2-emphasis/low": "enabled",
-      "html/button_aug/color": "disabled",
-      "html/button_aug/composite": "disabled",
-      "html/button_aug/container": "disabled",
-      "html/button_aug/responsive/desktop": "disabled",
-      "html/button_aug/responsive/mobile": "disabled",
-      "html/button_aug/static": "disabled"
+      "html/button_aug/size/xs": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "8cf79f15cedc26fdffa5cf06d71f58374e5dae06",
@@ -2639,12 +2607,7 @@
     },
     "selectedTokenSets": {
       "_ignore-in-ds/typography-styles-R13": "enabled",
-      "html/button_aug/color": "disabled",
-      "html/button_aug/composite": "disabled",
-      "html/button_aug/container": "disabled",
-      "html/button_aug/responsive/desktop": "disabled",
-      "html/button_aug/responsive/mobile": "disabled",
-      "html/button_aug/static": "disabled"
+      "html/button_aug/size/xs": "disabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"
@@ -2655,12 +2618,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "semantic/color/s3-semantic/semantic": "enabled",
-      "html/button_aug/color": "disabled",
-      "html/button_aug/composite": "disabled",
-      "html/button_aug/container": "disabled",
-      "html/button_aug/responsive/desktop": "disabled",
-      "html/button_aug/responsive/mobile": "disabled",
-      "html/button_aug/static": "disabled"
+      "html/button_aug/size/xs": "disabled"
     },
     "group": "semantic",
     "$figmaCollectionId": "VariableCollectionId:1:6",
@@ -2924,5 +2882,14 @@
       "ob.s3.color.status.waiting.fg.contrast_low.inversity_normal": "3a4c7dad693b6907efb8242bdbadc8fd3d1352a6",
       "ob.s3.color.status.waiting.fg.contrast_low.inversity_flipped": "c6c059a5c0d4aa806c2a221f281afa5bd001f8d5"
     }
+  },
+  {
+    "id": "013204bbada17d75848152f296e490ec9f5f6029",
+    "name": "xs",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "html/button_aug/size/xs": "enabled"
+    },
+    "group": "size"
   }
 ]
