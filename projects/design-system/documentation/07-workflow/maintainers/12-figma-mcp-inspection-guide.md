@@ -16,6 +16,8 @@
 ## Table of Contents
 
 - [12.1 Layer Structure Inspection](#121-layer-structure-inspection)
+  - [12.1.1 Basic Layer Structure Inspection](#1211-basic-layer-structure-inspection)
+  - [12.1.2 Direct Component Documentation Update](#1212-direct-component-documentation-update)
 - [12.2 Component Analysis](#122-component-analysis)
 - [12.3 Token & Variable Analysis](#123-token--variable-analysis)
 - [12.4 Code Generation](#124-code-generation)
@@ -48,16 +50,70 @@ I need to inspect the Figma component layer structure using MCP tools. Follow th
 
 CRITICAL: Use get_code tool to extract internal layer structure. Metadata alone shows only top-level containers.
 
-DOCUMENTATION FORMAT: Provide BOTH layer structure formats:
-- **Simple Structure**: Layer names only (clean hierarchy without technical details)
-- **Detailed Structure**: Include dimensions, properties, colors, and technical specifications
+CHAT OUTPUT FORMAT: Provide clean, focused analysis:
+
+## 🔍 Figma Layer Analysis: [component_name]
+
+### Simple Structure
+[Clean tree hierarchy without technical details]
+
+### Figma File Information
+- **File**: [figma_file_name]
+- **Last Modified**: [last_modified_date]
+- **Selection**: [selected_component_path]
+
+FOLLOW-UP ACTION: After analysis, offer:
+"Would you like me to create/update the component documentation file at `documentation/04-components/[component].md` with this layer structure?"
 ```
 
+**Purpose:**
+- **Chat Output**: Clean, scannable analysis for immediate inspection
+- **Documentation Action**: Separate step to create/update component MD files in `documentation/04-components/`
+- **Version Tracking**: Always include Figma file name and last modified date
+- **User Choice**: Inspector decides whether to document or just inspect
+
 **When to use:**
-- Documenting component anatomy for design system documentation
-- Extracting exact layer names for token mapping
+- Quick component layer inspection during design work
 - Understanding component hierarchy for development handoff
-- Creating component architecture diagrams
+- Extracting exact layer names for token mapping
+- Optionally updating component documentation with current Figma structure
+
+### 12.1.2 Direct Component Documentation Update
+
+**Copy this exact prompt for power users who want to directly update component documentation:**
+
+```
+📝 DIRECT COMPONENT DOCUMENTATION UPDATE
+
+I need to create/update the component documentation file with the latest Figma layer structure. Follow this exact workflow:
+
+1. **Get Metadata First**: Use mcp_figma_dev_mod_get_metadata to see component/frame names
+2. **Extract Code Structure**: Use mcp_figma_dev_mod_get_code to get internal layer hierarchy  
+3. **Get Visual Context**: Use mcp_figma_dev_mod_get_image for visual reference
+4. **Identify Component**: Determine component name from metadata
+5. **Create/Update File**: Update `documentation/04-components/[component].md` with detailed layer structure
+
+CRITICAL: Always include Figma file information and last modified date for version tracking.
+
+OUTPUT ACTION: Skip chat analysis - directly create/update the component MD file with:
+- Detailed layer structure tree with properties and dimensions
+- Complete analysis table with all layer details
+- Design token mapping
+- Component properties
+- Figma file information and version tracking
+```
+
+**Purpose:**
+- **Direct Documentation**: Skip chat output, go straight to file update
+- **Power User Workflow**: For frequent inspectors who don't need chat analysis
+- **Version Tracking**: Always include Figma file metadata for currency validation
+- **Complete Documentation**: Full detailed format in component MD file
+
+**When to use:**
+- Regular component documentation updates
+- Batch documentation sync with Figma changes
+- Maintaining component documentation currency
+- When you know you want to document (skip inspection step)
 
 ---
 
@@ -230,13 +286,13 @@ Purpose: Capture visual reference for component structure
 Expected Output: PNG/SVG image of the component
 ```
 
-### 12.6.4 Structure Documentation Template
+### 12.6.4 Output Format Guidelines
 
-Use these exact formats for documenting layer structure:
-
-**Format 1: Simple Layer Structure (Clean Hierarchy)**
+**Chat Format (Primary)**: Clean, focused analysis for immediate inspection
 ```markdown
-### Simple Layer Structure
+## 🔍 Figma Layer Analysis: [component_name]
+
+### Simple Structure
 ```
 [exact_frame_name]
 └── [exact_component_name]
@@ -246,17 +302,57 @@ Use these exact formats for documenting layer structure:
         └── [sub_layer_name]
 ```
 
-**Format 2: Detailed Layer Structure (Technical Specifications)**
+### Figma File Information
+- **File**: [figma_file_name]
+- **Last Modified**: [last_modified_date]
+- **Selection**: [selected_component_path]
+
+**Follow-up Action**: After analysis, always offer:
+"Would you like me to create/update the component documentation file at `documentation/04-components/[component].md` with this layer structure?"
+```
+
+**Documentation Format (Secondary)**: For actual MD file creation/updates at `documentation/04-components/[component].md`
 ```markdown
-### Detailed Layer Structure
+### Layer Structure
+
+**Figma Inspection Details:**
+- **File**: [figma_file_name]
+- **Last Modified**: [last_modified_date]
+- **Inspection Date**: [current_date]
+- **Selected Component**: [component_path]
+
+> ⚠️ **Version Note**: This analysis reflects the Figma file state as of [last_modified_date]. If the file has been updated since then, re-run the MCP inspection to ensure accuracy.
+
+Based on Figma MCP inspection of `[component_name]` component:
+
 ```
 [exact_frame_name] (Frame: [width]×[height]px)
 └── [exact_component_name] (Component Symbol: [width]×[height]px)
     └── [layer_name] ([layer_type]: [properties, colors, dimensions])
         ├── [sub_layer_name] ([sub_layer_type]: [properties])
-        ├── [sub_layer_name] ([sub_layer_type]: [properties])
         └── [sub_layer_name] ([sub_layer_type]: [properties])
 ```
+
+### Detailed Layer Analysis
+
+| Layer | Purpose | Figma Variables | HTML Suggestion | Design Tokens | Notes |
+|-------|---------|-----------------|-----------------|---------------|-------|
+| **[layer_name]** | [functional_purpose] | [applied_variables] | [html_tag_class] | [token_reference] | [dimensions_notes] |
+| ├─ **[sub_layer]** | [sub_purpose] | [sub_variables] | [sub_html] | [sub_tokens] | [sub_notes] |
+
+### Design Token Mapping
+- **[Property]**: `{[token_path]}` → [resolved_value]
+- **[Property]**: `{[token_path]}` → [resolved_value]
+
+### Component Properties
+- **[Property]**: [description_and_values]
+- **[Property]**: [description_and_values]
+```
+
+**Workflow:**
+1. **Inspect**: Use chat format for immediate analysis
+2. **Document**: Offer to create/update component MD file with detailed format
+3. **Choose**: User decides whether to proceed with documentation update
 
 ---
 
@@ -338,34 +434,74 @@ data-name="button_aug" data-node-id="36:2"
       data-name="icon-holder" data-node-id="36:202"
 ```
 
-### 12.9.4 Final Documentation Examples:
+### 12.9.4 Example Outputs
 
-**Simple Layer Structure:**
+**Chat Analysis Example (Clean & Focused):**
 ```markdown
-### Simple Layer Structure
+## 🔍 Figma Layer Analysis: button_aug
+
+### Simple Structure
 ```
 button_aug
 └── type=primary, size=md, show icon=right, state=enabled,inversity=normal
     └── button-surface
-        ├── icon-holder
-        │   └── Icon/coffee
+        ├── icon-holder (left)
         ├── text-label
-        └── icon-holder
-            └── Icon/coffee
+        └── icon-holder (right)
 ```
 
-**Detailed Layer Structure:**
+### Figma File Information
+- **File**: Design System Components v2.4
+- **Last Modified**: September 5, 2025, 3:42 PM
+- **Selection**: button_aug → Primary variant
+
+Would you like me to create/update the component documentation file at `documentation/04-components/button.md` with this layer structure?
+```
+
+**Documentation File Example (When User Chooses to Document):**
 ```markdown
-### Detailed Layer Structure
+### Layer Structure
+
+**Figma Inspection Details:**
+- **File**: Design System Components v2.4
+- **Last Modified**: September 5, 2025, 3:42 PM
+- **Inspection Date**: September 6, 2025
+- **Selected Component**: button_aug → type=primary, size=md, show icon=right, state=enabled,inversity=normal
+
+> ⚠️ **Version Note**: This analysis reflects the Figma file state as of September 5, 2025, 3:42 PM. If the file has been updated since then, re-run the MCP inspection to ensure accuracy.
+
+Based on Figma MCP inspection of `button_aug` component:
+
 ```
 button_aug (Frame: 452×319px)
 └── type=primary, size=md, show icon=right, state=enabled,inversity=normal (Component Symbol: 139×36px)
     └── button-surface (Frame with Auto Layout: background #2379a4, rounded 2px)
         ├── icon-holder (Instance: 24×24px, left position)
-        │   └── Icon/coffee (Icon instance with Vector)
+        │   └── Icon/coffee (Icon instance)
         ├── text-label (Text layer: "Button", 14px Noto Sans Medium, white color)
         └── icon-holder (Instance: 24×24px, right position)
-            └── Icon/coffee (Icon instance with Vector)
+            └── Icon/coffee (Icon instance)
+```
+
+### Detailed Layer Analysis
+
+| Layer | Purpose | Figma Variables | HTML Suggestion | Design Tokens | Notes |
+|-------|---------|-----------------|-----------------|---------------|-------|
+| **button-surface** | Container with Auto Layout | `bg-color: primary`, `padding: md` | `<button class="ob-button">` | `ob.h.button-aug.color.bg.primary` | 139×36px, horizontal gap 6px |
+| ├─ **icon-holder** | Left icon wrapper | `size: md` | `<span class="icon-slot">` | `ob.s.icon.size.md` | 24×24px, conditional render |
+| ├─ **text-label** | Button text content | `typography: button-md` | `<span class="button-text">` | `ob.s.typography.button.md` | "Button", center-aligned |
+| └─ **icon-holder** | Right icon wrapper | `size: md` | `<span class="icon-slot">` | `ob.s.icon.size.md` | 24×24px, conditional render |
+
+### Design Token Mapping
+- **Background**: `{ob.h.button-aug.color.bg.primary.inversity_normal.enabled}` → #2379a4
+- **Text Color**: `{ob.h.button-aug.color.fg.primary.inversity_normal.enabled}` → #ffffff  
+- **Icon Size**: `{ob.s.icon.size.md}` → 24px
+- **Line Height**: `{ob.s.lineHeight.sm}` → 20px
+
+### Component Properties
+- **Main Component**: `button_aug` with variants (primary, md, right, enabled, normal)
+- **Frame**: `button-surface` (139×36px with Auto Layout)
+- **Auto Layout**: Horizontal direction with 6px gap, 16px horizontal padding, 6px vertical padding
 ```
 
 ---
@@ -390,12 +526,34 @@ Before completing inspection, verify:
 
 ### 12.11.1 Documentation Updates
 
-When updating component documentation:
+**Two-Step Workflow:**
 
-1. **Replace existing layer structure** with exact Figma names
-2. **Update component properties** section with actual layer details
-3. **Sync token mapping** with extracted layer names
-4. **Verify naming consistency** across all documentation sections
+1. **Inspection Phase**: Use Figma MCP prompts for clean chat analysis
+   - Clean, scannable output in VS Code Copilot chat
+   - Focus on immediate understanding and layer identification
+   - No overwhelming markdown formatting in chat
+   - Include Figma file name and last modified date for version tracking
+
+2. **Documentation Phase**: Offer to create/update component files
+   - User chooses whether to proceed with documentation
+   - AI creates/updates component MD files in `documentation/04-components/[component].md`
+   - Comprehensive format suitable for component documentation
+   - Include version tracking information and currency warnings
+
+**Alternative: Direct Documentation Update**
+- Use the "Direct Component Documentation Update" prompt for power users
+- Skip chat analysis and go straight to file creation/update
+- Ideal for regular documentation maintenance and batch updates
+
+**When updating component documentation:**
+
+1. **Target Location**: Always update files in `documentation/04-components/[component].md`
+2. **Replace existing layer structure** with exact Figma names
+3. **Update component properties** section with actual layer details
+4. **Sync token mapping** with extracted layer names
+5. **Include version tracking** with Figma file name and last modified date
+6. **Add currency warning** to alert developers about potential Figma updates
+7. **Verify naming consistency** across all documentation sections
 
 ### 12.11.2 Development Handoff
 
