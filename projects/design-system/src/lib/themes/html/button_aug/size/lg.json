@@ -7,22 +7,22 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.none}"
+                "$value": "{ob.s.spacing.2xl}"
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.none}"
+                "$value": "{ob.s.spacing.4xl}"
               }
             },
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.sm}"
+              "$value": "{ob.s.spacing.lg}"
             }
           },
           "icon": {
             "size": {
               "$type": "sizing",
-              "$value": "{ob.s.icon.size.xs}"
+              "$value": "{ob.s.icon.size.md}"
             }
           }
         },
@@ -31,18 +31,18 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.none}"
+                "$value": "{ob.s.spacing.2xl}"
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.none}"
+                "$value": "{ob.s.spacing.2xl}"
               }
             }
           },
           "icon": {
             "size": {
               "$type": "sizing",
-              "$value": "{ob.s.icon.size.xs}"
+              "$value": "{ob.s.icon.size.md}"
             }
           }
         }

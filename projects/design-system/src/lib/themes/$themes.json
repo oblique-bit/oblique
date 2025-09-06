@@ -433,7 +433,10 @@
       "html/button_aug/container": "enabled",
       "html/button_aug/static": "enabled",
       "html/button_aug/composite": "enabled",
-      "html/button_aug/size/xs": "disabled"
+      "html/button_aug/size/xs": "enabled",
+      "html/button_aug/size/sm": "disabled",
+      "html/button_aug/size/md": "disabled",
+      "html/button_aug/size/lg": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -1086,7 +1089,10 @@
       "semantic/typography/responsive/desktop": "enabled",
       "component/molecules/infobox/responsive/desktop": "enabled",
       "html/button_aug/responsive/desktop": "enabled",
-      "html/button_aug/size/xs": "disabled"
+      "html/button_aug/size/xs": "disabled",
+      "html/button_aug/size/sm": "disabled",
+      "html/button_aug/size/md": "disabled",
+      "html/button_aug/size/lg": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult_responsive": "a0218fef21f82d9c8e08419c5244a3c2f6b2dbcb",
@@ -1304,7 +1310,10 @@
       "semantic/typography/responsive/mobile": "enabled",
       "component/molecules/infobox/responsive/mobile": "enabled",
       "html/button_aug/responsive/mobile": "enabled",
-      "html/button_aug/size/xs": "disabled"
+      "html/button_aug/size/xs": "disabled",
+      "html/button_aug/size/sm": "disabled",
+      "html/button_aug/size/md": "disabled",
+      "html/button_aug/size/lg": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult_responsive": "a0218fef21f82d9c8e08419c5244a3c2f6b2dbcb",
@@ -1594,7 +1603,10 @@
       "_ignore-in-ds/figma-doc/theme/lightness/light": "enabled",
       "semantic/color/s1-lightness/light": "enabled",
       "component/molecules/infobox/color": "enabled",
-      "html/button_aug/size/xs": "disabled"
+      "html/button_aug/size/xs": "disabled",
+      "html/button_aug/size/sm": "disabled",
+      "html/button_aug/size/md": "disabled",
+      "html/button_aug/size/lg": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -2105,7 +2117,10 @@
       "_ignore-in-ds/figma-doc/theme/lightness/dark": "enabled",
       "semantic/color/s1-lightness/dark": "enabled",
       "component/molecules/infobox/color": "enabled",
-      "html/button_aug/size/xs": "disabled"
+      "html/button_aug/size/xs": "disabled",
+      "html/button_aug/size/sm": "disabled",
+      "html/button_aug/size/md": "disabled",
+      "html/button_aug/size/lg": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",
@@ -2444,7 +2459,10 @@
     },
     "selectedTokenSets": {
       "semantic/color/s2-emphasis/high": "enabled",
-      "html/button_aug/size/xs": "disabled"
+      "html/button_aug/size/xs": "disabled",
+      "html/button_aug/size/sm": "disabled",
+      "html/button_aug/size/md": "disabled",
+      "html/button_aug/size/lg": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "8cf79f15cedc26fdffa5cf06d71f58374e5dae06",
@@ -2515,7 +2533,10 @@
     },
     "selectedTokenSets": {
       "semantic/color/s2-emphasis/low": "enabled",
-      "html/button_aug/size/xs": "disabled"
+      "html/button_aug/size/xs": "disabled",
+      "html/button_aug/size/sm": "disabled",
+      "html/button_aug/size/md": "disabled",
+      "html/button_aug/size/lg": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "8cf79f15cedc26fdffa5cf06d71f58374e5dae06",
@@ -2607,7 +2628,10 @@
     },
     "selectedTokenSets": {
       "_ignore-in-ds/typography-styles-R13": "enabled",
-      "html/button_aug/size/xs": "disabled"
+      "html/button_aug/size/xs": "disabled",
+      "html/button_aug/size/sm": "disabled",
+      "html/button_aug/size/md": "disabled",
+      "html/button_aug/size/lg": "disabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"
@@ -2618,7 +2642,10 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "semantic/color/s3-semantic/semantic": "enabled",
-      "html/button_aug/size/xs": "disabled"
+      "html/button_aug/size/xs": "disabled",
+      "html/button_aug/size/sm": "disabled",
+      "html/button_aug/size/md": "disabled",
+      "html/button_aug/size/lg": "disabled"
     },
     "group": "semantic",
     "$figmaCollectionId": "VariableCollectionId:1:6",

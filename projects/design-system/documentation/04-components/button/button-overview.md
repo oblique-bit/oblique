@@ -86,9 +86,6 @@ Buttons adapt based on **container constraints** and **semantic direction**, sol
 
 ## Design Tool Implementation
 
-### Figma Make AI Strategy
-
-For efficient component generation using Figma Make:
 
 **Component Architecture:**
 - Slot-based button structure with instance swap properties

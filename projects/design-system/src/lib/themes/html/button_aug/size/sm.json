@@ -7,11 +7,11 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.none}"
+                "$value": "{ob.s.spacing.sm}"
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.none}"
+                "$value": "{ob.s.spacing.xl}"
               }
             },
             "gap": {
@@ -31,11 +31,11 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.none}"
+                "$value": "{ob.s.spacing.sm}"
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.none}"
+                "$value": "{ob.s.spacing.sm}"
               }
             }
           },
