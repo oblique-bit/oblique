@@ -429,16 +429,20 @@
       "semantic/icon": "enabled",
       "semantic/shadow": "enabled",
       "semantic/typography/style": "enabled",
-      "html/button_aug/color": "enabled",
-      "html/button_aug/container": "enabled",
-      "html/button_aug/static": "enabled",
-      "html/button_aug/composite": "enabled",
-      "html/button_aug/size/xs": "enabled"
+      "html/button_aug/01 color": "enabled",
+      "html/button_aug/02 container": "enabled",
+      "html/button_aug/03 responsive/desktop": "disabled",
+      "html/button_aug/03 responsive/mobile": "disabled",
+      "html/button_aug/04 static": "disabled",
+      "html/button_aug/06 composite": "disabled",
+      "html/button_aug/05 size/xs": "disabled",
+      "html/button_aug/05 size/lg": "disabled",
+      "html/button_aug/05 size/md": "disabled",
+      "html/button_aug/05 size/sm": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
     "$figmaVariableReferences": {
-      "ob.h.button_aug.container.spacing.gap": "599b92434ae59395ded0238032a1d03aa93ce058",
       "ob.g.scale.mult_static": "a4d54f474013afd60e2eb05ee629a50095f08f19",
       "ob.g.breakpoints.0": "3ddc3b83ca4178eb6725929fb57829d1a0292339",
       "ob.g.breakpoints.768": "852133ec11c52af52a03bd9ca75e6d3b1cd7c4f3",
@@ -950,14 +954,6 @@
       "ob.h.button_aug.container.threshold.container_width": "4ccf7a5396afa257d0f90b49ae6395dd9ea725a2",
       "ob.h.button_aug.container.viewport.mobile_portrait.auto_behavior": "bb9342b86a810aa733acb5c7afb6839ea5f16cce",
       "ob.h.button_aug.container.viewport.mobile_landscape.auto_behavior": "b5873e180c9bff2282ea51f9f712d40f6a49b8dc",
-      "ob.h.button_aug.text_icons.spacing.padding.vertical": "562cd5c5de0d3bb8ddc4cf5d1a8766e2560e5013",
-      "ob.h.button_aug.text_icons.spacing.padding.horizontal": "b511b5cc0b205ff0228a22d7f5761a7612f7efaa",
-      "ob.h.button_aug.text_icons.spacing.gap": "fe6d0493a9d680eee5153dbb79a500a8d5d4cac8",
-      "ob.h.button_aug.icon_only.spacing.padding.vertical": "d82cdd87b3dd2479c84b5d0a716fafad093d9dd1",
-      "ob.h.button_aug.icon_only.spacing.padding.horizontal": "3f2ee33bbcd03c6f210488bf72db3a508745f072",
-      "ob.h.button_aug.border_radius.default": "704c15998128058d4cf3396c9add79465beff55e",
-      "ob.h.button_aug.border_width": "2476d13e910a5a7c9c26b8d32662002b8b3d2685",
-      "ob.h.button_aug.icon.size": "9e509d3d292d07b20df03024f0b1a2f4463fa33a",
       "ob.h.hr.sizing.height": "a09f6cf6a1411503383d7a4f61ab56a051202824",
       "ob.h.hr.color.subtle": "1064a28a4c2109096ed068e629bfcabc80910d85",
       "ob.h.hr.color.default": "82b4bb166861d154232919234df7061c031fb4a2",
@@ -1085,9 +1081,19 @@
       "semantic/spacing/desktop": "enabled",
       "semantic/typography/responsive/desktop": "enabled",
       "component/molecules/infobox/responsive/desktop": "enabled",
-      "html/button_aug/responsive/desktop": "enabled"
+      "html/button_aug/01 color": "disabled",
+      "html/button_aug/02 container": "disabled",
+      "html/button_aug/03 responsive/desktop": "enabled",
+      "html/button_aug/03 responsive/mobile": "disabled",
+      "html/button_aug/04 static": "disabled",
+      "html/button_aug/06 composite": "disabled",
+      "html/button_aug/05 size/xs": "disabled",
+      "html/button_aug/05 size/lg": "disabled",
+      "html/button_aug/05 size/md": "disabled",
+      "html/button_aug/05 size/sm": "disabled"
     },
     "$figmaVariableReferences": {
+      "ob.h.button_aug.container.spacing.gap": "b84d347fcfcbbc8cf7fa9e04f54373e7c29d845e",
       "ob.g.scale.mult_responsive": "a0218fef21f82d9c8e08419c5244a3c2f6b2dbcb",
       "ob.g.viewport": "d846c196f70b949a42588ec3e99e6090f499b189",
       "ob.s.spacing.none": "3f76b3984334b499b7ebec59132784c1d7f32ef8",
@@ -1164,7 +1170,6 @@
       "ob.h.button.container.spacing.gap.sm": "6ace35b80be22017ecbfe0cd11fe25a5c6b105e8",
       "ob.h.button.typography.text_label.font_size.md": "a907fbb6db3e2ec6e006addd77d7d2f77aa734d9",
       "ob.h.button.typography.text_label.font_size.sm": "da9a9c8779dc1f233d40fa34eb6d87366a89048b",
-      "ob.h.button_aug.container.spacing.gap": "b84d347fcfcbbc8cf7fa9e04f54373e7c29d845e",
       "ob.h.button_aug.typography.text_label.font_size": "bda9a989d0263f5a75935a88d708725dd0d0a580",
       "ob.h.button_aug.touch_target.min_size": "a1675545ba479bb8f3bd7658c3345afc52abc616"
     },
@@ -1302,9 +1307,19 @@
       "semantic/spacing/mobile": "enabled",
       "semantic/typography/responsive/mobile": "enabled",
       "component/molecules/infobox/responsive/mobile": "enabled",
-      "html/button_aug/responsive/mobile": "enabled"
+      "html/button_aug/01 color": "disabled",
+      "html/button_aug/02 container": "disabled",
+      "html/button_aug/03 responsive/desktop": "disabled",
+      "html/button_aug/03 responsive/mobile": "enabled",
+      "html/button_aug/04 static": "disabled",
+      "html/button_aug/06 composite": "disabled",
+      "html/button_aug/05 size/xs": "disabled",
+      "html/button_aug/05 size/lg": "disabled",
+      "html/button_aug/05 size/md": "disabled",
+      "html/button_aug/05 size/sm": "disabled"
     },
     "$figmaVariableReferences": {
+      "ob.h.button_aug.container.spacing.gap": "b84d347fcfcbbc8cf7fa9e04f54373e7c29d845e",
       "ob.g.scale.mult_responsive": "a0218fef21f82d9c8e08419c5244a3c2f6b2dbcb",
       "ob.g.viewport": "d846c196f70b949a42588ec3e99e6090f499b189",
       "ob.s.spacing.none": "3f76b3984334b499b7ebec59132784c1d7f32ef8",
@@ -1381,7 +1396,6 @@
       "ob.h.button.container.spacing.gap.sm": "6ace35b80be22017ecbfe0cd11fe25a5c6b105e8",
       "ob.h.button.typography.text_label.font_size.md": "a907fbb6db3e2ec6e006addd77d7d2f77aa734d9",
       "ob.h.button.typography.text_label.font_size.sm": "da9a9c8779dc1f233d40fa34eb6d87366a89048b",
-      "ob.h.button_aug.container.spacing.gap": "b84d347fcfcbbc8cf7fa9e04f54373e7c29d845e",
       "ob.h.button_aug.typography.text_label.font_size": "bda9a989d0263f5a75935a88d708725dd0d0a580",
       "ob.h.button_aug.touch_target.min_size": "a1675545ba479bb8f3bd7658c3345afc52abc616"
     },
@@ -1591,7 +1605,17 @@
       "semantic/asset/theme/lightness/light": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/light": "enabled",
       "semantic/color/s1-lightness/light": "enabled",
-      "component/molecules/infobox/color": "enabled"
+      "component/molecules/infobox/color": "enabled",
+      "html/button_aug/01 color": "disabled",
+      "html/button_aug/02 container": "disabled",
+      "html/button_aug/03 responsive/desktop": "disabled",
+      "html/button_aug/03 responsive/mobile": "disabled",
+      "html/button_aug/04 static": "disabled",
+      "html/button_aug/06 composite": "disabled",
+      "html/button_aug/05 size/xs": "disabled",
+      "html/button_aug/05 size/lg": "disabled",
+      "html/button_aug/05 size/md": "disabled",
+      "html/button_aug/05 size/sm": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -2101,7 +2125,17 @@
       "semantic/asset/theme/lightness/dark": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/dark": "enabled",
       "semantic/color/s1-lightness/dark": "enabled",
-      "component/molecules/infobox/color": "enabled"
+      "component/molecules/infobox/color": "enabled",
+      "html/button_aug/01 color": "disabled",
+      "html/button_aug/02 container": "disabled",
+      "html/button_aug/03 responsive/desktop": "disabled",
+      "html/button_aug/03 responsive/mobile": "disabled",
+      "html/button_aug/04 static": "disabled",
+      "html/button_aug/06 composite": "disabled",
+      "html/button_aug/05 size/xs": "disabled",
+      "html/button_aug/05 size/lg": "disabled",
+      "html/button_aug/05 size/md": "disabled",
+      "html/button_aug/05 size/sm": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",
@@ -2439,7 +2473,17 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/high": "enabled"
+      "semantic/color/s2-emphasis/high": "enabled",
+      "html/button_aug/01 color": "disabled",
+      "html/button_aug/02 container": "disabled",
+      "html/button_aug/03 responsive/desktop": "disabled",
+      "html/button_aug/03 responsive/mobile": "disabled",
+      "html/button_aug/04 static": "disabled",
+      "html/button_aug/06 composite": "disabled",
+      "html/button_aug/05 size/xs": "disabled",
+      "html/button_aug/05 size/lg": "disabled",
+      "html/button_aug/05 size/md": "disabled",
+      "html/button_aug/05 size/sm": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "8cf79f15cedc26fdffa5cf06d71f58374e5dae06",
@@ -2509,7 +2553,17 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/low": "enabled"
+      "semantic/color/s2-emphasis/low": "enabled",
+      "html/button_aug/01 color": "disabled",
+      "html/button_aug/02 container": "disabled",
+      "html/button_aug/03 responsive/desktop": "disabled",
+      "html/button_aug/03 responsive/mobile": "disabled",
+      "html/button_aug/04 static": "disabled",
+      "html/button_aug/06 composite": "disabled",
+      "html/button_aug/05 size/xs": "disabled",
+      "html/button_aug/05 size/lg": "disabled",
+      "html/button_aug/05 size/md": "disabled",
+      "html/button_aug/05 size/sm": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "8cf79f15cedc26fdffa5cf06d71f58374e5dae06",
@@ -2600,7 +2654,17 @@
       "r13.typography.components_only.tooltip.label": "S:01a80ff405036b8a204f742fa49f200230ff826c,"
     },
     "selectedTokenSets": {
-      "_ignore-in-ds/typography-styles-R13": "enabled"
+      "_ignore-in-ds/typography-styles-R13": "enabled",
+      "html/button_aug/01 color": "disabled",
+      "html/button_aug/02 container": "disabled",
+      "html/button_aug/03 responsive/desktop": "disabled",
+      "html/button_aug/03 responsive/mobile": "disabled",
+      "html/button_aug/04 static": "disabled",
+      "html/button_aug/06 composite": "disabled",
+      "html/button_aug/05 size/xs": "disabled",
+      "html/button_aug/05 size/lg": "disabled",
+      "html/button_aug/05 size/md": "disabled",
+      "html/button_aug/05 size/sm": "disabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"
@@ -2610,7 +2674,17 @@
     "name": "semantic",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/color/s3-semantic/semantic": "enabled"
+      "semantic/color/s3-semantic/semantic": "enabled",
+      "html/button_aug/01 color": "disabled",
+      "html/button_aug/02 container": "disabled",
+      "html/button_aug/03 responsive/desktop": "disabled",
+      "html/button_aug/03 responsive/mobile": "disabled",
+      "html/button_aug/04 static": "disabled",
+      "html/button_aug/06 composite": "disabled",
+      "html/button_aug/05 size/xs": "disabled",
+      "html/button_aug/05 size/lg": "disabled",
+      "html/button_aug/05 size/md": "disabled",
+      "html/button_aug/05 size/sm": "disabled"
     },
     "group": "semantic",
     "$figmaCollectionId": "VariableCollectionId:1:6",
@@ -2880,35 +2954,115 @@
     "name": "xs",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button_aug/size/xs": "enabled"
+      "html/button_aug/01 color": "disabled",
+      "html/button_aug/02 container": "disabled",
+      "html/button_aug/03 responsive/desktop": "disabled",
+      "html/button_aug/03 responsive/mobile": "disabled",
+      "html/button_aug/04 static": "disabled",
+      "html/button_aug/06 composite": "disabled",
+      "html/button_aug/05 size/xs": "enabled",
+      "html/button_aug/05 size/lg": "disabled",
+      "html/button_aug/05 size/md": "disabled",
+      "html/button_aug/05 size/sm": "disabled"
     },
-    "group": "size"
+    "group": "size",
+    "$figmaCollectionId": "VariableCollectionId:2006:1438",
+    "$figmaModeId": "2006:0",
+    "$figmaVariableReferences": {
+      "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
+      "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
+      "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
+      "ob.h.button_aug.icon_only.spacing.padding.vertical": "bf392c66f0940f43b016bfe798f8243b49d3de2d",
+      "ob.h.button_aug.icon_only.spacing.padding.horizontal": "ad9509812b9280b37a29e7da2f7714f153cb3e50",
+      "ob.h.button_aug.text_icons.icon.size": "9a758a1c8f1735e5aa5047ee1519bebc67092394",
+      "ob.h.button_aug.icon_only.icon.size": "e1b252b2ead9a02d295017ae542cdf83f8fa4390"
+    }
   },
   {
     "id": "da2304761913c4d38c491aaa8c01a27b5a413b5d",
     "name": "sm",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button_aug/size/sm": "enabled"
+      "html/button_aug/01 color": "disabled",
+      "html/button_aug/02 container": "disabled",
+      "html/button_aug/03 responsive/desktop": "disabled",
+      "html/button_aug/03 responsive/mobile": "disabled",
+      "html/button_aug/04 static": "disabled",
+      "html/button_aug/06 composite": "disabled",
+      "html/button_aug/05 size/xs": "disabled",
+      "html/button_aug/05 size/lg": "disabled",
+      "html/button_aug/05 size/md": "disabled",
+      "html/button_aug/05 size/sm": "enabled"
     },
-    "group": "size"
+    "group": "size",
+    "$figmaCollectionId": "VariableCollectionId:2006:1438",
+    "$figmaModeId": "2006:1",
+    "$figmaVariableReferences": {
+      "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
+      "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
+      "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
+      "ob.h.button_aug.icon_only.spacing.padding.vertical": "bf392c66f0940f43b016bfe798f8243b49d3de2d",
+      "ob.h.button_aug.icon_only.spacing.padding.horizontal": "ad9509812b9280b37a29e7da2f7714f153cb3e50",
+      "ob.h.button_aug.text_icons.icon.size": "9a758a1c8f1735e5aa5047ee1519bebc67092394",
+      "ob.h.button_aug.icon_only.icon.size": "e1b252b2ead9a02d295017ae542cdf83f8fa4390"
+    }
   },
   {
     "id": "06e275bf4e0ba59d600cadf24e5bcbb18d127f84",
     "name": "md",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button_aug/size/md": "enabled"
+      "html/button_aug/01 color": "disabled",
+      "html/button_aug/02 container": "disabled",
+      "html/button_aug/03 responsive/desktop": "disabled",
+      "html/button_aug/03 responsive/mobile": "disabled",
+      "html/button_aug/04 static": "disabled",
+      "html/button_aug/06 composite": "disabled",
+      "html/button_aug/05 size/xs": "disabled",
+      "html/button_aug/05 size/lg": "disabled",
+      "html/button_aug/05 size/md": "enabled",
+      "html/button_aug/05 size/sm": "disabled"
     },
-    "group": "size"
+    "group": "size",
+    "$figmaCollectionId": "VariableCollectionId:2006:1438",
+    "$figmaModeId": "2006:2",
+    "$figmaVariableReferences": {
+      "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
+      "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
+      "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
+      "ob.h.button_aug.icon_only.spacing.padding.vertical": "bf392c66f0940f43b016bfe798f8243b49d3de2d",
+      "ob.h.button_aug.icon_only.spacing.padding.horizontal": "ad9509812b9280b37a29e7da2f7714f153cb3e50",
+      "ob.h.button_aug.text_icons.icon.size": "9a758a1c8f1735e5aa5047ee1519bebc67092394",
+      "ob.h.button_aug.icon_only.icon.size": "e1b252b2ead9a02d295017ae542cdf83f8fa4390"
+    }
   },
   {
     "id": "b94c0061ca96ea3668ba73ad6c26b8b809c7ce28",
     "name": "lg",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button_aug/size/lg": "enabled"
+      "html/button_aug/01 color": "disabled",
+      "html/button_aug/02 container": "disabled",
+      "html/button_aug/03 responsive/desktop": "disabled",
+      "html/button_aug/03 responsive/mobile": "disabled",
+      "html/button_aug/04 static": "disabled",
+      "html/button_aug/06 composite": "disabled",
+      "html/button_aug/05 size/xs": "disabled",
+      "html/button_aug/05 size/lg": "enabled",
+      "html/button_aug/05 size/md": "disabled",
+      "html/button_aug/05 size/sm": "disabled"
     },
-    "group": "size"
+    "group": "size",
+    "$figmaCollectionId": "VariableCollectionId:2006:1438",
+    "$figmaModeId": "2006:3",
+    "$figmaVariableReferences": {
+      "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
+      "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
+      "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
+      "ob.h.button_aug.icon_only.spacing.padding.vertical": "bf392c66f0940f43b016bfe798f8243b49d3de2d",
+      "ob.h.button_aug.icon_only.spacing.padding.horizontal": "ad9509812b9280b37a29e7da2f7714f153cb3e50",
+      "ob.h.button_aug.text_icons.icon.size": "9a758a1c8f1735e5aa5047ee1519bebc67092394",
+      "ob.h.button_aug.icon_only.icon.size": "e1b252b2ead9a02d295017ae542cdf83f8fa4390"
+    }
   }
 ]
