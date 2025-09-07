@@ -2,6 +2,10 @@
   "ob": {
     "h": {
       "button_aug": {
+        "$description": {
+          "$type": "other",
+          "$value": "Extra small size tokens - Spacing and typography for xs button variant"
+        },
         "text_icons": {
           "spacing": {
             "padding": {

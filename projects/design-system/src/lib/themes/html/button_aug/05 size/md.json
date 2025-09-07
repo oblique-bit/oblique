@@ -2,6 +2,10 @@
   "ob": {
     "h": {
       "button_aug": {
+        "$description": {
+          "$type": "other",
+          "$value": "Medium size tokens - Spacing and typography for md button variant (default size)"
+        },
         "text_icons": {
           "spacing": {
             "padding": {

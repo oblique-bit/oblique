@@ -2,6 +2,10 @@
   "ob": {
     "h": {
       "button_aug": {
+        "$description": {
+          "$type": "other",
+          "$value": "Composite tokens - Source only, not exposed in Figma. Purpose: boosting maintainability in Figma by providing pre-composed token combinations."
+        },
         "text_icons": {
           "composite": {
             "primary": {

@@ -2,6 +2,10 @@
   "ob": {
     "h": {
       "button_aug": {
+        "$description": {
+          "$type": "other",
+          "$value": "Flex direction tokens - NOT supported by Figma. In Figma manually assign one of the directions. HTML/CSS only implementation."
+        },
         "flex_direction": {
           "column": {
             "$description": {

@@ -4,7 +4,7 @@
       "button_aug": {
         "$description": {
           "$type": "other",
-          "$value": "Button-aug static tokens - size-specific tokens are in separate size files (xs, sm, md, lg)"
+          "$value": "Static button properties - Non-modable properties like border radius, shadows, base container spacing, and typography"
         },
         "container": {
           "spacing": {
