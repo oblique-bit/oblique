@@ -44,7 +44,8 @@
                     "$value": {
                       "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.focus}",
                       "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.focus}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}"
+                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                      "focus_ring": "{ob.h.button_aug.focus_ring}"
                     }
                   },
                   "fg": {
@@ -126,7 +127,8 @@
                     "$value": {
                       "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.focus}",
                       "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.focus}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}"
+                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                      "focus_ring": "{ob.h.button_aug.focus_ring}"
                     }
                   },
                   "fg": {
@@ -210,7 +212,8 @@
                     "$value": {
                       "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.focus}",
                       "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.focus}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}"
+                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                      "focus_ring": "{ob.h.button_aug.focus_ring}"
                     }
                   },
                   "fg": {
@@ -292,7 +295,8 @@
                     "$value": {
                       "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.focus}",
                       "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.focus}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}"
+                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                      "focus_ring": "{ob.h.button_aug.focus_ring}"
                     }
                   },
                   "fg": {
@@ -376,7 +380,8 @@
                     "$value": {
                       "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.focus}",
                       "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.focus}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}"
+                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                      "focus_ring": "{ob.h.button_aug.focus_ring}"
                     }
                   },
                   "fg": {
@@ -458,7 +463,8 @@
                     "$value": {
                       "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.focus}",
                       "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.focus}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}"
+                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                      "focus_ring": "{ob.h.button_aug.focus_ring}"
                     }
                   },
                   "fg": {
