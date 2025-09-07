@@ -430,9 +430,9 @@
       "semantic/shadow": "enabled",
       "semantic/typography/style": "enabled",
       "html/button_aug/01 color": "enabled",
-      "html/button_aug/02 container": "enabled",
-      "html/button_aug/04 static-clean": "enabled",
-      "html/button_aug/07 composite": "source"
+      "html/button_aug/07 container": "enabled",
+      "html/button_aug/02 composite": "source",
+      "html/button_aug/04 static": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -1077,7 +1077,7 @@
       "semantic/spacing/desktop": "enabled",
       "semantic/typography/responsive/desktop": "enabled",
       "component/molecules/infobox/responsive/desktop": "enabled",
-      "html/button_aug/03 responsive/desktop": "enabled"
+      "html/button_aug/03 viewport/desktop": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button_aug.container.spacing.gap": "b84d347fcfcbbc8cf7fa9e04f54373e7c29d845e",
@@ -1293,7 +1293,7 @@
       "semantic/spacing/mobile": "enabled",
       "semantic/typography/responsive/mobile": "enabled",
       "component/molecules/infobox/responsive/mobile": "enabled",
-      "html/button_aug/03 responsive/mobile": "enabled"
+      "html/button_aug/03 viewport/mobile": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button_aug.container.spacing.gap": "b84d347fcfcbbc8cf7fa9e04f54373e7c29d845e",
