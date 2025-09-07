@@ -72,7 +72,7 @@
                 "$value": "primary-first",
                 "$description": "Primary button positioned first for thumb-friendly interaction"
               },
-              "button_width": {
+              "width": {
                 "$type": "text",
                 "$value": "100%",
                 "$description": "Full-width buttons in narrow containers"

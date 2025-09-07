@@ -2,11 +2,11 @@
   "ob": {
     "h": {
       "button_aug": {
-        "width": {
-          "compact": {
+        "flex_direction": {
+          "row": {
             "$description": {
               "$type": "string",
-              "$value": "Compact width behavior - buttons hug their content with horizontal layout. Note: Not supported in Figma - use button.container component variants instead."
+              "$value": "Row flex-direction - buttons arranged horizontally with auto width. HTML/CSS implementation only - use button.container component variants in Figma."
             },
             "flex_direction": {
               "$type": "string",
@@ -28,7 +28,7 @@
               "$value": "{ob.s.spacing.xl}",
               "$description": "CSS gap between buttons in compact layout"
             },
-            "button_width": {
+            "width": {
               "$type": "string",
               "$value": "auto",
               "$description": "CSS width for buttons - auto lets them hug content. HTML/CSS implementation only - use button.container component variants in Figma."
