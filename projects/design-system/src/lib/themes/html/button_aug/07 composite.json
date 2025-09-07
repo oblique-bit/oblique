@@ -11,8 +11,7 @@
                     "$type": "composition",
                     "$value": {
                       "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.enabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.enabled}",
-                      "borderRadius": "{ob.h.button_aug.border_radius.default}"
+                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.enabled}"
                     }
                   },
                   "fg": {
@@ -27,8 +26,7 @@
                     "$type": "composition",
                     "$value": {
                       "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.hover}",
-                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.hover}",
-                      "borderRadius": "{ob.h.button_aug.border_radius.default}"
+                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.hover}"
                     }
                   },
                   "fg": {
@@ -43,8 +41,7 @@
                     "$type": "composition",
                     "$value": {
                       "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.focus}",
-                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.focus}",
-                      "borderRadius": "{ob.h.button_aug.border_radius.default}"
+                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.focus}"
                     }
                   },
                   "fg": {
