@@ -10,7 +10,7 @@
           "direction": {
             "row": {
               "$description": {
-                "$type": "other", 
+                "$type": "other",
                 "$value": "Horizontal container layout (equivalent to previous 'wide')"
               },
               "layout": {
@@ -44,7 +44,7 @@
                   "$description": "Primary button positioned first (left-aligned)"
                 },
                 "primary_last": {
-                  "$type": "text", 
+                  "$type": "text",
                   "$value": "flex-end",
                   "$description": "Primary button positioned last (right-aligned)"
                 }
@@ -82,7 +82,7 @@
                 },
                 "primary_last": {
                   "$type": "text",
-                  "$value": "column-reverse", 
+                  "$value": "column-reverse",
                   "$description": "Primary button positioned last in column"
                 }
               },
@@ -91,13 +91,6 @@
                 "$value": "100%",
                 "$description": "Full-width buttons in column layout"
               }
-            }
-          },
-          "spacing": {
-            "gap": {
-              "$type": "spacing",
-              "$value": "{ob.s.spacing.lg}",
-              "$description": "Default gap between buttons (16px)"
             }
           }
         }
