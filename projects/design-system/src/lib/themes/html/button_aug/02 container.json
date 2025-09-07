@@ -5,19 +5,19 @@
         "container": {
           "$description": {
             "$type": "other",
-            "$value": "Container-responsive tokens for button-aug based on 02-button.md documentation patterns"
+            "$value": "Container layout tokens for button-aug with flex-direction aligned naming"
           },
-          "responsive": {
-            "wide": {
+          "direction": {
+            "row": {
               "$description": {
-                "$type": "other",
-                "$value": "Wide container behavior (> 480px width) - horizontal layout patterns"
+                "$type": "other", 
+                "$value": "Horizontal container layout (equivalent to previous 'wide')"
               },
               "layout": {
                 "direction": {
                   "$type": "text",
                   "$value": "row",
-                  "$description": "Horizontal layout for wide containers"
+                  "$description": "Horizontal flex direction"
                 },
                 "flex_wrap": {
                   "$type": "text",
@@ -34,25 +34,32 @@
                 "gap": {
                   "$type": "spacing",
                   "$value": "{ob.s.spacing.xl}",
-                  "$description": "20px gap between buttons in wide containers"
+                  "$description": "20px gap between buttons in row layout"
                 }
               },
               "button_order": {
-                "$type": "text",
-                "$value": "primary-last",
-                "$description": "Primary button positioned last (right-aligned) for intuitive navigation"
+                "primary_first": {
+                  "$type": "text",
+                  "$value": "flex-start",
+                  "$description": "Primary button positioned first (left-aligned)"
+                },
+                "primary_last": {
+                  "$type": "text", 
+                  "$value": "flex-end",
+                  "$description": "Primary button positioned last (right-aligned)"
+                }
               }
             },
-            "narrow": {
+            "column": {
               "$description": {
                 "$type": "other",
-                "$value": "Narrow container behavior (≤ 480px width) - vertical stacking patterns"
+                "$value": "Vertical container layout (equivalent to previous 'narrow')"
               },
               "layout": {
                 "direction": {
                   "$type": "text",
                   "$value": "column",
-                  "$description": "Vertical layout for narrow containers"
+                  "$description": "Vertical flex direction"
                 },
                 "align_items": {
                   "$type": "text",
@@ -68,46 +75,29 @@
                 }
               },
               "button_order": {
-                "$type": "text",
-                "$value": "primary-first",
-                "$description": "Primary button positioned first for thumb-friendly interaction"
+                "primary_first": {
+                  "$type": "text",
+                  "$value": "normal",
+                  "$description": "Primary button positioned first in column"
+                },
+                "primary_last": {
+                  "$type": "text",
+                  "$value": "column-reverse", 
+                  "$description": "Primary button positioned last in column"
+                }
               },
-              "width": {
+              "button_width": {
                 "$type": "text",
                 "$value": "100%",
-                "$description": "Full-width buttons in narrow containers"
+                "$description": "Full-width buttons in column layout"
               }
             }
           },
-          "threshold": {
-            "container_width": {
-              "$type": "dimension",
-              "$value": "480px",
-              "$description": "Container width threshold: ≤480px = narrow, >480px = wide"
-            }
-          },
-          "viewport": {
-            "mobile_portrait": {
-              "$description": {
-                "$type": "other",
-                "$value": "Mobile portrait (390x844) - auto narrow container behavior"
-              },
-              "auto_behavior": {
-                "$type": "text",
-                "$value": "narrow",
-                "$description": "Automatically uses narrow container patterns"
-              }
-            },
-            "mobile_landscape": {
-              "$description": {
-                "$type": "other",
-                "$value": "Mobile landscape (844x390) - wide container behavior"
-              },
-              "auto_behavior": {
-                "$type": "text",
-                "$value": "wide",
-                "$description": "Uses wide container patterns due to 844px width"
-              }
+          "spacing": {
+            "gap": {
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.lg}",
+              "$description": "Default gap between buttons (16px)"
             }
           }
         }
