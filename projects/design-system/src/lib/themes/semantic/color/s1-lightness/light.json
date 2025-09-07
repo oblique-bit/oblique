@@ -173,11 +173,9 @@
           },
           "shadow": {
             "first": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.p.color.cobalt_alpha.50}",
-                "$description": "1st of 2 effects"
-              },
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.50}",
+              "$description": "1st of 2 effects",
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt_alpha.50}",
@@ -185,11 +183,9 @@
               }
             },
             "second": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.p.color.cobalt_alpha.100}",
-                "$description": "2nd of 2 effects"
-              },
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.100}",
+              "$description": "2nd of 2 effects",
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt_alpha.100}",

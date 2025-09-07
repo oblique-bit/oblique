@@ -140,12 +140,12 @@
           "shadow": {
             "first": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.shadow.first.inversity_normal}",
+              "$value": "{ob.s1.color.neutral.shadow.first}",
               "$description": "Primary shadow color for UI elements. Theme-aware shadow that works in both light and dark modes."
             },
             "second": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.shadow.second.inversity_normal}",
+              "$value": "{ob.s1.color.neutral.shadow.second}",
               "$description": "Secondary shadow color for UI elements. Theme-aware shadow that works in both light and dark modes."
             }
           },
@@ -198,7 +198,7 @@
                   "$description": "Interactive element foreground - enabled state, normal theme"
                 },
                 "inversity_flipped": {
-                  "$type": "color", 
+                  "$type": "color",
                   "$value": "{ob.s2.color.interaction.state.fg.enabled.inversity_flipped}",
                   "$description": "Interactive element foreground - enabled state, flipped theme"
                 }
