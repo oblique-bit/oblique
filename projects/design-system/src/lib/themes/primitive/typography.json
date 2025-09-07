@@ -402,6 +402,23 @@
           "$value": "-0.5",
           "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
         }
+      },
+      "vertical_trim": {
+        "cap_baseline": {
+          "$type": "string",
+          "$value": "cap-height baseline",
+          "$description": "Vertical trim from cap height to baseline - removes extra space above capitals and below baseline. FIGMA LIMITATION: Cannot be used as Figma variable. Set manually in Figma using 'Vertical trim' property. CSS implementation: text-box-trim: cap alphabetic."
+        },
+        "cap_x_height": {
+          "$type": "string",
+          "$value": "cap-height x-height",
+          "$description": "Vertical trim from cap height to x-height - removes space above capitals and below lowercase. FIGMA LIMITATION: Cannot be used as Figma variable. Set manually in Figma using 'Vertical trim' property."
+        },
+        "none": {
+          "$type": "string",
+          "$value": "none",
+          "$description": "No vertical trim applied - standard text box behavior with full font metrics."
+        }
       }
     }
   }

@@ -83,6 +83,11 @@
               "$type": "textAlign",
               "$value": "center",
               "$description": "Center alignment for button text labels. Note: Not supported by Figma variables - set manually in Figma components."
+            },
+            "text_vertical_trim": {
+              "$type": "string",
+              "$value": "{ob.p.vertical_trim.cap_baseline}",
+              "$description": "Vertical trim from cap height to baseline for optimal button text alignment. FIGMA LIMITATION: This token is not exported to Figma variables as Figma doesn't support text vertical trim variables. Set manually in Figma components using 'Vertical trim' property. CSS implementation: use 'text-box-trim: cap alphabetic' or equivalent."
             }
           }
         }

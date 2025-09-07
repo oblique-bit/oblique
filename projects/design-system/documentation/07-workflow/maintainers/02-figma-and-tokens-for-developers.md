@@ -82,12 +82,22 @@ When MCP tools can't find certain tokens in Figma:
 2. **Look for "Figma Limitation" notices** in component documentation 
 3. **Implement based on documented specifications** - Follow the exact values from token files
 
-### Example Implementation Note
+### Common Unsupported Token Types
+
+| **Property** | **Example Token** | **Figma Workaround** | **Developer Implementation** |
+|-------------|------------------|---------------------|----------------------------|
+| **Text Vertical Trim** | `ob.h.button_aug.typography.text_label.text_vertical_trim` | Manual "Vertical trim" setting | `text-box-trim: cap alphabetic` |
+| **CSS Layout** | `ob.h.button_aug.container.flex_direction` | Component variants | `flex-direction: row` |
+| **Text Alignment** | `ob.h.button_aug.typography.text_label.text_align` | Manual text alignment | `text-align: center` |
+
+### Implementation Note Template
 
 ```markdown
 **Figma Limitation Notice**
-These tokens (e.g., responsive typography scales or complex state tokens) are not supported in Figma and cannot be inspected via MCP. They remain part of the design system and must be implemented as documented.
+These tokens (e.g., text vertical trim, responsive typography scales, or complex state tokens) are not supported in Figma and cannot be inspected via MCP. They remain part of the design system and must be implemented as documented.
 ```
+
+**Related Guide:** [Figma Unsupported Tokens Handling](./06-figma-unsupported-tokens-handling.md)
 
 ## standard practices
 
