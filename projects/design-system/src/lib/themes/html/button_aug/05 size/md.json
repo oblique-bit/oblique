@@ -24,6 +24,12 @@
               "$type": "sizing",
               "$value": "{ob.s.icon.size.sm}"
             }
+          },
+          "typography": {
+            "text_label": {
+              "$type": "typography",
+              "$value": "{ob.s.typography.type_scale.sm.normal}"
+            }
           }
         },
         "icon_only": {

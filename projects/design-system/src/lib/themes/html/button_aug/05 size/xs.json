@@ -24,6 +24,12 @@
               "$type": "sizing",
               "$value": "{ob.s.icon.size.xs}"
             }
+          },
+          "typography": {
+            "text_label": {
+              "$type": "typography",
+              "$value": "{ob.s.typography.type_scale.xs.normal}"
+            }
           }
         },
         "icon_only": {
