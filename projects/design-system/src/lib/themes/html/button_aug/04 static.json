@@ -61,12 +61,12 @@
           "text_label": {
             "font_family": {
               "$type": "fontFamilies",
-              "$value": "{ob.s.fontFamily.primary}",
+              "$value": "{ob.s.font_family.body}",
               "$description": "Font family for button text labels - consistent across all sizes"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.fontWeight.medium}",
+              "$value": "{ob.s.font_weight.medium}",
               "$description": "Font weight for button text labels - consistent across all sizes"
             },
             "text_decoration": {

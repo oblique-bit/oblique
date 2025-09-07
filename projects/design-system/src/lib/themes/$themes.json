@@ -435,6 +435,7 @@
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
     "$figmaVariableReferences": {
+      "ob.h.button_aug.container.spacing.gap": "d297bb9c3a558a1e61d4a166ca3c9352dc79ac57",
       "ob.g.scale.mult_static": "a4d54f474013afd60e2eb05ee629a50095f08f19",
       "ob.g.breakpoints.0": "3ddc3b83ca4178eb6725929fb57829d1a0292339",
       "ob.g.breakpoints.768": "852133ec11c52af52a03bd9ca75e6d3b1cd7c4f3",
@@ -933,19 +934,18 @@
       "ob.h.button_aug.color.border.tertiary.inversity_flipped.focus": "ce707b936118746712aff2aeb8f12f76ea3ec224",
       "ob.h.button_aug.color.border.tertiary.inversity_flipped.pressed": "8dfdf5fed38832eb2d67e5e7447b2ec9462aa162",
       "ob.h.button_aug.color.border.tertiary.inversity_flipped.disabled": "1d3330b39d244c14ccd53fa0aa8c9a0d18f78942",
-      "ob.h.button_aug.container.responsive.wide.layout.direction": "f046a024e9d4f1c1ac55e86cdd114c10a62d7440",
-      "ob.h.button_aug.container.responsive.wide.layout.flex_wrap": "d2beb56ced3633e045bd9e7c106f00321ac24ab1",
-      "ob.h.button_aug.container.responsive.wide.layout.align_items": "88b288b3504af1dddb11f132fec30a09ad149370",
-      "ob.h.button_aug.container.responsive.wide.spacing.gap": "a6f36c46af60b4b23be3bd7f63200e5c0bf2fdb5",
-      "ob.h.button_aug.container.responsive.wide.button_order": "c9bc8b11b94d8b4fe47fe5ba614b61d0609e0364",
-      "ob.h.button_aug.container.responsive.narrow.layout.direction": "69008224718ea360546193c940fc12b6428df030",
-      "ob.h.button_aug.container.responsive.narrow.layout.align_items": "4a4978257644dc7e0a8b4d8eff7393d1818f0099",
-      "ob.h.button_aug.container.responsive.narrow.spacing.gap": "7e2367853be0d57f5417e065651fb957d07c358f",
-      "ob.h.button_aug.container.responsive.narrow.button_order": "220cbf61c800f4989b82bfb75389555a461f08a6",
-      "ob.h.button_aug.container.responsive.narrow.button_width": "069230bd92db3ba913a2c9d1e5b77bfb2394f436",
-      "ob.h.button_aug.container.threshold.container_width": "4ccf7a5396afa257d0f90b49ae6395dd9ea725a2",
-      "ob.h.button_aug.container.viewport.mobile_portrait.auto_behavior": "bb9342b86a810aa733acb5c7afb6839ea5f16cce",
-      "ob.h.button_aug.container.viewport.mobile_landscape.auto_behavior": "b5873e180c9bff2282ea51f9f712d40f6a49b8dc",
+      "ob.h.button_aug.container.direction.row.layout.direction": "675b1c51a5ae75520b815d9bcef284575ba80af6",
+      "ob.h.button_aug.container.direction.row.layout.flex_wrap": "cfabbb7ae04d7bbc9095d588c2b209fc471c2bcc",
+      "ob.h.button_aug.container.direction.row.layout.align_items": "b4448b1aa32d27c18cab90420b0b429212395ae3",
+      "ob.h.button_aug.container.direction.row.spacing.gap": "ef5cde876f1bc81351a77ed9902315752589bfc4",
+      "ob.h.button_aug.container.direction.row.button_order.primary_first": "6a2c98982fbdbd15ee1ff6dc668b568d76c2d29f",
+      "ob.h.button_aug.container.direction.row.button_order.primary_last": "35aa9e4761180dccc768ecf4d8fe242fb18cc8df",
+      "ob.h.button_aug.container.direction.column.layout.direction": "97d4061fb251e09179852ec6aca9ce0cba54ab25",
+      "ob.h.button_aug.container.direction.column.layout.align_items": "14deac943fb6fadf1fd99bd271bb95da7740ee0c",
+      "ob.h.button_aug.container.direction.column.spacing.gap": "7a270953cd202e32dfdce14e2e57e64219fb3a5e",
+      "ob.h.button_aug.container.direction.column.button_order.primary_first": "0512468e712fe614f7fc4f461f3b2634f99b034f",
+      "ob.h.button_aug.container.direction.column.button_order.primary_last": "93fc60cb6172bc6bf6bb6ce8b5a72de923e5c65d",
+      "ob.h.button_aug.container.direction.column.button_width": "d0fb283b4a9365545f75a536251812a6efaac70e",
       "ob.h.hr.sizing.height": "a09f6cf6a1411503383d7a4f61ab56a051202824",
       "ob.h.hr.color.subtle": "1064a28a4c2109096ed068e629bfcabc80910d85",
       "ob.h.hr.color.default": "82b4bb166861d154232919234df7061c031fb4a2",
@@ -2876,14 +2876,16 @@
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
     "$figmaModeId": "2006:0",
     "$figmaVariableReferences": {
+      "ob.h.button_aug.typography.text_label.font_size": "d3652d29c649303d07b27971d6c1fb559ec08902",
       "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
       "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
       "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
+      "ob.h.button_aug.text_icons.icon.size": "9a758a1c8f1735e5aa5047ee1519bebc67092394",
       "ob.h.button_aug.icon_only.spacing.padding.vertical": "bf392c66f0940f43b016bfe798f8243b49d3de2d",
       "ob.h.button_aug.icon_only.spacing.padding.horizontal": "ad9509812b9280b37a29e7da2f7714f153cb3e50",
-      "ob.h.button_aug.text_icons.icon.size": "9a758a1c8f1735e5aa5047ee1519bebc67092394",
       "ob.h.button_aug.icon_only.icon.size": "e1b252b2ead9a02d295017ae542cdf83f8fa4390",
-      "ob.h.button_aug.font-size": "76eb8a380f8da5e212c606bae00e33b61522402e"
+      "ob.h.button_aug.typography.text_label.line_height": "8f0a5a76243c71b6278f8e428e3b6eb0026999ed",
+      "ob.h.button_aug.typography.text_label.letter_spacing": "bd827316ea30541cbef77aa89ccc3912ec2f5cf5"
     }
   },
   {
@@ -2899,14 +2901,16 @@
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
     "$figmaModeId": "2006:1",
     "$figmaVariableReferences": {
+      "ob.h.button_aug.typography.text_label.font_size": "d3652d29c649303d07b27971d6c1fb559ec08902",
       "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
       "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
       "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
+      "ob.h.button_aug.text_icons.icon.size": "9a758a1c8f1735e5aa5047ee1519bebc67092394",
       "ob.h.button_aug.icon_only.spacing.padding.vertical": "bf392c66f0940f43b016bfe798f8243b49d3de2d",
       "ob.h.button_aug.icon_only.spacing.padding.horizontal": "ad9509812b9280b37a29e7da2f7714f153cb3e50",
-      "ob.h.button_aug.text_icons.icon.size": "9a758a1c8f1735e5aa5047ee1519bebc67092394",
       "ob.h.button_aug.icon_only.icon.size": "e1b252b2ead9a02d295017ae542cdf83f8fa4390",
-      "ob.h.button_aug.font-size": "76eb8a380f8da5e212c606bae00e33b61522402e"
+      "ob.h.button_aug.typography.text_label.line_height": "8f0a5a76243c71b6278f8e428e3b6eb0026999ed",
+      "ob.h.button_aug.typography.text_label.letter_spacing": "bd827316ea30541cbef77aa89ccc3912ec2f5cf5"
     }
   },
   {
@@ -2922,14 +2926,15 @@
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
     "$figmaModeId": "2006:2",
     "$figmaVariableReferences": {
+      "ob.h.button_aug.typography.text_label.font_size": "d3652d29c649303d07b27971d6c1fb559ec08902",
       "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
       "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
       "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
+      "ob.h.button_aug.text_icons.icon.size": "9a758a1c8f1735e5aa5047ee1519bebc67092394",
       "ob.h.button_aug.icon_only.spacing.padding.vertical": "bf392c66f0940f43b016bfe798f8243b49d3de2d",
       "ob.h.button_aug.icon_only.spacing.padding.horizontal": "ad9509812b9280b37a29e7da2f7714f153cb3e50",
-      "ob.h.button_aug.text_icons.icon.size": "9a758a1c8f1735e5aa5047ee1519bebc67092394",
       "ob.h.button_aug.icon_only.icon.size": "e1b252b2ead9a02d295017ae542cdf83f8fa4390",
-      "ob.h.button_aug.font-size": "76eb8a380f8da5e212c606bae00e33b61522402e"
+      "ob.h.button_aug.typography.text_label.line_height": "8f0a5a76243c71b6278f8e428e3b6eb0026999ed"
     }
   },
   {
@@ -2945,14 +2950,16 @@
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
     "$figmaModeId": "2006:3",
     "$figmaVariableReferences": {
+      "ob.h.button_aug.typography.text_label.font_size": "d3652d29c649303d07b27971d6c1fb559ec08902",
       "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
       "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
       "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
+      "ob.h.button_aug.text_icons.icon.size": "9a758a1c8f1735e5aa5047ee1519bebc67092394",
       "ob.h.button_aug.icon_only.spacing.padding.vertical": "bf392c66f0940f43b016bfe798f8243b49d3de2d",
       "ob.h.button_aug.icon_only.spacing.padding.horizontal": "ad9509812b9280b37a29e7da2f7714f153cb3e50",
-      "ob.h.button_aug.text_icons.icon.size": "9a758a1c8f1735e5aa5047ee1519bebc67092394",
       "ob.h.button_aug.icon_only.icon.size": "e1b252b2ead9a02d295017ae542cdf83f8fa4390",
-      "ob.h.button_aug.font-size": "76eb8a380f8da5e212c606bae00e33b61522402e"
+      "ob.h.button_aug.typography.text_label.line_height": "8f0a5a76243c71b6278f8e428e3b6eb0026999ed",
+      "ob.h.button_aug.typography.text_label.letter_spacing": "bd827316ea30541cbef77aa89ccc3912ec2f5cf5"
     }
   },
   {
@@ -2962,7 +2969,8 @@
     "selectedTokenSets": {
       "html/button_aug/06 flex-direction/row": "enabled"
     },
-    "group": "button_direction"
+    "group": "button_direction",
+    "$figmaVariableReferences": {}
   },
   {
     "id": "f8a4c2b5e9d6f123456789abcdef0123456789ab",
@@ -2971,6 +2979,7 @@
     "selectedTokenSets": {
       "html/button_aug/06 flex-direction/column": "enabled"
     },
-    "group": "button_direction"
+    "group": "button_direction",
+    "$figmaVariableReferences": {}
   }
 ]

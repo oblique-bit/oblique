@@ -60,7 +60,7 @@
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.letterSpacing.normal}",
+              "$value": "{ob.s.letter_spacing.normal}",
               "$description": "Letter spacing for sm button text labels"
             }
           }
