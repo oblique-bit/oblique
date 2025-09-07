@@ -139,28 +139,14 @@
           },
           "shadow": {
             "first": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.shadow.first.inversity_normal}",
-                "$description": "Primary shadow color for UI elements. 1st of 2 shadow effects."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.shadow.first.inversity_flipped}",
-                "$description": "Primary shadow color for UI elements. 1st of 2 shadow effects."
-              }
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.shadow.first}",
+              "$description": "Primary shadow color for UI elements. 1st of 2 shadow effects."
             },
             "second": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.shadow.second.inversity_normal}",
-                "$description": "Secondary shadow color for UI elements. 2nd of 2 shadow effects."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.shadow.second.inversity_flipped}",
-                "$description": "Secondary shadow color for UI elements. 2nd of 2 shadow effects."
-              }
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.shadow.second}",
+              "$description": "Secondary shadow color for UI elements. 2nd of 2 shadow effects."
             }
           },
           "border": {
