@@ -11,24 +11,6 @@
             }
           }
         },
-        "typography": {
-          "text_label": {
-            "font_size": {
-              "$extensions": {
-                "com.tokens-studio": {
-                  "mode": {
-                    "size-sm": "{ob.s.fontSize.xs}",
-                    "size-md": "{ob.s.fontSize.sm}",
-                    "size-lg": "{ob.s.fontSize.md}"
-                  }
-                }
-              },
-              "$type": "fontSizes",
-              "$value": "{ob.s.fontSize.sm}",
-              "$description": "Mobile font size for button-aug text labels"
-            }
-          }
-        },
         "touch_target": {
           "min_size": {
             "$type": "dimension",

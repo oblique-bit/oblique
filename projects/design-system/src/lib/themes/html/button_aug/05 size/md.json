@@ -22,7 +22,7 @@
           "icon": {
             "size": {
               "$type": "sizing",
-              "$value": "{ob.s.icon.size.sm}"
+              "$value": "{ob.s.icon.size.md}"
             }
           }
         },
