@@ -1,0 +1,41 @@
+{
+  "ob": {
+    "h": {
+      "button_aug": {
+        "width": {
+          "full": {
+            "$description": {
+              "$type": "string",
+              "$value": "Full width behavior - buttons fill container width with vertical layout. HTML/CSS implementation only - use button.container component variants in Figma."
+            },
+            "flex_direction": {
+              "$type": "string",
+              "$value": "column",
+              "$description": "CSS flex-direction for vertical button layout. HTML/CSS implementation only - use button.container component variants in Figma."
+            },
+            "align_items": {
+              "$type": "string",
+              "$value": "stretch",
+              "$description": "CSS align-items for full-width buttons. HTML/CSS implementation only - use button.container component variants in Figma."
+            },
+            "justify_content": {
+              "$type": "string",
+              "$value": "flex-start",
+              "$description": "CSS justify-content for button positioning. HTML/CSS implementation only - use button.container component variants in Figma."
+            },
+            "gap": {
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.lg}",
+              "$description": "CSS gap between stacked buttons"
+            },
+            "button_width": {
+              "$type": "string",
+              "$value": "100%",
+              "$description": "CSS width for buttons - fills container for better touch targets. HTML/CSS implementation only - use button.container component variants in Figma."
+            }
+          }
+        }
+      }
+    }
+  }
+}
