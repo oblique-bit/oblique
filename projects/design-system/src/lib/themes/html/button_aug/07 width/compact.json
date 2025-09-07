@@ -1,0 +1,50 @@
+{
+  "ob": {
+    "h": {
+      "button_aug": {
+        "width": {
+          "compact": {
+            "$description": {
+              "$type": "other",
+              "$value": "Compact width behavior - buttons hug their content with horizontal layout"
+            },
+            "button_width": {
+              "$type": "text",
+              "$value": "auto",
+              "$description": "Button width hugs content for space efficiency"
+            },
+            "layout": {
+              "direction": {
+                "$type": "text",
+                "$value": "row",
+                "$description": "Horizontal layout for compact width mode"
+              },
+              "align_items": {
+                "$type": "text",
+                "$value": "center",
+                "$description": "Center alignment for horizontal layout"
+              },
+              "flex_wrap": {
+                "$type": "text",
+                "$value": "wrap",
+                "$description": "Allow wrapping when space insufficient"
+              }
+            },
+            "spacing": {
+              "gap": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.xl}",
+                "$description": "20px gap between buttons in compact layout"
+              }
+            },
+            "button_order": {
+              "$type": "text",
+              "$value": "primary-last",
+              "$description": "Primary button positioned last (right-aligned) for intuitive navigation"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "ob": {
+    "h": {
+      "button_aug": {
+        "width": {
+          "full": {
+            "$description": {
+              "$type": "other",
+              "$value": "Full width behavior - buttons fill container width with vertical layout"
+            },
+            "button_width": {
+              "$type": "text",
+              "$value": "100%",
+              "$description": "Button width fills container for better touch targets"
+            },
+            "layout": {
+              "direction": {
+                "$type": "text",
+                "$value": "column",
+                "$description": "Vertical layout for full width mode"
+              },
+              "align_items": {
+                "$type": "text",
+                "$value": "stretch",
+                "$description": "Full-width buttons for better touch accessibility"
+              }
+            },
+            "spacing": {
+              "gap": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.lg}",
+                "$description": "16px gap between stacked buttons"
+              }
+            },
+            "button_order": {
+              "$type": "text",
+              "$value": "primary-first",
+              "$description": "Primary button positioned first for thumb-friendly interaction"
+            }
+          }
+        }
+      }
+    }
+  }
+}
