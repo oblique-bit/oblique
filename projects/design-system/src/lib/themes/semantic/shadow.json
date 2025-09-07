@@ -4,15 +4,25 @@
       "shadow": {
         "focus": {
           "$type": "boxShadow",
-          "$value": {
-            "x": "0",
-            "y": "0",
-            "blur": "0",
-            "spread": "{ob.p.size.75}",
-            "color": "{ob.s1.color.interaction.border.focus}",
-            "type": "dropShadow"
-          },
-          "$description": "When using the TAB key to navigate web elements, visually highlighting the focus with an outline (made with CSS box_shadow in our case) is key for accessibility and UX."
+          "$value": [
+            {
+              "x": "0",
+              "y": "0",
+              "blur": "0",
+              "spread": "1px",
+              "color": "transparent",
+              "type": "dropShadow"
+            },
+            {
+              "x": "0",
+              "y": "0",
+              "blur": "0",
+              "spread": "{ob.p.size.75}",
+              "color": "{ob.s1.color.interaction.border.focus}",
+              "type": "dropShadow"
+            }
+          ],
+          "$description": "Figma implementation of focus ring using layered drop shadows with 1px offset simulation. Provides visual focus indication for design tools."
         },
         "sm": {
           "$type": "boxShadow",

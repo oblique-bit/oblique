@@ -349,6 +349,62 @@ All interactive elements must provide clear state feedback:
 </a>
 ```
 
+## Focus Ring Implementation
+
+### CSS vs Figma Brother Tokens
+
+Focus rings are implemented using dedicated sibling tokens that provide the same visual result but use appropriate technology for each platform:
+
+**CSS Implementation:**
+```scss
+.interactive-element:focus {
+  outline: var(--ob-s-border-focus);
+  outline-offset: 2px;
+}
+```
+
+**Token Reference:**
+- `ob.s.border.focus` - CSS implementation using border token type
+- `ob.s.shadow.focus` - Figma implementation using boxShadow token type  
+- `ob.s1.color.interaction.focus_ring` - Shared color for both implementations
+
+### Implementation Guidelines
+
+**For Developers:**
+- Use `ob.s.border.focus` with CSS `outline` property
+- Apply to all focusable interactive elements
+- Include `outline-offset` for better visual separation
+- Never use `outline: none` without alternative focus indication
+
+**For Designers:**
+- Use `ob.s.shadow.focus` as drop shadow effect in Figma
+- Apply to focus state variants of interactive components
+- Maintains visual consistency with CSS implementation
+- Both tokens reference the same underlying color values
+
+### Accessibility Compliance
+
+Focus rings ensure keyboard navigation accessibility:
+- Meet WCAG 2.1 contrast requirements (3:1 minimum against adjacent colors)
+- Provide clear visual indication of keyboard focus
+- Consistent across all interactive elements
+- Never suppress without providing alternative focus indication
+
+```scss
+/* Proper focus implementation */
+.button:focus {
+  outline: var(--ob-s-border-focus);
+  outline-offset: 2px;
+}
+
+/* Focus with custom styling */
+.custom-focus:focus {
+  outline: 2px solid var(--ob-s1-color-interaction-focus-ring-inversity-normal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+```
+
 ## Theme Integration
 
 ### Automatic Adaptation

@@ -139,7 +139,7 @@
             "width": "{ob.s.border_width.2xl}",
             "style": "solid"
           },
-          "$description": "focus for all clickable elements and form elements."
+          "$description": "CSS implementation of focus ring for accessibility compliance. Use with outline property."
         }
       }
     }
