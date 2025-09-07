@@ -63,6 +63,33 @@
 - [Flex-Direction Token Decision Log](./flex-direction-token-decision-log.md) - Complete reasoning and decision process
 - Token files: `src/lib/themes/html/button_aug/06 width/`
 
+### Primary Button Conceptual Inversion
+
+**Design Principle**: Primary buttons must always stand out as the primary call-to-action, regardless of inversity context.
+
+**Conceptual Inversion Implementation**: Primary buttons have a built-in inversion at the conceptual level - they use cross-mapped semantic tokens to ensure they always appear with flipped/inverted colors (dark background, light text).
+
+**Token Cross-Mapping:**
+```json
+// Primary buttons (conceptually inverted)
+"primary": {
+  "inversity_normal": {
+    // Uses FLIPPED semantic tokens for normal appearance
+    "$value": "{ob.s3.color.interaction.state.bg.enabled.inversity_flipped}"
+  },
+  "inversity_flipped": {
+    // Uses NORMAL semantic tokens for flipped appearance  
+    "$value": "{ob.s3.color.interaction.state.bg.enabled.inversity_normal}"
+  }
+}
+```
+
+**Rationale**: This ensures primary buttons always maintain visual prominence and brand consistency, appearing as dark buttons with light text in both normal and flipped contexts.
+
+**Contrast with Secondary/Tertiary**: Secondary and tertiary buttons follow normal inversity logic without cross-mapping, allowing them to adapt naturally to their surrounding context.
+
+**Implementation Note**: While this cross-mapping may appear counterintuitive in token files, it correctly implements the design system requirement that primary buttons must always appear "flipped" to stand out as primary actions.
+
 ---
 
 ## Strategic Architecture
