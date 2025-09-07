@@ -189,7 +189,6 @@
       "ob.c.tag.typography.size.lg": "S:2b829754d24d8d6fda5800640279bff7595cfb11,",
       "ob.c.tooltip.typography.label": "S:f7fa8f5488d0fe29a34d22f76e4a7ce073fddbd0,",
       "ob.c.popover.typography.custom_buttons_label": "S:fe3b43288b633b933131564c3f45dc74f8e2fac3,",
-      "ob.s.shadow.focus": "S:10b72979b968ef7fdc2c2edf7c25a9ea3e8ac980,",
       "ob.s.typography.~documentation-only.standard.docs_sm": "S:c2c704e0cd4edc2aab771c6e38f7409a24555327,",
       "ob.s.typography.~documentation-only.standard.docs_md": "S:6449a2cc00fc1540016361515455e793b825c7f5,",
       "ob.s.typography.~documentation-only.standard.docs_lg": "S:0614b92fc5dec2a241f9a30d8d660a1f02d95ccc,",
@@ -393,7 +392,9 @@
       "ob.h.button_aug.box_shadow.focus": "S:223f4296c633f334de93ff26bc120b56804a693a,",
       "ob.h.button_aug.box_shadow.pressed": "S:18ea67dd3eff6c86965705d3126eb53944b4244b,",
       "ob.h.button_aug.box_shadow.disabled": "S:7bddda55d4c61b253cf44056e44474d302430067,",
-      "ob.h.button_aug.text_icons.typography.text_label": "S:c137448aadd70a41209cdd9cd39307b9d249c427,"
+      "ob.h.button_aug.text_icons.typography.text_label": "S:c137448aadd70a41209cdd9cd39307b9d249c427,",
+      "ob.s.shadow.focus_ring.inversity_normal": "S:10b72979b968ef7fdc2c2edf7c25a9ea3e8ac980,",
+      "ob.s.shadow.focus_ring.inversity_flipped": "S:1af0be50502ff329cbffa6d20fcee5cd31481966,"
     },
     "selectedTokenSets": {
       "html/link": "enabled",
@@ -1614,8 +1615,8 @@
       "ob.s1.color.neutral.border.medium.inversity_flipped": "9a47a31e79d27d97b7e82c30e4bf440be5d63ca7",
       "ob.s1.color.neutral.border.strong.inversity_normal": "0a78152aaf7a57875fdefd49560ec9622b27f759",
       "ob.s1.color.neutral.border.strong.inversity_flipped": "36fbd2019d75313277150ac250202e9d656d2ccb",
-      "ob.s1.color.neutral.shadow.first.inversity_flipped": "a7bebad553d4733f8decca99c48282162fc2c8d0",
-      "ob.s1.color.neutral.shadow.second.inversity_flipped": "5fa1341d6d4d8f11346d56539f8bacf13113b006",
+      "ob.s1.color.neutral.shadow.first": "034519b09b3b22519e62101c0fe03a025a475631",
+      "ob.s1.color.neutral.shadow.second": "2be5c281a71ea5ee0472ba10f417971738656d7f",
       "ob.s1.color.status.info.bg.contrast_highest.inversity_normal": "e3ecad33b1806919c0bb246ee83f6657dcfd539b",
       "ob.s1.color.status.info.bg.contrast_highest.inversity_flipped": "8bf746cd6609584a848ee8cad29b25ecf679b67c",
       "ob.s1.color.status.info.bg.contrast_medium.inversity_normal": "c4c95255ab454370bc920d71fe1fe08d61c68540",
@@ -1881,9 +1882,7 @@
       "ob.c.infobox.color.fg.critical": "715220049b5928941c8adf5a620d4dc488f37824",
       "ob.c.infobox.color.fg.attention": "d363487d2a519d780110007cf564b7dda1d2505f",
       "ob.c.infobox.color.fg.resolved": "0673f8db7d1881634855801ab85f813e567c7eca",
-      "ob.c.infobox.color.fg.fatal": "cb7178959a79f474faed5d3978665bc77e563655",
-      "ob.s1.color.neutral.shadow.first": "034519b09b3b22519e62101c0fe03a025a475631",
-      "ob.s1.color.neutral.shadow.second": "2be5c281a71ea5ee0472ba10f417971738656d7f"
+      "ob.c.infobox.color.fg.fatal": "cb7178959a79f474faed5d3978665bc77e563655"
     },
     "group": "s1-lightness"
   },
@@ -2124,6 +2123,8 @@
       "ob.s1.color.neutral.border.medium.inversity_flipped": "9a47a31e79d27d97b7e82c30e4bf440be5d63ca7",
       "ob.s1.color.neutral.border.strong.inversity_normal": "0a78152aaf7a57875fdefd49560ec9622b27f759",
       "ob.s1.color.neutral.border.strong.inversity_flipped": "36fbd2019d75313277150ac250202e9d656d2ccb",
+      "ob.s1.color.neutral.shadow.first": "034519b09b3b22519e62101c0fe03a025a475631",
+      "ob.s1.color.neutral.shadow.second": "2be5c281a71ea5ee0472ba10f417971738656d7f",
       "ob.s1.color.status.info.bg.contrast_highest.inversity_normal": "e3ecad33b1806919c0bb246ee83f6657dcfd539b",
       "ob.s1.color.status.info.bg.contrast_highest.inversity_flipped": "8bf746cd6609584a848ee8cad29b25ecf679b67c",
       "ob.s1.color.status.info.bg.contrast_high.inversity_normal": "cc78eaf14ee00b44f4be564d6f257895e10c706e",
@@ -2389,9 +2390,7 @@
       "ob.c.infobox.color.fg.critical": "715220049b5928941c8adf5a620d4dc488f37824",
       "ob.c.infobox.color.fg.attention": "d363487d2a519d780110007cf564b7dda1d2505f",
       "ob.c.infobox.color.fg.resolved": "0673f8db7d1881634855801ab85f813e567c7eca",
-      "ob.c.infobox.color.fg.fatal": "cb7178959a79f474faed5d3978665bc77e563655",
-      "ob.s1.color.neutral.shadow.first": "034519b09b3b22519e62101c0fe03a025a475631",
-      "ob.s1.color.neutral.shadow.second": "2be5c281a71ea5ee0472ba10f417971738656d7f"
+      "ob.c.infobox.color.fg.fatal": "cb7178959a79f474faed5d3978665bc77e563655"
     },
     "group": "s1-lightness"
   },

@@ -1598,12 +1598,12 @@
           "focus_ring": {
             "inversity_normal": {
               "$type": "color",
-              "$value": "{ob.p.color.purple.400}",
+              "$value": "{ob.p.color.purple.300}",
               "$description": "Focus ring color for interaction elements in normal inversity"
             },
             "inversity_flipped": {
               "$type": "color",
-              "$value": "{ob.p.color.purple.400}",
+              "$value": "{ob.p.color.purple.500}",
               "$description": "Focus ring color for interaction elements in flipped inversity"
             }
           }

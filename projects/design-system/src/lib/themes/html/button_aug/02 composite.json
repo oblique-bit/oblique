@@ -167,7 +167,8 @@
                     "$type": "composition",
                     "$value": {
                       "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.enabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.enabled}"
+                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.enabled}",
+                      "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
                     }
                   },
                   "fg": {
@@ -182,7 +183,8 @@
                     "$type": "composition",
                     "$value": {
                       "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.hover}",
-                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.hover}"
+                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.hover}",
+                      "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
                     }
                   },
                   "fg": {

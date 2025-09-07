@@ -173,24 +173,24 @@
           },
           "shadow": {
             "first": {
-              "$type": "color",
-              "$value": "{ob.p.color.cobalt_alpha.50}",
-              "$description": "1st of 2 effects",
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt_alpha.50}",
                 "$description": "1st of 2 effects"
-              }
+              },
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.50}",
+              "$description": "1st of 2 effects"
             },
             "second": {
-              "$type": "color",
-              "$value": "{ob.p.color.cobalt_alpha.100}",
-              "$description": "2nd of 2 effects",
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt_alpha.100}",
                 "$description": "2nd of 2 effects"
-              }
+              },
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.100}",
+              "$description": "2nd of 2 effects"
             }
           }
         },
@@ -1640,7 +1640,7 @@
             },
             "inversity_flipped": {
               "$type": "color",
-              "$value": "{ob.p.color.purple.500}",
+              "$value": "{ob.p.color.purple.300}",
               "$description": "Focus ring color for interaction elements in flipped inversity"
             }
           }
