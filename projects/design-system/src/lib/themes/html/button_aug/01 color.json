@@ -2,10 +2,6 @@
   "ob": {
     "h": {
       "button_aug": {
-        "$description": {
-          "$type": "other",
-          "$value": "Color tokens only - All button color properties for different states and variants"
-        },
         "color": {
           "fg": {
             "primary": {
@@ -314,7 +310,7 @@
                 },
                 "focus": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.border.focus}",
+                  "$value": "{ob.s3.color.neutral.no_color}",
                   "$description": "Primary button-aug focus border (same for both inversity types)"
                 },
                 "pressed": {
@@ -338,7 +334,7 @@
                 },
                 "focus": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.border.focus}",
+                  "$value": "{ob.s3.color.neutral.no_color}",
                   "$description": "Primary button-aug focus border (same for both inversity types)"
                 },
                 "pressed": {
