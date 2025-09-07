@@ -13,19 +13,19 @@
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}"
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}"
                 },
                 "focus": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_normal}"
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}"
                 },
                 "pressed": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}"
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}"
                 },
                 "disabled": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_normal}"
+                  "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_flipped}"
                 }
               },
               "inversity_flipped": {
@@ -160,19 +160,19 @@
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_normal}"
+                  "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_flipped}"
                 },
                 "focus": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_normal}"
+                  "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_flipped}"
                 },
                 "pressed": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.bg.pressed.inversity_normal}"
+                  "$value": "{ob.s3.color.interaction.state.bg.pressed.inversity_flipped}"
                 },
                 "disabled": {
                   "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.bg.disabled.inversity_normal}"
+                  "$value": "{ob.s3.color.interaction.state.bg.disabled.inversity_flipped}"
                 }
               },
               "inversity_flipped": {

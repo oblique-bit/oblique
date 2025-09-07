@@ -6,18 +6,52 @@
           "composite": {
             "primary": {
               "inversity_normal": {
-                "button_surface": {
-                  "$type": "composition",
-                  "$value": {
-                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.enabled}",
-                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.enabled}",
-                    "borderRadius": "{ob.h.button_aug.border_radius.default}"
+                "enabled": {
+                  "button_surface": {
+                    "$type": "composition",
+                    "$value": {
+                      "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.enabled}",
+                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.enabled}",
+                      "borderRadius": "{ob.h.button_aug.border_radius.default}"
+                    }
+                  },
+                  "fg": {
+                    "$type": "composition",
+                    "$value": {
+                      "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.enabled}"
+                    }
                   }
                 },
-                "fg": {
-                  "$type": "composition",
-                  "$value": {
-                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.enabled}"
+                "hover": {
+                  "button_surface": {
+                    "$type": "composition",
+                    "$value": {
+                      "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.hover}",
+                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.hover}",
+                      "borderRadius": "{ob.h.button_aug.border_radius.default}"
+                    }
+                  },
+                  "fg": {
+                    "$type": "composition",
+                    "$value": {
+                      "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.hover}"
+                    }
+                  }
+                },
+                "focus": {
+                  "button_surface": {
+                    "$type": "composition",
+                    "$value": {
+                      "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.focus}",
+                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.focus}",
+                      "borderRadius": "{ob.h.button_aug.border_radius.default}"
+                    }
+                  },
+                  "fg": {
+                    "$type": "composition",
+                    "$value": {
+                      "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.hover}"
+                    }
                   }
                 }
               }
