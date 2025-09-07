@@ -46,9 +46,24 @@
             }
           }
         },
-        "font-size": {
-          "$type": "fontSizes",
-          "$value": "{ob.s.fontSize.sm}"
+        "typography": {
+          "text_label": {
+            "font_size": {
+              "$type": "fontSizes",
+              "$value": "{ob.s.fontSize.md}",
+              "$description": "Font size for md button text labels"
+            },
+            "line_height": {
+              "$type": "lineHeights",
+              "$value": "{ob.s.lineHeight.md}",
+              "$description": "Line height for md button text labels"
+            },
+            "letter_spacing": {
+              "$type": "letterSpacing",
+              "$value": "{ob.s.letterSpacing.normal}",
+              "$description": "Letter spacing for md button text labels"
+            }
+          }
         }
       }
     }

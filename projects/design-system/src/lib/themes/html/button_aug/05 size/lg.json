@@ -46,9 +46,24 @@
             }
           }
         },
-        "font-size": {
-          "$type": "fontSizes",
-          "$value": "{ob.s.fontSize.md}"
+        "typography": {
+          "text_label": {
+            "font_size": {
+              "$type": "fontSizes",
+              "$value": "{ob.s.fontSize.lg}",
+              "$description": "Font size for lg button text labels"
+            },
+            "line_height": {
+              "$type": "lineHeights",
+              "$value": "{ob.s.lineHeight.lg}",
+              "$description": "Line height for lg button text labels"
+            },
+            "letter_spacing": {
+              "$type": "letterSpacing",
+              "$value": "{ob.s.letterSpacing.normal}",
+              "$description": "Letter spacing for lg button text labels"
+            }
+          }
         }
       }
     }

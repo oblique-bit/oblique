@@ -56,35 +56,6 @@
             "$value": "{ob.s.shadow.none}",
             "$description": "No shadow on disabled state"
           }
-        },
-        "typography": {
-          "text_label": {
-            "font_family": {
-              "$type": "fontFamilies",
-              "$value": "{ob.s.fontFamily.primary}",
-              "$description": "Font family for button text labels - consistent across all sizes"
-            },
-            "font_weight": {
-              "$type": "fontWeights",
-              "$value": "{ob.s.fontWeight.medium}",
-              "$description": "Font weight for button text labels - consistent across all sizes"
-            },
-            "text_decoration": {
-              "$type": "textDecoration",
-              "$value": "none",
-              "$description": "No text decoration for button labels"
-            },
-            "text_transform": {
-              "$type": "textCase",
-              "$value": "none",
-              "$description": "No text transformation for button labels"
-            },
-            "text_align": {
-              "$type": "textAlign",
-              "$value": "center",
-              "$description": "Center alignment for button text labels. Note: Not supported by Figma variables - set manually in Figma components."
-            }
-          }
         }
       },
       "button-aug": {
