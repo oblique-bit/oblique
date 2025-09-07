@@ -140,13 +140,13 @@
           "shadow": {
             "first": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.shadow.first}",
-              "$description": "Primary shadow color for UI elements. 1st of 2 shadow effects."
+              "$value": "{ob.s1.color.neutral.shadow.first.inversity_normal}",
+              "$description": "Primary shadow color for UI elements. Theme-aware shadow that works in both light and dark modes."
             },
             "second": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.shadow.second}",
-              "$description": "Secondary shadow color for UI elements. 2nd of 2 shadow effects."
+              "$value": "{ob.s1.color.neutral.shadow.second.inversity_normal}",
+              "$description": "Secondary shadow color for UI elements. Theme-aware shadow that works in both light and dark modes."
             }
           },
           "border": {
