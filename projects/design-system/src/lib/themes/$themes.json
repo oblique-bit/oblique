@@ -2963,5 +2963,14 @@
       "html/button_aug/07 width/compact": "enabled"
     },
     "group": "button_width"
+  },
+  {
+    "id": "f8a4c2b5e9d6f123456789abcdef0123456789ab",
+    "name": "full",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "html/button_aug/07 width/full": "enabled"
+    },
+    "group": "button_width"
   }
 ]
