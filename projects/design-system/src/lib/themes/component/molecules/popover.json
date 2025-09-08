@@ -35,6 +35,10 @@
               "$type": "spacing",
               "$value": "{ob.s.spacing.2xl}",
               "$description": "Prevents the title coming to close to the Close button (X)"
+            },
+            "padding_bottom": {
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.2xl}"
             }
           },
           "text_variant_container": {
@@ -77,6 +81,18 @@
               "$type": "sizing",
               "$value": "{ob.s.size.multiverse}",
               "$description": "Sets a fix default width for popover for consistency reasons. In the project this can be overridden to meet the specifics requirements."
+            }
+          },
+          "close_button": {
+            "width": {
+              "$type": "sizing",
+              "$value": "{ob.s.size.chubby}"
+            }
+          },
+          "text_variant_container": {
+            "min_height": {
+              "$type": "sizing",
+              "$value": "{ob.s.size.chubby}"
             }
           }
         },
