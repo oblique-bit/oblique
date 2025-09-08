@@ -30,6 +30,13 @@ The scripts in this project are only for internal usage.
 
 ## Usage
 
+### Make a new project with Oblique embedded into it
+
+Make a new Oblique-embedded project with:
+`npx @oblique/cli@13 new <my-project-name>`
+
+For further instructions go to: "https://oblique.bit.admin.ch/introductions/getting-started-as-a-developer", under "Creating a new Oblique application".
+
 ### Embedding Oblique into your project
 
 1. Update your project to the Angular version supported by the Oblique version you want to install. Have a look at the Angular update guide for more instructions: <https://update.angular.io>
