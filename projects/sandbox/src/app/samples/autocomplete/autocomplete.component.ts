@@ -58,20 +58,20 @@ formControl = new FormControl('');
 		});
 		this.icons = [
 			'address-book',
-			'ald',
-			'university',
-			'unlink',
-			'unlock',
+			'universal-access',
+			'antique-building',
+			'link_disconnect',
+			'lock_open',
 			'upload',
-			'user',
-			'user-brush',
-			'user-checkmark',
-			'user-code',
-			'user-cog',
-			'warning-triangle',
+			'person',
+			'person_brush',
+			'person_checkmark',
+			'person_code',
+			'person_cog',
+			'exclamation_triangle',
 			'weight',
 			'wheelchair',
-			'wi-fi',
+			'wifi',
 			'wrench'
 		];
 		this.randomWords = ['Unicorn', 'Dragon', 'Ice-cream', 'Blue', 'Five', 'Graceling realm', 'Baloo the bear', 'Octopus', 'Dr. Who'];
