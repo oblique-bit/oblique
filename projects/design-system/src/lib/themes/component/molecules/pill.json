@@ -117,15 +117,15 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
               },
               "pressed": {
                 "$type": "color",
@@ -231,19 +231,19 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.pending.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.pending.fg.contrast_high.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.pending.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.pending.fg.contrast_high.inversity_normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.pending.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.pending.fg.contrast_high.inversity_normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.pending.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.pending.fg.contrast_high.inversity_normal}"
               }
             },
             "bg": {
@@ -269,19 +269,19 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.confirmed.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.confirmed.fg.contrast_high.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.confirmed.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.confirmed.fg.contrast_high.inversity_normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.confirmed.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.confirmed.fg.contrast_high.inversity_normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.confirmed.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.confirmed.fg.contrast_high.inversity_normal}"
               }
             },
             "bg": {
@@ -307,19 +307,19 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.progress.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.progress.fg.contrast_high.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.progress.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.progress.fg.contrast_high.inversity_normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.progress.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.progress.fg.contrast_high.inversity_normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.progress.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.progress.fg.contrast_high.inversity_normal}"
               }
             },
             "bg": {
@@ -345,19 +345,19 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.scheduled.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.scheduled.fg.contrast_high.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.scheduled.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.scheduled.fg.contrast_high.inversity_normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.scheduled.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.scheduled.fg.contrast_high.inversity_normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.scheduled.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.scheduled.fg.contrast_high.inversity_normal}"
               }
             },
             "bg": {
@@ -421,19 +421,19 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.waiting.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.waiting.fg.contrast_high.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.waiting.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.waiting.fg.contrast_high.inversity_normal}"
               },
               "focus": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.waiting.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.waiting.fg.contrast_high.inversity_normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.waiting.fg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.status.waiting.fg.contrast_high.inversity_normal}"
               }
             },
             "bg": {
