@@ -9,6 +9,8 @@ See [README.md](../../README.md) for information about the other packages.
 
 ## Scripts
 
+The scripts in this project are only for internal usage.
+
 - **start**: starts the project on port 3003
 - **lint**: lints the projects with EsLint, StyleLint and Prettier; Automatically run on the CI pipeline
 - **format**: same as lint, but with autofix parameter
