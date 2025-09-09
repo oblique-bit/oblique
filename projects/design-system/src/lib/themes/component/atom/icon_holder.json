@@ -1,7 +1,7 @@
 {
   "ob": {
-    "s": {
-      "icon": {
+    "c": {
+      "icon_holder": {
         "size": {
           "xs": {
             "$type": "sizing",

@@ -26,7 +26,7 @@
           "icon": {
             "size": {
               "$type": "sizing",
-              "$value": "{ob.s.icon.size.md}"
+              "$value": "{ob.c.icon_holder.size.md}"
             }
           }
         },
@@ -46,7 +46,7 @@
           "icon": {
             "size": {
               "$type": "sizing",
-              "$value": "{ob.s.icon.size.md}"
+              "$value": "{ob.c.icon_holder.size.md}"
             }
           }
         },

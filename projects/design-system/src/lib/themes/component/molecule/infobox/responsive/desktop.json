@@ -93,12 +93,12 @@
         "sizing": {
           "icon_size": {
             "$type": "sizing",
-            "$value": "{ob.s.icon.size.lg}",
+            "$value": "{ob.c.icon_holder.size.lg}",
             "$description": "Icon size is slightly larger than the title in order to be readable since it has less contrast than the text and communicates the status."
           },
           "close_button_size": {
             "$type": "sizing",
-            "$value": "{ob.s.icon.size.lg}"
+            "$value": "{ob.c.icon_holder.size.lg}"
           },
           "title": {
             "min_height": {

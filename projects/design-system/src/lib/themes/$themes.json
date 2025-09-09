@@ -417,23 +417,26 @@
       "semantic/typography/static": "enabled",
       "semantic/typography/scale": "source",
       "semantic/motion": "enabled",
-      "component/atoms/badge": "enabled",
-      "component/atoms/spinner": "enabled",
-      "component/atoms/tooltip": "enabled",
-      "component/molecules/infobox/static": "enabled",
-      "component/molecules/pill": "enabled",
-      "component/molecules/popover": "enabled",
-      "component/molecules/tag": "enabled",
       "primitive/color": "source",
       "primitive/border": "source",
       "semantic/border": "enabled",
-      "semantic/icon": "enabled",
       "semantic/shadow": "enabled",
       "semantic/typography/style": "enabled",
       "html/button_aug/01 color": "enabled",
       "html/button_aug/07 container": "enabled",
       "html/button_aug/02 composite": "source",
-      "html/button_aug/04 static": "enabled"
+      "html/button_aug/04 static": "enabled",
+      "component/atom/badge": "enabled",
+      "component/atom/spinner": "enabled",
+      "component/atom/tooltip": "enabled",
+      "component/molecule/infobox/static": "enabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "disabled",
+      "component/molecule/pill": "enabled",
+      "component/molecule/popover": "enabled",
+      "component/molecule/tag": "enabled",
+      "component/atom/icon_holder": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -472,13 +475,6 @@
       "ob.s.corners.bottom_right.md": "25947c36d1cd502cc764219223551cb44ffdfa07",
       "ob.s.corners.bottom_right.lg": "f91abbba75aeb52c0c3d3a1e590e2c3ed766dcdc",
       "ob.s.fx.blur.sm": "85f5a1cb035221352989802cdf96600c49e06969",
-      "ob.s.icon.size.xs": "f3e5732a187b954a3c04f81a7bb8348bb7a718d3",
-      "ob.s.icon.size.sm": "9e8a473fadc37fa16c2d0d46da6e5cb0c6f1c40e",
-      "ob.s.icon.size.md": "f0e44f67b072874485f82cc25d118b22b8db5db9",
-      "ob.s.icon.size.lg": "3ca0166ea98f37ab152c30616b5b969b03ac7bd2",
-      "ob.s.icon.size.xl": "54331957a0be13869ef9c6225486b7e96fa026c3",
-      "ob.s.icon.size.2xl": "cf04f0ffbb0f8c90504bbbde9329bf23d0223075",
-      "ob.s.icon.size.3xl": "e5f2a136aaf865316d31be4c87441e34b2cd13db",
       "ob.s.size.none": "6399e09a3c837d1412e7c63aa1d571fa60b07b02",
       "ob.s.size.nano": "1374782704aa8750696cce6e6c334642318c6202",
       "ob.s.size.micro": "ab9fef1c272f1b213b6a96506a1c3738ff0ca5d5",
@@ -970,7 +966,14 @@
       "figma-doc.color.fg_static": "ab28642dc0c481feda66cce407f000250c9c23d1",
       "figma-doc.color.figma_canvas_bg": "9a245c8b8e6db7915395d700b8564bd6cd7b125e",
       "figma-doc.color.figma_section_bg": "617ec87ed15c6bb3bdd8141226431ee421d6467a",
-      "figma-doc.color.figma_section_border": "84ef69476f16d3f8e495613082366869ef61da28"
+      "figma-doc.color.figma_section_border": "84ef69476f16d3f8e495613082366869ef61da28",
+      "ob.c.icon_holder.size.xs": "f3e5732a187b954a3c04f81a7bb8348bb7a718d3",
+      "ob.c.icon_holder.size.sm": "9e8a473fadc37fa16c2d0d46da6e5cb0c6f1c40e",
+      "ob.c.icon_holder.size.md": "f0e44f67b072874485f82cc25d118b22b8db5db9",
+      "ob.c.icon_holder.size.lg": "3ca0166ea98f37ab152c30616b5b969b03ac7bd2",
+      "ob.c.icon_holder.size.xl": "54331957a0be13869ef9c6225486b7e96fa026c3",
+      "ob.c.icon_holder.size.2xl": "cf04f0ffbb0f8c90504bbbde9329bf23d0223075",
+      "ob.c.icon_holder.size.3xl": "e5f2a136aaf865316d31be4c87441e34b2cd13db"
     },
     "group": "core"
   },
@@ -1079,8 +1082,18 @@
       "global/themes-user/viewport/desktop": "enabled",
       "semantic/spacing/desktop": "enabled",
       "semantic/typography/responsive/desktop": "enabled",
-      "component/molecules/infobox/responsive/desktop": "enabled",
-      "html/button_aug/03 viewport/desktop": "enabled"
+      "html/button_aug/03 viewport/desktop": "enabled",
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "enabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "disabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult_responsive": "a0218fef21f82d9c8e08419c5244a3c2f6b2dbcb",
@@ -1295,8 +1308,18 @@
       "global/themes-user/viewport/mobile": "enabled",
       "semantic/spacing/mobile": "enabled",
       "semantic/typography/responsive/mobile": "enabled",
-      "component/molecules/infobox/responsive/mobile": "enabled",
-      "html/button_aug/03 viewport/mobile": "enabled"
+      "html/button_aug/03 viewport/mobile": "enabled",
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "enabled",
+      "component/molecule/infobox/color": "disabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult_responsive": "a0218fef21f82d9c8e08419c5244a3c2f6b2dbcb",
@@ -1584,7 +1607,17 @@
       "semantic/asset/theme/lightness/light": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/light": "enabled",
       "semantic/color/s1-lightness/light": "enabled",
-      "component/molecules/infobox/color": "enabled"
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "enabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -2092,7 +2125,17 @@
       "semantic/asset/theme/lightness/dark": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/dark": "enabled",
       "semantic/color/s1-lightness/dark": "enabled",
-      "component/molecules/infobox/color": "enabled"
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "enabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",
@@ -2428,7 +2471,18 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/high": "enabled"
+      "semantic/color/s2-emphasis/high": "enabled",
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "disabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "8cf79f15cedc26fdffa5cf06d71f58374e5dae06",
@@ -2498,7 +2552,18 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/low": "enabled"
+      "semantic/color/s2-emphasis/low": "enabled",
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "disabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "8cf79f15cedc26fdffa5cf06d71f58374e5dae06",
@@ -2589,7 +2654,18 @@
       "r13.typography.components_only.tooltip.label": "S:01a80ff405036b8a204f742fa49f200230ff826c,"
     },
     "selectedTokenSets": {
-      "_ignore-in-ds/typography-styles-R13": "enabled"
+      "_ignore-in-ds/typography-styles-R13": "enabled",
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "disabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"
@@ -2599,7 +2675,18 @@
     "name": "semantic",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/color/s3-semantic/semantic": "enabled"
+      "semantic/color/s3-semantic/semantic": "enabled",
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "disabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "group": "semantic",
     "$figmaCollectionId": "VariableCollectionId:1:6",
@@ -2869,7 +2956,18 @@
       "ob.h.button_aug.text_icons.typography.text_label": "S:c137448aadd70a41209cdd9cd39307b9d249c427,"
     },
     "selectedTokenSets": {
-      "html/button_aug/05 size/xs": "enabled"
+      "html/button_aug/05 size/xs": "enabled",
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "disabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "group": "size",
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
@@ -2894,7 +2992,18 @@
       "ob.h.button_aug.text_icons.typography.text_label": "S:c137448aadd70a41209cdd9cd39307b9d249c427,"
     },
     "selectedTokenSets": {
-      "html/button_aug/05 size/sm": "enabled"
+      "html/button_aug/05 size/sm": "enabled",
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "disabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "group": "size",
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
@@ -2919,7 +3028,18 @@
       "ob.h.button_aug.text_icons.typography.text_label": "S:c137448aadd70a41209cdd9cd39307b9d249c427,"
     },
     "selectedTokenSets": {
-      "html/button_aug/05 size/md": "enabled"
+      "html/button_aug/05 size/md": "enabled",
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "disabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "group": "size",
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
@@ -2944,7 +3064,18 @@
       "ob.h.button_aug.text_icons.typography.text_label": "S:c137448aadd70a41209cdd9cd39307b9d249c427,"
     },
     "selectedTokenSets": {
-      "html/button_aug/05 size/lg": "enabled"
+      "html/button_aug/05 size/lg": "enabled",
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "disabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "group": "size",
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
@@ -2967,7 +3098,18 @@
     "name": "row",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button_aug/06 flex-direction/row": "enabled"
+      "html/button_aug/06 flex-direction/row": "enabled",
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "disabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "group": "button_direction",
     "$figmaVariableReferences": {}
@@ -2977,7 +3119,18 @@
     "name": "column",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button_aug/06 flex-direction/column": "enabled"
+      "html/button_aug/06 flex-direction/column": "enabled",
+      "component/atom/badge": "disabled",
+      "component/atom/spinner": "disabled",
+      "component/atom/tooltip": "disabled",
+      "component/molecule/infobox/static": "disabled",
+      "component/molecule/infobox/responsive/desktop": "disabled",
+      "component/molecule/infobox/responsive/mobile": "disabled",
+      "component/molecule/infobox/color": "disabled",
+      "component/molecule/pill": "disabled",
+      "component/molecule/popover": "disabled",
+      "component/molecule/tag": "disabled",
+      "component/atom/icon_holder": "disabled"
     },
     "group": "button_direction",
     "$figmaVariableReferences": {}

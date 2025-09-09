@@ -68,15 +68,15 @@
           "size": {
             "sm": {
               "$type": "sizing",
-              "$value": "{ob.s.icon.size.xs}"
+              "$value": "{ob.c.icon_holder.size.xs}"
             },
             "md": {
               "$type": "sizing",
-              "$value": "{ob.s.icon.size.xs}"
+              "$value": "{ob.c.icon_holder.size.xs}"
             },
             "lg": {
               "$type": "sizing",
-              "$value": "{ob.s.icon.size.sm}"
+              "$value": "{ob.c.icon_holder.size.sm}"
             }
           }
         },

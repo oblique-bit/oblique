@@ -60,7 +60,7 @@
           "custom_icon": {
             "size": {
               "$type": "sizing",
-              "$value": "{ob.s.icon.size.2xl}",
+              "$value": "{ob.c.icon_holder.size.2xl}",
               "$description": "For App Launcher Widget in ePortal and similar use cases."
             }
           },
