@@ -1,0 +1,19 @@
+{
+  "ob": {
+    "c": {
+      "icon_holder": {
+        "size": {
+          "standard": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.350}",
+            "$description": "MwSt asked for this size. ok i'll add a more pre desc later."
+          },
+          "mini": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.250}"
+          }
+        }
+      }
+    }
+  }
+}

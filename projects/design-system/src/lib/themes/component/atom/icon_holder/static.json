@@ -1,0 +1,13 @@
+{
+  "ob": {
+    "c": {
+      "icon_holder": {
+        "icon": {
+          "$type": "asset",
+          "$value": "cancel-circle",
+          "$description": "Default icon for button.remove "
+        }
+      }
+    }
+  }
+}

@@ -22,12 +22,6 @@
               "$type": "spacing",
               "$value": "{ob.s.spacing.md}"
             }
-          },
-          "icon": {
-            "size": {
-              "$type": "sizing",
-              "$value": "{ob.c.icon_holder.size.md}"
-            }
           }
         },
         "icon_only": {
@@ -41,12 +35,6 @@
                 "$type": "spacing",
                 "$value": "{ob.s.spacing.md}"
               }
-            }
-          },
-          "icon": {
-            "size": {
-              "$type": "sizing",
-              "$value": "{ob.c.icon_holder.size.sm}"
             }
           }
         },
@@ -66,6 +54,22 @@
               "$type": "letterSpacing",
               "$value": "{ob.s.letter_spacing.normal}",
               "$description": "Letter spacing for md button text labels"
+            }
+          }
+        },
+        "remove": {
+          "spacing": {
+            "padding": {
+              "vertical": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.none}",
+                "$description": "Remove button requires zero padding."
+              },
+              "horizontal": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.none}",
+                "$description": "Remove button requires zero padding."
+              }
             }
           }
         }

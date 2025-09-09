@@ -1,0 +1,18 @@
+{
+  "ob": {
+    "c": {
+      "icon_holder": {
+        "size": {
+          "standard": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.250}"
+          },
+          "mini": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.200}"
+          }
+        }
+      }
+    }
+  }
+}

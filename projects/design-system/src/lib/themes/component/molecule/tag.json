@@ -85,7 +85,7 @@
             },
             "lg": {
               "$type": "sizing",
-              "$value": "{ob.c.icon_holder.size.sm}"
+              "$value": "{ob.c.icon_holder.size.standard}"
             }
           }
         },
@@ -179,7 +179,7 @@
             },
             "lg": {
               "$type": "sizing",
-              "$value": "{ob.c.icon_holder.size.sm}"
+              "$value": "{ob.c.icon_holder.size.standard}"
             }
           }
         }
