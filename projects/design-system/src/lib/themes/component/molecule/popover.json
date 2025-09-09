@@ -67,32 +67,32 @@
           "custom_buttons_container": {
             "width": {
               "$type": "sizing",
-              "$value": "{ob.s.size.multiverse}"
+              "$value": "{ob.s.size._legacy.multiverse}"
             }
           },
           "custom_buttons": {
             "min_width": {
               "$type": "sizing",
-              "$value": "{ob.s.size.whoa}"
+              "$value": "{ob.s.size._legacy.whoa}"
             }
           },
           "padded_container": {
             "width": {
               "$type": "sizing",
-              "$value": "{ob.s.size.multiverse}",
+              "$value": "{ob.s.size._legacy.multiverse}",
               "$description": "Sets a fix default width for popover for consistency reasons. In the project this can be overridden to meet the specifics requirements."
             }
           },
           "close_button": {
             "width": {
               "$type": "sizing",
-              "$value": "{ob.s.size.chubby}"
+              "$value": "{ob.s.size._legacy.chubby}"
             }
           },
           "text_variant_container": {
             "min_height": {
               "$type": "sizing",
-              "$value": "{ob.s.size.chubby}"
+              "$value": "{ob.s.size._legacy.chubby}"
             }
           }
         },

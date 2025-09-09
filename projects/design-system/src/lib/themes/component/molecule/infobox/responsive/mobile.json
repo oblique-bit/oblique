@@ -103,7 +103,7 @@
           "title": {
             "min_height": {
               "$type": "sizing",
-              "$value": "{ob.s.size.chubby}",
+              "$value": "{ob.s.size._legacy.chubby}",
               "$description": "This minimum height helps the \"title\" container keeps the height regardless if there is close-button inside the infobox on mobile. "
             }
           }

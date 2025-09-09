@@ -4,7 +4,7 @@
       "spinner": {
         "sizing": {
           "$type": "sizing",
-          "$value": "{ob.s.size.ultra}",
+          "$value": "{ob.s.size._legacy.ultra}",
           "$description": "Optimized spinner size suitable for both 1) smaller components like Card and 2) full-page displays, ensuring it is neither too small nor too large."
         },
         "color": {

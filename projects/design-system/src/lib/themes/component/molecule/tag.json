@@ -92,16 +92,13 @@
         "surface": {
           "min_height": {
             "sm": {
-              "$type": "sizing",
-              "$value": "{ob.s.size.stretchy}"
+              "$value": "{ob.s.size._legacy.stretchy}"
             },
             "md": {
-              "$type": "sizing",
-              "$value": "{ob.s.size.spacious}"
+              "$value": "{ob.s.size._legacy.chubby}"
             },
             "lg": {
-              "$type": "sizing",
-              "$value": "{ob.s.size.hefty}"
+              "$value": "{ob.s.size._legacy.hefty}"
             }
           }
         },

@@ -4,159 +4,164 @@
       "size": {
         "none": {
           "$type": "sizing",
-          "$value": "{ob.p.size.0}"
+          "$value": "{ob.p.size.0}",
+          "$description": "Zero size for hidden elements"
         },
-        "nano": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.12}"
+        
+        "detail": {
+          "xs": {
+            "$type": "sizing", 
+            "$value": "{ob.p.size.12}",
+            "$description": "1px - finest borders"
+          },
+          "sm": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.25}",
+            "$description": "2px - thin borders"
+          },
+          "md": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.37}",
+            "$description": "3px - standard borders"
+          },
+          "lg": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.50}",
+            "$description": "4px - thick borders"
+          },
+          "xl": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.75}",
+            "$description": "6px - shadow spread"
+          }
         },
-        "micro": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.25}"
+        
+        "element": {
+          "xs": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.100}",
+            "$description": "8px - small icons"
+          },
+          "sm": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.125}",
+            "$description": "10px - compact elements"
+          },
+          "md": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.150}",
+            "$description": "12px - small badges"
+          },
+          "lg": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.200}",
+            "$description": "16px - standard icons (was: normal)"
+          },
+          "xl": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.250}",
+            "$description": "20px - expressive icons (was: stretchy)"
+          }
         },
-        "tiny": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.37}"
+        
+        "surface": {
+          "xs": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.300}",
+            "$description": "24px - small surfaces (was: spacious)"
+          },
+          "sm": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.350}",
+            "$description": "28px - button min-height (was: chubby)"
+          },
+          "md": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.400}",
+            "$description": "32px - standard surfaces"
+          },
+          "lg": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.450}",
+            "$description": "36px - large surfaces (was: hefty)"
+          },
+          "xl": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.600}",
+            "$description": "48px - XL surfaces (was: ultra)"
+          }
         },
-        "teensy": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.50}"
+        
+        "container": {
+          "xs": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.800}",
+            "$description": "64px - small containers"
+          },
+          "sm": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.1000}",
+            "$description": "80px - medium containers"
+          },
+          "md": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.1200}",
+            "$description": "96px - default containers (was: whoa)"
+          },
+          "lg": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.2000}",
+            "$description": "160px - large containers"
+          },
+          "xl": {
+            "$type": "sizing",
+            "$value": "{ob.p.size.3600}",
+            "$description": "320px - popover containers (was: multiverse)"
+          }
         },
-        "smol": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.75}"
-        },
-        "compact": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.100}"
-        },
-        "neat": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.125}"
-        },
-        "cozy": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.150}"
-        },
-        "snug": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.175}"
-        },
-        "normal": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.200}"
-        },
-        "roomy": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.225}"
-        },
-        "stretchy": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.250}"
-        },
-        "generous": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.275}"
-        },
-        "spacious": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.300}"
-        },
-        "chubby": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.350}"
-        },
-        "bulky": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.400}"
-        },
-        "hefty": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.450}"
-        },
-        "max": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.500}"
-        },
-        "ultra": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.600}"
-        },
-        "mega": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.700}"
-        },
-        "giga": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.800}"
-        },
-        "hyper": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.900}"
-        },
-        "supernova": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.1000}"
-        },
-        "whoa": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.1200}"
-        },
-        "chonky": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.1400}"
-        },
-        "epic": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.1600}"
-        },
-        "ludicrous": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.1800}"
-        },
-        "galactic": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.2000}"
-        },
-        "astronomic": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.2200}"
-        },
-        "planetary": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.2400}"
-        },
-        "terraform": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.2600}"
-        },
-        "moonshot": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.2800}"
-        },
-        "blackhole": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.3000}"
-        },
-        "event_horizon": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.3200}"
-        },
-        "singularity": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.3400}"
-        },
-        "multiverse": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.3600}"
-        },
-        "timewarp": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.3800}"
-        },
-        "endgame": {
-          "$type": "sizing",
-          "$value": "{ob.p.size.6750}"
+
+        "_legacy": {
+          "$description": "DEPRECATED: Keep for backward compatibility during migration",
+          "normal": {
+            "$type": "sizing",
+            "$value": "{ob.s.size.element.lg}",
+            "$description": "DEPRECATED: Use element.lg instead"
+          },
+          "stretchy": {
+            "$type": "sizing",
+            "$value": "{ob.s.size.element.xl}",
+            "$description": "DEPRECATED: Use element.xl instead"
+          },
+          "spacious": {
+            "$type": "sizing",
+            "$value": "{ob.s.size.surface.xs}",
+            "$description": "DEPRECATED: Use surface.xs instead"
+          },
+          "chubby": {
+            "$type": "sizing",
+            "$value": "{ob.s.size.surface.sm}",
+            "$description": "DEPRECATED: Use surface.sm instead"
+          },
+          "hefty": {
+            "$type": "sizing",
+            "$value": "{ob.s.size.surface.lg}",
+            "$description": "DEPRECATED: Use surface.lg instead"
+          },
+          "ultra": {
+            "$type": "sizing",
+            "$value": "{ob.s.size.surface.xl}",
+            "$description": "DEPRECATED: Use surface.xl instead"
+          },
+          "whoa": {
+            "$type": "sizing",
+            "$value": "{ob.s.size.container.md}",
+            "$description": "DEPRECATED: Use container.md instead"
+          },
+          "multiverse": {
+            "$type": "sizing",
+            "$value": "{ob.s.size.container.xl}",
+            "$description": "DEPRECATED: Use container.xl instead"
+          }
         }
       }
     }
