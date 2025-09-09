@@ -14,6 +14,8 @@ It contains guidelines on how to use Oblique libraries, code examples, accessibi
 
 ## Scripts
 
+The Scripts in this project are only for internal usage.
+
 - **build**: builds the toolchain package; automatically run on the CI pipeline
 - **lint**: lints the project with EsLint and Prettier; Automatically run on the CI pipeline
 - **format**: same as lint, but with autofix parameter

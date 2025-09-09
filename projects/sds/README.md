@@ -11,6 +11,8 @@ team, but everybody can read from it. This means that, even in development mode,
 
 ## Scripts
 
+The scripts in this project are only for internal usage.
+
 - **start**: starts the project on port 4200
 - **lint**: lints the projects with EsLint, StyleLint and Prettier; Automatically run on the CI pipeline
 - **format**: same as lint, but with autofix parameter

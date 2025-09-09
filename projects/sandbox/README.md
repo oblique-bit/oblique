@@ -11,6 +11,8 @@ See [README.md](../../README.md) for information about the other packages.
 
 ## Scripts
 
+The scripts in this project are only for internal usage.
+
 - **start**: starts the project without PAMS on port 3001
 - **start-pams**: starts the project with PAMS on port 3000
 - **lint**: lints the projects with EsLint, StyleLint and Prettier; Automatically run on the CI pipeline
