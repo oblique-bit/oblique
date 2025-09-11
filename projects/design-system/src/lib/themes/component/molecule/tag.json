@@ -85,19 +85,22 @@
             },
             "lg": {
               "$type": "sizing",
-              "$value": "{ob.c.icon_holder.size.standard}"
+              "$value": "{ob.c.icon_holder.size.standard.sm}"
             }
           }
         },
         "surface": {
           "min_height": {
             "sm": {
+              "$type": "other",
               "$value": "{ob.s.size._legacy.stretchy}"
             },
             "md": {
+              "$type": "other",
               "$value": "{ob.s.size._legacy.chubby}"
             },
             "lg": {
+              "$type": "other",
               "$value": "{ob.s.size._legacy.hefty}"
             }
           }
@@ -176,7 +179,7 @@
             },
             "lg": {
               "$type": "sizing",
-              "$value": "{ob.c.icon_holder.size.standard}"
+              "$value": "{ob.c.icon_holder.size.standard.sm}"
             }
           }
         }

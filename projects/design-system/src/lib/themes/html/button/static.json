@@ -171,7 +171,7 @@
             },
             "md": {
               "$type": "sizing",
-              "$value": "{ob.c.icon_holder.size.standard}"
+              "$value": "{ob.c.icon_holder.size.standard.sm}"
             },
             "lg": {
               "$type": "sizing",
@@ -189,15 +189,15 @@
               },
               "sm": {
                 "$type": "sizing",
-                "$value": "{ob.s.size._legacy.spacious}"
+                "$value": "{ob.s.size.spacious}"
               },
               "md": {
                 "$type": "sizing",
-                "$value": "{ob.s.size._legacy.hefty}"
+                "$value": "{ob.s.size.hefty}"
               },
               "lg": {
                 "$type": "sizing",
-                "$value": "{ob.s.size._legacy.ultra}"
+                "$value": "{ob.s.size.ultra}"
               }
             }
           }

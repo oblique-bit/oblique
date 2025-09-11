@@ -3,14 +3,12 @@
     "c": {
       "icon_holder": {
         "size": {
-          "standard": {
-            "$type": "sizing",
-            "$value": "{ob.p.size.250}"
-          },
           "mini": {
-            "$type": "sizing",
+            "$type": "dimension",
             "$value": "{ob.p.size.200}"
-          }
+          },
+          "$type": "dimension",
+          "$value": "{ob.p.size.300}"
         }
       }
     }

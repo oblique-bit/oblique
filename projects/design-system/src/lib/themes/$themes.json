@@ -439,9 +439,8 @@
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
     "$figmaVariableReferences": {
-      "ob.c.icon_holder.size.standard": "9e8a473fadc37fa16c2d0d46da6e5cb0c6f1c40e",
-      "ob.c.icon_holder.size.mini": "6248d2fed9ef1a9e8859d4f43a81648f02632938",
       "ob.h.button_aug.container.spacing.gap": "d297bb9c3a558a1e61d4a166ca3c9352dc79ac57",
+      "ob.c.icon_holder.size": "a137388c7fb705de86324ff38620c045f2245eda",
       "ob.g.scale.mult_static": "a4d54f474013afd60e2eb05ee629a50095f08f19",
       "ob.g.breakpoints.0": "3ddc3b83ca4178eb6725929fb57829d1a0292339",
       "ob.g.breakpoints.768": "852133ec11c52af52a03bd9ca75e6d3b1cd7c4f3",
@@ -476,44 +475,34 @@
       "ob.s.corners.bottom_right.lg": "f91abbba75aeb52c0c3d3a1e590e2c3ed766dcdc",
       "ob.s.fx.blur.sm": "85f5a1cb035221352989802cdf96600c49e06969",
       "ob.s.size.none": "6399e09a3c837d1412e7c63aa1d571fa60b07b02",
-      "ob.s.size.nano": "1374782704aa8750696cce6e6c334642318c6202",
-      "ob.s.size.micro": "ab9fef1c272f1b213b6a96506a1c3738ff0ca5d5",
-      "ob.s.size.tiny": "c81bb1bbee28d3702118729aacaf21e217d8238c",
-      "ob.s.size.teensy": "fed7e936837f4647fa853a0785dd095643e9a644",
-      "ob.s.size.smol": "e733e06991bc2524826b8b265538ba4ca78c8bcc",
-      "ob.s.size.compact": "8053367d89dde3c51e01015f947a39b0173a2d7d",
-      "ob.s.size.neat": "8138ab98032b8223ca2dd6ef92b7324bfd98a42b",
-      "ob.s.size.cozy": "4a6652fd5142c7d497ffff5b5b01646b77eb550c",
-      "ob.s.size.snug": "297dc2bf6261c0a7a1fa5bceca3b2016d2cae0c7",
-      "ob.s.size.normal": "53c5964a71d6e7f2074860b96b2416cd1c33a6b3",
-      "ob.s.size.roomy": "4473f487d9725c095ac7c4664741bfd2eb2c600b",
-      "ob.s.size.stretchy": "67c794cbcbcfa24d544063693d50ff6ad3acf393",
-      "ob.s.size.generous": "d7ed06e6adab21afc39324784b71469cade0ac2c",
-      "ob.s.size.spacious": "dd59cdc7be0ecaae4cdc563260d4d3a23adb2843",
-      "ob.s.size.chubby": "8e77466bcba8c4a7be9ee46e8df91f2dcbf27236",
-      "ob.s.size.bulky": "e36b7e8a0d18f6e9ec7bc6872f6d0bc39ee54ba9",
-      "ob.s.size.hefty": "e5deb1b563acf594958eb28cd43bc014ff7074e5",
-      "ob.s.size.max": "b55c4b9b4fe171b39ace37d1242155d699e60b3a",
-      "ob.s.size.ultra": "a347f74013f34de1c6b643825b56ba8d00d21b24",
-      "ob.s.size.mega": "70d80203c3871df474ac7e883a15a37dba44a6ed",
-      "ob.s.size.giga": "67d2dc3eb7e167226636e770933c2c606e370094",
-      "ob.s.size.hyper": "d0b17d7304d78fd45df916fc5a8ba4e40bb8ed71",
-      "ob.s.size.supernova": "9b7523ed4444cae5ce8c6944c353e60d76b9f554",
-      "ob.s.size.whoa": "0684dd2f1d661c3608cc8843623bb42f86190f1b",
-      "ob.s.size.chonky": "65d91fdcbe06033ce2b109bdc23203751f31cd78",
-      "ob.s.size.epic": "a40af9b5914023cb57ca8dca3d71f3f910dd61dd",
-      "ob.s.size.ludicrous": "b552f2cc2bfb94efa4c1fa7bc0a46c38545251be",
-      "ob.s.size.galactic": "0f42f6a3cfce1d32570d42ac1a57bb3b4000a83b",
-      "ob.s.size.astronomic": "6928ed9febff45d12840e14236066cef8d3d9986",
-      "ob.s.size.planetary": "c21ba2d4a5225b416415164aaa4829a2707f8072",
-      "ob.s.size.terraform": "28059d4c606ef385126a01a66713e7812f3117c5",
-      "ob.s.size.moonshot": "162445a8e40f453f809c9f4d418b9a7ef2f9fc39",
-      "ob.s.size.blackhole": "fcbbf35f50cd27bd570ce61c065434b44c2ad2bc",
-      "ob.s.size.event_horizon": "1ff4670cad4609dba118a239febfc2b9dfc9ce76",
-      "ob.s.size.singularity": "cf41c2e30d46cbe9fe5ae48dc8c05f516627f4ea",
-      "ob.s.size.multiverse": "f2b14dd1254e0422d032381faba3c3b9e0192d52",
-      "ob.s.size.timewarp": "af0280c9229bb2e42b40316db3ac0bc3967cb579",
-      "ob.s.size.endgame": "d91d50d033c62cbd4a5893d942f7c59b990f4c65",
+      "ob.s.size.detail.xs": "20c3a2566a2418ff1e4303d6e264204e335015ad",
+      "ob.s.size.detail.sm": "b6c622a44f604535e00dcf7011018ff14402d05a",
+      "ob.s.size.detail.md": "e16b888416f66c9e9245d0502deaa3fee37d3623",
+      "ob.s.size.detail.lg": "0349074466c4df03064a17a74921732b5bdbe5b9",
+      "ob.s.size.detail.xl": "7cfd6ef09460da8140d7c1c056ad433764ada546",
+      "ob.s.size.element.xs": "b3419ae842998b9f884ce9a22dfb7ddfc19ff8a3",
+      "ob.s.size.element.sm": "e6c470a38f4d896871ffb1d53b5c58e72f21aef9",
+      "ob.s.size.element.md": "908d55e277c8808f0ff9e07ac5c44b85b7e2c846",
+      "ob.s.size.element.lg": "09216ffba5fe2c09caa910883fab6eac14e788b1",
+      "ob.s.size.element.xl": "b36d24e5f816a6d9f6593ffabd182ec711ee6328",
+      "ob.s.size.surface.xs": "d9ccd17eadac22c97a6475173bf85beb81612415",
+      "ob.s.size.surface.sm": "e884e7a91b0cc38780ddbab4e77b1ee41e5bf7ab",
+      "ob.s.size.surface.md": "596df39ae0decbe606c2dd1782c5737de8077911",
+      "ob.s.size.surface.lg": "1fafc0b3828a00ac2eb6c441df93228a9d1c91c7",
+      "ob.s.size.surface.xl": "1253031c3fa8e9f3fc3645dcd4dd1fa08f8c859d",
+      "ob.s.size.container.xs": "acde1fd461c12c956d5ca6a332d5e1604a79b8ea",
+      "ob.s.size.container.sm": "043517a984889d29302b840868ddc63952ac16a0",
+      "ob.s.size.container.md": "24b4cb89fdad6f0165ea17b70016227af7376a9a",
+      "ob.s.size.container.lg": "02cdc86d2cc95eff4e1a703732f641d8049e1d05",
+      "ob.s.size.container.xl": "4b21ebec4e0e6e528ffa05823d7d20aa8196bc66",
+      "ob.s.size._legacy.normal": "227dcb06ab52215f6b2f8f63051f948c9212e8b4",
+      "ob.s.size._legacy.stretchy": "def0cea38baf9eac5171b897fb85c0032b27c9b0",
+      "ob.s.size._legacy.spacious": "fab978401dbc968c000c41da65f7242b2b20d3a9",
+      "ob.s.size._legacy.chubby": "a6b0d4d091547336b062c88d090b405cd981c200",
+      "ob.s.size._legacy.hefty": "c7e0312adca9611b0d8211491df76b62e0a6426f",
+      "ob.s.size._legacy.ultra": "97b7a0acc376ab62d2ab396b9978c40cbfc7fca2",
+      "ob.s.size._legacy.whoa": "14ed7ff8cb1ca2c9282f2fae728414a2675cc24c",
+      "ob.s.size._legacy.multiverse": "8b8434b9b8c50bb53bf6cbb8254fc77bcf565c03",
       "ob.s.font_family.body": "f8b4299c520c68e264c58a07e7c0078033d602fc",
       "ob.s.font_family.heading": "46f6a598eee8f00cef1db0c50a441f8f0fbf5776",
       "ob.s.font_family.code": "072d73c724b7a447065feef7255bd7f3327343ce",
@@ -707,9 +696,6 @@
       "ob.c.tag.icon.size.sm": "37dff7f9a717fb740b7f7017a3ace896cf37e252",
       "ob.c.tag.icon.size.md": "3e55334fe22f2bce92f461cc723bffaac7bb5d4d",
       "ob.c.tag.icon.size.lg": "f3895394a1f8b18129996f88114e99139394c056",
-      "ob.c.tag.surface.min_height.sm": "84f607f5f83ec23f8039696fada96cccc9f893ae",
-      "ob.c.tag.surface.min_height.md": "1e39e1a1921df9b72190156f5c5bff10a6511443",
-      "ob.c.tag.surface.min_height.lg": "1d6c29cfb5b4ca8d30a6a494e7fd37dae50d5885",
       "ob.c.tag.color.fg.enabled": "f779b76d5b3078c91eae3ceacea8b9848a2a521e",
       "ob.c.tag.color.fg.hover": "c42cd3743ec372f3b064ae5ca2bedf05917968f9",
       "ob.c.tag.color.fg.focus": "199bdd3860ebd67b3580e80b311ae721af7d7bf9",
@@ -720,9 +706,9 @@
       "ob.c.tag.color.bg.focus": "c60418d7e87bde3d3ab695cfc5df54607de4c6d4",
       "ob.c.tag.color.bg.active": "986f9de9e1e622f9f8fbd21b73adaa0b38671272",
       "ob.c.tag.color.bg.disabled": "e289a81b341a1bb33e30088bc0dd8488e129133c",
-      "ob.c.tag.remove_button.size.sm": "4dfec5a5bc0a34c0dfcaf83567a2f02deaf329ba",
-      "ob.c.tag.remove_button.size.md": "c445fc51a301aad7fa492a65757399a43668d238",
-      "ob.c.tag.remove_button.size.lg": "2cc347d59e9534a064229ebc17224a8b3a86d5c0",
+      "ob.c.tag.remove_button.size.sm": "7814ebcf75533ccb36e3a0c7be8f3e506b9369b7",
+      "ob.c.tag.remove_button.size.md": "f34f4420993a2af76a46908a4c92893407e3a460",
+      "ob.c.tag.remove_button.size.lg": "15908ce0f6f692ab807072352b3a2e34d082e99c",
       "ob.h.button.spacing.with_text.padding.vertical.sm": "a419098f06a0647bd0f337e4c92cf23b4bdfc0bb",
       "ob.h.button.spacing.with_text.padding.vertical.md": "8069cd8384e472b6ee99b859f155bad1d87135c6",
       "ob.h.button.spacing.with_text.padding.vertical.lg": "319e9c05e2160f1f30ae237656b4d88eb83d1b6b",
@@ -1079,8 +1065,7 @@
       "semantic/spacing/desktop": "enabled",
       "semantic/typography/responsive/desktop": "enabled",
       "html/button_aug/03 viewport/desktop": "enabled",
-      "component/molecule/infobox/responsive/desktop": "enabled",
-      "component/atom/icon_holder/sm": "disabled"
+      "component/molecule/infobox/responsive/desktop": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult_responsive": "a0218fef21f82d9c8e08419c5244a3c2f6b2dbcb",
@@ -1296,8 +1281,7 @@
       "semantic/spacing/mobile": "enabled",
       "semantic/typography/responsive/mobile": "enabled",
       "html/button_aug/03 viewport/mobile": "enabled",
-      "component/molecule/infobox/responsive/mobile": "enabled",
-      "component/atom/icon_holder/sm": "disabled"
+      "component/molecule/infobox/responsive/mobile": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult_responsive": "a0218fef21f82d9c8e08419c5244a3c2f6b2dbcb",
@@ -1585,8 +1569,7 @@
       "semantic/asset/theme/lightness/light": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/light": "enabled",
       "semantic/color/s1-lightness/light": "enabled",
-      "component/molecule/infobox/color": "enabled",
-      "component/atom/icon_holder/sm": "disabled"
+      "component/molecule/infobox/color": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -2094,8 +2077,7 @@
       "semantic/asset/theme/lightness/dark": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/dark": "enabled",
       "semantic/color/s1-lightness/dark": "enabled",
-      "component/molecule/infobox/color": "enabled",
-      "component/atom/icon_holder/sm": "disabled"
+      "component/molecule/infobox/color": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",
@@ -2431,8 +2413,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/high": "enabled",
-      "component/atom/icon_holder/sm": "disabled"
+      "semantic/color/s2-emphasis/high": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "8cf79f15cedc26fdffa5cf06d71f58374e5dae06",
@@ -2502,8 +2483,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/low": "enabled",
-      "component/atom/icon_holder/sm": "disabled"
+      "semantic/color/s2-emphasis/low": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "8cf79f15cedc26fdffa5cf06d71f58374e5dae06",
@@ -2594,8 +2574,7 @@
       "r13.typography.components_only.tooltip.label": "S:01a80ff405036b8a204f742fa49f200230ff826c,"
     },
     "selectedTokenSets": {
-      "_ignore-in-ds/typography-styles-R13": "enabled",
-      "component/atom/icon_holder/sm": "disabled"
+      "_ignore-in-ds/typography-styles-R13": "enabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"
@@ -2605,8 +2584,7 @@
     "name": "semantic",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/color/s3-semantic/semantic": "enabled",
-      "component/atom/icon_holder/sm": "disabled"
+      "semantic/color/s3-semantic/semantic": "enabled"
     },
     "group": "semantic",
     "$figmaCollectionId": "VariableCollectionId:1:6",
@@ -2882,8 +2860,7 @@
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
     "$figmaModeId": "2006:1",
     "$figmaVariableReferences": {
-      "ob.c.icon_holder.size.standard": "7e8709f3da120317946e9155e95d42e1f7d623d9",
-      "ob.c.icon_holder.size.mini": "d62f0f73cc4f4fa506f1983326da32c6040f3be7",
+      "ob.c.icon_holder.size": "33918792746187d67cbb156b1cc006f6f23b877e",
       "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
       "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
       "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
@@ -2910,8 +2887,7 @@
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
     "$figmaModeId": "2006:2",
     "$figmaVariableReferences": {
-      "ob.c.icon_holder.size.standard": "7e8709f3da120317946e9155e95d42e1f7d623d9",
-      "ob.c.icon_holder.size.mini": "d62f0f73cc4f4fa506f1983326da32c6040f3be7",
+      "ob.c.icon_holder.size": "33918792746187d67cbb156b1cc006f6f23b877e",
       "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
       "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
       "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
@@ -2938,8 +2914,7 @@
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
     "$figmaModeId": "2006:3",
     "$figmaVariableReferences": {
-      "ob.c.icon_holder.size.standard": "7e8709f3da120317946e9155e95d42e1f7d623d9",
-      "ob.c.icon_holder.size.mini": "d62f0f73cc4f4fa506f1983326da32c6040f3be7",
+      "ob.c.icon_holder.size": "33918792746187d67cbb156b1cc006f6f23b877e",
       "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
       "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
       "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
@@ -2958,21 +2933,27 @@
     "name": "row",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button_aug/06 flex-direction/row": "enabled",
-      "component/atom/icon_holder/sm": "disabled"
+      "html/button_aug/06 flex-direction/row": "enabled"
     },
     "group": "button_direction",
-    "$figmaVariableReferences": {}
+    "$figmaVariableReferences": {
+      "ob.h.button_aug.flex_direction.row.gap": "5ff0791ea4b36b3ce68854b049adc22c8e39aed1"
+    },
+    "$figmaCollectionId": "VariableCollectionId:2115:3769",
+    "$figmaModeId": "2115:5"
   },
   {
     "id": "f8a4c2b5e9d6f123456789abcdef0123456789ab",
     "name": "column",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button_aug/06 flex-direction/column": "enabled",
-      "component/atom/icon_holder/sm": "disabled"
+      "html/button_aug/06 flex-direction/column": "enabled"
     },
     "group": "button_direction",
-    "$figmaVariableReferences": {}
+    "$figmaVariableReferences": {
+      "ob.h.button_aug.flex_direction.column.gap": "f3ebfa39346d3aa0133d4369a5a3d9ab82c1a2a0"
+    },
+    "$figmaCollectionId": "VariableCollectionId:2115:3769",
+    "$figmaModeId": "2115:6"
   }
 ]

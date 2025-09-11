@@ -2,508 +2,506 @@
   "ob": {
     "h": {
       "button_aug": {
-        "text_icons": {
-          "composite": {
-            "primary": {
-              "inversity_normal": {
-                "enabled": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.enabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.enabled}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.enabled}"
-                    }
+        "composite": {
+          "primary": {
+            "inversity_normal": {
+              "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
                   }
                 },
-                "hover": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.hover}",
-                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.hover}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.hover}"
-                    }
-                  }
-                },
-                "focus": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.focus}",
-                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.focus}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
-                      "focus_ring": "{ob.h.button_aug.focus_ring}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.focus}"
-                    }
-                  }
-                },
-                "pressed": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.pressed}",
-                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.pressed}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.pressed}"
-                    }
-                  }
-                },
-                "disabled": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.disabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.disabled}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.disabled}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.enabled}"
                   }
                 }
               },
-              "inversity_flipped": {
-                "enabled": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.enabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.enabled}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.enabled}"
-                    }
+              "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
                   }
                 },
-                "hover": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.hover}",
-                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.hover}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.hover}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.hover}"
+                  }
+                }
+              },
+              "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
                   }
                 },
-                "focus": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.focus}",
-                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.focus}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
-                      "focus_ring": "{ob.h.button_aug.focus_ring}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.focus}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.focus}"
+                  }
+                }
+              },
+              "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
                   }
                 },
-                "pressed": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.pressed}",
-                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.pressed}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.pressed}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.pressed}"
+                  }
+                }
+              },
+              "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
                   }
                 },
-                "disabled": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.disabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.disabled}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.disabled}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.disabled}"
                   }
                 }
               }
             },
-            "secondary": {
-              "inversity_normal": {
-                "enabled": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.enabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.enabled}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.enabled}"
-                    }
+            "inversity_flipped": {
+              "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
                   }
                 },
-                "hover": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.hover}",
-                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.hover}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.hover}"
-                    }
-                  }
-                },
-                "focus": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.focus}",
-                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.focus}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
-                      "focus_ring": "{ob.h.button_aug.focus_ring}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.focus}"
-                    }
-                  }
-                },
-                "pressed": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.pressed}",
-                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.pressed}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.pressed}"
-                    }
-                  }
-                },
-                "disabled": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.disabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.disabled}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.disabled}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.enabled}"
                   }
                 }
               },
-              "inversity_flipped": {
-                "enabled": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.enabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.enabled}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.enabled}"
-                    }
+              "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
                   }
                 },
-                "hover": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.hover}",
-                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.hover}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.hover}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.hover}"
+                  }
+                }
+              },
+              "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
                   }
                 },
-                "focus": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.focus}",
-                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.focus}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
-                      "focus_ring": "{ob.h.button_aug.focus_ring}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.focus}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.focus}"
+                  }
+                }
+              },
+              "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
                   }
                 },
-                "pressed": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.pressed}",
-                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.pressed}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.pressed}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.pressed}"
+                  }
+                }
+              },
+              "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
                   }
                 },
-                "disabled": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.disabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.disabled}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.disabled}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.disabled}"
+                  }
+                }
+              }
+            }
+          },
+          "secondary": {
+            "inversity_normal": {
+              "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.enabled}"
+                  }
+                }
+              },
+              "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.hover}"
+                  }
+                }
+              },
+              "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.focus}"
+                  }
+                }
+              },
+              "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.pressed}"
+                  }
+                }
+              },
+              "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.disabled}"
                   }
                 }
               }
             },
-            "tertiary": {
-              "inversity_normal": {
-                "enabled": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.enabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.enabled}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.enabled}"
-                    }
+            "inversity_flipped": {
+              "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
                   }
                 },
-                "hover": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.hover}",
-                      "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.hover}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.hover}"
-                    }
-                  }
-                },
-                "focus": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.focus}",
-                      "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.focus}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
-                      "focus_ring": "{ob.h.button_aug.focus_ring}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.focus}"
-                    }
-                  }
-                },
-                "pressed": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.pressed}",
-                      "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.pressed}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.pressed}"
-                    }
-                  }
-                },
-                "disabled": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.disabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.disabled}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.disabled}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.enabled}"
                   }
                 }
               },
-              "inversity_flipped": {
-                "enabled": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.enabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.enabled}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.enabled}"
-                    }
+              "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
                   }
                 },
-                "hover": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.hover}",
-                      "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.hover}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.hover}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.hover}"
+                  }
+                }
+              },
+              "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
                   }
                 },
-                "focus": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.focus}",
-                      "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.focus}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
-                      "focus_ring": "{ob.h.button_aug.focus_ring}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.focus}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.focus}"
+                  }
+                }
+              },
+              "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
                   }
                 },
-                "pressed": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.pressed}",
-                      "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.pressed}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.pressed}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.pressed}"
+                  }
+                }
+              },
+              "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
                   }
                 },
-                "disabled": {
-                  "button_surface": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.disabled}",
-                      "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.disabled}",
-                      "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
-                    }
-                  },
-                  "fg": {
-                    "$type": "composition",
-                    "$value": {
-                      "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.disabled}"
-                    }
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.disabled}"
+                  }
+                }
+              }
+            }
+          },
+          "tertiary": {
+            "inversity_normal": {
+              "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.enabled}"
+                  }
+                }
+              },
+              "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.hover}"
+                  }
+                }
+              },
+              "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.focus}"
+                  }
+                }
+              },
+              "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.pressed}"
+                  }
+                }
+              },
+              "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.disabled}"
+                  }
+                }
+              }
+            },
+            "inversity_flipped": {
+              "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.enabled}"
+                  }
+                }
+              },
+              "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.hover}"
+                  }
+                }
+              },
+              "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.focus}"
+                  }
+                }
+              },
+              "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.pressed}"
+                  }
+                }
+              },
+              "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
+                  }
+                },
+                "fg": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.disabled}"
                   }
                 }
               }

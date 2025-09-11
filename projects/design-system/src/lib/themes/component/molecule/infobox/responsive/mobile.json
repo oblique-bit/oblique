@@ -98,7 +98,7 @@
           },
           "close_button_size": {
             "$type": "sizing",
-            "$value": "{ob.c.icon_holder.size.standard}"
+            "$value": "{ob.c.icon_holder.size.standard.sm}"
           },
           "title": {
             "min_height": {
