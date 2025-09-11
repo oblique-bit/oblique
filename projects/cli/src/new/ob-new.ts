@@ -53,16 +53,17 @@ function handleObNewActions(options: HandleObNewActionOptions): void {
 				`[Info]: Interactive mode is enabled. All other options will be ignored, and you will be prompted to specify each option.`
 			);
 		}
-		runAddToolchain(options.projectName);
-		runAddOblique(cmdOptions, options.projectName);
+		const workingDirectory: string = getApplicationDirectory(options.projectName);
+		runAddToolchain(workingDirectory);
+		runAddOblique(cmdOptions, options.projectName, workingDirectory);
 	} catch (error) {
 		console.error('Installation failed: ', error);
 	}
 }
 
-function runAddToolchain(dir: string): void {
+function runAddToolchain(workingDirectory: string): void {
 	console.info(`[Info]: Installs @oblique/toolchain`);
-	execute({name: 'ngAdd', dependency: '@oblique/toolchain', execSyncOptions: {cwd: dir}});
+	execute({name: 'ngAdd', dependency: '@oblique/toolchain', execSyncOptions: {cwd: workingDirectory}});
 }
 
 function runNgNewAngularWorkspace(projectName: string, interactive: boolean, prefix: string): void {
@@ -78,10 +79,9 @@ function runNgNewAngularWorkspace(projectName: string, interactive: boolean, pre
 	});
 }
 
-function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string): void {
-	const dir: string = getApplicationDirectory(projectName);
-	installMaterial(dir);
-	installCdkAndAnimations(dir);
+function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string, workingDirectory: string): void {
+	installMaterial(workingDirectory);
+	installCdkAndAnimations(workingDirectory);
 	const projectTitle = options.title === projectNamePlaceholder || options.title === '' ? projectName : options.title;
 	let commandOptions: ObNewOptions<string | boolean> = {...options, title: projectTitle};
 	if (options.interactive === true) {
@@ -89,10 +89,10 @@ function runAddOblique(options: ObNewOptions<string | boolean>, projectName: str
 	}
 	const filteredOptions = filterValidOptions(commandOptions);
 
-	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: filteredOptions, execSyncOptions: {cwd: dir}});
-	runNpmDedupe();
-	runNpmPrune();
-	runNpmFormat();
+	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: filteredOptions, execSyncOptions: {cwd: workingDirectory}});
+	runNpmDedupe(workingDirectory);
+	runNpmPrune(workingDirectory);
+	runNpmFormat(workingDirectory);
 	console.info(`[Complete]: Oblique added`);
 }
 
@@ -118,28 +118,28 @@ function installCdkAndAnimations(dir: string): void {
 	execute({name: 'npmInstall', dependencies: ['@angular/cdk', '@angular/animations'], execSyncOptions: {cwd: dir}});
 }
 
-function runNpmDedupe(): void {
+function runNpmDedupe(workingDirectory: string): void {
 	console.info('[Info]: Runs npm dedupe');
 	try {
-		execute({name: 'npmDedupe'});
+		execute({name: 'npmDedupe', execSyncOptions: {cwd: workingDirectory}});
 	} catch (error) {
 		console.info(error);
 	}
 }
 
-function runNpmPrune(): void {
+function runNpmPrune(workingDirectory: string): void {
 	console.info('[Info]: Runs npm prune');
 	try {
-		execute({name: 'npmPrune'});
+		execute({name: 'npmPrune', execSyncOptions: {cwd: workingDirectory}});
 	} catch (error) {
 		console.info(error);
 	}
 }
 
-function runNpmFormat(): void {
+function runNpmFormat(workingDirectory: string): void {
 	console.info('[Info]: Runs npm format');
 	try {
-		execute({name: 'npmFormat'});
+		execute({name: 'npmFormat', execSyncOptions: {cwd: workingDirectory}});
 	} catch (error) {
 		console.info(error);
 	}

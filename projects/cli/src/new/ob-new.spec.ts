@@ -188,7 +188,10 @@ describe('Ob new command', () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						2,
 						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/toolchain@${currentVersions['@oblique/toolchain']}`,
-						{stdio: 'inherit'}
+						{
+							cwd: `${process.cwd()}/${projectName}`,
+							stdio: 'inherit'
+						}
 					);
 				});
 
