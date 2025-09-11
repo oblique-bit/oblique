@@ -17,7 +17,7 @@ export class ListGroupExampleAvatarSubheaderComponent {
 			line1: 'Cadrozzi AG',
 			line2: 'CHE-123.456.789 (active)',
 			line3: 'Musterstrasse 99, 3000 Bern',
-			icon: 'user-checkmark',
+			icon: 'person_checkmark',
 			avatar: 'assets/images/ListGroupImageExample.jpg'
 		},
 		{
@@ -26,7 +26,7 @@ export class ListGroupExampleAvatarSubheaderComponent {
 			line1: 'Bananopa AG',
 			line2: 'CHE-123.633.789',
 			line3: 'Laupenfuss 59, 3002 Bern',
-			icon: 'user',
+			icon: 'person',
 			avatar: 'assets/images/ListGroupImageExample.jpg'
 		},
 		{
@@ -35,7 +35,7 @@ export class ListGroupExampleAvatarSubheaderComponent {
 			line1: 'Lavani GmbH',
 			line2: 'CHE-123.456.408 (active)',
 			line3: 'Taubendorfstrasse 45, 3004 Bern',
-			icon: 'user-checkmark',
+			icon: 'person_checkmark',
 			avatar: 'assets/images/ListGroupImageExample.jpg'
 		}
 	];
