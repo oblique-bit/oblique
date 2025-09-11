@@ -14,6 +14,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 				warnIfStandalone(),
 				this.renameIcons(),
 				this.migrateAccessibilityStatementContactInfo(),
+				this.addMissingAccessibilityStatementProperties(),
 				this.migrateServiceNavigationContactInfo(),
 				this.removeObPaginator(),
 				this.removeFocusableFragments(),
@@ -297,6 +298,33 @@ export class UpdateV13toV14 implements ObIMigrations {
 			};
 			return applyInTree(tree, toApply, '*.ts');
 		});
+	}
+
+	private addMissingAccessibilityStatementProperties(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Add missing accessibility statement properties');
+			const toApply = (filePath: string): void => {
+				const content = readFile(tree, filePath);
+				if (content.includes('provideObliqueConfiguration(')) {
+					if (!content.includes('conformity')) {
+						replaceInFile(
+							tree,
+							filePath,
+							/(?<=accessibilityStatement\s*:\s*\{)/,
+							`\n\t\t\t\tconformity: '${this.getConformity(content)}',`
+						);
+					}
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		});
+	}
+	private getConformity(content: string): string {
+		if (content.includes('exceptions')) {
+			return 'partial';
+		}
+
+		return content.includes('createdOn') ? 'full' : 'none';
 	}
 
 	private migrateServiceNavigationContactInfo(): Rule {
