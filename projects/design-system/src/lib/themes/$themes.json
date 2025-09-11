@@ -2860,6 +2860,7 @@
       "ob.h.button_aug.text_icons.spacing.padding.vertical": "ef44c1d460f44c74cfa78d3ca0ed03162721dae1",
       "ob.h.button_aug.text_icons.spacing.padding.horizontal": "5d47f88e75032b89f3a31ee4887bedaaf35d3046",
       "ob.h.button_aug.text_icons.spacing.gap": "290c887d1e23879e6d2a1c9395e47d6effd685e8",
+      "ob.h.button_aug.text_icons.container.size.min_height": "207a563ff9b843219ba2a365aaa6b6f6d4821a86",
       "ob.h.button_aug.icon_only.spacing.padding.vertical": "1b81a58f73b95442ba96cbcd7b545e6c272b054e",
       "ob.h.button_aug.icon_only.spacing.padding.horizontal": "29d619eca7ecf756d1bf1247782d63b841b3b231",
       "ob.h.button_aug.typography.text_label.font_size": "f2b7cfb35501d80230c96c63216b982dd4a0d7ef",
@@ -2888,6 +2889,7 @@
       "ob.h.button_aug.text_icons.spacing.padding.vertical": "ef44c1d460f44c74cfa78d3ca0ed03162721dae1",
       "ob.h.button_aug.text_icons.spacing.padding.horizontal": "5d47f88e75032b89f3a31ee4887bedaaf35d3046",
       "ob.h.button_aug.text_icons.spacing.gap": "290c887d1e23879e6d2a1c9395e47d6effd685e8",
+      "ob.h.button_aug.text_icons.container.size.min_height": "207a563ff9b843219ba2a365aaa6b6f6d4821a86",
       "ob.h.button_aug.icon_only.spacing.padding.vertical": "1b81a58f73b95442ba96cbcd7b545e6c272b054e",
       "ob.h.button_aug.icon_only.spacing.padding.horizontal": "29d619eca7ecf756d1bf1247782d63b841b3b231",
       "ob.h.button_aug.typography.text_label.font_size": "f2b7cfb35501d80230c96c63216b982dd4a0d7ef",
@@ -2916,6 +2918,7 @@
       "ob.h.button_aug.text_icons.spacing.padding.vertical": "ef44c1d460f44c74cfa78d3ca0ed03162721dae1",
       "ob.h.button_aug.text_icons.spacing.padding.horizontal": "5d47f88e75032b89f3a31ee4887bedaaf35d3046",
       "ob.h.button_aug.text_icons.spacing.gap": "290c887d1e23879e6d2a1c9395e47d6effd685e8",
+      "ob.h.button_aug.text_icons.container.size.min_height": "207a563ff9b843219ba2a365aaa6b6f6d4821a86",
       "ob.h.button_aug.icon_only.spacing.padding.vertical": "1b81a58f73b95442ba96cbcd7b545e6c272b054e",
       "ob.h.button_aug.icon_only.spacing.padding.horizontal": "29d619eca7ecf756d1bf1247782d63b841b3b231",
       "ob.h.button_aug.typography.text_label.font_size": "f2b7cfb35501d80230c96c63216b982dd4a0d7ef",
@@ -2935,7 +2938,7 @@
     },
     "group": "button_direction",
     "$figmaVariableReferences": {
-      "ob.h.button_aug.flex_direction.row.gap": "b195d7e19c6cfa8002c0f4f9709517def10d0418"
+      "ob.h.button_aug.flex_direction.row.gap": "1d6c556be265114167a09cc9554ea508e92c09a8"
     },
     "$figmaCollectionId": "VariableCollectionId:4052:15352",
     "$figmaModeId": "4052:0"
@@ -2949,7 +2952,7 @@
     },
     "group": "button_direction",
     "$figmaVariableReferences": {
-      "ob.h.button_aug.flex_direction.column.gap": "b6cc01f0699099fd11377ee26febffdb17510632"
+      "ob.h.button_aug.flex_direction.column.gap": "f872c6e5853a7ea0de451ed436e7afc463d3c073"
     },
     "$figmaCollectionId": "VariableCollectionId:4052:15352",
     "$figmaModeId": "4052:1"

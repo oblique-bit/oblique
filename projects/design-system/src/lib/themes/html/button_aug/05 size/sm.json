@@ -27,7 +27,7 @@
             "size": {
               "min_height": {
                 "$type": "sizing",
-                "$value": "{ob.s.size.surface.xl}"
+                "$value": "{ob.s.size.surface.sm}"
               }
             }
           }
