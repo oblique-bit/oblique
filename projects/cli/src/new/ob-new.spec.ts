@@ -59,12 +59,11 @@ describe('Ob new command', () => {
 				{index: 2, message: 'Checks your node version', type: 'info'},
 				{index: 3, message: '\n[Info]: Creates a new Angular workspace', type: 'info'},
 				{index: 4, message: '[Info]: Installs @oblique/toolchain', type: 'info'},
-				{index: 5, message: '[Info]: Installs Angular Material', type: 'info'},
-				{index: 6, message: '[Info]: Installs @angular/cdk and @angular/animations', type: 'info'},
-				{index: 7, message: '[Info]: Runs npm dedupe', type: 'info'},
-				{index: 8, message: '[Info]: Runs npm prune', type: 'info'},
-				{index: 9, message: '[Info]: Runs npm format', type: 'info'},
-				{index: 10, message: '[Complete]: Oblique added', type: 'info'},
+				{index: 5, message: '[Info]: Adds Angular Material', type: 'info'},
+				{index: 6, message: '[Info]: Runs npm dedupe', type: 'info'},
+				{index: 7, message: '[Info]: Runs npm prune', type: 'info'},
+				{index: 8, message: '[Info]: Runs npm format', type: 'info'},
+				{index: 9, message: '[Complete]: Oblique added', type: 'info'},
 				{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'}
 			])('calls console ', ({index, message, type}) => {
 				test(`${type} ${message}`, () => {
@@ -195,21 +194,10 @@ describe('Ob new command', () => {
 					);
 				});
 
-				test(`should call npm install @angular/material@${currentVersions['@angular/material']}`, () => {
+				test(`should call npm install @angular/material@${currentVersions['@angular/material']} @angular/cdk@${currentVersions['@angular/cdk']} @angular/animations@${currentVersions['@angular/animations']}`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						3,
-						`npm install @angular/material@${currentVersions['@angular/material']} --audit false --fund false`,
-						{
-							cwd: `${process.cwd()}/${projectName}`,
-							stdio: 'inherit'
-						}
-					);
-				});
-
-				test(`should call npm install @angular/cdk@${currentVersions['@angular/cdk']} @angular/animations@${currentVersions['@angular/animations']}`, () => {
-					expect(execSync).toHaveBeenNthCalledWith(
-						4,
-						`npm install @angular/cdk@${currentVersions['@angular/cdk']} @angular/animations@${currentVersions['@angular/animations']} --audit false --fund false`,
+						`npm install @angular/material@${currentVersions['@angular/material']} @angular/cdk@${currentVersions['@angular/cdk']} @angular/animations@${currentVersions['@angular/animations']} --audit false --fund false`,
 						{
 							cwd: `${process.cwd()}/${projectName}`,
 							stdio: 'inherit'
@@ -219,7 +207,7 @@ describe('Ob new command', () => {
 
 				test(`should call npx ${projectName} with default parameter`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
-						5,
+						4,
 						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --npmrc --eslint --husky`,
 						{cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'}
 					);
@@ -267,12 +255,11 @@ describe('Ob new command', () => {
 				type: 'info'
 			},
 			{index: 5, message: '[Info]: Installs @oblique/toolchain', type: 'info'},
-			{index: 6, message: '[Info]: Installs Angular Material', type: 'info'},
-			{index: 7, message: '[Info]: Installs @angular/cdk and @angular/animations', type: 'info'},
-			{index: 8, message: '[Info]: Runs npm dedupe', type: 'info'},
-			{index: 9, message: '[Info]: Runs npm prune', type: 'info'},
-			{index: 10, message: '[Info]: Runs npm format', type: 'info'},
-			{index: 11, message: '[Complete]: Oblique added', type: 'info'},
+			{index: 6, message: '[Info]: Adds Angular Material', type: 'info'},
+			{index: 7, message: '[Info]: Runs npm dedupe', type: 'info'},
+			{index: 8, message: '[Info]: Runs npm prune', type: 'info'},
+			{index: 9, message: '[Info]: Runs npm format', type: 'info'},
+			{index: 10, message: '[Complete]: Oblique added', type: 'info'},
 			{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'}
 		])('calls console ', ({index, message, type}) => {
 			beforeEach(() => {
@@ -308,7 +295,7 @@ describe('Ob new command', () => {
 				const expected = options.includes('--interactive')
 					? `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']}`
 					: `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --npmrc --eslint --husky`;
-				expect(execSync).toHaveBeenNthCalledWith(5, expected, {cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'});
+				expect(execSync).toHaveBeenNthCalledWith(4, expected, {cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'});
 			});
 
 			afterEach(() => {

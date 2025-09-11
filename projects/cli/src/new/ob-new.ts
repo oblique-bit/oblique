@@ -55,6 +55,7 @@ function handleObNewActions(options: HandleObNewActionOptions): void {
 		}
 		const workingDirectory: string = getApplicationDirectory(options.projectName);
 		runAddToolchain(workingDirectory);
+		runAddMaterial(workingDirectory);
 		runAddOblique(cmdOptions, options.projectName, workingDirectory);
 	} catch (error) {
 		console.error('Installation failed: ', error);
@@ -79,9 +80,12 @@ function runNgNewAngularWorkspace(projectName: string, interactive: boolean, pre
 	});
 }
 
+function runAddMaterial(dir: string): void {
+	console.info(`[Info]: Adds Angular Material`);
+	execute({name: 'npmInstall', dependencies: ['@angular/material', '@angular/cdk', '@angular/animations'], execSyncOptions: {cwd: dir}});
+}
+
 function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string, workingDirectory: string): void {
-	installMaterial(workingDirectory);
-	installCdkAndAnimations(workingDirectory);
 	const projectTitle = options.title === projectNamePlaceholder || options.title === '' ? projectName : options.title;
 	let commandOptions: ObNewOptions<string | boolean> = {...options, title: projectTitle};
 	if (options.interactive === true) {
@@ -106,16 +110,6 @@ function filterValidOptions(commandOptions: Record<string, string | boolean>): R
 
 function getApplicationDirectory(projectName: string): string {
 	return [process.cwd(), projectName].join('/');
-}
-
-function installMaterial(dir: string): void {
-	console.info(`[Info]: Installs Angular Material`);
-	execute({name: 'npmInstall', dependencies: ['@angular/material'], execSyncOptions: {cwd: dir}});
-}
-
-function installCdkAndAnimations(dir: string): void {
-	console.info(`[Info]: Installs @angular/cdk and @angular/animations`);
-	execute({name: 'npmInstall', dependencies: ['@angular/cdk', '@angular/animations'], execSyncOptions: {cwd: dir}});
 }
 
 function runNpmDedupe(workingDirectory: string): void {
