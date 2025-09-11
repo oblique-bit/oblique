@@ -102,9 +102,9 @@
           },
           "title": {
             "min_height": {
-              "$type": "sizing",
-              "$value": "{ob.s.size._legacy.chubby}",
-              "$description": "This minimum height helps the \"title\" container keeps the height regardless if there is close-button inside the infobox on mobile. "
+              "$type": "dimension",
+              "$value": "{ob.s.size.surface.sm}",
+              "$description": "Minimum height (28px) helps the title container maintain height regardless of close-button presence"
             }
           }
         },

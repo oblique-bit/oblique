@@ -135,38 +135,38 @@
         "sizing": {
           "max_width": {
             "sm": {
-              "$type": "sizing",
-              "$value": "{ob.s.size._legacy.normal}",
-              "$description": "Max width of small badge. "
+              "$type": "dimension",
+              "$value": "{ob.s.size.element.lg}",
+              "$description": "Max width of small badge (16px - standard icon size)"
             },
             "lg": {
-              "$type": "sizing",
-              "$value": "{ob.s.size._legacy.ultra}",
-              "$description": "Max width of large size badge. Maybe this is obsolete if we restrict the amount of characters the other way."
+              "$type": "dimension",
+              "$value": "{ob.s.size.surface.xl}",
+              "$description": "Max width of large badge (48px - XL surface size)"
             }
           },
           "min_width": {
             "sm": {
-              "$type": "sizing",
-              "$value": "{ob.s.size._legacy.normal}",
-              "$description": "Minimal width of small size badge. Makes the badge round."
+              "$type": "dimension",
+              "$value": "{ob.s.size.element.lg}",
+              "$description": "Minimal width of small badge (16px - makes badge round)"
             },
             "lg": {
-              "$type": "sizing",
-              "$value": "{ob.s.size._legacy.stretchy}",
-              "$description": "Minimal width of large size badge. Makes the badge round."
+              "$type": "dimension",
+              "$value": "{ob.s.size.element.xl}",
+              "$description": "Minimal width of large badge (20px - makes badge round)"
             }
           },
           "height": {
             "sm": {
-              "$type": "sizing",
-              "$value": "{ob.s.size._legacy.normal}",
-              "$description": "Height of small size badge. Makes the badge round."
+              "$type": "dimension",
+              "$value": "{ob.s.size.element.lg}",
+              "$description": "Height of small badge (16px - makes badge round)"
             },
             "lg": {
-              "$type": "sizing",
-              "$value": "{ob.s.size._legacy.stretchy}",
-              "$description": "Height of small size badge. Makes the badge round."
+              "$type": "dimension",
+              "$value": "{ob.s.size.element.xl}",
+              "$description": "Height of large badge (20px - makes badge round)"
             }
           }
         },

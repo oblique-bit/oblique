@@ -66,33 +66,33 @@
           },
           "custom_buttons_container": {
             "width": {
-              "$type": "sizing",
-              "$value": "{ob.s.size._legacy.multiverse}"
+              "$type": "dimension",
+              "$value": "{ob.s.size.container.xl}"
             }
           },
           "custom_buttons": {
             "min_width": {
-              "$type": "sizing",
-              "$value": "{ob.s.size._legacy.whoa}"
+              "$type": "dimension",
+              "$value": "{ob.s.size.container.md}"
             }
           },
           "padded_container": {
             "width": {
-              "$type": "sizing",
-              "$value": "{ob.s.size._legacy.multiverse}",
-              "$description": "Sets a fix default width for popover for consistency reasons. In the project this can be overridden to meet the specifics requirements."
+              "$type": "dimension",
+              "$value": "{ob.s.size.container.xl}",
+              "$description": "Sets a fixed default width (320px) for popover consistency. Can be overridden for specific requirements."
             }
           },
           "close_button": {
             "width": {
-              "$type": "sizing",
-              "$value": "{ob.s.size._legacy.chubby}"
+              "$type": "dimension",
+              "$value": "{ob.s.size.surface.sm}"
             }
           },
           "text_variant_container": {
             "min_height": {
-              "$type": "sizing",
-              "$value": "{ob.s.size._legacy.chubby}"
+              "$type": "dimension",
+              "$value": "{ob.s.size.surface.sm}"
             }
           }
         },

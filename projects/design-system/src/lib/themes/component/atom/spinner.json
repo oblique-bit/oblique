@@ -3,9 +3,9 @@
     "c": {
       "spinner": {
         "sizing": {
-          "$type": "sizing",
-          "$value": "{ob.s.size._legacy.ultra}",
-          "$description": "Optimized spinner size suitable for both 1) smaller components like Card and 2) full-page displays, ensuring it is neither too small nor too large."
+          "$type": "dimension",
+          "$value": "{ob.s.size.surface.xl}",
+          "$description": "Optimized spinner size (48px) suitable for both small components like Card and full-page displays"
         },
         "color": {
           "active": {
