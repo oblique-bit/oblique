@@ -97,7 +97,9 @@
 		}
 
 		// Results in a color close to $ob-purple-500 after above filter is applied, but it is not an exact match
-		@include shadow.ob-focus-visible-tab-focus-box-shadow(#28361e);
+		&:focus-visible {
+			@include shadow.ob-tab-focus-box-shadow(#28361e);
+		}
 	}
 
 	.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
