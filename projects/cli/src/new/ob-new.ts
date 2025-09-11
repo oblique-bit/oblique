@@ -57,6 +57,7 @@ function handleObNewActions(options: HandleObNewActionOptions): void {
 		runAddMaterial(workingDirectory);
 		runAddOblique(cmdOptions, options.projectName, workingDirectory);
 		cleanupDependencies(workingDirectory);
+		formatCode(workingDirectory);
 	} catch (error) {
 		console.error('Installation failed: ', error);
 	}
@@ -90,7 +91,6 @@ function runAddOblique(options: ObNewOptions<string | boolean>, projectName: str
 
 	execute({name: 'ngAdd', dependency: '@oblique/toolchain', execSyncOptions: {cwd: workingDirectory}});
 	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: filteredOptions, execSyncOptions: {cwd: workingDirectory}});
-	runNpmFormat(workingDirectory);
 	console.info(`[Complete]: Oblique added`);
 }
 
@@ -99,6 +99,15 @@ function cleanupDependencies(workingDirectory: string): void {
 	try {
 		execute({name: 'npmDedupe', execSyncOptions: {cwd: workingDirectory}});
 		execute({name: 'npmPrune', execSyncOptions: {cwd: workingDirectory}});
+	} catch (error) {
+		console.info(error);
+	}
+}
+
+function formatCode(workingDirectory: string): void {
+	console.info(`[Info]: Runs npm format`);
+	try {
+		execute({name: 'npmFormat', execSyncOptions: {cwd: workingDirectory}});
 	} catch (error) {
 		console.info(error);
 	}
@@ -114,15 +123,6 @@ function filterValidOptions(commandOptions: Record<string, string | boolean>): R
 
 function getApplicationDirectory(projectName: string): string {
 	return [process.cwd(), projectName].join('/');
-}
-
-function runNpmFormat(workingDirectory: string): void {
-	console.info('[Info]: Runs npm format');
-	try {
-		execute({name: 'npmFormat', execSyncOptions: {cwd: workingDirectory}});
-	} catch (error) {
-		console.info(error);
-	}
 }
 
 function configureCommandOptions(newCommand: Command<[string], OptionValues>): Command<[string], OptionValues> {

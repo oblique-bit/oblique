@@ -59,9 +59,9 @@ describe('Ob new command', () => {
 				{index: 2, message: 'Checks your node version', type: 'info'},
 				{index: 3, message: '\n[Info]: Creates a new Angular workspace', type: 'info'},
 				{index: 4, message: '[Info]: Adds Angular Material', type: 'info'},
-				{index: 7, message: '[Info]: Runs npm dedupe and prune', type: 'info'},
-				{index: 5, message: '[Info]: Runs npm format', type: 'info'},
-				{index: 6, message: '[Complete]: Oblique added', type: 'info'},
+				{index: 6, message: '[Info]: Runs npm dedupe and prune', type: 'info'},
+				{index: 7, message: '[Info]: Runs npm format', type: 'info'},
+				{index: 5, message: '[Complete]: Oblique added', type: 'info'},
 				{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'}
 			])('calls console ', ({index, message, type}) => {
 				test(`${type} ${message}`, () => {
@@ -242,9 +242,9 @@ describe('Ob new command', () => {
 				type: 'info'
 			},
 			{index: 5, message: '[Info]: Adds Angular Material', type: 'info'},
-			{index: 8, message: '[Info]: Runs npm dedupe and prune', type: 'info'},
-			{index: 6, message: '[Info]: Runs npm format', type: 'info'},
-			{index: 7, message: '[Complete]: Oblique added', type: 'info'},
+			{index: 7, message: '[Info]: Runs npm dedupe and prune', type: 'info'},
+			{index: 8, message: '[Info]: Runs npm format', type: 'info'},
+			{index: 6, message: '[Complete]: Oblique added', type: 'info'},
 			{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'}
 		])('calls console ', ({index, message, type}) => {
 			beforeEach(() => {
