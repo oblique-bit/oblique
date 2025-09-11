@@ -72,7 +72,7 @@ export function runUpdateDependencies(): void {
 		const dependencies = Object.entries(currentVersions)
 			.map(([dependency]) => dependency as keyof typeof currentVersions)
 			.filter(dependency => isDependencyInPackage(dependency));
-		execute({name: 'ngUpdate', dependencies});
+		execute({name: 'ngUpdate', dependencies, options: {force: true}});
 	} catch (error) {
 		console.error(error);
 	}
