@@ -15,7 +15,7 @@ export const currentVersions = {
 	'@angular/cdk': '20',
 	'@angular/animations': '20',
 	'@types/jest': '29',
-	'@angular-builders/jest': '19',
+	'@angular-builders/jest': '20',
 	'@schematics/angular': '20',
 	'angular-oauth2-oidc': '20',
 	jest: '29'
