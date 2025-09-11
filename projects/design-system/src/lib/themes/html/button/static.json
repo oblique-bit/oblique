@@ -166,15 +166,15 @@
         "icon": {
           "size": {
             "sm": {
-              "$type": "sizing",
+              "$type": "dimension",
               "$value": "{ob.c.icon_holder.size.xs}"
             },
             "md": {
-              "$type": "sizing",
+              "$type": "dimension",
               "$value": "{ob.c.icon_holder.size.standard.sm}"
             },
             "lg": {
-              "$type": "sizing",
+              "$type": "dimension",
               "$value": "{ob.c.icon_holder.standard.size.md}"
             }
           }
@@ -183,21 +183,21 @@
           "surface": {
             "size": {
               "xs": {
-                "$type": "sizing",
+                "$type": "dimension",
                 "$value": "{ob.s.size.none}",
                 "$description": "Used as close button in ds tag component. Tertiary only, never has badge, emphasis muted only."
               },
               "sm": {
-                "$type": "sizing",
-                "$value": "{ob.s.size.spacious}"
+                "$type": "dimension",
+                "$value": "{ob.s.size.surface.xs}"
               },
               "md": {
-                "$type": "sizing",
-                "$value": "{ob.s.size.hefty}"
+                "$type": "dimension",
+                "$value": "{ob.s.size.surface.lg}"
               },
               "lg": {
-                "$type": "sizing",
-                "$value": "{ob.s.size.ultra}"
+                "$type": "dimension",
+                "$value": "{ob.s.size.surface.xl}"
               }
             }
           }

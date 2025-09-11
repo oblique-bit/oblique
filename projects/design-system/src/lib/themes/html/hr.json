@@ -4,7 +4,7 @@
       "hr": {
         "sizing": {
           "height": {
-            "$type": "sizing",
+            "$type": "dimension",
             "$value": "1"
           }
         },
