@@ -1,3 +1,14 @@
+# Diagnosing Legacy Token Mappings in Figma via Tokens Studio
+
+If you’ve ever ended up with lingering, outdated token mappings on certain Figma layers—for example, a border token accidentally applied to an icon that shouldn’t have a border—you might notice that even after fixing the obvious settings, some old mappings persist and cause unexpected color or style issues.
+
+These leftover mappings are essentially old assignments that remain hidden. The best way to diagnose and remove them is by using the Inspect tab in Tokens Studio. Here’s how:
+
+1. Open Tokens Studio and go to the Inspect tab. This will allow you to see all applied tokens on selected layers.
+2. Select the layers in question, like all icon layers. Then search specifically for the property that shouldn’t be there, such as “border.” If any unexpected border token is still attached, you’ll see it pop up.
+3. Remove or reset these lingering mappings directly in the Inspect panel by setting them to “none” or deleting the mapping entirely.
+
+This ensures you’re clearing out any outdated token references and keeping your design system consistent.
 # Figma Variable Debugging Guide
 **Version:** 1.0  
 **Date:** September 2, 2025  

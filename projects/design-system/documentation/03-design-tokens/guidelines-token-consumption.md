@@ -41,9 +41,10 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> Primitive
 }
 ```
 
-#### INVALID: L1 Semantic Consumption
+
+#### INVALID: S1 Semantic Consumption
 ```json
-// WRONG: Component consuming L1 semantic token
+// WRONG: Component consuming S1 semantic token directly
 "ob.h.list.single_item.spacing.marker_gap.list": {
   "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}"
 }
@@ -226,7 +227,7 @@ Components (ob.c.tag.container.spacing.gap.spacing.gap -> Semantics (ob.s.z_inde
   "$value": "{ob.p.color.red.50.red.50.red.50}"
 }
 
-// WRONG: Typography consuming L1 color
+// WRONG: Typography consuming S1 color
 "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.H1.color.text.default": {
   "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}"
 }
@@ -319,7 +320,7 @@ The validation script will generate **warnings** (not errors) for static token c
 When creating or reviewing component tokens, ensure:
 
 - [ ] **No primitive consumption**: Components don't reference `ob.p.assets.logo.assets.logo.assets.assets.*` directly
-- [ ] **No L1 consumption**: Components don't reference `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*`
+- [ ] **No S1 consumption**: Components don't reference `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*`
 - [ ] **Semantic alignment**: Component purpose matches token type (status/interaction/neutral)
 - [ ] **Theming support**: Required theming capabilities are available through token choice
 - [ ] **Reference chain**: Token references follow proper hierarchy (except global tokens which can be referenced from any level)
@@ -425,7 +426,7 @@ When creating a new component:
 
 When migrating existing components:
 
-1. **Audit current consumption**: Identify any primitive or L1 references
+1. **Audit current consumption**: Identify any primitive or S1 references
 2. **Map to semantic tokens**: Choose appropriate S2/S3 semantic tokens
 3. **Preserve visual appearance**: Ensure migration doesn't break existing designs
 4. **Test theme switching**: Verify all theme combinations work correctly
@@ -473,7 +474,7 @@ npm run check:token-consumption
 The consumption hierarchy validator includes:
 - **p/s1/s2/s3 semantic color validation**: Ensures proper hierarchical token consumption
 - **Static token exceptions**: Allows legitimate use of `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` and `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index
-- **Component L1 violation detection**: Catches components consuming `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*` tokens
+- **Component S1 violation detection**: Catches components consuming `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*` tokens
 - **Cross-domain validation**: Validates typography, spacing, and other token consumption patterns
 
 ### Documentation Updates
