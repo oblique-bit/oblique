@@ -351,6 +351,18 @@ Examples of use:
 				});
 			});
 
+			test('with an additional option', () => {
+				execute({name: 'ngUpdate', dependencies: ['jest'], options: {force: true}});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 update jest@29 --allow-dirty --force', {
+					stdio: 'inherit'
+				});
+			});
+
+			test('with an overwriting option', () => {
+				execute({name: 'ngUpdate', dependencies: ['jest'], options: {'allow-dirty': false}});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 update jest@29 --no-allow-dirty', {stdio: 'inherit'});
+			});
+
 			test('with an additional execSyncOptions', () => {
 				execute({name: 'ngUpdate', dependencies: ['jest'], execSyncOptions: {cwd: 'test'}});
 				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 update jest@29 --allow-dirty', {

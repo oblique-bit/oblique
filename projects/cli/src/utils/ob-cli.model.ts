@@ -40,7 +40,7 @@ export interface ObNpmInstallCommandConfig extends ObBaseCommandConfig {
 	dependencies: (keyof typeof currentVersions)[];
 }
 
-export interface ObNgUpdateCommandConfig extends ObBaseCommandConfig {
+export interface ObNgUpdateCommandConfig extends ObBaseCommandConfig, ObOptionsCommandConfig {
 	name: 'ngUpdate';
 	dependencies: (keyof typeof currentVersions)[];
 }

@@ -132,7 +132,7 @@ export function execute(config: ObCommandConfig): void {
 		case 'ngUpdate':
 			return executeNgCommand(
 				`update ${versionDependencies(config.dependencies).join(' ')}`,
-				{'allow-dirty': true},
+				{'allow-dirty': true, ...config.options},
 				config.execSyncOptions
 			);
 		case 'npmInstall':
