@@ -67,15 +67,15 @@
         "icon": {
           "size": {
             "sm": {
-              "$type": "sizing",
+              "$type": "dimension",
               "$value": "{ob.c.icon_holder.size.xs}"
             },
             "md": {
-              "$type": "sizing",
+              "$type": "dimension",
               "$value": "{ob.c.icon_holder.size.xs}"
             },
             "lg": {
-              "$type": "sizing",
+              "$type": "dimension",
               "$value": "{ob.c.icon_holder.size.standard.sm}"
             }
           }
