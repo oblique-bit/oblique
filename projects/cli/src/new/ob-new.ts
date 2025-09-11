@@ -82,6 +82,7 @@ function runAddMaterial(dir: string): void {
 }
 
 function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string, workingDirectory: string): void {
+	console.info(`[Info]: Adds Oblique`);
 	const projectTitle = options.title === projectNamePlaceholder || options.title === '' ? projectName : options.title;
 	let commandOptions: ObNewOptions<string | boolean> = {...options, title: projectTitle};
 	if (options.interactive === true) {
@@ -91,7 +92,6 @@ function runAddOblique(options: ObNewOptions<string | boolean>, projectName: str
 
 	execute({name: 'ngAdd', dependency: '@oblique/toolchain', execSyncOptions: {cwd: workingDirectory}});
 	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: filteredOptions, execSyncOptions: {cwd: workingDirectory}});
-	console.info(`[Complete]: Oblique added`);
 }
 
 function cleanupDependencies(workingDirectory: string): void {
