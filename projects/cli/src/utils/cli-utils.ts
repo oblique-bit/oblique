@@ -136,13 +136,16 @@ export function execute(config: ObCommandConfig): void {
 				config.execSyncOptions
 			);
 		case 'npmInstall':
-			return executeCommand(`npm install ${versionDependencies(config.dependencies).join(' ')}`, config.execSyncOptions);
+			return executeCommand(
+				`npm install ${versionDependencies(config.dependencies).join(' ')} --audit false --fund false`,
+				config.execSyncOptions
+			);
 		case 'npmUpdate':
-			return executeCommand('npm update --save', config.execSyncOptions);
+			return executeCommand('npm update --save --audit false --fund false', config.execSyncOptions);
 		case 'npmDedupe':
-			return executeCommand(`npm dedupe`, config.execSyncOptions);
+			return executeCommand(`npm dedupe --audit false --fund false`, config.execSyncOptions);
 		case 'npmPrune':
-			return executeCommand('npm prune', config.execSyncOptions);
+			return executeCommand('npm prune --audit false --fund false', config.execSyncOptions);
 		case 'npmFormat':
 			return executeCommand('npm run lint -- --fix', config.execSyncOptions);
 		case 'npmOutdated':

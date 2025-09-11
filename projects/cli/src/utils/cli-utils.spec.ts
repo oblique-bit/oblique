@@ -368,39 +368,47 @@ Examples of use:
 		describe('npmInstall', () => {
 			test('with one dependency', () => {
 				execute({name: 'npmInstall', dependencies: ['jest']});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@29', {stdio: 'inherit'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@29 --audit false --fund false', {stdio: 'inherit'});
 			});
 
 			test('with multiple dependencies', () => {
 				execute({name: 'npmInstall', dependencies: ['jest', '@types/jest']});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@29 @types/jest@29', {stdio: 'inherit'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@29 @types/jest@29 --audit false --fund false', {
+					stdio: 'inherit'
+				});
 			});
 
 			test('with an additional execSyncOptions', () => {
 				execute({name: 'npmInstall', dependencies: ['jest'], execSyncOptions: {cwd: 'test'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@29', {stdio: 'inherit', cwd: 'test'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@29 --audit false --fund false', {
+					stdio: 'inherit',
+					cwd: 'test'
+				});
 			});
 
 			test('with an overwriting execSyncOptions', () => {
 				execute({name: 'npmInstall', dependencies: ['jest'], execSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@29', {stdio: 'pipe'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@29 --audit false --fund false', {stdio: 'pipe'});
 			});
 		});
 
 		describe('npmUpdate', () => {
 			test('without additional execSyncOptions', () => {
 				execute({name: 'npmUpdate'});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm update --save', {stdio: 'inherit'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm update --save --audit false --fund false', {stdio: 'inherit'});
 			});
 
 			test('with an additional execSyncOptions', () => {
 				execute({name: 'npmUpdate', execSyncOptions: {cwd: 'test'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm update --save', {stdio: 'inherit', cwd: 'test'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm update --save --audit false --fund false', {
+					stdio: 'inherit',
+					cwd: 'test'
+				});
 			});
 
 			test('with an overwriting execSyncOptions', () => {
 				execute({name: 'npmUpdate', execSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm update --save', {stdio: 'pipe'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm update --save --audit false --fund false', {stdio: 'pipe'});
 			});
 		});
 
