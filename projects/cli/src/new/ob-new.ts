@@ -56,6 +56,7 @@ function handleObNewActions(options: HandleObNewActionOptions): void {
 		const workingDirectory: string = getApplicationDirectory(options.projectName);
 		runAddMaterial(workingDirectory);
 		runAddOblique(cmdOptions, options.projectName, workingDirectory);
+		cleanupDependencies(workingDirectory);
 	} catch (error) {
 		console.error('Installation failed: ', error);
 	}
@@ -89,10 +90,18 @@ function runAddOblique(options: ObNewOptions<string | boolean>, projectName: str
 
 	execute({name: 'ngAdd', dependency: '@oblique/toolchain', execSyncOptions: {cwd: workingDirectory}});
 	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: filteredOptions, execSyncOptions: {cwd: workingDirectory}});
-	runNpmDedupe(workingDirectory);
-	runNpmPrune(workingDirectory);
 	runNpmFormat(workingDirectory);
 	console.info(`[Complete]: Oblique added`);
+}
+
+function cleanupDependencies(workingDirectory: string): void {
+	console.info(`[Info]: Runs npm dedupe and prune`);
+	try {
+		execute({name: 'npmDedupe', execSyncOptions: {cwd: workingDirectory}});
+		execute({name: 'npmPrune', execSyncOptions: {cwd: workingDirectory}});
+	} catch (error) {
+		console.info(error);
+	}
 }
 
 // filter out option 'interactive' or 'no-interactive'
@@ -105,24 +114,6 @@ function filterValidOptions(commandOptions: Record<string, string | boolean>): R
 
 function getApplicationDirectory(projectName: string): string {
 	return [process.cwd(), projectName].join('/');
-}
-
-function runNpmDedupe(workingDirectory: string): void {
-	console.info('[Info]: Runs npm dedupe');
-	try {
-		execute({name: 'npmDedupe', execSyncOptions: {cwd: workingDirectory}});
-	} catch (error) {
-		console.info(error);
-	}
-}
-
-function runNpmPrune(workingDirectory: string): void {
-	console.info('[Info]: Runs npm prune');
-	try {
-		execute({name: 'npmPrune', execSyncOptions: {cwd: workingDirectory}});
-	} catch (error) {
-		console.info(error);
-	}
 }
 
 function runNpmFormat(workingDirectory: string): void {
