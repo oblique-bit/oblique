@@ -314,6 +314,10 @@ export class UpdateV13toV14 implements ObIMigrations {
 							`\n\t\t\t\tconformity: '${this.getConformity(content)}',`
 						);
 					}
+					if (!content.includes('createdOn')) {
+						const createdOn = new Date().toISOString().split('T')[0];
+						replaceInFile(tree, filePath, /(?<=accessibilityStatement\s*:\s*\{)/, `\n\t\t\t\tcreatedOn: new Date('${createdOn}'),`);
+					}
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
