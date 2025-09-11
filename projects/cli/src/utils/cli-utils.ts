@@ -7,7 +7,7 @@ export const version = '14.0.0-rc.1';
 /* End of generated content */
 
 export const currentVersions = {
-	'@oblique/oblique': '13',
+	'@oblique/oblique': version,
 	'@angular/cli': '20',
 	'@angular/material': '20',
 	'@oblique/toolchain': version,
