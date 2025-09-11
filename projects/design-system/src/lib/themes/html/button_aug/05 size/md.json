@@ -22,6 +22,14 @@
               "$type": "spacing",
               "$value": "{ob.s.spacing.md}"
             }
+          },
+          "container": {
+            "size": {
+              "min_height": {
+                "$type": "sizing",
+                "$value": "{ob.s.size.surface.lg}"
+              }
+            }
           }
         },
         "icon_only": {
