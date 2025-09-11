@@ -433,14 +433,12 @@
       "component/molecule/infobox/static": "enabled",
       "component/molecule/pill": "enabled",
       "component/molecule/popover": "enabled",
-      "component/molecule/tag": "enabled",
-      "component/atom/icon_holder/sm": "enabled"
+      "component/molecule/tag": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
     "$figmaVariableReferences": {
       "ob.h.button_aug.container.spacing.gap": "d297bb9c3a558a1e61d4a166ca3c9352dc79ac57",
-      "ob.c.icon_holder.size": "a137388c7fb705de86324ff38620c045f2245eda",
       "ob.g.scale.mult_static": "a4d54f474013afd60e2eb05ee629a50095f08f19",
       "ob.g.breakpoints.0": "3ddc3b83ca4178eb6725929fb57829d1a0292339",
       "ob.g.breakpoints.768": "852133ec11c52af52a03bd9ca75e6d3b1cd7c4f3",
@@ -2860,7 +2858,8 @@
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
     "$figmaModeId": "2006:1",
     "$figmaVariableReferences": {
-      "ob.c.icon_holder.size": "33918792746187d67cbb156b1cc006f6f23b877e",
+      "ob.c.icon_holder.size.standard": "33918792746187d67cbb156b1cc006f6f23b877e",
+      "ob.c.icon_holder.size.mini": "c16e0538be86bdd6ba71a2f6d71a3251f7e89d86",
       "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
       "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
       "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
@@ -2887,7 +2886,8 @@
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
     "$figmaModeId": "2006:2",
     "$figmaVariableReferences": {
-      "ob.c.icon_holder.size": "33918792746187d67cbb156b1cc006f6f23b877e",
+      "ob.c.icon_holder.size.standard": "33918792746187d67cbb156b1cc006f6f23b877e",
+      "ob.c.icon_holder.size.mini": "c16e0538be86bdd6ba71a2f6d71a3251f7e89d86",
       "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
       "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
       "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
@@ -2914,7 +2914,8 @@
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
     "$figmaModeId": "2006:3",
     "$figmaVariableReferences": {
-      "ob.c.icon_holder.size": "33918792746187d67cbb156b1cc006f6f23b877e",
+      "ob.c.icon_holder.size.standard": "33918792746187d67cbb156b1cc006f6f23b877e",
+      "ob.c.icon_holder.size.mini": "c16e0538be86bdd6ba71a2f6d71a3251f7e89d86",
       "ob.h.button_aug.text_icons.spacing.padding.vertical": "361c180e3832b886d7ad7d708f139c4a135899b6",
       "ob.h.button_aug.text_icons.spacing.padding.horizontal": "50004ed157996c25d7de624fbd454b30173d6d09",
       "ob.h.button_aug.text_icons.spacing.gap": "3da02cb47b9aa77b3c5863a303c417aa6bea1b64",
@@ -2937,7 +2938,7 @@
     },
     "group": "button_direction",
     "$figmaVariableReferences": {
-      "ob.h.button_aug.flex_direction.row.gap": "5ff0791ea4b36b3ce68854b049adc22c8e39aed1"
+      "ob.h.button_aug.flex_direction.row.gap": "e50955a22aca96a73cc52726836b04c82bdef740"
     },
     "$figmaCollectionId": "VariableCollectionId:2115:3769",
     "$figmaModeId": "2115:5"
@@ -2951,7 +2952,7 @@
     },
     "group": "button_direction",
     "$figmaVariableReferences": {
-      "ob.h.button_aug.flex_direction.column.gap": "f3ebfa39346d3aa0133d4369a5a3d9ab82c1a2a0"
+      "ob.h.button_aug.flex_direction.column.gap": "1ea504ad8877dfced4dad1494d4ec9b53dea1067"
     },
     "$figmaCollectionId": "VariableCollectionId:2115:3769",
     "$figmaModeId": "2115:6"

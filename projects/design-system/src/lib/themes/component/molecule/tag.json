@@ -73,22 +73,6 @@
             "$description": "Standard tags in Oblique."
           }
         },
-        "icon": {
-          "size": {
-            "sm": {
-              "$type": "sizing",
-              "$value": "{ob.c.icon_holder.size.xs}"
-            },
-            "md": {
-              "$type": "sizing",
-              "$value": "{ob.c.icon_holder.size.xs}"
-            },
-            "lg": {
-              "$type": "sizing",
-              "$value": "{ob.c.icon_holder.size.standard.sm}"
-            }
-          }
-        },
         "surface": {
           "min_height": {
             "sm": {
@@ -164,22 +148,6 @@
             "disabled": {
               "$type": "color",
               "$value": "{ob.s3.color.neutral.bg.contrast_low.inversity_normal}"
-            }
-          }
-        },
-        "remove_button": {
-          "size": {
-            "sm": {
-              "$type": "sizing",
-              "$value": "{ob.c.icon_holder.size.xs}"
-            },
-            "md": {
-              "$type": "sizing",
-              "$value": "{ob.c.icon_holder.size.xs}"
-            },
-            "lg": {
-              "$type": "sizing",
-              "$value": "{ob.c.icon_holder.size.standard.sm}"
             }
           }
         }

@@ -3,9 +3,16 @@
     "c": {
       "icon_holder": {
         "size": {
-          "$type": "dimension",
-          "$value": "{ob.p.size.350}",
-          "$description": "MwSt asked for this size. ok i'll add a more pre desc later."
+          "standard": {
+            "$type": "dimension",
+            "$value": "{ob.p.size.350}",
+            "$description": "MwSt asked for this size. ok i'll add a more pre desc later."
+          },
+          "mini": {
+            "$type": "dimension",
+            "$value": "{ob.p.size.250}",
+            "$description": "for button.remove only"
+          }
         }
       }
     }

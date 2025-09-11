@@ -3,12 +3,23 @@
     "c": {
       "icon_holder": {
         "size": {
-          "mini": {
+          "standard": {
+            "mini": {
+              "$type": "dimension",
+              "$value": "{ob.p.size.200}"
+            },
             "$type": "dimension",
-            "$value": "{ob.p.size.200}"
+            "$value": "{ob.p.size.250}"
           },
-          "$type": "dimension",
-          "$value": "{ob.p.size.300}"
+          "mini": {
+            "mini": {
+              "$type": "dimension",
+              "$value": "{ob.p.size.200}"
+            },
+            "$type": "dimension",
+            "$value": "{ob.p.size.175}",
+            "$description": "for button.remove only"
+          }
         }
       }
     }
