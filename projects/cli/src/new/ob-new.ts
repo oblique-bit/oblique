@@ -54,17 +54,11 @@ function handleObNewActions(options: HandleObNewActionOptions): void {
 			);
 		}
 		const workingDirectory: string = getApplicationDirectory(options.projectName);
-		runAddToolchain(workingDirectory);
 		runAddMaterial(workingDirectory);
 		runAddOblique(cmdOptions, options.projectName, workingDirectory);
 	} catch (error) {
 		console.error('Installation failed: ', error);
 	}
-}
-
-function runAddToolchain(workingDirectory: string): void {
-	console.info(`[Info]: Installs @oblique/toolchain`);
-	execute({name: 'ngAdd', dependency: '@oblique/toolchain', execSyncOptions: {cwd: workingDirectory}});
 }
 
 function runNgNewAngularWorkspace(projectName: string, interactive: boolean, prefix: string): void {
@@ -93,6 +87,7 @@ function runAddOblique(options: ObNewOptions<string | boolean>, projectName: str
 	}
 	const filteredOptions = filterValidOptions(commandOptions);
 
+	execute({name: 'ngAdd', dependency: '@oblique/toolchain', execSyncOptions: {cwd: workingDirectory}});
 	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: filteredOptions, execSyncOptions: {cwd: workingDirectory}});
 	runNpmDedupe(workingDirectory);
 	runNpmPrune(workingDirectory);
