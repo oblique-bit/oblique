@@ -53,16 +53,16 @@ function handleObNewActions(options: HandleObNewActionOptions): void {
 				`[Info]: Interactive mode is enabled. All other options will be ignored, and you will be prompted to specify each option.`
 			);
 		}
-		runAddToolchain();
+		runAddToolchain(options.projectName);
 		runAddOblique(cmdOptions, options.projectName);
 	} catch (error) {
 		console.error('Installation failed: ', error);
 	}
 }
 
-function runAddToolchain(): void {
+function runAddToolchain(dir: string): void {
 	console.info(`[Info]: Installs @oblique/toolchain`);
-	execute({name: 'ngAdd', dependency: '@oblique/toolchain'});
+	execute({name: 'ngAdd', dependency: '@oblique/toolchain', execSyncOptions: {cwd: dir}});
 }
 
 function runNgNewAngularWorkspace(projectName: string, interactive: boolean, prefix: string): void {
