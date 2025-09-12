@@ -9,7 +9,7 @@ The {component-name} component should be used following these core principles:
 
 ## When to Use
 
-### ✅ Recommended Use Cases
+### **Success:** Recommended Use Cases
 
 **{USE_CASE_CATEGORY_1}**
 - {SPECIFIC_USE_CASE_1}
@@ -21,7 +21,7 @@ The {component-name} component should be used following these core principles:
 - {SPECIFIC_USE_CASE_5}
 - {SPECIFIC_USE_CASE_6}
 
-### ❌ Avoid These Patterns
+### **Error:** Avoid These Patterns
 
 **{ANTI_PATTERN_CATEGORY_1}**
 - {ANTI_PATTERN_1} - Use {ALTERNATIVE_1} instead
@@ -100,7 +100,7 @@ The {component-name} component should be used following these core principles:
 
 ## Examples
 
-### ✅ Good Examples
+### **Success:** Good Examples
 
 **{GOOD_EXAMPLE_1_TITLE}**
 ```{CODE_LANGUAGE}
@@ -114,7 +114,7 @@ The {component-name} component should be used following these core principles:
 ```
 *Why this works:* {GOOD_EXAMPLE_2_EXPLANATION}
 
-### ❌ Poor Examples
+### **Error:** Poor Examples
 
 **{BAD_EXAMPLE_1_TITLE}**
 ```{CODE_LANGUAGE}
@@ -154,7 +154,7 @@ The {component-name} component should be used following these core principles:
 
 ## Performance Guidelines
 
-### Best Practices
+### standard practices
 - {PERFORMANCE_GUIDELINE_1}
 - {PERFORMANCE_GUIDELINE_2}
 - {PERFORMANCE_GUIDELINE_3}

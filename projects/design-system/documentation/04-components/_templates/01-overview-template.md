@@ -66,4 +66,4 @@ This component uses design tokens for:
 **Next Steps:**
 - [Component Architecture](02-architecture.md) - Design decisions and structure
 - [Implementation Guide](03-implementation.md) - Developer implementation details
-- [Usage Guidelines](04-guidelines.md) - Best practices and patterns
+- [Usage Guidelines](04-guidelines.md) - standard practices and patterns

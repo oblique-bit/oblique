@@ -157,7 +157,7 @@ Tags serve **different interaction paradigms** requiring specialized behavior pa
 - **Focus target**: Entire tag surface (whole component is interactive)
 - **Size flexibility**: Independent sizing with designer control (default md)
 
-*UX Validation: Separate modes prevent interaction confusion and optimize each use case*
+*UX Validation: Separate modes prevent interaction confusion and improve each use case*
 
 #### Inversity Strategy for Accessibility
 
@@ -289,7 +289,7 @@ Tags use **context-appropriate inversity** to ensure focus ring scannability and
 
 #### Accessibility-First Design
 - Specialized ARIA roles for tag removal actions  
-- Keyboard interaction patterns optimized for form input contexts
+- Keyboard interaction patterns improved for form input contexts
 - Focus management that respects input field workflows
 
 ### Babushka Size Validation

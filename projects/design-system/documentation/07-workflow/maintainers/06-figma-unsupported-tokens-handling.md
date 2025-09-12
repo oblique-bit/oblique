@@ -15,18 +15,18 @@
 
 ## Overview
 
-Some design properties essential for comprehensive design systems cannot be represented as Figma variables due to platform limitations. This guide provides patterns for creating **developer-only tokens** that maintain design system integrity while acknowledging tool constraints.
+Some design properties essential for complete design systems cannot be represented as Figma variables due to platform limitations. This guide provides patterns for creating **developer-only tokens** that maintain design system integrity while acknowledging tool constraints.
 
 ### Common Unsupported Token Types
 
 | **Property Type** | **Figma Support** | **Token Required** | **Implementation** |
 |------------------|------------------|-------------------|-------------------|
-| **Text Vertical Trim** | ❌ Manual only | ✅ Yes | Component tokens |
-| **CSS Layout (flex-direction)** | ❌ Not supported | ✅ Yes | Component tokens |
-| **Text Alignment** | ❌ Manual only | ✅ Yes | Component tokens |
-| **Complex Animations** | ❌ Basic only | ✅ Yes | Custom properties |
-| **Multi-value Spacing** | ❌ Single values | ✅ Yes | Responsive tokens |
-| **Conditional Logic** | ❌ Not supported | ✅ Yes | Theme tokens |
+| **Text Vertical Trim** | **Error:** Manual only | **Success:** Yes | Component tokens |
+| **CSS Layout (flex-direction)** | **Error:** Not supported | **Success:** Yes | Component tokens |
+| **Text Alignment** | **Error:** Manual only | **Success:** Yes | Component tokens |
+| **Complex Animations** | **Error:** Basic only | **Success:** Yes | Custom properties |
+| **Multi-value Spacing** | **Error:** Single values | **Success:** Yes | Responsive tokens |
+| **Conditional Logic** | **Error:** Not supported | **Success:** Yes | Theme tokens |
 
 ---
 
@@ -136,9 +136,9 @@ You've set vertical trim to "cap height to baseline" in Figma for buttons, but n
 ## Export Control Strategy
 
 ### Token Studio Configuration
-- **Include in JSON**: ✅ All unsupported tokens remain in token files
-- **Exclude from Figma**: ❌ Prevent export to Figma variables to avoid confusion
-- **Developer Access**: ✅ Ensure tokens available in code generation
+- **Include in JSON**: **Success:** All unsupported tokens remain in token files
+- **Exclude from Figma**: **Error:** Prevent export to Figma variables to avoid confusion
+- **Developer Access**: **Success:** Ensure tokens available in code generation
 
 ### File Organization
 ```
@@ -183,15 +183,15 @@ mcp_figma_dev_mod_get_variable_defs
 
 ---
 
-## Best Practices
+## standard practices
 
-### ✅ Do
+### **Success:** Do
 - **Document Clearly**: Always include FIGMA LIMITATION notices
 - **Reference Primitives**: Use primitive tokens for reusability
 - **Provide Implementation**: Include specific CSS guidance
 - **Validate Manually**: Check Figma component matches token intent
 
-### ❌ Don't
+### **Error:** Don't
 - **Export to Figma**: Avoid unsupported tokens in Figma variables
 - **Assume Detection**: Don't expect MCP tools to find these tokens
 - **Skip Documentation**: Must document manual Figma procedures

@@ -3,7 +3,7 @@
 **Purpose:** Classify components as "free" vs "locked" sizing based on competitive analysis  
 **Context:** 46 design systems analysis + current Oblique architecture
 
-## 🎯 Categorization Framework
+## **Goal:** Categorization Framework
 
 ### **FREE Components** (Consumer-Controlled Sizing)
 Components where the **consumer explicitly controls size** and parent context doesn't override
@@ -13,9 +13,9 @@ Components that **inherit size from parent** or adapt to container constraints
 
 ---
 
-## 📊 Component Classification Matrix
+## **Summary:** Component Classification Matrix
 
-### **FREE Components** ✅
+### **FREE Components** **Success:**
 
 | Component | Size Range | Rationale | Competitive Evidence |
 |-----------|------------|-----------|---------------------|
@@ -33,7 +33,7 @@ Components that **inherit size from parent** or adapt to container constraints
 
 ---
 
-### **LOCKED Components** 🔒
+### **LOCKED Components** **Security:**
 
 | Component | Size Source | Rationale | Competitive Evidence |
 |-----------|-------------|-----------|---------------------|
@@ -51,26 +51,26 @@ Components that **inherit size from parent** or adapt to container constraints
 
 ---
 
-## 🏗️ Hybrid Components (Context-Aware)
+## **Architecture:** Hybrid Components (Context-Aware)
 
-### **Button Group** 🔄
+### **Button Group** **Process:**
 - **FREE**: Group-level size selection (`<ButtonGroup size="lg">`)
 - **LOCKED**: Individual buttons inherit group size
 - **Pattern**: 15/46 systems show this container-controlled pattern
 
-### **Form Fields** 🔄  
+### **Form Fields** **Process:**  
 - **FREE**: Field-level size choice for form hierarchy
 - **LOCKED**: Internal elements (labels, help text, icons) inherit field size
 - **Pattern**: Universal form control pattern across systems
 
-### **Modal/Dialog** 🔄
+### **Modal/Dialog** **Process:**
 - **FREE**: Modal size (`sm/md/lg` modal containers)
 - **LOCKED**: Internal content adapts to modal constraints
 - **Pattern**: Container queries and space-aware content sizing
 
 ---
 
-## 🧩 Nesting Scenarios Analysis
+## **Note:** Nesting Scenarios Analysis
 
 ### **Simple Nesting** (1-Level Deep)
 ```
@@ -103,7 +103,7 @@ Modal (Container: sm - space constraints)
 
 ---
 
-## 🎯 Size Inheritance Rules
+## **Goal:** Size Inheritance Rules
 
 ### **Rule 1: FREE Component Authority**
 - FREE components **define their own size** regardless of parent
@@ -127,7 +127,7 @@ Modal (Container: sm - space constraints)
 
 ---
 
-## 💡 Token Architecture Implications
+## **Tip:** Token Architecture Implications
 
 ### **FREE Component Tokens**
 ```json
@@ -165,7 +165,7 @@ Modal (Container: sm - space constraints)
 
 ---
 
-## 🔍 Competitive Validation
+## **Analysis:** Competitive Validation
 
 ### **Industry Alignment**
 - **FREE Pattern**: 89% of systems (41/46) have consumer-controlled button sizing

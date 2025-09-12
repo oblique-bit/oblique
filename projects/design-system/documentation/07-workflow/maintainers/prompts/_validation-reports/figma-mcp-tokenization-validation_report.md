@@ -58,12 +58,12 @@ This report analyzes the effectiveness, usability, and current relevance of the 
 
 **Overall Score**: 6/10 (60%)
 
-### Strengths ✅
+### Strengths **Success:**
 - Clear step-by-step instructions
 - Contains specific MCP commands
 - Includes follow-up actions
 
-### Issues Identified ⚠️
+### Issues Identified **Warning:**
 - Prompt may be too verbose
 - No clear output format specification
 

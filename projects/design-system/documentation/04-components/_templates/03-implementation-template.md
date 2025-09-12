@@ -119,7 +119,7 @@ The component automatically includes:
 - Dependencies: {DEPENDENCIES}
 - Tree-shaking: {TREE_SHAKING_SUPPORT}
 
-### Optimization Tips
+### improvement Tips
 - {OPTIMIZATION_TIP_1}
 - {OPTIMIZATION_TIP_2}
 - {OPTIMIZATION_TIP_3}

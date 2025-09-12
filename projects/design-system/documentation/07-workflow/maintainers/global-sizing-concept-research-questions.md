@@ -3,7 +3,7 @@
 **Purpose:** Define research questions for size-nesting concept based on competitive analysis of 46 design systems  
 **Status:** Research Framework
 
-## 🎯 Core Research Context
+## **Goal:** Core Research Context
 
 ### Competitive Analysis Summary
 - **46 Design Systems Analyzed** via automated web scraping
@@ -19,7 +19,7 @@
 
 ---
 
-## 📋 Research Questions Framework
+## **Requirements:** Research Questions Framework
 
 ### 1. **Size Inheritance Patterns**
 
@@ -117,7 +117,7 @@
 
 ---
 
-## 🔍 Investigation Methodology
+## **Analysis:** Investigation Methodology
 
 ### Phase 1: Competitive Pattern Analysis
 - **Systems to Deep-Dive**: Material Design, Carbon, Chakra UI, Ant Design, Adobe Spectrum
@@ -131,17 +131,17 @@
 
 ### Phase 3: Proposal Development
 - **Size Inheritance Rules**: Clear hierarchy and override patterns
-- **Token Structure Optimization**: Balance between simplicity and flexibility
+- **Token Structure improvement**: Balance between simplicity and flexibility
 - **Implementation Guidelines**: Developer-friendly consumption patterns
 
 ---
 
-## 🎯 Expected Outcomes
+## **Goal:** Expected Outcomes
 
 ### Research Deliverables
 1. **Component Classification Matrix**: Free vs locked sizing by component type
 2. **Nesting Hierarchy Rules**: Clear precedence and inheritance patterns  
-3. **Token Architecture Proposal**: Optimized structure based on competitive analysis
+3. **Token Architecture Proposal**: improved structure based on competitive analysis
 4. **Edge Case Resolution Guide**: Solutions for complex nested scenarios
 5. **Implementation Roadmap**: Practical steps for global sizing concept
 

@@ -403,8 +403,8 @@ export class AccessibleFilterTagComponent {
 - Dependencies: ObIconComponent (inherited from icon_holder)
 - Tree-shaking: Full support for unused size variants
 
-### Optimization Tips
-- **Batch tag operations**: Use trackBy functions for tag lists to optimize change detection
+### improvement Tips
+- **Batch tag operations**: Use trackBy functions for tag lists to improve change detection
 - **Virtual scrolling**: For large tag collections (>100 tags), implement virtual scrolling
 - **Debounce inputs**: Debounce tag addition/removal in high-frequency scenarios
 - **Lazy loading**: Load tag options asynchronously for autocomplete scenarios
@@ -514,7 +514,7 @@ describe('Tag Input Integration', () => {
 
 **Performance issues with many tags**
 - **Problem:** Slow rendering with large tag collections
-- **Solution:** Implement virtual scrolling and trackBy functions for change detection optimization
+- **Solution:** Implement virtual scrolling and trackBy functions for change detection improvement
 
 ### Debugging Tips
 
@@ -551,7 +551,7 @@ export class DebugTagComponent {
 **Related Documentation:**
 - [Tag Component Overview](01-overview.md) - Component introduction and use cases
 - [Tag Architecture](02-architecture.md) - Technical design and token structure  
-- [Tag Guidelines](04-guidelines.md) - Usage patterns and best practices
+- [Tag Guidelines](04-guidelines.md) - Usage patterns and standard practices
 - [Icon Holder Component](../01-icon_holder/) - Foundation component for icon integration
 - **Problem:** {PROBLEM_DESCRIPTION_2}  
 - **Solution:** {SOLUTION_2}

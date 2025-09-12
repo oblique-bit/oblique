@@ -2,7 +2,7 @@
 
 This folder contains reusable templates for creating new components in the oblique design system.
 
-## 📋 Template Structure
+## **Requirements:** Template Structure
 
 Each component should follow this standardized structure:
 
@@ -12,7 +12,7 @@ Each component should follow this standardized structure:
 ├── 01-overview.md             # Component introduction and usage
 ├── 02-architecture.md         # Design decisions and structure
 ├── 03-implementation.md       # Developer implementation guide
-├── 04-guidelines.md           # Usage guidelines and best practices
+├── 04-guidelines.md           # Usage guidelines and standard practices
 ├── _research/                 # Internal research and rationale
 │   ├── competitive-analysis/
 │   ├── user-research/
@@ -26,7 +26,7 @@ Each component should follow this standardized structure:
     └── _archive/
 ```
 
-## 🚀 How to Use Templates
+## **Quick Start:** How to Use Templates
 
 1. **Copy template files** to new component folder
 2. **Replace placeholders** with component-specific content:
@@ -40,7 +40,7 @@ Each component should follow this standardized structure:
 4. **Create research folders** and add initial research documents
 5. **Set up validation reports** as components are developed
 
-## 📝 Template Files
+## **Note:** Template Files
 
 - **README-template.md** - Component entry point template
 - **01-overview-template.md** - Overview document template  
@@ -48,7 +48,7 @@ Each component should follow this standardized structure:
 - **03-implementation-template.md** - Implementation guide template
 - **04-guidelines-template.md** - Guidelines template
 
-## ✅ Component Creation Checklist
+## **Success:** Component Creation Checklist
 
 - [ ] Component folder created with proper naming (01-{component-name})
 - [ ] All template files copied and renamed

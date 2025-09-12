@@ -40,7 +40,7 @@ This report analyzes the effectiveness, usability, and current relevance of the 
 **Expected chat response format:**
 
 ```markdown
-## 🔍 Figma Layer Analysis: [component_name]
+## **Analysis:** Figma Layer Analysis: [component_name]
 
 ### Simple Structure
 ```
@@ -65,7 +65,7 @@ component_frame
 
 **Overall Score**: 13/10 (130%)
 
-### Strengths ✅
+### Strengths **Success:**
 - Clear step-by-step instructions
 - Appropriate prompt length
 - Contains specific MCP commands
@@ -73,7 +73,7 @@ component_frame
 - Core functionality - high relevance
 - Includes follow-up actions
 
-### Issues Identified ⚠️
+### Issues Identified **Warning:**
 - No significant issues found
 
 ### Recommendation: KEEP

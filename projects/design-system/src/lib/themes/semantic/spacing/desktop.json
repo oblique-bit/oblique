@@ -80,7 +80,8 @@
       "space": {
         "_base": {
           "$type": "spacing",
-          "$value": "{ob.g.scale.mult_responsive}"
+          "$value": "4",
+          "$description": "Desktop base spacing unit - compensated from mult_responsive desktop value"
         }
       }
     }

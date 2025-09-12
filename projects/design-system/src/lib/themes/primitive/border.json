@@ -56,7 +56,8 @@
         },
         "_base": {
           "$type": "borderRadius",
-          "$value": "{ob.g.scale.mult_responsive}"
+          "$value": "4",
+          "$description": "Base border radius - compensated from desktop mult_responsive value"
         }
       },
       "borderWidth": {
@@ -95,7 +96,8 @@
         },
         "_base": {
           "$type": "borderWidth",
-          "$value": "{ob.g.scale.mult_responsive}"
+          "$value": "4",
+          "$description": "Base border width - compensated from desktop mult_responsive value"
         }
       }
     }

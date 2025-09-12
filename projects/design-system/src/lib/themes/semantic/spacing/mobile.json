@@ -80,7 +80,8 @@
       "space": {
         "_base": {
           "$type": "spacing",
-          "$value": "{ob.g.scale.mult_responsive}"
+          "$value": "5",
+          "$description": "Mobile base spacing unit - compensated from mult_responsive mobile value"
         }
       }
     }

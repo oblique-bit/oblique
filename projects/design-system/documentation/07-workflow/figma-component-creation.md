@@ -69,18 +69,18 @@ Our approach aligns with **Figma's official guidance** while addressing practica
 #### Strategic Use: Variables + Variants for Different Purposes
 
 **Variables for systematic properties (our primary approach):**
-- ✅ **Sizes** - Migrate to variable modes (sm/md/lg)
-- ✅ **Colors** - Systematic token mapping
-- ✅ **Spacing** - Consistent across components
-- ✅ **Typography** - Design token alignment
-- ✅ **Inspectable** - Clear token relationships visible in properties
-- ✅ **Trackable** - Version controlled with design system evolution
-- ✅ **Developer-aligned** - Maps directly to code implementation
+- **Success:** **Sizes** - Migrate to variable modes (sm/md/lg)
+- **Success:** **Colors** - Systematic token mapping
+- **Success:** **Spacing** - Consistent across components
+- **Success:** **Typography** - Design token alignment
+- **Success:** **Inspectable** - Clear token relationships visible in properties
+- **Success:** **Trackable** - Version controlled with design system evolution
+- **Success:** **Developer-aligned** - Maps directly to code implementation
 
 **Variants for Figma-specific functions (strategic exceptions):**
-- ⚠️ **Interaction states** - enabled, hover, focus, active (prototyping needs)
-- ⚠️ **Prototyping flows** - Where Figma variables don't fully support interactions (2025 limitation)
-- ⚠️ **Animation states** - Complex state transitions requiring variant-based prototyping
+- **Warning:** **Interaction states** - enabled, hover, focus, active (prototyping needs)
+- **Warning:** **Prototyping flows** - Where Figma variables don't fully support interactions (2025 limitation)
+- **Warning:** **Animation states** - Complex state transitions requiring variant-based prototyping
 
 **Why this hybrid approach works:**
 - Variables handle **systematic design decisions** that map to tokens

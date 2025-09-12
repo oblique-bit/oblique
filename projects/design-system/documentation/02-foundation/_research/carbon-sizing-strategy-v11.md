@@ -9,17 +9,17 @@ Carbon's v11 migration introduced **"sizing as a mode"** - a contextual approach
 
 ### Carbon's Core Innovation
 
-**🎯 Contextual Inheritance**
+****Goal:** Contextual Inheritance**
 - Components inherit sizing context from parent containers
 - Size flows through interface hierarchy automatically
 - Eliminates manual size coordination across components
 
-**📏 Component Boundaries**
+****Note:** Component Boundaries**
 - Each component defines its supported size range
 - Components fallback to nearest boundary when context exceeds limits
 - Maintainer governance prevents visual/functional breaking points
 
-**🔄 Layer-Based Architecture**
+****Process:** Layer-Based Architecture**
 - Global size context applied at container level
 - Individual components respect predetermined boundaries
 - Unified theme approach reduces decision fatigue
@@ -35,7 +35,7 @@ Carbon's v11 migration introduced **"sizing as a mode"** - a contextual approach
 
 ## Oblique's Competitive Advantage
 
-**🚀 Beyond Carbon's Single-Layer Approach:**
+****Quick Start:** Beyond Carbon's Single-Layer Approach:**
 - **Dual-system separation**: Outer spacing (density) vs inner component sizing (size)
 - **More granular control** while maintaining contextual inheritance benefits
 - **Explicit density system** for layout breathing room control
@@ -61,19 +61,19 @@ $input-height-small: 32px;
 
 ## Key Takeaways for Oblique
 
-**✅ Validated Approaches:**
+****Success:** Validated Approaches:**
 - Contextual inheritance reduces cognitive load
 - Component boundaries prevent breaking points
 - Unified sizing modes improve consistency
 - Token consolidation enhances developer experience
 
-**🎯 Implementation Recommendations:**
+****Goal:** Implementation Recommendations:**
 - Adopt Carbon's component boundary patterns
 - Enhance with Oblique's density + size separation
 - Implement graceful fallbacks for unsupported contexts
 - Use maintainer governance for component size limits
 
-**💡 Strategic Insight:**
+****Tip:** Strategic Insight:**
 Carbon's success validates that **sizing is a contextual mode**, not individual properties. Oblique's dual-system approach (density + size) provides even more precise control while maintaining these proven benefits.
 
 ---

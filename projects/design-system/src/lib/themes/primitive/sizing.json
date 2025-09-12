@@ -160,8 +160,8 @@
         },
         "_base": {
           "$type": "dimension",
-          "$value": "{ob.g.scale.mult_responsive}",
-          "$description": "Acts as the foundational size token used to scale all derived sizing values, enabling consistent resizing for responsive modes."
+          "$value": "4",
+          "$description": "Base sizing unit - compensated from desktop mult_responsive value. All derived sizing values scale from this foundation."
         }
       }
     }
