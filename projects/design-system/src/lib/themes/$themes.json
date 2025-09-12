@@ -1059,7 +1059,8 @@
       "semantic/spacing/desktop": "enabled",
       "semantic/typography/responsive/desktop": "enabled",
       "html/button_aug/03 viewport/desktop": "enabled",
-      "component/molecule/infobox/responsive/desktop": "enabled"
+      "component/molecule/infobox/responsive/desktop": "enabled",
+      "global/02-multipliers/viewport/desktop": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult_responsive": "a0218fef21f82d9c8e08419c5244a3c2f6b2dbcb",
@@ -1273,7 +1274,8 @@
       "semantic/spacing/mobile": "enabled",
       "semantic/typography/responsive/mobile": "enabled",
       "html/button_aug/03 viewport/mobile": "enabled",
-      "component/molecule/infobox/responsive/mobile": "enabled"
+      "component/molecule/infobox/responsive/mobile": "enabled",
+      "global/02-multipliers/viewport/mobile": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.g.scale.mult_responsive": "a0218fef21f82d9c8e08419c5244a3c2f6b2dbcb",
