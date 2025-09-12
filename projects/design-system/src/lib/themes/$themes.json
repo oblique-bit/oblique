@@ -2577,9 +2577,13 @@
     "name": "semantic",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/color/s3-semantic/semantic": "enabled"
+      "semantic/color/s3-semantic/semantic": "enabled",
+      "semantic/01-static/dimension": "enabled",
+      "semantic/01-static/typography": "enabled",
+      "semantic/03-dynamic/dimension": "enabled",
+      "semantic/03-dynamic/spacing": "enabled",
+      "semantic/03-dynamic/typography": "enabled"
     },
-    "group": "semantic",
     "$figmaCollectionId": "VariableCollectionId:1:6",
     "$figmaModeId": "1:7",
     "$figmaVariableReferences": {
@@ -2838,7 +2842,8 @@
       "ob.s3.color.status.waiting.fg.contrast_medium.inversity_flipped": "2079ef0821f0c3be33006655d3dcdcdbef4f8fa7",
       "ob.s3.color.status.waiting.fg.contrast_low.inversity_normal": "3a4c7dad693b6907efb8242bdbadc8fd3d1352a6",
       "ob.s3.color.status.waiting.fg.contrast_low.inversity_flipped": "c6c059a5c0d4aa806c2a221f281afa5bd001f8d5"
-    }
+    },
+    "group": "semantic"
   },
   {
     "id": "da2304761913c4d38c491aaa8c01a27b5a413b5d",
