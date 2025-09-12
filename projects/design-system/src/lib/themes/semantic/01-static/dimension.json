@@ -1,0 +1,61 @@
+{
+  "borderRadius": {
+    "none": {
+      "$type": "dimension",
+      "$value": "0",
+      "$description": "No border radius - sharp corners"
+    },
+    "xs": {
+      "$type": "dimension", 
+      "$value": "2",
+      "$description": "Extra small border radius for subtle rounding"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "4", 
+      "$description": "Small border radius for cards and buttons"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "8",
+      "$description": "Medium border radius for larger elements"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "12",
+      "$description": "Large border radius for containers"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "16",
+      "$description": "Extra large border radius for prominent elements"
+    },
+    "full": {
+      "$type": "dimension",
+      "$value": "9999",
+      "$description": "Full border radius for circular elements"
+    }
+  },
+  "borderWidth": {
+    "none": {
+      "$type": "dimension",
+      "$value": "0",
+      "$description": "No border"
+    },
+    "thin": {
+      "$type": "dimension",
+      "$value": "1",
+      "$description": "Thin border for subtle separation"
+    },
+    "medium": {
+      "$type": "dimension",
+      "$value": "2",
+      "$description": "Medium border for standard elements"
+    },
+    "thick": {
+      "$type": "dimension", 
+      "$value": "4",
+      "$description": "Thick border for emphasis"
+    }
+  }
+}

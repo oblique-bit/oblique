@@ -1,0 +1,7 @@
+{
+  "multiplier": {
+    "$type": "number",
+    "$value": 0.8,
+    "$description": "Spacing size small (80% scaling) - Compact spacing for dense layouts"
+  }
+}

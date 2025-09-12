@@ -1,0 +1,7 @@
+{
+  "multiplier": {
+    "$type": "number",
+    "$value": 1.2,
+    "$description": "Spacing size large (120% scaling) - Enhanced spacing for accessibility and touch"
+  }
+}

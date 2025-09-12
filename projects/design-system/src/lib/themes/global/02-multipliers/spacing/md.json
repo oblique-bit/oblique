@@ -1,0 +1,7 @@
+{
+  "multiplier": {
+    "$type": "number",
+    "$value": 1.0,
+    "$description": "Spacing size medium (100% scaling) - Base reference spacing for all components"
+  }
+}
