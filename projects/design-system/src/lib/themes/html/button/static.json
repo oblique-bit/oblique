@@ -163,45 +163,6 @@
             "$description": "No shadow needed on disabled state of button."
           }
         },
-        "icon": {
-          "size": {
-            "sm": {
-              "$type": "dimension",
-              "$value": "{ob.c.icon_holder.size.xs}"
-            },
-            "md": {
-              "$type": "dimension",
-              "$value": "{ob.c.icon_holder.size.standard.sm}"
-            },
-            "lg": {
-              "$type": "dimension",
-              "$value": "{ob.c.icon_holder.standard.size.md}"
-            }
-          }
-        },
-        "icon_only": {
-          "surface": {
-            "size": {
-              "xs": {
-                "$type": "dimension",
-                "$value": "{ob.s.size.none}",
-                "$description": "Used as close button in ds tag component. Tertiary only, never has badge, emphasis muted only."
-              },
-              "sm": {
-                "$type": "dimension",
-                "$value": "{ob.s.size.surface.xs}"
-              },
-              "md": {
-                "$type": "dimension",
-                "$value": "{ob.s.size.surface.lg}"
-              },
-              "lg": {
-                "$type": "dimension",
-                "$value": "{ob.s.size.surface.xl}"
-              }
-            }
-          }
-        },
         "typography": {
           "text_label": {
             "$type": "typography",

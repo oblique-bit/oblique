@@ -57,13 +57,6 @@
           }
         },
         "sizing": {
-          "custom_icon": {
-            "size": {
-              "$type": "dimension",
-              "$value": "{ob.c.icon_holder.size.2xl}",
-              "$description": "For App Launcher Widget in ePortal and similar use cases."
-            }
-          },
           "custom_buttons_container": {
             "width": {
               "$type": "dimension",

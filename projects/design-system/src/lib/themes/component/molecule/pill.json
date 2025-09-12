@@ -64,22 +64,6 @@
             "$description": "Standard pills in Oblique."
           }
         },
-        "icon": {
-          "size": {
-            "sm": {
-              "$type": "dimension",
-              "$value": "{ob.c.icon_holder.size.xs}"
-            },
-            "md": {
-              "$type": "dimension",
-              "$value": "{ob.c.icon_holder.size.xs}"
-            },
-            "lg": {
-              "$type": "dimension",
-              "$value": "{ob.c.icon_holder.size.standard.sm}"
-            }
-          }
-        },
         "surface": {
           "min_height": {
             "sm": {
