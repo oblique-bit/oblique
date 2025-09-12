@@ -2,44 +2,81 @@
   "size": {
     "xs": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {global.02-multipliers.dimension.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 0.5",
+      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.dimension.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 0.5",
       "$description": "Extra small component size - Calculated: 4px × 1.0 × 1.0 × 0.5 = 2px"
     },
     "sm": {
       "$type": "dimension", 
-      "$value": "{ob.p.size._base} * {global.02-multipliers.dimension.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 0.75",
+      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.dimension.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 0.75",
       "$description": "Small component size - Calculated: 4px × 1.0 × 1.0 × 0.75 = 3px"
     },
     "md": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {global.02-multipliers.dimension.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier}",
+      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.dimension.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier}",
       "$description": "Medium component size - Calculated: 4px × 1.0 × 1.0 = 4px"
     },
     "lg": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {global.02-multipliers.dimension.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 1.5",
+      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.dimension.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 1.5",
       "$description": "Large component size - Calculated: 4px × 1.0 × 1.0 × 1.5 = 6px"
     },
-      "xl": {
+    "xl": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {global.02-multipliers.dimension.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 2",
-      "$description": "Extra large component size - Calculated: 4px × 1.0 × 1.0 × 2 = 8px"
+      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.dimension.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 2.0",
+      "$description": "Extra large component size - Calculated: 4px × 1.0 × 1.0 × 2.0 = 8px"
     },
     "2xl": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {global.02-multipliers.dimension.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 3",
-      "$description": "Double extra large component size - Calculated: 4px × 1.0 × 1.0 × 3 = 12px"
+      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.dimension.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 3.0",
+      "$description": "Double extra large component size - Calculated: 4px × 1.0 × 1.0 × 3.0 = 12px"
     },
     "3xl": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {global.02-multipliers.dimension.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 4",
-      "$description": "Triple extra large component size - Calculated: 4px × 1.0 × 1.0 × 4 = 16px"
+      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.dimension.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 4.0",
+      "$description": "Triple extra large component size - Calculated: 4px × 1.0 × 1.0 × 4.0 = 16px"
+    }
+  },
+  "spacing": {
+    "none": {
+      "$type": "dimension",
+      "$value": "0",
+      "$description": "No spacing"
+    },
+    "xs": {
+      "$type": "dimension", 
+      "$value": "{ob.p.spacing._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 0.25",
+      "$description": "Extra small spacing - Calculated: 8px × 1.0 × 1.0 × 0.25 = 2px"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "{ob.p.spacing._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 0.5", 
+      "$description": "Small spacing - Calculated: 8px × 1.0 × 1.0 × 0.5 = 4px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "{ob.p.spacing._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier}",
+      "$description": "Medium spacing - Calculated: 8px × 1.0 × 1.0 = 8px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "{ob.p.spacing._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 1.5",
+      "$description": "Large spacing - Calculated: 8px × 1.0 × 1.0 × 1.5 = 12px"
+    },
+    "xl": {
+      "$type": "dimension", 
+      "$value": "{ob.p.spacing._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 2.0",
+      "$description": "Extra large spacing - Calculated: 8px × 1.0 × 1.0 × 2.0 = 16px"
+    },
+    "2xl": {
+      "$type": "dimension",
+      "$value": "{ob.p.spacing._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 3.0",
+      "$description": "Double extra large spacing - Calculated: 8px × 1.0 × 1.0 × 3.0 = 24px"
     }
   },
   "minTarget": {
     "touch": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {global.02-multipliers.dimension.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 11",
+      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.dimension.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 11",
       "$description": "Minimum touch target size - Calculated: 4px × 1.0 × 1.0 × 11 = 44px"
     }
   }

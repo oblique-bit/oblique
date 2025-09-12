@@ -2,74 +2,74 @@
   "fontSize": {
     "xs": {
       "$type": "dimension",
-      "$value": "{ob.p.fontSizeUnitless._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 0.75",
+      "$value": "{ob.p.fontSizeUnitless._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 0.75",
       "$description": "Extra small font size - Calculated: 4px × 1.0 × 1.0 × 0.75 = 3px"
     },
     "sm": {
       "$type": "dimension",
-      "$value": "{ob.p.fontSizeUnitless._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 0.875",
+      "$value": "{ob.p.fontSizeUnitless._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 0.875",
       "$description": "Small font size - Calculated: 4px × 1.0 × 1.0 × 0.875 = 3.5px"
     },
     "md": {
       "$type": "dimension",
-      "$value": "{ob.p.fontSizeUnitless._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier}",
+      "$value": "{ob.p.fontSizeUnitless._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier}",
       "$description": "Medium font size - Calculated: 4px × 1.0 × 1.0 = 4px"
     },
       "lg": {
       "$type": "dimension",
-      "$value": "{ob.p.fontSizeUnitless._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 1.125",
+      "$value": "{ob.p.fontSizeUnitless._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 1.125",
       "$description": "Large font size - Calculated: 4px × 1.0 × 1.0 × 1.125 = 4.5px"
     },
     "xl": {
       "$type": "dimension",
-      "$value": "{ob.p.fontSizeUnitless._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 1.25",
+      "$value": "{ob.p.fontSizeUnitless._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 1.25",
       "$description": "Extra large font size - Calculated: 4px × 1.0 × 1.0 × 1.25 = 5px"
     },
     "2xl": {
       "$type": "dimension",
-      "$value": "{ob.p.fontSizeUnitless._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 1.5",
+      "$value": "{ob.p.fontSizeUnitless._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 1.5",
       "$description": "Double extra large font size - Calculated: 4px × 1.0 × 1.0 × 1.5 = 6px"
     },
     "3xl": {
       "$type": "dimension",
-      "$value": "{ob.p.fontSizeUnitless._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 1.875",
+      "$value": "{ob.p.fontSizeUnitless._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 1.875",
       "$description": "Triple extra large font size - Calculated: 4px × 1.0 × 1.0 × 1.875 = 7.5px"
     },
     "4xl": {
       "$type": "dimension",
-      "$value": "{ob.p.fontSizeUnitless._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 2.25",
+      "$value": "{ob.p.fontSizeUnitless._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 2.25",
       "$description": "Quadruple extra large font size - Calculated: 4px × 1.0 × 1.0 × 2.25 = 9px"
     }
   },
   "lineHeight": {
     "xs": {
       "$type": "dimension",
-      "$value": "{ob.p.lineHeight._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 0.75",
+      "$value": "{ob.p.lineHeight._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 0.75",
       "$description": "Extra small line height - Calculated: 4px × 1.0 × 1.0 × 0.75 = 3px"
     },
     "sm": {
       "$type": "dimension",
-      "$value": "{ob.p.lineHeight._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 0.875",
+      "$value": "{ob.p.lineHeight._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 0.875",
       "$description": "Small line height - Calculated: 4px × 1.0 × 1.0 × 0.875 = 3.5px"
     },
     "md": {
       "$type": "dimension",
-      "$value": "{ob.p.lineHeight._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier}",
+      "$value": "{ob.p.lineHeight._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier}",
       "$description": "Medium line height - Calculated: 4px × 1.0 × 1.0 = 4px"
     },
     "lg": {
       "$type": "dimension",
-      "$value": "{ob.p.lineHeight._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 1.125",
+      "$value": "{ob.p.lineHeight._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 1.125",
       "$description": "Large line height - Calculated: 4px × 1.0 × 1.0 × 1.125 = 4.5px"
     },
     "xl": {
       "$type": "dimension",
-      "$value": "{ob.p.lineHeight._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 1.25",
+      "$value": "{ob.p.lineHeight._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 1.25",
       "$description": "Extra large line height - Calculated: 4px × 1.0 × 1.0 × 1.25 = 5px"
     },
     "2xl": {
       "$type": "dimension",
-      "$value": "{ob.p.lineHeight._base} * {global.02-multipliers.typography.md.multiplier} * {global.02-multipliers.viewport.desktop.multiplier} * 1.5",
+      "$value": "{ob.p.lineHeight._base} * {ob.g.02-multipliers.typography.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 1.5",
       "$description": "Double extra large line height - Calculated: 4px × 1.0 × 1.0 × 1.5 = 6px"
     }
   }
