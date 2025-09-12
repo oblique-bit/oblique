@@ -1,7 +1,15 @@
 {
-  "multiplier": {
-    "$type": "number",
-    "$value": 1.0,
-    "$description": "Component size medium (100% scaling) - Base reference size for all components"
+  "ob": {
+    "g": {
+      "multiplier": {
+        "dimension": {
+          "md": {
+            "$type": "number",
+            "$value": 1.0,
+            "$description": "Component size medium (100% scaling) - Base reference size for all components"
+          }
+        }
+      }
+    }
   }
 }

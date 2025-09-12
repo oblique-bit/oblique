@@ -1,7 +1,15 @@
 {
-  "multiplier": {
-    "$type": "number",
-    "$value": 1.25,
-    "$description": "Mobile viewport scaling (125%) - Enhanced touch targets and readability for mobile devices"
+  "ob": {
+    "g": {
+      "multiplier": {
+        "viewport": {
+          "mobile": {
+            "$type": "number",
+            "$value": 1.25,
+            "$description": "Mobile viewport scaling (125%) - Enhanced touch targets and readability for mobile devices"
+          }
+        }
+      }
+    }
   }
 }

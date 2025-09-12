@@ -65,6 +65,66 @@ Tokens follow a hierarchical structure with dot-separated segments:
 
 ---
 
+## CRITICAL: Token Naming vs File Structure
+
+**IMPORTANT**: Token names DO NOT follow folder and JSON file naming conventions. File organization is for development convenience only.
+
+### **File Structure vs Token Names**
+```
+File: global/02-multipliers/dimension/md.json
+Token Name: ob.g.multiplier.dimension.md
+```
+
+**Rule**: You cannot create tokens by knowing only the folder and JSON file name. You must understand the documented architecture patterns.
+
+---
+
+## Global Multiplier Tokens
+
+Global multiplier tokens enable proportional scaling across the design system without token explosion.
+
+### **Structure Pattern**
+```
+ob.g.multiplier.{category}.{size}
+```
+
+### **Multiplier Token Examples**
+
+**Dimension Multipliers**
+```
+ob.g.multiplier.dimension.sm    → 0.8  (80% scaling)
+ob.g.multiplier.dimension.md    → 1.0  (100% baseline)  
+ob.g.multiplier.dimension.lg    → 1.2  (120% scaling)
+```
+
+**Spacing Multipliers**
+```
+ob.g.multiplier.spacing.sm      → 0.8  (compact spacing)
+ob.g.multiplier.spacing.md      → 1.0  (standard spacing)
+ob.g.multiplier.spacing.lg      → 1.2  (generous spacing)
+```
+
+**Typography Multipliers**
+```
+ob.g.multiplier.typography.sm   → 0.875 (87.5% scaling)
+ob.g.multiplier.typography.md   → 1.0   (100% baseline)
+ob.g.multiplier.typography.lg   → 1.125 (112.5% scaling)
+```
+
+**Viewport Multipliers**
+```
+ob.g.multiplier.viewport.desktop → 1.0  (desktop baseline)
+ob.g.multiplier.viewport.mobile  → 1.25 (mobile enhancement)
+```
+
+### **Multiplier Token References**
+```
+{ob.g.multiplier.dimension.md}      ← Correct
+{02-multipliers.dimension.md}       ← Incorrect
+```
+
+---
+
 ## Token Examples
 
 ### **Semantic Token**

@@ -1,7 +1,15 @@
 {
-  "multiplier": {
-    "$type": "number",
-    "$value": 1.125,
-    "$description": "Typography size large (112.5% scaling) - Enhanced readability for accessible text"
+  "ob": {
+    "g": {
+      "multiplier": {
+        "typography": {
+          "lg": {
+            "$type": "number",
+            "$value": 1.125,
+            "$description": "Typography size large (112.5% scaling) - Enhanced readability for accessible text"
+          }
+        }
+      }
+    }
   }
 }

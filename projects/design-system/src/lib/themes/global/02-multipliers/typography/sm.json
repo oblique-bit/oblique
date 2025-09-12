@@ -1,7 +1,15 @@
 {
-  "multiplier": {
-    "$type": "number",
-    "$value": 0.875,
-    "$description": "Typography size small (87.5% scaling) - Proportional font scaling for compact text"
+  "ob": {
+    "g": {
+      "multiplier": {
+        "typography": {
+          "sm": {
+            "$type": "number",
+            "$value": 0.875,
+            "$description": "Typography size small (87.5% scaling) - Proportional font scaling for compact text"
+          }
+        }
+      }
+    }
   }
 }

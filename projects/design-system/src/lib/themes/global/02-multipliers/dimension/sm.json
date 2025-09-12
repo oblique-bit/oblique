@@ -1,7 +1,15 @@
 {
-  "multiplier": {
-    "$type": "number",
-    "$value": 0.8,
-    "$description": "Component size small (80% scaling) - Apply to dimensions for compact components"
+  "ob": {
+    "g": {
+      "multiplier": {
+        "dimension": {
+          "sm": {
+            "$type": "number",
+            "$value": 0.8,
+            "$description": "Component size small (80% scaling) - Compact sizing for dense layouts"
+          }
+        }
+      }
+    }
   }
 }

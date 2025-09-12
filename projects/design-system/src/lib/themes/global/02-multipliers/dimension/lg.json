@@ -1,7 +1,15 @@
 {
-  "multiplier": {
-    "$type": "number",
-    "$value": 1.2,
-    "$description": "Component size large (120% scaling) - Apply to dimensions for enhanced accessibility"
+  "ob": {
+    "g": {
+      "multiplier": {
+        "dimension": {
+          "lg": {
+            "$type": "number",
+            "$value": 1.2,
+            "$description": "Component size large (120% scaling) - Apply to dimensions for enhanced accessibility"
+          }
+        }
+      }
+    }
   }
 }
