@@ -12,52 +12,52 @@
     },
     "xs": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 0.25",
+      "$value": "{ob.p.size._base} * {02-multipliers.spacing.md.multiplier} * {02-multipliers.viewport.desktop.multiplier} * 0.25",
       "$description": "Extra small spacing - Calculated: 4px × 1.0 × 1.0 × 0.25 = 1px"
     },
     "sm": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 0.5",
+      "$value": "{ob.p.size._base} * {02-multipliers.spacing.md.multiplier} * {02-multipliers.viewport.desktop.multiplier} * 0.5",
       "$description": "Small spacing - Calculated: 4px × 1.0 × 1.0 × 0.5 = 2px"
     },
     "md": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier}",
+      "$value": "{ob.p.size._base} * {02-multipliers.spacing.md.multiplier} * {02-multipliers.viewport.desktop.multiplier}",
       "$description": "Medium spacing - Calculated: 4px × 1.0 × 1.0 = 4px"
     },
     "lg": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 1.5",
+      "$value": "{ob.p.size._base} * {02-multipliers.spacing.md.multiplier} * {02-multipliers.viewport.desktop.multiplier} * 1.5",
       "$description": "Large spacing - Calculated: 4px × 1.0 × 1.0 × 1.5 = 6px"
     },
     "xl": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 2",
+      "$value": "{ob.p.size._base} * {02-multipliers.spacing.md.multiplier} * {02-multipliers.viewport.desktop.multiplier} * 2",
       "$description": "Extra large spacing - Calculated: 4px × 1.0 × 1.0 × 2 = 8px"
     },
     "2xl": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 2.5",
+      "$value": "{ob.p.size._base} * {02-multipliers.spacing.md.multiplier} * {02-multipliers.viewport.desktop.multiplier} * 2.5",
       "$description": "Double extra large spacing - Calculated: 4px × 1.0 × 1.0 × 2.5 = 10px"
     },
     "3xl": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 3",
+      "$value": "{ob.p.size._base} * {02-multipliers.spacing.md.multiplier} * {02-multipliers.viewport.desktop.multiplier} * 3",
       "$description": "Triple extra large spacing - Calculated: 4px × 1.0 × 1.0 × 3 = 12px"
     },
     "4xl": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 4",
+      "$value": "{ob.p.size._base} * {02-multipliers.spacing.md.multiplier} * {02-multipliers.viewport.desktop.multiplier} * 4",
       "$description": "Quadruple extra large spacing - Calculated: 4px × 1.0 × 1.0 × 4 = 16px"
     },
     "5xl": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 6",
+      "$value": "{ob.p.size._base} * {02-multipliers.spacing.md.multiplier} * {02-multipliers.viewport.desktop.multiplier} * 6",
       "$description": "Quintuple extra large spacing - Calculated: 4px × 1.0 × 1.0 × 6 = 24px"
     },
     "6xl": {
       "$type": "dimension",
-      "$value": "{ob.p.size._base} * {ob.g.02-multipliers.spacing.md.multiplier} * {ob.g.02-multipliers.viewport.desktop.multiplier} * 8",
+      "$value": "{ob.p.size._base} * {02-multipliers.spacing.md.multiplier} * {02-multipliers.viewport.desktop.multiplier} * 8",
       "$description": "Sextuple extra large spacing - Calculated: 4px × 1.0 × 1.0 × 8 = 32px"
     }
   }
