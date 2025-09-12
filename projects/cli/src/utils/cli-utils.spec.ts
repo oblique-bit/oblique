@@ -289,25 +289,25 @@ Examples of use:
 				{text: 'with empty', options: {}}
 			])('%text options object', ({options}) => {
 				execute({name: 'ngNew', projectName: 'project', options});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 new project', {stdio: 'inherit'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 new project', {stdio: 'inherit'});
 			});
 
 			test('with filled options object', () => {
 				execute({name: 'ngNew', projectName: 'project', options: {truthyFlag: true, falsyFlag: false, option: 'value'}});
 				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@20 new project --truthyFlag --no-falsyFlag --option="value"',
+					'npx @angular/cli@^20.2 new project --truthyFlag --no-falsyFlag --option="value"',
 					{stdio: 'inherit'}
 				);
 			});
 
 			test('with an additional execSyncOptions', () => {
 				execute({name: 'ngNew', projectName: 'project', execSyncOptions: {cwd: 'test'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 new project', {stdio: 'inherit', cwd: 'test'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 new project', {stdio: 'inherit', cwd: 'test'});
 			});
 
 			test('with an overwriting execSyncOptions', () => {
 				execute({name: 'ngNew', projectName: 'project', execSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 new project', {stdio: 'pipe'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 new project', {stdio: 'pipe'});
 			});
 		});
 
@@ -317,55 +317,57 @@ Examples of use:
 				{text: 'with empty', options: {}}
 			])('%text options object', ({options}) => {
 				execute({name: 'ngAdd', dependency: 'jest', options});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 add jest@29', {stdio: 'inherit'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 add jest@29', {stdio: 'inherit'});
 			});
 
 			test('with filled options object', () => {
 				execute({name: 'ngAdd', dependency: 'jest', options: {truthyFlag: true, falsyFlag: false, option: 'value'}});
 				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@20 add jest@29 --truthyFlag --no-falsyFlag --option="value"',
+					'npx @angular/cli@^20.2 add jest@29 --truthyFlag --no-falsyFlag --option="value"',
 					{stdio: 'inherit'}
 				);
 			});
 
 			test('with an additional execSyncOptions', () => {
 				execute({name: 'ngAdd', dependency: 'jest', execSyncOptions: {cwd: 'test'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 add jest@29', {stdio: 'inherit', cwd: 'test'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 add jest@29', {stdio: 'inherit', cwd: 'test'});
 			});
 
 			test('with an overwriting execSyncOptions', () => {
 				execute({name: 'ngAdd', dependency: 'jest', execSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 add jest@29', {stdio: 'pipe'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 add jest@29', {stdio: 'pipe'});
 			});
 		});
 
 		describe('ngUpdate', () => {
 			test('with a single dependency', () => {
 				execute({name: 'ngUpdate', dependencies: ['jest']});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 update jest@29 --allow-dirty', {stdio: 'inherit'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 update jest@29 --allow-dirty', {stdio: 'inherit'});
 			});
 			test('with multiple dependencies', () => {
 				execute({name: 'ngUpdate', dependencies: ['jest', '@types/jest']});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 update jest@29 @types/jest@29 --allow-dirty', {
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 update jest@29 @types/jest@29 --allow-dirty', {
 					stdio: 'inherit'
 				});
 			});
 
 			test('with an additional option', () => {
 				execute({name: 'ngUpdate', dependencies: ['jest'], options: {force: true}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 update jest@29 --allow-dirty --force', {
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 update jest@29 --allow-dirty --force', {
 					stdio: 'inherit'
 				});
 			});
 
 			test('with an overwriting option', () => {
 				execute({name: 'ngUpdate', dependencies: ['jest'], options: {'allow-dirty': false}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 update jest@29 --no-allow-dirty', {stdio: 'inherit'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 update jest@29 --no-allow-dirty', {
+					stdio: 'inherit'
+				});
 			});
 
 			test('with an additional execSyncOptions', () => {
 				execute({name: 'ngUpdate', dependencies: ['jest'], execSyncOptions: {cwd: 'test'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 update jest@29 --allow-dirty', {
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 update jest@29 --allow-dirty', {
 					stdio: 'inherit',
 					cwd: 'test'
 				});
@@ -373,7 +375,7 @@ Examples of use:
 
 			test('with an overwriting execSyncOptions', () => {
 				execute({name: 'ngUpdate', dependencies: ['jest'], execSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@20 update jest@29 --allow-dirty', {stdio: 'pipe'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 update jest@29 --allow-dirty', {stdio: 'pipe'});
 			});
 		});
 
