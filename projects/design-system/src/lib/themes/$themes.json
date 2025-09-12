@@ -406,7 +406,6 @@
       "html/list": "enabled",
       "global/themes-scoped/static": "enabled",
       "global/themes-user/lightness/static": "enabled",
-      "global/themes-user/viewport/static": "enabled",
       "html/button/color-static": "enabled",
       "primitive/position": "source",
       "primitive/sizing": "source",
@@ -433,7 +432,9 @@
       "component/molecule/infobox/static": "enabled",
       "component/molecule/pill": "enabled",
       "component/molecule/popover": "enabled",
-      "component/molecule/tag": "enabled"
+      "component/molecule/tag": "enabled",
+      "semantic/01-static/dimension": "enabled",
+      "semantic/01-static/typography": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -1055,7 +1056,6 @@
     },
     "selectedTokenSets": {
       "html/button/responsive/desktop": "enabled",
-      "global/themes-user/viewport/desktop": "enabled",
       "semantic/spacing/desktop": "enabled",
       "semantic/typography/responsive/desktop": "enabled",
       "html/button_aug/03 viewport/desktop": "enabled",
@@ -1270,7 +1270,6 @@
     },
     "selectedTokenSets": {
       "html/button/responsive/mobile": "enabled",
-      "global/themes-user/viewport/mobile": "enabled",
       "semantic/spacing/mobile": "enabled",
       "semantic/typography/responsive/mobile": "enabled",
       "html/button_aug/03 viewport/mobile": "enabled",
@@ -2968,7 +2967,7 @@
     "group": "component-size"
   },
   {
-    "id": "comp-size-md-2025-09-12-multipliers", 
+    "id": "comp-size-md-2025-09-12-multipliers",
     "name": "md",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
@@ -2980,7 +2979,7 @@
   },
   {
     "id": "comp-size-lg-2025-09-12-multipliers",
-    "name": "lg", 
+    "name": "lg",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "global/02-multipliers/dimension/lg": "enabled",
