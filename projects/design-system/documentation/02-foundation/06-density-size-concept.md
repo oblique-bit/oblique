@@ -59,8 +59,11 @@ This document outlines a dual-dimension approach to component scaling through **
 ### **Shared component sizes philosophy**
 Shared sizes are beneficial for:
 - **Visual and interaction consistency** (end user experience)
-- **Efficiency** (product designer workflow)
+- **Efficiency** (product designer workflow)  
 - **All components share one size collection**
+- **Contextual inheritance** (sizing flows through interface hierarchy)
+- **Component token boundaries** (each component defines its supported size range)
+- **Reduced cognitive load** (designers work with unified size modes rather than individual component sizing decisions)
 
 ### **Individual visual size with unified naming**
 - **Universal naming**: `sm`, `md`, `lg` across all components
