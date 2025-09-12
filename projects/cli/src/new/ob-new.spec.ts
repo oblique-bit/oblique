@@ -173,10 +173,10 @@ describe('Ob new command', () => {
 			});
 
 			describe('handleObNewActions execSync calls', () => {
-				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone  --no-ssr --style="scss" --prefix="app"`, () => {
+				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --no-zoneless --ai-config="none" --style="scss" --prefix="app"`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						1,
-						`npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --style="scss" --prefix="app"`,
+						`npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --no-zoneless --ai-config="none" --style="scss" --prefix="app"`,
 						{stdio: 'inherit'}
 					);
 				});
