@@ -7,15 +7,15 @@ export const version = '14.0.0-rc.1';
 /* End of generated content */
 
 export const currentVersions = {
-	'@oblique/oblique': '13',
-	'@angular/cli': '20',
+	'@oblique/oblique': version,
+	'@angular/cli': '^20.2',
 	'@angular/material': '20',
 	'@oblique/toolchain': version,
 	'@angular/core': '20',
 	'@angular/cdk': '20',
 	'@angular/animations': '20',
 	'@types/jest': '29',
-	'@angular-builders/jest': '19',
+	'@angular-builders/jest': '20',
 	'@schematics/angular': '20',
 	'angular-oauth2-oidc': '20',
 	jest: '29'
@@ -132,17 +132,20 @@ export function execute(config: ObCommandConfig): void {
 		case 'ngUpdate':
 			return executeNgCommand(
 				`update ${versionDependencies(config.dependencies).join(' ')}`,
-				{'allow-dirty': true},
+				{'allow-dirty': true, ...config.options},
 				config.execSyncOptions
 			);
 		case 'npmInstall':
-			return executeCommand(`npm install ${versionDependencies(config.dependencies).join(' ')}`, config.execSyncOptions);
+			return executeCommand(
+				`npm install ${versionDependencies(config.dependencies).join(' ')} --audit false --fund false`,
+				config.execSyncOptions
+			);
 		case 'npmUpdate':
-			return executeCommand('npm update --save', config.execSyncOptions);
+			return executeCommand('npm update --save --audit false --fund false', config.execSyncOptions);
 		case 'npmDedupe':
-			return executeCommand(`npm dedupe`, config.execSyncOptions);
+			return executeCommand(`npm dedupe --audit false --fund false`, config.execSyncOptions);
 		case 'npmPrune':
-			return executeCommand('npm prune', config.execSyncOptions);
+			return executeCommand('npm prune --audit false --fund false', config.execSyncOptions);
 		case 'npmFormat':
 			return executeCommand('npm run lint -- --fix', config.execSyncOptions);
 		case 'npmOutdated':

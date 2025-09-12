@@ -14,6 +14,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 				warnIfStandalone(),
 				this.renameIcons(),
 				this.migrateAccessibilityStatementContactInfo(),
+				this.addMissingAccessibilityStatementProperties(),
 				this.migrateServiceNavigationContactInfo(),
 				this.removeObPaginator(),
 				this.removeFocusableFragments(),
@@ -286,17 +287,48 @@ export class UpdateV13toV14 implements ObIMigrations {
 					const contacts: string[] = [];
 					const emails = (/(?<=emails\s*:\s*\[).*?(?=\])/u.exec(content) ?? [])[0];
 					if (emails?.length) {
-						contacts.push(...emails.split(',').map(email => `{email: '${email.trim()}'}`));
+						contacts.push(...emails.split(',').map(email => `{email: ${email.trim()}}`));
 					}
 					const phones = (/(?<=phones\s*:\s*\[).*?(?=\])/u.exec(content) ?? [])[0];
 					if (phones?.length) {
-						contacts.push(...phones.split(',').map(phone => `{phone: '${phone.trim()}'}`));
+						contacts.push(...phones.split(',').map(phone => `{phone: ${phone.trim()}}`));
 					}
 					replaceInFile(tree, filePath, /(?<=contact\s*:\s*)\{.*?}/, `[${contacts.join(', ')}]`);
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
 		});
+	}
+
+	private addMissingAccessibilityStatementProperties(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Add missing accessibility statement properties');
+			const toApply = (filePath: string): void => {
+				const content = readFile(tree, filePath);
+				if (content.includes('provideObliqueConfiguration(')) {
+					if (!content.includes('conformity')) {
+						replaceInFile(
+							tree,
+							filePath,
+							/(?<=accessibilityStatement\s*:\s*\{)/,
+							`\n\t\t\t\tconformity: '${this.getConformity(content)}',`
+						);
+					}
+					if (!content.includes('createdOn')) {
+						const createdOn = new Date().toISOString().split('T')[0];
+						replaceInFile(tree, filePath, /(?<=accessibilityStatement\s*:\s*\{)/, `\n\t\t\t\tcreatedOn: new Date('${createdOn}'),`);
+					}
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		});
+	}
+	private getConformity(content: string): string {
+		if (content.includes('exceptions')) {
+			return 'partial';
+		}
+
+		return content.includes('createdOn') ? 'full' : 'none';
 	}
 
 	private migrateServiceNavigationContactInfo(): Rule {

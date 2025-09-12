@@ -37,7 +37,7 @@ export type OptionKeys =
 	| 'eslint'
 	| 'husky';
 
-export type ImmutableOptionsType = 'standalone' | 'ssr' | 'style';
+export type ImmutableOptionsType = 'standalone' | 'ssr' | 'style' | 'zoneless' | 'ai-config';
 
 export const immutableOptions: Record<ImmutableOptionsType, {value: string | boolean; description: string}> = {
 	standalone: {
@@ -47,6 +47,14 @@ export const immutableOptions: Record<ImmutableOptionsType, {value: string | boo
 	ssr: {
 		value: false,
 		description: `Oblique doesn't support server side rendering`
+	},
+	zoneless: {
+		value: false,
+		description: `Oblique doesn't recommend zoneless yet`
+	},
+	'ai-config': {
+		value: 'none',
+		description: `Oblique doesn't recommend AI yet`
 	},
 	style: {
 		value: 'scss',
