@@ -2955,5 +2955,38 @@
     },
     "$figmaCollectionId": "VariableCollectionId:2115:3769",
     "$figmaModeId": "2115:6"
+  },
+  {
+    "id": "comp-size-sm-2025-09-12-multipliers",
+    "name": "sm",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "global/02-multipliers/dimension/sm": "enabled",
+      "global/02-multipliers/typography/sm": "enabled",
+      "global/02-multipliers/spacing/sm": "enabled"
+    },
+    "group": "component-size"
+  },
+  {
+    "id": "comp-size-md-2025-09-12-multipliers", 
+    "name": "md",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "global/02-multipliers/dimension/md": "enabled",
+      "global/02-multipliers/typography/md": "enabled",
+      "global/02-multipliers/spacing/md": "enabled"
+    },
+    "group": "component-size"
+  },
+  {
+    "id": "comp-size-lg-2025-09-12-multipliers",
+    "name": "lg", 
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "global/02-multipliers/dimension/lg": "enabled",
+      "global/02-multipliers/typography/lg": "enabled",
+      "global/02-multipliers/spacing/lg": "enabled"
+    },
+    "group": "component-size"
   }
 ]
