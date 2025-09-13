@@ -433,7 +433,7 @@
       "component/molecule/pill": "enabled",
       "component/molecule/popover": "enabled",
       "component/molecule/tag": "enabled",
-      "html/button_aug/05 size": "disabled"
+      "html/button_aug/05 size": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -907,6 +907,17 @@
       "ob.h.button_aug.typography.text_label.font_family": "f824aae362352899ac75e0411d1d3f14a9a2fede",
       "ob.h.button_aug.typography.text_label.font_weight": "7fbad2c5e704af59d026d7b29ea55cd9dd057bc7",
       "ob.h.button-aug.border_width": "0484d20811d12f4bb171a69d09df62d1341e7ee2",
+      "ob.h.button_aug.text_icons.spacing.padding.vertical": "6b224403c0b0262fcfd881b5a56fc53b7aadaaf0",
+      "ob.h.button_aug.text_icons.spacing.padding.horizontal": "cd59ac7ac2af8364a44bb5664e20142a51aeff61",
+      "ob.h.button_aug.text_icons.spacing.gap": "449218b4d901f835835d80cff8eed97b988f8e89",
+      "ob.h.button_aug.text_icons.container.size.min_height": "3891b7828ae8011da3681d2230d33569970b48a8",
+      "ob.h.button_aug.icon_only.spacing.padding.vertical": "b17624963c55ca95ae39f3a19dbe6415d2834922",
+      "ob.h.button_aug.icon_only.spacing.padding.horizontal": "0f438ee0214243aa8558f453612c9367f8eeec48",
+      "ob.h.button_aug.typography.text_label.font_size": "0724ed66f3b9460e9947b6c7d7b16e79a6732a39",
+      "ob.h.button_aug.typography.text_label.line_height": "1c922ac4a1a0baa22e35510d9e2b61b9b9ba782d",
+      "ob.h.button_aug.typography.text_label.letter_spacing": "89c08a460f6b07258e1f70e63ed8dd14a72201c6",
+      "ob.h.button_aug.remove.spacing.padding.vertical": "8fc5a215aa5fbe426ed4664263a82fdb1bc26060",
+      "ob.h.button_aug.remove.spacing.padding.horizontal": "1cfe8552f04cf47f5dd5760751e2e51a9c64e4a0",
       "ob.h.button_aug.container.direction.row.layout.direction": "110223ea657ce4d392384b153bac2486511af661",
       "ob.h.button_aug.container.direction.row.layout.flex_wrap": "92fa64ff521e7ee81fd8d9a48b576b5230109947",
       "ob.h.button_aug.container.direction.row.layout.align_items": "cd1db369ab75bd6c69c05569582506a9815afe71",
@@ -1044,8 +1055,7 @@
       "html/button/responsive/desktop": "enabled",
       "semantic/typography/responsive/desktop": "enabled",
       "html/button_aug/03 viewport/desktop": "enabled",
-      "component/molecule/infobox/responsive/desktop": "enabled",
-      "html/button_aug/05 size": "disabled"
+      "component/molecule/infobox/responsive/desktop": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.fontSize.xs": "3fed330e895a5a68b8e0823faadf7725aa7d12b4",
@@ -1239,8 +1249,7 @@
       "html/button/responsive/mobile": "enabled",
       "semantic/typography/responsive/mobile": "enabled",
       "html/button_aug/03 viewport/mobile": "enabled",
-      "component/molecule/infobox/responsive/mobile": "enabled",
-      "html/button_aug/05 size": "disabled"
+      "component/molecule/infobox/responsive/mobile": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.fontSize.xs": "3fed330e895a5a68b8e0823faadf7725aa7d12b4",
@@ -1301,8 +1310,8 @@
       "ob.h.button.typography.text_label.font_size.sm": "4b48131f183c8ba4e696655c4f90d3f2070173f2",
       "ob.h.button_aug.container.spacing.gap": "5eac0137233f56f154ce93f91b202c3c6285a13f",
       "ob.h.button_aug.touch_target.min_size": "116d4e7beeac58a584e05c69a8e9be311f259989",
-      "ob.c.infobox.sizing.icon_size": "25509905fd02cfcfe828fb699daaca731d69c7dd",
-      "ob.c.infobox.sizing.close_button_size": "b80a755138e418f7cbcde96861a43f411c3e4cfe"
+      "ob.c.infobox.sizing.icon_size": "95cc179ded2299e46175fa9902570b5bd3dcf561",
+      "ob.c.infobox.sizing.close_button_size": "6b75bb9c86e412b7499d73f5c1e046b5185a5580"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:2",
@@ -1510,8 +1519,7 @@
       "semantic/asset/theme/lightness/light": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/light": "enabled",
       "semantic/color/s1-lightness/light": "enabled",
-      "component/molecule/infobox/color": "enabled",
-      "html/button_aug/05 size": "disabled"
+      "component/molecule/infobox/color": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -2019,8 +2027,7 @@
       "semantic/asset/theme/lightness/dark": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/dark": "enabled",
       "semantic/color/s1-lightness/dark": "enabled",
-      "component/molecule/infobox/color": "enabled",
-      "html/button_aug/05 size": "disabled"
+      "component/molecule/infobox/color": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",
@@ -2356,8 +2363,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/high": "enabled",
-      "html/button_aug/05 size": "disabled"
+      "semantic/color/s2-emphasis/high": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "47eac368fa8d1cce747420e1b514016184a1202d",
@@ -2427,8 +2433,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/low": "enabled",
-      "html/button_aug/05 size": "disabled"
+      "semantic/color/s2-emphasis/low": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "47eac368fa8d1cce747420e1b514016184a1202d",
@@ -2519,8 +2524,7 @@
       "r13.typography.components_only.tooltip.label": "S:01a80ff405036b8a204f742fa49f200230ff826c,"
     },
     "selectedTokenSets": {
-      "_ignore-in-ds/typography-styles-R13": "enabled",
-      "html/button_aug/05 size": "disabled"
+      "_ignore-in-ds/typography-styles-R13": "enabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"
@@ -2530,8 +2534,7 @@
     "name": "semantic",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/color/s3-semantic/semantic": "enabled",
-      "html/button_aug/05 size": "disabled"
+      "semantic/color/s3-semantic/semantic": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:6",
     "$figmaModeId": "1:7",
@@ -2802,24 +2805,18 @@
     },
     "selectedTokenSets": {
       "component/atom/icon_holder/sm": "enabled",
-      "html/button_aug/05 size": "disabled"
+      "global/multipliers/dimension/sm": "enabled",
+      "global/multipliers/spacing/sm": "enabled",
+      "global/multipliers/typography/sm": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
     "$figmaModeId": "2006:1",
     "$figmaVariableReferences": {
+      "ob.g.multiplier.dimension": "4011cbc511d9afd0f2eb045e245e8267656eaf59",
+      "ob.g.multiplier.spacing": "7211d1e3bd9230421c3c3e6283b45ce93f307c41",
+      "ob.g.multiplier.typography": "7eecbebf789e8c6e25d1c15c6aba01dcaf6382cc",
       "ob.c.icon_holder.size.standard": "4f3689809394aef86171260380240dac24f80931",
-      "ob.c.icon_holder.size.mini": "75c59996c80c50afbb500a781a168a2dbe48c370",
-      "ob.h.button_aug.text_icons.spacing.padding.vertical": "74724e593ea9048ed459b90ba88d34c23053d080",
-      "ob.h.button_aug.text_icons.spacing.padding.horizontal": "672a249deaa9c837965abe61e97a96331803684f",
-      "ob.h.button_aug.text_icons.spacing.gap": "610c764599a769621a8dc9d87e37f4351799be88",
-      "ob.h.button_aug.text_icons.container.size.min_height": "61666dc9edfcc210ba6295292bb4324dad64aeb7",
-      "ob.h.button_aug.icon_only.spacing.padding.vertical": "a47b2346296d420fbad6ac10a4b2b20ecff3c464",
-      "ob.h.button_aug.icon_only.spacing.padding.horizontal": "de9bf8696fec6f163ce4b6fac9121d9167c2c147",
-      "ob.h.button_aug.typography.text_label.font_size": "1fbea2bbb9a09934ee55de05de0c2b7ce17b9d1a",
-      "ob.h.button_aug.typography.text_label.line_height": "b85b7b8eb0bc62da8434ca2424cc6b5aab9c12ac",
-      "ob.h.button_aug.typography.text_label.letter_spacing": "417f94060dc937366268adb2744383db5045bc43",
-      "ob.h.button_aug.remove.spacing.padding.vertical": "b367966a7d1da5d542f529f76a672c00da792325",
-      "ob.h.button_aug.remove.spacing.padding.horizontal": "b124b0ab4af7f301604db26f72d631f15db98ba1"
+      "ob.c.icon_holder.size.mini": "75c59996c80c50afbb500a781a168a2dbe48c370"
     },
     "group": "size"
   },
@@ -2831,24 +2828,18 @@
     },
     "selectedTokenSets": {
       "component/atom/icon_holder/md": "enabled",
-      "html/button_aug/05 size": "enabled"
+      "global/multipliers/dimension/md": "enabled",
+      "global/multipliers/spacing/md": "enabled",
+      "global/multipliers/typography/md": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
     "$figmaModeId": "2006:2",
     "$figmaVariableReferences": {
+      "ob.g.multiplier.dimension": "4011cbc511d9afd0f2eb045e245e8267656eaf59",
+      "ob.g.multiplier.spacing": "7211d1e3bd9230421c3c3e6283b45ce93f307c41",
+      "ob.g.multiplier.typography": "7eecbebf789e8c6e25d1c15c6aba01dcaf6382cc",
       "ob.c.icon_holder.size.standard": "4f3689809394aef86171260380240dac24f80931",
-      "ob.c.icon_holder.size.mini": "75c59996c80c50afbb500a781a168a2dbe48c370",
-      "ob.h.button_aug.text_icons.spacing.padding.vertical": "74724e593ea9048ed459b90ba88d34c23053d080",
-      "ob.h.button_aug.text_icons.spacing.padding.horizontal": "672a249deaa9c837965abe61e97a96331803684f",
-      "ob.h.button_aug.text_icons.spacing.gap": "610c764599a769621a8dc9d87e37f4351799be88",
-      "ob.h.button_aug.text_icons.container.size.min_height": "61666dc9edfcc210ba6295292bb4324dad64aeb7",
-      "ob.h.button_aug.icon_only.spacing.padding.vertical": "a47b2346296d420fbad6ac10a4b2b20ecff3c464",
-      "ob.h.button_aug.icon_only.spacing.padding.horizontal": "de9bf8696fec6f163ce4b6fac9121d9167c2c147",
-      "ob.h.button_aug.typography.text_label.font_size": "1fbea2bbb9a09934ee55de05de0c2b7ce17b9d1a",
-      "ob.h.button_aug.typography.text_label.line_height": "b85b7b8eb0bc62da8434ca2424cc6b5aab9c12ac",
-      "ob.h.button_aug.typography.text_label.letter_spacing": "417f94060dc937366268adb2744383db5045bc43",
-      "ob.h.button_aug.remove.spacing.padding.vertical": "b367966a7d1da5d542f529f76a672c00da792325",
-      "ob.h.button_aug.remove.spacing.padding.horizontal": "b124b0ab4af7f301604db26f72d631f15db98ba1"
+      "ob.c.icon_holder.size.mini": "75c59996c80c50afbb500a781a168a2dbe48c370"
     },
     "group": "size"
   },
@@ -2860,24 +2851,18 @@
     },
     "selectedTokenSets": {
       "component/atom/icon_holder/lg": "enabled",
-      "html/button_aug/05 size": "disabled"
+      "global/multipliers/dimension/lg": "enabled",
+      "global/multipliers/spacing/lg": "enabled",
+      "global/multipliers/typography/lg": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:2006:1438",
     "$figmaModeId": "2006:3",
     "$figmaVariableReferences": {
+      "ob.g.multiplier.dimension": "4011cbc511d9afd0f2eb045e245e8267656eaf59",
+      "ob.g.multiplier.spacing": "7211d1e3bd9230421c3c3e6283b45ce93f307c41",
+      "ob.g.multiplier.typography": "7eecbebf789e8c6e25d1c15c6aba01dcaf6382cc",
       "ob.c.icon_holder.size.standard": "4f3689809394aef86171260380240dac24f80931",
-      "ob.c.icon_holder.size.mini": "75c59996c80c50afbb500a781a168a2dbe48c370",
-      "ob.h.button_aug.text_icons.spacing.padding.vertical": "74724e593ea9048ed459b90ba88d34c23053d080",
-      "ob.h.button_aug.text_icons.spacing.padding.horizontal": "672a249deaa9c837965abe61e97a96331803684f",
-      "ob.h.button_aug.text_icons.spacing.gap": "610c764599a769621a8dc9d87e37f4351799be88",
-      "ob.h.button_aug.text_icons.container.size.min_height": "61666dc9edfcc210ba6295292bb4324dad64aeb7",
-      "ob.h.button_aug.icon_only.spacing.padding.vertical": "a47b2346296d420fbad6ac10a4b2b20ecff3c464",
-      "ob.h.button_aug.icon_only.spacing.padding.horizontal": "de9bf8696fec6f163ce4b6fac9121d9167c2c147",
-      "ob.h.button_aug.typography.text_label.font_size": "1fbea2bbb9a09934ee55de05de0c2b7ce17b9d1a",
-      "ob.h.button_aug.typography.text_label.line_height": "b85b7b8eb0bc62da8434ca2424cc6b5aab9c12ac",
-      "ob.h.button_aug.typography.text_label.letter_spacing": "417f94060dc937366268adb2744383db5045bc43",
-      "ob.h.button_aug.remove.spacing.padding.vertical": "b367966a7d1da5d542f529f76a672c00da792325",
-      "ob.h.button_aug.remove.spacing.padding.horizontal": "b124b0ab4af7f301604db26f72d631f15db98ba1"
+      "ob.c.icon_holder.size.mini": "75c59996c80c50afbb500a781a168a2dbe48c370"
     },
     "group": "size"
   },
@@ -2886,12 +2871,11 @@
     "name": "row",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button_aug/06 flex-direction/row": "enabled",
-      "html/button_aug/05 size": "disabled"
+      "html/button_aug/06 flex-direction/row": "enabled"
     },
     "group": "button_direction",
     "$figmaVariableReferences": {
-      "ob.h.button_aug.flex_direction.row.gap": "b47a78ea851d319b801bcfe3d64abbbfce79cb0e"
+      "ob.h.button_aug.flex_direction.row.gap": "d5648d3b69b11dab0e4f0d80adeedd0a3bb1e681"
     },
     "$figmaCollectionId": "VariableCollectionId:2115:3769",
     "$figmaModeId": "2115:5"
@@ -2901,12 +2885,11 @@
     "name": "column",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button_aug/06 flex-direction/column": "enabled",
-      "html/button_aug/05 size": "disabled"
+      "html/button_aug/06 flex-direction/column": "enabled"
     },
     "group": "button_direction",
     "$figmaVariableReferences": {
-      "ob.h.button_aug.flex_direction.column.gap": "c15c81ca4a6ca3868383a13b8c8908516ed392af"
+      "ob.h.button_aug.flex_direction.column.gap": "65384410055418c86a1fddf3fab557708a79b11b"
     },
     "$figmaCollectionId": "VariableCollectionId:2115:3769",
     "$figmaModeId": "2115:6"
@@ -2915,27 +2898,21 @@
     "id": "comp-size-sm-2025-09-12-multipliers",
     "name": "sm",
     "$figmaStyleReferences": {},
-    "selectedTokenSets": {
-      "html/button_aug/05 size": "disabled"
-    },
+    "selectedTokenSets": {},
     "group": "component-size"
   },
   {
     "id": "comp-size-md-2025-09-12-multipliers",
     "name": "md",
     "$figmaStyleReferences": {},
-    "selectedTokenSets": {
-      "html/button_aug/05 size": "disabled"
-    },
+    "selectedTokenSets": {},
     "group": "component-size"
   },
   {
     "id": "comp-size-lg-2025-09-12-multipliers",
     "name": "lg",
     "$figmaStyleReferences": {},
-    "selectedTokenSets": {
-      "html/button_aug/05 size": "disabled"
-    },
+    "selectedTokenSets": {},
     "group": "component-size"
   }
 ]
