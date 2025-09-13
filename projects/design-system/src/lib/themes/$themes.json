@@ -432,7 +432,9 @@
       "component/molecule/tag": "enabled",
       "html/button_aug/05 size": "enabled",
       "component/atom/icon_holder/size": "enabled",
-      "component/atom/icon_holder/static": "enabled"
+      "component/atom/icon_holder/static": "enabled",
+      "primitive/z-index": "source",
+      "primitive/dimension": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -1026,8 +1028,7 @@
       "semantic/typography/responsive/desktop": "enabled",
       "html/button_aug/03 viewport/desktop": "enabled",
       "component/molecule/infobox/responsive/desktop": "enabled",
-      "global/multipliers/viewport/desktop": "enabled",
-      "component/atom/icon_holder/size": "disabled"
+      "global/multipliers/viewport/desktop": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.fontSize.xs": "3fed330e895a5a68b8e0823faadf7725aa7d12b4",
@@ -1223,8 +1224,7 @@
       "semantic/typography/responsive/mobile": "enabled",
       "html/button_aug/03 viewport/mobile": "enabled",
       "component/molecule/infobox/responsive/mobile": "enabled",
-      "global/multipliers/viewport/mobile": "enabled",
-      "component/atom/icon_holder/size": "disabled"
+      "global/multipliers/viewport/mobile": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.fontSize.xs": "3fed330e895a5a68b8e0823faadf7725aa7d12b4",
@@ -1495,8 +1495,7 @@
       "semantic/asset/theme/lightness/light": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/light": "enabled",
       "semantic/color/s1-lightness/light": "enabled",
-      "component/molecule/infobox/color": "enabled",
-      "component/atom/icon_holder/size": "disabled"
+      "component/molecule/infobox/color": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -2004,8 +2003,7 @@
       "semantic/asset/theme/lightness/dark": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/dark": "enabled",
       "semantic/color/s1-lightness/dark": "enabled",
-      "component/molecule/infobox/color": "enabled",
-      "component/atom/icon_holder/size": "disabled"
+      "component/molecule/infobox/color": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",
@@ -2341,8 +2339,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/high": "enabled",
-      "component/atom/icon_holder/size": "disabled"
+      "semantic/color/s2-emphasis/high": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "47eac368fa8d1cce747420e1b514016184a1202d",
@@ -2412,8 +2409,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/low": "enabled",
-      "component/atom/icon_holder/size": "disabled"
+      "semantic/color/s2-emphasis/low": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "47eac368fa8d1cce747420e1b514016184a1202d",
@@ -2504,8 +2500,7 @@
       "r13.typography.components_only.tooltip.label": "S:01a80ff405036b8a204f742fa49f200230ff826c,"
     },
     "selectedTokenSets": {
-      "_ignore-in-ds/typography-styles-R13": "enabled",
-      "component/atom/icon_holder/size": "disabled"
+      "_ignore-in-ds/typography-styles-R13": "enabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"
@@ -2540,7 +2535,7 @@
       "semantic/dynamic/typography": "enabled",
       "semantic/static/dimension": "enabled",
       "semantic/static/typography": "enabled",
-      "component/atom/icon_holder/size": "disabled"
+      "semantic/static/spacing": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:6",
     "$figmaModeId": "1:7",
@@ -3005,8 +3000,7 @@
     "name": "row",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button_aug/06 flex-direction/row": "enabled",
-      "component/atom/icon_holder/size": "disabled"
+      "html/button_aug/06 flex-direction/row": "enabled"
     },
     "group": "button_direction",
     "$figmaVariableReferences": {
@@ -3020,8 +3014,7 @@
     "name": "column",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button_aug/06 flex-direction/column": "enabled",
-      "component/atom/icon_holder/size": "disabled"
+      "html/button_aug/06 flex-direction/column": "enabled"
     },
     "group": "button_direction",
     "$figmaVariableReferences": {
@@ -3037,8 +3030,7 @@
     "selectedTokenSets": {
       "global/multipliers/dimension/sm": "enabled",
       "global/multipliers/typography/sm": "enabled",
-      "global/multipliers/spacing/sm": "enabled",
-      "component/atom/icon_holder/size": "disabled"
+      "global/multipliers/spacing/sm": "enabled"
     },
     "group": "component-size",
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
@@ -3056,8 +3048,7 @@
     "selectedTokenSets": {
       "global/multipliers/dimension/md": "enabled",
       "global/multipliers/spacing/md": "enabled",
-      "global/multipliers/typography/md": "enabled",
-      "component/atom/icon_holder/size": "disabled"
+      "global/multipliers/typography/md": "enabled"
     },
     "group": "component-size",
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
@@ -3075,8 +3066,7 @@
     "selectedTokenSets": {
       "global/multipliers/dimension/lg": "enabled",
       "global/multipliers/spacing/lg": "enabled",
-      "global/multipliers/typography/lg": "enabled",
-      "component/atom/icon_holder/size": "disabled"
+      "global/multipliers/typography/lg": "enabled"
     },
     "group": "component-size",
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
