@@ -4,30 +4,30 @@
       "button_aug": {
         "$description": {
           "$type": "other",
-          "$value": "Medium size tokens - Spacing and typography for md button variant (default size)"
+          "$value": "Size-responsive button tokens - Spacing and typography that scales with size multipliers"
         },
         "text_icons": {
           "spacing": {
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.md}"
+                "$value": "{ob.p.dimension.rem.75} * {ob.g.multiplier.spacing}"
               },
               "horizontal": {
-                "$type": "spacing",
-                "$value": "{ob.s.spacing.3xl}"
+                "$type": "spacing", 
+                "$value": "{ob.p.dimension.rem.200} * {ob.g.multiplier.spacing}"
               }
             },
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.md}"
+              "$value": "{ob.p.dimension.rem.75} * {ob.g.multiplier.spacing}"
             }
           },
           "container": {
             "size": {
               "min_height": {
                 "$type": "sizing",
-                "$value": "{ob.s.size.surface.lg}"
+                "$value": "{ob.p.dimension.rem.450} * {ob.g.multiplier.dimension}"
               }
             }
           }
@@ -37,11 +37,11 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.md}"
+                "$value": "{ob.p.dimension.rem.75} * {ob.g.multiplier.spacing}"
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.md}"
+                "$value": "{ob.p.dimension.rem.75} * {ob.g.multiplier.spacing}"
               }
             }
           }
@@ -50,18 +50,18 @@
           "text_label": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.fontSize.md}",
-              "$description": "Font size for md button text labels"
+              "$value": "{ob.p.fontSizeUnitless.400} * {ob.g.multiplier.typography}",
+              "$description": "Font size that scales with typography multiplier"
             },
             "line_height": {
-              "$type": "lineHeights",
-              "$value": "{ob.s.lineHeight.sm}",
-              "$description": "Line height for md button text labels"
+              "$type": "lineHeights", 
+              "$value": "{ob.p.lineHeightUnitless.400} * {ob.g.multiplier.typography}",
+              "$description": "Line height that scales with typography multiplier"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.letter_spacing.normal}",
-              "$description": "Letter spacing for md button text labels"
+              "$value": "{ob.p.letter_spacing.normal}",
+              "$description": "Letter spacing for button text labels"
             }
           }
         },
@@ -70,12 +70,12 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.none}",
+                "$value": "{ob.p.dimension.rem.0}",
                 "$description": "Remove button requires zero padding."
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.none}",
+                "$value": "{ob.p.dimension.rem.0}",
                 "$description": "Remove button requires zero padding."
               }
             }
