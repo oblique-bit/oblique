@@ -11,23 +11,23 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.detail.xl}"
+                "$value": "{ob.s.dimension.dynamic.detail.xl}"
               },
               "horizontal": {
                 "$type": "spacing", 
-                "$value": "{ob.s.dimension.element.lg}"
+                "$value": "{ob.s.dimension.dynamic.element.lg}"
               }
             },
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.detail.xl}"
+              "$value": "{ob.s.dimension.dynamic.detail.xl}"
             }
           },
           "container": {
             "size": {
               "min_height": {
                 "$type": "sizing",
-                "$value": "{ob.s.dimension.surface.lg}"
+                "$value": "{ob.s.dimension.dynamic.surface.lg}"
               }
             }
           }
@@ -37,11 +37,11 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.detail.xl}"
+                "$value": "{ob.s.dimension.dynamic.detail.xl}"
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.detail.xl}"
+                "$value": "{ob.s.dimension.dynamic.detail.xl}"
               }
             }
           }
