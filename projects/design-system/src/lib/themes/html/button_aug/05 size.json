@@ -4,30 +4,30 @@
       "button_aug": {
         "$description": {
           "$type": "other",
-          "$value": "Size-responsive button tokens - Spacing and typography that scales with size multipliers"
+          "$value": "Size-responsive button tokens - Uses semantic dimension tokens that scale with size multipliers"
         },
         "text_icons": {
           "spacing": {
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.p.dimension.rem.75} * {ob.g.multiplier.spacing}"
+                "$value": "{ob.s.dimension.detail.xl}"
               },
               "horizontal": {
                 "$type": "spacing", 
-                "$value": "{ob.p.dimension.rem.200} * {ob.g.multiplier.spacing}"
+                "$value": "{ob.s.dimension.element.lg}"
               }
             },
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.75} * {ob.g.multiplier.spacing}"
+              "$value": "{ob.s.dimension.detail.xl}"
             }
           },
           "container": {
             "size": {
               "min_height": {
                 "$type": "sizing",
-                "$value": "{ob.p.dimension.rem.450} * {ob.g.multiplier.dimension}"
+                "$value": "{ob.s.dimension.surface.lg}"
               }
             }
           }
@@ -37,11 +37,11 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.p.dimension.rem.75} * {ob.g.multiplier.spacing}"
+                "$value": "{ob.s.dimension.detail.xl}"
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.p.dimension.rem.75} * {ob.g.multiplier.spacing}"
+                "$value": "{ob.s.dimension.detail.xl}"
               }
             }
           }

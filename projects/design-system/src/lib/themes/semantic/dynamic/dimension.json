@@ -1,224 +1,118 @@
 {
   "ob": {
     "s": {
-      "dynamic": {
-        "size": {
-          "none": {
-            "$type": "dimension",
-            "$value": "0",
-            "$description": "Zero size for hidden elements"
-          },
-          
-          "detail": {
-            "xs": {
-              "$type": "dimension", 
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 0.25",
-              "$description": "1px - finest borders - Calculated: 4px × 1.0 × 1.0 × 0.25 = 1px"
-            },
-            "sm": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 0.5",
-              "$description": "2px - thin borders - Calculated: 4px × 1.0 × 1.0 × 0.5 = 2px"
-            },
-            "md": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 0.75",
-              "$description": "3px - standard borders - Calculated: 4px × 1.0 × 1.0 × 0.75 = 3px"
-            },
-            "lg": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop}",
-              "$description": "4px - thick borders - Calculated: 4px × 1.0 × 1.0 × 1.0 = 4px"
-            },
-            "xl": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 1.5",
-              "$description": "6px - shadow spread - Calculated: 4px × 1.0 × 1.0 × 1.5 = 6px"
-            }
-          },
-          
-          "element": {
-            "xs": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 2.0",
-              "$description": "8px - small icons - Calculated: 4px × 1.0 × 1.0 × 2.0 = 8px"
-            },
-            "sm": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 2.5",
-              "$description": "10px - compact elements - Calculated: 4px × 1.0 × 1.0 × 2.5 = 10px"
-            },
-            "md": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 3.0",
-              "$description": "12px - small badges - Calculated: 4px × 1.0 × 1.0 × 3.0 = 12px"
-            },
-            "lg": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 4.0",
-              "$description": "16px - standard icons (was: normal) - Calculated: 4px × 1.0 × 1.0 × 4.0 = 16px"
-            },
-            "xl": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 5.0",
-              "$description": "20px - expressive icons (was: stretchy) - Calculated: 4px × 1.0 × 1.0 × 5.0 = 20px"
-            }
-          },
-          
-          "surface": {
-            "xs": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 6.0",
-              "$description": "24px - small surfaces (was: spacious) - Calculated: 4px × 1.0 × 1.0 × 6.0 = 24px"
-            },
-            "sm": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 7.0",
-              "$description": "28px - button min-height (was: chubby) - Calculated: 4px × 1.0 × 1.0 × 7.0 = 28px"
-            },
-            "md": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 8.0",
-              "$description": "32px - standard surfaces - Calculated: 4px × 1.0 × 1.0 × 8.0 = 32px"
-            },
-            "lg": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 9.0",
-              "$description": "36px - large surfaces (was: hefty) - Calculated: 4px × 1.0 × 1.0 × 9.0 = 36px"
-            },
-            "xl": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 12.0",
-              "$description": "48px - XL surfaces (was: ultra) - Calculated: 4px × 1.0 × 1.0 × 12.0 = 48px"
-            }
-          },
-          
-          "container": {
-            "xs": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 16.0",
-              "$description": "64px - small containers - Calculated: 4px × 1.0 × 1.0 × 16.0 = 64px"
-            },
-            "sm": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 20.0",
-              "$description": "80px - medium containers - Calculated: 4px × 1.0 × 1.0 × 20.0 = 80px"
-            },
-            "md": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 24.0",
-              "$description": "96px - default containers (was: whoa) - Calculated: 4px × 1.0 × 1.0 × 24.0 = 96px"
-            },
-            "lg": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 40.0",
-              "$description": "160px - large containers - Calculated: 4px × 1.0 × 1.0 × 40.0 = 160px"
-            },
-            "xl": {
-              "$type": "dimension",
-              "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 80.0",
-              "$description": "320px - popover containers (was: multiverse) - Calculated: 4px × 1.0 × 1.0 × 80.0 = 320px"
-            }
-          },
-
-          "_legacy": {
-            "$description": "DEPRECATED: Keep for backward compatibility during migration",
-            "normal": {
-              "$type": "dimension",
-              "$value": "{ob.s.dynamic.size.element.lg}",
-              "$description": "DEPRECATED: Use element.lg instead"
-            },
-            "stretchy": {
-              "$type": "dimension",
-              "$value": "{ob.s.dynamic.size.element.xl}",
-              "$description": "DEPRECATED: Use element.xl instead"
-            },
-            "spacious": {
-              "$type": "dimension",
-              "$value": "{ob.s.dynamic.size.surface.xs}",
-              "$description": "DEPRECATED: Use surface.xs instead"
-            },
-            "chubby": {
-              "$type": "dimension",
-              "$value": "{ob.s.dynamic.size.surface.sm}",
-              "$description": "DEPRECATED: Use surface.sm instead"
-            },
-            "hefty": {
-              "$type": "dimension",
-              "$value": "{ob.s.dynamic.size.surface.lg}",
-              "$description": "DEPRECATED: Use surface.lg instead"
-            },
-            "ultra": {
-              "$type": "dimension",
-              "$value": "{ob.s.dynamic.size.surface.xl}",
-              "$description": "DEPRECATED: Use surface.xl instead"
-            },
-            "whoa": {
-              "$type": "dimension",
-              "$value": "{ob.s.dynamic.size.container.md}",
-              "$description": "DEPRECATED: Use container.md instead"
-            },
-            "multiverse": {
-              "$type": "dimension",
-              "$value": "{ob.s.dynamic.size.container.xl}",
-              "$description": "DEPRECATED: Use container.xl instead"
-            }
-          }
+      "dimension": {
+        "none": {
+          "$type": "dimension",
+          "$value": "{ob.p.dimension.px.0}",
+          "$description": "Zero size for hidden elements"
         },
-        
-        "spacing": {
-          "none": {
-            "$type": "dimension",
-            "$value": "0",
-            "$description": "No spacing"
-          },
+        "detail": {
           "xs": {
             "$type": "dimension", 
-            "$value": "{ob.p.spacing._base} * {ob.g.multiplier.spacing} * {ob.g.multiplier.viewport.desktop} * 0.25",
-            "$description": "Extra small spacing - Calculated: 8px × 1.0 × 1.0 × 0.25 = 2px"
+            "$value": "{ob.p.dimension.px.12} * {ob.g.multiplier.dimension}",
+            "$description": "1px - finest borders, scales with size mode"
           },
           "sm": {
             "$type": "dimension",
-            "$value": "{ob.p.spacing._base} * {ob.g.multiplier.spacing} * {ob.g.multiplier.viewport.desktop} * 0.5", 
-            "$description": "Small spacing - Calculated: 8px × 1.0 × 1.0 × 0.5 = 4px"
+            "$value": "{ob.p.dimension.px.25} * {ob.g.multiplier.dimension}",
+            "$description": "2px - thin borders, scales with size mode"
           },
           "md": {
             "$type": "dimension",
-            "$value": "{ob.p.spacing._base} * {ob.g.multiplier.spacing} * {ob.g.multiplier.viewport.desktop}",
-            "$description": "Medium spacing - Calculated: 8px × 1.0 × 1.0 = 8px"
+            "$value": "{ob.p.dimension.px.37} * {ob.g.multiplier.dimension}",
+            "$description": "3px - standard borders, scales with size mode"
           },
           "lg": {
             "$type": "dimension",
-            "$value": "{ob.p.spacing._base} * {ob.g.multiplier.spacing} * {ob.g.multiplier.viewport.desktop} * 1.5",
-            "$description": "Large spacing - Calculated: 8px × 1.0 × 1.0 × 1.5 = 12px"
+            "$value": "{ob.p.dimension.px.50} * {ob.g.multiplier.dimension}",
+            "$description": "4px - thick borders, scales with size mode"
           },
           "xl": {
-            "$type": "dimension", 
-            "$value": "{ob.p.spacing._base} * {ob.g.multiplier.spacing} * {ob.g.multiplier.viewport.desktop} * 2.0",
-            "$description": "Extra large spacing - Calculated: 8px × 1.0 × 1.0 × 2.0 = 16px"
-          },
-          "2xl": {
             "$type": "dimension",
-            "$value": "{ob.p.spacing._base} * {ob.g.multiplier.spacing} * {ob.g.multiplier.viewport.desktop} * 3.0",
-            "$description": "Double extra large spacing - Calculated: 8px × 1.0 × 1.0 × 3.0 = 24px"
-          },
-          "3xl": {
-            "$type": "dimension",
-            "$value": "{ob.p.spacing._base} * {ob.g.multiplier.spacing} * {ob.g.multiplier.viewport.desktop} * 4.0",
-            "$description": "Triple extra large spacing - Calculated: 8px × 1.0 × 1.0 × 4.0 = 32px"
-          },
-          "4xl": {
-            "$type": "dimension",
-            "$value": "{ob.p.spacing._base} * {ob.g.multiplier.spacing} * {ob.g.multiplier.viewport.desktop} * 6.0",
-            "$description": "Quadruple extra large spacing - Calculated: 8px × 1.0 × 1.0 × 6.0 = 48px"
+            "$value": "{ob.p.dimension.px.75} * {ob.g.multiplier.dimension}",
+            "$description": "6px - shadow spread, scales with size mode"
           }
         },
-        
-        "minTarget": {
-          "touch": {
+        "element": {
+          "xs": {
             "$type": "dimension",
-            "$value": "{ob.p.size._base} * {ob.g.multiplier.dimension} * {ob.g.multiplier.viewport.desktop} * 11",
-            "$description": "Minimum touch target size - Calculated: 4px × 1.0 × 1.0 × 11 = 44px"
+            "$value": "{ob.p.dimension.px.100} * {ob.g.multiplier.dimension}",
+            "$description": "8px - small icons, scales with size mode"
+          },
+          "sm": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.px.125} * {ob.g.multiplier.dimension}",
+            "$description": "10px - compact elements, scales with size mode"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.px.150} * {ob.g.multiplier.dimension}",
+            "$description": "12px - small badges, scales with size mode"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.px.200} * {ob.g.multiplier.dimension}",
+            "$description": "16px - standard icons, scales with size mode"
+          },
+          "xl": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.rem.250} * {ob.g.multiplier.dimension}",
+            "$description": "20px - expressive icons, scales with size mode"
+          }
+        },
+        "surface": {
+          "xs": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.rem.300} * {ob.g.multiplier.dimension}",
+            "$description": "24px - small surfaces, scales with size mode"
+          },
+          "sm": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.rem.350} * {ob.g.multiplier.dimension}",
+            "$description": "28px - button min-height, scales with size mode"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.rem.400} * {ob.g.multiplier.dimension}",
+            "$description": "32px - standard surfaces, scales with size mode"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.rem.450} * {ob.g.multiplier.dimension}",
+            "$description": "36px - large surfaces, scales with size mode"
+          },
+          "xl": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.rem.600} * {ob.g.multiplier.dimension}",
+            "$description": "48px - XL surfaces, scales with size mode"
+          }
+        },
+        "container": {
+          "xs": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.rem.800} * {ob.g.multiplier.dimension}",
+            "$description": "64px - small containers, scales with size mode"
+          },
+          "sm": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.rem.1000} * {ob.g.multiplier.dimension}",
+            "$description": "80px - medium containers, scales with size mode"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.rem.1200} * {ob.g.multiplier.dimension}",
+            "$description": "96px - default containers, scales with size mode"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.rem.2000} * {ob.g.multiplier.dimension}",
+            "$description": "160px - large containers, scales with size mode"
+          },
+          "xl": {
+            "$type": "dimension",
+            "$value": "{ob.p.dimension.rem.3600} * {ob.g.multiplier.dimension}",
+            "$description": "320px - popover containers, scales with size mode"
           }
         }
       }
