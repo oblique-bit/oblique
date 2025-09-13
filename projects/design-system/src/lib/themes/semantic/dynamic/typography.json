@@ -1,0 +1,92 @@
+{
+  "ob": {
+    "s": {
+      "dynamic": {
+        "fontSize": {
+          "xs": {
+            "$type": "dimension",
+            "$value": "{ob.p.fontSizeUnitless.100}",
+            "$description": "Extra small font size - Desktop: 12px, Mobile: 12px"
+          },
+          "sm": {
+            "$type": "dimension", 
+            "$value": "{ob.p.fontSizeUnitless.200}",
+            "$description": "Small font size - Desktop: 14px, Mobile: 14px"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "{ob.p.fontSizeUnitless.300}",
+            "$description": "Medium font size - Desktop: 17px, Mobile: 18px (with +1px mobile adjustment)"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "{ob.p.fontSizeUnitless.400}",
+            "$description": "Large font size - Desktop: 23px, Mobile: 23px"
+          },
+          "xl": {
+            "$type": "dimension",
+            "$value": "{ob.p.fontSizeUnitless.500}",
+            "$description": "Extra large font size - Desktop: 28px, Mobile: 28px"
+          },
+          "2xl": {
+            "$type": "dimension",
+            "$value": "{ob.p.fontSizeUnitless.700}",
+            "$description": "Double extra large font size - Desktop: 39px, Mobile: 28px (clamped)"
+          },
+          "3xl": {
+            "$type": "dimension",
+            "$value": "{ob.p.fontSizeUnitless.800}",
+            "$description": "Triple extra large font size - Desktop: 45px, Mobile: 28px (clamped)"
+          },
+          "4xl": {
+            "$type": "dimension",
+            "$value": "{ob.p.fontSizeUnitless.900}",
+            "$description": "Quadruple extra large font size - Desktop: 49px, Mobile: 28px (clamped)"
+          }
+        },
+        "lineHeight": {
+          "xs": {
+            "$type": "dimension",
+            "$value": "{ob.p.lineHeight.300}",
+            "$description": "Extra small line height - Desktop: 16px, Mobile: 16px"
+          },
+          "sm": {
+            "$type": "dimension",
+            "$value": "{ob.p.lineHeight.400}",
+            "$description": "Small line height - Desktop: 20px, Mobile: 20px"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "{ob.p.lineHeight.500}",
+            "$description": "Medium line height - Desktop: 24px, Mobile: 24px"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "{ob.p.lineHeight.600}",
+            "$description": "Large line height - Desktop: 28px, Mobile: 28px"
+          },
+          "xl": {
+            "$type": "dimension",
+            "$value": "{ob.p.lineHeight.800}",
+            "$description": "Extra large line height - Desktop: 36px, Mobile: 32px"
+          },
+          "2xl": {
+            "$type": "dimension",
+            "$value": "{ob.p.lineHeight.1100}",
+            "$description": "Double extra large line height - Desktop: 48px, Mobile: 32px (clamped)"
+          },
+          "3xl": {
+            "$type": "dimension",
+            "$value": "{ob.p.lineHeight.1300}",
+            "$description": "Triple extra large line height - Desktop: 56px, Mobile: 32px (clamped)"
+          },
+          "4xl": {
+            "$type": "dimension",
+            "$value": "{ob.p.lineHeight.1400}",
+            "$description": "Quadruple extra large line height - Desktop: 60px, Mobile: 32px (clamped)"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# Desktop spacing updates
+sed -i '' 's/{ob\.p\.dimension\.spacing\.200}/{ob.p.dimension.100}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/desktop.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.250}/{ob.p.dimension.125}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/desktop.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.300}/{ob.p.dimension.150}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/desktop.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.400}/{ob.p.dimension.200}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/desktop.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.500}/{ob.p.dimension.250}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/desktop.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.600}/{ob.p.dimension.300}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/desktop.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.700}/{ob.p.dimension.350}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/desktop.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.800}/{ob.p.dimension.400}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/desktop.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.900}/{ob.p.dimension.450}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/desktop.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.1000}/{ob.p.dimension.500}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/desktop.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.1200}/{ob.p.dimension.600}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/desktop.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.1600}/{ob.p.dimension.800}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/desktop.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.2000}/{ob.p.dimension.1000}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/desktop.json"
+
+# Mobile spacing updates
+sed -i '' 's/{ob\.p\.dimension\.spacing\.none}/{ob.p.dimension.0}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.50}/{ob.p.dimension.25}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.100}/{ob.p.dimension.50}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.150}/{ob.p.dimension.75}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.200}/{ob.p.dimension.100}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.250}/{ob.p.dimension.125}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.300}/{ob.p.dimension.150}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.400}/{ob.p.dimension.200}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.500}/{ob.p.dimension.250}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.600}/{ob.p.dimension.300}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.700}/{ob.p.dimension.350}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.800}/{ob.p.dimension.400}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.900}/{ob.p.dimension.450}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+sed -i '' 's/{ob\.p\.dimension\.spacing\.1000}/{ob.p.dimension.500}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/spacing/mobile.json"
+
+# Sizing updates
+sed -i '' 's/{ob\.p\.dimension\.size\.0}/{ob.p.dimension.0}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.12}/{ob.p.dimension.12}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.25}/{ob.p.dimension.25}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.37}/{ob.p.dimension.37}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.50}/{ob.p.dimension.50}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.75}/{ob.p.dimension.75}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.100}/{ob.p.dimension.100}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.125}/{ob.p.dimension.125}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.150}/{ob.p.dimension.150}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.200}/{ob.p.dimension.200}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.250}/{ob.p.dimension.250}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.300}/{ob.p.dimension.300}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.350}/{ob.p.dimension.350}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.400}/{ob.p.dimension.400}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.450}/{ob.p.dimension.450}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.600}/{ob.p.dimension.600}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.800}/{ob.p.dimension.800}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.1000}/{ob.p.dimension.1000}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.1200}/{ob.p.dimension.1200}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.2000}/{ob.p.dimension.2000}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+sed -i '' 's/{ob\.p\.dimension\.size\.3600}/{ob.p.dimension.3600}/g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/sizing.json"
+
+# Component updates
+sed -i '' 's/{ob\.p\.dimension\.size\./{ob.p.dimension./g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/component/atom/icon_holder/md.json"
+sed -i '' 's/{ob\.p\.dimension\.size\./{ob.p.dimension./g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/component/atom/icon_holder/lg.json"
+sed -i '' 's/{ob\.p\.dimension\.size\./{ob.p.dimension./g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/component/atom/icon_holder/sm.json"
+
+# Shadow updates
+sed -i '' 's/{ob\.p\.dimension\.size\./{ob.p.dimension./g' "/Users/davorradisic/vc git repo bit/oblique/projects/design-system/src/lib/themes/semantic/shadow.json"
+
+echo "✅ All dimension references updated to flat structure!"

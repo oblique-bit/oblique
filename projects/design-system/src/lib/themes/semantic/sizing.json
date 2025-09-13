@@ -4,34 +4,34 @@
       "size": {
         "none": {
           "$type": "dimension",
-          "$value": "{ob.p.size.0}",
+          "$value": "{ob.p.dimension.px.0}",
           "$description": "Zero size for hidden elements"
         },
         
         "detail": {
           "xs": {
             "$type": "dimension", 
-            "$value": "{ob.p.size.12}",
+            "$value": "{ob.p.dimension.px.12}",
             "$description": "1px - finest borders"
           },
           "sm": {
             "$type": "dimension",
-            "$value": "{ob.p.size.25}",
+            "$value": "{ob.p.dimension.px.25}",
             "$description": "2px - thin borders"
           },
           "md": {
             "$type": "dimension",
-            "$value": "{ob.p.size.37}",
+            "$value": "{ob.p.dimension.px.37}",
             "$description": "3px - standard borders"
           },
           "lg": {
             "$type": "dimension",
-            "$value": "{ob.p.size.50}",
+            "$value": "{ob.p.dimension.px.50}",
             "$description": "4px - thick borders"
           },
           "xl": {
             "$type": "dimension",
-            "$value": "{ob.p.size.75}",
+            "$value": "{ob.p.dimension.px.75}",
             "$description": "6px - shadow spread"
           }
         },
@@ -39,27 +39,27 @@
         "element": {
           "xs": {
             "$type": "dimension",
-            "$value": "{ob.p.size.100}",
+            "$value": "{ob.p.dimension.px.100}",
             "$description": "8px - small icons"
           },
           "sm": {
             "$type": "dimension",
-            "$value": "{ob.p.size.125}",
+            "$value": "{ob.p.dimension.px.125}",
             "$description": "10px - compact elements"
           },
           "md": {
             "$type": "dimension",
-            "$value": "{ob.p.size.150}",
+            "$value": "{ob.p.dimension.px.150}",
             "$description": "12px - small badges"
           },
           "lg": {
             "$type": "dimension",
-            "$value": "{ob.p.size.200}",
+            "$value": "{ob.p.dimension.px.200}",
             "$description": "16px - standard icons (was: normal)"
           },
           "xl": {
             "$type": "dimension",
-            "$value": "{ob.p.size.250}",
+            "$value": "{ob.p.dimension.rem.250}",
             "$description": "20px - expressive icons (was: stretchy)"
           }
         },
@@ -67,27 +67,27 @@
         "surface": {
           "xs": {
             "$type": "dimension",
-            "$value": "{ob.p.size.300}",
+            "$value": "{ob.p.dimension.rem.300}",
             "$description": "24px - small surfaces (was: spacious)"
           },
           "sm": {
             "$type": "dimension",
-            "$value": "{ob.p.size.350}",
+            "$value": "{ob.p.dimension.rem.350}",
             "$description": "28px - button min-height (was: chubby)"
           },
           "md": {
             "$type": "dimension",
-            "$value": "{ob.p.size.400}",
+            "$value": "{ob.p.dimension.rem.400}",
             "$description": "32px - standard surfaces"
           },
           "lg": {
             "$type": "dimension",
-            "$value": "{ob.p.size.450}",
+            "$value": "{ob.p.dimension.rem.450}",
             "$description": "36px - large surfaces (was: hefty)"
           },
           "xl": {
             "$type": "dimension",
-            "$value": "{ob.p.size.600}",
+            "$value": "{ob.p.dimension.rem.600}",
             "$description": "48px - XL surfaces (was: ultra)"
           }
         },
@@ -95,27 +95,27 @@
         "container": {
           "xs": {
             "$type": "dimension",
-            "$value": "{ob.p.size.800}",
+            "$value": "{ob.p.dimension.rem.800}",
             "$description": "64px - small containers"
           },
           "sm": {
             "$type": "dimension",
-            "$value": "{ob.p.size.1000}",
+            "$value": "{ob.p.dimension.rem.1000}",
             "$description": "80px - medium containers"
           },
           "md": {
             "$type": "dimension",
-            "$value": "{ob.p.size.1200}",
+            "$value": "{ob.p.dimension.rem.1200}",
             "$description": "96px - default containers (was: whoa)"
           },
           "lg": {
             "$type": "dimension",
-            "$value": "{ob.p.size.2000}",
+            "$value": "{ob.p.dimension.rem.2000}",
             "$description": "160px - large containers"
           },
           "xl": {
             "$type": "dimension",
-            "$value": "{ob.p.size.3600}",
+            "$value": "{ob.p.dimension.rem.3600}",
             "$description": "320px - popover containers (was: multiverse)"
           }
         },

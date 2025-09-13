@@ -1,0 +1,96 @@
+{
+  "ob": {
+    "s": {
+      "spacing": {
+        "none": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.0} * {ob.g.multiplier.viewport.desktop}",
+          "$description": "The smallest spacing in Oblique. Use it to create distance between icons and text within buttons, chips, and similar elements, where the icon and the text build a semantic entity but need a slight spacing between them for better readability."
+        },
+        "xs": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.25} * {ob.g.multiplier.viewport.desktop}",
+          "$description": "The smallest spacing in Oblique. Use it to create distance between icons and text within buttons, chips, and similar elements, where the icon and the text build a semantic entity but need a slight spacing between them for better readability."
+        },
+        "sm": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.50} * {ob.g.multiplier.viewport.desktop}",
+          "$description": "The smallest spacing in Oblique. Use it to create distance between icons and text within buttons, chips, and similar elements, where the icon and the text build a semantic entity but need a slight spacing between them for better readability."
+        },
+        "md": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.75} * {ob.g.multiplier.viewport.desktop}",
+          "$description": "Use this for minimal padding inside smaller components like form fields, list items, or dialog actions. It helps maintain clarity without adding bulk, ideal for grouping related items such as labels and input boxes closely together."
+        },
+        "lg": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.100} * {ob.g.multiplier.viewport.desktop}",
+          "$description": "This spacing is effective for separating sections within cards. It's also suitable for stacking controls that require a clear distinction without being too far apart, enhancing overall navigability."
+        },
+        "ml": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.125} * {ob.g.multiplier.viewport.desktop}",
+          "$description": "Use this for minimal padding inside smaller components like form fields, list items, or dialog actions. It helps maintain clarity without adding bulk, ideal for grouping related items such as labels and input boxes closely together."
+        },
+        "xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.125} * {ob.g.multiplier.viewport.desktop}",
+          "$description": "A standard spacing for broader padding around modal windows, card content, and larger form elements. It provides sufficient breathing room around content blocks, improving readability and focus on individual content elements without overcrowding."
+        },
+        "2xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.150} * {ob.g.multiplier.viewport.desktop}"
+        },
+        "3xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.200} * {ob.g.multiplier.viewport.desktop}",
+          "$description": "Great for creating more expansive gaps between larger components such as different panels in a layout or between a toolbar and the content below. This spacing can be used to enhance focus on sections of the interface that require user attention."
+        },
+        "4xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.250} * {ob.g.multiplier.viewport.desktop}"
+        },
+        "5xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.300} * {ob.g.multiplier.viewport.desktop}"
+        },
+        "6xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.350} * {ob.g.multiplier.viewport.desktop}"
+        },
+        "7xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.400} * {ob.g.multiplier.viewport.desktop}"
+        },
+        "8xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.500} * {ob.g.multiplier.viewport.desktop}"
+        },
+        "9xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.600} * {ob.g.multiplier.viewport.desktop}"
+        },
+        "10xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.800} * {ob.g.multiplier.viewport.desktop}"
+        },
+        "11xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.1000} * {ob.g.multiplier.viewport.desktop}"
+        },
+        "12xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.1200} * {ob.g.multiplier.viewport.desktop}"
+        },
+        "13xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.1600} * {ob.g.multiplier.viewport.desktop}"
+        },
+        "14xl": {
+          "$type": "spacing",
+          "$value": "{ob.p.dimension.rem.1800} * {ob.g.multiplier.viewport.desktop}"
+        }
+      }
+    }
+  }
+}

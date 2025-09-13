@@ -9,8 +9,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.medium}",
-                "fontSize": "{ob.s.fontSize.xs}",
-                "lineHeight": "{ob.s.lineHeight.xs}",
+                "fontSize": "{ob.s.dynamic.fontSize.xs}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.xs}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.xs}"
               },
@@ -21,8 +21,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.extraBold}",
-                "fontSize": "{ob.s.fontSize.xs}",
-                "lineHeight": "{ob.s.lineHeight.xs}",
+                "fontSize": "{ob.s.dynamic.fontSize.xs}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.xs}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.xs}"
               },
@@ -35,8 +35,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.medium}",
-                "fontSize": "{ob.s.fontSize.sm}",
-                "lineHeight": "{ob.s.lineHeight.sm}",
+                "fontSize": "{ob.s.dynamic.fontSize.sm}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.sm}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.sm}"
               },
@@ -47,8 +47,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.extraBold}",
-                "fontSize": "{ob.s.fontSize.sm}",
-                "lineHeight": "{ob.s.lineHeight.sm}",
+                "fontSize": "{ob.s.dynamic.fontSize.sm}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.sm}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.sm}"
               },
@@ -61,8 +61,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.medium}",
-                "fontSize": "{ob.s.fontSize.md}",
-                "lineHeight": "{ob.s.lineHeight.md}",
+                "fontSize": "{ob.s.dynamic.fontSize.md}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.md}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.md}"
               },
@@ -73,8 +73,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.extraBold}",
-                "fontSize": "{ob.s.fontSize.md}",
-                "lineHeight": "{ob.s.lineHeight.md}",
+                "fontSize": "{ob.s.dynamic.fontSize.md}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.md}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.md}"
               },
@@ -87,8 +87,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.regular}",
-                "fontSize": "{ob.s.fontSize.lg}",
-                "lineHeight": "{ob.s.lineHeight.lg}",
+                "fontSize": "{ob.s.dynamic.fontSize.lg}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.lg}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.lg}"
               },
@@ -99,8 +99,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.extraBold}",
-                "fontSize": "{ob.s.fontSize.lg}",
-                "lineHeight": "{ob.s.lineHeight.lg}",
+                "fontSize": "{ob.s.dynamic.fontSize.lg}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.lg}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.lg}"
               },
@@ -113,8 +113,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.regular}",
-                "fontSize": "{ob.s.fontSize.xl}",
-                "lineHeight": "{ob.s.lineHeight.xl}",
+                "fontSize": "{ob.s.dynamic.fontSize.xl}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.xl}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.xl}"
               },
@@ -125,8 +125,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.extraBold}",
-                "fontSize": "{ob.s.fontSize.xl}",
-                "lineHeight": "{ob.s.lineHeight.xl}",
+                "fontSize": "{ob.s.dynamic.fontSize.xl}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.xl}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.xl}"
               },
@@ -139,8 +139,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.regular}",
-                "fontSize": "{ob.s.fontSize.2xl}",
-                "lineHeight": "{ob.s.lineHeight.2xl}",
+                "fontSize": "{ob.s.dynamic.fontSize.2xl}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.2xl}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.2xl}"
               },
@@ -151,8 +151,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.extraBold}",
-                "fontSize": "{ob.s.fontSize.2xl}",
-                "lineHeight": "{ob.s.lineHeight.2xl}",
+                "fontSize": "{ob.s.dynamic.fontSize.2xl}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.2xl}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.2xl}"
               },
@@ -165,8 +165,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.regular}",
-                "fontSize": "{ob.s.fontSize.3xl}",
-                "lineHeight": "{ob.s.lineHeight.3xl}",
+                "fontSize": "{ob.s.dynamic.fontSize.3xl}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.3xl}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.3xl}"
               },
@@ -177,8 +177,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.extraBold}",
-                "fontSize": "{ob.s.fontSize.3xl}",
-                "lineHeight": "{ob.s.lineHeight.3xl}",
+                "fontSize": "{ob.s.dynamic.fontSize.3xl}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.3xl}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.3xl}"
               },
@@ -191,8 +191,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.regular}",
-                "fontSize": "{ob.s.fontSize.4xl}",
-                "lineHeight": "{ob.s.lineHeight.4xl}",
+                "fontSize": "{ob.s.dynamic.fontSize.4xl}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.4xl}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.4xl}"
               },
@@ -203,8 +203,8 @@
               "$value": {
                 "fontFamily": "{ob.s.font_family.body}",
                 "fontWeight": "{ob.s.font_weight.extraBold}",
-                "fontSize": "{ob.s.fontSize.4xl}",
-                "lineHeight": "{ob.s.lineHeight.4xl}",
+                "fontSize": "{ob.s.dynamic.fontSize.4xl}",
+                "lineHeight": "{ob.s.dynamic.lineHeight.4xl}",
                 "letterSpacing": "{ob.s.letter_spacing_px.normal}",
                 "paragraphSpacing": "{ob.s.paragraphSpacing.4xl}"
               },

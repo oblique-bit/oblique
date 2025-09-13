@@ -6,18 +6,18 @@
           "standard": {
             "mini": {
               "$type": "dimension",
-              "$value": "{ob.p.size.200}"
+              "$value": "{ob.p.dimension.px.200}"
             },
             "$type": "dimension",
-            "$value": "{ob.p.size.250}"
+            "$value": "{ob.p.dimension.px.250}"
           },
           "mini": {
             "mini": {
               "$type": "dimension",
-              "$value": "{ob.p.size.200}"
+              "$value": "{ob.p.dimension.px.200}"
             },
             "$type": "dimension",
-            "$value": "{ob.p.size.175}",
+            "$value": "{ob.p.dimension.px.175}",
             "$description": "for button.remove only"
           }
         }

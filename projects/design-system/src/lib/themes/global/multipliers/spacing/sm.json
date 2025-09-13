@@ -1,0 +1,13 @@
+{
+  "ob": {
+    "g": {
+      "multiplier": {
+        "spacing": {
+          "$type": "number",
+          "$value": 0.8,
+          "$description": "Spacing small (80% scaling) - Tight spacing for compact layouts"
+        }
+      }
+    }
+  }
+}

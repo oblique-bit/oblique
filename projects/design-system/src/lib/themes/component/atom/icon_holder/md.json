@@ -6,15 +6,15 @@
           "standard": {
             "mini": {
               "$type": "dimension",
-              "$value": "{ob.p.size.200}"
+              "$value": "{ob.p.dimension.px.200}"
             },
             "$type": "dimension",
-            "$value": "{ob.p.size.300}",
+            "$value": "{ob.p.dimension.px.300}",
             "$description": "MwSt asked for this size. ok i'll add a more pre desc later."
           },
           "mini": {
             "$type": "dimension",
-            "$value": "{ob.p.size.200}",
+            "$value": "{ob.p.dimension.px.200}",
             "$description": "for button.remove only"
           }
         }

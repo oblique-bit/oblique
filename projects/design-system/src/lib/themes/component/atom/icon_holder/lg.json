@@ -5,12 +5,12 @@
         "size": {
           "standard": {
             "$type": "dimension",
-            "$value": "{ob.p.size.350}",
+            "$value": "{ob.p.dimension.px.350}",
             "$description": "MwSt asked for this size. ok i'll add a more pre desc later."
           },
           "mini": {
             "$type": "dimension",
-            "$value": "{ob.p.size.250}",
+            "$value": "{ob.p.dimension.px.250}",
             "$description": "for button.remove only"
           }
         }

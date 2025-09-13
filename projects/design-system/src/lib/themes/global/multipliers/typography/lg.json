@@ -1,0 +1,13 @@
+{
+  "ob": {
+    "g": {
+      "multiplier": {
+        "typography": {
+          "$type": "number",
+          "$value": 1.125,
+          "$description": "Typography large (112.5% scaling) - Enhanced text sizing for improved readability"
+        }
+      }
+    }
+  }
+}

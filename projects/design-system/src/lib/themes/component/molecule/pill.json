@@ -68,15 +68,15 @@
           "min_height": {
             "sm": {
               "$type": "dimension",
-              "$value": "{ob.s.size.element.xl}"
+              "$value": "{ob.s.dynamic.size.element.xl}"
             },
             "md": {
               "$type": "dimension",
-              "$value": "{ob.s.size.surface.xs}"
+              "$value": "{ob.s.dynamic.size.surface.xs}"
             },
             "lg": {
               "$type": "dimension",
-              "$value": "{ob.s.size.surface.lg}"
+              "$value": "{ob.s.dynamic.size.surface.lg}"
             }
           }
         },

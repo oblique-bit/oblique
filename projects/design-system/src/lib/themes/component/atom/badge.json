@@ -136,36 +136,36 @@
           "max_width": {
             "sm": {
               "$type": "dimension",
-              "$value": "{ob.s.size.element.lg}",
+              "$value": "{ob.s.dynamic.size.element.lg}",
               "$description": "Max width of small badge (16px - standard icon size)"
             },
             "lg": {
               "$type": "dimension",
-              "$value": "{ob.s.size.surface.xl}",
+              "$value": "{ob.s.dynamic.size.surface.xl}",
               "$description": "Max width of large badge (48px - XL surface size)"
             }
           },
           "min_width": {
             "sm": {
               "$type": "dimension",
-              "$value": "{ob.s.size.element.lg}",
+              "$value": "{ob.s.dynamic.size.element.lg}",
               "$description": "Minimal width of small badge (16px - makes badge round)"
             },
             "lg": {
               "$type": "dimension",
-              "$value": "{ob.s.size.element.xl}",
+              "$value": "{ob.s.dynamic.size.element.xl}",
               "$description": "Minimal width of large badge (20px - makes badge round)"
             }
           },
           "height": {
             "sm": {
               "$type": "dimension",
-              "$value": "{ob.s.size.element.lg}",
+              "$value": "{ob.s.dynamic.size.element.lg}",
               "$description": "Height of small badge (16px - makes badge round)"
             },
             "lg": {
               "$type": "dimension",
-              "$value": "{ob.s.size.element.xl}",
+              "$value": "{ob.s.dynamic.size.element.xl}",
               "$description": "Height of large badge (20px - makes badge round)"
             }
           }

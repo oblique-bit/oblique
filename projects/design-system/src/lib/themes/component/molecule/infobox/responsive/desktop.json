@@ -94,7 +94,7 @@
           "title": {
             "min_height": {
               "$type": "dimension",
-              "$value": "{ob.s.size.surface.sm}",
+              "$value": "{ob.s.dynamic.size.surface.sm}",
               "$description": "Minimum height (28px) helps the title container maintain height regardless of close-button presence"
             }
           }
