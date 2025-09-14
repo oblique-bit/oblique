@@ -1,0 +1,44 @@
+{
+  "ob": {
+    "p": {
+      "number": {
+        "percentage": {
+          "50": {
+            "$type": "number",
+            "$value": 50,
+            "$description": "Represents a 50% ratio."
+          },
+          "100": {
+            "$type": "number",
+            "$value": 100,
+            "$description": "Represents a 100% ratio."
+          }
+        },
+        "line-height": {
+          "tight": {
+            "$type": "number",
+            "$value": 1.2,
+            "$description": "Unitless line-height for dense text."
+          },
+          "base": {
+            "$type": "number",
+            "$value": 1.5,
+            "$description": "Standard unitless line-height for body copy."
+          }
+        },
+        "letter-spacing": {
+          "tight": {
+            "$type": "number",
+            "$value": -2,
+            "$description": "Represents -2% letter-spacing in Figma."
+          },
+          "base": {
+            "$type": "number",
+            "$value": 0,
+            "$description": "Represents 0% letter-spacing in Figma."
+          }
+        }
+      }
+    }
+  }
+}

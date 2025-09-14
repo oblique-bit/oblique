@@ -18,7 +18,7 @@
                 "x": "0",
                 "y": "0",
                 "blur": "0",
-                "spread": "{ob.p.dimension.px.75}",
+                "spread": "{ob.p.dimension.px.3}",
                 "color": "{ob.s3.color.interaction.focus_ring.inversity_normal}",
                 "type": "dropShadow"
               }
@@ -40,7 +40,7 @@
                 "x": "0",
                 "y": "0",
                 "blur": "0",
-                "spread": "{ob.p.dimension.px.75}",
+                "spread": "{ob.p.dimension.px.3}",
                 "color": "{ob.s3.color.interaction.focus_ring.inversity_flipped}",
                 "type": "dropShadow"
               }

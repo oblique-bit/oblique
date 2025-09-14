@@ -1,0 +1,324 @@
+{
+  "ob": {
+    "s": {
+      "spacing": {
+        "static": {
+          "none": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.0}",
+              "$description": "Zero spacing for no distance - pixel units, no scaling"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.0}",
+              "$description": "Zero spacing for no distance - rem units, no scaling"
+            }
+          },
+          "xs": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.2}",
+              "$description": "The smallest spacing - icon-text distance within buttons/chips - pixel units, no scaling"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.2}",
+              "$description": "The smallest spacing - icon-text distance within buttons/chips - rem units, no scaling"
+            }
+          },
+          "sm": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.4}",
+              "$description": "Small spacing for tight element relationships - pixel units, no scaling"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.4}",
+              "$description": "Small spacing for tight element relationships - rem units, no scaling"
+            }
+          },
+          "md": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.8}",
+              "$description": "Minimal padding in small components like form fields - pixel units, no scaling"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.8}",
+              "$description": "Minimal padding in small components like form fields - rem units, no scaling"
+            }
+          },
+          "lg": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.12}",
+              "$description": "Section separation within cards, stacking controls - pixel units, no scaling"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.12}",
+              "$description": "Section separation within cards, stacking controls - rem units, no scaling"
+            }
+          },
+          "xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.16}",
+              "$description": "Standard spacing for modal padding, card content - pixel units, no scaling"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.16}",
+              "$description": "Standard spacing for modal padding, card content - rem units, no scaling"
+            }
+          },
+          "2xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.24}",
+              "$description": "Larger spacing between related component groups - pixel units, no scaling"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.24}",
+              "$description": "Larger spacing between related component groups - rem units, no scaling"
+            }
+          },
+          "3xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.32}",
+              "$description": "Expansive gaps between major components and panels - pixel units, no scaling"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.32}",
+              "$description": "Expansive gaps between major components and panels - rem units, no scaling"
+            }
+          },
+          "4xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.40}",
+              "$description": "Large spacing for layout sections - pixel units, no scaling"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.40}",
+              "$description": "Large spacing for layout sections - rem units, no scaling"
+            }
+          },
+          "5xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.48}",
+              "$description": "Extra large spacing for major layout areas - pixel units, no scaling"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.48}",
+              "$description": "Extra large spacing for major layout areas - rem units, no scaling"
+            }
+          },
+          "6xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.64}",
+              "$description": "Very large spacing for page sections - pixel units, no scaling"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.64}",
+              "$description": "Very large spacing for page sections - rem units, no scaling"
+            }
+          },
+          "7xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.80}",
+              "$description": "Massive spacing for major page divisions - pixel units, no scaling"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.80}",
+              "$description": "Massive spacing for major page divisions - rem units, no scaling"
+            }
+          },
+          "8xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.96}",
+              "$description": "Maximum spacing for page layout - pixel units, no scaling"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.96}",
+              "$description": "Maximum spacing for page layout - rem units, no scaling"
+            }
+          }
+        },
+        "dynamic": {
+          "none": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.0} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Zero spacing for no distance - pixel units"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.0} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Zero spacing for no distance - rem units"
+            }
+          },
+          "xs": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.2} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "The smallest spacing - icon-text distance within buttons/chips - pixel units"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.2} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "The smallest spacing - icon-text distance within buttons/chips - rem units"
+            }
+          },
+          "sm": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.4} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Small spacing for tight element relationships - pixel units"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.4} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Small spacing for tight element relationships - rem units"
+            }
+          },
+          "md": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.8} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Minimal padding in small components like form fields - pixel units"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.8} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Minimal padding in small components like form fields - rem units"
+            }
+          },
+          "lg": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.12} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Section separation within cards, stacking controls - pixel units"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.12} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Section separation within cards, stacking controls - rem units"
+            }
+          },
+          "xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.16} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Standard spacing for modal padding, card content - pixel units"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.16} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Standard spacing for modal padding, card content - rem units"
+            }
+          },
+          "2xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.24} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Larger spacing between related component groups - pixel units"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.24} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Larger spacing between related component groups - rem units"
+            }
+          },
+          "3xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.32} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Expansive gaps between major components and panels - pixel units"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.32} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Expansive gaps between major components and panels - rem units"
+            }
+          },
+          "4xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.40} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Large spacing for layout sections - pixel units"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.40} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Large spacing for layout sections - rem units"
+            }
+          },
+          "5xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.48} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Extra large spacing for major layout areas - pixel units"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.48} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Extra large spacing for major layout areas - rem units"
+            }
+          },
+          "6xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.64} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Very large spacing for page sections - pixel units"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.64} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Very large spacing for page sections - rem units"
+            }
+          },
+          "7xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.80} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Massive spacing for major page divisions - pixel units"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.80} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Massive spacing for major page divisions - rem units"
+            }
+          },
+          "8xl": {
+            "px": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.96} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Maximum spacing for page layout - pixel units"
+            },
+            "rem": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.rem.96} * {ob.g.multiplier.viewport.desktop}",
+              "$description": "Maximum spacing for page layout - rem units"
+            }
+          }
+        }
+      }
+    }
+  }
+}
