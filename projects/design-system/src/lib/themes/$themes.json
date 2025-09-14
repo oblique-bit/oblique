@@ -2525,19 +2525,17 @@
     "selectedTokenSets": {
       "semantic/color/s3-semantic/semantic": "enabled",
       "semantic/border": "enabled",
-      "semantic/fx": "enabled",
-      "semantic/shadow": "enabled",
       "semantic/motion": "enabled",
       "semantic/z-index": "enabled",
       "semantic/typography/static": "enabled",
       "semantic/typography/scale": "enabled",
       "semantic/typography/style": "enabled",
-      "semantic/dynamic/dimension": "enabled",
-      "semantic/dynamic/spacing": "enabled",
       "semantic/dynamic/typography": "enabled",
-      "semantic/static/dimension": "enabled",
       "semantic/static/typography": "enabled",
-      "semantic/static/spacing": "enabled"
+      "semantic/dimension": "enabled",
+      "semantic/spacing": "enabled",
+      "semantic/effect": "enabled",
+      "semantic/elevation": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:6",
     "$figmaModeId": "1:7",

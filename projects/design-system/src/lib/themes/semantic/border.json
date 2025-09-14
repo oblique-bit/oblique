@@ -1,26 +1,26 @@
 {
   "ob": {
     "s": {
-      "radii": {
+      "radius": {
         "none": {
           "$type": "borderRadius",
-          "$value": "{ob.p.radii.none}"
+          "$value": "{ob.p.dimension.radii.none}"
         },
         "sm": {
           "$type": "borderRadius",
-          "$value": "{ob.p.radii.50}"
+          "$value": "{ob.p.dimension.radii.sm}"
         },
         "md": {
           "$type": "borderRadius",
-          "$value": "{ob.p.radii.100}"
+          "$value": "{ob.p.dimension.radii.md}"
         },
         "lg": {
           "$type": "borderRadius",
-          "$value": "{ob.p.radii.200}"
+          "$value": "{ob.p.dimension.radii.lg}"
         },
-        "round": {
+        "full": {
           "$type": "borderRadius",
-          "$value": "{ob.p.radii.round}"
+          "$value": "{ob.p.dimension.radii.full}"
         }
       },
       "border_width": {

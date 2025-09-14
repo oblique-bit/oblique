@@ -37,6 +37,11 @@
             "$value": 0,
             "$description": "Represents 0% letter-spacing in Figma."
           }
+        },
+        "infinity": {
+          "$type": "number",
+          "$value": 9999,
+          "$description": "A large number used to create a 'pill' or 'circular' shape with border-radius."
         }
       }
     }

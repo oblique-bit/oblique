@@ -195,4 +195,48 @@ BENEFITS:
 
 ---
 
+## Token Architecture Requirements
+
+The design system's token architecture follows a strict, hierarchical structure to ensure scalability, maintainability, and clarity.
+
+1.  **Three Core Layers**: The architecture consists of three primary layers:
+    *   **Primitives (`ob.p`)**: The single source of truth for raw, context-free values.
+    *   **Semantics (`ob.s`)**: The contextual layer that maps primitives to specific use cases.
+    *   **Component Themes (`ob.h`, `ob.c`)**: The consumption layer that applies semantic tokens to UI components.
+
+2.  **Unidirectional Flow**: The token flow is strictly unidirectional: `Primitives` -> `Semantics` -> `Components`. A layer can only reference the layer directly above it.
+
+3.  **No Calculations in Consumer Layers**: All calculations, particularly those involving global multipliers (`ob.g.*`), **must** occur exclusively within the semantic layer (`ob.s`). Component theme layers (`ob.h`, `ob.c`) are forbidden from performing calculations and must consume pre-defined `static` or `dynamic` semantic tokens.
+
+### Examples
+
+#### ✔️ Do: Consume pre-defined semantic tokens in components.
+
+Component-level tokens should directly reference a token from the semantic layer (`ob.s`). This keeps the component layer clean and free of logic.
+
+```json
+// In: ob.h.button.json (Component Theme Layer)
+{
+  "min_height": {
+    "$value": "{ob.s.dimension.dynamic.container.xs.rem}"
+  }
+}
+```
+
+#### ❌ Don't: Perform calculations in the component layer.
+
+Calculations using global multipliers (`ob.g.*`) are strictly forbidden at the component (`ob.h`, `ob.c`) level. This was a critical mistake that violated the architecture. All calculations must be done in the semantic layer.
+
+```json
+// In: ob.h.button.json (Component Theme Layer)
+// THIS IS FORBIDDEN!
+{
+  "font_size": {
+    "$value": "{ob.p.fontSizeUnitless.400} * {ob.g.multiplier.typography}"
+  }
+}
+```
+
+---
+
 *Last updated: July 13, 2025*

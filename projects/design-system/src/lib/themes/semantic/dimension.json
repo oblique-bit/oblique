@@ -1,631 +1,440 @@
 {
-  "ob": {
-    "s": {
-      "dimension": {
-        "static": {
-          "none": {
-            "px": {
-              "$type": "dimension",
-              "$value": "{ob.p.dimension.px.0}",
-              "$description": "Zero size for hidden elements - pixel units"
-            },
-            "rem": {
-              "$type": "dimension",
-              "$value": "{ob.p.dimension.rem.0}",
-              "$description": "Zero size for hidden elements - rem units"
-            }
-          },
-          "detail": {
-            "xs": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.1}",
-                "$description": "1px - finest borders, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1}",
-                "$description": "0.125rem - finest borders, no scaling - rem units"
-              }
-            },
-            "sm": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.2}",
-                "$description": "2px - thin borders, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.2}",
-                "$description": "0.25rem - thin borders, no scaling - rem units"
-              }
-            },
-            "md": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.3}",
-                "$description": "3px - standard borders, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.3}",
-                "$description": "0.375rem - standard borders, no scaling - rem units"
-              }
-            },
-            "lg": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.4}",
-                "$description": "4px - thick borders, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.4}",
-                "$description": "0.5rem - thick borders, no scaling - rem units"
-              }
-            },
-            "xl": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.6}",
-                "$description": "6px - shadow spread, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.6}",
-                "$description": "0.625rem - shadow spread, no scaling - rem units"
-              }
-            }
-          },
-          "element": {
-            "xs": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.100}",
-                "$description": "8px - small icons, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.100}",
-                "$description": "0.5rem - small icons, no scaling - rem units"
-              }
-            },
-            "sm": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.125}",
-                "$description": "10px - compact elements, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.125}",
-                "$description": "0.625rem - compact elements, no scaling - rem units"
-              }
-            },
-            "md": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.150}",
-                "$description": "12px - small badges, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.150}",
-                "$description": "0.75rem - small badges, no scaling - rem units"
-              }
-            },
-            "lg": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.200}",
-                "$description": "16px - standard icons, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.200}",
-                "$description": "1rem - standard icons, no scaling - rem units"
-              }
-            },
-            "xl": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.250}",
-                "$description": "20px - expressive icons, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.250}",
-                "$description": "1.25rem - expressive icons, no scaling - rem units"
-              }
-            }
-          },
-          "surface": {
-            "xs": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.300}",
-                "$description": "24px - small surfaces, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.300}",
-                "$description": "1.5rem - small surfaces, no scaling - rem units"
-              }
-            },
-            "sm": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.350}",
-                "$description": "28px - button min-height, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.350}",
-                "$description": "1.75rem - button min-height, no scaling - rem units"
-              }
-            },
-            "md": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.400}",
-                "$description": "32px - standard surfaces, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.400}",
-                "$description": "2rem - standard surfaces, no scaling - rem units"
-              }
-            },
-            "lg": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.350}",
-                "$description": "36px equivalent - large surfaces, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.450}",
-                "$description": "2.25rem - large surfaces, no scaling - rem units"
-              }
-            },
-            "xl": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.600}",
-                "$description": "48px - XL surfaces, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.600}",
-                "$description": "3rem - XL surfaces, no scaling - rem units"
-              }
-            }
-          },
-          "container": {
-            "xs": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.800}",
-                "$description": "64px - small containers, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.800}",
-                "$description": "4rem - small containers, no scaling - rem units"
-              }
-            },
-            "sm": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.1000}",
-                "$description": "80px - medium containers, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1000}",
-                "$description": "5rem - medium containers, no scaling - rem units"
-              }
-            },
-            "md": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.1200}",
-                "$description": "96px - default containers, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1200}",
-                "$description": "6rem - default containers, no scaling - rem units"
-              }
-            },
-            "lg": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.2000}",
-                "$description": "160px - large containers, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.2000}",
-                "$description": "10rem - large containers, no scaling - rem units"
-              }
-            },
-            "xl": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.3600}",
-                "$description": "320px - popover containers, no scaling - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.3600}",
-                "$description": "18rem - popover containers, no scaling - rem units"
-              }
-            }
-          },
-          "_legacy": {
-            "$description": "DEPRECATED: Keep for backward compatibility during migration",
-            "normal": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.element.lg.px}",
-                "$description": "DEPRECATED: Use element.lg.px instead"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.element.lg.rem}",
-                "$description": "DEPRECATED: Use element.lg.rem instead"
-              }
-            },
-            "stretchy": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.element.xl.px}",
-                "$description": "DEPRECATED: Use element.xl.px instead"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.element.xl.rem}",
-                "$description": "DEPRECATED: Use element.xl.rem instead"
-              }
-            },
-            "spacious": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.surface.xs.px}",
-                "$description": "DEPRECATED: Use surface.xs.px instead"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.surface.xs.rem}",
-                "$description": "DEPRECATED: Use surface.xs.rem instead"
-              }
-            },
-            "chubby": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.surface.sm.px}",
-                "$description": "DEPRECATED: Use surface.sm.px instead"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.surface.sm.rem}",
-                "$description": "DEPRECATED: Use surface.sm.rem instead"
-              }
-            },
-            "hefty": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.surface.lg.px}",
-                "$description": "DEPRECATED: Use surface.lg.px instead"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.surface.lg.rem}",
-                "$description": "DEPRECATED: Use surface.lg.rem instead"
-              }
-            },
-            "ultra": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.surface.xl.px}",
-                "$description": "DEPRECATED: Use surface.xl.px instead"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.surface.xl.rem}",
-                "$description": "DEPRECATED: Use surface.xl.rem instead"
-              }
-            },
-            "whoa": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.container.md.px}",
-                "$description": "DEPRECATED: Use container.md.px instead"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.container.md.rem}",
-                "$description": "DEPRECATED: Use container.md.rem instead"
-              }
-            },
-            "multiverse": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.container.xl.px}",
-                "$description": "DEPRECATED: Use container.xl.px instead"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.static.container.xl.rem}",
-                "$description": "DEPRECATED: Use container.xl.rem instead"
-              }
-            }
-          }
-        },
-        "dynamic": {
-          "none": {
-            "px": {
-              "$type": "dimension",
-              "$value": "{ob.p.dimension.px.0}",
-              "$description": "Zero size for hidden elements - pixel units"
-            },
-            "rem": {
-              "$type": "dimension",
-              "$value": "{ob.p.dimension.rem.0}",
-              "$description": "Zero size for hidden elements - rem units"
-            }
-          },
-          "detail": {
-            "xs": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.1} * {ob.g.multiplier.dimension}",
-                "$description": "1px - finest borders, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1} * {ob.g.multiplier.dimension}",
-                "$description": "0.125rem - finest borders, scales with size mode - rem units"
-              }
-            },
-            "sm": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.2} * {ob.g.multiplier.dimension}",
-                "$description": "2px - thin borders, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.2} * {ob.g.multiplier.dimension}",
-                "$description": "0.25rem - thin borders, scales with size mode - rem units"
-              }
-            },
-            "md": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.3} * {ob.g.multiplier.dimension}",
-                "$description": "3px - standard borders, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.3} * {ob.g.multiplier.dimension}",
-                "$description": "0.375rem - standard borders, scales with size mode - rem units"
-              }
-            },
-            "lg": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.4} * {ob.g.multiplier.dimension}",
-                "$description": "4px - thick borders, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.4} * {ob.g.multiplier.dimension}",
-                "$description": "0.5rem - thick borders, scales with size mode - rem units"
-              }
-            },
-            "xl": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.6} * {ob.g.multiplier.dimension}",
-                "$description": "6px - shadow spread, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.6} * {ob.g.multiplier.dimension}",
-                "$description": "0.625rem - shadow spread, scales with size mode - rem units"
-              }
-            }
-          },
-          "element": {
-            "xs": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.8} * {ob.g.multiplier.dimension}",
-                "$description": "8px - small icons, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.8} * {ob.g.multiplier.dimension}",
-                "$description": "0.5rem - small icons, scales with size mode - rem units"
-              }
-            },
-            "sm": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.12} * {ob.g.multiplier.dimension}",
-                "$description": "10px - compact elements, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.12} * {ob.g.multiplier.dimension}",
-                "$description": "0.625rem - compact elements, scales with size mode - rem units"
-              }
-            },
-            "md": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.150} * {ob.g.multiplier.dimension}",
-                "$description": "12px - small badges, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.150} * {ob.g.multiplier.dimension}",
-                "$description": "0.75rem - small badges, scales with size mode - rem units"
-              }
-            },
-            "lg": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.200} * {ob.g.multiplier.dimension}",
-                "$description": "16px - standard icons, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.200} * {ob.g.multiplier.dimension}",
-                "$description": "1rem - standard icons, scales with size mode - rem units"
-              }
-            },
-            "xl": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.250} * {ob.g.multiplier.dimension}",
-                "$description": "20px - expressive icons, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.250} * {ob.g.multiplier.dimension}",
-                "$description": "1.25rem - expressive icons, scales with size mode - rem units"
-              }
-            }
-          },
-          "surface": {
-            "xs": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.300} * {ob.g.multiplier.dimension}",
-                "$description": "24px - small surfaces, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.300} * {ob.g.multiplier.dimension}",
-                "$description": "1.5rem - small surfaces, scales with size mode - rem units"
-              }
-            },
-            "sm": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.350} * {ob.g.multiplier.dimension}",
-                "$description": "28px - button min-height, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.350} * {ob.g.multiplier.dimension}",
-                "$description": "1.75rem - button min-height, scales with size mode - rem units"
-              }
-            },
-            "md": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.400} * {ob.g.multiplier.dimension}",
-                "$description": "32px - standard surfaces, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.400} * {ob.g.multiplier.dimension}",
-                "$description": "2rem - standard surfaces, scales with size mode - rem units"
-              }
-            },
-            "lg": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.350} * {ob.g.multiplier.dimension}",
-                "$description": "36px equivalent - large surfaces, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.450} * {ob.g.multiplier.dimension}",
-                "$description": "2.25rem - large surfaces, scales with size mode - rem units"
-              }
-            },
-            "xl": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.600} * {ob.g.multiplier.dimension}",
-                "$description": "48px - XL surfaces, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.600} * {ob.g.multiplier.dimension}",
-                "$description": "3rem - XL surfaces, scales with size mode - rem units"
-              }
-            }
-          },
-          "container": {
-            "xs": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.800} * {ob.g.multiplier.dimension}",
-                "$description": "64px - small containers, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.800} * {ob.g.multiplier.dimension}",
-                "$description": "4rem - small containers, scales with size mode - rem units"
-              }
-            },
-            "sm": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.1000} * {ob.g.multiplier.dimension}",
-                "$description": "80px - medium containers, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1000} * {ob.g.multiplier.dimension}",
-                "$description": "5rem - medium containers, scales with size mode - rem units"
-              }
-            },
-            "md": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.1200} * {ob.g.multiplier.dimension}",
-                "$description": "96px - default containers, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1200} * {ob.g.multiplier.dimension}",
-                "$description": "6rem - default containers, scales with size mode - rem units"
-              }
-            },
-            "lg": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.2000} * {ob.g.multiplier.dimension}",
-                "$description": "160px - large containers, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.2000} * {ob.g.multiplier.dimension}",
-                "$description": "10rem - large containers, scales with size mode - rem units"
-              }
-            },
-            "xl": {
-              "px": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.px.3600} * {ob.g.multiplier.dimension}",
-                "$description": "320px - popover containers, scales with size mode - pixel units"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.3600} * {ob.g.multiplier.dimension}",
-                "$description": "18rem - popover containers, scales with size mode - rem units"
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+	"ob": {
+		"s": {
+			"dimension": {
+				"static": {
+					"none": {
+						"px": {
+							"$type": "dimension",
+							"$value": "{ob.p.dimension.px.0}",
+							"$description": "Zero size for hidden elements"
+						},
+						"rem": {
+							"$type": "dimension",
+							"$value": "{ob.p.dimension.rem.0}",
+							"$description": "Zero size for hidden elements"
+						}
+					},
+					"detail": {
+						"xs": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.1}",
+								"$description": "1px - Finest details, hairlines (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.100}",
+								"$description": "1px equivalent - Finest details, hairlines (static)"
+							}
+						},
+						"sm": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.2}",
+								"$description": "2px - Subtle adjustments, thin borders (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.200}",
+								"$description": "2px equivalent - Subtle adjustments, thin borders (static)"
+							}
+						}
+					},
+					"element": {
+						"xs": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.4}",
+								"$description": "4px - Small component internal spacing (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.300}",
+								"$description": "4px equivalent - Small component internal spacing (static)"
+							}
+						},
+						"sm": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.8}",
+								"$description": "8px - Standard component internal spacing (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.400}",
+								"$description": "8px equivalent - Standard component internal spacing (static)"
+							}
+						},
+						"md": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.12}",
+								"$description": "12px - Large component internal spacing (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.500}",
+								"$description": "12px equivalent - Large component internal spacing (static)"
+							}
+						}
+					},
+					"surface": {
+						"xs": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.16}",
+								"$description": "16px - Small surface padding, gaps between elements (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.600}",
+								"$description": "16px equivalent - Small surface padding (static)"
+							}
+						},
+						"sm": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.20}",
+								"$description": "20px - Medium surface padding (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.700}",
+								"$description": "20px equivalent - Medium surface padding (static)"
+							}
+						},
+						"md": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.24}",
+								"$description": "24px - Large surface padding (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.800}",
+								"$description": "24px equivalent - Large surface padding (static)"
+							}
+						}
+					},
+					"container": {
+						"xs": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.32}",
+								"$description": "32px - Small container padding (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.900}",
+								"$description": "32px equivalent - Small container padding (static)"
+							}
+						},
+						"sm": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.48}",
+								"$description": "48px - Medium container padding (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.1100}",
+								"$description": "48px equivalent - Medium container padding (static)"
+							}
+						},
+						"md": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.64}",
+								"$description": "64px - Large container padding (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.1300}",
+								"$description": "64px equivalent - Large container padding (static)"
+							}
+						}
+					},
+					"layout": {
+						"xs": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.80}",
+								"$description": "80px - Small layout gap (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.1400}",
+								"$description": "80px equivalent - Small layout gap (static)"
+							}
+						},
+						"sm": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.96}",
+								"$description": "96px - Medium layout gap (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.1500}",
+								"$description": "96px equivalent - Medium layout gap (static)"
+							}
+						},
+						"md": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.128}",
+								"$description": "128px - Large layout gap (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.1600}",
+								"$description": "128px equivalent - Large layout gap (static)"
+							}
+						},
+						"lg": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.192}",
+								"$description": "192px - XL layout gap (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.1800}",
+								"$description": "192px equivalent - XL layout gap (static)"
+							}
+						},
+						"xl": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.320}",
+								"$description": "320px - XXL layout gap (static)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.2000}",
+								"$description": "320px equivalent - XXL layout gap (static)"
+							}
+						}
+					}
+				},
+				"dynamic": {
+					"none": {
+						"px": {
+							"$type": "dimension",
+							"$value": "{ob.p.dimension.px.0}",
+							"$description": "Zero size for hidden elements - pixel units"
+						},
+						"rem": {
+							"$type": "dimension",
+							"$value": "{ob.p.dimension.rem.0}",
+							"$description": "Zero size for hidden elements - rem units"
+						}
+					},
+					"detail": {
+						"xs": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.1}",
+								"$description": "1px - Finest details, hairlines (dynamic, non-scaling)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.100}",
+								"$description": "1px equivalent - Finest details (dynamic, non-scaling)"
+							}
+						},
+						"sm": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.2}",
+								"$description": "2px - Subtle adjustments, thin borders (dynamic, non-scaling)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.200}",
+								"$description": "2px equivalent - Subtle adjustments (dynamic, non-scaling)"
+							}
+						}
+					},
+					"element": {
+						"xs": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.4} * {ob.g.multiplier.dimension}",
+								"$description": "4px - Small component internal spacing (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.300} * {ob.g.multiplier.dimension}",
+								"$description": "4px equivalent - Small component internal spacing (dynamic)"
+							}
+						},
+						"sm": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.8} * {ob.g.multiplier.dimension}",
+								"$description": "8px - Standard component internal spacing (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.400} * {ob.g.multiplier.dimension}",
+								"$description": "8px equivalent - Standard component internal spacing (dynamic)"
+							}
+						},
+						"md": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.12} * {ob.g.multiplier.dimension}",
+								"$description": "12px - Large component internal spacing (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.500} * {ob.g.multiplier.dimension}",
+								"$description": "12px equivalent - Large component internal spacing (dynamic)"
+							}
+						}
+					},
+					"surface": {
+						"xs": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.16} * {ob.g.multiplier.dimension}",
+								"$description": "16px - Small surface padding, gaps between elements (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.600} * {ob.g.multiplier.dimension}",
+								"$description": "16px equivalent - Small surface padding (dynamic)"
+							}
+						},
+						"sm": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.20} * {ob.g.multiplier.dimension}",
+								"$description": "20px - Medium surface padding (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.700} * {ob.g.multiplier.dimension}",
+								"$description": "20px equivalent - Medium surface padding (dynamic)"
+							}
+						},
+						"md": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.24} * {ob.g.multiplier.dimension}",
+								"$description": "24px - Large surface padding (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.800} * {ob.g.multiplier.dimension}",
+								"$description": "24px equivalent - Large surface padding (dynamic)"
+							}
+						}
+					},
+					"container": {
+						"xs": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.32} * {ob.g.multiplier.dimension}",
+								"$description": "32px - Small container padding (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.900} * {ob.g.multiplier.dimension}",
+								"$description": "32px equivalent - Small container padding (dynamic)"
+							}
+						},
+						"sm": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.48} * {ob.g.multiplier.dimension}",
+								"$description": "48px - Medium container padding (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.1100} * {ob.g.multiplier.dimension}",
+								"$description": "48px equivalent - Medium container padding (dynamic)"
+							}
+						},
+						"md": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.64} * {ob.g.multiplier.dimension}",
+								"$description": "64px - Large container padding (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.1300} * {ob.g.multiplier.dimension}",
+								"$description": "64px equivalent - Large container padding (dynamic)"
+							}
+						}
+					},
+					"layout": {
+						"xs": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.80} * {ob.g.multiplier.dimension}",
+								"$description": "80px - Small layout gap (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.1400} * {ob.g.multiplier.dimension}",
+								"$description": "80px equivalent - Small layout gap (dynamic)"
+							}
+						},
+						"sm": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.96} * {ob.g.multiplier.dimension}",
+								"$description": "96px - Medium layout gap (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.1500} * {ob.g.multiplier.dimension}",
+								"$description": "96px equivalent - Medium layout gap (dynamic)"
+							}
+						},
+						"md": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.128} * {ob.g.multiplier.dimension}",
+								"$description": "128px - Large layout gap (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.1600} * {ob.g.multiplier.dimension}",
+								"$description": "128px equivalent - Large layout gap (dynamic)"
+							}
+						},
+						"lg": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.192} * {ob.g.multiplier.dimension}",
+								"$description": "192px - XL layout gap (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.1800} * {ob.g.multiplier.dimension}",
+								"$description": "192px equivalent - XL layout gap (dynamic)"
+							}
+						},
+						"xl": {
+							"px": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.px.320} * {ob.g.multiplier.dimension}",
+								"$description": "320px - XXL layout gap (dynamic)"
+							},
+							"rem": {
+								"$type": "dimension",
+								"$value": "{ob.p.dimension.rem.2000} * {ob.g.multiplier.dimension}",
+								"$description": "320px equivalent - XXL layout gap (dynamic)"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

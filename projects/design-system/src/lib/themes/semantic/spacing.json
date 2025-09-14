@@ -23,7 +23,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.2}",
+              "$value": "{ob.p.dimension.rem.200}",
               "$description": "The smallest spacing - icon-text distance within buttons/chips - rem units, no scaling"
             }
           },
@@ -35,7 +35,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.4}",
+              "$value": "{ob.p.dimension.rem.300}",
               "$description": "Small spacing for tight element relationships - rem units, no scaling"
             }
           },
@@ -47,7 +47,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.8}",
+              "$value": "{ob.p.dimension.rem.400}",
               "$description": "Minimal padding in small components like form fields - rem units, no scaling"
             }
           },
@@ -59,7 +59,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.12}",
+              "$value": "{ob.p.dimension.rem.500}",
               "$description": "Section separation within cards, stacking controls - rem units, no scaling"
             }
           },
@@ -71,7 +71,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.16}",
+              "$value": "{ob.p.dimension.rem.600}",
               "$description": "Standard spacing for modal padding, card content - rem units, no scaling"
             }
           },
@@ -83,7 +83,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.24}",
+              "$value": "{ob.p.dimension.rem.800}",
               "$description": "Larger spacing between related component groups - rem units, no scaling"
             }
           },
@@ -95,7 +95,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.32}",
+              "$value": "{ob.p.dimension.rem.900}",
               "$description": "Expansive gaps between major components and panels - rem units, no scaling"
             }
           },
@@ -107,7 +107,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.40}",
+              "$value": "{ob.p.dimension.rem.1000}",
               "$description": "Large spacing for layout sections - rem units, no scaling"
             }
           },
@@ -119,7 +119,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.48}",
+              "$value": "{ob.p.dimension.rem.1100}",
               "$description": "Extra large spacing for major layout areas - rem units, no scaling"
             }
           },
@@ -131,7 +131,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.64}",
+              "$value": "{ob.p.dimension.rem.1300}",
               "$description": "Very large spacing for page sections - rem units, no scaling"
             }
           },
@@ -143,7 +143,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.80}",
+              "$value": "{ob.p.dimension.rem.1400}",
               "$description": "Massive spacing for major page divisions - rem units, no scaling"
             }
           },
@@ -155,7 +155,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.96}",
+              "$value": "{ob.p.dimension.rem.1500}",
               "$description": "Maximum spacing for page layout - rem units, no scaling"
             }
           }
@@ -181,7 +181,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.2} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.rem.200} * {ob.g.multiplier.viewport.desktop}",
               "$description": "The smallest spacing - icon-text distance within buttons/chips - rem units"
             }
           },
@@ -193,7 +193,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.4} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.rem.300} * {ob.g.multiplier.viewport.desktop}",
               "$description": "Small spacing for tight element relationships - rem units"
             }
           },
@@ -205,7 +205,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.8} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.rem.400} * {ob.g.multiplier.viewport.desktop}",
               "$description": "Minimal padding in small components like form fields - rem units"
             }
           },
@@ -217,7 +217,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.12} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.rem.500} * {ob.g.multiplier.viewport.desktop}",
               "$description": "Section separation within cards, stacking controls - rem units"
             }
           },
@@ -229,7 +229,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.16} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.rem.600} * {ob.g.multiplier.viewport.desktop}",
               "$description": "Standard spacing for modal padding, card content - rem units"
             }
           },
@@ -241,7 +241,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.24} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.rem.800} * {ob.g.multiplier.viewport.desktop}",
               "$description": "Larger spacing between related component groups - rem units"
             }
           },
@@ -253,7 +253,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.32} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.rem.900} * {ob.g.multiplier.viewport.desktop}",
               "$description": "Expansive gaps between major components and panels - rem units"
             }
           },
@@ -265,7 +265,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.40} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.rem.1000} * {ob.g.multiplier.viewport.desktop}",
               "$description": "Large spacing for layout sections - rem units"
             }
           },
@@ -277,7 +277,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.48} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.rem.1100} * {ob.g.multiplier.viewport.desktop}",
               "$description": "Extra large spacing for major layout areas - rem units"
             }
           },
@@ -289,7 +289,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.64} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.rem.1300} * {ob.g.multiplier.viewport.desktop}",
               "$description": "Very large spacing for page sections - rem units"
             }
           },
@@ -301,7 +301,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.80} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.rem.1400} * {ob.g.multiplier.viewport.desktop}",
               "$description": "Massive spacing for major page divisions - rem units"
             }
           },
@@ -313,7 +313,7 @@
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.96} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.rem.1500} * {ob.g.multiplier.viewport.desktop}",
               "$description": "Maximum spacing for page layout - rem units"
             }
           }

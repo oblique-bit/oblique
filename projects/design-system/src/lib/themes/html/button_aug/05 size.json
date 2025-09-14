@@ -11,23 +11,23 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.detail.xl.rem}"
+                "$value": "{ob.s.dimension.dynamic.element.sm.rem}"
               },
               "horizontal": {
                 "$type": "spacing", 
-                "$value": "{ob.s.dimension.dynamic.element.lg.rem}"
+                "$value": "{ob.s.dimension.dynamic.element.md.rem}"
               }
             },
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.detail.xl.rem}"
+              "$value": "{ob.s.dimension.dynamic.element.sm.rem}"
             }
           },
           "container": {
             "size": {
               "min_height": {
                 "$type": "sizing",
-                "$value": "{ob.s.dimension.dynamic.surface.lg.rem}"
+                "$value": "{ob.s.dimension.dynamic.container.xs.rem}"
               }
             }
           }
@@ -37,11 +37,11 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.detail.xl.rem}"
+                "$value": "{ob.s.dimension.dynamic.element.sm.rem}"
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.detail.xl.rem}"
+                "$value": "{ob.s.dimension.dynamic.element.sm.rem}"
               }
             }
           }
@@ -70,12 +70,12 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.p.dimension.rem.0}",
+                "$value": "{ob.s.dimension.static.none.rem}",
                 "$description": "Remove button requires zero padding."
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.p.dimension.rem.0}",
+                "$value": "{ob.s.dimension.static.none.rem}",
                 "$description": "Remove button requires zero padding."
               }
             }

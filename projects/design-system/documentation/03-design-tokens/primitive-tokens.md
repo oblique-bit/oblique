@@ -25,9 +25,11 @@ This file is the source of truth for all length-based, unitized values.
     -   Contains two main keys: `px` and `rem`.
     -   Each key holds a flat list of tokens representing a numeric scale.
 -   **Naming Convention**:
-    -   The key for each token is an integer that **directly corresponds to its pixel value**. For example, the token for `8px` is named `"8"`.
-    -   This makes the scale intuitive. A designer or developer can look at a value and immediately know its name.
-    -   **Example**: `{ "ob": { "p": { "dimension": { "px": { "8": { "$value": "8px" } } } } } }`
+    -   **`px` tokens**: The key for each token is an integer that **directly corresponds to its pixel value**. For example, the token for `8px` is named `"8"`.
+    -   **`rem` tokens**: The key for each token follows a "t-shirt" sizing scale (e.g., `100`, `200`, `300`). This provides a clear hierarchy without being tied to a specific `rem` value.
+    -   This makes the scales intuitive and easy to understand.
+    -   **Example (`px`)**: `{ "ob": { "p": { "dimension": { "px": { "8": { "$value": "8px" } } } } } }`
+    -   **Example (`rem`)**: `{ "ob": { "p": { "dimension": { "rem": { "400": { "$value": "0.5rem" } } } } } }`
 
 #### `px` vs. `rem` Scales
 
@@ -56,6 +58,18 @@ This file is the source of truth for all **unitless** or abstract numeric values
 -   **Static Tokens**: Static semantic tokens (e.g., `ob.s.dimension.static.border.default`) reference primitives directly without a multiplier. They remain constant across all modes.
 -   **Unit Choice**: The choice between referencing a `px` or `rem` primitive is made at the **semantic token level**. This allows the system to define, for example, that all paddings should be fluid (`rem`) while all border widths should be absolute (`px`).
 
+## Primitive Token Requirements
+
+Primitive tokens are the foundational, context-agnostic values of the design system.
+
+1.  **Single Source of Truth**: Primitives are the single source of truth for all visual design attributes (e.g., colors, dimensions, fonts).
+2.  **Context-Free**: Primitive tokens must be named based on their value, not their use case (e.g., `blue-500`, not `primary-color`).
+3.  **Dimension Scale**: The primitive dimension scale must be structured to support the full range of component and layout needs, from hairlines to large containers. It must adhere to the following structure:
+    *   **Micro-Scale for Fine Details**: The scale must begin with `1px`, `2px`, `3px`, and `6px` to accommodate the smallest design elements such as borders, dividers, and micro-spacings. This ensures pixel-perfect control where needed.
+    *   **Core Grid-Based Scale**: Following the micro-scale, all subsequent values must align with a **4px grid** (e.g., `4px`, `8px`, `12px`, `16px`). This establishes a consistent, rhythmic foundation for all components and layouts.
+    *   **Comprehensive Range**: The scale must provide a wide range of values from the `1px` micro-value to large macro values required for page layouts, ensuring no gaps exist for component requirements.
+    *   *(For more details, see the [Dimension and Sizing Scale Research](research.md)).*
+
 ## Example Workflow
 
 1.  **Need**: A component needs a `16px` padding.
@@ -64,3 +78,48 @@ This file is the source of truth for all **unitless** or abstract numeric values
 4.  **Component Usage**: The component uses the semantic token: `padding: var(--ob-s-dimension-default-padding-medium);`.
 
 This architecture ensures that the system is well-structured, easy to understand, and flexible enough to handle the diverse requirements of a modern, multi-platform design system.
+
+---
+
+### Examples
+
+#### ✔️ Do: Use clear, value-based names for `px` and scale-based names for `rem`.
+
+Primitive `px` dimension tokens should be named by their pixel value. `rem` tokens should use a t-shirt scale.
+
+```json
+// In: primitive/dimension.json
+// "px" token
+"8": {
+  "$type": "dimension",
+  "$value": "8px",
+  "$description": "Core spacing unit for layout grids and component padding"
+}
+
+// "rem" token
+"400": {
+  "$type": "dimension",
+  "$value": "0.5rem",
+  "$description": "8px equivalent - Core spacing unit"
+}
+```
+
+#### ❌ Don't: Use an inconsistent or incomplete scale, or mix naming conventions.
+
+The primitive `px` scale should not have arbitrary values or large gaps. `rem` tokens should not be named after their `px` equivalent.
+
+```json
+// In: primitive/dimension.json
+// OLD, BROKEN APPROACH for "rem"
+"8": {
+  "$type": "dimension",
+  "$value": "0.5rem"
+},
+
+// OLD, BROKEN APPROACH for "px"
+// Missing 12px, 14px, etc.
+"200": {
+  "$type": "dimension",
+  "$value": "16px"
+}
+```
