@@ -1,3 +1,11 @@
+# [14.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/14.0.0-rc.1...14.0.0-rc.2) (2025-09-15)
+
+## Bug Fixes
+
+- **schematics:** ng-update add `createdOn` parameter to accessibility statement ([d9f00709](https://github.com/oblique-bit/oblique/commit/d9f00709e637a4036d8ace99ddfbf3ecc4158f20))
+- **schematics:** ng-update add `conformity` parameter to accessibility statement ([191e7746](https://github.com/oblique-bit/oblique/commit/191e77466378dc5f1376eff079dd85efcd6fb118))
+- **schematics:** correctly migrate accessibility statement contact info ([1d5eda30](https://github.com/oblique-bit/oblique/commit/1d5eda307807a9edb942fad979c7f3c1eb720c9b))
+
 # [14.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0-rc.1) (2025-09-05)
 
 ## Bug Fixes

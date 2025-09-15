@@ -1,3 +1,9 @@
+# [14.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/14.0.0-rc.1...14.0.0-rc.2) (2025-09-15)
+
+## Bug Fixes
+
+- **icon:** update icon names ([5cedc47c](https://github.com/oblique-bit/oblique/commit/5cedc47c02269156ee96021f71c0c58c3435fb9c))
+
 # [14.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0-rc.1) (2025-09-05)
 
 ## Bug Fixes
