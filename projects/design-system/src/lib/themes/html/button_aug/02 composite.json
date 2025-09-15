@@ -14,10 +14,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.enabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -30,10 +40,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.hover}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -47,10 +67,20 @@
                     "focus_ring": "{ob.h.button_aug.focus_ring}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.focus}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -63,10 +93,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.pressed}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -79,10 +119,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.disabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               }
@@ -97,10 +147,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.enabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -113,10 +173,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.hover}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -130,10 +200,20 @@
                     "focus_ring": "{ob.h.button_aug.focus_ring}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.focus}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -146,10 +226,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.pressed}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -162,10 +252,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.disabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               }
@@ -182,10 +282,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.enabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -198,10 +308,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.hover}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -215,10 +335,20 @@
                     "focus_ring": "{ob.h.button_aug.focus_ring}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.focus}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -231,10 +361,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.pressed}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -247,10 +387,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.disabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               }
@@ -265,10 +415,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.enabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -281,10 +441,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.hover}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -298,10 +468,20 @@
                     "focus_ring": "{ob.h.button_aug.focus_ring}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.focus}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -314,10 +494,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.pressed}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -330,10 +520,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.disabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               }
@@ -350,10 +550,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.enabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -366,10 +576,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.hover}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -383,10 +603,20 @@
                     "focus_ring": "{ob.h.button_aug.focus_ring}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.focus}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -399,10 +629,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.pressed}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -415,10 +655,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.disabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               }
@@ -433,10 +683,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.enabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -449,10 +709,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.hover}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -466,10 +736,20 @@
                     "focus_ring": "{ob.h.button_aug.focus_ring}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.focus}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -482,10 +762,20 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.pressed}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               },
@@ -498,10 +788,288 @@
                     "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
                   }
                 },
-                "fg": {
+                "fg_color": {
                   "$type": "composition",
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.disabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                  }
+                }
+              }
+            }
+          },
+          "danger": {
+            "inversity_normal": {
+              "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_normal.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_normal.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_normal.enabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                  }
+                }
+              },
+              "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_normal.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_normal.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_normal.hover}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                  }
+                }
+              },
+              "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_normal.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_normal.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_normal.focus}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                  }
+                }
+              },
+              "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_normal.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_normal.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_normal.pressed}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                  }
+                }
+              },
+              "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_normal.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_normal.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_normal.disabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                  }
+                }
+              }
+            },
+            "inversity_flipped": {
+              "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_flipped.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_flipped.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_flipped.enabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                  }
+                }
+              },
+              "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_flipped.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_flipped.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_flipped.hover}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                  }
+                }
+              },
+              "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_flipped.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_flipped.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_flipped.focus}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                  }
+                }
+              },
+              "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_flipped.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_flipped.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_flipped.pressed}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                  }
+                }
+              },
+              "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_flipped.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_flipped.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_flipped.disabled}"
+                  }
+                },
+                "fg_label": {
+                  "$type": "composition",
+                  "$value": {
+                    "fontFamily": "{ob.s.typography.style.body.font_family}",
+                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
+                    "fontSize": "{ob.s.typography.dynamic.font_size}",
+                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
               }

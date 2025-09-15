@@ -1,0 +1,25 @@
+{
+  "ob": {
+    "g": {
+      "multiplier": {
+        "typography": {
+          "sm": {
+            "$type": "number",
+            "$value": 0.875,
+            "$description": "Compact text sizing for dense UIs."
+          },
+          "md": {
+            "$type": "number",
+            "$value": 1,
+            "$description": "Default, base reference for all text."
+          },
+          "lg": {
+            "$type": "number",
+            "$value": 1.125,
+            "$description": "Enhanced text sizing for readability."
+          }
+        }
+      }
+    }
+  }
+}

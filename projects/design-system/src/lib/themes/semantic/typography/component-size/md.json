@@ -1,0 +1,18 @@
+{
+  "ob": {
+    "s": {
+      "typography": {
+        "dynamic": {
+          "font_size": {
+            "$type": "fontSizes",
+            "$value": "{ob.s.typography.style.body.font_size} * {ob.g.multiplier.typography.md}"
+          },
+          "line_height": {
+            "$type": "lineHeights",
+            "$value": "{ob.s.typography.style.body.line_height} * {ob.g.multiplier.typography.md}"
+          }
+        }
+      }
+    }
+  }
+}
