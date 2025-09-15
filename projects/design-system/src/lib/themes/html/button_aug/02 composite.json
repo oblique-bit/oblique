@@ -23,11 +23,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -49,11 +48,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -76,11 +74,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -102,11 +99,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -128,11 +124,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               }
@@ -156,11 +151,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -182,11 +176,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -209,11 +202,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -235,11 +227,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -261,11 +252,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               }
@@ -291,11 +281,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -317,11 +306,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -344,11 +332,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -370,11 +357,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -396,11 +382,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               }
@@ -424,11 +409,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -450,11 +434,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -477,11 +460,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -503,11 +485,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -529,11 +510,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               }
@@ -559,11 +539,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -585,11 +564,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -612,11 +590,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -638,11 +615,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -664,11 +640,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               }
@@ -692,11 +667,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -718,11 +692,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -745,11 +718,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -771,11 +743,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               },
@@ -797,11 +768,10 @@
                 "fg_label": {
                   "$type": "composition",
                   "$value": {
-                    "fontFamily": "{ob.s.typography.style.body.font_family}",
-                    "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.style.body.font_size}",
-                    "lineHeight": "{ob.s.typography.style.body.line_height}",
-                    "textDecoration": "{ob.s.typography.style.body.text_decoration}"
+                    "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
+                    "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
+                    "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
+                    "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
                   }
                 }
               }
