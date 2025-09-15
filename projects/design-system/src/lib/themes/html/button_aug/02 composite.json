@@ -25,8 +25,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -51,8 +51,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -78,8 +78,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -104,8 +104,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -130,8 +130,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -158,8 +158,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -184,8 +184,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -211,8 +211,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -237,8 +237,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -263,8 +263,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -293,8 +293,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -319,8 +319,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -346,8 +346,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -372,8 +372,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -398,8 +398,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -426,8 +426,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -452,8 +452,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -479,8 +479,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -505,8 +505,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -531,8 +531,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -561,8 +561,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -587,8 +587,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -614,8 +614,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -640,8 +640,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -666,8 +666,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -694,8 +694,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -720,8 +720,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -747,8 +747,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -773,8 +773,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
@@ -799,8 +799,8 @@
                   "$value": {
                     "fontFamily": "{ob.s.typography.style.body.font_family}",
                     "fontWeight": "{ob.s.typography.style.body.font_weight}",
-                    "fontSize": "{ob.s.typography.dynamic.font_size}",
-                    "lineHeight": "{ob.s.typography.dynamic.line_height}",
+                    "fontSize": "{ob.s.typography.style.body.font_size}",
+                    "lineHeight": "{ob.s.typography.style.body.line_height}",
                     "textDecoration": "{ob.s.typography.style.body.text_decoration}"
                   }
                 }
