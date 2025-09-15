@@ -1,3 +1,18 @@
+# [14.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/14.0.0-rc.1...14.0.0-rc.2) (2025-09-15)
+
+## Bug Fixes
+
+- **new:** deactivate `zoneless` and `config-ai` per default ([4ad351fc](https://github.com/oblique-bit/oblique/commit/4ad351fcb8da435415ed1f1cb182fa8dd858dc92))
+- **new:** make sure that all commands are executed in the correct directory ([b7d2dee9](https://github.com/oblique-bit/oblique/commit/b7d2dee9b2f68276c33f4812e532baba56c88e6e))
+- **new:** make sure `@oblique/toolchain` is added in the correct working directory ([226196fd](https://github.com/oblique-bit/oblique/commit/226196fdeda92de7075f25ee7d626fc68b9b995b))
+- **update:** use `--force` to update Angular and its related dependencies ([1e674fec](https://github.com/oblique-bit/oblique/commit/1e674fec2be06a2e911aaae4d6b8c0401681cd00))
+- **utils:** make sure to use a CLI version above 20.2 ([3c9ff81b](https://github.com/oblique-bit/oblique/commit/3c9ff81bf18f4409724354a00fc3630a2001a5ee))
+- **utils:** make sure the `@oblique/oblique` version matches the CLI one during installing ([fcf64712](https://github.com/oblique-bit/oblique/commit/fcf64712a1633c8bb014bc965e0015dd8e1c937e))
+
+## Features
+
+- **utils:** deactivate `fund` and `audit` info on NPM commands ([4ac7401d](https://github.com/oblique-bit/oblique/commit/4ac7401dcd1ff26ee2c90c32fd26c4324b306ae1))
+
 # [14.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0-rc.1) (2025-09-05)
 
 ## Bug Fixes

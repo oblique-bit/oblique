@@ -1,3 +1,10 @@
+# [14.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/14.0.0-rc.1...14.0.0-rc.2) (2025-09-15)
+
+## Bug Fixes
+
+- **autocomplete:** ensure that dropdown icons use new names ([1f463ea8](https://github.com/oblique-bit/oblique/commit/1f463ea842b90ffd14d5ac6563652af97e8614bc))
+- **icon:** update icon names ([09dda490](https://github.com/oblique-bit/oblique/commit/09dda490e408db6fd25156d3958655a1b77db3d7))
+
 # [14.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0-rc.1) (2025-09-05)
 
 ## Bug Fixes
