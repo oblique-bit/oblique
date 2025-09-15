@@ -153,6 +153,19 @@ export function execute(config: ObCommandConfig): void {
 	}
 }
 
+// See https://nodejs.org/docs/latest/api/process.html#processargv
+export function parseCommandArguments(): {execPath: string; filePath: string; commandName: string; arguments: string[]} {
+	const {argv} = process;
+	return {
+		execPath: argv[0],
+		filePath: argv[1],
+		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+		commandName: argv[2],
+		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+		arguments: argv.slice(3)
+	};
+}
+
 function isNodeVersionRecommended(recommendedNodeMajorVersion: number): boolean {
 	const currentNodeVersion: string = process.versions.node;
 	return major(currentNodeVersion) === recommendedNodeMajorVersion;

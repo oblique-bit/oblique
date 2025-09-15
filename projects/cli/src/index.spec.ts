@@ -63,6 +63,13 @@ describe('index.ts', () => {
 				expect(result.stdout).toBe('');
 			});
 		});
+
+		describe('an informative error is displayed when you try to execute an unknown command', () => {
+			test('display an error', () => {
+				const result = spawnSync('ts-node', [cliPath, 'nwe'], options);
+				expect(result.stderr).toBe('Unknown command: "nwe"\n\nTo see a list of supported oblique cli commands, run:\n  ob --help\n');
+			});
+		});
 	});
 
 	function cleanOutput(output: Buffer | string): string {

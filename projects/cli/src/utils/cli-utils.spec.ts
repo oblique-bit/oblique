@@ -12,6 +12,7 @@ import {
 	minimumSupportedVersion,
 	obExamples,
 	optionDescriptions,
+	parseCommandArguments,
 	recommendedVersion,
 	runObCommand,
 	startObCommand,
@@ -561,10 +562,34 @@ Examples of use:
 				);
 			});
 
-			test('does not call console.error or process.exit', () => {
+			test('does not call console.error', () => {
 				checkNodeVersion();
 				expect(console.error).not.toHaveBeenCalled();
+			});
+
+			test('does not call process.exit', () => {
+				checkNodeVersion();
 				expect(process.exit).not.toHaveBeenCalled();
+			});
+		});
+
+		describe('parse command arguments', () => {
+			const originalArgv = process.argv;
+
+			process.argv = ['/usr/local/bin/node', '/home/dario/.nvm/versions/node/v22.12.0/bin/ob', 'new', 'my-app'];
+			const parseResult = parseCommandArguments();
+
+			afterAll(() => {
+				process.argv = originalArgv;
+			});
+
+			it.each([
+				{arg: 'execPath', value: '/usr/local/bin/node'},
+				{arg: 'filePath', value: '/home/dario/.nvm/versions/node/v22.12.0/bin/ob'},
+				{arg: 'commandName', value: 'new'},
+				{arg: 'arguments', value: ['my-app']}
+			])('extract the $arg', ({arg, value}) => {
+				expect(parseResult[arg])[typeof value === 'string' ? 'toBe' : 'toEqual'](value);
 			});
 		});
 	});
