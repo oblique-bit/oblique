@@ -75,7 +75,8 @@ export class AppComponent implements OnDestroy {
 			)
 			.subscribe(item => {
 				this.search.reset('');
-				void this.router.navigate([item.url]);
+				const language = this.translate.currentLang;
+				void this.router.navigateByUrl(`/${language}/${item.url}`);
 			});
 	}
 
