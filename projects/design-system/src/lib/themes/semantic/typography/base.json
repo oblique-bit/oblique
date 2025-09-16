@@ -54,33 +54,6 @@
           }
         }
       },
-      "letter_spacing": {
-        "superNarrow": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing_depr.neg_300}",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-        },
-        "narrower": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing_depr.neg_150}",
-          "$description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
-        },
-        "narrow": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing_depr.neg_50}",
-          "$description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
-        },
-        "normal": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing_depr.0}",
-          "$description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
-        },
-        "wide": {
-          "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing_depr.50}",
-          "$description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
-        }
-      },
       "letter_spacing_rem": {
         "superNarrow": {
           "$type": "letterSpacing",
@@ -99,7 +72,7 @@
         },
         "normal": {
           "$type": "letterSpacing",
-          "$value": "{ob.p.letterSpacing_depr.0}",
+          "$value": "auto",
           "$description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
         },
         "wide": {
