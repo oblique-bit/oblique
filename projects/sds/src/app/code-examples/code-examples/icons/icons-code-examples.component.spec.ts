@@ -46,7 +46,9 @@ describe(IconsCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.directive(IconsExampleDefaultPreviewComponent)).length).toBe(1);
 	});
 
-	test(`that there are 285 ${MatIcon.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(MatIcon)).length).toBe(285);
+	test(`that there are 279 ${MatIcon.name}s in the gallery example`, () => {
+		expect(
+			fixture.debugElement.query(By.css('app-icons-example-icons-gallery-preview div.gallery')).queryAll(By.directive(MatIcon)).length
+		).toBe(279);
 	});
 });
