@@ -35,6 +35,11 @@
     "semantic/typography/base",
     "semantic/typography/scale",
     "semantic/typography/style",
+    "semantic/typography/component-size/lg",
+    "semantic/typography/component-size/md",
+    "semantic/typography/component-size/sm",
+    "semantic/typography/viewport/desktop",
+    "semantic/typography/viewport/mobile",
     "semantic/dimension",
     "semantic/dimension/lg",
     "semantic/dimension/md",
@@ -76,11 +81,6 @@
     "_ignore-in-ds/figma-doc/colors-static",
     "_ignore-in-ds/figma-doc/theme/lightness/light",
     "_ignore-in-ds/figma-doc/theme/lightness/dark",
-    "_ignore-in-ds/typography-styles-R13",
-    "semantic/typography/component-size/lg",
-    "semantic/typography/component-size/md",
-    "semantic/typography/component-size/sm",
-    "semantic/typography/viewport/desktop",
-    "semantic/typography/viewport/mobile"
+    "_ignore-in-ds/typography-styles-R13"
   ]
 }
