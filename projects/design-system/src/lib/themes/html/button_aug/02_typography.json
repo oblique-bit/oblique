@@ -1,0 +1,57 @@
+{
+  "ob": {
+    "h": {
+      "button_aug": {
+        "typography": {
+          "text_label": {
+            "font_size": {
+              "$type": "fontSizes",
+              "$value": "{ob.p.fontSizeUnitless.400} * {ob.g.multiplier.typography}",
+              "$description": "Font size that scales with typography multiplier"
+            },
+            "line_height": {
+              "$type": "lineHeights",
+              "$value": "{ob.p.lineHeightUnitless.400} * {ob.g.multiplier.typography}",
+              "$description": "Line height that scales with typography multiplier"
+            },
+            "letter_spacing": {
+              "$type": "letterSpacing",
+              "$value": "{ob.p.letter_spacing.normal}",
+              "$description": "Letter spacing for button text labels"
+            },
+            "font_family": {
+              "$type": "fontFamilies",
+              "$value": "{ob.s.font_family.body}",
+              "$description": "Font family for button text labels - consistent across all sizes"
+            },
+            "font_weight": {
+              "$type": "fontWeights",
+              "$value": "{ob.s.font_weight.medium}",
+              "$description": "Font weight for button text labels - consistent across all sizes"
+            },
+            "text_decoration": {
+              "$type": "textDecoration",
+              "$value": "none",
+              "$description": "No text decoration for button labels"
+            },
+            "text_transform": {
+              "$type": "textCase",
+              "$value": "none",
+              "$description": "No text transformation for button labels"
+            },
+            "text_align": {
+              "$type": "textAlign",
+              "$value": "center",
+              "$description": "Center alignment for button text labels. Note: Not supported by Figma variables - set manually in Figma components."
+            },
+            "text_vertical_trim": {
+              "$type": "string",
+              "$value": "{ob.p.vertical_trim.cap_baseline}",
+              "$description": "Vertical trim from cap height to baseline for optimal button text alignment. FIGMA LIMITATION: This token is not exported to Figma variables as Figma doesn't support text vertical trim variables. Set manually in Figma components using 'Vertical trim' property. CSS implementation: use 'text-box-trim: cap alphabetic' or equivalent."
+            }
+          }
+        }
+      }
+    }
+  }
+}

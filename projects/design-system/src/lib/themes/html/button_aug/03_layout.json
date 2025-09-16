@@ -1,0 +1,210 @@
+{
+  "ob": {
+    "h": {
+      "button_aug": {
+        "$description": {
+          "$type": "other",
+          "$value": "Layout properties for button-aug"
+        },
+        "text_icons": {
+          "spacing": {
+            "padding": {
+              "vertical": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.dynamic.element.sm.rem}"
+              },
+              "horizontal": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.dynamic.element.md.rem}"
+              }
+            },
+            "gap": {
+              "$type": "spacing",
+              "$value": "{ob.s.dimension.dynamic.element.sm.rem}"
+            }
+          },
+          "container": {
+            "size": {
+              "min_height": {
+                "$type": "sizing",
+                "$value": "{ob.s.dimension.dynamic.container.xs.rem}"
+              }
+            }
+          }
+        },
+        "icon_only": {
+          "spacing": {
+            "padding": {
+              "vertical": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.dynamic.element.sm.rem}"
+              },
+              "horizontal": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.dynamic.element.sm.rem}"
+              }
+            }
+          }
+        },
+        "remove": {
+          "spacing": {
+            "padding": {
+              "vertical": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.none.rem}",
+                "$description": "Remove button requires zero padding."
+              },
+              "horizontal": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.none.rem}",
+                "$description": "Remove button requires zero padding."
+              }
+            }
+          }
+        },
+        "container": {
+          "spacing": {
+            "gap": {
+              "$extensions": {
+                "com.tokens-studio": {
+                  "mode": {
+                    "container-wide": "{ob.s.spacing.3xl}",
+                    "container-narrow": "{ob.s.spacing.lg}"
+                  }
+                }
+              },
+              "$type": "spacing",
+              "$value": "{ob.s.spacing.3xl}",
+              "$description": "Gap between buttons in container - adapts to container=wide|narrow context"
+            }
+          }
+        },
+        "border_radius": {
+          "default": {
+            "$type": "borderRadius",
+            "$value": "{ob.s.radii.sm}",
+            "$description": "Standard border radius for button-aug components - consistent across all sizes"
+          }
+        },
+        "box_shadow": {
+          "enabled": {
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.none}",
+            "$description": "No shadow on enabled state"
+          },
+          "hover": {
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.xl}",
+            "$description": "Elevation effect on hover"
+          },
+          "focus": {
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.none}",
+            "$description": "No shadow on focus state"
+          },
+          "pressed": {
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.none}",
+            "$description": "No shadow on pressed state"
+          },
+          "disabled": {
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.none}",
+            "$description": "No shadow on disabled state"
+          }
+        },
+        "focus_ring": {
+          "$type": "boxShadow",
+          "$value": "{ob.s.shadow.focus_ring.inversity_normal}",
+          "$description": "Focus ring for button accessibility - references semantic focus ring token"
+        },
+        "direction": {
+          "row": {
+            "$description": {
+              "$type": "other",
+              "$value": "Horizontal container layout (equivalent to previous 'wide')"
+            },
+            "layout": {
+              "direction": {
+                "$type": "text",
+                "$value": "row",
+                "$description": "Horizontal flex direction"
+              },
+              "flex_wrap": {
+                "$type": "text",
+                "$value": "wrap",
+                "$description": "Allow wrapping when space insufficient"
+              },
+              "align_items": {
+                "$type": "text",
+                "$value": "center",
+                "$description": "Center alignment for horizontal layout"
+              }
+            },
+            "spacing": {
+              "gap": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.xl}",
+                "$description": "20px gap between buttons in row layout"
+              }
+            },
+            "button_order": {
+              "primary_first": {
+                "$type": "text",
+                "$value": "flex-start",
+                "$description": "Primary button positioned first (left-aligned)"
+              },
+              "primary_last": {
+                "$type": "text",
+                "$value": "flex-end",
+                "$description": "Primary button positioned last (right-aligned)"
+              }
+            }
+          },
+          "column": {
+            "$description": {
+              "$type": "other",
+              "$value": "Vertical container layout (equivalent to previous 'narrow')"
+            },
+            "layout": {
+              "direction": {
+                "$type": "text",
+                "$value": "column",
+                "$description": "Vertical flex direction"
+              },
+              "align_items": {
+                "$type": "text",
+                "$value": "stretch",
+                "$description": "Full-width buttons for better touch targets"
+              }
+            },
+            "spacing": {
+              "gap": {
+                "$type": "spacing",
+                "$value": "{ob.s.spacing.lg}",
+                "$description": "16px gap between stacked buttons"
+              }
+            },
+            "button_order": {
+              "primary_first": {
+                "$type": "text",
+                "$value": "normal",
+                "$description": "Primary button positioned first in column"
+              },
+              "primary_last": {
+                "$type": "text",
+                "$value": "column-reverse",
+                "$description": "Primary button positioned last in column"
+              }
+            },
+            "button_width": {
+              "$type": "text",
+              "$value": "100%",
+              "$description": "Full-width buttons in column layout"
+            }
+          }
+        }
+      }
+    }
+  }
+}
