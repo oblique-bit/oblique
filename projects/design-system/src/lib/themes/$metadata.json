@@ -10,6 +10,7 @@
     "global/multipliers/viewport/desktop",
     "global/multipliers/viewport/mobile",
     "global/multipliers/dimension",
+    "global/multipliers/typography",
     "global/themes-scoped/static",
     "global/themes-user/lightness/static",
     "global/multiplier",
@@ -34,8 +35,6 @@
     "semantic/typography/static",
     "semantic/typography/scale",
     "semantic/typography/style",
-    "semantic/typography/responsive/desktop",
-    "semantic/typography/responsive/mobile",
     "semantic/dimension",
     "semantic/dimension/lg",
     "semantic/dimension/md",
@@ -62,7 +61,7 @@
     "html/button/responsive/mobile",
     "html/button/container",
     "html/button/composite",
-    "html/button_aug/01 color",
+    "html/button_aug/01_color",
     "html/button_aug/02_typography",
     "html/button_aug/03_layout",
     "html/button_aug/04_viewport/desktop",
@@ -77,6 +76,11 @@
     "_ignore-in-ds/figma-doc/colors-static",
     "_ignore-in-ds/figma-doc/theme/lightness/light",
     "_ignore-in-ds/figma-doc/theme/lightness/dark",
-    "_ignore-in-ds/typography-styles-R13"
+    "_ignore-in-ds/typography-styles-R13",
+    "semantic/typography/component-size/lg",
+    "semantic/typography/component-size/md",
+    "semantic/typography/component-size/sm",
+    "semantic/typography/viewport/desktop",
+    "semantic/typography/viewport/mobile"
   ]
 }
