@@ -19,10 +19,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.enabled}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "hover": {
@@ -39,10 +35,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.hover}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "focus": {
@@ -60,10 +52,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.focus}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "pressed": {
@@ -80,10 +68,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.pressed}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "disabled": {
@@ -100,10 +84,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.disabled}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               }
             },
@@ -122,10 +102,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.enabled}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "hover": {
@@ -142,10 +118,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.hover}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "focus": {
@@ -163,10 +135,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.focus}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "pressed": {
@@ -183,10 +151,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.pressed}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "disabled": {
@@ -203,13 +167,13 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.disabled}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               }
             }
+          },
+          "fg_label": {
+            "$type": "typography",
+            "$value": "{ob.s.typography.scale.dynamic.xs.normal}"
           },
           "secondary": {
             "inversity_normal": {
@@ -227,10 +191,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.enabled}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "hover": {
@@ -247,10 +207,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.hover}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "focus": {
@@ -268,10 +224,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.focus}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "pressed": {
@@ -288,10 +240,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.pressed}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "disabled": {
@@ -308,10 +256,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.disabled}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               }
             },
@@ -330,10 +274,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.enabled}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "hover": {
@@ -350,10 +290,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.hover}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "focus": {
@@ -371,10 +307,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.focus}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "pressed": {
@@ -391,10 +323,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.pressed}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "disabled": {
@@ -411,10 +339,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.disabled}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               }
             }
@@ -435,10 +359,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.enabled}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "hover": {
@@ -455,10 +375,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.hover}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "focus": {
@@ -476,10 +392,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.focus}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "pressed": {
@@ -496,10 +408,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.pressed}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "disabled": {
@@ -516,10 +424,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.disabled}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               }
             },
@@ -538,10 +442,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.enabled}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "hover": {
@@ -558,10 +458,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.hover}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "focus": {
@@ -579,10 +475,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.focus}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "pressed": {
@@ -599,10 +491,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.pressed}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               },
               "disabled": {
@@ -619,10 +507,6 @@
                   "$value": {
                     "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.disabled}"
                   }
-                },
-                "fg_label": {
-                  "$value": "{ob.h.button_aug.typography.text_label}",
-                  "$type": "typography"
                 }
               }
             }

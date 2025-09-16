@@ -5,7 +5,7 @@
         "viewport": {
           "desktop": {
             "$type": "number",
-            "$value": 1.0,
+            "$value": "1",
             "$description": "Desktop viewport scaling (100%) - Base reference for desktop/large screen experiences"
           }
         }

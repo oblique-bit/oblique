@@ -82,7 +82,7 @@
         "border_radius": {
           "default": {
             "$type": "borderRadius",
-            "$value": "{ob.s.radius.full}",
+            "$value": "{ob.s.radius.sm}",
             "$description": "Standard border radius for button-aug components - consistent across all sizes"
           }
         },

@@ -4,7 +4,7 @@
       "multiplier": {
         "dimension": {
           "$type": "number",
-          "$value": 1,
+          "$value": "1",
           "$description": "Global multiplier for dynamic dimension tokens. Default is 1."
         }
       }

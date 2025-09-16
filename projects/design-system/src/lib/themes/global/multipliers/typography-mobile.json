@@ -6,85 +6,85 @@
           "mobile": {
             "fontSize": {
               "xs": {
-                "$type": "number", 
-                "$value": 3,
+                "$type": "number",
+                "$value": "3",
                 "$description": "Mobile fontSize.xs multiplier: 4px × 3 = 12px (same as desktop)"
               },
               "sm": {
                 "$type": "number",
-                "$value": 3.5, 
+                "$value": "3.5",
                 "$description": "Mobile fontSize.sm multiplier: 4px × 3.5 = 14px (same as desktop)"
               },
               "md": {
                 "$type": "number",
-                "$value": 4.5,
+                "$value": "4.5",
                 "$description": "Mobile fontSize.md multiplier: 4px × 4.5 = 18px (+1px from desktop 17px)"
               },
               "lg": {
                 "$type": "number",
-                "$value": 5.75,
+                "$value": "5.75",
                 "$description": "Mobile fontSize.lg multiplier: 4px × 5.75 = 23px (same as desktop)"
               },
               "xl": {
                 "$type": "number",
-                "$value": 7,
+                "$value": "7",
                 "$description": "Mobile fontSize.xl multiplier: 4px × 7 = 28px (same as desktop)"
               },
               "2xl": {
                 "$type": "number",
-                "$value": 7,
+                "$value": "7",
                 "$description": "Mobile fontSize.2xl multiplier: 4px × 7 = 28px (clamped, desktop is 39px)"
               },
               "3xl": {
                 "$type": "number",
-                "$value": 7,
+                "$value": "7",
                 "$description": "Mobile fontSize.3xl multiplier: 4px × 7 = 28px (clamped, desktop is 45px)"
               },
               "4xl": {
                 "$type": "number",
-                "$value": 7,
+                "$value": "7",
                 "$description": "Mobile fontSize.4xl multiplier: 4px × 7 = 28px (clamped, desktop is 49px)"
               }
             },
             "lineHeight": {
               "xs": {
                 "$type": "number",
-                "$value": 4,
+                "$value": "4",
                 "$description": "Mobile lineHeight.xs multiplier: 4px × 4 = 16px (same as desktop)"
               },
               "sm": {
                 "$type": "number",
-                "$value": 5,
+                "$value": "5",
                 "$description": "Mobile lineHeight.sm multiplier: 4px × 5 = 20px (same as desktop)"
               },
               "md": {
                 "$type": "number",
-                "$value": 6,
+                "$value": "6",
                 "$description": "Mobile lineHeight.md multiplier: 4px × 6 = 24px (same as desktop)"
               },
               "lg": {
                 "$type": "number",
-                "$value": 7,
+                "$value": "7",
                 "$description": "Mobile lineHeight.lg multiplier: 4px × 7 = 28px (same as desktop)"
               },
               "xl": {
                 "$type": "number",
-                "$value": 8,
+                "$value": "8",
                 "$description": "Mobile lineHeight.xl multiplier: 4px × 8 = 32px (desktop is 36px)"
               },
               "2xl": {
                 "$type": "number",
-                "$value": 8,
+                "$value": "8",
                 "$description": "Mobile lineHeight.2xl multiplier: 4px × 8 = 32px (clamped, desktop is 48px)"
               },
               "3xl": {
                 "$type": "number",
-                "$value": 8,
+                "$value": "8",
                 "$description": "Mobile lineHeight.3xl multiplier: 4px × 8 = 32px (clamped, desktop is 56px)"
               },
               "4xl": {
                 "$type": "number",
-                "$value": 8,
+                "$value": "8",
                 "$description": "Mobile lineHeight.4xl multiplier: 4px × 8 = 32px (clamped, desktop is 60px)"
               }
             }

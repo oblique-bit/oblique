@@ -4,7 +4,7 @@
       "multiplier": {
         "typography": {
           "$type": "number",
-          "$value": 0.875,
+          "$value": "0.875",
           "$description": "Typography small (87.5% scaling) - Compact text sizing for dense content"
         }
       }
