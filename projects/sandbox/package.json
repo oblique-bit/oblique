@@ -12,6 +12,9 @@
     "release": "ts-node scripts/release.ts"
   },
   "dependencies": {
+    "@angular/material": "^20.2.3",
+    "@angular/material-luxon-adapter": "^20.2.3",
+    "@oblique/oblique": "^13.3.2",
     "raw-loader": "^4.0.2"
   }
 }
