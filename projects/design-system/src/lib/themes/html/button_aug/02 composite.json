@@ -3,99 +3,210 @@
     "h": {
       "button_aug": {
         "composite": {
-          "typography": {
-            "label": {
-              "$type": "composition",
-              "$value": {
-                "fontFamily": "{ob.s.typography.content.body.normal.fontFamily}",
-                "fontWeight": "{ob.s.typography.content.body.normal.fontWeight}",
-                "fontSize": "{ob.s.typography.content.body.normal.fontSize}",
-                "lineHeight": "{ob.s.typography.content.body.normal.lineHeight}"
-              }
-            }
-          },
           "primary": {
             "inversity_normal": {
               "enabled": {
-                "bg": {
-                  "$value": "{ob.s.color.primary.inversity_normal.default}"
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.enabled}"
+                  }
                 },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "hover": {
-                "bg": {
-                  "$value": "{ob.s.color.primary.inversity_normal.hover}"
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.hover}"
+                  }
                 },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "focus": {
-                "bg": {
-                  "$value": "{ob.s.color.primary.inversity_normal.hover}"
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.focus}"
+                  }
                 },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "pressed": {
-                "bg": {
-                  "$value": "{ob.s.color.primary.inversity_normal.pressed}"
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.pressed}"
+                  }
                 },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "disabled": {
-                "bg": {
-                  "$value": "{ob.s.color.primary.inversity_normal.disabled}"
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_normal.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_normal.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_normal.disabled}"
+                  }
                 },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               }
             },
             "inversity_flipped": {
               "enabled": {
-                "bg": {
-                  "$value": "{ob.s.color.primary.inversity_flipped.default}"
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.enabled}"
+                  }
                 },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "hover": {
-                "bg": {
-                  "$value": "{ob.s.color.primary.inversity_flipped.hover}"
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.hover}"
+                  }
                 },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "focus": {
-                "bg": {
-                  "$value": "{ob.s.color.primary.inversity_flipped.hover}"
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.focus}"
+                  }
                 },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "pressed": {
-                "bg": {
-                  "$value": "{ob.s.color.primary.inversity_flipped.pressed}"
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.pressed}"
+                  }
                 },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "disabled": {
-                "bg": {
-                  "$value": "{ob.s.color.primary.inversity_flipped.disabled}"
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.primary.inversity_flipped.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.primary.inversity_flipped.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.primary.inversity_flipped.disabled}"
+                  }
                 },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               }
             }
@@ -103,55 +214,207 @@
           "secondary": {
             "inversity_normal": {
               "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.enabled}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.hover}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.focus}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.pressed}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_normal.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_normal.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_normal.disabled}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               }
             },
             "inversity_flipped": {
               "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.enabled}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.hover}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.focus}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.pressed}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.secondary.inversity_flipped.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.secondary.inversity_flipped.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.secondary.inversity_flipped.disabled}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               }
             }
@@ -159,55 +422,415 @@
           "tertiary": {
             "inversity_normal": {
               "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.enabled}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.hover}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.focus}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.pressed}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_normal.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_normal.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_normal.disabled}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               }
             },
             "inversity_flipped": {
               "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.enabled}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.hover}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.focus}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.pressed}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               },
               "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.tertiary.inversity_flipped.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.tertiary.inversity_flipped.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.tertiary.inversity_flipped.disabled}"
+                  }
+                },
                 "fg_label": {
-                  "$value": "{ob.h.button_aug.composite.typography.label}"
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
+                }
+              }
+            }
+          },
+          "danger": {
+            "inversity_normal": {
+              "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_normal.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_normal.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_normal.enabled}"
+                  }
+                },
+                "fg_label": {
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
+                }
+              },
+              "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_normal.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_normal.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_normal.hover}"
+                  }
+                },
+                "fg_label": {
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
+                }
+              },
+              "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_normal.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_normal.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_normal.focus}"
+                  }
+                },
+                "fg_label": {
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
+                }
+              },
+              "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_normal.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_normal.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_normal.pressed}"
+                  }
+                },
+                "fg_label": {
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
+                }
+              },
+              "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_normal.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_normal.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_normal.disabled}"
+                  }
+                },
+                "fg_label": {
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
+                }
+              }
+            },
+            "inversity_flipped": {
+              "enabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_flipped.enabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_flipped.enabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.enabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_flipped.enabled}"
+                  }
+                },
+                "fg_label": {
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
+                }
+              },
+              "hover": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_flipped.hover}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_flipped.hover}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.hover}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_flipped.hover}"
+                  }
+                },
+                "fg_label": {
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
+                }
+              },
+              "focus": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_flipped.focus}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_flipped.focus}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.focus}",
+                    "focus_ring": "{ob.h.button_aug.focus_ring}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_flipped.focus}"
+                  }
+                },
+                "fg_label": {
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
+                }
+              },
+              "pressed": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_flipped.pressed}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_flipped.pressed}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.pressed}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_flipped.pressed}"
+                  }
+                },
+                "fg_label": {
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
+                }
+              },
+              "disabled": {
+                "button_surface": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.bg.danger.inversity_flipped.disabled}",
+                    "borderColor": "{ob.h.button_aug.color.border.danger.inversity_flipped.disabled}",
+                    "boxShadow": "{ob.h.button_aug.box_shadow.disabled}"
+                  }
+                },
+                "fg_color": {
+                  "$type": "composition",
+                  "$value": {
+                    "fill": "{ob.h.button_aug.color.fg.danger.inversity_flipped.disabled}"
+                  }
+                },
+                "fg_label": {
+                  "$value": "{ob.h.button_aug.typography.text_label}",
+                  "$type": "typography"
                 }
               }
             }
