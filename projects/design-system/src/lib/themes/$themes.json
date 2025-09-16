@@ -2848,8 +2848,7 @@
     "name": "sm",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/dimension/sm": "enabled",
-      "semantic/typography/component-size/sm": "enabled"
+      "semantic/dimension/sm": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:0",
@@ -2896,8 +2895,7 @@
     "name": "md",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/dimension/md": "enabled",
-      "semantic/typography/component-size/md": "enabled"
+      "semantic/dimension/md": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:1",
@@ -2944,8 +2942,7 @@
     "name": "lg",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "semantic/dimension/lg": "enabled",
-      "semantic/typography/component-size/lg": "enabled"
+      "semantic/dimension/lg": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:2",
