@@ -382,11 +382,11 @@ export class UpdateV13toV14 implements ObIMigrations {
 			const toApply = (filePath: string): void => {
 				const content = readFile(tree, filePath);
 				if (content.includes('<ob-column-layout')) {
-					replaceInFile(tree, filePath, /(?<=\[left\]=")true(?=")/gu, "'OPENED'");
-					replaceInFile(tree, filePath, /(?<=\[left\]=")false(?=)"/gu, "'NONE'");
+					replaceInFile(tree, filePath, /\[left\]="true"/gu, `left="OPENED"`);
+					replaceInFile(tree, filePath, /\[left\]="false"/gu, `left="NONE"`);
 
-					replaceInFile(tree, filePath, /(?<=\[right\]=")true(?=")/gu, "'OPENED'");
-					replaceInFile(tree, filePath, /(?<=\[right\]=")false(?=)"/gu, "'NONE'");
+					replaceInFile(tree, filePath, /\[right\]="true"/gu, `right="OPENED"`);
+					replaceInFile(tree, filePath, /\[right\]="false"/gu, `right="NONE"`);
 				}
 			};
 			return applyInTree(tree, toApply, '*.html');
