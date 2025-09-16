@@ -5,7 +5,9 @@
 
 .ob-master-layout {
 	*:not(input, textarea, mat-select, select) {
-		@include shadow.ob-focus-visible-tab-focus-box-shadow();
+		&:focus-visible {
+			@include shadow.ob-tab-focus-box-shadow();
+		}
 	}
 
 	a:focus-visible {

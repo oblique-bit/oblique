@@ -9,7 +9,9 @@
 			border-radius: 12px;
 			width: variables.$ob-slide-toggle-width;
 
-			@include shadow.ob-focus-visible-tab-focus-box-shadow();
+			&:focus-visible {
+				@include shadow.ob-tab-focus-box-shadow();
+			}
 
 			&:focus {
 				outline: none;

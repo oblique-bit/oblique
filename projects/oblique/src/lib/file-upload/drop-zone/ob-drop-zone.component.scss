@@ -9,7 +9,9 @@
 	background-color: variables.$ob-secondary-50;
 	transition: background-color variables.$ob-duration-fast;
 
-	@include shadow.ob-focus-visible-tab-focus-box-shadow();
+	&:focus-visible {
+		@include shadow.ob-tab-focus-box-shadow();
+	}
 
 	&:hover,
 	&:focus {
