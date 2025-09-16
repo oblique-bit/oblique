@@ -291,11 +291,11 @@ export class UpdateV13toV14 implements ObIMigrations {
 					if (emails?.length) {
 						contacts.push(...emails.split(',').map(email => `{email: ${email.trim()}}`));
 					}
-					const phones = (/(?<=phones\s*:\s*\[).*?(?=\])/u.exec(content) ?? [])[0];
+					const phones = (/(?<=phones\s*:\s*\[\s*).*?(?=\])/u.exec(content) ?? [])[0];
 					if (phones?.length) {
 						contacts.push(...phones.split(',').map(phone => `{phone: ${phone.trim()}}`));
 					}
-					replaceInFile(tree, filePath, /(?<=contact\s*:\s*)\{.*?}/, `[${contacts.join(', ')}]`);
+					replaceInFile(tree, filePath, /(?<=contact\s*:\s*)\s*\{\s*[^}]*\}/gmu, `[${contacts.join(', ')}]`);
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
