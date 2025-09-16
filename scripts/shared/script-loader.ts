@@ -64,32 +64,27 @@ export class AddScriptloader extends StaticScript {
 		Log.info(`Add sha256 of the scripts in index.html to the security_headers.conf`);
 		const indexFileContent = Files.read(pathToIndexFile);
 		const securityFileFileContent = Files.read(pathToSecurityHeadersFile);
+		const scriptSrcTemplate = AddScriptloader.getScriptSrcTemplate(indexFileContent);
 
-		const scriptContentRegex = /(?<=<script>).*?(?=<\/script>)/s;
-		const scriptContent = scriptContentRegex.exec(indexFileContent)[0];
-		const scriptHashValue = createHash('sha256').update(scriptContent).digest('base64');
-
-		const onLoadScriptRegex = /(?<=<script>)\s*Array.*?(?=<\/script>)/s;
-		let scriptSrcTemplate = "script-src 'sha256-<scriptHash>' 'strict-dynamic'";
-
-		if (onLoadScriptRegex.test(indexFileContent)) {
-			const onLoadScriptContent = onLoadScriptRegex.exec(indexFileContent)[0];
-			scriptSrcTemplate = "script-src 'sha256-<scriptHash>' 'sha256-<onLoadHash>' 'strict-dynamic'";
-			const onLoadHashValue = createHash('sha256').update(onLoadScriptContent).digest('base64');
-			Files.write(
-				pathToSecurityHeadersFile,
-				securityFileFileContent
-					.replace(/script-src[^;]*/g, scriptSrcTemplate)
-					.replace(/<scriptHash>/g, scriptHashValue)
-					.replace(/<onLoadHash>/g, onLoadHashValue)
-			);
-		} else {
-			Files.write(
-				pathToSecurityHeadersFile,
-				securityFileFileContent.replace(/script-src[^;]*/g, scriptSrcTemplate).replace(/<scriptHash>/g, scriptHashValue)
-			);
-		}
+		Files.write(pathToSecurityHeadersFile, securityFileFileContent.replace("'script-src-hash-placeholder'", scriptSrcTemplate));
 
 		return AddScriptloader.instance as AddScriptloader;
+	}
+
+	private static getScriptSrcTemplate(indexFileContent: string): string {
+		const scriptHash = AddScriptloader.getScriptHash(indexFileContent);
+		const onLoadScriptRegex = /(?<=<script>)\s*Array.*?(?=<\/script>)/s;
+		if (onLoadScriptRegex.test(indexFileContent)) {
+			const onLoadScriptContent = onLoadScriptRegex.exec(indexFileContent)[0];
+			const onLoadHashValue = createHash('sha256').update(onLoadScriptContent).digest('base64');
+			return `'sha256-${scriptHash}' 'sha256-${onLoadHashValue}' 'strict-dynamic'`;
+		}
+		return `'sha256-${scriptHash}' 'strict-dynamic'`;
+	}
+
+	private static getScriptHash(indexFileContent: string): string {
+		const scriptContentRegex = /(?<=<script>).*?(?=<\/script>)/s;
+		const scriptContent = scriptContentRegex.exec(indexFileContent)[0];
+		return createHash('sha256').update(scriptContent).digest('base64');
 	}
 }

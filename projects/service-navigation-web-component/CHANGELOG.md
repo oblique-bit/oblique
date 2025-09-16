@@ -1,3 +1,9 @@
+# [13.3.3](https://github.com/oblique-bit/oblique/compare/13.3.2...13.3.3) (2025-08-25)
+
+## Bug Fixes
+
+- **service-navigation:** sanitize url redirection ([ed86dfbc](https://github.com/oblique-bit/oblique/commit/ed86dfbc132b180ef9d8b5e612c3462254756ea5))
+
 # [13.3.2](https://github.com/oblique-bit/oblique/compare/sds-13.3.1_release-patch_13.3.2__plbk6_2025-07-21T073817...13.3.2) (2025-07-22)
 
 ## Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "@oblique/service-navigation-web-component",
-  "version": "13.3.2",
+  "version": "13.3.3",
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
   },

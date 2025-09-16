@@ -18,11 +18,11 @@
 		width: 100%;
 
 		&.ob-continuous-layout {
-			min-height: 100vh;
+			min-height: 100dvh;
 		}
 
 		&:not(.ob-continuous-layout) {
-			height: 100vh;
+			height: 100dvh;
 
 			&:not(.ob-fixed-layout) {
 				overflow-x: hidden; // prevents horizontal scrollbar when a sub-meu would open outside of the viewable area

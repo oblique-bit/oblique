@@ -8,7 +8,7 @@
 	z-index: variables.$ob-z-index-layout;
 
 	.ob-layout-collapsed.ob-header-expanded & {
-		height: 100vh;
+		height: 100dvh;
 		padding-bottom: variables.$ob-spacing-lg; // to avoid the last link being covered by the link preview
 	}
 

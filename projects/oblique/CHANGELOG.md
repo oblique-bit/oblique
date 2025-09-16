@@ -1,3 +1,11 @@
+# [13.3.3](https://github.com/oblique-bit/oblique/compare/13.3.2...13.3.3) (2025-08-25)
+
+## Bug Fixes
+
+- **accessibility-statement:** fix typo in de, fr and it ([b4f359b8](https://github.com/oblique-bit/oblique/commit/b4f359b87ecc03d71387334d405e5c4309f636bd))
+- **master-layout:** replace `100vh` with `100dvh` ([716717d1](https://github.com/oblique-bit/oblique/commit/716717d1a9f5f08957fa1b582c9f229799966532))
+- **service-navigation:** sanitize url redirection ([ed86dfbc](https://github.com/oblique-bit/oblique/commit/ed86dfbc132b180ef9d8b5e612c3462254756ea5))
+
 # [13.3.2](https://github.com/oblique-bit/oblique/compare/sds-13.3.1_release-patch_13.3.2__plbk6_2025-07-21T073817...13.3.2) (2025-07-22)
 
 ## Bug Fixes
