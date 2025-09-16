@@ -18,7 +18,8 @@ export class UpdateV13toV14 implements ObIMigrations {
 				this.migrateServiceNavigationContactInfo(),
 				this.removeObPaginator(),
 				this.removeFocusableFragments(),
-				this.migrateColumnLayoutColumnsState()
+				this.migrateColumnLayoutColumnsState(),
+				this.removeObIconModuleForRoot()
 			])(tree, context);
 	}
 
@@ -390,6 +391,16 @@ export class UpdateV13toV14 implements ObIMigrations {
 				}
 			};
 			return applyInTree(tree, toApply, '*.html');
+		});
+	}
+
+	private removeObIconModuleForRoot(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove ObIconModule.forRoot()');
+			const toApply = (filePath: string): void => {
+				replaceInFile(tree, filePath, /ObIconModule\.forRoot\(\w*\),?/gu, '');
+			};
+			return applyInTree(tree, toApply, '*.ts');
 		});
 	}
 }
