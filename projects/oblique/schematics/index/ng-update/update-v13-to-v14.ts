@@ -19,7 +19,8 @@ export class UpdateV13toV14 implements ObIMigrations {
 				this.removeObPaginator(),
 				this.removeFocusableFragments(),
 				this.migrateColumnLayoutColumnsState(),
-				this.removeObIconModuleForRoot()
+				this.removeObIconModuleForRoot(),
+				this.migrateScrollToTop()
 			])(tree, context);
 	}
 
@@ -399,6 +400,16 @@ export class UpdateV13toV14 implements ObIMigrations {
 			infoMigration(context, 'Remove ObIconModule.forRoot()');
 			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /ObIconModule\.forRoot\(\w*\),?/gu, '');
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		});
+	}
+
+	private migrateScrollToTop(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Migrate scrollTarget.scrollTo({top: 0}) to scrollTop()');
+			const toApply = (filePath: string): void => {
+				replaceInFile(tree, filePath, /scrollTarget\.scrollTo\(\s*\{\s*top\s*:\s*0\s*\}\s*\)/gmu, 'scrollTop()');
 			};
 			return applyInTree(tree, toApply, '*.ts');
 		});
