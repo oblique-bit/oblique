@@ -33,7 +33,10 @@
     "semantic/motion",
     "semantic/z-index",
     "semantic/typography/base",
-    "semantic/typography/scale",
+    "semantic/typography/scale/lg",
+    "semantic/typography/scale/md",
+    "semantic/typography/scale/sm",
+    "semantic/typography/scale/static",
     "semantic/typography/style",
     "semantic/dimension",
     "semantic/dimension/lg",
@@ -77,9 +80,6 @@
     "_ignore-in-ds/figma-doc/theme/lightness/light",
     "_ignore-in-ds/figma-doc/theme/lightness/dark",
     "_ignore-in-ds/typography-styles-R13",
-    "semantic/typography/component-size/lg",
-    "semantic/typography/component-size/md",
-    "semantic/typography/component-size/sm",
     "semantic/typography/viewport/desktop",
     "semantic/typography/viewport/mobile"
   ]
