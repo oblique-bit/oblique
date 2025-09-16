@@ -63,68 +63,6 @@
           "$description": "Base font size multiplier - compensated from mult_static value"
         }
       },
-      "letterSpacing_depr": {
-        "0": {
-          "$type": "letterSpacing",
-          "$value": "auto",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-        },
-        "50": {
-          "$type": "letterSpacing",
-          "$value": "0.5%",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-        },
-        "100": {
-          "$type": "letterSpacing",
-          "$value": "1%",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-        },
-        "150": {
-          "$type": "letterSpacing",
-          "$value": "1.5%",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-        },
-        "200": {
-          "$type": "letterSpacing",
-          "$value": "2%",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-        },
-        "250": {
-          "$type": "letterSpacing",
-          "$value": "2.5%",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-        },
-        "neg_50": {
-          "$type": "letterSpacing",
-          "$value": "-0.5%",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-        },
-        "neg_100": {
-          "$type": "letterSpacing",
-          "$value": "-1%",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-        },
-        "neg_150": {
-          "$type": "letterSpacing",
-          "$value": "-1.5%",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-        },
-        "neg_200": {
-          "$type": "letterSpacing",
-          "$value": "-2%",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-        },
-        "neg_250": {
-          "$type": "letterSpacing",
-          "$value": "-2.5%",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-        },
-        "neg_300": {
-          "$type": "letterSpacing",
-          "$value": "-3%",
-          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-        }
-      },
       "font_weight": {
         "0": {
           "$type": "fontWeights",
