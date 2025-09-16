@@ -356,7 +356,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 				const content = readFile(tree, filePath);
 				if (content.includes('ObPaginatorModule')) {
 					removeImport(tree, filePath, 'ObPaginatorModule', '@oblique/oblique');
-					addImport(tree, filePath, 'MatPaginatorModule', '@angular/material');
+					addImport(tree, filePath, 'MatPaginatorModule', '@angular/material/paginator');
 					replaceInFile(tree, filePath, /ObPaginatorModule/g, 'MatPaginatorModule');
 				}
 			};
