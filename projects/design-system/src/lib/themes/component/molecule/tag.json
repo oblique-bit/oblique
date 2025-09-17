@@ -6,7 +6,7 @@
           "spacing": {
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.md}",
+              "$value": "{ob.s.dimension.dynamic.element.md.rem}",
               "$description": "Spacing between single tags "
             }
           }
@@ -16,52 +16,52 @@
             "vertical": {
               "sm": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.none}",
-                "$description": "Top and bottom padding – for small size tags."
+                "$value": "{ob.s.dimension.static.none.rem}",
+                "$description": "Top and bottom padding – for small size tags."
               },
               "md": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.xs}",
-                "$description": "Top and bottom padding  – for medium size tags."
+                "$value": "{ob.s.dimension.dynamic.element.xs.rem}",
+                "$description": "Top and bottom padding  – for medium size tags."
               },
               "lg": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.lg}",
-                "$description": "Top and bottom padding  – for large size tags."
+                "$value": "{ob.s.dimension.dynamic.element.md.rem}",
+                "$description": "Top and bottom padding  – for large size tags."
               }
             },
             "horizontal": {
               "sm": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.md}",
-                "$description": "Left and right padding – for small size tags."
+                "$value": "{ob.s.dimension.dynamic.element.md.rem}",
+                "$description": "Left and right padding – for small size tags."
               },
               "md": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.lg}",
-                "$description": "Left and right padding  – for medium size tags."
+                "$value": "{ob.s.dimension.dynamic.element.lg.rem}",
+                "$description": "Left and right padding  – for medium size tags."
               },
               "lg": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.2xl}",
-                "$description": "Left and right padding – for large size tags."
+                "$value": "{ob.s.dimension.dynamic.surface.xs.rem}",
+                "$description": "Left and right padding – for large size tags."
               }
             }
           },
           "gap": {
             "sm": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.sm}",
-              "$description": "Horizontal gap between icon and text label – for small size tags."
+              "$value": "{ob.s.dimension.dynamic.element.sm.rem}",
+              "$description": "Horizontal gap between icon and text label – for small size tags."
             },
             "md": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.md}",
-              "$description": "Horizontal gap between icon and text label  – for medium size tags."
+              "$value": "{ob.s.dimension.dynamic.element.md.rem}",
+              "$description": "Horizontal gap between icon and text label  – for medium size tags."
             },
             "lg": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.lg}",
+              "$value": "{ob.s.dimension.dynamic.element.lg.rem}",
               "$description": "Horizontal gap between icon and text label – for large size tags"
             }
           }
