@@ -15,7 +15,6 @@
     "global/themes-user/lightness/static",
     "global/multiplier",
     "primitive/color",
-    "primitive/border",
     "primitive/position",
     "primitive/typography",
     "primitive/motion",

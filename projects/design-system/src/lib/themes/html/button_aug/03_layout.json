@@ -63,11 +63,9 @@
           }
         },
         "border_radius": {
-          "default": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radius.sm}",
-            "$description": "Standard border radius for button-aug components - consistent across all sizes"
-          }
+          "$type": "borderRadius",
+          "$value": "{ob.s.radius.sm}",
+          "$description": "Standard border radius for button-aug components - consistent across all sizes"
         },
         "box_shadow": {
           "enabled": {
@@ -186,6 +184,11 @@
               "$description": "Full-width buttons in column layout"
             }
           }
+        },
+        "border_width": {
+          "$type": "borderWidth",
+          "$value": "{ob.s.border_width.xs}",
+          "$description": "Tinest border width possible for buttons for aesthetics and functionality: differentiation between secondary and tertiary. Static token, not reacting on changing component-size modes."
         }
       }
     }

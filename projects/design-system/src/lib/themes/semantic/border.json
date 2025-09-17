@@ -4,23 +4,23 @@
       "radius": {
         "none": {
           "$type": "borderRadius",
-          "$value": "{ob.p.dimension.radii.none}"
+          "$value": "{ob.p.dimension.px.0}"
         },
         "sm": {
           "$type": "borderRadius",
-          "$value": "{ob.p.dimension.radii.sm}"
+          "$value": "{ob.p.dimension.px.1}"
         },
         "md": {
           "$type": "borderRadius",
-          "$value": "{ob.p.dimension.radii.md}"
+          "$value": "{ob.p.dimension.px.2}"
         },
         "lg": {
           "$type": "borderRadius",
-          "$value": "{ob.p.dimension.radii.lg}"
+          "$value": "{ob.p.dimension.px.4}"
         },
-        "full": {
+        "rounded": {
           "$type": "borderRadius",
-          "$value": "{ob.p.dimension.radii.full}"
+          "$value": "{ob.p.dimension.px.9999}"
         }
       },
       "border_width": {

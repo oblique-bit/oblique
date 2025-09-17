@@ -408,7 +408,6 @@
       "semantic/effect": "enabled",
       "semantic/motion": "enabled",
       "primitive/color": "source",
-      "primitive/border": "source",
       "semantic/border": "enabled",
       "semantic/elevation": "enabled",
       "semantic/typography/style": "enabled",
@@ -436,7 +435,6 @@
       "ob.s.radius.sm": "a8567c6cf4ba83a43ec790451195b5a57e91b61c",
       "ob.s.radius.md": "9e1a00a87913d4fd7be2493cc75443dc96d31b17",
       "ob.s.radius.lg": "20aecfb1b05ac894557a01f62859a1db5a9d903d",
-      "ob.s.radius.full": "fe1bb401c74c1fa3ecdc9e6c747717bc594a95ce",
       "ob.s.border_width.xs": "b757c3fdbf3f35b78c97552d18ff7a85fe05a795",
       "ob.s.border_width.sm": "157f68af6585e7cff7639bb3d44648a7f875d02e",
       "ob.s.border_width.md": "66eeb26a5df57322ad7b9b757315cf862e2a68e5",
@@ -779,7 +777,6 @@
       "ob.h.button_aug.icon_only.spacing.padding.horizontal": "f80f8bae423e28a03301632788c03fa328e42d95",
       "ob.h.button_aug.remove.spacing.padding.vertical": "196ac2d2987ea099d499a43baff7bb1866c5cbce",
       "ob.h.button_aug.remove.spacing.padding.horizontal": "5f551474ac432eb930c5f2864f4c3c88a697a8dc",
-      "ob.h.button_aug.border_radius.default": "be102fbe6340c14c8b8ff62ef26d380f8a188e47",
       "ob.h.button_aug.direction.row.layout.direction": "7e4e59a751ec69959062e4186d48347112fab408",
       "ob.h.button_aug.direction.row.layout.flex_wrap": "86cd578d06b68e143f7eb792736533bfc0612b0d",
       "ob.h.button_aug.direction.row.layout.align_items": "ecb87132b4c55af392688ecc27333036bc116806",
@@ -809,7 +806,9 @@
       "figma-doc.color.fg_static": "1c9c30dab85f6c0d8e5396d84b056de283e65179",
       "figma-doc.color.figma_canvas_bg": "9ee6f407302e9371259afe21fdc013d4ac63ac1e",
       "figma-doc.color.figma_section_bg": "0cc05f58adb2173429c4d7162bd025deb9c2923f",
-      "figma-doc.color.figma_section_border": "eb1366adfa319da7328816d970e05e74b01af514"
+      "figma-doc.color.figma_section_border": "eb1366adfa319da7328816d970e05e74b01af514",
+      "ob.h.button_aug.border_radius": "be102fbe6340c14c8b8ff62ef26d380f8a188e47",
+      "ob.s.radius.rounded": "fe1bb401c74c1fa3ecdc9e6c747717bc594a95ce"
     },
     "group": "core"
   },
@@ -2690,7 +2689,6 @@
       "ob.s.radius.sm": "a9ea6f381a866a4830286087e4004bf4e6b60010",
       "ob.s.radius.md": "dbffbbe465634409adf46044547b95a7a0e6db38",
       "ob.s.radius.lg": "043427dd50dc1d1f7d8f63f24d4da08829fc5b5a",
-      "ob.s.radius.full": "ebfe96c75dd7d1f05a22095a27aff4f746decfb8",
       "ob.s.border_width.xs": "61935c8965effedd6ca0989cc5cd2da5c8e1c620",
       "ob.s.border_width.sm": "23df8b93df301dcfdc8d222dea797dc70c83ae5d",
       "ob.s.border_width.md": "f38cc24dd0bd5476e26c848a82312f15777d59fa",
@@ -2810,7 +2808,8 @@
       "ob.s.spacing.dynamic.7xl.px": "81b8e569efe873aee99b12ce9e1be4e2da3d0cdf",
       "ob.s.spacing.dynamic.7xl.rem": "18b74773061b645aaf86066c0c444a94e3253c9f",
       "ob.s.spacing.dynamic.8xl.px": "71a054a6981e5883f371e08d648af96ae1af3115",
-      "ob.s.spacing.dynamic.8xl.rem": "583c34ec940422f059da559900b1f6542aea15b6"
+      "ob.s.spacing.dynamic.8xl.rem": "583c34ec940422f059da559900b1f6542aea15b6",
+      "ob.s.radius.rounded": "ebfe96c75dd7d1f05a22095a27aff4f746decfb8"
     },
     "group": "semantic"
   },

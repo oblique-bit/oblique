@@ -117,6 +117,11 @@
             "$type": "dimension",
             "$value": "320px",
             "$description": "12XL layout spacing for maximum separation"
+          },
+          "9999": {
+            "$type": "dimension",
+            "$value": "999px",
+            "$description": "for infinite, full rounded etc."
           }
         },
         "rem": {
@@ -224,33 +229,6 @@
             "$type": "dimension",
             "$value": "20rem",
             "$description": "320px equivalent - 12XL layout spacing"
-          }
-        },
-        "radii": {
-          "none": {
-            "$type": "dimension",
-            "$value": "0",
-            "$description": "No border radius"
-          },
-          "sm": {
-            "$type": "dimension",
-            "$value": "2px",
-            "$description": "Small border radius"
-          },
-          "md": {
-            "$type": "dimension",
-            "$value": "4px",
-            "$description": "Standard border radius"
-          },
-          "lg": {
-            "$type": "dimension",
-            "$value": "8px",
-            "$description": "Large border radius"
-          },
-          "full": {
-            "$type": "dimension",
-            "$value": "{ob.p.number.infinity}",
-            "$description": "Creates a circular or pill shape"
           }
         }
       }
