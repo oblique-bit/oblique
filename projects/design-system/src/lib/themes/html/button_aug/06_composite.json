@@ -173,7 +173,14 @@
           },
           "fg_label": {
             "$type": "typography",
-            "$value": "{ob.s.typography.scale.dynamic.xs.normal}"
+            "$value": {
+              "fontFamily": "{ob.s.dynamic.font_family.body}",
+              "fontWeight": "{ob.s.dynamic.font_weight.medium}",
+              "lineHeight": "{ob.s.dynamic.lineHeight.xs}",
+              "letterSpacing": "{ob.s.dynamic.letter_spacing_px.wide}",
+              "paragraphSpacing": "{ob.s.dynamic.paragraphSpacing.xs}",
+              "fontSize": "{ob.s.dynamic.fontSize.md}"
+            }
           },
           "secondary": {
             "inversity_normal": {
