@@ -445,22 +445,6 @@
       "ob.s.border_width.2xl": "c02121bfd6fe24e7f9a348f694e187b556b9611b",
       "ob.s.border_width.3xl": "66d9d81edb82c4f91196980b6bca51c384d291ed",
       "ob.s.border_width.none": "2b41b39bcf66a7b8a6c7857f096a85d0887fc133",
-      "ob.s.corners.top_right.none": "990b4bf0c83835106c56dc0b09d7bb7eafc9a1a5",
-      "ob.s.corners.top_right.sm": "2f64876544a86a0df2ef0d441fcadd0ac765712e",
-      "ob.s.corners.top_right.md": "a0aea93d61a6f3cbb4daeea739844b575532b5ed",
-      "ob.s.corners.top_right.lg": "dfbc8d894379f9c17323b5499285940f6b07f881",
-      "ob.s.corners.top_left.none": "9c6d52eb2f9d8a98f79340436d1a12ef583064fd",
-      "ob.s.corners.top_left.sm": "e7f23b4d49e85c334d67659412af3dfa6044df2e",
-      "ob.s.corners.top_left.md": "38663d689d2599cba4fd5d3819e5b519df25febf",
-      "ob.s.corners.top_left.lg": "611b969a8d337b193e7beee13eedb7eaec038248",
-      "ob.s.corners.bottom_left.none": "6c5fa458bb9b9310f6599823eabdfc6c775aa999",
-      "ob.s.corners.bottom_left.sm": "24a21b65ac863ea703c6aeeff375d526ebf80538",
-      "ob.s.corners.bottom_left.md": "f5a8ae07de909c3c8e05730a4d66723fbb4b81d5",
-      "ob.s.corners.bottom_left.lg": "92ab396b10cbd3cd32a0e499f3fe3e142220f576",
-      "ob.s.corners.bottom_right.none": "22a3da1eaecc8047846175fdfa438ea6ac1e6d13",
-      "ob.s.corners.bottom_right.sm": "4afa82d49b9488bccd7b169afffd20e6978768f4",
-      "ob.s.corners.bottom_right.md": "638283165e642659b1c19699a559c7c958de8293",
-      "ob.s.corners.bottom_right.lg": "d2d3bd7e7072a0d5f37edf2a39214f443e35997d",
       "ob.s.fx.blur.sm": "afae661f7fd7faf4bb2762d8c60e6d5c42c3c772",
       "ob.s.spacing.static.none.px": "c6bc040a318aaf2f3222596a2c984a3ae116e085",
       "ob.s.spacing.static.none.rem": "05defd2f6959d0fdf7575478433d63550877e278",
@@ -965,7 +949,7 @@
       "ob.h.button.typography.text_label.font_size.sm": "d45da7796e540aac4b52a68d2418d23d74370412",
       "ob.h.button_aug.container.spacing.gap": "d270babd58ec6ca097e0c20eb7a44f5495b52061",
       "ob.h.button_aug.touch_target.min_size": "128f9785e2ae4f4a65b389fda75d995cef6b0f22",
-      "ob.g.multiplier.viewport.desktop": "77146ac25728fe878e9ca1f456625f2d1c4be0bd"
+      "ob.g.multiplier.viewport.desktop": "203fbb6b0f39839e34b07252202b925a01f909ee"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:1",
@@ -1131,9 +1115,9 @@
       "ob.h.button.typography.text_label.font_size.sm": "d45da7796e540aac4b52a68d2418d23d74370412",
       "ob.h.button_aug.container.spacing.gap": "d270babd58ec6ca097e0c20eb7a44f5495b52061",
       "ob.h.button_aug.touch_target.min_size": "128f9785e2ae4f4a65b389fda75d995cef6b0f22",
-      "ob.g.multiplier.viewport.mobile": "4057633a548d974f6a8bc457e86f30c7fb8d1f20",
-      "ob.c.infobox.sizing.icon_size": "d183ffb5687a09f12597de569dd040ff301e0719",
-      "ob.c.infobox.sizing.close_button_size": "63ada2af52bc7842a5801a418a3e86e22a591cc1"
+      "ob.g.multiplier.viewport.mobile": "1ca1bc98eeda0e05462346ffdd7d82b6bc2cfa37",
+      "ob.c.infobox.sizing.icon_size": "05b8011457f1f0ee7ffd7f99cb55cbe4df854c8c",
+      "ob.c.infobox.sizing.close_button_size": "a3938778fa48353725e68adedfa2edbf8c7bc4c2"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:2",
@@ -2715,22 +2699,6 @@
       "ob.s.border_width.2xl": "9ec4c94238993f022a161c7b58205dd788f53cad",
       "ob.s.border_width.3xl": "9ec438dce9fc5fbc54a468c1864770a51788dce0",
       "ob.s.border_width.none": "c0b7848bdf7ee7f627d0d5772a0432e552435052",
-      "ob.s.corners.top_right.none": "90b705c9fef5a1b0be6c5a355e4d39fe32ffd880",
-      "ob.s.corners.top_right.sm": "e556e1730854fd0059b176ba24a5acb79f0b66c2",
-      "ob.s.corners.top_right.md": "caecb0b47416be4a8105ccd6bc22d0dc19cbe76d",
-      "ob.s.corners.top_right.lg": "5e9cd02ab9ece62a4d414411d7be28538be1f1dd",
-      "ob.s.corners.top_left.none": "a06bfe8bed7e0cd2ecf56a8297d67b0d7a0fb431",
-      "ob.s.corners.top_left.sm": "c18521e18c056f2ab56438c8964e2db757be06f5",
-      "ob.s.corners.top_left.md": "2c59ef12f60afe4c57898e2852e6e6769e732a36",
-      "ob.s.corners.top_left.lg": "db879e8ad8211484d7eed5e5cc8f1f9b504e1b7d",
-      "ob.s.corners.bottom_left.none": "213569f56ede26fe1ee22e31306ab4ad3c28e53b",
-      "ob.s.corners.bottom_left.sm": "bf77e43e0e69dcb080164bacadcee714a0b76614",
-      "ob.s.corners.bottom_left.md": "361dda3d1a6f374bd1b393a574bbbb26c9d7bf66",
-      "ob.s.corners.bottom_left.lg": "0d4a76dee24fe8dcbd5d5b4323777cddbd821e3c",
-      "ob.s.corners.bottom_right.none": "3e9fb724e99726a2839185f95410fe14726d3ed3",
-      "ob.s.corners.bottom_right.sm": "e8ff5921f927baa4dec27454c64cfbd89646082d",
-      "ob.s.corners.bottom_right.md": "d043c8f29f26669703df16629c151d86de6d9fbe",
-      "ob.s.corners.bottom_right.lg": "c4ccc0ea3ff7d585f506d65adcd8a63f1ed7e460",
       "ob.s.z_index.stepper_mobile": "2e04fac26f08061020a48c786139a37fca05c865",
       "ob.s.z_index.header": "66dd006801db96ffe29df97198a571fce89ef1ce",
       "ob.s.z_index.drawer": "06b4680ee16193471e320917d44a554c37796287",
@@ -2854,7 +2822,7 @@
       "html/button_aug/05_flex-direction/row": "enabled"
     },
     "$figmaVariableReferences": {
-      "ob.h.button_aug.flex_direction.row.gap": "b2b85459dd4518c67061551a33749b47143a44b8"
+      "ob.h.button_aug.flex_direction.row.gap": "f8a92be7adf93936b492f4c7d857c360a783c6bb"
     },
     "$figmaCollectionId": "VariableCollectionId:2115:3769",
     "$figmaModeId": "2115:5",
@@ -2868,7 +2836,7 @@
       "html/button_aug/05_flex-direction/column": "enabled"
     },
     "$figmaVariableReferences": {
-      "ob.h.button_aug.flex_direction.column.gap": "f1855b413a61fc077d67545a2029a19511fc1749"
+      "ob.h.button_aug.flex_direction.column.gap": "057016648c366d6ee18e3adc06eaf16e58798c0b"
     },
     "$figmaCollectionId": "VariableCollectionId:2115:3769",
     "$figmaModeId": "2115:6",
