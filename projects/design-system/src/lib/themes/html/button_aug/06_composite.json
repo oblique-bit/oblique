@@ -174,12 +174,12 @@
           "fg_label": {
             "$type": "typography",
             "$value": {
-              "fontFamily": "{ob.s.static.font_family.body}",
-              "fontWeight": "{ob.s.dynamic.font_weight.medium}",
-              "lineHeight": "{ob.s.dynamic.lineHeight.xs}",
-              "letterSpacing": "{ob.s.dynamic.letter_spacing_px.wide}",
+              "fontFamily": "{ob.h.button_aug.typography.text_label.font_family}",
+              "fontWeight": "{ob.h.button_aug.typography.text_label.font_weight}",
+              "lineHeight": "{ob.h.button_aug.typography.text_label.line_height}",
+              "letterSpacing": "{ob.h.button_aug.typography.text_label.letter_spacing}",
               "paragraphSpacing": "{ob.s.dynamic.paragraphSpacing.xs}",
-              "fontSize": "{ob.s.dynamic.fontSize.md}"
+              "fontSize": "{ob.h.button_aug.typography.text_label.font_size}"
             }
           },
           "secondary": {
