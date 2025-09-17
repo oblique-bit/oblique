@@ -77,35 +77,35 @@
         "paragraphSpacing": {
           "xs": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.lineHeight.xs} / 2"
+            "$value": "({ob.s.dynamic.lineHeight.xs} * {ob.g.multiplier.typography.lg}) / 2"
           },
           "sm": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.lineHeight.sm} / 2"
+            "$value": "({ob.s.dynamic.lineHeight.sm} * {ob.g.multiplier.typography.lg}) / 2"
           },
           "md": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.lineHeight.md} / 2"
+            "$value": "({ob.s.dynamic.lineHeight.md} * {ob.g.multiplier.typography.lg}) / 2"
           },
           "lg": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.lineHeight.lg} / 2"
+            "$value": "({ob.s.dynamic.lineHeight.lg} * {ob.g.multiplier.typography.lg}) / 2"
           },
           "xl": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.lineHeight.xl} / 2"
+            "$value": "({ob.s.dynamic.lineHeight.xl} * {ob.g.multiplier.typography.lg}) / 2"
           },
           "2xl": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.lineHeight.2xl} / 2"
+            "$value": "({ob.s.dynamic.lineHeight.2xl} * {ob.g.multiplier.typography.lg}) / 2"
           },
           "3xl": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.lineHeight.3xl} / 2"
+            "$value": "({ob.s.dynamic.lineHeight.3xl} * {ob.g.multiplier.typography.lg}) / 2"
           },
           "4xl": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.lineHeight.4xl} / 2"
+            "$value": "({ob.s.dynamic.lineHeight.4xl} * {ob.g.multiplier.typography.lg}) / 2"
           }
         },
         "spacing": {
