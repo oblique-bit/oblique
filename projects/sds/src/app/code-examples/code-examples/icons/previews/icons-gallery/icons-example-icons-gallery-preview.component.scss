@@ -11,6 +11,15 @@
 	gap: variables.$ob-spacing-default;
 }
 
+.search {
+	display: flex;
+	gap: variables.$ob-spacing-default;
+
+	.mat-form-field {
+		flex: 1 1 50%;
+	}
+}
+
 .info-card {
 	.image-container {
 		display: flex;

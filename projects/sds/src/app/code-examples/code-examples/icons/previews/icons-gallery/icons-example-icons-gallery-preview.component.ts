@@ -19,9 +19,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {type Observable, map, startWith} from 'rxjs';
+import {type Observable, combineLatestWith, map, startWith} from 'rxjs';
 import {iconMetadata} from './icons';
+import {ObECategory} from './categories.model';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDivider} from '@angular/material/divider';
 
 @Component({
 	selector: 'app-icons-example-icons-gallery-preview',
@@ -34,6 +37,7 @@ import {MatChipsModule} from '@angular/material/chips';
 		ObButtonModule,
 		MatCardModule,
 		MatExpansionModule,
+		MatSelectModule,
 		ObPopoverModule,
 		TranslateModule,
 		MatTooltipModule,
@@ -43,18 +47,23 @@ import {MatChipsModule} from '@angular/material/chips';
 		MatFormFieldModule,
 		MatInputModule,
 		ObInputClearModule,
-		ObAlertModule
+		ObAlertModule,
+		MatDivider
 	]
 })
 export class IconsExampleIconsGalleryPreviewComponent {
 	iconsFilter = new FormControl('');
+	byCategoryFilter = new FormControl('ALL');
 	filteredIcons$: Observable<ObEIcon[]>;
 	isInfoCardVisible = false;
 	selectedIconName: string;
 	selectedIconMetaData: object;
+	selectedCategory: string;
 
 	protected readonly toggleType = ObEToggleType.CLICK;
-	private readonly icons = Object.values(ObEIcon);
+	protected readonly icons = Object.values(ObEIcon);
+	protected readonly obECategory: typeof ObECategory = ObECategory;
+	protected readonly iconMetadata = iconMetadata;
 	private readonly notificationService = inject(ObNotificationService);
 	private readonly translateService = inject(TranslateService);
 
@@ -100,12 +109,19 @@ export class IconsExampleIconsGalleryPreviewComponent {
 
 	private setUpIconsFilter(): Observable<ObEIcon[]> {
 		return this.iconsFilter.valueChanges.pipe(
-			map(txt => this.filterIcons(txt)),
-			startWith(this.icons)
+			startWith(null),
+			combineLatestWith(this.byCategoryFilter.valueChanges.pipe(startWith('ALL'))),
+			map(([filter, category]) =>
+				this.icons.filter(iconName => this.matchFilter(filter, iconName) && this.matchCategory(category, iconName))
+			)
 		);
 	}
 
-	private filterIcons(text: string): ObEIcon[] {
-		return text === null ? this.icons : this.icons.filter(iconName => iconName.toLowerCase().includes(text.toLowerCase()));
+	private matchFilter(filter: string, iconName: string): boolean {
+		return filter === null || iconName.toLowerCase().includes(filter.toLowerCase());
+	}
+
+	private matchCategory(category: string, iconName: string): boolean {
+		return category === 'ALL' || iconMetadata.some(item => item.name === iconName && item.category === category);
 	}
 }
