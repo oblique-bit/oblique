@@ -4,73 +4,73 @@
       "fontSize": {
         "xs": {
           "$type": "fontSizes",
-          "$value": "{ob.p.fontSizeUnitless.100}"
+          "$value": "{ob.p.fontSizeUnitless.100} * {ob.g.multiplier.typography.md}"
         },
         "sm": {
           "$type": "fontSizes",
-          "$value": "{ob.p.fontSizeUnitless.200}"
+          "$value": "{ob.p.fontSizeUnitless.200} * {ob.g.multiplier.typography.md}"
         },
         "md": {
           "$type": "fontSizes",
-          "$value": "{ob.p.fontSizeUnitless.300}"
+          "$value": "{ob.p.fontSizeUnitless.300} * {ob.g.multiplier.typography.md}"
         },
         "lg": {
           "$type": "fontSizes",
-          "$value": "{ob.p.fontSizeUnitless.400}"
+          "$value": "{ob.p.fontSizeUnitless.400} * {ob.g.multiplier.typography.md}"
         },
         "xl": {
           "$type": "fontSizes",
-          "$value": "{ob.p.fontSizeUnitless.500}"
+          "$value": "{ob.p.fontSizeUnitless.500} * {ob.g.multiplier.typography.md}"
         },
         "2xl": {
           "$type": "fontSizes",
-          "$value": "{ob.p.fontSizeUnitless.700}"
+          "$value": "{ob.p.fontSizeUnitless.700} * {ob.g.multiplier.typography.md}"
         },
         "3xl": {
           "$type": "fontSizes",
-          "$value": "{ob.p.fontSizeUnitless.800}"
+          "$value": "{ob.p.fontSizeUnitless.800} * {ob.g.multiplier.typography.md}"
         },
         "4xl": {
           "$type": "fontSizes",
-          "$value": "{ob.p.fontSizeUnitless.900}"
+          "$value": "{ob.p.fontSizeUnitless.900} * {ob.g.multiplier.typography.md}"
         },
         "_base": {
           "$type": "fontSizes",
-          "$value": "{ob.p.fontSizeUnitless.300}"
+          "$value": "{ob.p.fontSizeUnitless.300} * {ob.g.multiplier.typography.md}"
         }
       },
       "lineHeight": {
         "xs": {
           "$type": "lineHeights",
-          "$value": "{ob.p.lineHeight.300}"
+          "$value": "{ob.p.lineHeight.300} * {ob.g.multiplier.typography.md}"
         },
         "sm": {
           "$type": "lineHeights",
-          "$value": "{ob.p.lineHeight.400}"
+          "$value": "{ob.p.lineHeight.400} * {ob.g.multiplier.typography.md}"
         },
         "md": {
           "$type": "lineHeights",
-          "$value": "{ob.p.lineHeight.500}"
+          "$value": "{ob.p.lineHeight.500} * {ob.g.multiplier.typography.md}"
         },
         "lg": {
           "$type": "lineHeights",
-          "$value": "{ob.p.lineHeight.600}"
+          "$value": "{ob.p.lineHeight.600} * {ob.g.multiplier.typography.md}"
         },
         "xl": {
           "$type": "lineHeights",
-          "$value": "{ob.p.lineHeight.800}"
+          "$value": "{ob.p.lineHeight.800} * {ob.g.multiplier.typography.md}"
         },
         "2xl": {
           "$type": "lineHeights",
-          "$value": "{ob.p.lineHeight.1100}"
+          "$value": "{ob.p.lineHeight.1100} * {ob.g.multiplier.typography.md}"
         },
         "3xl": {
           "$type": "lineHeights",
-          "$value": "{ob.p.lineHeight.1300}"
+          "$value": "{ob.p.lineHeight.1300} * {ob.g.multiplier.typography.md}"
         },
         "4xl": {
           "$type": "lineHeights",
-          "$value": "{ob.p.lineHeight.1400}"
+          "$value": "{ob.p.lineHeight.1400} * {ob.g.multiplier.typography.md}"
         }
       },
       "paragraphSpacing": {
