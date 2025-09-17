@@ -41,7 +41,7 @@
             },
             "text_align": {
               "$type": "textAlign",
-              "$value": "center",
+              "$value": "{ob.s.static.text_align.center}",
               "$description": "Center alignment for button text labels. Note: Not supported by Figma variables - set manually in Figma components."
             },
             "text_vertical_trim": {

@@ -49,6 +49,71 @@
 
 **Validation Phase**: Created complete HTML/CSS validation to prove tokens work despite Figma limitations.
 
+---
+
+## Button Size System Implementation
+
+### **Proportional Square Constraints**
+Specific button subcomponents require **width = height** to maintain visual proportion:
+
+**Square Button Components:**
+- **button.remove**: Must maintain 1:1 aspect ratio for visual balance
+- **button.icon_only**: Must maintain 1:1 aspect ratio for touch target consistency  
+
+**Implementation principle:**
+- **Normal buttons**: Height-driven sizing with flexible width
+- **Square buttons**: Height = Width for proportional appearance
+
+**Token structure:**
+```json
+"ob.size.button.remove.dimension": {
+  "sm": "32px", // height = width = 32px
+  "md": "40px", // height = width = 40px  
+  "lg": "48px"  // height = width = 48px
+}
+
+"ob.size.button.icon-only.dimension": {
+  "sm": "32px", // height = width = 32px
+  "md": "40px", // height = width = 40px
+  "lg": "48px"  // height = width = 48px
+}
+```
+
+### **Button Size Token Collection**
+| Token Name | Small | Medium | Large | Boundary |
+|------------|-------|--------|-------|----------|
+| `ob.size.button.height` | 32px | 40px | 48px | sm/md/lg |
+| `ob.size.button.remove.dimension` | 32px | 40px | 48px | width = height |
+| `ob.size.button.icon-only.dimension` | 32px | 40px | 48px | width = height |
+
+### **Context-Aware Button Tokens**
+| Token Name | Description | Value |
+|------------|-------------|-------|
+| `ob.size.button.form-coordinated.height.md` | Button height when with form inputs | `{ob.size.input.height.md}` |
+
+### **Button Context Inheritance**
+- **button** - Inherits in form/dialog contexts
+- **button.remove** - Inherits from Tag component for consistent sizing
+- **Size coordination principle**: Input text field LG ≠ button.remove LG (different visual sizes), but both maintain visual relation when scaled together
+
+### **Three-Dimensional Button Token Example (Viewport × Size × Component)**
+```json
+"ob.size.button.remove.dimension": {
+  "desktop": {
+    "sm": "32px",  // 32×32px square
+    "md": "40px",  // 40×40px square
+    "lg": "48px"   // 48×48px square
+  },
+  "mobile": {
+    "sm": "44px",  // 44×44px square (touch-friendly)
+    "md": "44px",  // Same as sm on mobile
+    "lg": "52px"   // 52×52px square
+  }
+}
+```
+
+---
+
 **Standards Alignment**: Updated to W3C DTCG compliance for future-proofing and tool compatibility.
 
 **Key Decisions**:

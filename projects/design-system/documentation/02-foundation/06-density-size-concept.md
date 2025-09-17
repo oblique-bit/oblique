@@ -30,7 +30,9 @@ This document outlines a dual-dimension approach to component scaling through **
 
 ---
 
-## Density system
+## Density system (to do)
+
+## Size system (done in https://github.com/oblique-bit/oblique/tree/tokens-develop-02.05)
 
 ### **Definition**
 - **Triggers outer spacing** (outside components, mostly atoms and molecules)
@@ -53,8 +55,10 @@ This document outlines a dual-dimension approach to component scaling through **
 ### **Definition**
 - **Triggers inset spacing** (inside components, mostly atoms and molecules)
 - **Determines size of components** (primarily when grouped, in relation and context)
+### **Implementation**
 - **Figma**: Variable collection with modes `sm`, `md`, `lg`
 - **Tokens Studio**: Theme group with themes `sm`, `md`, `lg`
+- **Current naming**: Uses `component-size` theme group in `$themes.json` (located at `/src/lib/themes/`) - called this way because only certain components react to it currently, but can be expanded and renamed later when more components support size modes
 
 ### **Shared component sizes philosophy**
 Shared sizes are beneficial for:
@@ -86,53 +90,21 @@ Size functions as an overarching contextual layer that flows through the interfa
 }
 ```
 
-**Component boundary respect**: Each component honors the global context within its supported range
-```css
-.input { /* Supports sm/md/lg - follows context fully */
-  height: var(--ob-size-input-height-var(--size-context));
-}
-
-.infobox { /* Boundary: md/lg only - clamps to nearest supported */
-  height: var(--ob-size-infobox-height-clamp(var(--size-context), md, lg));
-}
-
-.navigation { /* Fixed: md only - ignores context */
-  height: var(--ob-size-navigation-height-md);
-}
-```
+**Component boundary respect**: Each component inherits the global context. Individual context can be set like for the navigation, both in Figma (baked-in variable mode inside the component) and code.
 
 **Design system governance**: Maintainers define and document size boundaries based on:
 - **Functional constraints**: Minimum usability requirements
 - **Visual hierarchy**: Maintaining component relationships  
 - **Context appropriateness**: Preventing visual overwhelm or under-emphasis
 
-### **Proportional square constraints**
-Specific button subcomponents require **width = height** to maintain visual proportion:
+### **Proportional constraints**
+Some components require **width = height** to maintain visual proportion:
 
 **Square components:**
-- **button.remove**: Must maintain 1:1 aspect ratio for visual balance
-- **button.icon_only**: Must maintain 1:1 aspect ratio for touch target consistency  
 - **icon_holder**: Must maintain 1:1 aspect ratio for visual harmony
-
-**Implementation principle:**
-- **Normal buttons**: Height-driven sizing with flexible width
-- **Square buttons**: Height = Width for proportional appearance
-- **Icon holders**: Always square regardless of context
 
 **Token structure:**
 ```json
-"ob.size.button.remove.dimension": {
-  "sm": "32px", // height = width = 32px
-  "md": "40px", // height = width = 40px  
-  "lg": "48px"  // height = width = 48px
-}
-
-"ob.size.button.icon-only.dimension": {
-  "sm": "32px", // height = width = 32px
-  "md": "40px", // height = width = 40px
-  "lg": "48px"  // height = width = 48px
-}
-
 "ob.size.icon-holder.dimension": {
   "sm": "16px", // height = width = 16px
   "md": "20px", // height = width = 20px
@@ -160,25 +132,22 @@ Specific button subcomponents require **width = height** to maintain visual prop
 
 ### **Component role classification**
 #### **Size Context Providers** (Set sizing context)
-- **`input`** - Sets context for tags, buttons, badges
+
 - **`dialog`** - Sets density context for all contents
-- **`form-row`** - Sets height-matching context
-- **`toolbar`** - Sets compact context for actions
+- **`form`** - Sets height-matching context
+- **`input`** - Sets context for tags, buttons, badges - also if no overarching context set by  form
+- **`service-nav`** - Sets compact context for actions
 
 #### **Size Context Consumers** (Inherit from context)
 - **`tag`** - Inherits from input fields
 - **`button`** - Inherits in form/dialog contexts
 - **`badge`** - Inherits from nearby components
 - **`icon`** - Always inherits from parent
-- **`tooltip`** - Inherits from trigger component
 
-#### **Size Context Neutral** (Independent sizing)
-- **`pill`** - Content-driven sizing
-- **`spinner`** - Context-specific but explicit sizing
-- **`avatar`** - Independent semantic sizing
+
 
 ### **Size coordination principle**
-- **Input text field LG ≠ Button LG** (different visual sizes)
+- **Input text field LG ≠ badge LG** (different visual sizes)
 - **Both maintain visual relation** when scaled together
 - **Container-level inheritance**: Set MD on container → all children inherit MD and scale together
 - **Dimensional relationships preserved** across size changes
@@ -186,22 +155,18 @@ Specific button subcomponents require **width = height** to maintain visual prop
 ### **Inheritance types and key relationships**
 
 #### **Inheritance Patterns**
-1. **Locked inheritance from parents** (automatic mode/token inheritance)
+1. **Locked inheritance from parents** (automatic mode/token inheritance pro component)
 2. **Overridable inheritance** (can be changed if needed)
 3. **No inheritance** (totally free - MD as default, but designer can override via variable modes)
 
 #### **Key Component Relationships**
-- **Input + Tag**: Height matching for multi-select scenarios
+- **Input + Tag inside**: Height matching for multi-select scenarios
 - **Input + Button**: Form row alignment  
-- **Input + Badge**: Validation states, counters
 - **Dialog + All Contents**: Density inheritance
-- **Card + Mixed Components**: Visual weight balance in content layouts
-- **Data Table + Tag/Pill/Badge**: Consistent metadata sizing
-- **Toolbar + Actions**: Compact context for action buttons
 - **Infobox + Button**: Action buttons in notifications
 - **Any Component + Tooltip**: Context-aware help text
 - **Any Component + Icon**: Always inherits from parent component
-- **Button + Spinner**: Loading state replacement sizing
+
 
 ### **Scaling Direction**
 - **Primarily vertical scaling** (up and down)
@@ -230,41 +195,20 @@ Components are classified by their supported size range, determined by design sy
 ### **Width-only sizing**
 - **Modal components**: dialog, modal
 - **Rationale**: Height scaling handled by content, width responds to size context
+- **HowTo:**: Only width-property consumes token switchable by component-size-modes and reacts on mode/context.
 
-### **Fixed size (md)**
+### **Fixed size (static size)**
 - **Layout components**: master-layout navigation, paginator
 - **Rationale**: Consistency and recognition prioritized over size flexibility
+- **HowTo:**: Consumes static size/dimension tokens that do not react on mode/context.
 
-### **Size boundary enforcement**
-- **Token level**: Component tokens define supported range
-- **Figma level**: Variable modes only show available options
-- **Documentation**: Clear boundary rationale provided to implementers
 
 ---
 
-## Implementation strategy
-
-### **Developer and designer workflow**
-- **Automatic coordination**: Components coordinate without manual size matching by developers
-- **Container-level control**: Set size/density on container level for inherited coordination
-- **Override capability**: Contextual overrides available when business/UX requirements demand exceptions
-
-### **Component size availability**
-**Approach**: Shared size context with component-specific boundaries
 
 **Core principle**: Size acts as an overarching context mode (sm/md/lg) that flows through the interface, but individual components have predetermined size boundaries set by design system maintainers.
 
-**Implementation strategy**:
-- **Global size context**: Single size collection (sm/md/lg) applied at container level
-- **Component boundaries**: Each component defines its supported size range based on functional and visual constraints
-- **Maintainer governance**: Design system team sets and documents component size limits
-- **Graceful constraints**: Components that can't scale beyond their limits maintain their boundary size
 
-**Boundary examples**:
-- **Input field**: Supports sm/md/lg (full range) - needs flexibility for different contexts
-- **Infobox**: Boundary at md/lg only - sm would compromise readability
-- **Navigation**: Fixed at md - consistency and recognition priority
-- **Tooltip**: Boundary at sm/md only - lg would be visually overwhelming
 
 **Technical implementation**:
 - Components respect global size context when within their supported range
@@ -350,7 +294,6 @@ Components are classified by their supported size range, determined by design sy
 ### **Size token collection with boundaries**
 | Token Name | Small | Medium | Large | Boundary |
 |------------|-------|--------|-------|----------|
-| `ob.size.button.height` | 32px | 40px | 48px | sm/md/lg |
 | `ob.size.input.height` | 32px | 40px | 48px | sm/md/lg |
 | `ob.size.badge.height` | 20px | 24px | 28px | sm/md/lg |
 | `ob.size.tag.height` | 24px | 32px | 40px | sm/md/lg |
@@ -370,22 +313,20 @@ Components are classified by their supported size range, determined by design sy
 ### **Proportional square component tokens**
 | Token Name | Small | Medium | Large | Constraint |
 |------------|-------|--------|-------|------------|
-| `ob.size.button.remove.dimension` | 32px | 40px | 48px | width = height |
-| `ob.size.button.icon-only.dimension` | 32px | 40px | 48px | width = height |
 | `ob.size.icon-holder.dimension` | 16px | 20px | 24px | width = height |
 
 ### **Three-dimensional token example (Viewport × Size × Component)**
 ```json
-"ob.size.button.remove.dimension": {
+"ob.size.icon-holder.dimension": {
   "desktop": {
-    "sm": "32px",  // 32×32px square
-    "md": "40px",  // 40×40px square
-    "lg": "48px"   // 48×48px square
+    "sm": "16px",  // 16×16px square
+    "md": "20px",  // 20×20px square
+    "lg": "24px"   // 24×24px square
   },
   "mobile": {
-    "sm": "44px",  // 44×44px square (touch-friendly)
-    "md": "44px",  // Same as sm on mobile
-    "lg": "52px"   // 52×52px square
+    "sm": "20px",  // 20×20px square (touch-friendly)
+    "md": "24px",  // 24×24px square
+    "lg": "28px"   // 28×28px square
   }
 }
 ```
@@ -396,7 +337,6 @@ Components are classified by their supported size range, determined by design sy
 | `ob.size.tag.input-coordinated.height.sm` | Tag height when in small input | `calc({ob.size.input.height.sm} - 8px)` |
 | `ob.size.tag.input-coordinated.height.md` | Tag height when in medium input | `calc({ob.size.input.height.md} - 8px)` |
 | `ob.size.tag.input-coordinated.height.lg` | Tag height when in large input | `calc({ob.size.input.height.lg} - 8px)` |
-| `ob.size.button.form-coordinated.height.md` | Button height when with form inputs | `{ob.size.input.height.md}` |
 
 ### **Combined token usage example**
 ```css

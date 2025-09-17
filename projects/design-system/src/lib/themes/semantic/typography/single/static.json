@@ -238,7 +238,24 @@
           "$value": "{ob.p.letterSpacing_px.50}",
           "$description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
         }
+        },
+      "text_align": {
+        "left": {
+          "$type": "textAlign",
+          "$value": "left",
+          "$description": "Left text alignment - standard for body text and left-aligned content"
+        },
+        "center": {
+          "$type": "textAlign", 
+          "$value": "center",
+          "$description": "Center text alignment - used for buttons, headings, and centered content"
+        },
+        "right": {
+          "$type": "textAlign",
+          "$value": "right", 
+          "$description": "Right text alignment - used for numerical values, right-aligned content"
         }
+      }
       }
     }
   }
