@@ -1,0 +1,243 @@
+{
+  "ob": {
+    "s": {
+      "fontSize": {
+        "xs": {
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.100} * {ob.g.multiplier.typography.md}"
+        },
+        "sm": {
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.200} * {ob.g.multiplier.typography.md}"
+        },
+        "md": {
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.300} * {ob.g.multiplier.typography.md}"
+        },
+        "lg": {
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.400} * {ob.g.multiplier.typography.md}"
+        },
+        "xl": {
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.500} * {ob.g.multiplier.typography.md}"
+        },
+        "2xl": {
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.700} * {ob.g.multiplier.typography.md}"
+        },
+        "3xl": {
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.800} * {ob.g.multiplier.typography.md}"
+        },
+        "4xl": {
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.900} * {ob.g.multiplier.typography.md}"
+        },
+        "_base": {
+          "$type": "fontSizes",
+          "$value": "{ob.p.fontSizeUnitless.300} * {ob.g.multiplier.typography.md}"
+        }
+      },
+      "lineHeight": {
+        "xs": {
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.300} * {ob.g.multiplier.typography.md}"
+        },
+        "sm": {
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.400} * {ob.g.multiplier.typography.md}"
+        },
+        "md": {
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.500} * {ob.g.multiplier.typography.md}"
+        },
+        "lg": {
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.600} * {ob.g.multiplier.typography.md}"
+        },
+        "xl": {
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.800} * {ob.g.multiplier.typography.md}"
+        },
+        "2xl": {
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.1100} * {ob.g.multiplier.typography.md}"
+        },
+        "3xl": {
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.1300} * {ob.g.multiplier.typography.md}"
+        },
+        "4xl": {
+          "$type": "lineHeights",
+          "$value": "{ob.p.lineHeight.1400} * {ob.g.multiplier.typography.md}"
+        }
+      },
+      "paragraphSpacing": {
+        "xs": {
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.xs} / 2"
+        },
+        "sm": {
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.sm} / 2"
+        },
+        "md": {
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.md} / 2"
+        },
+        "lg": {
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.lg} / 2"
+        },
+        "xl": {
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.xl} / 2"
+        },
+        "2xl": {
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.2xl} / 2"
+        },
+        "3xl": {
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.3xl} / 2"
+        },
+        "4xl": {
+          "$type": "paragraphSpacing",
+          "$value": "{ob.s.lineHeight.4xl} / 2"
+        }
+      },
+      "spacing": {
+        "heading": {
+          "top": {
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.none}",
+            "$description": "Standard spacing above H1 is none to use vertical space."
+          },
+          "top_after_p": {
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.6xl}",
+            "$description": "SPecial spacing above H1 after a paragraph"
+          },
+          "bottom": {
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.lg}"
+          }
+        },
+        "paragraph": {
+          "bottom": {
+            "$type": "spacing",
+            "$value": "{ob.s.spacing.2xl}"
+          }
+        }
+      },
+      "font_family": {
+        "body": {
+          "$type": "fontFamilies",
+          "$value": "{ob.p.fontFamily.sans}",
+          "$description": "Font of the Oblique Design System"
+        },
+        "heading": {
+          "$type": "fontFamilies",
+          "$value": "{ob.p.fontFamily.sans}",
+          "$description": "Font of the Oblique Design System"
+        },
+        "code": {
+          "$type": "fontFamilies",
+          "$value": "{ob.p.fontFamily.mono}",
+          "$description": "For code and design system figma documentation."
+        }
+      },
+      "font_weight": {
+        "regular": {
+          "$type": "fontWeights",
+          "$value": "{ob.p.font_weight.0}"
+        },
+        "medium": {
+          "$type": "fontWeights",
+          "$value": "{ob.p.font_weight.100}"
+        },
+        "semiBold": {
+          "$type": "fontWeights",
+          "$value": "{ob.p.font_weight.200}"
+        },
+        "bold": {
+          "$type": "fontWeights",
+          "$value": "{ob.p.font_weight.300}"
+        },
+        "extraBold": {
+          "$type": "fontWeights",
+          "$value": "{ob.p.font_weight.400}"
+        }
+      },
+      "text_decoration": {
+        "link": {
+          "emphasis_high": {
+            "$type": "textDecoration",
+            "$value": "{ob.p.text_decoration.underline}",
+            "$description": "Standard text-link has an underline."
+          },
+          "emphasis_low": {
+            "$type": "textDecoration",
+            "$value": "{ob.p.text_decoration.none}",
+            "$description": "Use where it is obvious that it is link and no need for additional typographical emphasis such as underline."
+          }
+        }
+      },
+      "letter_spacing_rem": {
+        "superNarrow": {
+          "$type": "letterSpacing",
+          "$value": "-0.03rem",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "narrower": {
+          "$type": "letterSpacing",
+          "$value": "-0.01rem",
+          "$description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
+        },
+        "narrow": {
+          "$type": "letterSpacing",
+          "$value": "0.005rem",
+          "$description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
+        },
+        "normal": {
+          "$type": "letterSpacing",
+          "$value": "auto",
+          "$description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
+        },
+        "wide": {
+          "$type": "letterSpacing",
+          "$value": "0.5%",
+          "$description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
+        }
+      },
+      "letter_spacing_px": {
+        "superNarrow": {
+          "$type": "letterSpacing",
+          "$value": "{ob.p.letterSpacing_px.neg_150}",
+          "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+        },
+        "narrower": {
+          "$type": "letterSpacing",
+          "$value": "{ob.p.letterSpacing_px.neg_100}",
+          "$description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
+        },
+        "narrow": {
+          "$type": "letterSpacing",
+          "$value": "{ob.p.letterSpacing_px.neg_50}",
+          "$description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
+        },
+        "normal": {
+          "$type": "letterSpacing",
+          "$value": "{ob.p.letterSpacing_px.0}",
+          "$description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
+        },
+        "wide": {
+          "$type": "letterSpacing",
+          "$value": "{ob.p.letterSpacing_px.50}",
+          "$description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
+        }
+      }
+    }
+  }
+}
