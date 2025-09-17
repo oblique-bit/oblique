@@ -180,7 +180,8 @@
               "letterSpacing": "{ob.s.dynamic.letter_spacing_px.wide}",
               "paragraphSpacing": "{ob.s.dynamic.paragraphSpacing.xs}",
               "fontSize": "{ob.s.dynamic.fontSize.md}"
-            }
+            },
+            "$description": "Typography only. Simplifies maintenance with Figma and Token Studio. Basically the same references as in 02_typography.json of this component."
           },
           "secondary": {
             "inversity_normal": {

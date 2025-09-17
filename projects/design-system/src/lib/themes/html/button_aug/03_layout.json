@@ -62,23 +62,6 @@
             }
           }
         },
-        "container": {
-          "spacing": {
-            "gap": {
-              "$extensions": {
-                "com.tokens-studio": {
-                  "mode": {
-                    "container-wide": "{ob.s.spacing.3xl}",
-                    "container-narrow": "{ob.s.spacing.lg}"
-                  }
-                }
-              },
-              "$type": "spacing",
-              "$value": "{ob.s.spacing.3xl}",
-              "$description": "Gap between buttons in container - adapts to container=wide|narrow context"
-            }
-          }
-        },
         "border_radius": {
           "default": {
             "$type": "borderRadius",

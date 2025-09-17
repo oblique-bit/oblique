@@ -2,15 +2,11 @@
   "ob": {
     "h": {
       "button_aug": {
-        "$description": {
-          "$type": "other",
-          "$value": "Desktop viewport tokens - Optimized spacing for mouse interaction and larger screens"
-        },
         "container": {
           "spacing": {
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.3xl}",
+              "$value": "{ob.s.dimension.dynamic.surface.xs.px}",
               "$description": "Button gap for desktop viewport - wider spacing for mouse interaction"
             }
           }
