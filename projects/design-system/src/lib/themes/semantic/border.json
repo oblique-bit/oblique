@@ -26,109 +26,35 @@
       "border_width": {
         "xs": {
           "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.100}"
+          "$value": "{ob.p.dimension.px.1}"
         },
         "sm": {
           "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.200}"
+          "$value": "{ob.p.dimension.px.2}"
         },
         "md": {
           "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.300}"
+          "$value": "{ob.p.dimension.px.3}"
         },
         "lg": {
           "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.400}"
+          "$value": "{ob.p.dimension.px.4}"
         },
         "xl": {
           "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.500}"
+          "$value": "{ob.p.dimension.px.8}"
         },
         "2xl": {
           "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.600}"
+          "$value": "{ob.p.dimension.px.12}"
         },
         "3xl": {
           "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.700}"
+          "$value": "{ob.p.dimension.px.16}"
         },
         "none": {
           "$type": "borderWidth",
-          "$value": "{ob.p.borderWidth.none}"
-        }
-      },
-      "corners": {
-        "top_right": {
-          "none": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.none}"
-          },
-          "sm": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.sm}"
-          },
-          "md": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.md}"
-          },
-          "lg": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.lg}"
-          }
-        },
-        "top_left": {
-          "none": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.none}"
-          },
-          "sm": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.sm}"
-          },
-          "md": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.md}"
-          },
-          "lg": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.lg}"
-          }
-        },
-        "bottom_left": {
-          "none": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.none}"
-          },
-          "sm": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.sm}"
-          },
-          "md": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.md}"
-          },
-          "lg": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.lg}"
-          }
-        },
-        "bottom_right": {
-          "none": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.none}"
-          },
-          "sm": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.sm}"
-          },
-          "md": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.md}"
-          },
-          "lg": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.radii.lg}"
-          }
+          "$value": "{ob.p.dimension.px.0}"
         }
       },
       "border": {
