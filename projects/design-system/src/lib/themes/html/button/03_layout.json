@@ -1,12 +1,12 @@
 {
   "ob": {
     "h": {
-      "button_aug": {
+      "button": {
         "$description": {
           "$type": "other",
           "$value": "Layout properties for button-aug"
         },
-        "text_icons": {
+        "label_icon": {
           "spacing": {
             "padding": {
               "vertical": {
@@ -122,13 +122,6 @@
                 "$description": "Center alignment for horizontal layout"
               }
             },
-            "spacing": {
-              "gap": {
-                "$type": "spacing",
-                "$value": "{ob.s.spacing.xl}",
-                "$description": "20px gap between buttons in row layout"
-              }
-            },
             "button_order": {
               "primary_first": {
                 "$type": "text",
@@ -157,13 +150,6 @@
                 "$type": "text",
                 "$value": "stretch",
                 "$description": "Full-width buttons for better touch targets"
-              }
-            },
-            "spacing": {
-              "gap": {
-                "$type": "spacing",
-                "$value": "{ob.s.spacing.lg}",
-                "$description": "16px gap between stacked buttons"
               }
             },
             "button_order": {

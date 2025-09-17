@@ -1,26 +1,26 @@
 {
   "ob": {
     "h": {
-      "button_aug": {
+      "button": {
         "$description": {
           "$type": "other",
           "$value": "Flex direction tokens - NOT supported by Figma. In Figma manually assign one of the directions. HTML/CSS only implementation."
         },
         "flex_direction": {
-          "column": {
+          "row": {
             "$description": {
               "$type": "string",
-              "$value": "Column flex-direction - buttons arranged vertically with full width. HTML/CSS implementation only - use button.container component variants in Figma."
+              "$value": "Row flex-direction - buttons arranged horizontally with auto width. HTML/CSS implementation only - use button.container component variants in Figma."
             },
             "flex_direction": {
               "$type": "string",
-              "$value": "column",
-              "$description": "CSS flex-direction for vertical button layout. HTML/CSS implementation only - use button.container component variants in Figma."
+              "$value": "row",
+              "$description": "CSS flex-direction for horizontal button layout. HTML/CSS implementation only - use button.container component variants in Figma."
             },
             "align_items": {
               "$type": "string",
-              "$value": "stretch",
-              "$description": "CSS align-items for full-width buttons. HTML/CSS implementation only - use button.container component variants in Figma."
+              "$value": "center",
+              "$description": "CSS align-items for horizontal button alignment. HTML/CSS implementation only - use button.container component variants in Figma."
             },
             "justify_content": {
               "$type": "string",
@@ -29,13 +29,13 @@
             },
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.surface.xs.px}",
-              "$description": "CSS gap between stacked buttons"
+              "$value": "{ob.s.dimension.dynamic.element.md.px}",
+              "$description": "CSS gap between buttons in compact layout"
             },
             "width": {
               "$type": "string",
-              "$value": "100%",
-              "$description": "CSS width for buttons - fills container for better touch targets. HTML/CSS implementation only - use button.container component variants in Figma."
+              "$value": "auto",
+              "$description": "CSS width for buttons - auto lets them hug content. HTML/CSS implementation only - use button.container component variants in Figma."
             }
           }
         }
