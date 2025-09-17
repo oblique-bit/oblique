@@ -42,6 +42,8 @@ export default [
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
 			'@typescript-eslint/no-redundant-type-constituents': 'off',
+			'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off', // needs strictNullChecks
+			'@typescript-eslint/no-unnecessary-condition': 'off', // needs strictNullChecks
 			'@typescript-eslint/no-unsafe-argument': 'off',
 			'@typescript-eslint/no-unsafe-assignment': 'off',
 			'@typescript-eslint/no-unsafe-call': 'off',
@@ -50,7 +52,9 @@ export default [
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
 			'@typescript-eslint/parameter-properties': 'off',
 			'@typescript-eslint/prefer-enum-initializers': 'off',
+			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
 			'@typescript-eslint/promise-function-async': 'off',
+			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
 			'accessor-pairs': 'off',
 			'func-names': 'off',
 			'no-duplicate-imports': 'off',
@@ -100,7 +104,8 @@ export default [
 		files: ['projects/oblique/src/lib/**/*.spec.ts'],
 		rules: {
 			// rules that are not respected
-			'@typescript-eslint/ban-ts-comment': 'off'
+			'@typescript-eslint/ban-ts-comment': 'off',
+			'@typescript-eslint/no-floating-promises': 'off'
 		}
 	},
 	{

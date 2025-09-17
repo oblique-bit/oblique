@@ -16,8 +16,19 @@ export default [
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
+			'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off', // needs strictNullChecks
+			'@typescript-eslint/no-unnecessary-condition': 'off', // needs strictNullChecks
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
+			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
+			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
 			'accessor-pairs': 'off'
+		}
+	},
+	{
+		files: ['projects/sds/**/*.spec.ts'],
+		rules: {
+			// rules that are not respected
+			'@typescript-eslint/no-floating-promises': 'off'
 		}
 	},
 	{

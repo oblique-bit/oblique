@@ -26,12 +26,23 @@ export default [
 			// rules that are not respected because too costly to refactor
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
+			'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off', // needs strictNullChecks
+			'@typescript-eslint/no-unnecessary-condition': 'off', // needs strictNullChecks
 			'@typescript-eslint/no-unsafe-argument': 'off',
 			'@typescript-eslint/no-unsafe-assignment': 'off',
 			'@typescript-eslint/no-unsafe-call': 'off',
 			'@typescript-eslint/no-unsafe-member-access': 'off',
 			'@typescript-eslint/no-unsafe-return': 'off',
-			'@typescript-eslint/no-unsafe-type-assertion': 'off'
+			'@typescript-eslint/no-unsafe-type-assertion': 'off',
+			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
+			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
+		}
+	},
+	{
+		files: ['projects/sandbox/src/**/*.spec.ts'],
+		rules: {
+			// rules that are not respected
+			'@typescript-eslint/no-floating-promises': 'off'
 		}
 	},
 	{

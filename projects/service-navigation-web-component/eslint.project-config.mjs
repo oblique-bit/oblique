@@ -27,7 +27,19 @@ export default [
 			// rules that are not respected
 			'@typescript-eslint/no-deprecated': 'off', // need an alternative to provide icons
 			'@typescript-eslint/no-magic-numbers': 'off', // would violate member-ordering
-			'@typescript-eslint/no-unsafe-return': 'off' // need extensive type checking
+			'@typescript-eslint/no-unsafe-return': 'off', // need extensive type checking
+			'@typescript-eslint/no-unsafe-type-assertion': 'off',
+			'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off', // needs strictNullChecks
+			'@typescript-eslint/no-unnecessary-condition': 'off', // needs strictNullChecks
+			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
+			'@typescript-eslint/strict-boolean-expressions': 'off' // needs strictNullChecks
+		}
+	},
+	{
+		files: ['projects/service-navigation-web-component/src/**/*.spec.ts'],
+		rules: {
+			// rules that are not respected
+			'@typescript-eslint/no-floating-promises': 'off'
 		}
 	}
 ];
