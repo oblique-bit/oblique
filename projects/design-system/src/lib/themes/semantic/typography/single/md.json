@@ -132,23 +132,6 @@
           }
         }
       },
-      "font_family": {
-        "body": {
-          "$type": "fontFamilies",
-          "$value": "{ob.p.fontFamily.sans}",
-          "$description": "Font of the Oblique Design System"
-        },
-        "heading": {
-          "$type": "fontFamilies",
-          "$value": "{ob.p.fontFamily.sans}",
-          "$description": "Font of the Oblique Design System"
-        },
-        "code": {
-          "$type": "fontFamilies",
-          "$value": "{ob.p.fontFamily.mono}",
-          "$description": "For code and design system figma documentation."
-        }
-      },
       "font_weight": {
         "regular": {
           "$type": "fontWeights",

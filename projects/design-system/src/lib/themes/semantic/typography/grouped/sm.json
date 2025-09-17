@@ -8,7 +8,7 @@
               "normal": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.medium}",
                   "fontSize": "{ob.s.dynamic.fontSize.xs} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.xs}",
@@ -20,7 +20,7 @@
               "strong": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.extraBold}",
                   "fontSize": "{ob.s.dynamic.fontSize.xs} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.xs}",
@@ -34,7 +34,7 @@
               "normal": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.medium}",
                   "fontSize": "{ob.s.dynamic.fontSize.sm} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.sm}",
@@ -46,7 +46,7 @@
               "strong": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.extraBold}",
                   "fontSize": "{ob.s.dynamic.fontSize.sm} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.sm}",
@@ -60,7 +60,7 @@
               "normal": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.medium}",
                   "fontSize": "{ob.s.dynamic.fontSize.md} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.md}",
@@ -72,7 +72,7 @@
               "strong": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.extraBold}",
                   "fontSize": "{ob.s.dynamic.fontSize.md} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.md}",
@@ -86,7 +86,7 @@
               "normal": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.regular}",
                   "fontSize": "{ob.s.dynamic.fontSize.lg} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.lg}",
@@ -98,7 +98,7 @@
               "strong": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.extraBold}",
                   "fontSize": "{ob.s.dynamic.fontSize.lg} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.lg}",
@@ -112,7 +112,7 @@
               "normal": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.regular}",
                   "fontSize": "{ob.s.dynamic.fontSize.xl} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.xl}",
@@ -124,7 +124,7 @@
               "strong": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.extraBold}",
                   "fontSize": "{ob.s.dynamic.fontSize.xl} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.xl}",
@@ -138,7 +138,7 @@
               "normal": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.regular}",
                   "fontSize": "{ob.s.dynamic.fontSize.2xl} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.2xl}",
@@ -150,7 +150,7 @@
               "strong": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.extraBold}",
                   "fontSize": "{ob.s.dynamic.fontSize.2xl} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.2xl}",
@@ -164,7 +164,7 @@
               "normal": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.regular}",
                   "fontSize": "{ob.s.dynamic.fontSize.3xl} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.3xl}",
@@ -176,7 +176,7 @@
               "strong": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.extraBold}",
                   "fontSize": "{ob.s.dynamic.fontSize.3xl} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.3xl}",
@@ -190,7 +190,7 @@
               "normal": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.regular}",
                   "fontSize": "{ob.s.dynamic.fontSize.4xl} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.4xl}",
@@ -202,7 +202,7 @@
               "strong": {
                 "$type": "typography",
                 "$value": {
-                  "fontFamily": "{ob.s.dynamic.font_family.body}",
+                  "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.dynamic.font_weight.extraBold}",
                   "fontSize": "{ob.s.dynamic.fontSize.4xl} * {ob.g.multiplier.typography.sm}",
                   "lineHeight": "{ob.s.dynamic.lineHeight.4xl}",

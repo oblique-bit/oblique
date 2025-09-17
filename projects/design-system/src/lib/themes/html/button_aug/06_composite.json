@@ -174,7 +174,7 @@
           "fg_label": {
             "$type": "typography",
             "$value": {
-              "fontFamily": "{ob.s.dynamic.font_family.body}",
+              "fontFamily": "{ob.s.static.font_family.body}",
               "fontWeight": "{ob.s.dynamic.font_weight.medium}",
               "lineHeight": "{ob.s.dynamic.lineHeight.xs}",
               "letterSpacing": "{ob.s.dynamic.letter_spacing_px.wide}",

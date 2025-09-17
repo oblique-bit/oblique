@@ -64,6 +64,31 @@ Modes set by designers and developers during design and implementation phases:
 
 ---
 
+## Component Size Themes
+
+The design system includes a **component-size** theme group that provides unified sizing modes for components:
+
+### Size Modes
+- **`sm`** - Small size mode for compact interfaces
+- **`md`** - Medium size mode (default) for standard interfaces  
+- **`lg`** - Large size mode for generous, accessibility-focused interfaces
+
+### Implementation
+- **Theme Group:** `component-size` in `$themes.json`
+- **Location:** `/src/lib/themes/`
+- **Current Scope:** Only certain components react to size modes currently
+- **Future:** Can be expanded and renamed when more components support size modes
+
+### Usage Context
+Size modes enable consistent component scaling across different interface contexts:
+- **Small (`sm`)**: Data-heavy interfaces, power user scenarios
+- **Medium (`md`)**: General applications, balanced approach
+- **Large (`lg`)**: Marketing sites, onboarding flows, accessibility requirements
+
+**For detailed implementation, token examples, and component boundaries, see [Size Concept Documentation](../02-foundation/07-size-concept.md).**
+
+---
+
 ## How Theme Switching Works
 
 **Primary Mechanism:** User mode switching occurs at the S1 layer through file selection:

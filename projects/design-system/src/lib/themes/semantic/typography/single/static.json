@@ -77,58 +77,58 @@
       "paragraphSpacing": {
         "xs": {
           "$type": "paragraphSpacing",
-          "$value": "{ob.s.dynamic.lineHeight.xs} / 2"
+          "$value": "{ob.s.static.lineHeight.xs} / 2"
         },
         "sm": {
           "$type": "paragraphSpacing",
-          "$value": "{ob.s.dynamic.lineHeight.sm} / 2"
+          "$value": "{ob.s.static.lineHeight.sm} / 2"
         },
         "md": {
           "$type": "paragraphSpacing",
-          "$value": "{ob.s.dynamic.lineHeight.md} / 2"
+          "$value": "{ob.s.static.lineHeight.md} / 2"
         },
         "lg": {
           "$type": "paragraphSpacing",
-          "$value": "{ob.s.dynamic.lineHeight.lg} / 2"
+          "$value": "{ob.s.static.lineHeight.lg} / 2"
         },
         "xl": {
           "$type": "paragraphSpacing",
-          "$value": "{ob.s.dynamic.lineHeight.xl} / 2"
+          "$value": "{ob.s.static.lineHeight.xl} / 2"
         },
         "2xl": {
           "$type": "paragraphSpacing",
-          "$value": "{ob.s.dynamic.lineHeight.2xl} / 2"
+          "$value": "{ob.s.static.lineHeight.2xl} / 2"
         },
         "3xl": {
           "$type": "paragraphSpacing",
-          "$value": "{ob.s.dynamic.lineHeight.3xl} / 2"
+          "$value": "{ob.s.static.lineHeight.3xl} / 2"
         },
         "4xl": {
           "$type": "paragraphSpacing",
-          "$value": "{ob.s.dynamic.lineHeight.4xl} / 2"
+          "$value": "{ob.s.static.lineHeight.4xl} / 2"
         }
       },
       "spacing": {
         "heading": {
           "top": {
             "$type": "spacing",
-            "$value": "{ob.s.spacing.dynamic.none.px}",
+            "$value": "{ob.s.spacing.static.none.px}",
             "$description": "Standard spacing above H1 is none to use vertical space."
           },
           "top_after_p": {
             "$type": "spacing",
-            "$value": "{ob.s.spacing.dynamic.6xl.px}",
+            "$value": "{ob.s.spacing.static.6xl.px}",
             "$description": "SPecial spacing above H1 after a paragraph"
           },
           "bottom": {
             "$type": "spacing",
-            "$value": "{ob.s.spacing.dynamic.lg.px}"
+            "$value": "{ob.s.spacing.static.lg.px}"
           }
         },
         "paragraph": {
           "bottom": {
             "$type": "spacing",
-            "$value": "{ob.s.spacing.dynamic.2xl.px}"
+            "$value": "{ob.s.spacing.static.2xl.px}"
           }
         }
       },

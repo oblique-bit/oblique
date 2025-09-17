@@ -11,22 +11,22 @@
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.p.lineHeightUnitless.400} * {ob.g.multiplier.typography}",
+              "$value": "{ob.s.dynamic.lineHeight.xs}",
               "$description": "Line height that scales with typography multiplier"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.p.letter_spacing.normal}",
+              "$value": "{ob.s.dynamic.letter_spacing_px.wide}",
               "$description": "Letter spacing for button text labels"
             },
             "font_family": {
               "$type": "fontFamilies",
-              "$value": "{ob.s.font_family.body}",
+              "$value": "{ob.s.static.font_family.body}",
               "$description": "Font family for button text labels - consistent across all sizes"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.font_weight.medium}",
+              "$value": "{ob.s.dynamic.font_weight.medium}",
               "$description": "Font weight for button text labels - consistent across all sizes"
             },
             "text_decoration": {
