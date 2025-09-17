@@ -1,5 +1,7 @@
 /* eslint-disable max-lines */
-export const iconMetadata = [
+import type {IconMetadata} from './icons.model';
+
+export const iconMetadata: IconMetadata[] = [
 	{
 		name: 'home',
 		purpose: 'single',
