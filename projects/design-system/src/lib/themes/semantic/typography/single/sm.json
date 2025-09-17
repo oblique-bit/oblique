@@ -1,6 +1,7 @@
 {
   "ob": {
     "s": {
+      "dynamic": {
       "fontSize": {
         "xs": {
           "$type": "fontSizes",
@@ -237,6 +238,7 @@
           "$value": "{ob.p.letterSpacing_px.50}",
           "$description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
         }
+              }
       }
     }
   }
