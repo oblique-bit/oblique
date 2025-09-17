@@ -29,7 +29,7 @@
             },
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.xl}",
+              "$value": "{ob.s.dimension.dynamic.element.md.px}",
               "$description": "CSS gap between buttons in compact layout"
             },
             "width": {

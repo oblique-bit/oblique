@@ -29,7 +29,7 @@
             },
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.lg}",
+              "$value": "{ob.s.dimension.dynamic.surface.xs.px}",
               "$description": "CSS gap between stacked buttons"
             },
             "width": {

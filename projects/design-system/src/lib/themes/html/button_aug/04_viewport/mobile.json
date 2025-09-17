@@ -2,10 +2,6 @@
   "ob": {
     "h": {
       "button_aug": {
-        "$description": {
-          "$type": "other",
-          "$value": "Mobile viewport tokens - Optimized spacing for touch interaction and accessibility on mobile devices"
-        },
         "container": {
           "spacing": {
             "gap": {
