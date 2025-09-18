@@ -402,7 +402,7 @@
     "selectedTokenSets": {
       "html/link": "enabled",
       "html/hr": "enabled",
-      "_ignore-in-ds/figma-doc/colors-static": "enabled",
+      "_FIGMA-ONLY/figma-doc/colors-static": "enabled",
       "html/list": "enabled",
       "primitive/position": "source",
       "primitive/typography": "source",
@@ -1311,7 +1311,7 @@
     "selectedTokenSets": {
       "primitive/color": "source",
       "semantic/asset/theme/lightness/light": "enabled",
-      "_ignore-in-ds/figma-doc/theme/lightness/light": "enabled",
+      "_FIGMA-ONLY/figma-doc/theme/lightness/light": "enabled",
       "semantic/color/s1-lightness/light": "enabled",
       "component/molecule/infobox/color": "enabled"
     },
@@ -1819,7 +1819,7 @@
     "selectedTokenSets": {
       "primitive/color": "source",
       "semantic/asset/theme/lightness/dark": "enabled",
-      "_ignore-in-ds/figma-doc/theme/lightness/dark": "enabled",
+      "_FIGMA-ONLY/figma-doc/theme/lightness/dark": "enabled",
       "semantic/color/s1-lightness/dark": "enabled",
       "component/molecule/infobox/color": "enabled"
     },
@@ -2318,7 +2318,7 @@
       "r13.typography.components_only.tooltip.label": "S:01a80ff405036b8a204f742fa49f200230ff826c,"
     },
     "selectedTokenSets": {
-      "_ignore-in-ds/typography-styles-R13": "enabled"
+      "_FIGMA-ONLY/typography-styles-R13": "enabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"

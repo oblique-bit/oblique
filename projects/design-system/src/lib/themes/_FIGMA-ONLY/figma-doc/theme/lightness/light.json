@@ -1,0 +1,11 @@
+{
+  "figma-doc": {
+    "color": {
+      "fg": {
+        "$type": "color",
+        "$value": "#9747FF",
+        "$description": "[FIGMA-ONLY]\\nToken for Figma design workflow only."
+      }
+    }
+  }
+}\n

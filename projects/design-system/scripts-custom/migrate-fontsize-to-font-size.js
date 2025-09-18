@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// Find all JSON files in themes directory (excluding _ignore-in-ds)
+// Find all JSON files in themes directory (now including _FIGMA-ONLY)
 function findTokenFiles(dir, files = []) {
   const items = fs.readdirSync(dir);
   
@@ -12,7 +12,7 @@ function findTokenFiles(dir, files = []) {
     const stat = fs.statSync(itemPath);
     
     if (stat.isDirectory()) {
-      if (!item.startsWith('_ignore-in-ds')) {
+      if (!item.startsWith('_FIGMA-ONLY')) {
         findTokenFiles(itemPath, files);
       }
     } else if (item.endsWith('.json')) {

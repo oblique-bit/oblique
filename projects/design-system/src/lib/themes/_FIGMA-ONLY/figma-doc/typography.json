@@ -10,7 +10,7 @@
             "fontWeight": "{ob.p.font_weight.500}",
             "letterSpacing": "{ob.s.letter_spacing.normal}"
           },
-          "$description": "Small font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
+          "$description": "[FIGMA-ONLY]\\nSmall font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         },
         "docs_md": {
           "$type": "typography",
@@ -20,7 +20,7 @@
             "fontWeight": "{ob.s.font_weight.extraBold}",
             "letterSpacing": "{ob.s.letter_spacing.normal}"
           },
-          "$description": "Medium font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
+          "$description": "[FIGMA-ONLY]\\nMedium font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         },
         "docs_lg": {
           "$type": "typography",
@@ -30,7 +30,7 @@
             "fontWeight": "{ob.s.font_weight.extraBold}",
             "letterSpacing": "{ob.s.letter_spacing.normal}"
           },
-          "$description": "Large font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
+          "$description": "[FIGMA-ONLY]\\nLarge font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         }
       },
       "strong": {
@@ -42,7 +42,7 @@
             "fontWeight": "{ob.s.font_weight.extraBold}",
             "letterSpacing": "{ob.s.letter_spacing.normal}"
           },
-          "$description": "Small font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
+          "$description": "[FIGMA-ONLY]\\nSmall font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         },
         "docs_md": {
           "$type": "typography",
@@ -52,7 +52,7 @@
             "fontWeight": "{ob.s.font_weight.extraBold}",
             "letterSpacing": "{ob.s.letter_spacing.normal}"
           },
-          "$description": "Medium font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
+          "$description": "[FIGMA-ONLY]\\nMedium font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         },
         "docs_lg": {
           "$type": "typography",
@@ -62,9 +62,9 @@
             "fontWeight": "{ob.s.font_weight.extraBold}",
             "letterSpacing": "{ob.s.letter_spacing.normal}"
           },
-          "$description": "Large font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
+          "$description": "[FIGMA-ONLY]\\nLarge font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         }
       }
     }
   }
-}
+}\n

@@ -1,0 +1,46 @@
+{
+  "figma-doc": {
+    "color": {
+      "fg_static": {
+        "$type": "color",
+        "$value": "#9747FF",
+        "$description": "[FIGMA-ONLY]\\nDocumentation only! Coming from Figma UI. Doesn't react to user preference color modes Light, Dark etc."
+      },
+      "figma_canvas_bg": {
+        "$type": "color",
+        "$value": "#DFE4E9",
+        "$description": "[FIGMA-ONLY]\\nFigma Canvas Background. Documentation only! Doesn't react to user preference color modes Light, Dark etc."
+      },
+      "figma_section_bg": {
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "alpha",
+              "value": "0.3",
+              "space": "lch",
+              "$description": "[FIGMA-ONLY]\\nToken for Figma design workflow only."
+            }
+          }
+        },
+        "$type": "color",
+        "$value": "#ffffff",
+        "$description": "[FIGMA-ONLY]\\nFigma Section Background. Documentation only! Doesn't react to user preference color modes Light, Dark etc."
+      },
+      "figma_section_border": {
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "alpha",
+              "value": "0.1",
+              "space": "lch",
+              "$description": "[FIGMA-ONLY]\\nToken for Figma design workflow only."
+            }
+          }
+        },
+        "$type": "color",
+        "$value": "#000000",
+        "$description": "[FIGMA-ONLY]\\nFigma Section Border. Documentation only! Doesn't react to user preference color modes Light, Dark etc."
+      }
+    }
+  }
+}\n
