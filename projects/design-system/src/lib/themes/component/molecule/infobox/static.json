@@ -5,7 +5,7 @@
         "container": {
           "padding_bottom": {
             "$type": "spacing",
-            "$value": "{ob.s.spacing.md}",
+            "$value": "{ob.s.dimension.static.surface.md.px}",
             "$description": "Needed to extend the padding in the Infobox component, ensuring consistent and visually appealing spacing to the right and below the button."
           }
         },
@@ -39,22 +39,22 @@
         "border_radius": {
           "top_left": {
             "$type": "borderRadius",
-            "$value": "{ob.s.radii.none}",
+            "$value": "{ob.s.radius.none}",
             "$description": "Sets the left upper corner radius to zero because there we have a left colored border and no need for rounded corners."
           },
           "top_right": {
             "$type": "borderRadius",
-            "$value": "{ob.s.radii.md}",
+            "$value": "{ob.s.radius.md}",
             "$description": "Rounds the right upper corner to enhance visual appeal of the component."
           },
           "bottom_left": {
             "$type": "borderRadius",
-            "$value": "{ob.s.radii.none}",
+            "$value": "{ob.s.radius.none}",
             "$description": "Sets the left upper corner radius to zero because there we have a left colored border and no need for rounded corners."
           },
           "bottom_right": {
             "$type": "borderRadius",
-            "$value": "{ob.s.radii.md}",
+            "$value": "{ob.s.radius.md}",
             "$description": "Rounds the right bottom corner to enhance visual appeal of the component."
           }
         },
