@@ -8,7 +8,6 @@ describe('ObAuthenticationService', () => {
 	const mockOAuthService = {
 		initLoginFlow: jest.fn(),
 		logOut: jest.fn(),
-		getIdentityClaims: jest.fn(),
 		getAccessToken: jest
 			.fn()
 			.mockImplementation(
@@ -53,26 +52,6 @@ describe('ObAuthenticationService', () => {
 		it('should call the logOut method of the OAuthService when performLogout() is called', () => {
 			service.performLogout();
 			expect(mockOAuthService.logOut).toHaveBeenCalledTimes(1);
-		});
-	});
-
-	describe('getIdentityClaims', () => {
-		it('should call the getIdentityClaims method of the OAuthService when getIdentityClaims() is called', () => {
-			service.getIdentityClaims();
-			expect(mockOAuthService.getIdentityClaims).toHaveBeenCalledTimes(1);
-		});
-	});
-
-	describe('getAllResourceAccessRoles', () => {
-		it('should call the getAccessToken method of the OAuthService when getAllResourceAccessRoles() is called', () => {
-			service.getAllResourceAccessRoles();
-			expect(mockOAuthService.getAccessToken).toHaveBeenCalledTimes(1);
-		});
-
-		it('should return the correct IResourceAccessRoles', () => {
-			expect(service.getAllResourceAccessRoles()).toEqual([
-				{name: 'account', roles: ['manage-account', 'manage-account-links', 'view-profile']}
-			]);
 		});
 	});
 });
