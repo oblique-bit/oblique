@@ -24,6 +24,16 @@ export default [
 			'@angular-eslint/prefer-standalone': 'off', // Sandbox is meant to stay without standalone components
 
 			// rules that are not respected because too costly to refactor
+			'@typescript-eslint/naming-convention': [
+				'error',
+				{selector: 'default', format: ['camelCase']},
+				{selector: 'typeLike', format: ['PascalCase']},
+				{selector: 'enumMember', format: ['UPPER_CASE']},
+				{selector: 'objectLiteralProperty', format: null, modifiers: ['requiresQuotes']},
+				// rules that are not respected
+				{selector: 'property', format: ['camelCase', 'snake_case']},
+				{selector: 'classProperty', format: ['camelCase', 'UPPER_CASE']}
+			],
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
 			'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off', // needs strictNullChecks
@@ -35,7 +45,7 @@ export default [
 			'@typescript-eslint/no-unsafe-return': 'off',
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
 			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
-			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
+			'@typescript-eslint/strict-boolean-expressions': 'off' // needs strictNullChecks
 		}
 	},
 	{

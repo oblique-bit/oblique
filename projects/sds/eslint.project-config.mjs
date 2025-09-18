@@ -13,6 +13,15 @@ export default [
 			// rules that are not respected
 			'@angular-eslint/use-component-view-encapsulation': 'off',
 			'@angular-eslint/use-injectable-provided-in': ['error', {ignoreClassNamePattern: 'CollectorService'}],
+			'@typescript-eslint/naming-convention': [
+				'error',
+				{selector: 'default', format: ['camelCase']},
+				{selector: 'typeLike', format: ['PascalCase']},
+				{selector: 'enumMember', format: ['UPPER_CASE']},
+				{selector: 'objectLiteralProperty', format: null, modifiers: ['requiresQuotes']},
+				// rules that are not respected
+				{selector: 'property', format: ['camelCase', 'snake_case']}
+			],
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
