@@ -109,25 +109,25 @@
             "horizontal": {
               "sm": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.sm}",
-                "$description": "Horizontal padding of small size badge. Makes the badge round. "
+                "$value": "{ob.s.dimension.static.element.xs.rem}",
+                "$description": "Horizontal padding of small size badge (4px). Absolute minimum for compact display."
               },
               "lg": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.md}",
-                "$description": "Horizontal padding of large size badge. Makes the badge round. "
+                "$value": "{ob.s.dimension.static.element.xs.rem}",
+                "$description": "Horizontal padding of large size badge (4px). Minimal spacing for consistency."
               }
             },
             "vertical": {
               "sm": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.sm}",
-                "$description": "Vertical padding of small size badge. Makes the badge round. "
+                "$value": "{ob.s.dimension.static.element.xs.rem}",
+                "$description": "Vertical padding of small size badge (4px). Absolute minimum for compact display."
               },
               "lg": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.md}",
-                "$description": "Vertical padding of large size badge. Makes the badge round. "
+                "$value": "{ob.s.dimension.static.element.xs.rem}",
+                "$description": "Vertical padding of large size badge (4px). Minimal spacing for consistency."
               }
             }
           }
