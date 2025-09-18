@@ -60,7 +60,7 @@
           "custom_buttons_container": {
             "width": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.layout.xxl.px}"
+              "$value": "{ob.s.dimension.dynamic.layout.xl.px}"
             }
           },
           "custom_buttons": {
@@ -72,7 +72,7 @@
           "padded_container": {
             "width": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.layout.xxl.px}",
+              "$value": "{ob.s.dimension.dynamic.layout.xl.px}",
               "$description": "Sets a fixed default width (320px) for popover consistency. Can be overridden for specific requirements."
             }
           },
