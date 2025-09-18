@@ -5,30 +5,30 @@
         "docs_sm": {
           "$type": "typography",
           "$value": {
-            "fontSize": "{ob.p.fontSizeUnitless.400}",
-            "fontFamily": "{ob.s.font_family.code}",
+            "fontSize": "{ob.p.font_size_unitless.400}",
+            "fontFamily": "{ob.s.static.font_family.code}",
             "fontWeight": "{ob.p.font_weight.500}",
-            "letterSpacing": "{ob.s.letter_spacing.normal}"
+            "letterSpacing": "{ob.s.static.letter_spacing_px.normal}"
           },
           "$description": "[FIGMA-ONLY]\nSmall font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         },
         "docs_md": {
           "$type": "typography",
           "$value": {
-            "fontSize": "{ob.p.fontSizeUnitless.500}",
-            "fontFamily": "{ob.s.font_family.body}",
-            "fontWeight": "{ob.s.font_weight.extraBold}",
-            "letterSpacing": "{ob.s.letter_spacing.normal}"
+            "fontSize": "{ob.p.font_size_unitless.500}",
+            "fontFamily": "{ob.s.static.font_family.body}",
+            "fontWeight": "{ob.p.font_weight.600}",
+            "letterSpacing": "{ob.s.static.letter_spacing_px.normal}"
           },
           "$description": "[FIGMA-ONLY]\nMedium font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         },
         "docs_lg": {
           "$type": "typography",
           "$value": {
-            "fontSize": "{ob.p.fontSizeUnitless.1100}",
-            "fontFamily": "{ob.s.font_family.body}",
-            "fontWeight": "{ob.s.font_weight.extraBold}",
-            "letterSpacing": "{ob.s.letter_spacing.normal}"
+            "fontSize": "{ob.p.font_size_unitless.1100}",
+            "fontFamily": "{ob.s.static.font_family.body}",
+            "fontWeight": "{ob.p.font_weight.600}",
+            "letterSpacing": "{ob.s.static.letter_spacing_px.normal}"
           },
           "$description": "[FIGMA-ONLY]\nLarge font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         }
@@ -37,30 +37,30 @@
         "docs_sm": {
           "$type": "typography",
           "$value": {
-            "fontSize": "{ob.p.fontSizeUnitless.400}",
-            "fontFamily": "{ob.s.font_family.code}",
-            "fontWeight": "{ob.s.font_weight.extraBold}",
-            "letterSpacing": "{ob.s.letter_spacing.normal}"
+            "fontSize": "{ob.p.font_size_unitless.400}",
+            "fontFamily": "{ob.s.static.font_family.code}",
+            "fontWeight": "{ob.p.font_weight.600}",
+            "letterSpacing": "{ob.s.static.letter_spacing_px.normal}"
           },
           "$description": "[FIGMA-ONLY]\nSmall font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         },
         "docs_md": {
           "$type": "typography",
           "$value": {
-            "fontSize": "{ob.p.fontSizeUnitless.500}",
-            "fontFamily": "{ob.s.font_family.body}",
-            "fontWeight": "{ob.s.font_weight.extraBold}",
-            "letterSpacing": "{ob.s.letter_spacing.normal}"
+            "fontSize": "{ob.p.font_size_unitless.500}",
+            "fontFamily": "{ob.s.static.font_family.body}",
+            "fontWeight": "{ob.p.font_weight.600}",
+            "letterSpacing": "{ob.s.static.letter_spacing_px.normal}"
           },
           "$description": "[FIGMA-ONLY]\nMedium font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         },
         "docs_lg": {
           "$type": "typography",
           "$value": {
-            "fontSize": "{ob.p.fontSizeUnitless.1100}",
-            "fontFamily": "{ob.s.font_family.body}",
-            "fontWeight": "{ob.s.font_weight.extraBold}",
-            "letterSpacing": "{ob.s.letter_spacing.normal}"
+            "fontSize": "{ob.p.font_size_unitless.1100}",
+            "fontFamily": "{ob.s.static.font_family.body}",
+            "fontWeight": "{ob.p.font_weight.600}",
+            "letterSpacing": "{ob.s.static.letter_spacing_px.normal}"
           },
           "$description": "[FIGMA-ONLY]\nLarge font size for documentation purpose only. Do not used this token/figma text style in your BIT project. It references directly the primitive font size tokens, not reacting to responsive changes."
         }
