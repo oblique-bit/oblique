@@ -2,16 +2,8 @@
   "ob": {
     "h": {
       "button": {
-        "$description": {
-          "$type": "other",
-          "$value": "Flex direction tokens - NOT supported by Figma. In Figma manually assign one of the directions. HTML/CSS only implementation."
-        },
         "flex_direction": {
           "column": {
-            "$description": {
-              "$type": "string",
-              "$value": "Column flex-direction - buttons arranged vertically with full width. HTML/CSS implementation only - use button.container component variants in Figma."
-            },
             "flex_direction": {
               "$type": "string",
               "$value": "column",

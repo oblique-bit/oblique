@@ -2,10 +2,6 @@
   "ob": {
     "h": {
       "button": {
-        "$description": {
-          "$type": "other",
-          "$value": "Layout properties for button-aug"
-        },
         "label_icon": {
           "spacing": {
             "padding": {
@@ -69,10 +65,6 @@
         },
         "direction": {
           "row": {
-            "$description": {
-              "$type": "other",
-              "$value": "Horizontal container layout (equivalent to previous 'wide')"
-            },
             "layout": {
               "direction": {
                 "$type": "text",
@@ -104,10 +96,6 @@
             }
           },
           "column": {
-            "$description": {
-              "$type": "other",
-              "$value": "Vertical container layout (equivalent to previous 'narrow')"
-            },
             "layout": {
               "direction": {
                 "$type": "text",
