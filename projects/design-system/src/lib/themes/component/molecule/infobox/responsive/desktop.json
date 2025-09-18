@@ -52,40 +52,40 @@
           "body": {
             "padding_right": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.9xl}",
+              "$value": "{ob.s.dimension.dynamic.container.xs.px}",
               "$description": "Adding a larger right-padding on larger screens introduces white space that allows the design to \"breathe\"."
             },
             "padding_bottom": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.2xl}",
+              "$value": "{ob.s.dimension.dynamic.element.md.px}",
               "$description": "Adding a larger right-padding on larger screens introduces white space that allows the design to \"breathe\"."
             }
           },
           "parentof-buttons_container": {
             "padding_left": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.8xl}"
+              "$value": "{ob.s.dimension.dynamic.container.xs.px}"
             },
             "padding_bottom": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.sm}",
+              "$value": "{ob.s.dimension.static.element.xs.px}",
               "$description": "sets right and bottom spacing from the last button to the border of the surface visually identical on desktop"
             },
             "padding_right": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.sm}"
+              "$value": "{ob.s.dimension.static.element.xs.px}"
             }
           },
           "infobox_icon_container": {
             "padding_top": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.none}"
+              "$value": "{ob.s.dimension.static.none.px}"
             }
           },
           "title": {
             "padding_top": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.xs}",
+              "$value": "{ob.s.dimension.static.detail.sm.px}",
               "$description": "Aligns the title with the status icon and the close button on desktop."
             }
           }
@@ -94,7 +94,7 @@
           "title": {
             "min_height": {
               "$type": "dimension",
-              "$value": "{ob.s.dynamic.size.surface.sm}",
+              "$value": "{ob.s.dimension.dynamic.surface.md.px}",
               "$description": "Minimum height (28px) helps the title container maintain height regardless of close-button presence"
             }
           }
@@ -110,24 +110,24 @@
           "spacing": {
             "row_gap": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.lg}",
+              "$value": "{ob.s.dimension.dynamic.surface.xs.px}",
               "$description": "Vertical distance / gap between infoboxes."
             },
             "padding_bottom": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.3xl}"
+              "$value": "{ob.s.dimension.dynamic.surface.xs.px}"
             },
             "padding_top": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.3xl}"
+              "$value": "{ob.s.dimension.dynamic.surface.xs.px}"
             },
             "padding_left": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.none}"
+              "$value": "{ob.s.dimension.static.none.px}"
             },
             "padding_right": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.none}"
+              "$value": "{ob.s.dimension.static.none.px}"
             }
           }
         },
