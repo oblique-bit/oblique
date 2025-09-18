@@ -403,7 +403,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.800}"
+                  "$value": "{ob.p.color.red.900}"
                 }
               },
               "contrast_medium": {
@@ -414,7 +414,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.700}"
+                  "$value": "{ob.p.color.red.800}"
                 }
               },
               "contrast_low": {

@@ -1,0 +1,24 @@
+{
+  "ob": {
+    "c": {
+      "tag": {
+        "font_family": {
+          "$type": "fontFamilies",
+          "$value": "{ob.s.static.font_family.code}"
+        },
+        "font_weight": {
+          "$type": "fontWeights",
+          "$value": "{ob.s.static.font_weight.medium}"
+        },
+        "font_size": {
+          "$type": "fontSizes",
+          "$value": "{ob.s.dynamic.fontSize.sm}"
+        },
+        "text_decoration": {
+          "$type": "textDecoration",
+          "$value": "{ob.s.dynamic.text_decoration.link.emphasis_low}"
+        }
+      }
+    }
+  }
+}

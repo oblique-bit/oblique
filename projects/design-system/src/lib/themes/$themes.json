@@ -396,7 +396,8 @@
       "ob.s.elevation.focus_ring.inversity_normal": "S:3bbdb3ac44419ef51ac4a6874341ef101095fd78,",
       "ob.s.elevation.focus_ring.inversity_flipped": "S:609b49117ca51bc209b3d0d0bbf81ffbb625c864,",
       "ob.h.button_aug.focus_ring": "S:86622a05f5090e51964ce9453d3fb20b43fd5738,",
-      "ob.h.button.focus_ring": "S:b34b8d6ccf701053b152cfe4565dda1fdf88fe37,"
+      "ob.h.button.focus_ring": "S:b34b8d6ccf701053b152cfe4565dda1fdf88fe37,",
+      "ob.c.tag.typography.size": "S:50a132241b28e5eb04aa793074a7d93bcd435c96,"
     },
     "selectedTokenSets": {
       "html/link": "enabled",
@@ -419,7 +420,6 @@
       "component/molecule/infobox/static": "enabled",
       "component/molecule/pill": "enabled",
       "component/molecule/popover": "enabled",
-      "component/molecule/tag": "enabled",
       "component/atom/icon_holder/size": "enabled",
       "component/atom/icon_holder/static": "enabled",
       "primitive/z-index": "source",
@@ -428,7 +428,9 @@
       "html/button/02_typography": "source",
       "html/button/04_layout": "enabled",
       "html/button/07_composite": "source",
-      "html/button/03_shadows": "source"
+      "html/button/03_shadows": "source",
+      "component/molecule/tag/tag": "enabled",
+      "component/molecule/tag/typography": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -546,6 +548,11 @@
       "ob.c.infobox.border_radius.top_right": "828889ba669ab3001bbe616bc5e9e6bc1c643460",
       "ob.c.infobox.border_radius.bottom_left": "822bb1d355c57d5444b4e60c4bff439c7a462a17",
       "ob.c.infobox.border_radius.bottom_right": "45f475598bd3431f2fb28e7d38aa62bde913450d",
+      "ob.c.infobox.fatal.button.inversity": "13fb5af858df2daa14c28e2cff51cdb92ffbb6f3",
+      "ob.c.infobox.info.button.inversity": "1612924adc45b8482a2750e820ab08db72d08e5a",
+      "ob.c.infobox.resolved.button.inversity": "40f074f947a458c7155460af306404a283682ec5",
+      "ob.c.infobox.attention.button.inversity": "3be30152075584187fd1c8b33e800ed03a4887f8",
+      "ob.c.infobox.critical.button.inversity": "8922a366e30b194398f64a342485b0a1ba688499",
       "ob.c.pill.spacing.padding.vertical.sm": "370dcec1cd8f6d9bfe55529942d89af7783e484b",
       "ob.c.pill.spacing.padding.vertical.md": "87c78c79cb792ced2849904afd317bd0fbec52a4",
       "ob.c.pill.spacing.padding.vertical.lg": "290998e937a5ba4555c58789e23546bd488f6182",
@@ -659,28 +666,19 @@
       "ob.c.popover.border_radius": "3d278c2de2102e145e5c6f2ef52fe2cdb1fe7d9a",
       "ob.c.popover.border_width": "72c337661460d894469f61bbae4051bcbee13a01",
       "ob.c.tag.container.spacing.gap": "55347469e8681b3c42a3634fc9b3abd46df091a4",
-      "ob.c.tag.spacing.padding.vertical.sm": "06486001989e7f4f8bdf49fb3b7b86d4ba3006ab",
-      "ob.c.tag.spacing.padding.vertical.md": "bcfb34e36d9a127b056010fde66a8fa9c798b918",
-      "ob.c.tag.spacing.padding.vertical.lg": "3530f0ce68d51c94d6a001d0b3d1a33b61616236",
-      "ob.c.tag.spacing.padding.horizontal.sm": "71dd9056c239e05244d6728c4e28b7bfca2170bc",
-      "ob.c.tag.spacing.padding.horizontal.md": "b3246a215fcf23d0e67f47a90018b552a573b020",
-      "ob.c.tag.spacing.padding.horizontal.lg": "5cd249349ab06319ef8e3b7883096b2484a19bd7",
-      "ob.c.tag.spacing.gap.sm": "839fa9188457d2cc36d3badc136d0dfa8fbf791a",
-      "ob.c.tag.spacing.gap.md": "4824dd0323d0012d613ca272ce70041654b897ed",
-      "ob.c.tag.spacing.gap.lg": "17aa79f942b3ae65c47cde0a6c292d47e2059f7b",
+      "ob.c.tag.spacing.padding.vertical": "bcfb34e36d9a127b056010fde66a8fa9c798b918",
+      "ob.c.tag.spacing.padding.horizontal": "b3246a215fcf23d0e67f47a90018b552a573b020",
+      "ob.c.tag.spacing.gap": "4824dd0323d0012d613ca272ce70041654b897ed",
       "ob.c.tag.border_radius.default": "391e7c07dad693db5d0e6e94aa38332bde651666",
-      "ob.c.tag.surface.min_height.sm": "f1635ff5c853f4b911bc907d78ef2ab51e5b0b23",
-      "ob.c.tag.surface.min_height.md": "61503613a8bf9763525fa07f8e54b7bc00c8fd57",
-      "ob.c.tag.surface.min_height.lg": "1d175230890addb45d596538f3e43bf072618ae1",
       "ob.c.tag.color.fg.enabled": "b50247f5cba620bac5ea136f078773f4063e4ada",
       "ob.c.tag.color.fg.hover": "4dc7e0d3c3678e1ca758c5702500f1096ef19a02",
       "ob.c.tag.color.fg.focus": "8d1c132a9ce807d7f9e539465f8a7a4a56e75f21",
-      "ob.c.tag.color.fg.active": "97ab24fc061c81e92c12bb2ed28bfd0b0491ecbc",
+      "ob.c.tag.color.fg.selected": "97ab24fc061c81e92c12bb2ed28bfd0b0491ecbc",
       "ob.c.tag.color.fg.disabled": "c45327f138246867269c1d963add40be78fd1b98",
       "ob.c.tag.color.bg.enabled": "6a4e1354a101d6e0b0547ec9ebfcd4d4d8270a60",
       "ob.c.tag.color.bg.hover": "2524a7f6547a44de51efa9d90e61c4bde44e4c1d",
       "ob.c.tag.color.bg.focus": "c0e0c6cbfad7a0f6f526dde59de5af39bb90a655",
-      "ob.c.tag.color.bg.active": "5512b1cae1a804a81a480b13ee309827998e3b70",
+      "ob.c.tag.color.bg.selected": "5512b1cae1a804a81a480b13ee309827998e3b70",
       "ob.c.tag.color.bg.disabled": "1b156473efe32ce992d685628084655bc0318110",
       "ob.h.button.color.fg.primary.inversity_normal.enabled": "f84a4df12f8b785a1863a086dbe459060dbfdf4c",
       "ob.h.button.color.fg.primary.inversity_normal.hover": "4a664580d654f841adfeba75a67db3163452a07a",
@@ -916,7 +914,9 @@
     "selectedTokenSets": {
       "component/molecule/infobox/responsive/desktop": "enabled",
       "global/multipliers/viewport/desktop": "enabled",
-      "html/button/05_viewport/desktop": "enabled"
+      "html/button/05_viewport/desktop": "enabled",
+      "component/molecule/tag/tag": "disabled",
+      "component/molecule/tag/typography": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.c.infobox.spacing.padding_top": "d2dfd770b54e7a2a8a604e1cc0515651df21b658",
@@ -944,7 +944,7 @@
       "ob.c.infobox.buttons_order_figma": "104b35c260ade5b30bc6e092288e2ca1cdc1c3d6",
       "ob.h.button.container.spacing.gap": "d270babd58ec6ca097e0c20eb7a44f5495b52061",
       "ob.h.button.touch_target.min_size": "128f9785e2ae4f4a65b389fda75d995cef6b0f22",
-      "ob.g.multiplier.viewport.desktop": "90c213284add0fbc164cf85df077afe106153e8b"
+      "ob.g.multiplier.viewport.desktop": "223c312c9677b2b27c9688bc56c8f89f941011ad"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:1",
@@ -1077,7 +1077,9 @@
     "selectedTokenSets": {
       "component/molecule/infobox/responsive/mobile": "enabled",
       "global/multipliers/viewport/mobile": "enabled",
-      "html/button/05_viewport/mobile": "enabled"
+      "html/button/05_viewport/mobile": "enabled",
+      "component/molecule/tag/tag": "disabled",
+      "component/molecule/tag/typography": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.c.infobox.spacing.padding_top": "d2dfd770b54e7a2a8a604e1cc0515651df21b658",
@@ -1105,9 +1107,9 @@
       "ob.c.infobox.buttons_order_figma": "104b35c260ade5b30bc6e092288e2ca1cdc1c3d6",
       "ob.h.button.container.spacing.gap": "d270babd58ec6ca097e0c20eb7a44f5495b52061",
       "ob.h.button.touch_target.min_size": "128f9785e2ae4f4a65b389fda75d995cef6b0f22",
-      "ob.g.multiplier.viewport.mobile": "08b3941ea00be72742d03f3bc7d3f08eed67474d",
-      "ob.c.infobox.sizing.icon_size": "5ec374123bf8ab683e151917048b482ee2a4d4d2",
-      "ob.c.infobox.sizing.close_button_size": "18cf61fc904fdf71bbac7041acc4a209dbeb924f"
+      "ob.g.multiplier.viewport.mobile": "783ba9112cee36858c8ad269988ae7f42db13a70",
+      "ob.c.infobox.sizing.icon_size": "93be4a75430d9b9cd452a89fffd145c6ae460064",
+      "ob.c.infobox.sizing.close_button_size": "612fc5753bdf773c72d1c0f56470ba519a219bbb"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:2",
@@ -1315,7 +1317,9 @@
       "semantic/asset/theme/lightness/light": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/light": "enabled",
       "semantic/color/s1-lightness/light": "enabled",
-      "component/molecule/infobox/color": "enabled"
+      "component/molecule/infobox/color": "enabled",
+      "component/molecule/tag/tag": "disabled",
+      "component/molecule/tag/typography": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -1823,7 +1827,9 @@
       "semantic/asset/theme/lightness/dark": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/dark": "enabled",
       "semantic/color/s1-lightness/dark": "enabled",
-      "component/molecule/infobox/color": "enabled"
+      "component/molecule/infobox/color": "enabled",
+      "component/molecule/tag/tag": "disabled",
+      "component/molecule/tag/typography": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",
@@ -2159,7 +2165,9 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/high": "enabled"
+      "semantic/color/s2-emphasis/high": "enabled",
+      "component/molecule/tag/tag": "disabled",
+      "component/molecule/tag/typography": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "44d4eb2b10205a66dd0f2f04f1512678b684d0c7",
@@ -2229,7 +2237,9 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/low": "enabled"
+      "semantic/color/s2-emphasis/low": "enabled",
+      "component/molecule/tag/tag": "disabled",
+      "component/molecule/tag/typography": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "44d4eb2b10205a66dd0f2f04f1512678b684d0c7",
@@ -2320,7 +2330,9 @@
       "r13.typography.components_only.tooltip.label": "S:01a80ff405036b8a204f742fa49f200230ff826c,"
     },
     "selectedTokenSets": {
-      "_ignore-in-ds/typography-styles-R13": "enabled"
+      "_ignore-in-ds/typography-styles-R13": "enabled",
+      "component/molecule/tag/tag": "disabled",
+      "component/molecule/tag/typography": "disabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"
@@ -2382,7 +2394,9 @@
       "semantic/effect": "enabled",
       "semantic/elevation": "enabled",
       "semantic/dimension/static": "enabled",
-      "semantic/typography/single/static": "enabled"
+      "semantic/typography/single/static": "enabled",
+      "component/molecule/tag/tag": "disabled",
+      "component/molecule/tag/typography": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:6",
     "$figmaModeId": "1:7",
@@ -2809,10 +2823,12 @@
     "name": "row",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button/06_flex-direction/row": "enabled"
+      "html/button/06_flex-direction/row": "enabled",
+      "component/molecule/tag/tag": "disabled",
+      "component/molecule/tag/typography": "disabled"
     },
     "$figmaVariableReferences": {
-      "ob.h.button.flex_direction.row.gap": "129dde4d4e9d68bc11a6b91a71f189cae7ac288d"
+      "ob.h.button.flex_direction.row.gap": "c383cb0b15894cb875d5891b0db413cc98b98728"
     },
     "$figmaCollectionId": "VariableCollectionId:2115:3769",
     "$figmaModeId": "2115:5",
@@ -2823,10 +2839,12 @@
     "name": "column",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button/06_flex-direction/column": "enabled"
+      "html/button/06_flex-direction/column": "enabled",
+      "component/molecule/tag/tag": "disabled",
+      "component/molecule/tag/typography": "disabled"
     },
     "$figmaVariableReferences": {
-      "ob.h.button.flex_direction.column.gap": "f82370d76167b5794eb4c3b2703fda718a27ffae"
+      "ob.h.button.flex_direction.column.gap": "33640136982324b66d0aef0256fd04e7c6b8ff15"
     },
     "$figmaCollectionId": "VariableCollectionId:2115:3769",
     "$figmaModeId": "2115:6",
@@ -2856,7 +2874,9 @@
     "selectedTokenSets": {
       "semantic/dimension/sm": "enabled",
       "semantic/typography/single/sm": "enabled",
-      "semantic/typography/grouped/sm": "enabled"
+      "semantic/typography/grouped/sm": "enabled",
+      "component/molecule/tag/tag": "disabled",
+      "component/molecule/tag/typography": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:0",
@@ -2965,7 +2985,9 @@
     "selectedTokenSets": {
       "semantic/dimension/md": "enabled",
       "semantic/typography/single/md": "enabled",
-      "semantic/typography/grouped/md": "enabled"
+      "semantic/typography/grouped/md": "enabled",
+      "component/molecule/tag/tag": "disabled",
+      "component/molecule/tag/typography": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:1",
@@ -3074,7 +3096,9 @@
     "selectedTokenSets": {
       "semantic/dimension/lg": "enabled",
       "semantic/typography/single/lg": "enabled",
-      "semantic/typography/grouped/lg": "enabled"
+      "semantic/typography/grouped/lg": "enabled",
+      "component/molecule/tag/tag": "disabled",
+      "component/molecule/tag/typography": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:2",

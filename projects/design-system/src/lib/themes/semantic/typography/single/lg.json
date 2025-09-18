@@ -135,23 +135,23 @@
         "font_weight": {
           "regular": {
             "$type": "fontWeights",
-            "$value": "{ob.p.font_weight.0}"
+            "$value": "{ob.p.font_weight.400}"
           },
           "medium": {
             "$type": "fontWeights",
-            "$value": "{ob.p.font_weight.100}"
+            "$value": "{ob.p.font_weight.500}"
           },
           "semiBold": {
             "$type": "fontWeights",
-            "$value": "{ob.p.font_weight.200}"
+            "$value": "{ob.p.font_weight.600}"
           },
           "bold": {
             "$type": "fontWeights",
-            "$value": "{ob.p.font_weight.300}"
+            "$value": "{ob.p.font_weight.700}"
           },
           "extraBold": {
             "$type": "fontWeights",
-            "$value": "{ob.p.font_weight.400}"
+            "$value": "{ob.p.font_weight.800}"
           }
         },
         "text_decoration": {

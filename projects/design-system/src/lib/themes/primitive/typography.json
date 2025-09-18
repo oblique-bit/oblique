@@ -64,27 +64,27 @@
         }
       },
       "font_weight": {
-        "0": {
+        "400": {
           "$type": "fontWeights",
           "$value": "400",
           "$description": "Regular 400\n"
         },
-        "100": {
+        "500": {
           "$type": "fontWeights",
           "$value": "500",
           "$description": "Medium 500\n"
         },
-        "200": {
+        "600": {
           "$type": "fontWeights",
           "$value": "600",
           "$description": "SemiBold 600\n"
         },
-        "300": {
+        "700": {
           "$type": "fontWeights",
           "$value": "700",
           "$description": "Bold 700\n"
         },
-        "400": {
+        "800": {
           "$type": "fontWeights",
           "$value": "800",
           "$description": "ExtraBold 800\n"

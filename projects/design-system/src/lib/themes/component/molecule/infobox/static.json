@@ -69,6 +69,46 @@
             "$value": "{ob.s.typography.content.body.normal}",
             "$description": "The message is in a medium font weight to build visual contrast and emphasize the hierarchy in case the title is present."
           }
+        },
+        "fatal": {
+          "button": {
+            "inversity": {
+              "$type": "text",
+              "$value": "flipped"
+            }
+          }
+        },
+        "info": {
+          "button": {
+            "inversity": {
+              "$type": "text",
+              "$value": "normal"
+            }
+          }
+        },
+        "resolved": {
+          "button": {
+            "inversity": {
+              "$type": "text",
+              "$value": "normal"
+            }
+          }
+        },
+        "attention": {
+          "button": {
+            "inversity": {
+              "$type": "text",
+              "$value": "normal"
+            }
+          }
+        },
+        "critical": {
+          "button": {
+            "inversity": {
+              "$type": "text",
+              "$value": "normal"
+            }
+          }
         }
       }
     }

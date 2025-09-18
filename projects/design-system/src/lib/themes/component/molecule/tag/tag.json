@@ -1,0 +1,89 @@
+{
+  "ob": {
+    "c": {
+      "tag": {
+        "container": {
+          "spacing": {
+            "gap": {
+              "$type": "spacing",
+              "$value": "{ob.s.dimension.dynamic.element.md.rem}",
+              "$description": "Spacing between single tags "
+            }
+          }
+        },
+        "spacing": {
+          "padding": {
+            "vertical": {
+              "$type": "spacing",
+              "$value": "{ob.s.dimension.dynamic.element.xs.rem}",
+              "$description": "Top and bottom padding  – for medium size tags."
+            },
+            "horizontal": {
+              "$type": "spacing",
+              "$value": "{ob.s.dimension.dynamic.element.sm.px}",
+              "$description": "Left and right padding  – for medium size tags."
+            }
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{ob.s.dimension.dynamic.element.xs.px}",
+            "$description": "Horizontal gap between icon and text label  – for medium size tags."
+          }
+        },
+        "border_radius": {
+          "default": {
+            "$type": "borderRadius",
+            "$value": "{ob.s.radius.rounded}",
+            "$description": "Standard tags in Oblique."
+          }
+        },
+        "color": {
+          "fg": {
+            "enabled": {
+              "$type": "color",
+              "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
+            },
+            "focus": {
+              "$type": "color",
+              "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}"
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_flipped}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_normal}"
+            }
+          },
+          "bg": {
+            "enabled": {
+              "$type": "color",
+              "$value": "{ob.s3.color.neutral.bg.contrast_medium.inversity_normal}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{ob.s3.color.neutral.bg.contrast_high.inversity_normal}"
+            },
+            "focus": {
+              "$type": "color",
+              "$value": "{ob.s3.color.neutral.bg.contrast_medium.inversity_normal}"
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "{ob.s3.color.neutral.bg.contrast_high.inversity_flipped}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{ob.s3.color.neutral.bg.contrast_medium.inversity_normal}"
+            }
+          }
+        }
+      }
+    }
+  }
+}
