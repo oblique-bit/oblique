@@ -1,3 +1,28 @@
+# [14.0.0-rc.3](https://github.com/oblique-bit/oblique/compare/14.0.0-rc.2...14.0.0-rc.3) (2025-09-18)
+
+## Bug Fixes
+
+- **oblique:** add missing component styles ([570e0cfa](https://github.com/oblique-bit/oblique/commit/570e0cfac512649543254ae773d9117d367e8ebf))
+- **popover:** ensure that focus is always visible ([95d43356](https://github.com/oblique-bit/oblique/commit/95d43356093d4fabbb67f9a76ca92caa6cc28b0e))
+- **schematics:** correctly migrate accessibility statement contact info ([d4f3e4a4](https://github.com/oblique-bit/oblique/commit/d4f3e4a4037960cf035af2b9d2a7ff48566069e4))
+- **schematics:** change import of `MatPaginatorModule` to `@angular/material/paginator` ([8944e2c6](https://github.com/oblique-bit/oblique/commit/8944e2c68b6995351332fee56615b09cd6c23aa4))
+- **schematics:** remove quotes and brackets for column layout migration ([6763718e](https://github.com/oblique-bit/oblique/commit/6763718ea8831c9bbb92f56464423e58dacfea99))
+
+## Features
+
+- **authentication:** remove `getAllResourceAccessRoles` and `getIdentityClaims` functions ([150fc01f](https://github.com/oblique-bit/oblique/commit/150fc01ff4c622eb10f59b7d3c430cef87cb28bc))
+- **http-interceptor:** remove deprecated `ObHttpApiInterceptorModule` ([e08eaed4](https://github.com/oblique-bit/oblique/commit/e08eaed4553833ecbc1080fbde8ae28785cb4499))
+- **oblique:** remove unused `jwt-decode` dependency ([4e24dd3b](https://github.com/oblique-bit/oblique/commit/4e24dd3b536f235a6a2fcc3dd4f4ca7400ac2b1b))
+- **schematics:** add rule to migrate `scrollTarget.scrollTo({top: 0})` to `scrollTop()` ([a4ae1f67](https://github.com/oblique-bit/oblique/commit/a4ae1f67a1270f62e61f58f32be13f8c267f6b53))
+- **schematics:** add rule to remove `ObIconModule.forRoot()` ([5b6ed54e](https://github.com/oblique-bit/oblique/commit/5b6ed54e863057a2bd0782d70733970b16c205d7))
+- **styles:** deprecate the mixin `ob-focus-visible-tab-focus-box-shadow()` ([b1488c4e](https://github.com/oblique-bit/oblique/commit/b1488c4efb0dfd2abcf1094f709c4d858d2f1938))
+
+## BREAKING CHANGES
+
+- **authentication:** `getIdentityClaims` function have been removed without replacement for security reasons. Use anAPI endpoint instead
+- **authentication:** `getAllResourceAccessRoles` function have been removed without replacement for security reasons.Use an API endpoint instead
+- **http-interceptor:** `ObHttpApiInterceptorModule` have been removed without replacement, it was already doing nothing (Solved with Schematics)
+
 # [14.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/14.0.0-rc.1...14.0.0-rc.2) (2025-09-15)
 
 ## Bug Fixes

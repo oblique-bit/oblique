@@ -1,3 +1,13 @@
+# [14.0.0-rc.3](https://github.com/oblique-bit/oblique/compare/14.0.0-rc.2...14.0.0-rc.3) (2025-09-18)
+
+## Bug Fixes
+
+- **sandbox:** fix navigation with search ([2cd14755](https://github.com/oblique-bit/oblique/commit/2cd147552008f0bdec367601d7c9f29d61e50568))
+
+## Features
+
+- **sandbox:** remove deprecated `ObHttpApiInterceptorModule` ([1840a590](https://github.com/oblique-bit/oblique/commit/1840a590fc36d8d928f106084533862f41e10926))
+
 # [14.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/14.0.0-rc.1...14.0.0-rc.2) (2025-09-15)
 
 ## Bug Fixes
