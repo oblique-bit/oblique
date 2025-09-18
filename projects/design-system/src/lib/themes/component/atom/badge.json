@@ -178,7 +178,7 @@
         "typography": {
           "badge_label": {
             "$type": "typography",
-            "$value": "{ob.s.typography.grouped.md.sm.strong}",
+            "$value": "{ob.s.typography.scale.dynamic.sm.strong}",
             "$description": "Strong font weight for optimal scannability."
           }
         }
