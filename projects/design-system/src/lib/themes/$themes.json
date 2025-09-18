@@ -914,9 +914,7 @@
     "selectedTokenSets": {
       "component/molecule/infobox/responsive/desktop": "enabled",
       "global/multipliers/viewport/desktop": "enabled",
-      "html/button/05_viewport/desktop": "enabled",
-      "component/molecule/tag/tag": "disabled",
-      "component/molecule/tag/typography": "disabled"
+      "html/button/05_viewport/desktop": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.c.infobox.spacing.padding_top": "d2dfd770b54e7a2a8a604e1cc0515651df21b658",
@@ -1077,9 +1075,7 @@
     "selectedTokenSets": {
       "component/molecule/infobox/responsive/mobile": "enabled",
       "global/multipliers/viewport/mobile": "enabled",
-      "html/button/05_viewport/mobile": "enabled",
-      "component/molecule/tag/tag": "disabled",
-      "component/molecule/tag/typography": "disabled"
+      "html/button/05_viewport/mobile": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.c.infobox.spacing.padding_top": "d2dfd770b54e7a2a8a604e1cc0515651df21b658",
@@ -1317,9 +1313,7 @@
       "semantic/asset/theme/lightness/light": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/light": "enabled",
       "semantic/color/s1-lightness/light": "enabled",
-      "component/molecule/infobox/color": "enabled",
-      "component/molecule/tag/tag": "disabled",
-      "component/molecule/tag/typography": "disabled"
+      "component/molecule/infobox/color": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -1827,9 +1821,7 @@
       "semantic/asset/theme/lightness/dark": "enabled",
       "_ignore-in-ds/figma-doc/theme/lightness/dark": "enabled",
       "semantic/color/s1-lightness/dark": "enabled",
-      "component/molecule/infobox/color": "enabled",
-      "component/molecule/tag/tag": "disabled",
-      "component/molecule/tag/typography": "disabled"
+      "component/molecule/infobox/color": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",
@@ -2165,9 +2157,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/high": "enabled",
-      "component/molecule/tag/tag": "disabled",
-      "component/molecule/tag/typography": "disabled"
+      "semantic/color/s2-emphasis/high": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "44d4eb2b10205a66dd0f2f04f1512678b684d0c7",
@@ -2237,9 +2227,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/low": "enabled",
-      "component/molecule/tag/tag": "disabled",
-      "component/molecule/tag/typography": "disabled"
+      "semantic/color/s2-emphasis/low": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "44d4eb2b10205a66dd0f2f04f1512678b684d0c7",
@@ -2330,9 +2318,7 @@
       "r13.typography.components_only.tooltip.label": "S:01a80ff405036b8a204f742fa49f200230ff826c,"
     },
     "selectedTokenSets": {
-      "_ignore-in-ds/typography-styles-R13": "enabled",
-      "component/molecule/tag/tag": "disabled",
-      "component/molecule/tag/typography": "disabled"
+      "_ignore-in-ds/typography-styles-R13": "enabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"
@@ -2395,8 +2381,7 @@
       "semantic/elevation": "enabled",
       "semantic/dimension/static": "enabled",
       "semantic/typography/single/static": "enabled",
-      "component/molecule/tag/tag": "disabled",
-      "component/molecule/tag/typography": "disabled"
+      "semantic/typography/grouped/static": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:6",
     "$figmaModeId": "1:7",
@@ -2823,9 +2808,7 @@
     "name": "row",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button/06_flex-direction/row": "enabled",
-      "component/molecule/tag/tag": "disabled",
-      "component/molecule/tag/typography": "disabled"
+      "html/button/06_flex-direction/row": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button.flex_direction.row.gap": "c383cb0b15894cb875d5891b0db413cc98b98728"
@@ -2839,9 +2822,7 @@
     "name": "column",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button/06_flex-direction/column": "enabled",
-      "component/molecule/tag/tag": "disabled",
-      "component/molecule/tag/typography": "disabled"
+      "html/button/06_flex-direction/column": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button.flex_direction.column.gap": "33640136982324b66d0aef0256fd04e7c6b8ff15"
@@ -2874,9 +2855,7 @@
     "selectedTokenSets": {
       "semantic/dimension/sm": "enabled",
       "semantic/typography/single/sm": "enabled",
-      "semantic/typography/grouped/sm": "enabled",
-      "component/molecule/tag/tag": "disabled",
-      "component/molecule/tag/typography": "disabled"
+      "semantic/typography/grouped/sm": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:0",
@@ -2985,9 +2964,7 @@
     "selectedTokenSets": {
       "semantic/dimension/md": "enabled",
       "semantic/typography/single/md": "enabled",
-      "semantic/typography/grouped/md": "enabled",
-      "component/molecule/tag/tag": "disabled",
-      "component/molecule/tag/typography": "disabled"
+      "semantic/typography/grouped/md": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:1",
@@ -3096,9 +3073,7 @@
     "selectedTokenSets": {
       "semantic/dimension/lg": "enabled",
       "semantic/typography/single/lg": "enabled",
-      "semantic/typography/grouped/lg": "enabled",
-      "component/molecule/tag/tag": "disabled",
-      "component/molecule/tag/typography": "disabled"
+      "semantic/typography/grouped/lg": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:2",
