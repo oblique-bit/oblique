@@ -68,35 +68,35 @@
         "enabled": {
           "$type": "typography",
           "$value": {
-            "textDecoration": "{ob.s.text_decoration.link.emphasis_high}"
+            "textDecoration": "{ob.s.static.text_decoration.link.emphasis_high}"
           },
           "$description": "a:link"
         },
         "hover": {
           "$type": "typography",
           "$value": {
-            "textDecoration": "{ob.s.text_decoration.link.emphasis_high}"
+            "textDecoration": "{ob.s.static.text_decoration.link.emphasis_high}"
           },
           "$description": "a:hover"
         },
         "focus": {
           "$type": "typography",
           "$value": {
-            "textDecoration": "{ob.s.text_decoration.link.emphasis_low}"
+            "textDecoration": "{ob.s.static.text_decoration.link.emphasis_low}"
           },
           "$description": "a:focus. Displays already a border. No need for additional visual emphasis."
         },
         "active": {
           "$type": "typography",
           "$value": {
-            "textDecoration": "{ob.s.text_decoration.link.emphasis_high}"
+            "textDecoration": "{ob.s.static.text_decoration.link.emphasis_high}"
           },
           "$description": "a:active"
         },
         "disabled": {
           "$type": "typography",
           "$value": {
-            "textDecoration": "{ob.s.text_decoration.link.emphasis_low}"
+            "textDecoration": "{ob.s.static.text_decoration.link.emphasis_low}"
           },
           "$description": "non css standard but required.No need for underline when disabled."
         }
