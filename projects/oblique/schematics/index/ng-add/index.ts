@@ -42,7 +42,7 @@ function preconditions(): Rule {
 
 		checkRequiredDependencies(tree, context);
 
-		installMissingDependencies(tree, context, ['@popperjs/core', 'angular-oauth2-oidc', 'jwt-decode']);
+		installMissingDependencies(tree, context, ['@popperjs/core', 'angular-oauth2-oidc']);
 
 		return tree;
 	};

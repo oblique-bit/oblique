@@ -51,7 +51,6 @@ const versions: Record<string, string | versionFunc> = {
 	husky: '^9.0.0',
 	jest: '^29.0.0',
 	'jest-sonar-reporter': '^2.0.0',
-	'jwt-decode': '^4.0.0',
 	prettier: '^3.0.0'
 };
 

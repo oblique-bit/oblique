@@ -9,7 +9,6 @@ import {ObMasterLayoutModule} from './master-layout/master-layout.module';
 import {ObNavTreeModule} from './nav-tree/nav-tree.module';
 import {ObNestedFormModule} from './nested-form/nested-form.module';
 import {ObNotificationModule} from './notification/notification.module';
-import {ObHttpApiInterceptorModule} from './http-api-interceptor/http-api-interceptor.module';
 import {ObPopoverModule} from './popover/popover.module';
 import {ObSchemaValidationModule} from './schema-validation/schema-validation.module';
 import {ObScrollingModule} from './scrolling/scrolling.module';
@@ -42,7 +41,6 @@ const OBLIQUE_MODULES = [
 	ObNestedFormModule,
 	ObNotificationModule,
 	ObNumberFormatModule,
-	ObHttpApiInterceptorModule,
 	ObOffCanvasModule,
 	ObPopoverModule,
 	ObSchemaValidationModule,

@@ -20,7 +20,8 @@ export class UpdateV13toV14 implements ObIMigrations {
 				this.removeFocusableFragments(),
 				this.migrateColumnLayoutColumnsState(),
 				this.removeObIconModuleForRoot(),
-				this.migrateScrollToTop()
+				this.migrateScrollToTop(),
+				this.removeHttpInterceptorModule()
 			])(tree, context);
 	}
 
@@ -410,6 +411,20 @@ export class UpdateV13toV14 implements ObIMigrations {
 			infoMigration(context, 'Migrate scrollTarget.scrollTo({top: 0}) to scrollTop()');
 			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /scrollTarget\.scrollTo\(\s*\{\s*top\s*:\s*0\s*\}\s*\)/gmu, 'scrollTop()');
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		});
+	}
+
+	private removeHttpInterceptorModule(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove ObHttpApiInterceptorModule');
+			const toApply = (filePath: string): void => {
+				const content = readFile(tree, filePath);
+				if (content.includes('ObHttpApiInterceptorModule')) {
+					removeImport(tree, filePath, 'ObHttpApiInterceptorModule', '@oblique/oblique');
+					replaceInFile(tree, filePath, /ObHttpApiInterceptorModule,?/gu, '');
+				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
 		});
