@@ -5,8 +5,8 @@
         "typography": {
           "text_label": {
             "font_size": {
-              "$type": "fontSizes",
-              "$value": "{ob.p.fontSizeUnitless.400} * {ob.g.multiplier.typography}",
+              "$type": "font_sizes",
+              "$value": "{ob.p.font_size_unitless.400} * {ob.g.multiplier.typography}",
               "$description": "Font size that scales with typography multiplier"
             },
             "line_height": {

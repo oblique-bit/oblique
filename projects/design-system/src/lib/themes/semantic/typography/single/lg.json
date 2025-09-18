@@ -4,40 +4,40 @@
       "dynamic": {
         "fontSize": {
           "xs": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.fontSizeUnitless.100} * {ob.g.multiplier.typography.lg}"
+            "$type": "font_sizes",
+            "$value": "{ob.p.font_size_unitless.100} * {ob.g.multiplier.typography.lg}"
           },
           "sm": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.fontSizeUnitless.200} * {ob.g.multiplier.typography.lg}"
+            "$type": "font_sizes",
+            "$value": "{ob.p.font_size_unitless.200} * {ob.g.multiplier.typography.lg}"
           },
           "md": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.fontSizeUnitless.300} * {ob.g.multiplier.typography.lg}"
+            "$type": "font_sizes",
+            "$value": "{ob.p.font_size_unitless.300} * {ob.g.multiplier.typography.lg}"
           },
           "lg": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.fontSizeUnitless.400} * {ob.g.multiplier.typography.lg}"
+            "$type": "font_sizes",
+            "$value": "{ob.p.font_size_unitless.400} * {ob.g.multiplier.typography.lg}"
           },
           "xl": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.fontSizeUnitless.500} * {ob.g.multiplier.typography.lg}"
+            "$type": "font_sizes",
+            "$value": "{ob.p.font_size_unitless.500} * {ob.g.multiplier.typography.lg}"
           },
           "2xl": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.fontSizeUnitless.700} * {ob.g.multiplier.typography.lg}"
+            "$type": "font_sizes",
+            "$value": "{ob.p.font_size_unitless.700} * {ob.g.multiplier.typography.lg}"
           },
           "3xl": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.fontSizeUnitless.800} * {ob.g.multiplier.typography.lg}"
+            "$type": "font_sizes",
+            "$value": "{ob.p.font_size_unitless.800} * {ob.g.multiplier.typography.lg}"
           },
           "4xl": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.fontSizeUnitless.900} * {ob.g.multiplier.typography.lg}"
+            "$type": "font_sizes",
+            "$value": "{ob.p.font_size_unitless.900} * {ob.g.multiplier.typography.lg}"
           },
           "_base": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.fontSizeUnitless.300} * {ob.g.multiplier.typography.lg}"
+            "$type": "font_sizes",
+            "$value": "{ob.p.font_size_unitless.300} * {ob.g.multiplier.typography.lg}"
           }
         },
         "lineHeight": {
