@@ -18,7 +18,9 @@ export class UpdateV13toV14 implements ObIMigrations {
 				this.migrateServiceNavigationContactInfo(),
 				this.removeObPaginator(),
 				this.removeFocusableFragments(),
-				this.migrateColumnLayoutColumnsState()
+				this.migrateColumnLayoutColumnsState(),
+				this.removeObIconModuleForRoot(),
+				this.migrateScrollToTop()
 			])(tree, context);
 	}
 
@@ -289,11 +291,11 @@ export class UpdateV13toV14 implements ObIMigrations {
 					if (emails?.length) {
 						contacts.push(...emails.split(',').map(email => `{email: ${email.trim()}}`));
 					}
-					const phones = (/(?<=phones\s*:\s*\[).*?(?=\])/u.exec(content) ?? [])[0];
+					const phones = (/(?<=phones\s*:\s*\[\s*).*?(?=\])/u.exec(content) ?? [])[0];
 					if (phones?.length) {
 						contacts.push(...phones.split(',').map(phone => `{phone: ${phone.trim()}}`));
 					}
-					replaceInFile(tree, filePath, /(?<=contact\s*:\s*)\{.*?}/, `[${contacts.join(', ')}]`);
+					replaceInFile(tree, filePath, /(?<=contact\s*:\s*)\s*\{\s*[^}]*\}/gmu, `[${contacts.join(', ')}]`);
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
@@ -354,7 +356,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 				const content = readFile(tree, filePath);
 				if (content.includes('ObPaginatorModule')) {
 					removeImport(tree, filePath, 'ObPaginatorModule', '@oblique/oblique');
-					addImport(tree, filePath, 'MatPaginatorModule', '@angular/material');
+					addImport(tree, filePath, 'MatPaginatorModule', '@angular/material/paginator');
 					replaceInFile(tree, filePath, /ObPaginatorModule/g, 'MatPaginatorModule');
 				}
 			};
@@ -382,14 +384,34 @@ export class UpdateV13toV14 implements ObIMigrations {
 			const toApply = (filePath: string): void => {
 				const content = readFile(tree, filePath);
 				if (content.includes('<ob-column-layout')) {
-					replaceInFile(tree, filePath, /(?<=\[left\]=")true(?=")/gu, "'OPENED'");
-					replaceInFile(tree, filePath, /(?<=\[left\]=")false(?=)"/gu, "'NONE'");
+					replaceInFile(tree, filePath, /\[left\]="true"/gu, `left="OPENED"`);
+					replaceInFile(tree, filePath, /\[left\]="false"/gu, `left="NONE"`);
 
-					replaceInFile(tree, filePath, /(?<=\[right\]=")true(?=")/gu, "'OPENED'");
-					replaceInFile(tree, filePath, /(?<=\[right\]=")false(?=)"/gu, "'NONE'");
+					replaceInFile(tree, filePath, /\[right\]="true"/gu, `right="OPENED"`);
+					replaceInFile(tree, filePath, /\[right\]="false"/gu, `right="NONE"`);
 				}
 			};
 			return applyInTree(tree, toApply, '*.html');
+		});
+	}
+
+	private removeObIconModuleForRoot(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove ObIconModule.forRoot()');
+			const toApply = (filePath: string): void => {
+				replaceInFile(tree, filePath, /ObIconModule\.forRoot\(\w*\),?/gu, '');
+			};
+			return applyInTree(tree, toApply, '*.ts');
+		});
+	}
+
+	private migrateScrollToTop(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Migrate scrollTarget.scrollTo({top: 0}) to scrollTop()');
+			const toApply = (filePath: string): void => {
+				replaceInFile(tree, filePath, /scrollTarget\.scrollTo\(\s*\{\s*top\s*:\s*0\s*\}\s*\)/gmu, 'scrollTop()');
+			};
+			return applyInTree(tree, toApply, '*.ts');
 		});
 	}
 }
