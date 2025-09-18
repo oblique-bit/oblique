@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {ObMockHttpApiInterceptor} from './mock-http-api-interceptor';
 import {ObMockHttpApiInterceptorEvents} from './mock-http-api-interceptor.events';
 import {ObMockHttpApiInterceptorConfig} from './mock-http-api-interceptor.config';
-import {ObHttpApiInterceptor, ObHttpApiInterceptorConfig, ObHttpApiInterceptorEvents} from '../http-api-interceptor.module';
+import {ObHttpApiInterceptor, ObHttpApiInterceptorConfig, ObHttpApiInterceptorEvents} from '../';
 
 export {ObMockHttpApiInterceptor} from './mock-http-api-interceptor';
 export {ObMockHttpApiInterceptorEvents} from './mock-http-api-interceptor.events';
