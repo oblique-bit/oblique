@@ -4,7 +4,7 @@
       "spinner": {
         "sizing": {
           "$type": "dimension",
-          "$value": "{ob.s.dynamic.size.surface.xl}",
+          "$value": "{ob.s.dimension.dynamic.container.md.px}",
           "$description": "Optimized spinner size (48px) suitable for both small components like Card and full-page displays"
         },
         "color": {
@@ -21,8 +21,8 @@
         },
         "border_radius": {
           "$type": "borderRadius",
-          "$value": "{ob.s.radii.sm}",
-          "$description": "Radius SM applied to give the spinner a more organic appearance."
+          "$value": "{ob.s.radius.lg}",
+          "$description": "Radius LG applied to give the spinner a more organic appearance."
         },
         "border_width": {
           "$type": "borderWidth",
