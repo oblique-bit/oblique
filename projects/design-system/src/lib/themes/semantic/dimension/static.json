@@ -28,7 +28,7 @@
 						"$type": "sizing"
 					},
 					"h6": {
-						"$value": "{ob.p.dimension.rem.075}",
+						"$value": "{ob.p.dimension.rem.100}",
 						"$type": "sizing"
 					}
 				},
