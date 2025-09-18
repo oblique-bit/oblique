@@ -1,0 +1,25 @@
+{
+  "ob": {
+    "g": {
+      "multiplier": {
+        "dimension": {
+          "sm": {
+            "$type": "number",
+            "$value": "0.8",
+            "$description": "Small size multiplier"
+          },
+          "md": {
+            "$type": "number",
+            "$value": "1",
+            "$description": "Medium (default) size multiplier"
+          },
+          "lg": {
+            "$type": "number",
+            "$value": "1.25",
+            "$description": "Large size multiplier"
+          }
+        }
+      }
+    }
+  }
+}
