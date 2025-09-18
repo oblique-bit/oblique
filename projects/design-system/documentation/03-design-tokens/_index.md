@@ -17,16 +17,16 @@
 ### **Core Architecture**
 - [**Architecture**](./architecture.md) - Token structure, levels, and naming patterns
 - [**Foundation Overview**](../02-foundation/01-principles.md) - Complete terminology and definitions reference
-- [**Theming**](./theming.md) - S1/S2/S3 semantic levels and theme implementation
+- [**Theming**](./theming.md) - S1/S2/S3 03_semantic levels and theme implementation
 
 ### **Color System**
 - [**Colors Overview**](./colors/colors-overview.md) - Color token structure and usage
-- [**Primitive Colors**](./colors/colors-primitive.md) - Foundation color values and token architecture
-- [**Semantic Colors**](./colors/colors-semantic.md) - Layer system, token resolution, and consumption patterns
-  - [**Brand Colors**](./colors/colors-semantic-brand.md) - Federal identity and brand implementation
-  - [**Neutral Colors**](./colors/colors-semantic-neutral.md) - Backgrounds, text, borders, surfaces
-  - [**Interaction Colors**](./colors/colors-semantic-interaction.md) - Hover, active, visited, disabled states  
-  - [**Status Colors**](./colors/colors-semantic-status.md) - Success, warning, error, info states
+- [**Primitive Colors**](./colors/colors-02_primitive.md) - Foundation color values and token architecture
+- [**Semantic Colors**](./colors/colors-03_semantic.md) - Layer system, token resolution, and consumption patterns
+  - [**Brand Colors**](./colors/colors-03_semantic-brand.md) - Federal identity and brand implementation
+  - [**Neutral Colors**](./colors/colors-03_semantic-neutral.md) - Backgrounds, text, borders, surfaces
+  - [**Interaction Colors**](./colors/colors-03_semantic-interaction.md) - Hover, active, visited, disabled states  
+  - [**Status Colors**](./colors/colors-03_semantic-status.md) - Success, warning, error, info states
 
 ---
 
@@ -38,7 +38,7 @@
 - [**Responsiveness**](./responsiveness.md) - Responsive token implementation
 
 ### **Technical References**
-- [**Global Tokens**](./global-tokens.md) - System-wide token reference
+- [**Global Tokens**](./01_global-tokens.md) - System-wide token reference
 - [**Style Dictionary Setup**](./style-dictionary-underscore-setup.md) - Build configuration
 - [**Migration Guide**](./style-dictionary-underscore-setup.md) - Legacy system migration
 
@@ -55,7 +55,7 @@ Layers:
   p  → Primitive (foundation tokens)
   s1 → Semantic Level 1 (lightness - light/dark themes)
   s2 → Semantic Level 2 (emphasis - high/low emphasis)
-  s3 → Semantic Level 3 (clean compilation of all semantic colors)
+  s3 → Semantic Level 3 (clean compilation of all 03_semantic colors)
   c  → Component tokens
   h  → HTML element tokens
 ```
@@ -63,20 +63,20 @@ Layers:
 ### **File Structure**
 ```
 src/lib/themes/
-├── primitive/           # Foundation values
-├── semantic/color/
+├── 02_primitive/           # Foundation values
+├── 03_semantic/color/
 │   ├── s1-lightness/   # Light/dark theme files
 │   ├── s2-emphasis/    # High/low emphasis files
-│   └── s3-semantic/    # Complete semantic color compilation
+│   └── s3-03_semantic/    # Complete 03_semantic color compilation
 └── component/          # Component-specific tokens
 ```
 
 ### **Key Concepts**
-- **S1/S2/S3 System** - Three-level semantic system built on primitive foundations
-- **S3 Semantic Compilation** - Complete, clean collection of all semantic colors
-- **Simplified Reference Chain** - S1→Primitive, S2→Primitive, S3→Primitive (direct primitive references)
-- **Theme Switching** - Achieved through S1 lightness semantic level (light.json/dark.json)
-- **Emphasis Control** - S2 semantic level handles high/low emphasis variations
+- **S1/S2/S3 System** - Three-level 03_semantic system built on 02_primitive foundations
+- **S3 Semantic Compilation** - Complete, clean collection of all 03_semantic colors
+- **Simplified Reference Chain** - S1→Primitive, S2→Primitive, S3→Primitive (direct 02_primitive references)
+- **Theme Switching** - Achieved through S1 lightness 03_semantic level (light.json/dark.json)
+- **Emphasis Control** - S2 03_semantic level handles high/low emphasis variations
 
 ---
 
@@ -84,11 +84,11 @@ src/lib/themes/
 
 | **Task** | **Documentation** | **Quick Action** |
 |---|---|---|
-| Add new component tokens | [Token Consumption Guidelines](./guidelines-token-consumption.md) | Use S3 semantic tokens only |
+| Add new component tokens | [Token Consumption Guidelines](./guidelines-token-consumption.md) | Use S3 03_semantic tokens only |
 | Understand color hierarchy | [Colors Overview](./colors/colors-overview.md) | Check S1→S2→S3 chain |
 | Fix broken token references | [Architecture](./architecture.md) | Verify layer structure |
 | Style Dictionary integration | [Style Dictionary Setup](./style-dictionary-underscore-setup.md) | Preserve underscore units |
-| Theme customization | [Theming](./theming.md) | Modify S1 semantic level files |
+| Theme customization | [Theming](./theming.md) | Modify S1 03_semantic level files |
 
 ---
 
@@ -104,7 +104,7 @@ node scripts-custom/validate-all.js
 node scripts-custom/validate-all-components.js
 
 # Semantic layer structure validation  
-node scripts-custom/validate-semantic-mirroring.js
+node scripts-custom/validate-03_semantic-mirroring.js
 ```
 
 ---

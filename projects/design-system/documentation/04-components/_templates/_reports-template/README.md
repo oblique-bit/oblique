@@ -1,6 +1,6 @@
 # {COMPONENT_NAME} Validation Reports
 
-This folder contains validation reports and quality assurance documentation for the {component-name} component.
+This folder contains validation reports and quality assurance documentation for the {04_component-name} 04_component.
 
 ## **Summary:** Report Categories
 
@@ -51,13 +51,13 @@ This folder contains validation reports and quality assurance documentation for 
 
 Reports should follow this naming pattern:
 ```
-YYYYMMDD_HHMM-{component-name}-{category}-{type}-report.md
+YYYYMMDD_HHMM-{04_component-name}-{category}-{type}-report.md
 ```
 
 **Examples:**
-- `20250909_1430-{component-name}-technical-mcp-report.md`
-- `20250909_1500-{component-name}-tokenization-validation-report.md`
-- `20250909_1530-{component-name}-compliance-w3c-report.md`
+- `20250909_1430-{04_component-name}-technical-mcp-report.md`
+- `20250909_1500-{04_component-name}-tokenization-validation-report.md`
+- `20250909_1530-{04_component-name}-compliance-w3c-report.md`
 
 ## **Process:** Validation Workflow
 
@@ -78,4 +78,4 @@ YYYYMMDD_HHMM-{component-name}-{category}-{type}-report.md
 
 **Validation Tools:**
 - [Figma MCP Prompts](../../../07-workflow/maintainers/prompts/) - Automated validation
-- [Component Strategy Guide](../../../07-workflow/maintainers/component-documentation-separation-strategy.md) - Process documentation
+- [Component Strategy Guide](../../../07-workflow/maintainers/04_component-documentation-separation-strategy.md) - Process documentation

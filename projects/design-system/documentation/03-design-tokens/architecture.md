@@ -29,7 +29,7 @@ Tokens follow a hierarchical structure with dot-separated segments:
 {namespace.semantic_level.category.property}
 ```
 
-**Note:** Global tokens (`ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.*`) are an exception to the standard reference hierarchy and can be referenced from any semantic level. See [global-tokens.md](./global-tokens.md) for details.
+**Note:** Global tokens (`ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.*`) are an exception to the standard reference hierarchy and can be referenced from any semantic level. See [01_global-tokens.md](./01_global-tokens.md) for details.
 
 ---
 
@@ -71,7 +71,7 @@ Tokens follow a hierarchical structure with dot-separated segments:
 
 ### **File Structure vs Token Names**
 ```
-File: global/02-multipliers/dimension/md.json
+File: 01_global/02-multipliers/dimension/md.json
 Token Name: ob.g.multiplier.dimension.md
 ```
 
@@ -166,7 +166,7 @@ Key compound patterns used in tokens:
 3. **Hyphen separation** - Connect compound words with hyphens
 4. **Two words max** - Keep compound terms concise
 5. **Hierarchical order** - Follow established segment order
-6. **Reference hierarchy** - Follow proper reference chain (`Component -> Semantic -> Primitive`), with global tokens being the exception
+6. **Reference hierarchy** - Follow proper reference chain (`Component -> Semantic -> Primitive`), with 01_global tokens being the exception
 
 ### **Primitive vs Semantic Naming Guidelines**
 
@@ -206,7 +206,7 @@ The design system's token architecture follows a strict, hierarchical structure 
 
 2.  **Unidirectional Flow**: The token flow is strictly unidirectional: `Primitives` -> `Semantics` -> `Components`. A layer can only reference the layer directly above it.
 
-3.  **No Calculations in Consumer Layers**: All calculations, particularly those involving global multipliers (`ob.g.*`), **must** occur exclusively within the semantic layer (`ob.s`). Component theme layers (`ob.h`, `ob.c`) are forbidden from performing calculations and must consume pre-defined `static` or `dynamic` semantic tokens.
+3.  **No Calculations in Consumer Layers**: All calculations, particularly those involving 01_global multipliers (`ob.g.*`), **must** occur exclusively within the semantic layer (`ob.s`). Component theme layers (`ob.h`, `ob.c`) are forbidden from performing calculations and must consume pre-defined `static` or `dynamic` semantic tokens.
 
 ### Examples
 
@@ -225,7 +225,7 @@ Component-level tokens should directly reference a token from the semantic layer
 
 #### ❌ Don't: Perform calculations in the component layer.
 
-Calculations using global multipliers (`ob.g.*`) are strictly forbidden at the component (`ob.h`, `ob.c`) level. This was a critical mistake that violated the architecture. All calculations must be done in the semantic layer.
+Calculations using 01_global multipliers (`ob.g.*`) are strictly forbidden at the component (`ob.h`, `ob.c`) level. This was a critical mistake that violated the architecture. All calculations must be done in the semantic layer.
 
 ```json
 // In: ob.h.button.json (Component Theme Layer)

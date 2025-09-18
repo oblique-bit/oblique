@@ -243,7 +243,7 @@ global/themes-user/
 3. **Success:** Test that component renders correctly
 
 ### Step 4: Theme Switching (1D Only)
-1. **Success:** Add global/themes-user/component-size/ directory
+1. **Success:** Add global/themes-user/04_component-size/ directory
 2. **Success:** Create sm.json, md.json, lg.json theme files
 3. **Success:** Test that theme switching actually works
 4. **Success:** Validate "last wins" behavior with nested overrides

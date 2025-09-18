@@ -97,7 +97,7 @@ Based on the variable name, you can deduce:
 ## Common Variable Types and Their Layers
 
 ### Size Variables
-- **Pattern**: `ob/h/component/variant/surface/size/scale`
+- **Pattern**: `ob/h/04_component/variant/surface/size/scale`
 - **Applied to**: Background, container, or frame layers
 - **Properties**: Width, height, or both
 

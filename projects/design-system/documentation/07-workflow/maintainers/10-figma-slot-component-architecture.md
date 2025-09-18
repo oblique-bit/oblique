@@ -3,23 +3,23 @@
 **Version:** 1.0  
 **Date:** September 5, 2025  
 **Status:** Work in Progress - Not Yet Approved by Product Owner  
-**Purpose:** Implement flexible slot-based component architecture in Figma to reduce variant explosion
+**Purpose:** Implement flexible slot-based 04_component architecture in Figma to reduce variant explosion
 
 ## **Target Audience**
 **Primary:** DS/Oblique Designers, DS/Oblique Developers  
 **Secondary:** Component Architects, Figma Advanced Users  
-**Prerequisites:** Advanced Figma component knowledge, understanding of slot patterns, component architecture  
+**Prerequisites:** Advanced Figma 04_component knowledge, understanding of slot patterns, 04_component architecture  
 **Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
 
 ## Overview
 
-Slot components are a powerful technique for creating flexible and reusable components with dynamic content in Figma. They're inspired by the `<slot>` HTML element and prevent designers from detaching components while providing content flexibility.
+Slot 04_components are a powerful technique for creating flexible and reusable 04_components with dynamic content in Figma. They're inspired by the `<slot>` HTML element and prevent designers from detaching 04_components while providing content flexibility.
 
 ---
 
 ## What is a Slot Component?
 
-A slot component is a **placeholder within a main component** that can be replaced with other components or custom content. Instead of creating hundreds of variants for every possible content configuration, you create a single "shell" component with designated "slots."
+A slot 04_component is a **placeholder within a main 04_component** that can be replaced with other 04_components or custom content. Instead of creating hundreds of variants for every possible content configuration, you create a single "shell" 04_component with designated "slots."
 
 ### **Core Concept**
 ```
@@ -37,15 +37,15 @@ Main Component (Shell)
 ### **Addresses Our Current Challenges**
 
 **1. Reduces Variant Explosion**
-- **Problem**: Our button component has 480 variants (documented in [Component Decomposition Strategy](./09-figma-component-decomposition-strategy.md))
-- **Solution**: Single component with slots instead of hundreds of variants
+- **Problem**: Our button 04_component has 480 variants (documented in [Component Decomposition Strategy](./09-figma-04_component-decomposition-strategy.md))
+- **Solution**: Single 04_component with slots instead of hundreds of variants
 
 **2. Prevents Detaching**
 - **Problem**: Designers detach instances to add custom content, breaking library connections
 - **Solution**: Sanctioned way to add custom content without detaching
 
 **3. Promotes Consistency**
-- **Problem**: Detached components lose design system constraints
+- **Problem**: Detached 04_components lose design system constraints
 - **Solution**: Slots enforce consistent structure while allowing content flexibility
 
 **4. Improves Scalability**
@@ -69,23 +69,23 @@ Main Component (Shell)
 ### **Step-by-Step Process**
 
 **1. Create Placeholder Component**
-- Design simple component acting as "slot"
+- Design simple 04_component acting as "slot"
 - Name clearly: "Slot", "Placeholder", "Replace Me"
 - Visual style: Dashed border, neutral background
 - Make it obvious for users
 
 **2. Nest the Placeholder**
-- Place placeholder instance inside main component
+- Place placeholder instance inside main 04_component
 - Position within layout structure
 - Apply proper constraints
 
 **3. Apply Auto Layout**
-- **Critical**: Set up Auto Layout on main component AND placeholder
+- **Critical**: Set up Auto Layout on main 04_component AND placeholder
 - Enables automatic resizing when slot content changes
 - Ensures responsive behavior
 
 **4. Configure Instance Swap**
-- Select placeholder in main component
+- Select placeholder in main 04_component
 - Create Instance Swap Property
 - Set preferred instances for common use cases
 
@@ -123,7 +123,7 @@ Our design system already uses slot-like patterns:
 ### **Recommended Implementation Roadmap**
 
 **Phase 1: Establish Slot Standards**
-1. Create placeholder component library
+1. Create placeholder 04_component library
 2. Document slot naming conventions
 3. Define Auto Layout requirements
 
@@ -166,9 +166,9 @@ Examples:
 ```
 
 **Preferred Instances:**
-- Set common use case components
+- Set common use case 04_components
 - Include "Empty" placeholder option
-- Reference design system component library
+- Reference design system 04_component library
 
 ---
 
@@ -176,16 +176,16 @@ Examples:
 
 ### **Solves Problems Identified In:**
 
-**1. [Component Decomposition Strategy](./09-figma-component-decomposition-strategy.md)**
+**1. [Component Decomposition Strategy](./09-figma-04_component-decomposition-strategy.md)**
 - **480 variant problem**: Slots reduce variants dramatically
 - **Performance issues**: Fewer variants = better performance
-- **Maintenance complexity**: Single component easier to maintain
+- **Maintenance complexity**: Single 04_component easier to maintain
 
-**2. [Container Component Concept](../../03-design-tokens/container-component-concept.md)**
+**2. [Container Component Concept](../../03-design-tokens/container-04_component-concept.md)**
 - **Content flexibility**: Slots provide dynamic content areas
 - **Nested support**: Slot architecture supports nesting naturally
 
-**3. [Button Component Behavior](../../04-components/button/button-overview.md)**
+**3. [Button Component Behavior](../../04-04_components/button/button-overview.md)**
 - **Badge/Tooltip children**: Already slot-like with Boolean properties
 - **Container variants**: Can be enhanced with slot architecture
 
@@ -208,8 +208,8 @@ Examples:
 ### **Design Guidelines**
 
 **1. Slot Identification**
-- Clear visual indicators for placeholder components
-- Consistent naming across all slot components
+- Clear visual indicators for placeholder 04_components
+- Consistent naming across all slot 04_components
 - Documentation for each slot's purpose and constraints
 
 **2. Content Constraints**
@@ -218,8 +218,8 @@ Examples:
 - Provide default/empty states
 
 **3. Library Organization**
-- Group slot components logically
-- Create slot component documentation
+- Group slot 04_components logically
+- Create slot 04_component documentation
 - Maintain version control for slot updates
 
 ### **Developer Handoff**
@@ -241,18 +241,18 @@ Examples:
 ### **From Variant-Heavy to Slot Architecture**
 
 **Assessment Phase:**
-1. Identify components with >50 variants
+1. Identify 04_components with >50 variants
 2. Analyze content variation patterns
 3. Map potential slot opportunities
 
 **Conversion Phase:**
-1. Create placeholder components
-2. Rebuild main component with slots
+1. Create placeholder 04_components
+2. Rebuild main 04_component with slots
 3. Test with common use cases
 4. Update library documentation
 
 **Rollout Phase:**
-1. Publish updated components
+1. Publish updated 04_components
 2. Provide migration guides for designers
 3. Monitor adoption and gather feedback
 4. Iterate based on usage patterns
@@ -269,7 +269,7 @@ Examples:
 
 **2. Library Maintenance**
 - **Before**: Updates require touching hundreds of variants
-- **Target**: Single component updates
+- **Target**: Single 04_component updates
 
 **3. Designer Experience**
 - **Before**: Detaching required for custom content
@@ -283,10 +283,10 @@ Examples:
 
 ## Related Documentation
 
-- [Component Decomposition Strategy](./09-figma-component-decomposition-strategy.md) - Addresses variant explosion problem
-- [Container Component Concept](../../03-design-tokens/container-component-concept.md) - Flexible container architecture
-- [Button Component Behavior](../../04-components/button/button-overview.md) - Current slot-like implementations
-- [Component Token Architecture](../../03-design-tokens/component-tokens.md) - Token integration patterns
+- [Component Decomposition Strategy](./09-figma-04_component-decomposition-strategy.md) - Addresses variant explosion problem
+- [Container Component Concept](../../03-design-tokens/container-04_component-concept.md) - Flexible container architecture
+- [Button Component Behavior](../../04-04_components/button/button-overview.md) - Current slot-like implementations
+- [Component Token Architecture](../../03-design-tokens/04_component-tokens.md) - Token integration patterns
 
 ---
 
@@ -297,4 +297,4 @@ Examples:
 
 ---
 
-*This slot component architecture provides a scalable foundation for flexible component design while maintaining the integrity and consistency of the Oblique Design System.*
+*This slot 04_component architecture provides a scalable foundation for flexible 04_component design while maintaining the integrity and consistency of the Oblique Design System.*

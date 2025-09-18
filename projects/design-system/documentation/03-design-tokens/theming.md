@@ -107,7 +107,7 @@ Size modes enable consistent component scaling across different interface contex
 #### S1 Lightness Semantic Level
 
 ```
-src/lib/themes/semantic/color/s1-lightness/
+src/lib/themes/03_semantic/color/s1-lightness/
 |-- light.json    # Light theme tokens
 +-- dark.json     # Dark theme tokens
 ```
@@ -161,7 +161,7 @@ src/lib/themes/semantic/color/s1-lightness/
 #### S2 Emphasis Semantic Level
 
 ```
-src/lib/themes/semantic/color/s2-emphasis/
+src/lib/themes/03_semantic/color/s2-emphasis/
 |-- high.json    # High emphasis states
 +-- low.json     # Low emphasis states
 ```
@@ -199,7 +199,7 @@ src/lib/themes/semantic/color/s2-emphasis/
 #### S3 Semantic Compilation
 
 ```
-src/lib/themes/semantic/color/s3-semantic/
+src/lib/themes/03_semantic/color/s3-semantic/
 +-- semantic.json  # Complete semantic color compilation
 ```
 
@@ -251,7 +251,7 @@ The current reference pattern ensures proper theme inheritance:
 - S1 layer references primitives for actual color values
 - Theme switching occurs at S1 layer file selection
 
-**Exception:** Global tokens (`ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.*`) can be referenced from any level in the hierarchy and are exempt from these chain rules. See [global-tokens.md](./global-tokens.md) for details.
+**Exception:** Global tokens (`ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.*`) can be referenced from any level in the hierarchy and are exempt from these chain rules. See [01_global-tokens.md](./01_global-tokens.md) for details.
 
 ### S1/S2/S3 Architecture Analysis
 

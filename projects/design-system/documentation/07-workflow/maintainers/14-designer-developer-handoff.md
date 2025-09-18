@@ -8,10 +8,10 @@
 
 ## **Goal:** Handoff Overview
 
-The designer-developer handoff is a **quality gate** ensuring components meet tokenization standards before implementation. This protocol establishes clear criteria for approval and push-back procedures to maintain design system integrity.
+The designer-developer handoff is a **quality gate** ensuring 04_components meet tokenization standards before implementation. This protocol establishes clear criteria for approval and push-back procedures to maintain design system integrity.
 
 ### Core Principle
-**"No component implementation without complete tokenization validation"**
+**"No 04_component implementation without complete tokenization validation"**
 
 ---
 
@@ -35,7 +35,7 @@ The designer-developer handoff is a **quality gate** ensuring components meet to
 - [ ] Token mapping documentation provided
 - [ ] Component behavior specifications written
 - [ ] Implementation notes and special requirements documented
-- [ ] Related component dependencies identified
+- [ ] Related 04_component dependencies identified
 
 **4. Quality Assurance**
 - [ ] Zero hardcoded values in validation report
@@ -55,7 +55,7 @@ The designer-developer handoff is a **quality gate** ensuring components meet to
 - Behavioral requirements and interaction patterns
 - Responsive design specifications
 - Accessibility requirements and considerations
-- Integration requirements with other components
+- Integration requirements with other 04_components
 
 **Implementation Guidelines:**
 - Token mapping and usage instructions
@@ -89,7 +89,7 @@ Components may receive **conditional approval** with documented remediation plan
 
 Components receive **automatic rejection** when:
 - Validation report shows tokenization violations
-- Hardcoded values detected in component
+- Hardcoded values detected in 04_component
 - Layer names violate compound unit standards
 - Missing Token Studio connections
 - Incomplete or missing validation documentation
@@ -101,7 +101,7 @@ Components receive **automatic rejection** when:
 
 ### **Goal:** Push-Back Criteria
 
-Developers **MUST push back** components that exhibit:
+Developers **MUST push back** 04_components that exhibit:
 
 **Critical Violations:**
 - **Tokenization gaps**: Any hardcoded values present
@@ -111,7 +111,7 @@ Developers **MUST push back** components that exhibit:
 
 **Quality Issues:**
 - **Inconsistent tokenization**: Mixed token application patterns
-- **Missing composite opportunities**: Complex components without composite token evaluation
+- **Missing composite opportunities**: Complex 04_components without composite token evaluation
 - **Validation shortcuts**: Incomplete MCP validation process
 - **Specification ambiguity**: Unclear implementation requirements
 
@@ -126,19 +126,19 @@ Developers **MUST push back** components that exhibit:
 **Step 2: Communication Protocol**
 1. **Formal notification** to designer with violation details
 2. **Copy design system maintainers** on push-back communication
-3. **Document push-back** in component tracking system
+3. **Document push-back** in 04_component tracking system
 4. **Schedule review** for remediation verification
 
 **Step 3: Resolution Tracking**
 1. **Monitor remediation progress** against timeline
-2. **Re-validate** component after designer updates
+2. **Re-validate** 04_component after designer updates
 3. **Approve or escalate** based on resolution completeness
 4. **Document lessons learned** for process improvement
 
 ### **Process:** Escalation Procedures
 
 **When to Escalate:**
-- Repeated push-backs for same component
+- Repeated push-backs for same 04_component
 - Designer disputes push-back criteria
 - Timeline conflicts affecting project delivery
 - Technical limitations preventing compliance
@@ -155,16 +155,16 @@ Developers **MUST push back** components that exhibit:
 ### **Goal:** Handoff Success Metrics
 
 **Quality Indicators:**
-- **First-pass approval rate**: Target >85% of components approved without push-back
+- **First-pass approval rate**: Target >85% of 04_components approved without push-back
 - **Violation resolution time**: Average <48 hours from push-back to resubmission
 - **Token coverage completeness**: >95% of properties tokenized
 - **Documentation completeness**: 100% of required deliverables provided
 
 **Process Efficiency:**
 - **Handoff cycle time**: Designer submission to developer approval
-- **Push-back frequency**: Percentage of components requiring remediation
+- **Push-back frequency**: Percentage of 04_components requiring remediation
 - **Validation report quality**: Completeness and actionability of MCP reports
-- **Composite token adoption**: Usage rate for complex components
+- **Composite token adoption**: Usage rate for complex 04_components
 
 ### **Progress:** Continuous Improvement
 
@@ -190,7 +190,7 @@ Developers **MUST push back** components that exhibit:
 ```
 **Success:** COMPONENT APPROVED FOR IMPLEMENTATION
 
-Component: [component-name]
+Component: [04_component-name]
 Validation Report: [link-to-report]
 Documentation: [link-to-specifications]
 Implementation Priority: [high/medium/low]
@@ -201,7 +201,7 @@ Special Considerations: [any-implementation-notes]
 ```
 **Note:** COMPONENT REQUIRES REMEDIATION
 
-Component: [component-name]
+Component: [04_component-name]
 Validation Issues: [specific-violations-list]
 Required Actions: [remediation-steps]
 Timeline: [expected-resolution-date]
@@ -217,7 +217,7 @@ Resources: [links-to-guidance-documentation]
 
 **For Developers:**
 - [Figma and Tokens for Developers](./02-figma-and-tokens-for-developers.md)
-- [Component Token Implementation](../../03-design-tokens/component-tokens.md)
+- [Component Token Implementation](../../03-design-tokens/04_component-tokens.md)
 - [Token Debugging Guide](./03-figma-token-debugging.md)
 
 ---
@@ -225,20 +225,20 @@ Resources: [links-to-guidance-documentation]
 ## **Goal:** Success Outcomes
 
 ### Designer Benefits
-- **Clear expectations** for component readiness
+- **Clear expectations** for 04_component readiness
 - **Reduced revision cycles** through upfront validation
 - **Improved design system consistency** through token compliance
 - **Enhanced collaboration** with development teams
 
 ### Developer Benefits
-- **Consistent component quality** through validation gates
+- **Consistent 04_component quality** through validation gates
 - **Complete implementation specifications** for efficient development
 - **Reduced implementation questions** through complete documentation
 - **Clear push-back authority** for maintaining standards
 
 ### Design System Benefits
-- **Maintained token compliance** across all components
-- **Consistent component architecture** through validation standards
+- **Maintained token compliance** across all 04_components
+- **Consistent 04_component architecture** through validation standards
 - **Improved maintenance efficiency** through complete tokenization
 - **Enhanced design system integrity** through quality gates
 

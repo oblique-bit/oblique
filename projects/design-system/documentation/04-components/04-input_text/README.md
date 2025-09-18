@@ -6,7 +6,7 @@
 
 ## **Quick Start:** Quick Start
 
-The input_text component provides {COMPONENT_PURPOSE} for different use cases:
+The input_text 04_component provides {COMPONENT_PURPOSE} for different use cases:
 {SUBCOMPONENT_LIST}
 
 ## **Note:** Documentation
@@ -53,4 +53,4 @@ The input_text component provides {COMPONENT_PURPOSE} for different use cases:
 
 ---
 
-**Need help?** Check the [Component Strategy Guide](../../07-workflow/maintainers/component-documentation-separation-strategy.md) or reach out to the Design System Team.
+**Need help?** Check the [Component Strategy Guide](../../07-workflow/maintainers/04_component-documentation-separation-strategy.md) or reach out to the Design System Team.

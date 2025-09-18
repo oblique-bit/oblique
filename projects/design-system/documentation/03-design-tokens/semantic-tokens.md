@@ -27,7 +27,7 @@ Semantic tokens provide context to primitive values and are the bridge between t
 The semantic layer is the correct and only place to create dynamic tokens by multiplying a primitive by a global multiplier.
 
 ```json
-// In: semantic/dimension.json
+// In: 03_03_semantic/dimension/static.json
 "surface": {
   "xs": {
     "px": {
@@ -44,7 +44,7 @@ The semantic layer is the correct and only place to create dynamic tokens by mul
 A major point of failure was creating semantic tokens that pointed to primitive keys that did not exist (e.g., `ob.p.dimension.px.100`). This led to widespread broken references and required a full system reset.
 
 ```json
-// In: semantic/dimension.json
+// In: 03_03_semantic/dimension/static.json
 // THIS IS WHAT CAUSED THE SYSTEM TO BREAK
 "element": {
   "xs": {

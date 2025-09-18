@@ -25,7 +25,7 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> Primitive
 3. **S2 and S3 layers reference S1 directly for simplified maintenance**
 4. **S1 layer handles all theme switching (light.json/dark.json files)**
 
-**Exception:** Global tokens (`ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.*`) can be referenced by any level. See [global-tokens.md](./global-tokens.md) for more details.
+**Exception:** Global tokens (`ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.*`) can be referenced by any level. See [01_global-tokens.md](./01_global-tokens.md) for more details.
 
 ---
 
@@ -323,7 +323,7 @@ When creating or reviewing component tokens, ensure:
 - [ ] **No S1 consumption**: Components don't reference `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*`
 - [ ] **Semantic alignment**: Component purpose matches token type (status/interaction/neutral)
 - [ ] **Theming support**: Required theming capabilities are available through token choice
-- [ ] **Reference chain**: Token references follow proper hierarchy (except global tokens which can be referenced from any level)
+- [ ] **Reference chain**: Token references follow proper hierarchy (except 01_global tokens which can be referenced from any level)
 
 ### Interactive Component Checklist
 

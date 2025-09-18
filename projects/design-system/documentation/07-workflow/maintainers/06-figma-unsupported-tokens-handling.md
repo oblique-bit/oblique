@@ -75,7 +75,7 @@ You've set vertical trim to "cap height to baseline" in Figma for buttons, but n
             "text_vertical_trim": {
               "$type": "string",
               "$value": "{ob.p.vertical_trim.cap_baseline}",
-              "$description": "Vertical trim from cap height to baseline for optimal button text alignment. FIGMA LIMITATION: This token is not exported to Figma variables as Figma doesn't support text vertical trim variables. Set manually in Figma components using 'Vertical trim' property. CSS implementation: use 'text-box-trim: cap alphabetic' or equivalent."
+              "$description": "Vertical trim from cap height to baseline for optimal button text alignment. FIGMA LIMITATION: This token is not exported to Figma variables as Figma doesn't support text vertical trim variables. Set manually in Figma 04_components using 'Vertical trim' property. CSS implementation: use 'text-box-trim: cap alphabetic' or equivalent."
             }
           }
         }
@@ -100,9 +100,9 @@ You've set vertical trim to "cap height to baseline" in Figma for buttons, but n
 ```
 
 ### Figma Designer Instructions
-1. **Manual Setting**: In button component text layers, set "Vertical trim" to "Cap height to baseline"
+1. **Manual Setting**: In button 04_component text layers, set "Vertical trim" to "Cap height to baseline"
 2. **Component Variants**: Ensure consistent setting across all button variants
-3. **Documentation**: Add note in component description referencing the token
+3. **Documentation**: Add note in 04_component description referencing the token
 
 ---
 
@@ -123,10 +123,10 @@ You've set vertical trim to "cap height to baseline" in Figma for buttons, but n
 ```json
 {
   "text_align": {
-    "$description": "Center alignment for button text labels. FIGMA LIMITATION: Not supported by Figma variables - set manually in Figma components. CSS implementation: text-align: center."
+    "$description": "Center alignment for button text labels. FIGMA LIMITATION: Not supported by Figma variables - set manually in Figma 04_components. CSS implementation: text-align: center."
   },
   "flex_direction": {
-    "$description": "CSS flex-direction for horizontal layout. FIGMA LIMITATION: Cannot be used as Figma variable. Use component variants (compact/full) in Figma. CSS implementation: flex-direction: row."
+    "$description": "CSS flex-direction for horizontal layout. FIGMA LIMITATION: Cannot be used as Figma variable. Use 04_component variants (compact/full) in Figma. CSS implementation: flex-direction: row."
   }
 }
 ```
@@ -163,7 +163,7 @@ mcp_figma_dev_mod_get_variable_defs
 ```
 
 ### Design-Dev Handoff
-1. **Designer Deliverable**: Figma component with manual settings applied
+1. **Designer Deliverable**: Figma 04_component with manual settings applied
 2. **Developer Reference**: Token file with implementation guidance
 3. **Validation**: Compare Figma visual with token specifications
 
@@ -172,13 +172,13 @@ mcp_figma_dev_mod_get_variable_defs
 ## Related Patterns
 
 ### Similar Implementation Examples
-- **[Flex Direction Tokens](../../../04-components/button/flex-direction-token-decision-log.md)**: CSS layout properties
+- **[Flex Direction Tokens](../../../04-04_components/button/flex-direction-token-decision-log.md)**: CSS layout properties
 - **[Text Alignment Tokens](./05-figma-variables-limitations-and-restrictions.md)**: Typography positioning
 - **[Animation Tokens](./05-figma-variables-limitations-and-restrictions.md)**: Complex micro-interactions
 
 ### Cross-Reference Documentation
 - **[Figma Limitations Guide](./05-figma-variables-limitations-and-restrictions.md)**: Complete limitation overview
-- **[Token Architecture](../../../03-design-tokens/component-tokens.md)**: General token patterns
+- **[Token Architecture](../../../03-design-tokens/04_component-tokens.md)**: General token patterns
 - **[MCP Workflows](./02-figma-and-tokens-for-developers.md)**: Inspection procedures
 
 ---
@@ -189,7 +189,7 @@ mcp_figma_dev_mod_get_variable_defs
 - **Document Clearly**: Always include FIGMA LIMITATION notices
 - **Reference Primitives**: Use primitive tokens for reusability
 - **Provide Implementation**: Include specific CSS guidance
-- **Validate Manually**: Check Figma component matches token intent
+- **Validate Manually**: Check Figma 04_component matches token intent
 
 ### **Error:** Don't
 - **Export to Figma**: Avoid unsupported tokens in Figma variables

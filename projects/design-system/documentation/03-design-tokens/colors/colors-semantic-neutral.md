@@ -1,6 +1,6 @@
 # Neutral Colors Documentation
 
-**About this document:** This document defines neutral colors within the Oblique Design System semantic color architecture.
+**About this document:** This document defines neutral colors within the Oblique Design System 03_semantic color architecture.
 
 **Scope:** Foundational colors for backgrounds, text, borders, and surfaces that adapt to themes and provide the structural foundation of the interface.
 
@@ -8,7 +8,7 @@
 
 ## Neutral Color Architecture
 
-Neutral colors provide the foundational color palette for backgrounds, text, borders, and surfaces throughout the design system. They live on different semantic levels s1 and s2 and always come in pair inversity_normal (default) and inversity_flipped (e.g. in Footer).
+Neutral colors provide the foundational color palette for backgrounds, text, borders, and surfaces throughout the design system. They live on different 03_semantic levels s1 and s2 and always come in pair inversity_normal (default) and inversity_flipped (e.g. in Footer).
 
 ### Token Structure
 ```
@@ -43,7 +43,7 @@ ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_inde
 - `inversity_normal` - Standard component appearance inheriting the host's theme
 - `inversity_flipped` - Component-level inversion for specific variants or entire components
 
-**Implementation Note**: For complete technical details on inversity behavior, theme switching, and semantic layer architecture, see [Semantic Color Architecture](colors-semantic.md).
+**Implementation Note**: For complete technical details on inversity behavior, theme switching, and 03_semantic layer architecture, see [Semantic Color Architecture](colors-03_semantic.md).
 
 ## Usage Examples
 
@@ -170,11 +170,11 @@ Neutral components that provide structure, content, and typography:
 ## Technical Implementation
 
 ### File Structure
-- `src/lib/themes/semantic/color/s1-lightness/light.json` - Light theme neutral colors
-- `src/lib/themes/semantic/color/s1-lightness/dark.json` - Dark theme neutral colors
-- `src/lib/themes/semantic/color/s2-emphasis/high.json` - High emphasis neutral colors
-- `src/lib/themes/semantic/color/s2-emphasis/low.json` - Low emphasis neutral colors
-- `src/lib/themes/semantic/color/s3-semantic/semantic.json` - Complete neutral compilation
+- `src/lib/themes/03_03_semantic/color/s1-lightness/light.json` - Light theme neutral colors
+- `src/lib/themes/03_03_semantic/color/s1-lightness/dark.json` - Dark theme neutral colors
+- `src/lib/themes/03_03_semantic/color/s2-emphasis/high.json` - High emphasis neutral colors
+- `src/lib/themes/03_03_semantic/color/s2-emphasis/low.json` - Low emphasis neutral colors
+- `src/lib/themes/03_03_semantic/color/s3-03_semantic/03_semantic.json` - Complete neutral compilation
 
 ### Token Resolution Flow
 ```
@@ -202,10 +202,10 @@ ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_inde
 ## Related Documentation
 
 - [Color Tokens Overview](colors-overview.md) - Complete color system introduction
-- [Semantic Colors Architecture](colors-semantic.md) - Layer system and organization
-- [Brand Colors](colors-semantic-brand.md) - Brand colors that complement neutral foundations
-- [Interaction Colors](colors-semantic-interaction.md) - How neutrals support interactive elements
-- [Status Colors](colors-semantic-status.md) - Status colors that build on neutral foundations
+- [Semantic Colors Architecture](colors-03_semantic.md) - Layer system and organization
+- [Brand Colors](colors-03_semantic-brand.md) - Brand colors that complement neutral foundations
+- [Interaction Colors](colors-03_semantic-interaction.md) - How neutrals support interactive elements
+- [Status Colors](colors-03_semantic-status.md) - Status colors that build on neutral foundations
 - [Token Consumption Guidelines](../guidelines-token-consumption.md) - Implementation rules
 
 ---

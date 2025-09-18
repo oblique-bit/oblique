@@ -19,9 +19,9 @@ src/lib/themes/
 │           └── mobile.json     # { "multiplier": 1.25 }
 └── semantic/
     ├── 01-static/
-    │   └── dimension.json      # Non-mode values
+    │   └── dimension/static.json      # Non-mode values
     └── 03-dynamic/
-        └── dimension.json      # Mode-aware values
+        └── dimension/static.json      # Mode-aware values
 ```
 
 ## Step 3: Migrate Base Values

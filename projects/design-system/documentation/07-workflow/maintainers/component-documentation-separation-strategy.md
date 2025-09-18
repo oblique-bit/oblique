@@ -13,7 +13,7 @@
 ### Folder Structure
 
 ```
-documentation/04-components/
+documentation/04-04_components/
 ├── 01-overview.md                        # Public docs
 ├── button/
 │   ├── README.md                         # **Note:** ENTRY POINT: Component overview & navigation
@@ -31,11 +31,11 @@ documentation/04-components/
 │   │   │   ├── 2025-08-15_button-usability-study.md
 │       │   └── 2025-09-01_accessibility-audit.md
 │       ├── technical-research/
-│       │   ├── 2025-09-05_figma-component-analysis.md
+│       │   ├── 2025-09-05_figma-04_component-analysis.md
 │       │   ├── 2025-09-06_token-architecture-study.md
 │       │   └── performance/
 │   │   └── decision-logs/
-│   │       ├── 2025-09-07_remove-subcomponent-decision.md
+│   │       ├── 2025-09-07_remove-sub04_component-decision.md
 │   │       └── 2025-09-08_square-constraint-rationale.md
 │   └── _reports/                         # **Security:** INTERNAL: Validation reports
 │       ├── 01-technical/
@@ -64,10 +64,10 @@ documentation/04-components/
 
 ### Content Distribution Strategy
 
-#### PUBLIC Component Documentation (documentation/04-components/[component]/)
+#### PUBLIC Component Documentation (documentation/04-04_components/[04_component]/)
 
 **01-overview.md** - User-facing introduction
-- What the component does
+- What the 04_component does
 - When to use it
 - Basic examples
 - API reference
@@ -75,7 +75,7 @@ documentation/04-components/
 **02-architecture.md** - Component decisions (distilled from research)
 - Design principles
 - Component structure
-- Subcomponent relationships
+- Sub04_component relationships
 - Constraints & rules
 - Why we made specific choices (summary from research)
 
@@ -91,7 +91,7 @@ documentation/04-components/
 - Content guidelines
 - Responsive behavior
 
-#### INTERNAL Research Reports (documentation/04-components/[component]/_research/)
+#### INTERNAL Research Reports (documentation/04-04_components/[04_component]/_research/)
 
 **competitive-analysis/** - External system studies
 - How other design systems solve similar problems
@@ -107,7 +107,7 @@ documentation/04-components/
 
 **technical-research/** - Implementation exploration
 - Performance studies
-- Figma component analysis
+- Figma 04_component analysis
 - Token architecture research
 - Browser compatibility testing
 
@@ -165,7 +165,7 @@ Examples:
 # Button Architecture
 
 ## Component Structure
-Button consists of three subcomponents:
+Button consists of three sub04_components:
 - `button.text_icons` - Standard button with text and optional icons
 - `button.icon_only` - Icon-only button (circular constraint)  
 - `button.remove` - Removal action button (square constraint)
@@ -174,19 +174,19 @@ Button consists of three subcomponents:
 
 ### Why Square Constraint for Remove Buttons?
 Based on industry analysis of 8 major design systems, remove buttons consistently use square proportions for:
-- Visual balance within parent components
+- Visual balance within parent 04_components
 - Consistent touch targets
 - Clear differentiation from circular icon buttons
 
 *Research source: [Remove Button Industry Analysis](_research/competitive-analysis/2025-09-08_remove-button-industry-analysis.md)*
 
-### Why Separate Remove Subcomponent?
+### Why Separate Remove Sub04_component?
 Remove buttons require specialized behavior that generic icon buttons cannot provide:
 - Semantic clarity for destructive actions
 - Specialized keyboard support (Delete/Backspace)
-- Context-aware sizing within parent components
+- Context-aware sizing within parent 04_components
 
-*Research source: [Remove vs Icon-Only Decision](_research/decision-logs/2025-09-07_remove-subcomponent-decision.md)*
+*Research source: [Remove vs Icon-Only Decision](_research/decision-logs/2025-09-07_remove-sub04_component-decision.md)*
 ```
 
 #### Research Documentation Structure
@@ -194,14 +194,14 @@ Remove buttons require specialized behavior that generic icon buttons cannot pro
 **button/_research/competitive-analysis/2025-09-08_remove-button-industry-analysis.md**:
 ```markdown
 # Remove Button Research Report
-## Major Design Systems Analysis for oblique's Button Subcomponent Architecture
+## Major Design Systems Analysis for oblique's Button Sub04_component Architecture
 
 ### Executive Summary
 [Full detailed research with methodology, findings, analysis...]
 
 ### Systems Analyzed
-- Material-UI Chip component
-- Ant Design Tag component  
+- Material-UI Chip 04_component
+- Ant Design Tag 04_component  
 - Adobe Spectrum Tags
 - Microsoft Fluent UI Buttons
 - Apple Human Interface Guidelines
@@ -248,19 +248,19 @@ Remove buttons require specialized behavior that generic icon buttons cannot pro
 ```bash
 # Move current research report to proper location
 mv documentation/06-remove-button-research-report.md \
-   documentation/04-components/button/_research/competitive-analysis/2025-09-08_remove-button-industry-analysis.md
+   documentation/04-04_components/button/_research/competitive-analysis/2025-09-08_remove-button-industry-analysis.md
 ```
 
 #### Step 2: Create Structure
 ```bash
 # Create research folders
-mkdir -p documentation/04-components/button/_research/{competitive-analysis,user-research,technical-research,decision-logs}
-mkdir -p documentation/04-components/input/_research/{competitive-analysis,user-research,decision-logs}  
-mkdir -p documentation/04-components/tag/_research/{competitive-analysis,decision-logs}
+mkdir -p documentation/04-04_components/button/_research/{competitive-analysis,user-research,technical-research,decision-logs}
+mkdir -p documentation/04-04_components/input/_research/{competitive-analysis,user-research,decision-logs}  
+mkdir -p documentation/04-04_components/tag/_research/{competitive-analysis,decision-logs}
 ```
 
 #### Step 3: Extract Architecture Decisions
-- Create `03-architecture.md` for each component
+- Create `03-architecture.md` for each 04_component
 - Distill research findings into decision summaries
 - Link to detailed research reports
 

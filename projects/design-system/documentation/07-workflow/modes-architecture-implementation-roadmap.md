@@ -38,7 +38,7 @@ The three-tier structure (static/, dynamic/, dynamic/multipliers/) provides the 
 - **Mathematical scaling only** - Never repeat tokens when values can be multiplied
 - **Token economy principle** - One base token + multipliers (NOT separate tokens per mode)
 - **Implementation pattern** - Base values in main collections, multipliers in separate mode files
-- **Example**: `dimension.json` (base values) + `dimension/sm.json` (0.8 multiplier) instead of separate sm/md/lg dimension tokens
+- **Example**: `dimension/static.json` (base values) + `dimension/sm.json` (0.8 multiplier) instead of separate sm/md/lg dimension tokens
 - **Benefit**: Prevents exponential token growth while maintaining precise mathematical control
 
 ### **Designer Experience Goals**
@@ -84,7 +84,7 @@ The three-tier structure (static/, dynamic/, dynamic/multipliers/) provides the 
 ```
 **Success:** Working Foundation:
 semantic/
-├── dimension.json           # W3C DTCG compliant
+├── dimension/static.json           # W3C DTCG compliant
 ├── spacing/desktop.json     # Responsive multipliers  
 ├── spacing/mobile.json      # Responsive multipliers
 ├── color/s1-lightness/      # Light/dark themes
@@ -126,11 +126,11 @@ src/lib/themes/
 │           └── mobile.json            ({ "multiplier": 1.25 })
 └── semantic/
     ├── 01-static/                     (NON-MODE VALUES - ob.s.static.*)
-    │   ├── dimension.json             (values that never change with modes)
+    │   ├── dimension/static.json             (values that never change with modes)
     │   ├── typography.json            (static font families, weights, etc.)
     │   └── [other categories].json   (all static semantic tokens)
     └── 03-dynamic/                    (MODE-AWARE VALUES - CALCULATION RESULTS - ob.s.dynamic.*)
-        ├── dimension.json             (resolved values: base × active multiplier)
+        ├── dimension/static.json             (resolved values: base × active multiplier)
         ├── typography.json            (resolved values: base × active multiplier)
         ├── spacing.json               (resolved spacing values: base × viewport × component-size multipliers)
         └── [other categories].json   (all mode-aware semantic tokens)
@@ -162,11 +162,11 @@ src/lib/themes/
 │           └── spacious.json          ({ "multiplier": 1.2 })
 └── semantic/
     ├── static/                        (NON-MODE VALUES - ob.s.static.*)
-    │   ├── dimension.json             (values that never change with modes)
+    │   ├── dimension/static.json             (values that never change with modes)
     │   ├── typography.json            (static font families, weights, etc.)
     │   └── [other categories].json   (all static semantic tokens)
     └── dynamic/                       (MODE-AWARE VALUES - CALCULATION RESULTS - ob.s.dynamic.*)
-        ├── dimension.json             (resolved values: base × active multiplier)
+        ├── dimension/static.json             (resolved values: base × active multiplier)
         ├── typography.json            (resolved values: base × active multiplier)
         ├── spacing.json               (resolved spacing values: base × viewport × component-size multipliers)
         └── [other categories].json   (all mode-aware semantic tokens)
@@ -211,11 +211,11 @@ src/lib/themes/
 │           └── [other user modes]/
 └── semantic/
     ├── static/                        (NON-MODE VALUES - ob.s.static.*)
-    │   ├── dimension.json             (values that never change with modes)
+    │   ├── dimension/static.json             (values that never change with modes)
     │   ├── typography.json            (static font families, weights, etc.)
     │   └── [other categories].json   (all static semantic tokens)
     └── dynamic/                       (MODE-AWARE VALUES - CALCULATION RESULTS - ob.s.dynamic.*)
-        ├── dimension.json             (resolved values: base × active multiplier)
+        ├── dimension/static.json             (resolved values: base × active multiplier)
         ├── typography.json            (resolved values: base × active multiplier)
         ├── spacing.json               (resolved spacing values: base × viewport × component-size multipliers)
         └── [other categories].json   (all mode-aware semantic tokens)
@@ -340,7 +340,7 @@ global/themes-user/
 *Complete architecture prepared from start, selective activation by phase*
 
 #### **Success:** **Already Implemented - Icon Holder Component**
-**Location:** `src/lib/themes/component/atom/icon_holder/`
+**Location:** `src/lib/themes/04_component/atom/icon_holder/`
 ```
 ├── sm.json    # Small variant
 ├── md.json    # Medium variant  
@@ -365,7 +365,7 @@ global/themes-user/
 ```
 
 #### **Success:** **Partially Implemented - Tag Component**
-**Location:** `src/lib/themes/component/molecule/tag.json`
+**Location:** `src/lib/themes/04_component/molecule/tag.json`
 
 **Current Pattern - Size-aware tokens within single file:**
 ```json
@@ -390,7 +390,7 @@ global/themes-user/
 #### **Existing Semantic Structure:**
 ```
 semantic/
-├── dimension.json        # **Success:** W3C DTCG compliant dimension tokens
+├── dimension/static.json        # **Success:** W3C DTCG compliant dimension tokens
 ├── spacing/
 │   ├── desktop.json     # **Success:** Responsive spacing with multipliers
 │   └── mobile.json      # **Success:** Responsive spacing with multipliers
@@ -441,12 +441,12 @@ semantic/
 **Key Modes Architecture Principles:**
 - **Scalable**: Easy to add new mode categories
 - **Consistent**: All modes follow the same token structure patterns
-- **Semantic**: Mode tokens reference primitive/semantic tokens, not hardcoded values
+- **Semantic**: Mode tokens reference primitive/03_semantic tokens, not hardcoded values
 - **Extensible**: Architecture supports future A11y, UX, and brand mode requirements
 
 ### Phase 2: Semantic Mode Token Definitions
 
-#### **Component Size Modes (semantic/modes/component-size/)**
+#### **Component Size Modes (semantic/modes/04_component-size/)**
 
 **sm.json** - Small component dimensions:
 ```json
@@ -546,9 +546,9 @@ global/themes-user/
 ├── lightness/          # **Success:** Existing: Light/dark theme modes
 ├── viewport/           # **Success:** Existing: Responsive scaling modes
 ├── component-size/     # 🆕 NEW: Size modes configuration (design system controlled)
-│   ├── sm.json        # References semantic/modes/component-size/sm.json
-│   ├── md.json        # References semantic/modes/component-size/md.json (default)
-│   └── lg.json        # References semantic/modes/component-size/lg.json
+│   ├── sm.json        # References semantic/modes/04_component-size/sm.json
+│   ├── md.json        # References semantic/modes/04_component-size/md.json (default)
+│   └── lg.json        # References semantic/modes/04_component-size/lg.json
 ├── density/           # 🆕 NEW: Density modes configuration (product designer controlled)
 │   ├── compact.json   # References semantic/modes/density/compact.json
 │   ├── comfortable.json # References semantic/modes/density/comfortable.json (default)
@@ -609,7 +609,7 @@ Current icon_holder structure → Continue using separate files
 ### **Success:** **Preserve What Works**
 - **Keep icon_holder file-based structure** - Already follows semantic boundaries
 - **Keep responsive multiplier system** - `mult_responsive` in viewport themes works well
-- **Keep existing semantic/dimension.json** - W3C DTCG compliant and properly structured
+- **Keep existing 03_03_semantic/dimension/static.json** - W3C DTCG compliant and properly structured
 
 ### **Process:** **Migrate Gradually**
 
@@ -629,7 +629,7 @@ Current icon_holder structure → Continue using separate files
 5. Reserve `_future-modes/` structure for planned architecture expansions
 
 #### **Migration Tasks** *(Simplified Implementation)*
-- **sizing.json** → Split content between `01-static/dimension.json` (non-mode values) and `03-dynamic/dimension.json` (mode-aware values)
+- **sizing.json** → Split content between `01-static/dimension/static.json` (non-mode values) and `03-dynamic/dimension/static.json` (mode-aware values)
 - **spacing/desktop.json** → Move to `03-dynamic/spacing.json` with new proportional multipliers
 - **spacing/mobile.json** → Move to `03-dynamic/spacing.json` with new proportional multipliers
 - ### Success: Multiplier Migration Strategy:**

@@ -26,7 +26,7 @@
    - Lessons learned and future considerations
 
 ### Token Files (Updated)
-**Note:** **Location**: `src/lib/themes/html/button_aug/06 width/`
+**Note:** **Location**: `src/lib/themes/05_html/button_aug/06 width/`
 
 1. **compact.json** (Updated)
    - Fixed `"$type": "other"` → `"$type": "string"` (W3C DTCG compliant)

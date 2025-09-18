@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-Based on analysis of 46 major design systems and current Oblique v13 architecture, this report provides evidence for implementing a dedicated `icon_holder` component. Current findings indicate **100% of analyzed systems show icon inheritance behavior**, validating the need for a container component that manages icon sizing, positioning, and swapping.
+Based on analysis of 46 major design systems and current Oblique v13 architecture, this report provides evidence for implementing a dedicated `icon_holder` 04_component. Current findings indicate **100% of analyzed systems show icon inheritance behavior**, validating the need for a container 04_component that manages icon sizing, positioning, and swapping.
 
 ## Industry Findings
 
@@ -16,16 +16,16 @@ Based on analysis of 46 major design systems and current Oblique v13 architectur
 **Universal Pattern: Icon Containers/Wrappers**
 - **Material Design**: Uses `IconButton` container with size inheritance
 - **Carbon (IBM)**: Implements icon size tokens with container logic
-- **Atlassian**: Icon sizing through parent component context
+- **Atlassian**: Icon sizing through parent 04_component context
 - **Ant Design**: Icon containers with standardized sizing
-- **Fluent (Microsoft)**: Icon wrapper components with theme awareness
+- **Fluent (Microsoft)**: Icon wrapper 04_components with theme awareness
 
 ### 2. Size Inheritance Behavior
 
 **100% of systems demonstrate**: Icons inherit sizing from parent containers
 - **Button contexts**: Icons scale based on button size (`sm`, `md`, `lg`)
 - **Form contexts**: Icons adapt to input field dimensions  
-- **Navigation contexts**: Icons respond to nav component sizing
+- **Navigation contexts**: Icons respond to nav 04_component sizing
 - **Content contexts**: Icons scale with typography hierarchy
 
 ### 3. Figma Implementation Patterns
@@ -33,17 +33,17 @@ Based on analysis of 46 major design systems and current Oblique v13 architectur
 **Industry Standard Approach**:
 - **Instance Swap Properties**: 95% of systems use Figma instance swap for icon replacement
 - **Size Variables**: 78% implement Figma variables for icon sizing
-- **Container Architecture**: 67% separate icon logic into dedicated container components
+- **Container Architecture**: 67% separate icon logic into dedicated container 04_components
 
 ## Current Oblique v13 Analysis
 
 ### Missing Component Architecture
 
-**Gap Identified**: No standalone `icon_holder` component exists in release 13
+**Gap Identified**: No standalone `icon_holder` 04_component exists in release 13
 - Icons currently managed through direct `mat-icon` usage
 - No systematic size inheritance logic
 - Limited Figma swapping capabilities
-- Inconsistent icon positioning across components
+- Inconsistent icon positioning across 04_components
 
 ### Current Implementation Issues
 
@@ -65,8 +65,8 @@ Based on analysis of 46 major design systems and current Oblique v13 architectur
 ```
 
 **Problems with Current Approach**:
-1. **No Size Context**: Icons don't inherit from parent component sizes
-2. **Manual Positioning**: Each component manually manages icon placement
+1. **No Size Context**: Icons don't inherit from parent 04_component sizes
+2. **Manual Positioning**: Each 04_component manually manages icon placement
 3. **Limited Swapping**: Figma requires detaching for icon changes
 4. **Inconsistent Spacing**: No standardized gap management
 
@@ -75,10 +75,10 @@ Based on analysis of 46 major design systems and current Oblique v13 architectur
 ### 1. Figma Productivity Benefits
 
 **Enhanced Designer Experience**:
-- **Instance Swap**: Easy icon replacement without detaching components
-- **Size Inheritance**: Automatic icon scaling based on parent component
+- **Instance Swap**: Easy icon replacement without detaching 04_components
+- **Size Inheritance**: Automatic icon scaling based on parent 04_component
 - **Consistent Positioning**: Standardized left/right/center positioning
-- **Performance**: Reduced component variants (no icon × size multiplication)
+- **Performance**: Reduced 04_component variants (no icon × size multiplication)
 
 **Competitive Advantage**:
 ```
@@ -86,7 +86,7 @@ Current Figma Approach:
 Button × 3 sizes × 3 icon positions × N icons = 9N variants
 
 With icon_holder:
-Button × 3 sizes + icon_holder with swap = 3 + 1 components
+Button × 3 sizes + icon_holder with swap = 3 + 1 04_components
 Result: ~97% variant reduction
 ```
 
@@ -104,16 +104,16 @@ Result: ~97% variant reduction
 ```
 
 **Benefits**:
-- **Automatic Sizing**: Icons inherit size from component context
+- **Automatic Sizing**: Icons inherit size from 04_component context
 - **Consistent Spacing**: Standardized gap management
-- **Better Semantics**: Clear separation between icon logic and parent component
+- **Better Semantics**: Clear separation between icon logic and parent 04_component
 - **Token Integration**: Direct connection to design token system
 
 ### 3. Naming Clarity Benefits
 
 **Disambiguation Strategy**:
 - **Individual Icons**: Specific names (`user`, `edit`, `delete`)
-- **Icon Container**: Generic component name (`icon_holder`)
+- **Icon Container**: Generic 04_component name (`icon_holder`)
 - **Clear Hierarchy**: Container manages display, icons provide content
 
 **Example Clarity**:
@@ -168,7 +168,7 @@ icon_holder
 **Variable Connections**:
 - Icon size → Figma size variables
 - Gap spacing → Figma spacing variables
-- Color inheritance → Parent component tokens
+- Color inheritance → Parent 04_component tokens
 
 ## Competitive Benchmarking
 
@@ -179,22 +179,22 @@ icon_holder
 | **Material Design** | IconButton wrapper | **Success:** Automatic | **Success:** Instance swap | **Success:** Positioned slots |
 | **Carbon** | Icon container | **Success:** Token-driven | **Success:** Variables | **Success:** Flex positioning |
 | **Atlassian** | Icon wrapper | **Success:** Parent-aware | **Success:** Swap properties | **Success:** Layout system |
-| **Ant Design** | Icon component | **Success:** Context-based | **Success:** Figma variants | **Success:** Spacing props |
+| **Ant Design** | Icon 04_component | **Success:** Context-based | **Success:** Figma variants | **Success:** Spacing props |
 | **Fluent** | Icon host | **Success:** Theme-aware | **Success:** Slot architecture | **Success:** Auto-layout |
-| **Oblique v13** | **Error:** None | **Error:** Manual | **Error:** Limited | **Error:** Per-component |
+| **Oblique v13** | **Error:** None | **Error:** Manual | **Error:** Limited | **Error:** Per-04_component |
 
 **Gap Analysis**: Oblique lacks fundamental icon container architecture present in 100% of analyzed systems.
 
 ## Implementation Priority
 
 ### Phase 1: Foundation (High Priority)
-- Create basic `icon_holder` component
+- Create basic `icon_holder` 04_component
 - Implement size inheritance logic
 - Establish Figma instance swap properties
 - Define core design tokens
 
 ### Phase 2: Integration (Medium Priority)  
-- Retrofit existing components (button, input, tag)
+- Retrofit existing 04_components (button, input, tag)
 - Create complete Figma variant system
 - Establish position and gap management
 
@@ -217,7 +217,7 @@ icon_holder
 
 ## Conclusion
 
-The analysis provides compelling evidence for implementing `icon_holder` as a foundational component:
+The analysis provides compelling evidence for implementing `icon_holder` as a foundational 04_component:
 
 1. **Industry Standard**: 100% of analyzed systems use icon container patterns
 2. **Figma Benefits**: Significant productivity gains through instance swapping
@@ -225,11 +225,11 @@ The analysis provides compelling evidence for implementing `icon_holder` as a fo
 4. **Naming Clarity**: Clear separation between container and content
 5. **Future-Proof**: Aligns with industry standard practices and design system maturity
 
-**Recommendation**: Prioritize `icon_holder` implementation as a foundational component to achieve parity with industry standards and unlock significant productivity benefits.
+**Recommendation**: Prioritize `icon_holder` implementation as a foundational 04_component to achieve parity with industry standards and unlock significant productivity benefits.
 
 ---
 
 **Related Documentation:**
 - [Button Component Architecture](../../02-button/02-architecture.md)
 - [Design Token Integration](../../../03-design-tokens/)
-- [Figma Component Strategy](../../../07-workflow/maintainers/10-figma-slot-component-architecture.md)
+- [Figma Component Strategy](../../../07-workflow/maintainers/10-figma-slot-04_component-architecture.md)

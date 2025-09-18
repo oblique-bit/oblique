@@ -13,7 +13,7 @@ The semantic color system is organized into **dimensional layers** and **static 
 ### ****Structure:** File Structure**
 
 ```
-src/lib/themes/semantic/color/
+src/lib/themes/03_semantic/color/
 ├── s1-lightness/          # Semantic Level 1: Light/Dark theme variations
 │   ├── light.json         # Light theme colors
 │   └── dark.json          # Dark theme colors
@@ -74,7 +74,7 @@ Static colors are **non-themeable** values that remain constant across all theme
 - **Purpose**: Consistent brand identity
 - **Usage**: Brand elements, logos, primary brand touches  
 - **Behavior**: Never changes with theme modes
-- **Location**: `s3-semantic/semantic.json`
+- **Location**: `s3-semantic/03_semantic.json`
 
 ### **Neutral Utilities**
 
@@ -90,7 +90,7 @@ Static colors are **non-themeable** values that remain constant across all theme
 - **Purpose**: Transparent/invisible elements
 - **Usage**: Hidden borders, transparent backgrounds
 - **Behavior**: Always transparent (0% opacity)
-- **Location**: `s3-semantic/semantic.json`
+- **Location**: `s3-semantic/03_semantic.json`
 
 ### **Static Interaction Indicators**
 
@@ -116,7 +116,7 @@ Static colors are **non-themeable** values that remain constant across all theme
 The semantic color system is organized into **four main categories**:
 
 ### **Brand Category**
-- **Location**: `s3-semantic/semantic.json` (integrated with final compilation)
+- **Location**: `s3-semantic/03_semantic.json` (integrated with final compilation)
 - **Purpose**: Brand identity elements
 - **Includes**: Single brand color for consistent identity
 

@@ -14,7 +14,7 @@
 
 ### `ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.*`
 
-The supported breakpoint primitive values defined in `src/lib/themes/global/themes-scoped/static.json`:
+The supported breakpoint primitive values defined in `src/lib/themes/01_global/themes-scoped/static.json`:
 
 - `ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport` - 0px (base for mobile viewports)
 - `ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport` - 768px (desktop threshold)
@@ -25,7 +25,7 @@ The supported breakpoint primitive values defined in `src/lib/themes/global/them
 
 ### `ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport`
 
-The primary token for media queries, defined in `src/lib/themes/global/themes-user/viewport/`:
+The primary token for media queries, defined in `src/lib/themes/01_global/themes-user/viewport/`:
 
 | Theme | Token | References | Resolved Value | Description |
 |-------|-------|------------|----------------|-------------|
@@ -56,7 +56,7 @@ Responsive scaling multiplier that adjusts based on viewport:
 The responsive tokens are organized in the following files:
 
 ```
-src/lib/themes/global/
+src/lib/themes/01_global/
 |-- themes-scoped/
 |   +-- static.json              # Contains ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.* primitives
 +-- themes-user/

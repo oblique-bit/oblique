@@ -58,7 +58,7 @@ semantic/
 ## Implementation Strategy
 
 1. **Keep existing base tokens** - semantic/sizing.json with W3C DTCG dimension types
-2. **Add component-specific size modes** - semantic/modes/component-size/
+2. **Add component-specific size modes** - semantic/modes/04_component-size/
 3. **Implement density modes** - semantic/modes/density/ 
 4. **Migrate gradually** - Start with button component as proof of concept
 5. **Validate grid alignment** - Ensure multipliers maintain 4px grid

@@ -6,7 +6,7 @@
 
 ## **Quick Start:** Quick Start
 
-The tag component provides **interactive categorization elements** primarily used within form elements and filtering interfaces. Tags enable users to add, remove, and manage collections of categorized data within input fields.  
+The tag 04_component provides **interactive categorization elements** primarily used within form elements and filtering interfaces. Tags enable users to add, remove, and manage collections of categorized data within input fields.  
 
 ## **Note:** Documentation
 
@@ -27,7 +27,7 @@ The tag component provides **interactive categorization elements** primarily use
 ## **Design:** Design Resources
 
 - **Figma Components:** [Tag Component Library](https://figma.com/oblique-tags)
-- **Token Documentation:** [Tag Tokens](../../03-design-tokens/component-tokens.md#tag-component)
+- **Token Documentation:** [Tag Tokens](../../03-design-tokens/04_component-tokens.md#tag-04_component)
 - **Accessibility Guidelines:** [A11y Tag Standards](_reports/03-compliance/)
 
 ## **Note:**️ Developer Resources
@@ -47,11 +47,11 @@ The tag component provides **interactive categorization elements** primarily use
 
 ## **Process:** Recent Updates
 
-- **2025-09-09:** Complete component documentation created with babushka validation
+- **2025-09-09:** Complete 04_component documentation created with babushka validation
 - **2025-09-09:** Form-focused UX definition and usage patterns integrated
 - **2025-09-09:** Token architecture mapped to existing ob.c.tag.* structure
 - **2025-09-09:** Implementation guide with accessibility and performance patterns
 
 ---
 
-**Need help?** Check the [Component Strategy Guide](../../07-workflow/maintainers/component-documentation-separation-strategy.md) or reach out to the Design System Team.
+**Need help?** Check the [Component Strategy Guide](../../07-workflow/maintainers/04_component-documentation-separation-strategy.md) or reach out to the Design System Team.

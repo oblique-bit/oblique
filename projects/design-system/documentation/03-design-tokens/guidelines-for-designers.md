@@ -12,7 +12,7 @@ This document provides practical guidance for designers working with design toke
 - **`ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*`** - Semantic layer 1 (lightness variations)
 - **`ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.*`** - Semantic layer 2 (emphasis variations) 
 - **`ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.*`** - Component tokens (inherit from semantic)
-- **`ob.h.list.single_item.spacing.marker_gap.list.*`** - HTML element tokens (inherit from semantic/component)
+- **`ob.h.list.single_item.spacing.marker_gap.list.*`** - HTML element tokens (inherit from semantic/04_component)
 
 **For Component Design**: Always use **`ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.*` tokens for all color decisions in components
 2. **Reference Component Tokens**: Use `ob.c.tag.container.spacing.gap.spacing.gap when working with specific components

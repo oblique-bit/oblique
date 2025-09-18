@@ -107,8 +107,8 @@ ob.{category}.{component}.{property}.{variant}.{state}.{inversity}
 
 ### **Token Categories**
 - **`c`** - Component tokens
-- **`s`** - System/semantic tokens  
-- **`g`** - Global/primitive tokens
+- **`s`** - System/03_semantic tokens  
+- **`g`** - Global/02_primitive tokens
 - **`t`** - Typography tokens
 
 ---

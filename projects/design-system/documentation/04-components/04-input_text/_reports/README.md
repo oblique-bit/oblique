@@ -1,6 +1,6 @@
 # Uinput_text Validation Reports
 
-This folder contains validation reports and quality assurance documentation for the input_text component.
+This folder contains validation reports and quality assurance documentation for the input_text 04_component.
 
 ## **Summary:** Report Categories
 
@@ -78,4 +78,4 @@ YYYYMMDD_HHMM-input_text-{category}-{type}-report.md
 
 **Validation Tools:**
 - [Figma MCP Prompts](../../../07-workflow/maintainers/prompts/) - Automated validation
-- [Component Strategy Guide](../../../07-workflow/maintainers/component-documentation-separation-strategy.md) - Process documentation
+- [Component Strategy Guide](../../../07-workflow/maintainers/04_component-documentation-separation-strategy.md) - Process documentation

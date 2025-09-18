@@ -5,7 +5,7 @@
 
 **Existing Structure (Good patterns to maintain):**
 ```
-documentation/04-components/button/
+documentation/04-04_components/button/
 ├── button-overview.md                    **Success:** Component docs
 ├── reports/                              **Success:** Research reports  
 │   ├── 20250906_1416-button-mcp-figma-report.md
@@ -20,7 +20,7 @@ documentation/06-remove-button-research-report.md  **Error:** Misplaced research
 #### Option A: Research Within Component Folders (Recommended)
 
 ```
-documentation/04-components/
+documentation/04-04_components/
 ├── 01-overview.md
 ├── button/
 │   ├── 01-overview.md                    # Component overview
@@ -36,14 +36,14 @@ documentation/04-components/
 │       │   ├── 2025-08-15_button-usability-study.md
 │       │   └── 2025-09-01_accessibility-audit.md
 │       ├── technical-research/           # Implementation exploration
-│       │   ├── 2025-09-05_figma-component-analysis.md
+│       │   ├── 2025-09-05_figma-04_component-analysis.md
 │       │   ├── 2025-09-06_token-architecture-study.md
 │       │   └── performance/              # Performance studies
 │       ├── design-exploration/           # Visual & interaction studies
 │       │   ├── 2025-08-20_size-variant-exploration.md
 │       │   └── 2025-09-03_animation-patterns.md
 │       └── decisions/                    # Design decisions & rationale
-│           ├── 2025-09-07_remove-subcomponent-decision.md
+│           ├── 2025-09-07_remove-sub04_component-decision.md
 │           └── 2025-09-08_square-constraint-rationale.md
 │
 ├── input/
@@ -69,21 +69,21 @@ documentation/04-components/
 
 ```
 documentation/
-├── 04-components/                        # Component documentation
+├── 04-04_components/                        # Component documentation
 │   ├── button/01-overview.md
 │   ├── input/01-overview.md
 │   └── tag/01-overview.md
 │
 └── 08-research/                          # **Note:** Central research hub
     ├── README.md                         # Research methodology & index
-    ├── competitive-analysis/             # Cross-component research
+    ├── competitive-analysis/             # Cross-04_component research
     │   ├── 2025-09-06_design-systems-sizing-patterns.md
     │   ├── 2025-09-08_remove-button-industry-analysis.md
     │   └── systems/                      # Per-system deep dives
     │       ├── material-ui/
     │       ├── ant-design/
     │       └── spectrum/
-    ├── component-research/               # Component-specific research
+    ├── 04_component-research/               # Component-specific research
     │   ├── button/
     │   │   ├── competitive-analysis/
     │   │   ├── user-research/
@@ -91,7 +91,7 @@ documentation/
     │   │   └── decisions/
     │   ├── input/
     │   └── tag/
-    ├── cross-component/                  # Multi-component research
+    ├── cross-04_component/                  # Multi-04_component research
     │   ├── sizing-inheritance-patterns.md
     │   ├── accessibility-standards.md
     │   └── token-architecture/
@@ -106,8 +106,8 @@ documentation/
 **Best of both worlds - Component-focused with cross-references:**
 
 ```
-documentation/04-components/[component]/research/  # Component-specific research
-documentation/08-research/                         # Cross-component & methodology
+documentation/04-04_components/[04_component]/research/  # Component-specific research
+documentation/08-research/                         # Cross-04_component & methodology
 ```
 
 ### Research File Naming Convention
@@ -118,7 +118,7 @@ documentation/08-research/                         # Cross-component & methodolo
 ```
 2025-09-06_competitive-analysis_remove-button-patterns.md
 2025-09-08_user-research_button-accessibility-study.md
-2025-09-10_technical-research_figma-component-performance.md
+2025-09-10_technical-research_figma-04_component-performance.md
 2025-09-12_design-exploration_size-variant-concepts.md
 2025-09-15_decision-log_square-constraint-rationale.md
 ```
@@ -129,7 +129,7 @@ documentation/08-research/                         # Cross-component & methodolo
 - `technical-research_` - Implementation, performance, tooling
 - `design-exploration_` - Visual concepts, interaction patterns
 - `decision-log_` - Design decisions and rationale
-- `cross-component_` - Multi-component studies
+- `cross-04_component_` - Multi-04_component studies
 
 ### Research Document Templates
 
@@ -210,7 +210,7 @@ How will we measure success?
 
 ## Active Research Areas
 - [ ] Component sizing inheritance patterns
-- [ ] Accessibility audit across all components  
+- [ ] Accessibility audit across all 04_components  
 - [ ] Performance improvement study
 - [x] Remove button patterns analysis **Success:**
 
@@ -222,34 +222,34 @@ How will we measure success?
 
 ## Research by Component
 ### Button
-- [Remove Button Analysis](../04-components/button/research/competitive-analysis/2025-09-08_remove-button-patterns.md)
-- [Size Variants Study](../04-components/button/research/design-exploration/2025-09-05_size-exploration.md)
+- [Remove Button Analysis](../04-04_components/button/research/competitive-analysis/2025-09-08_remove-button-patterns.md)
+- [Size Variants Study](../04-04_components/button/research/design-exploration/2025-09-05_size-exploration.md)
 
 ### Input  
-- [Accessibility Standards](../04-components/input/research/user-research/2025-08-20_accessibility-audit.md)
+- [Accessibility Standards](../04-04_components/input/research/user-research/2025-08-20_accessibility-audit.md)
 ```
 
 ### Implementation Steps
 
 #### Step 1: Reorganize Existing Research
 ```bash
-# Move misplaced research to proper component folders
+# Move misplaced research to proper 04_component folders
 mv documentation/06-remove-button-research-report.md \
-   documentation/04-components/button/research/competitive-analysis/2025-09-09_remove-button-industry-analysis.md
+   documentation/04-04_components/button/research/competitive-analysis/2025-09-09_remove-button-industry-analysis.md
 ```
 
 #### Step 2: Create Research Structure
 ```bash
-# Create research folders for existing components
-mkdir -p documentation/04-components/button/research/{competitive-analysis,user-research,technical-research,design-exploration,decisions}
-mkdir -p documentation/04-components/input/research/{competitive-analysis,user-research,decisions}
-mkdir -p documentation/04-components/tag/research/{competitive-analysis,decisions}
+# Create research folders for existing 04_components
+mkdir -p documentation/04-04_components/button/research/{competitive-analysis,user-research,technical-research,design-exploration,decisions}
+mkdir -p documentation/04-04_components/input/research/{competitive-analysis,user-research,decisions}
+mkdir -p documentation/04-04_components/tag/research/{competitive-analysis,decisions}
 ```
 
 #### Step 3: Create Research Hub
 ```bash
 # Create central research coordination
-mkdir -p documentation/08-research/{cross-component,methodology,competitive-analysis/systems}
+mkdir -p documentation/08-research/{cross-04_component,methodology,competitive-analysis/systems}
 ```
 
 #### Step 4: Implement Templates
@@ -260,7 +260,7 @@ mkdir -p documentation/08-research/{cross-component,methodology,competitive-anal
 ### Benefits of This Organization
 
 #### For Researchers
-- **Clear structure** for finding component-specific research
+- **Clear structure** for finding 04_component-specific research
 - **Templates** for consistent research quality
 - **Cross-references** prevent duplicate work
 
@@ -285,7 +285,7 @@ mkdir -p documentation/08-research/{cross-component,methodology,competitive-anal
 ```bash
 # Helper script for research file creation
 ./scripts/create-research.sh button competitive-analysis "remove-button-patterns"
-# Creates: documentation/04-components/button/research/competitive-analysis/2025-09-09_competitive-analysis_remove-button-patterns.md
+# Creates: documentation/04-04_components/button/research/competitive-analysis/2025-09-09_competitive-analysis_remove-button-patterns.md
 ```
 
 #### Cross-Reference Validation

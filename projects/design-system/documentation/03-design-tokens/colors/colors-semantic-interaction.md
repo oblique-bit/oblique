@@ -469,4 +469,4 @@ Interaction colors automatically adapt to theme changes through inversity variat
 
 ---
 
-*For related documentation, see [Brand Colors](./colors-semantic-brand.md), [Neutral Colors](./colors-semantic-neutral.md), and [Status Colors](./colors-semantic-status.md)*
+*For related documentation, see [Brand Colors](./colors-03_semantic-brand.md), [Neutral Colors](./colors-03_semantic-neutral.md), and [Status Colors](./colors-03_semantic-status.md)*

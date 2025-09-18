@@ -12,14 +12,14 @@
 
 ## What Are Component Tokens?
 
-Component tokens are the top level of the token hierarchy, providing component-specific styling definitions that reference semantic tokens. They describe **component-specific styling patterns**, not visual appearance.
+Component tokens are the top level of the token hierarchy, providing component-specific styling definitions that reference 03_semantic tokens. They describe **component-specific styling patterns**, not visual appearance.
 
 **Component Token Purpose:**
 - Define component-specific styling patterns
 - Establish variant systems within components  
-- Provide component-level abstraction over semantic tokens
+- Provide component-level abstraction over 03_semantic tokens
 - Enable component-specific theming and customization
-- Act as a shield to protect developers from changes when refactoring happens only on config, primitive or semantic token level
+- Act as a shield to protect developers from changes when refactoring happens only on config, primitive or 03_semantic token level
 
 ## Component Token Levels
 
@@ -121,7 +121,7 @@ Component tokens establish **default values** to ensure visual consistency, inte
 
 **NEVER use "default" as a variant name** - This overwrites the actual distinctive name and makes the specific variant invisible.
 
-**DO use descriptive variant names** - Use the actual semantic name (e.g., `md`, `body`, `primary`) and establish defaults through:
+**DO use descriptive variant names** - Use the actual 03_semantic name (e.g., `md`, `body`, `primary`) and establish defaults through:
 
 1. **Token Documentation**: Clear description indicating default status
 2. **Figma Component Setup**: Default variant selection in component properties
@@ -305,7 +305,7 @@ Based on analysis of 40+ design systems including Material Design, Carbon, Fluen
 2. **On-Surface Pattern**: Contextual foreground tokens for specific backgrounds
 3. **State Management**: Consistent hover/focus/active/disabled state patterns
 4. **Semantic Categories**: Clear primary/secondary/tertiary or accent/neutral hierarchies
-5. **Component Boundaries**: Clear separation between component tokens and semantic tokens
+5. **Component Boundaries**: Clear separation between component tokens and 03_semantic tokens
 
 ---
 
@@ -409,7 +409,7 @@ ob.h.list.single_item.spacing.marker_gap.list.{element}.color.{property}.{varian
 - Follow atomic design: `button` (atom), `card-header` (molecule)
 
 **Variant Names:**
-- Use semantic purpose: `primary`, `secondary`, `destructive`
+- Use 03_semantic purpose: `primary`, `secondary`, `destructive`
 - Avoid visual descriptions: `red`, `large`, `bold`
 - Be consistent: `default` for base variants
 
@@ -456,11 +456,11 @@ ob.h.list.single_item.spacing.marker_gap.list.{element}.color.{property}.{varian
 **Complete State Coverage:**
 ```json
 {
-  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": "{semantic-reference}",
-  "ob.h.list.single_item.spacing.marker_gap.list.list": "{semantic-reference}",
-  "ob.h.list.single_item.spacing.marker_gap.list.list": "{semantic-reference}",
-  "ob.h.list.single_item.spacing.marker_gap.list": "{semantic-reference}",
-  "ob.h.list.single_item.spacing.marker_gap.list.list": "{semantic-reference}"
+  "ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": "{03_semantic-reference}",
+  "ob.h.list.single_item.spacing.marker_gap.list.list": "{03_semantic-reference}",
+  "ob.h.list.single_item.spacing.marker_gap.list.list": "{03_semantic-reference}",
+  "ob.h.list.single_item.spacing.marker_gap.list": "{03_semantic-reference}",
+  "ob.h.list.single_item.spacing.marker_gap.list.list": "{03_semantic-reference}"
 }
 ```
 
@@ -468,17 +468,17 @@ ob.h.list.single_item.spacing.marker_gap.list.{element}.color.{property}.{varian
 - `enabled` - Default interactive state (not `default`)
 - `disabled` - Non-interactive state
 - Use CSS pseudo-class names: `hover`, `focus`, `active`
-- Use semantic states: `selected`, `expanded`, `loading`
+- Use 03_semantic states: `selected`, `expanded`, `loading`
 
 ### **4. Theming Support**
 
-Component tokens should support theming through semantic token selection:
+Component tokens should support theming through 03_semantic token selection:
 
 **Emphasis Theming:**
 ```scss
 // High emphasis (default)
 .ob-button-primary {
-  // Uses emphasis_high semantic tokens
+  // Uses emphasis_high 03_semantic tokens
 }
 
 // Low emphasis (monochromatic)
@@ -486,7 +486,7 @@ Component tokens should support theming through semantic token selection:
   --ob-theme-emphasis: low;
   
   .ob-button-primary {
-    // Automatically uses emphasis_low semantic tokens
+    // Automatically uses emphasis_low 03_semantic tokens
   }
 }
 ```
@@ -495,14 +495,14 @@ Component tokens should support theming through semantic token selection:
 ```scss
 // Normal inversity (default)
 .ob-card {
-  // Uses inversity_normal semantic tokens
+  // Uses inversity_normal 03_semantic tokens
 }
 
 // Flipped inversity (inverted)
 .ob-modal {
   --ob-theme-inversity: flipped;
   
-  // All nested components use inversity_flipped semantic tokens
+  // All nested components use inversity_flipped 03_semantic tokens
 }
 ```
 
@@ -760,7 +760,7 @@ Flipped Components:
 - Standard HTML elements requiring consistent styling
 - Form elements, buttons, inputs, tables
 - Basic interactive elements with standard behavior
-- Elements that map directly to HTML semantics
+- Elements that map directly to HTML 03_semantics
 
 ---
 
@@ -769,14 +769,14 @@ Flipped Components:
 ### **When to Create Component Tokens**
 
 **Create component tokens when:**
-- Component has specific styling patterns that differ from semantic defaults
+- Component has specific styling patterns that differ from 03_semantic defaults
 - Component needs variant management (primary/secondary/tertiary)
 - Component requires complete state system management
 - Component needs component-specific theming overrides
 - Component patterns will be reused across multiple instances
 
 **Don't create component tokens when:**
-- Simple semantic token consumption is sufficient
+- Simple 03_semantic token consumption is sufficient
 - No component-specific patterns exist
 - Component is one-off implementation
 - Only primitives or global tokens are needed
@@ -786,15 +786,15 @@ Flipped Components:
 1. **Identify Component Type**: Interactive, status, or neutral
 2. **Define Variant System**: primary/secondary, default/emphasis, etc.
 3. **Map State Requirements**: enabled/hover/focus/active/disabled
-4. **Choose Semantic References**: S3 semantic token consumption
-5. **Document Token Purpose**: Why component token vs direct semantic consumption
+4. **Choose Semantic References**: S3 03_semantic token consumption
+5. **Document Token Purpose**: Why component token vs direct 03_semantic consumption
 6. **Test Theming**: Verify emphasis and inversity theming work correctly
 
 ### **Validation Checklist**
 
 - [ ] **No primitive consumption**: Component doesn't reference `ob.p.assets.logo.assets.logo.assets.assets.*` directly
 - [ ] **No S1 consumption**: Component doesn't reference `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*` directly  
-- [ ] **Semantic alignment**: Component purpose matches semantic token type
+- [ ] **Semantic alignment**: Component purpose matches 03_semantic token type
 - [ ] **Complete state coverage**: All necessary interaction states defined
 - [ ] **Consistent naming**: Follows established component token conventions
 - [ ] **Theming support**: Component works with emphasis/inversity theming
@@ -809,7 +809,7 @@ Flipped Components:
 When migrating from legacy systems:
 
 1. **Audit existing patterns**: Identify current component token usage
-2. **Map to semantic hierarchy**: Choose appropriate S3 semantic references
+2. **Map to 03_semantic hierarchy**: Choose appropriate S3 03_semantic references
 3. **Preserve visual consistency**: Ensure migration doesn't break designs
 4. **Update component implementations**: Modify CSS/JS to use new tokens
 5. **Test theme compatibility**: Verify all theming scenarios work
@@ -827,7 +827,7 @@ When migrating from legacy systems:
 - Use validation scripts: `node scripts-custom/validate-all-components.js`
 - Test theming scenarios: emphasis and inversity variations
 - Verify state coverage: all interaction states defined
-- Check semantic alignment: component purpose matches token type
+- Check 03_semantic alignment: component purpose matches token type
 
 ---
 
@@ -865,7 +865,7 @@ When migrating from legacy systems:
     "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index) - Overall token hierarchy and patterns
 - [Token Consumption Guidelines](./guidelines-token-consumption.md) - How to consume tokens correctly
 - [Component Identification](../07-workflow/maintainers/readme.md) - Component classification and naming
-- [Semantic Color Architecture](./colors/colors-semantic.md) - Semantic token structure and usage
+- [Semantic Color Architecture](./colors/colors-03_semantic.md) - Semantic token structure and usage
 
 ---
 

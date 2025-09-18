@@ -16,7 +16,7 @@ This document outlines the architecture and strategy for primitive tokens in the
 
 The primitive layer is split into two distinct files based on the type of value they represent.
 
-### 1. `primitive/dimension.json`
+### 1. `primitive/dimension/static.json`
 
 This file is the source of truth for all length-based, unitized values.
 
@@ -36,13 +36,13 @@ This file is the source of truth for all length-based, unitized values.
 -   **`px` (Absolute Scale)**: Provides pixel-based units. These are static and do not scale with the user's browser font-size settings. They are ideal for elements that must maintain a fixed size, such as borders, fine lines, or icons where pixel-perfect rendering is critical.
 -   **`rem` (Fluid Scale)**: Provides rem-based units, which are relative to the root `<html>` element's font size. This allows components and layouts to scale proportionally based on user preferences, which is essential for accessibility.
 
-The `dimension.json` file maintains **parallel scales**. For every `px` value, a corresponding `rem` value is available, calculated from a `16px` base.
+The `dimension/static.json` file maintains **parallel scales**. For every `px` value, a corresponding `rem` value is available, calculated from a `16px` base.
 
 ### 2. `primitive/number.json`
 
 This file is the source of truth for all **unitless** or abstract numeric values.
 
--   **Purpose**: To house numbers that require transformation at build time or are naturally unitless (like line height). This separation prevents the pollution of the `dimension.json` file with non-standard units.
+-   **Purpose**: To house numbers that require transformation at build time or are naturally unitless (like line height). This separation prevents the pollution of the `dimension/static.json` file with non-standard units.
 -   **Structure**:
     -   Categorized by the CSS property they are intended for (e.g., `line-height`, `letter-spacing`, `percentage`).
 -   **Use Cases**:
@@ -88,7 +88,7 @@ This architecture ensures that the system is well-structured, easy to understand
 Primitive `px` dimension tokens should be named by their pixel value. `rem` tokens should use a t-shirt scale.
 
 ```json
-// In: primitive/dimension.json
+// In: primitive/dimension/static.json
 // "px" token
 "8": {
   "$type": "dimension",
@@ -109,7 +109,7 @@ Primitive `px` dimension tokens should be named by their pixel value. `rem` toke
 The primitive `px` scale should not have arbitrary values or large gaps. `rem` tokens should not be named after their `px` equivalent.
 
 ```json
-// In: primitive/dimension.json
+// In: primitive/dimension/static.json
 // OLD, BROKEN APPROACH for "rem"
 "8": {
   "$type": "dimension",

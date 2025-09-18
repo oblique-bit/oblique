@@ -20,10 +20,10 @@ Based on the [Variables vs Variants Strategic Analysis](./07-figma-variables-vs-
 ## Existing Token Architecture Analysis
 
 ### Current Size-Aware Components
-- **Button**: `sm`, `md`, `lg` (in `/themes/html/button/`)
-- **Badge**: `sm`, `lg` (in `/themes/component/atoms/badge.json`)  
-- **Pill**: `sm`, `md`, `lg` (in `/themes/component/molecules/pill.json`)
-- **Tag**: `sm`, `md`, `lg` (in `/themes/component/molecules/tag.json`)
+- **Button**: `sm`, `md`, `lg` (in `/themes/05_html/button/`)
+- **Badge**: `sm`, `lg` (in `/themes/04_component/atoms/badge.json`)  
+- **Pill**: `sm`, `md`, `lg` (in `/themes/04_component/molecules/pill.json`)
+- **Tag**: `sm`, `md`, `lg` (in `/themes/04_component/molecules/tag.json`)
 
 ### Existing Token Resources
 

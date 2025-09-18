@@ -7,7 +7,7 @@
 
 > **Technical Implementation**: For detailed layer structure, tokens mapping, CSS specifications, and Figma component analysis, see the latest MCP analysis report in the [reports folder](./reports/).
 
-> **Token Validation**: See [button-flex-direction-token-validation.html](./button-flex-direction-token-validation.html) for live demonstration of token implementation.
+> **Token Validation**: See [button-flex-direction-token-validation.05_html](./button-flex-direction-token-validation.05_html) for live demonstration of token implementation.
 
 ---
 
@@ -37,11 +37,11 @@
 
 ### Token File Structure
 
-**Location**: `src/lib/themes/html/button_aug/06 width/`
+**Location**: `src/lib/themes/05_05_html/button_aug/06 width/`
 - `compact.json`: Horizontal layout, auto-width buttons
 - `full.json`: Vertical layout, full-width buttons
 
-**Validation**: [Live HTML demonstration](./button-flex-direction-token-validation.html) proves tokens work perfectly in CSS implementation using modern data attribute + CSS custom properties pattern.
+**Validation**: [Live HTML demonstration](./button-flex-direction-token-validation.05_html) proves tokens work perfectly in CSS implementation using modern data attribute + CSS custom properties pattern.
 
 ### Decision Making Process & Rationale
 
@@ -122,11 +122,11 @@ Specific button subcomponents require **width = height** to maintain visual prop
 3. **Dual Implementation**: Component variants for Figma, tokens for HTML/CSS
 4. **Documentation Strategy**: Clear explanation of limitations and alternatives
 
-**Validation Results**: [HTML demonstration](./button-flex-direction-token-validation.html) confirms token architecture works perfectly for web implementation.
+**Validation Results**: [HTML demonstration](./button-flex-direction-token-validation.05_html) confirms token architecture works perfectly for web implementation.
 
 **Related Documentation**: 
 - [Flex-Direction Token Decision Log](./flex-direction-token-decision-log.md) - Complete reasoning and decision process
-- Token files: `src/lib/themes/html/button_aug/06 width/`
+- Token files: `src/lib/themes/05_05_html/button_aug/06 width/`
 
 ### Primary Button Conceptual Inversion
 
@@ -277,6 +277,6 @@ Buttons adapt based on **container constraints** and **semantic direction**, sol
 **Document Focus:** Strategic architecture, design principles, and token decisions  
 **Technical Details:** See MCP Figma analysis reports in `./reports/`  
 **Decision Process:** See [Flex-Direction Token Decision Log](./flex-direction-token-decision-log.md)  
-**Live Validation:** See [Button Flex-Direction Token Validation](./button-flex-direction-token-validation.html)  
+**Live Validation:** See [Button Flex-Direction Token Validation](./button-flex-direction-token-validation.05_html)  
 **Related Documentation:** Container Component Concept, Responsive Tokens
 

@@ -24,7 +24,7 @@
 ### **Architecture:** Component Structure
 - [ ] Layer names use underscore_format (not hyphens or camelCase)
 - [ ] Follow compound unit naming conventions
-- [ ] Consider composite token opportunities for complex components
+- [ ] Consider composite token opportunities for complex 04_components
 - [ ] Maintain consistent token naming patterns
 
 ### **Success:** Validation Requirements
@@ -50,7 +50,7 @@
 ## **Analysis:** Common Violation Patterns
 
 ### Tokenization Violations
-- **Colors:** `#ff0000` → Should use `ob/color/semantic/error/bg`
+- **Colors:** `#ff0000` → Should use `ob/color/03_semantic/error/bg`
 - **Typography:** `font-size: 16px` → Should use `ob/typography/body/md`
 - **Spacing:** `padding: 12px` → Should use `ob/spacing/md`
 - **Sizing:** `width: 240px` → Should use `ob/sizing/button/width/lg`
@@ -70,20 +70,20 @@
 
 ### When to Use Composite Tokens
 - Components with 8+ variants
-- High-maintenance components (like buttons)
+- High-maintenance 04_components (like buttons)
 - Components with complex state combinations
 - Components requiring frequent design updates
 
 ### Composite Token Benefits
 - **One-click updates** across all variants
 - **Error reduction** in manual editing
-- **Consistency guarantee** across component family
-- **Maintenance efficiency** for complex components
+- **Consistency guarantee** across 04_component family
+- **Maintenance efficiency** for complex 04_components
 
 ### Quick Implementation
 1. Identify groupable properties
 2. Create composite token in Token Studio
-3. Apply to component master
+3. Apply to 04_component master
 4. Test across all variants
 5. Document usage and structure
 
@@ -111,7 +111,7 @@
 
 - [Complete Workflow Guide](../07-workflow/maintainers/13-tokenization-workflow-complete.md)
 - [Token Studio Context](../07-workflow/maintainers/01-tokens-studio-context.md)
-- [Component Tokens](./component-tokens.md)
+- [Component Tokens](./04_component-tokens.md)
 - [Compound Units](./compound-units.md)
 - [MCP Validation Prompts](../07-workflow/maintainers/prompts/)
 

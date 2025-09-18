@@ -100,8 +100,8 @@
 ## Implementation Details
 
 ### Token Files Updated
-- `src/lib/themes/html/button_aug/06 width/compact.json`
-- `src/lib/themes/html/button_aug/06 width/full.json`
+- `src/lib/themes/05_05_html/button_aug/06 width/compact.json`
+- `src/lib/themes/05_05_html/button_aug/06 width/full.json`
 
 ### Token Structure
 ```json
@@ -191,8 +191,8 @@
 ## Related Documentation
 
 - [Button Overview](./button-overview.md) - Strategic architecture and principles
-- [Button Flex Direction Validation](./button-flex-direction-token-validation.html) - Live implementation demo
-- Token files: `src/lib/themes/html/button_aug/06 width/`
+- [Button Flex Direction Validation](./button-flex-direction-token-validation.05_html) - Live implementation demo
+- Token files: `src/lib/themes/05_05_html/button_aug/06 width/`
 
 ---
 

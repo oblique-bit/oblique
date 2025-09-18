@@ -71,7 +71,7 @@ Example:
 Category: Color Properties
 - Property: background-color
 - Current Value: #2379a4
-- Required Token: ob/color/semantic/primary/bg/enabled
+- Required Token: ob/color/03_semantic/primary/bg/enabled
 - Priority: High (used across multiple component states)
 ```
 

@@ -1,6 +1,6 @@
 # Brand Colors Documentation
 
-**About this document:** This document defines brand colors within the Oblique Design System semantic color architecture.
+**About this document:** This document defines brand colors within the Oblique Design System 03_semantic color architecture.
 
 **Scope:** Static brand identity tokens that maintain consistent federal visual identity across all themes and contexts.
 
@@ -72,7 +72,7 @@ The brand color system uses Swiss federal red (bundesrot) to maintain visual con
 ## Technical Implementation
 
 ### File Location
-- **Path**: `src/lib/themes/semantic/color/s3-semantic/semantic.json`
+- **Path**: `src/lib/themes/03_03_semantic/color/s3-03_semantic/03_semantic.json`
 - **Layer**: Semantic (s3) - static brand color integrated in final compilation
 - **References**: `{ob.p.color.red.50.red.50.red.50}` primitive
 
@@ -95,7 +95,7 @@ The brand color system uses Swiss federal red (bundesrot) to maintain visual con
 
 ### Usage Guidelines
 1. **Use sparingly**: Brand color should accent, not dominate
-2. **Maintain consistency**: Always reference the semantic token, never primitive directly
+2. **Maintain consistency**: Always reference the 03_semantic token, never primitive directly
 3. **Respect hierarchy**: Brand color shouldn't compete with status or critical interactions
 4. **Federal context**: Appropriate for government applications and federal identity
 
@@ -114,8 +114,8 @@ The brand color system uses Swiss federal red (bundesrot) to maintain visual con
 ## Related Documentation
 
 - [Color Tokens Overview](colors-overview.md) - Complete color system introduction
-- [Semantic Colors Architecture](colors-semantic.md) - Layer system and static colors
-- [Interaction Colors](colors-semantic-interaction.md) - How brand integrates with selection states
+- [Semantic Colors Architecture](colors-03_semantic.md) - Layer system and static colors
+- [Interaction Colors](colors-03_semantic-interaction.md) - How brand integrates with selection states
 - [Token Consumption Guidelines](../guidelines-token-consumption.md) - Implementation rules
 
 ---

@@ -33,20 +33,20 @@
 ### Category 02: Component Analysis
 | Prompt | Score | Status | Action | Report |
 |--------|-------|--------|--------|---------|
-| 02-compare-component-variants | TBD | 🟡 Good | Update | [View Report](./02-compare-component-variants_report.md) |
-| 02-detect-legacy-components | TBD | 🟡 Good | Update | [View Report](./02-detect-legacy-components_report.md) |
+| 02-compare-04_component-variants | TBD | 🟡 Good | Update | [View Report](./02-compare-04_component-variants_report.md) |
+| 02-detect-legacy-04_components | TBD | 🟡 Good | Update | [View Report](./02-detect-legacy-04_components_report.md) |
 
 ### Category 03: Token & Variable Analysis
 | Prompt | Score | Status | Action | Report |
 |--------|-------|--------|--------|---------|
-| 03-analyze-semantic-tokens | TBD | **Success:** Excellent | Keep | [View Report](./03-analyze-semantic-tokens_report.md) |
+| 03-analyze-03_semantic-tokens | TBD | **Success:** Excellent | Keep | [View Report](./03-analyze-03_semantic-tokens_report.md) |
 | 03-analyze-viewport-modes | TBD | **Success:** Excellent | Keep | [View Report](./03-analyze-viewport-modes_report.md) |
 | 03-extract-variable-definitions | TBD | **Success:** Excellent | Keep | [View Report](./03-extract-variable-definitions_report.md) |
 
 ### Category 04: Code Generation
 | Prompt | Score | Status | Action | Report |
 |--------|-------|--------|--------|---------|
-| 04-generate-html-css | TBD | **Success:** Excellent | Keep | [View Report](./04-generate-html-css_report.md) |
+| 04-generate-05_html-css | TBD | **Success:** Excellent | Keep | [View Report](./04-generate-05_html-css_report.md) |
 | 04-generate-react-tailwind | TBD | 🟡 Good | Update | [View Report](./04-generate-react-tailwind_report.md) |
 | 04-generate-with-context | TBD | **Warning:** Needs Work | Major Update | [View Report](./04-generate-with-context_report.md) |
 
@@ -54,7 +54,7 @@
 | Prompt | Score | Status | Action | Report |
 |--------|-------|--------|--------|---------|
 | 05-create-design-rules | TBD | **Warning:** Needs Work | Major Update | [View Report](./05-create-design-rules_report.md) |
-| 05-update-component-docs | TBD | **Success:** Excellent | Keep | [View Report](./05-update-component-docs_report.md) |
+| 05-update-04_component-docs | TBD | **Success:** Excellent | Keep | [View Report](./05-update-04_component-docs_report.md) |
 
 ### Category 06: Manual Operations
 | Prompt | Score | Status | Action | Report |
@@ -107,7 +107,7 @@
 
 ### Maintenance Schedule
 - **Monthly**: Re-run validation script
-- **Quarterly**: Manual testing with actual components
+- **Quarterly**: Manual testing with actual 04_components
 - **Semi-annually**: Full prompt audit and user feedback collection
 
 ---

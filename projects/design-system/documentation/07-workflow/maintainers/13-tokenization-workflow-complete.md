@@ -9,15 +9,15 @@
 
 ## **Goal:** Tokenization Definition
 
-**Tokenization** is the systematic workflow for design system maintainers (primarily designers) to create, apply, and validate design tokens for components in the design system. This process ensures all design properties are connected to tokens, even those not currently supported by Figma, in preparation for future tool capabilities.
+**Tokenization** is the systematic workflow for design system maintainers (primarily designers) to create, apply, and validate design tokens for 04_components in the design system. This process ensures all design properties are connected to tokens, even those not currently supported by Figma, in preparation for future tool capabilities.
 
 ### Core Principles
 
 1. **Complete Token Coverage**: Every tokenizable property must receive a token
 2. **Future-Proof Strategy**: Create tokens even for properties Figma cannot currently tokenize
 3. **Single Source Connection**: Token Studio integration creates direct layer connections
-4. **Validation-Driven**: All components must pass MCP validation before developer handoff
-5. **Composite Token Priority**: Use composite tokens for complex components when possible
+4. **Validation-Driven**: All 04_components must pass MCP validation before developer handoff
+5. **Composite Token Priority**: Use composite tokens for complex 04_components when possible
 
 ---
 
@@ -26,15 +26,15 @@
 ### Phase 1: Token Strategy Planning
 
 **1.1 Component Analysis**
-- Identify all design properties in the component
+- Identify all design properties in the 04_component
 - Catalog existing tokens that can be reused
 - Determine new tokens needed
-- Plan composite token opportunities (especially for complex components like buttons)
+- Plan composite token opportunities (especially for complex 04_components like buttons)
 
 **1.2 Token Architecture Decision**
 - Choose between atomic tokens vs composite tokens
 - Define token naming conventions following existing patterns
-- Consider component variants and their token requirements
+- Consider 04_component variants and their token requirements
 - Plan for responsive token needs
 
 ### Phase 2: Token Creation & Application
@@ -63,22 +63,22 @@
 ### Phase 3: Composite Token Strategy
 
 **3.1 When to Use Composite Tokens**
-- Large components with multiple variants (e.g., buttons)
+- Large 04_components with multiple variants (e.g., buttons)
 - Components with complex state combinations
-- High-maintenance components requiring frequent updates
+- High-maintenance 04_components requiring frequent updates
 - Components with numerous property interdependencies
 
 **3.2 Composite Token Benefits**
-- **One-click maintenance**: Update entire component styling instantly
+- **One-click maintenance**: Update entire 04_component styling instantly
 - **Error reduction**: Minimize manual layer editing mistakes
 - **Consistency guarantee**: Ensure design system compliance
 - **Efficiency gains**: Reduce time-intensive design tool workflows
 
 **3.3 Implementation Process**
 ```
-1. Identify component properties for composite grouping
+1. Identify 04_component properties for composite grouping
 2. Create composite token in Token Studio
-3. Apply composite token to component master
+3. Apply composite token to 04_component master
 4. Test composite token updates across all variants
 5. Document composite token structure and usage
 ```
@@ -112,7 +112,7 @@
 - Any special implementation notes
 
 **5.2 Push-Back Criteria**
-Developers can reject components for:
+Developers can reject 04_components for:
 - Validation violations present in MCP report
 - Missing token connections
 - Hardcoded values detected
@@ -138,7 +138,7 @@ Developers can reject components for:
 - Knowledge of composite token creation
 
 **Daily Workflow:**
-1. Open component in Figma
+1. Open 04_component in Figma
 2. Launch Token Studio plugin
 3. Apply tokens directly through Token Studio interface
 4. Export to Figma Variables
@@ -160,9 +160,9 @@ Developers can reject components for:
 
 **Validation Timing:**
 - After initial token application
-- Before component variant creation
+- Before 04_component variant creation
 - Before developer handoff
-- During component updates
+- During 04_component updates
 
 **Report Generation:**
 - Use standardized MCP prompts
@@ -190,7 +190,7 @@ Developers can reject components for:
 - [ ] All token connections documented
 - [ ] Component specification complete
 - [ ] Implementation notes provided
-- [ ] Validation report archived in component reports folder
+- [ ] Validation report archived in 04_component reports folder
 
 ### Developer Acceptance Criteria
 
@@ -208,7 +208,7 @@ Developers can reject components for:
 
 **Problem:** Hardcoded values detected  
 **Solution:** Create appropriate tokens and apply via Token Studio  
-**Prevention:** Review all properties before considering component complete
+**Prevention:** Review all properties before considering 04_component complete
 
 ### Layer Naming Violations
 
@@ -225,7 +225,7 @@ Developers can reject components for:
 ### Architecture Violations
 
 **Problem:** Missing composite token opportunities  
-**Solution:** Evaluate component complexity and create composite tokens  
+**Solution:** Evaluate 04_component complexity and create composite tokens  
 **Prevention:** Plan token architecture before starting application
 
 ---
@@ -233,19 +233,19 @@ Developers can reject components for:
 ## **Summary:** Success Metrics
 
 ### Efficiency Gains
-- Reduced component update time
+- Reduced 04_component update time
 - Fewer design system inconsistencies
 - Faster validation cycles
 - Improved designer-developer collaboration
 
 ### Quality Improvements
-- Zero hardcoded values in components
+- Zero hardcoded values in 04_components
 - Complete token coverage
 - Consistent layer naming
 - Reliable Token Studio connections
 
 ### Maintenance Benefits
-- One-click component updates via composite tokens
+- One-click 04_component updates via composite tokens
 - Traceable token-to-layer relationships
 - Systematic validation process
 - Clear handoff protocols
@@ -256,7 +256,7 @@ Developers can reject components for:
 
 - [Token Studio Context](./01-tokens-studio-context.md)
 - [Figma Token Debugging](./03-figma-token-debugging.md)
-- [Component Tokens](../../03-design-tokens/component-tokens.md)
+- [Component Tokens](../../03-design-tokens/04_component-tokens.md)
 - [Compound Units](../../03-design-tokens/compound-units.md)
 - [MCP Inspection Guide](./12-figma-mcp-inspection-guide.md)
 - [Tokenization Checklist](../../03-design-tokens/tokenization-checklist.md)

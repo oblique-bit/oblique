@@ -6,7 +6,7 @@
 
 ## **Quick Start:** Quick Start
 
-The {component-name} component provides {COMPONENT_PURPOSE} for different use cases:
+The {04_component-name} 04_component provides {COMPONENT_PURPOSE} for different use cases:
 {SUBCOMPONENT_LIST}
 
 ## **Note:** Documentation
@@ -53,4 +53,4 @@ The {component-name} component provides {COMPONENT_PURPOSE} for different use ca
 
 ---
 
-**Need help?** Check the [Component Strategy Guide](../../07-workflow/maintainers/component-documentation-separation-strategy.md) or reach out to the Design System Team.
+**Need help?** Check the [Component Strategy Guide](../../07-workflow/maintainers/04_component-documentation-separation-strategy.md) or reach out to the Design System Team.
