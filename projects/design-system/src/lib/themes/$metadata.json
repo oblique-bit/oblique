@@ -73,10 +73,10 @@
     "html/hr",
     "html/link",
     "html/list",
-    "_FIGMA-ONLY/figma-doc/typography",
-    "_FIGMA-ONLY/figma-doc/colors-static",
-    "_FIGMA-ONLY/figma-doc/theme/lightness/light",
-    "_FIGMA-ONLY/figma-doc/theme/lightness/dark",
-    "_FIGMA-ONLY/typography-styles-R13"
+    "NO-DS/OB-LEGACY/typography-styles-R13",
+    "NO-DS/FIGMA-ONLY/typography",
+    "NO-DS/FIGMA-ONLY/colors-static",
+    "NO-DS/FIGMA-ONLY/theme/lightness/light",
+    "NO-DS/FIGMA-ONLY/theme/lightness/dark"
   ]
 }

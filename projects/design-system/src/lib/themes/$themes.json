@@ -402,7 +402,6 @@
     "selectedTokenSets": {
       "html/link": "enabled",
       "html/hr": "enabled",
-      "_FIGMA-ONLY/figma-doc/colors-static": "enabled",
       "html/list": "enabled",
       "primitive/position": "source",
       "primitive/typography": "source",
@@ -430,7 +429,12 @@
       "html/button/07_composite": "source",
       "html/button/03_shadows": "source",
       "component/molecule/tag/tag": "enabled",
-      "component/molecule/tag/typography": "source"
+      "component/molecule/tag/typography": "source",
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "enabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "disabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -914,7 +918,12 @@
     "selectedTokenSets": {
       "component/molecule/infobox/responsive/desktop": "enabled",
       "global/multipliers/viewport/desktop": "enabled",
-      "html/button/05_viewport/desktop": "enabled"
+      "html/button/05_viewport/desktop": "enabled",
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "disabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.c.infobox.spacing.padding_top": "d2dfd770b54e7a2a8a604e1cc0515651df21b658",
@@ -1075,7 +1084,12 @@
     "selectedTokenSets": {
       "component/molecule/infobox/responsive/mobile": "enabled",
       "global/multipliers/viewport/mobile": "enabled",
-      "html/button/05_viewport/mobile": "enabled"
+      "html/button/05_viewport/mobile": "enabled",
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "disabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.c.infobox.spacing.padding_top": "d2dfd770b54e7a2a8a604e1cc0515651df21b658",
@@ -1311,9 +1325,13 @@
     "selectedTokenSets": {
       "primitive/color": "source",
       "semantic/asset/theme/lightness/light": "enabled",
-      "_FIGMA-ONLY/figma-doc/theme/lightness/light": "enabled",
       "semantic/color/s1-lightness/light": "enabled",
-      "component/molecule/infobox/color": "enabled"
+      "component/molecule/infobox/color": "enabled",
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "enabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "disabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -1819,9 +1837,13 @@
     "selectedTokenSets": {
       "primitive/color": "source",
       "semantic/asset/theme/lightness/dark": "enabled",
-      "_FIGMA-ONLY/figma-doc/theme/lightness/dark": "enabled",
       "semantic/color/s1-lightness/dark": "enabled",
-      "component/molecule/infobox/color": "enabled"
+      "component/molecule/infobox/color": "enabled",
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "enabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",
@@ -2157,7 +2179,12 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/high": "enabled"
+      "semantic/color/s2-emphasis/high": "enabled",
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "disabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "44d4eb2b10205a66dd0f2f04f1512678b684d0c7",
@@ -2227,7 +2254,12 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "semantic/color/s2-emphasis/low": "enabled"
+      "semantic/color/s2-emphasis/low": "enabled",
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "disabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "44d4eb2b10205a66dd0f2f04f1512678b684d0c7",
@@ -2318,7 +2350,11 @@
       "r13.typography.components_only.tooltip.label": "S:01a80ff405036b8a204f742fa49f200230ff826c,"
     },
     "selectedTokenSets": {
-      "_FIGMA-ONLY/typography-styles-R13": "enabled"
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "disabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "enabled"
     },
     "$figmaVariableReferences": {},
     "group": "R13"
@@ -2381,7 +2417,12 @@
       "semantic/elevation": "enabled",
       "semantic/dimension/static": "enabled",
       "semantic/typography/single/static": "enabled",
-      "semantic/typography/grouped/static": "enabled"
+      "semantic/typography/grouped/static": "enabled",
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "disabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:6",
     "$figmaModeId": "1:7",
@@ -2808,7 +2849,12 @@
     "name": "row",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button/06_flex-direction/row": "enabled"
+      "html/button/06_flex-direction/row": "enabled",
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "disabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button.flex_direction.row.gap": "c383cb0b15894cb875d5891b0db413cc98b98728"
@@ -2822,7 +2868,12 @@
     "name": "column",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "html/button/06_flex-direction/column": "enabled"
+      "html/button/06_flex-direction/column": "enabled",
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "disabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "disabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button.flex_direction.column.gap": "33640136982324b66d0aef0256fd04e7c6b8ff15"
@@ -2855,7 +2906,12 @@
     "selectedTokenSets": {
       "semantic/dimension/sm": "enabled",
       "semantic/typography/single/sm": "enabled",
-      "semantic/typography/grouped/sm": "enabled"
+      "semantic/typography/grouped/sm": "enabled",
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "disabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:0",
@@ -2964,7 +3020,12 @@
     "selectedTokenSets": {
       "semantic/dimension/md": "enabled",
       "semantic/typography/single/md": "enabled",
-      "semantic/typography/grouped/md": "enabled"
+      "semantic/typography/grouped/md": "enabled",
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "disabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:1",
@@ -3073,7 +3134,12 @@
     "selectedTokenSets": {
       "semantic/dimension/lg": "enabled",
       "semantic/typography/single/lg": "enabled",
-      "semantic/typography/grouped/lg": "enabled"
+      "semantic/typography/grouped/lg": "enabled",
+      "NO-DS/FIGMA-ONLY/typography": "disabled",
+      "NO-DS/FIGMA-ONLY/colors-static": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/light": "disabled",
+      "NO-DS/FIGMA-ONLY/theme/lightness/dark": "disabled",
+      "NO-DS/OB-LEGACY/typography-styles-R13": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:2",
