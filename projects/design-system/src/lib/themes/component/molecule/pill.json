@@ -84,15 +84,15 @@
           "style": {
             "sm": {
               "$type": "typography",
-              "$value": "{ob.s.typography.scale.dynamic.xs.normal}"
+              "$value": "{ob.s.typography.grouped.dynamic.xs.normal}"
             },
             "md": {
               "$type": "typography",
-              "$value": "{ob.s.typography.scale.dynamic.md.normal}"
+              "$value": "{ob.s.typography.grouped.dynamic.md.normal}"
             },
             "lg": {
               "$type": "typography",
-              "$value": "{ob.s.typography.scale.dynamic.md.normal}"
+              "$value": "{ob.s.typography.grouped.dynamic.md.normal}"
             }
           }
         },

@@ -39,7 +39,7 @@
         "typography": {
           "label": {
             "$type": "typography",
-            "$value": "{ob.s.typography.scale.static.sm.strong}",
+            "$value": "{ob.s.typography.grouped.static.sm.strong}",
             "$description": "Bold since it is 14px to reach AAA"
           }
         },

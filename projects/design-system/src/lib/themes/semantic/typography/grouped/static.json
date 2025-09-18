@@ -2,7 +2,7 @@
   "ob": {
     "s": {
       "typography": {
-        "scale": {
+        "grouped": {
           "static": {
             "xs": {
               "normal": {

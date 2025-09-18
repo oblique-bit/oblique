@@ -61,7 +61,7 @@
         "typography": {
           "title": {
             "$type": "typography",
-            "$value": "{ob.s.typography.scale.static.md.strong}",
+            "$value": "{ob.s.typography.grouped.static.md.strong}",
             "$description": "The message is in a bold font weight to build visual contrast and emphasize the hierarchy."
           },
           "body": {

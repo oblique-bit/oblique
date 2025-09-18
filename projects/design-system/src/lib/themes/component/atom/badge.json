@@ -1,4 +1,3 @@
-
 {
   "ob": {
     "c": {
@@ -179,7 +178,7 @@
         "typography": {
           "badge_label": {
             "$type": "typography",
-            "$value": "{ob.s.typography.scale.dynamic.sm.strong}",
+            "$value": "{ob.s.typography.grouped.dynamic.sm.strong}",
             "$description": "Strong font weight for optimal scannability."
           }
         }
