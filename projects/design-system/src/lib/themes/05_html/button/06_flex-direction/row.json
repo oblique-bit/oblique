@@ -7,27 +7,27 @@
             "flex_direction": {
               "$type": "string",
               "$value": "row",
-              "$description": "CSS flex-direction for horizontal button layout. HTML/CSS implementation only - use button.container component variants in Figma."
+              "$description": "[NO-FIGMA-SUPPORT] CSS flex-direction for horizontal button layout. HTML/CSS implementation only - use button.container component variants in Figma."
             },
             "align_items": {
               "$type": "string",
               "$value": "center",
-              "$description": "CSS align-items for horizontal button alignment. HTML/CSS implementation only - use button.container component variants in Figma."
+              "$description": "[NO-FIGMA-SUPPORT] CSS align-items for horizontal button alignment. HTML/CSS implementation only - use button.container component variants in Figma."
             },
             "justify_content": {
               "$type": "string",
               "$value": "flex-start",
-              "$description": "CSS justify-content for button positioning. HTML/CSS implementation only - use button.container component variants in Figma."
+              "$description": "[NO-FIGMA-SUPPORT] CSS justify-content for button positioning. HTML/CSS implementation only - use button.container component variants in Figma."
             },
             "gap": {
               "$type": "spacing",
               "$value": "{ob.s.dimension.dynamic.element.md.px}",
-              "$description": "CSS gap between buttons in compact layout"
+              "$description": "[NO-FIGMA-SUPPORT] CSS gap between buttons in compact layout"
             },
             "width": {
               "$type": "string",
               "$value": "auto",
-              "$description": "CSS width for buttons - auto lets them hug content. HTML/CSS implementation only - use button.container component variants in Figma."
+              "$description": "[NO-FIGMA-SUPPORT] CSS width for buttons - auto lets them hug content. HTML/CSS implementation only - use button.container component variants in Figma."
             }
           }
         }

@@ -7,27 +7,27 @@
             "flex_direction": {
               "$type": "string",
               "$value": "column",
-              "$description": "CSS flex-direction for vertical button layout. HTML/CSS implementation only - use button.container component variants in Figma."
+              "$description": "[NO-FIGMA-SUPPORT] CSS flex-direction for vertical button layout. HTML/CSS implementation only - use button.container component variants in Figma."
             },
             "align_items": {
               "$type": "string",
               "$value": "stretch",
-              "$description": "CSS align-items for full-width buttons. HTML/CSS implementation only - use button.container component variants in Figma."
+              "$description": "[NO-FIGMA-SUPPORT] CSS align-items for full-width buttons. HTML/CSS implementation only - use button.container component variants in Figma."
             },
             "justify_content": {
               "$type": "string",
               "$value": "flex-start",
-              "$description": "CSS justify-content for button positioning. HTML/CSS implementation only - use button.container component variants in Figma."
+              "$description": "[NO-FIGMA-SUPPORT] CSS justify-content for button positioning. HTML/CSS implementation only - use button.container component variants in Figma."
             },
             "gap": {
               "$type": "spacing",
               "$value": "{ob.s.dimension.dynamic.surface.xs.px}",
-              "$description": "CSS gap between stacked buttons"
+              "$description": "[NO-FIGMA-SUPPORT] CSS gap between stacked buttons"
             },
             "width": {
               "$type": "string",
               "$value": "100%",
-              "$description": "CSS width for buttons - fills container for better touch targets. HTML/CSS implementation only - use button.container component variants in Figma."
+              "$description": "[NO-FIGMA-SUPPORT] CSS width for buttons - fills container for better touch targets. HTML/CSS implementation only - use button.container component variants in Figma."
             }
           }
         }

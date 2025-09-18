@@ -347,12 +347,12 @@
         "cap_baseline": {
           "$type": "string",
           "$value": "cap-height baseline",
-          "$description": "Vertical trim from cap height to baseline - removes extra space above capitals and below baseline. FIGMA LIMITATION: Cannot be used as Figma variable. Set manually in Figma using 'Vertical trim' property. CSS implementation: text-box-trim: cap alphabetic."
+          "$description": "[NO-FIGMA-SUPPORT] Vertical trim from cap height to baseline - removes extra space above capitals and below baseline. Set manually in Figma using 'Vertical trim' property. CSS implementation: text-box-trim: cap alphabetic."
         },
         "cap_x_height": {
           "$type": "string",
           "$value": "cap-height x-height",
-          "$description": "Vertical trim from cap height to x-height - removes space above capitals and below lowercase. FIGMA LIMITATION: Cannot be used as Figma variable. Set manually in Figma using 'Vertical trim' property."
+          "$description": "[NO-FIGMA-SUPPORT] Vertical trim from cap height to x-height - removes space above capitals and below lowercase. Set manually in Figma using 'Vertical trim' property."
         },
         "none": {
           "$type": "string",
