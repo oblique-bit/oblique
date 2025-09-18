@@ -164,12 +164,12 @@
           "none": {
             "px": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.px.0} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.px.0}",
               "$description": "Zero spacing for no distance - pixel units"
             },
             "rem": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.rem.0} * {ob.g.multiplier.viewport.desktop}",
+              "$value": "{ob.p.dimension.rem.0}",
               "$description": "Zero spacing for no distance - rem units"
             }
           },
