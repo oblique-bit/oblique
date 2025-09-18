@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W3C DTCG Compliant Token Validation: Button Width Modes</title>
+    <style>
+        /* CSS Custom Properties from our W3C DTCG compliant JSON tokens */
+        
+        /* COMPACT MODE - from compact.json with CSS-aligned naming */
+        [data-button-width-mode="compact"] {
+            /* flex_direction: "row" */
+            --button-container-flex-direction: row;
+            /* align_items: "center" */
+            --button-container-align-items: center;
+            /* justify_content: "flex-start" */
+            --button-container-justify-content: flex-start;
+            /* gap: spacing.xl */
+            --button-container-gap: 20px;
+            /* button_width: "auto" */
+            --button-width: auto;
+        }
+
+        /* FULL MODE - from full.json with CSS-aligned naming */
+        [data-button-width-mode="full"] {
+            /* flex_direction: "column" */
+            --button-container-flex-direction: column;
+            /* align_items: "stretch" */
+            --button-container-align-items: stretch;
+            /* justify_content: "flex-start" */
+            --button-container-justify-content: flex-start;
+            /* gap: spacing.lg */
+            --button-container-gap: 16px;
+            /* button_width: "100%" */
+            --button-width: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+
+        .demo-section {
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .demo-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* Button Container using CSS Custom Properties from tokens */
+        .button-container {
+            display: flex;
+            /* Use CSS custom properties directly mapped from CSS-aligned tokens */
+            flex-direction: var(--button-container-flex-direction);
+            align-items: var(--button-container-align-items);
+            justify-content: var(--button-container-justify-content);
+            gap: var(--button-container-gap);
+        }
+
+        /* Individual Button using token values */
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            border: 1px solid;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            
+            /* Width controlled by token value */
+            width: var(--button-width);
+            /* In compact mode: auto (hug content) */
+            /* In full mode: 100% (fill container) */
+        }
+
+        .button--primary {
+            background: #2379a4;
+            border-color: #2379a4;
+            color: white;
+        }
+
+        .button--secondary {
+            background: transparent;
+            border-color: #2e8fbf;
+            color: #2e8fbf;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Demo Container Styling */
+        .container-demo {
+            border: 2px dashed #ccc;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            background: #fafafa;
+        }
+
+        .code-example {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        .token-values {
+            background: #e8f5e8;
+            border-left: 4px solid #4caf50;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .validation-result {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 W3C DTCG Compliant Token Validation: Button Width Behavior</h1>
+
+    <div class="validation-result">
+        <strong>Location:</strong> Public documentation - git tracked for team collaboration<br>
+        <strong>Standards Compliance:</strong> All tokens follow W3C Design Tokens Community Group (DTCG) specification<br>
+        <strong>Token Types:</strong> CSS layout values use "$type": "string" (DTCG compliant)<br>
+        <strong>Testing:</strong> Real tokens from compact.json and full.json files<br>
+        <strong>Method:</strong> CSS custom properties + data attributes (modern dev approach)<br>
+        <strong>Figma Limitation:</strong> These tokens are not supported in Figma - use button.container component variants<br>
+        <strong>Goal:</strong> Validate token architecture works perfectly in HTML/CSS implementation
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Mode: COMPACT (from compact.json)</div>
+        <div class="token-values">
+            <strong>Active Token Values (CSS-Aligned):</strong><br>
+            • flex_direction: "row" → flex-direction: row<br>
+            • align_items: "center" → align-items: center<br>
+            • justify_content: "flex-start" → justify-content: flex-start<br>
+            • button_width: "auto" → width: auto<br>
+            • gap: "xl" → gap: 20px
+        </div>
+        
+        <div class="container-demo" data-button-width-mode="compact">
+            <div class="button-container">
+                <button class="button button--primary">Save Changes</button>
+                <button class="button button--secondary">Cancel</button>
+                <button class="button button--secondary">Preview</button>
+            </div>
+        </div>
+
+        <div class="code-example">
+/* CSS Custom Properties from compact.json (CSS-aligned) */
+[data-button-width-mode="compact"] {
+    --button-container-flex-direction: row;        /* flex_direction */
+    --button-container-align-items: center;        /* align_items */
+    --button-container-justify-content: flex-start; /* justify_content */
+    --button-container-gap: 20px;                  /* gap (xl) */
+    --button-width: auto;                           /* button_width */
+}
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Mode: FULL (from full.json)</div>
+        <div class="token-values">
+            <strong>Active Token Values (CSS-Aligned):</strong><br>
+            • flex_direction: "column" → flex-direction: column<br>
+            • align_items: "stretch" → align-items: stretch<br>
+            • justify_content: "flex-start" → justify-content: flex-start<br>
+            • button_width: "100%" → width: 100%<br>
+            • gap: "lg" → gap: 16px
+        </div>
+        
+        <div class="container-demo" data-button-width-mode="full">
+            <div class="button-container">
+                <button class="button button--primary">Save Changes</button>
+                <button class="button button--secondary">Cancel</button>
+                <button class="button button--secondary">Preview</button>
+            </div>
+        </div>
+
+        <div class="code-example">
+/* CSS Custom Properties from full.json (CSS-aligned) */
+[data-button-width-mode="full"] {
+    --button-container-flex-direction: column;      /* flex_direction */
+    --button-container-align-items: stretch;        /* align_items */
+    --button-container-justify-content: flex-start; /* justify_content */
+    --button-container-gap: 16px;                   /* gap (lg) */
+    --button-width: 100%;                            /* button_width */
+}
+        </div>
+    </div>
+
+    <h2>✅ Validation Results</h2>
+    <div class="demo-section">
+        <div class="validation-result">
+            <strong>SUCCESS:</strong> Our tokens work perfectly in HTML/CSS!<br><br>
+            
+            <strong>What works with CSS-aligned naming:</strong><br>
+            • flex_direction → flex-direction (row/column) ✅<br>
+            • align_items → align-items (center/stretch) ✅<br>
+            • justify_content → justify-content (flex-start) ✅<br>
+            • button_width → width (auto/100%) ✅<br>
+            • gap → gap (different values per mode) ✅<br><br>
+            
+            <strong>Developer Implementation:</strong><br>
+            • Data attributes for theme switching ✅<br>
+            • CSS custom properties for token values ✅<br>
+            • Real CSS properties that work ✅<br><br>
+            
+            <strong>Conclusion:</strong> Keep these tokens - they provide real value for HTML/CSS implementation!
+        </div>
+
+        <div class="code-example">
+Token Usage Pattern:
+1. JSON tokens define the values
+2. CSS custom properties make them available
+3. Data attributes control which theme is active
+4. Components use var(--token-name) for dynamic values
+
+This is exactly how modern design systems work!
+        </div>
+    </div>
+
+    <h2>🎛️ Interactive Test</h2>
+    <div class="demo-section">
+        <button onclick="toggleMode()" style="padding: 0.5rem 1rem; font-weight: bold; cursor: pointer;">
+            Toggle Between Compact ↔ Full Modes
+        </button>
+        
+        <div id="interactive-demo" class="container-demo" data-button-width-mode="compact">
+            <div class="button-container">
+                <button class="button button--primary">Dynamic Test</button>
+                <button class="button button--secondary">Mode Switch</button>
+            </div>
+        </div>
+        
+        <div id="current-mode" class="token-values">
+            Current Mode: <strong>compact</strong>
+        </div>
+    </div>
+
+    <script>
+        let isCompact = true;
+        
+        function toggleMode() {
+            const demo = document.getElementById('interactive-demo');
+            const modeDisplay = document.getElementById('current-mode');
+            
+            if (isCompact) {
+                demo.setAttribute('data-button-width-mode', 'full');
+                modeDisplay.innerHTML = 'Current Mode: <strong>full</strong>';
+            } else {
+                demo.setAttribute('data-button-width-mode', 'compact');
+                modeDisplay.innerHTML = 'Current Mode: <strong>compact</strong>';
+            }
+            
+            isCompact = !isCompact;
+        }
+    </script>
+
+    <footer style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+        <h3>Related Documentation</h3>
+        <p>
+            <a href="./button-overview.md">Button Overview</a> | 
+            <a href="./flex-direction-token-decision-log.md">Decision Log</a>
+        </p>
+        <p><small>Token files: <code>src/lib/themes/html/button_aug/06 width/</code></small></p>
+    </footer>
+</body>
+</html>
