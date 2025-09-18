@@ -109,16 +109,16 @@
         "typography": {
           "custom_buttons_label": {
             "$type": "typography",
-            "$value": "{ob.s.typography.type_scale.xs.normal}",
+            "$value": "{ob.s.typography.scale.static.xs.normal}",
             "$description": "Text labels for custom buttons in Service Navigation e.g. on ePortal."
           },
           "text": {
             "$type": "typography",
-            "$value": "{ob.s.typography.type_scale.sm.normal}"
+            "$value": "{ob.s.typography.scale.static.sm.normal}"
           },
           "title": {
             "$type": "typography",
-            "$value": "{ob.s.typography.type_scale.sm.strong}"
+            "$value": "{ob.s.typography.scale.static.sm.strong}"
           }
         },
         "border_radius": {
