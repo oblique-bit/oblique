@@ -172,13 +172,13 @@
         },
         "border_radius": {
           "$type": "borderRadius",
-          "$value": "{ob.s.radii.round}",
+          "$value": "{ob.s.radius.rounded}",
           "$description": "For entire rounded badges"
         },
         "typography": {
           "badge_label": {
             "$type": "typography",
-            "$value": "{ob.s.typography.type_scale.sm.strong}",
+            "$value": "{ob.s.typography.grouped.md.sm.strong}",
             "$description": "Strong font weight for optimal scannability."
           }
         }
