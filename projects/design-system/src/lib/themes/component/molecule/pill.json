@@ -7,34 +7,34 @@
             "vertical": {
               "sm": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.xs}",
+                "$value": "{ob.s.dimension.dynamic.detail.sm.px}",
                 "$description": "Top and bottom padding – for small size pills."
               },
               "md": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.sm}",
+                "$value": "{ob.s.dimension.dynamic.element.xs.px}",
                 "$description": "Top and bottom padding  – for medium size pills."
               },
               "lg": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.lg}",
+                "$value": "{ob.s.dimension.dynamic.element.md.px}",
                 "$description": "Top and bottom padding  – for large size pills."
               }
             },
             "horizontal": {
               "sm": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.lg}",
+                "$value": "{ob.s.dimension.dynamic.element.md.px}",
                 "$description": "Left and right padding – for small size pills."
               },
               "md": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.xl}",
+                "$value": "{ob.s.dimension.dynamic.surface.xs.px}",
                 "$description": "Left and right padding  – for medium size pills."
               },
               "lg": {
                 "$type": "spacing",
-                "$value": "{ob.s.spacing.3xl}",
+                "$value": "{ob.s.dimension.dynamic.surface.sm.px}",
                 "$description": "Left and right padding – for large size pills."
               }
             }
@@ -42,17 +42,17 @@
           "gap": {
             "sm": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.sm}",
+              "$value": "{ob.s.dimension.dynamic.element.xs.px}",
               "$description": "Horizontal gap between icon and text label – for small size pills."
             },
             "md": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.md}",
+              "$value": "{ob.s.dimension.dynamic.element.sm.px}",
               "$description": "Horizontal gap between icon and text label  – for medium size pills."
             },
             "lg": {
               "$type": "spacing",
-              "$value": "{ob.s.spacing.lg}",
+              "$value": "{ob.s.dimension.dynamic.element.md.px}",
               "$description": "Horizontal gap between icon and text label – for large size pills"
             }
           }
@@ -60,7 +60,7 @@
         "border_radius": {
           "default": {
             "$type": "borderRadius",
-            "$value": "{ob.s.radii.round}",
+            "$value": "{ob.s.radius.rounded}",
             "$description": "Standard pills in Oblique."
           }
         },
@@ -68,15 +68,15 @@
           "min_height": {
             "sm": {
               "$type": "dimension",
-              "$value": "{ob.s.dynamic.size.element.xl}"
+              "$value": "{ob.s.dimension.dynamic.surface.xs.px}"
             },
             "md": {
               "$type": "dimension",
-              "$value": "{ob.s.dynamic.size.surface.xs}"
+              "$value": "{ob.s.dimension.dynamic.surface.xs.px}"
             },
             "lg": {
               "$type": "dimension",
-              "$value": "{ob.s.dynamic.size.surface.lg}"
+              "$value": "{ob.s.dimension.dynamic.container.xs.px}"
             }
           }
         },

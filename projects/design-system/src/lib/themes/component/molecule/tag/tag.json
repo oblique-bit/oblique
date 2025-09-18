@@ -6,7 +6,7 @@
           "spacing": {
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.element.md.rem}",
+              "$value": "{ob.s.dimension.dynamic.surface.xs.rem}",
               "$description": "Spacing between single tags "
             }
           }
@@ -20,7 +20,7 @@
             },
             "horizontal": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.element.sm.px}",
+              "$value": "{ob.s.dimension.dynamic.element.md.px}",
               "$description": "Left and right padding  – for medium size tags."
             }
           },

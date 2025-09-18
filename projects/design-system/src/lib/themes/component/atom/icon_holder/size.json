@@ -5,13 +5,13 @@
         "size": {
           "standard": {
             "$type": "dimension",
-            "$value": "{ob.s.dimension.dynamic.surface.md.rem}",
-            "$description": "Standard icon holder size, equivalent to 24px."
+            "$value": "{ob.s.dimension.dynamic.container.xs.rem}",
+            "$description": "Standard icon holder size, equivalent to 32px."
           },
           "mini": {
             "$type": "dimension",
-            "$value": "{ob.s.dimension.dynamic.surface.xs.rem}",
-            "$description": "Mini icon holder size for compact contexts like button.remove, equivalent to 16px."
+            "$value": "{ob.s.dimension.dynamic.surface.sm.rem}",
+            "$description": "Mini icon holder size for compact contexts like button.remove, equivalent to 20px."
           }
         }
       }

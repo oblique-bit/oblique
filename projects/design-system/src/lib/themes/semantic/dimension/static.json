@@ -87,25 +87,25 @@
 						"sm": {
 							"px": {
 								"$type": "dimension",
-								"$value": "{ob.p.dimension.px.8}",
-								"$description": "8px - Standard component internal spacing (static)"
+								"$value": "{ob.p.dimension.px.6}",
+								"$description": "6px - Standard component internal spacing (static)"
 							},
 							"rem": {
 								"$type": "dimension",
 								"$value": "{ob.p.dimension.rem.400}",
-								"$description": "8px equivalent - Standard component internal spacing (static)"
+								"$description": "6px equivalent - Standard component internal spacing (static)"
 							}
 						},
 						"md": {
 							"px": {
 								"$type": "dimension",
-								"$value": "{ob.p.dimension.px.12}",
-								"$description": "12px - Large component internal spacing (static)"
+								"$value": "{ob.p.dimension.px.8}",
+								"$description": "8px - Large component internal spacing (static)"
 							},
 							"rem": {
 								"$type": "dimension",
 								"$value": "{ob.p.dimension.rem.500}",
-								"$description": "12px equivalent - Large component internal spacing (static)"
+								"$description": "8px equivalent - Large component internal spacing (static)"
 							}
 						}
 					},

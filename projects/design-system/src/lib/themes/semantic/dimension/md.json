@@ -57,13 +57,13 @@
 						"sm": {
 							"px": {
 								"$type": "dimension",
-								"$value": "{ob.p.dimension.px.8} * {ob.g.multiplier.dimension.md}",
-								"$description": "8px - Standard component internal spacing (dynamic)"
+								"$value": "{ob.p.dimension.px.6} * {ob.g.multiplier.dimension.md}",
+								"$description": "6px - Standard component internal spacing (dynamic)"
 							},
 							"rem": {
 								"$type": "dimension",
 								"$value": "{ob.p.dimension.rem.400} * {ob.g.multiplier.dimension.md}",
-								"$description": "8px equivalent - Standard component internal spacing (dynamic)"
+								"$description": "6px equivalent - Standard component internal spacing (dynamic)"
 							}
 						},
 						"md": {

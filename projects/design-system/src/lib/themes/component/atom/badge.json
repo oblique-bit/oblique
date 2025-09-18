@@ -1,3 +1,4 @@
+
 {
   "ob": {
     "c": {
@@ -136,37 +137,37 @@
           "max_width": {
             "sm": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.static.surface.xs.px}",
-              "$description": "Max width of small badge (16px - standard icon size)"
+              "$value": "{ob.s.dimension.static.surface.sm.px}",
+              "$description": "Max width of small badge (20px - standard icon size)"
             },
             "lg": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.static.container.sm.px}",
-              "$description": "Max width of large badge (48px - XL surface size)"
+              "$value": "{ob.s.dimension.static.container.md.px}",
+              "$description": "Max width of large badge (64px - XL surface size)"
             }
           },
           "min_width": {
             "sm": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.static.surface.xs.px}",
-              "$description": "Minimal width of small badge (16px - makes badge round)"
+              "$value": "{ob.s.dimension.static.surface.sm.px}",
+              "$description": "Minimal width of small badge (20px - makes badge round)"
             },
             "lg": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.static.surface.sm.px}",
-              "$description": "Minimal width of large badge (20px - makes badge round)"
+              "$value": "{ob.s.dimension.static.surface.md.px}",
+              "$description": "Minimal width of large badge (24px - makes badge round)"
             }
           },
           "height": {
             "sm": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.static.surface.xs.px}",
-              "$description": "Height of small badge (16px - makes badge round)"
+              "$value": "{ob.s.dimension.static.surface.sm.px}",
+              "$description": "Height of small badge (20px - makes badge round)"
             },
             "lg": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.static.surface.sm.px}",
-              "$description": "Height of large badge (20px - makes badge round)"
+              "$value": "{ob.s.dimension.static.surface.md.px}",
+              "$description": "Height of large badge (24px - makes badge round)"
             }
           }
         },

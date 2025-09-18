@@ -5,22 +5,22 @@
         "spacing": {
           "padding_top": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.surface.md.px}",
+            "$value": "{ob.s.dimension.static.container.xs.px}",
             "$description": "Increased paddings around text boost its readability."
           },
           "padding_right": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.container.xs.px}",
+            "$value": "{ob.s.dimension.static.container.sm.px}",
             "$description": "Increased paddings around text boost its readability."
           },
           "padding_bottom": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.surface.md.px}",
+            "$value": "{ob.s.dimension.static.container.xs.px}",
             "$description": "Increased paddings around text boost its readability."
           },
           "padding_left": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.container.xs.px}",
+            "$value": "{ob.s.dimension.static.container.sm.px}",
             "$description": "Increased paddings around text boost its readability."
           }
         },
