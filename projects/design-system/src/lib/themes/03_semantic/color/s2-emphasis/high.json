@@ -20,7 +20,7 @@
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_normal}",
                   "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
                 },
                 "inversity_flipped": {

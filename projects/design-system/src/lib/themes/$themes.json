@@ -712,62 +712,50 @@
       "ob.h.button.color.fg.tertiary.inversity_flipped.disabled": "4833319de5309ce84822ac3d95fed768f3191ef7",
       "ob.h.button.color.bg.primary.inversity_normal.enabled": "87d191ac33e2f24791ca58b48a4f115ae93b3a89",
       "ob.h.button.color.bg.primary.inversity_normal.hover": "388d42d8de70748957165819ef119d0d64b5e476",
-      "ob.h.button.color.bg.primary.inversity_normal.focus": "2034d551cdda52a94ca6e81f01e1638588d10df4",
       "ob.h.button.color.bg.primary.inversity_normal.pressed": "a987f755153ff741444e1753df54977906d465c3",
       "ob.h.button.color.bg.primary.inversity_normal.disabled": "2abb2639dceff7e6af14d5527e3836d9744cc82d",
       "ob.h.button.color.bg.primary.inversity_flipped.enabled": "06d97a0f66f8a331fe785d17ca86178615008e26",
       "ob.h.button.color.bg.primary.inversity_flipped.hover": "b89e24a5394975650446a5b161a9da11dfe01b0a",
-      "ob.h.button.color.bg.primary.inversity_flipped.focus": "61bd9d019e5ed7ce9aa425f0d01c6f6ee4c191fd",
       "ob.h.button.color.bg.primary.inversity_flipped.pressed": "5fd70fe47a758cd2e5dca22bda51106acdd660b7",
       "ob.h.button.color.bg.primary.inversity_flipped.disabled": "f8571479ad241f41be565ba9ea1e1dd89b0b1a98",
       "ob.h.button.color.bg.secondary.inversity_normal.enabled": "10a11f5c522338bd94d9941d53b10bc244e06c3f",
       "ob.h.button.color.bg.secondary.inversity_normal.hover": "f9efc450a79e32503d19439ca38a083abc5608b9",
-      "ob.h.button.color.bg.secondary.inversity_normal.focus": "86045ec8f5235f03534600f108825237f1ec7243",
       "ob.h.button.color.bg.secondary.inversity_normal.pressed": "bc90de5d3589a3bde0b7324ce96a3707eab6b990",
       "ob.h.button.color.bg.secondary.inversity_normal.disabled": "4b45a8d75cde0ef1a666e91d73f6e42d47d8785f",
       "ob.h.button.color.bg.secondary.inversity_flipped.enabled": "d040c01e9de33daabdf0ebcb3eb004d584ab0f4c",
       "ob.h.button.color.bg.secondary.inversity_flipped.hover": "6d397253dbfcbd8189b2a59837402d5189d2823a",
-      "ob.h.button.color.bg.secondary.inversity_flipped.focus": "d0b611bf2aa086dd5d7c08ead264d51c9ac5d345",
       "ob.h.button.color.bg.secondary.inversity_flipped.pressed": "a19ae8bd025746cf2a42720179d39994f0b4a89e",
       "ob.h.button.color.bg.secondary.inversity_flipped.disabled": "d03bcf309969c8f77987c415644286a79ad4ff29",
       "ob.h.button.color.bg.tertiary.inversity_normal.enabled": "563ce8668264ed9a0666d236cf4d0c0677631a21",
       "ob.h.button.color.bg.tertiary.inversity_normal.hover": "550378474b6a4a6228cec7b087e29c092c89f0a0",
-      "ob.h.button.color.bg.tertiary.inversity_normal.focus": "e9e90700f012ebecfbeef01627e23ab7e2adaf73",
       "ob.h.button.color.bg.tertiary.inversity_normal.pressed": "3384f9cba8c6ce08bc7a1f65c0f78742dc76c320",
       "ob.h.button.color.bg.tertiary.inversity_normal.disabled": "72bc48eaeea68f262b552ccc67bd7793e0992c78",
       "ob.h.button.color.bg.tertiary.inversity_flipped.enabled": "c1b401d09438f4b2dea209efc0c3894e226c45db",
       "ob.h.button.color.bg.tertiary.inversity_flipped.hover": "a070f72bd8bb09683cb0647b5c20afd1894f1f02",
-      "ob.h.button.color.bg.tertiary.inversity_flipped.focus": "6f02c6caddaac1221a860b560093e76a2fb13bf8",
       "ob.h.button.color.bg.tertiary.inversity_flipped.pressed": "337efcafb27f060115a620aba7a9b89311f6c264",
       "ob.h.button.color.bg.tertiary.inversity_flipped.disabled": "b84afa102c7caad92b8a390e939e9ee3125f9cb0",
       "ob.h.button.color.border.primary.inversity_normal.enabled": "a3372b03a09e2d35d80c915b06c818ad1b3e128b",
       "ob.h.button.color.border.primary.inversity_normal.hover": "381515221a4c36855a16baca5d30d8a562aaa8fa",
-      "ob.h.button.color.border.primary.inversity_normal.focus": "d0e01691d61b56c6fae7569cfed0f27279fe4d0e",
       "ob.h.button.color.border.primary.inversity_normal.pressed": "aac64784d7e15f9b176413a8aa911b56ee7156a5",
       "ob.h.button.color.border.primary.inversity_normal.disabled": "b67e0b868f9e8134918d5cb7970955450c440ecd",
       "ob.h.button.color.border.primary.inversity_flipped.enabled": "2d79cd4abcd106541b6bacbe82b0f7f3af1155b7",
       "ob.h.button.color.border.primary.inversity_flipped.hover": "62d23451c3446a6e370b6a2227da9cf210fb6508",
-      "ob.h.button.color.border.primary.inversity_flipped.focus": "90458e83b0f0485277c132044f639efd6f09fd46",
       "ob.h.button.color.border.primary.inversity_flipped.pressed": "41ad1ca022321327da45fb9ee3baf6778c04ebfe",
       "ob.h.button.color.border.primary.inversity_flipped.disabled": "0229ddafb25aff4903e2adc772ee84dae496460c",
       "ob.h.button.color.border.secondary.inversity_normal.enabled": "ae6fda90b395c285b32427532d3755e1943776cb",
       "ob.h.button.color.border.secondary.inversity_normal.hover": "b569fbc66009cc77153ac5ea7f2d8ae0bb333fdf",
-      "ob.h.button.color.border.secondary.inversity_normal.focus": "59ab09de04224fcc82afa92de750311c4c0785ae",
       "ob.h.button.color.border.secondary.inversity_normal.pressed": "4525805e827e867dbea440f88b75617a26876b8c",
       "ob.h.button.color.border.secondary.inversity_normal.disabled": "9b427d9dc114b704e37ca5bca196afd6ff927491",
       "ob.h.button.color.border.secondary.inversity_flipped.enabled": "584edb2418e035d587f3a198d27fdcea14edaa89",
       "ob.h.button.color.border.secondary.inversity_flipped.hover": "e8df2901947777760171c563ce1cff5160dd2b75",
-      "ob.h.button.color.border.secondary.inversity_flipped.focus": "7239c5ce3d4a676a97cc3ac319617f655707f84a",
       "ob.h.button.color.border.secondary.inversity_flipped.pressed": "f112a692381f920304f6bcc51fb79bba4d65fb87",
       "ob.h.button.color.border.secondary.inversity_flipped.disabled": "6ab5adb4fc1d6d4f06db1001f8a8250e06ea115c",
       "ob.h.button.color.border.tertiary.inversity_normal.enabled": "91b9f199ec85694688da6960c5ab925e8e4281a9",
       "ob.h.button.color.border.tertiary.inversity_normal.hover": "c70c5b8eb8e438a3d5a7e6af681dfa8f3cb47027",
-      "ob.h.button.color.border.tertiary.inversity_normal.focus": "6aa33e114095947ab4c4cc6c3870d0d7595fd863",
       "ob.h.button.color.border.tertiary.inversity_normal.pressed": "29734839dc4db430420822e9329979c425fc1185",
       "ob.h.button.color.border.tertiary.inversity_normal.disabled": "65429ad2ad610497c2ee7ab9b2debdad8a6b3b8b",
       "ob.h.button.color.border.tertiary.inversity_flipped.enabled": "c53bdee77d35b0356f9e2bef1c0fdf204cb08916",
       "ob.h.button.color.border.tertiary.inversity_flipped.hover": "8f041ebcba0793b080af2d1109d44f73f03eb4fb",
-      "ob.h.button.color.border.tertiary.inversity_flipped.focus": "8b31341bf4581e1731587e9c20bd010b206856f6",
       "ob.h.button.color.border.tertiary.inversity_flipped.pressed": "70544367a12e0d2f817b1bfe9d44c0e561f79433",
       "ob.h.button.color.border.tertiary.inversity_flipped.disabled": "779cf677da2f1359ecbd4fb9879214f188dc3ed8",
       "ob.h.button.label_icon.spacing.padding.vertical": "554056633b6170d1550444ec63b84343f41b9544",
@@ -916,10 +904,7 @@
     "selectedTokenSets": {
       "01_global/multipliers/viewport/desktop": "enabled",
       "04_component/molecule/infobox/responsive/desktop": "enabled",
-      "05_html/button/05_viewport/desktop": "enabled",
-      "05_html/button/07_reference_only": "disabled",
-      "04_component/atom/icon_slot/static": "disabled",
-      "04_component/atom/icon_slot/size": "disabled"
+      "05_html/button/05_viewport/desktop": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.c.infobox.spacing.padding_top": "d2dfd770b54e7a2a8a604e1cc0515651df21b658",
@@ -947,7 +932,7 @@
       "ob.c.infobox.buttons_order_figma": "104b35c260ade5b30bc6e092288e2ca1cdc1c3d6",
       "ob.h.button.container.spacing.gap": "d270babd58ec6ca097e0c20eb7a44f5495b52061",
       "ob.h.button.touch_target.min_size": "128f9785e2ae4f4a65b389fda75d995cef6b0f22",
-      "ob.g.multiplier.viewport.desktop": "680b442074a788a74457ef227c0925d10887e9e0"
+      "ob.g.multiplier.viewport.desktop": "5a1626fb7ee283ddc680f3f7750d2e636b2b7edc"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:1",
@@ -1080,10 +1065,7 @@
     "selectedTokenSets": {
       "01_global/multipliers/viewport/mobile": "enabled",
       "04_component/molecule/infobox/responsive/mobile": "enabled",
-      "05_html/button/05_viewport/mobile": "enabled",
-      "05_html/button/07_reference_only": "disabled",
-      "04_component/atom/icon_slot/static": "disabled",
-      "04_component/atom/icon_slot/size": "disabled"
+      "05_html/button/05_viewport/mobile": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.c.infobox.spacing.padding_top": "d2dfd770b54e7a2a8a604e1cc0515651df21b658",
@@ -1111,9 +1093,9 @@
       "ob.c.infobox.buttons_order_figma": "104b35c260ade5b30bc6e092288e2ca1cdc1c3d6",
       "ob.h.button.container.spacing.gap": "d270babd58ec6ca097e0c20eb7a44f5495b52061",
       "ob.h.button.touch_target.min_size": "128f9785e2ae4f4a65b389fda75d995cef6b0f22",
-      "ob.g.multiplier.viewport.mobile": "b1466affda7b929204ecf7aea7bf6de06dd2d6e1",
-      "ob.c.infobox.sizing.icon_size": "f72e952250e82ec73ace509e63de2c67d9f88e9b",
-      "ob.c.infobox.sizing.close_button_size": "fc6f82c11e51b2bc62022f961e7f702ff6a25f74"
+      "ob.g.multiplier.viewport.mobile": "779ca47a81d2f6fb08c56154a0963d6751dca869",
+      "ob.c.infobox.sizing.icon_size": "86c4f27a8145fc94f024e16ec250b409611bef06",
+      "ob.c.infobox.sizing.close_button_size": "547e531603e9b106af22081d0f0411ea36425cd8"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:2",
@@ -1321,10 +1303,7 @@
       "02_primitive/color": "source",
       "03_semantic/color/s1-lightness/light": "enabled",
       "03_semantic/asset/theme/lightness/light": "enabled",
-      "04_component/molecule/infobox/color": "enabled",
-      "05_html/button/07_reference_only": "disabled",
-      "04_component/atom/icon_slot/static": "disabled",
-      "04_component/atom/icon_slot/size": "disabled"
+      "04_component/molecule/infobox/color": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -1832,10 +1811,7 @@
       "02_primitive/color": "source",
       "03_semantic/color/s1-lightness/dark": "enabled",
       "03_semantic/asset/theme/lightness/dark": "enabled",
-      "04_component/molecule/infobox/color": "enabled",
-      "05_html/button/07_reference_only": "disabled",
-      "04_component/atom/icon_slot/static": "disabled",
-      "04_component/atom/icon_slot/size": "disabled"
+      "04_component/molecule/infobox/color": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",
@@ -2171,10 +2147,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "03_semantic/color/s2-emphasis/high": "enabled",
-      "05_html/button/07_reference_only": "disabled",
-      "04_component/atom/icon_slot/static": "disabled",
-      "04_component/atom/icon_slot/size": "disabled"
+      "03_semantic/color/s2-emphasis/high": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "44d4eb2b10205a66dd0f2f04f1512678b684d0c7",
@@ -2244,10 +2217,7 @@
       "ob.s.color.interaction.state.bg.disabled.inversity_flipped": "S:7fd7cd2af6266e9df9eec8b839ad8003ddc1f4cb,"
     },
     "selectedTokenSets": {
-      "03_semantic/color/s2-emphasis/low": "enabled",
-      "05_html/button/07_reference_only": "disabled",
-      "04_component/atom/icon_slot/static": "disabled",
-      "04_component/atom/icon_slot/size": "disabled"
+      "03_semantic/color/s2-emphasis/low": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.state.fg.enabled.inversity_normal": "44d4eb2b10205a66dd0f2f04f1512678b684d0c7",
@@ -2337,11 +2307,7 @@
       "r13.typography.components_only.tabs.label": "S:48f9a2526c772be797e66bdb3eba5ddd32aebbf1,",
       "r13.typography.components_only.tooltip.label": "S:01a80ff405036b8a204f742fa49f200230ff826c,"
     },
-    "selectedTokenSets": {
-      "05_html/button/07_reference_only": "disabled",
-      "04_component/atom/icon_slot/static": "disabled",
-      "04_component/atom/icon_slot/size": "disabled"
-    },
+    "selectedTokenSets": {},
     "$figmaVariableReferences": {},
     "group": "R13"
   },
@@ -2419,10 +2385,7 @@
       "03_semantic/dimension/static": "enabled",
       "03_semantic/effect": "enabled",
       "03_semantic/elevation": "enabled",
-      "03_semantic/spacing": "enabled",
-      "05_html/button/07_reference_only": "disabled",
-      "04_component/atom/icon_slot/static": "disabled",
-      "04_component/atom/icon_slot/size": "disabled"
+      "03_semantic/spacing": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:6",
     "$figmaModeId": "1:7",
@@ -2833,13 +2796,10 @@
     "name": "row",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "05_html/button/06_flex-direction/row": "enabled",
-      "05_html/button/07_reference_only": "disabled",
-      "04_component/atom/icon_slot/static": "disabled",
-      "04_component/atom/icon_slot/size": "disabled"
+      "05_html/button/06_flex-direction/row": "enabled"
     },
     "$figmaVariableReferences": {
-      "ob.h.button.flex_direction.row.gap": "2e852fc45a6fa7dfefa0d261012f7a67fc7688e0"
+      "ob.h.button.flex_direction.row.gap": "c5c19856bb96f64bd081e0dec234484e7c50a9c0"
     },
     "$figmaCollectionId": "VariableCollectionId:2115:3769",
     "$figmaModeId": "2115:5",
@@ -2850,13 +2810,10 @@
     "name": "column",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "05_html/button/06_flex-direction/column": "enabled",
-      "05_html/button/07_reference_only": "disabled",
-      "04_component/atom/icon_slot/static": "disabled",
-      "04_component/atom/icon_slot/size": "disabled"
+      "05_html/button/06_flex-direction/column": "enabled"
     },
     "$figmaVariableReferences": {
-      "ob.h.button.flex_direction.column.gap": "5e0aa4bf5a9ccc727d09c2f55b17b60de78a696c"
+      "ob.h.button.flex_direction.column.gap": "759fa81983d6a999dc209e903c0cb312c92b3e6e"
     },
     "$figmaCollectionId": "VariableCollectionId:2115:3769",
     "$figmaModeId": "2115:6",
@@ -2902,10 +2859,7 @@
     "selectedTokenSets": {
       "03_semantic/typography/single/sm": "enabled",
       "03_semantic/typography/grouped/sm": "enabled",
-      "03_semantic/dimension/sm": "enabled",
-      "05_html/button/07_reference_only": "disabled",
-      "04_component/atom/icon_slot/static": "disabled",
-      "04_component/atom/icon_slot/size": "disabled"
+      "03_semantic/dimension/sm": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:0",
@@ -3021,10 +2975,7 @@
     "selectedTokenSets": {
       "03_semantic/typography/single/md": "enabled",
       "03_semantic/typography/grouped/md": "enabled",
-      "03_semantic/dimension/md": "enabled",
-      "05_html/button/07_reference_only": "disabled",
-      "04_component/atom/icon_slot/static": "disabled",
-      "04_component/atom/icon_slot/size": "disabled"
+      "03_semantic/dimension/md": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:1",
@@ -3140,10 +3091,7 @@
     "selectedTokenSets": {
       "03_semantic/typography/single/lg": "enabled",
       "03_semantic/typography/grouped/lg": "enabled",
-      "03_semantic/dimension/lg": "enabled",
-      "05_html/button/07_reference_only": "disabled",
-      "04_component/atom/icon_slot/static": "disabled",
-      "04_component/atom/icon_slot/size": "disabled"
+      "03_semantic/dimension/lg": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:2",

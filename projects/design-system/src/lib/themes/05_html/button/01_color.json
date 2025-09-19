@@ -162,10 +162,6 @@
                   "$type": "color",
                   "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_flipped}"
                 },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_flipped}"
-                },
                 "pressed": {
                   "$type": "color",
                   "$value": "{ob.s3.color.interaction.state.bg.pressed.inversity_flipped}"
@@ -184,10 +180,6 @@
                 "hover": {
                   "$type": "color",
                   "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_normal}"
-                },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_normal}"
                 },
                 "pressed": {
                   "$type": "color",
@@ -210,10 +202,6 @@
                   "$type": "color",
                   "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_normal}"
                 },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_normal}"
-                },
                 "pressed": {
                   "$type": "color",
                   "$value": "{ob.s3.color.neutral.no_color}"
@@ -232,10 +220,6 @@
                 "hover": {
                   "$type": "color",
                   "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_flipped}"
-                },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_flipped}"
                 },
                 "pressed": {
                   "$type": "color",
@@ -258,10 +242,6 @@
                   "$type": "color",
                   "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_normal}"
                 },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_normal}"
-                },
                 "pressed": {
                   "$type": "color",
                   "$value": "{ob.s3.color.interaction.state.bg.pressed.inversity_normal}"
@@ -280,10 +260,6 @@
                 "hover": {
                   "$type": "color",
                   "$value": "{ob.s3.color.interaction.state.bg.hover.inversity_flipped}"
-                },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.bg.focus.inversity_flipped}"
                 },
                 "pressed": {
                   "$type": "color",
@@ -308,11 +284,6 @@
                   "$type": "color",
                   "$value": "{ob.s3.color.neutral.no_color}"
                 },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s3.color.neutral.no_color}",
-                  "$description": "Primary button-aug focus border (same for both inversity types)"
-                },
                 "pressed": {
                   "$type": "color",
                   "$value": "{ob.s3.color.neutral.no_color}"
@@ -331,11 +302,6 @@
                 "hover": {
                   "$type": "color",
                   "$value": "{ob.s3.color.neutral.no_color}"
-                },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s3.color.neutral.no_color}",
-                  "$description": "Primary button-aug focus border (same for both inversity types)"
                 },
                 "pressed": {
                   "$type": "color",
@@ -358,10 +324,6 @@
                   "$type": "color",
                   "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}"
                 },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_normal}"
-                },
                 "pressed": {
                   "$type": "color",
                   "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}"
@@ -380,10 +342,6 @@
                 "hover": {
                   "$type": "color",
                   "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_flipped}"
-                },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s3.color.interaction.state.fg.focus.inversity_flipped}"
                 },
                 "pressed": {
                   "$type": "color",
@@ -406,10 +364,6 @@
                   "$type": "color",
                   "$value": "{ob.s3.color.neutral.no_color}"
                 },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s3.color.neutral.no_color}"
-                },
                 "pressed": {
                   "$type": "color",
                   "$value": "{ob.s3.color.neutral.no_color}"
@@ -426,10 +380,6 @@
                   "$description": "Tertiary button-aug border - flipped inversity (no border - for use in flipped contexts)"
                 },
                 "hover": {
-                  "$type": "color",
-                  "$value": "{ob.s3.color.neutral.no_color}"
-                },
-                "focus": {
                   "$type": "color",
                   "$value": "{ob.s3.color.neutral.no_color}"
                 },
