@@ -1,5 +1,7 @@
 /* eslint-disable max-lines */
-export const iconMetadata = [
+import type {IconMetadata} from './icons.model';
+
+export const iconMetadata: IconMetadata[] = [
 	{
 		name: 'home',
 		purpose: 'single',
@@ -206,21 +208,35 @@ export const iconMetadata = [
 			'additional',
 			'expand',
 			'more',
-			'show more,\nthree',
-			'dots\n,\n\nactions,\n\nmenu',
-			'...'
+			'show more',
+			'three dots',
+			'actions',
+			'menu'
 		],
 		description: 'Three vertical dots representing a more options menu.'
 	},
 	{
-		oldName: 'show-more_horizontal',
-		name: 'single',
-		purpose: 'Reserved for more actions menus and overflows.\nNot intended for expanding table rows; use the chevron_down icon instead.',
-		usage: 'Navigation',
-		category:
-			'horizontal, mehr, additional, options, extras, weiteres, continue, additional, expand, more, show more,\nthree, dots\n\n,\n\nactions,\n\nmenu, ...',
-		aliases: ['Three horizontal dots representing a more options menu.'],
-		description: 'Added icon'
+		name: 'show-more_horizontal',
+		purpose: 'single',
+		usage: 'Reserved for more actions menus and overflows.\nNot intended for expanding table rows; use the chevron_down icon instead.',
+		category: 'Navigation',
+		aliases: [
+			'horizontal',
+			'mehr',
+			'additional',
+			'options',
+			'extras',
+			'weiteres',
+			'continue',
+			'additional',
+			'expand',
+			'more',
+			'show more',
+			'three dots',
+			'actions',
+			'menu'
+		],
+		description: 'Three horizontal dots representing a more options menu.'
 	},
 	{
 		oldName: 'alternate-arrow',
@@ -245,13 +261,12 @@ export const iconMetadata = [
 		description: 'A bidirectional horizontal arrow indicating scrollable content.'
 	},
 	{
-		oldName: 'scroll_vertical',
-		name: 'single',
-		purpose: 'Reserved for indicating that an object can be scrolled vertically.',
-		usage: 'Navigation',
-		category: 'scrollen, vertical, scroll, verschieben, move, pan, alternate-arrow, double, both, bidirectional',
-		aliases: ['A bidirectional vertical arrow indicating scrollable content.'],
-		description: 'Added icon'
+		name: 'scroll_vertical',
+		purpose: 'single',
+		usage: 'Reserved for indicating that an object can be scrolled vertically.',
+		category: 'Navigation',
+		aliases: ['scrollen', 'vertical', 'scroll', 'verschieben', 'move', 'pan', 'alternate-arrow', 'double', 'both', 'bidirectional'],
+		description: 'A bidirectional vertical arrow indicating scrollable content.'
 	},
 	{
 		oldName: 'exchange',
@@ -263,13 +278,12 @@ export const iconMetadata = [
 		description: 'Two horizontal arrows pointing in opposite directions, indicating a horizontal swap.'
 	},
 	{
-		oldName: 'swap_vertical',
-		name: 'single',
-		purpose: 'Reserved for switching or swapping elements vertically.\nNot intended to represent paste or replace actions.',
-		usage: 'Navigation',
-		category: 'tauschen, wechseln, switch, trade, austausch, replace, flip, alternate, vertical',
-		aliases: ['Two vertical arrows pointing in opposite directions', 'indicating a horizontal swap.'],
-		description: 'Added icon'
+		name: 'swap_vertical',
+		purpose: 'single',
+		usage: 'Reserved for switching or swapping elements vertically.\nNot intended to represent paste or replace actions.',
+		category: 'Navigation',
+		aliases: ['tauschen', 'wechseln', 'switch', 'trade', 'austausch', 'replace', 'flip', 'alternate', 'vertical'],
+		description: 'Two vertical arrows pointing in opposite directions, indicating a horizontal swap.'
 	},
 	{
 		oldName: 'repeat',
@@ -287,8 +301,22 @@ export const iconMetadata = [
 		usage:
 			'Used for actions like revert or rotation.\nUse the history icon to access a history of previous actions, changes, or versions. Use the undo icon to reverse the most recent user activity.',
 		category: 'Navigation',
-		aliases: 'wiederholen, repeat, cycle, loop, erneut, again, rotation, iterate, reset, update, rotate, left, turn',
-		description: ['A counterclockwise open circle arrow.']
+		aliases: [
+			'wiederholen',
+			'repeat',
+			'cycle',
+			'loop',
+			'erneut',
+			'again',
+			'rotation',
+			'iterate',
+			'reset',
+			'update',
+			'rotate',
+			'left',
+			'turn'
+		],
+		description: 'A counterclockwise open circle arrow.'
 	},
 	{
 		oldName: 'arrow-up',
@@ -789,13 +817,12 @@ export const iconMetadata = [
 		description: 'An arrow pointing left, with a curved hook at the other end.'
 	},
 	{
-		oldName: 'redo',
-		name: 'single',
-		purpose: 'Reserved for redoing a recent action.',
-		usage: 'Interface',
-		category: 'redo, repeat, arrow, redo arrow, forward arrow, erneut, erneut ausführen, aktion wiederholen, zurücksetzen',
-		aliases: ['An arrow pointing right', 'a with a curved hook at the other end.'],
-		description: 'Added icon'
+		name: 'redo',
+		purpose: 'single',
+		usage: 'Reserved for redoing a recent action.',
+		category: 'Interface',
+		aliases: ['redo', 'repeat', 'arrow', 'redo arrow', 'forward arrow', 'erneut', 'erneut ausführen', 'aktion wiederholen', 'zurücksetzen'],
+		description: 'An arrow pointing right, with a curved hook at the other end.'
 	},
 	{
 		oldName: 'zoom-in',
@@ -864,14 +891,26 @@ export const iconMetadata = [
 		description: 'Six dots arranged in two vertical columns.'
 	},
 	{
-		oldName: 'screenshot',
-		name: 'single',
-		purpose: 'Reserved for taking a screenshot or screen capture.',
-		usage: 'Interface',
-		category:
-			'screenshot, screen capture, screen grab, print screen, snapshot, screen, capture, desktop capture, monitor snapshot, screen image, camera, bildschirmfoto, bildschirm erfassen',
-		aliases: ['A four-corner frame with a camera symbol', 'representing a screenshot or screen capture.'],
-		description: 'Added icon'
+		name: 'screenshot',
+		purpose: 'single',
+		usage: 'Reserved for taking a screenshot or screen capture.',
+		category: 'Interface',
+		aliases: [
+			'screenshot',
+			'screen capture',
+			'screen grab',
+			'print screen',
+			'snapshot',
+			'screen',
+			'capture',
+			'desktop capture',
+			'monitor snapshot',
+			'screen image',
+			'camera',
+			'bildschirmfoto',
+			'bildschirm erfassen'
+		],
+		description: 'A four-corner frame with a camera symbol, representing a screenshot or screen capture.'
 	},
 	{
 		name: 'crop',
@@ -970,8 +1009,8 @@ export const iconMetadata = [
 		purpose: 'multi',
 		usage: 'Alternative for the minus icon.',
 		category: 'Interface',
-		aliases: 'kreis, circle, remove button, delete item, entfernen, subtract, decrease, negative, reduce',
-		description: ['A minus sign inside a circle.']
+		aliases: ['kreis', 'circle', 'remove button', 'delete item', 'entfernen', 'subtract', 'decrease', 'negative', 'reduce'],
+		description: 'A minus sign inside a circle.'
 	},
 	{
 		oldName: 'cards',
@@ -1096,8 +1135,8 @@ export const iconMetadata = [
 		usage:
 			'Used for call centers or direct support phone lines.\nFor general support or help content use the support icon. For FAQ use the question icon.',
 		category: 'Communication',
-		aliases: 'kopfhörer, audio, sound, listen, microphone, hören, headset, earphones, headphones, live, call center',
-		description: ['An over-ear headset with microphone.']
+		aliases: ['kopfhörer', 'audio', 'sound', 'listen', 'microphone', 'hören', 'headset', 'earphones', 'headphones', 'live', 'call center'],
+		description: 'An over-ear headset with microphone.'
 	},
 	{
 		oldName: 'language',
@@ -1417,8 +1456,8 @@ export const iconMetadata = [
 		purpose: 'multi',
 		usage: 'Used to represent education, learning, academic content in an international context, or for academic graduation.',
 		category: 'Physical items and infrastructure',
-		aliases: 'education, graduation, academic, university, learning, student, cas, bachelor, master',
-		description: ['A graduation cap', 'worn on the head of students graduating from college or university.']
+		aliases: ['education', 'graduation', 'academic', 'university', 'learning', 'student', 'cas', 'bachelor', 'master'],
+		description: 'A graduation cap, worn on the head of students graduating from college or university.'
 	},
 	{
 		name: 'book',
@@ -1674,18 +1713,65 @@ export const iconMetadata = [
 		purpose: 'multi',
 		usage: 'Used to represent artificial intelligence or AI-powered features.',
 		category: 'Devices and tech',
-		aliases:
-			'artificial, intelligence, ai, künstliche intelligenz, ki, machine learning, deep learning, neural network, neural, smart technology, intelligente systeme, cyber intelligenz, digital brain, intelligent, intelligence, data, daten, algorithm, automation, technology, zukunftstechnologie, bot, virtueller assistent, tech',
-		description: ['The abbreviation AI for Artificial Intelligence inside a square', 'with a sparkle in the bottom-right corner.']
+		aliases: [
+			'artificial',
+			'intelligence',
+			'ai',
+			'künstliche intelligenz',
+			'ki',
+			'machine learning',
+			'deep learning',
+			'neural network',
+			'neural',
+			'smart technology',
+			'intelligente systeme',
+			'cyber intelligenz',
+			'digital brain',
+			'intelligent',
+			'intelligence',
+			'data',
+			'daten',
+			'algorithm',
+			'automation',
+			'technology',
+			'zukunftstechnologie',
+			'bot',
+			'virtueller assistent',
+			'tech'
+		],
+		description: 'The abbreviation AI for Artificial Intelligence inside a square, with a sparkle in the bottom-right corner.'
 	},
 	{
 		name: 'bot',
 		purpose: 'multi',
 		usage: 'Used for automated chats, or AI-powered assistance.',
 		category: 'Devices and tech',
-		aliases:
-			'bot, chatbot, ai, ai bot, service bot,, digital assistant, virtual assistant, assistant, dialogue system, speech assistant, sprachassistent, digital, tech, automation, automatisierung, robot, roboter, roboterkopf, neural bot, intelligence, künstliche intelligenz, ki, virtueller assistent',
-		description: ['A robot figure with a rectangular head and an antenna.']
+		aliases: [
+			'bot',
+			'chatbot',
+			'ai',
+			'ai bot',
+			'service bot',
+			'digital assistant',
+			'virtual assistant',
+			'assistant',
+			'dialogue system',
+			'speech assistant',
+			'sprachassistent',
+			'digital',
+			'tech',
+			'automation',
+			'automatisierung',
+			'robot',
+			'roboter',
+			'roboterkopf',
+			'neural bot',
+			'intelligence',
+			'künstliche intelligenz',
+			'ki',
+			'virtueller assistent'
+		],
+		description: 'A robot figure with a rectangular head and an antenna.'
 	},
 	{
 		name: 'cloud',
@@ -1734,8 +1820,8 @@ export const iconMetadata = [
 		purpose: 'multi',
 		usage: 'Used to represent signal transmission, broadcast, or wireless communication.',
 		category: 'Devices and tech',
-		aliases: 'radio transmission, radio tower, funk antenna, antenna',
-		description: ['A radio tower with circular waves', 'symbolizing a wireless signal or broadcast']
+		aliases: ['radio transmission', 'radio tower', 'funk antenna', 'antenna'],
+		description: 'A radio tower with circular waves, symbolizing a wireless signal or broadcast'
 	},
 	{
 		name: 'database',
@@ -2047,18 +2133,48 @@ export const iconMetadata = [
 		purpose: 'multi',
 		usage: 'Used to represent verified security, trust, or successful protection.',
 		category: 'Status and feedback',
-		aliases:
-			'shield, checkmark, verified, secure, protection, trusted, shield icon, security icon, verified shield, success shield, trusted badge, safe icon, shield with tick, verified security, access',
-		description: ['A shield containing a checkmark symbol.']
+		aliases: [
+			'shield',
+			'checkmark',
+			'verified',
+			'secure',
+			'protection',
+			'trusted',
+			'shield icon',
+			'security icon',
+			'verified shield',
+			'success shield',
+			'trusted badge',
+			'safe icon',
+			'shield with tick',
+			'verified security',
+			'access'
+		],
+		description: 'A shield containing a checkmark symbol.'
 	},
 	{
 		name: 'shield_lock',
 		purpose: 'multi',
 		usage: 'Used to represent restricted access, confidentiality, or secured environments.',
 		category: 'Status and feedback',
-		aliases:
-			'shield, lock, shield lock, secure, restricted access, confidential, protected, privacy, secure zone, encrypted, padlock shield, secure environment, locked icon, shield with lock, access',
-		description: ['A shield containing a padlock symbol.']
+		aliases: [
+			'shield',
+			'lock',
+			'shield lock',
+			'secure',
+			'restricted access',
+			'confidential',
+			'protected',
+			'privacy',
+			'secure zone',
+			'encrypted',
+			'padlock shield',
+			'secure environment',
+			'locked icon',
+			'shield with lock',
+			'access'
+		],
+		description: 'A shield containing a padlock symbol.'
 	},
 	{
 		name: 'eye',
@@ -2527,8 +2643,8 @@ export const iconMetadata = [
 		purpose: 'multi',
 		usage: 'Used for checkout confirmation by web-shop order process.\nNot intended for common system feedback messages.',
 		category: 'Status and feedback',
-		aliases: 'shop check out, order, shopping, erfolgreich gekauft, purchase completed',
-		description: ['An eight-pointed star with rounded corners and a checkmark inside.']
+		aliases: ['shop check out', 'order', 'shopping', 'erfolgreich gekauft', 'purchase completed'],
+		description: 'An eight-pointed star with rounded corners and a checkmark inside.'
 	},
 	{
 		oldName: 'cancel',
@@ -2749,8 +2865,8 @@ export const iconMetadata = [
 		purpose: 'multi',
 		usage: 'Used to represent ID badges or access passes.',
 		category: 'People and identity',
-		aliases: 'abzeichen, credentials, identification, ausweis, badge card, security pass, permit',
-		description: ['A personal badge with a chip', 'a person icon', 'and two horizontal lines representing text.']
+		aliases: ['abzeichen, credentials, identification, ausweis, badge card, security pass, permit'],
+		description: 'A personal badge with a chip, a person icon, and two horizontal lines representing text.'
 	},
 	{
 		name: 'id-card',
@@ -3243,13 +3359,14 @@ export const iconMetadata = [
 	},
 	{
 		oldName: 'closed-captions',
-		name: 'single',
-		purpose: 'Reserved for enabling closed captions in videos.',
-		usage: 'Accessibility',
-		category:
-			'closed captions, cc, subtitles, captioning, video captions, accessibility, transcript, media text, audio captions, subtitle icon, hearing accessibility, caption icon, audio, video, player',
-		aliases: ['The abbreviation CC in a frame representing closed captions.'],
-		description: 'Added icon'
+		name: 'closed-captions',
+		purpose: 'single',
+		usage: 'Reserved for enabling closed captions in videos.',
+		category: 'Accessibility',
+		aliases: [
+			'closed captions, cc, subtitles, captioning, video captions, accessibility, transcript, media text, audio captions, subtitle icon, hearing accessibility, caption icon, audio, video, player'
+		],
+		description: 'The abbreviation CC in a frame representing closed captions.'
 	},
 	{
 		oldName: 'git-hub',
@@ -3906,7 +4023,7 @@ export const iconMetadata = [
 	{
 		oldName: 'file-audio',
 		name: 'file_audio',
-		purpose: 'singe',
+		purpose: 'single',
 		usage: 'Used for files that contain audio content (e.g., .mp3, .wav).',
 		category: 'Content and files',
 		aliases: [
@@ -4005,90 +4122,174 @@ export const iconMetadata = [
 		description: 'A right-pointing triangle representing the play button.'
 	},
 	{
-		oldName: 'stop',
-		name: 'single',
-		purpose: 'Reserved for stopping audio or video playback.',
-		usage: 'Media player',
-		category: 'stop, anhalten, beenden, stoppen, stop icon, square, halt, wiedergabe stoppen, playback, video, audio, media, player',
-		aliases: ['A solid square representing the stop button.'],
-		description: 'Added icon'
+		name: 'stop',
+		purpose: 'single',
+		usage: 'Reserved for stopping audio or video playback.',
+		category: 'Media player',
+		aliases: [
+			'stop',
+			'anhalten',
+			'beenden',
+			'stoppen',
+			'stop icon',
+			'square',
+			'halt',
+			'wiedergabe stoppen',
+			'playback',
+			'video',
+			'audio',
+			'media',
+			'player'
+		],
+		description: 'A solid square representing the stop button.'
 	},
 	{
-		oldName: 'pause',
-		name: 'single',
-		purpose: 'Reserved for pausing audio or video playback in media players.',
-		usage: 'Media player',
-		category:
-			'pause, pausieren, unterbrechen, pause icon, hold, zwei vertikale balken, wiedergabe pausieren, playback, video, audio, media, player',
-		aliases: ['Two vertical bars representing the pause button.'],
-		description: 'Added icon'
+		name: 'pause',
+		purpose: 'single',
+		usage: 'Reserved for pausing audio or video playback in media players.',
+		category: 'Media player',
+		aliases: [
+			'pause',
+			'pausieren',
+			'unterbrechen',
+			'pause icon',
+			'hold',
+			'zwei vertikale balken',
+			'wiedergabe pausieren',
+			'playback',
+			'video',
+			'audio',
+			'media',
+			'player'
+		],
+		description: 'Two vertical bars representing the pause button.'
 	},
 	{
-		oldName: 'fast-forward',
-		name: 'single',
-		purpose: 'Reserved for increasing playback speed in media players.',
-		usage: 'Media player',
-		category:
-			'fast forward, vorspulen, schneller Vorlauf, skip ahead, fast-forward icon, doppelt rechts, playback, video, audio, media, player',
-		aliases: ['Two right-pointing triangles indicating fast forward or skip ahead.'],
-		description: 'Added icon'
+		name: 'fast-forward',
+		purpose: 'single',
+		usage: 'Reserved for increasing playback speed in media players.',
+		category: 'Media player',
+		aliases: [
+			'fast forward',
+			'vorspulen',
+			'schneller Vorlauf',
+			'skip ahead',
+			'fast-forward icon',
+			'doppelt rechts',
+			'playback',
+			'video',
+			'audio',
+			'media',
+			'player'
+		],
+		description: 'Two right-pointing triangles indicating fast forward or skip ahead.'
 	},
 	{
-		oldName: 'rewind',
-		name: 'single',
-		purpose: 'Reserved for reversing playback in media players.',
-		usage: 'Media player',
-		category: 'rewind, zurückspulen, rücklauf, rewind icon, doppelt links, skip back, playback, video, audio, media, player',
-		aliases: ['Two left-pointing triangles indicating rewind or skip back.'],
-		description: 'Added icon'
+		name: 'rewind',
+		purpose: 'single',
+		usage: 'Reserved for reversing playback in media players.',
+		category: 'Media player',
+		aliases: [
+			'rewind',
+			'zurückspulen',
+			'rücklauf',
+			'rewind icon',
+			'doppelt links',
+			'skip back',
+			'playback',
+			'video',
+			'audio',
+			'media',
+			'player'
+		],
+		description: 'Two left-pointing triangles indicating rewind or skip back.'
 	},
 	{
-		oldName: 'skip_back',
-		name: 'single',
-		purpose: 'Reserved for jumping to the previous media track.',
-		usage: 'Media player',
-		category:
-			'skip back, vorheriger, vorheriger titel, zurückspringen, skip previous, skip to start, playback, video, audio, media, player',
-		aliases: ['A left-pointing triangle with a vertical bar', 'indicating skip to previous.'],
-		description: 'Added icon'
+		name: 'skip_back',
+		purpose: 'single',
+		usage: 'Reserved for jumping to the previous media track.',
+		category: 'Media player',
+		aliases: [
+			'skip back',
+			'vorheriger',
+			'vorheriger titel',
+			'zurückspringen',
+			'skip previous',
+			'skip to start',
+			'playback',
+			'video',
+			'audio',
+			'media',
+			'player'
+		],
+		description: 'A left-pointing triangle with a vertical bar, indicating skip to previous.'
 	},
 	{
-		oldName: 'skip_next',
-		name: 'single',
-		purpose: 'Reserved for jumping to the next media track.',
-		usage: 'Media player',
-		category:
-			'skip next, nächster, nächster Titel, vorspringen, skip forward, rechts mit senkrechtem Strich, playback, video, audio, media, player',
-		aliases: ['A right-pointing triangle with a vertical bar', 'indicating skip to next.'],
-		description: 'Added icon'
+		name: 'skip_next',
+		purpose: 'single',
+		usage: 'Reserved for jumping to the next media track.',
+		category: 'Media player',
+		aliases: [
+			'skip next',
+			'nächster',
+			'nächster Titel',
+			'vorspringen',
+			'skip forward',
+			'rechts mit senkrechtem Strich',
+			'playback',
+			'video',
+			'audio',
+			'media',
+			'player'
+		],
+		description: 'A right-pointing triangle with a vertical bar, indicating skip to next.'
 	},
 	{
-		oldName: 'fullscreen',
-		name: 'single',
-		purpose: 'Reserved to enter fullscreen mode in media players.',
-		usage: 'Media player',
-		category: 'vollbild, maximieren, expandieren, fullscreen icon, outward arrows, playback, video, audio, media, player',
-		aliases: ['A square frame formed by four outward-pointing arrows', 'representing fullscreen mode.'],
-		description: 'Added icon'
+		name: 'fullscreen',
+		purpose: 'single',
+		usage: 'Reserved to enter fullscreen mode in media players.',
+		category: 'Media player',
+		aliases: [
+			'vollbild',
+			'maximieren',
+			'expandieren',
+			'fullscreen icon',
+			'outward arrows',
+			'playback',
+			'video',
+			'audio',
+			'media',
+			'player'
+		],
+		description: 'A square frame formed by four outward-pointing arrows, representing fullscreen mode.'
 	},
 	{
-		oldName: 'fullscreen_exit',
-		name: 'single',
-		purpose: 'Reserved to exit fullscreen mode in media players.',
-		usage: 'Media player',
-		category:
-			'exit fullscreen, vollbild verlassen, minimieren, reduzieren, fullscreen-exit icon, inward arrows, playback, video, audio, media, player',
-		aliases: ['Four inward-pointing arrows indicating exit from fullscreen mode.'],
-		description: 'Added icon'
+		name: 'fullscreen_exit',
+		purpose: 'single',
+		usage: 'Reserved to exit fullscreen mode in media players.',
+		category: 'Media player',
+		aliases: [
+			'exit fullscreen',
+			'vollbild verlassen',
+			'minimieren',
+			'reduzieren',
+			'fullscreen-exit icon',
+			'inward arrows',
+			'playback',
+			'video',
+			'audio',
+			'media',
+			'player'
+		],
+		description: 'Four inward-pointing arrows indicating exit from fullscreen mode.'
 	},
 	{
-		oldName: 'hd',
-		name: 'single',
-		purpose: 'Reserved for toggling high-definition (HD) video quality.',
-		usage: 'Media player',
-		category: 'high definition, hochauflösend, videoqualität, auflösung, playback, video, audio, media, player',
-		aliases: ['The abbreviation HD for high-definition video quality', 'enclosed in a frame.'],
-		description: 'Added icon'
+		name: 'hd',
+		purpose: 'single',
+		usage: 'Reserved for toggling high-definition (HD) video quality.',
+		category: 'Media player',
+		aliases: ['high definition', 'hochauflösend', 'videoqualität', 'auflösung', 'playback', 'video', 'audio', 'media', 'player'],
+		description: 'The abbreviation HD for high-definition video quality, enclosed in a frame.'
 	},
 	{
 		oldName: 'random',
