@@ -1,12 +1,5 @@
 {
   "tokenSetOrder": [
-    "01_global/multipliers/spacing/lg",
-    "01_global/multipliers/spacing/md",
-    "01_global/multipliers/spacing/sm",
-    "01_global/multipliers/typography-mobile",
-    "01_global/multipliers/typography/lg",
-    "01_global/multipliers/typography/md",
-    "01_global/multipliers/typography/sm",
     "01_global/multipliers/viewport/desktop",
     "01_global/multipliers/viewport/mobile",
     "01_global/multipliers/dimension",

@@ -6,7 +6,7 @@
           "text_label": {
             "font_size": {
               "$type": "font_sizes",
-              "$value": "{ob.p.font_size_unitless.400} * {ob.g.multiplier.typography}",
+              "$value": "{ob.s.dynamic.fontSize.md}",
               "$description": "Font size that scales with typography multiplier"
             },
             "line_height": {
