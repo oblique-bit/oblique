@@ -39,22 +39,22 @@
         "border_radius": {
           "top_left": {
             "$type": "borderRadius",
-            "$value": "{ob.s.radius.none}",
+            "$value": "{ob.s.border_radius.none}",
             "$description": "Sets the left upper corner radius to zero because there we have a left colored border and no need for rounded corners."
           },
           "top_right": {
             "$type": "borderRadius",
-            "$value": "{ob.s.radius.md}",
+            "$value": "{ob.s.border_radius.md}",
             "$description": "Rounds the right upper corner to enhance visual appeal of the component."
           },
           "bottom_left": {
             "$type": "borderRadius",
-            "$value": "{ob.s.radius.none}",
+            "$value": "{ob.s.border_radius.none}",
             "$description": "Sets the left upper corner radius to zero because there we have a left colored border and no need for rounded corners."
           },
           "bottom_right": {
             "$type": "borderRadius",
-            "$value": "{ob.s.radius.md}",
+            "$value": "{ob.s.border_radius.md}",
             "$description": "Rounds the right bottom corner to enhance visual appeal of the component."
           }
         },

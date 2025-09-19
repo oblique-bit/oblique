@@ -21,7 +21,7 @@
         },
         "border_radius": {
           "$type": "borderRadius",
-          "$value": "{ob.s.radius.lg}",
+          "$value": "{ob.s.border_radius.lg}",
           "$description": "Radius LG applied to give the spinner a more organic appearance."
         },
         "border_width": {

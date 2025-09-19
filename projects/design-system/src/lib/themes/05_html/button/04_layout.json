@@ -26,6 +26,11 @@
                 "$value": "{ob.s.dimension.dynamic.container.xs.rem}"
               }
             }
+          },
+          "icon_size": {
+            "$type": "sizing",
+            "$value": "{ob.c.icon_slot.size_proportional.standard}",
+            "$description": "Standard proportional size of the icon inside the label_icon button subcomponent."
           }
         },
         "icon_only": {
@@ -60,7 +65,7 @@
         },
         "border_radius": {
           "$type": "borderRadius",
-          "$value": "{ob.s.radius.sm}",
+          "$value": "{ob.s.border_radius.sm}",
           "$description": "Standard border radius for button-aug components - consistent across all sizes"
         },
         "direction": {
@@ -131,6 +136,12 @@
           "$type": "borderWidth",
           "$value": "{ob.s.border_width.xs}",
           "$description": "Tinest border width possible for buttons for aesthetics and functionality: differentiation between secondary and tertiary. Static token, not reacting on changing component-size modes."
+        },
+        "icon": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{ob.c.icon_slot.size_proportional.standard}"
+          }
         }
       }
     }

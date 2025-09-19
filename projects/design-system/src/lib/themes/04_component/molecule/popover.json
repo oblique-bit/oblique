@@ -123,7 +123,7 @@
         },
         "border_radius": {
           "$type": "borderRadius",
-          "$value": "{ob.s.radius.lg}",
+          "$value": "{ob.s.border_radius.lg}",
           "$description": "Sets default border radius for Popover."
         },
         "border_width": {

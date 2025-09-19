@@ -1,7 +1,7 @@
 {
   "ob": {
     "s": {
-      "radius": {
+      "border_radius": {
         "none": {
           "$type": "borderRadius",
           "$value": "{ob.p.dimension.px.0}"
@@ -63,7 +63,7 @@
             "$type": "border",
             "$value": {
               "color": "{ob.s3.color.interaction.focus_ring.inversity_normal}",
-              "width": "{ob.s.border_width.2xl}",
+              "width": "{ob.s.border_width.md}",
               "style": "solid"
             },
             "$description": "CSS implementation of focus ring for accessibility compliance. Use with outline property."
@@ -72,7 +72,7 @@
             "$type": "border",
             "$value": {
               "color": "{ob.s3.color.interaction.focus_ring.inversity_flipped}",
-              "width": "{ob.s.border_width.2xl}",
+              "width": "{ob.s.border_width.md}",
               "style": "solid"
             },
             "$description": "CSS implementation of focus ring for accessibility compliance. Use with outline property."

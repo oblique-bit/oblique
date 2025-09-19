@@ -33,7 +33,7 @@
         "border_radius": {
           "default": {
             "$type": "borderRadius",
-            "$value": "{ob.s.radius.rounded}",
+            "$value": "{ob.s.border_radius.rounded}",
             "$description": "Standard tags in Oblique."
           }
         },

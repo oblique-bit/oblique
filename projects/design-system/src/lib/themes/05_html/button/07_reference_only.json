@@ -519,6 +519,13 @@
               }
             }
           }
+        },
+        "focus_ring": {
+          "border_radius": {
+            "$type": "borderRadius",
+            "$value": "{ob.s.border_radius.md}",
+            "$description": "Requires larger radius than element itself."
+          }
         }
       }
     }

@@ -1,8 +1,8 @@
 {
   "ob": {
     "c": {
-      "icon_holder": {
-        "size": {
+      "icon_slot": {
+        "size_proportional": {
           "standard": {
             "$type": "dimension",
             "$value": "{ob.s.dimension.dynamic.container.xs.rem}",

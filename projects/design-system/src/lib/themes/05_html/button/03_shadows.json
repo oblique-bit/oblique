@@ -28,11 +28,6 @@
             "$value": "{ob.s.shadow.none}",
             "$description": "No shadow on disabled state"
           }
-        },
-        "focus_ring": {
-          "$type": "boxShadow",
-          "$value": "{ob.s.shadow.focus_ring.inversity_normal}",
-          "$description": "Focus ring for button accessibility - references semantic focus ring token"
         }
       }
     }

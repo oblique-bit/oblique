@@ -45,7 +45,7 @@
         },
         "border_radius": {
           "$type": "borderRadius",
-          "$value": "{ob.s.radius.sm}",
+          "$value": "{ob.s.border_radius.sm}",
           "$description": "Applied radius SM for subtle aesthetics, distinct from buttons to avoid looking clickable."
         },
         "shadow": {

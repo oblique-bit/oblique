@@ -1,7 +1,7 @@
 {
   "ob": {
     "c": {
-      "icon_holder": {
+      "icon_slot": {
         "icon": {
           "$type": "asset",
           "$value": "cancel-circle",

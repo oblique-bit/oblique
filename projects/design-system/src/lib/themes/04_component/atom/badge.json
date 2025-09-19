@@ -172,7 +172,7 @@
         },
         "border_radius": {
           "$type": "borderRadius",
-          "$value": "{ob.s.radius.rounded}",
+          "$value": "{ob.s.border_radius.rounded}",
           "$description": "For entire rounded badges"
         },
         "typography": {
