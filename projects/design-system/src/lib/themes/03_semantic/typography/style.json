@@ -83,10 +83,10 @@
                 "$type": "typography",
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
-                  "fontSize": "{ob.s.static.fontSize.4xl}",
+                  "fontSize": "{ob.s.static.fontSize.5xl}",
                   "fontWeight": "{ob.s.static.font_weight.semiBold}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.superNarrow}",
-                  "lineHeight": "{ob.s.static.lineHeight.4xl}",
+                  "lineHeight": "{ob.s.static.lineHeight.5xl}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.1400}"
                 },
                 "$description": "Primary page heading for prose based pages. Used for the most important headline on a page."
@@ -95,10 +95,10 @@
                 "$type": "typography",
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
-                  "fontSize": "{ob.s.static.fontSize.3xl}",
+                  "fontSize": "{ob.s.static.fontSize.4xl}",
                   "fontWeight": "{ob.s.static.font_weight.semiBold}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.superNarrow}",
-                  "lineHeight": "{ob.s.static.lineHeight.3xl}",
+                  "lineHeight": "{ob.s.static.lineHeight.4xl}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.1300}"
                 },
                 "$description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."
@@ -107,10 +107,10 @@
                 "$type": "typography",
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
-                  "fontSize": "{ob.s.static.fontSize.2xl}",
+                  "fontSize": "{ob.s.static.fontSize.3xl}",
                   "fontWeight": "{ob.s.static.font_weight.semiBold}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.superNarrow}",
-                  "lineHeight": "{ob.s.static.lineHeight.2xl}",
+                  "lineHeight": "{ob.s.static.lineHeight.3xl}",
                   "paragraphSpacing": "{ob.p.paragraphSpacing.1100}"
                 },
                 "$description": "Page heading for prose based pages. Divides content into major sections in hierarchical way within a page."

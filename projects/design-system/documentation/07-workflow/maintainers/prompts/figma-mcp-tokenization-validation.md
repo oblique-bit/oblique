@@ -2,10 +2,14 @@
 
 ****Requirements:** PREREQUISITES**: This prompt requires Figma MCP tools to be configured and a Figma component selected.
 
+**🚨 CRITICAL VALIDATION WARNING**: 
+**NEVER** confuse MCP-generated code output with actual Figma design issues. The MCP Figma tool converts design tokens to hardcoded values in generated code - this is a TOOL LIMITATION, not a design system violation. Always validate tokenization by examining the actual Figma layers and Token Studio connections, NOT the generated code output.
+
 Perform complete tokenization validation of this component using Figma MCP tools:
 1. Get metadata for component frame using `mcp_figma_dev_mod_get_metadata`
 2. Extract detailed layer structure with `mcp_figma_dev_mod_get_code`
-3. Analyze token coverage and validate tokenization compliance
+3. **VALIDATE FIGMA DESIGN DIRECTLY** - Check actual layer properties and Token Studio connections
+4. Analyze token coverage and validate tokenization compliance
 4. **VALIDATE COMPLETE TOKENIZATION**: Check every design property for token coverage
 5. **VALIDATE TOKEN STUDIO CONNECTIONS**: Verify Token Studio integration
 6. **VALIDATE LAYER NAMING**: Check compound unit compliance
@@ -52,27 +56,37 @@ Perform complete tokenization validation of this component using Figma MCP tools
 - **Integration Health**: Validate no variables applied outside Token Studio
 
 ### If ANY Hardcoded Values Found:
-1. **STOP IMPLEMENTATION** immediately
-2. **Document ALL violations** with specific property details
-3. **Identify missing tokens** and suggest token paths
-4. **Push back to designer** with complete violation list
-5. **Require complete tokenization** before proceeding
+
+**⚠️ IMPORTANT**: Distinguish between actual hardcoded values in Figma layers vs. MCP tool code generation artifacts. Only flag true design system violations.
+
+1. **VERIFY SOURCE FIRST** - Check if values are hardcoded in actual Figma layers or just MCP code output
+2. **STOP IMPLEMENTATION** only if actual Figma design violations exist
+3. **Document ALL violations** with specific property details (from Figma, not generated code)
+4. **Identify missing tokens** and suggest token paths
+5. **Push back to designer** with complete violation list
+6. **Require complete tokenization** before proceeding
 
 ### Tokenization Report Format:
 ```
 **Note:** TOKENIZATION VIOLATIONS DETECTED:
+
+**VALIDATION SOURCE**: [figma-layers | token-studio-connections | design-properties]
+**NOT MCP CODE OUTPUT** - Always validate against actual Figma design, not generated code
+
 Category: [Property Category]
 - Property: [specific-property] 
-- Current Value: [hardcoded-value]
+- Current Value: [hardcoded-value-in-figma]
 - Required Token: [suggested-token-path]
 - Priority: [high/medium/low based on frequency of use]
+- Validation Method: [figma-layer-inspection | token-studio-panel | design-properties]
 
 Example:
 Category: Color Properties
 - Property: background-color
-- Current Value: #2379a4
+- Current Value: #2379a4 (found in Figma layer properties, NOT MCP generated code)
 - Required Token: ob/color/03_semantic/primary/bg/enabled
 - Priority: High (used across multiple component states)
+- Validation Method: Token Studio panel shows no variable connection
 ```
 
 ## **Warning:** COMPOSITE TOKEN OPPORTUNITY ASSESSMENT

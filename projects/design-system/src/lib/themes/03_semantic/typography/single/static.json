@@ -25,13 +25,17 @@
           },
           "2xl": {
             "$type": "font_sizes",
-            "$value": "{ob.p.font_size_unitless.700}"
+            "$value": "{ob.p.font_size_unitless.600}"
           },
           "3xl": {
             "$type": "font_sizes",
-            "$value": "{ob.p.font_size_unitless.800}"
+            "$value": "{ob.p.font_size_unitless.700}"
           },
           "4xl": {
+            "$type": "font_sizes",
+            "$value": "{ob.p.font_size_unitless.800}"
+          },
+          "5xl": {
             "$type": "font_sizes",
             "$value": "{ob.p.font_size_unitless.900}"
           },
