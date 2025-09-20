@@ -46,7 +46,7 @@
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.bold}"
+              "$value": "{ob.s.static.font_weight.extraBold}"
             },
             "line_height": {
               "$type": "lineHeights", 
@@ -54,61 +54,61 @@
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.narrow}"
+              "$value": "{ob.s.static.letter_spacing_px.normal}"
             }
           },
           "h4": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.fontSize.sm}"
+              "$value": "{ob.s.static.fontSize.md}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.bold}"
+              "$value": "{ob.s.static.font_weight.extraBold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.sm}"
+              "$value": "{ob.s.static.lineHeight.md}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.narrow}"
+              "$value": "{ob.s.static.letter_spacing_px.normal}"
             }
           },
           "h5": {
             "font_size": {
               "$type": "fontSizes", 
-              "$value": "{ob.s.static.fontSize.xs}"
+              "$value": "{ob.s.static.fontSize.md}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.bold}"
+              "$value": "{ob.s.static.font_weight.extraBold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.xs}"
+              "$value": "{ob.s.static.lineHeight.md}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.narrow}"
+              "$value": "{ob.s.static.letter_spacing_px.normal}"
             }
           },
           "h6": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.fontSize.xs}"
+              "$value": "{ob.s.static.fontSize.md}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.semiBold}"
+              "$value": "{ob.s.static.font_weight.extraBold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.xs}"
+              "$value": "{ob.s.static.lineHeight.md}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.narrow}"
+              "$value": "{ob.s.static.letter_spacing_px.normal}"
             }
           }
         }
