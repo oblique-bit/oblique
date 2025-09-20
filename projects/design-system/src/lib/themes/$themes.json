@@ -3176,5 +3176,27 @@
       "ob.s.dimension.dynamic.layout.xl.rem": "d869644daa456d5d816493b00fa9b33062457bb3"
     },
     "group": "component-size"
+  },
+  {
+    "id": "compact-context",
+    "name": "compact",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/typography/context/compact": "enabled",
+      "03_semantic/typography/context/prose": "disabled"
+    },
+    "$figmaVariableReferences": {},
+    "group": "typography-context"
+  },
+  {
+    "id": "prose-context", 
+    "name": "prose",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/typography/context/compact": "disabled",
+      "03_semantic/typography/context/prose": "enabled"
+    },
+    "$figmaVariableReferences": {},
+    "group": "typography-context"
   }
 ]
