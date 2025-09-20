@@ -1,0 +1,84 @@
+{
+  "ob": {
+    "s": {
+      "typography": {
+        "content": {
+          "heading": {
+            "H1": {
+              "$type": "typography",
+              "$value": {
+                "fontFamily": "{ob.s.static.font_family.body}",
+                "fontSize": "{ob.s.static.fontSize.xl}",
+                "fontWeight": "{ob.s.static.font_weight.bold}",
+                "letterSpacing": "{ob.s.static.letter_spacing_px.narrow}",
+                "lineHeight": "{ob.s.static.lineHeight.xl}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.800}"
+              },
+              "$description": "Compact primary page heading. Used for the most important headline on a page."
+            },
+            "H2": {
+              "$type": "typography",
+              "$value": {
+                "fontFamily": "{ob.s.static.font_family.body}",
+                "fontSize": "{ob.s.static.fontSize.lg}",
+                "fontWeight": "{ob.s.static.font_weight.bold}",
+                "letterSpacing": "{ob.s.static.letter_spacing_px.narrow}",
+                "lineHeight": "{ob.s.static.lineHeight.lg}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.600}"
+              },
+              "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
+            },
+            "H3": {
+              "$type": "typography",
+              "$value": {
+                "fontFamily": "{ob.s.static.font_family.body}",
+                "fontSize": "{ob.s.static.fontSize.md}",
+                "fontWeight": "{ob.s.static.font_weight.extraBold}",
+                "lineHeight": "{ob.s.static.lineHeight.md}",
+                "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
+              },
+              "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
+            },
+            "H4": {
+              "$type": "typography",
+              "$value": {
+                "fontFamily": "{ob.s.static.font_family.body}",
+                "fontSize": "{ob.s.static.fontSize.md}",
+                "fontWeight": "{ob.s.static.font_weight.extraBold}",
+                "lineHeight": "{ob.s.static.lineHeight.md}",
+                "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
+              },
+              "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
+            },
+            "H5": {
+              "$type": "typography",
+              "$value": {
+                "fontFamily": "{ob.s.static.font_family.body}",
+                "fontSize": "{ob.s.static.fontSize.md}",
+                "fontWeight": "{ob.s.static.font_weight.extraBold}",
+                "lineHeight": "{ob.s.static.lineHeight.md}",
+                "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
+              },
+              "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
+            },
+            "H6": {
+              "$type": "typography",
+              "$value": {
+                "fontFamily": "{ob.s.static.font_family.body}",
+                "fontSize": "{ob.s.static.fontSize.md}",
+                "fontWeight": "{ob.s.static.font_weight.extraBold}",
+                "lineHeight": "{ob.s.static.lineHeight.md}",
+                "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
+                "paragraphSpacing": "{ob.p.paragraphSpacing.500}"
+              },
+              "$description": "Compact page heading. Divides content hierarchically into major sections within a page."
+            }
+          }
+        }
+      }
+    }
+  }
+}

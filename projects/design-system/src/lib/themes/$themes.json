@@ -409,6 +409,8 @@
       "02_primitive/dimension": "source",
       "03_semantic/border": "enabled",
       "03_semantic/motion": "enabled",
+      "03_semantic/typography/context/compact": "enabled",
+      "03_semantic/typography/context/prose": "disabled",
       "03_semantic/typography/style": "enabled",
       "03_semantic/effect": "enabled",
       "03_semantic/elevation": "enabled",
@@ -2381,6 +2383,8 @@
       "03_semantic/z-index": "enabled",
       "03_semantic/typography/single/static": "enabled",
       "03_semantic/typography/grouped/static": "enabled",
+      "03_semantic/typography/context/compact": "enabled",
+      "03_semantic/typography/context/prose": "disabled",
       "03_semantic/typography/style": "enabled",
       "03_semantic/dimension/static": "enabled",
       "03_semantic/effect": "enabled",
@@ -2859,6 +2863,8 @@
     "selectedTokenSets": {
       "03_semantic/typography/single/sm": "enabled",
       "03_semantic/typography/grouped/sm": "enabled",
+      "03_semantic/typography/context/compact": "enabled",
+      "03_semantic/typography/context/prose": "disabled",
       "03_semantic/dimension/sm": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
@@ -2975,6 +2981,8 @@
     "selectedTokenSets": {
       "03_semantic/typography/single/md": "enabled",
       "03_semantic/typography/grouped/md": "enabled",
+      "03_semantic/typography/context/compact": "enabled",
+      "03_semantic/typography/context/prose": "disabled",
       "03_semantic/dimension/md": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
@@ -3091,6 +3099,8 @@
     "selectedTokenSets": {
       "03_semantic/typography/single/lg": "enabled",
       "03_semantic/typography/grouped/lg": "enabled",
+      "03_semantic/typography/context/compact": "enabled",
+      "03_semantic/typography/context/prose": "disabled",
       "03_semantic/dimension/lg": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
