@@ -11,7 +11,7 @@
                 "fontSize": "{ob.s.static.fontSize.5xl}",
                 "fontWeight": "{ob.s.static.font_weight.semiBold}",
                 "letterSpacing": "{ob.s.static.letter_spacing_px.superNarrow}",
-                "lineHeight": "{ob.s.static.lineHeight.5xl}",
+                "lineHeight": "{ob.s.static.lineHeight.4xl}",
                 "paragraphSpacing": "{ob.p.paragraphSpacing.1400}"
               },
               "$description": "Primary page heading for prose based pages. Used for the most important headline on a page."
