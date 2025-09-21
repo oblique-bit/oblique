@@ -63,6 +63,11 @@
           "$description": "Base font size multiplier - compensated from mult_static value"
         }
       },
+      "rem_base": {
+        "$type": "font_sizes",
+        "$value": "16",
+        "$description": "Base font size in pixels for REM calculations - always 16px"
+      },
       "font_weight": {
         "400": {
           "$type": "fontWeights",
@@ -245,57 +250,57 @@
         "100": {
           "$type": "font_sizes",
           "$value": "0.75rem",
-          "$description": "12px @ 16 base font size"
+          "$description": "12px @ 16px base font size"
         },
         "200": {
           "$type": "font_sizes",
-          "$value": "0.88rem",
-          "$description": "14px @ 16 base font size"
+          "$value": "0.875rem",
+          "$description": "14px @ 16px base font size"
         },
         "300": {
           "$type": "font_sizes",
-          "$value": "1.06rem",
-          "$description": "17px @ 16 base font size"
+          "$value": "1rem",
+          "$description": "16px @ 16px base font size"
         },
         "400": {
           "$type": "font_sizes",
-          "$value": "1.44rem",
-          "$description": "23px @ 16 base font size"
+          "$value": "1.125rem",
+          "$description": "18px @ 16px base font size"
         },
         "500": {
           "$type": "font_sizes",
-          "$value": "1.75rem",
-          "$description": "28px @ 16 base font size"
+          "$value": "1.4375rem",
+          "$description": "23px @ 16px base font size"
         },
         "600": {
           "$type": "font_sizes",
-          "$value": "2.12rem",
-          "$description": "34px @ 16 base font size"
+          "$value": "1.75rem",
+          "$description": "28px @ 16px base font size"
         },
         "700": {
           "$type": "font_sizes",
-          "$value": "2.44rem",
-          "$description": "39px @ 16 base font size"
+          "$value": "2.125rem",
+          "$description": "34px @ 16px base font size"
         },
         "800": {
           "$type": "font_sizes",
-          "$value": "2.81rem",
-          "$description": "45px @ 16 base font size"
+          "$value": "2.5rem",
+          "$description": "40px @ 16px base font size"
         },
         "900": {
           "$type": "font_sizes",
-          "$value": "3.06rem",
-          "$description": "49px @ 16 base font size"
+          "$value": "3rem",
+          "$description": "48px @ 16px base font size"
         },
         "1000": {
           "$type": "font_sizes",
-          "$value": "3.50rem",
-          "$description": "56px @ 16 base font size"
+          "$value": "4rem",
+          "$description": "64px @ 16px base font size"
         },
         "1100": {
           "$type": "font_sizes",
-          "$value": "3.75rem",
-          "$description": "60px @ 16 base font size"
+          "$value": "5rem",
+          "$description": "80px @ 16px base font size"
         }
       },
       "textcase": {
