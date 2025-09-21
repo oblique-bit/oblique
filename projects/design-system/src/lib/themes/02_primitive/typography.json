@@ -23,39 +23,39 @@
         },
         "300": {
           "$type": "font_sizes",
-          "$value": "4.25 * {ob.p.font_size_unitless._base}"
+          "$value": "4 * {ob.p.font_size_unitless._base}"
         },
         "400": {
           "$type": "font_sizes",
-          "$value": "5.75 * {ob.p.font_size_unitless._base}"
+          "$value": "4.5 * {ob.p.font_size_unitless._base}"
         },
         "500": {
           "$type": "font_sizes",
-          "$value": "7 * {ob.p.font_size_unitless._base}"
+          "$value": "5.75 * {ob.p.font_size_unitless._base}"
         },
         "600": {
           "$type": "font_sizes",
-          "$value": "8.5 * {ob.p.font_size_unitless._base}"
+          "$value": "7 * {ob.p.font_size_unitless._base}"
         },
         "700": {
           "$type": "font_sizes",
-          "$value": "9.75 * {ob.p.font_size_unitless._base}"
+          "$value": "8.5 * {ob.p.font_size_unitless._base}"
         },
         "800": {
           "$type": "font_sizes",
-          "$value": "11.25 * {ob.p.font_size_unitless._base}"
+          "$value": "10 * {ob.p.font_size_unitless._base}"
         },
         "900": {
           "$type": "font_sizes",
-          "$value": "12.25 * {ob.p.font_size_unitless._base}"
+          "$value": "12 * {ob.p.font_size_unitless._base}"
         },
         "1000": {
           "$type": "font_sizes",
-          "$value": "14 * {ob.p.font_size_unitless._base}"
+          "$value": "16 * {ob.p.font_size_unitless._base}"
         },
         "1100": {
           "$type": "font_sizes",
-          "$value": "15 * {ob.p.font_size_unitless._base}"
+          "$value": "20 * {ob.p.font_size_unitless._base}"
         },
         "_base": {
           "$type": "font_sizes",

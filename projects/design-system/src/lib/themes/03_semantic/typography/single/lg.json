@@ -17,27 +17,27 @@
           },
           "lg": {
             "$type": "font_sizes",
-            "$value": "{ob.p.font_size_unitless.400} * {ob.g.multiplier.typography.lg}"
+            "$value": "{ob.p.font_size_unitless.500} * {ob.g.multiplier.typography.lg}"
           },
           "xl": {
             "$type": "font_sizes",
-            "$value": "{ob.p.font_size_unitless.500} * {ob.g.multiplier.typography.lg}"
+            "$value": "{ob.p.font_size_unitless.600} * {ob.g.multiplier.typography.lg}"
           },
           "2xl": {
             "$type": "font_sizes",
-            "$value": "{ob.p.font_size_unitless.600} * {ob.g.multiplier.typography.lg}"
+            "$value": "{ob.p.font_size_unitless.700} * {ob.g.multiplier.typography.lg}"
           },
           "3xl": {
             "$type": "font_sizes",
-            "$value": "{ob.p.font_size_unitless.700} * {ob.g.multiplier.typography.lg}"
+            "$value": "{ob.p.font_size_unitless.800} * {ob.g.multiplier.typography.lg}"
           },
           "4xl": {
             "$type": "font_sizes",
-            "$value": "{ob.p.font_size_unitless.800} * {ob.g.multiplier.typography.lg}"
+            "$value": "{ob.p.font_size_unitless.900} * {ob.g.multiplier.typography.lg}"
           },
           "5xl": {
             "$type": "font_sizes",
-            "$value": "{ob.p.font_size_unitless.900} * {ob.g.multiplier.typography.lg}"
+            "$value": "{ob.p.font_size_unitless.1000} * {ob.g.multiplier.typography.lg}"
           },
           "_base": {
             "$type": "font_sizes",

@@ -104,6 +104,8 @@ Size modes enable consistent component scaling across different interface contex
 
 **For Developers:** Build systems select appropriate S1 files based on user preference detection (e.g., `prefers-color-scheme`), automatically propagating changes through S3 to components.
 
+**Theme Default Selection:** The first theme in a theme collection in Token Studio becomes the default theme in both Figma variables and generated code.
+
 #### S1 Lightness Semantic Level
 
 ```
