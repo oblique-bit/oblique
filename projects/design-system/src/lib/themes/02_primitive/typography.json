@@ -157,6 +157,83 @@
           "$value": "15 * {ob.p.lineHeight._base}"
         }
       },
+      "paragraphSpacingRem": {
+        "50": {
+          "$type": "paragraphSpacing",
+          "$value": "0.25rem",
+          "$description": "4px @ 16px base font size"
+        },
+        "100": {
+          "$type": "paragraphSpacing",
+          "$value": "0.5rem",
+          "$description": "8px @ 16px base font size"
+        },
+        "200": {
+          "$type": "paragraphSpacing",
+          "$value": "0.75rem",
+          "$description": "12px @ 16px base font size"
+        },
+        "300": {
+          "$type": "paragraphSpacing",
+          "$value": "1rem",
+          "$description": "16px @ 16px base font size"
+        },
+        "400": {
+          "$type": "paragraphSpacing",
+          "$value": "1.25rem",
+          "$description": "20px @ 16px base font size"
+        },
+        "500": {
+          "$type": "paragraphSpacing",
+          "$value": "1.5rem",
+          "$description": "24px @ 16px base font size"
+        },
+        "600": {
+          "$type": "paragraphSpacing",
+          "$value": "1.75rem",
+          "$description": "28px @ 16px base font size"
+        },
+        "700": {
+          "$type": "paragraphSpacing",
+          "$value": "2rem",
+          "$description": "32px @ 16px base font size"
+        },
+        "800": {
+          "$type": "paragraphSpacing",
+          "$value": "2.25rem",
+          "$description": "36px @ 16px base font size"
+        },
+        "900": {
+          "$type": "paragraphSpacing",
+          "$value": "2.5rem",
+          "$description": "40px @ 16px base font size"
+        },
+        "1000": {
+          "$type": "paragraphSpacing",
+          "$value": "2.75rem",
+          "$description": "44px @ 16px base font size"
+        },
+        "1100": {
+          "$type": "paragraphSpacing",
+          "$value": "3rem",
+          "$description": "48px @ 16px base font size"
+        },
+        "1200": {
+          "$type": "paragraphSpacing",
+          "$value": "3.25rem",
+          "$description": "52px @ 16px base font size"
+        },
+        "1300": {
+          "$type": "paragraphSpacing",
+          "$value": "3.5rem",
+          "$description": "56px @ 16px base font size"
+        },
+        "1400": {
+          "$type": "paragraphSpacing",
+          "$value": "3.75rem",
+          "$description": "60px @ 16px base font size"
+        }
+      },
       "text_decoration": {
         "underline": {
           "$type": "textDecoration",
@@ -244,6 +321,98 @@
           "$type": "lineHeights",
           "$value": "4",
           "$description": "Base line height multiplier - compensated from mult_static value"
+        }
+      },
+      "lineHeightRem": {
+        "50": {
+          "$type": "lineHeights",
+          "$value": "0.25rem",
+          "$description": "4px @ 16px base font size"
+        },
+        "100": {
+          "$type": "lineHeights",
+          "$value": "0.5rem",
+          "$description": "8px @ 16px base font size"
+        },
+        "200": {
+          "$type": "lineHeights",
+          "$value": "0.75rem",
+          "$description": "12px @ 16px base font size"
+        },
+        "300": {
+          "$type": "lineHeights",
+          "$value": "1rem",
+          "$description": "16px @ 16px base font size"
+        },
+        "400": {
+          "$type": "lineHeights",
+          "$value": "1.25rem",
+          "$description": "20px @ 16px base font size"
+        },
+        "500": {
+          "$type": "lineHeights",
+          "$value": "1.5rem",
+          "$description": "24px @ 16px base font size"
+        },
+        "600": {
+          "$type": "lineHeights",
+          "$value": "1.75rem",
+          "$description": "28px @ 16px base font size"
+        },
+        "700": {
+          "$type": "lineHeights",
+          "$value": "2rem",
+          "$description": "32px @ 16px base font size"
+        },
+        "800": {
+          "$type": "lineHeights",
+          "$value": "2.25rem",
+          "$description": "36px @ 16px base font size"
+        },
+        "900": {
+          "$type": "lineHeights",
+          "$value": "2.5rem",
+          "$description": "40px @ 16px base font size"
+        },
+        "1000": {
+          "$type": "lineHeights",
+          "$value": "2.75rem",
+          "$description": "44px @ 16px base font size"
+        },
+        "1100": {
+          "$type": "lineHeights",
+          "$value": "3rem",
+          "$description": "48px @ 16px base font size"
+        },
+        "1200": {
+          "$type": "lineHeights",
+          "$value": "3.25rem",
+          "$description": "52px @ 16px base font size"
+        },
+        "1300": {
+          "$type": "lineHeights",
+          "$value": "3.5rem",
+          "$description": "56px @ 16px base font size"
+        },
+        "1400": {
+          "$type": "lineHeights",
+          "$value": "3.75rem",
+          "$description": "60px @ 16px base font size"
+        },
+        "1500": {
+          "$type": "lineHeights",
+          "$value": "4rem",
+          "$description": "64px @ 16px base font size"
+        },
+        "1600": {
+          "$type": "lineHeights",
+          "$value": "4.25rem",
+          "$description": "68px @ 16px base font size"
+        },
+        "1700": {
+          "$type": "lineHeights",
+          "$value": "4.5rem",
+          "$description": "72px @ 16px base font size"
         }
       },
       "fontSizeRem": {

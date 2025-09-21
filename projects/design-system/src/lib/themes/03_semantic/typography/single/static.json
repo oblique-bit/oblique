@@ -47,35 +47,35 @@
         "lineHeight": {
           "xs": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeight.300}"
+            "$value": "{ob.p.lineHeightRem.300}"
           },
           "sm": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeight.400}"
+            "$value": "{ob.p.lineHeightRem.400}"
           },
           "md": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeight.500}"
+            "$value": "{ob.p.lineHeightRem.500}"
           },
           "lg": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeight.600}"
+            "$value": "{ob.p.lineHeightRem.600}"
           },
           "xl": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeight.800}"
+            "$value": "{ob.p.lineHeightRem.800}"
           },
           "2xl": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeight.1100}"
+            "$value": "{ob.p.lineHeightRem.1100}"
           },
           "3xl": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeight.1300}"
+            "$value": "{ob.p.lineHeightRem.1300}"
           },
           "4xl": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeight.1400}"
+            "$value": "{ob.p.lineHeightRem.1400}"
           }
         },
         "paragraphSpacing": {
