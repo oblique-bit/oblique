@@ -6,10 +6,10 @@
           "h1": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.fontSize.xl}"
+              "$value": "{ob.s.static.fontSize.2xl}"
             },
             "font_weight": {
-              "$type": "fontWeights", 
+              "$type": "fontWeights",
               "$value": "{ob.s.static.font_weight.bold}"
             },
             "line_height": {
@@ -24,32 +24,32 @@
           "h2": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.fontSize.lg}"
+              "$value": "{ob.s.static.fontSize.xl}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.bold}" 
+              "$value": "{ob.s.static.font_weight.bold}"
             },
             "line_height": {
               "$type": "lineHeights",
               "$value": "{ob.s.static.lineHeight.lg}"
             },
             "letter_spacing": {
-              "$type": "letterSpacing", 
+              "$type": "letterSpacing",
               "$value": "{ob.s.static.letter_spacing_px.narrow}"
             }
           },
           "h3": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.fontSize.md}"
+              "$value": "{ob.s.static.fontSize.lg}"
             },
             "font_weight": {
               "$type": "fontWeights",
               "$value": "{ob.s.static.font_weight.extraBold}"
             },
             "line_height": {
-              "$type": "lineHeights", 
+              "$type": "lineHeights",
               "$value": "{ob.s.static.lineHeight.md}"
             },
             "letter_spacing": {
@@ -60,7 +60,7 @@
           "h4": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.fontSize.md}"
+              "$value": "{ob.s.static.fontSize.lg}"
             },
             "font_weight": {
               "$type": "fontWeights",
@@ -77,8 +77,8 @@
           },
           "h5": {
             "font_size": {
-              "$type": "fontSizes", 
-              "$value": "{ob.s.static.fontSize.md}"
+              "$type": "fontSizes",
+              "$value": "{ob.s.static.fontSize.lg}"
             },
             "font_weight": {
               "$type": "fontWeights",
@@ -96,7 +96,7 @@
           "h6": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.fontSize.md}"
+              "$value": "{ob.s.static.fontSize.lg}"
             },
             "font_weight": {
               "$type": "fontWeights",
@@ -173,7 +173,7 @@
               },
               "font_weight": {
                 "$type": "fontWeights",
-                "$value": "{ob.s.static.font_weight.semiBold}"
+                "$value": "{ob.s.static.font_weight.bold}"
               },
               "line_height": {
                 "$type": "lineHeights",

@@ -169,15 +169,15 @@
             "lead": {
               "font_size": {
                 "$type": "fontSizes",
-                "$value": "{ob.s.static.fontSize.xl}"
+                "$value": "{ob.s.static.fontSize.lg}"
               },
               "font_weight": {
                 "$type": "fontWeights",
-                "$value": "{ob.s.static.font_weight.semiBold}"
+                "$value": "{ob.s.static.font_weight.bold}"
               },
               "line_height": {
                 "$type": "lineHeights",
-                "$value": "{ob.s.static.lineHeight.xl}"
+                "$value": "{ob.s.static.lineHeight.lg}"
               },
               "letter_spacing": {
                 "$type": "letterSpacing",
