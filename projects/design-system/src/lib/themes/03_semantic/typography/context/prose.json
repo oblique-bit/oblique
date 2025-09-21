@@ -9,7 +9,7 @@
               "$value": "{ob.s.static.fontSize.5xl}"
             },
             "font_weight": {
-              "$type": "fontWeights", 
+              "$type": "fontWeights",
               "$value": "{ob.s.static.font_weight.semiBold}"
             },
             "line_height": {
@@ -28,14 +28,14 @@
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.semiBold}" 
+              "$value": "{ob.s.static.font_weight.semiBold}"
             },
             "line_height": {
               "$type": "lineHeights",
               "$value": "{ob.s.static.lineHeight.3xl}"
             },
             "letter_spacing": {
-              "$type": "letterSpacing", 
+              "$type": "letterSpacing",
               "$value": "{ob.s.static.letter_spacing_px.superNarrow}"
             }
           },
@@ -49,7 +49,7 @@
               "$value": "{ob.s.static.font_weight.semiBold}"
             },
             "line_height": {
-              "$type": "lineHeights", 
+              "$type": "lineHeights",
               "$value": "{ob.s.static.lineHeight.3xl}"
             },
             "letter_spacing": {
@@ -64,7 +64,7 @@
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.bold}"
+              "$value": "{ob.s.static.font_weight.semiBold}"
             },
             "line_height": {
               "$type": "lineHeights",
