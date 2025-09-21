@@ -42,7 +42,7 @@
           "h3": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.fontSize.2xl}"
+              "$value": "{ob.s.static.fontSize.3xl}"
             },
             "font_weight": {
               "$type": "fontWeights",
@@ -50,7 +50,7 @@
             },
             "line_height": {
               "$type": "lineHeights", 
-              "$value": "{ob.s.static.lineHeight.2xl}"
+              "$value": "{ob.s.static.lineHeight.3xl}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
