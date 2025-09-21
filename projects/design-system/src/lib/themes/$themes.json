@@ -3158,11 +3158,11 @@
     "group": "component-size"
   },
   {
-    "id": "compact-context",
-    "name": "compact",
+    "id": "interface-context",
+    "name": "interface",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/typography/context/compact": "enabled"
+      "03_semantic/typography/context/interface": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.typography.styles.h1.font_size": "0875045ec84686518ea44debfe80509d86ea3457",
