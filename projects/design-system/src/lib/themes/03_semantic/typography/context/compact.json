@@ -110,79 +110,79 @@
               "$type": "letterSpacing",
               "$value": "{ob.s.static.letter_spacing_px.normal}"
             }
-          }
-        },
-        "body": {
-          "normal": {
-            "font_size": {
-              "$type": "fontSizes",
-              "$value": "{ob.s.static.fontSize.md}"
-            },
-            "font_weight": {
-              "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.medium}"
-            },
-            "line_height": {
-              "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.md}"
-            },
-            "letter_spacing": {
-              "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.normal}"
-            }
           },
-          "link": {
-            "font_size": {
-              "$type": "fontSizes",
-              "$value": "{ob.s.static.fontSize.md}"
+          "body": {
+            "normal": {
+              "font_size": {
+                "$type": "fontSizes",
+                "$value": "{ob.s.static.fontSize.md}"
+              },
+              "font_weight": {
+                "$type": "fontWeights",
+                "$value": "{ob.s.static.font_weight.medium}"
+              },
+              "line_height": {
+                "$type": "lineHeights",
+                "$value": "{ob.s.static.lineHeight.md}"
+              },
+              "letter_spacing": {
+                "$type": "letterSpacing",
+                "$value": "{ob.s.static.letter_spacing_px.normal}"
+              }
             },
-            "font_weight": {
-              "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.medium}"
+            "link": {
+              "font_size": {
+                "$type": "fontSizes",
+                "$value": "{ob.s.static.fontSize.md}"
+              },
+              "font_weight": {
+                "$type": "fontWeights",
+                "$value": "{ob.s.static.font_weight.medium}"
+              },
+              "line_height": {
+                "$type": "lineHeights",
+                "$value": "{ob.s.static.lineHeight.md}"
+              },
+              "letter_spacing": {
+                "$type": "letterSpacing",
+                "$value": "{ob.s.static.letter_spacing_px.normal}"
+              }
             },
-            "line_height": {
-              "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.md}"
+            "strong": {
+              "font_size": {
+                "$type": "fontSizes",
+                "$value": "{ob.s.static.fontSize.md}"
+              },
+              "font_weight": {
+                "$type": "fontWeights",
+                "$value": "{ob.s.static.font_weight.bold}"
+              },
+              "line_height": {
+                "$type": "lineHeights",
+                "$value": "{ob.s.static.lineHeight.md}"
+              },
+              "letter_spacing": {
+                "$type": "letterSpacing",
+                "$value": "{ob.s.static.letter_spacing_px.normal}"
+              }
             },
-            "letter_spacing": {
-              "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.normal}"
-            }
-          },
-          "strong": {
-            "font_size": {
-              "$type": "fontSizes",
-              "$value": "{ob.s.static.fontSize.md}"
-            },
-            "font_weight": {
-              "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.bold}"
-            },
-            "line_height": {
-              "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.md}"
-            },
-            "letter_spacing": {
-              "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.normal}"
-            }
-          },
-          "lead": {
-            "font_size": {
-              "$type": "fontSizes",
-              "$value": "{ob.s.static.fontSize.md}"
-            },
-            "font_weight": {
-              "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.bold}"
-            },
-            "line_height": {
-              "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.md}"
-            },
-            "letter_spacing": {
-              "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.normal}"
+            "lead": {
+              "font_size": {
+                "$type": "fontSizes",
+                "$value": "{ob.s.static.fontSize.lg}"
+              },
+              "font_weight": {
+                "$type": "fontWeights",
+                "$value": "{ob.s.static.font_weight.semiBold}"
+              },
+              "line_height": {
+                "$type": "lineHeights",
+                "$value": "{ob.s.static.lineHeight.lg}"
+              },
+              "letter_spacing": {
+                "$type": "letterSpacing",
+                "$value": "{ob.s.static.letter_spacing_px.narrow}"
+              }
             }
           }
         }
