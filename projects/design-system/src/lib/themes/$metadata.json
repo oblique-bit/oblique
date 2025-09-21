@@ -31,7 +31,7 @@
     "03_semantic/typography/grouped/sm",
     "03_semantic/typography/grouped/md",
     "03_semantic/typography/grouped/lg",
-    "03_semantic/typography/context/compact",
+    "03_semantic/typography/context/interface",
     "03_semantic/typography/context/prose",
     "03_semantic/typography/style",
     "03_semantic/dimension/lg",
