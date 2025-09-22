@@ -3,9 +3,9 @@ import {Component, DebugElement, Directive, EventEmitter, Output} from '@angular
 import {By} from '@angular/platform-browser';
 import {Observable} from 'rxjs';
 import {skip} from 'rxjs/operators';
-import {WINDOW} from '../utilities';
-import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
+import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObColumnLayoutComponent} from './column-layout.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 let resizerCallback;
 class ResizeObserver {
@@ -34,7 +34,7 @@ class ObColumnPanelDirective {
 }
 
 @Component({
-	template: `<ob-column-layout [left]="false" [right]="false" />`,
+	template: `<ob-column-layout [left]="NONE" [right]="NONE" />`,
 	standalone: false
 })
 class TestComponent {}
@@ -48,9 +48,9 @@ describe(ObColumnLayoutComponent.name, () => {
 
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				imports: [ObMockTranslatePipe],
+				imports: [TranslateModule],
 				declarations: [ObColumnLayoutComponent, ObColumnPanelDirective],
-				providers: [{provide: WINDOW, useValue: window}]
+				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
 		});
 
@@ -127,7 +127,7 @@ describe(ObColumnLayoutComponent.name, () => {
 			});
 
 			test('that it does not toggle the panel when panel is removed', () => {
-				component[panel] = false;
+				component[panel] = 'NONE';
 				fixture.detectChanges();
 				jest.spyOn(panels[index], 'toggle');
 				component[method]();
@@ -188,9 +188,9 @@ describe(ObColumnLayoutComponent.name, () => {
 
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				imports: [ObMockTranslatePipe],
+				imports: [TranslateModule],
 				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective],
-				providers: [{provide: WINDOW, useValue: window}]
+				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
 		});
 
@@ -198,8 +198,8 @@ describe(ObColumnLayoutComponent.name, () => {
 			fixture = TestBed.createComponent(TestComponent);
 			testComponent = fixture.componentInstance;
 			component = fixture.debugElement.query(By.directive(ObColumnLayoutComponent)).injector.get(ObColumnLayoutComponent);
-			component.left = false;
-			component.right = false;
+			component.left = 'NONE';
+			component.right = 'NONE';
 			fixture.detectChanges();
 		});
 
@@ -224,8 +224,8 @@ describe(ObColumnLayoutComponent.name, () => {
 			let panels: ObColumnPanelDirective[];
 
 			beforeEach(fakeAsync(() => {
-				component.left = true;
-				component.right = true;
+				component.left = 'OPENED';
+				component.right = 'OPENED';
 				component.ngOnChanges();
 				fixture.detectChanges();
 				tick();
@@ -262,9 +262,9 @@ describe(ObColumnLayoutComponent.name, () => {
 
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				imports: [ObMockTranslatePipe],
+				imports: [TranslateModule],
 				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective],
-				providers: [{provide: WINDOW, useValue: window}]
+				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
 		});
 

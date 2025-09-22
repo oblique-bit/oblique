@@ -1,13 +1,12 @@
 import {type AfterViewInit, Component, viewChild} from '@angular/core';
 import {type MatPaginator, MatPaginatorModule, type PageEvent} from '@angular/material/paginator';
-import {ObPaginatorModule} from '@oblique/oblique';
 import {JsonPipe} from '@angular/common';
 
 @Component({
 	selector: 'app-paginator-example-other-options-preview',
 	templateUrl: './paginator-example-other-options-preview.component.html',
 	styleUrls: ['../paginator-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
-	imports: [JsonPipe, MatPaginatorModule, ObPaginatorModule],
+	imports: [JsonPipe, MatPaginatorModule],
 	host: {class: 'layout-column'}
 })
 export class PaginatorExampleOtherOptionsPreviewComponent implements AfterViewInit {

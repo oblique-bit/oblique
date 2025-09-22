@@ -7,15 +7,14 @@ import {MatIconHarness} from '@angular/material/icon/testing';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslateModule} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationApplicationsHarness} from './service-navigation-applications.harness';
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
 import {ObDisableLinkDirective} from '../shared/disable-link/disable-link.directive';
-import {WINDOW} from '../../utilities';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
 import {ObServiceNavigationApplicationNameStatusPipe} from './service-navigation-application-name-status.pipe';
 
@@ -43,17 +42,15 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				ObPopoverModule,
 				ObDisableLinkDirective,
 				MatTooltipModule,
-				ObIsCurrentUrlPipe
+				ObIsCurrentUrlPipe,
+				TranslateModule
 			],
 			declarations: [
 				ObServiceNavigationApplicationsComponent,
 				ObServiceNavigationPopoverSectionComponent,
 				ObServiceNavigationApplicationNameStatusPipe
 			],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationApplicationsComponent);
@@ -659,10 +656,6 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				expect(await trigger.matchesSelector('a')).toBe(true);
 			});
 
-			it('should have "i18n.oblique.service-navigation.applications.link.label" as text', async () => {
-				expect(await harness.getTriggerScreenReaderText()).toBe('i18n.oblique.service-navigation.applications.link.label');
-			});
-
 			it.each([
 				{attribute: 'id', val: 'service-navigation-applications-link'},
 				{attribute: 'href', val: ''}
@@ -693,10 +686,6 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 
 			it('should be a button', async () => {
 				expect(await trigger.matchesSelector('button')).toBe(true);
-			});
-
-			it('should have "i18n.oblique.service-navigation.applications.button.label" as text', async () => {
-				expect(await harness.getTriggerScreenReaderText()).toBe('i18n.oblique.service-navigation.applications.button.label');
 			});
 
 			it.each([

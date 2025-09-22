@@ -4,7 +4,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {By} from '@angular/platform-browser';
 import {MatPaginator} from '@angular/material/paginator';
-import {ObMockTranslateService, ObPaginatorModule} from '@oblique/oblique';
+import {ObMockTranslateService} from '@oblique/oblique';
 import {TranslateService} from '@ngx-translate/core';
 
 describe(PaginatorCodeExamplesComponent.name, () => {
@@ -13,7 +13,7 @@ describe(PaginatorCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [PaginatorCodeExamplesComponent, NoopAnimationsModule, ObPaginatorModule],
+			imports: [PaginatorCodeExamplesComponent, NoopAnimationsModule],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 

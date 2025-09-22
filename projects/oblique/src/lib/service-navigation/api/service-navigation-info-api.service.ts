@@ -35,8 +35,11 @@ export class ObServiceNavigationInfoApiService {
 			links: info.data.help.links.map(link => ({url: link.link, label: link.title})),
 			contactText: info.data.contact.optionalInformation,
 			contact: {
+				emailText: info.data.contact.email.optionalInformation,
 				email: info.data.contact.email.emailAddress,
-				tel: info.data.contact.phone.phoneNumber,
+				phoneText: info.data.contact.phone.optionalInformation,
+				phone: info.data.contact.phone.phoneNumber,
+				formUrlText: info.data.contact.links[0]?.optionalInformation,
 				formUrl: info.data.contact.links[0]?.link ?? undefined
 			}
 		};

@@ -10,6 +10,7 @@ import {
 import {
 	adaptInsertChange,
 	addDevDependency,
+	angularAppFilesNames,
 	appModulePath,
 	applyChanges,
 	createSrcFile,
@@ -17,11 +18,20 @@ import {
 	routingModulePath
 } from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {ObliquePackage, addFile, createSafeRule, infoMigration, readFile, setOrCreateAngularProjectsConfig, writeFile} from '../../utils';
+import {
+	ObliquePackage,
+	addFile,
+	createSafeRule,
+	infoMigration,
+	readFile,
+	replaceInFile,
+	setOrCreateAngularProjectsConfig,
+	writeFile
+} from '../../utils';
 
 export function obliqueFeatures(options: ObIOptionsSchema): Rule {
-	return (tree: Tree, context: SchematicContext) =>
-		chain([
+	return (tree: Tree, context: SchematicContext) => {
+		return chain([
 			addObliqueProviders(),
 			addAjv(options.ajv),
 			addUnknownRoute(options.unknownRoute),
@@ -30,8 +40,9 @@ export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 			addBanner(options.banner, options.environments),
 			addDefaultHomeComponent(options.prefix),
 			addExternalLink(options.externalLink),
-			addAccessibilityStatementConfiguration(options.title)
+			setObliqueConfiguration(options.title, options.applicationOperator, options.contact, options.hasLanguageInUrl)
 		])(tree, context);
+	};
 }
 
 function addObliqueProviders(): Rule {
@@ -137,25 +148,22 @@ function addDefaultHomeComponent(prefix: string): Rule {
 		addDefaultComponent(tree, prefix);
 		addDefaultComponentToAppModule(tree);
 		addDefaultComponentRouteToAppRoutingModule(tree);
+		removeTitleTest(tree);
 
 		return tree;
 	});
 }
 
 function addDefaultComponent(tree: Tree, prefix: string): void {
-	addFile(tree, 'src/app/home/home.component.html', getTemplate(tree, `home.component.html`));
-	addFile(tree, 'src/app/home/home.component.scss', getTemplate(tree, `home.component.scss.config`));
-	addFile(
-		tree,
-		'src/app/home/home.component.ts',
-		getTemplate(tree, 'home.component.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix)
-	);
+	addFile(tree, 'src/app/home/home.html', getTemplate(tree, `home.html`));
+	addFile(tree, 'src/app/home/home.scss', getTemplate(tree, `home.scss.config`));
+	addFile(tree, 'src/app/home/home.ts', getTemplate(tree, 'home.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix));
 }
 
 function addDefaultComponentToAppModule(tree: Tree): void {
 	if (tree.exists(appModulePath)) {
 		const sourceFile = createSrcFile(tree, appModulePath);
-		const changes: Change[] = addDeclarationToModule(sourceFile, appModulePath, 'HomeComponent', './home/home.component');
+		const changes: Change[] = addDeclarationToModule(sourceFile, appModulePath, 'Home', './home/home');
 
 		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatButtonModule', '@angular/material/button'));
 		changes.push(...addImportToModule(sourceFile, appModulePath, 'MatCardModule', '@angular/material/card'));
@@ -172,17 +180,22 @@ function addDefaultComponentRouteToAppRoutingModule(tree: Tree): void {
 		const changes: Change[] = [];
 		const fileName = routingModule.split('/').pop();
 		if (fileName) {
-			changes.push(insertImport(sourceFile, routingModule, 'HomeComponent', './home/home.component'));
+			changes.push(insertImport(sourceFile, routingModule, 'Home', './home/home'));
 			changes.push(
 				addRouteDeclarationToModule(
 					sourceFile,
 					fileName,
-					"{path: '', redirectTo: 'home', pathMatch: 'full'},{path: 'home', component: HomeComponent}"
+					"{path: '', redirectTo: 'home', pathMatch: 'full'},{path: 'home', component: Home}"
 				)
 			);
 		}
 		applyChanges(tree, routingModule, changes);
 	}
+}
+
+function removeTitleTest(tree: Tree): void {
+	const appSpecFile = `src/app/${angularAppFilesNames.appComponentSpec}`;
+	replaceInFile(tree, appSpecFile, /import\s+{[^}]*}.*from\s+['"]@angular\/core['"];/, '');
 }
 
 function addExternalLink(externalLink: boolean): Rule {
@@ -197,15 +210,62 @@ function addExternalLink(externalLink: boolean): Rule {
 	});
 }
 
-function addAccessibilityStatementConfiguration(applicationTitle: string): Rule {
+function parseContact(contacts: string): {emails: string[]; phones: string[]} {
+	return {
+		emails:
+			contacts
+				?.trim()
+				.split(/\s*,\s*/)
+				.filter((element: string) => element.includes('@')) ?? [],
+
+		phones:
+			contacts
+				?.trim()
+				.split(/\s*,\s*/)
+				.filter((element: string) => !element.includes('@')) ?? []
+	};
+}
+
+function validateContact(emails?: string[], phones?: string[]): void {
+	if (isEmpty(emails) && isEmpty(phones)) {
+		throw new Error('You must provide at least one contact method: email or phone.');
+	}
+}
+
+function isEmpty(array?: string[]): boolean {
+	return !array || array.length === 0;
+}
+
+function setObliqueConfiguration(applicationTitle: string, applicationOperator: string, contact: string, hasLanguageInUrl: boolean): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique feature: Adding accessibility statement configuration');
+		const {emails, phones} = parseContact(contact);
+		validateContact(emails, phones);
+
 		const content = readFile(tree, appModulePath);
-		const newContent = content.replace(
-			/(?<=provideObliqueConfiguration\()(?=\))/,
-			`{accessibilityStatement: {applicationName: '${applicationTitle}', conformity: 'none', applicationOperator: 'Replace me with the name and address of the federal office that exploit this application, HTML is permitted', contact: {/* at least 1 email or phone number has to be provided */ emails: [''], phones: ['']}}}`
-		);
+		const accessibilityConfig = buildAccessibilityConfig(applicationTitle, applicationOperator, emails, phones);
+		const hasLanguageInUrlConfig = buildHasLanguageInUrlConfig(hasLanguageInUrl);
+
+		const newContent = content.replace(/(?<=provideObliqueConfiguration\()(?=\))/, `{${accessibilityConfig}, ${hasLanguageInUrlConfig}}`);
 		writeFile(tree, appModulePath, newContent);
 		return tree;
 	});
+}
+
+function buildAccessibilityConfig(title: string, applicationOperator: string, emails: string[] = [], phones: string[] = []): string {
+	const contactFields = [...emails.map(email => `{email: '${email}'}`), ...phones.map(phone => `{phone: '${phone}'}`)].join(', ');
+
+	const createdOn = new Date().toISOString().split('T')[0];
+
+	return `accessibilityStatement: {
+			applicationName: '${title}',
+			conformity: 'none',
+			createdOn: new Date('${createdOn}'),
+			applicationOperator: '${applicationOperator}',
+			contact: [${contactFields}]
+		}`;
+}
+
+function buildHasLanguageInUrlConfig(hasLanguageInUrl: boolean): string {
+	return `hasLanguageInUrl: ${hasLanguageInUrl}`;
 }

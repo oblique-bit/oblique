@@ -20,12 +20,12 @@ export class AutocompleteExampleIconPositionStartComponent implements AfterViewI
 		{
 			label: ' Ice-cream',
 			disabled: false,
-			iconName: ObEIcon.ARCHIVE
+			iconName: ObEIcon.ARCHIVE_BOX
 		},
 		{
 			label: ' Blue',
 			disabled: false,
-			iconName: ObEIcon.BELL
+			iconName: ObEIcon.NOTIFICATION
 		}
 	];
 	showSelection($event: ObIAutocompleteInputOption): void {

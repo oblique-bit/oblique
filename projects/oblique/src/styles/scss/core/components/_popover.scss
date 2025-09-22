@@ -10,6 +10,10 @@
 	// Using drop-shadow variant of the shadow-default mixin because box shadow doesn't work correctly in this case. See: OUI-2324
 	filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 6%)) drop-shadow(0 4px 10px rgba(0, 0, 0, 8%));
 
+	&:focus {
+		@include shadow.ob-tab-focus-box-shadow();
+	}
+
 	.ob-popover-content-wrapper {
 		overflow-y: auto;
 		padding-right: variables.$ob-spacing-default;

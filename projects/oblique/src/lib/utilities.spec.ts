@@ -1,38 +1,31 @@
 import {TestBed} from '@angular/core/testing';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient, provideHttpClient} from '@angular/common/http';
-import {Optional} from '@angular/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {MatPaginatorIntl} from '@angular/material/paginator';
-import {TranslateCompiler, TranslateFakeCompiler, TranslateLoader, TranslateService} from '@ngx-translate/core';
-import {of} from 'rxjs';
-import {ObMultiTranslateLoader, TRANSLATION_FILES} from './multi-translate-loader/multi-translate-loader';
+import {TranslateCompiler, TranslateFakeCompiler, TranslateFakeLoader, TranslateLoader, TranslateService} from '@ngx-translate/core';
+import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
 import {
 	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
-	OB_MATERIAL_CONFIG,
+	OB_HAS_LANGUAGE_IN_URL,
+	OB_TRANSLATION_CONFIGURATION,
 	WINDOW,
-	checkboxOptionsProvider,
 	getRootRoute,
-	getTranslateLoader,
 	isNotKeyboardEventOnButton,
-	matFormFieldDefaultOptionsProvider,
-	multiTranslateLoader,
 	obFocusWithOutline,
 	provideObliqueConfiguration,
-	radioOptionsProvider,
-	slideToggleOptionsProvider,
-	stepperOptionsOptionsProvider,
-	tabsOptionsProvider,
+	provideObliqueTestingConfiguration,
+	provideObliqueTranslations,
 	windowProvider
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
-import {ObTIconConfig} from './icon/icon.model';
 import {ObIconService} from './icon/icon.service';
+import {Observable, firstValueFrom} from 'rxjs';
 
 describe('utilities', () => {
 	describe('windowProvider', () => {
@@ -42,156 +35,6 @@ describe('utilities', () => {
 
 		it('should return en empty object if not provided document', () => {
 			expect(windowProvider({} as Document)).toEqual({});
-		});
-	});
-
-	describe('getTranslateLoader', () => {
-		const httpClient = {get: () => of({})} as unknown as HttpClient;
-
-		describe.each([
-			[
-				undefined,
-				[
-					['Oblique', 1, './assets/i18n/oblique-en.json'],
-					['Project', 2, './assets/i18n/en.json']
-				]
-			],
-			[[], [['Oblique', 1, './assets/i18n/oblique-en.json']]],
-			[
-				[
-					{prefix: './module1-', suffix: '.json'},
-					{prefix: './module2-', suffix: '.json'}
-				],
-				[
-					['Oblique', 1, './assets/i18n/oblique-en.json'],
-					['Module 1', 2, './module1-en.json'],
-					['Module 2', 3, './module2-en.json']
-				]
-			]
-		])('with %s as additional files', (files, httpCalls) => {
-			const object = getTranslateLoader(httpClient, files);
-
-			it('should create an object', () => {
-				expect(object).toBeTruthy();
-			});
-
-			it('should create an ObMultiTranslateLoader object', () => {
-				expect(object instanceof ObMultiTranslateLoader).toBe(true);
-			});
-
-			describe('getTranslation', () => {
-				beforeEach(() => {
-					jest.spyOn(httpClient, 'get');
-					object.getTranslation('en');
-				});
-
-				afterEach(() => {
-					jest.clearAllMocks();
-				});
-
-				it(`should do ${httpCalls.length} http calls`, () => {
-					expect(httpClient.get).toHaveBeenCalledTimes(httpCalls.length);
-				});
-
-				it.each(httpCalls)('should request %s translations', (name, index, httpCall) => {
-					expect(httpClient.get).toHaveBeenNthCalledWith(index as number, httpCall);
-				});
-			});
-		});
-	});
-
-	describe('multiTranslateLoader', () => {
-		it('should return default config without additional config', () => {
-			expect(multiTranslateLoader()).toEqual({
-				loader: {
-					provide: TranslateLoader,
-					useFactory: getTranslateLoader,
-					deps: [HttpClient, [new Optional(), TRANSLATION_FILES]]
-				}
-			});
-		});
-
-		it('should ignore the loader configuration if provided', () => {
-			expect(multiTranslateLoader({loader: {provide: TranslateLoader, useValue: {}}})).toEqual({
-				loader: {
-					provide: TranslateLoader,
-					useFactory: getTranslateLoader,
-					deps: [HttpClient, [new Optional(), TRANSLATION_FILES]]
-				}
-			});
-		});
-
-		it('should prepend any additional configuration', () => {
-			expect(multiTranslateLoader({isolate: true})).toEqual({
-				isolate: true,
-				loader: {
-					provide: TranslateLoader,
-					useFactory: getTranslateLoader,
-					deps: [HttpClient, [new Optional(), TRANSLATION_FILES]]
-				}
-			});
-		});
-	});
-
-	describe('matFormFieldDefaultOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(matFormFieldDefaultOptionsProvider()).toEqual({appearance: 'outline'});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(matFormFieldDefaultOptionsProvider({MAT_FORM_FIELD_DEFAULT_OPTIONS: {appearance: 'fill'}})).toEqual({appearance: 'fill'});
-		});
-	});
-
-	describe('stepperOptionsOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(stepperOptionsOptionsProvider()).toEqual({displayDefaultIndicatorType: false});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(stepperOptionsOptionsProvider({STEPPER_GLOBAL_OPTIONS: {displayDefaultIndicatorType: true}})).toEqual({
-				displayDefaultIndicatorType: true
-			});
-		});
-	});
-
-	describe('checkboxOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(checkboxOptionsProvider()).toEqual({color: 'primary'});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(checkboxOptionsProvider({MAT_CHECKBOX_OPTIONS: {color: 'accent'}})).toEqual({color: 'accent'});
-		});
-	});
-
-	describe('radioOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(radioOptionsProvider()).toEqual({color: 'primary'});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(radioOptionsProvider({MAT_RADIO_OPTIONS: {color: 'accent'}})).toEqual({color: 'accent'});
-		});
-	});
-
-	describe('slideToggleOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(slideToggleOptionsProvider()).toEqual({color: 'primary'});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(slideToggleOptionsProvider({MAT_SLIDE_TOGGLE_OPTIONS: {color: 'accent'}})).toEqual({color: 'accent'});
-		});
-	});
-
-	describe('tabsOptionsProvider', () => {
-		it('should return default config without parameters', () => {
-			expect(tabsOptionsProvider()).toEqual({stretchTabs: false});
-		});
-
-		it('should return given config when provided as parameters', () => {
-			expect(tabsOptionsProvider({MAT_TABS_CONFIG: {stretchTabs: true}})).toEqual({stretchTabs: true});
 		});
 	});
 
@@ -205,9 +48,10 @@ describe('utilities', () => {
 						provideObliqueConfiguration({
 							accessibilityStatement: {
 								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
 								conformity: 'none',
 								applicationOperator: 'Operator',
-								contact: {emails: ['e@mail.com']}
+								contact: [{email: 'e@mail.com'}]
 							}
 						})
 					]
@@ -225,12 +69,8 @@ describe('utilities', () => {
 			});
 
 			describe('Icon configuration', () => {
-				it('should provide the default icon configuration', () => {
-					expect(TestBed.inject(ObTIconConfig)).toEqual({registerObliqueIcons: true});
-				});
-
 				it('should call "registerOnAppInit" on "ObIconService"', () => {
-					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalled();
+					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith(undefined);
 				});
 			});
 
@@ -243,8 +83,8 @@ describe('utilities', () => {
 					expect(TestBed.inject(TranslateService).currentLoader instanceof ObMultiTranslateLoader).toBe(true);
 				});
 
-				it('should provide "TRANSLATION_FILES"', () => {
-					expect(TestBed.inject(TRANSLATION_FILES)).toBeUndefined();
+				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
+					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({flatten: true});
 				});
 			});
 
@@ -265,10 +105,17 @@ describe('utilities', () => {
 				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
 					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
 						applicationName: 'appName',
+						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
 						applicationOperator: 'Operator',
-						contact: {emails: ['e@mail.com']}
+						contact: [{email: 'e@mail.com'}]
 					});
+				});
+			});
+
+			describe('has language in URL', () => {
+				it('should provide OB_HAS_LANGUAGE_IN_URL as false', () => {
+					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(false);
 				});
 			});
 		});
@@ -283,9 +130,10 @@ describe('utilities', () => {
 						provideObliqueConfiguration({
 							accessibilityStatement: {
 								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
 								conformity: 'none',
 								applicationOperator: 'Operator',
-								contact: {emails: ['e@mail.com']}
+								contact: [{email: 'e@mail.com'}]
 							},
 							material: {
 								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
@@ -299,9 +147,11 @@ describe('utilities', () => {
 								additionalIcons: []
 							},
 							translate: {
+								flatten: false,
 								config: {compiler: TranslateFakeCompiler},
 								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}]
-							}
+							},
+							hasLanguageInUrl: true
 						})
 					]
 				});
@@ -312,14 +162,17 @@ describe('utilities', () => {
 			});
 
 			describe('Icon configuration', () => {
-				it('should provide the full icon configuration', () => {
-					expect(TestBed.inject(ObTIconConfig)).toEqual({registerObliqueIcons: true, additionalIcons: []});
+				it('should call "registerOnAppInit" on "ObIconService"', () => {
+					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith({additionalIcons: []});
 				});
 			});
 
 			describe('Translate configuration', () => {
-				it('should provide "TRANSLATION_FILES"', () => {
-					expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
+				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
+					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
+						additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
+						flatten: false
+					});
 				});
 
 				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
@@ -329,12 +182,12 @@ describe('utilities', () => {
 
 			describe('Material configuration', () => {
 				it.each([
-					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {floatLabel: 'always'}},
-					{token: STEPPER_GLOBAL_OPTIONS, config: {showError: true}},
-					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {clickAction: 'check'}},
+					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline', floatLabel: 'always'}},
+					{token: STEPPER_GLOBAL_OPTIONS, config: {displayDefaultIndicatorType: false, showError: true}},
+					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary', clickAction: 'check'}},
 					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
-					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {hideIcon: true}},
-					{token: MAT_TABS_CONFIG, config: {fitInkBarToContent: true}}
+					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary', hideIcon: true}},
+					{token: MAT_TABS_CONFIG, config: {stretchTabs: false, fitInkBarToContent: true}}
 				])('should create $token injection token', ({token, config}) => {
 					expect(TestBed.inject(token)).toEqual(config);
 				});
@@ -344,37 +197,147 @@ describe('utilities', () => {
 				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
 					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
 						applicationName: 'appName',
+						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
 						applicationOperator: 'Operator',
-						contact: {emails: ['e@mail.com']}
+						contact: [{email: 'e@mail.com'}]
 					});
+				});
+			});
+
+			describe('has language in URL', () => {
+				it('should provide OB_HAS_LANGUAGE_IN_URL as true', () => {
+					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(true);
+				});
+			});
+		});
+	});
+
+	describe('provideObliqueTestingConfiguration', () => {
+		describe('with default configuration', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						provideHttpClient(),
+						provideObliqueTestingConfiguration({
+							accessibilityStatement: {
+								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
+								conformity: 'none',
+								applicationOperator: 'Operator',
+								contact: [{email: 'e@mail.com'}]
+							}
+						})
+					]
+				});
+			});
+
+			it('should create WINDOW injection token', () => {
+				expect(TestBed.inject(WINDOW)).toEqual(window);
+			});
+
+			describe('Paginator configuration', () => {
+				it('should provide MatPaginatorIntl as ObPaginatorService', () => {
+					expect(TestBed.inject(MatPaginatorIntl) instanceof ObPaginatorService).toBe(true);
+				});
+			});
+
+			describe('Icon configuration', () => {
+				it('should call "registerOnAppInit" on "ObIconService"', () => {
+					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith(undefined);
+				});
+			});
+
+			describe('Translate configuration', () => {
+				it('should provide "TranslateService"', () => {
+					expect(TestBed.inject(TranslateService)).toBeTruthy();
+				});
+
+				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
+					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({flatten: true});
+				});
+
+				describe('TranslateLoader', () => {
+					it('should not be an instance of "TranslateLoader"', () => {
+						expect(TestBed.inject(TranslateService).currentLoader).not.toBeInstanceOf(TranslateLoader);
+					});
+
+					it('should have a "getTranslation" function that returns an observable', () => {
+						expect(TestBed.inject(TranslateService).currentLoader.getTranslation('en')).toBeInstanceOf(Observable);
+					});
+
+					it('should have a "getTranslation" function that emits an empty object', async () => {
+						expect(await firstValueFrom(TestBed.inject(TranslateService).currentLoader.getTranslation('en'))).toEqual({});
+					});
+				});
+			});
+
+			describe('Material configuration', () => {
+				it.each([
+					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline'}},
+					{token: STEPPER_GLOBAL_OPTIONS, config: {displayDefaultIndicatorType: false}},
+					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary'}},
+					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'primary'}},
+					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary'}},
+					{token: MAT_TABS_CONFIG, config: {stretchTabs: false}}
+				])('should create $token injection token', ({token, config}) => {
+					expect(TestBed.inject(token)).toEqual(config);
+				});
+			});
+
+			describe('accessibility statement configuration', () => {
+				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
+					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
+						applicationName: 'appName',
+						createdOn: new Date('2025-01-31'),
+						conformity: 'none',
+						applicationOperator: 'Operator',
+						contact: [{email: 'e@mail.com'}]
+					});
+				});
+			});
+
+			describe('has language in URL', () => {
+				it('should provide OB_HAS_LANGUAGE_IN_URL as false', () => {
+					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(false);
 				});
 			});
 		});
 
-		describe('with token configuration for Material', () => {
+		describe('with custom configuration', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						provideObliqueConfiguration({
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
+						provideHttpClient(),
+						provideObliqueTestingConfiguration({
 							accessibilityStatement: {
 								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
 								conformity: 'none',
 								applicationOperator: 'Operator',
-								contact: {emails: ['e@mail.com']}
-							}
-						}),
-						{
-							provide: OB_MATERIAL_CONFIG,
-							useValue: {
+								contact: [{email: 'e@mail.com'}]
+							},
+							material: {
 								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
 								STEPPER_GLOBAL_OPTIONS: {showError: true},
 								MAT_CHECKBOX_OPTIONS: {clickAction: 'check'},
 								MAT_RADIO_OPTIONS: {color: 'accent'},
 								MAT_SLIDE_TOGGLE_OPTIONS: {hideIcon: true},
 								MAT_TABS_CONFIG: {fitInkBarToContent: true}
-							}
-						}
+							},
+							icon: {
+								additionalIcons: []
+							},
+							translate: {
+								flatten: false,
+								config: {compiler: TranslateFakeCompiler},
+								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}]
+							},
+							hasLanguageInUrl: true
+						})
 					]
 				});
 			});
@@ -383,41 +346,170 @@ describe('utilities', () => {
 				expect(TestBed.inject(WINDOW)).toEqual(window);
 			});
 
-			it.each([
-				{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {floatLabel: 'always'}},
-				{token: STEPPER_GLOBAL_OPTIONS, config: {showError: true}},
-				{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {clickAction: 'check'}},
-				{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
-				{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {hideIcon: true}},
-				{token: MAT_TABS_CONFIG, config: {fitInkBarToContent: true}}
-			])('should create $token injection token', ({token, config}) => {
-				expect(TestBed.inject(token)).toEqual(config);
+			describe('Icon configuration', () => {
+				it('should call "registerOnAppInit" on "ObIconService"', () => {
+					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith({additionalIcons: []});
+				});
+			});
+
+			describe('Translate configuration', () => {
+				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
+					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
+						additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
+						flatten: false
+					});
+				});
+
+				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+					expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
+				});
+			});
+
+			describe('Material configuration', () => {
+				it.each([
+					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline', floatLabel: 'always'}},
+					{token: STEPPER_GLOBAL_OPTIONS, config: {displayDefaultIndicatorType: false, showError: true}},
+					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary', clickAction: 'check'}},
+					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
+					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary', hideIcon: true}},
+					{token: MAT_TABS_CONFIG, config: {stretchTabs: false, fitInkBarToContent: true}}
+				])('should create $token injection token', ({token, config}) => {
+					expect(TestBed.inject(token)).toEqual(config);
+				});
+			});
+
+			describe('accessibility statement configuration', () => {
+				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
+					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
+						applicationName: 'appName',
+						createdOn: new Date('2025-01-31'),
+						conformity: 'none',
+						applicationOperator: 'Operator',
+						contact: [{email: 'e@mail.com'}]
+					});
+				});
+			});
+
+			describe('has language in URL', () => {
+				it('should provide OB_HAS_LANGUAGE_IN_URL as true', () => {
+					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(true);
+				});
 			});
 		});
+	});
 
-		describe('with token configuration for Translate', () => {
+	describe('provideObliqueTranslations', () => {
+		describe('with default configuration', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
-					providers: [
-						provideObliqueConfiguration({
-							accessibilityStatement: {
-								applicationName: 'appName',
-								conformity: 'none',
-								applicationOperator: 'Operator',
-								contact: {emails: ['e@mail.com']}
-							}
-						}),
-						{provide: TRANSLATION_FILES, useValue: [{prefix: 'prefix', suffix: 'suffix'}]}
-					]
+					providers: [provideHttpClient(), provideObliqueTranslations()]
 				});
 			});
 
-			it('should create WINDOW injection token', () => {
-				expect(TestBed.inject(WINDOW)).toEqual(window);
+			it('should provide "TranslateService"', () => {
+				expect(TestBed.inject(TranslateService)).toBeTruthy();
+			});
+
+			it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+				expect(TestBed.inject(TranslateService).currentLoader instanceof ObMultiTranslateLoader).toBe(true);
 			});
 
 			it('should provide "TRANSLATION_FILES"', () => {
-				expect(TestBed.inject(TRANSLATION_FILES)).toEqual([{prefix: 'prefix', suffix: 'suffix'}]);
+				expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({additionalFiles: undefined, flatten: true});
+			});
+
+			describe('loader', () => {
+				it('should be an instance of ObMultiTranslateLoader', () => {
+					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
+				});
+			});
+
+			describe('getTranslation', () => {
+				let httpClient: HttpClient;
+				beforeEach(() => {
+					httpClient = TestBed.inject(HttpClient);
+					jest.spyOn(httpClient, 'get');
+					TestBed.inject(TranslateLoader).getTranslation('en');
+				});
+
+				afterEach(() => {
+					jest.clearAllMocks();
+				});
+
+				it(`should do 2 http calls`, () => {
+					expect(httpClient.get).toHaveBeenCalledTimes(2);
+				});
+
+				it.each([
+					{index: 1, url: './assets/i18n/oblique-en.json'},
+					{index: 2, url: './assets/i18n/en.json'}
+				])('should request $url on $index call', ({index, url}) => {
+					expect(httpClient.get).toHaveBeenNthCalledWith(index, url);
+				});
+			});
+		});
+
+		describe('with custom configuration', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
+						provideHttpClient(),
+						provideObliqueTranslations({
+							flatten: false,
+							config: {loader: TranslateFakeLoader},
+							additionalFiles: [
+								{prefix: './path1/', suffix: '.json'},
+								{prefix: './path2/', suffix: '.js'}
+							]
+						})
+					]
+				});
+			});
+
+			it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
+				expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
+					additionalFiles: [
+						{prefix: './path1/', suffix: '.json'},
+						{prefix: './path2/', suffix: '.js'}
+					],
+					flatten: false
+				});
+			});
+
+			it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+				expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
+			});
+
+			describe('loader', () => {
+				it('should be an instance of ObMultiTranslateLoader', () => {
+					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
+				});
+			});
+
+			describe('getTranslation', () => {
+				let httpClient: HttpClient;
+				beforeEach(() => {
+					httpClient = TestBed.inject(HttpClient);
+					jest.spyOn(httpClient, 'get');
+					TestBed.inject(TranslateLoader).getTranslation('en');
+				});
+
+				afterEach(() => {
+					jest.clearAllMocks();
+				});
+
+				it(`should do 3 http calls`, () => {
+					expect(httpClient.get).toHaveBeenCalledTimes(3);
+				});
+
+				it.each([
+					{index: 1, url: './assets/i18n/oblique-en.json'},
+					{index: 2, url: './path1/en.json'},
+					{index: 3, url: './path2/en.js'}
+				])('should request $url on $index call', ({index, url}) => {
+					expect(httpClient.get).toHaveBeenNthCalledWith(index, url);
+				});
 			});
 		});
 	});

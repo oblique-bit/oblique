@@ -38,6 +38,7 @@
 			.ob-master-layout-navigation-go-to-children-button {
 			height: variables.$ob-button-height + variables.$ob-spacing-xs;
 			width: variables.$ob-button-height + variables.$ob-spacing-xs;
+			padding-right: 28px; // empiric value to align the icon with icon without url
 		}
 	}
 }

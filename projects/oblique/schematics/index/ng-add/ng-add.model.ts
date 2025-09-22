@@ -1,6 +1,8 @@
 export interface ObIOptionsSchema {
 	ajv: boolean;
+	applicationOperator: string;
 	banner: boolean;
+	contact: string;
 	environments: string;
 	eslint: boolean;
 	externalLink: boolean;
@@ -11,11 +13,10 @@ export interface ObIOptionsSchema {
 	mandatory: boolean;
 	npmrc: boolean;
 	prefix: string;
-	protractor: boolean;
 	proxy: string;
-	sonar: boolean;
 	title: string;
 	unknownRoute: boolean;
+	hasLanguageInUrl: boolean;
 }
 
 export interface ObIVersion {

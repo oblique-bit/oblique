@@ -1,3 +1,23 @@
+# [14.0.0](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0) (2025-09-22)
+
+## Bug Fixes
+
+- **service-navigation:** fix wrap issue with applications popover ([742fc861](https://github.com/oblique-bit/oblique/commit/742fc8612e3549c32a7c7f7b9bcbfe52a7bae3b4))
+
+## Features
+
+- **sample:** add extra text for contacts ([bb3e7489](https://github.com/oblique-bit/oblique/commit/bb3e748917c8f7211eee26188ef3f0a368be97e7))
+- **service-navigation:** add extra text for contacts ([711047f6](https://github.com/oblique-bit/oblique/commit/711047f6b41fd465ff8fecb6416282af1e9711ba))
+- **service-navigation:** change order of info popover ([686054a8](https://github.com/oblique-bit/oblique/commit/686054a81c4da1e24d507d383486e9a54be12fa8))
+- **service-navigation:** increase icon size and realign them ([46399f23](https://github.com/oblique-bit/oblique/commit/46399f232104305c0ed08fa426cd9c73db91b631))
+- **service-navigation:** rename property `tel` to `phone` on `ObIServiceNavigationContact` ([f3790c7f](https://github.com/oblique-bit/oblique/commit/f3790c7f3ae19a247cda55678bc09a7ce93c54a7))
+- **service-navigation:** remove avatar images ([ce068685](https://github.com/oblique-bit/oblique/commit/ce068685adcbd4b78ceaadcfba085ca9309a93b8))
+- **web-component:** add extra text for contacts ([54eeda6c](https://github.com/oblique-bit/oblique/commit/54eeda6c524da07ef85234436711d191d664a9e4))
+
+## BREAKING CHANGES
+
+- **service-navigation:** `ObIServiceNavigationContact.tel` has been renamed to `ObIServiceNavigationContact.phone`
+
 # [13.3.3](https://github.com/oblique-bit/oblique/compare/13.3.2...13.3.3) (2025-08-25)
 
 ## Bug Fixes

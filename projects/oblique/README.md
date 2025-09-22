@@ -16,6 +16,8 @@ You will find information about how to use Oblique, code samples, FAQ and many m
 
 ## Scripts
 
+The scripts in this project are only for internal usage.
+
 - **lint**: lints the projects with EsLint, StyleLint and Prettier; Automatically run on the CI pipeline
 - **format**: same as lint, but with autofix parameter
 - **test**: run all tests and collects coverage
@@ -27,6 +29,13 @@ You will find information about how to use Oblique, code samples, FAQ and many m
 - **tarball**: creates a tarball with a fresh build. If one or more paths to other projects can be passed as parameter, the tarball will be installed in those projects
 
 ## Usage
+
+### Make a new project with Oblique embedded into it
+
+Make a new Oblique-embedded project with:
+`npx @oblique/cli@13 new <my-project-name>`
+
+For further instructions go to: "https://oblique.bit.admin.ch/introductions/getting-started-as-a-developer", under "Creating a new Oblique application".
 
 ### Embedding Oblique into your project
 

@@ -4,6 +4,7 @@ import {ObIServiceNavigationContact, ObIServiceNavigationLink} from '../service-
 @Component({
 	selector: 'ob-service-navigation-info',
 	templateUrl: './service-navigation-info.component.html',
+	styleUrls: ['./service-navigation-info.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation-info'},
 	standalone: false

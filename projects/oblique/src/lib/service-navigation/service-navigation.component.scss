@@ -27,11 +27,4 @@
 			@include full-width();
 		}
 	}
-
-	.ob-button,
-	.mat-mdc-button-base.ob-button[class*="ob-button-"].ob-external-link.mat-mdc-icon-button {
-		.mat-icon {
-			font-size: variables.$ob-font-size-bigger;
-		}
-	}
 }

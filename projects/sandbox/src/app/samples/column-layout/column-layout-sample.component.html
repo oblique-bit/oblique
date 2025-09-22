@@ -1,5 +1,5 @@
 <h2>{{ "i18n.routes.samples.column-layout.title" | translate }}</h2>
-<ob-column-layout [left]="false" [right]="true">
+<ob-column-layout left="NONE" right="OPENED">
 	<ob-column-layout #obColumnLayout column-main-content [left]="left" [right]="right" [noLayout]="noLayout" [wider]="wider">
 		<ng-container column-left-content>
 			<h3 class="nav-header-title">Left Column</h3>
@@ -75,22 +75,53 @@
 	</ob-column-layout>
 	<ng-container column-right-content>
 		<h3>Controls</h3>
-		<div>
-			<mat-checkbox [(ngModel)]="left">Left column?</mat-checkbox>
-			@if (left) {
+		<fieldset>
+			<legend>Left</legend>
+			<mat-radio-group [(ngModel)]="left">
+				@for (
+					radio of [
+						{ text: "OPENED", value: "OPENED" },
+						{ text: "CLOSED", value: "CLOSED" },
+						{ text: "NONE", value: "NONE" }
+					];
+					track radio.value
+				) {
+					<div>
+						<mat-radio-button [value]="radio.value">{{ radio.text }}</mat-radio-button>
+					</div>
+				}
+			</mat-radio-group>
+			@if (left !== "NONE") {
 				<button type="button" obButton mat-button (click)="obColumnLayout.toggleLeft()">Toggle</button>
 			}
-		</div>
-		<div>
-			<mat-checkbox [(ngModel)]="right">Right column?</mat-checkbox>
-			@if (right) {
+		</fieldset>
+		<fieldset>
+			<legend>Right</legend>
+			<mat-radio-group [(ngModel)]="right">
+				@for (
+					radio of [
+						{ text: "OPENED", value: "OPENED" },
+						{ text: "CLOSED", value: "CLOSED" },
+						{ text: "NONE", value: "NONE" }
+					];
+					track radio.value
+				) {
+					<div>
+						<mat-radio-button [value]="radio.value">{{ radio.text }}</mat-radio-button>
+					</div>
+				}
+			</mat-radio-group>
+			@if (right !== "NONE") {
 				<button type="button" obButton mat-button (click)="obColumnLayout.toggleRight()">Toggle</button>
 			}
-		</div>
-		<div>
-			<mat-checkbox [(ngModel)]="overflow">Overflow</mat-checkbox>
-		</div>
-		<mat-slide-toggle [(ngModel)]="noLayout">Remove layout</mat-slide-toggle>
-		<mat-slide-toggle [(ngModel)]="wider">Wider columns</mat-slide-toggle>
+		</fieldset>
+		<fieldset>
+			<legend>Other settings</legend>
+			<div>
+				<mat-checkbox [(ngModel)]="overflow">Overflow</mat-checkbox>
+			</div>
+			<mat-slide-toggle [(ngModel)]="noLayout">Remove layout</mat-slide-toggle>
+			<mat-slide-toggle [(ngModel)]="wider">Wider columns</mat-slide-toggle>
+		</fieldset>
 	</ng-container>
 </ob-column-layout>

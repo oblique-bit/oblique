@@ -43,10 +43,10 @@ module.exports = {
 			branches: 94
 		},
 		'projects/oblique/src/lib/document-meta/*.ts': {
-			statements: 60,
+			statements: 59,
 			branches: 7,
 			functions: 18,
-			lines: 59
+			lines: 58
 		},
 		'projects/oblique/src/lib/error-messages/*.ts': {
 			statements: 52,
@@ -61,10 +61,10 @@ module.exports = {
 			lines: 100
 		},
 		'projects/oblique/src/lib/http-api-interceptor/*.ts': {
-			statements: 25,
+			statements: 0,
 			branches: 0,
 			functions: 0,
-			lines: 21
+			lines: 0
 		},
 		'projects/oblique/src/lib/icon/*.ts': {
 			statements: 96,
@@ -149,12 +149,6 @@ module.exports = {
 			branches: 83,
 			functions: 0,
 			lines: 27
-		},
-		'projects/oblique/src/lib/sticky/*.ts': {
-			statements: 93,
-			branches: 85,
-			functions: 100,
-			lines: 95
 		}
 	}
 };

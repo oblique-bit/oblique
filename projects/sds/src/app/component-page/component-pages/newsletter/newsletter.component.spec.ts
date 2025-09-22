@@ -3,8 +3,7 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
-import {TranslateService} from '@ngx-translate/core';
-import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {NewsletterComponent} from './newsletter.component';
 
 describe(NewsletterComponent.name, () => {
@@ -14,10 +13,7 @@ describe(NewsletterComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [HttpClientTestingModule, RouterTestingModule, NewsletterComponent, ReactiveFormsModule, BrowserAnimationsModule],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(NewsletterComponent);

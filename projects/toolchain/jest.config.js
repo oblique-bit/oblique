@@ -16,5 +16,5 @@ module.exports = {
 	},
 	...coverageConfig,
 	coverageDirectory: '../../coverage/toolchain',
-	collectCoverageFrom: ['src/**/*.ts']
+	collectCoverageFrom: ['src/**/*.ts', '!src/schematics/test-utils.ts']
 };

@@ -74,8 +74,11 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	hasInfoBackend = true;
 	infoContact: ObIServiceNavigationContact = {
 		email: 'support@bit.admin.ch',
-		tel: '+41 58 461 61 11',
-		formUrl: 'https://example.com/'
+		emailText: 'email detailed text',
+		phone: '+41 58 461 61 11',
+		phoneText: 'tel detailed text',
+		formUrl: 'https://example.com/',
+		formUrlText: 'form detailed text'
 	};
 	hasCustomWidgets = true;
 	readonly rootUrl = environment.pams?.rootUrl;
@@ -83,7 +86,11 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 
 	private readonly contactInfo: ObIServiceNavigationContact = {
 		email: 'support@bit.admin.ch',
-		tel: '+41 58 461 61 11'
+		emailText: 'email detailed text',
+		phone: '+41 58 461 61 11',
+		phoneText: 'tel detailed text',
+		formUrl: 'https://example.com/',
+		formUrlText: 'form detailed text'
 	};
 	private readonly headerControlsComponent = viewChild(ObServiceNavigationComponent);
 	private readonly window = inject<Window>(WINDOW);
@@ -99,7 +106,7 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 
 	handleContactInfo(): void {
 		this.infoContact.email = this.hasContactEmail ? this.contactInfo.email : undefined;
-		this.infoContact.tel = this.hasContactPhone ? this.contactInfo.tel : undefined;
+		this.infoContact.phone = this.hasContactPhone ? this.contactInfo.phone : undefined;
 		this.infoContact.formUrl = this.hasContactFormUrl ? this.contactInfo.formUrl : undefined;
 	}
 }

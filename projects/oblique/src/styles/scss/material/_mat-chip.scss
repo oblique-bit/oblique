@@ -86,7 +86,7 @@
 		&.info,
 		&.error,
 		&.warning {
-			--mdc-chip-label-text-color: variables.$ob-white;
+			--mat-chip-label-text-color: variables.$ob-white;
 
 			&.cdk-keyboard-focused {
 				outline: 2px solid variables.$ob-purple-500;

@@ -16,8 +16,7 @@ import {FormExampleHorizontalPreviewComponent} from './previews/horizontal/form-
 import {FormExampleInputClearPreviewComponent} from './previews/input-clear/form-example-input-clear-preview.component';
 import {FormExampleInputPrefixesAndSuffixesPreviewComponent} from './previews/input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component';
 import {provideNativeDateAdapter} from '@angular/material/core';
-import {ObMockTranslateService, WINDOW} from '@oblique/oblique';
-import {TranslateService} from '@ngx-translate/core';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
 describe(FormCodeExamplesComponent.name, () => {
 	let component: FormCodeExamplesComponent;
@@ -26,11 +25,7 @@ describe(FormCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [CodeExampleComponent, CommonModule, FormCodeExamplesComponent, IdPipe, NoopAnimationsModule],
-			providers: [
-				provideNativeDateAdapter(),
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideNativeDateAdapter(), provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(FormCodeExamplesComponent);

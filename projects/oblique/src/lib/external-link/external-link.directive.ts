@@ -45,7 +45,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 		this.defaultTarget = this.target;
 		this.translateScreenReaderOnlyText();
 		this.iconRegistry
-			.getNamedSvgIcon('external')
+			.getNamedSvgIcon('link_external')
 			.pipe(
 				first(),
 				tap(svg => (this.iconElement = this.createIconElement(svg))),

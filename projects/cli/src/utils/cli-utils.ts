@@ -3,20 +3,21 @@ import {type ExecSyncOptions, execSync} from 'child_process';
 import {gte, major} from 'semver';
 
 /* Generated content, do not edit */
-export const version = '13.3.3';
+export const version = '14.0.0';
 /* End of generated content */
 
 export const currentVersions = {
-	'@oblique/oblique': '13',
-	'@angular/cli': '19',
-	'@angular/material': '19',
-	'@angular/core': '19',
-	'@angular/cdk': '19',
-	'@angular/animations': '19',
+	'@oblique/oblique': version,
+	'@angular/cli': '^20.2',
+	'@angular/material': '20',
+	'@oblique/toolchain': version,
+	'@angular/core': '20',
+	'@angular/cdk': '20',
+	'@angular/animations': '20',
 	'@types/jest': '29',
-	'@angular-builders/jest': '19',
-	'@schematics/angular': '19',
-	'angular-oauth2-oidc': '19',
+	'@angular-builders/jest': '20',
+	'@schematics/angular': '20',
+	'angular-oauth2-oidc': '20',
 	jest: '29'
 } as const;
 
@@ -55,8 +56,8 @@ export const runObCommand = (): void => {
 
 export const obTitle = `Oblique Cli`;
 
-export const recommendedVersion = 20;
-export const minimumSupportedVersion = '18.3.0';
+export const recommendedVersion = 22;
+export const minimumSupportedVersion = '22.12.0';
 
 export function getHelpText(command: 'ob' | 'ob new' | 'ob update'): string {
 	return `Shows a help message for the "${command}" command in the console`;
@@ -131,17 +132,22 @@ export function execute(config: ObCommandConfig): void {
 		case 'ngUpdate':
 			return executeNgCommand(
 				`update ${versionDependencies(config.dependencies).join(' ')}`,
-				{'allow-dirty': true},
+				{'allow-dirty': true, ...config.options},
 				config.execSyncOptions
 			);
 		case 'npmInstall':
-			return executeCommand(`npm install ${versionDependencies(config.dependencies).join(' ')}`, config.execSyncOptions);
+			return executeCommand(
+				`npm install ${versionDependencies(config.dependencies).join(' ')} --audit false --fund false`,
+				config.execSyncOptions
+			);
 		case 'npmUpdate':
-			return executeCommand('npm update --save', config.execSyncOptions);
+			return executeCommand('npm update --save --audit false --fund false', config.execSyncOptions);
 		case 'npmDedupe':
-			return executeCommand(`npm dedupe`, config.execSyncOptions);
+			return executeCommand(`npm dedupe --audit false --fund false`, config.execSyncOptions);
 		case 'npmPrune':
-			return executeCommand('npm prune', config.execSyncOptions);
+			return executeCommand('npm prune --audit false --fund false', config.execSyncOptions);
+		case 'npmFormat':
+			return executeCommand('npm run lint -- --fix', config.execSyncOptions);
 		case 'npmOutdated':
 			return executeCommand('npm outdated', config.execSyncOptions);
 	}

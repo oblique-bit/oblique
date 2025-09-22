@@ -1,5 +1,5 @@
 import {AppComponent} from './app/app.component';
-import {ObIconService, ObStepperIntlService, ObTIconConfig, WINDOW, multiTranslateLoader} from '@oblique/oblique';
+import {ObIconService, ObStepperIntlService, WINDOW, provideObliqueTranslations} from '@oblique/oblique';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
@@ -15,7 +15,6 @@ import {PreloadAllModules, provideRouter, withPreloading} from '@angular/router'
 import {appRoutes} from './app.routes';
 import {UploadInterceptor} from './app/code-examples/code-examples/file-upload/file-upload-simulate-interceptor';
 import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
-import {provideTranslateService} from '@ngx-translate/core';
 import {MatStepperIntl} from '@angular/material/stepper';
 
 export const uploadInterceptor = new UploadInterceptor();
@@ -24,7 +23,6 @@ bootstrapApplication(AppComponent, {
 	providers: [
 		{provide: LOCALE_ID, useValue: 'en-CH'},
 		{provide: WINDOW, useValue: window},
-		{provide: ObTIconConfig, useValue: {registerObliqueIcons: true}},
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 		{provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
 		{provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
@@ -57,6 +55,6 @@ bootstrapApplication(AppComponent, {
 		provideAnimations(),
 		provideHttpClient(withInterceptorsFromDi()),
 		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
-		provideTranslateService(multiTranslateLoader())
+		provideObliqueTranslations()
 	]
 }).catch((err: unknown) => console.error(err));

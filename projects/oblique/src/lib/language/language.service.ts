@@ -1,6 +1,5 @@
-import {Inject, Injectable, Optional, Renderer2, RendererFactory2} from '@angular/core';
+import {DOCUMENT, Inject, Injectable, Optional, Renderer2, RendererFactory2} from '@angular/core';
 import {DateAdapter} from '@angular/material/core';
-import {DOCUMENT} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';

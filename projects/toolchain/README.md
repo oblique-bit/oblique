@@ -14,6 +14,8 @@ It contains guidelines on how to use Oblique libraries, code examples, accessibi
 
 ## Scripts
 
+The Scripts in this project are only for internal usage.
+
 - **build**: builds the toolchain package; automatically run on the CI pipeline
 - **lint**: lints the project with EsLint and Prettier; Automatically run on the CI pipeline
 - **format**: same as lint, but with autofix parameter
@@ -29,20 +31,9 @@ If you'd like to contribute, please follow our [contributing guidelines](../../C
 
 1. Install the tarball of the oblique-toolchain into a test-project
 2. Run npm i oblique-toolchain-13.2.2.tgz
-3. Run `ng -g @oblique/toolchain:hello-world --name=hello-world.txt`
 
 ```bash
-  npm run build -w @oblique/toolchain && npx @angular-devkit/schematics-cli ./dist/toolchain/:hello-world --name=hello-world.txt
-```
-
-```bash
-  npm run build -w @oblique/toolchain && npx @angular-devkit/schematics-cli ./dist/toolchain/:hello-world --name=hello-world.txt
-```
-
-or run :
-
-```bash
-  cd projects/toolchain/ && npm run build && cd ../../ && npx @angular-devkit/schematics-cli ./dist/toolchain/:hello-world --name=hello-world.txt
+npm run build -w @oblique/toolchain && npx @angular-devkit/schematics-cli ./dist/toolchain/:ng-add
 ```
 
 ## License

@@ -11,11 +11,19 @@ export interface ObIServiceNavigationLink {
 	label: string;
 }
 
-export interface ObIServiceNavigationContact {
+interface ContactInfoBase {
 	email?: string;
-	tel?: string;
+	emailText?: string;
+	phone?: string;
+	phoneText?: string;
 	formUrl?: string;
+	formUrlText?: string;
 }
+
+export type ObIServiceNavigationContact = ContactInfoBase &
+	({emailText?: never} | {emailText: string; email: string}) &
+	({phoneText?: never} | {phoneText: string; phone: string}) &
+	({formUrlText?: never} | {formUrlText: string; formUrl: string});
 
 export interface ObISectionLink {
 	url: string;
@@ -23,6 +31,7 @@ export interface ObISectionLink {
 	icon?: string;
 	isInternalLink?: boolean;
 	ariaLabel?: string | {text: string; parameters: Record<string, unknown>};
+	extraText?: string;
 }
 
 export type ObLoginState = 'SA' | 'S1' | 'S2OK' | 'S2+OK' | 'S3OK' | 'S3+OK';

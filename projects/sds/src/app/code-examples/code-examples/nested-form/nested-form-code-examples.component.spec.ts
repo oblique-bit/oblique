@@ -6,13 +6,12 @@ import {NestedFormCodeExamplesComponent} from './nested-form-code-examples.compo
 import {By} from '@angular/platform-browser';
 import {NestedFormExampleReactivePreviewComponent} from './previews/reactive/nested-form-example-reactive-preview.component';
 import {NestedFormExampleTemplateDrivenPreviewComponent} from './previews/template-driven/nested-form-example-template-driven-preview.component';
-import {ObNestedFormComponent, ObParentFormDirective, WINDOW} from '@oblique/oblique';
+import {ObNestedFormComponent, ObParentFormDirective, provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {MatFormField} from '@angular/material/form-field';
 import {NestedFormExampleReactivePreviewChildComponent} from './previews/reactive/child/nested-form-example-reactive-preview-child.component';
 import {NestedFormExampleReactivePreviewGrandchildComponent} from './previews/reactive/grandchild/nested-form-example-reactive-preview-grandchild.component';
 import {NestedFormExampleTemplateDrivenPreviewChildComponent} from './previews/template-driven/child/nested-form-example-template-driven-preview-child.component';
 import {NestedFormExampleTemplateDrivenPreviewGrandchildComponent} from './previews/template-driven/grandchild/nested-form-example-template-driven-preview-grandchild.component';
-import {TranslateModule} from '@ngx-translate/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe(NestedFormCodeExamplesComponent.name, () => {
@@ -21,15 +20,8 @@ describe(NestedFormCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [
-				CodeExampleComponent,
-				CommonModule,
-				IdPipe,
-				NestedFormCodeExamplesComponent,
-				NoopAnimationsModule,
-				TranslateModule.forRoot()
-			],
-			providers: [{provide: WINDOW, useValue: window}]
+			imports: [CodeExampleComponent, CommonModule, IdPipe, NestedFormCodeExamplesComponent, NoopAnimationsModule],
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(NestedFormCodeExamplesComponent);

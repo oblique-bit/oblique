@@ -16,6 +16,8 @@ You will find information about how to use Oblique, code samples, FAQ and many m
 
 ## Scripts
 
+The scripts in this project are only for internal usage.
+
 - **lint**: lints the projects with EsLint, StyleLint and Prettier; Automatically run on the CI pipeline
 - **format**: same as lint, but with autofix parameter
 - **test**: run all tests and collects coverage

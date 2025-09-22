@@ -1,10 +1,9 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {addDependency, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
+import {angularAppFilesNames, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
 import {
 	ObliquePackage,
 	addAngularConfigInList,
-	addFile,
 	applyInTree,
 	createSafeRule,
 	getIndexPaths,
@@ -26,13 +25,11 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addAdditionalModules(),
 			addFeatureDetection(),
 			addMainCSS(),
-			addAngularMaterialDependencies(),
 			addLocalAssets(),
 			addObliqueAssets(),
 			addFontFiles(),
 			addLocales(options.locales.split(' ')),
-			raiseBuildBudget(),
-			addBrowserslistrcFile()
+			raiseBuildBudget()
 		])(tree, context);
 }
 
@@ -72,7 +69,7 @@ function removeBrowserModule(): Rule {
 			removeImport(tree, appModulePath, 'BrowserModule', '@angular/platform-browser');
 			replaceInFile(tree, filePath, /\s*BrowserModule,?/g, '');
 		};
-		return applyInTree(tree, apply, 'app.module.ts');
+		return applyInTree(tree, apply, angularAppFilesNames.appModule);
 	});
 }
 
@@ -109,15 +106,6 @@ function addMainCSS(): Rule {
 			}
 			return config;
 		});
-	});
-}
-
-function addAngularMaterialDependencies(): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		infoMigration(context, 'Oblique: Adding Angular Material dependencies');
-		addDependency(tree, '@angular/cdk');
-		addDependency(tree, '@angular/material');
-		return tree;
 	});
 }
 
@@ -158,7 +146,7 @@ function addFontFiles(): Rule {
 }
 
 function addMasterLayout(tree: Tree, title: string): void {
-	const path = 'src/app/app.component.html';
+	const path = `src/app/${angularAppFilesNames.appTemplate}`;
 	if (tree.exists(path)) {
 		tree.overwrite(
 			path,
@@ -194,14 +182,5 @@ function raiseBuildBudget(): Rule {
 				}
 			]
 		);
-	});
-}
-
-function addBrowserslistrcFile(): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		infoMigration(context, 'Oblique: Adding the .browserslistrc file');
-		const browserlistrcFile = getTemplate(tree, 'default-browserslistrc.config');
-		addFile(tree, '.browserslistrc', browserlistrcFile);
-		return tree;
 	});
 }

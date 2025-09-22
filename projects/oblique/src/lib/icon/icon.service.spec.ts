@@ -2,8 +2,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {TestBed, waitForAsync} from '@angular/core/testing';
 import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatIconRegistry} from '@angular/material/icon';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ObIconModule, ObIconService} from './icon.module';
+import {provideObliqueTestingConfiguration} from '../utilities';
 
 describe('IconService', () => {
 	let registry: MatIconRegistry;
@@ -103,8 +103,11 @@ describe('IconService', () => {
 		beforeEach(waitForAsync(() => {
 			jest.resetModules();
 			TestBed.configureTestingModule({
-				imports: [ObIconModule.forRoot({registerObliqueIcons: false}), HttpClientTestingModule, MatIconTestingModule],
+				imports: [MatIconTestingModule],
 				providers: [
+					provideObliqueTestingConfiguration({
+						icon: {registerObliqueIcons: false}
+					}),
 					{provide: ObIconService, useClass: ObIconService},
 					{provide: MatIconRegistry, useClass: MatIconRegistry}
 				]
@@ -126,8 +129,11 @@ describe('IconService', () => {
 		beforeEach(waitForAsync(() => {
 			jest.resetModules();
 			TestBed.configureTestingModule({
-				imports: [ObIconModule.forRoot({registerObliqueIcons: false, fontClass: 'fa'}), HttpClientTestingModule, MatIconTestingModule],
+				imports: [MatIconTestingModule],
 				providers: [
+					provideObliqueTestingConfiguration({
+						icon: {registerObliqueIcons: false, fontClass: 'fa'}
+					}),
 					{provide: ObIconService, useClass: ObIconService},
 					{provide: MatIconRegistry, useClass: MatIconRegistry}
 				]
@@ -149,12 +155,11 @@ describe('IconService', () => {
 		beforeEach(waitForAsync(() => {
 			jest.resetModules();
 			TestBed.configureTestingModule({
-				imports: [
-					ObIconModule.forRoot({registerObliqueIcons: false, additionalIcons: [iconSet1]}),
-					HttpClientTestingModule,
-					MatIconTestingModule
-				],
+				imports: [MatIconTestingModule],
 				providers: [
+					provideObliqueTestingConfiguration({
+						icon: {registerObliqueIcons: false, additionalIcons: [iconSet1]}
+					}),
 					{provide: ObIconService, useClass: ObIconService},
 					{provide: MatIconRegistry, useClass: MatIconRegistry}
 				]

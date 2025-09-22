@@ -1,55 +1,78 @@
 @use "@oblique/oblique/src/styles/scss/core/variables";
+@use "@oblique/oblique/src/styles/scss/core/palette";
+
+.ob-notification-container.ob-top-right {
+	top: 0;
+}
 
 .container {
+	display: grid;
+	grid-template-columns: 1fr 365px;
+	gap: variables.$ob-spacing-default;
+}
+
+.search {
+	display: flex;
+	gap: variables.$ob-spacing-default;
+
+	.mat-form-field {
+		flex: 1 1 50%;
+	}
+}
+
+.info-card {
+	.image-container {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		background-color: palette.$ob-secondary-100;
+
+		.mat-icon.icon {
+			margin: variables.$ob-spacing-lg 0;
+			font-size: 56px;
+		}
+	}
+
+	.card-title {
+		display: flex;
+		justify-content: space-between;
+		height: 64px;
+		padding: variables.$ob-spacing-default;
+		margin: variables.$ob-spacing-default 0;
+	}
+
+	.info-card-usage-title {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	section:not(:last-child) {
+		margin-bottom: variables.$ob-spacing-md;
+	}
+}
+
+.gallery {
 	place-content: start center;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(180px, 180px));
-	grid-template-rows: repeat(auto-fill, minmax(180px, 180px));
+	grid-template-columns: repeat(auto-fill, minmax(160px, auto));
 	flex-wrap: wrap;
 	text-align: center;
+	gap: variables.$ob-spacing-default;
 
-	.mat-mdc-card {
-		min-height: 180px;
+	.icon-card {
+		min-width: 160px;
+		height: min-content;
+		flex-direction: column;
+		gap: variables.$ob-spacing-md;
 	}
 
 	.mat-mdc-button-base.ob-button {
 		display: flex;
-		place-self: start center;
 		font-size: 1em;
 		line-height: variables.$ob-spacing-default;
 	}
 
 	.mat-icon.icon {
 		font-size: 48px;
-	}
-
-	.mat-mdc-card .mat-mdc-card-actions {
-		text-align: left; // because the popover text-alignment
-		gap: 0;
-		padding-bottom: 0;
-	}
-
-	.card-actions {
-		display: flex;
-		place-self: end start;
-		padding-top: 0;
-		padding-right: 0;
-
-		.mat-icon {
-			justify-content: center;
-			place-self: center center;
-			margin: auto;
-		}
-	}
-
-	.card-content {
-		display: grid;
-		flex-direction: column;
-		place-self: stretch stretch;
-		gap: variables.$ob-spacing-md;
-	}
-
-	.icon-card {
-		place-self: stretch stretch;
 	}
 }

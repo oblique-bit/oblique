@@ -9,7 +9,7 @@ export {
 	ObIResourceAccessRoles
 } from './lib/authentication/authentication.module';
 export {ObBreadcrumbModule, ObBreadcrumbComponent, ObTBreadcrumbConfig, ObBreadcrumbConfig} from './lib/breadcrumb/breadcrumb.module';
-export {ObButtonDirective, ObButtonModule} from './lib/button/button.module';
+export {ObButtonDirective, ObButtonModule, ObIconButtonDirective} from './lib/button/button.module';
 export {
 	ObCollapseComponent,
 	ObCollapseModule,
@@ -62,11 +62,10 @@ export {
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,
 	ObHttpApiInterceptorEvents,
-	ObHttpApiInterceptorModule,
 	ObIHttpApiRequest
-} from './lib/http-api-interceptor/http-api-interceptor.module';
-export {ObTIconConfig, ObIconModule, ObIconService, ObIconConfig, ObEIcon} from './lib/icon/icon.module';
-export {ObLanguageModule, ObDatePipe, ObDateComponent, ObEDateFormats} from './lib/language/language.module';
+} from './lib/http-api-interceptor/index';
+export {ObIconModule, ObIconService, ObIconConfig, ObEIcon} from './lib/icon/icon.module';
+export {ObLanguageModule, ObDatePipe, ObDateComponent, ObDateFormat} from './lib/language/language.module';
 export {
 	ObMasterLayoutComponent,
 	ObMasterLayoutComponentService,
@@ -128,10 +127,9 @@ export {
 	ObSchemaValidationService,
 	ObSchemaValidatorInstance
 } from './lib/schema-validation/schema-validation.module';
-export {ObScrollingEvents, ObScrollingModule, ObTopControlComponent} from './lib/scrolling/scrolling.module';
+export {ObScrollingModule, ObTopControlComponent} from './lib/scrolling/scrolling.module';
 export {ObSelectableDirective, ObSelectableModule, ObSelectableGroupDirective} from './lib/selectable/selectable.module';
 export {ObISpinnerEvent, ObSpinnerComponent, ObSpinnerModule, ObSpinnerService} from './lib/spinner/spinner.module';
-export {ObStickyComponent, ObStickyModule} from './lib/sticky/sticky.module';
 export {ObInputClearDirective, ObInputClearModule} from './lib/input-clear/input-clear.module';
 export {ObTranslateParamsModule, ObTranslateParamsPipe} from './lib/translate-params/translate-params.module';
 export {ObUnknownRouteModule, ObUnknownRouteComponent} from './lib/unknown-route/unknown-route.module';
@@ -143,17 +141,15 @@ export {
 } from './lib/unsaved-changes/unsaved-changes.module';
 export {
 	OB_BANNER,
-	OB_MATERIAL_CONFIG,
 	OB_PAMS_CONFIGURATION,
-	getTranslateLoader,
 	provideObliqueConfiguration,
-	multiTranslateLoader,
+	provideObliqueTestingConfiguration,
+	provideObliqueTranslations,
 	obFocusWithOutline,
 	WINDOW
 } from './lib/utilities';
 export {ObIBanner, ObIMaterialConfig, ObIObliqueConfiguration, ObIAccessibilityStatementConfiguration} from './lib/utilities.model';
 export {ObEColor} from './lib/style/colors.model';
-export {ObMultiTranslateLoader, TRANSLATION_FILES} from './lib/multi-translate-loader/multi-translate-loader';
 export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';
 export {ObGlobalEventsService} from './lib/global-events/global-events.service';
 export {obOutsideFilter} from './lib/global-events/outsideFilter';
@@ -167,4 +163,4 @@ export {
 	ObIAutocompleteInputOptionGroup,
 	OptionLabelIconPosition
 } from './lib/autocomplete/autocomplete.module';
-export {ObPaginatorModule, ObPaginatorService} from './lib/paginator/ob-paginator.module';
+export {ObPaginatorService} from './lib/paginator/ob-paginator.service';

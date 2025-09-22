@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {provideHttpClient} from '@angular/common/http';
 import {TranslateModule} from '@ngx-translate/core';
-import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, provideObliqueConfiguration} from '../utilities';
+import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, provideObliqueTestingConfiguration} from '../utilities';
 import {AccessibilityStatementComponent} from './accessibility-statement.component';
 import {registerLocaleData} from '@angular/common';
 import localeDE from '@angular/common/locales/de-CH';
@@ -18,11 +18,13 @@ describe(AccessibilityStatementComponent.name, () => {
 			imports: [AccessibilityStatementComponent, TranslateModule],
 			providers: [
 				provideHttpClient(),
-				provideObliqueConfiguration({
+				provideObliqueTestingConfiguration({
 					accessibilityStatement: {
 						applicationName: 'appName',
+						conformity: 'none',
+						createdOn: new Date('2025-01-31'),
 						applicationOperator: 'Operator',
-						contact: {emails: ['e@mail.com']}
+						contact: [{email: 'e@mail.com'}]
 					}
 				})
 			]
@@ -32,7 +34,13 @@ describe(AccessibilityStatementComponent.name, () => {
 	describe.each([{conformity: 'none'}, {conformity: 'full'}])('With "conformity" "$conformity"', ({conformity}) => {
 		beforeEach(() => {
 			TestBed.overrideProvider(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, {
-				useValue: {applicationName: 'appName', applicationOperator: 'Operator', contact: {emails: ['e@mail.com']}, conformity}
+				useValue: {
+					applicationName: 'appName',
+					applicationOperator: 'Operator',
+					contact: [{email: 'e@mail.com'}],
+					createdOn: new Date('2025-01-31'),
+					conformity
+				}
 			});
 			fixture = TestBed.createComponent(AccessibilityStatementComponent);
 			component = fixture.componentInstance;
@@ -46,13 +54,14 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('template', () => {
 			test.each([
 				{tag: 'h1', number: 1},
-				{tag: 'h2', number: 3},
-				{tag: 'h3', number: 3},
+				{tag: 'h2', number: 2},
+				{tag: 'h3', number: 2},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},
-				{tag: 'ul', number: 4},
+				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 0},
-				{tag: 'p', number: 5}
+				{tag: 'p', number: 6},
+				{tag: 'p > a', number: 1}
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
@@ -72,36 +81,15 @@ describe(AccessibilityStatementComponent.name, () => {
 			});
 		});
 
-		describe('contactParameters', () => {
+		describe('contacts', () => {
 			test('to be defined', () => {
-				expect(component.contactParameters).toBeDefined();
+				expect(component.contacts).toBeDefined();
 			});
 
-			test.each([
-				{property: 'emails', value: ['e@mail.com']},
-				{property: 'phones', value: []}
-			])('to have an empty array as "$property"', ({property, value}) => {
-				expect(component.contactParameters[property]).toEqual(value);
-			});
-		});
-
-		describe('generalLinks', () => {
-			test('to be defined', () => {
-				expect(component.generalLinks).toBeDefined();
-			});
-
-			test('to have 2 items', () => {
-				expect(component.generalLinks.length).toBe(2);
-			});
-		});
-
-		describe('accessibilityLinks', () => {
-			test('to be defined', () => {
-				expect(component.accessibilityLinks).toBeDefined();
-			});
-
-			test('to have 6 items', () => {
-				expect(component.accessibilityLinks.length).toBe(6);
+			test('to be an array with correct properties', () => {
+				expect(component.contacts).toEqual([
+					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined, isExternal: false}
+				]);
 			});
 		});
 	});
@@ -112,8 +100,9 @@ describe(AccessibilityStatementComponent.name, () => {
 				useValue: {
 					applicationName: 'appName',
 					applicationOperator: 'Operator',
-					contact: {emails: ['e@mail.com']},
+					contact: [{email: 'e@mail.com'}],
 					conformity: 'partial',
+					createdOn: new Date('2025-01-31'),
 					exceptions: ['test']
 				}
 			});
@@ -129,13 +118,14 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('template', () => {
 			test.each([
 				{tag: 'h1', number: 1},
-				{tag: 'h2', number: 3},
-				{tag: 'h3', number: 4},
+				{tag: 'h2', number: 2},
+				{tag: 'h3', number: 3},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},
-				{tag: 'ul', number: 4},
+				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 1},
-				{tag: 'p', number: 6}
+				{tag: 'p', number: 7},
+				{tag: 'p > a', number: 1}
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
@@ -155,118 +145,29 @@ describe(AccessibilityStatementComponent.name, () => {
 			});
 		});
 
-		describe('contactParameters', () => {
+		describe('contacts', () => {
 			test('to be defined', () => {
-				expect(component.contactParameters).toBeDefined();
+				expect(component.contacts).toBeDefined();
 			});
 
-			test.each([
-				{property: 'emails', value: ['e@mail.com']},
-				{property: 'phones', value: []}
-			])('to have an empty array as "$property"', ({property, value}) => {
-				expect(component.contactParameters[property]).toEqual(value);
-			});
-		});
-
-		describe('generalLinks', () => {
-			test('to be defined', () => {
-				expect(component.generalLinks).toBeDefined();
-			});
-
-			test('to have 2 items', () => {
-				expect(component.generalLinks.length).toBe(2);
-			});
-		});
-
-		describe('accessibilityLinks', () => {
-			test('to be defined', () => {
-				expect(component.accessibilityLinks).toBeDefined();
-			});
-
-			test('to have 6 items', () => {
-				expect(component.accessibilityLinks.length).toBe(6);
+			test('to be an array with correct properties', () => {
+				expect(component.contacts).toEqual([
+					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined, isExternal: false}
+				]);
 			});
 		});
 	});
 
-	describe('With minimal configuration', () => {
-		beforeEach(() => {
-			fixture = TestBed.createComponent(AccessibilityStatementComponent);
-			component = fixture.componentInstance;
-			fixture.detectChanges();
-		});
-
-		test('component creation', () => {
-			expect(component).toBeTruthy();
-		});
-
-		describe('template', () => {
-			test.each([
-				{tag: 'h1', number: 1},
-				{tag: 'h2', number: 3},
-				{tag: 'h3', number: 3},
-				{tag: 'h4', number: 2},
-				{tag: 'h5', number: 0},
-				{tag: 'ul', number: 4},
-				{tag: 'ol', number: 0},
-				{tag: 'p', number: 5}
-			])('has $number "$tag" tags', ({tag, number}) => {
-				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
-			});
-		});
-
-		describe('statementParameters', () => {
-			test('to be defined', () => {
-				expect(component.statementParameters).toBeDefined();
-			});
-
-			test.each([
-				{property: 'applicationName', value: 'appName'},
-				{property: 'conformity', value: 'i18n.oblique.accessibility-statement.statement.none'},
-				{property: 'exceptionText', value: 'i18n.oblique.accessibility-statement.statement.no-exception'}
-			])('to have "$value" as "$property"', ({property, value}) => {
-				expect(component.statementParameters[property]).toBe(value);
-			});
-		});
-
-		describe('contactParameters', () => {
-			test('to be defined', () => {
-				expect(component.contactParameters).toBeDefined();
-			});
-
-			test.each([
-				{property: 'emails', value: ['e@mail.com']},
-				{property: 'phones', value: []}
-			])('to have an empty array as "$property"', ({property, value}) => {
-				expect(component.contactParameters[property]).toEqual(value);
-			});
-		});
-
-		describe('generalLinks', () => {
-			test('to be defined', () => {
-				expect(component.generalLinks).toBeDefined();
-			});
-
-			test('to have 2 items', () => {
-				expect(component.generalLinks.length).toBe(2);
-			});
-		});
-
-		describe('accessibilityLinks', () => {
-			test('to be defined', () => {
-				expect(component.accessibilityLinks).toBeDefined();
-			});
-
-			test('to have 6 items', () => {
-				expect(component.accessibilityLinks.length).toBe(6);
-			});
-		});
-	});
-
-	describe('With "createdOn" info', () => {
+	describe('With "createdOn" info and an external contact', () => {
 		beforeEach(() => {
 			TestBed.overrideProvider(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, {
-				useValue: {applicationName: 'applicationName', applicationOperator: 'Operator', contact: {}, createdOn: new Date()}
+				useValue: {
+					applicationName: 'applicationName',
+					applicationOperator: 'Operator',
+					conformity: 'none',
+					contact: [{email: 'e@mail.com'}, {url: 'http://my-external-url.admin.ch'}],
+					createdOn: new Date()
+				}
 			});
 			fixture = TestBed.createComponent(AccessibilityStatementComponent);
 			component = fixture.componentInstance;
@@ -280,13 +181,14 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('template', () => {
 			test.each([
 				{tag: 'h1', number: 1},
-				{tag: 'h2', number: 3},
-				{tag: 'h3', number: 4},
+				{tag: 'h2', number: 2},
+				{tag: 'h3', number: 2},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},
-				{tag: 'ul', number: 4},
+				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 0},
-				{tag: 'p', number: 6}
+				{tag: 'p', number: 6},
+				{tag: 'p > a', number: 1}
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
@@ -299,52 +201,42 @@ describe(AccessibilityStatementComponent.name, () => {
 
 			test.each([
 				{property: 'applicationName', value: 'applicationName'},
-				{property: 'conformity', value: 'i18n.oblique.accessibility-statement.statement.full'},
+				{property: 'conformity', value: 'i18n.oblique.accessibility-statement.statement.none'},
 				{property: 'exceptionText', value: 'i18n.oblique.accessibility-statement.statement.no-exception'}
 			])('to have "$value" as "$property"', ({property, value}) => {
 				expect(component.statementParameters[property]).toBe(value);
 			});
 		});
 
-		describe('contactParameters', () => {
+		describe('contacts', () => {
 			test('to be defined', () => {
-				expect(component.contactParameters).toBeDefined();
+				expect(component.contacts).toBeDefined();
 			});
 
-			test.each([{property: 'emails'}, {property: 'phones'}])('to have an empty array as "$property"', ({property}) => {
-				expect(component.contactParameters[property]).toEqual([]);
-			});
-		});
-
-		describe('generalLinks', () => {
-			test('to be defined', () => {
-				expect(component.generalLinks).toBeDefined();
-			});
-
-			test('to have 2 items', () => {
-				expect(component.generalLinks.length).toBe(2);
-			});
-		});
-
-		describe('accessibilityLinks', () => {
-			test('to be defined', () => {
-				expect(component.accessibilityLinks).toBeDefined();
-			});
-
-			test('to have 6 items', () => {
-				expect(component.accessibilityLinks.length).toBe(6);
+			test('to be an array with correct properties', () => {
+				expect(component.contacts).toEqual([
+					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined, isExternal: false},
+					{
+						label: 'http://my-external-url.admin.ch',
+						url: 'http://my-external-url.admin.ch',
+						icon: 'link_external',
+						context: undefined,
+						isExternal: true
+					}
+				]);
 			});
 		});
 	});
 
-	describe('With "createdOn", "exceptions" and "contact" info', () => {
+	describe('With "createdOn", "exceptions" and phone & internal url "contact" info', () => {
 		beforeEach(() => {
 			TestBed.overrideProvider(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, {
 				useValue: {
 					applicationName: 'applicationName',
 					applicationOperator: 'Operator',
-					contact: {emails: ['email'], phones: ['phone']},
-					createdOn: new Date(),
+					conformity: 'partial',
+					createdOn: new Date('2025-01-31'),
+					contact: [{email: 'e@mail.com'}, {phone: 'phone', context: 'context'}, {url: 'my/internal/url', context: 'context'}],
 					exceptions: ['exception']
 				}
 			});
@@ -360,13 +252,14 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('template', () => {
 			test.each([
 				{tag: 'h1', number: 1},
-				{tag: 'h2', number: 3},
-				{tag: 'h3', number: 5},
+				{tag: 'h2', number: 2},
+				{tag: 'h3', number: 3},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},
-				{tag: 'ul', number: 4},
+				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 1},
-				{tag: 'p', number: 7}
+				{tag: 'p', number: 7},
+				{tag: 'p > a', number: 1}
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
@@ -386,36 +279,17 @@ describe(AccessibilityStatementComponent.name, () => {
 			});
 		});
 
-		describe('contactParameters', () => {
+		describe('contacts', () => {
 			test('to be defined', () => {
-				expect(component.contactParameters).toBeDefined();
+				expect(component.contacts).toBeDefined();
 			});
 
-			test.each([
-				{property: 'emails', value: ['email']},
-				{property: 'phones', value: ['phone']}
-			])('to have "$value" as "$property"', ({property, value}) => {
-				expect(component.contactParameters[property]).toEqual(value);
-			});
-		});
-
-		describe('generalLinks', () => {
-			test('to be defined', () => {
-				expect(component.generalLinks).toBeDefined();
-			});
-
-			test('to have 2 items', () => {
-				expect(component.generalLinks.length).toBe(2);
-			});
-		});
-
-		describe('accessibilityLinks', () => {
-			test('to be defined', () => {
-				expect(component.accessibilityLinks).toBeDefined();
-			});
-
-			test('to have 6 items', () => {
-				expect(component.accessibilityLinks.length).toBe(6);
+			test('to be an array with correct properties', () => {
+				expect(component.contacts).toEqual([
+					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined, isExternal: false},
+					{label: 'phone', url: `tel:phone`, icon: 'phone', context: 'context', isExternal: false},
+					{label: 'my/internal/url', url: `my/internal/url`, icon: 'link', context: 'context', isExternal: false}
+				]);
 			});
 		});
 	});

@@ -8,15 +8,13 @@ import {By} from '@angular/platform-browser';
 import {MatIconModule} from '@angular/material/icon';
 import {DebugElement} from '@angular/core';
 import {NgOptimizedImage} from '@angular/common';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslateModule} from '@ngx-translate/core';
 import {ObMockExternalLinkModule} from '../../external-link/_mocks/mock-external-link.module';
-import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationProfileHarness} from './service-navigation-profile.harness';
 import {ObServiceNavigationProfileComponent} from './service-navigation-profile.component';
-import {WINDOW} from '../../utilities';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
 
 describe('ObServiceNavigationProfileComponent', () => {
@@ -27,19 +25,16 @@ describe('ObServiceNavigationProfileComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [
-				ObMockTranslatePipe,
 				ObMockExternalLinkModule,
 				ObPopoverModule,
 				MatIconModule,
 				MatTooltipModule,
 				NgOptimizedImage,
-				ObIsCurrentUrlPipe
+				ObIsCurrentUrlPipe,
+				TranslateModule
 			],
 			declarations: [ObServiceNavigationProfileComponent, ObServiceNavigationPopoverSectionComponent],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationProfileComponent);
@@ -97,153 +92,41 @@ describe('ObServiceNavigationProfileComponent', () => {
 		});
 	});
 
-	describe('avatarImageUrl', () => {
-		it('should be initialized to an empty string', () => {
-			expect(component.avatarImageUrl).toBe('');
+	describe('avatar icon', () => {
+		let button: TestElement;
+		beforeEach(async () => {
+			fixture.detectChanges();
+			button = await harness.getTriggerButton();
 		});
 
-		describe.each(['', 'http://avatar-url'])('set to "%s"', url => {
-			let button: TestElement;
-			beforeEach(async () => {
-				component.avatarImageUrl = url;
-				button = await harness.getTriggerButton();
-			});
-
-			it.each([
-				{attribute: 'type', value: 'button'},
-				{attribute: 'placement', value: 'bottom'}
-			])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
-				expect(await button.getAttribute(attribute)).toBe(value);
-			});
-
-			it('should have "ob-widget" class', async () => {
-				expect(await button.hasClass('ob-widget')).toBe(true);
-			});
+		it.each([
+			{attribute: 'id', value: 'service-navigation-toggle-profile-icon-button'},
+			{attribute: 'obButton', value: 'secondary'},
+			{attribute: 'mat-icon-button', value: ''}
+		])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
+			expect(await button.getAttribute(attribute)).toBe(value);
 		});
 
-		describe('set to ""', () => {
-			let button: TestElement;
-			beforeEach(async () => {
-				component.avatarImageUrl = '';
-				fixture.detectChanges();
-				button = await harness.getTriggerButton();
-			});
-
-			it.each([
-				{attribute: 'id', value: 'service-navigation-toggle-profile-icon-button'},
-				{attribute: 'obButton', value: 'secondary'},
-				{attribute: 'mat-icon-button', value: ''}
-			])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
-				expect(await button.getAttribute(attribute)).toBe(value);
-			});
-
-			it('should have "ob-widget" class', async () => {
-				expect(await button.hasClass('ob-widget')).toBe(true);
-			});
-
-			it(`should not contain an image`, async () => {
-				expect(await harness.getImage()).toBeNull();
-			});
-
-			describe('icon', () => {
-				let iconHarness: MatIconHarness;
-				beforeEach(async () => {
-					iconHarness = await harness.getIconHarness();
-				});
-
-				it('should exist', () => {
-					expect(iconHarness).toBeTruthy();
-				});
-
-				it('should be "user"', async () => {
-					expect(await iconHarness.getName()).toBe('user');
-				});
-			});
-
-			describe('popover header image', () => {
-				it('should not exist', fakeAsync(async () => {
-					fixture.detectChanges();
-					await harness.openPopover();
-					fixture.detectChanges();
-					tick();
-					const popoverHarness = await harness.getPopoverHarness();
-					const sections = await popoverHarness.getSections();
-					expect(await sections[0].getHeaderImage()).toBeNull();
-				}));
-			});
+		it('should have "ob-widget" class', async () => {
+			expect(await button.hasClass('ob-widget')).toBe(true);
 		});
 
-		describe('set to "http://avatar-url"', () => {
-			let button: TestElement;
+		it(`should not contain an image`, async () => {
+			expect(await harness.getImage()).toBeNull();
+		});
+
+		describe('icon', () => {
+			let iconHarness: MatIconHarness;
 			beforeEach(async () => {
-				component.avatarImageUrl = 'http://avatar-url';
-				button = await harness.getTriggerButton();
+				iconHarness = await harness.getIconHarness();
 			});
 
-			it.each([
-				{attribute: 'id', value: 'service-navigation-toggle-profile-image-button'},
-				{attribute: 'obButton', value: null},
-				{attribute: 'mat-icon-button', value: null}
-			])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
-				expect(await button.getAttribute(attribute)).toBe(value);
+			it('should exist', () => {
+				expect(iconHarness).toBeTruthy();
 			});
 
-			it('should have "ob-image-button" class', async () => {
-				expect(await button.hasClass('ob-image-button')).toBe(true);
-			});
-
-			it(`should not contain an icon`, async () => {
-				expect(await harness.getIconHarness()).toBeNull();
-			});
-
-			describe('image', () => {
-				let image: TestElement;
-				beforeEach(async () => {
-					image = await harness.getImage();
-				});
-
-				it(`should exist`, () => {
-					expect(image).toBeTruthy();
-				});
-
-				it.each([
-					{property: 'alt', value: 'i18n.oblique.service-navigation.profile.alt'},
-					{property: 'src', value: 'http://avatar-url'}
-				])(`should have "$value" as "$property" property`, async ({property, value}) => {
-					expect(await image.getAttribute(property)).toBe(value);
-				});
-
-				it('should have "ob-profile-avatar" class', async () => {
-					expect(await image.hasClass('ob-profile-avatar')).toBe(true);
-				});
-			});
-
-			describe('popover header image', () => {
-				let image: TestElement;
-				beforeEach(fakeAsync(async () => {
-					fixture.detectChanges();
-					await harness.openPopover();
-					fixture.detectChanges();
-					tick();
-					const popoverHarness = await harness.getPopoverHarness();
-					const sections = await popoverHarness.getSections();
-					image = await sections[0].getHeaderImage();
-				}));
-
-				it('should exist', () => {
-					expect(image).toBeTruthy();
-				});
-
-				it('should have "ob-avatar" as class', async () => {
-					expect(await image.hasClass('ob-avatar')).toBe(true);
-				});
-
-				it.each([
-					{property: 'src', value: 'http://avatar-url'},
-					{property: 'alt', value: 'i18n.oblique.service-navigation.profile.alt'}
-				])('should have "$value" as "$property" property', async ({property, value}) => {
-					expect(await image.getAttribute(property)).toBe(value);
-				});
+			it('should be "person"', async () => {
+				expect(await iconHarness.getName()).toBe('person');
 			});
 		});
 	});
@@ -336,10 +219,6 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 		it.each(['ob-widget', 'ob-user'])('should have "%s" class', async className => {
 			expect(await button.hasClass(className)).toBe(true);
-		});
-
-		it('should have "i18n.oblique.service-navigation.profile.button" as screen reader text', async () => {
-			expect(await harness.getTriggerButtonScreenReaderText()).toBe('i18n.oblique.service-navigation.profile.button');
 		});
 
 		describe('tooltip', () => {

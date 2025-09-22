@@ -44,7 +44,6 @@ describe('ObServiceNavigationComponent', () => {
 		getProfileUrls$: jest.fn().mockReturnValue(of([{url: 'profileUrl', label: 'profile', isInternalLink: true}])),
 		getInboxMailUrl$: jest.fn().mockReturnValue(of('inboxMailUrl')),
 		getUserName$: jest.fn().mockReturnValue(of('John Doe')),
-		getAvatarUrl$: jest.fn().mockReturnValue(of('http://avatar-url')),
 		getLoginState$: jest.fn().mockReturnValue(mockLoginState.asObservable()),
 		getMessageCount$: jest.fn().mockReturnValue(of(42)),
 		getApplicationsUrl$: jest.fn().mockReturnValue(of('applicationsUrl')),
@@ -256,7 +255,6 @@ describe('ObServiceNavigationComponent', () => {
 			{property: 'loginUrl$', method: 'getLoginUrl$', emit: 'loginUrl'},
 			{property: 'profileUrls$', method: 'getProfileUrls$', emit: [{url: 'profileUrl', label: 'profile', isInternalLink: true}]},
 			{property: 'userName$', method: 'getUserName$', emit: 'John Doe'},
-			{property: 'avatarUrl$', method: 'getAvatarUrl$', emit: 'http://avatar-url'},
 			{property: 'inboxMailUrl$', method: 'getInboxMailUrl$', emit: 'inboxMailUrl'},
 			{property: 'messageCount$', method: 'getMessageCount$', emit: 42},
 			{property: 'applicationsUrl$', method: 'getApplicationsUrl$', emit: 'applicationsUrl'},
@@ -499,7 +497,7 @@ describe('ObServiceNavigationComponent', () => {
 					component.infoContactText = 'input contact text';
 					component.infoHelpText = 'input help text';
 					component.infoLinks = [{url: 'input url link1', label: 'input label link1'}];
-					component.infoContact = {formUrl: 'input contactUrl', email: 'input email', tel: 'input phone'};
+					component.infoContact = {formUrl: 'input contactUrl', email: 'input email', phone: 'input phone'};
 					fixture.detectChanges();
 					infoElement = await harness.getInfoElement();
 				});
@@ -513,7 +511,7 @@ describe('ObServiceNavigationComponent', () => {
 						input: 'links'
 					},
 					{
-						inputExpectedResult: {formUrl: 'input contactUrl', email: 'input email', tel: 'input phone'},
+						inputExpectedResult: {formUrl: 'input contactUrl', email: 'input email', phone: 'input phone'},
 						input: 'contact'
 					}
 				])('should add infoBackend$.$input to ob-service-navigation-info $input input', async ({input, inputExpectedResult}) => {

@@ -15,11 +15,6 @@ export class ObServiceNavigationApplicationsHarness extends ContentContainerComp
 		return this.locatorForOptional('button', 'a')();
 	}
 
-	public async getTriggerScreenReaderText(): Promise<string> {
-		const element = await this.locatorForOptional('button .ob-screen-reader-only', 'a .ob-screen-reader-only')();
-		return element.text();
-	}
-
 	public async getPopover(): Promise<TestElement> {
 		return this.locatorForOptional(ObServiceNavigationApplicationsHarness.popoverSelector)();
 	}

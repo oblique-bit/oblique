@@ -4,10 +4,10 @@ import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {By} from '@angular/platform-browser';
 
 import {ObOptionLabelIconDirective} from './option-label-icon.directive';
-import {ObEIcon, ObIconModule, ObIconService} from '../../icon/icon.module';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {ObEIcon, ObIconService} from '../../icon/icon.module';
 import {CommonModule} from '@angular/common';
 import {OptionLabelIconPosition} from './../autocomplete.model';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 
 @Component({
 	template: '',
@@ -28,8 +28,9 @@ describe(ObOptionLabelIconDirective.name, () => {
 		TestBed.resetTestingModule();
 		await TestBed.configureTestingModule({
 			declarations: [OptionLabelTestComponent],
-			imports: [ObOptionLabelIconDirective, MatIconModule, ObIconModule.forRoot(), HttpClientTestingModule, CommonModule],
+			imports: [ObOptionLabelIconDirective, MatIconModule, CommonModule],
 			providers: [
+				provideObliqueTestingConfiguration(),
 				{provide: ObIconService, useClass: ObIconService},
 				{provide: MatIconRegistry, useClass: MatIconRegistry}
 			]

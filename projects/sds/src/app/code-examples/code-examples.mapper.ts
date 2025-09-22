@@ -38,7 +38,6 @@ import {SlideToggleCodeExamplesComponent} from './code-examples/slide-toggle/sli
 import {SpacingCodeExamplesComponent} from './code-examples/spacing/spacing-code-examples.component';
 import {SpinnerCodeExamplesComponent} from './code-examples/spinner/spinner-code-examples.component';
 import {StepperCodeExamplesComponent} from './code-examples/stepper/stepper-code-examples.component';
-import {StickyCodeExamplesComponent} from './code-examples/sticky/sticky-code-examples.component';
 import {TabsCodeExamplesComponent} from './code-examples/tabs/tabs-code-examples.component';
 import {TooltipCodeExamplesComponent} from './code-examples/tooltip/tooltip-code-examples.component';
 import {TranslateParamsCodeExamplesComponent} from './code-examples/translate-params/translate-params-code-examples.component';
@@ -87,8 +86,6 @@ const codeExamples: Record<string, Type<CodeExamples>> = {
 	language: LanguageCodeExamplesComponent,
 	'list-group': ListGroupCodeExamplesComponent,
 	'master-layout': MasterLayoutCodeExamplesComponent,
-	'master-layout-12': MasterLayoutCodeExamplesComponent,
-	'master-layout-13': MasterLayoutCodeExamplesComponent,
 	'material-table': MaterialTableCodeExamplesComponent,
 	'nav-tree': NavTreeCodeExamplesComponent,
 	'nested-form': NestedFormCodeExamplesComponent,
@@ -108,7 +105,6 @@ const codeExamples: Record<string, Type<CodeExamples>> = {
 	spacing: SpacingCodeExamplesComponent,
 	spinner: SpinnerCodeExamplesComponent,
 	stepper: StepperCodeExamplesComponent,
-	sticky: StickyCodeExamplesComponent,
 	tabs: TabsCodeExamplesComponent,
 	tooltip: TooltipCodeExamplesComponent,
 	'translate-params': TranslateParamsCodeExamplesComponent,
@@ -119,5 +115,5 @@ const codeExamples: Record<string, Type<CodeExamples>> = {
 };
 
 export function getCodeExampleComponent(slug: string): Type<CodeExamples> | undefined {
-	return codeExamples[slug];
+	return codeExamples[slug] ?? codeExamples[slug.replace(/-\d+$/u, '')];
 }

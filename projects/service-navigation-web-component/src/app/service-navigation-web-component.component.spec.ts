@@ -1,11 +1,10 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {ObServiceNavigationWebComponentComponent} from './service-navigation-web-component.component';
-import {TranslateModule} from '@ngx-translate/core';
 import {SimpleChange, type SimpleChanges} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {By} from '@angular/platform-browser';
-import {ObServiceNavigationComponent, WINDOW, multiTranslateLoader} from '@oblique/oblique';
+import {type ObIServiceNavigationContact, ObServiceNavigationComponent, provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {appVersion} from './version';
+import {HttpClient} from '@angular/common/http';
 
 function defaultChangesValues(): SimpleChanges {
 	return {environment: new SimpleChange(undefined, 'DEV', undefined)};
@@ -17,11 +16,8 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [ObServiceNavigationWebComponentComponent, TranslateModule.forRoot(multiTranslateLoader())],
-			providers: [
-				{provide: HttpClient, useValue: {}},
-				{provide: WINDOW, useValue: window}
-			]
+			imports: [ObServiceNavigationWebComponentComponent],
+			providers: [provideObliqueTestingConfiguration(), {provide: HttpClient, useValue: {}}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationWebComponentComponent);
@@ -90,7 +86,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 	describe('contact parsing', () => {
 		describe('stringify object', () => {
 			it('should return the object as a real object', () => {
-				const contact = {tel: '+41 99 999 99 99'};
+				const contact = {phone: '+41 99 999 99 99', phoneText: 'some text'} as ObIServiceNavigationContact;
 				component.ngOnChanges({
 					...defaultChangesValues(),
 					infoContact: new SimpleChange(null, JSON.stringify(contact), true)
@@ -178,7 +174,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 			describe('stringify object', () => {
 				let buttons: HTMLElement[];
 				beforeEach(() => {
-					const customButtonsObject = [{obliqueIconName: 'smile', badge: '1'}, {obliqueIconName: 'calendar'}];
+					const customButtonsObject = [{obliqueIconName: 'happy', badge: '1'}, {obliqueIconName: 'calendar'}];
 					fixture.componentRef.setInput('environment', 'DEV');
 					fixture.componentRef.setInput('languageList', 'en');
 					component.ngOnChanges({
@@ -194,8 +190,8 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 				});
 
 				describe('first button', () => {
-					it('should have smile icon', () => {
-						expect(buttons[0].innerHTML).toContain('smile');
+					it('should have happy icon', () => {
+						expect(buttons[0].innerHTML).toContain('happy');
 					});
 
 					it('should have badge set to 1', () => {
@@ -204,13 +200,13 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 					});
 
 					describe('clicked event', () => {
-						it('should emit smile with the buttonClickedEmitter', () => {
+						it('should emit happy with the buttonClickedEmitter', () => {
 							let clickEvent: string;
 							component.buttonClickedEmitter.subscribe(event => {
 								clickEvent = event;
 							});
 							buttons[0].click();
-							expect(clickEvent).toBe('smile');
+							expect(clickEvent).toBe('happy');
 						});
 					});
 				});

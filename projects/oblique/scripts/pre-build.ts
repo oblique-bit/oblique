@@ -20,11 +20,8 @@ class PreBuild extends StaticScript {
 				filePath: PreBuild.getDirectoryPath(filePath),
 				content: Files.read(filePath)
 			}))
-			.map(file => ({filePath: file.filePath, styleUrls: /styleUrls:\s*\[(?<styleUrls>[^\]]*)]/m.exec(file.content)?.groups?.styleUrls}))
+			.map(file => ({filePath: file.filePath, styleUrls: PreBuild.getStyleUrls(file.content)}))
 			.filter(file => file.styleUrls)
-			.map(file => ({filePath: file.filePath, styleUrls: file.styleUrls.replace(/'|\t|\n|\.\/|\s/g, '')}))
-			.map(file => ({filePath: file.filePath, styleUrls: file.styleUrls.split(',')}))
-			.map(file => ({filePath: file.filePath, styleUrls: file.styleUrls.filter(url => !url.startsWith('.'))}))
 			.map(file => file.styleUrls.map(fileName => `${file.filePath}/${fileName}`))
 			.reduce<string[]>((flatArray, current) => [...flatArray, ...current], [])
 			.map(styleUrl => `@use "${styleUrl}";`)
@@ -37,6 +34,20 @@ class PreBuild extends StaticScript {
 		pathChunks.pop();
 		pathChunks[0] = 'projects';
 		return pathChunks.join('/');
+	}
+
+	private static getStyleUrls(fileContent: string): string[] {
+		if (fileContent.includes('styleUrls')) {
+			return /styleUrls:\s*\[(?<styleUrls>[^\]]*)]/m
+				.exec(fileContent)
+				?.groups?.styleUrls.replace(/'|\t|\n|\.\/|\s|\.scss/g, '')
+				.split(',')
+				.filter(url => !url.startsWith('.'));
+		}
+		if (fileContent.includes('styleUrl')) {
+			return [/styleUrl:\s*'(?<styleUrls>[^']*)'/m.exec(fileContent)?.groups?.styleUrls.replace(/\.\/|\s|\.scss/g, '')];
+		}
+		return undefined;
 	}
 }
 

@@ -48,16 +48,30 @@ export function createSafeRule(callback: (tree: Tree, context: SchematicContext)
 			return callback(tree, context);
 		} catch (thrownError) {
 			isSuccessful = false;
-			const groups =
-				/@oblique[/\\]oblique[/\\]schematics[/\\].*[/\\](?<file>\w*\.js):(?<line>\d*)/.exec(thrownError.stack || '')?.groups || {};
-			const errorMessage: string = thrownError.message || thrownError;
+			const {message, file, line} = getErrorInfo(thrownError);
 			warn(
 				context,
-				`The previous task failed and the change needs to be done manually.\nPlease inform the Oblique team (oblique@bit.admin.ch) of the following error:\n\t${errorMessage}, in "${groups.file}" on line ${groups.line}`
+				`The previous task failed and the change needs to be done manually.\nPlease inform the Oblique team (oblique@bit.admin.ch) of the following error:\n\t${message}${file ? `\n\tfile: "${file}"` : ''}${line ? `\n\tline: "${file}"` : ''}`
 			);
 			return tree;
 		}
 	};
+}
+
+function getErrorInfo(thrownError: unknown): {message: string; file: string; line: string} {
+	if (thrownError instanceof Error) {
+		const {file, line} =
+			/@oblique[/\\]oblique[/\\]schematics[/\\].*[/\\](?<file>\w*\.js):(?<line>\d*)/.exec(thrownError.stack || '')?.groups || {};
+		return {
+			message: thrownError.message,
+			file,
+			line
+		};
+	}
+	if (typeof thrownError === 'string') {
+		return {message: thrownError, file: '', line: ''};
+	}
+	return {message: 'Unknown error', file: '', line: ''};
 }
 
 export function checkForStandalone(): Rule {
@@ -93,18 +107,6 @@ export function warnIfStandalone(): Rule {
 			warn(
 				context,
 				'Standalone application detected, the migration has only been partially applied and the application is currently broken. Please check manually the changes applied by the schematic.'
-			);
-		}
-	};
-}
-
-export function checkForMultiProject(): Rule {
-	return (tree: Tree, context: SchematicContext) => {
-		infoMigration(context, 'Check if project is a multi-project angular application ');
-		const multiProject = !tree.exists('./src/app/app.module.ts');
-		if (multiProject) {
-			error(
-				'Multi-project application detected. Oblique schematics are not compatible with multi-project applications. Either convert the application to non multi-project or perform the changes manually. Check the documentation for guidance.'
 			);
 		}
 	};

@@ -1,6 +1,6 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {addDevDependency, addRootProperty, addScript, getTemplate, removeScript} from '../ng-add-utils';
+import {addDevDependency, addScript, angularAppFilesNames, getTemplate, removeScript} from '../ng-add-utils';
 import {
 	addFile,
 	createSafeRule,
@@ -16,7 +16,7 @@ import {
 	setRootAngularConfig,
 	writeFile
 } from '../../utils';
-import {addJest, addProtractor} from './tests';
+import {addJest} from './tests';
 
 export function toolchain(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, context: SchematicContext) =>
@@ -31,8 +31,6 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			updateExistingPrefixes(options.prefix),
 			addProxy(options.proxy),
 			addJest(options.jest),
-			addProtractor(options.protractor, options.jest),
-			addSonar(options.sonar, options.jest),
 			updateEditorConfig(options.eslint),
 			addEslint(options.eslint),
 			addPrettier(options.eslint),
@@ -60,7 +58,9 @@ function setBuilder(): Rule {
 					builder: '@angular-devkit/build-angular:browser',
 					options: {
 						...buildOptions,
-						main: buildOptions.browser
+						main: buildOptions.browser,
+						outputPath: 'dist',
+						index: 'src/index.html'
 					},
 					configurations: {
 						...buildConfigurations.config,
@@ -149,7 +149,7 @@ function addPrefix(prefix: string): Rule {
 function updateExistingPrefixes(prefix: string): Rule {
 	return createSafeRule((tree: Tree) => {
 		replaceInFile(tree, 'src/index.html', /<app-root><\/app-root>/g, `<${prefix}-root></${prefix}-root>`);
-		replaceInFile(tree, 'src/app/app.component.ts', /app-root/g, `${prefix}-root`);
+		replaceInFile(tree, `src/app/${angularAppFilesNames.appComponent}`, /app-root/g, `${prefix}-root`);
 		return tree;
 	});
 }
@@ -160,27 +160,6 @@ function addProxy(port: string): Rule {
 			infoMigration(context, 'Toolchain: Adding proxy configuration');
 			addFile(tree, 'proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port));
 			setOrCreateAngularProjectsConfig(tree, ['architect', 'serve', 'options', 'proxyConfig'], 'proxy.conf.json');
-		}
-		return tree;
-	});
-}
-
-function addSonar(sonar: boolean, jest: boolean): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		if (sonar) {
-			infoMigration(context, 'Toolchain: Adding Sonar configuration');
-			addFile(tree, 'sonar-project.properties', getTemplate(tree, 'default-sonar-project.properties.config'));
-			if (jest) {
-				addRootProperty(tree, 'jestSonar', {
-					reportPath: './coverage/sonarQube',
-					reportFile: 'sqr.xml',
-					indent: 4,
-					sonar56x: true
-				});
-			}
-		} else if (jest) {
-			const lines = readFile(tree, './tests/jest.config.js').split('\n');
-			tree.overwrite('./tests/jest.config.js', lines.filter((line: string) => !line.includes('sonar')).join('\n'));
 		}
 		return tree;
 	});
@@ -233,7 +212,8 @@ function addPrettier(eslint: boolean): Rule {
 
 function addLinting(tree: Tree): void {
 	setOrCreateAngularProjectsConfig(tree, ['architect', 'lint', 'builder'], '@angular-eslint/builder:lint');
-	setOrCreateAngularProjectsConfig(tree, ['architect', 'lint', 'options', 'lintFilePatterns'], ['src/**/*.ts', 'src/**/.html']);
+	setOrCreateAngularProjectsConfig(tree, ['architect', 'lint', 'options', 'lintFilePatterns'], ['src/**/*.ts', 'src/**/*.html']);
+	addFile(tree, 'tsconfig.lint.json', getTemplate(tree, 'default-tsconfig.lint.json'));
 }
 
 function overwriteEslintRC(eslint: boolean, prefix: string): Rule {

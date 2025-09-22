@@ -58,11 +58,10 @@ describe('Ob new command', () => {
 				{index: 1, message: `OBLIQUE CLI v${version}`, type: 'info'},
 				{index: 2, message: 'Checks your node version', type: 'info'},
 				{index: 3, message: '\n[Info]: Creates a new Angular workspace', type: 'info'},
-				{index: 4, message: '[Info]: Installs Angular Material', type: 'info'},
-				{index: 5, message: '[Info]: Installs @angular/cdk and @angular/animations', type: 'info'},
-				{index: 6, message: '[Info]: Runs npm dedupe', type: 'info'},
-				{index: 7, message: '[Info]: Runs npm prune', type: 'info'},
-				{index: 8, message: '[Complete]: Oblique added', type: 'info'},
+				{index: 4, message: '[Info]: Adds Angular Material', type: 'info'},
+				{index: 5, message: '[Info]: Adds Oblique', type: 'info'},
+				{index: 6, message: '[Info]: Runs npm dedupe and prune', type: 'info'},
+				{index: 7, message: '[Info]: Runs npm format', type: 'info'},
 				{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'}
 			])('calls console ', ({index, message, type}) => {
 				test(`${type} ${message}`, () => {
@@ -149,17 +148,9 @@ describe('Ob new command', () => {
 							"--jest Jest for unit tests: If true, Karma/Jasmine will be replaced with Jest as your application's testing framework. See more information at Jest at npm https://www.npmjs.com/package/jest and Jest's documentation: https://jestjs.io/docs/getting-started (default: true)"
 					},
 					{
-						description: 'Option to keep Protractor for end-to-end tests',
-						expected: '--protractor Protractor for end to end tests: If you use this flag, you keep Protractor for e2e tests.'
-					},
-					{
 						description: 'Option to create an .npmrc file',
 						expected:
 							'--npmrc Create .npmrc: If you use this flag, it adds an .npmrc file, suitable for projects located within confederation/federal network. (default: true)'
-					},
-					{
-						description: 'Option to add Sonar configuration',
-						expected: '--sonar Sonar configuration: If set to true, a Sonar configuration is added. (default: true)'
 					},
 					{
 						description: 'Option to add ESLint and Prettier',
@@ -182,25 +173,18 @@ describe('Ob new command', () => {
 			});
 
 			describe('handleObNewActions execSync calls', () => {
-				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone  --no-ssr --style="scss" --prefix="app"`, () => {
+				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --no-zoneless --ai-config="none" --style="scss" --prefix="app"`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						1,
-						`npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --style="scss" --prefix="app"`,
+						`npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --no-zoneless --ai-config="none" --style="scss" --prefix="app"`,
 						{stdio: 'inherit'}
 					);
 				});
 
-				test(`should call npm install @angular/material@${currentVersions['@angular/material']}`, () => {
-					expect(execSync).toHaveBeenNthCalledWith(2, `npm install @angular/material@${currentVersions['@angular/material']}`, {
-						cwd: `${process.cwd()}/${projectName}`,
-						stdio: 'inherit'
-					});
-				});
-
-				test(`should call npm install @angular/cdk@${currentVersions['@angular/cdk']} @angular/animations@${currentVersions['@angular/animations']}`, () => {
+				test(`should call npm install @angular/material@${currentVersions['@angular/material']} @angular/cdk@${currentVersions['@angular/cdk']} @angular/animations@${currentVersions['@angular/animations']}`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
-						3,
-						`npm install @angular/cdk@${currentVersions['@angular/cdk']} @angular/animations@${currentVersions['@angular/animations']}`,
+						2,
+						`npm install @angular/material@${currentVersions['@angular/material']} @angular/cdk@${currentVersions['@angular/cdk']} @angular/animations@${currentVersions['@angular/animations']} --audit false --fund false`,
 						{
 							cwd: `${process.cwd()}/${projectName}`,
 							stdio: 'inherit'
@@ -211,7 +195,7 @@ describe('Ob new command', () => {
 				test(`should call npx ${projectName} with default parameter`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						4,
-						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --eslint --husky`,
+						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --npmrc --eslint --husky`,
 						{cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'}
 					);
 				});
@@ -257,11 +241,10 @@ describe('Ob new command', () => {
 				message: '[Info]: Interactive mode is enabled. All other options will be ignored, and you will be prompted to specify each option.',
 				type: 'info'
 			},
-			{index: 5, message: '[Info]: Installs Angular Material', type: 'info'},
-			{index: 6, message: '[Info]: Installs @angular/cdk and @angular/animations', type: 'info'},
-			{index: 7, message: '[Info]: Runs npm dedupe', type: 'info'},
-			{index: 8, message: '[Info]: Runs npm prune', type: 'info'},
-			{index: 9, message: '[Complete]: Oblique added', type: 'info'},
+			{index: 5, message: '[Info]: Adds Angular Material', type: 'info'},
+			{index: 6, message: '[Info]: Adds Oblique', type: 'info'},
+			{index: 7, message: '[Info]: Runs npm dedupe and prune', type: 'info'},
+			{index: 8, message: '[Info]: Runs npm format', type: 'info'},
 			{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'}
 		])('calls console ', ({index, message, type}) => {
 			beforeEach(() => {
@@ -296,7 +279,7 @@ describe('Ob new command', () => {
 			test(`should call npx ${options}`, () => {
 				const expected = options.includes('--interactive')
 					? `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']}`
-					: `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --no-protractor --npmrc --sonar --eslint --husky`;
+					: `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --npmrc --eslint --husky`;
 				expect(execSync).toHaveBeenNthCalledWith(4, expected, {cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'});
 			});
 

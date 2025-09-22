@@ -1,5 +1,4 @@
-import {Injectable, RendererFactory2, inject} from '@angular/core';
-import {DOCUMENT} from '@angular/common';
+import {DOCUMENT, Injectable, RendererFactory2, inject} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import type {ComponentType} from '@angular/cdk/overlay';
 import type {CollectorConfiguration, CollectorDefaultValues, CollectorFunction} from './collector.model';

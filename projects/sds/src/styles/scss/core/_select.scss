@@ -1,0 +1,5 @@
+@use "@oblique/oblique/src/styles/scss/core/variables";
+
+.mat-mdc-select-panel {
+	--mat-divider-color: #{variables.$ob-gray-light};
+}

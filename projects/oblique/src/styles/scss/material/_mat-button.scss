@@ -26,7 +26,6 @@
 		}
 
 		&.mat-mdc-icon-button {
-			padding: core-variables.$ob-spacing-md;
 			line-height: 1;
 			display: inline-flex;
 			justify-content: center;
@@ -76,7 +75,9 @@
 					}
 				}
 
-				@include shadow.ob-focus-visible-tab-focus-box-shadow();
+				&:focus-visible {
+					@include shadow.ob-tab-focus-box-shadow();
+				}
 
 				.mat-ripple {
 					&.mat-mdc-button-ripple {
@@ -116,8 +117,14 @@
 				}
 			}
 
-			mat-icon[svgicon="external"].mat-icon {
+			mat-icon[svgicon="link_external"].mat-icon {
 				margin-left: -1px;
+			}
+
+			.mat-icon {
+				font-size: 1.5em; // empiric value
+				width: 1em; // overrides material value
+				height: 1em; // overrides material value
 			}
 		}
 

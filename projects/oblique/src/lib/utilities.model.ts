@@ -33,10 +33,19 @@ export interface ObIObliqueConfiguration {
 	accessibilityStatement: ObIAccessibilityStatementConfiguration;
 	material?: ObIMaterialConfig;
 	icon?: ObIconConfig;
-	translate?: {
-		config?: TranslateModuleConfig;
-		additionalFiles?: ObITranslationFile[];
-	};
+	translate?: ObITranslateConfig;
+	hasLanguageInUrl?: boolean;
+}
+
+export interface ObITranslateConfig {
+	flatten?: boolean;
+	config?: TranslateModuleConfig;
+	additionalFiles?: ObITranslationFile[];
+}
+
+export interface ObITranslateConfigInternal {
+	flatten: boolean;
+	additionalFiles?: ObITranslationFile[];
 }
 
 export type NonEmptyArray<Type> = [Type, ...Type[]];
@@ -45,18 +54,17 @@ export type ObConformity = ObConformityPartial | ObConformityNonPartial;
 
 export type ObIAccessibilityStatementConfiguration =
 	| ObIAccessibilityStatementConfigurationPartial
-	| ObIAccessibilityStatementConfigurationNonPartial
-	| ObIAccessibilityStatementConfigurationPartialTemp;
+	| ObIAccessibilityStatementConfigurationNonPartial;
 
 type ObConformityPartial = 'partial';
 type ObConformityNonPartial = 'none' | 'full';
 
 interface ObIAccessibilityStatementConfigurationBase {
 	applicationName: string;
-	createdOn?: Date;
+	createdOn: Date;
 	reviewedOn?: Date;
 	applicationOperator: string;
-	contact: ObContact;
+	contact: NonEmptyArray<ObContactData>;
 }
 
 interface ObIAccessibilityStatementConfigurationPartial extends ObIAccessibilityStatementConfigurationBase {
@@ -68,14 +76,26 @@ interface ObIAccessibilityStatementConfigurationNonPartial extends ObIAccessibil
 	conformity: ObConformityNonPartial;
 }
 
-interface ObIAccessibilityStatementConfigurationPartialTemp extends ObIAccessibilityStatementConfigurationBase {
-	conformity?: never;
-	exceptions?: string[];
+interface ObContactInfoBase {
+	context?: string;
 }
 
-interface ObContactInfo {
-	emails: NonEmptyArray<string>;
-	phones: NonEmptyArray<string>;
+interface ObContactEmail extends ObContactInfoBase {
+	email: string;
+	phone?: never;
+	url?: string;
 }
 
-type ObContact = Required<Pick<ObContactInfo, 'emails'>> | Required<Pick<ObContactInfo, 'phones'>> | Required<ObContactInfo>;
+interface ObContactPhone extends ObContactInfoBase {
+	email?: never;
+	phone: string;
+	url?: string;
+}
+
+interface ObContactUrl extends ObContactInfoBase {
+	email?: never;
+	phone?: string;
+	url: string;
+}
+
+export type ObContactData = ObContactPhone | ObContactEmail | ObContactUrl;

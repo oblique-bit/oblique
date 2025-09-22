@@ -33,13 +33,13 @@ All commits related to the Oblique package must use the **oblique** package and 
 - **off-canvas**
 - **paginator**
 - **popover**
+- **router**
 - **rxjs-operators**
 - **schema-validation**
 - **scrolling**
 - **selectable**
 - **service-navigation**
 - **spinner**
-- **sticky**
 - **translate-params**
 - **unknown-route**
 - **unsaved-changes**

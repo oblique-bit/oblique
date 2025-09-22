@@ -11,20 +11,14 @@
 
 	.ob-master-layout-navigation .ob-main-nav .ob-sub-menu & {
 		.ob-master-layout-navigation-go-to-children-button:not(
-				.ob-master-layout-navigation-go-to-children-button-without-url
-			) {
+			.ob-master-layout-navigation-go-to-children-button-without-url
+		) {
 			align-self: flex-end;
-			margin-left: -0.25 * variables.$ob-spacing-xs;
 
 			&.ob-button {
 				height: 39px;
-				width: 39px;
-				padding-left: calc(0.3896em + variables.$ob-spacing-xs * 0.5);
-				padding-top: calc(0.3896em + variables.$ob-spacing-xs * 0.5);
-
-				&:hover {
-					padding-left: calc(0.3896em - 2px); // empiric value
-				}
+				width: unset;
+				padding-left: 13px; // empiric value to keep room for the red border on hover
 			}
 		}
 
@@ -34,15 +28,9 @@
 
 			&.ob-button {
 				padding-left: variables.$ob-spacing-default;
-				padding-right: 13px; // empiric value
 
 				.ob-layout-collapsed & {
-					padding-right: 10px; // empiric value
-				}
-
-				svg {
-					height: 14px;
-					width: 14px;
+					padding-right: variables.$ob-spacing-default;
 				}
 
 				&:hover {

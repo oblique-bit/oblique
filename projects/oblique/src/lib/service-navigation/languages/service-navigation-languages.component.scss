@@ -4,6 +4,11 @@
 .ob-service-navigation-languages {
 	.ob-language-dropdown {
 		&.mat-mdc-form-field {
+			.mat-icon {
+				font-size: 1.5em; // empiric value
+				margin-top: 6px; // empiric value to vertically center the icon with the text
+			}
+
 			.mat-mdc-text-field-wrapper {
 				padding-left: variables.$ob-spacing-sm;
 			}

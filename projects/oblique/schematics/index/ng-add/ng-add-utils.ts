@@ -1,18 +1,26 @@
-import {Tree} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {addModuleImportToModule, hasNgModuleImport} from '@angular/cdk/schematics';
 import {
 	NodeDependency,
 	NodeDependencyType,
 	addPackageJsonDependency,
+	getPackageJsonDependency,
 	removePackageJsonDependency
 } from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
-import {error, getJson, packageJsonConfigPath, readFile} from '../utils';
+import {error, getJson, infoMigration, packageJsonConfigPath, readFile} from '../utils';
 import {ScriptTarget, createSourceFile} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {ObIVersion} from './ng-add.model';
 
-export const appModulePath = 'src/app/app.module.ts';
-export const routingModulePath = 'src/app/app-routing.module.ts';
+export const angularAppFilesNames = {
+	appTemplate: 'app.html',
+	appModule: 'app-module.ts',
+	appRoutingModule: 'app-routing-module.ts',
+	appComponent: 'app.ts',
+	appComponentSpec: 'app.spec.ts'
+};
+export const appModulePath = `src/app/${angularAppFilesNames.appModule}`;
+export const routingModulePath = `src/app/${angularAppFilesNames.appRoutingModule}`;
 export const pathToTemplates = './node_modules/@oblique/oblique/schematics/index/ng-add/templates';
 export const obliqueCssPath = 'node_modules/@oblique/oblique/styles/css/oblique-core.css';
 
@@ -36,14 +44,13 @@ const versions: Record<string, string | versionFunc> = {
 	ajv: '^8.0.0',
 	'ajv-formats': '^3.0.0',
 	'angular-eslint': '^19.0.0',
-	'angular-oauth2-oidc': '^19.0.0',
+	'angular-oauth2-oidc': '^20.0.0',
 	eslint: '^9.0.0',
 	'eslint-config-prettier': '^9.0.0',
 	'eslint-plugin-prettier': '^5.0.0',
 	husky: '^9.0.0',
 	jest: '^29.0.0',
 	'jest-sonar-reporter': '^2.0.0',
-	'jwt-decode': '^4.0.0',
 	prettier: '^3.0.0'
 };
 
@@ -65,12 +72,29 @@ You must install peer dependencies yourself."`
 	}
 }
 
+export function checkForMultiProject(): Rule {
+	return (tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Check if project is a multi-project angular application ');
+		const multiProject = !tree.exists(`./src/app/${angularAppFilesNames.appModule}`);
+		if (multiProject) {
+			error(
+				'Multi-project application detected. Oblique schematics are not compatible with multi-project applications. Either convert the application to non multi-project or perform the changes manually. Check the documentation for guidance.'
+			);
+		}
+	};
+}
+
 export function addDevDependency(tree: Tree, name: string): void {
 	addPackageJsonDependency(tree, createDep(tree, NodeDependencyType.Dev, name));
 }
 
 export function addDependency(tree: Tree, name: string): void {
 	addPackageJsonDependency(tree, createDep(tree, NodeDependencyType.Default, name));
+}
+
+export function hasDependency(tree: Tree, dependency: {name: string; type: NodeDependencyType}): boolean {
+	const dep = getPackageJsonDependency(tree, dependency.name);
+	return dep?.type === dependency.type;
 }
 
 export function importModuleInRoot(tree: Tree, moduleName: string, src: string): void {

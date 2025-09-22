@@ -1,3 +1,113 @@
+# [14.0.0](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0) (2025-09-22)
+
+## Bug Fixes
+
+- **icon:** limit Oblique icon applied via CSS classes to elements with `.ob-icon` class ([263c8df2](https://github.com/oblique-bit/oblique/commit/263c8df2179db2e7abd1380e69209b4f8955e8ff))
+- **oblique:** add missing component styles ([570e0cfa](https://github.com/oblique-bit/oblique/commit/570e0cfac512649543254ae773d9117d367e8ebf))
+- **popover:** ensure that focus is always visible ([95d43356](https://github.com/oblique-bit/oblique/commit/95d43356093d4fabbb67f9a76ca92caa6cc28b0e))
+- **schematics:** do not display undefined file name and line number on error message ([76ac9737](https://github.com/oblique-bit/oblique/commit/76ac9737a3ec1cbce21e0f8bc52f6a067fa16133))
+- **schematics:** fix typos in prompts for ng-add ([74289180](https://github.com/oblique-bit/oblique/commit/7428918074574ca950c197a05d50808e91882f14))
+- **service-navigation:** fix wrap issue with applications popover ([742fc861](https://github.com/oblique-bit/oblique/commit/742fc8612e3549c32a7c7f7b9bcbfe52a7bae3b4))
+- **styles:** prevent grid styling from applying on icons ([cd086937](https://github.com/oblique-bit/oblique/commit/cd086937f3268b154078bc550bc52338f025b541))
+
+## Features
+
+- **accessibility-statement:** add possibility to pass an url as contact information ([f30aecd3](https://github.com/oblique-bit/oblique/commit/f30aecd3aef8e608da8fe10ce78fce96d7349f17))
+- **accessibility-statement:** add link to eCH-0059 Accessibility Standard ([06cb60d2](https://github.com/oblique-bit/oblique/commit/06cb60d22df71cdc34ca0dd28509a48209f29c1a))
+- **accessibility-statement:** remove the General Information section ([1f1613e1](https://github.com/oblique-bit/oblique/commit/1f1613e1289b4ce902ab8d0ce5e131b22580abc2))
+- **accessibility-statement:** make the `createdOn` field mandatory ([0b2d1c5b](https://github.com/oblique-bit/oblique/commit/0b2d1c5ba07670805a28d8b2c468d39c1516f2c6))
+- **accessibility-statement:** make the `conformity` property mandatory ([273b90b4](https://github.com/oblique-bit/oblique/commit/273b90b4ebfb3f8c144821af735d11649acb2816))
+- **authentication:** remove `getAllResourceAccessRoles` and `getIdentityClaims` functions ([150fc01f](https://github.com/oblique-bit/oblique/commit/150fc01ff4c622eb10f59b7d3c430cef87cb28bc))
+- **autocomplete:** increase icon size ([3fd860fe](https://github.com/oblique-bit/oblique/commit/3fd860fe77b528ff55d9b8d5a7c169c130bd81e5))
+- **button:** use `aria-labelledby` to label icon buttons with tooltip ([ecf0eac0](https://github.com/oblique-bit/oblique/commit/ecf0eac04f2f87a2848547b31cd1c8b386bca00a))
+- **column-layout:** allow columns to be initially closed ([c46ee3b7](https://github.com/oblique-bit/oblique/commit/c46ee3b78bba6c96350f350ec235d3c5cd3bb8c4))
+- **icon:** remove `ObTIconConfig` ([9eba071d](https://github.com/oblique-bit/oblique/commit/9eba071d86bff47427af6173658ed3247465691c))
+- **icon:** remove `ObIconModule.forRoot` method ([0e5e9afa](https://github.com/oblique-bit/oblique/commit/0e5e9afa3f7865f9e9e56ab638bd478929903705))
+- **icon:** update icon library ([31fb447e](https://github.com/oblique-bit/oblique/commit/31fb447eec48acbfb6199410af47bde3a6a99a34))
+- **language:** use type instead of an enum for date format ([975db92b](https://github.com/oblique-bit/oblique/commit/975db92bf04b2c7260d8b1076ae2c10e92bb09d6))
+- **master-layout:** increase icon size and realign icons ([bd1d9ef3](https://github.com/oblique-bit/oblique/commit/bd1d9ef34f273f549a3869c39e2a539c4083d605))
+- **master-layout:** deprecate `maxFavoriteApplications` in `ObMasterLayoutHeaderService` ([5349e849](https://github.com/oblique-bit/oblique/commit/5349e849ce26b7489f9d0ee1cc0ed58387db7eea))
+- **master-layout:** remove `scrollTarget` property ([ad292718](https://github.com/oblique-bit/oblique/commit/ad292718bafdc73972a51cdbc029f0e1d7a8cb0d))
+- **master-layout:** remove `ObMasterLayoutConfig.focusableFragments` ([0a8f5a33](https://github.com/oblique-bit/oblique/commit/0a8f5a3308e3bd8008d1e47f705dcf408981db9c))
+- **master-layout:** improve master layout menu buttons accessibility ([4d525fec](https://github.com/oblique-bit/oblique/commit/4d525fecc89552849248e9b0dc39eeb2605b1b0a))
+- **master-layout:** improve master layout footer accessibility ([4a069697](https://github.com/oblique-bit/oblique/commit/4a069697cc372d4f2d91f67320520f0068efdc98))
+- **master-layout:** improve master layout header accessibility ([eff4c38c](https://github.com/oblique-bit/oblique/commit/eff4c38c5c21e62b350b46da576863be1dd8d863))
+- **master-layout:** activate `showAccessibilityTitle` per default ([9a60fc5d](https://github.com/oblique-bit/oblique/commit/9a60fc5d05f405e6ca7d41ad2a449179bc393d4c))
+- **material:** increase icon size in buttons ([2f21f0f4](https://github.com/oblique-bit/oblique/commit/2f21f0f4c37c137416528410ec324116b634f83e))
+- **multi-translate-loader:** add option to avoid flattening files ([e672b36e](https://github.com/oblique-bit/oblique/commit/e672b36ef8aea88d391a716b7dce4dfae6b04b6c))
+- **http-interceptor:** remove deprecated `ObHttpApiInterceptorModule` ([e08eaed4](https://github.com/oblique-bit/oblique/commit/e08eaed4553833ecbc1080fbde8ae28785cb4499))
+- **oblique:** remove unused `jwt-decode` dependency ([4e24dd3b](https://github.com/oblique-bit/oblique/commit/4e24dd3b536f235a6a2fcc3dd4f4ca7400ac2b1b))
+- **oblique:** add new feature check ([ae7fd11c](https://github.com/oblique-bit/oblique/commit/ae7fd11c58a928fef5a15bc977e965e9d3c161a8))
+- **paginator:** remove `ObPaginatorModule` ([66c2fb1b](https://github.com/oblique-bit/oblique/commit/66c2fb1bccc61238daab5612e5cbb8597028c2ec))
+- **router:** add language in url if `hasLanguageInUrl` is activated ([a97bc19e](https://github.com/oblique-bit/oblique/commit/a97bc19e151aff7f8fd1682cab343ac9edee3d7e))
+- **router:** add `obLocalizePipe` ([c4520170](https://github.com/oblique-bit/oblique/commit/c45201708d4d9af098f1730c932c68b44c4d440b))
+- **schema-validation:** remove deprecated input `name` ([7c78c7e2](https://github.com/oblique-bit/oblique/commit/7c78c7e2beb2507c5572cb3195c738a6c32f6c2a))
+- **schematics:** check required dependencies in ng-add schematics ([a155f670](https://github.com/oblique-bit/oblique/commit/a155f670ca52d5798276a10ef837dd148caf94b8))
+- **schematics:** remove automatic addition of material dependencies ([2ebd7133](https://github.com/oblique-bit/oblique/commit/2ebd713364e5000551c89925083e035780317b8c))
+- **schematics:** remove failing default test about presence of title ([8b9338ed](https://github.com/oblique-bit/oblique/commit/8b9338ed60f715a09826ca2c0120ac1023f865c7))
+- **schematics:** remove `component` from home component name generated by `ng-add` ([37a5e2b9](https://github.com/oblique-bit/oblique/commit/37a5e2b9964402a58f2417e7559dd2e5e9bf81c8))
+- **schematics:** remove protractor schematics ([4c32d935](https://github.com/oblique-bit/oblique/commit/4c32d93520361a1d35eea42e803707011a73aac7))
+- **schematics:** don't add `.browserslistrc` to the project ([f7f9f88b](https://github.com/oblique-bit/oblique/commit/f7f9f88b8550708a84328cca7ff092bb33f0e1d0))
+- **schematics:** ng add ask if language should be added in the URL ([b5da492c](https://github.com/oblique-bit/oblique/commit/b5da492c06de30fc729748c481ab2ebe4ce430dd))
+- **schematics:** add `upgradeToV14` schematic ([ad57b0f9](https://github.com/oblique-bit/oblique/commit/ad57b0f97169c80934f2ad8ff2c3f4e5bad681c1))
+- **schematics:** remove sonar step ([761e97a6](https://github.com/oblique-bit/oblique/commit/761e97a6cbc95dd14d6b30425d5bd7a36d97708c))
+- **schematics:** add questions for accessibility statement ([d77a90db](https://github.com/oblique-bit/oblique/commit/d77a90db8d943a3a4a20111af660f2debfd16778))
+- **schematics:** add rule to migrate `scrollTarget.scrollTo({top: 0})` to `scrollTop()` ([a4ae1f67](https://github.com/oblique-bit/oblique/commit/a4ae1f67a1270f62e61f58f32be13f8c267f6b53))
+- **schematics:** add rule to remove `ObIconModule.forRoot()` ([5b6ed54e](https://github.com/oblique-bit/oblique/commit/5b6ed54e863057a2bd0782d70733970b16c205d7))
+- **scrolling:** remove `scrollTarget` property from `ObTopControlComponent` ([60c26bd5](https://github.com/oblique-bit/oblique/commit/60c26bd5f62035720b3cce4bccbffb436ce3e4ec))
+- **scrolling:** remove deprecated `ObScrollingEvents` ([b4874e02](https://github.com/oblique-bit/oblique/commit/b4874e0217d7e207d2bea44f97bd8798df855948))
+- **service-navigation:** add extra text for contacts ([711047f6](https://github.com/oblique-bit/oblique/commit/711047f6b41fd465ff8fecb6416282af1e9711ba))
+- **service-navigation:** change order of info popover ([686054a8](https://github.com/oblique-bit/oblique/commit/686054a81c4da1e24d507d383486e9a54be12fa8))
+- **service-navigation:** increase icon size and realign them ([46399f23](https://github.com/oblique-bit/oblique/commit/46399f232104305c0ed08fa426cd9c73db91b631))
+- **service-navigation:** rename property `tel` into `phone` on `ObIServiceNavigationContact` ([f3790c7f](https://github.com/oblique-bit/oblique/commit/f3790c7f3ae19a247cda55678bc09a7ce93c54a7))
+- **service-navigation:** remove avatar images ([ce068685](https://github.com/oblique-bit/oblique/commit/ce068685adcbd4b78ceaadcfba085ca9309a93b8))
+- **sticky:** remove deprecated sticky feature ([953312f1](https://github.com/oblique-bit/oblique/commit/953312f1e8f7f552c27262e50541c1ad93e7b239))
+- **styles:** deprecate the mixin `ob-focus-visible-tab-focus-box-shadow()` ([b1488c4e](https://github.com/oblique-bit/oblique/commit/b1488c4efb0dfd2abcf1094f709c4d858d2f1938))
+- **styles:** reduce size of headings ([a5e8be82](https://github.com/oblique-bit/oblique/commit/a5e8be82d3b0ec451f62ee08a0024c52834c24d3))
+- **styles:** add `ob-prose` class for bigger headings ([ddc652a3](https://github.com/oblique-bit/oblique/commit/ddc652a36cbdf2f030cddac2c4368314dfcf4992))
+- **utilities:** add `provideObliqueTestingConfiguration` ([80d7c299](https://github.com/oblique-bit/oblique/commit/80d7c299c6aec13b215d3d7b6ea01b558f46147e))
+- **utilities:** add an optional `context` to the `contact` of the accessibility statement ([d8b1f7c8](https://github.com/oblique-bit/oblique/commit/d8b1f7c800a0e5dc04d6e7783800fc694577e7e7))
+- **utilities:** change `contact` signature of `ObIAccessibilityStatementConfiguration` ([ac25ce5b](https://github.com/oblique-bit/oblique/commit/ac25ce5b64cc8ac4c5352de5d898653552ff1471))
+- **utilities:** add new possibility to provide contacts to the accessibility statement ([6b9a13ec](https://github.com/oblique-bit/oblique/commit/6b9a13ec25f7e62b883b79ee27fb6bd718b578c0))
+- **utilities:** remove deprecated `TRANSLATION_FILES` injection token ([50b16b6f](https://github.com/oblique-bit/oblique/commit/50b16b6fe9009dd4bc917f0cc154ebb840645782))
+- **utilities:** remove deprecated `ObMultiTranslateLoader` class ([4c36b496](https://github.com/oblique-bit/oblique/commit/4c36b49689ca39b4c68a9cb3d100ea7112000e1b))
+- **utilities:** remove deprecated `getTranslateLoader` function ([98534934](https://github.com/oblique-bit/oblique/commit/98534934d91c625144db48422326c3c66aa7809f))
+- **utilities:** remove deprecated `multiTranslateLoader` function ([209581a7](https://github.com/oblique-bit/oblique/commit/209581a7b23038030e1d43609eb56cfa7ff22a7e))
+- **utilities:** add `provideObliqueTranslations` function ([66f74c4a](https://github.com/oblique-bit/oblique/commit/66f74c4af734557d8de02708a627473c4241a51e))
+- **utilities:** merge custom material config with the Oblique one ([d3490e1d](https://github.com/oblique-bit/oblique/commit/d3490e1d302185922a3eb14b2ec35c40c201627a))
+- **utilities:** remove deprecated `OB_MATERIAL_CONFIG` token ([337bf7ac](https://github.com/oblique-bit/oblique/commit/337bf7acef5d8fc614b05502e4d360defebd4523))
+- **utilities:** add `hasLanguageInUrl` property to `ObIObliqueConfiguration` ([68dd2d6a](https://github.com/oblique-bit/oblique/commit/68dd2d6a74ba7931b8f6e82848224f040ee5a45d))
+
+## BREAKING CHANGES
+
+- **accessibility-statement:** The `createdOn` property of the accessibility-statement configuration is now mandatory (Solved with Schematics)
+- **accessibility-statement:** The `conformity` property of the accessibility-statement configuration is now mandatory (Solved with Schematics)
+- **authentication:** `getIdentityClaims` function have been removed without replacement for security reasons. Use anAPI endpoint instead
+- **authentication:** `getAllResourceAccessRoles` function have been removed without replacement for security reasons.Use an API endpoint instead
+- **column-layout:** The type of the column layout `left` and `right` inputs has been changed from `boolean` to `ObTColumnState` (Solved with Schematics)
+- **http-interceptor:** `ObHttpApiInterceptorModule` have been removed without replacement, it was already doing nothing (Solved with Schematics)
+- **icon:** `ObTIconConfig` have been removed, use `provideObliqueConfiguration` instead
+- **icon:** `ObIconModule.forRoot` have been removed, use `provideObliqueConfiguration` instead
+- **icon:** Many icons have been renamed. (Solved with Schematics)
+- **language:** Use the given formats of type `ObDateFormat` instead of the enum `ObEDateFormats`
+- **master-layout:** `scrollTarget` has been removed without replacement.
+- **master-layout:** `ObMasterLayoutConfig.focusableFragments` have been removed without replacement. Now all fragments are focusable (Solved with Schematics)
+- **master-layout:** For accessibility reasons, each page should have its own title. This feature is now activated per default for the accessibility page.
+- **paginator:** `ObPaginatorModule` has been removed in favor of `MatPaginatorModule` (Solved with Schematics)
+- **schema-validation:** `name` property of `ObSchemaRequiredDirective` has been removed without replacement
+- **schematics:** `.browserslistrc` is not added anymore. Use `@oblique/toolchain` to correctly configure Oblique
+- **scrolling:** `scrollTarget` has been removed without replacement.
+- **scrolling:** `ObScrollingEvents` has been removed without replacement
+- **service-navigation:** `ObIServiceNavigationContact.tel` has been renamed to `ObIServiceNavigationContact.phone` (Solved with Schematics)
+- **styles:** heading size have been reduced, use `ob-prose` class to enlarge them again
+- **utilities:** the signature of `provideObliqueConfiguration` has been changed (Solved with Schematics)
+- **utilities:** the `TRANSLATION_FILES` injection token has been removed, use `provideObliqueConfiguration` instead
+- **utilities:** the `ObMultiTranslateLoader` class has been removed, use `provideObliqueConfiguration` instead
+- **utilities:** the `getTranslateLoader` function has been removed, use `provideObliqueConfiguration` instead
+- **utilities:** the `multiTranslateLoader` function has been removed, use `provideObliqueConfiguration` instead
+- **utilities:** custom Material configuration are now merged with Oblique's configuration of Material instead of overwriting it
+- **utilities:** `OB_MATERIAL_CONFIG` has been removed, use `provideObliqueConfiguration` instead
+
 # [13.3.3](https://github.com/oblique-bit/oblique/compare/13.3.2...13.3.3) (2025-08-25)
 
 ## Bug Fixes

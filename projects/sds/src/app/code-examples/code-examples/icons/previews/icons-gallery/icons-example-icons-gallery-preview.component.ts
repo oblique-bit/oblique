@@ -1,5 +1,14 @@
 import {Component, inject} from '@angular/core';
-import {ObButtonModule, ObEIcon, ObEToggleType, ObNotificationModule, ObNotificationService, ObPopoverModule} from '@oblique/oblique';
+import {
+	ObAlertModule,
+	ObButtonModule,
+	ObEIcon,
+	ObEToggleType,
+	ObInputClearModule,
+	ObNotificationModule,
+	ObNotificationService,
+	ObPopoverModule
+} from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {CommonModule} from '@angular/common';
@@ -10,7 +19,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {type Observable, map, startWith} from 'rxjs';
+import {type Observable, combineLatestWith, map, startWith} from 'rxjs';
+import {iconMetadata} from './icons';
+import {ObECategory} from './categories.model';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDivider} from '@angular/material/divider';
 
 @Component({
 	selector: 'app-icons-example-icons-gallery-preview',
@@ -23,21 +37,33 @@ import {type Observable, map, startWith} from 'rxjs';
 		ObButtonModule,
 		MatCardModule,
 		MatExpansionModule,
+		MatSelectModule,
 		ObPopoverModule,
 		TranslateModule,
 		MatTooltipModule,
+		MatChipsModule,
 		ObNotificationModule,
 		ReactiveFormsModule,
 		MatFormFieldModule,
-		MatInputModule
+		MatInputModule,
+		ObInputClearModule,
+		ObAlertModule,
+		MatDivider
 	]
 })
 export class IconsExampleIconsGalleryPreviewComponent {
 	iconsFilter = new FormControl('');
+	byCategoryFilter = new FormControl('ALL');
 	filteredIcons$: Observable<ObEIcon[]>;
+	isInfoCardVisible = false;
+	selectedIconName: string;
+	selectedIconMetaData: object;
+	selectedCategory: string;
 
 	protected readonly toggleType = ObEToggleType.CLICK;
-	private readonly icons = Object.values(ObEIcon);
+	protected readonly icons = Object.values(ObEIcon);
+	protected readonly obECategory: typeof ObECategory = ObECategory;
+	protected readonly iconMetadata = iconMetadata;
 	private readonly notificationService = inject(ObNotificationService);
 	private readonly translateService = inject(TranslateService);
 
@@ -63,14 +89,39 @@ export class IconsExampleIconsGalleryPreviewComponent {
 		);
 	}
 
+	public isButtonActive(iconName: string): string {
+		return iconName === this.selectedIconName && this.isInfoCardVisible ? 'secondary' : 'tertiary';
+	}
+
+	public showIconMetaData(iconName: string): void {
+		this.toggleSelectedIcon(iconName);
+		this.selectedIconMetaData = this.getMetaDataOfIcon(this.selectedIconName);
+	}
+
+	public getMetaDataOfIcon(iconName: string): object {
+		return iconMetadata.find(icon => icon.name === iconName);
+	}
+
+	private toggleSelectedIcon(iconName: string): void {
+		this.isInfoCardVisible = iconName === this.selectedIconName ? !this.isInfoCardVisible : true;
+		this.selectedIconName = iconName;
+	}
+
 	private setUpIconsFilter(): Observable<ObEIcon[]> {
 		return this.iconsFilter.valueChanges.pipe(
-			map(txt => this.filterIcons(txt)),
-			startWith(this.icons)
+			startWith(null),
+			combineLatestWith(this.byCategoryFilter.valueChanges.pipe(startWith('ALL'))),
+			map(([filter, category]) =>
+				this.icons.filter(iconName => this.matchFilter(filter, iconName) && this.matchCategory(category, iconName))
+			)
 		);
 	}
 
-	private filterIcons(text: string): ObEIcon[] {
-		return this.icons.filter(iconName => iconName.toLowerCase().includes(text.toLowerCase()));
+	private matchFilter(filter: string, iconName: string): boolean {
+		return filter === null || iconName.toLowerCase().includes(filter.toLowerCase());
+	}
+
+	private matchCategory(category: string, iconName: string): boolean {
+		return category === 'ALL' || iconMetadata.some(item => item.name === iconName && item.category === category);
 	}
 }

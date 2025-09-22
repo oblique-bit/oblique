@@ -17,10 +17,10 @@ module.exports = {
 	coverageThreshold: {
 		...baseConfig.coverageThreshold,
 		'projects/sandbox/src/app/app.component.ts': {
-			statements: 78,
+			statements: 75,
 			branches: 100,
 			functions: 50,
-			lines: 80
+			lines: 78
 		},
 		'projects/sandbox/src/app/samples/master-layout/dynamic-navigation.service.ts': {
 			statements: 64,

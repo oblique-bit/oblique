@@ -22,9 +22,11 @@
 					[attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
 					[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
 				>
-					<span class="ob-icon-wrapper"
-						><mat-icon [svgIcon]="'chevron-' + (isParentCollapsed || item.collapsed ? 'right' : 'down')" *ngIf="item.items"
-					/></span>
+					@if (isParentCollapsed || item.collapsed) {
+						<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_right" *ngIf="item.items" /></span>
+					} @else {
+						<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_down" *ngIf="item.items" /></span>
+					}
 					<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
 				</a>
 				<div [id]="'#' + itemKey(item)" class="collapse" *ngIf="item.items" [hidden]="isParentCollapsed || item.collapsed">
@@ -59,9 +61,11 @@
 					[attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
 					[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
 				>
-					<span class="ob-icon-wrapper"
-						><mat-icon [svgIcon]="'chevron-' + (isParentCollapsed || item.collapsed ? 'right' : 'down')" *ngIf="item.items"
-					/></span>
+					@if (isParentCollapsed || item.collapsed) {
+						<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_right" *ngIf="item.items" /></span>
+					} @else {
+						<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_down" *ngIf="item.items" /></span>
+					}
 					<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
 				</a>
 				<div [id]="'#' + itemKey(item)" class="collapse" *ngIf="item.items" [hidden]="isParentCollapsed || item.collapsed">

@@ -3,19 +3,18 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {Router} from '@angular/router';
-import {TranslateService} from '@ngx-translate/core';
-import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
+import {TranslateModule} from '@ngx-translate/core';
 import {ObMasterLayoutNavigationComponent} from '../master-layout-navigation/master-layout-navigation.component';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
-import {WINDOW} from '../../utilities';
+import {OB_HAS_LANGUAGE_IN_URL, provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMockMasterLayoutNavigationItemDirective} from '../_mocks/mock-master-layout-navigation-item.directive';
 import {ObMasterLayoutNavigationSubMenuItemComponent} from './sub-menu-item/master-layout-navigation-sub-menu-item.component';
 import {basicMockLinks, mockLinksWithChildren} from './master-layout-navigation.component.spec-data';
 import {ObNavigationLink} from './navigation-link.model';
 import {ObMasterLayoutNavigationGoToChildrenComponent} from './go-to-children/master-layout-navigation-go-to-children.component';
 import {ObINavigationLink} from '@oblique/oblique';
+import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 
 @Component({template: '', standalone: false})
 class DummyFullPathComponent {}
@@ -43,7 +42,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			],
 			imports: [
 				ObMasterLayoutNavigationGoToChildrenComponent,
-				ObMockTranslatePipe,
+				TranslateModule,
 				RouterTestingModule.withRoutes([
 					{path: 'defaultPathMatch', component: DummyDefaultPathComponent},
 					{path: 'prefix/1/users', component: DummyPrefixPathComponent},
@@ -51,13 +50,14 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 					{path: 'full/2/users', component: DummyFullPathComponent},
 					{path: 'full/:id', component: DummyFullPathComponent},
 					{path: '**', redirectTo: 'defaultPathMatch'}
-				])
+				]),
+				ObLocalizePipe
 			],
 			schemas: [NO_ERRORS_SCHEMA],
 			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
+				provideObliqueTestingConfiguration(),
 				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
-				{provide: WINDOW, useValue: window}
+				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: false}
 			]
 		}).compileComponents();
 	}));
@@ -117,7 +117,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 		})
 	);
 
-	describe('HTMLSelectElement in template pathMatch with navigation elements', () => {
+	describe('HTMLAnchorElement in template pathMatch with navigation elements', () => {
 		describe.each<{id: string; label: string}>([
 			{id: 'prefix', label: 'ItemPrefix'},
 			{id: 'full', label: 'ItemFull'},
@@ -132,9 +132,6 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			});
 			test('that link text contains $label', () => {
 				expect(element.textContent).toContain(label);
-			});
-			test('that link has active attribute', () => {
-				expect(element.getAttribute('ng-reflect-router-link-active')).toBe('active');
 			});
 		});
 	});

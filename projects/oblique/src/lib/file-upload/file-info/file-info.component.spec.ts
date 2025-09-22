@@ -4,11 +4,8 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslateService} from '@ngx-translate/core';
 import {Subject, of, throwError} from 'rxjs';
-import {WINDOW} from '../../utilities';
-import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObEUploadEventType, ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
 import {ObFileUploadService} from '../file-upload.service';
 import {ObFileInfoComponent} from './file-info.component';
@@ -28,13 +25,9 @@ describe('ObFileInfoComponent', () => {
 			delete: () => of()
 		};
 		await TestBed.configureTestingModule({
-			imports: [MatTableModule, ObFileInfoComponent, ObMockTranslatePipe, NoopAnimationsModule],
+			imports: [MatTableModule, ObFileInfoComponent, NoopAnimationsModule],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
-			providers: [
-				{provide: ObFileUploadService, useValue: mockFileUpload},
-				{provide: WINDOW, useValue: window},
-				{provide: TranslateService, useClass: ObMockTranslateService}
-			]
+			providers: [{provide: ObFileUploadService, useValue: mockFileUpload}, provideObliqueTestingConfiguration()]
 		}).compileComponents();
 		uploadService = TestBed.inject(ObFileUploadService);
 	});

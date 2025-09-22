@@ -1,5 +1,4 @@
-import {Directive, HostListener, Inject} from '@angular/core';
-import {DOCUMENT} from '@angular/common';
+import {DOCUMENT, Directive, HostListener, Inject} from '@angular/core';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector

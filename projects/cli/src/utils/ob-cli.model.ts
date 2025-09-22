@@ -14,7 +14,8 @@ export type ObCommandConfig =
 	| ObNgUpdateCommandConfig
 	| ObNpmOutdatedCommandConfig
 	| ObNpmDedupeCommandConfig
-	| ObNpmPruneCommandConfig;
+	| ObNpmPruneCommandConfig
+	| ObNpmFormatCommandConfig;
 
 export interface ObBaseCommandConfig {
 	execSyncOptions?: ExecSyncOptions;
@@ -39,7 +40,7 @@ export interface ObNpmInstallCommandConfig extends ObBaseCommandConfig {
 	dependencies: (keyof typeof currentVersions)[];
 }
 
-export interface ObNgUpdateCommandConfig extends ObBaseCommandConfig {
+export interface ObNgUpdateCommandConfig extends ObBaseCommandConfig, ObOptionsCommandConfig {
 	name: 'ngUpdate';
 	dependencies: (keyof typeof currentVersions)[];
 }
@@ -58,4 +59,8 @@ export interface ObNpmDedupeCommandConfig extends ObBaseCommandConfig {
 
 export interface ObNpmPruneCommandConfig extends ObBaseCommandConfig {
 	name: 'npmPrune';
+}
+
+export interface ObNpmFormatCommandConfig extends ObBaseCommandConfig {
+	name: 'npmFormat';
 }

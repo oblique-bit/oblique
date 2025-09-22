@@ -5,3 +5,5 @@ export interface ObIDimension {
 	windowHeight: number;
 	headerHeight: number;
 }
+
+export type ObTColumnState = 'OPENED' | 'CLOSED' | 'NONE';

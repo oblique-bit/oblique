@@ -1,3 +1,26 @@
+# [14.0.0](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0) (2025-09-22)
+
+## Bug Fixes
+
+- **icon:** ensure notification is shown within viewport ([4d24fc9d](https://github.com/oblique-bit/oblique/commit/4d24fc9d3edfc749f93ae89383f1cebf26611144))
+- **icon:** update icon names ([5cedc47c](https://github.com/oblique-bit/oblique/commit/5cedc47c02269156ee96021f71c0c58c3435fb9c))
+- **styles:** remove `ob` prefix to classes that demonstrate typography mixins ([642ed040](https://github.com/oblique-bit/oblique/commit/642ed0402aee89e8020a4d40d6509c8a4fb6ba3c))
+
+## Features
+
+- **cms:** add redirections for duplicated directus page for version 14 ([4a25a978](https://github.com/oblique-bit/oblique/commit/4a25a978d8b59ad2ce6ce8ce686b2a77008e931d))
+- **cms:** cover redirections for version 14 ([43bdd496](https://github.com/oblique-bit/oblique/commit/43bdd4964e6db89bb1914173ef9e0eff5563a171))
+- **code-examples:** add icon metadata array ([8ade6a92](https://github.com/oblique-bit/oblique/commit/8ade6a929b88ba01b7acd0d1271805ec90d1141b))
+- **icon:** add dropdown filter to icon gallery ([dec893bd](https://github.com/oblique-bit/oblique/commit/dec893bd0ba30c822e8a8d67438a2e751ddf37e6))
+- **icon:** add icon gallery info card ([d9e6ad8a](https://github.com/oblique-bit/oblique/commit/d9e6ad8acec826c12f33200b7db98faaca8d07e6))
+- **icon:** redesign icon gallery cards ([d6d34afb](https://github.com/oblique-bit/oblique/commit/d6d34afbdd87560caaaef3608c5b8f64c4acfb33))
+- **icon:** redesign icon gallery search ([b0475e6b](https://github.com/oblique-bit/oblique/commit/b0475e6b3c268de26aa47c19c642bcf0e3c55874))
+- **side-navigation:** wrap navigation items into lists and a navigation landmark ([8936a873](https://github.com/oblique-bit/oblique/commit/8936a873cbd572339e1ef4c69dbd0f214634b531))
+- **side-navigation:** use aria-current for better accessibility ([0151be0c](https://github.com/oblique-bit/oblique/commit/0151be0cfaca24591dbbe9d390708f1ab0d92f44))
+- **sticky:** remove deprecated `ObStickyComponent` documentation ([14956028](https://github.com/oblique-bit/oblique/commit/14956028e5f64e41d7c50491875fb638ef0e2fd2))
+- **styles:** document `prose` headings ([aff0b759](https://github.com/oblique-bit/oblique/commit/aff0b7599fe5be76f16d3305ded41c9227d9f760))
+- **styles:** add styling for `mat-divider` inside a `mat-select` ([c87e14aa](https://github.com/oblique-bit/oblique/commit/c87e14aa2335eb15ae12ec8e262d46b9f85d997a))
+
 # [13.3.3](https://github.com/oblique-bit/oblique/compare/13.3.2...13.3.3) (2025-08-25)
 
 ## Bug Fixes

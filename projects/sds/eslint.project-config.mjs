@@ -21,6 +21,12 @@ export default [
 		}
 	},
 	{
+		files: ['projects/sds/**/*.html'],
+		rules: {
+			'@angular-eslint/template/cyclomatic-complexity': 'off'
+		}
+	},
+	{
 		files: ['projects/sds/src/app/code-examples/code-examples.model.ts'],
 		rules: {
 			'@typescript-eslint/no-require-imports': 'off',

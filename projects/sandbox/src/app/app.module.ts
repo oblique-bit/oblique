@@ -25,7 +25,6 @@ import {
 	ObExternalLinkModule,
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,
-	ObHttpApiInterceptorModule,
 	ObInputClearModule,
 	ObMasterLayoutConfig,
 	ObMasterLayoutModule,
@@ -75,7 +74,6 @@ registerLocaleData(localeDE);
 		ObDocumentMetaModule,
 		ObErrorMessagesModule,
 		ObExternalLinkModule,
-		ObHttpApiInterceptorModule,
 		ObInputClearModule,
 		ObMasterLayoutModule,
 		ObNotificationModule,
@@ -109,8 +107,14 @@ registerLocaleData(localeDE);
 					'i18n.routes.accessibility.exception.third'
 				],
 				applicationOperator: 'i18n.routes.accessibility.operator',
-				contact: {emails: ['oblique@bit.admin.ch'], phones: ['123']}
-			}
+				contact: [
+					{email: 'oblique@bit.admin.ch', context: 'Oblique Team'},
+					{phone: '123'},
+					{url: 'http://example-contact-page.bit.admin.ch', context: 'Some random, inexistent, external link to demonstrate the feature'},
+					{url: '/samples/button', context: 'Some random internal link to demonstrate the feature'}
+				]
+			},
+			hasLanguageInUrl: true
 		})
 	]
 })
@@ -128,8 +132,6 @@ export class AppModule {
 		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
 		config.locale.locales = ['en-us', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
-		config.showAccessibilityTitle = true;
-		config.focusableFragments = [...config.focusableFragments, 'link-to-blick-ch', 'acceptFiles', 'alpha', 'beta', 'gamma'];
 		this.configureServiceSNavigation(config);
 	}
 

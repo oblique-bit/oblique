@@ -29,7 +29,6 @@ import {SchemaValidationSampleComponent} from './schema-validation/schema-valida
 import {SelectableSampleComponent} from './selectable/selectable-sample.component';
 import {SelectableFormSampleComponent} from './selectable-form/selectable-form-sample.component';
 import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
-import {StickySampleComponent} from './sticky/sticky-sample.component';
 import {UnknownRouteSampleComponent} from './unknown-route/unknown-route-sample.component';
 import {UnsavedChangesSampleComponent} from './unsaved-changes/unsaved-changes-sample.component';
 import {AutocompleteSampleComponent} from './autocomplete/autocomplete.component';
@@ -171,7 +170,6 @@ const samplesRoutes: Routes = [
 	{path: 'selectable', component: SelectableSampleComponent},
 	{path: 'selectable-form', component: SelectableFormSampleComponent},
 	{path: 'service-navigation', component: ServiceNavigationSampleComponent},
-	{path: 'sticky', component: StickySampleComponent},
 	{path: 'spinner', component: SpinnerSampleComponent},
 	{path: 'spinner/1', component: SpinnerSampleComponent},
 	{path: 'spinner/2', component: SpinnerSampleComponent},

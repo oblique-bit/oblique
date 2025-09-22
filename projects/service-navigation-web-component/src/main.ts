@@ -2,13 +2,10 @@ import {createApplication} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideHttpClient} from '@angular/common/http';
 import {createCustomElement} from '@angular/elements';
-import {WINDOW, multiTranslateLoader, windowProvider} from '../../oblique/src/lib/utilities';
+import {WINDOW, windowProvider} from '../../oblique/src/lib/utilities';
 import {ObServiceNavigationWebComponentComponent} from './app/service-navigation-web-component.component';
-import {inject, provideAppInitializer} from '@angular/core';
-import {ObIconService, ObTIconConfig} from '@oblique/oblique';
-import {provideTranslateService} from '@ngx-translate/core';
-import {DOCUMENT} from '@angular/common';
-import {defaultIconConfig} from '@oblique/icon/icon.model';
+import {DOCUMENT, inject, provideAppInitializer} from '@angular/core';
+import {ObIconService, provideObliqueTranslations} from '@oblique/oblique';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 createApplication({
@@ -16,9 +13,8 @@ createApplication({
 		provideHttpClient(),
 		provideAnimations(),
 		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
-		provideTranslateService(multiTranslateLoader()),
+		provideObliqueTranslations(),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
-		{provide: ObTIconConfig, useValue: defaultIconConfig},
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
 	]
 })

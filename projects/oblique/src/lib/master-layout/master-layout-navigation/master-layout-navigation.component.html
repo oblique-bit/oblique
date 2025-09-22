@@ -11,7 +11,7 @@
 	id="ob-navigation-scrollable-control-left"
 	[matTooltip]="'i18n.oblique.master-layout.master-layout-navigation.scroll-left' | translate"
 >
-	<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron-left" /></span>
+	<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_left" /></span>
 </button>
 <ng-content *ngIf="!initializedLinks.length" />
 <nav *ngIf="initializedLinks.length" aria-labelledby="ob-navigationlabel">
@@ -61,14 +61,14 @@
 						[matTooltip]="'i18n.oblique.header.navigation.remove' | translate"
 						(click)="removeMenuItem(link, $event)"
 					>
-						<mat-icon svgIcon="cancel" />
+						<mat-icon svgIcon="xmark" />
 					</button>
 				</ng-container>
 				<ng-template #internalLink>
 					<a
 						class="ob-master-layout-navigation-link ob-main-nav-link"
 						[id]="link.id"
-						[routerLink]="link.url"
+						[routerLink]="link.url | obLocalize"
 						[routerLinkActive]="activeClass"
 						[isExternalLink]="link.isExternal"
 						[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
@@ -90,7 +90,7 @@
 						[matTooltip]="'i18n.oblique.header.navigation.remove' | translate"
 						(click)="removeMenuItem(link, $event)"
 					>
-						<mat-icon svgIcon="cancel" />
+						<mat-icon svgIcon="xmark" />
 					</button>
 				</ng-template>
 			</ng-container>
@@ -109,8 +109,8 @@
 				>
 					<span class="ob-icon-wrapper" *ngIf="link.icon"><mat-icon [svgIcon]="link.icon" /></span>
 					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
-					<span class="ob-icon-wrapper ob-toggle-collapsed"><mat-icon svgIcon="chevron-down" class="ob-nav-toggle" /></span>
-					<span class="ob-icon-wrapper ob-toggle-expanded"><mat-icon svgIcon="chevron-up" class="ob-nav-toggle" /></span>
+					<span class="ob-icon-wrapper ob-toggle-collapsed"><mat-icon svgIcon="chevron_down" class="ob-nav-toggle" /></span>
+					<span class="ob-icon-wrapper ob-toggle-expanded"><mat-icon svgIcon="chevron_up" class="ob-nav-toggle" /></span>
 				</button>
 				@if (!currentGrandparentLink?.label) {
 					<ob-master-layout-navigation-go-to-children
@@ -143,7 +143,7 @@
 							<ng-template #homeIcon>
 								<mat-icon class="ob-sub-menu-back-button-home-icon" matSuffix svgIcon="home" />
 							</ng-template>
-							<mat-icon matPrefix svgIcon="arrow-left" />
+							<mat-icon matPrefix svgIcon="arrow_left" />
 						</button>
 						<button
 							type="button"
@@ -153,7 +153,7 @@
 							[id]="'ob-sub-menu-close-button-' + link.id"
 							(click)="closeSubMenu(obMasterLayoutNavigationItem, link)"
 						>
-							{{ "i18n.common.close" | translate }} <mat-icon matSuffix svgIcon="cancel" />
+							{{ "i18n.common.close" | translate }} <mat-icon matSuffix svgIcon="xmark" />
 						</button>
 					</div>
 					<ob-master-layout-navigation-sub-menu-item
@@ -165,7 +165,7 @@
 						[link]="currentParentLink"
 						[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
 						[routerLinkActiveOptions]="routerLinkActiveOptions"
-						[routerLinkBase]="currentParentRouterLinkBase$ | async"
+						[routerLinkBase]="currentParentRouterLinkBase$ | async | obLocalize"
 						[showChildren]="false"
 						class="ob-sub-menu-parent-link"
 						[class.is-exact-match]="isCurrentParentLinkExactMatch"
@@ -180,7 +180,7 @@
 								[link]="link"
 								[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
 								[routerLinkActiveOptions]="routerLinkActiveOptions"
-								[routerLinkBase]="link.url"
+								[routerLinkBase]="link.url | obLocalize"
 								(changeCurrentParent)="changeCurrentParentLink($event)"
 							/>
 						</li>
@@ -200,5 +200,5 @@
 	id="ob-navigation-scrollable-control-right"
 	[matTooltip]="'i18n.oblique.master-layout.master-layout-navigation.scroll-right' | translate"
 >
-	<mat-icon svgIcon="chevron-right" />
+	<mat-icon svgIcon="chevron_right" />
 </button>

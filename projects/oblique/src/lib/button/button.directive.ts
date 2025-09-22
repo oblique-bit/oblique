@@ -1,9 +1,11 @@
 import {Directive, ElementRef, HostBinding, Input, OnChanges, OnInit} from '@angular/core';
+import {ObIconButtonDirective} from './icon-button.directive';
 
 @Directive({
 	selector: '[obButton]',
 	exportAs: 'obButton',
 	host: {class: 'ob-button mat-primary'},
+	hostDirectives: [ObIconButtonDirective],
 	standalone: true
 })
 export class ObButtonDirective implements OnInit, OnChanges {

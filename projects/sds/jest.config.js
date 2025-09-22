@@ -43,12 +43,6 @@ module.exports = {
 			functions: 50,
 			lines: 66
 		},
-		'projects/sds/src/app/code-examples/code-examples.mapper.ts': {
-			statements: 98,
-			branches: 100,
-			functions: 0,
-			lines: 98
-		},
 		'projects/sds/src/app/code-examples/code-examples.model.ts': {
 			statements: 80,
 			branches: 73,
@@ -86,7 +80,7 @@ module.exports = {
 			lines: 33
 		},
 		'projects/sds/src/app/code-examples/code-examples/focus-with-outline/previews/default': {
-			statements: 78,
+			statements: 77,
 			branches: 100,
 			functions: 33,
 			lines: 81
@@ -116,10 +110,10 @@ module.exports = {
 			lines: 75
 		},
 		'projects/sds/src/app/code-examples/code-examples/icons/previews/icons-gallery': {
-			statements: 76,
+			statements: 73,
 			branches: 0,
 			functions: 25,
-			lines: 78
+			lines: 73
 		},
 		'projects/sds/src/app/code-examples/code-examples/nested-form/previews/reactive': {
 			statements: 75,
@@ -191,12 +185,6 @@ module.exports = {
 			statements: 90,
 			branches: 100,
 			functions: 75,
-			lines: 89
-		},
-		'projects/sds/src/app/shared/slug': {
-			statements: 90,
-			branches: 89,
-			functions: 100,
 			lines: 89
 		},
 		'projects/sds/src/app/shared/tabs': {

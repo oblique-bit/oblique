@@ -1,6 +1,6 @@
 # CLI
 
-The Oblique CLI is a command line interface tool that you use to create and maintain Oblique applications directly form a command shell.
+The Oblique CLI is a command line interface tool that you use to create and maintain Oblique applications directly from a command shell.
 
 This package is the `@oblique/cli` library distributed on NPM.
 
@@ -13,6 +13,8 @@ The official Oblique documentation is located here: <https://oblique.bit.admin.c
 You will find information about how to use Oblique, its CLI, code samples, FAQ and many more.
 
 ## Scripts
+
+The scripts in this project are only for internal usage.
 
 - **link**: builds the CLI and call `npm link` on the artifact to allow the CLI to be called globally
 - **lint**: lints the project with EsLint and Prettier; Automatically run on the CI pipeline

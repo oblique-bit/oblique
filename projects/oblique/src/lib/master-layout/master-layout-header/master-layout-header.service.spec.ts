@@ -97,6 +97,57 @@ describe('ObMasterLayoutHeaderService', () => {
 				expect(event.config).toEqual({displayInfo: true});
 			});
 		});
+
+		describe('when given as value an object that does not contain the key maxFavoriteApplications', () => {
+			let event: ObIMasterLayoutEvent;
+			beforeEach(done => {
+				service.configEvents$.pipe(first()).subscribe(evt => {
+					event = evt;
+					done();
+				});
+				service.serviceNavigationConfiguration = {displayInfo: true};
+			});
+
+			it(`should emit a SERVICE_NAVIGATION_CONFIGURATION event`, () => {
+				expect(event.name).toBe(ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION);
+			});
+
+			it('should emit a value', () => {
+				expect(event.config).toEqual({displayInfo: true});
+			});
+		});
+
+		describe('when given only as value an object that contains only the key maxFavoriteApplications', () => {
+			it('should not emit an event', () => {
+				const spy = jest.fn();
+				const subscription = service.configEvents$.subscribe(spy);
+				service.serviceNavigationConfiguration = {maxFavoriteApplications: 666};
+				jest.runAllTimers?.();
+
+				expect(spy).not.toHaveBeenCalled();
+
+				subscription.unsubscribe();
+			});
+		});
+
+		describe('when given as value an object that contains key maxFavoriteApplications and also other values', () => {
+			let event: ObIMasterLayoutEvent;
+			beforeEach(done => {
+				service.configEvents$.pipe(first()).subscribe(evt => {
+					event = evt;
+					done();
+				});
+				service.serviceNavigationConfiguration = {maxFavoriteApplications: 123, infoDescription: 'blabla'};
+			});
+
+			it(`should emit a SERVICE_NAVIGATION_CONFIGURATION event`, () => {
+				expect(event.name).toBe(ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION);
+			});
+
+			it('should emit a value', () => {
+				expect(event.config).toEqual({infoDescription: 'blabla'});
+			});
+		});
 	});
 
 	function testSetter(property: string, enumValue: string): void {

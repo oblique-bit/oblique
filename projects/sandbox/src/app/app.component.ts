@@ -9,6 +9,7 @@ import {
 	ObMasterLayoutHeaderService,
 	WINDOW
 } from '@oblique/oblique';
+import {appVersion} from '@oblique/version';
 import {type Observable, Subject} from 'rxjs';
 import {filter, map, startWith, takeUntil} from 'rxjs/operators';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
@@ -21,6 +22,7 @@ import {appNavigation} from './app-navigation';
 	standalone: false
 })
 export class AppComponent implements OnDestroy {
+	version = appVersion;
 	readonly search = new FormControl();
 	offCanvasOpen = false;
 	readonly year = new Date().getFullYear();
@@ -31,14 +33,7 @@ export class AppComponent implements OnDestroy {
 		{url: '../samples', fragment: 'fragment', label: 'Skip to samples with fragment'},
 		{url: '../samples', label: 'Skip to samples without fragment'},
 		{url: 'current', fragment: 'link-to-blick-ch', label: 'Skip to "Blick" link in the footer'},
-		{url: '../samples/file-upload', fragment: 'fantasy', label: 'Example to demo console message for a non existing element.'},
-		{url: '../samples/file-upload', fragment: 'acceptFiles', label: 'Example to demo console message for a non focusable element.'},
-		{
-			url: 'current',
-			fragment: 'link-to-google-ch',
-			label:
-				'Example to demo console message for an element existing and focusable (footer link to google), but not whitelisted in ObMasterLayoutConfig.focusableFragments.'
-		}
+		{url: '../samples/file-upload', fragment: 'fantasy', label: 'Example to demo console message for a non existing element.'}
 	];
 	autocompleteItems$: Observable<ObIAutocompleteInputOption[]>;
 	readonly nav = inject(DynamicNavigationService);
@@ -80,7 +75,8 @@ export class AppComponent implements OnDestroy {
 			)
 			.subscribe(item => {
 				this.search.reset('');
-				void this.router.navigate([item.url]);
+				const language = this.translate.currentLang;
+				void this.router.navigateByUrl(`/${language}/${item.url}`);
 			});
 	}
 

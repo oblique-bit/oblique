@@ -1,13 +1,11 @@
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import {HttpEventType} from '@angular/common/http';
-import {TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 import {first} from 'rxjs/operators';
-import {WINDOW} from '../../utilities';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMockFileUploadService} from '../_mocks/mock-file-upload.sevice';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObFileUploadService} from '../file-upload.service';
 import {ObEUploadEventType, ObIFile, ObIUploadEvent} from '../file-upload.model';
 import {ObProgressComponent} from './progress.component';
@@ -27,11 +25,7 @@ describe('ObProgressComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ObProgressComponent, ObMockTranslatePipe],
-			providers: [
-				{provide: ObFileUploadService, useClass: ObMockFileUploadService},
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			],
+			providers: [provideObliqueTestingConfiguration(), {provide: ObFileUploadService, useClass: ObMockFileUploadService}],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 		}).compileComponents();
 		uploadService = TestBed.inject(ObFileUploadService);

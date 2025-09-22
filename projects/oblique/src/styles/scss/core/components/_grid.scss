@@ -2,7 +2,7 @@
 @use "../mixins/grid";
 @use "../mixins/layout";
 
-.ob-grid {
+.ob-grid:not(.ob-icon) {
 	display: grid;
 	gap: variables.$ob-spacing-default;
 

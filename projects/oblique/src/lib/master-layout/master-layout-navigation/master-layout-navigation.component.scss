@@ -506,7 +506,10 @@
 
 	.ob-external-link span.mat-icon,
 	.ob-icon-wrapper {
-		font-size: variables.$ob-font-size-bigger;
-		line-height: 1.1; // empiric value to have an height of 24px.
+		font-size: 1.5em; // empiric value
+
+		.mat-icon {
+			display: block; // default inline-block interferes with flex and creates extra space
+		}
 	}
 }

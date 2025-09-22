@@ -9,7 +9,6 @@ import {ObMasterLayoutModule} from './master-layout/master-layout.module';
 import {ObNavTreeModule} from './nav-tree/nav-tree.module';
 import {ObNestedFormModule} from './nested-form/nested-form.module';
 import {ObNotificationModule} from './notification/notification.module';
-import {ObHttpApiInterceptorModule} from './http-api-interceptor/http-api-interceptor.module';
 import {ObPopoverModule} from './popover/popover.module';
 import {ObSchemaValidationModule} from './schema-validation/schema-validation.module';
 import {ObScrollingModule} from './scrolling/scrolling.module';
@@ -20,7 +19,6 @@ import {ObTranslateParamsModule} from './translate-params/translate-params.modul
 import {ObUnsavedChangesModule} from './unsaved-changes/unsaved-changes.module';
 import {ObNumberFormatModule} from './number-format/number-format.module';
 import {ObOffCanvasModule} from './off-canvas/off-canvas.module';
-import {ObStickyModule} from './sticky/sticky.module';
 import {ObUnknownRouteModule} from './unknown-route/unknown-route.module';
 import {ObLanguageModule} from './language/language.module';
 import {ObExternalLinkModule} from './external-link/external-link.module';
@@ -43,7 +41,6 @@ const OBLIQUE_MODULES = [
 	ObNestedFormModule,
 	ObNotificationModule,
 	ObNumberFormatModule,
-	ObHttpApiInterceptorModule,
 	ObOffCanvasModule,
 	ObPopoverModule,
 	ObSchemaValidationModule,
@@ -51,7 +48,6 @@ const OBLIQUE_MODULES = [
 	ObServiceNavigationModule,
 	ObSelectableModule,
 	ObSpinnerModule,
-	ObStickyModule,
 	ObInputClearModule,
 	ObTranslateParamsModule,
 	ObUnknownRouteModule,

@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {TranslateService} from '@ngx-translate/core';
-import {ObButtonDirective, ObMockTranslateService, WINDOW} from '@oblique/oblique';
+import {ObButtonDirective, provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {ColumnLayoutCodeExamplesComponent} from './column-layout-code-examples.component';
@@ -14,10 +13,7 @@ describe(ColumnLayoutCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ColumnLayoutCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [
-				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			]
+			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ColumnLayoutCodeExamplesComponent);

@@ -44,8 +44,7 @@
 				[matTooltip]="'i18n.oblique.file-upload.selected.remove' | translate"
 				(click)="delete(selection.selected)"
 			>
-				<mat-icon svgIcon="trash" />
-				<span class="ob-screen-reader-only">{{ "i18n.oblique.file-upload.selected.remove" | translate }}</span>
+				<mat-icon svgIcon="delete" />
 			</button>
 		</th>
 		<td mat-cell *matCellDef="let file">
@@ -56,8 +55,7 @@
 				[matTooltip]="'i18n.oblique.file-upload.remove' | translate"
 				(click)="delete([file])"
 			>
-				<mat-icon svgIcon="trash" />
-				<span class="ob-screen-reader-only">{{ "i18n.oblique.file-upload.remove" | translate }}</span>
+				<mat-icon svgIcon="delete" />
 			</button>
 		</td>
 	</ng-container>

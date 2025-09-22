@@ -3,6 +3,7 @@
   "$id": "oblique-ng-add-schema",
   "title": "Oblique ng-add schema",
   "type": "object",
+  "required": ["applicationOperator", "contact"],
   "project": {
     "$default": {
       "$source": "projectName"
@@ -13,98 +14,104 @@
       "type": "string",
       "default": "Title",
       "description": "Application's title",
-      "x-prompt": "[1 / 16] What is the title of the application? This is a mandatory information",
+      "x-prompt": "[1 / 17] What is the title of the application? This is a mandatory information",
+      "minLength": 1
+    },
+    "applicationOperator": {
+      "type": "string",
+      "x-prompt": "[2 / 17] Enter the name and address of the federal office or other entity that operates the application.\n           It accepts either text or a translation key, both of which support HTML.\n           This information will be wrapped in an <address> tag on the Accessibility Statement page: ",
+      "minLength": 1
+    },
+    "contact": {
+      "type": "string",
+      "description": "One or more email address(es) and phone number(s) of the operator (comma-separated)",
+      "x-prompt": "[3 / 17] Enter email address(es) and phone number(s) of the operator, in minimum one (separated by comma, e.g: info@example.org, support@example.org, +41 79 123 45 67, 031 555 44 33): ",
+      "pattern": "^\\s*([+]?[(]?\\d+[)]?[\\d\\s()./-]*|[^@\\s]+@[^@\\s]+\\.[^@\\s]+)(\\s*,\\s*([+]?[(]?\\d+[)]?[\\d\\s()./-]*|[^@\\s]+@[^@\\s]+\\.[^@\\s]+))*\\s*$",
       "minLength": 1
     },
     "locales": {
       "type": "string",
       "default": "de-CH fr-CH it-CH",
       "description": "Supported locales",
-      "x-prompt": "[2 / 16] Choose the supported locales. Use a whitespace separated list."
+      "x-prompt": "[4 / 17] Choose the supported locales. Use a whitespace separated list."
+    },
+    "hasLanguageInUrl": {
+      "type": "boolean",
+      "default": false,
+      "description": "Use a language path parameter",
+      "x-prompt": "[5 / 17] Use a language parameter in the URL?"
     },
     "ajv": {
       "type": "boolean",
       "default": true,
       "description": "Add Ajv dependency",
-      "x-prompt": "[3 / 16] Add schema validation? This enables form validation based on a schema delivered by the server."
+      "x-prompt": "[6 / 17] Add schema validation? This enables form validation based on a schema delivered by the server."
     },
     "unknownRoute": {
       "type": "boolean",
       "default": true,
       "description": "Unknown route management",
-      "x-prompt": "[4 / 16] Add the ObUnknownRouteModule? It will display custom 404 pages instead of redirecting to the home page?"
+      "x-prompt": "[7 / 17] Add the ObUnknownRouteModule? It will display custom 404 pages instead of redirecting to the home page?"
     },
     "httpInterceptors": {
       "type": "boolean",
       "default": true,
       "description": "Http interceptor",
-      "x-prompt": "[5 / 16] Add the ObHttpApiInterceptor? It will show a spinner and handles errors on API calls"
+      "x-prompt": "[8 / 17] Add the ObHttpApiInterceptor? It will show a spinner and handle errors on API calls"
     },
     "banner": {
       "type": "boolean",
       "default": false,
       "description": "Banner to show current environment",
-      "x-prompt": "[6 / 16] Add the ObBanner? It will show the current environment in the header.\n           This feature is only available if at least 1 environment will be defined at the next step."
+      "x-prompt": "[9 / 17] Add the ObBanner? It will show the current environment in the header.\n           This feature is only available if at least one environment will be defined at the next step."
     },
     "environments": {
       "type": "string",
       "default": "local dev ref test abn prod",
       "description": "Environment files",
-      "x-prompt": "[7 / 16] Choose the application's environments. Use a whitespace separated list or leave empty to skip the feature.\n           'local' will create an 'environment.ts' file, all other environments will create a corresponding 'environment.<env>.ts' file.\n           Those files are necessary for the banner feature to work."
+      "x-prompt": "[10 / 17] Choose the application's environments. Use a whitespace separated list or leave empty to skip the feature.\n           'local' will create an 'environment.ts' file, all other environments will create a corresponding 'environment.<env>.ts' file.\n           Those files are necessary for the banner feature to work."
     },
     "externalLink": {
       "type": "boolean",
       "default": true,
       "description": "External link",
-      "x-prompt": "[8 / 16] Add the ObExternalLinkModule? It will transparently and automatically enhance external links."
+      "x-prompt": "[11 / 17] Add the ObExternalLinkModule? It will transparently and automatically enhance external links."
     },
     "prefix": {
       "type": "string",
       "default": "app",
       "description": "Prefix configuration",
-      "x-prompt": "[9 / 16] Choose a prefix for components and directives's selectors? Leave empty for no prefix)"
+      "x-prompt": "[12 / 17] Choose a prefix for components and directives' selectors. Leave empty for no prefix."
     },
     "jest": {
       "type": "boolean",
       "default": true,
       "description": "Jest for unit tests",
-      "x-prompt": "[10 / 16] Replace Karma / Jasmine with Jest as the application's testing framework?"
-    },
-    "protractor": {
-      "type": "boolean",
-      "default": false,
-      "description": "Protractor for end to end tests",
-      "x-prompt": "[11 / 16] Would you like to keep Protractor for e2e tests? Warning: If not, whole e2e folder will be removed!"
+      "x-prompt": "[13 / 17] Replace Karma / Jasmine with Jest as the application's testing framework?"
     },
     "npmrc": {
       "type": "boolean",
       "default": true,
       "description": "Create .npmrc",
-      "x-prompt": "[12 / 16] Is the project located within confederation / federal network? It will add an .npmrc file."
+      "x-prompt": "[14 / 17] Is the project located within a confederation / federal network? It will add an .npmrc file."
     },
     "proxy": {
       "type": "string",
       "default": "",
       "description": "Proxy configuration",
-      "x-prompt": "[13 / 16] Choose a port for the proxy configuration for server connection? Leave empty for no proxy configuration."
-    },
-    "sonar": {
-      "type": "boolean",
-      "default": true,
-      "description": "Sonar configuration",
-      "x-prompt": "[14 / 16] Add Sonar configuration?"
+      "x-prompt": "[15 / 17] Choose a port for the proxy configuration for server connection. Leave empty for no proxy configuration."
     },
     "eslint": {
       "type": "boolean",
       "default": true,
       "description": "ESLint & Prettier",
-      "x-prompt": "[15 / 16] Add eslint & prettier and configure them like the Oblique team?"
+      "x-prompt": "[16 / 17] Add ESLint & Prettier and configure them like the Oblique team?"
     },
     "husky": {
       "type": "boolean",
       "default": true,
       "description": "Husky configuration",
-      "x-prompt": "[16 / 16] Add git hooks to automatically format changed files?"
+      "x-prompt": "[17 / 17] Add git hooks to automatically format changed files?"
     }
   }
 }
