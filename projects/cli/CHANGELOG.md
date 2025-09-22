@@ -1,25 +1,14 @@
-# [14.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/14.0.0-rc.1...14.0.0-rc.2) (2025-09-15)
+# [14.0.0](https://github.com/oblique-bit/oblique/compare/13.3.1...14.0.0) (2025-09-22)
 
 ## Bug Fixes
 
 - **new:** deactivate `zoneless` and `config-ai` per default ([4ad351fc](https://github.com/oblique-bit/oblique/commit/4ad351fcb8da435415ed1f1cb182fa8dd858dc92))
 - **new:** make sure that all commands are executed in the correct directory ([b7d2dee9](https://github.com/oblique-bit/oblique/commit/b7d2dee9b2f68276c33f4812e532baba56c88e6e))
-- **new:** make sure `@oblique/toolchain` is added in the correct working directory ([226196fd](https://github.com/oblique-bit/oblique/commit/226196fdeda92de7075f25ee7d626fc68b9b995b))
+- **new:** run lint format to avoid formatting issues ([50c975ea](https://github.com/oblique-bit/oblique/commit/50c975ea5921a8c17e66daf8b4319e812d93460b))
+- **new:** remove sonar option from tests ([0fa094ed](https://github.com/oblique-bit/oblique/commit/0fa094edbcf5e9b5e8457ed4547d2c43c7352a82))
 - **update:** use `--force` to update Angular and its related dependencies ([1e674fec](https://github.com/oblique-bit/oblique/commit/1e674fec2be06a2e911aaae4d6b8c0401681cd00))
 - **utils:** make sure to use a CLI version above 20.2 ([3c9ff81b](https://github.com/oblique-bit/oblique/commit/3c9ff81bf18f4409724354a00fc3630a2001a5ee))
 - **utils:** make sure the `@oblique/oblique` version matches the CLI one during installing ([fcf64712](https://github.com/oblique-bit/oblique/commit/fcf64712a1633c8bb014bc965e0015dd8e1c937e))
-
-## Features
-
-- **utils:** deactivate `fund` and `audit` info on NPM commands ([4ac7401d](https://github.com/oblique-bit/oblique/commit/4ac7401dcd1ff26ee2c90c32fd26c4324b306ae1))
-
-# [14.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0-rc.1) (2025-09-05)
-
-## Bug Fixes
-
-- **new:** run lint format to avoid formatting issues ([50c975ea](https://github.com/oblique-bit/oblique/commit/50c975ea5921a8c17e66daf8b4319e812d93460b))
-- **new:** remove sonar option from tests ([0fa094ed](https://github.com/oblique-bit/oblique/commit/0fa094edbcf5e9b5e8457ed4547d2c43c7352a82))
-- **utils:** make sure the `@oblique/toolchain` version matches the CLI one during installing ([3c8195d1](https://github.com/oblique-bit/oblique/commit/3c8195d1d4e687da4ff1670f4479cd811f6c4833))
 - **utils:** update recommended and minimum supported Node versions ([55f78ec3](https://github.com/oblique-bit/oblique/commit/55f78ec3637224f75066d2e9fdc26bd678ee8989))
 
 ## Features
@@ -27,17 +16,7 @@
 - **cli:** remove protractor option ([77ac01af](https://github.com/oblique-bit/oblique/commit/77ac01afd5bc4a53362557125edc63646c0b8be6))
 - **new:** add `@oblique/toolchain` dependency ([c9940142](https://github.com/oblique-bit/oblique/commit/c99401427c32a9b738faa1bc8be5024fc9c6e597))
 - **new:** remove sonar step ([01e0b53d](https://github.com/oblique-bit/oblique/commit/01e0b53dba73becab8dcd6448a9ccf12871c3f5d))
-
-# [14.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/13.3.2...14.0.0-alpha.1) (2025-07-21)
-
-## Bug Fixes
-
-- **new:** remove sonar option from tests ([feefa1fd](https://github.com/oblique-bit/oblique/commit/feefa1fdde55ae032612be9e3e6912cae058992b))
-
-## Features
-
-- **new:** add `@oblique/toolchain` dependency ([bb9e73c5](https://github.com/oblique-bit/oblique/commit/bb9e73c5b2d521bfd38a6a1971c30bd7bdddace6))
-- **new:** remove sonar step ([0dc0a5fb](https://github.com/oblique-bit/oblique/commit/0dc0a5fb3d33d33c2284758c42633808310afeb3))
+- **utils:** deactivate `fund` and `audit` info on NPM commands ([4ac7401d](https://github.com/oblique-bit/oblique/commit/4ac7401dcd1ff26ee2c90c32fd26c4324b306ae1))
 
 # [13.3.1](https://github.com/oblique-bit/oblique/compare/13.3.0...13.3.1) (2025-07-10)
 

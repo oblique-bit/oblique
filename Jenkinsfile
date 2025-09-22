@@ -17,7 +17,8 @@ nodejsPipelineTemplate {
 			'publish': [
 				'@oblique/oblique',
 				'@oblique/cli',
-				'@oblique/service-navigation-web-component'
+				'@oblique/service-navigation-web-component',
+				'@oblique/toolchain'
 			],
 		]
 	]
