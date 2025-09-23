@@ -6,182 +6,182 @@
           "h1": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.dynamic.fontSize.2xl}"
+              "$value": "{ob.s.static.fontSize.2xl}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.dynamic.font_weight.bold}"
+              "$value": "{ob.s.static.font_weight.bold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.dynamic.lineHeight.xl}"
+              "$value": "{ob.s.static.lineHeight.xl}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.dynamic.letter_spacing_px.narrow}"
+              "$value": "{ob.s.static.letter_spacing_px.narrow}"
             }
           },
           "h2": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.dynamic.fontSize.xl}"
+              "$value": "{ob.s.static.fontSize.xl}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.dynamic.font_weight.bold}"
+              "$value": "{ob.s.static.font_weight.bold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.dynamic.lineHeight.lg}"
+              "$value": "{ob.s.static.lineHeight.lg}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.dynamic.letter_spacing_px.narrow}"
+              "$value": "{ob.s.static.letter_spacing_px.narrow}"
             }
           },
           "h3": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.dynamic.fontSize.lg}"
+              "$value": "{ob.s.static.fontSize.lg}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.dynamic.font_weight.bold}"
+              "$value": "{ob.s.static.font_weight.bold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.dynamic.lineHeight.md}"
+              "$value": "{ob.s.static.lineHeight.md}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.dynamic.letter_spacing_px.normal}"
+              "$value": "{ob.s.static.letter_spacing_px.normal}"
             }
           },
           "h4": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.dynamic.fontSize.lg}"
+              "$value": "{ob.s.static.fontSize.lg}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.dynamic.font_weight.bold}"
+              "$value": "{ob.s.static.font_weight.bold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.dynamic.lineHeight.md}"
+              "$value": "{ob.s.static.lineHeight.md}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.dynamic.letter_spacing_px.normal}"
+              "$value": "{ob.s.static.letter_spacing_px.normal}"
             }
           },
           "h5": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.dynamic.fontSize.lg}"
+              "$value": "{ob.s.static.fontSize.lg}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.dynamic.font_weight.bold}"
+              "$value": "{ob.s.static.font_weight.bold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.dynamic.lineHeight.md}"
+              "$value": "{ob.s.static.lineHeight.md}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.dynamic.letter_spacing_px.normal}"
+              "$value": "{ob.s.static.letter_spacing_px.normal}"
             }
           },
           "h6": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.dynamic.fontSize.lg}"
+              "$value": "{ob.s.static.fontSize.lg}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.dynamic.font_weight.bold}"
+              "$value": "{ob.s.static.font_weight.bold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.dynamic.lineHeight.md}"
+              "$value": "{ob.s.static.lineHeight.md}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.dynamic.letter_spacing_px.normal}"
+              "$value": "{ob.s.static.letter_spacing_px.normal}"
             }
           },
           "body": {
             "normal": {
               "font_size": {
                 "$type": "fontSizes",
-                "$value": "{ob.s.dynamic.fontSize.md}"
+                "$value": "{ob.s.static.fontSize.md}"
               },
               "font_weight": {
                 "$type": "fontWeights",
-                "$value": "{ob.s.dynamic.font_weight.medium}"
+                "$value": "{ob.s.static.font_weight.medium}"
               },
               "line_height": {
                 "$type": "lineHeights",
-                "$value": "{ob.s.dynamic.lineHeight.md}"
+                "$value": "{ob.s.static.lineHeight.md}"
               },
               "letter_spacing": {
                 "$type": "letterSpacing",
-                "$value": "{ob.s.dynamic.letter_spacing_px.normal}"
+                "$value": "{ob.s.static.letter_spacing_px.normal}"
               }
             },
             "link": {
               "font_size": {
                 "$type": "fontSizes",
-                "$value": "{ob.s.dynamic.fontSize.md}"
+                "$value": "{ob.s.static.fontSize.md}"
               },
               "font_weight": {
                 "$type": "fontWeights",
-                "$value": "{ob.s.dynamic.font_weight.medium}"
+                "$value": "{ob.s.static.font_weight.medium}"
               },
               "line_height": {
                 "$type": "lineHeights",
-                "$value": "{ob.s.dynamic.lineHeight.md}"
+                "$value": "{ob.s.static.lineHeight.md}"
               },
               "letter_spacing": {
                 "$type": "letterSpacing",
-                "$value": "{ob.s.dynamic.letter_spacing_px.normal}"
+                "$value": "{ob.s.static.letter_spacing_px.normal}"
               }
             },
             "strong": {
               "font_size": {
                 "$type": "fontSizes",
-                "$value": "{ob.s.dynamic.fontSize.md}"
+                "$value": "{ob.s.static.fontSize.md}"
               },
               "font_weight": {
                 "$type": "fontWeights",
-                "$value": "{ob.s.dynamic.font_weight.bold}"
+                "$value": "{ob.s.static.font_weight.bold}"
               },
               "line_height": {
                 "$type": "lineHeights",
-                "$value": "{ob.s.dynamic.lineHeight.md}"
+                "$value": "{ob.s.static.lineHeight.md}"
               },
               "letter_spacing": {
                 "$type": "letterSpacing",
-                "$value": "{ob.s.dynamic.letter_spacing_px.normal}"
+                "$value": "{ob.s.static.letter_spacing_px.normal}"
               }
             },
             "lead": {
               "font_size": {
                 "$type": "fontSizes",
-                "$value": "{ob.s.dynamic.fontSize.lg}"
+                "$value": "{ob.s.static.fontSize.lg}"
               },
               "font_weight": {
                 "$type": "fontWeights",
-                "$value": "{ob.s.dynamic.font_weight.bold}"
+                "$value": "{ob.s.static.font_weight.bold}"
               },
               "line_height": {
                 "$type": "lineHeights",
-                "$value": "{ob.s.dynamic.lineHeight.lg}"
+                "$value": "{ob.s.static.lineHeight.lg}"
               },
               "letter_spacing": {
                 "$type": "letterSpacing",
-                "$value": "{ob.s.dynamic.letter_spacing_px.narrow}"
+                "$value": "{ob.s.static.letter_spacing_px.narrow}"
               }
             }
           }
