@@ -1,0 +1,649 @@
+{
+  "ob": {
+    "c": {
+      "pill": {
+        "composite": {
+          "closed": {
+            "enabled": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.closed.bg.enabled}",
+                  "borderColor": "{ob.c.pill.color.closed.fg.enabled}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.closed.fg.enabled}"
+                }
+              }
+            },
+            "hover": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.closed.bg.hover}",
+                  "borderColor": "{ob.c.pill.color.closed.fg.hover}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.closed.fg.hover}"
+                }
+              }
+            },
+            "focus": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.closed.bg.focus}",
+                  "borderColor": "{ob.c.pill.color.closed.fg.focus}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.closed.fg.focus}"
+                }
+              }
+            },
+            "pressed": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.closed.bg.pressed}",
+                  "borderColor": "{ob.c.pill.color.closed.fg.pressed}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.closed.fg.pressed}"
+                }
+              }
+            }
+          },
+          "resolved": {
+            "enabled": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.resolved.bg.enabled}",
+                  "borderColor": "{ob.c.pill.color.resolved.fg.enabled}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.resolved.fg.enabled}"
+                }
+              }
+            },
+            "hover": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.resolved.bg.hover}",
+                  "borderColor": "{ob.c.pill.color.resolved.fg.hover}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.resolved.fg.hover}"
+                }
+              }
+            },
+            "focus": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.resolved.bg.focus}",
+                  "borderColor": "{ob.c.pill.color.resolved.fg.focus}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.resolved.fg.focus}"
+                }
+              }
+            },
+            "pressed": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.resolved.bg.pressed}",
+                  "borderColor": "{ob.c.pill.color.resolved.fg.pressed}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.resolved.fg.pressed}"
+                }
+              }
+            }
+          },
+          "attention": {
+            "enabled": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.attention.bg.enabled}",
+                  "borderColor": "{ob.c.pill.color.attention.fg.enabled}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.attention.fg.enabled}"
+                }
+              }
+            },
+            "hover": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.attention.bg.hover}",
+                  "borderColor": "{ob.c.pill.color.attention.fg.hover}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.attention.fg.hover}"
+                }
+              }
+            },
+            "focus": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.attention.bg.focus}",
+                  "borderColor": "{ob.c.pill.color.attention.fg.focus}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.attention.fg.focus}"
+                }
+              }
+            },
+            "pressed": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.attention.bg.pressed}",
+                  "borderColor": "{ob.c.pill.color.attention.fg.pressed}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.attention.fg.pressed}"
+                }
+              }
+            }
+          },
+          "pending": {
+            "enabled": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.pending.bg.enabled}",
+                  "borderColor": "{ob.c.pill.color.pending.fg.enabled}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.pending.fg.enabled}"
+                }
+              }
+            },
+            "hover": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.pending.bg.hover}",
+                  "borderColor": "{ob.c.pill.color.pending.fg.hover}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.pending.fg.hover}"
+                }
+              }
+            },
+            "focus": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.pending.bg.focus}",
+                  "borderColor": "{ob.c.pill.color.pending.fg.focus}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.pending.fg.focus}"
+                }
+              }
+            },
+            "pressed": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.pending.bg.pressed}",
+                  "borderColor": "{ob.c.pill.color.pending.fg.pressed}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.pending.fg.pressed}"
+                }
+              }
+            }
+          },
+          "confirmed": {
+            "enabled": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.confirmed.bg.enabled}",
+                  "borderColor": "{ob.c.pill.color.confirmed.fg.enabled}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.confirmed.fg.enabled}"
+                }
+              }
+            },
+            "hover": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.confirmed.bg.hover}",
+                  "borderColor": "{ob.c.pill.color.confirmed.fg.hover}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.confirmed.fg.hover}"
+                }
+              }
+            },
+            "focus": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.confirmed.bg.focus}",
+                  "borderColor": "{ob.c.pill.color.confirmed.fg.focus}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.confirmed.fg.focus}"
+                }
+              }
+            },
+            "pressed": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.confirmed.bg.pressed}",
+                  "borderColor": "{ob.c.pill.color.confirmed.fg.pressed}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.confirmed.fg.pressed}"
+                }
+              }
+            }
+          },
+          "progress": {
+            "enabled": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.progress.bg.enabled}",
+                  "borderColor": "{ob.c.pill.color.progress.fg.enabled}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.progress.fg.enabled}"
+                }
+              }
+            },
+            "hover": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.progress.bg.hover}",
+                  "borderColor": "{ob.c.pill.color.progress.fg.hover}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.progress.fg.hover}"
+                }
+              }
+            },
+            "focus": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.progress.bg.focus}",
+                  "borderColor": "{ob.c.pill.color.progress.fg.focus}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.progress.fg.focus}"
+                }
+              }
+            },
+            "pressed": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.progress.bg.pressed}",
+                  "borderColor": "{ob.c.pill.color.progress.fg.pressed}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.progress.fg.pressed}"
+                }
+              }
+            }
+          },
+          "scheduled": {
+            "enabled": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.scheduled.bg.enabled}",
+                  "borderColor": "{ob.c.pill.color.scheduled.fg.enabled}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.scheduled.fg.enabled}"
+                }
+              }
+            },
+            "hover": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.scheduled.bg.hover}",
+                  "borderColor": "{ob.c.pill.color.scheduled.fg.hover}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.scheduled.fg.hover}"
+                }
+              }
+            },
+            "focus": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.scheduled.bg.focus}",
+                  "borderColor": "{ob.c.pill.color.scheduled.fg.focus}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.scheduled.fg.focus}"
+                }
+              }
+            },
+            "pressed": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.scheduled.bg.pressed}",
+                  "borderColor": "{ob.c.pill.color.scheduled.fg.pressed}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.scheduled.fg.pressed}"
+                }
+              }
+            }
+          },
+          "info": {
+            "enabled": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.info.bg.enabled}",
+                  "borderColor": "{ob.c.pill.color.info.fg.enabled}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.info.fg.enabled}"
+                }
+              }
+            },
+            "hover": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.info.bg.hover}",
+                  "borderColor": "{ob.c.pill.color.info.fg.hover}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.info.fg.hover}"
+                }
+              }
+            },
+            "focus": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.info.bg.focus}",
+                  "borderColor": "{ob.c.pill.color.info.fg.focus}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.info.fg.focus}"
+                }
+              }
+            },
+            "pressed": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.info.bg.pressed}",
+                  "borderColor": "{ob.c.pill.color.info.fg.pressed}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.info.fg.pressed}"
+                }
+              }
+            }
+          },
+          "waiting": {
+            "enabled": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.waiting.bg.enabled}",
+                  "borderColor": "{ob.c.pill.color.waiting.fg.enabled}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.waiting.fg.enabled}"
+                }
+              }
+            },
+            "hover": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.waiting.bg.hover}",
+                  "borderColor": "{ob.c.pill.color.waiting.fg.hover}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.waiting.fg.hover}"
+                }
+              }
+            },
+            "focus": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.waiting.bg.focus}",
+                  "borderColor": "{ob.c.pill.color.waiting.fg.focus}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.waiting.fg.focus}"
+                }
+              }
+            },
+            "pressed": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.waiting.bg.pressed}",
+                  "borderColor": "{ob.c.pill.color.waiting.fg.pressed}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.waiting.fg.pressed}"
+                }
+              }
+            }
+          },
+          "critical": {
+            "enabled": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.critical.bg.enabled}",
+                  "borderColor": "{ob.c.pill.color.critical.fg.enabled}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.critical.fg.enabled}"
+                }
+              }
+            },
+            "hover": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.critical.bg.hover}",
+                  "borderColor": "{ob.c.pill.color.critical.fg.hover}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.critical.fg.hover}"
+                }
+              }
+            },
+            "focus": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.critical.bg.focus}",
+                  "borderColor": "{ob.c.pill.color.critical.fg.focus}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.critical.fg.focus}"
+                }
+              }
+            },
+            "pressed": {
+              "pill_surface": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.critical.bg.pressed}",
+                  "borderColor": "{ob.c.pill.color.critical.fg.pressed}"
+                }
+              },
+              "fg_color": {
+                "$type": "composition",
+                "$value": {
+                  "fill": "{ob.c.pill.color.critical.fg.pressed}"
+                }
+              }
+            }
+          }
+        },
+        "fg_label": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ob.s.static.font_family.body}",
+            "fontWeight": "{ob.s.dynamic.font_weight.medium}",
+            "lineHeight": "{ob.s.dynamic.lineHeight.xs}",
+            "letterSpacing": "{ob.s.dynamic.letter_spacing_px.wide}",
+            "paragraphSpacing": "{ob.s.dynamic.paragraphSpacing.xs}",
+            "fontSize": "{ob.s.dynamic.fontSize.md}"
+          },
+          "$description": "Typography only. Simplifies maintenance with Figma and Token Studio. Basically the same references as in 02_typography.json of this component."
+        },
+        "focus_ring": {
+          "border_radius": {
+            "$type": "borderRadius",
+            "$value": "{ob.s.border_radius.md}",
+            "$description": "Requires larger radius than element itself."
+          }
+        }
+      }
+    }
+  }
+}
