@@ -1,0 +1,57 @@
+{
+  "ob": {
+    "c": {
+      "pill": {
+        "typography": {
+          "text_label": {
+            "font_size": {
+              "$type": "font_sizes",
+              "$value": "{ob.s.dynamic.fontSize.md}",
+              "$description": "Font size that scales with typography multiplier"
+            },
+            "line_height": {
+              "$type": "lineHeights",
+              "$value": "{ob.s.dynamic.lineHeight.xs}",
+              "$description": "Line height that scales with typography multiplier"
+            },
+            "letter_spacing": {
+              "$type": "letterSpacing",
+              "$value": "{ob.s.dynamic.letter_spacing_px.wide}",
+              "$description": "Letter spacing for pill text labels"
+            },
+            "font_family": {
+              "$type": "fontFamilies",
+              "$value": "{ob.s.static.font_family.body}",
+              "$description": "Font family for pill text labels - consistent across all sizes"
+            },
+            "font_weight": {
+              "$type": "fontWeights",
+              "$value": "{ob.s.dynamic.font_weight.medium}",
+              "$description": "Font weight for pill text labels - consistent across all sizes"
+            },
+            "text_decoration": {
+              "$type": "textDecoration",
+              "$value": "none",
+              "$description": "No text decoration for pill labels"
+            },
+            "text_transform": {
+              "$type": "textCase",
+              "$value": "none",
+              "$description": "No text transformation for pill labels"
+            },
+            "text_align": {
+              "$type": "textAlign",
+              "$value": "{ob.s.static.text_align.center}",
+              "$description": "[NO-FIGMA-SUPPORT] Center alignment for pill text labels - set manually in Figma components."
+            },
+            "text_vertical_trim": {
+              "$type": "string",
+              "$value": "{ob.p.vertical_trim.cap_baseline}",
+              "$description": "[NO-FIGMA-SUPPORT] Vertical trim from cap height to baseline for optimal pill text alignment. Set manually in Figma components using 'Vertical trim' property. CSS implementation: use 'text-box-trim: cap alphabetic' or equivalent."
+            }
+          }
+        }
+      }
+    }
+  }
+}
