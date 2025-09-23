@@ -1,8 +1,7 @@
 import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, ReplaySubject, combineLatest, share, switchMap} from 'rxjs';
-import {combineLatestWith, distinctUntilChanged, map, startWith, tap} from 'rxjs/operators';
-import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
+import {Observable, ReplaySubject, combineLatest, share, switchMap, throwError} from 'rxjs';
+import {catchError, combineLatestWith, distinctUntilChanged, map, startWith, tap} from 'rxjs/operators';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
 import {
@@ -14,6 +13,9 @@ import {ObServiceNavigationApplicationsService} from './applications/service-nav
 import {ObEPamsEnvironment, ObILanguage, ObISectionLink, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
 import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
 import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
+import {ObNotificationService} from '../notification/notification.service';
+import {ObHttpApiInterceptorEvents} from '../http-api-interceptor/http-api-interceptor.events';
+import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
 
 @Injectable()
 export class ObServiceNavigationService {
@@ -30,21 +32,22 @@ export class ObServiceNavigationService {
 
 	private readonly config$ = this.rootUrl$.pipe(
 		combineLatestWith(this.favoriteApplicationsCount$),
-		switchMap(([rootUrl, favoriteApplicationsCount]) =>
-			this.configService.fetchUrls(rootUrl).pipe(
-				tap(data =>
-					this.pollingService.initializeStateUpdate(
-						data.pollingInterval,
-						data.pollingNotificationsInterval,
-						rootUrl,
-						favoriteApplicationsCount
-					)
-				),
+		switchMap(([rootUrl, favoriteApplicationsCount]) => {
+			this.httpApiInterceptorEvents.deactivateNotificationOnNextAPICalls(1);
+			return this.configService.fetchUrls(rootUrl).pipe(
+				catchError(() => {
+					this.notification.error({
+						message: 'i18n.oblique.service-navigation.config.error.message',
+						title: 'i18n.oblique.service-navigation.config.error.title'
+					});
+					return throwError(() => new Error('Cannot load service navigation config'));
+				}),
+				tap(data => this.pollingService.initializeStateUpdate(1, data.pollingNotificationsInterval, rootUrl, favoriteApplicationsCount)),
 				tap(() => (this.timeoutService.rootUrl = rootUrl)),
 				tap(data => (this.timeoutService.logoutUrl = data.logout.url)),
 				tap(data => (this.redirectorService.logoutUrl = data.logout.url))
-			)
-		),
+			);
+		}),
 		// the http request should not be fired again, hence the deactivation of both resets
 		share({connector: () => new ReplaySubject(1), resetOnComplete: false, resetOnRefCountZero: false})
 	);
@@ -55,6 +58,8 @@ export class ObServiceNavigationService {
 	private readonly translateService = inject(TranslateService);
 	private readonly redirectorService = inject(ObServiceNavigationTimeoutRedirectorService);
 	private readonly timeoutService = inject(ObServiceNavigationTimeoutService);
+	private readonly notification = inject(ObNotificationService);
+	private readonly httpApiInterceptorEvents = inject(ObHttpApiInterceptorEvents);
 
 	setUpRootUrls(environment: ObEPamsEnvironment, rootUrl?: string): void {
 		// can't use !environment as ObEPamsEnvironment.PROD is an empty string

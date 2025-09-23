@@ -164,6 +164,8 @@
   "i18n.oblique.service-navigation.profile.my-business-partnerships": "Meine Geschäftspartnerschaften",
   "i18n.oblique.service-navigation.profile.redeem-code": "Einladungscode einlösen",
   "i18n.oblique.service-navigation.section.phone.aria-label": "Telefonlink: {{ phoneNumber }}",
+  "i18n.oblique.service-navigation.config.error.title": "Dienst nicht verfügbar",
+  "i18n.oblique.service-navigation.config.error.message": "Derzeit gibt es ein technisches Problem mit dem Anmeldevorgang. Bitte versuchen Sie es später erneut.",
   "i18n.oblique.accessibility-statement.link": "Barrierefreiheit",
   "i18n.oblique.accessibility-statement.accessibility-in-the-federal-administration": "Barrierefreiheit in der Bundesverwaltung",
   "i18n.oblique.accessibility-statement.information-and-services": "Digital verfügbare Informationen und Dienstleistungen vereinfachen für Menschen mit Behinderungen die Kommunikation mit öffentlichen Stellen. Das ermöglicht die gesellschaftliche und politische Teilhabe für alle.",
