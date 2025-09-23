@@ -420,7 +420,6 @@
       "04_component/atom/spinner": "enabled",
       "04_component/atom/tooltip": "enabled",
       "04_component/molecule/infobox/static": "enabled",
-      "04_component/molecule/pill": "enabled",
       "04_component/molecule/popover": "enabled",
       "04_component/molecule/tag/typography": "source",
       "04_component/molecule/tag/tag": "enabled",
