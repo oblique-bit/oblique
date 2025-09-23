@@ -1,15 +1,9 @@
 @use "../core/variables" as core-variables;
 @use "../core/mixins/shadow";
 
-.mat-mdc-checkbox.mat-mdc-checkbox-disabled,
 .mat-mdc-radio-button.mat-mdc-radio-disabled,
 .mat-mdc-radio-group[disabled] {
-	&,
-	label,
-	.mdc-form-field label,
-	input {
-		cursor: not-allowed;
-	}
+	cursor: not-allowed;
 }
 
 $disabled-color: core-variables.$ob-secondary-300;
@@ -47,10 +41,17 @@ $disabled-color: core-variables.$ob-secondary-300;
 	}
 
 	&.mat-mdc-checkbox-disabled {
-		pointer-events: unset;
+		cursor: not-allowed;
+		pointer-events: auto;
 
-		.mat-mdc-checkbox-touch-target {
-			cursor: not-allowed;
+		div.mdc-checkbox,
+		div.mat-mdc-checkbox-touch-target,
+		svg.mdc-checkbox__checkmark,
+		div.mdc-checkbox__background,
+		div.mdc-checkbox__ripple,
+		input.mdc-checkbox__native-control,
+		label {
+			pointer-events: none;
 		}
 	}
 }
