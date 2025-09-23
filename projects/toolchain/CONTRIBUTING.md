@@ -9,3 +9,4 @@ All commits related to the Toolchain package must use the **toolchain** package 
 - **utils**
 - **ng-add**
 - **schematics**
+- **linting**

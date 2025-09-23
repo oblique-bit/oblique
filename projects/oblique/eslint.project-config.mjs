@@ -37,11 +37,31 @@ export default [
 			'@typescript-eslint/consistent-type-imports': 'off',
 			'@typescript-eslint/explicit-module-boundary-types': 'off',
 			'@typescript-eslint/max-params': 'off',
+			'@typescript-eslint/naming-convention': [
+				'error',
+				{selector: 'default', format: ['camelCase']},
+				{selector: 'typeLike', format: ['PascalCase']},
+				{selector: 'enumMember', format: ['UPPER_CASE']},
+				{selector: 'objectLiteralProperty', format: null, modifiers: ['requiresQuotes']},
+				// rules that are not respected
+				{selector: 'variable', format: ['camelCase', 'UPPER_CASE']},
+				{selector: 'variable', format: ['PascalCase'], filter: '^(?:CookiesMock|ObTBreadcrumbConfig|ObliquePackage)$'},
+				{selector: 'objectLiteralProperty', format: ['UPPER_CASE'], filter: '^(?:MAT|STEPPER)|^(?:ABN|TEST|DEV|REF|LOCAL)$'},
+				{selector: 'objectLiteralProperty', format: ['UPPER_CASE'], filter: '^(?:LABEL_FORMATTER|HIGHLIGHT|VARIANT)'},
+				{selector: 'objectLiteralMethod', format: null, modifiers: ['requiresQuotes']},
+				{selector: 'typeProperty', format: ['UPPER_CASE'], filter: '^(?:MAT|STEPPER)'},
+				{selector: 'typeAlias', format: ['camelCase'], filter: '^versionFunc$'},
+				{selector: 'parameter', format: ['PascalCase'], filter: '^CookiesMock$'},
+				{selector: 'classProperty', format: ['camelCase', 'UPPER_CASE']},
+				{selector: 'import', format: null}
+			],
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-dynamic-delete': 'off',
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
 			'@typescript-eslint/no-redundant-type-constituents': 'off',
+			'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off', // needs strictNullChecks
+			'@typescript-eslint/no-unnecessary-condition': 'off', // needs strictNullChecks
 			'@typescript-eslint/no-unsafe-argument': 'off',
 			'@typescript-eslint/no-unsafe-assignment': 'off',
 			'@typescript-eslint/no-unsafe-call': 'off',
@@ -50,7 +70,9 @@ export default [
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
 			'@typescript-eslint/parameter-properties': 'off',
 			'@typescript-eslint/prefer-enum-initializers': 'off',
+			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
 			'@typescript-eslint/promise-function-async': 'off',
+			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
 			'accessor-pairs': 'off',
 			'func-names': 'off',
 			'no-duplicate-imports': 'off',
@@ -100,7 +122,8 @@ export default [
 		files: ['projects/oblique/src/lib/**/*.spec.ts'],
 		rules: {
 			// rules that are not respected
-			'@typescript-eslint/ban-ts-comment': 'off'
+			'@typescript-eslint/ban-ts-comment': 'off',
+			'@typescript-eslint/no-floating-promises': 'off'
 		}
 	},
 	{

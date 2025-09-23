@@ -14,7 +14,12 @@ export default [
 
 			// rules that are not respected
 			// this rule would need a massive refactoring as the types are not currently safe
-			'@typescript-eslint/no-unsafe-type-assertion': 'off'
+			'prefer-object-has-own': 'off', // need lib es2022
+			'@typescript-eslint/no-unsafe-type-assertion': 'off',
+			'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off', // needs strictNullChecks
+			'@typescript-eslint/no-unnecessary-condition': 'off', // needs strictNullChecks
+			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
+			'@typescript-eslint/strict-boolean-expressions': 'off' // needs strictNullChecks
 		}
 	},
 	{

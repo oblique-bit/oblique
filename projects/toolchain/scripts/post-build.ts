@@ -24,6 +24,7 @@ export class PostBuild extends StaticScript {
 			.copyProjectRootFiles('README.md', 'CHANGELOG.md', 'package.json')
 			.copyFile('collection.json', 'src/schematics', 'schematics')
 			.copyFile('schema.json', 'src/schematics/ng-add', 'schematics/ng-add')
+			.copyFile('eslint-config-oblique.mjs', 'src/linting/', 'linting')
 			.copyProjectFiles('src', ...Files.list('src/schematics/ng-add/templates'))
 			.finalize();
 	}
