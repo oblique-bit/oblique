@@ -5,13 +5,6 @@
         "composite": {
           "closed": {
             "enabled": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.closed.bg.enabled}",
-                  "borderColor": "{ob.c.pill.color.closed.fg.enabled}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -20,13 +13,6 @@
               }
             },
             "hover": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.closed.bg.hover}",
-                  "borderColor": "{ob.c.pill.color.closed.fg.hover}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -35,13 +21,6 @@
               }
             },
             "focus": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.closed.bg.focus}",
-                  "borderColor": "{ob.c.pill.color.closed.fg.focus}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -50,13 +29,6 @@
               }
             },
             "pressed": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.closed.bg.pressed}",
-                  "borderColor": "{ob.c.pill.color.closed.fg.pressed}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -67,13 +39,6 @@
           },
           "resolved": {
             "enabled": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.resolved.bg.enabled}",
-                  "borderColor": "{ob.c.pill.color.resolved.fg.enabled}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -82,13 +47,6 @@
               }
             },
             "hover": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.resolved.bg.hover}",
-                  "borderColor": "{ob.c.pill.color.resolved.fg.hover}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -97,13 +55,6 @@
               }
             },
             "focus": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.resolved.bg.focus}",
-                  "borderColor": "{ob.c.pill.color.resolved.fg.focus}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -112,13 +63,6 @@
               }
             },
             "pressed": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.resolved.bg.pressed}",
-                  "borderColor": "{ob.c.pill.color.resolved.fg.pressed}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -129,13 +73,6 @@
           },
           "attention": {
             "enabled": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.attention.bg.enabled}",
-                  "borderColor": "{ob.c.pill.color.attention.fg.enabled}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -144,13 +81,6 @@
               }
             },
             "hover": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.attention.bg.hover}",
-                  "borderColor": "{ob.c.pill.color.attention.fg.hover}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -159,13 +89,6 @@
               }
             },
             "focus": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.attention.bg.focus}",
-                  "borderColor": "{ob.c.pill.color.attention.fg.focus}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -174,13 +97,6 @@
               }
             },
             "pressed": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.attention.bg.pressed}",
-                  "borderColor": "{ob.c.pill.color.attention.fg.pressed}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -191,13 +107,6 @@
           },
           "pending": {
             "enabled": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.pending.bg.enabled}",
-                  "borderColor": "{ob.c.pill.color.pending.fg.enabled}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -206,13 +115,6 @@
               }
             },
             "hover": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.pending.bg.hover}",
-                  "borderColor": "{ob.c.pill.color.pending.fg.hover}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -221,13 +123,6 @@
               }
             },
             "focus": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.pending.bg.focus}",
-                  "borderColor": "{ob.c.pill.color.pending.fg.focus}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -236,13 +131,6 @@
               }
             },
             "pressed": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.pending.bg.pressed}",
-                  "borderColor": "{ob.c.pill.color.pending.fg.pressed}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -253,13 +141,6 @@
           },
           "confirmed": {
             "enabled": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.confirmed.bg.enabled}",
-                  "borderColor": "{ob.c.pill.color.confirmed.fg.enabled}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -268,13 +149,6 @@
               }
             },
             "hover": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.confirmed.bg.hover}",
-                  "borderColor": "{ob.c.pill.color.confirmed.fg.hover}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -283,13 +157,6 @@
               }
             },
             "focus": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.confirmed.bg.focus}",
-                  "borderColor": "{ob.c.pill.color.confirmed.fg.focus}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -298,13 +165,6 @@
               }
             },
             "pressed": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.confirmed.bg.pressed}",
-                  "borderColor": "{ob.c.pill.color.confirmed.fg.pressed}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -315,13 +175,6 @@
           },
           "progress": {
             "enabled": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.progress.bg.enabled}",
-                  "borderColor": "{ob.c.pill.color.progress.fg.enabled}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -330,13 +183,6 @@
               }
             },
             "hover": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.progress.bg.hover}",
-                  "borderColor": "{ob.c.pill.color.progress.fg.hover}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -345,13 +191,6 @@
               }
             },
             "focus": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.progress.bg.focus}",
-                  "borderColor": "{ob.c.pill.color.progress.fg.focus}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -360,13 +199,6 @@
               }
             },
             "pressed": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.progress.bg.pressed}",
-                  "borderColor": "{ob.c.pill.color.progress.fg.pressed}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -377,13 +209,6 @@
           },
           "scheduled": {
             "enabled": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.scheduled.bg.enabled}",
-                  "borderColor": "{ob.c.pill.color.scheduled.fg.enabled}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -392,13 +217,6 @@
               }
             },
             "hover": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.scheduled.bg.hover}",
-                  "borderColor": "{ob.c.pill.color.scheduled.fg.hover}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -407,13 +225,6 @@
               }
             },
             "focus": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.scheduled.bg.focus}",
-                  "borderColor": "{ob.c.pill.color.scheduled.fg.focus}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -422,13 +233,6 @@
               }
             },
             "pressed": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.scheduled.bg.pressed}",
-                  "borderColor": "{ob.c.pill.color.scheduled.fg.pressed}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -439,13 +243,6 @@
           },
           "info": {
             "enabled": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.info.bg.enabled}",
-                  "borderColor": "{ob.c.pill.color.info.fg.enabled}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -454,13 +251,6 @@
               }
             },
             "hover": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.info.bg.hover}",
-                  "borderColor": "{ob.c.pill.color.info.fg.hover}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -469,13 +259,6 @@
               }
             },
             "focus": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.info.bg.focus}",
-                  "borderColor": "{ob.c.pill.color.info.fg.focus}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -484,13 +267,6 @@
               }
             },
             "pressed": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.info.bg.pressed}",
-                  "borderColor": "{ob.c.pill.color.info.fg.pressed}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -501,13 +277,6 @@
           },
           "waiting": {
             "enabled": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.waiting.bg.enabled}",
-                  "borderColor": "{ob.c.pill.color.waiting.fg.enabled}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -516,13 +285,6 @@
               }
             },
             "hover": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.waiting.bg.hover}",
-                  "borderColor": "{ob.c.pill.color.waiting.fg.hover}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -531,13 +293,6 @@
               }
             },
             "focus": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.waiting.bg.focus}",
-                  "borderColor": "{ob.c.pill.color.waiting.fg.focus}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -546,13 +301,6 @@
               }
             },
             "pressed": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.waiting.bg.pressed}",
-                  "borderColor": "{ob.c.pill.color.waiting.fg.pressed}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -563,13 +311,6 @@
           },
           "critical": {
             "enabled": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.critical.bg.enabled}",
-                  "borderColor": "{ob.c.pill.color.critical.fg.enabled}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -578,13 +319,6 @@
               }
             },
             "hover": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.critical.bg.hover}",
-                  "borderColor": "{ob.c.pill.color.critical.fg.hover}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -593,13 +327,6 @@
               }
             },
             "focus": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.critical.bg.focus}",
-                  "borderColor": "{ob.c.pill.color.critical.fg.focus}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
@@ -608,13 +335,6 @@
               }
             },
             "pressed": {
-              "pill_surface": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.critical.bg.pressed}",
-                  "borderColor": "{ob.c.pill.color.critical.fg.pressed}"
-                }
-              },
               "fg_color": {
                 "$type": "composition",
                 "$value": {
