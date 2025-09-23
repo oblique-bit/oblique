@@ -20,14 +20,6 @@
                 }
               }
             },
-            "focus": {
-              "fg_color": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.closed.fg.focus}"
-                }
-              }
-            },
             "pressed": {
               "fg_color": {
                 "$type": "composition",
@@ -51,14 +43,6 @@
                 "$type": "composition",
                 "$value": {
                   "fill": "{ob.c.pill.color.resolved.fg.hover}"
-                }
-              }
-            },
-            "focus": {
-              "fg_color": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.resolved.fg.focus}"
                 }
               }
             },
@@ -88,14 +72,6 @@
                 }
               }
             },
-            "focus": {
-              "fg_color": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.attention.fg.focus}"
-                }
-              }
-            },
             "pressed": {
               "fg_color": {
                 "$type": "composition",
@@ -119,14 +95,6 @@
                 "$type": "composition",
                 "$value": {
                   "fill": "{ob.c.pill.color.pending.fg.hover}"
-                }
-              }
-            },
-            "focus": {
-              "fg_color": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.pending.fg.focus}"
                 }
               }
             },
@@ -156,14 +124,6 @@
                 }
               }
             },
-            "focus": {
-              "fg_color": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.confirmed.fg.focus}"
-                }
-              }
-            },
             "pressed": {
               "fg_color": {
                 "$type": "composition",
@@ -187,14 +147,6 @@
                 "$type": "composition",
                 "$value": {
                   "fill": "{ob.c.pill.color.progress.fg.hover}"
-                }
-              }
-            },
-            "focus": {
-              "fg_color": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.progress.fg.focus}"
                 }
               }
             },
@@ -224,14 +176,6 @@
                 }
               }
             },
-            "focus": {
-              "fg_color": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.scheduled.fg.focus}"
-                }
-              }
-            },
             "pressed": {
               "fg_color": {
                 "$type": "composition",
@@ -255,14 +199,6 @@
                 "$type": "composition",
                 "$value": {
                   "fill": "{ob.c.pill.color.info.fg.hover}"
-                }
-              }
-            },
-            "focus": {
-              "fg_color": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.info.fg.focus}"
                 }
               }
             },
@@ -292,14 +228,6 @@
                 }
               }
             },
-            "focus": {
-              "fg_color": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.waiting.fg.focus}"
-                }
-              }
-            },
             "pressed": {
               "fg_color": {
                 "$type": "composition",
@@ -323,14 +251,6 @@
                 "$type": "composition",
                 "$value": {
                   "fill": "{ob.c.pill.color.critical.fg.hover}"
-                }
-              }
-            },
-            "focus": {
-              "fg_color": {
-                "$type": "composition",
-                "$value": {
-                  "fill": "{ob.c.pill.color.critical.fg.focus}"
                 }
               }
             },
