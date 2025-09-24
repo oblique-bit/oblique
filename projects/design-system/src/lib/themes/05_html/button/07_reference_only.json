@@ -418,11 +418,22 @@
             }
           }
         },
-        "focus_ring": {
-          "border_radius": {
-            "$type": "borderRadius",
-            "$value": "{ob.s.border_radius.md}",
-            "$description": "Requires larger radius than element itself."
+        "label_icon": {
+          "focus_ring": {
+            "border_radius": {
+              "$type": "borderRadius",
+              "$value": "{ob.s.border_radius.md}",
+              "$description": "Requires larger radius than element itself."
+            }
+          }
+        },
+        "icon_only": {
+          "focus_ring": {
+            "border_radius": {
+              "$type": "borderRadius",
+              "$value": "{ob.s.border_radius.rounded}",
+              "$description": "Requires larger radius than element itself."
+            }
           }
         }
       }

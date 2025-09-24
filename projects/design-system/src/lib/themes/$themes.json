@@ -828,7 +828,7 @@
       "ob.c.infobox.buttons_order_figma": "104b35c260ade5b30bc6e092288e2ca1cdc1c3d6",
       "ob.h.button.container.spacing.gap": "d270babd58ec6ca097e0c20eb7a44f5495b52061",
       "ob.h.button.touch_target.min_size": "128f9785e2ae4f4a65b389fda75d995cef6b0f22",
-      "ob.g.multiplier.viewport.desktop": "349bfa23e1d359083c1a4f3444edd2fafda1e9b4"
+      "ob.g.multiplier.viewport.desktop": "e8442987ee7e7337893077fb5e817bdee67effdd"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:1",
@@ -989,9 +989,9 @@
       "ob.c.infobox.buttons_order_figma": "104b35c260ade5b30bc6e092288e2ca1cdc1c3d6",
       "ob.h.button.container.spacing.gap": "d270babd58ec6ca097e0c20eb7a44f5495b52061",
       "ob.h.button.touch_target.min_size": "128f9785e2ae4f4a65b389fda75d995cef6b0f22",
-      "ob.g.multiplier.viewport.mobile": "ee24b50be74b1e6b56c20911dc954bf0ccf97f0c",
-      "ob.c.infobox.sizing.icon_size": "8c4469bb250957461a2e97aba604fb9e9e524a7f",
-      "ob.c.infobox.sizing.close_button_size": "a1e94730df8b36d0eefcc6d4fe9a76a02b480d31"
+      "ob.g.multiplier.viewport.mobile": "d9cabee21dfde40a8a98c6a134be51968f3e6993",
+      "ob.c.infobox.sizing.icon_size": "dbe44bf1f3fd33ccf974d8054460168ca562b5e9",
+      "ob.c.infobox.sizing.close_button_size": "0807a2d17b614608a3559cdff3b28dc048d9ec1b"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:2",
@@ -2701,7 +2701,7 @@
       "05_html/button/06_flex-direction/row": "enabled"
     },
     "$figmaVariableReferences": {
-      "ob.h.button.flex_direction.row.gap": "f8bcaa3af29575d9d3ad2a1c52d494da8c61e520"
+      "ob.h.button.flex_direction.row.gap": "47cb465c52fe6155914a387432cf42688271a669"
     },
     "$figmaCollectionId": "VariableCollectionId:2115:3769",
     "$figmaModeId": "2115:5",
@@ -2715,7 +2715,7 @@
       "05_html/button/06_flex-direction/column": "enabled"
     },
     "$figmaVariableReferences": {
-      "ob.h.button.flex_direction.column.gap": "be7b9052daba626bc513f1ba0fdc6de185e02708"
+      "ob.h.button.flex_direction.column.gap": "9bbdc476ecb174c9e2e38a2d5db2d1b1496fd014"
     },
     "$figmaCollectionId": "VariableCollectionId:2115:3769",
     "$figmaModeId": "2115:6",
