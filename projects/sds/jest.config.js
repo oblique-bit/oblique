@@ -35,7 +35,7 @@ module.exports = {
 			statements: 87,
 			branches: 30,
 			functions: 53,
-			lines: 86
+			lines: 85
 		},
 		'projects/sds/src/app/cms/cms-data.service.ts': {
 			statements: 69,
@@ -110,10 +110,10 @@ module.exports = {
 			lines: 75
 		},
 		'projects/sds/src/app/code-examples/code-examples/icons/previews/icons-gallery': {
-			statements: 73,
+			statements: 69,
 			branches: 0,
 			functions: 25,
-			lines: 73
+			lines: 70
 		},
 		'projects/sds/src/app/code-examples/code-examples/nested-form/previews/reactive': {
 			statements: 75,

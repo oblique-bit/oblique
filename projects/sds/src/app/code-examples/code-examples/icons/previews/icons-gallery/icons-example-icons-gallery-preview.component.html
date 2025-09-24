@@ -40,7 +40,7 @@
 		}
 	</div>
 	<div class="info-card">
-		@if (isInfoCardVisible) {
+		@if (isInfoCardVisible && !showDialog) {
 			<mat-card>
 				<div mat-card-image class="image-container">
 					<mat-icon class="icon" [svgIcon]="selectedIconName" />
