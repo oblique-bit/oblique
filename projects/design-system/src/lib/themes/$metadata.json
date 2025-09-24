@@ -48,6 +48,7 @@
     "04_component/atom/tooltip",
     "04_component/molecule/pill/pill",
     "04_component/molecule/pill/typography",
+    "04_component/molecule/pill/07_reference_ony",
     "04_component/molecule/infobox/static",
     "04_component/molecule/infobox/responsive/desktop",
     "04_component/molecule/infobox/responsive/mobile",

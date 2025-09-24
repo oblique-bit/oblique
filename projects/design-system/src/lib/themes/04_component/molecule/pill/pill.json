@@ -5,56 +5,20 @@
         "spacing": {
           "padding": {
             "vertical": {
-              "sm": {
-                "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.detail.sm.px}",
-                "$description": "Top and bottom padding – for small size pills."
-              },
-              "md": {
-                "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.element.xs.px}",
-                "$description": "Top and bottom padding  – for medium size pills."
-              },
-              "lg": {
-                "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.element.md.px}",
-                "$description": "Top and bottom padding  – for large size pills."
-              }
+              "$type": "spacing",
+              "$value": "{ob.s.dimension.dynamic.element.xs.px}",
+              "$description": "Top and bottom padding  – for medium size pills."
             },
             "horizontal": {
-              "sm": {
-                "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.element.md.px}",
-                "$description": "Left and right padding – for small size pills."
-              },
-              "md": {
-                "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.surface.xs.px}",
-                "$description": "Left and right padding  – for medium size pills."
-              },
-              "lg": {
-                "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.surface.sm.px}",
-                "$description": "Left and right padding – for large size pills."
-              }
+              "$type": "spacing",
+              "$value": "{ob.s.dimension.dynamic.surface.xs.px}",
+              "$description": "Left and right padding  – for medium size pills."
             }
           },
           "gap": {
-            "sm": {
-              "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.element.xs.px}",
-              "$description": "Horizontal gap between icon and text label – for small size pills."
-            },
-            "md": {
-              "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.element.sm.px}",
-              "$description": "Horizontal gap between icon and text label  – for medium size pills."
-            },
-            "lg": {
-              "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.element.md.px}",
-              "$description": "Horizontal gap between icon and text label – for large size pills"
-            }
+            "$type": "spacing",
+            "$value": "{ob.s.dimension.dynamic.element.sm.px}",
+            "$description": "Horizontal gap between icon and text label  – for medium size pills."
           }
         },
         "border_radius": {
@@ -381,6 +345,14 @@
               }
             }
           }
+        },
+        "icon_size": {
+          "$type": "sizing",
+          "$value": "{ob.c.icon_slot.size_proportional.standard}"
+        },
+        "min-height": {
+          "$type": "sizing",
+          "$value": "2*{ob.s.dimension.dynamic.element.xs.rem}+{ob.c.icon_slot.size_proportional.standard}"
         }
       }
     }
