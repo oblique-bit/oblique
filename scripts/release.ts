@@ -11,7 +11,7 @@ class Release extends StaticScript {
 		executeCommandWithLog(`npm version ${version}`, 'Bump version');
 		Release.updateJenkinsFile(version);
 		Release.updateCopyrightDate();
-		executeCommandWithLog(`npm run release -ws`, 'Perform release');
+		executeCommandWithLog(`npm run release --workspaces`, 'Perform release');
 		Git.commit(`build(release): release version ${version}`, issue);
 		Log.success('Push the changes and continue the release process according to the release checklist');
 	}
