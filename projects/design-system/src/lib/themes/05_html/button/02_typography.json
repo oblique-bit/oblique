@@ -16,7 +16,7 @@
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.dynamic.letter_spacing_px.wide}",
+              "$value": "{ob.s.dynamic.letter_spacing_px.normal}",
               "$description": "Letter spacing for button text labels"
             },
             "font_family": {

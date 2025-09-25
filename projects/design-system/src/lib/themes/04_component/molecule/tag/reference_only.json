@@ -1,0 +1,17 @@
+{
+  "ob": {
+    "c": {
+      "tag": {
+        "filter": {
+          "focus_ring": {
+            "border_radius": {
+              "$type": "borderRadius",
+              "$value": "{ob.s.border_radius.rounded}",
+              "$description": "Rounded focus_ring for the rounded shape of the tag.filter."
+            }
+          }
+        }
+      }
+    }
+  }
+}

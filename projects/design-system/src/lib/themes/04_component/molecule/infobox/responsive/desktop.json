@@ -25,7 +25,7 @@
           },
           "row_gap": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.dynamic.surface.md.px}",
+            "$value": "{ob.s.dimension.dynamic.surface.sm.px}",
             "$description": "Sets a minimum vertical gap between container_top and container-buttons to enhance the readability."
           },
           "container_top": {

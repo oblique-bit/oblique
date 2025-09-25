@@ -11,7 +11,7 @@
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.element.md.rem}"
+                "$value": "{ob.s.dimension.dynamic.surface.xs.rem}"
               }
             },
             "gap": {
