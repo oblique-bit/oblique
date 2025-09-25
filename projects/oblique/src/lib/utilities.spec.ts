@@ -175,7 +175,7 @@ describe('utilities', () => {
 					});
 				});
 
-				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+				it('should use "TranslateFakeCompiler" as "TranslateCompiler"', () => {
 					expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
 				});
 			});
@@ -360,7 +360,7 @@ describe('utilities', () => {
 					});
 				});
 
-				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+				it('should use "TranslateFakeCompiler" as "TranslateCompiler"', () => {
 					expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
 				});
 			});
@@ -419,7 +419,7 @@ describe('utilities', () => {
 			});
 
 			describe('loader', () => {
-				it('should be an instance of ObMultiTranslateLoader', () => {
+				it('should be an instance of "ObMultiTranslateLoader"', () => {
 					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
 				});
 			});
@@ -477,12 +477,12 @@ describe('utilities', () => {
 				});
 			});
 
-			it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+			it('should use "TranslateFakeCompiler" as "TranslateCompiler"', () => {
 				expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
 			});
 
 			describe('loader', () => {
-				it('should be an instance of ObMultiTranslateLoader', () => {
+				it('should be an instance of "ObMultiTranslateLoader"', () => {
 					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
 				});
 			});
