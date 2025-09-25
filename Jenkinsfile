@@ -10,8 +10,8 @@ nodejsPipelineTemplate {
 	branches = [
 		'*': [
 			'lint': 'npm run lint',
-			'test': 'npm run test-ci -ws',
-			'build': 'npm run build -ws'
+			'test': 'npm run test-ci --workspaces',
+			'build': 'npm run build --workspaces'
 		],
 		master: [
 			'publish': [
