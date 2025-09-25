@@ -93,7 +93,7 @@
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.resolved.bg.contrast_low.inversity_normal}"
+                "$value": "{ob.s3.color.status.resolved.bg.contrast_medium.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
@@ -101,7 +101,7 @@
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.resolved.bg.contrast_low.inversity_normal}"
+                "$value": "{ob.s3.color.status.resolved.bg.contrast_medium.inversity_normal}"
               }
             }
           },
@@ -123,7 +123,7 @@
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.attention.bg.contrast_low.inversity_normal}"
+                "$value": "{ob.s3.color.status.attention.bg.contrast_medium.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
@@ -153,7 +153,7 @@
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.pending.bg.contrast_low.inversity_normal}"
+                "$value": "{ob.s3.color.status.pending.bg.contrast_medium.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
@@ -273,7 +273,7 @@
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.info.bg.contrast_low.inversity_normal}"
+                "$value": "{ob.s3.color.status.info.bg.contrast_medium.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
@@ -333,7 +333,7 @@
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.critical.bg.contrast_low.inversity_normal}"
+                "$value": "{ob.s3.color.status.critical.bg.contrast_high.inversity_normal}"
               },
               "hover": {
                 "$type": "color",

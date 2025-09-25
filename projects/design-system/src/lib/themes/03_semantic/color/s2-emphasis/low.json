@@ -20,12 +20,12 @@
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_medium.inversity_normal}",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
                   "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_medium.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
                   "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
                 }
               },
@@ -106,7 +106,7 @@
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
                   "$description": "Background for primary buttons."
                 },
                 "inversity_flipped": {
