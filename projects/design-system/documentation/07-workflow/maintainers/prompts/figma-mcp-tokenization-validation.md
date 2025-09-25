@@ -2,7 +2,7 @@
 
 ****Requirements:** PREREQUISITES**: This prompt requires Figma MCP tools to be configured and a Figma component selected.
 
-**🚨 CRITICAL VALIDATION WARNING**: 
+**⚠️ IMPORTANT VALIDATION NOTICE**: 
 **NEVER** confuse MCP-generated code output with actual Figma design issues. The MCP Figma tool converts design tokens to hardcoded values in generated code - this is a TOOL LIMITATION, not a design system violation. Always validate tokenization by examining the actual Figma layers and Token Studio connections, NOT the generated code output.
 
 Perform complete tokenization validation of this component using Figma MCP tools:
