@@ -80,6 +80,14 @@ The focus ring component leverages oblique's semantic token architecture:
 }
 ```
 
+**Figma Offset Limitation Workaround**:
+Figma doesn't support `outline-offset` equivalent as variables. We compensate through manual positioning:
+
+- **Token Level**: `ob.s.shadow.focus_ring.*` provides the visual focus ring effect
+- **Instance Level**: Manual X:-2, Y:-2 positioning simulates CSS `outline-offset: 2px`  
+- **Implementation**: Focus ring instances positioned manually within parent components
+- **Consistency**: X/Y offset values correspond to semantic `ob.s.outline_offset.*` token values
+
 ### Component Integration Patterns
 
 #### Button Integration
