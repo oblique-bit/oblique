@@ -12,9 +12,9 @@ focus_ring (Utility Pattern)
 ├── CSS Implementation (ob.s.border.focus_ring.*)
 │   ├── Border-based outline styling
 │   └── Semantic color token references
-├── Figma Implementation (ob.s.shadow.focus_ring.*)  
-│   ├── BoxShadow-based visual effects
-│   └── Semantic color token references
+├── Figma Implementation (Manual positioning)  
+│   ├── Manual stroke/outline visual effects
+│   └── NO-FIGMA-SUPPORT pattern (deprecated shadow tokens)
 └── Shared Color Foundation (ob.s3.color.interaction.focus_ring.*)
     ├── Normal inversity color values
     └── Flipped inversity color values
@@ -22,11 +22,11 @@ focus_ring (Utility Pattern)
 
 ### Design Decisions
 
-#### Why Dual-Platform Implementation?
+#### Why Platform-Specific Implementation?
 The focus ring pattern requires different technical approaches for CSS and Figma due to platform limitations:
 
 - **CSS**: Uses `outline` property for accessibility compliance and performance
-- **Figma**: Uses `boxShadow` effects since Figma doesn't support outline styling as variables
+- **Figma**: Manual positioning and stroke effects (shadow tokens deprecated)
 - **Shared Colors**: Both implementations reference the same semantic color tokens for visual consistency
 
 #### Why Semantic Token Level?
@@ -39,7 +39,41 @@ Focus rings operate at the semantic level (`ob.s.*`) rather than component level
 
 ### Token Architecture Integration
 
-The focus ring component leverages oblique's semantic token architecture:
+The focus ring component leverages oblique's hierarchical token architecture:
+
+**Semantic Level Tokens** (`src/lib/themes/03_semantic/border.json`):
+```json
+"ob.s.border.focus_ring": {
+  "inversity_normal": {
+    "$type": "border",
+    "$value": {
+      "color": "{ob.s3.color.interaction.focus_ring.inversity_normal}",
+      "width": "{ob.s.border_width.md}",
+      "style": "solid"
+    }
+  },
+  "inversity_flipped": { /* ... */ }
+},
+"ob.s.outline_offset": {
+  "none": "{ob.p.dimension.px.0}",
+  "xs": "{ob.p.dimension.px.1}",
+  "sm": "{ob.p.dimension.px.2}",
+  "md": "{ob.p.dimension.px.3}",
+  "lg": "{ob.p.dimension.px.4}"
+}
+```
+
+**Component Level Tokens** (`src/lib/themes/05_html/button/07_reference_only.json`):
+```json
+"ob.h.button.label_icon.focus_ring": {
+  "border_radius": "{ob.s.border_radius.md}",
+  "outline_offset": "{ob.s.outline_offset.md}"
+},
+"ob.h.button.icon_only.focus_ring": {
+  "border_radius": "{ob.s.border_radius.rounded}",
+  "outline_offset": "{ob.s.outline_offset.md}"
+}
+```
 
 **Color Foundation**:
 ```json
@@ -63,27 +97,13 @@ The focus ring component leverages oblique's semantic token architecture:
 }
 ```
 
-**Figma Implementation Tokens**:
-```json
-"ob.s.shadow.focus_ring": {
-  "inversity_normal": {
-    "$type": "boxShadow",
-    "$value": [
-      {
-        "x": "0", "y": "0", "blur": "0",
-        "spread": "{ob.p.dimension.px.3}",
-        "color": "{ob.s3.color.interaction.focus_ring.inversity_normal}",
-        "type": "dropShadow"
-      }
-    ]
-  }
-}
-```
+**Figma Implementation (Deprecated)**:
+Shadow-based focus rings have been deprecated in Figma. Focus rings now use manual positioning and stroke effects following the NO-FIGMA-SUPPORT pattern.
 
-**Figma Offset Limitation Workaround**:
-Figma doesn't support `outline-offset` equivalent as variables. We compensate through manual positioning:
+**Figma Manual Implementation**:
+Since Figma doesn't support `outline-offset` equivalent as variables, focus rings are implemented through manual positioning:
 
-- **Token Level**: `ob.s.shadow.focus_ring.*` provides the visual focus ring effect
+- **Visual Treatment**: Manual stroke or shape overlay 
 - **Instance Level**: Manual X:-2, Y:-2 positioning simulates CSS `outline-offset: 2px`  
 - **Implementation**: Focus ring instances positioned manually within parent components
 - **Consistency**: X/Y offset values correspond to semantic `ob.s.outline_offset.*` token values
@@ -133,9 +153,9 @@ Figma doesn't support `outline-offset` equivalent as variables. We compensate th
 ```
 
 #### Figma Implementation
-- **Component States**: Focus state variants apply `ob.s.shadow.focus_ring.*` effects
-- **Manual Application**: Since Figma can't automate focus styling, designers apply effects manually
-- **Token Consistency**: Effects reference semantic shadow tokens to maintain visual parity with CSS
+- **Component States**: Focus state variants use manual positioning and stroke effects
+- **Manual Application**: Designers apply focus ring styling manually using positioning offsets
+- **Visual Consistency**: Manual effects reference semantic color values to maintain visual parity with CSS
 
 ### Accessibility Architecture
 
@@ -165,8 +185,8 @@ Figma doesn't support `outline-offset` equivalent as variables. We compensate th
 - **Offset Standards**: Standardized outline-offset values (1-3px based on component type)
 
 #### Platform Coordination
-- **Visual Parity**: CSS outline and Figma boxShadow produce equivalent visual results
-- **Token Alignment**: Both implementations reference identical color values
+- **Visual Parity**: CSS outline and Figma manual positioning produce equivalent visual results
+- **Token Alignment**: CSS references semantic border tokens, Figma uses manual implementation
 - **Documentation Sync**: Implementation differences documented in both CSS and Figma guidelines
 
 ---

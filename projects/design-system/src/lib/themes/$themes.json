@@ -2282,8 +2282,6 @@
     "id": "37307e838ca95928b073a5079fb37b5cd84d5762",
     "name": "semantic",
     "$figmaStyleReferences": {
-      "ob.s.shadow.focus_ring.inversity_normal": "S:61310705782cd956cc4f87bcfc1a3af62c9c14d4,",
-      "ob.s.shadow.focus_ring.inversity_flipped": "S:a6464b246befa2340951af874b3144e2b3a1298d,",
       "ob.s.shadow.sm": "S:361a8e176736cf7e5f67742325dcb0fca35a25b5,",
       "ob.s.shadow.md": "S:cf9f6eefb978c46ce4e29675adb84698b699ac55,",
       "ob.s.shadow.default": "S:607f37a98ae45bc28f276f0d4f067a97a78d40f1,",

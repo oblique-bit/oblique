@@ -51,13 +51,35 @@ The grouped tokens reference the single tokens using the appropriate dynamic/sta
 "fontSize": "{ob.s.static.fontSize.xs}"
 ```
 
+## Typography Token Architecture
+
+The design system uses two distinct approaches for typography tokens based on their use case:
+
+### A) Semantic Typography Tokens (Headings)
+- **Use consolidated "composition-tokens"** that combine all typography properties (fontFamily, fontWeight, fontSize, lineHeight, letterSpacing, paragraphSpacing) into a single object
+- **Purpose**: Directly map to Figma Typography Styles for seamless design-to-code workflow
+- **Example**: `{ob.s3.typography.style.display.xl}` contains complete typography definition
+- **Location**: Semantic layer provides reusable typography styles
+
+### B) Component Typography Tokens (Buttons, etc.)
+- **Use individual property tokens** where each typography property is defined separately
+- **Purpose**: Avoid creating component-specific typography styles in Figma while maintaining CSS flexibility
+- **Example**: Individual tokens for `{ob.h.button.typography.font_size}`, `{ob.h.button.typography.line_height}`, etc.
+- **Additional**: Include consolidated reference token for completeness but primary usage is individual properties
+
+### Architectural Rationale
+This dual approach balances Figma workflow efficiency with CSS implementation flexibility:
+- **Semantic headings**: Need Figma Typography Styles for consistent design application
+- **Component elements**: Require granular control without polluting Figma with component-specific typography styles
+
 ## Implementation Notes
 
 - Single tokens provide granular control for component construction
-- Grouped tokens offer ready-to-use typography compositions
+- Grouped tokens offer ready-to-use typography compositions  
 - Dynamic tokens scale with global multipliers for responsive design
 - Static tokens maintain consistent values across all contexts
 - All token references properly resolve through the dynamic/static segment structure
+- Typography architecture intentionally uses different patterns based on use case and Figma integration needs
 
 ---
 *Resolved: OUI-4035*

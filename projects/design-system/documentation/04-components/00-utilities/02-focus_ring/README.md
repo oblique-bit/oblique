@@ -11,7 +11,7 @@ The `focus_ring` component provides a standardized focus indicator pattern for a
 **Key Benefits:**
 - **Accessibility Compliant**: Meets WCAG 2.1 focus indicator requirements
 - **Cross-Platform Support**: CSS outline for web, boxShadow for Figma design
-- **Semantic Token Integration**: `ob.s.border.focus_ring.*`, `ob.s.shadow.focus_ring.*`, and `ob.s.outline_offset.*` tokens
+- **Semantic Token Integration**: `ob.s.border.focus_ring.*` and `ob.s.outline_offset.*` tokens
 - **Consistent Implementation**: Standardized across all interactive components with configurable outline offset
 
 ## **Note:** Documentation
@@ -40,14 +40,15 @@ The `focus_ring` component provides a standardized focus indicator pattern for a
 
 **Technical Implementation**: Dual-platform approach with configurable offset
 - **CSS Implementation**: `outline` property with `ob.s.border.focus_ring.*` tokens and `ob.s.outline_offset.*` spacing
-- **Figma Implementation**: `boxShadow` effects with `ob.s.shadow.focus_ring.*` tokens
+- **Figma Implementation**: Manual positioning with outline-style visual treatment (no tokens)
 - **Outline Offset Support**: Semantic `ob.s.outline_offset.*` tokens (none, xs, sm, md, lg) for component-specific spacing
 - **Color Coordination**: Both reference `ob.s3.color.interaction.focus_ring.*` values
 
 ## **Design:** Design Resources
 
 - **Token Documentation:** [Focus Ring Tokens](../../../03-design-tokens/colors/colors-semantic-interaction.md)
-- **Token Structure:** `ob.s.border.focus_ring.*`, `ob.s.shadow.focus_ring.*`, and `ob.s.outline_offset.*` in semantic token files
+- **Semantic Token Structure:** `ob.s.border.focus_ring.*` and `ob.s.outline_offset.*` in semantic border.json
+- **Component Token Structure:** `ob.h.button.*.focus_ring.*` in component-specific files
 - **Accessibility Guidelines:** [Focus Management Standards](_reports/03-compliance/)
 
 ---

@@ -17,9 +17,14 @@ Since Figma doesn't support `outline-offset` as variables:
    - **X: -2, Y: -2** for standard offset
 3. This simulates CSS `outline-offset: 2px`
 
-### Token Usage
-- **Normal elements**: `ob.s.shadow.focus_ring.inversity_normal`
-- **Dark/inverted elements**: `ob.s.shadow.focus_ring.inversity_flipped`
+### Manual Implementation (Deprecated Shadow Tokens)
+Focus rings in Figma now use manual positioning since shadow tokens are deprecated:
+
+1. Create focus ring outline/stroke manually within parent component
+2. Position the focus ring element with manual offset:
+   - **X: -2, Y: -2** for standard offset  
+3. This simulates CSS `outline-offset: 2px`
+4. Use semantic color values for visual consistency with CSS
 
 ## CSS Implementation
 

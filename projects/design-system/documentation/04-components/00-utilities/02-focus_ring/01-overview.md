@@ -32,11 +32,13 @@ The focus ring uses CSS `outline` property with semantic border tokens:
 ```
 
 ### Figma Implementation (Design)
-The focus ring uses boxShadow effects with semantic elevation tokens:
+The focus ring uses CSS outline properties with semantic border tokens:
 
-```figma
-Component Property: Focus State = True
-Applied Effect: ob.s.shadow.focus_ring.inversity_normal
+```css
+.focus-element:focus {
+  outline: {ob.s.border.focus_ring.inversity_normal};
+  outline-offset: {ob.s.outline_offset.md};
+}
 ```
 
 ## Variants
@@ -47,7 +49,7 @@ Applied Effect: ob.s.shadow.focus_ring.inversity_normal
 
 **Token References:**
 - `ob.s.border.focus_ring.inversity_normal` (CSS)
-- `ob.s.shadow.focus_ring.inversity_normal` (Figma)
+- Manual positioning in Figma (no tokens)
 
 ### Flipped Inversity
 **Purpose:** Focus indication on dark or high-contrast backgrounds  
@@ -55,20 +57,27 @@ Applied Effect: ob.s.shadow.focus_ring.inversity_normal
 
 **Token References:**
 - `ob.s.border.focus_ring.inversity_flipped` (CSS)
-- `ob.s.shadow.focus_ring.inversity_flipped` (Figma)
+- Manual positioning in Figma (no tokens)
 
 ## Basic Usage
 
 ### Button Implementation
 ```html
-<button class="ob-button" type="button">
+<button class="ob-button ob-button--label-icon" type="button">
   Primary Action
 </button>
 ```
 ```css
-.ob-button:focus {
+.ob-button--label-icon:focus {
   outline: var(--ob-s-border-focus-ring-inversity-normal);
-  outline-offset: 2px;
+  outline-offset: var(--ob-h-button-label-icon-focus-ring-outline-offset);
+  border-radius: var(--ob-h-button-label-icon-focus-ring-border-radius);
+}
+
+.ob-button--icon-only:focus {
+  outline: var(--ob-s-border-focus-ring-inversity-normal);
+  outline-offset: var(--ob-h-button-icon-only-focus-ring-outline-offset);
+  border-radius: var(--ob-h-button-icon-only-focus-ring-border-radius);
 }
 ```
 
