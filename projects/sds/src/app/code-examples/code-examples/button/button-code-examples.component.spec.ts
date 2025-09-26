@@ -26,7 +26,7 @@ describe(ButtonCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
 	});
 
-	test(`that there are 8 ${ObButtonDirective.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(ObButtonDirective)).length).toBe(8);
+	test(`that there are 9 ${ObButtonDirective.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(ObButtonDirective)).length).toBe(9);
 	});
 });
