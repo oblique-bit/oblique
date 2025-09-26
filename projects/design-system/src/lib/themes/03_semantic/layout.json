@@ -1,0 +1,204 @@
+{
+  "ob": {
+    "s": {
+      "layout": {
+        "display": {
+          "flex": {
+            "$type": "string",
+            "$value": "flex",
+            "$description": "[NO-FIGMA-SUPPORT] CSS display property for flexbox containers"
+          },
+          "block": {
+            "$type": "string",
+            "$value": "block",
+            "$description": "[NO-FIGMA-SUPPORT] CSS display property for block elements"
+          },
+          "inline": {
+            "$type": "string",
+            "$value": "inline",
+            "$description": "[NO-FIGMA-SUPPORT] CSS display property for inline elements"
+          },
+          "inline_block": {
+            "$type": "string",
+            "$value": "inline-block",
+            "$description": "[NO-FIGMA-SUPPORT] CSS display property for inline-block elements"
+          },
+          "none": {
+            "$type": "string",
+            "$value": "none",
+            "$description": "[NO-FIGMA-SUPPORT] CSS display property to hide elements"
+          }
+        },
+        "flex_direction": {
+          "row": {
+            "$type": "string",
+            "$value": "row",
+            "$description": "[NO-FIGMA-SUPPORT] CSS flex-direction for horizontal layout"
+          },
+          "column": {
+            "$type": "string",
+            "$value": "column",
+            "$description": "[NO-FIGMA-SUPPORT] CSS flex-direction for vertical layout"
+          },
+          "row_reverse": {
+            "$type": "string",
+            "$value": "row-reverse",
+            "$description": "[NO-FIGMA-SUPPORT] CSS flex-direction for reversed horizontal layout"
+          },
+          "column_reverse": {
+            "$type": "string",
+            "$value": "column-reverse",
+            "$description": "[NO-FIGMA-SUPPORT] CSS flex-direction for reversed vertical layout"
+          }
+        },
+        "align_items": {
+          "center": {
+            "$type": "string",
+            "$value": "center",
+            "$description": "[NO-FIGMA-SUPPORT] CSS align-items for center alignment"
+          },
+          "flex_start": {
+            "$type": "string",
+            "$value": "flex-start",
+            "$description": "[NO-FIGMA-SUPPORT] CSS align-items for start alignment"
+          },
+          "flex_end": {
+            "$type": "string",
+            "$value": "flex-end",
+            "$description": "[NO-FIGMA-SUPPORT] CSS align-items for end alignment"
+          },
+          "stretch": {
+            "$type": "string",
+            "$value": "stretch",
+            "$description": "[NO-FIGMA-SUPPORT] CSS align-items for stretch alignment"
+          },
+          "baseline": {
+            "$type": "string",
+            "$value": "baseline",
+            "$description": "[NO-FIGMA-SUPPORT] CSS align-items for baseline alignment"
+          }
+        },
+        "justify_content": {
+          "center": {
+            "$type": "string",
+            "$value": "center",
+            "$description": "[NO-FIGMA-SUPPORT] CSS justify-content for center alignment"
+          },
+          "flex_start": {
+            "$type": "string",
+            "$value": "flex-start",
+            "$description": "[NO-FIGMA-SUPPORT] CSS justify-content for start alignment"
+          },
+          "flex_end": {
+            "$type": "string",
+            "$value": "flex-end",
+            "$description": "[NO-FIGMA-SUPPORT] CSS justify-content for end alignment"
+          },
+          "space_between": {
+            "$type": "string",
+            "$value": "space-between",
+            "$description": "[NO-FIGMA-SUPPORT] CSS justify-content for space between elements"
+          },
+          "space_around": {
+            "$type": "string",
+            "$value": "space-around",
+            "$description": "[NO-FIGMA-SUPPORT] CSS justify-content for space around elements"
+          },
+          "space_evenly": {
+            "$type": "string",
+            "$value": "space-evenly",
+            "$description": "[NO-FIGMA-SUPPORT] CSS justify-content for even space distribution"
+          }
+        },
+        "box_sizing": {
+          "border_box": {
+            "$type": "string",
+            "$value": "border-box",
+            "$description": "[NO-FIGMA-SUPPORT] CSS box-sizing including padding and border in element size"
+          },
+          "content_box": {
+            "$type": "string",
+            "$value": "content-box",
+            "$description": "[NO-FIGMA-SUPPORT] CSS box-sizing for content area only"
+          }
+        },
+        "white_space": {
+          "nowrap": {
+            "$type": "string",
+            "$value": "nowrap",
+            "$description": "[NO-FIGMA-SUPPORT] CSS white-space to prevent text wrapping"
+          },
+          "normal": {
+            "$type": "string",
+            "$value": "normal",
+            "$description": "[NO-FIGMA-SUPPORT] CSS white-space for normal text wrapping"
+          },
+          "pre": {
+            "$type": "string",
+            "$value": "pre",
+            "$description": "[NO-FIGMA-SUPPORT] CSS white-space to preserve whitespace"
+          },
+          "pre_wrap": {
+            "$type": "string",
+            "$value": "pre-wrap",
+            "$description": "[NO-FIGMA-SUPPORT] CSS white-space to preserve whitespace with wrapping"
+          }
+        },
+        "text_align": {
+          "center": {
+            "$type": "string",
+            "$value": "center",
+            "$description": "[NO-FIGMA-SUPPORT] CSS text-align for center text alignment"
+          },
+          "left": {
+            "$type": "string",
+            "$value": "left",
+            "$description": "[NO-FIGMA-SUPPORT] CSS text-align for left text alignment"
+          },
+          "right": {
+            "$type": "string",
+            "$value": "right",
+            "$description": "[NO-FIGMA-SUPPORT] CSS text-align for right text alignment"
+          },
+          "justify": {
+            "$type": "string",
+            "$value": "justify",
+            "$description": "[NO-FIGMA-SUPPORT] CSS text-align for justified text"
+          }
+        },
+        "align_content": {
+          "stretch": {
+            "$type": "string",
+            "$value": "stretch",
+            "$description": "[NO-FIGMA-SUPPORT] CSS align-content for stretch alignment"
+          },
+          "center": {
+            "$type": "string",
+            "$value": "center",
+            "$description": "[NO-FIGMA-SUPPORT] CSS align-content for center alignment"
+          },
+          "flex_start": {
+            "$type": "string",
+            "$value": "flex-start",
+            "$description": "[NO-FIGMA-SUPPORT] CSS align-content for start alignment"
+          },
+          "flex_end": {
+            "$type": "string",
+            "$value": "flex-end",
+            "$description": "[NO-FIGMA-SUPPORT] CSS align-content for end alignment"
+          },
+          "space_between": {
+            "$type": "string",
+            "$value": "space-between",
+            "$description": "[NO-FIGMA-SUPPORT] CSS align-content for space between lines"
+          },
+          "space_around": {
+            "$type": "string",
+            "$value": "space-around",
+            "$description": "[NO-FIGMA-SUPPORT] CSS align-content for space around lines"
+          }
+        }
+      }
+    }
+  }
+}

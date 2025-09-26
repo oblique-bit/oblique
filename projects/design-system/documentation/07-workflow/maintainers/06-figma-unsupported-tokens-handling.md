@@ -172,7 +172,7 @@ mcp_figma_dev_mod_get_variable_defs
 ## Related Patterns
 
 ### Similar Implementation Examples
-- **[Flex Direction Tokens](../../../04-04_components/button/flex-direction-token-decision-log.md)**: CSS layout properties
+- **[Flex Direction Tokens](../../../04-components/button/token-decisions/flex-direction-token-decision-log.md)**: CSS layout properties
 - **[Text Alignment Tokens](./05-figma-variables-limitations-and-restrictions.md)**: Typography positioning
 - **[Animation Tokens](./05-figma-variables-limitations-and-restrictions.md)**: Complex micro-interactions
 

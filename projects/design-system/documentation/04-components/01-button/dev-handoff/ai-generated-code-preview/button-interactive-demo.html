@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Component Interactive Demo - Oblique Design System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .button-preview {
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #e5e7eb;
+            border-radius: 8px;
+            background: var(--preview-bg, #ffffff);
+            transition: background-color 0.3s ease;
+        }
+        
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .control-group {
+            background: #f9fafb;
+            padding: 1rem;
+            border-radius: 6px;
+        }
+        
+        .control-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+        
+        .control-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            background: white;
+        }
+        
+        /* Button Variants - Translated from Figma generated styles */
+        .btn-base {
+            box-sizing: border-box;
+            display: flex;
+            gap: 4.8px;
+            align-items: center;
+            justify-content: center;
+            padding: 4.8px 9.6px;
+            border-radius: 1px;
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: 500;
+            font-size: 17px;
+            line-height: 16px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-width: 1px;
+            border-style: solid;
+        }
+        
+        .btn-icon {
+            width: 19.2px;
+            height: 19.2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Primary Variants */
+        .btn-primary-normal-regular {
+            background-color: #2379a4;
+            border-color: transparent;
+            color: #ffffff;
+        }
+        
+        .btn-primary-normal-hover:hover {
+            background-color: #236487;
+            box-shadow: 0px 6px 10px -5px rgba(19,27,34,0.05), 0px 15px 25px -3px rgba(19,27,34,0.1);
+        }
+        
+        .btn-primary-normal-pressed:active {
+            background-color: #255069;
+            box-shadow: none;
+        }
+        
+        .btn-primary-normal-disabled {
+            background-color: rgba(19,27,34,0.3);
+            border-color: transparent;
+            color: #f0f4f7;
+            cursor: not-allowed;
+        }
+        
+        .btn-primary-flipped-regular {
+            background-color: #ffffff;
+            border-color: transparent;
+            color: #2e8fbf;
+        }
+        
+        .btn-primary-flipped-hover:hover {
+            background-color: #ffffff;
+            color: #236487;
+            box-shadow: 0px 6px 10px -5px rgba(19,27,34,0.05), 0px 15px 25px -3px rgba(19,27,34,0.1);
+        }
+        
+        .btn-primary-flipped-pressed:active {
+            background-color: #ffffff;
+            color: #236487;
+            box-shadow: none;
+        }
+        
+        .btn-primary-flipped-disabled {
+            background-color: rgba(19,27,34,0.1);
+            border-color: transparent;
+            color: rgba(19,27,34,0.4);
+            cursor: not-allowed;
+        }
+        
+        /* Secondary Variants */
+        .btn-secondary-normal-regular {
+            background-color: transparent;
+            border-color: #2e8fbf;
+            color: #2e8fbf;
+        }
+        
+        .btn-secondary-normal-hover:hover {
+            background-color: #ffffff;
+            border-color: #236487;
+            color: #236487;
+            box-shadow: 0px 6px 10px -5px rgba(19,27,34,0.05), 0px 15px 25px -3px rgba(19,27,34,0.1);
+        }
+        
+        .btn-secondary-normal-pressed:active {
+            background-color: transparent;
+            border-color: #236487;
+            color: #236487;
+            box-shadow: none;
+        }
+        
+        .btn-secondary-normal-disabled {
+            background-color: transparent;
+            border-color: rgba(19,27,34,0.4);
+            color: rgba(19,27,34,0.4);
+            cursor: not-allowed;
+        }
+        
+        .btn-secondary-flipped-regular {
+            background-color: transparent;
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+        
+        .btn-secondary-flipped-hover:hover {
+            background-color: #236487;
+            border-color: #ffffff;
+            color: #ffffff;
+            box-shadow: 0px 6px 10px -5px rgba(19,27,34,0.05), 0px 15px 25px -3px rgba(19,27,34,0.1);
+        }
+        
+        .btn-secondary-flipped-pressed:active {
+            background-color: transparent;
+            border-color: #ffffff;
+            color: #ffffff;
+            box-shadow: none;
+        }
+        
+        .btn-secondary-flipped-disabled {
+            background-color: transparent;
+            border-color: #f0f4f7;
+            color: #f0f4f7;
+            cursor: not-allowed;
+        }
+        
+        /* Tertiary Variants */
+        .btn-tertiary-normal-regular {
+            background-color: transparent;
+            border-color: transparent;
+            color: #2e8fbf;
+        }
+        
+        .btn-tertiary-normal-hover:hover {
+            background-color: #ffffff;
+            border-color: transparent;
+            color: #236487;
+            box-shadow: 0px 6px 10px -5px rgba(19,27,34,0.05), 0px 15px 25px -3px rgba(19,27,34,0.1);
+        }
+        
+        .btn-tertiary-normal-pressed:active {
+            background-color: #ffffff;
+            border-color: transparent;
+            color: #236487;
+            box-shadow: none;
+        }
+        
+        .btn-tertiary-normal-disabled {
+            background-color: transparent;
+            border-color: transparent;
+            color: rgba(19,27,34,0.4);
+            cursor: not-allowed;
+        }
+        
+        .btn-tertiary-flipped-regular {
+            background-color: transparent;
+            border-color: transparent;
+            color: #ffffff;
+        }
+        
+        .btn-tertiary-flipped-hover:hover {
+            background-color: #236487;
+            border-color: transparent;
+            color: #ffffff;
+            box-shadow: 0px 6px 10px -5px rgba(19,27,34,0.05), 0px 15px 25px -3px rgba(19,27,34,0.1);
+        }
+        
+        .btn-tertiary-flipped-pressed:active {
+            background-color: #255069;
+            border-color: transparent;
+            color: #ffffff;
+            box-shadow: none;
+        }
+        
+        .btn-tertiary-flipped-disabled {
+            background-color: transparent;
+            border-color: transparent;
+            color: #f0f4f7;
+            cursor: not-allowed;
+        }
+        
+        /* Theme Backgrounds */
+        .theme-light {
+            --preview-bg: #ffffff;
+        }
+        
+        .theme-dark {
+            --preview-bg: #131b22;
+        }
+        
+        /* Focus Ring */
+        .btn-base:focus {
+            outline: none;
+            box-shadow: 0px 0px 0px 3px #8b5cf6;
+        }
+        
+        .info-panel {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .token-info {
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 12px;
+            background: #f3f4f6;
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="text-3xl font-bold mb-2 text-gray-900">Button Component Interactive Demo</h1>
+        <p class="text-gray-600 mb-6">Oblique Design System - Generated from Figma MCP</p>
+        
+        <!-- Controls -->
+        <div class="controls">
+            <div class="control-group">
+                <label for="type">Type (Hierarchy)</label>
+                <select id="type">
+                    <option value="primary">Primary</option>
+                    <option value="secondary">Secondary</option>
+                    <option value="tertiary">Tertiary</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="state">State</label>
+                <select id="state">
+                    <option value="regular">Regular</option>
+                    <option value="hover">Hover</option>
+                    <option value="pressed">Pressed</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="inversity">Inversity (Lightness)</label>
+                <select id="inversity">
+                    <option value="normal">Normal (Light Theme)</option>
+                    <option value="flipped">Flipped (Dark Theme)</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="theme">Preview Background</label>
+                <select id="theme">
+                    <option value="light">Light Background</option>
+                    <option value="dark">Dark Background</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="showIcon">Show Icon</label>
+                <select id="showIcon">
+                    <option value="true">With Icon</option>
+                    <option value="false">Text Only</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="label">Button Label</label>
+                <input type="text" id="label" value="Button" class="w-full p-2 border border-gray-300 rounded">
+            </div>
+        </div>
+        
+        <!-- Button Preview -->
+        <div class="button-preview theme-light" id="buttonPreview">
+            <button class="btn-base btn-primary-normal-regular" id="demoButton">
+                <span class="btn-icon" id="buttonIcon">☕</span>
+                <span id="buttonLabel">Button</span>
+            </button>
+        </div>
+        
+        <!-- Information Panel -->
+        <div class="info-panel">
+            <h3 class="font-semibold mb-2">Current Configuration</h3>
+            <p id="configInfo">Type: Primary | State: Regular | Inversity: Normal | Theme: Light</p>
+            
+            <div class="token-info">
+                <strong>Design Tokens Used:</strong><br>
+                <span id="tokenInfo">
+                    ob/h/button/color/fg/primary/inversity_normal/enabled: #ffffff<br>
+                    ob/h/button/color/bg/primary/inversity_normal/enabled: #2379a4<br>
+                    ob/h/button/label_icon/spacing/gap: 6px<br>
+                    ob/h/button/label_icon/spacing/padding: 4.8px 9.6px
+                </span>
+            </div>
+        </div>
+        
+        <!-- Usage Code -->
+        <div class="info-panel">
+            <h3 class="font-semibold mb-2">Generated Code</h3>
+            <pre id="generatedCode" class="token-info text-sm"></pre>
+        </div>
+    </div>
+
+    <script>
+        // Control elements
+        const typeSelect = document.getElementById('type');
+        const stateSelect = document.getElementById('state');
+        const inversitySelect = document.getElementById('inversity');
+        const themeSelect = document.getElementById('theme');
+        const showIconSelect = document.getElementById('showIcon');
+        const labelInput = document.getElementById('label');
+        
+        // Preview elements
+        const buttonPreview = document.getElementById('buttonPreview');
+        const demoButton = document.getElementById('demoButton');
+        const buttonIcon = document.getElementById('buttonIcon');
+        const buttonLabel = document.getElementById('buttonLabel');
+        
+        // Info elements
+        const configInfo = document.getElementById('configInfo');
+        const tokenInfo = document.getElementById('tokenInfo');
+        const generatedCode = document.getElementById('generatedCode');
+        
+        // Token mapping
+        const tokenMapping = {
+            'primary-normal': {
+                fg: '#ffffff',
+                bg: '#2379a4',
+                border: 'transparent'
+            },
+            'primary-flipped': {
+                fg: '#2e8fbf',
+                bg: '#ffffff',
+                border: 'transparent'
+            },
+            'secondary-normal': {
+                fg: '#2e8fbf',
+                bg: 'transparent',
+                border: '#2e8fbf'
+            },
+            'secondary-flipped': {
+                fg: '#ffffff',
+                bg: 'transparent',
+                border: '#ffffff'
+            },
+            'tertiary-normal': {
+                fg: '#2e8fbf',
+                bg: 'transparent',
+                border: 'transparent'
+            },
+            'tertiary-flipped': {
+                fg: '#ffffff',
+                bg: 'transparent',
+                border: 'transparent'
+            }
+        };
+        
+        function updateButton() {
+            const type = typeSelect.value;
+            const state = stateSelect.value;
+            const inversity = inversitySelect.value;
+            const theme = themeSelect.value;
+            const showIcon = showIconSelect.value === 'true';
+            const label = labelInput.value;
+            
+            // Update button class
+            const buttonClass = `btn-base btn-${type}-${inversity}-${state}`;
+            demoButton.className = buttonClass;
+            
+            // Update preview background
+            buttonPreview.className = `button-preview theme-${theme}`;
+            
+            // Update icon visibility
+            buttonIcon.style.display = showIcon ? 'flex' : 'none';
+            
+            // Update label
+            buttonLabel.textContent = label;
+            
+            // Update configuration info
+            const configText = `Type: ${type.charAt(0).toUpperCase() + type.slice(1)} | State: ${state.charAt(0).toUpperCase() + state.slice(1)} | Inversity: ${inversity.charAt(0).toUpperCase() + inversity.slice(1)} | Theme: ${theme.charAt(0).toUpperCase() + theme.slice(1)}`;
+            configInfo.textContent = configText;
+            
+            // Update token info
+            const tokenKey = `${type}-${inversity}`;
+            const tokens = tokenMapping[tokenKey];
+            if (tokens) {
+                tokenInfo.innerHTML = `
+                    ob/h/button/color/fg/${type}/inversity_${inversity}/enabled: ${tokens.fg}<br>
+                    ob/h/button/color/bg/${type}/inversity_${inversity}/enabled: ${tokens.bg}<br>
+                    ob/h/button/color/border/${type}/inversity_${inversity}/enabled: ${tokens.border}<br>
+                    ob/h/button/label_icon/spacing/gap: 6px<br>
+                    ob/h/button/label_icon/spacing/padding: 4.8px 9.6px<br>
+                    ob/s/dynamic/fontSize/md: 17px<br>
+                    ob/s/dynamic/font_weight/medium: 500
+                `;
+            }
+            
+            // Update generated code
+            const codeExample = `<ButtonLabelIcon 
+  type="${type}"
+  state="${state}"
+  inversity="${inversity}"
+  showIconLeft={${showIcon}}
+  label="${label}"
+/>`;
+            generatedCode.textContent = codeExample;
+        }
+        
+        // Event listeners
+        typeSelect.addEventListener('change', updateButton);
+        stateSelect.addEventListener('change', updateButton);
+        inversitySelect.addEventListener('change', updateButton);
+        themeSelect.addEventListener('change', updateButton);
+        showIconSelect.addEventListener('change', updateButton);
+        labelInput.addEventListener('input', updateButton);
+        
+        // Initialize
+        updateButton();
+        
+        // Handle disabled state
+        stateSelect.addEventListener('change', function() {
+            if (this.value === 'disabled') {
+                demoButton.disabled = true;
+            } else {
+                demoButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
