@@ -1,0 +1,65 @@
+@use "@oblique/oblique/src/styles/scss/core/variables";
+@use "@oblique/oblique/src/styles/scss/core/palette";
+
+$padding: 24px; // empiric value to align with mat-dialog padding
+mat-dialog-actions {
+	width: calc(100% + 2 * $padding);
+	margin: 0 -#{$padding} variables.$ob-spacing-default;
+	padding: 0 $padding !important;
+	box-shadow: 0 -7px 7px 0 rgba(0, 0, 0, 8%);
+
+	.ob-button {
+		margin-top: variables.$ob-spacing-lg;
+		width: 100%;
+	}
+}
+
+.image-container {
+	display: inline-flex; // inline so that the :before added by Material is on the same line
+	justify-content: center;
+	width: calc(100% + 2 * $padding);
+	margin: -#{$padding} -#{$padding} 0;
+	background-color: palette.$ob-secondary-100;
+
+	.mat-icon.icon {
+		margin: variables.$ob-spacing-lg 0;
+		font-size: 56px;
+	}
+}
+
+.card-title.mat-mdc-button-base.ob-button.mdc-button {
+	display: flex;
+	justify-content: space-between;
+	height: 64px;
+	padding: variables.$ob-spacing-default $padding;
+	margin: 0 -#{$padding} 0;
+	width: calc(100% + 2 * $padding);
+}
+
+.info-card {
+	margin-bottom: variables.$ob-spacing-lg;
+
+	.info-card-usage-title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: variables.$ob-spacing-sm;
+
+		h4 {
+			margin-bottom: 0;
+		}
+	}
+
+	section:not(:last-child) {
+		margin-bottom: variables.$ob-spacing-md;
+	}
+
+	.title-with-popover {
+		display: flex;
+		gap: variables.$ob-spacing-sm;
+	}
+
+	.info-card-popover-content {
+		max-height: 25vh;
+	}
+}
