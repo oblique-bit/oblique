@@ -57,6 +57,33 @@
           "$value": "{ob.p.dimension.px.0}"
         }
       },
+      "outline_offset": {
+        "none": {
+          "$type": "dimension",
+          "$value": "{ob.p.dimension.px.0}",
+          "$description": "No outline offset - outline directly touches element boundary"
+        },
+        "xs": {
+          "$type": "dimension",
+          "$value": "{ob.p.dimension.px.1}",
+          "$description": "Minimal outline offset for tight spacing requirements"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": "{ob.p.dimension.px.2}",
+          "$description": "Small outline offset for standard interactive elements"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{ob.p.dimension.px.3}",
+          "$description": "Medium outline offset for buttons and larger interactive elements"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{ob.p.dimension.px.4}",
+          "$description": "Large outline offset for prominent interactive elements"
+        }
+      },
       "border": {
         "focus_ring": {
           "inversity_normal": {

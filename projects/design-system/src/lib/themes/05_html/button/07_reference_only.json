@@ -424,6 +424,11 @@
               "$type": "borderRadius",
               "$value": "{ob.s.border_radius.md}",
               "$description": "Requires larger radius than element itself."
+            },
+            "outline_offset": {
+              "$type": "dimension",
+              "$value": "{ob.s.outline_offset.md}",
+              "$description": "Medium outline offset for button label_icon variant to ensure focus ring visibility around button boundary."
             }
           }
         },
@@ -433,6 +438,11 @@
               "$type": "borderRadius",
               "$value": "{ob.s.border_radius.rounded}",
               "$description": "Requires larger radius than element itself."
+            },
+            "outline_offset": {
+              "$type": "dimension",
+              "$value": "{ob.s.outline_offset.md}",
+              "$description": "Medium outline offset for button icon_only variant to ensure focus ring visibility around circular button boundary."
             }
           }
         }
