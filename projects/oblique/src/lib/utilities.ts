@@ -106,12 +106,12 @@ export function provideObliqueTranslations(configuration: ObITranslateConfig = {
 	const {config, flatten, additionalFiles} = configuration;
 	return makeEnvironmentProviders([
 		provideTranslateService({
-			...config,
 			loader: {
 				provide: TranslateLoader,
 				useFactory: getTranslateLoader,
 				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION]
-			}
+			},
+			...config
 		}),
 		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {additionalFiles, flatten: flatten ?? true}}
 	]);
