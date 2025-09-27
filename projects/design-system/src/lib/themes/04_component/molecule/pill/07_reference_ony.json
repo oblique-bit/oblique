@@ -272,7 +272,7 @@
             "lineHeight": "{ob.s.dynamic.lineHeight.xs}",
             "letterSpacing": "{ob.s.dynamic.letter_spacing_px.wide}",
             "paragraphSpacing": "{ob.s.dynamic.paragraphSpacing.xs}",
-            "fontSize": "{ob.s.dynamic.fontSize.md}"
+            "fontSize": "{ob.s.dynamic.font_size.md}"
           },
           "$description": "Typography only. Simplifies maintenance with Figma and Token Studio. Basically the same references as in 02_typography.json of this component."
         },

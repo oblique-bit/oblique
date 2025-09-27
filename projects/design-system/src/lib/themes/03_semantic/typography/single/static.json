@@ -2,7 +2,7 @@
   "ob": {
     "s": {
       "static": {
-        "fontSize": {
+        "font_size": {
           "xs": {
             "$type": "fontSize",
             "$value": "{ob.p.fontSizeRem.100}"

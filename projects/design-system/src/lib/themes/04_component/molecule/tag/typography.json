@@ -12,7 +12,7 @@
         },
         "font_size": {
           "$type": "fontSize",
-          "$value": "{ob.s.dynamic.fontSize.sm}"
+          "$value": "{ob.s.dynamic.font_size.sm}"
         },
         "text_decoration": {
           "$type": "textDecoration",

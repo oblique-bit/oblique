@@ -30,12 +30,12 @@ Contains pre-composed typography tokens that combine multiple properties (fontFa
 ### Dynamic Tokens
 - Include global multiplier calculations (e.g., `{ob.g.multiplier.typography.lg}`)
 - Respond to viewport and density changes
-- Structure: `{ob.s.dynamic.fontSize.md}`
+- Structure: `{ob.s.dynamic.font_size.md}`
 
 ### Static Tokens  
 - Fixed values without multiplier calculations
 - Consistent across all contexts
-- Structure: `{ob.s.static.fontSize.md}`
+- Structure: `{ob.s.static.font_size.md}`
 
 ## Token References
 
@@ -43,12 +43,12 @@ The grouped tokens reference the single tokens using the appropriate dynamic/sta
 
 **Dynamic grouped tokens reference:**
 ```json
-"fontSize": "{ob.s.dynamic.fontSize.xs} * {ob.g.multiplier.typography.lg}"
+"fontSize": "{ob.s.dynamic.font_size.xs} * {ob.g.multiplier.typography.lg}"
 ```
 
 **Static grouped tokens reference:**
 ```json  
-"fontSize": "{ob.s.static.fontSize.xs}"
+"fontSize": "{ob.s.static.font_size.xs}"
 ```
 
 ## Typography Token Architecture

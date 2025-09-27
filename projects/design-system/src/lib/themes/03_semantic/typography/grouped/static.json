@@ -10,7 +10,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.medium}",
-                  "fontSize": "{ob.s.static.fontSize.xs}",
+                  "fontSize": "{ob.s.static.font_size.xs}",
                   "lineHeight": "{ob.s.static.lineHeight.xs}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.xs}"
@@ -22,7 +22,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.extraBold}",
-                  "fontSize": "{ob.s.static.fontSize.xs}",
+                  "fontSize": "{ob.s.static.font_size.xs}",
                   "lineHeight": "{ob.s.static.lineHeight.xs}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.xs}"
@@ -36,7 +36,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.medium}",
-                  "fontSize": "{ob.s.static.fontSize.sm}",
+                  "fontSize": "{ob.s.static.font_size.sm}",
                   "lineHeight": "{ob.s.static.lineHeight.sm}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.sm}"
@@ -48,7 +48,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.extraBold}",
-                  "fontSize": "{ob.s.static.fontSize.sm}",
+                  "fontSize": "{ob.s.static.font_size.sm}",
                   "lineHeight": "{ob.s.static.lineHeight.sm}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.sm}"
@@ -62,7 +62,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.medium}",
-                  "fontSize": "{ob.s.static.fontSize.md}",
+                  "fontSize": "{ob.s.static.font_size.md}",
                   "lineHeight": "{ob.s.static.lineHeight.md}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.md}"
@@ -74,7 +74,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.extraBold}",
-                  "fontSize": "{ob.s.static.fontSize.md}",
+                  "fontSize": "{ob.s.static.font_size.md}",
                   "lineHeight": "{ob.s.static.lineHeight.md}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.md}"
@@ -88,7 +88,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.regular}",
-                  "fontSize": "{ob.s.static.fontSize.lg}",
+                  "fontSize": "{ob.s.static.font_size.lg}",
                   "lineHeight": "{ob.s.static.lineHeight.lg}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.lg}"
@@ -100,7 +100,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.extraBold}",
-                  "fontSize": "{ob.s.static.fontSize.lg}",
+                  "fontSize": "{ob.s.static.font_size.lg}",
                   "lineHeight": "{ob.s.static.lineHeight.lg}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.lg}"
@@ -114,7 +114,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.regular}",
-                  "fontSize": "{ob.s.static.fontSize.xl}",
+                  "fontSize": "{ob.s.static.font_size.xl}",
                   "lineHeight": "{ob.s.static.lineHeight.xl}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.xl}"
@@ -126,7 +126,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.extraBold}",
-                  "fontSize": "{ob.s.static.fontSize.xl}",
+                  "fontSize": "{ob.s.static.font_size.xl}",
                   "lineHeight": "{ob.s.static.lineHeight.xl}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.xl}"
@@ -140,7 +140,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.regular}",
-                  "fontSize": "{ob.s.static.fontSize.2xl}",
+                  "fontSize": "{ob.s.static.font_size.2xl}",
                   "lineHeight": "{ob.s.static.lineHeight.2xl}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.2xl}"
@@ -152,7 +152,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.extraBold}",
-                  "fontSize": "{ob.s.static.fontSize.2xl}",
+                  "fontSize": "{ob.s.static.font_size.2xl}",
                   "lineHeight": "{ob.s.static.lineHeight.2xl}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.2xl}"
@@ -166,7 +166,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.regular}",
-                  "fontSize": "{ob.s.static.fontSize.3xl}",
+                  "fontSize": "{ob.s.static.font_size.3xl}",
                   "lineHeight": "{ob.s.static.lineHeight.3xl}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.3xl}"
@@ -178,7 +178,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.extraBold}",
-                  "fontSize": "{ob.s.static.fontSize.3xl}",
+                  "fontSize": "{ob.s.static.font_size.3xl}",
                   "lineHeight": "{ob.s.static.lineHeight.3xl}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.3xl}"
@@ -192,7 +192,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.regular}",
-                  "fontSize": "{ob.s.static.fontSize.4xl}",
+                  "fontSize": "{ob.s.static.font_size.4xl}",
                   "lineHeight": "{ob.s.static.lineHeight.4xl}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.4xl}"
@@ -204,7 +204,7 @@
                 "$value": {
                   "fontFamily": "{ob.s.static.font_family.body}",
                   "fontWeight": "{ob.s.static.font_weight.extraBold}",
-                  "fontSize": "{ob.s.static.fontSize.4xl}",
+                  "fontSize": "{ob.s.static.font_size.4xl}",
                   "lineHeight": "{ob.s.static.lineHeight.4xl}",
                   "letterSpacing": "{ob.s.static.letter_spacing_px.normal}",
                   "paragraphSpacing": "{ob.s.static.paragraphSpacing.4xl}"

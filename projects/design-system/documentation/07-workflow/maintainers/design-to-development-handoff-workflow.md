@@ -67,7 +67,7 @@ Layer-to-token relationships are documented in tables:
 | Layer Name | Layer Type | Property | Token Path | Token Value | Implementation Notes |
 |------------|------------|----------|------------|-------------|---------------------|
 | Background | Rectangle | fill | `ob.s3.color.neutral.bg.surface` | `#ffffff` | Surface background |
-| Label | Text | fontSize | `ob.s.dynamic.fontSize.md` | `17px` | Button text size |
+| Label | Text | fontSize | `ob.s.dynamic.font_size.md` | `17px` | Button text size |
 | Icon | Frame | width/height | `ob.h.button.icon.size.md` | `20px` | Icon dimensions |
 | Container | Auto Layout | padding | `ob.h.button.spacing.padding.horizontal` | `12px` | Internal spacing |
 

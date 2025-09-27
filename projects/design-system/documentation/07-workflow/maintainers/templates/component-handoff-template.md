@@ -153,7 +153,7 @@ mcp_figma_dev_mod_get_code --forceCode=true  # ✅ Completed [DATE]
 | Container | Auto Layout | gap | `ob.h.button.spacing.gap` | `8px` | Icon-label gap |
 | Icon | Frame | width | `ob.h.button.icon.size.md` | `20px` | Icon width |
 | Icon | Frame | height | `ob.h.button.icon.size.md` | `20px` | Icon height |
-| Label | Text | fontSize | `ob.s.dynamic.fontSize.md` | `16px` | Text size |
+| Label | Text | fontSize | `ob.s.dynamic.font_size.md` | `16px` | Text size |
 | Label | Text | fontWeight | `ob.s.dynamic.fontWeight.medium` | `500` | Text weight |
 | Label | Text | color | `ob.s3.color.neutral.fg.primary` | `#1a1a1a` | Text color |
 | Label | Text | lineHeight | `ob.s.dynamic.lineHeight.md` | `24px` | Line height |

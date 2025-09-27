@@ -2,7 +2,7 @@
   "ob": {
     "s": {
       "dynamic": {
-        "fontSize": {
+        "font_size": {
           "xs": {
             "$type": "fontSize",
             "$value": "{ob.p.fontSizeRem.100} * {ob.g.multiplier.typography.lg}"

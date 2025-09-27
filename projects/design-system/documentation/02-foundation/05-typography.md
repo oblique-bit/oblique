@@ -36,8 +36,8 @@
 
 **Token Resolution Flow**:
 1. **Primitive**: `fontSizeRem.300` = `1rem`
-2. **Viewport**: `ob.s.viewport.fontSize.md` = `{ob.p.fontSizeRem.300}` or `{ob.p.fontSizeRem.400}`
-3. **Context**: Interface/prose body = `{ob.s.viewport.fontSize.md}`
+2. **Viewport**: `ob.s.viewport.font_size.md` = `{ob.p.fontSizeRem.300}` or `{ob.p.fontSizeRem.400}`
+3. **Context**: Interface/prose body = `{ob.s.viewport.font_size.md}`
 
 ### Viewport Typography Strategy
 
