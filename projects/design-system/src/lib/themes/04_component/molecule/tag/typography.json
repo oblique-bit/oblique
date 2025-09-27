@@ -11,7 +11,7 @@
           "$value": "{ob.s.static.font_weight.medium}"
         },
         "font_size": {
-          "$type": "fontSize",
+          "$type": "fontSizes",
           "$value": "{ob.s.dynamic.font_size.sm}"
         },
         "text_decoration": {

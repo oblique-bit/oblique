@@ -4,43 +4,43 @@
       "static": {
         "font_size": {
           "xs": {
-            "$type": "fontSize",
+            "$type": "fontSizes",
             "$value": "{ob.p.fontSizeRem.100}"
           },
           "sm": {
-            "$type": "fontSize",
+            "$type": "fontSizes",
             "$value": "{ob.p.fontSizeRem.200}"
           },
           "md": {
-            "$type": "fontSize",
+            "$type": "fontSizes",
             "$value": "{ob.p.fontSizeRem.300}"
           },
           "lg": {
-            "$type": "fontSize",
+            "$type": "fontSizes",
             "$value": "{ob.p.fontSizeRem.400}"
           },
           "xl": {
-            "$type": "fontSize",
+            "$type": "fontSizes",
             "$value": "{ob.p.fontSizeRem.500}"
           },
           "2xl": {
-            "$type": "fontSize",
+            "$type": "fontSizes",
             "$value": "{ob.p.fontSizeRem.600}"
           },
           "3xl": {
-            "$type": "fontSize",
+            "$type": "fontSizes",
             "$value": "{ob.p.fontSizeRem.700}"
           },
           "4xl": {
-            "$type": "fontSize",
+            "$type": "fontSizes",
             "$value": "{ob.p.fontSizeRem.800}"
           },
           "5xl": {
-            "$type": "fontSize",
+            "$type": "fontSizes",
             "$value": "{ob.p.fontSizeRem.900}"
           },
           "_base": {
-            "$type": "fontSize",
+            "$type": "fontSizes",
             "$value": "{ob.p.fontSizeRem.300}"
           }
         },

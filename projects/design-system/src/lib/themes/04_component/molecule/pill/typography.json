@@ -5,7 +5,7 @@
         "typography": {
           "text_label": {
             "font_size": {
-              "$type": "fontSize",
+              "$type": "fontSizes",
               "$value": "{ob.s.dynamic.font_size.md}",
               "$description": "Font size that scales with typography multiplier"
             },
