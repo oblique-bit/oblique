@@ -472,6 +472,63 @@
           "$description": "80px @ 16px base font size"
         }
       },
+      "font_size_rem": {
+        "100": {
+          "$type": "fontSize",
+          "$value": "0.75",
+          "$description": "12px @ 16px base font size"
+        },
+        "200": {
+          "$type": "fontSize",
+          "$value": "0.875",
+          "$description": "14px @ 16px base font size"
+        },
+        "300": {
+          "$type": "fontSize",
+          "$value": "1",
+          "$description": "16px @ 16px base font size"
+        },
+        "400": {
+          "$type": "fontSize",
+          "$value": "1.125",
+          "$description": "18px @ 16px base font size"
+        },
+        "500": {
+          "$type": "fontSize",
+          "$value": "1.4375",
+          "$description": "23px @ 16px base font size"
+        },
+        "600": {
+          "$type": "fontSize",
+          "$value": "1.75",
+          "$description": "28px @ 16px base font size"
+        },
+        "700": {
+          "$type": "fontSize",
+          "$value": "2.125",
+          "$description": "34px @ 16px base font size"
+        },
+        "800": {
+          "$type": "fontSize",
+          "$value": "2.5",
+          "$description": "40px @ 16px base font size"
+        },
+        "900": {
+          "$type": "fontSize",
+          "$value": "3",
+          "$description": "48px @ 16px base font size"
+        },
+        "1000": {
+          "$type": "fontSize",
+          "$value": "4",
+          "$description": "64px @ 16px base font size"
+        },
+        "1100": {
+          "$type": "fontSize",
+          "$value": "5",
+          "$description": "80px @ 16px base font size"
+        }
+      },
       "textcase": {
         "none": {
           "$type": "textCase",

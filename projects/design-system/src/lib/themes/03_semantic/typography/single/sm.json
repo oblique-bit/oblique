@@ -5,43 +5,43 @@
         "font_size": {
           "xs": {
             "$type": "fontSize",
-            "$value": "{ob.p.fontSizeRem.100} * {ob.g.multiplier.typography.sm}"
+            "$value": "{ob.p.font_size_rem.100} * {ob.g.multiplier.typography.sm}rem"
           },
           "sm": {
             "$type": "fontSize",
-            "$value": "{ob.p.fontSizeRem.200} * {ob.g.multiplier.typography.sm}"
+            "$value": "{ob.p.font_size_rem.200} * {ob.g.multiplier.typography.sm}rem"
           },
           "md": {
             "$type": "fontSize",
-            "$value": "{ob.p.fontSizeRem.300} * {ob.g.multiplier.typography.sm}"
+            "$value": "{ob.p.font_size_rem.300} * {ob.g.multiplier.typography.sm}rem"
           },
           "lg": {
             "$type": "fontSize",
-            "$value": "{ob.p.fontSizeRem.400} * {ob.g.multiplier.typography.sm}"
+            "$value": "{ob.p.font_size_rem.400} * {ob.g.multiplier.typography.sm}rem"
           },
           "xl": {
             "$type": "fontSize",
-            "$value": "{ob.p.fontSizeRem.500} * {ob.g.multiplier.typography.sm}"
+            "$value": "{ob.p.font_size_rem.500} * {ob.g.multiplier.typography.sm}rem"
           },
           "2xl": {
             "$type": "fontSize",
-            "$value": "{ob.p.fontSizeRem.600} * {ob.g.multiplier.typography.sm}"
+            "$value": "{ob.p.font_size_rem.600} * {ob.g.multiplier.typography.sm}rem"
           },
           "3xl": {
             "$type": "fontSize",
-            "$value": "{ob.p.fontSizeRem.700} * {ob.g.multiplier.typography.sm}"
+            "$value": "{ob.p.font_size_rem.700} * {ob.g.multiplier.typography.sm}rem"
           },
           "4xl": {
             "$type": "fontSize",
-            "$value": "{ob.p.fontSizeRem.800} * {ob.g.multiplier.typography.sm}"
+            "$value": "{ob.p.font_size_rem.800} * {ob.g.multiplier.typography.sm}rem"
           },
           "5xl": {
             "$type": "fontSize",
-            "$value": "{ob.p.fontSizeRem.900} * {ob.g.multiplier.typography.sm}"
+            "$value": "{ob.p.font_size_rem.900} * {ob.g.multiplier.typography.sm}rem"
           },
           "_base": {
             "$type": "fontSize",
-            "$value": "{ob.p.fontSizeRem.300} * {ob.g.multiplier.typography.sm}"
+            "$value": "{ob.p.font_size_rem.300} * {ob.g.multiplier.typography.sm}rem"
           }
         },
         "lineHeight": {
