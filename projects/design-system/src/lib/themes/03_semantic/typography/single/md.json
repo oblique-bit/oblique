@@ -4,43 +4,43 @@
       "dynamic": {
         "fontSize": {
           "xs": {
-            "$type": "font_sizes",
+            "$type": "fontSize",
             "$value": "{ob.p.fontSizeRem.100} * {ob.g.multiplier.typography.md}"
           },
           "sm": {
-            "$type": "font_sizes",
+            "$type": "fontSize",
             "$value": "{ob.p.fontSizeRem.200} * {ob.g.multiplier.typography.md}"
           },
           "md": {
-            "$type": "font_sizes",
+            "$type": "fontSize",
             "$value": "{ob.p.fontSizeRem.300} * {ob.g.multiplier.typography.md}"
           },
           "lg": {
-            "$type": "font_sizes",
+            "$type": "fontSize",
             "$value": "{ob.p.fontSizeRem.400} * {ob.g.multiplier.typography.md}"
           },
           "xl": {
-            "$type": "font_sizes",
+            "$type": "fontSize",
             "$value": "{ob.p.fontSizeRem.500} * {ob.g.multiplier.typography.md}"
           },
           "2xl": {
-            "$type": "font_sizes",
+            "$type": "fontSize",
             "$value": "{ob.p.fontSizeRem.600} * {ob.g.multiplier.typography.md}"
           },
           "3xl": {
-            "$type": "font_sizes",
+            "$type": "fontSize",
             "$value": "{ob.p.fontSizeRem.700} * {ob.g.multiplier.typography.md}"
           },
           "4xl": {
-            "$type": "font_sizes",
+            "$type": "fontSize",
             "$value": "{ob.p.fontSizeRem.800} * {ob.g.multiplier.typography.md}"
           },
           "5xl": {
-            "$type": "font_sizes",
+            "$type": "fontSize",
             "$value": "{ob.p.fontSizeRem.900} * {ob.g.multiplier.typography.md}"
           },
           "_base": {
-            "$type": "font_sizes",
+            "$type": "fontSize",
             "$value": "{ob.p.fontSizeRem.300} * {ob.g.multiplier.typography.md}"
           }
         },
