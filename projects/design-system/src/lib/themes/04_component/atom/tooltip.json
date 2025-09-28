@@ -5,22 +5,22 @@
         "spacing": {
           "padding_top": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.container.xs.px}",
+            "$value": "{ob.s.dimension.static.element.sm.px}",
             "$description": "Increased paddings around text boost its readability."
           },
           "padding_right": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.container.sm.px}",
+            "$value": "{ob.s.dimension.static.element.md.px}",
             "$description": "Increased paddings around text boost its readability."
           },
           "padding_bottom": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.container.xs.px}",
+            "$value": "{ob.s.dimension.static.element.sm.px}",
             "$description": "Increased paddings around text boost its readability."
           },
           "padding_left": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.container.sm.px}",
+            "$value": "{ob.s.dimension.static.element.md.px}",
             "$description": "Increased paddings around text boost its readability."
           }
         },
@@ -32,7 +32,7 @@
           },
           "fg": {
             "$type": "color",
-            "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_flipped}",
+            "$value": "{ob.s3.color.neutral.fg.contrast_highest.inversity_flipped}",
             "$description": "Text color for the inverted background color."
           }
         },
